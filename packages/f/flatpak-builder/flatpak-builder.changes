@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 20 01:12:44 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Update to version 1.4.8:
+  + Use glnx_chaseat() to resolve and validate license files
+    (CVE-2026-39977, bsc#1261916)
+  + Limit Glib version gate macros to flatpak-builder target to
+    mitigate build warnings from libglnx update
+  + Update libglnx submodule to ccea836b
+  + Handle trailing '/' as directory boundary in cleanup
+  + Fix licence directory for runtimes
+  + Include license-files in cache checksum
+  + Show a better message on CURLE_BAD_CONTENT_ENCODING
+  + Install base-extensions when handling dependencies
+  + Run locale migration after cleanup
+  + Handle case-insensitive YAML boolean and null scalars in YAML
+    manifests
+  + Support setting state-dir for run
+  + Various improvements to CI, documentation and tests
+
+-------------------------------------------------------------------
 Fri Nov  7 19:44:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.7:
