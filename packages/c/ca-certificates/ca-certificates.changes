@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 08:02:48 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2+git20260420.2a8e251:
+  * update-ca-certificates requires mv and ln from coreutils
+
+-------------------------------------------------------------------
 Tue Feb 03 13:33:23 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2+git20260203.5937e9f:

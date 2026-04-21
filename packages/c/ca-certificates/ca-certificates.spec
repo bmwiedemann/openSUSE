@@ -35,7 +35,7 @@ BuildRequires:  git-core
 %bcond_without cabundle
 
 Name:           ca-certificates
-Version:        2+git20260203.5937e9f%{git_version}
+Version:        2+git20260420.2a8e251%{git_version}
 Release:        0
 Summary:        Utilities for system wide CA certificate installation
 License:        GPL-2.0-or-later
@@ -44,6 +44,9 @@ URL:            https://github.com/openSUSE/ca-certificates
 Source0:        ca-certificates-%{version}.tar
 BuildRequires:  p11-kit-devel
 #
+# update-ca-certificates requires mv and ln from coreutils,
+# it does not work with busybox or so (--backup=numbered)
+Requires:       coreutils
 Requires:       %{_bindir}/readlink
 Requires:       p11-kit
 Requires:       p11-kit-tools >= 0.23.1
