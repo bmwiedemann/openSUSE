@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 20 17:22:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.31:
+  * This release fixes a handful of bugs and annoyances with a
+    bigger focus on account related actions and interactions.
+    - You will no longer be spammed with device removal
+      notifications when switching between accounts.
+    - You can how switch account from both the main settings UI and
+      from the tray menu.
+    - Logging out now does the correct thing and removes the
+      account completely from the UI without requiring a restart.
+    - Fix settings read/write bug around AllowLanAccess
+  * Commits
+    - a488f60: When switching accounts, you get spammed with
+      notifications about devices being removed, in error #113
+      (Marcus Grenängen)
+    - 9dbd282: Preferences - Account tab should expose a switch
+      account button #114 (Marcus Grenängen)
+    - 2b7a682: Preferences - Account tab should expose a switch
+      account button #114 (Marcus Grenängen)
+    - 1bc4b1b: Accounts - Properly handle Logout flow & try to load
+      and assign the profile image if present (Marcus Grenängen)
+    - 6481e06: Fix checkboxes for AllowLanAccess - Issue #105
+      (Marcus Grenängen)
+    - 47cf078: Bump version to 0.2.31 readying a new release
+      (Marcus Grenängen)
+
+-------------------------------------------------------------------
 Tue Mar 03 05:57:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.30:
