@@ -86,7 +86,7 @@
 %define pkg_name gimp
 
 Name:           gimp
-Version:        3.2.2
+Version:        3.2.4
 Release:        0
 %global pkg_version %{version}
 Summary:        The GNU Image Manipulation Program
