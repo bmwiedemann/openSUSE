@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 20 18:37:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.0:
+  * feat: add first github pages playground by @thomas9911 in #31
+  * refactor(cli): --porcelain flag, make --count/ --depth mutually
+    exclusive, --depth with query by @micahkepe in #32
+
+-------------------------------------------------------------------
 Fri Apr 03 06:58:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.8.1:
