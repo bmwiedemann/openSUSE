@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:10:59 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.15
+  * Documentation updates
+    + Use new Maven logos in documentation
+    + document modelVersion only supported value: 4.0.0
+  * Dependency updates
+    + Bump actions/upload-artifact from 7.0.0 to 7.0.1
+    + Bump org.codehaus.plexus:plexus-utils from 3.6.0 to 3.6.1
+    + Bump org.fusesource.jansi:jansi from 2.4.2 to 2.4.3
+    + Bump actions/cache from 5.0.3 to 5.0.4
+    + Bump actions/download-artifact from 8.0.0 to 8.0.1
+
+-------------------------------------------------------------------
 Thu Mar 12 13:18:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.9.14
