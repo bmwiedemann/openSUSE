@@ -105,9 +105,11 @@ A simple Python wheel builder for simple projects.
 
 %check
 %if %{with test}
-# test_show_builders requires two whey modules that are not packaged
+# Requires two whey modules that are not packaged
+donttest="test_show_builders or test_build_editable or test_create_editables_files"
 # test_build_success requires that the module is built exactly when the tests are run
-%pytest --ignore tests/test_utils.py -k 'not (test_show_builders or test_build_success)'
+donttest+=" or test_build_success"
+%pytest --ignore tests/test_utils.py -k "not ($donttest)"
 %endif
 
 %if !%{with test}

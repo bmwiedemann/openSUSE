@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1330961</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9dba37b89b28234939aec7275ae6e1de</srcmd5>
+    <version>0.1.1</version>
+    <time>1776768126</time>
+    <user>anag_factory</user>
+    <comment>- Skip two more tests that require whey-pth.</comment>
+    <requestid>1348090</requestid>
+  </revision>
 </revisionlist>

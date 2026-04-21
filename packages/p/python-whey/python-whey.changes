@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 01:36:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip two more tests that require whey-pth.
+
+-------------------------------------------------------------------
 Wed Feb  4 08:48:23 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Add fix_requirements.patch: Use OBS pyproject-examples 
