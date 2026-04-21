@@ -1529,6 +1529,8 @@ unsorted:
   - blosc-devel 
   - blosc2-devel 
   - bluefish 
+  - bluejay 
+  - bluejay-lang 
   - bluemoon 
   - blueprint-compiler 
   - blueprint-compiler-devel 
@@ -11238,6 +11240,7 @@ unsorted:
   - libKF5Contacts5 
   - libKF5DNSSD5 
   - libKF5DNSSD5-lang 
+  - libKF5Dcraw5 
   - libKF5Declarative5 
   - libKF5Declarative5-lang 
   - libKF5Emoticons5 
@@ -12558,6 +12561,9 @@ unsorted:
   - libcanberra-gtk3-devel 
   - libcanberra-gtk3-module-32bit 
   - libcanberra0-32bit 
+  - libcanfigger0 
+  - libcanfigger0-devel 
+  - libcanfigger0-doc 
   - libcangjie-data 
   - libcangjie-devel 
   - libcangjie-tools 
@@ -14284,7 +14290,9 @@ unsorted:
   - libkchart-lang 
   - libkcompactdisc-lang 
   - libkcompactdisc-qt6-devel 
-  - libkdcraw-qt6-devel 
+  - libkdcraw-devel 
+  - libkdcraw-qt5 
+  - libkdcraw-qt5-devel 
   - libkddockwidgets-qt6-3 
   - libkddockwidgets3 
   - libkdecoration2-devel 
@@ -14750,7 +14758,7 @@ unsorted:
   - libmikmod-devel 
   - libmikmod3 
   - libmilter-doc 
-  - libmimalloc2 
+  - libmimalloc3 
   - libmimetic-devel 
   - libmimetic0 
   - libminisat2 
@@ -20052,6 +20060,7 @@ unsorted:
   - nnn-fish-completion 
   - nnn-zsh-completion 
   - no-more-secrets 
+  - noctalia-qs 
   - nodejs-bitwarden-sdk-internal 
   - nodejs-common 
   - nodejs-default 
@@ -23016,7 +23025,6 @@ unsorted:
   - php8-memcached 
   - php8-mysql 
   - php8-odbc 
-  - php8-opcache 
   - php8-pcntl 
   - php8-pear 
   - php8-pecl 
@@ -25697,7 +25705,6 @@ unsorted:
   - python311-fire 
   - python311-firewall 
   - python311-first 
-  - python311-fissix 
   - python311-fixedint 
   - python311-fixtures 
   - python311-flake8 
@@ -29598,7 +29605,6 @@ unsorted:
   - python313-findpython 
   - python313-fire 
   - python313-first 
-  - python313-fissix 
   - python313-fixedint 
   - python313-fixtures 
   - python313-flake8 
@@ -33494,7 +33500,6 @@ unsorted:
   - python314-fire 
   - python314-firewall 
   - python314-first 
-  - python314-fissix 
   - python314-fixedint 
   - python314-fixtures 
   - python314-flake8 
@@ -38565,10 +38570,6 @@ unsorted:
   - sword-devel 
   - swtcalendar 
   - swtpm-devel 
-  - swww 
-  - swww-bash-completion 
-  - swww-fish-completion 
-  - swww-zsh-completion 
   - sxhkd 
   - sxiv 
   - syft 
