@@ -384,4 +384,12 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment>Push GNOME 50</comment>
     <requestid>1345400</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>bdc953c96b7e24e6261f5a96d6205d6d</srcmd5>
+    <version>50.1</version>
+    <time>1776768167</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348433</requestid>
+  </revision>
 </revisionlist>
