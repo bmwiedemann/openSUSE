@@ -913,4 +913,13 @@
 - Drop 0004-Fix-build-with-sip6.8.patch</comment>
     <requestid>1344689</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>6236aa17451d9b57dd92e86972a02550</srcmd5>
+    <version>5.3.1</version>
+    <time>1776768356</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream fix to fix PyQt initialization (kde#518163)
+  * 0001-Disallow-importing-conflicting-version-of-PyQt.patch</comment>
+    <requestid>1348169</requestid>
+  </revision>
 </revisionlist>

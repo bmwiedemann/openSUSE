@@ -44,6 +44,8 @@ Source0:        https://download.kde.org/stable/krita/%{pkg_version}/krita-%{pkg
 Source1:        https://download.kde.org/stable/krita/%{pkg_version}/krita-%{pkg_version}.tar.xz.sig
 Source2:        krita.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Disallow-importing-conflicting-version-of-PyQt.patch
 BuildRequires:  %{pyver}-devel
 BuildRequires:  %{pyver}-qt5-devel
 BuildRequires:  %{pyver}-sip-devel

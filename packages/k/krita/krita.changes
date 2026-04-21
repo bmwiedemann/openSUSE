@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 08:29:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix to fix PyQt initialization (kde#518163)
+  * 0001-Disallow-importing-conflicting-version-of-PyQt.patch
+
+-------------------------------------------------------------------
 Sat Apr  4 21:56:42 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 5.3.1/6.0.1
