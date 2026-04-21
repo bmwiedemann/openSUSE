@@ -1,4 +1,192 @@
 -------------------------------------------------------------------
+Mon Apr 20 17:25:01 UTC 2026 - ecsos <ecsos@opensuse.org> - 9.7.0
+
+- Update to 9.7.0
+  * New Features
+    - Annotations browser: Allow grouping results by any field
+    - E-book viewer: Handle native pinch to zoom gesture on touchpads the same as the pinch to zoom on touchscreens. Default action is to change font size.
+    - Content server: Implement full offline mode when using HTTPS connections to the content server
+  * Bug Fixes
+    - E-book viewer: Fix a regression in the previous release that caused annotations/last read information to not be saved in e-book files
+    - AI: Make the GitHub backend a bit more robust
+    - AI: OpenRouter backend: Fix reasoning level "auto" disabling all reasoning
+    - Content server: Read book: Fix regression causing error during searching
+    - Content server: Fix opening results from full text search not working
+    - Fix a couple of minor regress in the new Full text search view introduced in the previous release
+    - MTP driver: Linux: Fix a rare crash when connecting devices with large collections
+    - Fix cover not being set when adding files to existing book records with no cover
+- Changes from 9.6.0
+  * New Features
+    - Full text search: A new cards based view of full text search results with book covers
+    - A new "word-prefix" completion mode that shows matches that have any word starting with the typed in letters
+    - Bookshelves: Add option to have the height of books be constant per group
+    - Edit book: File list: Allow using Ctrl+Shift+Left/Right to move an item to top/bottom of the list
+  * Bug Fixes
+    - Fix notes being lost when changing the lookup name of custom column
+    - E-book viewer: Fix using the slower/faster buttons causing a chapter skip when using the Piper neural speech backend
+    - Content server viewer: Fix annotations being not synced to the server in some Android devices when using the Firefox browser
+    - Windows: Force kill calibre.exe on quit to workaround hang in interpreter shutdown on some systems
+    - TXT Output: Fix asciiize option not applying to generated inline Table of Contents
+    - E-book viewer: Disallow background images from the internet. This was an unused feature anyway (CVE-2026-33205)
+    - TXT Input: Ensure resource files are read only from book contents (CVE-2026-33206)
+    - Only apply changes to text fields in the book list when the new value is different from the old
+    - Completions: Update list of completion suggestions when cursor is moved
+- Changes from 9.5.0
+  * New Features
+    - Allow creating a column to display reading progress
+    - Annotations browser: Allow filtering by highlight style
+    - E-book viewer: Add an option to display the pages from the paper book page list (when available) while also showing the last page number
+    - Edit book: Add a tool to remove unused images, similar to the tool to remove unused CSS
+    - Tolino driver: support new firmware version
+    - E-book viewer: Add a reset button to the reading stats panel
+  * Bug Fixes
+    - Fix overridden icons from config directory not switching between dark/light variants on theme change
+    - Fix: Use MOBI fallback for KFX format when downloading news periodicals
+    - Edit book: Restore focus to editor after showing search count popup message
+    - Fix a bug in KEPUB markup removal when there are empty kobo spans
+    - RB Input: Ensure files are extracted within container dir (CVE-2026-30853)
+    - Book list: Fix ctrl+shift+arrow key not moving the currently selected book. Fixes #2142950
+- Changes from 9.4.0
+  * New Features
+    - E-book viewer: Add "reading stats" to show reading progress
+    - Edit book: Nicer UI for changing the entries in the insert tag menu
+    - Cover grid: Option to draw emblems on top of cover in Preferences->Look & feel->Cover grid->Emblems
+    - Cover grid: Add option to draw text flush with bottom of rendered cover
+  + Bug Fixes
+    - DOCX Input: Fix paragraph/list margins in documents created by LibreOffice that do not have Word 2007 compatibility
+    - ODT Input: Fix a regression in the previous release that broke conversion of images
+    - Content server: When banning IPs for repeated login is enabled, only use the IP address not any HTTP headers as the ban key (CVE-2026-27824)
+    - Content server: Sanitize content disposition received as query parameter (CVE-2026-27810)
+
+-------------------------------------------------------------------
+Sat Feb 21 13:25:00 UTC 2026 - ecsos <ecsos@opensuse.org> - 9.3.1
+
+- Update to 9.3.1
+  * Version 9.3.1 fixes a regression in the previous release that
+    caused a spurious error message to show when merging books and
+    a regression in calibre 9.0 that broke using textures as the
+    Cover grid background when using the system theme on Windows
+
+-------------------------------------------------------------------
+Fri Feb 20 13:02:56 UTC 2026 - ecsos <ecsos@opensuse.org> - 9.3.0
+
+- Update to 9.3.0
+  * New features
+    - Windows installer: Detect running calibre processes and ask
+      user to shutdown calibre before proceeding with installation
+      to avoid reboots post installation
+    - Improve Preferences->Tweaks getting rid of the need for double apply
+    - KEPUB Output: When converting to KEPUB preserve cover aspect
+      ratio regardless of the setting for it in the EPUB Output to
+      match the behavior of KEPUB files from Kobo
+  * Bug fixes
+    - Make the new pages column value available in save to disk/send
+      to device templates
+    - Hanvon N10 device driver: Fix calibre unable to put its
+      metadata files onto the device
+    - Amazon metadata download plugin: Fix incorrect series index
+      from amazon.com
+    - Fix a regression in calibre 9.0 that broke output to
+      PDB/TCR/zTXT files
+    - Windows: Fix calibre not exiting on quit when the wireless
+      device driver is used in calibre 9
+    - Fix error in page counting when using the calibredb command
+      to add a book
+    - Completion: When sorting completion matches in contains mode
+      ensure matches are sorted first by distance from beginning
+      and then sub-sorted alphabetically
+    - Windows: Fix a regression in calibre 9 that caused tooltips
+      to not follow the color scheme
+    - PDF Input: Fix PDF Outline not being converted to Table of
+      Contents in output document when using the calibre engine
+    - ODT Input: Ensure images are extracted within container
+      (CVE-2026-26064)
+    - PDB Input: Ensure extracted images are within the container
+      (CVE-2026-26065)
+    - Fix a regression in calibre 9.0 that caused a spurious large
+      books merge warning when merging books in the cover grid view
+    - Windows: Fix harmless error popup if user tries to launch
+      calibre multiple times in quick succession
+  * Improved news sources
+    - Financial Times
+    - The Asahi Shimbun
+    - Todoist
+- Changes from 9.2.1
+  - Version 9.2.1 prevents the Content server from using template
+    based searches since this is insecure when the content server
+    is used with un-authenticated users
+- Changes from 9.2
+  * New Features
+    - ZIP Output: Change the template engine used for HTML
+      templating from templite to Mustache, for greater safety
+      and performance. Note that this is a breaking change if
+      you use custom templates with ZIP output (CVE-2026-25731)
+    - Check library: Add an option to rebuild the annotations search index
+  * Bug Fixes
+    - CHM Input: Ignore internal files that have paths that end up
+      outside the container. Prevents path traversal attacks with
+      malicious CHM files (CVE-2026-25635)
+    - EPUB Input: Ensure font obfuscation processing happens only
+      on files from the EPUB, preventing path traversal attacks
+      from malicious EPUB files (CVE-2026-25636)
+    - Windows: Workaround for bug in Qt 6.10 causing Read Aloud
+      in the E-book viewer to crash when stopped and restarted
+    - Fix drag and drop of books into bookshelf view not working
+    - Bookshelf: Fix bookshelf view blank on some macOS systems
+    - E-book viewer: Fix a regression in calibre 9.0 that broke
+      the Go to page function
+    - E-book viewer: Fix google dictionary lookup results not legible
+    - E-book viewer: Fix PageUp/PageDown keys needing to be pressed
+      repeatedly at internal HTML file boundaries in flow mode
+    - Bookshelf: Avoid rendering during initial show while the view
+      is still being resized
+    - Fix a regression in calibre 9.0 that caused mouse wheel to scroll
+      a full row at a time in the Cover grid
+    - News download: Fix a regression in 8.11 that broke automatic
+      cleanup of downloaded HTML
+- Changes from 9.1
+  * New Features
+    - This is a pure bugfix release fixing various regressions
+      in calibre 9.0
+  * Bug Fixes
+    - macOS: Fix crash when pasting cover image
+    - Fix restore database not working
+    - Windows: Fix the Read Aloud feature in the E-book viewer
+      not working when using the Piper engine
+    - Fix using icon themes in "For dark and light" mode not
+      working
+    - Fix covers in the Cover grid slightly stretched on high
+      DPI screens
+    - Amazon metadata download: Fix publication date not being
+      retrieved from amazon.co.jp
+- Changes from 9.0
+  * New Features
+    - A new Bookshelf view with your books arranged on shelves
+      showing their spines
+    - Viewer: Add an "Edit book" button to the viewer controls
+      to edit the current book
+    - Linux: Add momentum based scrolling for the book list when
+      using high resolution scroll devices like touchpads
+    - TXT Output: Add an option to replace images by their alt
+      attribute text
+    - EPUB: Support reading cover images from so called
+      "Open Manga Format" non-conformant EPUB files produced by
+      some Japanese publishers.
+    - Add a tweak to change the font size of the AI chat widget
+    - E-book viewer: Allow typing in a page number to go to instead of forcing the user to scroll through existing page numbers
+    - Kobo driver: Support for updated firmware
+    - A new tweak to hide all AI features from the user interface in Preferences->Tweaks
+  * Bug Fixes
+    - KEPUB Output: Add some CSS to fix rendering of tate-chu-yoko text on Kobo devices
+    - Only show the Sort button on the search bar if the Sort By action has not been added to the search bar by the user
+    - EPUB3 metadata: Handle identifiers that use HTTP URLs without the url: prefix
+    - Edit book: Check book: Fix spurious unreferenced warnings for SMIL media overlay audio files
+    - Edit book: Reports: Have pressing enter do the same action as double clicking the current entry
+    - E-book viewer: Improve export of SVG images
+    - Disable GPU acceleration for Qt WebEngine by default to prevent crashes on some older systems. Can be re-enabled via Preferences->Tweaks
+    - Speedup calibre shutdown time by a couple of seconds
+
+-------------------------------------------------------------------
 Sat Dec  6 14:48:43 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.16.2
 
 - Update to 8.16.2
