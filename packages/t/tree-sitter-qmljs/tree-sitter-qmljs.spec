@@ -18,12 +18,14 @@
 
 %define         _name qmljs
 Name:           tree-sitter-qmljs
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        QML grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/yuja/tree-sitter-qmljs
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/yuja/tree-sitter-qmljs/pull/24
+Source1:        binding.gyp
 BuildRequires:  tree-sitter
 BuildRequires:  treesitter_grammar_src(tree-sitter-typescript)
 %treesitter_grammars %{_name}
@@ -33,6 +35,7 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-typescript)
 
 %prep
 %autosetup
+cp %{SOURCE1} binding.gyp
 
 %build
 %treesitter_configure

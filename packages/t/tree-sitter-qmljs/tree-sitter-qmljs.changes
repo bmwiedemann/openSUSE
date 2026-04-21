@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr  9 20:08:16 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.3.0:
+  - add "final" property modifier
+  - bump reference grammar to
+    bc5e56bcce2618b7810cf2f4007bf4370dc3bbc9
+  - regenerate Rust bindings
+  - Expose queries in Rust bindings
+  - allow trailing comma in object array
+  - bump reference grammar to
+    ad65c8d89fd67cc11f04d8d3019149e98466c9fc
+  - bump node modules
+  - bump version to 0.3.0 (includes breaking API changes in Rust
+    binding)
+
+-------------------------------------------------------------------
 Mon Feb  9 13:44:35 UTC 2026 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Remove redundant Neovim workaround

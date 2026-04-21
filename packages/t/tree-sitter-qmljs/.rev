@@ -59,4 +59,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1333366</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5318dec3d39b18fb410653b54eef7511</srcmd5>
+    <version>0.3.0</version>
+    <time>1776768373</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.3.0:
+  - add &quot;final&quot; property modifier
+  - bump reference grammar to
+    bc5e56bcce2618b7810cf2f4007bf4370dc3bbc9
+  - regenerate Rust bindings
+  - Expose queries in Rust bindings
+  - allow trailing comma in object array
+  - bump reference grammar to
+    ad65c8d89fd67cc11f04d8d3019149e98466c9fc
+  - bump node modules
+  - bump version to 0.3.0 (includes breaking API changes in Rust
+    binding)</comment>
+    <requestid>1348311</requestid>
+  </revision>
 </revisionlist>
