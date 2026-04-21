@@ -1506,4 +1506,13 @@
     <comment>KDE release gear 26.04 (forwarded request 1346091 from krop)</comment>
     <requestid>1347534</requestid>
   </revision>
+  <revision rev="189" vrev="2">
+    <srcmd5>c1fe01a1eee8f062943603ecc0034e88</srcmd5>
+    <version>26.04.0</version>
+    <time>1776768143</time>
+    <user>anag_factory</user>
+    <comment>- Restore a Qt 5 based libkcdraw package until krita is ported to
+  Qt 6</comment>
+    <requestid>1348168</requestid>
+  </revision>
 </revisionlist>

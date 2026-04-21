@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 09:48:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Restore a Qt 5 based libkcdraw package until krita is ported to
+  Qt 6
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0

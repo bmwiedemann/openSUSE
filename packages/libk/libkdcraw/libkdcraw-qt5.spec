@@ -16,51 +16,52 @@
 #
 
 
-%define kf6_version 6.19.0
-%define qt6_version 6.9.0
+%define kf5_version 5.91.0
+%define qt5_version 5.15.0
 
 %define rname  libkdcraw
 
 %bcond_without released
-Name:           libkdcraw
-Version:        26.04.0
+Name:           libkdcraw-qt5
+Version:        25.12.3
 Release:        0
 Summary:        Shared library interface around dcraw
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+Source0:        %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libraw) >= 0.18.0
-BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
+BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+Provides:       libkdcraw = %{version}
+Obsoletes:      libkdcraw < %{version}
+Provides:       libkdcraw-kf5 = %{version}
+Obsoletes:      libkdcraw-kf5 < %{version}
 
 %description
 Libkdcraw is a C++ interface around dcraw binary program used to decode
 RAW picture files.
 
-%package -n libkdcraw-qt6
+%package -n libKF5Dcraw5
 Summary:        Shared library interface around dcraw
+Requires:       libkdcraw-qt5 = %{version}
 
-%description -n libkdcraw-qt6
-Libkdcraw is a C++ interface around dcraw binary program used to decode
-RAW picture files.
-
-%package -n libKDcrawQt6-5
-Summary:        Shared library interface around dcraw
-Requires:       libkdcraw-qt6 = %{version}
-
-%description -n libKDcrawQt6-5
+%description -n libKF5Dcraw5
 Libkdcraw is a C++ interface around dcraw binary program used to decode
 RAW picture files.
 
 %package devel
 Summary:        Shared library interface around dcraw
-Requires:       libKDcrawQt6-5 = %{version}
+Requires:       libKF5Dcraw5 = %{version}
+Provides:       libkdcraw-devel = %{version}
+Obsoletes:      libkdcraw-devel < %{version}
+Provides:       libkdcraw-kf5-devel = %{version}
+Obsoletes:      libkdcraw-kf5-devel < %{version}
 
 %description devel
 Libkdcraw is a C++ interface around dcraw binary program used to decode
@@ -70,26 +71,26 @@ RAW picture files.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6
+%cmake_kf5 -d build
 
-%kf6_build
+%cmake_build
 
 %install
-%kf6_install
+%kf5_makeinstall -C build
 
-%ldconfig_scriptlets -n libKDcrawQt6-5
+%ldconfig_scriptlets -n libKF5Dcraw5
 
-%files -n libkdcraw-qt6
-%{_kf6_debugdir}/libkdcraw.categories
+%files
+%{_kf5_debugdir}/libkdcraw.categories
 
-%files -n libKDcrawQt6-5
+%files -n libKF5Dcraw5
 %license LICENSES/*
-%{_libdir}/libKDcrawQt6.so.*
+%{_libdir}/libKF5KDcraw.so.*
 
 %files devel
 %doc README
-%{_kf6_cmakedir}/KDcrawQt6/
-%{_includedir}/KDcrawQt6/
-%{_libdir}/libKDcrawQt6.so
+%{_kf5_cmakedir}/KF5KDcraw/
+%{_kf5_includedir}/KDCRAW/
+%{_libdir}/libKF5KDcraw.so
 
 %changelog
