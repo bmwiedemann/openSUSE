@@ -37,8 +37,10 @@ Source4:        gstreamer-plugins-rs.appdata.xml
 BuildRequires:  c++_compiler
 BuildRequires:  cargo-c >= 0.10.12
 BuildRequires:  cargo-packaging >= 1.2.0+3
+BuildRequires:  clang
 BuildRequires:  cmake
 BuildRequires:  git
+BuildRequires:  llvm
 BuildRequires:  meson >= 0.60
 BuildRequires:  nasm
 BuildRequires:  pkgconfig
