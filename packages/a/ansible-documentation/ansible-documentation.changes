@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Apr 21 06:09:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.20.5:
+  * ci: refresh dev dependencies (#3608)
+  * Galaxy namespace request: use forum instead of galaxy repo
+    (#3598) (#3601)
+  * [stable-2.20] ci: refresh dev dependencies (#3583)
+  * Update dangling links (#3474) (#3579)
+  * Remove information on EOL Ubuntu/Debian versions (#3488)
+    (#3576)
+  * Update Roles documentation to follow ansible-lint fqcn rule
+    (#3531) (#3573)
+  * Document need for signed commits (#3558) (#3571)
+  * Use remote/container aliases, use more modern Python versions
+    in examples. (#3554) (#3567)
+  * ci: refresh dev dependencies (#3559)
+  * [SC vote is needed] collection_requirements.rst: add a
+    requirement to test against devel or milestone (#3511) (#3557)
+  * Add the Ansible community 13.5.0 porting guide (#3552) (#3553)
+  * Improve inclusivity of "Christmas vacation" (#3521) (#3551)
+  * Fix typo in introduction.rst (#3534) (#3547)
+
+-------------------------------------------------------------------
+Wed Mar 25 13:09:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.20.4:
+  * ci: refresh dev dependencies (#3541)
+  * ci: refresh dev dependencies (#3535)
+  * ci: refresh dev dependencies (#3522)
+  * Fixes to the networking documentation (#3527) (#3530)
+  * ci: refresh dev dependencies (#3513)
+  * add py312 as target version for black formatting (#3517)
+    (#3520)
+  * community_steering_committee.rst: Add new steering committee
+    member (#3496) (#3498)
+  * Announce Summit 2026 (#3489) (#3510)
+  * ci: refresh dev dependencies (#3501)
+  * Add the Ansible community 13.4.0 porting guide (#3494) (#3495)
+
+-------------------------------------------------------------------
 Fri Feb 27 07:29:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.20.3:
