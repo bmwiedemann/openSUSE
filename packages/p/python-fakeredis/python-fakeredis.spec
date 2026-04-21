@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fakeredis
-Version:        2.34.1
+Version:        2.35.1
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
@@ -32,16 +32,17 @@ BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
 Requires:       python-redis >= 4.3
-Requires:       python-sortedcontainers >= 2.4.0
+Requires:       python-sortedcontainers >= 2.0
 Suggests:       python-lupa >= 2.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module hypothesis >= 6.56}
-BuildRequires:  %{python_module pytest >= 7.1.2}
-BuildRequires:  %{python_module pytest-asyncio >= 0.19.0}
-BuildRequires:  %{python_module pytest-mock >= 3.7.0}
+BuildRequires:  %{python_module hypothesis >= 6.138}
+BuildRequires:  %{python_module pytest >= 8.4}
+BuildRequires:  %{python_module pytest-asyncio >= 1.1}
+BuildRequires:  %{python_module pytest-mock >= 3.15}
 BuildRequires:  %{python_module redis >= 4.3}
-BuildRequires:  %{python_module sortedcontainers >= 2.4.0}
+BuildRequires:  %{python_module sortedcontainers >= 2.0}
+BuildRequires:  %{python_module typing-extensions >= 4.7}
 BuildRequires:  %{python_module valkey >= 6}
 BuildRequires:  redis
 # /SECTION

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Apr 19 15:59:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.35.1:
+  * fix: Breaking change in 2.35.0: FakeConnection renamed
+    without backward-compatible alias #468
+  * Support for idempotent message processing introduced in Redis
+    8.6 #461
+  * Support for vector set commands `VADD`, `VCARD`, `VDIM`,
+    `VEMB`, `VGETATTR`, `VINFO`, `VLINKS`, `VRANDMEMBER`,
+  * `VRANGE`, `VREM`, `VSETATTR`, `VSIM` #451
+  * fix XREADGROUP on multiple streams only returns one message
+  * fix: XDEL sending ResponseError when stream ID is invalid
+  * Fix DeprecationWarning caused by mixing valkey and redis
+    classes
+  * fix: bug referencing non existing variable #465
+  * Update typing-extensions version constraint to support newer
+    versions #458
+  * Improved documentation with mermaidjs diagrams #467
+  * Move documentation dependencies to pyproject.toml
+
+-------------------------------------------------------------------
 Mon Mar 23 11:25:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.34.1:

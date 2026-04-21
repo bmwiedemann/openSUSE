@@ -433,4 +433,28 @@
 - Update to 2.23.4.</comment>
     <requestid>1343427</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>48d619a2e28fc78387103b697b421a6c</srcmd5>
+    <version>2.35.1</version>
+    <time>1776768110</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.35.1:
+  * fix: Breaking change in 2.35.0: FakeConnection renamed
+    without backward-compatible alias #468
+  * Support for idempotent message processing introduced in Redis
+    8.6 #461
+  * Support for vector set commands `VADD`, `VCARD`, `VDIM`,
+    `VEMB`, `VGETATTR`, `VINFO`, `VLINKS`, `VRANDMEMBER`,
+  * `VRANGE`, `VREM`, `VSETATTR`, `VSIM` #451
+  * fix XREADGROUP on multiple streams only returns one message
+  * fix: XDEL sending ResponseError when stream ID is invalid
+  * Fix DeprecationWarning caused by mixing valkey and redis
+    classes
+  * fix: bug referencing non existing variable #465
+  * Update typing-extensions version constraint to support newer
+    versions #458
+  * Improved documentation with mermaidjs diagrams #467
+  * Move documentation dependencies to pyproject.toml</comment>
+    <requestid>1348053</requestid>
+  </revision>
 </revisionlist>
