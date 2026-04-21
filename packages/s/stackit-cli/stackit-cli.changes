@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 21 05:50:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.61.0:
+  * feat(auth): check for valid urls (#1373)
+  * chore(deps): bump k8s.io/apimachinery from 0.35.2 to 0.35.3
+    (#1369)
+
+-------------------------------------------------------------------
+Mon Apr 20 17:18:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.60.0:
+  * docs: remove deprecated formula installation guide (#1367)
+  * refac(io) set IO once in main to allow overriding with in
+    memory io i… (#1363)
+  * feat(image): list all (#1356)
+  * chore(fmt) configure local prefixes for goimports (#1357)
+  * fix(lint) disable rangeValCopy gocritic rule (#1355)
+
+-------------------------------------------------------------------
 Wed Apr 01 04:45:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.59.0:
