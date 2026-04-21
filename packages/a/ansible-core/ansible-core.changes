@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Apr 21 06:09:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.20.5:
+  https://github.com/ansible/ansible/blob/v2.20.5/changelogs/CHANGELOG-v2.20.rst
+  * Minor Changes
+    - ansible-test - Generate dist_info when running tests.
+    - ansible-test - Replace the parallels managed macOS provider
+      with a new mac provider.
+    - ansible-test - Switch managed macOS remotes from x86_64 to
+      aarch64.
+  * Bugfixes
+    - Fix validate_argspec when tags are defined on the play. The
+      always tag is only added if the play has no tags.
+    - --start-at-task - fix starting at the requested task instead
+      of starting at the next block or play. Play level tasks run
+      first. (#86268)
+    - ansible-galaxy collection - Fix using the server
+      configuration for validate_certs when downloading
+      collections. (#86694)
+    - ansible_facts[os_*] - Contained wrong information, if
+      ClearLinux parsing was tried before falling back to general
+      os-release parsing
+    - templating - Fix traceback when using deepcopy on an imported
+      template (#86723).
+
+-------------------------------------------------------------------
+Wed Mar 25 13:09:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.20.4:
+  https://github.com/ansible/ansible/blob/v2.20.4/changelogs/CHANGELOG-v2.20.rst
+  * Minor Changes
+    - ansible-test - Add container/remote aliases for more loosely
+      specifying managed test environments.
+    - ansible-test - Add support for using the Ansible Core CI
+      service from GitHub Actions.
+  * Bugfixes
+    - Fix up powershell shell commands when using a connection
+      plugin that does not support stdin/pipeline input - #86397
+    - ansible-connection - Prevent unpickling failures in module
+      contexts by ensuring that AnsibleTaggedObjects in pickled
+      responses are converted to plain types in JsonRpcServer.
+    - config lookup now uses preexisting constants for templating
+      when needed.
+    - rpm_key - Use librpm library API instead of gpg utility to
+      support version 6 PGP keys (#86157).
+    - yaml loading - Fix traceback when parsing YAML strings (not
+      files) when using the pure Python implementation of PyYAML.
+
+-------------------------------------------------------------------
 Fri Feb 27 07:28:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.20.3:
