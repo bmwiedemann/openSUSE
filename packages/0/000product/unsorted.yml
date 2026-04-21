@@ -32476,6 +32476,7 @@ unsorted:
   - python314-awesomeversion 
   - python314-awkward 
   - python314-awkward-cpp 
+  - python314-aws-sam-translator 
   - python314-aws-xray-sdk 
   - python314-aws-xray-sdk-Django 
   - python314-aws-xray-sdk-Flask 
@@ -33029,6 +33030,7 @@ unsorted:
   - python314-cffi 
   - python314-cfgdiff 
   - python314-cfgv 
+  - python314-cfn-lint 
   - python314-cftime 
   - python314-changelog-chug 
   - python314-chardet 
@@ -33476,6 +33478,7 @@ unsorted:
   - python314-fastparquet 
   - python314-fastremap 
   - python314-fasttext 
+  - python314-fawltydeps 
   - python314-fb-re2 
   - python314-fedora-messaging 
   - python314-feedgen 
