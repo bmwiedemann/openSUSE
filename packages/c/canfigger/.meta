@@ -1,0 +1,8 @@
+<package name="canfigger" project="openSUSE:Factory">
+  <title>canfigger</title>
+  <description>Canfigger is a lightweight C language library designed to parse configuration files.
+It provides functionality to read them and represent their contents as a
+linked list of key-value pairs, along with associated attributes for
+each pair.</description>
+  <url>https://github.com/andy5995/canfigger</url>
+</package>

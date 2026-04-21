@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Mon Apr 20 20:34:15 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- Split docs into a separate package
+- Use %ldconfig_scriptlets macro
+
+-------------------------------------------------------------------
+Fri Apr 17 17:15:35 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- Change license to MIT
+
+-------------------------------------------------------------------
+Fri Apr 17 15:44:10 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- canfigger 0.3.1
+  + Add canfigger_config_dir(), canfigger_data_dir(), canfigger_path_join()
+  * bugfix: Last line without trailing newline was silently dropped
+  * bugfix: Memory leak — root list not freed on tmp_line allocation failure
+  * bugfix: free_incomplete_node leaked the attributes struct
+  * bugfix: add_key_node failure on 2nd+ node corrupted previous node's key
+  * bugfix: isspace() called on plain char (undefined behaviour); cast to
+    unsigned char
+  * Strip UTF-8 BOM so it doesn't corrupt the first key
+  * Refactor read_entire_file: single exit point, checked fseek return values
+  * Prefix all error messages with "canfigger:"
+  * Add tests: bom, no_trailing_newline; fix unicode test missing count/null
+    assertions
+  + Add canfigger_version.h (generated at build time) exposing
+    CANFIGGER_VERSION_MAJOR, CANFIGGER_VERSION_MINOR, CANFIGGER_VERSION_PATCH
+  + Add CANFIGGER_CHECK_VERSION(maj, min) macro to canfigger.h for
+    compile-time version checks
+
+-------------------------------------------------------------------
+Wed Apr 01 09:36:00 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+  * Fix soname RPM error
+
+-------------------------------------------------------------------
+Thu Feb  29 05:12:00 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
+
+- canfigger 0.3.0:
+  * use dynamic memory allocation for keys, values, and attributes
+  * canfigger_free() replaced with canfigger_free_current_key_node_advance()
+  - canfigger_free_attr() removed
+  * use 'canfigger_free_current_attr_str_advance()' instead of
+    'list->attr_node = list->attr_node->next'
+
+-------------------------------------------------------------------
+Tue Jan  11 17:51:16 UTC 2022 - Andy Alt <andy400-dev@yahoo.com>
+
+- canfigger 0.2.0:
+  * implement support for multiple attributes
+
+-------------------------------------------------------------------
+Mon Dec  27 09:30:16 UTC 2021 - Andy Alt <andy400-dev@yahoo.com>
+
+- canfigger 0.1.2, initial package
