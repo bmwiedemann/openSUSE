@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Apr 20 14:19:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.69.0:
+  - Reverse Proxy IP Reputation Integration
+    - Now you can use CrowdSec to block malicious traffic based on
+      IP reputation on your exposed service in the reverse proxy.
+      This feature requires self-hosted installations to add
+      another container to their deployment. See instructions in
+      the reverse proxy migration documentation. Learn more about
+      here.
+      https://docs.netbird.io/selfhosted/migration/enable-reverse-proxy#step-7-optional-enable-crowd-sec-ip-reputation
+  - Client Improvements
+    - Added PCP support. This change adds support for the PCP
+      protocol to the client to improve the rate of P2P
+      connectivity. #5219
+    - Added --disable-networks flag to block network selection for
+      users. #5896
+    - Fixed clearing service env vars with --service-env "". #5893
+    - Guarded against container DNAT bypass of ACL rules in
+      iptables. #5697
+    - Populated NetworkAddresses on iOS for posture checks. #5900
+    - Reconnected conntrack netlink listener on error. #5885
+    - Replaced exclusion routes with scoped default + IP_BOUND_IF
+      on macOS. #5918
+    - Fixed incorrect SSH client config combining Host and Match
+      directives. #5903
+    - Fixed WGIface.Close deadlock when DNS filter hook re-enters
+      GetDevice. #5916
+  - Management Improvements
+    - Enforced peer or peer groups requirement for network routers.
+      #5894
+    - Reused single cache store across all management server
+      consumers. #5889
+    - Fixed lint error on Google Workspace integration. #5907
+  - Proxy Enhancements
+    - Added CrowdSec IP reputation integration for reverse proxy.
+      #5722
+    - Added direct redirect to SSO. #5874
+  - Infrastructure Improvements
+    - Updated sign pipeline version to v0.1.2. #5884
+    - Added CrowdSec LAPI container to self-hosted setup script.
+      #5880
+
+-------------------------------------------------------------------
 Tue Apr 14 12:16:07 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.68.3:
