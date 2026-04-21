@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Sat Apr  11 19:02:06 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.12.0:
+  + diagnostic: remove deprecated diagnostic APIs
+  + editor: insert-mode ctrl-r should work like paste
+  + lsp: pass entire entry to format function
+  + lsp: reimplement `textDocument/codeLens` as decoration provider
+  + optwin.lua
+  + path: support RFC3986 in path_with_url()
+  + plugins: remove shellmenu
+  + provider: drop Python 3.7, 3.8 support
+  + runtime: move "tohtml" to pack/dist/opt/
+  + treesitter: apply `offset!` directive to all captures
+  + treesitter: get_parser return nil on error
+  + treesitter: remove "all" option of Query:iter_matches
+  + ui: decouple ext_messages from message grid
+  + full changelogs at https://github.com/neovim/neovim/commit/fc7e5cf6c93fef08effc183087a2c8cc9bf0d75a
+- add patch disable-version-check.patch
+
+-------------------------------------------------------------------
+Thu Apr  9 19:27:32 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix `tree-sitter-system.lua` to load system parsers from
+  `/usr/lib*/tree-sitter` using `vim.treesitter.language.add()`.
+  This restores loading of packaged parsers such as Lua.
+
+-------------------------------------------------------------------
+Thu Apr  9 14:10:04 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file, remove various crutches.
+
+-------------------------------------------------------------------
+Tue Apr  7 12:00:03 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.12.1:
+  + :restart: inherit stderr fd on Unix
+  + :restart: only pass --headless when there is no UI
+  + api: avoid error when parsing invalid expr after :echo
+  + channel: crash on exit after closing v:stderr channel
+  + cmdline: redraw cmdline after empty message
+  + defaults: check for TUI on non-stdio channel on startup
+  + events: avoid recursive loop_uv_run() from vim.ui_attach() shell message
+  + help: show error when using :help! with nothing at cursor
+  + lsp: do not respond to codelens refresh if a request is already scheduled
+  + lsp: highlight snippet preview when server can't completionItem/resolve
+  + lsp: reset document color processed version on clear
+  + lsp: use `winresetview()` to avoid switching to normal mode
+  + net: handle remote archive URLs via tar/zip browse
+  + pack: avoid eager vim.version call
+  + pack: use `uv.available_parallelism()` to compute number of threads
+  + termkey: use terminfo for (shift+)left/right keys
+  + treesitter: select reset to "v" visualmode()
+  + treesitter: select with node ending with unicode char
+  + ui2: allow empty argument for enable()
+  + ui2: correct buffer reference in msg:start_timer()
+  + ui2: prevent flicker when entering pager from expanded cmdline
+  + ui2: update spill indicator when appending to expanded cmdline
+  + ui2: vim.on_key should return nil instead of false
+  + vim.net: check if vim.system's stdout is nil
+  + window: clear cmdline 'ruler' when window is closed
+  + windows: force console codepage to UTF-8 for shell/system()
+  + vim.pos: use `nvim_buf_line_count` instead of fetching all lines
+  + cmake: allow ignoring deps sha
+  + typval.c: fix wrong argument to macro
+  + revert: "refactor(process): don't read from PTY master using uv_pipe_t"
+- build unconditionally leap16.0 with lua51
+- remove reproducible workaround, as it doesn't actually make it reproducible, and
+  it breaks a feature in neovim
+- remove cmake workaround, as it's not needed anymore
+- enable more aarch64 tests
+
+-------------------------------------------------------------------
+Mon Apr  6 11:30:42 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Just use LuaJIT unconditionally (we can provide it, hopefully,
+  everywhere).
+
+-------------------------------------------------------------------
 Mon Jan 26 22:34:03 UTC 2026 - Egor Bychin <e.siga@proton.me>
 
 - Update to version 0.11.6:

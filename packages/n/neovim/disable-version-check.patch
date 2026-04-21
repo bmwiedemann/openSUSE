@@ -1,0 +1,18 @@
+diff -rubN neovim-0.12.1/runtime/lua/vim/health/health.lua neovim-0.12.1-patched/runtime/lua/vim/health/health.lua
+--- neovim-0.12.1/runtime/lua/vim/health/health.lua	2026-04-06 15:12:48.000000000 +0200
++++ neovim-0.12.1-patched/runtime/lua/vim/health/health.lua	2026-04-11 17:54:01.760083749 +0200
+@@ -620,14 +620,6 @@
+   local nvim_version = version_out:match('NVIM (v[^\n]+)') or 'unknown'
+   local commit --[[@type string]] = (version_out:match('%+g(%x+)') or ''):sub(1, 12)
+ 
+-  if vim.fn.executable('git') ~= 1 then
+-    vim.health.warn('Cannot check for updates: git not found')
+-  elseif vim.trim(commit) ~= '' then
+-    check_head_hash(commit)
+-  else
+-    check_stable_version(nvim_version)
+-  end
+-
+   local os_info = vim.uv.os_uname()
+   local os_string = os_info.sysname .. ' ' .. os_info.release
+   local terminal = detect_terminal()

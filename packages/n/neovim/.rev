@@ -1708,4 +1708,28 @@ FIXES (LSP):
   * lua: don't remove first char of non-file stacktrace source (#37008) (forwarded request 1329883 from siga)</comment>
     <requestid>1330040</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>51b42f07b2d00da66a618031aa03c861</srcmd5>
+    <version>0.12.1</version>
+    <time>1776768354</time>
+    <user>anag_factory</user>
+    <comment>Sat Apr  11 19:02:06 UTC 2026 - Richard Rahl &lt;rrahl0@opensuse.org&gt;
+- Update to version 0.12.0:
+  + diagnostic: remove deprecated diagnostic APIs
+  + editor: insert-mode ctrl-r should work like paste
+  + lsp: pass entire entry to format function
+  + lsp: reimplement `textDocument/codeLens` as decoration provider
+  + optwin.lua
+  + path: support RFC3986 in path_with_url()
+  + plugins: remove shellmenu
+  + provider: drop Python 3.7, 3.8 support
+  + runtime: move &quot;tohtml&quot; to pack/dist/opt/
+  + treesitter: apply `offset!` directive to all captures
+  + treesitter: get_parser return nil on error
+  + treesitter: remove &quot;all&quot; option of Query:iter_matches
+  + ui: decouple ext_messages from message grid
+  + full changelogs at https://github.com/neovim/neovim/commit/fc7e5cf6c93fef08effc183087a2c8cc9bf0d75a
+- add patch disable-version-check.patch (forwarded request 1346503 from rrahl0)</comment>
+    <requestid>1346504</requestid>
+  </revision>
 </revisionlist>

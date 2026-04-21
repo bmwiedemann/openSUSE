@@ -16,17 +16,13 @@
 #
 
 
-%ifarch %{power64} s390x
-%bcond_with luajit
+%if 0%{?suse_version} == 1600
+%bcond_with     luajit
 %else
-%if 0%{?suse_version} < 1699
-%bcond_with luajit
-%else
-%bcond_without luajit
-%endif
+%bcond_without  luajit
 %endif
 Name:           neovim
-Version:        0.11.6
+Version:        0.12.1
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0
@@ -37,6 +33,7 @@ Source3:        suse-spec-template
 Source4:        spec.vim
 Source5:        tree-sitter-system.lua
 Source10:       https://github.com/neovim/deps/raw/06ef2b58b0876f8de1a3f5a710473dcd7afff251/opt/lua-dev-deps.tar.gz
+Patch0:         disable-version-check.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -69,7 +66,7 @@ BuildRequires:  lua51-luarocks
 BuildRequires:  lua51-luv
 BuildRequires:  pkgconfig(lua5.1)
 %endif
-BuildRequires:  pkgconfig(tree-sitter) >= 0.25.3
+BuildRequires:  pkgconfig(tree-sitter) >= 0.26.1
 BuildRequires:  pkgconfig(unibilium) >= 2.1.2
 BuildRequires:  pkgconfig(vterm) >= 0.3.3
 BuildRequires:  treesitter_grammar(tree-sitter-vimdoc)
@@ -116,24 +113,11 @@ parts of Vim, without compromise, and more.
 
 %prep
 %autosetup -p1
-
-# Remove __DATE__ and __TIME__.
-BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')
-BUILD_DATE=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{b} %{d} %{Y}')
-sed -i "s/__TIME__/\"$BUILD_TIME\"/" $(grep -rl '__TIME__')
-sed -i "s/__DATE__/\"$BUILD_DATE\"/" $(grep -rl '__DATE__')
-
 # setup unit test dependency
 mkdir -p build/build/downloads/lua_dev_deps/
 cp %{SOURCE10} build/build/downloads/lua_dev_deps/
 
 %build
-# Remove cmake4 error due to not setting
-# min cmake version - sflees.de
-export CMAKE_POLICY_VERSION_MINIMUM=3.5
-# set vars to make build reproducible in spite of config/CMakeLists.txt
-HOSTNAME=OBS
-USERNAME=OBS
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DPREFER_LUA=%{?with_luajit:OFF}%{!?with_luajit:ON} \
        -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
@@ -173,10 +157,13 @@ install -Dm0644 %{SOURCE5} %{buildroot}%{_datadir}/nvim/runtime/after/plugin/tre
 %fdupes %{buildroot}
 %find_lang nvim
 
-%ifnarch %{arm64}
 %check
 mkdir -p runtime/parser
+%if 0%{?suse_version} == 1600
 ln -sf %{_libdir}/tree_sitter/vimdoc.so runtime/parser
+%else
+ln -sf %{_libdir}/tree-sitter/libtree-sitter-vimdoc.so runtime/parser/vimdoc.so
+%endif
 
 %ifnarch %{power64} s390x
 # old tests
@@ -188,18 +175,6 @@ ln -sf %{_libdir}/tree_sitter/vimdoc.so runtime/parser
 %make_build USE_BUNDLED=OFF unittest
 %endif
 %endif
-%endif
-
-%post
-if [ -d %{_datadir}/nvim/runtime/parser ]; then
-if [ ! -h %{_datadir}/nvim/runtime/parser ]; then
-mv %{_datadir}/nvim/runtime/parser \
-   %{_datadir}/nvim/runtime/parser.rpmsave
-ln -sf %{_libdir}/tree_sitter %{_datadir}/nvim/runtime/parser
-fi
-else
-ln -sf %{_libdir}/tree_sitter %{_datadir}/nvim/runtime/parser
-fi
 
 %files
 %license LICENSE.txt

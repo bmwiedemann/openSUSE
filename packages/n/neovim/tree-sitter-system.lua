@@ -1,73 +1,110 @@
 -- Universal loader for system Tree-sitter parsers with automatic filetype mapping
 -- Includes ABI check with detailed warning to :messages
--- Drops safely into /usr/share/nvim/runtime/plugin/
+-- Self-contained: only depends on Neovim built-ins
 
-local ok, ts_parsers = pcall(require, "nvim-treesitter.parsers")
-if not ok or not ts_parsers then
-  return
-end
+local FILETYPE_OVERRIDES = {
+  vimdoc = 'vim',
+  tsx = 'typescript.tsx',
+  jinja2 = 'jinja',
+  wikitext = 'mediawiki',
+}
 
-local parser_dir = "/usr/share/nvim/runtime/parser"
-local uv = vim.loop
+-- Parsers whose exported C symbol does not match the underscore-converted
+-- language name (i.e. tree_sitter_<value> instead of tree_sitter_<lang>).
+local SYMBOL_OVERRIDES = {
+  go_sum = 'gosum',
+  gpg_config = 'gpg',
+}
 
--- Neovim Tree-sitter ABI
-local nvim_min_abi = vim.treesitter.abi or 14 -- fallback
-local nvim_max_abi = vim.treesitter.abi_max or 15
+local uv = vim.uv
+
+-- On multilib systems both /usr/lib and /usr/lib64 may exist;
+-- pick the longest match (i.e. the native 64-bit libdir).
+local parser_dirs = vim.fn.glob('/usr/lib*/tree-sitter', false, true)
+table.sort(parser_dirs, function(a, b) return #a > #b end)
+local parser_dir = parser_dirs[1]
 
 -- Helper: convert filename to Neovim-safe language name
+---@param fname string # The filename (e.g., 'libtree-sitter-lua.so')
+---@return string? # Returns the sanitized language name or nil if no match
 local function sanitize_langname(fname)
-  local name = fname:match("(.+)%.so$")
-  if not name then return nil end
-  name = name:gsub("-", "_")
-  return name
+  -- Strip the 'libtree-sitter-' prefix and '.so' suffix
+  local name = fname:match('^libtree%-sitter%-(.+)%.so$')
+  if not name then
+    -- Fallback: just strip .so (for unexpected naming schemes)
+    name = fname:match('(.+)%.so$')
+  end
+  if name then
+    ---@cast name string
+    name = name:gsub('-', '_')
+    return name
+  else
+    vim.notify(
+      string.format('Failed to sanitize filename: %s', fname),
+      vim.log.levels.DEBUG
+    )
+    return nil
+  end
 end
 
 -- Helper: guess filetype from parser name
+---@param lang string
+---@return string
 local function guess_filetype(lang)
-  local ft = lang
-  ft = ft:gsub("_inline$", "")
-  ft = ft:gsub("_sum$", "")
-  ft = ft:gsub("%d+$", "")
-  if ft == "vimdoc" then ft = "vim" end
-  if ft == "tsx" then ft = "typescript.tsx" end
-  if ft == "jinja2" then ft = "jinja" end
-  return ft
+  local ft = lang:gsub('_inline$', ''):gsub('_sum$', ''):gsub('%d+$', '')
+  return FILETYPE_OVERRIDES[ft] or ft
 end
 
 -- Iterate over all .so files in parser_dir
+if not parser_dir then
+  vim.notify(
+    'No tree-sitter parser directory found matching /usr/lib*/tree-sitter',
+    vim.log.levels.DEBUG
+  )
+  return
+end
+
 local handle = uv.fs_scandir(parser_dir)
-if not handle then return end
+if not handle then
+  vim.notify(
+    string.format('Tree-sitter parser directory not readable: %s', parser_dir),
+    vim.log.levels.DEBUG
+  )
+  return
+end
 
 while true do
-  local name, _ = uv.fs_scandir_next(handle)
-  if not name then break end
-  if name:match("%.so$") then
-    local lang = sanitize_langname(name)
-    if lang then
-      local configs = ts_parsers.get_parser_configs()
-      if not configs[lang] then
-        local parser_path = parser_dir .. "/" .. name
-        configs[lang] = {
-          install_info = {
-            url = parser_path,
-            files = { name },
-          },
-          filetype = guess_filetype(lang),
-        }
+  local filename = uv.fs_scandir_next(handle)
+  if not filename then
+    break
+  end
 
-        -- ABI check: attempt to load parser
-        local loaded, parser = pcall(vim.treesitter.language.get_lang, lang)
-        if not loaded or not parser then
-          vim.schedule(function()
-            vim.notify(
-              string.format(
-                "Tree-sitter parser '%s' at %s is ABI-incompatible (Neovim ABI: %d-%d).",
-                lang, parser_path, nvim_min_abi, nvim_max_abi
-              ),
-              vim.log.levels.WARN
-            )
-          end)
-        end
+  if filename:match('%.so$') then
+    local lang = sanitize_langname(filename)
+    if lang then
+      local parser_path = parser_dir .. '/' .. filename
+      local symbol_name = SYMBOL_OVERRIDES[lang]
+      local ok, result = pcall(vim.treesitter.language.add, lang, {
+        path = parser_path,
+        symbol_name = symbol_name,
+      })
+
+      if ok and result then
+        local ft = guess_filetype(lang)
+        vim.treesitter.language.register(lang, ft)
+      else
+        local err = ok and 'unknown error' or tostring(result)
+        vim.schedule(function()
+          vim.notify(
+            string.format(
+              "Tree-sitter parser '%s' (%s) failed to load: %s",
+              lang,
+              parser_path,
+              err
+            ),
+            vim.log.levels.WARN
+          )
+        end)
       end
     end
   end
