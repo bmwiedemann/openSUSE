@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 16 13:03:08 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Returned provider_lzma.so plugin (boo#1262217).
+
+-------------------------------------------------------------------
 Tue Feb  3 19:22:56 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Add StateDirectory configs in systemd unit files to let systemd

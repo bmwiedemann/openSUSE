@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -126,6 +126,7 @@ BuildRequires:  tcpd-devel
 BuildRequires:  time
 BuildRequires:  unixODBC-devel
 BuildRequires:  zlib-devel
+BuildRequires:  xz-devel
 BuildRequires:  perl(Data::Dumper)
 BuildRequires:  perl(Env)
 BuildRequires:  perl(Exporter)
@@ -411,6 +412,7 @@ cat %{SOURCE50} | tee -a mysql-test/unstable-tests
        -DWITH_READLINE=OFF                                          \
        -DINSTALL_LAYOUT=RPM                                         \
        -DWITH_LZ4=system                                            \
+       -DWITH_LZMA=system                                           \
        -DMYSQL_UNIX_ADDR="%{_rundir}/mysql/mysql.sock"              \
        -DINSTALL_UNIX_ADDRDIR="%{_rundir}/mysql/mysql.sock"         \
        -DINSTALL_MYSQLSHAREDIR=share/%{name}                        \
