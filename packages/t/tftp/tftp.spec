@@ -75,7 +75,6 @@ export CFLAGS="%{optflags} -fcommon -std=gnu11"
 
 %install
 %make_install INSTALLROOT=%{buildroot} MANDIR="%{_mandir}"
-install -d -m 0755 %{buildroot}/srv/tftpboot
 
 # Install systemd unit / socket (As an alternativ to xinetd activation)
 install -d %{buildroot}%{_unitdir}
@@ -107,7 +106,6 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_unitdir}/tftp.service
 %{_unitdir}/tftp.socket
 
-%dir %attr(0755,tftp,tftp) /srv/tftpboot
 %{_fillupdir}/sysconfig.tftp
 
 %changelog
