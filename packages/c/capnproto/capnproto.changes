@@ -6,6 +6,7 @@ Thu Mar 12 15:40:23 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
   * disable stack check when HWASan is used
   * Fix benign(?) buffer overrun in async readMessage().
   * Fix HTTP body size integer overflow bugs.
+    (CVE-2026-32239, bsc#1259638, CVE-2026-32240, bsc#1259639)
 
 -------------------------------------------------------------------
 Wed Dec 17 08:02:13 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
