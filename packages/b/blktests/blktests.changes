@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Tue Apr 21 07:50:11 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
+
+- Update to version 0+20260416.1d68a36:
+  * common/scsi_debug: use _patient_rmmod() to unload scsi_debug
+  * src/dio-offsets.c: Fix err() usage
+  * src/Makefile: suppress unused-but-set-variable warning for sg/syzkaller1.c
+  * src/metadata.c: fix format for __u64 in metadata.c
+  * common/rc, scsi/011, zbd/010: introduce _page_size_equals() helper
+  * zbd/012: add missing scsi_debug check
+  * common/scsi_debug: ensure scsi_debug is loadable before loading it
+  * Skip tests if scsi_debug module is already loaded and in use
+  * check: call fallback_device() in the same bash context
+  * check: do not create fallback device when other requirements are not met
+  * check: call _unload_module() after fallback_device_cleanup()
+  * check: move fallback device handling into _check_and_call_test_device()
+  * src/Makefile: improve header check for miniublk
+  * check: Suppress kmemleak scanning failures
+  * nvme/065: update to support all fabrics
+  * check: check kmemleak before test run start
+  * doc: document how to configure bcache tests
+  * bcache: add bcache/001
+  * src: add nvme-passthru-admin-uring to .gitignore
+  * check: increment bash requirement version from 4.2 to 4.3
+  * common/nvme: do not call 'nvme id-ns' to non-nvme devices
+  * common/nvme: unload nvme modules only when loaded
+  * common/rc: introduce _load_module()
+  * check: call _unload_modules for each test run
+  * zbd/002: do not check write pointers of conventional zones
+  * zbd/rc: do not use invalid write pointer values by blkzone report
+  * nvme/039: use nvme --no-ioctl-probing when available
+  * common/fio: ignore fio messages about random generator selection
+  * nvme/067: test io_uring pass through for NVMe admin queue
+  * check: fix kmemleak scan when DEBUG_KMEMLEAK_DEFAULT_OFF enabled
+  * check: move _get_kernel_option and _check_kernel_option to check
+  * block/042: check sysfs values prior to running
+  * common/rc: support multiple arguments for _require_test_dev_sysfs()
+  * common/nvme: reset def_adrfam for ipv4 case
+  * check: add kmemleak support to blktests
+  * check: check reference count for modprobe --remove --wait success case
+  * check: reimplement _unload_modules() with _patient_rmmod()
+  * check,common,srp/rc: replace module removal with patient module removal
+  * throtl/rc: avoid test timeout caused by scsi_debug delay
+  * common/nvme, nvme/{041,044,047,062}: check return code of nvme connect
+  * common/nvme, nvme/051: drop final / for NVMET_[CFS|DFS] paths
+  * common/rc, nvme/{043-045}: add _have_crypto_algorithm
+  * md/{002,004}: adjust per_host_store to use numeric boolean
+  * throtl: don't specify sector_size for scsi_debug target
+  * Documentation: describe influence on devices prepared by testing drivers
+  * scsi/004: Remove reliance on deprecated /proc/scsi/scsi_debug
+  * src/dio-offsets.c: fix compiler error of open()
+  * block/043: fix a shellcheck warning
+  * src/dio-offset.c: use tabs for indent
+  * block/042: add description and fix shellcheck warnings
+  * block: add test of io_uring user metadata offsets
+  * block: add test of direct io offsets
+  * nvme: convert tests to use _have_kernel_options
+  * common/rc: add _have_kernel_options helper function
+  * zbd/012, block/041, scsi/008: enable io_uring if it's disabled
+  * common/nvme: remove allowed_hosts before remove subsys in nvmet configfs
+  * common/rc: drop unnecessary variable from _check_kernel_option()
+  * md/002: ignore the "File descripto leaked" log from vgdisplay
+  * throtl: support test with both null_blk and scsi_debug in a single run
+  * throtl/rc: support test with scsi_debug
+  * throtl/004: adjust to scsi_debug
+  * throtl/rc,002: adjust to scsi_debug
+  * throtl: introduce helper functions to manage test target block devices
+  * blktrace: add blktrace ftrace corruption regression test
+  * blktrace: add blktrace zone management regression test
+  * Makefile: add check-parallel target for faster shellcheck
+  * scsi/007: Check whether scsi_timeout() has been called
+  * common/rc: Introduce _get_kernel_option()
+  * common/rc: Make _test_dev_queue_set() failures easier to debug
+  * common/rc: Fix spelling of "SKIP_REASONS" in a source code comment
+  * common/multipath-over-rdma: Simplify is_qinp_def()
+  * common/scsi_debug: Fix spelling in a source code comment
+  * check: print device names provided to test_device_array()
+  * md/004: add unmap write zeroes tests
+  * md/rc: use --run option instead of "echo y"
+  * Makefile: follow symbolic links of *.out files
+  * md/rc: test atomic writes for dm-mirror
+  * md/rc: test atomic writes for dm-stripe
+  * md/rc: test atomic writes for dm-linear
+  * md/003: add NVMe atomic write tests for stacked devices
+  * md/002: convert to use _md_atomics_test
+  * md/rc: add _md_atomics_test
+  * nvme: relocate _nvme_requires and _require_nvme_test_img_size
+  * common/rc: add _min()
+  * meta/02[0-4]: add test cases to check test_device_array()
+  * new, Documentation: improve descriptions about TEST_DEVS
+  * new, Documentation: describe test_device_array()
+  * check, new: introduce test_device_array()
+  * check: factor out _check_exclusive_functions()
+  * block: add test for io_uring Protection Information (PI) interface using FS_IOC_GETLBMD_CAP
+  * common/nvme: move NVMe helper checks out of tests/nvme/rc
+  * zbd/014: Test recursive bio splitting
+  * common/rc, dm/003, nvme/065: move TO_SKIP to common/rc
+  * nvme/066: test NVMe host driver code for NVME SED operations
+  * md/002: add raid 0/1/10 requirement
+  * md/002: use --run option instead of "echo y"
+  * common/xfs: fix run_xfs_io_xstat for max atomics
+  * loop/010: add the regression commit info
+  * loop/010: fix the test output with Bash 5.3
+  * loop/010: fix the flood udev events during the test
+  * Revert "loop/010, common/rc: drain udev events after test"
+  * zbd/009: increase max open zones limit to 16
+  * nvme/{003,041,044,052,057,058,060,062}: update arg for _nvme_connect_subsys
+  * common/nvme: add '--no-wait-ns' argument to _nvme_connect_subsys()
+  * nvme/054: fix nvme reservation preempt and clear operations
+  * nvme/050: repeat checking test device restoration
+  * loop/006: fix the test failure with Bash 5.3
+  * scsi/011: allow "set -e" in run_test
+  * scsi/011: Test whether block and SCSI propagate filesystem data lifetime information
+  * nvme/065: add unmap write zeroes tests
+  * dm/003: add unmap write zeroes tests
+  * scsi/010: add unmap write zeroes tests
+  * zbd/005: remove offset option of blkzone reset command
+  * zbd/013: Test stacked drivers and queue freezing
+
+-------------------------------------------------------------------
 Tue Jul 29 16:49:41 UTC 2025 - sebastian.chlad@suse.com
 
 - Update to version 0+20250718.d24f744:
