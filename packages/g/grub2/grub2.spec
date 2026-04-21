@@ -359,7 +359,6 @@ Patch220:       0001-Streamline-BLS-and-improve-PCR-stability.patch
 Patch232:       0001-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
 Patch236:       0001-kern-main-Fix-cmdpath-in-root-directory.patch
 Patch237:       grub2-s390x-secure-execution-support.patch
-Patch259:       0001-bls-Accept-.conf-suffix-in-setting-default-entry.patch
 Patch263:       0001-autofs-Ignore-zfs-not-found.patch
 Patch264:       0001-s390x-emu-Pass-through-PAES-cipher-as-AES.patch
 Patch274:       0001-ofpath-Add-error-check-in-NVMEoF-device-translation.patch
@@ -367,15 +366,10 @@ Patch275:       grub2-btrfs-filter-non-subvol-mount.patch
 Patch277:       0001-prep_loadenv-Measure-the-environment-block-into-PCR-.patch
 Patch294:       0001-Fix-PowerPC-CAS-reboot-to-evaluate-menu-context.patch
 Patch295:       0001-blscfg-read-fragments-in-order.patch
-Patch296:       grub2-bls-boot-counting.patch
-Patch297:       grub2-bls-boot-assessment.patch
 Patch298:       grub2-bls-boot-show-snapshot.patch
-Patch300:       grub2-blscfg-set-efivars.patch
 Patch309:       0001-Improve-TPM-key-protection-on-boot-interruptions.patch
 Patch310:       0004-Key-revocation-on-out-of-bound-file-access.patch
-Patch311:       grub2-bls-loader-entry-oneshot.patch
 Patch312:       0001-mkconfig-Determine-GRUB_DISTRIBUTOR-from-etc-SUSE-br.patch
-Patch313:       grub2-blsbumpcounter-menu.patch
 Patch315:       0001-test-Fix-f-test-on-files-over-network.patch
 Patch316:       0002-http-Return-HTTP-status-code-in-http_establish.patch
 Patch317:       0003-docs-Clarify-test-for-files-on-TFTP-and-HTTP.patch
@@ -385,11 +379,7 @@ Patch335:       0001-linux-fallback-to-EFI-handover-on-x86_64.patch
 Patch336:       0002-linux-fallback-to-direct-PE-entry-boot-on-arm64.patch
 Patch337:       0003-efi-chainloader-fallback-to-direct-image-execution.patch
 Patch338:       0004-efi-chainloader-fix-missing-file_path-in-loaded_imag.patch
-Patch342:       grub2-bls-loader-entry-default.patch
 Patch344:       grub2-i386-pc-no-pageflipping.patch
-Patch401:       grub2-bls-loader-entries-boot-counting.patch
-Patch402:       grub2-bls-loader-features.patch
-Patch403:       grub2-bls-loader-config-timeout.patch
 Patch404:       0001-editenv-create-health_check_flag-env-var-on-RW-raw-b.patch
 Patch405:       0001-00_header-Omit-loading-efi_uga-on-non-x86-EFI-platfo.patch
 Patch406:       0001-Revert-configure-Print-a-more-helpful-error-if-autoc.patch
@@ -398,8 +388,21 @@ Patch408:       0001-blsuki-Fix-linux_cmd-size-calcution-in-bls_get_linux.patch
 Patch409:       0001-bls-Allow-configuration-of-active-console-type.patch
 Patch410:       0002-grubbls-Add-automatic-fwsetup-menu-entry.patch
 Patch411:       0001-ieee1275-support-dm-multipath-bootlist.patch
-Patch412:       grub2-bls-loader-config-timeout-fix.patch
 Patch413:       0001-mdraid1x-fix-raid_disks-decoding-on-big-endian-syste.patch
+Patch414:       0001-blsuki-Add-support-for-LoaderEntries.patch
+Patch415:       0002-menu-Allow-default-entry-to-have-.conf-suffix.patch
+Patch416:       0003-bli-Add-support-for-LoaderEntryDefault-and-LoaderEnt.patch
+Patch417:       0004-bli-Add-support-for-LoaderConfigTimeout-and-LoaderCo.patch
+Patch418:       0005-bls_bumpcounter-Add-command-to-bump-boot-counter-for.patch
+Patch419:       0006-bli-Add-support-for-LoaderFeatures.patch
+Patch420:       0007-blsuki-Fix-sorting-for-entries-with-boot-counting-en.patch
+Patch421:       0008-blsuki-append-leftover-LoaderEntries.patch
+Patch422:       0009-blsuki-conservative-UTF-8-buffer-size.patch
+Patch423:       0001-Mandatory-install-device-check-for-PowerPC.patch
+Patch424:       0001-osdep-linux-ofpath-Update-strstr-calls.patch
+Patch425:       0001-util-probe-Save-strrchr-ret-val-to-const-data-ptr.patch
+Patch426:       0002-util-resolve-Save-str-r-chr-ret-val-to-const-data-pt.patch
+Patch427:       0001-Fix-problematic-utf8-conversion-in-bli-patches.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
@@ -733,7 +736,7 @@ export PYTHON=%{_bindir}/python3
 %define _configure ../configure
 
 # We don't want to let rpm override *FLAGS with default a.k.a bogus values.
-CFLAGS="-fno-strict-aliasing -fno-inline-functions-called-once -Wno-error=discarded-qualifiers"
+CFLAGS="-fno-strict-aliasing -fno-inline-functions-called-once"
 CXXFLAGS=" "
 FFLAGS=" "
 export CFLAGS CXXFLAGS FFLAGS
@@ -784,7 +787,7 @@ CD_MODULES="all_video boot cat configfile echo true \
 PXE_MODULES="tftp http"
 CRYPTO_MODULES="luks luks2 gcry_rijndael gcry_sha1 gcry_sha256 gcry_sha512 crypttab"
 %ifarch %{efi}
-CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki blsbumpcounter"
+CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki bls_bumpcounter"
 PXE_MODULES="${PXE_MODULES} efinet"
 %else
 CD_MODULES="${CD_MODULES} net ofnet"
@@ -858,22 +861,9 @@ cat > ./grubbls.cfg <<'EOF'
 
 regexp --set 1:root '\((.*)\)' "$cmdpath"
 
-set timeout=8
 set gfxmode=auto
 set gfxpayload=keep
 set enable_blscfg=1
-
-terminal_input console
-terminal_output console
-terminal_output --append gfxterm
-
-loadfont (memdisk)/boot/grub/themes/DejaVuSans-Bold14.pf2
-loadfont (memdisk)/boot/grub/themes/DejaVuSans10.pf2
-loadfont (memdisk)/boot/grub/themes/DejaVuSans12.pf2
-loadfont (memdisk)/boot/grub/themes/ascii.pf2
-
-set theme=(memdisk)/boot/grub/themes/theme.txt
-export theme
 
 EOF
 
@@ -890,7 +880,7 @@ mksquashfs ./boot memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
     %{?sbat_generation:--sbat sbat.csv} \
     -d grub-core \
     all_video boot font gfxmenu gfxterm gzio halt jpeg minicmd normal part_gpt png reboot video \
-    fat tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki blsbumpcounter linux bli regexp loadenv test echo true sleep efifwsetup
+    fat tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki bls_bumpcounter linux bli regexp loadenv test echo true sleep efifwsetup
 %endif
 
 %ifarch x86_64 aarch64

@@ -1,0 +1,51 @@
+From 9f4a586f1227a8287e1d6acd95893f6098756ee2 Mon Sep 17 00:00:00 2001
+From: Nicholas Vinson <nvinson234@gmail.com>
+Date: Tue, 24 Feb 2026 19:48:41 -0500
+Subject: [PATCH 1/2] util/probe: Save strrchr() ret val to const data ptr
+
+With glibc-2.43 implementing the C23 standard, strrchr() now returns
+"const char *" when its first argument is "const char *".
+
+The fix is update all pointers receiving strrchr()'s return value so
+that they are now "const char *" instead of "char *".
+
+Signed-off-by: Nicholas Vinson <nvinson234@gmail.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ util/probe.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/util/probe.c b/util/probe.c
+index 81d91cf59..a9158d640 100644
+--- a/util/probe.c
++++ b/util/probe.c
+@@ -70,7 +70,7 @@ char *
+ grub_util_guess_bios_drive (const char *orig_path)
+ {
+   char *canon;
+-  char *ptr;
++  const char *ptr;
+   canon = grub_canonicalize_file_name (orig_path);
+   if (!canon)
+     return NULL;
+@@ -99,7 +99,7 @@ char *
+ grub_util_guess_efi_drive (const char *orig_path)
+ {
+   char *canon;
+-  char *ptr;
++  const char *ptr;
+   canon = grub_canonicalize_file_name (orig_path);
+   if (!canon)
+     return NULL;
+@@ -128,7 +128,7 @@ char *
+ grub_util_guess_baremetal_drive (const char *orig_path)
+ {
+   char *canon;
+-  char *ptr;
++  const char *ptr;
+   canon = grub_canonicalize_file_name (orig_path);
+   if (!canon)
+     return NULL;
+-- 
+2.53.0
+
