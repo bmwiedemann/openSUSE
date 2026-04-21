@@ -35,6 +35,8 @@ RUN set -euo pipefail; \
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
+    t=$(mktemp -d); mv /target/usr/lib/sysimage/rpm/Packages.db $t; rpmdb --rebuilddb --dbpath=$t; \
+    rm /target/usr/lib/sysimage/rpm/*.db && mv $t/Packages.db /target/usr/lib/sysimage/rpm/; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
@@ -47,6 +49,7 @@ RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
 RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /target/etc/shadow
 FROM opensuse/bci/bci-micro:latest
 COPY --from=builder /target /
+RUN set -euo pipefail; rm -vf /usr/lib/sysimage/rpm/Index.db
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.git
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed with Git"
@@ -63,8 +66,8 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
-RUN set -euo pipefail; useradd -r -u 1000 -g 0 -d /workspace -s /bin/bash git
-RUN set -euo pipefail; mkdir -p /workspace && chown git:0 /workspace && chmod 775 /workspace
+RUN set -euo pipefail; useradd -U -u 1000 -d /workspace -s /bin/bash git
+RUN set -euo pipefail; mkdir -p /workspace && chown git: /workspace && chmod 755 /workspace
 WORKDIR /workspace
 ENV HOME=/workspace
 

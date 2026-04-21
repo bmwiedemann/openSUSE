@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 20 16:13:34 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- Change group id and permissions
+
+-------------------------------------------------------------------
+Thu Mar 26 12:42:13 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- rebuild rpm database to make it reproducible
+
+-------------------------------------------------------------------
 Mon Mar 16 21:31:23 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - support non-root use
