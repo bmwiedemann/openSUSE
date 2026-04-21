@@ -18,12 +18,13 @@
 
 %define         _name tcl
 Name:           tree-sitter-tcl
-Version:        0+20241105.98015eb
+Version:        0+20250514.8f11ac7
 Release:        0
 Summary:        TCL grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-tcl
 Source0:        %{name}-%{version}.tar.gz
+Source1:        binding.gyp
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
@@ -32,6 +33,7 @@ BuildRequires:  tree-sitter
 
 %prep
 %autosetup
+cp %{SOURCE1} binding.gyp
 
 %build
 %treesitter_configure

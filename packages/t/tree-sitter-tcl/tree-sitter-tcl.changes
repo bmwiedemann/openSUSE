@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr 11 08:30:00 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Supply corrected `binding.gyp` so `src/scanner.c` is linked into
+  the parser shared library.
+
+-------------------------------------------------------------------
+Thu Apr 09 20:18:10 UTC 2026 - mcepl@cepl.eu
+
+- Update to version 0+20250514.8f11ac7:
+  * feat(lint): add eslint config, Makefile target, and CI job
+  * chore(deps): update npm dependencies
+  * feat(parser): promote `_number` to `number` and improve numeric literal parsing
+  * feat(highlights): improve highlighting for `switch`, `unset`, and `variable` commands
+  * feat: add field names to conditionals
+  * fix(ci): remove node tests
+  * chore(makefile): improve build reliability and cleanup process
+  * ci: upgrade to parser-test-action@v2 and setup-action/cli@v1
+  * chore(release): bump version to 1.0.1 across all manifests
+  * build(makefile): add help text and dependency-aware targets
+
+-------------------------------------------------------------------
 Thu Mar  5 21:47:23 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Remove redundant Neovim workaround
