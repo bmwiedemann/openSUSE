@@ -123,4 +123,26 @@ Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and
   * Drop directory path from filename in `File` 9433f4b.</comment>
     <requestid>1329161</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b569f385e7311b01fc8e0fc8efadea4d</srcmd5>
+    <version>0.0.26</version>
+    <time>1776768117</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.0.26:
+  * Skip preamble before first multipart boundary
+    (CVE-2026-40347, bsc#1262403)
+  * Silently discard epilogue data after the closing boundary
+  * Apply Apache-2.0 properly
+  * Handle multipart headers case-insensitively
+  * Emit field_end for trailing bare field names on finalize
+  * Add UPLOAD_DELETE_TMP to FormParser config
+  * Remove custom FormParser classes
+  * Handle CTE values case-insensitively
+  * Add MIME content type info to File
+  * Validate chunk_size in parse_form()
+  * Remove unused trust_x_headers parameter and X-File-Name fallback
+  * Return processed length from QuerystringParser._internal_write
+  * Cleanup metadata dunders from __init__.py</comment>
+    <requestid>1348345</requestid>
+  </revision>
 </revisionlist>

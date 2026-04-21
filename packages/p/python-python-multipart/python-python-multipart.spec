@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-multipart
-Version:        0.0.22
+Version:        0.0.26
 Release:        0
 License:        Apache-2.0
 Summary:        Python streaming multipart parser
@@ -26,7 +26,6 @@ URL:            http://github.com/Kludex/python-multipart
 Source:         https://files.pythonhosted.org/packages/source/p/python-multipart/python_multipart-%{version}.tar.gz
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
