@@ -916,4 +916,12 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
     <comment>Push GNOME 50</comment>
     <requestid>1345338</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>57e18c9a5a8681f4a2f796b1bf9b699c</srcmd5>
+    <version>50.1</version>
+    <time>1776768169</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348448</requestid>
+  </revision>
 </revisionlist>
