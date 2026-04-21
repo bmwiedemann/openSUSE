@@ -41,6 +41,8 @@ Patch3:         GraphicsMagick-CVE-2026-30883.patch
 Patch4:         GraphicsMagick-CVE-2026-28690.patch
 # CVE-2026-26284: Heap overflow in pcd decoder leads to out of bounds read. [bsc#1258765]
 Patch5:         GraphicsMagick-CVE-2026-26284.patch
+# CVE-2026-33535: Out-of-Bounds write of a zero byte in X11 display interaction [bsc#1260874]
+Patch6:         GraphicsMagick-CVE-2026-33535.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++

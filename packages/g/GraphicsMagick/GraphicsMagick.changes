@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 20 07:44:32 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-33535: Out-of-Bounds write of a zero byte in X11 display interaction [bsc#1260874]
+  * GraphicsMagick-CVE-2026-33535.patch
+
+-------------------------------------------------------------------
 Mon Apr 13 07:54:32 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
