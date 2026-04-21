@@ -52,4 +52,41 @@
 - Update to version 1.5.3 and add _service file.</comment>
     <requestid>1128788</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f06b532f16e8acf0766f4b5cbfbeeef0</srcmd5>
+    <version>1.7.5</version>
+    <time>1776768246</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.5:
+  * [Fix] Add Adwaita to Inherits (#213)
+  * Update Xemu
+  * Update obs-studio
+  * Update notepad-next
+  * Update left4dead
+  * Update kdenlive
+  * Update application-x-7z-compressed
+  * Update mimes for msdownload and ms-does-exucutable
+  * Add discord
+  * Add bitwarden
+  * Add bulky
+  * Add fingwit
+  * Add webapp-manager
+  * Add mintupdate
+  * Add warpinator
+  * Add element
+  * Add mumble
+  * Add lutris
+  * Add floorp
+  * Add librewolf
+  * Add ardour
+  * Add vesktop
+  * Add anki
+  * Add godot
+  * Update mimes for CSV, RTL, Csharp
+  * Update pgp and certificates mimes
+  * Update json mime
+  * Update sql mime
+  * mimes: Add a few links</comment>
+    <requestid>1348331</requestid>
+  </revision>
 </revisionlist>

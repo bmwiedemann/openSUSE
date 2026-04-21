@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Apr 20 21:21:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.5:
+  * [Fix] Add Adwaita to Inherits (#213)
+  * Update Xemu
+  * Update obs-studio
+  * Update notepad-next
+  * Update left4dead
+  * Update kdenlive
+  * Update application-x-7z-compressed
+  * Update mimes for msdownload and ms-does-exucutable
+  * Add discord
+  * Add bitwarden
+  * Add bulky
+  * Add fingwit
+  * Add webapp-manager
+  * Add mintupdate
+  * Add warpinator
+  * Add element
+  * Add mumble
+  * Add lutris
+  * Add floorp
+  * Add librewolf
+  * Add ardour
+  * Add vesktop
+  * Add anki
+  * Add godot
+  * Update mimes for CSV, RTL, Csharp
+  * Update pgp and certificates mimes
+  * Update json mime
+  * Update sql mime
+  * mimes: Add a few links
+  * apps: Add a few links
+
+-------------------------------------------------------------------
 Sat Nov 25 19:26:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.5:
