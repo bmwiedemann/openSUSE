@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 16 14:34:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.15.3:
+  * Security:
+    - parser: Pass userData to SAX text callbacks in
+      xmlParseReference (type-confusion)
+    - entities: copy children in xmlCopyEntity
+    - c14n: Fix Type confusion in xmlC14NProcessAttrsAxis
+    - python: Do not decref string after adding to the list
+      (double-free / use-after-free)
+    - c14n: Reuse tmp_str, xmlStrcat reallocates *cur (double-free)
+  * Improvements:
+    - schemas: Fix relative schemaLocation resolution in XSI
+      assembly in streaming mode
+    - xmlreader: propagate reader resource loaders to validator
+      parsers
+    - python: Make python bindings python2 compatible
+    - xmlregexp: Fix escape-sequence character range matching
+    - xmlreader: Free input in xmlReaderForFd (memory-leak)
+    - xmlstring: Free cur on every error for xmlStrncat
+      (memory-leak)
+    - catalog: Free xmlCatalogResolveCache on cleanup (memory
+      leak)
+    - Fix nanohttp.c build when --without-output
+    - test: fix mismatched signed/unsigned comparison
+
+-------------------------------------------------------------------
 Thu Mar  5 13:36:31 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.15.2:

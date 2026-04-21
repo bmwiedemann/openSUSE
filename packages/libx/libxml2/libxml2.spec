@@ -19,7 +19,7 @@
 
 %define libname    libxml2-16
 Name:           libxml2
-Version:        2.15.2
+Version:        2.15.3
 Release:        0
 Summary:        A Library to Manipulate XML Files
 License:        MIT
