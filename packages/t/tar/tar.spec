@@ -119,6 +119,7 @@ it may as well access remote devices or files.
 
 %prep
 %autosetup -p1
+touch -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} doc/tar.texi # ensure mtime is reproducible as it ends up in tar.info (boo#1047218)
 cp %{S:3} tests
 
 %build
