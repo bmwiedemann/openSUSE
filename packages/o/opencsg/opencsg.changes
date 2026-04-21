@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 20 17:26:34 UTC 2026 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to version 1.8.2:
+  * This release fixes a z-fighting bug in the SCS algorithm, that was
+    known for a long time, under Linux with Nouveau graphics driver.
+
+-------------------------------------------------------------------
 Fri May 23 12:00:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Remove unneeded build dependencies
