@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr 20 16:05:27 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.26.2:
+  * *: release version 1.26.2 (#4309)
+  * dwarf/godwarf: work around Mach-O section name limitation (#4304)
+  * cmd/dlv: support varying verbosity levels with trace subcommand (#4251)
+  * proc/internal/ebpf,build: extend eBPF tracing type support (#4285)
+  * gobuild: fix gocommandRun stdout and stderr streams
+  * pkg/terminal,service: add TypeInfo API
+  * service/dap: support data breakpoints (#4294)
+  * pkg/proc: Fix flaky test on Windows (#4292)
+  * proc: fix stack watch breaklet index for recorded replay (#4295)
+  * native: return ptrace error from riscv64 setSP (#4298)
+  * proc: clear stepping breakpoints on every target in TargetGroup (#4299)
+  * service/dap,terminal: cover more cases in examinemem command (#4300)
+  * dwarf/op: fix DW_OP_shr and DW_OP_shra evaluation (#4296)
+  * dap/command: port examinemem from dlv/terminal (#4289)
+  * service/dap_test: remove dlv help test (#4290)
+  * service/dap: add build message (#4287)
+  * pkg/terminal,pkg/config: add ability to configure Delve's prompt (#4284)
+  * _scripts: fallback to calling go if goreleaser is not installed (#4286)
+  * config,terminal: better documentation for configuration file (#4282)
+  * service/dap: set seq number for response messages (#4280)
+  * build: allow release workflow to be manually triggered against a tag
+  * pkg/proc,service,pkg/terminal: add stacktrace caching (#4277)
+  * build: add goreleaser release automation with cosign signing (#4278)
+  * dwarf/line: fix PrologueEndPC and FirstStmt (#4276)
+  * service/dap,pkg/proc: fix misc test failures (#4273)
+
+-------------------------------------------------------------------
 Tue Mar  3 19:01:07 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.26.1:
