@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 21 05:51:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.1:
+  Release notes:
+  https://github.com/crossplane/crossplane/releases/tag/v2.2.1
+  No CLI-related changes
+  * Dependency updates
+    - fix(deps): update module github.com/go-git/go-git/v5 to v5.18.0 [security]
+    - chore(deps): update module github.com/sigstore/timestamp-authority/v2 to v2.0.6 [security]
+    - chore(deps): update module github.com/moby/spdystream to v0.5.1 [security]
+    - Bump Go to 1.25.9 to fix stdlib CVEs
+    - fix(deps): update module github.com/go-git/go-git/v5 to v5.17.1 [security]
+    - chore(deps): update module github.com/docker/cli to v29.2.0+incompatible [security]
+    - fix(deps): update module github.com/sigstore/cosign/v3 to v3.0.5 [security]
+    - chore(deps): update module go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp to v1.43.0 [security]
+    - chore(deps): update module github.com/go-jose/go-jose/v4 to v4.1.4 [security]
+    - chore(deps): update module github.com/cloudflare/circl to v1.6.3 [security]
+
+-------------------------------------------------------------------
 Wed Feb 18 08:07:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.0:

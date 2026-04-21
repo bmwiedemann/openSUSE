@@ -16,19 +16,17 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define executable_name crossplane
 
 Name:           crossplane-cli
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        The Cloud Native Control Plane
 License:        Apache-2.0
 URL:            https://github.com/crossplane/crossplane
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.25 >= 1.25.6
+BuildRequires:  go1.25 >= 1.25.9
 Provides:       crossplane = %{version}
 
 %description
