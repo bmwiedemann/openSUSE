@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 20 09:57:24 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.36.0
+  * Fix the PoP flow in the console app by @PetarSDimov in (#887)
+  * Add ADO CI, SDL, and release pipelines with e2e test enablement
+    by @RyAuld in (#890)
+  * Add documentation for Managed Identity v2 Hackathon
+    by @gladjohn in (#885)
+  * Potential fix for code scanning alert no. 74: Workflow does not
+    contain permissions by @Avery-Dunn in (#884)
+  * Added withFmi method for cca app by @4gust in (#876)
+  * Use cryptographically secure randomness for PKCE, state,
+    and nonce generation by @ashok672 in (#894)
+  * Fix OIDC issuer domain spoofing in B2C host validation
+    by @4gust in (#896)
+
+-------------------------------------------------------------------
 Mon Mar 16 13:33:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.35.1

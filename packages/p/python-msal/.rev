@@ -528,4 +528,24 @@
 - Remove temporary version override (forwarded request 1339371 from glaubitz)</comment>
     <requestid>1339376</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3757cc45f3d42cc9bb6946762c555b5e</srcmd5>
+    <version>1.36.0</version>
+    <time>1776768145</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.36.0
+  * Fix the PoP flow in the console app by @PetarSDimov in (#887)
+  * Add ADO CI, SDL, and release pipelines with e2e test enablement
+    by @RyAuld in (#890)
+  * Add documentation for Managed Identity v2 Hackathon
+    by @gladjohn in (#885)
+  * Potential fix for code scanning alert no. 74: Workflow does not
+    contain permissions by @Avery-Dunn in (#884)
+  * Added withFmi method for cca app by @4gust in (#876)
+  * Use cryptographically secure randomness for PKCE, state,
+    and nonce generation by @ashok672 in (#894)
+  * Fix OIDC issuer domain spoofing in B2C host validation
+    by @4gust in (#896) (forwarded request 1348176 from glaubitz)</comment>
+    <requestid>1348188</requestid>
+  </revision>
 </revisionlist>
