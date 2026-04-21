@@ -1,7 +1,7 @@
 #
 # spec file for package chezscheme
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 Name:           chezscheme
 Summary:        A superset of the R6RS Scheme language
-Version:        10.2.0
+Version:        10.3.0
 Release:        0
 License:        Apache-2.0 AND BSD-2-Clause AND GPL-2.0-only AND Zlib AND SUSE-GPL-2.0-with-linking-exception
 Group:          Development/Languages/Scheme
