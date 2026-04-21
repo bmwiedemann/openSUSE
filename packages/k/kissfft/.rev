@@ -40,4 +40,16 @@
 </comment>
     <requestid>1320842</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1bc46e699d8feab156be37c433449b18</srcmd5>
+    <version>131.2.0</version>
+    <time>1776768265</time>
+    <user>anag_factory</user>
+    <comment>- Add kissfft-check_for_overflow.patch
+  (fixes boo#1262416 CVE-2026-41445)
+- Add kissfft-fix_testcpp_acosl.patch (fixes build error on 16.0)
+ 
+</comment>
+    <requestid>1348348</requestid>
+  </revision>
 </revisionlist>

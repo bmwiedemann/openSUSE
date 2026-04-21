@@ -1,7 +1,7 @@
 #
 # spec file for package kissfft
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 Packman Team <packman@links2linux.de>
 # Copyright (c) 2017-2020 Fedora Release Engineering <releng@fedoraproject.org>
 # Copyright (c) 2016 František Dvořák <valtri@civ.zcu.cz>
@@ -32,6 +32,10 @@ Source0:        https://github.com/mborgerding/kissfft/archive/%{version}.tar.gz
 Patch1:         kissfft-fix_overflow_32bit.patch
 # PATCH-FIX-UPSTREAM kissfft-fix_python_binary_detection.patch -- fixes test#8
 Patch2:         kissfft-fix_python_binary_detection.patch
+# PATCH-FIX-UPSTREAM kissfft-check_for_overflow.patch -- fixes boo#1262416
+Patch3:         kissfft-check_for_overflow.patch
+# PATCH-FIX-UPSTREAM kissfft-fix_testcpp_acosl.patch
+Patch4:         kissfft-fix_testcpp_acosl.patch
 BuildRequires:  cmake
 # TESTS
 BuildRequires:  gcc-c++

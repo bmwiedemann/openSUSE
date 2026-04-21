@@ -1,0 +1,23 @@
+From 5899ee71c5d1590488f7c5580ab78d9980f9c0b1 Mon Sep 17 00:00:00 2001
+From: Mark Borgerding <markb@3db-labs.com>
+Date: Wed, 26 Nov 2025 10:41:21 -0500
+Subject: [PATCH] std::acosl was introduced in c++11, std::acos(long double)
+ overload appears more robust
+
+---
+ test/testcpp.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/testcpp.cc b/test/testcpp.cc
+index b9dee94..50acada 100644
+--- a/test/testcpp.cc
++++ b/test/testcpp.cc
+@@ -45,7 +45,7 @@ void dotest(int nfft)
+ 
+     // Create long double constant for pi because M_PIl is not defined by
+     // all toolchains.
+-    const long double pi = std::acosl(-1);
++    const long double pi = std::acos(static_cast<long double>(-1));
+ 
+     for (int k0=0;k0<nfft;++k0) {
+         complex<long double> acc = 0;
