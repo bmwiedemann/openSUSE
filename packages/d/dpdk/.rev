@@ -772,4 +772,28 @@
     <comment></comment>
     <requestid>1325935</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>3f474326331107c618642750a441aacb</srcmd5>
+    <version>25.11</version>
+    <time>1774555605</time>
+    <user>anag_factory</user>
+    <comment>- Set cpu_instruction_set to x86-64-v2 for Leap16/SLE16, which makes
+  0001-fix-cpu-compatibility.patch obsolete for these.
+- Add libarchive as dependency, avoid errors like
+  '/lib/firmware/... cannot be decompressed' where firmware is compressed.
+- Update to version 25.11.0
+- Specfile cleanup, removing flavors_to_build as we do not build kernel modules.
+</comment>
+    <requestid>1342559</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>a8409ec5be4923e3df78fa1071c225fc</srcmd5>
+    <version>25.11</version>
+    <time>1776768157</time>
+    <user>anag_factory</user>
+    <comment>- Remove temporary output file sphinx_html.out -- fixes reproducible
+  builds (bsc#1262286)
+</comment>
+    <requestid>1348208</requestid>
+  </revision>
 </revisionlist>

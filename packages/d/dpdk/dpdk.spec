@@ -1,7 +1,7 @@
 #
 # spec file for package dpdk
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,15 @@
 
 %define platform generic
 %define machine  auto
+# Set the cpu_instruction_set to x86-64-v2 for SLE16.x and Leap16.x
+%ifarch x86_64
+%if 0%{?suse_version} < 1699 && 0%{?suse_version} >= 1600
+%define machine  x86-64-v2
+%endif
+%endif
 # This is in sync with <src>/ABI_VERSION
 # TODO: automate this sync
-%define maj 25
+%define maj 26
 %define min 0
 #%%define lname libdpdk-%%{maj}_%%{min}
 %define lname libdpdk-%{maj}
@@ -37,15 +43,19 @@
 # Add option to build without tools
 %bcond_without tools
 Name:           dpdk
-Version:        24.11.4
+Version:        25.11
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Libraries
 URL:            https://www.dpdk.org/
 Source:         https://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM
+%ifarch x86_64
+%if "%machine" != "x86-64-v2"
+# PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM (Tumbleweed && < SLE-16)
 Patch0:         0001-fix-cpu-compatibility.patch
+%endif
+%endif
 # PATCH-FIX-UPSTREAM - https://bugs.dpdk.org/show_bug.cgi?id=1530
 Patch1:         0001-examples-vm_power_manager-add-missing-header.patch
 # Fix inline error for < gcc14 (<=SLE16)
@@ -63,6 +73,7 @@ BuildRequires:  patchelf
 BuildRequires:  pkgconfig
 BuildRequires:  rdma-core-devel
 BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libmnl)
@@ -172,7 +183,7 @@ as L2 and L3 forwarding.
 %define pmddir %{_libdir}/dpdk-pmds-%{maj}.%{min}
 
 %prep
-%setup -q -n dpdk-stable-%{version}
+%setup -q -n dpdk-%{version}
 %autopatch -p1
 
 # Skip not supported examples
@@ -182,55 +193,44 @@ sed -i "/performance-thread/d" examples/meson.build
 [ "$(cat ABI_VERSION)" = "%{maj}.%{min}" ] || exit 1
 
 %build
-%define _vpath_builddir "build-%{_target_cpu}-$flavor"
 
 %ifarch x86_64
 export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -msse4"
 %endif
-examples="all"
-for flavor in %{flavors_to_build}; do
-  %meson --includedir=%{incdir} \
-    -Ddefault_library=shared \
-    -Denable_docs=true \
-    -Db_lto=true \
-  %if %{with examples}
-    -Dexamples="$examples" \
-  %endif
-    -Dplatform="%{platform}" \
-    -Dcpu_instruction_set=%{machine} \
-    -Denable_driver_sdk=true \
-    -Ddrivers_install_subdir=%{pmddir} \
-    -Dkernel_dir="%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor"
-  %meson_build
-  # Make sure examples are only built once
-  examples=""
-done
+%meson --includedir=%{incdir} \
+  -Ddefault_library=shared \
+  -Denable_docs=true \
+  -Db_lto=true \
+%if %{with examples}
+  -Dexamples="all" \
+%endif
+  -Dplatform="%{platform}" \
+  -Dcpu_instruction_set=%{machine} \
+  -Denable_driver_sdk=true \
+  -Ddrivers_install_subdir=%{pmddir} \
+%meson_build
 
 %install
 examples="%{?with_examples:all}"
-for flavor in %{flavors_to_build}; do
-    %meson_install
-    # Also install the example binaries
-    if [ ! -z "$examples" ]; then
-        for f in %{_vpath_builddir}/examples/dpdk-*; do
-            bn=$(basename "$f")
-            if [ -f "$f" ] ; then
-                install -Dm 0755 ${f} "%{buildroot}%{_bindir}/${bn/dpdk-/dpdk_example_}"
-                patchelf --remove-rpath "%{buildroot}%{_bindir}/${bn/dpdk-/dpdk_example_}"
-            fi
-        done
-    fi
-    examples=""
-done
+%meson_install
+# Also install the example binaries
+if [ ! -z "$examples" ]; then
+    for f in %{_vpath_builddir}/examples/dpdk-*; do
+        bn=$(basename "$f")
+        if [ -f "$f" ] ; then
+            install -Dm 0755 ${f} "%{buildroot}%{_bindir}/${bn/dpdk-/dpdk_example_}"
+            patchelf --remove-rpath "%{buildroot}%{_bindir}/${bn/dpdk-/dpdk_example_}"
+        fi
+    done
+fi
 
 # Fix documentation
 mkdir -p %{buildroot}%{docdir}
 mv %{buildroot}%{_datadir}/doc/dpdk %{buildroot}%{_docdir}
-rm -rf %{buildroot}%{docdir}/html/.doctrees
-rm -rf %{buildroot}%{docdir}/html/dts/.doctrees
-rm %{buildroot}%{docdir}/html/.buildinfo
-rm %{buildroot}%{docdir}/html/dts/.buildinfo
-rm %{buildroot}%{docdir}/html/dts/.html.d
+find %{buildroot}%{docdir}/ -name .doctrees -prune -exec rm -rf {} +
+find %{buildroot}%{docdir}/ -name .html.d -prune -exec rm -rf {} +
+find %{buildroot}%{docdir}/ -name .buildinfo -exec rm {} +
+find %{buildroot}%{docdir}/ -name sphinx_html.out -exec rm {} +
 
 # Fix man directory
 rm -r %{buildroot}%{_mandir}/man3/*

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Apr 20 11:59:01 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Remove temporary output file sphinx_html.out -- fixes reproducible
+  builds (bsc#1262286)
+
+-------------------------------------------------------------------
+Fri Mar 13 08:53:54 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Set cpu_instruction_set to x86-64-v2 for Leap16/SLE16, which makes
+  0001-fix-cpu-compatibility.patch obsolete for these.
+- Add libarchive as dependency, avoid errors like
+  '/lib/firmware/... cannot be decompressed' where firmware is compressed.
+
+-------------------------------------------------------------------
+Mon Feb 16 12:48:01 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update to version 25.11.0
+  * Full changelog https://doc.dpdk.org/guides-25.11/rel_notes/release_25_11.html
+    - Added automatic lcore-id remapping option.
+    - Added inter-process and inter-OS DMA device API.
+    - Added 800G speed.
+    - Added mbuf tracking for debug.
+    - Added ethdev API to get link connector.
+    - Updated Amazon ENA (Elastic Network Adapter) ethernet driver.
+    - Added Huawei hinic3 ethernet driver.
+    - Updated Intel ice ethernet driver.
+    - Updated Marvell cnxk ethernet driver.
+    - Added Nebulamatrix nbl ethernet driver.
+    - Updated NVIDIA mlx5 driver.
+    - Updated NXP DPAA2 ethernet driver.
+    - Added NXP ENETC4 ethernet driver.
+    - Updated TAP ethernet driver.
+    - Updated Wangxun txgbe ethernet driver.
+    - Updated Yunsilicon xsc ethernet driver.
+    - Added PQC ML algorithms in cryptodev.
+    - Updated openssl crypto driver.
+    - Updated Intel QuickAssist Technology (QAT) crypto driver.
+    - Renamed HiSilicon DMA driver.
+    - Added HiSilicon Accelerator DMA driver.
+    - Added RCU support in the FIB6 library.
+    - Added packet capture (pdump) for secondary process.
+    - Allow overriding the automatic usage/help generation in argparse library.
+- Specfile cleanup, removing flavors_to_build as we do not build kernel modules.
+
+-------------------------------------------------------------------
 Tue Jan  6 14:46:34 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Update to version 24.11.4

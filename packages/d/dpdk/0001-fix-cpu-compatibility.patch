@@ -5,47 +5,45 @@ Subject: [PATCH] fix cpu compatibility
 
 Added 0001-fix-cpu-compatibility.patch to address issue with older CPUs (bsc#1125961, bsc#1099474)
 
-Updated 2024-08-26 for version 23.11
+Updated 2026-02-17 for version 25.11
 
-diff --git a/drivers/bus/vdev/vdev.c b/drivers/bus/vdev/vdev.c
-index 7974b27295..25eec8bf6e 100644
+---
+ drivers/bus/vdev/vdev.c         |    4 ++++
+ lib/eal/common/eal_common_bus.c |    4 ++++
+ lib/eal/include/rte_common.h    |   14 +++++++++++++-
+ 3 files changed, 21 insertions(+), 1 deletion(-)
+
 --- a/drivers/bus/vdev/vdev.c
 +++ b/drivers/bus/vdev/vdev.c
-@@ -51,7 +51,11 @@ static struct vdev_custom_scans vdev_custom_scans =
- static rte_spinlock_t vdev_custom_scan_lock = RTE_SPINLOCK_INITIALIZER;
+@@ -53,7 +53,11 @@
  
  /* register a driver */
--void
+ RTE_EXPORT_INTERNAL_SYMBOL(rte_vdev_register)
 +#if defined(__x86_64__) ||  defined(__i386__)
 +void __attribute__((target ("sse2")))
 +#else
-+ void
+ void
 +#endif
  rte_vdev_register(struct rte_vdev_driver *driver)
  {
  	TAILQ_INSERT_TAIL(&vdev_driver_list, driver, next);
-diff --git a/lib/eal/common/eal_common_bus.c b/lib/eal/common/eal_common_bus.c
-index acac14131a..a19f5e5431 100644
 --- a/lib/eal/common/eal_common_bus.c
 +++ b/lib/eal/common/eal_common_bus.c
-@@ -22,7 +22,11 @@ rte_bus_name(const struct rte_bus *bus)
- 	return bus->name;
+@@ -25,7 +25,11 @@
  }
  
--void
+ RTE_EXPORT_INTERNAL_SYMBOL(rte_bus_register)
 +#if defined(__x86_64__) ||  defined(__i386__)
 +void __attribute__((target ("sse2")))
 +#else
-+ void
+ void
 +#endif
  rte_bus_register(struct rte_bus *bus)
  {
  	RTE_VERIFY(bus);
-diff --git a/lib/eal/include/rte_common.h b/lib/eal/include/rte_common.h
-index c1ba32d00e..525a575c08 100644
 --- a/lib/eal/include/rte_common.h
 +++ b/lib/eal/include/rte_common.h
-@@ -208,8 +208,20 @@ typedef uint16_t unaligned_uint16_t;
+@@ -358,8 +358,20 @@
   */
  #ifndef RTE_INIT_PRIO /* Allow to override from EAL */
  #ifndef RTE_TOOLCHAIN_MSVC
