@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 20 05:21:52 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Actually specify @BUILD_FLAVOR@.
+- Switch to pyroject macros.
+- No more greedy globs in %files.
+- Add patch do-not-use-sphinx-testing.patch:
+  * Use pathlib rather than sphinx.testing.path.
+
+-------------------------------------------------------------------
 Thu Mar 20 14:10:37 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Skip test failing with Sphinx 8.2

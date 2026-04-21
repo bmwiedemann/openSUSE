@@ -1,0 +1,31 @@
+From 98f7b308148f3670b0c1bd45c0a9a62e781d782b Mon Sep 17 00:00:00 2001
+From: Adam Turner <9087854+aa-turner@users.noreply.github.com>
+Date: Mon, 7 Aug 2023 18:09:05 +0100
+Subject: [PATCH] Fix test failures
+
+---
+ .github/workflows/test.yml | 10 ++++++++--
+ tests/conftest.py          |  6 +++---
+ 2 files changed, 11 insertions(+), 5 deletions(-)
+
+Index: sphinxcontrib-jsmath-1.0.1/tests/conftest.py
+===================================================================
+--- sphinxcontrib-jsmath-1.0.1.orig/tests/conftest.py
++++ sphinxcontrib-jsmath-1.0.1/tests/conftest.py
+@@ -6,13 +6,13 @@
+     :license: BSD, see LICENSE for details.
+ """
+ 
+-import pytest
++from pathlib import Path
+ 
+-from sphinx.testing.path import path
++import pytest
+ 
+ pytest_plugins = 'sphinx.testing.fixtures'
+ 
+ 
+ @pytest.fixture(scope='session')
+ def rootdir():
+-    return path(__file__).parent.abspath() / 'roots'
++    return Path(__file__).resolve().parent / 'roots'

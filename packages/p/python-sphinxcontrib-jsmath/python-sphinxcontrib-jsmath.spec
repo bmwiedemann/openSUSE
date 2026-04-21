@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-jsmath
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}%global flavor @BUILD_FLAVOR@%{nil}
+%global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
@@ -30,12 +30,15 @@ Version:        1.0.1
 Release:        0
 Summary:        Sphinx extension which renders display math in HTML via JavaScript
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            http://sphinx-doc.org/
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-jsmath/sphinxcontrib-jsmath-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinxcontrib-jsmath/commit/3297b27177ab4862d1b2408a2db66235397fe212 Fix #9361: RemovedInSphinx50Warning on testing
+# PATCH-FIX-UPSTREAM gh#sphinx-doc/sphinxcontrib-jsmath#3297b27177ab4862d1b2408a2db66235397fe212 Fix #9361: RemovedInSphinx50Warning on testing
 Patch0:         sphinx5.patch
+# PATCH-FIX-UPSTREAM Based on gh#sphinx-doc/sphinxcontrib-jsmath#98f7b308148f3670b0c1bd45c0a9a62e781d782b
+Patch1:         do-not-use-sphinx-testing.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx
@@ -56,11 +59,11 @@ via JavaScript.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -74,7 +77,10 @@ via JavaScript.
 %files %{python_files}
 %doc README.rst CHANGES
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/sphinxcontrib
+%{python_sitelib}/sphinxcontrib/jsmath
+%{python_sitelib}/sphinxcontrib_jsmath-%{version}-py*-nspkg.pth
+%{python_sitelib}/sphinxcontrib_jsmath-%{version}.dist-info
 %endif
 
 %changelog

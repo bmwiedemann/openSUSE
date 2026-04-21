@@ -39,4 +39,16 @@
     <comment></comment>
     <requestid>1254762</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>93c5b5abcc919209739f30023168824a</srcmd5>
+    <version>1.0.1</version>
+    <time>1776768133</time>
+    <user>anag_factory</user>
+    <comment>- Actually specify @BUILD_FLAVOR@.
+- Switch to pyroject macros.
+- No more greedy globs in %files.
+- Add patch do-not-use-sphinx-testing.patch:
+  * Use pathlib rather than sphinx.testing.path.</comment>
+    <requestid>1348104</requestid>
+  </revision>
 </revisionlist>
