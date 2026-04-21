@@ -9,4 +9,5 @@ Only HTTP-01 challenge type is supported
 * RFC8737 (ACME TLS Application-Layer Protocol Negotiation (ALPN) Challenge Extension)
 * RFC8738 (ACME IP Identifier Validation Extension)
 draft-ietf-acme-profiles (ACME Profiles Extension, version 00)</description>
+  <devel project="server:http" package="nginx-module-acme"/>
 </package>

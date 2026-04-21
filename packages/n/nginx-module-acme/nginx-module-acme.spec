@@ -17,7 +17,7 @@
 
 
 Name:           nginx-module-acme
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        NGINX module for automatic certificate management (ACMEv2)
 License:        Apache-2.0
