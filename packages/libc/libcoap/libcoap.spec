@@ -1,7 +1,7 @@
 #
 # spec file for package libcoap
 #
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 # TODO: docs contain the current date
 %bcond_with docs
 Name:           libcoap
-Version:        4.3.5a
+Version:        4.3.5b
 Release:        0
 Summary:        C implementation of Constrained Application Protocol (CoAP)
 License:        BSD-2-Clause

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 20 16:51:13 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 4.3.5b:
+  * Protect request handlers multi-thread usage by locking the
+    resource
+  * Add reference counting to coap_pdu_t to prevent early removal
+  * Add PSA support for later MbedTLS libraries.
+  * Fix disabling IPv4 / IPv6 builds
+  * Critical reported bugs fixed:
+    CVE-2026-29013 rafted CoAP requests can cause memory corruption
+    and denial of service (boo#1262402)
+
+-------------------------------------------------------------------
 Thu Nov 27 18:35:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 4.3.5a:

@@ -33,4 +33,12 @@ boo#1254192
 boo#1254193</comment>
     <requestid>1320384</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c2b2c7e61f03924997c16bfb061a08a7</srcmd5>
+    <version>4.3.5b</version>
+    <time>1776768198</time>
+    <user>anag_factory</user>
+    <comment>libcoap 4.3.5b boo#1262402 (forwarded request 1348266 from AndreasStieger)</comment>
+    <requestid>1348267</requestid>
+  </revision>
 </revisionlist>
