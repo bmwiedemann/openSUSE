@@ -19,7 +19,7 @@
 %define _name   nbxmpp
 %{?sle15_python_module_pythons}
 Name:           python-nbxmpp
-Version:        7.1.0
+Version:        7.2.0
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module gobject-Gdk >= 3.42}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module precis-i18n}
+BuildRequires:  %{python_module precis-i18n >= 1.0.0}
 BuildRequires:  %{python_module setuptools >= 65.0}
 BuildRequires:  %{python_module sqlite3}
 BuildRequires:  %{python_module wheel}

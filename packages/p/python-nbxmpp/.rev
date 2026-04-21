@@ -533,4 +533,17 @@ Let somebody more skillfull review it. (forwarded request 195612 from DarkSS)</c
     <comment></comment>
     <requestid>1335420</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>48a5c9a5af7ef3a2caed677bad5cde46</srcmd5>
+    <version>7.2.0</version>
+    <time>1776768244</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.2.0:
+  * Implement XEP-445 Pre-Auth IBR
+  * OpenPGP: Make sure fingerprints are always upper case
+  * VCard4: Request access model before publishing
+  * Presence: Add preauth attribute
+  * Protocol: Add feature method for pre approval</comment>
+    <requestid>1348323</requestid>
+  </revision>
 </revisionlist>
