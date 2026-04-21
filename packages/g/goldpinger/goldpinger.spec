@@ -17,7 +17,7 @@
 
 
 Name:           goldpinger
-Version:        3.11.0
+Version:        3.11.1
 Release:        0
 Summary:        Tests and displays connectivity between nodes in a Kubernetes cluster
 License:        Apache-2.0

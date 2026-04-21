@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 20 17:22:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.1:
+  * Increment the version
+  * Clean up duplicate and out-of-order counters on pinger teardown
+  * Add UDP sequence number tracking for duplicate and out-of-order
+    detection
+
+-------------------------------------------------------------------
 Sat Apr 04 05:57:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.0:
