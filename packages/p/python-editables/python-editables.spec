@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-editables
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-editables%{psuffix}
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        Editable installations
 License:        MIT
