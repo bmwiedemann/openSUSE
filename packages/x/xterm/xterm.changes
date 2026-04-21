@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 26 08:42:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 407:
+  * add  private  modes 1020 to 1023 for reporting whether
+    xterm uses UTF-8, whether CJK-width is set, whether
+    Emoji-width is set, and whether private-width is set.
+  * add resource privateWidth to control whether PUA (private use
+    area) codes are neutral width or single-width.
+  * improve  fix  for Debian #738794, to show boxes for codes
+    which are neither  combining  characters  or valid Unicode
+    characters
+  * improve  switching  to/from  UTF-8  mode  by  saving,
+    restoring and resetting the G0-G3 array (Debian #1124802).
+  * use ST consistently in terminfo rather than legacy BEL
+    minor updates to configure script and terminfo
+  * add  option  --enable-resize-adjust for saving and repainting
+    parts of  the  window  which  are  lost  when the user resizes
+    the window
+
+-------------------------------------------------------------------
 Fri Jan  2 08:56:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 406:

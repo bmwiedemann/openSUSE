@@ -1981,4 +1981,27 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     such as i686-pc-linux-gnut64 (GenToo #963725). (forwarded request 1325067 from dirkmueller)</comment>
     <requestid>1325089</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>7f5ba4ab6019ab5ea3913255212dc0ac</srcmd5>
+    <version>407</version>
+    <time>1776768139</time>
+    <user>anag_factory</user>
+    <comment>- update to 407:
+  * add  private  modes 1020 to 1023 for reporting whether
+    xterm uses UTF-8, whether CJK-width is set, whether
+    Emoji-width is set, and whether private-width is set.
+  * add resource privateWidth to control whether PUA (private use
+    area) codes are neutral width or single-width.
+  * improve  fix  for Debian #738794, to show boxes for codes
+    which are neither  combining  characters  or valid Unicode
+    characters
+  * improve  switching  to/from  UTF-8  mode  by  saving,
+    restoring and resetting the G0-G3 array (Debian #1124802).
+  * use ST consistently in terminfo rather than legacy BEL
+    minor updates to configure script and terminfo
+  * add  option  --enable-resize-adjust for saving and repainting
+    parts of  the  window  which  are  lost  when the user resizes
+    the window (forwarded request 1342736 from dirkmueller)</comment>
+    <requestid>1348149</requestid>
+  </revision>
 </revisionlist>
