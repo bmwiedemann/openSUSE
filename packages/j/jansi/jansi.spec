@@ -1,7 +1,7 @@
 #
 # spec file for package jansi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jansi
-Version:        2.4.0
+Version:        2.4.3
 Release:        0
 Summary:        Java library for generating and interpreting ANSI escape sequences
 License:        Apache-2.0
@@ -25,10 +25,12 @@ Group:          Development/Libraries/Java
 URL:            https://fusesource.github.io/jansi/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.xml
+Source2:        %{name}-module-info.java
 Patch0:         %{name}-jni.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  gcc
+BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
 
 %description
@@ -47,7 +49,9 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
+%patch -P 0 -p1
 cp %{SOURCE1} build.xml
+cp %{SOURCE2} src/main/java/module-info.java
 
 %pom_remove_parent
 
@@ -57,7 +61,6 @@ cp %{SOURCE1} build.xml
 # Plugins not needed for an RPM build
 %pom_remove_plugin :maven-gpg-plugin
 %pom_remove_plugin :maven-javadoc-plugin
-%pom_remove_plugin :nexus-staging-maven-plugin
 
 # We don't want GraalVM support in Fedora
 %pom_remove_plugin :exec-maven-plugin
@@ -67,15 +70,12 @@ cp %{SOURCE1} build.xml
 %pom_xpath_set "//pom:properties/pom:jdkTarget" 1.8
 
 # Link the JNI headers
-ln -s %{_jvmdir}/java/include/jni.h src/main/native/inc_linux
-ln -s %{_jvmdir}/java/include/linux/jni_md.h src/main/native/inc_linux
+ln -s %{_jvmdir}/java/include/jni.h src/main/native
+ln -s %{_jvmdir}/java/include/linux/jni_md.h src/main/native
 
 # Set the JNI path
 sed -i 's,@LIBDIR@,%{_libdir},' \
     src/main/java/org/fusesource/jansi/internal/JansiLoader.java
-# Filtering complicated with ant
-sed -i 's,\${project.version},%{version},' \
-    src/main/resources/org/fusesource/jansi/jansi.properties
 
 %build
 # Build the native artifact

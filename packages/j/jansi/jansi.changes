@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Apr 20 06:13:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 2.4.3
+  * Changes:
+    + Fix native library loading failure on certain JDK/OS
+      combinations.
+      JansiLoader.contentsEquals() compared full 8192-byte buffers
+      instead of only the bytes actually read from each stream.
+      On the final chunk, stale or overwritten bytes beyond the read
+      count could cause a false "Content differs" mismatch,
+      preventing the native library from loading.
+    + Fix missing synchronisation in AnsiConsole
+    + Deprecate WindowsSupport
+    + Fix JVM crash when running javaw
+    + Fix terminal width support on MINGW
+    + Send both SCO and DEC command for save/restore cursor position
+    + Fix wrong output encoding on Windows with JDK >= 19
+    + Improve robustness of initial cleanup
+    + Fix infinite loop bug
+    + Fix invalid string input
+    + Require JDK 8 at runtime and JDK 11 at build time
+    + Remove @author tags in code
+    + Add module-info through moditect
+    + Support windows on ARM
+    + Only increment counter if install successful
+    + Add missing space in SunOS-sparcv9_CCFLAGS
+    + Fix project's name
+    + Fix windows-arm64 DLL name
+- Modified patch:
+  * jansi-jni.patch
+    + keep the same logic, but rewrite to fit better into the logic
+      of the existing code
+
+-------------------------------------------------------------------
 Sun Sep 29 19:48:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build after removal of the default %%{java_home} define

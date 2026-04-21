@@ -1,13 +1,16 @@
---- a/src/main/java/org/fusesource/jansi/internal/JansiLoader.java	2020-12-15 03:03:00.000000000 -0700
-+++ b/src/main/java/org/fusesource/jansi/internal/JansiLoader.java	2020-12-15 07:57:30.238720226 -0700
-@@ -295,6 +295,11 @@ public class JansiLoader {
+--- a/src/main/java/org/fusesource/jansi/internal/JansiLoader.java
++++ b/src/main/java/org/fusesource/jansi/internal/JansiLoader.java
+@@ -314,6 +314,14 @@ public class JansiLoader {
              } else {
                  triedPaths.add(jansiNativeLibraryPath);
              }
-+        } else {
-+            if (loadNativeLibrary(new File("@LIBDIR@/jansi", jansiNativeLibraryName))) {
++
++            String systemPath = "@LIBDIR@/jansi";
++            if (loadNativeLibrary(new File(systemPath, jansiNativeLibraryName))) {
 +                loaded = true;
 +                return;
++            } else {
++                triedPaths.add(systemPath);
 +            }
          }
  

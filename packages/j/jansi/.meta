@@ -6,6 +6,5 @@ which don't support it, like Windows, and provides graceful degradation for
 when output is being sent to output devices which cannot support ANSI sequences.
 
 </description>
-  <devel project="Java:packages" package="jansi"/>
   <url>http://fusesource.github.io/jansi/</url>
 </package>
