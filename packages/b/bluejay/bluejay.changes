@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Jan 23 09:42:48 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.0.3+0:
+  * Bump version for release
+  * Automagically detect light/dark mode changes (#39)
+  * qml: Port away from RoundedItemDelegate
+  * metainfo: Add translation link
+  * Bump version to 1.0.2
+  * metainfo: Fix screenshot URL
+  * Add testing flatpak manifest
+  * Make project REUSE compliant (#32)
+  * readme: Add badge for Transifex
+  * Translate po/bluejay.pot in uk
+
+-------------------------------------------------------------------
+Fri Jan 23 09:01:23 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
+
+- i
+

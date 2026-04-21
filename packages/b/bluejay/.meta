@@ -1,0 +1,7 @@
+<package name="bluejay" project="openSUSE:Factory">
+  <title>Bluejay</title>
+  <description>Bluetooth manager written in Qt
+
+A Bluetooth manager and Bluez front-end. With it, you can pair devices, connect to and remove devices, turn Bluetooth on and off, and more. Bluejay is powered by the Qt6 graphical toolkit and KDE Frameworks.
+</description>
+</package>
