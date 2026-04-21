@@ -517,4 +517,12 @@
   * Added an option to send bytes in a text frame in the asyncio and</comment>
     <requestid>1275264</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8479ae8e6a25e41e1029c0f765f9dce2</srcmd5>
+    <version>16.0</version>
+    <time>1776768118</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1348387</requestid>
+  </revision>
 </revisionlist>

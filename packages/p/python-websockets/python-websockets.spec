@@ -1,7 +1,7 @@
 #
 # spec file for package python-websockets
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,34 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-websockets
-Version:        14.2
+Version:        16.0
 Release:        0
 Summary:        An implementation of the WebSocket Protocol (RFC 6455)
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/aaugustin/websockets
 Source:         https://github.com/aaugustin/websockets/archive/%{version}.tar.gz#/websockets-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -51,6 +64,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/websockets
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_expand rm -f %{buildroot}%{$python_sitearch}/websockets/speedups.c
 
@@ -74,9 +88,16 @@ donttest+=" or test_writing_in_send_context_fails"
 
 %pytest_arch -v -k "not ($donttest)" tests
 
+%post
+%python_install_alternative websockets
+
+%postun
+%python_uninstall_alternative websockets
+
 %files %{python_files}
 %license LICENSE
 %doc README.rst
+%python_alternative %{_bindir}/websockets
 %{python_sitearch}/websockets
 %{python_sitearch}/websockets-%{version}.dist-info
 

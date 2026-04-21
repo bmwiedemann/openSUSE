@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Apr 14 06:44:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 16.0:
+  * Validated compatibility with Python 3.14.
+  * Added support for free-threaded Python.
+  * Allowed setting separate limits for messages and fragments
+    with max_size.
+  * Added support for HTTP/1.0 proxies.
+  * Added support for customizing the close code and reason for
+    connections in :meth:`Server.close
+    <asyncio.server.Server.close>`.
+  * Prevented :meth:`~asyncio.connection.Connection.recv` from
+    returning :class:`bytearray` instead of :class:`bytes` in
+    edge cases.
+  * Fixed a race condition that could lead to an exception when
+    closing connections in the :mod:`threading` implementation.
+  * Prevented an exception when exiting the interactive client.
+  * Added :func:`~asyncio.router.route` and
+    :func:`~asyncio.router.unix_route` to dispatch connections to
+    handlers based on the request path. Read more about routing
+    in :doc:`routing <../topics/routing>`.
+  * Refreshed several how-to guides and topic guides.
+  * Added type overloads for the decode argument of
+    :meth:`~asyncio.connection.Connection.recv`. This may
+    simplify static typing.
+
+-------------------------------------------------------------------
 Tue May  6 09:28:40 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip flaky tests for s390x
