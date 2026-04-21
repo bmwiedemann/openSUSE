@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 19 09:58:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.4
+  * The TCP port, fluidsynth's shell server may listen to, is now
+    auto-selected by default.
+  * The systemd lock-file /run/lock/fluidsynth has been removed.
+
+-------------------------------------------------------------------
 Tue Feb 24 19:14:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.3
