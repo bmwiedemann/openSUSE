@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 20 17:18:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.39.11:
+  * build(deps): bump cloud.google.com/go/storage from 1.61.3 to
+    1.62.1 by @dependabot[bot] in #1948
+
+-------------------------------------------------------------------
 Sat Apr 18 05:45:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.10:
