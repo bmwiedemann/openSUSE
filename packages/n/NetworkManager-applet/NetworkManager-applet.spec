@@ -24,7 +24,7 @@ Summary:        GTK+ tray applet for use with NetworkManager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gnome.org/projects/NetworkManager
-Source0:        %{_name}-%{version}.tar.zst
+Source0:        %{_name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM feature-app-indicator-desktop-file.patch sflees@suse.com --  nm-applet needs to be launched with --indicator and needs a startup delay incase its started before the systray
 Patch1:         feature-app-indicator-desktop-file.patch
 
