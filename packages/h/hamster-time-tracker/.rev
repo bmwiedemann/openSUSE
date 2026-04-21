@@ -277,4 +277,15 @@
   * add 0183-Add-option-to-hide-the-summary.patch</comment>
     <requestid>1307725</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>f9b75b6aa27407e9efe301af26bcc692</srcmd5>
+    <version>unknown</version>
+    <time>1776768170</time>
+    <user>anag_factory</user>
+    <comment>- Fix GNOME shell version in spec file
+
+- Update to GNOME 50
+  * add 0185-Mark-GNOME-50-supported.patch</comment>
+    <requestid>1348254</requestid>
+  </revision>
 </revisionlist>

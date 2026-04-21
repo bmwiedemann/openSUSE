@@ -1,0 +1,26 @@
+From 277fa2ffd45361b1ebb05f35c01249e1e2d3eb0d Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 13 Apr 2026 12:19:46 +0200
+Subject: [PATCH] Mark GNOME 50 supported
+
+---
+ data/metadata.json.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index ff16f6f..9023d97 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -13,7 +13,8 @@
+       "46",
+       "47",
+       "48",
+-      "49"
++      "49",
++      "50"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@
+-- 
+2.53.0
+

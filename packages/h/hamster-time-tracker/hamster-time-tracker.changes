@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 20 14:01:41 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Fix GNOME shell version in spec file
+
+-------------------------------------------------------------------
+Mon Apr 13 10:25:15 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to GNOME 50
+  * add 0185-Mark-GNOME-50-supported.patch
+
+-------------------------------------------------------------------
 Mon Sep 29 10:18:11 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to GNOME 49
