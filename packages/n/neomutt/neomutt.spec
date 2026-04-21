@@ -1,7 +1,7 @@
 #
 # spec file for package neomutt
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           neomutt
-Version:        20250905
+Version:        20260406
 Release:        0
 Summary:        A command line mail reader (or MUA), a fork of Mutt with added features
 License:        GPL-2.0-or-later
@@ -28,9 +28,7 @@ Source2:        https://github.com/neomutt/neomutt/releases/download/%{version}/
 Source3:        https://flatcap.org/id/richard.russon.neomutt.asc#/%{name}.keyring
 # NOTE: This archive version needs to be updated manually every time the services
 # are re-run and the upstream version of the neomutt-test-files repo has changed
-Source4:	neomutt-test-files-git20241201.7404f44.tar.gz
-# PATCH-FIX-UPSTREAM 0001-test-fix-build-for-re-entrant-ncurses.patch https://github.com/neomutt/neomutt/pull/4668 TODO: This has been fixed upstream and should be in the next release
-Patch1:		https://github.com/neomutt/neomutt/pull/4668.patch#/0001-test-fix-build-for-re-entrant-ncurses.patch
+Source4:        neomutt-test-files-git20251223.c769cde.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -162,6 +160,7 @@ popd
 %dir %{_datadir}/%{name}/account-command/gpg-json/
 %doc %{_datadir}/%{name}/account-command/README.md
 %{_datadir}/%{name}/account-command/gpg-json/credentials.sh
+%{_datadir}/%{name}/smime.rc
 %doc %{_datadir}/%{name}/account-command/gpg-json/README.md
 
 %files contrib

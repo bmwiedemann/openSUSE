@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Apr 20 21:15:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20260406:
+  * This release focuses on IMAP reliability, with connection
+    monitoring, timeouts, and reconnection backoff.
+    It also includes many bug fixes across IMAP, threading,
+    and the index.
+  * Fix freeze in IMAP with OpenSSL
+  * Fix blocking IMAP pipeline drain with many mailboxes
+  * Fix crash on threaded index update
+  * Fix crash on NULL thread in display subject
+  * Fix menu half-down when data fits in one page
+  * Fix alias search prompt
+  * Fix index tag colours
+  * Protect hooks against unhook during execution
+  * Fix leak in pattern alias search
+- update to 20260105:
+  * #4725   deprecate old ssl and tls options
+  * #4718   add `$message_id_format`
+  * #4666   limit: force refresh of index bar
+  * #4671   Update the status bar on thread [un]collapse
+  * #4673   shrink history file on every new entry
+  * #4679   Flush S/MIME passkey on failure to sign
+  * #4684   execute message-hook sooner
+  * #4687   fix: exec auto-completion
+  * #4688   Fix infinite loop in GnuTLS socket I/O when socket
+    blocks
+  * #4696   `cmd_parse_fetch()`: debug: avoid NULL dereference
+  * #4697   expunge: guard against segfault
+  * #4719   alias: complete when only one match
+  * #4726   imap: protect against crash on shutdown
+  * Deprecated `ssl_use_sslv2`
+  * Deprecated `ssl_use_sslv3`
+  * Deprecated `ssl_use_tlsv1`
+  * Deprecated `ssl_use_tlsv1_1`
+  * ## :black_flag: Translations
+  * convert the ctype wrappers to use `bool`
+  * global invert `OptNoCurses` to `OptGui`
+  * key: collapse redirector functions
+  * move `km_init()` earlier in startup
+  * opcodes: add flags to `MenuFuncOp`
+  * pass focused window to global functions
+  * Use `buf_at()` to get a char from a `Buffer`
+  * use `StringArray` everywhere
+- drop 0001-test-fix-build-for-re-entrant-ncurses.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Sep 12 10:40:53 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Add %check section and run tests
