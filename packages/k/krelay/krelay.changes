@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 20 17:23:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.0:
+  * feat: manage krelay-server via Job with idle-timeout self-exit
+    (#101)
+  * chore(deps): bump github.com/moby/spdystream from 0.5.0 to
+    0.5.1 (#102)
+  * chore(deps): bump the actions group with 5 updates (#98)
+  * chore(deps): bump the gomod group with 5 updates (#97)
+  * Add e2e tests and fix broken cobra flag registration (#103)
+  * docs: add CLAUDE.md and refresh README (#100)
+  * chore(deps): bump the actions group with 2 updates (#96)
+  * chore(deps): bump the gomod group with 4 updates (#95)
+  * chore(deps): bump the gomod group with 5 updates (#94)
+  * chore(deps): bump the gomod group with 5 updates (#92)
+  * chore(deps): bump the actions group with 2 updates (#93)
+  * fix: restore expected behavior for the root command (#91)
+  * feat: socks5 proxy (#90)
+  * feat: allow specifying listen address per target  (#87)
+  * chore(deps): bump actions/setup-go from 5 to 6 in the actions
+    group (#85)
+  * chore(deps): bump the gomod group across 1 directory with 5
+    updates (#84)
+  * chore(deps): bump the gomod group with 5 updates (#81)
+  * chore(deps): bump actions/checkout from 4 to 5 in the actions
+    group (#80)
+
+-------------------------------------------------------------------
 Tue Oct 14 12:18:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package krelay: a better alternative to 'kubectl

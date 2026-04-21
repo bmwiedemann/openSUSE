@@ -7,4 +7,12 @@
     <comment>new package krelay: better alternative to kubectl port-forward</comment>
     <requestid>1311383</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d80afc36dff91f35ff1126fb1ca5a5a7</srcmd5>
+    <version>0.2.0</version>
+    <time>1776768210</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1348286</requestid>
+  </revision>
 </revisionlist>

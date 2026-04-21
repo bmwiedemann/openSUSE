@@ -1,7 +1,7 @@
 #
 # spec file for package krelay
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define executable_name kubectl-relay
 
 Name:           krelay
-Version:        0.1.3
+Version:        0.2.0
 Release:        0
 Summary:        Better alternative to kubectl port-forward
 License:        MIT
@@ -29,7 +29,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.26
 BuildRequires:  fdupes
 Provides:       kubectl-relay = %{version}
 
