@@ -40,8 +40,8 @@
 %define psuffix %{nil}
 %endif
 
-%global apiver            20240924
-%global zendver           20240924
+%global apiver            20250925
+%global zendver           20250925
 %define extension_dir     %{_libdir}/%{php_name}/extensions
 %define php_sysconf       %{_sysconfdir}/%{php_name}
 
@@ -57,24 +57,22 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.4.20
+Version:        8.5.5
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01
 Group:          Development/Libraries/PHP
 URL:            https://secure.php.net
-Source0:        https://secure.php.net/distributions/php-%{version}.tar.xz
+Source0:        https://www.php.net/distributions/php-%{version}.tar.xz
 Source1:        mod_%{php_name}.conf
 Source2:        %{php_name}-fpm.conf
 Source5:        README.macros
 Source6:        macros.php
-# temporarily repacked tarball https://github.com/php/php-src/issues/11300
-Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
+Source8:        https://www.php.net/distributions/php-%{version}.tar.xz.asc
 # Source9:       https://www.php.net/distributions/php-keyring.gpg#/%%{php_name}.keyring
 Source9:        %{php_name}.keyring
 Source11:       %{php_name}.rpmlintrc
-Source12:       php-fpm-tmpfiles.conf
-Source13:       php8-tmpfiles.conf
+Source12:       php-fpm.tmpfiles.d
 Source100:      build-test.sh
 ## SUSE specific patches
 # adjust includedir
@@ -129,10 +127,11 @@ BuildRequires:  pkgconfig(enchant) >= 1.4.2
 %else
 BuildRequires:  pkgconfig(enchant-2)
 %endif
+BuildRequires:  pkgconfig(capstone)
 BuildRequires:  pkgconfig(gdlib) >= 2.1.0
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-io)
-BuildRequires:  pkgconfig(icu-uc) >= 50.1
+BuildRequires:  pkgconfig(icu-uc) >= 57.1
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(krb5-gssapi)
 BuildRequires:  pkgconfig(libcurl) >= 7.29.0
@@ -171,8 +170,8 @@ BuildRequires:  php-fpm = %{version}
 %if "%{flavor}" == ""
 Requires:       php-sapi = %{version}
 Requires:       timezone
-Requires:       group(www)
-Requires:       user(wwwrun)
+Requires(pre):  group(www)
+Requires(pre):  user(wwwrun)
 Recommends:     php-ctype = %{version}
 Recommends:     php-dom = %{version}
 Recommends:     php-iconv = %{version}
@@ -255,6 +254,7 @@ Requires:       %{php_name}-pear
 Requires:       %{php_name}-pecl
 Requires:       glibc-devel
 Requires:       php = %{version}
+Requires:       pkgconfig(capstone)
 Requires:       pkgconfig(libpcre2-8) >= 10.30
 Requires:       pkgconfig(libxml-2.0) >= 2.9.0
 Provides:       php-devel = %{version}
@@ -326,6 +326,8 @@ Group:          Development/Libraries/PHP
 BuildRequires:  php = %{version}
 BuildRequires:  pkgconfig(libsystemd) >= 209
 Requires:       php = %{version}
+Requires:       group(www)
+Requires:       user(wwwrun)
 Provides:       php-fpm = %{version}
 Provides:       php-sapi = %{version}
 Obsoletes:      php7-fpm
@@ -661,19 +663,6 @@ Obsoletes:      php7-odbc
 %description odbc
 This module adds Open Database Connectivity (ODBC) support.
 
-%package opcache
-Summary:        Opcode cache extension for PHP
-Group:          Development/Libraries/PHP
-Requires:       php = %{version}
-Provides:       php-opcache = %{version}
-Obsoletes:      php-opcache < %{version}
-Obsoletes:      php7-opcache
-
-%description opcache
-OPcache improves PHP performance by storing precompiled script
-bytecode in shared memory, thereby removing the need for PHP to load
-and parse scripts on each request.
-
 %package openssl
 Summary:        OpenSSL integration for PHP
 Group:          Development/Libraries/PHP
@@ -1004,10 +993,8 @@ files, too, but not with sockets).
 %endif
 
 %prep
-%setup -q -n php-%{version}
+%autosetup -p1 -n php-%{version}
 cp %{SOURCE5} .
-
-%autopatch -p1 -v
 
 # use system pcre2
 rm -r ext/pcre/pcre2lib
@@ -1192,11 +1179,11 @@ Build cli \
     --enable-gd=shared \
     --with-external-gd \
     --with-avif \
+    --with-capstone \
     --with-ffi=shared \
     --with-gettext=shared \
     --with-gmp=shared \
     --with-iconv=shared \
-    --with-kerberos \
     --with-ldap=shared \
     --with-ldap-sasl \
     --with-libedit=shared \
@@ -1230,7 +1217,6 @@ Build cli \
 %if %{with sodium}
     --with-sodium=shared \
 %endif
-    --enable-opcache=shared \
     --with-zip=shared \
     --enable-intl=shared \
     --disable-cgi
@@ -1338,10 +1324,6 @@ for f in %{buildroot}%{extension_dir}/*; do
     ext=${f##*/}
     zend_=''
     case $ext in
-      # priority 0 (will be loaded first)
-      opcache)
-        ini_name=00-${ext}
-        zend_='zend_';;
       # priority 2 (will be loaded after < 2)
       pdo_*|mysqli|xmlreader)
         ini_name=20-${ext};;
@@ -1352,9 +1334,8 @@ for f in %{buildroot}%{extension_dir}/*; do
     echo "; comment out next line to disable $ext extension in php" > %{buildroot}%{php_sysconf}/conf.d/${ini_name}.ini
     echo "${zend_}extension=$ext.so" >> %{buildroot}%{php_sysconf}/conf.d/${ini_name}.ini
 done
-# package /var/lib/php8/sessions trough tmpfiles
-install -d -m 0755 %{buildroot}%{_tmpfilesdir}
-install -m 0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/php8.conf
+# directory for sessions
+install -d %{buildroot}%{_localstatedir}/lib/%{php_name}/sessions
 # fix symlink (bnc#734176)
 ln -s %{_bindir}/php %{buildroot}%{_bindir}/%{php_name}
 # install the macros file:
@@ -1368,11 +1349,6 @@ install -m 644 sapi/embed/php_embed.h %{buildroot}%{_includedir}/%{php_name}/sap
 for f in %{buildroot}%{_datadir}/%{php_name}/build/{gen_stub.php,run-tests.php}; do
     sed -i '1{s|env ||}' $f
 done
-%endif
-
-%if "%{flavor}" == ""
-%post
-%tmpfiles_create php8.conf
 %endif
 
 %if "%{flavor}" == "apache2"
@@ -1406,7 +1382,7 @@ fi
 
 %post
 %service_add_post php-fpm.service
-%tmpfiles_create php-fpm.conf
+%tmpfiles_create %{_tmpfilesdir}/php-fpm.conf
 
 %preun
 %service_del_preun php-fpm.service
@@ -1448,9 +1424,8 @@ fi
 %dir %{extension_dir}
 %dir %{php_sysconf}
 %dir %{php_sysconf}/conf.d
-%{_tmpfilesdir}/php8.conf
-%ghost %dir %attr(755,%{apache_user},root) /var/lib/php8
-%ghost %dir %attr(755,%{apache_user},root) /var/lib/php8/sessions
+%attr(0755, %{apache_user}, root) %dir %{_localstatedir}/lib/%{php_name}
+%attr(0755, %{apache_user}, root) %dir %{_localstatedir}/lib/%{php_name}/sessions
 
 %files cli
 %defattr(-, root, root)
@@ -1639,11 +1614,6 @@ fi
 %config(noreplace) %{php_sysconf}/conf.d/*odbc.ini
 %{extension_dir}/pdo_odbc.so
 %config(noreplace) %{php_sysconf}/conf.d/*pdo_odbc.ini
-
-%files opcache
-%defattr(-, root, root)
-%{extension_dir}/opcache.so
-%config(noreplace) %{php_sysconf}/conf.d/*opcache.ini
 
 %files openssl
 %defattr(-, root, root)

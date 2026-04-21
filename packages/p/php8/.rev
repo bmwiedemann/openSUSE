@@ -1785,4 +1785,12 @@
         Fixed bug GH-21496 (UAF in dom_objects_free_storage).</comment>
     <requestid>1345944</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>8df95dbfc22a8d5e21851b451e8b80b1</srcmd5>
+    <version>8.5.5</version>
+    <time>1776768108</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1348049</requestid>
+  </revision>
 </revisionlist>
