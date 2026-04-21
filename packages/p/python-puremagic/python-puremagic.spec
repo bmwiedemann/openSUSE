@@ -16,8 +16,14 @@
 #
 
 
-%{?sle15_python_module_pythons}
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %global skip_python311 1
+%{?sle15_python_module_pythons}
 Name:           python-puremagic
 Version:        2.2.0
 Release:        0
@@ -33,8 +39,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Requires:       alts
+%if %{with libalternatives}
 BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -60,8 +71,11 @@ Pure python implementation of magic file detection
 %postun
 %python_uninstall_alternative puremagic
 
+%pre
+%python_libalternatives_reset_alternative puremagic
+
 %files %{python_files}
-%doc AUTHORS.rst CHANGELOG.md README.rst
+%doc CHANGELOG.md README.rst
 %license LICENSE
 %python_alternative %{_bindir}/puremagic
 %{python_sitelib}/puremagic

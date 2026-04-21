@@ -70,4 +70,12 @@
     node walking instead of regex to verify real Python</comment>
     <requestid>1345298</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f663f3b11c0653e079abd0e9835724df</srcmd5>
+    <version>2.2.0</version>
+    <time>1776768113</time>
+    <user>anag_factory</user>
+    <comment>- set reset_alternative for sle16 and newer</comment>
+    <requestid>1348258</requestid>
+  </revision>
 </revisionlist>
