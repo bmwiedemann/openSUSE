@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Apr 20 18:27:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.16:
+  * fix(security): remove InsecureSkipVerify from metrics client
+    (TLS-1) (#3982)
+  * security: suppress Allow-Credentials on wildcard CORS origin
+    (CORS-1) (#3980)
+  * fix(security): limit API key creation body to 4 KiB (INPUT-2)
+    (#3978)
+  * fix(security): limit manifest PUT body to 4 MiB (INPUT-1)
+    (#3977)
+  * chore: fix dependabot alerts (#3971)
+  * fix(auth): add workaround for Docker client auth with mixed
+    anonymous policies (#3868)
+  * chore: fix dependabot alerts (#3968)
+  * fix: Updating a repository should not result in a corrupted
+    index.json file if disk is full (#3963)
+  * feat(api): add repository quota enforcement middleware (#3923)
+  * chore: fix dependabot alerts (#3964)
+  * fix(ci): pass GITHUB_TOKEN explicitly to oras login in
+    sync-trivy step (#3961)
+  * Pin actions and tighten workflow permissions (#3954)
+  * chore: fix dependabot alerts (#3953)
+  * ci: fix nightly test (#3948)
+  * chore: fix dependabot alerts (#3947)
+  * feat: Add TrivyConfig.VulnSeveritySources (Trivy's
+    --vuln-severity-source) (#3943)
+  * fix: address code review comments  (#3942)
+  * chore: fix dependabot alerts (#3940)
+  * build: bump zui version to commit-1c8e5ef (#3932)
+  * chore: fix dependabot alerts (#3931)
+  * test: add tests for pushing manifests with non-canonical
+    digests together with tags (#3920)
+  * chore: fix dependabot alerts (#3921)
+  * test(blackbox): harden zot restart + reachability checks
+    (#3907)
+  * fix(storage/gcs): fix double-prefixed rootdirectory and EOF
+    handling in Walk for GCS (#3903)
+  * feat: support pushing multiple tags for a single manifest
+    (#3885)
+  * feat(schema): add schema command to dump JSON Schema for zot
+    config (#3905)
+  * chore: pin trivy-action to safe version (#3897)
+  * chore: fix dependabot alerts (#3896)
+  * ci: use zot localstack image and consolidate on using the setup
+    localstack GH action (#3899)
+  * feat(zb): list tests, test regex filter, docs update (#3884)
+  * chore: fix dependabot alerts (#3880)
+  * fix(search): expose LastPullTimestamp and PushedBy on index
+    ImageSummary (#3865)
+  * chore: fix dependabot alerts (#3860)
+
+-------------------------------------------------------------------
 Mon Mar 09 07:04:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.15:
