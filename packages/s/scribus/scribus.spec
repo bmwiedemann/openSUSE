@@ -39,7 +39,7 @@
 %endif
 
 Name:           scribus
-Version:        1.6.5
+Version:        1.6.6
 Release:        0
 Summary:        Page Layout and Desktop Publishing (DTP)
 License:        GPL-2.0-or-later
@@ -51,10 +51,6 @@ Source2:        scribus.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-failure-with-poppler-26.01.0.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-17740-Failure-to-build-with-poppler-26.02.0.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix

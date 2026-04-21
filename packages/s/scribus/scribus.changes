@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:19:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.6.6
+  * [Scripter] Add get/setImageRotation to Scripter
+  * [Graphics / Image Frames] Lost image links after collect for
+    output
+  * [General] Failure to build with poppler 26.04.0
+  * [General] Failure to build with poppler 26.03.0
+  * [Import / Export] MS Publisher import needs more
+    development: Image scaling
+  * [Plug-ins] Fix bad escape sequences in Python docstring
+  * [General] Failure to build with poppler 26.02.0
+  * [Plug-ins] Color wheel doesn't move to correct color
+  * [PDF] Scribus crashes due to umlaut composition in file names
+    of embedded PDF documents
+- Drop patches, merged upstream:
+  * 0001-Fix-build-failure-with-poppler-26.01.0.patch
+  * 0001-17740-Failure-to-build-with-poppler-26.02.0.patch
+
+-------------------------------------------------------------------
 Tue Feb 17 21:28:50 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add upstream build fix for Poppler 26.02.0

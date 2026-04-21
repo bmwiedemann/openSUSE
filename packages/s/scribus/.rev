@@ -810,4 +810,12 @@
   * 0001-17740-Failure-to-build-with-poppler-26.02.0.patch (forwarded request 1333628 from StefanBruens)</comment>
     <requestid>1333697</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>9aea933273e752a5951ba52fd85a467f</srcmd5>
+    <version>1.6.6</version>
+    <time>1776768148</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.6.6</comment>
+    <requestid>1348193</requestid>
+  </revision>
 </revisionlist>
