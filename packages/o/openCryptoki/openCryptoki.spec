@@ -53,6 +53,7 @@ Patch000:       ocki-3.26-remove-make-install-chgrp.patch
 #
 Patch010:       openCryptoki-CVE-2026-22791-commit-e37e912.patch
 Patch011:       openCryptoki-CVE-2026-23893-commit-5e6e4b4.patch
+Patch012:       openCryptoki-CVE-2026-40253-commit-ed378f4.patch
 #
 BuildRequires:  bison
 BuildRequires:  dos2unix
@@ -174,7 +175,7 @@ dos2unix doc/README.ep11_stdll
 cat > opencryptoki-sysusers.conf <<EOF
 # Type Name ID GID Home Shell
 g %{pkcs_group} %{pkcs11_group_id} - -
-u pkcsslotd - "openCryptoki slot daemon" /run/opencryptoki /sbin/nologin
+u pkcsslotd -:%{pkcs_group} "openCryptoki slot daemon" /run/opencryptoki /sbin/nologin
 m pkcsslotd %{pkcs_group}
 m root %{pkcs_group}
 EOF
