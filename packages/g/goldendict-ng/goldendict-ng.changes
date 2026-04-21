@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 17 12:25:21 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 26.5.0:
+  * Long list of changes, see
+    <https://github.com/xiaoyifang/goldendict-ng/releases/tag/v26.5.0-Release.c5e2abc1>
+- New dependency: pkgconfig(tomlplusplus).
+
+-------------------------------------------------------------------
 Mon Mar  2 09:40:42 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 26.3.0:

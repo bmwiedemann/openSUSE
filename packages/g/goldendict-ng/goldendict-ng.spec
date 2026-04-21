@@ -21,7 +21,7 @@
 %define gcc_ver 11
 %endif
 Name:           goldendict-ng
-Version:        26.3.0
+Version:        26.5.0
 Release:        0
 Summary:        Dictionary Lookup Program
 License:        GPL-3.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  hunspell-devel >= 1.2.4
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(libzim)
 BuildRequires:  pkgconfig(opencc)
+BuildRequires:  pkgconfig(tomlplusplus)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xapian-core)
