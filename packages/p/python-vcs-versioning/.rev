@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1346260</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>37a7d475beedb6d1289e3b35afd68dd8</srcmd5>
+    <version>1.1.1</version>
+    <time>1776768114</time>
+    <user>anag_factory</user>
+    <comment>- reset_alternative for sle16+
+- include README and changelog as doc
+
+- Update dependencies from pyproject.toml</comment>
+    <requestid>1348260</requestid>
+  </revision>
 </revisionlist>

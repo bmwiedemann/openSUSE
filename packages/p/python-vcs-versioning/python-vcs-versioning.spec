@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -42,8 +48,16 @@ BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 20
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module vcs-versioning >= %{version}}
+%endif
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %endif
 %python_subpackages
 
@@ -73,8 +87,12 @@ the blessed package to manage your versions by vcs metadata
 %postun
 %python_uninstall_alternative vcs-versioning
 
+%pre
+%python_libalternatives_reset_alternative vcs-versioning
+
 %files %{python_files}
 %license LICENSE.txt
+%doc CHANGELOG.md README.md
 %python_alternative %{_bindir}/vcs-versioning
 %{python_sitelib}/vcs_versioning
 %{python_sitelib}/vcs_versioning-%{version}.dist-info
