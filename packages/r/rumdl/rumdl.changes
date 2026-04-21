@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 20 18:25:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.76:
+  * Fixed
+    - cli: error when --config path does not exist (c328c11)
+  * - Update to version 0.1.75:
+  * Added
+    - cli: add -c short alias for --config (3aaaca4)
+
+-------------------------------------------------------------------
 Sat Apr 18 17:18:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.74:
