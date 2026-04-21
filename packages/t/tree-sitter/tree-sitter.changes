@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:22:32 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix libtree-sitter0_26 upgrade conflict with libtree-sitter0_25
+  Replace the incorrect Obsoletes: libtree-sitter0 (which matched
+  no real package) with explicit Obsoletes for previously shipped
+  versioned packages libtree-sitter0_22 and libtree-sitter0_25.
+  This resolves the file conflict on the libtree-sitter.so.0
+  ldconfig symlink during upgrade, per the openSUSE Shared
+  Library Packaging Policy.
+
+-------------------------------------------------------------------
+Mon Apr 13 19:00:27 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Revendor to have wasmtime 36.0.7, which is patched against the
+  host data leakage with 64-bit tables and Winch (CVE-2026-34945,
+  bsc#1262007).
+
+-------------------------------------------------------------------
+Thu Apr  9 20:30:34 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Ignore also quilt setup subdirectory.
+- Bump library version number in baselibs.conf.
+
+-------------------------------------------------------------------
+Thu Apr  2 05:55:49 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.26.8:
+  Full changelog: https://github.com/tree-sitter/tree-sitter/releases/tag/v0.26.8
+  * fix(generate): allow disabling qjs-rt feature from CLI by @WillLillis in
+    #5448
+  * fix(lib): document invariants that must be upheld for TSInputEdit by
+    @WillLillis in #5452
+  * fix(cli): correct typo in parse command's help text by @WillLillis in #5465
+  * perf(cli): misc. improvements by @tree-sitter-ci-bot[bot] in #5476
+  * Fix wasm loading of languages w/ multiple reserved word sets by
+    @tree-sitter-ci-bot[bot] in #5477
+  * generate: avoid panicking when a supertype only has hidden external token
+    children by @tree-sitter-ci-bot[bot] in #5478
+- BuildRequire clang -- needed for bindgen
+
+-------------------------------------------------------------------
+Thu Mar 19 11:56:40 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- fix tree-sitter macros for mapped grammar source paths
+
+  Allow %treesitter_grammars to accept runtime=source mappings so
+  packages like tree-sitter-markdown can build from upstream
+  subdirectories while still installing parser libraries under
+  the correct runtime grammar names.
+
+-------------------------------------------------------------------
 Fri Mar  6 10:01:08 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Fix quoting of Emacs tree-sitter-extra-load-path. Fixes boo#1259205

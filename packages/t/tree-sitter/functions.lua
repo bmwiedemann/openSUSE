@@ -44,11 +44,19 @@ function string.split(str, sep)
    return res
 end
 
-function arg_compat()
+function arg_compat(arg)
    --[[
       Compat macro as workaround for older rpm not having function
       arguments available as table arg(uments)
+
+      If that's not required just return arg
    --]]
+
+   local suse_version = tonumber(rpm.expand("%suse_version"))
+   if suse_version > 1600 then
+      return arg
+   end
+
    local arg_count = rpm.expand("%#")
    local arg = {}
 
@@ -57,4 +65,27 @@ function arg_compat()
    end
 
    return arg
+end
+
+function parse_grammar_specs(specs)
+   local names = {}
+   local sources = {}
+   local multi_grammar = #specs > 1
+
+   for _, spec in ipairs(specs) do
+      local name, source = spec:match("^([^=]+)=(.+)$")
+      if not name then
+         name = spec
+         if multi_grammar then
+            source = name
+         else
+            source = "src"
+         end
+      end
+
+      table.insert(names, name)
+      table.insert(sources, source)
+   end
+
+   return names, sources
 end

@@ -19,9 +19,9 @@
 %global _emacs_sitestartdir %{_emacs_sitelispdir}/site-start.d
 
 
-%define         somajor 0_25
+%define         somajor 0_26
 Name:           tree-sitter
-Version:        0.25.3
+Version:        0.26.8
 Release:        0
 Summary:        An incremental parsing system for programming tools
 License:        GPL-2.0-only AND MIT
@@ -38,6 +38,7 @@ Source24:       compile-macros.sh
 Source25:       treesitter_grammar.attr
 Source26:       treesitter_grammar.req
 BuildRequires:  cargo-packaging
+BuildRequires:  clang
 BuildRequires:  rust > 1.82.0
 # for macros.emacs
 # BuildRequires:  emacs-nox
@@ -61,7 +62,8 @@ edited. Tree-sitter aims to be:
 
 %package     -n lib%{name}%{somajor}
 Summary:        Asychronous I/O support library
-Obsoletes:      lib%{name}0 < %{version}
+Obsoletes:      lib%{name}0_22 < %{version}
+Obsoletes:      lib%{name}0_25 < %{version}
 
 %description -n lib%{name}%{somajor}
 Tree-sitter is a parser generator tool and an incremental parsing
