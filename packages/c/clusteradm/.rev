@@ -7,4 +7,12 @@
     <comment>new package clusteradm: command line tool to bootstrap the open-cluster-management control plane</comment>
     <requestid>1338371</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f6a8443091d4ff220ec71c057720678f</srcmd5>
+    <version>1.2.1</version>
+    <time>1776768221</time>
+    <user>anag_factory</user>
+    <comment>new package clusteradm: command line tool to bootstrap the open-cluster-management control plane</comment>
+    <requestid>1348305</requestid>
+  </revision>
 </revisionlist>

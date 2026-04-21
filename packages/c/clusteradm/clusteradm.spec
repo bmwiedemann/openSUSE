@@ -17,7 +17,7 @@
 
 
 Name:           clusteradm
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        CLI to bootstrap the open-cluster-management control plane
 License:        Apache-2.0

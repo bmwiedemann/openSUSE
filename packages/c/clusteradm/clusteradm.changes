@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 20 18:35:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.1:
+  * Bump to v1.2.1 (#547)
+  * chore: bump vesion bundle for 1.0.1 and 1.1.3 (#546)
+  * Replace deprecated kubebuilder-release-tools PR verifier with
+    inline scripts (#545)
+
+-------------------------------------------------------------------
 Fri Mar 06 07:31:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.0:
