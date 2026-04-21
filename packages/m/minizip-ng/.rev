@@ -58,4 +58,38 @@
     <comment></comment>
     <requestid>1324321</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d7965507fd71547173dcf01cea44a55d</srcmd5>
+    <version>4.1.0</version>
+    <time>1776768248</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.1.0:
+  * Apply Clang format
+  * align bzip and lzma streams for 64-bit platforms
+  * Revert: Make `pattern` in `mz_zip_reader` dynamically
+    assigned
+  * Mark handle as unused.
+  * doc: compression -&gt; decompression
+  * Updage usage of Buffered Stream
+  * zstd: add MZ_STREAM_PROP_COMPRESS_THREADS
+  * fix stack overrun in mz_os_utf8_string_create
+  * harden mz_zip_writer_add_file against link following
+  * refactor: passing reader, writer, zip instead of handle
+  * zip_rw: validate the handle in each getter/setter
+  * cmake: better zlib-ng / zlib handling
+  * fix missing const at r/o buffers
+  * Drop documents that are not freely distributable
+  * Removing superfluous const
+  * `mz_stream_zstd_set_prop_int64`: Implicit conversion loses
+    integer precision: 'int64_t' (aka 'long long') to 'int'
+  * Fix allocating negative size
+  * Bump GoogleTest to 1.16
+  * Avoid ruby codeql failure
+  * fix #915: headers should not include there dependencies
+  * Remove `build-src-dir` in Actions
+  * Compatible with systems without symbolic links
+  * Add workflow_dispatch to all workflows
+  * Fix modified_date when zipping</comment>
+    <requestid>1348332</requestid>
+  </revision>
 </revisionlist>
