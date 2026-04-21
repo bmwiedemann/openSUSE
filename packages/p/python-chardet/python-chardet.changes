@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 19 08:04:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0.post1:
+  * Fixed version number in chardet/version.py still being set to
+    `6.0.0dev0`. Otherwise identical to 6.0.0.
+
+-------------------------------------------------------------------
 Fri Mar  6 07:41:56 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - update to 6.0.0 (the last version before the infringement;

@@ -424,4 +424,14 @@
 </comment>
     <requestid>1337270</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>800e72fb8da84be51dbb45d0d20c6dc7</srcmd5>
+    <version>6.0.0.post1</version>
+    <time>1776768122</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.0.post1:
+  * Fixed version number in chardet/version.py still being set to
+    `6.0.0dev0`. Otherwise identical to 6.0.0.</comment>
+    <requestid>1347999</requestid>
+  </revision>
 </revisionlist>

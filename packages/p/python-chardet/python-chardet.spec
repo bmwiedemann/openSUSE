@@ -24,7 +24,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python36 1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -32,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-chardet%{psuffix}
-Version:        6.0.0
+Version:        6.0.0.post1
 Release:        0
 Summary:        Universal encoding detector
 License:        LGPL-2.1-or-later
