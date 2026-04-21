@@ -1,17 +1,17 @@
 <services>
   <service name="tar_scm" mode="manual">
-      <param name="url">https://gitlab.com/kornelski/mandown</param>
+      <param name="url">https://gitlab.com/kornelski/mandown.git</param>
       <param name="scm">git</param>
       <param name="exclude">.git</param>
-      <param name="revision">0.1.3</param>
+      <param name="revision">v1.1.0</param>
       <param name="versionformat">@PARENT_TAG@</param>
-      <param name="versionrewrite-pattern">(.*)</param>
+      <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="set_version" mode="manual">
       <param name="basename">mandown</param>
   </service>
   <service name="recomprizz" mode="manual">
-      <param name="target">mandown-0.1.3.tar</param>
+      <param name="target">mandown-1.1.0.tar</param>
   </service>
   <service name="cargo_vendor" mode="manual">
      <param name="srcdir">mandown</param>

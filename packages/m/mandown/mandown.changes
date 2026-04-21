@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 20 21:31:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 1.1.0:
+  * Strip <style>
+  * Improve ASCII fallback
+  * Improved link handling
+  * Fudge multi-line HTML
+
+-------------------------------------------------------------------
 Sun Oct 20 06:09:16 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update dependencies

@@ -32,4 +32,16 @@
 </comment>
     <requestid>1209036</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a39a4d42f3d1028df8d89d2eb1fb3494</srcmd5>
+    <version>1.1.0</version>
+    <time>1776768249</time>
+    <user>anag_factory</user>
+    <comment>- udpate to 1.1.0:
+  * Strip &lt;style&gt;
+  * Improve ASCII fallback
+  * Improved link handling
+  * Fudge multi-line HTML</comment>
+    <requestid>1348330</requestid>
+  </revision>
 </revisionlist>
