@@ -397,4 +397,30 @@
 - Drop patch picked upstream romio-test-fix-bad-snprintf-arguments.patch</comment>
     <requestid>1333276</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>eafdcac1fefe21c4bb4a7e26a11c1301</srcmd5>
+    <version>5.0.1</version>
+    <time>1776768165</time>
+    <user>anag_factory</user>
+    <comment>- Update to v5.0.1
+  - Fix bad cast in release-gather collectives that caused data loss issues on Big-Endian 64b arches
+    (s390x)
+  - Fix issue with canceling MPI_ANY_SOURCE receive requests
+  - Fix configuration issue when C++ compiler does not support complex types
+  - Fix function signature issue in Hydra PBS support
+  - Fix crash in MPI_Allreduce with MPI_LOGICAL type
+  - Fix potential crash in multi-nic libfabric initialization
+  - Fix memory leaks in Level Zero and PMIx support
+  - Fix bug in CMA code when GPU support is enabled
+  - Fix potential shared memory collision between multiple singleton processes on the same node
+  - Add large count and other necessary aliases to ROMIO to avoid accidental profiling of internal
+    MPI function usage
+  - Add missing error checks in rndv and colletive composition code
+  - Improve autogen.sh error message when autotools are too old
+- Refresh patches:
+  - autogen-only-deal-with-json-yaksa-if-enabled.patch
+- ch4-shm-fix-data-type-for-recv_bytes-in-MPIDI_POSIX_mpi_release_gather_release.patch
+  removed because it was merged upstream</comment>
+    <requestid>1348247</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,4 @@
-commit 3c1a93f03031b238eab968773d1e571fd2e1da5a
+commit eb5357d70a356ca56798408e41fc594231ab5cfd
 Author: Nicolas Morey <nmorey@suse.com>
 Date:   Tue Jul 25 16:02:22 2023 +0200
 
@@ -10,10 +10,10 @@ Date:   Tue Jul 25 16:02:22 2023 +0200
     Signed-off-by: Nicolas Morey <nmorey@suse.com>
 
 diff --git configure.ac configure.ac
-index 9563ad2034dc..860617dabbc6 100644
+index 099b8a474ba8..a573233b054c 100644
 --- configure.ac
 +++ configure.ac
-@@ -1060,18 +1060,26 @@ AC_SUBST([jsonsrcdir])
+@@ -1071,18 +1071,26 @@ AC_SUBST([jsonsrcdir])
  jsonlib=""
  AC_SUBST([jsonlib])
  
@@ -41,13 +41,12 @@ index 9563ad2034dc..860617dabbc6 100644
 -    PAC_CONFIG_SUBDIR_ARGS([modules/json-c],[--enable-embedded --disable-werror],[],[AC_MSG_ERROR(json-c configure failed)])
 -    PAC_POP_ALL_FLAGS()
 -    jsonsrcdir="${main_top_builddir}/modules/json-c"
--fi
--PAC_APPEND_FLAG([-I${use_top_srcdir}/modules/json-c],[CPPFLAGS])
--PAC_APPEND_FLAG([-I${main_top_builddir}/modules/json-c],[CPPFLAGS])
 +    AC_MSG_NOTICE([Using an external libjson-c])
 +    PAC_APPEND_FLAG([-I/usr/include/json-c],[CPPFLAGS])
 +    PAC_APPEND_FLAG([-ljson-c],[WRAPPER_LIBS])
-+fi
+ fi
+-PAC_APPEND_FLAG([-I${use_top_srcdir}/modules/json-c],[CPPFLAGS])
+-PAC_APPEND_FLAG([-I${main_top_builddir}/modules/json-c],[CPPFLAGS])
  
  # ----------------------------------------------------------------------------
  # HWLOC / NETLOC
