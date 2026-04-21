@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Apr 20 18:36:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 53.2.3:
+  * Release Highlights
+    Kubeshark 53.2.3 expands eBPF Go TLS decryption enabling
+    transparent TLS visibility in proxies like Traefik that layer
+    their own Conn types over the native TCP connection. The
+    release also threads elapsed_time through every dissected API
+    entry end-to-end, surfaces a dedicated tls KFL keyword, and
+    ships reliability fixes around worker reconnection, reused-IP
+    resolution, and snapshot time boundaries.
+  * New Features
+    - Add eBPF Go TLS decryption, enabling TLS decryption in
+      Traefik and similar wrapping proxies
+    - Add tls KFL keyword for filtering TLS-bearing traffic with a
+      single boolean
+    - Add time boundaries display above the snapshots table to show
+      the available data window at a glance
+  * Improvements
+    - Populate elapsed_time in every BaseEntry end-to-end (worker →
+      hub → dashboard), enabling latency filtering and sorting
+      across all protocols
+    - Rename snapshots in cloud storage (S3/GCS/Azure) when the
+      local snapshot is renamed
+    - Use file modification time for snapshot start boundary
+      instead of creation time — fixes incorrect windows on
+      filesystems that don't preserve birth time
+    - Set explicit nginx proxy_buffer_size / proxy_buffers
+      directives to prevent upstream header-too-large errors under
+      load
+    - Bump Go base image from 1.26.1 to 1.26.2
+  * Bug Fixes
+    - Fix worker reconnection after container restart — the hub now
+      correctly re-establishes worker streams, eliminating silent
+      gaps in traffic
+    - Fix reused-IP resolution returning stale pod/service names
+      after pod churn
+    - Fix BPF pids_info lookup by keying on cgroup_id instead of
+      PID; add pid=0 wildcard fallback
+    - Fix BPF wrapper-chain unwrap to break only on concrete types
+      (is_interface==0) and increase the chain limit from 2 to 4
+
+-------------------------------------------------------------------
 Fri Apr 17 20:01:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 53.2.2:
