@@ -1,7 +1,7 @@
 #
 # spec file for package mimalloc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%global sover   2
+%global sover   3
 %global libname libmimalloc%{sover}
 Name:           mimalloc
-Version:        2.1.7
+Version:        3.3.0
 Release:        0
 Summary:        A compact general purpose allocator
 License:        MIT

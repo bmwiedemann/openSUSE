@@ -57,4 +57,20 @@
     <comment></comment>
     <requestid>1188844</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a8d5a7acdee4a2ea179632710ec3ac69</srcmd5>
+    <version>3.3.0</version>
+    <time>1776768248</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.0:
+  * Release versions follow the v3 version (and v1 and v2
+    versions are incremented independently).
+  * see https://github.com/microsoft/mimalloc/compare/v2.3.1...v3.3.1
+
+- update to 2.1.6:
+- update to 2.1.4:
+  * see https://github.com/microsoft/mimalloc/compare/v2.0.7...v2.0.9
+  * long list of fixes, see https://github.com/microsoft/mimalloc/compare/v2.0.3...v2.0.6</comment>
+    <requestid>1348326</requestid>
+  </revision>
 </revisionlist>

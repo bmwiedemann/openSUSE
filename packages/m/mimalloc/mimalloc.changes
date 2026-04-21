@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 20 21:10:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * Release versions follow the v3 version (and v1 and v2
+    versions are incremented independently).
+  * see https://github.com/microsoft/mimalloc/compare/v2.3.1...v3.3.1
+
+-------------------------------------------------------------------
 Wed Jun 26 15:39:39 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - run tests in %check section
@@ -6,10 +14,10 @@ Wed Jun 26 15:39:39 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
   * Fix build issues on less common platforms
   * Started upstreaming patches from the CPython integration
   * Upstream vcpkg patches
-- update to 2.1.6:  
+- update to 2.1.6:
   * Fix build errors on various (older) platforms
   * Refactored aligned allocation
-- update to 2.1.4:  
+- update to 2.1.4:
   * Fixes various bugs and build issues
   * Add MI_LIBC_MUSL cmake flag for musl builds
   * Free-ing code is refactored into a separate module (free.c)
@@ -36,7 +44,7 @@ Thu Jan  5 08:04:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.9:
   * support for arbitrary alignment
-  * see https://github.com/microsoft/mimalloc/compare/v2.0.7...v2.0.9 
+  * see https://github.com/microsoft/mimalloc/compare/v2.0.7...v2.0.9
 
 -------------------------------------------------------------------
 Wed Nov 23 20:16:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -53,7 +61,7 @@ Tue Jul 26 04:44:09 UTC 2022 - Martin Liška <mliska@suse.cz>
 Sun May 29 19:39:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.6:
-  * long list of fixes, see https://github.com/microsoft/mimalloc/compare/v2.0.3...v2.0.6 
+  * long list of fixes, see https://github.com/microsoft/mimalloc/compare/v2.0.3...v2.0.6
 
 -------------------------------------------------------------------
 Tue Feb  1 09:52:20 UTC 2022 - Martin Liška <mliska@suse.cz>
