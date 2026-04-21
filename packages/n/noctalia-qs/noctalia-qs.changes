@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Fri Apr 17 17:02:55 UTC 2026 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- Update to version 0.0.12:
+  * chore(version): bump to 0.0.12
+  * fix(mpris): preserve artUrl across same-track metadata updates
+  * feat(ipc): support optional arguments in IPC function calls
+  * fix(hyprland): harden IPC event handling and object lifecycle
+  * feat(pipewire): add audio spectrum analyzer
+  * feat(wayland): add DWL (dwm-Wayland) compositor support
+  * feat(wayland): add Niri compositor IPC support
+  * feat(core): add inverted corner support to Region
+  * feat(window): add Wayland surface commit and fix visibility handling
+  * fix: safety improvements for pipewire and wlr-layershell
+  * build(nix): modernize flake structure and packaging
+  * ci: add release, AUR sync, and flake update workflows
+  * refactor: rebrand as noctalia-qs (Quickshell fork)
+  * networking: add PSK, settings and connection status support
+  * tooling: ensure intercepts do not overwrite symlinks to cfg files
+  * core/qmlglobal: add shellId, instanceId, appId and launchTime props
+  * services/pipewire: add -fno-strict-overflow to fix PCH with pipewire
+  * wayland/buffer: drop unused GLESv3 include
+  * crash: add std::terminate handler
+  * core: track XDG_CURRENT_DESKTOP in debuginfo
+  * crash: run platform compat hooks in crash reporter init
+  * crash: unmask signals before reexec
+  * core: reuse global pragma parsing js engine during scanning
+  * core/region: add per-corner radius support
+  * wayland/background-effect: add ext-background-effect-v1 support
+  * launch: add ability to override AppId via pragma or QS_APP_ID
+  * core/log: add a mutex to protect stdoutStream
+  * build: add missing wayland-client CFLAGS
+  * hyprland/focus_grab: handle destruction of tracked windows
+  * wayland: remove --require-defined linker argument
+  * docs: ask users not to submit v1 crash reports
+  * wayland: use patched surfaceRole accessor on FreeBSD
+  * core/log: fix non-linux typo and import unistd on freebsd
+  * service/pam: include `signal.h` on freebsd
+  * hyprland/ipc: add null checks and ws preinit to toplevel object init
+  * wayland: hook wl_proxy_get_listener avoiding QTBUG-145022 crash
+  * wm: add WindowManager module with ext-workspace support
+  * core: log qt related environment variables in debuginfo
+  * core: log gpu information in debuginfo
+  * core: move crash/version debug info to one place
+  * crash: allow overriding crash reporter url
+  * core: add disable env vars for file watcher and crash handler
+  * docs: revise contribution policy and related files
+  * crash: unmask signals in coredump fork
+  * core: hash scanned files and don't trigger a reload if matching
+  * all: retry incomplete socket reads
+  * wayland/toplevel: clear activeToplevel on deactivation
+  * ipc: handle null currentGeneration in IpcKillCommand::exec
+  * nix: use libxcb directly
+  * core/desktopentry: preserve desktop action order
+  * services/pipewire: ignore ENOENT errors
+  * build: remove DISTRIBUTOR_DEBUGINFO_AVAILABLE
+  * crash: switch to cpptrace from breakpad
+
+-------------------------------------------------------------------
+Fri Apr 17 12:00:00 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Initial package of noctalia-qs 0.0.4.
+  noctalia-qs is a fork of Quickshell maintained by the Noctalia
+  project, adding shell-specific Wayland protocols (most notably
+  ext-background-effect-v1) on top of upstream Quickshell.
+- The binary is a drop-in replacement for quickshell, so the
+  package declares Provides: quickshell and Conflicts: quickshell.
+
