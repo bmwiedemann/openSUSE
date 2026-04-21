@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 08:37:04 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable vulkan and panfrost on armv6 as it fails to build
+
+-------------------------------------------------------------------
 Fri Apr 17 09:15:54 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 26.0.5 bugfix release

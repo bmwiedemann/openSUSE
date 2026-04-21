@@ -84,7 +84,12 @@
        %ifarch aarch64
        %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost,imagination,asahi
        %else
+       %ifnarch armv6l armv6hl
        %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost,imagination
+       %else
+       # Disable vulkan on armv6 as it fails to build
+       %define with_vulkan 0
+       %endif
        %endif
     %else
       %if 0%{?suse_version} >= 1600 && %{suse_version} < 1699
@@ -853,7 +858,11 @@ egl_platforms=x11,wayland
           %ifarch aarch64
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra,asahi,zink \
           %else
+          %ifarch armv6l armv6hl
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,etnaviv,lima,v3d,svga,tegra,zink \
+          %else
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra,zink \
+          %endif
           %endif
 %else
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,lima,panfrost,v3d,svga,tegra,zink \

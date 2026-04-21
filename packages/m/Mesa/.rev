@@ -6758,4 +6758,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - require gcc 15 in order to fix build on SLE16/Leap 16.0</comment>
     <requestid>1347669</requestid>
   </revision>
+  <revision rev="574" vrev="2">
+    <srcmd5>a178bf7c044aaae6c8e0a3f00aea0088</srcmd5>
+    <version>26.0.5</version>
+    <time>1776768111</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1348230</requestid>
+  </revision>
 </revisionlist>
