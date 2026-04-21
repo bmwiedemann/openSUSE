@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Apr 21 06:09:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.9:
+  https://github.com/ansible/ansible/blob/v2.19.9/changelogs/CHANGELOG-v2.19.rst
+  * Minor Changes
+    - ansible-test - Generate dist_info when running tests.
+    - ansible-test - Replace the parallels managed macOS provider
+      with a new mac provider.
+    - ansible-test - Switch managed macOS remotes from x86_64 to
+      aarch64.
+  * Bugfixes
+    - ansible-galaxy collection - Fix using the server
+      configuration for validate_certs when downloading
+      collections. (#86694)
+
+-------------------------------------------------------------------
+Wed Mar 25 13:10:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.8:
+  https://github.com/ansible/ansible/blob/v2.19.8/changelogs/CHANGELOG-v2.19.rst
+  * Minor Changes
+    - ansible-test - Add container/remote aliases for more loosely
+      specifying managed test environments.
+    - ansible-test - Add support for using the Ansible Core CI
+      service from GitHub Actions.
+  * Bugfixes
+    - ansible-connection - Prevent unpickling failures in module
+      contexts by ensuring that AnsibleTaggedObjects in pickled
+      responses are converted to plain types in JsonRpcServer.
+    - config lookup now uses preexisting constants for templating
+      when needed.
+    - yaml loading - Fix traceback when parsing YAML strings (not
+      files) when using the pure Python implementation of PyYAML.
+
+-------------------------------------------------------------------
 Fri Feb 27 07:33:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.19.7:
