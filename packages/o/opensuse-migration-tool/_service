@@ -8,11 +8,10 @@
     <param name="filename">opensuse-migration-tool</param>
     <param name="changesauthor">opensuse-releaseteam@opensuse.org</param>
   </service>
-  <service name="set_version" mode="manual" />
-  <service name="tar" mode="buildtime" />
-  <service name="recompress" mode="buildtime">
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
 </services>
-

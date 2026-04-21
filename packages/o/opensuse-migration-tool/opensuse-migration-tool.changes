@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 21 07:35:28 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260421.e72b645:
+  * Update ports temp repo url for Tumbleweed
+
+-------------------------------------------------------------------
+Wed Apr 08 16:47:28 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260408.218e5ee:
+  * Add support for Leap Micro to Leap migration
+  * Add quick start guide for git installation
+  * Use .tar.xz for some reason obs service tar fails on 15.6
+
+-------------------------------------------------------------------
 Wed Feb 04 09:18:12 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260204.2cf77a3:
