@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr 20 06:53:40 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260420.d13e03ac:
+  * Fix: ui_cluster: rename: Sync corosync.conf when at least one peer exists
+  * Dev: utils: Improve check_port_open to concurrently try all addresses (bsc#1262094)
+
+-------------------------------------------------------------------
+Fri Apr 17 09:39:19 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260417.27bde1ec:
+  * Dev: corosync: Check qdevice vote while checking corosync status
+  * Dev: ui_cluster: Sleep 1s before checking qdevice vote
+
+-------------------------------------------------------------------
+Thu Apr 16 10:09:24 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260416.1ff83b5b:
+  * Fix: watchdog: use cluster_shell() for remote watchdog query (#2078)
+
+-------------------------------------------------------------------
+Wed Apr 15 06:00:58 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260415.cbb6a8b2:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Fix: qdevice: Change suggestion message when detecting cluster name conflict (bsc#1261884)
+  * Dev: ui_cluster: Improve 'rename' subcommand
+
+-------------------------------------------------------------------
+Wed Apr 15 01:39:31 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260415.89daedf5:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: Use xmlutil.CrmMonXmlParser.get_node_list instead of parsing output of 'crm_node -l'
+
+-------------------------------------------------------------------
 Sun Apr 12 03:44:20 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.0.0+20260412.db68d024:

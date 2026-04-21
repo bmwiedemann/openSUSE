@@ -3809,4 +3809,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1346179</requestid>
   </revision>
+  <revision rev="405" vrev="1">
+    <srcmd5>444abb627a0642ceef708e4d2569053d</srcmd5>
+    <version>5.0.0+20260420.d13e03ac</version>
+    <time>1776768267</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1348352</requestid>
+  </revision>
 </revisionlist>
