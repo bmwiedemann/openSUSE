@@ -643,4 +643,41 @@
     <comment>- Update to version 2.4.4.</comment>
     <requestid>1335352</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>9af70689f4d37e5f8fcefcd799d560be</srcmd5>
+    <version>2.4.6</version>
+    <time>1776768244</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.6:
+  * Show hint if it's night for your contact (#12666)
+  * Activity list: Add menu for marking items as read
+  * Activity list: Mark reaction notifications as read when
+    opening chat
+  * Activity list: Mark reaction notifications as read if chat is
+    active
+  * Timezone update: Make it easier to disable updates
+  * Use Adwaita colors for group chat subject and call box
+  * File transfers: Sanitize RTL codepoints from file names
+  * Voice messages: Reduce bitrate for Opus encoded voice
+    messages
+  * Link preview: Make close button circular
+  * Group chat details: Add sidebar group for Personal Settings
+    (#12502)
+  * Files: Ask for confirmation before opening executable files
+    (#10699)
+  * Activity feed: Make subject brighter
+  * Chat list: Make close button circular
+  * Raise nbxmpp to 7.2.0
+  * Mentions: Mark messages with an @-sign and an indicator
+  * Require cryptography &gt;= 43.0.0
+  * Replace GSound by Gtk.MediaFile
+  * Chat: Ellipsize nicknames
+  * View: Fix jumping to older messages
+  * AccountWizard: Don't fail when signing up for new account
+    (#12694)
+  * Group chat state: Fix label alignment
+  * Icons: Replace custom 'send message' icon with Lucide icon
+    (#12680)</comment>
+    <requestid>1348325</requestid>
+  </revision>
 </revisionlist>
