@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 15 21:01:00 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Fix build dependencies.
+- Update to version 3.17.1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.17.1-1
+  - Fixed wrong .cmb group of division sender MIDI settings #2409
+  - Fixed wrong initial position of the Combination Setter #2430
+  - Fixed listening a SYSEX Johanus event in the MIDI event editor #2114
+-------------------------------------------------------------------
 Wed Feb 11 11:12:12 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.17.0.

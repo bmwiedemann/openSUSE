@@ -19,7 +19,7 @@
 %define version_suffix 1
 
 Name:           grandorgue
-Version:        3.17.0
+Version:        3.17.1
 Release:        0
 Summary:        Virtual Pipe Organ Software
 License:        GPL-2.0-or-later
@@ -34,6 +34,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libcurl-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  po4a
+BuildRequires:  rsvg-convert
 BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-devel
 BuildRequires:  zip
