@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 17 07:45:28 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 1.5.0:
+  * PIE (PHP Installer for Extensions) compatibility
+  * Fix crash on ECDSA pubkey auth due to libssh2 allocator mismatch
+  * Fix fragment part of path lost for files with # in name
+  * Fix segfault when disconnecting with open SFTP streams
+  * Add ssh2_keepalive_config() and ssh2_keepalive_send()
+  * Add ssh2_set_timeout()
+  * Add ssh2_send_signal()
+  * Fix ssh2_poll() rejecting valid resource inputs
+  * Fix Homebrew libssh2 autodetection on macOS Apple Silicon
+  * Initialize php_stream_wrapper_ops explicitly
+  * Bump minimum PHP version to 8.0
+  * Drop PHP 8.0 from CI, add PHP 8.5
+  * Fix Windows CI (setup-php-sdk TLS issue)
+
+-------------------------------------------------------------------
 Tue Feb 13 21:44:27 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 1.4.1:
