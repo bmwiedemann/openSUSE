@@ -436,4 +436,15 @@
   https://github.com/lxqt/liblxqt/pull/372</comment>
     <requestid>1331460</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0078fcb864e2d6395edb8f6198c5f1a8</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869868</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  * Support logout from SystemdProvider
+  * Updated translations
+- Delete 0001-Support-logout-in-SystemdProvider.patch</comment>
+    <requestid>1348638</requestid>
+  </revision>
 </revisionlist>

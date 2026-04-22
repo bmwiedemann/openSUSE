@@ -17,7 +17,7 @@
 
 
 Name:           liblxqt
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Core utility library for LXQt
 License:        LGPL-2.1-or-later
@@ -26,25 +26,25 @@ Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-# PATCH-FIX-UPSTREAM 0001-Support-logout-in-SystemdProvider.patch sfalken@opensuse.org
-# https://github.com/lxqt/liblxqt/pull/372
-Patch0:         0001-Support-logout-in-SystemdProvider.patch
-
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+
 BuildRequires:  cmake(KF6WindowSystem) >= 6.0.0
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
 BuildRequires:  cmake(PolkitQt6-1) >= 0.200.0
 BuildRequires:  cmake(Qt6DBus) >= 6.6
 BuildRequires:  cmake(Qt6LinguistTools) >= 6.6
 BuildRequires:  cmake(Qt6Widgets) >= 6.6
-BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
-BuildRequires:  pkgconfig(Qt6Xdg) >= 4.1.0
+BuildRequires:  cmake(qt6xdg) >= 4.1.0
+
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xscrnsaver)
+
 Obsoletes:      liblxqt-qt5 < %{version}
 Provides:       liblxqt-qt5 = %{version}
+
 # moved files to correct location in liblxqt1 (/lxqt-backlight_backend, power.conf, polkit)
 Conflicts:      liblxqt0
 Conflicts:      liblxqt1
