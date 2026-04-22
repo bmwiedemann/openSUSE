@@ -1,7 +1,7 @@
 #
 # spec file for package xed
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xed
-Version:        3.6.8
+Version:        3.8.9
 Release:        0
 Summary:        A text editor with highlighting
 License:        GPL-2.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xapp)
 
@@ -88,7 +89,7 @@ ChangeLogs, and adjusting indentation levels.
 %exclude %{_datadir}/%{name}/gir-1.0/
 %{_libdir}/%{name}
 %{_datadir}/glib-2.0/schemas/org.x.editor.*.xml
-%{_datadir}/metainfo/xed.appdata.xml
+%{_datadir}/metainfo/org.x.editor.metainfo.xml
 %{_datadir}/dbus-1/services/org.x.editor.service
 %{_datadir}/applications/org.x.editor.desktop
 %{_mandir}/man?/%{name}.?%{?ext_man}
