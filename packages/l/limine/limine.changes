@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 21 16:57:35 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 11.4.1:
+  * Fix an issue with the limlz compressor/decompressor that could cause
+    spurious failures ("limine integrity error") on the legacy x86 BIOS
+    port.
+  * Portability fixes for the `limlzpack` build-time tool (mainly fixing
+    it on big-endian build systems).
+  * Miscellaneous bug fixes.
+  * Revamped BIOS early-stage decompressor, replacing gzip (tinf) with a
+    simpler, smaller, faster, and more auditable compressor/decompressor
+    using a fixed-width LZ77 encoding purpose-tailored for x86 code mixed
+    with data by Kamila Szewczyk.
+  * Implement timeout and entry control of the Boot Loader Interface
+    (BLI).
+  * Make `graphics: no` functional on UEFI ports as well.
+  * Revert the "Call Apple set_os protocol on UEFI" change from 11.3.1 as
+    that seems to have been causing issues relating to input devices on
+    certain other Apple systems, pending investigation and usefulness
+    assessment.
+  * Many assorted bug fixes and improvements.
+
+-------------------------------------------------------------------
 Fri Apr 10 18:22:39 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 11.3.1:
