@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 21 12:17:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.18.0
+  * Improving check_smart.pl reliability by adding proper command
+    path handling (for sudo command) and NVMe I/O error detection.
+
+-------------------------------------------------------------------
 Mon Dec 15 18:31:54 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.17.0
