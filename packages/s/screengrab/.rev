@@ -267,4 +267,14 @@
   * Drop 0001-fix-for-Qt-6.10.patch</comment>
     <requestid>1315883</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e049deaf08b87ee0a5cd88607a9fd729</srcmd5>
+    <version>3.2.0</version>
+    <time>1776869866</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2.0:
+  * Assigned message boxes to the parent window
+  * Updated translations and bumped the version</comment>
+    <requestid>1348593</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           screengrab
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Qt tool for creating screenshots
 License:        GPL-2.0-only
@@ -28,6 +28,7 @@ Source2:        %{name}.keyring
 
 
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
@@ -74,6 +75,9 @@ Screenshot taker with the ability to publish them via hosting services.
 rm -rf %{buildroot}%{_datadir}/doc
 
 %find_lang %{name} --with-qt
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 %license COPYING
