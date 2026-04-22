@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 22 06:28:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.38 (.37 was not released):
+  * fix(be): boltDB TemplateVault migration fixes
+
+-------------------------------------------------------------------
 Mon Apr 13 05:09:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.36 (no releases between .33 and .36):
