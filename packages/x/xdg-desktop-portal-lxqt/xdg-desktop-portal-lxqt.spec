@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-lxqt
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
@@ -25,17 +25,22 @@ URL:            https://github.com/lxqt/xdg-desktop-portal-lxqt
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel
+
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(fm-qt6)
+
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libmenu-cache)
+
 Requires:       xdg-desktop-portal
 Supplements:    (xdg-desktop-portal and lxqt-session)
 
@@ -61,6 +66,9 @@ functionality needed by nearly all of its components.
 
 %preun
 %systemd_user_preun %{name}.service
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
 %doc README.md

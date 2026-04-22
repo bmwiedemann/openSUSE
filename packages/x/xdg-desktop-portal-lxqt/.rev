@@ -80,4 +80,14 @@
   * Drop xdg-desktop-portal-lxqt-qt610.patch</comment>
     <requestid>1315893</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>eec960f5b1da9f4d06907d02380421db</srcmd5>
+    <version>1.4.0</version>
+    <time>1776869867</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.0:
+  * Added support for setting parent window on Wayland
+  * Added access portal and refactored shared choice types</comment>
+    <requestid>1348594</requestid>
+  </revision>
 </revisionlist>
