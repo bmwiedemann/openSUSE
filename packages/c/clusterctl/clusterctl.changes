@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Apr 22 06:11:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.0:
+  Highlights
+  CAPI v1.13 is a release focused on stability, reliability and
+  performances.
+  https://github.com/kubernetes-sigs/cluster-api/releases/tag/v1.13.0
+  clusterctl-related changes:
+  * Breaking Changes
+    - clusterctl: Remove deprecated --disable-grouping clusterctl
+      describe cluster flag (#13289)
+    - clusterctl: Remove deprecated provider CRD migration from
+      clusterctl upgrade (#13290)
+  * New Features
+    - clusterctl: Allow overriding image name in clusterctl config
+      (#13014)
+  * Bug fixes
+    - Testing/e2e: Fix unit test flakes, improve clusterctl
+      download error in e2e tests (#13045)
+  * Others
+    - clusterctl: Add cloudscale-ch-cloudscale provider (#13567)
+    - clusterctl: Bump cert-manager to v1.20.0 (#13482)
+    - clusterctl: Bump cert-manager to v1.20.1 (#13515)
+    - clusterctl: Bump cert-manager v1.19.4 (#13376)
+    - clusterctl: Bump Cert-manager v1.20.2 (#13598)
+    - clusterctl: Drop handling of old cert-manager annotation in
+      clusterctl (#13202)
+    - clusterctl: Update cert-manager to v1.19.3 (#13307)
+    - clusterctl: Update to cert-manager v1.19.2 (#13277)
+    - Dependency: Bump go 1.25.7 (#13323)
+    - Dependency: Bump Go to v1.24.11 (#13106)
+    - Dependency: Bump Go to v1.25.6 (#13240)
+    - Dependency: Bump go v1.25.8 (#13428)
+    - Dependency: Bump go v1.25.9 (#13553)
+    - Dependency: Bump go-github to v82 (#13296)
+    - Dependency: Bump golang.org/x/net to v0.51 to fix CVE
+      (#13392)
+    - Dependency: Bump the all-go-mod-patch-and-minor group across
+      3 directories with 4 updates (#13582)
+    - Dependency: Switch from docker to moby dependencies (#13545)
+    - e2e: Make clusterctl upgrade test to work when there are no
+      machines (#13072)
+    - e2e: Remove handling for Kubernetes <= v1.28 in clusterctl
+      upgrade test (#13157)
+
+-------------------------------------------------------------------
+Wed Apr 22 05:53:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.7:
+  * clusterctl: Bump Cert-manager v1.20.2 (#13597)
+  * Dependency: Bump cloudbuild to use gcb-docker-gcloud image with
+    Go v1.25.5 (#13607)
+
+-------------------------------------------------------------------
 Thu Apr 09 11:54:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.5:
