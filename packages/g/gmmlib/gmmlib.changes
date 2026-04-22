@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 20 20:23:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.10.0:
+  * remove unused variables from Gen9 Resource ULT
+  * Restrict 128-byte horizontal alignment to linear surfaces
+  * Enable PAT Centric Cache Policy
+  * Add a new command streamer usage
+  * Introduce NVL-P Support and App Transient Caching
+
+-------------------------------------------------------------------
 Wed Feb  4 12:33:48 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to  release 22.9.0
