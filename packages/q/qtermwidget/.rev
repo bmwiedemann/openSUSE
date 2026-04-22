@@ -63,4 +63,29 @@ going forward in lxqt where they make sense to drop</comment>
   * Updated the example for using PyQt6</comment>
     <requestid>1315886</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c1bbd9710ff7bcf8e63407eebc203e8f</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869863</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.0:
+  * add DECRQM/DECRPM replies for tracked modes
+  * Make sure variables are initialized before use
+  * Fixed env var loop
+  * Added Nord theme
+  * Do not emit titleChanged on OSC 7
+  * Added OSC 7 escape sequence support for tracking current
+    working directory
+  * Consume CSI sequences with '=' and '&lt;' private markers
+  * Fix qtermwidget_version.h output path for subproject use
+  * Fixed disappearance of Open/Copy link actions (in context menu)
+  * Fixed URL pattern
+  * Improved the code of highlighting of matches
+  * Implemented highlighting of all matches when searching
+  * Fixed type that leades to undefined behavior
+  * Use RegularExpression::matchView()
+  * Use static QRegularExpression's
+  * Updated Translations</comment>
+    <requestid>1348590</requestid>
+  </revision>
 </revisionlist>

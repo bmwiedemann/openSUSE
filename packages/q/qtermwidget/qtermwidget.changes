@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 20 23:52:01 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to version 2.4.0:
+  * add DECRQM/DECRPM replies for tracked modes
+  * Make sure variables are initialized before use
+  * Fixed env var loop
+  * Added Nord theme
+  * Do not emit titleChanged on OSC 7
+  * Added OSC 7 escape sequence support for tracking current
+    working directory
+  * Consume CSI sequences with '=' and '<' private markers
+  * Fix qtermwidget_version.h output path for subproject use
+  * Fixed disappearance of Open/Copy link actions (in context menu)
+  * Fixed URL pattern
+  * Improved the code of highlighting of matches
+  * Implemented highlighting of all matches when searching
+  * Fixed type that leades to undefined behavior
+  * Use RegularExpression::matchView()
+  * Use static QRegularExpression's
+  * Updated Translations
+
+-------------------------------------------------------------------
 Wed Nov  5 19:17:53 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.3.0:
