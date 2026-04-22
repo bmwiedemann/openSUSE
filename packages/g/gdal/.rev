@@ -1024,4 +1024,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>1333890</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>47d64ec772bb8af7681a1f081cd2e1b5</srcmd5>
+    <version>3.12.3</version>
+    <time>1776870148</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1348713</requestid>
+  </revision>
 </revisionlist>

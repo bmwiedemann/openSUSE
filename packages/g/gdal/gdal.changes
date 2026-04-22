@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:11:37 UTC 2026 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Remove broken "LicenseRef-" typo
+- Fix changelog history
+
+-------------------------------------------------------------------
+Sun Apr 12 18:32:50 UTC 2026 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to 3.12.3
+  GDAL 3.12.3 is a bugfix release.
+  ## Build
+  * PDF: add compatibility with Poppler 26.02.0 (#13857) HDF5:
+    Adding proper support for parallel HDF5
+  ## GDAL 3.12.3
+  ### Port
+  * Add CPLLexicallyNormalize() to normalize file paths,
+    to fix oss-fuzz#473110068
+  ### Algorithms
+  * Homography GCP transformer: fix bad scaling factor on
+    overviews (3.11.0 regression) (qgis/QGIS#65011)
+  * GDALCreateAndReprojectImage(): fix memleak in error code
+    path (#14001)
+  * GDALWarpResolveWorkingDataType(): do not default to UInt8
+    before looking at data type bands (#14063)
+  * Warper: add dedicated code path for Int8 nearest neighbour
+    resampling (#14063)
+  * viewshed: allow out-of-range values outside of Byte range
+    for DEM and GROUND modes
+  ### Core
+  * RMS overview resampling: fix error in normalization formula
+  ### Utilities
+  * gdal raster calc: properly handle inputs with no geotransform
+  * gdal raster contour/polygonize: expose --output-layer for
+    pipeline mode
+  * gdal raster edit: add missing --oo option in standalone mode
+    (#14107)
+  * gdalinfo: support again -wkt_format WKT1_ESRI (#13906)
+  * gdaltindex: use GDALWarp for reprojected extents
+  * gdal pipeline: fix nullptr deref on 'read -h' pipeline in
+    non-command line mode (oss-fuzz#485952614)
+  * gdal dataset copy/rename: make it work with vector datasets,
+    and directories (#14097)
+  * gdal2tiles: fix wrong extent computation on source raster
+    with non-square pixels
+  ### Raster drivers
+  GIF driver:
+   * avoid potential left shift of >=32 positions
+     (oss-fuzz#481899239)
+   * avoid potential crash on corrupted datasets
+     (oss-fuzz#481841770)
+  Georaster driver:
+   * Preserve the double quote in the database connection string.
+  GTI driver:
+   * avoid warning about 'Tile index is out of sync with actual
+     extent' (#13944)
+   * add a WARPING_MEMORY_SIZE open option (#14063)
+   * on-the-fly reprojection: avoid creating a -dstalpha band
+     when not needed (#14063)
+  GTIFF driver:
+   * accept Float16 with PREDICTOR=3
+   * dataset creation: do not trigger output directory listing
+     if GDAL_DISABLE_READDIR_ON_OPEN=TRUE (3.12.0 regression,
+     #13930)
+   * avoid potential use-after-free related to querying
+     IMAGE_STRUCTURE metadata domain (oss-fuzz#478560270)
+  LIBERTIFF driver:
+   * validate value of PlanarConfiguration to avoid later
+     issues such as in the LERC codec (oss-fuzz#484435855)
+  netCDF driver:
+   * use stored GeoTransform attribute only if consistent with
+     dimensio variables (#13823)
+   * avoid warning when a GeoTransform attribute with gt.yscale
+     > 0 is found (qgis/QGIS#64873)
+   * Handle port numbers in GDALGetSubdatasetInfo
+  PDS4 driver:
+   * avoid integer division by zero on corrupted file
+     (oss-fuzz#483762324)
+  RPFTOC driver:
+   * fix georeferencing of polar zones
+  VRT driver:
+   * VRTDerivedRasterBand::IRasterIO(): fix output buffer zero
+     initialization when nLineSpace != nBufXSize * nPixelSpace
+     (#13862)
+   * VRTDerivedRasterBand::IRasterIO(): refine check to
+     decide for splitting or not based on the actual number
+     of contributing sources
+  Zarr V2 driver:
+   * multithreaded decoding: avoid potential memory leak / race /
+     user after free (oss-fuzz#489132118 and oss-fuzz#490674996)
+  ## OGR 3.12.3
+  ### Core
+  * OGRSQL: honor spatial filter defined through ExecuteSQL()
+    when result set is an aggregation record
+  ### Utilities
+  * gdal vector select: expose --output-layer for pipeline mode
+  * ogrmerge: fix error messages (#14013)
+  * ogrmerge.py: make it work with input filenames with leading
+    spaces (#14121)
+  ### Vector drivers
+  ADBC driver:
+   * add compatibility with DuckDB 1.5
+  GML driver:
+   * fix memory leak on invalid files with invalid geometry
+     cross-linking (oss-fuzz#487160964)
+  GPKG driver:
+   * fix GetFeatureCount() result on spatial filter just after
+     insertion under transaction, in some circumstance (#13919)
+- Drop upstream patch:
+  * gdal-pr13850-poppler26_02.patch
+
+-------------------------------------------------------------------
 Wed Feb 18 22:57:05 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with Poppler 26.02.0:
@@ -245,7 +356,7 @@ Fri Jan 30 16:43:00 UTC 2026 - Ben Greiner <code@bnavigator.de>
 Sat Jan 24 17:16:10 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Remove lerc build option: It has no effect when using external
-  libtiff -- boo#1257123 
+  libtiff -- boo#1257123
 
 -------------------------------------------------------------------
 Mon Nov 17 21:43:20 UTC 2025 - Libor Pechacek <lpechacek@gmx.com>
