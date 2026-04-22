@@ -17,7 +17,7 @@
 
 
 Name:           lximage-qt
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        LXQt Image Viewer
 License:        GPL-2.0-or-later
@@ -25,12 +25,14 @@ URL:            https://github.com/lxqt/lximage-qt
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+
 BuildRequires:  cmake(Qt6DBus) >= 6.3.0
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Network)
@@ -40,11 +42,14 @@ BuildRequires:  cmake(Qt6SvgWidgets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(fm-qt6)
 BuildRequires:  cmake(lxqt2-build-tools)
+
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libmenu-cache) >= 1.1.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xfixes)
+
 Recommends:     %{name}-lang = %{version}-%{release}
+
 Requires(post): desktop-file-utils
 Requires(pre):  desktop-file-utils
 
@@ -62,15 +67,18 @@ Image Viewer for LXQt and Thumbnail Generator for PCManFM-Qt
 
 %install
 %qt6_install
-%suse_update_desktop_file -r %{name} Graphics Viewer RasterGraphics 2DGraphics Photography
+
 %fdupes -s %{buildroot}%{_datadir}/%{name}
 
 %find_lang %{name} --with-qt
 
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+
 %files
 %doc AUTHORS CHANGELOG README.md
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}*.desktop
+%{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
 %{_datadir}/metainfo/%{name}.metainfo.xml
 %license COPYING

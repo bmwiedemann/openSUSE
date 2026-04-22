@@ -474,4 +474,16 @@
   * Miscellaneous enhancements and small fixes</comment>
     <requestid>1315889</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7ad04d5c1d67b401912d2f79bddb67d6</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869829</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.0:
+  * Removed imgur upload option
+  * Cleaned up some ui files
+  * Modernized code
+  * Updated translations</comment>
+    <requestid>1348565</requestid>
+  </revision>
 </revisionlist>
