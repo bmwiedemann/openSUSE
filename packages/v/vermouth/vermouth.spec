@@ -17,7 +17,7 @@
 
 
 Name:           vermouth
-Version:        1.3.2
+Version:        1.3.4
 Release:        0
 Summary:        A Wine/Proton game launcher for KDE
 License:        MIT
@@ -76,6 +76,9 @@ running Windows executables through Proton or Wine on KDE.
 It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
 (written in Qt/QML and using Kirigami).
 
+# Lang subpackage
+%lang_package
+
 %prep
 %autosetup -p1
 
@@ -88,6 +91,9 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
 
 # Remove duplicated files
 %fdupes %{buildroot}%{_datadir}
+
+# Lang files
+%find_lang vermouth %{name}.lang
 
 %check
 # Checks for desktop files and appstream metadata
@@ -108,5 +114,8 @@ appstreamcli validate --no-net %{buildroot}%{_datadir}/metainfo/*.xml
 
 # Application data
 %{_datadir}/metainfo/com.dekomote.vermouth.metainfo.xml
+
+# Language files for the subpackage
+%files lang -f %{name}.lang
 
 %changelog
