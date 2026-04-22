@@ -1831,4 +1831,78 @@
   * Support for the PARTIAL_SUCCESS lifecycle state and COMPLETE and FAILED (forwarded request 1329635 from glaubitz)</comment>
     <requestid>1329687</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>3a238ee53e203c1778ebbe479f86780f</srcmd5>
+    <version>2.168.3</version>
+    <time>1774470113</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.168.3
+  * Support for the Generative AI Data service
+  * Support for Generative AI Project features in the Generative AI service
+  * Support for the Generative AI Vector Store Connector feature in the Generative AI service
+  * Support for Hosted Deployment in the Generative AI service
+  * Support for cluster admin password stored in OCI Vaults in the Big Data service (BDS)
+  * Support for Block Storage to Master/Utility and Edge Nodes in the Big Data service
+  * Support for deleting multiple nodes in the Big Data service
+- from version 2.168.2
+  * Support for additional node pools for ML and Coordinator nodes in the OpenSearch service
+  * The urllib3 is no more a vendored library
+  * The upper bound for `urllib3` dependency has changed to versions till `2.6.0` for python
+    version `&gt;=3.10` to address security vulnerability CVE-2025-66418.
+- from version 2.168.1
+  * Support for the Guarded Data Pipelines (GDP) service
+  * Support for the Limits Increase service
+  * Support for VMware Bring-Your-Own-License with VCF5.2 in the Oracle Cloud VMware Provisioning service
+  * Support for Identity Verification in the Identity Domains service
+  * Support for OKV-based keys, moving replication units and recreating failed resources based
+    on Exascale and Autonomous infrastructure in the Globally Distributed Database service
+  * Support for setting the last IP drain period for email IP pools in the Email Delivery service
+  * Support for additional filters when listing work requests in the Email Delivery service
+  * Support for the VCNIP IP Lifetime feature in the Compute service
+- from version 2.168.0
+  * Support for the User Managed Maintenance Window Feature in the Lustre File service
+  * Support for multiple standby databases across AD and Regions in a Data Guard
+    environment for Base Database in the Database service
+  * Support for OS Patching in Base Database in the Database service
+  * Support for Valkey 8.1 in the Redis service
+  * Support for Exadata Cost Management in the Ops Insights service (forwarded request 1342467 from glaubitz)</comment>
+    <requestid>1342497</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>dffc68fa39731f959cf9feeb756685c7</srcmd5>
+    <version>2.172.0</version>
+    <time>1776869748</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.172.0
+  * Support for Azure AD, Avro Metadata, and Microsoft Fabric Eventstream
+    (Kafka-like) data sources in the GoldenGate service
+  * Support for creating branded email subdomains without delegating DNS
+    subzone in the Fusion Apps as a Service
+  * Support for IPv6 endpoints in the Events service
+  * Support for IPv6 endpoints in the Logging service
+  * Support for IPv6 endpoints in the Logging Search service
+  * Support for IPv6 endpoints in the Logging Ingestion service
+  * Support for reserved private IP IDs in the Compute service
+  * Support for USAGE_ONLY query type in the Usage Api service
+  * Support for resizing Data, Reco, and Sparse disk groups
+    in the Database service
+  * Support for logging line format in the Functions service
+  * Model was renamed from `UpdateComputeHostsDetails` to `UpdateComputeHostDetails`
+    in the Compute service
+  * Model was renamed from `ComputeHostGroup ` to `ComputeHost` in the Compute service
+  * Method `get_compute_host_group` was renamed to `get_compute_host` in the Compute service
+  * Method `get_compute_hosts` was renamed to `get_compute_host_group` in the Compute service
+  * Method `update_compute_host_group` was renamed to `update_compute_host` in the Compute service
+  * Method `update_compute_hosts` was renamed to `update_compute_host_group` in the Compute service
+  * Parameters `compute_host_group_id ` was renamed to `compute_host_id ` in the Compute service
+  * Parameters `compute_host_id ` was renamed to `compute_host_group_id ` in the Compute service
+  * Property `secret_access_key_secret_id ` was made required in the model
+    `AmazonS3IcebergStorageSummary `, `AmazonS3IcebergStorage ` in the GoldenGate service
+  * Parameter `private_ip` was removed from model `CreateGoldenGateConnectionDetails`,
+    `CreateJavaMessageServiceConnectionDetails`, `CreateKafkaSchemaRegistryConnectionDetails`,
+    `CreateMicrosoftSqlserverConnectionDetails`, `CreateMysqlConnectionDetails`,
+    `CreateOracleConnectionDetails` and `CreatePostgresqlConnectionDetails` in the
+    GoldenGate service (forwarded request 1348487 from glaubitz)</comment>
+    <requestid>1348495</requestid>
+  </revision>
 </revisionlist>

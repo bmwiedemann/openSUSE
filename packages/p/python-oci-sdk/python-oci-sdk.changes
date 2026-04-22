@@ -1,4 +1,180 @@
 -------------------------------------------------------------------
+Tue Apr 21 10:15:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.172.0
+  * Support for Azure AD, Avro Metadata, and Microsoft Fabric Eventstream
+    (Kafka-like) data sources in the GoldenGate service
+  * Support for creating branded email subdomains without delegating DNS
+    subzone in the Fusion Apps as a Service
+  * Support for IPv6 endpoints in the Events service
+  * Support for IPv6 endpoints in the Logging service
+  * Support for IPv6 endpoints in the Logging Search service
+  * Support for IPv6 endpoints in the Logging Ingestion service
+  * Support for reserved private IP IDs in the Compute service
+  * Support for USAGE_ONLY query type in the Usage Api service
+  * Support for resizing Data, Reco, and Sparse disk groups
+    in the Database service
+  * Support for logging line format in the Functions service
+  * Model was renamed from `UpdateComputeHostsDetails` to `UpdateComputeHostDetails`
+    in the Compute service
+  * Model was renamed from `ComputeHostGroup ` to `ComputeHost` in the Compute service
+  * Method `get_compute_host_group` was renamed to `get_compute_host` in the Compute service
+  * Method `get_compute_hosts` was renamed to `get_compute_host_group` in the Compute service
+  * Method `update_compute_host_group` was renamed to `update_compute_host` in the Compute service
+  * Method `update_compute_hosts` was renamed to `update_compute_host_group` in the Compute service
+  * Parameters `compute_host_group_id ` was renamed to `compute_host_id ` in the Compute service
+  * Parameters `compute_host_id ` was renamed to `compute_host_group_id ` in the Compute service
+  * Property `secret_access_key_secret_id ` was made required in the model
+    `AmazonS3IcebergStorageSummary `, `AmazonS3IcebergStorage ` in the GoldenGate service
+  * Parameter `private_ip` was removed from model `CreateGoldenGateConnectionDetails`,
+    `CreateJavaMessageServiceConnectionDetails`, `CreateKafkaSchemaRegistryConnectionDetails`,
+    `CreateMicrosoftSqlserverConnectionDetails`, `CreateMysqlConnectionDetails`,
+    `CreateOracleConnectionDetails` and `CreatePostgresqlConnectionDetails` in the
+    GoldenGate service
+  * Type of field `lifecycle_state ` has removed enum values like `UPDATING`, `INACTIVE` ,
+    `NEEDS_ATTENTION`, `IN_PROGRESS`, `SUCCEEDED`,  `WAITING` in the GoldenGate service
+  * Type of field `bootstrap_servers ` was changed from `KafkaBootstrapServer ` to
+    `CreateKafkaBootstrapServer ` in the model `CreateKafkaConnectionDetails` in the
+    GoldenGate service
+- from version 2.171.0
+  * Support for filesystem snapshot locking for ransomware protection in the File Storage service
+  * Support for creating refresh-able metadata clones in Autonomous Database
+    in the Database service
+  * Support for cross-region Data Guard for Azure, GCP, and AWS KMS-based databases
+    in the Database MultiCloud service
+  * Support for multicloud policies API and OMHub Resource View and Policy Hub UI features
+    in the Multicloud service
+  * Support for Development and Production domain group types in place of Lightweight
+    and Standard in the OCI Internet of Things (OCI IoT) service
+  * Support for Fusion Data Intelligence (FDI) self-service integration in the
+    Fusion Application as a Service
+  * Support for implementing Customer self-service feature to add egress ports
+    in the Fusion Application as a Service
+  * Support for a new flag to the create and update capacity reservation APIs
+    in the Compute service
+  * Support for alarms and notifications in the OCI Control Center service
+  * Parameter `compartment_id_in_subtree` was removed from the model `OmhubNetworkAnchorClient `
+    in the MultiCloud service
+- from version 2.170.0
+  * Support for managing OLVM environment and endpoint fields for asset sources
+    in the Cloud Bridge service
+  * Support for managing OLVM environment asset class name, asset class version,
+    and asset details in the Cloud Bridge service
+  * Support for Ubuntu, Windows Server 2025, Windows 11, and Dynamic Groupings in
+    the OS Management Hub service
+  * Support for S3 virtual host URLs for existing and regionally unique buckets
+    in the Object Storage service
+  * Support for dual-stack IPv6 endpoints in the Management Agent Cloud service
+  * Support for generic VNIC Attachment node pools with application resource-based
+    pod networking and secondary VNIC profiles in the Kubernetes Engine service
+  * Support for getting currentSize of the instancePool resource in the Compute service
+  * Support for new launch instance networkType value ACCELERATEDPV in the Compute service
+  * Removed parameters `freeform_tags` and `defined_tags` from ApplianceImageSummary model
+    from Cloud bridge service
+- from version 1.169.0
+  * Support for the Container Registry service
+  * Support for the Service Enablement Lifecycle Framework (SELF) service
+  * Support for custom CA certificates for LDAP on mount targets in the File Storage service
+  * Support for using IPv6 addresses as mount target IP addresses in the File Storage service
+  * Support for natural language to SQL (NL2SQL) in the Generative AI Data service
+  * Support for Zero Data Loss recovery in the Database service
+  * Support for private network replication in the Cloud Migrations service
+  * Support for reserved private IPs in the Network Load Balancer service
+  * Support for creating and updating model deployments with public egress
+    in the Data Science service
+  * Support for validation of migrated Disaster Recovery instances in the Integration service
+  * Support for additional AI Autonomous Database types (Autonomous JSON DB (AJD),
+    Autonomous APEX (APEX), and Autonomous Vector DB (AVD)) in the Ops Insights service
+  * Support for controlled updates in the MySQL HeatWave service
+  * Parameter `compartment_id` was removed from the model `GenerateSqlFromNlJob`
+    in the Generative AI Data service
+- Refresh ops_relax-python-depends.patch
+
+-------------------------------------------------------------------
+Wed Mar 25 13:02:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.168.3
+  * Support for the Generative AI Data service
+  * Support for Generative AI Project features in the Generative AI service
+  * Support for the Generative AI Vector Store Connector feature in the Generative AI service
+  * Support for Hosted Deployment in the Generative AI service
+  * Support for cluster admin password stored in OCI Vaults in the Big Data service (BDS)
+  * Support for Block Storage to Master/Utility and Edge Nodes in the Big Data service
+  * Support for deleting multiple nodes in the Big Data service
+- from version 2.168.2
+  * Support for additional node pools for ML and Coordinator nodes in the OpenSearch service
+  * The urllib3 is no more a vendored library
+  * The upper bound for `urllib3` dependency has changed to versions till `2.6.0` for python
+    version `>=3.10` to address security vulnerability CVE-2025-66418.
+- from version 2.168.1
+  * Support for the Guarded Data Pipelines (GDP) service
+  * Support for the Limits Increase service
+  * Support for VMware Bring-Your-Own-License with VCF5.2 in the Oracle Cloud VMware Provisioning service
+  * Support for Identity Verification in the Identity Domains service
+  * Support for OKV-based keys, moving replication units and recreating failed resources based
+    on Exascale and Autonomous infrastructure in the Globally Distributed Database service
+  * Support for setting the last IP drain period for email IP pools in the Email Delivery service
+  * Support for additional filters when listing work requests in the Email Delivery service
+  * Support for the VCNIP IP Lifetime feature in the Compute service
+- from version 2.168.0
+  * Support for the User Managed Maintenance Window Feature in the Lustre File service
+  * Support for multiple standby databases across AD and Regions in a Data Guard
+    environment for Base Database in the Database service
+  * Support for OS Patching in Base Database in the Database service
+  * Support for Valkey 8.1 in the Redis service
+  * Support for Exadata Cost Management in the Ops Insights service
+  * Support for accepting target database user credentials for masking
+    and generating health reports in the Data Safe service
+  * Property `password` is removed from models `CreateFusionEnvironmentAdminUserDetails`
+    in the Fusion Applications service
+- from version 2.167.3
+  * Support for calling Oracle Cloud Infrastructure services in the af-casablanca-1 region
+  * Support for specifying TCP and SSL scan listener ports for Disaster Recovery Networks in the Database service
+  * Support for readiness check in the Exadata Fleet Update service
+  * Support for zone transparency in the DNS service
+  * Support for retrieving DB system and channel status (information about
+    availability and operational indicators) in the MySQL HeatWave service
+  * Support for configuring telemetry (exporting logs to Log Analytics) in the MySQL HeatWave Service
+  * Support for enabling and disabling the logging feature in Dataflow SQL endpoints in the Data Flow service
+  * The upper bound for `cryptography` dependency has changed to versions less than `47.0.0`
+- from version 2.167.2
+  * Support for customer-controlled public IP decommissioning in the Kubernetes Engine service
+  * Support for managing declarative auto-scaling of GPU cluster size in the Compute service
+  * Support for advanced Database Management ExaDB-D/ExaDB-C@C Storage Monitoring in the Oracle Exadata Database service
+  * Support for listing maintenance events and configuring maintenance-disabled windows in the MySQL HeatWave service
+- from version 2.167.1
+  * Support for assessments in the Database Migration Service
+  * Support for managing fleet updates for collections of Databases
+    and VM Clusters in the Oracle Exadata Database Service (ExaDB-XS)
+  * Support for audit vulnerabilities in the Application Dependency Management service
+  * Support for new fields DeviceName and InterfaceName for CreateCrossConnect in the Networking service
+  * Support for bulk CRUD operation for Private IP and IPv6 in the Virtual Networking service
+  * Support for burstable capacity coverage in Compute Capacity Report API in the Virtual Networking service
+  * Support for flexible MySQL Configurations in the MySQL HeatWave service
+- from version 2.167.0
+  * Support for new model capability in the Generative AI service
+  * Support for DAC Endpoint Inference Protection with additional configurations like
+    Prompt Injection (PI) and Personally Identifiable Information (PII) along with
+    existing Content Moderation (CM) Configuration in the Generative AI service
+  * Support for VM backup storage on Exascale in the Database service
+  * Support for allowing name search in entity associations and source associations in the Log Analytics service
+  * Support for allowing user to update cloud resource id and OMDS OCID when updating entity in the Log Analytics service
+  * Support for passing variable values as arguments in the query API in the Log Analytics service
+  * Support for returning task status description in listRules API
+    for saved search detection rules in the Log Analytics service
+  * Support for adding recall data size and release data size in the Log Analytics service
+  * Support for connection status and pool image update in the Secure Desktops service
+  * Support for non persistent desktops and boot volume sizing in the Secure Desktops service
+  * Support for Video Input in the Secure Desktops service
+  * Support for customers to view host correlation ID in compute host API list response in the Core service
+  * Support for compartmentIdInSubtree in List APIs in the Management Dashboard service
+  * Support smaller firewall and metadata description in the Network Firewall service
+  * Removed support for the Globally Distributed Database ("globallydistributeddatabase")
+    service, use "distributeddatabase" instead
+- Refresh ops_relax-python-depends.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Jan 28 09:23:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.166.0
