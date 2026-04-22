@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-openssh-askpass
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        GUI to query passwords on behalf of SSH agents
 License:        LGPL-2.1-or-later
@@ -25,13 +25,15 @@ URL:            https://github.com/lxqt/lxqt-openssh-askpass
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
-BuildRequires:  pkgconfig
+
 BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(lxqt) >= 2.1.0
+BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  pkgconfig(lxqt) >= 2.1.0
+
 Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
