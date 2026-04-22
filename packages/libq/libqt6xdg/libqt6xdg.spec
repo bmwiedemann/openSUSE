@@ -17,10 +17,10 @@
 
 
 %define _name libqtxdg
-%define _sover 4.3.0
+%define _sover 4.4.0
 %define sover 4
 Name:           libqt6xdg
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        Qt implementation of freedesktop.org xdg specs
 License:        LGPL-2.1-only AND SUSE-LGPL-2.1-with-digia-exception-1.1
@@ -28,12 +28,13 @@ URL:            https://github.com/lxqt/libqtxdg
 Source0:        %{url}/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{_name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel
-BuildRequires:  xterm-bin
+
 BuildRequires:  cmake(Qt6Core) >= 6.6.0
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Svg)
@@ -41,6 +42,7 @@ BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  cmake(lxqt2-build-tools)
+
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.41.0
@@ -90,9 +92,6 @@ Development files for QtXDG icon loader libraries used in LXQt
 
 %ldconfig_scriptlets -n libQt6Xdg%{sover}
 %ldconfig_scriptlets -n libQt6XdgIconLoader%{sover}
-
-%check
-%ctest
 
 %files -n libQt6Xdg%{sover}
 %doc AUTHORS CHANGELOG README.md

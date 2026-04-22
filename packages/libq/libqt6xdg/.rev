@@ -69,4 +69,17 @@
   * Drop libqt6xdg-qt610.patch</comment>
     <requestid>1315864</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0003ab847ec1574b4b44d7b9fe7c7405</srcmd5>
+    <version>4.4.0</version>
+    <time>1776869828</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.4.0:
+  * Modernized string nomenclature and classes
+  * Fixed compilation with Qt &gt;= 6.10
+  * Prefer std:: functions
+  * Added $XDG_STATE_HOME directory implementation
+  * Fixed NotShowIn=LXQt handling in .desktop files</comment>
+    <requestid>1348564</requestid>
+  </revision>
 </revisionlist>
