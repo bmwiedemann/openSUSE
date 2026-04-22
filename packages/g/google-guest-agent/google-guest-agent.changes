@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 07 19:42:40 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 20260402.00: (bsc#1257010)
+  * Backport oslogin changes for sles16 to legacy agent (#603)
+  * Bump go.opentelemetry.io/otel/sdk from 1.37.0 to 1.40.0 (#596)
+  * Bump google.golang.org/grpc from 1.75.0 to 1.79.3 (#602)
+  * Actually finally fix the RPM spec (#601)
+  * Correct guest telemetry build target (#600)
+  * Add packaging for new telemetry extension (#599)
+  * Implement new scheduled job for routes monitor (#598)
+  * Add packaging changes for locally bundled extensions feature support (#593)
+  * Ensure the uninstall script handles GCE metadata endpoint unavailability. (#591)
+  * Disable certificates when security keys are enabled (#588)
+  * Move sourcing of per-user configs to the end of sshd_config, fixing 2FA logins. (#590)
+
+-------------------------------------------------------------------
 Tue Jan 13 09:03:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260108.00
