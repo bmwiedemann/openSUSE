@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Apr 17 07:02:28 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.2:
+  * Fix parallel builds with GNU make
+    (gh#Reference-ScaLAPACK/scalapack#53).
+  * Fixes #47 (gh#Reference-ScaLAPACK/scalapack#57).
+  * CMake: Allow to override CDEFS
+    (gh#Reference-ScaLAPACK/scalapack#59).
+  * Set CMAKE_POSITION_INDEPENDENT_CODE if need be
+    (gh#Reference-ScaLAPACK/scalapack#61).
+  * Update CMake requirements
+    (gh#Reference-ScaLAPACK/scalapack#65).
+  * Update MPI linking, building tests
+    (gh#Reference-ScaLAPACK/scalapack#67).
+  * restore topology (gh#Reference-ScaLAPACK/scalapack#75).
+  * Fix issue with checking input parameter in p?potri
+    (gh#Reference-ScaLAPACK/scalapack#79).
+  * Added PxTRRFS to SRC/Makefile and SRC/CMakeLists.txt
+    (gh#Reference-ScaLAPACK/scalapack#89).
+  * Fix gcc warnings about Fortran 2018 deleted features
+    (gh#Reference-ScaLAPACK/scalapack#93).
+  * Fix -Wextra-semi-stmt -Wparentheses
+    (gh#Reference-ScaLAPACK/scalapack#94).
+  * Use size_t in mr2d_malloc instead of index-bound Int
+    (gh#Reference-ScaLAPACK/scalapack#85).
+- Add scalapack-function-arg-error.patch: Fix errors where
+  function declaration arguments did not match bodies (upstream
+  commit 0cd017a).
+
+-------------------------------------------------------------------
 Mon Mar 24 13:19:07 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable and remove support of gnu-hpc build flavours (bsc#1239982)

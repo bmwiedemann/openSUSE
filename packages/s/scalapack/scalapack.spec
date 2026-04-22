@@ -1,7 +1,7 @@
 #
 # spec file for package scalapack
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,14 +47,16 @@ ExcludeArch:    %{ix86} %{arm}
 %define p_includedir %{_includedir}
 
 Name:           %{package_name}
-Version:        2.2.0
+Version:        2.2.2
 Release:        0
 Summary:        A subset of LAPACK routines redesigned for heterogenous computing
 # This is freely distributable without any restrictions.
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Development/Libraries/Parallel
 URL:            http://www.netlib.org/scalapack/
-Source0:        http://www.netlib.org/scalapack/%{pname}-%{version}.tgz
+Source0:        https://github.com/Reference-ScaLAPACK/%{pname}/archive/refs/tags/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         https://github.com/Reference-ScaLAPACK/scalapack/commit/655382dde66dee44eac466d84608abdb7abf7411.patch#/scalapack-function-arg-error.patch
 BuildRequires:  %{mpi_flavor}-devel
 BuildRequires:  blas-devel
 BuildRequires:  cmake >= 2.8
@@ -202,7 +204,7 @@ Provides:       libblacs%{so_ver}-openmpi-devel
 This package contains static libraries for BLACS, compiled against %{mpi_flavor}%{?mpi_vers}.
 
 %prep
-%setup -q -n %{pname}-%{version}
+%autosetup -p1 -n %{pname}-%{version}
 cp SLmake.inc.example SLmake.inc
 cat > %{_sourcedir}/baselibs.conf  <<EOF
 %{libname %{?_vers}}
