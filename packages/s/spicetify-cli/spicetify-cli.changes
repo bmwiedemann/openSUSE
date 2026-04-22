@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 21 07:38:54 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+
+- Update to version 2.43.2:
+  * chore(lyrics-plus): correct misspelled variable name (#3817)
+  * fix: improve handling of lines starting with a kanji (#3821) (#3822)
+  * feat(wrapper): add missing SVGIcons from Spotify's current UI (#3773)
+  * chore(deps): bump softprops/action-gh-release from 2 to 3 (#3797)
+  * feat(lyrics-plus): change Musixmatch API for higher rate limit (#3790)
+  * fix(devtools): fail safely when app-developer marker is missing in offline.bnk (#3786)
+  * fix: global nav links for 1.2.87 (#3792)
+  * fix(css-map): correct now playing widget cover art container class (#3795)
+  * fix: prevent broken navbar links on Spotify 1.2.86 (#3791)
+  * feat(css-map): add more 1.2.86 classes and a few others (#3782)
+  * feat(loopyLoop): complete rehaul (#3771)
+  * chore(wrapper): resolve pre-existing Biome lint warnings (#3776)
+  * fix: handle ignored errors in file write and copy operations (#3779)
+  * fix: progress bar mapping (#3763)
+  * fix(css-map): remove duplicates
+  * feat(preprocess): optimize the css map process
+
+-------------------------------------------------------------------
 Mon Apr 13 13:38:39 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
 
 - Update to version 2.43.1:
