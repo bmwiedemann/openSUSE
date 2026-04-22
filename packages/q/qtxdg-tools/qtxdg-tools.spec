@@ -17,11 +17,10 @@
 
 
 Name:           qtxdg-tools
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        User tools for libqtxg
 License:        LGPL-2.1-or-later
-Group:          Development/Tools/Building
 URL:            https://github.com/lxqt/qtxdg-tools
 Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
@@ -29,8 +28,10 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+
 BuildRequires:  cmake(Qt6Core) >= 6.6.0
 BuildRequires:  cmake(lxqt2-build-tools)
+
 BuildRequires:  pkgconfig(Qt6Xdg)
 Requires:       xdg-utils
 
