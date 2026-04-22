@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 20 21:26:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20260301:
+  * drop speed limitations at the start and end of transfer
+  * fix input stalling unintential in -M/-R mode
+  * fix: do not close an already closed file
+  * added dynamic speed adjustment with low speed
+  * add support to bind network input to a specific interface
+
+-------------------------------------------------------------------
 Mon Jan 19 08:53:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 20251025:
