@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 21 15:56:50 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.63:
+  * sync: Refactor to use _RunOneGC and fix config leakage
+  * sync: Switch to using self._bloated_projects
+  * tests: Add tests for _CheckForBloatedProjects and _GCProjects
+  * upload: Clarify partial sync message on hook failure
+  * sync: Provide feedback during post-sync operations
+  * progress: Ignore updates after progress ends
+  * project: Avoid skipping fetches for shallow clones without .git/shallow
+  * project: Drop --no-deref from update-ref --stdin
+  * project: implement stateless sync pruning logic
+  * manifest: Add `sync-strategy` attribute to project elements
+  * tests: Convert forall subcmd test to pytest
+  * gc: Fix hang during repack in partial clones
+  * test_wrapper: add test for repo script executable permission
+  * tests: convert more tests to pytest
+  * tests: convert __file__ usage to pathlib
+  * tests: unify fixture() helper with Path constant
+  * Fix all flake8 warnings from newer flake8-bugbear and flake8-comprehensions
+  * project: Refactor GetHead to use symbolic-ref first
+  * Implement command forgiveness with autocorrect
+
+-------------------------------------------------------------------
 Wed Mar 25 13:50:24 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.62:
