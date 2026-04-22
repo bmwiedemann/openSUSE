@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 22 05:46:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.3.8:
+  * fix(cli): uses DrySource revision for app diff/manifests with
+    sourceHydrator (#23817) (cherry-pick #24670 for 3.3) (#27481)
+
+-------------------------------------------------------------------
 Fri Apr 17 20:27:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.3.7:
