@@ -1412,4 +1412,17 @@
 - Update lxqt-panel.keyring</comment>
     <requestid>1344582</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>184137c471e8afc4733597710ec14d27</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869840</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  * Fixed crashes when PulseAudio sink information changes
+  * Implemented multi sink volume plugin
+  * Added some more padding in LXQtWorldClockPopup
+  * Fixed weird behavior in panel length configuration when
+    switching between px and %</comment>
+    <requestid>1348573</requestid>
+  </revision>
 </revisionlist>

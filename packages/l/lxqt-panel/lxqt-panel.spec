@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        2.3.3
+Version:        2.4.0
 Release:        0
 Summary:        LXQt desktop panel
 License:        LGPL-2.1-or-later
@@ -41,9 +41,12 @@ BuildRequires:  git-core
 BuildRequires:  libsensors4-devel
 BuildRequires:  pkgconfig
 
+BuildRequires:  cmake(dbusmenu-lxqt)
 BuildRequires:  cmake(KF6Solid)
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
+BuildRequires:  cmake(lxqt) >= 2.1.0
+BuildRequires:  cmake(lxqt-globalkeys-ui)
 BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(lxqt-menu-data) >= 2.1.0
 BuildRequires:  cmake(Qt6Concurrent)
@@ -54,15 +57,12 @@ BuildRequires:  cmake(Qt6WaylandClient)
 BuildRequires:  cmake(Qt6WaylandClientPrivate)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  cmake(sysstat-qt6)
 
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(dbusmenu-lxqt)
 BuildRequires:  pkgconfig(libmenu-cache)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libstatgrab)
-BuildRequires:  pkgconfig(lxqt) >= 2.1.0
-BuildRequires:  pkgconfig(lxqt-globalkeys-ui)
-BuildRequires:  pkgconfig(sysstat-qt6)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb-damage)
 BuildRequires:  pkgconfig(xcb-image)

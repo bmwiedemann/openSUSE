@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 21 14:27:06 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 2.4.0:
+  * Fixed crashes when PulseAudio sink information changes
+  * Implemented multi sink volume plugin
+  * Added some more padding in LXQtWorldClockPopup
+  * Fixed weird behavior in panel length configuration when
+    switching between px and %
+
+-------------------------------------------------------------------
 Fri Apr  3 18:14:58 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.3.3:
