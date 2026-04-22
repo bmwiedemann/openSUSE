@@ -260,4 +260,12 @@
   * Remove upper bound of setuptools for PyPy (#704) @hugovk</comment>
     <requestid>1338806</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>e7be936c808bae554a0a3c3ea134aa48</srcmd5>
+    <version>5.12.0</version>
+    <time>1776869967</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1348660</requestid>
+  </revision>
 </revisionlist>

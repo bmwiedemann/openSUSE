@@ -52,14 +52,17 @@ export UJSON_BUILD_DC_LIBS='-ldouble-conversion'
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand %fdupes %{buildroot}%{$python_sitearch}
+rm -r %{buildroot}%{$python_sitearch}/src
+}
 
 %check
 %pytest_arch
 
 %files %{python_files}
+%license LICENSE.txt
 %doc README.md
-%{python_sitearch}/ujson.cpython-*-linux-gnu.so
+%{python_sitearch}/ujson.cpython-*-linux-gnu*.so
 %{python_sitearch}/ujson-stubs
 %{python_sitearch}/ujson-%{version}.dist-info
 

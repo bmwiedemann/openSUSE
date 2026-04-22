@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 00:52:39 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not ship version file in sitearch.
+- Ship the LICENSE in the built packages.
+
+-------------------------------------------------------------------
 Fri Mar 13 20:32:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.12.0:
