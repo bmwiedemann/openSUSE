@@ -3,15 +3,9 @@ V1:
   * Use overflow checking primitives where the arithmetic expression for
     buffer allocations may include unvalidated data
 
-v2:
-  * Check find_pathname() in grub_btrfs_get_parent_subvol_path() and return
-    an error on failure
-  * Use get_fs_root() with offset -1 in grub_btrfs_get_parent_subvol_path() so
-    lower_bound() can find the highest-offset ROOT_ITEM for the subvolume id
-
 --- a/grub-core/fs/btrfs.c
 +++ b/grub-core/fs/btrfs.c
-@@ -3146,6 +3146,260 @@
+@@ -3104,6 +3104,254 @@
    return 0;
  }
  
@@ -76,7 +70,7 @@ v2:
 +  ref = (struct grub_btrfs_root_ref *)buf;
 +
 +  err = get_fs_root(data, data->sblock.root_tree, grub_le_to_cpu64 (key_out.offset),
-+                    -1, &fs_root);
++                    0, &fs_root);
 +  if (err)
 +    {
 +      grub_free(buf);
@@ -84,13 +78,7 @@ v2:
 +      return err;
 +    }
 +
-+  err = find_pathname(data, grub_le_to_cpu64 (ref->dirid), fs_root, ref->name, &parent_path);
-+  if (err)
-+    {
-+      grub_free(buf);
-+      free_iterator(&desc);
-+      return err;
-+    }
++  find_pathname(data, grub_le_to_cpu64 (ref->dirid), fs_root, ref->name, &parent_path);
 +
 +  if (child_path)
 +    {
@@ -272,7 +260,7 @@ v2:
  static struct grub_fs grub_btrfs_fs = {
    .name = "btrfs",
    .fs_dir = grub_btrfs_dir,
-@@ -3164,6 +3418,7 @@
+@@ -3122,6 +3370,7 @@
  static grub_command_t cmd_info;
  static grub_command_t cmd_mount_subvol;
  static grub_extcmd_t cmd_list_subvols;
@@ -280,7 +268,7 @@ v2:
  
  static char *
  subvolid_set_env (struct grub_env_var *var __attribute__ ((unused)),
-@@ -3235,6 +3490,11 @@
+@@ -3192,6 +3441,11 @@
  					 "[-p|-n] [-o var] DEVICE",
  					 "Print list of BtrFS subvolumes on "
  					 "DEVICE.", options);

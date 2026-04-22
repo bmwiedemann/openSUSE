@@ -25,9 +25,6 @@ V2:
   * Fix gcc-12 error: the comparison will always evaluate as 'true' for the
     address of 'label' will never be NULL [-Werror=address]
 
-v3:
-  * Check find_pathname() in grub_cmd_btrfs_list_subvols() and return an error
-    on failure
 ---
 
  grub-core/fs/btrfs.c |  561 +++++++++++++++++++++++++++++++++++++++++++++++++--
@@ -375,7 +372,7 @@ v3:
  
    grub_btrfs_unmount (data);
  
-@@ -2431,6 +2638,253 @@
+@@ -2431,6 +2638,248 @@
  }
  #endif
  
@@ -581,12 +578,7 @@ v3:
 +        }
 +        buf[elemsize] = 0;
 +
-+      err = find_pathname(data, ref->dirid, fs_root, ref->name, &p);
-+      if (err)
-+        {
-+          r = -err;
-+          break;
-+        }
++      find_pathname(data, ref->dirid, fs_root, ref->name, &p);
 +
 +      if (print)
 +        {
@@ -629,7 +621,7 @@ v3:
  static struct grub_fs grub_btrfs_fs = {
    .name = "btrfs",
    .fs_dir = grub_btrfs_dir,
-@@ -2446,13 +2900,89 @@
+@@ -2446,13 +2895,89 @@
  #endif
  };
  

@@ -1,25 +1,20 @@
-From 5cf5c938a1ed621e5dcd91277ad856552434df98 Mon Sep 17 00:00:00 2001
-From: Danilo Spinella <danilo.spinella@suse.com>
-Date: Thu, 19 Mar 2026 12:17:12 +0100
-Subject: [PATCH 7/9] blsuki: Fix sorting for entries with boot counting
- enabled
+Implement Automatic Boot Assessment for grub2-bls.
 
-Sort entries with boot counting enabled (ending with +x-y.conf)
-and with 0 tries left below the rest.
----
- grub-core/commands/blsuki.c | 46 ++++++++++++++++++++++++++++++++++++-
- 1 file changed, 45 insertions(+), 1 deletion(-)
+https://systemd.io/AUTOMATIC_BOOT_ASSESSMENT/
 
-diff --git a/grub-core/commands/blsuki.c b/grub-core/commands/blsuki.c
-index 2664a9fc4..8364ba9f4 100644
+The entries are ordered first by the boot tries left, keeping
+the one without available tries (e.g. <entry>+0-3.conf)
+after the one without a boot counter or with a positive boot counter.
+
+After removing the boot counter from the release string, keep the ordering
+as it worked previously.
+
 --- a/grub-core/commands/blsuki.c
 +++ b/grub-core/commands/blsuki.c
-@@ -251,6 +251,42 @@ blsuki_get_val (grub_blsuki_entry_t *entry, const char *keyname, int *last)
+@@ -255,6 +255,39 @@
    return ret;
  }
  
-+/* Return the tries left of an entry with boot counting enabled.
-+   When boot counting is disabled, return -1. */
 +static long
 +tries_left (const char *filename)
 +{
@@ -53,24 +48,19 @@ index 2664a9fc4..8364ba9f4 100644
 +  grub_free (str);
 +  return ret;
 +}
-+
  /*
   * Add a new grub_blsuki_entry_t struct to the entries list and sort it's
   * position on the list.
-@@ -259,7 +295,7 @@ static grub_err_t
- blsuki_add_entry (grub_blsuki_entry_t *entry)
- {
-   grub_blsuki_entry_t *e, *last = NULL;
--  int rc;
-+  int rc, t1, t2;
+@@ -274,10 +307,19 @@
  
-   if (entries == NULL)
+   FOR_BLSUKI_ENTRIES (e)
      {
-@@ -274,6 +310,14 @@ blsuki_add_entry (grub_blsuki_entry_t *entry)
++      long t1, t2;
++     
+       rc = filevercmp (entry->filename, e->filename);
        if (rc == 0)
  	return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("duplicate file: `%s'"), entry->filename);
  
-+      /* Entries with 0 tries left should be put below the rest */
 +      t1 = tries_left (entry->filename);
 +      t2 = tries_left (e->filename);
 +      if (t2 == 0 && t1 != 0)
@@ -81,6 +71,3 @@ index 2664a9fc4..8364ba9f4 100644
        if (rc > 0)
  	{
  	  grub_dprintf ("blsuki", "Add entry with id \"%s\"\n", entry->filename);
--- 
-2.53.0
-

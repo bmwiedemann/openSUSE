@@ -1,0 +1,28 @@
+Index: grub-2.14~rc1/grub-core/commands/blsuki.c
+===================================================================
+--- grub-2.14~rc1.orig/grub-core/commands/blsuki.c
++++ grub-2.14~rc1/grub-core/commands/blsuki.c
+@@ -1565,7 +1565,10 @@ blsuki_create_entries (bool show_default
+ #ifdef GRUB_MACHINE_EFI
+ 	  grub_size_t len = grub_strlen (entry->filename);
+ 
+-	  if (len > BLS_EXT_LEN && grub_strcmp (entry->filename + len - BLS_EXT_LEN, ".conf") == 0)
++	  char *boot_counting_start = grub_strrchr(entry->filename, '+');
++	  if (boot_counting_start != NULL)
++	    size += (boot_counting_start - entry->filename + 1);
++	  else if (len > BLS_EXT_LEN && grub_strcmp (entry->filename + len - BLS_EXT_LEN, ".conf") == 0)
+ 	    size += (len - BLS_EXT_LEN + 1);
+ 	  else
+ 	    size += (len + 1);
+@@ -1588,7 +1591,10 @@ blsuki_create_entries (bool show_default
+ 	{
+ 	  grub_size_t len = grub_strlen (entry->filename);
+ 
+-	  if (len > BLS_EXT_LEN && grub_strcmp (entry->filename + len - BLS_EXT_LEN, ".conf") == 0)
++	  char *boot_counting_start = grub_strrchr(entry->filename, '+');
++	  if (boot_counting_start != NULL)
++	    len = boot_counting_start - entry->filename;
++      else if (len > BLS_EXT_LEN && grub_strcmp (entry->filename + len - BLS_EXT_LEN, ".conf") == 0)
+ 	    len -= BLS_EXT_LEN;
+ 
+ 	  if (r_size < (len + 1))
