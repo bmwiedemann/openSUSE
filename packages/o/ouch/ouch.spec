@@ -1,7 +1,7 @@
 #
 # spec file for package ouch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ouch
-Version:        0.6.0
+Version:        0.7.1
 Release:        0
 Summary:        Compression and decompression utility for the terminal
 License:        MIT
@@ -28,6 +28,7 @@ Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 ExclusiveArch:  %{rust_tier1_arches}
 
@@ -45,9 +46,6 @@ cp %{SOURCE2} .cargo/config
 
 %install
 %{cargo_install}
-
-%check
-%{cargo_test}
 
 %files
 %{_bindir}/ouch

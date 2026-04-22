@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Apr 22 11:46:11 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1:
+  * Fix ouch --version
+
+-------------------------------------------------------------------
+Wed Apr 22 11:45:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  Removals:
+  * Remove archive auto-flattening on decompression (formerly known as "smart unpack") (#907)
+  New Features:
+  * Support merging folders in decompression (#798)
+  * Support .lz compression (#867)
+  * Support .lz decompression (#838)
+  * Support .lzma compression (#867)
+  * Support .lzma decompression (#838)
+  * Support decompression of concatenated .gz, .bz2, and .lz4 (#898)
+  * Provide Nushell completions (packages still need to install them) (#827)
+  Improvements:
+  * Improve misleading error message (#818)
+  * Avoid loading entire 7z archive into memory when listing (#860)
+  * Add aliases for --password flag (--pass and --pw) (#847)
+  * Print input and output file sizes (#914)
+  * Add aliases for comic book archives (#835)
+  * Multiple minor improvements to error messages.
+  Bug Fixes:
+  * Fix .lzma being a wrong alias for .xz (#838)
+  * Fix 7z BadSignature error when compressing and then listing (#819)
+  * Fix tar extraction count when --quiet (#824)
+  * Fix unpacking with merge flag failing without --dir flag (#826)
+  * Handle broken symlinks in zip archives and normalize path separators (#841)
+  * Fix folder softlink is not preserved after packing (#850)
+  * Handle read-only directories in tar extraction (#873)
+  * Fix tar hardlink is not preserved after decompressing or compressing (#879)
+  * Fix enable gitignore flag should work without git (#881)
+  * Fix .7z always being fully loaded to memory (#905)
+  * Fix reporting wrong path when file is renamed (#913)
+  * Fix renaming broken when multi extension paths (#919)
+  * Fix incorrectly overwriting input file when file signature is sniffed (#920)
+  * Add safeguards before deleting directories (#930)
+  Tweaks:
+  * Support opting-out for .bz3 (#814)
+  * Adjust INFO color to green (#858)
+
+-------------------------------------------------------------------
+Tue Apr 22 12:11:10 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.1:
+  * Fix a common .zip crash (#804)
+  * Fix package problems (#806)
+
+-------------------------------------------------------------------
 Mon Apr  7 13:54:36 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.0:
