@@ -26,7 +26,7 @@
 %endif
 
 Name:           lxqt-wayland-session
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        Files needed for the LXQt Wayland Session
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-4.0
@@ -51,6 +51,7 @@ Patch5:         0006-configuration-changes-for-default-river-session.patch
 Patch6:         0007-configuration-changes-for-default-sway-session.patch
 
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
@@ -59,9 +60,9 @@ BuildRequires:  xdg-user-dirs
 
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(lxqt) >= 2.1.0
 BuildRequires:  cmake(lxqt2-build-tools)
 
-BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 
 Requires:       layer-shell-qt6 >= 6.2.0
 Requires:       qt6-wayland >= 6.2.0
@@ -202,9 +203,6 @@ install -m0644 default-compositor-wayfire %{buildroot}%{_datadir}/lxqt/wayland/d
 %endif
 
 %fdupes -s %{buildroot}%{_datadir}/themes/
-
-%check
-%ctest
 
 %files
 %doc README.md

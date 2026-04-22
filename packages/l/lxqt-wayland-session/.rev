@@ -124,4 +124,14 @@
     niri configuration</comment>
     <requestid>1342142</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d72fd99c1ced8037b0328c7f53de6c75</srcmd5>
+    <version>0.4.0</version>
+    <time>1776869857</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.0:
+  * Added support for &quot;openmenu&quot; in lxqt-qdbus script for mainmenu
+    also</comment>
+    <requestid>1348583</requestid>
+  </revision>
 </revisionlist>
