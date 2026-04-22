@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 22 08:19:40 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- ca-certificate requires coreutils and does not work with busybox
+
+-------------------------------------------------------------------
 Wed Apr 17 14:56:15 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - update kiwi schemaversion to 7.4

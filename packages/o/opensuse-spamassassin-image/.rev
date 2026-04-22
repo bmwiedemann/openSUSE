@@ -51,4 +51,12 @@
     <comment></comment>
     <requestid>1169017</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>9ea88e759b8f724a970b523ed230ae66</srcmd5>
+    <version>1.0.0</version>
+    <time>1776870093</time>
+    <user>anag_factory</user>
+    <comment>- ca-certificate requires coreutils and does not work with busybox</comment>
+    <requestid>1348746</requestid>
+  </revision>
 </revisionlist>
