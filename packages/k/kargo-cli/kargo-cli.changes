@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 22 05:59:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.1:
+  * chore(backport release-1.10): fix: cli and server to match
+    openapi spec (#6136)
+
+-------------------------------------------------------------------
 Sat Apr 18 07:23:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.0:
