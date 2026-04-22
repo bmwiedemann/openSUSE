@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 13:29:24 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- disable vulkan build on Leap 16.0 and before
+  16.1 is supposed to get a newer glslang stack to fix the support
+
+-------------------------------------------------------------------
 Fri Apr 17 07:40:40 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 0.21.0

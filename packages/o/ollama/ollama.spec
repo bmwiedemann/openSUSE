@@ -16,10 +16,16 @@
 #
 
 
+%{bcond_with rocm}
 %if 0%{?is_opensuse}
 %{bcond_with cuda}
 %else
 %{bcond_without cuda}
+%endif
+%if 0%{?suse_version} >= 1610
+%{bcond_without vulkan}
+%else
+%{bcond_with vulkan}
 %endif
 %{bcond_with rocm}
 
@@ -57,15 +63,12 @@ BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.24
 BuildRequires:  group(render)
 BuildRequires:  group(video)
-BuildRequires:  pkgconfig(vulkan)
-# For Vulkan, or we have missing symbols
-BuildRequires:  glslang-devel
-BuildRequires:  libggml-base0
-BuildRequires:  vulkan-tools
-
 Requires:       group(render)
 Requires:       group(video)
 Recommends:     ( %{name}-vulkan or %{name}-cuda or %{name}-rocm )
+%if %{with vulkan}
+BuildRequires:  pkgconfig(vulkan)
+%endif
 %if %{with cuda}
 # requires cuda-toolkit*-config-common, cuda-cudart, cuda-cccl
 BuildRequires:  cuda-cudart-devel-%{cuda_version}
@@ -207,7 +210,7 @@ go test -v ./...
 # verify for missing symbols to avoid shipping a broken version, which would
 # silently not load
 export LD_LIBRARY_PATH=%buildroot%_libdir/ollama
-for backend in cuda vulkan; do
+for backend in cuda hip vulkan; do
   file=%buildroot%_libdir/ollama/libggml-${backend}.so
   test -e "$file" || continue
   ldd -r "$file" | grep "undefined symbol:" && exit 1
@@ -242,8 +245,10 @@ exit 0
 %{_fillupdir}/sysconfig.%{name}
 %attr(-, ollama, ollama) %{_localstatedir}/lib/%{name}
 
+%if %{with vulkan}
 %files vulkan
 %{_libdir}/ollama/libggml-vulkan.so
+%endif
 
 %if %{with cuda}
 %files cuda

@@ -785,4 +785,13 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * Ollama app is updated to fix image attachment errors (forwarded request 1348061 from adrianSuSE)</comment>
     <requestid>1348062</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>95e5151a74fd4ce8007f3b4fe891da1e</srcmd5>
+    <version>0.21.0</version>
+    <time>1776869739</time>
+    <user>anag_factory</user>
+    <comment>- disable vulkan build on Leap 16.0 and before
+  16.1 is supposed to get a newer glslang stack to fix the support (forwarded request 1348415 from adrianSuSE)</comment>
+    <requestid>1348416</requestid>
+  </revision>
 </revisionlist>
