@@ -264,4 +264,15 @@
   * Gave parent windows to some dialogs</comment>
     <requestid>1315885</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c4ad3be9de7b9f48b7a260e578fc9676</srcmd5>
+    <version>2.13.0</version>
+    <time>1776869861</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.13.0:
+  * Improved drawing of info-bar
+  * Used an SVG icon for the app
+  * Updated translations</comment>
+    <requestid>1348587</requestid>
+  </revision>
 </revisionlist>

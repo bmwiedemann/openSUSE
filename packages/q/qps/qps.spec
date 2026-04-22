@@ -17,7 +17,7 @@
 
 
 Name:           qps
-Version:        2.12.0
+Version:        2.13.0
 Release:        0
 Summary:        Visual Process Manager
 License:        GPL-2.0-or-later
@@ -25,16 +25,17 @@ URL:            https://github.com/lxqt/qps
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+
 BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(lxqt) >= 2.1.0
+BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 
 %description
 Qps is a visual process manager, an X11 version of "top" or "ps" that
@@ -53,9 +54,11 @@ processes.
 
 %install
 %{qt6_install}
-%suse_update_desktop_file -r %{name} System Monitor
 
 %find_lang %{name} --with-qt
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 %doc CHANGELOG README.md
