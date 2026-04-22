@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Apr 22 05:49:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.16:
+  https://github.com/ansible/ansible/blob/v2.18.16/changelogs/CHANGELOG-v2.18.rst
+  * Minor Changes
+    - ansible-test - Generate dist_info when running tests.
+    - ansible-test - Replace the parallels managed macOS provider with
+      a new mac provider.
+    - ansible-test - Switch managed macOS remotes from x86_64 to
+      aarch64.
+
+-------------------------------------------------------------------
+Wed Mar 25 13:11:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.15:
+  https://github.com/ansible/ansible/blob/v2.18.15/changelogs/CHANGELOG-v2.18.rst
+  * Minor Changes
+    - ansible-test - Add container/remote aliases for more loosely
+      specifying managed test environments.
+    - ansible-test - Add support for using the Ansible Core CI
+      service from GitHub Actions.
+  * Bugfixes
+    - rpm_key - Use librpm library API instead of gpg utility to
+      support version 6 PGP keys (#86157).
+
+-------------------------------------------------------------------
 Fri Feb 27 07:35:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.14:
