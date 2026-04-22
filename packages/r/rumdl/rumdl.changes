@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 22 06:27:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.78:
+  * Fixed
+    - lsp: discover .config/rumdl.toml when walking up from a file
+      (9d32fa7)
+- Update to version 0.1.77:
+  * Fixed
+    - md046: ignore container content when detecting code-block
+      style (2685388)
+
+-------------------------------------------------------------------
 Mon Apr 20 18:25:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.76:
