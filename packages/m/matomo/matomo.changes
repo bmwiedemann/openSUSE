@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Apr 22 12:56:26 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.9.0
+
+- Update to 5.9.0
+  * Core improvements
+    #23885, #20659 Add a Segment Management Page.
+    #24204, #20618 remove current segment value from suggested values request.
+    #23423, #24185 Correctly normalise diacritics in segment search.
+    #24208, #21062 Make the countryName segment case-insensitive.
+    #24341 Suppress form submission on Segment page.
+    #24281 Fix DevicePlugins.getPlugin for multi-site multi-period requests.
+    #24172 Adds escaping for HTMLRenderer columns.
+    #24180 Update DOMPurify to latest version.
+    #24036 Log peak memory usage during archiving.
+    #24270 Use long blobs instead of medium blobs for new archive tables.
+    #24214, #21478 Insert local config file path to config file page
+  * Security
+    #24226, #22198 Offer ability to sign someone out of all sessions.
+    #24099, #23672 Add coverage for removing all user settings on deletion.
+  * Reporting and UI
+    #24019, #22119 Export Dashboard to Scheduled Reports.
+    #24080 Fix: Visitor Map does not display Okinawa when Japan is selected.
+    #24224 Clean up renamed daily unique metrics on parent rows in Actions hierarchy.
+    #24232 Calendar refresh V2.
+    #24139, #18573, #22786 Differentiate current options (Day/Week/Month/Year) from new presets.
+    #24289, #21712 Remove broken SEO widget.
+    #24294, #19733 Add goal report shortcut to Manage Goals page.
+  * Privacy
+    #24238 Updates Privacy / ‘Asking for consent’ page.
+    #24258 Update GDPR overview page.
+    #24262 Add new privacy page and update controller & menu
+    #24263 Update wording on Privacy > Opt out page.
+    #24264 Add new ePrivacy laws page.
+    #24305 Enable Privacy Compliance feature.
+    #24321 Update GDPR overview text to make DPA clearer.
+
+-------------------------------------------------------------------
 Thu Mar  5 11:16:51 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.8.0
 
 - Update to 5.8.0
