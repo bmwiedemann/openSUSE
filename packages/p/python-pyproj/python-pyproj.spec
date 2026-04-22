@@ -21,12 +21,22 @@ Name:           python-pyproj
 Version:        3.7.2
 Release:        0
 Summary:        Python interface to PROJ library
-License:        SUSE-Public-Domain AND X11
+License:        LicenseRef-SUSE-Public-Domain AND X11
 Group:          Development/Languages/Python
 URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM v3.7.2-Fix-tests-for-PROJ-9.7.0-and-newer-1557.patch -- based on commit 055cab9
 Patch0:         https://github.com/pyproj4/pyproj/commit/055cab9.patch#/v3.7.2-Fix-tests-for-PROJ-9.7.0-and-newer-1557.patch
+# PATCH-FIX-UPSTREAM v3.7.2-TST-Fix-tests-for-RGF93-v1-ETRS89-FRA-RGF93-v1-1560.patch -- based on commit 563346b
+Patch1:         v3.7.2-TST-Fix-tests-for-RGF93-v1-ETRS89-FRA-RGF93-v1-1560.patch
+# PATCH-FIX-UPSTREAM v3.7.2-TST-Update-tests-with-new-transformations-in-PROJ-9..patch -- based on commit f92e153
+Patch2:         v3.7.2-TST-Update-tests-with-new-transformations-in-PROJ-9..patch
+# PATCH-FIX-UPSTREAM v3.7.2-Fix-tests-and-workflows-5.patch -- based on commit 3da9188
+Patch3:         v3.7.2-Fix-tests-and-workflows-5.patch
+# PATCH-FIX-UPSTREAM v3.7.2-Adjust-transformer-tests-for-PROJ-9.8-behavior-chang.patch -- based on commit 47f6dd4
+Patch4:         v3.7.2-Adjust-transformer-tests-for-PROJ-9.8-behavior-chang.patch
+# PATCH-FIX-UPSTREAM v3.7.2-Adjust-transformer-tests-for-PROJ-9.8.1-revert.patch -- gh#pyproj/issues#1588
+Patch5:         v3.7.2-TST-Fix-tests-after-PROJ-9.8.1-EPSG-database-revert.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}

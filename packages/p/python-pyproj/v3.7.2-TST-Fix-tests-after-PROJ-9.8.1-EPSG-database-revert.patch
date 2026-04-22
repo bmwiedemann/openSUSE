@@ -1,0 +1,108 @@
+From b266041a437138c81ebfd565175143f2714e7911 Mon Sep 17 00:00:00 2001
+From: Libor Pechacek <lpechacek@gmx.com>
+Date: Sun, 12 Apr 2026 15:29:04 +0200
+References: gh#pyproj/issues#1588
+Upstream: submitted
+Subject: [PATCH] TST Fix tests after PROJ 9.8.1 EPSG database revert
+
+PROJ reverted EPSG database from EPSG 12.054 to 12.029 with v9.8.1, so
+we need to re-adjust the test for the previous behavior.
+---
+ test/conftest.py         |    1 +
+ test/crs/test_crs.py     |    3 ++-
+ test/test_transformer.py |   13 +++++++------
+ 3 files changed, 10 insertions(+), 7 deletions(-)
+
+--- a/test/conftest.py
++++ b/test/conftest.py
+@@ -16,6 +16,7 @@ PROJ_GTE_941 = PROJ_LOOSE_VERSION >= ver
+ PROJ_GTE_95 = PROJ_LOOSE_VERSION >= version.parse("9.5.0")
+ PROJ_GTE_971 = PROJ_LOOSE_VERSION >= version.parse("9.7.1")
+ PROJ_GTE_980 = PROJ_LOOSE_VERSION >= version.parse("9.8.0")
++PROJ_GTE_981 = PROJ_LOOSE_VERSION >= version.parse("9.8.1")
+ 
+ 
+ def unset_data_dir():
+--- a/test/crs/test_crs.py
++++ b/test/crs/test_crs.py
+@@ -24,6 +24,7 @@ from test.conftest import (
+     PROJ_GTE_941,
+     PROJ_GTE_971,
+     PROJ_GTE_980,
++    PROJ_GTE_981,
+     assert_can_pickle,
+     grids_available,
+ )
+@@ -1223,7 +1224,7 @@ def test_coordinate_operation__from_stri
+     co = CoordinateOperation.from_string("urn:ogc:def:coordinateOperation:EPSG::1671")
+     # PROJ 9.7.1+ renamed this operation from "RGF93 v1 to WGS 84 (1)"
+     # to "ETRS89-FRA [RGF93 v1] to WGS 84 (1)"
+-    if PROJ_GTE_980:
++    if PROJ_GTE_980 and not PROJ_GTE_981:
+         assert co.name == "ETRS89-FRA [RGF93 v1] to WGS 84 (1)"
+     else:
+         assert co.name == "RGF93 v1 to WGS 84 (1)"
+--- a/test/test_transformer.py
++++ b/test/test_transformer.py
+@@ -20,6 +20,7 @@ from pyproj.exceptions import ProjError
+ from pyproj.transformer import AreaOfInterest, TransformerGroup
+ from test.conftest import (
+     PROJ_GTE_980,
++    PROJ_GTE_981,
+     grids_available,
+     proj_env,
+     proj_network_env,
+@@ -737,7 +738,7 @@ def test_transformer_group__get_transfor
+             assert len(tg.transformers) == 3
+         else:
+             assert len(tg.transformers) == 2
+-    elif PROJ_GTE_980:
++    elif PROJ_GTE_980 and not PROJ_GTE_981:
+         # Newer proj includes additional transformations
+         assert len(tg.transformers) == 3
+     else:
+@@ -1131,7 +1132,7 @@ def test_transformer_accuracy_filter():
+ 
+ 
+ def test_transformer_allow_ballpark_filter():
+-    if PROJ_GTE_980:
++    if PROJ_GTE_980 and not PROJ_GTE_981:
+         transformer = Transformer.from_crs(
+             "EPSG:4326", "EPSG:4258", authority="PROJ", allow_ballpark=False
+         )
+@@ -1167,7 +1168,7 @@ def test_transformer_authority_filter():
+ def test_transformer_from_pipeline__input_types(input_string):
+     # PROJ 9.7.1+ renamed this operation from "RGF93 v1 to WGS 84 (1)"
+     # to "ETRS89-FRA [RGF93 v1] to WGS 84 (1)"
+-    if PROJ_GTE_980:
++    if PROJ_GTE_980 and not PROJ_GTE_981:
+         assert (
+             Transformer.from_pipeline(input_string).description
+             == "ETRS89-FRA [RGF93 v1] to WGS 84 (1)"
+@@ -1195,7 +1196,7 @@ def test_transformer_from_pipeline__wkt_
+             method_name,
+         )()
+     ).description
+-    if PROJ_GTE_980:
++    if PROJ_GTE_980 and not PROJ_GTE_981:
+         assert description == "ETRS89-FRA [RGF93 v1] to WGS 84 (1)"
+     else:
+         assert description == "RGF93 v1 to WGS 84 (1)"
+@@ -1612,7 +1613,7 @@ def test_transformer_group_allow_ballpar
+     group = TransformerGroup(
+         "EPSG:4326", "EPSG:4258", authority="PROJ", allow_ballpark=False
+     )
+-    if PROJ_GTE_980:
++    if PROJ_GTE_980 and not PROJ_GTE_981:
+         assert len(group.transformers) == 1
+         assert all(
+             "Ballpark" not in transformer.description
+@@ -1631,7 +1632,7 @@ def test_transformer_group_allow_superse
+ 
+ def test_transformer_group_authority_filter():
+     group = TransformerGroup("EPSG:4326", "EPSG:4258", authority="PROJ")
+-    if PROJ_GTE_980:
++    if PROJ_GTE_980 and not PROJ_GTE_981:
+         assert len(group.transformers) == 2
+     else:
+         assert len(group.transformers) == 1

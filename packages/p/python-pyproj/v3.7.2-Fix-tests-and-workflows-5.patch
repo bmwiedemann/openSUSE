@@ -1,0 +1,25 @@
+From 3da9188595355f7292c6a8b8ad870cfd172ab346 Mon Sep 17 00:00:00 2001
+From: Per Helge Aarnes <110827889+phaarnes@users.noreply.github.com>
+Date: Mon, 12 Jan 2026 21:37:04 +0100
+Subject: [PATCH] Fix tests and workflows (#5)
+
+update test (related to PROJ upgrade) and fix workflow
+---
+ test/test_transformer.py |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+--- a/test/test_transformer.py
++++ b/test/test_transformer.py
+@@ -732,7 +732,11 @@ def test_transformer_group__get_transfor
+     if grids_available(
+         "nl_nsgi_nlgeo2018.tif", "nl_nsgi_rdtrans2018.tif", check_all=True
+     ):
+-        assert len(tg.transformers) == 2
++        if PROJ_GTE_980:
++            # Newer proj includes additional transformations
++            assert len(tg.transformers) == 3
++        else:
++            assert len(tg.transformers) == 2
+     elif PROJ_GTE_980:
+         # Newer proj includes additional transformations
+         assert len(tg.transformers) == 3

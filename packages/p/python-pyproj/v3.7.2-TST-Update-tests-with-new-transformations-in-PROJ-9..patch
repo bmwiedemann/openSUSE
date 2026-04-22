@@ -1,0 +1,22 @@
+From f92e153dd5b2c596487bf04fbe7c265fe10d565f Mon Sep 17 00:00:00 2001
+From: Per Helge Aarnes <110827889+phaarnes@users.noreply.github.com>
+Date: Mon, 12 Jan 2026 14:54:09 +0100
+Subject: [PATCH] TST: Update tests with new transformations in PROJ 9.8
+ (#1568)
+
+---
+ test/test_transformer.py |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- a/test/test_transformer.py
++++ b/test/test_transformer.py
+@@ -733,6 +733,9 @@ def test_transformer_group__get_transfor
+         "nl_nsgi_nlgeo2018.tif", "nl_nsgi_rdtrans2018.tif", check_all=True
+     ):
+         assert len(tg.transformers) == 2
++    elif PROJ_GTE_980:
++        # Newer proj includes additional transformations
++        assert len(tg.transformers) == 3
+     else:
+         assert len(tg.transformers) == 1
+ 

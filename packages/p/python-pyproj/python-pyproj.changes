@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:12:36 UTC 2026 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Remove broken LicenseRef- typos
+- Fix history changelog
+
+-------------------------------------------------------------------
+Sun Apr 12 13:34:10 UTC 2026 - Libor Pechacek <lpechacek@gmx.com>
+
+- Fix tests for PROJ 9.8.0 and 9.8.1
+- Add upstream patches:
+  * v3.7.2-Adjust-transformer-tests-for-PROJ-9.8-behavior-chang.patch
+  * v3.7.2-Fix-tests-and-workflows-5.patch
+  * v3.7.2-TST-Fix-tests-for-RGF93-v1-ETRS89-FRA-RGF93-v1-1560.patch
+  * v3.7.2-TST-Update-tests-with-new-transformations-in-PROJ-9..patch
+- Add proposed upstream patch (#1588):
+  * v3.7.2-TST-Fix-tests-after-PROJ-9.8.1-EPSG-database-revert.patch
+
+-------------------------------------------------------------------
 Mon Feb 16 19:21:15 UTC 2026 - Libor Pechacek <lpechacek@gmx.com>
 
 - Fix test/crs/test_crs.py::test_datum_horizontal failure
@@ -344,7 +362,7 @@ Fri Jun 25 10:34:27 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix the python >= 3.7 build requirement
   * `BuildRequires: python` is a pure python2 specification now
-  * no need for the full stdlib (`BuildRequires: %pythons >= 3.7`)  
+  * no need for the full stdlib (`BuildRequires: %pythons >= 3.7`)
 
 -------------------------------------------------------------------
 Thu May 27 13:07:01 UTC 2021 - Libor Pechacek <lpechacek@suse.com>
@@ -690,12 +708,12 @@ Mon Mar 11 14:05:28 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 Tue Feb  5 07:06:44 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - update to 1.9.6 (python3.7 support)
-- spec-cleaner minimal 
+- spec-cleaner minimal
 
 -------------------------------------------------------------------
 Tue May 15 14:01:20 UTC 2018 - bruno@ioda-net.ch
 
-- Packaging : 
+- Packaging :
   + move to python singlespec
   + use %check and run unit tests for version >= 1500
   + spec-cleaner (date/license)
@@ -703,14 +721,14 @@ Tue May 15 14:01:20 UTC 2018 - bruno@ioda-net.ch
   * fix for issue #42 compilation error with microsoft visual studio
   + 1.9.5
   * update proj4 source to latest github master commit 953cc00f
-  * port of basemap fix for input arrays in fortran order 
-  * restore inverse Hammer patch that was lost when proj4 source 
+  * port of basemap fix for input arrays in fortran order
+  * restore inverse Hammer patch that was lost when proj4 source
     code was updated.
 
 -------------------------------------------------------------------
 Fri Oct 23 17:11:32 UTC 2015 - bruno@ioda-net.ch
 
-- Packaging : merged package to python-pyproj src in App:Geo 
+- Packaging : merged package to python-pyproj src in App:Geo
 
 -------------------------------------------------------------------
 Wed Oct 21 15:03:01 UTC 2015 - bruno@ioda-net.ch
@@ -723,21 +741,21 @@ Wed Oct 21 15:03:01 UTC 2015 - bruno@ioda-net.ch
    * added to_latlong method (issue 51).
    * fix back azimuth when lon1 and lon2 are identical.
   + 1.9.3 (svn revision 327)
-   * Geod now uses C code adapted from geographiclib now included 
-	 in proj4 source,  instead of pure python code directly from 
+   * Geod now uses C code adapted from geographiclib now included
+	 in proj4 source,  instead of pure python code directly from
      geographiclib.
    * make radians=True work with Geod.npts (issue 47).
-   * allow PROJ_DIR env var to control location of proj data 
+   * allow PROJ_DIR env var to control location of proj data
      (issue 40).
   + 1.9.2 (svn revision 301)
-   * updated proj4 src to 4.8.0 - includes two new map 
+   * updated proj4 src to 4.8.0 - includes two new map
      projections (natearth and isea).
   + 1.9.1 (svn revision 285)
-   * restore compatibility with python 2.4/2.5, which was broken 
-     by the addition of the geographiclib geodesic 
-     module (issue 36). 
+   * restore compatibility with python 2.4/2.5, which was broken
+     by the addition of the geographiclib geodesic
+     module (issue 36).
 
-- packaging 
+- packaging
   + create equivalent python3 package
   + cleanup spec format
 
