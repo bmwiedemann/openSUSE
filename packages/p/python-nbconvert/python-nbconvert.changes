@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Apr 22 06:57:22 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 7.17.1 (bsc#1262457, bsc#1262456)
+  This is a security release, fixing two CVEs:
+  - CVE-2026-39377: https://github.com/jupyter/nbconvert/security/advisories/GHSA-4c99-qj7h-p3vg
+  - CVE-2026-39378: https://github.com/jupyter/nbconvert/security/advisories/GHSA-7jqv-fw35-gmx9
+
+  ### Enhancements made
+  - Allow configureable WebPDF JavaScript processing timeout
+  ### Bugs fixed
+  - Fix `PermissionError` when checking template paths on shared
+    filesystems
+  - Tweak webpdf template logic to fix duplicate extension problem
+  ### Maintenance and upkeep improvements
+  - specify python version for pre
+
+-------------------------------------------------------------------
+Sun Mar  8 21:13:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.17.0:
+  * Add support for arbitrary browser arguments #2227 (@shreve,
+    @Carreau, @krassowski)
+  * Fix QtPNGExporter returning empty bytes on macOS #2264
+  * Fix CVE-2025-53000: Secure Inkscape Windows path (registry
+    first + block CWD) #2261
+  * Fix get_export_names and get_exporter default args #2228
+  * PyPA-Compliant Summary #2226
+  * avoid cov environment on free-threaded Pythons #2267
+  * update pre-commit, and fix all issues. #2238
+  * Drop test on 3.9, test on 3.13, 3.14, 3.14t #2237
+  * Bump the actions group across 1 directory with 2 updates
+  * Replace `@flaky.flaky` decorate with pytest marker #2229
+  * update to mermaid 11.10.0 #2224
+  * Drop support for Python 3.8, fix the CI tests #2221
+
+-------------------------------------------------------------------
 Fri Jan 23 11:07:34 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Relaxed tinycss2 upper bound to enable build
