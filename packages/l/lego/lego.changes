@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 22 06:03:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.35.1:
+  Due to an error related to Snapcraft, some artifacts of the
+  v4.35.0 release have not been published.
+  This release contains the same things as v4.35.0.
+- Update to version 4.35.0:
+  * 8539dc4 desec: use API to find the zone (#2989)
+  * cef0d08 feat: improve domain matcher (#2992)
+
+-------------------------------------------------------------------
 Fri Apr 17 20:01:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.34.0:
