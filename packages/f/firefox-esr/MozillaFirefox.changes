@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Tue Apr 21 12:42:20 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 140.10.0 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 140.10.0
+  https://www.mozilla.org/security/advisories/mfsa2026-32
+  MFSA 2026-32 (boo#1262230)
+  * MFSA-RESERVE-2026-2014596 (bmo#2014596)
+    Use-after-free in the DOM: Core & HTML component
+  * MFSA-RESERVE-2026-2021769 (bmo#2021769)
+    Use-after-free in the WebRTC component
+  * MFSA-RESERVE-2026-2022604 (bmo#2022604)
+    Uninitialized memory in the Audio/Video: Web Codecs component
+  * MFSA-RESERVE-2026-2022610 (bmo#2022610)
+    Information disclosure due to uninitialized memory in the
+    Graphics: Canvas2D component
+  * MFSA-RESERVE-2026-2023407 (bmo#2023407)
+    Privilege escalation in the Graphics: WebRender component
+  * MFSA-RESERVE-2026-2025883 (bmo#2025883)
+    Uninitialized memory in the Audio/Video: Web Codecs component
+  * MFSA-RESERVE-2026-2027499 (bmo#2027499)
+    Incorrect boundary conditions in the WebRTC component
+  * MFSA-RESERVE-2026-2027501 (bmo#2027501)
+    Incorrect boundary conditions in the WebRTC component
+  * MFSA-RESERVE-2026-2027541 (bmo#2027541)
+    Use-after-free in the JavaScript Engine component
+  * MFSA-RESERVE-2026-2013588 (bmo#2013588)
+    Invalid pointer in the JavaScript: WebAssembly component
+  * MFSA-RESERVE-2026-2016164 (bmo#2016164)
+    Use-after-free in the Widget: Cocoa component
+  * MFSA-RESERVE-2026-2017857 (bmo#2017857)
+    Privilege escalation in the Networking component
+  * MFSA-RESERVE-2026-2021080 (bmo#2021080)
+    Spoofing issue in the DOM: Core & HTML component
+  * MFSA-RESERVE-2026-2021666 (bmo#2021666)
+    Mitigation bypass in the File Handling component
+  * MFSA-RESERVE-2026-2022162 (bmo#2022162)
+    Incorrect boundary conditions in the DOM: Device Interfaces
+    component
+  * MFSA-RESERVE-2026-2022419 (bmo#2022419)
+    Information disclosure in the Form Autofill component
+  * MFSA-RESERVE-2026-2023207 (bmo#2023207)
+    Incorrect boundary conditions in the Libraries component in
+    NSS
+  * MFSA-RESERVE-2026-2023209 (bmo#2023209)
+    Other issue in the Libraries component in NSS
+  * MFSA-RESERVE-2026-2023753 (bmo#2023753)
+    Privilege escalation in the Debugger component
+  * MFSA-RESERVE-2026-2024220 (bmo#2024220)
+    Other issue in the Storage: IndexedDB component
+  * MFSA-RESERVE-2026-2025067 (bmo#2025067)
+    Mitigation bypass in the DOM: Security component
+  * MFSA-RESERVE-2026-2026089 (bmo#2026089)
+    Incorrect boundary conditions in the Libraries component in
+    NSS
+  * MFSA-RESERVE-2026-2021770 (bmo#2021770)
+    Incorrect boundary conditions in the WebRTC: Networking
+    component
+  * MFSA-RESERVE-2026-1 (bmo#1935995, bmo#1999158, bmo#2015952,
+    bmo#2021909, bmo#2022026, bmo#2022041, bmo#2022088,
+    bmo#2022276, bmo#2022335, bmo#2022338, bmo#2022373,
+    bmo#2022597, bmo#2022874, bmo#2023276, bmo#2023544,
+    bmo#2023551, bmo#2023599, bmo#2023608, bmo#2023814,
+    bmo#2024233, bmo#2024239, bmo#2024241, bmo#2024242,
+    bmo#2024250, bmo#2024251, bmo#2024343, bmo#2024422,
+    bmo#2024425, bmo#2024440, bmo#2024442, bmo#2024446,
+    bmo#2024458, bmo#2024463, bmo#2024478, bmo#2024650,
+    bmo#2024653, bmo#2024654, bmo#2024655, bmo#2024656,
+    bmo#2024661, bmo#2024662, bmo#2024668, bmo#2024919,
+    bmo#2025278, bmo#2025349, bmo#2025350, bmo#2025354,
+    bmo#2025360, bmo#2025363, bmo#2025370, bmo#2025379,
+    bmo#2025381, bmo#2025399, bmo#2025400, bmo#2025403,
+    bmo#2025407, bmo#2025415, bmo#2025420, bmo#2025427,
+    bmo#2025429, bmo#2025430, bmo#2025479, bmo#2025489,
+    bmo#2025493, bmo#2025497, bmo#2025502, bmo#2025515,
+    bmo#2025517, bmo#2025526, bmo#2025609, bmo#2025948,
+    bmo#2025949, bmo#2025951, bmo#2025953, bmo#2025955,
+    bmo#2025962, bmo#2025969, bmo#2025970, bmo#2025971,
+    bmo#2025973, bmo#2025976, bmo#2025977, bmo#2026280,
+    bmo#2026285, bmo#2026293, bmo#2026296, bmo#2026310,
+    bmo#2027237, bmo#2027260, bmo#2027268, bmo#2027277,
+    bmo#2027284, bmo#2027291, bmo#2027293, bmo#2027298,
+    bmo#2027330, bmo#2027342, bmo#2027345, bmo#2027359,
+    bmo#2027365, bmo#2027378, bmo#2027754, bmo#2027959,
+    bmo#2027962, bmo#2027964, bmo#2027971, bmo#2027974,
+    bmo#2027979, bmo#2027982, bmo#2027995, bmo#2028001,
+    bmo#2028267, bmo#2028268, bmo#2028275, bmo#2028288,
+    bmo#2028290, bmo#2028291, bmo#2028528, bmo#2028551,
+    bmo#2028627, bmo#2028879, bmo#2028889, bmo#2029061,
+    bmo#2029071, bmo#2029283, bmo#2029296, bmo#2029314,
+    bmo#2029323, bmo#2029411, bmo#2029423, bmo#2029424,
+    bmo#2029425, bmo#2029427, bmo#2029436, bmo#2029440,
+    bmo#2029449, bmo#2029450, bmo#2029458, bmo#2029462,
+    bmo#2029468, bmo#2029472, bmo#2029690, bmo#2029707,
+    bmo#2029708, bmo#2029728, bmo#2029802, bmo#2029896,
+    bmo#2029906, bmo#2030106, bmo#2030118, bmo#2030123,
+    bmo#2030135, bmo#2030230, bmo#2030320)
+    Memory safety bugs fixed in Firefox ESR 115.35, Firefox ESR
+    140.10, Thunderbird ESR 140.10, Firefox 150 and Thunderbird
+    150
+  * MFSA-RESERVE-2026-2 (bmo#2010727, bmo#2019004, bmo#2019224,
+    bmo#2019547, bmo#2020378, bmo#2022381, bmo#2022608,
+    bmo#2022785, bmo#2023120, bmo#2023128, bmo#2023140,
+    bmo#2023279, bmo#2023836, bmo#2023882, bmo#2023925,
+    bmo#2023950, bmo#2023959, bmo#2023965, bmo#2024243,
+    bmo#2024245, bmo#2024247, bmo#2024253, bmo#2024346,
+    bmo#2024357, bmo#2024416, bmo#2024420, bmo#2024429,
+    bmo#2024432, bmo#2024455, bmo#2024466, bmo#2024468,
+    bmo#2024476, bmo#2024664, bmo#2024666, bmo#2024669,
+    bmo#2024670, bmo#2024671, bmo#2024761, bmo#2024918,
+    bmo#2025292, bmo#2025332, bmo#2025348, bmo#2025384,
+    bmo#2025395, bmo#2025458, bmo#2025461, bmo#2025463,
+    bmo#2025481, bmo#2025483, bmo#2025485, bmo#2025494,
+    bmo#2025506, bmo#2025511, bmo#2025513, bmo#2025520,
+    bmo#2026277, bmo#2026282, bmo#2026288, bmo#2026289,
+    bmo#2026311, bmo#2026312, bmo#2026869, bmo#2027152,
+    bmo#2027161, bmo#2027238, bmo#2027261, bmo#2027269,
+    bmo#2027274, bmo#2027280, bmo#2027281, bmo#2027300,
+    bmo#2027302, bmo#2027331, bmo#2027339, bmo#2027340,
+    bmo#2027738, bmo#2027975, bmo#2028000, bmo#2028011,
+    bmo#2028289, bmo#2028525, bmo#2028728, bmo#2028887,
+    bmo#2028888, bmo#2028896, bmo#2029063, bmo#2029064,
+    bmo#2029290, bmo#2029291, bmo#2029294, bmo#2029300,
+    bmo#2029304, bmo#2029316, bmo#2029317, bmo#2029401,
+    bmo#2029415, bmo#2029430, bmo#2029457, bmo#2029727,
+    bmo#2029735, bmo#2029743, bmo#2029752, bmo#2029754,
+    bmo#2029776, bmo#2029809, bmo#2030324, bmo#2030370)
+    Memory safety bugs fixed in Firefox ESR 140.10, Thunderbird
+    ESR 140.10, Firefox 150 and Thunderbird 150
+
+-------------------------------------------------------------------
 Tue Apr  7 12:13:24 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Firefox Extended Support Release 140.9.1 ESR
