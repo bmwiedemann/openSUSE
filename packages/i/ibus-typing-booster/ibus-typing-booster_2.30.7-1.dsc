@@ -2,9 +2,9 @@ Format: 3.0 (quilt)
 Source: ibus-typing-booster
 Binary: ibus-typing-booster
 Architecture: all
-Version: 2.30.3-1
+Version: 2.30.7-1
 Maintainer: Debian Input Method Team <debian-input-method@lists.debian.org>
-Uploaders:  Boyuan Yang <byang@debian.org>,
+Uploaders: Boyuan Yang <byang@debian.org>
 Homepage: https://mike-fabian.github.io/ibus-typing-booster/
 Description: Completion input method to speedup typing
  Ibus-typing-booster is a predictive input method and predicts
@@ -19,11 +19,11 @@ Build-Conflicts: myspell-es
 Package-List:
  ibus-typing-booster deb utils optional arch=all
 Checksums-Sha1:
- e81d962a9cc15527b1448c44f0dfaf28e36e0b15 14715541 ibus-typing-booster_2.30.3.orig.tar.gz
- 8e3c575432f1e8a8dbd37f01a9ee8ae361d76fb8 6092 ibus-typing-booster_2.30.3-1.debian.tar.xz
+ 327854b525a2f2242a90df4f38e24aaa297f775a 14728244 ibus-typing-booster_2.30.7.orig.tar.gz
+ 8dfd8f5d4710c5a28746564ebaebd9c5fc32f687 6128 ibus-typing-booster_2.30.7-1.debian.tar.xz
 Checksums-Sha256:
- 75eda2aec4f5d52706f4181743fff236c44911fd3312de06fd35c86533213ae4 14715541 ibus-typing-booster_2.30.3.orig.tar.gz
- e6939f861aa96c26517d5bfbd5a655080b769c9a337339ec5555075d97368dc2 6092 ibus-typing-booster_2.30.3-1.debian.tar.xz
+ bcc0a4e4af30d7e6375997c13fff3162dd5615abfe9de7437af1406fe5cb71f4 14728244 ibus-typing-booster_2.30.7.orig.tar.gz
+ 7cee444eb163136a7c7154e71fdbe7739d4255dbb4e3faff69d1c14b41b0a4db 6128 ibus-typing-booster_2.30.7-1.debian.tar.xz
 Files:
- fbbdb05a8c4875b5c26d3796c4222ace 14715541 ibus-typing-booster_2.30.3.orig.tar.gz
- 2b0006cafb6ee382e5c64f985de0d97b 6092 ibus-typing-booster_2.30.3-1.debian.tar.xz
+ 48d32cc6c5033fad4d788d41dc5838eb 14728244 ibus-typing-booster_2.30.7.orig.tar.gz
+ eebc68f5827b34bd6c80e477ae7ff8c2 6128 ibus-typing-booster_2.30.7-1.debian.tar.xz

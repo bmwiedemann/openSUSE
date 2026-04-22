@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.30.3
+Version:        2.30.7
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -157,7 +157,8 @@ pushd engine
     fi
     python3 itb_emoji.py -v
 %if 0%{?suse_version} >= 1600
-    python3 itb_util.py -v
+    python3 itb_util_core.py -v
+    python3 itb_util_gui.py -v
 %endif
 popd
 mkdir -p /tmp/glib-2.0/schemas/
