@@ -85,4 +85,23 @@
 </comment>
     <requestid>1345753</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5b09dc08ed3c6105b886d07db4d0e9b0</srcmd5>
+    <version>14.3</version>
+    <time>1776870077</time>
+    <user>anag_factory</user>
+    <comment>- Update to 14.3:
+  * On ARM64 (AArch64), replaced the inline assembly implementation of
+    128-bit multiplication with a __uint128_t-based version.
+    This avoids potential miscompilations of the experimental MuseAir
+    hash observed with aggressive compiler optimizations (e.g. -O2/-O3)
+    on some toolchains (notably Apple Silicon), while still generating
+    optimal code on modern compilers.
+  * Fixed the speed computation of the undocumented -T option for the
+    recovery functions. The reported values are now comparable to those
+    of the generation functions. Note that the real speed is unchanged
+    from the previous version, only the way it is measured has changed.
+</comment>
+    <requestid>1348705</requestid>
+  </revision>
 </revisionlist>
