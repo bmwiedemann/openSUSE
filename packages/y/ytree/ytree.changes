@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 21 08:45:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.12
+   * Fixed bug in CutFilename which may lead to compile error.
+- Remove patch (upstreamed):
+  * ytree-2.11-fix-build.patch
+
+-------------------------------------------------------------------
+Tue Apr 21 06:30:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11
+  * Removed clock due to interference with cursor handling and
+    resizing (was experimental).
+  * InputString with UTF_8 suport.
+  * Some minor bugfixes.
+- Add patch:
+  * ytree-2.11-fix-build.patch
+
+-------------------------------------------------------------------
 Thu Feb 13 08:13:47 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.10
