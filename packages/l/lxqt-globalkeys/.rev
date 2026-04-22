@@ -458,4 +458,13 @@
     version</comment>
     <requestid>1315872</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e4dc8d799f0523f96d64f704c72d8820</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869835</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  * Updated translations and bumped the version</comment>
+    <requestid>1348569</requestid>
+  </revision>
 </revisionlist>

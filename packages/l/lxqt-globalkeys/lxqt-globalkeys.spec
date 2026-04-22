@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-globalkeys
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Global keyboard shortcuts registration
 License:        LGPL-2.1-or-later
@@ -25,16 +25,19 @@ URL:            https://github.com/lxqt/lxqt-globalkeys
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
+
 BuildRequires:  cmake(KF6WindowSystem) >= 6.0.0
+BuildRequires:  cmake(lxqt) >= %{version}
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools) >= 6.6
 BuildRequires:  cmake(Qt6Widgets) >= 6.6
-BuildRequires:  cmake(lxqt) >= %{version}
-BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
+
 Requires:       %{name}-branding = %{version}-%{release}
 
 %description
@@ -72,7 +75,6 @@ UI system libraries for lxqt-globalkeys
 
 %package branding-upstream
 Summary:        Upstream branding of %{name}
-Group:          System/GUI/LXQt
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding
@@ -84,8 +86,6 @@ This package provides the upstream look and feel for %{name}.
 
 %prep
 %autosetup -p1
-# Changing LXQt into X-LXQt in desktop files to be freedesktop compliant and shut rpmlint warnings
-#find -name '*desktop.in*' -exec sed -ri 's/(LXQt;)/X-\1/' {} +
 
 %build
 %cmake_qt6
@@ -93,13 +93,17 @@ This package provides the upstream look and feel for %{name}.
 
 %install
 %{qt6_install}
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 install -Dm 0644 %{buildroot}%{_datadir}/lxqt/globalkeyshortcuts.conf -t %{buildroot}%{_sysconfdir}/xdg/lxqt/
 
 %find_lang lxqt-config-globalkeyshortcuts --with-qt
 
 %ldconfig_scriptlets -n liblxqt-globalkeys2
 %ldconfig_scriptlets -n liblxqt-globalkeys-ui2
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/lxqt-config-globalkeyshortcuts.desktop
+desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/lxqt-globalkeyshortcuts.desktop
 
 %files
 %license LICENSE
