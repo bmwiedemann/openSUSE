@@ -425,4 +425,14 @@
     choice.</comment>
     <requestid>1320395</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>342088d824f1b1713f5100c60034efa8</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869827</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.0:
+  * Select base name in &quot;File name&quot; entry on showing save dialog
+  * Updated Translations</comment>
+    <requestid>1348562</requestid>
+  </revision>
 </revisionlist>
