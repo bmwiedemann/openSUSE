@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-powermanagement
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Power Management and Auto-suspend
 License:        LGPL-2.1-or-later
@@ -25,25 +25,31 @@ URL:            https://github.com/lxqt/lxqt-powermanagement
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel
+
 BuildRequires:  cmake(KF6IdleTime)
 BuildRequires:  cmake(KF6Solid)
 BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(lxqt)
+BuildRequires:  cmake(lxqt-globalkeys-ui)
+BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  pkgconfig(lxqt)
-BuildRequires:  pkgconfig(lxqt-globalkeys-ui) >= 2.1.0
+
 BuildRequires:  pkgconfig(xcb-dpms)
 BuildRequires:  pkgconfig(xcb-screensaver)
+
 Requires:       upower
+
 Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
@@ -53,7 +59,6 @@ LXQt daemon for power management and auto-suspend
 
 %prep
 %autosetup
-sed -i '/^Categories/s/\(LXQt\;\)/X-\1/' config/lxqt-config-powermanagement.desktop.in
 
 %build
 %cmake_qt6
@@ -64,6 +69,10 @@ sed -i '/^Categories/s/\(LXQt\;\)/X-\1/' config/lxqt-config-powermanagement.desk
 %fdupes -s %{buildroot}%{_datadir}
 
 %find_lang %{name} --with-qt --all-name
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/lxqt-config-powermanagement.desktop
+desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}.desktop
 
 %files
 %license LICENSE

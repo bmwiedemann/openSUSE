@@ -558,4 +558,16 @@
   * Small fixes and enhancements</comment>
     <requestid>1315874</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fb042309d52117e2c4d29aa7b376538f</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869844</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  * Separated idleness options for turning off monitors
+  * UI Improvement for Battery/AC idleness settings
+  * Small UI improvements
+  * Updated translations</comment>
+    <requestid>1348575</requestid>
+  </revision>
 </revisionlist>
