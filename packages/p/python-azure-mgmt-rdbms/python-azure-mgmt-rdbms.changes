@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 21 06:42:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Downgrade to previous upstream release
+  + Version 10.2.0b17
+  + Required to unbreak Azure CLI packages
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Wed Nov 26 15:10:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
