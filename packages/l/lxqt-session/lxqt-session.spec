@@ -18,7 +18,7 @@
 
 
 Name:           lxqt-session
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
@@ -39,11 +39,11 @@ Patch3:         0003-add-option-for-miriway.patch
 
 
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  pkgconfig
-BuildRequires:  qtxdg-tools >= 4.1.0
 BuildRequires:  xdg-user-dirs
 
 BuildRequires:  cmake(KF6WindowSystem)
@@ -51,6 +51,7 @@ BuildRequires:  cmake(LayerShellQt) >= 6.0.0
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(qtxdg-tools) >= 4.1.0
 BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(qtxdg-tools)
 
@@ -93,7 +94,6 @@ git am --reject %{SOURCE3}
 %endif
 
 sed -i 's/^\(Type=\).*/\1XSession/' xsession/lxqt.desktop.in
-sed -i '/^Categories/s/\(LXQt\;\)/X-\1/' lxqt-config-session/lxqt-config-session.desktop.in
 
 %build
 %cmake_qt6
@@ -112,7 +112,9 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %find_lang %{name} --with-qt --all-name
 
 %check
-%ctest
+for i in %{buildroot}%{_datadir}/applications/*.desktop; do
+  desktop-file-validate "$i"
+done
 
 %post
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \

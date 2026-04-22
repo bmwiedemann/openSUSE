@@ -1469,4 +1469,15 @@ comply with openSUSE policy
   * Prevented setting of (X11) global scale factors under Wayland</comment>
     <requestid>1315891</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8d575d5b1e1932636253cd6c3c033604</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869851</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.0:
+  * Separated X11 and Wayland settings
+  * Don't include Qt modules directly
+  * Updated translations</comment>
+    <requestid>1348579</requestid>
+  </revision>
 </revisionlist>

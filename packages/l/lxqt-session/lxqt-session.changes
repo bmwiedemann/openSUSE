@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 21 01:05:48 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to version 2.4.0:
+  * Separated X11 and Wayland settings
+  * Don't include Qt modules directly
+  * Updated translations
+
+-------------------------------------------------------------------
 Wed Nov  5 19:42:36 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.3.0:
