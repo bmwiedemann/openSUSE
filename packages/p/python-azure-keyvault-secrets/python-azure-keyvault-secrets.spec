@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-keyvault-secrets
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-keyvault-secrets
-Version:        4.10.0
+Version:        4.11.0
 Release:        0
 Summary:        Microsoft Azure Key Vault Secrets Client Library for Python
 License:        MIT
