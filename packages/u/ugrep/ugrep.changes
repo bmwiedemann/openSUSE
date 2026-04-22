@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 22 08:40:36 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.7.0:
+  * support TUI search on slow and incomplete standard input pipes
+    e.g. from tail -f #540
+  * update options -m (--max-count) and -K (--max-line) to stop
+    reading input upon reaching the stopping criterium, then exit
+    without draining the standard input pipe like GNU grep
+  * improve binary file detection for huge mixed files
+  * local config files located in the working directory are only
+    read when owned by the user running the ugrep process
+  * fix lzma 7zip api memory leak
+
+-------------------------------------------------------------------
 Thu Mar  5 19:43:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.6.0:

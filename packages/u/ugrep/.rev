@@ -706,4 +706,12 @@
     <comment>ugrep 7.6.0 (forwarded request 1336807 from AndreasStieger)</comment>
     <requestid>1336808</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>a931aff5dd38109c67b92ba0003ac241</srcmd5>
+    <version>7.7.0</version>
+    <time>1776870125</time>
+    <user>anag_factory</user>
+    <comment>ugrep 7.7.0 (forwarded request 1348751 from AndreasStieger)</comment>
+    <requestid>1348752</requestid>
+  </revision>
 </revisionlist>
