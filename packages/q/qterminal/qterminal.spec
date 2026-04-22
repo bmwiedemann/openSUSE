@@ -17,7 +17,7 @@
 
 
 Name:           qterminal
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        A Qt-based terminal emulator
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -25,12 +25,15 @@ URL:            https://github.com/lxqt/qterminal
 Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  c++_compiler
+
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 %if 0%{?suse_version} < 1600
 BuildRequires:  utempter-devel
 %endif
+
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
@@ -40,6 +43,7 @@ BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(qtermwidget6) >= 2.2.0
+
 Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
@@ -60,7 +64,8 @@ The lightweight Qt terminal emulator.
 %find_lang %{name} --with-qt
 
 %check
-%ctest
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}-drop.desktop
 
 %files
 %doc AUTHORS CHANGELOG README.md CONTRIBUTING.md

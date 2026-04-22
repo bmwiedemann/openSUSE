@@ -322,4 +322,19 @@
   * Silenced Clang warnings</comment>
     <requestid>1315887</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7e43c3ae3e5a81113f6261e07594311c</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869862</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.0:
+  * Improved custom tab name behavior
+  * Use static QRegularExpressions
+  * Support shortcut for lock button of dropdown mode
+  * Issue template updates; added screenshot to the README
+  * Fixed creation of bookmarks file with new profile
+  * ui file cleanup
+  * Updated translations</comment>
+    <requestid>1348589</requestid>
+  </revision>
 </revisionlist>

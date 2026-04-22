@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 21 00:03:39 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to version 2.4.0:
+  * Improved custom tab name behavior
+  * Use static QRegularExpressions
+  * Support shortcut for lock button of dropdown mode
+  * Issue template updates; added screenshot to the README
+  * Fixed creation of bookmarks file with new profile
+  * ui file cleanup
+  * Updated translations
+
+-------------------------------------------------------------------
 Wed Nov  5 19:27:56 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.3.0:
