@@ -53,4 +53,13 @@
   * Made sure to run Qt6 lupdate</comment>
     <requestid>1315863</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>93ca559468687a778a18852becb0fe57</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869858</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  * Refactored YAML desktop file processing</comment>
+    <requestid>1348584</requestid>
+  </revision>
 </revisionlist>
