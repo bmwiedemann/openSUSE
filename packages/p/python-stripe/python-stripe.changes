@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:16:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 15.0.1
+  * Fix encoding two-dimensional array request params
+  * Improve types for `metadata` and other dict-like types
+  * Fix `str` / `repr` for `StripeObjects` with decimals &
+    add support for plain dicts
+
+-------------------------------------------------------------------
 Sun Mar 29 18:32:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 15.0.0:
