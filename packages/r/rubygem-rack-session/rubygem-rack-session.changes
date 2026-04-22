@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 22 08:37:09 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- New upstream release 2.1.2
+  * Fixed:  crafted session cookie don't lead to gain unauthorized access [CVE-2026-39324][bsc#1261831]
+
+-------------------------------------------------------------------
 Thu Oct  9 12:27:16 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
 
 - New upstream release 2.1.1
