@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        5.1776179508.bd2644d
+Version:        5.1776765124.5d91657
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -326,6 +326,8 @@ fi
 %defattr(-,root,root)
 %{_docdir}/os-autoinst
 %dir %{_prefix}/lib/os-autoinst
+%{_prefix}/lib/os-autoinst/debugviewer
+%{_prefix}/lib/os-autoinst/snd2png
 %{_prefix}/lib/os-autoinst/videoencoder
 %{_prefix}/lib/os-autoinst/basetest.pm
 #
