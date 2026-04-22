@@ -134,4 +134,41 @@ It reuses libraries used by the Go language tools alongside LLVM to provide an a
     functions</comment>
     <requestid>1325238</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>934adb9d6ed5d060d9c9b49e422ac174</srcmd5>
+    <version>0.41.0</version>
+    <time>1776869926</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.41.0:
+  * Release 0.41.0
+  * espflasher: update to espflasher 0.6.0
+  * machine_atmega328p_simulator: add correct build tag for arduino_uno after renaming
+  * build: actually use the version of llvm we are supposed to be testing by using brew link command
+  * targets: rename arduino target to arduino-uno
+  * runtime: handle GODEBUG on wasip2 (#5312)
+  * machine/esp32xx: add WASM simulator support for ESP32-C3/ESP32-S3 targets
+  * machine/esp32c3: clear GPIO STATUS before dispatching pin callbacks
+  * machine/esp32s3: use edge-triggered CPU interrupt for GPIO pin interrupts
+  * machine/esp32: default SPI CS pin to NoPin when unset
+  * testdata: fix flaky timers test by draining ticker channel after Stop
+  * ci: don't double zip release artifacts
+  * test: increase default timeout from 1 to 2 minutes to prevent spurious fails in CI from slow runners
+  * Add errors package to passing list
+  * net: update to latest net submodule with UDP and JS improvements
+  * compiler: implement method-set based AssignableTo and Implements (#5304)
+  * internal/tools: move into root
+  * go.mod, compiler: bump minimum Go version to 1.23
+  * wasm: add more stubbed file operations
+  * machine/esp32s3: implement Pin.SetInterrupt for GPIO pin change interrupts
+  * make spellfix (+ manual tweak)
+  * GNUmakefile: add context and expvar to stdlib tests
+  * GNUmakefile: add encoding/xml to stdlib tests on Linux
+  * targets: add pins/setup for Arduino UNO Q board QWIIC connector
+  * machine/stm32: fix UART interrupt storm caused by uncleared overrun error
+  * create generic targets for esp32 boards
+  * os: add UserCacheDir and UserConfigDir
+  * machine/esp32s3,esp32c3: add txStalled flag to skip USB serial spin when no host
+  * net: update to Go 1.26.2 net package (forwarded request 1348643 from jfkw)</comment>
+    <requestid>1348644</requestid>
+  </revision>
 </revisionlist>

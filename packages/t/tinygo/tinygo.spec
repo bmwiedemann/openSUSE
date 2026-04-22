@@ -18,7 +18,7 @@
 
 
 Name:           tinygo
-Version:        0.40.1
+Version:        0.41.0
 Release:        0
 Summary:        Go toolchain targeting embedded devices and webassembly
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  clang20-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  llvm20-devel
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.23
 # for test:
 BuildRequires:  lld20
 BuildRequires:  nodejs >= 20

@@ -1,4 +1,166 @@
 -------------------------------------------------------------------
+Tue Apr 21 12:12:54 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.41.0:
+  * Release 0.41.0
+  * espflasher: update to espflasher 0.6.0
+  * machine_atmega328p_simulator: add correct build tag for arduino_uno after renaming
+  * build: actually use the version of llvm we are supposed to be testing by using brew link command
+  * targets: rename arduino target to arduino-uno
+  * runtime: handle GODEBUG on wasip2 (#5312)
+  * machine/esp32xx: add WASM simulator support for ESP32-C3/ESP32-S3 targets
+  * machine/esp32c3: clear GPIO STATUS before dispatching pin callbacks
+  * machine/esp32s3: use edge-triggered CPU interrupt for GPIO pin interrupts
+  * machine/esp32: default SPI CS pin to NoPin when unset
+  * testdata: fix flaky timers test by draining ticker channel after Stop
+  * ci: don't double zip release artifacts
+  * test: increase default timeout from 1 to 2 minutes to prevent spurious fails in CI from slow runners
+  * Add errors package to passing list
+  * net: update to latest net submodule with UDP and JS improvements
+  * compiler: implement method-set based AssignableTo and Implements (#5304)
+  * internal/tools: move into root
+  * go.mod, compiler: bump minimum Go version to 1.23
+  * wasm: add more stubbed file operations
+  * machine/esp32s3: implement Pin.SetInterrupt for GPIO pin change interrupts
+  * make spellfix (+ manual tweak)
+  * GNUmakefile: add context and expvar to stdlib tests
+  * GNUmakefile: add encoding/xml to stdlib tests on Linux
+  * targets: add pins/setup for Arduino UNO Q board QWIIC connector
+  * machine/stm32: fix UART interrupt storm caused by uncleared overrun error
+  * create generic targets for esp32 boards
+  * os: add UserCacheDir and UserConfigDir
+  * machine/esp32s3,esp32c3: add txStalled flag to skip USB serial spin when no host
+  * net: update to Go 1.26.2 net package
+  * builder: use target-specific -march for RISC-V library compilation
+  * machine/esp32s3,esp32c3: make USB Serial/JTAG writes non-blocking when FIFO is full
+  * main: update espflasher and auto-use best available flashing options on esp32
+  * targets: add "adb" flash method using Android Debug Bridge
+  * build: use Golang 1.26 for all builds
+  * runtime: fix Darwin syscall return value truncation and lost arguments
+  * interp: make ptrtoint size mismatch a recoverable error
+  * runtime: add syscall.runtimeClearenv for Go 1.26
+  * internal/syscall/unix: implement GetRandom for WASI targets
+  * loader, crypto/internal/entropy: fix 32 MiB RAM overflow on microcontrollers
+  * loader, unicode/utf8: fix hiBits overflow on 16-bit AVR targets
+  * builder: fix SIGSEGV when stripping duplicate function definitions
+  * compiler, runtime: fix SyscallN handling for Windows on Go 1.26+
+  * builder, runtime: fix duplicate symbol error with Go 1.26+ on Windows
+  * internal, runtime: add internal fips bool
+  * compiler: add instrinsic for crypto/internal/constanttime.boolToUint8
+  * internal/abi: add EscapeNonString, EscapeToResultNonString
+  * runtime: split syscall functions for darwin changes for 1.26
+  * src/internal/itoa: resurrect from Go stdlib
+  * builder: claim we support 1.26 now
+  * add soypat/lneto to corpus
+  * device/esp: fix tinygo_scanCurrentStack to spill register windows
+  * Fix grammar in quote
+  * esp32s3: improve exception handlers, add procPin/procUnpin, and linker wrap flags
+  * esp32s3: fix Xtensa register window spill using recursive call4 in task switching
+  * esp32s3: update linker script and boot assembly for multi-page flash XIP mapping
+  * esp32s3: add flash XIP boot assembly with cache/MMU init
+  * cgo: allow for changes to 'short-enums' flag
+  * loader: support "all:" prefix in //go:embed patterns
+  * esp32s3: use TIMG0 alarm interrupt for sleepTicks
+  * esp32s3: replace inline ISR with full interrupt vector handler
+  * targets: add esp32s3-supermini
+  * feat: add inheritable-only field to filter processor-level targets (#5270)
+  * esp32s3: switch USB implementation to use interrupts instead of polling
+  * esp32s3: add interrupt support (#5244)
+  * reflect: fix reflect.TyepAssert for structs
+  * fix: use external 7zip for scoop installs on Windows
+  * chore: update all github actions to latest versions
+  * interrupt/esp32c3: add Enable stub for QEMU test target
+  * build: let scoop run updates to resolve binaryen install failures on Windows
+  * builder: fix panic in findPackagePath when using -size short
+  * main: add extra second of delay when flashing esp32 boards before reset
+  * fix(esp32c3): map missing IRAM sections in linker script
+  * machine/esp32c3: implement BlockDevice for esp32c3 flash
+  * fix: replace ! with ~ for register mask
+  * targets/esp32c3: fix to use PROVIDE() for WiFi/BLE ROM function addresses to allow blob overrides
+  * target: add PWM constant values for Arduino UNO Q
+  * machine/stm32: fix PWM problem due to register shifting.
+  * targets: change default stack size for esp32c3 and esp32s3 to 8196.
+  * runtime/esp32c3: use TIMG0 alarm interrupt for sleepTicks instead of busy-waiting
+  * fix: correctly handle interrupt disable on esp32-c3
+  * machine/stm32u585: implement ADC
+  * targets: add stm32u585 openocd commands for flashing on Arduino UNO Q
+  * targets: correct pin mapping for Arduino UNO Q STM32 MCU
+  * fix: set stm32u5x clock rate to default
+  * machine/stm32: add Arduino UNO Q to smoketests
+  * machine/stm32: add STM32U5 SPI support
+  * machine/stm32: add STM32U5 I2C support
+  * machine/stm32: add STM32U5 GPIO, pin interrupts, and UART support
+  * machine/stm32: add STM32U585 target definition and runtime
+  * WiFi/BLE ROM
+  * esp32c3: implement USBDevice using interrupts for more proper operation.
+  * chore: update espflash to espflasher
+  * fix: ESP32-C3 needs to clear MCAUSE after handling interrupt
+  * flashing: introduce flash method 'esp32jtag' for esp32c3/esp32s3 targets
+  * modules: update to latest serial and espflash packages
+  * esp32c3/esp32s3: refactoring and corrections for SPI implementation
+  * targets: switch rp2040/rp2350 to default to tasks scheduler
+  * esp32c3/esp32s3: refactor ADC implementation to reduce code duplication.
+  * usb/cdc: Better ring buffer implementation  (#5209)
+  * esp32s3 + c3 ADC (#5231)
+  * machine: implement RNG for esp32s3 based on the onboard hardware random number generator.
+  * modules: update espflash to 0.2.0 for esp8266 fixes
+  * targets: modify esp32, esp32s3, esp32c3, & esp8266 targets to use built-in esp32flash
+  * feature: add esp32flash flash method for esp32s3/esp32c3/esp32/esp8266
+  * targets: add support for Seeedstudio Xiao-RP2350 board.
+  * machine: stm32l0x1,l0x2: TIM: adapt to 32-bit register access
+  * machine: sync stm32g0 with updated stm32 device files
+  * targets/swan: rename group build tag stm32l4x5 => stm32l4y5 to avoid clash with stm32 device name
+  * targets/nucleo-f722ze.json: add build-tag stm32f722, change stm32f7x2.s to ..722.s
+  * lib/stm32-svd: update submodule
+  * update tools/gen-device-svd w.r.t. recent changes to the structure of stm32-svd files (#5212)
+  * esp3s3 & esp32c3 PWM implements (#5215)
+  * transform: modify output format from the -print-allocs flag to be the same as expected by the go coverage tool
+  * Esp32s3 i2c interface (#5210)
+  * export UART0 and pins
+  * runtime: implement fminimum/fmaximum
+  * esp32s3-usbserial: move InitSerial to init method
+  * esp32s3-usbserial: common usbserial for both esp32c3 & esp32s3
+  * esp32s3-usbserial: split usb
+  * esp32s3-usbserial: added usbserial printing
+  * make: remove machine without board from smoketest
+  * targets: correct name/tag use for esp32s3-wroom1 board
+  * fix: init heap before random number seed on wasm platforms
+  * Esp32s3 implement spi (#5169)
+  * sponsorship: add explicit callout/link in README to help out TinyGo
+  * builder: order embedded files deterministically
+  * flake.*: bump to nixpkgs 25.11
+  * build: update CI builds to use latest Go 1.25.7 release
+  * Add per-byte timeout budget for rp2 I2C (#5189)
+  * targets: Add Shrike Lite board (#5170)
+  * Fix syntax for building with TinyGo
+  * machine/attiny85: add USI-based SPI support (#5181)
+  * testdata: more corpus entries (#5182)
+  * chore: update version to 0.41.0-dev
+  * compiler: simplify createObjectLayout
+  * machine/rp: add Close function to UART to allow for removing all system resources/power usage
+  * machine/rp: use the blockReset() and unresetBlockWait() helper functions for all peripheral reset/unreset operations
+  * machine: add attiny85 pwm support (#5171)
+  * feat: Implement Lchown function for changing file ownership (#5161)
+  * runtime: make timeoffset atomic
+  * src/runtime: add MemStats.HeapObjects
+  * src/testing: add b.ReportMetric()
+  * rp2: prevent pwm Period method overflow
+  * reflect: add TypeAssert
+  * stm32l0: add flash support
+  * STM32G0B1 Watchdog + ADC Support (#5158)
+  * main (test): skips mipsle test if the emulator is missing
+  * sync: add WaitGroup.Go
+  * Add stm32g0b1 support (#5150)
+  * internal/gclayout: use correct lengths
+  * compiler: implement copy directly
+  * compiler: fix min/max on floats by using intrinsics
+  * machine: fix usb truncation?
+  * make GO copyright verbatim
+  * Update copyright year in LICENSE
+  * compiler/runtime: add element layout to sliceAppend
+  * testdata: more corpus repos
+
+-------------------------------------------------------------------
 Sat Jan  3 21:44:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.40.1:
