@@ -1,0 +1,7 @@
+<package name="libzupt" project="openSUSE:Factory">
+  <title>A library that provides encryption and decryption of files and binary data in memory using post-quantum hybrid cryptography.</title>
+  <description>libzupt is a library that provides encryption and decryption of files and binary data in memory using post-quantum hybrid cryptography ML-KEM-768 + X25519 in various languages.
+
+The libzupt is an SDK designed to simplify the implementation of encryption and decryption for files and in-memory binary data, using a modern approach based on hybrid post-quantum cryptography ML-KEM-768 + X25519. Initially developed in C++, the library is built to be efficient, portable, and easy to integrate into applications that require advanced security. There are also plans to expand support to Java, Python and Node.js, further increasing its adoption across different development ecosystems.</description>
+  <url>https://github.com/cabelo/libzupt</url>
+</package>

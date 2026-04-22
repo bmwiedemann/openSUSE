@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Apr 21 20:37:52 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 1.0.8 
+- Security & Correctness Fixes 
+- Typo by @cabelo
+- Add java examples
+- Downgrade cmake.
+- Change C++ standard from C++17 to C++11
+
+-------------------------------------------------------------------
+Sun Apr 19 05:07:38 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- First version v1.0.6 
