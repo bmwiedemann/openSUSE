@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Wed Apr 22 08:05:07 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Add patch:
+  * 0002-Drop-zanzana.patch
+- Rename patches:
+  * 0002-Use-bash-instead-of-env.patch ->
+    0003-Use-bash-instead-of-env.patch
+  * 0003-Bump-expr-lang.patch -> 0004-Bump-expr-lang.patch
+- Update patch:
+  * 0004-Bump-expr-lang.patch
+
+- CVE-2026-26958: Bump filippo.io/edwards25519 to version 1.1.1
+  (bsc#1258595)
+  * Add 0005-Bump-edwards25519.patch
+- CVE-2026-21725: Fix missing UID when deleting datasource by name
+  (bsc#1258873)
+  * Add 0006-Fix-CVE-2026-21725.patch
+- Rebase 0002-Drop-zanzana.patch
+
+- Update to version 11.6.14+security-01:
+  Security:
+  * CVE-2026-33375: Fix denial of Service via out-of-memory
+    exhaustion in MSSQL data source plugin (bsc#1260881)
+
+- Update to version 11.6.14:
+  Security:
+  * CVE-2026-27876: Fix remote arbitrary code execution via chained
+    SQL Expressions (bsc#1261025)
+  * CVE-2026-27877: Fix information disclosure of data-source
+    passwords via public dashboards (bsc#1261026)
+  * CVE-2026-28375: Fix denial of service via testdata data-source
+    (bsc#1261029)
+  * CVE-2026-27879: Fix denial of service via resample query
+    (bsc#1261027)
+  * CVE-2026-33186: Fix authorization bypass due to improper
+    validation of the HTTP/2 :path pseudo-header (bsc#1260263)
+  * CVE-2026-21724: Fix authorization bypass allows modification of
+    protected webhook URLs (bsc#1260878)
+
+- Update to version 11.6.13:
+  Enhancement:
+  * Wire the public dashboard service to the HTTP server
+
+- Update to version 11.6.12:
+  Enhancement:
+  * Update authentication redirect logic
+  Bug fix:
+  * Fix single panel render with variable references
+
+- Update to version 11.6.11:
+  Features and enhancements:
+  * Alerting: Add limits for the size of expanded notification
+    templates
+  * Correlations: Remove support for org_id=0
+  Security:
+  * CVE-2026-21722: Public dashboards annotations: use dashboard
+    timerange if time selection disabled (bsc#1258136)
+
+-------------------------------------------------------------------
+Fri Jan 30 08:53:12 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 11.6.10:
+  Security:
+  * CVE-2026-21721: Fix access control by the dashboard permissions
+                    API (bsc#1257337)
+  * CVE-2026-21720: Fix unauthenticated DoS (bsc#1257349)
+
+- Update to version 11.6.9:
+  Features and enhancements:
+  * Alerting: Update alerting dependency
+  * Plugins: Add PluginContext to plugins when scenes is disabled
+  Bug fixes:
+  * Alerting: Fix contacts point issues
+
+- Update to version 11.6.8:
+  Bug fixes:
+  * Alerting: Fix unmarshalling of GettableStatus to include time
+              intervals
+
+-------------------------------------------------------------------
 Mon Jan 19 11:53:57 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2025-68156: Fix potential DoS via unbounded recursion in
