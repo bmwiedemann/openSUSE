@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-about
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        LXQt About Dialog
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -25,15 +25,19 @@ URL:            https://github.com/lxqt/lxqt-about
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  pkgconfig
+
 BuildRequires:  cmake(KF6WindowSystem)
-BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(lxqt) >= 2.1.0
 BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  pkgconfig(lxqt) >= 2.1.0
+BuildRequires:  cmake(Qt6LinguistTools)
+
 Requires(post): desktop-file-utils
 Requires(pre):  desktop-file-utils
+
 Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
@@ -52,6 +56,9 @@ About dialog for LXQt
 %{qt6_install}
 
 %find_lang %{name} --with-qt
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 %doc AUTHORS CHANGELOG README.md

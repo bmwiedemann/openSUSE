@@ -368,4 +368,13 @@
   * Updated wiki link and changed razor-qt link</comment>
     <requestid>1315882</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>51ae91c7e50298e482540611108511c9</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869830</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 2.4.0:
+  * Updated translations and bumped the version</comment>
+    <requestid>1348566</requestid>
+  </revision>
 </revisionlist>
