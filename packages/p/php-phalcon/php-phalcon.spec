@@ -1,7 +1,7 @@
 #
 # spec file for package php-phalcon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        5.10.0
+Version:        5.11.1
 Release:        0
 Summary:        PHP Extension Module
 License:        BSD-3-Clause
@@ -39,8 +39,6 @@ Group:          Development/Libraries/PHP
 URL:            https://pecl.php.net/package/%{pkg_name}
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
-# PATCH-FIX-OPENSUSE - use Zend/zend_smart_string.h
-Patch1:         phalcon-fix-build-8.5.patch
 BuildRequires:  %{php_name}-ctype
 BuildRequires:  %{php_name}-devel
 BuildRequires:  %{php_name}-pdo
