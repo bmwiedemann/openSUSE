@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 22 14:06:39 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.1.8
+  * Fixed #55: Polled subcommands in order to return up-to-date
+    return codes in Pipeline.returncodes.
+  * Fixed #56: Ensure process_ready event is set at the appropriate time.
+  * Fixed #57: Stored exception in command node for use when in
+    asynchronous mode.
+  * Fixed #58: Ensure Capture object has a flush method.
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Thu Jun 12 08:22:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
