@@ -1,4 +1,313 @@
 -------------------------------------------------------------------
+Wed Apr 22 12:41:01 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 1.7.0:
+  * fix: exclude ui_*.h generated files from Doxygen (#1132)
+  * Release v1.7.0 (#1093)
+  * tests: use modern QSignalSpy syntax in UI tests (#1131)
+  * Fix: QProgressIndicator memory leak and dark mode support (#1129)
+  * fix: correct QProgressIndicator license and copyright (#1128)
+  * chore: Cleanup
+  * fix: add PASS_INSERT to queue before transactionStart/End sequence (#1127)
+  * fix: rename transactionStartEnd and differentiate transactionAdd test (#1124)
+  * Apply suggested fix to CONTRIBUTING.md from Copilot Autofix (#1123)
+  * fix: add assertion to transactionAdd test and remove empty cleanupTestCase (#1122)
+  * Apply suggested fix to CONTRIBUTING.md from Copilot Autofix (#1120)
+  * fix: translation spelling corrections (#1119)
+  * Apply suggested fix to CONTRIBUTING.md from Copilot Autofix (#1118)
+  * Translations update from Hosted Weblate (#1116)
+  * Fix: formal/informal address in Dutch translations (#1117)
+  * Fix: formal/informal address in Dutch translations (#1115)
+  * Translations update from Hosted Weblate (#1114)
+  * Hernummering localization
+  * feat: add integration tests for edge cases (#1112)
+  * Translations update from Hosted Weblate (#1113)
+  * Apply suggested fix to CONTRIBUTING.md from Copilot Autofix (#1110)
+  * fix: rename CHI_SQUARE_CRITICAL_VALUE_DF9 to CHI_SQUARE_PERMISSIVE_THRESHOLD_DF9 (#1111)
+  * fix: add named constants and better test messages in tst_util.cpp (#1109)
+  * fix: address additional CodeRabbit findings in tst_util.cpp (#1108)
+  * docs: More contributing updates (#1107)
+  * fix: apply CodeRabbit auto-fixes to CONTRIBUTING.md (#1105)
+  * fix: improve test naming and constants in tst_util.cpp (#1106)
+  * docs: add commit signing requirement to CONTRIBUTING.md (#1104)
+  * fix: address CoPilot test findings in tst_util.cpp (#1103)
+  * fix: address CoPilot test findings in tst_util.cpp (#1102)
+  * fix: use QString() for proper comparison in test assertions (#1101)
+  * fix: address additional Coverity scan issues (#1100)
+  * Apply suggested fix to CONTRIBUTING.md from Copilot Autofix (#1099)
+  * fix: address Coverity scan issues
+  * fix: distclean for clean localizations (#1094)
+  * Apply suggested fix to CLAUDE.md from Copilot Autofix (#1095)
+  * docs: improve CLAUDE.md and fix skill inaccuracies (#1091)
+  * Translations update from Hosted Weblate (#1090)
+  * Omnummeren localizatie
+  * docs: update skill files with Doxygen enforcement and Qt 5.15 compat patterns (#1088)
+  * docs: Added CLAUDE.md (#1089)
+  * docs: standardise Doxygen style across headers and main.cpp (#1087)
+  * Omnummeren localizatie
+  * refactor: rename single-letter parameters in setLength and setPasswordCharTemplate (#1086)
+  * fix: guard against out-of-bounds index in password character set selection (#1084)
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * fix: use std::as_const on m_fields range-for to prevent implicit detachment
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Apply suggested fix to src/passworddialog.cpp from Copilot Autofix
+  * Apply suggested fix to src/passworddialog.cpp from Copilot Autofix
+  * Apply suggested fix to src/passworddialog.cpp from Copilot Autofix
+  * docs: remove stale @todo comments
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (German (Luxembourg))
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Arabic (Morocco))
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (German (Luxembourg))
+  * Translated using Weblate (Spanish (Ecuador))
+  * Translated using Weblate (Luxembourgish)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Spanish (Argentina))
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (English (United Kingdom))
+  * fix: apply CodeRabbit auto-fixes
+  * style: clang-format
+  * Apply suggested fix to src/storemodel.cpp from Copilot Autofix
+  * Apply suggested fix to src/src.pro from Copilot Autofix
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_uk_UA.ts from Copilot Autofix
+  * Friesyske taal tafoege, Fryslân Boppe!
+  * Translated using Weblate (Turkish)
+  * Translated using Weblate (Frisian (fy_NL))
+  * Translated using Weblate (Frisian (fy_NL))
+  * Translated using Weblate (Polish)
+  * Added translation using Weblate (Frisian (fy_NL))
+  * Translated using Weblate (Dutch (Belgium))
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (German)
+  * style: clang-format
+  * fix: apply CodeRabbit auto-fixes
+  * refactor: evaluate key.endsWith('=') once in setEnvVar, use Q_ASSERT_X
+  * fix: move length == 0 guard to top of generatePassword
+  * refactor: extract fallbackCharset helper, use trailing return type style
+  * fix: add missing QDebug include for qWarning() in setEnvVar
+  * fix: address AI findings in pass.cpp and storemodel.cpp
+  * All the updates
+  * fix: move isGrepHeaderLine into anonymous namespace, drop redundant isEmpty check
+  * fix: rename max_mod_bound to rejectionThreshold (camelCase convention)
+  * Apply suggested fix to src/pass.cpp from Copilot Autofix
+  * Apply suggested fix to src/pass.cpp from Copilot Autofix
+  * Apply suggested fix to src/pass.cpp from Copilot Autofix
+  * Apply suggested fix to src/pass.cpp from Copilot Autofix
+  * Apply suggested fix to src/storemodel.cpp from Copilot Autofix
+  * Apply suggested fix to src/storemodel.cpp from Copilot Autofix
+  * Apply suggested fix to localization/localization_sv_SE.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_sv_SE.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_sv_SE.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Translated using Weblate (Turkish)
+  * fix: validate ItemKind on deserialization, exhaustive switch in executeDropAction
+  * fix: update storemodel.cpp to use ItemKind enum and const QString& param
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_sv_SE.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_sv_SE.ts from Copilot Autofix
+  * Apply suggested fix to src/storemodel.h from Copilot Autofix
+  * Apply suggested fix to src/storemodel.h from Copilot Autofix
+  * fix: restore key expired fallback, revert findGpgconfInGpgDir arg, add <algorithm>
+  * Apply suggested fix to src/pass.cpp from Copilot Autofix
+  * Apply suggested fix to src/pass.cpp from Copilot Autofix
+  * Apply suggested fix to src/pass.cpp from Copilot Autofix
+  * Apply suggested fix to src/pass.cpp from Copilot Autofix
+  * Apply suggested fix to src/pass.cpp from Copilot Autofix
+  * Apply suggested fix to src/storemodel.h from Copilot Autofix
+  * Apply suggested fix to src/pass.cpp from Copilot Autofix
+  * Translated using Weblate (Swedish)
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Luxembourgish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Serbian (Cyrillic script))
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Arabic (Morocco))
+  * Add more integration tests and fix CI GPG/Git issues
+  * Translated using Weblate (Arabic (Morocco))
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Hungarian)
+  * Fix gpgconf discovery, restore signing key, and clear insertErrorSpy
+  * Fix platform-specific pinentry and RealPass error diagnostics
+  * chore: ignore integration test binary
+  * CI: Use correct pass-otp package names per OS (pass-extension-otp on Linux, pass-otp on macOS)
+  * CI: Fix pass-otp package name for macOS
+  * CI: Install pass-otp on Linux and macOS
+  * CI: Install pass on Linux and macOS
+  * Fix integration tests: clear passSigningKey, use gpgInsertErrorMsg for RealPass
+  * Fix integration test code quality findings and CI dependencies
+  * fix: CI GPG trust, full-write verification, and Insert error diagnostics
+  * fix: fail fast with diagnostics if gpg-agent setup fails in initTestCase
+  * fix: pre-start gpg-agent and configure loopback pinentry for CI
+  * feat: add integration tests for ImitatePass and RealPass backends
+  * Regenerate localization files with qmake6
+  * Additional fixes for refactored methods
+  * Refine complex method fixes
+  * Refactor complex methods to reduce cyclomatic complexity
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Sinhala)
+  * Fix code quality findings
+  * Use beginFilterChange/endFilterChange for Qt 6.10+
+  * Translated using Weblate (Portuguese (Brazil))
+  * Clean up localization files after qmake6 regeneration
+  * fix: add missing Turkish translations and correct German typos
+  * Add QVERIFY checks for file operations in settings tests
+  * fix: avoid deprecated invalidateFilter on Qt 6.5+
+  * fix: add null/empty/stream-status guards in drag-and-drop decode
+  * fix: suppress invalidateFilter deprecation warning instead of version guards
+  * fix: correct version guard for beginFilterChange to Qt 6.9
+  * fix: use only beginFilterChange() — endFilterChange() does not exist
+  * fix: match showThis declaration to definition, fix missed rename in setter
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Welsh)
+  * fix: pass QModelIndex by const ref, reorder MIME check, fix typo
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_tr_TR.ts from Copilot Autofix
+  * Translations update from Hosted Weblate (#1044)
+  * fix: use beginFilterChange/endFilterChange on Qt 6.9+
+  * Translations update from Hosted Weblate (#1043)
+  * chore: Update locale files with new words  (#1041)
+  * feat: implement pass grep content search (#109) (#1037)
+  * feat: add Spanish regional variants (#1040)
+  * Translations update from Hosted Weblate (#1039)
+  * fix: avoid deprecated invalidateFilter on Qt 6.5+ (#1038)
+  * fix: improve profile creation experience (#1036)
+  * fix: show user-friendly error when GPG key is expired or invalid (#1035)
+  * fix: clear stale selection and update proxy filter on profile change (#1033)
+  * Renumbered localez
+  * Translations update from Hosted Weblate (#1031)
+  * fix: set PASSWORD_STORE_* env vars and grey out pass-managed controls (#1032)
+  * CodeRabbit Generated Unit Tests: Add unit tests for PR changes (#1030)
+  * Translations update from Hosted Weblate (#1029)
+  * fix: resolve clangd performance and correctness findings (#1028)
+  * fix: clarify conflicted file paths in merge instructions (#1027)
+  * fix: avoid wildcard in merge conflict resolution (#1024)
+  * Potential fixes for 2 code quality findings (#1023)
+  * chore: update localization skill (#1022)
+  * chore: add Claude Code skills adapted from .opencode/skills (#1021)
+  * fix: ta_IN translation corrections (#1020)
+  * Translations update from Hosted Weblate (#1018)
+  * fix: ro_RO localization corrections (#1019)
+  * chore: More localization updates with Qwen (#1016)
+  * fix: grammar corrections in localization files (#1017)
+  * Translations update from Hosted Weblate (#1015)
+  * Helpful qwen2.5
+  * pt_BR
+  * style: Updated code formatting and indentation for consistency in project configuration files (#1013)
+  * Fixed Sinhala, Sri Lanka file name
+  * Merge pull request #1012 from IJHack/localization-updates-with-qwen
+  * Tamil
+  * Moved Tamil
+  * naming and Chinese
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Luxembourgish)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Dutch (Belgium))
+  * Translated using Weblate (Galician)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Slovenian)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Welsh)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (German)
+  * Translated using Weblate (English (United Kingdom))
+  * Translated using Weblate (Croatian)
+  * test: improve randomness and distribution tests
+  * New translations
+  * feat: add re-encrypt context menu for directories (#1009)
+  * Update .github/workflows/docs.yml
+  * fix: add error handling for Doxyfile version update in docs workflow
+  * fix: use raw VERSION in sed replacement
+  * fix: improve version escaping and validation in release-mac.sh
+  * Update scripts/release-mac.sh
+  * Apply suggested fix to scripts/release-mac.sh from Copilot Autofix
+  * Apply suggested fix to scripts/release-mac.sh from Copilot Autofix
+  * fix: improve shell script error handling and safety
+  * Apply suggested fix to scripts/release-mac.sh from Copilot Autofix
+  * Apply suggested fix to scripts/generate-doxygen-pdf.sh from Copilot Autofix
+  * Twijfelachtige fix
+  * refactor: remove unnecessary charset variables in generateRandomPassword tests
+  * fix: use correct doxygen download URL
+  * shfmt and recover backup in the end
+  * Minder enter
+  * Update scripts/generate-doxygen-pdf.sh
+  * chmod +x and newline
+  * fix: apply CodeRabbit auto-fixes
+  * refactor: rename ambiguous variable names in util tests
+  * Update scripts/generate-doxygen-pdf.sh
+  * Apply suggested fix to scripts/generate-doxygen-pdf.sh from Copilot Autofix
+  * Update .github/workflows/docs.yml
+  * chore: install Doxygen 1.16.1 from official release in CI
+  * Locale fix
+  * Locale and version update
+  * fix: use USE_PDFLATEX in PDF script and derive output dir from PDF_FILE
+  * fix: use portable sed with temp file for cross-platform compatibility
+  * fix: handle latex output directories in PDF script
+  * fix: use portable sed syntax for macOS/BSD compatibility
+  * fix: set doxygen version directly in Doxyfile
+  * fix: use scoped rollback for gpg executable in configIsValid test
+  * test: add charset validation and configIsValid edge cases
+  * perf: use static regex instances in isValidKeyId and findBinaryInPath
+  * fix: properly strip angle brackets before 0x prefix
+  * refactor: simplify isValidKeyId complexity using regex
+  * fix: update util.h comment and tests per review findings
+  * fix: update util.h comment and tests per review findings
+  * fix: validate .gpg-id key IDs - accept emails and special formats
+  * chore: verify macdeployqt and appdmg are available before using
+  * Apply suggested fix to scripts/release-mac.sh from Copilot Autofix
+  * Apply suggested fix to scripts/release-mac.sh from Copilot Autofix
+  * Update scripts/release-mac.sh
+  * docs: remove Doxyfile from grep example
+  * docs: update skill to exclude Doxyfile from manual updates
+  * docs: fix release workflow order per review
+  * fix: export QTPASS_VERSION in release-mac.sh before doxygen
+  * fix: update MATHJAX_RELPATH to jsdelivr and make skill evergreen
+  * fix: export QTPASS_VERSION for Doxygen
+  * docs: fix release workflow per CodeAnt review
+  * Microsocopic cleanup in spec file
+  * docs: make releasing skill evergreen
+  * docs: update releasing skill with learned patterns
+  * chore: update version in Doxyfile to 1.6.0
+  * fix: resolve lint issues in CHANGELOG
+
+-------------------------------------------------------------------
 Tue Apr 14 10:00:22 UTC 2026 - ecsos@opensuse.org
 
 - Update to version 1.6.0:
