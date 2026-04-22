@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 21 17:11:57 UTC 2026 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to 1.19.1
+  * Issue #352: inotify no longer reports access, open, or close-without-write
+    events unless access events are enabled with -a or --access.
+  * PR #354, Issue #330: Fix recursive inotify monitoring so fast file creation
+    in newly-created directories is detected.
+  * Fix: spurious output 'inotify_rm_watch: Invalid argument'
+
+-------------------------------------------------------------------
 Mon Mar 17 13:12:18 UTC 2025 - Michal Vyskocil <mvyskocil@opensuse.org>
 
 - Update to 1.18.3

@@ -1,7 +1,7 @@
 #
 # spec file for package fswatch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fswatch
-Version:        1.18.3
+Version:        1.19.1
 Release:        0
 Summary:        Multi platform file change monitor
 License:        GPL-3.0-or-later
@@ -68,6 +68,7 @@ monitors based on:
 
 %prep
 %autosetup
+./autogen.sh
 
 %build
 %configure
