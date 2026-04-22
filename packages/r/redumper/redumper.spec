@@ -17,18 +17,20 @@
 
 
 Name:           redumper
-Version:        709
+Version:        713
 Release:        0
 Summary:        Low level CD dumper utility
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/CD/Grabbers
 URL:            https://github.com/superg/redumper/
 Source:         https://github.com/superg/redumper/archive/refs/tags/b%{version}.tar.gz#/%{name}-b%{version}.tar.gz
+Patch0:         redumper-use-system-googletest.patch
 BuildRequires:  clang19
 BuildRequires:  cmake
 BuildRequires:  libstdc++6-devel-gcc15
 BuildRequires:  lld19
 BuildRequires:  llvm19-devel
+BuildRequires:  pkgconfig(gtest)
 BuildRequires:  ninja
 ExclusiveArch:  x86_64
 
@@ -53,6 +55,9 @@ redumper also is a general purpose DVD/HD-DVD/Blu-ray disc dumper.
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %license LICENSE

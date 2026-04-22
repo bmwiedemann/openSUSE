@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 19 07:28:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 713
+  * https://github.com/superg/redumper/compare/build_709...b713
+- Add patch:
+  * redumper-use-system-googletest.patch
+- Run testsuite
+
+-------------------------------------------------------------------
 Wed Apr 15 05:26:59 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 709

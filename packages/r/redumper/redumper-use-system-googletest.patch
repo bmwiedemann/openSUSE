@@ -1,0 +1,24 @@
+diff --git a/tests/.CMakeLists.txt.swp b/tests/.CMakeLists.txt.swp
+deleted file mode 100644
+index 549f44e..0000000
+Binary files a/tests/.CMakeLists.txt.swp and /dev/null differ
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 7b9e0fe..b9173a4 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -1,14 +1,4 @@
+-include(FetchContent)
+-FetchContent_Declare(
+-    googletest
+-    GIT_REPOSITORY https://github.com/google/googletest.git
+-    GIT_TAG        v1.15.2
+-)
+-if(MSVC)
+-    set(gtest_force_shared_crt OFF CACHE BOOL "" FORCE)
+-endif()
+-FetchContent_MakeAvailable(googletest)
+-
++find_package(GTest REQUIRED)
+ add_subdirectory("gtest")
+ 
+ # DEPRECATED: will migrate to googletest
