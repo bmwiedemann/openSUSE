@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 20 14:33:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.0
+  * Added Typing.
+  * Dropped support for Python 3.7 and 3.8.
+- Update upstream URL in Source field
+
+-------------------------------------------------------------------
 Sat Apr  6 07:57:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.3:

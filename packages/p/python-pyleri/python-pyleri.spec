@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyleri
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,12 +19,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyleri
-Version:        1.4.3
+Version:        1.5.0
 Release:        0
 Summary:        Python Left-Right Parser
 License:        MIT
 URL:            https://github.com/transceptor-technology/pyleri
-Source:         https://github.com/transceptor-technology/pyleri/archive/refs/tags/%{version}.tar.gz#/pyleri-%{version}.tar.gz
+Source:         https://github.com/transceptor-technology/pyleri/archive/refs/tags/v%{version}.tar.gz#/pyleri-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
