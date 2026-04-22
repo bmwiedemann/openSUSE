@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 22 06:25:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 10.1.8:
+  * INS-2239: Fix polaris vulnerabilities (#1187)
+    https://github.com/FairwindsOps/polaris/commit/9dfb4262e6c52fa870940a544c6fb1cad1dd4a0e
+  * Revert "Fix vulnerabilities"
+  * Fix vulnerabilities
+  * remove adhoc envsubst process on goreleaser (#1186)
+
+-------------------------------------------------------------------
 Thu Apr 02 04:51:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 10.1.7:
