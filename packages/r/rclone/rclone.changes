@@ -1,8 +1,7 @@
 -------------------------------------------------------------------
 Sun Apr 19 15:23:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to version 1.73.5:
-  * Version v1.73.5
+- Update to version 1.73.5: (boo#1262439 boo#1262438)
   * operations: add AuthRequired to operations/fsinfo to prevent backend creation CVE-2026-41179
   * rc: snapshot NoAuth at startup to prevent runtime auth bypass CVE-2026-41176
   * rc: add AuthRequired to options/set to prevent auth bypass CVE-2026-41176
