@@ -1,4 +1,568 @@
 -------------------------------------------------------------------
+Wed Apr 22 07:17:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.11:
+  * General
+    - fix(server): nil logger panic in K8s machine init when kube
+      context unreachable @leecalcote (#18857)
+    - bugfix: Remote Provider pattern file data format mismatch
+      @leecalcote (#18856)
+  * Meshery CLI
+    - refactor(mesheryctl): bind environment create flags directly
+      to schema payload @alexquincy (#18765)
+- update to 1.0.10:
+  * General
+    - server: adopt MesheryPatternImportRequestBody schema type +
+      enforce oneOf contract @jamieplu (#18845)
+    - [Docs] Standardize README formatting and fix grammar
+      @vanshkamra12 (#17569)
+    - make go engine default for evaluation in local server
+      @aabidsofi19 (#18781)
+  * Maintenance
+    - Bump github.com/jackc/pgx/v5 from 5.7.6 to 5.9.0
+      @dependabot[bot] (#18779)
+    - Update preview deployment message in workflow @CodexRaunak
+      (#18816)
+    - Bump github.com/go-git/go-git/v5 from 5.16.5 to 5.18.0
+      @dependabot[bot] (#18802)
+    - Bump github.com/moby/spdystream from 0.5.0 to 0.5.1
+      @dependabot[bot] (#18778)
+  * Documentation
+    - docs: Add text note on biweekly CI/CD meetings section
+      @zulkiflidev (#18838)
+    - [Docs] Rename "Integrations" to "Models" on homepage #18811
+      @Cypher-CP0 (#18813)
+- update to 1.0.9:
+  * Meshery CLI
+    - refactor(mesheryctl): Improve error messages for model init
+      missing argument @lekaf974 (#18699)
+    - [Fix] Resolve Server Panics in Provider logic and K8s Context
+      Handlers @KumarADITHYA123 (#18718)
+    - fixes environment fetch failures by aligning the server’s
+      query parameter handling with the UI contract.
+      @saurabhraghuvanshii (#18639)
+  * Maintenance
+    - Update build-and-preview-docs.yml @CodexRaunak (#18774)
+    - [UI] Add palette accessors to ui/theme/index.ts @jamieplu
+      (#18762)
+    - Bump follow-redirects from 1.15.11 to 1.16.0 in /provider-ui
+      @dependabot[bot] (#18708)
+    - chore(workflow): unblock docs-noob-tester with write
+      permissions and … @Junnygram (#18715)
+  * Documentation
+    - [Fix] Resolve Server Panics in Provider logic and K8s Context
+      Handlers @KumarADITHYA123 (#18718)
+    - [Docs] Add OpenGraph and Twitter image tags for docs
+      @nitheeshmk41 (#18566)
+    - fix: added toggle visibility button @banana-three-join
+      (#18308)
+- update to 1.0.8:
+  * General
+    - Bump follow-redirects from 1.15.11 to 1.16.0 in
+      /install/docker-extension/ui @dependabot[bot] (#18710)
+    - test: add unit tests for EncodeRefUrl and DecodeRefURL
+      @ashwanisingh011 (#17983)
+    - Add UI restructuring to roadmap for v1.1.0 @miacycle (#18655)
+    - Upgrade meshsync and k8s deps to v0.35.2 @leecalcote (#18685)
+  * Meshery CLI
+    - [mesheryctl] Align component view e2e assertions with current
+      CLI output @hssuryawanshib23-afk (#18604)
+  * Maintenance
+    - Bump follow-redirects from 1.15.11 to 1.16.0 in /ui
+      @dependabot[bot] (#18709)
+    - Comment on pruned PR previews @CodexRaunak (#18713)
+    - Prune old PR previews @CodexRaunak (#18695)
+    - Bump axios from 1.13.6 to 1.15.0 in /provider-ui
+      @dependabot[bot] (#18628)
+    - [mesheryctl] Align component view e2e assertions with current
+      CLI output @hssuryawanshib23-afk (#18604)
+    - [Server] Policies: Port OPA/Rego policy engine to native Go
+      @guan404ming (#17330)
+    - Bump helm.sh/helm/v3 from 3.19.4 to 3.20.2 @dependabot[bot]
+      (#18650)
+- update to 1.0.7:
+  * General
+    - fix(server): serve /_next static assets without auth, accept
+      HEAD on UI routes @leecalcote (#18672)
+  * Meshery CLI
+    - fix(mesheryctl): use meshkit error properly and remove logrus
+      in syst… @Vydeh07 (#18374)
+    - fix(mesheryctl): system provider return proper error, remove
+      logrus, … @Omkar-Ugal (#18287)
+    - [mesheryctl] Standardize logging and error propagation for
+      system update @ashwanisingh011 (#18622)
+    - [mesheryctl] return proper errors in model import
+      @Umesh-Tiruvalluru (#18420)
+    - [mesheryctl] Fix workspace view failing with valid orgId
+      @PragalvaXFREZ (#18621)
+    - Standardize schemas/models/core import to bare core alias
+      @leecalcote (#18627)
+    - [Server] Reject invalid performance test endpoint URLs
+      @Manishnemade12 (#18291)
+  * Maintenance
+    - chore: Migrate E2E test 'connections.spec.js' to TypeScript
+      @ashwanisingh011 (#17424)
+    - Bump next from 16.2.1 to 16.2.3 in /provider-ui
+      @dependabot[bot] (#18662)
+    - Bump
+      go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp
+      from 1.35.0 to 1.43.0 @dependabot[bot] (#18589)
+    - [mesheryctl] fix goreleaser v2 archive configuration
+      @Junnygram (#18612)
+    - Fix GoReleaser v2 archive config @arjunmehta-git (#18609)
+  * Documentation
+    - [Docs] Fix: light/dark icon toggle functionality @Katotodan
+      (#18027)
+- update to 1.0.6:
+  * General
+    - fix: return 404 when GetUserByID returns nil response
+      @arjunmehta-git (#18605)
+    - fix: guard against nil KubernetesServerID in K8sFSMMiddleware
+      @mango766 (#18600)
+    - [Server] Restore body on provider retry @leecalcote (#17211)
+    - fix: pass user token to PersistEvent to prevent 401 errors
+      @marblom007 (#18595)
+  * Meshery CLI
+    - mesheryctl: transition UUID type references to schemas
+      core.Uuid @yi-nuo426 (#18582)
+    - fixes: return error properly adapter @Omkar-Ugal (#18391)
+    - fix: design uses meshkit error properly + return error
+      properl @Omkar-Ugal (#18436)
+    - [mesheryctl] system restart uses meshkit error properly +
+      remove logrus @rishiraj38 (#18359)
+  * Maintenance
+    - Fix for PR #18522: e2e tests design config timeout
+      @arjunmehta-git (#18606)
+    - pr 18568 @arjunmehta-git (#18607)
+    - [DevFlow] Migrate .goreleaser.yml to v2 syntax @Junnygram
+      (#18576)
+    - [UI] Fix Design Configurator e2e mocks @arjunmehta-git
+      (#18603)
+    - Bump
+      go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+      from 1.39.0 to 1.43.0 @dependabot[bot] (#18591)
+    - Bump go.opentelemetry.io/otel/sdk from 1.40.0 to 1.43.0
+      @dependabot[bot] (#18590)
+    - [DevFlow] Add job_type parameter to reusable adapter
+      workflows @Junnygram (#18574)
+    - fix(ci) wrap ctlrelease @Omkar-Ugal (#18581)
+  * Documentation
+    - Server: fix import ordering and seededUUIDs data race in UUID
+      transition follow-up @yi-nuo426 (#18583)
+    - Clean up OCI models documentation @suttonskate (#18573)
+    - [Docs]fix:Added noindex to old-doc versions to prevent
+      indexing @Sbragul26 (#18394)
+- update to 1.0.5:
+  * General
+    - Align MesheryPattern JSON tags and wrapper key
+      @arjunmehta-git (#18570)
+  * Maintenance
+    - Add deployment preview gh pages @CodexRaunak (#18494)
+    - fix(ci): wrap conditional @Omkar-Ugal (#18571)
+  * Documentation
+    - Add deployment preview gh pages @CodexRaunak (#18494)
+    - [Docs] Fix SVG footer undefined stroke-linecap and
+      stroke-linejoin attributes @Junnygram (#18492)
+- update to 1.0.4: No mesheryctl-related changes
+- update to 1.0.3:
+  * General
+    - fix patternFile tag naming @aabidsofi19 (#18562)
+  * Meshery CLI
+    - Use open api for API docs with improved styling @CodexRaunak
+      (#18304)
+  * Maintenance
+    - Use open api for API docs with improved styling @CodexRaunak
+      (#18304)
+  * Documentation
+    - Use open api for API docs with improved styling @CodexRaunak
+      (#18304)
+- update to 1.0.2:
+  * General
+    - Cleanup swagger @CodexRaunak (#18534)
+    - Fix orgID query parameter case in workspace and environment
+      handlers @yi-nuo426 (#18519)
+  * Meshery CLI
+    - Upgrade to Meshery Schemas v1.0.4: enhance Workspace API
+      @yi-nuo426 (#18541)
+  * Maintenance
+    - chore: remove deprecated reusable workflow for UI and server
+      builds @ianrwhitney (#18542)
+    - chore(deps): bump vite from 7.3.1 to 7.3.2 in /ui
+      @dependabot[bot] (#18524)
+    - Retire swagger-based REST API docs and point references to
+      meshery/schemas @copilot-swe-agent[bot] (#18521)
+  * Documentation
+    - Retire swagger-based REST API docs and point references to
+      meshery/schemas @copilot-swe-agent[bot] (#18521)
+- update to 1.0.1:
+  * General
+    - Fix orgId query parameter case mismatch in environment and
+      workspace … @fitzergerald (#18513)
+    - [Server] Fix DeleteMeshSyncResource HTTP response handling
+      @Manishnemade12 (#18193)
+    - [Server] Normalize empty remote workspace list responses
+      @copilot-swe-agent[bot] (#18475)
+    - fix: resolve auth redirect loops between Meshery Server and
+      Cloud @leecalcote (#18434)
+    - Bump lodash from 4.17.23 to 4.18.1 in
+      /install/docker-extension/ui @dependabot[bot] (#18397)
+    - fix: handle nil UserID in events resolver @ianrwhitney
+      (#18366)
+    - Bump yaml from 1.10.2 to 1.10.3 in
+      /install/docker-extension/ui @dependabot[bot] (#18213)
+    - Bump brace-expansion from 1.1.12 to 1.1.13 in
+      /install/docker-extension/ui @dependabot[bot] (#18285)
+    - [Server] Fix nil pointer dereference in
+      ProcessConnectionRegistration @Manishnemade12 (#18219)
+    - Bump path-to-regexp from 0.1.12 to 0.1.13 in
+      /install/docker-extension/ui @dependabot[bot] (#18284)
+    - Bump picomatch from 2.3.1 to 2.3.2 in
+      /install/docker-extension/ui @dependabot[bot] (#18216)
+    - Bump node-forge from 1.3.3 to 1.4.0 in
+      /install/docker-extension/ui @dependabot[bot] (#18240)
+    - tests(server): skip failing unit test for
+      MapPreferencePersister until implementation is complete
+      @lekaf974 (#18239)
+    - fix(server): add missing user with defauls values + add
+      Given/When/Then comments for clarity @lekaf974 (#18161)
+    - local provider boot hang @hortison (#18162)
+    - [Docker Extension] Fix build failures from React 19 upgrade
+      @leecalcote (#18147)
+    - fix(server): enforce missing OrgID handling in
+      GetWorkspaceByIdHandler @lekaf974 (#18141)
+    - fix(resync): skip cluster resync when hardReset=true and
+      k8scontextID is empty @Omkar-Ugal (#18038)
+    - fix(server): return partial result when evaluation depth is
+      exceeded @dhakshin-raghav (#18120)
+    - Bump flatted from 3.4.1 to 3.4.2 in
+      /install/docker-extension/ui @dependabot[bot] (#18071)
+    - [agents] Add front matter to skill SKILL.md files @yi-nuo426
+      (#18066)
+    - [Server] Replace deprecated
+      RelationshipDefinition_Selectors_Patch with
+      RelationshipDefinitionSelectorsPatch @yi-nuo426 (#18065)
+    - [Server] Prevent nil preference panic during session sync
+      @fitzergerald (#18048)
+    - Chore: Define LLM-agnostic agents and skills @fitzergerald
+      (#18017)
+    - Migrate to Hugo Go live @CodexRaunak (#17986)
+    - Fix dart sass err @CodexRaunak (#17982)
+    - Bump flatted from 3.3.3 to 3.4.1 in
+      /install/docker-extension/ui @dependabot[bot] (#17956)
+    - Move catalog files to root @CodexRaunak (#17972)
+    - [Migration]fix: New docs layout, left sidebar width and
+      navigation @Bhumikagarggg (#17586)
+    - Bump yauzl and hugo-extended in /docs-new @dependabot[bot]
+      (#17961)
+    - Sync latest docs content @CodexRaunak (#17908)
+    - Add blank layout and sort releases @CodexRaunak (#17892)
+  * Meshery CLI
+    - [mesheryctl] Replace cobra.ArbitraryArgs with proper argument
+      validat… @Manishnemade12 (#18362)
+    - Fix: [mesheryctl] Cleanup legacy functions in generating CLI
+      docs @gabrnavarro (#18468)
+    - chore(mesheryctl): update context command usage and flag
+      descriptions for clarity @lekaf974 (#18501)
+    - fix: mesheryctl e2e system start @lekaf974 (#18477)
+    - fix: prevent nil pointer panic on invalid kubeconfig during
+      controller init @pulkitvats2007-crypto (#18478)
+    - fix(docs): update file paths in tests to use temporary
+      directories @lekaf974 (#18440)
+    - chore: Upgrade meshery/meshkit to v1.0.2
+      @copilot-swe-agent[bot] (#18438)
+    - Upgrade meshery/schemas to v1.0.1 and replace local struct
+      definitions @leecalcote (#18373)
+    - fix: system reset uses meshkit error properly, remove logrus
+      @Omkar-Ugal (#18358)
+    - [mesheryctl] design deploy --skip-save not saving is not
+      skipped @Ironankit525 (#17860)
+    - fix: system logout uses meshkit error properly, remove logrus
+      @Omkar-Ugal (#18327)
+    - refactor(mesheryctl): enhance login command UX and error
+      handling, update error codes + fix bug in system status
+      @lekaf974 (#18345)
+    - [mesheryctl] Add e2e BATS test for registry update command
+      @Git-HimanshuRathi (#18124)
+    - refactor(mesheryctl): update dashboard command flags and
+      improve error handling @lekaf974 (#18341)
+    - refactor(mesheryctl): update system delete removing logrus
+      reference and return proper meshkit error @lekaf974 (#18342)
+    - Refactor token commands to use active config path for
+      consistency @Manishnemade12 (#18280)
+    - fix: system logs uses meshkit error properly, remove logrus,
+      add flag… @Omkar-Ugal (#18227)
+    - fix: system status uses meshkit error properly, remove
+      logrus, add fl… @Omkar-Ugal (#18255)
+    - refactor(mesheryctl): update system context subcommands to
+      use proper error handling and flags validator @lekaf974
+      (#18244)
+    - refactor(mesheryctl): fix non existing exp workspace commands
+      name causing mesheryctl build fail @lekaf974 (#18288)
+    - [mesheryctl] Align workspace command references and stale e2e
+      expectations @copilot-swe-agent[bot] (#18282)
+    - fix(mesheryctl): resolve nil pointer dereference in system
+      logs @Vydeh07 (#18261)
+    - refactor(mesheryctl): system check error logger @lekaf974
+      (#18138)
+    - refactor(mesheryctl): remove logrus dependency and handle
+      config errors gracefully in model command @lekaf974 (#18241)
+    - fix(mesheryctl): correct container ready count in system
+      status @Vydeh07 (#18224)
+    - fix(mesheryctl): return proper error in system context
+      command @Omkar-Ugal (#18154)
+    - [mesheryctl] graduate workspace command from experimental
+      @PragalvaXFREZ (#18125)
+    - fix(mesheryctl): fix incorrect example command and typos in
+      model hel… @yug54475 (#18143)
+    - Stabilize mesheryctl system view output across reused Cobra
+      command state @copilot-swe-agent[bot] (#18140)
+    - Clean up current golangci-lint failures in workspace code
+      paths @copilot-swe-agent[bot] (#18136)
+    - upgrade to meshery/schemas v0.8.135 @leecalcote (#18126)
+    - refactor(mesheryctl): update system channel to use meshkit
+      and return errors properly and update description @lekaf974
+      (#18122)
+    - refactor(mesheryctl): centralize meshkit logger
+      initialization @lekaf974 (#17840)
+    - fix(mesheryctl): update component view and search tests with
+      updated scenarios and validations @lekaf974 (#18111)
+    - fix: Fixes nil pointer panic when config.GetMesheryCtl()
+      fails @ARZU-V (#18106)
+    - bugfix: CLI compability with schemas v0.8.129 @yi-nuo426
+      (#18064)
+    - feat(mesheryctl): add workspace view command @Vydeh07
+      (#17711)
+    - refactor(mesheryctl): model commands flags validation
+      @lekaf974 (#17737)
+    - [mesheryctl] Refactor endpoint discovery with shared helper
+      function @PragalvaXFREZ (#17073)
+    - Migrate mesheryctl docs @CodexRaunak (#17981)
+    - [mesheryctl] Show full design IDs in design list by default
+      @PragalvaXFREZ (#17971)
+    - refactor(mesheryctl): enhance workspace command using flags
+      validator @lekaf974 (#17967)
+    - [mesheryctl] Use MakeRequest for set‑context API calls
+      @dipanshurdev (#17912)
+    - Fix HTTP response body leak in PublishMetrics and correct
+      typos @Ironankit525 (#17716)
+    - fix: update connection deletion logic and error handling on
+      server and cli @lekaf974 (#17910)
+    - fix(mesheryctl): update relationship view unit test after api
+      reponse update @lekaf974 (#17907)
+  * Maintenance
+    - fix: mesheryctl e2e system start @lekaf974 (#18477)
+    - chore(ui/e2e): Migrate Core UI and User Settings tests to
+      TypeScript @ashwanisingh011 (#17449)
+    - chore: expose @mui/material, ajv, and @rjsf/* to Kanvas
+      extension @leecalcote (#18465)
+    - fix(docs): update file paths in tests to use temporary
+      directories @lekaf974 (#18440)
+    - Bump lodash-es from 4.17.23 to 4.18.1 in /ui @dependabot[bot]
+      (#18395)
+    - Decompose build UI workflow @ianrwhitney (#17339)
+    - fix(e2e): resolve 4 consistently failing Playwright test
+      timeouts @leecalcote (#18390)
+    - fix: use pull_request_target for first-time contributor
+      workflow @simihablo (#18389)
+    - [CI] Eslint fix @Rajesh-Nagarajan-11 (#18384)
+    - [mesheryctl] Add e2e BATS test for registry update command
+      @Git-HimanshuRathi (#18124)
+    - Bump yaml in /ui @dependabot[bot] (#18212)
+    - fix: replace core warnings with console warnings in CI
+      environment @ianrwhitney (#18202)
+    - Rename job from update-jekyll to update-tests @CodexRaunak
+      (#18303)
+    - [ci] Enable errcheck linter @Rajneesh180 (#18273)
+    - [mesheryctl] Align workspace command references and stale e2e
+      expectations @copilot-swe-agent[bot] (#18282)
+    - [CI] Refactor first-time contributor welcome @hortison
+      (#18283)
+    - Switch to Docsy sidebar @CodexRaunak (#18129)
+    - chore: typescript linting @leecalcote (#18175)
+    - Add PostgreSQL tools to Meshery Code Contributor
+      @fitzergerald (#18151)
+    - [UI] Wrapper for /api @leecalcote (#18146)
+    - Stabilize mesheryctl e2e perf workflow by replacing brittle
+      SMP action path @copilot-swe-agent[bot] (#18139)
+    - [Dependencies] Upgrade Meshery Server, UI, and mesheryctl to
+      meshery/schemas v0.8.136 @leecalcote (#18127)
+    - Fix OSPS-BR-01.01 @sangramrath (#18113)
+    - refactor(mesheryctl): update system channel to use meshkit
+      and return errors properly and update description @lekaf974
+      (#18122)
+    - Bump flatted from 3.3.4 to 3.4.2 in /ui @dependabot[bot]
+      (#18070)
+    - Update license expression and fix baseline findings security
+      insights @sangramrath (#18076)
+    - Bump flatted from 3.3.4 to 3.4.2 in /provider-ui
+      @dependabot[bot] (#18072)
+    - Bump github.com/buger/jsonparser from 1.1.1 to 1.1.2
+      @dependabot[bot] (#18073)
+    - Bump next from 15.5.12 to 15.5.14 in /provider-ui
+      @dependabot[bot] (#18074)
+    - Stabilize flaky UI e2e coverage for design configurator and
+      extension links @copilot-swe-agent[bot] (#18051)
+    - Bump google.golang.org/grpc from 1.77.0 to 1.79.3
+      @dependabot[bot] (#18050)
+    - Remove Jekyll occurrence @CodexRaunak (#17989)
+    - refactor(mesheryctl): model commands flags validation
+      @lekaf974 (#17737)
+    - [CI] Docs: Consolidate build and preview workflows
+      @leecalcote (#17990)
+    - Update security-insights.yml in dotgithub too @sangramrath
+      (#17995)
+    - Add/Modify workflows supporting go live Hugo docs
+      @CodexRaunak (#17979)
+    - Migrate mesheryctl docs @CodexRaunak (#17981)
+    - Update docsy version and fix dart sass warnings @CodexRaunak
+      (#17975)
+    - Update docs-contributor agent and sync content @CodexRaunak
+      (#17973)
+    - Securityslam26 baseline automation tasks (part 1)
+      @sangramrath (#17959)
+    - Fix HTTP response body leak in PublishMetrics and correct
+      typos @Ironankit525 (#17716)
+    - [CI] Fix Missing Related Discussions in docs-new
+      @ashwanisingh011 (#17893)
+  * Documentation
+    - [Docs] Fix invalid HTML in relationships shortcode @Junnygram
+      (#18469)
+    - fix(docs): remove invalid "close" attribute from details
+      elements @tysoncung (#18425)
+    - fix(docs): guard subtitle rendering to avoid empty p tag
+      @tysoncung (#18426)
+    - Update index.md @VIRAT-k82 (#18433)
+    - Bump picomatch in /docs @dependabot[bot] (#18214)
+    - [Docs] Remove all legacy site.baseurl usages across docs
+      @yashasvi290906 (#18349)
+    - fix(docs): remove extra trailing slash in breadcrumb
+      navigation @ashwanisingh011 (#18260)
+    - [CI] Refactor first-time contributor welcome @hortison
+      (#18283)
+    - Switch to Docsy sidebar @CodexRaunak (#18129)
+    - Delete docs/content/en/extensions/team-management.md
+      @leecalcote (#18245)
+    - docs/compat matrix @miacycle (#18237)
+    - [Docs] Revamp Compatibility Matrix @miacycle (#18234)
+    - fix(docs): resolve double slash URL routing issue
+      @ashwanisingh011 (#18007)
+    - [Docs] Update v1 release doc with better summary
+      @PragalvaXFREZ (#18206)
+    - [Docs] Add Meshery v1.0.0 release notes @PragalvaXFREZ
+      (#18204)
+    - Snapshot docs version v0.9 @CodexRaunak (#18200)
+    - [Docs] Fix empty "Related Models" section on model pages
+      @YASHMAHAKAL (#18155)
+    - [mesheryctl] graduate workspace command from experimental
+      @PragalvaXFREZ (#18125)
+    - feat(docs):copy-button for all code blocks @Sbragul26
+      (#18117)
+    - Fix-codeblock styling @Bhumikagarggg (#18110)
+    - [Docs] Fix broken Model Schema link in contributing models
+      page @Git-HimanshuRathi (#18092)
+    - docs: fix broken Model Schema link in contributing-models
+      @Aliipou (#18105)
+    - [Docs] Add Himanshu Rathi attendance for week of 03-19-2026
+      @Git-HimanshuRathi (#18091)
+    - Attendance submission for week of 03-19-2026 @JayH25 (#18087)
+    - Update meeting notes for Joy Gundu @Joiejoie1 (#18083)
+    - [Docs] Add vendor extensions and SDD concepts to schema
+      contributing guide @leecalcote (#18069)
+    - Chore: upgrade meshkit and schemas @fitzergerald (#18052)
+    - feat(mesheryctl): add workspace view command @Vydeh07
+      (#17711)
+    - refactor(mesheryctl): model commands flags validation
+      @lekaf974 (#17737)
+    - Clean up for docs @CodexRaunak (#17991)
+    - [Docs] Fix "Edit this page" and "Create new page" links to
+      point to the docs directory @YASHMAHAKAL (#17993)
+    - Remove community sections from en.toml @leecalcote (#17987)
+    - docs: add meeting attendance for March 13, 2026 @Sbragul26
+      (#17949)
+  * Security
+    - Add OpenSSF Best Practices Baseline badge to README
+      @sangramrath (#18134)
+    - Fix OSPS-BR-01.01 @sangramrath (#18113)
+    - Update license expression and fix baseline findings security
+      insights @sangramrath (#18076)
+    - Update security-insights.yml in dotgithub too @sangramrath
+      (#17995)
+    - Securityslam26 baseline automation tasks (part 1)
+      @sangramrath (#17959)
+- update to 1.0.0:
+  https://github.com/meshery/meshery/releases/tag/v1.0.0
+  Meshery v1.0.0 is Generally Available
+  Meshery v1.0 reached General Availability on March 23, 2026,
+  announced at KubeCon + CloudNativeCon Europe in Amsterdam. It
+  marks a major milestone after six years of development,
+  positioning Meshery as a production-ready governance layer for
+  the cloud native stack.
+  The release emphasizes maturity, architectural stability, and
+  production readiness rather than introducing a flood of brand-new
+  features. It addresses the growing challenge of managing
+  AI-generated infrastructure configurations, configuration drift,
+  and invisible changes in Kubernetes, multi-cloud, and GitOps
+  environments by making infrastructure visible, verifiable, and
+  collaborative.
+  Tryout the Meshery v1.0 release from your web browser in Meshery
+  Playground (live Kubernetes cluster inside).
+  https://playground.meshery.io/
+  * Functional Highlights
+    - Infrastructure as Design Paradigm: Shifts from managing
+      disconnected YAML/text files to treating infrastructure as a
+      shared, visual, living artifact. Teams can visualize the
+      blast radius of changes, review AI-suggested configurations
+      (similar to code reviews), and collaborate in real time
+      across boundaries before changes hit production.
+      - Models
+      - Policies
+      - Workspaces
+    - Governance-First Architecture: Introduces oversight for the
+      cloud native stack, focusing on legibility and review-ability
+      of changes (human- or AI-authored) with built-in
+      deterministic policies. This fills a gap where automation
+      exists but governance/visibility has been lacking.
+  * Structural and Community Improvements:
+    - GitHub reorganization into two organizations:
+      - github.com/meshery (core platform, including Meshery
+        Operator and MeshSync)
+      - github.com/meshery-extensions (300+ integrations and
+        adapters). This enables independent iteration for
+        extensions without impacting core stability.
+    - Launch of the Certified Meshery Contributor program: the
+      first contributor certification in the CNCF ecosystem. It
+      includes five free exams covering Meshery’s server, CLI, UI,
+      models, and extensibility (targeted at Go, React, and OpenAPI
+      practitioners).
+  * Extensions
+    - Kanvas Designer (Generally Available): A declarative,
+      drag-and-drop visual design interface ("diagram as code"). It
+      allows designing, versioning, and diffing infrastructure as
+      visual artifacts instead of raw YAML.
+    - Kanvas Operator (Beta): Provides a real-time operations
+      surface with live resource views and multi-cluster
+      management.
+
+-------------------------------------------------------------------
+Wed Mar 25 06:11:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.9.2:
+  * General
+    - fix(server): add missing user with defauls values + add
+      Given/When/Then comments for clarity @lekaf974 (#18161)
+    - local provider boot hang @hortison (#18162)
+  * Meshery CLI
+    - fix(mesheryctl): return proper error in system context
+      command @Omkar-Ugal (#18154)
+  * Maintenance
+    - chore: typescript linting @leecalcote (#18175)
+    - Add PostgreSQL tools to Meshery Code Contributor
+      @fitzergerald (#18151)
+  * Documentation
+    - [Docs] Fix empty "Related Models" section on model pages
+      @YASHMAHAKAL (#18155)
+
+-------------------------------------------------------------------
 Tue Mar 24 05:54:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.9.1:

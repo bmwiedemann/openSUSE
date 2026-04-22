@@ -17,13 +17,15 @@
 
 
 Name:           mesheryctl
-Version:        0.9.1
+Version:        1.0.11
 Release:        0
 Summary:        CLI for the meshery cloud native management plane
 License:        Apache-2.0
 URL:            https://github.com/meshery/meshery
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        Makefile
+Source3:        PACKAGING_README.md
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  go1.25 >= 1.25.5
