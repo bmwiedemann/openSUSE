@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Apr 16 07:44:28 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.52.2:
+  + Improve handling of real-time threads.
+  + Improve focus handling in the WPE Qt binding.
+  + Allow QML code to invoke WPEQtView::webView() in the WPE Qt
+    binding, which allows using the public C API as well.
+  + Fix the WPE Qt binding build with Qt 6.9 or newer.
+  + Fix scrollbar rendering glitches visible in some GPU
+    configurations.
+  + Fix V4L2 hardware accelerated media codecs now working due to
+    overly restrictive sandbox device access rules.
+  + Fix the build with ENABLE_BREAKPAD=ON.
+  + Partially fix the build in BSD and other non-Linux Unix
+    systems.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.52.1:
+  + Reduce the amount of useless MPRIS notifications produced by
+    MediaSesion when the information about media being played is
+    incomplete.
+  + Support turning off USE_GSTREAMER to configure the build with
+    all multimedia features disabled.
+  + Add Sysprof marks for mouse events.
+  + Fix MediaSession icon for iheart.com not being displayed.
+  + Fix the build with USE_GSTREAMER_GL disabled.
+  + Fix the build with librice version 0.3.0 or newer.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.52.0:
+  + Make text look like in other browsers by blending in linear
+    color space.
+  + Improved rendering performance by using a different tile size
+    depending on whether GPU rendering is enabled or not.
+  + Improved composition scheduling to avoid blocking waiting for
+    tile painting.
+  + Improved performance of accelerated 2D canvas by recording
+    operations for batched replay.
+  + Improved asynchronous scrolling when main thread is busy by
+    avoiding locks and rendering the scroll bars from the scrolling
+    thread.
+  + Enabled dynamic MSAA for accelerated 2D canvas rendering.
+  + Improved text rendering performance.
+  + Videos with BT2100-PQ color space are now tone-mapped to SDR,
+    ensuring colours do not appear washed out.
+  + Improved behaviour of context menus and added some missing
+    functionality.
+  + Improved the WPEPlatform API all around, and added support for
+    building exclusively using with it, making libwpe unnecessary
+    in that case.
+  + Removed the WPE Qt5 API binding. The Qt6 API is still
+    available.
+  + Improved support for targeting Android, taking advantage of a
+    number of Android-specific technologies (logging, hardware
+    buffers, etc.)
+  + Added support to use the WPEPlatform API on Android.
+  + Added support for the Audio Output Devices API.
+  + Added API to take image snapshots of web views.
+  + Added API to handle WebXR permission requests.
+  + Added API to query the immersive session status.
+  + Added initial API for web extensions.
+- Add hyphen BuildRequires: New dependency.
+- Remove conditional disabling of LTO for some arches, disable for
+  all targets.
+
+-------------------------------------------------------------------
 Tue Feb 24 13:57:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.50.5:

@@ -22,11 +22,8 @@
 %define _sonameverpkg 2_0
 
 Name:           wpewebkit
-### FIXME ### Drop the disabling of LTO on next release/versionbump
-%ifarch %{ix86} %{arm}
 %define _lto_cflags %{nil}
-%endif
-Version:        2.50.5
+Version:        2.52.2
 Release:        0
 Summary:        Library for rendering web content, WPE Port
 License:        BSD-3-Clause AND LGPL-2.1-only
@@ -39,6 +36,7 @@ BuildRequires:  cmake
 BuildRequires:  flite-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gperf >= 3.0.1
+BuildRequires:  hyphen-devel
 BuildRequires:  libbacktrace-devel
 BuildRequires:  libicu-devel >= 61.2
 BuildRequires:  memory-constraints
