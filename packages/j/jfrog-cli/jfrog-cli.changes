@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 21 16:40:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.102.0:
+  * Bug Fixes
+    - [jfrog-cli] RTECO-1052 - Fix docker performance #3447
+      (@fluxxBot)
+  * Internal Changes
+    - [jfrog-cli-core] Bump nuget/setup-nuget from 3 to 4 in the
+      github-actions group #1546 (@dependabot[bot])
+  * Other Changes
+    - [jfrog-cli-artifactory] RTECO-1052 - Docker verification
+      customisable through flags #428 (@fluxxBot)
+
+-------------------------------------------------------------------
 Sat Apr 18 17:19:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.101.0:
