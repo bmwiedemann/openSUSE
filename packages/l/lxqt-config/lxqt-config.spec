@@ -18,7 +18,7 @@
 
 %define mainver 2.3.0
 Name:           lxqt-config
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 Summary:        LXQt Control Center
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -26,6 +26,7 @@ URL:            https://github.com/lxqt/lxqt-config
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

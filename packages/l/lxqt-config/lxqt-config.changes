@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 21 14:10:20 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 2.4.0:
+  * Use std::pair instead of QPair
+  * Added 'ms' to slider labels, page title and removed redundant
+    labels in keyboard repeat settings
+  * Don't show LXDE settings
+
+-------------------------------------------------------------------
 Fri Apr  3 15:05:46 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.3.2:

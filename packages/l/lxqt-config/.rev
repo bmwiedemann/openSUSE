@@ -699,4 +699,16 @@ this patch makes lxqt-config also include desktop files with the x-lxqt category
 - Update lxqt-config.keyring</comment>
     <requestid>1344581</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cebf307eb7bbcf0b2c8d3c62761390fd</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869834</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  * Use std::pair instead of QPair
+  * Added 'ms' to slider labels, page title and removed redundant
+    labels in keyboard repeat settings
+  * Don't show LXDE settings</comment>
+    <requestid>1348568</requestid>
+  </revision>
 </revisionlist>
