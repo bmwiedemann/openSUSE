@@ -395,4 +395,14 @@
   * Used locale-aware sorting for results</comment>
     <requestid>1315879</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>753fc8a412f5be03616d72a186864c7e</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869850</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.0:
+  * Start calculator also on numbers
+  * Removed menucache support</comment>
+    <requestid>1348578</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-runner
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        LXQt application launcher
 License:        LGPL-2.1-or-later
@@ -25,19 +25,22 @@ URL:            https://github.com/lxqt/lxqt-runner
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
+
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
+BuildRequires:  cmake(lxqt) >= 2.1.0
+BuildRequires:  cmake(lxqt-globalkeys-ui)
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  cmake(muparser)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  pkgconfig(libmenu-cache)
-BuildRequires:  pkgconfig(lxqt) >= 2.1.0
-BuildRequires:  pkgconfig(lxqt-globalkeys-ui)
-BuildRequires:  pkgconfig(muparser)
+
+
 Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
@@ -60,7 +63,7 @@ is implemented too.
 %find_lang %{name} --with-qt
 
 %check
-%ctest
+desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}.desktop
 
 %files
 %doc AUTHORS CHANGELOG README.md
