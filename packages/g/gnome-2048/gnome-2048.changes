@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 22 06:11:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.2:
+  + This is a bugfix release. It fixes a bug when a game could
+    finish while there are still moves available. Now, when the
+    application starts, it gives a keyboard focus to a proper
+    widget and inhibits events which could cause losing of it.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 19 10:10:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 50.1:
