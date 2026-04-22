@@ -19,10 +19,10 @@
 %{?single_pythons_311plus}
 
 Name:           faugus-launcher
-Version:        1.18.3
+Version:        1.18.5
 Release:        0
 Summary:        A simple and lightweight app for running Windows games using UMU-Launcher
-License:        MIT
+License:        MIT and CC-BY-4.0
 URL:            https://github.com/Faugus/faugus-launcher
 Group:          System/Emulators/PC
 
@@ -102,6 +102,14 @@ sed -i '1s|#!/usr/bin/env bash|#!/usr/bin/bash|' faugus-launcher
 find %{buildroot}%{python3_sitelib} -name "*.pyc" -delete
 %{__python3} -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/faugus/
 
+# Version 1.18.5 has executable bit enabled on some SVG files, so we fix that here.
+chmod 0644 %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/*.svg
+
+# Handle license files
+rm -rf %{buildroot}%{_defaultlicensedir}/%{name}/LICENSE
+cp LICENSE %{buildroot}%{_defaultlicensedir}/%{name}/LICENSE.code
+cp assets/LICENSE %{buildroot}%{_defaultlicensedir}/%{name}/LICENSE.assets
+
 # Remove duplicated files
 %fdupes %{buildroot}%{_datadir}
 
@@ -117,7 +125,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 
 %files
-%license LICENSE
+%dir %{_defaultlicensedir}/%{name}
+%license %{_defaultlicensedir}/%{name}/LICENSE.code
+%license %{_defaultlicensedir}/%{name}/LICENSE.assets
 
 # Application data
 %dir %{_datadir}/faugus-launcher

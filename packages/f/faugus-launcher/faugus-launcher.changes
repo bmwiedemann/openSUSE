@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Apr 21 20:50:05 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Handle new license changes, updated license to MIT and CC-BY-4.0 for assets
+- Fixed incorrect permissions on some SVG files from the source code
+- Bump to version 1.18.5
+- Upstream changes:
+  * Updated settings screenshot
+  * Fixed launchers not being installed
+  * Updated portuguese translation
+  * Separated start on boot from system tray icon
+- For version 1.18.4:
+  * Added wmclass for windows
+  * Using svg icon instead
+  * Added logo with more resolutions
+  * Holding gamepad directionals scrolls
+  * Added comment to shortcut
+  * Added License for assets
+  * Improved filechooser navigation
+  * Updated keyboard UI
+  * Added gamepad navigation support for all widgets
+  * Adapted dialogs for gamepad
+  * Added virtual keyboard for gamepad
+  * Updated Dutch translation
+  * Improved game menu navigation with gamepad
+  * Fixed app freezing when pressing triangle with no entries
+  * Use system python
+  * gamepad string translation
+
+-------------------------------------------------------------------
 Fri Apr 17 20:11:01 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Remove python-filelock dependency from .spec file
