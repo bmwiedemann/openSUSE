@@ -417,4 +417,14 @@
     cursor left the notification window</comment>
     <requestid>1321293</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1e3f2915b679e0e23c74e472ce0e3bad</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869837</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  * No caching of transient notifications
+  * Updated translations</comment>
+    <requestid>1348571</requestid>
+  </revision>
 </revisionlist>

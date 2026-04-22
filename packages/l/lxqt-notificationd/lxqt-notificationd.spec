@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-notificationd
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        LXQt Notification daemon
 License:        LGPL-2.1-or-later
@@ -25,17 +25,20 @@ URL:            https://github.com/lxqt/lxqt-notificationd
 Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
+
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
+BuildRequires:  cmake(lxqt) >= 2.4.0
+BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  pkgconfig(lxqt) >= 2.1.0
+
 Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
@@ -45,7 +48,6 @@ The LXQt Notification daemon
 
 %prep
 %autosetup
-sed -i '/Categories/s/\(LXQt\)/X-\1/' ./config/lxqt-config-notificationd.desktop.in
 
 %build
 %cmake_qt6
@@ -56,6 +58,10 @@ sed -i '/Categories/s/\(LXQt\)/X-\1/' ./config/lxqt-config-notificationd.desktop
 %fdupes -s %{buildroot}%{_datadir}
 
 %find_lang %{name} --with-qt --all-name
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/lxqt-config-notificationd.desktop
+desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/lxqt-notifications.desktop
 
 %files
 %license LICENSE
