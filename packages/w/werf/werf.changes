@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Apr 21 16:44:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.67.2:
+  * Bug Fixes
+    - build, docker, stapel: fix stage image cache for
+      multi-platform builds (#7480) (23f89b3)
+    - build, docker: handle no such container error (#7482)
+      (83b3227)
+    - ci: pr docs preview (#7485) (d29c18b)
+- Update to version 2.67.1:
+  * Bug Fixes
+    - build, buildah: apply owner group to dst dir (#7462)
+      (fea6b40)
+    - build, buildah: correct expansion of instructions (#7460)
+      (aef6003)
+- Update to version 2.67.0:
+  * Features
+    - build: scratch stapel docker backend (#7441) (490d6e0)
+    - deploy: ability to init ts files with WerfRenderContext type
+      (#7464) (1609845)
+    - stapel: provide WERF_EXPERIMENTAL_STAPEL_ARM env for arm64
+      support (#7454) (f911913)
+- Update to version 2.66.2:
+  * Bug Fixes
+    - deploy: restore WERF_EXPERIMENT_NO_GLOBAL_SERVICE_VALUES env
+      (#7468) (e2e0999)
+- Update to version 2.66.1:
+  * Bug Fixes
+    - stop retrying 301 redirects in registry transport (#7457)
+      (f588d4c)
+- Update to version 2.66.0:
+  * Features
+    - deploy: deno runtime for typescript (#7365) (c27c4d2)
+  * Bug Fixes
+    - buildah: normalize dependency import file targets (69cf22f)
+    - build: push custom tags to final repo during multiplatform
+      builds (a402ac6)
+    - import: add check to handle symlinks before md5sum launch
+      (679bc6a)
+    - import: add one fs rsync flag (c64e3e7)
+    - make kube initialization lazy for commands that don't need
+      eager kube client (#7440) (98028f2)
+
+-------------------------------------------------------------------
 Sat Apr 18 06:03:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.65.4:
