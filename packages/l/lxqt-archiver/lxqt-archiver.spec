@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-archiver
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        LXQt File Archiver
 License:        GPL-2.0-or-later
@@ -25,17 +25,22 @@ URL:            https://github.com/lxqt/lxqt-archiver
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(fm-qt6)
 BuildRequires:  cmake(lxqt2-build-tools)
+
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libmenu-cache)
+
 Recommends:     %{name}-lang = %{version}-%{release}
 Requires:       bsdtar
 Requires(post): desktop-file-utils
@@ -59,6 +64,9 @@ graphical interface) to archiving programs like tar and zip.
 %{qt6_install}
 
 %find_lang %{name} --with-qt
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 %doc AUTHORS CHANGELOG README.md

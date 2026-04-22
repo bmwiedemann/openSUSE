@@ -159,4 +159,14 @@
   * https://github.com/lxqt/lxqt-archiver/issues/460</comment>
     <requestid>1316941</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dbfcde49879afceb31c4a46a5698827e</srcmd5>
+    <version>1.4.0</version>
+    <time>1776869831</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.0:
+  * Cleaned up .ui files
+  * Updated translations</comment>
+    <requestid>1348567</requestid>
+  </revision>
 </revisionlist>
