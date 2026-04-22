@@ -73,4 +73,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1195667</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>e801128f9f7c42515a22298d47ac8798</srcmd5>
+    <version>1.0.0</version>
+    <time>1776870090</time>
+    <user>anag_factory</user>
+    <comment>- ca-certificates requires coreutils, not busybox-coreutils</comment>
+    <requestid>1348740</requestid>
+  </revision>
 </revisionlist>

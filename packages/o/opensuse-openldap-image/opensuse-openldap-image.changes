@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 22 08:07:15 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- ca-certificates requires coreutils, not busybox-coreutils
+
+-------------------------------------------------------------------
 Fri Aug 16 07:25:54 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Sync changes back to git
