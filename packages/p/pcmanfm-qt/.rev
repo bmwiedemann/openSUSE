@@ -674,4 +674,16 @@
   * Small enhancements and fixes</comment>
     <requestid>1315890</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a59093f40fce035a8b3ef41c6118800c</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869860</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.0:
+  * Fixed closing tabs by middle clicking with Qt &gt;= 6.11
+  * Removed redundant spacing for filter bar
+  * Removed redundant ui tags
+  * Consistent visibility of multi-screen desktop itmes on Wayland</comment>
+    <requestid>1348586</requestid>
+  </revision>
 </revisionlist>

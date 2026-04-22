@@ -17,7 +17,7 @@
 
 
 Name:           pcmanfm-qt
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        File manager and desktop icon manager
 License:        GPL-2.0-or-later
@@ -27,26 +27,31 @@ Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.as
 Source2:        %{name}.keyring
 #bsc#1100208 - mvetter@suse.de - set default openSUSE wallpaper
 Patch0:         %{name}-default-wallpaper.patch
+
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt6Svg6
 BuildRequires:  pkgconfig
+
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
 BuildRequires:  cmake(Qt6DBus) >= 6.6.0
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(fm-qt6)
 BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
+
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libmenu-cache) >= 1.1.0
+
 %requires_eq    libQt6Svg6
 #bsc#1128570 - mvetter@suse.de
 Requires:       menu-cache
 #bsc#1100208 - mvetter@suse.de
 Requires:       wallpaper-branding-openSUSE
-Requires:       %{name}-branding = %{version}-%{release}
+Recommends:     %{name}-branding = %{version}-%{release}
 Recommends:     %{name}-lang = %{version}-%{release}
 Recommends:     gnome-keyring-pam
 
@@ -80,6 +85,11 @@ This package provides the upstream look and feel for %{name}.
 install -Dm 0644 %{buildroot}%{_datadir}/%{name}/lxqt/settings.conf -t %{buildroot}%{_sysconfdir}/xdg/%{name}/lxqt/
 
 %find_lang %{name} --with-qt
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}-desktop-pref.desktop
+desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/lxqt-desktop.desktop
 
 %files
 %doc AUTHORS CHANGELOG README.md

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 21 00:43:23 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to version 2.4.0:
+  * Fixed closing tabs by middle clicking with Qt >= 6.11
+  * Removed redundant spacing for filter bar
+  * Removed redundant ui tags
+  * Consistent visibility of multi-screen desktop itmes on Wayland
+
+-------------------------------------------------------------------
 Wed Nov  5 19:37:57 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.3.0:
