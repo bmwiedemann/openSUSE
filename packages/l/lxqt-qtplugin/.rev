@@ -379,4 +379,13 @@
   * Drop lxqt-qtplugin-qt610.patch</comment>
     <requestid>1315869</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c1c7efa6f8483ebe4bdcbdfed8cc4c22</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869847</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  * Bumped version and updated dependencies</comment>
+    <requestid>1348577</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-qtplugin
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        LXQt platform integration plugin
 License:        LGPL-2.1-or-later
@@ -25,18 +25,19 @@ URL:            https://github.com/lxqt/lxqt-qtplugin
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel
-BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6Gui) >= 6.3.0
-BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  cmake(Qt6Widgets)
+
+BuildRequires:  cmake(dbusmenu-lxqt)
 BuildRequires:  cmake(fm-qt6)
 BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  pkgconfig(Qt6XdgIconLoader)
-BuildRequires:  pkgconfig(dbusmenu-lxqt)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui) >= 6.3.0
+BuildRequires:  cmake(qt6xdgiconloader)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
 
 %description
 A library libqtlxqt to integrate Qt with LXQt. With this plugin, all
