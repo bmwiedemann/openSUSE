@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Tue Apr 21 15:46:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.19:
+  * build(deps): bump golang.org/x/text from 0.34.0 to 0.36.0
+    (#806)
+  * build(deps): bump actions/upload-artifact from 4 to 7 (#759)
+  * build(deps): bump golang.org/x/term from 0.40.0 to 0.42.0
+    (#807)
+  * build(deps): bump github.com/go-openapi/strfmt from 0.25.0 to
+    0.26.1 (#745)
+  * build(deps): bump sagikazarmark/dagger-version-action (#788)
+  * build(deps): bump codecov/codecov-action from 5 to 6 (#787)
+  * build(deps): bump actions/checkout from 4 to 6 (#761)
+  * build(deps): bump robherley/go-test-action from 0.6.0 to 0.7.1
+    (#760)
+  * build(deps): bump github.com/charmbracelet/huh from 0.8.0 to
+    1.0.0 (#744)
+  * feat: add vuln list command with csv output format (#748)
+  * fix(ci): install syft and call binary by absolute path (#823)
+  * feat: fixes for apt (#813)
+  * chore: bump Go version to 1.26.2 (#817)
+  * fix: reject invalid page values in selected list commands
+    (#779)
+  * feat(ci):create sbom generate and attest functions (#643)
+  * feat: allow localhost as a valid host in URL validation (#785)
+  * chore(lint): enable unused linter (#789)
+  * docs: update contributing; add clear boundaries for issues and
+    prs (#763)
+  * fix(views): enable searching and fix selection flow in TUI
+    lists (#773)
+  * build(deps): bump github.com/zalando/go-keyring from 0.2.6 to
+    0.2.8 (#768)
+  * fix: improve robot account config validation (#770)
+  * fix(member): handle error in DeleteAllMember to prevent nil
+    pointer p… (#660)
+  * fix(prompt): remove GetTagNameFromUser() that caused deadlock
+    (#681)
+  * docs: update contributing; update readme (#764)
+  * replace commands that use Run to use RunE (#679)
+  * Update community calls time and meeting notes link (#781)
+  * chore: add github-actions to dependabot config (closes #750)
+    (#753)
+  * refactor(artifact): refactoring scan and tag subcommands under
+    artifacts (#700)
+  * tests: Added unit tests for user elevate command (#686)
+  * docs: add maintainers file (#741)
+  * fix(user): pass populated PasswordChangeView to ResetPassword
+    (#734)
+  * feat : vuln summary command (#738)
+  * fix: pluralise time units in created time output (#691)
+  * fix: removing dependency on ansi and using lipgloss (#739)
+  * fix : project logs flags (#703)
+  * fix: handle nil CopyByChunk in replication policy view (#596)
+  * fix(utils,prompt): enhance error parsing and goroutine error
+    handling (#652)
+  * feat: Adding Github Templates for Issues and PRs (#732)
+  * fix(ci): add temp container for git commit SHA in build (#728)
+  * fix: use os.Root to resolve gosec G122 lint in man page
+    generation (#730)
+  * fix: require valid project ID for project labels creation
+    (#641)
+  * fix/added pragma to dagger functions to pass a default
+    directory to the source flag (#699)
+  * fix(user): `harbor user elevate` to handle empty responses
+    (#634)
+  * build(deps): bump go.yaml.in/yaml/v4 from 4.0.0-rc.3 to
+    4.0.0-rc.4 (#651)
+  * docs: add meeting notes to the readme (#719)
+
+-------------------------------------------------------------------
 Wed Mar 04 06:14:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.18:
