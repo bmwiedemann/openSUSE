@@ -244,4 +244,14 @@
 - Strip binary.</comment>
     <requestid>1324213</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>632c6e059233891827176300a5039dea</srcmd5>
+    <version>2.0+git.1600444747.83b3644</version>
+    <time>1776870164</time>
+    <user>anag_factory</user>
+    <comment>- VUL-1 CVE-2026-41051: csync2: uses insecure temporary directories when compiled with C99 or later
+  (bsc#1262472) Add patch:
+  configure_mkstemp_c99.patch</comment>
+    <requestid>1348771</requestid>
+  </revision>
 </revisionlist>

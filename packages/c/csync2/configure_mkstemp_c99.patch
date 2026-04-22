@@ -1,0 +1,12 @@
+diff -ru csync2-2.0+git.1600444747.83b3644/configure.ac csync2-2.0+git.1600444747.83b3644.patched/configure.ac
+--- csync2-2.0+git.1600444747.83b3644/configure.ac      2026-04-21 16:43:15.869922567 +0200
++++ csync2-2.0+git.1600444747.83b3644.patched/configure.ac      2026-04-21 16:43:55.568864520 +0200
+@@ -41,7 +41,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+-main() {
++int main() {
+   struct stat st;
+   char tpl[20]="/tmp/test.XXXXXX";
+   int fd = mkstemp(tpl);

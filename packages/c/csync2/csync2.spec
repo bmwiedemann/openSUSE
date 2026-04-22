@@ -1,7 +1,7 @@
 #
 # spec file for package csync2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.bz2
 Source1:        csync2-README.quickstart
 Source2:        csync2-rm-ssl-cert
 Source3:        csync2.conf
+Patch1:         configure_mkstemp_c99.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -50,7 +51,7 @@ much more than just 2 hosts, handle file deletions and can detect conflicts.
 It is expedient for HA-clusters, HPC-clusters, COWs and server farms.
 
 %prep
-%setup -q
+%autosetup -p 1
 
 %build
 autoreconf -fvi

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 22 12:25:24 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- VUL-1 CVE-2026-41051: csync2: uses insecure temporary directories when compiled with C99 or later
+  (bsc#1262472) Add patch:
+  configure_mkstemp_c99.patch
+
+-------------------------------------------------------------------
 Mon Dec 22 14:35:07 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - (jsc#PED-14855) Fix packages for Immutable Mode - csync2
