@@ -44,9 +44,11 @@
     <package name="fetchmail"/>
     <package name="mandoc"/>
     <package name="netcfg"/>
+    <package name="coreutils"/>
     <package name="ca-certificates"/>
     <package name="ca-certificates-mozilla"/>
     <package name="timezone"/>
     <package name="-busybox-man"/>
+    <package name="-busybox-coreutils"/>
   </packages>
 </image>

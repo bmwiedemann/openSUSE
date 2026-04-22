@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 22 08:11:16 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- ca-certificates requires coreutils, does not work with busybox
+
+-------------------------------------------------------------------
 Mon May 27 08:50:56 UTC 2024 - kukuk@suse.com
 
 - Update to version 1716799777.edeb5ba:
