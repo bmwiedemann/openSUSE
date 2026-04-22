@@ -1,4 +1,223 @@
 -------------------------------------------------------------------
+Tue Apr 21 15:44:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.0:
+  Today we celebrate Regal who turns v0.40.0 just in time for the
+  GitHub download tracker to report 1 million total downloads.
+  Quite the milestone! Thank you all for the encouragement, support
+  and contributions during these past 3 years. Together we're
+  redefining the policy development experience, and we have a lot
+  more of that planned for the future. Stay tuned!
+  This release includes 2 new linter rules, and many new features
+  and improvements to both the linter and language server.
+  * Linter
+    - New Rule: invalid-regexp
+      Category: bugs
+      The new invalid-regexp rule scans regular expressions found
+      in policies and reports invalid patterns that would otherwise
+      fail at runtime.
+      Avoid
+
+        package policy
+
+        invalid if regexp.match("[a-z", "test")
+
+      Prefer
+
+        package policy
+
+        valid if regexp.match("[a-z]", "test")
+
+    - New Rule: superflous-object-get
+      Category: idiomatic
+      The superflous-object-get rule flags calls to object.get
+      where using the built-in function provides no benefit
+      compared to using a reference directly, and without the call.
+      Avoid
+
+        package policy
+
+        superfluous if {
+            # the default value (`""`) isn't used in the expression,
+            # so object.get provides no benefit here
+            object.get(input, ["user", "department"], "") == "engineering"
+        }
+
+      Prefer
+
+        package policy
+
+        much_better if {
+            input.user.department == "engineering"
+        }
+
+      More cases of superfluous object.get will be added to this
+      rule as we encounter them.
+  * Improvements
+    - The naming-convention rule now accepts a list of allowed
+      names in addition to regex patterns
+    - The non-loop-expression rule now identifies more types of
+      expressions that could be moved out of iteration
+    - All rules now contain a related_resources item in their
+      metadata pointing to the docs for the rule
+    - The regal new rule command now generates a Related Resources
+      section in the new rule's documentation template
+  * Bugs Fixed
+    - Fixed two false positives reported in the non-loop-expression
+      rule
+    - The server now exits with an error if the --profile flag is
+      used without --format json (thanks @mvanhorn!)
+  * Language Server
+    * Evaluate and Debug Actions
+      Any input.json or input.yaml file found in the workspace will
+      be used for input during evaluation and debugging sessions,
+      but this wasn't obvious without reading the docs. The
+      Evaluate and Debug code lenses / commands will now present a
+      dialog option asking to create an input.json file in the
+      project workspace in case one isn't found. This file is
+      populated with dummy JSON data based on references to input
+      found in the policy, and should be edited by the user to
+      provide more relevant data.
+    * Hover Provider Improvements
+      The hover provider showing tooltips for built-in functions
+      and keywords has been rewritten in Rego, and additionally saw
+      a few improvements land as part of that process:
+      - Links to examples for built-in functions now point to the
+        correct location in the OPA docs
+      - The print function now shows up in hover results as well
+      - Hover provider now less resource intensive, and all
+        information rendered just in time for display
+    * Inlay Hints Improvements
+      The inlay hint provider (that provides names of function
+      arguments to be displayed at call sites) has also been
+      rewritten in Rego, and the server now implements also the
+      inlayHint/resolve handler, which improves performance by only
+      calculating inlay hint details when the client requests them
+      for display.
+      Additionally, the inlay hint provider now properly takes the
+      range of the active editor view into account, and will only
+      spend resources calculating hints for code that the user can
+      actually can see.
+    * Semantic Tokens in Comprehensions and every Expressions
+      The language server's semantic token provider (providing
+      context-based syntax highlighting) now provides semantic
+      tokens inside of comprehensions and every expressions in
+      addition to previously supported contexts. Additionally, most
+      of the semantic token logic is now implemented entirely in
+      Rego.
+    * Improved Language Server Initialization
+      This release contains a number of fixes and improvements
+      related to the language server's initialization routine,
+      which should now be both more robust and faster.
+  * Bugs Fixed
+    - Two potential nil dereferences identified and fixed
+    - Fix a potential out of bounds panic in slice access
+    - The bundled web server now shows a link to Regal's editor
+      integration documentation on its index page
+  * Finally
+    Extra thanks goes out to @charlieegan3 this release, who worked
+    tirelessly to fix some really complex race conditions and
+    concurrency issues in the language server. A thankless job, but
+    extremely important, and he pulled it off like a true Viking!
+  * Changelog
+    - 691afe1: Replace some Styra references (#1904)
+      (@anderseknert)
+    - 975ae72: build(deps): bump github.com/go-git/go-git/v5 in the
+      dependencies group (#1903) (@dependabot[bot])
+    - c85d88f: build(deps): bump go.opentelemetry.io/otel/sdk in
+      /build/lsp (#1906) (@dependabot[bot])
+    - 5ff449b: build(deps): bump the dependencies group with 3
+      updates (#1907) (@dependabot[bot])
+    - 9900522: lsp: Wait for client to send initialized at boot
+      (#1909) (@charlieegan3)
+    - d661b5a: build(deps): bump github/codeql-action in the
+      dependencies group (#1912) (@dependabot[bot])
+    - fd85e2d: Allow naming-convention rule to take list of names
+      (not only a pattern) (#1911) (@anderseknert)
+    - 299d3fc: Semantic Token Support for Comprehensions and
+      Constructs (#1883) (@SeanLedford)
+    - 422a9ef: build(deps): bump github/codeql-action in the
+      dependencies group (#1915) (@dependabot[bot])
+    - 02a9dc8: Fail with error when --profile used without JSON
+      format (#1918) (@mvanhorn)
+    - 1716e13: lsp/webserver: Add links to the index page (#1914)
+      (@charlieegan3)
+    - 1ab360f: lsp/testing: Nested test implementation (#1913)
+      (@charlieegan3)
+    - 53e5bf2: build(deps): bump google.golang.org/grpc in
+      /e2e/testbuild (#1916) (@dependabot[bot])
+    - 45841bf: build(deps): bump smol-toml and markdownlint-cli in
+      /build (#1919) (@dependabot[bot])
+    - 371bf1f: build(deps): bump picomatch from 4.0.3 to 4.0.4 in
+      /build (#1920) (@dependabot[bot])
+    - 62852fc: build(deps): bump the dependencies group across 1
+      directory with 4 updates (#1921) (@dependabot[bot])
+    - d32408d: build(deps): bump github.com/go-git/go-git/v5 in
+      /e2e/testbuild (#1922) (@dependabot[bot])
+    - 8b9bcf0: build(deps): bump github.com/go-git/go-git/v5 from
+      5.17.0 to 5.17.1 (#1923) (@dependabot[bot])
+    - f2251f2: [create-pull-request] automated change (#1908)
+      (@github-actions[bot])
+    - 820d3f0: OPA v1.15.1 (#1925) (@anderseknert)
+    - a155b62: Add popup prompt for creating input.json if it
+      doesnt exist when Evaluate is run (#1929) (@SeanLedford)
+    - 27067af: build(deps): bump the dependencies group with 2
+      updates (#1931) (@dependabot[bot])
+    - 2179ae4: Fix non-loop-expression false positives (#1930)
+      (@anderseknert)
+    - 33282ba: Rule: superflous-object-get (#1932) (@anderseknert)
+    - 6fd115a: Include rule docs links in metadata (#1935)
+      (@anderseknert)
+    - 6a364fb: Fix aggregate test loop initialization (#1936)
+      (@charlieegan3)
+    - 61ab730: Rule: invalid-regexp (#1937) (@anderseknert)
+    - 752ca7e: Cover more non-loop-expressions (#1938)
+      (@anderseknert)
+    - cb9a9c8: Add convenience functions for working with lines and
+      uints (#1944) (@anderseknert)
+    - 85171b8: build(deps): bump go.opentelemetry.io/otel/sdk in
+      /e2e/testbuild (#1942) (@dependabot[bot])
+    - 7fd6d66: [feature] Create input.json Skeleton if User Would
+      Like When One Doesn't Exist (#1934) (@SeanLedford)
+    - e4e326b: OPA v1.15.2 (#1945) (@anderseknert)
+    - e8f1469: build(deps): bump
+      go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+      (#1941) (@dependabot[bot])
+    - 7a1235c: Fix potential nil deref in language server (#1947)
+      (@anderseknert)
+    - d6d2bf0: Fix index out of bounds in parital inlay hint
+      (#1948) (@anderseknert)
+    - 0a0f1f8: build(deps): bump the dependencies group with 2
+      updates (#1946) (@dependabot[bot])
+    - d0e99b5: Rewrite hover provider in Rego (#1951)
+      (@anderseknert)
+    - cc35d48: Fix possible nil deref in ogre (#1954)
+      (@anderseknert)
+    - 44ceabe: Rewrite inlay hint provider in Rego (#1953)
+      (@anderseknert)
+    - 5c62c72: testing: Improve lsp shutdown logic & address test
+      race conditions (#1943) (@charlieegan3)
+    - 12cc776: Semantic package tokens in Rego (#1956)
+      (@anderseknert)
+    - b4ccafc: feat(new): add Related Resources source link to
+      builtin rule doc template (#1957) (@mvanhorn)
+    - 543d3fa: linter/lsp: Tidy use of aggregates and store in ls
+      (#1962) (@charlieegan3)
+    - 1442904: build(deps): bump github.com/go-git/go-git/v5 from
+      5.17.2 to 5.18.0 (#1958) (@dependabot[bot])
+    - 293cd7f: build(deps): bump github.com/go-git/go-git/v5 in
+      /e2e/testbuild (#1959) (@dependabot[bot])
+    - 344a389: build(deps): bump the dependencies group with 3
+      updates (#1963) (@dependabot[bot])
+    - 784fa86: Semantic import tokens Rego rewrite (#1960)
+      (@anderseknert)
+    - 0a00617: Refactor: Sending Variable Semantic Tokens Data from
+      Rego (#1961) (@SeanLedford)
+    - 9016d3d: Minor fixes (#1965) (@anderseknert)
+    - 0ddd70f: docs: Update setup-regal in docs (#1964)
+      (@charlieegan3)
+
+-------------------------------------------------------------------
 Fri Feb 27 06:16:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.0:
