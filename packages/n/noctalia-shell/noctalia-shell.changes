@@ -1,0 +1,744 @@
+-------------------------------------------------------------------
+Tue Apr 21 16:16:58 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Add 001-setting-gate-automatic-network-requests.patch:
+  * gate automatic network requests through a feature flag that openSUSE will disable by default
+
+-------------------------------------------------------------------
+Sun Apr 19 17:48:25 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Add noctalia-shell-rpmlintrc to silence files-duplicate warnings
+  for intentionally-duplicated QML stub files in WidgetSettings/
+  (cannot be deduplicated under /etc per SUSE policy).
+- Update to version 4.7.6:
+  * Release v4.7.6
+  * chore(flake): update flake.lock
+  * fix(theming): check nested starship config path before fallback
+  * fix (ci/update-flake): Fix that workflow isn't triggered if it's not the main repository
+  * chore(flake): update flake.lock
+  * chore: remove verbose comment
+  * feat(perf): enforce 100% opacity in noctalia performance mode
+  * fix(notifications): show fallback icon instead of checkerboard for missing theme icons
+  * fix(i18n): add missing bar widget translation string
+  * Revert "fix(media): gate spectrum pipeline on playback to cut idle CPU"
+  * fix(Brightness): Now it should only have a minimum value if it's using ddc
+  * fix(Brightness): Simplified the code to use existing functionality, also fixed a bug with enforcing the minimum brightness
+  * fix: use distinct MD3 tokens for surface shades in Starship template
+  * feat: add Starship prompt template
+  * fix(brightness): revert min brightness regression
+  * fix(theming): skip theme writes and hooks when wallpaper change produces no diff
+  * feat(brightness): change enforce minimum brightness method
+  * chore(flake): update flake.lock
+  * update I18n.qml
+  * update date formats for lock screen
+  * NComboBox: remove hover animation
+  * fix(config): handle nix-style atomic config replacements for settings and colors
+  * Revert "fix(settings): detect nix-managed settings updates without restart"
+  * fix(settings): detect nix-managed settings updates without restart
+  * Revert "fix(settings): reload settings after nix-managed config file replacements"
+  * fix(settings): reload settings after nix-managed config file replacements
+  * refactor(settings): organize CustomButton settings into tabbed layout
+  * feat(bar): add context menu for CustomButton right-click
+  * fix(settings): resolve barIsVertical property assignment conflict
+  * refactor(bar): remove enableColorization toggle from CustomButton
+  * feat(ui): add separate icon and text colorization for CustomButton
+  * fix(ui): improve CustomButton settings visibility logic
+  * fix(ui): adapt icon position labels based on bar orientation
+  * refactor(bar): add iconPosition fallback to oppositeDirection
+  * feat(bar): add explicit iconPosition control for CustomButton widget
+  * chore(flake): update flake.lock
+  * chore(i18n): update translations & add romanian translation
+  * GTK refresh fix
+  * Templates/KColorScheme: use rgb_csv format
+  * template-processor: add rgb(a)_csv formats
+  * Theming: add apply script for KDE
+  * fix(settings): escape colorscheme downloadUrl
+  * perf(ui): step NScrollText marquee on a timer instead of infinite animation
+  * fix(media): gate spectrum pipeline on playback to cut idle CPU
+  * fix(template): ensure kitty's live config reload after theme regeneration
+  * fix(audio): sticky app-stream volume + subtitle line in panel
+  * fix(keybinds): recognize ctrl+punctuation shortcuts in recorder
+  * chore(flake): update flake.lock
+  * chore(version): bumping to v4.7.6-git
+  * Release v4.7.5
+  * chore(i18n): update all
+  * fix(location): autolocate off by default for privacy, improved UI when no location is set. Fix #2388
+  * chore(i18n): hu
+  * fix(weather): read is_day from service instead of requiring callers to pass it.
+  * fix(location): more logging and potential fix
+  * chore(version): bumping to v4.7.5-git
+  * Release v4.7.4
+  * fix(audioservice): another Qt-11 warning fix
+  * fix(settings): dont rely on Qt.btoa to generate default settings dump.
+  * chore(i18n): update hu
+  * fix(nreordercheckboxes): don't shadow QQuickItem.enabled
+  * fix(audioservice): switch from PwNode to var for sink and source so it's nullable.
+  * fix(location): fix weather fetching
+  * chore(i18n)
+  * feat(location): add toggle to always show Talia weather emojis
+  * fix(theming): always sync prefer-light/dark with system theme toggle
+  * chore(flake): update flake.lock
+  * chore(version): bumping to v4.7.4-git
+  * Release v4.7.3
+  * fix(mango): prevent double focused windows in workspace apps
+  * fix(workspace-apps): add "handle" for sway activation
+  * fix(workspace): copy window to js object instead of holding live listmodel prox.
+  * fix(workspace): temp disable tooltips
+  * fix(workspace): showApp simpler anims
+  * fix(workspace): simplification
+  * fix(workspace): fix missing icon and broken layout
+  * fix(workspace): minor cleanup
+  * feat(location): removed the Tokyo default location, improved flow with the new auto-locate.
+  * Update dock on window list change
+  * MediaPlayerPanel: fix layout issues
+  * fix(bar): guard grouped workspace window delegates when modelData is stale
+  * Update pywalfox.json
+  * chore(flake): update flake.lock
+  * feat(location): auto location/weather via IP
+  * chore(version): bumping to v4.7.3-git
+  * chore(version): release v4.7.2
+  * feat(wallpaper-panel): adjust height for 1080p
+  * feat(wallpaper-panel): 50% max height
+  * fix(mediamini): guard onEntered against stale panel ref.
+  * fix(bar): harden AudioVisualizer when ShellScreen is null
+  * chore(i18n)
+  * chore: run qmlfmt.sh again
+  * fix: Add showText to BarWidgetRegistry and settings-widgets-default
+  * fix(audio): stop volume sliders fighting service state
+  * fix(audio): stabilize input volume % via wpctl like default sink
+  * chore: run qmlfmt.sh
+  * chore: add modified files again because they were not staged (I don't get git sometimes)
+  * chore(i18n): Add englisht strings for the text toggle
+  * feat: Add showText variable to show/hide name of Active Window
+  * Update pywalfox.json
+  * fix(ColorScheme): sync light/dark toggle to gtk
+  * chore(flake): update flake.lock
+  * fix(theming): sync gtk-theme with color-scheme when system sync is on
+  * fix(theming): keep system color-scheme in sync on every dark mode change
+  * fix(workspaces): assign display index per output in ExtWorkspaceService
+  * style(wallpaper): dont switch favorite in split wallpaper on first click
+  * fix(wallpaper): cleanup misleading code
+  * chore(autofmt)
+  * fix(plugin): fix loadWidget
+  * fix(wallpaper): hide light/dark icon in split wallpaper mode
+  * fix(wallpaper): adjust wallpaper light/dark & favorite logic
+  * Add check for non-zero width in enhancedBand
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * fix(blur): force flush wayland state, to avoid stuck blur regions
+  * fix(ncolorchoice): added "enabled" visual feedback
+  * fix(plugins): fixed desktopWidget settings vs plugin settings
+  * fix(bar): pass initial properties on creation (screen, section, etc...) to avoid potential registration issues.
+  * fix(desktop-widgets): pass screen as initial property to avoid wrong spectrum registration
+  * chore(i18n)
+  * style(WallpaperPanel): adjust layout for light/dark & monitor selector toggles
+  * fix (ci): Fix that workflow isn't triggered if it's not the main repository
+  * fix(plugins): avoid potential race condition during update process
+  * fix(templating) improved handling of symlinks
+  * fix(nbutton): wrap in an Item to properly reserve border space for improved fractional scaling render
+  * chore(i18n)
+  * fix(widgets): improves disable states by avoiding stacking opacities
+  * fix(ncontextmenu): improved parent constraining
+  * fix(ncontextmenu): smart positionning to avoid clipping outside of parent.
+  * style(wallpaper): hide dark/light behind toggle just like display selection
+  * feat(wallpaper): add separate selection for light & dark mode
+  * fix(settings): avoid unified notification sound handler clobbering per-urgency paths
+  * chore(flake): update flake.lock
+  * apply reduced light mode opacity also to dock, notifications & OSD
+  * fix(plugins): pass pluginApi as initial property to prevent binding warnings. Eliminate the need for fallback chains in plugins code.
+  * feat(settings): in windowed mode, dont stretch to full width
+  * feat(settings): when switching settings panel mode, close and reopen the settings to see the actual change
+  * cleanup(NScrollText): remove unused imports, gate layer on overflow
+  * remove onResumed() since networkMonitorProcess already covers it
+  * refactor(NScrollText.qml): MultiEffect fade mask
+  * chore(TemplatesSubTab): format
+  * fix(TemplatesSubTab): Fixed a bug which prevented qml format to run correctly
+  * Revert "Merge pull request #2203 from haikalllp/fix/update-pywalfox-colors"
+  * chore(flake): update flake.lock
+  * fix(renderer): remove ambiguous \s* from _parse_if regex to prevent ReDoS
+  * fix(renderer): remove ambiguous \s* from _EXPR_RE to prevent ReDoS
+  * fix(renderer): remove ambiguous \s* from _BLOCK_RE to prevent ReDoS
+  * fix(ProfileCard): add elide to GECOS name
+  * fix(media): tighten MediaMini panel layout for album art and height
+  * style(mediapanel): fix artwork cropping in non compact mode
+  * feat(template): added dedicated Scroll(wm) template
+  * fix(audio): scope stream volume overrides per media identity
+  * fix(ci): flake updates should trigger cachix workflow
+  * fix(audio): filter out intermediate stream nodes
+  * chore(flake): update flake.lock
+  * change Airplane Mode visibility conditions
+  * fix(zed): typo resolved
+  * improve some process handling
+  * improve airplane mode handling
+  * fix(lock-keys): only apply sysfs LED state on successful reads
+  * fix(IdleService): respect lockOnSuspend when idle triggers suspend
+  * fix(Lockscreen): adjust password cursor so it properly follows position
+  * Add Toast dismiss IPC Handler
+  * fix: restore smooth scroll animation for keyboard navigation in wallpaper selector panel
+  * feat(view): add smooth scroll animation for keyboard navigation in NListView and NGridView
+  * feat(view): implement smooth wheel scrolling for NScrollView
+  * feat(view): implement smooth wheel scrolling for NGridView
+  * feat(view): implement smooth wheel scrolling for NListView with global setting
+  * chore(flake): update flake.lock
+  * chore(sway): fix border color
+  * fix(bar): guard bar widget metadata lookup
+  * feat(nightlight): using our own manual scheduling to allow more flexibility
+  * fix: only convert config symlinks when modification is needed.  fix #2299
+  * fix(lockkeys): replace 'this' to a proper id to avoid warnings
+  * feat(bar-ipc): added new "peek" call and made existing call work better with auto-hide
+  * fix(launcher): fix iconMode default gui settings.  fix #2296
+  * fix(background): fix dupe transition on startup + minor safety improvement to avoid potential null texture on shaders
+  * fix(nimagerounded): avoid null shader texture when image disappear
+  * fix(wallpaper-settings): added missing parameter
+  * fix(audioservice): repeater need an Item delegate.
+  * fix(ColorScheme): potential fix for GTK/gsettings light-dark getting out of sync
+  * Move toast IPC closer to notifications
+  * chore(flake): update flake.lock
+  * fix(nsearchcombobox): cleanup
+  * fix(shader): uv clamping NImageRounded. Fix #2288
+  * fix(desktop-widgets): restore mouse interaction. fix #2293
+  * remove airplaneModeEnabled from settings
+  * rework Airplane Mode handling & remove bluetoothctl fallback
+  * feat(workspace): allow one character labels on vertical bar
+  * fix(theming): regenerate wallpaper colors after cache load on startup
+  * chore(fmt)
+  * chore(i18n): fixes
+  * chore(i18n): added en-GB
+  * chore(i18n): update
+  * Fix Toast: same model than Notifications
+  * Revert "fix(audio): potential desync fix"
+  * fix(audio): potential desync fix
+  * chore(flake): update flake.lock
+  * feat(bar): improve volume scroll handling on bar with smooth accumulation
+  * feat(bar): add volume control support to bar scroll behavior
+  * fix(audio): sync per-app volume overrides with PipeWire and new streams
+  * Revert "fix(AudioService): attempt to fix individual audio levels"
+  * feat(settings): add toggle to disable system theme sync
+  * fix(AudioService): attempt to fix individual audio levels
+  * Revert "fix(audio): attempt to fix per-app volume desync from stale overrides"
+  * fix(audio): attempt to fix per-app volume desync from stale overrides
+  * fix(notifications): prefer default actions for window focus
+  * fix(lock-keys): sync bar state from sysfs on first poll after startup
+  * feat(ipc): add commands for airplane mode
+  * i18n: add Czech (cs) translation
+  * fix(wallpaper): stop overwriting per-monitor folders when toggling multi-monitor dirs
+  * fix(hostservice): use non uppercase username, respect upper/lowercase for Full Name
+  * feat(lockscreen): add highlight selection in the password input field
+  * Using keybind from settings
+  * chore(flake): update flake.lock
+  * refactor: extract launcher slide transition logic into reusable NSlideSwapView component
+  * refactor: move launcher category selection logic into a helper function
+  * feat(launcher): implement sliding transition animations for launcher category changes
+  * chore(version): bump to v4.7.2
+  * Release v4.7.1
+  * feat(sysgraphs): sharper
+  * feat(wallpaper): add toggle to skip image processing and use original files
+  * feat(imagecache): cleaned up dead code, reduced cache duration to 15 days
+  * prevent duplicate scan triggers
+  * Changed background light
+  * feat(networking): refactor NetworkService to use Quickshell.Networking and improve state synchronization
+  * chore(shell): tiny cleanup
+  * fix(background): potential fix for black lockscreen after performance mode
+  * ci: add cachix workflow
+  * ci: add flake update workflow
+  * fix(graph): improved AA on graph shader
+  * chore(autofmt)
+  * chore(i18n): update
+  * fix(theming): wallpaper color generation with apostrophes in path
+  * fix(nix): inherit noctalia-qs overlay in our overlay
+  * fix(NFilePicker): Added ability to use both Control and Shift with both having different functionality
+  * fix(wallpaper): wait for ImageCacheService to be ready before scanning
+  * feat(spectrum): slightly better initialization of the number of bands until noctalia-qs is updated everywhere.
+  * fix(NFilePicker): Added multiSelection choice
+  * chore(flake): bump flake.lock
+  * build(nix): remove cava
+  * Bar/MediaMini: don’t repaint invisible progress ring
+  * fix(spectrum): minimal signal new default to 1%
+  * fix(ipc): audio and network panel attempt to open near their bar button
+  * chore(MainScreen): Quickshell default layer is WlrLayer.Top, let's set them explicitely for clarity
+  * feat(OSD): full click-through
+  * Revert "fix(OSD): keep panelwindow always loaded to avoid hotplug crash"
+  * fix(btsubtab): fix alpha on ntexts
+  * feat(spectrum): typo
+  * feat(spectrum): adding support for both band and bar properties during the migration
+  * chore(i18n): update
+  * feat(audioviz): added a settings to control the frequency mirroring. Fix #2239
+  * fix(desktop-widgets): ignore mouse via mask when not editing so the events pass thru to an eventulal desktop shortcuts manager (pcmanfm). Fix #2241
+  * Update PluginPanelSlot.qml
+  * fix(migration): improve the old migration 45
+  * fix(active-window): fix vertical centering, more robust if fonts get bigger than icon.
+  * fix(settings): cleaning remnants of Settings.data.bar.floating
+  * chore(autofmt)
+  * fix(panel): simplify calculations
+  * fix(smart-panel): also clamp panelHeight for vertical floating bars
+  * style(lockscreen): adjust capslock & password input icon
+  * LockKeysService: use Qml file system model
+  * feat(plugin-panel-slot): forward panelBackgroundColor from plugin to SmartPanel
+  * fix(smart-panel): prevent panel overflow on small screens with floating bar
+  * feat(ColorScheme): always set gsetting color-scheme when toggling light/dark mode
+  * feat(emacs): add posthook to refresh the theme
+  * allow overriding qs config path
+  * play volume feedback when changing volume externally
+  * feat(i18n): added vietnamese (machine translated)
+  * Revert "perf(mainscreen): merging fix/damage-control"
+  * Revert "fix(mainscreen): avoid potential single frame flicker of the bar when resizing"
+  * Revert "fix(mainscreen): fix posty bar bg flicker"
+  * fix(mainscreen): fix posty bar bg flicker
+  * fix(mainscreen): avoid potential single frame flicker of the bar when resizing
+  * feat(i18n): getting things up for vi(etnamese)
+  * feat(screencorners): no longer reside in MainScreen, tiny PanelWindow. Will also serve for hotcorners detection
+  * perf(mainscreen): collapse Mainscreen to bar-sized when idle
+  * fix(panel): when animations are disabled to log a warning on every panel open
+  * fix(nspinbox): replace the diamond hover by a simple rounded rectangle, fixes a lot of small glitches
+  * fix(panel): reset closedImmediately flag reliably after panel close
+  * chore(autofmt)
+  * MainScreen/PanelWindow: do not put on top layer
+  * Added scroll with keyboard on dropdown
+  * docs(readme): update available plugins count to nearly 100
+  * bumping version to v4.7.1 git
+  * Release v4.7.0
+  * fix(config): ensure trailing slash
+  * fix(wallhaven): adjust height calculation to prevent overshooting
+  * WeatherCard: Avoid using too much processing power
+  * chore(sysstat): removed dead code
+  * chore(autofmt): lysec cloned again
+  * fix(about): show noctalia-qs new version string
+  * chore(i18n): add notification rules translations
+  * fix(notification-rules): do not allow empty patterns
+  * feat(notifications): add notification display rules
+  * fix(ntextinput): use onTextChanged for autosave, onEditingFinished instead of onAccepted
+  * Revert "fix(ntextinput): going back to "textEdited" so you dont have to press enter or change focus to apply the changes."
+  * fix(Settings): prevent keyboard search from clearing/navigating on second keystroke
+  * fix(wallpaper): fixed wallhaven pager. increased height from 45% to 70%
+  * Fix ignore sound for app without a name but with a desktopEntry defined
+  * chore(flake): bump flake.lock
+  * fix(labwc): minor fixes to support upstream ext-workspace-v1
+  * Revert "add logging to HyprlandService & CompositorService"
+  * Added min/max events in audio service to notify subscribers when audio limit is reached
+  * fix(bar): never unload content when bar is hidden
+  * fix(network): force opaque on nbox delegate to avoid ugly opacity.
+  * fix(hyprland): same fix but with a simpler Qt.callLater approach
+  * fix(notif/workspace): reverting some of the previous attempt from timer back to Qt.callLater
+  * fix(hyprland): defer workspace ListModel updates to prevent SIGSEGV during incubation
+  * fix(hyprland): correct focusedWindowIndex after sorting window list
+  * fix(bar): attempt to avoid crash when autohide is used
+  * Revert "fix(bar): defer update to next cycle"
+  * fix(bar): defer update to next cycle
+  * fix: remap pywalfox colors to better support light color theme
+  * fix(popup): disable autoclose by clicking outside to avoid loosing settings by accident.
+  * fix(ntextinput): going back to "textEdited" so you dont have to press enter or change focus to apply the changes.
+  * fix(tooltip): limit tooltip radius when box is too small, larger horizontal padding for grid mode.
+  * fix(network): ethernet info - fix box border color
+  * fix(network): removed hover effect, adjusting size and radius.
+  * chore(audioservice): minor cleanup
+  * fix(zen-browser): more template adjustments
+  * fix(zen-browser): add overflow button to template
+  * fix(zen-browser): adjust template for new zen update
+  * fix(bar): attempt at resolving widget incubation race conditions
+  * add logging to HyprlandService & CompositorService
+  * fix(Hyprland): attempt to fix invalid window extraction
+  * fix(dock): adjust exclusive zone sizing
+  * chore(settings): update deb
+  * reduce label size of wallpaper transition types
+  * layout refinements for info button
+  * BluetoothSubTab: Color adjustments
+  * feat(settings): update search index for new dock launcher settings
+  * feat(dock): add custom icon selector for the dock launcher
+  * feat(dock): implement distribution logo rendering for launcher icon
+  * feat(dock): add setting to use distro logo as launcher icon
+  * fix(OSD): when controlcenter is open, before skipping OSD check that the cards(vol/bright) are really enabled
+  * fix(OSD): keep panelwindow always loaded to avoid hotplug crash
+  * feat(network): cleanup and UI polish
+  * Signal icon representation in WifiSubTab
+  * Restored BTSubTab
+  * Merged display changes
+  * Update WifiSubTab.qml
+  * reworked icon logic to cover all grounds
+  * apply changes
+  * fix(wifi): more colors refinment
+  * simplify channel logic remove iw usage
+  * fix(wifi): better colors
+  * fix(wifi): simplified colors managements in the panel
+  * chore(settings): default settings json update
+  * feat(Plugins): add toggle to hide the update notification
+  * Guard ethtool usage.
+  * fix(flake): add missing inputs
+  * increase range a bit
+  * chore: bump flake.lock
+  * Icon backgrounds
+  * fix(workspace): defer update to next event loop via timer instead of Qt.callLAter
+  * chore(i18n): update
+  * chore(readme): more compact
+  * chore(i18n) update
+  * feat(hooks): added a simple color generation hook
+  * chore(readme) stars at the bottom
+  * chore(readme): updated with scope
+  * Update supported Wayland compositors list
+  * Update NetworkPanel.qml
+  * normally i should've returned. might be oversimplified :P
+  * Update WifiSubTab.qml
+  * Update NetworkPanel.qml
+  * fmtd
+  * put actual icons
+  * bad sed -i :((
+  * move to service 3/3
+  * fix an issue where variables might not ready.
+  * some fixes - deleted un-needed if block
+  * move functions to service 2/3
+  * feat(icons): new ethernet icons
+  * Fix kitty predefined selection colors
+  * feat(icons): new wifi icons
+  * prep for new icons 1/3
+  * feat(wallpaper): added ability for granular pick of transitions via checkboxes
+  * fix(clipboard): add color preview
+  * feat(Wallpaper): change random wallpaper time buttons to NSpinBox
+  * chore(autofmt)
+  * fix(dock): gate peek and indicator windows on auto-hide to reduce GPU compositing overhead
+  * SystemMonitor.qml: fix launching external Monitor app
+  * feat(kitty): add tab & trail colors
+  * docs(README): remove dev-shell info from readme
+  * fix(WallpaperAutiomation): use iRadius for time interval options
+  * fmt
+  * Update NetworkService.qml
+  * resolve merge issue[s]
+  * chore(i18n): update
+  * feat(clipboard): removed unused date filter and date headers, went with a simple "time ago" indicator per entry which feels more natural
+  * chore(autofmt)
+  * fix(mediamini): proper width computation when show album art is off. Fix #2121
+  * fix(lockscreen): wrap custom clock text to avoid overflow. fix #2173
+  * prep for icons
+  * fix(nightlight): changed the logic, the icon is now colored only when enabled
+  * fix coloring that created in pt1 | Missing elements.
+  * carry over requested changes from pt1 | apply pt1.patch
+  * add timer, use color & i18n of open.
+  * feat(notif): added a shorcut to the settings in the notification history panel
+  * fix(ghostty): add config.ghostty support
+  * fix(bar): more bullet proofing toward auto-hide
+  * feat(dock): renaming "static" to "attached"
+  * fix(dock): fix attached dock retraction when hovered
+  * Delete Planning board.md
+  * Delete Modules/Panels/Settings/Tabs/Connections/Planning board.md
+  * feat(brightness): enable ddcutil dynamic sleep to reduce latency
+  * Update Planning board.md
+  * fix(tooltips): added support for string vs array content everywhere
+  * finalize, enterprise support
+  * Improve enterprise support
+  * chore(i18n): update
+  * feat(hooks): added a 3rd argument to the wallpapper changed hook (light/dark)
+  * chore(i18n): update
+  * Support for .gif profile picture
+  * further attempt to improve efficiency
+  * Update Network.qml
+  * this makes more sense where used.
+  * fix(clipboard): code cleanup
+  * fix(docK): fix static dock auto retraction when mouse stays on the peek zone
+  * remove app2unit in launcher settings
+  * chore(clipboard): cleanup request
+  * fix(dock): fix blur pos when floating
+  * fix(dock): replaced animations by slide-in/out to be blur compatible + removed animation on the dock indicator that was super laggy and unecessary.
+  * autofmt
+  * fix(launcher-overlay): fix background color being all wrong
+  * chore(bt): unified get/setDeviceAutoConnect to use similar arguments
+  * fix(ncheckbox): better tick sizing and centering
+  * fix(audio): keep per-app volume across track changes and seeks
+  * don't sync blindly
+  * fix(settings): add proper spacing on notif/general tab
+  * fix(bt): better looking auto-connect checkbox
+  * refactor(notif): rename internals for clarity (popup vs history)
+  * fix(notif): fix re-entrant QML incubation crash in NotificationService
+  * Revert "fix(audio): persist per-app volume against app-side resets"
+  * fix(audio): persist per-app volume against app-side resets
+  * Revert "fix(shell): prevent nested QML incubation in workspace pill Repeaters"
+  * fix(shell): prevent nested QML incubation in workspace pill Repeaters
+  * Bumping version
+  * Release v4.6.7
+  * fix(workspace): potential fix for SIGSEGV caused by re-entrant incubation
+  * feat(bt): improve ui/ux for the auto-reconnect feature
+  * feat(ncheckbox): allow custom labelSize
+  * fix(launcher): restore background behind icons
+  * Revert "feat(launcher): trying a less boxy look"
+  * feat(launcher): trying a less boxy look
+  * feat(settings): allow up/down navigation in search results when settings are windowed
+  * feat(settings): unified the settings search in a new singleton
+  * fix(workspace): more defer Workspace compositor signal handlers with Qt.callLater to avoid SIGSEGV
+  * chore(i18n/lockscreen): relocate the language to dateformat map for easier maintenance
+  * chore(i18n): update + autofmt
+  * update note
+  * Update translation for 'earlier' in Portuguese
+  * fix: prevent TypeError when Bluetooth device name or icon are not strings
+  * feat(settings): improved search index to support visibility conditions, prevent showing results that would be invisible to the user. Fix #2113
+  * Applies Lemmy's review
+  * Add hover feedback on window icons
+  * Add hover feedback on border color
+  * Add animation between workspace displays
+  * Remove unused hovered properties
+  * Show workspace applications on hover
+  * fix(workspace): defer refreshWorkspaces to next event-loop
+  * detect monitor configured disconnect
+  * feat(dock): respect blur toggle
+  * i18n
+  * an obvious power spike culprit
+  * Bump flake.lock
+  * fix(hyprland): ignore bogus "error" keyboard layout. fix #1390
+  * chore(settings): update settings-default.json
+  * feat(bar-audio): added interface nickname in tooltip
+  * fix(gtk): append noctalia.css in gtk3/4.css
+  * autofmt
+  * fix(desktop-widget-settings): Desktop widget settings dialog, title should look much better
+  * Simplify - even more.
+  * feat(hooks): add $1 lock/unlock parameter to screen lock and unlock hooks
+  * Battery: add missing i18n
+  * Update Color.qml
+  * apply reduced light mode opacity to panel backgrounds
+  * fix(settings): force bottom tooltip on applications chips.
+  * feat(about): ability to disable changelog display.
+  * fix(ntabbutton): dont force full transparent
+  * Bumping version
+  * Release v4.6.6
+  * feat(settings): moving translucent widgets toggle to appearance subtab
+  * feat(settings): add translucent widgets toggle to gate smart transparency
+  * i18n(update)
+  * perf(shapes): enable async rendering for all CurveRenderer shapes
+  * fix(settings): defer ListModel population to prevent re-entrant incubation SIGSEGV
+  * fix(notifications): defer Loader activation to prevent re-entrant incubation SIGSEGV
+  * Update AdvancedMath.js
+  * Revert "fix(launcher): prevent arbitrary js execution. fix #2115"
+  * fix(hooks): defer HooksService.init to delayedInitTimer for startup hook reliability
+  * fix(launcher): fix gradients and nbox colors
+  * feat(widgets): implement smart transparency for auxiliary components
+  * fix(widgets): add Layout.margins to bordered widgets to prevent border clipping
+  * feat(launcher): splitted in smaller files for easier maintainability. improved record usage.
+  * feat(network): improve UI consistency and connection info display
+  * fix(backgrounds): prevent qTriangulate crash on framed bar outer rectangle arcs
+  * fix(backgrounds): enforce minimum arc radius to prevent qTriangulate SIGSEGV on flat corners
+  * feat(launcher): implement usage-based ranking for results across providers
+  * fix(desktop-widgets): Added a toggle for snapping the scale
+  * fix(bar): defer ListModel sync to prevent re-entrant incubation SIGSEGV
+  * fix(backgrounds): another take on fixing potential degenerate Shape paths
+  * fix(audio): replace NWaveSpectrum CurveRenderer with shader to fix SIGSEGV crash
+  * fix(desktop-widgets): resolve widgetMetadata ReferenceError in DraggableDesktopWidget
+  * fix(plugins): ensure settings.json is never copied on update
+  * feat(ui): add toggle to show/hide scrollbars on hover
+  * feat(plugins): settings popup allow for custom width
+  * chore(niconbutton): renamed allowScroll to handleWheel for clarity
+  * fix(ntextinput): fix chopped off border due to fractional scaling + never swallow mousewheel events
+  * fix(launcher): use a binding for dynamic gridColumns - fix up/down navigation.
+  * fix(launcher): prevent arbitrary js execution. fix #2115
+  * fix(nbox): update comment
+  * fix transparency issues with connected box for Bluetooth/WiFi
+  * feat(desktop-widgets): Added support for grid snapping of the desktop widgets
+  * fix(bar): graphical battery - dont eyeball the scale
+  * chore: format
+  * fix(bar): graphical battery should not follow bar font size.
+  * fix(bar): simplified floating margins ui
+  * fix(bar): replacing margins sliders by spinbox
+  * fix(templating): process the user templates even if no standard templates are enabled
+  * feat(bar): debouncing rapid changes to floating margins
+  * change to accomodate the upstream conflict
+  * feat(bar): increased floating margins from 18px to 500px - fixed smart panels opening positions to properly account for thoses margins.
+  * feat(desktop-widgets): Added a way to move the DesktopSettingsDialog popup by dragging
+  * feat(ipc): add new ipc call wallpaper refresh
+  * chore(version): bump to 4.6.6
+  * Release v4.6.5
+  * chore(i18n) update
+  * i18n
+  * unused keys now gone
+  * Update NetworkService.qml
+  * Update Planning board.md
+  * basic enterprise support
+  * Here we go again
+  * feat(labwc): use native ext-workspace-v1 for workspaces and fix window tracking
+  * feat(nbox): clamping min opacity instead of using a ratio.
+  * fix(display): reactively update resolution when compositor reports changes. fix #1845
+  * fix(mango): fix window-to-output mapping and guard against empty metadata matches
+  * fix(emacs): fix template tooltip path
+  * fix: Change from referencing widgetData to widgetSettings.data
+  * feat(mango): new service implementation using the proper dwl implementation
+  * fix(templating): run user templates even when no build-int templates are enabled
+  * fix(templating) implemented a more robust creation of user-templates.toml
+  * refactor(niri): use native C++ Niri IPC module instead of QML socket
+  * fix(session-menu): renumber keybinds on toggle and assign number to Userspace Reboot
+  * feat(spectrum): new cava free service
+  * chore(cava): CavaService => SpectrumService
+  * chore(dead-code): removing terminal.py
+  * feat(nbox): added comment
+  * feat(nbox): less transparency on containers
+  * feat(ui): using panel opacity on all nboxes (unless marked as opaque) + launcher adjustments for a nice transluent look
+  * i18n(update): font weight
+  * settings-widgets-default
+  * sway: include floating_con windows in workspace mapping
+  * i18n
+  * feat(desktop-widgets): add configurable audio visualizer widget and fix CAVA deregistration lifecycle
+  * Introduce setting to configure the font weight in the Workspaces widget
+  * docs(bug report): add noctalia-qs version to template
+  * i18n(system): removed "threshold" and use Warning and Critical directly
+  * chore(PR template): add info about drafts
+  * feat(launcher): launcher in overlay now support blur/background effect
+  * i18n
+  * chore(settings): remove unused system performance description key
+  * fix(settings): turn System Monitor into System with Performance subtab
+  * feat (about/version): removed fallback to board_name, made it simpler
+  * fix(ngraph): removed Shapes and using a pure shader approach.
+  * Revert "Merge pull request #2096 from D3rJust1n/main"
+  * feat (about/version): added fallback to board_name if product_family is N/A
+  * fix format
+  * fix(desktop-widgets): Fixed a bug where the widget settings context action didn't show if you didn't have the settings in the manifest
+  * feat(desktop-widgets): Added a better way for plugins to create the desktop widget settings. This includes a save function to save the values that have been changed
+  * fix(hyprland): sort toplevels by x/y coordinates to fix widget ordering in scrolling and master layouts
+  * fix(about/version): better noctalia-qs --version parsing, removed unecessary pacman code.
+  * change auto-connect tooltip
+  * Add queue for Bluetooth auto-connect
+  * OSD: prioritize volume over input volume
+  * Exclusion-Zone-Inset to exclusion-zone-inset and small description rename
+  * bump version
+  * v4.6.4
+  * fix(launcher/sessionProvider): executeAction was broken due to panel content being unloaded before the action could run
+  * feat(blur): added a new option to toggle it on/off
+  * i18n-update
+  * perf(launcher): persist plugin provider instances across open/close cycles.
+  * fix(lockscreen): reduce focus churn after resume
+  * feat(settings): show scrollbar when scrollable
+  * chore(README): adjust noctalia shell capital letters
+  * fix(BluetoothService): pause bluetoothctl polling during lockscreen
+  * fix(workspace): make empty space clickable in grouped mode
+  * autofmt
+  * i18n-update for bt auto connect
+  * -- unnecessary variable -- (read desc)
+  * fix(theming): fix and add colors to qt template
+  * Update BluetoothSubTab.qml
+  * make the text interactive.
+  * ngraph: avoid crashing CurveRenderer by using linear fill paths
+  * ngraph: move shape safeguarding
+  * brightness: use declarative binding instead of updateMonitor
+  * fix(NSlider): guard filled CurveRenderer shape against zero-height geometry
+  * screen-corners: safeguard shape
+  * Update BluetoothService.qml
+  * add autoconnect control
+  * Update en.json
+  * backgrounds: even more safeGuard
+  * launcher-overlay: safeguard Shape
+  * widget-sliders: safeguard Shape
+  * fix(PanelBackground): avoid degenerate ShapePath when panel slot is not renderable
+  * fix(NWaveSpectrum): prevent CurveRenderer triangulation crash on degenerate/invalid paths
+  * chore(zen-browser): removed unused groupboxes background
+  * fix(wallpaper): add missing Power service import to fix autoswitch
+  * Templates/emacs: improve headline visibility with high opacity colors (#2034)
+  * that was not required.
+  * fix(ayu): adjust text color to make it more readable
+  * migration(theming): redownload outdated color schemes to fix terminal format
+  * templates: terminal: foot-predefined: replace [colors] with [colors-dark]
+  * plugins: handle settingsSaved signal and deduplicate settingsPath var in DesktopWidgetSettingsDialog
+  * ngraph: more bullet proofing against potential degenerate paths
+  * sys-stat: ensure a minimum number of history entries so we can draw them
+  * nsection-editor: restore CPU intensive icon that was removed by a bad merge.
+  * i18n
+  * feat(VersionSubTab): adjust copy info output
+  * feat(VersionSubTab): visual overhaul
+  * Show notification on all screens when 0 screens are found
+  * remove Bluetooth auto-connect notification
+  * fix(toast): reimplement compact mode for toasts (#2028)
+  * Add {{mode}} tag to template renderer
+  * Bump noctalia-qs for flake.lock
+  * Fix visual focus in clauncher with (back)tab key
+  * bumping version
+  * Release v4.6.3
+  * backgrounds: fix coincident subpath causing invisible bar fill on simple bar type
+  * Bumping version
+  * Release v4.6.2
+  * main-screen: screen can be null for a moment when reconnecting
+  * media-service: add null guard and use dbusName for player blacklist matching
+  * i18n-update
+  * Fix Bluetooth auto-connect not working on startup
+  * fix(i18n): add missing error toast translation for custom commands
+  * backgrounds: fix degenerate inner hole subpath in BarBackground when not framed
+  * rename exclusionZoneOffset to enableExclusionZoneInset
+  * location: IPC call now triggers geocoding and weather refresh. Fix #2065
+  * media-mini: properly handle cava unregistration when hidden.
+  * default-settings: proper generation
+  * change a comment in BarExclusionZone.qml
+  * make true the default value
+  * add this part from upstream
+  * add exclusion zone toggle to en.json
+  * fix(plugins): Fixed a bug with the DesktopWidgetRegistry
+  * combobox: add textRole to silence QVariantMap-to-QString warnings
+  * backgrounds: guard against degenerate ShapePaths crashing Qt CurveRenderer
+  * nlineargauge: comment cleanup and simplified logic with a single "raw" property
+  * feat(plugins): Added a way for plugins to define their own desktop widget settings
+  * move predefined colorschemes from python to separate template
+  * feat(bar): add a toggle for 1px exclusion zone
+  * i18n
+  * nlineargauge: more accurate but more squished at low values
+  * nlineargauge: snapping to zero if the value is too small to be rendered beautifully.
+  * autofmt
+  * nlineargauge: tweaking for vertical vs horizontal
+  * Templates: terminal: foot: Replace [colors] with [colors-dark]
+  * i18n
+  * idle: queue staged actions during fade to prevent lost lock/suspend
+  * Change connect_sync to 5s
+  * idle: removed suppressUntil, fixes bug where a 'monitor' (lock) would not execute
+  * launcher: cleanup
+  * sysstat: dont make showCpuCore disabled when showCpuUsage is off - as it's also used in the tooltips.
+  * nlineargauge: enforce minium fill size to avoid a weird look. It's either that or removing the rounded corners.
+  * sysstat: show cpu-cores at false by default
+  * bt: auto-connect cleanup
+  * userspace-reboot: cleanup
+  * fix(launcher): use readonly prop to check if animations are enabled
+  * wallpaper: removing subtle sharpeing for fullscreen wallpapers - kept it on thumbnails. Fix #2041
+  * refactor(bar): remove verbose logging from custom command execution
+  * feat(bar): add custom command support for bar mouse actions
+  * refactor(settings): remove redundant right-click option from control center
+  * fix(i18n): add missing scroll behavior translations
+  * feat(bar): implement middle-click action support for Bar Behavior
+  * feat(bar): extend rightClickFollowMouse support to the Settings panel
+  * feat(bar): implement optional mouse-following for right-click panel placement
+  * fix(launcher): adjust opening animation to follow bar position
+  * feat(settings): add launcherPanel option for bar right-click actions
+  * feat(bar): implement right-click action logic
+  * feat(settings): add configuration for bar right-click actions
+  * refactor(bluetooth): address code review feedback
+  * fix(WallpaperPanel): remove duplicate return
+  * i18n
+  * fix(settings): clear search highlight overlay on scroll (fix #2054)
+  * fix typo
+  * remove unnecessary i18n entry
+  * cava-template: removed background color so it's transparent
+  * fix(SessionMenu): use action metadata for localized countdown titles (fix #2043)
+  * add some missing translations
+  * template: update the tab color for yazi template
+  * desktop-widgets: improves background rounding corners radius when scaling up or down.
+  * fix(launcher): defer provider initializations
+  * fix(launcher): only call updateResults() when plugins change
+  * fix(launcher): skip delay when animations disabled
+  * fix(launcher): load results async
+  * fix(launcher): only reload desktop entries when changed on disk
+  * i18n
+  * ipc: restoring "wallpaper get"
+  * feat(performance): disable background image when noctalia-performance mode is on
+  * fix(toast): implement compact density support (#2028)
+  * fix(taskbar): use capsuleHeight for widget thickness on vertical bars
+  * calendar-events: add uid and calendar_uid to event output, fix timeout
+  * Fix: pass location and description to calendar events
+  * fix(dock/taskbar): pinning specific apps no longer creates duplicate icons
+  * Only display setting action when it is enabled in click functions
+  * Fix custombutton right/middle click always opening settings
+  * Fix network tooltip
+  * Launcher: reduce label font for grid view
+  * bump to 4.6.2-git
+  * Add userspace reboot/restart
+  * fix: improve the code regex
+  * chore: missing translation for clipboard
+  * clipboard: add filters by type & date
+  * Display Cores in SystemMonitor widget
+  * Extract gauges as a new NLinearGauge component
+  * Show cores usage in tooltip if enabled
+  * Add open main settings action to SystemMonitor widget
+  * Add a setting to display cpu cores instead
+  * Add cpu cores usage computation in SystemStatService
+  * fix(bluetooth): remove redundant auto-trust Instantiator
+  * feat(bluetooth): auto-connect paired & trusted devices with toggle control
+
+-------------------------------------------------------------------
+Fri Apr 17 12:00:00 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Initial package of noctalia-shell 4.6.1.
+

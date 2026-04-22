@@ -1,0 +1,185 @@
+From a8398cce61987df49835c2204812a2f6da4cb505 Mon Sep 17 00:00:00 2001
+From: Alessio Biancalana <alessio@dottorblaster.it>
+Date: Tue, 21 Apr 2026 15:35:53 +0200
+Subject: [PATCH] feat: add autoNetworkEnabled setting to gate automatic
+ network requests
+
+---
+ Assets/settings-default.json                             | 3 ++-
+ Commons/Settings.qml                                     | 5 +++++
+ .../Settings/Tabs/ColorScheme/SchemeDownloader.qml       | 4 ++++
+ Services/Location/LocationService.qml                    | 9 +++++++--
+ Services/Noctalia/GitHubService.qml                      | 4 ++++
+ Services/Noctalia/PluginService.qml                      | 9 ++++++++-
+ Services/Noctalia/SupporterService.qml                   | 4 ++++
+ Services/Noctalia/TelemetryService.qml                   | 4 ++++
+ Services/Noctalia/UpdateService.qml                      | 4 ++++
+ 9 files changed, 42 insertions(+), 4 deletions(-)
+
+diff --git a/Assets/settings-default.json b/Assets/settings-default.json
+index 262d6a7604..c0321f6ff2 100644
+--- a/Assets/settings-default.json
++++ b/Assets/settings-default.json
+@@ -142,7 +142,8 @@
+       ]
+     },
+     "reverseScroll": false,
+-    "smoothScrollEnabled": true
++    "smoothScrollEnabled": true,
++    "autoNetworkEnabled": true
+   },
+   "ui": {
+     "fontDefault": "",
+diff --git a/Commons/Settings.qml b/Commons/Settings.qml
+index aecf878359..0521a076c4 100644
+--- a/Commons/Settings.qml
++++ b/Commons/Settings.qml
+@@ -348,6 +348,11 @@ Singleton {
+       }
+       property bool reverseScroll: false
+       property bool smoothScrollEnabled: true
++      // Controls whether automatic (non-user-initiated) network fetches are enabled.
++      // Distro packagers: set default to false to comply with policies requiring
++      // explicit user consent for network access. Users can re-enable in settings.
++      // Build-time: sed -i 's/"autoNetworkEnabled": true/"autoNetworkEnabled": false/' Assets/settings-default.json
++      property bool autoNetworkEnabled: true
+     }
+ 
+     // ui
+diff --git a/Modules/Panels/Settings/Tabs/ColorScheme/SchemeDownloader.qml b/Modules/Panels/Settings/Tabs/ColorScheme/SchemeDownloader.qml
+index c6fd6a0df2..7459c6bb06 100644
+--- a/Modules/Panels/Settings/Tabs/ColorScheme/SchemeDownloader.qml
++++ b/Modules/Panels/Settings/Tabs/ColorScheme/SchemeDownloader.qml
+@@ -173,6 +173,10 @@ Popup {
+   }
+ 
+   function fetchAvailableSchemesFromAPI() {
++    if (!Settings.data.general.autoNetworkEnabled) {
++      return;
++    }
++
+     if (fetching) {
+       return;
+     }
+diff --git a/Services/Location/LocationService.qml b/Services/Location/LocationService.qml
+index b48baf81f3..9030e02ce6 100644
+--- a/Services/Location/LocationService.qml
++++ b/Services/Location/LocationService.qml
+@@ -194,7 +194,7 @@ Singleton {
+     }
+   }
+ 
+-  // Query geocoding API to convert location name to coordinates
++  // (runs only when user has explicitly configured a location in Settings)
+   function geocodeLocation(locationName, callback, errorCallback) {
+     if (locationName === "") {
+       isFetchingWeather = false;
+@@ -226,7 +226,7 @@ Singleton {
+     xhr.send();
+   }
+ 
+-  // Fetch weather data from Open-Meteo API
++  // (runs only when user has explicitly enabled weather in Settings)
+   function fetchWeatherData(latitude, longitude, errorCallback) {
+     Logger.d("Location", "Fetching weather from api.open-meteo.com");
+     var url = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude + "&current_weather=true&current=relativehumidity_2m,surface_pressure,is_day&daily=temperature_2m_max,temperature_2m_min,weathercode,sunset,sunrise&timezone=auto";
+@@ -263,6 +263,11 @@ Singleton {
+ 
+   // Geolocate via IP address using the Noctalia API
+   function geolocate(callback, errorCallback) {
++    if (!Settings.data.general.autoNetworkEnabled) {
++      if (errorCallback) errorCallback("Location", "IP geolocation disabled (autoNetworkEnabled=false)");
++      return;
++    }
++
+     Logger.d("Location", "Geolocating via IP");
+     var url = "https://api.noctalia.dev/geolocate";
+     var xhr = new XMLHttpRequest();
+diff --git a/Services/Noctalia/GitHubService.qml b/Services/Noctalia/GitHubService.qml
+index d23a4d20a8..ea7c324ecb 100644
+--- a/Services/Noctalia/GitHubService.qml
++++ b/Services/Noctalia/GitHubService.qml
+@@ -96,6 +96,10 @@ Singleton {
+ 
+   // --------------------------------
+   function fetchFromGitHub() {
++    if (!Settings.data.general.autoNetworkEnabled) {
++      return;
++    }
++
+     if (isFetchingData) {
+       Logger.d("GitHub", "GitHub data is still fetching");
+       return;
+diff --git a/Services/Noctalia/PluginService.qml b/Services/Noctalia/PluginService.qml
+index 7b017442a2..b72a5bc25f 100644
+--- a/Services/Noctalia/PluginService.qml
++++ b/Services/Noctalia/PluginService.qml
+@@ -180,7 +180,10 @@ Singleton {
+       if (manifest) {
+         pluginsToLoad.push(enabledIds[i]);
+       } else {
+-        Logger.w("PluginService", "Plugin", enabledIds[i], "is enabled but not found on disk - install");
++        if (!Settings.data.general.autoNetworkEnabled) {
++          Logger.w("PluginService", "Plugin", enabledIds[i], "is enabled but not found on disk (auto-install disabled, autoNetworkEnabled=false)");
++          continue;
++        }
+         var sourceUrl = PluginRegistry.getPluginSourceUrl(enabledIds[i]);
+         root.installPlugin({
+                              id: enabledIds[i],
+@@ -269,6 +272,10 @@ Singleton {
+ 
+   // Fetch plugin registry from a source using git sparse-checkout
+   function fetchPluginRegistry(source) {
++    if (!Settings.data.general.autoNetworkEnabled) {
++      return;
++    }
++
+     var repoUrl = source.url;
+ 
+     Logger.d("PluginService", "Fetching registry from:", repoUrl);
+diff --git a/Services/Noctalia/SupporterService.qml b/Services/Noctalia/SupporterService.qml
+index 15605f0954..411f95de6f 100644
+--- a/Services/Noctalia/SupporterService.qml
++++ b/Services/Noctalia/SupporterService.qml
+@@ -72,6 +72,10 @@ Singleton {
+   }
+ 
+   function fetchFromApi() {
++    if (!Settings.data.general.autoNetworkEnabled) {
++      return;
++    }
++
+     if (isFetching) {
+       Logger.d("Supporter", "Already fetching");
+       return;
+diff --git a/Services/Noctalia/TelemetryService.qml b/Services/Noctalia/TelemetryService.qml
+index ed303bf2bb..d98c2e68ed 100644
+--- a/Services/Noctalia/TelemetryService.qml
++++ b/Services/Noctalia/TelemetryService.qml
+@@ -19,6 +19,10 @@ Singleton {
+   readonly property string telemetryEndpoint: Quickshell.env("NOCTALIA_TELEMETRY_ENDPOINT") || "https://api.noctalia.dev/ping"
+ 
+   function init() {
++    if (!Settings.data.general.autoNetworkEnabled) {
++      return;
++    }
++
+     if (initialized)
+       return;
+ 
+diff --git a/Services/Noctalia/UpdateService.qml b/Services/Noctalia/UpdateService.qml
+index 6726b61bf6..0cec2b86c8 100644
+--- a/Services/Noctalia/UpdateService.qml
++++ b/Services/Noctalia/UpdateService.qml
+@@ -303,6 +303,10 @@ Singleton {
+   }
+ 
+   function showLatestChangelog() {
++    if (!Settings.data.general.autoNetworkEnabled) {
++      return;
++    }
++
+     if (!currentVersion)
+       return;
+ 
+

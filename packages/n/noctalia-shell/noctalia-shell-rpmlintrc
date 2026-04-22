@@ -1,0 +1,8 @@
+# files-duplicate:
+# Multiple widget settings QML files are intentional placeholder stubs shared
+# across widgets (Bluetooth/Network, PowerProfile/DarkMode/NightLight/
+# NoctaliaPerformance, Volume/Microphone). Since these files live under /etc
+# they cannot be deduplicated via fdupes (openSUSE policy forbids hardlinks
+# across config files, and fdupes -s creates dangling-link issues at upgrade
+# time), so the duplication is kept as-is.
+addFilter("files-duplicate")
