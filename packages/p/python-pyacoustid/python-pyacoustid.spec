@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyacoustid
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pyacoustid
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Bindings for Chromaprint acoustic fingerprinting and the Acoustid API
 License:        MIT
@@ -26,8 +27,8 @@ URL:            https://github.com/sampsyo/pyacoustid
 Source:         https://files.pythonhosted.org/packages/source/p/pyacoustid/pyacoustid-%{version}.tar.gz
 BuildRequires:  %{python_module audioread}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
