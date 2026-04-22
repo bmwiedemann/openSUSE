@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 20 22:36:54 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Updated to 2.4.0:
+  * Use std::make_unique C++17 and add const ref for readability
+  * Updated translations
+
+-------------------------------------------------------------------
 Wed Nov  5 18:25:52 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Updated to 2.3.0:

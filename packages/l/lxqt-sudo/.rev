@@ -211,4 +211,14 @@
   * Added -q|--quiet parameter</comment>
     <requestid>1315878</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ba4227e4ba8d1a6eb833d76cb345ae2b</srcmd5>
+    <version>2.4.0</version>
+    <time>1776869852</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 2.4.0:
+  * Use std::make_unique C++17 and add const ref for readability
+  * Updated translations</comment>
+    <requestid>1348580</requestid>
+  </revision>
 </revisionlist>
