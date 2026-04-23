@@ -75,9 +75,12 @@ BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
+# SLE16 does not have extra-cmake-modules
+%if 0%{?is_opensuse} || ! 0%{suse_version} >= 1600
 BuildRequires:  extra-cmake-modules
+%endif
 # Don't build poppler-qt5 on SLE16
-%if "%{flavor}" == "qt5" && (0%{suse_version} == 1600 && ! 0%{?is_opensuse})
+%if "%{flavor}" == "qt5" && (0%{suse_version} >= 1600 && ! 0%{?is_opensuse})
 ExclusiveArch:  do_not_build
 %endif
 %if "%{flavor}" == "qt5"

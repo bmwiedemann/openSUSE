@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 21 10:48:17 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- %suse_version value will be bumped for each service pack (e. g.
+  1610 for 16sp1), thus using >= 1600 for SLE16
+- SLE16 does not have extra-cmake-modules
+
+-------------------------------------------------------------------
 Thu Feb  5 15:26:34 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Version update to 26.02.0:
