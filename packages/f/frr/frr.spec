@@ -50,6 +50,7 @@ Patch0:         harden_frr.service.patch
 Patch1:         0001-disable-zmq-test.patch
 Patch2:         0002-frr-logrotate.patch
 Patch3:         0003-ospfd-NULL-Pointer-Dereference-fixes.patch
+Patch4:         0004-bgpd-improve-packet-parsing-for-EVPN-and-ENCAP-VNC.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7

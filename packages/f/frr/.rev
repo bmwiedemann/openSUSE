@@ -409,4 +409,18 @@
 - Fix (include) file listed twice rpm warning in frr-devel package.</comment>
     <requestid>1343066</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>fb9dc110f38c37c18db2729a41a1bcfb</srcmd5>
+    <version>10.5.1</version>
+    <time>1776956771</time>
+    <user>anag_factory</user>
+    <comment>See also https://bugzilla.suse.com/show_bug.cgi?id=1262410
+(libyang v4 and v5 are currently not supported).
+
+- Apply security fix for bgpd EVPN and ENCAP/VNC packet parsing.
+  The vulnerability may have led to improper access controls
+  (CVE-2026-5107,bsc#1261013,gh#FRRouting/frr#21098).
+  [+ 0004-bgpd-improve-packet-parsing-for-EVPN-and-ENCAP-VNC.patch]</comment>
+    <requestid>1348249</requestid>
+  </revision>
 </revisionlist>

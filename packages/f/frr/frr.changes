@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 16 15:21:14 UTC 2026 - Marius Tomaschewski <mt@suse.com>
+
+- Apply security fix for bgpd EVPN and ENCAP/VNC packet parsing.
+  The vulnerability may have led to improper access controls
+  (CVE-2026-5107,bsc#1261013,gh#FRRouting/frr#21098).
+  [+ 0004-bgpd-improve-packet-parsing-for-EVPN-and-ENCAP-VNC.patch]
+
+-------------------------------------------------------------------
 Thu Mar  5 13:17:24 UTC 2026 - Marius Tomaschewski <mt@suse.com>
 
 - Add a factorydir build conditional to install the /etc/frr files in
