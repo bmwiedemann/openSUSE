@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 15 11:34:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly BuildRequire update-alternatives and mark it as being
+  used in post/postun: this was nicely masked by the fact that
+  binutils, installed on every system, already dragged u-a in,
+  which is no longer the case.
+
+-------------------------------------------------------------------
 Sun Nov  9 08:34:14 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.1.2:
-  * Fix a host of string allocation bugs 
+  * Fix a host of string allocation bugs
 - Changes from version 3.0.1.1:
   * Undocumented bug fixes.
 - Changes from version 3.0.1.1:

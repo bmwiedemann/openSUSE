@@ -1,7 +1,7 @@
 #
 # spec file for package discount
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,8 @@ Patch1:         discount-disable_ldconfig.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 Provides:       markdown
-Requires(preun): update-alternatives
+BuildRequires:  update-alternatives
+Requires(post): update-alternatives
 Requires(postun): update-alternatives
 
 %description
