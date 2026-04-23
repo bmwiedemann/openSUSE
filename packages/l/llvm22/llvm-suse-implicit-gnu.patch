@@ -1,0 +1,14 @@
+diff --git a/llvm/include/llvm/TargetParser/Triple.h b/llvm/include/llvm/TargetParser/Triple.h
+index d2126a0..eaf7599 100644
+--- a/llvm/include/llvm/TargetParser/Triple.h
++++ b/llvm/include/llvm/TargetParser/Triple.h
+@@ -614,7 +614,8 @@ public:
+            Env == Triple::GNUEABI || Env == Triple::GNUEABIT64 ||
+            Env == Triple::GNUEABIHF || Env == Triple::GNUEABIHFT64 ||
+            Env == Triple::GNUF32 || Env == Triple::GNUF64 ||
+-           Env == Triple::GNUSF || Env == Triple::GNUX32;
++           Env == Triple::GNUSF || Env == Triple::GNUX32 ||
++           (Env == Triple::UnknownEnvironment && getVendor() == Triple::SUSE);
+   }
+ 
+   /// Tests whether the OS is Haiku.

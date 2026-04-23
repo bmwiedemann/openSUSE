@@ -1,0 +1,10 @@
+--- a/llvm/test/CMakeLists.txt
++++ b/llvm/test/CMakeLists.txt
+@@ -101,7 +101,6 @@ set(LLVM_TEST_DEPENDS
+   llvm-dwarfdump
+   llvm-dwarfutil
+   llvm-dwp
+-  llvm-exegesis
+   llvm-extract
+   llvm-gsymutil
+   llvm-ir2vec

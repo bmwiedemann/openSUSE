@@ -1,0 +1,15 @@
+--- a/libcxx/test/configs/llvm-libc++-shared.cfg.in
++++ b/libcxx/test/configs/llvm-libc++-shared.cfg.in
+@@ -10,10 +10,10 @@ config.substitutions.append(('%{compile_flags}',
+     '-nostdinc++ -I %{target-include-dir} -I %{include-dir} -I %{libcxx-dir}/test/support'
+ ))
+ config.substitutions.append(('%{link_flags}',
+-    '-nostdlib++ -L %{lib-dir} -Wl,-rpath,%{lib-dir} -lc++'
++    '-nostdlib++ -L %{lib-dir} -lc++'
+ ))
+ config.substitutions.append(('%{exec}',
+-    '%{executor} --execdir %{temp} -- '
++    '%{executor} --execdir %{temp} --env LD_LIBRARY_PATH=%{lib} -- '
+ ))
+ 
+ import os, site

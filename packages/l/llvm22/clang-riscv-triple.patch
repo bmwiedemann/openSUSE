@@ -1,0 +1,42 @@
+From b8f0a54020fc65ed47e88ed9d949fd8fcf0fe149 Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Mon, 20 Oct 2025 14:20:19 +0200
+Subject: [PATCH] [Driver] Add missing triple to RISCV64Triples
+
+Fixes #164228
+---
+ clang/lib/Driver/ToolChains/Gnu.cpp | 4 ++--
+ clang/test/Driver/linux-ld.c        | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/clang/lib/Driver/ToolChains/Gnu.cpp b/clang/lib/Driver/ToolChains/Gnu.cpp
+index f5e265585743..a3c4fb823018 100644
+--- a/clang/lib/Driver/ToolChains/Gnu.cpp
++++ b/clang/lib/Driver/ToolChains/Gnu.cpp
+@@ -2436,8 +2436,8 @@ void Generic_GCC::GCCInstallationDetector::AddDefaultGCCPrefixes(
+   static const char *const RISCV32Triples[] = {"riscv32-unknown-linux-gnu",
+                                                "riscv32-unknown-elf"};
+   static const char *const RISCV64LibDirs[] = {"/lib64", "/lib"};
+-  static const char *const RISCV64Triples[] = {"riscv64-unknown-linux-gnu",
+-                                               "riscv64-unknown-elf"};
++  static const char *const RISCV64Triples[] = {
++      "riscv64-unknown-linux-gnu", "riscv64-suse-linux", "riscv64-unknown-elf"};
+ 
+   static const char *const SPARCv8LibDirs[] = {"/lib32", "/lib"};
+   static const char *const SPARCv8Triples[] = {"sparc-linux-gnu",
+diff --git a/clang/test/Driver/linux-ld.c b/clang/test/Driver/linux-ld.c
+index be3293cdc253..9da0b79aa587 100644
+--- a/clang/test/Driver/linux-ld.c
++++ b/clang/test/Driver/linux-ld.c
+@@ -711,7 +711,7 @@
+ // RUN:     --sysroot=%S/Inputs/opensuse_tumbleweed_riscv64_tree \
+ // RUN:   | FileCheck --check-prefix=CHECK-OPENSUSE-TW-RISCV64 %s
+ // RUN: %clang -### %s -no-pie 2>&1 \
+-// RUN:     --target=riscv64-suse-linux -rtlib=platform --unwindlib=platform \
++// RUN:     --target=riscv64-unknown-linux-gnu -rtlib=platform --unwindlib=platform \
+ // RUN:     --sysroot=%S/Inputs/opensuse_tumbleweed_riscv64_tree \
+ // RUN:   | FileCheck --check-prefix=CHECK-OPENSUSE-TW-RISCV64 %s
+ // CHECK-OPENSUSE-TW-RISCV64: "{{.*}}ld{{(.exe)?}}" "--sysroot=[[SYSROOT:[^"]+]]"
+-- 
+2.52.0
+

@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b54e4e991c3f320d5314ddb280e3bedb</srcmd5>
+    <version>22.1.3</version>
+    <time>1776956730</time>
+    <user>anag_factory</user>
+    <comment>- Initial release based on version 22.1.3.
+  * For details, see the release notes:
+    - https://releases.llvm.org/22.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/22.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/22.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/22.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/22.1.0/tools/lld/docs/ReleaseNotes.html
+  * New LLVM tools:
+    - llvm-cas provides access to Content-addressable storage.
+    - llvm-ir2vec generates embeddings for a given LLVM IR or MIR
+      and supports triplet generation for vocabulary training and
+      embedding generation.
+    - clang-offload-packager is now called llvm-offload-binary.
+    - llvm-offload-wrapper generates runtime registration code for
+      a device binary image.
+  * New LLDB tools:
+    - lldb-mcp is an MCP server for LLDB.
+    - yaml2macho-core can generate a macho-core from a YAML file.
+- Rewrite all patches for monorepo layout.
+- Add compiler-rt-lib-suffix.patch to fix compiler-rt build.
+- Drop obsolete patches:
+  * clang-fix-openmp-test.patch
+  * compiler-rt-fix-relative-path.patch
+  * llvm-projects-tools-order.patch
+- Rebased patches:
+  * bolt-link-shared-library.patch
+  * check-no-llvm-exegesis.patch
+  * clang-resourcedirs.patch
+  * link-clang-shared.patch
+  * llvm-fix-cov-test-i586.patch
+  * lto-disable-cache.patch
+- clang-riscv-triple.patch: Add riscv64-suse-linux to RISCV64Triples
+- Drop ld.lld as an ld alternative (boo#1259813).
+- Fix path in LLDB Python bindings for SLE/Leap 15.</comment>
+    <requestid>1346272</requestid>
+  </revision>
+</revisionlist>
