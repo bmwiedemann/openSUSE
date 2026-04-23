@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 09 22:20:40 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 22.
+  * For details, see the release notes:
+    - https://releases.llvm.org/22.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/22.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/22.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/22.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/22.1.0/tools/lld/docs/ReleaseNotes.html
+
+-------------------------------------------------------------------
 Sun Feb  1 22:21:16 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add metapackage for bolt.

@@ -2432,4 +2432,19 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1330299</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>923372735e0798628178339d95d3a7da</srcmd5>
+    <version>22</version>
+    <time>1776956728</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 22.
+  * For details, see the release notes:
+    - https://releases.llvm.org/22.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/22.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/22.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/22.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/22.1.0/tools/lld/docs/ReleaseNotes.html
+</comment>
+    <requestid>1338539</requestid>
+  </revision>
 </revisionlist>
