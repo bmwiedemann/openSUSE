@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:26:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.10
+  * Fix stack-use-after-free in DHT
+
+-------------------------------------------------------------------
 Thu Apr  9 13:27:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.9
