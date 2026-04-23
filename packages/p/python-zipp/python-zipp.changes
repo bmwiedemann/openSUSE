@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 14 21:58:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.23.1:
+  * str(Path(...)) now renders ":zipfile" for the filename when a
+    zipfile has no filename instead of failing with a TypeError.
+
+-------------------------------------------------------------------
 Mon Apr 13 17:41:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix testsuite failure
