@@ -1,14 +1,13 @@
 -------------------------------------------------------------------
-Tue Apr 21 09:52:15 UTC 2026 - okurz@suse.com
+Wed Apr 22 13:24:48 UTC 2026 - okurz@suse.com
 
-- Update to version 5.1776765124.5d91657:
-  * feat: fail explicitly if always_rollback is not supported
-  * feat: add unique hash to pretty serial markers
-  * feat: include executed command in step details and serial markers
-  * docs: explain assert_screen semantics with multiple tags
-  * feat(debugviewer): Move to /usr/lib
-  * feat(snd2png): Move to /usr/lib
-  * feat: Prefer modules in CASEDIR/lib over test module paths
+- Update to version 5.1776864280.4119300:
+  * style: Enforce ProhibitNegativeExpressionsInUnlessAndUntilConditions
+  * style: Enforce perlcritic policy BuiltinFunctions::ProhibitStringySplit
+  * style: Enforce perlcritic policy BuiltinFunctions::RequireBlockMap
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * fix(spec): prevent unstable OBS check failures on 28-signalblocker.t
+  * chore(mergify): Update required number of successful checks
 
 -------------------------------------------------------------------
 Tue Apr 14 15:12:19 UTC 2026 - okurz@suse.com
