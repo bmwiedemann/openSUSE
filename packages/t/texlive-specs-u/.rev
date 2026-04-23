@@ -524,4 +524,12 @@ Reflect all of the licenses of the various components in the spec file license (
     <comment>Update to TeXLive 2026</comment>
     <requestid>1344151</requestid>
   </revision>
+  <revision rev="57" vrev="60">
+    <srcmd5>2f3c4034dd9b39b83eb6c52462fde94a</srcmd5>
+    <version>unknown</version>
+    <time>1776956712</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1348735</requestid>
+  </revision>
 </revisionlist>
