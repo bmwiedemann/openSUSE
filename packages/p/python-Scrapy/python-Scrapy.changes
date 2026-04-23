@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr 23 04:23:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.15.0:
+  * Experimental support for running without a Twisted reactor
+  * Experimental httpx-based download handler
+  * Values from the Referrer-Policy header of HTTP responses are no longer
+    executed as Python callables.
+  * In line with the standard, 301 redirects of POST requests are converted
+    into GET requests
+  * Deprecate maybeDeferred_coro()
+  * Pass the spider arg to custom stat collectors {open,close}_spider()
+  * More coroutine-based replacements for Deferred-based APIs
+  * The default priority queue is now DownloaderAwarePriorityQueue
+  * Dropped support for Python 3.9 and PyPy 3.10
+  * Fix for the CVE-2025-6176 security issue: improved protection against
+    decompression bombs in HttpCompressionMiddleware for responses compressed
+    using the br and deflate methods. Requires brotli >= 1.2.0.
+- Dropped patches:
+  * remove-hoverxref.patch
+  * no-dark-mode.patch
+  * CVE-2025-6176.patch
+- Clean up BuildRequires, remove duplication from Requires.
+
+-------------------------------------------------------------------
 Mon Nov 17 10:58:13 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update CVE-2025-6176.patch to reflect the latest changes upstream to
