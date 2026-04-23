@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 21 06:56:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.5
+  * Removed CPP demo as it uses private API.
+  * Reworked demos so they no longer use private API.
+  * Implemented some undocumented OPcodes for NES CPU.
+  * Fixed several compile warnings..
+  * The fade length is now passed to the track info for SPC files.
+  * The C++ runtime library is now properly exported.
+  * Fixed several crashes and security vulnerabilities reported
+    by people.
+  * The YM2413 chip emulator has been updated to the version v1.5.9
+  * Added ADPCM support for the HES emulator, backported from
+    Kode54's fork.
+
+-------------------------------------------------------------------
 Tue Apr 15 08:12:08 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.4

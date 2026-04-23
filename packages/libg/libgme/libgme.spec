@@ -1,7 +1,7 @@
 #
 # spec file for package libgme
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname 0
 Name:           libgme
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Collection of video game music file emulators
 License:        LGPL-2.1-or-later
