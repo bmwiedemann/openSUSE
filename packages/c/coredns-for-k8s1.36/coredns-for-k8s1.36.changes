@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Thu Apr 23 05:56:24 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Initial package version 1.14.2:
+  * Version specified in kubernetes v1.36.0
+    ref: https://github.com/kubernetes/kubernetes/blob/ecf6decece6a6de25a57aad9ba90b6ce580f6f78/build/dependencies.yaml#L32-L34
