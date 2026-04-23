@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 22 15:22:16 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated 0001-Fix-CVE-2026-4367-Out-of-bounds-read-in-xpmNextWord.patch
+  to the final version, which has been submitted to gitlab
+  (CVE-2026-4367, bsc#1260928, comment#22)
+
+-------------------------------------------------------------------
+Sat Mar 28 11:38:25 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-Fix-CVE-2026-4367-Out-of-bounds-read-in-xpmNextWord.patch
+  * fix Out of bounds read (CVE-2026-4367, bsc#1260928)
+
+-------------------------------------------------------------------
 Mon Jan 26 13:38:53 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 3.5.18

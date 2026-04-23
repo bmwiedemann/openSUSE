@@ -30,6 +30,7 @@ Source:         https://xorg.freedesktop.org/releases/individual/lib/%{name}-%{v
 Source1:        https://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz.sig
 Source2:        libXpm.keyring
 Source9:        baselibs.conf
+Patch0:         0001-Fix-CVE-2026-4367-Out-of-bounds-read-in-xpmNextWord.patch
 BuildRequires:  /usr/bin/gzip
 BuildRequires:  autoconf
 BuildRequires:  automake

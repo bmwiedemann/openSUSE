@@ -261,4 +261,17 @@
   * tests: poll for stable compressed output</comment>
     <requestid>1329319</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>8eac8226f39fa003660ed4b2523fa98c</srcmd5>
+    <version>3.5.18</version>
+    <time>1776956726</time>
+    <user>anag_factory</user>
+    <comment>- updated 0001-Fix-CVE-2026-4367-Out-of-bounds-read-in-xpmNextWord.patch
+  to the final version, which has been submitted to gitlab
+  (CVE-2026-4367, bsc#1260928, comment#22)
+
+- 0001-Fix-CVE-2026-4367-Out-of-bounds-read-in-xpmNextWord.patch
+  * fix Out of bounds read (CVE-2026-4367, bsc#1260928)</comment>
+    <requestid>1348811</requestid>
+  </revision>
 </revisionlist>
