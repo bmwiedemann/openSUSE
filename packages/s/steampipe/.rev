@@ -298,4 +298,13 @@
   * Warn after login when env vars override saved credentials (forwarded request 1345118 from ph03nix)</comment>
     <requestid>1345169</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e36c093cb1248c840afc679cb76bd4df</srcmd5>
+    <version>2.4.2</version>
+    <time>1776964897</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.2:
+  * Bump pipe-fittings to v2.9.1 to fix GHCR plugin install auth error (#4982) (forwarded request 1348964 from ph03nix)</comment>
+    <requestid>1348972</requestid>
+  </revision>
 </revisionlist>
