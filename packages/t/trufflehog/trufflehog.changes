@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr 22 06:08:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.95.2:
+  * Revert "[INS-397] Fix git version parser panic on non-numeric patch versions …" (#4903)
+- Update to version 3.95.1:
+  * [INS-444] Fix verification logic in Mesibo detector (#4884)
+- Update to version 3.95.0:
+  * Add Confluence Data Center PAT detector (#4886)
+  * Add man page generation for trufflehog (#4894)
+  * [INS-402] Add Jira Data Center PAT Detector (#4872)
+  * [INS-399] Added Bitbucket data center(on prem) PAT detector (#4883)
+  * Fix nil pointer panics in GitHub analyzer gist/repo binding functions (#4864)
+  * dep-updates: Go 1.25, refresh modules, add dependency workflow skill (#4888)
+  * Add AnalysisError type and wrap all analyzer error paths (#4779)
+  * Host ldap-verify library in trufflesecurity (#4859)
+  * [INS-398] Added tests to ensure that custom endpoint configuration works in artifactory detectors (#4832)
+  * [INS-403] Support Custom endpoint config in hashicorpvaultauth Detector (#4825)
+  * fix line number for bitbucket secrets (#4854)
+  * [INS-397] Fix git version parser panic on non-numeric patch versions (#4882)
+  * Deprecate SquareUp Detector (#4855)
+  * Upgrade golangci-lint in CI runner and Makefile (#4861)
+
+-------------------------------------------------------------------
 Thu Apr 09 08:01:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.94.3:
