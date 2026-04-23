@@ -604,4 +604,17 @@
     <comment></comment>
     <requestid>1348189</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d5d0c2b04bf5c01d55d0e0e5ede5e386</srcmd5>
+    <version>3.3.4268.0</version>
+    <time>1776956953</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.4268.0
+  * Add SSM Distributor support for Bottlerocket OS
+  * Implement flush credentials command in ssm-cli
+  * Log ec2messages access denied as debug instead of error to reduce log noise
+  * Make credential refresher refresh cache quickly in case of credential flush
+  * Make Greengrass component registration resilient with retry (forwarded request 1348883 from glaubitz)</comment>
+    <requestid>1348913</requestid>
+  </revision>
 </revisionlist>

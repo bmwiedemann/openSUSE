@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 23 07:05:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.4268.0
+  * Add SSM Distributor support for Bottlerocket OS
+  * Implement flush credentials command in ssm-cli
+  * Log ec2messages access denied as debug instead of error to reduce log noise
+  * Make credential refresher refresh cache quickly in case of credential flush
+  * Make Greengrass component registration resilient with retry
+
+-------------------------------------------------------------------
 Tue Apr 14 10:34:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.4177.0
