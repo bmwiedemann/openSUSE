@@ -83,84 +83,122 @@ Source14:       sysusers-sshd.conf
 Source15:       sshd-sle.pamd
 Source16:       sshd@.service
 Source17:       sshd.socket
+# PATCH-FEATURE-SUSE openssh-7.7p1-X11_trusted_forwarding.patch bsc#50836 -- Enable trusted X11 forwarding by default
 Patch1:         openssh-7.7p1-X11_trusted_forwarding.patch
+# PATCH-FEATURE-SUSE openssh-7.7p1-enable_PAM_by_default.patch bsc#46749 -- UsePAM yes in default sshd_config
 Patch3:         openssh-7.7p1-enable_PAM_by_default.patch
+# PATCH-FIX-SUSE openssh-7.7p1-eal3.patch -- Fix paths and references in sshd man pages for EAL3 certification
 Patch4:         openssh-7.7p1-eal3.patch
+# PATCH-FEATURE-SUSE openssh-7.7p1-send_locale.patch bsc#65747 -- Send LC_* and LANG locale env vars by default
 Patch6:         openssh-7.7p1-send_locale.patch
+# PATCH-FIX-SUSE openssh-7.7p1-hostname_changes_when_forwarding_X.patch -- Handle hostname changes while forwarding X11
 Patch7:         openssh-7.7p1-hostname_changes_when_forwarding_X.patch
+# PATCH-FIX-SUSE openssh-7.7p1-remove_xauth_cookies_on_exit.patch bsc#98815 -- Remove xauth cookies on session logout
 Patch8:         openssh-7.7p1-remove_xauth_cookies_on_exit.patch
+# PATCH-FIX-SUSE openssh-7.7p1-pts_names_formatting.patch -- Match utempter's utmp line naming
 Patch9:         openssh-7.7p1-pts_names_formatting.patch
+# PATCH-FEATURE-SUSE openssh-7.7p1-pam_check_locks.patch bsc#708678 fate#312033 -- UsePAMCheckLocks for account locks
 Patch10:        openssh-7.7p1-pam_check_locks.patch
-# https://bugzilla.mindrot.org/show_bug.cgi?id=2752
+# PATCH-FIX-SUSE openssh-7.7p1-seccomp_stat.patch bsc#912436 mindrot#2752 -- Allow stat() in seccomp for OpenSSL reseed
 Patch14:        openssh-7.7p1-seccomp_stat.patch
-# https://bugzilla.mindrot.org/show_bug.cgi?id=2752
+# PATCH-FIX-SUSE openssh-7.7p1-seccomp_ipc_flock.patch mindrot#2752 -- Allow flock/ipc in s390 seccomp (OpenCryptoki)
 Patch15:        openssh-7.7p1-seccomp_ipc_flock.patch
-# https://bugzilla.mindrot.org/show_bug.cgi?id=2752
-# Local FIPS patchset
+# PATCH-FEATURE-SUSE openssh-7.7p1-fips.patch bsc#1221928 mindrot#2752 -- FIPS 140-2: selftests + approved algorithms
 Patch17:        openssh-7.7p1-fips.patch
-# Local cavs patchset
+# PATCH-FEATURE-SUSE openssh-7.7p1-cavstest-ctr.patch -- CAVS test for OpenSSH's own CTR encryption mode implementation
 Patch18:        openssh-7.7p1-cavstest-ctr.patch
-# Local cavs patchset
+# PATCH-FEATURE-SUSE openssh-7.7p1-cavstest-kdf.patch bsc#1065237 -- CAVS test for OpenSSH KDF implementation
 Patch19:        openssh-7.7p1-cavstest-kdf.patch
-# Local FIPS patchset
+# PATCH-FEATURE-SUSE openssh-7.7p1-fips_checks.patch bsc#1209536 -- FIPS 140-2 binary self-integrity HMAC checks
 Patch20:        openssh-7.7p1-fips_checks.patch
-# https://bugzilla.mindrot.org/show_bug.cgi?id=2641
+# PATCH-FIX-SUSE openssh-7.7p1-systemd-notify.patch bsc#1048367 mindrot#2641 -- sd_notify() to avoid startup races
 Patch22:        openssh-7.7p1-systemd-notify.patch
+# PATCH-FEATURE-SUSE openssh-8.0p1-gssapi-keyex.patch bsc#784689 fate#313068 -- GSSAPI key exchange (gsskex) support
 Patch23:        openssh-8.0p1-gssapi-keyex.patch
-# https://bugzilla.mindrot.org/show_bug.cgi?id=1402
+# PATCH-FEATURE-SUSE openssh-8.1p1-audit.patch bsc#1180501 mindrot#1402 -- Linux audit integration + event records
 Patch24:        openssh-8.1p1-audit.patch
-# Local patch to disable runtime abi SSL checks, quite pointless for us
+# PATCH-FIX-SUSE openssh-7.7p1-disable_openssl_abi_check.patch -- Disable runtime OpenSSL ABI version check
 Patch26:        openssh-7.7p1-disable_openssl_abi_check.patch
-# https://bugzilla.mindrot.org/show_bug.cgi?id=2641
+# PATCH-FIX-SUSE openssh-7.7p1-no_fork-no_pid_file.patch mindrot#2641 -- Skip pid file when not daemonizing
 Patch27:        openssh-7.7p1-no_fork-no_pid_file.patch
+# PATCH-FEATURE-SUSE openssh-7.7p1-host_ident.patch -- Suggest ssh-keygen -R when reporting offending known_hosts keys
 Patch28:        openssh-7.7p1-host_ident.patch
-# https://bugzilla.mindrot.org/show_bug.cgi?id=1844
+# PATCH-FEATURE-SUSE openssh-7.7p1-sftp_force_permissions.patch mindrot#1844 -- sftp-server -m: force perms on upload
 Patch29:        openssh-7.7p1-sftp_force_permissions.patch
-# https://bugzilla.mindrot.org/show_bug.cgi?id=2143
+# PATCH-FIX-SUSE openssh-7.7p1-X_forward_with_disabled_ipv6.patch bsc#712683 mindrot#2143 fate#31503 -- Keep bound X11 sockets on bind fail
 Patch30:        openssh-7.7p1-X_forward_with_disabled_ipv6.patch
+# PATCH-FEATURE-SUSE openssh-7.7p1-ldap.patch jchadima@redhat.com -- ssh-ldap-helper: authorized keys from LDAP
 Patch31:        openssh-7.7p1-ldap.patch
-# https://bugzilla.mindrot.org/show_bug.cgi?id=2213
+# PATCH-FIX-SUSE openssh-7.7p1-IPv6_X_forwarding.patch bsc#847710 mindrot#2213 -- Parse IPv6 literals in DISPLAY
 Patch32:        openssh-7.7p1-IPv6_X_forwarding.patch
+# PATCH-FEATURE-SUSE openssh-7.7p1-sftp_print_diagnostic_messages.patch -- sftp -Q: batch mode prints diagnostics
 Patch33:        openssh-7.7p1-sftp_print_diagnostic_messages.patch
+# PATCH-FIX-SUSE openssh-7.9p1-keygen-preserve-perms.patch bsc#1150574 hpj@suse.com -- Preserve known_hosts perms
 Patch34:        openssh-7.9p1-keygen-preserve-perms.patch
+# PATCH-FIX-SUSE openssh-7.9p1-revert-new-qos-defaults.patch hpj@suse.com -- Revert upstream IPQoS AF21/CS1 defaults
 Patch35:        openssh-7.9p1-revert-new-qos-defaults.patch
+# PATCH-FIX-SUSE openssh-8.1p1-seccomp-clock_nanosleep.patch -- Allow clock_nanosleep() in seccomp sandbox
 Patch36:        openssh-8.1p1-seccomp-clock_nanosleep.patch
+# PATCH-FIX-UPSTREAM openssh-8.1p1-seccomp-clock_nanosleep_time64.patch mindrot#3100 -- Allow clock_nanosleep_time64 (ARM)
 Patch37:        openssh-8.1p1-seccomp-clock_nanosleep_time64.patch
+# PATCH-FIX-UPSTREAM openssh-8.1p1-seccomp-clock_gettime64.patch raj.khem@gmail.com -- Allow clock_gettime64() (mips)
 Patch38:        openssh-8.1p1-seccomp-clock_gettime64.patch
+# PATCH-FEATURE-SUSE openssh-8.1p1-use-openssl-kdf.patch jsc#SLE-9443 -- Use OpenSSL KDF API to stay in FIPS boundary
 Patch39:        openssh-8.1p1-use-openssl-kdf.patch
+# PATCH-FEATURE-SUSE openssh-8.1p1-ed25519-use-openssl-rng.patch bsc#1173799 -- Ed25519: use OpenSSL RAND_bytes() (FIPS)
 Patch40:        openssh-8.1p1-ed25519-use-openssl-rng.patch
+# PATCH-FEATURE-SUSE openssh-fips-ensure-approved-moduli.patch bsc#1177939 -- FIPS: check DH groups (DH_check_params)
 Patch41:        openssh-fips-ensure-approved-moduli.patch
+# PATCH-FIX-SUSE openssh-link-with-sk.patch -- Link sftp-server with ssh-sk/sk-usbhid/libfido2 so security keys work
 Patch42:        openssh-link-with-sk.patch
+# PATCH-FEATURE-SUSE openssh-8.4p1-ssh_config_d.patch -- Include /etc/ssh/{ssh,sshd}_config.d/*.conf drop-ins
 Patch45:        openssh-8.4p1-ssh_config_d.patch
+# PATCH-FIX-SUSE openssh-whitelist-syscalls.patch bsc#1182232 -- Allow close_range/futex_time64/etc. in seccomp sandbox
 Patch46:        openssh-whitelist-syscalls.patch
+# PATCH-FEATURE-SUSE openssh-8.4p1-vendordir.patch -- Support vendor (/usr/etc) defaults for moduli and ssh/sshd configs
 Patch47:        openssh-8.4p1-vendordir.patch
+# PATCH-FIX-SUSE openssh-8.4p1-pam_motd.patch bsc#1185897 -- Default PrintMotd=no so pam_motd handles MOTD
 Patch48:        openssh-8.4p1-pam_motd.patch
+# PATCH-FIX-SUSE openssh-do-not-send-empty-message.patch bsc#1192439 -- Skip empty PAM messages in loginmsg
 Patch49:        openssh-do-not-send-empty-message.patch
+# PATCH-FIX-SUSE openssh-openssl-3.patch bsc#1205042 -- OpenSSL 3 compatibility shims for FIPS_mode()/FIPS_mode_set()
 Patch50:        openssh-openssl-3.patch
+# PATCH-FEATURE-SUSE logind_set_tty.patch bsc#1213004 bsc#1213008 -- Tell systemd-logind about the session TTY
 Patch52:        logind_set_tty.patch
+# PATCH-FIX-SUSE openssh-mitigate-lingering-secrets.patch bsc#1186673 -- explicit_bzero() key/iv instead of memset
 Patch54:        openssh-mitigate-lingering-secrets.patch
+# PATCH-FEATURE-SUSE openssh-7.8p1-role-mls.patch -- SELinux role/MLS: allow "username/role" login form and MLS range
 Patch102:       openssh-7.8p1-role-mls.patch
+# PATCH-FEATURE-SUSE openssh-6.6p1-privsep-selinux.patch -- Propagate SELinux security context across privsep child
 Patch103:       openssh-6.6p1-privsep-selinux.patch
+# PATCH-FEATURE-SUSE openssh-6.6p1-keycat.patch boo#1229072 -- SELinux env setup in subprocess() (ex-ssh-keycat)
 Patch104:       openssh-6.6p1-keycat.patch
+# PATCH-FEATURE-SUSE openssh-6.6.1p1-selinux-contexts.patch -- SELinux context handling in sshd_selinux_copy_context()
 Patch105:       openssh-6.6.1p1-selinux-contexts.patch
+# PATCH-FIX-SUSE openssh-7.6p1-cleanup-selinux.patch -- SELinux: pass context to AuthorizedKeysCommand subprocess
 Patch106:       openssh-7.6p1-cleanup-selinux.patch
+# PATCH-FEATURE-SUSE openssh-send-extra-term-env.patch hpj@suse.com -- Send LC_TERMINAL/COLORTERM/TERM_PROGRAM env vars
 Patch107:       openssh-send-extra-term-env.patch
-# PATCH-FIX-OPENSUSE openssh-7.7p1-gssapi-new-unique.patch bsc#1258166 hpj@suse.com
+# PATCH-FIX-SUSE openssh-7.7p1-gssapi-new-unique.patch bsc#1258166 hpj@suse.com -- SSSD non-file ccache: krb5 new_unique
 Patch108:       openssh-7.7p1-gssapi-new-unique.patch
 # 200 - 300  --  Patches submitted to upstream
-# PATCH-FIX-UPSTREAM -- https://github.com/openssh/openssh-portable/pull/452 boo#1229010
+# PATCH-FIX-UPSTREAM 0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch boo#1229010 mail@3v1n0.net -- PAM kbdint: explicit KbdintResult enum (PR #452)
 Patch200:       0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
+# PATCH-FIX-UPSTREAM 0002-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch boo#1229010 mail@3v1n0.net -- PAM: SshPamDone enum for done-status (PR #452)
 Patch201:       0002-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
+# PATCH-FIX-UPSTREAM 0003-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch boo#1229010 mail@3v1n0.net -- PAM: debug-log received PAM messages (PR #452)
 Patch202:       0003-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
+# PATCH-FIX-UPSTREAM 0004-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch boo#1229010 mail@3v1n0.net -- PAM: immediately report interactive instructions per RFC4256 (PR #452)
 Patch203:       0004-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
 # 1000 - 2000  --  Conditional patches
 %if %{with crypto_policies}
-# PATCH-FIX-OPENSUSE bsc#1211301 Add crypto-policies support
+# PATCH-FEATURE-SUSE openssh-9.6p1-crypto-policies.patch bsc#1211301 -- Integrate system-wide crypto-policies(7)
 Patch1000:      openssh-9.6p1-crypto-policies.patch
+# PATCH-FEATURE-SUSE openssh-9.6p1-crypto-policies-man.patch bsc#1211301 -- Link update-crypto-policies(8) in man pages
 Patch1001:      openssh-9.6p1-crypto-policies-man.patch
 %endif
 %if %{with allow_root_password_login_by_default}
-# PATCH-FIX-SLE Allow root login with password by default (for SLE12 and SLE15)
+# PATCH-FEATURE-SUSE openssh-7.7p1-allow_root_password_login.patch -- Keep PermitRootLogin=yes default on SLE12/SLE15
 Patch1002:      openssh-7.7p1-allow_root_password_login.patch
 %endif
 BuildRequires:  audit-devel

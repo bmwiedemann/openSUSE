@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 21 21:30:19 UTC 2026 - Hans Petter Jansson <hpj@suse.com>
+
+- Update openssh-8.1p1-audit.patch (bsc#1252890). This prevents the
+  connection from dropping due to message mismatches in the monitor
+  protocol when concurrency is high.
+- Add missing patch tags.
+
+-------------------------------------------------------------------
 Mon Mar  2 19:44:45 UTC 2026 - Hans Petter Jansson <hpj@suse.com>
 
 - Add openssh-7.7p1-gssapi-new-unique.patch (bsc#1258166). This

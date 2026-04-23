@@ -1884,10 +1884,12 @@ Index: openssh-8.9p1/session.c
  		ret = do_exec_pty(ssh, s, command);
 @@ -1550,6 +1562,9 @@ do_child(struct ssh *ssh, Session *s, co
  
- 	/* remove keys from memory */
- 	ssh_packet_clear_keys(ssh);
-+	/* Don't audit this - both us and the parent would be talking to the
-+	   monitor over a single socket, with no synchronization. */
+-	/* remove keys from memory */
+-	ssh_packet_clear_keys(ssh);
++	/* Wipe keys without ssh_packet_clear_keys(): after fork we share
++	 * the monitor socket with the privsep parent, so its embedded
++	 * audit_session_key_free() would race the parent's audit traffic
++	 * on that shared socket and corrupt the monitor protocol. */
 +	packet_destroy_all(ssh, 0, 1);
  
  	/* Force a password change */

@@ -2022,4 +2022,15 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
   allows using SSSD with a non-file backend. (forwarded request 1335914 from hpjansson)</comment>
     <requestid>1340773</requestid>
   </revision>
+  <revision rev="200" vrev="4">
+    <srcmd5>dc93152eb10db1c0cbb7f022ed673ece</srcmd5>
+    <version>10.2p1</version>
+    <time>1776956655</time>
+    <user>anag_factory</user>
+    <comment>- Update openssh-8.1p1-audit.patch (bsc#1252890). This prevents the
+  connection from dropping due to message mismatches in the monitor
+  protocol when concurrency is high.
+- Add missing patch tags. (forwarded request 1348649 from hpjansson)</comment>
+    <requestid>1348650</requestid>
+  </revision>
 </revisionlist>
