@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:47:55 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid trouble with openat2(resolve=RESOLVE_BENEATH}) and its
+  error EXDEV on symlinks (Invalid cross-device link)
+
+-------------------------------------------------------------------
+Mon Apr  6 14:23:50 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Correct INC path in texlive-scripts_scripts.dif for fmtutil
+  (boo#1261313, boo#1261462)
+
+-------------------------------------------------------------------
 Mon Mar 30 13:21:34 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to TeXLive 2026 (20260301)
