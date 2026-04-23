@@ -7,7 +7,17 @@
     <param name="revision">20260408</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
+  <!-- Keep the set_version here so that it applies to
+       acpica scm service, not wmidump below -->
   <service name="set_version" mode="manual"/>
+
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/iksaif/wmidump.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="revision">master</param>
+    <param name="versionformat">%cd</param>
+  </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>

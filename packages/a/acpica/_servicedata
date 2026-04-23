@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/acpica/acpica.git</param>
-              <param name="changesrevision">232ff3f8ae1a4da11c709f61d9154482cfe8e6df</param></service></servicedata>
+              <param name="changesrevision">232ff3f8ae1a4da11c709f61d9154482cfe8e6df</param></service><service name="tar_scm">
+                <param name="url">https://github.com/iksaif/wmidump.git</param>
+              <param name="changesrevision">9c3109cb9b24b8b989bc57ba829d5b1c48b82a96</param></service></servicedata>

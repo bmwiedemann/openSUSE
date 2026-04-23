@@ -17,6 +17,7 @@
 
 
 %define kver %(rpm -q --qf '%%{VERSION}' kernel-source)
+%define wmi_ver 20260323
 %define dmp_ver %{kver}
 Name:           acpica
 Version:        20260408
@@ -31,8 +32,7 @@ Source1:        ec_access.c
 Source2:        acpi_genl.tar.bz2
 Source3:        acpi_validate
 # https://xf.iksaif.net/dev/wmidump.html
-Source4:        wmidump-20211011.tar.xz
-Patch1:         wmidump_add_she_bang.patch
+Source4:        wmidump-%{wmi_ver}.tar.xz
 Patch2:         do_not_use_build_date_and_time.patch
 Patch3:         acpica-no-compiletime.patch
 BuildRequires:  bison
@@ -71,7 +71,7 @@ export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 cc %{SOURCE1} %{optflags} -o ec_access
 %make_build -C acpi_genl CFLAGS="%{optflags}"
-%make_build -C wmidump CFLAGS="%{optflags}"
+%make_build -C wmidump-%{wmi_ver} CFLAGS="%{optflags}"
 %make_build OPT_CFLAGS="%{optflags} -fcommon"  HOST="_LINUX"
 cd acpidump-%{dmp_ver}/tools/power/acpi
 if [ -f tools/acpidump/Makefile ]; then # 4.3+
@@ -83,9 +83,9 @@ fi
 install -Dm 755 %{SOURCE3} %{buildroot}%{_bindir}/acpi_validate
 install -Dm 755 ec_access %{buildroot}%{_sbindir}/ec_access
 
-install -Dm 755 wmidump/wmidump %{buildroot}%{_bindir}/wmidump
-install -Dm 755 wmidump/wmixtract.py %{buildroot}%{_bindir}/wmixtract
-install -Dm 644 wmidump/README.md %{buildroot}/%{_docdir}/%{name}/README_wmidump.md
+%make_install -C wmidump-%{wmi_ver} BINDIR=%{_bindir}
+install -Dm 755 wmidump-%{wmi_ver}/wmixtract.py %{buildroot}%{_bindir}/wmixtract
+install -Dm 644 wmidump-%{wmi_ver}/README.md %{buildroot}/%{_docdir}/%{name}/README_wmidump.md
 
 install -Dm 755 acpi_genl/acpi_genl %{buildroot}%{_sbindir}/acpi_genl
 install -Dm 644 acpi_genl/README %{buildroot}/%{_docdir}/%{name}/README_acpi_genl

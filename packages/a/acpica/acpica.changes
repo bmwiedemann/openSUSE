@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 20 09:10:14 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Use scm/git service for wmidump
+- Update to version 20260323 (bsc#1262171):
+  * Modernize repo: C17, tests, CI, license, and bug fixes
+  * Print object_id or notify_id based on ACPI_WMI_EVENT flag
+  * add support for '//' comments
+  * Remove old README
+  * README.md: sync with previous changes
+  * README.md: convert to markdown
+  * wmidump: remove unused code and fix build.
+- Patches not needed anymore due to mainline changes:
+D wmidump_add_she_bang.patch
+
+-------------------------------------------------------------------
 Wed Apr 15 14:48:12 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Enable obs_scm in _service for git based tarball generation
