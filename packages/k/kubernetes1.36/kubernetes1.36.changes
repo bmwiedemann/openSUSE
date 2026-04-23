@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Apr 23 10:56:40 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+-  drop kubeadm-opensuse-flexvolume.patch:
+   * Patch is no longer needed as upstream kubeadm removed built-in flex volume support entirely in v1.36.
+   The patch was originally added to align kubeadm's flex volume plugin path with the SUSE kubelet path (/var/lib/kubelet/volume-plugin) on immutable/transactional filesystems (bsc#1084766).
+   Ref: https://github.com/kubernetes/kubernetes/commit/c7b4a6593bf87e9eb85a366735567c1e72d317a0
+
+-------------------------------------------------------------------
+Thu Apr 23 05:37:41 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- initial package for kubernetes v1.36.0
+  * Full changelog - https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.36.md#v1360
