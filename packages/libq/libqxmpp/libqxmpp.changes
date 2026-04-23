@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:01:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.15.1
+  * Fix use-after-free in sendSensitive() coroutine lambdas
+  * Move sendSensitive() coroutine lambdas to QXmppClientPrivate
+    methods
+  * QXmppTask::then(): co_return continuation result, document
+    return value
+  * Client: Detect same-type listener replacement during
+    handleElement()
+
+-------------------------------------------------------------------
 Wed Apr  8 06:45:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.15.0
