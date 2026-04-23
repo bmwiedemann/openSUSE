@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 21 12:21:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.2
+  * Fix security issue GHSA-rhf7-wvw3-vjvm
+  * Add more tests
+- Drop patch:
+  * gosh-fix-test.patch
+
+-------------------------------------------------------------------
 Mon Apr 13 19:37:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.0

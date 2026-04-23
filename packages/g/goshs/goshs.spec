@@ -16,7 +16,7 @@
 #
 
 Name:           goshs
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        A simple HTTP server
 License:        MIT
@@ -25,7 +25,6 @@ URL:            https://goshs.de/
 #Git-Clone:     https://github.com/patrickhener/goshs.git
 Source:         https://github.com/patrickhener/goshs/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch0:         gosh-fix-test.patch
 BuildRequires:  go >= 1.24.1
 BuildRequires:  golang-packaging
 # shared-mime-info needed for tests
@@ -42,11 +41,13 @@ you can use HTTP basic auth.
 %autosetup -p 1 -a 1
 
 %build
-%{goprep} github.com/patrickhener/goshs
-%{gobuild} -mod=vendor .
+go build \
+  -mod=vendor \
+  -buildmode=pie \
+  -o goshs.bin .
 
 %install
-%{goinstall}
+install -Dm 0755 goshs.bin %{buildroot}%{_bindir}/goshs
 
 %check
 make run-unit-no-network
