@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 20 05:54:28 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install the module.
+- Switch to noarch, this package builds no binaries.
+- Call fdupes after installing.
+
+-------------------------------------------------------------------
 Mon Mar 30 09:01:17 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Replace the upstream tab with 8 white spaces in pyton file 

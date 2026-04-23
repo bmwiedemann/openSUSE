@@ -17,19 +17,19 @@
 
 
 # PyPI package name is file-magic. Version is taken from setup.py
-%define file_magic_version 0.3.0
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define file_magic_version 0.4.0
 %global         _miscdir    %{_datadir}/misc
 Name:           python-magic
 Version:        5.47
 Release:        0
 Summary:        Python module to use libmagic
 License:        BSD-3-Clause AND BSD-4-Clause
-Group:          Development/Languages/Python
 URL:            https://www.darwinsys.com/file/
 Source99:       file.spec
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  findutils
 BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       libmagic1
 Provides:       python-file-magic = %{file_magic_version}
 %{expand:%(sed -n -e '/^Source0\?:/,/^BuildRoot:/p' <%{_sourcedir}/file.spec)}
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -47,13 +48,15 @@ interface.
 %{expand:%(sed -n -e '/^%%prep/,/^%%build/p' <%{_sourcedir}/file.spec | sed -e '1d' -e '$d')}
 ln -sf README.md python/README
 
+%build
 pushd python
-%python_build
+%pyproject_wheel
 popd
 
 %install
 pushd python
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 popd
 
 %check
@@ -65,8 +68,8 @@ popd
 
 %files %{python_files}
 %doc python/README python/example.py
-%{python_sitelib}/magic.py*
+%{python_sitelib}/magic.py
 %pycache_only %{python_sitelib}/__pycache__
-%{python_sitelib}/file_magic-*-py%{python_version}.egg-info
+%{python_sitelib}/file_magic-%{file_magic_version}.dist-info
 
 %changelog

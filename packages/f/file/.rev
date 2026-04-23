@@ -1797,4 +1797,14 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
   * PR/592: allow + in format strings</comment>
     <requestid>1344081</requestid>
   </revision>
+  <revision rev="145" vrev="2">
+    <srcmd5>f29ab9cdef2b5c65c04e270995371025</srcmd5>
+    <version>5.47</version>
+    <time>1776964974</time>
+    <user>anag_factory</user>
+    <comment>- Use pyproject macros to build and install the module.
+- Switch to noarch, this package builds no binaries.
+- Call fdupes after installing. (forwarded request 1348105 from StevenK)</comment>
+    <requestid>1348124</requestid>
+  </revision>
 </revisionlist>
