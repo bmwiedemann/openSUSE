@@ -1,4 +1,295 @@
 -------------------------------------------------------------------
+Wed Apr 15 17:13:18 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.3.10:
+  * Fix tab-title overflow spilling into neighbour tabs / off-screen when the
+    title is longer than the tab width (issue #1508). The island was adding
+    the full title as a text span, measuring it, and centering — with no
+    truncation — so a wide `text_width` produced a negative x offset and the
+    text bled left of the tab's origin. Added
+    `Sugarloaf::char_advance(ch, attrs, font_size)`
+    (and extended `ResolvedGlyph` with `advance_units` + `units_per_em`,
+    populated once at resolve time alongside the existing fallback walk) so
+    the tab bar can walk titles char-by-char and truncate with a trailing `…`
+    to fit `tab_width - 2·TAB_PADDING_X`. Wired `TAB_PADDING_X` up and dropped
+    its `#[allow(dead_code)]`.
+- Update to version 0.3.9:
+  * Fix progress bar visually freezing at the left edge when a TUI heartbeats
+    `OSC 9;4` faster than the indeterminate animation cycle (issue #1509). The
+    island had one `progress_last_update` field doing double duty as the
+    animation phase reference and the stale-bar dismissal timestamp; every
+    report yanked the animation back to t=0. Now split into
+    `progress_started_at` (only reset on actual state transitions) and
+    `progress_last_seen` (bumped every report, drives the 15 s timeout) — same
+    separation ghostty's GTK apprt gets for free from `GtkProgressBar.pulse()`
+    plus a side `glib.timeoutAdd`.
+  * Fix emoji with VS16 variation selector (e.g. 🎟️, ⚠️) visually overflowing
+    into the next grid cell. Rio's font shaper correctly uses cmap format 14
+    to pick the wide emoji glyph for `(base, U+FE0F)` clusters, but the grid
+    still budgeted only one cell for the base, so the glyph painted over its
+    neighbour — misaligning vim/tmux vertical split lines on any row
+    containing a text-presentation emoji. Rio now promotes the cell to
+    `Wide` + `Spacer` on VS16 (and narrows it back on VS15) for any sequence
+    listed in Unicode's `emoji-variation-sequences.txt`, matching kitty and
+    ghostty. New workspace crate `rio-grapheme-width` carries the table
+    (forked from `wezterm-char-props`, MIT).
+  * Add `scrollback-history-limit` config option (default `10000`, set to `0`
+    to disable scrollback). Fixes #993.
+  * Harden Kitty graphics protocol: reject images exceeding 10000 px per axis
+    or 400 MiB, add per-chunk base64 decoding so clients like
+    `chafa --format=kitty` (which pads every chunk) merge correctly, time out
+    stale chunked uploads after 10 s, combine `i=/I=/p=` response keys,
+    validate `i=`/`I=` mutual exclusion, and require `i=` for `a=q` queries.
+  * Fix kitty image protocol whenever using transmission.
+  * Fix color picker not rendering correctly.
+  * Selection feel: bumped the click/drag side-of-cell threshold from 50% to
+    60% (matches ghostty), so selections no longer flip to the next cell as
+    eagerly when the cursor crosses the midpoint.
+  * Default URL/path regex now matches local paths in addition to schemed
+    URLs. Ported verbatim from ghostty's `src/config/url.zig`: rooted (`/abs`),
+    explicitly-relative (`./x`, `../x`), home (`~/x`),
+    env-var-rooted (`$VAR/x`), hidden-dir (`.config/x`), and bare relative paths
+    with a dotted filename (`src/main.rs`). Lookbehinds reject mid-word starts
+    (the `/bar` inside `foo/bar`) and trailing punctuation
+    (`see https://example.com.` won't include the period).
+  * Switch hint regex matching from the Rust `regex` crate to `onig` (Oniguruma)
+    — same engine ghostty uses. Adds lookbehind/lookahead support so the
+    default regex matches ghostty's behavior exactly, and user `[hints.rules]`
+    regexes can now use lookarounds and backreferences.
+  * When a hint match looks like a local path, rio now resolves it against
+    the terminal's OSC 7 working directory, expands `~/` and `$VAR/`, and only
+    dispatches the resolved absolute path to the OS opener if the file
+    exists; URL schemes (`https://…`, `mailto:``, …) are passed through unchanged.
+  * Restore OSC 8 hyperlink underlines. The cell repack moved hyperlink data
+    into a side table and the renderer's `square.hyperlink().is_some()` check
+    was disabled with a `// temporarily disabled` comment that was never lifted;
+    the renderer now reads the cell's `HYPERLINK` flag directly so OSC 8 spans
+    are underlined again.
+  * Fix hover hint underline not appearing on the very first hover after
+    startup. `update_highlighted_hints` now marks the renderer's
+    `pending_update` with full terminal damage when the hint changes,
+    mirroring the pre-refactor `set_hyperlink_range` behaviour, so the
+    partial-damage render path can no longer skip the re-shape.
+  * Fix two `context::title` tests panicking under sandboxed builds
+    (e.g. Void's xbps-src) where `$HOME=/tmp` collapsed the test path to `~`.
+    The tests now use a path prefix that can't plausibly be `$HOME`.
+
+-------------------------------------------------------------------
+Mon Apr 13 14:26:41 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.3.8:
+  * Fix click between panels not working if it's on alternative screen.
+  * Fix divider not appearing (regression of 0.3.7).
+
+-------------------------------------------------------------------
+Mon Apr 13 13:42:57 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.3.7:
+  * Reduced GPU upload.
+    - ~17k quads before: ~8.5 MB
+    - ~17k quads after: ~1.55 MB
+    - 5.5x reduction.
+- Update to version 0.3.6:
+  * Performance improvements.
+  * Now a cell is 8 bytes.
+    // Bit layout for Square(u64)
+    //
+    //   bits  0..20 (21): codepoint (Unicode scalar value, max 0x10_FFFF)
+    //                     OR low bits of bg color when content_tag != Codepoint
+    //   bits 21..22 (2):  wide                              (Wide enum)
+    //   bits 23..29 (7):  per-cell flag bits (CellFlags), incl WRAPLINE at bit 0
+    //   bits 30..31 (2):  content_tag (NEW)
+    //                       0 = Codepoint        (text cell, use style_id below)
+    //                       1 = BgPalette        (bg-only cell, palette index in 32..39)
+    //                       2 = BgRgb            (bg-only cell, RGB packed in 32..55)
+    //                       3 = reserved
+    //   bits 32..47 (16): style_id      (when tag == Codepoint)
+    //                     bg palette idx in low 8 (when tag == BgPalette)
+    //                     bg RGB.r:g    in low 16  (when tag == BgRgb)
+    //   bits 48..63 (16): extras_id     (when tag == Codepoint)
+    //                     bg RGB.b      in low 8   (when tag == BgRgb)
+  * Add support for `window.columns` and `window.rows` for window sizing.
+    Ignores invalid `0` values with fallback to `window.width/window.height`,
+    and guarantees a minimum startup size of `300x200` logical pixels.
+  * Avoid send damage events to Application when terminal already has damage
+    found and unprocessed.
+  * Fix macOS window close button (red semaphore) showing quit confirmation
+    dialog. Clicking the close button now always closes the window. Quit
+    confirmation is only triggered by Cmd+Q.
+  * Remove `window.macos-use-quit-dialog` configuration option.
+
+-------------------------------------------------------------------
+Sat Apr 11 17:56:02 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.3.5:
+  * https://rioterm.com/changelog#035
+    - Fix underline cursor rendering.
+    - Fix underline cursor disappearing on blank cells when
+      `window.background-image` is set or `window.opacity < 1.0`. The empty-run
+      dispatch in the renderer now also paints decoration-only spans.
+    - Fix `navigation.unfocused-split-opacity` not dimming unfocused splits.
+      The setting is now applied as a semi-transparent overlay drawn on top of
+      inactive panes and works correctly on both opaque and transparent
+      windows. Default raised from `0.4` to `0.7` and clamped to `[0.15, 1.0]`.
+    - Add `navigation.unfocused-split-fill`: RGB tint used for the
+      unfocused-split overlay. Defaults to the terminal background color.
+    - Re-implement `window.background-image`. It had been a silent no-op since
+      the renderer rewrite — setting it would clear the window to transparent
+      and paint nothing on top. The image is now uploaded into a dedicated GPU
+      texture sized exactly to the source dimensions (no glyph-atlas
+      pollution, no atlas-size limit) and stretched to cover the full window.
+    - Add `window.background-image.opacity`: `0.0`–`1.0` multiplier applied to
+      the image's alpha channel. Defaults to `1.0`.
+    - *Breaking*: removed `window.background-image.width`, `height`, `x`,
+      and `y`. They had no effect under the old implementation and the new
+      dedicated pipeline always fills the window.
+    - Surface background-image load failures (missing path, decode error)
+      through the in-window assistant warning popup instead of a silent log
+      line.
+    - Fix FreeBSD build.
+
+- Update to version 0.3.4:
+  * https://rioterm.com/changelog#034
+    - Fix kitty image protocol overlay when has a new tab.
+    - Fix kitty image protocol placeholder content being rendered.
+
+-------------------------------------------------------------------
+Sat Apr 11 01:16:40 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing build_rustflags that were required for v0.3.1
+- Update to version 0.3.3:
+  * https://rioterm.com/changelog#033
+    - CPU rendering support by `renderer.use-cpu`.
+    - Removed Font char cache friction.
+    - Fix kitty image protocol and sixel.
+
+- Update to version 0.3.2:
+  * https://rioterm.com/changelog#032
+    - Performance: Skip shaping for empty cells, perf gain can be over 50% depending of the visible rows.
+    - Private user area should adjust based on cells.
+    - Cells now by default are created with \0.
+    - Selection ignore \0 cells.
+
+-------------------------------------------------------------------
+Sun Apr  5 00:52:32 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.3.1:
+  * Fix crash when filters option is on.
+
+-------------------------------------------------------------------
+Fri Apr  3 19:52:15 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding build_rustflags -> '-C lto=off -C codegen-units=16' to account for
+  https://github.com/raphamorim/rio/issues/1462
+- Update to version 0.3.0:
+  * Rio 0.3.0 is a major release with a ground-up rewrite of the rendering
+    architecture, including a new GPU-accelerated Metal backend on macOS, a
+    completely new tab and split panel system powered by Taffy layout, and
+    features like Kitty/Sixel graphics, command palette, and trail cursor effects.
+    With this level of change, rough edges are expected — if you run into bugs,
+    please report them at https://github.com/raphamorim/rio/issues and they'll be
+    addressed as quickly as possible.
+
+    For Windows users, feel free to use 0.3.0 but I'd recommend waiting for
+    the next release, which will include significant improvements and stability
+    fixes for the platform.
+
+    Happy Easter!
+
+  * Changelog
+    - Quit Confirmation Dialog: New in-window quit screen with Rio logo,
+      triggered by Cmd+Q / confirm-before-quit
+      * Respond with y to quit or n to cancel
+      * Optional native macOS quit dialog via window.macos-use-quit-dialog
+        config
+    - Kitty Graphics Protocol: Display images directly in your terminal
+      * Direct placements (U=0)
+      * Virtual placements (U=1)
+      * Diacritic-based row/column encoding (283 combining characters)
+      * RGB color encoding for image/placement IDs (24+8 bit support)
+      * Virtual placement rendering (infrastructure complete, rendering pending)
+    - Sixel Graphics: Full support with proper scrolling and positioning
+    - Graphics Rendering Improvements:
+      * Fixed vertical positioning alignment
+      * Fixed scrolling (images persist when origin scrolls off-screen)
+      * Fixed duplicate rendering with per-frame deduplication
+      * LRU cache with automatic eviction
+    - Native Metal Support (macOS): Hardware-accelerated rendering with Metal
+    - New GPU-Rendered Navigation: Faster, smoother tab interface
+    - Command Palette: Quick access to terminal functions
+    - Toggle Appearance Theme: Switch between dark and light themes at runtime
+      via key binding (ToggleAppearanceTheme) or command palette (only
+      available when adaptive theme is configured)
+    - Custom Mouse Cursor: Configurable mouse cursor effects via
+      effects.custom-mouse-cursor
+    - Trail Cursor: Smooth spring-animated cursor trail using neovide-style
+      physics (enabled by default via effects.trail-cursor)
+    - Desktop Notifications: Support for OSC 9 (iTerm2) and OSC 777 (rxvt)
+      terminal notifications using native platform APIs
+      (macOS UNUserNotificationCenter, Linux D-Bus, Windows Toast)
+    - Force Theme: New force-theme configuration property to override the
+      system theme when using adaptive themes
+    - Quake Window Mode: Drop-down terminal from top of screen
+    - macOS Traffic Light Positioning: Customize position of window control
+      buttons
+      * Configure via macos-traffic-light-position-x and
+        macos-traffic-light-position-y
+      * Defaults to standard macOS positioning (11.4, 16.1)
+      * Not available in Tab navigation mode
+    - OSC 9;4 Progress Bar Support: Terminal progress indicator
+      (ConEmu/Windows Terminal compatible)
+    - Scroll Bar: Overlay scroll bar that appears on scroll and fades out
+      after 2s
+      * Works per-panel in split views
+      * Draggable thumb with click-on-track jump scrolling
+      * Configure via enable-scroll-bar (enabled by default)
+    - Tab Title RELATIVE_PATH variable: New template variable that shows a
+      home-relative shortened path (e.g. ~/Documents/a/rio or …/a/psone/starpsx).
+      Default tab title on macOS/Linux changed to {{ TITLE || RELATIVE_PATH }}.
+    - Wgpu now is always f32.
+      * This fixes non arm chip macos use cases.
+
+  * Breaking Changes
+    - Navigation modes simplified - if you use TopTab, BottomTab, or Bookmark,
+      change to:
+        [navigation]
+        mode = "Tab"
+    - Default Decorations changed to Transparent on macOS (was Enabled)
+    - Removed: TopTab, BottomTab, and Bookmark navigation modes
+    - Available modes: Plain, Tab, NativeTab (macOS only)
+    - Tab color configuration simplified: Removed tabs-foreground,
+      tabs-active-foreground, and tabs-active-highlight
+    - Use tabs for inactive tab text and border color (default: #cccccc)
+    - Use tabs-active for active tab text color (default: #ffffff)
+    - The old padding api became margin:
+
+        # It will apply margin rules to the main container
+        # CSS-Like
+        margin = [10] # (10px to all)
+        # (top and bottom margin are 10px, right and left margin are 5px)
+        margin = [10, 5]
+        # (top margin is 10px, right margin is 5px, bottom margin is 15px,
+        # left margin is 20px)
+        margin = [10, 5, 15, 20]
+
+        # It will apply margin rules to panels
+        [panel]
+        margin = [5] # (5px to all)
+        row-gap = 0 # (0px)
+        column-gap = 0 # (0px)
+
+  * Technical Details
+    - Complete rendering architecture rewrite for GPU-based UI
+    - Parser now supports APC sequences for Kitty graphics protocol
+    - Removed legacy layer/quad rendering system
+    - Added Metal backend for macOS, split WebGPU backend for cross-platform
+    - New kitty_virtual module for placeholder encoding
+    - Graphics cleanup with LRU eviction strategy (evicts up to 5 oldest when
+      atlas full)
+    - Added 5 unit tests for graphics rendering (positioning, LRU,
+      deduplication)
+
+-------------------------------------------------------------------
 Fri Jan 16 20:35:40 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding/adjusting the following  for Leap 15.6/16.0
