@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 22 12:09:45 UTC 2026 - Reinhard Max <max@suse.com>
+
+- bsc#1262487, CVE-2026-6507, dnsmasq-CVE-2026-6507.patch:
+  out-of-bounds write in DHCP BOOTREPLY processing can lead to
+  denial of service.
+
+-------------------------------------------------------------------
+Mon Apr 20 08:22:10 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix FTBFS with libnettle 4.0: (boo#1257934)
+  * dnsmasq: missed hash->digest calls in 4070a74 (1eab169)
+  * Add dnsmasq-Fix-FTBFS-nettle-4.0.patch and merge 4070a748.patch
+
+-------------------------------------------------------------------
+Wed Mar 25 12:09:01 UTC 2026 - Reinhard Max <max@suse.com>
+
+- boo#1257934, 4070a748.patch: Fix build with nettle 4.0.
+
+-------------------------------------------------------------------
 Sat Jan 24 18:00:51 UTC 2026 - Frank Schreiner <FSchreiner@suse.com>
 
 - update to 2.92

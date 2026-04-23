@@ -984,4 +984,26 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
     <comment></comment>
     <requestid>1331006</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>8af0e9932809df2bfaffd956984c0444</srcmd5>
+    <version>2.92</version>
+    <time>1774555661</time>
+    <user>anag_factory</user>
+    <comment>- boo#1257934, 4070a748.patch: Fix build with nettle 4.0.</comment>
+    <requestid>1342465</requestid>
+  </revision>
+  <revision rev="105" vrev="3">
+    <srcmd5>dc27552062246c094624e80e47864730</srcmd5>
+    <version>2.92</version>
+    <time>1776956725</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1262487, CVE-2026-6507, dnsmasq-CVE-2026-6507.patch:
+  out-of-bounds write in DHCP BOOTREPLY processing can lead to
+  denial of service.
+
+- Fix FTBFS with libnettle 4.0: (boo#1257934)
+  * dnsmasq: missed hash-&gt;digest calls in 4070a74 (1eab169)
+  * Add dnsmasq-Fix-FTBFS-nettle-4.0.patch and merge 4070a748.patch</comment>
+    <requestid>1348772</requestid>
+  </revision>
 </revisionlist>
