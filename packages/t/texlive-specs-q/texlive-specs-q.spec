@@ -21,7 +21,7 @@
 %define texlive_version  2026
 %define texlive_previous 2025
 %define texlive_release  20260301
-%define texlive_noarch   222
+%define texlive_noarch   226
 %define biber_version    2.21
 
 #!BuildIgnore:          texlive
@@ -44437,7 +44437,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:281} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -44532,10 +44532,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:308} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:309} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:310} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:311} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Extend python3 scripts with major version only if any
     for scr in %{_texmfdistdir}/scripts/optexcount/optexcount
     do
