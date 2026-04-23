@@ -978,4 +978,13 @@ This correction fixes the build failures we are currently seeing in Factory, etc
     <comment></comment>
     <requestid>1334407</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>da36089f49db0f5827b59ce56fda3c48</srcmd5>
+    <version>1.12.2</version>
+    <time>1776964976</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.2
+  * Various fixes on gcry_kem_*  apis (forwarded request 1348199 from ayankov)</comment>
+    <requestid>1348341</requestid>
+  </revision>
 </revisionlist>

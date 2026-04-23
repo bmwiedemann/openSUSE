@@ -21,7 +21,7 @@
 %define libsoname %{name}%{libsover}
 %define hmac_key orboDeJITITejsirpADONivirpUkvarP
 Name:           libgcrypt
-Version:        1.12.1
+Version:        1.12.2
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
