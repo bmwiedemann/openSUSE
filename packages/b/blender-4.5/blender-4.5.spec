@@ -46,7 +46,7 @@
 %bcond_with openpgl
 %endif
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %ifarch x86_64
 %bcond_without hip
 %bcond_with    hiprt
