@@ -21,7 +21,7 @@
 %define texlive_version  2026
 %define texlive_previous 2025
 %define texlive_release  20260301
-%define texlive_noarch   222
+%define texlive_noarch   226
 %define biber_version    2.21
 
 #!BuildIgnore:          texlive
@@ -22311,8 +22311,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:163} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:164} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Strip executable bit from non-scripts
     for txt in %{_texmfdistdir}/scripts/bib2gls/bib2gls.jar \
 	       %{_texmfdistdir}/scripts/bib2gls/bibglscommon.jar \
@@ -22329,13 +22329,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:171} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:172} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:173} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:174} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:175} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:176} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:177} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
@@ -22515,12 +22515,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:326} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:327} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:329} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:330} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:331} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:332} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:333} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:334} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/bibtexperllibs/ltx2unitxt
     do
@@ -22533,7 +22533,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:335} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:336} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:337} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:338} -C %{buildroot}%{_datadir}/texlive/texmf-dist
