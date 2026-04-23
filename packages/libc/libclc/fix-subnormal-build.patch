@@ -1,0 +1,19 @@
+Fixes build error:
+
+    [100%] Generating /subnormal_use_default.bc
+    /usr/bin/llvm-link -o /subnormal_use_default.bc
+        [...]/opencl/lib/generic/subnormal_use_default.ll
+    error: Permission denied
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d060b71..c17b350 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -239,6 +239,7 @@ configure_file( libclc.pc.in libclc.pc @ONLY )
+ install( FILES ${CMAKE_CURRENT_BINARY_DIR}/libclc.pc DESTINATION "${CMAKE_INSTALL_DATADIR}/pkgconfig" )
+ 
+ if( ENABLE_RUNTIME_SUBNORMAL )
++  set( LIBCLC_ARCH_OBJFILE_DIR "${LIBCLC_OBJFILE_DIR}" )
+   foreach( file IN ITEMS subnormal_use_default subnormal_disable )
+     link_bc(
+        TARGET ${file}

@@ -16,7 +16,7 @@
 #
 
 
-%define _libclc_llvm_ver 21.1.0
+%define _libclc_llvm_ver 22.1.0
 %define _version %_libclc_llvm_ver%{?_rc:rc%_rc}
 %define _tagver %_libclc_llvm_ver%{?_rc:-rc%_rc}
 
@@ -27,13 +27,20 @@ Summary:        OpenCL C programming language library
 License:        Apache-2.0 WITH LLVM-exception AND (BSD-3-Clause OR MIT)
 Group:          Development/Libraries/C and C++
 URL:            https://libclc.llvm.org/
-Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/%{name}-%{_version}.src.tar.xz
-Source1:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/%{name}-%{_version}.src.tar.xz.sig
+# Built manually via "git archive --prefix=%{name}-%{_version}.src/ llvmorg-%{_tagver} .
+# | xz -T0 >../%{name}-%{_version}.src.tar.xz" until upstream provides tarballs again.
+Source0:        %{name}-%{_version}.src.tar.xz
 Source100:      %{name}-rpmlintrc
 Source101:      https://releases.llvm.org/release-keys.asc#/%{name}.keyring
-BuildRequires:  clang21-devel
+Patch1:         fix-subnormal-build.patch
 BuildRequires:  cmake
+%if 0%{?suse_version} >= 1699
+BuildRequires:  clang-devel
+BuildRequires:  llvm-devel
+%else
+BuildRequires:  clang21-devel
 BuildRequires:  llvm21-devel
+%endif
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(LLVMSPIRVLib)
 Provides:       libclc(llvm%{_llvm_sonum})

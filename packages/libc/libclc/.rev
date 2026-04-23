@@ -351,4 +351,88 @@
   suse_version/sle_version is being used</comment>
     <requestid>1328707</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>fbe61d275323d5699a77d598203b88d9</srcmd5>
+    <version>0.2.0+llvm22.1.0</version>
+    <time>1776956733</time>
+    <user>anag_factory</user>
+    <comment>- use 0%{?suse_version} &gt;= 1699 for TW  (&gt; 1600 now includes Leap 16.1)
+
+- Update to version 22.1.0. For now we build the tarball ourselves,
+  because upstream no longer provides it. (With LLVM 23, it seem
+  that a standalone build will be unsupported anyway.)
+  * Remove llvm-link --override flag and make implementation
+    self-contained.
+  * Initial support for cross-compiling OpenCL libraries.
+  * Add support for `nvptx64-nvidia-cuda` triple.
+  * Remove bitcode prepare utility from OpenCL library build.
+  * Update default triple support for AMD and deprecate 32-bit PTX.
+  * Compile clc_convert_float2int.cl and clc_convert_int2float.cl
+    separately.
+  * Fix incorrect argument format.
+  * Suppress AMDGCN code object version for library code.
+  * Improve __clc_min/max/clamp implementation.
+  * Use clc functions in clspv/shared/vstore_half.cl.
+  * Fix clspv/shared/vstore_half.cl.
+  * Add OpenCL atomic_*_explicit builtins.
+  * Fix memory fence scope mapping for OpenCL.
+  * Fix build in atomic_def.inc.
+  * Fix bitfield_insert implementation.
+  * Use __scoped_atomic_udec/uinc_wrap to implement
+    _clc_atomic_dec/inc.
+  * Add atomic_init, atomic_flag_clear and
+    atomic_flag_test_and_set.
+  * Use CLC atomic functions for legacy OpenCL atom/atomic
+    builtins.
+  * Fix link to source in index.html.
+  * Fix floating-point __clc_atomic_store/exchange cast mismatch.
+  * Implement integer __clc_abs using __builtin_elementwise_abs.
+  * Fix double NAN_MASK in __clc_nan.
+  * Move functions definition from header clc_sincos_piby4.inc into
+    clc_sincos_helpers.cl.
+  * Change libclc install dir to ${clang_resource_dir}/lib/libclc
+    in in-tree build.
+  * Remove -fno-builtin from compile options.
+  * Add gfx1250 and gfx1251 to amdgpu target list.
+  * Remove __attribute__((always_inline)).
+  * Create LIBCLC_OUTPUT_LIBRARY_DIR directory before build.
+  * Remove HAVE_LLVM version macros.
+  * Implement erf/erfc vector function with loop since scalar
+    function is large.
+  * Override generic symbol using llvm-link --override flag instead
+    of using weak linkage.
+  * Update __clc_mem_fence: add MemorySemantic arg and use
+    __builtin_amdgcn_fence for AMDGPU.
+  * Only create a target per each compile command for cmake MSVC
+    generator.
+  * Use elementwise ctlz/cttz builtins for CLC clz/ctz.
+  * Implement __clc_get_local_size/__clc_get_max_sub_group_size for
+    amdgcn.
+  * Fix out-of-bound value for workitem functions according to
+    OpenCL spec.
+  * Add __attribute__((const)) to functions that don't access
+    memory.
+  * Fix libclc install on Windows when MSVC generator is used.
+  * Implement clc_log/sinpi/sqrt with __nv_* functions.
+  * Move mem_fence and barrier to clc library.
+  * Refine id in async_work_group_copy STRIDED_COPY.
+  * Add an option to build SPIR-V targets with the LLVM backend.
+  * Optimize generic CLC fmin/fmax.
+  * Fix building top-level 'libclc' target.
+  * Add generic native half implementation of __clc_normalize.
+  * Simplify unary_def_scalarize.inc's use in
+    __clc_erf/erfc/tgamma.
+  * Fix installed symlinks to be relative again.
+  * Add generic implementation of some atomic functions in OpenCL
+    spec section 6.15.12.7.
+  * Add generic implementation of
+    bitfield_insert/extract,bit_reverse.
+  * Enable `clang fp reciprocal` in
+    clc_native_divide/recip/rsqrt/tan.
+  * Enable -fdiscard-value-names build flag to reduce bitcode size.
+- Add fix-subnormal-build.patch to fix build of subnormal runtimes.
+
+- Use clang/llvm-devel in Factory.</comment>
+    <requestid>1348453</requestid>
+  </revision>
 </revisionlist>
