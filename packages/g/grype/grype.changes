@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Apr 23 05:24:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.111.1:
+  * Bug Fixes
+    - apply overlap by ownership removal to dynamically created
+      relationships [#3363 @kzantow]
+    - compare mismatched package / db versions [#3372 @kzantow]
+    - Grype doesn't recognize debian component when "group" :
+      "debian" is specified [#2967]
+    - HelpURI missing information in SARIF output [#2874 #3351
+      @will-bates11]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3387)
+    - chore(deps): update anchore dependencies (#3383)
+    - chore(deps): update quality gate database (#3338)
+    - chore(deps): update anchore dependencies (#3381)
+    - chore(deps): update Go version (#3382)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.17.1 to
+      5.18.0 (#3378)
+    - chore(deps): bump actions/upload-artifact (#3375)
+    - chore(deps): bump the go-minor-patch group with 3 updates
+      (#3374)
+    - chore(deps): update Go version (#3367)
+    - chore(deps): bump actions/download-artifact from 4.1.9 to
+      8.0.1 (#3342)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.17.0 to
+      5.17.1 (#3325)
+    - chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.3 to
+      4.1.4 (#3347)
+    - chore(deps): bump github.com/openvex/go-vex (#3365)
+    - chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3
+      (#3357)
+    - chore(deps): bump go.opentelemetry.io/otel/sdk from 1.40.0 to
+      1.43.0 (#3358)
+    - chore(deps): bump the actions-minor-patch group across 1
+      directory with 3 updates (#3361)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.8.5
+      to 1.8.6 (#3362)
+    - chore(deps): update anchore dependencies (#3364)
+
+-------------------------------------------------------------------
 Sat Apr 11 07:15:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.111.0:
