@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 20 11:07:12 UTC 2026 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Update to 832291b92d49 (2026-02-11)
+  * firmware: arm_crypto_hmac_sha256: Initialise mbedtls early
+  * firmware: arm_ldconfig: Avoid double os_prefix on initramfs
+    See: https://forums.raspberrypi.com/viewtopic.php?t=394238
+  * firmware: helpers/config_loader: Also support bootvar0 eeprom config on Pi4
+    See: https://github.com/raspberrypi/rpi-eeprom/issues/773
+  * firmware: extra: Add missing dt-blob.dts
+  * firmware: arm-crypto: Implement rpi-fw-crypto service
+    See: https://github.com/raspberrypi/utils/pull/139
+  * firmware: bootloader: Fix config key search which could cause
+    camera_autodetect to fail
+  * firmware: arm_loader: Also require the early-watchdog property
+    See: https://github.com/raspberrypi/firmware/issues/1980
+  * firmware: extra: Add missing dt-blob.dts
+  * firmware: arm_loader: Enable "Starting ARM" log message
+
+ -------------------------------------------------------------------
+Mon Dec  1 06:36:00 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Enable dwc2 overlay on pi0, pi1 and pi2 models.
+  This is to properly enable USB hub to which in some cases the
+  Ethernet controller is connected. See boo#1251192.
+  Tested on:
+  * RPi Zero 2 W Rev 1.0
+  * RPi 2 Model B Rev 1.1 amd Rev 1.2
+
+-------------------------------------------------------------------
 Thu Nov 20 16:00:36 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Do not load "upstream" overlay anymore. Recent build fixes for

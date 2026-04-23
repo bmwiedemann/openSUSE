@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-firmware
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %global modprobe_d_files 50-rpi3.conf
 
 Name:           raspberrypi-firmware
-Version:        2025.06.05
+Version:        2026.02.11
 Release:        0
 Summary:        Binary bootloader and firmware files for Raspberry Pi
 License:        SUSE-Firmware
