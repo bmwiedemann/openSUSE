@@ -3,7 +3,6 @@ Description=Nextcloud CronJob
 
 [Service]
 User=@APACHE_USER@
+ExecCondition=/usr/bin/php -f @APACHE_MYSERVERROOT@/nextcloud/occ status -e
 ExecStart=/usr/bin/php -f @APACHE_MYSERVERROOT@/nextcloud/cron.php
-
-[Install]
-WantedBy=basic.target
+KillMode=process

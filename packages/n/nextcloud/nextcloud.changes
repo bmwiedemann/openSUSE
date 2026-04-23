@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 09:31:07 UTC 2026 - Olav Reinert <seroton10@gmail.com>
+
+- Bring nextcloud-cron.service up to date according to docs
+
+-------------------------------------------------------------------
 Sun Apr 19 16:06:47 UTC 2026 - ecsos <ecsos@opensuse.org> - 33.0.2
 
 - Remove require of php-opcache if php8 >= 8.5 is installed.
