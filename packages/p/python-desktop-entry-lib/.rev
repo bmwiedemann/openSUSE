@@ -17,4 +17,12 @@
   * Actually make pytest-subtests use optional.</comment>
     <requestid>1322886</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3486af72acb8f9dde734aaa20fb13c28</srcmd5>
+    <version>5.0</version>
+    <time>1776956993</time>
+    <user>anag_factory</user>
+    <comment>- Fix tests, bsc#1262644</comment>
+    <requestid>1348936</requestid>
+  </revision>
 </revisionlist>

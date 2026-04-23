@@ -1,7 +1,7 @@
 #
 # spec file for package python-desktop-entry-lib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,7 @@ Desktop Entry Specification.
 
 %check
 # Exclude tests that require data files not included in the release
-%pytest tests --ignore=tests/test_data.py --ignore=tests/test_collection.py
+%pytest --capture=sys tests --ignore=tests/test_data.py --ignore=tests/test_collection.py
 
 %files %{python_files}
 %license LICENSE
