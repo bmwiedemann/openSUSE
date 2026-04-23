@@ -29,6 +29,8 @@ URL:            http://sdr.osmocom.org/trac/wiki/rtl-sdr
 #Git-Clone:     https://git.osmocom.org/rtl-sdr
 Source:         https://github.com/steve-m/librtlsdr/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         0001-Better-udev-handling.patch
+Patch1:         0002-Change-version-number.patch
+Patch2:         0003-Fix-application-hang-on-usb-error.patch
 BuildRequires:  cmake >= 3.7.2
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

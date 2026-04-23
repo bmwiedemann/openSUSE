@@ -1,0 +1,89 @@
+From 65f06585ea46160cd2d7bee8b3f641c14771c2ee Mon Sep 17 00:00:00 2001
+From: Ramon Smits <ramon.smits@gmail.com>
+Date: Sat, 10 Jan 2026 20:50:25 +0100
+Subject: [PATCH] Fix application hang on USB transfer errors
+
+When USB transfer errors occur (e.g., dongle movement in socket),
+applications using rtlsdr_read_async() would hang indefinitely
+instead of terminating gracefully.
+
+The issue had two parts:
+
+1. _libusb_callback() was calling rtlsdr_cancel_async() from within
+   the libusb event handler, creating a race condition by modifying
+   dev->async_cancel while libusb_handle_events_timeout_completed()
+   was actively using it as a parameter.
+
+2. Even when dev->dev_lost was set, the async read loop would not
+   properly exit, and applications like rtl_fm had no way to detect
+   the device loss.
+
+This patch:
+- Removes the problematic rtlsdr_cancel_async() call from the callback
+- Adds proper dev->dev_lost detection in the main event loop to
+  transition to RTLSDR_CANCELING state
+- Returns -1 from rtlsdr_read_async() when device is lost
+- Updates rtl_fm to check the return value and terminate gracefully
+  with an error message
+
+Tested with RTL2832U/FC0012 dongle by deliberately triggering USB
+errors (dongle movement). Applications now terminate cleanly instead
+of hanging indefinitely.
+
+Signed-off-by: Ramon Smits <ramon.smits@gmail.com>
+---
+ src/librtlsdr.c | 9 ++++++++-
+ src/rtl_fm.c    | 6 +++++-
+ 2 files changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/src/librtlsdr.c b/src/librtlsdr.c
+index ee13556..c9e43a1 100644
+--- a/src/librtlsdr.c
++++ b/src/librtlsdr.c
+@@ -1732,7 +1732,6 @@ static void LIBUSB_CALL _libusb_callback(struct libusb_transfer *xfer)
+ 		    LIBUSB_TRANSFER_NO_DEVICE == xfer->status) {
+ #endif
+ 			dev->dev_lost = 1;
+-			rtlsdr_cancel_async(dev);
+ 			fprintf(stderr, "cb transfer status: %d, "
+ 				"canceling...\n", xfer->status);
+ #ifndef _WIN32
+@@ -1930,6 +1929,11 @@ int rtlsdr_read_async(rtlsdr_dev_t *dev, rtlsdr_read_async_cb_t cb, void *ctx,
+ 			break;
+ 		}
+ 
++		/* Check if device was lost due to transfer errors */
++		if (dev->dev_lost && RTLSDR_RUNNING == dev->async_status) {
++			dev->async_status = RTLSDR_CANCELING;
++		}
++
+ 		if (RTLSDR_CANCELING == dev->async_status) {
+ 			next_status = RTLSDR_INACTIVE;
+ 
+@@ -1973,6 +1977,9 @@ int rtlsdr_read_async(rtlsdr_dev_t *dev, rtlsdr_read_async_cb_t cb, void *ctx,
+ 
+ 	dev->async_status = next_status;
+ 
++	if (dev->dev_lost)
++		return -1;
++
+ 	return r;
+ }
+ 
+diff --git a/src/rtl_fm.c b/src/rtl_fm.c
+index 0929744..976887b 100644
+--- a/src/rtl_fm.c
++++ b/src/rtl_fm.c
+@@ -809,7 +809,11 @@ static void rtlsdr_callback(unsigned char *buf, uint32_t len, void *ctx)
+ static void *dongle_thread_fn(void *arg)
+ {
+ 	struct dongle_state *s = arg;
+-	rtlsdr_read_async(s->dev, rtlsdr_callback, s, 0, s->buf_len);
++	int r = rtlsdr_read_async(s->dev, rtlsdr_callback, s, 0, s->buf_len);
++	if (r != 0 && !do_exit) {
++		fprintf(stderr, "\nDevice error detected, async read returned: %d\n", r);
++		do_exit = 1;
++	}
+ 	return 0;
+ }
+ 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 12 09:15:58 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Add two patches from upstream:
+  . 0002-Change-version-number.patch
+  . 0003-Fix-application-hang-on-usb-error.patch
+
+-------------------------------------------------------------------
 Mon Jul 29 07:43:09 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Add conflict for library package with librtlsdr2 

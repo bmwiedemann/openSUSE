@@ -109,4 +109,12 @@
 - version number set in CmakeList.txt is still 2.0.1, workaround added</comment>
     <requestid>1190177</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1017c586467a0182f1dd005eb822e6e8</srcmd5>
+    <version>2.0.2</version>
+    <time>1776956950</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1348900</requestid>
+  </revision>
 </revisionlist>

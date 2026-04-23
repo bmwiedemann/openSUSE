@@ -1,0 +1,26 @@
+From ae0dd6d4f09088d13500a854091b45ad281ca4f0 Mon Sep 17 00:00:00 2001
+From: Kacper Ludwinski <kacper@ludwinski.dev>
+Date: Sun, 9 Nov 2025 21:56:53 +0000
+Subject: [PATCH] Change release version in CMakeLists.txt to 2.0.2
+
+Apparently, there had been a mistake while creating the release.
+Changing release version in CMakeLists.txt to the correct one - 2.0.2.
+
+Signed-off-by: Kacper Ludwinski <kacper@ludwinski.dev>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1ff6c9a..40c8d91 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,7 +43,7 @@ include(CMakePackageConfigHelpers)
+ # Set the version information here
+ set(VERSION_INFO_MAJOR_VERSION 2) # increment major on api compatibility changes
+ set(VERSION_INFO_MINOR_VERSION 0) # increment minor on feature-level changes
+-set(VERSION_INFO_PATCH_VERSION 1) # increment patch for bug fixes and docs
++set(VERSION_INFO_PATCH_VERSION 2) # increment patch for bug fixes and docs
+ include(Version) # setup version info
+ 
+ ########################################################################
