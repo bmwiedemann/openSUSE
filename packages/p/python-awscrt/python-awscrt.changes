@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:06:07 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.32.1
+  * Add IoT Metrics Support by @xiazhvera in (#710)
+  * Manual PUBACK Control by @sbSteveK in (#721)
+  * Support crt logs in 'logging' module by @azkrishpy in (#728)
+  * Better checksum support by @DmitriyMusatkin in (#729)
+
+-------------------------------------------------------------------
 Thu Apr  9 11:53:10 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.32.0
