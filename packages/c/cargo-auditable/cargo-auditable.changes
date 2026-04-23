@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Mar 10 03:15:43 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.7.4~0:
+  * Bump version
+  * Update changelog
+  * Update comment
+  * Add bare linker tests for Windows
+  * re-add the lost wasm target
+  * Clearer job naming
+  * Fix linking on i686 MSVC when using bare linkers
+  * Split Windows job into three
+  * Drop bare linker tests from Windows for now
+  * Enable bare linker for all Windows targets
+  * Make bare linker test also configure a bare linker on i686-pc-windows-msvc
+  * Fix i686 MSVC linking by handling name mangling
+  * Also run tests for the i686-pc-windows-msvc target
+  * Upgrade cargo-dist to hopefully work around macos 13 deprecation
+  * Update changelog
+  * Revert "Deliberately inject faults to verify CI tests these paths"
+  * Make Cargo actually load the config file; it doesn't load the associated config when just passing Cargo.toml path
+  * Deliberately inject faults to verify CI tests these paths
+  * Bump time crate to get rid of vuln reports
+  * Add a test for bare linker configuration
+  * Fix bare linker argument passing on Apple platforms
+  * Bump version
+  * Update changelog
+  * Use POSIX `-u` instead of GNU `--undefined` for zig linker support
+
+-------------------------------------------------------------------
 Wed Feb 11 02:25:27 UTC 2026 - William Brown <william.brown@suse.com>
 
 - bsc#1257906 - CVE-2026-25727 - rfc 2822 format parsing may lead to stack exhaustion.
