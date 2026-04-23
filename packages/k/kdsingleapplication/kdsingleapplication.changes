@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 23 08:33:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.2.1
+  * Fix crash when message handler spins the event loop
+    resulting in double-free
+
+-------------------------------------------------------------------
 Tue May 27 06:19:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.2.0
