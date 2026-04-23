@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Apr 22 09:36:00 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.0:
+Features
+  * Search-provider trigger keyword (default otp): only desktop
+    search queries whose first whitespace-separated token equals
+    the keyword surface OTP results, so they're no longer drowned
+    under file/app/web runner output. Configurable in Settings →
+    Integration. Empty keyword falls back to legacy unfiltered
+    behaviour. Daemon restart required after a change.
+
+Security
+  * KRunner Match subtitle no longer leaks the live OTP code. Any
+    process on the session bus could previously poll Match and read
+    codes without user action; the code is still delivered via the
+    Run notification.
+  * Argon2id header validation: refuse v2 databases whose iter /
+    memcost / parallelism fall outside safe ARGON2ID_MIN/MAX_*
+    bounds (would otherwise enable memory-exhaustion or
+    KDF-weakening DoS on unlock).
+  * Core-dump suppression: prctl(PR_SET_DUMPABLE,0) +
+    RLIMIT_CORE=0 in init_libs() so a crash with secrets in memory
+    cannot leak them to disk.
+  * KDF byte-length fix: gcry_kdf_* was being passed
+    g_utf8_strlen (character count) instead of byte count,
+    weakening keys for non-ASCII passwords. Fixed in
+    db-common.c, common.c (AuthPro), aegis.c, twofas.c, and
+    freeotp.c. Existing v2 databases unlock via a transparent
+    retry path and are silently re-encrypted with the corrected
+    length on the next write.
+  * O_NOFOLLOW everywhere: new path_open_safe_regular_file()
+    helper (open(O_RDONLY | O_NOFOLLOW | O_CLOEXEC) + fstat
+    S_ISREG check) applied to all importers (Aegis, AuthPro,
+    2FAS, FreeOTP+) and to both database read sites. Subsequent
+    reads run through /proc/self/fd/<n> so the inode stays bound
+    across the whole operation, closing the symlink-swap TOCTOU
+    window.
+  * chmod 0600 on database backups so a permissive umask cannot
+    leave .bak files group/world-readable.
+  * otpauth:// URI length capped at 4 KB to prevent multi-
+    gigabyte allocations from malformed input.
+  * CLI hard-refuses --password-file with group/world-readable
+    permissions instead of merely warning; recommends chmod 600.
+  * GUI clears the system clipboard on SIGINT / SIGTERM / SIGHUP
+    via g_unix_signal_add and at shutdown.
+
+Fixes
+  * 2FAS importer: NULL-deref crashes on missing
+    servicesEncrypted, malformed colon-separated payload, and
+    under-sized AEAD ciphertext; secure-buffer leaks on decrypt
+    and tag-check failure; silent acceptance of unauthenticated
+    plaintext on tag mismatch (now properly rejected).
+  * 2FAS exporter: NULL-deref on missing algo / type fields.
+  * Aegis importer: NULL-deref when header.slots is missing or
+    the password slot lacks key_params.
+  * FreeOTP+ exporter: unconditional g_object_unref(NULL) after a
+    failed g_file_replace; correct byte length passed to write.
+  * AuthPro importer: leaked GFile / GFileInputStream on the
+    plain-backup path (no password).
+
+-------------------------------------------------------------------
 Tue Apr 21 12:54:49 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.4.2:
