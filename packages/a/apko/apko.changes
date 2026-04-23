@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 23 05:28:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.6:
+  * fs: strip special mode bits in OpenFile/WriteFile (#2188)
+- Update to version 1.2.5:
+  * fs: Scope all DirFS operations through os.Root (#2187)
+  * build(deps): bump step-security/harden-runner from 2.18.0 to
+    2.19.0 (#2184)
+  * build(deps): bump chainguard-dev/actions from 1.6.14 to 1.6.15
+    (#2182)
+
+-------------------------------------------------------------------
 Tue Apr 21 05:50:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.4:
