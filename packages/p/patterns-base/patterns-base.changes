@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 21 10:04:09 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- immutable_base: Pull in systemd-presets-branding-SLE_immutable
+  rather than systemd-presets-branding-SLE_transactional (package
+  has been renamed) 
+
+-------------------------------------------------------------------
 Thu Apr 16 09:04:22 UTC 2026 - Jiri Srain <jsrain@suse.com>
 
 - add hardware pattern used for SL-Micro equivalent images

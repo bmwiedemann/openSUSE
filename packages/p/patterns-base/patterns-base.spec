@@ -834,7 +834,7 @@ Requires:       dosfstools
 %else
 Requires:       iputils
 Requires:       supportutils
-Requires:       systemd-presets-branding-SLE_transactional
+Requires:       systemd-presets-branding-SLE_immutable
 Requires:       toolbox
 Requires:       toolbox-branding-SLE
 Requires:       group(wheel)
