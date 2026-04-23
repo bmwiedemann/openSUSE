@@ -2,9 +2,9 @@ Index: nss/lib/softoken/sftkmessage.c
 ===================================================================
 --- nss.orig/lib/softoken/sftkmessage.c
 +++ nss/lib/softoken/sftkmessage.c
-@@ -183,6 +183,37 @@ sftk_CryptMessage(CK_SESSION_HANDLE hSes
-     if (crv != CKR_OK)
-         return crv;
+@@ -215,6 +215,37 @@ sftk_CryptMessage(CK_SESSION_HANDLE hSes
+         }
+     }
  
 +    if (context->isFIPS && (contextType == SFTK_MESSAGE_ENCRYPT)) {
 +        if ((pParameter == NULL) || (ulParameterLen != sizeof(CK_GCM_MESSAGE_PARAMS))) {

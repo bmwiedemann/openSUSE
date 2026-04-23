@@ -3598,4 +3598,41 @@
                   (zero-length privateKey).</comment>
     <requestid>1343070</requestid>
   </revision>
+  <revision rev="238" vrev="1">
+    <srcmd5>9b63a8b329d0355296008684024acf39</srcmd5>
+    <version>3.122.1</version>
+    <time>1776956663</time>
+    <user>anag_factory</user>
+    <comment>- update to NSS 3.122.1
+   * bmo#2030135 - improve error handling in PK11_ImportPrivateKeyInfoAndReturnKey.
+   * bmo#2029752 - Improving the allocation of S/MIME DecryptSymKey.
+   * bmo#2029462 - store email on subject cache_entry in NSS trust domain.
+   * bmo#2029425 - Heap use-after-free in cert_VerifyCertChainOld via dangling certsList[] entry on NameConstraints violation.
+   * bmo#2029323 - Improve size calculations in CMS content buffering.
+   * bmo#2028001 - avoid integer overflow while escaping RFC822 Names.
+   * bmo#2027378 - Reject excessively large ASN.1 SEQUENCE OF in quickder.
+   * bmo#2027365 - Deep copy profile data in CERT_FindSMimeProfile.
+   * bmo#2027345 - Improve input validation in DSAU signature decoding.
+   * bmo#2026311 - avoid integer overflow in RSA_EMSAEncodePSS.
+   * bmo#2026156 - Add a maximum cert uncompressed len and tests.
+   * bmo#2026089 - Clarify extension negotiation mechanism for TLS Handshakes.
+   * bmo#1935995 - make ss-&gt;ssl3.hs.cookie an owned-copy of the cookie.
+
+- update to NSS 3.122
+  * bmo#2023209 - ensure permittedSubtrees don't match wildcards that could be outside the permitted tree.
+  * bmo#2023664 - run mach doc-lint from generate_release_doc.py.
+  * bmo#2023207 - Fix integer underflow in tls13_AEAD when ciphertext is shorter than tag.
+  * bmo#2020614 - tls13_CopyEchConfigs uses PR_LIST_TAIL instead of loop variable.
+  * bmo#2021911 - fix cipher spec count intermittent CI failures.
+  * bmo#2021913 - fix Mlkem768x25519ShareDamager intermittent CI failures.
+  * bmo#2023437 - lint the legacy documentation.
+  * bmo#2023437 - lint the NSS 3.112.3 release notes.
+  * bmo#2023437 - add a doc-lint CI job.
+  * bmo#2020224 - Add more useful coverage reports to CI and fail if new commit isn't tested.
+  * bmo#1472747 - wrong alert for malformed TLS 1.3 Finished.
+  * bmo#1916429 - Swap order of asserts and state check.
+  * bmo#2022149 - set correct value of unused curve parameters in tls13_HandleKeyShare.
+  * bmo#2017929 - GCM needs to check for various limits in FIPS mode.</comment>
+    <requestid>1348670</requestid>
+  </revision>
 </revisionlist>
