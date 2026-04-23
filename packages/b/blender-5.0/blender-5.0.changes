@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 21 14:57:05 UTC 2026 - Max Lin <mlin@suse.com>
+
+- Tweak HIP support bcond to not build HIP support on Leap 16.1:
+  Leap 16 does not have rocm package, HIP support was wrongly enabled
+  after %suse_version changed to 1610 from 1600
+
+-------------------------------------------------------------------
 Fri Feb  6 21:40:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add assert.patch to fix build failures
