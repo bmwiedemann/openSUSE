@@ -1,7 +1,7 @@
 #
 # spec file for package maven-script-interpreter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           maven-script-interpreter
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Maven Script Interpreter
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/shared/maven-script-interpreter/
-Source0:        https://dlcdn.apache.org/maven/shared/%{name}-%{version}-source-release.zip
+Source0:        https://archive.apache.org/dist/maven/shared/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
