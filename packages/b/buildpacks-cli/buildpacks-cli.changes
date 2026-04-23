@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 23 05:46:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.3:
+  * chore: add .grype.yaml to ignore unreachable docker daemon CVEs
+    (#2582)
+  * chore: upgrade Go to 1.25.9 to fix stdlib CVEs (#2581)
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 11 updates (#2580)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.17.2 to
+    5.18.0 (#2577)
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 5 updates (#2563)
+  * build(deps): bump github.com/moby/buildkit from 0.26.3 to
+    0.28.1 (#2553)
+  * build(deps): bump the go-dependencies group with 2 updates
+    (#2552)
+  * build(deps): bump the go-dependencies group with 4 updates
+    (#2549)
+
+-------------------------------------------------------------------
 Sun Mar 15 08:38:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.2:
