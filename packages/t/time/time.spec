@@ -2,6 +2,7 @@
 # spec file for package time
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +18,16 @@
 
 
 Name:           time
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Run Programs And Summarize System Resource Usage
 License:        GPL-3.0-or-later
 Group:          System/Base
 URL:            https://www.gnu.org/software/time/
 Source:         https://ftp.gnu.org/gnu/time/%{name}-%{version}.tar.gz
-Source1:        %{name}.rpmlintrc
 Source2:        https://ftp.gnu.org/gnu/time/%{name}-%{version}.tar.gz.sig
-Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=94790#/%{name}.keyring
-# PATCH-FIX-OPENSUSE disable-time-max-rss-test.patch bsc#1211092
-Patch1:         disable-time-max-rss-test.patch
-# build with gcc15
-Patch2:         time-gcc15.patch
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+# https://savannah.gnu.org/project/release-gpgkeys.php?group=time
+Source3:        %{name}.keyring
 
 %description
 The "time" command runs another program, then displays information
@@ -40,28 +35,19 @@ about the resources used by that program, collected by the system
 while the program was running.
 
 %prep
-%setup -q
-%ifarch ppc ppc64 ppc64le
-%patch -P 1 -p1
-%endif
-%patch -P 2 -p1
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
+# time.1 is part of man-pages (bnc#878057)
 install -d %{buildroot}%{_mandir}/man1
 
 %check
-make %{?_smp_mflags} check
-
-%post
-%install_info --entry="* time: (time). summarizing used system resources" --info-dir="%{_infodir}" "%{_infodir}/time.info.gz"
-
-%postun
-%install_info_delete --info-dir="%{_infodir}" "%{_infodir}/time.info.gz"
+%make_build check
 
 %files
 %license COPYING

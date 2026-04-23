@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 16 19:40:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.10
+  * now opens the file specified by --output with its close-on-exec
+    flag set. Previously the file descriptor would be leaked into
+    the child process.
+  * no longer appends the program name to the output when the
+    format string contains a trailing backslash
+  * now uses the more portable waitpid and getrusage system calls
+    instead of wait3.
+  * help output correctness
+- drop disable-time-max-rss-test.patch
+- drop time-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Apr 30 13:17:22 UTC 2025 - pgajdos@suse.com
 
 - fix build with gcc15
