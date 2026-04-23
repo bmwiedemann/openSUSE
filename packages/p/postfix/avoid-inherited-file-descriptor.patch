@@ -1,0 +1,14 @@
+--- src/util/slmdb.c.orig	2026-04-21 17:40:10.113564729 +0200
++++ src/util/slmdb.c	2026-04-21 17:45:12.880250346 +0200
+@@ -929,6 +929,11 @@ int     slmdb_open(SLMDB *slmdb, const c
+     slmdb->cb_context = 0;
+     slmdb->txn = txn;
+ 
++    /*
++     * Do not let open file descriptor after fork/exec
++     */
++    int flags = fcntl(db_fd, F_GETFD);
++    fcntl(db_fd, F_SETFD, flags | FD_CLOEXEC); 
+     if ((status = slmdb_prepare(slmdb)) != 0)
+ 	mdb_env_close(env);
+ 

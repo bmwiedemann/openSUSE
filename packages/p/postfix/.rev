@@ -2692,4 +2692,18 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>1338375</requestid>
   </revision>
+  <revision rev="270" vrev="2">
+    <srcmd5>f600e4fbf7be53570005ca3965a87f03</srcmd5>
+    <version>3.11.1</version>
+    <time>1776956652</time>
+    <user>anag_factory</user>
+    <comment>- Yet another AVC denial from procmail ... (bsc#1261933)
+  Set FD_CLOEXEC on the file descriptor of the db file
+  o avoid-inherited-file-descriptor.patch
+
+- Yet another AVC denial from procmail ... (bsc#1261933)
+  Set FD_CLOEXEC on the file descriptor of the db file
+  o avoid-inherited-file-descriptor.patch</comment>
+    <requestid>1348605</requestid>
+  </revision>
 </revisionlist>

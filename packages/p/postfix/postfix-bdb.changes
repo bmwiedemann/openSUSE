@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 21 16:30:07 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Yet another AVC denial from procmail ... (bsc#1261933)
+  Set FD_CLOEXEC on the file descriptor of the db file
+  o avoid-inherited-file-descriptor.patch
+
+-------------------------------------------------------------------
 Wed Mar 11 15:50:36 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.11.1

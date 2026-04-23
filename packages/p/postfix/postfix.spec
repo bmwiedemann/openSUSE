@@ -67,6 +67,7 @@ Patch8:         %{name}-vda-v14-3.0.3.patch
 Patch9:         fix-postfix-script.patch
 Patch10:        %{name}-avoid-infinit-loop-if-no-permission.patch
 Patch11:        set-default-db-type.patch
+Patch12:        avoid-inherited-file-descriptor.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  diffutils
@@ -233,6 +234,8 @@ export CCARGS="${CCARGS} -DNO_DB"
 export PIE=-pie
 # using SHLIB_RPATH to specify unrelated linker flags, because LDFLAGS is
 # ignored
+export default_database_type=lmdb
+export default_cache_db_type=lmdb
 %make_build makefiles pie=yes shared=yes dynamicmaps=yes \
   daemon_directory=%{pf_daemon_directory} \
   shlib_directory=%{_prefix}/lib/%{name} \

@@ -79,6 +79,7 @@ Patch7:         postfix-ssl-release-buffers.patch
 Patch8:         postfix-vda-v14-3.0.3.patch
 Patch9:         fix-postfix-script.patch
 Patch10:        postfix-avoid-infinit-loop-if-no-permission.patch
+Patch11:        avoid-inherited-file-descriptor.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
