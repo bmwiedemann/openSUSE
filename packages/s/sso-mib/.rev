@@ -24,4 +24,14 @@ Requires libjwt as a build dependency which will also be sent.</comment>
   in the library have been fixed.</comment>
     <requestid>1340875</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>040e95736b0a026af59f50a532c12b11</srcmd5>
+    <version>0.8.1</version>
+    <time>1776956985</time>
+    <user>anag_factory</user>
+    <comment>- Import version 0.8.1
+  This bugfix release hardens the codebase against various kinds of
+  errors</comment>
+    <requestid>1348935</requestid>
+  </revision>
 </revisionlist>
