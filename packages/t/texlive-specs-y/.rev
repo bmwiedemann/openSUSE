@@ -528,4 +528,12 @@
     <comment>Update to TeXLive 2026</comment>
     <requestid>1344155</requestid>
   </revision>
+  <revision rev="57" vrev="60">
+    <srcmd5>59830eb8f013fe5edcf2d1eb7a4723f4</srcmd5>
+    <version>unknown</version>
+    <time>1776956718</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1348738</requestid>
+  </revision>
 </revisionlist>
