@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 10 16:57:59 UTC 2026 - Michael Matz <matz@suse.com>
+
+- Migrate from update-alternatives to libalternatives (jsc#PED-15667).
+- Update %suse_version > 1600 checks (jsc#PED-15792).
+- Split new libsframe2 package from binutils (shared lib policy).
+- Make (currently inactive) gold subpackage no require binutils
+  in a specific version.
+- Add binutils-workaround-premature-libsframe-uninst.diff for
+  this to temporarily avoid 99-check-remove-rpms getting in the way.
+- Add binutils-fix-c23.diff to fix a compile error with new glibc.
+
+-------------------------------------------------------------------
 Mon Nov  3 14:06:37 UTC 2025 - Michael Matz <matz@suse.com>
 
 - Update to current 2.45 branch at 94cb1c075 to include fix

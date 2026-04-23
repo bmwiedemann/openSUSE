@@ -67,9 +67,10 @@ BuildRequires:  libzstd-devel
 Version:        2.45
 Release:        0
 
-# disable libalternatives for now until it's changed to not
-# introduce cmake/cunit-tests into the bootstrap cycle
-%if 0 && 0%{?suse_version} > 1500
+# for SLE16 and beyond use libalternatives; the update from update-alternatives
+# is hairy and complex due to unrelated packages that also want to provide
+# choices for /usr/bin/ld
+%if 0%{?suse_version} >= 1600
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
@@ -164,11 +165,27 @@ Patch74:        pr33456-2.diff
 Patch75:        pr33457.diff
 Patch76:        pr33499.diff
 Patch77:        pr33502.diff
+Patch78:        binutils-fix-c23.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
 Patch93:        cross-avr-size.patch
+Patch100:       binutils-workaround-premature-libsframe-uninst.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# Hack.  See binutils-workaround-premature-libsframe-uninst.diff
+# until libsframe2, the package, is in the distro we need to
+# link all internal components of binutils statically against libsframe.
+# But then there's no reason for rpm to generate a dependency against
+# libsframe.so.2, but we _need_ that dependency to exist once we want
+# to link dynamically again.  So, force it for now.  Remove this when
+# the above patch is removed.
+Requires:       libsframe2
 %if %{with libalternatives}
+# For the update path from pre-libalternatives to libalternatives
+# we need to remove the old traces, so we need it in our pre-scripts
+# This is the magic incantation to make zypp load this at the right time
+OrderWithRequires(pre): update-alternatives
+Suggests:       update-alternatives
+BuildRequires:  alts
 Requires:       alts
 %else
 PreReq:         update-alternatives
@@ -183,7 +200,11 @@ to compile a program or kernel.
 Summary:        The gold linker
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
-Requires:       binutils = %{version}-%{release}
+# we once required binutils=version-release here, but that seems
+# overly strict; requiring binutils itself is not required for pure
+# functionality of gold, but is for packaging reasons, the update-alternatives
+# update to libalternatives will be easier with that
+Requires:       binutils
 %if %{with libalternatives}
 Requires:       alts
 %else
@@ -233,6 +254,16 @@ Group:          Development/Tools/Building
 %description -n libctf-nobfd0
 This package includes the libctf-nobfd shared library.
 The Compact C Type Format (CTF) is a way of representing information about a binary program
+
+%package -n libsframe2
+Summary:        SFrame stack trace format library (runtime)
+License:        GFDL-1.3-only AND GPL-3.0-or-later
+Group:          Development/Tools/Building
+
+%description -n libsframe2
+This package includes the libsframe shared library.
+The SFrame format is a compact way to represent information
+necessary to generate stack traces.
 
 %package -n gprofng
 Summary:        The next generation profiling tool for Linux
@@ -306,12 +337,14 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch -P 75 -p1
 %patch -P 76 -p1
 %patch -P 77 -p1
+%patch -P 78 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 %patch -P 90
 %patch -P 92
 %patch -P 93 -p1
 %endif
+%patch -P 100 -p1
 #
 # test_vanilla
 %endif
@@ -330,7 +363,7 @@ echo "==== any FAIL: lines from here until the %check section are irrelevant ===
 # gcc15 and up default to c23, these older binutils would need patches
 # for that.  As an impeding version update fixes that as well, simply
 # override the compiler instead of bothering with backports
-%if %{suse_version} > 1600
+%if %{suse_version} >= 1699
 CC="gcc -std=gnu17"
 export CC
 %endif
@@ -427,7 +460,7 @@ cd build-dir
 
 # FIXME: enable in future, when at least llvm15,llvm17,golang are
 # fixed to accept zstd
-#%if %{suse_version} > 1600
+#%if %{suse_version} >= 1699
 #  --enable-default-compressed-debug-sections-algorithm=zstd \
 #%endif
 
@@ -567,9 +600,11 @@ ln -s "%_sysconfdir/alternatives/ld" "%{buildroot}/%_bindir/ld";
 %else
 ln -s %{_bindir}/alts "%{buildroot}/%_bindir/ld";
 mkdir -p %{buildroot}%{_datadir}/libalternatives/ld;
+%ifarch %gold_archs
 cat > %{buildroot}%{_datadir}/libalternatives/ld/1.conf <<EOF
 binary=%{_bindir}/ld.gold
 EOF
+%endif
 cat > %{buildroot}%{_datadir}/libalternatives/ld/2.conf <<EOF
 binary=%{_bindir}/ld.bfd
 EOF
@@ -671,19 +706,18 @@ rm -f %{buildroot}%{_prefix}/bin/*-c++filt
 
 %post -n libctf0 -p /sbin/ldconfig
 %post -n libctf-nobfd0 -p /sbin/ldconfig
+%post -n libsframe2 -p /sbin/ldconfig
 
 %if %{with libalternatives}
 %pre
-# removing old update-alternatives entries
-if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
-	"%_sbindir/update-alternatives" --remove ld "%_bindir/ld.bfd";
-fi;
-
-%pre gold
-# removing old update-alternatives entries
-if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
-	"%_sbindir/update-alternatives" --remove ld "%_bindir/ld.gold";
-fi;
+# remove old update-alternatives entries, and do that for _all_ of
+# them, even those not belonging to us, otherwise a /usr/bin/ld symlink
+# (to /etc/alternatives/ld) would continue to exist that would conflict
+# with our /usr/bin/ld symlink (to 'alts').  This is what makes binutils
+# the master package for /usr/bin/ld.
+if [ $1 -eq 2 ] && [ -f %{_sbindir}/update-alternatives ] && [ -f %{_sysconfdir}/alternatives/ld ] ; then
+  "%_sbindir/update-alternatives" --remove-all ld
+fi
 %endif
 
 %preun
@@ -707,6 +741,7 @@ fi;
 
 %postun -n libctf0 -p /sbin/ldconfig
 %postun -n libctf-nobfd0 -p /sbin/ldconfig
+%postun -n libsframe2 -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 %endif
@@ -718,7 +753,6 @@ fi;
 %{_prefix}/%{HOST}/bin/*
 %{_prefix}/%{HOST}/lib/ldscripts
 %{_libdir}/ldscripts
-%{_libdir}/libsframe.so.*
 %if %build_gprofng
 %{_libdir}/libgprofng.so.*
 %endif
@@ -776,6 +810,10 @@ fi;
 %files -n libctf-nobfd0
 %defattr(-,root,root)
 %{_libdir}/libctf-nobfd.so.*
+
+%files -n libsframe2
+%defattr(-,root,root)
+%{_libdir}/libsframe.so.*
 
 %if %{suse_version} > 1500
 %ifarch %ix86 x86_64 %x86_64 aarch64

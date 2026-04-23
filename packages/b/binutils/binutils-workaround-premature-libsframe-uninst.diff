@@ -1,0 +1,179 @@
+Hack alert related to the introduction of the libsframe2 package!
+
+Normally readelf is linked dynamically against libsframe.so.2, this
+makes it link statically for the following reason:
+
+after rpmbuild builds the package we run a couple checks, among them
+we install the just built rpms, and then remove them again
+(in 99-check-remove-rpms).  But we don't remove packages that were
+already installed before.  When we split libsframe2 from binutils
+the following situation occurs in the build system:
+
+1) binutils from distro is installed, no libsframe2 exists yet
+2) ... package builds ...
+3) binutils and libsframe2 (just built) are installed
+4) libsframe2 is removed, binutils is _not_ removed (it was
+   installed before building already)
+
+The readelf that's now in the buildroot (from the new binutils packages)
+links against libsframe.so.2 dynamic, but that one was removed in step 4
+above!  readelf can't be executed and rpmlint completely falls over
+failing the build.
+
+So, as temporary measure, we link statically.  The removal of the
+libsframe2 package then doesn't matter.  Once we get this in the distro
+we can switch back to linking dynamically because then the libsframe2
+package will have been installed before build as well (like binutils)
+and will _not_ be removed by the post-build-checks.
+
+
+Index: binutils-2.45/binutils/Makefile.am
+===================================================================
+--- binutils-2.45.orig/binutils/Makefile.am	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/binutils/Makefile.am	2026-03-12 15:02:18.419018064 +0100
+@@ -164,7 +164,7 @@ BULIBS = bucomm.c version.c filemode.c
+ # Code shared by the ELF related programs.
+ ELFLIBS = elfcomm.c
+ 
+-BFDLIB = ../bfd/libbfd.la
++BFDLIB = ../bfd/libbfd.la ../libsframe/.libs/libsframe.a
+ 
+ OPCODES = ../opcodes/libopcodes.la
+ 
+@@ -176,7 +176,8 @@ LIBCTF =
+ LIBCTF_NOBFD =
+ endif
+ 
+-LIBSFRAME = ../libsframe/libsframe.la
++#LIBSFRAME = ../libsframe/libsframe.la
++LIBSFRAME = ../libsframe/.libs/libsframe.a
+ 
+ LIBIBERTY = ../libiberty/libiberty.a
+ 
+Index: binutils-2.45/binutils/Makefile.in
+===================================================================
+--- binutils-2.45.orig/binutils/Makefile.in	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/binutils/Makefile.in	2026-03-12 15:15:04.438033508 +0100
+@@ -740,13 +740,14 @@ BULIBS = bucomm.c version.c filemode.c
+ 
+ # Code shared by the ELF related programs.
+ ELFLIBS = elfcomm.c
+-BFDLIB = ../bfd/libbfd.la
++BFDLIB = ../bfd/libbfd.la ../libsframe/.libs/libsframe.a
+ OPCODES = ../opcodes/libopcodes.la
+ @ENABLE_LIBCTF_FALSE@LIBCTF = 
+ @ENABLE_LIBCTF_TRUE@LIBCTF = ../libctf/libctf.la
+ @ENABLE_LIBCTF_FALSE@LIBCTF_NOBFD = 
+ @ENABLE_LIBCTF_TRUE@LIBCTF_NOBFD = ../libctf/libctf-nobfd.la
+-LIBSFRAME = ../libsframe/libsframe.la
++#LIBSFRAME = ../libsframe/libsframe.la
++LIBSFRAME = ../libsframe/.libs/libsframe.a
+ LIBIBERTY = ../libiberty/libiberty.a
+ POTFILES = $(CFILES) $(DEBUG_SRCS) $(HFILES)
+ EXPECT = expect
+Index: binutils-2.45/bfd/Makefile.am
+===================================================================
+--- binutils-2.45.orig/bfd/Makefile.am	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/bfd/Makefile.am	2026-03-12 15:41:18.368949368 +0100
+@@ -785,7 +785,8 @@ ofiles: stamp-ofiles ; @true
+ libbfd_la_SOURCES = $(BFD32_LIBS_CFILES)
+ EXTRA_libbfd_la_SOURCES = $(CFILES)
+ libbfd_la_DEPENDENCIES = $(OFILES) ofiles ../libsframe/libsframe.la
+-libbfd_la_LIBADD = `cat ofiles` @SHARED_LIBADD@ $(LIBDL) $(ZLIB) $(ZSTD_LIBS) ../libsframe/libsframe.la
++#libbfd_la_LIBADD = `cat ofiles` @SHARED_LIBADD@ $(LIBDL) $(ZLIB) $(ZSTD_LIBS) ../libsframe/libsframe.la
++libbfd_la_LIBADD = `cat ofiles` @SHARED_LIBADD@ $(LIBDL) $(ZLIB) $(ZSTD_LIBS) ../libsframe/.libs/libsframe.a
+ libbfd_la_LDFLAGS += -release `cat libtool-soversion` @SHARED_LDFLAGS@
+ 
+ # This file holds an array associating configuration triplets and
+Index: binutils-2.45/bfd/Makefile.in
+===================================================================
+--- binutils-2.45.orig/bfd/Makefile.in	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/bfd/Makefile.in	2026-03-12 15:41:25.130065023 +0100
+@@ -1212,7 +1212,8 @@ OFILES = $(BFD_BACKENDS) $(BFD_MACHINES)
+ libbfd_la_SOURCES = $(BFD32_LIBS_CFILES)
+ EXTRA_libbfd_la_SOURCES = $(CFILES)
+ libbfd_la_DEPENDENCIES = $(OFILES) ofiles ../libsframe/libsframe.la
+-libbfd_la_LIBADD = `cat ofiles` @SHARED_LIBADD@ $(LIBDL) $(ZLIB) $(ZSTD_LIBS) ../libsframe/libsframe.la
++#libbfd_la_LIBADD = `cat ofiles` @SHARED_LIBADD@ $(LIBDL) $(ZLIB) $(ZSTD_LIBS) ../libsframe/libsframe.la
++libbfd_la_LIBADD = `cat ofiles` @SHARED_LIBADD@ $(LIBDL) $(ZLIB) $(ZSTD_LIBS) ../libsframe/.libs/libsframe.a
+ BFD_H_FILES = bfd-in.h libbfd.c hash.c section.c syms.c \
+ 	archive.c archures.c bfd.c bfdio.c \
+ 	cache.c compress.c corefile.c format.c linker.c opncls.c \
+Index: binutils-2.45/gas/Makefile.am
+===================================================================
+--- binutils-2.45.orig/gas/Makefile.am	2026-03-12 15:53:57.773938766 +0100
++++ binutils-2.45/gas/Makefile.am	2026-03-12 15:54:10.174150854 +0100
+@@ -408,7 +408,7 @@ AM_CPPFLAGS = -I. -I$(srcdir) -I../bfd -
+ # How to link with both our special library facilities
+ # and the system's installed libraries.
+ 
+-GASLIBS = @OPCODES_LIB@ ../bfd/libbfd.la ../libiberty/libiberty.a
++GASLIBS = @OPCODES_LIB@ ../bfd/libbfd.la ../libsframe/libsframe.la ../libiberty/libiberty.a
+ 
+ # Files to be copied away after each stage in building.
+ STAGESTUFF = *.@OBJEXT@ $(noinst_PROGRAMS)
+Index: binutils-2.45/gas/Makefile.in
+===================================================================
+--- binutils-2.45.orig/gas/Makefile.in	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gas/Makefile.in	2026-03-12 15:54:23.734382812 +0100
+@@ -897,7 +897,7 @@ AM_CPPFLAGS = -I. -I$(srcdir) -I../bfd -
+ 
+ # How to link with both our special library facilities
+ # and the system's installed libraries.
+-GASLIBS = @OPCODES_LIB@ ../bfd/libbfd.la ../libiberty/libiberty.a
++GASLIBS = @OPCODES_LIB@ ../bfd/libbfd.la ../libsframe/libsframe.la ../libiberty/libiberty.a
+ 
+ # Files to be copied away after each stage in building.
+ STAGESTUFF = *.@OBJEXT@ $(noinst_PROGRAMS)
+Index: binutils-2.45/gprof/Makefile.am
+===================================================================
+--- binutils-2.45.orig/gprof/Makefile.am	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gprof/Makefile.am	2026-03-12 15:55:21.326367850 +0100
+@@ -46,7 +46,7 @@ sources = basic_blocks.c call_graph.c cg
+ 	i386.c alpha.c vax.c sparc.c mips.c aarch64.c
+ gprof_SOURCES = $(sources) flat_bl.c bsd_callg_bl.c fsf_callg_bl.c
+ gprof_DEPENDENCIES = ../bfd/libbfd.la ../libiberty/libiberty.a $(LIBINTL_DEP)
+-gprof_LDADD = ../bfd/libbfd.la ../libiberty/libiberty.a $(LIBINTL)
++gprof_LDADD = ../bfd/libbfd.la ../libsframe/libsframe.la ../libiberty/libiberty.a $(LIBINTL)
+ 
+ noinst_HEADERS = \
+ 	basic_blocks.h call_graph.h cg_arcs.h cg_dfn.h cg_print.h \
+Index: binutils-2.45/gprof/Makefile.in
+===================================================================
+--- binutils-2.45.orig/gprof/Makefile.in	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/gprof/Makefile.in	2026-03-12 15:55:33.751580377 +0100
+@@ -469,7 +469,7 @@ sources = basic_blocks.c call_graph.c cg
+ 
+ gprof_SOURCES = $(sources) flat_bl.c bsd_callg_bl.c fsf_callg_bl.c
+ gprof_DEPENDENCIES = ../bfd/libbfd.la ../libiberty/libiberty.a $(LIBINTL_DEP)
+-gprof_LDADD = ../bfd/libbfd.la ../libiberty/libiberty.a $(LIBINTL)
++gprof_LDADD = ../bfd/libbfd.la ../libsframe/libsframe.la ../libiberty/libiberty.a $(LIBINTL)
+ noinst_HEADERS = \
+ 	basic_blocks.h call_graph.h cg_arcs.h cg_dfn.h cg_print.h \
+ 	corefile.h gmon.h gmon_io.h gmon_out.h gprof.h hertz.h hist.h \
+Index: binutils-2.45/ld/Makefile.am
+===================================================================
+--- binutils-2.45.orig/ld/Makefile.am	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/ld/Makefile.am	2026-03-12 15:54:47.614791250 +0100
+@@ -142,7 +142,7 @@ AM_CPPFLAGS = -I. -I$(srcdir) -I../bfd -
+ 	@INCINTL@ $(HDEFINES) $(CFLAGS) @LARGEFILE_CPPFLAGS@ \
+ 	-DLOCALEDIR="\"$(datadir)/locale\""
+ 
+-BFDLIB = ../bfd/libbfd.la
++BFDLIB = ../bfd/libbfd.la ../libsframe/libsframe.la
+ LIBIBERTY = ../libiberty/libiberty.a
+ if ENABLE_LIBCTF
+ LIBCTF = ../libctf/libctf.la
+Index: binutils-2.45/ld/Makefile.in
+===================================================================
+--- binutils-2.45.orig/ld/Makefile.in	2025-07-27 01:00:00.000000000 +0200
++++ binutils-2.45/ld/Makefile.in	2026-03-12 15:55:00.920018798 +0100
+@@ -656,7 +656,7 @@ AM_CPPFLAGS = -I. -I$(srcdir) -I../bfd -
+ 	@INCINTL@ $(HDEFINES) $(CFLAGS) @LARGEFILE_CPPFLAGS@ \
+ 	-DLOCALEDIR="\"$(datadir)/locale\""
+ 
+-BFDLIB = ../bfd/libbfd.la
++BFDLIB = ../bfd/libbfd.la ../libsframe/libsframe.la
+ LIBIBERTY = ../libiberty/libiberty.a
+ @ENABLE_LIBCTF_FALSE@LIBCTF = 
+ @ENABLE_LIBCTF_TRUE@LIBCTF = ../libctf/libctf.la

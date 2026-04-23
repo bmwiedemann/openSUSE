@@ -2475,4 +2475,22 @@ continue building gold in Factory)
   * bsc#1236632 aka CVE-2025-0840 aka PR32560</comment>
     <requestid>1316943</requestid>
   </revision>
+  <revision rev="184" vrev="3">
+    <srcmd5>9e1b4d3db796fda2f043696f172b05aa</srcmd5>
+    <version>2.45</version>
+    <time>1776956735</time>
+    <user>anag_factory</user>
+    <comment>The only difference to 1346867 is that that one had profiling
+and testsuite accidentally disabled :-/
+
+- Migrate from update-alternatives to libalternatives (jsc#PED-15667).
+- Update %suse_version &gt; 1600 checks (jsc#PED-15792).
+- Split new libsframe2 package from binutils (shared lib policy).
+- Make (currently inactive) gold subpackage no require binutils
+  in a specific version.
+- Add binutils-workaround-premature-libsframe-uninst.diff for
+  this to temporarily avoid 99-check-remove-rpms getting in the way.
+- Add binutils-fix-c23.diff to fix a compile error with new glibc.</comment>
+    <requestid>1347293</requestid>
+  </revision>
 </revisionlist>
