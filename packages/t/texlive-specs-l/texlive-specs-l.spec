@@ -21,7 +21,7 @@
 %define texlive_version  2026
 %define texlive_previous 2025
 %define texlive_release  20260301
-%define texlive_noarch   222
+%define texlive_noarch   226
 %define biber_version    2.21
 
 #!BuildIgnore:          texlive
@@ -22894,8 +22894,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:48} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:49} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:50} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:51} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:52} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:51} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz --strip-components=1 -xf %{S:52} --exclude=tlpobj -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/hyperxmp/hyperxmp-add-bytecount.pl
     do
