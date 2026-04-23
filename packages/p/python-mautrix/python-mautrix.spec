@@ -37,6 +37,8 @@ Source:         https://github.com/mautrix/python/archive/refs/tags/v%{version}.
 # Patch0:         no-immutable.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp >= 3
@@ -75,10 +77,10 @@ A Python 3 asyncio Matrix framework.
 %autosetup -p1 -n python-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
