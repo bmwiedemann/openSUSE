@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr 22 01:24:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.30.0:
+  * Update to PyO3 0.27.2
+  * Bump actions/download-artifact from 5 to 6
+  * Bump github/codeql-action from 4.30.9 to 4.31.0
+  * Bump actions/upload-artifact from 4 to 5
+  * Bump astral-sh/setup-uv from 7.1.1 to 7.1.2
+  * Bump github/codeql-action from 4.31.0 to 4.31.2
+  * Bump softprops/action-gh-release from 2.4.1 to 2.4.2
+  * Bump rpds from 1.1.2 to 1.2.0
+  * Bump PyO3 to 0.27
+- Drop tar_scm use and switch to the PyPi sdist.
+- Ship the LICENSE and the README in the built packages.
+- Run the testsuite.
+
+-------------------------------------------------------------------
 Wed Sep 10 12:53:51 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 0.27.1:

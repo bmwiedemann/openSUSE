@@ -70,4 +70,24 @@
     <comment></comment>
     <requestid>1303673</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c9b9f207faa14dfbd76913193c9085ba</srcmd5>
+    <version>0.30.0</version>
+    <time>1776956661</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.30.0:
+  * Update to PyO3 0.27.2
+  * Bump actions/download-artifact from 5 to 6
+  * Bump github/codeql-action from 4.30.9 to 4.31.0
+  * Bump actions/upload-artifact from 4 to 5
+  * Bump astral-sh/setup-uv from 7.1.1 to 7.1.2
+  * Bump github/codeql-action from 4.31.0 to 4.31.2
+  * Bump softprops/action-gh-release from 2.4.1 to 2.4.2
+  * Bump rpds from 1.1.2 to 1.2.0
+  * Bump PyO3 to 0.27
+- Drop tar_scm use and switch to the PyPi sdist.
+- Ship the LICENSE and the README in the built packages.
+- Run the testsuite.</comment>
+    <requestid>1348662</requestid>
+  </revision>
 </revisionlist>
