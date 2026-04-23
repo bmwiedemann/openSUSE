@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Tue Apr 21 10:57:35 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1069
+- add support for XBOOTLDR partition type (jsc#PED-16142)
+- 4.5.314
+
+--------------------------------------------------------------------
 Fri Apr 17 08:12:54 UTC 2026 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1068
