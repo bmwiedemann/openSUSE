@@ -36,7 +36,7 @@
 
 %global patch_level p0
 Name:           ruby4.0%{psuffix}
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 %global pkg_version %{version}
 # make the exported API version explicit
@@ -392,7 +392,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
   for man in %{buildroot}%{_mandir}/man1/*%{rb_binary_suffix}.1* ; do
     # yes really hard links
     # TODO: this is dangerous as we cant anc
-    ln $man ${man%%%{rb_binary_suffix}.1}.1
+    ln $man ${man//%{rb_binary_suffix}/}
   done
   ln -s lib%{rb_soname}.so %{buildroot}%{_libdir}/libruby.so
 %endif
@@ -492,7 +492,7 @@ make test test-tool test-all V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_
 %{_bindir}/typeprof*
 %{_mandir}/man1/erb*.1%{?ext_man}
 %{_mandir}/man1/ruby*.1%{?ext_man}
-%doc ChangeLog KNOWNBUGS.rb NEWS.md README.EXT README.EXT.ja README.ja.md README.md CONTRIBUTING.md
+%doc KNOWNBUGS.rb NEWS.md README.EXT README.EXT.ja README.ja.md README.md CONTRIBUTING.md
 %license COPYING COPYING.ja GPL LEGAL BSDL
 %{_rpmmacrodir}/macros.suse-ruby4.0*
 
