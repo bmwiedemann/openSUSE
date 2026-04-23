@@ -1,7 +1,8 @@
 #
 # spec file for package mpc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +17,16 @@
 #
 
 
+%define sover 3
 Name:           mpc
-Version:        1.3.1
+Version:        1.4.1
 Release:        0
-Summary:        multiple-precision complex shared library
+Summary:        Multiple-precision complex shared library
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.multiprecision.org/mpc/
-Source0:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz
-Source1:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz.sig
+URL:            https://www.multiprecision.org/mpc/
+Source0:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  pkgconfig
@@ -36,11 +38,11 @@ MPC is a C library for the arithmetic of complex numbers with
 arbitrarily high precision and correct rounding of the result. It is
 built upon and follows the same principles as MPFR.
 
-%package -n libmpc3
+%package -n libmpc%{sover}
 Summary:        MPC multiple-precision complex shared library
 Group:          Development/Libraries/C and C++
 
-%description -n libmpc3
+%description -n libmpc%{sover}
 MPC is a C library for the arithmetic of complex numbers with
 arbitrarily high precision and correct rounding of the result. It is
 built upon and follows the same principles as MPFR.
@@ -48,21 +50,19 @@ built upon and follows the same principles as MPFR.
 %package devel
 Summary:        MPC multiple-precision complex library development files
 Group:          Development/Libraries/C and C++
-Requires:       libmpc3 = %{version}
-Requires:       pkgconfig(gmp) >= 5.0.0
-Requires:       pkgconfig(mpfr) >= 4.1.0
-Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires:       libmpc%{sover} = %{version}
 
 %description devel
 MPC multiple-precision complex library development files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%configure
+%configure \
+	--disable-static \
+	%{nil}
 %make_build
 
 %check
@@ -72,28 +72,18 @@ MPC multiple-precision complex library development files.
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libmpc3 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libmpc%{sover}
 
-%post devel
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%postun -n libmpc3 -p /sbin/ldconfig
-
-%preun devel
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%files -n libmpc3
-%defattr(-,root,root)
+%files -n libmpc%{sover}
 %license COPYING.LESSER
-%{_libdir}/libmpc.so.3*
+%{_libdir}/libmpc.so.%{sover}{,.*}
 
 %files devel
-%defattr(-,root,root)
 %license COPYING.LESSER
 %doc AUTHORS NEWS
 %{_infodir}/mpc.info%{?ext_info}
-%{_libdir}/libmpc.a
 %{_libdir}/libmpc.so
 %{_includedir}/mpc.h
+%{_libdir}/pkgconfig/mpc.pc
 
 %changelog
