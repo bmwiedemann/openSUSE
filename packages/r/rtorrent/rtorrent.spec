@@ -17,7 +17,7 @@
 
 
 Name:           rtorrent
-Version:        0.16.9
+Version:        0.16.10
 Release:        0
 Summary:        Console-based BitTorrent client
 License:        SUSE-GPL-2.0+-with-openssl-exception

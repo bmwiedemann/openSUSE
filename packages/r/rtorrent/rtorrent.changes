@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:35:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.10
+  * Added support for gzip accepted_encoding in scgi headers.
+  * Added special syntax to config files to enable log categories
+    early.
+
+-------------------------------------------------------------------
 Thu Apr  9 13:57:46 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.9
