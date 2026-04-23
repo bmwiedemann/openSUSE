@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:23:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.2.0
+  General:
+  * Fixed restoring integer configuration values
+  * Updated QuickJS to version 0.11.0
+  Language:
+  * The `SubProject` item can now override properties of a loaded
+    `Product` item
+  * Module properties provided via the command line are now
+    considered when evaluating the respective module's condition
+  C/C++ support:
+  * Added an `ObjectLibrary` item
+  * Added a `CppLibrary` convenience item
+  * Added support for C++26
+  * Added a `cpp.rpathLinkDirs` property
+
+-------------------------------------------------------------------
+Thu Feb 12 09:47:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.1.2
+  * cmake: fix build with Qt 6.10
+- Drop 0001-Fix-build-with-Qt-6.10.patch
+
+-------------------------------------------------------------------
 Sun Nov 16 09:27:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.1.1
