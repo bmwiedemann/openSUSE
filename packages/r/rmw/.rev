@@ -112,4 +112,21 @@
     <comment></comment>
     <requestid>1317013</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ae66b28c42254338f6fcc390861df6fa</srcmd5>
+    <version>0.9.5</version>
+    <time>1775743763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345273</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d57b7e676148371b46b8bff09c286f20</srcmd5>
+    <version>0.9.5</version>
+    <time>1776964895</time>
+    <user>anag_factory</user>
+    <comment>- Use system-installed canfigger instead of the bundled copy
+</comment>
+    <requestid>1348969</requestid>
+  </revision>
 </revisionlist>

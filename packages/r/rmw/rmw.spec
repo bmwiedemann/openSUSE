@@ -1,7 +1,7 @@
 #
 # spec file for package rmw
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           rmw
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        Safe-remove utility for the command line
 License:        GPL-3.0-or-later
@@ -27,6 +27,7 @@ URL:            https://theimpossibleastronaut.github.io/rmw-website
 Source:         https://github.com/theimpossibleastronaut/rmw/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  pkgconfig(canfigger)
 BuildRequires:  pkgconfig(ncurses)
 
 %description
@@ -54,19 +55,19 @@ after x number of days.
 %install
 %meson_install
 
-rm %{buildroot}%{_docdir}/%{name}/COPYING
-%find_lang %{name}
-
 %check
 %meson_test
 
+rm %{buildroot}%{_docdir}/%{name}/COPYING
+%find_lang %{name}
+
+%files lang -f %{name}.lang
+
 %files
-%license COPYING
-%{_bindir}/*
+%{_bindir}/rmw
 %{_docdir}/%{name}
 %{_mandir}/man?/*1%{?ext_man}
 
-%files lang -f %{name}.lang
 %license COPYING
 
 %changelog
