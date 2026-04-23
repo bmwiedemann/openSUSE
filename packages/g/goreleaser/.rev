@@ -983,4 +983,41 @@
   * chore: auto-update generated files (forwarded request 1347074 from ph03nix)</comment>
     <requestid>1347133</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>52a7c65ecc82ff2f48eb4874a1e6e583</srcmd5>
+    <version>2.15.4</version>
+    <time>1776964898</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.15.4:
+  * ci: fix task release
+  * fix: gen-nix-licenses script
+  * ci: fix token
+  * fix(rust): grouping of different arm version when creating archives (#6582)
+  * ci: make sure build runs on all cases
+  * fix(rust): add arm- and armv7-unknown-linux-musleabihf build targets (#6581)
+  * docs: clarify template vars
+  * docs: fix version link when full version
+  * chore: auto-update generated files
+  * ci: fix generate job token
+  * chore(deps): update docker version
+  * chore(deps): update nfpm
+  * docs: update
+  * docs: fix image urls (#6578)
+  * fix(deps): quill git-lfs (#6577)
+  * chore(deps): bump the gomod group across 1 directory with 6 updates (#6575)
+  * fix(docker): install syft, cosign, docker, and docker-buildx from upstream releases  (#6576)
+  * ci(deps): bump the actions group with 5 updates
+  * chore(deps): bump golang in the docker group across 1 directory
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.17.1 to 5.18.0
+  * docs: fix image URLs
+  * chore(deps): bump github.com/sigstore/timestamp-authority/v2 from 2.0.5 to 2.0.6
+  * ci: fix env name
+  * ci: reduce token perm
+  * docs: fix include, prefix shortcodes to avoid collisions
+  * fix(build): allow explicit binary with ellipsis when single main
+  * ci: reduce PAT usage
+  * fix(build): set per-binary artifact IDs for ./... builds
+  * docs: update (forwarded request 1348967 from ph03nix)</comment>
+    <requestid>1348973</requestid>
+  </revision>
 </revisionlist>
