@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:43:42 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Get sources from github to be able to run tests
+- Remove protobuf upper limit to make it build with python-protobuf
+  7.34.1, gh#Nitrokey/nitrokey-sdk-py#119
+  bsc#1262556
+
+-------------------------------------------------------------------
 Tue Dec  9 06:41:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.4.2:

@@ -79,4 +79,15 @@
 </comment>
     <requestid>1321701</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>455225d10c467b266db82c7da7213a72</srcmd5>
+    <version>0.4.2</version>
+    <time>1776956958</time>
+    <user>anag_factory</user>
+    <comment>- Get sources from github to be able to run tests
+- Remove protobuf upper limit to make it build with python-protobuf
+  7.34.1, gh#Nitrokey/nitrokey-sdk-py#119
+  bsc#1262556</comment>
+    <requestid>1348918</requestid>
+  </revision>
 </revisionlist>

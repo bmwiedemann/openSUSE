@@ -1,7 +1,7 @@
 #
 # spec file for package python-nitrokey
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,32 +23,31 @@ Release:        0
 Summary:        Nitrokey Python SDK
 License:        Apache-2.0
 URL:            https://github.com/Nitrokey/nitrokey-sdk-py
-Source0:        https://files.pythonhosted.org/packages/source/n/nitrokey/nitrokey-%{version}.tar.gz
+Source0:        https://github.com/Nitrokey/nitrokey-sdk-py/archive/v%{version}.tar.gz#/nitrokey-%{version}.tar.gz
 Source99:       python-nitrokey.rpmlintrc
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 # Runtime dependencies
 BuildRequires:  %{python_module cryptography >= 41}
 BuildRequires:  %{python_module crcmod >= 1.7 with %python-crcmod < 2}
 BuildRequires:  %{python_module fido2 >= 1.1.2 with %python-fido2 < 3}
 BuildRequires:  %{python_module hidapi >= 0.14 with %python-hidapi < 0.15}
-BuildRequires:  %{python_module protobuf >= 5.26 with %python-protobuf < 7}
+BuildRequires:  %{python_module protobuf >= 5.26}
 BuildRequires:  %{python_module pyserial >= 3.5 with %python-pyserial < 4}
 BuildRequires:  %{python_module requests >= 2 with %python-requests < 3}
 BuildRequires:  %{python_module semver >= 3 with %python-semver < 4}
 BuildRequires:  %{python_module tlv8 >= 0.10 with %python-tlv8 < 0.11}
-BuildRequires:  %{python_module wrapt}
 #
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 41
-Requires:       python-wrapt
 Requires:       (python-crcmod >= 1.7 with python-crcmod < 2)
 Requires:       (python-fido2 >= 1.1.2 with python-fido2 < 3)
 Requires:       (python-hidapi >= 0.14 with python-hidapi < 0.15)
-Requires:       (python-protobuf >= 5.26 with python-protobuf < 7)
+Requires:       (python-protobuf >= 5.26)
 Requires:       (python-pyserial >= 3.5 with python-pyserial < 4)
 Requires:       (python-requests >= 2 with python-requests < 3)
 Requires:       (python-semver >= 3 with python-semver < 4)
@@ -60,7 +59,7 @@ BuildArch:      noarch
 The Nitrokey Python SDK can be used to use and configure Nitrokey devices.
 
 %prep
-%autosetup -p1 -n nitrokey-%{version}
+%autosetup -p1 -n nitrokey-sdk-py-%{version}
 
 %build
 %pyproject_wheel
@@ -68,6 +67,9 @@ The Nitrokey Python SDK can be used to use and configure Nitrokey devices.
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.md
