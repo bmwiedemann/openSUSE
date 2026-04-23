@@ -17,9 +17,10 @@
 #
 
 
-%global sover 5
+%global sover 3
 Name:           libyang
-Version:        5.4.9
+# when updating, check that FRR is compatible with it
+Version:        3.13.6
 Release:        0
 Summary:        Parser toolkit for IETF YANG data modeling
 License:        BSD-3-Clause
