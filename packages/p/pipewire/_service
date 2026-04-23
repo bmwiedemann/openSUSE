@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.freedesktop.org/pipewire/pipewire.git</param>
-    <param name="revision">1.6.2</param>
+    <param name="revision">1.6.4</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <!--
     <param name="revision">636cbae9b6cebc4ba55903e2a686f4c4a2bd4193</param>
@@ -11,10 +11,10 @@
     <param name="changesgenerate">enable</param>
     -->
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
-    <param name="compression">zst</param>
+    <param name="compression">xz</param>
   </service>
   <service name="set_version" mode="manual" />
 </services>

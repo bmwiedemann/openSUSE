@@ -1,7 +1,6 @@
 #
 # spec file for package pipewire
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2018 Luciano Santos, luc14n0@linuxmail.org.
 #
@@ -72,19 +71,18 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.6.2
+Version:        1.6.4
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
 Patch1:         0001-pulse-server-add-client-props-to-sink_input_source_output.patch
 Patch3:         0003-modules-improve-error-reporting.patch
-Patch4:         pipewire-const-correctness-1.patch
 Patch5:         pipewire-const-correctness-2.patch
 
 BuildRequires:  docutils
