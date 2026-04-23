@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 23 09:29:23 UTC 2026 - Max Lin <mlin@suse.com>
+
+- Fix suse_version check since SLE 16 SP1 will use a value of 1610
+
+-------------------------------------------------------------------
 Fri Mar 13 09:40:11 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.40c

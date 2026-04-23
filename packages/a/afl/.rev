@@ -1745,4 +1745,12 @@
   - afl-showmap:</comment>
     <requestid>1338665</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>71875afd9f7dd0a2e16e512d4426f05e</srcmd5>
+    <version>4.40c</version>
+    <time>1776956962</time>
+    <user>anag_factory</user>
+    <comment>Fix build on 16.1 (forwarded request 1348907 from mlin7442)</comment>
+    <requestid>1348914</requestid>
+  </revision>
 </revisionlist>
