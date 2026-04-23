@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-towncrier
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,15 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-towncrier%{psuffix}
-Version:        0.4.0a0
+Version:        0.5.0a0
 Release:        0
 Summary:        An RST directive for injecting a Towncrier-generated changelog draft
 License:        BSD-3-Clause
 URL:            https://github.com/sphinx-contrib/sphinxcontrib-towncrier
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-towncrier/sphinxcontrib-towncrier-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-towncrier/sphinxcontrib_towncrier-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#sphinx-contrib/sphinxcontrib-towncrier#ab800bcd251a4c7ca558999faa740eb9586b91f5
+Patch0:         support-towncrier-25.8.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -39,15 +42,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-towncrier = %{version}}
-BuildRequires:  %{python_module towncrier >= 19.2}
 %endif
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-Sphinx
-Requires:       python-towncrier >= 19.2
+Requires:       python-towncrier >= 23
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,7 +56,7 @@ BuildArch:      noarch
 An RST directive for injecting a Towncrier-generated changelog draft containing fragments for the unreleased (next) project version
 
 %prep
-%setup -q -n sphinxcontrib-towncrier-%{version}
+%autosetup -p1 -n sphinxcontrib_towncrier-%{version}
 rm -v pytest.ini
 
 %build

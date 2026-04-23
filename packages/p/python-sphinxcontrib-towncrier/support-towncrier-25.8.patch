@@ -1,0 +1,69 @@
+From ab800bcd251a4c7ca558999faa740eb9586b91f5 Mon Sep 17 00:00:00 2001
+From: Sviatoslav Sydorenko <wk@sydorenko.org.ua>
+Date: Mon, 18 Aug 2025 17:41:01 +0200
+Subject: [PATCH] Add Towncrier 25.8.0 to the text matrix
+
+It does not require any runtime code modifications but one test needed
+to be adjusted to match new behavior.
+
+Resolves #121.
+---
+ .coveragerc                 |  2 +-
+ .github/workflows/ci-cd.yml |  1 +
+ tests/_towncrier_test.py    | 16 ++++++++++++++++
+ 3 files changed, 18 insertions(+), 1 deletion(-)
+
+Index: sphinxcontrib_towncrier-0.5.0a0/.github/workflows/ci-cd.yml
+===================================================================
+--- sphinxcontrib_towncrier-0.5.0a0.orig/.github/workflows/ci-cd.yml
++++ sphinxcontrib_towncrier-0.5.0a0/.github/workflows/ci-cd.yml
+@@ -526,6 +526,7 @@ jobs:
+     strategy:
+       matrix:
+         towncrier-version:
++        - 25.8.0rc2
+         - 24.8.0
+         - 23.11.0
+         - 23.6.0
+Index: sphinxcontrib_towncrier-0.5.0a0/tests/_towncrier_test.py
+===================================================================
+--- sphinxcontrib_towncrier-0.5.0a0.orig/tests/_towncrier_test.py
++++ sphinxcontrib_towncrier-0.5.0a0/tests/_towncrier_test.py
+@@ -1,14 +1,23 @@
+ """Towncrier config reader tests."""
+ 
+ 
++from importlib.metadata import version as _get_installed_project_version
+ from pathlib import Path
+ from typing import Union
+ 
+ import pytest
+ 
++from towncrier._settings.load import Config  # noqa: WPS436
++
+ from sphinxcontrib.towncrier._towncrier import get_towncrier_config
+ 
+ 
++_TOWNCRIER_VERSION = _get_installed_project_version('towncrier')
++_TOWNCRIER_RELEASED_POST_2025_INCLUSIVE = int(  # noqa: WPS114
++    _TOWNCRIER_VERSION.split('.', 1)[0],
++) >= 25  # noqa: WPS432
++
++
+ def test_towncrier_config_section_missing(
+         monkeypatch: pytest.MonkeyPatch,
+         tmp_path: Path,
+@@ -25,6 +34,13 @@ def test_towncrier_config_section_missin
+         fr'`{empty_config_file !s}`: No \[tool\.towncrier\] section\.$'
+     )
+ 
++    if _TOWNCRIER_RELEASED_POST_2025_INCLUSIVE:
++        assert isinstance(
++            get_towncrier_config(tmp_path, empty_config_file),
++            Config,
++        )
++        return
++
+     with pytest.raises(LookupError, match=expected_error_msg):
+         get_towncrier_config(tmp_path, empty_config_file)
+ 

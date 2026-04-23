@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 16 01:44:12 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.0a0:
+  * Added support for Towncrier 24.7.0rc1 and higher.
+  * The minimum supported Python version is now 3.9. And the lowest required
+    Towncrier is 23.
+- Add patch support-towncrier-25.8.patch:
+  * Support Towncrier 25.8 changes.
+
+-------------------------------------------------------------------
 Mon Jun 16 06:12:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.
