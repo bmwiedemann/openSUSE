@@ -6281,4 +6281,41 @@ I cannot test locally unfortunately.
     ESR 140.9.1, Firefox 149.0.2 and Thunderbird 149.0.2</comment>
     <requestid>1345073</requestid>
   </revision>
+  <revision rev="385" vrev="1">
+    <srcmd5>e8f3913c8215cee3e9026e45877adbc6</srcmd5>
+    <version>140.10.0</version>
+    <time>1776956797</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Thunderbird 140.10.0 ESR
+  * Newly translated strings were not available in Thunderbird
+  MFSA 2026-34 (bsc#1262230)
+  * CVE-2026-6746 (bmo#2014596)
+    Use-after-free in the DOM: Core &amp; HTML component
+  * CVE-2026-6747 (bmo#2021769)
+    Use-after-free in the WebRTC component
+  * CVE-2026-6748 (bmo#2022604)
+    Uninitialized memory in the Audio/Video: Web Codecs component
+  * CVE-2026-6749 (bmo#2022610)
+    Information disclosure due to uninitialized memory in the
+    Graphics: Canvas2D component
+  * CVE-2026-6750 (bmo#2023407)
+    Privilege escalation in the Graphics: WebRender component
+  * CVE-2026-6751 (bmo#2025883)
+    Uninitialized memory in the Audio/Video: Web Codecs component
+  * CVE-2026-6752 (bmo#2027499)
+    Incorrect boundary conditions in the WebRTC component
+  * CVE-2026-6753 (bmo#2027501)
+    Incorrect boundary conditions in the WebRTC component
+  * CVE-2026-6754 (bmo#2027541)
+    Use-after-free in the JavaScript Engine component
+  * CVE-2026-6757 (bmo#2013588)
+    Invalid pointer in the JavaScript: WebAssembly component
+  * CVE-2026-6759 (bmo#2016164)
+    Use-after-free in the Widget: Cocoa component
+  * CVE-2026-6761 (bmo#2017857)
+    Privilege escalation in the Networking component
+  * CVE-2026-6762 (bmo#2021080)
+    Spoofing issue in the DOM: Core &amp; HTML component</comment>
+    <requestid>1348826</requestid>
+  </revision>
 </revisionlist>
