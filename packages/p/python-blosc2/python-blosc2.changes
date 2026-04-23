@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:20:05 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix build with latest blosc2, bsc#1262566
+  Add 0001-Add-squeeze-as-view.patch
+
+-------------------------------------------------------------------
 Thu Feb 27 11:35:25 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
