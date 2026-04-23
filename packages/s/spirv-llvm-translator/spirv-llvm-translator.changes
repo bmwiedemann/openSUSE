@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Apr 12 21:21:21 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 22.1.1.
+  * Add FP4/FP8 operand support for
+    SubgroupMatrixMultiplyAccumulateINTEL.
+  * Fix BFloat16 argument type demangling.
+  * Update OCL nan builtin translation to work with bfloat type.
+
+-------------------------------------------------------------------
+Sat Mar 14 13:42:43 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 22.1.0.
+  * New extensions:
+    - SPV_KHR_fma
+    - SPV_INTEL_16bit_atomics
+    - SPV_INTEL_bfloat16_arithmetic
+    - SPV_INTEL_device_barrier (initial support)
+    - SPV_INTEL_float4 and SPV_INTEL_fp_conversions
+    - SPV_INTEL_predicated_io
+    - SPV_INTEL_sigmoid
+  * Make image and sampler types match Clang output.
+  * Translate llvm.minimumnum/maximumnum intrinsics to OpenCL
+    extended instruction fmin/fmax.
+  * Allow translation of global internal constants with private
+    address space.
+  * Translate `addrspacecast` from generic null to
+    OpGenericCastToPtr.
+  * Preserve byval/sret typed pointer semantics with
+    SPV_KHR_untyped_pointers.
+  * Support subgroup block read/write builtins translation with
+    untyped pointers.
+
+-------------------------------------------------------------------
 Sun Feb 15 22:56:43 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 21.1.4.
