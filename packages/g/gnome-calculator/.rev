@@ -613,4 +613,12 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345399</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>be656dfeb8c38c966607d270149633bc</srcmd5>
+    <version>50.0+16</version>
+    <time>1776956743</time>
+    <user>anag_factory</user>
+    <comment>Fix build against GNU MPC 1.4</comment>
+    <requestid>1347952</requestid>
+  </revision>
 </revisionlist>

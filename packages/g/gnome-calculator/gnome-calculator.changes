@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 18 14:32:39 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.0+16:
+  + Set imaginary component to +0*i when inverting a real number
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:35:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
