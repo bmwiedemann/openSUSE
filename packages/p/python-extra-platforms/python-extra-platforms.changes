@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 21 16:39:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 11.1.0:
+  * Add NixOS platform detection.
+  * Convert Python docstrings to MyST markdown; render them with the
+    repomatic.myst_docstrings Sphinx extension.
+  * Expand CI test matrix to cover Ubuntu 22.04, Ubuntu 22.04 ARM,
+    macOS 14, macOS 15, and Windows 2022.
+
+-------------------------------------------------------------------
 Fri Apr  3 10:51:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 11.0.5:
