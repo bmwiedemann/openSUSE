@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Wed Apr 22 07:56:42 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2026.6:
+Added:
+  * Files can be uploaded to server using soju.im/FILEHOST
+    (see the file uploads guide for details)
+  * typing
+    + Per-server typing settings (servers.<name>.typing)
+    + Animate typing dots
+    + buffer.typing.style setting with padded and popped modes for
+      typing indicators
+  * Settings to reroute direct PRIVMSG and/or NOTICE messages to
+    another buffer (servers.<name>.reroute.query
+    and servers.<name>.reroute.notice)
+  * channel-context support (messages with the tag will be
+    automatically rerouted)
+  * Theme & Display
+    + buffer.nickname.color now supports
+      { palette = ["#RRGGBB", ...] }
+      for nickname colors from a fixed set
+    + buffer.server_messages.away setting to control when
+      automated away messages are shown
+    + buffer.server_messages.away theme setting to control how
+      automated away messages appear
+    + Setting to control whether unread indicators are shown on
+      open buffers (sidebar.unread_indicator.show_on_open_buffers)
+    + Unread indicators for queries can be hidden via
+      sidebar.unread_indicator.exclude
+    + Ability to customize the arrows used for directional messages
+      such as join, part, quit, kick, and CTCP messages.
+    + Expanded tooltips setting to allow hiding auto-complete
+      tooltips
+  * Commands
+    + Ability to add optional arguments in custom aliases
+      (/msg ChanServ op $channel $1?-)
+    + /massmessage command to send Ergo/Solanum mass-messages
+    + /invite command tooltip and validation provided, and display
+      of INVITE-related messages improved
+    + // can be used to escape a leading /; in other words,
+      //topic example will send the message /topic example
+      (not execute the /topic command)
+  * Controls
+    + Right-click context menu on messages now includes
+      "Copy message" to copy the message text to the clipboard
+    + Message drafts are remembered across Halloy sessions
+      (can be disabled with buffer.text_input.persist)
+    + ctrl + , now opens the config file
+    + emacs bindings for ctrl + u and ctrl + w
+    + buffer.text_input.kill_to_clipboard to control key bindings
+      moving killed text to clipboard
+Changed:
+  * Default typing style (buffer.typing.style) is now popped
+    (from padded)
+  * Moved typing settings from buffer.channel.typing to
+    buffer.typing to clarify that they apply to queries
+    as well as channels
+  * Moved nicklist nickname settings from buffer.channel.nicklist
+    to buffer.nickname (away and color)
+  * Colons, semicolons and double quotes are no longer considered
+    part of channel names
+  * Backslash escapes are now only interpreted when escaping
+    markdown formatting characters
+  * Tooltips will be shown for all commands, even those not
+    available on the server, with an error tooltip shown if the
+    server does not support the command
+  * Parsed URLs will be displayed with IDN encoded domains
+    (to avoid domain spoofing) and percent-decoded path & later
+    components (for legibility) by default (display.decode_urls)
+Fixed:
+  * Server notices with wildcard targets (for example NOTICE *)
+    are shown in the server buffer again
+  * typing
+    + Settings for buffers could get in a stuck state without any
+      way to control them (or see that the state is stuck)
+    + +typing=done should not be sent when the message is sent
+  * chathistory
+    + Support for multiline messages
+    + TARGETS pagination
+    + More conservative treatment of pagination on reconnect
+    + Greatly reduced the scope of deduplication to only messages
+      that can be expected to possibly be duplicates
+  * Receive & apply reactions in queries
+  * IRC URIs now handle bracketed IPv6 hosts and percent-encoded
+    channel targets correctly
+  * Fix URLs with non-ASCII characters getting percent-encoded
+    when rendered in buffers
+  * Filtering for common trailing punctuation and delimiters when
+    linking channel names (and nicks & urls)
+  * /MOTD command will not trigger end-of-registration actions
+  * Repeat lines in some MOTDs would be deduplicated
+  * Keyboard shortcuts now work in popped out buffer windows,
+    including command bar shortcuts
+  * sidebar.order_by setting works when set to "config"
+Removed:
+  * buffer.channel.message.nickname_color in favor of
+    buffer.nickname.color
+
+-------------------------------------------------------------------
+Tue Mar 24 17:56:33 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2026.5:
+Added:
+  * Setting to limit reaction display length
+    (buffer.channel.message.max_reaction_display) and maximum
+    length (buffer.channel.message.max_reaction_chars)
+  * Emoji and command picker entries are now clickable and insert
+    the selected completion directly into the input.
+  * Multi-line send support (uses IRCv3 multiline when available;
+    note: incompatible with the current release of soju [v0.10.1],
+    expected to be resolved in a future version)
+  * Typing indicator support (uses IRCv3 typing)
+  * Add emoji reactions for supported servers (uses IRCv3 react)
+  * New "config" option to sidebar.order_channels_by.
+    Uses server.<server_name>.channels to determine order.
+  * Case insensitive sort of query names in sidebar
+  * Copied order_channels_by from sidebar to server.<name>,
+    defaults to sidebar.order_channels_by if empty.
+  * Alias commands (see buffer.commands.aliases)
+  * Exec command support for generating input from shell command
+    output (see buffer.commands.exec)
+  * The titlebar now displays the current buffer for each window.
+  * /plain-me, /format-me, /plain-msg, /format-msg, /plain-notice,
+    and /format-notice commands were added to provide
+    /plain//format functionality to the /me, /msg, and /notice
+    commands
+Fixed:
+  * Improved message length calculation (when known the bytes
+    required to relay a message are included in the calculation,
+    when unknown an estimate is used)
+  * Prevent interaction leakage behind open modals: clicks, cursor
+    changes, and hover states no longer affect underlying UI while
+    preserving outside-click and Esc to close
+  * Prevent clicks from passing through completion picker overlays
+    to content behind them (for example nicknames in the buffer).
+  * Regression that could make the application slow to close
+  * Apply locale to context menu, copy, and date separator
+    timestamps
+  * Fixed direct message notifications when excludes are present
+  * Fixed reloading config for channel sorting.
+  * Fixed handling of URLs ending with ).
+  * Auto-format rules are applied to the content of /me, /msg,
+    and /notice commands
+Changed:
+  * Spoilers (/f ||hello world||) now reveal on click instead of
+    hover
+Security:
+  * Fixed file transfer path traversal vulnerability when using DCC
+  * Config directories and config.toml are now created with
+    owner-only permissions
+
+-------------------------------------------------------------------
 Fri Mar 13 22:57:16 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2026.4:

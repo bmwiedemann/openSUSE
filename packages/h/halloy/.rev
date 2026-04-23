@@ -267,4 +267,78 @@
 </comment>
     <requestid>1338831</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>00f9d04dae0d236b073086d07229d538</srcmd5>
+    <version>2026.5</version>
+    <time>1774469889</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2026.5:
+Added:
+  * Setting to limit reaction display length
+    (buffer.channel.message.max_reaction_display) and maximum
+    length (buffer.channel.message.max_reaction_chars)
+  * Emoji and command picker entries are now clickable and insert
+    the selected completion directly into the input.
+  * Multi-line send support (uses IRCv3 multiline when available;
+    note: incompatible with the current release of soju [v0.10.1],
+    expected to be resolved in a future version)
+  * Typing indicator support (uses IRCv3 typing)
+  * Add emoji reactions for supported servers (uses IRCv3 react)
+  * New &quot;config&quot; option to sidebar.order_channels_by.
+    Uses server.&lt;server_name&gt;.channels to determine order.
+  * Case insensitive sort of query names in sidebar
+  * Copied order_channels_by from sidebar to server.&lt;name&gt;,
+    defaults to sidebar.order_channels_by if empty.
+  * Alias commands (see buffer.commands.aliases)
+  * Exec command support for generating input from shell command
+    output (see buffer.commands.exec)
+  * The titlebar now displays the current buffer for each window.
+  * /plain-me, /format-me, /plain-msg, /format-msg, /plain-notice,
+    and /format-notice commands were added to provide
+    /plain//format functionality to the /me, /msg, and /notice
+    commands
+Fixed:
+  * Improved message length calculation (when known the bytes
+    required to relay a message are included in the calculation,
+    when unknown an estimate is used)
+  * Prevent interaction leakage behind open modals: clicks, cursor</comment>
+    <requestid>1342285</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5272a5ee3a5bede1d48ab9f4cf290883</srcmd5>
+    <version>2026.6</version>
+    <time>1776956746</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2026.6:
+Added:
+  * Files can be uploaded to server using soju.im/FILEHOST
+    (see the file uploads guide for details)
+  * typing
+    + Per-server typing settings (servers.&lt;name&gt;.typing)
+    + Animate typing dots
+    + buffer.typing.style setting with padded and popped modes for
+      typing indicators
+  * Settings to reroute direct PRIVMSG and/or NOTICE messages to
+    another buffer (servers.&lt;name&gt;.reroute.query
+    and servers.&lt;name&gt;.reroute.notice)
+  * channel-context support (messages with the tag will be
+    automatically rerouted)
+  * Theme &amp; Display
+    + buffer.nickname.color now supports
+      { palette = [&quot;#RRGGBB&quot;, ...] }
+      for nickname colors from a fixed set
+    + buffer.server_messages.away setting to control when
+      automated away messages are shown
+    + buffer.server_messages.away theme setting to control how
+      automated away messages appear
+    + Setting to control whether unread indicators are shown on
+      open buffers (sidebar.unread_indicator.show_on_open_buffers)
+    + Unread indicators for queries can be hidden via
+      sidebar.unread_indicator.exclude
+    + Ability to customize the arrows used for directional messages
+      such as join, part, quit, kick, and CTCP messages.
+    + Expanded tooltips setting to allow hiding auto-complete
+      tooltips</comment>
+    <requestid>1348742</requestid>
+  </revision>
 </revisionlist>
