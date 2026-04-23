@@ -58,7 +58,6 @@ BuildRequires:  spice-protocol-devel
 BuildRequires:  vulkan-devel
 BuildRequires:  wayland-devel
 BuildRequires:  wayland-protocols-devel
-Epoch:          2
 ExclusiveArch:  x86_64
 
 %description

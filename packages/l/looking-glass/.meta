@@ -4,5 +4,6 @@
 
 load module with:
 modprobe kvmfr static_size_mb=32</description>
+  <devel project="Virtualization" package="looking-glass"/>
   <url>https://looking-glass.io/</url>
 </package>
