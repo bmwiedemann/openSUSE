@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 21 14:52:51 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Remove update-alternatives from scriptlets if not available.
+  This code is only there to remove update-alternatives
+
+-------------------------------------------------------------------
+Wed Apr 15 13:01:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly BuildRequire update-alternatives and mark it as being
+  used in post/postun: this was nicely masked by the fact that
+  binutils, installed on every system, already dragged u-a in,
+  which is no longer the case.
+
+-------------------------------------------------------------------
+Wed Apr 15 11:31:15 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add -fno-lifetime-dse to CXXFLAGS to avoid
+  parallel/test-snapshot-reproducible testsuite failure with GCC 16
+
+-------------------------------------------------------------------
 Mon Mar 30 16:24:34 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Update to 24.14.1:

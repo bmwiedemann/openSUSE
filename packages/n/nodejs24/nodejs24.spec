@@ -269,6 +269,7 @@ Suggests:       alts
 %else
 Requires(postun): %{_sbindir}/update-alternatives
 %endif
+BuildRequires:  update-alternatives
 # either for update-alternatives, or their removal
 Requires(post): %{_sbindir}/update-alternatives
 
@@ -634,6 +635,10 @@ export CC=gcc-%{forced_gcc_version}
 export CXX=g++-%{forced_gcc_version}
 %endif
 
+# There is C++ object lifetime issues, use -fno-lifetime-dse to
+# avoid parallel/test-snapshot-reproducible fails with GCC 16
+export CXXFLAGS="\${CXXFLAGS} -fno-lifetime-dse"
+
 EOF
 
 . ./spec.build.config
@@ -964,18 +969,24 @@ make test-ci
 %defattr(-,root,root)
 %doc doc/api
 
-%if %{with libalternatives}
+%if 0%{with libalternatives}
 
 %post
+if ! [ -e %_sbindir/update-alternatives ]; then
 update-alternatives --remove node-default %{_bindir}/node%{node_version_number}
+fi
 
 %post -n npm%{node_version_number}
+if ! [ -e %_sbindir/update-alternatives ]; then
 update-alternatives --remove npm-default %{_bindir}/npm%{node_version_number}
 update-alternatives --remove npx-default %{_bindir}/npx%{node_version_number}
+fi
 
 %if %{node_version_number} >= 14
 %post -n corepack%{node_version_number}
+if ! [ -e %_sbindir/update-alternatives ]; then
 update-alternatives --remove corepack-default %{_bindir}/corepack%{node_version_number}
+fi
 %endif
 
 %else

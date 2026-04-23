@@ -135,4 +135,21 @@ for details, see https://nodejs.org/en/blog/release/v24.14.0
 - npm-path-normalization.patch: upstreamed, dropped</comment>
     <requestid>1345013</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ded33cbb777b917311e926224472081b</srcmd5>
+    <version>24.14.1</version>
+    <time>1776956739</time>
+    <user>anag_factory</user>
+    <comment>- Remove update-alternatives from scriptlets if not available.
+  This code is only there to remove update-alternatives
+
+- Explicitly BuildRequire update-alternatives and mark it as being
+  used in post/postun: this was nicely masked by the fact that
+  binutils, installed on every system, already dragged u-a in,
+  which is no longer the case.
+
+- Add -fno-lifetime-dse to CXXFLAGS to avoid
+  parallel/test-snapshot-reproducible testsuite failure with GCC 16</comment>
+    <requestid>1348597</requestid>
+  </revision>
 </revisionlist>
