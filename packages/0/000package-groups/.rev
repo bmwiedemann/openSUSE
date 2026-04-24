@@ -2384,4 +2384,11 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <comment>See SR#1338242</comment>
     <requestid>1338528</requestid>
   </revision>
+  <revision rev="334" vrev="332">
+    <srcmd5>8deec0b309076693ec522730114dd603</srcmd5>
+    <version>unknown</version>
+    <time>1777028249</time>
+    <user>dimstar_suse</user>
+    <comment>Block libLLVM21 from the DVD</comment>
+  </revision>
 </revisionlist>
