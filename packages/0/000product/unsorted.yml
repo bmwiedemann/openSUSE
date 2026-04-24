@@ -2272,6 +2272,9 @@ unsorted:
   - clang21 
   - clang21-devel 
   - clang21-doc 
+  - clang22 
+  - clang22-devel 
+  - clang22-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -2638,6 +2641,8 @@ unsorted:
   - coredns-for-k8s1.34-extras 
   - coredns-for-k8s1.35 
   - coredns-for-k8s1.35-extras 
+  - coredns-for-k8s1.36 
+  - coredns-for-k8s1.36-extras 
   - coreos-installer 
   - corepack-default 
   - corepack24 
@@ -3877,6 +3882,7 @@ unsorted:
   - etcd-for-k8s1.33 
   - etcd-for-k8s1.34 
   - etcd-for-k8s1.35 
+  - etcd-for-k8s1.36 
   - etcdctl 
   - etcdutl 
   - etckeeper 
@@ -10704,6 +10710,17 @@ unsorted:
   - kubernetes1.35-kubelet-common 
   - kubernetes1.35-proxy 
   - kubernetes1.35-scheduler 
+  - kubernetes1.36-apiserver 
+  - kubernetes1.36-client 
+  - kubernetes1.36-client-bash-completion 
+  - kubernetes1.36-client-common 
+  - kubernetes1.36-client-fish-completion 
+  - kubernetes1.36-controller-manager 
+  - kubernetes1.36-kubeadm 
+  - kubernetes1.36-kubelet 
+  - kubernetes1.36-kubelet-common 
+  - kubernetes1.36-proxy 
+  - kubernetes1.36-scheduler 
   - kubescape 
   - kubeseal 
   - kubesec 
@@ -11296,14 +11313,17 @@ unsorted:
   - libLLVM18 
   - libLLVM19 
   - libLLVM20 
+  - libLLVM21 
   - libLLVM21-32bit 
+  - libLLVM22-32bit 
   - libLLVMSPIRVLib-devel 
-  - libLLVMSPIRVLib21 
+  - libLLVMSPIRVLib22 
   - libLTO15 
   - libLTO18 
   - libLTO19 
   - libLTO20 
   - libLTO21 
+  - libLTO22 
   - libLerc4-32bit 
   - libLibreGraphAPI1 
   - libLimeSuite23_11-0 
@@ -12700,11 +12720,14 @@ unsorted:
   - libclang-cpp20 
   - libclang-cpp21 
   - libclang-cpp21-32bit 
+  - libclang-cpp22 
+  - libclang-cpp22-32bit 
   - libclang13 
   - libclang_rt18 
   - libclang_rt19 
   - libclang_rt20 
   - libclang_rt21 
+  - libclang_rt22 
   - libclapper-0_0-0 
   - libclapper-gtk-0_0-0 
   - libclastfm-devel 
@@ -14503,6 +14526,7 @@ unsorted:
   - liblldb19 
   - liblldb20 
   - liblldb21 
+  - liblldb22 
   - liblldpctl4 
   - libllhttp9_3 
   - liblmdb-0_9_35-32bit 
@@ -15144,6 +15168,7 @@ unsorted:
   - libomp19-devel 
   - libomp20-devel 
   - libomp21-devel 
+  - libomp22-devel 
   - libonnx 
   - libonnx_proto 
   - liboop-devel 
@@ -16730,7 +16755,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent39 
+  - libtorrent40 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -17440,7 +17465,7 @@ unsorted:
   - libyaml-devel 
   - libyang-devel 
   - libyang-doc 
-  - libyang5 
+  - libyang3 
   - libyara-devel 
   - libyara10 
   - libyara10-x86-64-v3 
@@ -17675,6 +17700,7 @@ unsorted:
   - lld19 
   - lld20 
   - lld21 
+  - lld22 
   - lldap 
   - lldap-cli 
   - lldap-migration-tool 
@@ -17691,6 +17717,8 @@ unsorted:
   - lldb20-devel 
   - lldb21 
   - lldb21-devel 
+  - lldb22 
+  - lldb22-devel 
   - lldpd 
   - lldpd-devel 
   - llhttp-devel 
@@ -17761,10 +17789,24 @@ unsorted:
   - llvm21-devel 
   - llvm21-doc 
   - llvm21-gold 
+  - llvm21-libc++-devel 
+  - llvm21-libc++1 
+  - llvm21-libc++abi-devel 
+  - llvm21-libc++abi1 
+  - llvm21-libclang13 
   - llvm21-opt-viewer 
   - llvm21-polly 
   - llvm21-polly-devel 
   - llvm21-vim-plugins 
+  - llvm22 
+  - llvm22-bolt 
+  - llvm22-devel 
+  - llvm22-doc 
+  - llvm22-gold 
+  - llvm22-opt-viewer 
+  - llvm22-polly 
+  - llvm22-polly-devel 
+  - llvm22-vim-plugins 
   - lmdb 
   - lmdb-devel 
   - lmdbxx-devel 
@@ -24064,6 +24106,7 @@ unsorted:
   - python3-clang19 
   - python3-clang20 
   - python3-clang21 
+  - python3-clang22 
   - python3-clingo 
   - python3-clustershell 
   - python3-coconut 
@@ -24166,6 +24209,7 @@ unsorted:
   - python3-lldb18 
   - python3-lldb20 
   - python3-lldb21 
+  - python3-lldb22 
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient-doc 
@@ -27636,9 +27680,15 @@ unsorted:
   - python311-sphinx-inline-tabs 
   - python311-sphinx-issues 
   - python311-sphinx-jsonschema 
+  - python311-sphinx-last-updated-by-git 
+  - python311-sphinx-llms-txt 
+  - python311-sphinx-markdown-builder 
   - python311-sphinx-notfound-page 
   - python311-sphinx-qt-documentation 
   - python311-sphinx-removed-in 
+  - python311-sphinx-rtd-dark-mode 
+  - python311-sphinx-scrapy 
+  - python311-sphinx-sitemap 
   - python311-sphinx-tabs 
   - python311-sphinx-theme-builder 
   - python311-sphinx-version-warning 
@@ -28135,7 +28185,6 @@ unsorted:
   - python312-click 
   - python312-curses 
   - python312-dbm 
-  - python312-desktop-entry-lib 
   - python312-devel 
   - python312-doc 
   - python312-doc-devhelp 
@@ -31560,9 +31609,15 @@ unsorted:
   - python313-sphinx-inline-tabs 
   - python313-sphinx-issues 
   - python313-sphinx-jsonschema 
+  - python313-sphinx-last-updated-by-git 
+  - python313-sphinx-llms-txt 
+  - python313-sphinx-markdown-builder 
   - python313-sphinx-notfound-page 
   - python313-sphinx-qt-documentation 
   - python313-sphinx-removed-in 
+  - python313-sphinx-rtd-dark-mode 
+  - python313-sphinx-scrapy 
+  - python313-sphinx-sitemap 
   - python313-sphinx-tabs 
   - python313-sphinx-theme-builder 
   - python313-sphinx-version-warning 
@@ -32262,7 +32317,6 @@ unsorted:
   - python314-SQLAlchemy 
   - python314-SQLAlchemy-Utils 
   - python314-SQLAlchemy1 
-  - python314-Scrapy 
   - python314-SecretStorage 
   - python314-Send2Trash 
   - python314-Shapely 
@@ -32963,6 +33017,7 @@ unsorted:
   - python314-blockbuster 
   - python314-blockdiag 
   - python314-blosc 
+  - python314-blosc2 
   - python314-blue 
   - python314-blurb 
   - python314-bmap-tools 
@@ -33222,6 +33277,7 @@ unsorted:
   - python314-deprecation 
   - python314-deprecation-alias 
   - python314-derpconf 
+  - python314-desktop-entry-lib 
   - python314-devel 
   - python314-devpi-client 
   - python314-devpi-common 
@@ -33469,6 +33525,7 @@ unsorted:
   - python314-extras 
   - python314-extratools 
   - python314-eyed3 
+  - python314-fabio 
   - python314-factory_boy 
   - python314-faiss 
   - python314-fake-useragent 
@@ -33722,6 +33779,7 @@ unsorted:
   - python314-hatchling 
   - python314-hawkauthlib 
   - python314-hcloud 
+  - python314-hdf5plugin 
   - python314-hdf5storage 
   - python314-healpy 
   - python314-helpdev 
@@ -35454,9 +35512,15 @@ unsorted:
   - python314-sphinx-inline-tabs 
   - python314-sphinx-issues 
   - python314-sphinx-jsonschema 
+  - python314-sphinx-last-updated-by-git 
+  - python314-sphinx-llms-txt 
+  - python314-sphinx-markdown-builder 
   - python314-sphinx-notfound-page 
   - python314-sphinx-qt-documentation 
   - python314-sphinx-removed-in 
+  - python314-sphinx-rtd-dark-mode 
+  - python314-sphinx-scrapy 
+  - python314-sphinx-sitemap 
   - python314-sphinx-tabs 
   - python314-sphinx-theme-builder 
   - python314-sphinx-version-warning 

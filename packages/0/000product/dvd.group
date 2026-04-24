@@ -1401,7 +1401,7 @@
     <package name="libKirigamiAddonsStatefulApp6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKirigamiApp6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKirigamiPlatform6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libLLVM21" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libLLVM22" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libLayerShellQtInterface6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libLerc4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libMagickCore-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2629,6 +2629,7 @@
     <package name="libsensors4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsepol2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libserd-0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libsframe2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libsgutils2-1_48-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libsha1detectcoll1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libshaderc_shared1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
