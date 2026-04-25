@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-WTF
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,15 @@
 %bcond_without     test
 %{?sle15_python_module_pythons}
 Name:           python-Flask-WTF
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        WTForms support for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/lepture/flask-wtf
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-WTF/flask_wtf-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

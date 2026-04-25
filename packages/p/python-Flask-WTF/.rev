@@ -128,4 +128,29 @@ Required for python-puppetboard SR# 263316</comment>
     :pr:`603`</comment>
     <requestid>1224102</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4ec012a5540ba23e45bb59b2aadea3c5</srcmd5>
+    <version>1.3.0</version>
+    <time>1777145886</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * Don't read the whole uploaded files to know their size.
+  * Stop support for Python 3.9. Start support for Python 3.14.
+  * Migrate the project to uv. :pr:`649`
+  * Allow setting a nonce on
+    :class:`~flask_wtf.recaptcha.RecaptchaField` (string or zero-
+    argument callable) for nonce-based Content Security Policies.
+    :pr:`312`
+  * Add csrf_meta_tag() helper and WTF_CSRF_META_NAME setting to
+    render the CSRF token as an HTML &lt;meta&gt; tag.
+  * Forward keyword arguments passed to the reCAPTCHA widget as
+    HTML attributes on the captcha &lt;div&gt;, with the field id used
+    as a default id. :pr:`353`
+  * Add apply_exemptions parameter to
+    :meth:`~flask_wtf.csrf.CSRFProtect.protect` so @csrf.exempt
+    keeps working when validation is triggered manually.
+    :pr:`419`
+  * Add RECAPTCHA_ENABLED setting. :pr:`509`</comment>
+    <requestid>1349214</requestid>
+  </revision>
 </revisionlist>
