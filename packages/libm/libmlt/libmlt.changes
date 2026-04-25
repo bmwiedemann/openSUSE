@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:07:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 7.38.0
+  Framework:
+  * Added dynamic hash table for `mlt_properties` for better
+    performance
+  * Fixed memory corruption in `mlt_pool`
+  * Added warning on file open failure when parsing in
+    `mlt_properties`
+  Modules:
+  * Added `hwaccel_scale` filter with preview scaling (scale_vaapi,
+    scale_vulkan, scale_d3d11, scale_vt (macOS))
+    This adds an environment variable `MLT_AVFORMAT_HWACCEL_PPS` to
+    provide a limiter to hwaccel because transfering uncompressed
+    video between memory
+    CPU and GPU memory is heavy
+    PPS = maximum pixels per second. Anything over it skips hwaccel
+  * Added *basic* support for **OpenFX** *filter* plugins
+    OpenFX has many features. This is a summary of what is NOT yet
+    included:
+    * GPU rendering
+    * exotic parameter types: Integer2D, Integer3D, Double3D, Custom,
+      Bytes, Page, PushButton
+    * plugin-driven keyframe animation; but MLT-driven does work
+    * tile-, slice-, or frame-based multi-threading (only plugin
+      internal threading)
+    * multi-resolution
+    * temporal clip access
+    * overlays &amp; dialogs
+    * timeline queries (e.g. `getTime()`)
+    * generator, transition, retimer
+    * parametric curves
+  * Added `lut` parameter to `avformat` producer
+  * Added `attached_pic` property to `avformat` consumer
+  * Added `movit.overlay_blend` video filter
+  * Added `compositing` property to `movit.overlay` transition
+  * Added constant-power crossfade to `mix` audio transition
+  * Added rounded corner support for `rect` in `kdenlivetitle`
+  * Added typewriter properties to `subtitle` filter
+  * Added underline and strikethrough to the `text` and `qtext`
+   filters
+  * Changed `qtext` `style` property to support family named styles
+  * Added anchor point support for arbitrary rotations in `qtblend`
+  * Allow relative paths for images in `kdenlivetitle`
+  * Updated Glaxnimate module to version 0.6.0
+  * Switched to `QImage` scaling when downscaling in `qtblend`
+  * Deprecated `obscure` and `watermark` filters
+  * Install the jackrack module's blacklist files
+  * Fixed subtitle stream type metadata
+  * Fixed mutex initialization in `avformat` no-validate mode
+  * Fixed crash when using `linearblend` deinterlacer
+  * Fixed black bar with HEVC hwaccel decode and scale on Windows
+  * Fixed crash with hardware scaler and interlaced video
+  * Fixed converting 8-bit full to limited range with hwaccel
+  * Fixed alpha in 12-bit ProRes with alpha
+  * Fixed `movit` linear color not matching CPU filters
+  * Fixed `multi` consumer making extra linear color conversions
+  * Fixed regression writing raw FLAC
+  * Fixed `qtblend` filter returning unexpectedly large frames
+  * Fixed `qtext` outline encroaching on fill color
+  * Fixed wrong last+ frame when `eof=loop` in Glaxnimate
+  * Fixed `brightness` filter on track below a clip with
+    transparency
+
+-------------------------------------------------------------------
 Mon Feb  2 09:41:08 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 7.36.1:
