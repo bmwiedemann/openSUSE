@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Apr 22 07:13:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.55.1:
+  A point release focused on a pytest-plugin cleanup fix, a new
+  Sphinx extension for documenting pytest fixtures, and a
+  docs-stack migration to gp-sphinx.
+
+  Highlights
+  * Fix: pytest_plugin leaks tmux socket files on teardown (#661, fixes #660)
+    The server and TestServer fixtures now unlink(2) the tmux
+    socket from /tmp/tmux-<uid>/ during teardown, in addition to
+    calling server.kill(). tmux does not reliably remove its own
+    socket on non-graceful exit, so /tmp/tmux-<uid>/ would
+    accumulate stale libtmux_test* entries across runs — 10k+
+    observed on long-lived dev machines.
+    A new internal '_reap_test_server' helper centralizes the kill
+    + unlink flow and suppresses cleanup-time errors, so a
+    finalizer failure can no longer mask the real test failure.
+    If you use libtmux's pytest plugin in CI or locally, upgrade to
+    stop the leak.
+  * New: Sphinx extension for pytest fixture documentation (#656)
+    A new Sphinx extension (docs/_ext/sphinx_pytest_fixtures.py)
+    renders pytest fixtures as first-class API documentation with
+    scope/kind/factory badges, cross-referenced dependencies, and
+    auto-generated usage snippets.
+
+    - .. autofixture:: — autodoc-style documenter for individual
+      fixtures
+    - .. autofixtures:: — bulk discovery and rendering from a
+      module
+    - .. autofixture-index:: — auto-generated index table with
+      linked return types (via intersphinx) and parsed RST
+      descriptions
+    - :fixture: cross-reference role with short-name resolution
+    - Scope, kind, and autouse badges with touch-accessible
+      tooltips
+    - Responsive layout (mobile metadata stacking, badge font
+      scaling, scroll wrappers)
+    - WCAG AA contrast compliance in both light and dark mode
+    - 109 tests (unit + integration)
+    Also fixes an inaccurate session_params fixture docstring
+    surfaced by the new extension.
+  * Documentation
+    - Docs restructured to the Library Skeleton pattern (#652)
+    - Self-hosted fonts, eliminated layout shift, added SPA-style
+      navigation (#643)
+    - Standardized shell code-block formatting across all docs
+      (#644)
+    - Migrated the docs stack to gp-sphinx workspace packages
+      (#657)
+    - Visual improvements to API docs via gp-sphinx (#658)
+    - Bumped gp-sphinx to v0.0.1a8 (#659); subsequent bump to
+      v0.0.1a9 on master
+  * Development
+    - Added types-docutils to dev dependencies for mypy type
+      checking (#656)
+  * What's Changed
+    - docs: self-host fonts, eliminate layout shift, add SPA
+      navigation by @tony in #643
+    - docs(style[shell]): Standardize shell code blocks by @tony in
+      #644
+    - docs(redesign): restructure documentation to Library Skeleton
+      pattern by @tony in #652
+    - feat(_ext[sphinx_pytest_fixtures]): Sphinx extension for
+      pytest fixture documentation by @tony in #656
+    - docs: Migrate to gp-sphinx workspace packages by @tony in
+      #657
+    - docs(feat[api-style]): Visual improvements to API docs via
+      gp-sphinx by @tony in #658
+    - chore(docs): adopt gp-sphinx v0.0.1a8 by @tony in #659
+    - fix(pytest_plugin): unlink socket file on fixture teardown by
+      @tony in #661
+
+-------------------------------------------------------------------
 Mon Mar  9 07:51:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.55.0:

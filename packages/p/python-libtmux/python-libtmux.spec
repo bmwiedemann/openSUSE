@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-libtmux
-Version:        0.55.0
+Version:        0.55.1
 Release:        0
 Summary:        Python API / wrapper for tmux
 License:        MIT
@@ -64,8 +64,16 @@ mkdir -p src/libtmux/
 cp src.bak/libtmux/__about__.py src/libtmux/
 
 export TMUX_TMPDIR=/tmp
+export PYTEST_IGNORE="test_select_window or "
+export PYTEST_IGNORE+="test_session.py::test_select_window or"
+export PYTEST_IGNORE+=" tests/test_session.py::test_select_window or"
+export PYTEST_IGNORE+=" tests/legacy_api/test_session.py::test_select_window or"
+export PYTEST_IGNORE+=" test_function_times_out"
+
+# ModuleNotFoundError: No module named 'gp_sphinx'
+rm -f docs/conf.py
+
 echo "Starting tests with PYTEST_IGNORE set to $PYTEST_IGNORE"
-export PYTEST_IGNORE="test_select_window or test_session.py::test_select_window or tests/test_session.py::test_select_window or tests/legacy_api/test_session.py::test_select_window or test_function_times_out"
 %pytest -k "not (${PYTEST_IGNORE})"
 
 rm -rf src/
