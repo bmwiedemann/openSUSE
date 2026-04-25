@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Thu Apr 23 19:19:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.51.1:
+  * Bug fixes
+    - [BACKPORT] cmd: Convert Makefile.build to golang. by
+      @eiffel-fl in #5475
+  * Dependencies
+    - go: Bump go.opentelemetry.io/otel/sdk from 1.42.0 to 1.43.0
+      in /examples
+    - go: Bump go.opentelemetry.io/otel/sdk from 1.42.0 to 1.43.0
+    - Bump Go compiler version from 1.25.8 to 1.25.9 across
+      repository
+
+-------------------------------------------------------------------
+Thu Apr 09 08:21:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.51.0:
+  * Welcome to the v0.51.0 of Inspektor Gadget. These are the most
+    important changes:
+    - gadgets: Add profile_cuda by @mauriciovasquezbernal in #5222
+    - Add top_cpu_throttle gadget to detect CFS bandwidth
+      throttling by @burak-ok in #5339
+    - introduce logs operator by @flyth in #5410
+    - New Gadget: CUDA memory metrics by @burak-ok in #5278
+  * General Improvements
+    - Artifact Hub: Update gadgets version to v0.50.0 by
+      @github-actions[bot] in #5329
+    - charts: Use gadget.namespace for configmap config.yaml. by
+      @eiffel-fl in #5335
+    - operators: Support pre-provided container and tracer
+      collections by @matthyx in #5320
+    - op/ebpf: Don't populate the same struct again by @burak-ok in
+      #5356
+    - helm: Allow configuring hostPID and hostNetwork by
+      @mauriciovasquezbernal in #5354
+    - tools: Update to go 1.25 for eks-cleanup. by @eiffel-fl in
+      #5363
+    - Artifact Hub: Update gadgets version to v0.50.1 by
+      @github-actions[bot] in #5368
+    - tools: Bump golang base image for bench. by @eiffel-fl in
+      #5364
+    - include: Format buffer.h correctly. by @eiffel-fl in #5360
+    - op/generate_networkpolicy: Use podSelector for Services by
+      @mqasimsarfraz in #5358
+    - Improve bpfstats Gadget: Align Output Metrics with the CPU
+      values provided by top_process Gadget by @alronova in #5211
+    - trace_tcpretrans: add CO-RE fix for tcp_retransmit_skb
+      tracepoint by @dorser in #5408
+  * Security Improvements
+    - Remove docker/docker dependency and upgrade to 29+ libraries
+      by @burak-ok in #5414
+  * Bug Fixes
+    - container-collection: Fix leaking containers by
+      @mauriciovasquezbernal in #5296
+  * Testing and Continue Integration
+    - ci: Use actions/actionlint instead of downloading actionlint.
+      by @eiffel-fl in #5357
+    - Address CI warnings: update deprecated actions, remove stale
+      inputs by @Copilot in #5378
+    - test(top-process): add integration test for the top-process
+      gadget by @turonimbus in #5283
+    - CI: Add Zizmor by @burak-ok in #5337
+  * Dependencies updates
+    - ci: bump actions/setup-go from 6.2.0 to 6.3.0 by
+      @dependabot[bot] in #5326
+    - go: bump the k8s group across 2 directories with 7 updates by
+      @dependabot[bot] in #5328
+    - ci: bump actions/download-artifact from 7.0.0 to 8.0.0 by
+      @dependabot[bot] in #5325
+    - ci: bump actions/upload-artifact from 6.0.0 to 7.0.0 by
+      @dependabot[bot] in #5327
+    - go: bump the otel group across 1 directory with 11 updates by
+      @dependabot[bot] in #5331
+    - go: bump the aws-sdk group across 1 directory with 3 updates
+      by @dependabot[bot] in #5333
+    - go: bump github.com/aws/aws-sdk-go-v2/service/ec2 from
+      1.293.1 to 1.294.0 in /tools/eks-cleanup in the aws-sdk group
+      across 1 directory by @dependabot[bot] in #5341
+    - go: bump github.com/docker/cli from 29.2.1+incompatible to
+      29.3.0+incompatible in the docker group across 1 directory by
+      @dependabot[bot] in #5340
+    - go: bump github.com/cilium/ebpf from 0.20.0 to 0.21.0 by
+      @dependabot[bot] in #5342
+    - ci: bump aquasecurity/trivy-action from 0.34.1 to 0.35.0 by
+      @dependabot[bot] in #5350
+    - ci: bump actions/dependency-review-action from 4.8.3 to 4.9.0
+      by @dependabot[bot] in #5347
+    - go: bump the golang-x group across 2 directories with 2
+      updates by @dependabot[bot] in #5351
+    - ci: bump docker/login-action from 3.7.0 to 4.0.0 by
+      @dependabot[bot] in #5349
+    - ci: bump benchmark-action/github-action-benchmark from 1.20.7
+      to 1.21.0 by @dependabot[bot] in #5346
+    - go: bump google.golang.org/grpc from 1.79.1 to 1.79.2 by
+      @dependabot[bot] in #5353
+    - ci: bump docker/setup-qemu-action from 3.7.0 to 4.0.0 by
+      @dependabot[bot] in #5348
+    - go: bump the otel group across 1 directory with 10 updates by
+      @dependabot[bot] in #5352
+    - go: bump the golang-x group across 2 directories with 3
+      updates by @dependabot[bot] in #5366
+    - ci: bump docker/build-push-action from 6.19.2 to 7.0.0 by
+      @dependabot[bot] in #5370
+    - ci: bump sigstore/cosign-installer from 4.0.0 to 4.1.0 by
+      @dependabot[bot] in #5374
+    - ci: bump docker/setup-buildx-action from 3.12.0 to 4.0.0 by
+      @dependabot[bot] in #5371
+    - go: bump github.com/aws/aws-sdk-go-v2 from 1.41.3 to 1.41.4
+      in /tools/eks-cleanup by @dependabot[bot] in #5376
+    - ci: bump github/codeql-action from 4.32.4 to 4.32.6 by
+      @dependabot[bot] in #5373
+    - go: bump the aws-sdk group across 1 directory with 3 updates
+      by @dependabot[bot] in #5375
+    - ci: bump rajatjindal/krew-release-bot from 0.0.50 to 0.0.51
+      by @dependabot[bot] in #5372
+    - Dockerfiles: Bump debian from 74d56e3 to f065376 in
+      /Dockerfiles by @dependabot[bot] in #5380
+    - go: bump google.golang.org/grpc from 1.79.2 to 1.79.3 by
+      @dependabot[bot] in #5384
+    - go: bump google.golang.org/grpc from 1.74.2 to 1.79.3 in
+      /tools/testjson2md by @dependabot[bot] in #5386
+    - go: bump github.com/aws/aws-sdk-go-v2/service/ec2 from
+      1.294.1 to 1.295.0 in /tools/eks-cleanup in the aws-sdk group
+      across 1 directory by @dependabot[bot] in #5387
+    - ci: bump github/codeql-action from 4.32.6 to 4.34.1 by
+      @dependabot[bot] in #5393
+    - ci: bump azure/login from 2.3.0 to 3.0.0 by @dependabot[bot]
+      in #5394
+    - ci: bump actions/setup-node from 6.2.0 to 6.3.0 by
+      @dependabot[bot] in #5396
+    - ci: bump actions/download-artifact from 8.0.0 to 8.0.1 by
+      @dependabot[bot] in #5395
+    - ci: bump softprops/action-gh-release from 2.5.0 to 2.6.1 by
+      @dependabot[bot] in #5392
+    - go: bump github.com/aws/aws-sdk-go-v2/service/ec2 from
+      1.295.0 to 1.296.0 in /tools/eks-cleanup in the aws-sdk group
+      across 1 directory by @dependabot[bot] in #5390
+    - go: bump the k8s group across 2 directories with 7 updates by
+      @dependabot[bot] in #5389
+    - go: Bump github.com/docker/cli from 29.3.0+incompatible to
+      29.3.1+incompatible in the docker group across 1 directory by
+      @dependabot[bot] in #5398
+    - ci: Bump zizmorcore/zizmor-action from 0.5.0 to 0.5.2 by
+      @dependabot[bot] in #5403
+    - ci: Bump azure/aks-set-context from 4.0.3 to 5.0.0 by
+      @dependabot[bot] in #5405
+
+-------------------------------------------------------------------
 Thu Mar 12 11:48:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.1:
