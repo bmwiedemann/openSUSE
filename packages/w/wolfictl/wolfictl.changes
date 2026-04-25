@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr 24 06:06:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.13:
+  * Update apko to 1.2.7 to pick up bug fixes
+
+-------------------------------------------------------------------
+Thu Apr 23 19:19:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.12:
+  * Bump apko to v1.2.6
+  * build(deps): bump the chainguard group with 3 updates
+  * build(deps): bump github.com/github/go-spdx/v2 from 2.5.0 to
+    2.6.0 (#1949)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.17.2 to
+    5.18.0 (#1950)
+  * build(deps): bump goreleaser/goreleaser-action from 7.0.0 to
+    7.1.0 (#1951)
+  * build(deps): bump chainguard-dev/actions from 1.6.14 to 1.6.15
+    (#1952)
+  * build(deps): bump step-security/harden-runner from 2.18.0 to
+    2.19.0 (#1953)
+
+-------------------------------------------------------------------
 Mon Apr 20 17:18:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.39.11:
