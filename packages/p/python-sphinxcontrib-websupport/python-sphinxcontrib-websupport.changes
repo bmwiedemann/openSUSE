@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 17 02:20:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.0:
+  * Adopt Ruff
+  * Tighten MyPy settings
+- Add patch fix-testsuite.patch:
+  * Fix issues from switching to ruff.
+- Add patch support-sphinx-9.patch:
+  * Support changes required by Sphinx 9.
+
+-------------------------------------------------------------------
 Sun Jan 14 10:49:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.7:

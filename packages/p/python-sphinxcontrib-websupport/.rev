@@ -139,4 +139,12 @@
   * Publish a ``whoosh`` extra.</comment>
     <requestid>1138562</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bc6609f466b585e239b297fb03170b8c</srcmd5>
+    <version>2.0.0</version>
+    <time>1777145715</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1349039</requestid>
+  </revision>
 </revisionlist>

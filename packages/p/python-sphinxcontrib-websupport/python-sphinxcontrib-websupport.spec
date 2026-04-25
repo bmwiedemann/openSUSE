@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-sphinxcontrib-websupport
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,26 +26,28 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-websupport%{psuffix}
-Version:        1.2.7
+Version:        2.0.0
 Release:        0
 Summary:        Sphinx API for Web Apps
 License:        BSD-2-Clause
 URL:            https://github.com/sphinx-doc/sphinxcontrib-websupport
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-websupport/sphinxcontrib_websupport-%{version}.tar.gz
-BuildRequires:  %{python_module flit-core}
+# PATCH-FIX-UPSTREAM Based on gh#sphinx-doc/sphinxcontrib-websupport#78
+Patch0:         fix-testsuite.patch
+# PATCH-FIX-UPSTREAM gh#sphinx-doc/sphinxcontrib-websupport#91
+Patch1:         support-sphinx-9.patch
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module flit-core >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
-Requires:       python-docutils
+Requires:       python-Sphinx >= 5.0
+Requires:       python-sphinxcontrib-serializinghtml
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module SQLAlchemy}
-BuildRequires:  %{python_module Sphinx >= 5.0}
 BuildRequires:  %{python_module Whoosh}
-BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-websupport >= %{version}}
 %endif
@@ -74,11 +76,11 @@ documentation into your Web application.
 
 %if !%{with test}
 %files %{python_files}
-%license LICENSE
-%doc CHANGES README.rst
+%license LICENCE.rst
+%doc CHANGES.rst README.rst
 %dir %{python_sitelib}/sphinxcontrib/
 %{python_sitelib}/sphinxcontrib/websupport
-%{python_sitelib}/sphinxcontrib_websupport-%{version}*-info
+%{python_sitelib}/sphinxcontrib_websupport-%{version}.dist-info
 %endif
 
 %changelog
