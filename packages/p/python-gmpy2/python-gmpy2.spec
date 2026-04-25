@@ -1,7 +1,7 @@
 #
 # spec file for package python-gmpy2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gmpy2
-Version:        2.1.5
+Version:        2.3.0
 Release:        0
 Summary:        GMP/MPIR, MPFR, and MPC interface to Python 2.6+ and 3x
 License:        LGPL-3.0-only
 URL:            https://github.com/aleaxit/gmpy
 Source:         https://files.pythonhosted.org/packages/source/g/gmpy2/gmpy2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/aleaxit/gmpy/pull/422 Update MPFR to 4.2.1 in build scripts & fix test failures on new version
-Patch0:         mpfr421.patch
-# PATCH-FIX-UPSTREAM file included in https://github.com/aleaxit/gmpy/issues/418#issuecomment-1706721394
-Patch1:         gmpy2_cache.c.diff
-# PATCH-FIX-UPSTREAM included in https://github.com/aleaxit/gmpy/issues/446
-Patch2:         support-python-312.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module setuptools_scm >= 6.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -51,7 +48,7 @@ rounded real floating-point arithmetic) and MPC (correctly
 rounded complex floating-point arithmetic) libraries.
 
 %prep
-%autosetup -p1 -n gmpy2-%{version}
+%setup -q -n gmpy2-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -62,16 +59,11 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%{python_expand export PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH=%{buildroot}%{$python_sitearch}
-pushd test
-$python runtests.py
-popd
-}
+%pytest_arch
 
 %files %{python_files}
-%doc README
 %license COPYING COPYING.LESSER
+%doc README.rst
 %{python_sitearch}/gmpy2
 %{python_sitearch}/gmpy2-%{version}.dist-info
 
