@@ -194,4 +194,29 @@
 - Remove pin against urllib3.</comment>
     <requestid>1295994</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>de1426179e0241650e01d5dcc52a9e37</srcmd5>
+    <version>1.8.3</version>
+    <time>1777152477</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.3:
+  * Stop using external mock module
+  * Added get_nodes_with_info() function to show information of
+    all the nodes
+  * Add tree parameter to get_build_test_report()
+  * Add support for connection retry
+  * add support for python 3.12
+  * remove Python2 &amp; six
+  * prevent get_running_builds failure when ephemeral nodes
+    disapear during the call
+  * Fix typos
+  * fix zuul tests
+  * only change view name from all to All when All was requested
+  * Do not initialize Request headers with bytestring
+- drop python-python-jenkins-no-mock.patch, remove-six.patch (upstream)
+
+- Pin {Build,}Requires on urllib3 to &lt; 2.
+- Fix dependencies for version 1.4.0</comment>
+    <requestid>1349274</requestid>
+  </revision>
 </revisionlist>

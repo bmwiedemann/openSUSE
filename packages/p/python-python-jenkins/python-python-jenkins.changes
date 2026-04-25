@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 25 19:58:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.3:
+  * Stop using external mock module
+  * Added get_nodes_with_info() function to show information of
+    all the nodes
+  * Add tree parameter to get_build_test_report()
+  * Add support for connection retry
+  * add support for python 3.12
+  * remove Python2 & six
+  * prevent get_running_builds failure when ephemeral nodes
+    disapear during the call
+  * Fix typos
+  * fix zuul tests
+  * only change view name from all to All when All was requested
+  * Do not initialize Request headers with bytestring
+- drop python-python-jenkins-no-mock.patch, remove-six.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Jul 28 04:08:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.2:
@@ -19,7 +38,7 @@ Mon Jul 28 04:08:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Mon Jul 24 06:15:47 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Pin {Build,}Requires on urllib3 to < 2. 
+- Pin {Build,}Requires on urllib3 to < 2.
 
 -------------------------------------------------------------------
 Mon Apr 17 08:05:56 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
@@ -71,7 +90,7 @@ Thu Aug  1 12:01:53 UTC 2019 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue May 14 18:18:30 UTC 2019 - Jonathan <jharker@suse.com>
 
-- Fix dependencies for version 1.4.0 
+- Fix dependencies for version 1.4.0
 
 -------------------------------------------------------------------
 Tue Dec 11 15:07:10 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>

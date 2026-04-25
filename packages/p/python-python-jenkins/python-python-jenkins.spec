@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jenkins
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Thomas Bechtold <thomasbechtold@jpberlin.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,16 +18,12 @@
 
 
 Name:           python-python-jenkins
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        Python bindings for the remote Jenkins API
 License:        BSD-3-Clause
 URL:            https://opendev.org/jjb/python-jenkins
-Source:         https://files.pythonhosted.org/packages/source/p/python-jenkins/python-jenkins-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on https://review.opendev.org/c/jjb/python-jenkins/+/953273
-Patch0:         python-python-jenkins-no-mock.patch
-# PATCH-FIX-UPSTREAM Based on https://opendev.org/jjb/python-jenkins/commit/63b657fe23c3b33903061a17b88787886be3c6dd
-Patch1:         remove-six.patch
+Source:         https://files.pythonhosted.org/packages/source/p/python-jenkins/python_jenkins-%{version}.tar.gz
 BuildRequires:  %{python_module cmd2}
 BuildRequires:  %{python_module multi_key_dict}
 BuildRequires:  %{python_module multiprocess}
@@ -58,7 +54,7 @@ API. It currently supports management of:
  * Slave node configuration
 
 %prep
-%autosetup -p1 -n python-jenkins-%{version}
+%autosetup -p1 -n python_jenkins-%{version}
 
 sed -i '1{\@^#!%{_bindir}/env python@d}' jenkins/__init__.py
 
