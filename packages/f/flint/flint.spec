@@ -1,7 +1,7 @@
 #
 # spec file for package flint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           flint
-%define lname	libflint22
+%define lname	libflint23
 %define _lto_cflags %nil %dnl ASM in source
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        C library for doing number theory
 License:        LGPL-3.0-or-later
@@ -39,9 +39,9 @@ BuildRequires:  gmp-devel >= 6.1.2
 BuildRequires:  gmp-devel >= 6.2.1
 %endif
 BuildRequires:  libtool
-BuildRequires:  pkgconfig(mpfr) >= 4
 BuildRequires:  ntl-devel
 BuildRequires:  xz
+BuildRequires:  pkgconfig(mpfr) >= 4
 
 %description
 FLINT (Fast Library for Number Theory) is a C library in support of

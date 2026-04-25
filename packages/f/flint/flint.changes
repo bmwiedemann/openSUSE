@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Apr 24 12:55:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.0
+  * Added the ``radix`` module for multiprecision ``mpn``-style
+    arithmetic in any word-size limb radix (e.g. decimal or
+    `p`-adic radices).
+  * Added the module ``gr_ore_poly`` for Ore polynomials over
+    generic rings.
+  * Added middle products for most polynomial types
+    (``fmpz_poly_mulmid``, ``fmpq_poly_mulmid``,
+    ``nmod_poly_mulmid``, ``arb_poly_mulmid``, ``acb_poly_mulmid``,
+    ``gr_poly_mulmid``, etc).
+  * Added ``qadic_ctx_init_modulus`` and
+    ``qadic_ctx_init_modulus_nmod`` to allow initializing a
+    `q`-adic context with a given modulus.
+  * Added ``gr_poly_mullow_toom_serial`` implementing Toom–Cook
+    multiplication with arbitrary number of interpolation points.
+  * Added Montgomery arithmetic (redc) to the ``nmod`` module. Four
+    variants (fullword and halfword with eager and lazy reduction)
+    are supported.
+  * Added generic ring interface to Montgomery arithmetic
+    (``gr_ctx_init_nmod_redc``, ``gr_ctx_init_nmod_redc_fast``).
+  * Add ``flint_mpn_divrem_1_preinv`` for nx1 integer division with
+    a precomputed inverse.
+  * Added ``n_mod_barrett``, ``n_mod_barrett_lazy``,
+    ``n_mod_lemire`` for single-word modular reduction using
+    Barrett and Lemire–Kaser–Kurz algorithms.
+  * Added precomputation functions for faster evaluation of
+    ``qadic`` square roots in characteristic 2.
+
+-------------------------------------------------------------------
 Tue Nov 25 14:50:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.0

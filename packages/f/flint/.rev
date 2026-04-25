@@ -200,4 +200,12 @@
     <comment>- Update to release 3.4.0</comment>
     <requestid>1322683</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b7925d2a6a2cacb683d6f728cb486a99</srcmd5>
+    <version>3.5.0</version>
+    <time>1777145858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.5.0</comment>
+    <requestid>1349132</requestid>
+  </revision>
 </revisionlist>
