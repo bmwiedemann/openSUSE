@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 24 09:12:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not package 0-length rpmlintrc file
+
+-------------------------------------------------------------------
 Mon Dec 29 16:30:23 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 2.45.1

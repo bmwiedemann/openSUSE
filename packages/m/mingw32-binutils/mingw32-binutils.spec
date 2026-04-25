@@ -27,7 +27,6 @@ URL:            http://www.gnu.org/software/binutils/
 Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
 Source1:        http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz.sig
 Source2:        mingw32-binutils.keyring
-Source99:       mingw32-binutils-rpmlintrc
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  makeinfo
