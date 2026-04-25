@@ -17,7 +17,7 @@
 
 
 Name:           dealers-choice
-Version:        0.0.12
+Version:        0.0.13
 Release:        0
 Summary:        Online Multiplayer Stud and Draw Poker, Texas Hold'em and Omaha
 License:        MIT
@@ -33,6 +33,7 @@ BuildRequires:  python3
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(SDL2_ttf)
+BuildRequires:  pkgconfig(canfigger)
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(sdl2)

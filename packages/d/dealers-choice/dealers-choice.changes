@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Apr 24 17:19:12 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- dealers-choice 0.0.13
+  * Use system-install canfigger instead of the bundled copy
+  + Add "X" quit button (top-right, red) to all four screens (connect, settings,
+    lobby, game); ESC is a hotkey for the same action; both paths go through a
+    confirmation dialog (SDL_ShowMessageBox) before quitting
+  + Draw rounded semi-transparent nameplate panels behind each player's seat info;
+    empty seats show a fainter "Open" panel; nick column sized for 15-character
+    maximum and left-aligned; all columns vertically centered; uniform column
+    widths across all seats
+  + Add vignette effect: radial darkening from center to edges for a lamp-lit atmosphere
+  + Replace solid-color table background with tiled green felt texture
+  + Server: connection rate limiting and per-IP connection cap; loopback
+    always exempt; configured via max_connections_per_minute and
+    max_connections_per_ip in server.conf (0 = unlimited) (#189)
+  + Add --auto-connect: skip the connect dialog and connect immediately on
+    startup using host/port from player.conf; ignored if --server is set;
+    reverts to normal menu on return from lobby (#253)
+  + Coins placed in the pot are rendered at a random rotation angle
+  + Add 7-card no peek
+  * bugfix: Community cards (Hold'em, Omaha) disappear after a player folds
+    (#252)
+  * Folded players: preserve cards (face-up or face-down) and grey out the
+    player area instead of removing cards when a player folds
+  * server.conf: end_of_game_timeout, action_timeout, and dealer_timeout are
+    now specified in seconds instead of milliseconds; keys renamed to drop
+    the _ms suffix
+  * bugfix: Server: nick too long is truncated instead of causing disconnect; client
+    and bot no longer include null terminator in nick length; nicks up to 14
+    characters are now accepted as expected
+  * dealers-choice-bot: add --verbose flag; verbose_printf/verbose_puts at key
+    decision points (hand strength, each action, discard count); action name
+    output moved into send_player_action so client and bot share the same path
+  * Client returns to the connect screen on server disconnect or send failure,
+    from both the lobby and game screens (#217, #256)
+  * dealers-choice-bot: no longer links against SDL2_ttf or SDL2_image
+  * Use canfigger_config_dir() and canfigger_path_join() for config/data
+    paths; remove get_config_dir(), join_paths(), and PathconfLimits_t
+    from util.c
+  * Bump GAME_PROTOCOL_VERSION from 8 to 9
+
+-------------------------------------------------------------------
 Tue Apr 14 12:01:27 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
 
 - dealers-choice 0.0.12
