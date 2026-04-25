@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 17 22:20:45 UTC 2026 - Scott Reeves <sreeves@suse.com>
+
+- Add ntfs3g-heap-overflow.patch: bsc#1262216 CVE-2026-40706.
+
+-------------------------------------------------------------------
 Mon Jun  2 21:54:55 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Migrate away from update-alternatives (bsc#1240095).

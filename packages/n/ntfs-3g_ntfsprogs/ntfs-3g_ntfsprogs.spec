@@ -1,7 +1,7 @@
 #
 # spec file for package ntfs-3g_ntfsprogs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ URL:            https://github.com/tuxera/ntfs-3g/
 Source:         https://tuxera.com/opensource/%{name}-%{version}.tgz
 # PATCH-FIX-UPSTREAM ntfs3g-unistr-use-after-free.patch boo#1226007 mgorse@suse.com -- fix use after free in ntfs_uppercase_mbs.
 Patch0:         ntfs3g-unistr-use-after-free.patch
+# PATCH-FIX-UPSTREAM ntfs3g-heap-overflow.patch bsc#1262216 sreeves@suse.com -- fix heap overflow
+Patch1:         ntfs3g-heap-overflow.patch
 BuildRequires:  gnutls-devel
 BuildRequires:  hwinfo-devel
 BuildRequires:  libgcrypt-devel
