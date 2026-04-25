@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 25 11:02:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.80.0:
+  * Fix GRPC_TRACE noworking when absl log initialized in cython. (#41814)
+  * Fix AsyncIO Server maximum_concurrent_rpcs enforcemenpreventing
+    negative active_rpcs count. (#41532)
+  * Docs: correcgrpc.Compression references. (#41705)
+  * [Typeguard] Par4 - Add Typeguard to AIO stack in tests . (#40226)
+  * Fix multi-thread exceptiofor Asyncio gRPC clients - Fixes #25364. (#41483)
+  * Resolve absl::InitializeLog warning. (#39779)
+  * Remove IF usage iCython. (#41400)
+  * Add language features texported proto files. (#41501)
+  * Fix craswhen iterating on AIO Metadata keys(), values(),
+    items() or list(metadata.values()) etc. . (#41481)
+  * Modernize and revamp Public API Docs. (#41287)
+
+-------------------------------------------------------------------
 Fri Feb 13 09:36:11 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.78.0:
