@@ -159,4 +159,12 @@
     <comment>- Reenable LTO on riscv64, gcc has been fixed</comment>
     <requestid>1329886</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>26c233ae5014e62be81390d1e6fdb621</srcmd5>
+    <version>1.4.0</version>
+    <time>1777145726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.4.0</comment>
+    <requestid>1349118</requestid>
+  </revision>
 </revisionlist>
