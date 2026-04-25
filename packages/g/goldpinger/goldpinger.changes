@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 23 19:30:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.2:
+  * chore(version): bump to v3.11.2
+  * Also prune response-time histogram "check" call_type on peer
+    removal
+  * Use table-driven subtests with IPv4, IPv6, and mixed address
+    families
+  * Prune stale Prometheus metrics for defunct peer pod IPs on
+    teardown
+
+-------------------------------------------------------------------
 Mon Apr 20 17:22:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.1:
