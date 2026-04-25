@@ -189,4 +189,12 @@
     <comment>update to 1.118 (forwarded request 1341753 from AndreasStieger)</comment>
     <requestid>1341754</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>aa2d51e01c45b90cb888572898624073</srcmd5>
+    <version>1.119</version>
+    <time>1777145896</time>
+    <user>dimstar_suse</user>
+    <comment>bump to 1.119 (forwarded request 1349257 from AndreasStieger)</comment>
+    <requestid>1349258</requestid>
+  </revision>
 </revisionlist>
