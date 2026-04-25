@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 24 06:07:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.3:
+  * Update apko to 1.2.7 to pick up bug fixes (#2499)
+
+-------------------------------------------------------------------
+Thu Apr 23 19:22:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.2:
+  * Bump apko to v1.2.6 (#2495)
+  * build(deps): bump the actions group with 2 updates (#2493)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.17.2 to
+    5.18.0 (#2490)
+
+-------------------------------------------------------------------
 Sat Apr 18 07:22:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.1:
