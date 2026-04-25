@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 17 13:22:35 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.43.0
+  * remove python 2.x support from py test file
+  * moved to pyproject.toml
+  * add a new ExtendedHandler in webserver.py
+  * replace dead battery imghdr with filetype
+  * update supported Python versions
+  * add enable_webextensions option for chromium-based browsers
+  * replace platform.system() with sys.platform
+  * Remove deprecated FTP proxy support
+  * Remove deprecated FirefoxBinary class
+- Refresh selenium-pytest.tar.bz2 and vendor.tar.gz
+
+-------------------------------------------------------------------
 Mon Jun  2 15:32:37 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update vendor tarball to fix CVE-2024-12224 (bsc#1243866) 

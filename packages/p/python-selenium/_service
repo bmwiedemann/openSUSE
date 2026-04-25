@@ -1,6 +1,6 @@
 <services>
   <service name="cargo_vendor" mode="manual">
-    <param name="srctar">selenium-4.25.0.tar.gz</param>
+    <param name="srctar">selenium-4.43.0.tar.gz</param>
     <param name="compression">xz</param>
     <param name="update">true</param>
   </service>
