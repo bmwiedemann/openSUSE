@@ -1,0 +1,46 @@
+From 810ff57244f82bb55624aa201b4a9706419c4800 Mon Sep 17 00:00:00 2001
+From: Brandon Rhodes <brandon@rhodesmill.org>
+Date: Sun, 1 Feb 2026 11:40:40 -0500
+Subject: [PATCH] =?UTF-8?q?Fix:=20=E2=80=98excerpt=E2=80=99=20test=20was?=
+ =?UTF-8?q?=20jplephem=20version=20sensitive?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Drat.  I should have run the tests one final time after bumping the
+version for the 2.24 release.  Brought to my attention by the test
+failure at: conda-forge/jplephem-feedstock#35
+---
+ jplephem/test.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/jplephem/test.py b/jplephem/test.py
+index 39cc1ae..fb2a06d 100644
+--- a/jplephem/test.py
++++ b/jplephem/test.py
+@@ -17,7 +17,7 @@
+ from doctest import DocTestSuite, ELLIPSIS
+ from functools import partial
+ from io import BytesIO
+-from jplephem import Ephemeris, commandline
++from jplephem import __version__, Ephemeris, commandline
+ from jplephem.exceptions import OutOfRangeError
+ from jplephem.daf import DAF, FTPSTR, NAIF_DAF
+ from jplephem.pck import PCK
+@@ -571,13 +571,14 @@ def test_excerpt_command(self):
+ 
+         preface = """\
+ ;
+-; This is an ephemeris excerpt created by jplephem 2.23, which was
++; This is an ephemeris excerpt created by jplephem {}, which was
+ ; asked to narrow the ephemeris to Julian dates 2460179.5 - 2460180.5
+ ; (proleptic Gregorian dates 2023-08-23 through 2023-08-24).
+ ;
+ ; Here is the comments area from the original ephemeris file:
+ ; ----------------------------------------------------------------------
+-"""
++""".format(__version__)
++
+         output1 = commandline.main(['comment', 'de421.bsp'])
+         output2 = commandline.main(['comment', 'de421_excerpt.bsp'])
+         self.assertEqual(preface + output1, output2)

@@ -1,7 +1,7 @@
 #
 # spec file for package python-jplephem
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           python-jplephem
-Version:        2.23
+Version:        2.24
 Release:        0
 Summary:        Planet position predictor using a JPL ephemeris
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/brandon-rhodes/python-jplephem/
 Source:         https://github.com/brandon-rhodes/python-jplephem/archive/%{version}.tar.gz#/jplephem-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/brandon-rhodes/python-jplephem/commit/810ff57244f82bb55624aa201b4a9706419c4800
+Patch:          fix-version-dependency.patch
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -41,7 +43,7 @@ ephemeris for predicting the position and velocity of a planet or other
 Solar System body.  It only needs NumPy <http://www.numpy.org/>`.
 
 %prep
-%setup -q -n python-jplephem-%{version}
+%autosetup -p1 -n python-jplephem-%{version}
 
 %build
 %pyproject_wheel

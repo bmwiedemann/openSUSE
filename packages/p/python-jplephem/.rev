@@ -71,4 +71,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1309273</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>07dc63301bece01c3599ce491d9590cc</srcmd5>
+    <version>2.24</version>
+    <time>1777145881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.24:
+  * To avoid deprecation warnings from recent versions of NumPy,
+    assignments to array .shape attributes have been replaced with
+    calls to the array method .reshape().
+- fix-version-dependency.patch: add to fix tests</comment>
+    <requestid>1349210</requestid>
+  </revision>
 </revisionlist>
