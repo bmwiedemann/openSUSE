@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr 23 20:30:16 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.9
+  - 367f9242f03 Fix: collection preview lost when writing via
+    bpy.data.libraries.write()
+  - 310362cbb2c Fix: crash when loading file from within asset
+    library
+  - deae72c507b Fix #156134: Quick Liquid/Smoke error with *Shade
+    Auto Smooth*
+  - 3932ac75ea0 Fix #156273: Normalization in Graph Editor error
+    with flat curves
+  - 350d9a856bb Fix #154120: Offset setting does not affect surface
+    placement
+  - 0dc28b3e4fc Fix #156643: Animrig: Don't insert frames for
+    keying sets without path
+  - dcbc8d32cb1 Fix #156431: LineArt: Correct collection flags
+    inheritance
+  - dcf07c5cb45 LineArt: Make intersection lines follow face mark
+    filtering
+  - 995a952fb85 Fix #152536: Cryptomatte fails if more than 32
+    assets selected
+  - 17b62050482 Fix #156200: Stereo images in All mode do not work
+  - e0fbd0d4e19 Fix #155581: Quick Favorites: some items are not
+    removable from the menu
+  - 73605bd3b2a Fix #154685: Grease Pencil: Noise modifier creates
+    discontinuity
+  - 4d91c1c7f92 Fix #155418: Editing custom prop of 'Temp' type in
+    °C/F crashes Blender
+  - f80f1c8fe57 Fix #155591: LineArt: Correct sensor fit for ortho
+    camera
+  - df0a68fe9c0 Fix: FCurve Settings RNA paths broken
+  - 3c6fbda30d7 Release: Bump to 4.5.9 candidate
+  - 62c687adb81 Fix #155639: Compositor leaks passes
+
+-------------------------------------------------------------------
 Tue Apr 21 14:23:24 UTC 2026 - Max Lin <mlin@suse.com>
 
 - Tweak HIP support bcond to not build HIP support on Leap 16.1:
