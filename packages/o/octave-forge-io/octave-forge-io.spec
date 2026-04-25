@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-io
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  io
 Name:           octave-forge-%{octpkg}
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        Input/Output in external formats from Octave
 License:        BSD-2-Clause AND GPL-3.0-or-later

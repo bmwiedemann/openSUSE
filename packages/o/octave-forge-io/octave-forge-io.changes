@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Apr 19 15:07:04 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.7.1:
+  * Bug fixes:
+    - fromJSON.m: make it work again under VM
+    - xlsread / OCT interface: fix cellfun error exposed
+      in Octave 11
+    - OCT interface: make opening .xlsx files more robust
+    - xlsread.m: don't strip 3rd output from empty outer rows and
+      columns
+    - rfsearch: fixed a long hidden bug in directory processing
+  * Code improvements
+    - io_testscript.m: improve cleanup after use
+    - various small bug fixes and typos fixed
+  * Other changes
+    - Bump minimum Octave version to 6.4.0.  Selected interfaces
+      might still work with Octave-5.2.0 but not all of the
+      Java-based interfaces could be tested; the Java-based ones
+      in Octave-4.2.0 couldn't be tested at all.  That may be due
+      to those old Octave releases not working properly with newer
+      Java releases.
+    - The OXS (OpenXLS) interface doesn't seem to work well with
+      newer Java versions.  OpenXLS has been abandoned 10 years
+      aog, but seems to have been revived in a new project. 
+      Until that project produces updated binaries (Java .jar
+      files) there's little that can be done other than adapting
+      the relevant error message when trying to open an .xls file
+      with the OXS interface.
+
+-------------------------------------------------------------------
 Tue Aug 26 19:57:50 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.7.0:
