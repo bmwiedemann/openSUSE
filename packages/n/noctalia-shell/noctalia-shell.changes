@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 24 11:57:43 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+
+- Removed some dependencies:
+  * removed cava, it's not needed for AudioVisualizer on noctalia-shell anymore, can be installed as a standalone
+  * removed dejavu-fonts and google-roboto-fonts, both aren't needed as a required packages, noctalia-shell uses system default font
+
+-------------------------------------------------------------------
 Tue Apr 21 16:16:58 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Add 001-setting-gate-automatic-network-requests.patch:

@@ -27,14 +27,11 @@ Source0:        %{name}-%{version}.tar.zst
 Source99:       %{name}-rpmlintrc
 Patch0:         001-setting-gate-automatic-network-requests.patch
 BuildRequires:  zstd
+Requires:       noctalia-qs
 Requires:       ImageMagick
 Requires:       brightnessctl
-Requires:       dejavu-fonts
-Requires:       google-roboto-fonts
-Requires:       noctalia-qs
 Requires:       python3
 Requires:       wlr-randr
-Recommends:     cava
 Recommends:     cliphist
 Recommends:     ddcutil
 Recommends:     inter-fonts
