@@ -17,40 +17,43 @@
 
 
 %{?sle15_python_module_pythons}
+# See CMakeLists.txt
+%define miniexpr_commit 37bf6982bf9619036b47f095b7005bc3c87a7447
+%define minicc_commit 41208bdc85612042f363f425cda4601b3ed90d64
 Name:           python-blosc2
-Version:        2.7.1
+Version:        4.1.2
 Release:        0
 Summary:        Python wrapper for the C-Blosc2 library
 License:        BSD-3-Clause
 URL:            https://github.com/Blosc/python-blosc2
 Source:         https://files.pythonhosted.org/packages/source/b/blosc2/blosc2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM backported from gh#Blosc/python-blosc2@f91bae77b
-Patch0:         0001-Add-squeeze-as-view.patch
+Source1:        https://github.com/Blosc/miniexpr/archive/%{miniexpr_commit}.tar.gz#/miniexpr-%{miniexpr_commit}.tar.gz
+# PATCH-FIX-OPENSUSE miniexpr-no-license-install.patch code@bnavigator.de -- Don't the license files into python platlib
+Patch0:         miniexpr-no-license-install.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.10}
-BuildRequires:  %{python_module numpy-devel >= 1.20.3}
+BuildRequires:  %{python_module numpy-devel >= 1.26}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module scikit-build}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module scikit-build-core}
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(blosc2) >= 2.14.4
+BuildRequires:  pkgconfig(blosc2) >= 2.14.1
 Requires:       python-msgpack
-Requires:       python-ndindex >= 1.4
-Requires:       python-numexpr
-Requires:       python-numpy >= 1.20.3
-Requires:       python-py-cpuinfo
+Requires:       python-ndindex
+Requires:       python-numexpr >= 2.14.1
+Requires:       python-numpy >= 1.26
+Requires:       python-requests
 # SECTION test requirements
 BuildRequires:  %{python_module msgpack}
-BuildRequires:  %{python_module ndindex >= 1.4}
-BuildRequires:  %{python_module numexpr}
+BuildRequires:  %{python_module ndindex}
+BuildRequires:  %{python_module numexpr >= 2.14.1}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module py-cpuinfo}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 # /SECTION
 %python_subpackages
 
@@ -70,13 +73,19 @@ API of python-blosc, so the former can be used as a drop-in replacement
 for the later.
 
 %prep
-%autosetup -p1 -n blosc2-%{version}
+%autosetup -p1 -n blosc2-%{version} -a1
 
 %build
 export CFLAGS="%{optflags}"
 export CPPFLAGS="%{optflags}"
 # debundle c-blosc2
-export SKBUILD_CONFIGURE_OPTIONS="-DUSE_SYSTEM_BLOSC2:BOOL=ON"
+export USE_SYSTEM_BLOSC2=1
+# See the CMakeLists.txt files for the repos and their commit hashes
+SKBUILD_CMAKE_DEFINE="FETCHCONTENT_SOURCE_DIR_MINIEXPR=$PWD/miniexpr-%{miniexpr_commit}"
+# This bundles libtcc.so and .h weirdly into python platlib. See also the PyPI wheels. Don't do that.
+SKBUILD_CMAKE_DEFINE="${SKBUILD_CMAKE_DEFINE};MINIEXPR_ENABLE_TCC_JIT=OFF"
+SKBUILD_CMAKE_DEFINE="${SKBUILD_CMAKE_DEFINE};MINIEXPR_USE_SLEEF=OFF"
+export SKBUILD_CMAKE_DEFINE
 %pyproject_wheel
 
 %install
@@ -84,19 +93,20 @@ export SKBUILD_CONFIGURE_OPTIONS="-DUSE_SYSTEM_BLOSC2:BOOL=ON"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-mv blosc2 blosc2-src
-donttest="dummyprefix"
+# segfault without TCC_JIT
+donttest="test_dsl_save_clamp"
 %ifarch %ix86 %arm32
 # too large for address memory
 donttest="$donttest or (test_pack and int64)"
 %endif
-# test failing because Fatal Python error: Floating point exception
-donttest+=" or test_prefilters"
-%pytest_arch -k "not ($donttest)"
+# https://lists.opensuse.org/archives/list/buildservice@lists.opensuse.org/thread/WZC3YN2NFHGJJPUTFBF4LFYXDM7MJEZT
+# Don't test on Python 3.14, it crashes on OBS, disable and test locally to be sure it works for users.
+python314_donttest="--setup-only"
+%pytest_arch -k "not ($donttest)" ${$python_donttest}
 
 %files %{python_files}
 %doc README.rst
-%license LICENSE.txt
+%license LICENSE.txt miniexpr-%{miniexpr_commit}/LICENSE miniexpr-%{miniexpr_commit}/LICENSE-TINYEXPR miniexpr-%{miniexpr_commit}/THIRD_PARTY_NOTICES.md
 %{python_sitearch}/blosc2
 %{python_sitearch}/blosc2-%{version}.dist-info
 

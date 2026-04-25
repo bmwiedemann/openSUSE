@@ -1,0 +1,18 @@
+Index: miniexpr-37bf6982bf9619036b47f095b7005bc3c87a7447/CMakeLists.txt
+===================================================================
+--- a/miniexpr-37bf6982bf9619036b47f095b7005bc3c87a7447/CMakeLists.txt
++++ b/miniexpr-37bf6982bf9619036b47f095b7005bc3c87a7447/CMakeLists.txt
+@@ -404,13 +404,6 @@ if(MINIEXPR_BUILD_STATIC)
+   set_target_properties(miniexpr_static PROPERTIES OUTPUT_NAME miniexpr)
+ endif()
+ 
+-install(FILES
+-  "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE"
+-  "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE-TINYEXPR"
+-  "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE-SLEEF"
+-  "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE-LIBTCC"
+-  "${CMAKE_CURRENT_SOURCE_DIR}/THIRD_PARTY_NOTICES.md"
+-  DESTINATION "${CMAKE_INSTALL_DATADIR}/miniexpr/licenses")
+ 
+ find_package(Threads)
+ if(Threads_FOUND)
