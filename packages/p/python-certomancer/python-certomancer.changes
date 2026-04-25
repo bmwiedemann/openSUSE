@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 22 14:42:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.14.0
+  * Integrate uv
+  * Fix ruff linting issues
+  * Clean up release workflow
+- Set SETUPTOOLS_SCM_PRETEND_VERSION=%{version} to
+  fix version of installed dist-info directory
+- Update BuildRequires and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Fri Feb  6 01:16:34 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Explicitly BuildRequires on pytz.
