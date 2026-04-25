@@ -1894,4 +1894,12 @@
     <comment></comment>
     <requestid>1348202</requestid>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>783e3536bfbe4d3f750b95941c4660db</srcmd5>
+    <version>3.3.7+git0.a32bce2da</version>
+    <time>1777145780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.7+git0.a32bce2da:</comment>
+    <requestid>1349028</requestid>
+  </revision>
 </revisionlist>

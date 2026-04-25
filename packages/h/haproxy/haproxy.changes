@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Apr 23 20:14:13 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.7+git0.a32bce2da:
+  * [RELEASE] Released version 3.3.7
+  * BUG/MEDIUM: mux-h1: Force close mode for bodyless message announcing a C-L
+  * BUG/MAJOR: mux-h2: detect incomplete transfers on HEADERS frames as well
+  * BUG/MINOR: server: fix a possible leak of an error message in dynamic servers
+  * BUG/MINOR: debug: properly mark the entire libs archive read-only
+  * BUG/MINOR: compression: properly disable request when setting response
+  * CI: github: only enable OS X on development branches
+  * CI: VTest build with git clone + cache
+  * SCRIPTS: build-vtest: allow to set a TMPDIR and a DESTDIR
+
+-------------------------------------------------------------------
+Thu Apr 23 09:48:25 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.6+git110.27ea9dccd:
+  * REGTESTS: ssl: mark ssl_dh.vtc as broken
+  * REGTESTS: Never reuse server connection in server/cli_delete_dynamic_server.vtc
+  * REGTESTS: Never reuse server connection in jwt/jws_verify.vtc
+  * DOC: config: Fix a typo for "external-check" directive
+  * BUG/MINOR: mux-h1: Fix test to skip trailers from chunked messages
+  * BUG/MINOR: mux-h1: Fix condition to send null-chunk for bodyless message
+  * BUG/MINOR: log: also wait for the response when logging response headers
+  * BUG/MINOR: H2: Don't forget to free shared_rx_bufs on failure
+  * BUG/MINOR: h2: Don't look at the exclusive bit for PRIORITY frame
+  * BUG/MINOR: h2: make tune.h2.log-errors actually work
+  * BUG/MEDIUM: tasks: Make sure we don't schedule a task already running
+  * BUG/MINOR: mux-h2: count a proto error when rejecting a stream on parsing error
+  * BUG/MINOR: mux-h2: count a protocol error when failing to parse a trailer
+  * reg-tests/ssl/ssl_dh.vtc: fix syntax error
+  * BUG/MAJOR: sched: protect task->expire on 32-bit platforms
+
+-------------------------------------------------------------------
+Tue Apr 21 09:35:30 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.6+git95.410f6cbff:
+  * BUG/MINOR: sample: adjust dependencies for channel output bytes counters
+  * MINOR: sample: make RQ/RS stats available everywhere
+  * BUG/MINOR: log: consider format expression dependencies to decide when to log
+  * BUG/MINOR: mux_quic: limit avail_streams() to 2^62
+
+-------------------------------------------------------------------
 Mon Apr 20 11:13:57 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.3.6+git91.af5637e93:
