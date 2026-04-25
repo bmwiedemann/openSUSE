@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 25 10:27:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.0:
+  * `Datacenter.server_types` has been deprecated in favor of the
+    new `ServerType.locations[].available` and
+    `ServerType.locations[].recommended` properties.
+  * **datacenter, server_type**: move available and recommended
+    to server_type
+
+-------------------------------------------------------------------
+Thu Mar 26 08:55:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.17.1
+  * missing `__api_properties__` on LoadBalancerService (#639)
+- from versiom 2.17.0
+  * parse nested load balancer `label_selector` targets (#633)
+
+-------------------------------------------------------------------
 Wed Feb  4 09:52:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.16.0

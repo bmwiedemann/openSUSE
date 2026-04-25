@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hcloud
-Version:        2.16.0
+Version:        2.18.0
 Release:        0
 Summary:        Hetzner Cloud Python library
 License:        MIT
 URL:            https://github.com/hetznercloud/hcloud-python
 Source:         https://files.pythonhosted.org/packages/source/h/hcloud/hcloud-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -34,7 +34,7 @@ Requires:       python-python-dateutil >= 2.7.5
 Requires:       python-requests >= 2.20
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 9}
 BuildRequires:  %{python_module python-dateutil >= 2.7.5}
 BuildRequires:  %{python_module requests >= 2.20}
 # /SECTION
