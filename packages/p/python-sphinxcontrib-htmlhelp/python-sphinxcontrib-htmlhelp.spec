@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-htmlhelp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,13 +31,14 @@ Version:        2.1.0
 Release:        0
 Summary:        Sphinx extension to generate HTML help files
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-htmlhelp
 Source0:        https://files.pythonhosted.org/packages/source/s/sphinxcontrib_htmlhelp/sphinxcontrib_htmlhelp-%{version}.tar.gz
 Source99:       python-sphinxcontrib-htmlhelp.rpmlintrc
+# PATCH-FIX-UPSTREAM gh#sphinx-doc/sphinxcontrib-htmlhelp#44
+Patch0:         support-sphinx-9.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -75,7 +76,7 @@ sphinxcontrib-htmlhelp is a sphinx extension which renders HTML help files.
 %license LICENCE.rst
 %dir %{python_sitelib}/sphinxcontrib
 %{python_sitelib}/sphinxcontrib/htmlhelp
-%{python_sitelib}/sphinxcontrib_htmlhelp-%{version}*-info
+%{python_sitelib}/sphinxcontrib_htmlhelp-%{version}.dist-info
 %endif
 
 %changelog

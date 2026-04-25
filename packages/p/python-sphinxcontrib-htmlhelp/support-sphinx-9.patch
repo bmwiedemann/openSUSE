@@ -1,0 +1,25 @@
+From cda4dcc32db5ac91d81a1b8902d59ccbe88e34aa Mon Sep 17 00:00:00 2001
+From: Heiko Becker <mail@heiko-becker.de>
+Date: Wed, 4 Feb 2026 18:02:41 +0100
+Subject: [PATCH] Replace deprecated and removed shortcut
+
+Removed from Sphinx with commit
+45e1ae646cd89fc0e7a6b1187c22d9a4964f75fa.
+Fixes a test with Sphinx >= 9.0.
+---
+ tests/roots/test-chm/index.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/roots/test-chm/index.rst b/tests/roots/test-chm/index.rst
+index 2d9e563..e576976 100644
+--- a/tests/roots/test-chm/index.rst
++++ b/tests/roots/test-chm/index.rst
+@@ -6,7 +6,7 @@ Index markup
+    pair: entry; pair
+    double: entry; double
+    triple: index; entry; triple
+-   keyword: with
++   pair: keyword; with
+    see: from; to
+    seealso: fromalso; toalso
+ 

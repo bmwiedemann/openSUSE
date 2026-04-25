@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 17 02:35:18 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-sphinx-9.patch:
+  * Support changes required for Sphinx 9.
+
+-------------------------------------------------------------------
 Thu Sep 19 10:17:55 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.1.0
