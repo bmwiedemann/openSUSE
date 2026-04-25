@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Apr 24 10:56:12 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.4.0:
+  * chore: release v17.4.0 (#1954)
+  * fix(mise): handle all self-update errors (#1978)
+  * feat(step): support Ollama model pulling (#1968)
+  * feat(step): add support for pi (#1975)
+  * chore(pre-commit): autoupdate (#1974)
+  * chore(deps): lock file maintenance (#1972)
+  * feat(firmware): hint user to run fwupdmgr update when updates are available (#1957)
+  * fix(chezmoi): support non-standard `sourceDir` (#1971)
+  * chore: set codegen-units = 1 for release profile (#1970)
+  * feat(skills): pass --global(#1952)
+  * refactor: remove dead bun.rs file and eliminate unreachable! macro in ssh.rs (#1967)
+  * chore(deps): update vmactions/openbsd-vm action to v1.4.0 (#1959)
+  * chore(deps): update github/codeql-action action to v4.35.2 (#1958)
+  * chore(deps): update dependency rust to v1.95.0 (#1963)
+  * chore(ci): harden and clean up workflow files (#1960)
+  * feat(step): add vite+ (#1953)
+  * chore(zizmor): account for new rule in ignore in lint_pr.yml (#1955)
+  * chore(deps): update pyo3/maturin-action action to v1.51.0 (#1943)
+  * chore(deps): update actions/upload-artifact action to v7.0.1 (#1947)
+  * chore(deps): lock file maintenance (#1951)
+  * fix(sparkle): correct CLI argument usage (#1912)
+  * chore(deps): update rust crate rust-i18n to v4 (#1949)
+  * chore(deps): update rust crate merge to 0.2 (#1946)
+  * refactor: remove unnecessary cfgs from default_steps (#1944)
+
+-------------------------------------------------------------------
 Fri Apr 10 00:48:20 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.3.0:
