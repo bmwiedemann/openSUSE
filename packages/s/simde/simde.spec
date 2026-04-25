@@ -1,7 +1,7 @@
 #
 # spec file for package simde
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,30 @@
 
 
 Name:           simde
-Version:        0.8.2+git20240621.c903416
+Version:        0.8.4+git20260414.2214c660
 Release:        0
 Summary:        Fallback implementation for SIMD intrinsics
 License:        MIT
+%if 0%{suse_version} < 1699
+Group:          Development/Languages/C and C++
+%endif
 URL:            https://github.com/simd-everywhere/%{name}
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
+Source100:      README.md
 BuildRequires:  meson
 BuildRequires:  c++_compiler
 # simde >= 0.8.0, build errors out if this is set related to simde.pc
 #BuildArch:      noarch
 
 %description
-Portable implementations of SIMD intrinsics.
+Implementations of SIMD instruction sets for systems which don't natively
+support them.
+
+The SIMDe header-only library provides fast, portable implementations of SIMD
+intrinsics on hardware which doesn't natively support them, such as calling
+SSE functions on ARM. There is no performance penalty if the hardware supports
+the native implementation (e.g., SSE/AVX runs at full speed on x86, NEON on
+ARM, etc.).
 
 %package devel
 Summary:        Fallback implementation for SIMD intrinsics

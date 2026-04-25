@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Apr 16 16:43:13 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * "Attention, "README.md" is not mentioned in spec files as source or patch."
+- Adding "Group" for Leap 15.6/SLE-15-SP7
+- Update to version 0.8.4+git20260414.2214c660:
+  * See https://github.com/simd-everywhere/simde/releases/tag/v0.8.4-rc3
+
+-------------------------------------------------------------------
+Thu Dec 26 18:08:07 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 0.8.2+git20241219.866cc57:
+  * x86 clmul simde_x_bitreverse_u64: add loongarch implementation (#1249)
+  * x86 avx: reoptimized simde_mm256_addsub_ps/d with lasx
+  * x86 fma: add loongarch lasx optimized implementations
+  * x86 f16c: add loongarch lasx optimized implementations
+  * x86 avx512f: added fmaddsub implementation (#1246)
+  * gh-actions: update CI test for loongarch
+  * x86 sse4.2: add loongarch lsx optimized implementations
+  * x86 sse4.1: add loongarch lsx optimized implementations
+  * x86 ssse3: add loongarch lsx optimized implementations
+  * x86 sse3: add loongarch lsx optimized implementations
+  * x86 sse: add loongarch lsx optimized implementations
+  * x86 avx2: add loongarch lasx optimized implementations (#1241)
+  * x86 avx: add loongarch lasx optimized implementations (#1239)
+  * x86 avx: use INT64_C when the destination is i64 (#1238)
+  * loongarch: add lsx support for sse2.h
+  * x86/avx: Adding overflow test for avx
+  * fix clang type redef error
+  * Whoops, missing comma
+  * gh-actions macos 12: deprecated, going offline on 2024-12-03
+  * gh-actions msvc-arm64: turn off due to compiler issue
+  * gh-actions macos: xcode 14.3.1 is no longer available, switch to macos-15 to test xcode 16.0
+  * gh-actions: upgrade Ubuntu Mantic to Ubuntu Noble (24.04)
+  * circleci: switch container for gcc11 i686 -O2 test
+  * gh-actions: pin emsdk to earlier version until https://github.com/llvm/llvm-project/issues/117200 is fixed and released
+  * gh-actions: clean up install list
+  * gh-actions: add loongarch64 clang-18 test
+  * loongarch float16: use a portable version to avoid compilation errors
+  * x86: move definition of 'value' to correct branch in _mm_loadl_epi64
+  * x86: some better implementations for MSVC and others without SIMDE_STATEMENT_EXPR_
+  * gh-actions: tests aarch64 without extra features
+  * arm crc32: define SIMDE_ARCH_ARM_CRC32 and consistently use it
+  * _mm256_storeu_pd and _mm256_loadu_pd using 128 bit lanes
+  * gcc-14 -O3 complained about some possible unitialized values
+  * neon/cvz z/Arch: stop using deprecated functions.
+  * gh-actions: upgrade gcc-qemu to gcc-14
+  * gh-actions: add CI testing for gcc 11 aarch64/arm64
+  * arm neon: avoid GCC 11 vst1_*_x4 built-in functions
+  * arm neon: fix arm64 gcc11 build excess elements in vector failure
+  * gh-actions: test loongson + lsx with gcc14 from Ubuntu Oracular
+  * x86/sse: Fix type convert error for LSX.
+  * gh-actions: upgrade to Ubuntu 24.04 LTS; upgrade/add GCC 13 / clang 18
+  * arm wasm: add vst2_u8 translation to Wasm SIMD
+  * arm wasm: add vshll translations to Wasm SIMD
+  * arm wasm: add vst4_u8 translation to Wasm SIMD
+  * appveyor: stop testing with MSVC 2022 until they fix their regressions
+  * math: typo fix, check SIMDE_MATH_NANF instead of the old-style SIMDE_NANF
+  * wasm AltiVec: add u16x8 and u8x16 avgr translations
+  * wasm NEON: add u16x8 and u8x16 avgr translations
+  * arm neon vminnmv_f16: remove duplicate statement (#1208)
+  * x86 wasm: Wasm SIMD version of `_mm_sad_epu8`
+  * msvc: add simde_MemoryBarrier to avoid including <windows.h>
+  * x86/fma: Use 128 bit fnmadd_pd to do 256 bit fnmadd_pd (#1197)
+  * gh-actions: ensure that gcov is present when needed
+  * meson: 0.55.1 is needed for Python 3.12+
+  * pow: consistently use simde_math_pow
+  * gh-actions: GitHub has retired the macos-11 runners, add some more -13 (x86-64) and -14 (arm64) testing
+  * x86: remove redundant mm_add_pd translation for WASM (#1190)
+
+-------------------------------------------------------------------
 Mon Jun 24 17:21:42 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 0.8.2+git20240621.c903416:

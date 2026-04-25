@@ -23,4 +23,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1184360</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>99a941b447b34dd45d9415f50c75e269</srcmd5>
+    <version>0.8.4+git20260414.2214c660</version>
+    <time>1777145791</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * &quot;Attention, &quot;README.md&quot; is not mentioned in spec files as source or patch.&quot;
+- Adding &quot;Group&quot; for Leap 15.6/SLE-15-SP7
+- Update to version 0.8.4+git20260414.2214c660:
+  * See https://github.com/simd-everywhere/simde/releases/tag/v0.8.4-rc3
+
+- Update to version 0.8.2+git20241219.866cc57:
+  * x86 clmul simde_x_bitreverse_u64: add loongarch implementation (#1249)
+  * x86 avx: reoptimized simde_mm256_addsub_ps/d with lasx
+  * x86 fma: add loongarch lasx optimized implementations
+  * x86 f16c: add loongarch lasx optimized implementations
+  * x86 avx512f: added fmaddsub implementation (#1246)
+  * gh-actions: update CI test for loongarch
+  * x86 sse4.2: add loongarch lsx optimized implementations
+  * x86 sse4.1: add loongarch lsx optimized implementations
+  * x86 ssse3: add loongarch lsx optimized implementations
+  * x86 sse3: add loongarch lsx optimized implementations
+  * x86 sse: add loongarch lsx optimized implementations
+  * x86 avx2: add loongarch lasx optimized implementations (#1241)
+  * x86 avx: add loongarch lasx optimized implementations (#1239)
+  * x86 avx: use INT64_C when the destination is i64 (#1238)
+  * loongarch: add lsx support for sse2.h
+  * x86/avx: Adding overflow test for avx
+  * fix clang type redef error
+  * Whoops, missing comma
+  * gh-actions macos 12: deprecated, going offline on 2024-12-03
+  * gh-actions msvc-arm64: turn off due to compiler issue
+  * gh-actions macos: xcode 14.3.1 is no longer available, switch to macos-15 to test xcode 16.0</comment>
+    <requestid>1349032</requestid>
+  </revision>
 </revisionlist>
