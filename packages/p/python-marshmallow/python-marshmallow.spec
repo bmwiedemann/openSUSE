@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-marshmallow
-Version:        4.2.3
+Version:        4.3.0
 Release:        0
 Summary:        ORM/ODM/framework-agnostic library to convert datatypes from/to Python types
 License:        BSD-3-Clause AND MIT

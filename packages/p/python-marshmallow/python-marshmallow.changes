@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 24 09:00:42 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.3.0
+  * Add ``pre_load`` and ``post_load`` parameters to `marshmallow.fields.Field`
+    for field-level pre- and post-processing (:issue:`2787`).
+  * Typing: improvements to `marshmallow.validate` (:pr:`2940`).
+- from version 4.2.4
+  * `marshmallow.validate.URL` and `marshmallow.validate.Email` accept
+    Internationalized Domain Names (IDNs) (:issue:`2821`, :issue:`2936`).
+  * `marshmallow.validate.Email` also correctly rejects IDN domains with
+    leading/trailing hyphens.
+    Thanks :user:`touhidurrr` for the report.
+  * Typing: Fix typing of ``nested`` in `marshmallow.fields.Nested` (:pr:`2935`).
+
+-------------------------------------------------------------------
 Sun Mar 29 17:53:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.3:
