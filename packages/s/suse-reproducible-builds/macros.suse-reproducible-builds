@@ -1,0 +1,4 @@
+%build_mtime_policy clamp_to_buildtime
+%use_source_date_epoch_as_buildtime Y
+%_buildhost reproducible
+%want_reproducible_builds 1
