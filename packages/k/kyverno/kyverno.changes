@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 23 19:32:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.17.2:
+  * fix: CVE-2026-34986 (#15823)
+  * [backport] chore(security): disable HTTP in namespaced policies
+    by default (CVE-2026-4789) (#15802)
+  * fix: CVE-2026-33186 (#15652)
+  * fix: CVE-2026-1229 (#15530)
+  * fix: bump go to fix stdlib CVEs (#15529)
+  * fix: CVES 2026-15558 for 1.17 (#15464)
+  * fix: CVE-2026-24051 (#15414)
+  * fix: CLI resource lookup for ivpol (#15418) (#15419)
+
+-------------------------------------------------------------------
 Thu Feb 19 12:05:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.17.1:
