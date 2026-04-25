@@ -1,7 +1,7 @@
 #
 # spec file for package python-hatch-tryton
 #
-# Copyright (c) 2026 Dr. Axel Braun <docb@opensuse.org>
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,18 +14,28 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# Copyright (c) 2026 Dr. Axel Braun <docb@opensuse.org>
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
 
 
 Name:           python-hatch-tryton
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        A hatchling plugin for Tryton
 License:        MIT
 URL:            https://www.tryton.org/
 Source:         https://files.pythonhosted.org/packages/source/h/hatch-tryton/hatch_tryton-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hatchling >= 1}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
