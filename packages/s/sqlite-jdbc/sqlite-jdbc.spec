@@ -1,7 +1,7 @@
 #
 # spec file for package sqlite-jdbc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%global version 3.50.3.0
-%global amalgamation_version 3500300
+%global version 3.53.0.0
+%global amalgamation_version 3530000
 %global debug_package %{nil}
 Name:           sqlite-jdbc
 Version:        %{version}
@@ -28,7 +28,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/xerial/%{name}
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://sqlite.org/2025/sqlite-amalgamation-%{amalgamation_version}.zip
+Source1:        https://sqlite.org/2026/sqlite-amalgamation-%{amalgamation_version}.zip
 Patch0:         sqlite-jdbc-no-implicit-function-declaration.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -85,7 +85,7 @@ ln -s %{_javadir}/slf4j/slf4j-api.jar target/classpath/
 %{mvn_file} : %{name}
 
 %build
-%make_build native
+%make_build native ENABLE_UPDATE_DELETE_LIMIT=0
 %{mvn_build} -f -- \
     -Dsource=8
 

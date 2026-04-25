@@ -1,4 +1,157 @@
 -------------------------------------------------------------------
+Thu Apr 23 22:37:19 UTC 2026 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.53.0.0
+  * Features
+    ~ jdbc
+      + expose wal_autocheckpoint pragma in SQLiteConfig (dd2adcc),
+        closes #1397
+    ~ sqlite
+      + upgrade to sqlite 3.53.0 (baaf087)
+    ~ unscoped
+      + publish multiple classifer jars (bdd2b64), closes #1273
+      + better Android support (7eb6f3f), closes #1378
+  * Build
+    ~ deps
+      + bump org.sonatype.central:central-publishing-maven-plugin
+        (19259e5)
+      + bump EndBug/add-and-commit from 9 to 10 (f572217)
+    ~ deps-dev
+      + bump surefire.version from 3.5.4 to 3.5.5 (b649d25)
+      + bump org.assertj:assertj-core from 3.27.6 to 3.27.7
+        (857a754)
+      + bump org.mockito:mockito-core from 5.21.0 to 5.23.0
+        (a597952)
+- Update to v3.51.3.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.51.3 (09e9741)
+      + upgrade to sqlite 3.52.0 (64cf690)
+  * Build
+    ~ deps
+      + bump org.graalvm.buildtools:native-maven-plugin (5ad5155)
+      + bump actions/upload-artifact from 6 to 7 (90c726f)
+      + bump actions/download-artifact from 7 to 8 (17d4998)
+    ~ deps-dev
+      + bump org.jreleaser:jreleaser-maven-plugin (d4d5c04)
+    ~ unscoped
+      + set-version trigger CI after build native (89dfbc8)
+      + set-version commit and trigger workflow (eed41ae)
+      + set-version fix VERSION (22e5106)
+      + set-version checks before enabling (4c34072)
+      + add set-version workflow (97985f8)
+      + fix ppc64le (49232ef)
+      + use jdk 25 where possible (8460f63)
+- Update to v3.51.2.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.51.2 (63a45e7)
+  * Build
+    + update location for 2026 (1a7c2a0)
+- Update to v3.51.1.1
+  * Features
+    ~ sqlite
+      + enable percentile extension (470c78c), closes #1360
+  * Build
+    ~ deps
+      + bump org.graalvm.sdk:nativeimage from 25.0.1 to 25.0.2
+        (e5e8aca)
+      + bump org.graalvm.buildtools:native-maven-plugin (92e995c)
+      + bump org.jreleaser:jreleaser-maven-plugin (1ba2ff1)
+      + bump actions/upload-artifact from 5 to 6 (77e1e27)
+      + bump actions/download-artifact from 6 to 7 (1f35b97)
+      + bump org.apache.maven.plugins:maven-source-plugin (8384f5b)
+    ~ deps-dev
+      + bump org.apache.maven.plugins:maven-compiler-plugin
+        (0d07829)
+      + bump org.codehaus.mojo:versions-maven-plugin (2a61f25)
+      + bump org.mockito:mockito-core from 5.20.0 to 5.21.0
+        (f8de260)
+- Update to v3.51.1.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.51.1 (6868e66)
+  * Build
+    ~ deps
+      + bump org.codehaus.mojo:versions-maven-plugin (7603dbb)
+      + bump actions/checkout from 5 to 6 (79a5083)
+      + bump org.apache.maven.plugins:maven-jar-plugin (41d4bb3)
+      + bump org.graalvm.buildtools:native-maven-plugin (2499f23)
+      + org.graalvm.buildtools:native-maven-plugin from 0.10.6 to
+        0.11.2 (#1346) (4f126e5), closes #1346
+    ~ deps-dev
+      + bump org.assertj:assertj-core from 3.27.4 to 3.27.6
+        (c6f063c)
+    ~ unscoped
+      + disable fail-fast (5df7db9)
+- Update to v3.51.0.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.51.0 (6a0f6b4)
+      + enable LIMIT support for UPDATE and DELETE (acf84ae),
+        closes #1318
+  * Changes
+    + spotless apply (6505920)
+  * Tests
+    + load extension enabled by connection string (751cd07)
+  * Build
+    ~ deps
+      + bump org.graalvm.sdk:nativeimage from 24.1.2 to 25.0.1
+        (62a819a)
+      + bump org.jreleaser:jreleaser-maven-plugin (3fc3374)
+      + bump org.apache.maven.plugins:maven-compiler-plugin
+        (c7f900b)
+      + bump actions/download-artifact from 5 to 6 (f7063ae)
+      + bump actions/upload-artifact from 4 to 5 (938d553)
+      + bump org.sonatype.central:central-publishing-maven-plugin
+        (a822d58)
+      + bump org.apache.maven.plugins:maven-javadoc-plugin
+        (be021fe)
+      + bump org.apache.maven.plugins:maven-enforcer-plugin
+        (755cf1d)
+      + bump org.codehaus.mojo:versions-maven-plugin (8911981)
+      + bump surefire.version from 3.5.3 to 3.5.4 (978a9ef)
+      + bump org.codehaus.mojo:versions-maven-plugin (7080b4d)
+      + bump org.jreleaser:jreleaser-maven-plugin (8382798)
+      + bump actions/setup-java from 4 to 5 (47117fd)
+      + bump org.apache.maven.plugins:maven-javadoc-plugin
+        (ec9cf6f)
+      + bump actions/checkout from 4 to 5 (8f594c8)
+      + bump actions/download-artifact from 4 to 5 (0c76e59)
+    ~ deps-dev
+      + bump org.mockito:mockito-core from 5.19.0 to 5.20.0
+        (5952229)
+      + bump org.mockito:mockito-core from 5.18.0 to 5.19.0
+        (cb727b9)
+      + bump org.assertj:assertj-core from 3.27.3 to 3.27.4
+        (cad6246)
+    ~ native
+      + disable fail fast on build native (d7cf60d)
+    ~ unscoped
+      + update deprecated action (ce63cd4)
+      + android native build fix (c9ceb64)
+  * Documentation
+    + document how to enable load extension (de546a9)
+- Update to v3.50.3.0
+  * Features
+    ~ jdbc
+      + support JDBC4 CLOB and BLOB in PreparedStatement parameters
+        (9515a80)
+    ~ sqlite
+      + upgrade to sqlite 3.50.3 (ef4e649)
+    ~ unscoped
+      + build android native lib with 16kb page size (8548d1c),
+        closes #1296
+  * Build
+    ~ deps
+      + bump org.apache.maven.plugins:maven-enforcer-plugin
+        (e20d3b6)
+      + bump org.apache.maven.plugins:maven-gpg-plugin (d1efafe)
+      + bump org.jreleaser:jreleaser-maven-plugin (4042011)
+  * Documentation
+    + update maven snapshot badge (19e32f0)
+
+-------------------------------------------------------------------
 Mon Jul 21 13:49:57 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.50.2.0
