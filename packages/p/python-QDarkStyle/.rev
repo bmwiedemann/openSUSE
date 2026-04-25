@@ -118,4 +118,17 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1289116</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fb84cad60b43fbd5a5aaa84445977a5c</srcmd5>
+    <version>3.2.3</version>
+    <time>1777152473</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.3:
+  * Remove explicit PyQt5 import #341
+  * Fix setuptools deprecation warning #340
+  * Rebuild assets under Qt5 due QtPy limitation #339
+
+- Switch to pyproject macros.</comment>
+    <requestid>1349266</requestid>
+  </revision>
 </revisionlist>
