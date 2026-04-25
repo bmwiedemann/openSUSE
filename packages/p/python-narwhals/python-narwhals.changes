@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 25 10:58:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.20.0:
+  * feat: enable when/then chaining
+  * feat: Add top-level `struct` function
+  * fix: Adjust test error message for 32bit machines
+  * docs: Migrate docs to Zensical
+  * docs: use simpler readme example which avoids groupby
+  * ci: Use py-shiny composite actions for Docker Playwright
+  * chore: `nw.struct` follow-up
+  * chore: fix nightly ci
+- update to 2.19.0:
+  * feat: Support other Expr/Series in `str.contains` for polars
+    and SQL-like backends
+  * feat: Add `nw.corr`
+  * fix: Update version when passing narwhals objects in
+    `from_native`
+  * fix: `make typing` to re-use `uv` machinery
+
+-------------------------------------------------------------------
 Sun Mar 29 15:07:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.1:
