@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mediafile
-Version:        0.16.2
+Version:        0.17.0
 Release:        0
 Summary:        Read and write audio files tags in Python
 License:        MIT
@@ -29,7 +29,7 @@ BuildRequires:  %{python_module filetype >= 1.2.0}
 BuildRequires:  %{python_module mutagen >= 1.46}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

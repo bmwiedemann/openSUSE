@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 25 10:22:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.0:
+  * Added synced_lyrics field backed by the ID3v2 SYLT
+    (synchronized lyrics) frame. Reads and writes a list of
+    (text, milliseconds) tuples for MP3, AIFF, DSF, and WAVE
+    files. Non-ID3 formats return None.
+
+-------------------------------------------------------------------
 Sun Apr 19 19:59:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.2:

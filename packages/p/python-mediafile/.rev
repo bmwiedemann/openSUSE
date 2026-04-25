@@ -111,4 +111,16 @@
   * Added a multiple-valued remixers field.</comment>
     <requestid>1348073</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ce974d6d8f6dada534274119c5918b90</srcmd5>
+    <version>0.17.0</version>
+    <time>1777145884</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.17.0:
+  * Added synced_lyrics field backed by the ID3v2 SYLT
+    (synchronized lyrics) frame. Reads and writes a list of
+    (text, milliseconds) tuples for MP3, AIFF, DSF, and WAVE
+    files. Non-ID3 formats return None.</comment>
+    <requestid>1349216</requestid>
+  </revision>
 </revisionlist>
