@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Apr 25 09:11:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.1:
+  * Force push a pypi release
+  * Support for Python 3.11, 3.12 & 3.13
+  * Drop support for Python 3.7, 3.8 & 3.9
+  * Switch to pytest
+  * Switch to uv
+  * Add query uid__range
+  * fix substring search of subjects in Gmail, add support for
+    some Gmail extended IMAP
+  * Support filter message by mail body
+  * Attachments now getting Content-ID
+  * Update parser.py in
+    https://github.com/martinrusev/imbox/pull/192
+  * Avoiding the error - ValueError: invalid literal for int()
+    with base 10
+  * fix false exception on unknown encoding #202
+  * Fix binascii.Error: Incorrect padding
+  * Preserve timezone info in date parsing
+  * Fix ignored headers + unnecessary major version check
+  * Local variable 'filename' value is not used
+  * Date handling improvement and various fixes
+  * Fix crash when semicolon present in attachment name
+  * Base64 decode param and recognize single file mails as
+    attachment
+  * [Fix] parse_attachment > cannot parse name
+  * Should first get content charset then str_encode with
+    charset.
+  * fix append and join of param parts
+
+-------------------------------------------------------------------
 Wed May 28 12:13:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
