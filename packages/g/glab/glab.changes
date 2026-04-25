@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Thu Apr 23 19:30:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.93.0:
+  * Features
+    - 90960872: feat(ci-list): display running pipelines in blue,
+      use light/dark 24-bit colors when able (Emil Chludziński
+      tanstaafl@tlen.pl)
+    - f8f25b15: feat(mr note): add 'create' subcommand with
+      discussion-based notes (Tomas Vik tvik@gitlab.com)
+    - 95a61c83: feat: add --assignee flag to glab stack sync (Gary
+      Holtz gholtz@gitlab.com)
+    - f73a54fe: feat: add --label flag to glab stack sync (Gary
+      Holtz gholtz@gitlab.com)
+    - 35df967c: feat: add --template flag to issue and mr create
+      commands (Kai Armstrong karmstrong@gitlab.com)
+    - e59047ed: feat: add glab search semantic command (Tian Gao
+      tgao@gitlab.com)
+  * Bug Fixes
+    - d3454a07: fix(api): avoid panic on invalid absolute endpoint
+      URL (Mikel mikel@olasagasti.info)
+    - b98d93a6: fix(ci view): Setup default theme (Philipp Hahn
+      pmhahn@pmhahn.de)
+    - f07689ce: fix(duo): honor custom Duo CLI path on unsupported
+      CPU architectures (Mikel mikel@olasagasti.info)
+    - 033e8039: fix: Always Use Long Git Status (Jonathan Bowe
+      jonathan@bowedev.com)
+    - 3e5c995d: fix: add HTTP timeout and propagate context in auth
+      commands (Kai Armstrong karmstrong@gitlab.com)
+    - ee920b4d: fix: respect repository target branch rules in mr
+      create (Kai Armstrong karmstrong@gitlab.com)
+    - 5593a1e8: fix: support git worktrees in stack operations
+      (Daniel Bankmann 11852855-dba223@users.noreply.gitlab.com)
+    - 34af5c48: fix: use local viper instance in GroupOverride to
+      prevent data race (Jay McCure jmccure@gitlab.com)
+  * Documentation
+    - 4edb2bdd: docs: Clarify time format for glab token rotate
+      (Brendan Lynch blynch@gitlab.com)
+    - 40099e89: docs: add CLI docs style guide references and
+      contributor guidance (Brendan Lynch blynch@gitlab.com)
+    - fe2ed6fc: docs: fix punctuation in Short and flag
+      descriptions (Brendan Lynch blynch@gitlab.com)
+    - ee555c88: docs: improve auth login CI/CD documentation and
+      --api-host flag (Kai Armstrong karmstrong@gitlab.com)
+    - 784d046e: docs: standardize positional arg notation in mr
+      commands (Brendan blynch@gitlab.com)
+  * Dependencies
+    - bb755050: chore(deps): Switch to a maintained YAML library
+      (Mikel mikel@olasagasti.info)
+    - 377c4198: chore(deps): drop github.com/pkg/errors in favor of
+      stdlib errors (Mikel mikel@olasagasti.info)
+    - 0a9d6bc7: chore(deps): drop mitchellh/go-homedir for stdlib
+      home dir (Mikel mikel@olasagasti.info)
+    - 7821c8d9: chore(deps): update module charm.land/bubbletea/v2
+      to v2.0.5 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - f4807f6c: chore(deps): update module charm.land/lipgloss/v2
+      to v2.0.3 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 0e3c1048: chore(deps): update module github.com/docker/cli to
+      v29.4.0+incompatible (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 6ca80615: chore(deps): update module
+      github.com/mattn/go-runewidth to v0.0.22 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 8c3b14f9: chore(deps): update module
+      github.com/mattn/go-runewidth to v0.0.23 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 5cca166a: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.17.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 1cca432d: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.19.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 59cdf34d: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.20.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - aa8b94d1: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.20.1 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - ef351c1e: chore(deps): update module golang.org/x/crypto to
+      v0.50.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 8c009a20: chore(deps): update module k8s.io/client-go to
+      v0.35.4 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 4e8a8817: chore(duo): hide and deprecate 'glab duo ask'
+      command (Kai Armstrong karmstrong@gitlab.com)
+
+-------------------------------------------------------------------
 Sat Apr 11 07:00:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.92.1:
