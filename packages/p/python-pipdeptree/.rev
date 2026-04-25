@@ -261,4 +261,33 @@
   * Support --depth for graphviz output format</comment>
     <requestid>1339441</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e4554b329540d947d129b71f7edd4b66</srcmd5>
+    <version>2.35.1</version>
+    <time>1777152466</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.35.1:
+  * Fix metadata lookup to use distribution object
+- update to 2.35.0:
+  * docs: Add &quot;prog&quot; value in argparse configuration
+  * fix: write binary graphviz output to temp file when stdout is
+    tty
+- update to 2.34.0:
+  * docs(sphinx): add Sphinx documentation site
+  * docs(readme): simplify README, link to Sphinx docs
+- update to 2.33.0:
+  * refactor(deps): drop pip dependency, use stdlib for
+    metadata
+  * fix(detection): Allow fallback to different env detectors
+- update to 2.32.0:
+  * Add security policy
+  * Add permissions to workflows
+  * Add missing .github config files
+  * Standardize .github files to .yaml suffix
+  * ♻️ refactor(core): reduce duplication and migrate to ty
+  * feat(extras): add --extras flag for optional deps
+  * feat(render): add Rich library support for enhanced tree
+    output</comment>
+    <requestid>1349246</requestid>
+  </revision>
 </revisionlist>

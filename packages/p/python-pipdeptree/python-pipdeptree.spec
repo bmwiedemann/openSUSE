@@ -16,33 +16,46 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           python-pipdeptree
-Version:        2.31.0
+Version:        2.35.1
 Release:        0
 Summary:        Command line utility to show dependency tree of packages
 License:        MIT
-URL:            https://github.com/naiquevin/pipdeptree
-Source:         https://github.com/naiquevin/pipdeptree/archive/%{version}.tar.gz#/pipdeptree-%{version}.tar.gz
+URL:            https://github.com/tox-dev/pipdeptree
+Source:         https://github.com/tox-dev/pipdeptree/archive/%{version}.tar.gz#/pipdeptree-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
-BuildRequires:  %{python_module hatch-vcs}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module hatch-vcs >= 0.5}
+BuildRequires:  %{python_module hatchling >= 1.27}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 26
 Requires:       python-pip >= 25.2
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 Suggests:       python-graphviz >= 0.21
+Suggests:       python-rich >= 14.3.3
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module graphviz >= 0.21}
 BuildRequires:  %{python_module packaging >= 26}
 BuildRequires:  %{python_module pip >= 25.2}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module virtualenv}
+BuildRequires:  %{python_module pytest >= 8.4.2}
+BuildRequires:  %{python_module pytest-mock >= 3.15.1}
+BuildRequires:  %{python_module pytest-subprocess}
+BuildRequires:  %{python_module virtualenv >= 20.34}
 BuildRequires:  graphviz-gnome
 # /SECTION
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -63,11 +76,14 @@ export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %check
 %pytest -k 'not test_custom_interpreter and not test_console'
 
+%pre
+%python_libalternatives_reset_alternative pipdeptree
+
 %post
-%{python_install_alternative pipdeptree}
+%python_install_alternative pipdeptree
 
 %postun
-%{python_uninstall_alternative pipdeptree}
+%python_uninstall_alternative pipdeptree
 
 %files %{python_files}
 %doc README.md
