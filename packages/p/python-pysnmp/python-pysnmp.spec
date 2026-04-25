@@ -17,7 +17,7 @@
 
 
 Name:           python-pysnmp
-Version:        7.1.24
+Version:        7.1.25
 Release:        0
 Summary:        A pure-Python SNMPv1/v2c/v3 library
 License:        BSD-2-Clause
