@@ -1619,4 +1619,13 @@
   * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.7.6</comment>
     <requestid>1347198</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>774a4dd0c4b0bb85f52a99d4c369ca5d</srcmd5>
+    <version>6.7.8</version>
+    <time>1777145872</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated telegram-desktop to 6.7.8
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.7.8</comment>
+    <requestid>1349153</requestid>
+  </revision>
 </revisionlist>
