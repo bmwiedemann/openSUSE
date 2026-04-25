@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 24 07:21:44 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.5.0:
+  * CSS based break fade in #881
+  * Allow running from source (when not installed) by using version number from local metadata #879
+  * add new translations #885
+  * Ignore missing image if break screen image goes missing #887
+  * update version #888
+  * create release v3.5.0 #889
+
+-------------------------------------------------------------------
 Mon Apr 20 06:39:17 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.4.1:
