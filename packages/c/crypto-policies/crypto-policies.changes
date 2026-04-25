@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 22 13:00:49 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Modify the output of fips-mode-setup to hint the user when
+  setting the FIPS mode in transactional systems to use the
+  command 'transactional-update setup-fips'. (bsc#1262315)
+
+-------------------------------------------------------------------
 Tue Mar 31 07:39:18 UTC 2026 - JS <obs.coke518@passinbox.com>
 
 - Disable the use of posix_spawn() under qemu user-mode emulation.

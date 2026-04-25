@@ -90,8 +90,9 @@ fi
 # We don't handle the setup on transactional systems as the process is
 # quite different and involves several reboots.
 if test "$is_transactional_system" = 1 && test "$check" = 0 ; then
-	cond_echo -n "Cannot handle transactional systems. "
-	cond_echo "Please, refer to the fips-mode-setup man pages for more information."
+	cond_echo -n "Cannot handle transactional systems."
+	cond_echo -n "Please, use 'transactional-update setup-fips' instead "
+	cond_echo "and refer to fips-mode-setup(8) for additional information."
 	exit 1
 fi
 
