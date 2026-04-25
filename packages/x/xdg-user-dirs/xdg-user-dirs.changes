@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 20 20:41:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.20:
+  + Features:
+    - user-dirs.defaults: add PROJECTS directory
+    - Replace xdg-user-dir shell script with C implementation
+    - Make printable-char validation for dir names stricter
+  + Bugfixes:
+    - build: Unhardcode bindir in .service file
+    - Fix length accounting in concat_strings
+    - Escape " as well when shell-escaping
+    - Check that user dir name does not contain line breaks
+    - git-tp-sync: prevent handling POT files
+  + Miscellaneous:
+    - Remove Automake support
+    - Clean up user-dir lookup code a bit, split sources and data
+    - Stop mixing tabs & spaces
+- Changes from version 0.19:
+  + Features:
+    - Add a systemd service to run xdg-user-dirs-update
+    - Add initial Meson buildsystem support
+  + Bugfixes: Fix autopoint invocation
+  + Miscellaneous:
+    - Update automake boilerplate
+    - Update information in README
+  + Updated translations.
+- Switch to meson buildsystem.
+- Drop 0001-Add-a-systemd-service-to-run-xdg-user-dirs-update.patch
+  Fixed upstream.
+
+-------------------------------------------------------------------
 Fri May 23 08:25:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.

@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-user-dirs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           xdg-user-dirs
-Version:        0.18
+Version:        0.20
 Release:        0
 Summary:        Utilities to handle user data directories
 License:        GPL-2.0-only
 Group:          System/GUI/Other
 URL:            https://freedesktop.org/wiki/Software/xdg-user-dirs
-Source0:        https://user-dirs.freedesktop.org/releases/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Add-a-systemd-service-to-run-xdg-user-dirs-update.patch
-BuildRequires:  make
+Source0:        https://user-dirs.freedesktop.org/releases/%{name}-%{version}.tar.xz
+
+BuildRequires:  meson >= 1.0
 BuildRequires:  suse-xsl-stylesheets
 BuildRequires:  systemd-rpm-macros
 %systemd_ordering
@@ -42,14 +41,12 @@ handles localization (i.e. translation) of the filenames.
 %autosetup -p1
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-install -Dm0644 xdg-user-dirs.service %{buildroot}%{_userunitdir}/xdg-user-dirs.service
-# Change sr@Latn to sr@latin
-mv %{buildroot}%{_datadir}/locale/sr@Latn %{buildroot}%{_datadir}/locale/sr@latin
+%meson_install
+
 %find_lang %{name} %{?no_lang_C}
 # Create xinit script
 mkdir -p %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d
@@ -68,7 +65,7 @@ chmod a+x %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/xdg-user-dirs.sh
 
 %files
 %license COPYING
-%doc AUTHORS README ChangeLog
+%doc AUTHORS README.md ChangeLog
 %{_mandir}/man1/*.1%{?ext_man}
 %{_mandir}/man5/*.5%{?ext_man}
 %config(noreplace) %{_sysconfdir}/xdg/user-dirs.conf
