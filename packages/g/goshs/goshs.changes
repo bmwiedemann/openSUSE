@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 25 15:43:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.4
+  * Add interactive shell catcher, that let's you spawn reverse
+    shell listeners.
+- Update to version 2.0.3
+  * Lots of bugfixes
+  * Add a new flag -mu --max-upload that lets you define a max
+    upload size in bytes.
+
+-------------------------------------------------------------------
 Tue Apr 21 12:21:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.2
