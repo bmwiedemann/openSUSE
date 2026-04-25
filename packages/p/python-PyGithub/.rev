@@ -489,4 +489,12 @@
   * Use default type if known type is not supported</comment>
     <requestid>1341915</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>87977bd44854ebb63349d00c4d14c31b</srcmd5>
+    <version>2.9.1</version>
+    <time>1777145842</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1349103</requestid>
+  </revision>
 </revisionlist>
