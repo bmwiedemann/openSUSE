@@ -5,5 +5,6 @@ management operations such as listing/exporting/signing by providing an
 interface along with the command-line fallback for more complex operations. It
 is not trying to be a full-fledged interface for all the features that gpg
 provides but it tries to bring a more interactive approach to key management.</description>
+  <devel project="security:privacy" package="gpg-tui"/>
   <url>https://github.com/orhun/gpg-tui</url>
 </package>

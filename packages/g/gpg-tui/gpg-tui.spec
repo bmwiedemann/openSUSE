@@ -17,7 +17,7 @@
 
 
 Name:           gpg-tui
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Terminal User Interface for GnuPG
 License:        MIT
