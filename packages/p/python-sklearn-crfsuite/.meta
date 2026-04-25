@@ -1,0 +1,5 @@
+<package name="python-sklearn-crfsuite" project="openSUSE:Factory">
+  <title>CRFsuite (python-crfsuite) wrapper which provides interface simlar to scikit-learn</title>
+  <description>sklearn-crfsuite is a thin CRFsuite (python-crfsuite) wrapper which provides interface simlar to scikit-learn. sklearn_crfsuite.CRF is a scikit-learn compatible estimator: you can use e.g. scikit-learn model selection utilities (cross-validation, hyperparameter optimization) with it, or save/load CRF models using joblib.</description>
+  <url>https://pypi.org/project/sklearn-crfsuite/</url>
+</package>
