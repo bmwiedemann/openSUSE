@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 24 14:46:06 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.17
+  * API breaks: HfstTokenizer, LexcCompiler, `read_in_att_format`
+    functions in HfstTransducer, HfstBasicTransducer, etc. to
+    accommodate the following unicode handling changes and error
+    reporting:
+  * Character "tokenisers" that used to operate on bytes or UTF-8
+    sequences will now operate on graphemes, this means that by
+    default arcs in FSAs are expected to match combining grapheme
+    clusters, e.g. a base character plus all diacritics. The
+    implementation is based on ICU implementation of `u_brk`.
+
+-------------------------------------------------------------------
 Tue Feb 25 20:18:53 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Deactivate tests on non-x86

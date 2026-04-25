@@ -1,7 +1,7 @@
 #
 # spec file for package hfst
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hfst
-Version:        3.16.2
+Version:        3.17.0
 Release:        0
 Summary:        Helsinki Finite-State Transducer Technology
 License:        Apache-2.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND GPL-3.0-only
@@ -35,10 +35,10 @@ BuildRequires:  foma-devel >= 0.9.18+git20210604
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
+BuildRequires:  openfst-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  readline-devel
-BuildRequires:  openfst-devel
 BuildRequires:  pkgconfig(icu-uc) >= 50
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(zlib)
@@ -50,12 +50,12 @@ The Helsinki Finite-State Transducer software is intended for the
 implementation of morphological analyzers and other tools which are
 based on weighted and unweighted finite-state transducer technology.
 
-%package -n libhfst55
+%package -n libhfst56
 Summary:        Helsinki Finite-State Transducer C++ API Library
 License:        GPL-3.0-only
 Group:          System/Libraries
 
-%description -n libhfst55
+%description -n libhfst56
 The Helsinki Finite-State Transducer software is intended for the
 implementation of morphological analyzers and other tools which are
 based on weighted and unweighted finite-state transducer technology.
@@ -78,7 +78,7 @@ based on weighted and unweighted finite-state transducer technology.
 Summary:        Development files for the Helsinki Finite-State Transducer
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-Requires:       libhfst55 = %version
+Requires:       libhfst56 = %version
 Requires:       libhfst_c0 = %version
 
 %description devel
@@ -113,7 +113,7 @@ rm -fv "%buildroot/%_libdir/"{libfoma,libfst,libsfst}.so
 %make_build check -j1
 %endif
 
-%ldconfig_scriptlets -n libhfst55
+%ldconfig_scriptlets -n libhfst56
 %ldconfig_scriptlets -n libhfst_c0
 
 %files
@@ -122,8 +122,8 @@ rm -fv "%buildroot/%_libdir/"{libfoma,libfst,libsfst}.so
 %doc NEWS README
 %license COPYING
 
-%files -n libhfst55
-%_libdir/libhfst.so.55*
+%files -n libhfst56
+%_libdir/libhfst.so.*
 
 %files -n libhfst_c0
 %_libdir/libhfst_c.so.0*

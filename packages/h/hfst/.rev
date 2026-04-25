@@ -79,4 +79,12 @@
     <comment>- Deactivate tests on non-x86</comment>
     <requestid>1248483</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dcc858bada197ba556b117a535ec7d85</srcmd5>
+    <version>3.17.0</version>
+    <time>1777145864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.17</comment>
+    <requestid>1349141</requestid>
+  </revision>
 </revisionlist>
