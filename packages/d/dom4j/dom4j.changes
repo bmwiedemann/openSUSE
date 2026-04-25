@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 24 06:43:37 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.1.5
+  * Changes:
+    + Bump gradle from 6.3 to 8.13 (fixes #187)
+    + Remove unnecessary constant conditional
+    + Remove misleading no-op lines incorrectly trying to disable
+      external entities
+
+-------------------------------------------------------------------
 Wed Feb 21 10:40:43 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

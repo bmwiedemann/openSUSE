@@ -1,7 +1,7 @@
 #
 # spec file for package dom4j
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %else
 %bcond_with bootstrap
 %endif
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        Open Source XML framework for Java
 License:        Plexus

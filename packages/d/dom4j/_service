@@ -2,10 +2,10 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/dom4j/dom4j.git</param>
-		<param name="revision">version-2.1.4</param>
-		<param name="match-tag">version-*</param>
+		<param name="revision">version/2.1.5</param>
+		<param name="match-tag">version/*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
-		<param name="versionrewrite-pattern">version-(.*)</param>
+		<param name="versionrewrite-pattern">version/(.*)</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>
