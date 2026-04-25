@@ -195,4 +195,15 @@
   * BUG#34950958: MySQL Python Connector doesn't work with ssh in</comment>
     <requestid>1334402</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9ce39d029f19c5d571bb23636d4596e2</srcmd5>
+    <version>9.6.0</version>
+    <time>1777145812</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to using pyproject macros to build and install.
+- Since we don't build the C extensions, move the dist-info metadata too.
+- Add patch no-cpydist-bdist_wheel.patch:
+  * Do not import the NIH bdist_wheel function in setup.py.</comment>
+    <requestid>1349080</requestid>
+  </revision>
 </revisionlist>

@@ -21,10 +21,12 @@ Version:        9.6.0
 Release:        0
 Summary:        MySQL driver written in Python
 License:        SUSE-GPL-2.0-with-FLOSS-exception
-Group:          Development/Languages/Python
 URL:            http://dev.mysql.com/doc/connector-python/en/index.html
 # GitHub: https://github.com/mysql/mysql-connector-python
 Source:         https://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python-%{version}-src.tar.gz
+# PATCH-FIX-OPENSUSE Do not import the NIH bdist_wheel command in setup.py,
+# because it will write the resultant wheel to wheel-dir as a *file*.
+Patch0:         no-cpydist-bdist_wheel.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf}
 BuildRequires:  %{python_module pytest}
@@ -46,20 +48,24 @@ MySQL driver written in Python which does not depend on MySQL C client libraries
 
 %build
 pushd mysql-connector-python
-%python_build
+%pyproject_wheel
 popd
 pushd mysqlx-connector-python
-%python_build
+%pyproject_wheel
 popd
 
 %install
 pushd mysql-connector-python
-%python_install
+%pyproject_install
 popd
 pushd mysqlx-connector-python
-%python_install
+%pyproject_install
 popd
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand # move the dist-info to sitelib
+mv %{buildroot}%{$python_sitearch}/mysql*dist-info %{buildroot}%{$python_sitelib}
+rm -r %{buildroot}%{$python_sitearch}
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 #FIXME(toabctl): Reenable testuite
 # probably won't work against mariadb 10
@@ -72,8 +78,9 @@ popd
 %files %{python_files}
 %license LICENSE.txt
 %doc README.txt CHANGES.txt
-%{python_sitearch}/mysql
-%{python_sitearch}/mysql*.egg-info
-%{python_sitearch}/mysqlx
+%{python_sitelib}/mysql
+%{python_sitelib}/mysqlx
+%{python_sitelib}/mysql_connector_python-%{version}.dist-info
+%{python_sitelib}/mysqlx_connector_python-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 24 07:03:39 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to using pyproject macros to build and install.
+- Since we don't build the C extensions, move the dist-info metadata too.
+- Add patch no-cpydist-bdist_wheel.patch:
+  * Do not import the NIH bdist_wheel function in setup.py.
+
+-------------------------------------------------------------------
 Mon Feb 23 08:37:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.6.0:

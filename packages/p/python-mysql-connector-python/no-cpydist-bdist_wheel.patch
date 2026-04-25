@@ -1,0 +1,32 @@
+Index: mysql-connector-python-9.3.0-src/mysql-connector-python/setup.py
+===================================================================
+--- mysql-connector-python-9.3.0-src.orig/mysql-connector-python/setup.py
++++ mysql-connector-python-9.3.0-src/mysql-connector-python/setup.py
+@@ -43,10 +43,7 @@ from cpydist.bdist_solaris import DistSo
+ from cpydist.sdist import DistSource
+ from setuptools import Extension, find_packages, setup
+ 
+-try:
+-    from cpydist.bdist_wheel import DistWheel
+-except ImportError:
+-    DistWheel = None
++DistWheel = None
+ 
+ GITHUB_URL = "https://github.com/mysql/mysql-connector-python"
+ METADATA_FILES = (
+Index: mysql-connector-python-9.3.0-src/mysqlx-connector-python/setup.py
+===================================================================
+--- mysql-connector-python-9.3.0-src.orig/mysqlx-connector-python/setup.py
++++ mysql-connector-python-9.3.0-src/mysqlx-connector-python/setup.py
+@@ -43,10 +43,7 @@ from cpydist.bdist_solaris import DistSo
+ from cpydist.sdist import DistSource
+ from setuptools import Extension, find_packages, setup
+ 
+-try:
+-    from cpydist.bdist_wheel import DistWheel
+-except ImportError:
+-    DistWheel = None
++DistWheel = None
+ 
+ 
+ GITHUB_URL = "https://github.com/mysql/mysql-connector-python"
