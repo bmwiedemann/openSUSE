@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 23 19:36:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.10.5:
+  * chore(deps): update docker (#7042)
+  * chore(deps): update dependency go to v1.26.2 (release-v2.10)
+    (#7040)
+  * chore(deps): lock file maintenance (#7004)
+
+-------------------------------------------------------------------
 Sat Apr 18 05:48:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.10.4:
