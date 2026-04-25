@@ -1,7 +1,7 @@
 #
 # spec file for package python-kiss-headers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,20 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-kiss-headers
-Version:        2.3.1
+Version:        2.5.0
 Release:        0
 Summary:        Python package for parsing HTTP/1.1 style headers to objects
 License:        MIT
 URL:            https://www.kiss-headers.tech/
-Source0:        https://files.pythonhosted.org/packages/source/k/kiss-headers/kiss-headers-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/k/kiss_headers/kiss_headers-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling >= 1.6.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -35,7 +37,7 @@ A Python package for object-oriented HTTP/1.1 style headers. It includes
 a parser and serializer for HTTP headers.
 
 %prep
-%autosetup -n kiss-headers-%{version}
+%autosetup -n kiss_headers-%{version}
 
 %build
 %pyproject_wheel

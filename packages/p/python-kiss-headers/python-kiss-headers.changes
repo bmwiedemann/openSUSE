@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Apr 24 08:17:00 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.5.0
+  * Added explicit support for Python 3.13
+  * Added support for async models in Niquests and urllib3-future
+- from version 2.4.3
+  * Added support for niquests.Response
+  * Added support for kiss_headers.Headers (deep copy returned)
+- from version 2.4.2
+  * Fixed parse_it when given Mapping contains unattended types
+    (outside str and bytes)
+- from version 2.4.1
+  * Fixed an issue where parse_it is given a Mapping-like containing
+    bytes in values or keys and crashes on decode_partials.
+  * Added hints on Header (common attributes) and Headers (standard headers).
+- from version 2.4.0
+  * Support for JSON value in a header. It is now interpreted.
+  * Explicit support for Python 3.12
+  * Incorrectly split a header when it contains a valid JSON
+    (due to the comma delimiter)
+  * Support for Python 3.6
+  * (internal) Changed absolute import to relative ones.
+  * The generic T passed to get_polymorphic is now bound to CustomHeader
+    and covariants.
+- Adjust upstream source name in spec file
+- Update BuildRequires from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Fri May 30 09:32:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
