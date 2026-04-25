@@ -62,4 +62,16 @@ Fix URL to use upstream GitHub release tarball as Source0</comment>
   * Align packaging with openSUSE guidelines for Python applications </comment>
     <requestid>1347195</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>e0612ab9e84ad6b53855de33a07e2d97</srcmd5>
+    <version>1.2.1</version>
+    <time>1777145730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update use-system-xdelta3.patch:
+  * Remove experimental debug prints and temporary build logs.
+  * Properly implement xdelta3 call via subprocess.run with safety checks.
+  * Fix argument injection risk by using list-based command arguments.
+  * Fixes (boo#1262128). </comment>
+    <requestid>1349041</requestid>
+  </revision>
 </revisionlist>
