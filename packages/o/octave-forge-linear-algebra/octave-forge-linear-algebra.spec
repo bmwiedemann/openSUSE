@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-linear-algebra
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define octpkg  linear-algebra
 Name:           octave-forge-%{octpkg}
-Version:        2.2.3
+Version:        2.2.4
 Release:        0
 Summary:        Linear algebra package for Octave
-License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND BSD-2-Clause
+License:        BSD-2-Clause AND GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://octave.sourceforge.io
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
