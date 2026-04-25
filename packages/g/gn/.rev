@@ -255,4 +255,12 @@
   * Fix relative imports from args.gn.</comment>
     <requestid>1332437</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c444035646fc9ab5e72768406b48c72b</srcmd5>
+    <version>0.20260331</version>
+    <time>1777145773</time>
+    <user>dimstar_suse</user>
+    <comment>gn version bump, required for chromium &gt;= 148</comment>
+    <requestid>1348995</requestid>
+  </revision>
 </revisionlist>

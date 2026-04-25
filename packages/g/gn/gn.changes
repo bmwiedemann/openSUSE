@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Apr  7 15:52:49 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- added patches:
+  gn-multiline-comment.patch
+  (change multiline comment so that line continuation character
+   is not at the end of the line) 
+
+-------------------------------------------------------------------
+Tue Apr 07 15:43:48 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 0.20260331:
+  * Add modulemap generation to GN.
+  * Support building gn without a .git directory.
+  * Limit the maximum number of GN worker threads to 32.
+  * Remove premature target writing before validation during `gn gen`.
+  * Only run target checks in background threads during resolution.
+  * Add additional files to gitignore
+  * Add `inputs` parameter to `tool`.
+  * Unit test foo* not just *foo patterns
+  * Unit test edge cases around consecutive \b in patterns
+  * Reject newlines in string config values (defines, cflags, etc.)
+  * Set clang-format to use C++20
+  * Run formatter
+  * Bump min mac version flag.
+  * Add --error-limit flag to control error output count
+  * [gn] Fix Value::operator== for empty lists
+  * [gn] Optimize Value::LIST with Copy-On-Write using nullptr
+  * Capture C++ modules compilation commands in compile_commands.json
+  * Output -fmodule-map-file as well as -fmodule-file for module dependencies.
+  * Optimize HeaderChecker by parallelizing ReachabilityCache pre-calculation and removing lock contention.
+  * Optimize HeaderChecker file I/O by parsing files only once
+  * Optimize reachability cache to drastically reduce BFS executions
+  * Remove unused targets_count_ in HeaderChecker
+  * Apply clang-format
+  * Use high-performance cores on Apple Silicon for worker pool
+  * Optimize HeaderChecker::IsDependencyOf using HashTableBase
+  * [perf] Optimize HeaderChecker BFS using reserve()
+  * [perf] Share ResolvedTargetData across worker threads
+  * [perf] Cache dependency checks in HeaderChecker
+  * [test] Fix SetupTest.AbsolutePythonPathInsideRootDir on macOS
+  * [mac] Update minimum macOS version to 10.12
+  * Include validations when collecting metadata
+  * Fix target being written twice under certain circumstances
+  * Add validation support to gn analyze/desc/path/refs
+  * Fix race condition when using validations
+  * Add pcm files to the deps of phony target
+  * Add `validations` dependency type to targets
+  * Fix result of Scheduler::Run() with empty work queue
+  * Add conductor setup files
+  * Improve writing runtime deps
+  * Unit test label user visible name
+  * Improve error message for rebase_path builtin
+  * Minor table-driven test refactor
+  * win: Use relative path for python in ninja files if possible
+
+-------------------------------------------------------------------
 Fri Dec 26 12:08:53 UTC 2025 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 0.20251217:

@@ -17,7 +17,7 @@
 
 
 Name:           gn
-Version:        0.20251217
+Version:        0.20260331
 Release:        0
 Summary:        A meta-build system that generates build files for Ninja
 License:        BSD-3-Clause
@@ -25,6 +25,7 @@ URL:            https://gn.googlesource.com/
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         redundant-move.patch
 Patch1:         subprocess-python36.patch
+Patch2:         gn-multiline-comment.patch
 BuildRequires:  ninja
 BuildRequires:  python3-base
 ExcludeArch:    ppc
@@ -45,6 +46,7 @@ GN is a meta-build system that generates build files for Ninja.
 if test $(readlink /usr/bin/python3) = "python3.6" ; then
 %patch -P 1 -p1
 fi
+%patch -P 2 -p1
 
 %build
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/-O2//g'`"
