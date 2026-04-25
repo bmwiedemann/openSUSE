@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr  1 20:29:18 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update spdlog to 1.17.0
+  * Fix the %z formatter (UTC offset)
+  * Set CMAKE_BUILD_TYPE only in top-level project
+  * Change access scope for ANSI target_file_ from private to protected
+  * Fix UWP detection
+- update spdlog to 1.16.0
+  * Use std::getenv
+  * Remove unnecessary and inconsistent "final" from color sinks
+  * Fix ringbuffer sink for zero buffer size
+- Drop spdlog-catch-3_9-tests-compatibility.patch which is part
+  of 1.17 upstream release
+
+-------------------------------------------------------------------
 Fri Aug 15 10:09:57 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add spdlog-catch-3_9-tests-compatibility.patch: Run tests in the

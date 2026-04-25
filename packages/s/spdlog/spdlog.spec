@@ -1,7 +1,7 @@
 #
 # spec file for package spdlog
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,16 @@
 
 
 Name:           spdlog
-%define lname	libspdlog1_15
-%define sover	1.15
-Version:        1.15.3
+%define lname	libspdlog1_17
+%define sover	1.17
+Version:        1.17.0
 Release:        0
 Summary:        C++ logging library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/gabime/spdlog
-Source0:        https://github.com/gabime/%{name}/archive/refs/tags/v%{version}.tar.gz
+Source0:        https://github.com/gabime/%{name}/archive/refs/tags/v%{version}.tar.gz#/spdlog-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch0:         https://github.com/gabime/spdlog/commit/3edc8036dbf3c7cdf0e460a913ae294c87ae90dc.patch#/spdlog-catch-3_9-tests-compatibility.patch
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++ >= 13
