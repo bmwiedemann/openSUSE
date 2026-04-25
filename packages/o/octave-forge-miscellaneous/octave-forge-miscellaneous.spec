@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-miscellaneous
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define octpkg  miscellaneous
 Name:           octave-forge-%{octpkg}
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Miscellaneous functions for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gnu-octave.github.io/packages/%{octpkg}/
-Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+Source0:        https://github.com/gnu-octave/octave-miscellaneous/releases/download/release-%{version}/miscellaneous-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  octave-devel
