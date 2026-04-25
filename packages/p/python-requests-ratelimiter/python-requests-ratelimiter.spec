@@ -17,21 +17,21 @@
 
 
 Name:           python-requests-ratelimiter
-Version:        0.9.3
+Version:        0.10.0
 Release:        0
 Summary:        Easy rate-limiting for python requests
 License:        MIT
 URL:            https://github.com/JWCook/requests-ratelimiter
 Source:         https://files.pythonhosted.org/packages/source/r/requests_ratelimiter/requests_ratelimiter-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyrate-limiter >= 4.1 and %python-pyrate-limiter < 5}
 BuildRequires:  %{python_module pytest >= 8.3}
 BuildRequires:  %{python_module pytest-xdist >= 3.1}
 BuildRequires:  %{python_module requests >= 2.20}
 BuildRequires:  %{python_module requests-cache >= 1.2.0}
 BuildRequires:  %{python_module requests-mock >= 1.11}
-BuildRequires:  %{python_module pyrate-limiter >= 4.1 and %python-pyrate-limiter < 5}
 Requires:       python-requests >= 2.20
 Requires:       (python-pyrate-limiter >= 4.1 and python-pyrate-limiter < 5)
 %python_subpackages
@@ -58,4 +58,3 @@ This package is a simple wrapper around pyrate-limiter that adds convenient inte
 %{python_sitelib}/requests_ratelimiter-%{version}.dist-info
 
 %changelog
-
