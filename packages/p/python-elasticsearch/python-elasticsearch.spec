@@ -1,7 +1,7 @@
 #
 # spec file for package python-elasticsearch
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-elasticsearch
-Version:        9.2.1
+Version:        9.3.0
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0
@@ -45,6 +45,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyYAML >= 5.4}
 BuildRequires:  %{python_module aiohttp >= 3}
 BuildRequires:  %{python_module anyio}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module orjson}
 BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest-asyncio}

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 21 11:10:10 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 9.3.0
+  * Add pack_dense_vector helper function to pack dense vectors for
+    efficient uploading (#3219)
+  * New and updated ES|QL functions in the ES|QL query builder for
+    9.3 and Serverless (#3266)
+  * Added cat.circuit_breaker API
+  * Added inference.put_groq, inference.put_openshift_ai, inference.put_nvidia APIs
+  * Added downsampling_method argument to indices.put_data_lifecycle API
+  * Added return_documents and top_n arguments to inference.rerank API
+  * Added close_job argument to ml.stop_datafeed API
+  * Added certificate_identity to security.create_cross_cluster_api_key
+    and security.update_cross_cluster_api_key APIs
+  * Added project_routing argument to project.tags API
+  * Added NumpyDenseVector field, with support for dense vectors
+    based on numpy arrays (#3218)
+  * Added ExponentialHistogram field
+  * Added time_series_metric argument to Histogram field
+  * Added on_disk_rescore argument to DenseVectorIndexOptions type
+  * Added slices argument to UpdateByQueryResponse type
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Jan  8 13:02:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 9.2.1
