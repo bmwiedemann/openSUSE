@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 24 07:02:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.0:
+  * NEW Software Renderer - rlsw
+  * NEW Platform backend: Memory - rcore_memory
+  * NEW Platform backend: Win32 - rcore_desktop_win32
+  * NEW Platform backend: Emscripten - rcore_web_emscripten
+  * REDESIGNED Fullscreen modes and High-DPI content scaling
+  * REDESIGNED Skeletal Animation System
+  * REDESIGNED Build Config System - config.h
+  * NEW File System API
+  * NEW Text Management API
+  * NEW tool: raylib examples manager - rexm
+- Drop raylib-CVE-2025-15533-CVE-2025-15534.patch
+
+-------------------------------------------------------------------
 Mon Feb 16 16:02:34 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add a legal notice about examples not being distributed

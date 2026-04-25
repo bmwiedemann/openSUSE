@@ -341,4 +341,23 @@
   As some files under examples/* are under CC BY-NC 4.0</comment>
     <requestid>1333742</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ebc6bcfa46b262ebae25c5a92a00d232</srcmd5>
+    <version>6.0</version>
+    <time>1777145827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0:
+  * NEW Software Renderer - rlsw
+  * NEW Platform backend: Memory - rcore_memory
+  * NEW Platform backend: Win32 - rcore_desktop_win32
+  * NEW Platform backend: Emscripten - rcore_web_emscripten
+  * REDESIGNED Fullscreen modes and High-DPI content scaling
+  * REDESIGNED Skeletal Animation System
+  * REDESIGNED Build Config System - config.h
+  * NEW File System API
+  * NEW Text Management API
+  * NEW tool: raylib examples manager - rexm
+- Drop raylib-CVE-2025-15533-CVE-2025-15534.patch</comment>
+    <requestid>1349084</requestid>
+  </revision>
 </revisionlist>
