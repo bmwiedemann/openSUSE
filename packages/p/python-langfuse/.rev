@@ -202,4 +202,24 @@
   * fix(langchain): propagate trace name metadata</comment>
     <requestid>1348121</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>183f059a420801c5bf2938d5a19baa2f</srcmd5>
+    <version>4.5.1</version>
+    <time>1777145883</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.5.1:
+  * chore(ci): pin action version comments to immutable patch
+    tags
+  * fix(experiments): flatten propagated metadata
+- update to 4.5.0:
+  * fix(ci): disable zizmor advanced security to unblock releases
+  * fix(observe): preserve streaming context without output
+    capture
+  * ci: use explicit version for `fetch-metadata` version comment
+  * fix(observe): preserve streaming context without output
+    capture
+  * fix(langchain): preserve LangGraph control flow traces
+  * fix(openai): preserve native v1 stream contract</comment>
+    <requestid>1349211</requestid>
+  </revision>
 </revisionlist>

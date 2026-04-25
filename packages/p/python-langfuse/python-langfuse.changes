@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 25 10:20:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.1:
+  * chore(ci): pin action version comments to immutable patch
+    tags
+  * fix(experiments): flatten propagated metadata
+- update to 4.5.0:
+  * fix(ci): disable zizmor advanced security to unblock releases
+  * fix(observe): preserve streaming context without output
+    capture
+  * ci: use explicit version for `fetch-metadata` version comment
+  * fix(observe): preserve streaming context without output
+    capture
+  * fix(langchain): preserve LangGraph control flow traces
+  * fix(openai): preserve native v1 stream contract
+
+-------------------------------------------------------------------
 Mon Apr 20 07:06:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.1:
