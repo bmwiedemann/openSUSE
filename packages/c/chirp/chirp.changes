@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 25 17:56:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260425:
+  * Use common "no response" exception in drivers
+  * vx150: Add driver for Vertex Standard VX-150
+  * Update 935 and XS20 power handling
+  * Fix 935/XS20 new channel creation
+  * Fix exporting DV memories from RepeaterBook to CSV
+  * TK7162: add initial support
+  * tk8160: Fix upload clobbering memory
+  * tk8160: Cleanup key definitions
+
+-------------------------------------------------------------------
 Sat Apr 18 19:11:01 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260417:

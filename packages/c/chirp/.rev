@@ -528,4 +528,12 @@
     <comment></comment>
     <requestid>1347976</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>5b2c148297fba1426ef81df86798fcdc</srcmd5>
+    <version>20260425</version>
+    <time>1777145894</time>
+    <user>dimstar_suse</user>
+    <comment>chirp 20260425 (forwarded request 1349251 from AndreasStieger)</comment>
+    <requestid>1349253</requestid>
+  </revision>
 </revisionlist>
