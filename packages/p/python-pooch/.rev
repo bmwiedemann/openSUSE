@@ -57,4 +57,12 @@ python-librosa will be the first to use it</comment>
 - Switch to pyproject macros</comment>
     <requestid>1112134</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0ce2851b977c2b55125ced9557ab851b</srcmd5>
+    <version>1.9.0</version>
+    <time>1777145713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1348800</requestid>
+  </revision>
 </revisionlist>

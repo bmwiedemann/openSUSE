@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Mon Apr 20 14:51:18 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.9.0
+  * Drop support for Python 3.7 and 3.8 (#450).
+  * Explicitly pass filter to TarFile.extractall on Python >=3.12 (#458).
+    Pass a filter="data" argument to TarFile.extractall to prevent
+    dangerous security issues. The filter argument was added in
+    Python 3.12, so only pass it on versions greater or equal than
+    that. This change matches the default behaviour that will take
+    place since Python 3.14.
+  * Fix TQDM usage (#465). Newer versions of tqdm behave differently
+    at a terminal vs in a jupyter notebook. Import from tqdm.auto
+    instead so that the downloader looks right in either a notebook
+    or the terminal.
+  * Fix bug in file hashing on FIPS enabled system (#511). Set
+    userforsecurity=False on hashlib hashing algorithms to make
+    FIPS enabled systems happy.
+  * Set User-Agent in requests headers for DOI downloaders (#507).
+    Pass a custom User-Agent when making requests through DOI
+    downloaders in order to bypass limit rates imposed by services
+    like Zenodo to block abusive requests. The can now filter requests
+    coming from Pooch from the rest. Add a global REQUESTS_HEADERS
+    variable that is used by the doi_to_url function (which requires
+    to make a request to doi.org to figure out the service provider).
+    Add a new headers argument to the DOIDownloader to specifically
+    pass requests headers. By default it'll use the Pooch's default
+    user agent.
+  * Extend support for Python 3.13 (#451) and Python 3.14 (#505).
+  * Provide more descriptive errors when DOI request fails (#477).
+    Raise the requests response to provide more informative errors
+    when the status code is between 400 and 600.
+  * Add testing data to the package distributions (#421). The test
+    code pooch/tests is installed but he data in pooch/tests/data
+    are not. This makes it impossible to run tests on the installed
+    package. Add the appropriate setuptools configuration to make
+    it happen.
+  * Move push to codecov to its own job in Actions (#424). Remove
+    the push to codecov step from the test job into a new job that
+    depends on the test job. Upload the coverage reports as artifacts
+    after testing, and reuse the artifacts in the new job. Upload all
+    coverage reports in a single push to Codecov to minimize the number
+    of hits.
+  * Increase the max positional args allowed by pylint (#438). Configure
+    pylint to increase the maximum number of positional arguments allowed
+    in any function or method.
+  * Replace usage of pkg_resources for importlib.resources (#449).
+  * Add mypy to CI job and type hints for one class. (#404). Add type
+    hints to pooch/core.py and create a new typing submodule for custom
+    type classes, and add it to the API Reference. Run mypy on CI to
+    perform type checks, and create new targets in the Makefile. Extend
+    the list of dependencies required to run the type checks.
+  * Add pytest figshare mark to tests (#481). Add a pytest figshare mark
+    to tests that make requests to Figshare. Such mark allows us to filter
+    tests: use pytest -v -m figshare to only run tests with that mark, or
+    use pytest -v -m "not figshare to run all test but the marked ones.
+  * Skip Figshare related tests on Actions under MacOS (#482). Skip tests
+    marked with figshare on Actions that use MacOS as runner. Those tests
+    in CI were constantly failing, probably due to too many requests coming
+    from GitHub. Add an optional PYTEST_ARGS_EXTRA variable to Makefile
+    that can be used to pass extra arguments to pytest. Skip doctests that
+    download files from Figshare.
+  * List requirements to run type checks in new file (#492). Create a new
+    env/requirements-types.txt file with the list of required packages to
+    run types checks. This file is used by the GitHub Action workflow that
+    automatically runs the type checks. List new requirements for type checks
+    in environment.yml. Stop ignoring missing imports of xxhash in pyproject.toml.
+    Ignore type assignment for xxhash in test file.
+  * Fix uploads of coverage reports to codecov (#496). Checkout the repository
+    in the codecov-upload job before uploading the coverage reports to codecov.
+  * Pin black to v25 (#506). Pin black version used in the environment.yml and
+    to run style checks on CI to 25.*.* and <26.0.0, respectively. Since we plan
+    to replace black with Ruff for autoformatting, it's better to pin for now
+    than reformat it with latest version.
+  * Only run tests with network access on some CI jobs (#484). Our CI is
+    continuously hitting some external network providers which is causing some
+    of them (mostly figshare for now) to block our traffic. This means that our
+    CI fails randomly and it's annoying. Only run network tests on jobs with the
+    latest Python and optional dependencies installed to try to mitigate this.
+  * Use a SPDX expression for license in pyproject.toml (#476). Use a SPDX
+    expression for the license in pyproject.toml and remove the unneeded license
+    classifier. This removes the warnings we were getting after running make build.
+  * Add Typing :: Typed trove classifier (#472). Allow PyPI users know that Pooch
+    supports type hints.
+  * Allow to manually trigger test job in Actions (#475). Add workflow_dispatch
+    as an event trigger for the test.yml workflow.
+  * Standardize requests made by DOIDownloaders (#514). Respect user's decisions
+    when defining the DOIDownloader with respect to arguments passed to requests.get
+    whenever we call that function. This way, all calls made by DOIDownloaders and
+    the repository classes make use of the same arguments, including timeout, headers,
+    etc.
+  * Add a link to the Fatiando Forum in the README (#461).
+  * Add scXpand (#488), xclim (#445), CLISOPS (#445), and SPLASH (#432) to list of
+    projects using Pooch.
+- from version 1.8.2
+  * Use a variable to set the default request timeout (#418)
+  * Add HyperSpy, RosettaSciIO, eXSpy to projects using pooch (#408)
+  * Add more packages using Pooch (#403)
+  * Add optional dependencies to environment.yml (#413)
+  * Run tests with oldest dependencies on x86 macos (#414)
+  * Mark additional tests requiring network (#412)
+  * Fix package description in pyproject.toml (#407)
+  * Setup Trusted Publisher deployment to PyPI (#406)
+  * Use Burocrata to check and add license notices (#402)
+  * Use pyproject.toml instead of setup.cfg (#401)
+- from version 1.8.1
+  * Use the ID instead of persistentID for Dataverse downloads since some repositories
+    don't issue persistentIDs but all issue normal IDs (#355)
+  * Ensure all archive members are unpacked in subsequent uses of Untar/Unzip if the
+    first call only asked for a few members (#365)
+  * Move "Projects using Pooch" further up the README (#386)
+  * Update the versions of sphinx and its plugins (#385)
+  * Remove many deprecated pylint options (#329)
+  * Use Dependabot to manage GitHub Actions (#387)
+  * Simplify the test GitHub Actions workflow (#384)
+  * Update format for Black 24.1.1 (#383)
+- from version 1.8.0
+  * Fix bug: add support for old and new Zenodo APIs (#375)
+  * Only create local data directories if necessary (#370)
+  * Speed up import time by lazy loading requests (#328)
+  * Add support for Python 3.11 (#348)
+  * Only run CI cron job for the upstream repository (#361)
+  * Add GemGIS to list of projects using Pooch (#349)
+  * Fix spelling of Dataverse (#353)
+  * Fix grammar on retrieve documentation (#359)
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue Sep 19 06:50:30 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.7.0:

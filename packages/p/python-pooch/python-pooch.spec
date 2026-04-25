@@ -1,7 +1,7 @@
 #
 # spec file for package python-pooch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pooch
-Version:        1.7.0
+Version:        1.9.0
 Release:        0
 Summary:        Manager for Python libraries' sample data files
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/p/pooch/pooch-%{v
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs}
+BuildRequires:  %{python_module pytest-httpserver}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools_scm}
