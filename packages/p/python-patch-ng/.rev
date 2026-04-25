@@ -35,4 +35,13 @@
     <comment></comment>
     <requestid>1318843</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f4f6d7a734f1d0d235ebc423de2f8dc1</srcmd5>
+    <version>1.19.1</version>
+    <time>1777152473</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.19.1:
+  * Fix: Add missing wheel when building distribution</comment>
+    <requestid>1349264</requestid>
+  </revision>
 </revisionlist>

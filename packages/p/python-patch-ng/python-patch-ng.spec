@@ -1,7 +1,7 @@
 #
 # spec file for package python-patch-ng
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-patch-ng
-Version:        1.19.0
+Version:        1.19.1
 Release:        0
 Summary:        Library to parse and apply unified diffs
 License:        MIT
