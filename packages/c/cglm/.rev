@@ -108,4 +108,24 @@
     <comment></comment>
     <requestid>1166506</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b90d6676c5e0afac4e2da441c0304afb</srcmd5>
+    <version>0.9.6</version>
+    <time>1777145856</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.6:
+  * add missing `call/aabb2d.h` to auto tools build `install`
+- update to 0.9.5:
+  * More Optimizations and SIMD fixes for MSVC &amp; ARM
+  * fix refract
+  * suppress warns about va-args
+  * supress fast-math warns
+  * suppress param-name warns
+  * add missing newlines at the eof
+  * documentation improvements
+  * add missing files to build
+
+    * fix some doc typos &amp; warnings</comment>
+    <requestid>1349125</requestid>
+  </revision>
 </revisionlist>
