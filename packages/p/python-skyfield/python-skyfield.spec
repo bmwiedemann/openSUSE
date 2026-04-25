@@ -1,7 +1,7 @@
 #
 # spec file for package python-skyfield
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define assaycommit 74617d70e77afa09f58b3169cf496679ac5d5621
 %define assayver    288.74617d7
 Name:           python-skyfield
-Version:        1.48
+Version:        1.54
 Release:        0
 Summary:        Elegant astronomy for Python
 License:        MIT
@@ -51,14 +51,14 @@ BuildRequires:  %{python_module jplephem >= 2.13}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module sgp4 >= 2.2}
+BuildRequires:  %{python_module sgp4 >= 2.13}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi >= 2017.4.17
 Requires:       python-jplephem >= 2.13
 Requires:       python-numpy
-Requires:       python-sgp4 >= 2.2
+Requires:       python-sgp4 >= 2.13
 Recommends:     python-astropy
 Recommends:     python-matplotlib
 Recommends:     python-pandas
@@ -79,17 +79,19 @@ sed -i 's/if IS_32_BIT/if True/' skyfield/tests/test_planetarylib.py
 sed -i 's/assert abs(distance.au - 1) < 1e-16/assert abs(distance.au - 1) < 1e-15/' skyfield/tests/test_positions.py
 
 %build
-export SKYFIELD_USE_SETUPTOOLS=1
 %pyproject_wheel
 
 %install
-export SKYFIELD_USE_SETUPTOOLS=1
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PYTHONPATH="../assay-%{assaycommit}"
-%python_exec -m assay --batch skyfield.tests
+%{python_expand # assay is not compatible with python 3.14 -- gh#brandon-rhodes/assay#17
+if [ "${python_flavor}" != "python314" ]; then
+  $python -m assay --batch skyfield.tests
+fi
+}
 
 %files %{python_files}
 %doc README.rst
