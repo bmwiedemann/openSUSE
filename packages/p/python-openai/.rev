@@ -225,4 +225,19 @@
     files and file_batches</comment>
     <requestid>1346092</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>69278d5002204d0e0fab89843d2043fc</srcmd5>
+    <version>2.32.0</version>
+    <time>1777145885</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.32.0:
+  * **api:** Add detail to InputFileContent
+  * **api:** add OAuthErrorCode type
+  * **client:** add event handler implementation for websockets
+  * **client:** allow enqueuing to websockets even when not
+    connected
+  * **client:** support reconnection in websockets
+  * ensure file data are only sent as 1 parameter</comment>
+    <requestid>1349219</requestid>
+  </revision>
 </revisionlist>

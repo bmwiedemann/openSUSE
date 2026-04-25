@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 25 11:00:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.32.0:
+  * **api:** Add detail to InputFileContent
+  * **api:** add OAuthErrorCode type
+  * **client:** add event handler implementation for websockets
+  * **client:** allow enqueuing to websockets even when not
+    connected
+  * **client:** support reconnection in websockets
+  * ensure file data are only sent as 1 parameter
+
+-------------------------------------------------------------------
 Sat Apr 11 17:46:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.31.0:
