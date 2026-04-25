@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 23 19:28:38 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.62.1:
+  * Release: v2.62.1
+  * Logo (Builtin): adds uzbek
+  * Logo (Builtin): adds support for Redrose (#2236)
+  * Logo (Builtin): adds LimeOS logo (#2137)
+  * Logo (Builtin): adds EN-OS
+  * Host (Linux): fixes host is missing in some machine
+  * Packaging: updates debian stuff [ci skip]
+  * Terminal (Windows): removes using of Win32 registry APIs
+
+-------------------------------------------------------------------
+Thu Apr 23 19:28:01 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.62.0:
+  * Terminal (Windows): removes using of Win32 registry APIs
+  * Global: addresses AI's comments
+  * Release: v2.62.0
+  * Packages: rearranges the packages output in alphabet order
+  * Packages (Linux): adds AppImage packages support
+  * Doc: update changelog [ci skip]
+  * GPU: hard codes QEMU virtual GPU
+  * Modules: adds missing options when generating full config file
+  * Style: runs clang-format
+
+-------------------------------------------------------------------
 Sat Mar 28 14:44:50 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.61.0:
