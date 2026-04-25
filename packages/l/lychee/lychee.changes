@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Apr 24 12:40:19 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update 001-exclude-octocrab.patch:
+  * update the patch to the latest dependencies
+- Update to version 0.24.0:
+  * chore: release v0.24.0 (#2048)
+  * Unify Releases Across Operating Systems (#1957)
+  * fix: check HTTP status in archive snapshots, and ignore 503 in test (#2158)
+  * feat: check text fragments (#2138)
+  * fix: prevent autolink duplication (#2151)
+  * chore(deps): bump crate-ci/typos in the dependencies group
+  * refactor: make website checker return Status always, rather than Result (#2140)
+  * Fix matching logic for glob hidden files (#2130)
+  * Remove the `Redirect` and `Remapped` wrapper variants from the `Status` enum. (#2129)
+  * Update Nix flake: Rust 1.91.0 -> 1.95.0
+  * Fix output path not validated before the run (#2148)
+  * Always show full config parse errors with full details in output (#2149)
+  * fix: prevent 0 value for max-concurrency and threads (#2145)
+  * root-dir: allow root-dir that doesn't exist (#2127)
+  * feat: allow bool flag merging (#2137)
+  * Add tests for the current state of "Checking a Local Folder with URL Remapping" (#1965)
+  * chore(deps): bump the dependencies group with 3 updates
+  * Simplify match as suggested by @mre
+  * refactor: move caching logic to cache (#2123)
+  * chore(deps): bump the dependencies group with 3 updates
+  * chore(deps): bump crate-ci/typos in the dependencies group
+  * fix: quirk: remove line number fragments from github URLs (#2116)
+  * Respect HTTP error codes in CLI inputs (#2101)
+  * Support multiple config file formats and refactor config module (#2104)
+  * fix: use the remapped URI for the cache key (#1818) (#2109)
+  * Add Code of Conduct for community guidelines (#2121)
+  * feat: show redirects & remaps (#2094)
+  * Fix double count (#2088)
+  * fix(cli): bump open files limit on macOS and Linux (#2106)
+  * chore(deps): bump the dependencies group with 5 updates
+  * Never cache errors on disk
+  * Unify input URL fetching with the link-checker's HostPool (#2100)
+  * Add missing field
+  * feat: hide progress bar if input is `stdin` only (#1938)
+  * chore(deps): bump the dependencies group across 1 directory with 12 updates
+  * ci: add `cargo doc` to CI, allowing warnings for now (#2096)
+  * fix: update email test fixture (#2095)
+  * fix(pre-commit): use latest release docker image (#2092)
+  * Add RelativeUri enum for types of relative links (#2078)
+  * Fix Windows Absolute Path Parsing and Remove HTTP Assumption (#1837)
+  * Adds shell completions for lychee (#1972)
+  * Increase value for --max-redirects (#2087)
+  * Remove raw mode (#2086)
+  * feat: Support sitemap.xml (#2071)
+  * Report input source errors rather than tokio panics (#2074)
+  * NLnet hex sticker (#2085)
+  * Remove file url trailing slash warning (#2083)
+  * chore(deps): bump the dependencies group with 5 updates
+  * chore(deps): bump the dependencies group with 3 updates
+  *  Box ErrorKind & RawUri within RequestError to fix oversize lint  (#2079)
+  * Remove deduplication of requests (#2075)
+  * Add Tor Project's support website
+  * feat: allow accepting timeouts (#2063)
+  * Add JUnit format (#2066)
+  * Prevent duplicate requests to the same URLs (#2067)
+  * chore(deps): bump the dependencies group with 2 updates
+  * chore(deps): bump the dependencies group with 3 updates
+  * refactor: add WaitGroup for waiting for a dynamic set of tasks  (#2046)
+  * Show line & column numbers (#2056)
+  * chore(deps): bump the dependencies group with 6 updates
+  * chore(deps): bump crate-ci/typos in the dependencies group
+  * Add `make readme` to generate and update the readme's `--help` text (#2047)
+  * Remove unneeded token
+  * Fix toc action (#2055)
+  * refactor!: add BaseInfo for resolving links, delete Base, cleanup utils (#2005)
+  * feat: pre-commit should use a fixed version according to yaml 'rev' (#2042)
+  * Document file format support (#2052)
+  * Improve help message as proposed by @katrinafyi
+  * chore(deps): bump crate-ci/typos in the dependencies group (#2049)
+  * feat: Support multiple config files (#2007)
+  * chore(deps): bump the dependencies group with 8 updates
+  * Update changelogs
+
+-------------------------------------------------------------------
 Fri Feb 13 16:06:33 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update 001-exclude-octocrab.patch:
