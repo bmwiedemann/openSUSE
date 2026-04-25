@@ -781,4 +781,12 @@
   * Replace os-client-config</comment>
     <requestid>1342106</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>2bf2b78af2dd21920a3bbb0bd8dc14fa</srcmd5>
+    <version>5.8.0</version>
+    <time>1777145799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1349064</requestid>
+  </revision>
 </revisionlist>

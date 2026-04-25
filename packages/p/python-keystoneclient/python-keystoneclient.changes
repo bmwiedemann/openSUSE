@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:21:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop Epoch:0 from the spec file. Epoch is forbidden in openSUSE.
+  Additionally, Epoch 0 is the value of undefined epoch anyway, but
+  not specifying it does not give people ideas to use it.
+
+-------------------------------------------------------------------
 Mon Mar  9 21:36:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.8.0:
