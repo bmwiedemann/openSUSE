@@ -112,10 +112,26 @@ Patch36:        freerdp-CVE-2026-26271.patch
 Patch37:        freerdp-CVE-2026-26955.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-26965.patch bsc#1258985 yfjiang@suse.com -- fix out-of-bounds write
 Patch38:        freerdp-CVE-2026-26965.patch
+# PATCH-FIX-UPSTREAM freerdp-fix-use-nsc_process_message.patch bsc#1259653 bsc#1261848 yfjiang@suse.com -- correct usage of nsc_process_message
+Patch39:        freerdp-fix-use-nsc_process_message.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-31806.patch bsc#1259653 yfjiang@suse.com -- fix improper validation of server messages
-Patch39:        freerdp-CVE-2026-31806.patch
+Patch40:        freerdp-CVE-2026-31806.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-31883_31885.patch bsc#1259679 bsc#1259686 yfjiang@suse.com -- fix array bounds check in IMA-ADPCM and MS-ADPCM audio decoders
-Patch40:        freerdp-CVE-2026-31883_31885.patch
+Patch41:        freerdp-CVE-2026-31883_31885.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-25941.patch bsc#1258919 yfjiang@suse.com -- [channels,rdpgfx] check available stream length
+Patch42:        freerdp-CVE-2026-25941.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-25942.patch bsc#1258920 yfjiang@suse.com -- [client,x11] stringfiy functions for RAILS
+Patch43:        freerdp-CVE-2026-25942.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-25952_25953_25954.patch bsc#1258921, bsc#1258923, bsc#1258924 yfjiang@suse.com -- [client,x11] lock appWindow
+Patch44:        freerdp-CVE-2026-25952_25953_25954.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-27951.patch bsc#1258939 yfjiang@suse.com -- [allocations] fix growth of preallocated buffers
+Patch45:        freerdp-CVE-2026-27951.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-25997.patch bsc#1258977 yfjiang@suse.com -- [client,X11] fix clipboard update
+Patch47:        freerdp-CVE-2026-25997.patch
+# # PATCH-FIX-UPSTREAM freerdp-CVE-2026-26986.patch bsc#1258967 yfjiang@suse.com -- [client,x11] fix xf_rail_window_common cleanup
+Patch49:        freerdp-CVE-2026-26986.patch
+# # PATCH-FIX-UPSTREAM freerdp-CVE-2026-27015.patch bsc#1258987 yfjiang@suse.com -- [utils,smartcard] check stream length on padding
+Patch50:        freerdp-CVE-2026-27015.patch
 
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel

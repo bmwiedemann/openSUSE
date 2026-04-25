@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 14 09:09:38 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Update freerdp-3-macro:
+  + Add WINPR_ATTR_MALLOC macro from freerdp 3
+- Add patches to fix CVE issues:
+  + freerdp-CVE-2026-25941.patch (bsc#1258919, CVE-2026-25941)
+  + freerdp-CVE-2026-25942.patch (bsc#1258920, CVE-2026-25942)
+  + freerdp-CVE-2026-27951.patch (bsc#1258939, CVE-2026-27951)
+  + freerdp-CVE-2026-25997.patch (bsc#1258977, CVE-2026-25997)
+  + freerdp-CVE-2026-26986.patch (bsc#1258967, CVE-2026-26986)
+  + freerdp-CVE-2026-27015.patch (bsc#1258987, CVE-2026-27015)
+  + freerdp-CVE-2026-25952_25953_25954.patch (bsc#1258921,
+    bsc#1258923, bsc#1258924, CVE-2026-25952, CVE-2026-25953,
+    CVE-2026-25954)
+
+-------------------------------------------------------------------
+Mon Apr 13 01:10:19 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Add freerdp-fix-use-nsc_process_message.patch:
+  + Make the calling of nsc_process_message compatible with the fix in
+    freerdp-CVE-2026-31806.patch (bsc#1261848, bsc#1259653)
+
+-------------------------------------------------------------------
 Tue Mar 31 14:48:46 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Fix freerdp-CVE-2026-24684-2.patch. The previous version wrongly

@@ -44,3 +44,23 @@ Index: freerdp-2.11.7/winpr/include/winpr/assert.h
  #ifdef __cplusplus
  extern "C"
  {
+Index: freerdp-2.11.7/winpr/include/winpr/winpr.h
+===================================================================
+--- freerdp-2.11.7.orig/winpr/include/winpr/winpr.h
++++ freerdp-2.11.7/winpr/include/winpr/winpr.h
+@@ -82,6 +82,15 @@ WINPR_API const char* winpr_get_build_da
+ WINPR_API const char* winpr_get_build_revision(void);
+ WINPR_API const char* winpr_get_build_config(void);
+ 
++#if defined(__clang__) || defined(__GNUC__) && (__GNUC__ <= 10)
++#define WINPR_ATTR_MALLOC(deallocator, ptrindex) __attribute__((malloc, warn_unused_result))
++#elif defined(__GNUC__)
++#define WINPR_ATTR_MALLOC(deallocator, ptrindex) \
++	__attribute__((malloc(deallocator, ptrindex), warn_unused_result))
++#else
++#define WINPR_ATTR_MALLOC(deallocator, ptrindex)
++#endif
++
+ #define WINPR_UNUSED(x) (void)(x)
+ 
+ #endif /* WINPR_H */
