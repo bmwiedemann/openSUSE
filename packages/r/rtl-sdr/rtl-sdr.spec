@@ -104,7 +104,7 @@ getent group %{rtlsdr_group} >/dev/null || groupadd -r %{rtlsdr_group}
 
 %files -n %{libname}
 %{_libdir}/librtlsdr.so.%{sover}*
-%{_libdir}/librtlsdr.so.2*
+%{_libdir}/librtlsdr.so.%{version}
 
 %files udev
 %{_udevrulesdir}/rtl-sdr.rules
