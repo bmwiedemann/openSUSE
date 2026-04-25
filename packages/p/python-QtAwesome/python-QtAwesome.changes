@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 23 14:43:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.4.2
+  * Issue 302 - Release QtAwesome 1.4.2
+  * PR 298 - PR: Fix icon center when using a custom rect definition,
+    by @fdklgbh
+
+-------------------------------------------------------------------
 Tue Jan 27 21:36:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.1:

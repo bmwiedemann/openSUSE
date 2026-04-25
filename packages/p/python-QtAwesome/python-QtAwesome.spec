@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-QtAwesome
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        FontAwesome icons in PyQt and PySide applications
 License:        MIT
