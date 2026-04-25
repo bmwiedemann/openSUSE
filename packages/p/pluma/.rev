@@ -270,4 +270,24 @@
     <comment></comment>
     <requestid>1253506</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1a4e4fb889e58fbab0f4e52be00ee296</srcmd5>
+    <version>1.28.1</version>
+    <time>1777145890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.28.1:
+  * Show the default/current choice in filechooser Character
+    Encoding combo box
+  * Improve window behaviour
+  * GitHub action
+  * build(deps): bump actions/checkout from 4 to 5
+  * build(deps): bump actions/cache from 3 to 4
+  * Use GtkApplication and GtkApplicationWindow
+  * Remove undeclared dependency on on 'six' Py2+3 shim
+  * build(deps): bump actions/cache from 4 to 5
+  * plugins: Fix compatibility with gobject-introspection
+- Drop no longer needed update-desktop-files BuildRequires.
+- Minor tweaks/updates to spec, align with current standards. (forwarded request 1348539 from iznogood)</comment>
+    <requestid>1349227</requestid>
+  </revision>
 </revisionlist>

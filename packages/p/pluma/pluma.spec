@@ -1,7 +1,7 @@
 #
 # spec file for package pluma
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,18 +20,17 @@
 %define _version 1.28
 
 Name:           pluma
-Version:        1.28.0
+Version:        1.28.1
 Release:        0
 Summary:        Text editor for the MATE desktop
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://mate-desktop.org/
-Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source:         https://github.com/mate-desktop/pluma/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -85,7 +84,7 @@ documents in one window.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i '1s/python$/python3/' plugins/externaltools/data/switch-c.tool.in
 
 %build
@@ -96,9 +95,8 @@ NOCONFIGURE=1 mate-autogen
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file %{name}
 %find_lang %{name} %{?no_lang_C}
-%fdupes %{buildroot}
+%fdupes %{buildroot}%{_prefix}
 
 %files
 %license COPYING
