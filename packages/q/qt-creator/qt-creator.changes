@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:52:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 19.0.1
+  https://www.qt.io/blog/qt-creator-19.0.1-released
+- Drop patch, merged upstream:
+  * 0001-Utils-Static-assert-on-unknown-binaryArchitecture-on.patch
+
+-------------------------------------------------------------------
 Tue Mar 31 08:04:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (QTCREATORBUG-34297):

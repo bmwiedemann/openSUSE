@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 19.0.0
+%define real_version 19.0.1
 %define short_version 19.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %bcond_without docs
 
 Name:           %{pkgname_prefix}-creator
-Version:        19.0.0
+Version:        19.0.1
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -59,8 +59,6 @@ License:        BSD-3-Clause AND GPL-3.0-only AND GPL-3.0-with-Qt-Company-Qt-exc
 URL:            https://www.qt.io/product/development-tools
 Source:         https://download.qt.io/official_releases/qtcreator/%{short_version}/%{real_version}%{tar_suffix}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt-creator-rpmlintrc
-# PATCH-FIX-UPSTREAM -- Fixes build on PPC, riscv64, s390x
-Patch0:         0001-Utils-Static-assert-on-unknown-binaryArchitecture-on.patch
 # Patches 11-20 are openSUSE changes
 Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch
