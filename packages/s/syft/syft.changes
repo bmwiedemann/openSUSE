@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Apr 23 05:22:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.43.0:
+  * Added Features
+    - added deno bin classifiers [#4677 @rezmoss]
+    - Support haskell old versions [#3237 #4793 @witchcraze]
+    - Add support for OpenLDAP binary detection [#4768 #4755
+      @nadimz]
+    - Support erlang ols versions [#3235 #4766 @witchcraze]
+  * Bug Fixes
+    - improve redhat-release parsing fallback for RHEL clones
+      [#4808 @westonsteimel]
+    - fix format string in search results struct [#4775
+      @willmurphyscode]
+    - prevent infinite recursion in Document.UnmarshalJSON with
+      encoding/json/v2 [#4748 @benja-M-1]
+    - Syft can not complete scanning golang image [#4686]
+    - javascript-package-cataloger drops entire package.json when
+      authors/contributors/maintainers is a single string [#4778
+      #4779 @yoav-orca]
+    - pnpm lock file cataloger produces unstable output [#4648
+      #4765 @lawrence3699]
+    - Linux Kernel bzImage and zImage not cataloged by
+      linux-kernel-cataloger [#4769 #4751 @nadimz]
+    - Support istio binary (pilot-discovery, pilot-agent)
+      alpha,beta,rc,dev version [#4546 #4645 @witchcraze]
+    - Scanning mounted ISO: duplicate entries [#4759]
+  * Additional Changes
+    - update CPE dictionary index [#4767 @anchore-oss-update-bot]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#4797)
+    - chore(deps): restore Go version to 1.25.8 (#4804)
+    - chore(deps): bump the actions-minor-patch group across 1
+      directory with 2 updates (#4790)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.17.0 to
+      5.18.0 (#4792)
+    - chore(deps): update Go version (#4798)
+    - chore(deps): update tools to latest versions (#4701)
+    - chore(deps): update Go version (#4773)
+    - chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3
+      (#4750)
+    - chore(deps): bump go.opentelemetry.io/otel/sdk from 1.40.0 to
+      1.43.0 (#4752)
+    - chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.3 to
+      4.1.4 (#4737)
+    - chore(deps): bump the actions-minor-patch group across 2
+      directories with 7 updates (#4763)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.8.5
+      to 1.8.6 (#4764)
+    - chore(deps): update CPE dictionary index (#4767)
+
+-------------------------------------------------------------------
+Thu Apr 09 08:02:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.42.4:
+  * Bug Fixes
+    - Similar Packages Should Be Aggregated [#1162]
+    - Support arangodb binary recent version [#4571 #4662
+      @witchcraze]
+    - Support go binary various versions [#4687 #4694 @kzantow]
+  * Additional Changes
+    - update CPE dictionary index [#4745 @anchore-oss-update-bot]
+    - update CPE dictionary index [#4726 @anchore-oss-update-bot]
+    - Add a trust boundary section [#4716 @joshbressers]
+  * Dependencies
+    - chore(deps): update CPE dictionary index (#4745)
+    - chore(deps): update CPE dictionary index (#4726)
+    - chore(deps): update CPE dictionary index (#4715)
+    - chore(deps): update tool versions (#4706)
+    - chore(deps): bump slackapi/slack-github-action from 2.1.1 to
+      3.0.1 (#4684)
+    - chore(deps): bump marocchino/sticky-pull-request-comment
+      (#4685)
+    - chore(deps): bump the go-minor-patch group with 2 updates
+      (#4697)
+    - chore(deps): bump actions/create-github-app-token from 2.2.1
+      to 3.0.0 (#4699)
+    - chore(deps): update CPE dictionary index (#4689)
+    - chore(deps): ignore some dependabot deps (#4696)
+    - chore(deps): update tools to latest versions (#4690)
+
+-------------------------------------------------------------------
 Fri Mar 20 06:39:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.42.3:
