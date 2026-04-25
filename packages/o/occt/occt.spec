@@ -1,7 +1,7 @@
 #
 # spec file for package occt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %bcond_with    docs
 %endif
 
-%define OCCT_TAG 7_9_1
+%define OCCT_TAG 7_9_3
 
 Name:           occt
-Version:        7.9.1
+Version:        7.9.3
 Release:        0
-%define soname 7_9_1
-%define sover  7.9.1
+%define soname 7_9_3
+%define sover  7.9.3
 %define sover_len 3
 Summary:        OpenCASCADE Official Edition
 License:        LGPL-2.1-only WITH OCCT-exception-1.0
