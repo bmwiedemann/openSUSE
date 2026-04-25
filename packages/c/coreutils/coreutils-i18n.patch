@@ -4,32 +4,16 @@ Date: Wed, 30 Aug 2023 17:19:58 +0200
 Subject: [PATCH] coreutils-i18n.patch
 
 ---
- bootstrap.conf              |    2 
- configure.ac                |    6 
  lib/linebuffer.h            |    8 
- lib/mbfile.c                |   19 +
- lib/mbfile.h                |  281 +++++++++++++++
- m4/mbfile.m4                |   16 
- src/cut.c                   |  508 ++++++++++++++++++++++++++--
- src/expand-common.c         |  114 ++++++
- src/expand-common.h         |   12 
- src/expand.c                |   90 ++++-
- src/local.mk                |    4 
  src/pr.c                    |  443 ++++++++++++++++++++++--
  src/sort.c                  |  791 +++++++++++++++++++++++++++++++++++++++++---
- src/unexpand.c              |  101 ++++-
- tests/Coreutils.pm          |    3 
- tests/expand/expand.pl      |   42 ++
- tests/expand/mb.sh          |  183 ++++++++++
  tests/i18n/sort.sh          |   29 +
- tests/local.mk              |    4 
+ tests/local.mk              |    2 
  tests/misc/sort-mb-tests.sh |   45 ++
  tests/pr/pr-tests.pl        |   49 ++
  tests/sort/sort-merge.pl    |   42 ++
  tests/sort/sort.pl          |   40 ++
- tests/unexpand/mb.sh        |  172 +++++++++
- tests/unexpand/unexpand.pl  |   39 ++
- 25 files changed, 2876 insertions(+), 167 deletions(-)
+ 9 files changed, 1355 insertions(+), 94 deletions(-)
  create mode 100644 lib/mbfile.c
  create mode 100644 lib/mbfile.h
  create mode 100644 m4/mbfile.m4
@@ -38,36 +22,6 @@ Subject: [PATCH] coreutils-i18n.patch
  create mode 100755 tests/misc/sort-mb-tests.sh
  create mode 100755 tests/unexpand/mb.sh
 
-Index: bootstrap.conf
-===================================================================
---- bootstrap.conf.orig
-+++ bootstrap.conf
-@@ -171,6 +171,8 @@ gnulib_modules="
-   malloc-gnu
-   manywarnings
-   mbbuf
-+  mbchar
-+  mbfile
-   mbrlen
-   mbrtoc32
-   mbrtowc
-Index: configure.ac
-===================================================================
---- configure.ac.orig
-+++ configure.ac
-@@ -490,6 +490,12 @@ fi
- # I'm leaving it here for now.  This whole thing needs to be modernized...
- gl_WINSIZE_IN_PTEM
- 
-+gl_MBFILE
-+dnl Do not use gl_MODULE_INDICATOR([mbfile]) here: we don't want 'struct mbchar'
-+dnl to have a different size in lib/ than in tests/.
-+AC_DEFINE([GNULIB_MBFILE], [1],
-+  [Define to 1 if the gnulib module 'mbfile' is in use.])
-+
- gl_HEADER_TIOCGWINSZ_IN_TERMIOS_H
- 
- if test $gl_cv_sys_tiocgwinsz_needs_termios_h = no && \
 Index: lib/linebuffer.h
 ===================================================================
 --- lib/linebuffer.h.orig
@@ -94,1322 +48,6 @@ Index: lib/linebuffer.h
  };
  
  /* Initialize linebuffer LINEBUFFER for use. */
-Index: lib/mbfile.c
-===================================================================
---- /dev/null
-+++ lib/mbfile.c
-@@ -0,0 +1,19 @@
-+/* Multibyte character I/O: macros for multi-byte encodings.
-+   Copyright (C) 2012-2026 Free Software Foundation, Inc.
-+
-+   This file is free software: you can redistribute it and/or modify
-+   it under the terms of the GNU Lesser General Public License as
-+   published by the Free Software Foundation, either version 3 of the
-+   License, or (at your option) any later version.
-+
-+   This file is distributed in the hope that it will be useful,
-+   but WITHOUT ANY WARRANTY; without even the implied warranty of
-+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+   GNU Lesser General Public License for more details.
-+
-+   You should have received a copy of the GNU Lesser General Public License
-+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
-+
-+#define MBFILE_INLINE _GL_EXTERN_INLINE
-+#include <config.h>
-+#include "mbfile.h"
-Index: lib/mbfile.h
-===================================================================
---- /dev/null
-+++ lib/mbfile.h
-@@ -0,0 +1,281 @@
-+/* Multibyte character I/O: macros for multi-byte encodings.
-+   Copyright (C) 2001, 2005, 2009-2026 Free Software Foundation, Inc.
-+
-+   This file is free software: you can redistribute it and/or modify
-+   it under the terms of the GNU Lesser General Public License as
-+   published by the Free Software Foundation, either version 3 of the
-+   License, or (at your option) any later version.
-+
-+   This file is distributed in the hope that it will be useful,
-+   but WITHOUT ANY WARRANTY; without even the implied warranty of
-+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+   GNU Lesser General Public License for more details.
-+
-+   You should have received a copy of the GNU Lesser General Public License
-+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
-+
-+/* Written by Mitsuru Chinen <mchinen@yamato.ibm.com>
-+   and Bruno Haible <bruno@clisp.org>.  */
-+
-+/* The macros in this file implement multi-byte character input from a
-+   stream.
-+
-+   mb_file_t
-+     is the type for multibyte character input stream, usable for variable
-+     declarations.
-+
-+   mbf_char_t
-+     is the type for multibyte character or EOF, usable for variable
-+     declarations.
-+
-+   mbf_init (mbf, stream)
-+     initializes the MB_FILE for reading from stream.
-+
-+   mbf_getc (mbc, mbf)
-+     reads the next multibyte character from mbf and stores it in mbc.
-+
-+   mb_iseof (mbc)
-+     returns true if mbc represents the EOF value.
-+
-+   Here are the function prototypes of the macros.
-+
-+   extern void          mbf_init (mb_file_t mbf, FILE *stream);
-+   extern void          mbf_getc (mbf_char_t mbc, mb_file_t mbf);
-+   extern bool          mb_iseof (const mbf_char_t mbc);
-+ */
-+
-+#ifndef _MBFILE_H
-+#define _MBFILE_H 1
-+
-+/* This file uses _GL_INLINE_HEADER_BEGIN, _GL_INLINE.  */
-+#if !_GL_CONFIG_H_INCLUDED
-+ #error "Please include config.h first."
-+#endif
-+
-+#include <assert.h>
-+#include <stdio.h>
-+#include <stdlib.h>
-+#include <string.h>
-+#include <wchar.h>
-+
-+#include "mbchar.h"
-+
-+_GL_INLINE_HEADER_BEGIN
-+#ifndef MBFILE_INLINE
-+# define MBFILE_INLINE _GL_INLINE
-+#endif
-+
-+#ifdef __cplusplus
-+extern "C" {
-+#endif
-+
-+
-+/* Guarantee two characters of pushback.  */
-+#define MBFILE_MAX_PUSHBACK 2
-+
-+struct mbfile_multi {
-+  FILE *fp;
-+  bool eof_seen;
-+  unsigned int pushback_count; /* <= MBFILE_MAX_PUSHBACK */
-+  mbstate_t state;
-+  unsigned int bufcount;
-+  char buf[MBCHAR_BUF_SIZE];
-+  struct mbchar pushback[MBFILE_MAX_PUSHBACK];
-+};
-+
-+MBFILE_INLINE void
-+mbfile_multi_getc (struct mbchar *mbc, struct mbfile_multi *mbf)
-+{
-+  /* Return character pushed back, if there is one.  */
-+  if (mbf->pushback_count > 0)
-+    {
-+      mb_copy (mbc, &mbf->pushback[mbf->pushback_count - 1]);
-+      mbf->pushback_count--;
-+      return;
-+    }
-+
-+  /* If EOF has already been seen, don't use getc.  This matters if
-+     mbf->fp is connected to an interactive tty.  */
-+  if (mbf->eof_seen)
-+    goto eof;
-+
-+  unsigned int new_bufcount = mbf->bufcount;
-+
-+  /* If mbf->state is not in an initial state, some more 32-bit wide character
-+     may be hiding in the state.  We need to call mbrtoc32 again.  */
-+  #if GNULIB_MBRTOC32_REGULAR
-+  assert (mbsinit (&mbf->state));
-+  #else
-+  if (mbsinit (&mbf->state))
-+  #endif
-+    {
-+      /* Before using mbrtoc32, we need at least one byte.  */
-+      if (new_bufcount == 0)
-+        {
-+          int c = getc (mbf->fp);
-+          if (c == EOF)
-+            {
-+              mbf->eof_seen = true;
-+              goto eof;
-+            }
-+          mbf->buf[0] = (unsigned char) c;
-+          new_bufcount++;
-+        }
-+
-+      /* Handle most ASCII characters quickly, without calling mbrtoc32().  */
-+      if (new_bufcount == 1 && is_basic (mbf->buf[0]))
-+        {
-+          /* These characters are part of the POSIX portable character set.
-+             For most of them, namely those in the ISO C basic character set,
-+             ISO C 99 guarantees that their wide character code is identical to
-+             their char code.  For the few other ones, this is the case as well,
-+             in all locale encodings that are in use.  The 32-bit wide character
-+             code is the same as well.  */
-+          mbc->wc = mbc->buf[0] = mbf->buf[0];
-+          mbc->wc_valid = true;
-+          mbc->ptr = &mbc->buf[0];
-+          mbc->bytes = 1;
-+          mbf->bufcount = 0;
-+          return;
-+        }
-+    }
-+
-+  /* Use mbrtoc32 on an increasing number of bytes.  Read only as many bytes
-+     from mbf->fp as needed.  This is needed to give reasonable interactive
-+     behaviour when mbf->fp is connected to an interactive tty.  */
-+  size_t bytes;
-+  for (;;)
-+    {
-+      /* Feed the bytes one by one into mbrtoc32.  */
-+      bytes = mbrtoc32 (&mbc->wc, &mbf->buf[mbf->bufcount], new_bufcount - mbf->bufcount, &mbf->state);
-+
-+      if (bytes == (size_t) -1)
-+        {
-+          /* An invalid multibyte sequence was encountered.  */
-+          mbf->bufcount = new_bufcount;
-+          /* Return a single byte.  */
-+          bytes = 1;
-+          mbc->wc_valid = false;
-+          /* Allow the next invocation to continue from a sane state.  */
-+          mbszero (&mbf->state);
-+          break;
-+        }
-+      else if (bytes == (size_t) -2)
-+        {
-+          /* An incomplete multibyte character.  */
-+          mbf->bufcount = new_bufcount;
-+          if (mbf->bufcount == MBCHAR_BUF_SIZE)
-+            {
-+              /* An overlong incomplete multibyte sequence was encountered.  */
-+              /* Return a single byte.  */
-+              bytes = 1;
-+              mbc->wc_valid = false;
-+              break;
-+            }
-+          else
-+            {
-+              /* Read one more byte and retry mbrtoc32.  */
-+              int c = getc (mbf->fp);
-+              if (c == EOF)
-+                {
-+                  /* An incomplete multibyte character at the end.  */
-+                  mbf->eof_seen = true;
-+                  bytes = new_bufcount;
-+                  mbc->wc_valid = false;
-+                  break;
-+                }
-+              mbf->buf[new_bufcount] = (unsigned char) c;
-+              new_bufcount++;
-+            }
-+        }
-+      else
-+        {
-+          #if !GNULIB_MBRTOC32_REGULAR
-+          if (bytes == (size_t) -3)
-+            {
-+              /* The previous multibyte sequence produced an additional 32-bit
-+                 wide character.  */
-+              mbf->bufcount = new_bufcount;
-+              bytes = 0;
-+            }
-+          else
-+          #endif
-+            {
-+              bytes = mbf->bufcount + bytes;
-+              mbf->bufcount = new_bufcount;
-+              if (bytes == 0)
-+                {
-+                  /* A null 32-bit wide character was encountered.  */
-+                  bytes = 1;
-+                  assert (mbf->buf[0] == '\0');
-+                  assert (mbc->wc == 0);
-+                }
-+            }
-+          mbc->wc_valid = true;
-+          break;
-+        }
-+    }
-+
-+  /* Return the multibyte sequence mbf->buf[0..bytes-1].  */
-+  mbc->ptr = &mbc->buf[0];
-+  memcpy (&mbc->buf[0], &mbf->buf[0], bytes);
-+  mbc->bytes = bytes;
-+
-+  mbf->bufcount -= bytes;
-+  if (mbf->bufcount > 0)
-+    {
-+      /* It's not worth calling memmove() for so few bytes.  */
-+      unsigned int count = mbf->bufcount;
-+      char *p = &mbf->buf[0];
-+
-+      do
-+        {
-+          *p = *(p + bytes);
-+          p++;
-+        }
-+      while (--count > 0);
-+    }
-+  return;
-+
-+eof:
-+  /* An mbchar_t with bytes == 0 is used to indicate EOF.  */
-+  mbc->ptr = NULL;
-+  mbc->bytes = 0;
-+  mbc->wc_valid = false;
-+  return;
-+}
-+
-+MBFILE_INLINE void
-+mbfile_multi_ungetc (const struct mbchar *mbc, struct mbfile_multi *mbf)
-+{
-+  if (mbf->pushback_count == MBFILE_MAX_PUSHBACK)
-+    abort ();
-+  mb_copy (&mbf->pushback[mbf->pushback_count], mbc);
-+  mbf->pushback_count++;
-+}
-+
-+typedef struct mbfile_multi mb_file_t;
-+
-+typedef mbchar_t mbf_char_t;
-+
-+#define mbf_init(mbf, stream)                                           \
-+  ((mbf).fp = (stream),                                                 \
-+   (mbf).eof_seen = false,                                              \
-+   (mbf).pushback_count = 0,                                            \
-+   mbszero (&(mbf).state),                                              \
-+   (mbf).bufcount = 0)
-+
-+#define mbf_getc(mbc, mbf) mbfile_multi_getc (&(mbc), &(mbf))
-+
-+#define mbf_ungetc(mbc, mbf) mbfile_multi_ungetc (&(mbc), &(mbf))
-+
-+#define mb_iseof(mbc) ((mbc).bytes == 0)
-+
-+
-+#ifdef __cplusplus
-+}
-+#endif
-+
-+_GL_INLINE_HEADER_END
-+
-+#endif /* _MBFILE_H */
-Index: m4/mbfile.m4
-===================================================================
---- /dev/null
-+++ m4/mbfile.m4
-@@ -0,0 +1,16 @@
-+# mbfile.m4
-+# serial 7
-+dnl Copyright (C) 2005, 2008-2026 Free Software Foundation, Inc.
-+dnl This file is free software; the Free Software Foundation
-+dnl gives unlimited permission to copy and/or distribute it,
-+dnl with or without modifications, as long as this notice is preserved.
-+dnl This file is offered as-is, without any warranty.
-+
-+dnl autoconf tests required for use of mbfile.h
-+dnl From Bruno Haible.
-+
-+AC_DEFUN([gl_MBFILE],
-+[
-+  AC_REQUIRE([AC_TYPE_MBSTATE_T])
-+  :
-+])
-Index: src/cut.c
-===================================================================
---- src/cut.c.orig
-+++ src/cut.c
-@@ -27,6 +27,11 @@
- #include <stdio.h>
- #include <getopt.h>
- #include <sys/types.h>
-+
-+/* Get mbstate_t, mbrtowc().  */
-+#if HAVE_WCHAR_H
-+# include <wchar.h>
-+#endif
- #include "system.h"
- 
- #include "assure.h"
-@@ -35,6 +40,18 @@
- 
- #include "set-fields.h"
- 
-+/* MB_LEN_MAX is incorrectly defined to be 1 in at least one GCC
-+   installation; work around this configuration error.        */
-+#if !defined MB_LEN_MAX || MB_LEN_MAX < 2
-+# undef MB_LEN_MAX
-+# define MB_LEN_MAX 16
-+#endif
-+
-+/* Some systems, like BeOS, have multibyte encodings but lack mbstate_t.  */
-+#if HAVE_MBRTOWC && defined mbstate_t
-+# define mbrtowc(pwc, s, n, ps) (mbrtowc) (pwc, s, n, 0)
-+#endif
-+
- /* The official name of this program (e.g., no 'g' prefix).  */
- #define PROGRAM_NAME "cut"
- 
-@@ -51,6 +68,52 @@
-     }									\
-   while (0)
- 
-+/* Refill the buffer BUF to get a multibyte character. */
-+#define REFILL_BUFFER(BUF, BUFPOS, BUFLEN, STREAM)                        \
-+  do                                                                        \
-+    {                                                                        \
-+      if (BUFLEN < MB_LEN_MAX && !feof (STREAM) && !ferror (STREAM))        \
-+        {                                                                \
-+          memmove (BUF, BUFPOS, BUFLEN);                                \
-+          BUFLEN += fread (BUF + BUFLEN, sizeof(char), BUFSIZ, STREAM); \
-+          BUFPOS = BUF;                                                        \
-+        }                                                                \
-+    }                                                                        \
-+  while (0)
-+
-+/* Get wide character on BUFPOS. BUFPOS is not included after that.
-+   If byte sequence is not valid as a character, CONVFAIL is true. Otherwise false. */
-+#define GET_NEXT_WC_FROM_BUFFER(WC, BUFPOS, BUFLEN, MBLENGTH, STATE, CONVFAIL) \
-+  do                                                                        \
-+    {                                                                        \
-+      mbstate_t state_bak;                                                \
-+                                                                        \
-+      if (BUFLEN < 1)                                                        \
-+        {                                                                \
-+          WC = WEOF;                                                        \
-+          break;                                                        \
-+        }                                                                \
-+                                                                        \
-+      /* Get a wide character. */                                        \
-+      CONVFAIL = false;                                                        \
-+      state_bak = STATE;                                                \
-+      MBLENGTH = mbrtowc ((wchar_t *)&WC, BUFPOS, BUFLEN, &STATE);        \
-+                                                                        \
-+      switch (MBLENGTH)                                                        \
-+        {                                                                \
-+        case (size_t)-1:                                                \
-+        case (size_t)-2:                                                \
-+          CONVFAIL = true;                                                        \
-+          STATE = state_bak;                                                \
-+          /* Fall througn. */                                                \
-+                                                                        \
-+        case 0:                                                                \
-+          MBLENGTH = 1;                                                        \
-+          break;                                                        \
-+        }                                                                \
-+    }                                                                        \
-+  while (0)
-+
- 
- /* Pointer inside RP.  When checking if a byte or field is selected
-    by a finite range, we check if it is between CURRENT_RP.LO
-@@ -58,6 +121,9 @@
-    CURRENT_RP.HI then we make CURRENT_RP to point to the next range pair.  */
- static struct field_range_pair *current_rp;
- 
-+/* Length of the delimiter given as argument to -d.  */
-+size_t delimlen;
-+
- /* This buffer is used to support the semantics of the -s option
-    (or lack of same) when the specified field list includes (does
-    not include) the first field.  In both of those cases, the entire
-@@ -70,6 +136,29 @@ static char *field_1_buffer;
- /* The number of bytes allocated for FIELD_1_BUFFER.  */
- static size_t field_1_bufsize;
- 
-+enum operating_mode
-+  {
-+    undefined_mode,
-+
-+    /* Output bytes that are at the given positions. */
-+    byte_mode,
-+
-+    /* Output characters that are at the given positions. */
-+    character_mode,
-+
-+    /* Output the given delimiter-separated fields. */
-+    field_mode
-+  };
-+
-+static enum operating_mode operating_mode;
-+
-+/* If nonzero, when in byte mode, don't split multibyte characters.  */
-+static int byte_mode_character_aware;
-+
-+/* If nonzero, the function for single byte locale is work
-+   if this program runs on multibyte locale. */
-+static int force_singlebyte_mode;
-+
- /* If true, do not output lines containing no delimiter characters.
-    Otherwise, all such lines are printed.  This option is valid only
-    with field mode.  */
-@@ -81,10 +170,16 @@ static bool complement;
- 
- /* The delimiter character for field mode.  */
- static unsigned char delim;
-+#if HAVE_WCHAR_H
-+static wchar_t wcdelim;
-+#endif
- 
- /* The delimiter for each line/record.  */
- static unsigned char line_delim = '\n';
- 
-+/* True if the --output-delimiter=STRING option was specified.  */
-+static bool output_delimiter_specified;
-+
- /* The length of output_delimiter_string.  */
- static size_t output_delimiter_length;
- 
-@@ -92,9 +187,6 @@ static size_t output_delimiter_length;
-    string consisting of the input delimiter.  */
- static char *output_delimiter_string;
- 
--/* The output delimiter string contents, if the default.  */
--static char output_delimiter_default[1];
--
- /* True if we have ever read standard input.  */
- static bool have_read_stdin;
- 
-@@ -158,7 +250,7 @@ Print selected parts of lines from each
- "));
-       oputs (_("\
-   -n\n\
--         (ignored)\n\
-+         with -b: don't split multibyte characters\n\
- "));
-       oputs (_("\
-       --complement\n\
-@@ -267,7 +359,7 @@ cut_bytes (FILE *stream)
-           next_item (&byte_idx);
-           if (print_kth (byte_idx))
-             {
--              if (output_delimiter_string != output_delimiter_default)
-+              if (output_delimiter_specified)
-                 {
-                   if (print_delimiter && is_range_start_index (byte_idx))
-                     {
-@@ -286,6 +378,82 @@ cut_bytes (FILE *stream)
-     }
- }
- 
-+#if HAVE_MBRTOWC
-+/* This function is in use for the following case.
-+
-+   1. Read from the stream STREAM, printing to standard output any selected
-+   characters.
-+
-+   2. Read from stream STREAM, printing to standard output any selected bytes,
-+   without splitting multibyte characters.  */
-+
-+static void
-+cut_characters_or_cut_bytes_no_split (FILE *stream)
-+{
-+  uintmax_t idx;                /* number of bytes or characters in the line so far. */
-+  char buf[MB_LEN_MAX + BUFSIZ];  /* For spooling a read byte sequence. */
-+  char *bufpos;                /* Next read position of BUF. */
-+  size_t buflen;        /* The length of the byte sequence in buf. */
-+  wint_t wc;                /* A gotten wide character. */
-+  size_t mblength;        /* The byte size of a multibyte character which shows
-+                           as same character as WC. */
-+  mbstate_t state;        /* State of the stream. */
-+  bool convfail = false;  /* true, when conversion failed. Otherwise false. */
-+  /* Whether to begin printing delimiters between ranges for the current line.
-+     Set after we've begun printing data corresponding to the first range.  */
-+  bool print_delimiter = false;
-+
-+  idx = 0;
-+  buflen = 0;
-+  bufpos = buf;
-+  memset (&state, '\0', sizeof(mbstate_t));
-+
-+  current_rp = frp;
-+
-+  while (1)
-+    {
-+      REFILL_BUFFER (buf, bufpos, buflen, stream);
-+
-+      GET_NEXT_WC_FROM_BUFFER (wc, bufpos, buflen, mblength, state, convfail);
-+      (void) convfail;  /* ignore unused */
-+
-+      if (wc == WEOF)
-+        {
-+          if (idx > 0)
-+            putchar (line_delim);
-+          break;
-+        }
-+      else if (wc == line_delim)
-+        {
-+          putchar (line_delim);
-+          idx = 0;
-+          print_delimiter = false;
-+          current_rp = frp;
-+        }
-+      else
-+        {
-+          next_item (&idx);
-+          if (print_kth (idx))
-+            {
-+              if (output_delimiter_specified)
-+                {
-+                  if (print_delimiter && is_range_start_index (idx))
-+                    {
-+                      fwrite (output_delimiter_string, sizeof (char),
-+                              output_delimiter_length, stdout);
-+                    }
-+                  print_delimiter = true;
-+                }
-+              fwrite (bufpos, mblength, sizeof(char), stdout);
-+            }
-+        }
-+
-+      buflen -= mblength;
-+      bufpos += mblength;
-+    }
-+}
-+#endif
-+
- /* Read from stream STREAM, printing to standard output any selected fields.  */
- 
- static void
-@@ -448,11 +616,218 @@ cut_fields (FILE *stream)
-     }
- }
- 
--/* Process file FILE to standard output, using CUT_STREAM.
-+#if HAVE_MBRTOWC
-+static void
-+cut_fields_mb (FILE *stream)
-+{
-+  int c;
-+  uintmax_t field_idx;
-+  int found_any_selected_field;
-+  int buffer_first_field;
-+  int empty_input;
-+  char buf[MB_LEN_MAX + BUFSIZ];  /* For spooling a read byte sequence. */
-+  char *bufpos;                /* Next read position of BUF. */
-+  size_t buflen;        /* The length of the byte sequence in buf. */
-+  wint_t wc = 0;        /* A gotten wide character. */
-+  size_t mblength;        /* The byte size of a multibyte character which shows
-+                           as same character as WC. */
-+  mbstate_t state;        /* State of the stream. */
-+  bool convfail = false;  /* true, when conversion failed. Otherwise false. */
-+
-+  current_rp = frp;
-+
-+  found_any_selected_field = 0;
-+  field_idx = 1;
-+  bufpos = buf;
-+  buflen = 0;
-+  memset (&state, '\0', sizeof(mbstate_t));
-+
-+  c = getc (stream);
-+  empty_input = (c == EOF);
-+  if (c != EOF)
-+  {
-+    ungetc (c, stream);
-+    wc = 0;
-+  }
-+  else
-+    wc = WEOF;
-+
-+  /* To support the semantics of the -s flag, we may have to buffer
-+     all of the first field to determine whether it is `delimited.'
-+     But that is unnecessary if all non-delimited lines must be printed
-+     and the first field has been selected, or if non-delimited lines
-+     must be suppressed and the first field has *not* been selected.
-+     That is because a non-delimited line has exactly one field.  */
-+  buffer_first_field = (suppress_non_delimited ^ !print_kth (1));
-+
-+  while (1)
-+    {
-+      if (field_idx == 1 && buffer_first_field)
-+        {
-+          int len = 0;
-+
-+          while (1)
-+            {
-+              REFILL_BUFFER (buf, bufpos, buflen, stream);
-+
-+              GET_NEXT_WC_FROM_BUFFER
-+                (wc, bufpos, buflen, mblength, state, convfail);
-+
-+              if (wc == WEOF)
-+                break;
-+
-+              field_1_buffer = xrealloc (field_1_buffer, len + mblength);
-+              memcpy (field_1_buffer + len, bufpos, mblength);
-+              len += mblength;
-+              buflen -= mblength;
-+              bufpos += mblength;
-+
-+              if (!convfail && (wc == line_delim || wc == wcdelim))
-+                break;
-+            }
-+
-+          if (len <= 0 && wc == WEOF)
-+            break;
-+
-+          /* If the first field extends to the end of line (it is not
-+             delimited) and we are printing all non-delimited lines,
-+             print this one.  */
-+          if (convfail || (!convfail && wc != wcdelim))
-+            {
-+              if (suppress_non_delimited)
-+                {
-+                  /* Empty.        */
-+                }
-+              else
-+                {
-+                  fwrite (field_1_buffer, sizeof (char), len, stdout);
-+                  /* Make sure the output line is newline terminated.  */
-+                  if (convfail || (!convfail && wc != line_delim))
-+                    putchar (line_delim);
-+                }
-+              continue;
-+            }
-+
-+          if (print_kth (1))
-+            {
-+              /* Print the field, but not the trailing delimiter.  */
-+              fwrite (field_1_buffer, sizeof (char), len - 1, stdout);
-+              found_any_selected_field = 1;
-+            }
-+          next_item (&field_idx);
-+        }
-+
-+      if (wc != WEOF)
-+        {
-+          if (print_kth (field_idx))
-+            {
-+              if (found_any_selected_field)
-+                {
-+                  fwrite (output_delimiter_string, sizeof (char),
-+                          output_delimiter_length, stdout);
-+                }
-+              found_any_selected_field = 1;
-+            }
-+
-+          while (1)
-+            {
-+              REFILL_BUFFER (buf, bufpos, buflen, stream);
-+
-+              GET_NEXT_WC_FROM_BUFFER
-+                (wc, bufpos, buflen, mblength, state, convfail);
-+
-+              if (wc == WEOF)
-+                break;
-+              else if (!convfail && (wc == wcdelim || wc == line_delim))
-+                {
-+                  buflen -= mblength;
-+                  bufpos += mblength;
-+                  break;
-+                }
-+
-+              if (print_kth (field_idx))
-+                fwrite (bufpos, mblength, sizeof(char), stdout);
-+
-+              buflen -= mblength;
-+              bufpos += mblength;
-+            }
-+        }
-+
-+      if ((!convfail || wc == line_delim) && buflen < 1)
-+        wc = WEOF;
-+
-+      if (!convfail && wc == wcdelim)
-+        next_item (&field_idx);
-+      else if (wc == WEOF || (!convfail && wc == line_delim))
-+        {
-+          if (found_any_selected_field
-+              || (!empty_input && !(suppress_non_delimited && field_idx == 1)))
-+            putchar (line_delim);
-+          if (wc == WEOF)
-+            break;
-+          field_idx = 1;
-+          current_rp = frp;
-+          found_any_selected_field = 0;
-+        }
-+    }
-+}
-+#endif
-+
-+static void
-+cut_stream (FILE *stream)
-+{
-+#if HAVE_MBRTOWC
-+  if (MB_CUR_MAX > 1 && !force_singlebyte_mode)
-+    {
-+      switch (operating_mode)
-+        {
-+        case byte_mode:
-+          if (byte_mode_character_aware)
-+            cut_characters_or_cut_bytes_no_split (stream);
-+          else
-+            cut_bytes (stream);
-+          break;
-+
-+        case character_mode:
-+          cut_characters_or_cut_bytes_no_split (stream);
-+          break;
-+
-+        case field_mode:
-+          if (delimlen == 1)
-+            {
-+              /* Check if we have utf8 multibyte locale, so we can use this
-+                 optimization because of uniqueness of characters, which is
-+                 not true for e.g. SJIS */
-+              char * loc = setlocale(LC_CTYPE, NULL);
-+              if (loc && (strstr (loc, "UTF-8") || strstr (loc, "utf-8") ||
-+                  strstr (loc, "UTF8") || strstr (loc, "utf8")))
-+                {
-+                  cut_fields (stream);
-+                  break;
-+                }
-+            }
-+          cut_fields_mb (stream);
-+          break;
-+
-+        default:
-+          abort ();
-+        }
-+    }
-+  else
-+#endif
-+    {
-+      if (operating_mode == field_mode)
-+        cut_fields (stream);
-+      else
-+        cut_bytes (stream);
-+    }
-+}
-+
-+/* Process file FILE to standard output.
-    Return true if successful.  */
- 
- static bool
--cut_file (char const *file, void (*cut_stream) (FILE *))
-+cut_file (char const *file)
- {
-   FILE *stream;
- 
-@@ -497,8 +872,8 @@ main (int argc, char **argv)
-   int optc;
-   bool ok;
-   bool delim_specified = false;
--  bool byte_mode = false;
--  char *spec_list_string = NULL;
-+  char *spec_list_string IF_LINT ( = NULL);
-+  char mbdelim[MB_LEN_MAX + 1];
- 
-   initialize_main (&argc, &argv);
-   set_program_name (argv[0]);
-@@ -508,6 +883,8 @@ main (int argc, char **argv)
- 
-   atexit (close_stdout);
- 
-+  operating_mode = undefined_mode;
-+
-   /* By default, all non-delimited lines are printed.  */
-   suppress_non_delimited = false;
- 
-@@ -520,35 +897,77 @@ main (int argc, char **argv)
-       switch (optc)
-         {
-         case 'b':
--        case 'c':
-           /* Build the byte list.  */
--          byte_mode = true;
--          FALLTHROUGH;
-+          if (operating_mode != undefined_mode)
-+            FATAL_ERROR (_("only one type of list may be specified"));
-+          operating_mode = byte_mode;
-+          spec_list_string = optarg;
-+          break;
-+
-+        case 'c':
-+          /* Build the character list.  */
-+          if (operating_mode != undefined_mode)
-+            FATAL_ERROR (_("only one type of list may be specified"));
-+          operating_mode = character_mode;
-+          spec_list_string = optarg;
-+          break;
-+
-         case 'f':
-           /* Build the field list.  */
--          if (spec_list_string)
--            FATAL_ERROR (_("only one list may be specified"));
-+          if (operating_mode != undefined_mode)
-+            FATAL_ERROR (_("only one type of list may be specified"));
-+          operating_mode = field_mode;
-           spec_list_string = optarg;
-           break;
- 
-         case 'd':
-           /* New delimiter.  */
-           /* Interpret -d '' to mean 'use the NUL byte as the delimiter.'  */
--          if (optarg[0] != '\0' && optarg[1] != '\0')
--            FATAL_ERROR (_("the delimiter must be a single character"));
--          delim = optarg[0];
--          delim_specified = true;
-+            {
-+#if HAVE_MBRTOWC
-+              if(MB_CUR_MAX > 1)
-+                {
-+                  mbstate_t state;
-+
-+                  memset (&state, '\0', sizeof(mbstate_t));
-+                  delimlen = mbrtowc (&wcdelim, optarg, strnlen(optarg, MB_LEN_MAX), &state);
-+
-+                  if (delimlen == (size_t)-1 || delimlen == (size_t)-2)
-+                    ++force_singlebyte_mode;
-+                  else
-+                    {
-+                      delimlen = (delimlen < 1) ? 1 : delimlen;
-+                      if (wcdelim != L'\0' && *(optarg + delimlen) != '\0')
-+                        FATAL_ERROR (_("the delimiter must be a single character"));
-+                      memcpy (mbdelim, optarg, delimlen);
-+                      mbdelim[delimlen] = '\0';
-+                      if (delimlen == 1)
-+                        delim = *optarg;
-+                    }
-+                }
-+
-+              if (MB_CUR_MAX <= 1 || force_singlebyte_mode)
-+#endif
-+                {
-+                  if (optarg[0] != '\0' && optarg[1] != '\0')
-+                    FATAL_ERROR (_("the delimiter must be a single character"));
-+                  delim = (unsigned char) optarg[0];
-+                }
-+            delim_specified = true;
-+          }
-           break;
- 
-         case OUTPUT_DELIMITER_OPTION:
-+          output_delimiter_specified = true;
-           /* Interpret --output-delimiter='' to mean
-              'use the NUL byte as the delimiter.'  */
-           output_delimiter_length = (optarg[0] == '\0'
-                                      ? 1 : strlen (optarg));
--          output_delimiter_string = optarg;
-+          output_delimiter_string = xstrdup (optarg);
-           break;
- 
-         case 'n':
-+          byte_mode_character_aware = 1;
-           break;
- 
-         case 's':
-@@ -570,40 +989,57 @@ main (int argc, char **argv)
-         }
-     }
- 
--  if (!spec_list_string)
-+  if (operating_mode == undefined_mode)
-     FATAL_ERROR (_("you must specify a list of bytes, characters, or fields"));
- 
--  if (byte_mode)
--    {
--      if (delim_specified)
--        FATAL_ERROR (_("an input delimiter may be specified only\
-+  if (delim_specified && operating_mode != field_mode)
-+    FATAL_ERROR (_("an input delimiter may be specified only\
-  when operating on fields"));
- 
--      if (suppress_non_delimited)
--        FATAL_ERROR (_("suppressing non-delimited lines makes sense\n\
-+  if (suppress_non_delimited && operating_mode != field_mode)
-+    FATAL_ERROR (_("suppressing non-delimited lines makes sense\n\
- \tonly when operating on fields"));
--    }
- 
-   set_fields (spec_list_string,
--              ((byte_mode ? SETFLD_ERRMSG_USE_POS : 0)
--               | (complement ? SETFLD_COMPLEMENT : 0)));
-+              ( (operating_mode == field_mode) ? 0 : SETFLD_ERRMSG_USE_POS)
-+              | (complement ? SETFLD_COMPLEMENT : 0) );
- 
-   if (!delim_specified)
--    delim = '\t';
-+    {
-+      delim = '\t';
-+#ifdef HAVE_MBRTOWC
-+      wcdelim = L'\t';
-+      mbdelim[0] = '\t';
-+      mbdelim[1] = '\0';
-+      delimlen = 1;
-+#endif
-+    }
- 
-   if (output_delimiter_string == NULL)
-     {
--      output_delimiter_default[0] = delim;
--      output_delimiter_string = output_delimiter_default;
--      output_delimiter_length = 1;
-+#ifdef HAVE_MBRTOWC
-+      if (MB_CUR_MAX > 1 && !force_singlebyte_mode)
-+        {
-+          output_delimiter_string = xstrdup(mbdelim);
-+          output_delimiter_length = delimlen;
-+        }
-+
-+      if (MB_CUR_MAX <= 1 || force_singlebyte_mode)
-+#endif
-+        {
-+          static char dummy[2];
-+          dummy[0] = delim;
-+          dummy[1] = '\0';
-+          output_delimiter_string = dummy;
-+          output_delimiter_length = 1;
-+        }
-     }
- 
--  void (*cut_stream) (FILE *) = byte_mode ? cut_bytes : cut_fields;
-   if (optind == argc)
--    ok = cut_file ("-", cut_stream);
-+    ok = cut_file ("-");
-   else
-     for (ok = true; optind < argc; optind++)
--      ok &= cut_file (argv[optind], cut_stream);
-+      ok &= cut_file (argv[optind]);
- 
- 
-   if (have_read_stdin && fclose (stdin) == EOF)
-Index: src/expand-common.c
-===================================================================
---- src/expand-common.c.orig
-+++ src/expand-common.c
-@@ -18,6 +18,7 @@
- 
- #include <stdio.h>
- #include <sys/types.h>
-+#include <mbfile.h>
- #include "system.h"
- #include "c-ctype.h"
- #include "fadvise.h"
-@@ -131,6 +132,119 @@ set_increment_size (colno tabval)
-   return ok;
- }
- 
-+extern int
-+set_utf_locale (void)
-+{
-+      /*try using some predefined locale */
-+      const char* predef_locales[] = {"C.UTF8","en_US.UTF8","en_GB.UTF8"};
-+
-+      const int predef_locales_count=3;
-+      for (int i=0;i<predef_locales_count;i++)
-+        {
-+          if (setlocale(LC_ALL,predef_locales[i])!=NULL)
-+          {
-+            break;
-+          }
-+          else if (i==predef_locales_count-1)
-+          {
-+            return 1;
-+            error (EXIT_FAILURE, errno, _("cannot set UTF-8 locale"));
-+          }
-+        }
-+        return 0;
-+}
-+
-+extern bool
-+check_utf_locale(void)
-+{
-+  char* locale = setlocale (LC_CTYPE , NULL);
-+  if (locale == NULL)
-+  {
-+    return false;
-+  }
-+  else if (strcasestr(locale, "utf8") == NULL && strcasestr(locale, "utf-8") == NULL)
-+  {
-+    return false;
-+  }
-+  return true;
-+}
-+
-+extern bool
-+check_bom(FILE* fp, mb_file_t *mbf)
-+{
-+  int c;
-+
-+
-+  c=fgetc(fp);
-+
-+  /*test BOM header of the first file */
-+  mbf->bufcount=0;
-+  if (c == 0xEF)
-+  {
-+    c=fgetc(fp);
-+  }
-+  else
-+  {
-+    if (c != EOF)
-+    {
-+      ungetc(c,fp);
-+    }
-+    return false;
-+  }
-+
-+  if (c == 0xBB)
-+  {
-+    c=fgetc(fp);
-+  }
-+  else
-+  {
-+    if ( c!= EOF )
-+    {
-+      mbf->buf[0]=(unsigned char) 0xEF;
-+      mbf->bufcount=1;
-+      ungetc(c,fp);
-+      return false;
-+    }
-+    else
-+    {
-+      ungetc(0xEF,fp);
-+      return false;
-+    }
-+  }
-+  if (c == 0xBF)
-+  {
-+    mbf->bufcount=0;
-+    return true;
-+  }
-+  else
-+  {
-+    if (c != EOF)
-+    {
-+      mbf->buf[0]=(unsigned char) 0xEF;
-+      mbf->buf[1]=(unsigned char) 0xBB;
-+      mbf->bufcount=2;
-+      ungetc(c,fp);
-+      return false;
-+    }
-+    else
-+    {
-+      mbf->buf[0]=(unsigned char) 0xEF;
-+      mbf->bufcount=1;
-+      ungetc(0xBB,fp);
-+      return false;
-+    }
-+  }
-+  return false;
-+}
-+
-+extern void
-+print_bom(void)
-+{
-+  putc (0xEF, stdout);
-+  putc (0xBB, stdout);
-+  putc (0xBF, stdout);
-+}
-+
- /* Add the comma or blank separated list of tab stops STOPS
-    to the list of tab stops.  */
- extern void
-Index: src/expand-common.h
-===================================================================
---- src/expand-common.h.orig
-+++ src/expand-common.h
-@@ -29,6 +29,18 @@ extern idx_t max_column_width;
- /* The desired exit status.  */
- extern int exit_status;
- 
-+extern int
-+set_utf_locale (void);
-+
-+extern bool
-+check_utf_locale(void);
-+
-+extern bool
-+check_bom(FILE* fp, mb_file_t *mbf);
-+
-+extern void
-+print_bom(void);
-+
- /* Add tab stop TABVAL to the end of 'tab_list'.  */
- extern void
- add_tab_stop (colno tabval);
-Index: src/expand.c
-===================================================================
---- src/expand.c.orig
-+++ src/expand.c
-@@ -37,6 +37,9 @@
- #include <stdio.h>
- #include <getopt.h>
- #include <sys/types.h>
-+
-+#include <mbfile.h>
-+
- #include "system.h"
- #include "expand-common.h"
- 
-@@ -99,19 +102,41 @@ expand (void)
- {
-   /* Input stream.  */
-   FILE *fp = next_file (NULL);
-+  mb_file_t mbf;
-+  mbf_char_t c;
-+  /* True if the starting locale is utf8.  */
-+  bool using_utf_locale;
-+
-+  /* True if the first file contains BOM header.  */
-+  bool found_bom;
-+  using_utf_locale=check_utf_locale();
- 
-   if (!fp)
-     return;
-+  mbf_init (mbf, fp);
-+  found_bom=check_bom(fp,&mbf);
- 
--  while (true)
-+  if (using_utf_locale == false && found_bom == true)
-+  {
-+    /*try using some predefined locale */
-+
-+    if (set_utf_locale () != 0)
-     {
--      /* Input character, or EOF.  */
--      int c;
-+      error (EXIT_FAILURE, errno, _("cannot set UTF-8 locale"));
-+    }
-+  }
-+
- 
-+  if (found_bom == true)
-+  {
-+    print_bom();
-+  }
-+
-+  while (true)
-+    {
-       /* If true, perform translations.  */
-       bool convert = true;
- 
--
-       /* The following variables have valid values only when CONVERT
-          is true:  */
- 
-@@ -121,17 +146,48 @@ expand (void)
-       /* Index in TAB_LIST of next tab stop to examine.  */
-       idx_t tab_index = 0;
- 
--
-       /* Convert a line of text.  */
- 
-       do
-         {
--          while ((c = getc (fp)) < 0 && (fp = next_file (fp)))
--            continue;
-+          while (true) {
-+            mbf_getc (c, mbf);
-+            if ((mb_iseof (c)) && (fp = next_file (fp)))
-+              {
-+                mbf_init (mbf, fp);
-+                if (fp!=NULL)
-+                {
-+                  if (check_bom(fp,&mbf)==true)
-+                  {
-+                    /*Not the first file - check BOM header*/
-+                    if (using_utf_locale==false && found_bom==false)
-+                    {
-+                      /*BOM header in subsequent file but not in the first one. */
-+                      error (EXIT_FAILURE, errno, _("combination of files with and without BOM header"));
-+                    }
-+                  }
-+                  else
-+                  {
-+                    if(using_utf_locale==false && found_bom==true)
-+                    {
-+                      /*First file conatined BOM header - locale was switched to UTF
-+                       *all subsequent files should contain BOM. */
-+                      error (EXIT_FAILURE, errno, _("combination of files with and without BOM header"));
-+                    }
-+                  }
-+                }
-+                continue;
-+              }
-+            else
-+              {
-+                break;
-+              }
-+            }
-+
- 
-           if (convert)
-             {
--              if (c == '\t')
-+              if (mb_iseq (c, '\t'))
-                 {
-                   /* Column the next input tab stop is on.  */
-                   bool last_tab;
-@@ -142,31 +198,33 @@ expand (void)
-                     if (putchar (' ') < 0)
-                       write_error ();
- 
--                  c = ' ';
-+                  mb_setascii (&c, ' ');
-                 }
--              else if (c == '\b')
-+              else if (mb_iseq (c, '\b'))
-                 {
-                   /* Go back one column, and force recalculation of the
-                      next tab stop.  */
-                   column -= !!column;
-                   tab_index -= !!tab_index;
-                 }
--              else
-+              /* A leading control character could make us trip over.  */
-+              else if (!mb_iscntrl (c))
-                 {
--                  if (ckd_add (&column, column, 1))
-+                  if (ckd_add (&column, column, mb_width (c)))
-                     error (EXIT_FAILURE, 0, _("input line is too long"));
-                 }
- 
--              convert &= convert_entire_line || !! isblank (c);
-+              convert &= convert_entire_line || !! mb_isblank (c);
-             }
- 
--          if (c < 0)
-+          if (mb_iseof (c))
-             return;
- 
--          if (putchar (c) < 0)
-+          mb_putc (c, stdout);
-+          if (ferror (stdout))
-             write_error ();
-         }
--      while (c != '\n');
-+      while (!mb_iseq (c, '\n'));
-     }
- }
- 
-Index: src/local.mk
-===================================================================
---- src/local.mk.orig
-+++ src/local.mk
-@@ -491,8 +491,8 @@ src_base32_CPPFLAGS = -DBASE_TYPE=32 $(A
- src_basenc_SOURCES = src/basenc.c
- src_basenc_CPPFLAGS = -DBASE_TYPE=42 $(AM_CPPFLAGS)
- 
--src_expand_SOURCES = src/expand.c src/expand-common.c
--src_unexpand_SOURCES = src/unexpand.c src/expand-common.c
-+src_expand_SOURCES = src/expand.c src/expand-common.c lib/mbfile.c lib/mbchar.c
-+src_unexpand_SOURCES = src/unexpand.c src/expand-common.c lib/mbfile.c lib/mbchar.c
- 
- src_wc_SOURCES = src/wc.c
- if USE_AVX512_WC_LINECOUNT
 Index: src/pr.c
 ===================================================================
 --- src/pr.c.orig
@@ -2201,7 +839,7 @@ Index: src/sort.c
  #include "system.h"
  #include "argmatch.h"
  #include "assure.h"
-@@ -148,14 +157,39 @@ static int thousands_sep;
+@@ -149,14 +158,39 @@ static int thousands_sep;
  /* We currently ignore multi-byte grouping chars.  */
  static bool thousands_sep_ignored;
  
@@ -2242,7 +880,7 @@ Index: src/sort.c
  /* The kind of blanks for '-b' to skip in various options. */
  enum blanktype { bl_start, bl_end, bl_both };
  
-@@ -332,13 +366,11 @@ static bool stable;
+@@ -333,13 +367,11 @@ static bool stable;
  /* An int value outside char range.  */
  enum { NON_CHAR = CHAR_MAX + 1 };
  
@@ -2259,7 +897,7 @@ Index: src/sort.c
  
  /* Flag to remove consecutive duplicate lines from the output.
     Only the last of a sequence of equal lines will be output. */
-@@ -374,6 +406,46 @@ struct tempnode
+@@ -375,6 +407,46 @@ struct tempnode
  static struct tempnode *volatile temphead;
  static struct tempnode *volatile *temptail = &temphead;
  
@@ -2306,7 +944,7 @@ Index: src/sort.c
  /* Clean up any remaining temporary files.  */
  
  static void
-@@ -1381,7 +1453,7 @@ zaptemp (char const *name)
+@@ -1382,7 +1454,7 @@ zaptemp (char const *name)
    free (node);
  }
  
@@ -2315,7 +953,7 @@ Index: src/sort.c
  
  static int
  struct_month_cmp (void const *m1, void const *m2)
-@@ -1396,7 +1468,7 @@ struct_month_cmp (void const *m1, void c
+@@ -1397,7 +1469,7 @@ struct_month_cmp (void const *m1, void c
  /* Initialize the character class tables. */
  
  static void
@@ -2324,7 +962,7 @@ Index: src/sort.c
  {
    for (size_t i = 0; i < UCHAR_LIM; ++i)
      {
-@@ -1406,7 +1478,7 @@ inittables (void)
+@@ -1407,7 +1479,7 @@ inittables (void)
        fold_toupper[i] = toupper (i);
      }
  
@@ -2333,7 +971,7 @@ Index: src/sort.c
    /* If we're not in the "C" locale, read different names for months.  */
    if (hard_LC_TIME)
      {
-@@ -1486,6 +1558,84 @@ specify_nmerge (int oi, char c, char con
+@@ -1487,6 +1559,84 @@ specify_nmerge (int oi, char c, char con
      xstrtol_fatal (e, oi, c, long_options, s);
  }
  
@@ -2418,16 +1056,16 @@ Index: src/sort.c
  /* Specify the amount of main memory to use when sorting.  */
  static void
  specify_sort_size (int oi, char c, char const *s)
-@@ -1712,7 +1862,7 @@ buffer_linelim (struct buffer const *buf
+@@ -1713,7 +1863,7 @@ buffer_linelim (struct buffer const *buf
     by KEY in LINE. */
  
  static char *
 -begfield (struct line const *line, struct keyfield const *key)
-+begfield_uni (const struct line *line, const struct keyfield *key)
++begfield_uni (struct line const *line, struct keyfield const *key)
  {
    char *ptr = line->text, *lim = ptr + line->length - 1;
    size_t sword = key->sword;
-@@ -1721,10 +1871,10 @@ begfield (struct line const *line, struc
+@@ -1722,10 +1872,10 @@ begfield (struct line const *line, struc
    /* The leading field separator itself is included in a field when -t
       is absent.  */
  
@@ -2435,12 +1073,12 @@ Index: src/sort.c
 +  if (tab_length)
      while (ptr < lim && sword--)
        {
--        while (ptr < lim && *ptr != tab)
-+        while (ptr < lim && *ptr != tab[0])
-           ++ptr;
+-        char *sep = memchr (ptr, tab, lim - ptr);
++        char *sep = memchr (ptr, tab[0], lim - ptr);
+         ptr = sep ? sep : lim;
          if (ptr < lim)
            ++ptr;
-@@ -1754,12 +1904,71 @@ begfield (struct line const *line, struc
+@@ -1755,12 +1905,71 @@ begfield (struct line const *line, struc
    return ptr;
  }
  
@@ -2513,7 +1151,7 @@ Index: src/sort.c
  {
    char *ptr = line->text, *lim = ptr + line->length - 1;
    size_t eword = key->eword, echar = key->echar;
-@@ -1774,10 +1983,10 @@ limfield (struct line const *line, struc
+@@ -1775,10 +1984,10 @@ limfield (struct line const *line, struc
       'beginning' is the first character following the delimiting TAB.
       Otherwise, leave PTR pointing at the first 'blank' character after
       the preceding field.  */
@@ -2521,12 +1159,12 @@ Index: src/sort.c
 +  if (tab_length)
      while (ptr < lim && eword--)
        {
--        while (ptr < lim && *ptr != tab)
-+        while (ptr < lim && *ptr != tab[0])
-           ++ptr;
+-        char *sep = memchr (ptr, tab, lim - ptr);
++        char *sep = memchr (ptr, tab[0], lim - ptr);
+         ptr = sep ? sep : lim;
          if (ptr < lim && (eword || echar))
            ++ptr;
-@@ -1823,10 +2032,10 @@ limfield (struct line const *line, struc
+@@ -1824,10 +2033,10 @@ limfield (struct line const *line, struc
       */
  
    /* Make LIM point to the end of (one byte past) the current field.  */
@@ -2539,7 +1177,7 @@ Index: src/sort.c
        if (newlim)
          lim = newlim;
      }
-@@ -1861,6 +2070,130 @@ limfield (struct line const *line, struc
+@@ -1862,6 +2071,130 @@ limfield (struct line const *line, struc
    return ptr;
  }
  
@@ -2670,7 +1308,7 @@ Index: src/sort.c
  /* Fill BUF reading from FP, moving buf->left bytes from the end
     of buf->buf to the beginning first.  If EOF is reached and the
     file wasn't terminated by a newline, supply one.  Set up BUF's line
-@@ -1947,8 +2280,22 @@ fillbuf (struct buffer *buf, FILE *fp, c
+@@ -1948,8 +2281,22 @@ fillbuf (struct buffer *buf, FILE *fp, c
                    else
                      {
                        if (key->skipsblanks)
@@ -2695,7 +1333,7 @@ Index: src/sort.c
                        line->keybeg = line_start;
                      }
                  }
-@@ -2086,12 +2433,10 @@ find_unit_order (char const *number)
+@@ -2087,12 +2434,10 @@ find_unit_order (char const *number)
  
  ATTRIBUTE_PURE
  static int
@@ -2711,7 +1349,7 @@ Index: src/sort.c
  
    int diff = find_unit_order (a) - find_unit_order (b);
    return (diff ? diff : strnumcmp (a, b, decimal_point, thousands_sep));
-@@ -2103,7 +2448,7 @@ human_numcompare (char const *a, char co
+@@ -2104,7 +2449,7 @@ human_numcompare (char const *a, char co
  
  ATTRIBUTE_PURE
  static int
@@ -2720,7 +1358,7 @@ Index: src/sort.c
  {
    while (blanks[to_uchar (*a)])
      a++;
-@@ -2113,6 +2458,25 @@ numcompare (char const *a, char const *b
+@@ -2114,6 +2459,25 @@ numcompare (char const *a, char const *b
    return strnumcmp (a, b, decimal_point, thousands_sep);
  }
  
@@ -2746,7 +1384,7 @@ Index: src/sort.c
  static int
  nan_compare (long double a, long double b)
  {
-@@ -2154,7 +2518,7 @@ general_numcompare (char const *sa, char
+@@ -2155,7 +2519,7 @@ general_numcompare (char const *sa, char
     Return 0 if the name in S is not recognized.  */
  
  static int
@@ -2755,7 +1393,7 @@ Index: src/sort.c
  {
    size_t lo = 0;
    size_t hi = MONTHS_PER_YEAR;
-@@ -2493,15 +2857,14 @@ debug_key (struct line const *line, stru
+@@ -2494,15 +2858,14 @@ debug_key (struct line const *line, stru
            char saved = *lim;
            *lim = '\0';
  
@@ -2773,7 +1411,7 @@ Index: src/sort.c
            else if (key->general_numeric)
              ignore_value (strtold (beg, &tighter_lim));
            else if (key->numeric || key->human_numeric)
-@@ -2646,7 +3009,7 @@ key_warnings (struct keyfield const *gke
+@@ -2647,7 +3010,7 @@ key_warnings (struct keyfield const *gke
        /* Warn about significant leading blanks.  */
        bool implicit_skip = key_numeric (key) || key->month;
        bool line_offset = key->eword == 0 && key->echar != 0; /* -k1.x,1.y  */
@@ -2782,7 +1420,7 @@ Index: src/sort.c
            && ((!key->skipsblanks && !implicit_skip)
                || (!key->skipsblanks && key->schar)
                || (!key->skipeblanks && key->echar)))
-@@ -2694,9 +3057,9 @@ key_warnings (struct keyfield const *gke
+@@ -2695,9 +3058,9 @@ key_warnings (struct keyfield const *gke
    bool number_locale_warned = false;
    if (basic_numeric_field_span)
      {
@@ -2795,7 +1433,7 @@ Index: src/sort.c
          {
            error (0, 0,
                   _("field separator %s is treated as a "
-@@ -2707,9 +3070,9 @@ key_warnings (struct keyfield const *gke
+@@ -2708,9 +3071,9 @@ key_warnings (struct keyfield const *gke
      }
    if (basic_numeric_field_span || general_numeric_field_span)
      {
@@ -2808,7 +1446,7 @@ Index: src/sort.c
          {
            error (0, 0,
                   _("field separator %s is treated as a "
-@@ -2717,19 +3080,19 @@ key_warnings (struct keyfield const *gke
+@@ -2718,19 +3081,19 @@ key_warnings (struct keyfield const *gke
                   quote (((char []) {decimal_point, 0})));
            number_locale_warned = true;
          }
@@ -2832,7 +1470,7 @@ Index: src/sort.c
          }
      }
  
-@@ -2781,11 +3144,87 @@ diff_reversed (int diff, bool reversed)
+@@ -2782,11 +3145,87 @@ diff_reversed (int diff, bool reversed)
    return reversed ? _GL_CMP (0, diff) : diff;
  }
  
@@ -2921,7 +1559,7 @@ Index: src/sort.c
  {
    struct keyfield *key = keylist;
  
-@@ -2866,7 +3305,7 @@ keycompare (struct line const *a, struct
+@@ -2867,7 +3306,7 @@ keycompare (struct line const *a, struct
            else if (key->human_numeric)
              diff = human_numcompare (ta, tb);
            else if (key->month)
@@ -2930,7 +1568,7 @@ Index: src/sort.c
            else if (key->random)
              diff = compare_random (ta, tlena, tb, tlenb);
            else if (key->version)
-@@ -2976,6 +3415,211 @@ keycompare (struct line const *a, struct
+@@ -2977,6 +3416,211 @@ keycompare (struct line const *a, struct
    return diff_reversed (diff, key->reverse);
  }
  
@@ -3142,7 +1780,7 @@ Index: src/sort.c
  /* Compare two lines A and B, returning negative, zero, or positive
     depending on whether A compares less than, equal to, or greater than B. */
  
-@@ -3003,7 +3647,7 @@ compare (struct line const *a, struct li
+@@ -3004,7 +3648,7 @@ compare (struct line const *a, struct li
      diff = - NONZERO (blen);
    else if (blen == 0)
      diff = 1;
@@ -3151,7 +1789,7 @@ Index: src/sort.c
      {
        /* xmemcoll0 is a performance enhancement as
           it will not unconditionally write '\0' after the
-@@ -4381,6 +5025,7 @@ set_ordering (char const *s, struct keyf
+@@ -4382,6 +5026,7 @@ set_ordering (char const *s, struct keyf
            break;
          case 'f':
            key->translate = fold_toupper;
@@ -3159,7 +1797,7 @@ Index: src/sort.c
            break;
          case 'g':
            key->general_numeric = true;
-@@ -4460,7 +5105,7 @@ main (int argc, char **argv)
+@@ -4461,7 +5106,7 @@ main (int argc, char **argv)
    initialize_exit_failure (SORT_FAILURE);
  
    hard_LC_COLLATE = hard_locale (LC_COLLATE);
@@ -3168,7 +1806,7 @@ Index: src/sort.c
    hard_LC_TIME = hard_locale (LC_TIME);
  #endif
  
-@@ -4483,6 +5128,29 @@ main (int argc, char **argv)
+@@ -4484,6 +5129,29 @@ main (int argc, char **argv)
        thousands_sep = NON_CHAR;
    }
  
@@ -3195,9 +1833,9 @@ Index: src/sort.c
 +      numcompare = numcompare_uni;
 +    }
 +
-   have_read_stdin = false;
    inittables ();
  
+   {
 @@ -4729,13 +5397,34 @@ main (int argc, char **argv)
  
          case 't':
@@ -3251,479 +1889,6 @@ Index: src/sort.c
            }
            break;
  
-Index: src/unexpand.c
-===================================================================
---- src/unexpand.c.orig
-+++ src/unexpand.c
-@@ -38,6 +38,9 @@
- #include <stdio.h>
- #include <getopt.h>
- #include <sys/types.h>
-+
-+#include <mbfile.h>
-+
- #include "system.h"
- #include "expand-common.h"
- 
-@@ -111,24 +114,46 @@ unexpand (void)
- {
-   /* Input stream.  */
-   FILE *fp = next_file (NULL);
-+  mb_file_t mbf;
- 
-   /* The array of pending blanks.  In non-POSIX locales, blanks can
-      include characters other than spaces, so the blanks must be
-      stored, not merely counted.  */
--  char *pending_blank;
-+  mbf_char_t *pending_blank;
-+  /* True if the starting locale is utf8.  */
-+  bool using_utf_locale;
-+
-+  /* True if the first file contains BOM header.  */
-+  bool found_bom;
-+  using_utf_locale=check_utf_locale();
- 
-   if (!fp)
-     return;
- 
-+  mbf_init (mbf, fp);
-+  found_bom=check_bom(fp,&mbf);
-+
-+  if (using_utf_locale == false && found_bom == true)
-+    {
-+      /* Try using some predefined locale */
-+      if (set_utf_locale () != 0)
-+        {
-+          error (EXIT_FAILURE, errno, _("cannot set UTF-8 locale"));
-+        }
-+    }
-+
-   /* The worst case is a non-blank character, then one blank, then a
-      tab stop, then MAX_COLUMN_WIDTH - 1 blanks, then a non-blank; so
-      allocate MAX_COLUMN_WIDTH bytes to store the blanks.  */
--  pending_blank = ximalloc (max_column_width);
-+  pending_blank = ximalloc (max_column_width * sizeof (mbf_char_t));
-+
-+  if (found_bom == true)
-+    print_bom();
- 
-   while (true)
-     {
-       /* Input character, or EOF.  */
--      int c;
-+      mbf_char_t c;
- 
-       /* If true, perform translations.  */
-       bool convert = true;
-@@ -162,12 +187,44 @@ unexpand (void)
- 
-       do
-         {
--          while ((c = getc (fp)) < 0 && (fp = next_file (fp)))
--            continue;
-+          while (true) {
-+            mbf_getc (c, mbf);
-+            if ((mb_iseof (c)) && (fp = next_file (fp)))
-+              {
-+                mbf_init (mbf, fp);
-+                if (fp!=NULL)
-+                {
-+                  if (check_bom(fp,&mbf)==true)
-+                  {
-+                    /*Not the first file - check BOM header*/
-+                    if (using_utf_locale==false && found_bom==false)
-+                    {
-+                      /*BOM header in subsequent file but not in the first one. */
-+                      error (EXIT_FAILURE, errno, _("combination of files with and without BOM header"));
-+                    }
-+                  }
-+                  else
-+                  {
-+                    if(using_utf_locale==false && found_bom==true)
-+                    {
-+                      /*First file conatined BOM header - locale was switched to UTF
-+                       *all subsequent files should contain BOM. */
-+                      error (EXIT_FAILURE, errno, _("combination of files with and without BOM header"));
-+                    }
-+                  }
-+                }
-+                continue;
-+              }
-+            else
-+              {
-+                break;
-+              }
-+            }
-+
- 
-           if (convert)
-             {
--              bool blank = !! isblank (c);
-+              bool blank = mb_isblank (c);
- 
-               if (blank)
-                 {
-@@ -181,16 +238,16 @@ unexpand (void)
- 
-                   if (convert)
-                     {
--                      if (c == '\t')
-+                      if (mb_iseq (c, '\t'))
-                         {
-                           column = next_tab_column;
- 
-                           if (pending)
--                            pending_blank[0] = '\t';
-+                            mb_setascii (&pending_blank[0], '\t');
-                         }
-                       else
-                         {
--                          column++;
-+                          column += mb_width (c);
- 
-                           if (! (prev_blank && column == next_tab_column))
-                             {
-@@ -198,13 +255,14 @@ unexpand (void)
-                                  will be replaced by tabs.  */
-                               if (column == next_tab_column)
-                                 one_blank_before_tab_stop = true;
--                              pending_blank[pending++] = c;
-+                              mb_copy (&pending_blank[pending++], &c);
-                               prev_blank = true;
-                               continue;
-                             }
- 
-                           /* Replace the pending blanks by a tab or two.  */
--                          pending_blank[0] = c = '\t';
-+                          mb_setascii (&c, '\t');
-+                          mb_setascii (&pending_blank[0], '\t');
-                         }
- 
-                       /* Discard pending blanks, unless it was a single
-@@ -212,7 +270,7 @@ unexpand (void)
-                       pending = one_blank_before_tab_stop;
-                     }
-                 }
--              else if (c == '\b')
-+              else if (mb_iseq (c, '\b'))
-                 {
-                   /* Go back one column, and force recalculation of the
-                      next tab stop.  */
-@@ -222,16 +280,20 @@ unexpand (void)
-                 }
-               else
-                 {
--                  column++;
--                  if (!column)
-+                  const uintmax_t orig_column = column;
-+                  column += mb_width (c);
-+                  if (column < orig_column)
-                     error (EXIT_FAILURE, 0, _("input line is too long"));
-                 }
- 
-               if (pending)
-                 {
-                   if (pending > 1 && one_blank_before_tab_stop)
--                    pending_blank[0] = '\t';
--                  if (fwrite (pending_blank, 1, pending, stdout) != pending)
-+                    mb_setascii (&pending_blank[0], '\t');
-+
-+                  for (int n = 0; n < pending; ++n)
-+                    mb_putc (pending_blank[n], stdout);
-+                  if (ferror (stdout))
-                     write_error ();
-                   pending = 0;
-                   one_blank_before_tab_stop = false;
-@@ -241,16 +303,17 @@ unexpand (void)
-               convert &= convert_entire_line || blank;
-             }
- 
--          if (c < 0)
-+          if (mb_iseof (c))
-             {
-               free (pending_blank);
-               return;
-             }
- 
--          if (putchar (c) < 0)
-+          mb_putc (c, stdout);
-+          if (ferror (stdout))
-             write_error ();
-         }
--      while (c != '\n');
-+      while (!mb_iseq (c, '\n'));
-     }
- }
- 
-Index: tests/Coreutils.pm
-===================================================================
---- tests/Coreutils.pm.orig
-+++ tests/Coreutils.pm
-@@ -269,6 +269,9 @@ sub run_tests ($$$$$)
-       # Yes, this is an arbitrary limit.  If it causes trouble,
-       # consider removing it.
-       my $max = 30;
-+      # The downstream i18n multi-byte tests have a "-mb" suffix.
-+      # Therefore add 3 to the maximum test name length.
-+      $max += 3;
-       if ($max < length $test_name)
-         {
-           warn "$program_name: $test_name: test name is too long (> $max)\n";
-Index: tests/expand/expand.pl
-===================================================================
---- tests/expand/expand.pl.orig
-+++ tests/expand/expand.pl
-@@ -27,6 +27,15 @@ my $prog = 'expand';
- # Turn off localization of executable's output.
- @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
- 
-+#comment out next line to disable multibyte tests
-+my $mb_locale = $ENV{LOCALE_FR_UTF8};
-+! defined $mb_locale || $mb_locale eq 'none'
-+ and $mb_locale = 'C';
-+
-+my $prog = 'expand';
-+my $try = "Try \`$prog --help' for more information.\n";
-+my $inval = "$prog: invalid byte, character or field list\n$try";
-+
- my @Tests =
-   (
-    ['t1', '--tabs=3',     {IN=>"a\tb"}, {OUT=>"a  b"}],
-@@ -168,6 +177,8 @@ my @Tests =
- 
- 
-    # Test errors
-+   # FIXME: The following tests contain ‘quoting’ specific to LC_MESSAGES
-+   # So we force LC_MESSAGES=C to make them pass.
-    ['e1', '--tabs="a"', {IN=>''}, {OUT=>''}, {EXIT=>1},
-     {ERR => "$prog: tab size contains invalid character(s): 'a'\n"}],
-    ['e2', "-t $UINTMAX_OFLOW", {IN=>''}, {OUT=>''}, {EXIT=>1},
-@@ -184,6 +195,37 @@ my @Tests =
-     {ERR => "$prog: '/' specifier not at start of number: '/'\n"}],
-   );
- 
-+if ($mb_locale ne 'C')
-+  {
-+    # Duplicate each test vector, appending "-mb" to the test name and
-+    # inserting {ENV => "LC_ALL=$mb_locale"} in the copy, so that we
-+    # provide coverage for the distro-added multi-byte code paths.
-+    my @new;
-+    foreach my $t (@Tests)
-+      {
-+        my @new_t = @$t;
-+        my $test_name = shift @new_t;
-+
-+        # Depending on whether expand is multi-byte-patched,
-+        # it emits different diagnostics:
-+        #   non-MB: invalid byte or field list
-+        #   MB:     invalid byte, character or field list
-+        # Adjust the expected error output accordingly.
-+        if (grep {ref $_ eq 'HASH' && exists $_->{ERR} && $_->{ERR} eq $inval}
-+            (@new_t))
-+          {
-+            my $sub = {ERR_SUBST => 's/, character//'};
-+            push @new_t, $sub;
-+            push @$t, $sub;
-+          }
-+        push @new, ["$test_name-mb", @new_t, {ENV => "LANG=$mb_locale LC_MESSAGES=C"}];
-+      }
-+    push @Tests, @new;
-+  }
-+
-+
-+@Tests = triple_test \@Tests;
-+
- my $save_temps = $ENV{DEBUG};
- my $verbose = $ENV{VERBOSE};
- 
-Index: tests/expand/mb.sh
-===================================================================
---- /dev/null
-+++ tests/expand/mb.sh
-@@ -0,0 +1,183 @@
-+#!/bin/sh
-+
-+# Copyright (C) 2012-2015 Free Software Foundation, Inc.
-+
-+# This program is free software: you can redistribute it and/or modify
-+# it under the terms of the GNU General Public License as published by
-+# the Free Software Foundation, either version 3 of the License, or
-+# (at your option) any later version.
-+
-+# This program is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+# GNU General Public License for more details.
-+
-+# You should have received a copy of the GNU General Public License
-+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+
-+. "${srcdir=.}/tests/init.sh"; path_prepend_ ./src
-+print_ver_ expand
-+
-+export LC_ALL=en_US.UTF-8
-+
-+#input containing multibyte characters
-+cat <<\EOF > in || framework_failure_
-+1234567812345678123456781
-+.       .       .       .
-+a	b	c	d
-+.       .       .       .
-+ä	ö	ü	ß
-+.       .       .       .
-+EOF
-+env printf '   äöü\t.    öüä.   \tä xx\n' >> in || framework_failure_
-+
-+cat <<\EOF > exp || framework_failure_
-+1234567812345678123456781
-+.       .       .       .
-+a       b       c       d
-+.       .       .       .
-+ä       ö       ü       ß
-+.       .       .       .
-+   äöü  .    öüä.       ä xx
-+EOF
-+
-+expand < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+#multiple files as an input
-+cat <<\EOF >> exp || framework_failure_
-+1234567812345678123456781
-+.       .       .       .
-+a       b       c       d
-+.       .       .       .
-+ä       ö       ü       ß
-+.       .       .       .
-+   äöü  .    öüä.       ä xx
-+EOF
-+
-+expand ./in ./in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+#test characters with display widths != 1
-+env printf '12345678
-+e\t|ascii(1)
-+\u00E9\t|composed(1)
-+e\u0301\t|decomposed(1)
-+\u3000\t|ideo-space(2)
-+\uFF0D\t|full-hypen(2)
-+' > in || framework_failure_
-+
-+env printf '12345678
-+e       |ascii(1)
-+\u00E9       |composed(1)
-+e\u0301       |decomposed(1)
-+\u3000      |ideo-space(2)
-+\uFF0D      |full-hypen(2)
-+' > exp || framework_failure_
-+
-+expand < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+#shouldn't fail with "input line too long"
-+#when a line starts with a control character
-+env printf '\n' > in || framework_failure_
-+
-+expand < in > out || fail=1
-+compare in out > /dev/null 2>&1 || fail=1
-+
-+#non-Unicode characters interspersed between Unicode ones
-+env printf '12345678
-+\t\xFF|
-+\xFF\t|
-+\t\xFFä|
-+ä\xFF\t|
-+\tä\xFF|
-+\xFF\tä|
-+äbcdef\xFF\t|
-+' > in || framework_failure_
-+
-+env printf '12345678
-+        \xFF|
-+\xFF       |
-+        \xFFä|
-+ä\xFF      |
-+        ä\xFF|
-+\xFF       ä|
-+äbcdef\xFF |
-+' > exp || framework_failure_
-+
-+expand < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+
-+
-+#BOM header test 1
-+printf "\xEF\xBB\xBF" > in; cat <<\EOF >> in || framework_failure_
-+1234567812345678123456781
-+.       .       .       .
-+a	b	c	d
-+.       .       .       .
-+ä	ö	ü	ß
-+.       .       .       .
-+EOF
-+env printf '   äöü\t.    öüä.   \tä xx\n' >> in || framework_failure_
-+
-+printf "\xEF\xBB\xBF" > exp; cat <<\EOF >> exp || framework_failure_
-+1234567812345678123456781
-+.       .       .       .
-+a       b       c       d
-+.       .       .       .
-+ä       ö       ü       ß
-+.       .       .       .
-+   äöü  .    öüä.       ä xx
-+EOF
-+
-+
-+expand < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+LANG=C expand < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+LC_ALL=C expand < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+
-+printf '\xEF\xBB\xBF' > in1; cat <<\EOF >> in1 || framework_failure_
-+1234567812345678123456781
-+.       .       .       .
-+a	b	c	d
-+.       .       .       .
-+ä	ö	ü	ß
-+.       .       .       .
-+EOF
-+env printf '   äöü\t.    öüä.   \tä xx\n' >> in1 || framework_failure_
-+
-+
-+printf '\xEF\xBB\xBF' > exp; cat <<\EOF >> exp || framework_failure_
-+1234567812345678123456781
-+.       .       .       .
-+a       b       c       d
-+.       .       .       .
-+ä       ö       ü       ß
-+.       .       .       .
-+   äöü  .    öüä.       ä xx
-+1234567812345678123456781
-+.       .       .       .
-+a       b       c       d
-+.       .       .       .
-+ä       ö       ü       ß
-+.       .       .       .
-+   äöü  .    öüä.       ä xx
-+EOF
-+
-+expand in1 in1 > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+LANG=C expand in1 in1  > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+LC_ALL=C expand in1 in1 > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+exit $fail
 Index: tests/i18n/sort.sh
 ===================================================================
 --- /dev/null
@@ -3762,7 +1927,7 @@ Index: tests/local.mk
 ===================================================================
 --- tests/local.mk.orig
 +++ tests/local.mk
-@@ -423,6 +423,8 @@ all_tests =					\
+@@ -435,6 +435,8 @@ all_tests =					\
    tests/sort/sort-field-limit.sh		\
    tests/sort/sort-files0-from.pl		\
    tests/sort/sort-float.sh			\
@@ -3771,22 +1936,6 @@ Index: tests/local.mk
    tests/sort/sort-h-thousands-sep.sh		\
    tests/sort/sort-locale.sh			\
    tests/sort/sort-merge.pl			\
-@@ -639,6 +641,7 @@ all_tests =					\
-   tests/du/threshold.sh				\
-   tests/du/trailing-slash.sh			\
-   tests/du/two-args.sh				\
-+  tests/expand/mb.sh				\
-   tests/id/gnu-zero-uids.sh			\
-   tests/id/no-context.sh			\
-   tests/id/context.sh				\
-@@ -796,6 +799,7 @@ all_tests =					\
-   tests/touch/read-only.sh			\
-   tests/touch/relative.sh			\
-   tests/touch/trailing-slash.sh			\
-+  tests/unexpand/mb.sh				\
-   $(all_root_tests)
- 
- # See tests/factor/create-test.sh.
 Index: tests/misc/sort-mb-tests.sh
 ===================================================================
 --- /dev/null
@@ -4034,237 +2183,3 @@ Index: tests/sort/sort.pl
  
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
-Index: tests/unexpand/mb.sh
-===================================================================
---- /dev/null
-+++ tests/unexpand/mb.sh
-@@ -0,0 +1,172 @@
-+#!/bin/sh
-+
-+# Copyright (C) 2012-2015 Free Software Foundation, Inc.
-+
-+# This program is free software: you can redistribute it and/or modify
-+# it under the terms of the GNU General Public License as published by
-+# the Free Software Foundation, either version 3 of the License, or
-+# (at your option) any later version.
-+
-+# This program is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+# GNU General Public License for more details.
-+
-+# You should have received a copy of the GNU General Public License
-+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+
-+. "${srcdir=.}/tests/init.sh"; path_prepend_ ./src
-+print_ver_ unexpand
-+
-+export LC_ALL=en_US.UTF-8
-+
-+#input containing multibyte characters
-+cat > in <<\EOF
-+1234567812345678123456781
-+.       .       .       .
-+a       b       c       d
-+.       .       .       .
-+ä       ö       ü       ß
-+.       .       .       .
-+   äöü  .    öüä.       ä xx
-+EOF
-+
-+cat > exp <<\EOF
-+1234567812345678123456781
-+.	.	.	.
-+a	b	c	d
-+.	.	.	.
-+ä	ö	ü	ß
-+.	.	.	.
-+   äöü	.    öüä.	ä xx
-+EOF
-+
-+unexpand -a < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+
-+#multiple files as an input
-+cat >> exp <<\EOF
-+1234567812345678123456781
-+.	.	.	.
-+a	b	c	d
-+.	.	.	.
-+ä	ö	ü	ß
-+.	.	.	.
-+   äöü	.    öüä.	ä xx
-+EOF
-+
-+
-+unexpand -a ./in ./in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+#test characters with a display width larger than 1
-+
-+env printf '12345678
-+e       |ascii(1)
-+\u00E9       |composed(1)
-+e\u0301       |decomposed(1)
-+\u3000      |ideo-space(2)
-+\uFF0D      |full-hypen(2)
-+' > in || framework_failure_
-+
-+env printf '12345678
-+e\t|ascii(1)
-+\u00E9\t|composed(1)
-+e\u0301\t|decomposed(1)
-+\u3000\t|ideo-space(2)
-+\uFF0D\t|full-hypen(2)
-+' > exp || framework_failure_
-+
-+unexpand -a < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+#test input where a blank of width > 1 is not being substituted
-+in="$(LC_ALL=en_US.UTF-8 printf ' \u3000  ö       ü       ß')"
-+exp=' 　  ö	     ü	     ß'
-+
-+unexpand -a < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+#non-Unicode characters interspersed between Unicode ones
-+env printf '12345678
-+        \xFF|
-+\xFF       |
-+        \xFFä|
-+ä\xFF      |
-+        ä\xFF|
-+\xFF       ä|
-+äbcdef\xFF |
-+' > in || framework_failure_
-+
-+env printf '12345678
-+\t\xFF|
-+\xFF\t|
-+\t\xFFä|
-+ä\xFF\t|
-+\tä\xFF|
-+\xFF\tä|
-+äbcdef\xFF\t|
-+' > exp || framework_failure_
-+
-+unexpand -a < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+#BOM header test 1
-+printf "\xEF\xBB\xBF" > in; cat <<\EOF >> in || framework_failure_
-+1234567812345678123456781
-+.       .       .       .
-+a       b       c       d
-+.       .       .       .
-+ä       ö       ü       ß
-+.       .       .       .
-+   äöü  .    öüä.       ä xx
-+EOF
-+env printf '   äöü\t.    öüä.   \tä xx\n' >> in || framework_failure_
-+
-+printf "\xEF\xBB\xBF" > exp; cat <<\EOF >> exp || framework_failure_
-+1234567812345678123456781
-+.	.	.	.
-+a	b	c	d
-+.	.	.	.
-+ä	ö	ü	ß
-+.	.	.	.
-+   äöü	.    öüä.	ä xx
-+EOF
-+
-+unexpand < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+LANG=C unexpand < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+LC_ALL=C unexpand < in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+
-+printf "\xEF\xBB\xBF" > exp; cat <<\EOF >> exp || framework_failure_
-+1234567812345678123456781
-+.	.	.	.
-+a	b	c	d
-+.	.	.	.
-+ä	ö	ü	ß
-+.	.	.	.
-+   äöü	.    öüä.	ä xx
-+1234567812345678123456781
-+.	.	.	.
-+a	b	c	d
-+.	.	.	.
-+ä	ö	ü	ß
-+.	.	.	.
-+   äöü	.    öüä.	ä xx
-+EOF
-+
-+
-+unexpand in in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+LANG=C unexpand in in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-+
-+LC_ALL=C unexpand in in > out || fail=1
-+compare exp out > /dev/null 2>&1 || fail=1
-Index: tests/unexpand/unexpand.pl
-===================================================================
---- tests/unexpand/unexpand.pl.orig
-+++ tests/unexpand/unexpand.pl
-@@ -27,6 +27,14 @@ my $limits = getlimits ();
- 
- my $prog = 'unexpand';
- 
-+# comment out next line to disable multibyte tests
-+my $mb_locale = $ENV{LOCALE_FR_UTF8};
-+! defined $mb_locale || $mb_locale eq 'none'
-+ and $mb_locale = 'C';
-+
-+my $try = "Try \`$prog --help' for more information.\n";
-+my $inval = "$prog: invalid byte, character or field list\n$try";
-+
- my @Tests =
-     (
-      ['a1', {IN=> ' 'x 1 ."y\n"}, {OUT=> ' 'x 1 ."y\n"}],
-@@ -132,6 +140,37 @@ my @Tests =
-      ['ts2', '-t5,8', {IN=>"x\t \t y\n"},    {OUT=>"x\t\t y\n"}],
-     );
- 
-+if ($mb_locale ne 'C')
-+  {
-+    # Duplicate each test vector, appending "-mb" to the test name and
-+    # inserting {ENV => "LC_ALL=$mb_locale"} in the copy, so that we
-+    # provide coverage for the distro-added multi-byte code paths.
-+    my @new;
-+    foreach my $t (@Tests)
-+      {
-+        my @new_t = @$t;
-+        my $test_name = shift @new_t;
-+
-+        # Depending on whether unexpand is multi-byte-patched,
-+        # it emits different diagnostics:
-+        #   non-MB: invalid byte or field list
-+        #   MB:     invalid byte, character or field list
-+        # Adjust the expected error output accordingly.
-+        if (grep {ref $_ eq 'HASH' && exists $_->{ERR} && $_->{ERR} eq $inval}
-+            (@new_t))
-+          {
-+            my $sub = {ERR_SUBST => 's/, character//'};
-+            push @new_t, $sub;
-+            push @$t, $sub;
-+          }
-+        next if ($test_name =~ 'b-1');
-+        push @new, ["$test_name-mb", @new_t, {ENV => "LC_ALL=$mb_locale"}];
-+      }
-+    push @Tests, @new;
-+  }
-+
-+@Tests = triple_test \@Tests;
-+
- my $save_temps = $ENV{DEBUG};
- my $verbose = $ENV{VERBOSE};
- 

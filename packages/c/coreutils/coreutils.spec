@@ -30,7 +30,7 @@
 %global psuffix %{nil}
 %endif
 Name:           coreutils%{?psuffix}
-Version:        9.10
+Version:        9.11
 Release:        0
 Summary:        GNU Core Utilities
 License:        GPL-3.0-or-later

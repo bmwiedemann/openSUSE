@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Tue Apr 21 21:09:39 UTC 2026 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Update to 9.11:
+  Bug fixes
+  * 'dd' now always diagnoses partial writes correctly upon write failure.
+    Previously it may have indicated that only full writes were performed.
+    [This bug was present in "the beginning".]
+  * 'fold' will no longer truncate output when encountering 0xFF bytes.
+    [bug introduced in coreutils-9.8]
+  * 'fold' is again responsive to its input.  Previously it would have delayed
+    processing until 256KiB was read from the input.
+    [bug introduced in coreutils-9.8]
+  * 'kill --help' now has links to valid anchors in the html manual.
+    [bug introduced in coreutils-9.10]
+  * When configured with --enable-systemd, the commands 'pinky',
+    'uptime', 'users', and 'who' no longer consider the systemd session
+    classes 'greeter', 'lock-screen', 'background', 'background-light',
+    and 'none' to be users.
+    [bug introduced in coreutils-9.4]
+  * 'pwd' on ancient systems will no longer overflow a buffer
+    when operating in deep paths longer than twice the system PATH_MAX.
+    [bug introduced in coreutils-9.6]
+  * 'stat --printf=%%N' no longer performs unnecessary checks of the QUOTING_STYLE
+    environment variable.
+    [bug introduced in coreutils-8.26]
+  * 'timeout' no longer exits abruptly when its parent is the init process, e.g.,
+    when started by the entrypoint of a container.
+    [bug introduced in coreutils-9.10]
+  New Features
+  * 'cut' now supports multi-byte input and delimiters.  Consequently
+    the -c option is now honored, and no longer an alias for -b, and
+    the -n option is now honored, and no longer ignored.
+    Also the -d option supports multi-byte delimiters.
+  * 'cut' adds new options for better compatibility:
+    The -w,--whitespace-delimited option was added to support blank aligned fields
+    and for better compatibility with FreeBSD/macOS.
+    The -O option was added as an alias for the --output-delimiter option,
+    for better compatibility with busybox/toybox.
+    The -F option was added as an alias for -w -O ' '
+    for better compatibility with busybox/toybox.
+  * 'date --date' now parses dot delimited dd.mm.yy format common in Europe.
+    This is in addition to the already supported mm/dd/yy and yy-mm-dd formats.
+  Changes in behavior
+  * 'cksum --check' now uses shell quoting when required, to more robustly
+    escape file names output in diagnostics.
+    This also affects md5sum, sha*sum, and b2sum.
+  Improvements
+  * 'cat' now uses zero-copy I/O on Linux when appropriate, to improve throughput.
+    E.g., throughput improved 6x from 12.9GiB/s to 81.8GiB/s on a Power10 system.
+  * 'df --local' recognises more file system types as remote.
+    Specifically: autofs, ncpfs, smb, smb2, gfs, gfs2, userlandfs.
+  * 'df' improves duplicate mount suppression, by checking each mount against
+    all previously kept entries for the same device, not just the latest one.
+  * 'expand' and 'unexpand' now support multi-byte characters.
+  * 'groups' and 'id' will now exit sooner after a write error,
+    which is significant when listing information for many users.
+  * 'install' now allows the combination of the --compare and
+    --preserve-timestamps options.
+  * 'fold', 'join', 'numfmt', 'uniq' now use more consistent blank character
+    determination on non GLIBC platforms.  For example \u3000 (ideographic space)
+    will be considered a blank character on all platforms.
+  * 'nl' now supports multi-byte --section-delimiter characters.
+  * 'shuf -i' now operates up to two times faster on systems with unlocked stdio
+    functions.
+  * 'tac' will now exit sooner after a write error, which is significant when
+    operating on a file with many lines.
+  * 'timeout' now properly detects when it is reparented by a subreaper process on
+    Linux instead of init, e.g., the 'systemd --user' process.
+  * 'wc -l' now operates up to four and a half times faster on hosts that support
+    Neon instructions.
+  * 'wc -m' now operates up to 2.6 times faster on GLIBC when processing
+    non-ASCII UTF-8 characters.
+  * 'yes' now uses zero-copy I/O on Linux to significantly increase throughput.
+    E.g., throughput improved 15x from 11.6GiB/s to 175GiB/s on a Power10 system.
+  Build-related
+  * ./configure --enable-single-binary=hardlinks is now supported on systems
+    with dash as the system shell at /bin/sh.
+    [issue introduced in coreutils-9.10]
+  * The test suite may have failed with a "Hangup" error if run non-interactively.
+    [issue introduced in coreutils-9.10]
+- coreutils-i18n.patch: Refresh patch.
+  Remove now-upstream I18N patches for cut(1), expand(1) and unexpand(1).
+- Refresh all other patches.
+
+-------------------------------------------------------------------
 Tue Feb 24 23:00:24 UTC 2026 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - Factor out man pages of sub-package coreutils-systemd into
