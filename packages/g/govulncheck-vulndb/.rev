@@ -1950,4 +1950,22 @@
   * GO-2026-4910 CVE-2026-34165 GHSA-jhf3-xxhw-2wpp (forwarded request 1347622 from jfkw)</comment>
     <requestid>1347624</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>75f654e3e6f8d1da2d474a8267012224</srcmd5>
+    <version>0.0.20260421T185951</version>
+    <time>1777145859</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.20260421T185951 2026-04-21T18:59:51Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3368 CVE-2025-21613 GHSA-v725-9546-7q7m
+  * GO-2025-3993 CVE-2025-59531 GHSA-f9gq-prrc-hrhc
+  * GO-2025-3996 CVE-2025-59537 GHSA-wp4p-9pxh-cgx2
+  * GO-2026-4514 CVE-2026-32285 GHSA-6g7g-w4f8-9c9x
+  * GO-2026-4771 CVE-2026-33815 GHSA-xgrm-4fwx-7qm8
+  * GO-2026-4772 CVE-2026-33816 GHSA-9jj7-4m8r-rfcm
+  * GO-2026-4961 CVE-2026-33813
+  * GO-2026-4962 CVE-2026-33812 (forwarded request 1349135 from jfkw)</comment>
+    <requestid>1349136</requestid>
+  </revision>
 </revisionlist>
