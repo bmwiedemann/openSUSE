@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 23 17:19:02 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.8.20:
+  * added shell completions for zvm
+- Includes changes from 0.8.18:
+  * Bug fixes:
+    - Missing error return: Fixed errors.json not being returned where it
+      should have been
+  * Improvements
+    - Added zvm version command
+    - Logging consistency improvements
+
+-------------------------------------------------------------------
 Fri Apr 10 13:02:54 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 0.8.17:

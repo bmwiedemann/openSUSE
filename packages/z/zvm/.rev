@@ -102,4 +102,20 @@
   * Add support for minimum_zig_version in the run and use commands (forwarded request 1345828 from lmulling)</comment>
     <requestid>1345829</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7574081f9e3a568b50fe5baaccc22bd2</srcmd5>
+    <version>0.8.20</version>
+    <time>1777145729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.20:
+  * added shell completions for zvm
+- Includes changes from 0.8.18:
+  * Bug fixes:
+    - Missing error return: Fixed errors.json not being returned where it
+      should have been
+  * Improvements
+    - Added zvm version command
+    - Logging consistency improvements (forwarded request 1348990 from lmulling)</comment>
+    <requestid>1348991</requestid>
+  </revision>
 </revisionlist>
