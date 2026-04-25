@@ -1,7 +1,7 @@
 #
 # spec file for package zlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,8 @@ Patch11:        zlib-1.2.11-covscan-issues-rhel9.patch
 # PATCh-FIX-SECURITY CVE-2023-45853.patch bsc#1216378 CVE-2023-45853 danilo.spinella@suse.com
 # integer overflow and resultant heap-based buffer overflow in zipOpenNewFileInZip4_6
 Patch12:        CVE-2023-45853.patch
+# PATCH-FIX-UPSTREAM CVE-2026-27171.patch bsc#1258392 CVE-2026-27171 antonio.teixeira@suse.com
+Patch13:        CVE-2026-27171.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool

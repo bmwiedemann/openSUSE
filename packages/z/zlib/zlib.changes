@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 20 13:32:34 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix CVE-2026-27171, infinite loop via the crc32_combine64 and
+  crc32_combine_gen64 functions due to missing checks for negative
+  lengths (bsc#1258392)
+  * CVE-2026-27171.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 11:08:33 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Use %autopatch instead of %patch
