@@ -48,7 +48,7 @@ Source8:        oniguruma-v6.9.4_mark1-src.tar.xz
 # public-mipi-sys-t: https://github.com/MIPI-Alliance/public-mipi-sys-t
 Source9:        public-mipi-sys-t-1.1-edk2.tar.gz
 # mbedtls: https://github.com/Mbed-TLS/mbedtls
-Source10:       mbedtls-3.6.5.tar.gz
+Source10:       mbedtls-3.6.6.tar.gz
 # brotli: https://github.com/google/brotli
 Source11:       brotli-e230f474b87134e8c6c85b630084c612057f253e.tar.gz
 # libspdm: https://github.com/DMTF/libspdm.git
@@ -114,6 +114,7 @@ BuildRequires:  mtools
 BuildRequires:  nasm
 BuildRequires:  openssl
 BuildRequires:  python3
+BuildRequires:  qemu-img
 BuildRequires:  unzip
 BuildRequires:  virt-firmware
 %ifnarch aarch64
@@ -538,6 +539,11 @@ for key in ${KEY_SOURCES[@]}; do
 	rename "4m-$key" "$key-4m" *"4m-$key"*.bin
 done
 
+# Convert code/vars bin files to qcow2 format for snapshot support
+for raw in *-code.bin *-vars.bin; do
+	qemu-img convert -f raw -O qcow2 -o cluster_size=4096 -S 4096 "$raw" "${raw%.bin}.qcow2"
+done
+
 %install
 cp %{SOURCE2} README
 
@@ -555,6 +561,8 @@ tr -d '\r' < OvmfPkg/License.txt > License-ovmf.txt
 install -m 0644 -D ovmf-*.bin -t %{buildroot}/%{_datadir}/qemu/
 install -m 0644 -D qemu-uefi-*.bin -t %{buildroot}/%{_datadir}/qemu/
 install -m 0644 -D aavmf-*.bin -t %{buildroot}/%{_datadir}/qemu/
+install -m 0644 -D ovmf-*.qcow2 -t %{buildroot}/%{_datadir}/qemu/
+install -m 0644 -D aavmf-*.qcow2 -t %{buildroot}/%{_datadir}/qemu/
 install -m 0644 -D descriptors/*.json \
 	-t %{buildroot}/%{_datadir}/qemu/firmware
 
@@ -587,6 +595,7 @@ rm %{buildroot}%{_datadir}/qemu/firmware/*-riscv64*.json
 %license License.txt License-ovmf.txt
 %dir %{_datadir}/qemu/
 %{_datadir}/qemu/ovmf-x86_64*.bin
+%{_datadir}/qemu/ovmf-x86_64*.qcow2
 %dir %{_datadir}/qemu/firmware
 %{_datadir}/qemu/firmware/*-x86_64*.json
 
@@ -605,6 +614,8 @@ rm %{buildroot}%{_datadir}/qemu/firmware/*-riscv64*.json
 %{_datadir}/qemu/qemu-uefi-aarch64*.bin
 %{_datadir}/qemu/aavmf-aarch64-*code.bin
 %{_datadir}/qemu/aavmf-aarch64-*vars.bin
+%{_datadir}/qemu/aavmf-aarch64-*code.qcow2
+%{_datadir}/qemu/aavmf-aarch64-*vars.qcow2
 %dir %{_datadir}/qemu/firmware
 %{_datadir}/qemu/firmware/*-aarch64*.json
 
@@ -614,6 +625,8 @@ rm %{buildroot}%{_datadir}/qemu/firmware/*-riscv64*.json
 %dir %{_datadir}/qemu/
 %{_datadir}/qemu/ovmf-riscv64-code.bin
 %{_datadir}/qemu/ovmf-riscv64-vars.bin
+%{_datadir}/qemu/ovmf-riscv64-code.qcow2
+%{_datadir}/qemu/ovmf-riscv64-vars.qcow2
 %dir %{_datadir}/qemu/firmware
 %{_datadir}/qemu/firmware/*-riscv64*.json
 %endif
