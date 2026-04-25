@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.4.61
+Version:        6.4.64
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -61,7 +61,7 @@ provisions for communicating with other programs.
 %autosetup -p1 -n %{name}.github.io-%{version}
 
 %build
-cp makefiles/makefile.defs.linux.pulse-gcc.LE ./makefile.defs
+cp makefiles/makefile.defs.linux.pulse-gcc ./makefile.defs
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 %make_build

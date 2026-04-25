@@ -1,12 +1,12 @@
 ---
- makefiles/makefile.defs.linux.pulse-gcc.LE |    6 +++---
+ makefiles/makefile.defs.linux.pulse-gcc |    6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
-Index: praat.github.io-6.4.52/makefiles/makefile.defs.linux.pulse-gcc.LE
+Index: praat.github.io-6.4.64/makefiles/makefile.defs.linux.pulse-gcc
 ===================================================================
---- praat.github.io-6.4.52.orig/makefiles/makefile.defs.linux.pulse-gcc.LE
-+++ praat.github.io-6.4.52/makefiles/makefile.defs.linux.pulse-gcc.LE
-@@ -13,13 +13,13 @@ COMMONFLAGS = -DUNIX -Dlinux -DALSA -DJA
+--- praat.github.io-6.4.64.orig/makefiles/makefile.defs.linux.pulse-gcc
++++ praat.github.io-6.4.64/makefiles/makefile.defs.linux.pulse-gcc
+@@ -12,13 +12,13 @@ COMMONFLAGS = -DUNIX -Dlinux -DALSA -DJA
  	-D_FILE_OFFSET_BITS=64 `$(PKG_CONFIG) --cflags gtk+-3.0` \
  	-Wreturn-type -Wunused -Wunused-parameter -Wuninitialized -O3 -g1 -pthread
  

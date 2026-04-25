@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 19 14:16:49 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.64:
+  * Many small improvements and bug repairs in speech recognition,
+    including automatic alignment and diarization.
+- Changes from version 6.4.63:
+  * Speaker diarization in Transcribe interval (if Whisper models
+    installed).
+- Minor rebase of praat-allow-system-flags.patch to adapt for
+  changed file name in updated source.
+
+-------------------------------------------------------------------
 Mon Mar  2 10:49:04 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.61:
