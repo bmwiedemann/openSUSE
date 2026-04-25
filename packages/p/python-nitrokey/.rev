@@ -90,4 +90,12 @@
   bsc#1262556</comment>
     <requestid>1348918</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>29779716d1beb27c9fe4883880a7eace</srcmd5>
+    <version>0.4.2</version>
+    <time>1777145849</time>
+    <user>dimstar_suse</user>
+    <comment>- Run tests with %pyunittest</comment>
+    <requestid>1349114</requestid>
+  </revision>
 </revisionlist>

@@ -28,7 +28,6 @@ Source99:       python-nitrokey.rpmlintrc
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 # Runtime dependencies
 BuildRequires:  %{python_module cryptography >= 41}
@@ -69,7 +68,7 @@ The Nitrokey Python SDK can be used to use and configure Nitrokey devices.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pyunittest -v
 
 %files %{python_files}
 %doc README.md

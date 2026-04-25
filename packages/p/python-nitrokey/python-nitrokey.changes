@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 24 09:31:04 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Run tests with %pyunittest
+
+-------------------------------------------------------------------
 Thu Apr 23 11:43:42 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Get sources from github to be able to run tests
