@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Apr 19 15:27:20 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.2.1:
+  * fix installing when mkoctfile has spaces in its path
+    response for tf systems
+- Update to version 4.2.0:
+  * from Octave 11 on, the control package documentation is
+    included into the documentation browser of the GUI when the
+    package is loaded
+  * pade: new function for pade approximation of time delays by
+    poles and zeros
+  * bdschur: new function for block diagonalization of a matrix
+    using SLICOT routine MB03RD
+  * nichols: grid with contours of constant close-loop magnitude
+    and phase
+  * bode: legend, title and similar commands after a bode plot
+    are now affecting the first plot (magnitude), not the second
+  * bode/margin: improved handling of poles and zeros on
+    imaginary axis, more robust computation of the phase
+  * allow real-valued gain matrix as input for system data access
+    functions like tfdata, ssdata etc. which is then interpreted
+    as static-gain system
+- Update to version 4.1.3:
+  * tf: Improve accuracy of transfer function from state space
+    models by reusing an own version of the SLICOT function TB01ZD,
+    which was removed in release 4.0.0
+  * connect: Added examples in the help text
+  * hinfsyn: check for more assumptions before calling SLICOT
+    routine
+  * sgrid: fixed resizing (issue #15) and improved zeta-values for
+    automatic selected lines of constant damping
+  * build system: removed tests for old is_numeric (and similar)
+    symbols
+
+-------------------------------------------------------------------
 Mon Aug 25 22:48:31 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.1.2:
