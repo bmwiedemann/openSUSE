@@ -29,7 +29,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           OpenIPMI
-Version:        2.0.37.1+git.ed1a49ee
+Version:        2.0.37.13+git.1181df8
 Release:        0
 Summary:        Service processor access via IPMI
 License:        LGPL-2.1-or-later
@@ -173,7 +173,6 @@ sed -i "s/^IPMI_SI_MODULE_NAME=.*/IPMI_SI_MODULE_NAME=\"$IPMI_SI_MODULE_NAME\"/"
 install -m 644 %{SOURCE1} %{buildroot}%{_fillupdir}
 
 install -m 644 %{SOURCE2} %{buildroot}%{_unitdir}
-ln -sv service %{buildroot}%{_sbindir}/rcipmi
 install -d %{buildroot}%{_libexecdir}
 install -m 755 %{SOURCE3} %{buildroot}%{_libexecdir}/openipmi-helper
 find %{buildroot} -type f -name "*.la" -delete -print
@@ -209,7 +208,6 @@ done
 %doc README README.Force README.MotorolaMXP
 %{_fillupdir}/sysconfig.ipmi
 %{_unitdir}/ipmi.service
-%{_sbindir}/rcipmi
 %{_libexecdir}/openipmi-helper
 %dir %{_sysconfdir}/ipmi
 %config(noreplace) %{_sysconfdir}/ipmi/*

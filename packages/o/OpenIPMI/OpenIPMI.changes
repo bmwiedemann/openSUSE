@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr 24 18:19:02 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Update to version 2.0.37.13+git.1181df8:
+  * lanserv: Add support for the VM enable and disable command
+- Adopt path to executable in systemd service file (bsc#1252941)
+
+-------------------------------------------------------------------
+Mon Feb 23 07:20:10 UTC 2026 - trenn@suse.com
+
+- Update to version 2.0.37.12+git.d628f21:
+  * Remove the ChangeLog file
+  * entity: Use a temp variable in ipmi_entity_find_id
+  * lanserv/bmc: Support all SDR operations by default
+  * lanserv/bmc_storage: Make Set SEL Time persistent
+  * Fix generator ID on platform event messages
+  * lanserv/bmc_storage: Fix record_id in handle_delete_sdr
+  * lanserv/bmc_sensor: Adjust Generator ID
+  * Update the ipmisim1.emu to have a file holding the sensor data
+  * lanserv/sensor: Set the data valid if set from the command line
+  * lanserv/bmc_sensor: Set proper completion code for the platform event
+  * sensor,control: Fix the check of the get_id() function returns
+
+-------------------------------------------------------------------
 Mon Sep 15 09:00:07 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Update to version 2.0.37.1+git.ed1a49ee:

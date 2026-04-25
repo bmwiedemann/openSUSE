@@ -457,4 +457,27 @@ could not be forwarded to Factory (incl. the recent gcc14 fixes) (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1306447</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>6a3eaf20bfb94984e0751f1fbf43ec6d</srcmd5>
+    <version>2.0.37.13+git.1181df8</version>
+    <time>1777145880</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.37.13+git.1181df8:
+  * lanserv: Add support for the VM enable and disable command
+- Adopt path to executable in systemd service file (bsc#1252941)
+
+- Update to version 2.0.37.12+git.d628f21:
+  * Remove the ChangeLog file
+  * entity: Use a temp variable in ipmi_entity_find_id
+  * lanserv/bmc: Support all SDR operations by default
+  * lanserv/bmc_storage: Make Set SEL Time persistent
+  * Fix generator ID on platform event messages
+  * lanserv/bmc_storage: Fix record_id in handle_delete_sdr
+  * lanserv/bmc_sensor: Adjust Generator ID
+  * Update the ipmisim1.emu to have a file holding the sensor data
+  * lanserv/sensor: Set the data valid if set from the command line
+  * lanserv/bmc_sensor: Set proper completion code for the platform event
+  * sensor,control: Fix the check of the get_id() function returns</comment>
+    <requestid>1349201</requestid>
+  </revision>
 </revisionlist>
