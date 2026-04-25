@@ -17,7 +17,7 @@
 
 
 Name:           kubectl-klock
-Version:        0.8.4
+Version:        0.9.0
 Release:        0
 Summary:        Kubectl plugin to render watch output in a more readable fashion
 License:        Apache-2.0 AND GPL-3.0-or-later AND CC-BY-4.0 AND CC0-1.0
@@ -27,7 +27,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.3
+BuildRequires:  go1.26 >= 1.26.1
 BuildRequires:  zsh
 
 %description
