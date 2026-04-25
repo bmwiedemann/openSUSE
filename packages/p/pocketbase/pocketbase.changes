@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Apr 23 23:26:56 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Disabled "environment-sensitive" tests
+  * TestRecordAuthWithOAuth2: requires network
+  * TestCronStartStop: flaky time based
+- Update to version 0.37.3:
+  * Minor UI bugfixes:
+- Update to version 0.37.2:
+  * Minor UI bugfixes:
+- Update to version 0.37.1:
+  * Minor UI bugfixes:
+- Update to version 0.37.0:
+  * New UI rewritten from scratch and with support for external
+    customization in mind.
+  * Exported the internal JSVM bind functions.
+  * Updated modernc.org/sqlite to v1.49.1 (SQLite 3.53.0).
+
+-------------------------------------------------------------------
+Sun Apr 12 21:54:41 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.36.9:
+  * Updated the Discord AuthUser.Name field to use global_name
+  * Fixed settings SMTP password clear persistence
+  * Added extra OAuth2 checks when downloading the avatar URL to
+    prevent internal network probing requests in case of a
+    malicious/vulnerable vendor
+- Update to version 0.36.8:
+  * Fixed OAuth2 client secret reset when serializing a cached
+    collection model
+  * Bumped all Go and npm deps: CVE-2026-33809
+- Update to version 0.36.7:
+  * Fixed high memory usage with large file uploads
+  * Updated the rate limiter reset rules to follow a more
+    traditional fixed window strategy (aka. to be more close to how
+    it is presented in the UI - allow max X user requests under Ys)
+    since several users complained that the older algorithm was not
+    intuitive and not suitable for large intervals.
+  * Updated modernc.org/sqlite to v1.46.2 and SQLite 3.51.3
+- Update to version 0.36.6:
+  * Set NumberField.OnlyInt:true for the generated View collection
+    schema fields when a view column expression is known to return
+    int-only values
+  * Documented the unmarshal JSVM helper
+  * Added extra read check after the Store.GetOrSet write lock to
+    prevent races overwriting an already existing value
+  * Added empty records check for the additional client-side
+    filter's ListRule constraint that was introduced in v0.32.0
+  * Set a fixed routine.FireAndForget() debug stack trace limit to
+    2KB
+- Update to version 0.36.5:
+  * Disabled collection and fields name normalization while in IME
+    mode
+  * Updated modernc.org/sqlite to v1.46.1
+- Update to version 0.36.4:
+  * Made the optional Bearer token prefix case-insensitive
+  * Enabled $filesystem.s3(...) and $filesystem.local(...) JSVM
+    bindings
+- Update to version 0.36.3:
+  * Added Accept-Encoding: identity to the S3 requests
+- Update to version 0.36.2:
+  * Update dependencies
+
+-------------------------------------------------------------------
 Wed Jan 21 21:53:02 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.36.1:
@@ -12,7 +75,7 @@ Wed Jan 21 21:53:02 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
     (mostly used internally)
   * Updated modernc.org/sqlite to v1.44.1 (SQLite 3.51.1).
 - Update to version 0.35.1:
-  * Updated modernc.org/sqlite to v1.43.0 (query cancellation race 
+  * Updated modernc.org/sqlite to v1.43.0 (query cancellation race
   	fix).
   * Minor UI fixes
 
