@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 24 07:49:36 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.40
+  * Protect password data stream on 3270 console as well 
+    On S390 the 3270 console is also logged and the passwords,
+    even if hidden on the 3270 console, would be logged as well.
+
+-------------------------------------------------------------------
+Wed Apr 22 13:38:59 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.39
+  * New feature to protect passwords to be logged
+    On S390 now blogd use for 3215 console the command
+       #CP SPOOL CONSOLE STOP
+    to stop logging the plain password at prompting for the password.
+    Also a warning is written out to warn the user that the password
+    will be visible. With getting the password the CONSOLE log is
+    enabled again if it was enabled before.
+
+-------------------------------------------------------------------
 Mon Apr 13 12:47:36 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 2.38

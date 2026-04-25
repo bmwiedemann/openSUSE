@@ -320,4 +320,24 @@ use private glib API but implement a share memory mkstemp</comment>
     the parameter blog.timeout=0 (boo#1261697)</comment>
     <requestid>1346447</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e7a3a4e89621ec4c6e19821e865307db</srcmd5>
+    <version>2.40</version>
+    <time>1777145720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.40
+  * Protect password data stream on 3270 console as well 
+    On S390 the 3270 console is also logged and the passwords,
+    even if hidden on the 3270 console, would be logged as well.
+
+- Update to version 2.39
+  * New feature to protect passwords to be logged
+    On S390 now blogd use for 3215 console the command
+       #CP SPOOL CONSOLE STOP
+    to stop logging the plain password at prompting for the password.
+    Also a warning is written out to warn the user that the password
+    will be visible. With getting the password the CONSOLE log is
+    enabled again if it was enabled before.</comment>
+    <requestid>1349094</requestid>
+  </revision>
 </revisionlist>
