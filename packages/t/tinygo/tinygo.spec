@@ -18,7 +18,7 @@
 
 
 Name:           tinygo
-Version:        0.41.0
+Version:        0.41.1
 Release:        0
 Summary:        Go toolchain targeting embedded devices and webassembly
 License:        Apache-2.0

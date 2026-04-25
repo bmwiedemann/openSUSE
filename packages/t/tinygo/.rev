@@ -171,4 +171,16 @@ It reuses libraries used by the Go language tools alongside LLVM to provide an a
   * net: update to Go 1.26.2 net package (forwarded request 1348643 from jfkw)</comment>
     <requestid>1348644</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0de994b2890c3a06f004011327d28850</srcmd5>
+    <version>0.41.1</version>
+    <time>1777145746</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.41.1:
+  * Release 0.41.1
+  * modules: update net to version that is backwards compatible with Go 1.25.x to fix #5332
+  * machine/esp32c3: correct pin interrupt setup call that was overlooked from #5320
+  * runtime/esp32s3: wait for TIMG0 update register to clear before reading timer registers (forwarded request 1348996 from jfkw)</comment>
+    <requestid>1349011</requestid>
+  </revision>
 </revisionlist>

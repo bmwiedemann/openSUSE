@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 23 04:37:53 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.41.1:
+  * Release 0.41.1
+  * modules: update net to version that is backwards compatible with Go 1.25.x to fix #5332
+  * machine/esp32c3: correct pin interrupt setup call that was overlooked from #5320
+  * runtime/esp32s3: wait for TIMG0 update register to clear before reading timer registers
+
+-------------------------------------------------------------------
 Tue Apr 21 12:12:54 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.41.0:
