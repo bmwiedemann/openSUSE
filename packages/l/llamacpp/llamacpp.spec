@@ -25,11 +25,11 @@
 %global mtmd_sover         0.0.%{version}
 %global mtmd_sover_suffix  0
 
-%global ggml_sover         0.9.7
+%global ggml_sover         0.9.11
 %global ggml_sover_suffix  0
 
 Name:           llamacpp
-Version:        8189
+Version:        8814
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
@@ -41,6 +41,7 @@ BuildRequires:  git
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  shaderc
+BuildRequires:  spirv-headers
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(vulkan)

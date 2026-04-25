@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Apr 17 05:58:59 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 8814:
+  - Quantization: Introduced 1-bit (Q1_0) quantization support 
+  	across CPU, CUDA, Vulkan, Metal, and SYCL backends.
+  - Model Support: Added support for Gemma 4 (text, vision, and 
+  	audio), Qwen 3 (Omni, ASR, and Next), DeepSeek v3.2, 
+  	HunyuanOCR, Phi-4, and Granite 4.0.
+  - Hardware Acceleration: Implemented 128-bit RISC-V Vector 
+  	(RVV) and SIMD kernels for enhanced CPU performance.
+  - GPU Backends: Added AMD CDNA4 (gfx950) support in HIP and 
+  	optimized Flash Attention for CUDA, Metal, and WebGPU.
+  - WebGPU: Significant updates including compute pass batching,
+  	JIT operator porting, and f32 accumulation for register tiling.
+  - Multimodal: Expanded audio/vision support, including Gemma 4 
+  	Conformer encoders and DeepSeekOCR integration.
+  - Server/API: Added OpenAI-compatible audio transcriptions API 
+  	support and improved router mode for multi-model management.
+  - WebUI: Introduced MCP (Model Context Protocol) diagnostics, 
+  	conversation branching, and dedicated reasoning content 
+  	rendering.
+  - RPC Backend: Implemented native RDMA (RoCEv2) transport for 
+  	high-performance remote procedure calls.
+  - DevOps: Updated core dependencies including BoringSSL to 
+  	0.20260413.0 and added KleidiAI-enabled ARM release artifacts.
+
+-------------------------------------------------------------------
 Mon Mar  2 22:29:33 UTC 2026 - Robert Munteanu <rombert@apache.org>
 
 - Update to version 8189:
