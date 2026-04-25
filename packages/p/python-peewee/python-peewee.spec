@@ -1,7 +1,7 @@
 #
 # spec file for package python-peewee
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-peewee
-Version:        3.18.3
+Version:        4.0.5
 Release:        0
 Summary:        An expressive ORM that supports multiple SQL backends
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
@@ -64,7 +65,6 @@ An expressive ORM that supports PostgreSQL, MySQL and SQLite.
 
 %install
 %pyproject_install
-mv %{buildroot}%{_bindir}/pwiz.py %{buildroot}%{_bindir}/pwiz
 %python_clone -a %{buildroot}%{_bindir}/pwiz
 %{python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -87,7 +87,7 @@ sed -i -e '1{\@^#! *%{_bindir}.*python@d}' %{buildroot}%{$python_sitearch}/pwiz.
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG.md README.rst TODO.rst
+%doc CHANGELOG.md README.rst
 %python_alternative %{_bindir}/pwiz
 %{python_sitearch}/peewee-%{version}.dist-info
 %{python_sitearch}/peewee.py

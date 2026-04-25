@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Apr 25 19:36:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.5:
+  * Fix bug where `db_value()` may not get called in subclasses
+    of Postgres JSONField / BinaryJSONField, refs #3044.
+  * Fix bug where indexes for table may be defined on multiple
+    schema, #3043.
+  * Always fall-through to base exception class if exception is
+    not recognized in DB drivers. This simplifies checking
+    driver-specific subclasses of standard DB-API exceptions.
+
+-------------------------------------------------------------------
+Wed Apr  8 22:48:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.4:
+  * Fix SQL generation for partial indexes with nulls (not)
+    distinct clause.
+  * Raise an `ImproperlyConfigured` if pg driver unavailable at
+    model definition-time when field db-hooks are used, rather than
+    `AttributeError`.
+  * Refactor test suite - this was a mechanical refactor, just
+    moving things around and trying to group things more clearly.
+  * Remove all Python 2.x compatibility code.
+  * Add streaming result cursors to pwasyncio module via
+    `db.iterate(query)`.
+  * Better serialization and deserialization of datetimes and
+    binary data in the DataSet module. Previously binary data was
+  * Ensure `gr_context` is set on greenlet in `greenlet_spawn` so
+    that contextvars will be operable in sync handlers.
+  * Removed `SqliteExtDatabase` (it basically served no purpose
+    in 4.0). Use `SqliteDatabase` instead.
+  * Adds preliminary support for `asyncio` via a new playhouse
+    extension.
+  * `PostgresqlDatabase` can use `psycopg` (psycopg3) if it is
+    installed. If both psycopg2 and psycopg3 are installed,
+    Peewee will prefer psycopg2, but this can be controlled by
+    specifying `prefer_psycopg3=True` in the constructor.
+  * Remove `playhouse.sqlite_ext.ClosureTable` implementation.
+  * Move to new build system using pyproject and github actions.
+
+-------------------------------------------------------------------
 Tue Nov 11 22:53:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.18.3:
