@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 15 06:18:28 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 0.3.9:
+  * update changelog
+  * attempt to get ahead of version numbering issue
+  * updates changelog
+  * upgrades rand crate to 0.10.1
+  * fix typo in changelog
+
+-------------------------------------------------------------------
 Mon Feb 23 08:11:59 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 0.3.25:
