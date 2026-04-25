@@ -170,4 +170,23 @@
     <comment></comment>
     <requestid>1303644</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a18b06c0f69012ce79769472ef43c8aa</srcmd5>
+    <version>1.23</version>
+    <time>1777152467</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.23:
+  * Thousands separator in formatting was handled differently
+    than for floats etc.
+  * Support thousands separators for formatting fractional part
+    of Fraction.
+  * Supports building as abi3 wheel. Note that abi3 wheels are
+    about half as fast as Python specific builds.
+  * Several uncommon build architectures are now served with abi3
+    wheels to reduce the number of distribution wheels.  To
+    request a more performant wheel for a specific architecture
+    and Python version (range), please open a ticket.
+  * Built using Cython 3.2.4.</comment>
+    <requestid>1349247</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 12 22:01:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.23:
+  * Thousands separator in formatting was handled differently
+    than for floats etc.
+  * Support thousands separators for formatting fractional part
+    of Fraction.
+  * Supports building as abi3 wheel. Note that abi3 wheels are
+    about half as fast as Python specific builds.
+  * Several uncommon build architectures are now served with abi3
+    wheels to reduce the number of distribution wheels.  To
+    request a more performant wheel for a specific architecture
+    and Python version (range), please open a ticket.
+  * Built using Cython 3.2.4.
+
+-------------------------------------------------------------------
 Wed Sep 10 11:16:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.22

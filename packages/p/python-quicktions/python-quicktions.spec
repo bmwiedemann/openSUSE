@@ -1,7 +1,7 @@
 #
 # spec file for package python-quicktions
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,15 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-quicktions
-Version:        1.22
+Version:        1.23
 Release:        0
 Summary:        Fast fractions data type for rational numbers
 License:        Python-2.0
 URL:            https://github.com/scoder/quicktions
 Source:         https://files.pythonhosted.org/packages/source/q/quicktions/quicktions-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 3}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
