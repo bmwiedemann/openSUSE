@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 15 11:12:56 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2026-33186: Fix authorization bypass due to improper
+  validation of the HTTP/2 :path pseudo-header (bsc#1260268)
+  * Bump google.golang.org/grpc to version 1.79.3
+
+-------------------------------------------------------------------
+Fri Mar  6 14:43:19 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Drop flaky tests
+
+-------------------------------------------------------------------
 Thu Feb 12 06:13:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.31.1:

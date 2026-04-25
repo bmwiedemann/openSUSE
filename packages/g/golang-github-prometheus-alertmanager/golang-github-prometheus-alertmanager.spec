@@ -69,7 +69,7 @@ install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/alertmanager
 %fdupes %{buildroot}/%{_prefix}
 
 %check
-go test -short -x `go list ./... | grep -v cluster | grep -v provider/mem`
+go test -short -x `go list ./... | grep -v cluster | grep -v provider/mem | grep -v with_api_v2`
 %{buildroot}%{_bindir}/prometheus-alertmanager --version
 %{buildroot}%{_bindir}/amtool --version
 
