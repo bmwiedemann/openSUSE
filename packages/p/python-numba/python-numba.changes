@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 25 08:30:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.65.1:
+  * Python 3.14.4 changed interpreter internals Numba relied on for
+   ``sys.monitoring``
+   The feature is disabled from 3.14.4 onward;
+   ``NUMBA_ENABLE_SYS_MONITORING`` has no
+   effect and a ``UserWarning`` will be emitted if this variable is
+   set to a non-zero value.
+
+-------------------------------------------------------------------
 Tue Apr  7 09:30:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.65.0:
