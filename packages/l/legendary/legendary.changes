@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 23 19:36:22 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 0.20.43 Riding Shotgun (Hotfix)
+  * Revert "Also consider "ThirdPartyManagedProvider" attribute when check..." 
+    by @arielj in #39
+  * feat: support encrypted manifests and chunks by @imLinguin in #38
+  * fix: save-sync chunk read crash
+
+-------------------------------------------------------------------
 Thu Apr 16 01:39:11 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Add .rpmlintrc to fix false setuptools and wheel missing require warning.

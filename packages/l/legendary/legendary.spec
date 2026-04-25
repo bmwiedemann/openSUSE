@@ -15,14 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:             legendary
-Version:          0.20.42
-Release:          0
-Summary:          An Epic Games Launcher alternative
-License:          GPL-3.0-only
-URL:              https://github.com/Heroic-Games-Launcher/legendary.git
-Source:           %{name}-%{version}.tar.gz
-Source1:          legendary.rpmlintrc
+Name:           legendary
+Version:        0.20.43
+Release:        0
+Summary:        An Epic Games Launcher alternative
+License:        GPL-3.0-only
+URL:            https://github.com/Heroic-Games-Launcher/legendary.git
+Source:         %{name}-%{version}.tar.gz
+Source1:        legendary.rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
