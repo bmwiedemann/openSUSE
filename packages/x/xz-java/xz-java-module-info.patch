@@ -1,6 +1,6 @@
---- a/build.xml	2025-07-03 17:34:58.653124868 +0200
-+++ b/build.xml	2025-07-03 17:50:13.872136109 +0200
-@@ -68,6 +68,16 @@
+--- a/build.xml	2026-04-23 22:29:34.724702617 +0300
++++ b/build.xml	2026-04-23 22:42:22.998717558 +0300
+@@ -66,6 +66,16 @@
                 includesfile="fileset-src9.txt">
              <compilerarg compiler="modern" line="-Xlint"/>
              <compilerarg compiler="modern" line="-implicit:none"/>
@@ -17,7 +17,7 @@
          </javac>
      </target>
  
-@@ -102,7 +112,7 @@
+@@ -100,7 +110,7 @@
  
          <jar destfile="${jar_dir}/xz.jar" modificationtime="${timestamp}"
               manifest="${manifest_base}">
@@ -26,7 +26,7 @@
              <zipfileset prefix="META-INF/versions/9/" dir="${classes9_dir}"
                          unless:true="${java8only}"/>
              <manifest>
-@@ -112,6 +122,8 @@
+@@ -110,6 +120,8 @@
                  <attribute name="Sealed" value="true"/>
                  <attribute name="Multi-Release" value="true"
                             unless:true="${java8only}"/>
