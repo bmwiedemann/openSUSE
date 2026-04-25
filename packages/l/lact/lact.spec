@@ -29,7 +29,7 @@
 %endif
 
 Name:           %{pname}
-Version:        0.8.4
+Version:        0.9.0
 Release:        0
 Summary:        Linux GPU Configuration And Monitoring Tool
 License:        MIT
@@ -61,8 +61,8 @@ Source6:        uninstall-guide.txt
 ExclusiveArch:  x86_64 aarch64
 
 # LACT BuildDeps for both build flavors
-BuildRequires:  (rust1.92 or rust >= 1.92)
-BuildRequires:  (cargo1.92 or cargo >= 1.92)
+BuildRequires:  (rust1.93 or rust >= 1.93)
+BuildRequires:  (cargo1.93 or cargo >= 1.93)
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  pkgconfig(hwdata)
@@ -78,8 +78,8 @@ BuildRequires:  sysuser-tools
 
 # GUI-specific for full build flavor
 %if %{without headless}
-BuildRequires:  pkgconfig(gtk4) >= 4.6
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.2
+BuildRequires:  pkgconfig(gtk4) >= 4.14
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 %endif
 
 # Runtime dependencies
@@ -88,8 +88,8 @@ Requires:       hwdata
 
 # GUI-specific for full build runtime dependencies
 %if %{without headless}
-Requires:       gtk4 >= 4.6
-Requires:       libadwaita >= 1.2
+Requires:       gtk4 >= 4.14
+Requires:       libadwaita >= 1.5
 %endif
 
 # Mutual exclusion between build flavors
@@ -125,12 +125,6 @@ Please be careful and understand the risks before using it.
 # Unpack the source and apply any necessary patches or modifications
 %autosetup -p1 -n %{sname}-%{version} -a1
 
-# Version 0.8.4 has a bug in lact-daemon/Cargo.toml missing the "socket" feature
-%if "%{version}" == "0.8.4"
-sed -i 's/features = \["user", "fs", "ioctl"\]/features = ["user", "fs", "ioctl", "socket"]/' lact-daemon/Cargo.toml
-cargo update --offline -p lact-daemon --precise 0.8.4
-%endif
-
 # Configure cargo to use vendored dependencies
 mkdir -p .cargo
 cat > .cargo/config.toml <<EOF
@@ -150,7 +144,7 @@ cp %_sourcedir/*install-guide.txt .
 %{cargo_build} -p lact --no-default-features --features nvidia
 %else
 # Build full flavor (daemon + CLI + GUI)
-%{cargo_build} -p lact --features adw
+%{cargo_build} -p lact
 %endif
 
 # Generate system user pre-install scriptlet
@@ -192,7 +186,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %files
 # License and documentation
 %license LICENSE
-%doc README.md install-guide.txt uninstall-guide.txt
+%doc README.md docs/CONTRIBUTING.md docs/CONFIG.md docs/API.md docs/EXPORTER.md install-guide.txt uninstall-guide.txt
 
 # Core binaries
 %{_bindir}/lact

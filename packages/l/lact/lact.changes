@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Sat Apr 25 17:55:50 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- For _service file:
+  * Improved regex and tag for releases
+- For .spec file:
+  * Increment dependency version requirement
+  * Removed unused code from older versions
+  * Updated build command for newer versions
+  * Packaged more documentation from the upstream project for: API, configuration, contributions and metrics exporter
+- Bump to version 0.9.0
+- Upstream changes:
+  * chore: update screenshots and prepare new release
+  * chore: translated using Weblate (Serbian) (#977)
+  * chore: translations update from Fedora Weblate (#969)
+  * chore: use adwaita dialog for reconnecting message
+  * feat: groom profiles (#986)
+  * fix: correctly disable navigation after panic event (#987)
+  * feat: groom charts dialog (#983)
+  * feat: groom process monitor (#984)
+  * feat: groom features window (#985)
+  * feat: rework preferences popover (#972)
+  * fix: apply no_scroll fix to SpinButtons on thermals page (#981)
+  * doc: add CONTRIBUTING.md (#982)
+  * chore: update PageSection api to handle better hide_visible_container prop (#970)
+  * feat: remove some redundant category titles (#980)
+  * chore: update dependencies (#979)
+  * fix: incorrect scrollbar position when clamped, better spacing around content (#971)
+  * chore: use `jiff` instead of `chrono` (#978)
+  * feat: modernize overdrive dialog UI (#975)
+  * feat: use interleaved sclk/mclk write on GCN (#974)
+  * fix: only show amd oc banner with an amd gpu selected
+  * feat: use adwBanner to show enable AMD OC message (#965)
+  * chore: bump version
+  * chore: added translation using Weblate (Serbian) (#960)
+  * chore: translations update from Fedora Weblate (#954)
+  * fix: unnecessary curve overwriting
+  * feat: sync selected page title into content's Toolbox header (#964)
+  * feat: filter out "non-primary" temperatures for immediate display, move them to a popdown (#959)
+  * fix: remove scale decimals in vf curve (#963)
+  * chore: improve sidebar look (#962)
+  * pkg: add fedora 44 and ubuntu 26.04 builds, add cache for docker images (#961)
+  * feat: add Nvidia VF curve editor (#957)
+  * chore: bump rustls-webpki
+  * Translations update from Fedora Weblate (#923)
+  * Translations update from Fedora Weblate (#938)
+  * chore: fix adw navigationpage title warning
+  * refactor: use adwaita AlertDialog for settings confirmation
+  * fix: properly display reverted config on settings timeout
+  * feat: new UI layout with sidebar (#951)
+  * feat: show fan speed in stats section
+  * fix: add phoenix to manual preformance level quirks (#948)
+  * feat: point hover effect in fan curve (#947)
+  * feat: move header gpu picker to dedicated component (#934)
+  * feat: restrict content max width (#944)
+  * chore: bump dependencies
+  * chore: remove hoverable effect from non clickable info rows (#943)
+  * feat: add level bar animation (#911)
+  * feat: report AMD IP info (#942)
+  * chore(deps): update all dependencies (#922)
+  * feat: groom adwaita build (#930)
+  * fix: bump bindgen to build on clang 22 (#941)
+  * chore: update system dep list in readme
+  * feat: enable adwaita by default, add theme selector and detection (#931)
+  * fix: regression in clocks_frame widget (#928)
+  * pkg: bump minimum distro versions (#927)
+  * feat: add support for nvidia acoustic target temp (#917)
+  * chore: bump flatbox version
+  * feat: improve gpu stats UI (#903)
+  * fix: Fix coverage build in CI (#924)
+  * feat: support multi-column layout for adjustment-rows lists (#892)
+  * fix: tolerate unsuccessful clock offset reset (#918)
+  * chore: bump rust dependencies
+  * chore: translated using Weblate (Chinese (Simplified Han script))
+  * chore: translated using Weblate (Portuguese (Brazil))
+  * chore: translated using Weblate (Polish)
+  * chore: translated using Weblate (Georgian)
+  * chore: translated using Weblate (French)
+  * chore: translated using Weblate (Spanish)
+  * chore: translated using Weblate (Czech)
+  * chore: translated using Weblate (Catalan)
+  * chore: translated using Weblate (Arabic)
+  * chore(deps): update all dependencies (#887)
+  * fix: docker daemon shenanigans causing failing package builds (#912)
+  * fix: bump pkger version (#910)
+  * feat: improve pstates UI (#896)
+  * fix: bump flatbox version again
+  * feat: update flatbox version with better extension handling
+  * feat: update flatbox version with better /run handling
+  * feat: don't depend on dbus for flatpak service operation, force unconfined apparmor (#902)
+  * feat: add css loader (#891)
+  * chore: upd time to 0.3.47 (#901)
+  * chore: bump dependencies
+  * feat: disable scroll on adjustment row inputs (#879)
+  * chore: add Acer B580 Nitro device id
+  * chore: update to rust 2024 edition (#889)
+  * chore: fix pkg recipe rust version
+  * feat: refactor formatters and add gui tests (#883)
+  * chore: update rust to 1.93.0 (#876)
+  * fix: deduplicate vulkan device (#884)
+  * fix: correctly show OC requirement message with overdrive disabled on RDNA3+
+  * chore(deps): update github actions dependencies (#880)
+  * chore: add renovate for dependency updates (#875)
+  * chore: Update spec files for release v0.8.4 (#873)
+
+-------------------------------------------------------------------
 Thu Mar 12 09:20:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Don't strip binaries, OBS will do that on its own.

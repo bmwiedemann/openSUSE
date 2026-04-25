@@ -7,4 +7,46 @@
     <comment>This supersedes https://build.opensuse.org/requests/1332585 by fixing the binary strips, thanks for the contribution.</comment>
     <requestid>1338796</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>35260bb64b4cedabe4b0fa23c6efe807</srcmd5>
+    <version>0.9.0</version>
+    <time>1777152469</time>
+    <user>dimstar_suse</user>
+    <comment>Big release, please check all the changes carefully.
+
+- For _service file:
+  * Improved regex and tag for releases
+- For .spec file:
+  * Increment dependency version requirement
+  * Removed unused code from older versions
+  * Updated build command for newer versions
+  * Packaged more documentation from the upstream project for: API, configuration, contributions and metrics exporter
+- Bump to version 0.9.0
+- Upstream changes:
+  * chore: update screenshots and prepare new release
+  * chore: translated using Weblate (Serbian) (#977)
+  * chore: translations update from Fedora Weblate (#969)
+  * chore: use adwaita dialog for reconnecting message
+  * feat: groom profiles (#986)
+  * fix: correctly disable navigation after panic event (#987)
+  * feat: groom charts dialog (#983)
+  * feat: groom process monitor (#984)
+  * feat: groom features window (#985)
+  * feat: rework preferences popover (#972)
+  * fix: apply no_scroll fix to SpinButtons on thermals page (#981)
+  * doc: add CONTRIBUTING.md (#982)
+  * chore: update PageSection api to handle better hide_visible_container prop (#970)
+  * feat: remove some redundant category titles (#980)
+  * chore: update dependencies (#979)
+  * fix: incorrect scrollbar position when clamped, better spacing around content (#971)
+  * chore: use `jiff` instead of `chrono` (#978)
+  * feat: modernize overdrive dialog UI (#975)
+  * feat: use interleaved sclk/mclk write on GCN (#974)
+  * fix: only show amd oc banner with an amd gpu selected
+  * feat: use adwBanner to show enable AMD OC message (#965)
+
+A detailed changelog can be found here:
+https://github.com/ilya-zlobintsev/LACT/releases/tag/v0.9.0</comment>
+    <requestid>1349262</requestid>
+  </revision>
 </revisionlist>
