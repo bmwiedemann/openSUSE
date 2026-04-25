@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr 23 09:54:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.7.0
+  * Authorization and token endpoints request empty scope parameter management
+  * Support from Python 3.10 to 3.14
+  * Allow composition of AuthorizationServerMetadata
+  * Make require_oauth parenthesis optional
+  * Fix expires_at behavior when its value is 0
+  * Migration to joserfc
+  * RP-initiated logout
+  * Fix get_jwt_config
+  * chore(ci): Update PyPy version from 3.10 to 3.11
+  * fix: remove "none" from default authlib.jose.jwt algorithms
+  * fix: normalize resolve_client_public_key method
+  * Implement rfc9700 PKCE downgrade countermeasure
+  * Use correct syntax for tox.requires in tox.ini
+  * Set client session User-Agent when fetching server metadata and JWKs
+  * fix: use the real application object for Flask
+  * Accept the issuer URL as a valid audience
+  * Don't nest InvalidTokenError extra attribute
+  * Documentation overhaul
+  * Update README.md docs.authlib.org/en/latest => docs.authlib.org/en/stable
+  * Merge release/1.6 branch
+- Update BuildRequires and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Mon Apr 13 14:54:01 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - provide python-authlib for compatebility

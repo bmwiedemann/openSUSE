@@ -19,13 +19,13 @@
 %define modname authlib
 %{?sle15_python_module_pythons}
 Name:           python-Authlib
-Version:        1.6.9
+Version:        1.7.0
 Release:        0
 Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause
 URL:            https://authlib.org/
 Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -40,16 +40,17 @@ BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module cachelib}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module joserfc >= 1.6.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-multipart}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module starlette}
-BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-cryptography
+Requires:       python-joserfc >= 1.6.0
 Suggests:       python-requests
 Provides:       python-authlib
 BuildArch:      noarch
