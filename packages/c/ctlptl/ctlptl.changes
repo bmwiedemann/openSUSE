@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 24 06:06:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.3:
+  * circleci: fix release script (#410)
+  * release: only release to tiltdev docker hub namespace (#409)
+  * circleci: use github app for releases (#408)
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.40.0 to
+    1.43.0 (#404)
+  * Update version numbers: 0.9.2
+
+-------------------------------------------------------------------
 Thu Apr 02 04:36:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.2:
