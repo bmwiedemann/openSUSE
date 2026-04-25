@@ -24,4 +24,14 @@
   * Expose CK_SESSION_HANDLE as readonly</comment>
     <requestid>1329151</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1ad98aa57bb1b3b2c445117d16f24eb9</srcmd5>
+    <version>0.9.4</version>
+    <time>1777152466</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.4:
+  * feat: adds typing
+  * Allow generation of keys of different types in the same session</comment>
+    <requestid>1349244</requestid>
+  </revision>
 </revisionlist>

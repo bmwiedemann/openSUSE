@@ -17,7 +17,7 @@
 
 
 Name:           python-python-pkcs11
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        PKCS#11 (Cryptoki) support for Python
 License:        MIT
