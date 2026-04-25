@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 24 06:06:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.7:
+  * apk: verify package control hash against signed APKINDEX
+    (#2191)
+  * apk: guard non-RSA JWKS keys in DiscoverKeys (#2190)
+
+-------------------------------------------------------------------
 Thu Apr 23 05:28:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.6:
