@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/Icinga/icinga2.git</param>
+              <param name="changesrevision">5855790474c50904efd0c9e31968c04938960a01</param></service></servicedata>

@@ -16,13 +16,14 @@
 #
 
 Name:           icinga2
-Version:        2.15.2
+Version:        2.16.0
 Release:        0
 Summary:        Network monitoring application
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          System/Monitoring
 URL:            https://www.icinga.com/
-Source:         https://github.com/Icinga/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+#Source:         https://github.com/Icinga/%%{name}/archive/v%%{version}/%%{name}-%%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source1:        icinga2-rpmlintrc
 # PATCH-FEATURE-OPENSUSE ecsos -- insert missing graphite tags as descriped in icingaweb2-module-graphite docs.
 Patch0:         icinga2-graphite.patch
@@ -66,6 +67,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  make
 BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  systemd-rpm-macros
@@ -294,8 +296,7 @@ fi
 exit 0
 
 %files
-%license COPYING
-
+%license LICENSE.md
 %config(noreplace) %{_sysconfdir}/logrotate.d/icinga2
 %dir %{_unitdir}/%{name}.service.d
 %attr(644,root,root) %{_unitdir}/%{name}.service
@@ -337,7 +338,7 @@ exit 0
 %attr(0750,%{icinga_user},%{icinga_group}) %dir %{_localstatedir}/spool/icinga2/tmp
 
 %files bin
-%license COPYING
+%license LICENSE.md
 %doc README.md NEWS AUTHORS CHANGELOG.md
 %dir %{_libdir}/icinga2
 %dir %{_libdir}/icinga2/sbin
@@ -348,7 +349,7 @@ exit 0
 %{_mandir}/man8/icinga2.8%{?ext_man}
 
 %files common
-%license COPYING
+%license LICENSE.md
 %doc README.md NEWS AUTHORS CHANGELOG.md tools/syntax
 %{_datadir}/bash-completion/completions/icinga2
 %attr(0750,%{icinga_user},%{icinga_group}) %dir %{_datadir}/icinga2/include
@@ -359,14 +360,14 @@ exit 0
 %docdir %{_datadir}/doc/icinga2
 
 %files ido-mysql
-%license COPYING
+%license LICENSE.md
 %doc README.md NEWS AUTHORS CHANGELOG.md
 %config(noreplace) %attr(0640,%{icinga_user},%{icinga_group}) %{_sysconfdir}/icinga2/features-available/ido-mysql.conf
 %{_libdir}/icinga2/libmysql_shim*
 %{_datadir}/icinga2-ido-mysql
 
 %files ido-pgsql
-%license COPYING
+%license LICENSE.md
 %doc README.md NEWS AUTHORS CHANGELOG.md
 %config(noreplace) %attr(0640,%{icinga_user},%{icinga_group}) %{_sysconfdir}/icinga2/features-available/ido-pgsql.conf
 %{_libdir}/icinga2/libpgsql_shim*

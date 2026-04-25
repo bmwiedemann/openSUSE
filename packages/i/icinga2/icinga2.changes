@@ -1,4 +1,382 @@
 -------------------------------------------------------------------
+Thu Apr 23 09:17:57 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 2.16.0:
+  * Fix PerfdataWriterConnection test-cases on parallel build
+  * Bump korthout/backport-action from 4.3.0 to 4.4.0
+  * Release v2.16.0
+  * Update changelog for v2.16
+  * Update Upgrading docs for v2.16
+  * Generate all unit-test certificates with CN=localhost
+  * publiccode.yml: update to GPL 3 (or later)
+  * Silence -Wunnecessary-virtual-specifier warning on clang
+  * OTLPMetricsWriter: don't add queue stats as counter
+  * Correctly create AsioTlsStream with host argument
+  * Fix misleading TLS handshake error logging
+  * Fix compiler crash on SLES 15.7 arm64 runner
+  * Inline `SendNextUpdate` & remove superfluous `m_RconWorker` checks
+  * IoEngine: introduce & use `IsStrandRunningOnThisThread` function
+  * Log pending items stats regularly & include them as perfdata in IcingaDB check
+  * OTel: downgrade `broken_pipe` errors to debug log
+  * Timeout: lift `VERIFY` -> `ASSERT` to prevent crashes in release builds
+  * Bump actions/create-github-app-token from 3.0.0 to 3.1.1
+  * Bump OpenSSL shipped for Windows to v3.5.6
+  * Reword Changelog for SELinux Issue
+  * Add security fixes to v2.14.7 changelog
+  * Add a check-list in release workflow to forward-port changelogs
+  * Icinga 2.12.12
+  * Icinga 2.12.11
+  * Icinga 2.12.10
+  * Release 2.12.9
+  * Release 2.12.8
+  * Release 2.12.7
+  * Add 2.12.6 changelog and bump VERSION
+  * Add security update to v2.13.14 changelog
+  * Changelog and version bump for v2.13.14
+  * Add security fixes to v2.13.13 changelog
+  * Changelog and version bump for v2.13.13
+  * Add security update to v2.14.8 changelog
+  * Release v2.14.8
+  * Changelog and version bump for v2.14.7
+  * Add security update to changelog for `v2.15.2`
+  * Release `v2.15.2`
+  * Add security fixes to v2.15.1 changelog
+  * Changelog and version bump for v2.15.1
+  * RedisConnection: simplify `GetOldestPendingQueryTs` function
+  * Reduce min queue item age from `1000ms` to `300ms`
+  * Inline `DequeueAndProcessOne` & don't process items out of order
+  * IcingaDB: use key extractor for worker queue
+  * IcingaDB: put all queue related stuff into `icingadb:task_queue` namespace
+  * Simplify `IcingaDB::PendingItemsThreadProc()` event loop
+  * IcingaDB: remove unused `UpdateObjectAttrs` method
+  * Fix missing `olock` for dependency child registration
+  * IcingaDB: use polymorphism for queue entries
+  * IcingaDB: subscribe to `OnNextCheckChanged` signal
+  * Revert "CheckerComponent#CheckThreadProc(): also propagate next check update to Icinga DB"
+  * RedisConnection: enhance `WriteQueueItem` & related usages
+  * RedisConnection: simplify query prioritization logic
+  * Revert "IcingaDB: suppress state sync until config sync finished"
+  * IcingaDB: enqueue config runtime updates to the worker queue
+  * OTel: raise runtime error when failing to fully serialize Protobuf request
+  * OTel: add connect & handshake timeout
+  * OTel: replace `AsioDualEvent` usage with `AsioConditionVariable`
+  * OTel: do not perform graceful disconnect on I/O timeout
+  * OTel: fix race condition triggered on Icinga 2 reload/shutdown
+  * Don't manually include custom Protobuf dir via compiler flag
+  * OTLP: Set `enable_ha` to true by default
+  * Reduce default `flush_threshold` to `16MiB`
+  * tests: fix `testbase` linker error
+  * Replace `for` with a simpler `while` loop & fix a typo
+  * Linux GHA: remove unnecessary `"${SCL_ENABLE_GCC[@]}"`
+  * Allow users to provide additional resource attributes
+  * docs: document `OTLPMetricsWriter` feature
+  * Add `OTLPMetricsWriter`
+  * GHA: install required protobuf devel package
+  * Containerfile: install all required Protobuf libs for `OTel`
+  * CMake: provide newer `FindProtobuf.cmake` for old CMake version
+  * Add common `OTel` type/lib
+  * Cache Icinga DB env_id in `Application` class as well
+  * Vendor `opentelemetry-proto` with the necessary files
+  * Rename `EnsureCertFor` to `GetCertFor`
+  * Generate ctest fixtures for generating CA and certificates
+  * Give CTestProperties a polymorphic interface
+  * Make unit-test data and cache directory unique per test
+  * Add network label to http tests
+  * Add a check command for NETGEAR monitoring (#10753)
+  * Give base_timer/(invoke|scope) timers a 10x multiplier on Windows
+  * Revert "Give timer tests more leeway for inaccurate implementations"
+  * Redis exceptions: remove inline specifiers
+  * Redis exceptions: use BOOST_THROW_EXCEPTION
+  * Redis exceptions: add proper what() messages
+  * Document the removal of deprecated features in v2.18
+  * Add warnings to deprecated features indicating removal in v2.18
+  * Bump korthout/backport-action from 4.2.0 to 4.3.0
+  * Warn if object name contains ctrl characters
+  * Endpoint: warn if endpoint name exceeds `64` characters
+  * Warn of object name exceeds `255` characters
+  * Warn about leading and trailing WSP in object names
+  * OutgoingHttpMessage: don't use shared_ptr for m_CpuBoundWork
+  * Make ShowCodeLocation() show the full line with a LastColumn of 0
+  * IcingaDB: enqueue all dependency related updates to the worker queue
+  * IcingaDB: don't send `nextupdate:{host,service}` as part of the initial sync
+  * IcingaDB: track object changesets efficiently
+  * IcingaDB: use a separate Redis conn for history & heartbeat streams
+  * Remove unused `IoEngine#m_AlreadyExpiredTimer`
+  * Remove unused `IoEngine::YieldCurrentCoroutine()`
+  * Make `IoEngine#m_CpuBoundSemaphore` unsigned
+  * `CpuBoundWork#CpuBoundWork()`: don't spin on atomic int to acquire slot
+  * Introduce `AsioConditionVariable`
+  * [Refactor] `CpuBoundWork#CpuBoundWork()`: require an io_context::strand
+  * `CpuBoundWork#~CpuBoundWork()`: just call `#Done()` to deduplicate code
+  * Remove unused `IoBoundWorkSlot`
+  * `OutgoingHttpMessage#Flush()`: release `CpuBoundWork` slot
+  * Add unit-tests for PerfdataWriterConnection
+  * Add documentation for the new disconnect_timeout config options
+  * Use PerfdataWriterConnection in perfdata writers
+  * IcingaDB: use a statically initialized list of syncable types for Redis keys
+  * Bump actions/create-github-app-token from 2.2.1 to 3.0.0
+  * IcingaDB: consistently use `const char*` literals everywhere
+  * IcingaDB: change `const T` to `const T&` to avoid stupid String copying
+  * Fix copy and paste error in build log message
+  * Use perfect-forwarding references to prevent passing temporaries
+  * Don't upload 32 bit MSIs to Chocolatey
+  * Make retrieval of the vector size more generic
+  * Fix CertificateFixture error if previous test fails
+  * Add a new CTest fixture for dirty_ssl_certs for tlsutility
+  * Remove dead links in doc/12-icinga2-api.md (#10745)
+  * Add PerfdataWriterConnection class
+  * Bump korthout/backport-action from 4.1.0 to 4.2.0
+  * Give timer tests more leeway for inaccurate implementations
+  * Improve debug message when dependency child/parent don't exist
+  * /v1/console: prevent concurrent use of the same session by multiple requests
+  * Change `RedisConnection::Query::value_type` to a string/view variant
+  * `ObjectLock`: allow to `TryLock` the mutex
+  * RedisConnection: drop superfluous `GetConnected` method
+  * Allow to track query stats in child Redis connections
+  * RedisConnection: introduce & use `RedisConnInfo` helper struct
+  * Use `RedisConnection::Quer*` type aliases
+  * Introduce `RedisConnection::QueryArg`, an alias of `String`
+  * `IcingaDB#AddObjectDataToRuntimeUpdates()`: take String by value
+  * Disable testing when building container image without testing
+  * Add Assert-Macros for the TestLogger
+  * Move and extend ReceiveCheckResults function
+  * Add TestThread class to not get unit-tests stuck in `join()`s
+  * Refactor OpenTsdbWriter to use a WorkQueue
+  * Import std::chrono_literals into icinga namespace
+  * Don't expect `Contet-Type` header to exactly match `application/json`
+  * Take a mutex before accessing the l_ApiScriptFrames
+  * Fix invalid category in publiccode.yml
+  * SELinux: allow to query attrs of a filesystem
+  * Add publiccode.yml
+  * Bump korthout/backport-action from 4.0.1 to 4.1.0
+  * Fix undefined behavior introduced by initializing last states with 99
+  * Remove potential irritating comment on config flag
+  * Update lib/cli/nodesetupcommand.cpp
+  * Remove `AuthenticatedApiUser` thread-local variable & pass it as param instead
+  * HTTP: stream responses where appropriate
+  * Make `ValueGenerator` more flexible & easy to use
+  * Fix uninitialized member in ScriptError
+  * Use noop lambda in dummy NotificationCommand
+  * Fix notificationcomponent test-cases with fixed TestLoggerFixture
+  * tests: fix min severity doesn't get updated
+  * doc: Explain icingadb built-in check
+  * Rename `COPYING` -> `LICENSE.md` & upgrade to GPLv3
+  * Replace all existing copyright headers with `SPDX` headers
+  * Add check_smart.pl plugin as smart-advanced command
+  * Bump OpenSSL shipped for Windows to v3.5 LTS
+  * Fix URL to `check_interfaces` in ITL
+  * windows: bump OpenSSL to 3.0.19
+  * Remove unused `DbTypeRegistry`
+  * Replace `class B : public A { };` with `using B = A;` (refactor only)
+  * `Registry<U,T>`: remove unused template typename `U`
+  * Silence compiler warnings about unused parameters
+  * Allow Icinga to send SIGTERM to nagios plugins in SELinux Policy
+  * `Downtime::AddDowntime()`: remove unused parameter `const MessageOrigin::Ptr& origin`
+  * Refactor HttpMessage into generalized templated types
+  * Update names of HttpRequest and HttpResponse
+  * Windows TL;DR dev env: use Visual Studio 2022, not 2019
+  * backbot: drop `conflict_resolution` option
+  * backbot: drop `copy_requested_reviewers` option
+  * backbot: exclude CLA label correctly from copied labels
+  * Fix(#10687): address null pointer dereference on navigate
+  * docs: Fix rendering issue on icinga.com
+  * Add error handling for icacls calls
+  * Fix a race condition in NotificationComponent
+  * Add test-case to verify delayed (times) notifications feature
+  * Add test-case to reproduce a race condition in NotificationComponent
+  * Windows: set ACLs for %ProgramData%\icinga2\var as well
+  * docs: Remove 'queue' parameter requirement from event stream document… (#10495)
+  * Container: ICINGA_LOG_LEVEL Environment Variable
+  * Bump korthout/backport-action from 4.0.0 to 4.0.1
+  * Bump korthout/backport-action from 3.4.1 to 4.0.0
+  * Bump actions/cache from 4 to 5
+  * Bump Boost shipped for Windows to v1.90
+  * Bump actions/create-github-app-token from 2.2.0 to 2.2.1
+  * tests: verify statically provided certs as well
+  * Add documentation for ApiListener.http_response_headers
+  * Test internal cert generation & verification process
+  * tlsutility: make cert ts configurable & use `ASN1_TIME_compare` for comparison
+  * tests: skip superfluous cert generation in `EnsureCertFor()`
+  * IsValidHeaderValue: use front()/back() instead of iterators
+  * Allow to set extra headers in HTTP responses
+  * HttpUtility: add functions for validating HTTP header names and values
+  * backbot: use `pull_request_target` event
+  * workflows: fix invalid usage of `github.event_name`
+  * Bump actions/checkout from 5 to 6
+  * workflows: fix authors-file
+  * Have thread name length clamping also apply for the other OSes
+  * Fix usage of pthread_setname_np() on NetBSD
+  * GHA: ignore also `github-actions` in authors file
+  * GHA: auto backport PRs based on labels
+  * Fix dlopen()'ing libraries on OpenBSD
+  * Add tests for pthread_set_name_np() and pthread_setname_np()
+  * Enable the pthread_np.h header on OpenBSD and DragonFly
+  * GitHub actions: add Fedora 43
+  * GitHub actions: add SLES 16.0
+  * Fix -Wunused-lambda-capture warning
+  * Fix -Wunused-variable warnings
+  * Fix -Wunused-but-set-variable warnings (clang)
+  * Fix -Wunknown-pragmas warnings
+  * Fix -Wenum-compare warnings
+  * Fix -Wredundant-move warnings
+  * Fix -Wsign-compare warnings
+  * Fix -Wsuggest-override warnings
+  * Add ABORT() macro for unconditionally failing ASSERTS
+  * Use 64bit unsigned integer for Replay log timestamps
+  * TimePeriod: properly validate `ranges` field
+  * Actually use Registry#Freeze() at startup, when everything has been registered
+  * Introduce Registry::GetInstance() to deduplicate such methods
+  * Introduce Registry#Freeze()
+  * Registry#Get*(): use shared locking to allow concurrent access
+  * Make Registry#ItemMap a hash table to speed up lookups
+  * Inline Registry#RegisterInternal() used only once
+  * Remove unused Registry#OnRegistered
+  * Remove unused Registry#OnUnregistered
+  * SELinux: allow `logrotate` to execute `icinga2` binary
+  * Adapt the unit-test to reflect fix in the previous commit
+  * Subtract inapplicable suppressed notifications at a later point
+  * Add unit-tests for NotificationComponent
+  * Add ClearTestLogger method to TestLoggerFixture
+  * Fix compiler warnings
+  * Fix compiler warnings by not std::move()ing where redundant
+  * Fix compiler warnings by ensuring variable initialization
+  * Fix compiler warnings by replacing x&&y||z with (x&&y)||z
+  * Fix compiler warnings by re-ordering member init in constructors
+  * Don't define/use OpenSSL*Callback() for/in OpenSSL > v1.1
+  * GHA: add Ubuntu 25.10
+  * Fix compiler warnings by removing unused variables
+  * AtomicOrLocked: use std::conditional_t and std::is_trivially_copyable_v
+  * Remove obsolete workaround for GCC 4.x
+  * GHA: re-add Debian 11
+  * windows: bump OpenSSL to `3.0.18`
+  * DerefExpression: Add missing nullptr check
+  * GHA: drop all distros that are no longer supported
+  * GHA: Add openSUSE 16
+  * ITL: Enhanced SMART attributes monitoring plugin check configuration to more parameters
+  * Remove TicketSalt in VariableQueryHandler as early as possible
+  * Add test-cases for checking permissions in filter exprs
+  * Filter global variables when Sandboxed
+  * Declare functions as unsafe that aren't useful in filter expressions
+  * Check for permission in get_object()
+  * Add permission checking to script frames and filter utilities
+  * Disable -Wimplicit-fallthrough for mmatch
+  * Enable -Wall -Wextra for all Linux runners
+  * Disable -Wunused-(parameter|variable) on generated files
+  * Silence Amazonlinux:2 warnings about deprecated coroutines
+  * Remove reference to missing ftest submodule
+  * Remove MSVC warnings about unknown pragmas GCC/clang
+  * Add Github Problem Matchers actions for GCC/MSVC
+  * Docs: add some troubleshooting for overloaded JSON-RPC connections
+  * Endpoint expose seconds_processing_messages attribute
+  * Measure and store message processing time per endpoint
+  * Introduce AtomicDuration
+  * Fix double-free error in posix_error::what()
+  * Rename/Move existing certs/ca instead of symlinking
+  * GitHub Actions: remove Ubuntu 24.10 (end of life)
+  * HttpServerConnection: use `std::chrono` for `m_Seen`
+  * tests: speed up timer tests using smaller sleep times
+  * Make HTTP livness timout configurable for unittests
+  * don't install boost dev in the final image
+  * Drop ICINGA2_WITH_TESTS option in favor of CTest's BUILD_TESTING
+  * Discover Boost test cases automatically after build
+  * Fix rediscovered test-cases in icinga-checkresult
+  * Bump base image version to Debian 13 (trixie)
+  * workflows: drop `docker.yml`
+  * workflows: build and publish container images
+  * docs: Add `For-Container.md`
+  * Add `Containerfile`
+  * Add unit-tests for HttpServerConnection and HTTP message classes
+  * Make inherited protected functions of ApiListener public
+  * Refactor ObjectQueryHandler to use new JSON stream encoder
+  * Remove extra parameters from HTTP handler signature
+  * Refactor EventsHandler to stream responses via chunked encoding
+  * Use new HTTP message classes in HttpServerConnection and Handlers
+  * Add HttpRequest and HttpResponse classes
+  * Allow UID/GID in ICINGA2_(USER|GROUP) environment variables
+  * Remove clear variable from disk CheckCommand
+  * add "--long-output" to ssl_cert command
+  * ApiListener#RelayMessageOne(): log to which Endpoint messages are relayed
+  * Bump Boost shipped for Windows to v1.89
+  * Boost: don't require "system" component
+  * GHA: add Debian 13
+  * Bump actions/checkout from 4 to 5
+  * Document current dependency recursion limit
+  * Prevent worst-case exponential complexity in dependency evaluation
+  * Move code involved in recursive dependency evaluation to helper class
+  * Send signals as Icinga user in safe-reload and logrotate
+  * Allow intrusive_ptr<const T> for objects
+  * Log: don't construct std::ostringstream for no-op messages
+  * Log: use std::forward in operator<< and remove overload for const char*
+  * docs: Fix some dead/old links
+  * docs: Update ElasticsearchWriter flush_threshold note format
+  * docs: Mention field mapping issue with ElasticsearchWriter
+  * Disallow stage deletions during reload
+  * Use `AtomicFile` where applicable in `ConfigPackageUtility`
+  * Handle concurrent config package updates gracefully
+  * GHA: add RHEL 10
+  * GHA: add Ubuntu 25.04
+  * GHA: add SLES 15.7
+  * GHA: add Fedora 42
+  * JsonEncoder: wrap writer for flushing
+  * fix comment
+  * Rename `AsyncJsonWriter::Flush()` -> `MayFlush()` to reflect its usage
+  * Restore table alignement in node setup documentation
+  * Document the --no-default-global-zones flag
+  * JsonEncoder: let the serializer replace invalid UTF-8 characters
+  * JsonEncoder: lock olock conditionally & flush output regularly
+  * Implement `LockIfRequired()` method for `Namespace`, `Dictionary` & `Array`
+  * Do not require olock on frozen `Namespace`, `Dictionary` & `Array`
+  * Introduce `JsonEncode` helper function
+  * Introduce `JsonEncoder` class
+  * Fix typo
+  * Add plain fping CheckCommand to ITL
+  * Introduce `AsyncJsonWriter` output adapter interface
+  * Implement bool operator for `ObjectLock`
+  * Allow to defer lock on `ObjectLock`
+  * Introduce `ValueGenerator` class
+  * No longer allow overriding the frozen attribute of containers
+  * docs: Icinga DB Setup for every Distribution
+  * Update AUTHORS
+  * docs: Fix various misspellings
+  * docs: Mention Elasticsearch prefix for indices
+  * Update AUTHORS
+  * Correct a problem with expiry times not being passed through to AcknowledgeProblem
+  * Add a hint for upgrading docs to the release checklist
+  * Introduce Endpoint#messages_received_per_type
+  * Count incoming messages per type and endpoint
+  * ApiFunction: store own name
+  * Zone#GetEndpoints(): return endpoints in the specified order, not randomly
+  * Add cli option to disable the default global zones
+
+  Deprecations
+
+  Features newly deprecated in this version:
+
+    ElasticsearchWriter (please use the new OTLPMetricsWriter instead)
+    User declared namespace objects (i.e. namespace foo {})
+
+  We've scheduled these features for removal in v2.18 (#10734).
+
+  These features have already been deprecated and will also be removed in v2.18:
+
+    IdoMySqlConnection
+    IdoPgsqlConnection
+    CompatLogger
+    ExternalCommandListener
+    LivestatusListener
+    Windows check-plugins (i.e. check_*.exe) and CheckCommands (please use our PowerShell Plugins instead)
+
+-------------------------------------------------------------------
+Thu Apr 23 09:09:52 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 2.15.3:
+  * Release v2.15.3
+  * Update changelog for v2.14.3
+  * Bump OpenSSL shipped for Windows to v3.0.20
+  * GHA: Add openSUSE 16
+  * Fix(#10687): address null pointer dereference on navigate
+
+-------------------------------------------------------------------
 Thu Jan 29 15:21:18 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.15.2
 
 - Update to 2.15.2
