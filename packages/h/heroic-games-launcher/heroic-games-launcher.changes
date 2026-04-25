@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Apr 23 19:25:27 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.21.0 "Loki"
+  * New Fullscreen "Console-like" Mode for joystick navigation (#5490)
+  * New Deals page with current GOG promotions (#5497)
+  * Achievements on the game info page for GOG games (#5208)
+  * Pick covers from SteamGridDB directly on the sideload dialog when a SteamGrid 
+    API key is set (#5213)
+  * Wine manager screen cleanup + new Wine settings screen (#5306)
+  * Electron updated to v41.1.1 (#5467)
+  * How Long To Beat data fixed (#5466)4
+  * Fixed the Installation of Ubisoft Games bought on Epic.
+  * Import button moved next to the Install button for better discoverability (#5339)
+  * GitHub Sponsors link added to the sidebar (#5499)
+  * [UX] Allow disabling GOG Presence updates by @arielj in #5249
+  * [FIX]: address some issues with Zoom Platform implementation by @imLinguin in #5033
+  * chore: harden workflow permissions and standardize GITHUB_TOKEN usage by 
+    @niStee in #5141
+  * [FIX] Clean up release notes by removing URLs and usernames by @flavioislima in #5372
+  * [DOC] Minimum MacOS version by @arielj in #5380
+  * [UX] Allow picking .avif images in add game image selector by @arielj in #5382
+  * [FIX]: include mod type as displayable by @imLinguin in #5385
+  * [ZOOM] Fix multi-file installation of games by @arielj in #5374
+  * [feat] add achievements to game info page by @lmReef in #5208
+  * [UX] Cleanup general logs by @arielj in #5386
+  * [UX] Cleanup game logs, add config file path by @arielj in #5381
+  * [FIX] Fix inconcistent login state switching stores by @arielj in #5383
+  * [UX] Hint at 4-char codes in preferred language by @barraponto in #5402
+  * [Fix] Check if game install folder exists before anything else by @arielj in #5317
+  * [Refactor] Reduce the number of requests that we do at boot time by @arielj in #5161
+  * fix(gamepage): prevent achievement list overflow by @imLinguin in #5407
+  * [Mac] Update DXMT in installed Wines if new version detected by @arielj in #5427
+  * Bump @xmldom/xmldom from 0.8.10 to 0.8.12 by @dependabot[bot] in #5447
+  * Bump undici from 7.8.0 to 7.24.0 by @dependabot[bot] in #5408
+  * Bump fast-xml-parser from 4.5.4 to 5.5.7 by @dependabot[bot] in #5419
+  * Bump undici from 6.21.3 to 7.24.7 by @dependabot[bot] in #5453
+  * [FIX] Don't look for anticheat file if not present, don't check DXMT if not M 
+    chip by @arielj in #5436
+  * Add Windows ARM 64 Native Build Support by @talynone in #5389
+  * Fix typo on TwoColTableInput component style by @JavMatz in #5476
+  * [Tech] Update electron to v41.1.1 by @flavioislima in #5467
+  * fix: clear GOG presence when disabling the setting by @reverb256 in #5472
+  * [FIX] Load wine versions on first run by @arielj in #5432
+  * [UX] Fix mix between default prefixes dir and shared prefix dir by @arielj in #5336
+  * [i18n] Updated Translations by @weblate in #5376
+  * [FIX] System info and game settings in logs for native sideloaded games by 
+    @arielj in #5492
+  * [FIX] Use dpaste.com instead of 0x0.st to upload logs by @arielj in #5491
+  * [FIX] Use mirror for latest Wine-Crossover version by @arielj in #5488
+  * [FIX] How Long To Beat 🎶One More Time...🎶 by @flavioislima in #5466
+  * [Feat] Use SteamGrid API to select covers on sideload dialog by @flavioislima in #5213
+  * [UI] Wine manager screen cleanup and add wine settings screen by @flavioislima in #5306
+  * [FIX] Always pick staging asset instead of devel for Wine Staging on 
+    MacOS by @arielj in #5483
+  * [UI] Add GitHub Sponsors link to sidebar by @flavioislima in #5499
+  * [Feat] Add a new Deals page with current GOG promotions by @flavioislima in #5497
+  * [Feat] Add a new Fullscreen "Console-like" Mode for Joystick navigation by 
+    @flavioislima in #5490
+  * [UI] Move import button to the side of the Install one by @flavioislima in #5339
+  * [TECH] Update legendary binary version to 0.20.43 by @flavioislima in #5502
+  * [i18n] Updated Translations by @weblate in #5494
+ 
+-------------------------------------------------------------------
 Tue Apr  7 00:20:33 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Fix CVE-2026-34601: update @xmldom/xmldom to >= 0.9.9
