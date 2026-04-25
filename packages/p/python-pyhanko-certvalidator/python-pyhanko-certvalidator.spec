@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyhanko-certvalidator
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyhanko-certvalidator
-Version:        0.26.5
+Version:        0.30.2
 Release:        0
 Summary:        Validates X509 certificates and paths
 License:        MIT
-URL:            https://github.com/MatthiasValvekens/certvalidator
-Source:         https://github.com/MatthiasValvekens/certvalidator/archive/refs/tags/v%{version}.tar.gz#/pyhanko-certvalidator-%{version}.tar.gz
+URL:            https://github.com/MatthiasValvekens/pyHanko
+Source:         https://files.pythonhosted.org/packages/source/p/pyhanko_certvalidator/pyhanko_certvalidator-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 67.4}
+BuildRequires:  %{python_module setuptools >= 80.8.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module asn1crypto >= 1.5.1}
-BuildRequires:  %{python_module aiohttp >= 3.8}
+BuildRequires:  %{python_module aiohttp >= 3.9}
 BuildRequires:  %{python_module cryptography >= 41.0.5}
 BuildRequires:  %{python_module freezegun >= 1.1.0}
 BuildRequires:  %{python_module oscrypto >= 1.1.0}
+BuildRequires:  %{python_module pytest-aiohttp >= 1.0.4}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.31.0}
@@ -45,9 +46,8 @@ Requires:       python-cryptography >= 41.0.5
 Requires:       python-oscrypto >= 1.1.0
 Requires:       python-requests >= 2.31.0
 Requires:       python-uritools >= 3.0.1
-Suggests:       python-aiohttp >= 3.8
+Suggests:       python-aiohttp >= 3.9
 Suggests:       python-freezegun >= 1.1.0
-Suggests:       python-aiohttp >= 3.8
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,7 +55,7 @@ BuildArch:      noarch
 Validates X.509 certificates and paths; forked from wbond/certvalidator
 
 %prep
-%autosetup -p1 -n certvalidator-%{version}
+%autosetup -p1 -n pyhanko_certvalidator-%{version}
 
 %build
 %pyproject_wheel

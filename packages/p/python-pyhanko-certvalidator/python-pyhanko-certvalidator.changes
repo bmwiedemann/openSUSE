@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Apr 25 19:46:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.30.2:
+  * Drop support for Python 3.9
+  * Drop TLS-specific validation code (breaking change)
+  * Drop poorly supported whitelist feature (breaking change)
+  * Remove deprecated methods from ValidationContext (breaking change)
+  * Clean up test fixtures
+  * Include tests in sdist again.
+  * Fix inconsistent aiohttp bounds.
+  * Add nonstandard application/pkix-ca content type.
+  * Remove unneeded Python 3.8 compatibility code
+  * Improve test coverage for some more exotic CRL processing
+    scenarios, simplify code accordingly.
+  * Supply more info on freshness check failures, ensure time
+    tolerance is accounted for.
+  * Support time-limited roots.
+  * Fix various bugs in AdES validation and the handling of non-default
+    TrustAnchor implementations.
+  * Fixed bug where an HTTP(S) CRL URI appearing next to
+  * an LDAP one as part of the same DP entry would not
+  * always be picked up.
+  * Dramatically improved processing speed for large CRLs.
+  * Drop Python 3.7
+  * List `qcStatements` as a known extension
+
+-------------------------------------------------------------------
 Wed Aug 13 04:59:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on pytest-asyncio.
@@ -24,4 +51,4 @@ Wed Nov 13 06:13:51 UTC 2024 - Bernhard M. Demo2 Wiedemann <opensusedemo+test2@l
 -------------------------------------------------------------------
 Tue Sep 17 01:28:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 0.26.3. 
+- Initial release of 0.26.3.
