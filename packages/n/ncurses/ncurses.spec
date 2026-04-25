@@ -112,7 +112,7 @@ Patch1:         ncurses-5.9-ibm327x.dif
 Patch2:         ncurses-5.7-tack.dif
 Patch3:         FORTIFY_SOURCE_3-fix.patch
 Patch4:         ncurses-6.5-ghostty.dif
-Patch5:         fix-mouse.patch
+Source100:      fix-mouse.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _miscdir    %{_datadir}/misc
 %global         _incdir     %{_includedir}
@@ -401,7 +401,7 @@ mv tack-* tack
 %patch -P0 -p0 -b .p0
 %patch -P3 -p1
 %patch -P4 -p0
-%patch -P5 -p1 -F 10
+#%%patch -P5 -p1 -b .mf
 
 %build
 LANG=C.UTF-8

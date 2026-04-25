@@ -5646,4 +5646,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1346180</requestid>
   </revision>
+  <revision rev="329" vrev="102">
+    <srcmd5>7830be61d2dd6803a2380d1efe25e246</srcmd5>
+    <version>unknown</version>
+    <time>1777145707</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable fix-mouse.patch as it conflicts with current patch level.
+  Mask patch fix-mouse.patch as source to not lose it.
+- The fix-bsc1259924.patch is NOT required as at this patch level
+  already included. In fact fix-bsc1259924.patch is a backport.
+
+- Add ncurses patch 20260418
+  + note in manpage that wgetch/wget_wch consistently set errno to EBADF
+    for poll/select configurations when the input is closed.
+  + improve check in test/ncurses for errors by limiting it to the
+    latest wgetch/wget_wch (cf: 20260404).
+  &gt; fixes for problems found by Anthropic (report by David Korczynski):
+  + correct a limit-check in _nc_write_object
+  + correct a source-pointer in _nc_trim_sgr0
+  + add limit-check in read_SGR
+
+- Add ncurses patch 20260411
+  + if POLLNVAL is set in revents, set errno to EBADF to improve handling
+    of closed input for poll() configuration.
+  + cancel bce and rep in some screen.X's -TD
+
+- Add ncurses patch 20260404
+  + use xterm+direct in konsole-direct, add several features to
+    konsole (report by Xu Che)
+  + use dec+sl in mintty (prompted by Thomas Wolff) -TD
+  + add linux-alt1049 (report by Sebastien Hinderer) -TD
+  + add a limit-check in _nc_mouse_parse in case there are no valid
+    events (report by Giorgos Xou, cf: 20260301).
+  + amend recent change to test/ncurses to check errno before deciding
+    to exit.</comment>
+    <requestid>1349133</requestid>
+  </revision>
 </revisionlist>

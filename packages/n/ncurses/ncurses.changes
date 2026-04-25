@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Apr 24 12:51:57 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Disable fix-mouse.patch as it conflicts with current patch level.
+  Mask patch fix-mouse.patch as source to not lose it.
+- The fix-bsc1259924.patch is NOT required as at this patch level
+  already included. In fact fix-bsc1259924.patch is a backport.
+
+-------------------------------------------------------------------
+Mon Apr 20 06:48:49 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260418
+  + note in manpage that wgetch/wget_wch consistently set errno to EBADF
+    for poll/select configurations when the input is closed.
+  + improve check in test/ncurses for errors by limiting it to the
+    latest wgetch/wget_wch (cf: 20260404).
+  > fixes for problems found by Anthropic (report by David Korczynski):
+  + correct a limit-check in _nc_write_object
+  + correct a source-pointer in _nc_trim_sgr0
+  + add limit-check in read_SGR
+
+-------------------------------------------------------------------
+Mon Apr 13 07:02:16 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260411
+  + if POLLNVAL is set in revents, set errno to EBADF to improve handling
+    of closed input for poll() configuration.
+  + cancel bce and rep in some screen.X's -TD
+
+-------------------------------------------------------------------
+Wed Apr  8 07:18:08 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260404
+  + use xterm+direct in konsole-direct, add several features to
+    konsole (report by Xu Che)
+  + use dec+sl in mintty (prompted by Thomas Wolff) -TD
+  + add linux-alt1049 (report by Sebastien Hinderer) -TD
+  + add a limit-check in _nc_mouse_parse in case there are no valid
+    events (report by Giorgos Xou, cf: 20260301).
+  + amend recent change to test/ncurses to check errno before deciding
+    to exit.
+
+-------------------------------------------------------------------
 Sun Apr  5 12:41:35 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - added fix-mouse.patch to fix regression introduced in patch 20260301

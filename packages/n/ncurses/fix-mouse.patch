@@ -1,6 +1,6 @@
 --- a/ncurses/base/lib_mouse.c
 +++ b/ncurses/base/lib_mouse.c
-@@ -892,40 +892,43 @@ _nc_mouse_event(SCREEN *sp)
+@@ -899,40 +899,43 @@ _nc_mouse_event(SCREEN *sp)
  #if USE_SYSMOUSE
      case M_SYSMOUSE:
  	if (sp->_sysmouse_head < sp->_sysmouse_tail) {
@@ -44,7 +44,7 @@
  	}
  	break;
  #endif
-@@ -1746,4 +1749,5 @@ _nc_mouse_parse(SCREEN *sp, int runcount)
+@@ -1737,4 +1740,5 @@ _nc_mouse_parse(SCREEN *sp, int runcount)
       * with.  The same issue applies to first_valid and _mouse_read.
       */
 -    while (!ValidEvent(EventAt(sp, sp->_mouse_read))) {
