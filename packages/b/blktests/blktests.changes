@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 23 12:16:00 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
+
+- Add liburing-devel >= 2.2 BuildRequires on distributions where it
+  is available so io_uring helpers such as src/nvme-passthru-admin-uring
+  are built for nvme/067.
+
+-------------------------------------------------------------------
 Tue Apr 21 07:50:11 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
 
 - Update to version 0+20260416.1d68a36:

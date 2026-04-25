@@ -24,6 +24,9 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/osandov/blktests
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  gcc-c++
+%if 0%{?suse_version} > 1500
+BuildRequires:  liburing-devel >= 2.2
+%endif
 Requires:       fio
 Requires:       gawk
 Requires:       gcc
