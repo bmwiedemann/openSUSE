@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-iso639
-Version:        2026.1.31
+Version:        2026.4.20
 Release:        0
 Summary:        ISO 639 language codes, names, and other associated information
 License:        Apache-2.0

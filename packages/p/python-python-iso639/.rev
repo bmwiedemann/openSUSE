@@ -63,4 +63,14 @@
     release.</comment>
     <requestid>1336188</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>734c88032d69e32ad86fe73ef5b48ba5</srcmd5>
+    <version>2026.4.20</version>
+    <time>1777152475</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.4.20:
+  * Updated the ISO 639 data from SIL to the latest 2026-04-15
+    release.</comment>
+    <requestid>1349269</requestid>
+  </revision>
 </revisionlist>
