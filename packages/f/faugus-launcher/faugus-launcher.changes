@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 25 22:09:01 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.18.7
+- Upstream changes:
+  * Added notification sound file to license
+- For version 1.18.6
+  * Removed launchers icons
+  * Fixed multiple system tray icons
+  * Updated EA installation
+  * Now the power menu is opened by pressing ESC
+
+-------------------------------------------------------------------
 Tue Apr 21 20:50:05 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Handle new license changes, updated license to MIT and CC-BY-4.0 for assets

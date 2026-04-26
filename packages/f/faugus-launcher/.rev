@@ -395,4 +395,19 @@
   * gamepad string translation</comment>
     <requestid>1348648</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4c585ef27f09f91a6c4c67e050c11708</srcmd5>
+    <version>1.18.7</version>
+    <time>1777230713</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.18.7
+- Upstream changes:
+  * Added notification sound file to license
+- For version 1.18.6:
+  * Removed launchers icons
+  * Fixed multiple system tray icons
+  * Updated EA installation
+  * Now the power menu is opened by pressing ESC</comment>
+    <requestid>1349310</requestid>
+  </revision>
 </revisionlist>
