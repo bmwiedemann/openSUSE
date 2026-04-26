@@ -1,7 +1,7 @@
 #
 # spec file for package python-ufoProcessor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,13 @@
 #
 
 
-%global skip_python36 1
 Name:           python-ufoProcessor
-Version:        1.9.0
+Version:        1.14.1
 Release:        0
 Summary:        Read, write and generate UFOs with designspace data
 License:        MIT
 URL:            https://github.com/LettError/ufoProcessor
-Source:         https://files.pythonhosted.org/packages/source/u/ufoProcessor/ufoProcessor-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/u/ufoprocessor/ufoprocessor-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -35,21 +34,16 @@ Requires:       python-FontTools >= 3.32.0
 Requires:       python-defcon >= 0.6.0
 Requires:       python-fontMath >= 0.4.9
 Requires:       python-fontParts >= 0.8.2
-Requires:       python-fontPens >= 0.1.0
 Requires:       python-lxml >= 4.0
 Requires:       python-mutatorMath >= 2.1.2
-Requires:       python-unicodedata2 >= 13.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module FontTools >= 3.32.0}
 BuildRequires:  %{python_module defcon >= 0.6.0}
 BuildRequires:  %{python_module fontMath >= 0.4.9}
 BuildRequires:  %{python_module fontParts >= 0.8.2}
-BuildRequires:  %{python_module fontPens >= 0.1.0}
-BuildRequires:  %{python_module fs}
 BuildRequires:  %{python_module lxml >= 4.0}
 BuildRequires:  %{python_module mutatorMath >= 2.1.2}
-BuildRequires:  %{python_module unicodedata2 >= 13.0}
 # /SECTION
 %python_subpackages
 
@@ -57,7 +51,7 @@ BuildRequires:  %{python_module unicodedata2 >= 13.0}
 Read, write and generate UFOs with designspace data.
 
 %prep
-%setup -q -n ufoProcessor-%{version}
+%setup -q -n ufoprocessor-%{version}
 
 %build
 %pyproject_wheel

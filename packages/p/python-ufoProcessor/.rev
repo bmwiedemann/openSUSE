@@ -33,4 +33,41 @@
 - No more greedy globs in %files.</comment>
     <requestid>1284978</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>68a7ed09edb15b0001cdbcc2dfeb237b</srcmd5>
+    <version>1.14.1</version>
+    <time>1777230694</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.14.1:
+  * This adds the `doc.elidedFallbackName` attribute.
+  * If it has a string it will end up in ``
+  * If set to `None` it will be removed from ``
+  * Not clear how localisation should work, will add this later
+    if necessary. See issue #76
+- update to 1.14.0:
+  * Differentiate `skipExportGlyphs` and `excludeFromInstance`.
+    See the discussion in issue #71
+  * Adds a provision to calculate glyphs while ignoring all the
+    sources at a specific location. Described in issue #72
+- update to 1.13.3:
+  * Fix issue 68
+- update to 1.13.2:
+  * Provide access to `addLocationLabel` and
+    `addLocationLabelDescriptor`. These are already present in
+    the FontTools DesignspaceLib.
+  * Add a method `startLog` to be called when we want to see the
+    log after starting without debug.
+  * Fixes an issue with `locationToDescriptiveString`: check if
+    the discrete location is `None`
+  * `self.loadFonts()` added to `generateUFOs()`, `makeInstance`,
+    `makeOneInstance`, `makeFontProportions`, `makeOneGlyph`,
+    `makeOneInfo`, `makeOneKerning`. Because it is not always
+    clear whether the fonts were indeed loaded. I acknowledge
+    this is a small overhead, but it seems justified by the time
+    spent in confusion if it is not called.
+  * Round the instance kerning data when asked.
+  * Respect the glyphnames listed in font.lib
+    `public.skipExportGlyphs` when making UFO. This creates a</comment>
+    <requestid>1349296</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat Apr 25 21:12:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.1:
+  * This adds the `doc.elidedFallbackName` attribute.
+  * If it has a string it will end up in ``
+  * If set to `None` it will be removed from ``
+  * Not clear how localisation should work, will add this later
+    if necessary. See issue #76
+- update to 1.14.0:
+  * Differentiate `skipExportGlyphs` and `excludeFromInstance`.
+    See the discussion in issue #71
+  * Adds a provision to calculate glyphs while ignoring all the
+    sources at a specific location. Described in issue #72
+- update to 1.13.3:
+  * Fix issue 68
+- update to 1.13.2:
+  * Provide access to `addLocationLabel` and
+    `addLocationLabelDescriptor`. These are already present in
+    the FontTools DesignspaceLib.
+  * Add a method `startLog` to be called when we want to see the
+    log after starting without debug.
+  * Fixes an issue with `locationToDescriptiveString`: check if
+    the discrete location is `None`
+  * `self.loadFonts()` added to `generateUFOs()`, `makeInstance`,
+    `makeOneInstance`, `makeFontProportions`, `makeOneGlyph`,
+    `makeOneInfo`, `makeOneKerning`. Because it is not always
+    clear whether the fonts were indeed loaded. I acknowledge
+    this is a small overhead, but it seems justified by the time
+    spent in confusion if it is not called.
+  * Round the instance kerning data when asked.
+  * Respect the glyphnames listed in font.lib
+    `public.skipExportGlyphs` when making UFO. This creates a
+    mechanism to remove specific glyphs from output, to allow
+    test fonts to be made from designspaces that contain
+    incomplete, unfinished glyphs.
+  * Version upped to 1.13.2.
+- update to 1.13.0:
+  * New format for tag number to facilitate workflows.
+- update to 1.12:
+  * Syncing the tag numbers with the release numbers to restore
+    order to the galaxy.
+  * Calculate instance values for
+    com.typemytype.robofont.italicSlantOffset  #59
+- update to 1.11:
+  * Process specific libkeys when making interpolations.
+- update to 1.10:
+  * The tag numbers seem to have run off by themselves. I will
+    keep the Release numbering here.
+  * "Generate release notes" included many old things.
+  * Fix anchors
+  * Fix fontParts tests
+  * Add pyproject.toml minimal configuration
+  * ufoOperator
+  * Add strict flag for MathGlyph objects
+  * Adding suport for decomposeComponents in makeInstance()
+  * Adding separate function for
+    UFOOperator.getGlyphDependencies()
+  * copy info lib groups and features from the default font is
+    there is one found
+
+-------------------------------------------------------------------
 Thu Jun 12 05:07:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -12,7 +73,7 @@ Wed Mar 17 15:11:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Sat Feb 13 10:16:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 3.6 build (no scipy) 
+- skip python 3.6 build (no scipy)
 
 -------------------------------------------------------------------
 Wed May 20 09:48:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
