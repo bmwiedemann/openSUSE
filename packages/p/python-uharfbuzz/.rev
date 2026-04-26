@@ -120,4 +120,15 @@
     mismatch</comment>
     <requestid>1346268</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fdb9183f4c99f41b5a3b8f96e069cdc6</srcmd5>
+    <version>0.53.7</version>
+    <time>1777230689</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.53.7:
+  * Update to HarfBuzz 14.2.0
+  * **Full Changelog**: https://github.com/harfbuzz/uharfbuzz/com
+    pare/v0.53.6...v0.53.7</comment>
+    <requestid>1349284</requestid>
+  </revision>
 </revisionlist>
