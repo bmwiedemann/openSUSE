@@ -34,4 +34,16 @@
     <comment></comment>
     <requestid>1283380</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>10feed958eb15cb73874447c0d63ffb4</srcmd5>
+    <version>0.0.31</version>
+    <time>1777230689</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.0.31:
+  * Fixes #66
+- add version-update.patch: fix version number
+- update to 0.0.30:
+  * Fixed https://github.com/joshy/striprtf/issues/63</comment>
+    <requestid>1349283</requestid>
+  </revision>
 </revisionlist>

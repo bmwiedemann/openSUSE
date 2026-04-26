@@ -1,0 +1,7 @@
+Index: striprtf-0.0.31/striprtf/_version.py
+===================================================================
+--- striprtf-0.0.31.orig/striprtf/_version.py
++++ striprtf-0.0.31/striprtf/_version.py
+@@ -1 +1 @@
+-__version__ = "0.0.30"
++__version__ = "0.0.31"
