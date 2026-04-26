@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Apr 22 22:51:40 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Really drop the nobwrap.helper script as intended on Sep 29 2025.
+
+-------------------------------------------------------------------
+Mon Mar 23 15:54:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.1:
+  * Reset disposition of `SIGCHLD`, restoring normal subprocess
+    management if bwrap was run from a process that was ignoring
+    that signal, such as Erlang or volumeicon
+  * Don't ignore `--userns 0`, `--userns2 0` or `--pidns 0` if
+    used
+  * Note that using a fd number ≥ 3 for these purposes is still
+  * preferred, to avoid confusion with the stdin, stdout, stderr
+  * that will be inherited by the command inside the container.
+  * Fix grammar in an error message
+  * Fix a broken link in the documentation
+  * Enable user namespaces in Github Actions configuration,
+    fixing a CI regression with newer Ubuntu
+  * Clarify comments
+
+-------------------------------------------------------------------
+Mon Sep 29 07:40:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop the nobwrap.helper again: glycin could find a solution to
+  detect it running in a CI/BuildEnvironment and it disarms
+  bubblewrap in this case, making this wrapper obsolete
+
+-------------------------------------------------------------------
 Wed Sep 10 13:34:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add a samplehelper to documentation that could be used by OBS
@@ -42,7 +72,7 @@ Tue Apr  2 12:14:33 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
   * Add --argv0
     https://github.com/containers/bubblewrap/issues/91
   * --symlink is now idempotent, meaning it succeeds if the symlink already
-    exists and already has the desired target 
+    exists and already has the desired target
   * Clarify security considerations in documentation
   * Clarify documentation for --cap-add
   * Report a better error message if mount(2) fails with ENOSPC

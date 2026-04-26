@@ -215,4 +215,33 @@
     <comment></comment>
     <requestid>1305066</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7e1b7ce1787d092a06fe3b4e5870666b</srcmd5>
+    <version>0.11.1</version>
+    <time>1777230645</time>
+    <user>anag_factory</user>
+    <comment>- Really drop the nobwrap.helper script as intended on Sep 29 2025.
+
+- update to 0.11.1:
+  * Reset disposition of `SIGCHLD`, restoring normal subprocess
+    management if bwrap was run from a process that was ignoring
+    that signal, such as Erlang or volumeicon
+  * Don't ignore `--userns 0`, `--userns2 0` or `--pidns 0` if
+    used
+  * Note that using a fd number ≥ 3 for these purposes is still
+  * preferred, to avoid confusion with the stdin, stdout, stderr
+  * that will be inherited by the command inside the container.
+  * Fix grammar in an error message
+  * Fix a broken link in the documentation
+  * Enable user namespaces in Github Actions configuration,
+    fixing a CI regression with newer Ubuntu
+  * Clarify comments
+
+- Drop the nobwrap.helper again: glycin could find a solution to
+  detect it running in a CI/BuildEnvironment and it disarms
+  bubblewrap in this case, making this wrapper obsolete
+
+    exists and already has the desired target</comment>
+    <requestid>1348886</requestid>
+  </revision>
 </revisionlist>
