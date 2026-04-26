@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  1 06:26:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.12.0:
+  * PIV: Add support for RSA 2048 private key import by
+    @sosthene-nitrokey in #721
+  * Enable support for python 3.14 by @sosthene-nitrokey in #738
+  * Add support for NetHSM v4 and release v0.12.0 by
+    @robin-nitrokey in #746
+
+-------------------------------------------------------------------
 Tue Mar 17 06:28:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.11.4:
