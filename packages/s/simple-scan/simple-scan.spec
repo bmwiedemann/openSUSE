@@ -17,7 +17,7 @@
 
 
 Name:           simple-scan
-Version:        49.1
+Version:        50.0
 Release:        0
 Summary:        Simple Scanning Utility
 License:        GPL-3.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.10.0
 BuildRequires:  pkgconfig(gusb) >= 0.2.7
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.0
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 1.1.5

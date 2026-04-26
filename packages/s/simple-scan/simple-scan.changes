@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  7 14:53:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Update cursor names to be correctly displayed on Wayland.
+  + Fix scanner selection disappearing after failed scan.
+  + Use AdwToggleGroup in preferences dialog.
+  + Bump minimum libadwaita version.
+  + Show in-app notification after export with open folder action.
+  + Fix if multiple pages in book-view the horizontal scroll bar is
+    not shown, except a resize event occurs.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 20 16:10:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
