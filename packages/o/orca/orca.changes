@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 16 06:21:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.1:
+  + Web:
+    - Fix presentation of multiline-text web combo boxes.
+    - Fix presentation of link file size.
+    - Fix double-presentation of "focus mode" when page load
+      completes.
+    - Fix say all looping in content, and eliminate some
+      chattiness.
+  + Preferences:
+    - Fix preferences saving to old profile path after rename.
+    - Fix bug preventing restoration of default voice values.
+    - Fix left-over JSONism that prevented spiel from being saved
+      as the speech server.
+    - Handle TypeError resulting from speech synthesizer crashing
+      during prefs save.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Mar 18 16:46:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 50.0.9:
