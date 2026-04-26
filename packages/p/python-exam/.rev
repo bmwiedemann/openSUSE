@@ -54,4 +54,12 @@
 - Refresh no-mock.patch, to remove it from install_requires.</comment>
     <requestid>1139835</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>3754c79b19f695881caac9ec675c9982</srcmd5>
+    <version>0.10.6</version>
+    <time>1777230733</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1349361</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,51 @@
+Index: exam-0.10.6/exam/asserts.py
+===================================================================
+--- exam-0.10.6.orig/exam/asserts.py
++++ exam-0.10.6/exam/asserts.py
+@@ -49,7 +49,15 @@ class ChangeWatcher(object):
+             self.__raise_postcondition_error('invalid')
+ 
+     def __apply(self):
+-        return self.check(*self.args, **self.kwargs)
++        # In newer Python versions method binding in Exam can incorrectly pass the test case instance as `check`
++        # Detect and correct this situation.
++        check = self.check
++
++        # If check is not callable but looks like a TestCase, fallback
++        if not callable(check) and hasattr(check, '__class__'):
++            raise TypeError(f"check must be callable, got {type(check)}")
++
++        return check(*self.args, **self.kwargs)
+ 
+     def __raise_postcondition_error(self, key):
+         message = self.POSTCONDITION_FAILURE_MESSAGE[key]
+Index: exam-0.10.6/exam/cases.py
+===================================================================
+--- exam-0.10.6.orig/exam/cases.py
++++ exam-0.10.6/exam/cases.py
+@@ -55,5 +55,7 @@ class Exam(AssertsMixin):
+         generators = (value(self) for _, value in self.__attrs_of_type(around))
+         with MultipleGeneratorsContextManager(*generators):
+             self.__run_hooks(before)
+-            getattr(super(Exam, self), 'run', noop)(*args, **kwargs)
++            # in newer Python3.11+: TestCase.run only accepts result=None)
++            result = args[0] if args else None
++            super(Exam, self).run(result)
+             self.__run_hooks(after)
+Index: exam-0.10.6/exam/mock.py
+===================================================================
+--- exam-0.10.6.orig/exam/mock.py
++++ exam-0.10.6/exam/mock.py
+@@ -16,10 +16,10 @@ class Mock(BaseMock):
+         assert not call(*args, **kwargs) == self.call_args
+ 
+     def assert_not_called_once_with(self, *args, **kwargs):
+-        assert len(self.__calls_matching(*args, **kwargs)) is not 1
++        assert len(self.__calls_matching(*args, **kwargs)) != 1
+ 
+     def assert_not_any_call(self, *args, **kwargs):
+-        assert len(self.__calls_matching(*args, **kwargs)) is 0
++        assert len(self.__calls_matching(*args, **kwargs)) == 0
+ 
+     def __calls_matching(self, *args, **kwargs):
+         calls_match = lambda other_call: call(*args, **kwargs) == other_call

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 26 04:59:06 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Added fix-python314.patch: to fix the test runs for latest python 
+
+-------------------------------------------------------------------
 Fri Jan 19 03:46:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

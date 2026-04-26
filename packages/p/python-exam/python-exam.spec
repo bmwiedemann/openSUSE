@@ -1,7 +1,7 @@
 #
 # spec file for package python-exam
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source1:        https://raw.githubusercontent.com/Fluxx/exam/master/LICENSE
 Patch0:         remove_nose.patch
 Patch1:         no-mock.patch
 Patch2:         fix-assertion-methods.patch
+Patch3:         fix-python314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
