@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 16 06:14:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.1:
+  + Add missing gettext domains
+
+-------------------------------------------------------------------
 Mon Mar 23 08:06:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

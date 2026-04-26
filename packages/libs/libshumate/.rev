@@ -198,4 +198,12 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345369</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5863a0b3ccc1cf25438e91027b984061</srcmd5>
+    <version>1.6.1</version>
+    <time>1777230666</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348432</requestid>
+  </revision>
 </revisionlist>
