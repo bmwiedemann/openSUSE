@@ -2653,4 +2653,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>Push GNOME 50</comment>
     <requestid>1345397</requestid>
   </revision>
+  <revision rev="287" vrev="1">
+    <srcmd5>5953e1cacf09577093a605f19396330a</srcmd5>
+    <version>50.1</version>
+    <time>1777230661</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348421</requestid>
+  </revision>
 </revisionlist>

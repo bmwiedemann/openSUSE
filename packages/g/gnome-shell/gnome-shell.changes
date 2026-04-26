@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 15 12:29:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.1:
+  + Use triangular noise shape for dithering lightbox vignette
+  + Fix glitch in quick settings with wrapped text in menu
+  + Fit on-screen keyboard better on very small screens
+  + Enable network agent on lock screen
+  + Add basic zoom support to captive portal
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Update translations.
+
+-------------------------------------------------------------------
 Wed Mar 25 01:39:49 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Fix packages for %suse_version bump (jsc#PED-15854).
