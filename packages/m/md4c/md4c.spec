@@ -1,7 +1,7 @@
 #
 # spec file for package md4c
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           md4c
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        C Markdown parser
 License:        MIT
@@ -79,7 +79,7 @@ This package contains development files needed to use md4c.
 
 %check
 pushd %{__builddir}
-../scripts/run-tests.sh
+python3 ../scripts/run-tests.py
 popd
 
 %files

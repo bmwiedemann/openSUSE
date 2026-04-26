@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Apr 20 19:32:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.5.3
+  * Avoid repeated prefix language- in code block language
+    specification if the input already explicitly includes the prefix
+  * Permissive autolink extensions (MD_FLAG_PERMISSIVExxxAUTOLINKS)
+    are now tiny bit more permissive, allowing + and - characters
+    to be anywhere in the path portion of the URL. This also
+    improves compatibility with GFM
+  * Make Unicode-specific code compliant to Unicode 18.0
+  * Fix quadratic time behavior caused by one-by-one walking
+    over block lines instead of calling md_lookup_line()
+  * Fix quadratic time and output size behavior caused by
+    malicious misuse of link reference definitions
+  * The strike-through extension (with flag MD_FLAG_STRIKETHROUGH)
+    now follows same logic as other emphasis spans in respect to
+    punctuation character and word boundaries
+  * Fix handling tab when removing trailing whitespace,
+    especially in connection with ATX headers
+  * We now correctly abort the parser when a callback returns
+    non-zero. (Previously it worked correctly only for negative
+    values, values greater than zero were causing strange and
+    inconsistent behavior)
+  * Fix handling a code span whose closer is on the next line and
+    yet another text follows. In the case we erroneously outputted
+    the closer code span mark as part of the text
+  * Fix md_decode_utf16le_before__(). (Only affected MD4C builds
+    built with -MD4C_USE_UTF16 on Windows)
+  * Do not try to interpret characters in a link URL as Markdown
+    syntax characters
+  * Fix detection of closing code block fence if it has a
+    trailing tabulator
+  * Fix invalid free() in an error path
+
+-------------------------------------------------------------------
 Tue Apr  2 14:20:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Init md4c
