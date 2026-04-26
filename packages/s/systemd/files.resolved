@@ -1,6 +1,13 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
+# Nesting rules for conditional scopes:
+#   - Max nesting depth is 2.
+#   - 'docs' and 'upstream' scopes may contain nested conditionals.
+#   - 'upstream' scopes may be nested inside any conditional.
+#   - All other nesting is disallowed.
+#
+
 %dir %{_sysconfdir}/systemd/resolved.conf.d
 %{_bindir}/resolvectl
 %{_bindir}/systemd-resolve
@@ -21,6 +28,9 @@
 %{_mandir}/man5/resolved.conf.5.gz
 %{_mandir}/man5/resolved.conf.d.5.gz
 %{_mandir}/man5/systemd.dns-delegate.5.gz
+%if %{with upstream}
+%{_mandir}/man5/systemd.rr.5.gz
+%endif
 %{_mandir}/man8/libnss_resolve.so.2.8.gz
 %{_mandir}/man8/nss-resolve.8.gz
 %{_mandir}/man8/systemd-resolved.8.gz

@@ -1,6 +1,13 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
+# Nesting rules for conditional scopes:
+#   - Max nesting depth is 2.
+#   - 'docs' and 'upstream' scopes may contain nested conditionals.
+#   - 'upstream' scopes may be nested inside any conditional.
+#   - All other nesting is disallowed.
+#
+
 %lang(be) %{_journalcatalogdir}/systemd.be.catalog
 %lang(be@latin) %{_journalcatalogdir}/systemd.be@latin.catalog
 %lang(bg) %{_journalcatalogdir}/systemd.bg.catalog

@@ -7985,4 +7985,34 @@ handle manual pages that consist only of a .so directive such as
 - systemd-update-helper: fix do_install_units() incorrectly returning 1 when no</comment>
     <requestid>1338788</requestid>
   </revision>
+  <revision rev="467" vrev="1">
+    <srcmd5>22e8a7429f7793761e8e998ec8d5a616</srcmd5>
+    <version>260.1</version>
+    <time>1777230675</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to v260.1 (commit c0a5a2516d28601fb3afc1a77d7b42fcfe38fced)
+  See https://github.com/openSUSE/systemd/blob/SUSE/v260/NEWS for details.
+  - Drop support for System V service scripts.
+    - Drop 0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
+    - Drop 0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
+  - Required versions of various library dependencies have been raised.
+  - systemd-update-helper: switch to the new command  'enqueue-marked'.
+  - Restore autovt@.service alias (a fallout from upstream commit
+    072e72424b2e6da1c96489ef6996f49fabd46474)
+
+- systemd.spec: introduce %{container} bcond for container subpackage
+
+- Enable systemd-boot on loongarch64.
+
+  This update includes the following fix:
+    3513862eab udev: check for invalid chars in various fields received from the kernel (bsc#1259697)
+  This update includes the following fixes:
+    497d017241 machined: reject invalid class types when registering machines (bsc#1259650 CVE-2026-4105)
+    6566dc1451 nspawn: normalize pivot_root paths (bsc#1261400)
+    718711ed87 nspawn: apply BindUser/Ephemeral from settings file only if trusted (bsc#1261400)
+  This upgrade includes the following fixes:
+    36afb086a1 core: validate ref_uid before checking in AttachProcesses method (bsc#1259987)
+    3cee294fe8 core: validate input cgroup path more prudently (bsc#1259418 CVE-2026-29111)</comment>
+    <requestid>1348897</requestid>
+  </revision>
 </revisionlist>

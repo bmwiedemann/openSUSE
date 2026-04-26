@@ -1,6 +1,13 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
+# Nesting rules for conditional scopes:
+#   - Max nesting depth is 2.
+#   - 'docs' and 'upstream' scopes may contain nested conditionals.
+#   - 'upstream' scopes may be nested inside any conditional.
+#   - All other nesting is disallowed.
+#
+
 %dir %{_sysconfdir}/systemd/nspawn
 %{_bindir}/systemd-nspawn
 %{_datadir}/bash-completion/completions/systemd-nspawn
@@ -24,10 +31,10 @@
 %{_systemd_util_dir}/network/80-container-ve.network
 %{_systemd_util_dir}/network/80-container-vz.link
 %{_systemd_util_dir}/network/80-container-vz.network
-%{_systemd_util_dir}/network/80-namespace-ns.link
-%{_systemd_util_dir}/network/80-namespace-ns.network
 %{_systemd_util_dir}/network/80-namespace-ns-tun.link
 %{_systemd_util_dir}/network/80-namespace-ns-tun.network
+%{_systemd_util_dir}/network/80-namespace-ns.link
+%{_systemd_util_dir}/network/80-namespace-ns.network
 %endif
 %{_systemd_util_dir}/systemd-mountfsd
 %{_systemd_util_dir}/systemd-mountwork
@@ -91,9 +98,9 @@
 %if %{with docs}
 %{_mandir}/man1/importctl.1.gz
 %{_mandir}/man5/org.freedesktop.import1.5.gz
+%{_mandir}/man8/systemd-import-generator.8.gz
 %{_mandir}/man8/systemd-importd.8.gz
 %{_mandir}/man8/systemd-importd.service.8.gz
-%{_mandir}/man8/systemd-import-generator.8.gz
 %endif
 %{_systemd_util_dir}/import-pubring.pgp
 %{_systemd_util_dir}/systemd-export
@@ -101,11 +108,11 @@
 %{_systemd_util_dir}/systemd-import-fs
 %{_systemd_util_dir}/systemd-importd
 %{_systemd_util_dir}/systemd-pull
-%{_systemdgeneratordir}/systemd-import-generator
 %{_systemd_util_dir}/user/dbus-org.freedesktop.import1.service
 %{_systemd_util_dir}/user/sockets.target.wants/systemd-importd.socket
 %{_systemd_util_dir}/user/systemd-importd.service
 %{_systemd_util_dir}/user/systemd-importd.socket
+%{_systemdgeneratordir}/systemd-import-generator
 %{_unitdir}/dbus-org.freedesktop.import1.service
 %{_unitdir}/sockets.target.wants/systemd-importd.socket
 %{_unitdir}/systemd-importd.service

@@ -1,6 +1,13 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
+# Nesting rules for conditional scopes:
+#   - Max nesting depth is 2.
+#   - 'docs' and 'upstream' scopes may contain nested conditionals.
+#   - 'upstream' scopes may be nested inside any conditional.
+#   - All other nesting is disallowed.
+#
+
 %if %{without bootstrap}
 %dir %{_libdir}/cryptsetup
 %endif
@@ -39,7 +46,6 @@
 %dir %{_unitdir}/initrd.target.wants
 %doc %{_udevhwdbdir}/README
 %doc %{_udevrulesdir}/README
-%ghost %attr(0600,root,root) %{_localstatedir}/lib/systemd/random-seed
 %ghost %attr(444, root, root) %{_sysconfdir}/udev/hwdb.bin
 %ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
 %ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
@@ -63,6 +69,9 @@
 %{_datadir}/bash-completion/completions/bootctl
 %{_datadir}/bash-completion/completions/kernel-install
 %{_datadir}/bash-completion/completions/systemd-cryptenroll
+%if %{with upstream}
+%{_datadir}/bash-completion/completions/systemd-hwdb
+%endif
 %{_datadir}/bash-completion/completions/udevadm
 %endif
 %{_datadir}/dbus-1/system-services/org.freedesktop.timesync1.service
@@ -72,6 +81,9 @@
 %if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_bootctl
 %{_datadir}/zsh/site-functions/_kernel-install
+%if %{with upstream}
+%{_datadir}/zsh/site-functions/_systemd-hwdb
+%endif
 %{_datadir}/zsh/site-functions/_udevadm
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-fido2.so
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-pkcs11.so
@@ -304,17 +316,13 @@
 %{_udevhwdbdir}/60-keyboard.hwdb
 %{_udevhwdbdir}/60-seat.hwdb
 %{_udevhwdbdir}/60-sensor.hwdb
-%if %{with upstream}
 %{_udevhwdbdir}/60-tpm2.hwdb
-%endif
 %{_udevhwdbdir}/70-analyzers.hwdb
 %{_udevhwdbdir}/70-av-production.hwdb
 %{_udevhwdbdir}/70-cameras.hwdb
 %{_udevhwdbdir}/70-hardware-wallets.hwdb
 %{_udevhwdbdir}/70-joystick.hwdb
-%if %{with upstream}
 %{_udevhwdbdir}/70-lights.hwdb
-%endif
 %{_udevhwdbdir}/70-maker-tools.hwdb
 %{_udevhwdbdir}/70-mouse.hwdb
 %{_udevhwdbdir}/70-pda.hwdb
@@ -344,13 +352,9 @@
 %{_udevrulesdir}/60-persistent-v4l.rules
 %{_udevrulesdir}/60-sensor.rules
 %{_udevrulesdir}/60-serial.rules
-%if %{with upstream}
 %{_udevrulesdir}/60-tpm2-id.rules
-%endif
 %{_udevrulesdir}/64-btrfs.rules
-%if %{with upstream}
 %{_udevrulesdir}/65-integration.rules
-%endif
 %{_udevrulesdir}/70-camera.rules
 %{_udevrulesdir}/70-joystick.rules
 %ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips riscv64 loongarch64

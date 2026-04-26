@@ -1,6 +1,13 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
+# Nesting rules for conditional scopes:
+#   - Max nesting depth is 2.
+#   - 'docs' and 'upstream' scopes may contain nested conditionals.
+#   - 'upstream' scopes may be nested inside any conditional.
+#   - All other nesting is disallowed.
+#
+
 %dir %{_datadir}/systemd/gatewayd
 %dir %{_sysconfdir}/systemd/journal-remote.conf.d
 %dir %{_sysconfdir}/systemd/journal-upload.conf.d

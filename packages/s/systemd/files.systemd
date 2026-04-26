@@ -1,6 +1,12 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
+# Nesting rules for conditional scopes:
+#   - Max nesting depth is 2.
+#   - 'docs' and 'upstream' scopes may contain nested conditionals.
+#   - 'upstream' scopes may be nested inside any conditional.
+#   - All other nesting is disallowed.
+#
 
 %dir %{_binfmtdir}
 %if %{without bootstrap}
@@ -14,9 +20,7 @@
 %dir %{_datadir}/dbus-1/system.d
 %dir %{_datadir}/factory
 %dir %{_datadir}/systemd
-%if %{with upstream}
 %dir %{_datadir}/user-tmpfiles.d
-%endif
 %if %{without bootstrap}
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
@@ -24,9 +28,6 @@
 %dir %{_environmentdir}
 %dir %{_journalcatalogdir}
 %dir %{_libdir}/systemd
-%if %{without upstream}
-%dir %{_localstatedir}/lib/systemd
-%endif
 %dir %{_modprobedir}
 %dir %{_sysconfdir}/X11/xorg.conf.d
 %dir %{_sysconfdir}/binfmt.d
@@ -76,7 +77,7 @@
 %dir %{_unitdir}/shutdown.target.wants
 %dir %{_unitdir}/sockets.target.wants
 %dir %{_unitdir}/sysinit.target.wants
-%if %{with upstream}
+%if %{without bootstrap}
 %dir %{_unitdir}/system-update-pre.target.wants
 %endif
 %dir %{_unitdir}/timers.target.wants
@@ -211,9 +212,7 @@
 %{_datadir}/pkgconfig/systemd.pc
 %{_datadir}/polkit-1/actions/io.systemd.ask-password.policy
 %{_datadir}/polkit-1/actions/io.systemd.credentials.policy
-%if %{with upstream}
 %{_datadir}/polkit-1/actions/io.systemd.sysext.policy
-%endif
 %{_datadir}/polkit-1/actions/org.freedesktop.hostname1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.locale1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.login1.policy
@@ -223,9 +222,7 @@
 %{_datadir}/polkit-1/rules.d/empower.rules
 %{_datadir}/systemd/kbd-model-map
 %{_datadir}/systemd/language-fallback-map
-%if %{with upstream}
 %{_datadir}/user-tmpfiles.d/20-systemd-varlink.conf
-%endif
 %if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_busctl
 %{_datadir}/zsh/site-functions/_coredumpctl
@@ -396,6 +393,9 @@
 %{_mandir}/man8/systemd-boot-check-no-failures.8.gz
 %{_mandir}/man8/systemd-boot-check-no-failures.service.8.gz
 %{_mandir}/man8/systemd-confext-initrd.service.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-confext-sysroot.service.8.gz
+%endif
 %{_mandir}/man8/systemd-confext.8.gz
 %{_mandir}/man8/systemd-confext.service.8.gz
 %{_mandir}/man8/systemd-coredump.8.gz
@@ -432,6 +432,9 @@
 %{_mandir}/man8/systemd-sysctl.8.gz
 %{_mandir}/man8/systemd-sysctl.service.8.gz
 %{_mandir}/man8/systemd-sysext-initrd.service.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-sysext-sysroot.service.8.gz
+%endif
 %{_mandir}/man8/systemd-sysext.8.gz
 %{_mandir}/man8/systemd-sysext.service.8.gz
 %{_mandir}/man8/systemd-system-update-generator.8.gz
@@ -447,10 +450,6 @@
 %{_mandir}/man8/systemd-tmpfiles.8.gz
 %{_mandir}/man8/systemd-update-done.8.gz
 %{_mandir}/man8/systemd-update-done.service.8.gz
-%if %{with utmp}
-%{_mandir}/man8/systemd-update-utmp.8.gz
-%{_mandir}/man8/systemd-update-utmp.service.8.gz
-%endif
 %{_mandir}/man8/systemd-user-sessions.8.gz
 %{_mandir}/man8/systemd-user-sessions.service.8.gz
 %{_mandir}/man8/systemd-userdbd.8.gz
@@ -504,9 +503,6 @@
 %{_systemd_util_dir}/systemd-timedated
 %{_systemd_util_dir}/systemd-update-done
 %{_systemd_util_dir}/systemd-update-helper
-%if %{with utmp}
-%{_systemd_util_dir}/systemd-update-utmp
-%endif
 %{_systemd_util_dir}/systemd-user-runtime-dir
 %{_systemd_util_dir}/systemd-user-sessions
 %if %{without bootstrap}
@@ -553,12 +549,13 @@
 %if %{with sd_boot}
 %{_tmpfilesdir}/20-systemd-stub.conf
 %endif
-%if %{with upstream}
 %{_tmpfilesdir}/20-systemd-varlink.conf
-%endif
 %{_tmpfilesdir}/credstore.conf
 %{_tmpfilesdir}/journal-nocow.conf
 %{_tmpfilesdir}/provision.conf
+%if %{with upstream}
+%{_tmpfilesdir}/root.conf
+%endif
 %{_tmpfilesdir}/systemd-nologin.conf
 %{_tmpfilesdir}/systemd-suse.conf
 %{_tmpfilesdir}/systemd-tmp.conf
@@ -568,9 +565,7 @@
 %{_udevrulesdir}/71-seat.rules
 %{_udevrulesdir}/73-seat-late.rules
 %{_udevrulesdir}/99-systemd.rules
-%if %{without upstream}
 %{_unitdir}/autovt@.service
-%endif
 %{_unitdir}/basic.target
 %{_unitdir}/blockdev@.target
 %{_unitdir}/bluetooth.target
@@ -689,13 +684,10 @@
 %{_unitdir}/sysinit.target.wants/systemd-sysusers.service
 %{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup.service
 %{_unitdir}/sysinit.target.wants/systemd-update-done.service
-%if %{with utmp}
-%{_unitdir}/sysinit.target.wants/systemd-update-utmp.service
-%endif
 %{_unitdir}/syslog.socket
 %{_unitdir}/system-update-cleanup.service
 %{_unitdir}/system-update-pre.target
-%if %{with upstream}
+%if %{without bootstrap}
 %{_unitdir}/system-update-pre.target.wants/systemd-coredump.socket
 %endif
 %{_unitdir}/system-update.target
@@ -708,6 +700,9 @@
 %{_unitdir}/systemd-binfmt.service
 %{_unitdir}/systemd-boot-check-no-failures.service
 %{_unitdir}/systemd-confext-initrd.service
+%if %{with upstream}
+%{_unitdir}/systemd-confext-sysroot.service
+%endif
 %{_unitdir}/systemd-confext.service
 %if %{without bootstrap}
 %{_unitdir}/systemd-coredump.socket
@@ -740,6 +735,9 @@
 %{_unitdir}/systemd-soft-reboot.service
 %{_unitdir}/systemd-sysctl.service
 %{_unitdir}/systemd-sysext-initrd.service
+%if %{with upstream}
+%{_unitdir}/systemd-sysext-sysroot.service
+%endif
 %{_unitdir}/systemd-sysext.service
 %{_unitdir}/systemd-sysext.socket
 %{_unitdir}/systemd-sysext@.service
@@ -750,9 +748,6 @@
 %{_unitdir}/systemd-tmpfiles-clean.timer
 %{_unitdir}/systemd-tmpfiles-setup.service
 %{_unitdir}/systemd-update-done.service
-%if %{with utmp}
-%{_unitdir}/systemd-update-utmp.service
-%endif
 %{_unitdir}/systemd-user-sessions.service
 %if %{without bootstrap}
 %{_unitdir}/systemd-userdb-load-credentials.service

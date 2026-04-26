@@ -31,9 +31,9 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    259.5
+%define systemd_version    260.1
 %define systemd_release    0
-%define archive_version    +suse.6.g58a9b1726d
+%define archive_version    %{nil}
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -57,8 +57,9 @@
 %global mini -mini
 %global with_bootstrap 1
 %else
-%global mini %nil
+%global mini %{nil}
 %bcond_without  apparmor
+%bcond_without  container
 %bcond_without  docs
 %bcond_without  homed
 %bcond_without  importd
@@ -67,13 +68,12 @@
 %bcond_without  networkd
 %bcond_without  portabled
 %bcond_without  resolved
-%ifarch %{ix86} x86_64 aarch64 riscv64
+%ifarch %{ix86} x86_64 aarch64 riscv64 loongarch64
 %bcond_without  sd_boot
 %else
 %bcond_with     sd_boot
 %endif
 %bcond_without  selinux
-%bcond_without  sysvcompat
 %bcond_without  testsuite
 %endif
 
@@ -89,49 +89,54 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{without bootstrap}
 BuildRequires:  bpftool
 BuildRequires:  clang
-%if %{with apparmor}
-BuildRequires:  libapparmor-devel
-%endif
-BuildRequires:  libgcrypt-devel
 # python is only required for generating systemd.directives.xml
-BuildRequires:  python3-base
-%endif
-%if %{with docs}
-BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  libxslt-tools
+BuildRequires:  python3-base >= 3.9.0
 BuildRequires:  python3-lxml
 %endif
 %if %{without bootstrap}
 BuildRequires:  pkgconfig(audit)
+BuildRequires:  pkgconfig(blkid) >= 2.37
+%if %{with apparmor}
+BuildRequires:  pkgconfig(libapparmor)
+%endif
 BuildRequires:  pkgconfig(libbpf)
+BuildRequires:  pkgconfig(libcryptsetup) >= 2.4.0
 BuildRequires:  pkgconfig(libdw)
+BuildRequires:  pkgconfig(libgcrypt)
 BuildRequires:  pkgconfig(libiptc)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libqrencode)
-BuildRequires:  pkgconfig(libseccomp) >= 2.3.1
+BuildRequires:  pkgconfig(libseccomp) >= 2.4.0
 %if %{with selinux}
 BuildRequires:  pkgconfig(libselinux) >= 2.1.9
 %endif
+BuildRequires:  pkgconfig(libxcrypt) >= 4.4.0
 BuildRequires:  pkgconfig(libzstd)
 %endif
 BuildRequires:  fdupes
 BuildRequires:  gperf
-BuildRequires:  libacl-devel
-BuildRequires:  libmount-devel >= 2.27.1
 BuildRequires:  meson >= 0.53.2
-BuildRequires:  pam-devel
 BuildRequires:  python3-Jinja2
+BuildRequires:  python3-pefile
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  pkgconfig(blkid) >= 2.26
+BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(mount) >= 2.27.1
+BuildRequires:  pkgconfig(pam)
+%if %{with docs}
+BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  libxslt-tools
+BuildRequires:  python3-lxml
+%endif
+%if %{with upstream}
 # The following packages are only required by the execution of the unit tests
-# during the 'check' section.
+# during the 'check' section (currently only run for upstream builds).
 BuildRequires:  acl
 BuildRequires:  distribution-release
-BuildRequires:  python3-pefile
 BuildRequires:  timezone
+%endif
 
 %if %{with bootstrap}
 #!BuildIgnore:  dbus-service
@@ -199,9 +204,6 @@ Obsoletes:      systemd-analyze < 201
 Source0:        systemd-%{version}%{?archive_version}.tar.xz
 Source1:        systemd-rpmlintrc
 Source3:        systemd-update-helper
-%if %{with sysvcompat}
-Source4:        systemd-sysv-install
-%endif
 Source5:        tmpfiles-suse.conf
 Source6:        baselibs.conf
 Source7:        triggers.systemd
@@ -217,7 +219,6 @@ Source201:      files.udev
 Source202:      files.container
 Source203:      files.networkd
 Source204:      files.devel
-Source205:      files.sysvcompat
 Source206:      files.uefi-boot
 Source207:      files.experimental
 Source208:      files.resolved
@@ -225,8 +226,7 @@ Source209:      files.homed
 Source210:      files.lang
 Source211:      files.journal-remote
 Source212:      files.portable
-Source213:      files.devel-doc
-Source214:      files.ukify
+Source213:      files.ukify
 
 #
 # All changes backported from upstream are tracked by the git repository, which
@@ -243,10 +243,6 @@ Source214:      files.ukify
 #
 %if %{without upstream}
 Patch:          0001-Drop-or-soften-some-upstream-warnings.patch
-%if %{with sysvcompat}
-Patch:          0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
-Patch:          0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
-%endif
 
 # The patches listed below are in quarantine. Normally, all changes must be
 # pushed to upstream first and then cherry-picked into the SUSE git
@@ -285,25 +281,6 @@ Conflicts:      libudev-devel
 %description devel
 Development headers and files for libsystemd and libudev libraries for
 developing and building applications linking to these libraries.
-
-%if %{with sysvcompat}
-%package sysvcompat
-Summary:        SySV and LSB init script support for systemd (deprecated)
-License:        LGPL-2.1-or-later
-Requires:       %{name} = %{version}-%{release}
-Provides:       systemd-sysvinit = %{version}-%{release}
-Obsoletes:      systemd-sysvinit < %{version}-%{release}
-
-%description sysvcompat
-This package ships the necessary files that enable minimal SysV and LSB init
-scripts support in systemd. It also contains the obsolete SysV init tools
-telinit(8) and runlevel(8). You should consider using systemctl(1) instead.
-
-Unless you have a 3rd party application installed on your system that still
-relies on such scripts, this package should not be needed at all.
-
-Please note that the content of this package is considered as deprecated.
-%endif
 
 %package -n libsystemd0%{?mini}
 Summary:        Component library for systemd
@@ -364,17 +341,16 @@ BuildRequires:  suse-module-tools
 %if %{without bootstrap}
 # fdisk is a build requirement for repart
 BuildRequires:  pkgconfig(fdisk)
-BuildRequires:  pkgconfig(libcryptsetup) >= 1.6.0
-BuildRequires:  pkgconfig(libkmod) >= 15
-# Enable fido2 and tpm supports in systemd-cryptsetup, systemd-enroll. However
-# these tools are not linked against the libs directly but instead are
-# dlopen()ed at runtime to avoid hard dependencies. Hence the use of soft
-# dependencies.
 BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(libcryptsetup) >= 2.4.0
 BuildRequires:  pkgconfig(libfido2)
+BuildRequires:  pkgconfig(libkmod) >= 15
+BuildRequires:  pkgconfig(p11-kit-1)
 BuildRequires:  pkgconfig(tss2-esys)
 BuildRequires:  pkgconfig(tss2-mu)
 BuildRequires:  pkgconfig(tss2-rc)
+# These Recommends because some symbols of these libs are dlopen()ed by
+# systemd-cryptsetup, systemd-enroll.
 Recommends:     libarchive13
 Recommends:     libfido2
 Recommends:     libtss2-esys0
@@ -456,7 +432,7 @@ https://en.opensuse.org/Systemd-boot
 [2] https://systemd.io/BOOT_LOADER_INTERFACE/
 %endif
 
-%if %{without bootstrap}
+%if %{with container}
 %package container
 Summary:        Systemd tools for container management
 License:        LGPL-2.1-or-later
@@ -526,7 +502,7 @@ Requires:       %{name} = %{version}-%{release}
 # This Recommends because some symbols of libidn2 are dlopen()ed by resolved
 Recommends:     libidn2
 BuildRequires:  pkgconfig(libidn2)
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(openssl) >= 3.0.0
 Obsoletes:      nss-resolve < %{version}-%{release}
 Provides:       nss-resolve = %{version}-%{release}
 Provides:       systemd-network:/usr/lib/systemd/systemd-resolved
@@ -553,10 +529,10 @@ License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 BuildRequires:  pkgconfig(fdisk)
-BuildRequires:  pkgconfig(libcryptsetup)
+BuildRequires:  pkgconfig(libcryptsetup) >= 2.4.0
 BuildRequires:  pkgconfig(libfido2)
 BuildRequires:  pkgconfig(libqrencode)
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(openssl) >= 3.0.0
 BuildRequires:  pkgconfig(pwquality)
 # These Recommends because some symbols of these libs are dlopen()ed by homed
 Recommends:     libcryptsetup12
@@ -751,15 +727,7 @@ for the C APIs.
         -Dbashcompletiondir=no \
         -Dzshcompletiondir=no \
 %endif
-%if %{without sysvcompat}
-        -Dsysvinit-path= \
-        -Dsysvrcnd-path= \
-        -Drc-local= \
         -Dcompat-sysv-interfaces=false \
-%else
-        -Drc-local=/etc/init.d/boot.local \
-        -Dcompat-sysv-interfaces=true \
-%endif
         -Dcreate-log-dirs=false \
         -Ddebug-shell=/bin/bash \
         \
@@ -827,6 +795,7 @@ for the C APIs.
         -Dmachined=%{when machined} \
         -Dman=%{enabled_with docs} \
         -Dnetworkd=%{when networkd} \
+        -Dnspawn=%{enabled_with container} \
         -Dportabled=%{when portabled} \
         -Dremote=%{enabled_with journal_remote} \
         -Dselinux=%{enabled_with selinux} \
@@ -876,6 +845,9 @@ export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootaa64.efi"
 %ifarch riscv64
 export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootriscv64.efi"
 %endif
+%ifarch loongarch64
+export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootloongarch64.efi"
+%endif
 %endif
 
 # Don't ship resolvconf symlink for now as it conflicts with the binary shipped
@@ -886,9 +858,6 @@ rm -f %{buildroot}%{_mandir}/man1/resolvconf.1*
 %endif
 
 install -m0755 -D %{SOURCE3} %{buildroot}/%{_systemd_util_dir}/systemd-update-helper
-%if %{with sysvcompat}
-install -m0755 -D %{SOURCE4} %{buildroot}/%{_systemd_util_dir}/systemd-sysv-install
-%endif
 
 # Install the fixlets
 mkdir -p %{buildroot}%{_systemd_util_dir}/rpm
@@ -909,6 +878,10 @@ install -m0644 -D %{SOURCE9} %{buildroot}%{_pam_vendordir}/systemd-run0
 
 # Don't enable wall ask password service, it spams every console (bnc#747783).
 rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.path
+
+# Restore autovt static alias dropped by commit 072e72424b2e6 - getty@.service
+# acts as a fallback.
+ln -s getty@.service %{buildroot}%{_unitdir}/autovt@.service
 
 # do not ship sysctl defaults in systemd package, will be part of aaa_base (in
 # procps for now).
@@ -1044,8 +1017,6 @@ install -m0644 test/integration-tests/README.md %{buildroot}%{_testsuitedir}/int
 %find_lang systemd
 %else
 rm -f %{buildroot}%{_journalcatalogdir}/*
-rm -f %{buildroot}%{_bindir}/systemd-nspawn
-rm -f %{buildroot}%{_systemd_util_dir}/*/systemd-nspawn@.service
 %endif
 
 %if %{without docs}
@@ -1162,7 +1133,7 @@ fi
 %ldconfig_scriptlets -n libsystemd0%{?mini}
 %ldconfig_scriptlets -n libudev%{?mini}1
 
-%if %{without bootstrap}
+%if %{with container}
 %pre container
 %systemd_pre systemd-mountfsd.socket
 %systemd_pre systemd-nsresourced.socket
@@ -1310,7 +1281,7 @@ rm -rf \
 %include %{SOURCE206}
 %endif
 
-%if %{without bootstrap}
+%if %{with container}
 %files container
 %include %{SOURCE202}
 %endif
@@ -1328,11 +1299,6 @@ rm -rf \
 %files devel
 %license LICENSE.LGPL2.1
 %include %{SOURCE204}
-
-%if %{with sysvcompat}
-%files sysvcompat
-%include %{SOURCE205}
-%endif
 
 %files -n libsystemd0%{?mini}
 %license LICENSE.LGPL2.1
@@ -1352,7 +1318,7 @@ rm -rf \
 %if %{with docs}
 %files doc
 %{_docdir}/systemd/
-%include %{SOURCE213}
+%{_mandir}/man3/*.3%{?ext_man}
 %endif
 
 %files experimental
@@ -1381,7 +1347,7 @@ rm -rf \
 
 %if %{with sd_boot}
 %files ukify
-%include %{SOURCE214}
+%include %{SOURCE213}
 %endif
 
 %changelog
