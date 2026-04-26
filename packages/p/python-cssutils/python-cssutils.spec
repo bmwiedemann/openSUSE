@@ -1,7 +1,7 @@
 #
 # spec file for package python-cssutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-cssutils
-Version:        2.11.1
+Version:        2.14.0
 Release:        0
 Summary:        A CSS Cascading Style Sheets library for Python
 License:        LGPL-3.0-or-later
@@ -27,15 +27,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/cssutils
 Source0:        https://files.pythonhosted.org/packages/source/c/cssutils/cssutils-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module encutils}
+BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
+Requires:       python-encutils
 Requires:       python-more-itertools
 BuildArch:      noarch
 %python_subpackages
@@ -69,6 +72,5 @@ A Python package to parse and build CSS Cascading Style Sheets. DOM only, not an
 %python_alternative %{_bindir}/cssparse
 %{python_sitelib}/cssutils-%{version}.dist-info
 %{python_sitelib}/cssutils/
-%{python_sitelib}/encutils/
 
 %changelog

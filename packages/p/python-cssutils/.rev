@@ -322,4 +322,17 @@ This fixes the file conflict in factory (forwarded request 171294 from TheBlackC
     <comment>- Convert to libalternatives</comment>
     <requestid>1291183</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9fb16b36798157eb21f184066326b442</srcmd5>
+    <version>2.14.0</version>
+    <time>1777230751</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.14.0:
+  * Moved tests out of the install.
+  * Replaced encutils with separate package of the same name.
+  * Simplify dictionary keys access in _ColorProd function.
+  * Allow @font-face rules nested inside @media rules.
+  * Added REM and other CSS3 length units to length macros.</comment>
+    <requestid>1349394</requestid>
+  </revision>
 </revisionlist>

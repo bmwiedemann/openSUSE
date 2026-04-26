@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 26 14:14:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.0:
+  * Moved tests out of the install.
+  * Replaced encutils with separate package of the same name.
+  * Simplify dictionary keys access in _ColorProd function.
+  * Allow @font-face rules nested inside @media rules.
+  * Added REM and other CSS3 length units to length macros.
+
+-------------------------------------------------------------------
 Tue Jul  8 08:07:18 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
