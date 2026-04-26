@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Apr 25 21:03:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.8:
+  * [CHORE] pin sqlglot to >=30.0.0,<31.0.0
+  * [FIX] cast parsed SQL expressions to the correct type for
+    type safety
+  * [FIX] improve typing compatibility by preserving transformed
+    `sqlglot` expressions as typed MySQL/SQLite expressions
+  * [CHORE] refresh GitHub Actions workflow dependencies,
+    including `actions/checkout` v6 and newer Docker actions
+  * [CHORE] update documentation and packaging metadata by
+    refreshing badge links, fixing the CodeQL badge, bumping
+    Sphinx
+  * [FEAT] add support for SQLite `JSONB` column type
+  * [FIX] enhance the translation of SQLite timestamp expressions
+    that use `current_timestamp` within date/time functions
+  * [FEAT] add support for SQLite shorthand foreign key
+    references that implicitly reference primary keys
+  * [FIX] transfer `TEXT` default
+  * [FIX] removed the Hatch `sources = ["src"]` rewrite so
+    `sdists` now keep the `src/sqlite3_to_mysql` tree, letting
+  * [FEAT] transfer SQLite views as MySQL native views
+  * [CHORE] improve type and default value translation logic
+  * [CHORE] add Python 3.14 support
+  * [FEAT] enhance table creation logic to handle default values
+    and improve error handling
+  * [FEAT] translate SQLite defaults to MySQL
+  * [FEAT] exclude transferring SQLite tables via
+    `-e`/`--exclude-sqlite-tables`
+  * [FIX] fix importing `typing_extensions` on Python >= 3.11
+  * [FIX] fix MySQL connection parameters to handle optional
+    socket, host and port
+  * [FIX] fix pyproject.toml build sources and specify package
+    inclusion for sdist and wheel
+  * [FIX] fix conflict between MySQL port and socket options in
+    CLI
+  * [FEAT] add MySQL Unix socket connection support via the
+    `--mysql-socket` option
+
+-------------------------------------------------------------------
 Sat Jun 28 12:00:45 UTC 2025 - Enno Gotthold <egotthold@suse.com>
 
 - Support libalternatives for 16.0 and newer
@@ -38,7 +78,7 @@ Sun Oct 22 14:13:29 UTC 2023 - Enno Gotthold <egotthold@suse.com>
 Sat Dec  3 01:01:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.4.16
-  * Fix #46 - utf8 support 
+  * Fix #46 - utf8 support
 
 - Update to version 1.4.15
   *  Add option to truncate existing tables before inserting data
@@ -47,7 +87,7 @@ Sat Dec  3 01:01:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Fix safe_identifier_length
 
 - Update to version 1.4.13
-  * Add option to update duplicate records  
+  * Add option to update duplicate records
 
 -------------------------------------------------------------------
 Mon Jun 21 10:13:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>

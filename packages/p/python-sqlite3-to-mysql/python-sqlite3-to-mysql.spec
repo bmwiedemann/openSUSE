@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlite3-to-mysql
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,18 @@
 #
 
 
-%define short_name sqlite3-to-mysql
-%define skip_python2 1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
 Name:           python-sqlite3-to-mysql
-Version:        2.4.0
+Version:        2.5.8
 Release:        0
 Summary:        A Python tool to transfer data from SQLite 3 to MySQL
 License:        MIT
 URL:            https://github.com/techouse/sqlite3-to-mysql
-Source:         %{short_name}-%{version}.tar.gz
-# libalternative
-%if %{with libalternatives}
-Requires:       alts
-BuildRequires:  alts
-%else
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%endif
+Source:         https://files.pythonhosted.org/packages/source/s/sqlite3_to_mysql/sqlite3_to_mysql-%{version}.tar.gz
 # Package Requirements
 BuildRequires:  %{python_module SQLAlchemy-Utils}
 BuildRequires:  %{python_module SQLAlchemy}
@@ -63,6 +52,14 @@ Requires:       python-tqdm >= 4.65.0
 Requires:       python-types-python-dateutil
 Requires:       python-typing_extensions
 BuildArch:      noarch
+# libalternative
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module click >= 7.0}
@@ -87,7 +84,7 @@ BuildRequires:  %{python_module tqdm >= 4.35.0}
 A Python tool to transfer data from SQLite 3 to MySQL
 
 %prep
-%autosetup -p1 -n sqlite3-to-mysql-%{version}
+%autosetup -p1 -n sqlite3_to_mysql-%{version}
 
 %build
 %pyproject_wheel

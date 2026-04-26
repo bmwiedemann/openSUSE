@@ -63,4 +63,41 @@
     <comment></comment>
     <requestid>1288954</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>169efabc136b2a852c90bf5016869212</srcmd5>
+    <version>2.5.8</version>
+    <time>1777230692</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.5.8:
+  * [CHORE] pin sqlglot to &gt;=30.0.0,&lt;31.0.0
+  * [FIX] cast parsed SQL expressions to the correct type for
+    type safety
+  * [FIX] improve typing compatibility by preserving transformed
+    `sqlglot` expressions as typed MySQL/SQLite expressions
+  * [CHORE] refresh GitHub Actions workflow dependencies,
+    including `actions/checkout` v6 and newer Docker actions
+  * [CHORE] update documentation and packaging metadata by
+    refreshing badge links, fixing the CodeQL badge, bumping
+    Sphinx
+  * [FEAT] add support for SQLite `JSONB` column type
+  * [FIX] enhance the translation of SQLite timestamp expressions
+    that use `current_timestamp` within date/time functions
+  * [FEAT] add support for SQLite shorthand foreign key
+    references that implicitly reference primary keys
+  * [FIX] transfer `TEXT` default
+  * [FIX] removed the Hatch `sources = [&quot;src&quot;]` rewrite so
+    `sdists` now keep the `src/sqlite3_to_mysql` tree, letting
+  * [FEAT] transfer SQLite views as MySQL native views
+  * [CHORE] improve type and default value translation logic
+  * [CHORE] add Python 3.14 support
+  * [FEAT] enhance table creation logic to handle default values
+    and improve error handling
+  * [FEAT] translate SQLite defaults to MySQL
+  * [FEAT] exclude transferring SQLite tables via
+    `-e`/`--exclude-sqlite-tables`
+  * [FIX] fix importing `typing_extensions` on Python &gt;= 3.11
+  * [FIX] fix MySQL connection parameters to handle optional
+    socket, host and port</comment>
+    <requestid>1349290</requestid>
+  </revision>
 </revisionlist>
