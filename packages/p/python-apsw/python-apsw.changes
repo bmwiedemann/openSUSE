@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 26 09:38:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.53.0.0:
+  * ChangesetBuilder adds ChangesetBuilder.add_insert(),
+    ChangesetBuilder.add_delete(), ChangesetBuilder.add_update(),
+    and ChangesetBuilder.config().
+  * Added .limit command to the Shell
+- update to 3.51.3.0:
+  * The SQLite 3.52.0 release was withdrawn, so the corresponding
+    APSW one was too.
+  * Includes all the changes from the 3.52.0.0 release, except
+    `SQLITE_UTF8_ZT` and `sqlite3_carray_bind_v2`.
+  * SQLite extra adds extensions and programs that require the
+    zlib compression library, notably zipfile and sqlar
+
+-------------------------------------------------------------------
 Thu Jan 22 09:36:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.51.2.0:

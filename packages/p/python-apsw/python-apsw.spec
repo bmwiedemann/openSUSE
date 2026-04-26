@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-apsw
-Version:        3.51.2.0
+Version:        3.53.0.0
 Release:        0
 Summary:        Another Python SQLite Wrapper
 License:        Zlib
