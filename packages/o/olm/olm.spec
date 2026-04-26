@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package olm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %global origname olm
 %global origlibname lib%{origname}
 %global libname %{origlibname}3
@@ -34,7 +33,9 @@ Source0:        https://gitlab.matrix.org/matrix-org/olm/-/archive/%{version}/ol
 Patch0:         cmake-enable-testing-builddir.patch
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -43,9 +44,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       %{libname} = %{version}
 Requires:       python-cffi >= 1.0.0
-%ifpython2
-Requires:       python-typing
-%endif
 %python_subpackages
 
 %description
@@ -88,7 +86,7 @@ Requires:       %{libname} = %{version}
 %cmake_build
 
 cd ../python
-%python_build
+%pyproject_wheel
 
 %check
 %if 0%{?suse_version} < 1550
@@ -99,7 +97,7 @@ export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
 %install
 %cmake_install
 cd python
-%python_install
+%pyproject_install
 
 %fdupes %{buildroot}
 
@@ -125,12 +123,7 @@ cd python
 %license LICENSE
 %doc python/README.md
 %{python_sitearch}/%{origname}
-%{python_sitearch}/python_%{origname}-*.egg-info
-
-%ifpython2
-%{python_sitearch}/_%{origlibname}.so
-%else
+%{python_sitearch}/python_%{origname}-*-info
 %{python_sitearch}/_%{origlibname}.abi3.so
-%endif
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 23 11:57:16 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Convert build to use %pyproject_* macros
+  (soo#python/_ObsPrj#491).
+
+-------------------------------------------------------------------
 Sat Nov 25 22:21:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.16:

@@ -124,4 +124,13 @@ but better to push out soon</comment>
 - change spec and add devel pakage</comment>
     <requestid>1128818</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>51d3419f95f31a76bc76a1325cac11d5</srcmd5>
+    <version>3.2.16</version>
+    <time>1777230755</time>
+    <user>anag_factory</user>
+    <comment>- Convert build to use %pyproject_* macros
+  (soo#python/_ObsPrj#491).</comment>
+    <requestid>1349399</requestid>
+  </revision>
 </revisionlist>
