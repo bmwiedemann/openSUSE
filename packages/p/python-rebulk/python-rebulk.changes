@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 25 20:14:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * chore: migrate pytest.ini and setup.cfg to pyproject.toml
+  * chore: add python 3.12 in classifiers (`c17192c`)
+  * ci: fix semantic release commit message (`498ced1`)
+  * ci: fix semantic release after upgrade (`af4c390`)
+  * ci: remove verbose flag from semantic-release command
+  * feat(dependencies): add python 3.12 support (`f6f8927`)
+
+-------------------------------------------------------------------
 Wed Jun 11 11:29:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -71,7 +82,7 @@ Fri Aug 30 07:40:35 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.0
   * Add named method to Match class
-  * Add tagged method to Match class 
+  * Add tagged method to Match class
   * Enhance defaults feature
   * Some code refactoring and bugfixes
   * BREAKING CHANGE: This change how chain **kwargs and
@@ -93,7 +104,7 @@ Mon Aug 12 21:00:04 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.0.1
   * Add python 3.8-dev support and make debug tests asserts less
-    strict 
+    strict
 
 -------------------------------------------------------------------
 Tue Dec  4 12:53:35 UTC 2018 - Matej Cepl <mcepl@suse.com>
@@ -122,7 +133,7 @@ Sat Sep  1 11:11:27 UTC 2018 - aloisio@gmx.com
 
 - Update to version 0.9.0
   * Fix pylint issues
-  * Refactor Matches to_dict() method for better API 
+  * Refactor Matches to_dict() method for better API
 
 - Enabled tests
 
@@ -166,5 +177,5 @@ Fri Sep  9 08:05:43 UTC 2016 - aloisio@gmx.com
 -------------------------------------------------------------------
 Mon Apr 25 13:41:36 UTC 2016 - aloisio@gmx.com
 
-- Initial version 0.7.1 
+- Initial version 0.7.1
 

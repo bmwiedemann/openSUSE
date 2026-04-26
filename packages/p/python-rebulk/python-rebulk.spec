@@ -1,7 +1,7 @@
 #
 # spec file for package python-rebulk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-rebulk
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Library for defining bulk search patterns to perform advanced string matching
 License:        MIT
 URL:            https://github.com/Toilal/rebulk
-Source0:        https://files.pythonhosted.org/packages/source/r/rebulk/rebulk-%{version}.tar.gz
+Source0:        https://github.com/Toilal/rebulk/archive/refs/tags/v%{version}.tar.gz#/rebulk-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

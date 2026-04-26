@@ -140,4 +140,23 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1284799</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>aa52a13e55dcfa675fae528d84c5c412</srcmd5>
+    <version>3.3.0</version>
+    <time>1777230686</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.0:
+  * chore: migrate pytest.ini and setup.cfg to pyproject.toml
+  * chore: add python 3.12 in classifiers (`c17192c`)
+  * ci: fix semantic release commit message (`498ced1`)
+  * ci: fix semantic release after upgrade (`af4c390`)
+  * ci: remove verbose flag from semantic-release command
+  * feat(dependencies): add python 3.12 support (`f6f8927`)
+
+  * Add tagged method to Match class
+    strict
+  * Refactor Matches to_dict() method for better API
+- Initial version 0.7.1</comment>
+    <requestid>1349276</requestid>
+  </revision>
 </revisionlist>
