@@ -95,4 +95,16 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282149</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>03bca0d60b3ef6f36e114086b0e67953</srcmd5>
+    <version>2.7</version>
+    <time>1777230702</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.7:
+  * Packaging cleanups and improvements.
+  * Binary wheels now use ABI3.
+  * Dropped support for Python 3.8 and 3.9.
+  * Python 3.14 compatiblity.</comment>
+    <requestid>1349312</requestid>
+  </revision>
 </revisionlist>

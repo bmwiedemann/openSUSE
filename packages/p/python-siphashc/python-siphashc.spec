@@ -1,7 +1,7 @@
 #
 # spec file for package python-siphashc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           python-siphashc
-Version:        2.5
+Version:        2.7
 Release:        0
 Summary:        Python C module to calculate SipHashes
 License:        ISC
@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/s/siphashc/siphas
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 78.0.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -61,7 +61,7 @@ export CFLAGS="%{optflags}"
 %license LICENSE.md
 %doc README.rst CHANGES.rst
 %{python_sitearch}/siphashc
-%{python_sitearch}/siphashc.cpython-*-linux-gnu.so
+%{python_sitearch}/siphashc.abi3.so
 %{python_sitearch}/siphashc-%{version}.dist-info
 
 %changelog

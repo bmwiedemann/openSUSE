@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 25 22:16:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7:
+  * Packaging cleanups and improvements.
+  * Binary wheels now use ABI3.
+  * Dropped support for Python 3.8 and 3.9.
+  * Python 3.14 compatiblity.
+
+-------------------------------------------------------------------
 Tue Jun  3 07:05:00 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
