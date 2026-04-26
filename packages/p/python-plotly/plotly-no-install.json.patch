@@ -1,0 +1,11 @@
+diff -ur plotly.py-6.7.0.orig/pyproject.toml plotly.py-6.7.0/pyproject.toml
+--- plotly.py-6.7.0.orig/pyproject.toml	2026-04-24 12:08:39.439483708 +0200
++++ plotly.py-6.7.0/pyproject.toml	2026-04-24 12:09:06.110380674 +0200
+@@ -96,7 +96,6 @@
+ include = [
+     "/plotly*",
+     "/_plotly*",
+-    "js/install.json",  # used by Jupyter extension
+ ]
+ 
+ [tool.hatch.build.targets.wheel.shared-data]

@@ -1,7 +1,7 @@
 #
 # spec file for package python-plotly
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,35 +17,37 @@
 
 
 %bcond_without  libalternatives
+%define distversion 6.7
 Name:           python-plotly
-Version:        6.1.2
+Version:        6.7.0
 Release:        0
-Summary:        Library for collaborative, interactive, publication-quality graphs
+Summary:        Interactive, browser-based graphing library for Python
 License:        MIT
 URL:            https://github.com/plotly/plotly.py
 # Use the GitHub archive for the test suite
 Source0:        https://github.com/plotly/plotly.py/archive/refs/tags/v%{version}.tar.gz#/plotly.py-%{version}-gh.tar.gz
-# package-lock.json file generated with command in packages/javascript/jupyterlab-plotly:
-# npm install --package-lock-only --legacy-peer-deps --ignore-scripts
+# package-lock.json file generated with command in js/: `npm install` without the recommended flags. Apply Patch0 before.
 Source10:       package-lock.json
 # node_modules generated using "osc service mr" with the https://github.com/openSUSE/obs-service-node_modules
 Source11:       node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
-Source100:      python-plotly-rpmlintrc
+# PATCH-FIX-OPENSUSE plotly-update-js-dependencies.patch code@bnavigator.de -- Update for local-npm-registry
+Patch0:         plotly-update-js-dependencies.patch
+# PATCH-FIX-OPENSUSE plotly-no-install.json.patch code@bnavigator.de -- Remove install.json from python package install
+Patch1:         plotly-no-install.json.patch
 BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module hatchling >= 1.26}
 BuildRequires:  %{python_module jupyterlab >= 3}
-BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  local-npm-registry
 BuildRequires:  python-rpm-macros
 Requires:       alts
-Requires:       python-narwhals
+Requires:       python-narwhals >= 1.15.1
 Requires:       python-packaging
+Recommends:     jupyter-plotly
 Recommends:     python-ipython
 Recommends:     python-matplotlib >= 2.2.2
 Recommends:     python-numpy
@@ -58,8 +60,9 @@ BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module narwhals}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module narwhals >= 1.15.1}
+BuildRequires:  %{python_module numpy >= 1.22}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pdfrw}
 BuildRequires:  %{python_module psutil}
@@ -67,7 +70,7 @@ BuildRequires:  %{python_module pyshp}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module scikit-image if %python-base < 3.13}
+BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module statsmodels}
 BuildRequires:  %{python_module xarray}
@@ -75,38 +78,43 @@ BuildRequires:  %{python_module xarray}
 %python_subpackages
 
 %description
-Use this package to make collaborative, interactive,
-publication-quality graphs from Python on https://plot.ly.
+An interactive, open-source, and browser-based graphing library for Python.
 
-Plotly is an online collaborative data analysis and graphing tool. The
-Python API allows you to access all of Plotly's functionality from Python.
-Plotly figures are shared, tracked, and edited all online and the data is
-always accessible from the graph.
+Built on top of plotly.js, plotly.py is a high-level, declarative charting library.
+plotly.js ships with over 30 chart types, including scientific charts,
+3D graphs, statistical charts, SVG maps, financial charts, and more.
+
+Plotly graphs can be viewed in Jupyter notebooks, other Python notebook
+software such as marimo, as standalone HTML files, or integrated into Dash applications.
 
 %package     -n jupyter-plotly
 Summary:        Jupyter integration for %{name}
 Provides:       jupyterlab-plotly = %{version}-%{release}
+Requires:       python3dist(plotly) = %{distversion}
+Suggests:       python3-plotly
 
 %description -n jupyter-plotly
-Use this package to make collaborative, interactive,
-publication-quality graphs from Python on https://plot.ly.
+An interactive, open-source, and browser-based graphing library for Python.
 
-Plotly is an online collaborative data analysis and graphing tool. The
-Python API allows you to access all of Plotly's functionality from Python.
-Plotly figures are shared, tracked, and edited all online and the data is
-always accessible from the graph.
+Built on top of plotly.js, plotly.py is a high-level, declarative charting library.
+plotly.js ships with over 30 chart types, including scientific charts,
+3D graphs, statistical charts, SVG maps, financial charts, and more.
+
+Plotly graphs can be viewed in Jupyter notebooks, other Python notebook
+software such as marimo, as standalone HTML files, or integrated into Dash applications.
 
 This package provides the flavorless configuration for the
 Jupyterlab integration and widgets.
 
 %prep
-%autosetup -p4 -n plotly.py-%{version}
+%autosetup -p1 -n plotly.py-%{version}
 pushd js
 rm package-lock.json
 local-npm-registry %{_sourcedir} install --include=dev --include=peer
 popd
 # remove script interpreter line in non-executable script
 sed -i '1{/env python/ d}' _plotly_utils/png.py
+chmod -x _plotly_utils/png.py
 # homogenize mtime of all __init__.py files for deduplicated compile cache consistency
 find . -name __init__.py -exec touch -m -r plotly/__init__.py '{}' ';'
 
@@ -132,13 +140,11 @@ donttest="$donttest or test_matplotlylib"
 donttest="$donttest or test_masked_constants_example"
 # flaky timing error
 donttest="$donttest or test_fast_track_finite_arrays"
-# no python313-scikit-image yet
-python313_donttest=" or TestTernarycontour"
 
 # Optional dependencies not yet in openSUSE, requires python-polars
 # --ignore doesn't work because the import is in the conftest.py
 rm -rf tests/test_optional/test_px/
-%pytest tests/test_optional -k "not ($donttest ${$python_donttest})"
+%pytest tests/test_optional -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE.txt

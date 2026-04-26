@@ -1,0 +1,11 @@
+--- plotly.py-6.7.0/js/package.json	2026-04-09 22:05:59.000000000 +0200
++++ plotly.py-6.7.0.p/js/package.json	2026-04-24 12:01:08.185928659 +0200
+@@ -25,7 +25,7 @@
+   "devDependencies": {
+     "@jupyterlab/builder": "^4.3.6 || ^3.6.8",
+     "@types/plotly.js": "^2.33.4",
+-    "esbuild": "^0.23.1",
++    "esbuild": "^0.25.0",
+     "typescript": "^5.6.2"
+   },
+   "jupyterlab": {

@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Wed Apr 22 14:31:52 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.7.0
+  ## Added
+  * Add facet_row support to px.imshow for creating subplots along
+    an additional dimension [#5445], with thanks to @FBumann for
+    the contribution!
+  ## Fixed
+  * Update numpy.percentile syntax to stop using deprecated alias
+    [#5483], with thanks to @Mr-Neutr0n for the contribution!
+  * numpy with a version less than 1.22 is no longer supported.
+  * Handle empty px.histogram by skipping None label in hover
+    template [#5535], with thanks to @tysoncung for the
+    contribution!
+  ## Updated
+  * Update plotly.js from version 3.4.0 to version 3.5.0. See the
+    plotly.js release notes for more information. [#5565]. Notable
+    changes include:
+  * Add hoveranywhere and clickanywhere layout attributes to enable
+    emitting hover and click events anywhere in the plot area, not
+    just over traces [#7707]
+  * Add displayNotifier configuration property to set the display
+    of notifier in the top right area of the viewport [#7730]
+  * Update USA location lookup for scattergeo and choropleth traces
+    to use both location names and abbreviations [#7731]
+- Release 6.5.0
+  ## Updated
+  * Update plotly.js from version 3.2.0 to version 3.3.0. See the
+    plotly.js release notes for more information. [#5421]. Notable
+    changes include:
+  * Add hovertemplate for candlestick and ohlc traces [#7619]
+  ## Fixed
+  * Fix bug where numpy datetime contained in Python list was
+    converted to integer [#5415]
+- Relase 6.4.0
+  ## Updated
+  * Update plotly.js from version 3.1.1 to version 3.2.0. See the
+    plotly.js release notes for more information. [#5357]. Notable
+    changes include:
+  * Add hovertemplatefallback and texttemplatefallback attributes
+    [#7577]
+  * Add "SI extended" formatting rule for tick exponents on axis
+    labels, allowing values to be displayed with extended SI
+    prefixes (e.g., femto, pico, atto) [#7249]
+  ## Deprecated
+  * Deprecate create_hexbin_mapbox in favor of create_hexbin_map,
+    update related function calls [5358], with thanks to @ajlien
+    for the contribution!
+- Release 6.3.1
+  ## Updated
+  * Update Plotly.js from version 3.1.0 to version 3.1.1. See the
+    Plotly.js release notes for more information. [#5357]. Notable
+    changes include:
+  * Fix issue preventing Scattergl plots with text elements from
+    rendering [plotly.js#7563]
+  * Use native legends when converting from matplotlib [#5312],
+    with thanks to @robertoffmoura to the contribution!
+  * Allow shared_yaxes to work with secondary axes [#5180], with
+    thanks to @gmjw for the contribution!
+  ## Fixed
+  * Fix issue where width/height in plot layout were not respected
+    during Kaleido image export [#5325]
+  * Fix typo in default argument to _ternary_contour.py [#5315],
+    with thanks to @Lexachoc for the contribution!
+  * Fix incorrect fig.show() behavior when ipython is installed
+    [#5258]
+- Release 6.3.0
+  ## Updated
+  * Updated Plotly.js from version 3.0.1 to version 3.1.0. See the
+    plotly.js release notes for more information. [#5318]
+  ## Added
+  * Exposed plotly.io.get_chrome() as a function which can be
+    called from within a Python script. [#5282]
+  ## Fixed
+  * Resolved issue causing extraneous engine deprecation warnings
+    [#5287], with thanks to @jdbeel for the contribution!
+- Release 6.2.0
+  ## Added
+  * Add SRI (Subresource Integrity) hash support for CDN script
+    tags when using include_plotlyjs='cdn'. This enhances security
+    by ensuring browser verification of CDN-served plotly.js files
+    [#5165] (with thanks to @ddworken)
+  ## Fixed
+  * Allow setting Plotly.js path via pio.defaults [#5207]
+  ## Changed
+  * Refactor validation code to reduce bundle size [#5214] (with
+    thanks to @bmaranville) Add deprecation warnings when using
+    Kaleido v0 or deprecated image export features [#5177]
+- Add plotly-update-js-dependencies.patch
+- Add plotly-no-install.json.patch
+
+-------------------------------------------------------------------
 Thu Jun 19 11:15:21 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Drop upstream patch plotly-pr4622-np2.patch
