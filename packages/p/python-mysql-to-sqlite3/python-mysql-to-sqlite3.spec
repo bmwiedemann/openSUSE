@@ -1,7 +1,7 @@
 #
 # spec file for package python-mysql-to-sqlite3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,20 @@
 #
 
 
-%define short_name mysql-to-sqlite3
-%define skip_python2 1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-mysql-to-sqlite3
-Version:        2.4.1
+Version:        2.6.0
 Release:        0
 Summary:        A simple Python tool to transfer data from MySQL to SQLite 3
 License:        MIT
 URL:            https://github.com/techouse/mysql-to-sqlite3
-Source:         %{short_name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/mysql-to-sqlite3/mysql_to_sqlite3-%{version}.tar.gz
 # libalternative
 %if %{with libalternatives}
 Requires:       alts
@@ -46,7 +45,6 @@ BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module docker}
 BuildRequires:  %{python_module factory_boy}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  docker
 BuildRequires:  python-rpm-macros
@@ -77,7 +75,7 @@ BuildArch:      noarch
 A simple Python tool to transfer data from MySQL to SQLite 3
 
 %prep
-%setup -q -n mysql-to-sqlite3-%{version}
+%setup -q -n mysql_to_sqlite3-%{version}
 
 %build
 %pyproject_wheel

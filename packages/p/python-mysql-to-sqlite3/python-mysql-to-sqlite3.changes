@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Apr 25 08:27:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * [FEAT] Add MySQL SSL certificate options: `--mysql-ssl-ca`,
+    `--mysql-ssl-cert`, `--mysql-ssl-key`
+  * [TEST] close DockerClient instances in test fixtures
+  * [FIX] update sqlglot expression imports for consistency
+  * [FIX] removed the Hatch `sources = ["src"]` rewrite so
+    `sdists` now keep the `src/mysql_to_sqlite3` tree, letting
+  * wheels built from the sdist include the actual package
+  * [FIX] enhance handling of MySQL string literals and default
+    values
+  * [FEAT] transfer MySQL views as native SQLite views
+  * [CHORE] improve robustness of data transfer by leveraging
+    sqlglot for SQL translation
+  * [FIX] prevent non-unique SQLite indices from being quietly
+    omitted
+  * [FEAT] add support for creating SQLite STRICT tables via
+    `-M/--strict` CLI switch
+  * [FIX] fix importing `typing_extensions` on Python >= 3.11
+  * [FIX] fix pyproject.toml build sources and specify package
+    inclusion for sdist and wheel
+  * [CHORE] update pyproject.toml to improve metadata, dependency
+    management, and wheel build config
+  * [FIX] handle `curtime()`, `curdate()`, `current_timestamp()`,
+    and `now()` MariaDB-specific translations in default
+  * values
+  * [CHORE] add MariaDB 11.8 LTS tests
+  * [CHORE] drop redundant MariaDB 10.1, 10.2, 10.3, 10.4 and
+    10.5 tests
+
+-------------------------------------------------------------------
 Sat Jun 28 14:05:13 UTC 2025 - Enno Gotthold <egotthold@suse.com>
 
 - Support libalternatives for 16.0 and newer
