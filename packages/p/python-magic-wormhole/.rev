@@ -163,4 +163,43 @@
     <comment></comment>
     <requestid>1268173</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>194b9da9b8443f3927ddde652b110b24</srcmd5>
+    <version>0.23.0</version>
+    <time>1777230684</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1349168 from mia
+
+- Add missing runtime dependency on python-noiseprotocol
+    (required for dilation feature)
+  - Update to version 0.23.0
+    * SECURITY: Regression that deleted &quot;basename()&quot; usage, exposing
+      receivers to path-name traversal attacks.
+      Affected versions: 0.21, 0.22
+  - Changes in 0.22.0:
+    * Errback pending receive_record() calls on connection loss
+      gh#magic-wormhole/magic-wormhole#686
+    * Display / suppress QR code with WORMHOLE_QR=0
+    * Document the CLI more completely
+      gh#magic-wormhole/magic-wormhole#609
+  - Changes in 0.21.0:
+    * Produce errors for unwanted incoming subprotocols when user
+      code asks
+      gh#magic-wormhole/magic-wormhole#660
+    * Correct types in Dilation subprotocols
+      gh#magic-wormhole/magic-wormhole#665
+    * Do not overwrite local directory specified with --output-file
+      gh#magic-wormhole/magic-wormhole#667
+  - Changes in 0.20.0:
+    * Remove 'u' prefix to strings
+      gh#magic-wormhole/magic-wormhole#636
+    * Use classes directly instead of type() calls
+      gh#magic-wormhole/magic-wormhole#637
+    * Doc: remove details about python2 types
+      gh#magic-wormhole/magic-wormhole#638
+    * Add 'hints' information to Dilation status updates
+    * Replace formatted strings to f-strings
+      gh#magic-wormhole/magic-wormhole#642</comment>
+    <requestid>1349241</requestid>
+  </revision>
 </revisionlist>

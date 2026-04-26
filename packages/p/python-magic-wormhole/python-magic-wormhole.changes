@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Apr 24 22:15:54 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Add missing runtime dependency on python-noiseprotocol
+  (required for dilation feature)
+- Update to version 0.23.0
+  * SECURITY: Regression that deleted "basename()" usage, exposing
+    receivers to path-name traversal attacks.
+    Affected versions: 0.21, 0.22
+- Changes in 0.22.0:
+  * Errback pending receive_record() calls on connection loss
+    gh#magic-wormhole/magic-wormhole#686
+  * Display / suppress QR code with WORMHOLE_QR=0
+  * Document the CLI more completely
+    gh#magic-wormhole/magic-wormhole#609
+- Changes in 0.21.0:
+  * Produce errors for unwanted incoming subprotocols when user
+    code asks
+    gh#magic-wormhole/magic-wormhole#660
+  * Correct types in Dilation subprotocols
+    gh#magic-wormhole/magic-wormhole#665
+  * Do not overwrite local directory specified with --output-file
+    gh#magic-wormhole/magic-wormhole#667
+- Changes in 0.20.0:
+  * Remove 'u' prefix to strings
+    gh#magic-wormhole/magic-wormhole#636
+  * Use classes directly instead of type() calls
+    gh#magic-wormhole/magic-wormhole#637
+  * Doc: remove details about python2 types
+    gh#magic-wormhole/magic-wormhole#638
+  * Add 'hints' information to Dilation status updates
+  * Replace formatted strings to f-strings
+    gh#magic-wormhole/magic-wormhole#642
+  * Properly display QR codes on dark-mode displays
+    gh#magic-wormhole/magic-wormhole#651
+  * INCOMPAT: the Dilation extension now enables composition of
+    subchannels, giving each a named subprotocol along with a new
+    API to support it (also removes the generic "control"
+    subchannel)
+  * Improve ping-timeouts on Mailbox connection
+    gh#magic-wormhole/magic-wormhole#646
+  * Update old syntax
+    gh#magic-wormhole/magic-wormhole#658
+  * Fix bare pytest
+    gh#magic-wormhole/magic-wormhole#656
+  * Add magic-wormhole CLI command
+    gh#magic-wormhole/magic-wormhole#640
+- Changes in 0.19.2:
+  * Properly update all meta-data + docs regarding 3.9 drop
+    gh#magic-wormhole/magic-wormhole#592
+- Changes in 0.19.1:
+  * Run tests from sdist release
+  * Report correct version in test Wormhole server
+    gh#magic-wormhole/magic-wormhole#625
+- Changes in 0.19.0:
+  * Add a "status" feedback API for Dilation
+    gh#magic-wormhole/magic-wormhole#591
+  * use new Status API to notify a sending user when a code is
+    consumed
+    gh#magic-wormhole/magic-wormhole#575
+  * add support for Ping/Pong timeouts in Dilation, improving
+    re-connection speed
+    gh#magic-wormhole/magic-wormhole#590
+  * documentation improvements
+    gh#magic-wormhole/magic-wormhole#614
+    gh#magic-wormhole/magic-wormhole#615
+  * improve Dilation version negotiation
+    gh#magic-wormhole/magic-wormhole#606
+    gh#magic-wormhole/magic-wormhole#611
+  * convert test-suite to pytest
+    gh#magic-wormhole/magic-wormhole#603
+    gh#magic-wormhole/magic-wormhole#610
+  * resize progress bar properly
+    gh#magic-wormhole/magic-wormhole#622
+  * Drop support for Python 3.9
+    gh#magic-wormhole/magic-wormhole#596
+  * INCOMPAT: "sdist" files move to an underscore (PEP 625)
+
+-------------------------------------------------------------------
 Wed Apr  9 13:19:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.18.0
