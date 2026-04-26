@@ -123,4 +123,15 @@
     <comment></comment>
     <requestid>1347831</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6ab0a91b11bb714c68be21f99ebc3b4f</srcmd5>
+    <version>8.2.4</version>
+    <time>1777230687</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.2.4:
+  * Small potatoes update, to fix a glitch with anchor.
+  * Added `DOM.update_classes`
+  * Fixed anchor released when scrolling down with the trackpad</comment>
+    <requestid>1349279</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 25 20:25:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2.4:
+  * Small potatoes update, to fix a glitch with anchor.
+  * Added `DOM.update_classes`
+  * Fixed anchor released when scrolling down with the trackpad
+
+-------------------------------------------------------------------
 Thu Apr 16 13:07:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 8.2.2
