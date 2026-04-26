@@ -1,7 +1,7 @@
 #
 # spec file for package ethtool
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ethtool
-Version:        6.15
+Version:        6.19
 Release:        0
 Summary:        Utility for examining and tuning Ethernet-based network interfaces
 License:        GPL-2.0-only
@@ -28,29 +28,17 @@ URL:            https://www.kernel.org/pub/software/network/ethtool/
 Source:         https://www.kernel.org/pub/software/network/ethtool/%{name}-%{version}.tar.xz
 Source2:        https://www.kernel.org/pub/software/network/ethtool/%{name}-%{version}.tar.sign
 Source3:        %{name}.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  pkgconfig
+Patch12612562:  d35d87fbcda97fe31df79d62277743214641892a.patch
+Patch12612563:  bf023af442f63e16f1699128c7ce467eddc6d340.patch
+BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libmnl)
+Obsoletes:      %{name}-bash-completion < %{version}-%{release}
+Provides:       %{name}-bash-completion = %{version}-%{release}
 
 %description
 Ethtool is a small utility for examining and tuning ethernet-based
 network interfaces.  See the man page for more details.
-
-%package bash-completion
-Summary:        Bash completion for ethtool
-Group:          System/Shells
-Requires:       %{name}
-Requires:       bash-completion
-%if 0%{?suse_version} >= 1500
-Supplements:    (%{name} and bash-completion)
-%else
-Supplements:    packageand(%{name}:bash-completion)
-%endif
-BuildArch:      noarch
-
-%description bash-completion
-bash command line completion support for ethtool.
 
 %prep
 %autosetup -p1
@@ -58,13 +46,12 @@ bash command line completion support for ethtool.
 %build
 export CFLAGS="%optflags -Wall -Wextra -Wstrict-prototypes -Wformat-security -Wpointer-arith"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 
 %files
-%defattr(-,root,root)
 %{_sbindir}/ethtool
 %{_mandir}/man8/ethtool.8*
 %{_datadir}/metainfo/org.kernel.software.network.ethtool.metainfo.xml
@@ -74,11 +61,6 @@ make install DESTDIR="%buildroot"
 %doc COPYING
 %endif
 %doc AUTHORS NEWS
-
-%files bash-completion
-%defattr(-,root,root)
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/ethtool
+%{_datadir}/bash-completion/
 
 %changelog

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 21 07:56:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.19
+  * tsinfo: Add support for PTP hardware source
+  * monitor: Add notification handling for PLCA configuration
+  * rxfh: IPv6 Flow Label hash support
+  * netlink: fec: add errors histogram statistics
+- Delete 5a6848026277296a151664666ef1c25821787043.patch (merged)
+- Move bash-completions into main package.
+  <https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/6TVWFHYEP4CFEJZSULQLIB2POYVHKJLS/>
+
+-------------------------------------------------------------------
+Wed Apr  1 12:34:56 UTC 2026 - ohering@suse.de
+
+- add netlink support for RX CQE Coalescing params (bsc#1261256)
+  5a6848026277296a151664666ef1c25821787043.patch
+  d35d87fbcda97fe31df79d62277743214641892a.patch
+  bf023af442f63e16f1699128c7ce467eddc6d340.patch
+
+-------------------------------------------------------------------
 Mon Jun 23 18:28:10 UTC 2025 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 6.15
