@@ -1,7 +1,32 @@
 -------------------------------------------------------------------
+Sun Apr 19 06:41:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.22.3:
+  + Bugs fixed:
+    - Input panel misplaced when typing with an input method in a
+      GTKPopover widget
+    - Snapshot with too small an angle shift freezes
+    - gtk-demo: Make --autoquit work again
+    - cssprovider: Fix gtk-application-prefer-dark-theme setting
+    - gdksettings-wayland: Apply reduced-motion setting
+    - Revert "testutils: Warn if setting up language didn't work"
+    - transform: Better float comparisons
+    - print dialog: Fix GTask lifecycle management
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr 18 09:35:34 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 4.22.2+25:
+  * imcontextwayland: Translate cursor rectangle to correct native
+    surface
+  * gdksettings-wayland: Apply reduced-motion setting
+  * gtkpango: Don't land on a single char of a wrapped line twice
+
+-------------------------------------------------------------------
 Wed Apr  1 07:23:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to versiom 4.22.2:
+- Update to version 4.22.2:
   + Bugs fixed:
     - Docs for the new SVG parser?
     - Wrong colors used for fallback symbolic icons containing

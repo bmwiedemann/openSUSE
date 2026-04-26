@@ -1119,4 +1119,12 @@ New upstream release</comment>
     <comment>Push GNOME 50</comment>
     <requestid>1345385</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>b41afcf10fff5f6b6ddb4d0371bfaecd</srcmd5>
+    <version>4.22.3</version>
+    <time>1777230661</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348424</requestid>
+  </revision>
 </revisionlist>
