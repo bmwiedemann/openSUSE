@@ -1,4 +1,285 @@
 -------------------------------------------------------------------
+Sat Apr 25 17:29:51 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+
+- Update to version 26.04:
+  * wiki: Document the release process
+  * Update screenshot in the README
+  * Update README
+  * rpkg: Update licenses
+  * wiki: Add screenshot to window effects
+  * Bump Since on the wiki
+  * CI: Update Fedora to 42
+  * Bump version to 26.04
+  * CI: Fix next release check in release workflow
+  * Bump Smithay (last fix was merged)
+  * Bump Smithay to fix GTK 4.23 text-input panic
+  * wiki: Update blur example from foot to alacritty
+  * Preserve num lock state when loading custom keymap
+  * wiki: Mention Mod+M default bind
+  * wiki: Update binds list on Getting Started
+  * wiki: Add missing Since next release
+  * wiki: explicitly mention possible include methods
+  * wiki: Fix typos
+  * wiki: Mention these are the default blur values
+  * Remove wrong return before dlclose()
+  * Make use of new DndGrabHandler::cancelled()
+  * Fix clipped surface + y_invert buffer
+  * Upgrade Smithay (old laptop screenshot fix)
+  * Add test for set_fullscreen panic on removed wl_output
+  * tty: Re-evaluate ignored nodes on udev add events and session resume (#3651)
+  * Guard against removed outputs in several places
+  * wiki/getting-started: replace dms-shell references for arch
+  * config: Print first definition in duplicate bind error message (#3536)
+  * config: Expand ~ to home dir in includes
+  * tty: Skip initialization if session is inactive
+  * tty: Add primary node first when resuming session
+  * Fix input lock when starting compositor while on a different TTY (#3593)
+  * backend: Downgrade bind_wl_display() warn! to trace!
+  * backend/winit: Add DMA-BUF support (#3327)
+  * Add tablet option map-to-focused-output
+  * wiki: Emphasize non-xray warnings
+  * protocols: implement `ext-foreign-toplevel-list-v1`
+  * Fix 1 new Clippy warning
+  * Dlsym set_default_max_buffer_size() to avoid wayland-server 1.23 requirement
+  * Handle trackball scrolling in overview
+  * wiki/FAQ: Describe hybrid GPU laptop external monitor lag
+  * wiki/FAQ: Blur now exists
+  * Assume square corners for windowed fullscreen windows
+  * Call on_maybe_dnd_ended() in two more places
+  * default-config: Bind Mod+Shift+R to switch-preset-column-width-back by default
+  * Upgrade dependencies
+  * Upgrade tracing-subscriber and disable ANSI sanitization
+  * Implement cancelling DnD with Escape
+  * Upgrade Smithay (fix disappeared connectors, fix DnD hang in Electron)
+  * Downgrade accesskit_unix to 0.17.0
+  * effect_buffer: Change debug! to trace!
+  * postprocess: Replace IGN with more white-noise-like noise
+  * Add geometry-corner-radius and background-effect popup rules
+  * Add popups { opacity } window and layer rule
+  * Implement ext-background-effect for popups
+  * Implement non-xray background effects
+  * Refactor screencopy/screencast to render via the damage tracker, fix cursorless screencopy with damage
+  * blur: Update to use GlesRenderer in a subframe
+  * Upgrade Smithay (framebuffer effect, subframes)
+  * Document background effects
+  * Implement ext-background-effect protocol
+  * Implement blur background effect
+  * Implement noise and saturation background effects
+  * Implement xray background effect
+  * Get state in one place instead of three
+  * Simplify popup position computation
+  * render_helpers: Extract common functions
+  * layout: Narrow error! condition in update_render_elements()
+  * offscreen: Guard against zero size (empty elements)
+  * offscreen: Add error message
+  * layout: Improve view_rect computation for the interactively moved window
+  * Add layer matcher to layer-rule
+  * damage: Remove set_size()
+  * Rename Niri::render_inner() => render()
+  * Rename Niri::render() => render_to_vec()
+  * shaders: Optimize rounding_alpha() a little
+  * shaders: Extract niri_rounding_alpha() into a file
+  * Bundle renderer and target into a RenderCtx
+  * Fix typo in switch-preset-window-height-back
+  * Docs: document reverse switching functionality introduced in #1670 (#3782)
+  * ci: update `actions/checkout` to v6
+  * ui/hotkey_overlay: prettify diaeresis keysyms
+  * nix: fix NIRI_BUILD_COMMIT when tree is dirty/shortRev is not available
+  * Upgrade csscolorparser to v0.8.3 (fixed MSRV)
+  * CI: Switch tests to Ubuntu 26.04
+  * Downgrade csscolorparser to fix MSRV
+  * tty: Log on DrmScanEvent::Changed
+  * Upgrade Smithay (virtual_keyboard revert, clipboard destroy cleanup, xdg-shell v7)
+  * Increase default Wayland buffer size
+  * Upgrade dependencies
+  * winit: add an `app-id` when running `niri` in nested mode in nested mode
+  * chore: update git ignore
+  * wiki: Unbreak COPR links
+  * openbsd: implement close_range workaround
+  * bump calloop to 0.14.4
+  * bump smithay: fix zxdg_exported crash
+  * Change all links from YaLTeR/niri to niri-wm/niri
+  * replace yalter/ and vortriz/ with niri-wm/ in repo links
+  * Fix dead surface hook VRAM leak (#3404)
+  * wiki: Add missing Since
+  * Remove obsolete FIXME
+  * Add load-config-file --path to load a different config (#3395)
+  * Add trackball to Configuration:-Input overview
+  * layout/tile: Remove redundant .to_f64()
+  * Remove ResolvedLayerRules::empty()
+  * Link to Electron section of the wiki in FAQ (#3324)
+  * pw_utils: Lower default buffer count to 8
+  * Docs: Update Electron info (#3320)
+  * Make debug_draw_opaque_regions work in screencasts again
+  * Remove unused portable-atomic dep
+  * Fix expel-window-from-column comment
+  * layout/tests: Add test for second workspace y = 0
+  * layout/monitor: round workspace render geo to physical pixels
+  * build(deps): bump zbus in the rust-dependencies group
+  * docs: Update Arch Linux installation instructions
+  * render_helpers: Add Smithay Tracy GPU spans
+  * render_helpers: Add Tracy spans to draw() calls
+  * Update Smithay (virtual keyboard, layer-shell geometry, GPU profiling)
+  * Fix panic in screencopy manager destroyed()
+  * screencasting: Only render pointer when it's within output
+  * Revert "Move set_dynamic_cast_target() stub closer to the other ones"
+  * Move set_dynamic_cast_target() stub closer to the other ones
+  * Add niri msg stop-cast --session-id
+  * ipc: Add pw_node_id to PipeWire Casts
+  * ipc: Add PID to screencopy Casts
+  * screencopy: Add timeout to casts considered stopped
+  * ipc: Add CastKind
+  * ipc: Add screencopy cast tracking
+  * ipc: Add screencast request and events for PipeWire casts
+  * Refactor wlr-screencopy state cleanup
+  * screencopy: Pop first screencopy instead of last
+  * Store output name in CastTarget
+  * Extract cast session/stream ID counters to global scope
+  * screencasting: Use spans to reduce logging boilerplate
+  * Delay starting dynamic casts until there's a target
+  * Move dynamic_target set outside pw_utils
+  * screencasting: Extract some logic into functions
+  * Move xdp-gnome-screencast code into separate module
+  * Honor pointer visibility in screencasts
+  * Set NIRI_BUILD_COMMIT in flake.nix (#3235)
+  * Implement cursor metadata in window screencast
+  * Extract pointer_pos_for_window_cast()
+  * Upgrade dependencies
+  * Use unadjusted clock for config notification shown duration
+  * Update Insta snapshots for new Insta version
+  * Add a push version of render()
+  * Fix root surface tracking for sync subsurfaces
+  * Fix tablet cursor for screenshot-window with pointer
+  * render_helpers: Fix encompassing_geo() argument type
+  * pick_color_grab: Remove unnecessary Vec allocation
+  * Fix typo
+  * fix(pw_utils): prevent write-after-free by reordering Cast struct fields
+  * Add screenshot-window show-pointer=true
+  * Move pointer visibility check outside render_pointer()
+  * Fix Tracy span name
+  * default-config: Bind Mod+M to maximize-window-to-edges
+  * Replace TODO with FIXME
+  * utils/spawning: Remove unnecessary cfgs
+  * layout/scrolling: Preserve gesture anim in dnd_scroll_gesture_end()
+  * doc: link DMS compositor setup in Quick Start (#3179)
+  * Improve dinit service files (#3193)
+  * nix: fix path replace in SystemD service
+  * niri.service: don't hardcode the path
+  * Fix missing redraw when floating DnD in overview scrolls workspaces
+  * tty: Load libinput plugins if available
+  * Don't add padding to layer-shell popups
+  * Update Smithay (text-input enter/leave fix, multigpu formats improvement)
+  * Fix consume-or-expel-left anim to the left of active column
+  * Refactor rendering to push-based instead of pull-based (#3113)
+  * Fix tracy span names
+  * Remove redundant clippy allow
+  * Fix wrong rendering order when switching dynamic cast to window
+  * opening window: Remove unused method
+  * scrolling: Don't forget to call tab_indicator.update_shaders()
+  * clipped surface: Compute uniforms on-demand
+  * ci: user Cachix nix installer
+  * ci: remove flake check action
+  * Fix constant repaint in the open overview
+  * gradient_fade: Store uniform inline
+  * shader: Store uniforms in Rc instead of Vec
+  * Update Smithay (DnD rework fix, dmabuf and geometry improvements)
+  * Don't override IME grab with popup keyboard grab
+  * Comment out spammy trace!()
+  * Remove IME grab check, fix GTK 4 popups with IME
+  * Warp pointer across the screen during spatial movement grabs
+  * Use relative motion in move and spatial movement grab
+  * layout: Synchronize unfullscreen view movement anim to resize
+  * wiki: Clarify that environment isn't imported to systemd
+  * Implement include optional=true (#3022)
+  * layout/scrolling: Fix add_column() skipping activate_column() sometimes
+  * dependabot: Add cooldown
+  * Update Smithay (DnD rework, primary GPU improvement)
+  * Use is_none_or()
+  * Bump MSRV to 1.85, upgrade deps
+  * Use Grabbing cursor for Mod+LMB interactive move (#3045)
+  * Add force-disable-connectors-on-resume debug flag
+  * mru: Don't handle pointer input until visible
+  * Remove url dependency
+  * CI/freebsd: Fix PW patch application
+  * CI: Remove Rust install from FreeBSD action
+  * CI: Update FreeBSD to 15.0
+  * CI: Re-enable FreeBSD
+  * wiki/packaging: Mention recommended deps
+  * rpkg: Add explicit libwayland-server dependency
+  * Update issue template to put niri config into `<details>` block
+  * contributing: Add a section on how to get PR reviewed more quickly
+  * contributing: Add a section on AI contributions
+  * Update Integrating-niri.md on multi-file configs (#2943)
+  * Docs: add a few notes and warnings (#2925)
+  * Fix typos in comments
+  * wiki: Improve wording
+  * Bump version to 25.11
+  * docs: document valid options of default-column-display (#2908)
+  * Raise nofile rlimit on powerset tests
+  * tty: Handle multiple primary nodes having the same render node
+  * wiki: Add Ubuntu to Quick start
+  * Update tracy-client
+  * layout/tests: Amend check for window-rule tests
+  * Remove hand-written ResolvedWindowRules::empty()
+  * layout: Round focus ring/border width to physical at the right place
+  * CI: Temporarily disable FreeBSD
+  * Add debounce-ms recent-windows setting
+  * Upgrade to new stable pipewire-rs
+  * wiki: Add alacritty to Arch quickstart
+  * wiki/FAQ: Mention Firefox 1 px border
+  * wiki: Mention GTK dead keys / Compose
+  * Add hack to make Orca + Shift + A work better
+  * Silence unused warning when feature is disabled
+  * wiki/accessibility: Mention Alt-Tab
+  * wiki: Fix screen reader breaking on keyboard shortcuts
+  * Handle modifiers even when consumed by a11y
+  * Add proper Alt-Tab screen reader support
+  * mru: Add Space hardcoded bind to confirm
+  * wiki/debug: Remove max bpc from outline at the top
+  * wiki: Add more warnings about custom modes
+  * cap the max volume to 100% (1.0)
+  * Remove setting max bpc
+  * Add tap to switch floating/tiling to TouchOverviewGrab
+  * Unify pointer & touch move grab, add view offset to it
+  * tty: Throttle VBlanks on displays running faster than expected
+  * tty: Extract time and refresh_interval higher
+  * tty: Fall back to primary GPU for display-only devices
+  * tty: Name is_ccs variable explicitly
+  * tty: Create allocator at device creation
+  * tty: Ensure we only use the primary render node for dmabuf global
+  * tty: Initialize primary node before others
+  * tty: Avoid modeset on session resume
+  * tty: Make sure to cleanup all CRTCs except used ones
+  * tty: Add Tracy span to another long call
+  * tty: Avoid modeset on adding device if possible
+  * tty: Extract should_disable_laptop_panels()
+  * tty: Add Tracy spans to heavy functions
+  * Add more Tracy spans to initialization
+  * package shell completions in COPR (#2761)
+  * tty: Honor "panel orientation" property
+  * Change recent-windows binds to have lower precedence
+  * CI: free disk space before running nix flake check (#2821)
+  * tty: Avoid reloading ignored nodes unnecessarily
+  * virtual_pointer: fix multiplier for axis_discrete (#2684)
+  * Reimplement focus-previous-window with MRU focus timestamps
+  * ipc: Add focus_timestsamp and WindowFocusTimestampChanged
+  * Implement recent windows switcher (Alt-Tab)
+  * render_helpers: Add GradientFadeTexture
+  * input: Pass bindings list as iterator
+  * focus-ring: Fix first frame draw of border rounded corners
+  * focus-ring: Add thicken_corners setting
+  * docs: fix typo in screenshot-window action name
+  * CI: Disable caching on FreeBSD
+  * layout: Fix background color premultiplication
+  * wiki: Add more Arch optional deps to quick start
+  * docs: update swww name and link
+  * wiki: Mention Waybar in quick start
+  * wiki: Add quick start to Getting Started
+  * Update LXQt wiki link in niri integration
+  * Update Smithay (layer-shell exclusive edge fixup)
+  * Update Smithay (layer-shell exclusive edge, tablet pressure workaround)
+
+-------------------------------------------------------------------
 Sat Nov 29 11:33:45 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 25.11:

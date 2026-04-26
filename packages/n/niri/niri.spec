@@ -2,7 +2,7 @@
 # spec file for package niri
 #
 # Copyright (c) 2025 mantarimay
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,20 @@
 
 %bcond_without test
 Name:           niri
-Version:        25.11
+Version:        26.04
 Release:        0
 Summary:        Scrollable-tiling Wayland compositor
 License:        GPL-3.0-or-later
 URL:            https://github.com/YaLTeR/niri
-Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}-vendored-dependencies.tar.xz
-Source2:        cargo_config
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
+
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  pango-devel
 BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.80.0
+BuildRequires:  rust >= 1.85.0
 BuildRequires:  wayland-devel
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(dbus-1)
@@ -44,20 +44,26 @@ BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(xkbcommon)
+
 # Portal implementations used by niri
 Recommends:     xdg-desktop-portal-gtk
 Recommends:     gnome-keyring
 Recommends:     polkit-gnome
 Recommends:     xdg-desktop-portal-gnome
+
 # Recommended utilities, bound in the default config
 Recommends:     alacritty
 Recommends:     fuzzel
 Recommends:     swaylock
 Recommends:     waybar
+
 # Recommended utilities
 Recommends:     swaybg
 Recommends:     mako
 Recommends:     xwayland-satellite
+
+# Conflict packages
+Conflicts:      niri-git
 
 %description
 A scrollable-tiling Wayland compositor.
@@ -67,8 +73,6 @@ Opening a new window never causes existing windows to resize.
 
 %prep
 %autosetup -a1 -p1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
