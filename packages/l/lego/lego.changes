@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 26 08:47:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.35.2:
+  * chore: update dependencies (#3021)
+  * rfc2136: fix zone env var parsing (#3020)
+
+-------------------------------------------------------------------
 Wed Apr 22 06:03:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.35.1:
