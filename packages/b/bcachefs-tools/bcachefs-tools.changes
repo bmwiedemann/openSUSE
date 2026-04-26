@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 25 22:52:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.38.0
+  * The `need_discard` btree (tracking buckets pending discard) is
+    now indexed by journal sequence number instead of device/bucket.
+    Upgrade is automatic on mount. Downgrade to a pre-1.38 version
+    requires offline downgrade tooling.
+  * Added journal pipelining
+  * Faster implementation of snapshot_read at mount time
+  * `bcachefs format` no longer misdetects SSDs as rotational when
+    given a partition.
+  * The stripe repair path now correctly handles full stripes with a
+    block on a device that has been force removed and need to be
+    shrunk.
+
+-------------------------------------------------------------------
 Mon Mar 30 11:51:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.37.4
