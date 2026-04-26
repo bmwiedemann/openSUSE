@@ -1,0 +1,29 @@
+From 99ec40248a5ffc3a27b1a552ac2fba23ec05c53f Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 1 Apr 2026 15:47:50 +0200
+Subject: [PATCH 1/2] [gdb/tui, v3] Fix crash with debuginfod query
+
+https://sourceware.org/pipermail/gdb-patches/2026-February/225210.html
+---
+ gdb/tui/tui-io.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/gdb/tui/tui-io.c b/gdb/tui/tui-io.c
+index e64f0ddce78..9abedf1a32f 100644
+--- a/gdb/tui/tui-io.c
++++ b/gdb/tui/tui-io.c
+@@ -1034,6 +1034,9 @@ void
+ tui_inject_newline_into_command_window ()
+ {
+   gdb_assert (tui_active);
++  if (tui_cmd_win () == nullptr || tui_cmd_win ()->width == 0
++      || tui_cmd_win ()->height == 0)
++    return;
+ 
+   WINDOW *w = tui_cmd_win ()->handle.get ();
+ 
+
+base-commit: 7cf30f7f6a6358bc16d04b40524106dd6a7480e6
+-- 
+2.51.0
+

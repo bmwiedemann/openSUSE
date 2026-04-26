@@ -302,6 +302,7 @@ Patch2526:      gcore-handle-unreadable-pages-within-readable-memory.patch
 Patch2527:      gcore-query-auxv-for-at_pagesz-in-gcore_copy_callbac.patch
 Patch2528:      gdb-testsuite-fix-printf-regexp-for-ppc64le-with-gli.patch
 Patch2529:      add-proc-subst_vars.patch
+Patch2530:      gdb-linux-consider-ptrace_scope-when-building-attach.patch
 
 # Backport from gdb-patches
 
@@ -349,6 +350,9 @@ Patch3025:      gdb-tui-don-t-enter-tui-if-debuginfod-enabled-ask.patch
 Patch3026:      gdb-minor-refactoring-of-is_dynamic_type_internal.patch
 Patch3027:      gdb-factor-out-is_dynamic_type_internal_1.patch
 Patch3028:      gdb-enable-ptype-o-for-some-dynamic-types.patch
+# https://sourceware.org/pipermail/gdb-patches/2026-April/226551.html
+Patch3029:      gdb-tui-v3-fix-crash-with-debuginfod-query.patch
+Patch3030:      gdb-tui-reduce-scope-of-debuginfod-query-crash-worka.patch
 
 # Debug patches.
 
@@ -777,6 +781,7 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2527 -p1
 %patch -P 2528 -p1
 %patch -P 2529 -p1
+%patch -P 2530 -p1
 
 %patch -P 3000 -p1
 %patch -P 3001 -p1
@@ -800,6 +805,8 @@ find -name "*.info*"|xargs rm -f
 %patch -P 3026 -p1
 %patch -P 3027 -p1
 %patch -P 3028 -p1
+%patch -P 3029 -p1
+%patch -P 3030 -p1
 
 %patch -P 3500 -p1
 

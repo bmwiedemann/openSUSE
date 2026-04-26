@@ -4298,4 +4298,16 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 - Maintenance script qa.sh cleanup.</comment>
     <requestid>1340997</requestid>
   </revision>
+  <revision rev="193" vrev="7">
+    <srcmd5>b69611fda03bcf02cf99e09955567d36</srcmd5>
+    <version>16.3</version>
+    <time>1777230648</time>
+    <user>anag_factory</user>
+    <comment>- Reduce scope of debuginfo query workaround.  No longer require
+  &quot;set debuginfod enabled off&quot; in .gdbearlyinit or similar to be
+  able to use &quot;gdb -tui&quot; (osc#1261254). 
+- Report helpful error on ptrace permission denied due to
+  yama/selinux (jsc#PED-15928).</comment>
+    <requestid>1348954</requestid>
+  </revision>
 </revisionlist>

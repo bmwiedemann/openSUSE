@@ -1,0 +1,85 @@
+From 56eebf7c018ddbb104cb59c53f1fa0aa34861981 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 1 Apr 2026 15:48:48 +0200
+Subject: [PATCH 2/2] [gdb/tui] Reduce scope of debuginfod query crash
+ workaround
+
+---
+ gdb/testsuite/gdb.tui/query.exp | 12 +++++++++---
+ gdb/tui/tui.c                   |  7 ++++---
+ gdb/tui/tui.h                   |  2 +-
+ 3 files changed, 14 insertions(+), 7 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.tui/query.exp b/gdb/testsuite/gdb.tui/query.exp
+index bc1a55a1b96..eb0bee49aec 100644
+--- a/gdb/testsuite/gdb.tui/query.exp
++++ b/gdb/testsuite/gdb.tui/query.exp
+@@ -65,12 +65,18 @@ foreach_with_prefix how $l {
+ 
+     if { $how == "command" } {
+ 	send_gdb "tui enable\n"
++	set re \
++	    [string_to_regexp \
++		 {(y or [n]) }]
++	gdb_assert { [Term::wait_for_region_contents 0 0 80 24 $re] }
++	send_gdb "n\n"
++	Term::wait_for ""
+     } else {
+ 	send_gdb "\030\001"
++	set re \
++	    "Please set debuginfod enabled to on or off before enabling TUI"
++	gdb_assert { [Term::wait_for_region_contents 0 0 80 24 $re] }
+     }
+-    set re \
+-	"Please set debuginfod enabled to on or off before enabling TUI"
+-    gdb_assert { [Term::wait_for_region_contents 0 0 80 24 $re] }
+ 
+     # Check that prompt is responsive.
+     gdb_assert { [Term::command "print 1"] } "responsive prompt"
+diff --git a/gdb/tui/tui.c b/gdb/tui/tui.c
+index 5dabb9967ae..ff1610225ec 100644
+--- a/gdb/tui/tui.c
++++ b/gdb/tui/tui.c
+@@ -128,7 +128,7 @@ tui_rl_switch_mode (int notused1, int notused2)
+ 	{
+ 	  /* If tui_enable throws, we'll re-prep below.  */
+ 	  rl_deprep_terminal ();
+-	  tui_enable ();
++	  tui_enable (false);
+ 	}
+     }
+   catch (const gdb_exception_forced_quit &ex)
+@@ -386,14 +386,15 @@ gdb_getenv_term (void)
+    the gdb output, configures the readline to work in tui mode.
+    When in curses mode, it does nothing.  */
+ void
+-tui_enable (void)
++tui_enable (bool queries_allowed)
+ {
+   TUI_SCOPED_DEBUG_ENTER_EXIT;
+ 
+   if (tui_active)
+     return;
+ 
+-  if (debuginfod_enabled_ask_p ()
++  if (!queries_allowed
++      && debuginfod_enabled_ask_p ()
+       && defaulted_query_auto_answers_p () != TRIBOOL_TRUE)
+     error (_("Please set debuginfod enabled to on or off before enabling TUI"));
+ 
+diff --git a/gdb/tui/tui.h b/gdb/tui/tui.h
+index 319bd2e5b4d..a6f8b0ae2aa 100644
+--- a/gdb/tui/tui.h
++++ b/gdb/tui/tui.h
+@@ -70,7 +70,7 @@ extern bool tui_get_command_dimension (unsigned int *width,
+ extern void tui_ensure_readline_initialized ();
+ 
+ /* Enter in the tui mode (curses).  */
+-extern void tui_enable (void);
++extern void tui_enable (bool queries_allowed = true);
+ 
+ /* Leave the tui mode.  */
+ extern void tui_disable (void);
+-- 
+2.51.0
+

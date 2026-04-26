@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 21 08:49:04 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Reduce scope of debuginfo query workaround.  No longer require
+  "set debuginfod enabled off" in .gdbearlyinit or similar to be
+  able to use "gdb -tui" (osc#1261254).  Patches added:
+  * gdb-tui-v3-fix-crash-with-debuginfod-query.patch
+  * gdb-tui-reduce-scope-of-debuginfod-query-crash-worka.patch
+
+-------------------------------------------------------------------
+Fri Apr 17 03:52:35 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Report helpful error on ptrace permission denied due to
+  yama/selinux (jsc#PED-15928).  Patches added:
+  * gdb-linux-consider-ptrace_scope-when-building-attach.patch
+
+-------------------------------------------------------------------
 Tue Mar 17 13:33:27 UTC 2026 - Tom de Vries <tdevries@suse.com>
 
 - Testsuite fixes.  Patches added:

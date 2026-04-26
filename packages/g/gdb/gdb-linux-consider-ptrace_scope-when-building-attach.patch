@@ -1,0 +1,140 @@
+From 8ccd5d75d4241e795624dde7622be0d0aa0b4845 Mon Sep 17 00:00:00 2001
+From: Andrew Burgess <aburgess@redhat.com>
+Date: Wed, 10 Sep 2025 14:54:21 +0100
+Subject: [PATCH] gdb/linux: consider ptrace_scope when building attach error
+ message
+
+On GNU/Linux, if an attach fails, then we end up calling
+linux_ptrace_attach_fail_reason, which returns a string describing why
+the attach might have failed.
+
+This commit extends linux_ptrace_attach_fail_reason to check the
+current /proc/sys/kernel/yama/ptrace_scope setting.  When this is set
+to a value greater than 0 attaching can be restricted in some cases.
+
+If I first set ptrace_scope to 1, like this:
+
+  $ echo 1 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+
+Then use current master GDB to attach to a process, I see this:
+
+  (gdb) attach 2476518
+  Attaching to process 2476518
+  ptrace: Operation not permitted.
+  (gdb)
+
+With this patch applied the output becomes:
+
+  (gdb) attach 2476518
+  Attaching to process 2476518
+  warning: the /proc/sys/kernel/yama/ptrace_scope setting of 1 might prevent attaching, see 'man 2 ptrace'
+  ptrace: Operation not permitted.
+  (gdb)
+
+In my (limited) experience, not every user is familiar with the
+ptrace_scope setting.  Finding that attach just doesn't work often
+leads users to believe that the only way to have GDB attach to another
+process is to run GDB as root.
+
+Though that is a solution to the problem, my hope is that, by giving
+the users more information, they can make a more informed choice about
+which solution is right for them (e.g. run as root, change the
+setting, start the inferior directly under GDB, etc).
+
+This change also works for gdbserver.  For example:
+
+  (gdb) target extended-remote :54321
+  Remote debugging using :54321
+  (gdb) attach 2475389
+  Attaching to process 2475389
+  Attaching to process 2475389 failed: Cannot attach to process 2475389: \
+     Operation not permitted (1), the /proc/sys/kernel/yama/ptrace_scope \
+     setting of 1 might prevent attaching, see 'man 2 ptrace'
+  (gdb)
+
+There's no test for this as testing would require adjusting a system
+wide setting.
+
+I've linked to a semi-related bug.  It is discussing the same issue at
+least.  This patch doesn't try to "fix" anything that the bug is
+talking about, it just makes it (I think) slightly clearer when the
+issue does arise.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31520
+
+Approved-By: Pedro Alves <pedro@palves.net>
+Reviewed-By: Guinevere Larsen <guinevere@redhat.com>
+---
+ gdb/nat/linux-ptrace.c | 41 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
+
+diff --git a/gdb/nat/linux-ptrace.c b/gdb/nat/linux-ptrace.c
+index f90183b63ec..1f72936992e 100644
+--- a/gdb/nat/linux-ptrace.c
++++ b/gdb/nat/linux-ptrace.c
+@@ -23,12 +23,46 @@
+ #include <sys/procfs.h>
+ #endif
+ #include "gdbsupport/eintr.h"
++#include "gdbsupport/gdb_file.h"
+ 
+ /* Stores the ptrace options supported by the running kernel.
+    A value of -1 means we did not check for features yet.  A value
+    of 0 means there are no supported features.  */
+ static int supported_ptrace_options = -1;
+ 
++/* The file from which the kernel.yama.ptrace_scope setting is read.  */
++
++static constexpr char ptrace_scope_filename[]
++  = "/proc/sys/kernel/yama/ptrace_scope";
++
++/* Reads the yama ptrace_scope value from /proc.  Returns the integer value
++   of ptrace_scope (0, 1, 2, or 3) or -1 if the file cannot be read (e.g.,
++   yama is not enabled).  */
++
++static int
++get_ptrace_scope ()
++{
++  int ptrace_scope = -1;
++
++  /* The /proc file that contains the system-wide ptrace scope setting.  */
++  gdb_file_up fp (fopen (ptrace_scope_filename, "r"));
++  if (fp != nullptr)
++    {
++      if (fscanf (fp.get (), "%d", &ptrace_scope) != 1)
++	{
++	  /* If fscanf fails then we couldn't parse the number.  But just
++	     to be safe, set the scope back to -1 to indicate no value is
++	     available.  */
++	  ptrace_scope = -1;
++	}
++    }
++
++  /* If fp is NULL, it's likely because the yama security module is not
++     active.  In this case, we return -1 to indicate that the scope is
++     unknown or not applicable.  */
++  return ptrace_scope;
++}
++
+ /* Find all possible reasons we could fail to attach PID and return these
+    as a string.  An empty string is returned if we didn't find any reason.  */
+ 
+@@ -43,6 +77,13 @@ linux_ptrace_attach_fail_reason (pid_t pid)
+ 		    _("process %d is already traced by process %d"),
+ 		    (int) pid, (int) tracerpid);
+ 
++  int ptrace_scope = get_ptrace_scope ();
++  if (ptrace_scope > 0)
++    string_appendf (result,
++		    _("the %s setting of %d might prevent attaching, "
++		      "see 'man 2 ptrace'"),
++		    ptrace_scope_filename, ptrace_scope);
++
+   if (linux_proc_pid_is_zombie_nowarn (pid))
+     string_appendf (result,
+ 		    _("process %d is a zombie - the process has already "
+
+base-commit: 56eebf7c018ddbb104cb59c53f1fa0aa34861981
+-- 
+2.51.0
+
