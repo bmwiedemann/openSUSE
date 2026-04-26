@@ -15,4 +15,12 @@
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346787</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1bd36ef76c7d81e292de934c61ddebf8</srcmd5>
+    <version>2.52.3</version>
+    <time>1777230669</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348438</requestid>
+  </revision>
 </revisionlist>

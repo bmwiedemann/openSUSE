@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 17 23:43:04 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.52.3:
+  + Add support for the "scrollbar-color" CSS property.
+  + Fix some emoji glyphs being rendered as missing glyph boxes.
+  + Fix JavaScriptCore crashes on architectures other than x86_64.
+  + Fix the build on s390x.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Apr 13 12:57:37 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.52.2:
@@ -28,7 +39,7 @@ Wed Apr  1 14:02:53 UTC 2026 - Michael Gorse <mgorse@suse.com>
   + Fix the build with USE_GSTREAMER_GL disabled.
   + Fix the build with librice version 0.3.0 or newer.
   + Fix several crashes and rendering issues.
-  + Translation updates: Georgian.
+  + Updated translations.
   + Security fixes: CVE-2026-20643, CVE-2026-20664, CVE-2026-20665,
     CVE-2026-20691, CVE-2026-28857, CVE-2026-28859, CVE-2026-28861,
     CVE-2026-28871.
