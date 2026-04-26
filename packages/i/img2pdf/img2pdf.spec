@@ -24,14 +24,13 @@ Summary:        Python module for converting images to PDF via direct JPEG inclu
 License:        LGPL-3.0-or-later
 URL:            https://gitlab.mister-muffin.de/josch/img2pdf
 Source:         https://files.pythonhosted.org/packages/source/i/img2pdf/img2pdf-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
-Requires:       python-pdfrw
 Requires:       python-pikepdf
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %if "%{python_flavor}" == "%{primary_python}"
@@ -63,10 +62,10 @@ of file size.
 sed -i -e '/^#!\//, 1d' src/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/img2pdf-gui
 %python_clone -a %{buildroot}%{_bindir}/img2pdf
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -89,6 +88,8 @@ sed -i -e '/^#!\//, 1d' src/*.py
 %doc CHANGES.rst README.md
 %python_alternative %{_bindir}/img2pdf
 %python_alternative %{_bindir}/img2pdf-gui
-%{python_sitelib}/*
+%{python_sitelib}/img2pdf.py
+%pycache_only %{python_sitelib}/__pycache__/img2pdf.*.pyc
+%{python_sitelib}/img2pdf-%{version}.dist-info
 
 %changelog
