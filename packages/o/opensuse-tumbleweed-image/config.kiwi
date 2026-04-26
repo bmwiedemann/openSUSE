@@ -60,12 +60,10 @@
     <package name="systemd"/>
     <package name="systemd-networkd"/>
     <package name="systemd-resolved"/>
-    <package name="systemd-sysvinit"/>
     <package name="iproute2"/>
   </packages>
   <packages type="image" profiles="lxc">
     <package name="systemd"/>
-    <package name="systemd-sysvinit"/>
     <package name="wicked"/>
     <package name="iproute2"/>
   </packages>

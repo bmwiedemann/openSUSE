@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 21 08:23:46 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Drop systemd-sysvinit, see SR#1348897
+
+-------------------------------------------------------------------
 Mon Feb  9 16:31:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use zypp-* configuration packages and patch zypp.conf only when
