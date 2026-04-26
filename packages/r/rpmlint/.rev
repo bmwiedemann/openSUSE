@@ -5612,4 +5612,12 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * cli: Allow usage of --strict option</comment>
     <requestid>1346395</requestid>
   </revision>
+  <revision rev="535" vrev="1">
+    <srcmd5>e2ccad18fa9bc76a7d933280192c0fe2</srcmd5>
+    <version>2.9.0+git20260417.eb98d54d</version>
+    <time>1777230677</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1349108</requestid>
+  </revision>
 </revisionlist>

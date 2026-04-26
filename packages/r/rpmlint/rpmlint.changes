@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 17 08:40:25 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.9.0+git20260417.eb98d54d:
+  * test: add test coverage for PermissionsParser in SUIDPermissionsCheck
+  * pkg.py: FakePkg.add_file_with_content(): support custom file mode
+  * PermissionsParser: fix parse error when spaces occur between package names (bsc#1262166)
+
+-------------------------------------------------------------------
+Tue Apr 14 08:22:48 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.9.0+git20260414.1a000082:
+  * dbus-services: systemd v260 (bsc#1259318)
+
+-------------------------------------------------------------------
 Mon Apr 13 10:11:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 2.9.0+git20260413.9633b0c5:
