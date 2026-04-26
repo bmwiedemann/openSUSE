@@ -2073,4 +2073,41 @@ Changes:
   (not named sl16.0 anymore, but using same string as the git branch)</comment>
     <requestid>1338628</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>ab650f4143b065c2cdf137e32c93520d</srcmd5>
+    <version>20260415</version>
+    <time>1777230675</time>
+    <user>anag_factory</user>
+    <comment>- Support a new &quot;IgnoreRebuild&quot; config.
+- build-recipe-kiwi:
+  * Add support for oci containers
+  * Avoid needlessly compressing container images
+  * Detect container images based on build result file name
+- Fix queryrecipe to use the summary and the description from the main package
+
+- config: Add slfo-main build configuration
+- drop the inner quotes, not needed on bash 4 and breaks on bash 3
+- build: in the ccache case, after test -e also accept -L
+
+- container:
+  * Add microdnf package manager support
+  * Add experimental support for the container-timestamp build option
+- sbom:
+  * allow to create v1 intoto data
+  * spdx: connect OPERATING-SYSTEM package to the root package
+  * Transfer product vcs and disturl
+- Ubuntu 26.04 hack
+
+- Support --cms-nocerts and --cms-keyid in the signdummy
+- Support chroot builds inside of containers
+- runservice tool, allow to specify the modes. Can be
+  used on plain git source now also
+- Support --mtime option for cpio creation
+- generate_sbom:
+   * Support also unzck compressed repomd files
+   * Fail when given --product directory is missing
+   * support zstd compressed repomd data
+- build-vm-lxc: support lxc &gt;= 5</comment>
+    <requestid>1347152</requestid>
+  </revision>
 </revisionlist>
