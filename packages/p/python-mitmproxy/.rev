@@ -262,4 +262,37 @@
     <comment></comment>
     <requestid>1330697</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1136aab6bf66732acf2fc78bb05b99d8</srcmd5>
+    <version>12.2.2</version>
+    <time>1777230681</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1349126 from nkrapp
+
+- Update to 12.2.2 (fixes CVE-2026-40606, bsc#1262504)
+    * GHSA-527g-3w9m-29hv: Fix LDAP injection vulnerability reported by @yueyueL.
+    * Reduce CERT_EXPIRY to 199 days.
+    * Switch all content-encoding compression algorithms to use fastest settings
+      by default. This significantly improves addon runtime performance when
+      assigning to message.content.
+    * Fix addon options not being included in --options output.
+    * Fix view.settings.setval.toggle command to correctly use the provided key
+      parameter instead of hardcoded &quot;key&quot; string.
+    * Fix 400 Bad Request for HTTP requests with uppercase scheme (e.g. HTTP://).
+    * Fix console command panel losing focus due to incoming traffic
+      (e.g. websocket messages).
+    * mitmdump: Fix failed CONNECT requests not being displayed.
+    * mitmweb: Reduce FlowTable Redux subscriptions from O(rows) to O(1).
+    * mitmweb: Fix editors not allowing content to be cleared to an empty string
+    * Update optmanager value parsing exceptions to include the option name
+    * mitmweb: show intercept filter tag at the bottom for default options
+    * Fix a bug where mitmweb would show a blank page on Windows. 
+    * mitmweb: Add number of selected flows in the footer
+    * Fix modify_body crash when replacement strings contain backslash sequences.
+    * Added support for adding and editing comments on individual flows in the
+      mitmproxy console.
+    * Allow hiding the Quick Help UI in the mitmproxy console with the 'H' key.
+    * Removed several dead functions using Skylos.</comment>
+    <requestid>1349237</requestid>
+  </revision>
 </revisionlist>

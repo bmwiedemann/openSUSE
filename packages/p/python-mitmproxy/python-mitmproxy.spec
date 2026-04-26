@@ -26,7 +26,7 @@
 # Upstream only supports Python 3.12+!
 %define skip_python311 1
 Name:           python-mitmproxy
-Version:        12.2.1
+Version:        12.2.2
 Release:        0
 Summary:        An interactive, SSL/TLS-capable intercepting proxy
 License:        MIT
