@@ -85,4 +85,14 @@ builds significantly due to switching to release checking.
 - Update to 16.0.1+git8664</comment>
     <requestid>1347658</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c170c684b4e17483512b19e0283e5f5c</srcmd5>
+    <version>16.0.1+git8812</version>
+    <time>1777230678</time>
+    <user>anag_factory</user>
+    <comment>- Update to 16.0.1+git8812, includes GCC 16.1 release candidate #2.
+
+- Update to 16.0.1+git8809, GCC 16.1 release candidate.</comment>
+    <requestid>1349208</requestid>
+  </revision>
 </revisionlist>

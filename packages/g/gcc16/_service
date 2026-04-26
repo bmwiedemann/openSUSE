@@ -6,6 +6,7 @@
     <param name="match-tag">basepoints/gcc-*</param>
     <param name="url">git://gcc.gnu.org/git/gcc.git</param>
     <param name="scm">git</param>
+    <param name="revision">releases/gcc-16</param>
   </service>
   <service name="tar" mode="manual"/>
   <service name="recompress" mode="manual">
