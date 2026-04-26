@@ -1644,4 +1644,12 @@ New stable rel</comment>
     <comment>Push GNOME 50</comment>
     <requestid>1345428</requestid>
   </revision>
+  <revision rev="207" vrev="2">
+    <srcmd5>d6dff873c0219cbe76f3a8df2f3b4c2b</srcmd5>
+    <version>1.60.0</version>
+    <time>1777230662</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348425</requestid>
+  </revision>
 </revisionlist>

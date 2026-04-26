@@ -169,6 +169,17 @@ Supplements:    (gvfs and gnome-online-accounts)
 This package provides a gvfs backend that supports GNOME online
 accounts integration.
 
+%package backend-cdda
+Summary:        VFS functionality for GLib
+License:        LGPL-2.0-or-later
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+Requires:       %{name}-backends = %{version}
+Provides:       gvfs-backends:/usr/libexec/gvfs/gvfsd-cdda
+
+%description backend-cdda
+This package provides a gvfs backend that supports cdda / libcdio
+
 %package devel
 Summary:        Development files for the GNOME Virtual file system
 License:        LGPL-2.0-or-later
@@ -298,6 +309,12 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_libexecdir}/%{name}/gvfsd-gphoto2
 %{_datadir}/%{name}/mounts/gphoto2.mount
 
+%if %{with cdda}
+%files backend-cdda
+%{_libexecdir}/%{name}/gvfsd-cdda
+%{_datadir}/%{name}/mounts/cdda.mount
+%endif
+
 %files backends
 %doc monitor/udisks2/what-is-shown.txt
 %{_datadir}/dbus-1/services/org.gtk.vfs.UDisks2VolumeMonitor.service
@@ -315,10 +332,6 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_datadir}/%{name}/mounts/archive.mount
 %{_libexecdir}/%{name}/gvfsd-burn
 %{_datadir}/%{name}/mounts/burn.mount
-%if %{with cdda}
-%{_libexecdir}/%{name}/gvfsd-cdda
-%{_datadir}/%{name}/mounts/cdda.mount
-%endif
 %{_libexecdir}/%{name}/gvfsd-computer
 %{_datadir}/%{name}/mounts/computer.mount
 %{_libexecdir}/%{name}/gvfsd-dav

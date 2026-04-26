@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr  5 06:36:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Split out cdda in own separate sub package (gvfs-backend-cdda).
+
+-------------------------------------------------------------------
 Fri Mar 27 09:44:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop google conditional and pkgconfig(libgdata), no longer
