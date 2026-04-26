@@ -169,4 +169,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1341098</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d15b0a66f91532bc2494479b4d76caab</srcmd5>
+    <version>2026.4</version>
+    <time>1777230685</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.4:
+  * Add a hook for imagingcontrol4, which loads dynamic libraries.</comment>
+    <requestid>1349263</requestid>
+  </revision>
 </revisionlist>
