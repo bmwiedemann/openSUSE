@@ -1,7 +1,7 @@
 #
 # spec file for package strongswan
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 %bcond_without  systemd
 
 Name:           strongswan
-Version:        6.0.4
+Version:        6.0.6
 Release:        0
 Summary:        IPsec-based VPN solution
 License:        GPL-2.0-or-later
@@ -568,6 +568,45 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/xauth-pam.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/xcbc.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/bypass-lan.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/af-alg.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/agent.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/blowfish.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/bypass-lan.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/ccm.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/cmac.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/constraints.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/ctr.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/curl.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/drbg.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/eap-gtc.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/eap-identity.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/eap-md5.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/eap-mschapv2.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/eap-peap.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/eap-tls.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/eap-ttls.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/fips-prf.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/gcm.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/gcrypt.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/gmp.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/kdf.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/kernel-netlink.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/ldap.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/md4.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/mgf1.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/nonce.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/openssl.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/pem.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/pkcs1.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/pkcs11.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/pkcs7.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/pkcs8.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/random.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/revocation.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/socket-default.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/sshkey.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/x509.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/xcbc.conf
 %dir %{strongswan_libdir}
 %if %{with integrity}
 %{strongswan_libdir}/libchecksum.so
@@ -875,6 +914,7 @@ fi
 %strongswan_plugins/libstrongswan-stroke.so
 %dir %strongswan_configs/
 %dir %strongswan_configs/charon/
+%dir %strongswan_configs/charon-nm/
 %config(noreplace) %attr(600,root,root) %strongswan_configs/starter.conf
 %config(noreplace) %attr(600,root,root) %strongswan_configs/charon/stroke.conf
 %dir %strongswan_templates/

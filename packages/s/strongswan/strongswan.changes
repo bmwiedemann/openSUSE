@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Apr 22 12:56:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.0.6
+  * Added the unique ID to the log messages when creating an IKE SA
+    as responder and when deleting such a half-open SA.
+  * IKEv2 fragments with a total fragment count lower than before
+    are now dropped as mandated by the RFC.
+  * It now updates the address family in the SA selector when the
+    addresses of a tunnel mode IPsec SA change in the
+    kernel-netlink plugin.
+  * CVE-2026-35328, CVE-2026-35329, CVE-2026-35330, CVE-2026-35331,
+    CVE-2026-35332, CVE-2026-35333, CVE-2026-35334 were fixed.
+
+-------------------------------------------------------------------
+Mon Mar 23 15:09:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.0.5
+  * Fixed a vulnerability in the eap-ttls plugin related to
+    processing EAP-TTLS AVPs that can lead to resource exhaustion
+    or a crash. [CVE-2026-25075]
+  * The new `icmp` option enables the forwarding of certain ICMP
+    error messages (e.g. Fragmentation Needed), even if their
+    source address doesn't match the negotiated traffic selectors,
+    when running on Linux kernels that support this (v6.9+).
+  * charon-cmd now supports childless IKE SA initiation with the
+    `--childless` option.
+  * The dhcp plugin now keeps track of address leases across
+    make-before-break reauthentications to avoid releasing the
+    address when the old SA is terminated
+  * Added support for `organizationIdentifier` RDNs, which are used
+    in e.g. eIDAS certificates, when parsing ASN.1 DN identities
+    from strings.
+
+-------------------------------------------------------------------
 Sat Dec 13 09:17:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.0.4
