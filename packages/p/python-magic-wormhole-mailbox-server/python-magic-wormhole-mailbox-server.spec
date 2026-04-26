@@ -1,7 +1,7 @@
 #
 # spec file for package python-magic-wormhole-mailbox-server
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-magic-wormhole-mailbox-server
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        Key exchange and control message server for Magic-Wormhole
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/warner/magic-wormhole-mailbox-server
-Source:         https://files.pythonhosted.org/packages/source/m/magic-wormhole-mailbox-server/magic-wormhole-mailbox-server-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/magic-wormhole-mailbox-server/magic_wormhole_mailbox_server-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted-tls >= 17.5.0}
 BuildRequires:  %{python_module attrs >= 16.3.0}
 BuildRequires:  %{python_module autobahn >= 0.14.1}
@@ -49,7 +49,7 @@ messages. Bulk data is sent over a direct TCP connection, or through
 a transit-relay.
 
 %prep
-%autosetup -p1 -n magic-wormhole-mailbox-server-%{version}
+%autosetup -p1 -n magic_wormhole_mailbox_server-%{version}
 
 %build
 %pyproject_wheel

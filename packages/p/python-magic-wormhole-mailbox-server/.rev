@@ -76,4 +76,22 @@
   (upstream)</comment>
     <requestid>1223436</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ccc413e89a0e8d4e67a12d451fa38bd3</srcmd5>
+    <version>0.6.0</version>
+    <time>1777230683</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1349167 from mia
+
+- Update to 0.6.0:
+    * fix link to transit-relay
+    * fix stdout test error
+    * remove depracated pkg_resources use
+    * syntax modernization
+    * use f-strings everywhere
+    * replace returnValue() with return
+    * make README match tested versions
+    * no need to install mock</comment>
+    <requestid>1349240</requestid>
+  </revision>
 </revisionlist>

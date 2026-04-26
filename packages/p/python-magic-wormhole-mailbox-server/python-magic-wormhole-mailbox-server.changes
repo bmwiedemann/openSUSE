@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 24 23:00:55 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.6.0:
+  * fix link to transit-relay
+  * fix stdout test error
+  * remove depracated pkg_resources use
+  * syntax modernization
+  * use f-strings everywhere
+  * replace returnValue() with return
+  * make README match tested versions
+  * no need to install mock
+
+-------------------------------------------------------------------
 Mon Nov 11 20:22:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.1:
