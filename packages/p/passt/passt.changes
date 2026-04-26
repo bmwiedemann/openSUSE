@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Apr 14 06:31:00 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 20260120.386b5f5:
+  * flow: Remove EPOLLFD_ID_INVALID
+  * tcp: Register fds with epoll at flow creation
+  * tcp_splice: Register fds with epoll at flow creation
+  * conf, pasta: Add --splice-only option
+  * flow, fwd: Optimise forwarding rule lookup using epoll ref when possible
+  * fwd, tcp, udp: Add forwarding rule to listening socket epoll references
+  * fwd: Remap ports based directly on forwarding rule
+  * flow, fwd: Consult rules table when forwarding a new flow from socket
+  * fwd: Generate auto-forward exclusions from socket fd tables
+  * conf, fwd: Check forwarding table for conflicting rules
+  * tcp, udp: Remove old auto-forwarding socket arrays
+  * fwd, tcp, udp: Set up listening sockets based on forward table
+  * ip: Add ipproto_name() function
+  * fwd: Make space to store listening sockets in forward table
+  * conf, fwd: Record "auto" port forwards in forwarding table
+  * conf: Accurately record ifname and address for outbound forwards
+  * conf, fwd: Keep a table of our port forwarding configuration
+  * inany: Extend inany_ntop() to treat NULL as a fully unspecified address
+  * hooks/pre-push: Use mandoc(1) to get HTML anchors to command-line options
+  * selinux: Enable open permissions on netns directory, operations on container_var_run_t
+  * igmp: Remove apparently unneeded suppression
+  * epoll_ctl: Move u64 variant first for safer initialisation
+  * treewide: Fix more pointers which can be const
+  * tcp, udp: Make {tcp,udp}_listen() return socket fds
+  * tcp, udp, conf: Don't silently ignore listens on unsupported IP versions
+  * flow: Introduce flow_epoll_set() to centralize epoll operations
+  * tcp_splice: Refactor tcp_splice_conn_epoll_events() to per-side computation
+  * udp_flow: Assign socket to flow inside udp_flow_sock()
+  * udp_flow: remove unneeded epoll_ref indirection
+  * tcp: cleanup timer creation
+  * tcp: remove timer update in tcp_epoll_ctl()
+  * apparmor: Upgrade ABI version to 4.0, explicitly enable user namespace creation
+  * tcp: Fix rounding issue in check for approximating window to zero
+  * treewide: Fix places where we incorrectly indented with spaces
+  * tcp: Remove some no longer used includes
+  * fwd: Minor cleanup to fwd_nat_from_splice()
+  * fwd: Remove now-unnecessary handling of unspecified oaddr from splice
+  * udp_vu: Discard datagrams when RX virtqueue is not usable
+  * fwd, tcp, udp: Consolidate epoll refs for listening sockets
+  * epoll_ctl: Add missing description for flowside field of epoll_ref
+  * tcp: Remove unused tcp_epoll_ref
+  * test: Include sshd-auth in mbuto guest image
+  * test: Handle Operating System Command escapes in terminal output
+  * treewide: Don't rely on terminator records in ip[46].dns arrays
+  * migrate: Don't use terminator element for versions[] array
+  * util: Be more defensive about buffer overruns in read_file()
+  * apparmor: Allow reading TCP RTO sysctl parameters
+  * tcp: Update EPOLL_TYPE_TCP_TIMER fd
+  * udp: Rename udp_sock_init() to udp_listen() with small cleanups
+  * tcp: Combine tcp_sock_init_one() and tcp_sock_init() into tcp_listen()
+  * pasta: Warn, disable matching IP version if not supported, in local mode
+  * selinux: Enable read and watch permissions on netns directory as well
+
+-------------------------------------------------------------------
 Mon Mar  2 08:48:40 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
 
 - spec: Adhere to new `suse_version` convention for SLES16.X (jsc#PED-15779)
