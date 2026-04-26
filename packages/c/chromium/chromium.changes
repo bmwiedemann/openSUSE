@@ -1,7 +1,58 @@
 -------------------------------------------------------------------
+Sat Apr 25 07:23:43 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- promote Chromium 148 to early stable
+
+-------------------------------------------------------------------
+Thu Apr 23 19:03:26 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 148.0.7778.56 (beta released 2026-04-23)
+- bump version in buildrequires for gn (0.20260331)
+  (needs variable inputs added in March 2026) 
+- added patches:
+  * chromium-148-revert_std_ranges_iota.patch
+    (revert for llvm < 20,
+     error: no member named 'iota' in namespace 'std::ranges')
+  * ppc-chromium-v8-3d60e0915e8a0caec994a400627f9dfa00e717d0.patch
+    (from upstream, add missing implementation for ppc)
+  * chromium-148-no_dep_on_intree_rustc_binary.patch
+    (do not depend on intree binary of rustc)
+- added patches:
+  * chromium-148-only_address_sanitizer.patch
+  (prevent undefined symbol __sanitizer_set_death_callback)
+  * chromium-f14702bb2b25c940cc95eb772110e715618bd069.patch
+  (revert upstream change)
+  * ppc-chromium-v8-3d60e0915e8a0caec994a400627f9dfa00e717d0.patch
+    (obsolete, upstream)
+- removed patches:
+  * chromium-147-ffmpeg_includes.patch (upstream)
+  * chromium-3bccbdead3efa7e91f7c9d4078106dedaed84fb8.patch (upstream)
+- modified patches:
+  * ppc-fedora-fix-different-data-layouts.patch
+  * ppc-fedora-skia-vsx-instructions.patch
+  * ppc-fedora-0002-regenerate-xnn-buildgn.patch
+  * chromium-146-ignore-for-ubsan.patch
+  * chromium-f14702bb2b25c940cc95eb772110e715618bd069.patch
+    adjust context for changes made in 7120cf7
+  * chromium-146-value_or.patch (one more place in v8)
+  * chromium-147-blink_renderer_need_ffmpeg.patch (new hunk added)
+- keeplibs:
+  added: third_party/gperf
+  (needed by blink/renderer/core/css/parser/at_rule_descriptors.cc)
+  change: third_party/harfbuzz-ng to third_party/harfbuzz
+  drop: third_party/libaom/source/libaom/third_party/SVT-AV1
+- force link to system gperf binary instead of hardcoded x86
+  in tree copy
+
+-------------------------------------------------------------------
 Wed Apr 22 17:54:34 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 147.0.7727.116 (boo#1262586)
+  * CVE-2026-6919: Use after free in DevTools
+  * CVE-2026-6920: Out of bounds read in GPU
+  * CVE-2026-6921: Race in GPU
+  * Various fixes from internal audits, fuzzing and other
+    initiatives
 
 -------------------------------------------------------------------
 Wed Apr 15 22:22:33 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>

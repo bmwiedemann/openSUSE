@@ -79,7 +79,7 @@
 # minimal esbuild version
 %define esbuild_version 0.25.1
 # minimal gn version
-%define gn_version 0.20251217
+%define gn_version 0.20260331
 # local rollup override to run without binaries
 %define rollup_version 3.29.5
 %if 0%{?suse_version} <= 1699
@@ -132,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        147.0.7727.116
+Version:        148.0.7778.56
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -200,7 +200,7 @@ Patch395:       chromium-146-mojo_chmod_mode.patch
 Patch396:       chromium-146-value_or.patch
 Patch397:       chromium-146-has_no_clone.patch
 Patch398:       chromium-147-comment_safe_assert.patch
-Patch399:       chromium-147-ffmpeg_includes.patch
+Patch399:       chromium-148-no_dep_on_intree_rustc_binary.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
 Patch400:       chromium-141-glibc-2.42-SYS_SECCOMP.patch
@@ -294,7 +294,11 @@ Patch1064:       chromium-146-keyfactory.patch
 # clang++: error: unknown argument: '-fsanitize-ignore-for-ubsan-feature=array-bounds'
 Patch1066:       chromium-146-ignore-for-ubsan.patch
 Patch1067:       chromium-146-bytemuck.patch
-#
+Patch1068:       chromium-148-only_address_sanitizer.patch
+# error: no member named 'iota' in namespace 'std::ranges'
+Patch1069:       chromium-148-revert_std_ranges_iota.patch
+# revert using raw_ref in permission_request_manager, fails to compile
+Patch1070:       chromium-f14702bb2b25c940cc95eb772110e715618bd069.patch
 Patch1080:       rollup.patch
 
 # end conditionally applied patches
@@ -573,13 +577,17 @@ if [[ $(echo ${clang_version} | cut -d. -f1) -lt 21 ]]; then
 %patch -p1 -P 1061
 %patch -p1 -P 1062
 %patch -p1 -R -P 1063
+%patch -p1 -P 1069
 fi
 %patch -p1 -P 1064
 
 if [[ $(echo ${clang_version} | cut -d. -f1) -lt 23 ]]; then
 %patch -p1 -P 1066
 %patch -p1 -P 1067
+%patch -p1 -P 1068
 fi
+
+%patch -p1 -R -P 1070
 
 ## ROLLUP_HACK
 rm -rf third_party/devtools-frontend/src/node_modules/rollup
@@ -642,6 +650,10 @@ rm -f third_party/node/linux/node-linux-x64/bin/node
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
 node_version=$(/usr/bin/node --version)
 sed -i -e "s@^NODE_VERSION=.*@NODE_VERSION=\"${node_version}\"@" third_party/node/update_node_binaries
+
+# fix the gperf binary
+rm -f third_party/gperf/cipd/bin/gperf
+ln -sf /usr/bin/gperf third_party/gperf/cipd/bin/gperf
 
 # python3
 mkdir -p $HOME/bin
@@ -774,6 +786,7 @@ keeplibs=(
     third_party/google_input_tools/third_party/closure_library
     third_party/google_input_tools/third_party/closure_library/third_party/closure
     third_party/googletest
+    third_party/gperf
     third_party/highway
     third_party/hunspell
     third_party/ink
@@ -787,7 +800,6 @@ keeplibs=(
     third_party/libaddressinput
     third_party/libaom
     third_party/libaom/source/libaom/third_party/fastfeat
-    third_party/libaom/source/libaom/third_party/SVT-AV1
     third_party/libaom/source/libaom/third_party/vector
     third_party/libaom/source/libaom/third_party/x86inc
     third_party/libc++
@@ -914,7 +926,7 @@ keeplibs=(
 )
 %if !%{with system_harfbuzz}
 keeplibs+=(
-    third_party/harfbuzz-ng
+    third_party/harfbuzz
 )
 %endif
 %if !%{with system_freetype}
@@ -947,7 +959,6 @@ keeplibs+=( third_party/libwebp )
 keeplibs+=(
     third_party/speech-dispatcher
     third_party/usb_ids
-    third_party/xdg-utils
 )
 # really if not with system_re2 but googletest needs it
 keeplibs+=( third_party/re2 )
@@ -1066,7 +1077,7 @@ gn_system_libraries+=(
 %endif
 %if %{with system_harfbuzz}
 gn_system_libraries+=(
-    harfbuzz-ng
+    harfbuzz
 )
 %endif
 %if %{with system_freetype}

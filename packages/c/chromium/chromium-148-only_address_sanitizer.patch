@@ -1,0 +1,20 @@
+--- chromium-148.0.7743.0/v8/src/sandbox/testing.cc	2026/03/25 23:17:45	1.1
++++ chromium-148.0.7743.0/v8/src/sandbox/testing.cc	2026/03/25 23:19:18
+@@ -854,7 +854,7 @@
+   // We should also uninstall the sanitizer death callback as our crash filter
+   // may hand a crash over to sanitizers, which should then not enter our crash
+   // filtering logic a second time.
+-#ifdef V8_USE_ANY_SANITIZER
++#ifdef V8_USE_ADDRESS_SANITIZER
+   __sanitizer_set_death_callback(nullptr);
+ #endif  // V8_USE_ANY_SANITIZER
+ }
+@@ -1134,7 +1134,7 @@
+   }
+   CHECK(success);
+ 
+-#ifdef V8_USE_ANY_SANITIZER
++#ifdef V8_USE_ADDRESS_SANITIZER
+   // We install sanitizer specific crash handlers. These can only check for
+   // in-sandbox crashes on certain configurations.
+   //

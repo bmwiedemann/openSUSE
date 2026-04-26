@@ -17,3 +17,11 @@ clang++-19: error: unknown argument: '-fsanitize-ignore-for-ubsan-feature=array-
      ]
    }
  }
+@@ -1934,7 +1934,6 @@
+       # sanitizer) is enabled, they then do expensive debug like operations. We
+       # want to suppress this behaviour since we want to keep performance costs
+       # as low as possible while having these checks.
+-      "-fsanitize-ignore-for-ubsan-feature=return",
+     ]
+   }
+ }

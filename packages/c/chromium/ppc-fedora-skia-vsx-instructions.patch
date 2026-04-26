@@ -16,8 +16,8 @@ Index: chromium-144.0.7559.59/third_party/skia/BUILD.gn
  template("optional") {
    if (invoker.enabled) {
 @@ -1700,6 +1706,7 @@ skia_component("skia") {
-     ":skx",
      ":typeface_fontations",
+     ":typeface_freetype",
      ":vello",
 +    ":vsx",
      ":webp_decode",
@@ -51,7 +51,7 @@ Index: chromium-144.0.7559.59/third_party/skia/include/core/SkTypes.h
 +    #ifndef SK_CPU_PPC64
 +        #define SK_CPU_PPC64
 +    #endif
-+    #undef SK_CPU_SSE_LEVEL
++    #undef SK_CPU_X64_LEVEL
 +#endif
 +
 +// Newer versions of clang and gcc for ppc64 ship with wrappers that translate
@@ -59,20 +59,20 @@ Index: chromium-144.0.7559.59/third_party/skia/include/core/SkTypes.h
 +// to be Intel. Currently, full API support for SSSE3 on POWER8 and later
 +// processors.
 +#if defined(__POWER8_VECTOR__) && defined(__has_include) && \
-+  !defined(SK_CPU_SSE_LEVEL)
++  !defined(SK_CPU_X64_LEVEL)
 +
 +    // Clang ships both Intel and PPC headers in its PPC version, storing the
 +    // PPC compatibility in a subdirectory that the compiler will include before
 +    // its standard library include directory.
 +    #if (__has_include(<tmmintrin.h>) && !defined(__clang__)) || \
 +         __has_include(<ppc_wrappers/tmmintrin.h>)
-+        #define SK_CPU_SSE_LEVEL    SK_CPU_SSE_LEVEL_SSSE3
++        #define SK_CPU_X64_LEVEL    SK_CPU_X64_LEVEL_SSSE3
 +    #elif (__has_include(<emmintrin.h>) && !defined(__clang__)) || \
 +           __has_include(<ppc_wrappers/emmintrin.h>)
-+        #define SK_CPU_SSE_LEVEL    SK_CPU_SSE_LEVEL_SSE2
++        #define SK_CPU_X64_LEVEL    SK_CPU_X64_LEVEL_SSE2
 +    #endif
 +
-+    #ifdef SK_CPU_SSE_LEVEL
++    #ifdef SK_CPU_X64_LEVEL
 +        #define SK_PPC64_HAS_SSE_COMPAT
 +        #ifndef NO_WARN_X86_INTRINSICS
 +            #define NO_WARN_X86_INTRINSICS
@@ -92,8 +92,8 @@ Index: chromium-144.0.7559.59/third_party/skia/src/base/SkSpinlock.cpp
  #endif
  
  // Renamed from "pause" to avoid conflict with function defined in unistd.h
--#if SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SSE2
-+#if SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SSE2 && \
+-#if SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_SSE2
++#if SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_SSE2 && \
 +    !defined(SK_PPC64_CLANG_MFPPR_BUG)
      #include <emmintrin.h>
      static void do_pause() { _mm_pause(); }
@@ -106,14 +106,14 @@ Index: chromium-144.0.7559.59/third_party/skia/src/opts/SkBitmapProcState_opts.h
  // The rest are scattershot at the moment but I want to get them
  // all migrated to be normal code inside SkBitmapProcState.cpp.
  
--#if SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SSE2
+-#if SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_SSE2
 +#if defined(SK_PPC64_HAS_SSE_COMPAT)
-+    #if SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SSSE3
++    #if SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_SSSE3
 +        #include <tmmintrin.h>
 +    #else
 +        #include <emmintrin.h>
 +    #endif
-+#elif SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SSE2
++#elif SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_SSE2
      #include <immintrin.h>
  #elif defined(SK_ARM_HAS_NEON)
      #include <arm_neon.h>
@@ -124,7 +124,7 @@ Index: chromium-144.0.7559.59/third_party/skia/src/opts/SkBlitRow_opts.h
 @@ -69,7 +69,7 @@
  #endif
  
- #if SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SSE2
+ #if SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_SSE2
 -    #include <immintrin.h>
 +    #include <emmintrin.h>
  
@@ -136,7 +136,7 @@ Index: chromium-144.0.7559.59/third_party/skia/src/opts/SkRasterPipeline_opts.h
 +++ chromium-144.0.7559.59/third_party/skia/src/opts/SkRasterPipeline_opts.h
 @@ -1,5 +1,6 @@
  /*
-  * Copyright 2018 Google Inc.
+  * Copyright 2018 Google LLC
 + * Copyright 2023-2024 Raptor Engineering, LLC
   *
   * Use of this source code is governed by a BSD-style license that can be
@@ -147,9 +147,9 @@ Index: chromium-144.0.7559.59/third_party/skia/src/opts/SkRasterPipeline_opts.h
      #define SKRP_CPU_NEON
 +#elif defined(SK_PPC64_HAS_SSE_COMPAT)
 +    #define SKRP_CPU_VSX
- #elif SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SKX
-     #define SKRP_CPU_SKX
- #elif SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_AVX2
+ #elif SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_ML4
+     #define SKRP_CPU_ML4
+ #elif SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_AVX2
 @@ -103,6 +106,8 @@ using NoCtx = const void*;
      #include <math.h>
  #elif defined(SKRP_CPU_NEON)
@@ -353,7 +353,7 @@ Index: chromium-144.0.7559.59/third_party/skia/src/opts/SkRasterPipeline_opts.h
      template <typename T> using V = Vec<4, T>;
      using F   = V<float   >;
 @@ -1427,6 +1618,15 @@ SI F from_half(U16 h) {
- #elif defined(SKRP_CPU_HSW)
+ #elif defined(SKRP_CPU_AVX2)
      return _mm256_cvtph_ps((__m128i)h);
  
 +// Disabled for now as this is not a particularly hot function
@@ -369,7 +369,7 @@ Index: chromium-144.0.7559.59/third_party/skia/src/opts/SkRasterPipeline_opts.h
      // Remember, a half is 1-5-10 (sign-exponent-mantissa) with 15 exponent bias.
      U32 sem = expand(h),
 @@ -1450,6 +1650,16 @@ SI U16 to_half(F f) {
- #elif defined(SKRP_CPU_HSW)
+ #elif defined(SKRP_CPU_AVX2)
      return (U16)_mm256_cvtps_ph(f, _MM_FROUND_CUR_DIRECTION);
  
 +// Disabled for now as this is not a particularly hot function
@@ -422,7 +422,7 @@ Index: chromium-144.0.7559.59/third_party/skia/src/opts/SkRasterPipeline_opts.h
  // Note: on neon this is a saturating multiply while the others are not.
 +// Note: for POWER, the code below was borrowed from emmintrin.h
  SI I16 scaled_mult(I16 a, I16 b) {
- #if defined(SKRP_CPU_SKX)
+ #if defined(SKRP_CPU_ML4)
      return (I16)_mm256_mulhrs_epi16((__m256i)a, (__m256i)b);
 @@ -5661,6 +5880,22 @@ SI I16 scaled_mult(I16 a, I16 b) {
      return vqrdmulhq_s16(a, b);
@@ -527,15 +527,15 @@ Index: chromium-144.0.7559.59/third_party/skia/src/base/SkVx.h
  #endif
  
  #if SKVX_USE_SIMD
--    #if SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_AVX
+-    #if SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_AVX
 +    #if __PPC64__
 +        #define NO_WARN_X86_INTRINSICS
 +        #include <mmintrin.h>
 +        #include <emmintrin.h>
 +        #include <tmmintrin.h>
-+    #elif SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_AVX
++    #elif SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_AVX
          #include <immintrin.h>
-     #elif SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SSE41
+     #elif SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_SSE41
          #include <smmintrin.h>
 Index: chromium-144.0.7559.59/third_party/skia/src/core/SkBlitMask_opts_ssse3.cpp
 ===================================================================
@@ -561,7 +561,7 @@ Index: chromium-144.0.7559.59/third_party/skia/src/core/SkSwizzler_opts_ssse3.cp
 -#if defined(SK_CPU_X86) && \
 +#if (defined(SK_CPU_X86) || defined(SK_CPU_PPC64)) && \
      !defined(SK_ENABLE_OPTIMIZE_SIZE) && \
-     SK_CPU_SSE_LEVEL < SK_CPU_SSE_LEVEL_SSSE3
+     SK_CPU_X64_LEVEL < SK_CPU_X64_LEVEL_SSSE3
  
 Index: chromium-144.0.7559.59/third_party/skia/src/core/SkBlitMask_opts.cpp
 ===================================================================
@@ -573,8 +573,8 @@ Index: chromium-144.0.7559.59/third_party/skia/src/core/SkBlitMask_opts.cpp
          // All Init_foo functions are omitted when optimizing for size
 -    #elif defined(SK_CPU_X86)
 +    #elif defined(SK_CPU_X86) || defined(SK_CPU_PPC64)
-         #if SK_CPU_SSE_LEVEL < SK_CPU_SSE_LEVEL_SSSE3
-             if (SkCpu::Supports(SkCpu::SSSE3)) { Init_BlitMask_ssse3(); }
+         #if SK_CPU_X64_LEVEL < SK_CPU_X64_LEVEL_SSSE3
+             if (SkCpu::Supports(SkX64::SSSE3)) { Init_BlitMask_ssse3(); }
          #endif
 Index: chromium-144.0.7559.59/third_party/skia/src/core/SkBitmapProcState_opts.cpp
 ===================================================================
@@ -586,8 +586,8 @@ Index: chromium-144.0.7559.59/third_party/skia/src/core/SkBitmapProcState_opts.c
          // All Init_foo functions are omitted when optimizing for size
 -    #elif defined(SK_CPU_X86)
 +    #elif defined(SK_CPU_X86) || defined(SK_CPU_PPC64)
-         #if SK_CPU_SSE_LEVEL < SK_CPU_SSE_LEVEL_SSSE3
-             if (SkCpu::Supports(SkCpu::SSSE3)) { Init_BitmapProcState_ssse3(); }
+         #if SK_CPU_X64_LEVEL < SK_CPU_X64_LEVEL_SSSE3
+             if (SkCpu::Supports(SkX64::SSSE3)) { Init_BitmapProcState_ssse3(); }
          #endif
 Index: chromium-144.0.7559.59/third_party/skia/src/core/SkCpu.h
 ===================================================================
@@ -599,8 +599,8 @@ Index: chromium-144.0.7559.59/third_party/skia/src/core/SkCpu.h
      // often compile away this entire function.
 -#if SK_CPU_X86
 +#if SK_CPU_X86 || defined(SK_CPU_PPC64)
-     #if SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SSE1
-     features |= SSE1;
+     #if SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_SSE1
+     features |= SkX64::SSE1;
      #endif
 Index: chromium-144.0.7559.59/third_party/skia/src/core/SkBitmapProcState_opts_ssse3.cpp
 ===================================================================
@@ -636,11 +636,11 @@ Index: chromium-144.0.7559.59/third_party/skia/src/opts/SkSwizzler_opts.inc
  #include <cmath>
  #include <utility>
  
--#if SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SSE1
+-#if SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_SSE1
 +#if defined(SK_PPC64_HAS_SSE_COMPAT)
 +    #include <emmintrin.h>
 +    #include <tmmintrin.h>
-+#elif SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SSE1
++#elif SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_SSE1
      #include <immintrin.h>
  #elif defined(SK_ARM_HAS_NEON)
      #include <arm_neon.h>
@@ -675,7 +675,7 @@ Index: chromium-144.0.7559.59/third_party/skia/src/opts/SkSwizzler_opts.inc
 +
 +    return vec_and(vCmp, q)[0];
 +}
- #elif SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SSE1 && (defined(__clang__) || !defined(_MSC_VER))
+ #elif SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_SSE1 && (defined(__clang__) || !defined(_MSC_VER))
  // -- SSE -- Harden against timing attacks -- MSVC is not supported.
  using F4 = __m128;
 Index: chromium-144.0.7559.59/third_party/skia/src/core/SkBlitter_ARGB32.cpp
@@ -683,7 +683,7 @@ Index: chromium-144.0.7559.59/third_party/skia/src/core/SkBlitter_ARGB32.cpp
 --- chromium-144.0.7559.59.orig/third_party/skia/src/core/SkBlitter_ARGB32.cpp
 +++ chromium-144.0.7559.59/third_party/skia/src/core/SkBlitter_ARGB32.cpp
 @@ -129,6 +129,16 @@ static inline SkPMColor blend_lcd16_opaq
- #if SK_CPU_SSE_LEVEL >= SK_CPU_SSE_LEVEL_SSE2
+ #if SK_CPU_X64_LEVEL >= SK_CPU_X64_LEVEL_SSE2
      #include <emmintrin.h>
  
 +#if defined(SK_CPU_PPC64)
@@ -699,3 +699,5 @@ Index: chromium-144.0.7559.59/third_party/skia/src/core/SkBlitter_ARGB32.cpp
      // The following (left) shifts cause the top 5 bits of the mask components to
      // line up with the corresponding components in an SkPMColor.
      // Note that the mask's RGB16 order may differ from the SkPMColor order.
+--- chromium-148.0.7778.5/third_party/skia/src/opts/SkRasterPipeline_opts.h	2026/04/08 22:36:34	1.1
++++ chromium-148.0.7778.5/third_party/skia/src/opts/SkRasterPipeline_opts.h	2026/04/08 22:39:31

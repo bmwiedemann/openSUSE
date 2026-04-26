@@ -6404,4 +6404,12 @@ https://src.opensuse.org/chromium/chromium/commit/865f270c0c9ba77f4a37d6fc6210f7
     <comment>Chromium 147.0.7727.116 (boo#1262586)</comment>
     <requestid>1348820</requestid>
   </revision>
+  <revision rev="516" vrev="1">
+    <srcmd5>a0e27ec8ef13659ee8887b37e9f800b9</srcmd5>
+    <version>148.0.7778.56</version>
+    <time>1777230679</time>
+    <user>anag_factory</user>
+    <comment>Chromium 148 early stable</comment>
+    <requestid>1349179</requestid>
+  </revision>
 </revisionlist>

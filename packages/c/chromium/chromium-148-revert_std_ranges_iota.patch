@@ -1,0 +1,11 @@
+--- chromium-148.0.7753.0/base/strings/string_util_impl_helpers.h	2026-03-25 04:03:27.000000000 +0100
++++ chromium-148.0.7743.0/base/strings/string_util_impl_helpers.h	2026-03-20 04:03:22.000000000 +0100
+@@ -232,7 +232,7 @@
+ // Lookup table for fast ASCII case-insensitive comparison.
+ inline constexpr std::array<unsigned char, 256> kToLower = []() {
+   std::array<unsigned char, 256> table;
+-  std::ranges::iota(table, 0);
++  std::iota(table.begin(), table.end(), 0);
+   std::iota(table.begin() + size_t{'A'}, table.begin() + size_t{'Z'} + 1, 'a');
+   return table;
+ }();
