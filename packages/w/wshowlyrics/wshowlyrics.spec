@@ -1,7 +1,7 @@
 #
 # spec file for package wshowlyrics
 #
-# Copyright (c) 2025 mantarimay
+# Copyright (c) 2026 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           wshowlyrics
-Version:        0.7.0
+Version:        0.10.0
 Release:        0
 Summary:        A lightweight lyrics overlay for Wayland compositors
 License:        GPL-3.0-or-later
 URL:            https://github.com/unstable-code/lyrics
 Source0:        %{url}/archive/v%{version}/lyrics-%{version}.tar.gz
 BuildRequires:  meson
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  wayland-protocols-devel
 BuildRequires:  cairo-devel
 BuildRequires:  libcurl-devel
@@ -39,7 +40,7 @@ A lightweight lyrics overlay for Wayland compositors that displays
 synchronized lyrics for currently playing music.
 
 %prep
-%autosetup -n lyrics-%{version}
+%autosetup
 
 %build
 %meson
@@ -48,11 +49,18 @@ synchronized lyrics for currently playing music.
 %install
 %meson_install
 
+#fix wrong binary name
+sed -i 's|Exec=wshowlyrics|Exec=lyrics|g' \
+    %{buildroot}%{_datadir}/applications/wshowlyrics.desktop
+
 %files
 %license LICENSE
 %doc README*
 %{_bindir}/lyrics
+%{_bindir}/%{name}-offset
 %{_userunitdir}/%{name}.service
+%{_datadir}/applications/wshowlyrics.desktop
+%{_datadir}/icons/hicolor/scalable/apps/wshowlyrics.svg
 %dir %{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/settings.ini
 

@@ -1,5 +1,6 @@
 <package name="wshowlyrics" project="openSUSE:Factory">
   <title>A lightweight lyrics overlay for Wayland compositors</title>
   <description>A lightweight lyrics overlay for Wayland compositors that displays synchronized lyrics for currently playing music.</description>
+  <devel project="multimedia:apps" package="wshowlyrics"/>
   <url>https://github.com/unstable-code/lyrics</url>
 </package>

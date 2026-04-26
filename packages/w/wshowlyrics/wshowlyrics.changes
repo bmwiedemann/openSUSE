@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Apr 24 20:07:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 0.10.0:
+  * fix: Use buffer detach instead of workaround for transparent overlay
+  * fix: Strip newlines from lyrics log output instead of escaping
+  * fix: Properly cleanup Wayland resources before display disconnect
+  * fix: Detect KDE compositor and use transparent buffer mode
+  * fix: Address Coverity static analysis issues in rendering
+  * fix: Correct Fedora dependency and make compositor optional
+  * fix: Resolve track change detection race condition for local players
+  * feat: Add sanitize_path() to mask username in log output
+  * feat: Migrate runtime paths from /tmp to $XDG_RUNTIME_DIR and activat…
+  * fix: Add NULL check for data pointer in translator_async_worker()
+
+-------------------------------------------------------------------
+Fri Jan  9 00:08:06 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.9.3
+  + Features
+    - Added system tray context menu
+    - Added AppImage build with desktop file and icon
+    - Added automatic player switching based on playback status
+    - Added global timing offset with dual-color visual indicator
+    - Added automatic Spotify position drift correction
+    - Added dynamic MPRIS player detection
+    - Added comprehensive cache management system
+  + Improvements
+    - Significantly reduced CPU usage with optimized MPRIS
+    - Replaced `playerctl` with direct GDBus implementation
+    - Improved desktop notifications with richer track metadata
+    - Improved error messages for lyrics search failures
+    - Improved config loading with clearer fallback logic
+    - Improved packaging for PPA, COPR, AUR, and AppImage
+  + Fixes
+    - Fixed multiple memory leaks, double-free risks, and buffer
+      overflows
+    - Fixed MPRIS track change detection and metadata handling
+    - Fixed timing offset UI issues during instrumental sections
+    - Fixed Spotify advertisement and position detection issues
+    - Fixed parser stability and UTF-8 handling edge cases
+    - Fixed CI/CD and workflow permission issues
+  + Refactoring
+    - Reduced cognitive complexity across core modules
+    - Reduced nesting depth in critical functions
+    - Extracted shared utilities and type-safe helpers
+    - Unified icon fallback logic
+- add hicolor-icon-theme BuildRequires: for input icons apps
+
+-------------------------------------------------------------------
 Wed Dec  3 03:16:21 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package
