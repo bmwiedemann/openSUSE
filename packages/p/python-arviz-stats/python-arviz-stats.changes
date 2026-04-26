@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Apr 26 09:32:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Generalize loo expectations
+  * Add std, var, iqr and mad
+  * Set histogram density=True by default
+  * Add method to compute influential observations based on
+    leave-one-out expectations
+  * Add custom log-likelihood to `loo()`
+  * Add new uniformity test
+  * Fix mcse for circular variables
+  * Make elpd_diff negative
+  * Remove long docstring examples
+  * Remove `khat` display in example docstring
+  * Fix compare() docstring, return object column name now
+    matches docstring
+  * Update `compare()` docstring
+  * Enhance method descriptions for R-hat computation
+  * Document kwargs for kde across all layers
+
+-------------------------------------------------------------------
 Tue Mar  3 04:36:42 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 1.0.0.
