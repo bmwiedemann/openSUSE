@@ -1,7 +1,7 @@
 #
 # spec file for package maven-invoker-plugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with  groovy
 Name:           maven-invoker-plugin
-Version:        3.9.1
+Version:        3.10.0
 Release:        0
 Summary:        Maven Invoker Plugin
 License:        Apache-2.0
@@ -40,7 +40,7 @@ BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-impl)
 BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-api)
 BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-util)
 BuildRequires:  mvn(org.apache.maven.shared:maven-invoker)
-BuildRequires:  mvn(org.apache.maven.shared:maven-script-interpreter) >= 1.3
+BuildRequires:  mvn(org.apache.maven.shared:maven-script-interpreter) >= 1.7
 BuildRequires:  mvn(org.apache.maven.shared:maven-shared-utils)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)

@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Apr 26 18:04:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.10.0
+  * New features and improvements
+    + Implement simply retry mechanism for failed build jobs
+    + Add support for disabling project cloning with "none" value in
+      cloneProjectsTo
+    + Support for multiple pre-build and post-build scripts for one
+      test
+  * Documentation updates
+    + Remove old incompatibility notice about report file name from
+      site documentation
+    + docs: Clarify that toolchains can be selected by a version
+      range.
+    + Improve wording of some plugin parameters
+  * Maintenance
+    + Cleanups - Remove outdated invoker properties configurations
+      in ITs
+    + Simplify usage of toolchains
+    + Refactor file utils usage and improve dependency configuration
+    + JUnit Jupiter best practices
+    + PlexusFileUtils Refaster recipes
+    + chore: delete junit 3 references
+    + feat: enable prevent branch protection rules
+    + Use fluido-skin and site-plugin version from parent
+  * Dependency updates
+    + Override plexus-utils version to 4.0.3 due to security fix
+    + Bump org.apache.maven.shared:maven-script-interpreter from 1.6
+      to 1.7
+    + Bump mavenVersion from 3.9.10 to 3.9.15
+    + Bump org.apache.groovy:groovy-bom from 4.0.27 to 4.0.31
+    + Bump org.apache.maven.doxia:doxia-sink-api from 2.0.0 to 2.1.0
+    + Bump commons-codec:commons-codec from 1.18.0 to 1.21.0
+    + Bump org.assertj:assertj-core from 3.27.3 to 3.27.7
+    + Bump org.apache.maven.plugins:maven-plugins from 45 to 47
+    + Migrate from commons-collections to commons-collections4
+    + Bump m-invoker-p to 3.9.1
+    + Bump org.codehaus.plexus:plexus-i18n from 1.0-beta-10 to 1.1.0
+    + Bump org.codehaus.plexus:plexus-interpolation from 1.28 to
+      1.29
+    + Bump commons-io:commons-io from 2.19.0 to 2.21.0
+
+-------------------------------------------------------------------
 Mon Jun 30 06:12:03 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.9.1
