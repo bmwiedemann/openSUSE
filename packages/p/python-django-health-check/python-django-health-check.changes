@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 26 09:39:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * Resolve #724 -- Add public dataclass field as OpenMetric
+    label
+- update to 4.3.1:
+  * Clean up storage probe files when validation fails
+
+-------------------------------------------------------------------
 Wed Apr 15 20:22:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0:

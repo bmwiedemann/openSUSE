@@ -160,4 +160,16 @@
     checks</comment>
     <requestid>1347168</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0454de41ac2879acba450843f30665de</srcmd5>
+    <version>4.4.0</version>
+    <time>1777230735</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.4.0:
+  * Resolve #724 -- Add public dataclass field as OpenMetric
+    label
+- update to 4.3.1:
+  * Clean up storage probe files when validation fails</comment>
+    <requestid>1349366</requestid>
+  </revision>
 </revisionlist>
