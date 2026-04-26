@@ -1691,4 +1691,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>Push GNOME 50</comment>
     <requestid>1345387</requestid>
   </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>94f74ecea423151a5ed64f2e3d0d1af1</srcmd5>
+    <version>50.1</version>
+    <time>1777230667</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348434</requestid>
+  </revision>
 </revisionlist>
