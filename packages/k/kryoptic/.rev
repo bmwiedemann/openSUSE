@@ -80,4 +80,12 @@
   * R.I.P Memory backend by @simo5 in</comment>
     <requestid>1341990</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b11c66e1ddca71aeba7288fe153926d3</srcmd5>
+    <version>1.5.0</version>
+    <time>1777230618</time>
+    <user>anag_factory</user>
+    <comment>- Enable build on 32-bit arm (forwarded request 1348804 from Guillaume_G)</comment>
+    <requestid>1348816</requestid>
+  </revision>
 </revisionlist>

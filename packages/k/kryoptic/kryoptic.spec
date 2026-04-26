@@ -32,7 +32,7 @@ BuildRequires:  clang
 BuildRequires:  openssl-devel
 BuildRequires:  sqlite3-devel
 
-ExclusiveArch:  %{rust_tier1_arches} riscv64 i586
+ExclusiveArch:  %{rust_tier1_arches} riscv64 i586 %{arm}
 
 Requires:       sqlite3
 
