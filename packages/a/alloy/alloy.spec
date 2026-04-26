@@ -17,12 +17,12 @@
 
 
 Name:           alloy
-Version:        1.12.2
+Version:        1.15.1
 Release:        0
 Summary:        OpenTelemetry Collector distribution with programmable pipelines
 License:        Apache-2.0
 URL:            https://github.com/grafana/alloy
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        ui-%{version}.tar.gz
 Source3:        PACKAGING_README.md
@@ -68,11 +68,9 @@ What can Alloy do?
   pipelines.
 
 %prep
-%autosetup -p 1 -a 1
-pwd
-cd internal/web/
-tar xzf %{SOURCE2}
-cd ../../
+%setup -b 2
+cd collector/
+tar zxf %{SOURCE1}
 
 %build
 # hash will be shortended by COMMIT_HASH:0:8 later
@@ -80,6 +78,7 @@ COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %{_sourcedir}/alloy.obsinfo)"
 
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+cd ./collector
 go build \
    -mod=vendor \
    -buildmode=pie \
@@ -89,12 +88,12 @@ go build \
    -X github.com/grafana/alloy/internal/build.Version=v%{version} \
    -X github.com/grafana/alloy/internal/build.BuildUser=geeko@obs \
    -X github.com/grafana/alloy/internal/build.BuildDate=${BUILD_DATE}" \
-   -tags "builtinassets promtail_journal_enabled" \
+   -tags "netgo embedalloyui promtail_journal_enabled" \
    -o bin/%{name} .
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
+install -D -m 0755 collector/bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 # systemd unit
 install -D -m 0644 packaging/rpm/%{name}.service %{buildroot}/%{_unitdir}/%{name}.service

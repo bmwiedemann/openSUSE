@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Wed Apr 22 15:47:02 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- update to 1.15.1:
+  * Bug Fixes
+    - database_observability: Ensure connection_info_monitor
+      goroutine exits on Stop
+    - prometheus.exporter.postgres: Close DB connections on update
+
+-------------------------------------------------------------------
+Thu Mar 26 08:34:00 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- update to 1.15.0:
+  * BREAKING CHANGES
+    - otelcol: Upgrade to OTel Collector v0.147.0
+    - Renamed undocumented metrics that was previously prefixed
+      with <component_id><metric_name> to
+      loki_source_awsfirehose<metric_name>
+  * Security
+    CVE-2026-26958: Update filippo.io/edwards25519 to version 1.1.1
+                    (bsc#1258609).
+  * Features
+    - alloy-mixin: Add filters, groupBy, and multi-select dashboard
+      variables
+    - beyla.ebpf: Add support for Prometheus native histograms
+    - beyla.ebpf: Bump Beyla to v3.6
+    - converters: Support converting Promtail limits_config
+    - database_observability.mysql: Add filtering of query samples
+      and wait events by minimum duration
+    - database_observability.mysql: Embed prometheus exporter
+      within db-o11y component
+    - database_observability.postgres: Add configurable limit to
+      pg_stat_statements query
+    - database_observability.postgres: Embed prometheus exporter
+      within db-o11y component
+    - database_observability: Promote components to stable
+    - Expose Functionality to Handle syslogs with Empty MSG Field
+    - loki.process: Support structured metadata as source type of
+      stage.labels for loki.process
+    - loki.secretfilter: Add sampling for secretfilter entries
+    - loki.source.gcplog: Add alloy config for MaxOutstandingBytes
+      and MaxOutstandingMessages
+    - loki.write: Add loki pipeline latency metric
+    - mixin: Update loki dashboard
+    - otelcol.receiver.datadog: Expose intake proxy and
+      trace_id_cache_size settings
+    - prometheus.exporter.cloudwatch: Use aws-sdk-go-v2 by default
+    - pyroscope.ebpf: Add comm, pid labels and kernel frame options
+
+- update to 1.14.2:
+  * Security
+    CVE-2026-33186: Update module google.golang.org/grpc to v1.79.3
+                    (bsc#1260317).
+
+- update to 1.14.1:
+  * Bug Fixes
+    - Correctly handle the deprecated topic field in
+      otelcol.receiver.kafka configuration
+    - loki.process: Protect against json that does not look like
+      docker json format
+    - loki.source.file: Keep positions for compressed files when
+      reading is finished
+    - otelcol.receiver.datadog: Expose intake proxy and
+      trace_id_cache_size settings
+    - prometheus.scrape: Update arguments and targets even if
+      scrape_native_histograms and extra_metrics are updated
+
+- update to 1.14.0:
+  * BREAKING CHANGES
+    - loki.secretfilter: Some config options are removed entirely:
+      partial_mask (replaced with redact_percent), allowlist (now
+      controlled with custom gitleaks config), enable_entropy,
+      include_generic, types (now controlled with custom gitleaks
+      config).
+    - otelcol.receiver.prometheus: otelcol.receiver.prometheus no
+      longer sets start times of OTLP metrics.
+  * Security:
+    CVE-2026-25934: Update module github.com/go-git/go-git/v5 to
+                    v5.16.5 (bsc#1258099).
+
+- update to 1.13.2:
+  * Bug Fixes
+    - Expose missing otelcol.processor.tail_sampling options
+    - mixin: Add zipped dashboards as a release artifact
+    - profiler: Backport Go 1.26 gopclntab textStart fix
+    - prometheus.exporter.postgres: Update version of the exporter
+      fork to fix pg_settings
+    - pyroscope.ebpf: Backport dotnet nibble map fix
+
+- update to 1.13.1:
+  * Bug Fixes
+    - timeout before starting new ones
+
+- update to 1.13.0:
+  * BREAKING CHANGES
+    - otelcol: Upgrade to OTel Collector v0.142.0
+    - otelcol.receiver.kafka: The global topic attribute has been
+      deleted; use the topics attributes inside the logs, metrics,
+      and traces blocks instead.
+    - otelcol.exporter > sending_queue > batch > min_size changed
+      from 8192 to 2000 and max_size changed from 0 to 3000
+  * Features
+    - Add a virtual_node_peer_attributes and
+      virtual_node_extra_label arguments to
+      otelcol.connector.servicegraph
+    - Add an otelcol.processor.metric_start_time component
+    - Add job level period, length, and add_cloudwatch_timestamp
+      options and labels_snake_case to CW exporter
+    - Add missing configuration parameter
+      deployment_name_from_replicaset to k8sattributes processor
+    - Add parcas symbols upload to pyroscope.ebpf
+    - Add sharding for loki.write
+    - Add unexposed otel engine and extension to codebase and
+      change build structure
+    - beyla.ebpf: Add meta_cache_address to
+      beyla.ebpf.attributes.kubernetes
+    - beyla.ebpf: Upgrade Beyla to v2.8.5
+    - Change the defaults for sending_queue > batch block inside
+      otelcol.exporter components
+    - cluster: Support DNS discovery mode prefixes in
+      --cluster.join-addresses flag
+    - converter: Update promtail converter to use file_match block
+      for loki.source.file
+    - database_observability: Add health check collector for
+      postgres component
+    - database_observability: Expose exclude_schemas and
+      exclude_databases settings
+    - database_observability: Support Azure cloud provider config
+      data
+    - database_observability.mysql: Support excluding schemas in
+      all collectors
+    - database_observability.postgres: Support excluding DBs in all
+      collectors
+
+-------------------------------------------------------------------
 Mon Jan 19 14:55:10 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2025-68156: Fix potential DoS via unbounded recursion in
