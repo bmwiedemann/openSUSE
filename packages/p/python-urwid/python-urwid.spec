@@ -1,7 +1,7 @@
 #
 # spec file for package python-urwid
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-urwid
-Version:        3.0.3
+Version:        4.0.0
 Release:        0
 Summary:        A full-featured console (xterm et al.) user interface library
 License:        LGPL-2.1-or-later
@@ -27,16 +27,17 @@ Source:         https://files.pythonhosted.org/packages/source/u/urwid/urwid-%{v
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools >= 80.8.0}
+BuildRequires:  %{python_module setuptools_scm >= 8.1.0}
 BuildRequires:  %{python_module typing_extensions}
-BuildRequires:  %{python_module wcwidth}
+BuildRequires:  %{python_module wcwidth >= 0.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Requires:       python-curses
 Requires:       python-typing_extensions
-Requires:       python-wcwidth
+Requires:       python-wcwidth >= 0.4
 %python_subpackages
 
 %description

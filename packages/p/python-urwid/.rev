@@ -363,4 +363,27 @@ Should fix problem with non-downloadable source file.</comment>
   * Refactoring: micro optimizations of iterable items</comment>
     <requestid>1316831</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5f987b47de427f143f7acca2ec6f593b</srcmd5>
+    <version>4.0.0</version>
+    <time>1777230688</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.0:
+  * Deprecation: Remove deprecated public methods announced to be
+    removed in v4
+  * Deprecation: Remove deprecated `Filler.get_body` and
+    `Filler.set_body`
+  * Deprecation: announce deadline for deprecated APIs
+  * stdin handling for closed state
+- update to 3.0.5:
+  * Un-deprecate `user_arg` for signals
+  * Fix terminal scroll TypeError
+  * Bugfix: some kinds of emojis with grapheme boundry support
+  * Fix: Text.pack line splitting not match Text.render
+- update to 3.0.4:
+  * Fix CheckBox DeprecationWarning: Use user_args instead of
+    user_arg
+  * Refactoring: use official python way for lazy imports</comment>
+    <requestid>1349280</requestid>
+  </revision>
 </revisionlist>

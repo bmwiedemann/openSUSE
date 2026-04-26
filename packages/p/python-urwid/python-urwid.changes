@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 25 20:26:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.0:
+  * Deprecation: Remove deprecated public methods announced to be
+    removed in v4
+  * Deprecation: Remove deprecated `Filler.get_body` and
+    `Filler.set_body`
+  * Deprecation: announce deadline for deprecated APIs
+  * stdin handling for closed state
+- update to 3.0.5:
+  * Un-deprecate `user_arg` for signals
+  * Fix terminal scroll TypeError
+  * Bugfix: some kinds of emojis with grapheme boundry support
+  * Fix: Text.pack line splitting not match Text.render
+- update to 3.0.4:
+  * Fix CheckBox DeprecationWarning: Use user_args instead of
+    user_arg
+  * Refactoring: use official python way for lazy imports
+
+-------------------------------------------------------------------
 Mon Nov 10 08:36:26 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.3:
