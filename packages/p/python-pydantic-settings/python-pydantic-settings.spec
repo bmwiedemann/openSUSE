@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-settings%{psuffix}
-Version:        2.13.1
+Version:        2.14.0
 Release:        0
 Summary:        Settings management using Pydantic
 License:        MIT
@@ -38,11 +38,13 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module azure-identity}
+BuildRequires:  %{python_module azure-identity >= 1.16.0}
+BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module google-auth}
 BuildRequires:  %{python_module pydantic-settings = %{version}}
 BuildRequires:  %{python_module pytest-examples}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-pretty}
 BuildRequires:  %{python_module pytest}
 %endif
 # /SECTION
@@ -51,10 +53,11 @@ Requires:       python-pydantic >= 2.7.0
 Requires:       python-python-dotenv >= 0.21.0
 Requires:       python-typing-inspection >= 0.4.0
 Suggests:       python-PyYAML >= 6.0.1
-Suggests:       python-tomli >= 2.0.1
+Suggests:       python-azure-identity >= 1.16.0
+Suggests:       python-azure-keyvault-secrets >= 4.8.0
+Suggests:       python-boto3 >= 1.35.0
 Suggests:       python-google-cloud-secret-manager >= 2.23.1
-Suggests:       python-azure-keyvault-secrets >= 4.8
-Suggests:       python-azure-identity
+Suggests:       python-tomli >= 2.0.1
 BuildArch:      noarch
 %python_subpackages
 

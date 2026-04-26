@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Apr 25 20:03:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.0:
+  * Fix parsing env vars into Optional Strict types
+  * Fix RecursionError with mutually recursive models in CLI
+  * Fix env_file from model_config ignored in CliApp.run()
+  * Update dependencies
+  * Add Dependabot configuration
+  * Bump samuelcolvin/check-python-version from 4.1 to 5
+  * Bump actions/upload-artifact from 4 to 7
+  * Bump actions/checkout from 4 to 6
+  * Bump astral-sh/setup-uv from 5 to 7
+  * Bump actions/setup-python from 5 to 6
+  * Ignore chardet and group GitHub Actions in Dependabot
+  * Bump actions/download-artifact from 4 to 8 in the github-
+    actions group
+  * Bump the python-packages group with 2 updates
+  * Support reading .env files from FIFOs (e.g. 1Password
+    Environments)
+  * Fix AliasChoices ignored when changing provider priority
+  * fix: resolve KeyError in run_subcommand for underscore field
+    names
+  * Bump the python-packages group with 3 updates
+  * Fix `Literal[numeric Enum]` coercion for CLI and env vars
+  * Fix nested discriminated unions not discovered by env/CLI
+    providers
+  * Bump the python-packages group with 3 updates
+  * CLI ensure env nested max split internally.
+  * Bump the python-packages group with 4 updates
+  * Migrate `boto3-stubs` to `types-boto3`
+  * Fix CLI not recognizing field name with validate_by_name and
+    AliasChoices
+  * Allow customisation of the dotevn setting source to filter
+    variables
+  * Bump the python-packages group with 3 updates
+  * Introduce yamlfmt
+  * Bump boto3 from 1.42.82 to 1.42.83 in the python-packages
+    group
+  * Introduce zizmor
+  * Fix CliPositionalArg[list[CustomType]] crash for custom types
+  * Add note about Mypy plugin for `BaseSettings.__init__()`
+  * Fix `cli_ignore_unknown_args=True` not working on subcommands
+  * Bump the python-packages group with 4 updates
+  * Fix CLI descriptions lost under `python -OO` by falling back
+    to `json_schema_extra`
+  * Prepare release 2.14.0
+
+-------------------------------------------------------------------
 Wed Mar 25 03:11:24 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to using python3 -m pytest for running the testsuite. 

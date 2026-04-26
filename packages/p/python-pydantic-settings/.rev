@@ -180,4 +180,41 @@
   * feat(gcp): support SecretVersion annotation for per-field</comment>
     <requestid>1343448</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f1886f2fcbc5f0e18b837bd5bd1506b0</srcmd5>
+    <version>2.14.0</version>
+    <time>1777230687</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.14.0:
+  * Fix parsing env vars into Optional Strict types
+  * Fix RecursionError with mutually recursive models in CLI
+  * Fix env_file from model_config ignored in CliApp.run()
+  * Update dependencies
+  * Add Dependabot configuration
+  * Bump samuelcolvin/check-python-version from 4.1 to 5
+  * Bump actions/upload-artifact from 4 to 7
+  * Bump actions/checkout from 4 to 6
+  * Bump astral-sh/setup-uv from 5 to 7
+  * Bump actions/setup-python from 5 to 6
+  * Ignore chardet and group GitHub Actions in Dependabot
+  * Bump actions/download-artifact from 4 to 8 in the github-
+    actions group
+  * Bump the python-packages group with 2 updates
+  * Support reading .env files from FIFOs (e.g. 1Password
+    Environments)
+  * Fix AliasChoices ignored when changing provider priority
+  * fix: resolve KeyError in run_subcommand for underscore field
+    names
+  * Bump the python-packages group with 3 updates
+  * Fix `Literal[numeric Enum]` coercion for CLI and env vars
+  * Fix nested discriminated unions not discovered by env/CLI
+    providers
+  * Bump the python-packages group with 3 updates
+  * CLI ensure env nested max split internally.
+  * Bump the python-packages group with 4 updates
+  * Migrate `boto3-stubs` to `types-boto3`
+  * Fix CLI not recognizing field name with validate_by_name and
+    AliasChoices</comment>
+    <requestid>1349277</requestid>
+  </revision>
 </revisionlist>
