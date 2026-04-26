@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 26 07:58:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.81:
+  * Added
+    - md057: add relative_to_roots option for absolute link
+      validation (e911919)
+    - md024: treat headings with different {#custom-id} anchors as
+      distinct (0b4dadb)
+  * Fixed
+    - md013: don't warn on under-limit list items in normalize mode
+      (3e08094)
+    - fmt: honor
+    - opt-in across all flavors (4c9c8dc)
+    - docs: restore grid-cards formatting on landing page (5acba85)
+    - md005,md032: preserve nesting under tight continuation
+      followed by sub-list (993c0f5)
+
+-------------------------------------------------------------------
 Thu Apr 23 05:33:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.80:
