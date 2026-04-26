@@ -38,4 +38,22 @@
     function</comment>
     <requestid>1140737</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4278249c06e443dc3df4216241562715</srcmd5>
+    <version>1.1.1</version>
+    <time>1777230736</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.1:
+  * Fix SafeMIMEText.set_payload() crash on Python 3.13 (#80).
+  * Add configuration key `MAIL_SEND_OPTIONS` to support setting
+    `mail_options` for `smtplib.SMTP.send_mail`
+  * (e.g. `SMTPUTF8`) (#61).
+  * Pre-encodes FQDN str with punycode to improve compatibility
+    (#66).
+  * Migrates as many as possible test cases from Django mail
+    module (#64).
+  * Improve way of populating smtp key/cert to avoid TypeError in
+    py&gt;=12 (#68).</comment>
+    <requestid>1349367</requestid>
+  </revision>
 </revisionlist>

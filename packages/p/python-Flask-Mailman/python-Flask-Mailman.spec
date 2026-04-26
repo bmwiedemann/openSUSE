@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Mailman
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Mailman
-Version:        1.0.0
+Version:        1.1.1
 Release:        0
 Summary:        Flask extension providing simple email sending capabilities
 License:        BSD-3-Clause
@@ -32,6 +32,7 @@ Requires:       python-Flask >= 1.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask >= 1.0}
+BuildRequires:  %{python_module aiosmtpd >= 1.4.4.post2}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
