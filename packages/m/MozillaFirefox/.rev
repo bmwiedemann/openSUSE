@@ -8130,4 +8130,41 @@
   * Enterprise: Introduced a new enterprise policy that allows</comment>
     <requestid>1345066</requestid>
   </revision>
+  <revision rev="483" vrev="1">
+    <srcmd5>a58182a20539798b89bbc123519f23cb</srcmd5>
+    <version>150.0</version>
+    <time>1777230618</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 150.0
+  * https://www.firefox.com/en-US/firefox/150.0/releasenotes
+  MFSA 2026-30 (bsc#1262230)
+  * CVE-2026-6746 (bmo#2014596)
+    Use-after-free in the DOM: Core &amp; HTML component
+  * CVE-2026-6747 (bmo#2021769)
+    Use-after-free in the WebRTC component
+  * CVE-2026-6748 (bmo#2022604)
+    Uninitialized memory in the Audio/Video: Web Codecs component
+  * CVE-2026-6749 (bmo#2022610)
+    Information disclosure due to uninitialized memory in the
+    Graphics: Canvas2D component
+  * CVE-2026-6750 (bmo#2023407)
+    Privilege escalation in the Graphics: WebRender component
+  * CVE-2026-6751 (bmo#2025883)
+    Uninitialized memory in the Audio/Video: Web Codecs component
+  * CVE-2026-6752 (bmo#2027499)
+    Incorrect boundary conditions in the WebRTC component
+  * CVE-2026-6753 (bmo#2027501)
+    Incorrect boundary conditions in the WebRTC component
+  * CVE-2026-6754 (bmo#2027541)
+    Use-after-free in the JavaScript Engine component
+  * CVE-2026-6755 (bmo#1880429)
+    Mitigation bypass in the DOM: postMessage component
+  * CVE-2026-6756 (bmo#1992585)
+    Mitigation bypass in Firefox for Android
+  * CVE-2026-6757 (bmo#2013588)
+    Invalid pointer in the JavaScript: WebAssembly component
+  * CVE-2026-6758 (bmo#2013619)
+    Use-after-free in the JavaScript: WebAssembly component</comment>
+    <requestid>1348824</requestid>
+  </revision>
 </revisionlist>

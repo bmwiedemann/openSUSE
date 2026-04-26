@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  906466659f0991bd83b096aca2f57c45f196a32b
+# Parent  12a274a85f8317615a937830dbe1a4675fdca2fb
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -298,7 +298,7 @@ diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/num
 diff --git a/js/src/irregexp/imported/regexp-parser.cc b/js/src/irregexp/imported/regexp-parser.cc
 --- a/js/src/irregexp/imported/regexp-parser.cc
 +++ b/js/src/irregexp/imported/regexp-parser.cc
-@@ -2794,16 +2794,17 @@ bool MayContainStrings(ClassSetOperandTy
+@@ -2795,16 +2795,17 @@ bool MayContainStrings(ClassSetOperandTy
        return false;
      case ClassSetOperandType::kCharacterClassEscape:
      case ClassSetOperandType::kClassStringDisjunction:
@@ -681,7 +681,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
      const StreamConfig& input_config,
      const StreamConfig& output_config) {
    AudioFormatValidity input_validity = ValidateAudioFormat(input_config);
-@@ -2090,16 +2091,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -2089,16 +2090,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:
@@ -721,6 +721,27 @@ diff --git a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc
                                                   GoogCcConfig goog_cc_config)
      : env_(config.env),
        safe_reset_on_route_change_("Enabled"),
+diff --git a/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h b/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h
+--- a/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h
++++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h
+@@ -70,16 +70,17 @@ class GoogCcScreamNetworkController : pu
+       case Mode::kGoogCc:
+         return false;
+       case Mode::kGoogCcWithEct1:
+         return !ecn_ce_seen_;
+       case Mode::kScreamAlways:
+       case Mode::kScreamAfterCe:
+         return true;
+     }
++    return false;
+   }
+   // Returns "ScreamV2" or "GoogCC" depending on currently used network
+   // controller.
+   std::string_view CurrentControllerType() const;
+ 
+  private:
+   enum class Mode { kGoogCc, kScreamAlways, kScreamAfterCe, kGoogCcWithEct1 };
+ 
 diff --git a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 --- a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 +++ b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
@@ -800,6 +821,30 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestio
      return EcnMarking::kEct1;
    }
    if (ecn == kEcnEct0) {
+diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc
+@@ -68,16 +68,20 @@ std::unique_ptr<RtpPacketizer> RtpPacket
+                                                     rtp_video_header);
+ #endif
+     }
+     case PacketizationFormat::kGeneric: {
+       return std::make_unique<RtpPacketizerGeneric>(payload, limits,
+                                                     rtp_video_header);
+     }
+   }
++  // The following serves only to shut up the compiler about
++  //    "control reaches end of non-void function":
++  return std::make_unique<RtpPacketizerGeneric>(payload, limits,
++					        rtp_video_header);
+ }
+ 
+ std::vector<int> RtpPacketizer::SplitAboutEqually(
+     int payload_len,
+     const PayloadSizeLimits& limits) {
+   RTC_DCHECK_GT(payload_len, 0);
+   // First or last packet larger than normal are unsupported.
+   RTC_DCHECK_GE(limits.first_packet_reduction_len, 0);
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
@@ -821,6 +866,27 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third
           extensions_map.IsRegistered(kRtpExtensionAbsoluteSendTime) ||
           extensions_map.IsRegistered(kRtpExtensionTransmissionTimeOffset);
  }
+diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
+@@ -172,16 +172,17 @@ PacketizationFormat GetPacketizationForm
+       return PacketizationFormat::kVP9;
+     case kVideoCodecAV1:
+       return PacketizationFormat::kAV1;
+     case kVideoCodecH265:
+       return PacketizationFormat::kH265;
+     case kVideoCodecGeneric:
+       return PacketizationFormat::kGeneric;
+   }
++  return (PacketizationFormat) 0;
+ }
+ 
+ }  // namespace
+ 
+ RTPSenderVideo::RTPSenderVideo(const Config& config)
+     : rtp_sender_(config.rtp_sender),
+       clock_(config.clock),
+       retransmission_settings_(
 diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
 --- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
 +++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
@@ -950,7 +1016,7 @@ diff --git a/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc b/third_party/l
 diff --git a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
 --- a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
 +++ b/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
-@@ -253,16 +253,17 @@ bool DcSctpSocket::IsConsistent() const 
+@@ -256,16 +256,17 @@ bool DcSctpSocket::IsConsistent() const 
                !t1_cookie_->is_running() && t2_shutdown_->is_running());
      case State::kShutdownReceived:
        return (tcb_ != nullptr && !t1_init_->is_running() &&
@@ -968,7 +1034,7 @@ diff --git a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_pa
        return "CLOSED";
      case DcSctpSocket::State::kCookieWait:
        return "COOKIE_WAIT";
-@@ -274,16 +275,17 @@ constexpr absl::string_view DcSctpSocket
+@@ -277,16 +278,17 @@ constexpr absl::string_view DcSctpSocket
        return "SHUTDOWN_PENDING";
      case DcSctpSocket::State::kShutdownSent:
        return "SHUTDOWN_SENT";
@@ -986,7 +1052,7 @@ diff --git a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_pa
                           << ToString(state_) << " to " << ToString(state)
                           << " due to " << reason;
      state_ = state;
-@@ -592,16 +594,17 @@ SocketState DcSctpSocket::state() const 
+@@ -649,16 +651,17 @@ SocketState DcSctpSocket::state() const 
      case State::kEstablished:
        return SocketState::kConnected;
      case State::kShutdownPending:
@@ -1040,6 +1106,27 @@ diff --git a/third_party/libwebrtc/net/dcsctp/timer/timer.cc b/third_party/libwe
               OnExpired on_expired,
               UnregisterHandler unregister_handler,
               std::unique_ptr<Timeout> timeout,
+diff --git a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc b/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc
+--- a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc
++++ b/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc
+@@ -83,16 +83,17 @@ struct PixelLimitResourceParams {
+ 
+ const char* ToString(VideoAdaptationReason reason) {
+   switch (reason) {
+     case VideoAdaptationReason::kQuality:
+       return "quality";
+     case VideoAdaptationReason::kCpu:
+       return "cpu";
+   }
++  return "shut-up-the-compiler";
+ }
+ 
+ }  // namespace
+ 
+ // static
+ scoped_refptr<PixelLimitResource> PixelLimitResource::CreateIfFieldTrialEnabled(
+     const FieldTrialsView& field_trials,
+     TaskQueueBase* task_queue,
 diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 --- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 +++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
@@ -1165,39 +1252,3 @@ diff --git a/third_party/libwebrtc/video/corruption_detection/video_frame_sample
  
  std::unique_ptr<VideoFrameSampler> VideoFrameSampler::Create(
      const VideoFrame& frame) {
-diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc
---- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc	2026-03-26 09:58:46.411668120 +0000
-+++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc	2026-03-26 09:58:18.723002878 +0000
-@@ -73,6 +73,10 @@ std::unique_ptr<RtpPacketizer> RtpPacket
-                                                     rtp_video_header);
-     }
-   }
-+  // The following serves only to shut up the compiler about
-+  //    "control reaches end of non-void function":
-+  return std::make_unique<RtpPacketizerGeneric>(payload, limits,
-+					        rtp_video_header);
- }
- 
- std::vector<int> RtpPacketizer::SplitAboutEqually(
-diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
---- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc	2026-03-18 18:54:03.000000000 +0000
-+++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc	2026-03-26 09:54:09.116828584 +0000
-@@ -177,6 +177,7 @@ PacketizationFormat GetPacketizationForm
-     case kVideoCodecGeneric:
-       return PacketizationFormat::kGeneric;
-   }
-+  return (PacketizationFormat) 0;
- }
- 
- }  // namespace
-diff -rup a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc b/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc
---- a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc	2026-03-18 18:54:02.000000000 +0000
-+++ b/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc	2026-03-26 10:13:00.686833144 +0000
-@@ -88,6 +88,7 @@ const char* ToString(VideoAdaptationReas
-     case VideoAdaptationReason::kCpu:
-       return "cpu";
-   }
-+  return "shut-up-the-compiler";
- }
- 
- }  // namespace

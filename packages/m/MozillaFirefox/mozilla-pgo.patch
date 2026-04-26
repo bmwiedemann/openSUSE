@@ -1,11 +1,58 @@
 # HG changeset patch
 # User Wolfgang Rosenauer <wr@rosenauer.org>
-# Parent  0d7ca7461e1be032ef853f6e0202c50d79bedbec
+# Parent  73147e14b378957cdb8516125df34111d2699fe9
 
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
 --- a/build/moz.configure/lto-pgo.configure
 +++ b/build/moz.configure/lto-pgo.configure
-@@ -354,34 +354,34 @@ def lto(
+@@ -89,22 +89,26 @@ def pgo_profile_path(path, pgo_use, prof
+     return path[0]
+ 
+ 
+ set_config("PGO_PROFILE_PATH", pgo_profile_path)
+ 
+ 
+ @depends(
+     "--enable-profile-use",
++    c_compiler,
+     pgo_profile_path,
+     llvm_profdata,
+     llvm_profdata_order,
+     build_environment,
+ )
+-def orderfile_path(profile_use, path, profdata, profdata_order, build_env):
++def orderfile_path(profile_use, compiler, path, profdata, profdata_order, build_env):
++    if compiler.type == "gcc":
++        return None
++
+     if not profile_use:
+         return None
+ 
+     if not profdata_order:
+         return None
+ 
+     topobjdir = build_env.topobjdir
+ 
+@@ -138,17 +142,17 @@ def pgo_flags(
+     target_is_windows,
+     pgo_temporal,
+     orderfile,
+ ):
+     if compiler.type == "gcc":
+         return namespace(
+             gen_cflags=["-fprofile-generate"],
+             gen_ldflags=["-fprofile-generate"],
+-            use_cflags=["-fprofile-use", "-fprofile-correction", "-Wcoverage-mismatch"],
++            use_cflags=["-fprofile-use", "-fprofile-correction", "-Wno-coverage-mismatch"],
+             use_ldflags=["-fprofile-use"],
+         )
+ 
+     if compiler.type in ("clang-cl", "clang"):
+         prefix = ""
+         if compiler.type == "clang-cl":
+             prefix = "/clang:"
+             gen_ldflags = None
+@@ -352,34 +356,34 @@ def lto(
              "configure."
          )
  
@@ -65,12 +112,12 @@ diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
  
  PORT = 8888
  
-@@ -91,19 +91,32 @@ if __name__ == "__main__":
-         ),
-         path_mappings=path_mappings,
-     )
-     sp3_httpd.start(block=False)
-     print("started SP3 server on port 8000")
+@@ -134,19 +134,32 @@ if __name__ == "__main__":
+             docroot=js3_dir,
+         )
+         js3_httpd.start(block=False)
+         print("started JS3 server on port 8001")
+ 
      locations = ServerLocations()
      locations.add_host(host="127.0.0.1", port=PORT, options="primary,privileged")
  
@@ -101,7 +148,7 @@ diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
              base_profiles = json.load(fh)["profileserver"]
  
          prefpaths = [
-@@ -223,16 +236,20 @@ if __name__ == "__main__":
+@@ -273,16 +286,20 @@ if __name__ == "__main__":
  
          # Try to move the crash reports to the artifacts even if Firefox appears
          # to exit successfully, in case there's a crash that doesn't set the
@@ -152,7 +199,7 @@ diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
 diff --git a/extensions/spellcheck/src/moz.build b/extensions/spellcheck/src/moz.build
 --- a/extensions/spellcheck/src/moz.build
 +++ b/extensions/spellcheck/src/moz.build
-@@ -21,8 +21,10 @@ FINAL_LIBRARY = "xul"
+@@ -19,8 +19,10 @@ FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
      "../ipc",
@@ -188,34 +235,3 @@ diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components
        CreateSystemThread(RunWatchdog, options.release());
    MOZ_ASSERT(watchdogThread);
  }
-Index: firefox-148.0/build/moz.configure/lto-pgo.configure
-===================================================================
---- firefox-148.0.orig/build/moz.configure/lto-pgo.configure
-+++ firefox-148.0/build/moz.configure/lto-pgo.configure
-@@ -96,12 +96,16 @@ set_config("PGO_PROFILE_PATH", pgo_profi
- 
- @depends(
-     "--enable-profile-use",
-+    c_compiler,
-     pgo_profile_path,
-     llvm_profdata,
-     llvm_profdata_order,
-     build_environment,
- )
--def orderfile_path(profile_use, path, profdata, profdata_order, build_env):
-+def orderfile_path(profile_use, compiler, path, profdata, profdata_order, build_env):
-+    if compiler.type == "gcc":
-+        return None
-+
-     if not profile_use:
-         return None
- 
-@@ -145,7 +149,7 @@ def pgo_flags(
-         return namespace(
-             gen_cflags=["-fprofile-generate"],
-             gen_ldflags=["-fprofile-generate"],
--            use_cflags=["-fprofile-use", "-fprofile-correction", "-Wcoverage-mismatch"],
-+            use_cflags=["-fprofile-use", "-fprofile-correction", "-Wno-coverage-mismatch"],
-             use_ldflags=["-fprofile-use"],
-         )
- 
