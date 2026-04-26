@@ -195,4 +195,41 @@
     “compoundable” with colors. Use Unicode text or 256 or 24-bit</comment>
     <requestid>1328708</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6e5807f2a581cc7d0269ed17c9b90e05</srcmd5>
+    <version>1.38.0</version>
+    <time>1777230743</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.37:
+  * bugfix: legacy CSI letter-form sequences with explicit
+    modifiers and event type were not resolved to key names,
+    this affected only some terminals, such as Ghostty.
+- update to 1.36:
+  * bugfix: [ key returned Keystroke.name of CSI in Kitty
+    keyboard protocol mode, it is now correctly identified as
+    KEY_LEFT_SQUARE_BRACKET.
+  * improved: Kitty keyboard protocol now synthesizes
+    Keystroke.name for all ASCII alphanumeric and punctuation
+    keys, including unmodified press events (e.g., KEY_A,
+    KEY_PERIOD, KEY_LEFT_SQUARE_BRACKET). Previously, only
+    modified or released/repeated keys received synthesized
+    names.
+- update to 1.35:
+  * introduced: new method `Terminal.cursor_shape()` context
+    manager and `blessed.cursor_shape.CursorShape` constants for
+    DECSCUSR cursor shape control (block, underline, bar --
+    steady or blinking).
+  * bugfix: method `Terminal.get_fgcolor` and method
+    `Terminal.get_bgcolor` now correctly interprets ST-terminated
+    OSC responses in addition to BEL-terminated.
+  * improved: Synthesize attribute `Keystroke.name` for
+    &quot;released&quot; and &quot;repeated&quot; key states, when using the kitty
+    keyboard protocol.
+  * new: methods `Keystroke.key_name` and `Keystroke.key_value`
+    allow for better key and value tracking when using kitty
+    keyboard protocol with pressed, released, and repeated
+    events.
+- update to 1.34:</comment>
+    <requestid>1349379</requestid>
+  </revision>
 </revisionlist>

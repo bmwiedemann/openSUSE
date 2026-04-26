@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-blessed
-Version:        1.27.0
+Version:        1.38.0
 Release:        0
 Summary:        Wrapper around terminal styling, screen positioning, and keyboard input
 License:        MIT
@@ -29,21 +29,17 @@ BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module wcwidth >= 0.1.4}
+BuildRequires:  %{python_module wcwidth >= 0.6}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-curses
-Requires:       python-wcwidth >= 0.1.4
+Requires:       python-wcwidth >= 0.6
 BuildArch:      noarch
 %python_subpackages
 
 %description
 Blessed is a thin, practical wrapper around terminal capabilities in Python.
-
-Brief Overview
---------------
-
 *Blessed* is a more simplified wrapper around curses, providing :
 
 * Styles, color, and maybe a little positioning without necessarily
