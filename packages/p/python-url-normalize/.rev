@@ -55,4 +55,21 @@
     <comment></comment>
     <requestid>1307878</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe205d52a2fc00c0d78c99ef3eb79b77</srcmd5>
+    <version>3.0.0</version>
+    <time>1777230700</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.0:
+  * Add `url_humanize()` and `url-normalize --humanize`/`-H` to
+    convert normalized URLs to readable display URLs while
+    preserving normalization round trips (#4).
+  * **BREAKING:** Updated minimum Python version to 3.10 to match
+    currently supported Python versions.
+  * Stop passing the deprecated `transitional` argument to
+    `idna.encode()` (#43).
+  * Updated project license metadata to the current SPDX string
+    format to resolve setuptools deprecation warnings (#39).</comment>
+    <requestid>1349309</requestid>
+  </revision>
 </revisionlist>

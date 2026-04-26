@@ -1,7 +1,7 @@
 #
 # spec file for package python-url-normalize
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,21 +15,23 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-url-normalize
-Version:        2.2.1
+Version:        3.0.0
 Release:        0
 Summary:        URL normalization for Python
 License:        MIT
 URL:            https://github.com/niksite/url-normalize
 Source:         https://github.com/niksite/url-normalize/archive/refs/tags/v%{version}.tar.gz#/url-normalize-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module idna >= 3.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-socket}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-url_normalize = %{version}-%{release}
@@ -67,7 +69,7 @@ sed -i '/^  "--cov-fail-under=100",$/d' pyproject.toml
 %python_uninstall_alternative url-normalize
 
 %files %{python_files}
-%doc README.md
+%doc README.md CHANGELOG.md
 %license LICENSE
 %python_alternative %{_bindir}/url-normalize
 %{python_sitelib}/url_normalize
