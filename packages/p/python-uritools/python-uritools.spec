@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uritools
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        URI parsing, classification and composition
 License:        MIT

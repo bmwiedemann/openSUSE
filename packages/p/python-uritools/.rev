@@ -62,4 +62,14 @@
   * Require Python 3.9 or later (breaking change).</comment>
     <requestid>1337898</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e0d73596460f1f3d391f7314d59b1391</srcmd5>
+    <version>6.0.2</version>
+    <time>1777230691</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.2:
+  * Minor code improvements.
+  * Update project URLs.</comment>
+    <requestid>1349288</requestid>
+  </revision>
 </revisionlist>
