@@ -63,4 +63,19 @@
     * python-magic-wormhole-transit-relay-no-mock.patch</comment>
     <requestid>1223789</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>43bd8d09ec16d1f7524c5e9a90dc8407</srcmd5>
+    <version>0.5.0</version>
+    <time>1777230683</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1349166 from mia
+
+- Update to 0.5.0
+    * Drop Pythons from 3.9 and earlier (3.9 is EOL)
+    * Replace deprecated pkg_resources use
+    * Use f-strings
+    * General cleanup
+    * Remove use of Autobahn test reactor</comment>
+    <requestid>1349239</requestid>
+  </revision>
 </revisionlist>

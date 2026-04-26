@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 24 22:55:08 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.5.0
+  * Drop Pythons from 3.9 and earlier (3.9 is EOL)
+  * Replace deprecated pkg_resources use
+  * Use f-strings
+  * General cleanup
+  * Remove use of Autobahn test reactor
+
+-------------------------------------------------------------------
 Tue Nov 12 12:50:49 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.4.0

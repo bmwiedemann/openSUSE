@@ -1,7 +1,7 @@
 #
 # spec file for package python-magic-wormhole-transit-relay
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-magic-wormhole-transit-relay
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Transit Relay server for Magic-Wormhole
 License:        MIT
 URL:            https://github.com/warner/magic-wormhole-transit-relay
-Source:         https://files.pythonhosted.org/packages/source/m/magic-wormhole-transit-relay/magic-wormhole-transit-relay-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/magic-wormhole-transit-relay/magic_wormhole_transit_relay-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted >= 21.2.0}
 BuildRequires:  %{python_module autobahn >= 21.3.1}
 BuildRequires:  %{python_module pip}
@@ -40,7 +40,7 @@ BuildArch:      noarch
 Transit Relay server for Magic-Wormhole
 
 %prep
-%autosetup -p1 -n magic-wormhole-transit-relay-%{version}
+%autosetup -p1 -n magic_wormhole_transit_relay-%{version}
 
 %build
 %pyproject_wheel
