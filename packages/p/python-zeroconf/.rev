@@ -485,4 +485,41 @@
 </comment>
     <requestid>1221614</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>fae80e2ea138c089d94d8ccb254b2161</srcmd5>
+    <version>0.148.0</version>
+    <time>1777230701</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.148.0:
+  * Trigger semantic releases for 0.x branch
+- update to 0.147.3:
+  * Update poetry to v2
+- update to 0.147.1:
+  * Increase check time and add random wait to avoid service
+    collisions
+- update to 0.147.0:
+  * Cython 3.1 support
+- update to 0.146.5:
+  * Address non-working socket configuration
+- update to 0.146.4:
+  * Avoid loading adapter list twice
+- update to 0.146.3:
+  * Correctly override question type flag for requests
+  * fix: correctly override question type flag for requests
+  * Currently even when setting the explicit question type flag,
+    the implementation ignores it for subsequent queries. This
+    commit ensures that all queries respect the explicit question
+    type flag.
+  * Add unit test to validate that the explicit question type
+    flag is set correctly in outgoing requests.
+  * Create listener socket with specific IP version
+  * fix: create listener socket with specific IP version
+  * Create listener sockets when using unicast with specific IP
+    version as well, just like in `new_respond_socket()`.
+- update to 0.146.1:
+  * Use trusted publishing for uploading wheels
+- update to 0.146.0:
+  * feat: reduce size of binaries</comment>
+    <requestid>1349314</requestid>
+  </revision>
 </revisionlist>

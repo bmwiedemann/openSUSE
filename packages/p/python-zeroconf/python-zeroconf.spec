@@ -1,7 +1,7 @@
 #
 # spec file for package python-zeroconf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zeroconf
-Version:        0.136.0
+Version:        0.148.0
 Release:        0
 Summary:        Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
-License:        LGPL-2.0-only
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/jstasiak/python-zeroconf
 Source:         https://github.com/python-zeroconf/python-zeroconf/archive/refs/tags/%{version}.tar.gz
-BuildRequires:  %{python_module async_timeout >= 4.0.1}
+BuildRequires:  %{python_module Cython >= 3.0.8}
 BuildRequires:  %{python_module ifaddr >= 0.1.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module poetry-core >= 2.1.0}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-codspeed}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= 77.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-async_timeout >= 4.0.1
 Requires:       python-ifaddr >= 0.1.7
 %python_subpackages
 
@@ -62,7 +63,7 @@ does not force you to use a particular event loop or python-twisted.
 # - test_integration_with_listener_ipv6: Requires network access
 # - test_launch*: Require network access
 # - test_close_multiple_times: Requires network access
-%pytest tests -k 'not (test_integration_with_listener_ipv6 or test_launch or test_close_multiple_times)'
+%pytest_arch tests -k 'not (test_integration_with_listener_ipv6 or test_launch or test_close_multiple_times)'
 
 %files %{python_files}
 %doc README.rst
