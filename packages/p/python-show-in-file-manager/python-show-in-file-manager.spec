@@ -1,7 +1,7 @@
 #
 # spec file for package python-show-in-file-manager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-show-in-file-manager
-Version:        1.1.4
+Version:        1.1.6
 Release:        0
 Summary:        Open the system file manager and select files in it
 License:        MIT
 URL:            https://github.com/damonlynch/showinfilemanager
-Source:         https://files.pythonhosted.org/packages/source/s/show-in-file-manager/show-in-file-manager-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/show-in-file-manager/show_in_file_manager-%{version}.tar.gz
+BuildRequires:  %{python_module hatch-argparse-manpage}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyxdg >= 0.25}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging
@@ -38,9 +36,6 @@ Requires:       python-pyxdg >= 0.25
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib-metadata
-%endif
 %python_subpackages
 
 %description
@@ -50,7 +45,7 @@ to select them in the file manager, thereby highlighting the files and allowing
 the user to quickly do something with them.
 
 %prep
-%setup -q -n show-in-file-manager-%{version}
+%setup -q -n show_in_file_manager-%{version}
 
 %build
 %pyproject_wheel
@@ -58,6 +53,7 @@ the user to quickly do something with them.
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/showinfilemanager
+%python_expand rm %{buildroot}%{$python_sitelib}/man/showinfilemanager.1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 #%%check
@@ -70,7 +66,7 @@ the user to quickly do something with them.
 %python_uninstall_alternative showinfilemanager
 
 %files %{python_files}
-%doc CHANGELOG.md README.md
+%doc CHANGELOG.md README.md RELEASE_NOTES.md
 %license LICENSE
 %python_alternative %{_bindir}/showinfilemanager
 %{python_sitelib}/showinfm

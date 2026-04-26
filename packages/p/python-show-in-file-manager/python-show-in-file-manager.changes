@@ -1,5 +1,38 @@
 -------------------------------------------------------------------
+Sat Apr 25 21:13:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.6:
+  * Support Cosmic Files.
+  * Add check for "kde:plasma" in environment variable
+    `XDG_CURRENT_DESKTOP`.
+  * Fix #27: Incorrect behavior when Windows explorer hides file
+    extensions. Thanks to tpl2go for the fix.
+  * Fix #29: Directory names with Unicode do not open correctly
+    in file managers that cannot select files. Thanks to
+    nipatriknilsson for identifying the underlying problem.
+  * Drop Python 3.8 and 3.9 support. Use Python 3.10+ typing
+    syntax.
+  * Add `__version__` to package.
+  * `hatch build -t sdist` now produces an archive of the
+    project's source code.
+  * `hatch build -t wheel` now produces a wheel (zip archive) of
+    the program's Python code; it also generates the manpage.
+  * Update SPDX headers to be compliant with spec.
+  * Switch to hatch from setuptools.
+  * New build dependency: hatch-argparse-manpage.
+  * Add Release Notes.
+  * Refactor: use absolute imports, not relative.
+  * Refactor: flatten code by using a new class. The API is
+    unchanged.
+  * Drop setup.py and setup.cfg in favor of pyproject.toml.
+  * Purge doc directory.
+  * New build dependency: argparse-manpage
+  * Generate man page with argparse-manpage instead of pandoc.
+  * Format and lint using ruff. Drop black.
+  * Drop Python 3.6 and 3.7 support.
+
+-------------------------------------------------------------------
 Sun May  8 14:55:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for version 1.1.4
-- Required by rapid-photo-downloader >= 0.9.27 
+- Required by rapid-photo-downloader >= 0.9.27
