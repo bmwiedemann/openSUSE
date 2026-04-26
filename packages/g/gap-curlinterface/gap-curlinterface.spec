@@ -1,7 +1,7 @@
 #
 # spec file for package gap-curlinterface
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-curlinterface
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        GAP: Web Access via curl
 License:        GPL-2.0-or-later
