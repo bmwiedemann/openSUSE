@@ -106,4 +106,14 @@
 - switched to meson</comment>
     <requestid>1348001</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0bab05c6d69150105a047e634bf12c0e</srcmd5>
+    <version>1.1.1</version>
+    <time>1777231150</time>
+    <user>anag_factory</user>
+    <comment>- update to version 1.1.1
+  * This release corrects a bug in last weeks release that caused
+    editres to fail to build on 32-bit platforms.</comment>
+    <requestid>1349405</requestid>
+  </revision>
 </revisionlist>
