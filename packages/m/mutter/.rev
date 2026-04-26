@@ -2430,4 +2430,12 @@ New stable rel</comment>
     <comment>Push GNOME 50</comment>
     <requestid>1345396</requestid>
   </revision>
+  <revision rev="264" vrev="1">
+    <srcmd5>3a15529d9d475d4fa0af72f7b9f41f51</srcmd5>
+    <version>50.1</version>
+    <time>1777230660</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348420</requestid>
+  </revision>
 </revisionlist>

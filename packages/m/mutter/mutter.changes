@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 15 12:21:29 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.1:
+  + Allow setting paint debug flags from environment
+  + Fix applying pango scale attributes to text
+  + Fix moving minimized maximized windows to a different monitor
+  + Configure primary GPU in headless mode if it does't support KMS
+  + Use fewer buffers for screencast streams
+  + Only queue clipped redraws when mapped
+  + Fix XReconfigureWMWindow() resizing window when not requested
+  + Fix DND sometimes failing with reused data sources
+  + Fix performance regression with some nvidia driver versions
+  + Use modifiers for secondary GPU FBOs
+  + Fix freeze with nvidia driver
+  + Fixed crash
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 20 17:54:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(libcanberra-gtk3) with pkgconfig(libcanberra)
