@@ -1,7 +1,7 @@
 #
 # spec file for package python-dtaidistance
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dtaidistance
-Version:        2.3.12
+Version:        2.4.0
 Release:        0
 Summary:        Dynamic Time Warping (DTW) package
 License:        Apache-2.0
@@ -39,6 +39,7 @@ Recommends:     python-tqdm
 BuildRequires:  %{python_module pytest-env}
 BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 # /SECTION
@@ -71,7 +72,7 @@ donttest+=" or (test_dtw2d and test_distances1_fast_parallel)"
 donttest+=" or (test_dtw2d and test_distances2_fast_parallel)"
 
 # Broken tests with latest numpy >= 1.24
-donttest+=" or test_bug3 or test_distance1_a"
+donttest+=" or test_bug3 or test_distance1_a or test_lc_pat3"
 %pytest_arch ${donttest:+ -k "not (${donttest:4})"} -m "not benchmark"
 %endif
 
