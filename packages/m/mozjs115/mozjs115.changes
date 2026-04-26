@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 25 14:38:40 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add security fixes:
+  + mozjs115-CVE-2026-32776.patch (bsc#1259728 CVE-2026-32776)
+  + mozjs115-CVE-2026-32777.patch (bsc#1259713 CVE-2026-32777)
+  + mozjs115-CVE-2026-32778.patch (bsc#1259731 CVE-2026-32778)
+
+-------------------------------------------------------------------
 Wed Nov 12 13:56:23 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Drop mozjs115-CVE-2025-62813.patch. The CVE has been rejected,

@@ -128,4 +128,12 @@
     <comment></comment>
     <requestid>1317399</requestid>
   </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>f645b5a0968bed9f7b28039a51f262cb</srcmd5>
+    <version>115.15.0</version>
+    <time>1777230731</time>
+    <user>anag_factory</user>
+    <comment>Add CVE fixes</comment>
+    <requestid>1349354</requestid>
+  </revision>
 </revisionlist>

@@ -92,6 +92,12 @@ Patch25:        mozjs115-CVE-2024-11403.patch
 Patch26:        mozjs115-CVE-2024-11498.patch
 # PATCH-FIX-UPSTREAM libtheora-avoid-negative-shift.patch bsc#1234837 mgorse@suse.com -- avoid negative shift in huffdec.c.
 Patch27:        libtheora-avoid-negative-shift.patch
+# PATCH-FIX-UPSTREAM mozjs115-CVE-2026-32776.patch bsc#1259728 mgorse@suse.com -- libexpat: NULL pointer dereference when processing empty external parameter entities inside an entity declaration value
+Patch28:        mozjs115-CVE-2026-32776.patch
+# PATCH-FIX-UPSTREAM mozjs115-CVE-2026-32777.patch bsc#1259713 mgorse@suse.com -- libexpat: denial of service due to infinite loop in DTD content parsing
+Patch29:        mozjs115-CVE-2026-32777.patch
+# PATCH-FIX-UPSTREAM mozjs115-CVE-2026-32778.patch bsc#1259731 mgorse@suse.com -- libexpat: NULL pointer dereference in `setContext` on retry after an out-of-memory condition
+Patch30:        mozjs115-CVE-2026-32778.patch
 BuildRequires:  autoconf213
 BuildRequires:  cargo
 BuildRequires:  ccache
@@ -183,6 +189,9 @@ pushd ../..
 %patch -P 25 -p1
 %patch -P 26 -p1
 %patch -P 27 -p1
+%patch -P 28 -p1
+%patch -P 29 -p1
+%patch -P 30 -p1
 
 %if %{pkg_vcmp libicu-devel >= 76.1}
 sed -i 's/icu-i18n/icu-uc &/' js/moz.configure
