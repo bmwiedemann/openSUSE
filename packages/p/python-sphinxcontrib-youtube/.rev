@@ -26,4 +26,16 @@
   * parallel build safety.</comment>
     <requestid>1130786</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4ecdbcfec1c43c3caa120812a5e237a5</srcmd5>
+    <version>1.5.0</version>
+    <time>1777230696</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.0:
+  * replace obsolete sphinx.testing.path with pathlib
+  * Use string for status indicator during LaTeX image download
+  * Fix/youtube refer
+  * ubuntu and python update</comment>
+    <requestid>1349302</requestid>
+  </revision>
 </revisionlist>

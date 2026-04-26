@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-youtube
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-youtube
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Sphinx "youtube" extension
 License:        BSD-3-Clause
@@ -29,11 +29,11 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 6.1
+Requires:       python-Sphinx >= 7.2
 Requires:       python-requests
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Sphinx >= 6.1}
+BuildRequires:  %{python_module Sphinx >= 7.2}
 BuildRequires:  %{python_module requests}
 # /SECTION
 %python_subpackages
