@@ -1283,4 +1283,12 @@ pango-view: When running GraphicsMagick 'gm display' command: Failed to execute 
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1343002</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>798e1322241a91a8bac59824e3c2e7bb</srcmd5>
+    <version>1.57.1</version>
+    <time>1777230671</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348443</requestid>
+  </revision>
 </revisionlist>
