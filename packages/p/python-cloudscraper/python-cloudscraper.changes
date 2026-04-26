@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Apr 26 14:03:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * **Automatic 403 Error Recovery**: Intelligent session
+    refresh when 403 errors occur after prolonged use
+  * **Session Health Monitoring**: Proactive session management
+    with configurable refresh intervals
+  * **Smart Session Refresh**: Automatic cookie clearing and
+    fingerprint rotation
+  * **Enhanced Stealth Mode**: Improved anti-detection with
+    human-like behavior simulation
+  * **Modern Packaging**: Migrated to pyproject.toml for modern
+    Python packaging
+  * **Comprehensive Testing**: New test suite with pytest and
+    GitHub Actions CI/CD
+  * **Type Hints**: Added modern Python typing support
+  * **Updated dependencies**: All dependencies upgraded to latest
+    stable versions
+  * **Removed legacy code**: Cleaned up Python 2 compatibility
+    code
+  * **Removed redundant files**: Cleaned up development artifacts
+    and obsolete configurations
+
+-------------------------------------------------------------------
 Tue Jun 17 11:11:34 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Refresh sources
@@ -16,7 +40,7 @@ Thu Feb 29 12:33:16 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Fri Nov 12 01:28:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Skip a broken test. 
+- Skip a broken test.
 
 -------------------------------------------------------------------
 Wed May 12 17:06:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>

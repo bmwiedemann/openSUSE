@@ -72,4 +72,33 @@
 - Switch to pyroject macros.</comment>
     <requestid>1286354</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dd51982009b89ce1599e2c6a3dacf450</srcmd5>
+    <version>3.0.0</version>
+    <time>1777230750</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.0:
+  * **Automatic 403 Error Recovery**: Intelligent session
+    refresh when 403 errors occur after prolonged use
+  * **Session Health Monitoring**: Proactive session management
+    with configurable refresh intervals
+  * **Smart Session Refresh**: Automatic cookie clearing and
+    fingerprint rotation
+  * **Enhanced Stealth Mode**: Improved anti-detection with
+    human-like behavior simulation
+  * **Modern Packaging**: Migrated to pyproject.toml for modern
+    Python packaging
+  * **Comprehensive Testing**: New test suite with pytest and
+    GitHub Actions CI/CD
+  * **Type Hints**: Added modern Python typing support
+  * **Updated dependencies**: All dependencies upgraded to latest
+    stable versions
+  * **Removed legacy code**: Cleaned up Python 2 compatibility
+    code
+  * **Removed redundant files**: Cleaned up development artifacts
+    and obsolete configurations
+
+- Skip a broken test.</comment>
+    <requestid>1349390</requestid>
+  </revision>
 </revisionlist>
