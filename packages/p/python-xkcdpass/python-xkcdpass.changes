@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 25 20:50:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.30.0:
+  * migrate from setup.py to pyproject.toml
+  * update README to reflect pyproject build and remove python2 support
+  * Test fixes
+
+-------------------------------------------------------------------
 Tue Mar 18 11:17:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.20.0

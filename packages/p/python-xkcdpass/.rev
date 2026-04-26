@@ -117,4 +117,15 @@
     <comment></comment>
     <requestid>1254098</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>543027955469c86960286e3d2699c8fe</srcmd5>
+    <version>1.30.0</version>
+    <time>1777230690</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.30.0:
+  * migrate from setup.py to pyproject.toml
+  * update README to reflect pyproject build and remove python2 support
+  * Test fixes</comment>
+    <requestid>1349287</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-xkcdpass
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xkcdpass
-Version:        1.20.0
+Version:        1.30.0
 Release:        0
 Summary:        A flexible and scriptable password generator which generates strong passphrases
 License:        BSD-3-Clause
@@ -26,7 +26,7 @@ URL:            https://github.com/redacted/XKCD-password-generator
 Source:         https://files.pythonhosted.org/packages/source/x/xkcdpass/xkcdpass-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,10 +53,7 @@ sed -i -e '1d' xkcdpass/xkcd_password.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#redacted/XKCD-password-generator#138
-pytest_python310_ignore="not test_entropy_printout_valid_input"
-pytest_python311_ignore="not test_entropy_printout_valid_input"
-%pytest -k "${pytest_$python_ignore}"
+%pytest -k "not test_loadwordfile"
 
 %post
 %python_install_alternative xkcdpass
