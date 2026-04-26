@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 24 12:46:33 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch emacs-30.2-tree-sitter-0.26.8.patch
+  * Let find the tree-sitter code find the libraries below
+    %{_libdir}/tree-sitter/ without using LD_LIBRARY_PATH 
+
+-------------------------------------------------------------------
+Thu Apr 23 08:46:16 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch emacs-30.2-boo1262611.patch
+  * Fix CVE-2026-6861: Memory corruption vulnerability when
+    processing SVG CSS (boo#1262611)
+
+-------------------------------------------------------------------
+Tue Apr 21 08:02:23 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Let treesit test find its ruby shared library
+- Modify patch emacs-30.2-tree-sitter-0.26.8.patch
+  * Add commit to reflect new syntax ot tree-sitter like :equal
+    changed to :eq?
+
+-------------------------------------------------------------------
 Mon Apr 20 08:37:05 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch emacs-30.2-silent.patch

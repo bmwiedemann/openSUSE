@@ -2325,4 +2325,23 @@ Now one could consider building emacs with gsettings support (both debian and fe
   * Make it build with tree-sitter-0.26.8 security update (boo#1262007)</comment>
     <requestid>1348197</requestid>
   </revision>
+  <revision rev="218" vrev="8">
+    <srcmd5>784511b20958b5ec8f544cb57a48453d</srcmd5>
+    <version>30.2</version>
+    <time>1777230653</time>
+    <user>anag_factory</user>
+    <comment>- Modify patch emacs-30.2-tree-sitter-0.26.8.patch
+  * Let find the tree-sitter code find the libraries below
+    %{_libdir}/tree-sitter/ without using LD_LIBRARY_PATH 
+
+- Add patch emacs-30.2-boo1262611.patch
+  * Fix CVE-2026-6861: Memory corruption vulnerability when
+    processing SVG CSS (boo#1262611)
+
+- Let treesit test find its ruby shared library
+- Modify patch emacs-30.2-tree-sitter-0.26.8.patch
+  * Add commit to reflect new syntax ot tree-sitter like :equal
+    changed to :eq?</comment>
+    <requestid>1349130</requestid>
+  </revision>
 </revisionlist>

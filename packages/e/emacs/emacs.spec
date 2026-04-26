@@ -258,6 +258,7 @@ Patch55:        0015-Change-native-comp-async-jobs-number-default-to-1.patch
 Patch56:        0016-Change-native-comp-async-report-warnings-errors-to-s.patch
 Patch57:        emacs-30.2-fix-zoom.patch
 Patch58:        emacs-30.2-tree-sitter-0.26.8.patch
+Patch59:        emacs-30.2-boo1262611.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
@@ -437,6 +438,7 @@ and most assembler-like syntaxes.
 %patch -P56 -p1
 %patch -P57 -p1
 %patch -P58 -p1
+%patch -P59 -p1
 %patch -P1  -p0 -b .xauth
 %if %{with memmmap}
 %patch -P2  -p0 -b .glibc
@@ -540,6 +542,7 @@ VERSION=%{version}
 "
 %endif
  CFLAGS="${RPM_OPT_FLAGS} -D_GNU_SOURCE -DGDK_DISABLE_DEPRECATION_WARNINGS -DGLIB_DISABLE_DEPRECATION_WARNINGS"
+ CFLAGS="${CFLAGS} -DTREESIT_SYSTEM_GRAMMAR_DIR='\"%{_libdir}/tree-sitter/\"'"
 LDFLAGS=
   cflags -pipe			CFLAGS
   cflags -Wno-pointer-sign	CFLAGS
@@ -1085,6 +1088,7 @@ then
     echo No checks within chroot environment
     exit 0
 fi
+# This is treesit test to make it find its ruby lib
 # This is patch emacs-30.2-fix-zoom.patch
 ZOOM_IMAGE_TESTS=broken
 export ZOOM_IMAGE_TESTS
