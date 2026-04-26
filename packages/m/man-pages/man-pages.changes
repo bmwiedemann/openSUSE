@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 23 06:30:52 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 6.18
+- new and rewritten pages
+  * futex_waitv.2
+  * aprintf.3
+  * io_destroy.3
+  * io_setup.3
+  * rawmemchr.3
+  * stpcpy.3
+  * strchrnul.3
+  * strdupa.3
+  * strnul.3
+  * strtok_r.3  
+- see Changes for details
+
+-------------------------------------------------------------------
 Thu Feb 12 09:35:46 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 6.17
