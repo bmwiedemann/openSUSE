@@ -10,6 +10,12 @@ Tue Apr 21 16:36:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
   https://github.com/ansible-community/ansible-build-data/blob/main/13/CHANGELOG-v13.rst
 
 -------------------------------------------------------------------
+Tue Apr 21 05:55:35 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros and build and install the module.
+- List directories explicitly under sitelib.
+
+-------------------------------------------------------------------
 Thu Mar 26 05:55:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.5.0:

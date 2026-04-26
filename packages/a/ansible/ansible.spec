@@ -53,6 +53,8 @@ Source99:       ansible-rpmlintrc
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  %{ansible_python}-setuptools
+BuildRequires:  %{ansible_python}-pip
+BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  fdupes
 
 # required to fix the azure collection line endings
@@ -99,16 +101,17 @@ rm -f ./ansible_collections/purestorage/flasharray/plugins/modules/.purefa_direc
 find ./ansible_collections/azure -type f -exec dos2unix {} \;
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %fdupes %{buildroot}/%{ansible_python_sitelib}/ansible_collections/
 
 %files
 %doc CHANGELOG-v%{ansible_community_major_version}.rst README.rst
 %license COPYING
 %{_bindir}/ansible-community
-%{ansible_python_sitelib}/
+%{ansible_python_sitelib}/ansible_collections
+%{ansible_python_sitelib}/ansible-%{version}.dist-info
 
 %changelog
