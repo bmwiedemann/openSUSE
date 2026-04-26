@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Apr 26 09:16:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 12.0.0:
+  * Add SH (Bourne Shell) trait and is_sh() detection function.
+  * Add GUIX_BUILD CI trait and is_guix_build() detection function.
+  * Add --json, --version, and --help options to the CLI. --json
+    outputs all detected traits and groups as a JSON object for
+    scripting.
+  * Overhaul shell detection: resolve symlinks in SHELL before
+    identifying the implementation (so /bin/sh → /bin/bash detects
+    bash, not sh); current_shell() now disambiguates via three-tier
+    priority — startup env vars, then /proc parent process tree,
+    then SHELL value — fixing detection on CI runners where
+    SHELL=/bin/sh points to a different shell than the one actually
+    executing; SH is treated as a low-specificity fallback and
+    stripped when a more specific shell is detected; new
+    version_env_var field on Shell records each shell's startup
+    environment variable (like BASH_VERSION for Bash);
+    is_powershell() now checks PSModulePath as a presence signal
+    rather than a version variable. Use is_bourne_shells() to check
+    for a Bourne-compatible interface regardless of implementation.
+
+-------------------------------------------------------------------
 Tue Apr 21 16:39:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 11.1.0:
