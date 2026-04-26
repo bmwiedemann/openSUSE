@@ -119,6 +119,7 @@ Requires:       (gdm-xdm-integration or gdm-systemd)
 Suggests:       gdm-systemd
 # whenever xdm is installed, we need to be sure to integrate into it
 Requires:       (gdm-xdm-integration if xdm)
+Requires:       gsettings-backend-dconf
 Requires(post): dconf
 Requires(pre):  group(video)
 Recommends:     iso-codes

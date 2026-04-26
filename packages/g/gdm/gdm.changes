@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 17 12:30:54 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
+
+- Enforce dependency on gsettings-backend-dconf, greeter doesn't
+  work properly without it.
+
+-------------------------------------------------------------------
 Wed Mar 25 01:28:31 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Fix packages for %suse_version bump (jsc#PED-15853).
