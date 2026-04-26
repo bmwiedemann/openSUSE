@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 20 09:22:38 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable testLargeDataWindowOffsets on 32-bit arm
+
+-------------------------------------------------------------------
 Tue Apr  7 07:57:03 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 3.4.9

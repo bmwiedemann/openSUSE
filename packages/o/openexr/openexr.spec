@@ -185,6 +185,10 @@ echo "Imath_$sym { global: *N9Imath_$sym*; *N10Imath_$sym*; };" >"$sv"
 %check
 # bin tests download test data from internet
 EXCLUDE_REGEX='OpenEXR.bin'
+%ifarch %{arm}
+# https://github.com/AcademySoftwareFoundation/openexr/issues/2134#issuecomment-4230839820
+EXCLUDE_REGEX="$EXCLUDE_REGEX|testLargeDataWindowOffsets"
+%endif
 %ifarch ppc64le
 # bsc#1205885
 EXCLUDE_REGEX="$EXCLUDE_REGEX|testMultiTiledPartThreading"

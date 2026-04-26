@@ -1037,4 +1037,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1347076</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>1e05a90ea6eab85366b86779476581f2</srcmd5>
+    <version>3.4.9</version>
+    <time>1777230657</time>
+    <user>anag_factory</user>
+    <comment>- Disable testLargeDataWindowOffsets on 32-bit arm (forwarded request 1348233 from Guillaume_G)</comment>
+    <requestid>1348360</requestid>
+  </revision>
 </revisionlist>
