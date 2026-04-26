@@ -91,4 +91,12 @@
     <comment>- Update to release 8.6.1</comment>
     <requestid>1343220</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d73c338ac44ec7beb793cf49324711b1</srcmd5>
+    <version>8.6.2</version>
+    <time>1777230719</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 8.6.2</comment>
+    <requestid>1349321</requestid>
+  </revision>
 </revisionlist>

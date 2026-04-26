@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 25 22:58:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.6.2
+  * Fix GetFeatureInfo raster queries with NaN
+  * Fix segmentation fault in PHP MapScriptNG
+
+-------------------------------------------------------------------
 Fri Mar 27 11:52:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.6.1
