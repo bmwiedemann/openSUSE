@@ -20,15 +20,14 @@
 %define tinysparql_basever 3.11
 
 Name:           localsearch
-Version:        3.11.0
+Version:        3.11.1
 Release:        0
 Summary:        Search tool and indexer using tinysparql
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/localsearch
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM localsearch-zip-private-library.patch bsc#1261941 mgorse@suse.com -- extractor: Separate zip input stream into a private shared library
-Patch0:         localsearch-zip-private-library.patch
+
 BuildRequires:  asciidoc
 BuildRequires:  giflib-devel
 BuildRequires:  intltool >= 0.40.0

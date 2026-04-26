@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 16 06:26:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.11.1:
+  + Fix possible failures when extracting metadata from EPUB, ODF
+    and OOXML documents
+  + Updated translations.
+- Drop localsearch-zip-private-library.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Sun Apr 12 23:19:24 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add localsearch-zip-private-library.patch: fix a crash when

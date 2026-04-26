@@ -97,4 +97,12 @@
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346734</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b5b32d947830462fb8890d29f582c733</srcmd5>
+    <version>3.11.1</version>
+    <time>1777230668</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348436</requestid>
+  </revision>
 </revisionlist>
