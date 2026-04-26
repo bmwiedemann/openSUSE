@@ -5,6 +5,5 @@ originally part of the flatpak project, but it has been broken out
 as a standalone module to facilitate using it in other contexts.
 
 </description>
-  <devel project="GNOME:Factory" package="xdg-dbus-proxy"/>
   <url>https://github.com/flatpak/xdg-dbus-proxy/</url>
 </package>

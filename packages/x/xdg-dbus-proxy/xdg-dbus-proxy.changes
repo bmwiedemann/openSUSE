@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 17 07:07:56 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update to version 0.1.7:
+  + Drop the autotools build system
+  + Prevent a crash on disconnect
+  + Fix building with glibc >= 2.43
+  + Fix the eavesdrop filtering to prevent message interception
+  + Fix CVE-2026-34080
+
+-------------------------------------------------------------------
 Wed Dec 11 15:26:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.1.6:

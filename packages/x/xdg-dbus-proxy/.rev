@@ -56,4 +56,12 @@ Needed for future versions of flatpak, previously a part of flatpak itself. Resu
     <comment></comment>
     <requestid>1230180</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4bc435a9b3c67795e7153a3dd966fc88</srcmd5>
+    <version>0.1.7</version>
+    <time>1777230670</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348440</requestid>
+  </revision>
 </revisionlist>

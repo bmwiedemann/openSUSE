@@ -18,7 +18,7 @@
 
 
 Name:           xdg-dbus-proxy
-Version:        0.1.6
+Version:        0.1.7
 Release:        0
 Summary:        Filtering proxy for D-Bus connections
 License:        LGPL-2.1-or-later
