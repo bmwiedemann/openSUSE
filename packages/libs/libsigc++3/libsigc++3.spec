@@ -24,7 +24,7 @@ Summary:        Typesafe Signal Framework for C++
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://libsigcplusplus.github.io/libsigcplusplus/
-Source0:        %{_name}-%{version}.tar.zst
+Source0:        %{_name}-%{version}.tar.xz
 
 BuildRequires:  gcc-c++
 BuildRequires:  meson

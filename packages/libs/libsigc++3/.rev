@@ -204,4 +204,12 @@
 - Convert to obs_scm service. (forwarded request 1337275 from dimstar)</comment>
     <requestid>1337283</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>c0245b793f9115de894b07b7f5005ecb</srcmd5>
+    <version>3.8.0</version>
+    <time>1777230672</time>
+    <user>anag_factory</user>
+    <comment>- Migrate to xz compression and manual service run</comment>
+    <requestid>1348454</requestid>
+  </revision>
 </revisionlist>
