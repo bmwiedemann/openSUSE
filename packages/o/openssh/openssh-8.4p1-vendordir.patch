@@ -1,9 +1,9 @@
 Gemeinsame Unterverzeichnisse: openssh-8.4p1/contrib und openssh-8.4p1-vendor/contrib.
-Index: openssh-8.9p1/dh.c
+Index: openssh-10.3p1/dh.c
 ===================================================================
---- openssh-8.9p1.orig/dh.c
-+++ openssh-8.9p1/dh.c
-@@ -54,7 +54,17 @@ void dh_set_moduli_file(const char *file
+--- openssh-10.3p1.orig/dh.c
++++ openssh-10.3p1/dh.c
+@@ -53,7 +53,17 @@ void dh_set_moduli_file(const char *file
  
  static const char * get_moduli_filename(void)
  {
@@ -22,10 +22,10 @@ Index: openssh-8.9p1/dh.c
  }
  
  static int
-Index: openssh-8.9p1/pathnames.h
+Index: openssh-10.3p1/pathnames.h
 ===================================================================
---- openssh-8.9p1.orig/pathnames.h
-+++ openssh-8.9p1/pathnames.h
+--- openssh-10.3p1.orig/pathnames.h
++++ openssh-10.3p1/pathnames.h
 @@ -18,6 +18,8 @@
  #define SSHDIR				ETCDIR "/ssh"
  #endif
@@ -43,19 +43,19 @@ Index: openssh-8.9p1/pathnames.h
  #define _PATH_HOST_CONFIG_FILE		SSHDIR "/ssh_config"
 +#define _PATH_HOST_VENDOR_CONFIG_FILE   VENDORDIR "/ssh_config"
  #define _PATH_HOST_ECDSA_KEY_FILE	SSHDIR "/ssh_host_ecdsa_key"
- #define _PATH_HOST_ED25519_KEY_FILE	SSHDIR "/ssh_host_ed25519_key"
  #define _PATH_HOST_RSA_KEY_FILE		SSHDIR "/ssh_host_rsa_key"
+ #define _PATH_HOST_ED25519_KEY_FILE	SSHDIR "/ssh_host_ed25519_key"
  #define _PATH_DH_MODULI			SSHDIR "/moduli"
 +#define	_PATH_VENDOR_DH_MODULI		VENDORDIR "/moduli"
 +
  
  #ifndef _PATH_SSH_PROGRAM
  #define _PATH_SSH_PROGRAM		"/usr/bin/ssh"
-Index: openssh-8.9p1/ssh.c
+Index: openssh-10.3p1/ssh.c
 ===================================================================
---- openssh-8.9p1.orig/ssh.c
-+++ openssh-8.9p1/ssh.c
-@@ -549,6 +549,7 @@ static void
+--- openssh-10.3p1.orig/ssh.c
++++ openssh-10.3p1/ssh.c
+@@ -565,6 +565,7 @@ static void
  process_config_files(const char *host_name, struct passwd *pw,
      int final_pass, int *want_final_pass)
  {
@@ -63,7 +63,7 @@ Index: openssh-8.9p1/ssh.c
  	char *cmd, buf[PATH_MAX];
  	int r;
  
-@@ -567,10 +568,23 @@ process_config_files(const char *host_na
+@@ -586,10 +587,23 @@ process_config_files(const char *host_na
  			    &options, SSHCONF_CHECKPERM | SSHCONF_USERCONF |
  			    (final_pass ? SSHCONF_FINAL : 0), want_final_pass);
  
@@ -91,10 +91,10 @@ Index: openssh-8.9p1/ssh.c
  	}
  	free(cmd);
  }
-Index: openssh-8.9p1/ssh_config.5
+Index: openssh-10.3p1/ssh_config.5
 ===================================================================
---- openssh-8.9p1.orig/ssh_config.5
-+++ openssh-8.9p1/ssh_config.5
+--- openssh-10.3p1.orig/ssh_config.5
++++ openssh-10.3p1/ssh_config.5
 @@ -54,6 +54,9 @@ user's configuration file
  .It
  system-wide configuration file
@@ -105,7 +105,7 @@ Index: openssh-8.9p1/ssh_config.5
  .El
  .Pp
  Unless noted otherwise, for each parameter, the first obtained value
-@@ -2220,6 +2223,11 @@ This file provides defaults for those
+@@ -2515,6 +2518,11 @@ This file provides defaults for those
  values that are not specified in the user's configuration file, and
  for those users who do not have a configuration file.
  This file must be world-readable.
@@ -117,11 +117,11 @@ Index: openssh-8.9p1/ssh_config.5
  .El
  .Sh SEE ALSO
  .Xr ssh 1
-Index: openssh-8.9p1/sshd.c
+Index: openssh-10.3p1/sshd.c
 ===================================================================
---- openssh-8.9p1.orig/sshd.c
-+++ openssh-8.9p1/sshd.c
-@@ -1201,7 +1201,8 @@ prepare_proctitle(int ac, char **av)
+--- openssh-10.3p1.orig/sshd.c
++++ openssh-10.3p1/sshd.c
+@@ -1309,7 +1309,8 @@ main(int ac, char **av)
  	extern char *optarg;
  	extern int optind;
  	int log_stderr = 0, inetd_flag = 0, test_flag = 0, no_daemon_flag = 0;
@@ -131,10 +131,11 @@ Index: openssh-8.9p1/sshd.c
  	int r, opt, do_dump_cfg = 0, keytype, already_daemon, have_agent = 0;
  	int sock_in = -1, sock_out = -1, newsock = -1, rexec_argc = 0;
  	int devnull, config_s[2] = { -1 , -1 }, have_connection_info = 0;
-@@ -1806,7 +1807,21 @@ main(int ac, char **av)
+@@ -1544,7 +1545,21 @@ main(int ac, char **av)
  	/* Fetch our configuration */
  	if ((cfg = sshbuf_new()) == NULL)
  		fatal("sshbuf_new config failed");
+-	if (strcasecmp(config_file_name, "none") != 0)
 +	if (config_file_name == NULL) {
 +	        /* If only the vendor configuration file exists, use that.
 +		 * Else use the standard configuration file.
@@ -148,16 +149,15 @@ Index: openssh-8.9p1/sshd.c
 +			config_file_name = _PATH_SERVER_CONFIG_FILE;
 +		}
 +		load_server_config(config_file_name, cfg);
--	if (strcasecmp(config_file_name, "none") != 0)
 + 	} else if (strcasecmp(config_file_name, "none") != 0)
 +	        /* load config specified on commandline */
  		load_server_config(config_file_name, cfg);
  
  	parse_server_config(&options, config_file_name, cfg,
-Index: openssh-8.9p1/sshd_config.5
+Index: openssh-10.3p1/sshd_config.5
 ===================================================================
---- openssh-8.9p1.orig/sshd_config.5
-+++ openssh-8.9p1/sshd_config.5
+--- openssh-10.3p1.orig/sshd_config.5
++++ openssh-10.3p1/sshd_config.5
 @@ -44,7 +44,9 @@
  .Xr sshd 8
  reads configuration data from
@@ -169,19 +169,19 @@ Index: openssh-8.9p1/sshd_config.5
  .Fl f
  on the command line).
  The file contains keyword-argument pairs, one per line.
-Index: openssh-8.9p1/ssh-keysign.c
+Index: openssh-10.3p1/ssh-keysign.c
 ===================================================================
---- openssh-8.9p1.orig/ssh-keysign.c
-+++ openssh-8.9p1/ssh-keysign.c
-@@ -186,6 +186,7 @@ main(int argc, char **argv)
+--- openssh-10.3p1.orig/ssh-keysign.c
++++ openssh-10.3p1/ssh-keysign.c
+@@ -184,6 +184,7 @@ main(int argc, char **argv)
  	u_char *signature, *data, rver;
  	char *host, *fp, *pkalg;
  	size_t slen, dlen;
 +	struct stat st;
  
- 	if (pledge("stdio rpath getpw dns id", NULL) != 0)
- 		fatal("%s: pledge: %s", __progname, strerror(errno));
-@@ -219,8 +220,14 @@ main(int argc, char **argv)
+ 	/* Ensure that stdin and stdout are connected */
+ 	if ((fd = open(_PATH_DEVNULL, O_RDWR)) < 2)
+@@ -218,8 +219,14 @@ main(int argc, char **argv)
  
  	/* verify that ssh-keysign is enabled by the admin */
  	initialize_options(&options);

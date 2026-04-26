@@ -3,24 +3,24 @@
 FIPS 140-2 compliance. Perform selftests on start and use only FIPS approved
 algorithms.
 
-Index: openssh-9.6p1/Makefile.in
+Index: openssh-10.3p1/Makefile.in
 ===================================================================
---- openssh-9.6p1.orig/Makefile.in
-+++ openssh-9.6p1/Makefile.in
-@@ -115,6 +115,8 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
+--- openssh-10.3p1.orig/Makefile.in
++++ openssh-10.3p1/Makefile.in
+@@ -113,6 +113,8 @@ P11OBJS= ssh-pkcs11-client.o
  
  SKOBJS=	ssh-sk-client.o
  
 +LIBSSH_OBJS += fips.o
 +
  SSHOBJS= ssh.o readconf.o clientloop.o sshtty.o \
- 	sshconnect.o sshconnect2.o mux.o $(P11OBJS) $(SKOBJS)
+ 	sshconnect.o sshconnect2.o mux.o ssh-pkcs11.o $(SKOBJS)
  
-Index: openssh-9.6p1/cipher.c
+Index: openssh-10.3p1/cipher.c
 ===================================================================
---- openssh-9.6p1.orig/cipher.c
-+++ openssh-9.6p1/cipher.c
-@@ -51,6 +51,9 @@
+--- openssh-10.3p1.orig/cipher.c
++++ openssh-10.3p1/cipher.c
+@@ -50,6 +50,9 @@
  
  #include "openbsd-compat/openssl-compat.h"
  
@@ -30,7 +30,7 @@ Index: openssh-9.6p1/cipher.c
  #ifndef WITH_OPENSSL
  #define EVP_CIPHER_CTX void
  #endif
-@@ -83,7 +86,7 @@ struct sshcipher {
+@@ -82,7 +85,7 @@ struct sshcipher {
  #endif
  };
  
@@ -39,7 +39,7 @@ Index: openssh-9.6p1/cipher.c
  #ifdef WITH_OPENSSL
  #ifndef OPENSSL_NO_DES
  	{ "3des-cbc",		8, 24, 0, 0, CFLAG_CBC, EVP_des_ede3_cbc },
-@@ -110,8 +113,50 @@ static const struct sshcipher ciphers[]
+@@ -109,8 +112,50 @@ static const struct sshcipher ciphers[]
  	{ NULL,			0, 0, 0, 0, 0, NULL }
  };
  
@@ -90,7 +90,7 @@ Index: openssh-9.6p1/cipher.c
  /* Returns a comma-separated list of supported ciphers. */
  char *
  cipher_alg_list(char sep, int auth_only)
-@@ -120,7 +167,7 @@ cipher_alg_list(char sep, int auth_only)
+@@ -119,7 +164,7 @@ cipher_alg_list(char sep, int auth_only)
  	const struct sshcipher *c;
  	char sep_str[2] = {sep, '\0'};
  
@@ -99,7 +99,7 @@ Index: openssh-9.6p1/cipher.c
  		if ((c->flags & CFLAG_INTERNAL) != 0)
  			continue;
  		if (auth_only && c->auth_len == 0)
-@@ -203,7 +250,7 @@ const struct sshcipher *
+@@ -193,7 +238,7 @@ const struct sshcipher *
  cipher_by_name(const char *name)
  {
  	const struct sshcipher *c;
@@ -108,10 +108,10 @@ Index: openssh-9.6p1/cipher.c
  		if (strcmp(c->name, name) == 0)
  			return c;
  	return NULL;
-Index: openssh-9.6p1/fips.c
+Index: openssh-10.3p1/fips.c
 ===================================================================
 --- /dev/null
-+++ openssh-9.6p1/fips.c
++++ openssh-10.3p1/fips.c
 @@ -0,0 +1,212 @@
 +/*
 + * Copyright (c) 2012 Petr Cerny.  All rights reserved.
@@ -325,10 +325,10 @@ Index: openssh-9.6p1/fips.c
 +	return dgst;
 +}
 +
-Index: openssh-9.6p1/fips.h
+Index: openssh-10.3p1/fips.h
 ===================================================================
 --- /dev/null
-+++ openssh-9.6p1/fips.h
++++ openssh-10.3p1/fips.h
 @@ -0,0 +1,44 @@
 +/*
 + * Copyright (c) 2012 Petr Cerny.  All rights reserved.
@@ -374,11 +374,11 @@ Index: openssh-9.6p1/fips.h
 +
 +#endif
 +
-Index: openssh-9.6p1/hmac.c
+Index: openssh-10.3p1/hmac.c
 ===================================================================
---- openssh-9.6p1.orig/hmac.c
-+++ openssh-9.6p1/hmac.c
-@@ -145,7 +145,7 @@ hmac_test(void *key, size_t klen, void *
+--- openssh-10.3p1.orig/hmac.c
++++ openssh-10.3p1/hmac.c
+@@ -144,7 +144,7 @@ hmac_test(void *key, size_t klen, void *
  	size_t			 i;
  	u_char			 digest[16];
  
@@ -387,20 +387,20 @@ Index: openssh-9.6p1/hmac.c
  		printf("ssh_hmac_start failed");
  	if (ssh_hmac_init(ctx, key, klen) < 0 ||
  	    ssh_hmac_update(ctx, m, mlen) < 0 ||
-Index: openssh-9.6p1/kex.c
+Index: openssh-10.3p1/kex-names.c
 ===================================================================
---- openssh-9.6p1.orig/kex-names.c
-+++ openssh-9.6p1/kex-names.c
-@@ -64,6 +64,8 @@
+--- openssh-10.3p1.orig/kex-names.c
++++ openssh-10.3p1/kex-names.c
+@@ -43,6 +43,8 @@
+ 
  #include "ssherr.h"
- #include "xmalloc.h"
  
 +#include "fips.h"
 +
  struct kexalg {
  	char *name;
  	u_int type;
-@@ -87,7 +89,7 @@ struct kexalg {
+@@ -50,7 +52,7 @@ struct kexalg {
  	int hash_alg;
  	int pq_alg;
  };
@@ -409,7 +409,7 @@ Index: openssh-9.6p1/kex.c
  #ifdef WITH_OPENSSL
  	{ KEX_DH1, KEX_DH_GRP1_SHA1, 0, SSH_DIGEST_SHA1, KEX_NOT_PQ },
  	{ KEX_DH14_SHA1, KEX_DH_GRP14_SHA1, 0, SSH_DIGEST_SHA1, KEX_NOT_PQ },
-@@ -120,6 +122,47 @@ static const struct kexalg kexalgs[] = {
+@@ -89,6 +91,47 @@ static const struct kexalg kexalgs[] = {
  	{ NULL, 0, -1, -1, 0 },
  };
  
@@ -457,7 +457,7 @@ Index: openssh-9.6p1/kex.c
  char *
  kex_alg_list(char sep)
  {
-@@ -127,7 +170,7 @@ kex_alg_list(char sep)
+@@ -96,7 +139,7 @@ kex_alg_list(char sep)
  	const struct kexalg *k;
  	char sep_str[2] = {sep, '\0'};
  
@@ -466,7 +466,7 @@ Index: openssh-9.6p1/kex.c
  		xextendf(&ret, sep_str, "%s", k->name);
  
  	return ret;
-@@ -147,7 +190,7 @@ kex_alg_by_name(const char *name)
+@@ -107,7 +150,7 @@ kex_alg_by_name(const char *name)
  {
  	const struct kexalg *k;
  
@@ -475,7 +475,7 @@ Index: openssh-9.6p1/kex.c
  		if (strcmp(k->name, name) == 0)
  			return k;
  	}
-@@ -167,7 +210,10 @@ kex_names_valid(const char *names)
+@@ -173,7 +216,10 @@ kex_names_valid(const char *names)
  	for ((p = strsep(&cp, ",")); p && *p != '\0';
  	    (p = strsep(&cp, ","))) {
  		if (kex_alg_by_name(p) == NULL) {
@@ -486,10 +486,10 @@ Index: openssh-9.6p1/kex.c
  			free(s);
  			return 0;
  		}
-Index: openssh-9.6p1/mac.c
+Index: openssh-10.3p1/mac.c
 ===================================================================
---- openssh-9.6p1.orig/mac.c
-+++ openssh-9.6p1/mac.c
+--- openssh-10.3p1.orig/mac.c
++++ openssh-10.3p1/mac.c
 @@ -41,6 +41,9 @@
  
  #include "openbsd-compat/openssl-compat.h"
@@ -560,7 +560,7 @@ Index: openssh-9.6p1/mac.c
  		xextendf(&ret, sep_str, "%s", m->name);
  
  	return ret;
-@@ -126,7 +164,7 @@ mac_setup(struct sshmac *mac, char *name
+@@ -117,7 +155,7 @@ mac_setup(struct sshmac *mac, char *name
  {
  	const struct macalg *m;
  
@@ -569,11 +569,11 @@ Index: openssh-9.6p1/mac.c
  		if (strcmp(name, m->name) != 0)
  			continue;
  		if (mac != NULL)
-Index: openssh-9.6p1/readconf.c
+Index: openssh-10.3p1/readconf.c
 ===================================================================
---- openssh-9.6p1.orig/readconf.c
-+++ openssh-9.6p1/readconf.c
-@@ -71,6 +71,8 @@
+--- openssh-10.3p1.orig/readconf.c
++++ openssh-10.3p1/readconf.c
+@@ -58,6 +58,8 @@
  #include "digest.h"
  #include "version.h"
  
@@ -582,7 +582,7 @@ Index: openssh-9.6p1/readconf.c
  /* Format of the configuration file:
  
     # Configuration data is parsed as follows:
-@@ -2478,6 +2480,23 @@ config_has_permitted_cnames(Options *opt
+@@ -2691,6 +2693,23 @@ config_has_permitted_cnames(Options *opt
  	return options->num_permitted_cnames > 0;
  }
  
@@ -606,7 +606,7 @@ Index: openssh-9.6p1/readconf.c
  /*
   * Initializes options to special values that indicate that they have not yet
   * been set.  Read_config_file will only set options with this value. Options
-@@ -2796,6 +2815,9 @@ fill_default_options(Options * options)
+@@ -3010,6 +3029,9 @@ fill_default_options(Options * options)
  		options->canonicalize_hostname = SSH_CANONICALISE_NO;
  	if (options->fingerprint_hash == -1)
  		options->fingerprint_hash = SSH_FP_HASH_DEFAULT;
@@ -616,7 +616,7 @@ Index: openssh-9.6p1/readconf.c
  #ifdef ENABLE_SK_INTERNAL
  	if (options->sk_provider == NULL)
  		options->sk_provider = xstrdup("internal");
-@@ -2840,6 +2862,8 @@ fill_default_options(Options * options)
+@@ -3057,6 +3079,8 @@ fill_default_options(Options * options)
  	ASSEMBLE(ca_sign_algorithms, def_sig, all_sig);
  #undef ASSEMBLE
  
@@ -625,11 +625,11 @@ Index: openssh-9.6p1/readconf.c
  #define CLEAR_ON_NONE(v) \
  	do { \
  		if (option_clear_or_none(v)) { \
-Index: openssh-9.6p1/readconf.h
+Index: openssh-10.3p1/readconf.h
 ===================================================================
---- openssh-9.6p1.orig/readconf.h
-+++ openssh-9.6p1/readconf.h
-@@ -231,6 +231,7 @@ typedef struct {
+--- openssh-10.3p1.orig/readconf.h
++++ openssh-10.3p1/readconf.h
+@@ -235,6 +235,7 @@ typedef struct {
  #define SSH_KEYSTROKE_CHAFF_MIN_MS		1024
  #define SSH_KEYSTROKE_CHAFF_RNG_MS		2048
  
@@ -637,11 +637,11 @@ Index: openssh-9.6p1/readconf.h
  const char *kex_default_pk_alg(void);
  char	*ssh_connection_hash(const char *thishost, const char *host,
      const char *portstr, const char *user, const char *jump_host);
-Index: openssh-9.6p1/servconf.c
+Index: openssh-10.3p1/servconf.c
 ===================================================================
---- openssh-9.6p1.orig/servconf.c
-+++ openssh-9.6p1/servconf.c
-@@ -68,6 +68,7 @@
+--- openssh-10.3p1.orig/servconf.c
++++ openssh-10.3p1/servconf.c
+@@ -62,6 +62,7 @@
  #include "myproposal.h"
  #include "digest.h"
  #include "version.h"
@@ -649,7 +649,7 @@ Index: openssh-9.6p1/servconf.c
  
  #if !defined(SSHD_PAM_SERVICE)
  # define SSHD_PAM_SERVICE		"sshd"
-@@ -207,6 +208,23 @@ option_clear_or_none(const char *o)
+@@ -223,6 +224,23 @@ option_clear_or_none(const char *o)
  	return o == NULL || strcasecmp(o, "none") == 0;
  }
  
@@ -673,7 +673,7 @@ Index: openssh-9.6p1/servconf.c
  static void
  assemble_algorithms(ServerOptions *o)
  {
-@@ -248,6 +266,8 @@ assemble_algorithms(ServerOptions *o)
+@@ -264,6 +282,8 @@ assemble_algorithms(ServerOptions *o)
  	free(def_kex);
  	free(def_key);
  	free(def_sig);
@@ -682,7 +682,7 @@ Index: openssh-9.6p1/servconf.c
  }
  
  void
-@@ -440,6 +460,8 @@ fill_default_server_options(ServerOption
+@@ -482,6 +502,8 @@ fill_default_server_options(ServerOption
  		options->fwd_opts.streamlocal_bind_unlink = 0;
  	if (options->fingerprint_hash == -1)
  		options->fingerprint_hash = SSH_FP_HASH_DEFAULT;
@@ -691,10 +691,10 @@ Index: openssh-9.6p1/servconf.c
  	if (options->disable_forwarding == -1)
  		options->disable_forwarding = 0;
  	if (options->expose_userauth_info == -1)
-Index: openssh-9.6p1/ssh-keygen.c
+Index: openssh-10.3p1/ssh-keygen.c
 ===================================================================
---- openssh-9.6p1.orig/ssh-keygen.c
-+++ openssh-9.6p1/ssh-keygen.c
+--- openssh-10.3p1.orig/ssh-keygen.c
++++ openssh-10.3p1/ssh-keygen.c
 @@ -18,6 +18,8 @@
  #include <sys/socket.h>
  #include <sys/stat.h>
@@ -704,7 +704,7 @@ Index: openssh-9.6p1/ssh-keygen.c
  #ifdef WITH_OPENSSL
  #include "openbsd-compat/openssl-compat.h"
  #include <openssl/bn.h>
-@@ -1040,11 +1042,13 @@ do_fingerprint(struct passwd *pw)
+@@ -1003,11 +1005,13 @@ do_fingerprint(struct passwd *pw)
  static void
  do_gen_all_hostkeys(struct passwd *pw)
  {
@@ -720,7 +720,7 @@ Index: openssh-9.6p1/ssh-keygen.c
  #ifdef WITH_OPENSSL
  		{ "rsa", "RSA" ,_PATH_HOST_RSA_KEY_FILE },
  #ifdef OPENSSL_HAS_ECC
-@@ -1058,6 +1062,17 @@ do_gen_all_hostkeys(struct passwd *pw)
+@@ -1018,6 +1022,17 @@ do_gen_all_hostkeys(struct passwd *pw)
  		{ NULL, NULL, NULL }
  	};
  
@@ -735,10 +735,10 @@ Index: openssh-9.6p1/ssh-keygen.c
 +	};
 +
 +	struct Key_types *key_types;
- 	u_int32_t bits = 0;
+ 	uint32_t bits = 0;
  	int first = 0;
  	struct stat st;
-@@ -1065,6 +1080,12 @@ do_gen_all_hostkeys(struct passwd *pw)
+@@ -1025,6 +1040,12 @@ do_gen_all_hostkeys(struct passwd *pw)
  	char comment[1024], *prv_tmp, *pub_tmp, *prv_file, *pub_file;
  	int i, type, fd, r;
  
@@ -751,7 +751,7 @@ Index: openssh-9.6p1/ssh-keygen.c
  	for (i = 0; key_types[i].key_type; i++) {
  		public = private = NULL;
  		prv_tmp = pub_tmp = prv_file = pub_file = NULL;
-@@ -3794,6 +3815,14 @@ main(int argc, char **argv)
+@@ -3771,6 +3792,14 @@ main(int argc, char **argv)
  		key_type_name = DEFAULT_KEY_TYPE_NAME;
  
  	type = sshkey_type_from_shortname(key_type_name);
@@ -766,11 +766,11 @@ Index: openssh-9.6p1/ssh-keygen.c
  	type_bits_valid(type, key_type_name, &bits);
  
  	if (!quiet)
-Index: openssh-9.6p1/ssh_config.5
+Index: openssh-10.3p1/ssh_config.5
 ===================================================================
---- openssh-9.6p1.orig/ssh_config.5
-+++ openssh-9.6p1/ssh_config.5
-@@ -831,6 +831,8 @@ The argument to this keyword must be
+--- openssh-10.3p1.orig/ssh_config.5
++++ openssh-10.3p1/ssh_config.5
+@@ -879,6 +879,8 @@ The argument to this keyword must be
  option) or
  .Cm no
  (the default).
@@ -779,11 +779,11 @@ Index: openssh-9.6p1/ssh_config.5
  .It Cm ForwardAgent
  Specifies whether the connection to the authentication agent (if any)
  will be forwarded to the remote machine.
-Index: openssh-9.6p1/sshd.c
+Index: openssh-10.3p1/sshd.c
 ===================================================================
---- openssh-9.6p1.orig/sshd.c
-+++ openssh-9.6p1/sshd.c
-@@ -128,6 +128,8 @@
+--- openssh-10.3p1.orig/sshd.c
++++ openssh-10.3p1/sshd.c
+@@ -84,6 +84,8 @@
  #endif
  #include "monitor_wrap.h"
  
@@ -792,11 +792,11 @@ Index: openssh-9.6p1/sshd.c
  /* Re-exec fds */
  #define REEXEC_DEVCRYPTO_RESERVED_FD	(STDERR_FILENO + 1)
  #define REEXEC_CONFIG_PASS_FD		(STDERR_FILENO + 2)
-Index: openssh-9.6p1/sshd_config.5
+Index: openssh-10.3p1/sshd_config.5
 ===================================================================
---- openssh-9.6p1.orig/sshd_config.5
-+++ openssh-9.6p1/sshd_config.5
-@@ -681,6 +681,8 @@ and
+--- openssh-10.3p1.orig/sshd_config.5
++++ openssh-10.3p1/sshd_config.5
+@@ -693,6 +693,8 @@ and
  .Cm sha256 .
  The default is
  .Cm sha256 .

@@ -2033,4 +2033,12 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
 - Add missing patch tags. (forwarded request 1348649 from hpjansson)</comment>
     <requestid>1348650</requestid>
   </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>861d28b965efe69f3422cd6e3de6761a</srcmd5>
+    <version>10.3p1</version>
+    <time>1777230651</time>
+    <user>anag_factory</user>
+    <comment>Submit openssh 10.3p1 with some minor changelog fixes (forwarded request 1348977 from hpjansson)</comment>
+    <requestid>1348978</requestid>
+  </revision>
 </revisionlist>

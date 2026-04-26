@@ -59,7 +59,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        10.2p1
+Version:        10.3p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
@@ -121,13 +121,13 @@ Patch24:        openssh-8.1p1-audit.patch
 Patch26:        openssh-7.7p1-disable_openssl_abi_check.patch
 # PATCH-FIX-SUSE openssh-7.7p1-no_fork-no_pid_file.patch mindrot#2641 -- Skip pid file when not daemonizing
 Patch27:        openssh-7.7p1-no_fork-no_pid_file.patch
-# PATCH-FEATURE-SUSE openssh-7.7p1-host_ident.patch -- Suggest ssh-keygen -R when reporting offending known_hosts keys
+# PATCH-FEATURE-SUSE openssh-7.7p1-host_ident.patch bsc#625552 -- Suggest ssh-keygen -R when reporting offending known_hosts keys
 Patch28:        openssh-7.7p1-host_ident.patch
-# PATCH-FEATURE-SUSE openssh-7.7p1-sftp_force_permissions.patch mindrot#1844 -- sftp-server -m: force perms on upload
+# PATCH-FEATURE-SUSE openssh-7.7p1-sftp_force_permissions.patch fate#312774 mindrot#1844 -- sftp-server -m: force perms on upload
 Patch29:        openssh-7.7p1-sftp_force_permissions.patch
 # PATCH-FIX-SUSE openssh-7.7p1-X_forward_with_disabled_ipv6.patch bsc#712683 mindrot#2143 fate#31503 -- Keep bound X11 sockets on bind fail
 Patch30:        openssh-7.7p1-X_forward_with_disabled_ipv6.patch
-# PATCH-FEATURE-SUSE openssh-7.7p1-ldap.patch jchadima@redhat.com -- ssh-ldap-helper: authorized keys from LDAP
+# PATCH-FEATURE-SUSE openssh-7.7p1-ldap.patch bsc#683733 fate#302144 jchadima@redhat.com -- ssh-ldap-helper: authorized keys from LDAP
 Patch31:        openssh-7.7p1-ldap.patch
 # PATCH-FIX-SUSE openssh-7.7p1-IPv6_X_forwarding.patch bsc#847710 mindrot#2213 -- Parse IPv6 literals in DISPLAY
 Patch32:        openssh-7.7p1-IPv6_X_forwarding.patch
@@ -135,13 +135,13 @@ Patch32:        openssh-7.7p1-IPv6_X_forwarding.patch
 Patch33:        openssh-7.7p1-sftp_print_diagnostic_messages.patch
 # PATCH-FIX-SUSE openssh-7.9p1-keygen-preserve-perms.patch bsc#1150574 hpj@suse.com -- Preserve known_hosts perms
 Patch34:        openssh-7.9p1-keygen-preserve-perms.patch
-# PATCH-FIX-SUSE openssh-7.9p1-revert-new-qos-defaults.patch hpj@suse.com -- Revert upstream IPQoS AF21/CS1 defaults
+# PATCH-FIX-SUSE openssh-7.9p1-revert-new-qos-defaults.patch bsc#1136402 hpj@suse.com -- Revert upstream IPQoS AF21/CS1 defaults
 Patch35:        openssh-7.9p1-revert-new-qos-defaults.patch
 # PATCH-FIX-SUSE openssh-8.1p1-seccomp-clock_nanosleep.patch -- Allow clock_nanosleep() in seccomp sandbox
 Patch36:        openssh-8.1p1-seccomp-clock_nanosleep.patch
-# PATCH-FIX-UPSTREAM openssh-8.1p1-seccomp-clock_nanosleep_time64.patch mindrot#3100 -- Allow clock_nanosleep_time64 (ARM)
+# PATCH-FIX-UPSTREAM openssh-8.1p1-seccomp-clock_nanosleep_time64.patch boo#1164061 mindrot#3100 -- Allow clock_nanosleep_time64 (ARM)
 Patch37:        openssh-8.1p1-seccomp-clock_nanosleep_time64.patch
-# PATCH-FIX-UPSTREAM openssh-8.1p1-seccomp-clock_gettime64.patch raj.khem@gmail.com -- Allow clock_gettime64() (mips)
+# PATCH-FIX-UPSTREAM openssh-8.1p1-seccomp-clock_gettime64.patch boo#1164061 raj.khem@gmail.com -- Allow clock_gettime64() (mips)
 Patch38:        openssh-8.1p1-seccomp-clock_gettime64.patch
 # PATCH-FEATURE-SUSE openssh-8.1p1-use-openssl-kdf.patch jsc#SLE-9443 -- Use OpenSSL KDF API to stay in FIPS boundary
 Patch39:        openssh-8.1p1-use-openssl-kdf.patch
@@ -167,30 +167,22 @@ Patch50:        openssh-openssl-3.patch
 Patch52:        logind_set_tty.patch
 # PATCH-FIX-SUSE openssh-mitigate-lingering-secrets.patch bsc#1186673 -- explicit_bzero() key/iv instead of memset
 Patch54:        openssh-mitigate-lingering-secrets.patch
-# PATCH-FEATURE-SUSE openssh-7.8p1-role-mls.patch -- SELinux role/MLS: allow "username/role" login form and MLS range
+# PATCH-FEATURE-SUSE openssh-7.8p1-role-mls.patch bsc#1214788 -- SELinux role/MLS: allow "username/role" login form and MLS range
 Patch102:       openssh-7.8p1-role-mls.patch
-# PATCH-FEATURE-SUSE openssh-6.6p1-privsep-selinux.patch -- Propagate SELinux security context across privsep child
+# PATCH-FEATURE-SUSE openssh-6.6p1-privsep-selinux.patch bsc#1214788 -- Propagate SELinux security context across privsep child
 Patch103:       openssh-6.6p1-privsep-selinux.patch
 # PATCH-FEATURE-SUSE openssh-6.6p1-keycat.patch boo#1229072 -- SELinux env setup in subprocess() (ex-ssh-keycat)
 Patch104:       openssh-6.6p1-keycat.patch
-# PATCH-FEATURE-SUSE openssh-6.6.1p1-selinux-contexts.patch -- SELinux context handling in sshd_selinux_copy_context()
+# PATCH-FEATURE-SUSE openssh-6.6.1p1-selinux-contexts.patch bsc#1214788 -- SELinux context handling in sshd_selinux_copy_context()
 Patch105:       openssh-6.6.1p1-selinux-contexts.patch
-# PATCH-FIX-SUSE openssh-7.6p1-cleanup-selinux.patch -- SELinux: pass context to AuthorizedKeysCommand subprocess
+# PATCH-FIX-SUSE openssh-7.6p1-cleanup-selinux.patch bsc#1214788 -- SELinux: pass context to AuthorizedKeysCommand subprocess
 Patch106:       openssh-7.6p1-cleanup-selinux.patch
 # PATCH-FEATURE-SUSE openssh-send-extra-term-env.patch hpj@suse.com -- Send LC_TERMINAL/COLORTERM/TERM_PROGRAM env vars
 Patch107:       openssh-send-extra-term-env.patch
 # PATCH-FIX-SUSE openssh-7.7p1-gssapi-new-unique.patch bsc#1258166 hpj@suse.com -- SSSD non-file ccache: krb5 new_unique
 Patch108:       openssh-7.7p1-gssapi-new-unique.patch
-# 200 - 300  --  Patches submitted to upstream
-# PATCH-FIX-UPSTREAM 0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch boo#1229010 mail@3v1n0.net -- PAM kbdint: explicit KbdintResult enum (PR #452)
-Patch200:       0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
-# PATCH-FIX-UPSTREAM 0002-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch boo#1229010 mail@3v1n0.net -- PAM: SshPamDone enum for done-status (PR #452)
-Patch201:       0002-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
-# PATCH-FIX-UPSTREAM 0003-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch boo#1229010 mail@3v1n0.net -- PAM: debug-log received PAM messages (PR #452)
-Patch202:       0003-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
-# PATCH-FIX-UPSTREAM 0004-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch boo#1229010 mail@3v1n0.net -- PAM: immediately report interactive instructions per RFC4256 (PR #452)
-Patch203:       0004-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
-# 1000 - 2000  --  Conditional patches
+# 200..300 -- Patches submitted to upstream
+# 1000..2000 -- Conditional patches
 %if %{with crypto_policies}
 # PATCH-FEATURE-SUSE openssh-9.6p1-crypto-policies.patch bsc#1211301 -- Integrate system-wide crypto-policies(7)
 Patch1000:      openssh-9.6p1-crypto-policies.patch

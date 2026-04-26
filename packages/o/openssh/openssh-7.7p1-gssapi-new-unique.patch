@@ -1,7 +1,7 @@
-Index: openssh-10.2p1/auth-krb5.c
+Index: openssh-10.3p1/auth-krb5.c
 ===================================================================
---- openssh-10.2p1.orig/auth-krb5.c
-+++ openssh-10.2p1/auth-krb5.c
+--- openssh-10.3p1.orig/auth-krb5.c
++++ openssh-10.3p1/auth-krb5.c
 @@ -51,6 +51,7 @@
  #include <unistd.h>
  #include <string.h>
@@ -318,10 +318,10 @@ Index: openssh-10.2p1/auth-krb5.c
  }
  #endif /* !HEIMDAL */
  #endif /* KRB5 */
-Index: openssh-10.2p1/auth.h
+Index: openssh-10.3p1/auth.h
 ===================================================================
---- openssh-10.2p1.orig/auth.h
-+++ openssh-10.2p1/auth.h
+--- openssh-10.3p1.orig/auth.h
++++ openssh-10.3p1/auth.h
 @@ -85,6 +85,7 @@ struct Authctxt {
  	krb5_principal	 krb5_user;
  	char		*krb5_ticket_file;
@@ -330,7 +330,7 @@ Index: openssh-10.2p1/auth.h
  #endif
  	struct sshbuf	*loginmsg;
  
-@@ -249,7 +250,7 @@ FILE	*auth_openprincipals(const char *,
+@@ -247,7 +248,7 @@ FILE	*auth_openprincipals(const char *,
  int	 sys_auth_passwd(struct ssh *, const char *);
  
  #if defined(KRB5) && !defined(HEIMDAL)
@@ -339,10 +339,10 @@ Index: openssh-10.2p1/auth.h
  #endif
  
  #endif /* AUTH_H */
-Index: openssh-10.2p1/gss-serv-krb5.c
+Index: openssh-10.3p1/gss-serv-krb5.c
 ===================================================================
---- openssh-10.2p1.orig/gss-serv-krb5.c
-+++ openssh-10.2p1/gss-serv-krb5.c
+--- openssh-10.3p1.orig/gss-serv-krb5.c
++++ openssh-10.3p1/gss-serv-krb5.c
 @@ -113,7 +113,7 @@ ssh_gssapi_krb5_userok(ssh_gssapi_client
  /* This writes out any forwarded credentials from the structure populated
   * during userauth. Called after we have setuid to the user */
@@ -454,11 +454,11 @@ Index: openssh-10.2p1/gss-serv-krb5.c
  }
  
  int
-Index: openssh-10.2p1/gss-serv.c
+Index: openssh-10.3p1/gss-serv.c
 ===================================================================
---- openssh-10.2p1.orig/gss-serv.c
-+++ openssh-10.2p1/gss-serv.c
-@@ -414,13 +414,15 @@ ssh_gssapi_cleanup_creds(void)
+--- openssh-10.3p1.orig/gss-serv.c
++++ openssh-10.3p1/gss-serv.c
+@@ -415,18 +415,20 @@ ssh_gssapi_cleanup_creds(void)
  }
  
  /* As user */
@@ -466,6 +466,12 @@ Index: openssh-10.2p1/gss-serv.c
 +int
  ssh_gssapi_storecreds(void)
  {
+ 	if (options.gss_deleg_creds == 0) {
+ 		debug_f("delegate credential is disabled, doing nothing");
+-		return;
++		return 0;
+ 	}
+ 
  	if (gssapi_client.mech && gssapi_client.mech->storecreds) {
 -		(*gssapi_client.mech->storecreds)(&gssapi_client);
 +		return (*gssapi_client.mech->storecreds)(&gssapi_client);
@@ -476,7 +482,7 @@ Index: openssh-10.2p1/gss-serv.c
  }
  
  /* This allows GSSAPI methods to do things to the child's environment based
-@@ -500,9 +502,7 @@ ssh_gssapi_rekey_creds(void) {
+@@ -506,9 +508,7 @@ ssh_gssapi_rekey_creds(void) {
  	char *envstr;
  #endif
  
@@ -487,11 +493,11 @@ Index: openssh-10.2p1/gss-serv.c
  		return;
  
  	ok = mm_ssh_gssapi_update_creds(&gssapi_client.store);
-Index: openssh-10.2p1/servconf.c
+Index: openssh-10.3p1/servconf.c
 ===================================================================
---- openssh-10.2p1.orig/servconf.c
-+++ openssh-10.2p1/servconf.c
-@@ -138,6 +138,7 @@ initialize_server_options(ServerOptions
+--- openssh-10.3p1.orig/servconf.c
++++ openssh-10.3p1/servconf.c
+@@ -133,6 +133,7 @@ initialize_server_options(ServerOptions
  	options->kerberos_or_local_passwd = -1;
  	options->kerberos_ticket_cleanup = -1;
  	options->kerberos_get_afs_token = -1;
@@ -499,7 +505,7 @@ Index: openssh-10.2p1/servconf.c
  	options->gss_authentication=-1;
  	options->gss_keyex = -1;
  	options->gss_cleanup_creds = -1;
-@@ -399,6 +400,8 @@ fill_default_server_options(ServerOption
+@@ -397,6 +398,8 @@ fill_default_server_options(ServerOption
  		options->kerberos_ticket_cleanup = 1;
  	if (options->kerberos_get_afs_token == -1)
  		options->kerberos_get_afs_token = 0;
@@ -508,7 +514,7 @@ Index: openssh-10.2p1/servconf.c
  	if (options->gss_authentication == -1)
  		options->gss_authentication = 0;
  	if (options->gss_keyex == -1)
-@@ -583,7 +586,7 @@ typedef enum {
+@@ -586,7 +589,7 @@ typedef enum {
  	sPort, sHostKeyFile, sLoginGraceTime,
  	sPermitRootLogin, sLogFacility, sLogLevel, sLogVerbose,
  	sKerberosAuthentication, sKerberosOrLocalPasswd, sKerberosTicketCleanup,
@@ -517,7 +523,7 @@ Index: openssh-10.2p1/servconf.c
  	sKbdInteractiveAuthentication, sListenAddress, sAddressFamily,
  	sPrintMotd, sPrintLastLog, sIgnoreRhosts,
  	sX11Forwarding, sX11DisplayOffset, sX11UseLocalhost,
-@@ -676,11 +679,13 @@ static struct {
+@@ -679,11 +682,13 @@ static struct {
  #else
  	{ "kerberosgetafstoken", sUnsupported, SSHCFG_GLOBAL },
  #endif
@@ -531,7 +537,7 @@ Index: openssh-10.2p1/servconf.c
  #endif
  	{ "kerberostgtpassing", sUnsupported, SSHCFG_GLOBAL },
  	{ "afstokenpassing", sUnsupported, SSHCFG_GLOBAL },
-@@ -1692,6 +1697,10 @@ process_server_config_line_depth(ServerO
+@@ -1699,6 +1704,10 @@ process_server_config_line_depth(ServerO
  		intptr = &options->kerberos_get_afs_token;
  		goto parse_flag;
  
@@ -542,7 +548,7 @@ Index: openssh-10.2p1/servconf.c
  	case sGssAuthentication:
  		intptr = &options->gss_authentication;
  		goto parse_flag;
-@@ -3325,6 +3334,7 @@ dump_config(ServerOptions *o)
+@@ -3359,6 +3368,7 @@ dump_config(ServerOptions *o)
  # ifdef USE_AFS
  	dump_cfg_fmtint(sKerberosGetAFSToken, o->kerberos_get_afs_token);
  # endif
@@ -550,11 +556,11 @@ Index: openssh-10.2p1/servconf.c
  #endif
  #ifdef GSSAPI
  	dump_cfg_fmtint(sGssAuthentication, o->gss_authentication);
-Index: openssh-10.2p1/servconf.h
+Index: openssh-10.3p1/servconf.h
 ===================================================================
---- openssh-10.2p1.orig/servconf.h
-+++ openssh-10.2p1/servconf.h
-@@ -149,6 +149,8 @@ typedef struct {
+--- openssh-10.3p1.orig/servconf.h
++++ openssh-10.3p1/servconf.h
+@@ -150,6 +150,8 @@ typedef struct {
  						 * file on logout. */
  	int     kerberos_get_afs_token;		/* If true, try to get AFS token if
  						 * authenticated with Kerberos. */
@@ -563,11 +569,11 @@ Index: openssh-10.2p1/servconf.h
  	int     gss_authentication;	/* If true, permit GSSAPI authentication */
  	int     gss_keyex;		/* If true, permit GSSAPI key exchange */
  	int     gss_cleanup_creds;	/* If true, destroy cred cache on logout */
-Index: openssh-10.2p1/session.c
+Index: openssh-10.3p1/session.c
 ===================================================================
---- openssh-10.2p1.orig/session.c
-+++ openssh-10.2p1/session.c
-@@ -976,7 +976,8 @@ do_setup_env(struct ssh *ssh, Session *s
+--- openssh-10.3p1.orig/session.c
++++ openssh-10.3p1/session.c
+@@ -977,7 +977,8 @@ do_setup_env(struct ssh *ssh, Session *s
  	/* Allow any GSSAPI methods that we've used to alter
  	 * the child's environment as they see fit
  	 */
@@ -577,7 +583,7 @@ Index: openssh-10.2p1/session.c
  #endif
  
  	/* Set basic environment. */
-@@ -1052,7 +1053,7 @@ do_setup_env(struct ssh *ssh, Session *s
+@@ -1059,7 +1060,7 @@ do_setup_env(struct ssh *ssh, Session *s
  	}
  #endif
  #ifdef KRB5
@@ -586,10 +592,10 @@ Index: openssh-10.2p1/session.c
  		child_set_env(&env, &envsize, "KRB5CCNAME",
  		    s->authctxt->krb5_ccname);
  #endif
-Index: openssh-10.2p1/ssh-gss.h
+Index: openssh-10.3p1/ssh-gss.h
 ===================================================================
---- openssh-10.2p1.orig/ssh-gss.h
-+++ openssh-10.2p1/ssh-gss.h
+--- openssh-10.3p1.orig/ssh-gss.h
++++ openssh-10.3p1/ssh-gss.h
 @@ -110,7 +110,7 @@ typedef struct ssh_gssapi_mech_struct {
  	int (*dochild) (ssh_gssapi_client *);
  	int (*userok) (ssh_gssapi_client *, char *);
@@ -608,11 +614,11 @@ Index: openssh-10.2p1/ssh-gss.h
  const char *ssh_gssapi_displayname(void);
  
  char *ssh_gssapi_server_mechanisms(void);
-Index: openssh-10.2p1/sshd-session.c
+Index: openssh-10.3p1/sshd-session.c
 ===================================================================
---- openssh-10.2p1.orig/sshd-session.c
-+++ openssh-10.2p1/sshd-session.c
-@@ -1360,7 +1360,7 @@ main(int ac, char **av)
+--- openssh-10.3p1.orig/sshd-session.c
++++ openssh-10.3p1/sshd-session.c
+@@ -1328,7 +1328,7 @@ main(int ac, char **av)
  #ifdef GSSAPI
  	if (options.gss_authentication) {
  		temporarily_use_uid(authctxt->pw);
@@ -621,11 +627,11 @@ Index: openssh-10.2p1/sshd-session.c
  		restore_uid();
  	}
  #endif
-Index: openssh-10.2p1/sshd_config.5
+Index: openssh-10.3p1/sshd_config.5
 ===================================================================
---- openssh-10.2p1.orig/sshd_config.5
-+++ openssh-10.2p1/sshd_config.5
-@@ -1034,6 +1034,14 @@ Specifies whether to automatically destr
+--- openssh-10.3p1.orig/sshd_config.5
++++ openssh-10.3p1/sshd_config.5
+@@ -1054,6 +1054,14 @@ Specifies whether to automatically destr
  file on logout.
  The default is
  .Cm yes .

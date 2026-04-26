@@ -6,11 +6,9 @@ Date:   Thu Jun 20 23:54:11 2019 +0200
     
     Reverts OpenBSD-Commit-ID: d11d2a4484f461524ef0c20870523dfcdeb52181
 
-Index: openssh-8.8p1/readconf.c
-===================================================================
---- openssh-8.8p1.orig/readconf.c
-+++ openssh-8.8p1/readconf.c
-@@ -2679,9 +2679,9 @@ fill_default_options(Options * options)
+--- a/readconf.c
++++ b/readconf.c
+@@ -3071,9 +3071,9 @@
  	if (options->visual_host_key == -1)
  		options->visual_host_key = 0;
  	if (options->ip_qos_interactive == -1)
@@ -22,11 +20,9 @@ Index: openssh-8.8p1/readconf.c
  	if (options->request_tty == -1)
  		options->request_tty = REQUEST_TTY_AUTO;
  	if (options->session_type == -1)
-Index: openssh-8.8p1/servconf.c
-===================================================================
---- openssh-8.8p1.orig/servconf.c
-+++ openssh-8.8p1/servconf.c
-@@ -459,9 +459,9 @@ fill_default_server_options(ServerOption
+--- a/servconf.c
++++ b/servconf.c
+@@ -503,9 +503,9 @@
  	if (options->permit_tun == -1)
  		options->permit_tun = SSH_TUNMODE_NO;
  	if (options->ip_qos_interactive == -1)
@@ -38,11 +34,9 @@ Index: openssh-8.8p1/servconf.c
  	if (options->version_addendum == NULL)
  		options->version_addendum = xstrdup("");
  	if (options->fwd_opts.streamlocal_bind_mask == (mode_t)-1)
-Index: openssh-8.8p1/ssh_config.5
-===================================================================
---- openssh-8.8p1.orig/ssh_config.5
-+++ openssh-8.8p1/ssh_config.5
-@@ -1182,11 +1182,9 @@ If one argument is specified, it is used
+--- a/ssh_config.5
++++ b/ssh_config.5
+@@ -1340,11 +1340,9 @@
  If two values are specified, the first is automatically selected for
  interactive sessions and the second for non-interactive sessions.
  The default is
@@ -56,11 +50,9 @@ Index: openssh-8.8p1/ssh_config.5
  for non-interactive sessions.
  .It Cm KbdInteractiveAuthentication
  Specifies whether to use keyboard-interactive authentication.
-Index: openssh-8.8p1/sshd_config.5
-===================================================================
---- openssh-8.8p1.orig/sshd_config.5
-+++ openssh-8.8p1/sshd_config.5
-@@ -903,11 +903,9 @@ If one argument is specified, it is used
+--- a/sshd_config.5
++++ b/sshd_config.5
+@@ -1010,11 +1010,9 @@
  If two values are specified, the first is automatically selected for
  interactive sessions and the second for non-interactive sessions.
  The default is
@@ -74,3 +66,18 @@ Index: openssh-8.8p1/sshd_config.5
  for non-interactive sessions.
  .It Cm KbdInteractiveAuthentication
  Specifies whether to allow keyboard-interactive authentication.
+--- a/misc.c
++++ b/misc.c
+@@ -1950,9 +1950,9 @@
+ 	{ "ef", IPTOS_DSCP_EF },
+ 	{ "le", IPTOS_DSCP_LE },
+ 	{ "va",	IPTOS_DSCP_VA },
+-	{ "lowdelay", INT_MIN },	/* deprecated */
+-	{ "throughput", INT_MIN },	/* deprecated */
+-	{ "reliability", INT_MIN },	/* deprecated */
++	{ "lowdelay", IPTOS_LOWDELAY },
++	{ "throughput", IPTOS_THROUGHPUT },
++	{ "reliability", IPTOS_RELIABILITY },
+ 	{ NULL, -1 }
+ };
+ 

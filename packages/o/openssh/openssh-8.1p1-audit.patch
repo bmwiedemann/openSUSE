@@ -1,20 +1,20 @@
-Index: openssh-8.9p1/Makefile.in
+Index: openssh-10.3p1/Makefile.in
 ===================================================================
---- openssh-8.9p1.orig/Makefile.in
-+++ openssh-8.9p1/Makefile.in
-@@ -116,7 +116,7 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
+--- openssh-10.3p1.orig/Makefile.in
++++ openssh-10.3p1/Makefile.in
+@@ -112,7 +112,7 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
  	kexsntrup761x25519.o kexmlkem768x25519.o sntrup761.o kexgen.o \
  	kexgssc.o \
  	sftp-realpath.o platform-pledge.o platform-tracing.o platform-misc.o \
--	sshbuf-io.o misc-agent.o
-+	sshbuf-io.o misc-agent.o auditstub.o
+-	sshbuf-io.o misc-agent.o ssherr-libcrypto.o
++	sshbuf-io.o misc-agent.o ssherr-libcrypto.o auditstub.o
  
  P11OBJS= ssh-pkcs11-client.o
  
-Index: openssh-8.9p1/audit-bsm.c
+Index: openssh-10.3p1/audit-bsm.c
 ===================================================================
---- openssh-8.9p1.orig/audit-bsm.c
-+++ openssh-8.9p1/audit-bsm.c
+--- openssh-10.3p1.orig/audit-bsm.c
++++ openssh-10.3p1/audit-bsm.c
 @@ -373,13 +373,26 @@ audit_connection_from(const char *host,
  #endif
  }
@@ -85,10 +85,10 @@ Index: openssh-8.9p1/audit-bsm.c
 +	/* not implemented */
 +}
  #endif /* BSM */
-Index: openssh-8.9p1/audit-linux.c
+Index: openssh-10.3p1/audit-linux.c
 ===================================================================
---- openssh-8.9p1.orig/audit-linux.c
-+++ openssh-8.9p1/audit-linux.c
+--- openssh-10.3p1.orig/audit-linux.c
++++ openssh-10.3p1/audit-linux.c
 @@ -33,29 +33,42 @@
  
  #include "log.h"
@@ -132,9 +132,9 @@ Index: openssh-8.9p1/audit-linux.c
  	}
 -        if (hostname != NULL && strcmp(hostname, "UNKNOWN") == 0)
 -                hostname = NULL;
+-	rc = audit_log_acct_message(audit_fd, AUDIT_USER_LOGIN,
 +        if (ip != NULL && strcmp(ip, "UNKNOWN") == 0)
 +                ip = NULL;
--	rc = audit_log_acct_message(audit_fd, AUDIT_USER_LOGIN,
 +	rc = audit_log_acct_message(audit_fd, event,
  	    NULL, "login", username ? username : "(unknown)",
 -	    username == NULL ? uid : -1, hostname, ip, ttyn, success);
@@ -142,7 +142,7 @@ Index: openssh-8.9p1/audit-linux.c
  	saved_errno = errno;
  	close(audit_fd);
  
-@@ -65,9 +78,96 @@ linux_audit_record_event(int uid, const
+@@ -67,9 +80,96 @@ linux_audit_record_event(int uid, const
  		rc = 0;
  	errno = saved_errno;
  
@@ -240,7 +240,7 @@ Index: openssh-8.9p1/audit-linux.c
  /* Below is the sshd audit API code */
  
  void
-@@ -76,49 +176,211 @@ audit_connection_from(const char *host,
+@@ -78,49 +178,211 @@ audit_connection_from(const char *host,
  	/* not implemented */
  }
  
@@ -464,10 +464,10 @@ Index: openssh-8.9p1/audit-linux.c
 +		error("cannot write into audit");
 +}
  #endif /* USE_LINUX_AUDIT */
-Index: openssh-8.9p1/audit.c
+Index: openssh-10.3p1/audit.c
 ===================================================================
---- openssh-8.9p1.orig/audit.c
-+++ openssh-8.9p1/audit.c
+--- openssh-10.3p1.orig/audit.c
++++ openssh-10.3p1/audit.c
 @@ -34,6 +34,12 @@
  #include "log.h"
  #include "hostfile.h"
@@ -645,10 +645,10 @@ Index: openssh-8.9p1/audit.c
  }
  # endif  /* !defined CUSTOM_SSH_AUDIT_EVENTS */
  #endif /* SSH_AUDIT_EVENTS */
-Index: openssh-8.9p1/audit.h
+Index: openssh-10.3p1/audit.h
 ===================================================================
---- openssh-8.9p1.orig/audit.h
-+++ openssh-8.9p1/audit.h
+--- openssh-10.3p1.orig/audit.h
++++ openssh-10.3p1/audit.h
 @@ -26,6 +26,7 @@
  # define _SSH_AUDIT_H
  
@@ -691,10 +691,10 @@ Index: openssh-8.9p1/audit.h
 +void	audit_destroy_sensitive_data(struct ssh *, const char *, pid_t, uid_t);
  
  #endif /* _SSH_AUDIT_H */
-Index: openssh-8.9p1/auditstub.c
+Index: openssh-10.3p1/auditstub.c
 ===================================================================
 --- /dev/null
-+++ openssh-8.9p1/auditstub.c
++++ openssh-10.3p1/auditstub.c
 @@ -0,0 +1,52 @@
 +/* $Id: auditstub.c,v 1.1 jfch Exp $ */
 +
@@ -748,11 +748,11 @@ Index: openssh-8.9p1/auditstub.c
 +audit_session_key_free_body(struct ssh *ssh, int ctos, pid_t pid, uid_t uid)
 +{
 +}
-Index: openssh-8.9p1/auth.c
+Index: openssh-10.3p1/auth.c
 ===================================================================
---- openssh-8.9p1.orig/auth.c
-+++ openssh-8.9p1/auth.c
-@@ -599,9 +599,6 @@ getpwnamallow(struct ssh *ssh, const cha
+--- openssh-10.3p1.orig/auth.c
++++ openssh-10.3p1/auth.c
+@@ -499,9 +499,6 @@ getpwnamallow(struct ssh *ssh, const cha
  		record_failed_login(ssh, user,
  		    auth_get_canonical_hostname(ssh, options.use_dns), "ssh");
  #endif
@@ -762,11 +762,11 @@ Index: openssh-8.9p1/auth.c
  		return (NULL);
  	}
  	if (!allowed_user(ssh, pw))
-Index: openssh-8.9p1/auth.h
+Index: openssh-10.3p1/auth.h
 ===================================================================
---- openssh-8.9p1.orig/auth.h
-+++ openssh-8.9p1/auth.h
-@@ -190,6 +190,8 @@ struct passwd * getpwnamallow(struct ssh
+--- openssh-10.3p1.orig/auth.h
++++ openssh-10.3p1/auth.h
+@@ -192,6 +192,8 @@ struct passwd * getpwnamallow(struct ssh
  
  char	*expand_authorized_keys(const char *, struct passwd *pw);
  char	*authorized_principals_file(struct passwd *);
@@ -784,10 +784,10 @@ Index: openssh-8.9p1/auth.h
  
  /* Key / cert options linkage to auth layer */
  int	 auth_activate_options(struct ssh *, struct sshauthopt *);
-Index: openssh-8.9p1/auth2-hostbased.c
+Index: openssh-10.3p1/auth2-hostbased.c
 ===================================================================
---- openssh-8.9p1.orig/auth2-hostbased.c
-+++ openssh-8.9p1/auth2-hostbased.c
+--- openssh-10.3p1.orig/auth2-hostbased.c
++++ openssh-10.3p1/auth2-hostbased.c
 @@ -149,7 +149,7 @@ userauth_hostbased(struct ssh *ssh, cons
  	authenticated = 0;
  	if (mm_hostbased_key_allowed(ssh, authctxt->pw, cuser,
@@ -817,11 +817,11 @@ Index: openssh-8.9p1/auth2-hostbased.c
  /* return 1 if given hostkey is allowed */
  int
  hostbased_key_allowed(struct ssh *ssh, struct passwd *pw,
-Index: openssh-8.9p1/auth2-pubkey.c
+Index: openssh-10.3p1/auth2-pubkey.c
 ===================================================================
---- openssh-8.9p1.orig/auth2-pubkey.c
-+++ openssh-8.9p1/auth2-pubkey.c
-@@ -223,7 +223,7 @@ userauth_pubkey(struct ssh *ssh, const c
+--- openssh-10.3p1.orig/auth2-pubkey.c
++++ openssh-10.3p1/auth2-pubkey.c
+@@ -221,7 +221,7 @@ userauth_pubkey(struct ssh *ssh, const c
  		/* test for correct signature */
  		authenticated = 0;
  		if (mm_user_key_allowed(ssh, pw, key, 1, &authopts) &&
@@ -830,7 +830,7 @@ Index: openssh-8.9p1/auth2-pubkey.c
  		    sshbuf_ptr(b), sshbuf_len(b),
  		    (ssh->compat & SSH_BUG_SIGTYPE) == 0 ? pkalg : NULL,
  		    ssh->compat, &sig_details) == 0) {
-@@ -316,6 +316,19 @@ done:
+@@ -314,6 +314,19 @@ done:
  	return authenticated;
  }
  
@@ -850,11 +850,11 @@ Index: openssh-8.9p1/auth2-pubkey.c
  static int
  match_principals_file(struct passwd *pw, char *file,
      struct sshkey_cert *cert, struct sshauthopt **authoptsp)
-Index: openssh-8.9p1/auth2.c
+Index: openssh-10.3p1/auth2.c
 ===================================================================
---- openssh-8.9p1.orig/auth2.c
-+++ openssh-8.9p1/auth2.c
-@@ -294,9 +294,6 @@ input_userauth_request(int type, u_int32
+--- openssh-10.3p1.orig/auth2.c
++++ openssh-10.3p1/auth2.c
+@@ -304,9 +304,6 @@ input_userauth_request(int type, uint32_
  			authctxt->valid = 0;
  			/* Invalid user, fake password information */
  			authctxt->pw = fakepw();
@@ -864,11 +864,11 @@ Index: openssh-8.9p1/auth2.c
  		}
  #ifdef USE_PAM
  		if (options.use_pam)
-Index: openssh-8.9p1/cipher.c
+Index: openssh-10.3p1/cipher.c
 ===================================================================
---- openssh-8.9p1.orig/cipher.c
-+++ openssh-8.9p1/cipher.c
-@@ -58,25 +58,6 @@
+--- openssh-10.3p1.orig/cipher.c
++++ openssh-10.3p1/cipher.c
+@@ -57,25 +57,6 @@
  #define EVP_CIPHER_CTX void
  #endif
  
@@ -894,7 +894,7 @@ Index: openssh-8.9p1/cipher.c
  static const struct sshcipher ciphers_all[] = {
  #ifdef WITH_OPENSSL
  #ifndef OPENSSL_NO_DES
-@@ -460,7 +441,7 @@ cipher_get_length(struct sshcipher_ctx *
+@@ -446,7 +427,7 @@ cipher_get_length(struct sshcipher_ctx *
  void
  cipher_free(struct sshcipher_ctx *cc)
  {
@@ -903,10 +903,10 @@ Index: openssh-8.9p1/cipher.c
  		return;
  	if ((cc->cipher->flags & CFLAG_CHACHAPOLY) != 0) {
  		chachapoly_free(cc->cp_ctx);
-Index: openssh-8.9p1/cipher.h
+Index: openssh-10.3p1/cipher.h
 ===================================================================
---- openssh-8.9p1.orig/cipher.h
-+++ openssh-8.9p1/cipher.h
+--- openssh-10.3p1.orig/cipher.h
++++ openssh-10.3p1/cipher.h
 @@ -47,7 +47,25 @@
  #define CIPHER_ENCRYPT		1
  #define CIPHER_DECRYPT		0
@@ -934,11 +934,11 @@ Index: openssh-8.9p1/cipher.h
  struct sshcipher_ctx {
  	int	plaintext;
  	int	encrypt;
-Index: openssh-8.9p1/kex.c
+Index: openssh-10.3p1/kex.c
 ===================================================================
---- openssh-8.9p1.orig/kex.c
-+++ openssh-8.9p1/kex.c
-@@ -62,6 +62,7 @@
+--- openssh-10.3p1.orig/kex.c
++++ openssh-10.3p1/kex.c
+@@ -59,6 +59,7 @@
  #include "sshbuf.h"
  #include "digest.h"
  #include "xmalloc.h"
@@ -946,7 +946,7 @@ Index: openssh-8.9p1/kex.c
  
  /* prototype */
  static int kex_choose_conf(struct ssh *, uint32_t seq);
-@@ -879,12 +880,16 @@ kex_start_rekex(struct ssh *ssh)
+@@ -801,12 +802,16 @@ kex_start_rekex(struct ssh *ssh)
  }
  
  static int
@@ -965,7 +965,7 @@ Index: openssh-8.9p1/kex.c
  	if ((enc->cipher = cipher_by_name(name)) == NULL) {
  		error_f("unsupported cipher %s", name);
  		free(name);
-@@ -905,8 +910,12 @@ choose_mac(struct ssh *ssh, struct sshma
+@@ -827,8 +832,12 @@ choose_mac(struct ssh *ssh, struct sshma
  {
  	char *name = match_list(client, server, NULL);
  
@@ -979,7 +979,7 @@ Index: openssh-8.9p1/kex.c
  	if (mac_setup(mac, name) < 0) {
  		error_f("unsupported MAC %s", name);
  		free(name);
-@@ -919,12 +928,16 @@ choose_mac(struct ssh *ssh, struct sshma
+@@ -841,12 +850,16 @@ choose_mac(struct ssh *ssh, struct sshma
  }
  
  static int
@@ -998,7 +998,7 @@ Index: openssh-8.9p1/kex.c
  #ifdef WITH_ZLIB
  	if (strcmp(name, "zlib@openssh.com") == 0) {
  		comp->type = COMP_DELAYED;
-@@ -1087,7 +1100,7 @@ kex_choose_conf(struct ssh *ssh)
+@@ -1010,7 +1023,7 @@ kex_choose_conf(struct ssh *ssh, uint32_
  		nenc  = ctos ? PROPOSAL_ENC_ALGS_CTOS  : PROPOSAL_ENC_ALGS_STOC;
  		nmac  = ctos ? PROPOSAL_MAC_ALGS_CTOS  : PROPOSAL_MAC_ALGS_STOC;
  		ncomp = ctos ? PROPOSAL_COMP_ALGS_CTOS : PROPOSAL_COMP_ALGS_STOC;
@@ -1007,7 +1007,7 @@ Index: openssh-8.9p1/kex.c
  		    sprop[nenc])) != 0) {
  			kex->failed_choice = peer[nenc];
  			peer[nenc] = NULL;
-@@ -1102,7 +1115,7 @@ kex_choose_conf(struct ssh *ssh)
+@@ -1025,7 +1038,7 @@ kex_choose_conf(struct ssh *ssh, uint32_
  			peer[nmac] = NULL;
  			goto out;
  		}
@@ -1016,7 +1016,7 @@ Index: openssh-8.9p1/kex.c
  		    sprop[ncomp])) != 0) {
  			kex->failed_choice = peer[ncomp];
  			peer[ncomp] = NULL;
-@@ -1125,6 +1138,10 @@ kex_choose_conf(struct ssh *ssh)
+@@ -1048,6 +1061,10 @@ kex_choose_conf(struct ssh *ssh, uint32_
  		dh_need = MAXIMUM(dh_need, newkeys->enc.block_size);
  		dh_need = MAXIMUM(dh_need, newkeys->enc.iv_len);
  		dh_need = MAXIMUM(dh_need, newkeys->mac.key_len);
@@ -1027,7 +1027,7 @@ Index: openssh-8.9p1/kex.c
  	}
  	/* XXX need runden? */
  	kex->we_need = need;
-@@ -1292,6 +1309,36 @@ dump_digest(const char *msg, const u_cha
+@@ -1215,6 +1232,36 @@ dump_digest(const char *msg, const u_cha
  }
  #endif
  
@@ -1064,11 +1064,11 @@ Index: openssh-8.9p1/kex.c
  /*
   * Send a plaintext error message to the peer, suffixed by \r\n.
   * Only used during banner exchange, and there only for the server.
-Index: openssh-8.9p1/kex.h
+Index: openssh-10.3p1/kex.h
 ===================================================================
---- openssh-8.9p1.orig/kex.h
-+++ openssh-8.9p1/kex.h
-@@ -233,6 +233,8 @@ int	 kexgss_client(struct ssh *);
+--- openssh-10.3p1.orig/kex.h
++++ openssh-10.3p1/kex.h
+@@ -256,6 +256,8 @@ int	 kexgss_client(struct ssh *);
  int	 kexgss_server(struct ssh *);
  #endif
  
@@ -1077,11 +1077,11 @@ Index: openssh-8.9p1/kex.h
  int	 kex_dh_keypair(struct kex *);
  int	 kex_dh_enc(struct kex *, const struct sshbuf *, struct sshbuf **,
      struct sshbuf **);
-Index: openssh-8.9p1/mac.c
+Index: openssh-10.3p1/mac.c
 ===================================================================
---- openssh-8.9p1.orig/mac.c
-+++ openssh-8.9p1/mac.c
-@@ -277,6 +277,20 @@ mac_clear(struct sshmac *mac)
+--- openssh-10.3p1.orig/mac.c
++++ openssh-10.3p1/mac.c
+@@ -268,6 +268,20 @@ mac_clear(struct sshmac *mac)
  	mac->umac_ctx = NULL;
  }
  
@@ -1102,22 +1102,22 @@ Index: openssh-8.9p1/mac.c
  /* XXX copied from ciphers_valid */
  #define	MAC_SEP	","
  int
-Index: openssh-8.9p1/mac.h
+Index: openssh-10.3p1/mac.h
 ===================================================================
---- openssh-8.9p1.orig/mac.h
-+++ openssh-8.9p1/mac.h
-@@ -49,5 +49,6 @@ int	 mac_compute(struct sshmac *, u_int3
- int	 mac_check(struct sshmac *, u_int32_t, const u_char *, size_t,
+--- openssh-10.3p1.orig/mac.h
++++ openssh-10.3p1/mac.h
+@@ -49,5 +49,6 @@ int	 mac_compute(struct sshmac *, uint32
+ int	 mac_check(struct sshmac *, uint32_t, const u_char *, size_t,
      const u_char *, size_t);
  void	 mac_clear(struct sshmac *);
 +void	 mac_destroy(struct sshmac *);
  
  #endif /* SSHMAC_H */
-Index: openssh-8.9p1/monitor.c
+Index: openssh-10.3p1/monitor.c
 ===================================================================
---- openssh-8.9p1.orig/monitor.c
-+++ openssh-8.9p1/monitor.c
-@@ -93,6 +93,7 @@
+--- openssh-10.3p1.orig/monitor.c
++++ openssh-10.3p1/monitor.c
+@@ -83,6 +83,7 @@
  #include "compat.h"
  #include "ssh2.h"
  #include "authfd.h"
@@ -1125,7 +1125,7 @@ Index: openssh-8.9p1/monitor.c
  #include "match.h"
  #include "ssherr.h"
  #include "sk-api.h"
-@@ -107,6 +108,8 @@ extern u_int utmp_len;
+@@ -100,6 +101,8 @@ extern struct sshbuf *loginmsg;
  extern struct include_list includes;
  extern struct sshauthopt *auth_opts; /* XXX move to permanent ssh->authctxt? */
  
@@ -1134,7 +1134,7 @@ Index: openssh-8.9p1/monitor.c
  /* State exported from the child */
  static struct sshbuf *child_state;
  
-@@ -152,6 +155,11 @@ int mm_answer_gss_updatecreds(struct ssh
+@@ -142,6 +145,11 @@ int mm_answer_gss_updatecreds(struct ssh
  #ifdef SSH_AUDIT_EVENTS
  int mm_answer_audit_event(struct ssh *, int, struct sshbuf *);
  int mm_answer_audit_command(struct ssh *, int, struct sshbuf *);
@@ -1146,7 +1146,7 @@ Index: openssh-8.9p1/monitor.c
  #endif
  
  static Authctxt *authctxt;
-@@ -207,6 +215,10 @@ struct mon_table mon_dispatch_proto20[]
+@@ -202,6 +210,10 @@ struct mon_table mon_dispatch_proto20[]
  #endif
  #ifdef SSH_AUDIT_EVENTS
      {MONITOR_REQ_AUDIT_EVENT, MON_PERMIT, mm_answer_audit_event},
@@ -1157,7 +1157,7 @@ Index: openssh-8.9p1/monitor.c
  #endif
  #ifdef BSD_AUTH
      {MONITOR_REQ_BSDAUTHQUERY, MON_ISAUTH, mm_answer_bsdauthquery},
-@@ -241,6 +253,11 @@ struct mon_table mon_dispatch_postauth20
+@@ -237,6 +249,11 @@ struct mon_table mon_dispatch_postauth20
  #ifdef SSH_AUDIT_EVENTS
      {MONITOR_REQ_AUDIT_EVENT, MON_PERMIT, mm_answer_audit_event},
      {MONITOR_REQ_AUDIT_COMMAND, MON_PERMIT, mm_answer_audit_command},
@@ -1169,7 +1169,7 @@ Index: openssh-8.9p1/monitor.c
  #endif
      {0, 0, NULL}
  };
-@@ -1419,8 +1436,10 @@ mm_answer_keyverify(struct ssh *ssh, int
+@@ -1570,8 +1587,10 @@ mm_answer_keyverify(struct ssh *ssh, int
  	int r, ret, req_presence = 0, req_verify = 0, valid_data = 0;
  	int encoded_ret;
  	struct sshkey_sig_details *sig_details = NULL;
@@ -1181,7 +1181,7 @@ Index: openssh-8.9p1/monitor.c
  	    (r = sshbuf_get_string_direct(m, &signature, &signaturelen)) != 0 ||
  	    (r = sshbuf_get_string_direct(m, &data, &datalen)) != 0 ||
  	    (r = sshbuf_get_cstring(m, &sigalg, NULL)) != 0)
-@@ -1429,6 +1448,8 @@ mm_answer_keyverify(struct ssh *ssh, int
+@@ -1580,6 +1599,8 @@ mm_answer_keyverify(struct ssh *ssh, int
  	if (hostbased_cuser == NULL || hostbased_chost == NULL ||
  	  !monitor_allowed_key(blob, bloblen))
  		fatal_f("bad key, not previously allowed");
@@ -1190,7 +1190,7 @@ Index: openssh-8.9p1/monitor.c
  
  	/* Empty signature algorithm means NULL. */
  	if (*sigalg == '\0') {
-@@ -1444,14 +1465,19 @@ mm_answer_keyverify(struct ssh *ssh, int
+@@ -1595,14 +1616,19 @@ mm_answer_keyverify(struct ssh *ssh, int
  	case MM_USERKEY:
  		valid_data = monitor_valid_userblob(ssh, data, datalen);
  		auth_method = "publickey";
@@ -1210,7 +1210,7 @@ Index: openssh-8.9p1/monitor.c
  		break;
  	}
  	if (!valid_data)
-@@ -1463,8 +1489,6 @@ mm_answer_keyverify(struct ssh *ssh, int
+@@ -1614,8 +1640,6 @@ mm_answer_keyverify(struct ssh *ssh, int
  	    SSH_FP_DEFAULT)) == NULL)
  		fatal_f("sshkey_fingerprint failed");
  
@@ -1219,7 +1219,7 @@ Index: openssh-8.9p1/monitor.c
  	debug3_f("%s %s signature using %s %s%s%s", auth_method,
  	    sshkey_type(key), sigalg == NULL ? "default" : sigalg,
  	    (ret == 0) ? "verified" : "unverified",
-@@ -1552,13 +1576,19 @@ mm_record_login(struct ssh *ssh, Session
+@@ -1703,13 +1727,19 @@ mm_record_login(struct ssh *ssh, Session
  }
  
  static void
@@ -1240,7 +1240,7 @@ Index: openssh-8.9p1/monitor.c
  	session_unused(s->self);
  }
  
-@@ -1625,7 +1655,7 @@ mm_answer_pty(struct ssh *ssh, int sock,
+@@ -1776,7 +1806,7 @@ mm_answer_pty(struct ssh *ssh, int sock,
  
   error:
  	if (s != NULL)
@@ -1249,7 +1249,7 @@ Index: openssh-8.9p1/monitor.c
  	if ((r = sshbuf_put_u32(m, 0)) != 0)
  		fatal_fr(r, "assemble 0");
  	mm_request_send(sock, MONITOR_ANS_PTY, m);
-@@ -1644,7 +1674,7 @@ mm_answer_pty_cleanup(struct ssh *ssh, i
+@@ -1795,7 +1825,7 @@ mm_answer_pty_cleanup(struct ssh *ssh, i
  	if ((r = sshbuf_get_cstring(m, &tty, NULL)) != 0)
  		fatal_fr(r, "parse tty");
  	if ((s = session_by_tty(tty)) != NULL)
@@ -1258,7 +1258,7 @@ Index: openssh-8.9p1/monitor.c
  	sshbuf_reset(m);
  	free(tty);
  	return (0);
-@@ -1666,6 +1696,8 @@ mm_answer_term(struct ssh *ssh, int sock
+@@ -1817,6 +1847,8 @@ mm_answer_term(struct ssh *ssh, int sock
  		sshpam_cleanup();
  #endif
  
@@ -1267,7 +1267,7 @@ Index: openssh-8.9p1/monitor.c
  	while (waitpid(pmonitor->m_pid, &status, 0) == -1)
  		if (errno != EINTR)
  			exit(1);
-@@ -1712,12 +1744,47 @@ mm_answer_audit_command(struct ssh *ssh,
+@@ -1863,12 +1895,47 @@ mm_answer_audit_command(struct ssh *ssh,
  {
  	char *cmd;
  	int r;
@@ -1316,7 +1316,7 @@ Index: openssh-8.9p1/monitor.c
  	free(cmd);
  	return (0);
  }
-@@ -1789,6 +1856,7 @@ monitor_apply_keystate(struct ssh *ssh,
+@@ -1941,6 +2008,7 @@ monitor_apply_keystate(struct ssh *ssh,
  void
  mm_get_keystate(struct ssh *ssh, struct monitor *pmonitor)
  {
@@ -1324,7 +1324,7 @@ Index: openssh-8.9p1/monitor.c
  	debug3_f("Waiting for new keys");
  
  	if ((child_state = sshbuf_new()) == NULL)
-@@ -1796,6 +1864,18 @@ mm_get_keystate(struct ssh *ssh, struct
+@@ -1948,6 +2016,18 @@ mm_get_keystate(struct ssh *ssh, struct
  	mm_request_receive_expect(pmonitor->m_sendfd, MONITOR_REQ_KEYEXPORT,
  	    child_state);
  	debug3_f("GOT new keys");
@@ -1343,7 +1343,7 @@ Index: openssh-8.9p1/monitor.c
  }
  
  
-@@ -2073,3 +2153,102 @@ mm_answer_gss_updatecreds(struct ssh *ss
+@@ -2229,3 +2309,102 @@ mm_answer_gss_updatecreds(struct ssh *ss
  
  #endif /* GSSAPI */
  
@@ -1446,11 +1446,11 @@ Index: openssh-8.9p1/monitor.c
 +	return 0;
 +}
 +#endif /* SSH_AUDIT_EVENTS */
-Index: openssh-8.9p1/monitor.h
+Index: openssh-10.3p1/monitor.h
 ===================================================================
---- openssh-8.9p1.orig/monitor.h
-+++ openssh-8.9p1/monitor.h
-@@ -61,7 +61,13 @@ enum monitor_reqtype {
+--- openssh-10.3p1.orig/monitor.h
++++ openssh-10.3p1/monitor.h
+@@ -63,7 +63,13 @@ enum monitor_reqtype {
  	MONITOR_REQ_PAM_QUERY = 106, MONITOR_ANS_PAM_QUERY = 107,
  	MONITOR_REQ_PAM_RESPOND = 108, MONITOR_ANS_PAM_RESPOND = 109,
  	MONITOR_REQ_PAM_FREE_CTX = 110, MONITOR_ANS_PAM_FREE_CTX = 111,
@@ -1465,11 +1465,11 @@ Index: openssh-8.9p1/monitor.h
  
  	MONITOR_REQ_GSSSIGN = 150, MONITOR_ANS_GSSSIGN = 151,
  	MONITOR_REQ_GSSUPCREDS = 152, MONITOR_ANS_GSSUPCREDS = 153,
-Index: openssh-8.9p1/monitor_wrap.c
+Index: openssh-10.3p1/monitor_wrap.c
 ===================================================================
---- openssh-8.9p1.orig/monitor_wrap.c
-+++ openssh-8.9p1/monitor_wrap.c
-@@ -499,7 +499,7 @@ mm_key_allowed(enum mm_keytype type, con
+--- openssh-10.3p1.orig/monitor_wrap.c
++++ openssh-10.3p1/monitor_wrap.c
+@@ -577,7 +577,7 @@ mm_key_allowed(enum mm_keytype type, con
   */
  
  int
@@ -1478,7 +1478,7 @@ Index: openssh-8.9p1/monitor_wrap.c
      const u_char *data, size_t datalen, const char *sigalg, u_int compat,
      struct sshkey_sig_details **sig_detailsp)
  {
-@@ -515,7 +515,8 @@ mm_sshkey_verify(const struct sshkey *ke
+@@ -593,7 +593,8 @@ mm_sshkey_verify(const struct sshkey *ke
  		*sig_detailsp = NULL;
  	if ((m = sshbuf_new()) == NULL)
  		fatal_f("sshbuf_new failed");
@@ -1488,7 +1488,7 @@ Index: openssh-8.9p1/monitor_wrap.c
  	    (r = sshbuf_put_string(m, sig, siglen)) != 0 ||
  	    (r = sshbuf_put_string(m, data, datalen)) != 0 ||
  	    (r = sshbuf_put_cstring(m, sigalg == NULL ? "" : sigalg)) != 0)
-@@ -548,6 +549,20 @@ mm_sshkey_verify(const struct sshkey *ke
+@@ -626,6 +627,20 @@ mm_sshkey_verify(const struct sshkey *ke
  	return 0;
  }
  
@@ -1509,7 +1509,7 @@ Index: openssh-8.9p1/monitor_wrap.c
  void
  mm_send_keystate(struct ssh *ssh, struct monitor *monitor)
  {
-@@ -900,11 +915,12 @@ mm_audit_event(struct ssh *ssh, ssh_audi
+@@ -1042,11 +1057,12 @@ mm_audit_event(struct ssh *ssh, ssh_audi
  	sshbuf_free(m);
  }
  
@@ -1524,7 +1524,7 @@ Index: openssh-8.9p1/monitor_wrap.c
  
  	debug3_f("entering command %s", command);
  
-@@ -914,6 +930,30 @@ mm_audit_run_command(const char *command
+@@ -1056,6 +1072,30 @@ mm_audit_run_command(const char *command
  		fatal_fr(r, "buffer error");
  
  	mm_request_send(pmonitor->m_recvfd, MONITOR_REQ_AUDIT_COMMAND, m);
@@ -1555,7 +1555,7 @@ Index: openssh-8.9p1/monitor_wrap.c
  	sshbuf_free(m);
  }
  #endif /* SSH_AUDIT_EVENTS */
-@@ -1217,3 +1257,83 @@ mm_ssh_gssapi_update_creds(ssh_gssapi_cc
+@@ -1304,3 +1344,83 @@ server_get_connection_info(struct ssh *s
  	return &ci;
  }
  
@@ -1639,11 +1639,11 @@ Index: openssh-8.9p1/monitor_wrap.c
 +	sshbuf_free(m);
 +}
 +#endif /* SSH_AUDIT_EVENTS */
-Index: openssh-8.9p1/monitor_wrap.h
+Index: openssh-10.3p1/monitor_wrap.h
 ===================================================================
---- openssh-8.9p1.orig/monitor_wrap.h
-+++ openssh-8.9p1/monitor_wrap.h
-@@ -58,7 +58,9 @@ int mm_user_key_allowed(struct ssh *, st
+--- openssh-10.3p1.orig/monitor_wrap.h
++++ openssh-10.3p1/monitor_wrap.h
+@@ -60,7 +60,9 @@ int mm_user_key_allowed(struct ssh *ssh,
      struct sshauthopt **);
  int mm_hostbased_key_allowed(struct ssh *, struct passwd *, const char *,
      const char *, struct sshkey *);
@@ -1654,7 +1654,7 @@ Index: openssh-8.9p1/monitor_wrap.h
      const u_char *, size_t, const char *, u_int, struct sshkey_sig_details **);
  
  void mm_decode_activate_server_options(struct ssh *ssh, struct sshbuf *m);
-@@ -83,7 +85,12 @@ void mm_sshpam_free_ctx(void *);
+@@ -87,7 +89,12 @@ void mm_sshpam_free_ctx(void *);
  #ifdef SSH_AUDIT_EVENTS
  #include "audit.h"
  void mm_audit_event(struct ssh *, ssh_audit_event_t);
@@ -1668,11 +1668,11 @@ Index: openssh-8.9p1/monitor_wrap.h
  #endif
  
  struct Session;
-Index: openssh-8.9p1/packet.c
+Index: openssh-10.3p1/packet.c
 ===================================================================
---- openssh-8.9p1.orig/packet.c
-+++ openssh-8.9p1/packet.c
-@@ -81,6 +81,7 @@
+--- openssh-10.3p1.orig/packet.c
++++ openssh-10.3p1/packet.c
+@@ -77,6 +77,7 @@
  #endif
  
  #include "xmalloc.h"
@@ -1680,7 +1680,7 @@ Index: openssh-8.9p1/packet.c
  #include "compat.h"
  #include "ssh2.h"
  #include "cipher.h"
-@@ -506,6 +507,13 @@ ssh_packet_get_connection_out(struct ssh
+@@ -511,6 +512,13 @@ ssh_packet_get_connection_out(struct ssh
  	return ssh->state->connection_out;
  }
  
@@ -1694,7 +1694,7 @@ Index: openssh-8.9p1/packet.c
  /*
   * Returns the IP-address of the remote host as a string.  The returned
   * string must not be freed.
-@@ -579,22 +587,19 @@ ssh_packet_rdomain_in(struct ssh *ssh)
+@@ -681,22 +689,19 @@ ssh_packet_close_internal(struct ssh *ss
  	struct session_state *state = ssh->state;
  	u_int mode;
  	struct packet *p;
@@ -1722,7 +1722,7 @@ Index: openssh-8.9p1/packet.c
  	while ((p = TAILQ_FIRST(&state->outgoing))) {
  		sshbuf_free(p->payload);
  		TAILQ_REMOVE(&state->outgoing, p, next);
-@@ -634,8 +639,18 @@ ssh_packet_close_internal(struct ssh *ss
+@@ -737,8 +742,18 @@ ssh_packet_close_internal(struct ssh *ss
  #endif	/* WITH_ZLIB */
  	cipher_free(state->send_context);
  	cipher_free(state->receive_context);
@@ -1741,7 +1741,7 @@ Index: openssh-8.9p1/packet.c
  		free(ssh->local_ipaddr);
  		ssh->local_ipaddr = NULL;
  		free(ssh->remote_ipaddr);
-@@ -892,6 +913,7 @@ ssh_set_newkeys(struct ssh *ssh, int mod
+@@ -1004,6 +1019,7 @@ ssh_set_newkeys(struct ssh *ssh, int mod
  		    (unsigned long long)state->p_send.bytes,
  		    (unsigned long long)state->p_send.blocks);
  		kex_free_newkeys(state->newkeys[mode]);
@@ -1749,7 +1749,7 @@ Index: openssh-8.9p1/packet.c
  		state->newkeys[mode] = NULL;
  	}
  	/* note that both bytes and the seqnr are not reset */
-@@ -2183,6 +2205,72 @@ ssh_packet_get_output(struct ssh *ssh)
+@@ -2408,6 +2424,73 @@ ssh_packet_get_output(struct ssh *ssh)
  	return (void *)ssh->state->output;
  }
  
@@ -1794,11 +1794,12 @@ Index: openssh-8.9p1/packet.c
 +		sshbuf_free(state->compression_buffer);
 +		state->compression_buffer = NULL;
 +	}
++	/* non-owning pointer into newkeys[MODE_IN]->mac; owner frees it */
++	state->packet_discard_mac = NULL;
 +	newkeys_destroy_and_free(state->newkeys[MODE_IN]);
 +	state->newkeys[MODE_IN] = NULL;
 +	newkeys_destroy_and_free(state->newkeys[MODE_OUT]);
 +	state->newkeys[MODE_OUT] = NULL;
-+	mac_destroy(state->packet_discard_mac);
 +//	TAILQ_HEAD(, packet) outgoing;
 +//	memset(state, 0, sizeof(state));
 +}
@@ -1822,30 +1823,21 @@ Index: openssh-8.9p1/packet.c
  /* Reset after_authentication and reset compression in post-auth privsep */
  static int
  ssh_packet_set_postauth(struct ssh *ssh)
-Index: openssh-8.9p1/packet.h
+Index: openssh-10.3p1/packet.h
 ===================================================================
---- openssh-8.9p1.orig/packet.h
-+++ openssh-8.9p1/packet.h
-@@ -220,4 +221,5 @@ const u_char	*sshpkt_ptr(struct ssh *, s
+--- openssh-10.3p1.orig/packet.h
++++ openssh-10.3p1/packet.h
+@@ -226,4 +226,5 @@ char	*connection_info_message(struct ssh
  # undef EC_POINT
  #endif
  
 +void	 packet_destroy_all(struct ssh *, int, int);
  #endif				/* PACKET_H */
-Index: openssh-8.9p1/session.c
+Index: openssh-10.3p1/session.c
 ===================================================================
---- openssh-8.9p1.orig/session.c
-+++ openssh-8.9p1/session.c
-#@@ -135,7 +135,7 @@ extern char *__progname;
-# extern ServerOptions options;
-# extern char *__progname;
-# extern int debug_flag;
-#-extern void destroy_sensitive_data(void);
-#+extern void destroy_sensitive_data(struct ssh *);
-# extern struct sshbuf *loginmsg;
-# extern struct sshauthopt *auth_opts;
-# extern char *tun_fwd_ifnames; /* serverloop.c */
-@@ -644,6 +644,14 @@ do_exec_pty(struct ssh *ssh, Session *s,
+--- openssh-10.3p1.orig/session.c
++++ openssh-10.3p1/session.c
+@@ -617,6 +617,14 @@ do_exec_pty(struct ssh *ssh, Session *s,
  	/* Parent.  Close the slave side of the pseudo tty. */
  	close(ttyfd);
  
@@ -1860,7 +1852,7 @@ Index: openssh-8.9p1/session.c
  	/* Enter interactive session. */
  	s->ptymaster = ptymaster;
  	session_set_fds(ssh, s, ptyfd, fdout, -1, 1, 1);
-@@ -736,15 +744,19 @@ do_exec(struct ssh *ssh, Session *s, con
+@@ -679,15 +687,19 @@ do_exec(struct ssh *ssh, Session *s, con
  	    s->self);
  
  #ifdef SSH_AUDIT_EVENTS
@@ -1882,7 +1874,9 @@ Index: openssh-8.9p1/session.c
  #endif
  	if (s->ttyfd != -1)
  		ret = do_exec_pty(ssh, s, command);
-@@ -1550,6 +1562,9 @@ do_child(struct ssh *ssh, Session *s, co
+@@ -1490,8 +1502,11 @@ do_child(struct ssh *ssh, Session *s, co
+ 
+ 	sshpkt_fmt_connection_id(ssh, remote_id, sizeof(remote_id));
  
 -	/* remove keys from memory */
 -	ssh_packet_clear_keys(ssh);
@@ -1894,7 +1888,7 @@ Index: openssh-8.9p1/session.c
  
  	/* Force a password change */
  	if (s->authctxt->force_pwchange) {
-@@ -1763,6 +1778,9 @@ session_unused(int id)
+@@ -1700,6 +1715,9 @@ session_unused(int id)
  	sessions[id].ttyfd = -1;
  	sessions[id].ptymaster = -1;
  	sessions[id].x11_chanids = NULL;
@@ -1904,7 +1898,7 @@ Index: openssh-8.9p1/session.c
  	sessions[id].next_unused = sessions_first_unused;
  	sessions_first_unused = id;
  }
-@@ -1843,6 +1861,19 @@ session_open(Authctxt *authctxt, int cha
+@@ -1779,6 +1797,19 @@ session_open(Authctxt *authctxt, int cha
  }
  
  Session *
@@ -1924,7 +1918,7 @@ Index: openssh-8.9p1/session.c
  session_by_tty(char *tty)
  {
  	int i;
-@@ -2450,6 +2481,32 @@ session_exit_message(struct ssh *ssh, Se
+@@ -2396,6 +2427,32 @@ session_exit_message(struct ssh *ssh, Se
  		chan_write_failed(ssh, c);
  }
  
@@ -1957,7 +1951,7 @@ Index: openssh-8.9p1/session.c
  void
  session_close(struct ssh *ssh, Session *s)
  {
-@@ -2463,6 +2520,10 @@ session_close(struct ssh *ssh, Session *
+@@ -2437,6 +2494,10 @@ session_close(struct ssh *ssh, Session *
  
  	if (s->ttyfd != -1)
  		session_pty_cleanup(s);
@@ -1968,7 +1962,7 @@ Index: openssh-8.9p1/session.c
  	free(s->term);
  	free(s->display);
  	free(s->x11_chanids);
-@@ -2537,14 +2598,14 @@ session_close_by_channel(struct ssh *ssh
+@@ -2513,14 +2574,14 @@ session_close_by_channel(struct ssh *ssh
  }
  
  void
@@ -1985,7 +1979,7 @@ Index: openssh-8.9p1/session.c
  			else
  				session_close(ssh, s);
  		}
-@@ -2671,6 +2732,15 @@ do_authenticated2(struct ssh *ssh, Authc
+@@ -2646,6 +2707,15 @@ do_authenticated2(struct ssh *ssh, Authc
  	server_loop2(ssh, authctxt);
  }
  
@@ -2001,7 +1995,7 @@ Index: openssh-8.9p1/session.c
  void
  do_cleanup(struct ssh *ssh, Authctxt *authctxt)
  {
-@@ -2734,7 +2804,7 @@ do_cleanup(struct ssh *ssh, Authctxt *au
+@@ -2709,7 +2779,7 @@ do_cleanup(struct ssh *ssh, Authctxt *au
  	 * or if running in monitor.
  	 */
  	if (mm_is_monitor())
@@ -2010,10 +2004,10 @@ Index: openssh-8.9p1/session.c
  }
  
  /* Return a name for the remote host that fits inside utmp_size */
-Index: openssh-8.9p1/session.h
+Index: openssh-10.3p1/session.h
 ===================================================================
---- openssh-8.9p1.orig/session.h
-+++ openssh-8.9p1/session.h
+--- openssh-10.3p1.orig/session.h
++++ openssh-10.3p1/session.h
 @@ -61,6 +61,12 @@ struct Session {
  		char	*name;
  		char	*val;
@@ -2041,11 +2035,11 @@ Index: openssh-8.9p1/session.h
  Session	*session_by_tty(char *);
  void	 session_close(struct ssh *, Session *);
  void	 do_setusercontext(struct passwd *);
-Index: openssh-8.9p1/sshd.c
+Index: openssh-10.3p1/sshd.c
 ===================================================================
---- openssh-8.9p1.orig/sshd.c
-+++ openssh-8.9p1/sshd.c
-@@ -219,6 +219,15 @@ close_listen_socks(void)
+--- openssh-10.3p1.orig/sshd.c
++++ openssh-10.3p1/sshd.c
+@@ -212,6 +212,15 @@ close_listen_socks(void)
  	num_listen_socks = 0;
  }
  
@@ -2061,7 +2055,7 @@ Index: openssh-8.9p1/sshd.c
  /* Allocate and initialise the children array */
  static void
  child_alloc(void)
-@@ -897,6 +906,7 @@ server_accept_loop(int *sock_in, int *so
+@@ -966,6 +975,7 @@ server_accept_loop(int *sock_in, int *so
  		if (received_sigterm) {
  			logit("Received signal %d; terminating.",
  			    (int) received_sigterm);
@@ -2069,11 +2063,11 @@ Index: openssh-8.9p1/sshd.c
  			close_listen_socks();
  			if (options.pid_file != NULL)
  				unlink(options.pid_file);
-Index: openssh-8.9p1/sshd-session.c
+Index: openssh-10.3p1/sshd-session.c
 ===================================================================
---- openssh-8.9p1.orig/sshd-session.c
-+++ openssh-8.9p1/sshd-session.c
-@@ -125,6 +125,7 @@
+--- openssh-10.3p1.orig/sshd-session.c
++++ openssh-10.3p1/sshd-session.c
+@@ -89,6 +89,7 @@
  #include "ssh-gss.h"
  #endif
  #include "monitor_wrap.h"
@@ -2081,7 +2075,7 @@ Index: openssh-8.9p1/sshd-session.c
  #include "auth-options.h"
  #include "version.h"
  #include "ssherr.h"
-@@ -265,8 +266,8 @@ struct sshbuf *loginmsg;
+@@ -181,8 +182,8 @@ struct include_list includes = TAILQ_HEA
  struct sshbuf *loginmsg;
  
  /* Prototypes for various functions defined later in this file. */
@@ -2092,7 +2086,7 @@ Index: openssh-8.9p1/sshd-session.c
  
  /* XXX reduce to stub once postauth split */
  int
-@@ -382,18 +383,40 @@ grace_alarm_handler(int sig)
+@@ -223,18 +224,40 @@ grace_alarm_handler(int sig)
  	_exit(EXIT_LOGIN_GRACE);
  }
  
@@ -2136,7 +2130,7 @@ Index: openssh-8.9p1/sshd-session.c
  			sshkey_free(sensitive_data.host_certificates[i]);
  			sensitive_data.host_certificates[i] = NULL;
  		}
-@@ -402,20 +430,38 @@ destroy_sensitive_data(void)
+@@ -243,20 +266,38 @@ destroy_sensitive_data(void)
  
  /* Demote private to public keys for network child */
  void
@@ -2176,43 +2170,7 @@ Index: openssh-8.9p1/sshd-session.c
  		}
  		/* Certs do not need demotion */
  	}
-#@@ -443,7 +489,7 @@ reseed_prngs(void)
-# }
-# 
-# static void
-#-privsep_preauth_child(void)
-#+privsep_preauth_child(struct ssh *ssh)
-# {
-# 	gid_t gidset[1];
-# 
-#@@ -458,7 +504,7 @@ privsep_preauth_child(void)
-# 	reseed_prngs();
-# 
-# 	/* Demote the private keys to public keys. */
-#-	demote_sensitive_data();
-#+	demote_sensitive_data(ssh);
-# 
-# 	/* Demote the child */
-# 	if (privsep_chroot) {
-#@@ -493,7 +539,7 @@ privsep_preauth(struct ssh *ssh)
-# 	pmonitor->m_pkex = &ssh->kex;
-# 
-# 	box = ssh_sandbox_init(pmonitor);
-#-	pid = fork();
-#+	pmonitor->m_pid = pid = fork();
-# 	if (pid == -1) {
-# 		fatal("fork of unprivileged child failed");
-# 	} else if (pid != 0) {
-#@@ -538,7 +584,7 @@ privsep_preauth(struct ssh *ssh)
-# 		/* Arrange for logging to be sent to the monitor */
-# 		set_log_handler(mm_log_handler, pmonitor);
-# 
-#-		privsep_preauth_child();
-#+		privsep_preauth_child(ssh);
-# 		setproctitle("%s", "[net]");
-# 		if (box != NULL)
-# 			ssh_sandbox_child(box);
-@@ -582,7 +628,7 @@ privsep_postauth(struct ssh *ssh, Authct
+@@ -408,7 +449,7 @@ privsep_postauth(struct ssh *ssh, Authct
  	pmonitor->m_sendfd = -1;
  
  	/* Demote the private keys to public keys. */
@@ -2221,7 +2179,7 @@ Index: openssh-8.9p1/sshd-session.c
  
  	reseed_prngs();
  
-@@ -1352,6 +1398,9 @@ main(int ac, char **av)
+@@ -1298,6 +1339,9 @@ main(int ac, char **av)
  	do_authenticated(ssh, authctxt);
  
  	/* The connection has been terminated. */
@@ -2231,7 +2189,7 @@ Index: openssh-8.9p1/sshd-session.c
  	ssh_packet_get_bytes(ssh, &ibytes, &obytes);
  	verbose("Transferred: sent %llu, received %llu bytes",
  	    (unsigned long long)obytes, (unsigned long long)ibytes);
-@@ -1397,6 +1446,15 @@ do_ssh2_kex(struct ssh *ssh)
+@@ -1343,6 +1387,15 @@ sshd_hostkey_sign(struct ssh *ssh, struc
  void
  cleanup_exit(int i)
  {
@@ -2244,10 +2202,10 @@ Index: openssh-8.9p1/sshd-session.c
 +	if (in_cleanup)
 +		_exit(i);
 +	in_cleanup = 1;
- 	extern int auth_attempted; /* monitor.c */
- 
  	if (the_active_state != NULL && the_authctxt != NULL) {
-@@ -1413,7 +1471,9 @@ cleanup_exit(int i)
+ 		do_cleanup(the_active_state, the_authctxt);
+ 		if (privsep_is_preauth &&
+@@ -1357,7 +1410,9 @@ cleanup_exit(int i)
  	}
  #ifdef SSH_AUDIT_EVENTS
  	/* done after do_cleanup so it can cancel the PAM auth 'thread' */
@@ -2258,11 +2216,11 @@ Index: openssh-8.9p1/sshd-session.c
  		audit_event(the_active_state, SSH_CONNECTION_ABANDON);
  #endif
  	/* Override default fatal exit value when auth was attempted */
-Index: openssh-8.9p1/sshkey.c
+Index: openssh-10.3p1/sshkey.c
 ===================================================================
---- openssh-8.9p1.orig/sshkey.c
-+++ openssh-8.9p1/sshkey.c
-@@ -35,6 +35,9 @@ sshkey_type_is_valid_ca(int type)
+--- openssh-10.3p1.orig/sshkey.c
++++ openssh-10.3p1/sshkey.c
+@@ -36,6 +36,9 @@
  #include <openssl/evp.h>
  #include <openssl/err.h>
  #include <openssl/pem.h>
@@ -2272,7 +2230,7 @@ Index: openssh-8.9p1/sshkey.c
  #endif
  
  #include "crypto_api.h"
-@@ -400,6 +403,47 @@ sshkey_type_is_valid_ca(int type)
+@@ -475,6 +478,47 @@ sshkey_type_is_valid_ca(int type)
  }
  
  int
@@ -2320,11 +2278,11 @@ Index: openssh-8.9p1/sshkey.c
  sshkey_is_cert(const struct sshkey *k)
  {
  	if (k == NULL)
-Index: openssh-8.9p1/sshkey.h
+Index: openssh-10.3p1/sshkey.h
 ===================================================================
---- openssh-8.9p1.orig/sshkey.h
-+++ openssh-8.9p1/sshkey.h
-@@ -189,6 +189,7 @@ int		 sshkey_shield_private(struct sshke
+--- openssh-10.3p1.orig/sshkey.h
++++ openssh-10.3p1/sshkey.h
+@@ -208,6 +208,7 @@ int		 sshkey_unshield_private(struct ssh
  
  int	 sshkey_type_from_name(const char *);
  int	 sshkey_type_from_shortname(const char *);
