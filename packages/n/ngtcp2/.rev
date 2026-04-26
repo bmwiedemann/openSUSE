@@ -324,4 +324,13 @@
     <comment>- enable openssl support on factory only (jsc#PED-15770)</comment>
     <requestid>1347182</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>833c96050f75488166553cbb9d008f79</srcmd5>
+    <version>1.22.1</version>
+    <time>1777230657</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.22.1 (bsc#1262273, CVE-2026-40170):
+  * Fixes CVE-2026-40170</comment>
+    <requestid>1348327</requestid>
+  </revision>
 </revisionlist>

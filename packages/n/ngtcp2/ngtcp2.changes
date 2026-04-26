@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 21:11:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.22.1 (bsc#1262273, CVE-2026-40170):
+  * Fixes CVE-2026-40170
+
+-------------------------------------------------------------------
 Wed Apr 15 23:08:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - enable openssl support on factory only (jsc#PED-15770)
