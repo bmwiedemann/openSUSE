@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Apr 26 14:08:37 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.50.0:
+  * Add Split detection
+  * Add Developer and Support tools
+  * Add a simple QSL label printing dialog
+  * Add Cabrillo contest export
+  * Add direct labeling of QSL Requested and QSL Received to the QSO
+    context menu
+  * Add DXCC Submission Report
+  * DXC - Search pre-fills the callsign from New Contact if
+    callsign is present
+  * Settings - Add Danger Zone tab with Delete all passwords and
+    QSOs
+  * Mutex-free Omnirig1 and Omnirig2
+  * POTA/SOTA/WWFF/SAT list are download from QLog LOV-repo
+  * Used an external lib for CSV parsing for LOV Download
+  * Import - ADIF import updates DXCC only if it is missing in the
+    QSO
+  * Import - ADIF import does not include the option to update DXCC
+    during the import - no longer needed
+  * Fix Callsign disappearingwhen calling a DX in a split via VFO-B
+  * Fix a rendering issue
+  * Hamlib rigctld switching between VFO A/B doesnt change the band
+    mode - add workaround
+  * Removed AN from the WAC award
+
+-------------------------------------------------------------------
 Sat Mar 21 20:34:44 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.49.1:
