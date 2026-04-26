@@ -13314,7 +13314,7 @@ unsorted:
   - libflatbuffers25_2_10 
   - libflickcurl-devel 
   - libflickcurl0 
-  - libflint22 
+  - libflint23 
   - libflite_cmu_grapheme_lang1 
   - libflite_cmu_grapheme_lex1 
   - libflite_cmu_indic_lang1 
@@ -14041,7 +14041,7 @@ unsorted:
   - libheif-devel 
   - libheif1-32bit 
   - libheinz-devel 
-  - libhfst55 
+  - libhfst56 
   - libhfst_c0 
   - libhfstospell11 
   - libhfstospell11-32bit 
@@ -15192,13 +15192,13 @@ unsorted:
   - libopenblas_serial-devel-32bit 
   - libopenblas_serial0 
   - libopenblas_serial0-32bit 
-  - libopencascade-applicationframework7_9_1 
-  - libopencascade-dataexchange7_9_1 
-  - libopencascade-draw7_9_1 
-  - libopencascade-foundationclasses7_9_1 
-  - libopencascade-modelingalgorithms7_9_1 
-  - libopencascade-modelingdata7_9_1 
-  - libopencascade-visualization7_9_1 
+  - libopencascade-applicationframework7_9_3 
+  - libopencascade-dataexchange7_9_3 
+  - libopencascade-draw7_9_3 
+  - libopencascade-foundationclasses7_9_3 
+  - libopencascade-modelingalgorithms7_9_3 
+  - libopencascade-modelingdata7_9_3 
+  - libopencascade-visualization7_9_3 
   - libopencl-clang16 
   - libopencloudsync-devel 
   - libopencloudsync0 
@@ -15925,7 +15925,7 @@ unsorted:
   - libraw1394-devel-32bit 
   - libraw1394-tools 
   - libraw25-32bit 
-  - libraylib550 
+  - libraylib600 
   - librbd-devel 
   - librbio4 
   - librbl1 
@@ -16409,8 +16409,8 @@ unsorted:
   - libspatialindex6 
   - libspatialite-devel 
   - libspatialite8 
-  - libspdlog1_15 
-  - libspdlog1_15-32bit 
+  - libspdlog1_17 
+  - libspdlog1_17-32bit 
   - libspdylay7 
   - libspectre-devel 
   - libspectre1 
@@ -20200,8 +20200,6 @@ unsorted:
   - nunit-devel 
   - nunit3 
   - nunit3-devel 
-  - nuntius 
-  - nuntius-lang 
   - nuosu-fonts 
   - nuoveXT2-icon-theme 
   - nushell 
@@ -27633,6 +27631,7 @@ unsorted:
   - python311-sip6-devel 
   - python311-siphashc 
   - python311-six 
+  - python311-sklearn-crfsuite 
   - python311-sklearn-pandas 
   - python311-skyfield 
   - python311-slack-sdk 
@@ -27980,6 +27979,7 @@ unsorted:
   - python311-user_agent 
   - python311-userpath 
   - python311-usfm2osis 
+  - python311-uuid-utils 
   - python311-uuid6 
   - python311-uv 
   - python311-uv-build 
@@ -31561,6 +31561,7 @@ unsorted:
   - python313-sip4-devel 
   - python313-sip6-devel 
   - python313-siphashc 
+  - python313-sklearn-crfsuite 
   - python313-sklearn-pandas 
   - python313-skyfield 
   - python313-slack-sdk 
@@ -31916,6 +31917,7 @@ unsorted:
   - python313-user_agent 
   - python313-userpath 
   - python313-usfm2osis 
+  - python313-uuid-utils 
   - python313-uuid6 
   - python313-uv 
   - python313-uv-build 
@@ -35468,7 +35470,9 @@ unsorted:
   - python314-sip6-devel 
   - python314-siphashc 
   - python314-six 
+  - python314-sklearn-crfsuite 
   - python314-sklearn-pandas 
+  - python314-skyfield 
   - python314-slicerator 
   - python314-slimit 
   - python314-slixmpp 
@@ -35811,6 +35815,7 @@ unsorted:
   - python314-user_agent 
   - python314-userpath 
   - python314-usfm2osis 
+  - python314-uuid-utils 
   - python314-uuid6 
   - python314-uv 
   - python314-uv-build 
@@ -38541,6 +38546,7 @@ unsorted:
   - suse-libsgx-tdx-logic-devel 
   - suse-libtdx-attest-devel 
   - suse-prime 
+  - suse-reproducible-builds 
   - suse-sgx-aesm-service 
   - suse-sgx-dcap-pccs 
   - suse-sgx-pck-id-retrieval-tool 
