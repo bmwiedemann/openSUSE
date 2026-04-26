@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 25 21:40:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.38:
+  * Fix type annotation in `SQLModel.__new__`, avoid explicitly
+    returning `Any`.
+  * Fix `tuple_` return type annotation.
+  * Fix typos in `contributing.md`. PR #1842 by @GopalGB.
+  * Remove outdated Python 3.9 tutorial file.
+  * Fix ambiguous phrasing regarding `HeroPublicWithTeam`
+    model.
+  * Handle external links `target=_blank` and CSS automatically
+    in JS and CSS.
+  * Document `.in_()` method. PR #619 by @masylum.
+  * Fix small typos in the documentation. PR #1641
+
+-------------------------------------------------------------------
 Mon Mar 23 22:33:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.37:

@@ -78,4 +78,23 @@
   * Bump typer from 0.23.1 to 0.23.2.</comment>
     <requestid>1343512</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a80c0018fee879691f682d0dd30e3bb0</srcmd5>
+    <version>0.0.38</version>
+    <time>1777230695</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.0.38:
+  * Fix type annotation in `SQLModel.__new__`, avoid explicitly
+    returning `Any`.
+  * Fix `tuple_` return type annotation.
+  * Fix typos in `contributing.md`. PR #1842 by @GopalGB.
+  * Remove outdated Python 3.9 tutorial file.
+  * Fix ambiguous phrasing regarding `HeroPublicWithTeam`
+    model.
+  * Handle external links `target=_blank` and CSS automatically
+    in JS and CSS.
+  * Document `.in_()` method. PR #619 by @masylum.
+  * Fix small typos in the documentation. PR #1641</comment>
+    <requestid>1349299</requestid>
+  </revision>
 </revisionlist>
