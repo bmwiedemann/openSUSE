@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/geoclue/geoclue
 Source0:        %{url}/-/archive/%{version}/geoclue-%{version}.tar.bz2
 Source1:        srvGeoClue.conf
+Source2:        srvGeoClue.tmpfiles
 Source99:       geoclue2-rpmlintrc
 BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
@@ -113,9 +114,16 @@ mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/au
 # conf.d dir needed for drop-in configs (such as used by GNOME)
 install -d %{buildroot}%{_sysconfdir}/geoclue/conf.d
 
+# systemd-tmpfiles config file
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/srvGeoClue.conf
+
 # note: do not use systemd macros for geoclue2.service, they are not meant for dbus unit files.
 %pre -n system-user-srvGeoClue -f srvGeoClue.pre
 %ldconfig_scriptlets
+
+%post -n system-user-srvGeoClue
+%tmpfiles_create %{_tmpfilesdir}/srvGeoClue.conf
 
 %files
 %license COPYING
@@ -144,7 +152,7 @@ install -d %{buildroot}%{_sysconfdir}/geoclue/conf.d
 %{_datadir}/applications/geoclue-demo-agent.desktop
 
 %files -n system-user-srvGeoClue
-%attr(0700,srvGeoClue,root) %{_localstatedir}/lib/srvGeoClue
+%{_tmpfilesdir}/srvGeoClue.conf
 %{_sysusersdir}/system-user-srvGeoClue.conf
 %exclude %{_sysusersdir}/geoclue-sysusers.conf
 

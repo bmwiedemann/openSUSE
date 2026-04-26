@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 22 22:22:37 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Create the home directory for srvGeoClue under /var with
+  tmpfiles.d (jsc#PED-14837).
+
+-------------------------------------------------------------------
 Sun Apr 12 10:56:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.1
