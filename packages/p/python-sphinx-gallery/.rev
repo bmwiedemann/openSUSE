@@ -120,4 +120,21 @@
   * MNT Update jupyterlite-sphinx version in circle CI</comment>
     <requestid>1329536</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5552a4b75118bc9ff00134bf546bff6c</srcmd5>
+    <version>0.21.0</version>
+    <time>1777230695</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.21.0:
+  * Add support for dynamic filtering by tag #1555 (Cadair)
+  * Fix subsection header sanitization when nested_sections=False
+  * Fix generate_gallery_rst when nested_sections=False user
+    provides own index.rst #1549 (lucyleeow)
+  * DOC Add v0.20.0 to CHANGES.rst #1567 (lucyleeow)
+  * DOC Note sphinx bump in changes #1560 (lucyleeow)
+  * DOC Fix typos in nested_sections docs #1547 (lucyleeow)
+  * Small typo on the configuration page of documentation #1537
+  * Update the list of projects #1532 (timhoffm)</comment>
+    <requestid>1349300</requestid>
+  </revision>
 </revisionlist>

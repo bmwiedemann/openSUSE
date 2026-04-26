@@ -18,19 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-gallery
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Sphinx extension that builds an HTML gallery of examples
 License:        BSD-3-Clause
 URL:            https://github.com/sphinx-gallery/sphinx-gallery
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx-gallery/sphinx_gallery-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools_scm >= 7}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module Sphinx >= 4}
+BuildRequires:  %{python_module Sphinx >= 6}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module matplotlib}
@@ -40,7 +41,7 @@ BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-Pillow
-Requires:       python-Sphinx >= 4
+Requires:       python-Sphinx >= 6
 Suggests:       python-numpy
 Suggests:       python-graphviz
 Requires(post): update-alternatives
@@ -78,6 +79,8 @@ donttest+=" or test_dummy_image"
 %python_uninstall_alternative sphinx_gallery_py2jupyter
 
 %files %{python_files}
+%doc README.rst CHANGES.rst
+%license LICENSE
 %python_alternative %{_bindir}/sphinx_gallery_py2jupyter
 %{python_sitelib}/sphinx_gallery
 %{python_sitelib}/sphinx_gallery-%{version}.dist-info
