@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 26 12:51:42 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.24.1:
+  * chore: release v0.24.1 (#2159)
+  * fix: Docker workflow - adapt to new structure (#2163)
+  * Fix asset names (#2161)
+  * Update changelogs
+
+-------------------------------------------------------------------
 Fri Apr 24 12:40:19 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update 001-exclude-octocrab.patch:
