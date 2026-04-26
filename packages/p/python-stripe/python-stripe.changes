@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Apr 25 22:12:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 15.1.0:
+  * #1793 Update generated code
+  * Add support for `balance_report` and
+    `payout_reconciliation_report` on `AccountSession.Component`
+    and `AccountSessionCreateParamsComponent`
+  * Add support for `app_distribution` and `sunbit_payments` on
+    `Account.Capability`, `AccountCreateParamsCapability`, and
+    `AccountModifyParamsCapability`
+  * ⚠ Add support for new values `fee_credit_funding`,
+    `inbound_transfer_reversal`, and `inbound_transfer` on enum
+    `BalanceTransaction.type`
+  * Add support for `sunbit` on `Charge.PaymentMethodDetail`,
+    `ConfirmationToken.PaymentMethodPreview`,
+    `ConfirmationTokenCreateParamsPaymentMethodDatum`,
+    `PaymentAttemptRecord.PaymentMethodDetail`,
+    `PaymentIntentConfirmParamsPaymentMethodDatum`,
+    `PaymentIntentCreateParamsPaymentMethodDatum`,
+    `PaymentIntentModifyParamsPaymentMethodDatum`,
+    `PaymentMethodConfigurationCreateParams`,
+    `PaymentMethodConfigurationModifyParams`,
+    `PaymentMethodConfiguration`, `PaymentMethodCreateParams`,
+    `PaymentMethod`, `PaymentRecord.PaymentMethodDetail`,
+    `SetupIntentConfirmParamsPaymentMethodDatum`,
+    `SetupIntentCreateParamsPaymentMethodDatum`, and
+    `SetupIntentModifyParamsPaymentMethodDatum`
+
+-------------------------------------------------------------------
 Mon Apr 20 10:16:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 15.0.1
