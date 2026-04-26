@@ -914,4 +914,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342954</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>6c0db9dff985a26f15bce649bf515c5c</srcmd5>
+    <version>47.2</version>
+    <time>1777230665</time>
+    <user>anag_factory</user>
+    <comment>Update version</comment>
+    <requestid>1348429</requestid>
+  </revision>
 </revisionlist>
