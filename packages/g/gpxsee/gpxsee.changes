@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Apr 24 19:57:56 CEST 2026 - tumic@gpxsee.org
+
+- Update to version 16.6
+  * Fixed possible buffer overflow in GPI Parser.
+  * Fixed track selection / popup generation.
+  * Added a workaround for a Qt crash on Android.
+  * Multiple UI/UX improvements on Android.
+
+-------------------------------------------------------------------
+Tue Apr 21 06:42:43 CEST 2026 - tumic@gpxsee.org
+
+- Update to version 16.5
+  * Fixed Android menu not displayed when OpenGL is used.
+  * Android menu UI/UX improvements.
+
+-------------------------------------------------------------------
+Sun Apr 19 08:46:20 CEST 2026 - tumic@gpxsee.org
+
+- Update to version 16.4
+  * Main menu redesign on Android.
+
+-------------------------------------------------------------------
+Thu Apr 16 23:26:06 CEST 2026 - tumic@gpxsee.org
+
+- Update to version 16.3
+  * Switched to the legacy Holo theme on Android as a workaround
+    for QTBUG-145592.
+  * Minor MVT styles rendering/compatibility improvements.
+
+-------------------------------------------------------------------
+Sun Apr  5 22:27:21 CEST 2026 - tumic@gpxsee.org
+
+- Update to version 16.2
+  * Added missing location permissions request on Android and macOS.
+
+-------------------------------------------------------------------
 Sat Apr  4 17:25:12 CEST 2026 - tumic@gpxsee.org
 
 - Update to version 16.1

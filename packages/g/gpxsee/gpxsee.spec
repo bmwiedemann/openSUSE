@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        16.1
+Version:        16.6
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -100,11 +100,11 @@ TomTom OV2&ITN, ONmove OMD/GHP and geotagged JPEG files.
 %if 0%{?suse_version} > 1600
 lrelease-pro6 gpxsee.pro
 %else
-/usr/libexec/qt6/lrelease-pro gpxsee.pro
+lrelease6 gpxsee.pro
 %endif
 %{qmake6} gpxsee.pro
 %else
-/lib64/qt6/libexec/lrelease-pro gpxsee.pro
+lrelease-qt6 gpxsee.pro
 %{qmake_qt6} gpxsee.pro
 %endif
 make %{?_smp_mflags}

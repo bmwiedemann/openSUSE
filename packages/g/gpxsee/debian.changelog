@@ -1,3 +1,39 @@
+gpxsee (16.6) stable; urgency=medium
+
+  * Fixed possible buffer overflow in GPI Parser.
+  * Fixed track selection / popup generation.
+  * Added a workaround for a Qt crash on Android.
+  * Multiple UI/UX improvements on Android.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 24 Apr 2026 20:00:36 +0200
+
+gpxsee (16.5) stable; urgency=low
+
+  * Fixed Android menu not displayed when OpenGL is used.
+  * Android menu UI/UX improvements.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 21 Apr 2026 06:44:13 +0200
+
+gpxsee (16.4) stable; urgency=low
+
+  * Main menu redesign on Android.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 19 Apr 2026 08:47:46 +0200
+
+gpxsee (16.3) stable; urgency=low
+
+  * Switched to the legacy Holo theme on Android as a workaround
+    for QTBUG-145592.
+  * Minor MVT styles rendering/compatibility improvements.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 16 Apr 2026 23:28:12 +0200
+
+gpxsee (16.2) stable; urgency=low
+
+  * Added missing location permissions request on Android and macOS.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 05 Apr 2026 22:29:43 +0200
+
 gpxsee (16.1) stable; urgency=low
 
   * Added support for DJI mp4 videos and SRT files.
