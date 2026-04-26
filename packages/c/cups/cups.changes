@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 23 13:15:16 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 2.4.18:
+  See https://github.com/openprinting/cups/releases
+  The new release 2.4.18 contains hotfix after CVE-2026-27447 fix:
+  * Fixed cupsd crash if user does not exist (Issue #1555)
+  Issues are those at https://github.com/OpenPrinting/cups/issues
+- Adapted downgrade-autoconf-requirement.patch for CUPS 2.4.18
+
+-------------------------------------------------------------------
 Mon Apr 20 07:53:23 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
 
 - Version upgrade to 2.4.17:
