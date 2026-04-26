@@ -1793,4 +1793,13 @@
     <comment></comment>
     <requestid>1348049</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>975c5d2b3c5ff8921e83c43fbc091d7a</srcmd5>
+    <version>8.5.5</version>
+    <time>1777230673</time>
+    <user>anag_factory</user>
+    <comment>- php8: provide builtin php-opcache
+- php8-devel: require libraries from &quot;php-config --libs&quot; (forwarded request 1348627 from adkorte)</comment>
+    <requestid>1348768</requestid>
+  </revision>
 </revisionlist>

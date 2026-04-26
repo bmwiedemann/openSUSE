@@ -199,6 +199,7 @@ Provides:       php-date = %{version}
 Provides:       php-filter = %{version}
 Provides:       php-hash = %{version}
 Provides:       php-json = %{version}
+Provides:       php-opcache = %{version}
 Provides:       php-pcre = %{version}
 Provides:       php-reflection = %{version}
 Provides:       php-session = %{version}
@@ -257,6 +258,10 @@ Requires:       php = %{version}
 Requires:       pkgconfig(capstone)
 Requires:       pkgconfig(libpcre2-8) >= 10.30
 Requires:       pkgconfig(libxml-2.0) >= 2.9.0
+Requires:       pkgconfig(tinfo)
+%if %{with argon2}
+Requires:       pkgconfig(libargon2)
+%endif
 Provides:       php-devel = %{version}
 Obsoletes:      php7-devel
 

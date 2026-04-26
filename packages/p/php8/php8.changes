@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 21 17:29:13 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- php8: provide builtin php-opcache
+- php8-devel: require libraries from "php-config --libs"
+
+-------------------------------------------------------------------
 Sun Apr 19 15:34:04 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - php8-devel: require pkgconfig(capstone) now that we build with libcapstone enabled
