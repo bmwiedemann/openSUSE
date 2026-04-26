@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global padded_version 2024.04.15
 Name:           python-nox
-Version:        2026.2.9
+Version:        2026.4.10
 Release:        0
 Summary:        Flexible test automation
 License:        Apache-2.0
@@ -36,8 +36,8 @@ BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-argcomplete >= 1.9.4
 Requires:       python-colorlog >= 2.6.1
-Requires:       python-virtualenv >= 14.0.0
-Requires:       (python-tomli if python-base < 3.11)
+Requires:       python-packaging >= 20.9
+Requires:       python-virtualenv >= 20.14.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Suggests:       python-Jinja2
@@ -47,9 +47,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module argcomplete >= 1.9.4}
 BuildRequires:  %{python_module colorlog >= 2.6.1}
+BuildRequires:  %{python_module packaging >= 20.9}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tox}
-BuildRequires:  %{python_module virtualenv >= 14.0.0}
+BuildRequires:  %{python_module virtualenv >= 20.14.1}
 # Missing deps conda
 # /SECTION
 %python_subpackages
@@ -81,7 +82,7 @@ Flexible test automation.
 %python_uninstall_alternative nox
 
 %files %{python_files}
-%doc README.md
+%doc README.md CHANGELOG.md
 %license LICENSE
 %python_alternative %{_bindir}/nox
 %python_alternative %{_bindir}/tox-to-nox

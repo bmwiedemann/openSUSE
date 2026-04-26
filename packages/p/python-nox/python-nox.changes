@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 25 08:25:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.04.10:
+  * This release drops Python 3.8 and adds a `--usage` command
+    for full docstrings. Our `.nox` dir is now ignored by
+    default, virtualenvs are recreated if symlinks are broken
+    (such as after a Python upgrade), and `-t` now selects from
+    all available sessions.
+
+-------------------------------------------------------------------
 Sun Mar  8 21:07:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.02.09:

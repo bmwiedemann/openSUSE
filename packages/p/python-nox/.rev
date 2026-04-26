@@ -186,4 +186,17 @@
   * Better typing for `.run`</comment>
     <requestid>1337529</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>18b7f743845f3bc20473c4e0bee1ac05</srcmd5>
+    <version>2026.4.10</version>
+    <time>1777230745</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.04.10:
+  * This release drops Python 3.8 and adds a `--usage` command
+    for full docstrings. Our `.nox` dir is now ignored by
+    default, virtualenvs are recreated if symlinks are broken
+    (such as after a Python upgrade), and `-t` now selects from
+    all available sessions.</comment>
+    <requestid>1349198</requestid>
+  </revision>
 </revisionlist>
