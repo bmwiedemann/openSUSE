@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sun Apr 26 08:29:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.63.0:
+  * Available and recommended Server Types have been moved
+    - The Server Types list in hcloud datacenter describe is
+      deprecated and will not be displayed anymore after
+      2026-10-01. The two commands below should be used for this
+      purpose instead.
+    - hcloud server-type describe now shows an Available and
+      Recommended value for each location.
+    - hcloud server-type list now has additional columns
+      location_available and location_recommended.
+    See the changelog for more details.
+    https://docs.hetzner.cloud/changelog#2026-04-01-datacenter-deprecations
+   * Features
+      - datacenter, server-type: move available and recommended to
+        server_type (#1384)
+  * Dependencies
+    - chore(main): release v1.63.0 (#1391)
+    - feat(datacenter, server-type): move available and recommended
+      to server_type (#1384)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.38.0 (#1390)
+    - deps: update dependency jdx/mise to v2026.4.19 (#1386)
+    - deps: update golang.org/x/exp digest to 746e56f (#1385)
+    - deps: update dependency github:goreleaser/goreleaser to
+      v2.15.4 (#1387)
+    - deps: update module github.com/jedib0t/go-pretty/v6 to
+      v6.7.10 (#1388)
+    - deps: update dependency jdx/mise to v2026.4.7 (#1363)
+    - deps: update golang.org/x/ (#1383)
+    - deps: update dependency go to v1.26.2 (#1382)
+
+-------------------------------------------------------------------
+Thu Apr 09 08:13:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.62.2:
+  * Bug Fixes
+    - invalid goreleaser artifacts name for signing step (#1380)
+- Update to version 1.62.1:
+  * Bug Fixes
+    - server-type: do not print locations that are unavailable
+      (after deprecation) (#1369)
+    - long version info not displayed correctly in release builds
+      (#1374)
+    - only generate signature for checksums.txt release asset
+      (#1366)
+  * Dependencies
+    - deps: update module github.com/jedib0t/go-pretty/v6 to v6.7.9
+      (#1379)
+    - deps: update module github.com/guptarohit/asciigraph to
+      v0.9.0 (#1377)
+    - deps: update dependency github:goreleaser/goreleaser to
+      v2.15.2 (#1378)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.37.0 (#1376)
+    - deps: update codecov/codecov-action action to v6 (#1375)
+    - deps: update dependency github:golangci/golangci-lint to
+      v2.11.4 (#1368)
+    - deps: update dependency go to v1.26.1 (#1373)
+
+-------------------------------------------------------------------
 Sat Mar 21 07:32:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.62.0:
