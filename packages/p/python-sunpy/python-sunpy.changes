@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 25 22:05:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.2:
+  * Fixed a bug where SIP distortion information in a Map WCS was
+    ignored.
+
+-------------------------------------------------------------------
 Sun Mar 29 19:03:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.1:

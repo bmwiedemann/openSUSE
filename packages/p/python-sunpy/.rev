@@ -526,4 +526,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1344698</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>40bdceb0cc2cf4305c2e351d52017e60</srcmd5>
+    <version>7.1.2</version>
+    <time>1777230697</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.1.2:
+  * Fixed a bug where SIP distortion information in a Map WCS was
+    ignored.</comment>
+    <requestid>1349306</requestid>
+  </revision>
 </revisionlist>
