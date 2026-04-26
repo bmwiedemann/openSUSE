@@ -1,7 +1,7 @@
 #
 # spec file for package python-drms
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,34 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-drms
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Tool to access HMI, AIA and MDI data with Python
 License:        MIT
 URL:            https://github.com/sunpy/drms
 Source:         https://files.pythonhosted.org/packages/source/d/drms/drms-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 62.1}
+BuildRequires:  %{python_module setuptools_scm >= 8.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
-Requires:       python-pandas
+Requires:       python-numpy >= 1.23.5
+Requires:       python-packaging >= 23.0
+Requires:       python-pandas >= 1.5.1
 Requires(postun): update-alternatives
 Requires(post): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module astropy}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module numpy >= 1.23.5}
+BuildRequires:  %{python_module packaging >= 23.0}
+BuildRequires:  %{python_module pandas >= 1.5.1}
 BuildRequires:  %{python_module pytest-astropy}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-doctestplus}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -58,22 +63,14 @@ default, but can also be used with local NetDRMS sites.
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/drms
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
-%post
-%python_install_alternative drms
-
-%postun
-%python_uninstall_alternative drms
-
 %files %{python_files}
 %doc CITATION.rst README.rst
 %license LICENSE.rst
-%python_alternative %{_bindir}/drms
 %{python_sitelib}/drms
 %{python_sitelib}/drms-%{version}.dist-info
 

@@ -96,4 +96,15 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275976</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b6c8ae8f5fac26da31cff054d38e4960</srcmd5>
+    <version>0.9.0</version>
+    <time>1777230746</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.0:
+  * Added timeout keyword to
+    :meth:`drms.client.ExportRequest.download` which also will
+    use the socket value, if it is set.</comment>
+    <requestid>1349377</requestid>
+  </revision>
 </revisionlist>
