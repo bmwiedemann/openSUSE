@@ -1,7 +1,7 @@
 #
 # spec file for package python-asyncpg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asyncpg
-Version:        0.30.0
+Version:        0.31.0
 Release:        0
 Summary:        Python asyncio PosgtreSQL driver
 License:        Apache-2.0
 URL:            https://github.com/MagicStack/asyncpg
 Source:         https://files.pythonhosted.org/packages/source/a/asyncpg/asyncpg-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Skip a broken test
-Patch0:         skip-dsn_ipv6_multi_host-parse-test.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module async_timeout if %python-base < 3.11}
 BuildRequires:  %{python_module devel >= 3.6}
@@ -61,10 +59,6 @@ PostgreSQL and Python/asyncio with clean implementation
 
 %prep
 %autosetup -p1 -n asyncpg-%{version}
-# no uvloop in python36 but in newer flavors
-sed -i asyncpg/_testbase/__init__.py \
-  -e "/import re/ a import sys" \
-  -e "s/if os.environ.get('USE_UVLOOP')/& and sys.version_info[:2] > (3, 6)/"
 
 %build
 %pyproject_wheel

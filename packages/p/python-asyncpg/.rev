@@ -200,4 +200,22 @@
 - Switch to pyproject macros.</comment>
     <requestid>1245497</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>82ba2b5568f200695279b26e0e6b3dbb</srcmd5>
+    <version>0.31.0</version>
+    <time>1777230752</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.31.0:
+  * Add Python 3.14 support, experimental
+    subinterpreter/freethreading support
+  * Avoid performing type introspection on known types
+  * Make `prepare()` not use named statements by default when
+    cache is disabled
+  * Implement connection service file functionality
+  * Fix multi port connection string issue
+  * Avoid leaking connections if _can_use_connection fails
+  * Drop support for EOL Python 3.8
+- drop skip-dsn_ipv6_multi_host-parse-test.patch (obsolete)</comment>
+    <requestid>1349395</requestid>
+  </revision>
 </revisionlist>

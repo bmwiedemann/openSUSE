@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 26 14:23:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.31.0:
+  * Add Python 3.14 support, experimental
+    subinterpreter/freethreading support
+  * Avoid performing type introspection on known types
+  * Make `prepare()` not use named statements by default when
+    cache is disabled
+  * Implement connection service file functionality
+  * Fix multi port connection string issue
+  * Avoid leaking connections if _can_use_connection fails
+  * Drop support for EOL Python 3.8
+- drop skip-dsn_ipv6_multi_host-parse-test.patch (obsolete)
+
+-------------------------------------------------------------------
 Thu Feb 13 03:28:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch skip-dsn_ipv6_multi_host-parse-test.patch:
