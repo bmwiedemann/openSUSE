@@ -17,7 +17,7 @@
 
 
 Name:           gap-format
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        GAP: Computation with formations of finite solvable groups
 License:        GPL-2.0-or-later
