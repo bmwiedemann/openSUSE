@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-repos
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -80,15 +80,14 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20250728.9adc675
+Version:        20260423.1a6a0f3
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/openSUSE/openSUSE-repos
 Source:         openSUSE-repos-%{version}.tar.xz
-#boo#1203715
-BuildRequires:  -post-build-checks
+BuildRequires:  libzypp
 Requires:       zypper
 # Ensure we install matching packages on given distribution
 # openSUSE-release has suggest on particular theme based on distribution

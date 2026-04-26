@@ -303,4 +303,21 @@
     <comment></comment>
     <requestid>1296173</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1120aba07543b0bd7709e7326756b4f1</srcmd5>
+    <version>20260423.1a6a0f3</version>
+    <time>1777230652</time>
+    <user>anag_factory</user>
+    <comment>- do not skip post-build-checks
+
+- Update to version 20260423.1a6a0f3:
+  * Refresh update instructions for Leap and Leap Micro
+  * Update README with openSUSE repo management instructions
+
+- Fix url for Leap 16 tmp migration repo
+  which newly contains sle_version
+  * This supports migration from LeapMicro to MicroOS
+  * oss repo will now always include slem 6.X updates</comment>
+    <requestid>1349075</requestid>
+  </revision>
 </revisionlist>
