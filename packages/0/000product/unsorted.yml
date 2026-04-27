@@ -2633,8 +2633,6 @@ unsorted:
   - coreboot-utils 
   - coredns 
   - coredns-extras 
-  - coredns-for-k8s1.32 
-  - coredns-for-k8s1.32-extras 
   - coredns-for-k8s1.33 
   - coredns-for-k8s1.33-extras 
   - coredns-for-k8s1.34 
@@ -3878,7 +3876,6 @@ unsorted:
   - espresso 
   - etc-update 
   - etcd 
-  - etcd-for-k8s1.32 
   - etcd-for-k8s1.33 
   - etcd-for-k8s1.34 
   - etcd-for-k8s1.35 
@@ -8340,6 +8337,7 @@ unsorted:
   - guvcview-devel 
   - guvcview-lang 
   - gv 
+  - gvfs-backend-cdda 
   - gvim 
   - gvisor-tap-vsock 
   - gwenhywfar 
@@ -12637,6 +12635,7 @@ unsorted:
   - libcdio-paranoia-devel 
   - libcdio19-32bit 
   - libcdio_cdda2-32bit 
+  - libcdio_paranoia2 
   - libcdio_paranoia2-32bit 
   - libcdirectory-devel 
   - libcdirectory1 
@@ -25673,6 +25672,7 @@ unsorted:
   - python311-empy 
   - python311-enaml 
   - python311-encore 
+  - python311-encutils 
   - python311-endesive 
   - python311-enrich 
   - python311-entrypoint2 
@@ -28200,7 +28200,6 @@ unsorted:
   - python312-pip 
   - python312-pip-wheel 
   - python312-platformdirs 
-  - python312-plotly 
   - python312-pluggy 
   - python312-setuptools 
   - python312-setuptools-wheel 
@@ -29581,6 +29580,7 @@ unsorted:
   - python313-empy 
   - python313-enaml 
   - python313-encore 
+  - python313-encutils 
   - python313-endesive 
   - python313-enrich 
   - python313-entrypoint2 
@@ -33068,6 +33068,7 @@ unsorted:
   - python314-casttube 
   - python314-catkin-pkg 
   - python314-cattrs 
+  - python314-cauldron-notebook 
   - python314-cbor 
   - python314-cbor2 
   - python314-cchardet 
@@ -33489,6 +33490,7 @@ unsorted:
   - python314-empy 
   - python314-enaml 
   - python314-encore 
+  - python314-encutils 
   - python314-endesive 
   - python314-enrich 
   - python314-entrypoint2 
@@ -33513,6 +33515,7 @@ unsorted:
   - python314-evtx 
   - python314-ewah-bool-utils 
   - python314-ewah-bool-utils-devel 
+  - python314-exam 
   - python314-exceptiongroup 
   - python314-execnet 
   - python314-executing 
@@ -33647,6 +33650,7 @@ unsorted:
   - python314-geojson 
   - python314-geolib 
   - python314-geolinks 
+  - python314-geomdl 
   - python314-geomet 
   - python314-geopandas 
   - python314-geopy 
@@ -34371,6 +34375,7 @@ unsorted:
   - python314-nftables 
   - python314-nh3 
   - python314-nibabel 
+  - python314-nilearn 
   - python314-nine 
   - python314-nitrokey 
   - python314-nkdfu 
@@ -34606,6 +34611,7 @@ unsorted:
   - python314-photutils 
   - python314-phply 
   - python314-phue 
+  - python314-physt 
   - python314-pick 
   - python314-pickleshare 
   - python314-piexif 
@@ -34637,6 +34643,7 @@ unsorted:
   - python314-platformio 
   - python314-plette 
   - python314-plotext 
+  - python314-plotly 
   - python314-pluggy 
   - python314-pluginbase 
   - python314-plumbum 
@@ -35110,6 +35117,7 @@ unsorted:
   - python314-python-crfsuite 
   - python314-python-crontab 
   - python314-python-daemon 
+  - python314-python-datamatrix 
   - python314-python-dateutil 
   - python314-python-dbusmock 
   - python314-python-debian 
@@ -35154,7 +35162,9 @@ unsorted:
   - python314-python-poppler 
   - python314-python-pptx 
   - python314-python-prctl 
+  - python314-python-pseudorandom 
   - python314-python-ptrace 
+  - python314-python-qdatamatrix 
   - python314-python-qpid-proton 
   - python314-python-qprogedit 
   - python314-python-rapidjson 
@@ -38757,7 +38767,6 @@ unsorted:
   - systemd-repart-dracut 
   - systemd-resolved 
   - systemd-status-mail 
-  - systemd-sysvcompat 
   - systemd-testsuite 
   - systemd-ukify 
   - systemtap 
