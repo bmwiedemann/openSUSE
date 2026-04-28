@@ -1143,4 +1143,13 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
   * Used in GDAL for QGIS: boo#1257123</comment>
     <requestid>1330099</requestid>
   </revision>
+  <revision rev="110" vrev="5">
+    <srcmd5>75e6ce5e50e427526015df2ebef45f7a</srcmd5>
+    <version>4.7.1</version>
+    <time>1777379382</time>
+    <user>anag_factory</user>
+    <comment>- * CVE-2026-4775: Signed integer overflow in putcontig8bitYCbCr44tile (bsc#1260411)
+    Add tiff-CVE-2026-4775.patch</comment>
+    <requestid>1349534</requestid>
+  </revision>
 </revisionlist>

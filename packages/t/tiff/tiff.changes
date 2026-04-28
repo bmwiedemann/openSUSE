@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 27 08:58:56 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- * CVE-2026-4775: Signed integer overflow in putcontig8bitYCbCr44tile (bsc#1260411)
+    Add tiff-CVE-2026-4775.patch
+
+-------------------------------------------------------------------
 Sat Jan 24 18:08:33 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Enable Lerc support in openSUSE
