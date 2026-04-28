@@ -1,4 +1,200 @@
 -------------------------------------------------------------------
+Sun Apr 26 18:52:47 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix bsc#1261833 / CVE-2026-39881).
+- Update to 9.2.0398.
+- Changes:
+ * 9.2.0398: MS-Windows: missing strptime() support
+ * 9.2.0397: tabpanel: double-click opens a new tab
+ * 9.2.0396: tests: Test_error_callback_terminal is flaky on macOS
+ * 9.2.0395: tests: Test_backupskip() may read from $HOME
+ * 9.2.0394: xxd: offsets greater than LONG_MAX print as negative
+ * 9.2.0393: MS-Windows: link error with XPM support on UCRT64
+ * 9.2.0392: tests: Some tests are flaky
+ * 9.2.0391: tests: Comment in test_vim9_cmd breaks syntax highlighting
+ * 9.2.0390: filetype: some Beancount files are not recognized
+ * 9.2.0389: DECRQM still leaves stray "pp" on Apple Terminal.app
+ * 9.2.0388: strange indent in update_topline()
+ * 9.2.0387: DECRQM request may leave stray chars in terminal
+ * 9.2.0386: No scroll/scrollbar support in the tabpanel
+ * 9.2.0385: Integer overflow with "ze" and large 'sidescrolloff'
+ * 9.2.0384: stale Insstart after <Cmd> cursor move breaks undo
+ * 9.2.0383: [security]: runtime(netrw): shell-injection via sftp: and file: URLs
+ * 9.2.0382: Wayland: focus-stealing is non-working
+ * 9.2.0381: Vim9: Missing check_secure() in exec_instructions()
+ * 9.2.0380: completion: a few issues in completion code
+ * 9.2.0379: gui.color_approx is never used
+ * 9.2.0378: Using int as bool type in win_T struct
+ * 9.2.0377: Using int as bool type in gui_T struct
+ * 9.2.0376: Vim9: elseif condition compiled in dead branch
+ * 9.2.0375: prop_find() does not find a virt text in starting line
+ * 9.2.0374: c_CTRL-{G,T} does not handle offset
+ * 9.2.0373: Ctrl-R mapping not triggered during completion
+ * 9.2.0372: pum: rendering issues with multibyte text and opacity
+ * 9.2.0371: filetype: ghostty config files are not recognized
+ * 9.2.0370: duplicate code with literal string_T assignment
+ * 9.2.0369: multiple definitions of STRING_INIT macro
+ * 9.2.0368: too many strlen() calls when adding strings to dicts
+ * 9.2.0367: runtime(netrw): ~ note expanded on MS Windows
+ * 9.2.0366: pum: flicker when updating pum in place
+ * 9.2.0365: using int as bool
+ * 9.2.0364: tests: test_smoothscroll_textoff_showbreak() fails
+ * 9.2.0363: Vim9: variable shadowed by script-local function
+ * 9.2.0362: division by zero with smoothscroll and small windows
+ * 9.2.0361: tests: no tests for ch_listen() with IPs
+ * 9.2.0360: Cannot handle mouse-clicks in the tabpanel
+ * 9.2.0359: wrong VertSplitNC highlighting on winbar
+ * 9.2.0358: runtime(vimball): still path traversal attacks possible
+ * 9.2.0357: [security]: command injection via backticks in tag files
+ * 9.2.0356: Cannot apply 'scrolloff' context lines at end of file
+ * 9.2.0355: runtime(tar): missing path traversal checks in tar#Extract()
+ * 9.2.0354: filetype: not all Bitbake include files are recognized
+ * 9.2.0353: Missing out-of-memory check in register.c
+ * 9.2.0352: 'winhighlight' of left window blends into right window
+ * 9.2.0351: repeat_string() can be improved
+ * 9.2.0350: Enabling modelines poses a risk
+ * 9.2.0349: cannot style non-current window separator
+ * 9.2.0348: potential buffer underrun when setting statusline like option
+ * 9.2.0347: Vim9: script-local variable not found
+ * 9.2.0346: Wrong cursor position when entering command line window
+ * 9.2.0345: Wrong autoformatting with 'autocomplete'
+ * 9.2.0344: channel: ch_listen() can bind to network interface
+ * 9.2.0343: tests: test_clientserver may fail on slower systems
+ * 9.2.0342: tests: test_excmd.vim leaves swapfiles behind
+ * 9.2.0341: some functions can be run from the sandbox
+ * 9.2.0340: pum_redraw() may cause flicker
+ * 9.2.0339: regexp: nfa_regmatch() allocates and frees too often
+ * 9.2.0338: Cannot handle mouseclicks in the tabline
+ * 9.2.0337: list indexing broken on big-endian 32-bit platforms
+ * 9.2.0336: libvterm: no terminal reflow support
+ * 9.2.0335: json_encode() uses recursive algorithm
+ * 9.2.0334: GTK: window geometry shrinks with with client-side decorations
+ * 9.2.0333: filetype: PklProject files are not recognized
+ * 9.2.0332: popup: still opacity rendering issues
+ * 9.2.0331: spellfile: stack buffer overflows in spell file generation
+ * 9.2.0330: tests: some patterns in tar and zip plugin tests not strict enough
+ * 9.2.0329: tests: test_indent.vim leaves swapfiles behind
+ * 9.2.0328: Cannot handle mouseclicks in the statusline
+ * 9.2.0327: filetype: uv scripts are not detected
+ * 9.2.0326: runtime(tar): but with dotted path
+ * 9.2.0325: runtime(tar): bug in zstd handling
+ * 9.2.0324: 0x9b byte not unescaped in <Cmd> mapping
+ * 9.2.0323: filetype: buf.lock files are not recognized
+ * 9.2.0322: tests: test_popupwin fails
+ * 9.2.0321: MS-Windows: No OpenType font support
+ * 9.2.0320: several bugs with text properties
+ * 9.2.0319: popup: rendering issues with partially transparent popups
+ * 9.2.0318: cannot configure opacity for popup menu
+ * 9.2.0317: listener functions do not check secure flag
+ * 9.2.0316: [security]: command injection in netbeans interface via defineAnnoType
+ * 9.2.0315: missing bound-checks
+ * 9.2.0314: channel: can bind to all network interfaces
+ * 9.2.0313: Callback channel not registered in GUI
+ * 9.2.0312: C-type names are marked as translatable
+ * 9.2.0311: redrawing logic with text properties can be improved
+ * 9.2.0310: unnecessary work in vim_strchr() and find_term_bykeys()
+ * 9.2.0309: Missing out-of-memory check to may_get_cmd_block()
+ * 9.2.0308: Error message E1547 is wrong
+ * 9.2.0307: more mismatches between return types and documentation
+ * 9.2.0306: runtime(tar): some issues with lz4 support
+ * 9.2.0305: mismatch between return types and documentation
+ * 9.2.0304: tests: test for 9.2.0285 doesn't always fail without the fix
+ * 9.2.0303: tests: zip plugin tests don't check for warning message properly
+ * 9.2.0302: runtime(netrw): RFC2396 decoding double escaping spaces
+ * 9.2.0301: Vim9: void function return value inconsistent
+ * 9.2.0300: The vimball plugin needs some love
+ * 9.2.0299: runtime(zip): may write using absolute paths
+ * 9.2.0298: Some internal variables are not modified
+ * 9.2.0297: libvterm: can improve CSI overflow code
+ * 9.2.0296: Redundant and incorrect integer pointer casts in drawline.c
+ * 9.2.0295: 'showcmd' shows wrong Visual block size with 'linebreak'
+ * 9.2.0294: if_lua: lua interface does not work with lua 5.5
+ * 9.2.0293: :packadd may lead to heap-buffer-overflow
+ * 9.2.0292: E340 internal error when using method call on void value
+ * 9.2.0291: too many strlen() calls
+ * 9.2.0290: Amiga: no support for AmigaOS 3.x
+ * 9.2.0289: 'linebreak' may lead to wrong Visual block highlighting
+ * 9.2.0288: libvterm: signed integer overflow parsing long CSI args
+ * 9.2.0287: filetype: not all ObjectScript routines are recognized
+ * 9.2.0286: still some unnecessary (int) casts in alloc()
+ * 9.2.0285: :syn sync grouphere may go beyond end of line
+ * 9.2.0284: tabpanel: crash when tabpanel expression returns variable line count
+ * 9.2.0283: unnecessary (int) casts before alloc() calls
+ * 9.2.0282: tests: Test_viminfo_len_overflow() fails
+ * 9.2.0281: tests: Test_netrw_FileUrlEdit.. fails on Windows
+
+-------------------------------------------------------------------
+Thu Apr  2 04:38:58 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix bsc#1261191 / CVE-2026-34714.
+- Fix bsc#1261271 / CVE-2026-34982.
+- Fix bsc#1259985 / CVE-2026-33412.
+- Refresh patch:
+ * vim-7.4-filetype_apparmor.patch
+- Update to 9.2.0280.
+ * 9.2.0280: [security]: path traversal issue in zip.vim
+ * 9.2.0279: terminal: out-of-bounds write with overlong CSI argument list
+ * 9.2.0278: viminfo: heap buffer overflow when reading viminfo file
+ * 9.2.0277: tests: test_modeline.vim fails
+ * 9.2.0276: [security]: modeline security bypass
+ * 9.2.0275: tests: test_options.vim fails
+ * 9.2.0274: BSU/ESU are output directly to the terminal
+ * 9.2.0273: tabpanel: undefined behaviour with large tabpanelop columns
+ * 9.2.0272: [security]: 'tabpanel' can be set in a modeline
+ * 9.2.0271: buffer underflow in vim_fgets()
+ * 9.2.0270: test: trailing spaces used in tests
+ * 9.2.0269: configure: Link error on Solaris
+ * 9.2.0268: memory leak in call_oc_method()
+ * 9.2.0267: 'autowrite' not triggered for :term
+ * 9.2.0266: typeahead buffer overflow during mouse drag event
+ * 9.2.0265: unnecessary restrictions for defining dictionary function names
+ * 9.2.0264: Cannot disable kitty keyboard protocol in vim :terminal
+ * 9.2.0263: hlset() cannot handle attributes with spaces
+ * 9.2.0262: invalid lnum when pasting text copied blockwise
+ * 9.2.0261: terminal: redraws are slow
+ * 9.2.0260: statusline not redrawn after closing a popup window
+ * 9.2.0259: tabpanel: corrupted display during scrolling causing flicker
+ * 9.2.0258: memory leak in add_mark()
+ * 9.2.0257: unnecessary memory allocation in set_callback()
+ * 9.2.0256: visual selection size not shown in showcmd during test
+ * 9.2.0255: tests: Test_popup_opacity_vsplit() fails in a wide terminal
+ * 9.2.0254: w_locked can be bypassed when setting recursively
+ * 9.2.0253: various issues with wrong b_nwindows after closing buffers
+ * 9.2.0252: Crash when ending Visual mode after curbuf was unloaded
+ * 9.2.0251: Link error when building without channel feature
+ * 9.2.0250: system() does not support bypassing the shell
+ * 9.2.0249: clipboard: provider reacts to autoselect feature
+ * 9.2.0248: json_decode() is not strict enough
+ * 9.2.0247: popup: popups may not wrap as expected
+ * 9.2.0246: memory leak in globpath()
+ * 9.2.0245: xxd: color output detection is broken
+ * 9.2.0244: memory leak in eval8()
+ * 9.2.0243: memory leak in change_indent()
+ * 9.2.0242: memory leak in check_for_cryptkey()
+ * 9.2.0241: tests: Test_visual_block_hl_with_autosel() is flaky
+ * 9.2.0240: syn_name2id() is slow due to linear search
+ * 9.2.0239: signcolumn may cause flicker
+ * 9.2.0238: showmode message may not be displayed
+ * 9.2.0237: filetype: ObjectScript routines are not recognized
+ * 9.2.0236: stack-overflow with deeply nested data in json_encode/decode()
+ * 9.2.0235: filetype: wks files are not recognized.
+ * 9.2.0234: test: Test_close_handle() is flaky
+ * 9.2.0233: Compiler warning in strings.c
+ * 9.2.0232: fileinfo not shown after :bd of last listed buffer
+ * 9.2.0231: Amiga: Link error for missing HAVE_LOCALE_H
+ * 9.2.0230: popup: opacity not working accross vert splits
+ * 9.2.0229: keypad keys may overwrite keycode for another key
+ * 9.2.0228: still possible flicker
+ * 9.2.0227: MS-Windows: CSI sequences may be written to screen
+ * 9.2.0226: No 'incsearch' highlighting support for :uniq
+ * 9.2.0225: runtime(compiler): No compiler plugin for just
+ * 9.2.0224: channel: 2 issues with out/err callbacks
+ * 9.2.0223: Option handling for key:value suboptions is limited
+ * 9.2.0222: "zb" scrolls incorrectly with cursor on fold
+ * 9.2.0221: Visual selection drawn incorrectly with "autoselect"
+ * 9.2.0220: MS-Windows: some defined cannot be set on Cygwin/Mingw
+
+-------------------------------------------------------------------
 Sat Mar 21 19:21:27 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to version 9.2.0219:

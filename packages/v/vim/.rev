@@ -8415,4 +8415,41 @@ always built-in because vim has direct perl dependencies anyway.
  * patch 9.2.0194: tests: test_startup.vim leaves temp.txt around</comment>
     <requestid>1341728</requestid>
   </revision>
+  <revision rev="399" vrev="1">
+    <srcmd5>5ff26bef3c11686e7b4bc9c67e29e1e4</srcmd5>
+    <version>9.2.0398</version>
+    <time>1777370048</time>
+    <user>anag_factory</user>
+    <comment>- Fix bsc#1261833 / CVE-2026-39881).
+- Update to 9.2.0398.
+- Changes:
+ * 9.2.0398: MS-Windows: missing strptime() support
+ * 9.2.0397: tabpanel: double-click opens a new tab
+ * 9.2.0396: tests: Test_error_callback_terminal is flaky on macOS
+ * 9.2.0395: tests: Test_backupskip() may read from $HOME
+ * 9.2.0394: xxd: offsets greater than LONG_MAX print as negative
+ * 9.2.0393: MS-Windows: link error with XPM support on UCRT64
+ * 9.2.0392: tests: Some tests are flaky
+ * 9.2.0391: tests: Comment in test_vim9_cmd breaks syntax highlighting
+ * 9.2.0390: filetype: some Beancount files are not recognized
+ * 9.2.0389: DECRQM still leaves stray &quot;pp&quot; on Apple Terminal.app
+ * 9.2.0388: strange indent in update_topline()
+ * 9.2.0387: DECRQM request may leave stray chars in terminal
+ * 9.2.0386: No scroll/scrollbar support in the tabpanel
+ * 9.2.0385: Integer overflow with &quot;ze&quot; and large 'sidescrolloff'
+ * 9.2.0384: stale Insstart after &lt;Cmd&gt; cursor move breaks undo
+ * 9.2.0383: [security]: runtime(netrw): shell-injection via sftp: and file: URLs
+ * 9.2.0382: Wayland: focus-stealing is non-working
+ * 9.2.0381: Vim9: Missing check_secure() in exec_instructions()
+ * 9.2.0380: completion: a few issues in completion code
+ * 9.2.0379: gui.color_approx is never used
+ * 9.2.0378: Using int as bool type in win_T struct
+ * 9.2.0377: Using int as bool type in gui_T struct
+ * 9.2.0376: Vim9: elseif condition compiled in dead branch
+ * 9.2.0375: prop_find() does not find a virt text in starting line
+ * 9.2.0374: c_CTRL-{G,T} does not handle offset
+ * 9.2.0373: Ctrl-R mapping not triggered during completion
+ * 9.2.0372: pum: rendering issues with multibyte text and opacity</comment>
+    <requestid>1349417</requestid>
+  </revision>
 </revisionlist>
