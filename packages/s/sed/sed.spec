@@ -1,7 +1,7 @@
 #
 # spec file for package sed
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sed
-Version:        4.9
+Version:        4.10
 Release:        0
 Summary:        A Stream-Oriented Non-Interactive Text Editor
 License:        GPL-3.0-or-later
@@ -26,6 +26,9 @@ URL:            https://www.gnu.org/software/sed/
 Source0:        https://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
+# PATCH-FIX-OPENSUSE disable-backref-test.patch antonio.teixeira@suse.com -- Tests for back reference bugfix fail as we use glibc regex and it hasn't been fixed there yet
+# Upstream bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34073
+Patch0:         disable-backref-test.patch
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
 Provides:       base:/bin/sed

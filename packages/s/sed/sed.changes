@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Apr 23 15:19:27 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 4.10:
+  * sed 's/a/b/g' (and other global substitutions) now works on input
+    lines longer than 2GB. Previously, matches beyond the 2^31 byte offset
+    would evoke a "panic" (exit 4).
+  * 'sed --follow-symlinks -i' no longer has a TOCTOU race that could let
+    an attacker swap a symlink between resolution and open, causing sed to
+    read attacker-chosen content and write it to the original target.
+    (bsc#1262144, CVE-2026-5958)
+  * sed no longer falsely matches when back-references are combined with
+    optional groups (.?) and the $ anchor.  For example, this no longer
+    falsely matches the empty string at beginning of line:
+      $ echo ab | sed -E 's/^(.?)(.?).?\2\1$/X/'
+      Xab
+  * In --posix mode, sed no longer mishandles backslash escapes (\n,
+    \t, \a, etc.) after a named character class like [[:alpha:]].
+    For example, 's/^A\n[[:alpha:]]\n*/XXX/' would fail to match the
+    trailing newline, treating \n as a literal backslash and an 'n'
+    rather than a newline.  This happened when an earlier backslash
+    escape in the same regex had already been converted, shifting the
+    in-place normalization buffer.
+  * sed --debug no longer crashes when a label (":") command is compiled
+    before the --debug option is processed, e.g., sed -f<(...) --debug.
+  * sed no longer rejects the documented GNU extension 'a**' (equivalent
+    to 'a*') in Basic Regular Expression (BRE) mode.  Previously, this
+    worked only with -E (ERE mode), even though grep has always accepted
+    it in BRE mode.
+  * sed no longer rejects "\c[" in regular expressions
+  * 'sed --follow-symlinks -i' no longer mishandles an operand that is a
+    short symbolic link to a long symbolic link to a file.
+  * Fix some some longstanding but unlikely integer overflows.
+    Internally, 'sed' now more often prefers signed integer arithmetic,
+    which can be checked automatically via 'gcc -fsanitize=undefined'.
+  * In the default C locale, diagnostics now quote 'like this' (with
+    apostrophes) instead of `like this' (with a grave accent and an
+    apostrophe).  This tracks the GNU coding standards.
+  * 'sed --posix' now warns about uses of backslashes in the 's' command
+    that are handled by GNU sed but are not portable to other
+    implementations.
+  * builds no longer fail on platforms without the <getopt.h> header or
+    getopt_long function.
+- Add disable-backref-test.patch
+  * The bug for back references combined with optional groups and anchor
+    hasn't been fixed in glibc yet, so the tests fail when building with
+    "--without-included-regex". Disable the tests for now.
+
+-------------------------------------------------------------------
 Tue Dec 27 13:20:23 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
