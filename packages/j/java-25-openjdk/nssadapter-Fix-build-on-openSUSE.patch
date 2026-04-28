@@ -1,0 +1,27 @@
+From 28f0505d0f9a02fd6533314be64ddadaf3f36b76 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Mon, 16 Mar 2026 18:06:46 +0100
+Subject: [PATCH 1/2] Fix build on openSUSE
+
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 9f90e5f..bbdc671 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,8 +10,8 @@ OUTPUT       := $(BIN_DIR)/lib$(NAME).so
+ DBG_SENTINEL := $(BIN_DIR)/_built_in_debug_mode_
+ 
+ CC            = gcc
+-DEVEL_PKGS    = nss nss-softokn
+-LIB_DIR       = $(shell pkg-config --variable=libdir nss-softokn)
++DEVEL_PKGS    = nss
++LIB_DIR       = $(shell pkg-config --variable=libdir nss)
+ SHARED_LIBS   = pthread softokn3 nss3
+ STATIC_LIBS   = freebl
+ STATIC_OBJS   = $(addprefix $(LIB_DIR)/lib,$(addsuffix .a,$(STATIC_LIBS)))
+-- 
+2.53.0
+

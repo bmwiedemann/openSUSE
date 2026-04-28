@@ -1,0 +1,28 @@
+From 3edab51e940f5567aaf8799e0241d8416a88a051 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Wed, 18 Mar 2026 01:05:24 +0100
+Subject: [PATCH] Don't make missing system crypto-policies fatal
+
+---
+ src/java.base/share/classes/java/security/Security.java | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/java.base/share/classes/java/security/Security.java b/src/java.base/share/classes/java/security/Security.java
+index 4501d5971c4..bb54ae74bb4 100644
+--- a/src/java.base/share/classes/java/security/Security.java
++++ b/src/java.base/share/classes/java/security/Security.java
+@@ -257,8 +257,9 @@ static void loadInclude(String propFile) {
+                 }
+                 loadFromPath(path, LoadingMode.APPEND);
+             } catch (IOException | InvalidPathException e) {
+-                throw new InternalError("Unable to include '" + expPropFile +
+-                        "'", e);
++                if (sdebug != null) {
++                    sdebug.println("Unable to include '" + expPropFile + "'");
++                }
+             }
+         }
+ 
+-- 
+2.53.0
+

@@ -33,8 +33,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      25
 %global interimver      0
-%global updatever       2
-%global buildver        10
+%global updatever       3
+%global buildver        9
 %global openjdk_repo    jdk25u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
@@ -98,9 +98,18 @@
 %else
 %global package_version %{featurever}.%{interimver}.%{?updatever:%{updatever}}%{!?updatever:0}.%{?patchver:%{patchver}}%{!?patchver:0}~%{buildver}
 %endif
-%global NSS_LIBDIR %(pkg-config --variable=libdir nss)
 %if 0%{?gcc_version} < 11
 %global with_gcc 11
+%endif
+# Define nssadapter variables
+%global nssadapter_version 0.1.1
+%global nssadapter_name nssadapter-%{nssadapter_version}
+# Prevent TestSecurityProperties from failing on distros that
+# don't have system crypto-policies package
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
+%global crypto_policy_active true
+%else
+%global crypto_policy_active false
 %endif
 %bcond_with zero
 %if ! %{with zero}
@@ -128,24 +137,30 @@ Name:           java-%{featurever}-openjdk
 Version:        %{package_version}
 Release:        0
 Summary:        OpenJDK %{featurever} Runtime Environment
-License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
+License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND LicenseRef-SUSE-Public-Domain AND W3C
 Group:          Development/Languages/Java
 URL:            https://openjdk.java.net/
 # Sources from upstream OpenJDK project.
 Source0:        https://github.com/openjdk/%{openjdk_repo}/archive/%{openjdk_tag}.tar.gz
+# FIPS support sources.
+Source1:        https://github.com/rh-openjdk/nss-native-fips-key-import-export-adapter/releases/download/%{nssadapter_version}/%{nssadapter_name}.tar.xz
 # Systemtap tapsets. Zipped up to keep it small.
 Source10:       systemtap-tapset.tar.xz
 # Desktop files. Adapated from IcedTea.
 Source11:       jconsole.desktop.in
 # Ensure we aren't using the limited crypto policy
-Source14:       TestCryptoLevel.java
+Source13:       TestCryptoLevel.java
 # Ensure ECDSA is working
-Source15:       TestECDSA.java
+Source14:       TestECDSA.java
+# Verify system crypto (policy) can be disabled via a property
+Source15:       TestSecurityProperties.java
 # Fresh config.guess and config.sub files
 # wget -O config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD'
 Source100:      config.guess
 # wget -O config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'
 Source101:      config.sub
+# script to generate the infrastructure for FIPS support
+Source200:      create-crypto-properties-files.bash
 # RHBZ 808293
 Patch4:         PStack-808293.patch
 # Allow multiple initialization of PKCS11 libraries
@@ -160,6 +175,7 @@ Patch12:        reproducible-jlink.patch
 Patch13:        implicit-pointer-decl.patch
 Patch15:        system-pcsclite.patch
 Patch16:        fips.patch
+Patch17:        0001-Don-t-make-missing-system-crypto-policies-fatal.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
@@ -168,6 +184,9 @@ Patch20:        loadAssistiveTechnologies.patch
 Patch200:       ppc_stack_overflow_fix.patch
 #
 Patch302:       disable-doclint-by-default.patch
+#
+Patch400:       nssadapter-Fix-build-on-openSUSE.patch
+Patch401:       nssadapter-Allow-overriding-of-gcc-name.patch
 #
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -195,7 +214,8 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt
-BuildRequires:  mozilla-nss-devel >= 3.53
+# libnssadapter.so build requirements
+BuildRequires:  mozilla-nss-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  xorg-x11-proto-devel
@@ -265,14 +285,14 @@ The OpenJDK %{featurever} runtime environment.
 Summary:        OpenJDK %{featurever} Runtime Environment
 Group:          Development/Languages/Java
 Requires:       jpackage-utils
-Requires:       mozilla-nss
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 Requires(posttrans): java-ca-certificates
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun): update-alternatives
-Recommends:     mozilla-nss-sysinit
 Obsoletes:      %{name}-accessibility
+Provides:       timezone-java
+Provides:       tzdata-java
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
@@ -364,7 +384,7 @@ Provides:       java-javadoc = %{version}-%{release}
 The OpenJDK %{featurever} API documentation.
 
 %prep
-%setup -q -n %{openjdk_dir}
+%setup -q -n %{openjdk_dir} -a1
 
 # Replace config.sub and config.guess with fresh versions
 cp %{SOURCE100} make/autoconf/build-aux/
@@ -393,12 +413,19 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %endif
 
 %patch -P 16 -p1
+%patch -P 17 -p1
 
 %patch -P 20 -p1
 
 %patch -P 200 -p1
 
 %patch -P 302 -p1
+
+# Patch NSS adapter
+pushd %{nssadapter_name}
+%patch -P 400 -p1
+%patch -P 401 -p1
+popd # nssadapter
 
 # Extract systemtap tapsets
 
@@ -445,7 +472,7 @@ bash ../configure \
     --with-version-pre="" \
 %endif
     --with-version-build="%{buildver}" \
-    --with-version-opt="suse-%{suse_version}-%{_arch}" \
+    --with-version-opt="suse-0%{?suse_version}-%{_arch}" \
 %if %{with zero}
     --with-jvm-variants=zero \
 %else
@@ -480,7 +507,16 @@ find %{imagesdir}/jdk -iname '*.debuginfo' -exec rm {} \;
 
 popd >& /dev/null
 
+%if 0%{?with_gcc}
+CC="gcc-%{with_gcc}" \
+%endif
+%{make} -C %{nssadapter_name}
+
 export JAVA_HOME=$(pwd)/%{buildoutputdir}/%{imagesdir}/jdk
+
+# FIPS stuff
+install %{nssadapter_name}/bin/libnssadapter.so $JAVA_HOME/lib/
+bash -xe %{SOURCE200} $JAVA_HOME/conf/security %{_jvmdir}/%{sdkdir}/lib/libnssadapter.so
 
 # cacerts are generated in runtime in openSUSE
 if [ -f %{buildoutputdir}/%{imagesdir}/jdk/lib/security/cacerts ]; then
@@ -502,13 +538,22 @@ if [ -f "$ZERO_JVM" ] ; then
 fi
 
 # Check unlimited policy has been used
-$JAVA_HOME/bin/javac -d . %{SOURCE14}
+$JAVA_HOME/bin/javac -d . %{SOURCE13}
 $JAVA_HOME/bin/java --add-opens java.base/javax.crypto=ALL-UNNAMED TestCryptoLevel
 
 # Check ECC is working
+$JAVA_HOME/bin/javac -d . %{SOURCE14}
+$JAVA_HOME/bin/java $(echo $(basename %{SOURCE14})|sed "s|\.java||") || true
+
+# Check system crypto (policy) is active and can be disabled
+# Test takes a single argument - true or false - to state whether system
+# security properties are enabled or not.
 $JAVA_HOME/bin/javac -d . %{SOURCE15}
-#FIXME make it run after system NSS support?
-$JAVA_HOME/bin/java $(echo $(basename %{SOURCE15})|sed "s|\.java||") || true
+export PROG=$(echo $(basename %{SOURCE15})|sed "s|\.java||")
+export SEC_DEBUG="-Djava.security.debug=properties"
+$JAVA_HOME/bin/java ${SEC_DEBUG} ${PROG} %{crypto_policy_active}
+$JAVA_HOME/bin/java ${SEC_DEBUG} -Dsystem.crypto-policies=true ${PROG} %{crypto_policy_active}
+$JAVA_HOME/bin/java ${SEC_DEBUG} -Dsystem.crypto-policies=false ${PROG} false
 
 %install
 export LANG=en_US.UTF-8
@@ -761,9 +806,11 @@ fi
 %dir %{_jvmdir}/%{sdkdir}/conf/management
 %dir %{_jvmdir}/%{sdkdir}/conf/sdp
 %dir %{_jvmdir}/%{sdkdir}/conf/security
+%dir %{_jvmdir}/%{sdkdir}/conf/security/false
 %dir %{_jvmdir}/%{sdkdir}/conf/security/policy
 %dir %{_jvmdir}/%{sdkdir}/conf/security/policy/unlimited
 %dir %{_jvmdir}/%{sdkdir}/conf/security/policy/limited
+%dir %{_jvmdir}/%{sdkdir}/conf/security/true
 
 %dir %{_jvmdir}/%{sdkdir}
 %{_jvmdir}/%{jrelnk}
@@ -782,7 +829,7 @@ fi
 %{_jvmdir}/%{sdkdir}/conf/management/management.properties
 %{_jvmdir}/%{sdkdir}/conf/net.properties
 %{_jvmdir}/%{sdkdir}/conf/sdp/sdp.conf.template
-#{_jvmdir}/%{sdkdir}/conf/security/java.policy
+%{_jvmdir}/%{sdkdir}/conf/security/crypto-policies.properties
 %{_jvmdir}/%{sdkdir}/conf/security/java.security
 %{_jvmdir}/%{sdkdir}/conf/security/policy/limited/default_local.policy
 %{_jvmdir}/%{sdkdir}/conf/security/policy/limited/default_US_export.policy
@@ -790,6 +837,10 @@ fi
 %{_jvmdir}/%{sdkdir}/conf/security/policy/README.txt
 %{_jvmdir}/%{sdkdir}/conf/security/policy/unlimited/default_local.policy
 %{_jvmdir}/%{sdkdir}/conf/security/policy/unlimited/default_US_export.policy
+%{_jvmdir}/%{sdkdir}/conf/security/true/fips.properties
+%{_jvmdir}/%{sdkdir}/conf/security/true/crypto-policies.properties
+%{_jvmdir}/%{sdkdir}/conf/security/false/fips.properties
+%{_jvmdir}/%{sdkdir}/conf/security/false/crypto-policies.properties
 %{_jvmdir}/%{sdkdir}/conf/sound.properties
 %{_jvmdir}/%{sdkdir}/lib/desktop/jconsole.desktop
 %{_jvmdir}/%{sdkdir}/lib/jexec
@@ -825,10 +876,10 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/libmlib_image.so
 %{_jvmdir}/%{sdkdir}/lib/libnet.so
 %{_jvmdir}/%{sdkdir}/lib/libnio.so
+%{_jvmdir}/%{sdkdir}/lib/libnssadapter.so
 %{_jvmdir}/%{sdkdir}/lib/libprefs.so
 %{_jvmdir}/%{sdkdir}/lib/librmi.so
 %{_jvmdir}/%{sdkdir}/lib/libsctp.so
-%{_jvmdir}/%{sdkdir}/lib/libsystemconf.so
 %ifarch x86_64
 %{_jvmdir}/%{sdkdir}/lib/libjsvml.so
 %{_jvmdir}/%{sdkdir}/lib/libsimdsort.so
@@ -849,8 +900,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/*/classes*.jsa
 
 %config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blocked.certs
-%config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.fips.cfg
-#{_jvmdir}/%{sdkdir}/lib/security/default.policy
+%config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/SunPKCS11-FIPS.cfg
 %{_jvmdir}/%{sdkdir}/lib/security/public_suffix_list.dat
 
 %files devel

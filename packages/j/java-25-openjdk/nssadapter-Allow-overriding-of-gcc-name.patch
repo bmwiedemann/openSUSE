@@ -1,0 +1,25 @@
+From 111cc0d03a3876b9ac87c6cbb217436cd3513074 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Mon, 16 Mar 2026 19:16:14 +0100
+Subject: [PATCH 2/2] Allow overriding of gcc name
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index bbdc671..957cc54 100644
+--- a/Makefile
++++ b/Makefile
+@@ -9,7 +9,7 @@ BIN_DIR      := bin
+ OUTPUT       := $(BIN_DIR)/lib$(NAME).so
+ DBG_SENTINEL := $(BIN_DIR)/_built_in_debug_mode_
+ 
+-CC            = gcc
++CC            ?= gcc
+ DEVEL_PKGS    = nss
+ LIB_DIR       = $(shell pkg-config --variable=libdir nss)
+ SHARED_LIBS   = pthread softokn3 nss3
+-- 
+2.53.0
+

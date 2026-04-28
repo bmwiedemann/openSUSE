@@ -39,4 +39,20 @@
     <comment>January 2026 CPU</comment>
     <requestid>1329356</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3a5c69e2d5f6d7c9446ed88c2104ff40</srcmd5>
+    <version>25.0.2.0</version>
+    <time>1774469837</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342270</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4b28605c798930b21d8747fb158b8a73</srcmd5>
+    <version>25.0.3.0</version>
+    <time>1777370058</time>
+    <user>anag_factory</user>
+    <comment>April 2026 CPU</comment>
+    <requestid>1349427</requestid>
+  </revision>
 </revisionlist>
