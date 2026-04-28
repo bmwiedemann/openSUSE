@@ -28,7 +28,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-cryptography%{psuffix}
 # ALWAYS KEEP IN SYNC WITH python-cryptography-vectors!
-Version:        46.0.7
+Version:        47.0.0
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
@@ -37,13 +37,6 @@ Source0:        https://files.pythonhosted.org/packages/source/c/cryptography/cr
 # use `osc service manualrun` to regenerate
 Source2:        vendor.tar.zst
 Source4:        python-cryptography.keyring
-# PATCH-FEATURE-OPENSUSE no-pytest_benchmark.patch mcepl@suse.com
-# We don't need no benchmarking and coverage measurement
-Patch4:         no-pytest_benchmark.patch
-# PATCH-FIX-OPENSUSE Make-unsafe-subinterpreter-support-available-via-cfg.patch boo#1248987
-Patch5:         Make-unsafe-subinterpreter-support-available-via-cfg.patch
-# PATCH-FIX-UPSTREAM gh#pyca/cryptography#14319
-Patch6:         support-maturin-1.12.patch
 BuildRequires:  %{python_module cffi >= 1.12}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module exceptiongroup}

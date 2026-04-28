@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Sun Apr 26 11:02:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 47.0.0:
+  * Support for Python 3.8 is deprecated and will be removed in
+    the next cryptography release.
+  * BACKWARDS INCOMPATIBLE: Support for binary elliptic curves
+    (SECT* classes) has been removed. These curves are rarely
+    used and have additional security considerations that make
+    them undesirable.
+  * BACKWARDS INCOMPATIBLE: Support for OpenSSL 1.1.x has been
+    removed. OpenSSL 3.0.0 or later is now required. LibreSSL,
+    BoringSSL, and AWS-LC continue to be supported.
+  * BACKWARDS INCOMPATIBLE: Dropped support for LibreSSL < 4.1.
+  * BACKWARDS INCOMPATIBLE: Loading keys with unsupported
+    algorithms or keys with unsupported explicit curve encodings
+    now raises
+    :class:`~cryptography.exceptions.UnsupportedAlgorithm`
+    instead of ValueError. This change affects :func:`~cryptograp
+    hy.hazmat.primitives.serialization.load_pem_private_key`, :fu
+    nc:`~cryptography.hazmat.primitives.serialization.load_der_pr
+    ivate_key`, :func:`~cryptography.hazmat.primitives.serializat
+    ion.load_pem_public_key`, :func:`~cryptography.hazmat.primiti
+    ves.serialization.load_der_public_key`, and
+    :meth:`~cryptography.x509.Certificate.public_key` when called
+    on certificates with unsupported public key algorithms.
+  * BACKWARDS INCOMPATIBLE: When parsing elliptic curve private
+    keys, we now reject keys that incorrectly encode a private
+    key of the wrong length because such keys are impossible to
+    process in a constant-time manner. We do not believe keys
+    with this problem are in wide use, however we may revert this
+    change based on the feedback we receive.
+  * Deprecated passing 64-bit (8-byte) and 128-bit (16-byte) keys
+    to :class:`~cryptography.hazmat.decrepit.ciphers.algorithms.T
+    ripleDES`. In a future release, only 192-bit (24-byte) keys
+    will be accepted. Users should expand shorter keys themselves
+    (e.g., for single DES: key + key + key, for two-key: key +
+    key[:8]).
+  * Updated the minimum supported Rust version (MSRV) to 1.83.0,
+    from 1.74.0.
+  * Support for x86_64 macOS (including publishing wheels) is
+    deprecated and will be removed in the next release. We will
+    switch to publishing an arm64 only wheel for macOS.
+  * Support for 32-bit Windows (including publishing wheels) is
+    deprecated and will be removed in the next release. Users
+    should move to a 64-bit Python installation.
+  * public_bytes and private_bytes methods on keys now raise
+    TypeError (instead of ValueError) if an invalid encoding is
+    provided for the given format.
+  * Moved
+    :class:`~cryptography.hazmat.decrepit.ciphers.modes.CFB`,
+    :class:`~cryptography.hazmat.decrepit.ciphers.modes.OFB`, and
+    :class:`~cryptography.hazmat.decrepit.ciphers.modes.CFB8`
+    into :doc:`/hazmat/decrepit/index` and deprecated them in the
+    modes module. They will be removed from the modes module in
+    49.0.0.
+  * Moved :class:`~cryptography.hazmat.primitives.ciphers.algorit
+    hms.Camellia` into  :doc:`/hazmat/decrepit/index` and
+    deprecated it in the cipher module. It will be removed from
+    the cipher module in 49.0.0.
+  * Added
+    :meth:`~cryptography.hazmat.primitives.kdf.hkdf.HKDF.extract`
+    to :class:`~cryptography.hazmat.primitives.kdf.hkdf.HKDF`.
+    The previous private implementation will be removed in
+    49.0.0.
+  * Added support for loading elliptic curve keys that contain
+    explicit encodings of the curves secp256r1, secp384r1, and
+    secp521r1.
+  * Added support for
+    :class:`~cryptography.hazmat.primitives.kdf.argon2.Argon2d`
+    and
+    :class:`~cryptography.hazmat.primitives.kdf.argon2.Argon2i`
+    when using OpenSSL 3.2.0+.
+  * Added derive_into methods to
+    :class:`~cryptography.hazmat.primitives.kdf.hkdf.HKDF`,
+    :class:`~cryptography.hazmat.primitives.kdf.hkdf.HKDFExpand`,
+    :class:`~cryptography.hazmat.primitives.kdf.concatkdf.ConcatK
+    DFHash`, :class:`~cryptography.hazmat.primitives.kdf.concatkd
+    f.ConcatKDFHMAC`,
+    :class:`~cryptography.hazmat.primitives.kdf.argon2.Argon2id`,
+    :class:`~cryptography.hazmat.primitives.kdf.pbkdf2.PBKDF2HMAC
+    `,
+    :class:`~cryptography.hazmat.primitives.kdf.kbkdf.KBKDFHMAC`,
+    :class:`~cryptography.hazmat.primitives.kdf.kbkdf.KBKDFCMAC`,
+    :class:`~cryptography.hazmat.primitives.kdf.scrypt.Scrypt`,
+    and
+    :class:`~cryptography.hazmat.primitives.kdf.x963kdf.X963KDF`
+    to allow deriving keys directly into pre-allocated buffers.
+  * Added encrypt_into and decrypt_into methods to
+    :class:`~cryptography.hazmat.primitives.ciphers.aead.AESCCM`,
+    :class:`~cryptography.hazmat.primitives.ciphers.aead.AESGCM`,
+    :class:`~cryptography.hazmat.primitives.ciphers.aead.AESGCMSI
+    V`, :class:`~cryptography.hazmat.primitives.ciphers.aead.AESO
+    CB3`,
+    :class:`~cryptography.hazmat.primitives.ciphers.aead.AESSIV`,
+    and :class:`~cryptography.hazmat.primitives.ciphers.aead.ChaC
+    ha20Poly1305` to allow encrypting directly into a pre-
+    allocated buffer.
+  * Added support for PKCS1v15 signing without DigestInfo using :
+    class:`~cryptography.hazmat.primitives.asymmetric.utils.NoDig
+    estInfo`.
+  * Added
+    :meth:`~cryptography.hazmat.primitives.hashes.Hash.hash`, a
+    one-shot method for computing hashes.
+  * Added :doc:`/hazmat/primitives/hpke` support implementing RFC
+    9180 for hybrid authenticated encryption.
+  * Added new :doc:`/hazmat/primitives/asymmetric/mlkem` module
+    with support for ML-KEM key encapsulation with AWS-LC and
+    BoringSSL. Note: Post-quantum algorithm support requires AWS-
+    LC or BoringSSL. As we ship our wheels with OpenSSL, most
+    users will not have access to these APIs yet. See
+    :doc:`/statements/state-of-openssl` for more information on
+    OpenSSL support.
+  * Note: Post-quantum algorithm support requires AWS-LC or
+    BoringSSL. As we ship our wheels with OpenSSL, most users
+    will not have access to these APIs yet. See
+    :doc:`/statements/state-of-openssl` for more information on
+    OpenSSL support.
+  * Added new :doc:`/hazmat/primitives/asymmetric/mldsa` module
+    with support for ML-DSA signing and verification with AWS-LC
+    and BoringSSL. Note: Post-quantum algorithm support requires
+    AWS-LC or BoringSSL. As we ship our wheels with OpenSSL, most
+    users will not have access to these APIs yet. See
+    :doc:`/statements/state-of-openssl` for more information on
+    OpenSSL support.
+  * Note: Post-quantum algorithm support requires AWS-LC or
+    BoringSSL. As we ship our wheels with OpenSSL, most users
+    will not have access to these APIs yet. See
+    :doc:`/statements/state-of-openssl` for more information on
+    OpenSSL support.
+  * Added new :doc:`/hazmat/asn1/index` module with support for
+    declaratively defining custom ASN.1 types and
+    encoding/decoding them.
+  * Fixed compilation when using LibreSSL 4.3.0 and OpenSSL
+    4.0.0.
+  * Updated Windows, macOS, and Linux wheels to be compiled with
+    OpenSSL 4.0.0.
+
+-------------------------------------------------------------------
 Fri Apr 10 09:13:45 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 46.0.7 (fixes CVE-2026-39892, bsc#1261863)
@@ -6,6 +144,10 @@ Fri Apr 10 09:13:45 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
     passed to APIs that accept Python buffers, which could lead to buffer
     overflow. **CVE-2026-39892**
   * Updated Windows, macOS, and Linux wheels to be compiled with OpenSSL 3.5.6.
+- drop support-maturin-1.12.patch (upstream)
+- drop no-pytest_benchmark.patch,
+  Make-unsafe-subinterpreter-support-available-via-cfg.patch:
+  obsolete
 
 -------------------------------------------------------------------
 Tue Mar 31 03:34:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>

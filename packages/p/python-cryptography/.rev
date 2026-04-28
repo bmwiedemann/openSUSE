@@ -1389,4 +1389,41 @@
     <comment></comment>
     <requestid>1345804</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>722d77d185101bbf68a48751d09ca08b</srcmd5>
+    <version>47.0.0</version>
+    <time>1777370020</time>
+    <user>anag_factory</user>
+    <comment>- update to 47.0.0:
+  * Support for Python 3.8 is deprecated and will be removed in
+    the next cryptography release.
+  * BACKWARDS INCOMPATIBLE: Support for binary elliptic curves
+    (SECT* classes) has been removed. These curves are rarely
+    used and have additional security considerations that make
+    them undesirable.
+  * BACKWARDS INCOMPATIBLE: Support for OpenSSL 1.1.x has been
+    removed. OpenSSL 3.0.0 or later is now required. LibreSSL,
+    BoringSSL, and AWS-LC continue to be supported.
+  * BACKWARDS INCOMPATIBLE: Dropped support for LibreSSL &lt; 4.1.
+  * BACKWARDS INCOMPATIBLE: Loading keys with unsupported
+    algorithms or keys with unsupported explicit curve encodings
+    now raises
+    :class:`~cryptography.exceptions.UnsupportedAlgorithm`
+    instead of ValueError. This change affects :func:`~cryptograp
+    hy.hazmat.primitives.serialization.load_pem_private_key`, :fu
+    nc:`~cryptography.hazmat.primitives.serialization.load_der_pr
+    ivate_key`, :func:`~cryptography.hazmat.primitives.serializat
+    ion.load_pem_public_key`, :func:`~cryptography.hazmat.primiti
+    ves.serialization.load_der_public_key`, and
+    :meth:`~cryptography.x509.Certificate.public_key` when called
+    on certificates with unsupported public key algorithms.
+  * BACKWARDS INCOMPATIBLE: When parsing elliptic curve private
+    keys, we now reject keys that incorrectly encode a private
+    key of the wrong length because such keys are impossible to
+    process in a constant-time manner. We do not believe keys
+    with this problem are in wide use, however we may revert this
+    change based on the feedback we receive.
+  * Deprecated passing 64-bit (8-byte) and 128-bit (16-byte) keys</comment>
+    <requestid>1349381</requestid>
+  </revision>
 </revisionlist>
