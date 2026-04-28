@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 27 07:33:48 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
+
+- BDSA-2025-60810: Harden Tornado from invalid HTTP reason phrases
+- Read full URI from ldap pillar config (bsc#1254900)
+
+- Added:
+  * bdsa-2025-60810-harden-against-invalid-http-reason-p.patch
+  * read-full-uri-from-ldap-pillar-config-753.patch
+
+-------------------------------------------------------------------
 Tue Apr 14 14:48:40 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
 
 - Fix testsuite failures

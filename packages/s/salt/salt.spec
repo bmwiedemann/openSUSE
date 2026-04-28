@@ -633,6 +633,11 @@ Patch200:       backport-of-the-cve-2026-31958-fix-bsc-1259554.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68928
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/754
 Patch201:       fix-test-failures-754.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/753
+Patch202:       read-full-uri-from-ldap-pillar-config-753.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68855
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/757
+Patch203:       bdsa-2025-60810-harden-against-invalid-http-reason-p.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

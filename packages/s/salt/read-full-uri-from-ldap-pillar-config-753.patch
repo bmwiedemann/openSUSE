@@ -1,0 +1,47 @@
+From 1f9fcdede42dc1ccf3866726c2126d9a92ec6df0 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Wed, 22 Apr 2026 13:47:43 +0200
+Subject: [PATCH] Read full URI from ldap pillar config (#753)
+
+A full URI allows the user to set a scheme for the ldap connection and
+enables tls. This is a workaround for the ldap execution module, which
+is used by the ldap pillar module.
+
+While the ldap auth module supports both "tls" and "starttls" modes, the
+ldap execution module only supports "starttls", which it calls "tls".
+
+Fixes https://bugzilla.suse.com/show_bug.cgi?id=1254900
+---
+ salt/modules/ldapmod.py    | 2 +-
+ salt/pillar/pillar_ldap.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/salt/modules/ldapmod.py b/salt/modules/ldapmod.py
+index 8b1e22d994..9cffd76a1e 100644
+--- a/salt/modules/ldapmod.py
++++ b/salt/modules/ldapmod.py
+@@ -190,7 +190,7 @@ class _LDAPConnection:
+         self.binddn = binddn
+         self.bindpw = bindpw
+ 
+-        if self.uri == "":
++        if self.uri is None or self.uri == "":
+             self.uri = "ldap://{}:{}".format(self.server, self.port)
+ 
+         try:
+diff --git a/salt/pillar/pillar_ldap.py b/salt/pillar/pillar_ldap.py
+index 9649194ad0..be19f6d296 100644
+--- a/salt/pillar/pillar_ldap.py
++++ b/salt/pillar/pillar_ldap.py
+@@ -271,7 +271,7 @@ def _do_search(conf):
+     """
+     # Build LDAP connection args
+     connargs = {}
+-    for name in ["server", "port", "tls", "binddn", "bindpw", "anonymous"]:
++    for name in ["uri", "server", "port", "tls", "binddn", "bindpw", "anonymous"]:
+         connargs[name] = _config(name, conf)
+     if connargs["binddn"] and connargs["bindpw"]:
+         connargs["anonymous"] = False
+-- 
+2.53.0
+
