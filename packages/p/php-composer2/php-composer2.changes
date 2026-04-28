@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 27 07:22:50 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 2.4.7
+  * Fixes regression calling custom script command aliases that are called a substring
+    of a composer command (#12802)
+- version update to 2.9.6
+  * Security: Fixed command injection via malicious Perforce reference (GHSA-gqw4-4w2p-838q / CVE-2026-40261)
+  * Security: Fixed command injection via malicious Perforce repository definition (GHSA-wg36-wvj6-r67p / CVE-2026-40176)
+  * Security: Fixed git credentials remaining in git mirror .git/config after clone or update failed (2bcbfc3d)
+  * Security: Fixed usage of insecure 3DES ciphers when ext-curl is missing (5e71d77e)
+  * Security: Fixed Perforce unescaped user input in queryP4User shell command (ef3fc088)
+  * Security: Hardened git/hg/perforce/fossil identifier validation to ensure branch names starting with - do
+     not cause issues (6621d45, d836b90, 5e08c764)
+  * Fixed inconsistent treatment of SingleCommandApplication script commands wrt autoloading (#12758)
+  * Fixed GitHub API authentication errors not being visible to the user (#12737)
+  * Fixed some platform package parsing failing when Composer runs in web SAPIs (#12735)
+  * Fixed error reporting for clarity when a constraint cannot be parsed (#12743)
+- version update to 2.9.5
+  * Added support for new pie download-url-methods (#12727)
+  * Fixed detection of 7z when installed as 7za on some linux systems (#12731)
+  * Fixed warning because of the symfony/process CVE, 2.9.4 had a workaround already
+- version update 2.9.4
+  * Added active plugins to the diagnose command output (#12706)
+  * Fixed HTTP/3 causing issues with proxies (#12699)
+  * Fixed show command regression with long descriptions containing unicode characters (#12704)
+  * Fixed regression handling invalid unicode sequences in output (#12707)
+  * Fixed git rev-list usages to support older pre-2.33 git versions (#12705)
+  * Fixed issue handling paths with = in them on Windows (#12726)
+- fixes [bsc#1262254], [bsc#1262255]
+
+-------------------------------------------------------------------
 Thu Jan 15 13:17:09 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 2.9.3
