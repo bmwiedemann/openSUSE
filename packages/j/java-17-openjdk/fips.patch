@@ -520,10 +520,10 @@
          // reuse attribute map and reset before each reuse
          HashMap<String, String> attrs = new HashMap<>(3);
 +        if (!systemFipsEnabled) {
-         attrs.put("SupportedModes", "ECB");
-         attrs.put("SupportedPaddings", "NOPADDING|PKCS1PADDING|OAEPPADDING"
-                 + "|OAEPWITHMD5ANDMGF1PADDING"
-@@ -422,6 +428,7 @@ public final class SunJCE extends Provider {
+         attrs.put("SupportedKeyClasses",
+                 "java.security.interfaces.RSAPublicKey" +
+                 "|java.security.interfaces.RSAPrivateKey");
+@@ -425,6 +431,7 @@ public final class SunJCE extends Provider {
          psA("KeyPairGenerator", "DiffieHellman",
                  "com.sun.crypto.provider.DHKeyPairGenerator",
                  null);
@@ -531,7 +531,7 @@
  
          /*
           * Algorithm parameter generation engines
-@@ -430,6 +437,7 @@ public final class SunJCE extends Provider {
+@@ -433,6 +440,7 @@ public final class SunJCE extends Provider {
                  "DiffieHellman", "com.sun.crypto.provider.DHParameterGenerator",
                  null);
  
@@ -539,7 +539,7 @@
          /*
           * Key Agreement engines
           */
-@@ -439,6 +447,7 @@ public final class SunJCE extends Provider {
+@@ -442,6 +450,7 @@ public final class SunJCE extends Provider {
          psA("KeyAgreement", "DiffieHellman",
                  "com.sun.crypto.provider.DHKeyAgreement",
                  attrs);
@@ -547,7 +547,7 @@
  
          /*
           * Algorithm Parameter engines
-@@ -610,6 +619,7 @@ public final class SunJCE extends Provider {
+@@ -613,6 +622,7 @@ public final class SunJCE extends Provider {
          ps("SecretKeyFactory", "PBEWithHmacSHA512AndAES_256",
                  "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA512AndAES_256");
  
@@ -555,7 +555,7 @@
          // PBKDF2
          psA("SecretKeyFactory", "PBKDF2WithHmacSHA1",
                  "com.sun.crypto.provider.PBKDF2Core$HmacSHA1",
-@@ -723,6 +733,7 @@ public final class SunJCE extends Provider {
+@@ -726,6 +736,7 @@ public final class SunJCE extends Provider {
                  "com.sun.crypto.provider.TlsRsaPremasterSecretGenerator",
                  List.of("SunTls12RsaPremasterSecret"), null);
      }
@@ -1417,7 +1417,7 @@
 +}
 --- a/src/java.base/share/conf/security/java.security
 +++ b/src/java.base/share/conf/security/java.security
-@@ -83,6 +83,17 @@
+@@ -82,6 +82,17 @@ security.provider.tbd=Apple
  #endif
  security.provider.tbd=SunPKCS11
  
@@ -1435,7 +1435,7 @@
  #
  # A list of preferred providers for specific algorithms. These providers will
  # be searched for matching algorithms before the list of registered providers.
-@@ -293,6 +304,47 @@ policy.ignoreIdentityScope=false
+@@ -292,6 +303,47 @@ policy.ignoreIdentityScope=false
  #
  keystore.type=pkcs12
  
@@ -1483,7 +1483,7 @@
  #
  # Controls compatibility mode for JKS and PKCS12 keystore types.
  #
-@@ -330,6 +382,13 @@ package.definition=sun.misc.,\
+@@ -329,6 +381,13 @@ package.definition=sun.misc.,\
  #
  security.overridePropertiesFile=true
  
@@ -1510,7 +1510,7 @@
 +
 --- a/src/java.base/share/lib/security/default.policy
 +++ b/src/java.base/share/lib/security/default.policy
-@@ -123,6 +123,7 @@ grant codeBase "jrt:/jdk.charsets" {
+@@ -124,6 +124,7 @@ grant codeBase "jrt:/jdk.charsets" {
  grant codeBase "jrt:/jdk.crypto.ec" {
      permission java.lang.RuntimePermission
                     "accessClassInPackage.sun.security.*";
@@ -1518,7 +1518,7 @@
      permission java.lang.RuntimePermission "loadLibrary.sunec";
      permission java.security.SecurityPermission "putProviderProperty.SunEC";
      permission java.security.SecurityPermission "clearProviderProperties.SunEC";
-@@ -132,6 +133,7 @@ grant codeBase "jrt:/jdk.crypto.ec" {
+@@ -133,6 +134,7 @@ grant codeBase "jrt:/jdk.crypto.ec" {
  grant codeBase "jrt:/jdk.crypto.cryptoki" {
      permission java.lang.RuntimePermission
                     "accessClassInPackage.com.sun.crypto.provider";
@@ -1526,7 +1526,7 @@
      permission java.lang.RuntimePermission "accessClassInPackage.jdk.internal.misc";
      permission java.lang.RuntimePermission
                     "accessClassInPackage.sun.security.*";
-@@ -142,6 +144,8 @@ grant codeBase "jrt:/jdk.crypto.cryptoki" {
+@@ -143,6 +145,8 @@ grant codeBase "jrt:/jdk.crypto.cryptoki" {
      permission java.util.PropertyPermission "os.name", "read";
      permission java.util.PropertyPermission "os.arch", "read";
      permission java.util.PropertyPermission "jdk.crypto.KeyAgreement.legacyKDF", "read";
@@ -3285,7 +3285,7 @@
          d(SIG, "RawDSA",        P11Signature,
                  List.of("NONEwithDSA"),
                  m(CKM_DSA));
-@@ -1211,11 +1423,52 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -1213,11 +1425,52 @@ public final class SunPKCS11 extends AuthProvider {
          }
  
          @Override
@@ -3338,7 +3338,7 @@
              try {
                  return newInstance0(param);
              } catch (PKCS11Exception e) {
-@@ -1235,6 +1488,8 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -1237,6 +1490,8 @@ public final class SunPKCS11 extends AuthProvider {
                  } else if (algorithm.endsWith("GCM/NoPadding") ||
                             algorithm.startsWith("ChaCha20-Poly1305")) {
                      return new P11AEADCipher(token, algorithm, mechanism);
@@ -3347,7 +3347,7 @@
                  } else {
                      return new P11Cipher(token, algorithm, mechanism);
                  }
-@@ -1570,6 +1825,9 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -1574,6 +1829,9 @@ public final class SunPKCS11 extends AuthProvider {
          try {
              session = token.getOpSession();
              p11.C_Logout(session.id());
@@ -4099,7 +4099,7 @@
  }
 --- a/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c
 +++ b/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c
-@@ -1518,6 +1518,10 @@ CK_VOID_PTR jMechParamToCKMechParamPtrSlow(JNIEnv *env, jobject jParam,
+@@ -1517,6 +1517,10 @@ CK_VOID_PTR jMechParamToCKMechParamPtrSlow(JNIEnv *env, jobject jParam,
          case CKM_PBE_SHA1_DES3_EDE_CBC:
          case CKM_PBE_SHA1_DES2_EDE_CBC:
          case CKM_PBA_SHA1_WITH_SHA1_HMAC:
@@ -4110,7 +4110,7 @@
              ckpParamPtr = jPbeParamToCKPbeParamPtr(env, jParam, ckpLength);
              break;
          case CKM_PKCS5_PBKD2:
-@@ -1661,13 +1665,13 @@ jPbeParamToCKPbeParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pLength)
+@@ -1660,13 +1664,13 @@ jPbeParamToCKPbeParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pLength)
      // retrieve java values
      jPbeParamsClass = (*env)->FindClass(env, CLASS_PBE_PARAMS);
      if (jPbeParamsClass == NULL) { return NULL; }
@@ -4126,7 +4126,7 @@
      if (fieldID == NULL) { return NULL; }
      jSalt = (*env)->GetObjectField(env, jParam, fieldID);
      fieldID = (*env)->GetFieldID(env, jPbeParamsClass, "ulIteration", "J");
-@@ -1683,15 +1687,15 @@ jPbeParamToCKPbeParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pLength)
+@@ -1682,15 +1686,15 @@ jPbeParamToCKPbeParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pLength)
  
      // populate using java values
      ckParamPtr->ulIteration = jLongToCKULong(jIteration);
@@ -4145,7 +4145,7 @@
      if ((*env)->ExceptionCheck(env)) {
          goto cleanup;
      }
-@@ -1770,31 +1774,59 @@ void copyBackPBEInitializationVector(JNIEnv *env, CK_MECHANISM *ckMechanism, job
+@@ -1769,31 +1773,59 @@ void copyBackPBEInitializationVector(JNIEnv *env, CK_MECHANISM *ckMechanism, job
      }
  }
  
@@ -4214,7 +4214,7 @@
      fieldID = (*env)->GetFieldID(env, jPkcs5Pbkd2ParamsClass, "saltSource", "J");
      if (fieldID == NULL) { return NULL; }
      jSaltSource = (*env)->GetLongField(env, jParam, fieldID);
-@@ -1810,36 +1842,60 @@ jPkcs5Pbkd2ParamToCKPkcs5Pbkd2ParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pL
+@@ -1809,36 +1841,60 @@ jPkcs5Pbkd2ParamToCKPkcs5Pbkd2ParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pL
      fieldID = (*env)->GetFieldID(env, jPkcs5Pbkd2ParamsClass, "pPrfData", "[B");
      if (fieldID == NULL) { return NULL; }
      jPrfData = (*env)->GetObjectField(env, jParam, fieldID);

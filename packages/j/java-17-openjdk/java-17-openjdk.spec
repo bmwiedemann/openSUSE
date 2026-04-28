@@ -33,8 +33,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       18
-%global buildver        8
+%global updatever       19
+%global buildver        10
 %global openjdk_repo    jdk17u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -103,6 +103,9 @@
 %global package_version %{featurever}.%{interimver}.%{updatever}.%{?patchver:%{patchver}}%{!?patchver:0}~%{buildver}
 %endif
 %global NSS_LIBDIR %(pkg-config --variable=libdir nss)
+%if 0%{?gcc_version} < 7 || 0%{?suse_version} < 1500
+%define with_gcc 7
+%endif
 %bcond_with zero
 %if ! %{with zero}
 %global with_systemtap 1
@@ -125,14 +128,11 @@
 %global tapsetroot %{_datadir}/systemtap
 %global tapsetdir %{tapsetroot}/tapset/%{_build_cpu}
 %endif
-%if 0%{?gcc_version} < 7 || 0%{?suse_version} < 1500
-%define with_gcc 7
-%endif
 Name:           java-%{featurever}-openjdk
 Version:        %{package_version}
 Release:        0
 Summary:        OpenJDK %{featurever} Runtime Environment
-License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
+License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND LicenseRef-SUSE-Public-Domain AND W3C
 Group:          Development/Languages/Java
 URL:            https://openjdk.java.net/
 # Sources from upstream OpenJDK project.
@@ -288,6 +288,8 @@ Requires(posttrans): java-ca-certificates
 Requires(postun): update-alternatives
 Recommends:     mozilla-nss-sysinit
 Obsoletes:      %{name}-accessibility
+Provides:       timezone-java
+Provides:       tzdata-java
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
@@ -479,7 +481,7 @@ bash ../configure \
     --with-version-pre="" \
 %endif
     --with-version-build="%{buildver}" \
-    --with-version-opt="suse-%{suse_version}-%{_arch}" \
+    --with-version-opt="suse-0%{?suse_version}-%{_arch}" \
 %if %{with zero}
     --with-jvm-variants=zero \
 %else
