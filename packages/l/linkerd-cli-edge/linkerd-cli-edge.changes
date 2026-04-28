@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Apr 26 08:02:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.4.4:
+  * fix(CLI): Apply overrides to chart values on install #15025
+    (#15181)
+  * build(deps): bump bitflags from 2.11.0 to 2.11.1 (#15193)
+  * build(deps): bump typenum from 1.19.0 to 1.20.0 (#15192)
+  * build(deps): bump openssl from 0.10.77 to 0.10.78 (#15202)
+  * Update proxy-init to v2.4.8 & cni-plugin to v1.6.7 (#15190)
+  * fix(inject): use more robust logic to convert annotation to
+    metric label (#15176)
+  * build(deps): bump indexmap from 2.13.1 to 2.14.0 (#15155)
+  * build(deps): bump libc from 0.2.184 to 0.2.185 (#15171)
+  * build(deps-dev): bump sinon from 21.0.3 to 21.1.2 in /web/app
+    (#15158)
+  * build(deps): bump docker/build-push-action from 7.0.0 to 7.1.0
+    (#15165)
+  * build(deps): bump softprops/action-gh-release from 2.6.1 to
+    3.0.0 (#15164)
+  * build(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1
+    (#15163)
+  * build(deps): bump follow-redirects from 1.15.6 to 1.16.0 in
+    /web/app (#15168)
+  * build(deps): bump openssl from 0.10.76 to 0.10.77 (#15170)
+  * build(deps): bump openssl-sys from 0.9.112 to 0.9.113 (#15169)
+  * build(deps): bump the kube group with 7 updates (#15177)
+  * build(deps-dev): bump html-webpack-plugin in /web/app (#15184)
+  * build(deps-dev): bump webpack from 5.106.0 to 5.106.2 in
+    /web/app (#15185)
+  * build(deps): bump tj-actions/changed-files from 47.0.5 to
+    47.0.6 (#15186)
+  * build(deps): bump rustls-webpki from 0.103.11 to 0.103.12
+    (#15180)
+  * build(deps): bump github.com/moby/spdystream from 0.5.0 to
+    0.5.1 (#15179)
+  * Chore(deps): upgrade to go 1.25.9 (#15178)
+
+-------------------------------------------------------------------
 Fri Apr 17 20:01:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.4.3:
