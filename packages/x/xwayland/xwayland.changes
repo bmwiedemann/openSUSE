@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 27 12:18:50 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 24.1.11
+- This release addresses a number of regressions found in Xwayland 24.1.10:
+  * Avoids spurious focus changes with KDE when listening for mouse buttons
+    is enabled for legacy X11 application support
+  * Fix tablet tools not working anymore as "slave" devices
+  * Fix a crash when running some XTS tests
+  * Fix a crash in window damage handling caused a NULL pointer dereference
+- supersedes the folloging security patches for CVE-2026-33999,
+  CVE-2026-34000, CVE-2026-34001, CVE-2026-34002, CVE-2026-34003
+  (bsc#1260922, bsc#1260923, bsc#1260924, bsc#1260925, bsc#1260926)
+  * bsc1260922_CVE-2026-33999_xkb-fix-buffer-re-use-in-_XkbSetCompatMap.patch
+  * bsc1260923_CVE-2026-34000_xkb-Fix-bounds-check-in-_CheckSetGeom.patch
+  * bsc1260924_CVE-2026-34001_miext-sync-Fix-use-after-free-in-miSyncTriggerFence.patch
+  * bsc1260925_CVE-2026-34002_0001-xkb-Fix-out-of-bounds-read-in-CheckModifierMap.patch
+  * bsc1260925_CVE-2026-34002_0002-xkb-Add-more-_XkbCheckRequestBounds.patch
+  * bsc1260926_CVE-2026-34003_0001-xkb-Add-additional-bound-checking-in-CheckKeyTypes.patch
+
+-------------------------------------------------------------------
 Thu Apr  9 09:47:54 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - updated bsc1260925_CVE-2026-34002_0002-xkb-Add-more-_XkbCheckRequestBounds.patch
