@@ -1,7 +1,7 @@
 #
 # spec file for package clingo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ URL:            https://potassco.org/clingo/
 Source0:        https://github.com/potassco/clingo/archive/v%{version}/%{name}-%{version}.tar.gz
 # Disable gcc warning no-class-memaccess, which is intended use in this case
 Patch0:         clingo.clasp-disable-class-memaccess-warning.patch
+# Fix compilation with re2c 4.3.1 and later
+Patch1:         clingo-re2c-4.3.1.patch
 
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.10
@@ -97,6 +99,9 @@ binaries are available at: http://potassco.org/
 %autosetup -p1
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 cmake \
   -H. \
   -Brelease \

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 27 09:40:47 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Add clingo-re2c-4.3.1.patch to fix build failures on Tumbleweed
+  with re2c >= 4.3.1 (fixes "reference to undefined condition 'aspif'"
+  error in nongroundlexer). Patch from Debian gringo 5.8.0-2.
+
+-------------------------------------------------------------------
 Mon Jul  7 18:15:25 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 5.8.0
@@ -21,6 +28,12 @@ Mon Jul  7 18:15:25 UTC 2025 - Christoph G <foss@grueninger.de>
   * fix parsing of hexadecimal numbers
   * fix assignment aggregates
   * fix overflows in IESolver
+
+-------------------------------------------------------------------
+Wed May  7 04:53:29 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
 
 -------------------------------------------------------------------
 Tue Mar 11 10:32:51 UTC 2025 - Markéta Machová <mmachova@suse.com>

@@ -1,0 +1,138 @@
+Author: Roland Kaminski <kaminski@cs.uni-potsdam.de>
+Date: Fri, 26 Dec 2025 18:26:06 +0100
+Description: Fix compilation with re2c 4.3.1
+Debian-bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1123395
+
+Index: gringo/libgringo/src/input/nongroundlexer.xch
+===================================================================
+--- gringo.orig/libgringo/src/input/nongroundlexer.xch	2025-12-26 19:33:09.407110165 +0100
++++ gringo/libgringo/src/input/nongroundlexer.xch	2025-12-26 19:33:09.401661895 +0100
+@@ -52,7 +52,7 @@
+     WSNL       = [\t\r\n ]*;
+     SIG        = WSNL ([-$])? WSNL IDENTIFIER WSNL "/" WSNL NUMBER WSNL ".";
+     SCRIPT     = "#script";
+-    THEORYOP   = [/!<=>+\-*\\?&@|:;~\^\.]+;
++    THEORYOP   = [/!<=>+\-*\\?&@|:;~^.]+;
+     SUP        = "#sup"("remum")?;
+     INF        = "#inf"("imum")?;
+     KEYWORD    = "#" [a-zA-Z0-9_]*;
+@@ -215,6 +215,7 @@
+             continue;
+         }
+         <comment> ANY { continue; }
++        <*> *         { lexerError(end(loc), Potassco::toSpan("<unexpected>", 12)); return 0; }
+         */
+     }
+     assert(false);
+@@ -230,6 +231,7 @@
+         /*!re2c
+         <aspif> NL  { aspif_error_(loc, format("expected non-newline character but got ", eof() ? "<EOF>" : "<EOL>").c_str()); }
+         <aspif> ANY { continue; }
++        <*> *       { aspif_error_(loc, "unexpected lexer state"); }
+         */
+     }
+     return string();
+@@ -238,9 +240,12 @@
+ StringSpan NonGroundParser::aspif_nonl_string_(Location &loc) {
+     start(loc);
+     char yych;
+-    /*!re2c
+-    <aspif> [^\n]* { return string(); }
+-    */
++    for (;;) {
++        /*!re2c
++        <aspif> [^\n]* { break; }
++        <*> *          { aspif_error_(loc, "unexpected lexer state"); }
++        */
++    }
+     return string();
+ }
+ 
+@@ -256,7 +261,8 @@
+     for (;;) {
+         /*!re2c
+         <aspif> " incremental" / (NL | WS) { incremental = true; break; }
+-        <aspif> "" / ANY                  { break; }
++        <aspif> "" / ANY                   { break; }
++        <*> *                              { aspif_error_(loc, "unexpected lexer state"); }
+         */
+     }
+     aspif_nl_(loc);
+@@ -266,9 +272,10 @@
+     start(loc);
+     char yych;
+     /*!re2c
+-    <aspif> WS       { return; }
+-    <aspif> NL       { aspif_error_(loc, format("expected <SPACE> but got ", eof() ? "<EOF>" : "<EOL>").c_str()); }
+-    <aspif> NOWSNL+  { aspif_error_(loc, format("expected <SPACE> but got ", string()).c_str()); }
++    <aspif> WS      { return; }
++    <aspif> NL      { aspif_error_(loc, format("expected <SPACE> but got ", eof() ? "<EOF>" : "<EOL>").c_str()); }
++    <aspif> NOWSNL+ { aspif_error_(loc, format("expected <SPACE> but got ", string()).c_str()); }
++    <*> *           { aspif_error_(loc, "unexpected lexer state"); }
+     */
+ }
+ 
+@@ -282,8 +289,9 @@
+         }
+         aspif_error_(loc, format("expected <EOF> but got <EOL>").c_str());
+     }
+-    <aspif> WS       { aspif_error_(loc, format("expected <EOF> but got <SPACE>").c_str()); }
+-    <aspif> NOWSNL+  { aspif_error_(loc, format("expected <EOF> but got ", string()).c_str()); }
++    <aspif> WS      { aspif_error_(loc, format("expected <EOF> but got <SPACE>").c_str()); }
++    <aspif> NOWSNL+ { aspif_error_(loc, format("expected <EOF> but got ", string()).c_str()); }
++    <*> *           { aspif_error_(loc, "unexpected lexer state"); }
+     */
+ }
+ 
+@@ -298,8 +306,9 @@
+         step();
+         return;
+     }
+-    <aspif> WS       { aspif_error_(loc, format("expected <EOL> but got <SPACE>").c_str()); }
+-    <aspif> NOWSNL+  { aspif_error_(loc, format("expected <EOL> but got ", string()).c_str()); }
++    <aspif> WS      { aspif_error_(loc, format("expected <EOL> but got <SPACE>").c_str()); }
++    <aspif> NOWSNL+ { aspif_error_(loc, format("expected <EOL> but got ", string()).c_str()); }
++    <*> *           { aspif_error_(loc, "unexpected lexer state"); }
+     */
+ }
+ 
+@@ -311,6 +320,7 @@
+     <aspif> NL       { aspif_error_(loc, format("expected unsigned integer but got ", eof() ? "<EOF>" : "<EOL>").c_str()); }
+     <aspif> WS       { aspif_error_(loc, "expected unsigned integer but got <SPACE>"); }
+     <aspif> NOWSNL+  { aspif_error_(loc, format("expected unsigned integer but got token ", string()).c_str()); }
++    <*> *            { aspif_error_(loc, "unexpected lexer state"); }
+     */
+     return 0;
+ }
+@@ -319,10 +329,11 @@
+     start(loc);
+     char yych;
+     /*!re2c
+-    <aspif> DEC      { return unsigned_integer(); }
+-    <aspif> NL       { aspif_error_(loc, format("expected integer but got ", eof() ? "<EOF>" : "<EOL>").c_str()); }
+-    <aspif> WS       { aspif_error_(loc, "expected integer but got <SPACE>"); }
+-    <aspif> NOWSNL+  { aspif_error_(loc, format("expected integer but got token ", string()).c_str()); }
++    <aspif> DEC     { return unsigned_integer(); }
++    <aspif> NL      { aspif_error_(loc, format("expected integer but got ", eof() ? "<EOF>" : "<EOL>").c_str()); }
++    <aspif> WS      { aspif_error_(loc, "expected integer but got <SPACE>"); }
++    <aspif> NOWSNL+ { aspif_error_(loc, format("expected integer but got token ", string()).c_str()); }
++    <*> *           { aspif_error_(loc, "unexpected lexer state"); }
+     */
+     return 0;
+ 
+@@ -332,10 +343,11 @@
+     start(loc);
+     char yych;
+     /*!re2c
+-    <aspif> "asp"    { return; }
+-    <aspif> NL       { aspif_error_(loc, format("expected 'asp' but got ", eof() ? "<EOF>" : "<EOL>").c_str()); }
+-    <aspif> WS       { aspif_error_(loc, "expected 'asp' but got <SPACE>"); }
+-    <aspif> NOWSNL+  { aspif_error_(loc, format("expected 'asp' but got token ", string()).c_str()); }
++    <aspif> "asp"   { return; }
++    <aspif> NL      { aspif_error_(loc, format("expected 'asp' but got ", eof() ? "<EOF>" : "<EOL>").c_str()); }
++    <aspif> WS      { aspif_error_(loc, "expected 'asp' but got <SPACE>"); }
++    <aspif> NOWSNL+ { aspif_error_(loc, format("expected 'asp' but got token ", string()).c_str()); }
++    <*> *           { aspif_error_(loc, "unexpected lexer state"); }
+     */
+ }
+ 
