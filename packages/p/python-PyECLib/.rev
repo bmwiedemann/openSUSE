@@ -97,4 +97,12 @@
  * Various other minor bugs fixes and improvements</comment>
     <requestid>1341045</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ca1c484fe88f4645a8b66a881818a499</srcmd5>
+    <version>1.7.0</version>
+    <time>1777370122</time>
+    <user>anag_factory</user>
+    <comment>- reset-alternative for TW</comment>
+    <requestid>1349412</requestid>
+  </revision>
 </revisionlist>

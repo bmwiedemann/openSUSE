@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           python-PyECLib
 Version:        1.7.0
 Release:        0
@@ -30,8 +36,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  liberasurecode-devel >= 1.4.0
 BuildRequires:  python-rpm-macros
-Requires:       alts
+%if %{with libalternatives}
 BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -54,6 +65,9 @@ reconstruction (think XOR-based LRC code).
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyeclib-backend
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%pre
+%python_libalternatives_reset_alternative pyeclib-backend
 
 %post
 %python_install_alternative pyeclib-backend
