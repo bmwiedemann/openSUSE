@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Apr 28 07:18:25 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.26.4:
+  * Proper support for HiDPI screens
+  * Use a custom font dialog to work around crashes on macOS (issue #463)
+  * Improved performance of dynamic range compression; further tweaks to tmo_fattal02
+  * Inspector: fixed computation of raw histograms
+  * Updated exiv2 version of Linux and macOS binaries
+  * Fix compilation when fftwf_threads_set_callback does not exist
+  * Updated WB presets and translations
+  * Imageio: added support to match metadata when defining an external raw loader
+  * Parametric LUTs: support for "choice" parameters with a custom order of options
+  * External LUT: support for the latest dev version of spektrafilm (formerly AgX-emulsion)
+  * Updated "spectral film" external LUT to the latest version of the lib
+  * Fixed spectral film external LUT (issue #448)
+  * External mask: relax check for aspect ratio mismatch
+  * Filebrowser: visual marker on the thumbnail currently open in the editor
+  * Better error messages when failing to parse an external LUT
+  * Rawimage: consider TIFF files with empty make tag as non-raw (later reverted)
+  * Simplification of DPI handling
+  * Fixed segfault in multiple editor tabs mode
+  * Editor: added simple ambient light compensation
+  * Histogram matching: tweaked logic to detect need for auto distortion correction;
+    apply slight blur for noise robustness; small speedup
+  * Improvements to file rename/move
+  * Toolpanelcoord: switch off edit mode when closing the current image
+  * Do not acquire the main GDK lock in LWButton::redraw
+  * Added support for the SIMDE library (SIMD on non-x86 machines, e.g. aarch64)
+  * Linux: AppImage build, aarch64 workflow enabled, bundle fixes for aarch64
+  * Added "-So" command-line option
+  * Appstream: added vcs-browser URL
+  * dcraw: address potential security vulnerability (see #437)
+  * Profilepanel: fix crash on Windows with Japanese locale (issue #445)
+  * Fixed efficiency issue in exposure compensation when WB preview is "before demosaicing"
+  * Updated macOS workflow; updated translations
+
+-------------------------------------------------------------------
 Fri Feb  6 08:34:01 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.26.1:

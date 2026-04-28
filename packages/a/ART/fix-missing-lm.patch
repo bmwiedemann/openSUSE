@@ -1,6 +1,8 @@
---- ART-1.24/rtengine/CMakeLists.txt.orig	2024-10-10 09:00:11.656798999 +0200
-+++ ART-1.24/rtengine/CMakeLists.txt	2024-10-10 09:00:45.723663142 +0200
-@@ -233,6 +233,7 @@
+Index: ART-1.26.4/rtengine/CMakeLists.txt
+===================================================================
+--- ART-1.26.4.orig/rtengine/CMakeLists.txt
++++ ART-1.26.4/rtengine/CMakeLists.txt
+@@ -234,6 +234,7 @@ target_link_libraries(rtengine
      ${LENSFUN_LIBRARIES}
      ${RSVG_LIBRARIES}
      ${EXIV2_LIBRARIES}
