@@ -150,4 +150,14 @@
   * no changes</comment>
     <requestid>1346296</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>45db3a924faf89cd5c51445152093f42</srcmd5>
+    <version>0.62b1</version>
+    <time>1777369989</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.62b1:
+  * This is a patch release on the previous 1.41.0/0.62b0
+    release</comment>
+    <requestid>1349196</requestid>
+  </revision>
 </revisionlist>
