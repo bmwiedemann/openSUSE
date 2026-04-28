@@ -1152,4 +1152,16 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
   glib 2.88 and upstream is going to filter the warning anyway</comment>
     <requestid>1343667</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>4e81dd0b091a62dd93342eec99a525dd</srcmd5>
+    <version>3.10.9</version>
+    <time>1777369977</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.10.9:
+  * Various minor bug and doc fixes
+  * Security hardening validation of cyclers - Removing eval usage
+  * Security hardening in Latex and PS calls - Removing shell escapes
+- drop correct-reset-mock.patch (upstream)</comment>
+    <requestid>1349528</requestid>
+  </revision>
 </revisionlist>

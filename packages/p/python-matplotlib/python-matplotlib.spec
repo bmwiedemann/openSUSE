@@ -44,7 +44,7 @@ ExclusiveArch:  x86_64 aarch64
 
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.10.8
+Version:        3.10.9
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -59,8 +59,6 @@ Source100:      python-matplotlib.rpmlintrc
 Patch1:         matplotlib-meson-options-opensuse.patch
 # PATCH-FIX-UPSTREAM https://github.com/matplotlib/matplotlib/pull/30918 TST: account for asyncio changes in py314
 Patch2:         py314.patch
-# PATCH-FIX-UPSTREAM correct-reset-mock.patch gh#matplotlib/matplotlib#31153
-Patch3:         correct-reset-mock.patch
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools
@@ -369,6 +367,8 @@ skip_tests+=" or test_determinism_check or test_determinism_source_date_epoch"
 skip_tests+=" or (test_correct_key and gtk3)"
 # test_save_figure_return in gtk3 also fails with GNOME 50 due to uncaught warning, see https://github.com/matplotlib/matplotlib/issues/31398
 skip_tests+=" or (test_save_figure_return and gtk3)"
+# fails due to timezone update
+skip_tests+=" or test_auto_date_locator_intmult_tz"
 
 # Fails in SLFO:Main
 %if 0%{?suse_version} < 1699

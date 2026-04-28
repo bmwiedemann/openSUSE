@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 27 07:44:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.9:
+  * Various minor bug and doc fixes
+  * Security hardening validation of cyclers - Removing eval usage
+  * Security hardening in Latex and PS calls - Removing shell escapes
+- drop correct-reset-mock.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Mar 30 12:44:49 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Skip test_backend_gtk3.py::test_save_figure_return, fails with
