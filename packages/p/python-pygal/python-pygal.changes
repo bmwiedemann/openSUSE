@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 25 17:46:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * README and docs information
+  * Lint
+  * reverse_direction option for gauge
+
+-------------------------------------------------------------------
 Mon Aug 25 09:51:21 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

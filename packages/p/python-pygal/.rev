@@ -135,4 +135,15 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301232</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f6e020ff2125b7563be859c8172c6ae5</srcmd5>
+    <version>3.1.0</version>
+    <time>1777370001</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.0:
+  * README and docs information
+  * Lint
+  * reverse_direction option for gauge</comment>
+    <requestid>1349248</requestid>
+  </revision>
 </revisionlist>
