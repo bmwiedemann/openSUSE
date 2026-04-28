@@ -1,7 +1,7 @@
 #
 # spec file for package python-idna
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-idna
-Version:        3.11
+Version:        3.13
 Release:        0
 Summary:        Internationalized Domain Names in Applications (IDNA)
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/kjd/idna
 Source0:        https://files.pythonhosted.org/packages/source/i/idna/idna-%{version}.tar.gz
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -60,7 +60,7 @@ library but currently only supports the older 2003 specification.
 
 %files %{python_files}
 %license LICENSE.md
-%doc README.rst
+%doc README.rst HISTORY.rst
 %{python_sitelib}/idna
 %{python_sitelib}/idna-%{version}*-info
 

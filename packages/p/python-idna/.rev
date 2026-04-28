@@ -233,4 +233,18 @@ update to version v2.5
     <comment></comment>
     <requestid>1317042</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f1b679ebbb12ba23e34fd63eabaaf0d3</srcmd5>
+    <version>3.13</version>
+    <time>1777369992</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.13:
+  * Correct classification error for codepoint U+A7F1
+  * Update to Unicode 17.0.0.
+  * Issue a deprecation warning for the transitional argument.
+  * Added lazy-loading to provide some performance improvements.
+  * Removed vestiges of code related to Python 2 support,
+    including segmentation of data structures specific to Jython.</comment>
+    <requestid>1349205</requestid>
+  </revision>
 </revisionlist>
