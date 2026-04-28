@@ -17,12 +17,12 @@
 
 %define         pythons %{primary_python}
 Name:           nile
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Unofficial Amazon Games client
 License:        GPL-3.0-only
 URL:            https://github.com/imLinguin/nile.git
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/imLinguin/nile/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module json5}
@@ -79,6 +79,7 @@ find %{buildroot} -name "*.py" -exec touch -d "@$SOURCE_DATE_EPOCH" {} +
 
 %files
 %license LICENSE*
+%doc README.md
 %{_bindir}/nile
 %{python_sitelib}/nile
 %{python_sitelib}/nile-%{version}*.dist-info

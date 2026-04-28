@@ -1,14 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 27 20:06:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * This release includes a breaking change that will make auth
+    data incompatible with previous versions of nile.
+    Authorization tokens will be stored in obfuscated file
+    instead of raw json.
+  * [Feat] Add arm64 support
+  * minor additions to allow for better intergration
+  * feat: introduce an encrypted store type
+
+-------------------------------------------------------------------
 Tue Apr 14 22:20:20 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update Requires to use python3- prefix instead of python- to
   fix "nothing provides" errors during installation, as the
-  modern openSUSE python stack uses the python3 capability. 
+  modern openSUSE python stack uses the python3 capability.
 
 -------------------------------------------------------------------
 Sat Apr 11 19:28:14 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
-- Add missing %changelog line in spec. 
+- Add missing %changelog line in spec.
 
 -------------------------------------------------------------------
 Sat Apr 11 18:59:12 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
@@ -16,18 +28,18 @@ Sat Apr 11 18:59:12 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 - Modernise build flow and enable noarch for Leap 16.0/15.7
   * Removed python3-PyInstaller dependency to fix builds on Leap 16.0.
   * Replaced ExclusiveArch with BuildArch: noarch for better portability.
-  * Now dynamically generates pyproject.toml during %prep to manage 
+  * Now dynamically generates pyproject.toml during %prep to manage
     dependencies and entry points.
   * Uses standard %pyproject macros and %py3_compile for bytecode.
   * Stripped unnecessary shebangs from library files.
-  * Implemented %fdupes to handle duplicated files in site-packages. 
+  * Implemented %fdupes to handle duplicated files in site-packages.
 
 -------------------------------------------------------------------
 Wed Feb 25 01:51:43 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Fix incorrect python dependency macros usage
   * Replace %{python_module} with python3-* BuildRequires
-  * Remove unnecessary runtime Requires pulled by macro expansion 
+  * Remove unnecessary runtime Requires pulled by macro expansion
 
 -------------------------------------------------------------------
 Sun Nov 23 00:08:32 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
@@ -37,10 +49,10 @@ Sun Nov 23 00:08:32 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 -------------------------------------------------------------------
 Thu Nov 13 22:38:45 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
-- Change pyproject description to english, modernize constructs; compact description 
+- Change pyproject description to english, modernize constructs; compact description
 
 -------------------------------------------------------------------
 Tue Nov 11 02:54:49 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Initial release.
- 
+
