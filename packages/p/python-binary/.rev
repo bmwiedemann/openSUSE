@@ -24,4 +24,16 @@
 - No more greedy globs in %files.</comment>
     <requestid>1275963</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cbf3445a3dedc814501827b878c4dba4</srcmd5>
+    <version>1.0.2</version>
+    <time>1777370186</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.2:
+  * Perform floor division when explicitly converting to bytes
+  * Support negative values
+- update to 1.0.1:
+  * Fix syntax warning on newer versions of Python</comment>
+    <requestid>1349448</requestid>
+  </revision>
 </revisionlist>
