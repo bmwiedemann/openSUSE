@@ -1925,4 +1925,28 @@ New stable rel</comment>
     <comment>Push GNOME 50</comment>
     <requestid>1345363</requestid>
   </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>16ef5b59beeb09bd80704eba50c7e4d6</srcmd5>
+    <version>50.4</version>
+    <time>1777370346</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.4:
+  + Bugs fixed:
+    - No way to &quot;not&quot; quit a webapp through keyboard shortcuts when
+      &quot;Run in background&quot; is enabled
+    - adw_tab_view_get_page: assertion 'child_belongs_to_this_view
+      (self, child)' failed
+    - Crash when passing invalid command line option
+    - URLs containing various characters cannot be deleted from
+      history
+    - ephy_site_menu_button_update_search_engine_item crash on 32
+      bit
+    - Epiphany 49.7 crashes at launch
+    - Fix failure to delete URLs from history
+    - shell: keep going until all windows are destroyed
+    - Fix more problems in the filters manager, including crash on
+      startup
+  + Updated translations.</comment>
+    <requestid>1349695</requestid>
+  </revision>
 </revisionlist>
