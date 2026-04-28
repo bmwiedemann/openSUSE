@@ -34,6 +34,8 @@ Source1:        vendor.tar.gz
 Patch0:         keyctl-add-s390x-support.patch
 # PATCH-FIX-UPSTREAM - grpc: enforce strict path checking for incoming requests on the server
 Patch1:         CVE-2026-33186.patch
+# PATCH-FIX-UPSTREAM - Fix crafted JWE input with a missing encrypted key can lead to a denial of service
+Patch2:         CVE-2026-34986.patch
 BuildRequires:  golang-packaging
 BuildRequires:  go >= 1.24
 # Building with -buildmode=pie is currently unsupported on armv7l, i586, riscv64 and s390x
@@ -54,6 +56,9 @@ pushd vendor/github.com/wastore/keyctl
 popd
 pushd vendor/google.golang.org/grpc
 %patch -P1 -p1
+popd
+pushd vendor/github.com/go-jose/go-jose/v4
+%patch -P2 -p1
 popd
 
 %build
