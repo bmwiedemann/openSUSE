@@ -211,4 +211,12 @@
     <comment>Fix build with OpenJDK 25</comment>
     <requestid>1313347</requestid>
   </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>7352e0e67785c220a958723bf5b618f3</srcmd5>
+    <version>73.1</version>
+    <time>1777379391</time>
+    <user>anag_factory</user>
+    <comment>Fix license reference</comment>
+    <requestid>1349565</requestid>
+  </revision>
 </revisionlist>

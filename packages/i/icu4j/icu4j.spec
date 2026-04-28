@@ -1,7 +1,7 @@
 #
 # spec file for package icu4j
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,7 @@ Summary:        International Components for Unicode for Java
 # ICU itself is now covered by Unicode license, but still has contributed
 # components covered by MIT and BSD licenses
 # Data from the Timezone Database is Public Domain
-License:        BSD-3-Clause AND MIT AND Unicode AND SUSE-Public-Domain
+License:        BSD-3-Clause AND MIT AND Unicode AND LicenseRef-SUSE-Public-Domain
 Group:          Development/Libraries/Java
 URL:            http://site.icu-project.org/
 Source0:        https://github.com/unicode-org/icu/releases/download/release-%{majorver}-%{minorver}/%{name}-%{majorver}_%{minorver}.tgz
