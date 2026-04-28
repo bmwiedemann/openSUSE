@@ -104,4 +104,15 @@
 - Drop patch ase-mr3400-numpy2.patch, included upstream.</comment>
     <requestid>1301637</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8e06877287005c9014a29529f053f33e</srcmd5>
+    <version>3.28.0</version>
+    <time>1777375355</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.28.0:
+  * see https://ase-lib.org/changelog.html#version-3-28-0
+
+- Initial release of 3.22.1.</comment>
+    <requestid>1349726</requestid>
+  </revision>
 </revisionlist>
