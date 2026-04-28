@@ -2452,4 +2452,38 @@
   * Improve Windows path normalization</comment>
     <requestid>1347243</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>2254fd8013b050ba72ca79ec6f906455</srcmd5>
+    <version>0.11.8</version>
+    <time>1777387219</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.8 
+ * Enhancements
+  * Add --python-downloads-json-url to python pin 
+  * Fetch uv from Astral mirror during self-update 
+  * Support pip uninstall -y 
+  * Allow exclude-newer to be missing from the lockfile when exclude-newer-span is present 
+  * Only show the version number in uv self version --short 
+  * Silence warnings on empty SSL_CERT_DIR directory 
+  * Use a sentinel timestamp for relative exclude-newer and exclude-newer-package values in lockfiles (#19022, #19101)
+ * Configuration
+  * Add UV_PYTHON_NO_REGISTRY 
+  * Add an environment variable for UV_NO_PROJECT 
+  * Expose UV_PYTHON_SEARCH_PATH for Python discovery PATH overrides 
+ * Bug fixes
+  * Add rust-toolchain.toml to uv-build sdist 
+  * Ensure uv invocations of git do not inherit repository location environment variables 
+  * Redact pre-signed upload URLs in verbose output 
+  * Handle transitive URL dependencies in PEP 517 build requirements (#19076, #19086)
+  * Support uv lock on a pyproject.toml that only contains dependency-groups 
+  * Disable transparent Python upgrades in projects when a patch version is requested via .python-version 
+  * Fix Python variant tagging in the Windows registry 
+  * Ban external symlinks in .tar.zst wheels 
+ * Distributions
+  * Remove deprecated license classifiers from uv-build and add Python 3.14 classifier 
+ * Documentation
+  * Bump astral-sh/setup-uv version in docs 
+  * Update PyTorch documentation for PyTorch 2.11</comment>
+    <requestid>1349785</requestid>
+  </revision>
 </revisionlist>
