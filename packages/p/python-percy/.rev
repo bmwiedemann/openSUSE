@@ -24,4 +24,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1276004</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>07accce37f4025bcb8336bc48e3036cc</srcmd5>
+    <version>2.0.2</version>
+    <time>1777370373</time>
+    <user>anag_factory</user>
+    <comment>- Skip failing test with python3.14</comment>
+    <requestid>1349696</requestid>
+  </revision>
 </revisionlist>

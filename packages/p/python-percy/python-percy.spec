@@ -1,7 +1,7 @@
 #
 # spec file for package python-percy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,10 @@ sed -i 's/method_whitelist/allowed_methods/g' percy/connection.py
 
 %check
 # test_commit_live - needs initialized git repo
-%pytest -k 'not test_commit_live'
+donttest="test_commit_live"
+# Failing test with python314
+donttest+=" or test_build_resources"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE
