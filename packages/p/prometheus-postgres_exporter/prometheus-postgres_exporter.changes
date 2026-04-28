@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 27 14:50:48 UTC 2026 - Marina Latini <marina.latini@suse.com>
+
+- CVE-2022-21698: Replace github.com/prometheus/client_golang with
+  version 1.11.1 (bsc#1248699)
+- Use vendored dependencies for the build to ensure reproducible
+  builds and offline compatibility.
+  * Drop 0001-Update-prometheus-exporter-toolkit-to-0.7.3.patch
+  * Pin exporter-toolkit to 0.7.3 in the service file
+
+-------------------------------------------------------------------
 Fri Feb  6 10:57:04 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Do not build for Debian or Ubuntu

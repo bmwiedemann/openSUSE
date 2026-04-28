@@ -51,8 +51,6 @@ Source:         postgres_exporter-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-postgres_exporter.service
 Source3:        prometheus-postgres_exporter.sysconfig
-# This patch has been applied before generating vendor tarball
-Patch1:         0001-Update-prometheus-exporter-toolkit-to-0.7.3.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
@@ -87,6 +85,7 @@ sed -r -i '/^(Protect(Clock|Home|Hostname|KernelLogs)|PrivateMounts)=/d' %{SOURC
 
 %build
 %goprep github.com/prometheus-community/postgres_exporter
+export GOFLAGS="-mod=vendor"
 GOPATH=%{_builddir}/go promu build -v
 
 %install
