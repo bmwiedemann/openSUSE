@@ -1,7 +1,7 @@
 #
 # spec file for package python-pefile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pefile
-Version:        2023.2.7
+Version:        2024.8.26
 Release:        0
 Summary:        A python module to work with PE (pertable executable) files
-License:        BSD-3-Clause
+License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/erocarrera/pefile
 Source:         https://files.pythonhosted.org/packages/source/p/pefile/pefile-%{version}.tar.gz
@@ -65,7 +65,6 @@ sed -i -e '/^#!\//, 1d' pefile.py
 # %%python_exec setup.py test
 
 %files %{python_files}
-%doc README
 %license LICENSE
 %pycache_only %{python_sitelib}/__pycache__/pe*.pyc
 %{python_sitelib}/ordlookup

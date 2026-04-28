@@ -96,4 +96,41 @@
 	* It is available to callers of python-pefile,</comment>
     <requestid>1136456</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>766e2389ffad1f02fa312ae21b5a1929</srcmd5>
+    <version>2024.8.26</version>
+    <time>1777370003</time>
+    <user>anag_factory</user>
+    <comment>- update to 2024.8.26:
+  * Close the __data__ attribute before reassigning it
+  * Floor division (//) does mathematical division with the floor
+    functio…
+  * Update new dvrt type and Load Config filed adapt to Windows11
+  * fix PE.get_data
+  * Fix ambiguous string syntax for PEid parsing regexp
+  * fixed a memory leak that caused the pe file to be access
+    locked.
+  * Exphash from sha256 to md5 to match imphash
+  * More readable calls to superclass
+  * Fix cache_adjust_FileAlignment to work with files not aligned
+    to 0x200
+  * [StepSecurity] Apply security best practices
+  * Create sets using curly brackets
+  * Change IOError to OSError
+  * Apply isort to sort all imports
+  * Remove &quot;OC Patch&quot; comments
+  * Update tox.ini Python versions
+  * Use with statement to write to file
+  * Remove distutils use
+  * Use chaining comparison operators
+  * Replace list comprehension with set comprehension
+  * Use not in operator
+  * Replace base class name with super()
+  * Increase readability and consistency
+  * Tiny comment improvements
+  * Update oleaut32.py from oleaut32.dll
+  * Improve parse_rich_header
+  * Include ordinals for wsock32.dll</comment>
+    <requestid>1349275</requestid>
+  </revision>
 </revisionlist>
