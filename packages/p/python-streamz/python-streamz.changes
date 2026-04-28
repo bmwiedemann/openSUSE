@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 26 20:05:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.6:
+  * Use importlib.metadata instead of pkg_resources
+  * Support for Python 3.10+
+  * handle username and pw for mqtt source
+  * remove six dependency
+  * hybridize usage of importlib.metadata for Python3.10+
+  * CI: Add option to invoke workflow manually
+- Remove obsolete patches:
+  * streamz-pr455-ci-fixes.patch (integrated upstream)
+  * python-streamz-no-six.patch (integrated upstream)
+- Refresh streamz-opensuse-python-exec.patch
+- Update BuildRequires to require python base >= 3.10
+
+-------------------------------------------------------------------
 Mon Jan 20 16:35:18 UTC 2025 - pgajdos@suse.com
 
 - do not require six
@@ -57,7 +73,7 @@ Sun Feb  6 18:06:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Sun Feb 14 14:07:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 3.6 (no networkx anymore) 
+- skip python 3.6 (no networkx anymore)
 
 -------------------------------------------------------------------
 Sat Oct 10 19:21:44 UTC 2020 - Arun Persaud <arun@gmx.de>

@@ -114,4 +114,25 @@
 </comment>
     <requestid>1239518</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>85a3a3a2511f0ca94944f90a51249b4f</srcmd5>
+    <version>0.6.6</version>
+    <time>1777370170</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.6:
+  * Use importlib.metadata instead of pkg_resources
+  * Support for Python 3.10+
+  * handle username and pw for mqtt source
+  * remove six dependency
+  * hybridize usage of importlib.metadata for Python3.10+
+  * CI: Add option to invoke workflow manually
+- Remove obsolete patches:
+  * streamz-pr455-ci-fixes.patch (integrated upstream)
+  * python-streamz-no-six.patch (integrated upstream)
+- Refresh streamz-opensuse-python-exec.patch
+- Update BuildRequires to require python base &gt;= 3.10
+
+- skip python 3.6 (no networkx anymore)</comment>
+    <requestid>1349439</requestid>
+  </revision>
 </revisionlist>

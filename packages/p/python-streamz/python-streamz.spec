@@ -1,7 +1,7 @@
 #
 # spec file for package python-streamz
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,20 @@
 
 
 Name:           python-streamz
-Version:        0.6.4
+Version:        0.6.6
 Release:        0
 Summary:        Tool to build continuous data pipelines
 License:        BSD-3-Clause
 URL:            https://github.com/python-streamz/streamz/
 Source:         https://files.pythonhosted.org/packages/source/s/streamz/streamz-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM  streamz-pr455-ci-fixes.patch gh#python-streamz/streamz#455
-Patch0:         streamz-pr455-ci-fixes.patch
 # PATCH-FIX-OPENSUSE streamz-opensuse-python-exec.patch -- call tests with correct flavor
-Patch1:         streamz-opensuse-python-exec.patch
-# PATCH-FIX-UPSTREAM python-streamz-no-six.patch gh#python-streamz/streamz/commit/33f49417b415deb7ea3c495a404b78c9d3743c03
-Patch2:         python-streamz-no-six.patch
-BuildRequires:  %{python_module base >= 3.8}
+Patch0:         streamz-opensuse-python-exec.patch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# Setuptools is a runtime requirement because of pkg_resources usage
-Requires:       python-setuptools
 Requires:       python-toolz
 Requires:       python-tornado
 Requires:       python-zict
