@@ -89,4 +89,20 @@
     <comment>4.0.2</comment>
     <requestid>1206189</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ff3d4d262dc34c25c837baaa9aeb4c96</srcmd5>
+    <version>4.0.2</version>
+    <time>1774555713</time>
+    <user>anag_factory</user>
+    <comment>bsc#1260588, CVE-2025-67030</comment>
+    <requestid>1342703</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>744725f46fb572873bcef045482cae60</srcmd5>
+    <version>4.0.2</version>
+    <time>1777370278</time>
+    <user>anag_factory</user>
+    <comment>Fix license reference</comment>
+    <requestid>1349571</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:22:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Clean up the license tag
+
+-------------------------------------------------------------------
+Thu Mar 26 05:20:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * plexus-utils-CVE-2025-67030.patch
+    + fixing bsc#1260588, CVE-2025-67030: directory traversal via
+      the 'extractFile' method of 'org.codehaus.plexus.util.Expand'
+
+-------------------------------------------------------------------
 Fri Oct  4 22:31:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upsteam version 4.0.2
