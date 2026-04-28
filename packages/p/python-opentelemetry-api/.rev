@@ -431,4 +431,14 @@
   * `opentelemetry-api`: Replace a broad exception in attribute</comment>
     <requestid>1346294</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>82f3102709981ee46582957e339620d7</srcmd5>
+    <version>1.41.1</version>
+    <time>1777369985</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.41.1:
+  * This is a patch release on the previous 1.41.0/0.62b0
+    release</comment>
+    <requestid>1349186</requestid>
+  </revision>
 </revisionlist>

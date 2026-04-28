@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-api%{?psuffix}
-Version:        1.41.0
+Version:        1.41.1
 Release:        0
 Summary:        OpenTelemetry Python API
 License:        Apache-2.0
@@ -45,7 +45,7 @@ Requires:       python-importlib-metadata >= 6.0
 Requires:       python-typing-extensions >= 4.5.0
 %if %{with test}
 BuildRequires:  %{python_module opentelemetry-api = %{version}}
-BuildRequires:  %{python_module opentelemetry-test-utils = 0.62b0}
+BuildRequires:  %{python_module opentelemetry-test-utils = 0.62b1}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
