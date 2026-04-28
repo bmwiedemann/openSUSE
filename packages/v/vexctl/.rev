@@ -205,4 +205,14 @@ VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, so
   * Bump google.golang.org/grpc from 1.78.0 to 1.79.3 (forwarded request 1347773 from jfkw)</comment>
     <requestid>1347775</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>686f806d7818fe04b868c3309d8a7677</srcmd5>
+    <version>0.4.1+git133.efecaf7</version>
+    <time>1777375346</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.1+git133.efecaf7:
+  * Bump github.com/secure-systems-lab/go-securesystemslib
+  * Bump the all group with 2 updates (forwarded request 1349660 from jfkw)</comment>
+    <requestid>1349661</requestid>
+  </revision>
 </revisionlist>
