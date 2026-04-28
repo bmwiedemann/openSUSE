@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ubelt
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Python utility belt containing simple tools
 License:        Apache-2.0

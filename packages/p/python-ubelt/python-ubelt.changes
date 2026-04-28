@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 28 09:59:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.4.2
+  * Improved urepr type annotations
+  * Improved general type annotations
+  * Removed internal helpers from urepr
+  * In order to better support static typing some corner case behaviors
+    have changed, e.g. instead of checking `hasattr(self, '__len__')`
+    we check `isinstance(self, Sized):` in NiceRepr.
+
+-------------------------------------------------------------------
 Tue Mar 10 08:17:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.1:

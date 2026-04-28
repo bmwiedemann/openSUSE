@@ -123,4 +123,12 @@
   * Deprecated `DownloadManager`, due to being over scoped.</comment>
     <requestid>1337899</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b774edd35d400c71b375bafbcdd61311</srcmd5>
+    <version>1.4.2</version>
+    <time>1777387210</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1349770</requestid>
+  </revision>
 </revisionlist>
