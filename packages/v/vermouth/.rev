@@ -54,4 +54,30 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Update PKGBUILD</comment>
     <requestid>1348611</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3403058709edf9acdb7bfc1864d5c1af</srcmd5>
+    <version>1.4.1</version>
+    <time>1777370343</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.4.1
+- Upstream changes:
+  * Updated README
+  * fix: Proton download cleared up the field
+  * Downloaders refactor
+  * Remove commented out code
+  * Fix hotplugging gamepads
+  * Removed a duplicate property in qml, shell quote desktop files
+  * Fix up duplicate code
+  * Icon fixes
+  * Launch native apps
+  * Build scrips update
+- For version 1.3.5:
+  * feat: Big picture mode gamepad support
+  * Make the search larger in big picture
+  * Add big screen mode
+  * Dark mode done!
+  * More lights off work
+  * feat: Lights out</comment>
+    <requestid>1349676</requestid>
+  </revision>
 </revisionlist>
