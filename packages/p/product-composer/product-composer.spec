@@ -23,7 +23,7 @@
 %endif
 
 Name:           product-composer
-Version:        0.9.3
+Version:        0.9.6
 Release:        0
 Summary:        Product Composer
 License:        GPL-2.0-or-later
@@ -41,8 +41,8 @@ Requires:       %{used_python}-PyYAML
 Requires:       %{used_python}-pydantic
 Requires:       %{used_python}-rpm
 Requires:       %{used_python}-zstandard
-# build for signdummy
-Requires:       build
+# build for sign and generate_sbom
+Requires:       build >= 20260328
 Requires:       checkmedia
 Requires:       createrepo_c
 Requires:       inst-source-utils

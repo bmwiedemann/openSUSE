@@ -628,4 +628,24 @@
     This is no difference when using the build script.</comment>
     <requestid>1342053</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e7ef06d1e88c5ce3e646e7edfd257ee1</srcmd5>
+    <version>0.9.6</version>
+    <time>1777370067</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.9.6
+  * Speed-up reading of rpm headers
+  * Flush output lines to get get correct timestamps in OBS
+
+- update to version 0.9.5
+  * Be a bit more verbose to track used times per step in OBS
+  * Fix a crash when doing version compare with an epoch
+
+- update to version 0.9.4
+  * Give an error when trying to add updateinfo meta data
+    without all binary revisions.
+  * Hand over vcs and disturl data to generate_sbom.
+    (We require a recent build package therefore)</comment>
+    <requestid>1349545</requestid>
+  </revision>
 </revisionlist>
