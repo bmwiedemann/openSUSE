@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1341746</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5a068ea365ec5e2b1458fc5076c8e498</srcmd5>
+    <version>5.0.2</version>
+    <time>1777370114</time>
+    <user>anag_factory</user>
+    <comment>version update to 5.0.2 (forwarded request 1349371 from reneum)</comment>
+    <requestid>1349373</requestid>
+  </revision>
 </revisionlist>
