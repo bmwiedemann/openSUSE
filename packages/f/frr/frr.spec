@@ -38,7 +38,7 @@
 %define frr_daemondir %{_prefix}/lib/%{name}
 
 Name:           frr
-Version:        10.5.1
+Version:        10.6.0
 Release:        0
 Summary:        The FRRouting Protocol Suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -49,8 +49,6 @@ Source:         https://github.com/FRRouting/frr/archive/refs/tags/%{name}-%{ver
 Patch0:         harden_frr.service.patch
 Patch1:         0001-disable-zmq-test.patch
 Patch2:         0002-frr-logrotate.patch
-Patch3:         0003-ospfd-NULL-Pointer-Dereference-fixes.patch
-Patch4:         0004-bgpd-improve-packet-parsing-for-EVPN-and-ENCAP-VNC.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7

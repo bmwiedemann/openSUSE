@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 27 09:29:28 UTC 2026 - Marius Tomaschewski <mt@suse.com>
+
+- Update to frr-10.6.0 which brings a long list of enhancements and
+  fixes, see release notes in https://frrouting.org/release/10.6.0/
+  - New Features Highlight:
+    - LTTng traces for BFD
+    - Extended weights for the next-hop
+    - BGP ECMP by using Underlay Weights
+    - BGP ECMP by using Next-next nodes (Next-hop dependent characteristic) count
+    - BGP software version capability encoding changes
+    - BGP SRv6 unicast at the global (default) VRF
+    - BGP IPv6 VTEP support
+    - BGP multiple labels support for labeled unicast
+    - BGP graceful restart for EVPN
+    - Implement forwarding-address-self command for OSPFv2
+    - PIM/PIMv6 filter support for IGMP/MLD joins
+    - libyang3 changes (libyang3 used upstream by default)
+- Removed obsolete patches included in the 10.6.0 release:
+  - 0003-ospfd-NULL-Pointer-Dereference-fixes.patch
+  - 0004-bgpd-improve-packet-parsing-for-EVPN-and-ENCAP-VNC.patch
+
+-------------------------------------------------------------------
 Thu Apr 16 15:21:14 UTC 2026 - Marius Tomaschewski <mt@suse.com>
 
 - Apply security fix for bgpd EVPN and ENCAP/VNC packet parsing.
