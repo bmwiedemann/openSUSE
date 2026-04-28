@@ -1,7 +1,7 @@
 #
 # spec file for package libpng12
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,10 @@ Patch0:         libpng-1.2.51-CVE-2013-7353.patch
 Patch1:         libpng-1.2.51-CVE-2013-7354.patch
 # CVE-2025-64505 [bsc#1254157], heap buffer over-read in `png_do_quantize` via malformed palette index
 Patch2:         libpng12-CVE-2025-64505.patch
+# CVE-2026-33416: use-after-free via pointer aliasing in `png_set_tRNS` and `png_set_PLTE` can lead to arbitrary code execution [bsc#1260754]
+Patch3:         libpng12-CVE-2026-33416.patch
+# CVE-2026-34757: Information disclosure and data corruption via use-after-free vulnerability [bsc#1261957]
+Patch4:         libpng12-CVE-2026-34757.patch
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
@@ -93,9 +97,9 @@ libpng is the official reference library for the Portable Network
 Graphics (PNG) format.
 
 %description compat-devel
-The libpng%{branch}-compat-devel package contains unversioned symlinks 
-to the header files, libraries, configuration files and development 
-tools necessary for compiling and linking programs that don't care 
+The libpng%{branch}-compat-devel package contains unversioned symlinks
+to the header files, libraries, configuration files and development
+tools necessary for compiling and linking programs that don't care
 about libpng version.
 
 %prep
@@ -105,7 +109,7 @@ about libpng version.
 # PNG_SAFE_LIMITS_SUPPORTED: http://www.openwall.com/lists/oss-security/2015/01/10/1
 export CFLAGS="%optflags -O3 -DPNG_SAFE_LIMITS_SUPPORTED -DPNG_SKIP_SETJMP_CHECK $(getconf LFS_CFLAGS)"
 export LDFLAGS="-Wl,-z,relro,-z,now"
-
+autoreconf -fi
 %configure \
               --disable-static \
               --with-libpng-compat=no
@@ -115,7 +119,7 @@ make %{?_smp_mflags}
 make -j1 check
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT 
+make install DESTDIR=$RPM_BUILD_ROOT
 rm $RPM_BUILD_ROOT/%{_libdir}/libpng*.la
 
 %post -n %{libname} -p /sbin/ldconfig

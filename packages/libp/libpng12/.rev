@@ -388,4 +388,16 @@
   * libpng12-CVE-2025-64505.patch</comment>
     <requestid>1320952</requestid>
   </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>e5f8f3c6886f7521f1b168aae577dcd5</srcmd5>
+    <version>1.2.59</version>
+    <time>1777375351</time>
+    <user>anag_factory</user>
+    <comment>- added patches
+  CVE-2026-33416: use-after-free via pointer aliasing in `png_set_tRNS` and `png_set_PLTE` can lead to arbitrary code execution [bsc#1260754]
+  * libpng12-CVE-2026-33416.patch
+  CVE-2026-34757: Information disclosure and data corruption via use-after-free vulnerability [bsc#1261957]
+  * libpng12-CVE-2026-34757.patch</comment>
+    <requestid>1349750</requestid>
+  </revision>
 </revisionlist>
