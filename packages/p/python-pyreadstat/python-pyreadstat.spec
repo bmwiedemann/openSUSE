@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyreadstat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           python-pyreadstat
-Version:        1.2.7
+Version:        1.3.4
 Release:        0
 Summary:        Package to read and write statistical data files into pandas
 License:        Apache-2.0
 URL:            https://github.com/Roche/pyreadstat
 Source:         https://github.com/Roche/pyreadstat/archive/v%{version}.tar.gz#/pyreadstat-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#Roche/pyreadstat#266
-Patch0:         support-numpy-2.patch
 BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module narwhals >= 2.10.1}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pandas >= 0.24.0}
 BuildRequires:  %{python_module pip}
@@ -36,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  glibc-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
+Requires:       python-narwhals >= 2.10.1
 Requires:       python-numpy
 Requires:       python-pandas >= 0.24.0
 %python_subpackages
