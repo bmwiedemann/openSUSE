@@ -17,7 +17,7 @@
 
 
 Name:           gpredict
-Version:        2.4
+Version:        2.5.1
 Release:        0
 Summary:        Realtime satellite tracking and orbit prediction application
 License:        GPL-2.0-only

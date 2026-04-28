@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 26 19:43:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.5.1:
+  * Speed up TLE update when updating from network
+  * Fix broken scroll wheel in radio and rotator controllers
+- includes changes from 2.5:
+  * Implemented drawing function using native GTK3/Cairo drawing
+  * Fix potential buffer overflow in transponder update function
+  * Update bundled satellite data
+
+-------------------------------------------------------------------
 Mon Jan 26 22:14:52 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.4:
