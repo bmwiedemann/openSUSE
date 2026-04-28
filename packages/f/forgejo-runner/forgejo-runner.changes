@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 27 00:42:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.9.0:
+  + feat: trim whitespace around token, validate it
+  + fix: interpolation of workflow_call inputs
+
+-------------------------------------------------------------------
 Thu Apr  9 19:05:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.8.2:

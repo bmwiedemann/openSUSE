@@ -602,4 +602,14 @@
   * fix: return error when one-job receives no task (forwarded request 1345679 from rrahl0)</comment>
     <requestid>1345680</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>71b7232442a53305b859f534b9625808</srcmd5>
+    <version>12.9.0</version>
+    <time>1777370228</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 12.9.0:
+  + feat: trim whitespace around token, validate it
+  + fix: interpolation of workflow_call inputs (forwarded request 1349473 from rrahl0)</comment>
+    <requestid>1349474</requestid>
+  </revision>
 </revisionlist>
