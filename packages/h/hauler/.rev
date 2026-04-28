@@ -242,4 +242,33 @@
   * bump github.com/sigstore/fulcio (#489)</comment>
     <requestid>1328091</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e96c929d1209046287a0b59907b6d489</srcmd5>
+    <version>1.4.2</version>
+    <time>1777370261</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.2 (bsc#1258614, CVE-2026-24122):
+  * Bump github.com/theupdateframework/go-tuf/v2 from 2.3.0 to
+    2.3.1 in the go_modules group across 1 directory
+  * fix for new helm chart features
+  * Bump github.com/sigstore/rekor from 1.4.3 to 1.5.0 in the
+    go_modules group across 1 directory
+  * Bump github.com/sigstore/sigstore from 1.10.3 to 1.10.4 in
+    the go_modules group across 1 directory
+  * Bump github.com/theupdateframework/go-tuf/v2 from 2.3.1 to
+    2.4.1 in the go_modules group across 1 directory
+  * update cosign fork to 3.0.4 plus dep tidy
+  * fix: Fix file:// dependency chart path resolution
+  * update github.com/olekukonko/tablewriter to v1.1.2
+  * keep registry on image rewrite if not specified
+  * Bump github.com/theupdateframework/go-tuf/v2 from 2.3.1 to
+    2.4.1 in the go_modules group across 1 directory
+  * fix: handling of file referenced dependencies without
+    repository field
+  * Bump go.opentelemetry.io/otel/sdk from 1.39.0 to 1.40.0 in
+    the go_modules group across 1 directory
+  * dev.md file
+  * smaller changes and updates for v1.4.2 release</comment>
+    <requestid>1349540</requestid>
+  </revision>
 </revisionlist>

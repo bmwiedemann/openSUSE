@@ -17,20 +17,20 @@
 
 
 Name:           hauler
-Version:        1.4.1
-%global git_commit 4a2b7b13a7a3e3dab926893c0be1a67dea6d8457
+Version:        1.4.2
+%global git_commit ebf91c122841b7f4fc4eb90b7af28d884dea678b
 Release:        0
 Summary:        Airgap Swiss Army Knife
 License:        Apache-2.0
 Group:          System/Management
-URL:            https://github.com/rancherfederal/hauler
-Source:         %{name}-%{version}.tar.zst
+URL:            https://github.com/hauler-dev/hauler
+Source:         https://github.com/hauler-dev/hauler/archive/refs/tags/v%{version}.tar.gz#/hauler-%{version}.tar.gz
 Source1:        vendor.tar.zst
 ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cosign
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.25
+BuildRequires:  golang(API) = 1.26
 
 %description
 Rancher Government Hauler simplifies the airgap experience without requiring
