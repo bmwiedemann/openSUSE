@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyOpenSSL%{psuffix}
-Version:        26.0.0
+Version:        26.1.0
 Release:        0
 Summary:        Python wrapper module around the OpenSSL library
 License:        Apache-2.0
@@ -35,14 +35,14 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyopenssl/pyope
 # PATCH-FIX-UPSTREAM skip-networked-test.patch gh#pyca/pyopenssl#68 mcepl@suse.com
 # Mark tests requiring network access
 Patch0:         skip-networked-test.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi
-Requires:       (python-cryptography >= 45.0.7 with python-cryptography < 47)
+Requires:       (python-cryptography >= 46.0.0 with python-cryptography < 48)
 %if %{python_version_nodots} < 313
 Requires:       python-typing-extensions >= 4.9
 %endif
@@ -51,7 +51,7 @@ Provides:       pyopenssl = %{version}-%release
 %if %{without test}
 BuildArch:      noarch
 %else
-BuildRequires:  %{python_module cryptography >= 45.0.7 with %python-cryptography < 47}
+BuildRequires:  %{python_module cryptography >= 46.0.0 with %python-cryptography < 48}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyOpenSSL >= %version}
 BuildRequires:  %{python_module pytest >= 3.0.1}
@@ -97,7 +97,7 @@ export LC_ALL=en_US.UTF-8
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
-%doc *.rst
+%doc CHANGELOG.rst README.rst
 %{python_sitelib}/OpenSSL/
 %{python_sitelib}/py[Oo]pen[Ss][Ss][Ll]-%{version}.dist-info
 %endif

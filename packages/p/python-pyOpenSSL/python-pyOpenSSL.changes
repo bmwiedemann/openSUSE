@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 26 10:26:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.1.0 (CVE-2026-40475, bsc#1262803):
+  * Maximum supported cryptography version is now 47.x.
+  * Fixed X509Name field setters to correctly pass the value
+    length to OpenSSL. Previously, values containing NUL bytes
+    would be silently truncated, causing a divergence between the
+    stored ASN.1 value and the value visible from Python. Credit
+    to BudongJW for reporting the issue. CVE-2026-40475
+
+-------------------------------------------------------------------
 Wed Mar 18 13:48:45 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - update to 26.0.0 (bsc#1259808, CVE-2026-27459, bsc#1259804, CVE-2026-27448):

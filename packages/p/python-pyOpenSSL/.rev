@@ -714,4 +714,18 @@
     Credit to Leury Castillo for reporting this issue. CVE-2026-27448</comment>
     <requestid>1340914</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>70d0f288402a982389c8650882f2f4ff</srcmd5>
+    <version>26.1.0</version>
+    <time>1777370025</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.1.0 (CVE-2026-40475, bsc#1262803):
+  * Maximum supported cryptography version is now 47.x.
+  * Fixed X509Name field setters to correctly pass the value
+    length to OpenSSL. Previously, values containing NUL bytes
+    would be silently truncated, causing a divergence between the
+    stored ASN.1 value and the value visible from Python. Credit
+    to BudongJW for reporting the issue. CVE-2026-40475</comment>
+    <requestid>1349507</requestid>
+  </revision>
 </revisionlist>
