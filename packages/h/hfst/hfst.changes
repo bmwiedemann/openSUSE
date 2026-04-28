@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:17:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.17.1
+  * Fixed a logic error where hfst-lexc would treat a warning
+    about implicit alphabet in XREs as a critical error even when
+    -Werror is not requested.
+
+-------------------------------------------------------------------
 Fri Apr 24 14:46:06 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.17

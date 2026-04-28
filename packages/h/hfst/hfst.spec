@@ -17,13 +17,12 @@
 
 
 Name:           hfst
-Version:        3.17.0
+Version:        3.17.1
 Release:        0
 Summary:        Helsinki Finite-State Transducer Technology
 License:        Apache-2.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND GPL-3.0-only
 Group:          Development/Tools/Other
 URL:            https://hfst.github.io/
-
 Source:         https://github.com/hfst/hfst/archive/refs/tags/v%version.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -94,7 +93,6 @@ want to make use of the HFST library.
 
 %build
 autoreconf -fiv
-export CXXFLAGS="%optflags -std=c++17"
 %configure --disable-static --with-readline \
 	--enable-all-tools --includedir="%_includedir/%name" \
 	--with-foma-upstream
