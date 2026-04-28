@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:22:11 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove latest tag from micro build (conflicts with base build)
+
+-------------------------------------------------------------------
 Fri Apr 17 12:03:00 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - update tag to also include 3.14

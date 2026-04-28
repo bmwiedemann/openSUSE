@@ -18,7 +18,6 @@
 #!BuildTag: opensuse/bci/python:%%py314_ver%%-micro-%RELEASE%
 #!BuildTag: opensuse/bci/python:%%py314_ver%%-micro
 #!BuildTag: opensuse/bci/python:3.14-micro
-#!BuildTag: opensuse/bci/python:latest
 #!BcntSyncTag: python-3.14-image
 
 FROM opensuse/tumbleweed:latest
