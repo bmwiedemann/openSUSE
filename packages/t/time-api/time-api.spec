@@ -1,7 +1,7 @@
 #
 # spec file for package time-api
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           time-api
 Version:        0.6.4
 Release:        0
 Summary:        JSR-310 - Date and Time API
-License:        BSD-3-Clause AND GPL-2.0-or-later AND SUSE-Public-Domain
+License:        BSD-3-Clause AND GPL-2.0-or-later AND LicenseRef-SUSE-Public-Domain
 Group:          Development/Libraries/Java
 URL:            http://threeten.github.com/
 Source0:        https://github.com/ThreeTen/%{oname}/archive/v%{version}.tar.gz
