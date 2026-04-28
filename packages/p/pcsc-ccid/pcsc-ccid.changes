@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Apr 24 12:25:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+   - Add support of
+    - ACS APG8201-B2
+    - BUDGET E-ID BUD001
+    - CHERRY Smart Board 1150
+    - CryptnoxCR CryptnoxCR
+    - Diebold Nixdorf PN7362au CCID
+    - FT BioPass FIDO2 Pro
+    - Nitrokey Nitrokey Passkey
+   - Add SCARD_CTL_CODE(3601): USB path of the reader
+   - Some other minor improvements
+   - Add support of
+    - GIGA-TMS NFC CCID Reader
+    - Identiv Identiv SmartOS Reader
+    - SEC1210URT, single slot variant of SEC1210 serial
+    - TOKEN2 FIDO2 Security Key(0013),PIN+ Mini with OTP + PGP
+    - TOKEN2 FIDO2 Security Key(0014),PIN+ Mini with FIDO + PGP
+    - TOKEN2 FIDO2 Security Key(0015),PIN+ Mini with PGP
+    - TOKEN2 FIDO2 Security Key(0016),PIN+ Mini with OTP + PGP + FIDO
+    - TOKEN2 FIDO2 Security Key(0023),PIN+ Series with OTP + PGP
+    - TOKEN2 FIDO2 Security Key(0024),PIN+ Series with FIDO + PGP
+    - TOKEN2 FIDO2 Security Key(0025),PIN+ Series with PGP
+    - TOKEN2 FIDO2 Security Key(0203),Bio3 Dual with OTP + PGP
+    - TOKEN2 FIDO2 Security Key(0204),Bio3 Dual with FIDO + PGP
+    - TOKEN2 FIDO2 Security Key(0205),Bio3 Dual with PGP
+    - TOKEN2 FIDO2 Security Key(0206),Bio3 Dual with OTP + PGP + FIDO
+    - TOKEN2 Molto2 (older version)
+    - VIX TECHNOLOGY SECURE READER
+   - Remove support of
+    - SIMHUB pcsc reader
+   - Give pcscd group permission to CCID devices in udev rule
+   - Avoid a timeout issue with the Thales Fusion NFC reader
+   - Provide the option to synchronize the 2 interfaces of a SEC1210
+   - Some other minor improvements
+
+-------------------------------------------------------------------
 Sat Jan 25 14:33:27 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Version 1.6.1
@@ -44,7 +82,7 @@ Thu Feb 29 09:30:20 UTC 2024 - jun wang <jgwang@suse.com>
     - rf IDEAS USB CCID
     - SIMHUB pcsc reader
   * support Kapelse readers on macOS (composite as multislot)
-  * Some other minor improvements 
+  * Some other minor improvements
 
 -------------------------------------------------------------------
 Thu Nov 16 11:26:14 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
@@ -215,7 +253,7 @@ Sun Jul 25 18:10:06 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 -------------------------------------------------------------------
 Sun Jan 24 16:08:27 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
-- Version 1.4.34 
+- Version 1.4.34
   * Add support for
      ACS ACR1252IMP Reader
      ACS CryptoMate EVO
@@ -292,7 +330,7 @@ Sun May 24 08:00:02 UTC 2020 - Axel Braun <axel.braun@gmx.de>
     AF Care Two (idProduct: 0xAFC3)
     Doctolib SR
     F-Secure Foundry USB Armory Mk II
-    
+
 -------------------------------------------------------------------
 Mon Feb  3 15:28:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
@@ -1116,7 +1154,7 @@ Fri Aug 11 22:28:18 CEST 2006 - stark@suse.de
 -------------------------------------------------------------------
 Sun Apr  2 00:11:54 CEST 2006 - sndirsch@suse.de
 
-- added missing locale provides (Bug #161867) 
+- added missing locale provides (Bug #161867)
 
 -------------------------------------------------------------------
 Wed Jan 25 21:39:20 CET 2006 - mls@suse.de
@@ -1135,18 +1173,18 @@ Mon Jan  2 07:29:48 CET 2006 - stark@suse.de
 - Updated pcsc-lite to version 1.2.9-beta9
 - Updated CCID driver to 0.9.4
 - Updated GemPC driver to 1.0.0
-- package pkgconfig files to be able to build drivers outside 
+- package pkgconfig files to be able to build drivers outside
   the package
 
 -------------------------------------------------------------------
 Tue Dec 20 16:08:24 CET 2005 - ro@suse.de
 
-- removed unpackaged man-page symlinks 
+- removed unpackaged man-page symlinks
 
 -------------------------------------------------------------------
 Tue Nov 29 11:59:15 CET 2005 - ro@suse.de
 
-- remove keeper from nfb (unused) 
+- remove keeper from nfb (unused)
 
 -------------------------------------------------------------------
 Mon Oct 10 13:02:47 CEST 2005 - stark@suse.de
@@ -1219,7 +1257,7 @@ Thu Jun 16 17:12:15 CEST 2005 - meissner@suse.de
 -------------------------------------------------------------------
 Mon Apr 18 18:12:49 CEST 2005 - ro@suse.de
 
-- make it build with gcc-4 
+- make it build with gcc-4
 
 -------------------------------------------------------------------
 Thu Mar 17 12:45:39 CET 2005 - okir@suse.de
@@ -1242,7 +1280,7 @@ Fri Jan 21 15:11:43 CET 2005 - okir@suse.de
 -------------------------------------------------------------------
 Thu Jan 20 12:46:44 CET 2005 - ro@suse.de
 
-- drop subpackage gpr400 
+- drop subpackage gpr400
 
 -------------------------------------------------------------------
 Wed Apr 28 18:20:35 CEST 2004 - ro@suse.de
@@ -1275,7 +1313,7 @@ Tue Aug  5 14:53:48 CEST 2003 - mge@suse.de
 -------------------------------------------------------------------
 Thu Jun 26 01:17:52 CEST 2003 - ro@suse.de
 
-- remove unpackaged files from buildroot 
+- remove unpackaged files from buildroot
 - added directories to filelist
 
 -------------------------------------------------------------------
@@ -1314,7 +1352,7 @@ Wed Jul 31 17:46:00 CEST 2002 - okir@suse.de
 -------------------------------------------------------------------
 Wed Jun 26 01:56:16 CEST 2002 - ro@suse.de
 
-- use -fPIC when building a shared lib 
+- use -fPIC when building a shared lib
 
 -------------------------------------------------------------------
 Wed Jun 12 13:26:14 CEST 2002 - okir@suse.de
@@ -1338,18 +1376,18 @@ Tue Apr 30 09:41:09 CEST 2002 - okir@suse.de
 -------------------------------------------------------------------
 Tue Apr  9 01:37:41 CEST 2002 - ro@suse.de
 
-- fixed for latest automake/autoconf 
+- fixed for latest automake/autoconf
 
 -------------------------------------------------------------------
 Wed Feb 13 08:13:59 CET 2002 - stark@suse.de
 
 - spec-file cleanup
-- LSB compliant init-script 
+- LSB compliant init-script
 
 -------------------------------------------------------------------
 Mon Jan 14 12:54:01 CET 2002 - ro@suse.de
 
-- removed START_PCSCD 
+- removed START_PCSCD
 
 -------------------------------------------------------------------
 Wed Nov 14 08:49:11 CET 2001 - ro@suse.de
@@ -1365,7 +1403,7 @@ Sun Aug 26 02:28:00 MET 2001 - mge@suse.de
 -------------------------------------------------------------------
 Thu Jun  7 02:27:01 CEST 2001 - ro@suse.de
 
-- fix broken Makefile.am 
+- fix broken Makefile.am
 
 -------------------------------------------------------------------
 Mon Apr 23 00:32:27 MEST 2001 - mge@suse.de
@@ -1375,5 +1413,5 @@ Mon Apr 23 00:32:27 MEST 2001 - mge@suse.de
 -------------------------------------------------------------------
 Thu Apr 19 00:18:46 CEST 2001 - mge@suse.de
 
-- created package 
+- created package
 
