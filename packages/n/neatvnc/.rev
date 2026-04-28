@@ -272,4 +272,34 @@
   * Add earlier rejection of overly long credentials in VeNCrypt authentication</comment>
     <requestid>1349492</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2719b145454a6ddf63839bf18075255b</srcmd5>
+    <version>1.0.0</version>
+    <time>1777387200</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.0:
+  Highlights:
+  * The API is now documented inside the header.
+  * Multiple display support has been implemented.
+  * RFB protocol versions 3.3 and 3.7 are now supported.
+  * DES authentication (VNC security type 2).
+  * The DesktopName pseudo-encoding has been implemented, allowing the server
+    to update the desktop name after the initial handshake.
+  * Extended mouse buttons are now supported, enabling the forward and back
+    buttons.
+  * The server can now listen on multiple addresses and/or pre-bound file
+    descriptors simultaneously.
+  Breaking Changes:
+  * The signature of the authentication callback has changed to include an
+    authentication credentials object to be used for asynchronous authentication
+    and non-password based credentials.
+  * The nvnc_open family of functions has been replaced with nvnc_new
+    accompanied by nvnc_listen. This allows for listening on multiple ports,
+    addresses and transports.
+  * The nvnc_fb class has been replaced with nvnc_frame and nvnc_buffer.
+  * The nvnc_frame object contains information about the frame such as width,
+    height and pixel format, while the nvnc_buffer object only contains the
+    data, and not how the data is to be interpreted.</comment>
+    <requestid>1349767</requestid>
+  </revision>
 </revisionlist>

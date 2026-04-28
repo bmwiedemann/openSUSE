@@ -16,10 +16,10 @@
 #
 
 
-%define libsoname libneatvnc0
+%define libsoname libneatvnc1
 
 Name:           neatvnc
-Version:        0.9.6
+Version:        1.0.0
 Release:        0
 Summary:        A VNC server library
 License:        ISC
@@ -30,7 +30,7 @@ Patch0:         fix-build-in-15.6.patch
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(aml) >= 0.3.0
+BuildRequires:  pkgconfig(aml1) >= 1.0.0
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(libavcodec)
