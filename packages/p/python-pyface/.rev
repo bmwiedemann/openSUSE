@@ -196,4 +196,14 @@
     <comment></comment>
     <requestid>1267843</requestid>
   </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>8ed2343c7eeb20c64361532cc9cd548b</srcmd5>
+    <version>8.0.0</version>
+    <time>1777370159</time>
+    <user>anag_factory</user>
+    <comment>- buildignore python314 variant
+
+  versions</comment>
+    <requestid>1349433</requestid>
+  </revision>
 </revisionlist>

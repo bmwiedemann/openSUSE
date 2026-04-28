@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyface
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Traits-capable windowing framework
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
-License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only AND LGPL-3.0-only AND SUSE-Public-Domain
+License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only AND LGPL-3.0-only AND LicenseRef-SUSE-Public-Domain
 URL:            https://github.com/enthought/pyface
 Source:         https://files.pythonhosted.org/packages/source/p/pyface/pyface-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fix-wx-tests.patch
@@ -31,19 +31,19 @@ Patch0:         fix-wx-tests.patch
 Patch1:         skip-qt4-tests.patch
 # gh#enthought/pyface#1255, might be pulled in by wxPython
 # BuildRequires:  %%{python_module Pillow}
-#!BuildIgnore:  python39-Pillow
 #!BuildIgnore:  python310-Pillow
 #!BuildIgnore:  python311-Pillow
 #!BuildIgnore:  python312-Pillow
 #!BuildIgnore:  python313-Pillow
+#!BuildIgnore:  python314-Pillow
 BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.10}
+BuildRequires:  %{python_module importlib-metadata >= 3.6 if %python-base < 3.10}
 BuildRequires:  %{python_module importlib-resources >= 1.1.0 if %python-base < 3.9}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module qtwebengine-qt5}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module traits >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wxWidgets}
@@ -52,7 +52,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 %if %{python_version_nodots} < 310
-Requires:       python-importlib-metadata
+Requires:       python-importlib-metadata >= 3.6
 %endif
 %if %{python_version_nodots} < 39
 Requires:       python-importlib-resources >= 1.1.0
