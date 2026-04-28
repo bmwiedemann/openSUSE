@@ -87,6 +87,13 @@ This package contains the development files (mainly C header files) for libblake
 %autosetup -p1 -a1 -n BLAKE3-%{version}
 
 %build
+# Original tbb is broken and gives its .pc file name an arch-dependent name;
+# openSUSE fixes that in and for tbb, but blake3 is still expecting the
+# alternate name (the openSUSE-ism needs to be carried forward into all tbb
+# users).
+#
+perl -i -lpe 's{set\(TBB_PC_NAME tbb32\)}{set(TBB_PC_NAME tbb)}' c/CMakeLists.txt
+
 b="$PWD"
 
 %if 0%{?with_b3sum}
