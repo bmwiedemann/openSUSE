@@ -354,7 +354,7 @@ Summary:        Additional codecs for the VLC media player
 Group:          Productivity/Multimedia/Video/Players
 Requires:       %{name}-noX = %{version}
 # We require the unrestricted libavcodec - same ABI version we linked
-Requires:       %(rpm --qf "%%{name}" -qf $(readlink -f %{_libdir}/libavcodec.so))(unrestricted)
+Requires:       libavcodec%(readlink -f %{_libdir}/libavcodec.so | sed -e "s/.*\.so\.\([^\.]*\)\..*/\1/")(unrestricted)
 # We need the noX package first, as it contains vlc-cache-gen
 Requires(post): %{name}-noX
 Supplements:    %{name}-noX

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 26 16:33:31 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Fix Requires for ffmpeg library:
+  For building the package ffmpeg-7-mini-libs may be installed
+  which is used for building only, so the name package cannot
+  be used to determine Requires.
+
+-------------------------------------------------------------------
 Wed Mar  4 09:09:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Obsolete vlc-vdpau by the -noX package when building without vlc
