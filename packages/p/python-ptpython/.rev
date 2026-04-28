@@ -186,4 +186,12 @@
   * Drop Python 3.7 support.</comment>
     <requestid>1345931</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>cbf866f939b59347baa6f33dda115c40</srcmd5>
+    <version>3.0.32</version>
+    <time>1777370130</time>
+    <user>anag_factory</user>
+    <comment>- reset alternative for TW</comment>
+    <requestid>1349421</requestid>
+  </revision>
 </revisionlist>

@@ -16,6 +16,14 @@
 #
 
 
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-ptpython
 Version:        3.0.32
@@ -43,6 +51,13 @@ BuildRequires:  %{python_module jedi >= 0.16.0}
 BuildRequires:  %{python_module prompt_toolkit >= 3.0.43}
 # /SECTION
 Recommends:     python-ptpython-ptipython
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -71,6 +86,9 @@ sed -i -e '/^#!\//, 1d' src/ptpython/entry_points/run_*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/ptpython
 %python_clone -a %{buildroot}%{_bindir}/ptipython
+
+%pre
+%python_reset_alternative ptpython
 
 %post
 %python_install_alternative ptpython
