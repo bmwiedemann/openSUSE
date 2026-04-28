@@ -104,4 +104,17 @@
 </comment>
     <requestid>1348705</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a4784f74776ca3a5f146e87230fb9ab9</srcmd5>
+    <version>14.4</version>
+    <time>1777370299</time>
+    <user>anag_factory</user>
+    <comment>- Update to 14.4:
+  * Updated --gui-threshold-* logic to trigger on values equal to or greater
+    than the threshold (previously only &quot;greater than&quot;). This enables setting
+    the threshold to 1 to trigger it for a single case.
+    This change is required by SnapRAID Daemon 1.8.
+</comment>
+    <requestid>1349606</requestid>
+  </revision>
 </revisionlist>

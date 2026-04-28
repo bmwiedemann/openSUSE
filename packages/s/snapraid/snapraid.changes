@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 27 14:23:56 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 14.4:
+  * Updated --gui-threshold-* logic to trigger on values equal to or greater
+    than the threshold (previously only "greater than"). This enables setting
+    the threshold to 1 to trigger it for a single case.
+    This change is required by SnapRAID Daemon 1.8.
+
+-------------------------------------------------------------------
 Wed Apr 22 07:37:05 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 14.3:
