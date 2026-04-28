@@ -73,4 +73,18 @@
   * fixes build with gcc15</comment>
     <requestid>1288267</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>16081fbc601d70dd8ef63030c4d0cce8</srcmd5>
+    <version>0.3.3</version>
+    <time>1777370282</time>
+    <user>anag_factory</user>
+    <comment>please handle this together with sr#1349563, needs the updated libcosmos to build
+
+- update to version v0.3.3:
+  - Update of libcosmos to its most recent release and adjust the code accordingly.
+- update to version v0.3.2:
+  - add missing stdint.h include to make compilation with GCC-16 possible
+- drop u_gcc15.patch: fix is included upstream</comment>
+    <requestid>1349566</requestid>
+  </revision>
 </revisionlist>

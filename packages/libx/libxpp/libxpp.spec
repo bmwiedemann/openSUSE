@@ -1,7 +1,7 @@
 #
 # spec file for package libxpp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define version 0.3.1
+%define version 0.3.3
 
 Name:           libxpp
 Version:        %{version}
@@ -25,8 +25,7 @@ Summary:        An object oriented C++ wrapper for parts of the X11 API
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/gerstner-hub/libxpp
-Source0:        libxpp-v0.3.1.tar.xz
-Patch0:         u_gcc15.patch
+Source:         libxpp-v0.3.3.tar.xz
 
 BuildRequires:  gcc-c++
 BuildRequires:  libX11-devel

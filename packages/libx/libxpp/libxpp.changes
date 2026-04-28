@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:45:40 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to version v0.3.3:
+  - Update of libcosmos to its most recent release and adjust the code accordingly.
+- update to version v0.3.2:
+  - add missing stdint.h include to make compilation with GCC-16 possible
+- drop u_gcc15.patch: fix is included upstream
+
+-------------------------------------------------------------------
 Tue Jun 24 12:58:54 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_gcc15.patch
