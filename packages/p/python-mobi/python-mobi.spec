@@ -1,7 +1,7 @@
 #
 # spec file for package python-mobi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %{?sle15_python_module_pythons}
 Name:           python-mobi
@@ -31,6 +37,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-loguru >= 0.4
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -49,6 +62,9 @@ Python library for unpacking unencrypted mobi files (forked from KindleUnpack)
 
 %check
 # test files are not installable
+
+%pre
+%python_reset_alternative mobiunpack
 
 %post
 %python_install_alternative mobiunpack
