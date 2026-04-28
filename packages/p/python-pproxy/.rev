@@ -47,4 +47,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1282300</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>1650fc5bf7d283cee1022624f6d422b6</srcmd5>
+    <version>2.7.8</version>
+    <time>1777370145</time>
+    <user>anag_factory</user>
+    <comment>- reset alternative for TW</comment>
+    <requestid>1349426</requestid>
+  </revision>
 </revisionlist>

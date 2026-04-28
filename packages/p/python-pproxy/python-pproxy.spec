@@ -1,7 +1,7 @@
 #
 # spec file for package python-pproxy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %{?sle15_python_module_pythons}
 Name:           python-pproxy
@@ -44,6 +50,13 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-daemon >= 2.2.3}
 BuildRequires:  %{python_module uvloop >= 0.13.0}
 # /SECTION
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -62,6 +75,9 @@ rm tests/api_*.py
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pproxy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%pre
+%python_reset_alternative pproxy
 
 %post
 %python_install_alternative pproxy
