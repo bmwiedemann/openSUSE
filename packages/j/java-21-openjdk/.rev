@@ -183,4 +183,12 @@
     <comment>January 2026 CPU fixes</comment>
     <requestid>1328613</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e74c34b3ae92eb82d4baf8003d699178</srcmd5>
+    <version>21.0.11.0</version>
+    <time>1777370052</time>
+    <user>anag_factory</user>
+    <comment>April 2026 CPU</comment>
+    <requestid>1349424</requestid>
+  </revision>
 </revisionlist>

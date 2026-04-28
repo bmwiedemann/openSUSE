@@ -1,4 +1,295 @@
 -------------------------------------------------------------------
+Sat Apr 25 18:54:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-21.0.11+10 (April 2026 CPU)
+  * CVEs
+    + CVE-2026-22007 (bsc#1262490)
+    + CVE-2026-22013 (bsc#1262494)
+    + CVE-2026-22016 (bsc#1262495)
+    + CVE-2026-22018 (bsc#1262496)
+    + CVE-2026-22021 (bsc#1262497)
+    + CVE-2026-23865 (bsc#1259118)
+    + CVE-2026-34268 (bsc#1262500)
+    + CVE-2026-34282 (bsc#1262501)
+  * Changes
+    + JDK-6899304: java.awt.Toolkit
+      .getScreenInsets(GraphicsConfiguration) returns incorrect
+      values
+    + JDK-8030957: AIX: Implement OperatingSystemMXBean
+      .getSystemCpuLoad() and .getProcessCpuLoad() on AIX
+    + JDK-8075917: The regression-swing case failed as the text on
+      label is not painted red with the GTK L&F
+    + JDK-8114830: (fs) Files.copy fails due to interference from
+      something else changing the file system
+    + JDK-8244336: Restrict algorithms at JCE layer
+    + JDK-8256289: java/awt/Focus/AppletInitialFocusTest/
+      /AppletInitialFocusTest1.java failed with "RuntimeException:
+      Wrong focus owner:
+      java.awt.Button[button1,41,36,56x23,label=Button1]"
+    + JDK-8287062: com/sun/jndi/ldap/LdapPoolTimeoutTest.java
+      failed due to different timeout message
+    + JDK-8298153: Colored text is not shown on disabled checkbox
+      and radio button with GTK LAF for bug4314194
+    + JDK-8301875: java.util.TimeZone.getSystemTimeZoneID uses C
+      library default file mode
+    + JDK-8313319: [linux] mmap should use MAP_FIXED_NOREPLACE if
+      available
+    + JDK-8314555: Build with mawk fails on Windows
+    + JDK-8314810: (fs) java/nio/file/Files/CopyInterference.java
+      should use TestUtil::supportsLinks
+    + JDK-8316274: javax/swing/ButtonGroup/
+      /TestButtonGroupFocusTraversal.java fails in Ubuntu 23.10 with
+      Motif LAF
+    + JDK-8317633: Modernize text.testlib.HexDumpReader
+    + JDK-8317801: java/net/Socket/asyncClose/Race.java fails
+      intermittently (aix)
+    + JDK-8317838: java/nio/channels/Channels/
+      /SocketChannelStreams.java running into timeout (aix)
+    + JDK-8318302: ThreadCountLimit.java failed with "Native memory
+      allocation (mprotect) failed to protect 16384 bytes for memory
+      to guard stack pages"
+    + JDK-8326897: (fs) The utility TestUtil.supportsLinks is
+      wrongly used to check for hard link support
+    + JDK-8327114: Attach in Linux may have wrong behaviour when
+      pid == ns_pid (Kubernetes debug container)
+    + JDK-8328608: Multiple NewSessionTicket support for TLS
+    + JDK-8329337: Problem list BufferStrategyExceptionTest.java on
+      Windows
+    + JDK-8330016: Stress seed should be initialized for runtime
+      stub compilation
+    + JDK-8331431: Update to use jtreg 7.4
+    + JDK-8333386: TestAbortOnVMOperationTimeout test fails for
+      client VM
+    + JDK-8333857: Test sun/security/ssl/SSLSessionImpl/
+      /ResumeChecksServer.java failed: Existing session was used
+    + JDK-8334670: SSLSocketOutputRecord buffer miscalculation
+    + JDK-8334738: os::print_hex_dump should optionally print ASCII
+    + JDK-8335646: Nimbus : JLabel not painted with LAF defined
+      foreground color on Ubuntu 24.04
+    + JDK-8335906: [s390x] Test Failure: GTestWrapper.java
+    + JDK-8336695: Update Commons BCEL to Version 6.10.0
+    + JDK-8337102: JITTester: Fix breaks in static initialization
+      blocks
+    + JDK-8339238: Update to use jtreg 7.5.1
+    + JDK-8339271: giflib attribution correction
+    + JDK-8339791: Refactor MiscUndecorated/ActiveAWTWindowTest.java
+    + JDK-8341246: Test com/sun/tools/attach/PermissionTest.java
+      fails access denied after JDK-8327114
+    + JDK-8341310: Test TestJcmdWithSideCar.java should skip
+      ACCESS_TMP_VIA_PROC_ROOT (after JDK-8327114)
+    + JDK-8342175: MemoryEaterMT fails intermittently with
+      ExceptionInInitializerError
+    + JDK-8342449: reimplement: JDK-8327114 Attach in Linux may
+      have wrong behavior when pid == ns_pid
+    + JDK-8343234: (bf) Move java/nio/Buffer/LimitDirectMemory.java
+      from ProblemList.txt to ProblemList-Virtual.txt
+    + JDK-8343377: Performance regression in reflective invocation
+      of native methods
+    + JDK-8343622: AesDkCrypto.stringToKey should not return null
+    + JDK-8345578: New test in JDK-8343622 fails with a promoted
+      build
+    + JDK-8345668: ZoneOffset.ofTotalSeconds performance regression
+    + JDK-8346048: test/lib/containers/docker/DockerRunOptions.java
+      uses addJavaOpts() from ctor
+    + JDK-8346962: Test CRLReadTimeout.java fails with -Xcomp on a
+      fastdebug build
+    + JDK-8347475: GTK: javax/swing/JColorChooser/Test8152419.java
+      there are no swatches or RGB tab in JColorChooser
+    + JDK-8348014: Enhance certificate processing
+    + JDK-8348309: MultiNST tests need more debugging and timing
+    + JDK-8349351: Combine Screen Inset Tests into a Single File
+    + JDK-8350103: Test containers/systemd/
+      /SystemdMemoryAwarenessTest.java fails on Linux ppc64le SLES15
+      SP6
+    + JDK-8351000: StringBuilder getChar and putChar robustness
+    + JDK-8351458: (ch) Move preClose to UnixDispatcher
+    + JDK-8351639: Improve debuggability of test/langtools/jdk/
+      /jshell/JdiHangingListenExecutionControlTest.java test
+    + JDK-8353755: Add a helper method to Util - findComponent()
+    + JDK-8354057: Odd debug output in -Xlog:os+container=debug on
+      certain systems
+    + JDK-8354145: G1: UseCompressedOops boundary is calculated on
+      maximum heap region size instead of maxiumum ergonomic heap
+      region size
+    + JDK-8354219: Automate javax/swing/JComboBox/ComboPopupBug.java
+    + JDK-8354469: Keytool exposes the password in plain text when
+      command is piped using | grep
+    + JDK-8354559: gc/g1/TestAllocationFailure.java doesn't need WB
+      API
+    + JDK-8354878: File Leak in
+      CgroupSubsystemFactory::determine_type of
+      cgroupSubsystem_linux.cpp:300
+    + JDK-8354922: ZGC: Use MAP_FIXED_NOREPLACE when reserving
+      memory
+    + JDK-8355278: Improve debuggability of
+      com/sun/jndi/ldap/LdapPoolTimeoutTest.java test
+    + JDK-8355445: [java.nio] Use @requires tag instead of exiting
+      based on "os.name" property value
+    + JDK-8355632: WhiteBox.waitForReferenceProcessing() fails
+      assert for return type
+    + JDK-8356107: [java.lang] Use @requires tag instead of exiting
+      based on os.name or separatorChar property
+    + JDK-8357141: Update to use jtreg 7.5.2
+    + JDK-8357277: Update OpenSSL library for interop tests
+    + JDK-8357380: java/lang/StringBuilder/RacingSBThreads.java
+      times out with C1
+    + JDK-8358077: sun.tools.attach
+      .VirtualMachineImpl::checkCatchesAndSendQuitTo on Linux leaks
+      file handles after JDK-8327114
+    + JDK-8358159: Empty mode/padding in cipher transformations
+    + JDK-8358751: C2: Recursive inlining check for compiled lambda
+      forms is broken
+    + JDK-8359388: Stricter checking for cipher transformations
+    + JDK-8359827: Test runtime/Thread/ThreadCountLimit.java need
+      loop increasing the limit
+    + JDK-8360539: DTLS handshakes fails due to improper cookie
+      validation logic
+    + JDK-8361067: Test ExtraButtonDrag.java requires frame.dispose
+      in finally block
+    + JDK-8361530: Test javax/swing/GraphicsConfigNotifier/
+      /StalePreferredSize.java timed out
+    + JDK-8361613: System.console() should only be available for
+      interactive terminal
+    + JDK-8362834: Several runtime/Thread tests should mark as
+      /native
+    + JDK-8363950: Incorrect jtreg header in TestLayoutVsICU.java
+    + JDK-8364373: Transform Affine transformations
+    + JDK-8364465: Enhance behavior of some intrinsics
+    + JDK-8364764: java/nio/channels/vthread/BlockingChannelOps.java
+      subtests timed out
+    + JDK-8365526: Crash with null Symbol passed to
+      SystemDictionary::resolve_or_null
+    + JDK-8365972: JFR: ThreadDump and ClassLoaderStatistics events
+      may cause back to back rotations
+    + JDK-8366128: jdk/jdk/nio/zipfs/TestPosix.java::testJarFile
+      uses wrong file
+    + JDK-8366261: Provide utility methods for
+      sun.security.util.Password
+    + JDK-8366694: Test JdbStopInNotificationThreadTest.java timed
+      out after 60 second
+    + JDK-8366817: test/jdk/javax/net/ssl/TLSCommon/interop/
+      /JdkProcServer.java and JdkProcClient.java should not delete
+      logs
+    + JDK-8366850: Test com/sun/jdi/
+      /JdbStopInNotificationThreadTest.java failed
+    + JDK-8366866: SslRMIClientSocketFactory#createSocket lacking
+      priviledges (securitymanger)
+    + JDK-8366938: Test runtime/handshake/HandshakeTimeoutTest.java
+      crashed
+    + JDK-8367135: Test compiler/loopstripmining/
+      /CheckLoopStripMining.java needs internal timeouts adjusted
+    + JDK-8367583: sun/security/util/AlgorithmConstraints/
+      /InvalidCryptoDisabledAlgos.java fails after JDK-8244336
+    + JDK-8367772: Refactor createUI in PassFailJFrame
+    + JDK-8368683: [process] Increase jtreg debug output
+      maxOutputSize for TreeTest
+    + JDK-8368787: Error reporting: hs_err files should show
+      instructions when referencing code in nmethods
+    + JDK-8368882: NPE during text drawing on machine with JP locale
+    + JDK-8369282: Distrust TLS server certificates anchored by
+      Chunghwa ePKI Root CA
+    + JDK-8369575: Enhance crypto algorithm support
+    + JDK-8369858: Remove darcy author tags from jdk tests
+    + JDK-8369911: Test sun/java2d/marlin/ClipShapeTest
+      .java#CubicDoDash, #Cubic and #Poly fail intermittent
+    + JDK-8370325: G1: Disallow GC for TLAB allocation
+    + JDK-8370529: Enhance Path Factories Redux
+    + JDK-8370572: Cgroups hierarchical memory limit is not honored
+      after JDK-8322420
+    + JDK-8370579: PPC: fix inswri immediate argument order
+    + JDK-8370615: Improve Kerberos credentialing
+    + JDK-8370636: com/sun/jdi/TwoThreadsTest.java should wait for
+      completion of all threads
+    + JDK-8370966: Create regression test for the hierarchical
+      memory limit fix in JDK-8370572
+    + JDK-8370986: Enhance Zip file reading
+    + JDK-8370995: Enhance ZipFile usage
+    + JDK-8371103: vmTestbase/nsk/jvmti/scenarios/events/EM02/
+      /em02t006/TestDescription.java failing
+    + JDK-8371485: ProblemList awt/Mixing/AWT_Mixing/
+      /JTableInGlassPaneOverlapping.java for linux
+    + JDK-8371559: Intermittent timeouts in test
+      javax/net/ssl/Stapling/HttpsUrlConnClient.java
+    + JDK-8371608: Jtreg test  jdk/internal/vm/Continuation/
+      /Fuzz.java sometimes fails with (fast)debug binaries
+    + JDK-8371830: Enhance certificate chain validation
+    + JDK-8371889: [21u] JFR: Deadlock in ThrowableTracer
+    + JDK-8371935: Enhance key generation
+    + JDK-8371978: tools/jar/ReproducibleJar.java fails on XFS
+    + JDK-8372048: Performance improvement on Linux remote desktop
+    + JDK-8372321: TestBackToBackSensitive fails intermittently
+      after JDK-8365972
+    + JDK-8372348: Adjust some UL / JFR string deduplication output
+      messages
+    + JDK-8372441: JFR: Improve logging of TestBackToBackSensitive
+    + JDK-8372464: Bump update version for OpenJDK: jdk-21.0.11
+    + JDK-8372710: Update ProcessBuilder/Basic regex
+    + JDK-8372756: Mouse additional buttons and horizontal
+      scrolling are broken on XWayland GNOME >= 47 after JDK-8351907
+    + JDK-8372857: Improve debuggability of
+      java/rmi/server/RemoteServer/AddrInUse.java test
+    + JDK-8372977: Unnecessary gthread-2.0 loading
+    + JDK-8372988: Test runtime/Nestmates/membership/
+       /TestNestHostErrorWithMultiThread.java failed: Unexpected
+       interrupt
+    + JDK-8373290: Update FreeType to 2.14.1
+    + JDK-8373476: (tz) Update Timezone Data to 2025c
+    + JDK-8373525: C2: assert(_base == Long) failed: Not a Long
+    + JDK-8373727: New XBM images parser regression: only the first
+      line of the bitmap array is parsed
+    + JDK-8374056: RISC-V: Fix argument passing for the
+      RiscvFlushIcache::flush
+    + JDK-8374178: Missing include in systemDictionary.cpp after
+      JDK-8365526
+    + JDK-8374209: [17u,21u] Backout JDK-8361748 due to JDK-8373727
+    + JDK-8374433: java/util/Locale/PreserveTagCase.java does not
+      run any tests
+    + JDK-8374555: No need for visible input warning in
+      s.s.u.Password when not reading from System.in
+    + JDK-8374557: Enhance TLS connection handling
+    + JDK-8374642: EscapeHash macro fails with GNU make 4.3 and 4.4
+    + JDK-8375057: Update HarfBuzz to 12.3.2
+    + JDK-8375063: Update Libpng to 1.6.54
+    + JDK-8375530: PPC64: incorrect quick
+      verify_method_data_pointer check causes poor performance in
+      debug build
+    + JDK-8375549: ConcurrentModificationException if
+      jdk.crypto.disabledAlgorithms has multiple entries with known
+      oid
+    + JDK-8375999: com/sun/jndi/ldap/LdapPoolTimeoutTest.java fails
+      sporadically on Windows
+    + JDK-8376251: [macos] java/awt/Frame/I18NTitle.java fails on
+      MacOS (JDK-8355884)
+    + JDK-8376270: [21u, 17u] Redo JDK-8361748: Enforce limits on
+      the size of an XBM image
+    + JDK-8377509: Add licenses for gcc 14.2.0
+    + JDK-8377526: Update Libpng to 1.6.55
+    + JDK-8377905: gcc.md included with every build
+    + JDK-8378218: MSYS2 reports cygwin triplet causing bash
+      configure failure
+    + JDK-8378631: Update Zlib Data Compression Library to Version
+      1.3.2
+    + JDK-8378823: AIX build fails after zlib updated by JDK-8378631
+    + JDK-8378853: [25u] Make backport of JDK-8244336 comply with
+      differences in CSR
+    + JDK-8379035: (tz) Update Timezone Data to 2026a
+    + JDK-8379158: Update FreeType to 2.14.2
+    + JDK-8379256: Update GIFlib to 6.1.1
+    + JDK-8380078: Update GIFlib to 6.1.2
+    + JDK-8380959: Update Libpng to 1.6.56
+    + JDK-8382047: Update Libpng to 1.6.57
+    + JDK-8382439: [21u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 21.0.11
+- Modified patch:
+  * fips.patch
+    + rediff
+
+-------------------------------------------------------------------
+Mon Mar 16 16:04:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Provide the timezone-java and tzdata-java (jsc#PED-15898)
+
+-------------------------------------------------------------------
 Thu Jan 22 06:51:06 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-21.0.10+7 (January 2026 CPU)
