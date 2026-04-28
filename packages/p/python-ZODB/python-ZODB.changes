@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 26 21:11:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.3:
+  * Add class_factory parameter to DB.__init__() and class-
+    factory option to ZConfig database configuration. See issue
+    #420.
+
+-------------------------------------------------------------------
 Sun Apr 12 20:06:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2:

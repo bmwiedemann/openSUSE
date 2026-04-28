@@ -226,4 +226,15 @@
     not have an '_oid' attribute</comment>
     <requestid>1346248</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a4e07bb245eee772532b33c535708ca3</srcmd5>
+    <version>6.3</version>
+    <time>1777370179</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.3:
+  * Add class_factory parameter to DB.__init__() and class-
+    factory option to ZConfig database configuration. See issue
+    #420.</comment>
+    <requestid>1349442</requestid>
+  </revision>
 </revisionlist>

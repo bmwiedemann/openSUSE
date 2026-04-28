@@ -19,7 +19,7 @@
 
 %bcond_without libalternatives
 Name:           python-ZODB
-Version:        6.2
+Version:        6.3
 Release:        0
 Summary:        Zope Object Database: object database and persistence
 License:        ZPL-2.1
