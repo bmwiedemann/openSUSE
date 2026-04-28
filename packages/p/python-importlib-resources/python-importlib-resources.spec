@@ -1,7 +1,7 @@
 #
 # spec file for package python-importlib-resources
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-importlib-resources
-Version:        6.5.2
+Version:        7.1.0
 Release:        0
 Summary:        Read resources from Python packages
 License:        Apache-2.0
@@ -28,11 +28,11 @@ BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module jaraco.test >= 5.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module zipp >= 3.1.0}
+BuildRequires:  %{python_module zipp >= 3.17}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-importlib_resources = %{version}
@@ -75,7 +75,7 @@ library documentation.
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc NEWS.rst README.rst
 %license LICENSE
 %{python_sitelib}/importlib_resources
 %{python_sitelib}/importlib_resources-%{version}.dist-info

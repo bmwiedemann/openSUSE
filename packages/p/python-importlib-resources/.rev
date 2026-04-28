@@ -173,4 +173,16 @@ It does NOT conflict with python38 standard library.</comment>
     <comment></comment>
     <requestid>1268075</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ddb71e2319f98a9cfc8a10b82d40ab70</srcmd5>
+    <version>7.1.0</version>
+    <time>1777369996</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.1.0:
+  * files() now provides a nicer error when __main__.__spec__ is
+    None.
+  * Remove compatibility shim for deprecated parameter package in
+    :func:`importlib.resources.files`. Patch by Semyon Moroz.</comment>
+    <requestid>1349224</requestid>
+  </revision>
 </revisionlist>

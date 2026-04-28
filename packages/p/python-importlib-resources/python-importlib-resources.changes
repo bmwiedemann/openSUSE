@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 25 11:12:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0:
+  * files() now provides a nicer error when __main__.__spec__ is
+    None.
+  * Remove compatibility shim for deprecated parameter package in
+    :func:`importlib.resources.files`. Patch by Semyon Moroz.
+
+-------------------------------------------------------------------
 Tue Apr  8 17:52:29 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.5.2
