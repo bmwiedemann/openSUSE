@@ -80,4 +80,17 @@
   - Fix occassional crashes upon closing the terminal.</comment>
     <requestid>1255637</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>171c1357e2b4596347eee0fbfdac1ffc</srcmd5>
+    <version>1.1.4</version>
+    <time>1777370285</time>
+    <user>anag_factory</user>
+    <comment>please handle together with sr#1349563 and sr#1349566, needs the updated
+dependencies to build
+
+- update to version v1.1.4:
+  - only and upate of library dependencies and adjusted API calls. Nothing
+    should have changed functionality-wise.</comment>
+    <requestid>1349569</requestid>
+  </revision>
 </revisionlist>

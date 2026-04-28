@@ -1,7 +1,7 @@
 #
 # spec file for package nst
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define version 1.1.2
+%define version 1.1.4
 
 Name:           nst
 Version:        %{version}
