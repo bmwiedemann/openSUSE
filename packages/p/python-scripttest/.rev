@@ -69,4 +69,13 @@
   * Include tests in source distributions</comment>
     <requestid>1265370</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1a958e9f2b0b2f0b61ce0c953ba9463b</srcmd5>
+    <version>2.0.post1</version>
+    <time>1777370012</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.post1:
+  * readd doc</comment>
+    <requestid>1349301</requestid>
+  </revision>
 </revisionlist>
