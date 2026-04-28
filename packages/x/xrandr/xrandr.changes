@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 26 00:31:10 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.5.4
+  * This release detects when the X server is Xwayland and warns
+    that not all features will work, as rootless Xwayland provides
+    a read-only emulation of RANDR and does not allow changing
+    output configurations with RANDR.
+  * This release also adds support for building with meson as
+    well as autoconf.
+- switch to meson
+
+-------------------------------------------------------------------
 Thu Nov  7 19:45:46 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.5.3

@@ -1,7 +1,7 @@
 #
 # spec file for package xrandr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xrandr
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Primitive command line interface to RandR extension
 License:        MIT
@@ -26,6 +26,7 @@ URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-UPSTREAM xrandr-print-outputs-per-provider.patch federico@suse.com - Make the --listproviders option also print which outputs are supported by each provider
 Patch1:         xrandr-print-outputs-per-provider.patch
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
@@ -47,11 +48,11 @@ the outputs for a screen. It can also set the screen size.
 %autosetup -p1
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 # do not ship xkeystone, see fdo#35984
 rm %{buildroot}%{_bindir}/xkeystone
 
