@@ -22,7 +22,7 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 %ifarch x86_64
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %define kmp_longterm 1
 %endif
 %endif
