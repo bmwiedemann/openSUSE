@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 27 07:18:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.88
+  * The sample-from-soundcard feature now has slightly better
+    audio quality, takes up less RAM, and should be faster to
+    perform (less total computational time).
+
+-------------------------------------------------------------------
 Sun Mar 29 11:12:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.87
