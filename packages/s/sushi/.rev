@@ -514,4 +514,14 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345347</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>c375845f965b81449ac4eae620298964</srcmd5>
+    <version>50.0</version>
+    <time>1777370239</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.0:
+  + Fix a typo.
+  + Updated translations.</comment>
+    <requestid>1349503</requestid>
+  </revision>
 </revisionlist>
