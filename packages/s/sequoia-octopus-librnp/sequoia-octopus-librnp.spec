@@ -24,16 +24,16 @@ Group:          Productivity/Networking/Security
 URL:            https://gitlab.com/sequoia-pgp/sequoia-octopus-librnp
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-BuildRequires:  cargo-packaging
 BuildRequires:  cargo >= 1.85
+BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
+BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.85
-BuildRequires:  pkgconfig(nettle)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       MozillaThunderbird
-Provides:       MozillaThunderbird-openpgp
 Conflicts:      MozillaThunderbird-openpgp
+Provides:       MozillaThunderbird-openpgp
 
 %description
 Sequoia Octopus' librnp is an alternative OpenPGP implementation for Mozilla Thunderbird.
@@ -43,7 +43,7 @@ If installed it will replace the upstream Thunderbird OpenPGP backend based on B
 %autosetup -a1 -p1
 
 %build
-%cargo_build
+%{cargo_build} --no-default-features --features crypto-openssl
 
 %install
 mkdir  -p %{buildroot}%{_libdir}/thunderbird

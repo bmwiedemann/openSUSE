@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 24 20:18:00 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
+
+- Switch to openssl backend, to avoid build error
+  https://gitlab.com/sequoia-pgp/nettle-sys/-/work_items/22
+
+-------------------------------------------------------------------
 Thu Sep 25 20:01:55 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
 
 - use 'BuildRequires: rust' to avoid conflict with the recent changes in
