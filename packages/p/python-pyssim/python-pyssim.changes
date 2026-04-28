@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 26 21:56:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.1:
+  * Fix compatibility with new version of scipy.
+  * Update supported python versions to 3.9 through 3.13.
+- Drop obsolete patches:
+  * Pillow-imports.patch
+  * use-pywavelets.patch
+
+-------------------------------------------------------------------
 Thu Feb  6 03:38:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7:
@@ -28,7 +38,7 @@ Mon Mar  6 11:17:51 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Sat Feb 13 07:49:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 36 build (scipy) 
+- skip python 36 build (scipy)
 
 -------------------------------------------------------------------
 Wed May 20 07:26:43 UTC 2020 - Petr Gajdos <pgajdos@suse.com>

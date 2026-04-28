@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyssim
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,12 @@
 
 
 Name:           python-pyssim
-Version:        0.7
+Version:        0.7.1
 Release:        0
 Summary:        Structured Similarity Image Metric (SSIM)
 License:        MIT
 URL:            https://github.com/jterrace/pyssim
 Source:         https://files.pythonhosted.org/packages/source/p/pyssim/pyssim-%{version}.tar.gz
-Patch0:         Pillow-imports.patch
-# PATCH-FIX-UPSTREAM Use PyWavelets rather than scipy.signal gh#jterrace/pyssim#49
-Patch1:         use-pywavelets.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
