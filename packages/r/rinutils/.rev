@@ -47,4 +47,13 @@
   * Refactoring and minor build-fixes.</comment>
     <requestid>1133579</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>47cd2be714b7e928cf4fe88d160e6dba</srcmd5>
+    <version>0.10.3</version>
+    <time>1777370175</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.3:
+  * Fix https://github.com/shlomif/rinutils/issues/5 's libdir</comment>
+    <requestid>1349438</requestid>
+  </revision>
 </revisionlist>
