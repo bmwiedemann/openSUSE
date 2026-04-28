@@ -231,4 +231,26 @@
 - fix_compilation.patch: removed, upstreamed</comment>
     <requestid>1343959</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c3c62af0564671782e183887a9759dfb</srcmd5>
+    <version>2.0.5</version>
+    <time>1777370307</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.5
+  https://www.dnsdist.org/changelog.html#change-2.0.5
+- changes in 2.0.4:
+  https://www.dnsdist.org/changelog.html#change-2.0.4
+  * bsc#1262536 (CVE-2026-33257): Insufficient input validation of internal webserver
+  * bsc#1262537 (CVE-2026-33260): Insufficient input validation of internal webserver
+  * bsc#1262538 (CVE-2026-33254): Resource exhaustion via DoQ/DoH3 connections
+  * bsc#1262539 (CVE-2026-33602): Off-by-one access when processing crafted UDP responses
+  * bsc#1262540 (CVE-2026-33599): Out-of-bounds read in service discovery
+  * bsc#1262541 (CVE-2026-33598): Out-of-bounds read in cache inspection via Lua
+  * bsc#1262542 (CVE-2026-33597): PRSD detection denial of service
+  * bsc#1262543 (CVE-2026-33596): TCP backend stream ID overflow
+  * bsc#1262544 (CVE-2026-33595): DoQ/DoH3 excessive memory allocation
+  * bsc#1262545 (CVE-2026-33594): Outgoing DoH excessive memory allocation
+  * bsc#1262546 (CVE-2026-33593): Denial of service via crafted DNSCrypt query</comment>
+    <requestid>1349637</requestid>
+  </revision>
 </revisionlist>

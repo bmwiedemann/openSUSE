@@ -46,7 +46,7 @@
 %bcond_with     dnsdist_quiche
 %bcond_with     dnsdist_xdp
 Name:           dnsdist
-Version:        2.0.3
+Version:        2.0.5
 Release:        0
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
 License:        GPL-2.0-only
