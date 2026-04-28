@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 25 20:45:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.24.2:
+  * Ensure that `typer.launch` forwards correctly when
+    launching a file. PR #1708 by @svlandeg.
+  * Ensure `ty` runs without errors. PR #1628 by @svlandeg.
+  * Add dates to release notes. PR #1612 by @YuriiMotov.
+  * Fix code blocks in reference docs overflowing table width.
+  * Fix broken link to FastAPI and Friends newsletter. PR #1540
+  * Handle external links `target=_blank` and CSS automatically
+    in JS and CSS. PR #1622 by @tiangolo.
+  * Remove link to Typer developer survey. PR #1609 by
+  * Clean up documentation in `install.md` file. PR #1606 by
+
+-------------------------------------------------------------------
 Fri Mar  6 21:04:34 UTC 2026 - Matthias Bach <marix@marix.org>
 
 - Update to 0.24.1
