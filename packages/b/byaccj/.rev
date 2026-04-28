@@ -129,4 +129,12 @@
 </comment>
     <requestid>1268759</requestid>
   </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>6a1f70dfe1d19d588a4f4027523223a3</srcmd5>
+    <version>1.15</version>
+    <time>1777379391</time>
+    <user>anag_factory</user>
+    <comment>Fix license reference</comment>
+    <requestid>1349562</requestid>
+  </revision>
 </revisionlist>

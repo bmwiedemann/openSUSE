@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:17:53 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Clean up the license tag
+
+-------------------------------------------------------------------
 Mon Apr  7 12:58:05 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to

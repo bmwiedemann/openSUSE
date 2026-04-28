@@ -9,5 +9,4 @@ been written over the years. This is the standard YACC tool that is in
 use every day to produce C/C++ parsers. I have added a &quot;-J&quot; flag which
 will cause BYACC to generate Java source code, instead. So there
 finally is a YACC for Java now!</description>
-  <devel project="Java:packages" package="byaccj"/>
 </package>
