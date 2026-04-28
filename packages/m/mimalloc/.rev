@@ -73,4 +73,20 @@
   * long list of fixes, see https://github.com/microsoft/mimalloc/compare/v2.0.3...v2.0.6</comment>
     <requestid>1348326</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aac3f6316c8a94ab354fd280eefa6606</srcmd5>
+    <version>3.3.1</version>
+    <time>1777370322</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.1:
+  * make boolean environment parser more strict
+  * fix potential overflow for mi_good_size
+  * add support for proper 'do once' initialization
+  * prevent recursive allocation for aligned hints; potential fix
+    for issue
+  * add error path for poor man's lock implementation
+  * allow user override of MI_USE_BUILTIN_THREAD_POINTER
+  * fix is_pinned/is_zero parameter swap</comment>
+    <requestid>1349654</requestid>
+  </revision>
 </revisionlist>

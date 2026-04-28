@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 27 19:55:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * make boolean environment parser more strict
+  * fix potential overflow for mi_good_size
+  * add support for proper 'do once' initialization
+  * prevent recursive allocation for aligned hints; potential fix
+    for issue
+  * add error path for poor man's lock implementation
+  * allow user override of MI_USE_BUILTIN_THREAD_POINTER
+  * fix is_pinned/is_zero parameter swap
+
+-------------------------------------------------------------------
 Mon Apr 20 21:10:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.0:
