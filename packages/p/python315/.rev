@@ -255,4 +255,30 @@ covered).</comment>
       end of the encoded data (bsc#1261970, CVE-2026-3446).</comment>
     <requestid>1347984</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>b302378293f1f3bb4c52b49eb1051455</srcmd5>
+    <version>3.15.0~a8</version>
+    <time>1777370308</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-6019-Morsel-js_output.patch protects against HTML
+  injection by Base64-encoding cookie values embedded in JS
+  (bsc#1262654, CVE-2026-6019, gh#python/cpython#90309).
+
+- Add CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch which rejects
+  CR/LF in HTTP tunnel request headers (bsc#1261969,
+  CVE-2026-1502, gh#python/cpython#146211).
+
+- Add CVE-2026-5713-validate-debug-load.patch, which validates
+  remote debug offset tables on load (bsc#1262132, CVE-2026-5713,
+  gh#python/cpython#148178).
+
+- Add CVE-2026-4786-webbrowser-open-action.patch, which fixes
+  webbrowser %action substitution bypass of dash-prefix check
+  (bsc#1262319, CVE-2026-4786, gh#python/cpython#148169).
+
+- Add CVE-2026-6100-use-after-free-decompression.patch preventing
+  dangling pointer which can end in the use-after-free error
+  (CVE-2026-6100, bsc#1262098, gh#python/cpython#148395).</comment>
+    <requestid>1349644</requestid>
+  </revision>
 </revisionlist>

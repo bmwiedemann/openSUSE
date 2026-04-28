@@ -228,6 +228,21 @@ Patch42:        gh139257-Support-docutils-0.22.patch
 # PATCH-FIX-UPSTREAM skip-test_array_alignment.patch gh#python/cpython#144725 mcepl@suse.com
 # skip failing test
 Patch43:        skip-test_array_alignment.patch
+# PATCH-FIX-UPSTREAM CVE-2026-6100-use-after-free-decompression.patch bsc#1262098 mcepl@suse.com
+# NULL dangling pointer to avoid use-after-free error
+Patch44:        CVE-2026-6100-use-after-free-decompression.patch
+# PATCH-FIX-UPSTREAM CVE-2026-4786-webbrowser-open-action.patch bsc#1262319 mcepl@suse.com
+# Fix webbrowser %action substitution bypass of dash-prefix check
+Patch45:        CVE-2026-4786-webbrowser-open-action.patch
+# PATCH-FIX-UPSTREAM CVE-2026-5713-validate-debug-load.patch bsc#1262132 mcepl@suse.com
+# Validate remote debug offset tables on load
+Patch46:        CVE-2026-5713-validate-debug-load.patch
+# PATCH-FIX-UPSTREAM CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch bsc#1261969 mcepl@suse.com
+# Reject CR/LF in HTTP tunnel request headers
+Patch47:        CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
+# PATCH-FIX-UPSTREAM CVE-2026-6019-Morsel-js_output.patch bsc#1262654 mcepl@suse.com
+# Base64-encode cookie values embedded in JS
+Patch48:        CVE-2026-6019-Morsel-js_output.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
