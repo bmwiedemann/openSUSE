@@ -1,7 +1,7 @@
 #
 # spec file for package python-simplejson
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-simplejson
-Version:        3.20.2
+Version:        4.1.1
 Release:        0
 Summary:        Extensible JSON encoder/decoder for Python
 License:        AFL-2.1 OR MIT
@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/s/simplejson/simp
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

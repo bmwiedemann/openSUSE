@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Apr 25 20:46:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.1:
+  * The C extension now accelerates encoding when ``indent=`` is
+    set.
+  * Previously the encoder fell back to the pure-Python
+    implementation whenever a non-None ``indent`` was passed;
+  * The C extension now emits PEP 678 ``exc.add_note()``
+    annotations on serialization failures, matching the pure-Python
+    encoder. A chained error on ``{'a': [1, object(), 3]}``
+    produces the same three notes
+  * Skip uploading Pyodide/wasm wheels to PyPI, which rejects
+    them with "unsupported platform tag 'pyodide_2024_0_wasm32'". The
+    wheels are still built in CI and preserved as workflow artifacts.
+  * simplejson 4 requires Python 2.7 or Python 3.8+. Older Python
+  * versions (2.5, 2.6, 3.0-3.7) are no longer supported. pip
+    will not install simplejson 4 on unsupported versions.
+  * Full support for Python 3.13+ free-threading (PEP 703). The C
+  * extension is now safe to use with the GIL disabled
+    (python3.14t):
+  * - Converted all static types to heap types with per-module
+    state
+  * Numerous C extension memory safety fixes:
+  * Fix use-after-free and leak in encoder ident handling
+  * Fix NULL dereferences on OOM in module init and static
+    string init
+  * Fix reference leaks in dict encoder (skipkeys item,
+    variable shadowing)
+  * Fix member table copy-paste, exception clobbering, missing
+    Py_VISIT
+  * Fix error-as-truthy bugs in maybe_quote_bigint and
+    is_raw_json
+  * Fix iterable_as_array swallowing MemoryError and
+    KeyboardInterrupt
+  * Fix for_json and _asdict swallowing MemoryError,
+    KeyboardInterrupt,
+
+-------------------------------------------------------------------
 Wed Oct  1 13:57:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.20.2
