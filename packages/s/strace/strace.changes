@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 26 18:17:05 UTC 2026 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 7.0
+  * Implemented optional colorized trace output.
+  * Implemented decoding of rseq and rseq_slice_yield syscalls.
+  * Implemented decoding of BPF_TRACE_FSESSION bpf attach type.
+  * Implemented decoding of BPF_PROG_ASSOC_STRUCT_OPS bpf command.
+  * Implemented decoding of UDMABUF_CREATE, UDMABUF_CREATE_LIST,
+    and VIDIOC_QUERYMENU ioctl commands.
+  * Updated decoding of statmount syscall flags.
+  * Updated lists of BPF_*, BTRFS_*, FS_*, IORING_*, KEY_*, KVM_*, NT_*,
+    OPEN_TREE_*, PR_*, V4L2_*, and *_MAGIC constants.
+  * Updated lists of ioctl commands from Linux 7.0.
+
+-------------------------------------------------------------------
 Tue Feb 10 17:55:36 UTC 2026 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 6.19

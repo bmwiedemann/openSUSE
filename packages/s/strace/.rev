@@ -1745,4 +1745,22 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
   * Updated lists of ioctl commands from Linux 6.19. (forwarded request 1332311 from AndreasSchwab)</comment>
     <requestid>1332312</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>049101c24457773d8216a24aeb93aa4e</srcmd5>
+    <version>7.0</version>
+    <time>1777370046</time>
+    <user>anag_factory</user>
+    <comment>- Update to strace 7.0
+  * Implemented optional colorized trace output.
+  * Implemented decoding of rseq and rseq_slice_yield syscalls.
+  * Implemented decoding of BPF_TRACE_FSESSION bpf attach type.
+  * Implemented decoding of BPF_PROG_ASSOC_STRUCT_OPS bpf command.
+  * Implemented decoding of UDMABUF_CREATE, UDMABUF_CREATE_LIST,
+    and VIDIOC_QUERYMENU ioctl commands.
+  * Updated decoding of statmount syscall flags.
+  * Updated lists of BPF_*, BTRFS_*, FS_*, IORING_*, KEY_*, KVM_*, NT_*,
+    OPEN_TREE_*, PR_*, V4L2_*, and *_MAGIC constants.
+  * Updated lists of ioctl commands from Linux 7.0. (forwarded request 1349410 from AndreasSchwab)</comment>
+    <requestid>1349411</requestid>
+  </revision>
 </revisionlist>
