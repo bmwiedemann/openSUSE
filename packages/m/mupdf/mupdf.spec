@@ -21,7 +21,7 @@
 %define gcc_ver 11
 %endif
 Name:           mupdf
-Version:        1.27.1
+Version:        1.27.2
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
@@ -31,8 +31,6 @@ Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.ta
 Source1:        %{name}.desktop
 Source2:        %{name}-gl.desktop
 Patch0:         mupdf-no-strip.patch
-# PATCH-FIX-UPSTREAM cve-2026-25556.patch -- based on commit d4743b6092d513321c23c6f7fe5cff87cde043c1
-Patch1:         cve-2026-25556.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

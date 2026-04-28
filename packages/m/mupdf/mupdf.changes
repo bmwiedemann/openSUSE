@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 27 20:28:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.27.2:
+  * Add ImageMask operation in image rewriter.
+  * SText vector merging, and 'fuzzy-vectors' option.
+  * SText corruption fixes.
+  * SText Depth First Search iterator fixes.
+- drop cve-2026-25556.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Feb 13 15:28:59 UTC 2026 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to 1.27.1:
@@ -108,7 +118,7 @@ Mon Jan 27 11:35:55 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
   * Improve exception messages from tesseract.
   * When deleting widget fields, compare the objects, not their pointers.
   * Fix for JBIG2 data not having the correct filter attached.
-  * Fix concerning renumbered PDF encryption dictionaries. 
+  * Fix concerning renumbered PDF encryption dictionaries.
 
 -------------------------------------------------------------------
 Thu Jan 23 10:15:49 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
@@ -147,7 +157,7 @@ Fri Sep 20 09:31:30 UTC 2024 - Yunus Acar <yunus.acar@suse.com>
   * Improve rendering speed when applying transfer functions to softmasks.
   * Avoid crashing due to colorspaces.
   * Fix bug with SVG clip paths.
-  * Fix several bugs concerning text extraction. 
+  * Fix several bugs concerning text extraction.
 
 -------------------------------------------------------------------
 Tue Aug  6 11:06:12 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
