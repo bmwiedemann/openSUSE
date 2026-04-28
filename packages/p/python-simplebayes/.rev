@@ -26,4 +26,41 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1285130</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8d2e6957c6656458938dca78737035ec</srcmd5>
+    <version>3.2.0</version>
+    <time>1777370077</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.0:
+  * CLI options for `simplebayes-server`:
+    `--language` – Language code for stemmer and stop words
+    (default: `english`). Environment: `SIMPLEBAYES_LANGUAGE`.
+    `--remove-stop-words` – Filter common stop words.
+    Environment: `SIMPLEBAYES_REMOVE_STOP_WORDS` (`1`, `true`,
+    `yes` = enabled).
+    `--verbose` – Log requests, responses, and classifier
+    operations to stderr. Environment: `SIMPLEBAYES_VERBOSE`
+    (`1`, `true`, `yes` = enabled).
+  * API classifier is now configured from CLI `--language` and
+    `--remove-stop-words` instead of using fixed defaults.
+  * Documentation and metadata: updated terminology from &quot;Bayes&quot;
+    to &quot;Bayesian&quot; in PyPI keywords and changelog for consistency
+    with proper nomenclature.
+  * API: Bearer auth integrated with OpenAPI docs. `/docs` and
+    `/redoc` expose the Bearer scheme; use the &quot;Authorize&quot; button
+    in Swagger UI for interactive testing.
+  * `UnauthorizedError` – domain exception for Bearer auth
+    failures; produces 401 with `WWW-Authenticate` header.
+  * Introduced a full HTTP API runtime with CLI entrypoint and
+    expanded package layout.
+  * Added typed classification/result contracts and stricter
+    category validation semantics.
+  * Added versioned JSON model persistence APIs (`save`/`load`,
+   `save_to_file`/`load_from_file`) with validation and atomic
+   file writes.
+  * Removed legacy pickle persistence APIs (`cache_train`,
+    `cache_persist`, `get_cache_location`) in favor of JSON-only
+    persistence.</comment>
+    <requestid>1349304</requestid>
+  </revision>
 </revisionlist>

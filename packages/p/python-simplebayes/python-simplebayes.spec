@@ -1,7 +1,7 @@
 #
 # spec file for package python-simplebayes
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,40 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-simplebayes
-Version:        1.5.8
+Version:        3.2.0
 Release:        0
 Summary:        A memory-based, optional-persistence naïve bayesian text classifier
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hickeroar/simplebayes
 Source:         https://files.pythonhosted.org/packages/source/s/simplebayes/simplebayes-%{version}.tar.gz
+BuildRequires:  %{python_module fastapi >= 0.116.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.0}
+BuildRequires:  %{python_module snowballstemmer >= 3.0.1}
+BuildRequires:  %{python_module uvicorn >= 0.35.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
+Requires:       python-fastapi >= 0.116.1
+Requires:       python-snowballstemmer >= 3.0.1
+Requires:       python-uvicorn >= 0.35.0
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 
 %description
 A memory-based, optional-persistence naïve bayesian text classifier
@@ -46,10 +67,21 @@ export LANG=C.UTF-8
 %install
 export LANG=C.UTF-8
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/simplebayes-server
+
+%pre
+%python_libalternatives_reset_alternative simplebayes-server
+
+%post
+%python_install_alternative simplebayes-server
+
+%postun
+%python_uninstall_alternative simplebayes-server
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
+%python_alternative %{_bindir}/simplebayes-server
 %{python_sitelib}/simplebayes
 %{python_sitelib}/simplebayes-%{version}*-info
 

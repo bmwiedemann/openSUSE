@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Apr 25 22:01:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * CLI options for `simplebayes-server`:
+    `--language` – Language code for stemmer and stop words
+    (default: `english`). Environment: `SIMPLEBAYES_LANGUAGE`.
+    `--remove-stop-words` – Filter common stop words.
+    Environment: `SIMPLEBAYES_REMOVE_STOP_WORDS` (`1`, `true`,
+    `yes` = enabled).
+    `--verbose` – Log requests, responses, and classifier
+    operations to stderr. Environment: `SIMPLEBAYES_VERBOSE`
+    (`1`, `true`, `yes` = enabled).
+  * API classifier is now configured from CLI `--language` and
+    `--remove-stop-words` instead of using fixed defaults.
+  * Documentation and metadata: updated terminology from "Bayes"
+    to "Bayesian" in PyPI keywords and changelog for consistency
+    with proper nomenclature.
+  * API: Bearer auth integrated with OpenAPI docs. `/docs` and
+    `/redoc` expose the Bearer scheme; use the "Authorize" button
+    in Swagger UI for interactive testing.
+  * `UnauthorizedError` – domain exception for Bearer auth
+    failures; produces 401 with `WWW-Authenticate` header.
+  * Introduced a full HTTP API runtime with CLI entrypoint and
+    expanded package layout.
+  * Added typed classification/result contracts and stricter
+    category validation semantics.
+  * Added versioned JSON model persistence APIs (`save`/`load`,
+   `save_to_file`/`load_from_file`) with validation and atomic
+   file writes.
+  * Removed legacy pickle persistence APIs (`cache_train`,
+    `cache_persist`, `get_cache_location`) in favor of JSON-only
+    persistence.
+
+-------------------------------------------------------------------
 Thu Jun 12 12:03:18 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
