@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Mon Apr 27 01:29:29 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Add UDP battery reporting and improve kernel compatibility
+  * Implemented UDP telemetry for battery levels on port 54321, allowing
+    integration with external tray monitors.
+  * Added graceful handling for 'BrokenPipeError' when reading Bluetooth
+    MAC addresses via hidraw (fixes crashes on modern kernels).
+  * Added try/except blocks for device grabbing to prevent initialization
+    failures when the kernel driver is already active.
+  * Reduced battery check interval to 5 seconds for more responsive reporting. 
+
+-------------------------------------------------------------------
+Sat Apr 25 15:21:57 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Optimize OBS source services:
+  * Switch obs to tar services to avoid storing redundant tarballs.
+  * Update version rewrite patterns for better tag parsing.
+  * Use .tar.gz as the primary source container.
+  * Rename 13ae136098c1ed8bc8c72b16a4d73ab97049f6ae.patch to
+    ds4drv-fix-bluetooth-packet-crc.patch for better readability.
+
+-------------------------------------------------------------------
+Sat Apr 25 03:25:41 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to commit 5a49c3e4d717ffab1aabbf96e3c14dce3111d6d5:
+  * Remove dependency on hcitool (deprecated in BlueZ 5).
+  * Fix compatibility with Python 3.13 by replacing SafeConfigParser
+    with ConfigParser.
+  * Add ds4drv-no-hcitool.patch to ensure clean build without legacy
+    bluetooth-tools. 
+
+-------------------------------------------------------------------
+Sat Apr 25 02:53:53 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 0.5.1:
+  * Updated compatibility to Python 3.14
+  * Update ds4drv.conf
+  * device.py: clean up conditional a bit
+  * Add PS4 v2 controller id
+  * Fixed #104
+  * Support universal wheels
+
+-------------------------------------------------------------------
+Fri Apr 24 00:42:24 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Initial release.
+ 

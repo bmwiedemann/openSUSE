@@ -1,0 +1,49 @@
+diff '--color=auto' -uNr ds4drv.orig/ds4drv/backends/hidraw.py ds4drv/ds4drv/backends/hidraw.py
+--- ds4drv.orig/ds4drv/backends/hidraw.py	2026-04-25 18:23:39.640947265 -0300
++++ ds4drv/ds4drv/backends/hidraw.py	2026-04-26 17:29:27.548206608 -0300
+@@ -25,7 +25,15 @@
+             self.report_fd = os.open(hidraw_device, os.O_RDWR | os.O_NONBLOCK)
+             self.fd = FileIO(self.report_fd, "rb+", closefd=False)
+             self.input_device = InputDevice(event_device)
+-            self.input_device.grab()
++
++            # Try to grab the program, but don't kill it if it fails.
++            try:
++                self.input_device.grab()
++            except (OSError, IOError):
++                # If it says 'Busy', we ignore it and continue.
++                # This allows ds4drv to function even if the kernel does not release the node.
++                pass
++
+         except (OSError, IOError) as err:
+             raise DeviceError(err)
+ 
+@@ -94,13 +102,20 @@
+     valid_report_id = 0x01
+ 
+     def set_operational(self):
+-        # Get the bluetooth MAC
+-        addr = self.read_feature_report(0x81, 6)[1:]
+-        addr = ["{0:02x}".format(c) for c in bytearray(addr)]
+-        addr = ":".join(reversed(addr)).upper()
+-
+-        self.device_name = "{0} {1}".format(addr, self.device_name)
+-        self.device_addr = addr
++        # Attempts to obtain the MAC address via Bluetooth.
++        # In modern kernels, this may cause a BrokenPipeError (Errno 32)
++        # if the native driver (hid-sony/hid-playstation) is active.
++        try:
++            addr = self.read_feature_report(0x81, 6)[1:]
++            addr = ["{0:02x}".format(c) for c in bytearray(addr)]
++            addr = ":".join(reversed(addr)).upper()
++
++            self.device_name = "{0} {1}".format(addr, self.device_name)
++            self.device_addr = addr
++        except (BrokenPipeError, OSError, IOError) as err:
++            # It just warns and continues, allowing the control to function
++            # even if it cannot read the actual MAC address.
++            print(f"[warning] Could not read Bluetooth address via hidraw: {err}")
+ 
+ 
+ HID_DEVICES = {
+Binary files ds4drv.orig/.git/index and ds4drv/.git/index differ

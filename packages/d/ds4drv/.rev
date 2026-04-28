@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8050917e8d94b3aa2b7b2f0c505c4a0c</srcmd5>
+    <version>0.5.1</version>
+    <time>1777370079</time>
+    <user>anag_factory</user>
+    <comment>Sony DualShock 4 userspace driver for Linux with Bluetooth LED patch.
+
+Updated compatibility to Python 3.14
+
+Hidraw mode
+This mode uses the Linux kernel feature hidraw to talk to already existing devices on the system.
+
+Daemon mode and other modes can be enabled in /etc/ds4drv.conf
+
+
+- Add UDP battery reporting and improve kernel compatibility
+  * Implemented UDP telemetry for battery levels on port 54321, allowing
+    integration with external tray monitors.
+  * Added graceful handling for 'BrokenPipeError' when reading Bluetooth
+    MAC addresses via hidraw (fixes crashes on modern kernels).
+  * Added try/except blocks for device grabbing to prevent initialization
+    failures when the kernel driver is already active.
+  * Reduced battery check interval to 5 seconds for more responsive reporting. </comment>
+    <requestid>1349482</requestid>
+  </revision>
+</revisionlist>
