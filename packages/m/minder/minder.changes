@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 26 23:44:18 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 2.0.9:
+  + Added syntax highlighting support for Markdown strikethrough and
+    highlighting in notes
+  + Added Markdown highlighting theming support
+  + Added Markdown syntax insertion menus for canvas text and notes
+  + Fixed issues with saving custom themes
+  + Fixed issue where nodes with rendered Markdown text were not updated when
+    markdown enablement was changed in settings
+
+-------------------------------------------------------------------
 Sun Apr  5 22:07:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 2.0.8:

@@ -333,4 +333,19 @@
   * Fixed issue with copying nodes with tags (forwarded request 1344717 from rrahl0)</comment>
     <requestid>1344718</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6018e7d3eba0cbd0fc4a755adec5bce8</srcmd5>
+    <version>2.0.9</version>
+    <time>1777370199</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0.9:
+  + Added syntax highlighting support for Markdown strikethrough and
+    highlighting in notes
+  + Added Markdown highlighting theming support
+  + Added Markdown syntax insertion menus for canvas text and notes
+  + Fixed issues with saving custom themes
+  + Fixed issue where nodes with rendered Markdown text were not updated when
+    markdown enablement was changed in settings (forwarded request 1349460 from rrahl0)</comment>
+    <requestid>1349461</requestid>
+  </revision>
 </revisionlist>
