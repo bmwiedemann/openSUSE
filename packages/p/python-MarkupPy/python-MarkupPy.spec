@@ -1,7 +1,7 @@
 #
 # spec file for package python-MarkupPy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-MarkupPy
-Version:        1.14
+Version:        1.18
 Release:        0
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Summary:        An HTML/XML generator
 URL:            https://github.com/tylerbakke/MarkupPy
-Source:         https://files.pythonhosted.org/packages/source/M/MarkupPy/MarkupPy-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/M/MarkupPy/markuppy-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -38,7 +38,7 @@ This is MarkupPy - a Python module that for generating HTML/XML
 for Python programs.
 
 %prep
-%setup -q -n MarkupPy-%{version}
+%autosetup -p1 -n markuppy-%{version}
 
 %build
 %pyproject_wheel
