@@ -230,4 +230,15 @@
   * no changes</comment>
     <requestid>1346228</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1aea899af7a22c53dd66daee288da2de</srcmd5>
+    <version>1.41.1</version>
+    <time>1777370078</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.41.1:
+  * This is a patch release on the previous 1.41.0/0.62b0
+    release
+</comment>
+    <requestid>1349538</requestid>
+  </revision>
 </revisionlist>
