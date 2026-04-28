@@ -27,7 +27,7 @@
 %endif
 
 Name:           PackageKit
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
@@ -38,14 +38,12 @@ Source1:        %{url}/releases/%{name}-%{version}.tar.xz.asc
 Source3:        PackageKit.tmpfiles
 Source99:       PackageKit.keyring
 
-# PATCH-FIX-UPSTREAM
-Patch0:         https://github.com/PackageKit/PackageKit/commit/11c5f1f34f48b58ee10acec839dd01a31728704b.patch
 # PATCH-FEATURE-OPENSUSE PackageKit-systemd-timers.patch bsc#1115410 sckang@suse.com -- Migrate from cron to systemd timers
-Patch1:         PackageKit-systemd-timers.patch
+Patch0:         PackageKit-systemd-timers.patch
 # PATCH-FIX-OPENSUSE PackageKit-remove-polkit-rules.patch bsc#1125434 sckang@suse.com -- Remove polkit rules file
-Patch2:         PackageKit-remove-polkit-rules.patch
+Patch1:         PackageKit-remove-polkit-rules.patch
 # PATCH-FIX-OPENSUSE PackageKit-alias-dnf-to-dnf5.patch ngompa@opensuse.org -- Handle replacing dnf with dnf5
-Patch3:         PackageKit-alias-dnf-to-dnf5.patch
+Patch2:         PackageKit-alias-dnf-to-dnf5.patch
 
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  fdupes
