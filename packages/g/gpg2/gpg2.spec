@@ -18,7 +18,7 @@
 
 
 Name:           gpg2
-Version:        2.5.18
+Version:        2.5.19
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -27,7 +27,7 @@ URL:            https://www.gnupg.org
 Source:         https://gnupg.org/ftp/gcrypt/gnupg/gnupg-%{version}.tar.bz2
 Source2:        https://gnupg.org/ftp/gcrypt/gnupg/gnupg-%{version}.tar.bz2.sig
 # https://www.gnupg.org/signature_key.html
-Source3:        https://gnupg.org/signature_key.asc#/%{name}.keyring
+Source3:        %{name}.keyring
 Source4:        scdaemon.udev
 Source5:        gpg2-systemd-user.tar.xz
 Source99:       %{name}.changes

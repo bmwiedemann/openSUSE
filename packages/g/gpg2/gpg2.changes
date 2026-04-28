@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Apr 25 17:44:26 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.5.19:
+  * gpg: New option --use-ocb-sym
+  * gpg: New options --show-[only-]session-hash
+  * gpgsm: Allow cipher mode to be part of the algo given to the
+    --cipher-algo option
+  * gpgsm: Emit more details when failing to check a crlDP
+  * agent: Improve pinentry behavior and texts in smartcard context
+  * dirmngr: New keyword "clear" for --keyserver
+  * gpg: Fix edge case in --refresh-keys
+  * gpg: Don't call gcry_kdf_derive with empty passphrase
+  * gpgsm: Skip the optional PKCS#12 PBES2 keyLength parameter to
+    allow import of recently issued certificates by the German
+    Telekom
+  * gpgsm: Fix a bug so that a certificate can be signed using a
+    different algo
+  * gpgsm: Make GCM fully compliant in de-vs mode
+  * gpgsm: Add a certificate chain check for de-vs compliance
+  * gpgsm: Show rsaPSS certificates as de-vs compliant in listings
+  * agent: Rework the trustlist reading code to finally allow a
+    trustlist.txt with a missing trailing LF
+  * ssh: Fix RSA padding in signature handling
+  * gpgtar: Fix -C (--directory) to check the output directory
+  * agent: Raise an error when p >= q for RSA keys to detect
+    incorrect generated *PGP keys
+
+-------------------------------------------------------------------
 Wed Feb 25 10:09:20 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.5.18:
