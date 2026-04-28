@@ -256,4 +256,19 @@
 </comment>
     <requestid>1274830</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a81d614611c2740521dfa3d8db741891</srcmd5>
+    <version>2.5.3</version>
+    <time>1777370233</time>
+    <user>anag_factory</user>
+    <comment>- Release version 2.5.3 
+ + Fix page creation error
+ + Modify the style of the playback bar
+ + Update regarding window style
+ + Unhide Daily Recommendations
+ + Change the position of translated lyrics
+ + Update dependent versions
+</comment>
+    <requestid>1349484</requestid>
+  </revision>
 </revisionlist>
