@@ -1,7 +1,7 @@
 #
 # spec file for package reproc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define lib_name libreproc14
 %define libpp_name libreproc++14
 Name:           reproc
-Version:        14.2.5
+Version:        14.2.7
 Release:        0
 Summary:        A cross-platform (C99/C++11) process library
 License:        MIT

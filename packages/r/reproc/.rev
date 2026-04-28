@@ -35,4 +35,16 @@
 - update to 14.1.0</comment>
     <requestid>1199890</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ede247491bc1b878d12713660571bd12</srcmd5>
+    <version>14.2.7</version>
+    <time>1777370192</time>
+    <user>anag_factory</user>
+    <comment>- update to 14.2.7:
+  * Fix build on posix platforms
+- update to 14.2.6:
+  * Fix non-blocking option for C++ API.
+  * Fix build on systems that really like gnu strerror_r</comment>
+    <requestid>1349441</requestid>
+  </revision>
 </revisionlist>

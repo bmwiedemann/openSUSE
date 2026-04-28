@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 26 21:12:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 14.2.7:
+  * Fix build on posix platforms
+- update to 14.2.6:
+  * Fix non-blocking option for C++ API.
+  * Fix build on systems that really like gnu strerror_r
+
+-------------------------------------------------------------------
 Tue Sep 10 13:26:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 14.2.5:
