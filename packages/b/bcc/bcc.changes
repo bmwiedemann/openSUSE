@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 06:46:10 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- fix build for LLVM 22 due to createDiagnostics() signature change
+  * Add 0001-Fix-build-with-LLVM-22.patch
+
+-------------------------------------------------------------------
 Thu Mar 26 14:27:43 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Change libbcc0 explicit dependency onto kernel-devel.

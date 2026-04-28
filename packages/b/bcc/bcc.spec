@@ -40,6 +40,7 @@ License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         0001-Fix-build-with-LLVM-22.patch
 Source100:      bcc-rpmlintrc
 ExcludeArch:    ppc s390
 BuildRequires:  bison
