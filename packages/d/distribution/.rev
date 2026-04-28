@@ -133,4 +133,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1332211</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3e9b37b74be437eb94ac2472e7b99a81</srcmd5>
+    <version>3.1.0</version>
+    <time>1777370270</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.0 (
+     bsc#1262096, CVE-2026-35172,
+     bsc#1261793, CVE-2026-33540,
+     bsc#1260283, CVE-2026-33186,
+     bsc#1262951, CVE-2026-34986,
+     bsc#1259718):
+  * Fixes CVE-2026-35172
+  * Fixes CVE-2026-33540
+  * Adds support for tag pagination
+  * Fixes default credentials in Azure storage provider
+  * Drops support for go1.23 and go1.24 and updates to go1.25
+  * See the full changelog below for the full list of changes.
+  * docs: Update to refer to new image tag v3
+  * Fix default_credentials in azure storage provider
+  * chore: make function comment match function name
+  * build(deps): bump golang.org/x/net from 0.37.0 to 0.38.0 in
+    the go_modules group across 1 directory
+  * fix: implement JWK thumbprint for Ed25519 public keys
+  * fix: Annotate code block from validation.indexes
+    configuration docs
+  * feat: extract redis config to separate struct
+  * Fix: resolve issue #4478 by using a temporary file for non-
+    append writes
+  * build(deps): bump ossf/scorecard-action from 2.4.1 to 2.4.2
+  * docs: Add note about `OTEL_TRACES_EXPORTER`
+  * fix: set OTEL traces to disabled by default
+  * Fix markdown syntax for OTEL traces link in docs
+  * Switch UUIDs to UUIDv7
+  * refactor: replace map iteration with maps.Copy/Clone
+  * s3-aws: fix build for 386</comment>
+    <requestid>1349543</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define goipath github.com/distribution/distribution/v3
 Name:           distribution
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        The toolset to pack, ship, store, and deliver content
 License:        Apache-2.0
@@ -34,7 +34,7 @@ BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.24
+BuildRequires:  golang(API) = 1.26
 Provides:       docker-distribution = %{version}
 Obsoletes:      docker-distribution < %{version}
 ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64
