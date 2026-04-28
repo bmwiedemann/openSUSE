@@ -23,7 +23,7 @@
 %define skip_python11 1
 Name:           weblate
 # version 5.14.3 was the last to support Python 3.11
-Version:        5.16.2
+Version:        5.17
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later
@@ -54,22 +54,22 @@ BuildRequires:  postgresql-server
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython >= 3.1.0
-BuildRequires:  python3-Django >= 5.2
+BuildRequires:  python3-Django >= 6.0
 BuildRequires:  python3-GitPython >= 3.1.14
 BuildRequires:  python3-Pillow >= 11.0.0
 BuildRequires:  python3-Pygments >= 2.19.0
+BuildRequires:  python3-Sphinx
 BuildRequires:  python3-Unidecode >= 1.4.0
 BuildRequires:  python3-aeidon >= 1.15
-BuildRequires:  python3-ahocorasick-rs >= 0.22.0
+BuildRequires:  python3-ahocorasick-rs >= 1.0.1
 BuildRequires:  python3-aliyun-python-sdk-alimt >= 3.2.0
-BuildRequires:  python3-altcha >= 0.2.0
+BuildRequires:  python3-altcha >= 2.0
 BuildRequires:  python3-boto3 >= 1.28.62
 BuildRequires:  python3-celery >= 5.5.3
 BuildRequires:  python3-certifi >= 2026.2.25
 BuildRequires:  python3-charset-normalizer >= 2.0.12
 BuildRequires:  python3-confusable-homoglyphs >= 3.3.1
-BuildRequires:  python3-crispy-bootstrap3 >= 2024.1
-BuildRequires:  python3-crispy-bootstrap5 >= 2025.6
+BuildRequires:  python3-crispy-bootstrap5 >= 2026.3
 BuildRequires:  python3-cryptography >= 45.0.1
 BuildRequires:  python3-cssselect >= 1.3.0
 BuildRequires:  python3-cyrtranslit >= 1.2.0
@@ -78,7 +78,7 @@ BuildRequires:  python3-diff_match_patch = 20241021
 BuildRequires:  python3-disposable-email-domains >= 0.0.125
 BuildRequires:  python3-django-appconf >= 1.1.0
 BuildRequires:  python3-django-auth-ldap >= 4.6.0
-BuildRequires:  python3-django-celery-beat >= 2.8.0
+BuildRequires:  python3-django-celery-beat >= 2.9.0
 BuildRequires:  python3-django-cors-headers >= 4.7.0
 BuildRequires:  python3-django-crispy-forms >= 2.4
 BuildRequires:  python3-django-filter >= 24.3
@@ -95,7 +95,7 @@ BuildRequires:  python3-drf-standardized-errors >= 0.14.1
 BuildRequires:  python3-fedora-messaging >= 3.9.0
 BuildRequires:  python3-filelock >= 3.18.0
 BuildRequires:  python3-fluent.syntax >= 0.19.0
-BuildRequires:  python3-gobject >= 3.54.5
+BuildRequires:  python3-gobject >= 3.56.0
 BuildRequires:  python3-google-cloud-storage >= 2.18.2
 BuildRequires:  python3-google-cloud-translate >= 3.13.0
 BuildRequires:  python3-hiredis >= 3.1.0
@@ -126,7 +126,7 @@ BuildRequires:  python3-qrcode >= 8.2
 BuildRequires:  python3-rapidfuzz >= 3.12.1
 BuildRequires:  python3-redis >= 5.2.0
 BuildRequires:  python3-regex >= 2024.11.6
-BuildRequires:  python3-requests >= 2.32.2
+BuildRequires:  python3-requests >= 2.33
 BuildRequires:  python3-responses >= 0.10.1
 BuildRequires:  python3-respx >= 0.20.2
 BuildRequires:  python3-ruamel.yaml >= 0.18.0
@@ -136,17 +136,17 @@ BuildRequires:  python3-setuptools >= 40.3.0
 BuildRequires:  python3-siphashc >= 2.5
 BuildRequires:  python3-social-auth-app-django >= 5.5.1
 BuildRequires:  python3-social-auth-core >= 4.7.0
-BuildRequires:  python3-standardwebhooks >= 1.0.0
+BuildRequires:  python3-standardwebhooks >= 1.0.1
 BuildRequires:  python3-tesserocr >= 2.8.0
 BuildRequires:  python3-translation-finder >= 2.22
 BuildRequires:  python3-urllib3 >= 2.6.3
 BuildRequires:  python3-user-agents >= 2.2.0
 BuildRequires:  python3-weblate-fonts = 2026.1
-BuildRequires:  python3-weblate-language-data >= 2026.3
+BuildRequires:  python3-weblate-language-data >= 2026.7
 BuildRequires:  python3-weblate-schemas = 2025.6
 BuildRequires:  tesseract-ocr-traineddata-english
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
-BuildRequires:  translate-toolkit >= 3.19.2
+BuildRequires:  translate-toolkit >= 3.19.5
 BuildRequires:  typelib(Pango) >= 1.0
 BuildRequires:  typelib(PangoCairo) >= 1.0
 BuildRequires:  typelib(Rsvg)
@@ -158,20 +158,19 @@ Requires:       gpg2
 Requires:       postgresql
 Requires:       postgresql-contrib
 Requires:       python3-Cython >= 3.1.0
-Requires:       python3-Django >= 5.2
+Requires:       python3-Django >= 6.0
 Requires:       python3-GitPython >= 3.1.14
 Requires:       python3-Pillow >= 11.0.0
 Requires:       python3-Pygments >= 2.19.0
 Requires:       python3-Unidecode >= 1.4.0
 Requires:       python3-aeidon >= 1.15
-Requires:       python3-ahocorasick-rs >= 0.22.0
-Requires:       python3-altcha >= 0.2.0
+Requires:       python3-ahocorasick-rs >= 1.0.1
+Requires:       python3-altcha >= 2.0
 Requires:       python3-celery >= 5.5.3
 Requires:       python3-certifi >= 2026.2.25
 Requires:       python3-charset-normalizer >= 2.0.12
 Requires:       python3-confusable-homoglyphs >= 3.3.1
-Requires:       python3-crispy-bootstrap3 >= 2024.1
-Requires:       python3-crispy-bootstrap5 >= 2025.6
+Requires:       python3-crispy-bootstrap5 >= 2026.3
 Requires:       python3-cryptography >= 45.0.1
 Requires:       python3-cssselect >= 1.3.0
 Requires:       python3-cyrtranslit >= 1.2.0
@@ -179,7 +178,7 @@ Requires:       python3-dateparser >= 1.2.0
 Requires:       python3-diff_match_patch = 20241021
 Requires:       python3-disposable-email-domains >= 0.0.125
 Requires:       python3-django-appconf >= 1.1.0
-Requires:       python3-django-celery-beat >= 2.8.0
+Requires:       python3-django-celery-beat >= 2.9.0
 Requires:       python3-django-cors-headers >= 4.7.0
 Requires:       python3-django-crispy-forms >= 2.4
 Requires:       python3-django-filter >= 24.3
@@ -196,7 +195,7 @@ Requires:       python3-drf-standardized-errors >= 0.14.1
 Requires:       python3-fedora-messaging >= 3.9.0
 Requires:       python3-filelock >= 3.18.0
 Requires:       python3-fluent.syntax >= 0.19.0
-Requires:       python3-gobject >= 3.54.5
+Requires:       python3-gobject >= 3.56.0
 Requires:       python3-hiredis >= 3.1.0
 Requires:       python3-html2text >= 2025.4.15
 Requires:       python3-iniparse >= 0.5
@@ -216,21 +215,21 @@ Requires:       python3-qrcode >= 8.2
 Requires:       python3-rapidfuzz >= 3.12.1
 Requires:       python3-redis >= 5.2.0
 Requires:       python3-regex >= 2024.11.6
-Requires:       python3-requests >= 2.32.2
+Requires:       python3-requests >= 2.33
 Requires:       python3-ruamel.yaml >= 0.18.0
 Requires:       python3-sentry-sdk >= 2.28.0
 Requires:       python3-siphashc >= 2.5
 Requires:       python3-social-auth-app-django >= 5.5.1
 Requires:       python3-social-auth-core >= 4.7.0
-Requires:       python3-standardwebhooks >= 1.0.0
+Requires:       python3-standardwebhooks >= 1.0.1
 Requires:       python3-tesserocr >= 2.8.0
 Requires:       python3-translation-finder >= 2.22
 Requires:       python3-urllib3 >= 2.6.3
 Requires:       python3-user-agents >= 2.2.0
 Requires:       python3-weblate-fonts = 2026.1
-Requires:       python3-weblate-language-data >= 2026.3
+Requires:       python3-weblate-language-data >= 2026.7
 Requires:       python3-weblate-schemas = 2025.6
-Requires:       translate-toolkit >= 3.19.2
+Requires:       translate-toolkit >= 3.19.5
 Requires:       ((apache2 and apache2-mod_wsgi) or (nginx and uwsgi))
 Requires:       typelib(Pango) >= 1.0
 Requires:       typelib(PangoCairo) >= 1.0
@@ -341,6 +340,9 @@ fi
 su - wwwrun -s /bin/bash -c '%{WLDIR}/manage.py collectstatic --noinput' || :
 
 %check
+# remove test files which use unpackaged extras, we already have enough dependencies
+rm weblate/utils/tests/test_djangosaml2idp.py
+
 # first make sure we use buildroot properly
 sed -i 's@^BASE_DIR = .*@BASE_DIR = "%{buildroot}%{WLDIR}"@g' weblate/settings.py
 sed -i 's@^DATA_DIR = .*@DATA_DIR = "%{buildroot}%{WLDATADIR}"@g' weblate/settings.py
@@ -365,13 +367,15 @@ python3 ./manage.py collectstatic --noinput -v 2
 python3 ./manage.py compilemessages -v 2
 # Run the testsuite
 python3 ./manage.py check -v 2
-# workaround
-mkdir -p %{buildroot}%{python3_sitelib}
-cp -r %{python3_sitelib}/google %{buildroot}%{python3_sitelib}
-cp -r %{python3_sitearch}/google/* %{buildroot}%{python3_sitelib}/google
-touch %{buildroot}%{python3_sitelib}/google/__init__.py
-PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -m pytest weblate
-rm -r %{buildroot}%{python3_sitelib}/google
+# skip tests failing because of OBS or testsuite configuration (URL errors)
+donttest="WebhooksAddonTest or SlackWebhooksAddonsTest"
+# test_django_ignores_repository_locale_dirs_during_extraction: possibly fixed by https://github.com/WeblateOrg/weblate/commit/05a6000be6ff6fe6602022a39a16c9ee0e874599
+donttest="$donttest or test_django_ignores_repository_locale_dirs_during_extraction"
+# test_install_machinery needs internet
+donttest="$donttest or (test_install_machinery and ProjectAPITest)"
+# test_website_alerts_enabled does not error because test settings weren't reset correctly
+donttest="$donttest or (test_website_alerts_enabled and WebsiteAlertSettingTest)"
+PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -m pytest weblate -k "not ($donttest)"
 
 # Cleanup postgresql
 %{_bindir}/pg_ctl stop

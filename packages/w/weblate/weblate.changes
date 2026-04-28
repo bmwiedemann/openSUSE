@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr 20 08:41:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.17
+  * Hardened repository boundary checks for symlink targets
+    (CVE 2026-40256, bsc#1262209).
+  * Hardened component file handling for repository symlinks
+    (CVE 2026-34242, bsc#1262203).
+  * Tightened Weblate’s REST API permission enforcement
+    (CVE 2026-34393, bsc#1262207).
+  * Hardened project-level Automatic suggestions against SSRF
+    (CVE 2026-34244, bsc#1262204).
+  * Tightened location validation in JavaScript localization CDN
+    (CVE 2026-33220, bsc#1262196).
+  * Enforced ALLOWED_ASSET_DOMAINS across redirects for asset downloads
+    (CVE 2026-33440, bsc#1262202).
+  * Hardened Webhook (CVE 2026-39845, bsc#1262208).
+  * Removed unintended Translation Memory API endpoints
+    (CVE 2026-33214, bsc#1262194).
+  * Tightened API access control for pending tasks
+    (CVE 2026-33212, bsc#1262193).
+  * Hardened Project level backups restore against repository-local VCS
+    configuration and hooks from uploaded archives
+    (CVE 2026-33435, bsc#1262197).
+  * Many more features and improvements, see upstream changelog.
+
+-------------------------------------------------------------------
 Wed Mar 18 12:53:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.16.2
