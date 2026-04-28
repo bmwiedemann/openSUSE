@@ -1,7 +1,7 @@
 #
 # spec file for package extra166y
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           extra166y
 Version:        1.7.0
 Release:        0
 Summary:        Concurrency JSR-166 - Collections supporting parallel operations
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Development/Libraries/Java
 URL:            https://gee.cs.oswego.edu/dl/concurrency-interest
 # generate-tarball.spec
