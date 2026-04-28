@@ -226,4 +226,26 @@
     requests.</comment>
     <requestid>1344468</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>762d321399fabf3e9f7cbfcdf337bc46</srcmd5>
+    <version>65.16.1</version>
+    <time>1777370161</time>
+    <user>anag_factory</user>
+    <comment>- update to 65.16.1:
+  * The state parameter is a critical part of the OAuth2
+    handshake, used to prevent CSRF attacks. The Edx, AngelList
+    and Questrade providers were originally added without state
+    support, as these providers did not support it at the time.
+    Edx and Questrade have since added support, so their
+    configuration has been updated accordingly. AngelList is no
+    longer operational and has been removed. Thanks to Adil
+    Ahmadzada for reporting.
+  * MFA: You can now configure recovery codes to be only shown
+    once (MFA_RECOVERY_CODES_SHOW_ONCE = True).
+  * New signals for audit trail purposes: login_code_rejected,
+    password_reset_code_rejected,
+    email_verification_code_rejected (in allauth.account.signals)
+    and authentication_failed (in allauth.mfa.signals).</comment>
+    <requestid>1349436</requestid>
+  </revision>
 </revisionlist>

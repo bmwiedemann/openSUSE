@@ -38,7 +38,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-allauth
-Version:        65.15.1
+Version:        65.16.1
 Release:        0
 Summary:        Django authentication, registration, account management
 License:        MIT
@@ -46,7 +46,8 @@ URL:            https://allauth.org
 Source0:        https://files.pythonhosted.org/packages/source/d/django-allauth/django_allauth-%{version}.tar.gz
 Patch0:         missing-template-in-test.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 40.8.0}
+BuildRequires:  %{python_module setuptools >= 75.3.0}
+BuildRequires:  %{python_module setuptools-scm >= 8}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= %{django_min_version}}
@@ -168,7 +169,7 @@ export PYTEST_ADDOPTS="--ds=tests.projects.regular.settings"
 
 %files %{python_files}
 %doc ChangeLog.rst README.rst
-%license LICENSE AUTHORS
+%license LICENSE
 %{python_sitelib}/allauth
 %{python_sitelib}/django_allauth-%{version}.dist-info
 
