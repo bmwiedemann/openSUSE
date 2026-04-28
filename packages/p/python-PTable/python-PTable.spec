@@ -1,7 +1,7 @@
 #
 # spec file for package python-PTable
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 Name:           python-PTable
 Version:        0.9.2
@@ -30,6 +36,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Conflicts:      python-PrettyTable
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -49,6 +62,9 @@ sed -i '1{/^#!/d}' prettytable/prettytable.py
 
 %check
 # No tests available in package, github has no tags
+
+%pre
+%python_reset_alternative ptable
 
 %post
 %python_install_alternative ptable

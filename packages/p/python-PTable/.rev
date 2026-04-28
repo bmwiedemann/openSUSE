@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>1274908</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1a9a5ea8a31b8f42cae8bdba1b70c668</srcmd5>
+    <version>0.9.2</version>
+    <time>1777370131</time>
+    <user>anag_factory</user>
+    <comment>- reset alternative for TW
+
+- Clean up spec file dependencies.
+- Clean up spec file.</comment>
+    <requestid>1349422</requestid>
+  </revision>
 </revisionlist>
