@@ -268,4 +268,14 @@
     protobuf for export request</comment>
     <requestid>1346229</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>604c8ce8f18640be5d9ebd19f11288dd</srcmd5>
+    <version>1.41.1</version>
+    <time>1777370075</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.41.1:
+  * This is a patch release on the previous 1.41.0/0.62b0
+    release</comment>
+    <requestid>1349190</requestid>
+  </revision>
 </revisionlist>
