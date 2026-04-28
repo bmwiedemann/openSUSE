@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 26 08:03:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.2:
+  * Bug Fixes
+    - Issue with dependencies by @dadav
+  * Chores
+    - chore(deps): bump helm.sh/helm/v3 from 3.20.1 to 3.20.2
+    - chore(deps): update goreleaser/goreleaser-action digest to
+      e24998b
+    - chore(deps): update alpine:3.23 docker digest to 5b10f43
+
+-------------------------------------------------------------------
 Fri Apr 17 20:14:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.1:
