@@ -879,4 +879,24 @@
     <comment></comment>
     <requestid>1325347</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>4e9a3a8a38e38d48836d4cfb70ab2564</srcmd5>
+    <version>26.4.0</version>
+    <time>1777369994</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.4.0:
+  * Make gevent.ssl stop reusing exception instances, as this
+    could appear to cause a memory leak if there are many short
+    reads or writes. Reported by 사재혁. See :issue:`2159`.
+  * Fix Greenlet.dead returning true for an active greenlet
+    during early bootstrap. Thanks to Taegyun Kim. See
+    :issue:`2166`.
+  * Fix some potential GIL-related crashes during interpreter
+    shutdown by avoiding acquiring the GIL in libev callbacks
+    when the interpreter is finalizing. Thanks to Thomas
+    Kowalski. See :issue:`2170`.
+  * Support for Python 3.9 has been removed. Manylinux wheels are
+    built with version 2_28, up from 2014.</comment>
+    <requestid>1349215</requestid>
+  </revision>
 </revisionlist>

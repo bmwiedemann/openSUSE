@@ -26,7 +26,7 @@
 %bcond_with colortest
 %{?sle15_python_module_pythons}
 Name:           python-gevent
-Version:        25.9.1
+Version:        26.4.0
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
@@ -36,12 +36,12 @@ Source0:        https://github.com/gevent/gevent/archive/%{version}.tar.gz#/geve
 Source100:      %{name}-rpmlintrc
 # PATCH-FEATURE-OPENSUSE gevent-opensuse-nocolor-tests.patch code@bnavigator.de -- Avoid colorization of test output in obs runners
 Patch2:         gevent-opensuse-nocolor-tests.patch
-BuildRequires:  %{python_module Cython >= 3.0.11}
-BuildRequires:  %{python_module cffi}
+BuildRequires:  %{python_module Cython >= 3}
+BuildRequires:  %{python_module cffi >= 1.17.1}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module greenlet >= 3.2.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 40.8}
+BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.event}
 BuildRequires:  %{python_module zope.interface}
@@ -57,11 +57,11 @@ Requires:       python-zope.interface
 BuildRequires:  pkgconfig(libev)
 %endif
 %if 0%{?suse_version} || 0%{?fedora_version} ||  0%{?rhel} >= 8
-Recommends:     python-cffi
+Recommends:     python-cffi >= 1.17.1
 Recommends:     python-dnspython
 Recommends:     python-psutil
 %else
-Requires:       python-cffi
+Requires:       python-cffi >= 1.17.1
 Requires:       python-dnspython
 Requires:       python-psutil
 %endif
@@ -166,7 +166,7 @@ $python -m gevent.tests \
 }
 
 %files %{python_files}
-%doc AUTHORS README.rst TODO CHANGES.rst CONTRIBUTING.rst
+%doc README.rst TODO CHANGES.rst
 %license LICENSE*
 %{python_sitearch}/gevent-%{version}*-info
 %{python_sitearch}/gevent
