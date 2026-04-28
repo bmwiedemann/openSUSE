@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 25 09:55:39 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add ceph-liburing-build-fix.patch to fix build with glibc 2.43 
+
+-------------------------------------------------------------------
 Tue Oct  7 08:40:26 UTC 2025 - James Oakley <jfunk@opensuse.org>
 
 - Add cephadm-reproducible.patch for reproducible builds

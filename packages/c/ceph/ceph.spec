@@ -1,9 +1,7 @@
-#!BuildConstraint: hardware:memory:size unit=G 8
-#!BuildConstraint: hardware:disk:size unit=G 50
 #
 # spec file for package ceph
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (C) 2004-2019 The Ceph Project Developers. See COPYING file
 # at the top-level directory of this distribution and at
 # https://github.com/ceph/ceph/blob/master/COPYING
@@ -20,7 +18,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Disable some parts for the ring1 build
+
 %bcond_with ringdisabled
 
 %bcond_with make_check
@@ -224,6 +222,8 @@ Patch13:        ceph-rocksdb-gcc15.patch
 Patch14:        ceph-replace-CryptoPP-calls-with-GnuTLS.patch
 # PATCH-FIX-OPENSUSE cephadm-reproducible.patch -- Ensure cephadm executable is reproducible
 Patch15:        cephadm-reproducible.patch
+# PATCH-FIX-OPENSUSE ceph-liburing-build-fix.patch -- fix build with glibc 2.43
+Patch16:        ceph-liburing-build-fix.patch
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x riscv64
@@ -515,6 +515,7 @@ on commodity hardware and delivers object, block and file system storage.
 #################################################################################
 # subpackages
 #################################################################################
+
 %package base
 Summary:        Ceph Base Package
 %if 0%{?suse_version}
@@ -1410,6 +1411,7 @@ This package provides a Ceph hardware monitoring agent.
 #################################################################################
 # common
 #################################################################################
+
 %prep
 %autosetup -p1 -n ceph-%{version}
 

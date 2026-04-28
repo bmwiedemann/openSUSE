@@ -1,0 +1,20 @@
+--- ceph-18.2.7/src/liburing/src/include/liburing.h.orig	2026-04-25 11:42:53.029642462 +0200
++++ ceph-18.2.7/src/liburing/src/include/liburing.h	2026-04-25 11:43:20.732610779 +0200
+@@ -5,6 +5,7 @@
+ #include <sys/socket.h>
+ #include <sys/uio.h>
+ #include <sys/stat.h>
++#include <linux/openat2.h>
+ #include <errno.h>
+ #include <signal.h>
+ #include <stdbool.h>
+--- ceph-18.2.7/src/liburing/configure.orig	2026-04-25 12:29:03.548243046 +0200
++++ ceph-18.2.7/src/liburing/configure	2026-04-25 12:29:19.781537819 +0200
+@@ -243,6 +243,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <linux/openat2.h>
+ #include <string.h>
+ int main(int argc, char **argv)
+ {
