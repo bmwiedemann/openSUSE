@@ -87,4 +87,12 @@
     <comment>Fix build with jackson-databind 2.16.x</comment>
     <requestid>1156790</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>a9f3258b0b08b5f66ea098d6a0bc30c2</srcmd5>
+    <version>1.11.3</version>
+    <time>1777370275</time>
+    <user>anag_factory</user>
+    <comment>Fix license reference</comment>
+    <requestid>1349561</requestid>
+  </revision>
 </revisionlist>

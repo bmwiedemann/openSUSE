@@ -1,7 +1,7 @@
 #
 # spec file for package aws-sdk-java
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           aws-sdk-java
 Version:        1.11.3
 Release:        0
 Summary:        AWS SDK for Java
-License:        Apache-2.0 AND SUSE-Public-Domain
+License:        Apache-2.0 AND LicenseRef-SUSE-Public-Domain
 Group:          Development/Libraries/Java
 URL:            https://aws.amazon.com/sdk-for-java/
 Source0:        https://github.com/aws/aws-sdk-java/archive/%{githash}/%{name}-%{githash}.tar.gz
