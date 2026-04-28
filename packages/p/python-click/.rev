@@ -374,4 +374,41 @@ https://pypi.org/project/click/8.2.2/
     :pr:`3225`</comment>
     <requestid>1344810</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>de4218307bfbfd18f5f2cafbbc694d1a</srcmd5>
+    <version>8.3.3</version>
+    <time>1777370019</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.3.3:
+  * Use :func:`shlex.split` to split pager and editor commands
+    into argv lists for :class:`subprocess.Popen`, removing
+    shell=True. :issue:`1026` :pr:`1477` :pr:`2775`
+  * Fix TypeError when rendering help for an option whose default
+    value is an object that doesn't support equality comparison
+    with strings, such as semver.Version. :issue:`3298`
+    :pr:`3299`
+  * Fix pager test pollution under parallel execution by using
+    pytest's tmp_path fixture instead of a shared temporary file
+    path. :pr:`3238`
+  * Treat Sentinel.UNSET values in a default_map as absent, so
+    they fall through to the next default source instead of being
+    used as the value. :issue:`3224` :pr:`3240`
+  * Patch pdb.Pdb in CliRunner isolation so pdb.set_trace(),
+    breakpoint(), and debuggers subclassing pdb.Pdb (ipdb, pdbpp)
+    can interact with the real terminal instead of the captured
+    I/O streams. :issue:`654` :issue:`824` :issue:`843` :pr:`951`
+    :pr:`3235`
+  * Add optional randomized parallel test execution using pytest-
+    randomly and pytest-xdist to detect test pollution and race
+    conditions. :pr:`3151`
+  * Add contributor documentation for running stress tests,
+    randomized parallel tests, and Flask smoke tests. :pr:`3151`
+    :pr:`3177`
+  * Show custom show_default string in prompts, matching the
+    existing help text behavior. :issue:`2836` :pr:`2837`
+    :pr:`3165` :pr:`3262` :pr:`3280` :pr:`3328`
+  * Fix default=True with boolean flag_value always returning the
+    flag_value instead of True. The default=True to flag_value</comment>
+    <requestid>1349364</requestid>
+  </revision>
 </revisionlist>
