@@ -1,7 +1,7 @@
 #
 # spec file for package python-numpy1
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,8 @@ Patch2:         0001-BUG-Fix-test_impossible_feature_enable-failing-witho.patch
 Patch3:         0001-feature-module-Fix-handling-of-multiple-conflicts-pe.patch
 # PATCH-FIX-UPSTREAM Based on gh#numpy/numpy#25839
 Patch4:         fix-meson-multiple-python-versions.patch
+# PATCH-FIX-UPSTREAM gh#numpy/numpy#28928, gh#numpy/numpy#28748
+Patch5:         python314.patch
 BuildRequires:  %{python_module Cython >= 3.0}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
