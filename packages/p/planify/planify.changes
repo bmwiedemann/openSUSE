@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Apr 26 23:29:56 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 4.19.1:
+  + Fixed task completion failing with 412 when modified on another device
+  + Fixed sync for servers that don't support sync-token (Posteo and others)
+  + Fixed creating and deleting projects on servers that don't allow it via CalDAV (Posteo)
+  + Fixed Deck task lists not disappearing after disabling them in Nextcloud
+  + Fixed subtasks not being reset when a recurring task advances to its next occurrence
+  + Added expand button in task sidebar to open description in a full-size dialog
+  + Added backup export command to CLI
+  + Fixed task completion sound not playing
+  + Fixed update button failing on desktops without GNOME Software
+  + Fixed blue placeholder not disappearing when discarding a new task position on X11
+  + Fixed board view not removing strikethrough and dimmed styles after a recurring task resets
+- Update to version 4.19.0:
+  + Added Summary & Productivity dialog with task stats, progress bars, and configurable daily/weekly goals
+  + Added PDF export for projects including tasks, sections, subtasks, priorities, and deadlines
+  + Added GNOME Shell search provider — search tasks and projects directly from the Super key
+  + Added per-project markdown rendering setting (Global Default / Enabled / Disabled)
+  + Added "Copy to Clipboard" in multi-select toolbar with full task details
+  + Support asterisk prefix (* ) for incompletable tasks (notes), compatible with Todoist
+  + Added ETag and If-Match support to prevent silent data loss when multiple clients edit the same task
+  + Added fallback to full fetch when sync-collection REPORT is not supported (Posteo, Mailbox.org, Horde, KolabNow, Vikunja)
+  + Fixed due date not clearing when removed from an external CalDAV client
+  + Fixed completed subtasks showing as incomplete when synced from external clients
+  + Fixed duplicate projects when re-adding a CalDAV account
+  + Fixed automatic sync not starting after adding a new CalDAV/Nextcloud account
+  + Fixed disabled accounts still being contacted during sync
+  + Fixed project creation failing on Vikunja (HTTP 200 instead of 201)
+  + Added PUT+DELETE fallback when MOVE is not supported (Radicale with reverse proxy)
+  + Skipped archived projects during sync for better performance
+  + Added typed sync error messages for HTTP 401 (auth expired) and HTTP 429 (rate limiting)
+  + Fixed date picker not visible on small screens (1366x768)
+  + Fixed day change not detected after system suspend/resume
+  + Fixed date reset when using Keep Adding from Today View
+  + Fixed invalid Todoist API token being silently accepted
+  + Fixed calendar day alignment and improved CalendarMonth to show 3 weeks ahead
+  + Fixed inbox project radio button allowing deselection
+  + Redesigned CalDAV, Nextcloud, and Todoist token setup pages with consistent layout
+  + Replaced WebKitGTK with external browser for Todoist OAuth — removes WebKitGTK dependency
+  + Clarified Due Date vs Deadline labels with improved tooltips
+  + Filtered labels from archived projects in Labels view and Label Picker
+
+-------------------------------------------------------------------
 Wed Mar 18 16:59:02 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 4.18.3:

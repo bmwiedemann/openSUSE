@@ -19,7 +19,7 @@
 %define         sover 0
 %define         appid io.github.alainm23.planify
 Name:           planify
-Version:        4.18.3
+Version:        4.19.1
 Release:        0
 Summary:        Task and project manager
 License:        GPL-3.0-or-later
@@ -27,6 +27,7 @@ URL:            https://github.com/alainm23/planify
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  gnome-shell-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.56
@@ -104,7 +105,6 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
   -Dportal=true \
   -Dprofile=default \
   -Dtracing=true \
-  -Dwebkit=true \
   %{nil}
 %meson_build
 
@@ -119,11 +119,14 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
 %license LICENSE
 %doc AUTHORS README.md
 %{_bindir}/%{appid}{,.cli,.quick-add}
-%{_datadir}/metainfo/%{appid}.metainfo.xml
 %{_datadir}/applications/%{appid}.desktop
+%{_datadir}/dbus-1/services/%{appid}.SearchProvider.service
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/gnome-shell/search-providers/%{appid}.SearchProvider.ini
 %{_datadir}/icons/hicolor/scalable/apps/%{appid}{,.Devel}.svg
 %{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
+%{_datadir}/metainfo/%{appid}.metainfo.xml
+%{_libexecdir}/%{appid}-search-provider
 
 %files devel
 %{_datadir}/vala/vapi/%{name}.{deps,vapi}
