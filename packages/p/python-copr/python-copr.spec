@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-copr
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Python client for copr service
 License:        GPL-2.0-or-later

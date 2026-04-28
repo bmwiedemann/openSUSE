@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Tue Apr 28 10:17:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6
+  * Automatic commit of package [python-copr-common] release [1.5-1].
+  * gemini: copy the config from Mock
+  * docs: release notes 2025-12-10
+  * frontend: don't use future=True for sqlalchemy's create_engine
+  * build(deps): bump actions/upload-artifact from 5 to 6
+  * testing-farm: install pre-release packages with Ansible
+  * backend: info about the task that is being processed
+  * frontend: fix packit_forge_projects_allowed to return list in API
+  * Improve timestamp printing in the frontend
+  * cli: colorize build statuses
+  * backend: temporarily retain all repository packages
+  * Preload build.copr_dir to fix the builds page for large projects
+  * backend: skip projects with comps enabled when migrating to pulp
+  * python, cli, rpmbuild, common: use Tito to generate component.__version__
+  * backend: dump copr-rpmbuild version in logs
+  * behave/testing-farm: run tests in Testing Farm
+  * beaker, testing-farm: a new helper variable FRONTEND_PUBLIC_HOST
+  * testing-farm: avoid generating self-signed certificate
+  * beaker: fix tests for single-host and RH Copr
+  * beaker: don't fail runtest-dnf-copr.sh if @copr/copr-dev isn't enabled
+  * beaker: better cleanup in runtest-dnf-copr.sh
+  * beaker: test all architectures everywhere
+  * testing-farm: make sure we only ever run 2 builds in one sandbox
+  * rpmbuild: which is required
+  * testing-farm: use pre-release mock
+  * beaker-tests: fix the test for manual createrepo
+  * SOP: how to build a hotfix
+  * frontend: use build.copr instead of copr context for batches builds
+  * doc: explicitly call make clean before building new images
+  * doc: be explicit that make download actually rebuilds the image first
+  * doc: we don't need to manually tag AWS images anymore
+  * beaker, cli, python: bypass anubis challenge by setting copr user agent
+  * frontend: Allow resubmit for builds that failed during imports
+  * Allow dots and dashes in the container regex
+  * Add a test for container tags containing dashes
+  * cli: build_proxy.get_built_packages to figure out package NEVRAs
+  * cli: use a URL that would be available before the Pulp migration
+  * frontend: Disable AI Log Detective and dist-git redirect for non-logged-in users
+  * frontend: Exclude persistent projects from EOL chroot deletion
+  * cli, frontend: fix script-repos not being saved at all for custom pkgs
+  * doc: small improvements on how to upgrade builders
+  * frontend: add cancel all marked button
+  * docs: document pulp behavior with same NVRA but different epoch packages
+  * doc: properly render code blocks
+  * doc: point correctly to the "Build packages for production" section
+  * doc: workaround for when tito tag increments version incorrectly
+  * Temporarily disable auto-merger
+  * single-host: helper for spawning VMs in AWS
+  * testing-farm: force pre-release copr-rpmbuild onto builder
+  * beaker-tests: Temporarily build hello from F43
+  * testing-farm: document how to reproduce test failure
+  * frontend: preload build.copr to fix the builds page for large projects
+  * frontend: Add distgit source and namespace to source_json
+  * frontend: implement global package search for build chroot results
+  * backend, frontend: implement persistent projects in Pulp
+  * cli: fix download-build from PULP with --rpms
+  * testing-farm: make sure we use latest-stable fedora environment
+  * cli: fix download-build from PULP with --rpms
+  * frontend: fix small typos in ‹.delete_after_humanized›
+  * frontend: improve chroots graph display
+  * doc: document the system upgrade order
+  * frontend, backend, rpmbuild: extract Exclu*Arch/BuildArch for all targets
+  * behave: make linter happy
+  * build(deps): bump actions/upload-artifact from 6 to 7
+  * backend: don't run createrepo when forking Pulp projects
+  * testing-farm: drop the priority=9 hack
+  * ci: drop the python "3" suffix when submitting Copr builds
+  * testing-farm: fixup crypto preparations
+  * github: deploy documentation to GitHub Pages
+  * frontend, backend, distgit: initial Sentry integration
+  * common, distgit: use SafeRequest.timeout only as a timeout per request
+  * frontend: make projects clickable in /status/pending/all                Fixes #2447
+  * build(deps): bump actions/upload-pages-artifact from 3 to 4
+  * build(deps): bump actions/checkout from 4 to 6
+  * frontend: use SafeRequest for pagure-events
+  * common: timeout is not precise because it can fail for other reasons
+  * common: do not traceback in SafeRequest if log= is not set
+  * backend: better cancel-build logging
+  * backend: query Pulp content for only 7 builds at a time
+  * doc: build html not dirhtml pages
+  * github: let gh-pages.yml workflow trigger it as well
+  * backend: add prns to a repository, not pulp_hrefs
+  * rpmbuild: remove old code
+  * rpmbuild: do not require DNF4 packages and instead require DNF5 packages
+  * Documentation moved to docs.copr.fedorainfracloud.org
+  * backend: add change-storage support for persistent projects
+  * build(deps): bump actions/deploy-pages from 4 to 5
+  * backend: copr-change-storage: deduplicate project handling code
+  * backend: don't convert projects with manual createrepo to PULP
+  * cli, python: don't traceback new-api-token for default config
+  * cli, frontend: make sure new-api-token updates expiration token
+  * docs: update how we maintain hypervisors (in rdu3)
+  * backend: cleanup backend-side metadata for PULP chroots
+  * Fix download-build for manual createrepo Pulp projects
+  * frontend: don't require admin permissions to show the rebuild button
+  * backend: modify pulp label filter for content queries
+  * Automatic commit of package [python-copr-common] release [1.6-1].
+  * Automatic commit of package [python-copr] release [2.6-1].
+
+-------------------------------------------------------------------
 Fri Jan  9 22:25:53 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 2.5:
