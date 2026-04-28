@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:18:49 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to version 0.4.5:
+  * miscellaneous
+    + use C++20
+    + reorganized compiler.hxx constants and added AARCH64 and X32 detection support
+    + libcosmos exception handling now uses std::source_location and thus no longer relies on throw macros
+    + ILogger: added support to configure logging channels via configuration string and environment variables
+    + changed a bunch of data types to avoid violation of strict aliasing rules (especially types directly derived from libc/kernel types)
+  * network:
+    + sockets: support accept() with additional flags to allow O_CLOEXEC without races
+    + UnixOptions: support retrieving the supplemental groups from the peer.
+    + UnixOptions: support retrieving a PidFD representing the peer.
+  * SCons buildsystem:
+    + support for variant=suffix to select different build & install trees.
+    + support for abi=<abi> to select a non-default ABI in the compiler
+    + adjust the RPATH during install, previously the installed binaries still pointer to the libs in the build tree
+  * filesystem:
+    + support inspecting major/minor parts of device IDs
+    + FileStatus::symbolic() support ls-style string representation
+  * process:
+    + support ResourceUsage API (getrusage())
+    + proc: support for prlimit64() via proc::set_limit and proc::get_limit
+    + ChildCloner: support operation without exec()
+    + SubProc: fix invalid cleanup when child enters STOPPED state.
+    + extension of the ptrace API wrappers
+    + WaitFlag: additional Linux-specific constants
+    + process.hxx: support for ProcessGroupID and related functions
+    + separated ChildState from ChildData to better model different relationships between APIs
+    + ChildCloner: support a dedicated error indication if execve() fails in the child via setForwardChildErrors()
+    + support getting and setting supplementary group IDs via set_supplementary_groups() and get_supplementary_groups()
+    + CloneFlags for clone3: support getting and setting all members
+- drop libcosmos-fix-aarch64.patch: contained in new upstream version
+
+-------------------------------------------------------------------
 Tue Mar 18 15:44:55 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix build on aarch64:

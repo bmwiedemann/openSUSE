@@ -1,7 +1,7 @@
 #
 # spec file for package libcosmos
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define version 0.4.0
+%define version 0.4.5
 
 Name:           libcosmos
 Version:        %{version}
@@ -26,8 +26,6 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/gerstner-hub/libcosmos
 Source0:        libcosmos-v%{version}.tar.xz
-# PATCH-FIX-UPSTREAM - https://github.com/gerstner-hub/libcosmos/commit/54b144
-Patch0:         libcosmos-fix-aarch64.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  scons
