@@ -8167,4 +8167,13 @@
     Use-after-free in the JavaScript: WebAssembly component</comment>
     <requestid>1348824</requestid>
   </revision>
+  <revision rev="484" vrev="2">
+    <srcmd5>c8e6de95fb5dd7647040ed9a5e073446</srcmd5>
+    <version>150.0</version>
+    <time>1777379429</time>
+    <user>anag_factory</user>
+    <comment>- Fix failing builds (boo#1258744)
+  mozilla-bmo2030493.patch</comment>
+    <requestid>1349719</requestid>
+  </revision>
 </revisionlist>

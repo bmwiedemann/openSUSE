@@ -238,6 +238,7 @@ Patch21:        svg-rendering.patch
 Patch24:        mozilla-bmo1746799.patch
 Patch25:        mozilla-sandbox-lto.patch
 Patch26:        mozilla-bmo2031958.patch
+Patch27:        mozilla-bmo2030493.patch
 # Firefox/browser
 Patch102:       firefox-branded-icons.patch
 %endif

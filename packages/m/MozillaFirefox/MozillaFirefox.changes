@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 27 12:18:31 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Fix failing builds (boo#1258744)
+  mozilla-bmo2030493.patch
+
+-------------------------------------------------------------------
 Wed Apr 22 05:46:04 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 150.0
