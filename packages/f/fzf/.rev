@@ -1208,4 +1208,24 @@ varienvironment able.
     <comment></comment>
     <requestid>1344727</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>0752621df3b223aff41715200afb4d30</srcmd5>
+    <version>0.72.0</version>
+    <time>1777370320</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.72.0:
+  * --header-border, --header-lines-border, and --footer-border
+    now accept a new inline style that embeds the section inside
+    the list frame, separated from the list content by a
+    horizontal line. When the list border has side segments, the
+    separator joins them as T-junctions.
+  * New dashed border style with dashed edges (╶ / ┆) and rounded corners.
+  * [vim] Move and resize popup window when detecting VimResized event (#4778)
+  * Fixed gutter display in --style=minimal
+  * Fixed arrow keys / Home / End without modifiers being ignored
+    under the kitty keyboard protocol (#4776)
+  * bash: Persist history deletion when histappend is on (#4764)
+- see https://junegunn.github.io/fzf/releases/0.72.0/ for full details</comment>
+    <requestid>1349653</requestid>
+  </revision>
 </revisionlist>

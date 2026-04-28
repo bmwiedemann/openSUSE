@@ -1,15 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 27 19:51:19 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.72.0:
+  * --header-border, --header-lines-border, and --footer-border
+    now accept a new inline style that embeds the section inside
+    the list frame, separated from the list content by a
+    horizontal line. When the list border has side segments, the
+    separator joins them as T-junctions.
+  * New dashed border style with dashed edges (╶ / ┆) and rounded corners.
+  * [vim] Move and resize popup window when detecting VimResized event (#4778)
+  * Fixed gutter display in --style=minimal
+  * Fixed arrow keys / Home / End without modifiers being ignored
+    under the kitty keyboard protocol (#4776)
+  * bash: Persist history deletion when histappend is on (#4764)
+- see https://junegunn.github.io/fzf/releases/0.72.0/ for full details
+
+-------------------------------------------------------------------
 Sun Apr  5 04:42:42 UTC 2026 - pallas wept <pallaswept@proton.me>
 
-- Update to version 0.71.0
+- Update to version 0.71.0:
   * Added --popup as a new name for --tmux with Zellij support
   * Cross-reload item identity with --id-nth
   * Performance improvements
   * Shell integration improvements
-  * GET / HTTP endpoint now includes positions field in each match entry, 
+  * GET / HTTP endpoint now includes positions field in each match entry,
     providing the indices of matched characters for external highlighting
   * Allow adaptive height with negative value (--height=~-HEIGHT)
-  * Bug fixes 
+  * Bug fixes
 
 -------------------------------------------------------------------
 Mon Mar  2 21:33:40 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
