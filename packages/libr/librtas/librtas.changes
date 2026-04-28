@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 27 11:58:01 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 2.0.6 (jsc#PED-14527).
+  * physical-attestation: check work_area_bytes for null prior to dereference
+- Drop upstreamed patches
+  * 0009-librtas-Use-kernel-interface-when-available-for-ibm-.patch
+  * 0008-librtas-Move-physical-attestation-rtas-call-code-to-.patch
+  * 0007-librtas-Use-dev-papr-indices-when-available-for-set-.patch
+  * 0006-librtas-Use-dev-papr-indices-when-available-for-get-.patch
+  * 0005-librtas-Use-dev-papr-indices-when-available-for-ibm-.patch
+  * 0004-librtas-Add-kernel-uapi-header-papr-indices.h.patch
+  * 0003-librtas-move-get-set-indices-RTAS-calls-code-to-sepa.patch
+  * 0002-librtas-platform-dump-prefer-dev-papr-platform-dump-.patch
+  * 0001-librtas-Move-platform-dump-rtas-call-code-to-separat.patch
+
+-------------------------------------------------------------------
 Wed May  7 11:53:55 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to version 2.0.6

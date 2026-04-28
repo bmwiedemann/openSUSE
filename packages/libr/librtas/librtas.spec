@@ -1,7 +1,7 @@
 #
 # spec file for package librtas
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 2
 Name:           librtas
-Version:        2.0.6
+Version:        2.0.7
 Release:        0
 Summary:        Libraries to provide access to RTAS calls and RTAS events
 License:        LGPL-2.1-or-later
@@ -29,15 +29,6 @@ Source1:        baselibs.conf
 Source2:        activate-firmware-regress
 Source3:        vpdupdate-regress
 Patch0:         librtas.fix_doc_path.patch
-Patch7:         0001-librtas-Move-platform-dump-rtas-call-code-to-separat.patch
-Patch8:         0002-librtas-platform-dump-prefer-dev-papr-platform-dump-.patch
-Patch9:         0003-librtas-move-get-set-indices-RTAS-calls-code-to-sepa.patch
-Patch10:        0004-librtas-Add-kernel-uapi-header-papr-indices.h.patch
-Patch11:        0005-librtas-Use-dev-papr-indices-when-available-for-ibm-.patch
-Patch12:        0006-librtas-Use-dev-papr-indices-when-available-for-get-.patch
-Patch13:        0007-librtas-Use-dev-papr-indices-when-available-for-set-.patch
-Patch14:        0008-librtas-Move-physical-attestation-rtas-call-code-to-.patch
-Patch15:        0009-librtas-Use-kernel-interface-when-available-for-ibm-.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
