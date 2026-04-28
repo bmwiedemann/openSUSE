@@ -48,22 +48,22 @@ BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Requires:       %{python_module boto3}
-Requires:       %{python_module click}
-Requires:       %{python_module hatanaka}
-Requires:       %{python_module jinja2}
-Requires:       %{python_module matplotlib}
-Requires:       %{python_module numpy}
-Requires:       %{python_module pandas}
-Requires:       %{python_module plotext}
-Requires:       %{python_module plotly}
-Requires:       %{python_module pyfakefs}
-Requires:       %{python_module pymongo}
-Requires:       %{python_module pytest}
-Requires:       %{python_module scipy}
-Requires:       %{python_module tqdm}
-Requires:       %{python_module typing_extensions}
-Requires:       %{python_module unlzw3}
+Requires:       python-boto3
+Requires:       python-click
+Requires:       python-hatanaka
+Requires:       python-jinja2
+Requires:       python-matplotlib
+Requires:       python-numpy
+Requires:       python-pandas
+Requires:       python-plotext
+Requires:       python-plotly
+Requires:       python-pyfakefs
+Requires:       python-pymongo
+Requires:       python-pytest
+Requires:       python-scipy
+Requires:       python-tqdm
+Requires:       python-typing_extensions
+Requires:       python-unlzw3
 Requires:       alts
 %python_subpackages
 
