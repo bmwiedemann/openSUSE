@@ -17,7 +17,7 @@
 
 
 Name:           micropython-lib
-Version:        1.27.0
+Version:        1.28.0
 Release:        0
 Summary:        Core Python libraries ported to MicroPython
 License:        MIT AND Python-2.0

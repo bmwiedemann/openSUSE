@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:10:03 UTC 2026 - Simon Haendler <s.k.haendler@gmx.de>
+
+- Update to 1.28.0
+  * string: Convert string module to package and import templatelib.
+  * unix-ffi/_libc: Extend FreeBSD libc versions range.
+  * senml/docs: Correct capitalization of 'MicroPython'.
+  * unix-ffi/machine: Retrieve a unique identifier if one is known.
+  * unix-ffi/re: Add tests for empty string match in ffi regex.
+  * unix-ffi/re: Handle PCRE2_UNSET in group and groups methods.
+  * lsm6dsox: Add pedometer example code.
+  * lsm6dsox: Add pedometer support.
+  * sdcard: Add read/write speed test to sdtest.
+  * sdcard: Compute CRC7 for all SPI commands.
+  * sdcard: Send stop bit after multi-block read/write.
+
+-------------------------------------------------------------------
 Thu Feb 19 12:33:16 UTC 2026 - Dominik Heidler <dheidler@suse.de>
 
 - Update to 1.27.0
