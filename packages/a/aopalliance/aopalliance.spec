@@ -1,7 +1,7 @@
 #
 # spec file for package aopalliance
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           aopalliance
 Version:        1.0
 Release:        0
 Summary:        Java/J2EE AOP standards
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Development/Libraries/Java
 URL:            https://aopalliance.sourceforge.net/
 # cvs -d:pserver:anonymous@aopalliance.cvs.sourceforge.net:/cvsroot/aopalliance login
