@@ -233,6 +233,18 @@ Patch46:        CVE-2026-3479-pkgutil_get_data.patch
 # PATCH-FIX-UPSTREAM CVE-2026-3446-base64-padding.patch bsc#1261970 mcepl@suse.com
 # Do not ignore excess Base64 data after the first padded quad
 Patch47:        CVE-2026-3446-base64-padding.patch
+# PATCH-FIX-UPSTREAM CVE-2026-6100-use-after-free-decompression.patch bsc#1262098 mcepl@suse.com
+# NULL dangling pointer to avoid use-after-free error
+Patch48:        CVE-2026-6100-use-after-free-decompression.patch
+# PATCH-FIX-UPSTREAM CVE-2026-4786-webbrowser-open-action.patch bsc#1262319 mcepl@suse.com
+# Fix webbrowser %action substitution bypass of dash-prefix check
+Patch49:        CVE-2026-4786-webbrowser-open-action.patch
+# PATCH-FIX-UPSTREAM CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch bsc#1261969 mcepl@suse.com
+# Reject CR/LF in HTTP tunnel request headers
+Patch50:        CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
+# PATCH-FIX-UPSTREAM CVE-2026-6019-Morsel-js_output.patch bsc#1262654 mcepl@suse.com
+# Base64-encode cookie values embedded in JS
+Patch51:        CVE-2026-6019-Morsel-js_output.patch
 ### END OF PATCHES                                                              
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

@@ -1322,4 +1322,26 @@
   (bsc#1258364).</comment>
     <requestid>1347983</requestid>
   </revision>
+  <revision rev="77" vrev="6">
+    <srcmd5>3973b913173ab49925688deda03e1b9f</srcmd5>
+    <version>3.10.20</version>
+    <time>1777370323</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-6019-Morsel-js_output.patch protects against HTML
+  injection by Base64-encoding cookie values embedded in JS
+  (bsc#1262654, CVE-2026-6019, gh#python/cpython#90309).
+
+- Add CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch which rejects
+  CR/LF in HTTP tunnel request headers (bsc#1261969,
+  CVE-2026-1502, gh#python/cpython#146211).
+
+- Add CVE-2026-4786-webbrowser-open-action.patch, which fixes
+  webbrowser %action substitution bypass of dash-prefix check
+  (bsc#1262319, CVE-2026-4786, gh#python/cpython#148169).
+
+- Add CVE-2026-6100-use-after-free-decompression.patch preventing
+  dangling pointer which can end in the use-after-free error
+  (CVE-2026-6100, bsc#1262098, gh#python/cpython#148395).</comment>
+    <requestid>1349663</requestid>
+  </revision>
 </revisionlist>
