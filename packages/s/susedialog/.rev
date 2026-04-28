@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>05ac4625c736a4f5378b4fae5ebaf04a</srcmd5>
+    <version>20260427.b33f52d</version>
+    <time>1777370245</time>
+    <user>anag_factory</user>
+    <comment>Add susedialog fancy dialog replacement
+
+* Instantly makes jeos-firstboot and opensuse-migration-tool
+more fancy
+* Add highcontrast, opensuse, and rainbow themes
+* Support user and system-wide config
+* Add bash completion
+* Initial centering support
+* Initial scope is jeos-firstboot + omt dialog call coverage
++ --infobox which was mentioend on on factory@</comment>
+    <requestid>1349522</requestid>
+  </revision>
+</revisionlist>

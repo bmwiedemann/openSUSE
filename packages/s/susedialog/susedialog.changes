@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Mon Apr 27 01:11:51 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260427.b33f52d:
+  * Add bash completion
+
+-------------------------------------------------------------------
+Mon Apr 27 00:39:42 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260427.02fbcf9:
+  * Support both top-left + centered dialogs
+  * Add infobox support based on Jan's early feedback
+  * Revisit high-contrast theme
+  * Add rainbow support for our rainbow friends
+  * Introduce SUSEDIALOG_THEME_TOGGLE_KEY
+  * Support user and system-wide config with themes
+
+- Reorder go_modules service 
+
+-------------------------------------------------------------------
+Fri Apr 24 15:44:16 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260424.2f82d36:
+  * Print help instead of no widget in case of 0 params
+
+-------------------------------------------------------------------
+Fri Apr 24 15:38:18 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260424.5bb3907:
+  * Add manpage susedialog.1
+
+-------------------------------------------------------------------
+Fri Apr 24 15:01:20 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Initial version of susedialog compatible with jeos-firstboot and
+  opensuse-migration-tool done by using copilot
