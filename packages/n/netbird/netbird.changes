@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:01:20 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.70.0:
+  - [self-hosted] add reverse proxy retention fields to combined
+    YAML by @braginini in #5930
+  - [management] replace mailru/easyjson with netbirdio/easyjson
+    fork by @braginini in #5938
+  - [client] Supress ICE signaling by @pappz in #5820
+  - [client] Prefer systemd-resolved stub over file mode regardless
+    of resolv.conf header by @lixmal in #5935
+  - [client] Trust wg interface in firewalld to bypass
+    owner-flagged chains by @lixmal in #5928
+  - [management] check policy for changes before actual db update
+    by @crn4 in #5405
+  - [client] allow UDP packet loss in
+    TestICEBind_HandlesConcurrentMixedTraffic by @pappz in #5953
+  - [client] fix goroutine leak in
+    TestReceive_ProtocolErrorStreamReconnect by @pappz in #5951
+  - [client] fix port collision in TestUpload by @pappz in #5950
+  - [management] Propagate context changes to upstream middleware
+    by @bcmmbaga in #5956
+  - [self-hosted] Use cscli lapi status for CrowdSec readiness
+    check in installer by @lixmal in #5949
+  - [client] Add TTL-based refresh to mgmt DNS cache via handler
+    chain by @lixmal in #5945
+  - [client] increase gRPC health check timeout to 5s by @pappz in
+    #5961
+  - [management] refactor: changeable pat rate limiting by @crn4 in
+    #5946
+  - [management] exclude peers for expiration job that have already
+    been marked expired by @pascal-fischer in #5970
+  - [proxy] set session cookie path to root by @alsruf36 in #5915
+  - [management] unify peer-update test timeout via constant by
+    @pappz in #5952
+  - [misc] Update sign pipeline version by @mlsmaycon in #5981
+  - [misc] Update release pipeline version by @mlsmaycon in #5995
+
+-------------------------------------------------------------------
 Mon Apr 20 14:19:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.69.0:
