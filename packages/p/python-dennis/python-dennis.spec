@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           python-dennis
 Version:        1.2.0
 Release:        0
@@ -36,8 +42,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 6
 Requires:       python-polib >= 1.0.8
-Requires(post): alts
-Requires(postun): alts
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,6 +73,9 @@ mismatched HTML, missing variables, etc.
 %check
 export LANG="en_US.UTF-8"
 %pytest tests
+
+%pre
+%python_libalternatives_reset_alternative dennis-cmd
 
 %post
 %python_install_alternative dennis-cmd
