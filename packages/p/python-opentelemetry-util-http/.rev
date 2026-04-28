@@ -175,4 +175,14 @@
   * lince some pylint warnings</comment>
     <requestid>1346295</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0069951a21ce94a6d9b4c6a6900bf3ee</srcmd5>
+    <version>0.62b1</version>
+    <time>1777370072</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.62b1
+  * This is a patch release on the previous 1.41.0/0.62b0
+    release</comment>
+    <requestid>1349184</requestid>
+  </revision>
 </revisionlist>
