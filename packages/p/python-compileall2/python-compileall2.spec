@@ -1,7 +1,7 @@
 #
 # spec file for package python-compileall2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %{?sle15_python_module_pythons}
 Name:           python-compileall2
@@ -32,6 +38,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -54,6 +67,9 @@ export LANG=en_US.UTF-8
 %check
 export LANG=en_US.UTF-8
 %pytest -rs test_compileall2.py -k 'not test_hardlink_deduplication_import'
+
+%pre
+%python_libalternatives_reset_alternative compileall2
 
 %post
 %python_install_alternative compileall2

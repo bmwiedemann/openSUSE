@@ -42,4 +42,12 @@
   * Improved tests</comment>
     <requestid>1165871</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f8162490e8fa46599aee14ad1c4510f0</srcmd5>
+    <version>0.8.0</version>
+    <time>1777370124</time>
+    <user>anag_factory</user>
+    <comment>- reset alternative for TW</comment>
+    <requestid>1349414</requestid>
+  </revision>
 </revisionlist>
