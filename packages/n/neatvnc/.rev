@@ -262,4 +262,14 @@
     being offset from the correct hotspot.</comment>
     <requestid>1296230</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>349e15f2531ca7b0afdecbcc6fb33cd5</srcmd5>
+    <version>0.9.6</version>
+    <time>1777370236</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.6:
+  * Fix a buffer overflow vulnerability in RSA-AES authentication
+  * Add earlier rejection of overly long credentials in VeNCrypt authentication</comment>
+    <requestid>1349492</requestid>
+  </revision>
 </revisionlist>

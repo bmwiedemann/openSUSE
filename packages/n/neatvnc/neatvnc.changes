@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 27 06:29:24 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.6:
+  * Fix a buffer overflow vulnerability in RSA-AES authentication
+  * Add earlier rejection of overly long credentials in VeNCrypt authentication
+
+-------------------------------------------------------------------
 Tue Jul 29 05:19:43 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.5:
