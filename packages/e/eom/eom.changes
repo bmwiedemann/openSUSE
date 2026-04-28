@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 26 10:59:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.1:
+  * plugins: Support building against newer libpeas1 versions
+  * eom-window: Add additional key codes for image switching using
+    mouse buttons
+  * Eom*: Use fast content type as fallback
+  * EomUtil: Add helper to get content type from GFileInfos
+  * Add 'preserve-order' flag to allow viewing order specified on
+    cmd line
+  * Updated translations.
+- Drop update-desktop-files BuildRequires and macro: Obsolete and
+  no longer needed.
+
+-------------------------------------------------------------------
 Sun Mar 31 07:34:15 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
  
 - Update version to 1.28.0

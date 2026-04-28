@@ -1,7 +1,7 @@
 #
 # spec file for package eom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,18 +20,17 @@
 %define _version 1.28
 
 Name:           eom
-Version:        1.28.0
+Version:        1.28.1
 Release:        0
 Summary:        MATE Desktop graphics viewer
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://mate-desktop.org/
-Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source:         https://github.com/mate-desktop/eom/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(exempi-2.0)
@@ -104,7 +103,6 @@ NOCONFIGURE=1 mate-autogen
 %make_install
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file %{name}
 
 %files
 %license COPYING
@@ -126,7 +124,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/%{name}-2.20/
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/gir-1.0/Eom-1.0.gir
-%{_datadir}/gtk-doc/html/%{name}/
 
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/Eom-1.0.typelib
