@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 27 06:11:31 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.1:
+  + Show disk usage of include/exclude folders in the preferences
+    screen
+  + Be less aggressive when cleaning up /tmp files, to avoid
+    hitting other Duplicity or Restic processes on the system
+  + Duplicity: avoid a possible error at the end of a backup
+    warning about not overwriting a "metadata" file (an internal
+    canary file we insert into Duplicity backups)
+  + Increase timeouts for some script tests, to avoid flaky
+    failures on slow hardware
+
+-------------------------------------------------------------------
 Mon Mar 23 08:25:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

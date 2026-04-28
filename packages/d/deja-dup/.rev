@@ -825,4 +825,21 @@ So preferably for 13.1 as well.</comment>
     <comment>Push from SCM</comment>
     <requestid>1343023</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>6cf787dc19b1a751c110b2026e01ba3f</srcmd5>
+    <version>50.1</version>
+    <time>1777370345</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.1:
+  + Show disk usage of include/exclude folders in the preferences
+    screen
+  + Be less aggressive when cleaning up /tmp files, to avoid
+    hitting other Duplicity or Restic processes on the system
+  + Duplicity: avoid a possible error at the end of a backup
+    warning about not overwriting a &quot;metadata&quot; file (an internal
+    canary file we insert into Duplicity backups)
+  + Increase timeouts for some script tests, to avoid flaky
+    failures on slow hardware</comment>
+    <requestid>1349694</requestid>
+  </revision>
 </revisionlist>
