@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 25 16:03:17 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.12 
+ * Preview features
+  * Implement #ruff:file-ignore file-level suppressions 
+  * Implement #ruff:ignore logical-line suppressions 
+  * Revert preview changes to displayed diagnostic severity in LSP 
+  * [airflow] Implement task-branch-as-short-circuit (AIR004) 
+  * [flake8-bugbear] Fix break/continue handling in loop-iterator-mutation (B909) 
+  * [pylint] Fix PLC2701 for type parameter scopes 
+ * Rule changes
+  * [pandas-vet] Suggest .array as well in PD011 
+ * CLI
+  * Respect default Unix permissions for cache files 
+ * Documentation
+  * [pylint] Fix PLR0124 description not to claim self-comparison always returns the same value 
+  * [pyupgrade] Expand docs on reusable TypeVars and scoping (UP046) 
+  * Improve rules table accessibility 
+
+-------------------------------------------------------------------
 Fri Apr 17 07:33:52 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.15.11
