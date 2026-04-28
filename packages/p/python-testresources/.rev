@@ -132,4 +132,19 @@
     <comment></comment>
     <requestid>1278122</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4bc8e721d4c6d0c705b2945f3eaf8d2c</srcmd5>
+    <version>2.1.2</version>
+    <time>1777370009</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.2:
+  * Fix packaging metadata (mgorny)
+  * Fix packaging metadata (carlwgeorge, stephenfin)
+  * Add support for Python 3.14, drop support for Python 3.9
+    (jelmer)
+  * Remove references to unittest2 (stephenfin)
+
+- Do not use pytest for the testsuite, switch to %pyunittest.</comment>
+    <requestid>1349291</requestid>
+  </revision>
 </revisionlist>

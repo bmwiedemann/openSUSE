@@ -1,7 +1,7 @@
 #
 # spec file for package python-testresources
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-testresources
-Version:        2.0.2
+Version:        2.1.2
 Release:        0
 Summary:        A pyunit extension for managing expensive test resources
 License:        (Apache-2.0 OR BSD-3-Clause) AND GPL-2.0-or-later
 URL:            https://github.com/testing-cabal/testresources
 Source:         https://files.pythonhosted.org/packages/source/t/testresources/testresources-%{version}.tar.gz
 Patch0:         testresources-flaky-tests.patch
+BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pbr
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,7 +56,7 @@ of resources by test cases.
 
 %files %{python_files}
 %license BSD Apache-2.0 COPYING
-%doc README.rst
+%doc README.rst NEWS
 %{python_sitelib}/testresources
 %{python_sitelib}/testresources-%{version}.dist-info
 
