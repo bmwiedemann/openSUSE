@@ -16,8 +16,14 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           python-ddgs
-Version:        9.10.0
+Version:        9.12.0
 Release:        0
 Summary:        Dux Distributed Global Search. A metasearch library that aggregates results from diverse web search services
 License:        MIT
@@ -29,19 +35,22 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 8.1.8}
-BuildRequires:  %{python_module fake-useragent >= 2.2.0}
-BuildRequires:  %{python_module httpx >= 0.28.1}
 BuildRequires:  %{python_module lxml >= 4.9.4}
-BuildRequires:  %{python_module primp >= 0.15.0}
+BuildRequires:  %{python_module primp}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-click >= 8.1.8
-Requires:       python-fake-useragent >= 2.2.0
-Requires:       python-httpx >= 0.28.1
 Requires:       python-lxml >= 4.9.4
-Requires:       python-primp >= 0.15.0
+Requires:       python-primp
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -58,6 +67,9 @@ Dux Distributed Global Search. A metasearch library that aggregates results from
 %python_clone -a %{buildroot}%{_bindir}/ddgs
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%pre
+%python_libalternatives_reset_alternative ddgs
+
 %post
 %python_install_alternative ddgs
 
@@ -66,7 +78,7 @@ Dux Distributed Global Search. A metasearch library that aggregates results from
 
 %files %{python_files}
 %doc README.md
-%license LICENSE.md LICENSE.md
+%license LICENSE.md
 %python_alternative %{_bindir}/ddgs
 %{python_sitelib}/ddgs
 %{python_sitelib}/ddgs-%{version}.dist-info
