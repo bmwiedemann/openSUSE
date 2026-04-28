@@ -39,6 +39,7 @@ Source3:        get-sources.sh
 Source4:        release_tags
 BuildRequires:  comet
 BuildRequires:  c++_compiler
+BuildRequires:  esbuild
 BuildRequires:  fdupes
 BuildRequires:  heroic-epic-integration
 BuildRequires:  heroic-gogdl
@@ -87,11 +88,6 @@ cp %{_sourcedir}/release_tags public/bin/.release_tags
 # Remove precompiled binaries to build from source
 rm public/bin/%{bin_subdir}/linux/vulkan-helper
 rm -rf $HOME/.local/share/pnpm
-
-export PNPM_HOME=/usr
-export PNPM_SKIP_PATH_CHECK=1
-export PNPM_NO_SELF_UPDATE=1
-export PNPM_USE_RUNNING_PNPM=1
 
 # Build Heroic Games Launcher
 export HOME=%{_builddir}/%{name}-%{version}

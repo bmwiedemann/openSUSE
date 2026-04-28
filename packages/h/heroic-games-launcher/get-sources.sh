@@ -1,10 +1,10 @@
 #!/usr/bin/sh
 
-set -e
+set -euo pipefail
 
-if [[ -z "$1" ]]; then
-echo "Please enter the version you want to update to";
-exit 1;
+if [[ -z "${1:-}" ]]; then
+  echo "Usage: $0 <version>"
+  exit 1
 fi
 
 REPO_DIR="HeroicGamesLauncher"
@@ -27,7 +27,7 @@ echo "+++++++++++++++++++++++++++++++++++++++++++++++++++"
 cd "$REPO_DIR"
 
 # Forcing the download of required npm dependencies
-ESBUILD_VERSION="0.25.3"
+ESBUILD_VERSION="0.25.12"
 ROLLUP_VERSION="4.52.5"
 SWC_VERSION="1.11.24"
 UNDICI_V7_FIXED="7.18.0"
@@ -60,8 +60,7 @@ jq --indent 2 \
       "build/**/*",
       "dist/**/*",
       "node_modules/**/*",
-      "!**/*.map",
-      "!node_modules/@esbuild/**/*"
+      "!**/*.map"
     ]
 
   | .devDependencies |= with_entries(
@@ -70,18 +69,31 @@ jq --indent 2 \
 
   | .peerDependencies.electron = "^25.9.3"
 
-  # ARM64 native binaries
-  | .devDependencies |= del(."@esbuild/linux-arm64")
-  | .dependencies |= del(
-      ."@rollup/rollup-linux-arm64-gnu",
-      ."@swc/core-linux-arm64-gnu"
+  # =========================
+  # ESBUILD HARD PIN
+  # =========================
+  | .dependencies["esbuild"] = $esbuild
+  | .optionalDependencies = {
+      "@esbuild/linux-x64": $esbuild,
+      "@esbuild/linux-arm64": $esbuild
+    }devDependencies["@esbuild/linux-arm64"] = $esbuild_ver
+
+  | del(
+      .dependencies["@esbuild/linux-x64"],
+      .dependencies["@esbuild/linux-arm64"],
+      .devDependencies["@esbuild/linux-x64"],
+      .devDependencies["@esbuild/linux-arm64"]
     )
 
-  | .devDependencies["@esbuild/linux-arm64"] = $esbuild_ver
+  # =========================
+  # Native binaries for Rollup and SWC
+  # =========================
   | .dependencies["@rollup/rollup-linux-arm64-gnu"] = $rollup_ver
   | .dependencies["@swc/core-linux-arm64-gnu"] = $swc_ver
 
+  # =========================
   # === Previous CVE fixes ===
+  # =========================
   | .pnpm.overrides = (
     (.pnpm.overrides // {})
     + {
@@ -98,7 +110,9 @@ jq --indent 2 \
       }
   )
 
+  # =========================
   # === CVE-2026-34601: xmldom CDATA injection ===
+  # =========================
   | .pnpm.overrides = (
       (.pnpm.overrides // {})
       + {

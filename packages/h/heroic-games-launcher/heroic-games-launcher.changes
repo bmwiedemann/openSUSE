@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 26 18:09:13 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix aarch64 build failures caused by esbuild version mismatch
+  * Fix missing @esbuild/linux-arm64 causing build failures on ARM
+  * Ensure multi-arch esbuild binaries (x64 + arm64) are included in offline store
+  * Force consistent esbuild version across wrapper and platform binaries to fix 
+    build failures on aarch64 (version mismatch between host and binary)
+  * Bundle esbuild optionalDependencies for both x86_64 and aarch64 to ensure multi-arch builds
+  * Ensure pnpm offline store contains all required dependencies (including optional ones)
+  * Improve robustness of get-sources script to avoid OBS-specific breakages
+  * Unnecessary exports removed.
+
+-------------------------------------------------------------------
 Thu Apr 23 19:25:27 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to 2.21.0 "Loki"

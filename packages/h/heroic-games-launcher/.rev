@@ -154,4 +154,12 @@ via pnpm overrides to fix embedded dependency.</comment>
     <comment></comment>
     <requestid>1349173</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2df3371fe66893de8bdf3c310ef216df</srcmd5>
+    <version>2.21.0</version>
+    <time>1777370127</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1349409</requestid>
+  </revision>
 </revisionlist>
