@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 26 04:30:55 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 0.43.1:
+   * Fix Windows build
+   * Removed deprecated APIs
+   * fix: cast len to 64 bits before right shift in ws
+   * fix #2429
+   * Fix #2427
+
+-------------------------------------------------------------------
 Tue Apr 14 14:18:08 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 0.42.0:
