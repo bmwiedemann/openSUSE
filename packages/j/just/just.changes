@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 27 00:16:38 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.50.0:
+  + Filter --choose by --group
+  + Add [android] recipe attribute
+  + Add module_path() function
+  + Preserve trailing comments when formatting
+  + Preserve comments before [doc] attribute
+  + Allow comments after unexports
+  + Stabilize --fmt subcommand
+  + Ignore trailing :: on last argument
+  + Complete files and directories when completing arguments
+  + Include module_path field in JSON
+  + Partially collapse blank lines between items
+  + Omit defaults when formatting settings
+  + Fix read() description
+  + Note that pull requests are not currently being accepted
+  + Improve completer config parsing
+  + Test that aliases complete with environment variable
+  + Replace unnecessary raw strings
+  + Fix test string indentation
+  + Document assert() in readme
+  + Replace dashes with underscores when using --evaluate-format shell
+  + Fix readme typos
+  + Test multi-line recipe comments
+  + Document set no-exit-message and [exit-message]
+  + Refactor end-of-file handling in lexer
+  + Fix end-of-file parsing
+  + Include bash completion script in crate
+
+-------------------------------------------------------------------
 Sun Apr  5 21:27:03 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.49.0:

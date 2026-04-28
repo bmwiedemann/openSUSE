@@ -596,4 +596,38 @@
   * Include shell name in I/O error messages (forwarded request 1344715 from rrahl0)</comment>
     <requestid>1344716</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>23c0d6777f8922f442beb247df2d1c3f</srcmd5>
+    <version>1.50.0</version>
+    <time>1777370202</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.50.0:
+  + Filter --choose by --group
+  + Add [android] recipe attribute
+  + Add module_path() function
+  + Preserve trailing comments when formatting
+  + Preserve comments before [doc] attribute
+  + Allow comments after unexports
+  + Stabilize --fmt subcommand
+  + Ignore trailing :: on last argument
+  + Complete files and directories when completing arguments
+  + Include module_path field in JSON
+  + Partially collapse blank lines between items
+  + Omit defaults when formatting settings
+  + Fix read() description
+  + Note that pull requests are not currently being accepted
+  + Improve completer config parsing
+  + Test that aliases complete with environment variable
+  + Replace unnecessary raw strings
+  + Fix test string indentation
+  + Document assert() in readme
+  + Replace dashes with underscores when using --evaluate-format shell
+  + Fix readme typos
+  + Test multi-line recipe comments
+  + Document set no-exit-message and [exit-message]
+  + Refactor end-of-file handling in lexer
+  + Fix end-of-file parsing
+  + Include bash completion script in crate (forwarded request 1349471 from rrahl0)</comment>
+    <requestid>1349472</requestid>
+  </revision>
 </revisionlist>
