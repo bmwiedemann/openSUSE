@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Apr 26 17:38:11 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix broken man page symlink (bsc#1260040). 
+
+-------------------------------------------------------------------
+Tue Mar 24 23:20:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20260211:
+  * Improve transfer performance by simplifying socket buffer and
+  * transfer buffer handling.
+  * Add -b BUFLEN to adjust size of buffer for HTTP response line
+    parsing.
+  * Add -h HEADER to support custom HTTP headers.
+  * Add "connect" as a synonym for "open".
+  * Fix ASCII mode transfers when progress bar is enabled.
+  * Fix creation of empty downloaded files.
+  * Exit non-zero if a HTTP transfer is shorter than expected.
+  * Fix HTTPS through a proxy.
+
+-------------------------------------------------------------------
 Thu May 29 18:21:28 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Migrate away from update-alternatives (bsc#1240102).
@@ -114,11 +134,11 @@ Wed Apr 11 22:40:33 UTC 2012 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Mon Aug  1 21:06:10 UTC 2011 - crrodriguez@opensuse.org
 
-- There is no need to check for ncurses, not directly used 
+- There is no need to check for ncurses, not directly used
   by this package but by libedit for which we use the system version.
 
 -------------------------------------------------------------------
 Sun Jul 31 19:33:57 UTC 2011 - crrodriguez@opensuse.org
 
-- First package version, this is the segue from lukemftp 
+- First package version, this is the segue from lukemftp
 

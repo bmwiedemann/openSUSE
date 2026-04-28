@@ -85,4 +85,33 @@
     <comment></comment>
     <requestid>1281278</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>669accb07ba90051965f193801fee90e</srcmd5>
+    <version>20260211</version>
+    <time>1774469844</time>
+    <user>anag_factory</user>
+    <comment>- update to 20260211:
+  * Improve transfer performance by simplifying socket buffer and
+  * transfer buffer handling.
+  * Add -b BUFLEN to adjust size of buffer for HTTP response line
+    parsing.
+  * Add -h HEADER to support custom HTTP headers.
+  * Add &quot;connect&quot; as a synonym for &quot;open&quot;.
+  * Fix ASCII mode transfers when progress bar is enabled.
+  * Fix creation of empty downloaded files.
+  * Exit non-zero if a HTTP transfer is shorter than expected.
+  * Fix HTTPS through a proxy.
+
+- There is no need to check for ncurses, not directly used
+- First package version, this is the segue from lukemftp</comment>
+    <requestid>1342339</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>87c7454f5749028500085ba20f1e9b09</srcmd5>
+    <version>20260211</version>
+    <time>1777370063</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1349499</requestid>
+  </revision>
 </revisionlist>

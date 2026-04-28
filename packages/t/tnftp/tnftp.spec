@@ -1,7 +1,7 @@
 #
 # spec file for package tnftp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tnftp
-Version:        20230507
+Version:        20260211
 Release:        0
 Summary:        Enhanced FTP Client
 License:        BSD-3-Clause
@@ -58,7 +58,7 @@ rm -rf libedit
 %install
 %make_install
 ln -sf %{_bindir}/%{name} %{buildroot}%{_bindir}/ftp
-ln -sf %{_mandir}/man1/ftp.1%{?ext_man} %{buildroot}%{_mandir}/man1/ftp.1%{?ext_man}
+ln -sf %{_mandir}/man1/%{name}.1%{?ext_man} %{buildroot}%{_mandir}/man1/ftp.1%{?ext_man}
 
 %post
 if [ "$1" = 0 ] ; then
