@@ -10,18 +10,20 @@ def customize_build(EXTENSIONS, OPTIONS):
     includedir = os.getenv("INCDIR",'') + '/'
 
     del EXTENSIONS['apng']     # png-apng library not available
+    del EXTENSIONS['blosc']    # use blosc2
     del EXTENSIONS['brunsli']  # graphics/brunsli not in Factory
     del EXTENSIONS['jetraw']   # jetraw library not available
     del EXTENSIONS['lerc']     # LERC library not available
     del EXTENSIONS['lz4f']     # requires static linking
     del EXTENSIONS['lzo']      # lzokay not available
+    del EXTENSIONS['meshopt']  # not in Factory
     del EXTENSIONS['mozjpeg']  # Win32 only
     del EXTENSIONS['pcodec']   # not available in Factory
     del EXTENSIONS['sperr']    # not available in Factory
     del EXTENSIONS['jpegxs']   # jxs not available in Factory
     del EXTENSIONS['sz3']      # SZ3c not available in Factory
     del EXTENSIONS['ultrahdr'] # uhdr not available in Factory
-    
+
     EXTENSIONS['avif']['libraries'] = [
         'avif',
         'aom',

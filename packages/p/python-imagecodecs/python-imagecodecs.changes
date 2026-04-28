@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Mar 24 19:37:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.3.6:
+  * Add CCITTRLE, CCITTFAX3 and CCITTFAX4 codecs (decode only).
+  * Implement packints_encode function.
+  * Support lerc subcodec in tiff_encode function.
+  * Support packed integers, ccitt and pixarlog compression in
+    TIFF codec.
+  * Support bitorder option in PACKINTS codec.
+  * Support rounding in BFLOAT16 codec.
+  * Support more BMP types.
+  * Update PCODEC to new API.
+  * Fix buffer overflows in third-party code.
+  * Fix code review issues.
+  * Add tiff_encode function.
+  * Add extra options for HTJ2K (#134).
+  * Add linear RGB option to cms_profile.
+  * Change ZSTD default compression level to 3.
+  * Enforce positional-only and keyword-only parameters
+    (breaking).
+  * Base numcodecs.Jpeg on JPEG8 codec (breaking).
+  * Add HTJ2K codec based on OpenJPH library (#125).
+  * Add MESHOPT codec based on meshoptimizer library.
+  * Fix decoding concatenated ZStandard frames.
+  * Fix potential issues in TIFF and WEBP codecs.
+  * Fix pyi stub file.
+  * Change default Brotli compression level to 4.
+  * Use Brotli streaming API for decoding.
+  * Enable decoding UltraHDR to uint16.
+  * Tweak memory allocation and reallocation strategies.
+  * Use fused types.
+  * Improve code quality.
+  * Fix EER superresolution decoding (breaking; see tifffile
+    #313).
+  * Add option to eer_decode to add to uint16 array.
+  * Add option to specify CICP/NCLX parameters in avif_encode
+    (#131).
+  * Add BFLOAT16 codec.
+  * Build ABI3 wheels.
+  * Require Cython >= 3.2.
+  * Deprecate Python 3.11.
+
+-------------------------------------------------------------------
 Wed Sep  3 07:58:08 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2025.8.2

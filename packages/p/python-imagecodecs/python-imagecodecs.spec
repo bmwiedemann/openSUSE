@@ -1,7 +1,7 @@
 #
 # spec file for package python-imagecodecs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-imagecodecs%{psuffix}
-Version:        2025.8.2
+Version:        2026.3.6
 Release:        0
 Summary:        Image transformation, compression, and decompression codecs
 License:        BSD-3-Clause
@@ -100,7 +100,6 @@ BuildRequires:  sz2-devel
 BuildRequires:  xz-devel
 BuildRequires:  zfp-devel
 BuildRequires:  pkgconfig(SvtAv1Enc)
-BuildRequires:  pkgconfig(blosc)
 BuildRequires:  pkgconfig(blosc2) >= 2.7.1
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cfitsio)
@@ -118,6 +117,7 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libturbojpeg) >= 3
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(openjph)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(zlib-ng)
 %endif
@@ -176,6 +176,7 @@ donttest="heif"
 # no webp and lerc support in libtiff
 donttest="$donttest or (test_tiff and (webp or lerc))"
 donttest+=" or test_cms"
+donttest+=" or test_tiff_encode_pixarlog"
 %pytest_arch -n auto tests -rsXfE -k "not ($donttest ${$python_donttest})"
 %endif
 

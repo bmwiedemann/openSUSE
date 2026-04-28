@@ -206,4 +206,41 @@
     <comment></comment>
     <requestid>1302676</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9c53455ba9bebbecf13ac44ea429a742</srcmd5>
+    <version>2026.3.6</version>
+    <time>1777370146</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.3.6:
+  * Add CCITTRLE, CCITTFAX3 and CCITTFAX4 codecs (decode only).
+  * Implement packints_encode function.
+  * Support lerc subcodec in tiff_encode function.
+  * Support packed integers, ccitt and pixarlog compression in
+    TIFF codec.
+  * Support bitorder option in PACKINTS codec.
+  * Support rounding in BFLOAT16 codec.
+  * Support more BMP types.
+  * Update PCODEC to new API.
+  * Fix buffer overflows in third-party code.
+  * Fix code review issues.
+  * Add tiff_encode function.
+  * Add extra options for HTJ2K (#134).
+  * Add linear RGB option to cms_profile.
+  * Change ZSTD default compression level to 3.
+  * Enforce positional-only and keyword-only parameters
+    (breaking).
+  * Base numcodecs.Jpeg on JPEG8 codec (breaking).
+  * Add HTJ2K codec based on OpenJPH library (#125).
+  * Add MESHOPT codec based on meshoptimizer library.
+  * Fix decoding concatenated ZStandard frames.
+  * Fix potential issues in TIFF and WEBP codecs.
+  * Fix pyi stub file.
+  * Change default Brotli compression level to 4.
+  * Use Brotli streaming API for decoding.
+  * Enable decoding UltraHDR to uint16.
+  * Tweak memory allocation and reallocation strategies.
+  * Use fused types.
+  * Improve code quality.</comment>
+    <requestid>1349455</requestid>
+  </revision>
 </revisionlist>
