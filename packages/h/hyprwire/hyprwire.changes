@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 27 13:27:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.1:
+  * serverObject: call onDestroy on objects if the client dies
+  * scanner: hold strong refs for objects
+  * clientSocket: add trace removal log
+  * tests: add unit tests
+  * genericMessage: limit array size to 10k
+  * message: limit array sizes for static messages
+  * messageParser: avoid underflow
+  * GenericProtocolMessage: write full object id in resolveSeq
+  * macros: fix typo
+  * fix: include  for strcopy() in ClientSocket.cpp
+  * tests: add unit tests
+
+-------------------------------------------------------------------
 Fri Feb 27 21:25:53 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.3.0:
@@ -45,4 +61,4 @@ Fri Feb 27 21:25:53 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
 -------------------------------------------------------------------
 Mon Dec 29 21:55:00 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
-- Initial packaging of hyprwire 0.2.1 
+- Initial packaging of hyprwire 0.2.1

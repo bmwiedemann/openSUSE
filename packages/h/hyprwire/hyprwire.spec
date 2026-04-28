@@ -19,7 +19,7 @@
 %define sover 3
 
 Name:           hyprwire
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        A wire protocol for IPC
 License:        BSD-3-Clause
