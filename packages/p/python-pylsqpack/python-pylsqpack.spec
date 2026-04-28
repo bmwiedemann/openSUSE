@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pylsqpack
-Version:        0.3.23
+Version:        0.3.24
 Release:        0
 Summary:        Python ls-qpack QPACK library
 License:        BSD-3-Clause

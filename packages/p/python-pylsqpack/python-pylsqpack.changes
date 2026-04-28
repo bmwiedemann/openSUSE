@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 25 19:56:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.24:
+  * Do not crash if decoding an empty header name
+  * Ensure encoder validates all input before starting encoding
+
+-------------------------------------------------------------------
 Tue Jan 27 07:06:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.23:

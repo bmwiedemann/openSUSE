@@ -65,4 +65,14 @@
   * binding: add sanity asserts</comment>
     <requestid>1329413</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f9a9a58e97661be9039303ac2b1ea45e</srcmd5>
+    <version>0.3.24</version>
+    <time>1777370002</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.3.24:
+  * Do not crash if decoding an empty header name
+  * Ensure encoder validates all input before starting encoding</comment>
+    <requestid>1349273</requestid>
+  </revision>
 </revisionlist>
