@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Apr 25 21:54:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * The __init__.py in 3.0.0 was incorrectly generated due to a
+    missing build dependency and the list of algorithms was empty.
+  * Add trove classifiers for Armenian and Yiddish which have now
+    been registered with PyPI.
+  * Update documented details of Python 2 support in old
+    versions.
+  * + Fix invalid Ada code generated for Snowball `loop` (it was
+    partly Pascal!) None of the stemmers shipped in previous
+    releases triggered this bug, but the Turkish stemmer now does.
+  * `size` was incorrectly returning the difference between the
+    limit and the backwards limit
+  * `lenof` or `sizeof` on a string variable generated Ada code
+    that didn't even compile.
+  * Fix incorrect preconditions on some methods in the runtime.
+  * Fix bug in runtime code used by `attach`, `insert`, `<-`
+    and string variable assignment when a (sub)string was replaced
+    with a larger string.
+  * Use Python set for grouping checks.  This speeds up running
+    the Python testsuite by about 4%.
+
+-------------------------------------------------------------------
 Thu Jun 12 12:09:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

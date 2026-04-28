@@ -1,7 +1,7 @@
 #
 # spec file for package python-snowballstemmer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-snowballstemmer
-Version:        2.2.0
+Version:        3.0.1
 Release:        0
 Summary:        16 stemmer algorithms
 License:        BSD-3-Clause
@@ -34,13 +34,13 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-This package provides 16 stemmer algorithms (15 + Poerter English
-stemmer) generated from Snowball algorithms.  It includes following
-language algorithms: Danish, Dutch, English (Standard, Porter),
-Finnish, French, German, Hungarian, Italian, Norwegian, Portuguese,
-Romanian, Russian, Spanish, Swedish, Turkish. This is a pure Python
-stemming library. If PyStemmer is available, this module uses it to
-accelerate.
+This package provides 32 stemmer algorithms generated from Snowball
+algorithms. It includes following language algorithms: Arabic,
+Armenian, Basque, Catalan, Danish, Dutch, Dutch (Porter),
+English (Standard, Porter), Esperanto, Estonian, Finnish, French,
+German, Greek, Hindi, Hungarian, Indonesian, Irish, Italian,
+Lithuanian, Nepali, Norwegian, Portuguese, Romanian, Russian,
+Serbian, Spanish, Swedish, Tamil, Turkish, Yiddish.
 
 %prep
 %setup -q -n snowballstemmer-%{version}
@@ -53,9 +53,9 @@ accelerate.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
+%license COPYING
+%doc README.rst NEWS
 %{python_sitelib}/snowballstemmer
 %{python_sitelib}/snowballstemmer-%{version}*-info
-%doc README.rst
-%license COPYING
 
 %changelog
