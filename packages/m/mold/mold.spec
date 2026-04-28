@@ -1,6 +1,7 @@
 #
 # spec file for package mold
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -50,8 +51,6 @@ BuildRequires:  zlib-devel
 BuildRequires:  zstd
 OrderWithRequires(pre): update-alternatives
 Suggests:       update-alternatives
-BuildRequires:  alts
-Requires:       alts
 
 %if %{suse_version} < 1600
 %define build_args -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_MIMALLOC=OFF -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}
@@ -79,10 +78,6 @@ export CXX=g++-11
 
 %install
 %cmake_install
-mkdir -p %{buildroot}%{_datadir}/libalternatives/ld
-cat > %{buildroot}%{_datadir}/libalternatives/ld/5.conf <<EOF
-binary=%{_bindir}/ld.mold
-EOF
 
 %check
 %if %{suse_version} < 1550
@@ -98,8 +93,6 @@ if [ $1 -eq 2 ] && [ -f %{_sbindir}/update-alternatives ] && [ -f %{_sysconfdir}
 fi
 
 %files
-%dir %{_datadir}/libalternatives/ld
-%{_datadir}/libalternatives/ld/5.conf
 %{_bindir}/mold
 %{_bindir}/ld.mold
 %dir %{_libdir}/mold

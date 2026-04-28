@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 27 08:07:07 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Drop alts support for ld.mold, it is not a full BFD linker replacement.
+
+-------------------------------------------------------------------
 Fri Mar 13 08:42:06 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Remove update-alternative usage, prepare migration to libalternatives

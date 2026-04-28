@@ -1240,4 +1240,12 @@
     <comment>- Remove update-alternative usage, prepare migration to libalternatives (forwarded request 1338708 from rguenther)</comment>
     <requestid>1338709</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>0704008acff1d5b972b633f521ac48b9</srcmd5>
+    <version>2.40.1</version>
+    <time>1777370246</time>
+    <user>anag_factory</user>
+    <comment>- Drop alts support for ld.mold, it is not a full BFD linker replacement. (forwarded request 1349520 from rguenther)</comment>
+    <requestid>1349521</requestid>
+  </revision>
 </revisionlist>
