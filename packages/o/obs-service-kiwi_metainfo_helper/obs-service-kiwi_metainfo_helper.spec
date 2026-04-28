@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-kiwi_metainfo_helper
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,10 @@ Source2:        README
 Source3:        test.sh
 Source4:        sles-release-15.4-150400.32.2.x86_64.rpm
 BuildRequires:  diffutils
+Requires:       /usr/bin/cpio
 Requires:       /usr/bin/find
 Requires:       /usr/bin/grep
+Requires:       /usr/bin/rpm2cpio
 Requires:       /usr/bin/sed
 BuildArch:      noarch
 
