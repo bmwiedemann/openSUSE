@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Apr 25 22:06:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.4.11:
+  * Pass 5146 tests.
+  * Add option to write zarr format 3 fsspec reference file
+    system.
+  * Support reading TIFF with embedded C2PA manifest.
+  * Sync API of imagecodecs fallback implementations (#320).
+  * Do not use defusedxml.
+  * Drop support for Python 3.11.
+
+-------------------------------------------------------------------
+Sat Mar 14 19:57:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.3.3:
+  * Pass 5137 tests.
+  * Do not convert TVIPS pixel sizes to m (#319).
+  * Support writing packed integers with imagecodecs > 2026.1.14.
+  * Support reading ccitt compressed images with imagecodecs >
+    2026.1.14.
+  * Remove deprecated TiffPages.pages and FileSequence.files
+    (breaking).
+  * Remove stripnull, stripascii, and bytestr functions
+    (breaking).
+  * Rewrite command line interfaces (breaking).
+  * Support Experimenter and Project elements in OmeXml.
+  * Refactor TiffPages.
+  * Fix code review issues.
+  * Fix rounding of high resolutions (#318).
+  * Fix code review issues.
+  * Optimize reading multi-file pyramidal OME TIFF files.
+  * Support reading multi-file pyramidal OME TIFF files
+    (image.sc/t/119259).
+  * Deprecate colormaped parameter in imagej_description (use
+    colormapped).
+  * Fix code review issues.
+
+-------------------------------------------------------------------
 Tue Jan 27 16:20:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.1.14:

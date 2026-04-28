@@ -24,47 +24,49 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%global skip_python311 1
 Name:           python-tifffile%{psuffix}
-Version:        2026.1.14
+Version:        2026.4.11
 Release:        0
 Summary:        Read and write TIFF files
-License:        BSD-2-Clause
+License:        BSD-3-Clause
 URL:            https://github.com/cgohlke/tifffile/
 Source:         https://github.com/cgohlke/tifffile/archive/v%{version}.tar.gz#/tifffile-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module numpy >= 1.21}
+BuildRequires:  %{python_module base >= 3.12}
+BuildRequires:  %{python_module numpy >= 2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
+Requires:       python-numpy >= 2.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-fsspec
-Recommends:     python-imagecodecs >= 2023.3.16
+Recommends:     python-imagecodecs >= 2026.3.6
 Recommends:     python-kerchunk
 Recommends:     python-lxml
 Recommends:     python-matplotlib >= 3.3
-Recommends:     python-zarr >= 3.1.3
+Recommends:     python-zarr >= 3.1.5
 # SECTION test
 %if %{with test}
 BuildRequires:  %{python_module cmapfile}
 BuildRequires:  %{python_module czifile}
 BuildRequires:  %{python_module dask}
-BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module fsspec}
-BuildRequires:  %{python_module imagecodecs >= 2023.11.11}
+BuildRequires:  %{python_module imagecodecs >= 2026.3.6}
 BuildRequires:  %{python_module lfdfiles}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module ndtiff}
 BuildRequires:  %{python_module oiffile}
+BuildRequires:  %{python_module psdtags}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module roifile}
 BuildRequires:  %{python_module xarray}
-BuildRequires:  %{python_module zarr >= 3.1.3}
+BuildRequires:  %{python_module zarr >= 3.1.5}
 %endif
 # /SECTION
 BuildArch:      noarch
@@ -127,7 +129,7 @@ donttest="$donttest or test_issue_invalid_predictor"
 
 %if !%{with test}
 %files %{python_files}
-%doc README.rst
+%doc README.rst CHANGES.rst
 %license LICENSE
 %python_alternative %{_bindir}/tifffile
 %python_alternative %{_bindir}/lsm2bin

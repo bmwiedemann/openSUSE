@@ -307,4 +307,41 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
   * Improve code quality.</comment>
     <requestid>1329529</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>28e9a1b89f66b7d014dc1aba8ade2244</srcmd5>
+    <version>2026.4.11</version>
+    <time>1777370143</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.4.11:
+  * Pass 5146 tests.
+  * Add option to write zarr format 3 fsspec reference file
+    system.
+  * Support reading TIFF with embedded C2PA manifest.
+  * Sync API of imagecodecs fallback implementations (#320).
+  * Do not use defusedxml.
+  * Drop support for Python 3.11.
+
+- update to 2026.3.3:
+  * Pass 5137 tests.
+  * Do not convert TVIPS pixel sizes to m (#319).
+  * Support writing packed integers with imagecodecs &gt; 2026.1.14.
+  * Support reading ccitt compressed images with imagecodecs &gt;
+    2026.1.14.
+  * Remove deprecated TiffPages.pages and FileSequence.files
+    (breaking).
+  * Remove stripnull, stripascii, and bytestr functions
+    (breaking).
+  * Rewrite command line interfaces (breaking).
+  * Support Experimenter and Project elements in OmeXml.
+  * Refactor TiffPages.
+  * Fix code review issues.
+  * Fix rounding of high resolutions (#318).
+  * Fix code review issues.
+  * Optimize reading multi-file pyramidal OME TIFF files.
+  * Support reading multi-file pyramidal OME TIFF files
+    (image.sc/t/119259).
+  * Deprecate colormaped parameter in imagej_description (use
+    colormapped).</comment>
+    <requestid>1349307</requestid>
+  </revision>
 </revisionlist>
