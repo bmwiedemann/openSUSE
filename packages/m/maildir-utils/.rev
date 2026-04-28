@@ -983,4 +983,18 @@
   * mu4e-compose-reply-include-mime-types</comment>
     <requestid>1343635</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>805ee8b0cdb82054bd5b7f341afbde68</srcmd5>
+    <version>1.14.1</version>
+    <time>1777370381</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.14.1:
+  * Improvements in documentation
+  * Improvements in display of attachments / MIME-parts
+  * Better HTML toggling
+  * Support MIME icons
+  * Bug fixes
+  * mu4e-draft: add {sign,encrypt}-signed-replies to crypto options #2906</comment>
+    <requestid>1349706</requestid>
+  </revision>
 </revisionlist>

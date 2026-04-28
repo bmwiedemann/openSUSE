@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 28 07:24:05 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.14.1:
+  * Improvements in documentation
+  * Improvements in display of attachments / MIME-parts
+  * Better HTML toggling
+  * Support MIME icons
+  * Bug fixes
+  * mu4e-draft: add {sign,encrypt}-signed-replies to crypto options #2906
+
+-------------------------------------------------------------------
 Mon Mar 30 10:45:43 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.14.0:
