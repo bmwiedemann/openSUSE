@@ -315,4 +315,17 @@
   + Translations update (forwarded request 1346852 from rrahl0)</comment>
     <requestid>1346853</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>42af6078cc3a9af1a8deafb3c712a53f</srcmd5>
+    <version>0.5.20</version>
+    <time>1777370201</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.20:
+  + Add a new Downloads tab
+  + Add a new SteamOS and OLED theme
+  + Add more launch options
+  + Add &quot;Run custom executable&quot; feature
+  + Updated translations (forwarded request 1349457 from rrahl0)</comment>
+    <requestid>1349458</requestid>
+  </revision>
 </revisionlist>
