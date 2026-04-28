@@ -1260,4 +1260,15 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342969</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>2a1aa9df2de079166afbfdcf419e6cd1</srcmd5>
+    <version>45.4</version>
+    <time>1777370308</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 45.4:
+  + Support gnome 50.
+  + Updated translations.
+- Drop 446.patch: Fixed upstream.</comment>
+    <requestid>1349642</requestid>
+  </revision>
 </revisionlist>
