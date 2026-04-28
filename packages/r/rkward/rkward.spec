@@ -17,7 +17,7 @@
 
 
 Name:           rkward
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Graphical frontend for R language
 Summary(fr):    Interface graphique pour le langage R
@@ -157,6 +157,8 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %dir %{_datadir}/doc/HTML/it/rkward
 %dir %{_datadir}/doc/HTML/nl/rkward
 %dir %{_datadir}/doc/HTML/nl/rkwardplugins
+%dir %{_datadir}/doc/HTML/pt_BR/rkward
+%dir %{_datadir}/doc/HTML/pt_BR/rkwardplugins
 %dir %{_datadir}/doc/HTML/sl/rkward
 %dir %{_datadir}/doc/HTML/sl/rkwardplugins
 %dir %{_datadir}/doc/HTML/sv/rkward
@@ -165,6 +167,19 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %dir %{_datadir}/doc/HTML/uk/rkwardplugins
 %dir %{_datadir}/kio
 %dir %{_datadir}/kio/servicemenus
+%{_datadir}/doc/HTML/pt_BR/rkward/index.cache.bz2
+%{_datadir}/doc/HTML/pt_BR/rkward/index.docbook
+%{_datadir}/doc/HTML/pt_BR/rkwardplugins/index.cache.bz2
+%{_datadir}/doc/HTML/pt_BR/rkwardplugins/index.docbook
+%{_datadir}/locale/ar/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/ar/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/ar/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/ar/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/ar/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/ar/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/ar/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/ar/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/ar/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/ca/LC_MESSAGES/rkward__analysis.mo
 %{_datadir}/locale/ca/LC_MESSAGES/rkward__data.mo
 %{_datadir}/locale/ca/LC_MESSAGES/rkward__distributions.mo
@@ -230,6 +245,15 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %{_datadir}/locale/fr/LC_MESSAGES/rkward__item_response_theory.mo
 %{_datadir}/locale/fr/LC_MESSAGES/rkward__pages.mo
 %{_datadir}/locale/fr/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/ga/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/ga/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/ga/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/ga/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/ga/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/ga/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/ga/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/ga/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/ga/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/gl/LC_MESSAGES/rkward__analysis.mo
 %{_datadir}/locale/gl/LC_MESSAGES/rkward__data.mo
 %{_datadir}/locale/gl/LC_MESSAGES/rkward__distributions.mo
@@ -256,6 +280,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %{_datadir}/locale/ka/LC_MESSAGES/rkward__graphics_device.mo
 %{_datadir}/locale/ka/LC_MESSAGES/rkward__import_export.mo
 %{_datadir}/locale/ka/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/ka/LC_MESSAGES/rkward__pages.mo
 %{_datadir}/locale/ka/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/nl/LC_MESSAGES/rkward__analysis.mo
 %{_datadir}/locale/nl/LC_MESSAGES/rkward__data.mo
@@ -311,6 +336,15 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %{_datadir}/locale/sl/LC_MESSAGES/rkward__item_response_theory.mo
 %{_datadir}/locale/sl/LC_MESSAGES/rkward__pages.mo
 %{_datadir}/locale/sl/LC_MESSAGES/rkward__plots.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__analysis.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__data.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__distributions.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__embedded.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__graphics_device.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__import_export.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__item_response_theory.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__pages.mo
+%{_datadir}/locale/sk/LC_MESSAGES/rkward__plots.mo
 %{_datadir}/locale/sv/LC_MESSAGES/rkward__analysis.mo
 %{_datadir}/locale/sv/LC_MESSAGES/rkward__data.mo
 %{_datadir}/locale/sv/LC_MESSAGES/rkward__distributions.mo
@@ -343,6 +377,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %{_mandir}/de/man1/rkward.1%{?ext_man}
 %{_mandir}/it/man1/rkward.1%{?ext_man}
 %{_mandir}/nl/man1/rkward.1%{?ext_man}
+%{_mandir}/pt_BR/man1/rkward.1%{?ext_man}
 %{_mandir}/sl/man1/rkward.1%{?ext_man}
 %{_mandir}/sv/man1/rkward.1%{?ext_man}
 %{_mandir}/uk/man1/rkward.1%{?ext_man}
