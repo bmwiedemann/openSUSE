@@ -1,7 +1,7 @@
 #
 # spec file for package python-fixtures
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fixtures
-Version:        4.1.0
+Version:        4.3.2
 Release:        0
 Summary:        Fixtures, reusable state for writing clean tests and more
 License:        Apache-2.0 OR BSD-3-Clause
 URL:            https://github.com/testing-cabal/fixtures
 Source:         https://files.pythonhosted.org/packages/source/f/fixtures/fixtures-%{version}.tar.gz
-Patch0:         handle-no-external-mock.patch
-BuildRequires:  %{python_module pbr >= 5.7.0}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 #TESTS
-BuildRequires:  %{python_module extras}
 BuildRequires:  %{python_module testtools >= 2.5.0}
 #/TESTS
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-extras
-Requires:       python-pbr >= 5.7.0
 Requires:       python-testtools >= 2.5.0
 BuildArch:      noarch
 %python_subpackages
@@ -59,11 +54,12 @@ compatible test cases easy and straight forward.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m testtools.run fixtures.test_suite
+# pytest
+%python_exec -m testtools.run
 
 %files %{python_files}
-%license COPYING
-%doc Apache-2.0 BSD NEWS README.rst
+%license Apache-2.0 BSD COPYING
+%doc GOALS NEWS README.rst
 %{python_sitelib}/fixtures
 %{python_sitelib}/fixtures-%{version}*-info
 

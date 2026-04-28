@@ -262,4 +262,40 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1280532</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>12cf58049a73d630e0adacac3340578c</srcmd5>
+    <version>4.3.2</version>
+    <time>1777370017</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.2:
+  * Temporarily re-add the ``fixtures.tests.helpers`` module.
+  * Improve types for WarningsCapture.
+  * Use ParamSpec for better type hints.
+  * Return Self from __enter__ for better type inference.
+  * Accept null level for FakeLogger.
+  * Simplify mypy configuration.
+  * Run mypy via tox in CI.
+  * Enable additional ruff rules.
+  * Include tests directory in sdist.
+  * Drop Python 3.9 support, add Python 3.14 support.
+  * Fix usage of removed testtools.testcase.TestSkipped.
+  * Fix typo in the streams extra.
+  * Stop installing tests in wheel packages.
+  * Skip type checking on PyPy.
+  * Add typing support with py.typed marker for PEP 561
+    compliance.
+  * Drop support for Python 3.8 (EOL).
+  * Format code with ruff.
+  * Fix Python 3.9 and 3.10 compatibility issues with typing.
+  * Include missing Apache license file in sdist.
+  * Include missing configuration, license and metadata files in
+    sdist when building with hatch(ling).
+  * Republish using Trusted Publishing (properly this time).
+  * Use ``code-block`` directive for Python code.
+  * Add support for Python 3.12 and 3.13.
+  * Drop support for Python 3.7 (EOL)
+  * Drop support for external ``mock`` package.
+- drop handle-no-external-mock.patch (upstream)</comment>
+    <requestid>1349357</requestid>
+  </revision>
 </revisionlist>

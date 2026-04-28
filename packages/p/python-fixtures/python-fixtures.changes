@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Apr 26 09:17:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.2:
+  * Temporarily re-add the ``fixtures.tests.helpers`` module.
+  * Improve types for WarningsCapture.
+  * Use ParamSpec for better type hints.
+  * Return Self from __enter__ for better type inference.
+  * Accept null level for FakeLogger.
+  * Simplify mypy configuration.
+  * Run mypy via tox in CI.
+  * Enable additional ruff rules.
+  * Include tests directory in sdist.
+  * Drop Python 3.9 support, add Python 3.14 support.
+  * Fix usage of removed testtools.testcase.TestSkipped.
+  * Fix typo in the streams extra.
+  * Stop installing tests in wheel packages.
+  * Skip type checking on PyPy.
+  * Add typing support with py.typed marker for PEP 561
+    compliance.
+  * Drop support for Python 3.8 (EOL).
+  * Format code with ruff.
+  * Fix Python 3.9 and 3.10 compatibility issues with typing.
+  * Include missing Apache license file in sdist.
+  * Include missing configuration, license and metadata files in
+    sdist when building with hatch(ling).
+  * Republish using Trusted Publishing (properly this time).
+  * Use ``code-block`` directive for Python code.
+  * Add support for Python 3.12 and 3.13.
+  * Drop support for Python 3.7 (EOL)
+  * Drop support for external ``mock`` package.
+- drop handle-no-external-mock.patch (upstream)
+
+-------------------------------------------------------------------
 Tue May 27 11:47:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -52,7 +85,7 @@ Wed May 11 06:35:26 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 - Remove patch fixtures-pr36-py39.patch:
   * Included upstream.
 - Add patch handle-no-external-mock.patch:
-  * Skip a testcase if mock is not available. 
+  * Skip a testcase if mock is not available.
 - Bump required versions of pbr and testtools.
 - Correct URL.
 
@@ -182,12 +215,12 @@ Mon Sep 15 09:16:54 UTC 2014 - tbechtold@suse.com
 -------------------------------------------------------------------
 Tue May 20 16:24:01 UTC 2014 - dmueller@suse.com
 
-- move unittest2 to the SLE11-specific requires (not needed on python 2.7+) 
+- move unittest2 to the SLE11-specific requires (not needed on python 2.7+)
 
 -------------------------------------------------------------------
 Tue Apr  8 08:43:05 UTC 2014 - dmueller@suse.com
 
-- fix license declaration 
+- fix license declaration
 
 -------------------------------------------------------------------
 Fri Mar  7 13:14:15 UTC 2014 - speilicke@suse.com
@@ -197,7 +230,7 @@ Fri Mar  7 13:14:15 UTC 2014 - speilicke@suse.com
 -------------------------------------------------------------------
 Fri Feb 14 17:10:50 UTC 2014 - dmueller@suse.com
 
-- only run testsuite when it actually runs 
+- only run testsuite when it actually runs
 
 -------------------------------------------------------------------
 Fri Feb 14 09:32:54 UTC 2014 - speilicke@suse.com
