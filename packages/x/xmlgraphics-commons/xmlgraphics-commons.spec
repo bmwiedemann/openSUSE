@@ -18,7 +18,7 @@
 
 
 Name:           xmlgraphics-commons
-Version:        2.10
+Version:        2.11
 Release:        0
 Summary:        XML Graphics Commons
 License:        Apache-2.0
@@ -57,7 +57,7 @@ Javadoc for package %{name}.
 %patch -P 0
 %patch -P 1 -p1
 %patch -P 2 -p1
-find . -name "*.jar" | xargs rm
+find . -name "*.jar" -delete
 
 %build
 build-jar-repository -s lib commons-io commons-logging

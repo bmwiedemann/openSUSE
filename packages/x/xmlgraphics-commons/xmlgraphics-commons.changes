@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 26 03:31:30 UTC 2026 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to 2.11
+  * Minor changes to support FOP 2.11 release
+    + FOP-3236: Add all the needed namespaces to the parent element
+    + FOP-3241: Add option to convert image to CMYK
+    + XGC-142: Add generics to hints
+    + XGC-143: Use mvn for bundle jar
+    + XGC-145: Avoid parsing uri to read page number
+- JPMS: add Automatic-Module-Name to the manifest
+- Modified patch:
+  * xmlgraphics-commons-build_xml.patch
+    + rediff and add the Automatic-Module-Name manifest entry
+
+-------------------------------------------------------------------
 Fri Feb  6 13:57:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
@@ -9,7 +24,7 @@ Fri Feb  6 13:57:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Sat Oct 12 16:14:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
-- Update to 2.8
+- Update to 2.10
   * Minor changes to support FOP 2.10 release
   * Changes:
     + XGC-133: Fix test for Java 11

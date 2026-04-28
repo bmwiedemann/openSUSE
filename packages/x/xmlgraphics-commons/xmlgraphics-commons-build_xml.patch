@@ -1,10 +1,11 @@
---- build.xml	2018-05-14 11:00:43.000000000 +0200
-+++ build.xml	2020-04-03 14:37:25.091265000 +0200
-@@ -251,7 +251,17 @@
+--- build.xml	2026-04-26 15:51:34.598140786 +0200
++++ build.xml	2026-04-26 15:52:59.613219545 +0200
+@@ -261,7 +261,18 @@
          <attribute name="Implementation-Title" value="${Name}"/>
          <attribute name="Implementation-Version" value="${version}"/>
          <attribute name="Implementation-Vendor" value="The Apache Software Foundation (http://xmlgraphics.apache.org/)"/>
 -        <attribute name="Build-Id" value="${ts} (${user.name} [${os.name} ${os.version} ${os.arch}, Java ${java.runtime.version}])"/>
++        <attribute name="Automatic-Module-Name" value="org.apache.xmlgraphics.commons"/>
 +        <attribute name="Bundle-Description" value="${Name}"/>
 +        <attribute name="Bundle-DocURL" value="http://www.apache.org/"/>
 +        <attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
@@ -19,7 +20,7 @@
        </manifest>
        <metainf dir="${basedir}" includes="LICENSE,NOTICE"/>
      </jar>
-@@ -357,20 +367,13 @@
+@@ -396,20 +407,13 @@
    </target>
  
    <target name="junit" depends="junit-basic" description="Runs all JUnit tests" if="junit.present">
