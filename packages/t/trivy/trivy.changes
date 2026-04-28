@@ -1,7 +1,105 @@
 -------------------------------------------------------------------
+Mon Apr 27 08:37:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.70.0 (
+     bsc#1260193, CVE-2026-33186,
+     bsc#1260971, CVE-2026-33747,
+     bsc#1261052, CVE-2026-33748,
+     bsc#1262389, CVE-2026-39984,
+     bsc#1262893, CVE-2026-34986):
+  * release: v0.70.0 [main] (#10105)
+  * chore(deps): bump go.opentelemetry.io/otel/sdk from 1.42.0 to 1.43.0 (#10496)
+  * chore(deps): bump github.com/sigstore/timestamp-authority/v2 from 2.0.3 to 2.0.6 (#10526)
+  * chore(deps): bump the common group across 1 directory with 8 updates (#10540)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#10538)
+  * fix: use Development category for GoReleaser discussions (#10530)
+  * chore(deps): bump testcontainers-go to v0.42.0 (#10531)
+  * chore: update CODEOWNERS (#10529)
+  * chore(deps): bump helm.sh/helm/v3 from 3.20.1 to 3.20.2 (#10511)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.8.5 to 1.8.6 (#10510)
+  * chore(deps): bump github.com/moby/buildkit from 0.27.1 to 0.28.1 (#10449)
+  * ci: migrate from mkdocs-material-insiders to mkdocs-material (#10509)
+  * chore: remove aquasecurity/homebrew-trivy tap from GoReleaser (#10508)
+  * ci: update runners for workflows that interact with GitHub API (#10502)
+  * ci: rename tokens and update runners (#10500)
+  * ci: trigger helm chart publishing via helm-charts workflow (#10474)
+  * ci: remove ruleset update step from release-please workflow (#10499)
+  * ci: use large runner and replace ORG_REPO_TOKEN in release-please workflow (#10498)
+  * ci: trigger rpm/deb deployment via trivy-repo workflow (#10476)
+  * fix: remove os.Stdout from wazero module config (#10403)
+  * chore(deps): bump the common group across 1 directory with 22 updates (#10408)
+  * chore(deps): bump google.golang.org/grpc from 1.78.0 to 1.79.3 (#10407)
+  * fix(flag): validate template file extension (#10296)
+  * fix(sbom): preserve Red Hat BuildInfo when scanning SBOMs without layer info (#10378)
+  * fix: handle Go 1.26 GOEXPERIMENT version format change (#10351)
+  * fix(python): handle multiple version specifiers in requirements.txt (#10361)
+  * ci: run Trivy version bump in trivy-action (#10272)
+  * fix(python): nil pointer dereference with optional poetry groups without dependencies (#10359)
+  * ci: replace personal email with github-actions[bot] in workflows (#10369)
+  * chore: replace smithy epoch parsing with stdlib time.Unix (#10286)
+  * test: update golden files for purl changes (#10372)
+  * ci: add zizmor to scan GitHub Actions workflows (#10322)
+  * refactor: log statuses as strings (#10285)
+  * ci: add build provenance attestations for release artifacts (#10316)
+  * fix(sbom): add NOASSERTION for licenseDeclared/licenseConcluded in SPDX non-library packages (#10368)
+  * fix(report): set correct sarif ROOTPATH uri when scanning a git repository (#10366)
+  * perf(plugin): optimize directory traversal by replacing filepath.Walk with filepath.WalkDir (#10325)
+  * docs: correct typos in CHANGELOG and diagram (#10320)
+  * chore: delete roadmap wf (#10295)
+  * ci(helm): bump Trivy version to 0.69.3 for Trivy Helm Chart 0.21.3 (#10310)
+  * fix(cyclonedx): include CVSS v4 vulnerability ratings (#10313)
+  * fix: detected vulnerability fields in azure and mariner detector (#10275)
+  * ci: add persist-credentials: false to checkout steps (#10306)
+  * ci(helm): bump Trivy version to 0.69.2 for Trivy Helm Chart 0.21.2 (#10270)
+  * chore(deps): bump the common group across 1 directory with 8 updates (#10248)
+  * chore(deps): bump go.opentelemetry.io/otel/sdk from 1.39.0 to 1.40.0 (#10257)
+  * chore(deps): bump the aws group across 1 directory with 6 updates (#10249)
+  * chore(deps): bump github.com/cloudflare/circl from 1.6.1 to 1.6.3 (#10241)
+  * ci: remove apidiff workflow (#10259)
+  * chore(deps): bump github.com/docker/cli from 29.1.4+incompatible to 29.2.1+incompatible in the docker group across 1 directory (#10221)
+  * ci: bump golangci-lint to v2.10 in cache-test-assets (#10243)
+  * feat(java): add support for proxy configuration from Maven settings.xml (#10187)
+  * chore(deps): bump the github-actions group across 3 directories with 11 updates (#10242)
+  * feat(python): add pylock.toml support (#10137)
+  * chore: bump SPDX license IDs and exceptions to `v3.28.0` (#10233)
+  * docs: fix typos and upgrade insecure HTTP links to HTTPS (#10219)
+  * chore: bump golangci-lint to v2.10.0 (#10223)
+  * feat(misconf): support for azurerm_network_interface_security_group_association  (#10215)
+  * ci: pin Docker Engine to v29 for integration tests (#10232)
+  * feat(go): detect version from ELF symbol table for binaries built with -trimpath (#10197)
+  * docs: migrate private registry documentation from GCR to GAR (#10208)
+  * chore(deps): bump the common group across 1 directory with 24 updates (#10206)
+  * chore(deps): update Docker client SDK to v29 (#10202)
+  * test: update Docker Engine integration tests for Docker API v0.29.0+ compatibility (#10199)
+  * fix(misconf): initialize custom annotation field if empty (#10123)
+  * feat(ubuntu): add eol data for 25.10 (#10181)
+  * docs: fix incorrect count of Python package managers (#10175)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.16.4 to 5.16.5 (#10179)
+  * feat(misconf): resolve Azure resources via resource_id (#10173)
+  * ci(helm): bump Trivy version to 0.69.1 for Trivy Helm Chart 0.21.1 (#10155)
+  * refactor: remove unused Insecure field from ServiceOption (#10113)
+  * refactor: reduce complexity of init in detect.go (#10163)
+  * feat(misconf): adapt ARM k8s clusters (#9696) (#10125)
+  * docs: update version endpoint example in client/server documentation (#10151)
+  * feat(vuln): skip third-party packages in common Detect function (#10129)
+  * ci: add composite action for Go setup (#10146)
+  * fix(misconf): apply check aliases when filtering results via .trivyignore (#10112)
+  * docs(terraform): add limitation for data sources and computed resource attributes (#10128)
+  * fix: update PhotonOS feed URL (#10122)
+  * feat(server): include server version info in JSON output for client/server mode (#10075)
+  * chore(deps): bump to alpine:3.23.3 and go-1.25.6 to fix CVEs (#10107)
+  * refactor: unify scanner error limit and compiler limit (#10106)
+  * ci(helm): bump Trivy version to 0.69.0 for Trivy Helm Chart 0.21.0 (#10103)
+  * fix(java): Disable overwriting exclusions (#10088)
+  * refactor(rust): use txtar format for cargo analyzer test data (#10104)
+  * feat(python): add pylock.toml (PEP 751) parser (#9632)
+  * chore(deps): bump the aws group across 1 directory with 6 updates (#10068)
+  * fix(server): exclude JavaDB and CheckBundle from /version endpoint (#10100)
+
+-------------------------------------------------------------------
 Sat Mar 21 10:59:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- Update to version 0.69.3:
+- Update to version 0.69.3 (CVE-2026-25934, bsc#1258094):
   * release: v0.69.3 [release/v0.69] (#10293)
   * fix(deps): bump github.com/go-git/go-git/v5 from 5.16.4 to 5.16.5 [backport: release/v0.69] (#10291)
   * release: v0.69.2 [release/v0.69] (#10266)
@@ -16,7 +114,8 @@ Sat Mar 21 10:59:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Feb 02 10:31:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- Update to version 0.69.0 (bsc#1255366, CVE-2025-64702):
+- Update to version 0.69.0 (bsc#1255366, CVE-2025-64702,
+      bsc#1258513, CVE-2025-69725):
   * release: v0.69.0 [main] (#9886)
   * chore: bump trivy-checks to v2 (#9875)
   * chore(deps): bump github.com/theupdateframework/go-tuf/v2 from 2.3.1 to 2.4.1 (#10091)

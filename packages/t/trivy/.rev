@@ -1441,4 +1441,41 @@ dropped patch file
   * chore(deps): bump to alpine:3.23.3 and go-1.25.6 to fix CVEs [backport: release/v0.69] (#10135)</comment>
     <requestid>1341685</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>4a3589fb80f4f02698fe1cbf7a38b884</srcmd5>
+    <version>0.70.0</version>
+    <time>1777370260</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.70.0 (
+     bsc#1260193, CVE-2026-33186,
+     bsc#1260971, CVE-2026-33747,
+     bsc#1261052, CVE-2026-33748,
+     bsc#1262389, CVE-2026-39984,
+     bsc#1262893, CVE-2026-34986):
+  * release: v0.70.0 [main] (#10105)
+  * chore(deps): bump go.opentelemetry.io/otel/sdk from 1.42.0 to 1.43.0 (#10496)
+  * chore(deps): bump github.com/sigstore/timestamp-authority/v2 from 2.0.3 to 2.0.6 (#10526)
+  * chore(deps): bump the common group across 1 directory with 8 updates (#10540)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#10538)
+  * fix: use Development category for GoReleaser discussions (#10530)
+  * chore(deps): bump testcontainers-go to v0.42.0 (#10531)
+  * chore: update CODEOWNERS (#10529)
+  * chore(deps): bump helm.sh/helm/v3 from 3.20.1 to 3.20.2 (#10511)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.8.5 to 1.8.6 (#10510)
+  * chore(deps): bump github.com/moby/buildkit from 0.27.1 to 0.28.1 (#10449)
+  * ci: migrate from mkdocs-material-insiders to mkdocs-material (#10509)
+  * chore: remove aquasecurity/homebrew-trivy tap from GoReleaser (#10508)
+  * ci: update runners for workflows that interact with GitHub API (#10502)
+  * ci: rename tokens and update runners (#10500)
+  * ci: trigger helm chart publishing via helm-charts workflow (#10474)
+  * ci: remove ruleset update step from release-please workflow (#10499)
+  * ci: use large runner and replace ORG_REPO_TOKEN in release-please workflow (#10498)
+  * ci: trigger rpm/deb deployment via trivy-repo workflow (#10476)
+  * fix: remove os.Stdout from wazero module config (#10403)
+  * chore(deps): bump the common group across 1 directory with 22 updates (#10408)
+  * chore(deps): bump google.golang.org/grpc from 1.78.0 to 1.79.3 (#10407)
+  * fix(flag): validate template file extension (#10296)
+  * fix(sbom): preserve Red Hat BuildInfo when scanning SBOMs without layer info (#10378)</comment>
+    <requestid>1349537</requestid>
+  </revision>
 </revisionlist>
