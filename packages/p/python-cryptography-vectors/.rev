@@ -480,4 +480,13 @@
     <comment></comment>
     <requestid>1345805</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>2b6434ddfc5b706036194c6763ff27ce</srcmd5>
+    <version>47.0.0</version>
+    <time>1777370022</time>
+    <user>anag_factory</user>
+    <comment>- update to 47.0.0:
+  * Update test vectors to match python-cryptography 47.0.0</comment>
+    <requestid>1349382</requestid>
+  </revision>
 </revisionlist>

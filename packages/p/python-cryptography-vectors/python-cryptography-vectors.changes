@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 26 11:00:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 47.0.0:
+  * Update test vectors to match python-cryptography 47.0.0
+
+-------------------------------------------------------------------
 Fri Apr 10 09:10:33 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 46.0.7
