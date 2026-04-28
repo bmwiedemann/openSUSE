@@ -1,7 +1,7 @@
 #
 # spec file for package netty3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Version:        3.10.6
 Release:        0
 Summary:        An asynchronous event-driven network application framework and tools for Java
 # CC0: src/main/java/org/jboss/netty/handler/codec/base64/Base64.java
-License:        Apache-2.0 AND BSD-3-Clause AND SUSE-Public-Domain
+License:        Apache-2.0 AND BSD-3-Clause AND LicenseRef-SUSE-Public-Domain
 URL:            https://netty.io/
 Source0:        https://github.com/netty/netty/archive/netty-%{namedversion}.tar.gz
 Patch0:         netty-3.10.6-port-to-jzlib-1.1.0.patch
