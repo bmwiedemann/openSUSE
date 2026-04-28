@@ -50,4 +50,14 @@
 - Run the testsuite.</comment>
     <requestid>1286227</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1907f3b9bfa359db31e70d001c2bee54</srcmd5>
+    <version>5.2.0</version>
+    <time>1777370164</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.2.0:
+  * Ignore errors when sending OPTS UTF8 ON (#165), add deprecation
+    warnings for future ftputil 6.0.0</comment>
+    <requestid>1349437</requestid>
+  </revision>
 </revisionlist>

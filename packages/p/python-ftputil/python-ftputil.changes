@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 26 19:51:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * Ignore errors when sending OPTS UTF8 ON (#165), add deprecation
+    warnings for future ftputil 6.0.0
+
+-------------------------------------------------------------------
 Tue Jun 17 04:17:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
