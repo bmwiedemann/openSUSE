@@ -18,4 +18,12 @@
   * The minimum Python version required is now `3.10`</comment>
     <requestid>1336681</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>990de95abe1795647d3d66d28bc00ed2</srcmd5>
+    <version>0.0.29</version>
+    <time>1777370129</time>
+    <user>anag_factory</user>
+    <comment>- reset alternative for TW</comment>
+    <requestid>1349420</requestid>
+  </revision>
 </revisionlist>

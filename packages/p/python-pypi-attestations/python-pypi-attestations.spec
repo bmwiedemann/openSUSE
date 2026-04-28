@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %define upname  pypi_attestations
 Name:           python-pypi-attestations
 Version:        0.0.29
@@ -65,6 +71,13 @@ Suggests:       python-pypi-attestations
 Suggests:       python-pypi-attestations
 Suggests:       python-build
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -83,6 +96,9 @@ A library to convert between Sigstore Bundles and PEP-740 Attestation objects
 
 %check
 %pytest
+
+%pre
+%python_reset_alternative pypi-attestations
 
 %post
 %python_install_alternative pypi-attestations
