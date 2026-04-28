@@ -1,7 +1,7 @@
 #
 # spec file for package python-csvkit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define binaries csvclean csvcut csvformat csvgrep csvjoin csvjson csvlook csvpy csvsort csvsql csvstack csvstat in2csv sql2csv
 Name:           python-csvkit
-Version:        2.0.1
+Version:        2.2.0
 Release:        0
 Summary:        A library of utilities for working with CSV
 License:        MIT
 URL:            https://github.com/wireservice/csvkit
 Source0:        https://files.pythonhosted.org/packages/source/c/csvkit/csvkit-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/wireservice/csvkit/5f22e664121b13d9ff005a9206873a8f97431dca/examples/testdbf_converted.csv
-BuildRequires:  %{python_module agate >= 1.6.3}
-BuildRequires:  %{python_module agate-dbf >= 0.2.0}
-BuildRequires:  %{python_module agate-excel >= 0.2.2}
-BuildRequires:  %{python_module agate-sql >= 0.5.3}
+BuildRequires:  %{python_module agate >= 1.12.0}
+BuildRequires:  %{python_module agate-dbf >= 0.2.3}
+BuildRequires:  %{python_module agate-excel >= 0.4.0}
+BuildRequires:  %{python_module agate-sql >= 0.7.0}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -36,10 +36,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SQLAlchemy
-Requires:       python-agate >=  1.6.3
-Requires:       python-agate-dbf >= 0.2.0
-Requires:       python-agate-excel
-Requires:       python-agate-sql
+Requires:       python-agate >= 1.12.0
+Requires:       python-agate-dbf >= 0.2.3
+Requires:       python-agate-excel >= 0.4.0
+Requires:       python-agate-sql >= 0.7.0
 Requires:       python-openpyxl
 Requires:       python-xlrd
 Recommends:     python-zstandard
