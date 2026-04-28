@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 25 21:29:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.2:
+  * 2026b released
+  * British Columbia moved to permanent -07 on 2026-03-09. Some
+    more overflow bugs have been fixed in zic.
+
+-------------------------------------------------------------------
 Sun Apr  5 15:35:59 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 2026.1:

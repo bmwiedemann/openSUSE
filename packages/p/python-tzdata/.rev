@@ -104,4 +104,15 @@
     <comment></comment>
     <requestid>1344946</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4ed329cbd3b2437c5e7dd870fcbc24d7</srcmd5>
+    <version>2026.2</version>
+    <time>1777370009</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.2:
+  * 2026b released
+  * British Columbia moved to permanent -07 on 2026-03-09. Some
+    more overflow bugs have been fixed in zic.</comment>
+    <requestid>1349297</requestid>
+  </revision>
 </revisionlist>
