@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Compress
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Compress
-Version:        1.14
+Version:        1.24
 Release:        0
 Summary:        Compress responses in Flask apps with gzip
 License:        MIT
 URL:            https://github.com/colour-science/flask-compress
-Source:         https://files.pythonhosted.org/packages/source/F/Flask-Compress/Flask-Compress-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/flask_compress/flask_compress-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli}
-BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module Flask-Caching}
+BuildRequires:  %{python_module backports.zstd if %python-base < 3.14}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
@@ -36,6 +37,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Brotli
 Requires:       python-Flask
+%if 0%{?python_version_nodots} < 314
+Requires:       python-backports.zstd
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask}
@@ -51,7 +55,7 @@ compress the static files. If that option is not available,
 Flask-Compress can solve the problem.
 
 %prep
-%setup -q -n Flask-Compress-%{version}
+%setup -q -n flask_compress-%{version}
 
 %build
 %pyproject_wheel
@@ -68,6 +72,5 @@ Flask-Compress can solve the problem.
 %license LICENSE.txt
 %{python_sitelib}/flask_compress
 %{python_sitelib}/[Ff]lask[_-][Cc]ompress-%{version}.dist-info
-%pycache_only %{python_sitelib}/flask_compress/__pycache__
 
 %changelog

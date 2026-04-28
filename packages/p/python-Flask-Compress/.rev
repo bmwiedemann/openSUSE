@@ -106,4 +106,41 @@
 - Support both uppercased and normalized metadata directory names.</comment>
     <requestid>1274780</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>90b34469da733ed718e3ecd02d449131</srcmd5>
+    <version>1.24</version>
+    <time>1777370115</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.24:
+  * add mypy annotations and mark it as checkable, #76 by
+  * add `gzip` to supported algorithms for streaming responses,
+    but not in the `COMPRESS_ALGORITHM_STREAMING` default values,
+    so users have to explicitly enable it
+  * fix possible `RuntimeError` when applying compression to a
+    streaming endpoint
+  * no longer apply `make_conditional` to streaming responses, as
+    it had the effect of buffering the entire response, which
+    defeats the purpose of streaming responses, unless the
+    `request.endpoint` is in a new
+    `COMPRESS_STREAMING_ENDPOINT_CONDITIONAL` config option,
+    which defaults to `[&quot;static&quot;]`
+  * the new `COMPRESS_EVALUATE_CONDITIONAL_REQUEST` config option
+    is now `True` by default
+  * Use `backports.zstd` instead of `pyzstd`, #63 by
+  * Add new behaviours to improve Etag compatibility, #67, by
+  * weak etags are no longer modified by flask-compress
+  * add new `COMPRESS_EVALUATE_CONDITIONAL_REQUEST` config option
+    to call `response.make_conditional(request)` after
+    compression, this ensures that 304 Not Modified responses are
+    correctly generated when the client sends conditional
+    requests with `If-None-Match` (defaults to `False`)
+  * Support, and test against, Python 3.14, see #61 by @kurtmckee
+  * Migrate from `zstandard` to `pyzstd`, which is now included
+    in the Python 3.14 standard library, also part of #61
+  * Restore `flask_compress.DictCache()` that is needed to
+    configure Flask-Compress with caching, without relying on
+    Flask-Caching
+  * Add support for Python 3.13 in tox and classifiers</comment>
+    <requestid>1349531</requestid>
+  </revision>
 </revisionlist>
