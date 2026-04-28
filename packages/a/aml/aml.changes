@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:11:21 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * This release improves type safety and does away with opaque void* objects
+
+-------------------------------------------------------------------
 Mon Jan 23 16:46:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.0:

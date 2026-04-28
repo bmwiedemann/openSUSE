@@ -1,7 +1,7 @@
 #
 # spec file for package aml
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aml
-Version:        0.3.0
+Version:        1.0.0
 Release:        0
 Summary:        Another Main Loop
 License:        ISC
@@ -32,16 +32,16 @@ A main loop that is interoperable with other event loops and aims to be portable
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       libaml0 = %{version}
+Requires:       libaml1 = %{version}
 
 %description    devel
 Development files and headers for %{name}.
 
-%package -n     libaml0
+%package -n     libaml1
 Summary:        A VNC server library
 Group:          System/Libraries
 
-%description -n libaml0
+%description -n libaml1
 A portable, uitlitarian and simple event loop library.
 
 %prep
@@ -55,19 +55,19 @@ A portable, uitlitarian and simple event loop library.
 %install
 %meson_install
 
-%post -n libaml0 -p /sbin/ldconfig
-%postun -n libaml0 -p /sbin/ldconfig
+%post -n libaml1 -p /sbin/ldconfig
+%postun -n libaml1 -p /sbin/ldconfig
 
 %files devel
 %license COPYING
 %doc README.md
-
-%{_includedir}/aml.h
+%dir %{_includedir}/aml1
+%{_includedir}/aml1/aml.h
 %{_libdir}/libaml.so
-%{_libdir}/pkgconfig/aml.pc
+%{_libdir}/pkgconfig/aml1.pc
 
-%files -n libaml0
-%{_libdir}/libaml.so.0
-%{_libdir}/libaml.so.0.0.0
+%files -n libaml1
+%{_libdir}/libaml.so.1
+%{_libdir}/libaml.so.1.0.0
 
 %changelog

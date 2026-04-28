@@ -53,4 +53,13 @@
     are being worked</comment>
     <requestid>1060476</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>806c97832d15dace18aaf4a267244d5d</srcmd5>
+    <version>1.0.0</version>
+    <time>1777387199</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.0:
+  * This release improves type safety and does away with opaque void* objects</comment>
+    <requestid>1349766</requestid>
+  </revision>
 </revisionlist>
