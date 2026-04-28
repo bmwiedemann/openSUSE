@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 26 20:22:27 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add fix-llvm22-build.patch to fix build with LLVM 22.
+
+-------------------------------------------------------------------
 Fri Nov 21 22:24:42 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.20250815.1.

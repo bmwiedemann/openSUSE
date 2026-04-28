@@ -247,4 +247,13 @@
 </comment>
     <requestid>1319182</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>c1d908c23d7363485fc495cd3479a987</srcmd5>
+    <version>0.20250815.1</version>
+    <time>1777370176</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-llvm22-build.patch to fix build with LLVM 22.
+</comment>
+    <requestid>1349440</requestid>
+  </revision>
 </revisionlist>
