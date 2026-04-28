@@ -15,7 +15,7 @@ This container provides the openSUSE Project version of Git.
 Example of using Git container:
 
 ```ShellSession
-$ podman run registry.opensuse.org/opensuse/git:2.53 git help
+$ podman run registry.opensuse.org/opensuse/git:2.54 git help
 ```
 
 As Git requires a repository, the container
@@ -25,19 +25,19 @@ interactive mode to clone a repository and work on it. The `/workspace` director
 Example with volume mounting for persistence:
 
 ```ShellSession
-$ podman run -it -v $(pwd):/workspace:Z registry.opensuse.org/opensuse/git:2.53 git clone <repository-url>
+$ podman run -it -v $(pwd):/workspace:Z registry.opensuse.org/opensuse/git:2.54 git clone <repository-url>
 ```
 
 Example running as a non-root user:
 
 ```ShellSession
-$ podman run -it --user git --userns=keep-id -v $(pwd):/workspace:Z registry.opensuse.org/opensuse/git:2.53 git clone <repository-url>
+$ podman run -it --user git --userns=keep-id -v $(pwd):/workspace:Z registry.opensuse.org/opensuse/git:2.54 git clone <repository-url>
 ```
 
 Or with your host user ID:
 
 ```ShellSession
-$ podman run -it --user $(id -u):$(id -g) --userns=keep-id -v $(pwd):/workspace registry.opensuse.org/opensuse/git:2.53 git clone <repository-url>
+$ podman run -it --user $(id -u):$(id -g) --userns=keep-id -v $(pwd):/workspace registry.opensuse.org/opensuse/git:2.54 git clone <repository-url>
 ```
 
 ## Cloning Private Repositories
@@ -45,7 +45,7 @@ $ podman run -it --user $(id -u):$(id -g) --userns=keep-id -v $(pwd):/workspace 
 To clone private repositories that require SSH authentication, mount your SSH directory into the container:
 
 ```ShellSession
-$ podman run -it --user $(id -u):$(id -g) --userns=keep-id -v $(pwd):/workspace:Z -v ~/.ssh:/workspace/.ssh:Z registry.opensuse.org/opensuse/git:2.53 git clone <private-repository-url>
+$ podman run -it --user $(id -u):$(id -g) --userns=keep-id -v $(pwd):/workspace:Z -v ~/.ssh:/workspace/.ssh:Z registry.opensuse.org/opensuse/git:2.54 git clone <private-repository-url>
 ```
 
 Ensure your SSH private key has the correct permissions (e.g., `chmod 600 ~/.ssh/id_rsa` on the host) and that your SSH configuration is set up properly.
