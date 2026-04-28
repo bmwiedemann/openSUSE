@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 26 22:29:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * Support for Python 3.14 is added, and support for Python 3.10
+    dropped
+  * The minimum supported NumPy version is now 1.25.0,
+  * The optional dependency on SciPy has been removed,
+
+-------------------------------------------------------------------
 Sat Aug 31 11:40:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:

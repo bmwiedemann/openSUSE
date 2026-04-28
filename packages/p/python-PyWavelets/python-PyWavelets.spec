@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyWavelets
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyWavelets
-Version:        1.7.0
+Version:        1.9.0
 Release:        0
 Summary:        PyWavelets is a Python wavelet transforms module
 License:        MIT
@@ -27,14 +27,14 @@ URL:            https://github.com/PyWavelets/pywt
 Source0:        https://files.pythonhosted.org/packages/source/P/PyWavelets/pywavelets-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 3.0.4}
 BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module meson-python >= 0.15}
+BuildRequires:  %{python_module meson-python >= 0.18.0}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       (python-numpy >= 1.22.4 with python-numpy < 3)
+Requires:       (python-numpy >= 1.25 with python-numpy < 3)
 Provides:       python-PyWavelets-doc = %{version}
 Obsoletes:      python-PyWavelets-doc < %{version}
 Provides:       python-pywavelets = %{version}-%{release}
@@ -56,8 +56,8 @@ PyWavelets is a Python wavelet transforms module that can do:
 
 %prep
 %autosetup -p1 -n pywavelets-%{version}
-sed -i '1{/env python/d}' pywt/tests/*.py pywt/data/create_dat.py
-chmod -x pywt/data/create_dat.py
+sed -i '1{/env python/d}' pywt/tests/*.py util/create_dat.py
+chmod -x util/create_dat.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
