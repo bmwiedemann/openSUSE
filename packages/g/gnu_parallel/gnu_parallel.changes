@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 25 22:38:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260422
+  * Remote jobs are spawned via pipe to perl, so environment can be
+    bigger.
+  * --pipe-part -a supports -L/-N if zextract is installed.
+  * --pipe-part -a supports .gz, .bz2, .zst-files if zextract is
+    installed.
+
+-------------------------------------------------------------------
 Thu Jan 29 20:38:00 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260122
