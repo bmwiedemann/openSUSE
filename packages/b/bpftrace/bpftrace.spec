@@ -27,7 +27,7 @@
 %endif
 
 Name:           bpftrace
-Version:        0.24.2
+Version:        0.25.1
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
@@ -43,6 +43,7 @@ BuildRequires:  clang%{product_libs_llvm_ver}-devel
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  libbpf-devel
+BuildRequires:  libbpf-devel-static
 BuildRequires:  libxml2-devel
 BuildRequires:  llvm%{product_libs_llvm_ver}-devel
 BuildRequires:  pkgconfig
@@ -91,7 +92,7 @@ export CXX="%xx_binary"
 	-DLLVM_REQUESTED_VERSION="${LLVM_VERSION}" \
 	-DLIBBFD_LIBRARIES="${LIBBFD}" \
 	-DLIBOPCODES_LIBRARIES="${LIBOPCODES}" \
-	-DUSE_SYSTEM_BPF_BCC:BOOL=ON \
+	-DUSE_SYSTEM_LIBBPF:BOOL=ON \
 	-DBUILD_SHARED_LIBS:BOOL=OFF \
 	-DBUILD_STATIC_LIBS:BOOL=ON \
 	-DBUILD_TESTING:BOOL=OFF

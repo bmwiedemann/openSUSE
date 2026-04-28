@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 27 22:10:54 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Add libbpf-devel-static as build dependency
+- Update to 0.25.1
+ * Require BTF for tracepoint args, remove deprecated sarg builtin, and
+   disallow exit() inside loops
+ * Restrict bpftrace script licenses to GPL compatible ones (due to kfunc)
+ * Add Record primitive, import statements, support for --fmt mode, and allow
+   multiple begin/end probes
+ * Add support for address only kprobes, add build_id stack mode for
+   ustack, and attach watchpoint probes to all threads of a process
+ * Add pcomm()/syscall_name(), --probe-filter, find(), and string indexing
+   support
+ * Prefer automatic dereferencing via '.', stabilize macros/map declarations,
+   and replace root user check with capability checks
+ * Drop support for LLVM 16 and 17
+ * Fix missing lines in ustack/kstack, errors in listing multiple probes, and
+   handling of void ptr and function ptr BTF types
+ * Fix crashes in invalid if expressions and scripts with trailing new lines,
+   fix casting negative literals to unsigned types, and fix stdlib strerror
+   stack limit
+
+-------------------------------------------------------------------
 Wed Feb  4 10:33:54 UTC 2026 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Refactor LLVM version detection macro
