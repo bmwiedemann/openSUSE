@@ -1,7 +1,7 @@
 #
 # spec file for package msv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,7 @@ Summary:        Multi-Schema Validator Core
 # msv/src/com/sun/msv/writer/ContentHandlerAdaptor.java is partially under Public Domain
 # Explicit javapackages-tools requires since scripts use
 # /usr/share/java-utils/java-functions
-License:        Apache-1.1 AND BSD-3-Clause AND Apache-2.0 AND SUSE-Public-Domain
+License:        Apache-1.1 AND BSD-3-Clause AND Apache-2.0 AND LicenseRef-SUSE-Public-Domain
 Group:          Development/Libraries/Java
 Requires:       javapackages-tools
 
@@ -97,7 +97,7 @@ Group:          Development/Libraries/Java
 
 %package javadoc
 Summary:        API documentation for Multi-Schema Validator
-License:        Apache-1.1 AND BSD-3-Clause AND Apache-2.0 AND SUSE-Public-Domain
+License:        Apache-1.1 AND BSD-3-Clause AND Apache-2.0 AND LicenseRef-SUSE-Public-Domain
 Group:          Documentation/HTML
 
 %description javadoc

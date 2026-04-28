@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 27 11:14:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Clean up the license tag
+
+-------------------------------------------------------------------
 Wed Feb 21 10:51:43 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
