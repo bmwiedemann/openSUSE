@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 26 19:47:44 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- create separate group for user
+
+-------------------------------------------------------------------
 Wed Apr 22 15:22:15 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - explicitly set group id to a stable id as well (the one used in SLE15)

@@ -32,7 +32,7 @@ RUN set -euo pipefail; \
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' xorg-x11-server | \
     cut -d '.' -f -1)" = "21" ]
-RUN useradd -m user -u 1000 -g 100
+RUN useradd -m user -u 1000 -U
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
