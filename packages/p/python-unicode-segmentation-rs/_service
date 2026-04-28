@@ -1,6 +1,6 @@
 <services>
   <service name="download_files" mode="manual"/>
-  <service name="cargo_vendor" mode="disabled">
+  <service name="cargo_vendor" mode="manual">
     <param name="srctar">unicode_segmentation_rs-*.tar.gz</param>
     <param name="compression">zst</param>
     <param name="filter">true</param>

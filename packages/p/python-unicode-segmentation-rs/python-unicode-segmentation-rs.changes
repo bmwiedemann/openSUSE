@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 25 20:35:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.4:
+  * fix(ci): publish wheels compatible with more Python versions
+  * fix(deps): update rust crate pyo3 to 0.28.3
+- update to 0.2.3:
+  * feat: structure release notes
+  * Fix README module name and add automated example verification
+  * fix(deps): update rust crate pyo3 to 0.28.2
+
+-------------------------------------------------------------------
 Tue Jan 13 09:29:24 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v0.2.1), needed by translate-toolkit

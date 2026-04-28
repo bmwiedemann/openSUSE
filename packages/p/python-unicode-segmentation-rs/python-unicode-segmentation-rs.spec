@@ -1,7 +1,7 @@
 #
 # spec file for package python-unicode-segmentation-rs
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,27 @@
 
 
 Name:           python-unicode-segmentation-rs
-Version:        0.2.1
+Version:        0.2.4
 Release:        0
 Summary:        Unicode segmentation and width for Python using Rust
-License:        MIT AND CC0-1.0
-URL:            https://weblate.org/
+License:        CC0-1.0 AND MIT
+URL:            https://github.com/WeblateOrg/unicode-segmentation-rs
 Source:         https://files.pythonhosted.org/packages/source/u/unicode-segmentation-rs/unicode_segmentation_rs-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module maturin >= 1.10.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  cargo
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
 %python_subpackages
 
 %description
-Python bindings for the Rust [unicode-segmentation](https://docs.rs/unicode-segmentation/) and [unicode-width](https://docs.rs/unicode-width/) crates, providing Unicode text segmentation and width calculation according to Unicode standards.
+Python bindings for the Rust
+[unicode-segmentation](https://docs.rs/unicode-segmentation/) and
+[unicode-width](https://docs.rs/unicode-width/) crates, providing Unicode text
+segmentation and width calculation according to Unicode standards.
 
 %prep
 %autosetup -a1 -p1 -n unicode_segmentation_rs-%{version}
