@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 25 10:19:15 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.33.5
+  * mpg123: Fix generic control mode for largefile-sensitive
+    builds, where 32 bit off_t was used with mpg123 API calls
+    expecting 64 bit off_t.
+  * mpg123-id3dump, out123: Enable 64 bit offset usage on
+    largefile-sensitive
+    platforms (regression since 1.32.0).
+  * libmpg123: Announce support for shadow stack / IBT in x86-64
+    assembly.
+  * libmpg123: Also announce PAC/BTI for non-accurate neon64
+    (aarch64) synth.
+  * libout123: Add a safeguard to ensure variable-length records
+    from buffer communication are always zero-terminated.
+  * libsyn123: Use union work buffer to avoid casts that may
+    look like breaking strict aliasing.
+
+-------------------------------------------------------------------
 Sat Dec 20 18:56:43 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.33.4
