@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 26 19:25:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- reset alternative for TW
+
+-------------------------------------------------------------------
 Mon Apr  7 10:49:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.9
@@ -7,4 +12,4 @@ Mon Apr  7 10:49:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Thu Aug 15 20:56:05 UTC 2024 - Meera Belur <mbelur@suse.com>
 
-- Initial package creation for python-docx2txt version 0.8 
+- Initial package creation for python-docx2txt version 0.8

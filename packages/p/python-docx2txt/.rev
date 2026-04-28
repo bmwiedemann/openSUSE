@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1268405</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>44d366989379de038be2bd5e1a320d4d</srcmd5>
+    <version>0.9</version>
+    <time>1777370159</time>
+    <user>anag_factory</user>
+    <comment>- reset alternative for TW
+
+- Initial package creation for python-docx2txt version 0.8</comment>
+    <requestid>1349432</requestid>
+  </revision>
 </revisionlist>
