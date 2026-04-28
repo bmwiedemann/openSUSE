@@ -98,7 +98,7 @@
 %endif
 
 Name:           libzypp
-Version:        17.38.5
+Version:        17.38.7
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -153,6 +153,7 @@ BuildRequires:  ghostscript
 BuildRequires:  gcc-c++ >= 7
 BuildRequires:  gettext-devel
 BuildRequires:  graphviz
+BuildRequires:  graphviz-gd
 BuildRequires:  libxml2-devel
 BuildRequires:  yaml-cpp-devel
 
@@ -259,6 +260,10 @@ BuildRequires:  bzip2-devel
 
 %if %{with xz}
 BuildRequires:  xz-devel
+%endif
+
+%if 0%{?suse_version} >= 1600
+BuildRequires: gobject-introspection-devel
 %endif
 
 %description

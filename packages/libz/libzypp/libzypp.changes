@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 27 16:49:13 CEST 2026 - ma@suse.de
+
+- Fix purge-kernel -rc kernel handling (bsc#1239718)
+- Explicitly_set_pool_DISTTYPE_RPM (fixes #726)
+- version 17.38.7 (35)
+
+-------------------------------------------------------------------
+Mon Apr 20 15:44:05 CEST 2026 - ma@suse.de
+
+- Check for trusted key updates when updating the general keyring
+  (bsc#1259706)
+- Support multiple MirroredOrigin authorities (bsc#1253193)
+- Workaround doxygen bug: doxygen/doxygen#12057
+- libzypp.spec: Add missing graphviz-gd BuildRequires (boo#1259842)
+- version 17.38.6 (35)
+
+-------------------------------------------------------------------
 Wed Mar 18 14:36:27 CET 2026 - ma@suse.de
 
 - Fix preloader not caching packages from arch specific subrepos
