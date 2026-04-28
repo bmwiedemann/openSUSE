@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Sat Apr 25 17:27:28 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.31+11 (April 2026 CPU)
+  * CVEs
+    + CVE-2026-22007 (bsc#1262490)
+    + CVE-2026-22013 (bsc#1262494)
+    + CVE-2026-22016 (bsc#1262495)
+    + CVE-2026-22018 (bsc#1262496)
+    + CVE-2026-22021 (bsc#1262497)
+    + CVE-2026-23865 (bsc#1259118)
+    + CVE-2026-34268 (bsc#1262500)
+    + CVE-2026-34282 (bsc#1262501)
+* Changes
+    + JDK-8209362: sun/security/ssl/SSLSocketImpl/ReuseAddr.java
+      failed due to "BindException: Address already in use (Bind
+      failed)"
+    + JDK-8224796: C code is not compiled correctly due to undefined
+      "i386"
+    + JDK-8231449: HttpClient’s client ssl certificate
+      authentication seems to be broken
+    + JDK-8263188: JSSE should fail fast if there isn't supported
+      signature algorithm
+    + JDK-8284047: Harmonize/Standardize the SSLSocket/SSLEngine/
+      /SSLSocketSSLEngine test templates
+    + JDK-8286694: Incorrect argument processing in java launcher
+    + JDK-8303215: Make thread stacks not use huge pages
+    + JDK-8305186: Reference.waitForReferenceProcessing should be
+      more accessible to tests
+    + JDK-8306014: Update javax.net.ssl TLS tests to use
+      SSLContextTemplate or SSLEngineTemplate
+    + JDK-8306015: Update sun.security.ssl TLS tests to use
+      SSLContextTemplate or SSLEngineTemplate
+    + JDK-8308144: Uncontrolled memory consumption in
+      SSLFlowDelegate.Reader
+    + JDK-8313770: jdk/internal/platform/docker/
+      /TestSystemMetrics.java fails on Ubuntu
+    + JDK-8324861: Exceptions::wrap_dynamic_exception() doesn't
+      have ResourceMark
+    + JDK-8336342: Fix known X11 library locations in sysroot
+    + JDK-8336343: Add more known sysroot library locations for ALSA
+    + JDK-8337102: JITTester: Fix breaks in static initialization
+      blocks
+    + JDK-8337669: [17u] Backport of JDK-8284047 missed to delete a
+      file
+    + JDK-8339271: giflib attribution correction
+    + JDK-8340321: Disable SHA-1 in TLS/DTLS 1.2 handshake
+      signatures
+    + JDK-8342175: MemoryEaterMT fails intermittently with
+      ExceptionInInitializerError
+    + JDK-8343622: AesDkCrypto.stringToKey should not return null
+    + JDK-8345578: New test in JDK-8343622 fails with a promoted
+      build
+    + JDK-8346048: test/lib/containers/docker/DockerRunOptions.java
+      uses addJavaOpts() from ctor
+    + JDK-8348014: Enhance certificate processing
+    + JDK-8349583: Add mechanism to disable signature schemes based
+      on their TLS scope
+    + JDK-8355779: When no "signature_algorithms_cert" extension is
+      present we do not apply certificate scope constraints to
+      algorithms in "signature_algorithms" extension
+    + JDK-8361748: Enforce limits on the size of an XBM image
+    + JDK-8364373: Transform Affine transformations
+    + JDK-8364465: Enhance behavior of some intrinsics
+    + JDK-8366221: [11u]
+      TestPromotionFromSurvivorToTenuredAfterMinorGC.java javac
+      build fails
+    + JDK-8366817: test/jdk/javax/net/ssl/TLSCommon/interop/
+      /JdkProcServer.java and JdkProcClient.java should not delete
+      logs
+    + JDK-8369282: Distrust TLS server certificates anchored by
+      Chunghwa ePKI Root CA
+    + JDK-8369575: Enhance crypto algorithm support
+    + JDK-8370529: Enhance Path Factories Redux
+    + JDK-8370615: Improve Kerberos credentialing
+    + JDK-8370986: Enhance Zip file reading
+    + JDK-8370995: Enhance ZipFile usage
+    + JDK-8371830: Enhance certificate chain validation
+    + JDK-8371935: Enhance key generation
+    + JDK-8372857: Improve debuggability of java/rmi/server/
+      /RemoteServer/AddrInUse.java test
+    + JDK-8373254: Bump update version of OpenJDK: 11.0.31
+    + JDK-8373290: Update FreeType to 2.14.1
+    + JDK-8373476: (tz) Update Timezone Data to 2025c
+    + JDK-8373727: New XBM images parser regression: only the first
+      line of the bitmap array is parsed
+    + JDK-8374557: Enhance TLS connection handling
+    + JDK-8375057: Update HarfBuzz to 12.3.2
+    + JDK-8375063: Update Libpng to 1.6.54
+    + JDK-8377450: [11u] Tests using Text Blocks fail to compile
+    + JDK-8377526: Update Libpng to 1.6.55
+    + JDK-8379035: (tz) Update Timezone Data to 2026a
+    + JDK-8379158: Update FreeType to 2.14.2
+    + JDK-8379256: Update GIFlib to 6.1.1
+    + JDK-8379424: [11u] Update SSL tests using SSLEngineTemplate
+    + JDK-8380078: Update GIFlib to 6.1.2
+    + JDK-8380959: Update Libpng to 1.6.56
+    + JDK-8382047: Update Libpng to 1.6.57
+    + JDK-8382374: [11u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 11.0.31
+
+-------------------------------------------------------------------
+Mon Mar 16 16:04:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Provide the timezone-java and tzdata-java (jsc#PED-15898)
+
+-------------------------------------------------------------------
 Fri Jan 23 18:02:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-11.0.30+7 (January 2026 CPU)

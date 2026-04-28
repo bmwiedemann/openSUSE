@@ -38,8 +38,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       30
-%global buildver        7
+%global updatever       31
+%global buildver        11
 %global openjdk_repo    jdk11u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -156,7 +156,7 @@ Name:           java-%{featurever}-openjdk
 Version:        %{package_version}
 Release:        0
 Summary:        OpenJDK %{featurever} Runtime Environment
-License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
+License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND LicenseRef-SUSE-Public-Domain AND W3C
 Group:          Development/Languages/Java
 URL:            https://openjdk.java.net/
 # Sources from upstream OpenJDK project.
@@ -356,6 +356,8 @@ Requires(posttrans): java-ca-certificates
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun): update-alternatives
 Obsoletes:      %{name}-accessibility
+Provides:       timezone-java
+Provides:       tzdata-java
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
@@ -620,7 +622,7 @@ bash ../configure \
     --with-version-pre="" \
 %endif
     --with-version-build="%{buildver}" \
-    --with-version-opt="suse-%{suse_version}-%{_arch}" \
+    --with-version-opt="suse-0%{?suse_version}-%{_arch}" \
     --disable-warnings-as-errors \
 %if %{with zero}
     --with-jvm-variants=zero \
