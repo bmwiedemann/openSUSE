@@ -252,7 +252,12 @@ docker_setup_env() {
 				OLD_DATABASES+=( "$d" )
 			fi
 		done
-		if [ "${#OLD_DATABASES[@]}" -eq 0 ] && [ "$PG_MAJOR" -ge 18 ] && mountpoint -q /var/lib/postgresql/data; then
+		if [ "${#OLD_DATABASES[@]}" -eq 0 ] && [ "$PG_MAJOR" -ge 18 ] && {
+			# in BusyBox, "mountpoint" only checks dev vs ino (https://github.com/tianon/mirror-busybox/blob/be7d1b7b1701d225379bc1665487ed0871b592a5/util-linux/mountpoint.c#L78) which will notably miss bind mounts entirely (which almost all Docker volume mounts are)
+			# coreutils checks /proc/self/mountinfo, so we have a fallback to mimic that and directly check "/proc/self/mountinfo" to catch that case
+			mountpoint -q /var/lib/postgresql/data \
+			|| awk '$5 == "/var/lib/postgresql/data" { found = 1 } END { exit !found }' /proc/self/mountinfo
+		}; then
 			OLD_DATABASES+=( '/var/lib/postgresql/data (unused mount/volume)' )
 		fi
 	fi
