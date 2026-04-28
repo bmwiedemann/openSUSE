@@ -434,4 +434,12 @@
   - Add openSUSE-release to BuildRequires</comment>
     <requestid>1346971</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>cac50aa792db21b05ac299c8d4600832</srcmd5>
+    <version>0.40.2</version>
+    <time>1777387208</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1349769</requestid>
+  </revision>
 </revisionlist>

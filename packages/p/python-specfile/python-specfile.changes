@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 28 09:25:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.40.2
+  * Trailing whitespaces at the end of specfile sections are now
+    ignored during parsing. (#531)
+
+-------------------------------------------------------------------
 Tue Apr 14 10:18:16 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.40.1
