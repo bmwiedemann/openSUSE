@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Mar  6 17:08:21 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 4.9.2
+  * fix background in windowed pdf viewer with win11 style
+  * switch focus along with enlarge/shrink pdf viewer #4290
+  * fix crash #4291
+  * fix usepackage detection in included files
+  * fix crash on terminating txs on OSX
+  * cleanup Packages Help (TeXdoc) dialog when filtered list gets empty #4294
+  * fix sometimes invisible lines #4319
+  * fix rare crash in pdf viewer poppler fix, #4023
+
+- Update to 4.9.1
+  * add ctrl+enter shortcut (accept dialog) for universal dialog, checkin, ai wizard
+  * fix teamtype server start #4251
+  * fix hang with addColumn (table manipulation) when last row does not end with \\ #4254
+  * fix detection \bibitem #4265
+  * fix symbols favorites/most used #4267
+  * fix horizontal text scrolling #4266
+
+- Update to 4.9.0
+  * implement peer-to-peer collaborative editing with teamtype, see manual
+  * fix table insert from libreoffice calc, see #4186
+  * fix stylesheet application on windowed pdf viewer, see #4185
+  * fix showing log for labels with colon in its name, see #4184
+  * fix quotation mark replacement in rnw files, see #4180
+  * handle units in siunitx special to reduce completion offer and syntax check
+  * add indent guides (optional), see #4129
+  * extend cwl to allow multiple keyval arguments for one command
+  * fixes around keyval syntax detection
+  * change glossary to use special arguments, independent of label/ref #4212
+  * extend find usage/goto definition for special arguments (e.g. glossary)
+  * fix tabular column definition detection to handle split lines
+  * add rainbow colored braces (default:off) #4224
+  * don’t add expl3 as user commands #3919
+
+-------------------------------------------------------------------
 Wed Sep 17 06:05:08 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to 4.8.9
