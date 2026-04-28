@@ -2,7 +2,7 @@
 # spec file for package python-striprtf
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2024-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,32 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-striprtf
-Version:        0.0.31
+Version:        0.0.32
 Release:        0
 Summary:        A simple library to convert rtf to text
 License:        BSD-3-Clause
 URL:            https://github.com/joshy/striprtf
 Source:         https://github.com/joshy/striprtf/archive/refs/tags/v%{version}.tar.gz#/striprtf-%{version}.tar.gz
-Patch:          version-update.patch
 BuildRequires:  %{python_module hatchling >= 1.21.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 7.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-twine >= 6.1.0
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -51,14 +59,14 @@ A simple library to convert rtf to text.
 %python_clone -a %{buildroot}%{_bindir}/striprtf
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%pre
-%python_libalternatives_reset_alternative striprtf
-
 %post
 %python_install_alternative striprtf
 
 %postun
 %python_uninstall_alternative striprtf
+
+%pre
+%python_libalternatives_reset_alternative striprtf
 
 %check
 %pytest

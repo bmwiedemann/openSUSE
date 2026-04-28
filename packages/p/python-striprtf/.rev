@@ -46,4 +46,17 @@
   * Fixed https://github.com/joshy/striprtf/issues/63</comment>
     <requestid>1349283</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d7d527df4933bd2eb8b6d0dd683015aa</srcmd5>
+    <version>0.0.32</version>
+    <time>1777387214</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems only
+
+- Update to version 0.0.32
+  * Fixed Wrong _version file.
+- Drop patch
+  * version-update.patch</comment>
+    <requestid>1349776</requestid>
+  </revision>
 </revisionlist>

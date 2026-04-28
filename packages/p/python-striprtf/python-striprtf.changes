@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:40:11 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems only
+
+-------------------------------------------------------------------
+Mon Apr 27 15:51:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.32
+  * Fixed Wrong _version file.
+- Drop patch
+  * version-update.patch
+
+-------------------------------------------------------------------
 Sat Apr 25 20:28:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.31:
