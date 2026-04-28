@@ -278,4 +278,14 @@
   * no changes</comment>
     <requestid>1347764</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e6b1c823bf5088b1b822ce1ef1a4b705</srcmd5>
+    <version>1.41.1</version>
+    <time>1777370073</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.41.1:
+  * This is a patch release on the previous 1.41.0/0.62b0
+    release</comment>
+    <requestid>1349187</requestid>
+  </revision>
 </revisionlist>
