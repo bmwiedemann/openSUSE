@@ -431,4 +431,14 @@
 - Run the testsuite as upstream does.</comment>
     <requestid>1346249</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>ab879cdf2f76e8ba5edcb602c26e64fe</srcmd5>
+    <version>8.4</version>
+    <time>1777370004</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.4:
+  * Add support for automatically building and publishing
+    Windows/ARM64 wheels.</comment>
+    <requestid>1349281</requestid>
+  </revision>
 </revisionlist>
