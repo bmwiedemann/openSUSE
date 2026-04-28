@@ -143,4 +143,18 @@
     mappings are just the same as before.</comment>
     <requestid>1109695</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>60cb3232cceee7fa9520a61146d34446</srcmd5>
+    <version>1.4.2</version>
+    <time>1777370042</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.2
+  * configure: Use AC_SYS_LARGEFILE to enable large file support
+  * Add --help and --version options
+  * Update ATTR_NORETURN for C23
+  * Strip trailing whitespace from source files
+  * ucs2any: Use reallocarray if available to protect against integer overflow
+  * gitlab CI: drop the ci-fairy check-mr job</comment>
+    <requestid>1349325</requestid>
+  </revision>
 </revisionlist>

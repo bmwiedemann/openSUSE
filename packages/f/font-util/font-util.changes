@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 26 01:04:39 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.4.2
+  * configure: Use AC_SYS_LARGEFILE to enable large file support
+  * Add --help and --version options
+  * Update ATTR_NORETURN for C23
+  * Strip trailing whitespace from source files
+  * ucs2any: Use reallocarray if available to protect against integer overflow
+  * gitlab CI: drop the ci-fairy check-mr job
+
+-------------------------------------------------------------------
 Fri Sep  8 07:58:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.4.1
