@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 27 07:48:19 UTC 2026 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20260427.5d7e4bd6:
+  * Dev: log: Sync the file formatter for NO_COLOR_FORMATTERS
+
+-------------------------------------------------------------------
+Mon Apr 27 04:17:40 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260427.d586b0f4:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: ui_cluster: Add --now option for crm cluster enable/disable commands
+
+-------------------------------------------------------------------
+Fri Apr 24 06:50:33 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260424.abe22392:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: doc: Adjust crm.8.adoc about -F/--force option
+  * Dev: ui_sbd: Add -F/--force option for crm sbd configure/device/purge commands
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: ui_cluster: Add -F/--force option for 'crm cluster init' command
+
+-------------------------------------------------------------------
+Thu Apr 23 06:36:25 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260423.d501c2ea:
+  * Dev: qdevice: Improve local address check for qnetd (bsc#1262094)
+
+-------------------------------------------------------------------
 Mon Apr 20 06:53:40 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.0.0+20260420.d13e03ac:
