@@ -42,8 +42,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyOpenSSL
+%if 0%{python_version_nodots} >= 312
 Requires:       python-pyasynchat
 Requires:       python-pyasyncore
+%endif
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -69,7 +71,8 @@ sed -i '1 {/env python/ d}' tests/*.py
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ftpbench
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-# Note: Do not remove tests. Other packages import them
+# Tests are no longer installed, but other packages import them
+%python_expand cp -a tests %{buildroot}%{$python_sitelib}/pyftpdlib/test
 
 %check
 export CIBUILDWHEEL=1

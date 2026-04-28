@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 04:21:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- pyasynchat and pyasyncore are only required for Python >= 3.12.
+- Ship tests explicitly, other packages require them.
+
+-------------------------------------------------------------------
 Wed Apr  1 18:45:02 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
 
 - Update to 2.2.0:
