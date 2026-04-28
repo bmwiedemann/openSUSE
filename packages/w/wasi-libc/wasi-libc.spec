@@ -17,7 +17,7 @@
 
 
 Name:           wasi-libc
-Version:        31
+Version:        32
 Release:        0
 Summary:        WASI libc implementation for WebAssembly
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
