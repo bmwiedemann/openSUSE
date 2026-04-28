@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 24 17:15:40 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Fix license reference
+
+-------------------------------------------------------------------
 Tue Feb 20 13:27:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

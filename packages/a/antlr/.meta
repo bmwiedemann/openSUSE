@@ -6,5 +6,4 @@ compilers, and translators from grammatical descriptions containing C++
 or Java actions (you can use PCCTS 1.xx to generate C-based parsers).
 
 # To not introduce arch dependent java package, lets have this in separate subpackage</description>
-  <devel project="Java:packages" package="antlr"/>
 </package>

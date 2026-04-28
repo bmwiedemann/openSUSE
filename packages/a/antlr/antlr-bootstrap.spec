@@ -1,7 +1,7 @@
 #
 # spec file for package antlr-bootstrap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           antlr-bootstrap
 Version:        2.7.7
 Release:        0
 Summary:        Antlr for bootstrapping purposes
-License:        BSD-3-Clause AND SUSE-Public-Domain
+License:        BSD-3-Clause AND LicenseRef-SUSE-Public-Domain
 Group:          Development/Libraries/Java
 URL:            https://www.antlr.org
 Source0:        antlr-%{version}.tar.bz2

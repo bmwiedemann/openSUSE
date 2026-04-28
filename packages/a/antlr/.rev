@@ -411,4 +411,12 @@
     <comment>Make the bootstrap package reproducible too</comment>
     <requestid>1204893</requestid>
   </revision>
+  <revision rev="55" vrev="126">
+    <srcmd5>404161d48c5631d6527ba48349aaec83</srcmd5>
+    <version>2.7.7</version>
+    <time>1777379390</time>
+    <user>anag_factory</user>
+    <comment>Fix license reference</comment>
+    <requestid>1349559</requestid>
+  </revision>
 </revisionlist>

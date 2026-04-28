@@ -1,7 +1,7 @@
 #
 # spec file for package antlr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           antlr
 Version:        2.7.7
 Release:        0
 Summary:        Another Tool for Language Recognition
-License:        GPL-2.0-or-later AND SUSE-Public-Domain AND MIT
+License:        GPL-2.0-or-later AND LicenseRef-SUSE-Public-Domain AND MIT
 Group:          Development/Tools/Other
 URL:            https://www.antlr.org/
 Source0:        antlr-%{version}.tar.bz2
