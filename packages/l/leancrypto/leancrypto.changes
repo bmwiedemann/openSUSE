@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 16 05:13:36 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Fix build on kernel 7.0
+  * Add patch 0001-Linux-kernel-leancrypto_kernel_rng_tester-include-li.patch
+
+-------------------------------------------------------------------
+Tue Apr 14 10:11:03 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Pick fix for ABI issue in AVX2 assembly for Curve448 causing
+  test failures when building with GCC 16.
+  * Add patch leancrypto-ABI-fix.patch
+
+-------------------------------------------------------------------
 Sun Apr 12 21:39:57 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 1.7.2:

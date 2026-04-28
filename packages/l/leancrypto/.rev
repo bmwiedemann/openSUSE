@@ -82,4 +82,14 @@
     <comment></comment>
     <requestid>1346454</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>848614ed95fd5dcd713297d2e0affd2b</srcmd5>
+    <version>1.7.2</version>
+    <time>1777370064</time>
+    <user>anag_factory</user>
+    <comment>- Fix build on kernel 7.0
+  * Add patch 0001-Linux-kernel-leancrypto_kernel_rng_tester-include-li.patch
+  * Add patch leancrypto-ABI-fix.patch (forwarded request 1347327 from lmulling)</comment>
+    <requestid>1347328</requestid>
+  </revision>
 </revisionlist>
