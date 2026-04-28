@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Apr 27 18:03:10 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Drop fix-distrobox-to-newer-zypper.patch since it was merged upstream
+- Update to 1.8.2.5:
+    * docs: remove bluefin-cli and powershell ublue images by @renner0e in https://github.com/89luca89/distrobox/pull/1997
+    * docs: update documentation regarding VSCode integration by @ludrol in https://github.com/89luca89/distrobox/pull/1996
+    * enter: show container command on dry run by @balanza in https://github.com/89luca89/distrobox/pull/2000
+    * fix: expose correct dryrun command by @balanza in https://github.com/89luca89/distrobox/pull/2006
+    * fix: setup_zypper: use drop-in config file if possible by @dannyhpy in https://github.com/89luca89/distrobox/pull/2007
+    * docs: update README with sandboxing alternatives by @Gerharddc in https://github.com/89luca89/distrobox/pull/2009
+    * feat: add ALT Linux compatibility improvements by @liannnix in https://github.com/89luca89/distrobox/pull/1989
+    * fix: Pass -xdev to /bin/find by @danielzgtg in https://github.com/89luca89/distrobox/pull/1998
+    * add Docker Desktop on macOS compatibility by @ericcurtin in https://github.com/89luca89/distrobox/pull/2019
+    * init: chmod shadow files to 0400 for container storage compatibility by @89luca89 in https://github.com/89luca89/distrobox/pull/2020
+    * chore(ci): v2 release candidate workflow by @balanza in https://github.com/89luca89/distrobox/pull/2031
+    * docs(posts): announcing Distrobox v2 by @balanza in https://github.com/89luca89/distrobox/pull/2032
+    * build(deps): bump actions/checkout from 4 to 6 by @dependabot[bot] in https://github.com/89luca89/distrobox/pull/2045
+    * build(deps): bump actions/upload-artifact from 4 to 7 by @dependabot[bot] in https://github.com/89luca89/distrobox/pull/2044
+    * build(deps): bump actions/download-artifact from 4 to 8 by @dependabot[bot] in https://github.com/89luca89/distrobox/pull/2043
+    * build(deps): bump actions/setup-go from 5 to 6 by @dependabot[bot] in https://github.com/89luca89/distrobox/pull/2042
+    * docs: issue template notice for distrobox v2 by @balanza in https://github.com/89luca89/distrobox/pull/2049
+    * init: also clean empty unversioned .so stubs during nvidia setup by @edodusi in https://github.com/89luca89/distrobox/pull/2024
+    * fix(enter): su argument order in unshare_groups path (legacy) by @Aromatic05 in https://github.com/89luca89/distrobox/pull/2055
+    * fix(enter): correct order for su commands in unshare-groups by @dottorblaster in https://github.com/89luca89/distrobox/pull/2067
+    * chore: bump to v1.8.2.5 by @dottorblaster in https://github.com/89luca89/distrobox/pull/2072
+
+-------------------------------------------------------------------
 Fri Mar 20 12:43:14 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - append newline after manually adding tty group (bsc#12594379)

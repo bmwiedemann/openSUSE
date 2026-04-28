@@ -17,15 +17,13 @@
 
 
 Name:           distrobox
-Version:        1.8.2.4
+Version:        1.8.2.5
 Release:        0
 Summary:        Use any linux distribution inside your terminal
 License:        GPL-3.0-only
 URL:            https://github.com/89luca89/distrobox
 Source:         https://github.com/89luca89/distrobox/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        distrobox.conf
-# https://github.com/89luca89/distrobox/pull/2007
-Patch0:         fix-distrobox-to-newer-zypper.patch
 Patch1:         0001-add-newline-when-appending-tty-group-via-printf-bsc-.patch
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find
