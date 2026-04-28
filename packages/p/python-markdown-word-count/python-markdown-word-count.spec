@@ -1,7 +1,7 @@
 #
 # spec file for package python-markdown-word-count
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           python-markdown-word-count
 Version:        0.1.0
 Release:        0
@@ -23,12 +29,19 @@ Summary:        Word counter for raw Markdown files
 License:        MIT
 URL:            https://github.com/gandreadis/markdown-word-count
 Source:         https://files.pythonhosted.org/packages/source/m/markdown-word-count/markdown_word_count-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -47,6 +60,9 @@ Word counter for raw Markdown files
 
 %check
 %pyunittest discover -v tests
+
+%pre
+%python_reset_alternative mwc
 
 %post
 %python_install_alternative mwc

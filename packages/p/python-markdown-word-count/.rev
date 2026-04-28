@@ -7,4 +7,12 @@
     <comment>Required by python-pelican-myst-reader</comment>
     <requestid>1337395</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7cae333c9a46c3a5aa1628404980d94b</srcmd5>
+    <version>0.1.0</version>
+    <time>1777370158</time>
+    <user>anag_factory</user>
+    <comment>- reset alternativef or TW</comment>
+    <requestid>1349430</requestid>
+  </revision>
 </revisionlist>
