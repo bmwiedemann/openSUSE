@@ -21,7 +21,7 @@ Name:           orthanc-authorization
 Summary:        Authorisation plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        0.11.2
+Version:        0.11.3
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancAuthorization-%{version}.tar.gz
@@ -30,7 +30,6 @@ Source2:        https://orthanc.uclouvain.be/downloads/third-party-downloads/gte
 Source3:        https://orthanc.uclouvain.be/downloads/third-party-downloads/jsoncpp-1.9.5.tar.gz
 Source4:        https://orthanc.uclouvain.be/downloads/third-party-downloads/e2fsprogs-1.44.5.tar.gz
 Source5:        https://orthanc.uclouvain.be/downloads/third-party-downloads/boost_1_86_0_bcpdigest-1.12.5.tar.gz
-Patch0:         cassert.diff
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

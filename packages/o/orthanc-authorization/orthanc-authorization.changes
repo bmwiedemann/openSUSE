@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 24 05:53:32 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.11.3
+  * cassert.diff removed (upstream)
+  * New default permissions for jobs
+
+-------------------------------------------------------------------
 Wed Apr 15 14:13:00 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - Version 0.11.2
