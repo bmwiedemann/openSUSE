@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 27 12:48:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.27.2:
+  * Drop support for Python < 3.7.
+  * Fix compatibility with Python 3.14.
+  * https://github.com/jwilk/i18nspector/issues/18
+  * Update RFC URLs.
+  * Update Qt documentation URL.
+  * Link to IANA “Special-Use Domain Names” registry instead of
+    (somewhat outdated) RFC 2606.
+  * Disallow trailing newlines in some regexps.
+  * Improve the test suite.
+- refresh keyring from https://jwilk.net/openpgp/
+
+-------------------------------------------------------------------
 Tue Apr  2 06:50:39 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 0.27.1:
@@ -15,13 +30,13 @@ Tue Apr  2 06:50:39 UTC 2024 - ming li <mli@suse.com>
   * Make “-j auto” take CPU affinity into account.
   * Stop using deprecated abc.abstractproperty().
   * Improve documentation:
-    + Update Docutils homepage URL. 
+    + Update Docutils homepage URL.
 
 -------------------------------------------------------------------
 Mon Nov 22 05:39:58 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch switch-to-pytest.patch:
-  * Use pytest to run tests, rather than nose. 
+  * Use pytest to run tests, rather than nose.
 
 -------------------------------------------------------------------
 Sun Nov 29 16:15:12 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>

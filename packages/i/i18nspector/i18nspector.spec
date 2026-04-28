@@ -1,7 +1,7 @@
 #
 # spec file for package i18nspector
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           i18nspector
-Version:        0.27.1
+Version:        0.27.2
 Release:        0
 Summary:        Tool for Checking gettext POT/PO/MO Files
 License:        MIT
@@ -26,15 +26,17 @@ URL:            https://jwilk.net/software/i18nspector
 Source0:        https://github.com/jwilk/i18nspector/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/jwilk/i18nspector/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-BuildRequires:  python3-devel >= 3.4
+BuildRequires:  python3-devel >= 3.7
 # Requires for tests.
 BuildRequires:  python3-curses
-BuildRequires:  python3-polib
+BuildRequires:  python3-polib >= 1.0.0
 BuildRequires:  python3-pytest
 BuildRequires:  python3-rply
 #
 BuildArch:      noarch
-Requires:       python3 >= 3.4
+Requires:       python3 >= 3.7
+Requires:       python3-polib >= 1.0.0
+Requires:       python3-rply
 
 %description
 i18nspector is a tool for checking translation templates (POT), message
