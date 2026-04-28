@@ -215,4 +215,18 @@
   * https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.18.3</comment>
     <requestid>1349085</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ea070c6146bd80ca7b96805e8139280e</srcmd5>
+    <version>0.18.5</version>
+    <time>1777370380</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.18.5:
+  * Fix heap out-of-bounds access in tile-part dispatch
+  * See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.18.5
+
+- Update to 0.18.4:
+  * Fix heap buffer overflow vulnerability in PPM packet header parsing
+  * See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.18.4</comment>
+    <requestid>1349707</requestid>
+  </revision>
 </revisionlist>

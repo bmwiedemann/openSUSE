@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 28 07:26:10 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.5:
+  * Fix heap out-of-bounds access in tile-part dispatch
+  * See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.18.5
+
+-------------------------------------------------------------------
+Tue Apr 28 07:25:35 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.4:
+  * Fix heap buffer overflow vulnerability in PPM packet header parsing
+  * See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.18.4
+
+-------------------------------------------------------------------
 Fri Apr 24 07:12:01 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.3:
