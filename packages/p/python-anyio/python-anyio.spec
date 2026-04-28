@@ -26,31 +26,31 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-anyio%{psuffix}
-Version:        4.12.1
+Version:        4.13.0
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
 URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module setuptools_scm >= 6.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210127.3a18043
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module anyio = %{version}}
-BuildRequires:  %{python_module blockbuster}
-BuildRequires:  %{python_module exceptiongroup}
-BuildRequires:  %{python_module hypothesis >= 4.0}
+BuildRequires:  %{python_module blockbuster >= 1.5.23}
+BuildRequires:  %{python_module exceptiongroup >= 1.0.2}
+BuildRequires:  %{python_module hypothesis >= 4.18.2}
 BuildRequires:  %{python_module psutil >= 5.9}
-BuildRequires:  %{python_module pytest >= 7.0}
-BuildRequires:  %{python_module pytest-mock >= 3.6.1}
-BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module trio >= 0.31.0}
-BuildRequires:  %{python_module trustme}
-BuildRequires:  %{python_module truststore}
-BuildRequires:  %{python_module uvloop}
+BuildRequires:  %{python_module pytest >= 8.4}
+BuildRequires:  %{python_module pytest-mock >= 3.14}
+BuildRequires:  %{python_module trio >= 0.32.0}
+BuildRequires:  %{python_module trustme >= 1.0.0}
+BuildRequires:  %{python_module truststore >= 0.9.1}
+BuildRequires:  %{python_module uvloop >= 0.22.1}
 %endif
 # /SECTION
 BuildRequires:  fdupes
@@ -59,9 +59,9 @@ Requires:       python-idna >= 2.8
 Requires:       python-typing_extensions >= 4.5
 %endif
 %if 0%{?python_version_nodots} < 311
-Requires:       python-exceptiongroup
+Requires:       python-exceptiongroup >= 1.0.2
 %endif
-Suggests:       python-trio >= 0.31.0
+Suggests:       python-trio >= 0.32.0
 BuildArch:      noarch
 %python_subpackages
 

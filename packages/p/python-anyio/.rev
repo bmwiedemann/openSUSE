@@ -529,4 +529,35 @@ SR for python stack proposal</comment>
     methods</comment>
     <requestid>1336595</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>21224e515ce2cbae7784d39fbb08b581</srcmd5>
+    <version>4.13.0</version>
+    <time>1777370025</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.13.0:
+  * Dropped support for Python 3.9
+  * Added a ttl parameter to the anyio.functools.lru_cache
+    wrapper
+  * Widened the type annotations of file I/O streams to accept
+    IO[bytes] instead of just BinaryIO
+  * Fixed anyio.Path not being compatible with Python 3.15 due to
+    the removal of pathlib.Path.is_reserved() and the addition of
+    pathlib.Path.__vfspath__()
+  * Fixed the BrokenResourceError raised by the asyncio
+    SocketStream not having the original exception as its cause
+  * Fixed the TypeError raised when using &quot;func&quot; as a parameter
+    name in pytest.mark.parametrize when using the pytest plugin
+  * Fixed the pytest plugin not running tests that had the anyio
+    marker added programmatically via
+    pytest_collection_modifyitems
+  * Fixed cancellation exceptions leaking from a CancelScope on
+    asyncio when they are contained in an exception group
+    alongside non-cancellation exceptions
+  * Fixed Condition.wait() not passing on a notification when the
+    task is cancelled but already received a notification
+  * Fixed inverted condition in the process pool shutdown phase
+    which would cause still-running pooled processes not to be
+    terminated</comment>
+    <requestid>1349435</requestid>
+  </revision>
 </revisionlist>

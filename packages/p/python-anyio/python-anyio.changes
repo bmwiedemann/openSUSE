@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Apr 26 14:00:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13.0:
+  * Dropped support for Python 3.9
+  * Added a ttl parameter to the anyio.functools.lru_cache
+    wrapper
+  * Widened the type annotations of file I/O streams to accept
+    IO[bytes] instead of just BinaryIO
+  * Fixed anyio.Path not being compatible with Python 3.15 due to
+    the removal of pathlib.Path.is_reserved() and the addition of
+    pathlib.Path.__vfspath__()
+  * Fixed the BrokenResourceError raised by the asyncio
+    SocketStream not having the original exception as its cause
+  * Fixed the TypeError raised when using "func" as a parameter
+    name in pytest.mark.parametrize when using the pytest plugin
+  * Fixed the pytest plugin not running tests that had the anyio
+    marker added programmatically via
+    pytest_collection_modifyitems
+  * Fixed cancellation exceptions leaking from a CancelScope on
+    asyncio when they are contained in an exception group
+    alongside non-cancellation exceptions
+  * Fixed Condition.wait() not passing on a notification when the
+    task is cancelled but already received a notification
+  * Fixed inverted condition in the process pool shutdown phase
+    which would cause still-running pooled processes not to be
+    terminated
+
+-------------------------------------------------------------------
 Wed Mar  4 21:31:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.12.1:
