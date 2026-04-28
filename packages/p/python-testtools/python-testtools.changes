@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 25 21:33:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.1:
+  * Don't leak testtools-specific exception details into
+  * ``unittest.TestResult`` error reports when using a stdlib
+    ``TestResult``.
+
+-------------------------------------------------------------------
 Sun Apr 12 21:10:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.0:

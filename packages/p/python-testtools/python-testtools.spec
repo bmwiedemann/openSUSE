@@ -26,12 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-testtools%{psuffix}
-Version:        2.9.0
+Version:        2.9.1
 Release:        0
 Summary:        Extensions to the Python Standard Library Unit Testing Framework
 License:        MIT
 URL:            https://github.com/testing-cabal/testtools
 Source0:        https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -53,7 +54,8 @@ Recommends:     python-fixtures >= 2.0
 testtools is a set of extensions to the Python standard library's unit tests
 framework. These extensions have been derived from many years of experience
 with unit tests in Python and come from many different sources. testtools
-also ports recent unittest changes all the way back to Python 2.4.
+gives you the very latest in unit testing technology in a way that will
+work with Python 3.10+ and PyPy3.
 
 %prep
 %autosetup -p1 -n testtools-%{version}
