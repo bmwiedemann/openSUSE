@@ -41,7 +41,7 @@
 %global big_endian 1
 %endif
 Name:           mozjs%{major}
-Version:        140.8.0
+Version:        140.10.0
 Release:        1%{?dist}
 Summary:        SpiderMonkey JavaScript library
 License:        MPL-2.0
@@ -77,6 +77,12 @@ Patch15:        spidermonkey_checks_disable.patch
 Patch18:        spidermonkey_style_check_disable_s390x.patch
 # PATCH-FIX-OPENSUSE
 Patch20:        Fix-i586-float-math.patch
+# PATCH-FIX-UPSTREAM mozjs140-CVE-2026-32776.patch bsc#1259728 mgorse@suse.com -- libexpat: NULL pointer dereference when processing empty external parameter entities inside an entity declaration value
+Patch21:        mozjs140-CVE-2026-32776.patch
+# PATCH-FIX-UPSTREAM mozjs140-CVE-2026-32777.patch bsc#1259713 mgorse@suse.com -- libexpat: denial of service due to infinite loop in DTD content parsing
+Patch22:        mozjs140-CVE-2026-32777.patch
+# PATCH-FIX-UPSTREAM mozjs140-CVE-2026-32778.patch bsc#1259731 mgorse@suse.com -- libexpat: NULL pointer dereference in `setContext` on retry after an out-of-memory condition
+Patch23:        mozjs140-CVE-2026-32778.patch
 BuildRequires:  cargo
 BuildRequires:  ccache
 BuildRequires:  clang
@@ -160,6 +166,9 @@ pushd ../..
 %patch -P 18 -p1
 %endif
 %patch -P 20 -p1
+%patch -P 21 -p1
+%patch -P 22 -p1
+%patch -P 23 -p1
 
 %if %{pkg_vcmp libicu-devel >= 76.1}
 sed -i 's/icu-i18n/icu-uc &/' js/moz.configure

@@ -81,4 +81,20 @@
     <comment></comment>
     <requestid>1334732</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9ea67272c5a902e665be14bc57bdd344</srcmd5>
+    <version>140.10.0</version>
+    <time>1777379381</time>
+    <user>anag_factory</user>
+    <comment>- Add security fixes:
+  + mozjs140-CVE-2026-32776.patch (bsc#1259728 CVE-2026-32776)
+  + mozjs140-CVE-2026-32777.patch (bsc#1259713 CVE-2026-32777)
+  + mozjs140-CVE-2026-32778.patch (bsc#1259731 CVE-2026-32778)
+
+- Update to version 140.10.0:
+  + Security Vulnerabilities fixed in Firefox ESR 140.10
+  + See https://www.firefox.com/en-US/firefox/140.10.0/releasenotes/
+  + See https://www.firefox.com/en-US/firefox/140.9.0/releasenotes/</comment>
+    <requestid>1349527</requestid>
+  </revision>
 </revisionlist>
