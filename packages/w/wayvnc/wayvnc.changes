@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:20:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  * Multiple outputs can now be captured using the --desktop flag. They will
+    all be composited into one large framebuffer based on the compositor's
+    layout.
+  * It is now possible to listen on multiple endpoints by setting multiple
+    listening addresses. See the man page for more information.
+  * A custom desktop name can now be set thanks to Attila Fidan. The desktop name
+    is usually displayed in the title bar or the VNC client.
+  * Legacy DES authentication has been implemented by Andrian Budantsov along
+    with support for older versions including 3.3 and 3.7. This allows people to
+    connect using legacy software such as Remote Desktop on Mac OS.
+  * The forward and back mouse buttons should now work on clients that support
+    them.
+
+-------------------------------------------------------------------
 Tue Jan  7 11:07:55 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.1:

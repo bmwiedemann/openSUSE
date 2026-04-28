@@ -1,7 +1,7 @@
 #
 # spec file for package wayvnc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wayvnc
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        A VNC server for wlroots based Wayland compositors
 License:        ISC
@@ -25,7 +25,7 @@ Group:          System/GUI/Other
 URL:            https://github.com/any1/wayvnc
 Source0:        https://github.com/any1/wayvnc/archive/v%{version}.tar.gz
 BuildRequires:  meson
-BuildRequires:  neatvnc-devel >= 0.9.0
+BuildRequires:  neatvnc-devel >= 1.0.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
