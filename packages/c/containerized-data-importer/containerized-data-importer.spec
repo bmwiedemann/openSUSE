@@ -1,7 +1,7 @@
 #
 # spec file for package containerized-data-importer
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %endif
 
 Name:           containerized-data-importer
-Version:        1.64.0
+Version:        1.65.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
