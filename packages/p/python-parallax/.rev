@@ -183,4 +183,26 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1282024</requestid>
   </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>01ce2715739b0acdc7210ff322f762d1</srcmd5>
+    <version>1.0.8</version>
+    <time>1777370145</time>
+    <user>anag_factory</user>
+    <comment>- reset alternative for TW
+
+  Add patch 0001-Fix-manager-writer-thread-can-only-be-started-once-b.patch
+- Release 1.0.8
+  Add patch 0003-Fix-task-Don-t-use-ssh-if-command-running-on-local-b.patch
+  Add patch 0001-Add-ssh_key-option-used-by-i-option-of-ssh-scp.patch
+- Work around hidden python packaging magic (bsc#1131136)
+- Obsolete old python-parallax package (bsc#1103832)
+- Fix super call for python2 (bsc#1099514)
+- Add to_ascii function to convert byte message to str (bsc#1066330)
+- Switch to new singlespec packaging
+- Fix broken build for non-SUSE distributions (again)
+- Fix broken package build for non-SUSE distributions
+- Add alternatives entry for parallax-askpass
+- Initial release.</comment>
+    <requestid>1349428</requestid>
+  </revision>
 </revisionlist>

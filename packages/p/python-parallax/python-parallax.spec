@@ -1,7 +1,7 @@
 #
 # spec file for package python-parallax
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %define oldpython python
 Name:           python-parallax
@@ -34,12 +40,12 @@ BuildRequires:  python-rpm-macros
 Requires:       openssh
 Obsoletes:      %{oldpython}-parallax < %{version}
 BuildArch:      noarch
-%if 0%{?suse_version}
-Requires(post): alts
-Requires(postun): alts
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
 %else
-Requires(post): %{_sbindir}/update-alternatives
-Requires(postun): %{_sbindir}/update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %endif
 %python_subpackages
 
@@ -59,6 +65,9 @@ multiple nodes using SCP.
 %python_clone -a %{buildroot}%{_bindir}/parallax-askpass
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%pre
+%python_reset_alternative parallax-askpass
 
 %post
 %python_install_alternative parallax-askpass
