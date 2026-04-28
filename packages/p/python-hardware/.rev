@@ -21,4 +21,12 @@
     * fix: use --random_generator=tausworthe64</comment>
     <requestid>1229248</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f917b4cae466fbf2e0c9cf62e7ff7de3</srcmd5>
+    <version>0.32.0</version>
+    <time>1777370158</time>
+    <user>anag_factory</user>
+    <comment>- reset alternative for TW</comment>
+    <requestid>1349431</requestid>
+  </revision>
 </revisionlist>
