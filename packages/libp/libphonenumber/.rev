@@ -156,4 +156,12 @@
     <comment></comment>
     <requestid>1345961</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cd4fec9a951c71f644d9f3e017d38989</srcmd5>
+    <version>9.0.29</version>
+    <time>1777379409</time>
+    <user>anag_factory</user>
+    <comment>libphonenumber 9.0.29 (forwarded request 1349332 from AndreasStieger)</comment>
+    <requestid>1349596</requestid>
+  </revision>
 </revisionlist>
