@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 27 06:35:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 12.0.1:
+  * Defer logging and warnings imports out of the cold-load path: the
+    stdlib logging import pulls in traceback (and _colorize on Python
+    3.14+), which dominates import time on slow architectures like
+    i586. Closes {issue}494
+  * Loosen the test_import_time threshold from 500 ms to 1000 ms as a
+    safety margin for slower architectures.
+
+-------------------------------------------------------------------
 Sun Apr 26 09:16:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 12.0.0:
