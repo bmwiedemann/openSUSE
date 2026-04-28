@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 27 09:58:25 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.10
+  * Update Aliyun OpenAPI meta data
+- from version 3.3.9
+  * {Config} Add safety policy env parsing by @AllyW in (#1307)
+  * Update Aliyun OpenAPI meta data
+- from version 3.3.8
+  * {Core} Add plugin install --package and plugin show by @AllyW in (#1301)
+  * Update Aliyun OpenAPI meta data
+- from version 3.3.7
+  * {config} Fix: Only honor ALIBABA_CLOUD_ENDPOINT for profile
+    endpoint env injection by @AllyW in (#1304)
+  * Update Aliyun OpenAPI meta data
+- from version 3.3.6
+  * {Core} Fix endpoint shorthand flag -e of oss by @AllyW in (#1303)
+  * Update Aliyun OpenAPI meta data
+- from version 3.3.5
+  * feat: profile support endpoint flag by @crimson-gao in (#1298)
+  * {Core} Add aliyun upgrade and configurable plugin index source and
+    fix CloudSSO/OAuth one-off CLI flags persisting by @AllyW in (#1299)
+  * Update Aliyun OpenAPI meta data
+
+-------------------------------------------------------------------
 Wed Apr  8 06:25:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.4
