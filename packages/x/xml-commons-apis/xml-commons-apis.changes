@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:23:29 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Clean up the license tag
+
+-------------------------------------------------------------------
 Thu Sep 19 15:03:31 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible builds

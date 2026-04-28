@@ -1,7 +1,7 @@
 #
 # spec file for package xml-commons-apis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           xml-commons-apis
 Version:        1.4.01
 Release:        0
 Summary:        APIs for DOM, SAX, and JAXP
-License:        Apache-2.0 AND W3C AND SUSE-Public-Domain
+License:        Apache-2.0 AND W3C AND LicenseRef-SUSE-Public-Domain
 Group:          Development/Libraries/Java
 URL:            https://xml.apache.org/commons/
 # From source control because the published tarball doesn't include some docs:

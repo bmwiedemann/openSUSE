@@ -49,4 +49,12 @@
     <comment>Bit-reproducible build</comment>
     <requestid>1202038</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c42b2df5f5977f8c13d4123988a249ce</srcmd5>
+    <version>1.4.01</version>
+    <time>1777379394</time>
+    <user>anag_factory</user>
+    <comment>Fix license reference</comment>
+    <requestid>1349573</requestid>
+  </revision>
 </revisionlist>
