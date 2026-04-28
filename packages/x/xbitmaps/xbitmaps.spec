@@ -1,7 +1,7 @@
 #
 # spec file for package xbitmaps
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           xbitmaps
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Base X bitmaps
 License:        X11
 Group:          Development/Libraries/C and C++
 URL:            http://xorg.freedesktop.org/releases/individual/data/
 Source:         http://xorg.freedesktop.org/releases/individual/data/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros) >= 1.3
 BuildArch:      noarch
@@ -44,11 +45,11 @@ legacy X clients.
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %defattr(-,root,root)

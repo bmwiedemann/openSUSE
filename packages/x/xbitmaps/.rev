@@ -92,4 +92,15 @@
     <comment></comment>
     <requestid>1082710</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>129753590c6fad83055f5e12fb14da92</srcmd5>
+    <version>1.1.4</version>
+    <time>1777370042</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.4
+  * This release adds support for building with meson as well as
+    autoconf.
+- switch to meson</comment>
+    <requestid>1349324</requestid>
+  </revision>
 </revisionlist>
