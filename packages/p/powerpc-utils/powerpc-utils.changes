@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 27 10:13:45 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 1.3.14 (jsc#PED-14528)
+  * Unified version number across tools
+  * Add Resource group monitoring support to lparstat (jsc#PED-14516).
+  * lparstat: print 'Maximum System Processors'
+  * lsslot: don't report an error for an empty PHB list
+- Drop upstreamed patches
+  * smtstate-Start-smtstate-service-after-network-target.patch
+  * lparstat-Use-pool_capacity-for-determining-active-cp.patch
+  * sys_ident-Quiet-strncpy-warning.patch
+  * nvram.c-Correct-librtas-function-prototypes.patch
+  * pseries_platform.h-Fix-ifdef-guard-typo.patch
+  * Fix-HNV-installation-network-conflicts-across-all-di.patch
+  * lparstat-print-memory-mode-correctly.patch
+  * ppc64_cpu-Fix-handling-of-non-contiguous-CPU-IDs.patch
+  * cpu_info_helpers-Add-helper-function-to-retrieve-pre.patch
+  * drmgr-pci-Return-0-for-success-from-do_replace.patch
+  * lparstat-Fix-negative-values-for-idle-PURR.patch
+- Refresh ofpathname_powernv.patch
+
+-------------------------------------------------------------------
 Tue Oct 21 09:47:28 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Also start smt_off service after networking (bsc#1249152 ltc#214730)

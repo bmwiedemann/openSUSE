@@ -1,7 +1,7 @@
 #
 # spec file for package powerpc-utils
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           powerpc-utils
-Version:        1.3.13
+Version:        1.3.14
 Release:        0
 Summary:        Utilities for PowerPC Hardware
 License:        GPL-2.0-or-later
@@ -25,17 +25,6 @@ Group:          System/Management
 URL:            https://github.com/ibm-power-utilities/powerpc-utils
 Source0:        https://github.com/ibm-power-utilities/powerpc-utils/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        nvsetenv
-Patch5:         lparstat-print-memory-mode-correctly.patch
-Patch6:         drmgr-pci-Return-0-for-success-from-do_replace.patch
-Patch7:         lparstat-Fix-negative-values-for-idle-PURR.patch
-Patch8:         Fix-HNV-installation-network-conflicts-across-all-di.patch
-Patch9:         cpu_info_helpers-Add-helper-function-to-retrieve-pre.patch
-Patch10:        ppc64_cpu-Fix-handling-of-non-contiguous-CPU-IDs.patch
-Patch11:        pseries_platform.h-Fix-ifdef-guard-typo.patch
-Patch12:        sys_ident-Quiet-strncpy-warning.patch
-Patch13:        nvram.c-Correct-librtas-function-prototypes.patch
-Patch14:        smtstate-Start-smtstate-service-after-network-target.patch
-Patch15:        lparstat-Use-pool_capacity-for-determining-active-cp.patch
 Patch41:        powerpc-utils-lsprop.patch
 Patch42:        ofpathname_powernv.patch
 Patch43:        fix_kexec_service_name_for_suse.patch
