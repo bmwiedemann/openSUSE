@@ -43,7 +43,7 @@ ExclusiveArch:  do_not_build
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
-Version:        6.151.9
+Version:        6.152.2
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0

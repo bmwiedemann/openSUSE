@@ -1071,4 +1071,18 @@ This version fixes the license naming issue.</comment>
     <comment></comment>
     <requestid>1336692</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>aa0475ba809357685503a4658bb855cc</srcmd5>
+    <version>6.152.2</version>
+    <time>1777369990</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.152.2:
+  * In many cases where we would have printed a complex
+    expression producing a value, we now print the repr (or a
+    pretty-printed version of it).
+  * Additionally, in some cases where we would print a complex
+    expression that involved a lambda, we are now able to
+    simplify that expression into a more readable one.</comment>
+    <requestid>1349200</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 25 08:34:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.152.2:
+  * In many cases where we would have printed a complex
+    expression producing a value, we now print the repr (or a
+    pretty-printed version of it).
+  * Additionally, in some cases where we would print a complex
+    expression that involved a lambda, we are now able to
+    simplify that expression into a more readable one.
+
+-------------------------------------------------------------------
 Tue Mar  3 11:23:53 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Fix the condition with suse_version macro on SLFO (jsc#PED-15839) 
