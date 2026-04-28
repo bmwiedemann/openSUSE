@@ -147,4 +147,14 @@
   * match version bump to 1.41</comment>
     <requestid>1346297</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4d8f3061e72de79573cf7942737cddc5</srcmd5>
+    <version>0.62b1</version>
+    <time>1777369987</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.62b1:
+  * This is a patch release on the previous 1.41.0/0.62b0
+    release</comment>
+    <requestid>1349195</requestid>
+  </revision>
 </revisionlist>
