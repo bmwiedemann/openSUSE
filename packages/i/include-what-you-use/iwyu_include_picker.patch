@@ -1,8 +1,8 @@
 diff --git a/iwyu_include_picker.cc b/iwyu_include_picker.cc
-index fdb7364..1aa49f5 100644
+index 72cb6cb..5bb8ddc 100644
 --- a/iwyu_include_picker.cc
 +++ b/iwyu_include_picker.cc
-@@ -82,14 +82,14 @@ struct IncludeMapEntry {      // A POD so we can make the input static
+@@ -86,14 +86,14 @@ struct IncludeMapEntry {      // A POD so we can make the input static
  namespace {
  
  // Listed below are all IWYU's native symbol and include mappings,
@@ -19,10 +19,10 @@ index fdb7364..1aa49f5 100644
    // I ignored all entries that only appeared once on the list (eg uint32_t).
    // I then added in NULL, which according to [diff.null] C.2.2.3, can
    // be defined in <clocale>, <cstddef>, <cstdio>, <cstdlib>,
-@@ -339,6 +339,23 @@ const IncludeMapEntry stdlib_cxx_symbol_map[] = {
-   { "std::size_t", kPrivate, "<ctime>", kPublic },
-   { "std::size_t", kPrivate, "<cuchar>", kPublic },
-   { "std::size_t", kPrivate, "<cwchar>", kPublic },
+@@ -399,55 +399,84 @@ const IncludeMapEntry stdlib_cxx_symbol_map[] = {
+   { "std::char_traits<char16_t>", kPrivate, "<istream>", kPublic },
+   { "std::char_traits<char32_t>", kPrivate, "<istream>", kPublic },
+   { "std::char_traits<wchar_t>", kPrivate, "<istream>", kPublic },
 +
 +  { "std::pair", kPrivate, "<map>", kPublic },
 +  { "std::pair", kPrivate, "<multimap>", kPublic },
@@ -41,9 +41,6 @@ index fdb7364..1aa49f5 100644
 +  { "std::wofstream", kPrivate, "<fstream>", kPublic },
 +  { "std::wfstream", kPrivate, "<fstream>", kPublic },
  };
- 
- // Symbol -> include mappings for GNU libstdc++
-@@ -349,51 +366,63 @@ const IncludeMapEntry libstdcpp_symbol_map[] = {
  
  const IncludeMapEntry libc_include_map[] = {
    // Private -> public include mappings for GNU libc
@@ -120,7 +117,7 @@ index fdb7364..1aa49f5 100644
    { "<bits/netdb.h>", kPrivate, "<netdb.h>", kPublic },
    { "<bits/param.h>", kPrivate, "<sys/param.h>", kPublic },
    { "<bits/poll.h>", kPrivate, "<sys/poll.h>", kPrivate },
-@@ -402,8 +431,15 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -456,8 +485,15 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/posix2_lim.h>", kPrivate, "<limits.h>", kPublic },
    { "<bits/posix_opt.h>", kPrivate, "<unistd.h>", kPublic },
    { "<bits/printf-ldbl.h>", kPrivate, "<printf.h>", kPublic },
@@ -136,7 +133,7 @@ index fdb7364..1aa49f5 100644
    { "<bits/sched.h>", kPrivate, "<sched.h>", kPublic },
    { "<bits/select.h>", kPrivate, "<sys/select.h>", kPublic },
    { "<bits/select2.h>", kPrivate, "<sys/select.h>", kPublic },
-@@ -414,42 +450,44 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -468,42 +504,43 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/shm.h>", kPrivate, "<sys/shm.h>", kPublic },
    { "<bits/sigaction.h>", kPrivate, "<signal.h>", kPublic },
    { "<bits/sigcontext.h>", kPrivate, "<signal.h>", kPublic },
@@ -189,12 +186,11 @@ index fdb7364..1aa49f5 100644
    { "<bits/syslog-ldbl.h>", kPrivate, "<sys/syslog.h>", kPrivate },
    { "<bits/syslog-path.h>", kPrivate, "<sys/syslog.h>", kPrivate },
    { "<bits/syslog.h>", kPrivate, "<sys/syslog.h>", kPrivate },
-+  { "<bits/syslog.h>", kPrivate, "<sys/syslog.h>", kPrivate },
 +  { "<bits/sysmacros.h>", kPrivate, "<sys/sysmacros.h>", kPublic },
+   { "<bits/termios-baud.h>", kPrivate, "<termios.h>", kPublic },
    { "<bits/termios-c_cc.h>", kPrivate, "<termios.h>", kPublic },
    { "<bits/termios-c_cflag.h>", kPrivate, "<termios.h>", kPublic },
-   { "<bits/termios-c_iflag.h>", kPrivate, "<termios.h>", kPublic },
-@@ -459,16 +497,52 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -515,18 +552,53 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/termios-struct.h>", kPrivate, "<termios.h>", kPublic },
    { "<bits/termios-tcflow.h>", kPrivate, "<termios.h>", kPublic },
    { "<bits/termios.h>", kPrivate, "<termios.h>", kPublic },
@@ -222,7 +218,6 @@ index fdb7364..1aa49f5 100644
 +  { "<bits/types/sigevent_t.h>", kPrivate, "<signal.h>", kPublic },
    { "<bits/types/siginfo_t.h>", kPrivate, "<signal.h>", kPublic },
 -  { "<bits/types/siginfo_t.h>", kPrivate, "<sys/wait.h>", kPublic },
--  { "<bits/uio.h>", kPrivate, "<sys/uio.h>", kPublic },
 +  { "<bits/types/sigset_t.h>", kPrivate, "<signal.h>", kPublic },
 +  { "<bits/types/sigval_t.h>", kPrivate, "<signal.h>", kPublic },
 +  { "<bits/types/stack_t.h>", kPrivate, "<signal.h>", kPublic },
@@ -232,7 +227,9 @@ index fdb7364..1aa49f5 100644
 +  { "<bits/types/struct_iovec.h>", kPrivate, "<sys/uio.h>", kPublic },
 +  { "<bits/types/struct_itimerspec.h>", kPrivate, "<sys/timerfd.h>", kPublic },
 +  { "<bits/types/struct_osockaddr.h>", kPrivate, "<sys/socket.h>", kPublic },
-+  { "<bits/types/struct_rusage.h>", kPrivate, "<sys/wait.h>", kPublic },
+   { "<bits/types/struct_rusage.h>", kPrivate, "<sys/resource.h>", kPublic },
+   { "<bits/types/struct_sched_param.h>", kPrivate, "<sched.h>", kPublic },
+-  { "<bits/uio.h>", kPrivate, "<sys/uio.h>", kPublic },
 +  { "<bits/types/struct_sigstack.h>", kPrivate, "<signal.h>", kPublic },
 +  { "<bits/types/struct_timeb.h>", kPrivate, "<sys/timeb.h>", kPublic },
 +  { "<bits/types/struct_timespec.h>", kPrivate, "<time.h>", kPublic },
@@ -251,7 +248,7 @@ index fdb7364..1aa49f5 100644
    { "<bits/utmp.h>", kPrivate, "<utmp.h>", kPublic },
    { "<bits/utmpx.h>", kPrivate, "<utmpx.h>", kPublic },
    { "<bits/utsname.h>", kPrivate, "<sys/utsname.h>", kPublic },
-@@ -477,61 +551,155 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -535,61 +607,155 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/wchar-ldbl.h>", kPrivate, "<wchar.h>", kPublic },
    { "<bits/wchar.h>", kPrivate, "<wchar.h>", kPublic },
    { "<bits/wchar2.h>", kPrivate, "<wchar.h>", kPublic },
@@ -423,7 +420,7 @@ index fdb7364..1aa49f5 100644
    // Top-level #includes that just forward to another file:
    // $ for i in /usr/include/*; do [ -f $i ] && [ `wc -l < $i` = 1 ] && echo $i; done
    // (poll.h, syscall.h, syslog.h, ustat.h, wait.h).
-@@ -557,8 +725,9 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -615,8 +781,9 @@ const IncludeMapEntry libc_include_map[] = {
    // $ for i in /usr/include/bits/*; do for dir in asm linux; do grep -H -e $dir/`basename $i` $i; done; done
    { "<linux/errno.h>", kPrivate, "<bits/errno.h>", kPrivate },
    { "<asm/ioctls.h>", kPrivate, "<bits/ioctls.h>", kPrivate },
@@ -434,7 +431,7 @@ index fdb7364..1aa49f5 100644
    // Some asm files have 32- and 64-bit variants:
    // $ ls /usr/include/asm/*_{32,64}.h
    { "<asm/posix_types_32.h>", kPrivate, "<asm/posix_types.h>", kPublic },
-@@ -594,7 +763,7 @@ const IncludeMapEntry stdlib_c_include_map[] = {
+@@ -652,7 +819,7 @@ const IncludeMapEntry stdlib_c_include_map[] = {
    // <cassert> back to <assert.h>.  (If you *did* want to replace
    // assert.h with cassert, you'd change it to a public->private
    // mapping.)  Here is how I identified the files to map:
@@ -443,7 +440,7 @@ index fdb7364..1aa49f5 100644
    //
    // These headers are defined in [headers.cpp.c].
    // https://github.com/cplusplus/draft/blob/c+%2B20/source/lib-intro.tex
-@@ -728,25 +897,29 @@ const IncludeMapEntry stdlib_cpp_include_map[] = {
+@@ -786,25 +953,29 @@ const IncludeMapEntry stdlib_cpp_include_map[] = {
    // #including each other (eg <iostream> #includes <istream>).  We
    // are pretty forgiving: if a user specifies any public header, we
    // generally don't require the others.
@@ -476,7 +473,7 @@ index fdb7364..1aa49f5 100644
  //
  // Do not edit!
  const IncludeMapEntry libstdcpp_include_map[] = {
-@@ -799,9 +972,8 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -857,9 +1028,8 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<bits/stdc++.h>", kPrivate, "<bits/extc++.h>", kPrivate },
    { "<bits/stdc++.h>", kPrivate, "<bits/stdtr1c++.h>", kPrivate },
    { "<bits/stdtr1c++.h>", kPrivate, "<bits/extc++.h>", kPrivate },

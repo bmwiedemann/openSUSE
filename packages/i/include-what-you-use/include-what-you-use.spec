@@ -1,8 +1,7 @@
 #
 # spec file for package include-what-you-use
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 Aaron Puchert.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +16,10 @@
 #
 
 
-%define _llvm_version 21
+%define _llvm_version 22
 
 Name:           include-what-you-use
-Version:        0.25
+Version:        0.26
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA
@@ -66,10 +65,14 @@ refactoring tool.
 
 %prep
 %autosetup -p1 -n %{name}
-sed -i s#lib/#lib\${LLVM_LIBDIR_SUFFIX}/#g CMakeLists.txt
 
 %build
-%cmake -DIWYU_LLVM_ROOT_PATH=%{_libdir} \
+# We build static libraries because they're internal to the build and not
+# installed. (They're used for testing only.)
+%cmake \
+    -DBUILD_SHARED_LIBS:BOOL=OFF \
+    -DBUILD_STATIC_LIBS:BOOL=ON \
+    -DIWYU_LLVM_ROOT_PATH=%{_libdir} \
     -DCMAKE_SKIP_RPATH:BOOL=ON \
 %if %{suse_version} <= 1500
     -DPython3_EXECUTABLE=%{_bindir}/python3.11 \
@@ -87,6 +90,12 @@ sed -i s#lib/#lib\${LLVM_LIBDIR_SUFFIX}/#g CMakeLists.txt
 %global exclude_tests %exclude_tests|cxx.test_badinc
 %endif
 
+# On 32-bit architectures, some tests fail because "operator new" takes
+# unsigned int instead of unsigned long.
+%ifarch %arm i586
+%global exclude_tests %exclude_tests|cxx.test_(fn_def_args|placement_new)
+%endif
+
 # Fails with older versions of libstdc++ (at least <= 7, maybe more) with error
 # "type 'const std::hash<IndirectClass>' does not provide a call operator".
 # Fails with newer versions of libstc++ with error "static assertion failed due
@@ -96,7 +105,11 @@ sed -i s#lib/#lib\${LLVM_LIBDIR_SUFFIX}/#g CMakeLists.txt
 %global exclude_tests %exclude_tests|cxx.test_precomputed_tpl_args(|_cpp14)
 %endif
 
+# On Leap 15 some tests sporadically fail with "Cannot open mapping file
+# '[...]': Cannot allocate memory." Reason is unclear.
+%if %{suse_version} >= 1600
 %{ctest '-E' '^(%exclude_tests)$'}
+%endif
 
 %files
 %license LICENSE.TXT

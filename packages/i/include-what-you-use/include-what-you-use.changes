@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 26 21:00:08 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.26, update LLVM/Clang to version 22.
+  * Many improvements around the understanding of types,
+    particularly templates.
+  * Improve handling of builtin type traits.
+  * Add support for distinguishing function overloads and template
+    specializations in mappings.
+  * Add mapping generator for Windows.h.
+  * Add mapping generator for portable C++ standard library
+    symbols.
+  * Improve libc, libc++ and POSIX mappings.
+- Rebase iwyu_include_picker.patch.
+
+-------------------------------------------------------------------
 Sat Sep 27 21:43:00 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.25, update LLVM/Clang to version 21.

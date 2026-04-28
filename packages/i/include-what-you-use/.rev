@@ -338,4 +338,23 @@
 </comment>
     <requestid>1307511</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>73966f64d314d5fb772249222707b11b</srcmd5>
+    <version>0.26</version>
+    <time>1777370342</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.26, update LLVM/Clang to version 22.
+  * Many improvements around the understanding of types,
+    particularly templates.
+  * Improve handling of builtin type traits.
+  * Add support for distinguishing function overloads and template
+    specializations in mappings.
+  * Add mapping generator for Windows.h.
+  * Add mapping generator for portable C++ standard library
+    symbols.
+  * Improve libc, libc++ and POSIX mappings.
+- Rebase iwyu_include_picker.patch.
+</comment>
+    <requestid>1349675</requestid>
+  </revision>
 </revisionlist>
