@@ -116,4 +116,14 @@
     in LoggingHandler.emit to prevent deadlock</comment>
     <requestid>1346292</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f08ab1133f31466d97dccdfd22c82a56</srcmd5>
+    <version>0.62b1</version>
+    <time>1777370077</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.62b1:
+  * This is a patch release on the previous 1.41.0/0.62b0
+    release</comment>
+    <requestid>1349193</requestid>
+  </revision>
 </revisionlist>
