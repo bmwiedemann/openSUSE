@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 25 22:43:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.142
+  * New HTTP-STREAMS plugin for persistent http(s) connections
+    ("streams") to accelerate client threads.
+  * Update heap memory management to free all auxiliary hash
+    table data upon calling `soap_end()`, i.e. in addition to
+    `soap_done()`, unless compiled in DEBUG mode that verifies
+    memory consistency keeping auxiliary data until `soap_done()`
+    is called.
+
+-------------------------------------------------------------------
 Thu Feb 19 18:18:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.140
