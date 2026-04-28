@@ -3517,6 +3517,7 @@ unsorted:
   - drumstick-lang 
   - drumstick-mimetypes 
   - drush 
+  - ds4drv 
   - dsda-doom 
   - dssi 
   - dssi-devel 
@@ -10664,17 +10665,6 @@ unsorted:
   - kubernetes-scheduler-minus1 
   - kubernetes-scheduler-minus2 
   - kubernetes-scheduler-minus3 
-  - kubernetes1.32-apiserver 
-  - kubernetes1.32-client 
-  - kubernetes1.32-client-bash-completion 
-  - kubernetes1.32-client-common 
-  - kubernetes1.32-client-fish-completion 
-  - kubernetes1.32-controller-manager 
-  - kubernetes1.32-kubeadm 
-  - kubernetes1.32-kubelet 
-  - kubernetes1.32-kubelet-common 
-  - kubernetes1.32-proxy 
-  - kubernetes1.32-scheduler 
   - kubernetes1.33-apiserver 
   - kubernetes1.33-client 
   - kubernetes1.33-client-bash-completion 
@@ -12074,7 +12064,7 @@ unsorted:
   - libamd-doc 
   - libamd_comgr3 
   - libamd_comgr3-devel 
-  - libaml0 
+  - libaml1 
   - libancient2 
   - libangelscript2_38_0 
   - libangelscript_addons2_38_0 
@@ -12809,7 +12799,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_42 
+  - libcpp-httplib0_43 
   - libcpptrace1 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
@@ -13103,7 +13093,7 @@ unsorted:
   - libedit-devel 
   - libedit0-32bit 
   - libeditorconfig-devel 
-  - libeduvpn_common-5_0_1 
+  - libeduvpn_common-5_0_2 
   - libefa1-32bit 
   - libei-devel 
   - libeiskaltdcpp2_4 
@@ -13850,7 +13840,7 @@ unsorted:
   - libgsm-devel-32bit 
   - libgsm-utils 
   - libgsm1-32bit 
-  - libgsoap-2_8_140 
+  - libgsoap-2_8_142 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
   - libgstadaptivedemux-1_0-0-32bit 
@@ -14963,7 +14953,7 @@ unsorted:
   - libndp-devel 
   - libndpi-devel 
   - libndpi4 
-  - libneatvnc0 
+  - libneatvnc1 
   - libneko2 
   - libnemo-extension1 
   - libneon-devel 
@@ -24959,6 +24949,7 @@ unsorted:
   - python311-azure-mgmt-hdinsightcontainers 
   - python311-azure-mgmt-healthcareapis 
   - python311-azure-mgmt-healthdataaiservices 
+  - python311-azure-mgmt-horizondb 
   - python311-azure-mgmt-hybridcompute 
   - python311-azure-mgmt-hybridconnectivity 
   - python311-azure-mgmt-hybridcontainerservice 
@@ -25048,6 +25039,7 @@ unsorted:
   - python311-azure-mgmt-redis 
   - python311-azure-mgmt-redisenterprise 
   - python311-azure-mgmt-regionmove 
+  - python311-azure-mgmt-relationships 
   - python311-azure-mgmt-relay 
   - python311-azure-mgmt-reservations 
   - python311-azure-mgmt-resource 
@@ -25073,6 +25065,7 @@ unsorted:
   - python311-azure-mgmt-servicebus 
   - python311-azure-mgmt-servicefabric 
   - python311-azure-mgmt-servicefabricmanagedclusters 
+  - python311-azure-mgmt-servicegroups 
   - python311-azure-mgmt-servicelinker 
   - python311-azure-mgmt-servicenetworking 
   - python311-azure-mgmt-signalr 
@@ -25610,6 +25603,7 @@ unsorted:
   - python311-docopt 
   - python311-docopt-ng 
   - python311-docrepr 
+  - python311-docstring-parser 
   - python311-docstring-to-markdown 
   - python311-docutils 
   - python311-docutils-ast-writer 
@@ -25873,6 +25867,7 @@ unsorted:
   - python311-google-cloud-appengine-logging 
   - python311-google-cloud-artifact-registry 
   - python311-google-cloud-audit-log 
+  - python311-google-cloud-bigtable 
   - python311-google-cloud-build 
   - python311-google-cloud-compute 
   - python311-google-cloud-core 
@@ -26869,6 +26864,7 @@ unsorted:
   - python311-proton-vpn-local-agent 
   - python311-proxmoxer 
   - python311-pscript 
+  - python311-psdtags 
   - python311-psychtoolbox 
   - python311-psycopg 
   - python311-psycopg-c 
@@ -27312,6 +27308,7 @@ unsorted:
   - python311-python-mpv 
   - python311-python-multipart 
   - python311-python-nmap 
+  - python311-python-on-whales 
   - python311-python-openid-cla 
   - python311-python-openid-teams 
   - python311-python-oxmsg 
@@ -27841,7 +27838,6 @@ unsorted:
   - python311-three-merge 
   - python311-thrift 
   - python311-thriftpy2 
-  - python311-tifffile 
   - python311-tiktoken 
   - python311-time-machine 
   - python311-time-travel 
@@ -28103,6 +28099,7 @@ unsorted:
   - python311-xlsx2csv 
   - python311-xlwt 
   - python311-xmldiff 
+  - python311-xmljson 
   - python311-xmlschema 
   - python311-xmlsec 
   - python311-xmltodict 
@@ -28868,6 +28865,7 @@ unsorted:
   - python313-azure-mgmt-hdinsightcontainers 
   - python313-azure-mgmt-healthcareapis 
   - python313-azure-mgmt-healthdataaiservices 
+  - python313-azure-mgmt-horizondb 
   - python313-azure-mgmt-hybridcompute 
   - python313-azure-mgmt-hybridconnectivity 
   - python313-azure-mgmt-hybridcontainerservice 
@@ -28957,6 +28955,7 @@ unsorted:
   - python313-azure-mgmt-redis 
   - python313-azure-mgmt-redisenterprise 
   - python313-azure-mgmt-regionmove 
+  - python313-azure-mgmt-relationships 
   - python313-azure-mgmt-relay 
   - python313-azure-mgmt-reservations 
   - python313-azure-mgmt-resource 
@@ -28982,6 +28981,7 @@ unsorted:
   - python313-azure-mgmt-servicebus 
   - python313-azure-mgmt-servicefabric 
   - python313-azure-mgmt-servicefabricmanagedclusters 
+  - python313-azure-mgmt-servicegroups 
   - python313-azure-mgmt-servicelinker 
   - python313-azure-mgmt-servicenetworking 
   - python313-azure-mgmt-signalr 
@@ -29518,6 +29518,7 @@ unsorted:
   - python313-docopt 
   - python313-docopt-ng 
   - python313-docrepr 
+  - python313-docstring-parser 
   - python313-docstring-to-markdown 
   - python313-docutils 
   - python313-docutils-ast-writer 
@@ -29785,6 +29786,7 @@ unsorted:
   - python313-google-cloud-appengine-logging 
   - python313-google-cloud-artifact-registry 
   - python313-google-cloud-audit-log 
+  - python313-google-cloud-bigtable 
   - python313-google-cloud-build 
   - python313-google-cloud-compute 
   - python313-google-cloud-core 
@@ -30803,6 +30805,7 @@ unsorted:
   - python313-proton-vpn-local-agent 
   - python313-proxmoxer 
   - python313-pscript 
+  - python313-psdtags 
   - python313-psychtoolbox 
   - python313-psycopg 
   - python313-psycopg-c 
@@ -31245,6 +31248,7 @@ unsorted:
   - python313-python-mpv 
   - python313-python-multipart 
   - python313-python-nmap 
+  - python313-python-on-whales 
   - python313-python-openid-cla 
   - python313-python-openid-teams 
   - python313-python-oxmsg 
@@ -32040,6 +32044,7 @@ unsorted:
   - python313-xlsx2csv 
   - python313-xlwt 
   - python313-xmldiff 
+  - python313-xmljson 
   - python313-xmlschema 
   - python313-xmlsec 
   - python313-xmltodict 
@@ -32460,6 +32465,7 @@ unsorted:
   - python314-application 
   - python314-applicationinsights 
   - python314-apprise 
+  - python314-apptools 
   - python314-apsw 
   - python314-arabic-reshaper 
   - python314-archmage 
@@ -32780,6 +32786,7 @@ unsorted:
   - python314-azure-mgmt-hdinsightcontainers 
   - python314-azure-mgmt-healthcareapis 
   - python314-azure-mgmt-healthdataaiservices 
+  - python314-azure-mgmt-horizondb 
   - python314-azure-mgmt-hybridcompute 
   - python314-azure-mgmt-hybridconnectivity 
   - python314-azure-mgmt-hybridcontainerservice 
@@ -32869,6 +32876,7 @@ unsorted:
   - python314-azure-mgmt-redis 
   - python314-azure-mgmt-redisenterprise 
   - python314-azure-mgmt-regionmove 
+  - python314-azure-mgmt-relationships 
   - python314-azure-mgmt-relay 
   - python314-azure-mgmt-reservations 
   - python314-azure-mgmt-resource 
@@ -32894,6 +32902,7 @@ unsorted:
   - python314-azure-mgmt-servicebus 
   - python314-azure-mgmt-servicefabric 
   - python314-azure-mgmt-servicefabricmanagedclusters 
+  - python314-azure-mgmt-servicegroups 
   - python314-azure-mgmt-servicelinker 
   - python314-azure-mgmt-servicenetworking 
   - python314-azure-mgmt-signalr 
@@ -33217,6 +33226,7 @@ unsorted:
   - python314-cssselect2 
   - python314-cssutils 
   - python314-cstruct 
+  - python314-csvkit 
   - python314-ctranslate2 
   - python314-ctypesgen 
   - python314-cucumber-expressions 
@@ -33234,6 +33244,7 @@ unsorted:
   - python314-daemonize 
   - python314-daiquiri 
   - python314-dasbus 
+  - python314-dash 
   - python314-dash-core-components 
   - python314-dash-html-components 
   - python314-dash-renderer 
@@ -33428,6 +33439,7 @@ unsorted:
   - python314-docopt 
   - python314-docopt-ng 
   - python314-docrepr 
+  - python314-docstring-parser 
   - python314-docstring-to-markdown 
   - python314-docutils 
   - python314-docutils-ast-writer 
@@ -33497,6 +33509,7 @@ unsorted:
   - python314-entrypoints 
   - python314-envier 
   - python314-environmental-override 
+  - python314-envisage 
   - python314-envs 
   - python314-enzyme 
   - python314-ephem 
@@ -33693,6 +33706,7 @@ unsorted:
   - python314-google-cloud-appengine-logging 
   - python314-google-cloud-artifact-registry 
   - python314-google-cloud-audit-log 
+  - python314-google-cloud-bigtable 
   - python314-google-cloud-build 
   - python314-google-cloud-compute 
   - python314-google-cloud-core 
@@ -34404,6 +34418,7 @@ unsorted:
   - python314-notify2 
   - python314-nox 
   - python314-npTDMS 
+  - python314-nptyping 
   - python314-nss 
   - python314-ntc-templates 
   - python314-ntfy 
@@ -34415,6 +34430,8 @@ unsorted:
   - python314-numexpr 
   - python314-numpy 
   - python314-numpy-devel 
+  - python314-numpy1 
+  - python314-numpy1-devel 
   - python314-numpydoc 
   - python314-nvim-remote 
   - python314-nwdiag 
@@ -34600,6 +34617,7 @@ unsorted:
   - python314-pep440 
   - python314-pep8-naming 
   - python314-peppercorn 
+  - python314-percy 
   - python314-perf 
   - python314-perky 
   - python314-persistent 
@@ -34703,6 +34721,7 @@ unsorted:
   - python314-proton-vpn-local-agent 
   - python314-proxmoxer 
   - python314-pscript 
+  - python314-psdtags 
   - python314-psutil 
   - python314-psychtoolbox 
   - python314-psycopg 
@@ -34829,6 +34848,7 @@ unsorted:
   - python314-pyenchant 
   - python314-pyerfa 
   - python314-pyexmdb 
+  - python314-pyface 
   - python314-pyfakefs 
   - python314-pyfeyn 
   - python314-pyfiglet 
@@ -35154,6 +35174,7 @@ unsorted:
   - python314-python-mpv 
   - python314-python-multipart 
   - python314-python-nmap 
+  - python314-python-on-whales 
   - python314-python-openid-cla 
   - python314-python-openid-teams 
   - python314-python-oxmsg 
@@ -35610,6 +35631,7 @@ unsorted:
   - python314-stopit 
   - python314-straight-plugin 
   - python314-streamdeck 
+  - python314-streamz 
   - python314-strict-rfc3339 
   - python314-strictyaml 
   - python314-stripe 
@@ -35733,6 +35755,7 @@ unsorted:
   - python314-tqdm 
   - python314-traitlets 
   - python314-traits 
+  - python314-traitsui 
   - python314-traittypes 
   - python314-trakit 
   - python314-transaction 
@@ -35948,6 +35971,7 @@ unsorted:
   - python314-xlsx2csv 
   - python314-xlwt 
   - python314-xmldiff 
+  - python314-xmljson 
   - python314-xmlschema 
   - python314-xmlsec 
   - python314-xmltodict 
@@ -38568,6 +38592,7 @@ unsorted:
   - suse-xsl-stylesheets 
   - suseconnect-ng 
   - suseconnect-ruby-bindings 
+  - susedialog 
   - susefirewall2-to-firewalld 
   - suseprime-appindicator 
   - svg-schema 
