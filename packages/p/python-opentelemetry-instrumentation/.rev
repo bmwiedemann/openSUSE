@@ -174,4 +174,14 @@
 - drop wrapt2.patch (upstream)</comment>
     <requestid>1346226</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>24a783a8db3cbe403ef941262a549fdd</srcmd5>
+    <version>0.62b1</version>
+    <time>1777370075</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.62b1:
+  * This is a patch release on the previous 1.41.0/0.62b0
+    release</comment>
+    <requestid>1349191</requestid>
+  </revision>
 </revisionlist>
