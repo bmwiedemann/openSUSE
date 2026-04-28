@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 27 12:03:07 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Fix build with glibc 2.43 (boo#1257312)
++ Add patch:
+  - glibc243.patch
+
+-------------------------------------------------------------------
 Tue Jan 27 06:28:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.0.10 based on build 25056151: (boo#1257357):

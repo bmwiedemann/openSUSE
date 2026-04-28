@@ -1,7 +1,6 @@
 #
 # spec file for package open-vm-tools
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
@@ -164,6 +163,7 @@ ExclusiveArch:  %ix86 x86_64 aarch64
 #SUSE specific patches
 Patch0:         pam-vmtoolsd.patch
 Patch1:         detect-suse-location.patch
+Patch2:         glibc243.patch
 
 %if 0%{?suse_version} >= 1500
 %systemd_ordering
@@ -266,6 +266,7 @@ sed -i -e "s/\r//" README
 #SUSE specific patches
 %patch -P 0 -p2
 %patch -P 1 -p2
+%patch -P 2 -p2
 
 %build
 autoreconf -fi
