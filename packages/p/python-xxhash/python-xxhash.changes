@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 25 20:56:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.0:
+  * Drop support for Python 3.7
+
+-------------------------------------------------------------------
 Mon Oct 20 13:55:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.6.0
