@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr 25 10:50:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.19
+  * CMake build system.
+  * Large files support to use profiles up to 4Gb.
+  * Black point compensation works on multi-channel profiles.
+  * jpgicc banner is not shown on normal operation, only when help
+    is requested.
+  * Added a way to access internal transform pipelines.
+  * Add a way to retrieve the CMM signature.
+  * Added extra checks on postscript undocumented functions.
+  * Added guard on integer overflow when reading .cube files.
+  * Added unneeded checks as a try to get rid of spam reports about
+    "vulnerabilities" that are not real.
+  * Creating an output profile by cmsTransform2DeviceLink does not
+    propagate correctly the colorant table.
+  * Added some profile class definitions from iccMAX.
+  * Deprecated uint16 and uint32 types removed from tifdiff.
+  * fixed generation of tifdiff on Cmake and meson.
+
+-------------------------------------------------------------------
 Fri Apr 10 20:15:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.18
