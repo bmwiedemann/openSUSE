@@ -7440,4 +7440,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.19.12 &amp; other fixes; bugs: bsc#1012628</comment>
     <requestid>1346349</requestid>
   </revision>
+  <revision rev="836" vrev="1">
+    <srcmd5>9b86ebabf207cfeaf905702f709f5558</srcmd5>
+    <version>7.0.1</version>
+    <time>1777370065</time>
+    <user>anag_factory</user>
+    <comment>7.0.1 &amp; ARMs enabled; bugs: bsc#1012628 bsc#1243081 bsc#1258936 bsc#1259065 bsc#1259358 bsc#1259459 bsc#1259701 bsc#1261843 bsc#1262308</comment>
+    <requestid>1349044</requestid>
+  </revision>
 </revisionlist>

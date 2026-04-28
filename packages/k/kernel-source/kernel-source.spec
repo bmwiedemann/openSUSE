@@ -16,9 +16,9 @@
 #
 
 
-%define srcversion 6.19
-%define patchversion 6.19.12
-%define git_commit c7234f7435aefeda97031bd56ce6912c3fe2a3ce
+%define srcversion 7.0
+%define patchversion 7.0.1
+%define git_commit 7cb5b59b438eeb1eff7197a4aa2436724f83737b
 %define variant %{nil}
 %define gcc_package gcc
 %define gcc_compiler gcc
@@ -28,9 +28,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source
-Version:        6.19.12
+Version:        7.0.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gc7234f7
+Release:        <RELEASE>.g7cb5b59
 %else
 Release:        0
 %endif
@@ -56,9 +56,9 @@ Prefix:         /usr/src
 %define _rpmmacrodir /etc/rpm
 %endif
 
-Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
-%if "https://www.kernel.org/pub/linux/kernel/v6.x/" != ""
-Source1:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.sign
+Source0:        https://www.kernel.org/pub/linux/kernel/v7.x/linux-%srcversion.tar.xz
+%if "https://www.kernel.org/pub/linux/kernel/v7.x/" != ""
+Source1:        https://www.kernel.org/pub/linux/kernel/v7.x/linux-%srcversion.tar.sign
 Source2:        linux.keyring
 %endif
 Source3:        kernel-source.rpmlintrc

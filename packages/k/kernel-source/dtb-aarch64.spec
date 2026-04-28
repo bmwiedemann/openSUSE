@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.19
-%define patchversion 6.19.12
+%define srcversion 7.0
+%define patchversion 7.0.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-aarch64
-Version:        6.19.12
+Version:        7.0.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gc7234f7
+Release:        <RELEASE>.g7cb5b59
 %else
 Release:        0
 %endif
@@ -42,7 +42,7 @@ ExclusiveArch:  aarch64
 
 %define dtbdir /boot/dtb-%kernelrelease
 
-Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v7.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
 Source16:       guards
