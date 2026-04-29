@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Mar 10 06:21:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.1:
+  * optimize memory for DSSE v0.0.1 processing (#2766)
+  * Type assert the entry bundle when verifying inclusion proof (#2755)
+  * return correct errors in rare failure situations (#2753)
+  * raise error if decoding hash fails during inclusion proof (#2754)
+  * Dependencies
+    - build(deps): Bump actions/upload-artifact from 6.0.0 to 7.0.0
+      (#2773)
+    - build(deps): Bump google.golang.org/api from 0.264.0 to
+      0.269.0 (#2770)
+    - build(deps): Bump github/codeql-action in the all group
+      (#2772)
+    - build(deps): Bump github.com/redis/go-redis/v9 from 9.17.3 to
+      9.18.0 (#2769)
+    - build(deps): Bump the all group with 11 updates (#2768)
+    - build(deps): Bump gocloud.dev from 0.40.0 to 0.44.0 (#2757)
+    - build(deps): Bump go.step.sm/crypto from 0.74.0 to 0.76.2
+      (#2760)
+    - build(deps): Bump
+      github.com/secure-systems-lab/go-securesystemslib (#2758)
+    - build(deps): Bump go.opentelemetry.io/otel/sdk from 1.39.0 to
+      1.40.0 (#2763)
+    - build(deps): Bump the all group across 1 directory with 2
+      updates (#2764)
+    - build(deps): Bump github.com/tink-crypto/tink-go/v2 from
+      2.5.0 to 2.6.0 (#2761)
+    - build(deps): Bump filippo.io/edwards25519 from 1.1.0 to 1.1.1
+    - build(deps): Bump golang.org/x/crypto from 0.47.0 to 0.48.0
+    - build(deps): Bump golang.org/x/mod from 0.31.0 to 0.33.0
+    - build(deps): Bump cloud.google.com/go/pubsub/v2 from 2.3.0 to
+      2.4.0
+    - build(deps): Bump google.golang.org/grpc from 1.78.0 to
+      1.79.1
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+    - build(deps): Bump github/codeql-action in the all group
+    - update golang builder to use go1.25.7 (#2702)
+    - build(deps): Bump github/codeql-action in the all group
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+    - build(deps): Bump golang from 1.25.6 to 1.25.7 in the all
+      group
+    - build(deps): Bump the all group across 1 directory with 5
+      updates
+    - build(deps): Bump github.com/sigstore/sigstore from 1.10.3 to
+      1.10.4 (#2732)
+    - build(deps): Bump the all group with 2 updates (#2737)
+    - build(deps): Bump golang.org/x/net from 0.48.0 to 0.49.0
+      (#2738)
+    - build(deps): Bump
+      github.com/sigstore/sigstore/pkg/signature/kms/gcp (#2739)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2740)
+    - build(deps): Bump golang from 1.25.5 to 1.25.6 in the all
+      group (#2733)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2734)
+
+-------------------------------------------------------------------
 Thu Jan 22 06:00:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.0:

@@ -19,7 +19,7 @@
 %define apps cli server
 
 Name:           rekor
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Supply Chain Transparency Log
 License:        Apache-2.0
