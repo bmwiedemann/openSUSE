@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Apr 13 07:58:30 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * The Filter configuration panel in the TUI now supports editing the minimum
+    log level and minimum/maximum times for the current view. Previously, only
+    the :set-min-log-level, :hide-lines-before, and :hide-lines-after commands
+    could be used to set the values. Pressing l will create/set the log level.
+    Pressing m will create/set the minimum time and pressing Shift + M will
+    create/set the maximum time. Live preview has also been added to show which
+    lines will be filtered out when the min/max is applied.
+  * The -S/--since and -U/--until flags have been added to limit how much of a
+    log file is indexed.  Supported values are relative (e.g. "yesterday", "30
+    min ago") or absolute local times ("2020-01-01").  The values on the main
+    command-line set the defaults for all values that are opened. The :open
+    command supports the same options to change the values from the default for
+    a particular file. Files with content that lie completely outside of the
+    cutoff will be closed to reduce resource usage.
+  * Broadened support for viewing files on remote hosts.  The "tailer" program
+    that is transferred to the remote host to monitor files and perform other
+    tasks has been translated to Python3. If the remote host does not have
+    Python, lnav will fall back to the APE binary.
+  * Highlights can now be applied to a particular field instead of the whole
+    line. For log formats, a value entry can now have a highlights object that
+    contains definitions for the pattern to match and the style to apply. For
+    interactive use, the :highlight-field command was added.
+  * The "Files" panel now shows a progress bar for each file as it is being
+    indexed and finishes with a check-mark if indexing was successful, a
+    warning sign if the file has some notes, or an error mark if something else
+    happened.
+  * The :write-jsonlines-to command now supports the LOG view.
+  * Added a log format for MongoDB's structured JSON log format (4.4+).
+  * Added a log format for the Robot Framework's debug log file format.
+  * Added "timestamp" as a value kind for log format definitions. Fields with
+    this kind will be parsed and displayed in the local timezone, and SQL
+    queries will return them in a normalized format.
+  * For more see https://github.com/tstack/lnav/releases/tag/v0.14.0
+
+-------------------------------------------------------------------
 Mon Sep 29 05:42:02 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13.2:

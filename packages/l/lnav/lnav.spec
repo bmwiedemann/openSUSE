@@ -1,7 +1,7 @@
 #
 # spec file for package lnav
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -19,7 +19,7 @@
 
 
 Name:           lnav
-Version:        0.13.2
+Version:        0.14.0
 Release:        0
 Summary:        Logfile Navigator
 License:        BSD-2-Clause
