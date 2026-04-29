@@ -4,6 +4,5 @@
 such as the pci.ids and usb.ids databases.
 
 </description>
-  <devel project="devel:openSUSE:Factory" package="hwdata"/>
   <url>https://github.com/vcrhonek/hwdata</url>
 </package>
