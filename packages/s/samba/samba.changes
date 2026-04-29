@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr 27 08:47:18 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Update to 4.23.7
+  * Fix a directory file descriptor leak in vfs_glusterfs that
+    caused unbounded memory growth on the GlusterFS brick with
+    persistent SMB2 connections; (bso#16043).
+  * autobuild fails if /proc/version contains trailing space;
+    (bso#16057).
+  * incorrect behavior on rpcclient enumport with rpcd_spoolss;
+    (bso#16019).
+  * rpc workers with long living clients grow server  memory
+    keytab; (bso#16042); (bsc#1257200).
+  * vfs_snapper failing to access or enumerate files in
+    subfolders; (bso#16058); (bsc#1259667).
+  * libsmbclient posix extensions with SMB3 don't work at all;
+    (bso#15960).
+  * Samba is not build with FORTIFY_SOURCE; (bso#16040).
+
+-------------------------------------------------------------------
+Tue Apr 14 11:02:55 UTC 2026 - Noel Power <noel.power@suse.com>
+
+- Add support to allow default selinux autolabelling by
+  update-samba-security-profile on service [re]start to be
+  inhibited; (bsc#1259050).
+
+-------------------------------------------------------------------
+Mon Mar 30 09:37:58 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Use multiple threads for SELinux relabeling in
+  update-samba-security-profile (bsc#1259050).
+
+-------------------------------------------------------------------
 Wed Mar 18 16:01:28 UTC 2026 - Noel Power <noel.power@suse.com>
 
 - Update to 4.23.6
