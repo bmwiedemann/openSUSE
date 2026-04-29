@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Apr 17 13:15:20 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
+
+- update to 4.5.12
+ * Fix vulnerabilities in CSRF cookie (Thanks SeungMyung Lee) (Emmett Kapsner)
+ * Fix runcmd compile error by replacing maxfd macro with a static variable (Leon Adomaitis)
+
+- update nagios-disable_phone_home.patch
+- update .spec to delete non-empty contrib/exfoliation directory
+
+- Changes from 4.5.5 back to 4.5.11
+ * Fix order of Event Queue Initialization (Bryan Heden)
+ * Fix double-negatives in template-processing related error messages (Vanush Paturyan)
+ * Update quickstart and documentations links (Aaron Cieslicki)
+ * Remove null coalescing operators and fix some php errors (Dylan Anderson and Robert Högberg)
+ * Replace sys/poll.h with poll.h (Michael Orlitzky) 
+ * Fix musl 64bit time_t on 32bit arm (Doug Nazar)
+ * Remove Ubuntu 20 From Testing (Doug Nazar)
+ * Change 'which' to 'command -v' in autoconf scripts (Michael Orlitzsky)
+ * Fix NULL Pointer dereference in Update Chack API response parsing (Ankur Patel)
+ * Fix missing image (J. Winters-Brown)
+ * Fix unreachable notifications (Dylan Anderson)
+ * Add light option in new exfoliation theme (Dylan Anderson)
+ * Fix authentication in trends.cgi (Dylan Anderson)
+ * Improve new exfoliation theme and add back in PID information (Dylan Anderson)
+ * Fix issues with downtimes that are both flexible and triggered and improve downtime additions in general (#595) (Dylan Anderson)
+ * Expand the custom variable macros to an empty string, if the custom variable does not exist (Andre Klärner)
+ * Fix notification logic to not send a notification if a host and services parents are down (#873) (Dylan Anderson)
+ * Update Exfoliation theme (Dylan Anderson)
+ * Send a recovery notification if the object recovered while flapping (#847) (Dylan Anderson)
+ * Fix for separate build directory & a couple small cleanups (Doug Nazar)
+ * Update tutorial links in Readme (Igor Udot)
+ * Update configure scripts using newer versions of autotools (Dylan Anderson)
+ * Disable maintainer mode for TAP testing and add Github Actions (Dylan Anderson)
+
+-------------------------------------------------------------------
 Wed Oct 22 13:26:31 UTC 2025 - Ansgar Esztermann <aeszter@gwdg.de>
 
 - Fix query handler socket location (BNC #1234612)

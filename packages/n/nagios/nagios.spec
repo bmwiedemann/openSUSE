@@ -32,7 +32,7 @@
 %endif
 
 Name:           nagios
-Version:        4.5.4
+Version:        4.5.12
 Release:        0
 Summary:        The Nagios Network Monitor
 License:        GPL-2.0-or-later
@@ -401,7 +401,9 @@ mkdir -p %{buildroot}%{_datadir}/nagios-themes/exfoliation
 cp -a %{buildroot}%{nagios_datadir}/* %{buildroot}%{_datadir}/nagios-themes/exfoliation/
 rm -rf %{buildroot}%{_datadir}/nagios-themes/exfoliation/{stylesheets,images}
 mv -fv contrib/exfoliation/{stylesheets,images} %{buildroot}%{_datadir}/nagios-themes/exfoliation/
-rmdir contrib/exfoliation
+#rmdir contrib/exfoliation
+rm -rf contrib/exfoliation
+
 %fdupes %{buildroot}%{_datadir}/nagios-themes/exfoliation/
 
 

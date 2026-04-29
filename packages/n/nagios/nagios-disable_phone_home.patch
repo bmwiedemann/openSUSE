@@ -1,8 +1,8 @@
-Index: nagios-4.5.1/base/utils.c
+Index: nagios-4.5.12/base/utils.c
 ===================================================================
---- nagios-4.5.1.orig/base/utils.c
-+++ nagios-4.5.1/base/utils.c
-@@ -3330,142 +3330,6 @@ int check_for_nagios_updates(int force,
+--- nagios-4.5.12.orig/base/utils.c
++++ nagios-4.5.12/base/utils.c
+@@ -3330,146 +3330,6 @@ int check_for_nagios_updates(int force,
  
  /* checks for updates at api.nagios.org */
  int query_update_api(void) {
@@ -112,6 +112,10 @@ Index: nagios-4.5.1/base/utils.c
 -
 -			var = strtok(ptr, "=");
 -			val = strtok(NULL, "\n");
+-
+-			/* skip malformed lines to prevent NULL pointer dereference */
+-			if(var == NULL || val == NULL)
+-				continue;
 -
 -			if(!strcmp(var, "UPDATE_AVAILABLE")) {
 -				update_available = atoi(val);
