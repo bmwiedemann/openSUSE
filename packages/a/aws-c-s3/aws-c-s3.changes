@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 07:46:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.12.3
+  * Fix recognition of user provided unknown checksums by @DmitriyMusatkin in (#624)
+
+-------------------------------------------------------------------
 Fri Apr 10 08:53:14 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.12.2
