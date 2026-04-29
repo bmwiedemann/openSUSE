@@ -1,7 +1,7 @@
 #
 # spec file for package wiiuse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libwiiuse0
 Name:           wiiuse
-Version:        0.15.6
+Version:        0.15.7
 Release:        0
 Summary:        Connects with several Nintendo Wii remotes
 License:        GPL-3.0-only AND LGPL-3.0-only
@@ -26,7 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/wiiuse/wiiuse
 Source0:        https://github.com/wiiuse/wiiuse/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bluez-devel
-BuildRequires:  cmake > 3.6.0
+BuildRequires:  cmake > 3.10.0
 BuildRequires:  dos2unix
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
