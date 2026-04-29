@@ -97,4 +97,12 @@ This package contains ansible roles from linux-system-roles project: https://git
   ansible_facts migration.</comment>
     <requestid>1338386</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2ce3029dcae49831beccf69891e331c1</srcmd5>
+    <version>1.2.0</version>
+    <time>1777483098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1349853</requestid>
+  </revision>
 </revisionlist>

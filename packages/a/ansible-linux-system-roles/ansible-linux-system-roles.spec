@@ -27,13 +27,15 @@
 %global mssql_version 2.6.6
 %global suseconnect_version 1.0.1
 %global auto_maintenance_version 1.120.5
-%global certificate_version 1.4.4
+%global certificate_version 1.5.0
 %global selinux_version 1.11.1
 %global podman_version 1.9.2
 %global cockpit_version 1.7.4
 %global aide_version 1.2.5
 %global postfix_version 1.6.6
 %global keylime_server_version 1.2.4
+%global postgresql_version 1.5.1
+%global kernel_settings_version 1.3.8
 
 %if 0%{?suse_version} >= 1600
 %global sle16 1
@@ -45,7 +47,7 @@
 %define ansible_collection_path %{_datadir}/ansible/collections/ansible_collections/suse/%{ansible_collection_name}
 
 Name:           ansible-linux-system-roles
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Collection of Ansible roles for Linux system management
 License:        GPL-3.0-or-later
@@ -61,13 +63,15 @@ Source7:        %{url}/ansible-mssql/archive/refs/tags/%{mssql_version}-suse.tar
 Source8:        %{url}/ansible-suseconnect/archive/refs/tags/%{suseconnect_version}-suse.tar.gz#/suseconnect-%{suseconnect_version}.tar.gz
 Source9:        %{url}/ansible-auto_maintenance/archive/refs/tags/%{auto_maintenance_version}-suse.tar.gz#/auto_maintenance-%{auto_maintenance_version}.tar.gz
 Source10:       %{url}/ansible-postfix/archive/refs/tags/%{postfix_version}-suse.tar.gz#/postfix-%{postfix_version}.tar.gz
+Source11:       %{url}/ansible-postgresql/archive/refs/tags/%{postgresql_version}-suse.tar.gz#/postgresql-%{postgresql_version}.tar.gz
 %if %{sle16}
-Source11:       %{url}/ansible-certificate/archive/refs/tags/%{certificate_version}-suse.tar.gz#/certificate-%{certificate_version}.tar.gz
-Source12:       %{url}/ansible-selinux/archive/refs/tags/%{selinux_version}-suse.tar.gz#/selinux-%{selinux_version}.tar.gz
-Source13:       %{url}/ansible-podman/archive/refs/tags/%{podman_version}-suse.tar.gz#/podman-%{podman_version}.tar.gz
-Source14:       %{url}/ansible-cockpit/archive/refs/tags/%{cockpit_version}-suse.tar.gz#/cockpit-%{cockpit_version}.tar.gz
-Source15:       %{url}/ansible-aide/archive/refs/tags/%{aide_version}-suse.tar.gz#/aide-%{aide_version}.tar.gz
-Source16:       %{url}/ansible-keylime_server/archive/refs/tags/%{keylime_server_version}-suse.tar.gz#/keylime_server-%{keylime_server_version}.tar.gz
+Source12:       %{url}/ansible-certificate/archive/refs/tags/%{certificate_version}-suse.tar.gz#/certificate-%{certificate_version}.tar.gz
+Source13:       %{url}/ansible-selinux/archive/refs/tags/%{selinux_version}-suse.tar.gz#/selinux-%{selinux_version}.tar.gz
+Source14:       %{url}/ansible-podman/archive/refs/tags/%{podman_version}-suse.tar.gz#/podman-%{podman_version}.tar.gz
+Source15:       %{url}/ansible-cockpit/archive/refs/tags/%{cockpit_version}-suse.tar.gz#/cockpit-%{cockpit_version}.tar.gz
+Source16:       %{url}/ansible-aide/archive/refs/tags/%{aide_version}-suse.tar.gz#/aide-%{aide_version}.tar.gz
+Source17:       %{url}/ansible-keylime_server/archive/refs/tags/%{keylime_server_version}-suse.tar.gz#/keylime_server-%{keylime_server_version}.tar.gz
+Source18:       %{url}/ansible-kernel_settings/archive/refs/tags/%{kernel_settings_version}-suse.tar.gz#/kernel_settings-%{kernel_settings_version}.tar.gz
 %endif
 Source999:      galaxy.yml
 
@@ -101,6 +105,7 @@ roles=(
   "suseconnect:%{suseconnect_version}"
   "auto_maintenance:%{auto_maintenance_version}"
   "postfix:%{postfix_version}"
+  "postgresql:%{postgresql_version}"
 %if %{sle16}
   "certificate:%{certificate_version}"
   "selinux:%{selinux_version}"
@@ -108,6 +113,7 @@ roles=(
   "cockpit:%{cockpit_version}"
   "aide:%{aide_version}"
   "keylime_server:%{keylime_server_version}"
+  "kernel_settings:%{kernel_settings_version}"
 %endif
 )
 
