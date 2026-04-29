@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 28 15:08:58 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 2.4.19:
+  See https://github.com/openprinting/cups/releases
+  Release 2.4.19 contains another hotfix after CVE-2026-27447 fix:
+  * Fixed a regression in shared printing from non-local accounts
+    (Issue #1557)
+  Issues are those at https://github.com/OpenPrinting/cups/issues
+- Adapted downgrade-autoconf-requirement.patch for CUPS 2.4.19
+- Added 'Michael R Sweet' key to cups.keyring
+  because cups-2.4.19-source.tar.gz.sig belongs to him.
+
+-------------------------------------------------------------------
 Thu Apr 23 13:15:16 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
 
 - Version upgrade to 2.4.18:
