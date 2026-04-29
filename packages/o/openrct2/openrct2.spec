@@ -1,7 +1,7 @@
 #
 # spec file for package openrct2
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,24 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # disable lto build - https://github.com/OpenRCT2/OpenRCT2/issues/23180
 %define _lto_cflags %{nil}
-
-# std=c++20 now required, use GCC 13 for Leap 15.x
-%if 0%{?suse_version} < 1600
-%define gcc_ver 13
-%endif
 
 %define lib_suffix %{nil}
 %ifarch x86_64
 %define lib_suffix 64
 %endif
+
 %define title_version 0.4.26
 %define title_version_url %{title_version}
-%define objects_version 1.7.6
+%define objects_version 1.7.9
 %define openmusic_version 1.6.1
 %define opensound_version 1.0.6
-%define openrct2_version 0.4.32
+%define openrct2_version 0.5.0
 
 Name:           openrct2
 Version:        %{openrct2_version}
@@ -49,7 +46,7 @@ Source4:        https://github.com/OpenRCT2/OpenSoundEffects/releases/download/v
 Source5:        https://raw.githubusercontent.com/OpenRCT2/OpenMusic/master/COPYING
 BuildRequires:  cmake >= 3.24
 BuildRequires:  fdupes
-BuildRequires:  gcc%{?gcc_ver}-c++
+BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  nlohmann_json-devel >= 3.9.0
@@ -133,8 +130,6 @@ sed -i "s/__TIME__/\"Build Service\"/" src/openrct2/Version.h
 export CXXFLAGS="%optflags -Wno-maybe-uninitialized"
 
 %cmake \
-  -DCMAKE_C_COMPILER=gcc%{?gcc_ver:-%{gcc_ver}} \
-  -DCMAKE_CXX_COMPILER=g++%{?gcc_ver:-%{gcc_ver}} \
   -DDOWNLOAD_TITLE_SEQUENCES=OFF \
   -DDOWNLOAD_OBJECTS=OFF
 
