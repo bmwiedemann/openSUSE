@@ -1248,4 +1248,22 @@
     <comment>- Drop alts support for ld.mold, it is not a full BFD linker replacement. (forwarded request 1349520 from rguenther)</comment>
     <requestid>1349521</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>059a323594ed0c33c0a7e8e7204c1e71</srcmd5>
+    <version>2.41.0</version>
+    <time>1777483235</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.41.0
+  * A new --zero-to-bss option has been added. When given, mold scans
+  input data sections and converts all-zero sections into BSS (SHT_NOBITS),
+  reducing output file size. This is especially useful for user-defined
+  sections created with __attribute__((section(...))) containing
+  uninitialized global variables, which GCC and Clang emit as regular
+  data sections even when their contents are entirely zero. (847341d)
+  * --print-gc-sections and --print-icf-sections can now take =FILE to
+  save their output to a file (e.g., --print-gc-sections=output.txt).
+  * --gdb-index performance has been improved by eliminating unnecessary
+  zero-initializations and parallelizing more of the index generation. (forwarded request 1349990 from rguenther)</comment>
+    <requestid>1349991</requestid>
+  </revision>
 </revisionlist>
