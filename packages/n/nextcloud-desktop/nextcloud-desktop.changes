@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Apr 28 03:38:46 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
+
+- Update to version 33.0.3:
+  * Systemd service is now wanted by the graphical target
+    (gh#nextcloud/desktop#9783)
+  * Remove Qt 6.10 compilation warning
+    (gh#nextcloud/desktop#9787)
+  * Update CI images
+    (gh#nextcloud/desktop#9788)
+  * Use native QLineEdit styling for server address
+    (gh#nextcloud/desktop#9802)
+  * Remove useless debug output at startup
+    (gh#nextcloud/desktop#9809)
+  * Remove unused COPY_SECUREFILEDROP_LINK socket command
+    (gh#nextcloud/desktop#9812)
+  * Disconnect slotFolderCanSyncChanged when unloading a folder
+    (gh#nextcloud/desktop#9818)
+  * Change group folder terminology to team folder
+    (gh#nextcloud/desktop#9869)
+  * Delay initialization of the login flow web view until needed
+    (gh#nextcloud/desktop#9879)
+  * Parse received timestamp from expiration date correctly
+    (gh#nextcloud/desktop#9889)
+  * Fix “Always keep downloaded”
+    (gh#nextcloud/desktop#9896)
+  * Prevent unnecessary logging for missing trash container items
+    (gh#nextcloud/desktop#9899)
+  * Update craft commit to obtain newer OpenSSL releases
+    (gh#nextcloud/desktop#9880)
+  * Replace decoration asset for “keep downloaded” items
+    (gh#nextcloud/desktop#9901)
+  * Use known working zlib 1.3.1 release
+    (gh#nextcloud/desktop#9906)
+  * Add runtime switch for debug logging
+    (gh#nextcloud/desktop#9913)
+  * Skip locked files during upload to avoid errors
+    (gh#nextcloud/desktop#9917) 
+
+-------------------------------------------------------------------
 Thu Apr  2 04:40:54 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
 
 - Update to version 33.0.2 with minor updates for macOS and Windows:
