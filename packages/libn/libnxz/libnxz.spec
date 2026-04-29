@@ -1,7 +1,7 @@
 #
 # spec file for package libnxz
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global soversion 0
 %define libname %{name}%{soversion}
 Name:           libnxz
-Version:        0.64+git4.2f1ae54
+Version:        0.65
 Release:        0
 Summary:        Zlib implementation for POWER processors
 License:        Apache-2.0 OR GPL-2.0-or-later

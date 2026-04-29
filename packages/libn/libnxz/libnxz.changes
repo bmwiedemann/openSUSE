@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 29 14:26:26 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 0.65:
+  * Set libnxz version to 0.65 and regenerate files
+  * Add public endpoint tracing capability for better debugging
+  * Update a few log messages to be more clear.
+  * nx_inflate.c: Update flush value in stream during inflate calls
+  * nx_deflate.c: Reset history_len to 0 in deflateResetKeep
+  * Fix test_abi failure.
+  * Fix Deflate without fallback
+  * Fix bugs in deflateInit API.
+  * Use NX Dictionary for consistency
+  * Provide deflateParams definition.
+  * nx_inflate.c: Submit job to nx when flush parameter is not Z_NO_FLUSH [#203]
+  * Include standard C headers in adler32 and crc32 tests
+  * Fix the error after a malloc issue in gzopen
+  * Remove unused macros
+  * Add support for big endian crc32 #191
+
+-------------------------------------------------------------------
 Mon Sep 22 08:45:03 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix URL in spec file
