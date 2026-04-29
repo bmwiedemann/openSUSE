@@ -295,4 +295,14 @@
     <comment>KDE release gear 26.04 (forwarded request 1346091 from krop)</comment>
     <requestid>1347347</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>ebda5b6ed8aba9b040e9103c5d57f5e2</srcmd5>
+    <version>26.04.0</version>
+    <time>1777483228</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream changes (CVE-2026-42095, boo#1262800)
+  * 0001-bookserver-Use-qrc-as-access-control-protocol.patch
+  * 0002-bookserver-Add-authentication-token.patch</comment>
+    <requestid>1349976</requestid>
+  </revision>
 </revisionlist>

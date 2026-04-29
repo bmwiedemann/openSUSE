@@ -31,6 +31,9 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM -- CVE-2026-42095
+Patch0:         0001-bookserver-Use-qrc-as-access-control-protocol.patch
+Patch1:         0002-bookserver-Add-authentication-token.patch
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Baloo) >= %{kf6_version}
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
