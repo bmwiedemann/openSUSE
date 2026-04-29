@@ -20,13 +20,15 @@
 %define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
 %define sname cli
 Name:           gh
-Version:        2.89.0
+Version:        2.92.0
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
 URL:            https://cli.github.com/
 Source0:        %{sname}-%{version}.tar.zst
 Source1:        vendor.tar.gz
+Patch0:         fix-accessible-prompter-test-timeout.patch
+Patch1:         add-missing-go-build-integration-tag.patch
 BuildRequires:  fish
 BuildRequires:  git-core
 BuildRequires:  zstd
@@ -69,7 +71,7 @@ BuildArch:      noarch
 Fish command line completion support for %{name}.
 
 %prep
-%autosetup -n %{sname}-%{version} -a 1
+%autosetup -n %{sname}-%{version} -a 1 -p1
 # Upstream decided to tweak Makefile for easier cross-compiling. But the tweak
 # overrides variables so we need to remove them to pass GOFLAGS.
 sed -i 's/GOOS= GOARCH= GOARM= GOFLAGS= CGO_ENABLED=//g' Makefile

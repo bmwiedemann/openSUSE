@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Tue Apr 28 15:45:27 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- add-missing-go-build-integration-tag.patch
+  Add missing //go:build integration tag to verify_integration_test.go#13303
+- fix-accessible-prompter-test-timeout.patch
+  Fix flaky accessible prompter Password test timeout#13304
+- Update to version 2.92.0:
+  * Bump Go to 1.26.2
+  * chore(deps): bump github.com/mattn/go-isatty from 0.0.21 to 0.0.22
+  * Update command.go
+  * Add "Resource not accessible" to ProjectsV2IgnorableError
+  * chore: fix zsh completion on debian
+  * install_linux: correct typo in Homebrew copy
+  * chore(deps): bump charm.land/bubbletea/v2 from 2.0.2 to 2.0.6
+  * chore(deps): bump github.com/gdamore/tcell/v2 from 2.13.8 to 2.13.9
+  * Update acceptance/testdata/workflow/run-view-log-escape-sequences.txtar
+  * Fix log terminal injection
+  * fix(skills): include --allow-hidden-dirs in preview hint from install
+  * Install skills flat by Name, not namespaced InstallName
+  * feat(skills): add --allow-hidden-dirs flag to preview command
+  * feat(skills): support GHEC with data residency hosts
+  * Fix SetSampleRate not updating sample_rate dimension
+  * fix: yaml.github-actions.security.run-shell-injection.run-shell-injection security vulnerability
+  * Enable telemetry without env var
+  * test(telemetry): assert ANSI escape chars for color codes
+  * fix(telemetry): lower bias in sample bucket calc
+  * feat(skills): detect re-published skills and offer upstream install
+  * Log when there is no telemetry
+  * Add telemetry command
+  * Record official extension telemetry
+  * fix(skills): prioritize DisplayName/Name over InstallName match
+  * fix(skills): match skills by install name in preview command
+  * use the right json field names for skills
+  * fix totalCount guidance
+  * docs(skills): note --template collisions and single-string search
+  * backtick skill filename
+  * docs(skills): drop hand-copied naming rules from gh-skill
+  * use hyphen instead
+  * docs(skills): add gh and gh-skill agent skills
+  * feat(skills): support nested skills/ directories in discovery
+  * fix(skills): make --fix and --dry-run mutually exclusive, suppress publish prompt
+  * fix(skills): use canonical 'gh skill' not 'gh skills' alias
+  * fix(skills): stop publish --fix from publishing
+  * Include CI context in telemetry
+  * refactor: decouple hidden-dir filtering from discovery layer
+  * Add support for installation in multiple agent hosts in `gh skills install` (#13209)
+  * Add skills specific telemetry
+  * chore(deps): bump github.com/google/go-containerregistry
+  * Do not send telemetry for aliases
+  * Apply review feedback
+  * Disable telemetry for GHES
+  * remove misleading text
+  * Add sampled command telemetry
+  * Update publish_test.go
+  * refactor: replace real git with run.CommandStubber in publish tests
+  * fix: apply review feedback — nil HttpClient, local dedup type
+  * Remove dispatch after install, install only
+  * Rename official extension files and types to stubs
+  * Replace em-dashes with regular dashes
+  * Address PR review feedback
+  * Add no em dash rule to AGENTS.md
+  * Suggest and install official extensions via stub commands
+  * Add @cli/code-reviewers to all CODEOWNERS rules
+  * Add cli/skill-reviewers as CODEOWNERS for skills packages
+  * style: fix gofmt alignment in publish tests
+  * fix: update acceptance test to match current error message
+  * fix: address post-merge review feedback for skills commands
+  * refactor: remove redundant nil-client fallback in skills publish (#13168)
+  * feat(skills): auto-push unpushed commits before publish
+  * refactor: use shared discovery logic in publish command
+  * fix(skill publish): remove misleading `validate` alias
+  * docs(skill): improve help docs
+  * fix skills names in examples
+  * Disable auth check for `gh extension install`
+  * Suggest and install official extensions for unknown commands
+  * Update acceptance/testdata/skills/skills-search-noresults.txtar
+  * URL-encode parentPath in skills discovery API call
+  * Disable auth check for local-only skill flags
+  * fix: address review feedback on namespace changes
+  * chore: remove unused newTestGitClient function
+  * fix: preserve namespace in skills search deduplication
+  * fix: use target directory remotes in skills publish
+  * fix: enforce size cap on first preview file, surface corrupted skills, fail on path traversal
+  * fix: align relevanceScore comments with implementation and fix typo
+  * chore(deps): bump charm.land/lipgloss/v2 from 2.0.2 to 2.0.3
+  * chore(deps): bump github.com/mattn/go-isatty from 0.0.20 to 0.0.21
+  * address review comments
+  * clean up interface and fix a few bugs
+  * cleanup frontmatter fields
+  * add .agents/skills as default installation path for hosts that support it: cursor, codex, gemini CLI, github copilot, antigravity.
+  * show loading spinner during installation, even for multi-file skills
+  * use markdown renderer in preview when previewing multi-file skills
+  * Expand test coverage and fix invariants/bugs
+  * add core logic and improve test coverage
+  * improve test coverage/cleanup
+  * register initial skills commands
+  * add skills command scaffold
+  * docs: fix SHA512 checksum for GPG key
+  * chore(deps): bump github.com/hashicorp/go-version from 1.8.0 to 1.9.0
+  * chore(deps): bump google.golang.org/grpc from 1.79.3 to 1.80.0
+  * chore(deps): bump github.com/sigstore/timestamp-authority/v2
+  * docs: add sha/md5 checksums of keyring files
+  * chore(deps): bump github.com/google/go-containerregistry
+  * chore(deps): bump github.com/sigstore/protobuf-specs from 0.5.0 to 0.5.1
+  * chore: delete experimental script/debian-devel
+  * chore(deps): bump charm.land/bubbles/v2 from 2.0.0 to 2.1.0
+  * Document dependency CVE policy in SECURITY.md
+  * docs: add manual PGP key verification commands
+  * chore: re-add toolchain to go1.26.2
+  * docs: polish wording around PGP keys
+  * docs: include PGP key fingerprints
+  * Fix infinite loop in 'gh release list --limit 0'
+  * chore(deps): bump github.com/in-toto/attestation from 1.1.2 to 1.2.0
+  * chore(deps): bump github.com/klauspost/compress from 1.18.4 to 1.18.5
+  * test(internal/authflow): assert user-agent header is not modified/added
+  * replace github.com/golang/snappy with klauspost/compress/snappy
+  * docs: require tests and linter pass before committing
+  * fix(auth): preserve User-Agent in authflow getViewer
+  * fix(api): propagate InvokingAgent in gh api HTTP client
+  * chore(deps): bump github.com/yuin/goldmark from 1.7.16 to 1.8.2
+  * chore(deps): bump advanced-security/filter-sarif from 1.0.1 to 1.1
+
+-------------------------------------------------------------------
 Thu Mar 26 13:38:19 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.89.0:
