@@ -1,7 +1,7 @@
 #
 # spec file for package python-certipy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://github.com/LLNL/certipy
 Source:         https://files.pythonhosted.org/packages/source/c/certipy/certipy-%{version}.tar.gz
 # MANIFEST.in was merged; check next release
 Source1:        https://raw.githubusercontent.com/LLNL/certipy/master/LICENSE
+# PATCH-FIX-UPSTREAM gh#llnl/certipy#27
+Patch0:         support-cryptography-47.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -34,11 +36,11 @@ BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
-Requires:       python-pyOpenSSL
+Requires:       python-cryptography
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask}
-BuildRequires:  %{python_module pyOpenSSL}
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -47,7 +49,7 @@ BuildRequires:  %{python_module pytest}
 Create and sign CAs and certificates.
 
 %prep
-%setup -q -n certipy-%{version}
+%autosetup -p1 -n certipy-%{version}
 cp %{SOURCE1} .
 mv certipy/test .
 sed -i 's/\.\.certipy/certipy/' test/*.py

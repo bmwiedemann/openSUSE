@@ -39,4 +39,14 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1288530</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>60e862d09cfab621cd8827eeadecc43d</srcmd5>
+    <version>0.2.2</version>
+    <time>1777483172</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-cryptography-47.patch:
+  * Support cryptography 47 changes.
+- {Build,}Requires cryptography not pyOpenSSL.</comment>
+    <requestid>1349913</requestid>
+  </revision>
 </revisionlist>

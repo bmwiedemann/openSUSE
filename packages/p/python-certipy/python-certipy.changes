@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 29 03:50:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-cryptography-47.patch:
+  * Support cryptography 47 changes.
+- {Build,}Requires cryptography not pyOpenSSL.
+
+-------------------------------------------------------------------
 Wed Jun 25 12:19:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
