@@ -2811,4 +2811,17 @@
     <comment>Update version</comment>
     <requestid>1348427</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>70dea8749c84f68b85920dac7153d89f</srcmd5>
+    <version>2.60.2</version>
+    <time>1777483050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.60.2:
+  + atspi-device-legacy: add null checks for when x11 isnt
+    available.
+  + python: Fix __getitem__ with a negative offset.
+  + Fix a NULL pointer dereference when sending an event.
+  + device-x11: Fall back on raw key events if there is no focus.</comment>
+    <requestid>1349697</requestid>
+  </revision>
 </revisionlist>
