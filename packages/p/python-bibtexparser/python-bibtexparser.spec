@@ -16,15 +16,14 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-bibtexparser
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Bibtex parser for python
 License:        BSD-3-Clause OR LGPL-3.0-only
 URL:            https://github.com/sciunto-org/python-bibtexparser
 Source:         https://github.com/sciunto-org/python-bibtexparser/archive/v%{version}.tar.gz#/python-bibtexparser-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#sciunto-org/python-bibtexparser#512
-Patch0:         support-new-pyparsing.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

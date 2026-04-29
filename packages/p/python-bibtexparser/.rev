@@ -104,4 +104,12 @@
   * Avoid DeprecationWarning from pyparsing.</comment>
     <requestid>1329742</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cb9034e663d0377cf735235a04c5d201</srcmd5>
+    <version>1.4.4</version>
+    <time>1777483176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1349935</requestid>
+  </revision>
 </revisionlist>

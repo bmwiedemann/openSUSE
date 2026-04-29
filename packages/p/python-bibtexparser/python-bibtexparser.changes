@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 28 13:01:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.4.4
+  * Use modern names for pyparsing methods (new minimum pyparsing
+    version is 3.0.0) by @jennifer-richards in (#512)
+- Drop support-new-pyparsing.patch, merged upstream
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Thu Jan 29 01:56:50 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-pyparsing.patch:
