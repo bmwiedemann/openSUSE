@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 25 17:54:30 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.60:
+  * New error codes
+  * Interface changes relative to the 1.57 release:
+    GPG_ERR_PUBKEY_NON_COMPLIANT        NEW.
+    GPG_ERR_CIPHER_NON_COMPLIANT        NEW.
+    GPG_ERR_DIGEST_NON_COMPLIANT        NEW.
+
+-------------------------------------------------------------------
 Thu Feb 19 08:39:23 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.59:

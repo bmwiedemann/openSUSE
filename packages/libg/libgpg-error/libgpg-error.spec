@@ -2,7 +2,7 @@
 # spec file for package libgpg-error
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           libgpg-error
-Version:        1.59
+Version:        1.60
 Release:        0
 Summary:        Library That Defines Common Error Values for All GnuPG Components
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -27,7 +27,7 @@ URL:            https://www.gnupg.org/software/libgpg-error/
 Source0:        https://gnupg.org/ftp/gcrypt/libgpg-error/%{name}-%{version}.tar.bz2
 Source1:        https://gnupg.org/ftp/gcrypt/libgpg-error/%{name}-%{version}.tar.bz2.sig
 # http://www.gnupg.org/signature_key.en.html
-Source2:        https://gnupg.org/signature_key.asc#/%{name}.keyring
+Source2:        %{name}.keyring
 Source3:        baselibs.conf
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
 Patch0:         libgpg-error-nobetasuffix.patch
@@ -64,9 +64,9 @@ Files needed for software development using libgpg-error.
 
 %prep
 %autosetup -p1
-autoreconf -fiv
 
 %build
+autoreconf -fiv
 %configure \
 	--disable-static \
 	--enable-install-gpg-error-config \
