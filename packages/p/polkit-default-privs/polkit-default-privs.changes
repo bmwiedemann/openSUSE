@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 28 13:14:41 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Update to version 1550+20260428.f2a5d2e:
+  * profiles: whitelisted kdenetwork-filesharing {enable,start}service actions (bsc#1262258, bsc#1263037)
+
+-------------------------------------------------------------------
+Tue Apr 28 09:34:05 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 1550+20260428.d9ff7af:
+  * profiles: mcp-server-systemd (bsc#1259556)
+
+-------------------------------------------------------------------
 Tue Apr 14 08:24:04 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 1550+20260414.1647bf2:
