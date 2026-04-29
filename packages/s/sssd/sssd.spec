@@ -17,23 +17,20 @@
 
 
 Name:           sssd
-Version:        2.12.0
+Version:        2.13.0
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          System/Daemons
 URL:            https://github.com/SSSD/sssd
 #Git-Clone:	https://github.com/SSSD/sssd
-#Changelog:     https://sssd.io/release-notes/sssd-2.12.0.html
+#Changelog:     https://sssd.io/release-notes/sssd-2.13.0.html # prefer over github.com/SSSD/sssd/releases/tag/2.13.0
 Source:         https://github.com/SSSD/sssd/releases/download/%version/%name-%version.tar.gz
 Source2:        https://github.com/SSSD/sssd/releases/download/%version/%name-%version.tar.gz.asc
 Source3:        baselibs.conf
 Source5:        %name.keyring
 Source6:        %name-rpmlintrc
 Patch1:         0001-TOOL-Fix-build-parameter-name-omitted.patch
-Patch2:         0001-Fix-libini_config-related-includes.patch
-Patch3:         0001-INI-get-rid-of-useless-macros.patch
-Patch4:         0001-INI-use-proper-deallocators.patch
 Patch11:        krb-noversion.diff
 Patch12:        harden_sssd-ifp.service.patch
 Patch13:        harden_sssd-kcm.service.patch
@@ -745,7 +742,6 @@ fi
 %_mandir/man8/pam_sss.8*
 %_mandir/man8/pam_sss_gss.8*
 %_mandir/man8/sssd_krb5_localauth_plugin.8*
-%_mandir/??/man8/sssd_krb5_localauth_plugin.8*
 %_mandir/man8/sssd_krb5_locator_plugin.8*
 #
 # %%files sssd-idp

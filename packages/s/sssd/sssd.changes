@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:21:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.13
+  * Fixed CVE-2026-6245, an out-of-bounds read in the PAM
+    passkey responder.
+  * During the processing of the `pam_sss_gss` request, SSSD will
+    read the SID from the PAC of the Kerberos ticket and might add
+    authentication indicators based on the value of the new option
+    `pam_gssapi_indicators_apply`. The primary use case is to
+    handle SIDs added by Active Directory’s Authentication
+    Mechanism Assurance (AMA).
+  * Active Directory’s Foreign Security Principals (FSP) are now
+    properly detected and ignored when reading nested group
+    members. The `ldap_ignore_unreadable_references` option is only
+    needed to ignore member objects which are really not
+    accessible.
+  * A number of cache performance optimizations for large
+    deployments.
+  * Tokens acquired from the IdP are now stored in the domain
+    cache, and are automatically refreshed if the new option
+    `idp_auto_refresh` is enabled.
+  * The `idp_type` option allows `entra_idp` url to be specified if
+    user is using a different Microsoft Entra endpoint.
+  * Support for the KDE Plasma Login Manager.
+  * New option `avoid_by_id_lookups` to tell the SSSD responders to
+    use a lookup by name instead of by id where possible.
+  * New options to customize the OAuth2 prompting behavior:
+    `interactive` and `interactive_prompt`.
+- Delete 0001-Fix-libini_config-related-includes.patch,
+  0001-INI-get-rid-of-useless-macros.patch,
+  0001-INI-use-proper-deallocators.patch (obsolete)
+
+-------------------------------------------------------------------
 Mon Mar 30 14:19:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Fix-libini_config-related-includes.patch,

@@ -1292,4 +1292,12 @@ goes in line with 946250</comment>
     <comment></comment>
     <requestid>1343883</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>febb574901a4dc02189042def4293e05</srcmd5>
+    <version>2.13.0</version>
+    <time>1777483069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.13</comment>
+    <requestid>1349824</requestid>
+  </revision>
 </revisionlist>
