@@ -1,7 +1,7 @@
 #
 # spec file for package fossil
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,23 +18,23 @@
 
 
 # From https://fossil-scm.org/home/uv/releases.md
-%define fossil_uuid 1205ec86cb5508e94b90698db2900997fe5c9db62429c67ac6fdc03d59aa2782
+%define fossil_uuid 52445a27f116603d784ad753c6acd494e0b02aeaf8502ee0fee0aa30030f4c4e
 %bcond_without tests
 Name:           fossil
-Version:        2.26
+Version:        2.28
 Release:        0
 Summary:        Distributed software configuration management
 License:        BSD-2-Clause
 Group:          Development/Tools/Version Control
 URL:            https://fossil-scm.org/
-Source:         https://fossil-scm.org/home/tarball/%{fossil_uuid}/%{name}-%{version}.tar.gz
+Source:         https://fossil-scm.org/home/tarball/%{fossil_uuid}/%{name}-src-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  tcl
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} > 1600
-BuildRequires:  pkgconfig(sqlite3) >= 3.46.0
+BuildRequires:  pkgconfig(sqlite3) >= 3.49.0
 %endif
 
 %description
@@ -47,7 +47,7 @@ these features:
 * sqlite-backed database
 
 %prep
-%autosetup -p1
+%autosetup -n %{name}-src-%{version} -p1
 # test package version and source version match
 grep -qFx %{version} VERSION
 

@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Sun Apr 19 16:21:10 UTC 2026 - Anonymous Checkouts <anoncvs@mailinator.com>
+
+- fossil 2.28:
+  * Improvements to anti-robot defenses:
+      The default configuration now allows robots to download any
+      tarball or similar, to better support automated build systems.
+      New special tag "zipX" for the robot-restrict setting blocks
+      robot access to tarballs, but with exceptions to support
+      automated build systems.
+      Tags of the form "ext/PATH" in the robot-restrict setting block
+      access by robots to specific CGI extension at PATH.
+      Enhancements to the default value for the robot-restrict setting.
+  * A drop-down menu of recent branches is now possible for the
+    submenu, and is used in the code browser.
+  * Simplified access to tarballs and ZIPs:
+      When in the code browser at the top-level, a new "Download"
+      submenu option is available to take the user to a page where
+      he can download a tarball or ZIP archive.
+      New /download page is available. When configured using the new
+      suggested-downloads setting, a link to /download named
+      "Tarballs and ZIPs" appears in the /sitemap and thus on the
+      hamburger menu.
+      The robot-resistant /rchvdwnld page can be used to provide human
+      access to on-demand generated ZIP archives and tarballs. This
+      page is used to help implement the two previous subitems.
+      The filenames for tarballs and ZIPs are now standardized to
+      include a timestamp and a hash prefix.
+      New "fossil get" command downloads and unpacks a specific
+      check-in without having to clone the repository.
+  * Web-based timeline enhancements:
+      A new "Simple" view is available. This is compromise between
+      "Verbose" and "Compact" that shows only the check-in hash rather
+      than the full detail section. There is an ellipsis that one can
+      click on to see the full detail text.
+      The artifact hash in the detail section of each timeline entry
+      is now emphasized (controlled by CSS) to make it easier to
+      locate amid all the other text and links.
+      When clicking on the ellipsis in "Compact" or "Simple" views,
+      the ellipsis is replaced by a left arrow ("←") which can be
+      clicked to hide the extra detail again.
+      New setting timeline-mark-leaves controls whether or not leaf
+      check-ins are marked in the timeline.
+      "No-graph" timelines (using the "ng" query parameter) now show
+      branch colors and bare check-in circles on the left. The
+      check-in circles appear, but no lines connecting them.
+  * Labels in Markdown now have IDs generated using the GitHub
+    "slugify" algorithm.
+  * The timeline command is enhanced with the new options
+    "-u|--for-user" to filter by user, and "-r" to display entries
+    in chronological order.
+  * The open command's new "--reopen REPOFILE" flag can be used to
+    fix a checkout after moving its repository file.
+  * Update internal Unicode character tables, used in regular
+    expression handling, from version 13 to 17.
+  * Add a zoom-message option to /chat to better support pikchr
+    diagrams.
+  * The new fossil system (often abbreviated as just "fossil sys")
+    provides a few common unix-like commands that are missing on some
+    platforms. This is a convenience for Unix-based developers who
+    occasionally need to work on ill-provisioned alternative
+    platforms. The set of commands currently offered is small, but
+    is expected to grow in future releases.
+  * The /help webpage now accepts queries of the form "/help/CMD" to
+    show help for the command or setting CMD and "/help/www/PAGE" to
+    show help for webpage PAGE.
+  * Add the -t and -T options to the fossil praise command.
+  * The fossil clone command adds the --ipv6 option.
+  * Add "-s" and "--stop" as aliases for the "--stop-on-error" option
+    in the fossil all command.
+  * Add the "-h|--hash" option to the fossil whatis command.
+
+- fossil 2.27:
+  * Close a potential Denial-of-Service attack against any public-
+    facing Fossil server involving exponential behavior in Fossil's
+    regexp implementation.
+  * Fix a SQL injection on the /file page. Thanks to additional
+    defenses built into Fossil, as well as good luck, this injection
+    is not exploitable for either data exfiltration or privilege
+    escalation. The only possible result of invoking the injection
+    is a harmless SQL syntax error.
+  * Strengthen robot defenses to help prevent public-facing servers
+    from being overwhelmed by the latest generation of AI spiders.
+  * New javascript captcha used to restrict access by user "nobody"
+    to pages listed in the robot-restrict setting.
+  * The robot-exception setting is available to allow access to pages
+    that match a regular expression. Use this, for example, to allow
+    curl scripts and similar to download release tarballs.
+  * Require at least an anonymous login to access the /blame page and
+    similar.
+  * Timeline enhancements:
+      The chng= query parameter on the timeline page so that it works
+      with other query parameters like p=, d=, from=, and to=.
+      Always include nodes identify by sel1= and sel2= in the
+      /timeline display.
+      Improved title when p= and d= are different.
+  * Enable the --editor option on the fossil amend command.
+  * When walking the filesystem looking for Fossil repositories,
+    avoid descending into directories named "/proc".
+  * Reduce memory requirements for sending authenticated sync
+    protocol messages.
+  * Show numstat-style change statistics in the /info and /ckout pages.
+  * Add the stash rename subcommand.
+  * Add the "-h" option to the "ls" command to display file hashes
+    for a specific check-in when in verbose mode.
+
+-------------------------------------------------------------------
 Sun May  4 07:18:53 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fossil 2.26:
