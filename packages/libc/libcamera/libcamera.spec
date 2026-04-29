@@ -38,6 +38,7 @@ URL:            https://libcamera.org/
 #Git-Web:       https://git.libcamera.org/libcamera/libcamera.git/
 Source:         libcamera-%version.tar.xz
 Source1:        baselibs.conf
+Patch1:         libcamera-ov02e10-initial-support.patch
 BuildRequires:  c++_compiler
 BuildRequires:  meson >= 1.0.1
 BuildRequires:  pkg-config

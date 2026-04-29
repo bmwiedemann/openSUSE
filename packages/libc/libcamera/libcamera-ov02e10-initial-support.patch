@@ -1,0 +1,94 @@
+From 63bfab91899671878197beb616b1cdddec120d6e Mon Sep 17 00:00:00 2001
+From: Marcel Berger <marbe@gmx.de>
+Date: Sat, 25 Apr 2026 17:15:01 +0200
+Subject: [PATCH] libcamera: Add initial OV02E10 sensor support
+References: https://lists.libcamera.org/pipermail/libcamera-devel/2026-April/058387.html
+
+Signed-off-by: Marcel Berger <marbe@gmx.de>
+---
+ src/ipa/libipa/camera_sensor_helper.cpp       | 18 ++++++++++++++++++
+ src/ipa/simple/data/ov02e10.yaml              | 19 +++++++++++++++++++
+ .../sensor/camera_sensor_properties.cpp       | 12 ++++++++++++
+ 3 files changed, 49 insertions(+)
+ create mode 100644 src/ipa/simple/data/ov02e10.yaml
+
+diff --git a/src/ipa/libipa/camera_sensor_helper.cpp b/src/ipa/libipa/camera_sensor_helper.cpp
+index e3e3e535..bee50ec8 100644
+--- a/src/ipa/libipa/camera_sensor_helper.cpp
++++ b/src/ipa/libipa/camera_sensor_helper.cpp
+@@ -653,6 +653,24 @@ public:
+ };
+ REGISTER_CAMERA_SENSOR_HELPER("imx708", CameraSensorHelperImx708)
+ 
++class CameraSensorHelperOv02e10 : public CameraSensorHelper
++{
++public:
++	CameraSensorHelperOv02e10()
++	{
++		/*
++		 * OV02E10 reports RAW10. The Intel IPU6 HAL configuration uses
++		 * SGRBG10 at 1928x1088 and exposure/gain lag of 2 frames.
++		 *
++		 * The analogue gain model is not yet datasheet-validated.
++		 * Use the common OmniVision 1/128 linear gain model as a
++		 * conservative first approximation.
++		 */
++		gain_ = AnalogueGainLinear{ 1, 0, 0, 16 };
++	}
++};
++REGISTER_CAMERA_SENSOR_HELPER("ov02e10", CameraSensorHelperOv02e10)
++
+ class CameraSensorHelperOv2685 : public CameraSensorHelper
+ {
+ public:
+diff --git a/src/ipa/simple/data/ov02e10.yaml b/src/ipa/simple/data/ov02e10.yaml
+new file mode 100644
+index 00000000..fc90ca52
+--- /dev/null
++++ b/src/ipa/simple/data/ov02e10.yaml
+@@ -0,0 +1,19 @@
++# SPDX-License-Identifier: CC0-1.0
++%YAML 1.1
++---
++version: 1
++algorithms:
++  - BlackLevel:
++  - Awb:
++  # Color correction matrices can be defined here. The CCM algorithm
++  # has a significant performance impact, and should only be enabled
++  # if tuned.
++  # - Ccm:
++  #     ccms:
++  #       - ct: 6500
++  #         ccm: [ 1, 0, 0,
++  #                0, 1, 0,
++  #                0, 0, 1]
++  - Adjust:
++  - Agc:
++...
+diff --git a/src/libcamera/sensor/camera_sensor_properties.cpp b/src/libcamera/sensor/camera_sensor_properties.cpp
+index b217363d..30638836 100644
+--- a/src/libcamera/sensor/camera_sensor_properties.cpp
++++ b/src/libcamera/sensor/camera_sensor_properties.cpp
+@@ -325,6 +325,18 @@ const CameraSensorProperties *CameraSensorProperties::get(const std::string &sen
+ 				.hblankDelay = 3
+ 			},
+ 		} },
++		{ "ov02e10", {
++			.unitCellSize = { 1120, 1120 },
++			.testPatternModes = {
++				{ controls::draft::TestPatternModeOff, 0 },
++			},
++			.sensorDelays = {
++				.exposureDelay = 2,
++				.gainDelay = 2,
++				.vblankDelay = 2,
++				.hblankDelay = 2
++			},
++		} },
+ 		{ "ov2685", {
+ 			.unitCellSize = { 1750, 1750 },
+ 			.testPatternModes = {
+-- 
+2.53.0
+
