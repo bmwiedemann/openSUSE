@@ -1,7 +1,7 @@
 #
 # spec file for package geoipupdate
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source2:        geoipupdate.timer
 Source3:        geoipupdate.service
 Source4:        geoipupdate-legacy
 Source5:        README.SUSE
+Source6:        %{name}.tmpfiles
 Patch0:         disable-pandoc.patch
 %if 0%{?suse_version} >= 1500
 # Build-time parameters
@@ -74,18 +75,23 @@ install -D -m0755 build/geoipupdate       %{buildroot}%{_bindir}/geoipupdate
 install -D -m0755 %{SOURCE4}              %{buildroot}%{_bindir}/geoipupdate-legacy
 install -D -m0644 %{SOURCE5}              %{buildroot}%{_docdir}/geoipupdate/README.SUSE
 install -D -m0644 conf/GeoIP.conf.default %{buildroot}%{_sysconfdir}/GeoIP.conf
-install -d -m0755 %{buildroot}%{_localstatedir}/lib/GeoIP
 sed -ri \
  -e 's|YOUR_ACCOUNT_ID_HERE|999999|' \
  -e 's|YOUR_LICENSE_KEY_HERE|000000000000|' \
  -e '/^(#\s*)?DatabaseDirectory/ s|^(#\s*)?(\w+\s*).+$|\2%{_localstatedir}/lib/GeoIP|' \
  %{buildroot}%{_sysconfdir}/GeoIP.conf
+# tmpfiles for immutable mode
+mkdir %{buildroot}%{_tmpfilesdir}
+install -m 0644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 %if 0%{?suse_version} >= 1500
 %pre
 %service_add_pre %{name}.service %{name}.timer
 
+%endif
 %post
+%tmpfiles_create %{name}.conf
+%if 0%{?suse_version} >= 1500
 %service_add_post %{name}.service %{name}.timer
 
 %preun
@@ -98,7 +104,8 @@ sed -ri \
 %files
 %license LICENSE-*
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/GeoIP.conf
-%dir %{_localstatedir}/lib/GeoIP
+%ghost %attr(0755,root,root) %dir %{_localstatedir}/lib/GeoIP
+%{_tmpfilesdir}/%{name}.conf
 %if 0%{?suse_version} >= 1500
 %doc README.md README.SUSE build/geoipupdate.md build/GeoIP.conf.md
 %{_bindir}/geoipupdate

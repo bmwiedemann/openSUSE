@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 28 08:33:15 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Move config files in systemd tmpfiles dir for immutable mode
+  (jsc#PED-14905).
+  * Add geoipupdate.tmpfiles
+
+-------------------------------------------------------------------
 Mon Jul 21 10:07:05 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to version 7.1.1:
