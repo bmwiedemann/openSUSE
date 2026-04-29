@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Sun Apr 26 12:53:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.16.0:
+  * Features
+    - Add clustering for loki.source.kubernetes_events (#6027)
+      (3dbf587) (@petewall)
+    - Add otelcol.auth.google client auth provider (#5526)
+      (da99a66) (@dashpole, @clayton-cornell)
+    - beyla.ebpf: Bump to v3.7.0 (#5966) (5126c2e) (@marctc)
+    - database_observability: Add support for GCP Cloud SQL
+      metadata (#5875) (5d23245) (@cristiangreco, @clayton-cornell)
+    - database_observability: Make targets optional (#5924)
+      (54664b2) (@matthewnolf)
+    - database_observability: Update default excluded schemas and
+      users (#6080) (b386fff) (@cristiangreco)
+    - faro.receiver: Add sourcemap fetching from remote locations
+      (#4614) (b6cb5da) (@Oxel40)
+    - helm: Add support for global.image.pullPolicy (#6069)
+      (2e2ce72) (@petewall)
+    - helm: Allow configuring image pull policy for config reloader
+      (#5923) (991539b) (@kalleep)
+    - loki.secretfilter: Add label_timed_out option to mark
+      timed-out log lines (#5898) (2ad8834) (@kleimkuhler)
+    - loki.secretfilter: Add secrets_redacted_by_category_total
+      metric combining rule and origin (#5855) (053a2f7)
+      (@kleimkuhler)
+    - loki.secretfilter: Change secretfilter to use go-re2 regex
+      library instead of stdlib (#5909) (c16a660) (@mikefat)
+    - loki.secretfilter: Remove redundant
+      secrets_redacted_by_rule_total and secrets_redacted_by_origin
+      metrics (#5970) (b16decb) (@kleimkuhler)
+    - Oracle exporter can scrape more than one DB (#6008) (6fbad38)
+      (@ptodev)
+    - prometheus.exporter.cloudwatch: Upgrade YACE and drop
+      aws-sdk-go v1 support (#5936) (f1c036d) (@x1unix)
+    - prometheus.exporter.mysql: Update to mysqld_exporter 0.19.0
+      (#5836) (4f49b57) (@cristiangreco)
+    - prometheus.remote_write: Sync WAL with upstream Prometheus
+      (#5907) (e74a91b) (@x1unix)
+    - pyroscope: Add support for extra async-profiler CLI arguments
+      (#5472) (9251e33) (@ivanape)
+    - pyroscope: Replace Parca gRPC debuginfo upload with Pyroscope
+      Connect API (#5891) (e7ea34a) (@korniltsev-grafanista)
+    - pyroscope: Update debuginfo client for HTTP/1.1 upload API
+      (#6037) (879d8e5) (@korniltsev-grafanista)
+  * Bug Fixes
+    - Change service stop command from 'sc' to 'net' (#5906)
+      (450973d) (@mateuszdrab)
+    - database_observability.mysql: Refactor explain plan loop
+      batch size (#5894) (f0fcd6b) (@cristiangreco)
+    - database_observability.postgres: Cleanup embedded exporter
+      collectors on reconnection (#6079) (f30d9ae) (@cristiangreco)
+    - database_observability.postgres: Fix EXPLAIN param count when
+      placeholders repeat (#6082) (b612b81) (@rgeyer)
+    - database_observability: Drop schema_detection from logs
+      (#6076) (b0105cb) (@cristiangreco)
+    - database_observability: Ensure connection_info_monitor
+      goroutine exits on Stop (#5874) (1e3334b) (@cristiangreco)
+    - deps: Update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.97.3 [SECURITY] (#6004) (38f4346)
+    - deps: Update module github.com/go-git/go-git/v5 to v5.17.1
+      [SECURITY] (#5934) (a5154af)
+    - deps: Update module github.com/go-git/go-git/v5 to v5.18.0
+      [SECURITY] (#6090) (0e59d64)
+    - deps: Update module github.com/nwaples/rardecode/v2 to v2.2.0
+      [SECURITY] (b44d51a) (@jharvey10)
+    - deps: Update module
+      go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp
+      to v1.43.0 [SECURITY] (#6016) (d92c5c0)
+    - deps: Update module
+      go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+      to v1.43.0 [SECURITY] (#6017) (e655bbc)
+    - deps: Update module go.opentelemetry.io/otel/sdk to v1.43.0
+      [SECURITY] (#6018) (94006e8)
+    - deps: Update some minor go dep versions (#5896) (4ddd0ed)
+      (@jharvey10)
+    - go: Update alloy builder image to Go 1.25.9 (#6012) (d2ae8b8)
+      (@x1unix)
+    - go: Upgrade to Go 1.25.9 (#6019) (d777ed1) (@x1unix,
+      @kalleep)
+    - Helm: RBAC template handles empty rule arrays (#4860)
+      (c9430e9) (@naptalie, @dehaansa, @kalleep)
+    - loki.process: Eliminate per-stream goroutines in multiline
+      stage (#6036) (c089e2e) (@kgeckhart)
+    - loki.process: Prevent stage.structured_metadata from adding
+      the same metadata several times (#5965) (0ec8a26) (@kalleep,
+      @thampiotr)
+    - loki.process: Wrap template in a custom type and move
+      validation to syntax.Validator (#5910) (700dd7d) (@kalleep)
+    - prometheus.exporter.postgres: Close DB connections on update
+      (#6021) (8da97cf) (@kalleep)
+    - prometheus.scrape: Update scrape_native_histograms to be
+      updated at runtime (#6087) (18b205c) (@kalleep)
+    - pyroscope.ebpf: Fix deadlock on LRU eviction in irsymcache
+      (#5911) (03ca563) (@luweglarz)
+    - pyroscope.ebpf: Move Pyroscope ebpf metrics registration
+      after component error handling (#5540) (a3c57c0) (@crbednarz,
+      @marcsanmi)
+    - pyroscope: Set user agent on debuginfo connect-go client
+      (#6022) (38ad1ef) (@korniltsev-grafanista)
+    - ui: Large arguments are downloaded as files instead of
+      rendered (#5268) (26c67b3) (@ptodev)
+    - Update go-m1cpu v0.1.7 -> v0.2.1 to fix M5 chip crash (#6034)
+      (7fa0cbc) (@ymotongpoo)
+    - windows-installer: Increase service restart on failure delays
+      (#5969) (add15b1) (@rknightion)
+
+-------------------------------------------------------------------
+Sun Apr 26 12:25:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add script to package webassets inside a podman container, to not
+  endanger or pollute the host system with npm
+
+-------------------------------------------------------------------
 Wed Apr 22 15:47:02 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - update to 1.15.1:

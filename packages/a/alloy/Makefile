@@ -1,39 +1,23 @@
 .ONESHELL:
 SHELL := /bin/bash
 
-NVM_DIR ?= $(HOME)/.config/nvm
-
 NAME = alloy
 SPEC = alloy.spec
 
-default: clean tar
+.SILENT: clean obs_download_files web_assets_and_go_modules
+default: clean obs_download_files web_assets_and_go_modules
 
 clean:
 	rm -rf $(NAME) $(NAME)-*.obscpio $(NAME)-*.tar.gz ui-*.tar.gz vendor.tar.gz
 
-tar:
+obs_download_files:
 	osc service manualrun download_files
-	@version=$$( awk '/^Version:/ {print $$2;exit;}' $(SPEC) )
-	echo "Package version is $$version"
-	basename=$(NAME)-$$version
-	tar=$$basename.tar
-	ui=ui-$$version.tar
-	wd=$$(pwd)
-	tmpdir=$$(mktemp -d -p /tmp)
-	pushd $$tmpdir
-	tar zxf $$wd/$$tar.gz
-	pushd $$basename/internal/web/ui/
-	. $(NVM_DIR)/nvm.sh
-	npm install
-	npm run build
-	popd
-	echo "Creating web assets tarball"
-	tar zcf $$wd/$$ui.gz $$basename/internal/web/ui/dist/
-	pushd $$basename/collector/
-	go mod download
-	go mod vendor
-	go mod verify
-	tar zcf $$wd/vendor.tar.gz vendor
-	popd
-	popd
-	rm -rf $$tmpdir
+
+web_assets_and_go_modules:
+	podman run \
+		-ti \
+		--rm \
+		--pull=always \
+		-v .:/data/ \
+		registry.opensuse.org/opensuse/leap:16.0 \
+		bash /data/prepare_webassets_and_vendor_go_modules.sh $(NAME) go1.26
