@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema-path
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        JSONSchema Spec with object-oriented paths
 License:        Apache-2.0
