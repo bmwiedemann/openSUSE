@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 29 15:01:05 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Remove obsolete activate-firmware-regress and vpdupdate-regress
+
+-------------------------------------------------------------------
 Mon Apr 27 11:58:01 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
-- Update to version 2.0.6 (jsc#PED-14527).
+- Update to version 2.0.7 (jsc#PED-14527).
   * physical-attestation: check work_area_bytes for null prior to dereference
 - Drop upstreamed patches
   * 0009-librtas-Use-kernel-interface-when-available-for-ibm-.patch

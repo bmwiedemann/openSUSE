@@ -24,8 +24,6 @@ License:        LGPL-2.1-or-later
 Group:          Documentation/Other
 URL:            https://github.com/ibm-power-utilities/librtas
 Source0:        https://github.com/ibm-power-utilities/librtas/archive/v%{version}.tar.gz#/librtas-%{version}.tar.gz
-Source2:        activate-firmware-regress
-Source3:        vpdupdate-regress
 Patch0:         librtas.fix_doc_path.patch
 BuildRequires:  autoconf
 BuildRequires:  automake

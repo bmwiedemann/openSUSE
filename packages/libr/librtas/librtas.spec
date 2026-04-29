@@ -26,8 +26,6 @@ Group:          System/Libraries
 URL:            https://github.com/ibm-power-utilities/librtas
 Source0:        https://github.com/ibm-power-utilities/librtas/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Source2:        activate-firmware-regress
-Source3:        vpdupdate-regress
 Patch0:         librtas.fix_doc_path.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -93,7 +91,6 @@ rm -rf %{buildroot}%{_docdir}
 /sbin/ldconfig -n %{buildroot}%{_libdir}
 chmod -x %{buildroot}%{_libdir}/*.a
 find %{buildroot} -type f -name "*.la" -delete -print
-install -v -m 755 -D -t %{buildroot}%{_docdir}/%{name} %{SOURCE2} %{SOURCE3}
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
@@ -105,7 +102,6 @@ install -v -m 755 -D -t %{buildroot}%{_docdir}/%{name} %{SOURCE2} %{SOURCE3}
 
 %files devel
 %license COPYING.LESSER
-%{_docdir}/%{name}
 %{_libdir}/librtasevent.so
 %{_libdir}/librtas.so
 %{_includedir}/librtas.h
