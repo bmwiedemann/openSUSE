@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 16 02:15:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install the Python module.
+- Use fdupes on the Python module.
+- Specify files and directories under sitelib explicitly.
+
+-------------------------------------------------------------------
 Tue Feb 27 21:14:50 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add dependency on setuptools

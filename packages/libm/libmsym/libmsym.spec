@@ -1,7 +1,7 @@
 #
 # spec file for package libmsym
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,11 @@ Group:          System/Libraries
 URL:            https://github.com/mcodev31/libmsym
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 
@@ -70,6 +73,8 @@ python applications that require libmsym.
 
 %prep
 %setup -q
+# Python bindings have an incorrect version
+sed -i 's/0.2/%{version}/' bindings/python/setup.py
 
 %build
 %cmake \
@@ -77,14 +82,15 @@ python applications that require libmsym.
   -DINSTALL_CMAKE_DIR=%{_libdir}/cmake/libmsym
 %make_build
 pushd ../bindings/python
-%python_build
+%pyproject_wheel
 popd
 
 %install
 %cmake_install
 pushd bindings/python
-%python_install
+%pyproject_install
 popd
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post   -n %{name}%{sonum} -p /sbin/ldconfig
 %postun -n %{name}%{sonum} -p /sbin/ldconfig
@@ -101,11 +107,15 @@ popd
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %files %{python_files %name}
-%{python_sitelib}/*
+%{python_sitelib}/libmsym.py
+%pycache_only %{python_sitelib}/__pycache__/libmsym.*.pyc
+%{python_sitelib}/libmsym-%{version}.dist-info
 %else
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/libmsym.py
+%pycache_only %{python_sitelib}/__pycache__/libmsym.*.pyc
+%{python_sitelib}/libmsym-%{version}.dist-info
 %endif
 
 %changelog
