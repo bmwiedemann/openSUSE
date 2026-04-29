@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 27 08:29:36 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.9.0+git20260423.8742fdc6:
+  * FileDigestCheck: some more harmonization and type annotation
+  * test: FileDigestCheck: verify only files from the same group are allowed
+  * FileDigestCheck: operate on digest groups, not on a global view
+  * FileDigestCheck: refactoring
+  * opensuse.toml: fix typo
+
+-------------------------------------------------------------------
 Fri Apr 17 08:40:25 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 2.9.0+git20260417.eb98d54d:

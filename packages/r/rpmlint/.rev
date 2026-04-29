@@ -5620,4 +5620,17 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1349108</requestid>
   </revision>
+  <revision rev="536" vrev="1">
+    <srcmd5>61ed9d8a370cfba3f0845189d92d4ad7</srcmd5>
+    <version>2.9.0+git20260423.8742fdc6</version>
+    <time>1777483044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.0+git20260423.8742fdc6:
+  * FileDigestCheck: some more harmonization and type annotation
+  * test: FileDigestCheck: verify only files from the same group are allowed
+  * FileDigestCheck: operate on digest groups, not on a global view
+  * FileDigestCheck: refactoring
+  * opensuse.toml: fix typo</comment>
+    <requestid>1349542</requestid>
+  </revision>
 </revisionlist>
