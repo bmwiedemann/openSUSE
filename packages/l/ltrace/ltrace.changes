@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 27 12:49:24 UTC 2026 - Michael Matz <matz@suse.com>
+
+- Add ltrace-add-yama-hint.patch (jsc#PED-15928) to give a hint
+  when ltrace -p fails on a system where yama is active.
+
+-------------------------------------------------------------------
 Mon Nov 17 16:41:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.1:

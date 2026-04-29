@@ -479,4 +479,13 @@
 - added PPC port by Anton Blanchard</comment>
     <requestid>1318282</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>88f992912ec0d06cf57fb1db57b20f63</srcmd5>
+    <version>0.8.1</version>
+    <time>1777483048</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ltrace-add-yama-hint.patch (jsc#PED-15928) to give a hint
+  when ltrace -p fails on a system where yama is active. (forwarded request 1349601 from matz2)</comment>
+    <requestid>1349647</requestid>
+  </revision>
 </revisionlist>

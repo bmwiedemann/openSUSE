@@ -1,7 +1,7 @@
 #
 # spec file for package ltrace
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Patch5:         gcc9-printf-s-null-argument.patch
 Patch7:         gcc9-Wlto-type-mismatch.patch
 Patch8:         s390x-ptrace.patch
 Patch9:         ppc64le-use-after-free.patch
+Patch10:        ltrace-add-yama-hint.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel

@@ -1,0 +1,45 @@
+commit 572b7aa2460ff0561ec3be09b850e5ded2164353
+Author: Michael Matz <matz@suse.de>
+Date:   Mon Apr 27 14:36:14 2026 +0200
+
+    Give hint when ptrace is prevented by yama
+    
+    like for SElinux yama can be configured to prevent attaching
+    to processes by PID, so give a hint about that as well.
+
+diff --git a/sysdeps/linux-gnu/trace.c b/sysdeps/linux-gnu/trace.c
+index 12c8747..3d87605 100644
+--- a/sysdeps/linux-gnu/trace.c
++++ b/sysdeps/linux-gnu/trace.c
+@@ -60,12 +60,13 @@
+ void
+ trace_fail_warning(pid_t pid)
+ {
+-	/* This was adapted from GDB.  */
+-#ifdef HAVE_LIBSELINUX
+ 	static int checked = 0;
++	FILE *fp;
+ 	if (checked)
+ 		return;
+ 	checked = 1;
++	/* This was adapted from GDB.  */
++#ifdef HAVE_LIBSELINUX
+ 
+ 	/* -1 is returned for errors, 0 if it has no effect, 1 if
+ 	 * PTRACE_ATTACH is forbidden.  */
+@@ -75,6 +76,15 @@ trace_fail_warning(pid_t pid)
+ "tracing other processes.  You can disable this process attach protection by\n"
+ "issuing 'setsebool deny_ptrace=0' in the superuser context.\n");
+ #endif /* HAVE_LIBSELINUX */
++	fp = fopen("/proc/sys/kernel/yama/ptrace_scope", "r");
++	if (fp) {
++		int yamaval = 0;
++		if(fscanf(fp, "%d", &yamaval) == 1 && yamaval > 0)
++			fprintf(stderr,
++"The sysctl(8) setting kernel.yama.ptrace_scope is '%d', which prevents\n"
++"attaching to already running processes by pid.\n", yamaval);
++		fclose(fp);
++	}
+ }
+ 
+ void
