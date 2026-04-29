@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 24 20:05:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to 4.6.8 (4.68)
+  * Maintenance release.
+  * Native support for macOS ARM64 (Apple Silicon).
+  * Stability improvements and bug fixes.
+- Refreshed patches:
+  * no-build-date.patch
+  * allow-qt6-also-on-non-mac.patch
+
+-------------------------------------------------------------------
 Sun May  1 11:38:28 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 4.6.4 (4.64):
@@ -14,7 +25,7 @@ Sun May  1 11:38:28 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
     of polylines in maps and technical drawings.
   * A bug in storing scanned data as ROOT macro when no error bars
     were present was fixed.
-  * Various bug fixes. 
+  * Various bug fixes.
 - Rebased no-build-date.patch
 - Added allow-qt6-also-on-non-mac.patch (reported upstream by email)
 - Upstream still supports QT5 for (only) Linux, so for Leap we stick
@@ -64,7 +75,7 @@ Tue Dec  4 21:12:09 UTC 2018 - Todd R <toddrme2178@gmail.com>
   * introduces a Measure Tool. It allows one to measure distances
     in pixel, plot, and user defined units.
   * Added a warning dialog to save (or discard) data when a new
-    plot is loaded and the current data is not saved. 
+    plot is loaded and the current data is not saved.
 
 -------------------------------------------------------------------
 Sun Oct 16 20:38:30 UTC 2016 - toddrme2178@gmail.com

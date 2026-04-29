@@ -1,7 +1,7 @@
 #
 # spec file for package xyscan
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} >= 1550
 %bcond_without  qt6
 %else
@@ -22,7 +23,7 @@
 %bcond_with     qt5
 %endif
 Name:           xyscan
-Version:        4.64
+Version:        4.68
 Release:        0
 Summary:        Data extractor for data points from graphical plots
 License:        GPL-3.0-or-later
