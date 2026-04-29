@@ -281,4 +281,27 @@ covered).</comment>
   (CVE-2026-6100, bsc#1262098, gh#python/cpython#148395).</comment>
     <requestid>1349644</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>2eead5be8f2068957021d9451c34f170</srcmd5>
+    <version>3.15.0~a8</version>
+    <time>1777483103</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-6019: protect against HTML injection by
+  Base64-encoding cookie values embedded in JS (bsc#1262654,
+  gh#python/cpython#90309)
+  CVE-2026-6019-Morsel-js_output.patch
+- CVE-2026-1502: reject CR/LF in HTTP tunnel request headers
+  (bsc#1261969, gh#python/cpython#146211)
+  CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
+- CVE-2026-5713: validate remote debug offset tables on load
+  (bsc#1262132, gh#python/cpython#148178)
+  CVE-2026-5713-validate-debug-load.patch
+- CVE-2026-4786: fix webbrowser %action substitution bypass of
+  dash-prefix check (bsc#1262319, gh#python/cpython#148169)
+  CVE-2026-4786-webbrowser-open-action.patch
+- CVE-2026-6100: prevent dangling pointer, which can end in the
+  use-after-free error (bsc#1262098, gh#python/cpython#148395)
+  CVE-2026-6100-use-after-free-decompression.patch</comment>
+    <requestid>1349863</requestid>
+  </revision>
 </revisionlist>

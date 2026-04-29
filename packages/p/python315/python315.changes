@@ -1,37 +1,38 @@
 -------------------------------------------------------------------
 Mon Apr 27 13:48:41 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
-- Add CVE-2026-6019-Morsel-js_output.patch protects against HTML
-  injection by Base64-encoding cookie values embedded in JS
-  (bsc#1262654, CVE-2026-6019, gh#python/cpython#90309).
+- CVE-2026-6019: protect against HTML injection by
+  Base64-encoding cookie values embedded in JS (bsc#1262654,
+  gh#python/cpython#90309)
+  CVE-2026-6019-Morsel-js_output.patch
 
 -------------------------------------------------------------------
 Sat Apr 25 16:42:59 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
-- Add CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch which rejects
-  CR/LF in HTTP tunnel request headers (bsc#1261969,
-  CVE-2026-1502, gh#python/cpython#146211).
+- CVE-2026-1502: reject CR/LF in HTTP tunnel request headers
+  (bsc#1261969, gh#python/cpython#146211)
+  CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
 
 -------------------------------------------------------------------
 Sat Apr 25 12:31:50 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
-- Add CVE-2026-5713-validate-debug-load.patch, which validates
-  remote debug offset tables on load (bsc#1262132, CVE-2026-5713,
-  gh#python/cpython#148178).
+- CVE-2026-5713: validate remote debug offset tables on load
+  (bsc#1262132, gh#python/cpython#148178)
+  CVE-2026-5713-validate-debug-load.patch
 
 -------------------------------------------------------------------
 Sat Apr 25 00:14:50 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
-- Add CVE-2026-4786-webbrowser-open-action.patch, which fixes
-  webbrowser %action substitution bypass of dash-prefix check
-  (bsc#1262319, CVE-2026-4786, gh#python/cpython#148169).
+- CVE-2026-4786: fix webbrowser %action substitution bypass of
+  dash-prefix check (bsc#1262319, gh#python/cpython#148169)
+  CVE-2026-4786-webbrowser-open-action.patch
 
 -------------------------------------------------------------------
 Fri Apr 24 17:15:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
-- Add CVE-2026-6100-use-after-free-decompression.patch preventing
-  dangling pointer which can end in the use-after-free error
-  (CVE-2026-6100, bsc#1262098, gh#python/cpython#148395).
+- CVE-2026-6100: prevent dangling pointer, which can end in the
+  use-after-free error (bsc#1262098, gh#python/cpython#148395)
+  CVE-2026-6100-use-after-free-decompression.patch
 
 -------------------------------------------------------------------
 Sat Apr 18 22:38:25 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
