@@ -374,4 +374,25 @@ After this PR, there will be a delete request for kernel-firmware.
   * Revert &quot;rtl_bt: Update RTL8822C BT USB and UART firmware to 0x0673&quot;</comment>
     <requestid>1345538</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>147c7521380c9b7b18d0ffea33050b4c</srcmd5>
+    <version>20260423</version>
+    <time>1777483071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260423 (git commit 479a01628094):
+  * linux-firmware: Add firmware file for Intel BlazarIW
+
+- Update to version 20260423 (git commit 0d347a3f3ec4):
+  * linux-firmware: Add firmware file for Intel ScorpiusGfp2 core
+  * linux-firmware: Add firmware file for Intel BlazarIGfp2 core
+  * linux-firmware: Update firmware file for Intel BlazarU-HrPGfP core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel Scorpius core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+  * Revert &quot;linux-firmware: Update firmware file for Intel Quasar core&quot;
+
+- Update to version 20260421 (git commit 0a7e55438c7c):
+  * QCA: Update Bluetooth WCN6856 firmware 2.1.0-00665 to 2.1.0-00666</comment>
+    <requestid>1349832</requestid>
+  </revision>
 </revisionlist>
