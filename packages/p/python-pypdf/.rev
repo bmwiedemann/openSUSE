@@ -216,4 +216,12 @@
   * Add AI policy</comment>
     <requestid>1348120</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>293593453cc77a8422325eeae7a552c2</srcmd5>
+    <version>6.10.2</version>
+    <time>1777483210</time>
+    <user>dimstar_suse</user>
+    <comment>Add CVE numbers to changelog</comment>
+    <requestid>1349963</requestid>
+  </revision>
 </revisionlist>

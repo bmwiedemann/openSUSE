@@ -1,14 +1,14 @@
 -------------------------------------------------------------------
 Mon Apr 20 06:56:57 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
-- Update to 6.10.2 (bsc#1262284, CVE-2026-40260)
+- Update to 6.10.2 (bsc#1262675, CVE-2026-41312, bsc#1262670, CVE-2026-41313, bsc#1262669, CVE-2026-41314)
   * Do not rely on possibly invalid /Size for incremental cloning
   * Introduce limits for FlateDecode parameters and image decoding
-- 6.10.1
+- 6.10.1 (bsc#1262676, CVE-2026-41168)
   * Limit the allowed size of xref and object streams
   * Consider strict mode setting for decryption errors
   * Use new parameter names for compress_identical_objects
-- 6.10.0
+- 6.10.0 (bsc#1262284, CVE-2026-40260)
   * Disallow custom XML entity declarations for XMP metadata
   * Skip MD5 key derivation for AES-256 encrypted PDFs
   * Use remove_orphans in compress_identical_objects
