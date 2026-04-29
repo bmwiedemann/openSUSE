@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Apr 29 00:07:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.26.4
+  - #9360 Sanitize DT_NOBEGIN next_start to recover jobs stuck
+    after primary failover
+  - #9515 Fix now() constification for continuous aggregate queries
+  - #9550 Fix out of memory when propagating ALTER TABLE to many
+    chunks
+  - #9605 Fix InstrStartNode called twice in a row
+  - #9607 Fix use-after-free of PlaceHolderVar.phrels in cached
+    ChunkAppend plans
+  - #9612 Fix PlaceHolderVar error in runtime chunk exclusion
+  - #9614 Remove stale hypertable entries during upgrade
+  - #9615 Fix segfault with transition tables after column drop
+  - #9616 Use DROP CASCADE for trigger removal
+  - #9623 Error when querying compressed chunks under Apache
+    license
+  - #9625 Make timescaledb_post_restore() reliably restart
+    background workers in a single call
+  - #9639 Fix lost orderby sparse index
+  - #9646 Replace ERRCODE_INTERNAL_ERROR on user-reachable error
+    paths
+  - #9652 Add Error on missing custom job function in
+    ts_bgw_job_get_funci
+  - #9655 Fix data corruption when merging chunks with different
+    compression settings
+  - #9654 Fix sort_transform crash with hypertable on nullable side
+    of outer join
+  - #9656 Fix concurrent merge of compressed chunks dropping the
+    new heap
+  - #9641 Fix COPY path with transition tables after column drop
+  - #9660 Fix incremental continuous aggregate refresh so that
+    extend_last_bucket only applies to the boundary batch
+  - #9674 Fix segmentby crash in cagg invalidation tracking
+
+-------------------------------------------------------------------
+Tue Apr 14 09:56:35 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.26.3
+  - #9511 Fix alter_job failing for retention policy with
+    drop_created_before argument
+  - #9557 Clean up orphaned compression_chunk_size entries during
+    the extension upgrade
+  - #9551 Fix resource leaks on error paths for during a continuous
+    aggregate refresh
+  - #9563 Fix gapfill out-of-order bucket creation during DST shift
+  - #9571 Fix concurrent refreshes of continuous aggregates
+
+-------------------------------------------------------------------
 Wed Apr  8 11:23:12 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.26.2

@@ -616,4 +616,12 @@ Stop storing build machine kernel version (boo#1101107)</comment>
   - #9522 Fix GROUP BY ROLLUP on compressed continuous aggregates</comment>
     <requestid>1345155</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>739c9242237b7e7ee0aab7cb1ea29991</srcmd5>
+    <version>2.26.4</version>
+    <time>1777483167</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.26.4</comment>
+    <requestid>1349898</requestid>
+  </revision>
 </revisionlist>
