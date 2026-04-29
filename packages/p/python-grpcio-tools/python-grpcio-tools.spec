@@ -21,29 +21,29 @@
 %define         modname grpcio_tools
 %{?sle15_python_module_pythons}
 Name:           python-grpcio-tools
-Version:        1.78.0
+Version:        1.80.0
 Release:        0
 Summary:        Protobuf code generator for gRPC
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://grpc.io
 Source:         https://files.pythonhosted.org/packages/source/g/grpcio-tools/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module Cython >= 3.1.1}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-grpcio >= %{version}
-Requires:       python-protobuf >= 3.5.0.post1
-Requires:       python-setuptools
+Requires:       python-protobuf >= 6.31.1
+Requires:       python-setuptools >= 77.0.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module grpcio >= %{version}}
-BuildRequires:  %{python_module protobuf >= 3.5.0.post1}
+BuildRequires:  %{python_module protobuf >= 6.31.1}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

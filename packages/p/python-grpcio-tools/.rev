@@ -354,4 +354,28 @@
     <comment></comment>
     <requestid>1332857</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>c6a03cfef81626a6eba64b7da972eda7</srcmd5>
+    <version>1.80.0</version>
+    <time>1777483114</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.80.0:
+  * Fix GRPC_TRACE noworking when absl log initialized in cython. (#41814)
+  * Fix AsyncIO Server maximum_concurrent_rpcs enforcemenpreventing
+    negative active_rpcs count. (#41532)
+  * Docs: correcgrpc.Compression references. (#41705)
+  * [Typeguard] Par4 - Add Typeguard to AIO stack in tests . (#40226)
+  * Fix multi-thread exceptiofor Asyncio gRPC clients - Fixes #25364. (#41483)
+  * Resolve absl::InitializeLog warning. (#39779)
+  * Remove IF usage iCython. (#41400)
+  * Add language features texported proto files. (#41501)
+  * Fix craswhen iterating on AIO Metadata keys(), values(),
+    items() or list(metadata.values()) etc. . (#41481)
+  * Modernize and revamp Public API Docs. (#41287)
+
+  * [Build] Override MACOSX_DEPLOYMENT_TARGET for gRPC Python. (#37997)
+    add_registered_method_handlers (gh#grpc/grpc#36684).
+  * Add type stub generation support to grpcio-tools. (#30498)</comment>
+    <requestid>1349870</requestid>
+  </revision>
 </revisionlist>
