@@ -1,7 +1,7 @@
 #
 # spec file for package python-hypercorn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypercorn
-Version:        0.17.3
+Version:        0.18.0
 Release:        0
 Summary:        A ASGI Server based on Hyper libraries and inspired by Gunicorn
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module h11}
 BuildRequires:  %{python_module h2 >= 3.1.0}
 BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module priority}

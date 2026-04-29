@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 28 08:35:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.18.0
+  * Add a config and command line argument to daemonise the workers
+  * Reload workers on SIGHUP.
+  * Bugfix correct the dispatcher middleware root path and path.
+  * Bugfix set end_stream when sending trailers.
+  * Bugfix connection asgi-state isolation.
+  * Bugfix Remove streams on StreamClosed for h3.
+  * Bugfix delay sending http headers when serving WSGI apps.
+  * Drop Python 3.8, 3.9 and support 3.13, 3.14
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Aug 21 08:31:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only
