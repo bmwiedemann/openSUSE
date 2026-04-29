@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:29:35 UTC 2026 - Max Lin <mlin@suse.com>
+
+- Update version number
+- Do not build kde_yast on Leap 16
+- Obsoletes kde_minimal pattern if PackageHub bsc#1248107
+
+-------------------------------------------------------------------
 Fri Dec 12 15:21:04 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Drop recommends on purpose-devel.

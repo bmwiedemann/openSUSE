@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-kde
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           patterns-kde
-Version:        20240311
+Version:        20260428
 Release:        0
 Summary:        Patterns for Installation (kde devel)
 License:        MIT
@@ -450,6 +450,10 @@ Provides:       pattern-order() = 1110
 Provides:       pattern-visible()
 Obsoletes:      patterns-openSUSE-kde < %{version}
 Obsoletes:      patterns-openSUSE-kde4 < %{version}
+# Help to migrate users from SLE-15-SP7 to SLES-16 bsc#1248107
+%if 0%{?is_backports}
+Obsoletes:      patterns-kde_minimal < %{version}
+%endif
 Requires:       pattern() = kde_plasma
 Recommends:     ark
 Recommends:     discover
@@ -465,7 +469,11 @@ Recommends:     pattern() = games
 Recommends:     pattern() = kde_internet
 Recommends:     pattern() = kde_pim
 Recommends:     pattern() = kde_utilities
+# Only for Tumbleweed
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
 Recommends:     pattern() = kde_yast
+Recommends:     yast2-control-center-qt
+%endif
 Recommends:     pattern() = multimedia
 Recommends:     pattern() = office
 # bnc#605509
@@ -477,7 +485,6 @@ Suggests:       ksystemlog
 # from data/COMMON-DESKTOP
 Recommends:     MozillaFirefox
 Recommends:     avahi
-Recommends:     yast2-control-center-qt
 Suggests:       marble
 Suggests:       kiosktool
 Suggests:       krename
@@ -937,6 +944,8 @@ KDE Application - Additional Utilities
 
 ################################################################################
 
+# Only for Tumbleweed
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
 %package kde_yast
 %pattern_basetechnologies
 Summary:        YaST KDE User Interfaces
@@ -967,6 +976,7 @@ Graphical YaST user interfaces for the KDE desktop.
 %files kde_yast
 %dir %{_defaultdocdir}/patterns
 %{_defaultdocdir}/patterns/kde_yast.txt
+%endif
 
 %prep
 
@@ -976,7 +986,11 @@ Graphical YaST user interfaces for the KDE desktop.
 mkdir -p %{buildroot}/%{_defaultdocdir}/patterns/
 for i in devel_kde_frameworks devel_qt5 devel_kde_frameworks6 devel_qt6 kde kde_plasma kde_pim \
     kde_edutainment kde_games kde_ide kde_imaging kde_internet kde_multimedia \
-    kde_office kde_utilities kde_utilities_opt kde_yast kde_plasma; do
+    kde_office kde_utilities kde_utilities_opt \
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
+    kde_yast \
+%endif
+    kde_plasma; do
     echo "This file marks the pattern $i to be installed." \
         >"%{buildroot}/%{_defaultdocdir}/patterns/$i.txt"
 done
