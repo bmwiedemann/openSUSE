@@ -406,7 +406,7 @@ remote print server and for setting up a print server.
 
 ################################################################################
 # code-o-o#leap/features#189
-%if 0%{?is_opensuse} && 0%{?suse_version} > 1600
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
 # BSC#1088175
 %ifarch x86_64
 %package xen_server
@@ -575,7 +575,7 @@ for i in \
         > "%{buildroot}%{_docdir}/patterns/$i.txt"
 done
 # code-o-o#leap/features#189
-%if 0%{?is_opensuse} && 0%{?suse_version} > 1600
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
 # XEN is only available on x86_64
 %ifarch x86_64
     for i in xen_server xen_tools; do

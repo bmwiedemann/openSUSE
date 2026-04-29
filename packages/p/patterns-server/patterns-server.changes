@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:16:56 UTC 2026 - Max Lin <mlin@suse.com>
+
+- Fix suse_version condition since Leap 16.1 does have a suse_version
+  value of 1610
+
+-------------------------------------------------------------------
 Thu Jun 26 15:27:31 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
 
 - Do not mention news server when building pattern on SLE
