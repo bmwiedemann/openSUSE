@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 28 05:08:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.5.0:
+  + More than hundred fixes for various issues both in code and
+    test suite were found and fixed using Claude AI.
+  + Crypto plugin now offers activate functions that accept
+    cryptsetup activation flags.
+  + Two new functions added to the btrfs plugin for recursively
+    removing subvolumes and getting btrfs device stats.
+
+-------------------------------------------------------------------
 Tue Feb 10 08:00:41 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.4.0:
