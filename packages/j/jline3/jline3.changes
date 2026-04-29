@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Wed Apr 29 12:08:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.30.11
+  * Bug Fixes
+    + Add GraalVM native-image support for FFM terminal provider
+
+-------------------------------------------------------------------
+Wed Apr 29 12:05:09 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.30.10
+  * Bug Fixes
+    + Catch LinkageError during provider loading
+    + Prevent ArrayIndexOutOfBoundsException in KillRing.yankPop()
+    + Fix off-by-one bounds check in KeyMap.unbind()
+    + Handle EOF in color parsing to prevent infinite loop
+    + Close HttpURLConnection in ConsoleEngineImpl.urlExists()
+    + Guard AnsiConsole.providers() call to avoid NoSuchMethodError
+    + Guard waitDirty against spurious wakeups
+    + Restore waitDirty timeout in forced dump to prevent busy-loop 
+      spinning
+    + Remove spurious (short) casts in Size setters
+    + Fix AttributedStyle color chaining
+    + Avoid NPE when closing terminal with null masterOutput
+    + Close PTY streams before shutdown to prevent hang on macOS
+
+-------------------------------------------------------------------
+Wed Apr 29 12:01:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.30.9
+  * Bug Fixes
+    + Suppress dumb terminal warning when no streams are TTYs
+      In CI environments (like GitHub Actions), the "Unable to
+      create a system terminal" warning is no longer emitted when
+      falling back to a dumb terminal is expected because no TTY is
+      available
+
+-------------------------------------------------------------------
+Wed Apr 29 11:57:51 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.30.8
+  * Bug Fixes
+    + Fix JNI terminal failing to load on JDK 21.0.10+ -
+      Module.isNativeAccessEnabled() was backported to some JDK 21
+      builds (e.g. 21.0.10), causing a false
+      UnsupportedOperationException since the method returns false
+      even though JNI works without --enable-native-access. JNI
+      native access restrictions are only enforced from JDK 24+, so
+      the check is now skipped on earlier versions.
+
+-------------------------------------------------------------------
+Wed Apr 29 11:50:40 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.30.7
+  * New Features & Improvements
+    + Windows codepage auto-detection: Restored automatic detection
+      of Windows console output codepage, fixing Unicode rendering
+      issues since JLine 3.22
+    + MSYS2 environment detection: Expanded IS_MSYSTEM to detect all
+      MSYS2 environments (UCRT64, CLANG64, CLANGARM64, MINGW32),
+      fixing backspace in git-bash
+    + JDK 24+ compatibility: Check native access before loading JNI
+      library to prevent restricted method warnings
+    + Unicode 16.0: Updated WCWidth character width tables to
+      Unicode 16.0
+    + which command: Added which builtin command to ConsoleEngine
+    + Display resize fix: Display.resize() now handles terminals
+      with buffer wider than visible window
+    + Terminal closure enforcement: Accessing terminal streams after
+      close() now logs a warning by default, configurable via
+      jline.terminal.closeMode property
+    + Standard SPI: Terminal providers now use standard Java
+      ServiceLoader for discovery
+    + Key binding docs: Fixed incorrect example for binding terminal
+      capabilities - use KeyMap.key() instead of raw
+      getStringCapability()
+  * Bug Fixes
+    + Fix MenuSupport left/right navigation when GROUP_PERSIST is on
+    + Fix StringIndexOutOfBoundsException in CompletionMatcherImpl
+    + Fix doubled quotes when completing quoted words with multiple
+      candidates
+    + Fix ASCII fallback for box-drawing characters when alt charset
+      is unsupported
+    + Fix DefaultParser emitting trailing empty word for
+      non-completion contexts
+    + Fix Ctrl+C propagation as UserInterruptException in console-ui
+      prompts
+    + Fix newline binding for dumb terminal support in prompts
+    + Fix BRACKETED_PASTE_OFF not sent when option is explicitly
+      disabled
+    + Fix terminal content preservation during resize with status
+      bar
+    + Fix inherited input stream being closed on Windows
+    + Fix nested shell interruption handling
+    + Fix Nano keypad state management
+    + Fix auto-suggestion menu list not cleared when no completions
+      match
+    + Suppress IOException in PosixPtyTerminal pump threads during
+      close
+    + Do not raise native signals on Windows if not enabled
+    + AnsiConsole now fails on repeated uninstalls
+    + Allow single-digit options like -1 in Options parser
+    + Fix setting line reader options via system properties
+    + Support ls /, pseudo pipe operators, and ignore unknown pipe
+      names
+
+-------------------------------------------------------------------
 Wed Nov  5 10:14:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.30.6

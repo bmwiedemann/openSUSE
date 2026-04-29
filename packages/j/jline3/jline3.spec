@@ -1,7 +1,7 @@
 #
 # spec file for package jline3
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ JLine 3.x is an evolution of JLine 2.x.
 %endif
 %bcond_with ssh
 Name:           jline3
-Version:        3.30.6
+Version:        3.30.11
 Release:        0
 Summary:        Java library for handling console input
 License:        BSD-3-Clause

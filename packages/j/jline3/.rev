@@ -71,4 +71,12 @@
     <comment>Decide ffm support according to the build java</comment>
     <requestid>1318697</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b8de37ae06ad160c4ba7ec2a9ed9eb2e</srcmd5>
+    <version>3.30.11</version>
+    <time>1777483237</time>
+    <user>dimstar_suse</user>
+    <comment>3.30.11</comment>
+    <requestid>1350011</requestid>
+  </revision>
 </revisionlist>
