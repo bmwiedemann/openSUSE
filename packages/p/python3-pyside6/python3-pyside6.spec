@@ -404,6 +404,10 @@ ctest_exclude_regex+="|QtWebEngineCore_web_engine_custom_scheme|QtQml_qquickitem
 # Tests started segfaulting after an unknown change that happened ~ april 10
 ctest_exclude_regex+="|QtQml_bug_825_old|QtQml_bug_825|QtQml_bug_847|QtQml_qqmlnetwork_test|QtQml_registertype|QtQml_registersingletontype|QtQml_qqmlincubator_incubateWhile|QtQml_qquickitem_grabToImage|quicktestmainwithsetup_tst_quicktestmainwithsetup|QtDataVisualization_datavisualization_test"
 %endif
+%ifarch s390x
+# Persistent segfault as of 2026-04-28
+ctest_exclude_regex+="|QtDataVisualization_datavisualization_test"
+%endif
 %ifarch x86_64 riscv64
 # QtWebengine failures caused by fixes for AMD graphics (cf. sr#1274939)
 ctest_exclude_regex+="|QtWebEngineCore_web_engine_custom_scheme|QtWebEngineCore_qwebenginecookiestore_test"

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 13:02:58 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Exclude QtDataVisualization_datavisualization_test test on s390x,
+  segfaults
+
+-------------------------------------------------------------------
 Sun Apr 12 16:21:12 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Backport patches for Clang 22 support (boo#1259783):
