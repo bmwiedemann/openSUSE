@@ -41,4 +41,12 @@
   - added stuff to krb5-appl-gcc14.patch (forwarded request 1339532 from msmeissn)</comment>
     <requestid>1339542</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>da4e25ee2f9db1beeea823dc935f2ff5</srcmd5>
+    <version>1.0.3</version>
+    <time>1777483240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1350003</requestid>
+  </revision>
 </revisionlist>

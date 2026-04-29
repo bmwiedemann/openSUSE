@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 17 09:35:15 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-32746: Remote Pre-Auth Buffer Overflow in GNU Inetutils telnetd LINEMODE (bsc#1259691)
+  * krb5-appl-CVE-2026-32746.patch
+
+-------------------------------------------------------------------
 Tue Mar 17 09:08:07 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - fix build with gcc15

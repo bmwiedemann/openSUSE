@@ -1,6 +1,7 @@
 #
 # spec file for package krb5-appl
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,6 +43,8 @@ Patch4:         krb5-appl-1.0.3-libc.patch
 Patch5:         krb5-appl-fix-build.patch
 # build with gcc14
 Patch6:         krb5-appl-gcc14.patch
+# CVE-2026-32746: Remote Pre-Auth Buffer Overflow in GNU Inetutils telnetd LINEMODE (bsc#1259691)
+Patch7:         krb5-appl-CVE-2026-32746.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -90,6 +93,7 @@ fi
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 ./autogen.sh
