@@ -41,8 +41,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.10.0
-%define orig_version   140.10.0
+%define mainver        %major.10.1
+%define orig_version   140.10.1
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
@@ -167,11 +167,13 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
-%if 0%{?suse_version} < 1599
-BuildRequires:  clang19-devel
+%if 0%{?suse_version} > 1600
+BuildRequires:  clang21-devel
+BuildRequires:  llvm21-libclang13
 %else
 BuildRequires:  clang-devel
 %endif
+#!BuildIgnore:  clang-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
@@ -418,7 +420,7 @@ export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
-export CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -Wno-incompatible-pointer-types"
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
 export CC=gcc-13
 export CXX=g++-13
