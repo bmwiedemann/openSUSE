@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 20 19:33:14 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.20
+  * More code hardening.
+  * Fix for ancient bug: enemy satellites no longer awaken your
+    pieces.
+- Changes in version 1.19
+  * Code hardening with ChatGPT 5.2
+  * Close off a whole bunch of potential buffer overruns.
+  * Bail out gracefully on failed memory allocations.
+  * New versioned, field-wise save format with map dimensions
+    recorded.
+  * Default save file name is now empire.sav.
+  * Documentation is fully spellchecked.
+- Drop BuildRequires update-desktop-files
+
+-------------------------------------------------------------------
 Fri Feb 21 15:21:11 UTC 2025 - pgajdos@suse.com
 
 - version update to 1.18

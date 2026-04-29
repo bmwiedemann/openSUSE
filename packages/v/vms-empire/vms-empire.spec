@@ -1,7 +1,7 @@
 #
 # spec file for package vms-empire
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vms-empire
-Version:        1.18
+Version:        1.20
 Release:        0
 Summary:        Simulation of a full-scale war between two emperors
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ URL:            http://www.catb.org/~esr/vms-empire/
 Source0:        http://www.catb.org/~esr/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ncurses-devel
-BuildRequires:  update-desktop-files
 
 %description
 The ancestor of all 4x (expand/explore/exploit/exterminate) games.
@@ -38,6 +37,7 @@ same rules that you do. This game is the ancestor of all the multiplayer
 
 %prep
 %autosetup -p1
+sed -i -e 's|PREFIX      ?= /usr/local|PREFIX      ?= /usr|g' Makefile
 
 %build
 %make_build CFLAGS="%{optflags}"
@@ -45,11 +45,9 @@ same rules that you do. This game is the ancestor of all the multiplayer
 %install
 %make_install
 
-%suse_update_desktop_file %{name}
-
 %files
 %license COPYING
-%doc AUTHORS BUGS HACKING NEWS README
+%doc AUTHORS BUGS HACKING NEWS README.adoc
 %{_bindir}/%{name}
 %{_datadir}/appdata/%{name}.xml
 %{_mandir}/man6/%{name}.6%{?ext_man}
