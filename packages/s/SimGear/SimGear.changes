@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 29 11:54:23 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- use proper release file link
+
+-------------------------------------------------------------------
+Thu Apr 16 16:57:25 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 2024.1.5
+  * https://www.flightgear.org/download/releases/2024-1-5/
+- Drop simgear-boost_1_88.patch
+- Use BuildRequires c-ares instead udns
+- Add BuildRequires pkgconfig(libavcodec)
+
+-------------------------------------------------------------------
 Sat May  3 18:36:28 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with Boost 1.88, add upstream fix:
@@ -347,4 +361,3 @@ Wed Oct 27 13:34:56 UTC 2010 - prusnak@opensuse.org
 Mon Mar  1 14:05:50 UTC 2010 - prusnak@suse.cz
 
 - import SimGear Fedora package by Fabrice Bellet <fabrice@bellet.info>
-

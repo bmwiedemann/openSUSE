@@ -277,4 +277,148 @@ Depends on SR 556011</comment>
     <comment></comment>
     <requestid>1274159</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ab3580377b25ef7799504284cf9a47c2</srcmd5>
+    <version>2024.1.5</version>
+    <time>1777483159</time>
+    <user>dimstar_suse</user>
+    <comment>- use proper release file link
+- Update to 2024.1.5
+  * https://www.flightgear.org/download/releases/2024-1-5/
+- Drop simgear-boost_1_88.patch
+- Use BuildRequires c-ares instead udns
+- Add BuildRequires pkgconfig(libavcodec)
+- Fix build with Boost 1.88, add upstream fix:
+  simgear-boost_1_88.patch
+- Update to 2024.1.1
+  * https://www.flightgear.org/download/releases/2024-1/
+- Drop upstream patches:
+  * add_NasalIORulesChecker.patch
+  * simgear-boost-1.81.patch
+- Add support for file permissions check (CVE pending), add
+  add_NasalIORulesChecker.patch
+- Update to 2020.3.19
+  * https://wiki.flightgear.org/Changelog_2020.3#2020.3.19
+- Update to 2020.3.18
+  * https://wiki.flightgear.org/Changelog_2020.3#2020.3.18
+- Add simgear-boost-1.81.patch, fix building with boost &gt;= 1.81
+- Update to 2020.3.17
+  * https://wiki.flightgear.org/Changelog_2020.3#2020.3.17
+- Update to 2020.3.13
+  * https://wiki.flightgear.org/Changelog_2020.3#2020.3.13
+- Update to 2020.3.12
+  * https://wiki.flightgear.org/Changelog_2020.3#2020.3.12
+- Update to 2020.3.11
+  * https://wiki.flightgear.org/Changelog_2020.3#2020.3.11
+- Update to 2020.3.9
+  * https://wiki.flightgear.org/Changelog_2020.3#2020.3.9
+- Update to 2020.3.8
+  * http://wiki.flightgear.org/Changelog_2020.3#2020.3.7
+- Update to 2020.3.6
+  * http://wiki.flightgear.org/Changelog_2020.3#2020.3.6
+- Drop upstream boost-1.75-fix.patch
+- Update to 2020.3.5
+  * http://wiki.flightgear.org/Changelog_2020.3#2020.3.5
+- Fix build with Boost 1.75, add boost-1.75-fix.patch
+- Update to 2020.3.4
+  * No changelog available
+- Update to 2020.3.2
+  * No changelog available
+- Update to 2020.3.1
+  * http://wiki.flightgear.org/Changelog_2020.3
+- Update to 2020.1.3
+  * http://wiki.flightgear.org/Changelog_2020.1#2020.1.3_point_release
+- Update to 2020.1.2
+  * http://wiki.flightgear.org/Changelog_2020.1#2020.1.2_point_release
+- Update to 2020.1.1
+  * changelog: http://wiki.flightgear.org/Changelog_2020.1
+- Drop upstream patches:
+  * 0001-Always-add-PROJECT_BINARY_DIR-to-include_directories.patch
+  * 0001-Remove-deprecated-boost-utility.patch
+  * 0001-boost-enable_if-Support-Boost-versions-1.56.patch
+- Update to 2018.3.5
+  * changelog: http://wiki.flightgear.org/Changelog_2018.3#2018.3.5_point_release
+- Fix build with cmake 3.15 due to https://cmake.org/cmake/help/v3.15/policy/CMP0093.html
+  0001-Always-add-PROJECT_BINARY_DIR-to-include_directories.patch
+- Use system expat and udns libraries
+- Enable OpenMP support
+- Update to 2018.3.4
+  * changelog: http://wiki.flightgear.org/Changelog_2018.3#2018.3.4_point_release
+- Drop upstream patches:
+  * 0001-Improve-HTTP-redirect-handling-and-add-test.patch
+- Fix building with booost 1.69:
+  * Add 0001-Remove-deprecated-boost-utility.patch
+  * Add 0001-boost-enable_if-Support-Boost-versions-1.56.patch
+- Fix redirect handling, add
+  0001-Improve-HTTP-redirect-handling-and-add-test.patch
+- Update to 2018.3.2
+  * changelog: http://wiki.flightgear.org/Changelog_2018.3#2018.3.2_point_release
+- Update to 2018.3.1
+  * changelog: see upstream, http://wiki.flightgear.org/Changelog_2018.3
+- Drop upstream 0001-Add-missing-return-value.patch
+- Adjust BuildRequires and Requires
+  * Use BuildConflicts to force a OSG version &gt;= 3.2
+  * Drop BuildRequires for OSG plugins, not needed
+  * Add versioned Requires: openSceneGraph-plugins. We want plugins
+    with the same version as the linked library
+- Use %license for COPYING
+- Fix failing build, no-return-in-nonvoid-function
+  0001-Add-missing-return-value.patch
+- Change BuildRequires, OpenSceneGraph 3.6 has an incompatible API
+- Update to 2018.2.2
+  * changelog: see upstream, http://wiki.flightgear.org/Changelog_2018.2
+  * Fixes boo#1099288 (update requested)
+- Update to 2018.1.1
+  * changelog: see upstream, http://wiki.flightgear.org/Changelog_2018.1
+- Fixed dependencies
+- Drop lots of unused BuildRequires, as a side effect, fixes building
+  on Factory (as it no longer requires openSSL 1_0_0 and 1_1_0)
+- Remove no longer used/known -DJPEG_FACTORY:BOOL=ON
+- Update to 2017.3.1
+  * Change API for thumbnail access, so each variant can have a
+    unique thumbnail alongside other data. Map existing catalog
+    XML format to this system.
+  * New alternative terrain engine - SGMesh utilizing pagedLOD.
+  * OSG 3.5.x support
+  * Package APIs to support multiple primary aircraft, this
+    will allow packages to supply multiple primary aircraft.
+  * Fix bug &quot;dns timeout, no terrasync servers found&quot;
+  * Allow animations to take an object as the centre and axis.
+  * Fix mesh visibility on pick animations.
+  * Fix animation axis text for new calling conventions.
+  * Enable display lists for random trees.
+  * Add efficient hasTag check to Package.
+  * Persistent thumbnail cache for aircraft packages.
+  * Clear Uniform cache on reset.
+- Update to 2017.1.2
+- Fixed spec file
+  * Fixed libname
+  * Do not spawn an extra bash process for ldconfig
+- Update to 2016.4.4
+- Removed upstream merged fix_cmake_config_package_location.patch
+- Update to 2016.2.1
+- Added SourceURL
+- Update to 2016.1.1
+- Fixed missing dependency on OpenSceneGraph-plugins.
+- Fix CMakeLists.txt to correctly use lib64 for some files
+- Fix spec file as /usr/share/SimGearCore is no longer used
+- Update to 3.7.0 (for flightGear 3.7.0).
+- update: flightGear 2.12 has been released
+- update to 2.10.0
+- Corrected the license and group 
+- update to 2.8.0
+- update to 2.6.0
+- switched to cmake build system with shared libraries
+- added autotools BuildRequires for build on current Factory
+- fixed OpenSceneGraph-plugins version require (bnc#717918)
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- added SVN dependency to enable built-in scenery download
+- update to 2.4.0
+- shared lib patch reworked
+- fixed required plib libraries in simgear/screen/Makefile.am 
+- fix OpenSceneGraph requirements for 11.3+
+- import SimGear Fedora package by Fabrice Bellet &lt;fabrice@bellet.info&gt;
+</comment>
+    <requestid>1349984</requestid>
+  </revision>
 </revisionlist>

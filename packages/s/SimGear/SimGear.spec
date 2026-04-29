@@ -1,7 +1,7 @@
 #
 # spec file for package SimGear
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,28 +20,27 @@
 # in our requirements, i.e. the same version we have built against
 %define openscenegraph_version %(rpm -qa --nosignature --nodigest libOpenSceneGraph\*-devel | sed 's/.*-devel-\\(.*\\)-.*/\\1/')
 
-%define libname libSimGearCore-2024_1_1
+%define libname libSimGearCore-2024_1_5
 %define main_version 2024.1
 Name:           SimGear
-Version:        %{main_version}.1
+Version:        %{main_version}.5
 Release:        0
 Summary:        Simulator Construction Gear
 # https://sourceforge.net/p/flightgear/codetickets/1940/
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
 Group:          Amusements/Games/3D/Simulation
 URL:            https://www.flightgear.org/
-Source0:        https://gitlab.com/flightgear/fgmeta/-/jobs/9343758788/artifacts/raw/sgbuild/simgear-%{version}.tar.bz2
+Source0:        https://gitlab.com/flightgear/simgear/-/archive/%{version}/simgear-%{version}.tar.bz2
 Source99:       SimGear-rpmlintrc
-# PATCH-FIX-UPSTREAM -- rebased https://gitlab.com/flightgear/simgear/-/commit/a630ad75a62d63563b37df6e4642bee2f7081907.patch
-Patch0:         simgear-boost_1_88.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libOpenSceneGraph-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  udns-devel
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(openal)
