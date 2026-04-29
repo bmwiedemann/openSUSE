@@ -100,7 +100,7 @@ diff -rupN jxrlib/jxrgluelib/JXRMeta.h jxrlib-new/jxrgluelib/JXRMeta.h
  
  #ifndef UNREFERENCED_PARAMETER
  #define UNREFERENCED_PARAMETER(P) { (P) = (P); }
--#endif UNREFERENCED_PARAMETER
+-#endif
 +#endif // UNREFERENCED_PARAMETER
  
  //================================================================

@@ -1,7 +1,7 @@
 #
 # spec file for package jxrlib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define sover 0
 Name:           jxrlib
-Version:        1.1
+Version:        1.3.2
 Release:        0
 Summary:        Open source implementation of jpegxr
 # See JPEGXR_DPK_Spec_1.0.doc. Upstream request for plain text license file at
 # https://jxrlib.codeplex.com/workitem/13
 License:        BSD-2-Clause
-URL:            https://jxrlib.codeplex.com/
-Source0:        %{name}_1_1.zip
+URL:            https://github.com/mircomir/jxrlib
+Source0:        %{name}-%{version}.tar.xz
 # Use CMake to build to facilitate creation of shared libraries
 # See https://jxrlib.codeplex.com/workitem/13
 Source1:        CMakeLists.txt
@@ -68,7 +68,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{version}
 
 # Sanitize charset and line endings
 for file in `find . -type f -name '*.c' -or -name '*.h' -or -name '*.txt'`; do
