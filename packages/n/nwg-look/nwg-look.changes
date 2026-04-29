@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Apr 25 12:38:49 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+
+- Update to version 1.0.6:
+  * export gtk-4.0/settings.ini #99
+  * export gtk-4.0/settings.ini #99
+  * Fix typo in tools.go
+  * bump to 1.0.5
+  * update dependencies
+  * create ~/.config/gtk-4.0/ if not found #94
+  * Added tr_TR lang file.
+  * Add Czech lang file
+  * bump to 1.0.4
+  * update go -> 1.23.0 #89 ; update dependencies
+  * add description
+  * don't add Inherits= if gsettings.cursorTheme == "default" #90
+  * Bump version to 1.0.3
+  * Fix the issue where the "listFiles" method does not resolve symbolic links
+  * bump to 1.0.2
+  * revert to 1.0.1
+  * bump to 1.0.2
+  * fix #82
+  * added a button to clear gtk4 symlinks in one click
+  * update license, README.md
+  * update description
+  * don't remove gtk-4.0 content unless explicit demanded
+  * symlink GTK4 stuff #79
+  * List gsettings as a dependency in README.md
+  * Add japanese lang file.
+  * Update FUNDING.yml
+
+-------------------------------------------------------------------
 Fri May 31 11:08:55 UTC 2024 - nyslay@gmail.com
 
 - Update to version 0.2.7:
