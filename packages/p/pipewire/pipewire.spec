@@ -420,9 +420,6 @@ Conflicts:      pulseaudio
 # Virtual Provides to support swapping between PipeWire-PA and PA
 Conflicts:      pulseaudio-daemon
 Provides:       pulseaudio-daemon
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
-Requires(post): pulseaudio-setup
-%endif
 #Provides:       pulseaudio-module-bluetooth
 
 %description pulseaudio
@@ -611,35 +608,7 @@ ln -s ../pipewire.conf.avail/50-raop.conf \
 %systemd_user_pre pipewire.service pipewire.socket
 
 %post
-# Check if the systemd_user_pre macro generated the file
-# for systemd_user_post to enable the user socket.
-if [ -f /run/systemd/rpm/needs-user-preset/pipewire.socket ]; then
-  echo "Switching Pipewire activation using systemd user socket."
-  echo "Please log out from all sessions once to make it effective."
-fi
 %systemd_user_post pipewire.service pipewire.socket
-
-# If the pipewire.socket user unit is not enabled and the workaround
-# for boo#1186561 has never been executed, we need to execute it now
-if [ ! -L %{_sysconfdir}/systemd/user/sockets.target.wants/pipewire.socket \
-    -a ! -f %{_localstatedir}/lib/pipewire/pipewire_post_workaround \
-    -a -x %{_bindir}/systemctl ]; then
-    for service in pipewire.service pipewire.socket ; do
-        %{_bindir}/systemctl --global preset "$service" || :
-    done
-
-    mkdir -p %{_localstatedir}/lib/pipewire
-    cat << EOF > %{_localstatedir}/lib/pipewire/pipewire_post_workaround
-# The existence of this file means that the pipewire user services were
-# enabled at least once. Please don't remove this file as that would
-# make the services to be enabled again in the next package update.
-#
-# Check the following bugs for more information:
-# https://bugzilla.opensuse.org/show_bug.cgi?id=1184852
-# https://bugzilla.opensuse.org/show_bug.cgi?id=1183012
-# https://bugzilla.opensuse.org/show_bug.cgi?id=1186561
-EOF
-fi
 
 %preun
 %systemd_user_preun pipewire.service pipewire.socket
@@ -652,30 +621,6 @@ fi
 
 %post pulseaudio
 %systemd_user_post pipewire-pulse.service pipewire-pulse.socket
-# If the pipewire-pulse.socket user service is not enabled and the workaround
-# for boo#1186561 has never been executed, we need to execute it now
-if [ ! -L %{_sysconfdir}/systemd/user/sockets.target.wants/pipewire-pulse.socket \
-    -a ! -f %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround \
-    -a -x %{_bindir}/systemctl ]; then
-    for service in pipewire-pulse.service pipewire-pulse.socket ; do
-        %{_bindir}/systemctl --global preset "$service" || :
-    done
-    mkdir -p %{_localstatedir}/lib/pipewire
-    cat << EOF > %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
-# The existence of this file means that the pipewire-pulseaudio user service was
-# enabled at least once. Please don't remove this file as that would
-# make the services to be enabled again in the next package update.
-#
-# Check the following bugs for more information:
-# https://bugzilla.opensuse.org/show_bug.cgi?id=1184852
-# https://bugzilla.opensuse.org/show_bug.cgi?id=1183012
-# https://bugzilla.opensuse.org/show_bug.cgi?id=1186561
-EOF
-fi
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
-# Update the /etc/profile.d/pulseaudio.* files
-setup-pulseaudio --auto > /dev/null
-%endif
 
 %preun pulseaudio
 %systemd_user_preun pipewire-pulse.service pipewire-pulse.socket
@@ -739,8 +684,6 @@ setup-pulseaudio --auto > /dev/null
 %if %{with_vulkan}
 %{_datadir}/pipewire/pipewire-vulkan.conf
 %endif
-%ghost %dir %{_localstatedir}/lib/pipewire/
-%ghost %{_localstatedir}/lib/pipewire/pipewire_post_workaround
 
 %files -n %{libpipewire}
 %license LICENSE COPYING
@@ -915,7 +858,6 @@ setup-pulseaudio --auto > /dev/null
 %{_datadir}/pipewire/pipewire-pulse.conf
 %dir %{_datadir}/pipewire/pipewire-pulse.conf.d/
 %{_datadir}/pipewire/pipewire-pulse.conf.avail/
-%ghost %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
 %{_datadir}/glib-2.0/schemas/org.freedesktop.pulseaudio.gschema.xml
 
 %files alsa
