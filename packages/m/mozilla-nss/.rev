@@ -3635,4 +3635,12 @@
   * bmo#2017929 - GCM needs to check for various limits in FIPS mode.</comment>
     <requestid>1348670</requestid>
   </revision>
+  <revision rev="239" vrev="1">
+    <srcmd5>ba10b8d7fe4e126e577102ee3ddc8b8f</srcmd5>
+    <version>3.122.2</version>
+    <time>1777483077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1349850</requestid>
+  </revision>
 </revisionlist>
