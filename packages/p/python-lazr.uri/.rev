@@ -64,4 +64,18 @@
     <comment></comment>
     <requestid>1281376</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>93fd6480c4ce613e02bb6ce7e4d6731b</srcmd5>
+    <version>1.0.8</version>
+    <time>1777483109</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.8:
+  * Make compatible with setuptools versions greater than 82
+  * Add support for Python 3.9, 3.10, 3.11, 3.12 and 3.13.
+  * Drop support for Python 3.7 and below.
+  * Add basic pre-commit configuration.
+  * Publish documentation on Read the Docs.
+  * Apply black, isort, pyupgrade and check-manifest.</comment>
+    <requestid>1349869</requestid>
+  </revision>
 </revisionlist>
