@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  9 20:16:24 UTC 2026 - Justin Hales <justindhales@gmail.com>
+
+- Backport 1.5.7 man page patch
+  * Documentation was not correctly updated at release time
+  * https://github.com/facebook/zstd/commit/6af3842
+  Add 0002-fix-1.5.7-documentation.patch
+
+-------------------------------------------------------------------
 Tue Mar 25 10:45:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch (non-upstreamable):

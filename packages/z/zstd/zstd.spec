@@ -1,7 +1,7 @@
 #
 # spec file for package zstd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Source2:        zstd.keyring
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE -- 0001-Don-t-export-libzstd_static-CMake-target.patch
 Patch0:         0001-Don-t-export-libzstd_static-CMake-target.patch
+# PATCH-FIX-OPENSUSE -- Backport https://github.com/facebook/zstd/commit/6af3842118ea5325480b403213b2a9fbed3d3d74.patch, relevant only for v1.5.7
+Patch1:         0002-fix-1.5.7-documentation.patch
 %if %{with cmake}
 BuildRequires:  cmake
 %endif
