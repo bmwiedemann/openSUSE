@@ -2391,4 +2391,11 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <user>dimstar_suse</user>
     <comment>Block libLLVM21 from the DVD</comment>
   </revision>
+  <revision rev="335" vrev="333">
+    <srcmd5>d4b03a2c861b359fe48d5c3f299c9801</srcmd5>
+    <version>unknown</version>
+    <time>1777445546</time>
+    <user>dimstar_suse</user>
+    <comment>Block some 30MB of fonts</comment>
+  </revision>
 </revisionlist>
