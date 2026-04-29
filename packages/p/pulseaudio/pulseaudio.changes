@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 23 08:24:12 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not run setup-pulseaudio on %post. Everything should work
+  fine out of the box these days . This improves the behaviour
+  of the package in immutable systems (jsc#PED-14841).
+- Remove workaround in %post for a bug (bsc#1083473) that was 
+  actually fixed in systemd-rpm-macros on March 4 2021
+  (bsc#1183051).
+- Install sh and csh profiles as static files instead of generating
+  them from setup-pulseaudio (which is not run automatically
+  anymore).
+- pulseaudio-setup is no longer required by pulseaudio.
+
+-------------------------------------------------------------------
 Wed Jan 28 15:51:32 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove pulseaudio-rpmlintrc which only had filters for the  
@@ -2073,7 +2087,7 @@ Wed Jan 23 17:34:29 CET 2008 - rodrigo@suse.de
   home:rodrigomoya:pulseaudio BS service. 
 
 -------------------------------------------------------------------
-Thu Jan 10 00:01:00 IST 2008 - cyberorg@cyberorg.info
+Thu Jan 10 00:01:00 CET 2008 - cyberorg@cyberorg.info
 
 - Update to 0.9.8
   * Man pages
@@ -2097,6 +2111,7 @@ Thu Jan 10 00:01:00 IST 2008 - cyberorg@cyberorg.info
 - Add policykit
 - Add many man pages
 - Enable tcpd
+
 -------------------------------------------------------------------
 Wed Jan  9 20:19:57 CET 2008 - rodrigo@suse.de
 
@@ -2143,6 +2158,7 @@ Thu Nov 22 19:21:00 IST 2007 - cyberorg@cyberorg.info
 Wed Nov 21 18:13:48 IST 2007 - cyberorg@cyberorg.info
   
 - Restructured spec file to build more subpackages, like in Fedora 8.
+
 -------------------------------------------------------------------
 Wed Oct 31 14:43:48 CET 2007 - tiwai@suse.de
 

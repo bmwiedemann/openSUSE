@@ -50,6 +50,8 @@ Source6:        disable_flat_volumes.conf
 Source7:        pulseaudio.tmpfiles
 Source9:        client-system.conf
 Source10:       system-user-pulse.conf
+Source11:       pulseaudio.sh
+Source12:       pulseaudio.csh
 Source99:       baselibs.conf
 Patch0:         disabled-start.diff
 Patch1:         suppress-socket-error-msg.diff
@@ -113,7 +115,6 @@ Requires:       udev >= 146
 Requires(pre):  user(pulse)
 ## needs the same liborc version which was used to build against
 %requires_eq    liborc-0_4-0
-Requires(post): pulseaudio-setup
 Recommends:     alsa-plugins-pulse
 Suggests:       libsoxr0 >= 0.1.1
 Conflicts:      kernel < 2.6.31
@@ -388,8 +389,8 @@ chmod 755 %{buildroot}%{_bindir}/setup-pulseaudio
 install -d %{buildroot}%{_fillupdir}
 install -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
-touch %{buildroot}%{_sysconfdir}/profile.d/pulseaudio.sh
-touch %{buildroot}%{_sysconfdir}/profile.d/pulseaudio.csh
+install -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/profile.d/pulseaudio.sh
+install -m 644 %{SOURCE12} %{buildroot}%{_sysconfdir}/profile.d/pulseaudio.csh
 mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
 install -m 644 %{SOURCE7} %{buildroot}%{_prefix}/lib/tmpfiles.d/pulseaudio.conf
 # create .d conf dirs (since 8.0)
@@ -418,15 +419,6 @@ if [ ! -f /etc/systemd/user/sockets.target.wants/%{name}.socket ]; then
   echo "Please log out from all sessions once to make it effective."
 fi
 %systemd_user_post pulseaudio.socket
-# FIXME: workaround to make sure the user socket symlink creation (bsc#1083473)
-if [ ! -f /etc/systemd/user/sockets.target.wants/%{name}.socket ]; then
-  # below should work once when preset is defined properly:
-  #  /usr/bin/systemctl --no-reload --global preset pulseaudio.socket
-  mkdir -p /etc/systemd/user/sockets.target.wants
-  ln -s %{_userunitdir}/%{name}.socket /etc/systemd/user/sockets.target.wants/%{name}.socket
-fi
-# Update the /etc/profile.d/pulseaudio.* files
-setup-pulseaudio --auto > /dev/null
 
 %preun
 %systemd_user_preun pulseaudio.socket
@@ -575,9 +567,8 @@ exit 0
 %files setup
 %{_bindir}/setup-pulseaudio
 %{_fillupdir}/sysconfig.sound-pulseaudio
-# created by setup-pulseaudio script
-%ghost %{_sysconfdir}/profile.d/pulseaudio.sh
-%ghost %{_sysconfdir}/profile.d/pulseaudio.csh
+%config(noreplace) %{_sysconfdir}/profile.d/pulseaudio.sh
+%config(noreplace) %{_sysconfdir}/profile.d/pulseaudio.csh
 
 %files -n libpulse%{soname}
 %license LICENSE GPL LGPL
