@@ -19,7 +19,7 @@
 %global _sonum  22
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_rc:-rc%_rc}
-%global _patch_level 3
+%global _patch_level 4
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:-rc%_rc}
 %global _itsme22 1
@@ -60,7 +60,7 @@
 %bcond_with lldb_python
 %endif
 
-%ifarch aarch64 x86_64
+%ifarch aarch64 riscv64 x86_64
 %bcond_without bolt
 %else
 %bcond_with bolt
@@ -1350,7 +1350,7 @@ sed -i -E "1s|/usr/bin/env *|/usr/bin/|; 1s|/usr/bin/python3?\$|$(realpath /usr/
         %{buildroot}%{_bindir}/{{analyze,intercept}-build,clang-{format,tidy}-diff,git-clang-format,hmaptool,run-{clang-tidy,find-all-symbols},scan-{build,build-py,view}} \
         %{buildroot}%{_libexecdir}/{{analyze,intercept}-{c++,cc},{c++,ccc}-analyzer} \
 %endif
-%ifarch aarch64 x86_64
+%ifarch aarch64 riscv64 x86_64
         %{buildroot}%{_libdir}/clang/%{_sonum}/bin/hwasan_symbolize \
 %endif
         %{buildroot}%{_bindir}/opt-{diff,stats,viewer}

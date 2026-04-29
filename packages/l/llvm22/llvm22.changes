@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 26 20:49:40 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 22.1.4.
+  * This release contains bug-fixes for the LLVM 22.1.0 release.
+    This release is API and ABI compatible with 22.1.0.
+- Build bolt on riscv64.
+- Fix shebang for hwasan_symbolize also on riscv64.
+
+-------------------------------------------------------------------
 Sun Apr 12 12:47:21 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 22.1.3.

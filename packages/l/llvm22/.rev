@@ -40,4 +40,17 @@
 - Fix path in LLDB Python bindings for SLE/Leap 15.</comment>
     <requestid>1346272</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>16bee2ee2e79768549ac5454962aad77</srcmd5>
+    <version>22.1.4</version>
+    <time>1777483047</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.1.4.
+  * This release contains bug-fixes for the LLVM 22.1.0 release.
+    This release is API and ABI compatible with 22.1.0.
+- Build bolt on riscv64.
+- Fix shebang for hwasan_symbolize also on riscv64.
+</comment>
+    <requestid>1349631</requestid>
+  </revision>
 </revisionlist>
