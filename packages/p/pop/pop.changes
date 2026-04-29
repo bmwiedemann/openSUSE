@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Tue Apr 28 14:34:44 UTC 2026 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- Update to version 0.2.1:
+  * chore: lint
+  * chore(ci): update lint rules
+  * chore(deps): bump all deps, bump go version to v1.25.9
+  * chore: remove CODEOWNERS
+  * chore(deps): bump github.com/charmbracelet/bubbles in the all group (#161)
+  * chore(deps): bump github.com/charmbracelet/bubbles in the all group (#159)
+  * chore(deps): bump github.com/yuin/goldmark in the all group (#158)
+  * chore(deps): bump github.com/yuin/goldmark in the all group (#157)
+  * chore(deps): bump github.com/spf13/cobra in the all group (#156)
+  * chore(deps): bump actions/checkout from 5 to 6 in the all group (#155)
+  * chore(deps): bump golangci/golangci-lint-action in the all group (#154)
+  * chore(deps): bump github.com/charmbracelet/bubbletea in the all group (#151)
+  * chore(deps): bump the all group with 3 updates (#150)
+  * chore(deps): bump actions/setup-go from 5 to 6 in the all group (#148)
+  * ci: sync dependabot config (#146)
+  * chore(deps): bump actions/checkout from 4 to 5 (#145)
+  * chore(deps): bump github.com/yuin/goldmark from 1.7.12 to 1.7.13 (#143)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.3.5 to 1.3.6 (#140)
+  * chore(deps): bump github.com/yuin/goldmark from 1.7.11 to 1.7.12 (#135)
+  * chore(deps): bump golangci/golangci-lint-action from 7 to 8 (#134)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.3.4 to 1.3.5 (#133)
+  * chore(deps): bump github.com/yuin/goldmark from 1.7.10 to 1.7.11 (#132)
+  * ci: sync dependabot config (#131)
+  * chore(deps): bump github.com/yuin/goldmark from 1.7.8 to 1.7.10 (#130)
+  * chore(deps): bump github.com/charmbracelet/bubbles from 0.20.0 to 0.21.0 (#129)
+  * chore(deps): bump golangci/golangci-lint-action from 6 to 7 (#128)
+  * Merge pull request #124 from jficz/fix_92
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 1.0.0 to 1.1.0 (#127)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.3.3 to 1.3.4 (#126)
+  * chore(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1 (#123)
+  * ci: sync dependabot config
+  * feat(deps): bump github.com/charmbracelet/bubbletea from 1.3.2 to 1.3.3 (#121)
+  * feat(deps): bump github.com/charmbracelet/bubbletea from 1.3.0 to 1.3.2 (#120)
+  * feat(deps): bump github.com/charmbracelet/bubbletea from 1.2.4 to 1.3.0 (#117)
+  * feat(deps): bump github.com/charmbracelet/bubbletea from 1.2.3 to 1.2.4 (#113)
+  * feat(deps): bump github.com/charmbracelet/bubbletea from 1.2.2 to 1.2.3 (#112)
+  * feat(deps): bump github.com/charmbracelet/bubbletea from 1.2.1 to 1.2.2 (#111)
+  * feat(deps): bump github.com/charmbracelet/bubbletea from 1.2.0 to 1.2.1 (#110)
+  * feat(deps): bump github.com/charmbracelet/bubbletea from 1.1.2 to 1.2.0 (#109)
+  * feat(deps): bump github.com/charmbracelet/lipgloss from 0.13.0 to 0.13.1 (#106)
+  * feat(deps): bump github.com/yuin/goldmark from 1.7.4 to 1.7.8 (#105)
+  * feat(deps): bump github.com/charmbracelet/bubbletea from 1.1.1 to 1.1.2 (#107)
+  * feat(deps): bump github.com/yuin/goldmark from 1.7.2 to 1.7.4 (#85)
+  * feat(deps): bump github.com/charmbracelet/bubbletea from 1.1.0 to 1.1.1 (#101)
+  * feat(deps): bump github.com/charmbracelet/bubbles from 0.19.0 to 0.20.0 (#100)
+  * feat(deps): bump github.com/charmbracelet/bubbletea from 1.0.0 to 1.1.0 (#99)
+  * feat(deps): bump github.com/charmbracelet/bubbletea from 0.27.0 to 1.0.0 (#97)
+  * feat(deps): bump github.com/charmbracelet/bubbles from 0.18.0 to 0.19.0 (#93)
+  * feat(deps): bump github.com/charmbracelet/lipgloss from 0.12.1 to 0.13.0 (#94)
+  * feat(deps): bump github.com/charmbracelet/lipgloss from 0.11.0 to 0.12.1 (#90)
+  * chore(deps): bump golangci/golangci-lint-action from 5 to 6 (#72)
+  * chore(deps): bump deps
+  * feat(deps): bump github.com/yuin/goldmark from 1.7.1 to 1.7.2 (#78)
+  * feat(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1 (#79)
+  * feat(deps): bump github.com/charmbracelet/x/exp/ordered (#80)
+  * feat: add CC and BCC inputs if --cc or --bcc is specified. (#65)
+  * Save email body to tmp file when error (#64)
+  * feat(deps): bump github.com/yuin/goldmark from 1.7.0 to 1.7.1 (#56)
+  * chore(deps): bump golangci/golangci-lint-action from 3 to 5 (#63)
+  * Correct mods example (#57)
+  * feat(deps): bump github.com/charmbracelet/lipgloss from 0.9.1 to 0.10.0 (#54)
+  * docs: update README with resend from instruction (#5)
+  * chore(deps): bump dependencies
+  * Create CODEOWNERS
+  * chore(deps): bump actions/setup-go from 4 to 5 (#46)
+  * feat(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0 (#41)
+  * feat(deps): bump github.com/charmbracelet/lipgloss from 0.8.0 to 0.9.1 (#39)
+  * fix: `--from` should take priority over `--smtp.user` if set
+  * chore(deps): bump actions/checkout from 3 to 4 (#34)
+  * feat(deps): bump github.com/xhit/go-simple-mail/v2 from 2.15.0 to 2.16.0 (#30)
+  * feat(deps): bump github.com/charmbracelet/lipgloss from 0.7.1 to 0.8.0 (#32)
+  * fix: handle both resend and smtp set up together (#28)
+  * feat(deps): bump github.com/yuin/goldmark from 1.5.5 to 1.5.6
+  * build: fix aur project name
+  * build: fix aur_key
+  * fix: exit status 1 when missing environment variable
+  * fix: remove extra completion cmd
+
+-------------------------------------------------------------------
 Sat Nov 30 10:11:00 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
 
 - build: disable pie flag for ppc64 arch

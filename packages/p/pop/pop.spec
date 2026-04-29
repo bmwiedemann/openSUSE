@@ -1,7 +1,7 @@
 #
 # spec file for package pop
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) specCURRENT_YEAR SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pop
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Program to send emails from a terminal
 License:        MIT
