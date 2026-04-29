@@ -14,10 +14,10 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
+%define debug_package %{nil}
 %define core nekobox_core
 Name:           nekobox
-Version:        5.10.41
+Version:        5.11.0
 Release:        0%{?autorelease}
 Summary:        Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 License:        GPL-3.0-only
@@ -46,12 +46,21 @@ BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Linguist)
 BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  gcc-c++
+%bcond_with cpr
 
+%if %{with cpr}
+BuildRequires:  cmake(cpr)
+%else
+BuildRequires:  (libopenssl-devel or openssl-devel)
+BuildRequires:  libzstd-devel
+BuildRequires:  libunistring-devel
+BuildRequires:  (curl-devel or libcurl-devel)
+%endif
 Requires:       %{name}-core = %{version}
 Requires:       %{name}-qt = %{version}
 
