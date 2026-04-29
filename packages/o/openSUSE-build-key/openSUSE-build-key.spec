@@ -136,7 +136,7 @@ cp %{SOURCE17} .
 %install
 mkdir -p %{buildroot}%{keydir}
 for i in %{SOURCE20} %{SOURCE10} %{SOURCE2} \
-%if 0%{?is_opensuse} && 0%{?suse_version} == 1600
+%if 0%{?is_opensuse} && (0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699)
 %{SOURCE9} \
 %endif
 %ifarch riscv64
