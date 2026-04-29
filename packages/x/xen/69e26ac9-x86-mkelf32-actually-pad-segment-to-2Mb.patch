@@ -1,0 +1,32 @@
+# Commit 5416c455f656af9ff3ed7f26dcd5cbf70b254f23
+# Date 2026-04-17 18:15:54 +0100
+# Author Ross Lagerwall <ross.lagerwall@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/mkelf32: Actually pad load segment to 2 MiB boundary
+
+Fix the code which tries to pad the load segment to 2 MiB but only pads
+it to a 1 MiB boundary.
+
+This manifests as a page fault while scrubbing RAM during boot on certain
+systems.
+
+Xen fails to mark itself as reserved in the E820 (due to spanning multiple
+regions), but does restrict the permissions in the directmap.  The region of
+RAM containing Xen is handed to physical memory manager as available for use,
+and scrubbing hit the directmap protections.
+
+Fixes: 4fb075201f54 ("x86/mkelf32: pad load segment to 2Mb boundary")
+Signed-off-by: Ross Lagerwall <ross.lagerwall@citrix.com>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/arch/x86/boot/mkelf32.c
++++ b/xen/arch/x86/boot/mkelf32.c
+@@ -345,7 +345,7 @@ int main(int argc, char **argv)
+      * the Xen image using 2M pages.  To avoid running into adjacent non-RAM
+      * regions, pad the segment to the next 2M boundary.
+      */
+-    mem_siz = ((uint32_t)in64_phdr.p_memsz + (1U << 20) - 1) & (-1U << 20);
++    mem_siz = ((uint32_t)in64_phdr.p_memsz + (1U << 21) - 1) & (-1U << 21);
+ 
+     note_sz = note_base = offset = 0;
+     if ( num_phdrs > 1 )

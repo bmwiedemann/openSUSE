@@ -3158,4 +3158,12 @@
     <comment>Security and Maintenance Update. Update to Xen to version 4.21.1 which includes fixes for security bugs bsc#1259247 and bsc#1259248.</comment>
     <requestid>1343059</requestid>
   </revision>
+  <revision rev="373" vrev="1">
+    <srcmd5>e2a97ad1835509aa335d5dfd90e49e30</srcmd5>
+    <version>4.21.1_04</version>
+    <time>1777483076</time>
+    <user>dimstar_suse</user>
+    <comment>Security and Maintenance Update. Fixes for bsc#1262178 CVE-2026-23557 XSA-484, bsc#1262180 CVE-2026-23558 XSA-486, bsc#1262428 CVE-2025-54505 XSA-488. Also a few additional upstream fixes.</comment>
+    <requestid>1349848</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,80 @@
+# Commit df75f77092c1cc47f3ed5be86cf6c04e732f3f80
+# Date 2026-04-07 08:59:15 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+EFI: avoid OOB config file reads
+
+The message emitted by pre_parse() pretty clearly states the original
+intention. Yet what it said wasn't done, and would have been unfriendly to
+the user. Hence accesses past the allocated buffer were possible. Insert a
+terminating NUL immediately past the data read, to then drop the no longer
+applicable message.
+
+NB: The iscntrl() check of just the last byte is more strict than what
+pre_parse() would accept without issuing its prior message, yet I'd like
+to keep the new logic reasonably simple. Config files shouldn't be huge,
+and we shouldn't be _that_ short of memory (or we'd fail elsewhere pretty
+soon).
+
+Fixes: bf6501a62e80 ("x86-64: EFI boot code")
+Reported-by: Kamil Frankowicz <kamil.frankowicz@cert.pl>
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>
+
+--- a/xen/common/efi/boot.c
++++ b/xen/common/efi/boot.c
+@@ -833,8 +833,9 @@ static bool __init read_file(EFI_FILE_HA
+     what = L"Allocation";
+     file->addr = min(1UL << (32 + PAGE_SHIFT),
+                      HYPERVISOR_VIRT_END - DIRECTMAP_VIRT_START);
++    /* For config files allocate an extra byte to put a NUL there. */
+     ret = efi_bs->AllocatePages(AllocateMaxAddress, EfiLoaderData,
+-                                PFN_UP(size), &file->addr);
++                                PFN_UP(size + (file == &cfg)), &file->addr);
+     if ( EFI_ERROR(ret) )
+         goto fail;
+ 
+@@ -853,6 +854,9 @@ static bool __init read_file(EFI_FILE_HA
+ 
+     efi_arch_flush_dcache_area(file->ptr, file->size);
+ 
++    if ( file == &cfg )
++        file->str[file->size] = 0;
++
+     return true;
+ 
+  fail:
+@@ -878,6 +882,23 @@ static bool __init read_section(const EF
+ 
+     file->ptr = ptr;
+ 
++    /* For cfg file, if necessary allocate space to put an extra NUL there. */
++    if ( file == &cfg && file->size && !iscntrl(file->str[file->size - 1]) )
++    {
++        EFI_PHYSICAL_ADDRESS addr;
++        EFI_STATUS ret = efi_bs->AllocatePages(AllocateMaxAddress,
++                                               EfiLoaderData,
++                                               PFN_UP(file->size + 1), &addr);
++
++        if ( EFI_ERROR(ret) )
++            return false;
++
++        memcpy((void *)addr, ptr, file->size);
++        file->addr = addr;
++        file->need_to_free = true;
++        file->str[file->size] = 0;
++    }
++
+     handle_file_info(name, file, options);
+ 
+     return true;
+@@ -906,9 +927,6 @@ static void __init pre_parse(const struc
+         else
+             start = 0;
+     }
+-    if ( file->size && end[-1] )
+-         PrintStr(L"No newline at end of config file,"
+-                   " last line will be ignored.\r\n");
+ }
+ 
+ static void __init init_secure_boot_mode(void)

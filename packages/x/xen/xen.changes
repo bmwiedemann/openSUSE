@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 28 09:33:12 MDT 2026 - carnold@suse.com
+
+- bsc#1262178 - VUL-0: CVE-2026-23557: xen: Xenstored DoS via
+  XS_RESET_WATCHES command (XSA-484)
+  69f0ab36-xenstored-make-conn_delete_all_transactions-idempotent.patch
+- bsc#1262180 - VUL-0: CVE-2026-23558: xen: grant table v2 race in
+  status page mapping (XSA-486)
+  69f0ab36-gnttab-split-gnttab_map_frame.patch
+
+-------------------------------------------------------------------
+Mon Apr 20 15:25:00 CEST 2026 - jbeulich@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  69d4ab43-EFI-avoid-OOB-config-file-reads.patch
+  69d8ed8e-x86-time-dont-kill-calibration-timer-on-S3.patch
+  69e0e400-x86-use-native-TSC-scaling-factors-when-.patch
+  69e0e401-CPU-round-cpu_khz-calculations.patch
+  69e26ac9-x86-mkelf32-actually-pad-segment-to-2Mb.patch
+  69e26aca-x86-mitigate-AMD-SN-7053-FP-DSS.patch
+
+-------------------------------------------------------------------
 Thu Mar 26 14:00:19 MDT 2026 - carnold@suse.com
 
 - Update to Xen 4.21.1 bug fix release (bsc#1027519)

@@ -1,0 +1,55 @@
+# Commit 986707b461eb56d75f55581dd1c8e2633f814795
+# Date 2026-04-16 15:28:32 +0200
+# Author Roger Pau Monne <roger.pau@citrix.com>
+# Committer Roger Pau Monne <roger.pau@citrix.com>
+xen/cpu: round cpu_khz calculations
+
+All arches truncate the cpu_khz without taking into account the less
+significant digits.  Instead use DIV_ROUND() when scaling from Hz to kHz
+to get as more accurate kHz value.
+
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/arm/time.c
++++ b/xen/arch/arm/time.c
+@@ -128,7 +128,7 @@ static void __init preinit_dt_xen_time(v
+     res = dt_property_read_u32(timer, "clock-frequency", &rate);
+     if ( res )
+     {
+-        cpu_khz = rate / 1000;
++        cpu_khz = DIV_ROUND(rate, 1000);
+         validate_timer_frequency();
+         timer_dt_clock_frequency = rate;
+     }
+@@ -146,7 +146,7 @@ void __init preinit_xen_time(void)
+ 
+     if ( !cpu_khz )
+     {
+-        cpu_khz = (READ_SYSREG(CNTFRQ_EL0) & CNTFRQ_MASK) / 1000;
++        cpu_khz = DIV_ROUND(READ_SYSREG(CNTFRQ_EL0) & CNTFRQ_MASK, 1000);
+         validate_timer_frequency();
+     }
+ 
+--- a/xen/arch/riscv/time.c
++++ b/xen/arch/riscv/time.c
+@@ -36,7 +36,7 @@ static void __init preinit_dt_xen_time(v
+     if ( !dt_property_read_u32(timer, "timebase-frequency", &rate) )
+         panic("Unable to find clock frequency\n");
+ 
+-    cpu_khz = rate / 1000;
++    cpu_khz = DIV_ROUND(rate, 1000);
+ }
+ 
+ void __init preinit_xen_time(void)
+--- a/xen/arch/x86/time.c
++++ b/xen/arch/x86/time.c
+@@ -2634,7 +2634,7 @@ void __init early_time_init(void)
+     set_time_scale(&t->tsc_scale, tmp);
+     t->stamp.local_tsc = boot_tsc_stamp;
+ 
+-    cpu_khz = tmp / 1000;
++    cpu_khz = DIV_ROUND(tmp, 1000);
+     printk("Detected %lu.%03lu MHz processor.\n", 
+            cpu_khz / 1000, cpu_khz % 1000);
+ 

@@ -1,0 +1,65 @@
+# Commit 305c6b901a44aa6e16d3bf7d104d7c08331d1731
+# Date 2026-04-16 15:28:32 +0200
+# Author Roger Pau Monne <roger.pau@citrix.com>
+# Committer Roger Pau Monne <roger.pau@citrix.com>
+x86/time: use native TSC scaling factors when TSC is not scaled
+
+When running HVM guest in native TSC mode avoid using the recalculated vTSC
+scaling factors based on the cpu_khz value.  Using the kHz based frequency
+leads to the TSC scaling values possibly not being the same as the ones
+used by the per CPU cpu_time->tsc_scale field, which introduces skew
+between the guest and Xen's calculations of the system time.
+
+On a 2gHz system, where the frequency is possibly detected as 1999999999Hz
+(note this is a worse-case scenario), the cpu_khz variable will be set to
+1999999kHz, and hence 999Hz cycles will be not accounted for per second.
+Over a second (the time synchronization period), this leads to a skew of:
+
+cycles * 1 / (Hz freq) = 999 / 1999999999 = 499,5ns
+
+So far this has gone unnoticed because the time synchronization rendezvous
+forces the update of the tsc_timestamp and system_time fields in the vCPU
+time info area, and hence the skew only accumulates up to the rendezvous
+period.  Attempting to remove the rendezvous causes the skew to grow
+unbounded.
+
+Fix by using the native TSC scaling values (as used by Xen) when the guest
+TSC is not scaled.
+
+Fixes: eab8a90be723 ("x86/time: scale host TSC in pvclock properly")
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/time.c
++++ b/xen/arch/x86/time.c
+@@ -1702,17 +1702,25 @@ static void collect_time_info(const stru
+     else
+     {
+         if ( is_hvm_domain(d) && hvm_tsc_scaling_supported )
+-        {
+             tsc_stamp            = hvm_scale_tsc(d, t->stamp.local_tsc);
+-            u->tsc_to_system_mul = d->arch.vtsc_to_ns.mul_frac;
+-            u->tsc_shift         = d->arch.vtsc_to_ns.shift;
+-        }
+         else
+-        {
+             tsc_stamp            = t->stamp.local_tsc;
++
++        /*
++         * HVM guests using the native TSC ratio should use the same per-CPU
++         * scaling factors as Xen.  This ensures time keeping is always in sync
++         * between Xen and the guest.
++         */
++        if ( tsc_stamp == t->stamp.local_tsc )
++        {
+             u->tsc_to_system_mul = t->tsc_scale.mul_frac;
+             u->tsc_shift         = t->tsc_scale.shift;
+         }
++        else
++        {
++            u->tsc_to_system_mul = d->arch.vtsc_to_ns.mul_frac;
++            u->tsc_shift         = d->arch.vtsc_to_ns.shift;
++        }
+     }
+ 
+     u->tsc_timestamp = tsc_stamp;
