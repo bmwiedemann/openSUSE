@@ -100,4 +100,15 @@
       dropped. The minimum required version of pytest is v8.</comment>
     <requestid>1310412</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c3d18437ac4a8e43f54e58d9126ccf01</srcmd5>
+    <version>5.1.0</version>
+    <time>1777483059</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.0:
+  * add serializer plugin system; plugins for data models
+
+      dropped. The minimum required version of pytest is v8.</comment>
+    <requestid>1349734</requestid>
+  </revision>
 </revisionlist>
