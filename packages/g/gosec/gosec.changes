@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr 28 07:44:54 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.26.1:
+  * Update cosign to v3.0.6 (#1659)
+  * Sync taint rule docs and add missing CWE mappings for G113/G307 (#1658)
+  * Update all dependencies (#1657)
+  * Add G710 rule for open redirect via taint analysis (#1654)
+  * Fix formatting
+  * Update the default models use by autofix and phase out the older models
+  * Format and clean-up the README
+  * Add HTTP file-serving function to the skins of pathtraversal analyzer (#1647)
+  * Skip flaging the TLS min version for go 1.18+ (#1646)
+  * chore(deps): bump go.opentelemetry.io/otel from 1.39.0 to 1.41.0 (#1645)
+  * Added filepath.Abs as a sanitizer (#1643)
+  * Allow rune to byte conversion (#1642)
+  * Allow platform specific conversions (#1641)
+  * chore(deps): update all dependencies (#1639)
+  * chore(deps): update all dependencies (#1634)
+  * chore(go): update supported Go versions to 1.25.9 and 1.26.2 (#1633)
+  * Fix: Bump go-version: 1.25.8 to 1.25.9 in ci (#1632)
+  * fix(taint): gate *http.Request auto-taint on entry-point detection (#1630)
+  * chore(deps): update all dependencies (#1631)
+  * Added a visited cycle-detection guard in the *ssa.Phi case (#1626)
+  * chore(deps): update all dependencies (#1625)
+  * fix(G706): scope slog sinks to msg arg only to prevent false positives on structured attributes (#1623)
+  * Gate the AI security review by the security-review environment (#1621)
+  * Fix anthropic autofix after dependencies update (#1620)
+  * chore(deps): update all dependencies (#1619)
+  * chore(action): bump gosec to 2.25.0 (#1618)
+
+-------------------------------------------------------------------
 Mon Mar 23 08:50:38 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.25.0:
