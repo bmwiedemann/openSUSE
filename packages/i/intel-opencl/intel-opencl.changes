@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 29 09:22:18 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- 0001-fix-add-missing-include.patch
+  * Fix for building with GCC 16 
+
+-------------------------------------------------------------------
 Fri Mar 20 14:45:57 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 26.09.37435.1
