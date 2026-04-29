@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Wed Apr 29 08:22:23 UTC 2026 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- Prepare packaging for factory submission
+- Update to version 0.63.0:
+  * v0.63.0
+  * chore(deps): update fantasy and catwalk
+  * fix(ui/hooks): restore hook styling
+  * chore(deps): bump goreleaser/goreleaser-action in the all group (#2728)
+  * chore(deps): bump the all group with 6 updates (#2729)
+  * docs(hooks): improve hook documentation
+  * chore(hooks,skills): update crush-hooks skill per recent changes
+  * fix(ui): fix dialog box shift when session rename is active
+  * chore(ui): theme prep
+  * chore: auto-update files
+
+-------------------------------------------------------------------
+Fri Apr 10 10:59:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.56.0:
+  * feat(tools): add crush_info tool implementation files
+  * feat(tools): add crush_logs tool for reading application logs
+  * feat(tools): crush_info tool for readling live config
+  * feat: open Hyper auth dialog automatically on unauthorized error
+  * fix(app): derive shutdown context from context.Background() instead of cancelled globalCtx (#2242)
+  * fix(lsp): clone slice to avoid mutation
+  * fix(schema): fix crush.json schema generation (#2574)
+  * fix(ui): subscribe to app.LSPEvent instead of workspace.LSPEvent (#2565)
+
+-------------------------------------------------------------------
+Tue Mar 24 08:39:24 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.51.2:
+  See https://github.com/charmbracelet/crush/releases/tag/v0.51.2
+
+-------------------------------------------------------------------
+Tue Mar 24 08:39:09 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.51.1:
+  See https://github.com/charmbracelet/crush/releases/tag/v0.51.1
+
+-------------------------------------------------------------------
+Tue Mar 24 08:38:29 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.51.0:
+  See https://github.com/charmbracelet/crush/releases/tag/v0.51.0
+
+-------------------------------------------------------------------
+Wed Mar 18 07:22:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.50.1:
+  See https://github.com/charmbracelet/crush/releases/tag/v0.50.1
+
+-------------------------------------------------------------------
+Wed Mar 18 07:22:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.50.0:
+  See https://github.com/charmbracelet/crush/releases/tag/v0.50.0
+
+-------------------------------------------------------------------
+Mon Mar 16 09:42:55 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.49.0:
+  See https://github.com/charmbracelet/crush/releases/tag/v0.49.0
+
+-------------------------------------------------------------------
+Mon Mar 16 09:42:06 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.48.0:
+  * Notifications
+  * Sessions on the CLI for humans and agents
+  * Bug fixes
+
+-------------------------------------------------------------------
+Wed Mar 11 14:11:22 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.47.1:
+  * chore: update bubble tea to v2.0.1 (#2360)
+  * chore: update hyper (#2354)
+  * fix(lsp/edit): properly handle non-ascii chars (e.g. CJK) (#2325)
+
+-------------------------------------------------------------------
+Wed Mar 11 14:10:16 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.47.0:
+  * feat(shell): add blocking wait option to job_output tool (#2189)
+  * fix(lsp): fallback to Kill() on timeout (#2349)
+  * chore: bump powernap to v0.1.2
+  * chore: update catwalk
+
+-------------------------------------------------------------------
+Tue Mar  3 15:35:55 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.46.2:
+  * fix(lsp): treat adjacent ranges as non-overlapping per LSP spec (#2322)
+  * fix(ui): follow scroll when at bottom (#2336)
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Tue Nov 18 11:30:45 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- initial commit of crush the LLm terminal application
