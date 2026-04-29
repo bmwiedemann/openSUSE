@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 22 10:01:37 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260421 (git commit 0a7e55438c7c):
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops (17aa235c 17aa235d)
+
+-------------------------------------------------------------------
 Thu Apr  9 05:34:23 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260408 (git commit e9cae76da758):

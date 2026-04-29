@@ -434,4 +434,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: consolidate audioreach-tplg firmwares into one location in WHENCE</comment>
     <requestid>1345542</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ef7059d88031b1f790c14670ba21b5ea</srcmd5>
+    <version>20260421</version>
+    <time>1777483073</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260421 (git commit 0a7e55438c7c):
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops (17aa235c 17aa235d)</comment>
+    <requestid>1349835</requestid>
+  </revision>
 </revisionlist>
