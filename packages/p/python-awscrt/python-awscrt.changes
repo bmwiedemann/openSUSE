@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 28 07:56:47 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.32.2
+  * Min or higher Windows SDK Versions by @sbSteveK in (#723)
+  * Update crt versions by @DmitriyMusatkin in (#732)
+
+-------------------------------------------------------------------
 Mon Apr 20 10:06:07 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.32.1

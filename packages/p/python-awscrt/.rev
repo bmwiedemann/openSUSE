@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>1348952</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>49d6074647c94623c4fa632f6a13276a</srcmd5>
+    <version>0.32.2</version>
+    <time>1777483117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.2
+  * Min or higher Windows SDK Versions by @sbSteveK in (#723)
+  * Update crt versions by @DmitriyMusatkin in (#732) (forwarded request 1349722 from glaubitz)</comment>
+    <requestid>1349891</requestid>
+  </revision>
 </revisionlist>
