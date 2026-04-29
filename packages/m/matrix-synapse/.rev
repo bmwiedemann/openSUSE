@@ -1680,4 +1680,14 @@ mostly-working synapse than nothing at all) and the package has been update to
     - Increase timeout for policy server requests to avoid repeated</comment>
     <requestid>1345148</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>1d4ca4e25e0806143dd128ca7dcc6533</srcmd5>
+    <version>1.152.0</version>
+    <time>1777483084</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1349798 from darix
+
+- Update to 1.152.0</comment>
+    <requestid>1349799</requestid>
+  </revision>
 </revisionlist>
