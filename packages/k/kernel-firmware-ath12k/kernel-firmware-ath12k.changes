@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 22 10:00:48 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260421 (git commit 0a7e55438c7c):
+  * ath12k: QCC2072 hw1.0: add to WLAN.COL.1.0.c2-00074-QCACOLSWPL_V1_TO_SILICONZ-1
+  * ath12k: QCC2072 hw1.0: add board-2.bin
+  * ath12k: IPQ5424 hw1.0: add to WLAN.WBE.1.6-01275-QCAHKSWPL_SILICONZ-1
+  * ath12k: IPQ5424 hw1.0: add board-2.bin
+
+-------------------------------------------------------------------
 Wed Mar 18 09:36:15 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260317 (git commit 66ca9a5b63a5):

@@ -97,4 +97,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath12k: WCN7850 hw2.0: update to WLAN.HMT.1.1.c7-00108-QCAHMTSWPL_V1.0_V2.0_SILICONZ_UPSTREAM-3</comment>
     <requestid>1340878</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7c11f1d0eaa316e5285d7e12c4a71aad</srcmd5>
+    <version>20260421</version>
+    <time>1777483070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260421 (git commit 0a7e55438c7c):
+  * ath12k: QCC2072 hw1.0: add to WLAN.COL.1.0.c2-00074-QCACOLSWPL_V1_TO_SILICONZ-1
+  * ath12k: QCC2072 hw1.0: add board-2.bin
+  * ath12k: IPQ5424 hw1.0: add to WLAN.WBE.1.6-01275-QCAHKSWPL_SILICONZ-1
+  * ath12k: IPQ5424 hw1.0: add board-2.bin</comment>
+    <requestid>1349831</requestid>
+  </revision>
 </revisionlist>
