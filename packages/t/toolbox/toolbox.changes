@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 21 07:28:45 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.4+git20260421.7c75c12:
+  * Make toolbox k8s (rke2) aware (#57)
+
+-------------------------------------------------------------------
 Thu Oct 09 12:29:42 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.4+git20251009.ab435eb:

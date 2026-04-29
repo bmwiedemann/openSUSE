@@ -343,4 +343,12 @@
   * toolbox.1: document no user mode for root</comment>
     <requestid>1309995</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ec43e2a51024e7b177b244a5999531a2</srcmd5>
+    <version>2.4+git20260421.7c75c12</version>
+    <time>1777483057</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1349723</requestid>
+  </revision>
 </revisionlist>
