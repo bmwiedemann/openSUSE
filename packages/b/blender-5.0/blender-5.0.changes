@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:42:24 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add CC-BY-4.0 to the main license from demos
+  Main package's license should list all licenses from spec
+
+-------------------------------------------------------------------
 Tue Apr 21 14:57:05 UTC 2026 - Max Lin <mlin@suse.com>
 
 - Tweak HIP support bcond to not build HIP support on Leap 16.1:

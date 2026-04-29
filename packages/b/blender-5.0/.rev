@@ -39,4 +39,12 @@
   after %suse_version changed to 1610 from 1600</comment>
     <requestid>1348786</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>ea4e8dfc096b2aae62da0504491c5b21</srcmd5>
+    <version>5.0.1</version>
+    <time>1777483093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1349828</requestid>
+  </revision>
 </revisionlist>
