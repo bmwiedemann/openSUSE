@@ -1,7 +1,7 @@
 #
 # spec file for package FlightGear-data
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define main_version 2024.1
 Name:           FlightGear-data
-Version:        %{main_version}.1
+Version:        %{main_version}.5
 Release:        0
 Summary:        FlightGear base scenery and data files
 License:        GPL-2.0-only
