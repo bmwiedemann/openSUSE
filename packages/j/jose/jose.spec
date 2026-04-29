@@ -1,7 +1,7 @@
 #
 # spec file for package jose
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define so_ver 0
 
 Name:           jose
-Version:        13
+Version:        14
 Release:        0
 Summary:        C-language implementation of Javascript Object Signing and Encryption
 License:        Apache-2.0

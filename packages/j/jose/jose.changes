@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 17 17:16:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 14:
+  * openssl/oct: improve bound check for len
+  * jwe: fix the case when we have "zip" in the protected header
+  * Avoid potential DoS with high decompression chunks
+
+-------------------------------------------------------------------
 Tue Apr 16 08:21:51 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 13:
