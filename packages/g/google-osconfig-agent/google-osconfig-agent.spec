@@ -33,6 +33,8 @@ URL:            https://%{provider_prefix}
 Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
+# PATCH-FIX-UPSTREAM - Fix crafted JWE input with a missing encrypted key can lead to a denial of service
+Patch0:         CVE-2026-34986.patch
 BuildRequires:  golang(API) >= 1.24.5
 BuildRequires:  golang-packaging
 Requires:       google-guest-configs
@@ -49,6 +51,9 @@ Google Cloud OSConfig Agent
 %prep
 %setup -q -n %{repo}-%{version}
 %setup -q -D -T -a 1 -n %{repo}-%{version}
+pushd vendor/github.com/go-jose/go-jose/v4
+%patch -P0 -p1
+popd
 
 %build
 %goprep %{import_path}

@@ -771,4 +771,12 @@
   * Bump go.opentelemetry.io/otel/sdk from 1.38.0 to 1.39.0 (#905) (forwarded request 1344163 from glaubitz)</comment>
     <requestid>1344176</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>307db36eb9b0b773836f1eb9e5481ec7</srcmd5>
+    <version>20260330.00</version>
+    <time>1777483107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1349868</requestid>
+  </revision>
 </revisionlist>
