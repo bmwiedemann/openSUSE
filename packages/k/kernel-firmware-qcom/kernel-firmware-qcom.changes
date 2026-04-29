@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 23 15:48:03 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260423 (git commit 0d347a3f3ec4):
+  * qcom: Update ADSP firmware for Glymur platform
+  * qcom: Add gpdspr.jsn for qcs8300 platform
+
+-------------------------------------------------------------------
+Wed Apr 22 10:01:08 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260421 (git commit 0a7e55438c7c):
+  * qcom: Update ADSP firmware for Kaanapali platform
+
+-------------------------------------------------------------------
 Fri Apr 17 11:17:56 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260416 (git commit a2f5a2941878):

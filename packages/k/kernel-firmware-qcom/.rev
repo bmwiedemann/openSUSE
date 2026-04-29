@@ -447,4 +447,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update ADSP firmware for QCM6490 platform</comment>
     <requestid>1347747</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>64e96edfec2b06423f79afed76e100b6</srcmd5>
+    <version>20260423</version>
+    <time>1777483072</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260423 (git commit 0d347a3f3ec4):
+  * qcom: Update ADSP firmware for Glymur platform
+  * qcom: Add gpdspr.jsn for qcs8300 platform
+
+- Update to version 20260421 (git commit 0a7e55438c7c):
+  * qcom: Update ADSP firmware for Kaanapali platform</comment>
+    <requestid>1349834</requestid>
+  </revision>
 </revisionlist>
