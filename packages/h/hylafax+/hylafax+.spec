@@ -1,7 +1,7 @@
 #
 # spec file for package hylafax+
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -295,7 +295,7 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %{_mandir}/man8/ondelay.8c%{ext_man}
 %{_mandir}/man8/probemodem.8c%{ext_man}
 %{_mandir}/man8/typetest.8c%{ext_man}
-%defattr(755,root,uucp,-)
+%defattr(755,uucp,uucp,-)
 %dir %{faxspool}
 %dir %{faxspool}/bin
 %dir %{faxspool}%{_sysconfdir}
