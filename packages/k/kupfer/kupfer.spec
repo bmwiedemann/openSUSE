@@ -1,7 +1,7 @@
 #
 # spec file for package kupfer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,26 @@
 
 
 Name:           kupfer
-Version:        322
+Version:        329
 Release:        0
 Summary:        An interface for access to applications and documents
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://kupferlauncher.github.io/
-Source:         https://github.com/kupferlauncher/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-v%{version}.tar.gz
+Source:         https://github.com/kupferlauncher/%{name}/releases/download/v%{version}/kupfer-v%{version}.tar.xz
 BuildRequires:  dbus-1-python3
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection
 BuildRequires:  intltool
-BuildRequires:  python3 >= 3.4
+BuildRequires:  python3 >= 3.9
 BuildRequires:  python3-docutils
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  python3-pyxdg
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 Requires:       desktop-file-utils
 Requires:       gvfs
 Requires:       python3-cairo
@@ -43,14 +44,11 @@ Requires:       python3-dbus-python
 Requires:       python3-docutils
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
-Requires:       python3-libxml2
 Requires:       python3-pyxdg
 Requires(post): hicolor-icon-theme
 Requires(post): shared-mime-info
-Requires(post): update-desktop-files
 Requires(postun): hicolor-icon-theme
 Requires(postun): shared-mime-info
-Requires(postun): update-desktop-files
 BuildArch:      noarch
 
 %description
@@ -62,16 +60,18 @@ Kupfer can be extended with plugins so that its quick-access
 paradigm can be extended to many more objects than just
 applications.
 
+%lang_package
+
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{name}-v%{version}
 
 %build
-./waf configure --prefix=%{_prefix} --libdir=%{_libdir}
-./waf build %{?_smp_mflags}
+python3 waf configure --prefix=%{_prefix} --libdir=%{_libdir}
+python3 waf build %{?_smp_mflags}
 
 %install
-./waf install --destdir=%{buildroot}
-%suse_update_desktop_file %{name} GTK X-SuSE-DesktopUtility
+python3 waf install --destdir=%{buildroot}
+
 %fdupes %{buildroot}
 
 %find_lang %{name}

@@ -106,4 +106,232 @@
     <comment>drop unneeded python3-libxml2 / xml2po dependencies (boo#12590230) (forwarded request 1335590 from AndreasStieger)</comment>
     <requestid>1338352</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0fdb2eb6ae6ffeac8f1039af377dbed3</srcmd5>
+    <version>329</version>
+    <time>1777483233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v329:
+  * Features:
+    + Fix and improve learning algorithm - adjust bonus values.
+    + Leaves in browser are always scored and sorted without search - after
+      open window last/most used items are one the top of list. This behaviour
+      can be disabled in preferences.
+  * Plugins Updated:
+      + Deepdirectories: fix disappearing from top sources.
+      + Windows: plugin is disabled on Wayland.
+      + libvirt: handle updates without background thread.
+      + xfce_session: fix loading favorites from Whisker menu.
+      + devhelp: fix arguments when calling devhelp command - correct
+        handle spaces.
+  * Fixes:
+    + Fix filtering applications when desktop filter is enabled.
+    + Support new Yelp desktop file name.
+    + Fix handling multiple screens  - potential problems when switching
+      to window on other workspace, correct handle screen used to spawn
+      application
+    + Skip activating application without app_id.
+    + Refresh panels on show browser - prevent old/unavailable items to show.
+    + Fix potential problems when Kupfer is run on Wayland - handle missing
+      wnck support.
+    + Fix learn register - do not create empty mmenomics, simplify prune.
+    + Add missing WM_WINDOW_ROLE for windows and dialog, set program name.
+      Change default type hint for browser window from utility to normal.
+- Version v328
+  * Changes:
+    + Use modern Ayatana Indicators; require gir1.2-ayatanaappindicator3-0.1;
+    + Gui: add dark border around main window; this improve visibility Kufper
+      window on bright background
+  * Plugins Updated:
+    + Audacious: start app on action when not running
+    + Textutils: ask user for option in &quot;join lines&quot; actions.
+    + Trash: ask user for confirmaton when moving files to trash
+  * Fixes:
+    + Fix toggle appindicator icon (not show after hide)
+    + Fix invalid handle KUPFER_WINDOW_TYPE_HINT setting
+    + Fix recognize urls with % characters
+    + Fix misleading message when starting Kupfer without install.
+    + Do no store content of Directory and Files sources in disc cache;
+      refres on startup.
+    + Prevent confirm dialog to show behind main Kupfer window.
+- Version v327
+  * Fixes:
+    + Fix random crashes reported on Arch and Python 3.11.8 probably caused by
+      broken support for multi display/monitor support. Close: #176
+    + Fix returning to previous leaf in browser (left key action); when leaves
+      come from action result there is not valid parent, so searching for it
+      is waste of time.
+    + Fix browser window placement; especially after text box is show/hide.
+    + Fix random crashes on startup related probably to too fast application
+      start.
+  * New Plugins:
+      + *recoll*: query Recoll full text search system
+- Version v326
+  * Fixes:
+    + Do not lowercase entered search term when passing it to sources that
+      create text leaves. Sources like *Shell Commands* and *Text*  now get
+      exact text that user entered/select.
+  * Updated Plugins:
+    + *clipboard*: handle errors on creating file leaves from text when
+      text is not valid file path.
+- Version v325
+  * Fix syntax error that sometimes happen on plugin activation.
+  * Fix missing translations in *websearch* and *qrcode* plugins.
+- Version v324
+  * New features:
+    + Allow user to choose how trim displayed text - add new options in
+      preferences &quot;Text ellipsization&quot;. Close: #98
+    + &quot;Actions in first panel&quot; - experimental feature that allow user to run
+      actions by selecting it in first panel and then select target object in
+      next panel. Require enabled &quot;Kupfer Actions&quot; plugin. Close: #77 (maybe).
+  * Fixes:
+    + Fix validator for URLs: better support for URLs without FQDN and netloc.
+    + Show only first line of multi-line descriptions. Whole description is
+      in tooltip. Close: #116
+    + Fix refreshing sources cache on start - sources are force refreshed on
+      plugin enabled and on Kupfer start when cache not contains items.
+      This prevent bizarre behavior when Kupfer is restarted and sources
+      depend on some unavailable files.
+    + Fix return to parent leave - try to load all leaves until parent leave
+      is found instead of go to first leave.
+  * Plugins:
+    + New:
+      + *Kupfer Actions*: put actions into first panel.
+    + Updated:
+      + *clipboard*: fix broken description for URL and file path; handle
+        errors when text is recognized as file path but is broken.
+      + *core*: leaves with can text and uri representation can be used in
+        &quot;OpenTextUrl&quot; action.
+      + *ssh_hosts*: add text representation in form of ssh://host... so now
+        can be opened i.e. in external applications.
+        Add new action &quot;Send file to...&quot; - send file/directory to remote host.
+      + *websearch*: new action &quot;Search...&quot; - search with default engine; user
+        do not have to select search engine, default can be configured or
+        is take from &quot;user search engines&quot; with DDG as fallback.
+- Version v323
+  * New features:
+    + For grouping leaves (like hosts, contacts) add &quot;copy to clipboard&quot;
+      action for each slot (email, adress, etc).
+    + After launch some action for leave next time this action get some
+      bonus that make it higher on the list. Also, this action get (smaller)
+      bonus for each same type of leaves.
+    + URL-s can be opened with selected application (&quot;Open with...&quot; action)
+    + User can configure preferred text editor; list is loaded from
+      application registry.
+    + List of terminals is loaded from application registry (applications
+      with  &quot;terminal&quot; tag). Some terminals are still preconfigured.
+    + In plugins settings user can choose files and directories by appropriate
+      dialog instead of type path manually.
+    + Kupfer can more frequent refresh items in background and cache result;
+      this make searching and browsing faster.
+    + If more than one action have the same accelerator pressing key navigate
+      between them; previously first action was activated.
+    + Hosts and services have additional aliases &quot;service:hostname&quot;; this
+      allow user to fast find items by entering e.g. &quot;sshmyserverhostname&quot;.
+    + Add text representation to leaves representing songs (*rhythmbox* and
+      *audacious* plugins) and leaves representing services; user can
+      i.e. copy it to clipboard or use whenever text is acceptable.
+  * Fixes:
+    + Make Kupfer window rounded again.
+    + After repoen Kupfer window, if current leaf has qf_id (leaf like
+      selected dir, file, etc), update this leaf (research) and show current
+      value.
+    + Fix error on group merge when source was updated in background.
+    + Fix &quot;mark as default&quot; action broken in beta1.
+    + Add some missing icons (stock_person, stock_mail)
+    + Strip whitespaces from url-s when calling &quot;show url&quot;
+    + Do not decorate leaves in third panel as there is no way to &quot;enter&quot; to
+      it.
+    + If actions have the same name, make it unique by adding plugin name;
+      previously module name was added.
+    + Improve detecting URLs, files path, and emails addresses in text.
+    + Fix not working &quot;select clipboard text&quot; accelerator.
+    + Fix presenting first line from Text leaves: now really show first line.
+    + Browser track history of selected leaves and allow return to parent leaf
+      instead of top of list.
+    + Make sure that file opened in plugins are closed after load.
+  * Plugins:
+    + New:
+      + *Aria2*: download files be remote aria2 instance.
+      + *Librewolf*: load bookmarks from Librewolf web browser
+      + *NetworkManager*: manage network connections
+      + *Screenshot*: take desktop screenshot using 'scrot' or 'flamegraph'.
+      + *Show QRCode* plugin: generate qrcodes from text.
+      + *Textutils*: various tools that convert, format and generate text
+        content (i.e. generate random strings, convert case, encode base64,
+        format json and xml).
+      + *Tmux*: support tmux session and tmuxp workplaces.
+      + *Tracker3*: full-text search in Tracker 3 application.
+      + *Vim*: recent files opened in vim and quick access to configured
+        VimWikis.
+      + *Zoxide*: load most used directories from zoxide database.
+    + Updated:
+      + *Application*:
+        + Add additional aliases do application: executable name and original
+          (English) name.
+        + New action &quot;Open With...&quot;: open file with one of application that
+          support given file type.
+        + New action &quot;Launch here&quot;: start application in selected folder.
+        + User can enable loading additional application aliases.
+          This make possible to select application by application comment,
+          keywords or generic name but may have impact on overall performance.
+      + *Apt*: add new actions: &quot;Search for file in packages...&quot; and &quot;Browse
+        packages.debian.org&quot;.
+      + *Archive manager*: user can select 7zip (7z or 7za) to use instead of
+        file-roller.
+      + *Audacious*: use D-Bus for interaction with audacious.
+      + *Chromium*: monitor and load changes in bookmarks.
+      + *Clipboard*: detect URLs and files path in clipboard items and
+        selected text.
+      + *Dictionary*: add support for GoldenDict
+      + *Favorites*: allow user to add to favorite only leaves than can be
+        added.
+      + *File actions*: new action &quot;Edit file content&quot; that open configured
+        text editor
+      + *Image*: detect images files by mime type, not by extension.
+      + *Libvirt*: monitor state of virtual machines; fix icons
+      + *Rhythmbox*: fix errors when no mpris module available.
+      + *Session gnome*, *Session lxqt*, *Session xfce*: user must confirm
+        &quot;logout&quot; and &quot;shutdown&quot; actions
+      + *Session xfce*: load favorite applications defined in Whisker Menu.
+      + *Show Text*: bring back &quot;Large Type&quot; action.  Close: 91
+      + *Ssh_hosts*:
+         + Fix loading `Match` rules from ssh config file.
+         + Fix monitoring for configuration changes.
+         + Load and use host name from ssh .config file
+         + Update icons
+      + *Textfiles*:
+        + New action &quot;Copy content&quot; (with &quot;C&quot; accelerator): copy content of
+          text file to clipboard
+        + &quot;Write To&quot; action allow user to enter destination file name.
+        + Fix selecting destination directory
+        + Fix encoding on write files
+      + *Thunar*: add &quot;Open Trash&quot; action
+      + *URL Actions*: check response status code (accept only 2xx); if there
+        is not exact filename in response or url, try to guess filename with
+        extension by url and content type.
+      + *Web Search*: allow user to define custom search engines by provide
+        appropriate URLs.
+      + *Volumes*:
+        + New &quot;Mount&quot; action
+        + Separate &quot;Eject&quot; and &quot;Unmount&quot; action.
+      + *Wikipedia*:
+        + User can configure more than one language for Wikipedia search;
+          action &quot;Search in Wikipedia&quot; allow user to select Wikipedia
+          language.
+        + Add &quot;S&quot; accelerator for &quot;Search in Wikipedia&quot; action.
+      + *Windows*: better detection of Kupfer windows.
+      + some plugins now report error (import error) when required command or
+        application is missing in system.
+  * Dev:
+    + *BREAKING*: refactor &amp; modernize code; Python 3.9+ is now required.
+    + *BREAKING*: reorganise and rename some modules, functions. Split long
+      files into smaller.
+    + *BREAKING*: there is no backward compatibility with old/external plugins.
+- Dropped deprecated %suse_update_desktop_file
+- Use python3 waf instead of waf
+- Dropped runtime dependency to python3-libxml2 as it's not needed
+</comment>
+    <requestid>1349983</requestid>
+  </revision>
 </revisionlist>
