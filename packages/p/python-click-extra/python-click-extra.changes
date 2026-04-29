@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Apr 29 02:17:46 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.14.1:
+  * Relax Click requirement back to 8.1. Replace ParameterSource ordered
+    comparisons in ConfigOption with explicit set membership so the code
+    works on both the regular Enum (Click 8.1/8.2) and the
+    IntEnum (Click 8.3+).
+  * Relax tabulate requirement back to 0.9. Backport the colon_grid format
+    by aliasing it to grid at module load when tabulate < 0.10 is installed.
+- Drop installing click-extra-demo, which has been removed.
+
+-------------------------------------------------------------------
+Sun Apr 26 09:10:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.14.0:
+  * Add wrap subcommand: click-extra wrap SCRIPT [ARGS]... applies
+    help colorization to any installed Click CLI without modifying
+    its source. Supports --theme option and
+    [tool.click-extra.wrap.<script>] config sections for persistent
+    CLI defaults. Resolves SCRIPT via console_scripts entry points,
+    module:function notation, .py file paths, or bare module names.
+    Unknown subcommand names fall through to wrap automatically, so
+    click-extra flask --help works without typing wrap. run is kept
+    as an alias.
+  * Add show-params subcommand: click-extra show-params SCRIPT
+    [SUBCOMMAND]... introspects any external Click CLI's parameters
+    and displays them as a table. Supports all --table-format
+    renderings. Drills into nested subcommands. Auto-discovers the
+    Click command when the entry point is a wrapper function.
+  * Style Spec. column with option theme (cyan) and Python type
+    with metavar theme (cyan dim) in both --show-params and
+    show-params, matching help-screen conventions.
+  * Add get_param_spec() and format_param_row() as public API in
+    click_extra.parameters. get_param_spec() extracts option-spec
+    strings and handles hidden-param unhiding. format_param_row()
+    is the shared cell renderer for both --show-params and
+    show-params tables.
+  * Make ParamStructure.get_param_type() a @staticmethod. Returns
+    str for unrecognised custom types instead of raising
+    ValueError.
+  * Replace render-matrix subcommand with individual colors,
+    styles, palette, 8color, and gradient subcommands grouped under
+    a "Demo" section. Remove the click-extra-demo entry point.
+  * Move Sphinx tests into tests/sphinx/. Downstream packagers can
+    skip them with --ignore=tests/sphinx without pulling in Sphinx
+    dependencies.
+  * Bump Click requirement to 8.3.3. Simplify ParameterSource
+    comparisons in ConfigOption using the new IntEnum ordering.
+
+-------------------------------------------------------------------
 Sat Apr 18 07:15:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.13.0:

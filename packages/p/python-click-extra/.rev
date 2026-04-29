@@ -229,4 +229,41 @@ update to 6.1.0</comment>
     <comment></comment>
     <requestid>1348170</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>60995ce0dc9a3e7dc93bca3b160dfe95</srcmd5>
+    <version>7.14.1</version>
+    <time>1777483170</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.14.1:
+  * Relax Click requirement back to 8.1. Replace ParameterSource ordered
+    comparisons in ConfigOption with explicit set membership so the code
+    works on both the regular Enum (Click 8.1/8.2) and the
+    IntEnum (Click 8.3+).
+  * Relax tabulate requirement back to 0.9. Backport the colon_grid format
+    by aliasing it to grid at module load when tabulate &lt; 0.10 is installed.
+- Drop installing click-extra-demo, which has been removed.
+
+- update to 7.14.0:
+  * Add wrap subcommand: click-extra wrap SCRIPT [ARGS]... applies
+    help colorization to any installed Click CLI without modifying
+    its source. Supports --theme option and
+    [tool.click-extra.wrap.&lt;script&gt;] config sections for persistent
+    CLI defaults. Resolves SCRIPT via console_scripts entry points,
+    module:function notation, .py file paths, or bare module names.
+    Unknown subcommand names fall through to wrap automatically, so
+    click-extra flask --help works without typing wrap. run is kept
+    as an alias.
+  * Add show-params subcommand: click-extra show-params SCRIPT
+    [SUBCOMMAND]... introspects any external Click CLI's parameters
+    and displays them as a table. Supports all --table-format
+    renderings. Drills into nested subcommands. Auto-discovers the
+    Click command when the entry point is a wrapper function.
+  * Style Spec. column with option theme (cyan) and Python type
+    with metavar theme (cyan dim) in both --show-params and
+    show-params, matching help-screen conventions.
+  * Add get_param_spec() and format_param_row() as public API in
+    click_extra.parameters. get_param_spec() extracts option-spec
+    strings and handles hidden-param unhiding. format_param_row()</comment>
+    <requestid>1349910</requestid>
+  </revision>
 </revisionlist>

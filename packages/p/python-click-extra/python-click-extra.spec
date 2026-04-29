@@ -18,7 +18,6 @@
 
 %define module_name click-extra
 %define executable_name click-extra
-%define executable_name_demo click-extra-demo
 
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
@@ -28,21 +27,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        7.13.0
+Version:        7.14.1
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
 URL:            https://github.com/kdeldycke/click-extra
 Source:         https://github.com/kdeldycke/click-extra/archive/v%{version}.tar.gz#/%{module_name}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.0.0}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module uv-build}
-BuildRequires:  %{python_module wheel}
 # SECTION Build dependencies
 # https://github.com/kdeldycke/click-extra/blob/v6.0.3/pyproject.toml#L73
 BuildRequires:  %{python_module boltons >= 20.0.0}
-BuildRequires:  %{python_module click >= 8.3.1}
+BuildRequires:  %{python_module click >= 8.1}
 BuildRequires:  %{python_module cloup >= 3.0.7}
 BuildRequires:  %{python_module deepmerge >= 1.0.1}
 BuildRequires:  %{python_module extra-platforms >= 8.0.0}
@@ -57,14 +53,12 @@ BuildRequires:  %{python_module hjson >= 3.1}
 BuildRequires:  %{python_module json5 >= 0.12.1}
 BuildRequires:  %{python_module mkdocs >= 1.4}
 BuildRequires:  %{python_module pygments >= 2.14}
-BuildRequires:  %{python_module pygments >= 2.14}
 BuildRequires:  %{python_module pygments-ansi-color >= 0.3}
 BuildRequires:  %{python_module pymdown-extensions >= 10}
 BuildRequires:  %{python_module xmltodict >= 1.0.0}
 BuildRequires:  git-core
 # /SECTION
 # SECTION test requirements
-BuildRequires:  %{python_module pygments >= 2.14}
 BuildRequires:  %{python_module Sphinx >= 8.0}
 BuildRequires:  %{python_module myst-parser >= 4.0.0}
 BuildRequires:  %{python_module pygments-ansi-color >= 0.3.0}
@@ -75,20 +69,19 @@ BuildRequires:  %{python_module wcwidth}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML >= 6.0.3
 Requires:       python-boltons >= 20.0.0
-Requires:       python-click >= 8.3.1
+Requires:       python-click >= 8.3.3
 Requires:       python-cloup >= 3.0.7
 Requires:       python-deepmerge >= 1.0.1
 Requires:       python-extra-platforms >= 8.0.0
 Requires:       python-requests >= 2.32.4
 Requires:       python-tabulate >= 0.10
-Requires:       python-tomlkit >= 0.13
 Requires:       python-wcmatch >= 10.0
-Requires:       python-xmltodict >= 1.0.0
 Requires:       (python-tomli >= 2 if python-base < 3.11)
+Suggests:       python-PyYAML >= 6.0.3
 Suggests:       python-pygments >= 2.14
 Suggests:       python-pygments-ansi-color >= 0.3.0
+Suggests:       python-tomlkit >= 0.13
 BuildArch:      noarch
 %if %{with libalternatives}
 Requires:       alts
@@ -112,7 +105,6 @@ Requires(postun): update-alternatives
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/%{executable_name}
-%python_clone -a %{buildroot}%{_bindir}/%{executable_name_demo}
 
 %check
 # remove coverage configuration
@@ -148,11 +140,10 @@ IGNORED_CHECKS+=" or test_patch_mkdocs_click_plain_options"
 %if %{with libalternatives}
 %pre
 %python_libalternatives_reset_alternative %{executable_name}
-%python_libalternatives_reset_alternative %{executable_name_demo}
 %else
 
 %post
-%{python_install_alternative %{executable_name} %{executable_name_demo}}
+%python_install_alternative %{executable_name}
 
 %postun
 # only give the group name for uninstalling
@@ -164,7 +155,6 @@ IGNORED_CHECKS+=" or test_patch_mkdocs_click_plain_options"
 %license license
 %doc readme.md
 %python_alternative %{_bindir}/%{executable_name}
-%python_alternative %{_bindir}/%{executable_name_demo}
 %{python_sitelib}/click_extra
 %{python_sitelib}/click_extra-%{version}.dist-info
 
