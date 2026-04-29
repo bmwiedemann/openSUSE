@@ -19,17 +19,15 @@
 %define series 0.2.9
 %define src_name %{name}ad
 Name:           armagetron
-Version:        %{series}.2.5
+Version:        %{series}.3.0
 Release:        0
 Summary:        OpenGL Game Similar to the Film Tron
 License:        GPL-2.0-or-later
 URL:            https://www.armagetronad.org
 Source0:        https://launchpad.net/%{src_name}/%{series}/%{version}/+download/%{src_name}-%{version}.tbz
 Patch0:         armagetron-desktop-files-installdir.patch
-# PATCH-FIX-UPSTREAM: https://gitlab.com/armagetronad/armagetronad/-/merge_requests/162
-Patch1:         reproducible.patch
 # PATCH-FIX-OPENSUSE fix-sdl12-compat-1_2_70.patch gh#libsdl-org/sdl12-compat#382
-Patch2:         fix-sdl12-compat-1_2_70.patch
+Patch1:         fix-sdl12-compat-1_2_70.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -38,6 +36,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires(post): coreutils
