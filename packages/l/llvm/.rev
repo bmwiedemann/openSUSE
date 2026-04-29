@@ -2447,4 +2447,13 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1338539</requestid>
   </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>06dff7138d1b4cbe97e8fc5a51115f3a</srcmd5>
+    <version>22</version>
+    <time>1777483048</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable bolt on riscv64.
+</comment>
+    <requestid>1349632</requestid>
+  </revision>
 </revisionlist>

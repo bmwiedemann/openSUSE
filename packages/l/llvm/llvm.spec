@@ -29,7 +29,7 @@
 %endif
 %endif
 
-%ifarch aarch64 x86_64
+%ifarch aarch64 riscv64 x86_64
 %define has_bolt 1
 %endif
 
