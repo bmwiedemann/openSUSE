@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 27 15:02:46 UTC 2026 - Frank Schreiner <FSchreiner@suse.com>
+
+- Update to version 0.12.0:
+  * re-add and fix partial clone filter
+  * refactor auth_url
+  * make sure that parameter "match_tag" is used
+
+-------------------------------------------------------------------
 Fri Apr 03 10:10:35 UTC 2026 - Frank Schreiner <FSchreiner@suse.com>
 
 - Update to version 0.11.1:
