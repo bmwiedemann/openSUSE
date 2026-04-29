@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfwinreg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 
-%define timestamp 20240316
+%define timestamp 20260411
 %define modname dfwinreg
 Name:           python-dfwinreg
 Version:        0~%{timestamp}
@@ -39,6 +39,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML
 Requires:       python-dfdatetime
 Requires:       python-dtfabric
 Requires:       python-libcreg >= 20210502
@@ -70,7 +71,8 @@ $python ./run_tests.py
 
 %files %{python_files}
 %license LICENSE
-%doc ACKNOWLEDGEMENTS AUTHORS README
-%{python_sitelib}/%{modname}*
+%doc ACKNOWLEDGEMENTS AUTHORS README.md
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{timestamp}*info
 
 %changelog

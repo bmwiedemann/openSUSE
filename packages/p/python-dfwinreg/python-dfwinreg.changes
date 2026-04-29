@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 28 13:57:40 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 20260411
+  * Updated pylintrc to version 3.2
+  * Added Python 3.14 CI test target
+  * Migrated setup.cfg to pyproject.toml
+
+-------------------------------------------------------------------
 Mon Apr 22 09:25:25 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to 20240316
