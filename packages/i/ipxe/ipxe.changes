@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 27 22:39:56 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add ipxe-qemu subpackage to provide QEMU network ROMs. This allows
+  unbundling the iPXE submodule from the main QEMU package, alleviating
+  code duplication. We now do, here in this package:
+  * Build legacy and EFI drivers for QEMU specific PCI IDs
+    (e1000, virtio, rtl8139, ne2k_pci, pcnet, e1000e, vmxnet3).
+  * Handle legacy and EFI combination, paddint, etc.
+  * Install the generated ROMs into /usr/share/qemu/. 
+
+-------------------------------------------------------------------
 Fri Aug 29 05:59:46 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Add fix-i586.patch to fix compilation for i586 with gcc-15

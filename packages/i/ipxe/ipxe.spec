@@ -1,7 +1,7 @@
 #
 # spec file for package ipxe
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,8 @@ BuildRequires:  syslinux
 BuildRequires:  xorriso
 %endif
 BuildRequires:  xz-devel
+# For QEMU ROMs
+BuildRequires:  ovmf-tools
 # Does not build on bigendian
 ExcludeArch:    s390 s390x ppc ppc64
 # ix86 does not have a cross-x86_64 gcc available so it can't build
@@ -85,6 +87,17 @@ DNS, HTTP, iSCSI, etc.
 
 This package contains the iPXE boot images in USB, CD, floppy, and PXE
 UNDI formats. EFI is supported, too.
+
+%package qemu
+Summary:        PXE and EFI ROMs for QEMU network devices
+Group:          System/Emulators/PC
+Provides:       qemu-ipxe
+Obsoletes:      qemu-ipxe
+Provides:       ipxe-qemu-roms = %{version}
+
+%description qemu
+This package contains the iPXE ROMs (legacy PXE and EFI) compiled specifically
+for QEMU emulated network devices.
 
 %prep
 %autosetup -N
@@ -114,6 +127,85 @@ make_ipxe() {
     make -O %{?_smp_mflags} V=1 \
         VERSION=%{version} $TAG "$@"
 }
+
+# Building QEMU ROMs
+
+# QEMU's legacy virtio ROM must fit in 64KB. For that to happen, let's get
+# rid of HTTPS, ZLIB, GZIP and all the SAN features (just for the QEMU ROMs
+# of course, using iPXE's local config mechanism).
+cat <<EOF > config/local/general.h
+#undef DOWNLOAD_PROTO_HTTPS
+#undef IMAGE_ZLIB
+#undef IMAGE_GZIP
+#undef SANBOOT_PROTO_ISCSI
+#undef SANBOOT_PROTO_AOE
+#undef SANBOOT_PROTO_IB_SRP
+#undef SANBOOT_PROTO_FCP
+EOF
+
+# Enable serial output (so, e.g., -nographic, works).
+cat <<EOF > config/local/console.h
+#define CONSOLE_SERIAL
+EOF
+
+QEMU_NICS="e1000:8086:100e eepro100:8086:1209 ne2k_pci:10ec:8029 pcnet:1022:2000 rtl8139:10ec:8139 virtio:1af4:1000 e1000e:8086:10d3 vmxnet3:15ad:07b0"
+
+CROSS_PREFIX=""
+%ifnarch %{ix86} x86_64
+CROSS_PREFIX="CROSS=x86_64-suse-linux-"
+%endif
+
+for nic in $QEMU_NICS; do
+    name=$(echo "$nic" | cut -d: -f1)
+    vid=$(echo "$nic" | cut -d: -f2)
+    did=$(echo "$nic" | cut -d: -f3)
+
+    # Build legacy ROMs
+    if [ "$name" != "e1000e" ] && [ "$name" != "vmxnet3" ]; then
+        make_ipxe $CROSS_PREFIX bin/${vid}${did}.rom
+        cp bin/${vid}${did}.rom pxe-${name}.rom
+    fi
+
+    # Build EFI drivers
+    EFI_ARGS="-f 0x${vid} -i 0x${did}"
+    make_ipxe $CROSS_PREFIX bin-i386-efi/${vid}${did}.efidrv
+    EFI_ARGS="$EFI_ARGS -e bin-i386-efi/${vid}${did}.efidrv"
+
+    %ifnarch %{ix86}
+    make_ipxe $CROSS_PREFIX bin-x86_64-efi/${vid}${did}.efidrv
+    EFI_ARGS="$EFI_ARGS -e bin-x86_64-efi/${vid}${did}.efidrv"
+    %endif
+
+    %ifarch aarch64
+    make_ipxe bin-arm64-efi/${vid}${did}.efidrv
+    EFI_ARGS="$EFI_ARGS -e bin-arm64-efi/${vid}${did}.efidrv"
+    %else
+    %{!?no_aarch64_cc:make_ipxe CROSS="aarch64-suse-linux-" bin-arm64-efi/${vid}${did}.efidrv}
+    %{!?no_aarch64_cc:EFI_ARGS="$EFI_ARGS -e bin-arm64-efi/${vid}${did}.efidrv"}
+    %endif
+
+    # Combine them into FAT EFI ROMs using EfiRom
+    EfiRom $EFI_ARGS -o efi-${name}.rom
+done
+
+# QEMU's padding logic for legacy ROMs
+for name in e1000 eepro100 ne2k_pci pcnet rtl8139 virtio; do
+    size=$(stat -c '%s' pxe-${name}.rom)
+    if [ "$name" = "virtio" ]; then
+        if [ $size -gt 65536 ]; then echo "virtio rom too large"; exit 1; fi
+    else
+        if [ $size -gt 131072 ]; then echo "pxe rom $name too large"; exit 1; fi
+        if [ $size -le 65536 ]; then
+            perl util/padimg.pl pxe-${name}.rom -s 65536 -b 255
+            echo -ne "SEGMENT OVERAGE\0" >> pxe-${name}.rom
+        fi
+    fi
+done
+
+rm config/local/general.h
+rm config/local/console.h
+rm -rf bin bin-i386-efi bin-x86_64-efi bin-arm64-efi
+# End of building QEMU ROMs
 
 %ifarch %{ix86} x86_64
 make_ipxe bin-i386-efi/ipxe.efi
@@ -163,6 +255,10 @@ install -D -m0644 src/bin-x86_64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/sn
 ln -s ipxe.sdsk %{buildroot}/%{_datadir}/%{name}/floppy.img
 %endif
 
+mkdir -p %{buildroot}/%{_datadir}/qemu/
+install -m0644 src/pxe-*.rom %{buildroot}/%{_datadir}/qemu/
+install -m0644 src/efi-*.rom %{buildroot}/%{_datadir}/qemu/
+
 %files bootimgs
 %defattr(-,root,root)
 %dir %{_datadir}/%{name}
@@ -179,5 +275,11 @@ ln -s ipxe.sdsk %{buildroot}/%{_datadir}/%{name}/floppy.img
 %{!?no_aarch64_cc:%{_datadir}/%{name}/snp-arm64.efi}
 %{_datadir}/%{name}/undionly.kpxe
 %license COPYING COPYING.GPLv2 COPYING.UBDL
+
+%files qemu
+%defattr(-,root,root)
+%dir %{_datadir}/qemu
+%{_datadir}/qemu/pxe-*.rom
+%{_datadir}/qemu/efi-*.rom
 
 %changelog
