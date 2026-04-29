@@ -179,4 +179,34 @@
     <comment></comment>
     <requestid>1346859</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>21253620f7b194d237f01dd29f793d78</srcmd5>
+    <version>1.103.0</version>
+    <time>1777483225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.103.0
+  * Enhancement - Golang bump: 1.25.9 (#4935)
+  * Enhancement - Use env variable to read user input when
+    mounting FSx volumes (#4934)
+  * Enhancement - Enhancement - Replace SSM Dualstack endpoint
+    resolution logic with UseDualStackEndpoint (#4931)
+  * Enhancement - Emit duration metrics for TACS connect/disconnect (#4928)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream
+    from 1.6.10 to 1.7.8 in /agent (#4922)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream
+    from 1.6.5 to 1.7.8 in /ecs-init (#4925)
+  * Enhancement - Track and emit metric for disconnect time from ACS (#4920)
+  * Enhancement - engine: skip execution role checks when task desired status
+    is stopped (#4918)
+  * Enhancement - Add NeuronDevices type and sysfs-based device discovery (#4919)
+  * Bugfix - Fix release workflow branch handling and add GitHub App token (#4929)
+  * Bugfix - fix(netlib): Conditionally add IPv6 subnet to IPAM config when IPv6 (#4916)
+- from version 1.102.2
+  * Enhancement - Update SSM exec agent version to 3.3.4108.0 (#4912)
+  * Enhancement - Update Go version to 1.25.8 (#4894)
+  * Enhancement - Apply skip-gpg-check to both ecs-init and ssm agent (#4901)
+  * Enhancement - Bump google.golang.org/grpc from 1.78.0 to 1.79.3 (#4906)
+- Bump Go version to 1.25.9 (forwarded request 1349972 from glaubitz)</comment>
+    <requestid>1349975</requestid>
+  </revision>
 </revisionlist>
