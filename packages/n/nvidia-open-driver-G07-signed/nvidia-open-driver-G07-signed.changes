@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 28 18:46:41 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update CUDA variant to 595.71.05
+
+-------------------------------------------------------------------
+Wed Apr 22 14:03:18 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 595.71.05 (boo#1262574)
+- disable-objtool-override.patch
+  * get rid of confusing objtool warnings (boo#1212841)
+     --> from https://github.com/joanbm/nvidia-470xx-linux-mainline
+
+-------------------------------------------------------------------
+Tue Mar 24 18:36:04 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- adding 'ExcludeArch:    %ix86 s390x ppc64le' to no longer get
+  autoclines by buildservice hoping that this wont't break RPM
+  descriptions for -cuda variant again ...
+
+-------------------------------------------------------------------
 Tue Mar 24 13:46:04 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - update CUDA variant to 595.58.03

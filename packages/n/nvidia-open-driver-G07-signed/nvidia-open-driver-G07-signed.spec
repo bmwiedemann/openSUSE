@@ -16,14 +16,14 @@
 #
 
 
-%define gfx_aarch64_version 595.58.03
+%define gfx_aarch64_version 595.71.05
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 595.58.03
+%define gfx_version 595.71.05
 %endif
-%define cuda_version 595.58.03
+%define cuda_version 595.71.05
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 
@@ -101,6 +101,7 @@ Source18:       Check4WrongSupplements.sh
 %if 0%{?sle_version} < 150600
 Patch1:         kernel-5.14.patch
 %endif
+Patch2:         disable-objtool-override.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -119,6 +120,7 @@ BuildRequires:  kernel-syms-azure
 # build KPMs for kernel-longterm in Factory
 BuildRequires:  kernel-syms-longterm
 %endif
+ExcludeArch:    %ix86 s390x ppc64le
 
 %if 0%{!?kmp_template_name:1}
 %define kmp_template_name /usr/lib/rpm/kernel-module-subpackage

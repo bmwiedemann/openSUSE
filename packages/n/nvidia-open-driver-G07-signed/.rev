@@ -82,4 +82,27 @@
 - improved RPM description for -cuda and non-cuda variant</comment>
     <requestid>1342266</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a9be3b6fcdf38d1a78e28707ba296442</srcmd5>
+    <version>595.58.03</version>
+    <time>1774469898</time>
+    <user>anag_factory</user>
+    <comment>- adding 'ExcludeArch:    %ix86 s390x ppc64le' to no longer get
+  autoclines by buildservice hoping that this wont't break RPM
+  descriptions for -cuda variant again ...</comment>
+    <requestid>1342290</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d96145c02cee027657a687084a53b62c</srcmd5>
+    <version>595.71.05</version>
+    <time>1777483169</time>
+    <user>dimstar_suse</user>
+    <comment>- update CUDA variant to 595.71.05
+
+- update non-CUDA variant to 595.71.05 (boo#1262574)
+- disable-objtool-override.patch
+  * get rid of confusing objtool warnings (boo#1212841)
+     --&gt; from https://github.com/joanbm/nvidia-470xx-linux-mainline</comment>
+    <requestid>1349911</requestid>
+  </revision>
 </revisionlist>
