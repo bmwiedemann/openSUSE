@@ -1462,4 +1462,20 @@ New stable release</comment>
     <user>dimstar_suse</user>
     <comment>revert</comment>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>e66145f9192be8a629228b677bd45f01</srcmd5>
+    <version>48.1+6</version>
+    <time>1777483305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 48.1+6:
+  + build: bump DjVuLibre version required
+  + libview: Fix crash in the accessible code when page cache text
+    is NULL
+  + po: Fix xml element in Hindi translation
+  + Updated translations.
+- Drop evince-a11y-crash.patch: Fixed upstream.
+
+- Migrate to xz compression and manual service run</comment>
+    <requestid>1350042</requestid>
+  </revision>
 </revisionlist>

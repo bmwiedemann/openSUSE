@@ -1,7 +1,7 @@
 #
 # spec file for package evince
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,17 +22,15 @@
 %define pluginAPI 4
 
 Name:           evince
-Version:        48.1
+Version:        48.1+6
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Evince
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM evince-kpathsea.patch -- Fix build with gcc 15
 Patch0:         evince-kpathsea.patch
-# PATCH-FIX-UPSTREAM evince-a11y-crash.patch mgorse@suse.com -- fix crash in the accessible code when page cache text is NULL.
-Patch1:         evince-a11y-crash.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils
@@ -215,7 +213,9 @@ A plugin for Evince to read XPS documents.
 %files
 %license COPYING
 %doc %{_datadir}/help/C/%{name}/
-%{_bindir}/*
+%{_bindir}/evince
+%{_bindir}/evince-previewer
+%{_bindir}/evince-thumbnailer
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
 %{_datadir}/evince
