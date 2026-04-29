@@ -53,6 +53,10 @@ Source5:        README.Gsettings-overrides
 Source6:        macros.glib2
 # zsh completion from https://github.com/jmatsuzawa/zsh-comp-gsettings
 Source8:        gsettings.zsh
+# Use tmpfiles to create mimeapps.list files under /var to support transactional updates
+Source9:        glib2.tmpfiles
+Source10:       template-mimeapps.list
+
 Source98:       glib2-rpmlintrc
 Source99:       baselibs.conf
 Source200:      files.glib2
@@ -415,15 +419,14 @@ sed -i "s/1.32.1/1.32/" docs/reference/meson.build
   install -D -m0644 glib2.sh %{buildroot}%{_sysconfdir}/profile.d/zzz-glib2.sh
   install -D -m0644 glib2.csh %{buildroot}%{_sysconfdir}/profile.d/zzz-glib2.csh
   install -D -m0644 gnome_defaults.conf %{buildroot}%{_sysconfdir}/gnome_defaults.conf
-  # default apps magic
-  mkdir -p %{buildroot}%{_localstatedir}/cache/gio-2.0 %{buildroot}%{_datadir}/applications
-  >> %{buildroot}%{_localstatedir}/cache/gio-2.0/gnome-mimeapps.list
-  >> %{buildroot}%{_localstatedir}/cache/gio-2.0/xfce-mimeapps.list
-  >> %{buildroot}%{_localstatedir}/cache/gio-2.0/lxde-mimeapps.list
-  >> %{buildroot}%{_localstatedir}/cache/gio-2.0/pantheon-mimeapps.list
-  >> %{buildroot}%{_localstatedir}/cache/gio-2.0/budgie-mimeapps.list
-  >> %{buildroot}%{_localstatedir}/cache/gio-2.0/mate-mimeapps.list
-  ln -s %{_localstatedir}/cache/gio-2.0/gnome-mimeapps.list %{buildroot}%{_datadir}/applications/gnome-mimeapps.list
+  mkdir -p %{buildroot}%{_localstatedir}/cache/gio-2.0
+  mkdir -p %{buildroot}%{_datadir}/applications
+  touch %{buildroot}%{_localstatedir}/cache/gio-2.0/gnome-mimeapps.list
+  ln -s ../../../%{_localstatedir}/cache/gio-2.0/gnome-mimeapps.list %{buildroot}%{_datadir}/applications/gnome-mimeapps.list
+
+  mkdir -p %{buildroot}%{_datadir}/glib-2.0
+  install -D -m0644 %{SOURCE10} %{buildroot}%{_datadir}/glib-2.0/
+
   # gio-querymodules magic
 
   %if "%{_lib}" == "lib64"
@@ -441,6 +444,10 @@ sed -i "s/1.32.1/1.32/" docs/reference/meson.build
   # Install zsh completion for gsettings
   mkdir -p  %{buildroot}%{_datadir}/zsh/site-functions/
   cp -T %{SOURCE8} %{buildroot}%{_datadir}/zsh/site-functions/_gsettings
+
+  mkdir -p %{buildroot}%{_tmpfilesdir}
+  install -m 644 %{SOURCE9} %{buildroot}%{_tmpfilesdir}/glib-2.0.conf
+
   # drop some circular symlink from the local tests. The test does this intentional
   # but we don't want this in our package
   rm -rf %{buildroot}%{_libexecdir}/installed-tests/glib/localtime/
@@ -464,13 +471,7 @@ sed -i "s/1.32.1/1.32/" docs/reference/meson.build
 
 %post -n %{libgio}
 %{ldconfig}
-for ENV in gnome xfce lxde pantheon mate
-do mimeapps="%{_localstatedir}/cache/gio-2.0/$ENV-mimeapps.list" &&
-	2>/dev/null <"${mimeapps}" || cat >"${mimeapps}" <<EOF
-# Dummy file. Install desktop-file-utils to get better defaults.
-[Default Applications]
-EOF
-done
+%tmpfiles_create %{_tmpfilesdir}/glib-2.0.conf
 
 %postun -n %{libgio} -p %{ldconfig}
 

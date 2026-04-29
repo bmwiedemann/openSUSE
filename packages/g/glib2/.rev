@@ -2507,4 +2507,19 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     <comment>Push GNOME 50</comment>
     <requestid>1345414</requestid>
   </revision>
+  <revision rev="305" vrev="2">
+    <srcmd5>1a2b55dd79f8516daeaaace108fa5c8f</srcmd5>
+    <version>2.88.0</version>
+    <time>1777483073</time>
+    <user>dimstar_suse</user>
+    <comment>- Install the /usr/share/applications/gnome-mimeapps.list symlink
+  from the package instead of creating it from systemd-tmpfiles
+  since /usr is mounted read-only in immutble systems. This forces
+  to also install an empty file as the symlink target.
+
+- Use systemd-tmpfiles to create the default mimeapps lists instead
+  of writing to /var in %post to fix immutable systems
+  (jsc#PED-14839)</comment>
+    <requestid>1349842</requestid>
+  </revision>
 </revisionlist>

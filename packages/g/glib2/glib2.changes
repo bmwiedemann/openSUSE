@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 24 04:38:25 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Install the /usr/share/applications/gnome-mimeapps.list symlink
+  from the package instead of creating it from systemd-tmpfiles
+  since /usr is mounted read-only in immutble systems. This forces
+  to also install an empty file as the symlink target.
+
+-------------------------------------------------------------------
+Mon Apr  6 17:24:37 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use systemd-tmpfiles to create the default mimeapps lists instead
+  of writing to /var in %post to fix immutable systems
+  (jsc#PED-14839)
+
+-------------------------------------------------------------------
 Mon Mar 23 08:33:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
