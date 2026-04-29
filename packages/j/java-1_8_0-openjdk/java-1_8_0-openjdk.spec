@@ -16,9 +16,11 @@
 #
 
 
+# ugly hack to prevent spec-cleaner from changing make -> make_build
+%global make make
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.38.0
+%global icedtea_version 3.39.0
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -31,8 +33,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       482
-%global buildver        08
+%global updatever       492
+%global buildver        09
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -162,7 +164,7 @@ Name:           java-1_8_0-openjdk
 Version:        %{javaver}.%{updatever}
 Release:        0
 Summary:        OpenJDK 8 Runtime Environment
-License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
+License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND LicenseRef-SUSE-Public-Domain AND W3C
 Group:          Development/Languages/Java
 URL:            https://openjdk.java.net/
 Source0:        https://icedtea.classpath.org/download/source/icedtea-%{icedtea_version}.tar.xz
@@ -180,8 +182,6 @@ Patch2:         1015432.patch
 Patch3:         java-atk-wrapper-security.patch
 # Fix use of unintialized memory in adlc parser
 Patch12:        adlc-parser.patch
-# Fix different integer/pointer type mismatches that are fatal with gcc14
-Patch13:        fix-build-with-gcc14.patch
 # Avoid triggering inactivity timeout while generating javadoc in zero VM
 Patch14:        zero-javadoc-verbose.patch
 # Fix detection of jobserver support
@@ -421,7 +421,7 @@ this package unless you really need to.
 
 # Setup nss.fips.cfg
 sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE17} > nss.fips.cfg
-sed -i -e "s:@NSS_SECMOD@:sql\:/etc/pki/nssdb:g" nss.fips.cfg
+sed -i -e "s:@NSS_SECMOD@:sql\:%{_sysconfdir}/pki/nssdb:g" nss.fips.cfg
 
 %build
 %define _lto_cflags %{nil}
@@ -514,13 +514,12 @@ sh autogen.sh
 %endif
         --with-openjdk-src-zip=%{SOURCE1}
 
-make patch %{?_smp_mflags}
+%make patch %{?_smp_mflags}
 
 patch -p0 -i %{PATCH1}
 patch -p0 -i %{PATCH2}
 patch -p0 -i %{PATCH3}
 patch -p0 -i %{PATCH12}
-patch -p0 -i %{PATCH13}
 
 %if %{with zero}
 patch -p0 -i %{PATCH14}
@@ -550,7 +549,7 @@ patch -p0 -i %{PATCH5001}
  bash ./autogen.sh
 )
 
-make %{?_smp_mflags}
+%make %{?_smp_mflags}
 
 export JAVA_HOME=$(pwd)/%{buildoutputdir}images/j2sdk-image
 

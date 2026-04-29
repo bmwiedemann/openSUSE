@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Wed Apr 29 08:11:05 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u492 (icedtea 3.39.0)
+  * CVEs
+    + CVE-2026-22007, (bsc#1262490)
+    + CVE-2026-22013, (bsc#1262494)
+    + CVE-2026-22016, (bsc#1262495)
+    + CVE-2026-22018, (bsc#1262496)
+    + CVE-2026-22021, (bsc#1262497)
+    + CVE-2026-23865, (bsc#1259118)
+    + CVE-2026-34268, (bsc#1262500)
+  * Import of OpenJDK 8 u492 build 09
+    + JDK-8056039: Hotspot does not compile with clang 3.4 on Linux
+    + JDK-8074840: Resolve disabled warnings for libjli and
+      libjli_static
+    + JDK-8132786: java/security/cert/CertPathValidator/OCSP/
+      /AIACheck.java fails intermittently
+    + JDK-8153147: Mark java/net/BindException/Test.java as
+      intermittently failing
+    + JDK-8157758: JDK9 does not compile on Linux with GCC 6.1
+      because left-shifting a negative number has undefined behavior
+    + JDK-8170464: Remove shell script from
+      compiler/c2/cr7005594/Test7005594.java
+    + JDK-8174734: Safepoint sync time did not increase
+    + JDK-8186149: quarantine gc/survivorAlignment/
+      /TestPromotionFromSurvivorToTenuredAfterMinorGC.java
+    + JDK-8220658: Improve the readability of container information
+      in the error log
+    + JDK-8223145: Replace wildcard address with loopback or local
+      host in tests - part 1
+    + JDK-8225487: giflib legal file is missing attribution for
+      openbsd-reallocarray.c.
+    + JDK-8237834: com/sun/jndi/ldap/LdapDnsProviderTest.java
+      failing with LDAP response read timeout
+    + JDK-8251189: com/sun/jndi/ldap/LdapDnsProviderTest.java
+      failed due to timeout
+    + JDK-8264524: jdk/internal/platform/docker/
+      /TestDockerMemoryMetrics.java fails due to swapping not
+      working
+    + JDK-8274893: Update java.desktop classes to use
+      try-with-resources
+    + JDK-8277159: Fix java/nio/file/FileStore/Basic.java test by
+      ignoring /run/user/* mount points
+    + JDK-8284758: [linux] improve print_container_info
+    + JDK-8285836: sun/net/www/http/KeepAliveCache/
+      /KeepAliveProperty.java failed with "RuntimeException: Failed
+      in server"
+    + JDK-8287011: Improve container information
+    + JDK-8303482: Update LCMS to 2.15
+    + JDK-8312518: [macos13] setFullScreenWindow() shows black
+      screen on macOS 13 & above
+    + JDK-8313770: jdk/internal/platform/docker/
+      /TestSystemMetrics.java fails on Ubuntu
+    + JDK-8328999: Update GIFlib to 5.2.2
+    + JDK-8339271: giflib attribution correction
+    + JDK-8343622: AesDkCrypto.stringToKey should not return null
+    + JDK-8345578: New test in JDK-8343622 fails with a promoted
+      build
+    + JDK-8347911: Limit the length of inflated text chunks
+    + JDK-8348014: Enhance certificate processing
+    + JDK-8350813: Rendering of bulky sound bank from MIDI sequence
+      can cause OutOfMemoryError
+    + JDK-8353657: [8u] Test tools/launcher/VersionCheck.java fails
+      with debug build
+    + JDK-8360869: jcstress is able to crash jdk8 on aarch64 with
+      jfr on
+    + JDK-8361748: Enforce limits on the size of an XBM image
+    + JDK-8364373: Transform Affine transformations
+    + JDK-8364465: Enhance behavior of some intrinsics
+    + JDK-8364660: ClassVerifier::ends_in_athrow() should be removed
+    + JDK-8369226: GHA: Switch to MacOS 15
+    + JDK-8369282: Distrust TLS server certificates anchored by
+      Chunghwa ePKI Root CA
+    + JDK-8369575: Enhance crypto algorithm support
+    + JDK-8370529: Enhance Path Factories Redux
+    + JDK-8370615: Improve Kerberos credentialing
+    + JDK-8370986: Enhance Zip file reading
+    + JDK-8370995: Enhance ZipFile usage
+    + JDK-8371830: Enhance certificate chain validation
+    + JDK-8371935: Enhance key generation
+    + JDK-8372660: [8u] ProblemList TestCPUAwareness until 8370492
+      is addressed
+    + JDK-8373250: Bump update version of OpenJDK: 8u492
+    + JDK-8373290: Update FreeType to 2.14.1
+    + JDK-8373476: (tz) Update Timezone Data to 2025c
+    + JDK-8373727: New XBM images parser regression: only the first
+      line of the bitmap array is parsed
+    + JDK-8374899: [8u] Fully handle clang as the toolchain in
+      flags.m4
+    + JDK-8374917: [8u] C++ flags get passed to C compiles in the
+      HotSpot build
+    + JDK-8374948: [8u] saproc & jsig builds add duplicate linker
+      flags on Darwin/MacOS
+    + JDK-8375063: Update Libpng to 1.6.54
+    + JDK-8375189: [8u] Problem list CAInterop.java#microsoftrsa2017
+    + JDK-8376225: [8u] GHA: Apply work-around for missing JNF for
+      MacOSX builds
+    + JDK-8376272: [8u] Windows x86-32 fails to build after
+      JDK-8359501
+    + JDK-8376338: Test7005594.sh fails when given a memory value
+      with decimals
+    + JDK-8376352: [8u] Build failure on Windows 32-bit after
+      JDK-8362308
+    + JDK-8377344: [8u] Compilation failure on Windows for
+      Linux-specific platform metric tests
+    + JDK-8377526: Update Libpng to 1.6.55
+    + JDK-8379035: (tz) Update Timezone Data to 2026a
+    + JDK-8379158: Update FreeType to 2.14.2
+    + JDK-8379256: Update GIFlib to 6.1.1
+    + JDK-8380078: Update GIFlib to 6.1.2
+    + JDK-8380959: Update Libpng to 1.6.56
+    + JDK-8382047: Update Libpng to 1.6.57
+  * Bug fixes
+    + JDK-8162545, GH37: Mac build failure
+- Removed patch:
+  * fix-build-with-gcc14.patch
+    + fixed upstream
+
+-------------------------------------------------------------------
 Mon Feb  2 10:47:58 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u482 (icedtea-3.38.0)
