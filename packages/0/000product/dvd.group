@@ -66,10 +66,6 @@
     <package name="acpica" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="adaptec-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="adobe-sourcecodepro-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="adobe-sourcehansans-cn-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="adobe-sourcehansans-tw-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="adobe-sourcehanserif-cn-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="adobe-sourcehanserif-tw-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="adobe-sourcesans3-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="adobe-sourcesanspro-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="adobe-sourceserifpro-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
