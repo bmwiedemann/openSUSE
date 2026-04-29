@@ -103,7 +103,7 @@ Name:           blender-4.5
 Version:        4.5.9
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
-License:        GPL-2.0-or-later
+License:        GPL-2.0-or-later AND CC-BY-4.0
 Group:          Productivity/Graphics/3D Editors
 URL:            https://www.blender.org/
 # Please leave the source url intact
