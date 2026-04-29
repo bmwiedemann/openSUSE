@@ -1,0 +1,4 @@
+<services>
+  <!-- downloads glfw and waywall (using Version) -->
+  <service name="download_files" mode="manual" />
+</services>

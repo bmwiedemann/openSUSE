@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0b46298b920b1246a0f29560d42a03bc</srcmd5>
+    <version>0.2026.02.06</version>
+    <time>1777483083</time>
+    <user>dimstar_suse</user>
+    <comment>`waywall` is a Wayland compositor tailored for Minecraft speedrunning. It provides essential features like key rebinding and bot support, for modern Wayland. 
+Actively maintained (https://github.com/tesselslate/waywall) and uses a standard Meson build.</comment>
+    <requestid>1347157</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,3 @@
+Important Warning Regarding GLFW Path:
+-----------------------------------
+Please use this path in Prism/MultiMC "GLFW library path" settings: `/usr/lib64/waywall-glfw/libglfw.so.3`, do not use path from offical waywall documentation.

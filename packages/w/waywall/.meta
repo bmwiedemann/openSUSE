@@ -1,0 +1,4 @@
+<package name="waywall" project="openSUSE:Factory">
+  <title></title>
+  <description>waywall is a Wayland compositor that provides various convenient features (key rebinding, Ninjabrain Bot support, etc) for Minecraft speedrunning. It is designed to be nested within an existing Wayland session and is intended as a successor to resetti.</description>
+</package>
