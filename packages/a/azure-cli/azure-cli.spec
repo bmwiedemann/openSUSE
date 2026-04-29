@@ -303,8 +303,6 @@ install -DTm644 %{buildroot}%{_bindir}/az.completion.sh %{buildroot}%{_datadir}/
 set +x
 failed=0
 for i in $(az | sed -n 's/\s*\([A-Z,a-z,-]*\)\[*[A-Z,a-z]*\]*\s\+\:.*/\1/p') ; do
-    # skip testing failing mariadb command for now
-    [ "$i" == "mariadb" ] && continue
     echo -n "Testing $i command .. "
     if az $i --help > /dev/null 2>&1 ; then
 	echo "OK"
