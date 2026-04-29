@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr 29 13:10:39 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.1.0:
+  * otpauth:// URI parser and builder — full round-trip support
+    for the de-facto Google Authenticator URI format used by most
+    TOTP/HOTP apps and QR provisioning flows.
+  * Context API — bundle digits, period, and algo once with
+    cotp_ctx_create, then call cotp_ctx_totp / _hotp / _steam_totp
+    etc. without repeating the parameters. Contexts are immutable
+    and safe to share across threads.
+  * cotp_strerror — static, never-NULL human-readable description
+    for any cotp_error_t value.
+  * Public secure utilities — cotp_secure_memzero
+    (compiler-elision-proof zeroing) and cotp_timing_safe_memcmp
+    (constant-time compare) are now part of the public API,
+    so callers can scrub their own secret buffers and compare
+    secret-derived tokens with the same primitives the library
+    uses internally.
+  * HMAC errors are now propagated across all three backends
+    (gcrypt, OpenSSL, MbedTLS). Previously some backend failure
+    paths could silently produce invalid output.
+  * Base32 decoder rejects malformed padding counts (2, 5, 7,
+    >6) and data characters following padding, per RFC 4648.
+  * validate_totp_in_window is overflow-safe: window is clamped
+    to ±1024 periods, time arithmetic uses __builtin_*_overflow,
+    INT_MIN is handled, and the comparison is constant-time.
+  * otpauth:// URI parser rejects %00 payloads (which previously
+    caused silent NUL truncation of secrets).
+  * COTP_WUR (warn-unused-result) annotation applied to every
+    return-value-bearing public function.
+
+-------------------------------------------------------------------
 Thu Apr 16 13:58:55 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.0.1:
