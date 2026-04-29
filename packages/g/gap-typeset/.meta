@@ -1,4 +1,5 @@
 <package name="gap-typeset" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="science" package="gap-typeset"/>
 </package>
