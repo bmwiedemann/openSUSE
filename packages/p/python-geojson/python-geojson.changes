@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Apr 26 09:27:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Add support for Python 3.13
+  * Code modernization
+  * RtD bugfix https://github.com/jazzband/geojson/pull/227
+  * Add support for Python 3.12
+  * CI improvements https://github.com/jazzband/geojson/pull/217
+  * Unit test improvements
+  * Add Support for Python 3.11.x minor revisions
+  * Support for Python versions 3.7-3.11 (Python 2 no longer
+    supported)
+  * Primary development branch renamed from master to main
+  * Default precision improvements
+  * utf-8 support added to geojson.dumps()
+  * Polygons now constrained to bounding box
+  * Better GeometryCollection handling in util.coords()
+  * Improved point validation
+- drop geojson-py39-jsonload.patch (obsolete)
+
+-------------------------------------------------------------------
 Tue Jun 17 04:35:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.

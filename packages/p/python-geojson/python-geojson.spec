@@ -17,15 +17,13 @@
 
 
 Name:           python-geojson
-Version:        2.5.0
+Version:        3.2.0
 Release:        0
 Summary:        Python bindings and utilities for GeoJSON
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/python-geojson
 Source:         https://files.pythonhosted.org/packages/source/g/geojson/geojson-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM geojson-py39-jsonload.patch -- gh#jazzband/python-geojson#151
-Patch0:         https://github.com/jazzband/geojson/pull/151.patch#/geojson-py39-jsonload.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
