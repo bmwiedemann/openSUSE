@@ -1,7 +1,6 @@
 #
 # spec file for package google-guest-agent
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,6 +34,8 @@ Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
 Patch0:         disable_google_dhclient_script.patch
+# PATCH-FIX-UPSTREAM - Fix crafted JWE input with a missing encrypted key can lead to a denial of service
+Patch1:         CVE-2026-34986.patch
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.25
 Requires:       google-guest-configs
@@ -52,6 +53,9 @@ Google Cloud Guest Agent
 %prep
 %setup -n %{repo}-%{version} -a1
 %patch -P 0 -p1
+pushd vendor/github.com/go-jose/go-jose/v4
+%patch -P 1 -p1
+popd
 
 %build
 %goprep %{import_path}

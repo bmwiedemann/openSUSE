@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 27 12:28:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add CVE-2026-34986.patch to fix crafted JWE input with a missing encrypted
+  key can lead to a denial of service (bsc#1262926, CVE-2026-34986)
+
+-------------------------------------------------------------------
 Tue Apr 07 19:42:40 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 20260402.00: (bsc#1257010)
