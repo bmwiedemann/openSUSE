@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 27 11:42:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.18.1
+  * This is a security release, fixing a potential command
+    injection vulnerability.
+
+-------------------------------------------------------------------
 Tue Apr 21 12:17:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.18.0
