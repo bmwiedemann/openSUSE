@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 29 04:17:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch avoid-nesting-error.patch:
+  * Avoid error with the nesting function.
+
+-------------------------------------------------------------------
 Tue Jan 30 01:02:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip two broken tests with Python 3.12. 

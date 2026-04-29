@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydocstyle
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 URL:            https://github.com/PyCQA/pydocstyle/
 # Only the Repository Archive has the tests
 Source:         https://github.com/PyCQA/pydocstyle/archive/%{version}.tar.gz#/pydocstyle-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Avoid nesting error
+Patch0:         avoid-nesting-error.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module importlib-metadata >= 2 if %python-base < 3.8}
 BuildRequires:  %{python_module pip}
@@ -57,7 +59,7 @@ checks can be easily added, for example to cover NumPy docstring
 conventions.
 
 %prep
-%setup -q -n pydocstyle-%{version}
+%autosetup -p1 -n pydocstyle-%{version}
 # Stupid poetry!
 sed -i '/version/ s/0.0.0-dev/%{version}/' pyproject.toml
 # remove shebang

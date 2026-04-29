@@ -175,4 +175,13 @@
     <comment>- Skip two broken tests with Python 3.12.</comment>
     <requestid>1142695</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>98976b8f60320f573dfad18922a8509b</srcmd5>
+    <version>6.3.0</version>
+    <time>1777483173</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch avoid-nesting-error.patch:
+  * Avoid error with the nesting function.</comment>
+    <requestid>1349916</requestid>
+  </revision>
 </revisionlist>
