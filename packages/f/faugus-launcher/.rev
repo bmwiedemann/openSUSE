@@ -410,4 +410,16 @@
   * Now the power menu is opened by pressing ESC</comment>
     <requestid>1349310</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>18728e5ff0c449694a778bb331c004df</srcmd5>
+    <version>1.18.8</version>
+    <time>1777483169</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 1.18.8
+- Upstream changes:
+  * Fixed splash window would not close when upgrading dlss or fsr
+  * Updated German translation
+  * Fixed gamepad interacting with the app while a game is running</comment>
+    <requestid>1349908</requestid>
+  </revision>
 </revisionlist>

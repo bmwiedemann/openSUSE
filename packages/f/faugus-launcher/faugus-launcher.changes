@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 29 01:41:23 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.18.8
+- Upstream changes:
+  * Fixed splash window would not close when upgrading dlss or fsr
+  * Updated German translation
+  * Fixed gamepad interacting with the app while a game is running
+
+-------------------------------------------------------------------
 Sat Apr 25 22:09:01 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.18.7
