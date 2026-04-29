@@ -1,7 +1,7 @@
 #
 # spec file for package FlightGear
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %define main_version 2024.1
 Name:           FlightGear
-Version:        %{main_version}.1
+Version:        %{main_version}.5
 Release:        0
 Summary:        Flight Simulator
 License:        GPL-2.0-only
 Group:          Amusements/Games/3D/Simulation
 URL:            https://www.flightgear.org/
-Source0:        https://gitlab.com/flightgear/fgmeta/-/jobs/9343758788/artifacts/raw/fgbuild/flightgear-%{version}.tar.bz2
+Source0:        https://gitlab.com/flightgear/flightgear/-/archive/%{version}/flightgear-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM flightgear-fix-control-reaches-end-of-non-void-function.patch - fixes control reaches end of non-void function [-Werror=return-type]
+Patch0:         flightgear-fix-control-reaches-end-of-non-void-function.patch
 
 BuildRequires:  SimGear-devel = %{version}
 BuildRequires:  cmake >= 3.10
@@ -40,6 +42,7 @@ BuildRequires:  update-desktop-files
 # Required for screensaver inhibition
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libudev)
@@ -65,6 +68,7 @@ expanded and improved upon by anyone interested in contributing
 
 %prep
 %setup -q -n flightgear-%{version}
+%patch -P 0 -p1
 
 # remove some unneeded doc files
 for ext in Cygwin IRIX Joystick Linux MSVC MSVC8 MacOS SimGear Unix Win32-X autoconf mingw plib src xmlsyntax; do
@@ -97,6 +101,8 @@ popd
 %suse_update_desktop_file org.flightgear.FlightGear
 # remove obsolete utilities
 cd %{buildroot}%{_bindir} && rm -f GPSsmooth MIDGsmooth UGsmooth metar yasim yasim-proptest
+# remove unneeded AppImage stuff
+rm -r %{buildroot}%{_prefix}/appdir
 
 %files
 %doc AUTHORS ChangeLog NEWS README Thanks docs-mini/*

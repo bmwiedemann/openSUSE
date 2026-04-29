@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 29 11:33:37 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- use proper release file link
+
+-------------------------------------------------------------------
+Thu Apr 16 16:53:53 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 2024.1.5
+  * https://www.flightgear.org/download/releases/2024-1-5/
+- Add flightgear-fix-control-reaches-end-of-non-void-function.patch
+- Add BuildRequires pkgconfig(libavcodec)
+
+-------------------------------------------------------------------
 Sat Jul 19 11:51:51 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Add Qt Linguist tools to build requirements.

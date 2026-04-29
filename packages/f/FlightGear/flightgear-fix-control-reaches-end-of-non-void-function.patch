@@ -1,0 +1,11 @@
+diff -Nur flightgear-2024.1.5-orig/src/Scripting/NasalSGPath.cxx flightgear-2024.1.5/src/Scripting/NasalSGPath.cxx
+--- flightgear-2024.1.5-orig/src/Scripting/NasalSGPath.cxx	2026-03-22 22:46:13.000000000 +0100
++++ flightgear-2024.1.5/src/Scripting/NasalSGPath.cxx	2026-04-16 20:53:09.187580106 +0200
+@@ -75,6 +75,7 @@
+     } catch (sg_exception&) {
+         ctx.runtimeError(
+             "os.path.standardLocation: unknown type %s", type_str.c_str());
++            return naNil();
+     }
+ }
+ 

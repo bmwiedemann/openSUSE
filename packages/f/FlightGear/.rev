@@ -230,4 +230,17 @@ Already in r68/SR 554619:
     <comment></comment>
     <requestid>1294924</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b6484cec76c2890cff3e34d0d47b9179</srcmd5>
+    <version>2024.1.5</version>
+    <time>1777483158</time>
+    <user>dimstar_suse</user>
+    <comment>- use proper release file link
+- Update to 2024.1.5
+  * https://www.flightgear.org/download/releases/2024-1-5/
+- Add flightgear-fix-control-reaches-end-of-non-void-function.patch
+- Add BuildRequires pkgconfig(libavcodec)
+</comment>
+    <requestid>1349978</requestid>
+  </revision>
 </revisionlist>
