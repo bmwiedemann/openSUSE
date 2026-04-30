@@ -96,4 +96,18 @@ Add conflicts to busybox-adduser</comment>
 - Use without_restart for *.socket units</comment>
     <requestid>1343150</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c6c84dbda9c6b31f18615ad0f48e5407</srcmd5>
+    <version>1.2.0+git20260430.a5f02f6</version>
+    <time>1777573913</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.0+git20260430.a5f02f6:
+  * scan-caps: don't abort on first error
+
+- Update to version 1.2.0+git20260423.0ee31ef:
+  * Release version 1.2.0
+  * chfn: document that (size_t)-1 is SIZE_MAX
+  * verify_password: fix possible NULL pointer dereference</comment>
+    <requestid>1350261</requestid>
+  </revision>
 </revisionlist>
