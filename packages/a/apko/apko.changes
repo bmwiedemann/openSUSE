@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:08:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.9:
+  * build(deps): bump chainguard.dev/sdk from 0.1.52 to 0.1.54
+    (#2199)
+  * build(deps): bump goreleaser/goreleaser-action from 7.0.0 to
+    7.1.0 (#2198)
+  * build(deps): bump github.com/invopop/jsonschema from 0.13.0 to
+    0.14.0 (#2197)
+  * apk: verify package data hash against .PKGINFO for completeness
+    (#2206)
+  * ci: bump golangci-lint to v2.11 and clear new findings (#2205)
+  * testdata: refresh apko-discover lock for rotated chainguard key
+    (#2203)
+  * chore(zizmor): trigger zizmor on updates to dependabot config
+    [PSEC-871] (#2186)
+- Update to version 1.2.8:
+  * release: fetch full history for goreleaser changelog (#2192)
+
+-------------------------------------------------------------------
 Fri Apr 24 06:06:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.7:
