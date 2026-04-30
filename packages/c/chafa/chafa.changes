@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:58:50 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.18.2:
+  * Support BigTIFF images (#328).
+  * Integer overflow and OOB write with big output size.
+  * OOB write in symbol-mode Floyd-Steinberg dithering.
+  * CLI: Incomplete sanitization of filenames printed to terminal.
+  * CLI: Integer overflow in XWD header validation.
+  * CLI: Pointer arithmetic past end of GIF file allocation.
+  * OOB reading canvas cell colors in FGBG mode.
+  * Compiler warnings from headers with C99 and -Wpedantic.
+
+-------------------------------------------------------------------
 Mon Feb  9 08:01:39 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.18.1:

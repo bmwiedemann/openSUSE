@@ -553,4 +553,20 @@
     + [unfiled] Stalling on closed output pipe on OpenBSD.</comment>
     <requestid>1331960</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>86b5cfcaaf3017aaccfb6f7e60c3d171</srcmd5>
+    <version>1.18.2</version>
+    <time>1777573724</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.18.2:
+  * Support BigTIFF images (#328).
+  * Integer overflow and OOB write with big output size.
+  * OOB write in symbol-mode Floyd-Steinberg dithering.
+  * CLI: Incomplete sanitization of filenames printed to terminal.
+  * CLI: Integer overflow in XWD header validation.
+  * CLI: Pointer arithmetic past end of GIF file allocation.
+  * OOB reading canvas cell colors in FGBG mode.
+  * Compiler warnings from headers with C99 and -Wpedantic.</comment>
+    <requestid>1350130</requestid>
+  </revision>
 </revisionlist>
