@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Apr 28 21:59:28 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.5:
+  + Connection State Accuracy: Fixed an issue where srt_connect
+    reported incorrect error codes when attempted on a socket in a
+    broken state. The function now correctly identifies these
+    sockets as closed rather than reporting connection-specific
+    failures.
+  + Listen Operation Refinement:
+    - Corrected the error code returned when calling srt_listen on
+      a closed or non-existent socket to ensure status reports
+      reflect the socket state accurately.
+    - Backlog updates: Updated the logic for srt_listen to allow
+      updates to the backlog parameter on sockets already in the
+      LISTENING state. In such cases, the function now successfully
+      updates the backlog and returns 0 (success).
+  + Fixed a bug where a blocking srt_close call could be
+    interrupted by a connection attempt.
+  + Resolved Issue #3289 regarding srt_connect in blocking mode.
+    These fixes ensure that interrupting a blocking connection loop
+    or closing the socket from another thread is correctly
+    recognized. Previously, these scenarios could cause the
+    function to incorrectly return success (0) or a misleading
+    SRT_ECONNSOCK error; it now correctly returns SRT_ESCLOSED or
+    SRT_EINVSOCK.
+  + Fixed a potential buffer overflow in handshake processing by
+    ensuring that incoming group data length does not exceed
+    internal buffer capacity.
+  + Fixed and then restored the cookie contest method from version
+    1.4.5 as a lower-risk stability measure. It also introduces a
+    mechanism to enforce specific cookie values for testing and
+    development purposes.
+  + Fixed reentrancy of srt_strerror()
+  + Fixed crash when adding a string-typed option to a group
+    configuration object
+  + Fixed incorrect number of sockets returned by srt_epoll_uwait
+  + Fixed inconsistent thread-related objects' state after fork()
+  + Fixed issues found by thread and memory sanitizers
+  + Fixed unexpected blocking behavior in sendmsg call
+  + Fixed stalled connection that should break on rogue NAK/ACK
+    reception
+  + Fixed some misleading error messages
+  + Fixed wrong 'connection lost' error when sending to group in
+    non-blocking pending state
+  + Fixed bug where tsbpd might miss m_bClosing flag set in the
+    meantime
+  + Fixed caller-accepting connection without packetfilter while
+    requested by a caller (now: late-rejection)
+
+-------------------------------------------------------------------
 Sun Mar 23 18:02:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace gcc-c++ with generic  c++_compiler BuildRequires.
