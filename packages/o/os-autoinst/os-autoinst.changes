@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 30 08:28:11 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1777537682.913fce0:
+  * fix: re-install serial marker hook after console reset
+  * fix: support pretty_serial_markers in script_output regex
+  * feat: disable storage check in CI environments
+  * fix(test): handle D-Bus AccessDenied in Open vSwitch test
+  * fix: Avoid restarting openvswitch/NM after OVS bridge setup
+  * refactor: import IO::Socket::UNIX explicitly wherever is used
+
+-------------------------------------------------------------------
 Thu Apr 23 11:31:58 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1776943886.0619ca6:
