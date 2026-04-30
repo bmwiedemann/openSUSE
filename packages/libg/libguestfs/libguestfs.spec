@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.58.1
+Version:        1.59.7
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ Source100:      mount-rootfs-and-chroot.sh
 Source101:      README
 
 # Patches
-Patch0:         001-Avoid-not-available-macro-for-OCaml-functions.patch
 Patch1:         reproducible-builds.patch
 Patch2:         drop-initviocons-from-package-list.patch
 Patch100:       use-fuse3-for-build.patch
@@ -530,35 +529,6 @@ Requires:       lua
 %description -n lua-%{name}
 lua-%{name} contains Lua bindings for %{name}.
 
-%package gobject-1_0
-Summary:        GObject bindings for %{name}
-Requires:       %{name} = %{version}-%{release}
-Obsoletes:      libguestfs0 <= 1.44.2
-
-%description gobject-1_0
-%{name}-gobject-1_0 contains GObject bindings for %{name}.
-
-To develop software against these bindings, you need to install
-%{name}-gobject-devel.
-
-%package typelib-Guestfs-1_0
-Summary:        Libguestfs GObject introspection data
-Group:          System/Libraries
-
-%description typelib-Guestfs-1_0
-This package contains the GObject introspection data.
-
-%package gobject-devel
-Summary:        GObject bindings for %{name}
-Requires:       %{name}-gobject-1_0 = %{version}-%{release}
-Requires:       glib2-devel
-
-%description gobject-devel
-%{name}-gobject contains GObject bindings for %{name}.
-
-This package is needed if you want to write software using the
-GObject bindings.  It also contains GObject Introspection information.
-
 %package rescue
 Summary:        Virt-rescue shell
 BuildRequires:  iputils
@@ -611,8 +581,6 @@ for %{name}.
 %postun -n %{name} -p /sbin/ldconfig
 %post -n libguestfs0 -p /sbin/ldconfig
 %postun -n libguestfs0 -p /sbin/ldconfig
-%post -n %{name}-gobject-1_0 -p /sbin/ldconfig
-%postun -n %{name}-gobject-1_0 -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %license README COPYING
@@ -707,21 +675,6 @@ for %{name}.
 %doc lua/examples/LICENSE
 %{_libdir}/lua
 %{_mandir}/man3/guestfs-lua.3*
-
-%files gobject-1_0
-%{_libdir}/libguestfs-gobject-1.0.so.0*
-
-%files typelib-Guestfs-1_0
-%{_libdir}/girepository-1.0/Guestfs-1.0.typelib
-
-%files gobject-devel
-%{_libdir}/libguestfs-gobject-1.0.so
-%{_includedir}/guestfs-gobject.h
-%dir %{_includedir}/guestfs-gobject
-%{_includedir}/guestfs-gobject/*.h
-%{_datadir}/gir-1.0/Guestfs-1.0.gir
-%{_libdir}/pkgconfig/libguestfs-gobject-1.0.pc
-%{_mandir}/man3/guestfs-gobject.3*
 
 %files devel
 %doc examples/*.c

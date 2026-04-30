@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Tue Apr 28 14:31:12 MDT 2026 - carnold@suse.com
+
+- Update to version 1.59.7 (jsc#PED-14625)
+  tests/luks: Test handling of a binary --key <dev>:file:<file>
+  options/keys.c: When reading key from user, prefix with "text:"
+  options/keys.c: When using --key <dev>:key:<string>, prefix with "text:"
+  options/keys.c: When reading the key from a file, encode it with base64
+  daemon: Allow base64:/text: as a prefix on Key parameters
+  daemon: Use common Utils.write_key_to_tmp_file
+  daemon/cryptsetup.ml: Reformat this code for consistency
+  daemon: Rewrite some luks_* APIs in OCaml
+  daemon: Move some deprecated functions to new Luks module
+  generator: Adjust comment for String(Key)
+  mldrivers/firmware.ml: Ignore CHS geometry error from parted
+  utils: Add read_whole_file function
+  mltools: add prefix to debug () output
+  mltools: for external commands include function name in debug() output
+  smp: respect cgroup v2 CPU limits for appliance SMP
+  m4/guestfs-bash-completion.m4: Allow control of completions installation
+  bash/*: Remove vestigial bash completions
+  daemon: Set last_errno to EINVAL for OCaml Invalid_argument exns
+  test-tool: Call guestfs_get_hv after instead of before launch
+  lib: Improve error message from get_hv
+  valgrind: Add new suppressions for bugs appearing in glibc 2.44
+  daemon/listfs.ml: Ignore CHS geometry error from parted
+  daemon/listfs.ml: Refactor is_partition_can_hold_filesystem
+  daemon/parted.ml: Add debugging when parted is called
+  daemon: xfs: Catch maxmem error and raise libguestfs error
+  daemon: xfs: Rewrite xfs_repair implementation in OCaml
+  generator/daemon.ml: Implement OInt and OInt64 for OCaml daemon functions
+  appliance: init: use `find` for fedora symlinking
+  appliance/init: Set PS4 to improve debug output
+  appliance: drop dhcpcd resolv.conf checking
+  appliance: make dhcpcd wait for IPv4 address
+  appliance: use `dhcpcd --debug`
+  ci: disable test-network.sh
+  build: default to -fPIC
+  build: prepend CFLAGS, not append
+  test-network.sh: add `-v -x` debugging
+  tests: bigdirs - convert to python
+  tests: expand-gpt - convert to python
+  common: update submodule
+  lib: detect Windows Defender antivirus in default Windows installs
+  appliance: Increase the maximum number of per-process memory maps (#332)
+  lua: Add test files to EXTRA_DIST even if --disable-lua
+  build: Remove qemu test and --with-qemu option
+  lib: Remove configure-time QEMU
+  lib: libvirt: Remove assumptions that g->hv != NULL
+  lib: direct: Remove assumptions that g->hv != NULL
+  generator: Remove test of deprecated guestfs_get_qemu
+  lib: Change guestfs_get_hv to report backend default hypervisor
+  lib: Add get_default_hv to backend operations
+  m4/guestfs-qemu.m4: Remove virtio-serial test
+  m4/guestfs-ocaml.m4: Check for caml_unix_error
+  Update common submodule
+  lib/proto.c: Avoid generating events for incorrect progress messages
+  ocaml: fix memory leak in guestfs_int_ocaml_strings_val on strdup failure (#324)
+  lib: fix drive struct leak on hotplug error in guestfs_impl_add_drive_opts (#318)
+  lib: fix realpath memory leak on error paths in set_abs_path (#317)
+  daemon/blkid.c: Fix compilation error introduced by earlier change
+  fish: fix fd leak and undefined behavior on fdopen failure in rc_listen (#320)
+  lib: fix ownership leaks in FUSE cache insert functions on malloc failure (#321)
+  daemon: fix fd leak in do_inotify_files on error paths (#319)
+  daemon: fix low severity bugs in debug, file, and blkid (#315)
+  lib: fix memory leak of query_kvm in guestfs_int_platform_has_kvm (#316)
+  daemon: fix temp file leak in do_vgmeta on error paths (#314)
+  daemon: fix memory leak in do_aug_match on realloc failure (#313)
+  po-docs: hide deprecation warnings
+  build: fix `make dist` with java disabled
+  ci: make it easier to test in forked branches
+  lib/qemu.c: Dump qemu's stderr if QMP test fails
+  ci: More fixes and tweaks
+  ci: Drop `su -c` usage
+  build: Remove Vala bindings
+  build: Remove m4/introspection.m4
+  tests: python: drop skipUnlessLibvirtHasCPointer
+  Revert "daemon: send_dirent_info: Use designated compound literal for tsk_dirent"
+  Remove deprecated GObject bindings
+  build: Add $(NULL) as a convenient list terminator
+  po: Keep LINGUAS files sorted
+  appliance: Add suggested udevadm monitor command
+  appliance/packagelist.in: Add apfs-fuse
+  tests/disks/debug-qemu.sh: Fix test for update QMP test
+  generator: Deprecate xfs_info (replaced by xfs_info2)
+  daemon: Reimplement xfs_info using xfs_info2
+  New API: xfs_info2
+  generator: Fix description of xfs_info
+  generator: Fix description of xfs_growfs
+  lib/qemu.c: Use machine type none when inspecting QMP properties
+  generator/daemon.ml: Avoid not available macro for OCaml functions
+  website/index.html.in: Fix stable/development branch links
+  lib/appliance-cpu.c: Use -cpu max for RISC-V
+  tar_in: add keepdirlink option for --keep-directory-symlink
+- Drop 001-Avoid-not-available-macro-for-OCaml-functions.patch
+
+-------------------------------------------------------------------
 Wed Jan 21 11:44:42 MST 2026 - carnold@suse.com
 
 - Update to version 1.58.1 (jsc#PED-14625)

@@ -1326,4 +1326,12 @@
     <comment>Update libguestfs to version 1.58.1</comment>
     <requestid>1328573</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>eba643782ed32ab5712470d33bf6d3ba</srcmd5>
+    <version>1.59.7</version>
+    <time>1777573663</time>
+    <user>anag_factory</user>
+    <comment>Update libguestfs to version 1.59.7</comment>
+    <requestid>1350081</requestid>
+  </revision>
 </revisionlist>
