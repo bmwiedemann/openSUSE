@@ -1,7 +1,7 @@
 #
 # spec file for package mir
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) Shawn W Dunn <sfalken@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,29 +25,32 @@
 %bcond_with run_tests
 
 # Set globals for easier future maintenance
-%global commonlibsover 11
+%global commonlibsover 12
 %global mircoresover 2
 %global mirplatformsover 34
 %global lomirisover 8
 %global miralsover 7
-%global mirserversover 66
+%global mirserversover 67
 %global mirwaylandsover 5
 %global mirserverplatformsover 23
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.25.1
+Version:        2.26.0
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 URL:            https://mir-server.io
-Source:         https://github.com/canonical/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source0:        https://github.com/canonical/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source1:        vendor.tar.zst
 # PATCH-FIX-OPENSUSE 0001-remove-use-of-env-to-call-bash.patch <sfalken@opensuse.org>
 Patch1:         0001-remove-use-of-env-to-call-bash.patch
 # PATCH-FIX-UPSTREAM 0002-correct-include-paths-pkgconfig.patch <sfalken@opensuse.org> (gh#canonical/mir#4573)
 Patch2:         0002-correct-include-paths-pkgconfig.patch
 
 BuildRequires:  boost-devel
+BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  doxygen
@@ -194,6 +197,7 @@ evdev support library for the Mir server platform
 %package test-tools
 Summary:        Testing tools for Mir
 License:        GPL-2.0-only OR GPL-3.0-only
+Conflicts:      libmircommon11
 Requires:       libmirserver%{mirserversover} = %{version}
 Requires:       wlcs
 Recommends:     %{name}-demos
@@ -228,7 +232,7 @@ This package provides the static library for building Mir unit and integration
 tests
 
 %prep
-%autosetup -S git_am
+%autosetup -S git_am -a1
 
 # Drop -Werror
 sed -e "s/-Werror//g" -i CMakeLists.txt
@@ -260,6 +264,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %ldconfig_scriptlets -n libmirserverplatform%{mirserverplatformsover}
 %ldconfig_scriptlets -n libmirevdev%{mirevdevsover}
 
+
 %files devel
 %license COPYING.*
 %{_bindir}/mir_wayland_generator
@@ -279,7 +284,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %doc README.md
 %dir %{_libdir}/mir
 %{_libdir}/libmircommon.so.%{commonlibsover}
-%{_libdir}/mir/miral*.so
 
 %files -n libmircore%{mircoresover}
 %{_libdir}/libmircore.so.%{mircoresover}
@@ -316,6 +320,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %license COPYING.GPL*
 %doc README.md
 %{_libdir}/mir/server-platform/input-evdev.so.%{mirevdevsover}
+%{_libdir}/mir/server-platform/input-evdev-rs.so.%{mirevdevsover}
 
 %files test-tools
 %license COPYING.GPL*
@@ -327,6 +332,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %{_libdir}/mir/tools/libmirserverlttng.so
 %{_libdir}/mir/server-platform/graphics-dummy.so.%{mirserverplatformsover}
 %{_libdir}/mir/server-platform/input-stub.so.%{mirevdevsover}
+%{_libdir}/mir/miral*.so
+%{_datadir}/%{name}/expected_wlcs_failures.list
+
 
 %files test-libs-static
 %license COPYING.GPL*
@@ -342,6 +350,5 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %{_bindir}/miral-*
 %{_datadir}/applications/miral-shell.desktop
 %{_datadir}/icons/hicolor/scalable/apps/spiral-logo.svg
-%{_datadir}/%{name}/expected_wlcs_failures.list
 
 %changelog

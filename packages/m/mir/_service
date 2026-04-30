@@ -1,0 +1,5 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+	<param name="src">mir-*.tar.xz</param>
+  </service>
+</services>

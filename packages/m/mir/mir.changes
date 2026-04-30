@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Apr 29 14:43:38 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Add Conflicts: libmircommon11 to test-tools subpackage
+
+-------------------------------------------------------------------
+Tue Apr 28 15:10:36 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Moved %{_libdir}/mir/mir/miral*.so from libmircommon to
+  test-tools for SLPP compliance
+
+-------------------------------------------------------------------
+Sun Apr 26 20:32:00 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 2.26.0
+  * Rebase patches for new version
+  * ABI Changes:
+    - mircommon ABI bumped to 12
+    - mirserver ABI bumped to 67
+  * Enhancements:
+    - evdev-rs:
+      * Implementing touch events in the evdev-rs platform
+        (gh#canonical/mir#4671)
+      * Fix missing initial events in evdev-rs (gh#canonical/mir#4780)
+      * Add input event reporting to the evdev-rs input platform
+        (gh#canonical/mir#4769)
+      * Cleanup of the device module in evdev-rs (gh#canonical/mir#4722)
+      * Fix evdev-rs pointer events by moving button state to per-device
+        storage (gh#canonical/mir#4680)
+      * Refactor the event processing logic in evdev-rs to increase
+        clarity (gh#canonical/mir#4740)
+    - wayland-rs:
+      * Started implementing Wayland frontend in Rust
+    - Allow CursorObservers to monitor when the cursor image changes
+      (gh#canonical/mir#4579)
+    - Add requires clauses to libmiral templates (gh#canonical/mir#4764)
+    - Wayland:
+      * ext-input-triggers - MVP (V1) (gh#canonical/mir#4328)
+      * Implement ext-input-triggers (gh#canonical/mir#4410)
+      * Update ext-input-trigger-action-v1.xml to add more details about
+        token validity and availability (gh#canonical/mir#4770)
+      * Partial implementation of ext_image_copy_capture_v1 cursor sessions
+        (gh#canonical/mir#4632)
+      * Send the cursor image via ext_image_copy_capture_v1
+        (gh#canonical/mir#4685)
+    - X11:
+      * Set _NET_CLIENT_LIST_STACKING (gh#canonical/mir#2023)
+    - Feature:
+      * replace strerror() with thread safe version(strerror_r())
+        (gh#canonical/mir#4590)
+      * Move logging APIs (and defaults) to mircore (gh#canonical/mir#4644)
+    - CursorObserverMultiplexer sends the initial state to newly registered
+      CursorObservers (gh#canonical/mir#4662)
+    - Refactor MinimalWindowManager for better specialization
+      (gh#canonical/mir#4666)
+    - Add the ability to set the alpha of a Window and retrieve it via
+      WindowInfo (gh#canonical/mir#4704)
+    - Bugs fixed:
+      * BasicXCBConnection::destroy_window calls xcb_map_window instead of
+        xcb_destroy_window (gh#canonical/mir#4560)
+      * XCB replies not always freed (gh#canonical/mir#4559)
+      * Making videos fullscreen in Google Chrome fails if the window isn't
+        already fullscreen (gh#canonical/mir#4688)
+      * Fatal signal handling is wildly unsafe (gh#canonical/mir#2658)
+      * DRM_CLIENT_CAP_ATOMIC check is performed with wrong ioctl call
+        (gh#canonical/mir#4774)
+      * Clean up and improve mgk::find_crtc_with_primary_plane
+        (gh#canonical/mir#3972)
+      * If a surface has an opaque region BUT the alpha is not 1.0, then we
+        shouldn't use it as an occlusion (gh#canonical/mir#4696)
+
+-------------------------------------------------------------------
+Sat Apr 25 13:50:54 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Add vendor.tar.zst for Rust sources
+- Add _service for obs-service-cargo
+- Update specfile
+
+-------------------------------------------------------------------
 Wed Dec 17 15:36:24 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.25.1:

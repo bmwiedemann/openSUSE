@@ -245,4 +245,41 @@ Will be a requirement for forthcoming miriway submission</comment>
     - Rework wayland extension management so that connections</comment>
     <requestid>1323421</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>59ba8eb56d551761593f75be956e5817</srcmd5>
+    <version>2.26.0</version>
+    <time>1777573581</time>
+    <user>anag_factory</user>
+    <comment>- Add Conflicts: libmircommon11 to test-tools subpackage
+
+- Moved %{_libdir}/mir/mir/miral*.so from libmircommon to
+  test-tools for SLPP compliance
+
+- Update to 2.26.0
+  * Rebase patches for new version
+  * ABI Changes:
+    - mircommon ABI bumped to 12
+    - mirserver ABI bumped to 67
+  * Enhancements:
+    - evdev-rs:
+      * Implementing touch events in the evdev-rs platform
+        (gh#canonical/mir#4671)
+      * Fix missing initial events in evdev-rs (gh#canonical/mir#4780)
+      * Add input event reporting to the evdev-rs input platform
+        (gh#canonical/mir#4769)
+      * Cleanup of the device module in evdev-rs (gh#canonical/mir#4722)
+      * Fix evdev-rs pointer events by moving button state to per-device
+        storage (gh#canonical/mir#4680)
+      * Refactor the event processing logic in evdev-rs to increase
+        clarity (gh#canonical/mir#4740)
+    - wayland-rs:
+      * Started implementing Wayland frontend in Rust
+    - Allow CursorObservers to monitor when the cursor image changes
+      (gh#canonical/mir#4579)
+    - Add requires clauses to libmiral templates (gh#canonical/mir#4764)
+    - Wayland:
+      * ext-input-triggers - MVP (V1) (gh#canonical/mir#4328)
+      * Implement ext-input-triggers (gh#canonical/mir#4410)</comment>
+    <requestid>1350031</requestid>
+  </revision>
 </revisionlist>
