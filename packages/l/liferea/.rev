@@ -193,4 +193,40 @@
     <comment>Bump version (forwarded request 1309693 from iznogood)</comment>
     <requestid>1309937</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fe6ab2f0e1cb51d8f6980167986f85bb</srcmd5>
+    <version>1.16.7</version>
+    <time>1774555794</time>
+    <user>anag_factory</user>
+    <comment>Update to latest version</comment>
+    <requestid>1342740</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ecdda5a9d1c9f0c4f61bfa30d8fe0c77</srcmd5>
+    <version>1.16.8</version>
+    <time>1777573588</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.16.8:
+  + Reimplements category display, improves metadata display by
+    displaying all in a wrapped line to optimize vertical space usage
+  + Add a new user.js which is automatically installed to
+    ~/.config/liferea/user.js that provides hooks for data and
+    rendering manipulation.
+  + Add blogroll support. For feeds with &lt;source:blogroll&gt; element
+    or homepages with &lt;link rel=&quot;blogroll&quot;&gt; blogroll URLs are
+    detected and the blogroll is downloaded and shown in the feed
+    view.
+  + Change &quot;Discover Feeds&quot; to open in external browser. Due to
+    rss-finder using ESM and Webkit enforcing CORS for ESM and
+    Cloudflares corsproxy.io now not available anymore there is no
+    easy and secure way to simply embed it.
+  + Security updates for JS modules.
+  + Better contrast in light mode, a bit less in dark mode.
+  + Extraneous white space in item header
+  + Updating feeds satuarates the main look making interaction
+    difficult.
+  + Fix a memory leak when loading subscription metadata.
+  + Updated translations.</comment>
+    <requestid>1350048</requestid>
+  </revision>
 </revisionlist>

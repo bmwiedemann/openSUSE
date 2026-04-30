@@ -17,13 +17,13 @@
 
 
 Name:           liferea
-Version:        1.16.5
+Version:        1.16.8
 Release:        0
 Summary:        Linux Feed Reader
 License:        GPL-2.0-only
 Group:          Productivity/Other
 URL:            https://lzone.de/liferea/
-Source0:        https://github.com/lwindolf/liferea/releases/download/v%{version}/%{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE liferea-opensuse-feeds.patch -- Add openSUSE feeds to default feeds
 Patch0:         liferea-opensuse-feeds.patch
 
@@ -31,6 +31,7 @@ BuildRequires:  appstream-glib
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  intltool >= 0.40.0
+BuildRequires:  libtool
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.74.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
@@ -45,7 +46,6 @@ BuildRequires:  pkgconfig(libxslt) >= 1.1.19
 BuildRequires:  pkgconfig(pango) >= 1.56
 BuildRequires:  pkgconfig(sqlite3) >= 3.22
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
-BuildRequires:  pkgconfig(webkitgtk-web-process-extension-6.0)
 Requires:       dbus-1 >= 0.30
 Requires:       python3-cairo
 Requires:       python3-gobject-Gdk
@@ -66,6 +66,7 @@ news aggregator for GTK and GNOME.
 %autosetup -p1
 
 %build
+autoreconf -fiv
 %configure --disable-static
 %make_build
 
@@ -77,6 +78,7 @@ rm doc/html/Makefile*
 
 %fdupes %{buildroot}%{_prefix}
 
+%check
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 
 %files

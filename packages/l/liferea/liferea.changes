@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Apr 26 08:31:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.8:
+  + Reimplements category display, improves metadata display by
+    displaying all in a wrapped line to optimize vertical space usage
+  + Add a new user.js which is automatically installed to
+    ~/.config/liferea/user.js that provides hooks for data and
+    rendering manipulation.
+  + Add blogroll support. For feeds with <source:blogroll> element
+    or homepages with <link rel="blogroll"> blogroll URLs are
+    detected and the blogroll is downloaded and shown in the feed
+    view.
+  + Change "Discover Feeds" to open in external browser. Due to
+    rss-finder using ESM and Webkit enforcing CORS for ESM and
+    Cloudflares corsproxy.io now not available anymore there is no
+    easy and secure way to simply embed it.
+  + Security updates for JS modules.
+  + Better contrast in light mode, a bit less in dark mode.
+  + Extraneous white space in item header
+  + Updating feeds satuarates the main look making interaction
+    difficult.
+  + Fix a memory leak when loading subscription metadata.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 25 15:39:12 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.16.7:
+  + Drop Youtube video embedding due to "error 153" and the general
+    privacy implications
+  + use white on red instead of black on red for item list
+    "Important" label
+  + No favicons for several feeds
+  + bsky.app links not being used
+  + Extract item content is sometimes unexpectedly colored
+- Changes from version 1.16.6:
+  + Removes GAsyncQueue usage and uses proper GThreadPools, this
+    significantly speeds up updating and reduced GUI lag a lot
+  + Add support for subscribing to phlog gopher listings
+  + Add support for gopher:// URI schema in internal browser
+  + Readd incorrectly removed reference.css file
+  + Dark mode: dimmed images filter gets reset when hovering over
+    image
+  + Fixes link rel=alternate/self parsing
+  + Fixes frozen HTML page after launching feed:// links
+  + better requiring girepository-2.0
+  + panes too small on start
+- Convert to _service managed source
+- Add libtool BuildRequires and call autoreconf in build phase:
+  required, as we are building a git clone now.
+- Move the metainfo validation to %check section.
+
+-------------------------------------------------------------------
+Wed Mar 25 15:26:36 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(webkitgtk-web-process-extension-6.0)
+  BuildRequires: this was likely added in error, as it's a GTK4
+  based dependency, whereas all of liferea is still GTK3.
+
+-------------------------------------------------------------------
 Tue Oct  7 15:27:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.5:
