@@ -1563,4 +1563,21 @@ Add python version constraints to Requires &amp; BuildRequires</comment>
     3.10.</comment>
     <requestid>1322891</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>67b66e139d0be38d7254691f02f99f3d</srcmd5>
+    <version>9.0.3</version>
+    <time>1777573559</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.0.3:
+  * Fixed pytest.approx() which now correctly takes into account Mapping keys
+    order to compare them.
+  * Blocking a conftest.py file using the -p no: option is now explicitly
+    disallowed.
+  * Fixed crash when a test raises an exceptiongroup with
+    __tracebackhide__ = True.
+  * Fixed an issue where non-string messages passed to
+    unittest.TestCase.subTest() were not printed.
+  * Fixed use of insecure temporary directory (CVE-2025-71176).</comment>
+    <requestid>1350104</requestid>
+  </revision>
 </revisionlist>

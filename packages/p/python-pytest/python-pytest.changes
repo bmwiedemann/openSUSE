@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 29 01:10:14 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 9.0.3:
+  * Fixed pytest.approx() which now correctly takes into account Mapping keys
+    order to compare them.
+  * Blocking a conftest.py file using the -p no: option is now explicitly
+    disallowed.
+  * Fixed crash when a test raises an exceptiongroup with
+    __tracebackhide__ = True.
+  * Fixed an issue where non-string messages passed to
+    unittest.TestCase.subTest() were not printed.
+  * Fixed use of insecure temporary directory (CVE-2025-71176).
+
+-------------------------------------------------------------------
 Mon Dec 15 04:40:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 9.0.2:
