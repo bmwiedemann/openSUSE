@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:51:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.11:
+  * Highlights
+    - Hook entries now have an explicit shell option for shell
+      snippets. Set shell: sh, bash, pwsh, powershell, or cmd when
+      an entry should be evaluated by that shell; leaving it unset
+      keeps prek's direct argv execution.
+    - prek auto-update can now filter tag candidates before
+      choosing an update.  Both options take glob patterns: use
+      --include-tag to only consider matching tag names, and
+      --exclude-tag to skip matching tags such as moving tags or
+      prereleases.
+  * Enhancements
+    - Add auto-update --exclude-repo <repo> to skip repos (#1983)
+    - Add auto-update --exit-code to exit with non-zero on updates
+      (#2002)
+    - Add auto-update --include-tag <pattern>/--exclude-tag
+      <pattern> to filter tags (#1984)
+    - Adds an explicit shell hook option for entries that should
+      run as shell source (#2004)
+    - Make --hook-dir optional for hook-impl (#1989)
+    - Skip shim warning when --script-version is missing (#1990)
+  * Bug fixes
+    - Install Ruby executable in gem bin (#2017)
+    - Use dedicated Android npm package (#1982)
+    - Use stable repo keys without breaking cached clones (#1995)
+  * Documentation
+    - Explain prek name (#1980)
+    - Clarify pass_filenames concurrency docs (#1999)
+    - Reorganize documentation references (#2005)
+    - Clarify hook author manifest env docs (#1991)
+    - docs: add Sentry to users list (#1981)
+  * Dependencies
+    - Update Rust crate rayon to v1.12.0 (#2015)
+    - Update Rust crate webpki-root-certs to v1.0.7 (#2014)
+    - Update Rust crate libc to v0.2.185 (#2013)
+    - Update Rust crate tokio to v1.52.1 (#2016)
+    - Update Rust crate clap_complete to v4.6.2 (#2012)
+    - Update Rust crate clap to v4.6.1 (#2011)
+    - Update Rust crate assert_cmd to v2.2.1 (#2010)
+    - Update pre-commit hook crate-ci/typos to v1.45.1 (#2009)
+    - Update dependency uv to v0.11.7 (#2007)
+    - Bump rustls-webpki from 0.103.10 to 0.103.13 (#1987)
+    - Bump setup-mold to 9c9c13bf4c3f1adef0cc596abc155580bcb04444
+      (#1986)
+
+-------------------------------------------------------------------
 Tue Apr 21 15:45:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.10:
