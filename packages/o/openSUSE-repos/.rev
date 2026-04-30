@@ -320,4 +320,12 @@
   * oss repo will now always include slem 6.X updates</comment>
     <requestid>1349075</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>15b79ac61b6a3427903a6d6fdc274b6b</srcmd5>
+    <version>20260423.1a6a0f3</version>
+    <time>1777573563</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1350006</requestid>
+  </revision>
 </revisionlist>

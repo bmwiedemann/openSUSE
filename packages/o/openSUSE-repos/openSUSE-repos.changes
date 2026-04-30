@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 28 12:04:10 UTC 2026 - Max Lin <mlin@suse.com>
+
+- adjust suse_version condition for Leap 16.1
+
+-------------------------------------------------------------------
 Fri Apr 24 06:44:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - do not skip post-build-checks

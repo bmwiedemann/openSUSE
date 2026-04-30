@@ -27,7 +27,7 @@ ExclusiveArch:  do_not_build
 %global flavor @BUILD_FLAVOR@%nil
 
 %define with_nvidia 1
-%if 0%{?is_opensuse} && 0%{?suse_version} > 1600
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
 # Tumbleweed
 %if "%flavor" == "openSUSE-repos-Tumbleweed"
 %define theme Tumbleweed
@@ -241,7 +241,7 @@ install opensuse-%{branding}5-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zyp
 
 %if "%{theme}" == "Leap"
 # Leap 16
-%if 0%{?is_opensuse} && 0%{?suse_version} == 1600
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1600
 install opensuse-%{branding}16-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-repoindex.xml
 %else
 %ifarch %{ix86} x86_64 aarch64 ppc64le s390x
