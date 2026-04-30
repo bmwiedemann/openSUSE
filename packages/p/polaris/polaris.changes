@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:45:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 10.2.0:
+  * add notice to include registry change and immutable images
+    notice (#1191)
+  * unify release process along with others OSS projects (#1192)
+  * Add GCR support (#1189)
+
+-------------------------------------------------------------------
 Wed Apr 22 06:25:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 10.1.8:

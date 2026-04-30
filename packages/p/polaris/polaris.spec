@@ -17,7 +17,7 @@
 
 
 Name:           polaris
-Version:        10.1.8
+Version:        10.2.0
 Release:        0
 Summary:        Validation of best practices in your Kubernetes clusters
 License:        Apache-2.0
