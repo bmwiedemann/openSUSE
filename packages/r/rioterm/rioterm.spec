@@ -21,7 +21,7 @@
 # %%global build_rustflags %%build_rustflags -C lto=off -C codegen-units=16
 
 Name:           rioterm
-Version:        0.3.10
+Version:        0.3.11
 Release:        0
 Summary:        A hardware-accelerated GPU terminal emulator powered by WebGPU
 License:        MIT
