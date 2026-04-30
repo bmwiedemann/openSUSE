@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Thu Apr 30 06:20:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.151.0:
+  * telemetrygen-related changes
+    - [telemetrygen] Add timeout flag (#47299)
+  * Dependencies
+    - [chore]Update OTEL_VERSION=v0.151.0
+      OTEL_STABLE_VERSION=v1.57.0 (#48000)
+    - Update module modernc.org/sqlite to v1.50.0 (#47996)
+    - Update module golang.org/x/vuln to v1.3.0 (#47995)
+    - Update module gitlab.com/gitlab-org/api/client-go/v2 to
+      v2.21.0 (#47993)
+    - Update module github.com/redis/go-redis/v9 to v9.19.0
+      (#47990)
+    - Update module github.com/hetznercloud/hcloud-go/v2 to v2.39.0
+      (#47986)
+    - Update module github.com/getsentry/sentry-go to v0.46.1
+      (#47981)
+    - Update module github.com/leodido/go-syslog/v4 to v4.5.0
+      (#47982)
+    - Update module github.com/IBM/sarama to v1.48.0 (#47978)
+    - Update module github.com/DataDog/datadog-api-client-go/v2 to
+      v2.59.0 (#47973)
+    - Update module github.com/hetznercloud/hcloud-go/v2 to v2.38.0
+      (#47974)
+    - Update module github.com/snowflakedb/gosnowflake/v2 to v2.0.2
+      (#47977)
+    - Update module github.com/vmware/govmomi to v0.53.1 (#47951)
+    - Update module github.com/apache/cassandra-gocql-driver/v2 to
+      v2.1.1 (#47948)
+    - Update module
+      github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+      to v1.3.88 (#47950)
+    - Update prom/prometheus Docker tag to v3.11.3 (#47952)
+    - Update All github.com/aws packages (#47943)
+    - Update All github.com/azure packages (#47944)
+    - Update golang:1.26 Docker digest to b54cbf5 (#47942)
+    - Update All github.com/datadog packages (#47161)
+    - [chore] Update core dependencies (#47899)
+    - Bump github.com/Azure/go-ntlmssp from 0.1.0 to 0.1.1 in
+      /receiver/windowseventlogreceiver (#47890)
+    - [chore] update modernize flag (#47892)
+    - Update module github.com/google/go-github/v84 to v85 (#47822)
+    - [chore] Update core dependencies (#47879)
+    - Update module
+      github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+      to v1.3.84 (#47839)
+    - Update module github.com/getsentry/sentry-go to v0.46.0
+      (#47817)
+    - Update module github.com/moby/moby/client to v0.4.1 (#47791)
+    - Update module github.com/rabbitmq/amqp091-go to v1.11.0
+      (#47818)
+    - Update module gitlab.com/gitlab-org/api/client-go/v2 to
+      v2.20.1 (#47809)
+    - Update module github.com/elastic/go-docappender/v2 to v2.14.1
+      (#47786)
+    - Update module
+      github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+      to v1.3.83 (#47795)
+    - Update module github.com/SAP/go-hdb to v1.16.6 (#47792)
+    - Update module github.com/DeRuina/timberjack to v1.4.2
+      (#47794)
+    - Update module github.com/puzpuzpuz/xsync/v4 to v4.5.0
+      (#47808)
+    - Update All go.opentelemetry.io/build-tools packages to
+      v0.30.0 (#47799)
+    - Update module cloud.google.com/go/pubsub/v2 to v2.6.0
+      (#47805)
+    - Update module github.com/aerospike/aerospike-client-go/v8 to
+      v8.7.0 (#47806)
+    - Update module modernc.org/sqlite to v1.49.1 (#47810)
+    - Update module github.com/jackc/pgx/v5 to v5.9.2 (#47789)
+    - Update module
+      github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage
+      to v0.150.0 (#47807)
+    - Update module github.com/moby/moby/api to v1.54.2 (#47790)
+    - Update module github.com/Azure/azure-sdk-for-go/sdk/azcore to
+      v1.21.1 (#47785)
+    - Update kubernetes monorepo to v0.35.4 (#47783)
+    - Update All github.com/aws packages (#47780)
+    - Update github-actions deps (#47781)
+    - Update dockerfile deps (#47779)
+    - Bump github.com/go-git/go-git/v5 from 5.17.1 to 5.18.0 in
+      /internal/tools (#47735)
+    - [chore] Update core dependencies (#47706)
+    - Update module github.com/googleapis/gax-go/v2 to v2.22.0
+      (#47653)
+    - [internal/aws/proxy] Migrate from AWS SDK v1 to v2 (#47244)
+    - [processor/spanpruning] Add histogram support for latency
+      distribution on aggregated summary spans (#47604)
+    - [receiver/chrony] Enable re-aggregation feature (#47533)
+    - Update module gitlab.com/gitlab-org/api/client-go/v2 to
+      v2.18.0 (#47647)
+    - Update mcr.microsoft.com/mssql/server:2025-latest Docker
+      digest to 60dc610 (#47646)
+    - Update module github.com/tinylib/msgp to v1.6.4 (#47639)
+    - Update module google.golang.org/api to v0.276.0 (#47643)
+    - Update github-actions deps to v9 (major) (#47642)
+    - Update module cloud.google.com/go/spanner to v1.90.0 (#47635)
+    - Update module gitlab.com/gitlab-org/api/client-go/v2 to
+      v2.17.0 (#47640)
+    - Update module
+      github.com/open-telemetry/opentelemetry-collector-contrib/extension/internal/credentialsfile
+      to v0.150.0 (#47636)
+    - Update All golang.org/x packages (#47626)
+    - Update module github.com/ClickHouse/clickhouse-go/v2 to
+      v2.45.0 (#47627)
+    - Update module github.com/getsentry/sentry-go to v0.45.1
+      (#47630)
+    - Update module github.com/leodido/go-syslog/v4 to v4.4.0
+      (#47631)
+    - Update module github.com/apache/pulsar-client-go to v0.19.0
+      (#47628)
+    - Update module github.com/SAP/go-hdb to v1.16.5 (#47610)
+    - Update module github.com/snowflakedb/gosnowflake/v2 to v2.0.1
+      (#47613)
+    - Update All github.com/aws packages (#47619)
+    - Update module
+      github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+      to v1.3.78 (#47614)
+    - Update module modernc.org/sqlite to v1.48.2 (#47616)
+    - Update module software.sslmate.com/src/go-pkcs12 to v0.7.1
+      (#47617)
+    - Update module github.com/coreos/go-oidc/v3 to v3.18.0
+      (#47629)
+    - Update All cloud.google.com/go packages (#47618)
+    - Update dependency simple-git to v3.36.0 (#47624)
+    - Update docker-compose deps (#47625)
+    - Update golang:1.26 Docker digest to fcdb3e4 (#47608)
+    - Update github-actions deps (#47607)
+
+-------------------------------------------------------------------
 Fri Apr 17 20:39:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.150.0:
