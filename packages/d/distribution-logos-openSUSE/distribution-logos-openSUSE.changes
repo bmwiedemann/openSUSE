@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:13:08 UTC 2026 - Max Lin <mlin@suse.com>
+
+- Fix suse_version condition since the value of suse_version is now
+  1610 in SLE/Leap 16.1
+
+-------------------------------------------------------------------
 Mon Feb 03 15:26:15 UTC 2025 - sfalken@opensuse.org
 
 - Update to version 20250203:

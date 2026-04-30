@@ -32,7 +32,7 @@ BuildArch:      noarch
 %description
 Logos for openSUSE Distributions
 
-%if 0%{?sle_version} || 0%{?suse_version} == 1600
+%if 0%{?is_opensuse} && 0%{?suse_version} < 1699
 %package Leap
 Summary:        Logos for openSUSE Leap
 Conflicts:      distribution-logos
@@ -148,7 +148,7 @@ Icons with openSUSE distribution logos.
 export NO_BRP_STALE_LINK_ERROR=yes
 mkdir -p %{buildroot}%{_datadir}/pixmaps/distribution-logos
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/{scalable,symbolic}/apps
-%if 0%{?sle_version} || 0%{?suse_version} == 1600
+%if 0%{?is_opensuse} && 0%{?suse_version} < 1699
 for distro in Leap LeapMicro; do \
 %else
 for distro in Tumbleweed Slowroll Kubic MicroOS Aeon Kalpa; do \
@@ -165,7 +165,7 @@ ln -sf %{_datadir}/pixmaps/distribution-logos/square-symbolic.svg %{buildroot}%{
 %files
 %dir %{_datadir}/pixmaps/distribution-logos
 
-%if 0%{?sle_version} || 0%{?suse_version} == 1600
+%if 0%{?is_opensuse} && 0%{?suse_version} < 1699
 %files Leap
 %{_datadir}/pixmaps/distribution-logos/*.Leap
 
