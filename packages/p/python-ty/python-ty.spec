@@ -30,8 +30,8 @@ BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
 %if 0%{?suse_version} < 1699
-BuildRequires:  cargo1.90
-BuildRequires:  rust1.90
+BuildRequires:  cargo >= 1.90
+BuildRequires:  rust >= 1.90
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
