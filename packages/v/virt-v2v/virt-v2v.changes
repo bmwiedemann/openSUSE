@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Apr 28 16:24:29 MDT 2026 - carnold@suse.com
+
+- Update to virt-v2v 2.11.7 (jsc#PED-14625)
+  revert-Use-caml_unix_error-instead-of-unix_error.patch
+- Changes with this release
+  valgrind-suppressions: Add suppression for libvirt
+  utils: Add read_whole_file function
+  options/keys.c: When reading key from user, prefix with "text:"
+  options/keys.c: When using --key <dev>:key:<string>, prefix with "text:"
+  options/keys.c: When reading the key from a file, encode it with base64
+  mldrivers/firmware.ml: Ignore CHS geometry error from parted
+  mltools: add prefix to debug () output
+  mltools: for external commands include function name in debug() output
+  tests: Add test for -i disk nbd:// URI
+  -i disk: Allow nbd:// URIs for input disks
+  docs: -i disk allows multiple disk images
+  docs: Show input parameters for -i input methods
+  convert: Stop using maxmem (xfs_repair -m option)
+  docs: Document LUKS+TPM encrypted guests failing to boot after conversion
+  Add --no-fstrim option to disable fstrim during conversion
+  convert/convert.ml: Add back comment that was deleted by previous commit
+  smp: use cgroup CPU limits for appliance SMP
+  smp: respect cgroup v2 CPU limits for appliance SMP
+  dist: Include update-submodule.sh script in the tarball
+  Add update-submodule.sh
+  mlutils/unix_utils-c.c: Include "guestfs-utils.h"
+  mlcustomize: Remove fictitious "vista" virtio-win directory
+  mlcustomize: Use 2k8 drivers for Windows Vista and 2008 Server R1
+  mlutils/c_utils-c.c: Throw Unix_error on failure
+  Use caml_unix_error instead of unix_error
+  mlutils/unix_utils.ml: statvfs_is_network_filesystem should not be noalloc
+  common: fix FILE stream leak in worker_thread on guestfs_create failure (#27)
+  options: fix memory leak in read_key on getline failure (#30)
+  edit: check WIFEXITED before WEXITSTATUS in edit_file_editor and edit_file_perl (#31)
+  mlutils: fix pattern leak in mkdtemp wrapper on failure
+  qemuopts: check for write errors in qemuopts_to_channel and qemuopts_to_config_channel (#33)
+  Remove unused function error_if_no_ssh_agent
+  Add support for Kylin, NeoKylin and Anolis OS conversions (#145)
+  test-data/fake-virtio-win/Makefile.am: Remove '@touch'
+  mlcustomize/firstboot.ml: Be more careful about quoting
+  mlcustomize: Create a sentinel file when firstboot completes
+  build: mark some ocaml commands with $(AM_V_GEN)
+  build: hide more command output behind V=1
+  build: drop leftover generator warning
+  build: bash: Fix make `Error 1 (ignored)` noise
+  tests: delete blank-disks/
+  po-docs: fix .pod file generation
+  po-docs: properly templatize pod files
+  po-docs: Update MANPAGES list
+  po-docs: hide deprecation warnings
+  ci: remove ocaml-libguestfs packages (again)
+  convert: linux: Fix encrypted ubuntu 24.04
+  ci: make it easier to test in forked branches
+  ci: some tweaks
+  tests: fix test-i-ova-as-root.sh
+  convert: linux: properly match /etc/crypttab
+  virtio-win: Install blnsvr.exe to C:\Windows\Drivers\VirtIO
+  ci: drop libguestfs --disable-gobject option
+  output: sanitize VM names in libvirt XML
+  output: sanitize guest names in metadata file paths
+  output: Replace '/' in VM names with '_'
+  output: introduce disk_name helper
+  ocaml-link.sh.in: pass explicit guestfs search path
+  ci: run build against libguestfs.git
+  docs: update virtio-win exploded tree docs
+  docs: Drop references to virtio-win osinfo usage
+  build: replace AM_GNU_GETTEXT with simpler LIBINTL check
+  convert: linux: replace /etc/crypttab /dev/sdX with UUID=
+  convert/convert_linux.ml: Condense device regex handling
+  input: vcenter: double uri_encode `dcPath` and `dsName`
+  convert/convert_linux.ml: Add debian 12 UEFI
+  lib: Replace nbdkit file cache=none with reduce-memory-pressure=on
+  inspector: Enhance virt-v2v-inspector output with filesystems information
+  v2v: Enhance inspection with filesystems information
+  mlcustomize/firstboot.ml: Print %USERNAME% and %USERDOMAIN%
+  mlcustomize/firstboot.ml: Fix %-encoding in previous commit
+  mlpcre: Add optional PCRE_ANCHORED flag when compiling expressions
+  mlstdutils: Export List.assoc_opt
+  input/ssh.ml: Fix Ssh.remote_file_exists
+  input/ssh.ml: Add debugging around remote_file_exists function
+  docs/virt-v2v.pod: Document Windows vTPM and BitLocker Recovery
+
+-------------------------------------------------------------------
 Tue Jan  6 14:34:31 MST 2026 - carnold@suse.com
 
 - Update to virt-v2v 2.10.0 (jsc#PED-14625)

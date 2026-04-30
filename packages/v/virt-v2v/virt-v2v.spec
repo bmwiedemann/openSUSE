@@ -20,10 +20,10 @@
 # If there are patches which touch autotools files, set this to 1.
 %global patches_touch_autotools 1
 # The source directory.
-%global source_directory 2.8-stable
-#%%global source_directory 2.10-development
+#%%global source_directory 2.10-stable
+%global source_directory 2.11-development
 Name:           virt-v2v
-Version:        2.10.0
+Version:        2.11.7
 Release:        0
 Summary:        Tools to convert a virtual machine to run on KVM
 License:        GPL-2.0-or-later
@@ -31,6 +31,8 @@ Group:          System/Management
 URL:            https://github.com/libguestfs/virt-v2v
 Source0:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz
 Source1:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz.sig
+
+Patch1:         revert-Use-caml_unix_error-instead-of-unix_error.patch
 
 BuildRequires:  augeas-devel
 BuildRequires:  file-devel
