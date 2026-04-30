@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 30 06:11:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.39:
+  * Bugfixes
+    - BoltDB migrator: skipping broken vaults during migration
+
+-------------------------------------------------------------------
 Wed Apr 22 06:28:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.38 (.37 was not released):
