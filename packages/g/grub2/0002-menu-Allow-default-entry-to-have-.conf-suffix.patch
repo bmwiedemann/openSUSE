@@ -1,0 +1,49 @@
+From 1be3059a7867e97406edaf4c567b5ed1862ded24 Mon Sep 17 00:00:00 2001
+From: Danilo Spinella <danilo.spinella@suse.com>
+Date: Wed, 11 Mar 2026 14:23:47 +0100
+Subject: [PATCH 2/9] menu: Allow default entry to have ".conf" suffix
+
+When setting default entry, accept values that ends in ".conf". Strip
+the suffix when looking for the corresponding entry.
+---
+ grub-core/normal/menu.c | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+
+Index: grub-2.14/grub-core/normal/menu.c
+===================================================================
+--- grub-2.14.orig/grub-core/normal/menu.c
++++ grub-2.14/grub-core/normal/menu.c
+@@ -571,7 +571,8 @@ static int
+ get_entry_number (grub_menu_t menu, const char *name)
+ {
+   const char *val;
+-  int entry;
++  char *ext;
++  int entry, res;
+ 
+   val = grub_env_get (name);
+   if (! val)
+@@ -601,6 +602,23 @@ get_entry_number (grub_menu_t menu, cons
+ 	      entry = i;
+ 	      break;
+ 	    }
++
++	  if (e->blsuki)
++	    {
++	      ext = grub_strrchr (val, '.');
++	      if (ext && grub_strcmp (ext, ".conf") == 0)
++		{
++		  *ext = '\0';
++		  res = menuentry_eq (e->id, val);
++		  *ext = '.';
++                  if (res)
++		    {
++		      entry = i;
++		      break;
++		    }
++		}
++	    }
++
+ 	  e = e->next;
+ 
+ 	  /* Skip hidden entries */

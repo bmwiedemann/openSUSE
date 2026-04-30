@@ -3301,4 +3301,12 @@ pretty much the same. The main user visible changes are
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1262580</comment>
     <requestid>1348785</requestid>
   </revision>
+  <revision rev="389" vrev="10">
+    <srcmd5>c0f15e38e55728732679a69a226f2fad</srcmd5>
+    <version>2.14</version>
+    <time>1777573543</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1349907</requestid>
+  </revision>
 </revisionlist>

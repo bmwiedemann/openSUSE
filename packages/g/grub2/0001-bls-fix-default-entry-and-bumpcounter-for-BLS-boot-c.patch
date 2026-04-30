@@ -1,0 +1,178 @@
+From fb62215386831db2a85b9b73cfb77f1567a24f78 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 28 Apr 2026 13:02:13 +0800
+Subject: [PATCH] bls: fix default entry and bumpcounter for BLS boot counter
+ files
+
+When BLS boot counting is enabled, entry filenames include counter
+suffixes such as "+TRIES-DONE". This patch tries to ensure that the
+default entry selection and bumpcounter operations work correctly with
+these modified filenames.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/bls_bumpcounter.c | 32 +++++++++++++------
+ grub-core/commands/blsuki.c          | 48 ++++++++++++++++++++++++++++
+ 2 files changed, 71 insertions(+), 9 deletions(-)
+
+diff --git a/grub-core/commands/bls_bumpcounter.c b/grub-core/commands/bls_bumpcounter.c
+index d45fe276c..fe4a9ea92 100644
+--- a/grub-core/commands/bls_bumpcounter.c
++++ b/grub-core/commands/bls_bumpcounter.c
+@@ -102,8 +102,9 @@ grub_cmd_bls_bumpcounter (grub_extcmd_context_t ctxt __attribute__ ((unused)),
+   grub_efi_status_t err;
+   char *entry, *new_path = NULL, *old_path;
+   const char *blsdir;
+-  grub_efi_uint64_t size;
++  grub_efi_uint64_t size, size_info;
+   grub_efi_char16_t *old_path16;
++  grub_efi_uint64_t len16;
+ 
+   if (argc != 1) {
+     grub_dprintf ("bls_bumpcounter", "only one argument should be passed\n");
+@@ -160,7 +161,7 @@ grub_cmd_bls_bumpcounter (grub_extcmd_context_t ctxt __attribute__ ((unused)),
+         blsdir = GRUB_BLS_CONFIG_PATH;
+     }
+ 
+-  old_path = grub_xasprintf ("%s%s", blsdir, entry);
++  old_path = grub_xasprintf ("%s%s.conf", blsdir, entry);
+   grub_utf8_to_utf16_alloc (old_path, &old_path16, NULL);
+ 
+   err = root->Open (root, &handle, old_path16,
+@@ -179,14 +180,15 @@ grub_cmd_bls_bumpcounter (grub_extcmd_context_t ctxt __attribute__ ((unused)),
+      most cases, and, if it fails, allocate a new one with the exact size
+      returned from GetInfo.
+      Reference: systemd:src/boot/efi/util.c =*/
+-  size = offsetof (grub_efi_file_info_t, FileName)
++  size_info = offsetof (grub_efi_file_info_t, FileName)
+ 		   + 256U * sizeof (grub_efi_char16_t);
+-  file_info = grub_malloc (size);
++  file_info = grub_malloc (size_info);
+   if (!file_info)
+     {
+       grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("out of memory"));
+       goto finish;
+     }
++  size = size_info - 4; /* reserve space for 2 more characters (4 bytes) for the boot done part "-1" */
+   err = handle->GetInfo (handle, &grub_efi_file_info_guid, &size, file_info);
+   if (err == GRUB_EFI_BUFFER_TOO_SMALL)
+     {
+@@ -194,12 +196,12 @@ grub_cmd_bls_bumpcounter (grub_extcmd_context_t ctxt __attribute__ ((unused)),
+       /* When we bump the counter, it might happen that we increase the filename
+          length. Add the space for 2 more characters (4 bytes). (i.e. adding the
+          boot done part "-1") */
+-      if (grub_add (size, 4, &size))
++      if (grub_add (size, 4, &size_info))
+ 	{
+ 	  grub_error (GRUB_ERR_OUT_OF_RANGE, N_("size overflow"));
+ 	  goto finish;
+ 	}
+-      file_info = grub_malloc (size);
++      file_info = grub_malloc (size_info);
+       if (!file_info)
+ 	{
+ 	  grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("out of memory"));
+@@ -221,12 +223,24 @@ grub_cmd_bls_bumpcounter (grub_extcmd_context_t ctxt __attribute__ ((unused)),
+     goto finish;
+ 
+   grub_dprintf ("bls_bumpcounter", "renaming entry to %s\n", new_path);
+-  grub_utf8_to_utf16 (file_info->FileName,
+-		      (size - offsetof (grub_efi_file_info_t, FileName))
++  len16 = grub_utf8_to_utf16 (file_info->FileName,
++		      (size_info - offsetof (grub_efi_file_info_t, FileName))
+               / sizeof (grub_efi_char16_t),
+ 		      (grub_uint8_t*) new_path, grub_strlen (new_path), NULL);
+ 
+-  err = handle->SetInfo (handle, &grub_efi_file_info_guid, size, file_info);
++  /*
++   * Check if the new filename fits in the allocated file_info buffer. If not,
++   * it means that the entry is too long to be renamed with the bumped counter,
++   * and we should bail instead of risking an out-of-bounds write.
++   */
++  if (len16 >= (size_info - offsetof (grub_efi_file_info_t, FileName)) /
++		   sizeof (grub_efi_char16_t))
++    {
++      grub_dprintf ("bls_bumpcounter", "new filename is too long\n");
++      goto finish;
++    }
++  file_info->FileName[len16++] = '\0';
++  err = handle->SetInfo (handle, &grub_efi_file_info_guid, size_info, file_info);
+ 
+   if (err != GRUB_EFI_SUCCESS)
+     {
+diff --git a/grub-core/commands/blsuki.c b/grub-core/commands/blsuki.c
+index 4dfc4934e..8b152b443 100644
+--- a/grub-core/commands/blsuki.c
++++ b/grub-core/commands/blsuki.c
+@@ -1091,6 +1091,7 @@ bls_create_entry (grub_blsuki_entry_t *entry)
+   char *initrd_cmd = NULL;
+   char *dt_cmd = NULL;
+   char *id = entry->filename;
++  char *id_dup = NULL;
+   grub_size_t id_len;
+   char *hotkey = NULL;
+   char *users = NULL;
+@@ -1111,6 +1112,52 @@ bls_create_entry (grub_blsuki_entry_t *entry)
+   id_len = grub_strlen (id);
+   if (id_len >= BLS_EXT_LEN && grub_strcmp (id + id_len - BLS_EXT_LEN, ".conf") == 0)
+     id[id_len - BLS_EXT_LEN] = '\0';
++  id_len = grub_strlen (id);
++  /*
++   * The menuentry ID should have the boot assessemnt counters removed, to
++   * canonicalize that default entry can be correctly matched.
++   */
++  char *tries = grub_strrchr (id, '+');
++  if (tries != NULL)
++    {
++      char *n;
++      const char *n_end = NULL;
++      char *done = grub_strrchr (tries, '-');
++      if (done != NULL)
++	n = grub_strndup (tries + 1, done - tries - 1);
++      else
++	n = grub_strdup (tries + 1);
++      if (n == NULL)
++	goto finish;
++      grub_error_push ();
++      grub_strtol (n, &n_end, 10);
++      switch (grub_errno)
++	{
++	case GRUB_ERR_NONE:
++	  grub_error_pop ();
++	  if (n_end && n_end != n && *n_end == '\0')
++	    {
++	      id_dup = grub_strdup (id);
++	      if (id_dup == NULL)
++		{
++		  grub_free (n);
++		  goto finish;
++		}
++	      grub_strrchr (id_dup, '+')[0] = '\0';
++	    }
++	  break;
++	default:
++	  grub_error_pop ();
++	  break;
++	}
++      grub_free (n);
++    }
++
++  if (id_dup != NULL)
++    {
++      id = id_dup;
++      id_len = grub_strlen (id);
++    }
+ 
+   title = blsuki_get_val (entry, "title", NULL);
+   if (title != NULL)
+@@ -1178,6 +1225,7 @@ bls_create_entry (grub_blsuki_entry_t *entry)
+   grub_free (args);
+   grub_free (argv);
+   grub_free (src);
++  grub_free (id_dup);
+ }
+ 
+ #ifdef GRUB_MACHINE_EFI
+-- 
+2.53.0
+

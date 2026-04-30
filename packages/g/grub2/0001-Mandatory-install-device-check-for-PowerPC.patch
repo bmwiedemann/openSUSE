@@ -1,0 +1,46 @@
+From 34de9a5984c9a9e84717dd6ed7a6ba255f09bb0a Mon Sep 17 00:00:00 2001
+From: Avnish Chouhan <avnish@linux.ibm.com>
+Date: Tue, 27 Jan 2026 19:18:14 +0530
+Subject: [PATCH] Mandatory install device check for PowerPC
+
+This patch adds a check on install_device while installing grub for PowerPC.
+If install_device is not mentioned in grub2-install and machine is detected
+as PowerPC, the error will be thrown and it will terminates the grub2-install
+operation. Running grub2-install on PowerPC without the install_device may
+result in bootlist corruption. When no install device is specified, it attempts
+to load images from the filesystem, which leads to nvram bootlist corruption.
+The idea is to fail the operation and avoid creating the invalid boot entry.
+
+Signed-off-by: Avnish Chouhan <avnish@linux.ibm.com>
+Link: https://patch.msgid.link/20260127134814.2312-1-avnish@linux.ibm.com
+---
+ util/grub-install.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/util/grub-install.c b/util/grub-install.c
+index 926f49457..226146899 100644
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -1435,6 +1435,19 @@ main (int argc, char *argv[])
+ 	      is_prep = 0;
+ 	    }
+ 	}
++#if defined(__powerpc__)
++     else
++       {
++         /*
++	   * As the machine has been detected as PowerPC and not a PowerMac. We need to check
++	   * whether the install_device has been mentioned while installing. If no device has been
++	   * mentioned, we need to exit and mark it as an error as the install_device is required for
++	   * PowerPC installation. An installation with no device mentioned may lead to corruptions.
++	   */
++          if (!install_device)
++            grub_util_error ("%s", _("install device isn't specified, required for PowerPC"));
++       }
++#endif /* __powerpc__ */
+     }
+ 
+   if (platform == GRUB_INSTALL_PLATFORM_S390X_EMU)
+-- 
+2.53.0
+
