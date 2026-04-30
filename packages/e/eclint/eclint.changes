@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:08:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.2:
+  * 673e19de #7 (closed) Support multiple files passed as arguments
+    to cli
+  * 4e1e3e17 #7 (closed) Support multiple files passed as arguments
+    to cli
+  * 09cd9bbe Add docs to README.md
+  * fdce46f2 Introduce .pre-commit-hooks.yaml for auto-fixing
+  * 14681fe6 Merge branch 'chore/bump' into 'master'
+  * a4d57c3c Merge branch 'chore/bump-all-the-deps' into 'master'
+  * 34f4d2bb Merge branch 'chore/deps' into 'master'
+  * 9807d59f Merge branch 'feat/modernize' into 'master'
+  * 5a53a05f Merge branch 'fix/better-test' into 'master'
+  * 74775fc6 Merge branch 'fix/flagset' into 'master'
+  * d716926d Merge branch 'master' into 'master'
+  * 3c78c309 Merge branch 'master' into 'master'
+  * a5c5ff77 Merge branch 'pre-commit-config' into 'master'
+  * 2f068e22 chore: bump all the deps
+  * 3829ecf7 chore: bump core library
+  * df1b2996 chore: bump deps
+  * 8836a9f3 feat: modernize
+  * 9bba17fb feat: re-use the pre-commit config
+  * dbd9e5a7 fix: better tests
+  * 4f8012db fix: flagset rest of args
+
+-------------------------------------------------------------------
 Sun Dec 22 08:48:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package eclint: a linter for editorconfig files

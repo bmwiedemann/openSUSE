@@ -1,7 +1,7 @@
 #
 # spec file for package eclint
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           eclint
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        EditorConfig linter
 License:        MIT
