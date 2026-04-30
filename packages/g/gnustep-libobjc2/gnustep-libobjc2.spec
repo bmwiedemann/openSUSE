@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-libobjc2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,14 @@
 %define _oname  libobjc2
 %define libname libobjc4_6
 Name:           gnustep-libobjc2
-Version:        2.1
+Version:        2.3
 Release:        0
 Summary:        GNUstep Objective-C Runtime
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/gnustep/libobjc2
 Source:         https://github.com/gnustep/libobjc2/archive/v%{version}/%{_oname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gnustep-libobjc2-2.1-fix-trampoline-flags.patch -- gh#gnustep/libobjc2#177
-Patch0:         gnustep-libobjc2-2.1-fix-trampoline-flags.patch
+
 BuildRequires:  cmake >= 3.1
 BuildRequires:  fdupes
 BuildRequires:  gnustep-make
@@ -72,9 +71,6 @@ to develop applications with the GNUstep Objective-C runtime.
 
 %prep
 %autosetup -p1 -n %{_oname}-%{version}
-# Add link to build against system's robin-map-devel
-mkdir third_party/robin-map/include
-ln -s %{_includedir}/tsl third_party/robin-map/include/tsl
 
 %build
 # Remove cmake4 error due to not setting
@@ -103,8 +99,7 @@ popd
 
 %fdupes -s %{buildroot}%{_includedir}
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %{_libdir}/libobjc.so.*
@@ -117,5 +112,10 @@ popd
 %{_includedir}/Block_private.h
 %{_libdir}/libobjc.so
 %{_libdir}/pkgconfig/libobjc.pc
+%dir %{_libdir}/cmake/libobjc
+%{_libdir}/cmake/libobjc/libobjcConfig.cmake
+%{_libdir}/cmake/libobjc/libobjcConfigVersion.cmake
+%{_libdir}/cmake/libobjc/libobjcTargets-noconfig.cmake
+%{_libdir}/cmake/libobjc/libobjcTargets.cmake
 
 %changelog

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 29 06:36:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3:
+  * The blocks runtime from swift-corelibs-libdispatch can now be
+    used instead of the runtime included in libobjc2.
+  * The blocks runtime is now capable of selecting block
+    trampolines based on the current page size at runtime. It now
+    supports AArch64 targets with 16 KiB page sizes, fixing a
+    segmentation fault on Asahi Linux and Android 15 devices with
+    16 KiB page sizes. For PowerPC64, the trampoline page size was
+    adjusted to 64 KiB.
+  * Implemented the method_getTypedSelector_np function.
+  * The AArch64 objc_msgSend implementation now conforms to the
+    Visual Studio ABI's sret mechanism for non-trivial data types.
+  * Differences in the x86_64 calling convention have been
+    addressed in the objc_msgSend implementation.
+  * The robin map dependency was updated to version 1.4.0.
+  * Associated objects are now properly retained and autoreleased.
+  * Several bug fixes in the fast-path code.
+  * Built-in classes no longer rely on load order.
+  * Various memory leaks have been fixed.
+- Please see https://github.com/gnustep/libobjc2/releases for a
+  full overview of change since last release.
+- Drop gnustep-libobjc2-2.1-fix-trampoline-flags.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Wed May  7 05:23:41 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
