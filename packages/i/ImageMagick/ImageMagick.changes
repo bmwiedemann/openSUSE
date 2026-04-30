@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 29 06:27:20 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 7.1.2.21
+  * Fix JXL orientation when writing. #8673
+  * Corrected the patch that was made earlier to fix reading JPEG compressed TIFF images
+  * eliminate deprecated omp_set_nested()
+  * support MSYS2
+  * allow namespace::pattern when checking policy rights
+  * mentioned symlink system policy
+  * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-7mxf-ff4f-jj7p 2598004
+
+-------------------------------------------------------------------
 Wed Apr 15 08:30:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 7.1.2.19
