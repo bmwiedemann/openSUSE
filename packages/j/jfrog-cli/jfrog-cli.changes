@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:38:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.103.0:
+  * New Features
+    - [build-info-go] RTECO-992 - Added support for uv package
+      manager #376 (@agrasth)
+    - [jfrog-cli] RTECO-992 - Added support for uv package manager
+      #3436 (@agrasth)
+    - [jfrog-cli-artifactory] RTECO-992 - Added support for uv
+      package manager #421 (@agrasth)
+    - [jfrog-cli-core] feat: add server id to login command #1529
+      (@tim-goto)
+    - [jfrog-cli-core] RTECO-992 - Added support for uv package
+      manager #1542 (@agrasth)
+    - [jfrog-cli-security] Add update Jfrog dependencies script
+      #715 (@attiasas)
+    - [jfrog-cli-security] add fastci config d90dd03e4c00
+      (@attiasas)
+    - [jfrog-cli-security] Add integration tests for UV and Pnpm
+      #732 (@attiasas)
+    - [jfrog-cli-security] Add explicit GITHUB_TOKEN permissions to
+      CLA workflow #731 (@attiasas)
+    - [jfrog-cli-security] Support 'Scanned - No Issues' severity
+      #722 (@attiasas)
+    - [jfrog-cli-security] XRAY-138687 - [Curation] Implementing
+      support for additional flags #721 (@gauriy-tech)
+    - [jfrog-cli-security] Add root dir to determine paths for sast
+      changed files #743 (@attiasas)
+    - [jfrog-client-go] Add Changed files to GitInfoContext #1337
+      (@attiasas)
+    - [jfrog-client-go] Add 'Scanned - No Issues' severity #1336
+      (@attiasas)
+  * Bug Fixes
+    - [jfrog-cli] fix: build+pattern downloads against virtual
+      repos #3449 (@bhanurp)
+    - [jfrog-cli-security] Add 7z as alternative for unzip #716
+      (@attiasas)
+    - [jfrog-cli-security] Remove duplications in CDX format #719
+      (@attiasas)
+    - [jfrog-cli-security] JGC-453 - Fix documentation links #712
+      (@cyrilc-pro)
+    - [jfrog-cli-security] Pick correct diff baseline when multiple
+      technologies share a path #724 (@attiasas)
+    - [jfrog-cli-security] Use Config Profile to determine if we
+      should run SBOM #742 (@attiasas)
+    - [jfrog-client-go] fix: build+pattern downloads against
+      virtual repos #1338 (@bhanurp)
+  * Internal Changes
+    - [jfrog-cli-core] Bump dependabot/fetch-metadata from 3.0.0 to
+      3.1.0 in the github-actions group #1548 (@dependabot[bot])
+    - [jfrog-cli-security] Update dependencies #717 (@attiasas)
+    - [jfrog-cli-security] Update Analyzer Manager to v1.31.1 #725
+      (@attiasas)
+  * Other Changes
+    - [jfrog-cli] test: Add E2E coverage for helm push OCI subpaths
+      and build-info modu… #3455 (@naveenku-jfrog)
+    - [jfrog-cli-artifactory] Rteco 1013 helm #430
+      (@naveenku-jfrog)
+    - [jfrog-cli-security] Updated build-info-go version #714
+      (@naveenku-jfrog)
+    - [jfrog-cli-security] Extend skip time for failed tests #720
+      (@attiasas)
+    - [jfrog-cli-security] Remove Jfrog pipelines #713 (@attiasas)
+    - [jfrog-cli-security] remove fastci config e1cc4c44ca82
+      (@attiasas)
+    - [jfrog-cli-security] Pass current Xray version to AM #726
+      (@attiasas)
+    - [jfrog-cli-security] Warn on missing components parsing issue
+      #741 (@attiasas)
+    - [jfrog-cli-security] Fast sast mode using changed files #739
+      (@attiasas)
+    - [jfrog-cli-security] BuildScan - Option to control showing
+      Violations #740 (@attiasas)
+
+-------------------------------------------------------------------
 Tue Apr 21 16:40:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.102.0:
