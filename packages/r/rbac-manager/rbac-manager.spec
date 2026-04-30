@@ -1,7 +1,7 @@
 #
 # spec file for package rbac-manager
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rbac-manager
-Version:        1.9.5
+Version:        1.10.0
 Release:        0
 Summary:        Kubernetes operator for easier RBAC management
 License:        Apache-2.0

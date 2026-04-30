@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:52:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.0:
+  * Fix release process and update goreleaser image (#597)
+  * add notice to include registry change and immutable images
+    notice (#596)
+
+-------------------------------------------------------------------
 Fri Dec 12 17:14:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.9.5:
