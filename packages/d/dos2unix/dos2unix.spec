@@ -18,7 +18,7 @@
 
 
 Name:           dos2unix
-Version:        7.5.4
+Version:        7.5.5
 Release:        0
 Summary:        Text converters to and from DOS/MAC to UNIX
 License:        BSD-2-Clause
