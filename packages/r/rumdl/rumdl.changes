@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 30 10:49:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.84:
+  * Added
+    - md054: atomic ref-emit fixes via Fix.additional_edits
+      (d1b757c)
+  * Fixed
+    - md054,lsp: exact EOL counting and UTF-16 LSP positions
+      (b8488b5)
+    - fix_utils: preserve source order for same-offset zero-width
+      inserts (06b786c)
+    - md064: skip column-aligned list blocks (0175b7c)
+    - md046: recognize list-internal indented code blocks (476c8d8)
+    - md036: default fix=true to match advertised FullyFixable
+      capability (3faac50)
+    - md076: prefer tight on Consistent style ties (8ed1e30)
+    - lsp: canonicalize rule-name lists at Config boundaries
+      (51932d9)
+- Update to version 0.1.82:
+  * Fixed
+    - lsp: respect --config flag in server mode (40f2a9d)
+- Update to version 0.1.82:
+  * Added
+    - md057: fall back to project root when resolving absolute
+      links (3df4ed0)
+
+-------------------------------------------------------------------
 Sun Apr 26 07:58:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.81:
