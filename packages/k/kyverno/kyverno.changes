@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Thu Apr 30 06:15:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.0:
+  https://github.com/kyverno/kyverno/releases/tag/v1.18.0
+  * Highlights
+    - Secure HTTP calls with blocklist/allowlist: HTTP context
+      loading now enforces a configurable blocklist and scoped
+      token authorization, improving security posture for policies
+      that perform external HTTP calls (#15789, #15779).
+    - Namespaced image registry credentials:
+      imageRegistryCredentials can now reference namespaced secrets
+      and pod-level imagePullSecrets for image verification
+      (#15112).
+    - CLI expanded policy support: The kyverno apply and kyverno
+      test commands now support cleanup policies, HTTP/Envoy authz
+      policies, and mutateExisting MutatingPolicies (#15732,
+      #15645, #15691, #15253).
+    - Success event filtering: A new successEventActions ConfigMap
+      parameter allows fine-grained control over which success
+      events are emitted (#15466).
+  * New Features
+    - Allow output for missing resources in CLI tests (#14194)
+    - Support mutateExisting MutatingPolicy in CLI test (#15253)
+    - Support cleanup policies in kyverno apply command (#15732)
+    - Support HTTP/Envoy authz policies in kyverno apply (#15645)
+    - Support authz policies in kyverno test (#15691)
+  * Bug Fixes CLI
+    - Fix: CLI CRD support without cluster connection (#13565)
+    - Fix: bypass rule name matching for ruleless policies in CLI
+      (#15757)
+    - Fix: add list GVK to fake cluster scheme to prevent
+      mutateExisting panic (#15746)
+    - Fix: pass CRD-aware RESTMapper to GeneratingPolicy test path
+      (#15561)
+    - Fix: correct test result reporting for legacy policies and
+      CEL engine errors (#15361)
+    - Fix: display NonFatalErrors in CLI test command (#15725)
+    - Fix: return error instead of panic when
+      imageRegistryCredentials.secrets are used in CLI (#15061)
+    - Fix: add default message when rule message is empty in CLI
+      (#14700)
+    - Fix: three bugs in CLI apply command (#15317)
+    - Fix: CLI failing selector-based policies when they did not
+      match the resource (#15236)
+    - Fix: close leaked file handles in CLI apply command (#15151,
+      #15150)
+    - Fix: return proper error on non-OK HTTP status in CLI
+      resource and policy loading (#15153)
+    - Fix: prevent segfault when applying K8s-mode policy to JSON
+      payload (#15332)
+    - Fix: support piped v1.List objects in apply command (#13860)
+    - Fix: check all rules in the test in case no rule is specified
+      (#11739)
+  * Security / CVEs
+    - Fix: limit intermediate certs to mitigate CVE-2026-32280
+      (#15858)
+    - Fix CVE-2026-32283: upgrade Go toolchain to 1.26.2 (#15844)
+    - Fix CVE-2026-24686: bump go-tuf/v2 to v2.4.1 (#15579)
+    - Fix stdlib CVEs (#15483)
+  * Security and compatibility-relevant updates:
+    - Bump github.com/sigstore/cosign/v3 from 3.0.4 to 3.0.6
+      (#15321, #15798)
+    - Bump github.com/sigstore/sigstore to 1.10.5 (#15751)
+    - Bump github.com/sigstore/rekor to 1.5.1 (#15498)
+    - Bump github.com/google/go-containerregistry from 0.21.3 to
+      0.21.5 (#15797, #15852)
+    - Bump golang.org/x/crypto to 0.50.0 (#15551, #15830)
+    - Bump the Kubernetes group libraries (#15408, #15876)
+    - Bump github.com/cloudflare/circl from 1.6.1 to 1.6.3 (#15376)
+    - Bump sigs.k8s.io/controller-runtime to 0.23.3 (#15456)
+    - Routine dependency updates (grpc, otel, go-git, supercronic,
+      zerolog, envoy, and GitHub Actions)
+
+-------------------------------------------------------------------
 Thu Apr 23 19:32:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.17.2:
