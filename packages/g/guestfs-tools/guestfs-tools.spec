@@ -17,10 +17,10 @@
 # needsbinariesforbuild
 
 
-%global patches_touch_autotools 1
+%global patches_touch_autotools 0
 
 # The source directory.
-#####%global source_directory 1.54-stable
+#%%global source_directory 1.54-stable
 %global source_directory 1.55-development
 
 #
@@ -31,7 +31,7 @@
 
 Summary:        Tools to access and modify virtual machine disk images
 Name:           guestfs-tools
-Version:        1.55.3
+Version:        1.55.7
 Release:        0
 License:        GPL-2.0-or-later
 
@@ -42,6 +42,8 @@ ExclusiveArch:  x86_64 ppc64le s390x aarch64 riscv64
 URL:            http://libguestfs.org/
 Source0:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz
 Source1:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz.sig
+
+Patch1:         revert-Use-caml_unix_error-instead-of-unix_error.patch
 
 %if 0%{patches_touch_autotools}
 BuildRequires:  autoconf

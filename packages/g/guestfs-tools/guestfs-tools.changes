@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Apr 28 16:04:12 MDT 2026 - carnold@suse.com
+
+- Update to version 1.55.7 (jsc#PED-14625)
+  revert-Use-caml_unix_error-instead-of-unix_error.patch
+- Changes with this release
+  mldrivers/firmware.ml: Ignore CHS geometry error from parted
+  utils: Add read_whole_file function
+  options/keys.c: When reading key from user, prefix with "text:"
+  options/keys.c: When using --key <dev>:key:<string>, prefix with "text:"
+  options/keys.c: When reading the key from a file, encode it with base64
+  mltools: add prefix to debug () output
+  mltools: for external commands include function name in debug() output
+  smp: respect cgroup v2 CPU limits for appliance SMP
+  m4/guestfs-bash-completion.m4: Allow control of completions installation
+  bash/*: Remove vestigial bash completions
+  builder: Add test-virt-index-validate-bad-2 to EXTRA_DIST
+  builder: templates: Add rhel-9.6, -10.0 (replacing 10 beta), and -10.1
+  builder/templates/make-template.ml: Fix RHEL 10 URL
+  builder/templates/make-template.ml: Fix RHEL 9 URL
+  Add update-submodule.sh
+  mlutils/unix_utils-c.c: Include "guestfs-utils.h"
+  mlcustomize: Remove fictitious "vista" virtio-win directory
+  mlcustomize: Use 2k8 drivers for Windows Vista and 2008 Server R1
+  virtio-win: Install blnsvr.exe to C:\Windows\Drivers\VirtIO
+  build: mark some ocaml commands with $(AM_V_GEN)
+  mlpcre: Add optional PCRE_ANCHORED flag when compiling expressions
+  mlstdutils: Export List.assoc_opt
+  mlcustomize/firstboot.ml: Be more careful about quoting
+  mlcustomize: Create a sentinel file when firstboot completes
+  mlutils/c_utils-c.c: Throw Unix_error on failure
+  Use caml_unix_error instead of unix_error
+  mlutils/unix_utils.ml: statvfs_is_network_filesystem should not be noalloc
+  Add support for Kylin, NeoKylin and Anolis Linux
+  common: fix FILE stream leak in worker_thread on guestfs_create failure (#27)
+  options: fix memory leak in read_key on getline failure (#30)
+  edit: check WIFEXITED before WEXITSTATUS in edit_file_editor and edit_file_perl (#31)
+  mlutils: fix pattern leak in mkdtemp wrapper on failure
+  qemuopts: check for write errors in qemuopts_to_channel and qemuopts_to_config_channel (#33)
+  builder: add more index test coverage
+  builder: index: make newlines not matter
+  build: default to CFLAGS="-fPIC"
+  build: prepend CFLAGS, not append
+  builder: fix virt-index-validate test failure detection
+  configure: fix AC_PROG_LEX warning
+  ci: update from virt-v2v setup
+  build: drop leftover generator warning
+  build: bash: Fix make `Error 1 (ignored)` noise
+  tests: delete blank-disks/
+  builder: fix index-parse.y deprecation warning
+  index: builder parser with -Wno-yacc
+  po-docs: hide deprecation warnings
+  build: replace AM_GNU_GETTEXT with simpler LIBINTL check
+  filesystems: Optionally display filesystem version
+  po: Update PO files for move of tools in previous commit
+  Move virt-filesystems, virt-log, virt-ls, virt-tail to new directories
+  build: Add $(NULL) as a convenient list terminator
+  po/POTFILES-ml: Add new sysprep operation zsh_history
+  Update gettext files
+  Sort some entries in .gitignore into order
+  inspector: For xfs, try to find and print the filesystem version
+  Merge pull request #22 from FazleArefin/feat/zsh-history
+  sysprep: New operation to clean zsh history files
+  builder: templates: Add fedora-43
+  builder/pxzcat-c.c: Remove set but not used variable
+  mlcustomize/firstboot.ml: Print %USERNAME% and %USERDOMAIN%
+  github: Use ./configure --enable-werror
+  builder: templates: Add template for Debian 13 (trixie)
+  Merge pull request #21 from pulsarrush/patch-1
+  builder: templates: Add Debian 13 (trixie)
+
+-------------------------------------------------------------------
+Wed Apr  8 01:49:01 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Set %patches_touch_autotools to 0; currently there are no patches.
+
+-------------------------------------------------------------------
 Tue Jan  6 10:27:16 MST 2026 - carnold@suse.com
 
 - Update to version 1.55.3 (jsc#PED-14625)
