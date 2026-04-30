@@ -3216,4 +3216,15 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     <comment>- Manage files in /var with systemd-tmpfiles (bsc#1253139)</comment>
     <requestid>1328106</requestid>
   </revision>
+  <revision rev="303" vrev="1">
+    <srcmd5>40dd3163deaa044a0817973f69c1fc0a</srcmd5>
+    <version>2.43</version>
+    <time>1777573571</time>
+    <user>anag_factory</user>
+    <comment>- sys-mount-cloexec-flag.patch: include: isolate __O_CLOEXEC flag for
+  sys/mount.h and fcntl.h
+- sys-mount-open-tree-macros.patch: Linux: Only define OPEN_TREE_* macros
+  in &lt;sys/mount.h&gt; if undefined (BZ #33921) (forwarded request 1346484 from Andreas_Schwab)</comment>
+    <requestid>1346485</requestid>
+  </revision>
 </revisionlist>

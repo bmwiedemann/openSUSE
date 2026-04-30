@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Mon Apr 13 12:48:17 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- sys-mount-cloexec-flag.patch: include: isolate __O_CLOEXEC flag for
+  sys/mount.h and fcntl.h
+- sys-mount-open-tree-macros.patch: Linux: Only define OPEN_TREE_* macros
+  in <sys/mount.h> if undefined (BZ #33921)
+
+-------------------------------------------------------------------
+Mon Mar 30 09:15:23 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- resolv-count-resource-records.patch: resolv: Count records correctly
+  (CVE-2026-4437, bsc#1260078, BZ #34014)
+- resolv-check-hostname.patch: resolv: Check hostname for validity
+  (CVE-2026-4438, bsc#1260082, BZ #34015)
+- ldbl-128ibm-ceill-floorl-roundl-truncl.patch: Fix ldbl-128ibm ceill,
+  floorl, roundl and truncl zero-sign handling (BZ #33623)
+- getlogin-utmp-fallback.patch: Linux: In getlogin_r, use utmp fallback
+  only for specific errors
+- nss-malloc-failure-checks.patch: nss: Missing checks in
+  __nss_configure_lookup, __nss_database_get (BZ #28940)
+- nss-database-for-fork.patch: nss: Introduce dedicated struct
+  nss_database_for_fork type
+- malloc-sys-kernel-mm.patch: malloc: Avoid accessing /sys/kernel/mm files
+- tests-aarch64-makefile-deps-bti.patch: tests: aarch64: fix makefile
+  dependencies for dlopen tests for BTI
+- aarch64-lock-gcs-startup.patch: aarch64: Lock GCS status at startup
+- elf-strlen-redir-ifunc.patch: elf: Use dl-symbol-redir-ifunc.h instead
+  _dl_strlen
+- riscv-redir-memcpy-generic.patch: riscv: Resolve calls to memcpy using
+  memcpy-generic in early startup
+- tst-rseq-linux-7.patch: tests: fix tst-rseq with Linux 7.0
+
+-------------------------------------------------------------------
+Fri Mar 27 12:39:30 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- remove -fcf-protection from optflags on non-x86_64 cross compilers.
+
+-------------------------------------------------------------------
+Mon Jan 26 09:43:12 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Update to glibc 2.43
+  * The ISO C23 free_sized, free_aligned_sized, memset_explicit, and
+    memalignment functions have been added
+  * As specified in ISO C23, the assert macro is defined to take variable
+    arguments to support expressions with a comma inside a compound
+    literal initializer not surrounded by parentheses
+  * For ISO C23, the functions bsearch, memchr, strchr, strpbrk, strrchr,
+    strstr, wcschr, wcspbrk, wcsrchr, wcsstr and wmemchr that return
+    pointers into their input arrays now have definitions as macros that
+    return a pointer to a const-qualified type when the input argument is
+    a pointer to a const-qualified type
+  * The ISO C23 typedef names long_double_t, _Float32_t, _Float64_t, and
+    (on platforms supporting _Float128) _Float128_t, introduced in TS
+    18661-3:2015, have been added to <math.h>
+  * The ISO C23 optional time bases TIME_MONOTONIC, TIME_ACTIVE, and
+    TIME_THREAD_ACTIVE have been added
+  * On Linux, the mseal function has been added
+  * Additional optimized and correctly rounded mathematical functions have
+    been imported from the CORE-MATH project, in particular acosh, asinh,
+    atanh, erf, erfc, lgamma, and tgamma.
+  * Optimized implementations for fma, fmaf, remainder, remaindef, frexpf,
+    frexp, frexpl (binary128), and frexpl (intel96) have been added.
+  * The SVID handling for acosf, acoshf, asinhf, atan2f, atanhf, coshf, fmodf,
+    lgammaf/lgammaf_r, log10f, remainderf, sinhf, sqrtf, tgammaf, y0/j0,
+    y1/j1, and yn/jn was moved to compat symbols, allowing improvements in
+    performance
+  * On Linux, the openat2 function has been added
+  * On AArch64, support for 2MB transparent huge pages has been enabled by
+    default in malloc (similar to setting glibc.malloc.hugetlb=1 tunable)
+  * On AArch64 Linux targets supporting the Scalable Matrix Extension
+    (SME), the clone() system call wrapper will disable the ZA state of the
+    SME
+  * On AArch64 targets supporting the Branch Target Identification (BTI)
+    extension, it is possible to enforce that all binaries in the process
+    support BTI using the glibc.cpu.aarch64_bti tunable
+  * On AArch64 Linux targets supporting at least one of the branch protection
+    extensions (e.g. Branch Target Identification or Guarded Control Stack), it
+    is possible to use LD_DEBUG=security to make the dynamic linker show
+    warning messages about loaded binaries that do not support the
+    corresponding security feature
+  * On AArch64, vector variants of the new C23 exp2m1, exp10m1, log10p1,
+    log2p1, and rsqrt routines have been added
+  * On RISC-V, an RVV-optimized implementation of memset has been added
+  * On x86, support for the Intel Nova Lake and Wildcat Lake processors
+    has been added
+  * Unicode support has been updated to Unicode 17.0.0
+  * The manual has been updated and modernized, in particular also regarding
+    many of its code examples
+  * Support for dumped heaps has been removed
+  * The aforementioned change in ISO C23 of the declaration of bsearch,
+    memchr, strchr, strpbrk, strrchr, strstr, wcschr, wcspbrk, wcsrchr,
+    wcsstr, and wmemchr as const-preserving macros can lead to compilation
+    issues in code not set up for it
+  * The uimaxabs function has been renamed to umaxabs, following a change
+    to the name of that function in ISO C2Y
+  * The fromfp, fromfpx, ufromfp and ufromfpx functions, and the
+    corresponding functions for other floating-point types, now return
+    their result in the same type as their floating-point argument, rather
+    than intmax_t or uintmax_t, in accordance with a change to the
+    definition of these functions in ISO C23
+  * The support for TX lock elision of pthread mutexes has been removed on all
+    architectures (powerpc, s390x, x86_64)
+  * The next linux 6.19 release will remove support for compat syscalls on s390x
+  * The LD_PROFILE functionality no longer has a default directory for the
+    profile data it writes
+  * GLIBC-SA-2026-0001: Integer overflow in memalign leads to heap
+    corruption (CVE-2026-0861)
+  * GLIBC-SA-2026-0002: getnetbyaddr and getnetbyaddr_r leak stack
+    contents to DNS resovler (CVE-2026-0915)
+  * GLIBC-SA-2026-0003: wordexp with WRDE_REUSE and WRDE_APPEND may return
+    uninitialized memory (CVE-2025-15281)
+- inet-fortified-namespace.patch, abort-fork-lock-init.patch,
+  ld.so-load-segment-gaps.patch, cancelable-syscall-return-value.patch,
+  ctype-tls-IE.patch, i386-gnu-tls-abi-tag.patch,
+  x86-64-gnu2-tls-abi-tag.patch, x86-64-dt-x86-64-plt-abi-tag.patch,
+  i386-gnu2-tls-abi-tag.patch, aarch64-sve-powf.patch: Removed
+
+-------------------------------------------------------------------
 Wed Jan  7 11:55:12 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Manage files in /var with systemd-tmpfiles (bsc#1253139)

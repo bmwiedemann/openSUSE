@@ -186,10 +186,10 @@ Name:           glibc%{name_suffix}
 Summary:        Standard Shared Libraries (from the GNU C Library)
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0
 Group:          System/Libraries
-Version:        2.42
+Version:        2.43
 Release:        0
 %if %{without snapshot}
-%define git_id d2097651cc
+%define git_id f762ccf84f
 %define libversion %version
 %else
 %define git_id %(echo %version | sed 's/.*\.g//')
@@ -336,27 +336,35 @@ Patch306:       glibc-fix-double-loopback.diff
 %if %{without snapshot}
 ###
 # Patches from upstream
-# PATCH-FIX-UPSTREAM inet-fortified: fix namespace violation (BZ #33227)
-Patch1000:      inet-fortified-namespace.patch
-# PATCH-FIX-UPSTREAM stdlib: resolve a double lock init issue after fork (BZ #32994)
-Patch1001:      abort-fork-lock-init.patch
-# PATCH-FIX-UPSTREAM elf: Handle ld.so with LOAD segment gaps in _dl_find_object (BZ #31943)
-Patch1002:      ld.so-load-segment-gaps.patch
-# PATCH-FIX-UPSTREAM nptl: Fix SYSCALL_CANCEL for return values larger than INT_MAX (BZ #33245)
-Patch1003:      cancelable-syscall-return-value.patch
-# PATCH-FIX-UPSTREAM Use TLS initial-exec model for __libc_tsd_CTYPE_* thread variables (BZ #33234)
-Patch1004:      ctype-tls-IE.patch
-# PATCH-FIX-UPSTREAM i386: Add GLIBC_ABI_GNU_TLS version (BZ #33221)
-Patch1005:      i386-gnu-tls-abi-tag.patch
-# PATCH-FIX-UPSTREAM x86-64: Add GLIBC_ABI_GNU2_TLS version (BZ #33129)
-Patch1006:      x86-64-gnu2-tls-abi-tag.patch
-# PATCH-FIX-UPSTREAM x86-64: Add GLIBC_ABI_DT_X86_64_PLT (BZ #33212)
-Patch1007:      x86-64-dt-x86-64-plt-abi-tag.patch
-# PATCH-FIX-UPSTREAM i386: Also add GLIBC_ABI_GNU2_TLS version (BZ #33129)
-Patch1008:      i386-gnu2-tls-abi-tag.patch
-# PATCH-FIX-UPSTREAM AArch64: Fix SVE powf routine (BZ #33299)
-Patch1009:      aarch64-sve-powf.patch
 ###
+# PATCH-FIX-UPSTREAM resolv: Count records correctly (CVE-2026-4437, BZ #34014)
+Patch1000:      resolv-count-resource-records.patch
+# PATCH-FIX-UPSTREAM resolv: Check hostname for validity (CVE-2026-4438, BZ #34015)
+Patch1001:      resolv-check-hostname.patch
+# PATCH-FIX-UPSTREAM Fix ldbl-128ibm ceill, floorl, roundl and truncl zero-sign handling (BZ #33623)
+Patch1002:      ldbl-128ibm-ceill-floorl-roundl-truncl.patch
+# PATCH-FIX-UPSTREAM Linux: In getlogin_r, use utmp fallback only for specific errors
+Patch1003:      getlogin-utmp-fallback.patch
+# PATCH-FIX-UPSTREAM nss: Missing checks in __nss_configure_lookup, __nss_database_get (BZ #28940)
+Patch1004:      nss-malloc-failure-checks.patch
+# PATCH-FIX-UPSTREAM nss: Introduce dedicated struct nss_database_for_fork type
+Patch1005:      nss-database-for-fork.patch
+# PATCH-FIX-UPSTREAM malloc: Avoid accessing /sys/kernel/mm files
+Patch1006:      malloc-sys-kernel-mm.patch
+# PATCH-FIX-UPSTREAM tests: aarch64: fix makefile dependencies for dlopen tests for BTI
+Patch1007:      tests-aarch64-makefile-deps-bti.patch
+# PATCH-FIX-UPSTREAM aarch64: Lock GCS status at startup
+Patch1008:      aarch64-lock-gcs-startup.patch
+# PATCH-FIX-UPSTREAM elf: Use dl-symbol-redir-ifunc.h instead _dl_strlen
+Patch1009:      elf-strlen-redir-ifunc.patch
+# PATCH-FIX-UPSTREAM riscv: Resolve calls to memcpy using memcpy-generic in early startup
+Patch1010:      riscv-redir-memcpy-generic.patch
+# PATCH-FIX-UPSTREAM tests: fix tst-rseq with Linux 7.0
+Patch1011:      tst-rseq-linux-7.patch
+# PATCH-FIX-UPSTREAM include: isolate __O_CLOEXEC flag for sys/mount.h and fcntl.h
+Patch1012:      sys-mount-cloexec-flag.patch
+# PATCH-FIX-UPSTREAM Linux: Only define OPEN_TREE_* macros in <sys/mount.h> if undefined (BZ #33921)
+Patch1013:      sys-mount-open-tree-macros.patch
 %endif
 
 ###
@@ -632,6 +640,10 @@ for opt in $tmp; do
 %endif
 %if %{build_cross}
     -m*) ;;  # remove all machine specific options for crosses
+%if "%{cross_arch}" != "x86_64"
+    # on cross archs not x86_64, remove -fcf-protection as its x86_64 only.
+    -fcf-protection*) ;;
+%endif
 %endif
 %if "%{cross_arch}" == "hppa"
      # -fstack-clash-protection is not supported on targets where the
@@ -710,18 +722,17 @@ BuildCCplus=%{cross_cpu}-suse-linux-g++-%{!?with_gcc:%{gcc_version}}%{?with_gcc}
 #
 mkdir cc-base
 cd cc-base
-%if %{build_profile}
-profile="--enable-profile"
-%else
-profile="--disable-profile"
-%endif
 
 ../configure \
 	CFLAGS="$BuildFlags" BUILD_CFLAGS="$BuildFlags" \
 	CC="$BuildCC" CXX="$BuildCCplus" \
 	--prefix=%{_prefix} \
 	--libexecdir=%{_libexecdir} --infodir=%{_infodir} \
-        $profile \
+%if %{build_profile}
+	--enable-profile \
+%else
+	--disable-profile \
+%endif
 	--build=%{build} --host=${target} \
 %if %{build_cross}
 	--with-headers=%{sysroot}/usr/include \
@@ -1441,7 +1452,7 @@ exit 0
 
 %files devel
 %defattr(-,root,root)
-%license COPYING COPYING.LIB
+%license COPYING*
 %doc NEWS README
 %doc %{_mandir}/man3/*
 %{_bindir}/sprof
@@ -1573,7 +1584,7 @@ exit 0
 %if %{build_cross}
 %files -n cross-%{cross_arch}-glibc-devel
 %defattr(-,root,root)
-%license COPYING COPYING.LIB
+%license COPYING*
 %{sysroot}
 %endif
 
