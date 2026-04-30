@@ -17,7 +17,7 @@
 
 
 Name:           kubetui
-Version:        1.12.1
+Version:        1.13.0
 Release:        0
 Summary:        A terminal UI for Kubernetes
 License:        MIT
