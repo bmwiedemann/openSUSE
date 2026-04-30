@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 25 18:52:40 UTC 2026 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add a missing pkgconfig(gtk+-3.0) build dependency.
+
+-------------------------------------------------------------------
 Thu Feb 22 14:04:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,7 +1,7 @@
 #
 # spec file for package numix-gtk-theme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,18 +25,19 @@ Summary:        Numix GTK+ theme for MATE, Cinnamon, GNOME, and Xfce
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://numixproject.org/
-Source0:        %{name}-%{version}.tar.xz 
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE numix-gtk-theme-light-menubars.patch sor.alexei@meowr.ru -- Make light menus (Gtk2), dark menus are buggy in Qt4 QGtk2Style.
 Patch0:         %{name}-light-menubars.patch
 # PATCH-FIX-UPSTREAM numix-gtk-theme-add-text_view_bg.patch bsc#1184979 alynx.zhou@suse.com -- Added color used by new version of vte.
 Patch1:         numix-gtk-theme-add-text_view_bg.patch
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig
-BuildArch:      noarch
 BuildRequires:  glib2-tools
 BuildRequires:  libxml2-tools
+BuildRequires:  pkgconfig
 BuildRequires:  sassc
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildArch:      noarch
 
 %description
 Numix is a modern flat theme with a combination of light and dark
