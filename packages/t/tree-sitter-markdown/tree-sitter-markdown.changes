@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 20 11:14:27 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Use runtime=source mapping to get all symbol-names,
+  module-names in line (requires
+  soo#tree-sitter/tree-sitter@c2d87ea45f46).
+
+-------------------------------------------------------------------
 Sat Mar 14 19:22:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.5.3:

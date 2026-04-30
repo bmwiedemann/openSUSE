@@ -78,4 +78,14 @@
     <comment></comment>
     <requestid>1339436</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>68cde3fa3c09da2cb322289073d65abd</srcmd5>
+    <version>0.5.3</version>
+    <time>1777573950</time>
+    <user>anag_factory</user>
+    <comment>- Use runtime=source mapping to get all symbol-names,
+  module-names in line (requires
+  soo#tree-sitter/tree-sitter@c2d87ea45f46).</comment>
+    <requestid>1350279</requestid>
+  </revision>
 </revisionlist>

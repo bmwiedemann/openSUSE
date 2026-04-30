@@ -25,7 +25,7 @@ License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-markdown
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter >= 0.25.3
-%treesitter_grammars %{name} %{name}-inline
+%treesitter_grammars %{_name}=tree-sitter-%{_name} %{_name}-inline=tree-sitter-%{_name}-inline
 
 %description
 %{summary}.
