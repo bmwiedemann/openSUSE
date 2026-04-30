@@ -19,7 +19,7 @@
 %define executable_name hcloud
 
 Name:           hcloud-cli
-Version:        1.63.0
+Version:        1.64.1
 Release:        0
 Summary:        A command-line interface for Hetzner Cloud
 License:        MIT
