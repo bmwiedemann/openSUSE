@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 29 16:28:23 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- Add 0001-server-skip-buffered-MSG_PING_RESPONSE-at-game-start.patch
+  (fixes s390x build / pool/dealers-choice/pulls/1#issuecomment-135113)
+
+-------------------------------------------------------------------
 Fri Apr 24 17:19:12 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
 
 - dealers-choice 0.0.13

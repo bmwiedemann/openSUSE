@@ -87,4 +87,12 @@
     <comment>Update to v0.0.13</comment>
     <requestid>1349155</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b0d594a2ea5aa5d2dde77819f4cc411d</srcmd5>
+    <version>0.0.13</version>
+    <time>1777573587</time>
+    <user>anag_factory</user>
+    <comment>Fixes s390x build https://src.opensuse.org/pool/dealers-choice/pulls/1#issuecomment-135113</comment>
+    <requestid>1350047</requestid>
+  </revision>
 </revisionlist>

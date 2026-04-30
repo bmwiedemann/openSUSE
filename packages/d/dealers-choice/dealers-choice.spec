@@ -24,6 +24,7 @@ License:        MIT
 Group:          Amusements/Games/Board/Card
 URL:            https://dealer-s-choice.github.io/
 Source:         https://github.com/Dealer-s-Choice/dealers-choice/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Patch0:         0001-server-skip-buffered-MSG_PING_RESPONSE-at-game-start.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -48,7 +49,7 @@ the dealer chooses the game before each hand.
 %lang_package
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{name}-%{version} -p1
 
 %build
 %meson \
