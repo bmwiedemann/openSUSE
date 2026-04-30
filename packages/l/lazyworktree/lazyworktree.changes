@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:29:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.45.1:
+  This release introduces repo-local worktree placement using the
+  new $LWT_REPO_PATH variable, adds the ability to prune merged
+  branches without active worktrees, and improves repository path
+  resolution with URL decoding.
+  * Features
+    - Added support for repo-local worktree placement via the
+      $LWT_REPO_PATH environment variable. This allows users to
+      store worktrees within the repository itself (e.g., in a
+      .worktrees folder) while automatically omitting redundant
+      repository name segments.
+    - Introduced a new configuration option, prune_stale_branches,
+      which includes merged local branches that no longer have
+      active worktrees in the prune checklist.
+    - Implemented an automated workflow to streamline the merging
+      of Dependabot pull requests.
+  * Bug Fixes
+    - Resolved an issue where repository names with URL-encoded
+      characters (such as %20) were not decoded before creating
+      directory paths (#49).
+    - Improved the identification of Claude CLI processes by
+      ignoring the exec keyword in shell command wrappers.
+    - Fixed CI configuration to ensure workflows are correctly
+      triggered when dependency files (go.mod and go.sum) are
+      updated.
+    - Updated the release workflow to verify successful release
+      creation even if GoReleaser encounters non-critical failures
+      during secondary steps like AUR pushing.
+  * Maintenance
+    - Standardized Git configuration key lookups by automatically
+      normalizing hyphens to underscores (e.g., lw.worktree-dir now
+      correctly maps to worktree_dir).
+    - Replaced the default Dependabot Go configuration with a
+      custom weekly automated dependency update and auto-merge
+      workflow.
+    - Updated documentation with new guidelines for documentation
+      reviews and agent contribution requirements.
+  * Dependencies
+    - Updated project dependencies to their latest versions,
+      including several Charm libraries (bubbletea, lipgloss,
+      bubbles, ultraviolet) and standard Go modules (x/term,
+      x/sys). (#43, #45, #48)
+    - Upgraded various GitHub Actions to their latest major
+      versions, including actions/configure-pages,
+      actions/deploy-pages, actions/upload-pages-artifact, and
+      peter-evans/create-pull-request. (#42)
+  * Breaking Changes
+    - None.
+
+-------------------------------------------------------------------
 Tue Mar 31 05:04:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.45.0:
