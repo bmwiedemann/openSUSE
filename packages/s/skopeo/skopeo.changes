@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 28 11:41:27 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 1.22.2:
+  * [release-1.22] Bump Skopeo to 1.22.2
+  * proxy: Verify *either* toplevel or target
+  * proxy: Move policycontext into global state
+  * Packit: fix downstream post-modifications action
+
+-------------------------------------------------------------------
 Tue Apr 14 06:06:29 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.22.1:
