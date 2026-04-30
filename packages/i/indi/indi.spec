@@ -17,12 +17,12 @@
 
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1590
-%global force_gcc_version 12
+%global force_gcc_version 14
 %endif
 
 %define so_ver 2
 Name:           indi
-Version:        2.2.0
+Version:        2.2.1.1
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later

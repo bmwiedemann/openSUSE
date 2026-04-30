@@ -265,4 +265,41 @@
 </comment>
     <requestid>1344870</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1e3ce8a5b1ee452c58526b2c8fc6c06b</srcmd5>
+    <version>2.2.1.1</version>
+    <time>1777573726</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.2.1.1:
+  * Fix crash when saving Nicknames for the first time and make
+    setDeviceNicknameFromId boolean so we know if it loaded a valid
+    nickname
+  * fix EQ alignment drift by encoding encoder RA instead of HA in
+    sync/goto TDVs
+  * Link Alpaca focuser and filter wheel against httplib by
+    @hamarituc in #2354
+  * Remove generated files by @pinotree in #2358
+  * weatherflow: fix observations endpoint and HTTP port by
+    @ckemper67 in #2360
+  * new ESP32go mount driver (lx200generic based) by @jordisese in
+    #2362
+  * hakos_roof: use system nlohmann json if available by @pinotree in
+    #2356
+  * Fix OnStep Sync() to notify clients immediately via
+    EqNP/NewRaDec, matching base class LX200Telescope::Sync()
+    behavior — prevents ~50s ALIGN_SYNCING stall in KStars/Ekos by
+    @cfuture81 in #2364
+  * telescope simulator: add INDI alignment integration, and robust
+    Alt-Az support by @ckemper67 in #2366
+  * Add wanderer snowflake by @grm in #2355
+  * Update rules to be used for 26.04 by @s-pouya-sh in #2368
+  * lx200_esp32go: improve PINS/TnS compatibility by @jordisese in
+    #2367
+  * StreamManager: add Full Depth toggle for native bit-depth
+    streaming by @cfuture81 in #2370
+  * alignment: fix plugin selection persistence, sanitize polar sync
+    entries by @ckemper67 in #2372
+</comment>
+    <requestid>1350165</requestid>
+  </revision>
 </revisionlist>
