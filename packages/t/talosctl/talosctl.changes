@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Apr 30 06:56:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.13.0:
+  https://github.com/siderolabs/talos/releases/tag/v1.13.0
+  * talosctl debug
+    Talos Linux now provides a way to run and attach to the
+    privileged debug container with a user-provided container
+    image.
+    The debug container might be used for troubleshooting and
+    debugging purposes.
+  * Image APIs Updated
+    Talos Linux provides new APIs to manage container images on the
+    node: listing, pulling, importing and removing images.
+    The new pull API provides pull progress notifications.
+    The CLI commands talosctl image pull, talosctl image list and
+    talosctl image remove have been updated to interact with the
+    new APIs.
+  * Talosctl images k8s-bundle subcommand accepts version parameter
+    The talosctl images k8s-bundle command now accepts an optional
+    argument to override Talos version.
+  * talosctl images talos-bundle can ignore reaching to the
+    registry
+    The talosctl images talos-bundle command now accepts optional
+    --overlays and --extensions flags.
+    If those are set to false, the command will not attempt to
+    reach out to the container registry to fetch the latest
+    versions and digests of the overlays and extensions.
+  * Lifecycle Upgrade in talosctl
+    talosctl upgrades now route through LifecycleService, aligning
+    CLI behavior with the new install/upgrade API and unifying the
+    upgrade path.
+    This change is transparent to users but standardizes the
+    backend used for upgrades.
+  * Commits
+    - 4b9fe000f feat: add quirk for talosctl factory downloads
+    - d34a61c8d fix(talosctl): ensure uncordon runs after
+      reboot/upgrade errors
+    - 6dc97e8aa fix(talosctl): always use default GRPC dial options
+    - dc59a7e94 fix: drop talosctl install
+    - f7be2c598 feat: add resource view to talosctl dashboard
+    - 1e4cd20d2 feat: add talosctl install command and upgrade via
+      LifecycleService
+    - c8800b41e fix: update path handling on talosctl cgroups
+    - f118ee47e fix: read multi-doc machine config with newer
+      talosctl
+    - daf18abf4 fix: fix talosctl debug in enforcing mode
+    - d43a01ccb feat: implement talosctl debug
+    - d90c775b8 chore: rename internal talosctl debug air-gapped
+    - 0bd48bbc6 fix(talosctl): pass --k8s-endpoint flag to
+      rotate-ca kubernetes rotation
+    - 634b71e2d docs: move talosctl pcap example to Example Block
+    - 7416dca59 fix: print talosctl images to release notes
+    - 43b43ff18 docs: split talosctl commands into groups
+    - 008cd0986 fix: disable kexec in talosctl cluster create on
+      arm64
+    - 74c1df6f4 test: propagate MTU size to QEMU in talosctl
+      cluster create
+    - e715f3871 feat: present kernel log as talosctl logs kernel
+  * Dependency Changes
+    Please see the release notes
+
+-------------------------------------------------------------------
 Sun Apr 26 08:31:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.12.7:
