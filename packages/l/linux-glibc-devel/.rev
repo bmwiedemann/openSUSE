@@ -844,4 +844,12 @@
     <comment>- Update to kernel headers 6.19 (forwarded request 1331979 from Andreas_Schwab)</comment>
     <requestid>1331980</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>6fecbd10cd5bbe4094cd5f56c0023622</srcmd5>
+    <version>7.0</version>
+    <time>1777573568</time>
+    <user>anag_factory</user>
+    <comment>- Do not exclude drm headers, libdrm no longer conflicts (forwarded request 1346438 from Andreas_Schwab)</comment>
+    <requestid>1346439</requestid>
+  </revision>
 </revisionlist>

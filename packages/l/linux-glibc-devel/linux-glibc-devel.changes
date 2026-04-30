@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 13 12:06:17 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Update to kernel headers 7.0
+- Do not exclude drm headers, libdrm no longer conflicts
+
+-------------------------------------------------------------------
 Mon Feb  9 09:19:47 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Update to kernel headers 6.19

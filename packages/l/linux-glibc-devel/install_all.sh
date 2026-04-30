@@ -45,15 +45,6 @@ pushd "$header_dir"
 find -type f \( -name ".*.cmd" -o -name Makefile \) -exec rm {} +
 for arch in $archs; do
   cd $arch
-  #-------------------------------------------------------------------
-  #Fri Sep  5 10:43:49 CEST 2008 - matz@suse.de
-
-  #- Remove the kernel version of drm headers, they conflict
-  #  with the libdrm ones, and those are slightly newer.
-  #
-  rm -rf usr/include/drm/
-  # Remove confusing empty uapi directory
-  test ! -d usr/include/uapi || rmdir usr/include/uapi
   for dir in *; do
     case "$dir" in
       usr) ;;
