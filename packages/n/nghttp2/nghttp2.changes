@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Apr 27 20:25:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.69.0:
+  * nghttpx: Avoid separate allocation for QUIC tx buffer
+  * lib/CMakeLists.txt: Fix NGHTTP2_CONFIG_INSTALL_DIR path
+  * nghttpx: Ensure resetting downstream h2 stream
+  * Fix union usage in nghttp2_data_provider_wrap
+  * nghttpx: Remove stream_closed_ from Http2DownstreamConnection
+  * Introduce nghttp2_strlen_lit
+  * Check nghttp2_is_fatal first
+  * nghttpd, nghttpx: Accept at most 10 connections per loop
+  * nghttpx: Accept pending connections until it returns error
+  * nghttpx: Rework close-wait packet generation for h3
+  * nghttpx: Add extra validation for non-regular path for
+  * nghttpx: More strict validation for h1 host
+  * nghttpd: Refactor with std::span
+  * nghttp: Refactor with std::span
+  * nghttp: Move span creation out of loop
+  * nghttpx: Use std::span for upstream interface
+  * nghttpx: Modernize downstream connection with std::span
+  * nghttpx: Deal with partial write in API downstream connection
+  * nghttpx: Adopt std::span for LiveCheck read path
+  * Nghttpx connection write span
+  * Nghttpx connection read span
+  * nghttpx: Refactor QUIC utils with std::span
+  * nghttpx: Choose the sensible value for TCP_DEFER_ACCEPT
+  * nghttpx: Simplify HTTP/2 writer
+  * nghttpx: Format doc
+  * nghttpx: Deal with ECONNRESET for IPC socket on worker
+  * nghttpx: Rewrite LOG macros with std::source_location
+  * nghttpx: Amend #2671 to fix double logging
+  * nghttpx: Call Log ctor directly
+  * nghttpx: Rename LOG_ENABLED to log_enabled
+  * src: Add static constexpr to ngtcp2 and nghttp3 callbacks
+  * Nghttpx ech
+  * nghttpx: Log the number of loaded ECH configuration in NOTICE
+
+-------------------------------------------------------------------
+Thu Mar 19 13:32:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to 1.68.1 (bsc#1259835):
+  * Fixes CVE-2026-27135
+
+-------------------------------------------------------------------
 Mon Oct 27 12:28:01 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.68.0:
