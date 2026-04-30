@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Apr 29 14:51:21 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1777474261.55e5cd5e:
+  * build(deps): bump postcss from 8.5.8 to 8.5.12
+  * fix(apparmor): adjust the /usr/bin/ssh child profile for 16.x
+  * fix: Fix rendering bugrefs as links in lists and other structures
+  * feat: use full job group name for priority check by default
+  * chore(AGENTS.md): refine coverage requirements
+  * fix(apparmor): allow worker to execute "df"
+  * feat: Restore styling and TOC for API documentation
+  * feat: add "badge" option to openqa-clone-job for markdown output
+  * fix(AMQP): Avoid keeping unused AMQP connections around
+  * test: Use more compact syntax in AMQP tests
+  * test: Use signatures in AMQP tests
+  * fix(apparmor): allow access to all Python 3 versions
+  * style: Add tools/ to perlcritic check
+  * fix(Plugin::IssueReporter): prevent erroneous "mailto" links
+  * perf: tweak jobs evaluated on job groups based on recent improvement
+  * fix: try to resolve package conflicts with zypper
+  * docs: Keep filenames in links for GitHub but strip them in build
+  * docs: fix typo in WritingTests
+  * fix: dynamically check pandoc support in generate-documentation
+  * fix: dynamically check pandoc support in generate-docs
+  * fix: add python3-weasyprint for build-docs
+  * feat(ui): Simplify warning about full storage
+  * feat(scheduler): Consider all relevant paths in storage space check
+  * docs: Polish rendering and fix conversion artifacts
+  * style: Enforce perlcritic policy RequireQuotedHeredocTerminator
+  * refactor: Reduce complexity in openqa-load-templates
+  * style: Enable strictures before first line of code
+  * style: Add script/ to perlcritic check
+  * docs: Mimic Asciidoctor style with custom CSS and Pandoc template
+  * docs: Fix broken anchors and rendering issues in generate-documentation
+  * docs: Post-conversion cleanup of artifacts and broken links
+  * docs: Switch PDF engine to weasyprint in generate-documentation
+  * docs: Improve glossary highlighting and remove redundant divs
+  * style: Remove trailing whitespace from Markdown files
+  * docs: Enable section numbering and clean up index.md
+  * feat: Convert documentation from AsciiDoc to Markdown
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * fix(t/33-developer_mode): make needle renaming robust
+  * fix(t/33-developer_mode): bypass storage space check
+  * build(deps-dev): bump prettier from 3.8.1 to 3.8.3
+  * build(deps): bump delaunator from 5.0.1 to 5.1.0
+  * fix(apparmor): adapt snd2png path to os-autoinst#2881
+  * feat: Throttle consistently failing test scenarios
+  * test: fix sporadic failure in scheduling-and-worker-scalability
+  * perf: optimize compute_build_results with DB-level aggregation
+  * feat: disable dashboard inclusion checkbox if ignored by config
+  * fix: remove redundant title attribute in group property editor
+  * refactor: Avoid duplicate access like `$details->{$nickname_field}`
+  * feat: Make all assignments configurable on login via OAuth2 configurable
+  * feat: Make assignment of fullname on login via OAuth2 configurable
+  * fix: Improve auth logic to support API fallback and fix CSRF handling
+
+-------------------------------------------------------------------
 Mon Apr 20 17:20:23 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1776705613.1c2c8716:
