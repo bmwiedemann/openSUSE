@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1346956</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>260334b6c33a12f377e1dcafb72e7769</srcmd5>
+    <version>2.4.3</version>
+    <time>1777573936</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.3:
+  https://github.com/mistralai/client-python/releases</comment>
+    <requestid>1350209</requestid>
+  </revision>
 </revisionlist>

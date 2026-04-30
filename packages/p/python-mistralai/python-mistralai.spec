@@ -17,7 +17,7 @@
 
 
 Name:           python-mistralai
-Version:        2.3.2
+Version:        2.4.3
 Release:        0
 Summary:        Python Client SDK for the Mistral AI API
 License:        Apache-2.0
@@ -87,10 +87,10 @@ use it.
 
 %check
 # gh#mistralai/client-python#490
-# test_create_function_result_*_span tests use asyncio.get_event_loop() which
-# raises RuntimeError on Python 3.14 where an implicit event loop is no longer
-# created automatically (upstream bug).
-%pytest -k "not (test_create_function_result_error_span or test_create_function_result_span_attributes)"
+# test_create_function_result_*_span and test_concurrent_async_requests_get_correct_spans
+# tests use asyncio.get_event_loop() which raises RuntimeError on Python 3.14
+# where an implicit event loop is no longer created automatically (upstream bug).
+%pytest -k "not (test_create_function_result_error_span or test_create_function_result_span_attributes or test_concurrent_async_requests_get_correct_spans)"
 
 %files %{python_files}
 %doc README-PYPI.md
