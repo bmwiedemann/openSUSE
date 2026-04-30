@@ -1,7 +1,7 @@
 #
 # spec file for package shibboleth-sp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Source0:        https://shibboleth.net/downloads/service-provider/%{version}/%{n
 Source1:        https://shibboleth.net/downloads/service-provider/%{version}/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source3:        shibd.service
+Source4:        shibboleth-sp-tmpfiles.conf
 Patch0:         shibboleth-sp-2.5.5-doxygen_timestamp.patch
 Patch1:         disable-https.patch
 BuildRequires:  apache2-devel
@@ -172,6 +173,7 @@ EOF
 %sysusers_generate_pre %{realname}.sysusers %{name} %{name}.conf
 
 install -Dpm0644 %{realname}.sysusers %{buildroot}%{_sysusersdir}/%{name}.conf
+install -D -m 644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{realname}.conf
 
 %check
 %make_build check
@@ -226,8 +228,8 @@ fi
 %{_libdir}/%{realname}/*
 %{_unitdir}/shibd.service
 %{_sysusersdir}/%{name}.conf
-%attr(0750,%{runuser},%{runuser}) %dir %{_localstatedir}/log/%{realname}
-%attr(0755,%{runuser},%{runuser}) %dir %{_localstatedir}/cache/%{realname}
+%ghost %attr(0750,%{runuser},%{runuser}) %dir %{_localstatedir}/log/%{realname}
+%ghost %attr(0755,%{runuser},%{runuser}) %dir %{_localstatedir}/cache/%{realname}
 %ghost %attr(0755,%{runuser},%{runuser}) %dir /run/%{realname}
 %dir %{_datadir}/xml/%{realname}
 %{_datadir}/xml/%{realname}/*
@@ -244,6 +246,7 @@ fi
 %attr(0755,root,root) %{_sysconfdir}/%{realname}/seckeygen.sh
 %doc %{pkgdocdir}
 %exclude %{pkgdocdir}/api
+%{_tmpfilesdir}/%{realname}.conf
 
 %files -n libshibsp%{libvers}
 %{_libdir}/libshibsp.so.*

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 30 11:34:50 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Use systemd-tmpfiles to create files under /var [jsc#PED-14784]
+- Added sources 
+  * shibboleth-sp-tmpfiles.conf  
+
+-------------------------------------------------------------------
 Fri Nov  7 14:12:33 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 3.5.1:
