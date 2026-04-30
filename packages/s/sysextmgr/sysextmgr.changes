@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 29 09:28:59 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.0.0+git20260429.bf44eec:
+  * Release version 1.0.0
+  * libsmartcols-devel added to CI
+  * cleanup not needed functions
+  * fixed extract
+  * using pager
+  * cleanup download
+  * using vasprintf instead of asprintf
+  * fixed ENOENT
+  * cleanup cache
+  * creating a cache for meta data
+  * using posix_spawn
+  * -a option for image-list
+  * checking environment
+  * cleanup error handling
+  * improved logging
+  * Update help message for cleanup options
+
+-------------------------------------------------------------------
 Tue Mar 10 09:54:19 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.2.1+git20260310.385db9a:

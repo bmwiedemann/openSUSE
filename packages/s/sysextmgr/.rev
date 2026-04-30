@@ -96,4 +96,28 @@
   * Update README about manifest and config files</comment>
     <requestid>1337950</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ed91a42f8eb79df942db971289791045</srcmd5>
+    <version>1.0.0+git20260429.bf44eec</version>
+    <time>1777573556</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.0+git20260429.bf44eec:
+  * Release version 1.0.0
+  * libsmartcols-devel added to CI
+  * cleanup not needed functions
+  * fixed extract
+  * using pager
+  * cleanup download
+  * using vasprintf instead of asprintf
+  * fixed ENOENT
+  * cleanup cache
+  * creating a cache for meta data
+  * using posix_spawn
+  * -a option for image-list
+  * checking environment
+  * cleanup error handling
+  * improved logging
+  * Update help message for cleanup options</comment>
+    <requestid>1349960</requestid>
+  </revision>
 </revisionlist>
