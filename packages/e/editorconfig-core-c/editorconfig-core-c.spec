@@ -18,7 +18,7 @@
 
 
 Name:           editorconfig-core-c
-Version:        0.12.10
+Version:        0.12.11
 Release:        0
 Summary:        EditorConfig core library written in C
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -26,8 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://editorconfig.org/
 Source:         https://github.com/editorconfig/editorconfig-core-c/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch1:         editorconfig-core-c-const-correctness.patch
-BuildRequires:  cmake >= 3.16.3
+BuildRequires:  cmake >= 3.18.4
 BuildRequires:  doxygen
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpcre2-8)
@@ -86,7 +85,7 @@ This package contains files for developing and building with %{name}
 
 %build
 %cmake
-%make_build
+%cmake_build
 
 %install
 %cmake_install

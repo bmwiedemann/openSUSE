@@ -133,4 +133,12 @@ editorconfig-core-c 0.12.10</comment>
   glibc 2.43</comment>
     <requestid>1341911</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7ebb39a7d30f52bb6672992dd056fc8e</srcmd5>
+    <version>0.12.11</version>
+    <time>1777573540</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1349884</requestid>
+  </revision>
 </revisionlist>
