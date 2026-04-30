@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 30 14:29:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.0
+  * added get_song_credits
+  * get_playlist: add playlist community vote
+  * get_playlist: support continuations for playlists sorted by
+   "Top voted"
+  * edit_playlist: support collaboration
+  * edit_playlist: add support for votes
+
+-------------------------------------------------------------------
 Sat Jan 31 10:27:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.11.5
