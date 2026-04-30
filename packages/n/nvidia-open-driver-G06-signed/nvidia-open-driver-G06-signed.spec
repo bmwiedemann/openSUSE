@@ -16,14 +16,14 @@
 #
 
 
-%define gfx_aarch64_version 580.126.18
+%define gfx_aarch64_version 580.159.03
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 580.126.18
+%define gfx_version 580.159.03
 %endif
-%define cuda_version 580.126.20
+%define cuda_version 580.159.03
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 
@@ -67,16 +67,16 @@ License:        GPL-2.0-only AND MIT
 Group:          System/Kernel
 URL:            https://github.com/NVIDIA/open-gpu-kernel-modules/
 #Source0:        https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{version}.tar.gz#/open-gpu-kernel-modules-%{version}.tar.gz
-Source0:        open-gpu-kernel-modules-%{version}.tar.xz
+Source0:        open-gpu-kernel-modules-%{version}.tar.gz
 # This is defined at build, not for 'osc service run download_files` or
 # factory_auto. This both sources are seen outside of the build but only
 # the matching one will be included in the srpm for the respective flavor.
 %if %{undefined linux_arch}
-#Source16:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{cuda_version}.tar.xz#/open-gpu-kernel-modules-%{cuda_version}.tar.xz
-Source16:       open-gpu-kernel-modules-%{cuda_version}.tar.xz
+#Source16:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{cuda_version}.tar.gz#/open-gpu-kernel-modules-%{cuda_version}.tar.gz
+Source16:       open-gpu-kernel-modules-%{cuda_version}.tar.gz
 Source18:       pci_ids-%{cuda_version}
-#Source19:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{gfx_aarch64_version}.tar.xz#/open-gpu-kernel-modules-%{gfx_aarch64_version}.tar.xz
-Source19:       open-gpu-kernel-modules-%{gfx_aarch64_version}.tar.xz
+#Source19:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{gfx_aarch64_version}.tar.gz#/open-gpu-kernel-modules-%{gfx_aarch64_version}.tar.gz
+Source19:       open-gpu-kernel-modules-%{gfx_aarch64_version}.tar.gz
 Source20:       pci_ids-%{gfx_aarch64_version}
 %endif
 Source1:        my-find-supplements
@@ -101,6 +101,7 @@ Source18:       Check4WrongSupplements.sh
 %if 0%{?sle_version} < 150600
 Patch0:         kernel-5.14.patch
 %endif
+Patch1:         disable-objtool-override.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

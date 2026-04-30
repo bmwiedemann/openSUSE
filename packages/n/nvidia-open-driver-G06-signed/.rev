@@ -1042,4 +1042,16 @@
 - improved RPM description for -cuda and non-cuda variant</comment>
     <requestid>1342856</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>67225324b50e3ce0f276b496a4b90cab</srcmd5>
+    <version>580.159.03</version>
+    <time>1777573544</time>
+    <user>anag_factory</user>
+    <comment>- update CUDA variant to 580.159.03
+- update non-CUDA variant to 580.159.03 (boo#1262749)
+- disable-objtool-override.patch
+  * get rid of confusing objtool warnings (boo#1212841)
+     --&gt; from https://github.com/joanbm/nvidia-470xx-linux-mainline</comment>
+    <requestid>1349912</requestid>
+  </revision>
 </revisionlist>
