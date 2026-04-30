@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:44:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.0.5:
+  Security:
+  * mod_proxy65: Consistently apply authorization checks
+  * mod_proxy65: Don’t proxy data until after bytestream activation
+  * mod_c2s, mod_s2s: Introduce new pre-authentication stanza size limit
+  * Add limit for stanza max child elements
+  * mod_c2s: Remove timers immediately on disconnection
+  * net.server_epoll: Clean up timers after disconnection
+  * See https://prosody.im/security/advisory_735dd9d3/
+  Fixes and improvements:
+  * net.http.parser: Fix handling of chunked request
+  * MUC: Advertise hats feature on room JID (thanks Daniel)
+  * moduleapi: Use multitable add/remove instead of set (fixes memory leak)
+  * mod_cloud_notify: Fix leaking iq response handlers by using send_iq()
+  * Improve federation with servers using only IP addresses
+  * prosody: Prevent loading local code when installed system-wide
+  * mod_http_file_share: Improve handling of Range requests
+  * mod_carbons: Fix some carbons decision-making bugs (fixes #1861:
+    mod_carbons does not forward “sent” MUC PMs to other clients)
+  Minor changes:
+  * net.resolvers: Fix to avoid SRV lookups for IP addresses
+  * prosody: Abort earlier on incompatible Lua version
+  * mod_turn_external: hand out credentials for type == turns too
+  * mod_s2s: Fully validate stream addressing
+  * prosodyctl check features: Warn if http file sharing enabled on both host and component
+  * util.prosodyctl: Don’t check for mod_posix being disabled, it’s deprecated
+  * util.startup: Improve error message when failing to load config file
+  * util.x509: Add support for iPAddress certs
+  * prosodyctl: Trim any trailing newline from password entry
+  * mod_admin_shell: Make cert index search path relative to config file
+  * mod_admin_shell: Improve multi-host command handling
+  * mod_admin_shell: Show help listing when specifying only a section name
+  * mod_admin_shell: Ensure password validity when setting passwords for new/existing users
+  * mod_account_activity: Handle authentication provider returning no user info
+  * config: Use default value when enum option has incorrect value
+  * mod_http: “Handle” streaming requests to avoid invoking redirect handler
+
+-------------------------------------------------------------------
 Mon Jan 26 08:03:17 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.0.4:
