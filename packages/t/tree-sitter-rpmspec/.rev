@@ -477,4 +477,12 @@ Index: tree-sitter-rpmspec.changes
 +- Switch from obs_scm to tar_scm</comment>
     <requestid>1339387</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>97c8c0a22beb2ca2a2bc493fc7315feb</srcmd5>
+    <version>0+20260218.12ca618</version>
+    <time>1777573951</time>
+    <user>anag_factory</user>
+    <comment>- Add missing comma to the patch and fix include directories.</comment>
+    <requestid>1350283</requestid>
+  </revision>
 </revisionlist>
