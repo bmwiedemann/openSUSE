@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:15:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.4:
+  * build(deps): bump the actions group across 1 directory with 2
+    updates (#2505)
+  * build(deps): bump the gomod group across 1 directory with 4
+    updates (#2507)
+  * Bump apko to v1.2.9 (#2506)
+
+-------------------------------------------------------------------
 Fri Apr 24 06:07:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.3:
