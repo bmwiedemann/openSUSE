@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 30 06:01:16 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-cryptography-47.patch:
+  * Remove use of SECT from the testsuite.
+
+-------------------------------------------------------------------
 Tue Jan 27 09:04:41 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 4.2.0 (fixes CVE-2026-24408, bsc#1257303)

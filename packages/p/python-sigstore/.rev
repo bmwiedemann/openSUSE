@@ -73,4 +73,13 @@
     <comment></comment>
     <requestid>1329469</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d8b3b5b1b6cc89685b1719194384e36d</srcmd5>
+    <version>4.2.0</version>
+    <time>1777573720</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-cryptography-47.patch:
+  * Remove use of SECT from the testsuite.</comment>
+    <requestid>1350131</requestid>
+  </revision>
 </revisionlist>

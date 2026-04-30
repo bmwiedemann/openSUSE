@@ -30,6 +30,8 @@ Summary:        A tool for signing Python package distributions
 License:        Apache-2.0
 URL:            https://github.com/sigstore/sigstore-python
 Source0:        https://github.com/sigstore/sigstore-python/archive/v%{version}.tar.gz#/sigstore-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#sigstore/sigstore-python#1685
+Patch0:         support-cryptography-47.patch
 BuildRequires:  %{python_module PyJWT >= 2.1}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module cryptography >= 42}
