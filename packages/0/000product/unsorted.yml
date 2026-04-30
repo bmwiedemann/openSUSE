@@ -2994,6 +2994,7 @@ unsorted:
   - crudini 
   - crun 
   - crun-vm 
+  - crush 
   - cryfs 
   - cryptctl 
   - cryptsetup-ssh 
@@ -3333,8 +3334,6 @@ unsorted:
   - discord-rpc-devel 
   - discount 
   - disk-encryption-tool 
-  - diskmonitor 
-  - diskmonitor-lang 
   - diskscan 
   - disorderfs 
   - disruptor 
@@ -7829,10 +7828,6 @@ unsorted:
   - google-worksans-fonts-doc 
   - googleapis-source 
   - googler 
-  - goose 
-  - goose-bash-completion 
-  - goose-fish-completion 
-  - goose-zsh-completion 
   - gopass 
   - gopass-bash-completion 
   - gopass-fish-completion 
@@ -11267,7 +11262,6 @@ unsorted:
   - libKF5NewStuffWidgets5 
   - libKF5NotifyConfig5 
   - libKF5NotifyConfig5-lang 
-  - libKF5Plasma5 
   - libKF5Plotting5 
   - libKF5Prison5 
   - libKF5Pty5 
@@ -11677,7 +11671,7 @@ unsorted:
   - libSciTokens0 
   - libShowMySky-Qt6-15 
   - libShowMySky-Qt6-devel 
-  - libSimGearCore-2024_1_1 
+  - libSimGearCore-2024_1_5 
   - libSingular-4_4_1 
   - libSingular-devel 
   - libSoQt20 
@@ -17390,10 +17384,12 @@ unsorted:
   - libxmi0 
   - libxml++-2_6-2 
   - libxml++-3_0-1-32bit 
+  - libxml++-4_0-1 
   - libxml++-5_0-1 
   - libxml++-devel 
   - libxml++26-devel 
   - libxml++30-devel 
+  - libxml++40-devel 
   - libxml-security-c-devel 
   - libxml-security-c30 
   - libxml2-16-32bit 
@@ -23203,11 +23199,6 @@ unsorted:
   - plasma-branding-MicroOS 
   - plasma-camera 
   - plasma-camera-lang 
-  - plasma-framework 
-  - plasma-framework-components 
-  - plasma-framework-desktoptheme 
-  - plasma-framework-devel 
-  - plasma-framework-lang 
   - plasma-pass 
   - plasma-pass-lang 
   - plasma-phonebook 
@@ -23859,6 +23850,7 @@ unsorted:
   - pulseaudio-module-x11 
   - pulseaudio-module-zeroconf 
   - pulseaudio-qt6-devel 
+  - pulseaudio-setup 
   - pulseaudio-system-wide 
   - pulseaudio-utils-32bit 
   - pulseaudio-zsh-completion 
@@ -24851,6 +24843,7 @@ unsorted:
   - python311-azure-mgmt-appconfiguration 
   - python311-azure-mgmt-appcontainers 
   - python311-azure-mgmt-applicationinsights 
+  - python311-azure-mgmt-appnetwork 
   - python311-azure-mgmt-appplatform 
   - python311-azure-mgmt-arizeaiobservabilityeval 
   - python311-azure-mgmt-artifactsigning 
@@ -24873,6 +24866,7 @@ unsorted:
   - python311-azure-mgmt-botservice 
   - python311-azure-mgmt-carbonoptimization 
   - python311-azure-mgmt-cdn 
+  - python311-azure-mgmt-certificateregistration 
   - python311-azure-mgmt-chaos 
   - python311-azure-mgmt-cloudhealth 
   - python311-azure-mgmt-cognitiveservices 
@@ -24930,6 +24924,7 @@ unsorted:
   - python311-azure-mgmt-disconnectedoperations 
   - python311-azure-mgmt-dns 
   - python311-azure-mgmt-dnsresolver 
+  - python311-azure-mgmt-domainregistration 
   - python311-azure-mgmt-durabletask 
   - python311-azure-mgmt-dynatrace 
   - python311-azure-mgmt-edgeactions 
@@ -28767,6 +28762,7 @@ unsorted:
   - python313-azure-mgmt-appconfiguration 
   - python313-azure-mgmt-appcontainers 
   - python313-azure-mgmt-applicationinsights 
+  - python313-azure-mgmt-appnetwork 
   - python313-azure-mgmt-appplatform 
   - python313-azure-mgmt-arizeaiobservabilityeval 
   - python313-azure-mgmt-artifactsigning 
@@ -28789,6 +28785,7 @@ unsorted:
   - python313-azure-mgmt-botservice 
   - python313-azure-mgmt-carbonoptimization 
   - python313-azure-mgmt-cdn 
+  - python313-azure-mgmt-certificateregistration 
   - python313-azure-mgmt-chaos 
   - python313-azure-mgmt-cloudhealth 
   - python313-azure-mgmt-cognitiveservices 
@@ -28846,6 +28843,7 @@ unsorted:
   - python313-azure-mgmt-disconnectedoperations 
   - python313-azure-mgmt-dns 
   - python313-azure-mgmt-dnsresolver 
+  - python313-azure-mgmt-domainregistration 
   - python313-azure-mgmt-durabletask 
   - python313-azure-mgmt-dynatrace 
   - python313-azure-mgmt-edgeactions 
@@ -32688,6 +32686,7 @@ unsorted:
   - python314-azure-mgmt-appconfiguration 
   - python314-azure-mgmt-appcontainers 
   - python314-azure-mgmt-applicationinsights 
+  - python314-azure-mgmt-appnetwork 
   - python314-azure-mgmt-appplatform 
   - python314-azure-mgmt-arizeaiobservabilityeval 
   - python314-azure-mgmt-artifactsigning 
@@ -32710,6 +32709,7 @@ unsorted:
   - python314-azure-mgmt-botservice 
   - python314-azure-mgmt-carbonoptimization 
   - python314-azure-mgmt-cdn 
+  - python314-azure-mgmt-certificateregistration 
   - python314-azure-mgmt-chaos 
   - python314-azure-mgmt-cloudhealth 
   - python314-azure-mgmt-cognitiveservices 
@@ -32767,6 +32767,7 @@ unsorted:
   - python314-azure-mgmt-disconnectedoperations 
   - python314-azure-mgmt-dns 
   - python314-azure-mgmt-dnsresolver 
+  - python314-azure-mgmt-domainregistration 
   - python314-azure-mgmt-durabletask 
   - python314-azure-mgmt-dynatrace 
   - python314-azure-mgmt-edgeactions 
@@ -33303,6 +33304,7 @@ unsorted:
   - python314-devpi-server 
   - python314-dfVFS 
   - python314-dfdatetime 
+  - python314-dfwinreg 
   - python314-diagnostic 
   - python314-dialite 
   - python314-dictdiffer 
@@ -36139,6 +36141,7 @@ unsorted:
   - qemu-extra 
   - qemu-headless 
   - qemu-hw-s390x-virtio-gpu-ccw 
+  - qemu-ipxe 
   - qemu-ivshmem-tools 
   - qemu-linux-user 
   - qemu-ovmf-x86_64-debug 
@@ -50304,6 +50307,7 @@ unsorted:
   - wayshot 
   - waysip 
   - wayvnc 
+  - waywall 
   - wazero 
   - wbg 
   - wbxml2-tools 

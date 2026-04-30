@@ -765,6 +765,7 @@
     <package name="iptables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="iputils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ipw-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="ipxe-qemu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="irqbalance" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="irqbalance-ui" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="iscsiuio" supportstatus="unsupported"/> <!-- reason: dvd:iscsiuio -->
@@ -3491,7 +3492,6 @@
     <package name="ptools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="publicsuffix" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pullin-bcm43xx-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="pulseaudio-setup" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pulseaudio-utils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="purge-kernels-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-apparmor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
@@ -3694,7 +3694,6 @@
     <package name="qemu-hw-usb-redirect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="qemu-hw-usb-smartcard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="qemu-img" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="qemu-ipxe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="qemu-ksm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="qemu-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="qemu-microvm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
