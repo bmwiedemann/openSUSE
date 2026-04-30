@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:43:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.12.0:
+  * Update CircleCI configuration to use GCP Docker login instead
+    of Quay.io (#459)
+  * fix env injection for nova release (#458)
+  * add notice to include registry change and immutable images
+    notice on the readme (#455)
+  * Update CircleCI configuration to skip signing during GoReleaser
+    snapshot release (#453)
+
+-------------------------------------------------------------------
 Wed Apr 22 05:51:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.15:
