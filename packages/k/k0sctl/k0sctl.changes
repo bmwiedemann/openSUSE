@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:29:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.0:
+  * Bump github.com/mattn/go-isatty from 0.0.21 to 0.0.22 (#1076)
+  * Bump github.com/Azure/go-ntlmssp from 0.1.0 to 0.1.1 (#1075)
+  * Fix dynamic node config to use lowercase metadata key instead
+    of Metadata (#1077)
+  * Bump k8s.io/client-go from 0.35.4 to 0.36.0 (#1074)
+  * Bump k8s.io/apimachinery from 0.35.4 to 0.36.0 (#1073)
+  * Bump github.com/k0sproject/rig from 0.21.2 to 0.21.4 (#1072)
+  * Bump k8s.io/client-go from 0.35.3 to 0.35.4 (#1071)
+  * Bump k8s.io/apimachinery from 0.35.3 to 0.35.4 (#1070)
+  * ci: Add support for linux-riscv64 (#1067)
+  * Bump softprops/action-gh-release from 2 to 3 (#1069)
+  * Bump dependabot/fetch-metadata from 2 to 3 (#1066)
+  * Fix TestLocalBinaryProviderCreatesParentDir in sandboxed
+    environments (#1068)
+  * Bump golang.org/x/text from 0.35.0 to 0.36.0 (#1065)
+  * Bump github.com/go-playground/validator/v10 from 10.30.1 to
+    10.30.2 (#1058)
+  * Lowercase auto-detected hostname (#1063)
+  * Add all the k0sctl packages to the README (#1060)
+  * Bump github.com/mattn/go-isatty from 0.0.20 to 0.0.21 (#1064)
+
+-------------------------------------------------------------------
+Thu Mar 26 11:50:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.0:
+  * What's Changed
+    - Basic Windows worker support by @kke in #936
+    - Validate nllb is not enabled when "single" role used by @kke
+      in #1003
+    - Use --feature-gates from host.installFlags also in k0s config
+      validation by @kke in #1015
+    - Validate or discover k0s path when useExistingK0s used by
+      @kke in #1011
+    - Fix backup and reset with --kubelet-root-dir and unknown k0s
+      version by @kke in #1020
+    - Workaround v1.35.1+k0s.0 requiring valid join token on worker
+      restart by @kke in #1039
+    - Allow host role mismatch when resetting nodes if --force
+      given by @kke in #1007
+    - Ensure IPv6 API address with node-local LB by @kke in #1045
+    - Use hostname instead of label to query node readiness by
+      @gknw in #1041
+    - Shell-escape hostname when used in remote commands by @kke in
+      #1048
+    - Windows worker fixes by @tppolkow in #1030
+    - Refactor k0s binary retrieval by @kke in #1046
+    - fix: k0sctl apply fails with debug install flag on windows
+      nodes by @tppolkow in #1055
+  * CI / Workflow
+    - Bump actions/upload-artifact from 6 to 7 by @dependabot[bot]
+      in #1031
+    - Bump docker/setup-qemu-action from 3 to 4 by @dependabot[bot]
+      in #1036
+    - Bump docker/login-action from 3 to 4 by @dependabot[bot] in
+      #1037
+    - Bump docker/setup-buildx-action from 3 to 4 by
+      @dependabot[bot] in #1042
+    - Bump docker/build-push-action from 6 to 7 by @dependabot[bot]
+      in #1043
+    - Dockerfile fix: place k0sctl binary in PATH to fix container
+      execution, changed base image go-1.26-alpine step builder by
+      @TeodoroAnelloasix2 in #1057
+    - Modernize linter autofix by @kke in #997
+    - Update copyright year to 2026 by @kke in #1016
+  * Dependency Updates
+    - Bump k8s.io/client-go from 0.34.3 to 0.35.0 by
+      @dependabot[bot] in #998
+    - Bump github.com/go-playground/validator/v10 from 10.29.0 to
+      10.30.1 by @dependabot[bot] in #1001
+    - Bump golang.org/x/text from 0.32.0 to 0.33.0 by
+      @dependabot[bot] in #1008
+    - Bump github.com/bmatcuk/doublestar/v4 from 4.9.1 to 4.9.2 by
+      @dependabot[bot] in #1010
+    - Bump github.com/sirupsen/logrus from 1.9.3 to 1.9.4 by
+      @dependabot[bot] in #1013
+    - Bump github.com/bmatcuk/doublestar/v4 from 4.9.2 to 4.10.0 by
+      @dependabot[bot] in #1017
+    - Bump golang.org/x/text from 0.33.0 to 0.34.0 by
+      @dependabot[bot] in #1022
+    - Bump k8s.io/apimachinery from 0.35.0 to 0.35.1 by
+      @dependabot[bot] in #1024
+    - Bump k8s.io/client-go from 0.35.0 to 0.35.2 by
+      @dependabot[bot] in #1033
+    - Bump go to v0.21.2, go to 1.26 and update all deps by @kke in
+      #1050
+    - Bump github.com/k0sproject/rig from 0.21.1 to 0.21.2 by
+      @dependabot[bot] in #1051
+    - Bump k8s.io/apimachinery from 0.35.2 to 0.35.3 by
+      @dependabot[bot] in #1052
+    - Bump k8s.io/client-go from 0.35.2 to 0.35.3 by
+      @dependabot[bot] in #1053
+
+-------------------------------------------------------------------
 Wed Dec 17 06:22:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.28.0:
