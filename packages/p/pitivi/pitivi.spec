@@ -25,7 +25,6 @@ Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.pitivi.org/
 Source0:        https://download.gnome.org/sources/pitivi/2023/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
-BuildRequires:  gnome-doc-utils-devel >= 0.18.0
 BuildRequires:  gobject-introspection >= 1.31.1
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  itstool

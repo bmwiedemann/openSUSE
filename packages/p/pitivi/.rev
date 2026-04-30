@@ -385,4 +385,20 @@
     <comment></comment>
     <requestid>1074746</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>1d924b7e201889850b6f861b893fb95c</srcmd5>
+    <version>2023.03</version>
+    <time>1774470068</time>
+    <user>anag_factory</user>
+    <comment>- Drop gnome-doc-utils-devel BuildRequires: no longer needed.</comment>
+    <requestid>1342463</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>1020155972e933bcf1e98dff5d7e1ccb</srcmd5>
+    <version>2023.03</version>
+    <time>1777573585</time>
+    <user>anag_factory</user>
+    <comment>- [git]: Do not store *.changes as LFS object.</comment>
+    <requestid>1350046</requestid>
+  </revision>
 </revisionlist>
