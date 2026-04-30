@@ -917,4 +917,12 @@ Currently, openSUSE:Factory:Staging:E.
     <comment></comment>
     <requestid>1312329</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>5ff82673a8b515197657e48ab7bd1288</srcmd5>
+    <version>0.3.30</version>
+    <time>1777573560</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1349982</requestid>
+  </revision>
 </revisionlist>

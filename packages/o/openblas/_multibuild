@@ -1,5 +1,5 @@
 <multibuild>
-  <package>serial</package>
-  <package>pthreads</package>
-  <package>openmp</package>
+  <flavor>serial</flavor>
+  <flavor>pthreads</flavor>
+  <flavor>openmp</flavor>
 </multibuild>

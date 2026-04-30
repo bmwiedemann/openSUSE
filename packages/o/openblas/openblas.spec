@@ -1,6 +1,7 @@
 #
 # spec file for package openblas
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -105,7 +106,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           %{package_name}
-Version:        0.3.29
+Version:        0.3.30
 Release:        0
 Summary:        An optimized BLAS library based on GotoBLAS2
 License:        BSD-3-Clause
@@ -118,7 +119,6 @@ Source4:        openblas.rpmlintrc
 # PATCH port
 Patch102:       Handle-s390-correctly.patch
 Patch103:       openblas-ppc64be_up2_p8.patch
-Patch104:       Restore-the-non-vectorized-code-from-before-PR4880-for-POWER8.patch
 
 #BuildRequires:  cmake
 BuildRequires:  memory-constraints
@@ -208,7 +208,6 @@ OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 This package contains test binaries.
 
 %prep
-
 %setup -q -n OpenBLAS-%{?sha1:%{sha1}}%{!?sha1:%{version}}
 %autopatch -p1
 %ifarch s390
@@ -240,7 +239,6 @@ lib%{name}-devel
 EOF
 
 %build
-
 # For static libraries use -ffat-lto-objects to make sure the 'regular'
 # assembler code is generated as well as the intermediate code will be
 # stripped during pre-packaging post-processing. Also, set ldflags_tests
@@ -338,6 +336,7 @@ mkdir -p %{buildroot}/%{p_testdir}
     PREFIX=%{p_prefix}
 sed -e 's#@FLAVOR@#%{flavor}#' \
     -e 's#@COMPILER@#%{?compiler_family:%compiler_family}}#' \
+    -e 's#@DIR@#%{p_testdir}#' \
     < %{S:3} > %{buildroot}/%{p_testdir}/openblas_tests.sh
 chmod 0755 %{buildroot}/%{p_testdir}/openblas_tests.sh
 for i in %{buildroot}/%{p_testdir}/*; do
@@ -442,6 +441,13 @@ if [ ! -d %{p_libdir} ]; then
     %{_sbindir}/update-alternatives --remove openblas-default%{?a_x} %{p_libdir}
 fi
 /sbin/ldconfig
+
+%check
+sed -e 's#@FLAVOR@#%{flavor}#' \
+    -e 's#@COMPILER@#%{?compiler_family:%compiler_family}}#' \
+    -e 's#@DIR@#%{buildroot}/%{p_testdir}#' \
+    < %{S:3} > ./openblas_tests_check.sh
+bash ./openblas_tests_check.sh
 
 %files -n lib%{name}%{so_a}
 %defattr(-,root,root,-)
