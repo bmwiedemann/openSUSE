@@ -1902,4 +1902,41 @@
     <comment>- Update to version 3.3.7+git0.a32bce2da:</comment>
     <requestid>1349028</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>dacc52d547953847ad6a0c1e1b77d5d7</srcmd5>
+    <version>3.3.8+git0.75f414f92</version>
+    <time>1777573940</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.8+git0.75f414f92:
+  * [RELEASE] Released version 3.3.8
+  * BUG/MINOR: acme: skip auth/challenge steps when newOrder returns a certificate
+  * BUG/MEDIUM: acme: fix segfault on newOrder with empty authorizations
+  * BUG/MINOR: http-htx: Don't normalize emtpy path for OPTIONS requests
+  * BUG/MEDIUM: mux-fcgi: Properly handle full buffer for FCGI_PARAM record
+  * BUG/MINOR: payload: prevent integer overflow in distcc token parsing
+  * BUG/MINOR: payload: validate minimum keyshare_len in smp_fetch_ssl_keyshare_groups
+  * BUG/MINOR: fix various typos and spelling mistakes in user-visible messages
+  * BUG/MEDIUM: tasks: Do not loop in task_schedule() if a task is running
+  * BUG/MAJOR: mux-h1: Deal with true 64-bits integer to emit chunks size
+  * BUG/MEDIUM: http-htx: Loop on full host value during scheme based normalization
+  * BUG/MEDIUM: http-htx: Don't use data from HTX message to update authority
+  * BUG/MAJOR: http-htx: Store new host in a chunk for scheme-based normalization
+  * BUILD: 51d: fix bool definition on dummy lib v4
+  * BUG/MINOR: http_ana: use scf to report term_evts in http_wait_for_request()
+  * BUG/MEDIUM: mux_h1: fix stack buffer overflow in h1_append_chunk_size()
+  * CLEANUP: peers: fix a few user-visible spelling mistakes
+  * BUG/MINOR: peers: fix wrong flag reported twice for dump_flags
+  * BUG/MINOR: peers: fix logical &quot;and&quot; when checking for local in PEER_APP_ST_STARTING
+  * BUG/MINOR: sample: fix NULL strm dereference in sample_conv_when
+  * BUG/MINOR: sample: fix memory leak in check_when_cond() when ACL is not found
+  * BUG/MINOR: tools: free previously allocated strings on strdup failure in backup_env()
+  * BUG/MINOR: tools: fix memory leak in indent_msg() on out of memory
+  * BUG/MINOR: tools: my_memspn/my_memcspn wrong cast causing incorrect byte reading
+  * BUG/MINOR: ssl: fix double-free on failed realloc in ssl_sock.c
+  * DOC: config: Fix log-format example with last rule expressions
+  * BUG/MINOR: ssl: fix memory leaks on realloc failure in ssl_sock.c
+  * BUG/MINOR: ssl: fix memory leaks on realloc failure in ssl_ckch.c
+  * BUG/MINOR: tcpcheck: Allow connection reuse without prior traffic</comment>
+    <requestid>1350257</requestid>
+  </revision>
 </revisionlist>
