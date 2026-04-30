@@ -236,6 +236,18 @@ Patch45:        gh139257-Support-docutils-0.22.patch
 # PATCH-FIX-UPSTREAM pass-test_write_read_limited_history.patch bsc#[0-9]+ mcepl@suse.com
 # Fix readline history truncation when length is reduced
 Patch48:        pass-test_write_read_limited_history.patch
+# PATCH-FIX-UPSTREAM CVE-2026-6100-use-after-free-decompression.patch bsc#1262098 mcepl@suse.com
+# NULL dangling pointer to avoid use-after-free error
+Patch49:        CVE-2026-6100-use-after-free-decompression.patch
+# PATCH-FIX-UPSTREAM CVE-2026-4786-webbrowser-open-action.patch bsc#1262319 mcepl@suse.com
+# Fix webbrowser %action substitution bypass of dash-prefix check
+Patch50:        CVE-2026-4786-webbrowser-open-action.patch
+# PATCH-FIX-UPSTREAM CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch bsc#1261969 mcepl@suse.com
+# Reject CR/LF in HTTP tunnel request headers
+Patch51:        CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
+# PATCH-FIX-UPSTREAM CVE-2026-6019-Morsel-js_output.patch bsc#1262654 mcepl@suse.com
+# Base64-encode cookie values embedded in JS
+Patch52:        CVE-2026-6019-Morsel-js_output.patch
 #### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
