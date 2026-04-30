@@ -1,0 +1,38 @@
+Description: Switch to geocode-glib-2.0
+ The latest releases of Debian and Ubuntu no longer include
+ gir1.2-geocodeglib-1.0. Therefore it is necessary for applications
+ to transition to the latest version of geocode-glib.
+Author: Jeremy Bicha <jeremy.bicha@canonical.com>
+Forwarded: https://gramps-project.org/bugs/view.php?id=13255
+Last-Update: 2024-04-08
+
+---
+ gramps/plugins/lib/maps/placeselection.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: gramps-6.0.8/gramps/plugins/lib/maps/placeselection.py
+===================================================================
+--- gramps-6.0.8.orig/gramps/plugins/lib/maps/placeselection.py
++++ gramps-6.0.8/gramps/plugins/lib/maps/placeselection.py
+@@ -51,7 +51,7 @@ from .osmgps import OsmGps
+ #
+ # -------------------------------------------------------------------------
+ try:
+-    gi.require_version("GeocodeGlib", "1.0")
++    gi.require_version("GeocodeGlib", "2.0")
+     from gi.repository import GeocodeGlib
+ 
+     GEOCODEGLIB = True
+Index: gramps-6.0.8/gramps/grampsapp.py
+===================================================================
+--- gramps-6.0.8.orig/gramps/grampsapp.py
++++ gramps-6.0.8/gramps/grampsapp.py
+@@ -457,7 +457,7 @@ def show_settings():
+         rcs_ver = _("not found")
+ 
+     try:
+-        gi.require_version("GeocodeGlib", "1.0")
++        gi.require_version("GeocodeGlib", "2.0")
+         from gi.repository import GeocodeGlib
+ 
+         geocodeglib_ver = str(GeocodeGlib._version)

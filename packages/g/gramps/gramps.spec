@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(GtkosxApplication\\)|typelib\\(Gtkspell\\)|typelib\\(GConf\\)
 %define pythons python3
 Name:           gramps
-Version:        6.0.6
+Version:        6.0.8
 Release:        0
 Summary:        Genealogical Research Software
 License:        GPL-2.0-or-later
@@ -29,6 +29,8 @@ URL:            http://www.gramps-project.org/
 Source:         https://github.com/gramps-project/gramps/archive/v%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE gramps-no-translations-check.patch boo#941490 dimstar@opensuse.org -- Do not warn on missing translations
 Patch0:         gramps-no-translations-check.patch
+# PATCH-FIX-UPSTREAM maps-Switch-to-geocode-glib-2.0.patch -- Switch to geocode-glib-2.0
+Patch1:         maps-Switch-to-geocode-glib-2.0.patch
 BuildRequires:  fdupes
 # Needed for typelib() - Requires.
 BuildRequires:  gobject-introspection

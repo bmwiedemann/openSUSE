@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Apr 10 18:59:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 6.0.8:
+  + Fix `xgettext` format string warning.
+  + Fix `AttributeError` when `PersistentTreeView` is
+    `GtkBuilder`-created.
+  + Update DTD and RNG schemas.
+  + Fix Notpatronymic and Rawsurnames format code entry.
+  + Avoid duplicate calls to `update()` in Person view.
+  + Remove redundant methods on `PersonNotes` class.
+  + Fix signals in notes gramplet.
+  + Fix `ImageThumb` `savev()` passing strings instead of lists.
+  + Fix Serbian date modifiers.
+  + Fix incorrect person gender schema max.
+  + Update copyright year in Windows AIO.
+  + Various fixes to the Windows AIO build.
+  + Update GitHub upload-artifact action version to v6.
+  + Add `PyInstaller`-based Windows AIO workflow.
+  + Updated translations.
+- Changes from version 6.0.7:
+  + Fix Irish plural forms.
+  + Update copyright dates.
+  + Add bulk change revs to ignore list for blame.
+  + Improvements of surname origin attributes
+  + Use the OCCU tag for Occupation events in the Gedcom export.
+  + Clean input data tool gives invalid lat/lon when not set.
+  + Fix invalid date when no date in data verify tool.
+  + Fix LT and LV language associations in Gedcom export.
+  + Update GitHub checkout action version to v6.
+  + Handle Stillbirth event correctly in Gedcom import.
+  + Handle Arabic comma when creating missing note.
+  + Remove some false positives from the data verify tool.
+  + Extend the CheckIntegrity tool to coalesce duplicate event role
+    names.
+  + Don't ignore calendar, modifier and quality in diff_dates.
+  + Catch IndexError in importxml.
+  + Bump mac versions & copyright dates.
+  + Reformat code using the latest stable version of black.
+  + Fix mypy errors.
+  + Fix code formatting.
+  + Updated translations.
+- Add maps-Switch-to-geocode-glib-2.0.patch: Switch to
+  geocode-glib-2.0
+
+-------------------------------------------------------------------
 Tue Dec  9 22:24:05 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 6.0.6
