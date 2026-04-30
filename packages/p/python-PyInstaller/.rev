@@ -348,4 +348,12 @@
     no longer blocks :installing pefile==2024.8.26.</comment>
     <requestid>1336683</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2821e8c7947e9a733256d3734a1ccbeb</srcmd5>
+    <version>6.20.0</version>
+    <time>1777573801</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1350167</requestid>
+  </revision>
 </revisionlist>
