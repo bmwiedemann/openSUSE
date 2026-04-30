@@ -1,5 +1,0 @@
-<package name="kdesu" project="openSUSE:Factory">
-  <title>kdesu</title>
-  <description>KDE Su</description>
-  <devel project="KDE:Frameworks5" package="kdesu"/>
-</package>
