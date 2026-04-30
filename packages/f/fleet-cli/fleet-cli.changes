@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 30 05:06:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.1:
+  * Fix --gitrepo and --bundle filters including HelmOps (#4830)
+  * Update Kubernetes dependencies (#5040)
+  * Bump github.com/moby/spdystream to v0.5.1 (#5028)
+  * Update module github.com/go-git/go-git/v5 to v5.18.0 [SECURITY]
+    (#5014)
+  * chore(deps): update dependency go to v1.25.9 (#4970)
+  * chore(deps): update module helm.sh/helm/v4 to v4.1.4 [security]
+    (#4960)
+  * chore(deps): update module github.com/go-git/go-git/v5 to
+    v5.17.1 [security] (#4910)
+  * chore(deps): update kubernetes dependencies to v0.35.3 (#4886)
+  * chore(deps): update kubernetes dependencies to v0.35.3 (#4875)
+
+-------------------------------------------------------------------
 Mon Apr 13 17:04:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package fleet-cli: CLI for the Rancher Fleet GitOps tooling
