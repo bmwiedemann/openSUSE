@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr 30 14:52:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.5:
+  No kumactl-related changes
+  * chore(deps): bump github.com/jackc/pgx/v5 from 5.9.0 to 5.9.2
+    (#16383)
+  * chore(deps): bump github.com/jackc/pgx/v5 from 5.7.6 to 5.9.0
+    (#16288)
+  * chore(deps): bump github.com/moby/spdystream from 0.5.0 to
+    0.5.1 (#16293)
+  * chore(deps): bump envoy from 1.36.5 to 1.36.6 (backport of
+    #16262) (#16267)
+  * chore(deps/dev): bump go from 1.26.1 to 1.26.2 (#16234)
+  * chore(deps): bump go.opentelemetry.io/otel/sdk from 1.40.0 to
+    1.43.0 (#16208)
+  * chore(build): migrate to use oidc token (backport of #16105)
+    (#16206)
+  * chore(deps): bump
+    github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs from 1.58.0
+    to 1.65.0 (#16158)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/lambda
+    from 1.77.4 to 1.88.5 (#16159)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.88.1 to 1.97.3 (#16160)
+
+-------------------------------------------------------------------
 Thu Apr 09 11:55:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.4:
