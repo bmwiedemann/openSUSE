@@ -1,5 +1,0 @@
-<package name="kidletime" project="openSUSE:Factory">
-  <title>kidletime</title>
-  <description>KIdleTime</description>
-  <devel project="KDE:Frameworks5" package="kidletime"/>
-</package>
