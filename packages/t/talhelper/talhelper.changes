@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Thu Apr 30 06:00:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.9:
+  * docs: update CLI reference documentation (#1566)
+  * chore(deps): update dependency siderolabs/talos to v1.13.0
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.13.0
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.13.0
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.11
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.1.8
+  * feat: update Scoop for talhelper version v3.1.8
+- Update to version 3.1.8:
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.12.7
+  * chore(deps): update dependency siderolabs/talos to v1.12.7
+  * chore(schema): update talos-extensions.yaml JSON schema (#1558)
+  * fix(deps): update module github.com/invopop/jsonschema to
+    v0.14.0
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.36.0
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.15.4
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:2.1-bookworm docker digest
+    to 80694b9 (#1551)
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.10
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v1.1.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#1548)
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.13.0-rc.0
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(container): update alpine docker tag to v3.23.4
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.35.4
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.15.3
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.9
+  * chore(schema): update talos-extensions.yaml JSON schema (#1542)
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module github.com/google/go-containerregistry
+    to v0.21.5
+  * docs(guides): document SOPS decryption for injected file
+    references
+  * fix(deps): update module golang.org/x/mod to v0.35.0
+  * feat(decrypt): support SOPS decryption for all injected file
+    references
+  * fix(deps): update module github.com/google/go-containerregistry
+    to v0.21.4
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.8
+  * chore(schema): update talos-extensions.yaml JSON schema (#1531)
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module github.com/gookit/validate to v1.5.7
+  * chore(github-action): update actions/setup-go action to v6.4.0
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.15.2
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.7
+  * chore(schema): update talos-extensions.yaml JSON schema (#1527)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1521)
+  * feat(flake): update flake.lock
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.13.0-beta.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#1519)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1518)
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.6
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.11.4
+  * fix(deps): update module github.com/fatih/color to v1.19.0
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.1.7
+  * feat: update Scoop for talhelper version v3.1.7
+  * feat: update flake (#1513)
+  * docs: update CLI reference documentation (#1512)
+
+-------------------------------------------------------------------
 Fri Mar 20 06:49:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.1.7:
