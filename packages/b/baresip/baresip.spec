@@ -52,7 +52,7 @@ BuildRequires:  pkgconfig(libmp3lame)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(libre) >= 3.15.0
+BuildRequires:  pkgconfig(libre) >= 4.0.0
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(portaudio-2.0)
