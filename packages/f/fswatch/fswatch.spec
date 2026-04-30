@@ -17,7 +17,7 @@
 
 
 Name:           fswatch
-Version:        1.19.1
+Version:        1.20.1
 Release:        0
 Summary:        Multi platform file change monitor
 License:        GPL-3.0-or-later
@@ -28,15 +28,15 @@ BuildRequires:  automake
 BuildRequires:  gcc-c++ > 7
 BuildRequires:  libtool
 
-%package -n lib%{name}13
+%package -n lib%{name}14
 Summary:        Shared library for %{name}
 
-%description -n lib%{name}13
+%description -n lib%{name}14
 Shared library for %{name} a file change monitor.
 
 %package -n lib%{name}-devel
 Summary:        Development files for %{name}
-Requires:       lib%{name}13 = %{version}-%{release}
+Requires:       lib%{name}14 = %{version}-%{release}
 
 %description -n lib%{name}-devel
 Development files for %{name} a file change monitor.
@@ -68,7 +68,7 @@ monitors based on:
 
 %prep
 %autosetup
-./autogen.sh
+autoreconf -fiv
 
 %build
 %configure
@@ -101,15 +101,15 @@ mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_defaultdocdir}
 
 %find_lang %{name} %{?no_lang_C}
 
-%post -n lib%{name}13 -p /sbin/ldconfig
-%postun -n lib%{name}13 -p /sbin/ldconfig
+%post -n lib%{name}14 -p /sbin/ldconfig
+%postun -n lib%{name}14 -p /sbin/ldconfig
 
 %files
 %license COPYING
 %attr(0755,root,root) %{_bindir}/%{name}
 %{_mandir}/man7/%{name}*
 
-%files -n lib%{name}13
+%files -n lib%{name}14
 %license COPYING
 %{_libdir}/lib%{name}.so.*
 
