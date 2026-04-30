@@ -18,7 +18,7 @@
 
 
 Name:           kmscon
-Version:        9.3.1
+Version:        9.3.5
 Release:        0
 Summary:        Linux KMS/DRM based virtual Console Emulator
 License:        MIT
@@ -29,6 +29,8 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  xsltproc
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libtsm) >= 4.4.0
@@ -78,12 +80,13 @@ rm %{buildroot}/%{_sysconfdir}/kmscon/kmscon.conf.example
 %{_bindir}/%{name}
 %{_bindir}/%{name}-launch-gui
 %dir %{_libdir}/kmscon/
+%{_libdir}/kmscon/mod-freetype.so
 %{_libdir}/kmscon/mod-pango.so
 %{_libdir}/kmscon/mod-unifont.so
 %dir %{_libexecdir}/kmscon
 %{_libexecdir}/kmscon/kmscon
 %{_mandir}/man1/kmscon.1%{?ext_man}
-%{_mandir}/man1/kmscon.conf.1%{?ext_man}
+%{_mandir}/man5/kmscon.conf.5%{?ext_man}
 %{_unitdir}/kmscon.service
 %{_unitdir}/kmsconvt@.service
 

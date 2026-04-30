@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Wed Apr 29 20:46:27 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
+
+- Update to version 9.3.5:
+  * Prepare v9.3.5 release
+  * dpms: Set default timeout to 10min
+  * cursor: unmmap the buffer early
+  * cursor: Fix hardware cursor on VM
+  * drm3d: fix missing free(cfgs) in init.
+  * input: Fix remove the hide pointer timer.
+  * video: fix leaking the backend module.
+  * shl_lru: fix build error on i686
+  * Prepare v9.3.4 release
+  * multi-monitor: Add an option to use only the largest monitor.
+  * font: use freetype by default.
+  * unifont: fix failing to register log.
+  * font: change default size to 16
+  * font: remove the dpi option
+  * docs: Add missing bell configuration option to kmscon.conf.example
+  * terminal: add LED support via VTE DECLL callback
+  * conf: add --bell option, disabled by default
+  * terminal: add bell support via VTE bell callback
+  * hw_cursor: Add rotation support to the hw cursor
+  * hw_cursor: refresh cursor if font changes or if the screen rotate
+  * hw_cursor: fix rotation coordinate.
+  * hw_cursor: Set offset
+  * gltex: Fix offset to avoid blur
+  * conf: Fix soft-cursor option
+  * drm: Use cursor plane hotspot for Virtual GPU
+  * systemd: start login instead of agetty
+  * gltex: free the glyph, once it has been copied to VRAM
+  * text: check if a font has a glyph before rendering
+  * fonts: implement has_glyph() for all fonts
+  * font: Add has_glyph() ops
+  * freetype: fix copy the glyph data.
+  * freetype: cache the last fallback face
+  * unifont: let the font engine handle replacement font.
+  * bbulk: uses lru instead of unlimited hashtable
+  * lru: Add a simple LRU hashtable
+  * issue: display /etc/issue and issue.d files before login prompt
+  * freetype: Fix fallback when no font has the glyph
+  * unifont: remove debug logs
+  * font: remove render_empty and render_invalid callback
+  * gltex: free the glyph
+  * unifont: use directly the glyph if it's not rotated
+  * pango: remove local glyph cache
+  * freetype: remove local glyph cache
+  * unifont: remove local glyph cache
+  * font: simplify prototype of the render functions
+  * font: use a bool for double width glyph
+  * uterm_video: remove format as only UTERM_FORMAT_GREY is used.
+  * Use flexible array for uterm_video_buf
+  * bbulk: remove align in bbulk_rotate_glyph()
+  * terminal: use DRM hardware cursor plane for the mouse pointer
+  * config: Add soft-cursor option
+  * shl_misc: return empty string from shl_replace_var for undefined env vars
+  * genunifont: check malloc return before dereferencing buf
+  * genunifont: fix memory leak on realloc failure
+  * shl_ring: fix shl_ring_peek returning wrong buffer for non-zero offsets
+  * uterm_uxkb: fix undefined behavior passing va_list through variadic macro
+  * font_8x16: move font data to binary file
+  * freetype: Free the fontconfig memory when unloading the module.
+  * drm3d: release buffer in the right order to avoid use after free
+  * fix: Fixed touchpad offset recalculation error
+  * drm3d: remove the fill shader
+  * uterm_video: replace fill() with clear()
+  * fix: Update `dev->pointer.touchpaddown` only on touch event.
+  * gltex: Center the output.
+  * bbulk: Center the output.
+  * text: Add a resize function
+  * man: fix kmscon.conf.5 manpage
+  * fix: change default value of `term` to linux in the example config
+  * unifont: fix build on i686
+  * Prepare v9.3.3 release
+  * Unifont, use unifont-all
+  * unifont: compress data with zlib
+  * manpage: fix a typo
+  * input_uxkb: Clear xkb_state on wake-up
+  * Add checkattr.sh
+  * unicode-test: Add blocks characters
+  * freetype: Add a glyph cache
+  * freetype: free glyph in error path
+  * Improved error messages around configuring to build documentation
+  * font: remove kmscon_font_attr_match()
+  * gl_math: remove shl_gl_math.c
+  * remove unused shl_array.h
+  * remove unused shl_flagset.h
+  * shl_log: remove shl_llog.h
+  * input: remove now unused logger
+  * eloop: simplify logging
+  * gl_shader: simplify logging
+  * input: simplify logging
+  * freetype: Add glyph fallback support
+  * input: fix missing free() for the pointer hook
+  * drm_shared: Fix drm property leak
+  * input_uxkb: fix wrong cur_bit size
+  * text_bbulk: initialize x1 and y1 to fix -Werror=maybe-uninitialized
+  * uxkb: remove the now unused key_state_bits field
+  * input: fix stuck modifiers on VT re-entry
+  * unifont: fix lookup_block() infinite loop
+  * conf:  Allow to rotate with <logo>+= and <logo>++
+  * drm: take drm_master before looking for connector/display
+  * conf: Allow to zoom in with ctrl+= and ctrl++
+  * drm_shared: simplify the need_redraw logic.
+  * remove font_rotate.[ch]
+  * Handle bold font in the font engine.
+  * log: remove filter and log to file options
+  * log: don't share a global variable with modules
+  * unifont: Fix sparse search
+  * freetype: prefer monospace/dualspace font
+  * freetype: Add underline support
+  * font: Add a fontconfig/freetype2 renderer
+  * Fix use after free in bbulk_unset()
+  * terminal: mark displays dirty on session activate
+  * Prepare v9.3.2 release
+  * bbulk: Fix if a font has a single-width glyph for a double-width char
+  * Change default TERM to linux
+  * pango: Append ,monospace, to the font-name provided by kmscon.conf
+  * pango: Print current font
+  * meson: add subproject fallback for libtsm
+  * docs: move kmscon.conf to section 5 of the man pages
+  * docs: allow having man pages in different sections
+  * unifont: Add font_increase for unifont
+  * unifont: Add integer scaling to unifont
+  * unifont: don't use a global cache.
+  * unifont: refactoring, move glyph creation to new_glyph()
+  * genunifont: Fix memory leak
+  * bbulk: fix using unitialized memory.
+
+-------------------------------------------------------------------
 Fri Feb 06 12:01:16 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 9.3.1:
