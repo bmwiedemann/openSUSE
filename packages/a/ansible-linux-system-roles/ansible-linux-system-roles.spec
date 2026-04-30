@@ -36,6 +36,8 @@
 %global keylime_server_version 1.2.4
 %global postgresql_version 1.5.1
 %global kernel_settings_version 1.3.8
+%global network_version 1.18.0
+%global sudo_version 1.2.9
 
 %if 0%{?suse_version} >= 1600
 %global sle16 1
@@ -47,7 +49,7 @@
 %define ansible_collection_path %{_datadir}/ansible/collections/ansible_collections/suse/%{ansible_collection_name}
 
 Name:           ansible-linux-system-roles
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Collection of Ansible roles for Linux system management
 License:        GPL-3.0-or-later
@@ -72,6 +74,8 @@ Source15:       %{url}/ansible-cockpit/archive/refs/tags/%{cockpit_version}-suse
 Source16:       %{url}/ansible-aide/archive/refs/tags/%{aide_version}-suse.tar.gz#/aide-%{aide_version}.tar.gz
 Source17:       %{url}/ansible-keylime_server/archive/refs/tags/%{keylime_server_version}-suse.tar.gz#/keylime_server-%{keylime_server_version}.tar.gz
 Source18:       %{url}/ansible-kernel_settings/archive/refs/tags/%{kernel_settings_version}-suse.tar.gz#/kernel_settings-%{kernel_settings_version}.tar.gz
+Source19:       %{url}/ansible-network/archive/refs/tags/%{network_version}-suse.tar.gz#/network-%{network_version}.tar.gz
+Source20:       %{url}/ansible-sudo/archive/refs/tags/%{sudo_version}-suse.tar.gz#/sudo-%{sudo_version}.tar.gz
 %endif
 Source999:      galaxy.yml
 
@@ -114,6 +118,8 @@ roles=(
   "aide:%{aide_version}"
   "keylime_server:%{keylime_server_version}"
   "kernel_settings:%{kernel_settings_version}"
+  "network:%{network_version}"
+  "sudo:%{sudo_version}"
 %endif
 )
 
