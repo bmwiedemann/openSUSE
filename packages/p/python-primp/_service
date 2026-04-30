@@ -1,8 +1,9 @@
 <services>
   <service mode="manual" name="download_files"/>
   <service name="cargo_vendor" mode="manual">
-     <param name="src">primp-0.15.0</param>
+     <param name="srctar">primp-*.tar.gz</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
+     <param name="i-accept-the-risk">RUSTSEC-2026-0009</param>
   </service>
 </services>

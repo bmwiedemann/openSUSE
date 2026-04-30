@@ -1,7 +1,7 @@
 #
 # spec file for package python-primp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-primp
-Version:        0.15.0
+Version:        1.2.3
 Release:        0
 Summary:        HTTP client that can impersonate web browsers
-License:        MIT
+License:        Apache-2.0 AND MIT
 URL:            https://github.com/deedy5/primp
 Source0:        https://files.pythonhosted.org/packages/source/p/primp/primp-%{version}.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  %{python_module maturin >= 1.5}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  cmake
@@ -54,6 +56,8 @@ their headers and 'TLS/JA3/JA4/HTTP2' fingerprints
 
 %prep
 %autosetup -p1 -n primp-%{version} -a1
+# No license files at top-level
+cp crates/primp-tokio-rustls/LICENSE-* .
 
 %build
 export CARGO_NET_OFFLINE=true
@@ -80,13 +84,16 @@ export CARGO_PROFILE_RELEASE_STRIP=false
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# NOTE: don't run the tests as they required access to internet by trying to
-# connect to "https://httpbin.org/anything".
+pushd crates/primp-python
+# Requires network
+donttest="test_client_impersonate_chrome144 or test_get_impersonate_safari18_5"
+%pytest_arch --ignore tests/test_header_order.py -k "not ($donttest)"
+popd
 
 %files %{python_files}
 %doc README.md
-%license LICENSE
+%license LICENSE-MIT LICENSE-APACHE
 %{python_sitearch}/primp
-%{python_sitearch}/primp-%{version}*-info
+%{python_sitearch}/primp-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Apr 30 02:48:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.3:
+  * feat: rename all forked crates to unique package names
+  * fix(primp-python): resolve parallel client initialization deadlock
+  * fix(tls): GREASE improvements, Firefox/Chrome key_share fixes, ECH
+    payload fix
+  * style+test: modernize Python type stubs & expand test coverage
+  * feat[py]: add timeouts, base_url, cookies, follow_redirects; unify
+    Response types
+  * feat: native OS root CAs, custom cert impersonation fix, unknown
+    extension tolerance
+  * Impersonation: ChromeV146, EdgeV146, OperaV128/V129, SafariV26.3,
+    FirefoxV147/V148. Random selection support (Impersonate::Chrome,
+    ::Random, etc).
+  * HTTP/2 fingerprinting: Custom header ordering, initial stream ID config,
+    simplified priority settings.
+  * TLS: Fixed Firefox cipher suite order, added status_request_v2 for
+    Safari, expanded Firefox named groups.
+  * Python bindings: __version__ export, improved cookie/URL handling.
+  * Cleanup: Removed large amount of unused tests and fixtures.
+  * Async Support - Native AsyncClient with async/await, context managers,
+    and concurrent requests
+  * HTML Conversion - Convert responses to Markdown, plain text, or rich text
+  * Response Streaming - Memory-efficient chunk streaming and line iteration
+  * Cookie Management - Persistent cookie store with automatic handling
+  * Proxy Support - HTTP, HTTPS, SOCKS5 proxies with authentication and
+    system proxy detection
+  * SSL/TLS Options - Custom CA certificates, verification controls,
+    HTTPS-only mode
+
+-------------------------------------------------------------------
 Tue May  6 04:44:56 UTC 2025 - Guang Yee <gyee@suse.com>
 
 - Use a compatible GCC and stdc++ library version for 15.6.
