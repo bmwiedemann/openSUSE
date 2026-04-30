@@ -1381,4 +1381,20 @@
     <comment>- updated to latest repository</comment>
     <requestid>1341178</requestid>
   </revision>
+  <revision rev="173" vrev="5">
+    <srcmd5>6216965e0f0a2d39d82c6b073d85a9ea</srcmd5>
+    <version>0.13.0</version>
+    <time>1774555667</time>
+    <user>anag_factory</user>
+    <comment>- updated to latest repository</comment>
+    <requestid>1342510</requestid>
+  </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>cb04ac1685c7df66e2dc52cfda1181fa</srcmd5>
+    <version>0.13.1</version>
+    <time>1777573566</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1350012</requestid>
+  </revision>
 </revisionlist>

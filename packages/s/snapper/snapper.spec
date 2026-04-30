@@ -35,13 +35,13 @@
 %bcond_with coverage
 
 Name:           snapper
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        Tool for filesystem snapshot management
 License:        GPL-2.0-only
 Group:          System/Packages
 URL:            http://snapper.io/
-Source:         snapper-%{version}+git344fe34.tar.xz
+Source:         snapper-%{version}.tar.xz
 %if 0%{?suse_version}
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_test-devel
