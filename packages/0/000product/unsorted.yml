@@ -2126,8 +2126,6 @@ unsorted:
   - certbot-systemd-timer 
   - certgen 
   - certinfo 
-  - cervisia 
-  - cervisia-lang 
   - cf-cli 
   - cf-cli-test 
   - cfitsio 
@@ -7559,7 +7557,6 @@ unsorted:
   - golang-github-prometheus-promu 
   - golang-github-teddysun-v2ray-plugin 
   - golang-github-v2fly-v2ray-core 
-  - golang-github-vpenso-prometheus_slurm_exporter 
   - golang-gopkgin-check 
   - golang-org-x-sys 
   - golang-packaging 
@@ -9838,10 +9835,6 @@ unsorted:
   - kImageAnnotator-Qt5-devel 
   - kImageAnnotator-Qt6-devel 
   - kaccounts-integration-devel 
-  - kactivities-stats-devel 
-  - kactivities5-devel 
-  - kactivities5-imports 
-  - kactivities5-tools 
   - kaffeine 
   - kaffeine-lang 
   - kafka-kit 
@@ -9932,7 +9925,6 @@ unsorted:
   - kbreakout 
   - kbreakout-lang 
   - kbuild 
-  - kcalendarcore-devel 
   - kcalutils-devel 
   - kccmp 
   - kclock 
@@ -9943,8 +9935,6 @@ unsorted:
   - kcompletion-devel 
   - kconfig-devel 
   - kconfigwidgets-devel 
-  - kcontacts-devel 
-  - kcontacts-lang 
   - kcoreaddons-devel 
   - kcov 
   - kcrash-devel 
@@ -9987,7 +9977,6 @@ unsorted:
   - kdesignerplugin 
   - kdesignerplugin-devel 
   - kdesignerplugin-lang 
-  - kdesu-devel 
   - kdesvn 
   - kdevelop 
   - kdevelop-lang 
@@ -10009,7 +9998,6 @@ unsorted:
   - kdiff3 
   - kdiff3-lang 
   - kdiskmark 
-  - kdnssd-framework-devel 
   - kdnssd-lang 
   - kdocker 
   - kdoctools-devel 
@@ -10194,8 +10182,6 @@ unsorted:
   - khealthcertificate 
   - khealthcertificate-devel 
   - khealthcertificate-imports 
-  - kholidays 
-  - kholidays-devel 
   - khunphan 
   - ki18n-devel 
   - ki18n-imports 
@@ -10227,7 +10213,6 @@ unsorted:
   - kid3-qt-doc 
   - kidentitymanagement-devel 
   - kidentitymanagement-imports 
-  - kidletime-devel 
   - kigo 
   - kigo-lang 
   - kika-fixedsys-fonts 
@@ -10438,14 +10423,12 @@ unsorted:
   - kpipewire6-devel 
   - kpkpass-devel 
   - kpkpass-imports 
-  - kplotting-devel 
   - kpmcore-devel 
   - kpmcore-lang 
   - kpt-cli 
   - kpt-cli-bash-completion 
   - kpt-cli-fish-completion 
   - kpt-cli-zsh-completion 
-  - kpty-devel 
   - kpublictransport 
   - kpublictransport-devel 
   - kpublictransport-imports 
@@ -10487,9 +10470,6 @@ unsorted:
   - krita-plugin-gmic 
   - krius 
   - kronometer 
-  - kross 
-  - kross-devel 
-  - kross-lang 
   - kruler 
   - kruler-lang 
   - krunvm 
@@ -11092,7 +11072,6 @@ unsorted:
   - legendary 
   - lego 
   - leiningen 
-  - lekha 
   - lemon 
   - lemonbar 
   - lensfun-devel 
@@ -11233,24 +11212,15 @@ unsorted:
   - libKChart6-3-lang 
   - libKCompactDisc6-5 
   - libKDb3-4 
-  - libKF5Activities5 
-  - libKF5ActivitiesStats1 
   - libKF5Attica5 
   - libKF5BluezQt6 
-  - libKF5CalendarCore5 
   - libKF5CalendarEvents5 
   - libKF5Cddb5 
   - libKF5ConfigQml5 
-  - libKF5Contacts5 
-  - libKF5DNSSD5 
-  - libKF5DNSSD5-lang 
   - libKF5Dcraw5 
   - libKF5Declarative5 
   - libKF5Declarative5-lang 
   - libKF5Emoticons5 
-  - libKF5Holidays5 
-  - libKF5Holidays5-lang 
-  - libKF5IdleTime5 
   - libKF5ItemModels5 
   - libKF5KCMUtils5 
   - libKF5KCMUtils5-lang 
@@ -11262,13 +11232,7 @@ unsorted:
   - libKF5NewStuffWidgets5 
   - libKF5NotifyConfig5 
   - libKF5NotifyConfig5-lang 
-  - libKF5Plotting5 
-  - libKF5Prison5 
-  - libKF5Pty5 
-  - libKF5Pty5-lang 
   - libKF5QuickAddons5 
-  - libKF5Su5 
-  - libKF5Su5-lang 
   - libKF5Syndication5 
   - libKF5ThreadWeaver5 
   - libKF5UnitConversion5 
@@ -13431,7 +13395,7 @@ unsorted:
   - libfstrcmp0 
   - libfsverity0 
   - libfswatch-devel 
-  - libfswatch13 
+  - libfswatch14 
   - libfsxfs-devel 
   - libfsxfs-tools 
   - libfsxfs1 
@@ -13922,14 +13886,11 @@ unsorted:
   - libguestfs-appliance 
   - libguestfs-bash-completion 
   - libguestfs-devel 
-  - libguestfs-gobject-1_0 
-  - libguestfs-gobject-devel 
   - libguestfs-inspect-icons 
   - libguestfs-man-pages-ja 
   - libguestfs-man-pages-uk 
   - libguestfs-rescue 
   - libguestfs-rsync 
-  - libguestfs-typelib-Guestfs-1_0 
   - libguestfs-winsupport 
   - libguestfs-xfs 
   - libguestfs0 
@@ -14785,14 +14746,14 @@ unsorted:
   - libmirage-vala 
   - libmirage12 
   - libmiral7 
-  - libmircommon11 
+  - libmircommon12 
   - libmircore2 
   - libmirevdev10 
   - libmirisdr-devel 
   - libmirisdr0 
   - libmiroil8 
   - libmirplatform34 
-  - libmirserver66 
+  - libmirserver67 
   - libmirserverplatform23 
   - libmirwayland5 
   - libmission-control-plugins0 
@@ -20218,10 +20179,10 @@ unsorted:
   - nvidia-open-driver-G06-signed-check 
   - nvidia-open-driver-G06-signed-cuda-check 
   - nvidia-open-driver-G06-signed-cuda-default-devel 
+  - nvidia-open-driver-G06-signed-cuda-kmp-default 
   - nvidia-open-driver-G06-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G06-signed-cuda-longterm-devel 
   - nvidia-open-driver-G06-signed-default-devel 
-  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-open-driver-G06-signed-kmp-longterm 
   - nvidia-open-driver-G06-signed-longterm-devel 
   - nvidia-open-driver-G07-signed-check 
@@ -21068,6 +21029,7 @@ unsorted:
   - owncloud-extensions-resources 
   - owntone 
   - oxipng 
+  - oxygen5-sounds 
   - oxygen6 
   - oxygen6-cursors 
   - oxygen6-decoration 
@@ -21152,7 +21114,6 @@ unsorted:
   - pam_ssh 
   - pam_ssh_agent_auth 
   - pam_u2f 
-  - pam_userpass 
   - pam_wrapper 
   - pam_yubico 
   - pamix 
@@ -23649,8 +23610,6 @@ unsorted:
   - printproto-devel 
   - prismlauncher 
   - prismlauncher-cracked 
-  - prison-qt5-devel 
-  - prison-qt5-imports 
   - priv_wrapper 
   - privoxy 
   - privoxy-doc 
@@ -23931,8 +23890,6 @@ unsorted:
   - python-django-pipeline-doc 
   - python-ec2imgutils 
   - python-ec2metadata 
-  - python-efl-doc 
-  - python-efl-examples 
   - python-falcon-doc 
   - python-flake8-doc 
   - python-freezerclient-doc 
@@ -25654,7 +25611,6 @@ unsorted:
   - python311-edk2toollib 
   - python311-eduvpn-client 
   - python311-eduvpn-common 
-  - python311-efl 
   - python311-elastic-transport 
   - python311-elasticsearch 
   - python311-elementpath 
@@ -28195,6 +28151,7 @@ unsorted:
   - python312-pegasus-wms.api 
   - python312-pip 
   - python312-pip-wheel 
+  - python312-pipx 
   - python312-platformdirs 
   - python312-pluggy 
   - python312-setuptools 
@@ -28204,6 +28161,7 @@ unsorted:
   - python312-tk 
   - python312-tools 
   - python312-trove-classifiers 
+  - python312-userpath 
   - python312-vcs-versioning 
   - python312-wheel 
   - python312-x86-64-v3 
@@ -29572,7 +29530,6 @@ unsorted:
   - python313-edk2toollib 
   - python313-eduvpn-client 
   - python313-eduvpn-common 
-  - python313-efl 
   - python313-elastic-transport 
   - python313-elasticsearch 
   - python313-elementpath 
@@ -33497,7 +33454,6 @@ unsorted:
   - python314-edk2toollib 
   - python314-eduvpn-client 
   - python314-eduvpn-common 
-  - python314-efl 
   - python314-elastic-transport 
   - python314-elasticsearch 
   - python314-elementpath 
@@ -37704,7 +37660,6 @@ unsorted:
   - samba-test 
   - samba-tool 
   - sambacc 
-  - sampler 
   - samplicator 
   - samply 
   - samtools 

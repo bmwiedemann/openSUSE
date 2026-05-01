@@ -3155,7 +3155,7 @@
       <repopackage name="numactl"/>
       <repopackage name="numlockx"/>
       <repopackage name="nvidia-libXNVCtrl"/>
-      <repopackage name="nvidia-open-driver-G06-signed-cuda-kmp-default"/>
+      <repopackage name="nvidia-open-driver-G06-signed-kmp-default"/>
       <repopackage name="nvidia-open-driver-G07-signed-cuda-kmp-default"/>
       <repopackage name="nvidia-open-driver-G07-signed-kmp-default"/>
       <repopackage name="nvme-cli"/>
