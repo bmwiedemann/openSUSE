@@ -382,4 +382,12 @@
   * Remove double delete</comment>
     <requestid>1332041</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>071c88795a9bedf0d8970c602fef395a</srcmd5>
+    <version>6.0.5</version>
+    <time>1777922223</time>
+    <user>anag_factory</user>
+    <comment>Update to 6.0.5</comment>
+    <requestid>1350460</requestid>
+  </revision>
 </revisionlist>

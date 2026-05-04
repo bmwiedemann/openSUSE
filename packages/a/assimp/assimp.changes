@@ -1,10 +1,30 @@
 -------------------------------------------------------------------
+Sat May  2 12:31:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.0.5
+  * https://github.com/assimp/assimp/releases/tag/v6.0.5
+- Drop patches, merged upstream:
+  * CVE-2025-5167.patch
+  * CVE-2025-5200.patch
+  * CVE-2025-2756.patch
+  * 0001-Fix-invalid-verifying-in-OpenDDLParser-parseStringLi.patch
+
+-------------------------------------------------------------------
 Mon Feb  9 12:50:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes:
   * CVE-2025-5167.patch (CVE-2025-5167)
   * CVE-2025-5200.patch (CVE-2025-5200, boo#1243689)
   * CVE-2025-2756.patch (CVE-2025-2756, boo#1240026, CVE-2025-2754, boo#1240024)
+  * 0001-Fix-invalid-verifying-in-OpenDDLParser-parseStringLi.patch
+
+-------------------------------------------------------------------
+Mon Feb  9 12:50:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * CVE-2025-5167.patch (CVE-2025-5167)
+  * CVE-2025-5200.patch (CVE-2025-5200, boo#1243689)
+  * CVE-2025-2756.patch (CVE-2025-2756, boo#1240026, CVE-2025-2754, 1240024)
   * 0001-Fix-invalid-verifying-in-OpenDDLParser-parseStringLi.patch
 
 -------------------------------------------------------------------
@@ -485,7 +505,7 @@ Mon Jun  9 11:25:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
     if a node contains multi meshes
   * Fix compile error when ASSIMP_DOUBLE_PRECISION enable
   * Updated Inner Cone formula for Spot Lights in GLTF
-  * Update/update pugi xml
+  * Update/update pugi xml by @kimkulling in #6229
   * Fixes CVE-2025-2751: Out-of-bounds Read in
     Assimp::CSMImporter::InternReadFile (CVE-2025-2751, boo#1240016)
   * Fixes CVE-2025-2757: Heap-based Buffer Overflow in
