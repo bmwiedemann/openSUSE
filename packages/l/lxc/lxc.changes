@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri May  1 14:54:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.0.0:
+  For the full changelog please see the release announcement
+  https://discuss.linuxcontainers.org/t/lxc-7-0-lts-has-been-released/26612
+  * Security
+    This release fixes one security issue:
+    CVE-2026-39402 (OVS port deletion authorization bypass in
+    lxc-user-nic)
+  Highlights
+  * Landlock protection of the monitor process
+    When built with landlock-monitor, LXC will now use Landlock to
+    restrict what the monitor API handlers can do on the system.
+    Effectively limiting them to interaction with the container and
+    its filesystem.
+  * Split of hook and runtime environment configuration
+    Two new configuration keys have been introduced:
+    - lxc.environment.hooks
+    - lxc.environment.runtime
+    Those can be used to only expose some environment variables to
+    the container without impacting the hooks or vice-versa.
+  * Deprecated features
+    This release removes support for:
+    - CGroupV1
+    - Kernels without PIDFD support
+    - Kernels without the new mount API
+
+-------------------------------------------------------------------
 Fri Feb 27 06:52:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.0.6:
