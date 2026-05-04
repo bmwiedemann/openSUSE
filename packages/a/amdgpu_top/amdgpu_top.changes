@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Apr 23 09:01:26 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.11.4:
+  * v0.11.4
+  * update dependencies
+  * update deps
+  * gui: update plot data in data thread
+  * lib, xdna: fix memory leak of pre_proc_usage_map
+  * lib, xdna: remove pre proc usage from the hashmap if the process has already exited
+  * todo
+  * lib: remove pre proc usage from hashmap when ids_count is 0
+  * lib: do not push to list if ids_count equals 0
+  * tui: fix the case of selected device is suspended
+  * lib: improve FdInfoStat::{get_cpu_time,get_proc_usage}
+  * lib, xdna: rename pid_map to pre_proc_usage_map, rename get_all_proc_usage to update_proc_usage
+  * Revert "lib: add clearing of pid_map"
+  * lib: add clearing of pid_map
+  * lib: remove duplicate read for power_cap
+  * lib: Fix compared values for fdinfo sorting
+  * update screenshots
+  * update dependencies
+  * update workflows
+
+-------------------------------------------------------------------
+Mon Mar 30 14:27:59 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.11.3:
+  * v0.11.3
+  * lib: update libdrm_amdgpu_sys rev
+  * docs: update json
+  * lib, json: NpuMetrics
+  * docs: update json
+  * json: update GpuMetrics for gpu_metrics_v3_0 and XDNA NPU
+  * update README
+  * Fix: dose -> does in strings and comments
+  * xdna: add get_xdna_resource_info
+  * xdna: update bindings
+  * lib: update libdrm_amdgpu_sys rev update firmware info
+  * gui: double the CPU plot height when APU has 8 or more cores
+  * Add -p and --json options combination support
+  * tui: specify 24-bit color
+  * update metainfo
+
+-------------------------------------------------------------------
 Thu Feb 05 09:23:57 UTC 2026 - ecsos@opensuse.org
 
 - Update to version 0.11.2:
