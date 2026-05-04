@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-devpi-client%{psuffix}
-Version:        7.2.1
+Version:        7.3.0
 Release:        0
 Summary:        Client for devpi
 License:        MIT
@@ -127,7 +127,7 @@ donttest+=" or test_whitelist_setting"
 
 %if !%{with test}
 %files %{python_files}
-%doc AUTHORS CHANGELOG README.rst
+%doc CHANGELOG README.rst
 %license LICENSE
 %python_alternative %{_bindir}/devpi
 %{python_sitelib}/devpi

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  3 17:32:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.3.0:
+  * Allow ``patchjson`` to read from stdin with ``-`` as JSON
+    filename.
+
+-------------------------------------------------------------------
 Fri Apr  3 17:13:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.2.1:

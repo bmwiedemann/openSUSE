@@ -280,4 +280,14 @@
   * Fix #1011: change HTTP status codes &gt;=400 to use self.fatal instead</comment>
     <requestid>1344512</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c717493738cb5c36c2ef3c6a2e5d9e3b</srcmd5>
+    <version>7.3.0</version>
+    <time>1777892071</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.3.0:
+  * Allow ``patchjson`` to read from stdin with ``-`` as JSON
+    filename.</comment>
+    <requestid>1350560</requestid>
+  </revision>
 </revisionlist>
