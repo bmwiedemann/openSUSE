@@ -1,7 +1,7 @@
 #
 # spec file for package libcontainers-common
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,46 +16,35 @@
 #
 
 
-# commonver - version from containers/common
-%define commonver 0.64.1
-# storagever - version from containers/storage
-%define storagever 1.59.1
-# imagever - version from containers/image
-%define imagever 5.36.0
-# skopeover - version from containers/skopeo
-%define skopeover 1.21.0
+# clibsver - version from containers/container-libs (common/ tag)
+%define clibsver 0.67.1
 # https://github.com/containers/shortnames
 %define shortnamesver 8ce3e7d11ca3425a9899fc7291f4256ba5da225c
 Name:           libcontainers-common
-Version:        20260112
+Version:        20260429
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0
 Group:          System/Management
-URL:            https://github.com/containers
-Source0:        image-%{imagever}.tar.xz
-Source1:        storage-%{storagever}.tar.xz
-Source2:        LICENSE
-# https://raw.githubusercontent.com/containers/skopeo/main/default-policy.json
-Source3:        https://raw.githubusercontent.com/containers/skopeo/v%{skopeover}/default-policy.json#./policy.json
-Source4:        https://raw.githubusercontent.com/containers/storage/v%{storagever}/storage.conf
-# heavily modified version of https://github.com/containers/common/blob/main/pkg/subscriptions/mounts.conf
-Source5:        mounts.conf
-# https://raw.githubusercontent.com/containers/image/main/registries.conf with our own registries inserted
-Source6:        registries.conf
-# https://github.com/containers/skopeo/blob/main/default.yaml but heavily modified
-Source7:        default.yaml
-Source8:        common-%{commonver}.tar.xz
-Source9:        https://raw.githubusercontent.com/containers/common/v%{commonver}/pkg/config/containers.conf
-Source10:       %{name}.rpmlintrc
-Source11:       https://raw.githubusercontent.com/containers/shortnames/%{shortnamesver}/shortnames.conf
-Source12:       openSUSE-policy.json
-Patch100:       0001-containers.conf-SUSE-clear-cni-config-dir-for-ALP.patch
-# Downstream patch to add the commented out storage driver priority list
-Patch101:       0002-storage-conf-prio-list.patch
-Patch102:       0003-containers-conf-suse-defaults.patch
+URL:            https://github.com/containers/container-libs
+Source0:        container-libs-%{clibsver}.tar.xz
+Source1:        LICENSE
+# Heavily stripped from upstream containers/common/pkg/subscriptions/mounts.conf
+Source2:        mounts.conf
+# SUSE-specific sigstore-attachments configs for SUSE registries
+Source3:        registry.suse.com.yaml
+Source4:        registry.suse.de.yaml
+Source5:        %{name}.rpmlintrc
+Source6:        https://raw.githubusercontent.com/containers/shortnames/%{shortnamesver}/shortnames.conf
+Source7:        openSUSE-policy.json
+# SUSE distro overrides shipped as containers.conf.d/ drop-ins
+Source10:       00-suse-containers.conf
+# CNI plugin dirs override for older SLE/ALP streams (bsc#1213556)
+Source11:       01-suse-cni.conf
+# Search registries variants - picked at install time via subpackages
+Source12:       00-suse-registries-default.conf
+Source13:       00-suse-registries-microos.conf
 BuildRequires:  go-go-md2man
-Requires(post): %{_bindir}/sed
 Requires:       libcontainers-policy >= %{version}
 Suggests:       (libcontainers-policy-openSUSE if openSUSE-release)
 # Default to SUSE registry on SL Micro,
@@ -113,99 +102,87 @@ Conflicts:              registries-conf-suse
 Ships the upstream registries.conf with registry.opensuse.org and registry.suse.com as additional unqualified search registries.
 
 %prep
-cp %{SOURCE9} .
-# Apply CNI config to streams that support CNI networking backend for podman i.e SLE-15
-# bsc#1213556 (https://github.com/containers/podman/issues/19327)
-%if 0%{?suse_version} < 1600 && !0%{?is_opensuse}
-%patch -P100 -p3
-sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %_builddir/containers.conf
-%endif
-cp %{SOURCE4} .
-%patch -P101 -P102
+%setup -q -n container-libs-%{clibsver}
+cp %{SOURCE1} .
 
-%setup -q -Tcq -b0 -b1 -b8
-# copy the LICENSE file in the build root
-cp %{SOURCE2} .
+# Substitute @LIBEXECDIR@ in CNI drop-in for older SLE/ALP streams (bsc#1213556)
+%if 0%{?suse_version} < 1600 && !0%{?is_opensuse}
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' %{SOURCE11} > 01-suse-cni.conf
+%endif
 
 %build
-cd ..
-# compile containers/image manpages
-cd image-%{imagever}
-for md in docs/*.md
-do
-        go-md2man -in $md -out $md
+mkdir -p man5
+for md in common/docs/*.5.md image/docs/*.5.md storage/docs/*.5.md; do
+    go-md2man -in "$md" -out "man5/$(basename "$md" .md)"
 done
-rename '.5.md' '.5' docs/*
-rename '.md' '.1' docs/*
-cd ..
-# compile containers/storage manpages
-cd storage-%{storagever}
-for md in docs/*.md
-do
-        go-md2man -in $md -out $md
-done
-rename '.5.md' '.5' docs/*
-rename '.md' '.1' docs/*
-cd ..
-# compile subset of containers/common manpages
-cd common-%{commonver}
-go-md2man -in pkg/hooks/docs/oci-hooks.5.md -out pkg/hooks/docs/oci-hooks.5
-cd ..
 
-# Default to SUSE registry on SL Micro
-sed 's/unqualified-search-registries.*/unqualified-search-registries = \["registry.suse.com"\]/' %{SOURCE6} > registries.conf.suse
-
-cd common-%{commonver}
-%make_build docs
-cd ..
+# oci-hooks lives outside common/docs/
+go-md2man -in common/pkg/hooks/docs/oci-hooks.5.md -out man5/oci-hooks.5
 
 %install
-cd ..
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/oci/hooks.d
-install -d -m 0755 %{buildroot}/%{_datadir}/containers/oci/hooks.d
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/registries.d
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/registries.conf.d
+install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/containers.conf.d
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/systemd
+install -d -m 0755 %{buildroot}/%{_datadir}/containers/oci/hooks.d
 install -d -m 0755 %{buildroot}/%{_datadir}/containers/systemd
 
-install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.default
-install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
-install -D -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/containers/mounts.conf
-install -D -m 0644 storage.conf %{buildroot}/%{_datadir}/containers/storage.conf
-install -D -m 0644 %{SOURCE11} %{buildroot}/%{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
-install -D -m 0644 %{SOURCE7} %{buildroot}/%{_sysconfdir}/containers/registries.d/default.yaml
-install -D -m 0644 %_builddir/containers.conf %{buildroot}/%{_datadir}/containers/containers.conf
-install -D -m 0644 common-%{commonver}/pkg/seccomp/seccomp.json %{buildroot}/%{_datadir}/containers/seccomp.json
+# Vanilla upstream base configs from the monorepo tarball.
+# Only files podman/c/common reads from /usr/share/ go here.
+install -D -m 0644 storage/storage.conf              %{buildroot}/%{_datadir}/containers/storage.conf
+install -D -m 0644 common/pkg/config/containers.conf %{buildroot}/%{_datadir}/containers/containers.conf
+install -D -m 0644 common/pkg/seccomp/seccomp.json   %{buildroot}/%{_datadir}/containers/seccomp.json
+install -D -m 0644 %{SOURCE2}                        %{buildroot}/%{_datadir}/containers/mounts.conf
 
-install -d %{buildroot}/%{_mandir}/man1
+# Files podman only reads from /etc/ (drop-ins, registries.conf, registries.d, policy.json).
+# These are vendor-shipped but must live in /etc/ until upstream code adds /usr/share/.d/ support.
+install -D -m 0644 image/registries.conf %{buildroot}/%{_sysconfdir}/containers/registries.conf
+install -D -m 0644 image/default.yaml    %{buildroot}/%{_sysconfdir}/containers/registries.d/default.yaml
+install -D -m 0644 %{SOURCE3}            %{buildroot}/%{_sysconfdir}/containers/registries.d/registry.suse.com.yaml
+install -D -m 0644 %{SOURCE4}            %{buildroot}/%{_sysconfdir}/containers/registries.d/registry.suse.de.yaml
+install -D -m 0644 %{SOURCE6}            %{buildroot}/%{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
+
+# SUSE distro overrides as containers.conf.d/ drop-in
+install -D -m 0644 %{SOURCE10} %{buildroot}/%{_sysconfdir}/containers/containers.conf.d/00-suse-containers.conf
+
+# CNI plugin dirs override for older SLE/ALP streams (bsc#1213556)
+%if 0%{?suse_version} < 1600 && !0%{?is_opensuse}
+install -D -m 0644 01-suse-cni.conf %{buildroot}/%{_sysconfdir}/containers/containers.conf.d/01-suse-cni.conf
+%endif
+
+# Search registries variants - subpackages pick which one is active
+install -D -m 0644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/containers/registries.conf.d/00-suse-registries.conf.default
+install -D -m 0644 %{SOURCE13} %{buildroot}/%{_sysconfdir}/containers/registries.conf.d/00-suse-registries.conf.suse
+
+# policy.json variants - subpackages pick which one is active
+install -D -m 0644 image/default-policy.json %{buildroot}/%{_sysconfdir}/containers/policy.json.default
+install -D -m 0644 %{SOURCE7}                %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
+
+# Manpages
 install -d %{buildroot}/%{_mandir}/man5
-install -D -m 0644 image-%{imagever}/docs/*.1 %{buildroot}/%{_mandir}/man1/
-install -D -m 0644 image-%{imagever}/docs/*.5 %{buildroot}/%{_mandir}/man5/
-install -D -m 0644 storage-%{storagever}/docs/*.1 %{buildroot}/%{_mandir}/man1/
-install -D -m 0644 storage-%{storagever}/docs/*.5 %{buildroot}/%{_mandir}/man5/
-install -D -m 0644 common-%{commonver}/pkg/hooks/docs/oci-hooks.5 %{buildroot}/%{_mandir}/man5/
-install -D -m 0644 common-%{commonver}/docs/containers-mounts.conf.5 %{buildroot}/%{_mandir}/man5/
-install -D -m 0644 common-%{commonver}/docs/containers.conf.5 %{buildroot}/%{_mandir}/man5/
-
-install -D -m 0644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
-install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.default
-
-install -D -m 0644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/containers/registries.conf.default
-install -D -m 0644 registries.conf.suse %{buildroot}/%{_sysconfdir}/containers/registries.conf.suse
+install -D -m 0644 man5/*.5 %{buildroot}/%{_mandir}/man5/
 
 %pre
-for i in %{_sysconfdir}/containers/{mounts.conf,seccomp.json,storage.conf} ; do
-  test -f ${i}.rpmsave && mv -v ${i}.rpmsave ${i}.rpmsave.old ||:
+# Rotate any stale .rpmsave files from previous upgrades to avoid clobbering
+for f in mounts.conf seccomp.json storage.conf containers.conf \
+         policy.json registries.conf \
+         registries.d/default.yaml \
+         registries.conf.d/000-shortnames.conf; do
+    test -f %{_sysconfdir}/containers/${f}.rpmsave && \
+        mv -v %{_sysconfdir}/containers/${f}.rpmsave %{_sysconfdir}/containers/${f}.rpmsave.old ||:
 done
 
-%post
-# Comment out ostree_repo if it's blank [boo#1189893]
-if [ -f %{_sysconfdir}/containers/storage.conf ]; then sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/storage.conf; fi
-
 %posttrans
-for i in %{_sysconfdir}/containers/{mounts.conf,seccomp.json,storage.conf} ; do
-  test -f ${i}.rpmsave && mv -v ${i}.rpmsave ${i} ||:
+# Restore user-modified configs from .rpmsave back to /etc/.
+# These act as user overrides on top of the vendor defaults in /usr/share/.
+for f in mounts.conf seccomp.json storage.conf containers.conf \
+         policy.json registries.conf \
+         registries.d/default.yaml \
+         registries.conf.d/000-shortnames.conf; do
+    test -f %{_sysconfdir}/containers/${f}.rpmsave && \
+        mv -v %{_sysconfdir}/containers/${f}.rpmsave %{_sysconfdir}/containers/${f} ||:
 done
 
 %files
@@ -214,20 +191,30 @@ done
 %dir %{_sysconfdir}/containers/oci/hooks.d
 %dir %{_sysconfdir}/containers/registries.d
 %dir %{_sysconfdir}/containers/registries.conf.d
+%dir %{_sysconfdir}/containers/containers.conf.d
 %dir %{_sysconfdir}/containers/systemd
 %dir %{_datadir}/containers
 %dir %{_datadir}/containers/oci
 %dir %{_datadir}/containers/oci/hooks.d
 %dir %{_datadir}/containers/systemd
 
-%config(noreplace) %{_sysconfdir}/containers/registries.d/default.yaml
-%config(noreplace) %{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
-%{_datadir}/containers/mounts.conf
-%{_datadir}/containers/seccomp.json
+# Vendor base files in /usr/share/ (podman reads these from /usr/share/)
 %{_datadir}/containers/storage.conf
 %{_datadir}/containers/containers.conf
+%{_datadir}/containers/mounts.conf
+%{_datadir}/containers/seccomp.json
 
-%{_mandir}/man1/*.1%{?ext_man}
+# Vendor files in /etc/ (podman only reads these from /etc/)
+%config(noreplace) %{_sysconfdir}/containers/registries.conf
+%config(noreplace) %{_sysconfdir}/containers/registries.d/default.yaml
+%config(noreplace) %{_sysconfdir}/containers/registries.d/registry.suse.com.yaml
+%config(noreplace) %{_sysconfdir}/containers/registries.d/registry.suse.de.yaml
+%config(noreplace) %{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
+%config(noreplace) %{_sysconfdir}/containers/containers.conf.d/00-suse-containers.conf
+%if 0%{?suse_version} < 1600 && !0%{?is_opensuse}
+%config(noreplace) %{_sysconfdir}/containers/containers.conf.d/01-suse-cni.conf
+%endif
+
 %{_mandir}/man5/*.5%{?ext_man}
 %license LICENSE
 
@@ -239,9 +226,9 @@ done
 %config(noreplace) %{_sysconfdir}/containers/policy.json.default
 
 %files -n registries-conf-suse
-%config(noreplace) %{_sysconfdir}/containers/registries.conf.suse
+%config(noreplace) %{_sysconfdir}/containers/registries.conf.d/00-suse-registries.conf.suse
 
 %files -n registries-conf-default
-%config(noreplace) %{_sysconfdir}/containers/registries.conf.default
+%config(noreplace) %{_sysconfdir}/containers/registries.conf.d/00-suse-registries.conf.default
 
 %changelog

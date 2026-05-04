@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 29 10:40:17 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- New release 20260429
+  * bump bundled c/common to 0.67.1
+- Switch source to the new upstream monorepo containers/container-libs.
+- Drop SUSE patches:
+  * 0001-containers.conf-SUSE-clear-cni-config-dir-for-ALP.patch
+    (replaced by containers.conf.d/01-suse-cni.conf drop-in)
+  * 0002-storage-conf-prio-list.patch
+    (no-op btrfs storage_priority patch)
+  * 0003-containers-conf-suse-defaults.patch
+    (replaced by containers.conf.d/00-suse-containers.conf drop-in)
+- Split SUSE-specific sigstore entries out of default.yaml into
+  per-registry files (registry.suse.com.yaml, registry.suse.de.yaml).
+- Ship search-registries via a registries.conf.d/ drop-in instead of
+  modifying the base registries.conf in the subpackages.
+
+-------------------------------------------------------------------
 Mon Jan 12 16:43:45 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - New release 20260112
