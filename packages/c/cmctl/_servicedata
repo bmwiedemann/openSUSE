@@ -3,4 +3,6 @@
                 <param name="url">https://github.com/cert-manager/cert-manager</param>
               <param name="changesrevision">8671a416c74a8e443e932646b0f78289c9e36537</param></service><service name="tar_scm">
                 <param name="url">https://github.com/cert-manager/cmctl</param>
-              <param name="changesrevision">4668ed9fb057dc73396e6050b3319532de74c0c5</param></service></servicedata>
+              <param name="changesrevision">4668ed9fb057dc73396e6050b3319532de74c0c5</param></service><service name="tar_scm">
+                <param name="url">https://github.com/cert-manager/cmctl.git</param>
+              <param name="changesrevision">46bd6766e7c7e345b29f1bc2dc737872bce6fb66</param></service></servicedata>

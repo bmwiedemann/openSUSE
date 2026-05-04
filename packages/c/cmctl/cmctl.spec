@@ -19,7 +19,7 @@
 %define kubectl_plugin_name kubectl-cert_manager
 
 Name:           cmctl
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        CLI tool that can help you to manage cert-manager resources inside your cluster
 License:        Apache-2.0
@@ -30,11 +30,13 @@ Source2:        README.md
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 
 %description
-cmctl is a CLI tool that can help you to manage cert-manager resources inside your cluster.
-While also available as a kubectl plugin, it is recommended to use as a stand alone binary as this allows the use of command auto-completion.
+cmctl is a CLI tool that can help you to manage cert-manager resources inside
+your cluster.
+While also available as a kubectl plugin, it is recommended to use as a stand
+alone binary as this allows the use of command auto-completion.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
