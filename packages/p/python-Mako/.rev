@@ -673,4 +673,18 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     <comment></comment>
     <requestid>1349104</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>37d179c77a5b12bcfc7c3311780f3b9a</srcmd5>
+    <version>1.3.12</version>
+    <time>1777922230</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3.12:
+  * Fixed issue in :class:`.TemplateLookup` where a URI with
+    backslash path separators (e.g. ``\..\secret.txt``) could
+    bypass the directory traversal check on Windows, allowing
+    reads of arbitrary files outside of the template directory.
+    Backslash characters in URIs are now normalized to forward
+    slashes before path resolution.</comment>
+    <requestid>1350583</requestid>
+  </revision>
 </revisionlist>
