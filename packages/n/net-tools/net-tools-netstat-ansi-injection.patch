@@ -1,0 +1,231 @@
+From d0732f25ff1b92427bb3382535b97fa6214d2a54 Mon Sep 17 00:00:00 2001
+From: Stanislav Brabec <sbrabec@suse.com>
+Date: Mon, 30 Mar 2026 03:58:16 +0200
+Subject: [PATCH] netstat: Fix possible ANSI terminal injection
+
+Convert special characters in the process name to "?" to prevent sending
+arbitrary characters to terminal.
+
+For example
+(ln -sf /usr/bin/nc /tmp/nc$(printf '\033[1m;'); /tmp/nc* -l 31337 &); netstat -alp
+causes terminal switching to bold. Other sequences can hide lines in the
+listing or lock the terminal.
+
+The problem was originally reported for busybox and is known as
+CVE-2024-58251.
+
+The escape_str.c code is based on procps and modified by
+Stephen Hemminger <stephen@networkplumber.org> for iproute2 ss.
+Reference: https://lore.kernel.org/all/20250204162429.17902-1-stephen@networkplumber.org/
+
+Due to the licensing reasons, the code is kept in a separate file.
+
+Fixes https://github.com/ecki/net-tools/issues/57
+---
+ include/escape.h |  28 ++++++++++++
+ lib/Makefile     |   2 +-
+ lib/escape.c     | 109 +++++++++++++++++++++++++++++++++++++++++++++++
+ netstat.c        |   6 ++-
+ 4 files changed, 142 insertions(+), 3 deletions(-)
+ create mode 100644 include/escape.h
+ create mode 100644 lib/escape.c
+
+diff --git a/include/escape.h b/include/escape.h
+new file mode 100644
+index 0000000..e1a4e47
+--- /dev/null
++++ b/include/escape.h
+@@ -0,0 +1,28 @@
++/*
++ * escape.h - printing handling
++ *
++ * Copyright © 2011-2023 Jim Warner <james.warner@comcast.net>
++ * Copyright © 2016-2023 Craig Small <csmall@dropbear.xyz>
++ * Copyright © 1998-2005 Albert Cahalan
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
++ */
++
++#ifndef PROCPS_PROC_ESCAPE_H
++#define PROCPS_PROC_ESCAPE_H
++
++int escape_str (char *dst, const char *src, int bufsize);
++
++#endif
+diff --git a/lib/Makefile b/lib/Makefile
+index 8347645..c16332e 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -21,7 +21,7 @@ AFOBJS	 = unix.o inet.o inet6.o ax25.o ipx.o ddp.o ipx.o netrom.o af.o rose.o ec
+ AFGROBJS = inet_gr.o inet6_gr.o ipx_gr.o ddp_gr.o netrom_gr.o ax25_gr.o rose_gr.o getroute.o x25_gr.o
+ AFSROBJS = inet_sr.o inet6_sr.o netrom_sr.o ipx_sr.o setroute.o x25_sr.o
+ ACTOBJS  = slip_ac.o ppp_ac.o activate.o
+-VARIA	 = getargs.o masq_info.o proc.o util.o nstrcmp.o interface.o sockets.o
++VARIA	 = getargs.o masq_info.o proc.o util.o nstrcmp.o interface.o sockets.o escape.o
+ 
+ # Default Name
+ NET_LIB_NAME = net-tools
+diff --git a/lib/escape.c b/lib/escape.c
+new file mode 100644
+index 0000000..1c3d0eb
+--- /dev/null
++++ b/lib/escape.c
+@@ -0,0 +1,109 @@
++/* SPDX-License-Identifier: GPL-2.0+ */
++/*
++ * Escape character print handling derived from procps
++ * Copyright 1998-2002 by Albert Cahalan
++ * Copyright 2020-2022 Jim Warner <james.warner@comcast.net>
++ *
++ */
++
++#include <limits.h>
++#include <stdio.h>
++#include <string.h>
++#include <langinfo.h>
++
++static const char UTF_tab[] = {
++	1,  1,	1,  1,	1,  1,	1,  1,
++	1,  1,	1,  1,	1,  1,	1,  1, // 0x00 - 0x0F
++	1,  1,	1,  1,	1,  1,	1,  1,
++	1,  1,	1,  1,	1,  1,	1,  1, // 0x10 - 0x1F
++	1,  1,	1,  1,	1,  1,	1,  1,
++	1,  1,	1,  1,	1,  1,	1,  1, // 0x20 - 0x2F
++	1,  1,	1,  1,	1,  1,	1,  1,
++	1,  1,	1,  1,	1,  1,	1,  1, // 0x30 - 0x3F
++	1,  1,	1,  1,	1,  1,	1,  1,
++	1,  1,	1,  1,	1,  1,	1,  1, // 0x40 - 0x4F
++	1,  1,	1,  1,	1,  1,	1,  1,
++	1,  1,	1,  1,	1,  1,	1,  1, // 0x50 - 0x5F
++	1,  1,	1,  1,	1,  1,	1,  1,
++	1,  1,	1,  1,	1,  1,	1,  1, // 0x60 - 0x6F
++	1,  1,	1,  1,	1,  1,	1,  1,
++	1,  1,	1,  1,	1,  1,	1,  1, // 0x70 - 0x7F
++	-1, -1, -1, -1, -1, -1, -1, -1,
++	-1, -1, -1, -1, -1, -1, -1, -1, // 0x80 - 0x8F
++	-1, -1, -1, -1, -1, -1, -1, -1,
++	-1, -1, -1, -1, -1, -1, -1, -1, // 0x90 - 0x9F
++	-1, -1, -1, -1, -1, -1, -1, -1,
++	-1, -1, -1, -1, -1, -1, -1, -1, // 0xA0 - 0xAF
++	-1, -1, -1, -1, -1, -1, -1, -1,
++	-1, -1, -1, -1, -1, -1, -1, -1, // 0xB0 - 0xBF
++	-1, -1, 2,  2,	2,  2,	2,  2,
++	2,  2,	2,  2,	2,  2,	2,  2, // 0xC0 - 0xCF
++	2,  2,	2,  2,	2,  2,	2,  2,
++	2,  2,	2,  2,	2,  2,	2,  2, // 0xD0 - 0xDF
++	3,  3,	3,  3,	3,  3,	3,  3,
++	3,  3,	3,  3,	3,  3,	3,  3, // 0xE0 - 0xEF
++	4,  4,	4,  4,	4,  -1, -1, -1,
++	-1, -1, -1, -1, -1, -1, -1, -1, // 0xF0 - 0xFF
++};
++
++static const unsigned char ESC_tab[] = {
++	"@..............................." // 0x00 - 0x1F
++	"||||||||||||||||||||||||||||||||" // 0x20 - 0x3F
++	"||||||||||||||||||||||||||||||||" // 0x40 - 0x5f
++	"|||||||||||||||||||||||||||||||." // 0x60 - 0x7F
++	"????????????????????????????????" // 0x80 - 0x9F
++	"????????????????????????????????" // 0xA0 - 0xBF
++	"????????????????????????????????" // 0xC0 - 0xDF
++	"????????????????????????????????" // 0xE0 - 0xFF
++};
++
++static void esc_all(unsigned char *str)
++{
++	// if bad locale/corrupt str, replace non-printing stuff
++	while (*str) {
++		unsigned char c = ESC_tab[*str];
++
++		if (c != '|')
++			*str = c;
++		++str;
++	}
++}
++
++static void esc_ctl(unsigned char *str, int len)
++{
++	int i;
++
++	for (i = 0; i < len;) {
++		// even with a proper locale, strings might be corrupt
++		int n = UTF_tab[*str];
++
++		if (n < 0 || i + n > len) {
++			esc_all(str);
++			return;
++		}
++		// and eliminate those non-printing control characters
++		if (*str < 0x20 || *str == 0x7f)
++			*str = '?';
++		str += n;
++		i += n;
++	}
++}
++
++int escape_str(char *dst, const char *src, int bufsize)
++{
++	static int utf_sw;
++
++	if (utf_sw == 0) {
++		char *enc = nl_langinfo(CODESET);
++
++		utf_sw = enc && strcasecmp(enc, "UTF-8") == 0 ? 1 : -1;
++	}
++
++	int n = strlcpy(dst, src, bufsize);
++
++	if (utf_sw < 0)
++		esc_all((unsigned char *)dst);
++	else
++		esc_ctl((unsigned char *)dst, n);
++	return n;
++}
+diff --git a/netstat.c b/netstat.c
+index 8475ee7..8dcab6b 100644
+--- a/netstat.c
++++ b/netstat.c
+@@ -96,6 +96,7 @@
+ #include "interface.h"
+ #include "util.h"
+ #include "proc.h"
++#include "escape.h"
+ 
+ #if HAVE_SELINUX
+ #include <selinux/selinux.h>
+@@ -397,7 +398,7 @@ static void prg_cache_load(void)
+ {
+     char line[LINE_MAX], eacces=0;
+     int procfdlen, fd, cmdllen, lnamelen;
+-    char lname[30], cmdlbuf[512], finbuf[PROGNAME_WIDTH];
++    char lname[30], cmdlbuf[512], ecmdlbuf[512], finbuf[PROGNAME_WIDTH];
+     unsigned long inode;
+     const char *cs, *cmdlp;
+     DIR *dirproc = NULL, *dirfd = NULL;
+@@ -467,10 +468,11 @@ static void prg_cache_load(void)
+ 		    cmdlp++;
+ 		else
+ 		    cmdlp = cmdlbuf;
++		escape_str (ecmdlbuf, cmdlp, 512);
+ 	    }
+ 	    // pid can be up to 10, use rest from commandline start.
+ 	    // #pragma GCC diagnostic ignored "-Wformat-truncation"?
+-	    snprintf(finbuf, sizeof(finbuf), "%s/%s", direproc->d_name, cmdlp);
++	    snprintf(finbuf, sizeof(finbuf), "%s/%s", direproc->d_name, ecmdlbuf);
+ #if HAVE_SELINUX
+ 	    if (getpidcon(atoi(direproc->d_name), &scon) == -1) {
+ 		    scon=xstrdup("-");
+-- 
+2.51.0
+

@@ -1,16 +1,7 @@
-Index: net-tools-2.10/config.in
+Index: net-tools-3.14~alpha~git.20251212.7011617/config.in
 ===================================================================
---- net-tools-2.10.orig/config.in
-+++ net-tools-2.10/config.in
-@@ -42,7 +42,7 @@
- * course, welcome.  Answer `n' here if you have no support for
- * internationalization on your system.
- *
--bool 'Does your system support GNU gettext?' I18N n
-+bool 'Does your system support GNU gettext?' I18N y
- *
- *
- *             Protocol Families.
+--- net-tools-3.14~alpha~git.20251212.7011617.orig/config.in
++++ net-tools-3.14~alpha~git.20251212.7011617/config.in
 @@ -91,10 +91,10 @@ bool 'InfiniBand hardware support' HAVE_
  *
  bool 'IP Masquerading support' HAVE_FW_MASQUERADE y
@@ -24,11 +15,11 @@ Index: net-tools-2.10/config.in
 +bool 'Build mii-tool' HAVE_MII n
  bool 'Build plipconfig' HAVE_PLIP_TOOLS y
  bool 'Build slattach' HAVE_SERIAL_TOOLS y
- bool 'SELinux support' HAVE_SELINUX n
-Index: net-tools-2.10/configure.sh
+ bool 'SELinux support' HAVE_SELINUX y
+Index: net-tools-3.14~alpha~git.20251212.7011617/configure.sh
 ===================================================================
---- net-tools-2.10.orig/configure.sh
-+++ net-tools-2.10/configure.sh
+--- net-tools-3.14~alpha~git.20251212.7011617.orig/configure.sh
++++ net-tools-3.14~alpha~git.20251212.7011617/configure.sh
 @@ -66,9 +66,8 @@ config_fd_redir='<&7'
  #
  function readln()

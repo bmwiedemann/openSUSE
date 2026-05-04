@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git@github.com:ecki/net-tools.git</param>
+              <param name="changesrevision">701161795e87a3b475afd7e3eb27885332cd90cb</param></service><service name="tar_scm">
+                <param name="url">https://github.com/ecki/net-tools.git</param>
+              <param name="changesrevision">701161795e87a3b475afd7e3eb27885332cd90cb</param></service></servicedata>

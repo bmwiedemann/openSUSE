@@ -1,7 +1,7 @@
 #
 # spec file for package net-tools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,40 +17,20 @@
 
 
 Name:           net-tools
-# The real version is 2.10. But we dropped downstream ether-wake, so bump version to detect this change.
-# When an upstream update will appear, return back lines marked with #E#
-%define _version 2.10
-Version:        2.10+1
+Version:        3.14~alpha~git.20251212.7011617
 Release:        0
 Summary:        Important Programs for Networking
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-URL:            https://sourceforge.net/projects/net-tools/
-#E#Source:         https://sourceforge.net/projects/net-tools/files/net-tools-%%{version}.tar.xz
-Source:         https://sourceforge.net/projects/net-tools/files/net-tools-%{_version}.tar.xz
-# PATCH-FEATURE-SUSE: set configure values to our liking as we do not need
-# everything here
+URL:            https://github.com/ecki/net-tools
+Source:         net-tools-%{version}.tar.xz
+# PATCH-FEATURE-SUSE net-tools-configure.patch -- Set configure values to our liking as we do not need everything here.
 Patch0:         net-tools-configure.patch
-Patch7:         0007-Introduce-T-notrim-option-in-netstat.patch
-# PATCH-FIX-SECURITY net-tools-CVE-2025-46836.patch bsc1243581 sbrabec@suse.com -- Perform bound checks when parsing interface labels in /proc/net/dev.
-Patch8:         net-tools-CVE-2025-46836.patch
-# PATCH-FIX-UPSTREAM net-tools-CVE-2025-46836-regression.patch bsc1243581 sbrabec@suse.com -- Fix regression introduced by net-tools-CVE-2025-46836.patch.
-Patch9:         net-tools-CVE-2025-46836-regression.patch
-# PATCH-FIX-UPSTREAM net-tools-CVE-2025-46836-error-reporting.patch bsc1243581 sbrabec@suse.com -- Provide more readable error for interface name size checking.
-Patch10:        net-tools-CVE-2025-46836-error-reporting.patch
-# PATCH-FIX-SECURITY net-tools-parse_hex-stack-overflow.patch bsc1248410 sbrabec@suse.com -- Fix stack buffer overflow in parse_hex.
-Patch11:        net-tools-parse_hex-stack-overflow.patch
-# PATCH-FIX-SECURITY net-tools-proc_gen_fmt-buffer-overflow.patch bsc1248410 sbrabec@suse.com -- Fix stack-based buffer overflow in proc_gen_fmt.
-Patch12:        net-tools-proc_gen_fmt-buffer-overflow.patch
-# PATCH-FIX-SECURITY net-tools-ifconfig-avoid-unsafe-memcpy.patch bsc1248410 sbrabec@suse.com -- Avoid unsafe memcpy in ifconfig.
-Patch13:        net-tools-ifconfig-avoid-unsafe-memcpy.patch
-# PATCH-FIX-SECURITY net-tools-ax25+netrom-overflow-1.patch bsc1248410 sbrabec@suse.com -- Prevent overflow in ax25 and netrom.
-Patch14:        net-tools-ax25+netrom-overflow-1.patch
-# PATCH-FIX-SECURITY net-tools-ax25+netrom-overflow-2.patch bsc1248410 sbrabec@suse.com -- Prevent overflow in ax25 and netrom.
-Patch15:        net-tools-ax25+netrom-overflow-2.patch
-# PATCH-FIX-UPSTREAM net-tools-ifconfig-long-name-warning.patch bsc1248410 sbrabec@suse.com -- Allow to enter long interface names again.
-Patch16:        net-tools-ifconfig-long-name-warning.patch
+# PATCH-FIX-SECURITY net-tools-netstat-ansi-injection.patch bsc1254323 gh#ecki/net-tools#2109 CVE-2024-58251 sbrabec@suse.com -- Prevent denial of service via terminal escape sequences injection.
+Patch1:         net-tools-netstat-ansi-injection.patch
+BuildRequires:  bluez-devel
 BuildRequires:  help2man
+BuildRequires:  libselinux-devel
 Recommends:     traceroute >= 2.0.0
 
 %description
@@ -81,7 +61,7 @@ package:
 
 %prep
 #E#%%setup -q
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{version}
 %autopatch -p1
 
 %build
@@ -107,7 +87,7 @@ done
 %if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/sbin
 mkdir -p %{buildroot}/bin
-for i in ether-wake nameif plipconfig slattach arp ipmaddr iptunnel; do
+for i in nameif plipconfig slattach arp ipmaddr iptunnel; do
 ln -s %{_sbindir}/$i %{buildroot}/sbin/$i
 done
 for i in netstat ifconfig route; do
