@@ -2358,4 +2358,16 @@
     <comment>Update version</comment>
     <requestid>1348428</requestid>
   </revision>
+  <revision rev="298" vrev="3">
+    <srcmd5>e664ad778f524e9b8d4a710abf3c57a5</srcmd5>
+    <version>50.0</version>
+    <time>1777891718</time>
+    <user>anag_factory</user>
+    <comment>- Drop all X11/XOrg related BuildRequires: pkgconfig(x11),
+  pkgconfig(xau), pkgconfig(xcb), pkgconfig(xdmcp), pkgconfig(xi),
+  pkgconfig(xinerama), pkgconfig(xrandr) and
+  pkgconfig(xorg-server).
+- Drop check-devel, we already have pkgconfig(check) BuildRequires.</comment>
+    <requestid>1350303</requestid>
+  </revision>
 </revisionlist>

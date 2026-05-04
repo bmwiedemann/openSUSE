@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 26 12:52:39 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop all X11/XOrg related BuildRequires: pkgconfig(x11),
+  pkgconfig(xau), pkgconfig(xcb), pkgconfig(xdmcp), pkgconfig(xi),
+  pkgconfig(xinerama), pkgconfig(xrandr) and
+  pkgconfig(xorg-server).
+- Drop check-devel, we already have pkgconfig(check) BuildRequires.
+
+-------------------------------------------------------------------
 Fri Apr 17 12:30:54 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
 
 - Enforce dependency on gsettings-backend-dconf, greeter doesn't

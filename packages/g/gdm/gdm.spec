@@ -71,7 +71,6 @@ Patch1000:      gdm-disable-gnome-initial-setup.patch
 # PATCH-FIX-SLE gdm-initial-vt-tty1.patch bsc#1252888 xwang@suse.com -- Greeter session runs on tty1
 Patch1001:      gdm-initial-vt-tty1.patch
 
-BuildRequires:  check-devel
 # dconf and gnome-session-core are needed for directory ownership
 BuildRequires:  dconf
 BuildRequires:  fdupes
@@ -83,8 +82,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
-BuildRequires:  xorg-x11-server
-BuildRequires:  xorg-x11-server-extra
 BuildRequires:  pkgconfig(accountsservice) >= 0.6.35
 BuildRequires:  pkgconfig(audit)
 BuildRequires:  pkgconfig(check)
@@ -101,13 +98,7 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libkeyutils)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(ply-boot-client)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xau)
-BuildRequires:  pkgconfig(xcb)
-BuildRequires:  pkgconfig(xdmcp)
-BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(xinerama)
-BuildRequires:  pkgconfig(xrandr)
+
 Requires:       %{name}-branding = %{version}
 Requires:       displaymanager-sysconfig
 Requires:       gnome-session-core
@@ -128,9 +119,6 @@ Recommends:     orca
 # smartcard login
 Recommends:     pam_pkcs11
 DocDir:         %{_defaultdocdir}
-%ifnarch s390 s390x
-BuildRequires:  pkgconfig(xorg-server)
-%endif
 %sysusers_requires
 
 %description
