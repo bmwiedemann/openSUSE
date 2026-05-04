@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  3 19:17:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.5:
+  * Added PR title checking to lint workflow and clean up release
+    notes workflow
+  * Add @linode/dx-sdets to CODEOWNERS
+
+-------------------------------------------------------------------
 Mon Mar 16 21:27:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.4:

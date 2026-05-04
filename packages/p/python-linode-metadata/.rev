@@ -23,4 +23,15 @@
   * Remove preview section from PR template</comment>
     <requestid>1339440</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>68dd088d1462b5680298c88d733c765e</srcmd5>
+    <version>0.3.5</version>
+    <time>1777892077</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.3.5:
+  * Added PR title checking to lint workflow and clean up release
+    notes workflow
+  * Add @linode/dx-sdets to CODEOWNERS</comment>
+    <requestid>1350571</requestid>
+  </revision>
 </revisionlist>
