@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openapi-spec-validator
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        Python module for validating OpenAPI Specs against Swagger and OAS3
 License:        Apache-2.0
@@ -26,7 +26,7 @@ URL:            https://github.com/p1c2u/openapi-spec-validator
 Source:         https://github.com/p1c2u/openapi-spec-validator/archive/%{version}.tar.gz#/openapi-spec-validator-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module poetry-core >= 2.0.0}
 BuildRequires:  %{python_module pydantic >= 2}
 BuildRequires:  %{python_module pydantic-settings >= 2}
 BuildRequires:  fdupes

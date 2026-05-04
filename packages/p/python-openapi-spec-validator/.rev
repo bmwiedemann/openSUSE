@@ -197,4 +197,13 @@
   * Python 3.8 and 3.9 drop #392 #456</comment>
     <requestid>1339286</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>02e2bacd2283c9f9555f9f3f6635c436</srcmd5>
+    <version>0.8.5</version>
+    <time>1777892076</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.5:
+  * Update jsonschema dependency version range #489</comment>
+    <requestid>1350568</requestid>
+  </revision>
 </revisionlist>
