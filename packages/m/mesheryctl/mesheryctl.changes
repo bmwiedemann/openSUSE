@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Thu Apr 30 17:38:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.16:
+  * General
+    - [Server] Stop ProviderUIHandler from emitting an empty
+      meshery-provider cookie @hamza-mohd (#19007)
+- update to 1.0.15:
+  * General
+    - [Server] Break /user/login ⇄ /provider redirect loop in
+      enforced-provider mode @leecalcote (#19006)
+    - chore(deps): bump github.com/meshery/schemas to v1.2.6
+      @leecalcote (#18994)
+  * Meshery CLI
+    - [mesheryctl] Add e2e BATS tests for system config
+      gke/aks/eks/minikube @Omkar-Ugal (#18930)
+  * Maintenance
+    - chore(ci): remove dead graphql-docs step (docs/Rakefile
+      deleted in Jekyll->Hugo migration) @leecalcote (#18992)
+    - [mesheryctl] Add e2e BATS tests for system config
+      gke/aks/eks/minikube @Omkar-Ugal (#18930)
+  * Documentation
+    - docs: refresh examples and references after canonical-naming
+      overhaul @leecalcote (#18993)
+    - chore(ci): remove dead graphql-docs step (docs/Rakefile
+      deleted in Jekyll->Hugo migration) @leecalcote (#18992)
+    - [Docs] Replace body_class with layout for REST API reference
+      @Oluwatunmise-olat (#18972)
+- update to 1.0.14:
+  * General
+    - fix(server): promote raw-err passthroughs to MeshKit codes
+      (follow-up to #18919) @leecalcote (#18955)
+    - test(server): pin buffer-encode pattern in httputil tests
+      @leecalcote (#18954)
+    - chore(server): delete dead meshery_application_handler.go
+      @leecalcote (#18953)
+    - chore(server): remove dead getLatestKubeVersionFromRegistry
+      block @leecalcote (#18952)
+    - docs(server): explain log/wire error divergence in
+      SessionInjectorMiddleware @leecalcote (#18951)
+  * Meshery CLI
+    - fix(wire-format): flip meshery server + UI to canonical
+      camelCase (Phase 5) @leecalcote (#18974)
+    - fix(server): JSON error responses across handlers + provider
+      layer @jamieplu (#18919)
+    - fix: update default remote provider references to Meshery
+      Cloud @miacycle (#18913)
+  * Meshery UI
+    - chore(deps): bump meshkit v1.0.6 -> v1.0.7 + flip Event
+      consumer reads @leecalcote (#18987)
+    - fix(wire-format): flip Kubernetes connection metadata literal
+      keys to canonical camelCase (Phase 5b) @leecalcote (#18986)
+    - [ui] Fix font-family naming mismatch and redundant preload
+      warning #18515 @Ananya-Kaushal137 (#18637)
+    - fix(wire-format): flip meshery server + UI to canonical
+      camelCase (Phase 5) @leecalcote (#18974)
+    - fix(server): JSON error responses across handlers + provider
+      layer @jamieplu (#18919)
+    - fix: update default remote provider references to Meshery
+      Cloud @miacycle (#18913)
+    - feat(ui): consume MeshKit error metadata in notification
+      toasts @leecalcote (#18926)
+  * Maintenance
+    - [Agent] Standardize coding agent GitHub tool access
+      @leecalcote (#18990)
+    - fix(wire-format): flip Kubernetes connection metadata literal
+      keys to canonical camelCase (Phase 5b) @leecalcote (#18986)
+    - [CI] Remove unsupported copilot-requests permission from docs
+      noob tester workflow @copilot-swe-agent[bot] (#18988)
+    - [Agent] Enable PR comments for Meshery Code Contributor
+      @leecalcote (#18975)
+    - chore(deps): Bump github.com/olekukonko/tablewriter from
+      1.1.0 to 1.1.4 @dependabot[bot] (#16824)
+    - Bump github.com/open-policy-agent/opa from 1.11.0 to 1.12.1
+      @dependabot[bot] (#16825)
+    - Bump github.com/envoyproxy/go-control-plane/envoy from 1.35.0
+      to 1.36.0 @dependabot[bot] (#16826)
+    - fix(wire-format): flip meshery server + UI to canonical
+      camelCase (Phase 5) @leecalcote (#18974)
+    - fix(server): JSON error responses across handlers + provider
+      layer @jamieplu (#18919)
+    - [CI] Fail PR E2E workflow when Playwright tests fail
+      @copilot-swe-agent[bot] (#18960)
+    - ci(server): flip forbidigo http.Error guard to blocking
+      @leecalcote (#18927)
+    - fix: update default remote provider references to Meshery
+      Cloud @miacycle (#18913)
+    - Update email notification workflow for release notes
+      @fitzergerald (#18944)
+    - Add workflow for release notes email notifications
+      @fitzergerald (#18946)
+  * Documentation
+    - [Docs] Use Qanelas Soft for REST API reference typography
+      @Oluwatunmise-olat (#18973)
+    - [Docs] Remove repetitive REST API reference summary text
+      @Joyboy48 (#18964)
+    - Bump postcss from 8.5.6 to 8.5.12 in /docs @dependabot[bot]
+      (#18947)
+    - fix(server): JSON error responses across handlers + provider
+      layer @jamieplu (#18919)
+    - docs(server): clarify forbidigo advisory state, sync
+      exception lists @leecalcote (#18958)
+    - docs(server): refresh error-contract for Phase 9 +
+      buffer-encode pattern @leecalcote (#18950)
+    - fix: update default remote provider references to Meshery
+      Cloud @miacycle (#18913)
+    - Fix typo in CLI contributing docs (#18940) @Siraddeen
+      (#18942)
+    - Fix light/dark mode toggle icon on v0.9 @Katotodan (#18831)
+    - [Docs] Fix outdated references in Dashboard Widgets docs
+      @matrixkavi (#18931)
+    - fix(docs): remove random text from intra page navigation
+      @Sbragul26 (#18820)
+    - [Server] Implement Proper Error Codes for MeshSync Data
+      Handler @workwithsarang (#18236)
+    - First PR @alex-rudenkiy (#18933)
+- update to 1.0.13:
+  * General
+    - [Server] Restore mutated fields when relationship is deleted
+      @guan404ming (#18885)
+    - docs(agents): record post-migration server-side conformance
+      audit (no code changes) @leecalcote (#18920)
+    - docs: cross-reference the identifier-naming contributor guide
+      @leecalcote (#18918)
+  * Meshery CLI
+    - [Server] Fix SSE event streamer disconnect handling
+      @copilot-swe-agent[bot] (#18895)
+  * Meshery UI
+    - fix: stop N+1 user-profile lookups and plain-text errors on
+      Open Recents @miacycle (#18916)
+  * Documentation
+    - [Server] Fix SSE event streamer disconnect handling
+      @copilot-swe-agent[bot] (#18895)
+
+-------------------------------------------------------------------
 Sun Apr 26 08:29:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.12:
