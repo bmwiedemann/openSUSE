@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun May  3 19:26:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.2:
+  * docs(readme): add Cloud Models Python usage and Cloud API
+    example
+  * client: expose resource cleanup methods
+- update to 0.6.1:
+  * client/types: add logprobs support
+- update to 0.6.0:
+  * client: add web search and web crawl capabilities
+  * client: load OLLAMA_API_KEY on init
+  * client/types: update web search and fetch API
+  * examples: add mcp server for web_search web_crawl
+  * examples: gpt oss browser tool
+- update to 0.5.4:
+  * examples: add gpt-oss browser example
+  * build(deps): bump actions/checkout from 4 to 5
+  * examples/gpt-oss: fix examples
+  * Fix link for thinking-levels.py in documentation
+  * examples: fix gpt-oss-tools-stream for adding tool calls
+  * examples: resolve invalid tool usage status code 400 if llm
+    makes a mistake gpt-oss
+  * build(deps): bump actions/setup-python from 5 to 6
+  * feat: add dimensions to embed request
+- update to 0.5.3:
+  * add support for 'high'/'medium'/'low' think values
+- update to 0.5.2:
+  * types/examples: add tool_name to message and examples
+  * types: add `context_length` to ProcessResponse
+  * types: relax type for tools
+  * add license metadata to package
+
+-------------------------------------------------------------------
+Tue Jun  3 06:28:36 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.1
+  * add support for thinking
+
+-------------------------------------------------------------------
 Fri Apr 11 12:47:13 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.7:
@@ -13,6 +52,13 @@ Fri Apr 11 12:47:13 UTC 2025 - Dirk Müller <dmueller@suse.com>
   * chore: add tests for checking sha in blob request
 - update to 0.4.6:
   * add create api changes to support ollama v0.5.5
+
+-------------------------------------------------------------------
+Thu Jan 16 09:59:06 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.6
+  * add create api changes to support ollama v0.5.5
+- enforce right pydantic version (2.10 is breaking ollama)
 
 -------------------------------------------------------------------
 Wed Jan  8 09:22:05 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>

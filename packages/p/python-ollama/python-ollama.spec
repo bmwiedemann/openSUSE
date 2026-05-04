@@ -1,7 +1,7 @@
 #
 # spec file for package python-ollama
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ollama
-Version:        0.4.7
+Version:        0.6.2
 Release:        0
 License:        MIT
 Summary:        Ollama python bindings
 Group:          Development/Languages/Python
 URL:            https://github.com/ollama/ollama-python
 Source:         https://files.pythonhosted.org/packages/source/o/ollama/ollama-%{version}.tar.gz
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module httpx >= 0.27.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pydantic >= 2.9}
+BuildRequires:  %{python_module pytest-httpserver}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-httpx >= 0.27.0
+Requires:       python-pydantic >= 2.9
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,9 +52,9 @@ Official ollama python bindings
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# Tests require python-pydantic, which is not in Factory yet
-#%%check
-#%%pytest
+%check
+# requires a running ollama server
+#pytest
 
 %files %{python_files}
 %license LICENSE
