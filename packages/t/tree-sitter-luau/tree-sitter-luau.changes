@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 17 21:54:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add require-correct-lua.patch which uses the openSUSE-installed
+  module path (tree-sitter-lua) instead of the npm scoped package
+  name (@muniftanjim/tree-sitter-lua), and handle ESM default
+  export from tree-sitter-lua grammar.
+
+-------------------------------------------------------------------
+Thu Mar  5 21:29:50 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Remove redundant Neovim workaround
+
+-------------------------------------------------------------------
 Tue Dec 31 10:14:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.2.0:

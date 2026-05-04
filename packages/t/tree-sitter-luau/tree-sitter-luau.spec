@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter-luau
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,10 @@ Summary:        Luau grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-luau
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE require-correct-lua.patch mcepl@suse.com
+# Use the openSUSE-installed module path (tree-sitter-lua) instead of
+# the npm scoped package name (@muniftanjim/tree-sitter-lua), and
+# handle ESM default export from tree-sitter-lua grammar
 Patch0:         require-correct-lua.patch
 BuildRequires:  tree-sitter
 BuildRequires:  treesitter_grammar_src(tree-sitter-lua)
@@ -43,17 +47,9 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-lua)
 %treesitter_install
 %treesitter_devel_install
 
-#neovim stuff
-install -d %{buildroot}%{_libdir}/tree_sitter
-ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
-
 %files
 %license LICENSE
 %treesitter_files
-%{_libdir}/tree_sitter/%{_name}.so
-%if 0%{?suse_version} < 1600
-%dir %{_libdir}/tree_sitter
-%endif
 
 %treesitter_devel_package
 
