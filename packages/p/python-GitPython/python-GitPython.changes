@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Apr 29 11:45:40 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to version 3.1.48:
+  * a new release with safer reference creation
+  * address review feedback and CI failures
+  * prevent out-of-repo access when manipulating references.
+- 3.1.47:
+  * git.cmd: harden unsafe option canonicalization and isolate push test cases
+  * linter fix
+  * Block unsafe underscored git kwargs / Fix for GHSA-rpm5-65cw-6hj4
+  * Make sure that multi-options are checked after splitting them with `shlex`
+  * test_avoids_changing...: don't leave test artifacts behind
+  * git.cmd.Git.execute(..): fix `with_stdout=False`
+  * Fix trailer subprocess lifetime
+  * Refine trailer encoding review follow-up
+  * Use commit encoding for trailer parsing
+  * Handle mypy CI typing failure
+  * Normalize interpret-trailers subprocess IO
+  * Use consistent interpret-trailers encoding
+  * Use configured git executable and finalize process for trailer creation
+  * Bump https://github.com/astral-sh/ruff-pre-commit
+  * cmd: fix kwarg formatting in docstring example
+  * Add trailer support for commit creation
+  * docs: warn about GitDB performance with large commits
+  * fix: resolve active_branch correctly for reftable refs
+  * Go back to testing free-threaded interpreters only on GNU/Linux
+  * Don't support building documentation on Python 3.8
+  * Upgrade Sphinx to ~7.4.7
+  * Test Python 3.14 on Ubuntu and macOS on CI
+  * Test free-threaded interpreter on macOS
+  * Bump the pre-commit group with 5 updates
+  * Keep `pre-commit` hooks up to date using Dependabot
+  * Run the the `pre-commit` CI job on `ubuntu-slim`
+  * Remove unnecessary `pytest` import in a test module
+  * fix: ignore AutoInterrupt terminate errors during shutdown
+  * Run `gc.collect()` twice in `test_rename` on Python 3.12
+  * Bump git/ext/gitdb from `4c63ee6` to `5c1b303`
+  * Switch back from Alpine to Debian for WSL
+  * Fix GitConfigParser ignoring multiple [include] path entries
+  * DOC: README Add urls and updated a relative url
+  * Bump git/ext/gitdb from `335c0f6` to `4c63ee6`
+
+-------------------------------------------------------------------
 Mon Mar 02 21:04:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to version 3.1.46:
