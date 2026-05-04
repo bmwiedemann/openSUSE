@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  4 09:49:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.05.03
+  * Make `AutoDoc()` infer the package directory from
+    `INPUT_FILENAME()` when called from a `makedoc.g` file outside
+    the package root
+  * Deprecate calling `AutoDoc()` with a package name
+  * Deprecate using GAP global options to pass settings to
+    `AutoDoc()`, suggest using option records instead
+
+-------------------------------------------------------------------
 Wed Mar 18 23:07:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2026.03.18
