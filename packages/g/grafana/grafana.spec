@@ -41,6 +41,7 @@ Patch3:         0003-Use-bash-instead-of-env.patch
 Patch4:         0004-Bump-expr-lang.patch
 Patch5:         0005-Bump-edwards25519.patch
 Patch6:         0006-Fix-CVE-2026-21725.patch
+Patch7:         0007-Bump-github.com-go-jose-go-jose.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang(API) >= 1.25
@@ -49,11 +50,6 @@ Requires:       group(grafana)
 Requires:       user(grafana)
 %systemd_ordering
 
-# Exclude s390 on SLE12, since golang 1.14 itself is not built for this arch on SLE12
-# See https://build.suse.de/package/view_file/SUSE:SLE-12:Update/go1.14/go1.14.spec?expand=1
-%if 0%{?suse_version} == 1315
-ExcludeArch:    s390
-%endif
 # Exclue ix86 architectures as they are not supported and do not build
 ExcludeArch:    %{ix86}
 

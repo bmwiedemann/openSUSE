@@ -29,6 +29,7 @@ tar:
 	patch --no-backup-if-mismatch -p1 -i ../../0002-Drop-zanzana.patch && \
 	patch --no-backup-if-mismatch -p1 -i ../../0004-Bump-expr-lang.patch && \
 	patch --no-backup-if-mismatch -p1 -i ../../0005-Bump-edwards25519.patch && \
+	patch --no-backup-if-mismatch -p1 -i ../../0007-Bump-github.com-go-jose-go-jose.patch && \
 	# End of Go modules patches section \
 	go mod download && \
 	go mod verify && \

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 30 13:52:41 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2026-34986: Fix panic in JWE decryption (bsc#1262950)
+  * Add 0007-Bump-github.com-go-jose-go-jose.patch
+
+-------------------------------------------------------------------
+Wed Apr 29 07:46:22 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Drop support for SLE 12
+
+-------------------------------------------------------------------
 Wed Apr 22 08:05:07 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Add patch:
