@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  1 19:43:42 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Support multi-grammar build (HCL and Terraform) using
+  a corrected binding.gyp.
+
+-------------------------------------------------------------------
 Thu Mar  5 21:17:58 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Remove redundant Neovim workaround

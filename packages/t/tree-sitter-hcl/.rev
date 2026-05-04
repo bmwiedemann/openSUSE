@@ -23,4 +23,13 @@
     <comment>- Remove redundant Neovim workaround</comment>
     <requestid>1336833</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5ec0054217e0c8ad5cbf0cb4ac508e37</srcmd5>
+    <version>1.2.0</version>
+    <time>1777891982</time>
+    <user>anag_factory</user>
+    <comment>- Support multi-grammar build (HCL and Terraform) using
+  a corrected binding.gyp.</comment>
+    <requestid>1350403</requestid>
+  </revision>
 </revisionlist>

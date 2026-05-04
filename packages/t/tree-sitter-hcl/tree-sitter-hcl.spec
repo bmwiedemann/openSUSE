@@ -20,21 +20,25 @@
 Name:           tree-sitter-hcl
 Version:        1.2.0
 Release:        0
-Summary:        HCL grammar for tree-sitter
+Summary:        HCL and Terraform grammars for tree-sitter
 License:        Apache-2.0
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-hcl
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        binding.gyp
 BuildRequires:  tree-sitter
-%treesitter_grammars %{_name}
+%treesitter_grammars %{_name}=src terraform=dialects
 
 %description
 %{summary}.
 
 %prep
-%autosetup
+%autosetup -p1
+cp %{SOURCE1} binding.gyp
 
 %build
-%treesitter_configure
+%treesitter_set_flags
+tree-sitter generate
+(cd dialects/terraform; tree-sitter generate)
 %treesitter_build
 
 %install
