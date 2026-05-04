@@ -11,5 +11,4 @@ all MUSTs and the majority of the SHOULDs of the mDNS and DNS-SD RFCs.
 It passes all tests in the Apple Bonjour conformance test suite. In
 addition, it supports some nifty things, like correct mDNS reflection
 across LAN segments.</description>
-  <devel project="GNOME:Factory" package="avahi"/>
 </package>

@@ -1382,4 +1382,17 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1336735</requestid>
   </revision>
+  <revision rev="177" vrev="43">
+    <srcmd5>26e770d73b642d63f53090beb232d4e1</srcmd5>
+    <version>0.8</version>
+    <time>1777891700</time>
+    <user>anag_factory</user>
+    <comment>- Add avahi-CVE-2026-34933.patch: refuse to accept publish flags
+  where both wide_area and multicast are set.
+  (CVE-2026-34933, bsc#1261546)
+
+- Make /var/lib/avahi-autoipd a ghost dir instead of packaging it
+  since avahi-autoipd creates it on start (jsc#PED-14836).</comment>
+    <requestid>1350040</requestid>
+  </revision>
 </revisionlist>

@@ -146,6 +146,8 @@ Patch40:        avahi-CVE-2025-68468.patch
 Patch41:        avahi-CVE-2025-68471.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2025-68276.patch CVE-2025-68276 bsc#1256498 qzhao@suse.com -- refuse to create wide-area record browsers when wide-area is off.
 Patch42:        avahi-CVE-2025-68276.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2026-34933.patch bsc#1261546 xwang@suse.com -- refuse to accept publish flags where both wide_area and multicast are set
+Patch43:        avahi-CVE-2026-34933.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -703,11 +705,9 @@ cd ..
 # do not remove this unless you plan to fix _all_ the references to
 # it. all (multiple) previous attempts have failed already
 #rm "%{buildroot}/%{_libdir}/libavahi-common.la"
-install -d %{buildroot}/%{_localstatedir}/run/avahi-daemon
 ln -s avahi-compat-libdns_sd/dns_sd.h %{buildroot}/%{_includedir}/
 ln -s avahi-compat-howl.pc %{buildroot}/%{_libdir}/pkgconfig/howl.pc
 install -d %{buildroot}/%{_prefix}/lib/avahi
-install -d %{buildroot}/%{_localstatedir}/lib/avahi-autoipd
 install -d %{buildroot}/%{_datadir}/pixmaps
 install -d %{buildroot}%{_fillupdir}
 install -m 644 sysconfig.avahi* %{buildroot}%{_fillupdir}/
@@ -897,7 +897,7 @@ fi
 %files autoipd
 %doc avahi-autoipd/README.SUSE
 %{_mandir}/man8/avahi-autoipd.8%{ext_man}
-%attr(-,avahi-autoipd,avahi-autoipd)%{_localstatedir}/lib/avahi-autoipd
+%attr(-,avahi-autoipd,avahi-autoipd) %ghost %{_localstatedir}/lib/avahi-autoipd
 %{_sbindir}/avahi-autoipd
 %{_sysconfdir}/avahi/avahi-autoipd.action
 %{_fillupdir}/sysconfig.avahi-autoipd

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 27 02:40:59 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add avahi-CVE-2026-34933.patch: refuse to accept publish flags
+  where both wide_area and multicast are set.
+  (CVE-2026-34933, bsc#1261546)
+
+-------------------------------------------------------------------
+Wed Apr 22 15:36:01 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Make /var/lib/avahi-autoipd a ghost dir instead of packaging it
+  since avahi-autoipd creates it on start (jsc#PED-14836).
+
+-------------------------------------------------------------------
 Tue Mar  3 22:38:46 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use libalternative instead of update-alternatives in TW and SLFO
