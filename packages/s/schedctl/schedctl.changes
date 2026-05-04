@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Sat May 02 09:31:43 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 1.1.1:
+  * build(deps): bump to containerd/v2 2.2.0 (#96)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.8.1 to 5.8.2 (#94)
+  * chore(deps): bump golang.org/x/crypto from 0.49.0 to 0.50.0 (#92)
+  * chore(deps): bump google.golang.org/grpc from 1.78.0 to 1.79.3 (#91)
+  * chore: ugrade to containerd v2 api (#89)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.10.3 to 1.10.4 (#88)
+  * chore(deps): bump github.com/sigstore/fulcio from 1.7.1 to 1.8.5 (#87)
+  * chore(deps): bump golang.org/x/crypto from 0.48.0 to 0.49.0 (#82)
+  * chore: upgrade to go 1.25 (#85)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.7.1 to 5.8.1 (#81)
+  * chore: get rid of the old worklow (#84)
+  * ci: get rid of gpgme when testing (#83)
+  * ci: fix missing init in qemu (#80)
+  * ci: leverage mkosi to generate the end to end tests disk image (#78)
+  * chore: pin golang 1.24 in CI (#79)
+  * chore(deps): bump golang.org/x/crypto from 0.47.0 to 0.48.0 (#76)
+  * chore(deps): bump golang.org/x/crypto from 0.46.0 to 0.47.0 (#74)
+  * feat: tabular output for ps (#73)
+  * feat: implement attach flag for podman too (#72)
+  * feat: allow monitor processes to be run sharing the same filesystem ns (#71)
+  * feat: collision detection for container names (#70)
+  * feat: pass arguments to the schedulers (#69)
+  * fix: rename CI steps (#68)
+  * chore: cmd unit tests (#67)
+  * feat: run arbitrary images (#66)
+  * chore(deps): bump golang.org/x/crypto from 0.45.0 to 0.46.0 (#61)
+  * chore(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2 (#60)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.7.0 to 5.7.1 (#62)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.29 to 1.7.30 (#63)
+  * docs: README updates about refreshing the QEMU rootfs and kernel image (#58)
+  * chore(deps): bump actions/checkout from 5 to 6 (#57)
+  * chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0 (#56)
+  * feat: dynamic listing of schedulers (#55)
+  * chore(deps): bump golang.org/x/crypto from 0.43.0 to 0.44.0 (#53)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.6.2 to 5.7.0 (#52)
+  * chore(deps): bump golangci/golangci-lint-action from 8 to 9 (#51)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.28 to 1.7.29 (#50)
+  * docs: Update 'schedctl start' command to 'schedctl run' (#49)
+  * feat: support gthulhu
+  * chore(deps): bump golang.org/x/crypto from 0.42.0 to 0.43.0
+  * chore(deps): bump github.com/containers/podman/v5 from 5.6.1 to 5.6.2
+  * chore(deps): bump github.com/containers/podman/v5 from 5.6.0 to 5.6.1
+  * ci: bump go to 1.24
+  * chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+  * chore(deps): bump golang.org/x/crypto from 0.41.0 to 0.42.0
+  * chore(deps): bump actions/setup-go from 5 to 6
+  * chore(deps): bump github.com/stretchr/testify from 1.11.0 to 1.11.1
+  * chore(deps): bump github.com/stretchr/testify from 1.10.0 to 1.11.0
+  * chore(deps): bump github.com/containers/podman/v5 from 5.5.2 to 5.6.0
+  * chore(deps): bump actions/checkout from 4 to 5
+  * chore(deps): bump golang.org/x/crypto from 0.40.0 to 0.41.0
+  * chore(deps): bump github.com/containerd/containerd from 1.7.27 to 1.7.28
+  * chore(deps): bump golang.org/x/crypto from 0.39.0 to 0.40.0
+  * chore(deps): bump github.com/containers/podman/v5 from 5.5.1 to 5.5.2
+  * chore(deps): bump golang.org/x/crypto from 0.38.0 to 0.39.0
+  * chore(deps): bump github.com/containers/podman/v5 from 5.5.0 to 5.5.1
+  * doc: please run as root when needed
+  * doc: update readme with container engine setup instructions
+  * chore: add new schedulers to the schedulers list
+  * feat: switch default driver to podman
+  * Add schedctl README
+  * chore(deps): bump github.com/containers/podman/v5 from 5.4.2 to 5.5.0
+  * Bump golang.org/x/crypto from 0.37.0 to 0.38.0
+  * chore: add license file
+  * ci: fix dependencies needed to build the program
+  * test: fix Fatalf call without enough arguments
+  * test: fix missing return in qemu run function
+  * test: add podman tests to the QEMU integration test suite
+  * test: add podman test
+  * fix: main.go named import due to strange linting issues
+  * test: add podman and enable podman service
+  * ci: install libbtrfs-dev and libgpgme-dev
+  * feat: add podman support to schedctl ps, iron out some details
+  * chore: repair go mod
+  * feat: add podman support to schedctl stop
+  * feat: add podman support to schedctl run
+  * feat: add podman golang bindings to go mods
+  * feat: add multi-driver support
+  * ci: install golangci-lint 2.1.6
+  * Bump golangci/golangci-lint-action from 7 to 8
+  * Bump golang.org/x/crypto from 0.31.0 to 0.37.0
+  * Bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+  * Migrate golanci-lint config
+  * Upgrade golangci lint
+  * Bump github.com/containerd/containerd from 1.7.25 to 1.7.27
+  * Bump github.com/stretchr/testify from 1.9.0 to 1.10.0
+  * Bump golangci/golangci-lint-action from 6 to 7
+  * Bump actions/setup-go from 4 to 5
+  * Add dependabot
+  * Enable golangcilint in the CI
+  * Refine integration tests and make them pass linting
+  * Iron out some linting and update tests
+  * Add a first test using QEMU
+  * Setup QEMU when running the CI pipeline
+  * Add testdata utiilities for testing through QEMU
+  * Add BPF and other required modules to the config
+  * Fix kernel config
+  * Add kernel config
+  * Add kernel config
+  * Add nameserver config to disk images in tests
+  * Add a linux kernel image to run tests against
+  * Add a bash script to prepare the kernel image
+  * Add testdata helpers to prepare a qemu image
+  * Try running tests with rootless containerd
+  * Add testing using containerd
+  * Fix linting issues
+  * Fix some linting issues inside the containerd module
+  * Rearchitect the run command function to accept an attach arg
+  * Add linter configuration
+  * Actually use the list command
+  * Implement listing
+  * Use the new scx_rusty image
+  * Run a scheduler by name
+  * Run the CI with Go 1.23
+  * Create go.yml
+
+-------------------------------------------------------------------
 Wed Jan 07 12:50:32 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 1.1.0:
