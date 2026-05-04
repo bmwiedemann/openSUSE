@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 30 12:35:25 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 3.0.0:
+   - Embed jacktrip.com website into desktop app (#1403)
+   - Start with "My Studios" on first app open (#1472)
+   - Add Cursor Cloud instructions to AGENTS.md (#1475)
+   - Add navigation buttons to Browse.qml footer (#1474)
+   - Fix OSX HLS playback via new Qt build (#1477)
+   - Support connections from web browser clients (#1463)
+   - Save and restore window dimensions on startup (#1480)
+   - Refactor HTTP/3 and WebTransport code (#1481)
+   - Require TLS for WebRTC signaling WebSocket (#1482)
+   - Support RSA or ECDSA private keys (#1483)
+   - DSCP expedited forwarding EF (#1485)
+   - Add CORS headers for WebRTC clients (#1486)
+   - Use preassigned UDP port for WebRTC ICE candidate selection (#1487)
+   - Fix WebRTC client name regression (#1489)
+   - Constrain auto headroom growth (#1491)
+   - Fix WebRTC ICE candidate race condition (#1490)
+
+-------------------------------------------------------------------
 Fri Feb 20 14:04:01 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.7.2:
