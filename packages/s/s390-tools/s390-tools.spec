@@ -2,6 +2,7 @@
 # spec file for package s390-tools
 #
 # Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +25,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.41.0
+Version:        2.42.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT
@@ -92,8 +93,6 @@ Source200:      vendor.tar.zst
 
 ###
 # IBM patches
-Patch100:       s390-tools-hyptop-opts-Replace-sort_field-option-with-sort.patch
-Patch101:       s390-tools-hyptop-opts-Fix-long-command-line-option-abbreviations.patch
 ###
 # SUSE patches
 Patch900:       s390-tools-combined.patch
@@ -584,6 +583,8 @@ fi
 %dir %{_prefix}/lib/dracut/modules.d/99ngdump
 %{_prefix}/lib/dracut/modules.d/99ngdump/*
 %{_prefix}/lib/dracut/dracut.conf.d/99-pkey.conf
+%dir %{_prefix}/lib/dracut/modules.d/95sel-ebc
+%{_prefix}/lib/dracut/modules.d/95sel-ebc/*
 
 # --- Kernel Modules & Udev ---
 %dir %{_modprobedir}
