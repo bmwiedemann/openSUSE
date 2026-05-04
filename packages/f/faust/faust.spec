@@ -18,7 +18,7 @@
 %define _lto_cflags %{nil}
 
 Name:           faust
-Version:        2.81.8
+Version:        2.85.5
 Release:        0
 Summary:        Functional Programming Language for Real Time Signal Processing
 License:        GPL-2.0-only

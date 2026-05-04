@@ -16,4 +16,5 @@ signals. A FAUST program is a list of definitions that defines a signal
 processor block-diagram : a piece of code that produces output signals
 according to its input signals (and maybe some user interface parameters)
 </description>
+  <devel project="multimedia:proaudio" package="faust"/>
 </package>

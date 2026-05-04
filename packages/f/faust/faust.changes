@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Mon May  4 11:59:16 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- update to 2.85.5
+  - New
+
+  * Implement -it option in Rust backend.
+  * Improvements in faust2daisy.
+  * Add AssemblyScript backend.
+  * Add nam_faust_dsp.h and nam-jack-gtk.cpp to wrap and use NeuralAmpModelerCore code.
+  * Add compilation statistics in FIR backend.
+  * Add dsp_factory::getJSON method.
+  * Extended pattern matching for route.
+  * Add Claude generated brightOrgan.
+  * Add delay-line options and -scalar mode to faustbench-llvm.
+  * Improve rust codegen for wasm target.
+  * Update juce-midi.h for recent Juce compatibility.
+
+  - Fixed bugs
+
+  * Various fixes in Rust backed.
+  * Incorrect cast of bargraph in FIR generation.
+  * Correct SR generation in subcontainers. Add subcontainer1 test and clang-tidy and ASan based tests.
+  * Renaming min_i/max_i in faustmini/faustmaxi in C and ocpp backends.
+  * Correct -single option in faustbench.
+
+  - Libraries
+
+  * Add bitonic sorter functions, returning the sorted values or the indices of the sorted values.
+  * Add klonCentaur effect.
+  * Add WDF capacitor_Iout and inductor_Iout
+  * Add rpm.sawtooth oscillator.
+  * Add ef.doppler_shift pitch shifter.
+  * New TwinOsc oscillator.
+  * New hysteresis.lib.
+  * New debug.lib library.
+
+- update to 2.83.1
+
+  - New
+
+  * Update faust2android architecture.
+  * Rework faust2daisy: fixed bugs related to evolution of libDaisy, options to set where to flash program (FLASH, SRAM, QSPI), Improved SDRAM options. Tests passed for all configurations on Daisy POD, except polyphonic MIDI.
+  * Change dsp_memory_manager::info prototype and generation.
+  * New -fpga-mem-th option.
+  * Adapting JUCE midi to JUCE version 8.
+  * Add smoothing_dsp decorator and CLI smoothing flags in dynamic-jack-gtk.
+  * Add springreverb.dsp example.
+  * In C++ backend, add copy constructor, copy assignment and virtual destructor in the generated C++ class. The clone method now copy the current dsp state.
+  * Add tests for -clang option in faustbench.
+  * Rework faust2esp32: update for esp-idf 5.2.
+  * Complete libfaust-signal.h header for MLIR export.
+
+  - Fixed bugs
+
+  * faust2alsa/alsaconsole/alqt/paconsole/paqt/raqt : add nvoices, effect, soundfile support.
+  * Fix Dockerfile: replace ncurses5 with libncurses-dev.
+  * Remove -os option in faustbench.
+  * Rework ui.js for Max/MSP architecture. Improve documentations.
+  * Fix faust2pwgtk -h handing on macOS.
+  * Improves UITree construction performance: perf(ui): replace O(n²) sorted insert with O(1) add + final folder sort, so O(n log n) globally.
+
+  - Libraries
+
+  * New motion.lib library.
+  * Add Daniel Leonov springreverb and springreverb_demo.
+  * Generalize wfs function to use a inProc parameter.
+  * Add a bench target which uses faustbench-llvm on all test specs and capture memory/CPU stats.
+  * Add tests for each library function, extract them into separate DSP files, and add tools to build and test reference responses. Done with the help of GPT-5 codex.
+
+- update to 2.81.10
+
+  - New
+
+  * Add dx7.dsp example.
+  * Cleanup/rework faust2wwise GSoC project.
+  * Cleanup faust2clap GSoC project.
+
+  - Fixed bugs
+
+  * Added init section for polyphonic MIDI in JSFX backed
+
+-------------------------------------------------------------------
 Fri Oct  3 16:42:04 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
 
 - update to 2.81.8
