@@ -32,6 +32,8 @@ Source0:        %{name}-%{version}.tar.xz
 Patch1000:        gnome-software-online-update.patch
 # PATCH-FEATURE-SLE gnome-software-disable-download-updates.patch jsc#PED-15005 sckang@suse.com -- Disable download-updates by default to avoid online-updatable updates being installed automatically.
 Patch1001:        gnome-software-disable-download-updates.patch
+
+BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.58.0
@@ -118,6 +120,7 @@ the GNOME software store.
 %install
 %meson_install
 %find_lang %{name}
+%fdupes %{buildroot}%{_datadir}/icons/hicolor/scalable/categories
 
 # Remove any piece of doc that ends up in non-standard locations and use the doc macro instead
 rm %{buildroot}%{_datadir}/doc/%{name}/README.md

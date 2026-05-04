@@ -1375,4 +1375,12 @@ New stable release</comment>
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346630</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>d4a0756eb2d0870676b968d6386e12c1</srcmd5>
+    <version>50.1</version>
+    <time>1777891701</time>
+    <user>anag_factory</user>
+    <comment>- Add fdupes BuildRequires and macro, remove duplicate files.</comment>
+    <requestid>1350044</requestid>
+  </revision>
 </revisionlist>
