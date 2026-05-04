@@ -1,7 +1,7 @@
 #
 # spec file for package uhd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libname libuhd4_9_0
+%define libname libuhd4_10_0
 Name:           uhd
-Version:        4.9.0.0
+Version:        4.10.0.0
 Release:        0
 Summary:        The driver for USRP SDR boards
 License:        GPL-3.0-or-later
@@ -26,9 +26,6 @@ URL:            https://files.ettus.com/manual/
 Source0:        https://github.com/EttusResearch/uhd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{version}/uhd-images_%{version}.tar.xz
 Patch0:         reproducible.patch
-# This has been fixed upstream and this patch will need to be removed in next release.
-Patch1:         boost.patch
-
 BuildRequires:  cmake >= 3.5
 BuildRequires:  docutils
 BuildRequires:  doxygen
@@ -46,7 +43,7 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(udev)
 Requires:       udev
-BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_filesystem-devel >= 1.71
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_serialization-devel
@@ -84,6 +81,17 @@ and future Ettus Research products. Users will be able to use the
 UHD driver standalone or with 3rd party applications.
 
 This package contains utility programs for handling USRP frontens
+
+%package        examples
+Summary:        Example programs for UHD
+
+%description    examples
+The UHD is the "Universal Software Radio Peripheral" hardware driver.
+The goal of the UHD is to provide a host driver and API for current
+and future Ettus Research products. Users will be able to use the
+UHD driver standalone or with 3rd party applications.
+
+This package contains example programs for UHD.
 
 %package     -n python3-%{name}
 Summary:        Python bindings for uhd
@@ -220,14 +228,75 @@ getent group usrp >/dev/null || %{_sbindir}/groupadd -r usrp
 %{_libdir}/libuhd.so.*
 
 %files utils
-%{_bindir}/*
+%{_bindir}/b2xx_fx3_utils
+%{_bindir}/converter_benchmark
+%{_bindir}/converter_benchmark.py
+%{_bindir}/fx2_init_eeprom
+%{_bindir}/octoclock_burn_eeprom
+%{_bindir}/query_gpsdo_sensors
+%{_bindir}/uhd_adc_self_cal
+%{_bindir}/uhd_cal_rx_iq_balance
+%{_bindir}/uhd_cal_tx_dc_offset
+%{_bindir}/uhd_cal_tx_iq_balance
+%{_bindir}/uhd_config_info
+%{_bindir}/uhd_find_devices
+%{_bindir}/uhd_image_loader
+%{_bindir}/uhd_images_downloader
 %{_bindir}/uhd_images_downloader.py
+%{_bindir}/uhd_usrp_probe
+%{_bindir}/usrp2_card_burner
+%{_bindir}/usrp2_card_burner.py
+%{_bindir}/usrp2_recovery.py
+%{_bindir}/usrp_burn_db_eeprom
+%{_bindir}/usrp_burn_mb_eeprom
+%{_bindir}/usrp_hwd.py
+%{_bindir}/usrpctl
 %{_bindir}/usrp2_card_burner.py
 %dir %{_datadir}/uhd
 %exclude %{_datadir}/uhd/images
 %{_datadir}/uhd/cal
 %{_datadir}/uhd/rfnoc
 %{_mandir}/man1/*
+
+%files examples
+%{_bindir}/benchmark_rate
+%{_bindir}/benchmark_rate.py
+%{_bindir}/gpio
+%{_bindir}/latency_test
+%{_bindir}/rfnoc_nullsource_ce_rx
+%{_bindir}/rfnoc_radio_loopback
+%{_bindir}/rfnoc_replay_samples_from_file
+%{_bindir}/rfnoc_rx_replay_samples_to_file.py
+%{_bindir}/rfnoc_rx_to_file
+%{_bindir}/rfnoc_rx_to_file.py
+%{_bindir}/rfnoc_txrx_fft_block_loopback.py
+%{_bindir}/rx_multi_samples
+%{_bindir}/rx_samples_c
+%{_bindir}/rx_samples_to_file
+%{_bindir}/rx_samples_to_udp
+%{_bindir}/rx_spectrum_to_asciiplot.py
+%{_bindir}/rx_spectrum_to_pyplot.py
+%{_bindir}/rx_timed_samples
+%{_bindir}/rx_to_file.py
+%{_bindir}/rx_to_remote_udp.py
+%{_bindir}/tx_waveforms.py
+%{_bindir}/spi
+%{_bindir}/sync_to_gps
+%{_bindir}/test_clock_synch
+%{_bindir}/test_dboard_coercion
+%{_bindir}/test_messages
+%{_bindir}/test_pps_input
+%{_bindir}/test_timed_commands
+%{_bindir}/tx_bursts
+%{_bindir}/tx_samples_c
+%{_bindir}/tx_samples_from_file
+%{_bindir}/tx_timed_samples
+%{_bindir}/tx_waveforms
+%{_bindir}/txrx_complex_gain
+%{_bindir}/txrx_loopback_to_file
+%{_bindir}/usrp_list_sensors
+%{_bindir}/usrp_power_meter.py
+%{_bindir}/x440_L_band_capture.py
 
 %if 0%{?suse_version} >= 1600
 %files -n python3-%{name}
