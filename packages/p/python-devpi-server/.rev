@@ -273,4 +273,20 @@
     where the wrong hash was stored.</comment>
     <requestid>1347777</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>01b8ad65e4b92a9b1b37686a48db6d9a</srcmd5>
+    <version>6.20.0</version>
+    <time>1777892070</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.20.0:
+  * Add experimental bare bones core-metadata ([PEP
+    658](https://peps.python.org/pep-0658/), [PEP
+    714](https://peps.python.org/pep-0714/)) support with
+    ``--enable-core-metadata`` command line option and
+    ``mirror_provides_core_metadata`` mirror index option. Refs
+    #1018
+  * Update replica status when the replica is waiting for new
+    serials using the streaming changelog endpoint.</comment>
+    <requestid>1350559</requestid>
+  </revision>
 </revisionlist>

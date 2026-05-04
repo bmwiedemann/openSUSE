@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  3 17:55:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.20.0:
+  * Add experimental bare bones core-metadata ([PEP
+    658](https://peps.python.org/pep-0658/), [PEP
+    714](https://peps.python.org/pep-0714/)) support with
+    ``--enable-core-metadata`` command line option and
+    ``mirror_provides_core_metadata`` mirror index option. Refs
+    #1018
+  * Update replica status when the replica is waiting for new
+    serials using the streaming changelog endpoint.
+
+-------------------------------------------------------------------
 Fri Apr 17 17:49:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.19.3:
