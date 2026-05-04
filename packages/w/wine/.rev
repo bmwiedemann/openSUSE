@@ -5868,4 +5868,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.7 release</comment>
     <requestid>1347913</requestid>
   </revision>
+  <revision rev="491" vrev="1">
+    <srcmd5>47a135973c566e99e4d79d1889df1607</srcmd5>
+    <version>11.8</version>
+    <time>1777891999</time>
+    <user>anag_factory</user>
+    <comment>- updated to 11.8 release
+  - Mono engine updated to version 11.1.0.
+  - More work on MSXML reimplementation without libxml2.
+  - Improved keyboard layout support using XKBRegistry.
+  - More VBScript compatibility improvements.
+  - Various bug fixes.
+- update staging to 11.8 release</comment>
+    <requestid>1350458</requestid>
+  </revision>
 </revisionlist>

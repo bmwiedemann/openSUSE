@@ -68,8 +68,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  11.7
-Version:        11.7
+%define downloadver  11.8
+Version:        11.8
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC
@@ -207,12 +207,12 @@ Requires:       wine-32bit = %{version}
 Requires:       samba-winbind
 Recommends:     ntsync-autoload
 Recommends:     wine-gecko >= 2.47.4
-Recommends:     wine-mono >= 11.0.0
+Recommends:     wine-mono >= 11.1.0
 Recommends:     winetricks
 Recommends:     (selinux-policy-targeted-gaming if selinux-policy-targeted)
 Conflicts:      wine
 Conflicts:      wine-gecko < 2.47.4
-Conflicts:      wine-mono < 10.1.0
+Conflicts:      wine-mono < 11.1.0
 Provides:       wine-mp3 = %version
 Obsoletes:      wine-mp3 < %version
 %if "%{flavor}" != ""
