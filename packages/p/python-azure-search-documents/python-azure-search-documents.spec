@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-search-documents
-Version:        11.6.0
+Version:        12.0.0
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        MIT
@@ -34,10 +34,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-search-nspkg >= 1.0.0
-Requires:       python-isodate >= 0.6.0
 Requires:       python-typing_extensions >= 4.6.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
-Requires:       (python-azure-core >= 1.28.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.37.0 with python-azure-core < 2.0.0)
+Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-search-documents < 11.4.0
