@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 30 12:36:30 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 6.11.0
+   * Added support for Qt v6.11.
+- Drop patch which is already included upstream:
+  * pyqt6_webengine-6.10.0-qt6.9.patch
+
+-------------------------------------------------------------------
 Wed Oct 29 12:59:12 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.10.0
