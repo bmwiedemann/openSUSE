@@ -126,4 +126,12 @@
   * Fix docstring examples not correctly rendered on GitHub.</comment>
     <requestid>1222053</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>089c978816b814388cba7f63fcec31b0</srcmd5>
+    <version>2026.3.18</version>
+    <time>1777892089</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1350593</requestid>
+  </revision>
 </revisionlist>

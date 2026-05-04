@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Apr 26 22:44:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.3.18:
+  * Replace LfdFileRegistry metaclass with __init_subclass__.
+  * Add LfdFile.open classmethod as typed factory for auto-
+    detection.
+  * Add LfdFile._probe classmethod for cheap file pre-screening.
+  * Add asarray overrides with typed signatures to select
+    subclasses.
+  * Convert _components to classmethod.
+  * Drop support for Python 3.11.
+  * Improve code quality.
+  * Derive LfdFileError from ValueError.
+  * Many breaking changes to FLIMbox functionality (use fbdfile
+    package instead):
+  * Discourage use of FlimboxFbd, FlimboxFbf, and FlimboxFbs
+    classes.
+  * Use fbdfile package to implement FlimboxFbd, FlimboxFbf, and
+    FlimboxFbs.
+  * Remove flimbox_histogram, flimbox_decode, and sflim_decode
+    functions.
+  * Remove convert_fbd2b64 function and fbd2b64 command line app.
+  * Remove deprecated SimfcsFbf, and SimfcsFbd classes.
+  * Remove deprecated simfcsfbd_histogram and simfcsfbd_decode
+    functions.
+  * Read variants of SimFCS REF files.
+  * Drop support for Python 3.10.
+  * Mark Cython extension free-threading compatible.
+  * Remove doctest command line option.
+  * Support Python 3.14.
+  * Replace deprecated tifffile.stripnull function.
+  * Fix misspelled VistaIfli.header keys.
+  * Drop support for Python 3.9.
+
+-------------------------------------------------------------------
 Thu Nov  7 09:07:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.10.24:

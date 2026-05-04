@@ -1,7 +1,7 @@
 #
 # spec file for package python-lfdfiles
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,21 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?sle15_python_module_pythons}
+%global skip_python311 1
 Name:           python-lfdfiles
-Version:        2024.10.24
+Version:        2026.3.18
 Release:        0
 Summary:        Laboratory for Fluorescence Dynamics (LFD) file formats
 License:        BSD-3-Clause
-URL:            https://www.lfd.uci.edu/~gohlke/
+URL:            https://github.com/cgohlke/lfdfiles
 Source:         https://github.com/cgohlke/lfdfiles/archive/v%{version}.tar.gz#/lfdfiles-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module czifile >= 2019.7.2}
 BuildRequires:  %{python_module matplotlib >= 3.2.0}
@@ -32,6 +38,7 @@ BuildRequires:  %{python_module netpbmfile >= 2020.9.18}
 BuildRequires:  %{python_module numpy >= 1.15}
 BuildRequires:  %{python_module oiffile >= 2020.9.18}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tifffile >= 2020.9.3}
 BuildRequires:  %{python_module wheel}
@@ -44,8 +51,14 @@ Requires:       python-netpbmfile >= 2020.9.18
 Requires:       python-numpy >= 1.15
 Requires:       python-oiffile >= 2020.9.18
 Requires:       python-tifffile >= 2020.9.3
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -63,28 +76,27 @@ sed -i 's/\r//g' README.rst
 
 %install
 %pyproject_install
-for p in lfdfiles fbd2b64 ; do
-    %python_clone -a %{buildroot}%{_bindir}/$p
-done
+%python_clone -a %{buildroot}%{_bindir}/lfdfiles
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%prepare_alternative lfdfiles fbd2b64
+
+%pre
+%python_reset_alternative lfdfiles
 
 %post
-%python_install_alternative lfdfiles fbd2b64
+%python_install_alternative lfdfiles
 
 %postun
-%python_uninstall_alternative lfdfiles fbd2b64
+%python_uninstall_alternative lfdfiles
 
 %check
-# Test not provided
+true
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/lfdfiles
-%python_alternative %{_bindir}/fbd2b64
-%{python_sitearch}/lfdfiles
-%{python_sitearch}/lfdfiles-%{version}.dist-info
+%{python_sitelib}/lfdfiles
+%{python_sitelib}/lfdfiles-%{version}.dist-info
 
 %changelog
