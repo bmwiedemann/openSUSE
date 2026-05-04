@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 29 18:15:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.5
+  * ShellCheck clean-up for shell completions.
+  * Header updates.
+  * Improved documentation.
+
+-------------------------------------------------------------------
 Sun Nov 16 19:24:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Drop subpackage for bash completion

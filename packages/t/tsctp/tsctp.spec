@@ -1,8 +1,8 @@
 #
 # spec file for package tsctp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2020-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           tsctp
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        SCTP test tool
 License:        BSD-3-Clause
