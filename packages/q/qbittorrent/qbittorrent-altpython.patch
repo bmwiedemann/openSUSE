@@ -1,13 +1,13 @@
-Index: qBittorrent-release-5.0.0beta1/src/base/utils/foreignapps.cpp
+Index: qbittorrent-5.2.0/src/base/utils/foreignapps.cpp
 ===================================================================
---- qBittorrent-release-5.0.0beta1.orig/src/base/utils/foreignapps.cpp
-+++ qBittorrent-release-5.0.0beta1/src/base/utils/foreignapps.cpp
-@@ -276,7 +276,7 @@ PythonInfo Utils::ForeignApps::pythonInf
- 
+--- qbittorrent-5.2.0.orig/src/base/utils/foreignapps.cpp
++++ qbittorrent-5.2.0/src/base/utils/foreignapps.cpp
+@@ -266,7 +266,7 @@ PythonInfo Utils::ForeignApps::pythonInf
          if (!pyInfo.isValid())
          {
--            if (testPythonInstallation(u"python3"_s, pyInfo))
-+            if (testPythonInstallation(u"__PYTHON_ALT__"_s, pyInfo))
-                 return pyInfo;
-             LogMsg(QCoreApplication::translate("Utils::ForeignApps", "Failed to find `python3` executable in PATH environment variable. PATH: \"%1\"")
-                 .arg(qEnvironmentVariable("PATH")), Log::INFO);
+             // search in `PATH` environment variable
+-            const QString exeNames[] = {u"python3"_s, u"python"_s};
++            const QString exeNames[] = {u"__PYTHON_ALT__"_s, u"python"_s};
+             for (const QString &exeName : exeNames)
+             {
+                 if (testPythonInstallation(Path(exeName), pyInfo))

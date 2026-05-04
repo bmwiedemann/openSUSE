@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Sun May  3 19:02:59 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.2.0
+  Features:
+  * Show free disk space in status bar
+  * Add control for 'hostname resolver cache expiry interval'
+  * Show info hash in log when a duplicate torrent is added
+  * Swap add file/link buttons on toolbar
+  * Revise labels for 'duplicate torrent' actions
+  * Allow to pass torrent comment to external program
+  * Revise Interface section layout in Options dialog
+  * Revise label wordings
+  * Allow to customize PiecesBar colors
+  * Allow to customize ProgressBar color
+  * Add option to make progress bar to follow torrent state color
+  * Add option to disable torrent state colors
+  * Allow to copy content paths of selected torrents
+  * Restore default drag behavior in Torrent Content widget
+  * Add Torrent Creator toolbar button
+  * Allow to configure style and color scheme on all platforms
+  * Add reboot option when downloads complete
+  * Implement separate
+  * Calculate torrent pieces asynchronously
+  * Use subcategories unconditionally
+  * Allow to set torrent share limits per category
+  * Move torrents to parent category when category is removed
+  * Persist additional trackers and load it on startup
+  * Add "Created On" column to transfer list
+  * Add a small gap between progress bars
+  * Add translations for Albanian, Bosnian, Kazakh, Nepali,
+    Serbian
+  Performance:
+  * Improve resume queue load performance
+  * Avoid copying resume data when loading torrents
+  Bug fixes:
+  * Fix crash when exiting immediately after adding a torrent
+  * Revise wordings related to SOCKS4 proxy
+  * Remove dubious seeding time max value
+  * Make modifying log file perms best effort
+  * Reannounce DHT when reannouncing all trackers
+  * Block invalid file names when renaming torrent content
+  * Don't create lock file in internal data folders
+  * Log a critical error before aborting the app
+  * Raise connection max limits
+  * Make the active torrents filter reflect actual transfers
+  * Raise 'torrent share ratio' maximum limit
+  * Use consistent text for "Do not download" priority
+  * Fix incorrect save path when torrent is added from watched
+    folder
+  * Change "Session" column headings to match non-"Session"
+  * Fix fail to start seeding newly created torrent in Torrent
+    Creator
+  * Fix crash when exiting immediately after adding the torrent
+  * Fix crash due to invalid entry in ipfilter.dat
+  * Fix crash when closing app with AddNewTorrentDialog opened
+  Web UI:
+  * Select next available search tab after closing last active
+    tab with X button
+  * Support creating new torrents
+  * Add headers to RSS entry viewer
+  * Fix dark mode in RSS entry viewer
+  * Optimize table performance with virtual list
+  * Don't update UI if the page is hidden
+  * Select multiple files to rename with Shift
+  * Prevent mobile keyboards from capitalizing username input
+  * Fix memory leak
+  * Add support for tracker status filter
+  * Switch to lightweight clipboard library
+  * Keep client session from expiring when the page is hidden
+  * Add ability to refresh search
+  * Cache server stats for statistics window
+  * Reset filter selection when double clicking filter
+  * Always show Auto Torrent Management option
+  * Improve performance of re-sorting table rows
+  * Add ability to add/remove tracker from selected torrents
+  * Make footer scrollable on mobile
+  * Support horizontal scrolling of tabs
+  * Fix hiding of filters toolbar
+  * Improve search page experience on mobile
+  * Limit window sizes to viewport size
+  * Focus on filter field using Ctrl+F
+  * Support managing category download path
+  * Support reannouncing individual trackers
+  * Allow closing dialogs with Escape key
+  * Implement Share limit action
+  * Add new Add Torrent experience
+  * Implement missing tracker list features
+  * Replace GIFs with SVG
+  * Support editing tracker tier
+  * Fix blurry window controls
+  * Support downloading torrent via search plugin
+  * Continue polling after network error
+  * Add I2P peers to peer list
+  * Redesign login form
+  * Do not hide context menu if the click target has submenu
+  * keep preferences window open after unsuccessful save
+  * Store persistent settings in client data API
+  * Support authenticating via Basic auth
+  * Add option to increase display density
+  * Add torrent availability bar
+  * Support modifying default date format
+  * Search engine UX improvements
+  * Improve table performance
+  * Set appropriate autocomplete attribute on password fields
+  * Fix RSS Dialog Box Title Text
+  * Fix sync using wrong key for full update check
+  * Add "Created On" column to transfer list
+  Web API:
+  * Provide announce stats within "sync" data
+  * Optionally include files info in torrent list
+  * Send 204 when WebAPI response contains no data
+  * Add metadata in /app/getDirectoryContent response
+  * Add setComment endpoint
+  * send names of missing required params
+  * Support persisting WebUI client preferences
+  * Append port to session cookie name
+  * Add support for authenticating via API key
+  * Use Permanent Cookie
+  * Add "app/processInfo" endpoint with "launch_time"
+  * Don't throw an error when editing category without changes
+  RSS:
+  * Allow to set refresh interval per feed
+  * Fix crash when moving a folder into its subfolder
+  * Use short format for displaying RSS entry date
+  * Add 'Open link' to RSS article header
+  * Replace RSS articles icons with SVG
+  * Allow to filter RSS by simple string
+  * Make the Smart filter to reject articles with an
+    unrecognized episode number
+  Search:
+  * Add SOCKS4/SOCKS4a proxy support to search engine
+  * Enforce SOCKS proxy setting in search engine plugins
+  * Use appropriate icon for "error" status in search tab
+  * Improve search results filtering implementation
+  * Optimize parsing of search results
+  * Add CTRL+W search tab close functionality
+  * Update Python installer version
+  * Propagate error messages from search engine
+  Other:
+  * Remove "Physical memory
+  * Do not allow orphan processes
+  * Drop support of Qt 6.5
+  * Compress images losslessly
+- Refresh qbittorrent-altpython.patch and
+  qbittorrent-fix_boost_1.75_build.patch
+- Drop qbittorrent-Qt610.patch
+
+-------------------------------------------------------------------
 Thu Nov 20 05:59:20 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.1.4

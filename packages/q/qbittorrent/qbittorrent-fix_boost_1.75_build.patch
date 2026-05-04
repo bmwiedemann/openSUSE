@@ -1,17 +1,16 @@
-Index: qBittorrent-release-5.0.0rc1/CMakeLists.txt
+Index: qbittorrent-5.2.0/CMakeLists.txt
 ===================================================================
---- qBittorrent-release-5.0.0rc1.orig/CMakeLists.txt
-+++ qBittorrent-release-5.0.0rc1/CMakeLists.txt
+--- qbittorrent-5.2.0.orig/CMakeLists.txt
++++ qbittorrent-5.2.0/CMakeLists.txt
 @@ -7,7 +7,7 @@ project(qBittorrent
  )
  
  # version requirements - older versions may work, but you are on your own
 -set(minBoostVersion 1.76)
 +set(minBoostVersion 1.75)
- set(minQt6Version 6.5.0)
+ set(minQt6Version 6.6.0)
  set(minOpenSSLVersion 3.0.2)
  set(minLibtorrent1Version 1.2.19)
-Index: qBittorrent-release-5.0.0rc1/src/app/stacktrace.cpp
 ===================================================================
 --- qBittorrent-release-5.0.0rc1.orig/src/app/stacktrace.cpp
 +++ qBittorrent-release-5.0.0rc1/src/app/stacktrace.cpp

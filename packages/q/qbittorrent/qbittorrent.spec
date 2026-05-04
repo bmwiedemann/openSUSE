@@ -1,7 +1,7 @@
 #
 # spec file for package qbittorrent
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,15 +17,12 @@
 #
 
 
-%if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150600
+%if 0%{?sle_version} == 150600
 %define _pyalt  11
-%endif
-%if 0%{?sle_version} == 150400
-%define _pyalt  10
 %endif
 
 Name:           qbittorrent
-Version:        5.1.4
+Version:        5.2.0
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
@@ -38,8 +35,6 @@ Patch0:         harden_qbittorrent-nox@.service.patch
 Patch2:         qbittorrent-fix_boost_1.75_build.patch
 # PATCH-FIX-OPENSUSE qbittorrent-altpython.patch force newer python for the plugins -- aloisio@gmx.com
 Patch3:         qbittorrent-altpython.patch
-# PATCH-FIX-OPENSUSE qbittorrent-Qt610.patch
-Patch4:         qbittorrent-Qt610.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -53,7 +48,7 @@ BuildRequires:  libboost_system1_75_0-devel
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
-BuildRequires:  cmake(Qt6Core) >= 6.5.0
+BuildRequires:  cmake(Qt6Core) >= 6.6.0
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Network)
@@ -149,6 +144,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-nox
 %{_bindir}/%{name}-nox
 %{_sbindir}/rc%{name}-nox
 %{_unitdir}/%{name}-nox@.service
+%{_datadir}/metainfo/org.qbittorrent.qBittorrent-nox.metainfo.xml
 %{_mandir}/man?/%{name}-nox.?%{?ext_man}
 
 %changelog
