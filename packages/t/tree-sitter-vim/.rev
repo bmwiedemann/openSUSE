@@ -63,4 +63,25 @@
     <comment>- Remove redundant Neovim workaround</comment>
     <requestid>1337748</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fd0935b9434e67f38c2a648a5d068abd</srcmd5>
+    <version>0.8.1</version>
+    <time>1777891985</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.1
+  - chore: regenerate parser and bindings with 0.26.6
+  - fix(node): don't depend on tree-sitter prerelease
+  - release v0.8.1
+- Update to 0.8.0:
+  - feat(bindings)!: update (and remove)
+  - feat: Add support for :tab modifier
+  - ci(test): update corpus list
+  - feat: shebang support
+  - ci(release): adapt to breaking change
+  - feat: add SafeState* autocommands
+  - fix(scanner): inline iswpunct
+- Add add-binding.gyp-for-rpm-build.patch patch to add missing
+  binding.gyp (gh#tree-sitter-grammars/tree-sitter-vim!59).</comment>
+    <requestid>1350418</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,22 @@
+Index: tree-sitter-vim-0.8.1/binding.gyp
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ tree-sitter-vim-0.8.1/binding.gyp	2026-04-05 23:36:56.761292642 +0200
+@@ -0,0 +1,17 @@
++{
++  'targets': [
++    {
++      'target_name': 'tree_sitter_vim',
++      'include_dirs': [
++        'src',
++      ],
++      'sources': [
++        'src/parser.c',
++        'src/scanner.c',
++      ],
++      'cflags_c': [
++        '-std=c11',
++      ],
++    },
++  ],
++}

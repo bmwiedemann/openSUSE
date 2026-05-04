@@ -18,12 +18,15 @@
 
 %define         _name vim
 Name:           tree-sitter-vim
-Version:        0.7.0
+Version:        0.8.1
 Release:        0
 Summary:        Vimscript grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-vim
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM add-binding.gyp-for-rpm-build.patch gh#tree-sitter-grammars/tree-sitter-vim!59 mcepl@suse.com
+# adds missing binding.gyp file
+Patch0:         add-binding.gyp-for-rpm-build.patch
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
@@ -31,7 +34,7 @@ BuildRequires:  tree-sitter
 %{summary}.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %treesitter_configure

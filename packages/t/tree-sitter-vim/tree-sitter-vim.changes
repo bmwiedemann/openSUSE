@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr  5 21:18:47 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.8.1
+  - chore: regenerate parser and bindings with 0.26.6
+  - fix(node): don't depend on tree-sitter prerelease
+  - release v0.8.1
+- Update to 0.8.0:
+  - feat(bindings)!: update (and remove)
+  - feat: Add support for :tab modifier
+  - ci(test): update corpus list
+  - feat: shebang support
+  - ci(release): adapt to breaking change
+  - feat: add SafeState* autocommands
+  - fix(scanner): inline iswpunct
+- Add add-binding.gyp-for-rpm-build.patch patch to add missing
+  binding.gyp (gh#tree-sitter-grammars/tree-sitter-vim!59).
+
+-------------------------------------------------------------------
 Thu Mar  5 21:52:11 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Remove redundant Neovim workaround
