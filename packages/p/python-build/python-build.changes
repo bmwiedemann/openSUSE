@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May  3 18:04:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Drop Python 3.9 support - by :user:`henryiii` (:issue:`1036`)
+  * Make --ignore-installed opt-in from the API via fresh=True -
+    by :user:`henryiii` (:issue:`1056`)
+  * Fix release pipeline generating CHANGELOG.rst entries with
+    inconsistent heading levels, which broke sphinx -W and pinned
+    Read the Docs stable at 1.4.0 - by :user:`gaborbernat`.
+  * Revert :pr:`1039` from build 1.4.3, no longer check
+    direct_url (for now) - by :user:`henryiii` (:issue:`1039`)
+  * Add --ignore-installed to pip install command to prevent
+    issues with packages already present in the isolated build
+    environment - by :user:`henryiii` (:issue:`1037`)
+  * Partial revert of :pr:`973`, keeping log messages in one
+    entry, multiple lines. (:issue:`1044`)
+
+-------------------------------------------------------------------
 Sat Apr 11 11:47:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.3:
