@@ -79,13 +79,11 @@ BuildRequires:  pkgconfig(atk-bridge-2.0)
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(gcr-4) >= 3.90.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.86.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.86.0
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.87.1
 BuildRequires:  pkgconfig(gnome-autoar-0)
-BuildRequires:  pkgconfig(gnome-bluetooth-3.0)
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -93,12 +91,9 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.49.1
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 50.alpha
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.11.92
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.5.19
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.13.2
-BuildRequires:  pkgconfig(libcanberra)
-BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.1
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
@@ -115,8 +110,12 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(mutter-clutter-%{mutter_api}) >= %{mutter_req}
 BuildRequires:  pkgconfig(mutter-cogl-%{mutter_api}) >= %{mutter_req}
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
-BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3
+# Needed for Xwayland
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
+
 Requires:       gstreamer-plugin-pipewire
 # "System settings" menu item
 Requires:       gnome-control-center

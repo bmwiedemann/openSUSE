@@ -2661,4 +2661,16 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>Update version</comment>
     <requestid>1348421</requestid>
   </revision>
+  <revision rev="288" vrev="2">
+    <srcmd5>03daf797017ed5be4951f61cf58f6a63</srcmd5>
+    <version>50.1</version>
+    <time>1777891723</time>
+    <user>anag_factory</user>
+    <comment>- Align BuildRequires with what meson setup checks for:
+  + Add: pkgconfig(xext), pkgconfig(xfixes) and pkgconfig(xfixes)
+  + Drop: pkgconfig(gdk-x11-3.0), pkgconfig(gnome-bluetooth-3.0),
+    pkgconfig(gtk+-3.0), pkgconfig(libcanberra) and
+    pkgconfig(libcanberra-gtk3)</comment>
+    <requestid>1350308</requestid>
+  </revision>
 </revisionlist>

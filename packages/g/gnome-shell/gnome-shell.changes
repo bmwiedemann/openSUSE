@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 26 15:44:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Align BuildRequires with what meson setup checks for:
+  + Add: pkgconfig(xext), pkgconfig(xfixes) and pkgconfig(xfixes)
+  + Drop: pkgconfig(gdk-x11-3.0), pkgconfig(gnome-bluetooth-3.0),
+    pkgconfig(gtk+-3.0), pkgconfig(libcanberra) and
+    pkgconfig(libcanberra-gtk3)
+
+-------------------------------------------------------------------
 Wed Apr 15 12:29:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.1:
