@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May 01 18:09:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.5.1:
+  * fix(CLI): correct gateway api version in user instructions
+    (#15213)
+  * chore: update MSKV to 1.31 (#15221)
+  * build(deps): bump rustls-pki-types from 1.14.0 to 1.14.1
+    (#15217)
+  * build(deps): bump tokio from 1.51.1 to 1.52.1 (#15216)
+  * build(deps): bump cc from 1.2.60 to 1.2.61 (#15215)
+  * chore: update extension-init to 0.1.11 (#15220)
+  * build(deps): bump libc from 0.2.185 to 0.2.186 (#15210)
+  * build(deps): bump hyper from 1.8.1 to 1.9.0 (#15113)
+  * build(deps): bump rustls-webpki from 0.103.12 to 0.103.13
+    (#15207)
+  * build(deps): bump axum from 0.8.8 to 0.8.9 (#15194)
+  * build(deps): bump hyper-rustls from 0.27.7 to 0.27.9 (#15204)
+  * build(deps): bump aws-lc-rs from 1.16.2 to 1.16.3 (#15205)
+  * build(deps): bump pkg-config from 0.3.32 to 0.3.33 (#15206)
+
+-------------------------------------------------------------------
 Sun Apr 26 08:02:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.4.4:
