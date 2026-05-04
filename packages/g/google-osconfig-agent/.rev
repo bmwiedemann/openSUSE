@@ -779,4 +779,35 @@
     <comment></comment>
     <requestid>1349868</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>8d10461a543cace5b90fbb35f7e58eec</srcmd5>
+    <version>20260428.00</version>
+    <time>1777908265</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260428.00
+  * Add/improve unit tests for agentendpoint/agentendpoint.go (#930)
+- from version 20260427.03
+  * Cover config/file.go by unit tests (#935)
+- from version 20260422.01
+  * Cover patch_linux.go by unit tests (#932)
+- from version 20260422.00
+  * upgrade grpc package in main package and e2e tests (#959)
+- from version 20260417.04
+  * Bump OSV-Scalibr version to v0.4.3 (#956)
+- from version 20260417.03
+  * Add unit tests for updates_linux.go (#937)
+- from version 20260417.02
+  * Add zone to CreateDisk step (#955)
+- from version 20260417.01
+  * Change disk type for deb11 (#954)
+- from version 20260417.00
+  * Add unit tests for policies/apt.go PART 1 (#950)
+- from version 20260410.02
+  * Add unit tests for packages/pty_linux.go (#943)
+- from version 20260410.01
+  * fix disk type for arm workflows (#948)
+- from version 20260410.00
+  * Change machine type for arm based workflows (#946) (forwarded request 1350636 from glaubitz)</comment>
+    <requestid>1350663</requestid>
+  </revision>
 </revisionlist>
