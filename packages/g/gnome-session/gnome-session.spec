@@ -32,21 +32,9 @@ BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(epoxy)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.46.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.46.0
-BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glesv2)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.82.0
 BuildRequires:  pkgconfig(gnome-desktop-4) >= 3.24.2
-BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libsystemd) >= 209
-BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(systemd) >= 242
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xcomposite)
-BuildRequires:  pkgconfig(xtrans)
 Requires:       dbus-service
 Requires:       gnome-settings-daemon
 Requires:       gsettings-desktop-schemas >= 0.1.7

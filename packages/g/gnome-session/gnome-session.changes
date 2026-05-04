@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 29 07:39:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- [git]: Do not store *.changes as LFS object.
+
+-------------------------------------------------------------------
+Sun Apr 26 13:10:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop X11, OpenGL and glib2 BuildRequires: pkgconfig(egl),
+  pkgconfig(epoxy), pkgconfig(gio-2.0), pkgconfig(gio-unix-2.0),
+  pkgconfig(gl), pkgconfig(glesv2), pkgconfig(glib-2.0),
+  pkgconfig(ice), pkgconfig(sm), pkgconfig(x11),
+  pkgconfig(xcomposite) and pkgconfig(xtrans).
+
+-------------------------------------------------------------------
 Tue Apr 14 01:01:43 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gnome-session-fix-double-free-GError.patch: Fix a double-free

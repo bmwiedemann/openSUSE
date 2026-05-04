@@ -1687,4 +1687,18 @@ Index: gnome-session.changes
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346626</requestid>
   </revision>
+  <revision rev="222" vrev="3">
+    <srcmd5>0e250c99b98cb6cc59837048f9d20535</srcmd5>
+    <version>50.0</version>
+    <time>1777891720</time>
+    <user>anag_factory</user>
+    <comment>- [git]: Do not store *.changes as LFS object.
+
+- Drop X11, OpenGL and glib2 BuildRequires: pkgconfig(egl),
+  pkgconfig(epoxy), pkgconfig(gio-2.0), pkgconfig(gio-unix-2.0),
+  pkgconfig(gl), pkgconfig(glesv2), pkgconfig(glib-2.0),
+  pkgconfig(ice), pkgconfig(sm), pkgconfig(x11),
+  pkgconfig(xcomposite) and pkgconfig(xtrans).</comment>
+    <requestid>1350306</requestid>
+  </revision>
 </revisionlist>
