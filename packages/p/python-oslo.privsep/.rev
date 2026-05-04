@@ -368,4 +368,18 @@
   * Update master for stable/2025.2</comment>
     <requestid>1343447</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>dffbdfaeaf0c6b920a88d1b65f3ca1e8</srcmd5>
+    <version>3.11.0</version>
+    <time>1777892078</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.11.0:
+  * Make eventlet optional
+  * tox: Use new constraints option
+  * Make eventlet import optional
+  * typing: Fix compatibility with typed testtools, oslotest
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1</comment>
+    <requestid>1350572</requestid>
+  </revision>
 </revisionlist>

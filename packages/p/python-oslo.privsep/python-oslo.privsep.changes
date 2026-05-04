@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  3 19:19:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.0:
+  * Make eventlet optional
+  * tox: Use new constraints option
+  * Make eventlet import optional
+  * typing: Fix compatibility with typed testtools, oslotest
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Mon Mar  9 21:28:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.10.1:

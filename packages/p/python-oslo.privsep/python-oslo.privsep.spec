@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.privsep
-Version:        3.10.1
+Version:        3.11.0
 Release:        0
 Summary:        OpenStack library for privilege separation
 License:        Apache-2.0
