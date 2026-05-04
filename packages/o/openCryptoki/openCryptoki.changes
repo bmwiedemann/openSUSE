@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  4 09:35:43 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied an updated patch provided by IBM (bsc#1263819 (CVE-2026-40253)) 
+  * openCryptoki-CVE-2026-40253-commit-ed378f4.patch 
+
+-------------------------------------------------------------------
 Tue Apr 21 05:15:44 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a modified patch (bsc#1262283 (CVE-2026-40253))
