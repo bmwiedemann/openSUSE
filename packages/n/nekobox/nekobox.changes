@@ -1,8 +1,38 @@
 -------------------------------------------------------------------
+Mon May  4 08:58:27 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.11.6
+- Fix empty tableview
+
+-------------------------------------------------------------------
+Sun May  3 19:15:03 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.11.5
+- Fix core dump (nullpointer exceptions)
+- Improve table responsibility
+- Improve ram usage
+- Use LRU (Least Recently Used) cache for storing proxies
+
+-------------------------------------------------------------------
+Sun May  3 01:49:04 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.11.4
+- Fix blank group appearing
+- Fix custom beans
+
+-------------------------------------------------------------------
+Fri May  1 05:46:48 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.11.2
+- Fix group refresh after delete
+- Reset system proxy when proxy not running
+
+-------------------------------------------------------------------
 Thu Apr 30 15:01:41 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.11.1
-Fix application crash
+- Fix lmdb::map_full_error
+- Improve GroupUpdater
 
 -------------------------------------------------------------------
 Tue Apr 28 13:10:48 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
