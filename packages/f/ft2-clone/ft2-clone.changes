@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May  3 11:42:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.19
+  * Set audio input/output device to default during config reset.
+  * If audio input device was set to default, properly open default
+    audio input device before sampling audio.
+
+-------------------------------------------------------------------
+Wed Apr 29 18:13:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.18
+  * The windowed-sinc interpolation kernels are now calculated
+    with unity gain.
+  * The scopes now use windowed-sinc interpolation again
+    (previously buggy).
+
+-------------------------------------------------------------------
 Fri Apr 17 05:59:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.17
