@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  2 10:22:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.11
+  * Stopped using std::scoped_lock in CurlStack as it does not
+    support unlocking just one mutex
+  * No longer throws when DhtSearch is not found in DhtServer
+
+-------------------------------------------------------------------
 Thu Apr 23 12:26:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.10
