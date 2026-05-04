@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  3 16:04:09 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Add 002-llvm22-explicit-casts.patch to address LLVM22 issues
+- Drop the tag offset suffix
+
+-------------------------------------------------------------------
 Wed Sep 24 20:22:08 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.11.0~0:

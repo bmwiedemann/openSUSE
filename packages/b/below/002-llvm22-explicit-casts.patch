@@ -1,0 +1,36 @@
+From 414ba9bad84bec1236f9756f7732fb4cc5ee0b18 Mon Sep 17 00:00:00 2001
+From: Alessio Biancalana <alessio@dottorblaster.it>
+Date: Sun, 3 May 2026 17:58:07 +0200
+Subject: [PATCH] fix(bpf): add explicit casts for mm_struct CO-RE relabels
+
+LLVM 22 promoted -Wincompatible-pointer-types from a warning to an
+error, breaking the implicit conversion from `const struct mm_struct *`
+to the relabeled `mm_struct___pre62` / `___post62` CO-RE types in
+exitstat.bpf.c. Add explicit casts so the file builds on both pre- and
+post-LLVM 22 toolchains.
+
+Signed-off-by: Alessio Biancalana <alessio@dottorblaster.it>
+---
+ below/src/bpf/exitstat.bpf.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/below/src/bpf/exitstat.bpf.c b/below/src/bpf/exitstat.bpf.c
+index 520edfda..88664e53 100644
+--- a/below/src/bpf/exitstat.bpf.c
++++ b/below/src/bpf/exitstat.bpf.c
+@@ -137,12 +137,12 @@ int tracepoint__sched__sched_process_exit(
+     u64 anon_pages = 0;
+     u64 shmem_pages = 0;
+     if (bpf_core_type_matches(struct mm_struct___pre62)) {
+-      const struct mm_struct___pre62 *mms = mm;
++      const struct mm_struct___pre62 *mms = (const struct mm_struct___pre62 *)mm;
+       file_pages = BPF_CORE_READ(mms, rss_stat.count[MM_FILEPAGES].counter);
+       anon_pages = BPF_CORE_READ(mms, rss_stat.count[MM_ANONPAGES].counter);
+       shmem_pages = BPF_CORE_READ(mms, rss_stat.count[MM_SHMEMPAGES].counter);
+     } else if (bpf_core_type_matches(struct mm_struct___post62)) {
+-      const struct mm_struct___post62 *mms = mm;
++      const struct mm_struct___post62 *mms = (const struct mm_struct___post62 *)mm;
+       struct percpu_counter file_fbc = BPF_CORE_READ(mms, rss_stat[MM_FILEPAGES]);
+       struct percpu_counter anon_fbc = BPF_CORE_READ(mms, rss_stat[MM_ANONPAGES]);
+       struct percpu_counter shmem_fbc = BPF_CORE_READ(mms, rss_stat[MM_SHMEMPAGES]);
+

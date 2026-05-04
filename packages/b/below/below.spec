@@ -1,7 +1,7 @@
 #
 # spec file for package below
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           below
-Version:        0.11.0~0
+Version:        0.11.0
 Release:        0
 Summary:        A time traveling resource monitor for modern Linux systems
 License:        Apache-2.0
@@ -25,6 +25,7 @@ URL:            https://github.com/facebookincubator/below
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Patch0:         001-harden-systemd-unit.patch
+Patch1:         002-llvm22-explicit-casts.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  libelf-devel
