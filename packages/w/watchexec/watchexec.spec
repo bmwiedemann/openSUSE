@@ -17,7 +17,7 @@
 
 
 Name:           watchexec
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Watches a path and runs a command whenever it detects modifications.
 License:        Apache-2.0
@@ -25,7 +25,6 @@ Group:          Productivity/Other
 URL:            https://github.com/watchexec/watchexec
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 
 %description
@@ -34,8 +33,6 @@ whenever it detects modifications.
 
 %prep
 %autosetup -a1
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

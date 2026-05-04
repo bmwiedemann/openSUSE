@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 24 20:14:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.1:
+  * chore: Release
+  * add a bunch of new archs as experimental builds
+  * ci: add riscv64 to release cross-build targets (#1039)
+  * chore: Release
+  * update changelog
+  * feat(supervisor): add SpawnFn to allow custom process spawning (#1013)
+  * Update README.md
+  * chore: Release
+  * deps: update lockfile
+
+-------------------------------------------------------------------
 Tue Mar 10 08:29:22 UTC 2026 - david.anes@suse.com
 
 - Update to version 2.5.0:
@@ -298,7 +312,7 @@ Fri Nov  4 07:33:58 UTC 2022 - David Anes <david.anes@suse.com>
 Mon Oct 31 10:05:48 UTC 2022 - david.anes@suse.com
 
 - Update to version 1.20.6:
-  * release: watchexec-cli v1.20.6 
+  * release: watchexec-cli v1.20.6
   * release: watchexec v2.0.2
   * Default release pr version to patch
   * Enable OIDC
@@ -309,7 +323,7 @@ Mon Oct 31 10:05:48 UTC 2022 - david.anes@suse.com
   * release: watchexec-filterer-globset v1.0.1
   * release: watchexec-filterer-tagged v0.1.1
 
-- Many changes since 1.12 version, see 
+- Many changes since 1.12 version, see
   https://github.com/watchexec/watchexec for full details.
 
 -------------------------------------------------------------------
