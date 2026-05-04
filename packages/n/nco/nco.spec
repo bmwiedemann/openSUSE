@@ -1,7 +1,7 @@
 #
 # spec file for package nco
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,8 @@ ExcludeArch: %{ix86} %{arm}
 %endif
 
 Name:           nco
-Version:        5.3.4
-%define  soname 5_3_4
+Version:        5.3.9
+%define  soname 5_3_9
 %define  major  5
 Release:        0
 Summary:        Suite of programs for manipulating NetCDF/HDF files
@@ -166,10 +166,8 @@ if [ $1 -eq 0 ]; then
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/nco.info
 fi
 
-%post -n lib%{name}-%{soname} -p /sbin/ldconfig
-%postun -n lib%{name}-%{soname} -p /sbin/ldconfig
-%post -n lib%{name}_c++-%{soname} -p /sbin/ldconfig
-%postun -n lib%{name}_c++-%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}-%{soname}
+%ldconfig_scriptlets -n lib%{name}_c++-%{soname}
 
 %files
 %license doc/LICENSE COPYING

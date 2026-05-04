@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Apr 28 12:22:03 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 5.3.9:
+  * Default buffer size for operating on classic files is now 32 MiB
+  * ncks -k now prints the file format
+  * Fix syntax error in ncremap
+- Update to version 5.3.8:
+  * ncclimo now supports generating climos from high-frequency input data
+  * All links to documentation now point to the newish CF Homepage
+      at https://cf-convention.github.io/cf-conventions
+  * Fix ncclimo flexible months mode introduced in 5.3.7
+- Update to version 5.3.7:
+  * ncremap: better support for mbtempest
+  * Improvements for ncremap in vertical interpolation mode for hybrid
+      sigma-pressure coordinates
+  * ncclimo now supports climos that begin in any month, not just January
+  * All consecutive two-month and three-month sequences are now
+      considered as seasons, e.g. ncclimo --csn=jas,ond,jfm,amj,nd,nj
+  * The l2d chunking policy is available on all operators, e.g. ncks --cnk_plc l2d
+  * NCO now supports the NetCDF Expansion Pack v.1.5+ API
+  * Fix conversion of input files to JSON
+  * ncclimo now handles year 0, 00 and 000
+  * Fix ncclimo automatic name generation without --caseid
+defined internally
+- Update to version 5.3.6:
+  * Fix Map checker (ncks --chk_map)
+  * The regridder now accepts 'nco_idw' and 'ncoidw' as synonyms for
+      NCO's inverse-distance-weighted algorithm
+  * Fix ncclimo's detection of the 'lndgrid' dimension
+- Update to version 5.3.5:
+  * Map checker (ncks --chk_map) is now more robust
+  * The ncremap tutorial on the E3SM Confluence page
+      https://e3sm.atlassian.net/wiki/spaces/DOC/pages/edit-v2/754286611
+      has improved documentation on regridding
+  * Test bleeding-edge features with --npo (NCO Path Override)
+  * All operators that accept -v now also accept --var_lst
+  * plev indication can now be a full path name, e.g. --vrt=/home/bar/data.nc/plev
+  * GCC-compiled executables once again have working OpenMP parallelism
+      in the regridder
+
+-------------------------------------------------------------------
 Tue Jun 17 09:37:45 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 5.3.4:
