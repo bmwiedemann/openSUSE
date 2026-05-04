@@ -18,7 +18,7 @@
 
 %define         _name wgsl-bevy
 Name:           tree-sitter-wgsl-bevy
-Version:        0.1.2
+Version:        0.1.4
 Release:        0
 Summary:        Bevy grammar for tree-sitter
 License:        MIT

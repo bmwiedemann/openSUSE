@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  9 22:15:42 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.1.4:
+  - deps: update dependencies
+  - Update bindings & workflows
+  - build(deps): bump the npm group with 2 updates
+  - ci: bump the actions group with 3 updates
+  - deps: update Cargo.lock
+  - Bump version v0.1.4
+
+-------------------------------------------------------------------
 Thu Mar  5 21:54:34 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Remove redundant Neovim workaround

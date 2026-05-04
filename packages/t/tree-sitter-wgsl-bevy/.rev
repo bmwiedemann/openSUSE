@@ -15,4 +15,18 @@
     <comment>- Remove redundant Neovim workaround</comment>
     <requestid>1336874</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>87225f3712fc5f1bca247273c1ee0668</srcmd5>
+    <version>0.1.4</version>
+    <time>1777891984</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.1.4:
+  - deps: update dependencies
+  - Update bindings &amp; workflows
+  - build(deps): bump the npm group with 2 updates
+  - ci: bump the actions group with 3 updates
+  - deps: update Cargo.lock
+  - Bump version v0.1.4</comment>
+    <requestid>1350415</requestid>
+  </revision>
 </revisionlist>
