@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 01 07:25:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.1:
+  * Update Rancher refs to v2.14.1 (#599)
+  * Bump rancher to v2.14.1-alpha2 (#586)
+  * [v2.14] Fix build script and harden GitHub Actions workflows
+    (#581)
+  * Pin GH Actions to commit sha (#573)
+
+-------------------------------------------------------------------
 Sun Mar 29 16:20:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.0:
