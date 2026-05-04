@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr 29 08:06:23 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.9.1
+  * Fix missing localization files in distribution.
+    Actually all translations have been missing.
+  * Fix missing translation for Python < 3.10 argparse.
+  * Update translations.
+  * Add missing copyright texts, license identifiers and license files.
+  * Lots of cleanup to the test, build and packaging process.
+- Update to 0.9.post2
+  * Fix scaling the page. This was totally broken in version 0.9, leading to
+    empty pages.
+  * Drop support for Python 3.7. The required version of the library pdfposter
+    is based on doesn't support that version any longer.
+  * Translate more strings. Update translations.
+- Update to 0.9.post1
+  * Fix packaging and upload to PyPI.
+- Update to 0.9
+  * Rename the package and module to just `pdfposter`, which was the original
+    name.
+  * Add support for localization.  Languages currently supported are: German,
+    French (thanks to LS-Localicows), Spanish and Swedish (thanks to
+    Stefan2255).
+    Contributions for more languages are welcome. Please check out
+    https://translate.codeberg.org/projects/pdftools/.
+  * Improve documentation.
+  * Add support for Python 3.11, 3.12 and 3.13.
+    Drop support for Python 3.6.
+  * Port to version 3 of the `pypdf` library (thanks to psykose).
+- switch to pyproject macros
+
+-------------------------------------------------------------------
 Mon Sep 30 19:19:00 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - do not build docs, not compatible with Sphinx in Factory

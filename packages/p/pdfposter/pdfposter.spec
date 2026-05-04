@@ -1,7 +1,7 @@
 #
 # spec file for package pdfposter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define pythons python3
 Name:           pdfposter
-Version:        0.8.1
+Version:        0.9.1
 Release:        0
 Summary:        Scale and tile PDF images/pages to print on multiple pages
 License:        GPL-3.0-or-later
@@ -25,13 +26,15 @@ URL:            https://pdfposter.readthedocs.io/
 Source:         https://gitlab.com/pdftools/pdfposter/-/archive/v%{version}/pdfposter-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-PyPDF2 >= 2.1.1
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-pip
+BuildRequires:  python3-pypdf >= 5.5
 BuildRequires:  python3-pytest
 BuildRequires:  python3-reportlab
 BuildRequires:  python3-setuptools
-Requires:       python3-PyPDF2 >= 2.1.1
-Requires:       python3-base >= 3.6
+BuildRequires:  python3-wheel
+Requires:       python3-base >= 3.8
+Requires:       python3-pypdf >= 5.5
 BuildArch:      noarch
 
 %package doc
@@ -55,14 +58,14 @@ the project homepage https://pdfposter.readthedocs.io/
 HTML Documentation and examples for %{name}.
 
 %prep
-%setup -q -n pdfposter-v%{version}
-sed -i '1{/\/usr\/bin/d;}' pdftools/pdfposter/__init__.py pdftools/pdfposter/cmd.py
+%autosetup -p1 -n pdfposter-v%{version}
+sed -i '1{/\/usr\/bin/d;}' pdfposter/__init__.py pdfposter/cmd.py
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
+%pyproject_install
 %fdupes %{buildroot}%{python3_sitelib}
 
 %check
@@ -70,9 +73,8 @@ python3 test/gen-chessboard.py test/chessboard.pdf
 PYTHONPATH=. pytest -vv test/unit test/functional
 
 %files
-%{python3_sitelib}/pdftools/
-%{python3_sitelib}/pdftools.pdfposter-%{version}*-info
-%{python3_sitelib}/pdftools.pdfposter-%{version}*-nspkg.pth
+%{python3_sitelib}/pdfposter
+%{python3_sitelib}/pdfposter-%{version}*-info
 %{_bindir}/pdfposter
 
 %files doc
