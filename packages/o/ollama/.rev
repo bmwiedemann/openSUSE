@@ -794,4 +794,12 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   16.1 is supposed to get a newer glslang stack to fix the support (forwarded request 1348415 from adrianSuSE)</comment>
     <requestid>1348416</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>6a7f4bd0b18148be53192ab8ca0d7788</srcmd5>
+    <version>0.22.1</version>
+    <time>1777891883</time>
+    <user>anag_factory</user>
+    <comment>update (forwarded request 1350330 from adrianSuSE)</comment>
+    <requestid>1350381</requestid>
+  </revision>
 </revisionlist>

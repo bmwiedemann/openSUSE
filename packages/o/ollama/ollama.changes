@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri May  1 07:36:39 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.22.1:
+  * Updated the Gemma 4 renderer for thinking and tool calling improvements
+  * Model recommendations are now updated without updating Ollama
+  * Aligned the desktop app's launch page with ollama launch integrations
+  * Fixed the Poolside integration title in ollama launch
+- Update to version 0.22.0:
+  * NVIDIA's Nemotron 3 Omni
+  * Poolside's first open-weight coding model - Laguna XS.2
+
+-------------------------------------------------------------------
+Sat Apr 25 15:21:58 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.21.2:
+  * Improved reliability of the OpenClaw onboarding flow in
+    ollama launch
+  * Recommended models in ollama launch now appear in a fixed,
+    canonical order
+  * OpenClaw integration now bundles Ollama's web search plugin in
+    OpenClaw
+- Update to version 0.21.1:
+  * You can now install and run the Kimi CLI through Ollama
+  * GLM4 MoE Lite performance improvement with a fused sigmoid
+    router head
+  * Fixed structured outputs for Gemma 4 when think=false
+
+-------------------------------------------------------------------
 Mon Apr 20 13:29:24 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - disable vulkan build on Leap 16.0 and before
