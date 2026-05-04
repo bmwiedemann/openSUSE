@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  3 09:06:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 720
+  * https://github.com/superg/redumper/compare/build_713...b720
+- Add patch
+  * redumper-no-static-linking.patch
+
+-------------------------------------------------------------------
 Sun Apr 19 07:28:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 713

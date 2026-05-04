@@ -17,7 +17,7 @@
 
 
 Name:           redumper
-Version:        713
+Version:        720
 Release:        0
 Summary:        Low level CD dumper utility
 License:        GPL-3.0-only
@@ -25,7 +25,8 @@ Group:          Productivity/Multimedia/CD/Grabbers
 URL:            https://github.com/superg/redumper/
 Source:         https://github.com/superg/redumper/archive/refs/tags/b%{version}.tar.gz#/%{name}-b%{version}.tar.gz
 Patch0:         redumper-use-system-googletest.patch
-BuildRequires:  clang19
+Patch1:         redumper-no-static-linking.patch
+BuildRequires:  clang20
 BuildRequires:  cmake
 BuildRequires:  libstdc++6-devel-gcc15
 BuildRequires:  lld19
@@ -48,9 +49,9 @@ redumper also is a general purpose DVD/HD-DVD/Blu-ray disc dumper.
 %define _lto_cflags %{nil}
 %define __builder ninja
 %cmake \
-  -DCMAKE_CXX_COMPILER="clang++-19" \
-  -DCMAKE_C_COMPILER="clang-19" \
-  -DCMAKE_CXX_FLAGS="-I/usr/lib64/clang/19/include/"
+  -DCMAKE_CXX_COMPILER="clang++-20" \
+  -DCMAKE_C_COMPILER="clang-20" \
+  -DCMAKE_CXX_FLAGS="-I/usr/lib64/clang/20/include/"
 %cmake_build
 
 %install
