@@ -25,7 +25,7 @@
 %{?sle15_python_module_pythons}
 %define oldpython python
 Name:           python-dulwich
-Version:        1.0.0
+Version:        1.2.1
 Release:        0
 Summary:        Pure-Python Git Library
 License:        Apache-2.0 OR GPL-2.0-or-later
@@ -90,9 +90,6 @@ export CFLAGS="%{optflags}"
 
 %check
 %if %{with test}
-# These tests break the testsuite with a NameError if type checking is not enabled
-rm tests/contrib/test_swift.py
-rm tests/contrib/test_swift_smoke.py
 %pytest tests/ -k "not (test_filter_branch_index_filter)"
 %endif
 

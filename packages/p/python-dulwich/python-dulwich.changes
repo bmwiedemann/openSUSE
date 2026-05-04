@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sat May  2 00:02:23 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.2.1.
+  * Derive the LFS endpoint as the remote's on-disk LFS store when remote.origin.url points at a local filesystem path or file:// URL, matching git-lfs behaviour.
+  * Deduplicate objects when writing a multi-pack-index.
+  * Extend ignorecase and precomposeunicode support to index lookups.
+- Changes from version 1.2.0:
+  New features
+  * Add am command and porcelain.am() for applying mailbox-style email patches (git am), with state persistence for --continue, --skip, --abort, and --quit recovery (#1692).
+  * Add apply command and porcelain.apply_patch() for applying unified diffs, including rename/copy detection, binary patches with Git's base85 encoding, and --3way merge fallback (#1784).
+  * Expand log command options: --oneline, --abbrev-commit, --author, --committer, --grep, --since/--after, --until/--before, -n/--max-count, --no-merges, --merges, --stat, -p/--patch, --name-only, and --follow (#1779).
+  * Add support for push options (-o/--push-option) in push, enabling AGit flow and other server-side push option workflows.
+  * Add missing push options: --all, --tags, --delete, --dry-run, --prune, --set-upstream, --follow-tags, and --mirror (#1844).
+  * Add support for atomic push operations (--atomic): either all ref updates succeed or none are applied (#1781).
+  * Add support for extensions.relativeworktrees repository extension, allowing worktrees to use relative paths (#2112).
+  Configuration support
+  * gc.pruneExpire — grace period before unreachable objects are pruned (#1859).
+  * core.precomposeunicode — normalize NFD Unicode paths from macOS filesystems to NFC (#1804).
+  * core.gitProxy — proxy command for git:// protocol connections (#1850).
+  * core.maxStat — limit stat operations when checking for unstaged changes (#1853).
+  * core.packedGitLimit — cap memory used for mmapped pack files, closing LRU packs when exceeded (#1848).
+  * core.deltaBaseCacheLimit — cap memory used for caching delta base objects; defaults to 96 MiB (#1849).
+  * http.userAgent — customize the User-Agent header (global and URL-specific); default is git/dulwich/{version}.
+  Fixes
+  * Fix GPG signature verification to raise BadSignature for all GPG errors, not just BadSignatures; also detect when GPG returns no signatures.
+  * Fix client incorrectly sending unborn argument in Git protocol v2 ls-refs requests to servers that don't advertise ls-refs=unborn, preventing clones from older servers like Gerrit 3.12.2 (#2104).
+  * Improve error message in read_info_refs() to show the actual line content when parsing fails (#2103).
+  * Preserve quoted trailing whitespace in config values (#2145, Christopher Toth).
+  * Fix .gitignore parent re-include handling so a later !dir/ re-include allows a subsequent file-level negation to take effect (#2141, N0zoM1z0).
+  * Fix host key verification in contrib/paramiko_vendor.py by loading known hosts and rejecting unknown SSH host keys by default (#2123, quart27219).
+
+-------------------------------------------------------------------
+Fri Feb 20 14:07:45 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.1.0.
+  * Add reference to c-git-compatibility doc in README.md
+  * Implement cli commands for more porcelain
+  * Support GIT_TRACE_PACKET
+  * Fix cloning of SHA-256 repositories with protocol v2
+  * skip tests that require merge3 when it's not available
+  * Add test-minimal to CI; run tests without installing any optional dependencies
+  * Update SECURITY.md
+  * Don't skip 3.14 wheels
+  * Add Git protocol v2 packfile-uris client support
+  * Attempt to fix occasional issues with long running lfs processes in tests
+  * Allow passing commit and author timestamps into porcelain.commit
+  * Skip Python 3.14 x86_64/universal2 wheels on macOS
+  * Improve exception message for tags
+  * ci(deps): bump dependabot/fetch-metadata from 2.4.0 to 2.5.0
+  * ci(deps): bump actions/checkout from 6.0.1 to 6.0.2
+  * deps(deps-dev): bump ruff from 0.14.10 to 0.14.14 in the pip group
+  * Add bundle URI support for faster clones and fetches
+  * Add basic subtree support
+  * Add support for core.trustctime configuration option
+  * Fix LFS client selection for file:// URLs
+  * Add support for core.commentChar configuration option
+  * Add --unshallow support to fetch command
+  * Add progress reporting during pack file downloads
+  * Macos wheels fix
+  * Disable git-lfs filter process in LFS status tests to fix flaky Windows failures
+  * Server side hooks
+  * Fix checkout skipping files with paths starting with '.git'
+
+-------------------------------------------------------------------
 Wed Feb 11 11:14:14 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 1.0.0.
