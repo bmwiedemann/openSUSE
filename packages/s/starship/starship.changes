@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  4 05:50:13 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.25.1:
+  * Bug Fixes:
+    - git: improve bare repository detection.
+    - presets: Update no-nerd-font to be up-to-date.
+    - python: align python_binary schema with argument support.
+
+-------------------------------------------------------------------
 Mon Apr 20 03:07:46 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.25.0:
