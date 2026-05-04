@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  3 17:58:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0:
+  * **BREAK**: Remove deprecated `e` and `h` support.
+  * **NEW**: Drop Python 3.9 support.
+  * **NEW**: Lazy load Unicode tables as required.
+  * **FIX**: Fix bad name for value for Joining Group, which was
+    previously `non_joining`, but should have been
+    `no_joining_group`.
+  * **FIX**: Update Unicode script to handle unexpected changes
+    in alias of non-explicit value names.
+
+-------------------------------------------------------------------
 Wed Mar 18 07:23:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2:

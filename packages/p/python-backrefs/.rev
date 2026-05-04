@@ -66,4 +66,20 @@
     `bregex`.</comment>
     <requestid>1340842</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>222a29ca16a926b29514fda762e2e84f</srcmd5>
+    <version>7.0</version>
+    <time>1777892062</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.0:
+  * **BREAK**: Remove deprecated `e` and `h` support.
+  * **NEW**: Drop Python 3.9 support.
+  * **NEW**: Lazy load Unicode tables as required.
+  * **FIX**: Fix bad name for value for Joining Group, which was
+    previously `non_joining`, but should have been
+    `no_joining_group`.
+  * **FIX**: Update Unicode script to handle unexpected changes
+    in alias of non-explicit value names.</comment>
+    <requestid>1350554</requestid>
+  </revision>
 </revisionlist>
