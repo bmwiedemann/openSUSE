@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 30 14:26:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.16.0
+  * Add support for selecting backend via environment variable
+  * Use default DBus timeout for KWallet check
+  * Fix the crash caused by timeout when reading or writing
+    keychain on macOS
+  * Fix restore-after-deletion issue by creating QKeychain jobs
+    dynamically
+  * Add legacy support for KWallet maps
+  * Added Swedish translation
+  * Added Georgian translation
+  * Fixes for various build/build system issues
+
+-------------------------------------------------------------------
 Sat Feb  1 13:19:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.15.0
