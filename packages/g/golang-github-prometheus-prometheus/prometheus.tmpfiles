@@ -1,0 +1,3 @@
+d /var/lib/prometheus		0700 prometheus prometheus
+d /var/lib/prometheus/data	0700 prometheus prometheus
+d /var/lib/prometheus/metrics	0700 prometheus prometheus

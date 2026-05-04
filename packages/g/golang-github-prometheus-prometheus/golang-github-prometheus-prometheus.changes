@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 30 11:04:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.11.3:
+  This release fixes mutiple security issues.
+  * [SECURITY] AzureAD remote write: Fix OAuth client_secret being
+    exposed in plaintext via /-/config endpoint. GHSA-wg65-39gg-5wfj /
+    CVE-2026-42151 #18590
+  * [SECURITY] Remote-read: Reject snappy-compressed requests whose
+    declared decoded length exceeds the decode
+    limit. GHSA-8rm2-7qqf-34qm / CVE-2026-42154 #18584
+  * [SECURITY] UI: Fix stored XSS via unescaped le label values in old
+    UI heatmap chart tick labels. GHSA-fw8g-cg8f-9j28 #18588
+
+-------------------------------------------------------------------
+Tue Apr 28 13:09:42 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Use systemd tmpfiles.d to create /var/lib/prometheus hierarchy
+
+-------------------------------------------------------------------
 Sat Apr 18 05:42:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.11.2:

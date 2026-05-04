@@ -27,7 +27,7 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        3.11.2
+Version:        3.11.3
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
@@ -39,6 +39,7 @@ Source3:        prometheus.service
 Source4:        prometheus.yml
 Source5:        prometheus.sysconfig
 Source6:        prometheus.firewall.xml
+Source7:        prometheus.tmpfiles
 #
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
@@ -131,9 +132,7 @@ install -m 0755 -d %{buildroot}%{_prefix}/lib/firewalld/services/
 install -m 0644 %{SOURCE6} %{buildroot}%{_prefix}/lib/firewalld/services/prometheus.xml
 %endif
 
-install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus
-install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/data
-install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
+install -D -m 0644 %{SOURCE7} %{buildroot}%{_prefix}/lib/tmpfiles.d/prometheus.conf
 
 install -D -m0644 %{_builddir}/prometheus-%{version}/npm_licenses.tar.bz2 %{buildroot}/%{_defaultlicensedir}/%{name}/npm_licenses.tar.bz2
 
@@ -168,9 +167,7 @@ install -D -m0644 %{_builddir}/prometheus-%{version}/npm_licenses.tar.bz2 %{buil
 %{_unitdir}/prometheus.service
 %{_sbindir}/rcprometheus
 %{_fillupdir}/sysconfig.prometheus
-%dir %attr(0700,prometheus,prometheus) %{_sharedstatedir}/prometheus
-%dir %attr(0700,prometheus,prometheus) %{_sharedstatedir}/prometheus/data
-%dir %attr(0700,prometheus,prometheus) %{_sharedstatedir}/prometheus/metrics
+%{_prefix}/lib/tmpfiles.d/prometheus.conf
 %dir %{_sysconfdir}/prometheus
 %config(noreplace) %{_sysconfdir}/prometheus/prometheus.yml
 
