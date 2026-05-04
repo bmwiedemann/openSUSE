@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 27 21:23:42 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.26.3:
+  * *: release version 1.26.3 (#4318)
+  * dwarf/godwarf: fix regression debugging DWARFv5 on macOS (#4315)
+  * pkg/proc: extend feature to print procedure parameters in trace on eBPF backend (#4305)
+  * pkg/proc: Fix flakiness in TestWaitFor (#4306)
+  * cmd/dlv: use goversion.ParseProducer for DW_AT_producer (#4307)
+  * chore: fix typos(#4316)
+  * chore: fix function name in comment to match actual function (#4310)
+
+-------------------------------------------------------------------
 Mon Apr 20 16:05:27 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.26.2:

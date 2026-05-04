@@ -527,4 +527,19 @@
   * service/dap,pkg/proc: fix misc test failures (#4273) (forwarded request 1348261 from jfkw)</comment>
     <requestid>1348294</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d9fefcbae5f5e84b523108b672fe08b0</srcmd5>
+    <version>1.26.3</version>
+    <time>1777891827</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.26.3:
+  * *: release version 1.26.3 (#4318)
+  * dwarf/godwarf: fix regression debugging DWARFv5 on macOS (#4315)
+  * pkg/proc: extend feature to print procedure parameters in trace on eBPF backend (#4305)
+  * pkg/proc: Fix flakiness in TestWaitFor (#4306)
+  * cmd/dlv: use goversion.ParseProducer for DW_AT_producer (#4307)
+  * chore: fix typos(#4316)
+  * chore: fix function name in comment to match actual function (#4310) (forwarded request 1350319 from jfkw)</comment>
+    <requestid>1350320</requestid>
+  </revision>
 </revisionlist>
