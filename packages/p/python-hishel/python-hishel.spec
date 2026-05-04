@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hishel
-Version:        1.1.10
+Version:        1.2.1
 Release:        0
 Summary:        Persistent cache implementation for popular HTTP clients
 License:        BSD-3-Clause
@@ -29,14 +29,14 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module anyio >= 4.9.0}
 BuildRequires:  %{python_module anysqlite >= 0.0.5}
+BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module httpx >= 0.28.1}
 BuildRequires:  %{python_module inline-snapshot}
 BuildRequires:  %{python_module msgpack >= 1.1.2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module redis >= 6.0.0}
+BuildRequires:  %{python_module redis >= 7.0.0}
 BuildRequires:  %{python_module requests >= 2.32.5}
 BuildRequires:  %{python_module time-machine}
 BuildRequires:  %{python_module trio}
@@ -48,10 +48,8 @@ Requires:       python-msgpack >= 1.1.2
 Requires:       python-typing_extensions >= 4.14.1
 Suggests:       python-httpx >= 0.28.1
 Suggests:       python-requests >= 2.32.5
-Suggests:       python-pyyaml >= 6.0.2
-Suggests:       python-redis >= 6.0.0
+Suggests:       python-redis >= 7.0.0
 Suggests:       python-anysqlite >= 0.0.5
-Suggests:       python-boto3 >= 1.15.0
 Suggests:       python-anyio >= 4.9.0
 Suggests:       python-fastapi >= 0.119.1
 BuildArch:      noarch

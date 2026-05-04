@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  3 20:42:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * explicitly set build backend by @karpetrosyan
+  * improve sqlite concurrency by @karpetrosyan
+  * simplify pyproject.toml, use src layout by @karpetrosyan
+  * mention support for Zapros HTTP Client by @karpetrosyan
+  * feat: add support for redis by @karpetrosyan in #455
+
+-------------------------------------------------------------------
 Sun Apr 19 20:04:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.10:

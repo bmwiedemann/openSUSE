@@ -138,4 +138,17 @@
   * move docs to vitepress</comment>
     <requestid>1348075</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6648b8dc45aeecc77374447fc01e443b</srcmd5>
+    <version>1.2.1</version>
+    <time>1777892084</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.1:
+  * explicitly set build backend by @karpetrosyan
+  * improve sqlite concurrency by @karpetrosyan
+  * simplify pyproject.toml, use src layout by @karpetrosyan
+  * mention support for Zapros HTTP Client by @karpetrosyan
+  * feat: add support for redis by @karpetrosyan in #455</comment>
+    <requestid>1350584</requestid>
+  </revision>
 </revisionlist>
