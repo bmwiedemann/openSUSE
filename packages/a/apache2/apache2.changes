@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May  1 21:45:25 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- cgi-bin is disabled by default in modern Apache configurations;
+  creating it unconditionally via tmpfiles.d is unnecessary
+- Remove /srv/www/cgi-bin from apache2.tmpfiles
+- Drop %ghost %dir %{cgidir} from %files
+- Drop %{cgidir} from %check mkdir invocation
+
+-------------------------------------------------------------------
+Tue Apr 28 17:51:13 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix bsc#1262159.
+- MaxRequestWorkers (256) must be a multiple of ThreadsPerChild (25).
+  Decreased to 250.
+- use tmpfiles.d for runtime directory creation
+  This improves compatibility with immutable OSs, such as MicroOS.
+- Add apache2.tmpfiles.
+- Drop buildroot mkdir calls for log, cache and lib directories:
+  these are now created at runtime via tmpfiles.d
+- Mark /srv/www, htdocs, cgi-bin, log, cache and lib dirs as %ghost
+  in %files: RPM registers ownership without packaging the paths
+
+-------------------------------------------------------------------
 Sun Jan  4 20:47:09 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Include a sane HTTPD_SYSCONFIG_FILE env. variable when invoking

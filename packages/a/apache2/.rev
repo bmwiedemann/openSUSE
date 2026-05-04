@@ -2281,4 +2281,27 @@ Fixes build with Perl-IO-socket-SSL 2.073, as currently staged in :E (forwarded 
     <comment></comment>
     <requestid>1325323</requestid>
   </revision>
+  <revision rev="224" vrev="3">
+    <srcmd5>ada866caadea7cd9c4d984a2197a0749</srcmd5>
+    <version>2.4.66</version>
+    <time>1777891695</time>
+    <user>anag_factory</user>
+    <comment>- cgi-bin is disabled by default in modern Apache configurations;
+  creating it unconditionally via tmpfiles.d is unnecessary
+- Remove /srv/www/cgi-bin from apache2.tmpfiles
+- Drop %ghost %dir %{cgidir} from %files
+- Drop %{cgidir} from %check mkdir invocation
+
+- Fix bsc#1262159.
+- MaxRequestWorkers (256) must be a multiple of ThreadsPerChild (25).
+  Decreased to 250.
+- use tmpfiles.d for runtime directory creation
+  This improves compatibility with immutable OSs, such as MicroOS.
+- Add apache2.tmpfiles.
+- Drop buildroot mkdir calls for log, cache and lib directories:
+  these are now created at runtime via tmpfiles.d
+- Mark /srv/www, htdocs, cgi-bin, log, cache and lib dirs as %ghost
+  in %files: RPM registers ownership without packaging the paths</comment>
+    <requestid>1350419</requestid>
+  </revision>
 </revisionlist>

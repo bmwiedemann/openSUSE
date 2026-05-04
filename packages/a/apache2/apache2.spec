@@ -75,16 +75,16 @@
 
 %define datadir         /srv/www
 %define htdocsdir       %{datadir}/htdocs
+%define cgidir          %{datadir}/cgi-bin
 %define manualdir       %{_datadir}/apache2/manual
 %define errordir        %{_datadir}/apache2/error
 %define iconsdir        %{_datadir}/apache2/icons
-%define cgidir          %{datadir}/cgi-bin
 %define localstatedir   %{_localstatedir}/lib/apache2
-%define runtimedir      /run
 %define proxycachedir   %{_localstatedir}/cache/apache2
 %define logfiledir      %{_localstatedir}/log/apache2
 %define sysconfdir      %{_sysconfdir}/apache2
 %define includedir      %{_includedir}/apache2
+%define runtimedir      /run
 %if "%{mpm}" != ""
 %define libexecdir      %{_libdir}/apache2-%{mpm}
 %else
@@ -119,6 +119,7 @@ Source4:        apache2@.service
 Source5:        apache2.target
 # Add file to take mtime from it in prep section
 Source6:        apache2.changes
+Source7:        apache2.tmpfiles
 Source10:       apache2-ssl-dirs.tar.bz2
 # test
 # svn checkout http://svn.apache.org/repos/asf/httpd/test/framework/trunk/ httpd-framework
@@ -485,10 +486,11 @@ popd
 
 # main package install
 %if "%{flavor}" == ""
-mkdir -p %{buildroot}%{logfiledir} \
-         %{buildroot}%{proxycachedir} \
-         %{buildroot}%{localstatedir} \
-         %{buildroot}%{libexecdir}
+mkdir -p %{buildroot}%{libexecdir}
+
+# install tmpfiles snippet
+mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
+install -m 644 %{SOURCE7} %{buildroot}%{_prefix}/lib/tmpfiles.d/apache2.conf
 
 # save MODULE_MAGIC_NUMBER
 mkdir -p %{buildroot}/%{_libexecdir}
@@ -692,7 +694,7 @@ exit $exit_code
 exit_code=0
 # create test configuration, based on default distro one
 # with minimum changes to see it is working
-mkdir -p $PWD{%{_sysconfdir}/sysconfig,%{localstatedir},%{runtimedir},%{logfiledir}}
+mkdir -p $PWD{%{_sysconfdir}/sysconfig,%{localstatedir},%{runtimedir},%{logfiledir},%{htdocsdir}}
 # adjust sysconfig file
 cp %{_sysconfdir}/sysconfig/apache2 $PWD%{_sysconfdir}/sysconfig/
 sed -i -e "s:\(APACHE_HTTPD_CONF=\).*:\1$PWD%{sysconfdir}/httpd.conf:" \
@@ -702,6 +704,7 @@ sed -i 's:\(APACHE_MPM=\).*:\1"prefork":' $PWD%{_sysconfdir}/sysconfig/apache2
 cp -r %{_sysconfdir}/apache2/ %{_sysconfdir}/mime.types etc 2>/dev/null || true
 find etc/apache2 -name *.conf | xargs sed -i "s:\(%{_localstatedir}\):$PWD\1:"
 find etc/apache2 -name *.conf | xargs sed -i "s:/etc:$PWD/etc:"
+find etc/apache2 -name *.conf | xargs sed -i "s:%{datadir}:$PWD%{datadir}:"
 sed -i -e 's:80:60080:' -e 's:443:60443:' etc/apache2/listen.conf
 # /usr/sbin/start_apache2 is 744
 cp %{_sbindir}/start_apache2 .
@@ -821,11 +824,12 @@ exit 0
 %files
 %doc INSTALL READM* ABOUT_APACHE CHANGES
 %license LICENSE
-%attr(750,root,root) %dir %{logfiledir}
-%attr(750,%{httpduser},root) %dir %{proxycachedir}
-%attr(750,%{httpduser},root) %dir %{localstatedir}
-%dir %{datadir}
-%dir %{htdocsdir}
+%{_tmpfilesdir}/apache2.conf
+%ghost %dir %{datadir}
+%ghost %dir %{htdocsdir}
+%ghost %attr(750,root,root) %dir %{logfiledir}
+%ghost %attr(750,%{httpduser},root) %dir %{proxycachedir}
+%ghost %attr(750,%{httpduser},root) %dir %{localstatedir}
 %dir %{libexecdir}
 %dir %{_libexecdir}
 %attr(755,root,root) %{_libexecdir}/apache2_MMN
@@ -957,6 +961,7 @@ fi
 %if %{use_firewalld}
 %firewalld_reload
 %endif
+%tmpfiles_create apache2.conf
 exit 0
 
 %posttrans

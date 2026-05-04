@@ -1,0 +1,5 @@
+d /srv/www              0755 root   root  -
+d /srv/www/htdocs       0755 root   root  -
+d /var/cache/apache2    0750 wwwrun root  -
+d /var/lib/apache2      0750 wwwrun root  -
+d /var/log/apache2      0750 root   root  -
