@@ -17,7 +17,7 @@
 
 
 Name:           teleport
-Version:        17.7.20
+Version:        17.7.23
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        AGPL-3.0-only
@@ -35,7 +35,7 @@ BuildRequires:  bash-completion
 BuildRequires:  cargo >= 1.88
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
-BuildRequires:  go1.25 >= 1.25.7
+BuildRequires:  go1.25 >= 1.25.9
 BuildRequires:  pam-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zsh
