@@ -1,7 +1,7 @@
 #
 # spec file for package python-Telethon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %define modname Telethon
 %{?sle15_python_module_pythons}
 Name:           python-Telethon
-Version:        1.40.0
+Version:        1.43.2
 Release:        0
 Summary:        Full-featured Telegram client library for Python 3
 License:        MIT
-URL:            https://github.com/LonamiWebs/Telethon
-Source:         https://github.com/LonamiWebs/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#LonamiWebs/Telethon#4670
-Patch0:         stop-using-event_loop-fixture.patch
+URL:            https://codeberg.org/Lonami/Telethon
+Source:         https://codeberg.org/Lonami/Telethon/archive/v%{version}.tar.gz#/%{modname}-%{version}-cb.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyaes}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -34,8 +33,6 @@ BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rsa}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyaes
@@ -48,7 +45,7 @@ Telethon is an asyncio Python 3 MTProto library to interact with Telegram's API
 as a user or through a bot account (bot API alternative).
 
 %prep
-%autosetup -p1 -n Telethon-%{version}
+%autosetup -p1 -n telethon
 chmod -x *.rst LICENSE
 
 %build
@@ -60,6 +57,7 @@ chmod -x *.rst LICENSE
 
 %check
 # test_all_methods_present needs readthedocs available
+mv telethon _telethon
 %pytest -k 'not (test_all_methods_present or test_send_msg_and_file)'
 
 %files %{python_files}

@@ -405,4 +405,19 @@ Requires python-setuptools 78 to build successfully.
 - Support both upper and lower case metadata directory names.</comment>
     <requestid>1296402</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3a72470e188821b9fbe958570daf39d7</srcmd5>
+    <version>1.43.2</version>
+    <time>1777892073</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.43.2:
+  * Fix high CPU usage when connection is closed by remote
+  * Remove duplicate warnings import leading to error
+  * Remove regex implications from USERNAME_INVALID error message
+
+- update to 1.43.0:
+  * https://docs.telethon.dev/en/stable/misc/changelog.html#support-for-building-with-hatch-v1-43
+- drop stop-using-event_loop-fixture.patch (upstream)</comment>
+    <requestid>1350578</requestid>
+  </revision>
 </revisionlist>
