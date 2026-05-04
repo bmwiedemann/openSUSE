@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 26 13:59:28 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- PKGBUILD changes
+  * Fix invalid pkgrel
+  * Add minisign as optional dependency
+
+-------------------------------------------------------------------
 Tue Jan 27 16:20:32 CET 2026 - Ruediger Oertel <ro@suse.com>
 
 - add recommends for minisign in specfile

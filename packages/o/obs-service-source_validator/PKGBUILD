@@ -1,11 +1,12 @@
 pkgname=obs-service-source_validator
 pkgver=0.42+6
-pkgrel=78f7818cb454e90eb5267787d0eac2ed
+pkgrel=0
 pkgdesc='An OBS source service: running all the osc source-validator checks'
 arch=('any')
 url='https://github.com/openSUSE/obs-service-source_validator'
 license=('GPL-2.0-or-later')
 depends=('build' 'bzip2' 'cpio' 'diffutils' 'gnupg' 'libxml2' 'patch' 'perl-timedate' 'unzip' 'xz' 'zstd')
+optdepends=('minisign: verify minisign signatures')
 source=($pkgname-$pkgver.tar.xz)
 sha256sums=('SKIP')
 

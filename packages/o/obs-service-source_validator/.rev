@@ -870,4 +870,12 @@ last submission had wrong tar ball for unknown reason</comment>
   * 25-keyring-validate: add minisign support</comment>
     <requestid>1329518</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>fec21b5b87a56b1466abde90937b12f1</srcmd5>
+    <version>0.42+6</version>
+    <time>1777908536</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1350719</requestid>
+  </revision>
 </revisionlist>
