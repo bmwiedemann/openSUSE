@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  1 01:41:05 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros to build and install.
+
+-------------------------------------------------------------------
 Tue Dec 14 14:14:14 UTC 2021 - ohering@suse.de
 
 - Add python-rpm-macros (bsc#1180125)

@@ -1,7 +1,7 @@
 #
 # spec file for package virt-tuner
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define pythons python3
 
 Name:           virt-tuner
@@ -28,13 +27,15 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Other
 URL:            https://github.com/cbosdo/virt-tuner
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module libvirt-python}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-libvirt-python
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,10 +46,10 @@ Helps tuning the libvirt XML definition of a virtual machine for specific use ca
 %setup -q
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/virt-tuner
 %python_clone -a %{buildroot}%{_mandir}/man1/virt-tuner.1
 %fdupes %{buildroot}%{_prefix}
@@ -64,7 +65,7 @@ Helps tuning the libvirt XML definition of a virtual machine for specific use ca
 %doc ChangeLog README.md AUTHORS
 %python_alternative %{_bindir}/virt-tuner
 %{python_sitelib}/virt_tuner
-%{python_sitelib}/virt_tuner-*.egg-info
+%{python_sitelib}/virt_tuner-%{version}.dist-info
 %python_alternative %{_mandir}/man1/virt-tuner.1%{ext_man}
 
 %changelog
