@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 02 12:56:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.19.1:
+  * Restore Google DNS fallback when system resolver build fails.
+  * Upgrade hickory-resolver to 0.26 to fix RUSTSEC-2026-0118/0119.
+  * Update rustls-webpki to fix RUSTSEC-2026-0104.
+  * Update rustls-webpki to fix RUSTSEC-2026-0098/0099.
+  * Update aws-lc-sys and rustls-webpki to fix security advisories.
+  * Update quinn-proto to fix RUSTSEC-2026-0037.
+
+-------------------------------------------------------------------
 Sun Mar 15 13:36:37 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.19.0:
