@@ -1219,4 +1219,13 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
     <comment></comment>
     <requestid>1293459</requestid>
   </revision>
+  <revision rev="93" vrev="12">
+    <srcmd5>e7018e9ad7a1b58ed33033e8fb11cae8</srcmd5>
+    <version>23.13.9</version>
+    <time>1777891699</time>
+    <user>anag_factory</user>
+    <comment>- Add accountsservice.tmpfiles file to create directories under
+  /var using systemd-tmpfiles (jsc#PED-14834).</comment>
+    <requestid>1350039</requestid>
+  </revision>
 </revisionlist>

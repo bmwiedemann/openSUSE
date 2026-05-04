@@ -29,6 +29,8 @@ URL:            https://www.freedesktop.org/wiki/Software/AccountsService/
 Source0:        https://www.freedesktop.org/software/accountsservice/%{name}-%{version}.tar.xz
 # Patched mocklibc source to fix build with GCC 14
 Source1:        mocklibc-1.0.tar.gz
+# Directories where the server stores user data
+Source2:        accountsservice.tmpfiles
 # PATCH-FIX-UPSTREAM accountsservice-mocklib-gcc14.patch -- Fix meson checksum to accept patched tarball
 Patch0:         accountsservice-mocklib-gcc14.patch
 
@@ -105,7 +107,7 @@ Requires:       typelib-1_0-AccountsService-1_0 = %{version}
 The accountsservice server provides a set of D-Bus interfaces for
 querying and manipulating user account information.
 
-This package contains the Vala bindings for accountservice.
+This package contains the Vala bindings for accountsservice.
 %endif
 
 %lang_package
@@ -130,12 +132,17 @@ cp %{SOURCE1} subprojects/packagecache/
 
 %install
 %meson_install
+
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/accountsservice.conf
+
 %find_lang accounts-service
 
 %pre
 %service_add_pre accounts-daemon.service
 
 %post
+%tmpfiles_create %{_tmpfilesdir}/accountsservice.conf
 %service_add_post accounts-daemon.service
 
 %preun
@@ -157,13 +164,10 @@ cp %{SOURCE1} subprojects/packagecache/
 %{_datadir}/dbus-1/interfaces/org.freedesktop.Accounts.User.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.Accounts.service
 %{_datadir}/polkit-1/actions/org.freedesktop.accounts.policy
+%{_tmpfilesdir}/accountsservice.conf
 # User templates
 %dir %{_datadir}/accountsservice
 %{_datadir}/accountsservice/user-templates
-# Directories where the server stores user data
-%dir %{_localstatedir}/lib/AccountsService
-%dir %{_localstatedir}/lib/AccountsService/users
-%dir %{_localstatedir}/lib/AccountsService/icons
 %{_datadir}/locale/en/LC_MESSAGES/accounts-service.mo
 %{_datadir}/locale/en_GB/LC_MESSAGES/accounts-service.mo
 

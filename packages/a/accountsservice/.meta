@@ -5,5 +5,4 @@ querying and manipulating user account information.
 
 The implementation is based on the useradd, usermod and userdel
 commands.</description>
-  <devel project="GNOME:Factory" package="accountsservice"/>
 </package>
