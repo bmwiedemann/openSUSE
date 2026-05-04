@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.5.3
+Version:        4.6.0
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -494,11 +494,28 @@ This package provides the core of R, i.e. all that is in base.
 %{_libdir}/R/share/encodings/
 %{_libdir}/R/share/java/
 
+%dir %{_libdir}/R/share/bibliographies/
+%{_libdir}/R/share/bibliographies/R.rds
+%{_libdir}/R/share/bibliographies/base.R
+%{_libdir}/R/share/bibliographies/datasets.R
+%{_libdir}/R/share/bibliographies/grDevices.R
+%{_libdir}/R/share/bibliographies/graphics.R
+%{_libdir}/R/share/bibliographies/grid.R
+%{_libdir}/R/share/bibliographies/methods.R
+%{_libdir}/R/share/bibliographies/parallel.R
+%{_libdir}/R/share/bibliographies/splines.R
+%{_libdir}/R/share/bibliographies/stats.R
+%{_libdir}/R/share/bibliographies/utils.R
+
 %dir %{_libdir}/R/share/dictionaries/
 %{_libdir}/R/share/dictionaries/en_stats.rds
 %{_libdir}/R/share/dictionaries/R_Rd_files.rds
 %{_libdir}/R/share/dictionaries/R_manuals.rds
 %{_libdir}/R/share/dictionaries/R_vignettes.rds
+%{_libdir}/R/share/dictionaries/en_stats.txt
+%{_libdir}/R/share/dictionaries/R_Rd_files.txt
+%{_libdir}/R/share/dictionaries/R_manuals.txt
+%{_libdir}/R/share/dictionaries/R_vignettes.txt
 %license %{_libdir}/R/share/licenses/
 %{_libdir}/R/share/make/
 %{_libdir}/R/share/R/
@@ -552,9 +569,9 @@ libraries to allow you to devel with R-base.
 %{_libdir}/R/include/R_ext/Linpack.h
 %{_libdir}/R/include/R_ext/MathThreads.h
 %{_libdir}/R/include/R_ext/Memory.h
+%{_libdir}/R/include/R_ext/ObjectTable.h
 %{_libdir}/R/include/R_ext/Parse.h
 %{_libdir}/R/include/R_ext/Print.h
-%{_libdir}/R/include/R_ext/PrtUtil.h
 %{_libdir}/R/include/R_ext/QuartzDevice.h
 %{_libdir}/R/include/R_ext/Rallocators.h
 %{_libdir}/R/include/R_ext/RS.h
@@ -1202,12 +1219,12 @@ This package provides R-tools, one of R-core packages.
 
 %dir %{_libdir}/R/library/tools/
 %{_libdir}/R/library/tools/DESCRIPTION
-%{_libdir}/R/library/tools/wre.txt
 %{_libdir}/R/library/tools/help/
 %{_libdir}/R/library/tools/html/
 %{_libdir}/R/library/tools/INDEX
 %{_libdir}/R/library/tools/libs/
 %{_libdir}/R/library/tools/Meta/
+%{_libdir}/R/library/tools/misc/
 %{_libdir}/R/library/tools/NAMESPACE
 %{_libdir}/R/library/tools/R/
 
@@ -1523,6 +1540,7 @@ This packages provides R-lattice, one of the recommended packages.
 %{_libdir}/R/library/lattice/Meta/
 %{_libdir}/R/library/lattice/NAMESPACE
 %{_libdir}/R/library/lattice/NEWS.md
+%{_libdir}/R/library/lattice/README.md
 %dir %{_libdir}/R/library/lattice/po/
 %lang(de) %{_libdir}/R/library/lattice/po/de/
 %lang(en) %{_libdir}/R/library/lattice/po/en*/
@@ -1567,7 +1585,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.7.4
+Version:        1.7.5
 Release:        %release
 Requires:       R-base
 Obsoletes:      R-Matrix-devel <= 1.3.2
@@ -1659,7 +1677,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.168
+Version:        3.1.169
 Release:        %release
 Requires:       R-base
 
@@ -1722,7 +1740,7 @@ This packages provides R-nnet, one of the recommended packages.
 
 %package -n R-rpart
 Summary:        Package provides recommended R-rpart
-Version:        4.1.24
+Version:        4.1.27
 Release:        %release
 Requires:       R-base
 
@@ -1743,6 +1761,7 @@ This packages provides R-rpart, one of the recommended packages.
 %{_libdir}/R/library/rpart/Meta/
 %{_libdir}/R/library/rpart/NAMESPACE
 %{_libdir}/R/library/rpart/NEWS.Rd
+%{_libdir}/R/library/rpart/README.md
 %dir %{_libdir}/R/library/rpart/po
 %lang(de) %{_libdir}/R/library/rpart/po/de/
 %lang(en) %{_libdir}/R/library/rpart/po/en*/
