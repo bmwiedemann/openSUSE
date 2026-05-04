@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 03 06:45:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.4:
+  * Features
+    - fix: fetch builder image per platform (#2589 by @ddusht)
+  * Dependencies
+    - build(deps): bump uuid and @actions/core (#2583)
+    - build(deps): bump yaml in
+      /.github/workflows/actions/release-notes (#2554)
+    - build(deps): bump github.com/docker/cli in the
+      go-dependencies group (#2585)
+
+-------------------------------------------------------------------
 Thu Apr 23 05:46:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.3:
