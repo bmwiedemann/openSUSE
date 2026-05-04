@@ -492,4 +492,15 @@
   * set_multiqueue: set a4x-max ring len before irq affinity (forwarded request 1344108 from glaubitz)</comment>
     <requestid>1344117</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a75e41c91d523ed1614928237a1e35d7</srcmd5>
+    <version>20260428.00</version>
+    <time>1777908266</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260428.00
+  * gce-nic-naming: optimize runtime performance
+- from version 20260401.00
+  * set_multiqueue: Consider c4n a &quot;multinic accelerator&quot; (forwarded request 1350639 from glaubitz)</comment>
+    <requestid>1350664</requestid>
+  </revision>
 </revisionlist>

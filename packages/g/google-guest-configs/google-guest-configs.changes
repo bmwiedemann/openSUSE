@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  4 09:19:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260428.00
+  * gce-nic-naming: optimize runtime performance
+- from version 20260401.00
+  * set_multiqueue: Consider c4n a "multinic accelerator"
+
+-------------------------------------------------------------------
 Wed Apr  1 12:29:13 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260306.00
