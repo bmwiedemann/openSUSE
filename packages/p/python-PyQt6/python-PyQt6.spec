@@ -25,7 +25,7 @@
 %define pkg_suffix -qt6pdf
 %bcond_without qt6pdf
 
-%if (0%{?suse_version} == 1600 && !0%{?is_opensuse}) || 0%{?suse_version} < 1600
+%if (0%{suse_version} >= 1600 && 0%{suse_version} < 1699 && !0%{?is_opensuse}) || 0%{?suse_version} < 1600
 # SLFO and SLE15 don't have cmake(Qt6Pdf)
 ExclusiveArch:  do_not_build
 %endif
@@ -40,7 +40,7 @@ ExclusiveArch:  do_not_build
 
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}%{?pkg_suffix}
-Version:        6.10.0
+Version:        6.11.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -55,7 +55,7 @@ Patch1:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
 Patch3:         fix-build-without-qtcore.patch
 BuildRequires:  %{python_module PyQt6-sip >= 13.8}
 BuildRequires:  %{python_module dbus-python-devel >= 0.8}
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pyqt-builder >= 1.17}
 BuildRequires:  %{python_module sip-devel >= 6.12}
 BuildRequires:  dbus-1-devel

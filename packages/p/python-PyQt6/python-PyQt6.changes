@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 30 11:48:07 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 6.11.0 
+  - Added support for Qt v6.11.
+  - Python v3.9 is no longer supported.
+
+- Update to 6.10.2
+  - Fixed a regression introduced in v6.5.0 in the handling of the
+    return value of `QSqlQueryModel.query()`.
+  - Fixed a regression introduced in v6.10.1 in the handling of the
+    return value of `createMimeDataFromSelection()` in `QTextEdit`
+    and `QPlainTextEdit`.
+
+- Update to 6.10.1
+  - Added support for `QRangeModel` (and related
+    `QPyAbstractRange`, `QPySequenceRange` and `QPyTableRange`).
+  - Fixed a regression in `pylupdate6` when using Python v3.14.
+  - Fixed ownership issues with the result of calls to
+    `createStandardContextMenu()` and
+    `createMimeDataFromSelection()`.
+
+-------------------------------------------------------------------
+Fri Mar 20 01:34:47 UTC 2026 - Federico Mena Quintero <federico@suse.com>
+
+- Update suse_version macro for 1610 (jsc#PED-15808)
+
+-------------------------------------------------------------------
 Wed Oct 29 09:29:40 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.10.0
