@@ -1699,4 +1699,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>Update version</comment>
     <requestid>1348434</requestid>
   </revision>
+  <revision rev="211" vrev="2">
+    <srcmd5>3f26cf5867da1d15f7370d6b14653653</srcmd5>
+    <version>50.1</version>
+    <time>1777891721</time>
+    <user>anag_factory</user>
+    <comment>- Drop unused pkgconfig(xi) and pkgconfig(xkbfile) BuildRequires.</comment>
+    <requestid>1350307</requestid>
+  </revision>
 </revisionlist>

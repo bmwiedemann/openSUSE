@@ -90,8 +90,6 @@ BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.12
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xfixes) >= 6.0
-BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(xkbfile)
 # Needed for tests
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-python-dbusmock
