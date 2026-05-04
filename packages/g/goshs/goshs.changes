@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Apr 29 18:36:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.6
+  New Features
+  * Markdown file preview — View .md files rendered directly in
+    the browser with syntax highlighting.
+  * Extended file preview — Added preview support for more data
+    types (code, documents, etc.).
+  * Collaborator log export — Export collaborator panel logs
+    (HTTP, DNS, SMB, LDAP, SMTP) for offline analysis.
+  Improvements
+  * Frontend modularization — Restructured monolithic main.js.
+  * Pretty update changelog — --update now shows changelogs for
+    all versions between your current and the latest release,
+    rendered with terminal markdown styling
+  * Modernized Go code — Applied go fix across the codebase for
+    updated Go patterns.
+  * Added highlight.min.js, marked.min.js, and purify.min.js for
+    frontend rendering.
+  Bug Fixes
+  * Fixed broken sharelink handler.
+  * Removed leftover build artifacts.
+
+-------------------------------------------------------------------
+Mon Apr 27 14:35:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.5
+  * Add LDAP feature.
+  * Misc dependency updates.
+
+-------------------------------------------------------------------
 Sat Apr 25 15:43:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.4
