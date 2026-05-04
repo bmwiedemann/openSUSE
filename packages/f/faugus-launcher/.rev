@@ -422,4 +422,22 @@
   * Fixed gamepad interacting with the app while a game is running</comment>
     <requestid>1349908</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7fba7098191942d56da183a80df9c79c</srcmd5>
+    <version>1.18.10</version>
+    <time>1777891824</time>
+    <user>anag_factory</user>
+    <comment>- .spec file:
+  * Removed shebang fix for launcher script
+- Bump to version 1.18.10
+- Upstream changes:
+  * Attempt do fix runner silent crash
+  * Device name adjustment for Flatpak
+  * Added Norwegian (Bokmål) translation
+  * Workaround for nvidia optimus
+- For version 1.18.9:
+  * Fixed splash window again
+  * simplify and make launcher script POSIX</comment>
+    <requestid>1350311</requestid>
+  </revision>
 </revisionlist>

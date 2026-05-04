@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 30 22:39:46 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- .spec file:
+  * Removed shebang fix for launcher script
+- Bump to version 1.18.10
+- Upstream changes:
+  * Attempt do fix runner silent crash
+  * Device name adjustment for Flatpak
+  * Added Norwegian (Bokmål) translation
+  * Workaround for nvidia optimus
+- For version 1.18.9:
+  * Fixed splash window again
+  * simplify and make launcher script POSIX
+
+-------------------------------------------------------------------
 Wed Apr 29 01:41:23 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.18.8
