@@ -135,4 +135,20 @@
     <comment></comment>
     <requestid>1343660</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8082cc743663e1921af17dd986e38418</srcmd5>
+    <version>1.15.2</version>
+    <time>1775743926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345511</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9ed6876a9556cc830ef6cc84ab38e86f</srcmd5>
+    <version>1.16.1</version>
+    <time>1777891816</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1350371</requestid>
+  </revision>
 </revisionlist>
