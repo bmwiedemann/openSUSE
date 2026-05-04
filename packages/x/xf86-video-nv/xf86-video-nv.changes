@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Apr 26 00:52:15 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.24
+  * Quiet -Wredundant-decls from xorg/os.h fallbacks for new libc functions
+  * Don't try to load xaa module if not compiled with XAA support
+  * man page: stop claiming to use XAA on Xorg 1.13 & later
+  * Improve man page formatting
+  * g80: Avoid segfault if AccelMethod isn't set and XAA isn't built
+  * Strip trailing whitespace from source files
+  * gitlab CI: drop the ci-fairy check-mr job
+  * use XNFalloc() instead of xnfalloc
+  * use XNFcallocarray() instead of xnfcalloc macro
+  * g80: dont set accelmethod to xaa when xaa is disabled
+  * nv: support 0xf0 device id range
+  * g80/display: Annotate functions
+  * g80/disp: preinit all heads we know in display
+  * g80/output: update known PCI rom sigs
+  * nv: support GT 320M....hopefully
+  * nv/man: link the gitlab issue tracker
+  * treewide: replace XNFcallocarray with XNFcalloc and add wrap it
+  * FreeBSD: nv_driver: Disable check for pci driver in FreeBSD.
+  * netbsd: Try getting the EDID via wscons if the DDC2 method fails.
+  * netbsd: disable not-useful check for an existing kernel driver
+
+-------------------------------------------------------------------
 Mon Mar 25 02:36:57 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.1.23
