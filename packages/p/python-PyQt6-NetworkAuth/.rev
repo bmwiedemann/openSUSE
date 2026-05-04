@@ -132,4 +132,12 @@
   * Added support for Qt v6.10.</comment>
     <requestid>1314374</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9c0c318aa04a5b3c561a7f513ee27a3a</srcmd5>
+    <version>6.11.0</version>
+    <time>1777908273</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1350683 from alarrosa)</comment>
+    <requestid>1350692</requestid>
+  </revision>
 </revisionlist>
