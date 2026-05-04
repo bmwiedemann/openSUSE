@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Apr 25 08:29:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.95:
+  * Refactor PO generator for robust metadata and improved class
+    discovery
+  * Refactor conditional logic using structural pattern matching
+    (PEP 636)
+  * Fix typography: replace U+2019 with "'" and U+2013 with '-'
+  * Update .pre-commit-config.yaml: use SHA for versions
+  * Update Austria holidays
+  * Update Bhutan holidays: add l10n support
+  * Update Egypt holidays: add Eid al-Fitr 2026 exact date
+  * Update Hebrew calendar generator
+  * Update India holidays: add Bonalu holiday in Telangana (TS)
+  * Update India holidays: change 2026 Holi date in Maharashtra
+    (MH)
+  * Update India holidays: improve Tamil translations
+  * Update India holidays: update Andaman and Nicobar Islands
+    (AN) holidays
+  * Update National Stock Exchange of India holidays: correct
+    Hindi translations for some holidays
+  * Update Romania holidays
+  * Update documentation: surface API for `ObservedHolidayBase`
+    and `NoHolidayBase`
+  * Update languages list in site assets generator
+  * Add tests for site assets generator
+  * Standardize and fix docstring references
+
+-------------------------------------------------------------------
 Tue Apr  7 09:13:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.94:
