@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Wed Apr 29 13:45:19 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 8.20.0:
+  * Security fixes:
+    - CVE-2026-4873: connection reuse ignores TLS requirement (bsc#1262631)
+    - CVE-2026-5545: wrong reuse of HTTP Negotiate connection (bsc#1262632)
+    - CVE-2026-5773: wrong reuse of SMB connection (bsc#1262633)
+    - CVE-2026-6253: proxy credentials leak over redirect-to proxy (bsc#1262635)
+    - CVE-2026-6276: stale custom cookie host causes cookie leak (bsc#1262636)
+    - CVE-2026-6429: curl: netrc credential leak with reused proxy connection (bsc#1262638)
+  * Changes:
+    - async-thrdd: use thread queue for resolving
+    - lib: add thread pool and queue
+    - lib: drop support for < c-ares 1.16.0
+    - lib: make SMB support opt-in
+    - multi.h: add CURLMNWC_CLEAR_ALL
+    - rtmp: drop support
+ * Bugfixes:
+    - altsvc: cap the list at 5,000 entries
+    - altsvc: drop the prio field from the struct
+    - altsvc: skip expired entries read from file
+    - asyn-ares: connect async
+    - asyn-ares: drop orphaned variable references
+    - asyn-ares: fix HTTPS-lookup when not on port 443
+    - asyn-thrdd: drop redundant `result` check
+    - asyn-thrdd: fix clang-tidy unused value warning
+    - async-ares: fix query counter handling
+    - cf-ip-happy: limit concurrent attempts
+    - cf-socket: avoid low risk integer overflow on ancient Solaris
+    - cfilters: fix Curl_pollset_poll() return code mixup
+    - config2setopts: make --capath work in proxy disabled builds
+    - cookie: fix rejection when tabs in value
+    - curl.h: replace macros with C++-friendly method to enforce 3 args
+    - curl_ctype.h: fix spelling in a couple of locally used macros
+    - curl_get_line: error out on read errors
+    - curl_get_line: fix potential infinite loop when filename is a directory
+    - curl_ngtcp2: extend and update callbacks for 1.22.0+
+    - curl_ntlm_core: drop redundant PP condition
+    - curl_ntlm_core: use wolfCrypt DES API with wolfSSL
+    - curl_setup.h: drop stray/unused `USE_OPENSSL_QUIC` guard
+    - curl_sha512_256: support delegating to wolfSSL API
+    - curlx_now(), prevent zero timestamp
+    - digest: pass in the username quoted (as well)
+    - dns: https-eyeballing async
+    - dnscache: own source file, improvements
+    - doh: fix memory-leak when doing a second DoH resolve
+    - doh: remove superfluous doh_req check
+    - file: init fd to -1 to prevent close fd 0 on early failure
+    - fopen: for temp files, inherit permissions only for owner
+    - ftp: do not strdup DATA hostname
+    - ftp: make the MDTM date parser stricter (again)
+    - ftp: reject PWD responses containing control characters
+    - generate.bat: remove extra % from VC11 and VC12 runs
+    - genserv.pl: make external calls safe
+    - getinfo: initialize `PureInfo` field `used_proxy`
+    - getinfo: repair CURLINFO_TLS_SESSION
+    - h3: HTTPS-RR use in HTTP/3
+    - Happy Eyeballs: add resolution time delay
+    - hostip: clear the sockaddr_in6 structure before use
+    - hostip: init the curl_jmpenv_lock appropriately
+    - hostip: resolve user supplied ip addresses
+    - HSTS: cap the list
+    - hsts: make the HSTS read callback handle name dupes
+    - hsts: skip expired HSTS entries read from file
+    - hsts: when a dupe host adds subdomains, use that
+    - http2: clear the h2 session at delete
+    - http2: prevent secure schemes pushed over insecure connections
+    - http2: return error on OOM in push headers
+    - http: clear credentials better on redirect
+    - http: clear digest nonce on cross-origin redirect
+    - http: clear the proxy credentials as well on port or scheme change
+    - http: fix auth_used and auth_avail
+    - http: fix Curl_compareheader for multi value headers
+    - http: make Curl_compareheader handle multiple commas in header
+    - http: on 303, switch to GET
+    - http: use header_has_value() instead of duplicate code
+    - imap: reset the UIDVALIDITY state between transfers
+    - lib: accept larger input to md5/hmac/sha256/sha512 functions
+    - lib: always use Curl_1st_fatal instead of Curl_1st_err
+    - lib: make resolving HTTPS DNS records reliable:
+    - lib: move request specific allocations to the request struct
+    - lib: replace `PRI*32` printf masks with C89 ones
+    - libssh2: allocate libssh2-friendly memory in kbd_callback
+    - libssh2: fix error handling on quote errors
+    - libssh: fix 64-bit printf mask for mingw-w64 <=6.0.0
+    - libssh: path length precaution
+    - libssh: propagate error back in SFTP function
+    - location/follow: mention netrc
+    - man: fix argument type for `CURLSHOPT_[UN]SHARE` options
+    - md4, md5: switch to wolfCrypt API in wolfSSL builds
+    - mime: only allow 40 levels of calls
+    - misc: fix code quality findings
+    - multi: enhance pending handles fairness
+    - multi: fix connection retry for non-http
+    - multi: improve wakeup and wait code
+    - netrc: find login-less password when user is given in URL
+    - netrc: remove unused parsenetrc() macro for netrc-disabled
+    - netrc: skip malformed macdef lines
+    - openssl channel_binding: lookup digest algorithm without NID
+    - openssl: drop obsolete SSLv2 logic
+    - openssl: fix build with 4.0.0-beta1 no-deprecated
+    - openssl: fix memory leaks in ECH code (OpenSSL 3)
+    - openssl: fix unused variable warnings in !verbose builds
+    - openssl: trace count of found / imported Windows native CA roots
+    - OS400: add new definitions to the ILE/RPG binding.
+    - parsedate: bsearch the time zones
+    - parsedate: fix wrong treatment of "military time zones"
+    - parsedate: refactor
+    - progress: count amount of data "delivered" to application
+    - protocol.h: fix the CURLPROTO_MASK
+    - protocol: disable connection reuse for SMB(S)
+    - protocol: use scheme names lowercase
+    - proxy: chunked response, error code
+    - pytest: add additional quiche check for flaky test_05_01
+    - pytest: check 429 handling
+    - rand: use `BCryptGenRandom()` in UWP builds
+    - ratelimit: reset on start
+    - request: reset resp_trailer in new requests
+    - schannel: increase renegotiation timeout to 60 seconds
+    - sendf: fix CR detection if no LF is in the chunk
+    - setopt: move CURLOPT_CURLU
+    - setup connection filter: mark as setup
+    - sha256, sha512_256: switch to wolfCrypt API
+    - sha256: support delegating to wolfSSL API
+    - share: concurrency handling, easy updates
+    - share: do bitshifts after the type is checked to be valid
+    - socks: reject zero-length GSSAPI/SSPI tokens from proxy
+    - socks: use dns filter for resolving
+    - src: use ftruncate() unconditionally
+    - strerr: correct the strerror_s() return code condition
+    - sws: fix potential OOB write
+    - synctime: fix off-by-one read and write to a read-only buffer (Windows)
+    - top-complexity: prevent filename-based shell injection risk
+    - transfer: clear the old autoreferer
+    - transfer: clear the URL pointer in OOM to avoid UAF
+    - transfer: enable custom methods again on next transfer
+    - transfer: enhance secure check
+    - url: do not reuse a non-tls starttls connection if new requires TLS
+    - url: improve connection reuse on negotiate
+    - url: init req.no_body in DO so that it works for h2 push
+    - url: set default upload flags to CURLULFLAG_SEEN
+    - url: use the socks type for socks proxy
+    - urlapi: fix handling of "file:///"
+    - urlapi: make dedotdotify handle leading dots correctly
+    - urlapi: stop extracting hostname from file:// URLs on Windows
+    - urlapi: verify the last letter of a scheme when set explicitly
+    - urldata: connection bit ipv6_ip is wrong
+    - urldata: import port types and conn destination format
+    - urldata: make hstslist only present in HSTS builds
+    - urldata: make speeder_c uint32
+    - urldata: move cookiehost to struct SingleRequest
+    - urldata: remove trailers_state
+    - vquic: fix variable name in fallback code
+    - vtls: log when key logging is enabled.
+    - vtls_scache: check reentrancy
+    - vtls_scache: include cert_blob independently of verifypeer
+    - ws: fix a blocking curl_ws_send() to report written length correctly
+    - x509asn1: fix to return error in an error case from `encodeOID()`
+    - x509asn1: fixed and adapted for ASN1tostr unit testing
+    - x509asn1: improve encodeOID
+  * Rebased patches: dont-mess-with-rpmoptflags.patch libcurl-ocloexec.patch
+
+-------------------------------------------------------------------
 Thu Mar 26 15:01:40 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update %suse_version checks for SLES 16.x (jsc#PED-15813)

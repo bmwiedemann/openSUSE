@@ -1,8 +1,8 @@
-Index: curl-8.19.0-rc2/configure.ac
+Index: curl-8.20.0/configure.ac
 ===================================================================
---- curl-8.19.0-rc2.orig/configure.ac
-+++ curl-8.19.0-rc2/configure.ac
-@@ -602,11 +602,6 @@ if test "$curl_cv_native_windows" = "yes
+--- curl-8.20.0.orig/configure.ac
++++ curl-8.20.0/configure.ac
+@@ -604,11 +604,6 @@ if test "$curl_cv_native_windows" = "yes
    ])
  fi
  
@@ -12,5 +12,5 @@ Index: curl-8.19.0-rc2/configure.ac
 -CURL_SET_COMPILER_WARNING_OPTS
 -
  if test "$compiler_id" = "INTEL_UNIX_C"; then
-   #
    if test "$compiler_num" -ge "1000"; then
+     dnl icc 10.X or later
