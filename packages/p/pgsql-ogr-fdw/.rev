@@ -89,4 +89,17 @@
     <comment></comment>
     <requestid>1246435</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>edf6457913b66b68839b19e592864bdc</srcmd5>
+    <version>1.1.7</version>
+    <time>1777899515</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.7
+  * PostgreSQL 18 support
+- 1.1.6:
+  * Fix rare case where materialized view creation crashes the server.
+- Add build for postgresql18.
+</comment>
+    <requestid>1350665</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  4 11:24:44 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 1.1.7
+  * PostgreSQL 18 support
+
+- 1.1.6:
+  * Fix rare case where materialized view creation crashes the server.
+
+- Add build for postgresql18.
+
+-------------------------------------------------------------------
 Mon Feb 17 13:10:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.1.5:
