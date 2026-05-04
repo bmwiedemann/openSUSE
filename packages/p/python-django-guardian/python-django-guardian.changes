@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun May  3 17:34:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * Improve managers typing and reduce code duplication
+  * Fix possible IndexError when trying to bulk-assign
+    permissions
+  * global perms with uuid hypens bug is fixed
+  * Code coverage system is added
+  * Support python 3.14
+  * OPS: Drop python 3.9 and version bump
+- update to 3.2.0:
+  * Update enforcement contact link in CODE_OF_CONDUCT.md
+  * django-packages badge is added
+  * Update issue templates
+  * Fix type and deprecate old name
+  * Allow ignore_conflicts on bulk create
+  * Add only_with_perms_in parameter to
+    shortcuts.get_groups_with_perms
+  * Reset content-type cache on post-migrate (refs #865)
+  * Improve default indexing, add index comparison tests and fix
+    test timezones
+  * Apply style rules to 3.1.0 release
+- update to 3.0.7:
+  * feat: add batch processing parameters to
+    clean_orphan_obj_perms
+- update to 3.0.6:
+  * OPS: Remove check-toml hook unable to accept non-homogeneous
+    arrays
+- update to 3.0.5:
+  * remove mysql as a required dependency to run the tox test
+    suite
+- update to 3.0.4:
+  * Add pre-commit and make linting/formatting consistent
+- update to 3.0.3:
+  * passed obj to get_group_obj_perms_model
+  * Version bump
+- update to 3.0.2:
+  * Update icons to Font Awesome Free 6.7.2
+  * Remove unused `mock` install from PyPI
+  * Support Django 5.2
+- update to 3.0.0:
+  * This is the culmination of more than FIVE YEARS of commits by
+    various dedicated people, and a lot of wrangling to resurrect
+    `django-guardian` from the dead. It aims to bring guardian up
+    to date with a new team of maintainers and hit reset on the
+    project going forward - it also encompasses updates to be
+    compatible with the latest, greatest versions of django.
+
+-------------------------------------------------------------------
 Tue Jun  3 06:57:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

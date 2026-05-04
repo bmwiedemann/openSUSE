@@ -205,4 +205,41 @@ SPDX syntax (http://www.spdx.org/licenses) (forwarded request 83930 from babelwo
 - No more greedy globs in %files.</comment>
     <requestid>1282123</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>62f0423ce8a1b9e2f7a069aa3fbd6f15</srcmd5>
+    <version>3.3.1</version>
+    <time>1777892066</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.1:
+  * Improve managers typing and reduce code duplication
+  * Fix possible IndexError when trying to bulk-assign
+    permissions
+  * global perms with uuid hypens bug is fixed
+  * Code coverage system is added
+  * Support python 3.14
+  * OPS: Drop python 3.9 and version bump
+- update to 3.2.0:
+  * Update enforcement contact link in CODE_OF_CONDUCT.md
+  * django-packages badge is added
+  * Update issue templates
+  * Fix type and deprecate old name
+  * Allow ignore_conflicts on bulk create
+  * Add only_with_perms_in parameter to
+    shortcuts.get_groups_with_perms
+  * Reset content-type cache on post-migrate (refs #865)
+  * Improve default indexing, add index comparison tests and fix
+    test timezones
+  * Apply style rules to 3.1.0 release
+- update to 3.0.7:
+  * feat: add batch processing parameters to
+    clean_orphan_obj_perms
+- update to 3.0.6:
+  * OPS: Remove check-toml hook unable to accept non-homogeneous
+    arrays
+- update to 3.0.5:
+  * remove mysql as a required dependency to run the tox test
+    suite
+- update to 3.0.4:</comment>
+    <requestid>1350553</requestid>
+  </revision>
 </revisionlist>
