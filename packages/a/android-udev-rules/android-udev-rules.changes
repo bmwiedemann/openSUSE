@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 23 16:07:08 UTC 2026 - munix9@googlemail.com
+
+- Update to version 20260423
+  * chore(deps): bump actions/checkout from 4 to 5 by @dependabot[bot] in #354
+  * chore(deps): bump actions/checkout from 5 to 6 by @dependabot[bot] in #355
+  * fix(ci): create adbusers as system group for udev verification by @M0Rf30 in #358
+  * feat: Add adb rule for Lenovo Legion Tab Y700 by @Ylarod in #360
+
+-------------------------------------------------------------------
 Sun May 25 15:59:09 UTC 2025 - munix9@googlemail.com
 
 - Update to version 20250525
