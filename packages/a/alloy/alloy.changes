@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 29 16:06:30 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Use systemd tmpfiles.d to create /var/lib/alloy hierarchy
+  (jsc#PED-14815)
+- CVE-2026-4427: Fix potential Go vuln in github.com/jackc/pgproto3
+  (bsc#1259919)
+  *  Add 0001-Bump-sql_exporter.patch
+- Use latest openSUSE Tumbleweed image for building web UI assets
+- Install nvm to set node version specified upstream
+
+-------------------------------------------------------------------
 Sun Apr 26 12:53:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.16.0:

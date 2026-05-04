@@ -17,7 +17,13 @@ zypper -n install \
     gawk \
     git-core \
     npm \
+    patch \
     "${golang_package}" || exit 13
+
+echo "Installing nvm"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+source $NVM_DIR/nvm.sh
 
 version="$( awk '/^Version:/ {print $2;exit;}' "${package_name}.spec" )"
 
@@ -40,6 +46,7 @@ ls -lah
 
 echo "##########"
 pushd internal/web/ui/ || exit 25
+nvm install
 npm install
 npm run build
 popd || exit 29
@@ -49,6 +56,7 @@ echo "DONE preparing the webassets"
 
 echo "##########"
 echo "Vendoring the go modules"
+patch --no-backup-if-mismatch -p1 -i ${working_directory}/0001-Bump-sql_exporter.patch
 pushd collector/ || exit 31
 go mod download || exit 33
 go mod vendor || exit 35

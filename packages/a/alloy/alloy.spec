@@ -28,6 +28,8 @@ Source2:        ui-%{version}.tar.gz
 Source3:        PACKAGING_README.md
 Source4:        Makefile
 Source5:        prepare_webassets_and_vendor_go_modules.sh
+Source6:        alloy.tmpfiles
+Patch1:         0001-Bump-sql_exporter.patch
 BuildRequires:  go1.26 >= 1.26.2
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  user(alloy)
@@ -69,7 +71,7 @@ What can Alloy do?
   pipelines.
 
 %prep
-%setup -b 2
+%autosetup -p1 -a 2
 cd collector/
 tar zxf %{SOURCE1}
 
@@ -105,9 +107,8 @@ install -D -m 0644 packaging/config.alloy %{buildroot}/%{_sysconfdir}/%{name}/co
 # sysconfig file
 install -D -m 0644 packaging/environment-file %{buildroot}%{_fillupdir}/sysconfig.alloy
 
-# working directory
-install -d -m 0770 %{buildroot}/%{_sharedstatedir}/%{name}
-install -d -m 0770 %{buildroot}/%{_sharedstatedir}/%{name}/data/
+# systemd tmpfiles
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_prefix}/lib/tmpfiles.d/alloy.conf
 
 %pre
 %service_add_pre %{name}.service
@@ -129,7 +130,7 @@ install -d -m 0770 %{buildroot}/%{_sharedstatedir}/%{name}/data/
 %{_bindir}/%{name}
 %{_unitdir}/%{name}.service
 %dir %attr(770,root,alloy) %config %{_sysconfdir}/%{name}
-%dir %attr(770,alloy,alloy) %{_sharedstatedir}/%{name}
+%{_prefix}/lib/tmpfiles.d/alloy.conf
 %{_fillupdir}/sysconfig.alloy
 
 %changelog

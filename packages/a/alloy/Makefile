@@ -19,5 +19,5 @@ web_assets_and_go_modules:
 		--rm \
 		--pull=always \
 		-v .:/data/ \
-		registry.opensuse.org/opensuse/leap:16.0 \
+		registry.opensuse.org/opensuse/tumbleweed:latest \
 		bash /data/prepare_webassets_and_vendor_go_modules.sh $(NAME) go1.26
