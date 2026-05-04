@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  2 18:12:29 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260501:
+  * tdh8: Fix VFO A/B BCL setting not reading properly
+  * tdh8: Add offset dir in VFO settings and fix VFO TX freq
+  * h777v4: Fix detected models
+
+-------------------------------------------------------------------
 Sat Apr 25 17:56:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260425:
