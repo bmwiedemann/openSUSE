@@ -25,7 +25,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-apprise
-Version:        1.9.9
+Version:        1.10.0
 Release:        0
 Group:          Development/Libraries/Python
 Summary:        A simple wrapper to many popular notification services used today
@@ -51,7 +51,7 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-oauthlib}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 69}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 Requires:       python-Markdown
@@ -65,6 +65,7 @@ Suggests:       python-cryptography
 Suggests:       python-dbus-python
 Suggests:       python-gntp
 Suggests:       python-PGPy
+Suggests:       python-hidapi
 Suggests:       python-slixmpp >= 1.10.0
 Suggests:       python-smpplib
 %if %{with libalternatives}

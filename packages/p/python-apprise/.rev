@@ -157,4 +157,17 @@
   * Updated copyright notices to reflect 2026</comment>
     <requestid>1343398</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fd79730ac7bbe83c637b7bcc0550e5f0</srcmd5>
+    <version>1.10.0</version>
+    <time>1777892072</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.10.0:
+  * The big wow factor of this release would be the huge effort
+    put into Matrix E2EE built into Apprise without adding
+    overhead to the plugin itself. Huge props to those that
+    helped out.  Other than that, a few more services have been
+    added (137 supported now :rocket: ).</comment>
+    <requestid>1350564</requestid>
+  </revision>
 </revisionlist>

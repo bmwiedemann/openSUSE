@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  3 18:31:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * The big wow factor of this release would be the huge effort
+    put into Matrix E2EE built into Apprise without adding
+    overhead to the plugin itself. Huge props to those that
+    helped out.  Other than that, a few more services have been
+    added (137 supported now :rocket: ).
+
+-------------------------------------------------------------------
 Sun Mar 29 09:36:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.9:
