@@ -80,4 +80,23 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * feat: Lights out</comment>
     <requestid>1349676</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>648122416d578334f9f29c2a89e7a61c</srcmd5>
+    <version>1.5.1</version>
+    <time>1777891825</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.5.1
+- Upstream changes:
+  * Readme update
+  * Fixed some edge issues in the download dialog
+  * Start big screen on Guide rather than Start
+  * Fix up the code, remove duplicates
+  * Fix up status bar text when downloading stuff
+  * View types and saving window size
+  * Auto download
+  * SteamGridDb Integration
+  * Appimage changes, don't help much unfortunately
+  * When launching a known exe through association, don't raise the main win</comment>
+    <requestid>1350312</requestid>
+  </revision>
 </revisionlist>
