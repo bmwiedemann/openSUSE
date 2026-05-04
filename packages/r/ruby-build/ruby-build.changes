@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May  3 14:38:26 UTC 2026 - Müller <expeehaa@outlook.com>
+
+- Update to version 20260503.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260503
+  * Fix definition lookup for ruby-prefixed names like `ruby-dev` by @amatsuda in #2621
+
+-------------------------------------------------------------------
+Fri May  1 13:28:34 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20260501.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260501
+  * Support passing a version prefix argument by @byroot in #2610
+  * Add `mruby-4.0.0` by @mislav in #2620
+
+-------------------------------------------------------------------
 Sun Apr 26 22:45:52 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20260426.

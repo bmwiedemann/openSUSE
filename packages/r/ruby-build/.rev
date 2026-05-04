@@ -880,4 +880,19 @@
     <comment></comment>
     <requestid>1349453</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>39e7acd039444599eada23f2632fd8a7</srcmd5>
+    <version>20260503</version>
+    <time>1777891988</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260503.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260503
+  * Fix definition lookup for ruby-prefixed names like `ruby-dev` by @amatsuda in #2621
+- Update to version 20260501.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260501
+  * Support passing a version prefix argument by @byroot in #2610
+  * Add `mruby-4.0.0` by @mislav in #2620
+</comment>
+    <requestid>1350526</requestid>
+  </revision>
 </revisionlist>
