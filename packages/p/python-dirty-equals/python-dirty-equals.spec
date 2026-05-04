@@ -1,7 +1,7 @@
 #
 # spec file for package python-dirty-equals
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,27 @@
 #
 
 
+%define pypi_version 0.11
 %{?sle15_python_module_pythons}
 Name:           python-dirty-equals
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Doing dirty (but useful) things with equals
 License:        MIT
 URL:            https://dirty-equals.helpmanual.io
 Source:         https://github.com/samuelcolvin/dirty-equals/archive/refs/tags/v%{version}.tar.gz#/dirty-equals-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module pydantic >= 2.4}
+BuildRequires:  %{python_module pydantic >= 2.4.2}
 BuildRequires:  %{python_module pytest-examples}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz >= 2021.3}
+BuildRequires:  timezone
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytz >= 2021.3
+Requires:       timezone
 BuildArch:      noarch
 %python_subpackages
 
@@ -60,6 +61,6 @@ Doing dirty (but extremely useful) things with equals.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/dirty_equals
-%{python_sitelib}/dirty_equals-%{version}*-info
+%{python_sitelib}/dirty_equals-%{pypi_version}.dist-info
 
 %changelog

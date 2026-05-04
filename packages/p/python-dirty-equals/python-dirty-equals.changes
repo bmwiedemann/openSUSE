@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 23 22:38:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Fix nested dataclass comparison
+  * uprev in preparation for release
+  * Add tests for 3.14
+
+-------------------------------------------------------------------
 Mon Sep 29 10:00:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Skip tests failing with Python 3.14, unskip doc tests

@@ -94,4 +94,16 @@
     <comment></comment>
     <requestid>1307726</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>719864d97d353a4a3c43f9efa28dce01</srcmd5>
+    <version>0.11.0</version>
+    <time>1777891698</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.0:
+  * Fix nested dataclass comparison
+  * uprev in preparation for release
+  * Add tests for 3.14
+</comment>
+    <requestid>1343908</requestid>
+  </revision>
 </revisionlist>
