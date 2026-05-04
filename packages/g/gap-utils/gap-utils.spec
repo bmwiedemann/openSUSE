@@ -1,7 +1,7 @@
 #
 # spec file for package gap-utils
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           gap-utils
 Summary:        GAP: Utility functions in GAP
-Version:        0.93
+Version:        0.94
 Release:        0
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
