@@ -40,4 +40,14 @@ Bugfixes:
 	for domain names longer than 64 characters.</comment>
     <requestid>1348336</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b1c8ed9c1ea12609ac10cff1c81ad197</srcmd5>
+    <version>0.4.1</version>
+    <time>1777891987</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.1
+Bugfixes:
+  * Possible crash during name resolution (via ngx v0.5.1).</comment>
+    <requestid>1350420</requestid>
+  </revision>
 </revisionlist>
