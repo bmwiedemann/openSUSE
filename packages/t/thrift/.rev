@@ -189,4 +189,41 @@
     <comment></comment>
     <requestid>1314312</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d04e290b08df06236ca755279ff4700e</srcmd5>
+    <version>0.23.0</version>
+    <time>1777891709</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.23.0 (bsc#1263557, CVE-2026-41602,
+      bsc#1263492, CVE-2026-41604,
+      bsc#1263438, CVE-2026-41605,
+      bsc#1263365, CVE-2026-41606,
+      bsc#1263321, CVE-2026-41607,
+      bsc#1263322, CVE-2026-41636):
+  * THRIFT-5877 - Add cpp cross tests
+  * THRIFT-5866 - Dockerfile to support Ubuntu 24.04 LTS (Noble
+    Numbat)
+  * THRIFT-5909 - add Ruby in GitHub workflow
+  * THRIFT-5649 - add go in GitHub workflow / action
+  * THRIFT-5871 - Improve MAX_MESSAGE_SIZE check and friends
+  * THRIFT-5911 - Inconsistent UUID compilation for aliased types
+  * THRIFT-5912 - Assertion failed: `delta &gt; 0`, file
+    ThreadManagerTests.h, line 162
+  * THRIFT-5880 - C++ TSocket on an IPv6-only system fails if you
+    use a hostname of 127.0.0.1
+  * THRIFT-3268 - warning: token pasting of ',' and `__VA_ARGS__`
+    is a GNU extension
+  * THRIFT-5887 - build/cmake/ should be prepended (not appended)
+    to CMAKE_MODULE_PATH
+  * THRIFT-5878 - Add UUID support for THeaderProtocol and
+    TProtocolTap
+  * THRIFT-5898 - Unable to build Thrift as a shared library on
+    Windows
+  * THRIFT-5939 - Replace GUID generation with stable UUID
+    algorithm
+  * THRIFT-5876 - Add Delphi WinHTTP client TLS1.3 support
+  * THRIFT-5896 - Race condition in TServerSocket.Addr() method
+  * THRIFT-5925 - UUID implementation in JAVA is not according to</comment>
+    <requestid>1350206</requestid>
+  </revision>
 </revisionlist>

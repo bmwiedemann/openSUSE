@@ -1,7 +1,103 @@
 -------------------------------------------------------------------
+Thu Apr 30 06:50:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.0 (bsc#1263557, CVE-2026-41602,
+      bsc#1263492, CVE-2026-41604,
+      bsc#1263438, CVE-2026-41605,
+      bsc#1263365, CVE-2026-41606,
+      bsc#1263321, CVE-2026-41607,
+      bsc#1263322, CVE-2026-41636):
+  * THRIFT-5877 - Add cpp cross tests
+  * THRIFT-5866 - Dockerfile to support Ubuntu 24.04 LTS (Noble
+    Numbat)
+  * THRIFT-5909 - add Ruby in GitHub workflow
+  * THRIFT-5649 - add go in GitHub workflow / action
+  * THRIFT-5871 - Improve MAX_MESSAGE_SIZE check and friends
+  * THRIFT-5911 - Inconsistent UUID compilation for aliased types
+  * THRIFT-5912 - Assertion failed: `delta > 0`, file
+    ThreadManagerTests.h, line 162
+  * THRIFT-5880 - C++ TSocket on an IPv6-only system fails if you
+    use a hostname of 127.0.0.1
+  * THRIFT-3268 - warning: token pasting of ',' and `__VA_ARGS__`
+    is a GNU extension
+  * THRIFT-5887 - build/cmake/ should be prepended (not appended)
+    to CMAKE_MODULE_PATH
+  * THRIFT-5878 - Add UUID support for THeaderProtocol and
+    TProtocolTap
+  * THRIFT-5898 - Unable to build Thrift as a shared library on
+    Windows
+  * THRIFT-5939 - Replace GUID generation with stable UUID
+    algorithm
+  * THRIFT-5876 - Add Delphi WinHTTP client TLS1.3 support
+  * THRIFT-5896 - Race condition in TServerSocket.Addr() method
+  * THRIFT-5925 - UUID implementation in JAVA is not according to
+    the Thrift Specification
+  * THRIFT-5869 - Close the transport after TServerEventHandler
+    deleteContext
+  * THRIFT-5863 - Make TServerTransport able to customize the max
+    message size
+  * THRIFT-5774 - Add remote client's IP address to ServerContext
+    in TServerEventHandler
+  * THRIFT-4280 - Add async nonblocking ssl support in java
+    client
+  * THRIFT-5879 - java and kotlin cross tests fail in the GitHub
+    action
+  * THRIFT-5902 - Add net10 support
+  * THRIFT-5874 - Introduce new type `MESSAGE_SIZE_LIMIT` in
+    TTransportException
+  * THRIFT-5937 - nodejs episodic generation does not handle
+    extending services
+  * THRIFT-5924 - UUID support for nodejs and nodets
+  * THRIFT-4987 - TProtocolException: Bad version in
+    readMessageBegin when using XHR client with C++ server
+  * THRIFT-5924 - UUID support for nodejs and nodets
+  * THRIFT-5935 - Fix deprecated non-canonical casts for PHP 8.5
+    compatibility
+  * THRIFT-5921 - Ubuntu focal fail to run composer install
+  * THRIFT-5929 - Fix build failure on PHP 8.5 due to removed
+    zend_exception_get_default
+  * THRIFT-5927 - Cannot use reserved language keyword "None"
+    with target language Python
+  * THRIFT-5885 - TBinaryProtocolAccelerated incorrectly
+    deserializes IntEnum to None
+  * THRIFT-5923 - UUID support for Python
+  * THRIFT-5926 - TSaslClientTransport.open() crashes with
+    DIGEST-MD5 due to None initial response
+  * THRIFT-5915 - Python 3.12+ is not supported due to distutils
+  * THRIFT-5892 - PY_SSIZE_T_CLEAN error in some environments
+  * THRIFT-5873 - mTLS broken with python THttpClient
+  * THRIFT-792 - TSocket hides underlying exceptions when open()
+    fails
+  * THRIFT-5888 - declare support for free-threaded CPython in
+    extension modules
+  * THRIFT-5900 - Thrift Cross Test broken in Github (Python
+    3.14)
+  * THRIFT-5308 - implement ruby seq replyÂ
+  * THRIFT-5910 - Add UUID support in Ruby
+  * THRIFT-5906 - Remove Fixnum references to support modern Ruby
+    versions
+  * THRIFT-5905 - Add base64 and logger as explicit dependencies
+  * THRIFT-5903 - Fixnum is no longer supported since Ruby 3.2
+  * THRIFT-5687 - Ruby gems deprecation warning:
+    Gem::Specification#has_rdoc= is deprecated with no
+    replacement
+  * THRIFT-4035 - Thrift ruby runtime does not send unique
+    sequence IDs in requests according to the unit tests
+  * THRIFT-1911 - IOError not being caught in socket.rb
+  * THRIFT-4526 - Implement rubocop for ruby in the sca build,
+    once clean into every make
+  * THRIFT-5273 - warning in ruby version >= 2.4
+  * THRIFT-5918 - Implement header protocol support for Ruby
+  * THRIFT-5559 - Processor can be implemented on handler trait
+    itself
+  * THRIFT-5928 - skip() call on unknown binary field fails
+    deserialization instead of graceful skipping over field
+  * THRIFT-5739 - set_nodelay should be enabled for TTcpChannel
+
+-------------------------------------------------------------------
 Tue Oct 28 04:16:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Use pyproject macros to build and install. 
+- Use pyproject macros to build and install.
 
 -------------------------------------------------------------------
 Thu Jun 19 09:23:37 UTC 2025 - James Oakley <jfunk@funktronics.ca>
@@ -190,7 +286,7 @@ Tue Jun 14 10:35:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Error: Constraint check failure for haxe.ds.ObjectMap.K
   ### Java
   * add support for partial deserialization of Thrift
-  * fix issues found by spotbugs 
+  * fix issues found by spotbugs
   * Update java dependencies
   ### JavaScript
   * Wrong type mapping of thrift binary type
@@ -411,7 +507,7 @@ Tue Apr 13 23:29:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
       and socket timeout
     + cpp: dropped support for Windows XP
     + TException interface now has a new function: TExceptionType
-    + go: TClient.Call now returns ResponseMeta in addition to error 
+    + go: TClient.Call now returns ResponseMeta in addition to error
   * Full: https://github.com/apache/thrift/blob/0.14.1/CHANGES.md
 
 -------------------------------------------------------------------
@@ -426,7 +522,7 @@ Fri Mar  6 09:25:41 UTC 2020 - Nico Kruber <nico.kruber@gmail.com>
 - Update to 0.13.0
   (full log https://github.com/apache/thrift/blob/0.13.0/CHANGES.md)
   * Deprecated Languages:
-    + CSharp and Netcore targets (use NetStd instead) 
+    + CSharp and Netcore targets (use NetStd instead)
   * Removed Languages:
     + Cocoa
   * Breaking changes:
@@ -569,8 +665,8 @@ Mon Mar  2 18:44:32 UTC 2015 - mpluskal@suse.com
 Mon Mar  2 14:23:16 UTC 2015 - mpluskal@suse.com
 
 - Remove obsolete patches
-  * 0001-Add-missing-limits-header.patch  
-  * 0002-TNonblockingServer-TLibEventTransport.patch  
+  * 0001-Add-missing-limits-header.patch
+  * 0002-TNonblockingServer-TLibEventTransport.patch
   * 0003-TDenseProtocol.patch
 - Update library name to match shlib naming policy
 - Update to 0.9.2
@@ -591,7 +687,7 @@ Thu Feb 20 20:49:32 UTC 2014 - opensuse@dstoecker.de
 Wed Sep 25 08:54:20 UTC 2013 - d.desai@rtsgroup.net
 
 - number of bytes written to transport and number of bytes
-  returned from write() method was not same. Fixed this 
+  returned from write() method was not same. Fixed this
   problem in TDenseProtocol.
 
 -------------------------------------------------------------------
@@ -599,7 +695,7 @@ Thu Aug 15 15:15:51 UTC 2013 - o.herrmann217@googlemail.com
 
 - Extended 0002-TNonblockingServer-TLibEventTransport.patch to
   properly close TConnection when a client disconnects while
-  still receiving updates from libevent. 
+  still receiving updates from libevent.
 
 -------------------------------------------------------------------
 Wed Aug  7 12:07:33 UTC 2013 - d.desai@rtsgroup.net
@@ -628,7 +724,7 @@ Thu Jun 20 11:13:43 UTC 2013 - o.herrmann217@googlemail.com
 
 - Created new patch for integrating external libevent clients in
   TNonblockingServer.
-- Removed 0003-TNonblokingServer-release-handler-on-close.patch. 
+- Removed 0003-TNonblokingServer-release-handler-on-close.patch.
   It is now part of 0002-TNonblockingServer-TLibEventTransport.patch
 
 -------------------------------------------------------------------
@@ -666,22 +762,22 @@ Wed Jan 23 18:26:38 UTC 2013 - d.desai@rtsgroup.net
 -------------------------------------------------------------------
 Wed Jan 23 14:51:46 UTC 2013 - o.herrmann217@googlemail.com
 
-- Build with --hash-style=sysv 
+- Build with --hash-style=sysv
 
 -------------------------------------------------------------------
 Sun Dec  2 13:58:46 UTC 2012 - o.herrmann217@googlemail.com
 
-- Striped one directory in patch 0001 
+- Striped one directory in patch 0001
 
 -------------------------------------------------------------------
 Sun Dec  2 13:41:57 UTC 2012 - o.herrmann217@googlemail.com
 
-- Patch for missing limit headers 
+- Patch for missing limit headers
 
 -------------------------------------------------------------------
 Sun Dec  2 12:40:06 UTC 2012 - o.herrmann217@googlemail.com
 
-- Call make with -j1 to fix compile problem temporally 
+- Call make with -j1 to fix compile problem temporally
 
 -------------------------------------------------------------------
 Tue Nov 27 21:58:37 UTC 2012 - jblunck@opensuse.org
@@ -691,5 +787,5 @@ Tue Nov 27 21:58:37 UTC 2012 - jblunck@opensuse.org
 -------------------------------------------------------------------
 Fri Jul 30 17:26:10 UTC 2010 - dmacvicar@novell.com
 
-- initial package for 0.2.0 
+- initial package for 0.2.0
 

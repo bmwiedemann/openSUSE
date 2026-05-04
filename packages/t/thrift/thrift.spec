@@ -1,7 +1,7 @@
 #
 # spec file for package thrift
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global libversion 0_22_0
+%global libversion 0_23_0
 %global libgversion 0
 %bcond_without perl
 %bcond_without c
@@ -28,7 +28,7 @@
 %define skip_python3 1
 %endif
 Name:           thrift
-Version:        0.22.0
+Version:        0.23.0
 Release:        0
 Summary:        Framework for scalable cross-language services development
 License:        Apache-2.0
