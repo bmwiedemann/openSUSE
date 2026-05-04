@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Mar 21 14:14:01 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 2.13.0:
+  Bug fixes
+  * Fix bug in when BuildOptions.cmake checks if variables are
+    defined or… by @spe-ciellt in #429
+  * Moved install() command for init.scm to tinyscheme CMakeLists.txt
+    by @spe-ciellt in #430
+  * Update linux packaging by @spe-ciellt in #432
+  * Swap config stage and locale stage in CMakeLists.txt by @spe-ciellt
+    in #445
+  * Fix website rebuild: dedicated ci-website job and replace m4 with
+    shell script by @spe-ciellt in #447
+  New features
+  * Build both static and shared version of libgerbv at the same time
+    by @spe-ciellt in #425 (static library removed)
+  * NSIS packaging on the Windows platform by @spe-ciellt in #441
+  Documentation
+  * BUILD.md is added and README.md is updated by @spe-ciellt in #434
+  * Updated BUILD.md with lists of packages to build by @spe-ciellt in #446
+  Buildsystem (CMake/CTest/CPack/etc)
+  * Add fetch-depth to 0 for all jobs that builds an artifact to be
+    released by @spe-ciellt in #443
+  * Switch website deploy to SSH deploy key, drop PAT and real email
+    by @spe-ciellt in #449
+  Other changes
+  * fix: start new cairo subpath before drawing aperture holes by
+    @rampageservices in #380
+  * fix: track source pointers in layer/state duplication by
+    @rampageservices in #381
+  * docs: mention bundled dxflib license in README by @rampageservices
+    in #386
+  * cosmetic: remove redundant vertex workaround from gerbv_draw_polygon
+    by @rampageservices in #436
+  * cmake: add COMMAND_ERROR_IS_FATAL ANY to configure-time
+    execute_process calls by @rampageservices in #438
+
+-------------------------------------------------------------------
 Thu Mar 12 21:10:27 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 2.12.0:

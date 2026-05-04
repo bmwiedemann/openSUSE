@@ -18,7 +18,7 @@
 
 Name:           gerbv
 %define libname lib%{name}
-Version:        2.12.0
+Version:        2.13.0
 Release:        0
 %define somajor 1
 Summary:        Gerber File Viewer that supports the RS-274X Standard
@@ -82,6 +82,7 @@ that use gerbv library.
 
 %suse_update_desktop_file -r %{name} Education Engineering
 find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
+find %{buildroot}%{_libdir} -name '*.a' -type f -delete -print
 
 %find_lang %{name}
 
