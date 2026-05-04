@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr 30 08:54:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.8
+  * Improved build system using autotools.
+  * Fully revised pcap reader; old implementation removed.
+  * Improved overall code robustness and extensive cleanup of
+    legacy code.
+  * Correct handling of records containing both IPv4 and IPv6
+    extensions.
+  * Implemented dual‑stack listener support for nfcapd and sfcapd.
+  * Cleaned up sequence checks in NetFlow v5 and v9 modules.
+  * Major refactoring of the collector’s generic code; removed old
+    exporter flowsource logic.
+  * Added --enable-lto to enable link‑time optimization.
+  * Added --enable-native to generate locally optimized binaries.
+  * Exporter IP anonymization added to nfanon.
+  * User‑supplied worker thread count now also applies to filter
+    threads.
+  * Introduced a post‑processor thread in the collector to speed
+    up rotation cycles.
+  * nfanon now supports -W num to request a specific number of
+    worker threads.
+  * Removed MAXWORKERS; worker count is now limited only by
+    available CPU cores.
+  * Fixed memory leaks in SSL payload processing.
+  * Improved nfpcapd with an adaptive slab allocator and
+    replacement of the RB‑tree with an open hash.
+  * Replaced the pcap reader in nfpcapd with a faster mmap‑based
+    version.
+  * Replaced slow packet dump code with native system calls in
+    nfpcapd.
+  * Fixed IP fragment initialization in nfpcapd.
+  * Fixed race conditions and replaced all localtime() calls with
+    thread‑safe localtime_r().
+
+-------------------------------------------------------------------
 Sun Nov  9 18:50:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.7

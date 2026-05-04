@@ -1,7 +1,7 @@
 #
 # spec file for package nfdump
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %define nfcapddatadir   %{_localstatedir}/lib/nfcapd
 %define sfcapddatadir   %{_localstatedir}/lib/sfcapd
 %define nfhomedir       %{_var}/lib/%{name}
-%define sover           1_7_7
+%define sover           1_7_8
 Name:           nfdump
-Version:        1.7.7
+Version:        1.7.8
 Release:        0
 Summary:        CLI tools to collect and process netflow data
 License:        BSD-3-Clause
@@ -112,6 +112,10 @@ rm -v "%{buildroot}/%{_libdir}"/libnffile.{a,la}
 # nfdump.conf.dist: As the name implies it's not really a config file but a template.
 # Used the %%config macro only to avoid "W: non-conffile-in-etc /etc/nfdump.conf.dist" warning.
 %config %{_sysconfdir}/nfdump.conf.dist
+%{_bindir}/geolookup
+%{_bindir}/torlookup
+%{_bindir}/updateGeoDB.sh
+%{_bindir}/updateTorDB.sh
 %{_bindir}/nfanon
 %{_bindir}/nfcapd
 %{_bindir}/nfdump
@@ -120,6 +124,8 @@ rm -v "%{buildroot}/%{_libdir}"/libnffile.{a,la}
 %{_bindir}/nfreplay
 %{_bindir}/nftrack
 %{_bindir}/sfcapd
+%{_mandir}/man1/geolookup.1%{?ext_man}
+%{_mandir}/man1/torlookup.1%{?ext_man}
 %{_mandir}/man1/nfanon.1%{?ext_man}
 %{_mandir}/man1/nfcapd.1%{?ext_man}
 %{_mandir}/man1/nfdump.1%{?ext_man}
@@ -140,5 +146,6 @@ rm -v "%{buildroot}/%{_libdir}"/libnffile.{a,la}
 %files devel
 %{_libdir}/libnfdump.so
 %{_libdir}/libnffile.so
+%{_libdir}/pkgconfig/nfdump.pc
 
 %changelog
