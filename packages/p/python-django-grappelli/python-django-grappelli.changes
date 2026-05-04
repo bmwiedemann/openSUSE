@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  3 18:33:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.0:
+  * Compatibility with Django 6.x
+  * Improved: raised margins within radiolists
+  * Improved: layout for multiple inputs in related widget
+  * Improved: layout for related widget display in change list
+
+-------------------------------------------------------------------
 Mon Feb 16 17:35:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.3:

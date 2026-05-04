@@ -313,4 +313,16 @@
   * Fixed translation string (#1055).</comment>
     <requestid>1333423</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>13e8c24d353b2dada7b9805543616df7</srcmd5>
+    <version>5.0.0</version>
+    <time>1777892075</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.0.0:
+  * Compatibility with Django 6.x
+  * Improved: raised margins within radiolists
+  * Improved: layout for multiple inputs in related widget
+  * Improved: layout for related widget display in change list</comment>
+    <requestid>1350563</requestid>
+  </revision>
 </revisionlist>
