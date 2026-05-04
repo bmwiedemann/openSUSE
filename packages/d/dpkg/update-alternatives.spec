@@ -1,7 +1,7 @@
 #
 # spec file for package update-alternatives
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           update-alternatives
-Version:        1.22.21
+Version:        1.22.22
 Release:        0
 Summary:        Maintain symbolic links determining default commands
 License:        GPL-2.0-or-later
@@ -28,14 +28,13 @@ Source3:        sensible-editor
 Patch0:         update-alternatives-suse.patch
 Patch1:         update-alternatives-slavetomaster.patch
 Patch2:         openssl.patch
-Patch5:         oldperl.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
-BuildRequires:  perl >= 5.26.0
+BuildRequires:  perl >= 5.28.1
 BuildRequires:  pkgconfig
 Provides:       alternatives = %{version}
 

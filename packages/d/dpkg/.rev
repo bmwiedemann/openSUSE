@@ -521,4 +521,470 @@ The link of update-alternatives should also be changed from deb to dpkg.</commen
     <comment></comment>
     <requestid>1312250</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>fac1021747863811caada1bd18e8c272</srcmd5>
+    <version>1.22.22</version>
+    <time>1777891694</time>
+    <user>anag_factory</user>
+    <comment>- Fix 'dpkg' package for immutable mode (jsc#PED-14790).
+- Add dpkg.tmpfiles.
+- Update to 1.22.22 (minor bump from 1.22.21).
+- Changelog:
+  * dpkg-query: Fix segfault with empty -S argument.
+  * Perl modules:
+    - Dpkg::OpenPGP: Do not run verify with no keyrings.
+    - Dpkg::Shlibs::Objdump::Object:
+      Add support for &quot;Version References&quot; symbols.
+    - Dpkg::OpenPGP::Backend::GnuPG: Add missing Dpkg::Gettext import.
+  * Code internals:
+    - libdpkg: Terminate zstd decompression when we have no more data.
+      Fixes CVE-2026-2219.
+- Remove patch file:
+  * CVE-2026-2219.patch
+  * oldperl.patch
+    This patch has been removed as Leap 15.X has reached end-of-life.
+
+old: openSUSE:Factory/dpkg
+new: system:packagemanager/dpkg rev None
+Index: dpkg.changes
+===================================================================
+--- dpkg.changes (revision 47)
++++ dpkg.changes (revision 120)
+@@ -1,4 +1,25 @@
+ -------------------------------------------------------------------
++Fri May  1 20:02:57 UTC 2026 - Martin Schreiner &lt;martin.schreiner@suse.com&gt;
++
++- Fix 'dpkg' package for immutable mode (jsc#PED-14790).
++- Add dpkg.tmpfiles.
++- Update to 1.22.22 (minor bump from 1.22.21).
++- Changelog:
++  * dpkg-query: Fix segfault with empty -S argument.
++  * Perl modules:
++    - Dpkg::OpenPGP: Do not run verify with no keyrings.
++    - Dpkg::Shlibs::Objdump::Object:
++      Add support for &quot;Version References&quot; symbols.
++    - Dpkg::OpenPGP::Backend::GnuPG: Add missing Dpkg::Gettext import.
++  * Code internals:
++    - libdpkg: Terminate zstd decompression when we have no more data.
++      Fixes CVE-2026-2219.
++- Remove patch file:
++  * CVE-2026-2219.patch
++  * oldperl.patch
++    This patch has been removed as Leap 15.X has reached end-of-life.
++
++-------------------------------------------------------------------
+ Wed Jul  2 12:43:36 UTC 2025 - Martin Schreiner &lt;martin.schreiner@suse.com&gt;
+ 
+ - Update to version 1.22.21
+Index: dpkg.spec
+===================================================================
+--- dpkg.spec (revision 47)
++++ dpkg.spec (revision 120)
+@@ -1,7 +1,7 @@
+ #
+ # spec file for package dpkg
+ #
+-# Copyright (c) 2025 SUSE LLC and contributors
++# Copyright (c) 2026 SUSE LLC and contributors
+ #
+ # All modifications and additions to the file contributed by third parties
+ # remain the property of their copyright owners, unless otherwise agreed
+@@ -17,21 +17,19 @@
+ 
+ 
+ Name:           dpkg
+-Version:        1.22.21
++Version:        1.22.22
+ Release:        0
+ Summary:        Debian package management system
+ License:        GPL-2.0-or-later
+ Group:          System/Packages
+ URL:            https://tracker.debian.org/pkg/%{name}
+ Source0:        https://ftp.debian.org/debian/pool/main/d/dpkg/%{name}_%{version}.tar.xz
+-Source3:        sensible-editor
+-# PATCH-FIX-OPENSUSE replace debian with opensuse. replace macros. update-alternatives temp directories' path and name from dpkg* to rpm*.
+-Patch1:         update-alternatives-suse.patch
++Source1:        sensible-editor
++Source2:        dpkg.tmpfiles
+ # PATCH-FIX-SUSE: tar of Leap 42.{2,3} does not recognize --sort=name, --clamp-mtime options
+ Patch2:         drop-tar-option.patch
+ Patch3:         ncurses-fix.patch
+ Patch4:         openssl.patch
+-Patch5:         oldperl.patch
+ BuildRequires:  autoconf
+ BuildRequires:  automake
+ BuildRequires:  gcc-c++
+@@ -41,9 +39,8 @@
+ BuildRequires:  libtool
+ BuildRequires:  ncurses-devel
+ BuildRequires:  openssl-devel
+-BuildRequires:  perl &gt;= 5.26.0
++BuildRequires:  perl &gt;= 5.28.1
+ BuildRequires:  po4a &gt;= 0.59
+-BuildRequires:  update-alternatives
+ BuildRequires:  xz-devel
+ BuildRequires:  zlib-devel
+ BuildRequires:  perl(Date::Parse)
+@@ -53,7 +50,6 @@
+ Requires:       cpio
+ Requires:       make
+ Requires:       patch
+-Requires:       update-alternatives
+ Requires:       perl(Date::Parse)
+ Requires(post): coreutils
+ Recommends:     perl(File::FcntlLock)
+@@ -87,13 +83,11 @@
+ 
+ %prep
+ %setup -q
+-%patch -P 1 -p1
+ %if 0%{?suse_version} == 1315
+ %patch -P 2 -p1
+ %endif
+ %patch -P 3 -p1
+ %patch -P 4 -p1
+-%patch -P 5 -p1
+ 
+ %build
+ %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+@@ -130,9 +124,15 @@
+ %install
+ %make_install
+ 
++# tmpfiles: install snippet
++mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
++install -m 644 %{SOURCE2} %{buildroot}%{_prefix}/lib/tmpfiles.d/dpkg.conf
++
++# tmpfiles: remove directory structure that will be created by systemd-tmpfiles
++rm -rf %{buildroot}%{_localstatedir}/lib/dpkg
++
+ # remove update-alternatives stuff (included in separate package)
+ rm -rf %{buildroot}%{_sysconfdir}/alternatives
+-rm -rf %{buildroot}%{_localstatedir}/lib/dpkg/alternatives
+ rm -rf %{buildroot}%{_bindir}/update-alternatives
+ rm -rf %{buildroot}%{_sbindir}/update-alternatives
+ rm -rf %{buildroot}%{_mandir}/man8/update-alternatives.8
+@@ -146,16 +146,13 @@
+ cat dselect.lang dpkg-dev.lang &gt;&gt; %{name}.lang
+ 
+ # extras
+-install -m 755 %{SOURCE3} %{buildroot}%{_bindir}
++install -m 755 %{SOURCE1} %{buildroot}%{_bindir}
+ 
+ %check
+ %make_build check
+ 
+ %post
+-cd %{_localstatedir}/lib/dpkg
+-for f in diversions statoverride status ; do
+-    [ ! -f $f ] &amp;&amp; touch $f
+-done
++%tmpfiles_create dpkg.conf
+ exit 0
+ 
+ %files lang -f %{name}.lang
+@@ -168,17 +165,55 @@
+ %exclude %{_mandir}/man*/update-alternatives*
+ %dir %{_sysconfdir}/dpkg
+ %config(noreplace) %{_sysconfdir}/dpkg/*
+-%{_bindir}/*
+-%{_sbindir}/*
++%{_bindir}/dpkg
++%{_bindir}/dpkg-architecture
++%{_bindir}/dpkg-buildapi
++%{_bindir}/dpkg-buildflags
++%{_bindir}/dpkg-buildpackage
++%{_bindir}/dpkg-buildtree
++%{_bindir}/dpkg-checkbuilddeps
++%{_bindir}/dpkg-deb
++%{_bindir}/dpkg-distaddfile
++%{_bindir}/dpkg-divert
++%{_bindir}/dpkg-genbuildinfo
++%{_bindir}/dpkg-genchanges
++%{_bindir}/dpkg-gencontrol
++%{_bindir}/dpkg-gensymbols
++%{_bindir}/dpkg-maintscript-helper
++%{_bindir}/dpkg-mergechangelogs
++%{_bindir}/dpkg-name
++%{_bindir}/dpkg-parsechangelog
++%{_bindir}/dpkg-query
++%{_bindir}/dpkg-realpath
++%{_bindir}/dpkg-scanpackages
++%{_bindir}/dpkg-scansources
++%{_bindir}/dpkg-shlibdeps
++%{_bindir}/dpkg-source
++%{_bindir}/dpkg-split
++%{_bindir}/dpkg-statoverride
++%{_bindir}/dpkg-trigger
++%{_bindir}/dpkg-vendor
++%{_bindir}/dselect
++%{_bindir}/sensible-editor
++%{_sbindir}/start-stop-daemon
+ %{_libexecdir}/dpkg
+ %{_datadir}/dpkg
+ %dir %{_datadir}/zsh
+ %dir %{_datadir}/zsh/vendor-completions
+ %{_datadir}/zsh/vendor-completions/_dpkg-parsechangelog
+-%{_localstatedir}/lib/dpkg
+ %{perl_vendorlib}/Dpkg
+ %{perl_vendorlib}/Dpkg.pm
+ %{perl_vendorlib}/Dselect
++%{_tmpfilesdir}/dpkg.conf
++%ghost %attr(755,root,root) %dir %{_localstatedir}/lib/dpkg
++%ghost %attr(755,root,root) %dir %{_localstatedir}/lib/dpkg/info
++%ghost %attr(755,root,root) %dir %{_localstatedir}/lib/dpkg/methods
++%ghost %attr(755,root,root) %dir %{_localstatedir}/lib/dpkg/methods/file
++%ghost %attr(755,root,root) %dir %{_localstatedir}/lib/dpkg/methods/ftp
++%ghost %attr(755,root,root) %dir %{_localstatedir}/lib/dpkg/methods/media
++%ghost %attr(755,root,root) %dir %{_localstatedir}/lib/dpkg/methods/mnt
++%ghost %attr(755,root,root) %dir %{_localstatedir}/lib/dpkg/parts
++%ghost %attr(755,root,root) %dir %{_localstatedir}/lib/dpkg/updates
+ 
+ %files devel
+ %{_datadir}/aclocal/*.m4
+Index: update-alternatives.changes
+===================================================================
+--- update-alternatives.changes (revision 47)
++++ update-alternatives.changes (revision 120)
+@@ -1,4 +1,25 @@
+ -------------------------------------------------------------------
++Fri May  1 20:02:57 UTC 2026 - Martin Schreiner &lt;martin.schreiner@suse.com&gt;
++
++- Fix 'dpkg' package for immutable mode (jsc#PED-14790).
++- Add dpkg.tmpfiles.
++- Update to 1.22.22 (minor bump from 1.22.21).
++- Changelog:
++  * dpkg-query: Fix segfault with empty -S argument.
++  * Perl modules:
++    - Dpkg::OpenPGP: Do not run verify with no keyrings.
++    - Dpkg::Shlibs::Objdump::Object:
++      Add support for &quot;Version References&quot; symbols.
++    - Dpkg::OpenPGP::Backend::GnuPG: Add missing Dpkg::Gettext import.
++  * Code internals:
++    - libdpkg: Terminate zstd decompression when we have no more data.
++      Fixes CVE-2026-2219.
++- Remove patch file:
++  * CVE-2026-2219.patch
++  * oldperl.patch
++    This patch has been removed as Leap 15.X has reached end-of-life.
++
++-------------------------------------------------------------------
+ Wed Jul  2 12:43:36 UTC 2025 - Martin Schreiner &lt;martin.schreiner@suse.com&gt;
+ 
+ - Update to version 1.22.21
+Index: update-alternatives.spec
+===================================================================
+--- update-alternatives.spec (revision 47)
++++ update-alternatives.spec (revision 120)
+@@ -1,7 +1,7 @@
+ #
+ # spec file for package update-alternatives
+ #
+-# Copyright (c) 2025 SUSE LLC and contributors
++# Copyright (c) 2026 SUSE LLC and contributors
+ #
+ # All modifications and additions to the file contributed by third parties
+ # remain the property of their copyright owners, unless otherwise agreed
+@@ -17,7 +17,7 @@
+ 
+ 
+ Name:           update-alternatives
+-Version:        1.22.21
++Version:        1.22.22
+ Release:        0
+ Summary:        Maintain symbolic links determining default commands
+ License:        GPL-2.0-or-later
+@@ -28,14 +28,13 @@
+ Patch0:         update-alternatives-suse.patch
+ Patch1:         update-alternatives-slavetomaster.patch
+ Patch2:         openssl.patch
+-Patch5:         oldperl.patch
+ BuildRequires:  autoconf
+ BuildRequires:  automake
+ BuildRequires:  gcc-c++
+ BuildRequires:  libtool
+ BuildRequires:  ncurses-devel
+ BuildRequires:  openssl-devel
+-BuildRequires:  perl &gt;= 5.26.0
++BuildRequires:  perl &gt;= 5.28.1
+ BuildRequires:  pkgconfig
+ Provides:       alternatives = %{version}
+ 
+Index: dpkg.tmpfiles
+===================================================================
+--- dpkg.tmpfiles (added)
++++ dpkg.tmpfiles (revision 120)
+@@ -0,0 +1,9 @@
++d /var/lib/dpkg               0755 root root  -
++d /var/lib/dpkg/info          0755 root root  -
++d /var/lib/dpkg/methods       0755 root root  -
++d /var/lib/dpkg/methods/file  0755 root root  -
++d /var/lib/dpkg/methods/ftp   0755 root root  -
++d /var/lib/dpkg/methods/media 0755 root root  -
++d /var/lib/dpkg/methods/mnt   0755 root root  -
++d /var/lib/dpkg/parts         0755 root root  -
++d /var/lib/dpkg/updates       0755 root root  -
+Index: dpkg_1.22.22.tar.xz
+===================================================================
+--- dpkg_1.22.22.tar.xz (added)
++++ dpkg_1.22.22.tar.xz (revision 120)
+Binary file dpkg_1.22.22.tar.xz (revision 120) added
+Index: dpkg_1.22.21.tar.xz
+===================================================================
+--- dpkg_1.22.21.tar.xz (revision 47)
++++ dpkg_1.22.21.tar.xz (deleted)
+Binary file dpkg_1.22.21.tar.xz (revision 47) deleted
+Index: oldperl.patch
+===================================================================
+--- oldperl.patch (revision 47)
++++ oldperl.patch (deleted)
+@@ -1,146 +0,0 @@
+-From: Jan Engelhardt &lt;jengelh@inai.de&gt;
+-Date: 2025-05-16 08:21:35.095822302 +0200
+-
+-Reduce the dependency on perl 5.32 for the sake of Leap 15.x.
+-Reverts 9fc12b744cdb249ea02ddfbea7bc5d8fad822b97 and edits configure.
+-
+----
+- configure                    |   20 ++++++++++----------
+- m4/dpkg-progs.m4             |    2 +-
+- scripts/Dpkg/Changelog.pm    |    2 +-
+- scripts/dpkg-scanpackages.pl |    2 +-
+- scripts/dpkg-scansources.pl  |    2 +-
+- t/minimum-version.t          |    2 +-
+- 6 files changed, 15 insertions(+), 15 deletions(-)
+-
+-Index: dpkg-1.22.18/configure
+-===================================================================
+---- dpkg-1.22.18.orig/configure
+-+++ dpkg-1.22.18/configure
+-@@ -18367,10 +18367,10 @@ printf &quot;%s\n&quot; &quot;$build_update_alternative
+- 
+- 
+- 
+--  PERL_MIN_VERSION=5.32.1
+-+  PERL_MIN_VERSION=5.26.0
+- 
+--  { printf &quot;%s\n&quot; &quot;$as_me:${as_lineno-$LINENO}: checking for perl &gt;= 5.32.1&quot; &gt;&amp;5
+--printf %s &quot;checking for perl &gt;= 5.32.1... &quot; &gt;&amp;6; }
+-+  { printf &quot;%s\n&quot; &quot;$as_me:${as_lineno-$LINENO}: checking for perl &gt;= 5.26.0&quot; &gt;&amp;5
+-+printf %s &quot;checking for perl &gt;= 5.26.0... &quot; &gt;&amp;6; }
+- if test ${ac_cv_path_PERL+y}
+- then :
+-   printf %s &quot;(cached) &quot; &gt;&amp;6
+-@@ -18396,7 +18396,7 @@ do
+- 
+-       perlcheck=$(test -x $ac_path_PERL &amp;&amp; \
+-                   $ac_path_PERL -MConfig -Mversion -e \
+--                  'my $r = qv(&quot;v$Config{version}&quot;) &gt;= qv(&quot;5.32.1&quot;);
+-+                  'my $r = qv(&quot;v$Config{version}&quot;) &gt;= qv(&quot;5.26.0&quot;);
+-                    print &quot;yes&quot; if $r')
+-       if test &quot;$perlcheck&quot; = &quot;yes&quot;
+- then :
+-@@ -18412,7 +18412,7 @@ fi
+- IFS=$as_save_IFS
+-   if test -z &quot;$ac_cv_path_PERL&quot;; then
+- 
+--      as_fn_error $? &quot;cannot find perl &gt;= 5.32.1&quot; &quot;$LINENO&quot; 5
+-+      as_fn_error $? &quot;cannot find perl &gt;= 5.26.0&quot; &quot;$LINENO&quot; 5
+- 
+-   fi
+- else
+-@@ -25029,10 +25029,10 @@ fi
+- 
+- 
+- 
+--  PERL_MIN_VERSION=5.32.1
+-+  PERL_MIN_VERSION=5.26.0
+- 
+--  { printf &quot;%s\n&quot; &quot;$as_me:${as_lineno-$LINENO}: checking for perl &gt;= 5.32.1&quot; &gt;&amp;5
+--printf %s &quot;checking for perl &gt;= 5.32.1... &quot; &gt;&amp;6; }
+-+  { printf &quot;%s\n&quot; &quot;$as_me:${as_lineno-$LINENO}: checking for perl &gt;= 5.26.0&quot; &gt;&amp;5
+-+printf %s &quot;checking for perl &gt;= 5.26.0... &quot; &gt;&amp;6; }
+- if test ${ac_cv_path_PERL+y}
+- then :
+-   printf %s &quot;(cached) &quot; &gt;&amp;6
+-@@ -25058,7 +25058,7 @@ do
+- 
+-       perlcheck=$(test -x $ac_path_PERL &amp;&amp; \
+-                   $ac_path_PERL -MConfig -Mversion -e \
+--                  'my $r = qv(&quot;v$Config{version}&quot;) &gt;= qv(&quot;5.32.1&quot;);
+-+                  'my $r = qv(&quot;v$Config{version}&quot;) &gt;= qv(&quot;5.26.0&quot;);
+-                    print &quot;yes&quot; if $r')
+-       if test &quot;$perlcheck&quot; = &quot;yes&quot;
+- then :
+-@@ -25074,7 +25074,7 @@ fi
+- IFS=$as_save_IFS
+-   if test -z &quot;$ac_cv_path_PERL&quot;; then
+- 
+--      as_fn_error $? &quot;cannot find perl &gt;= 5.32.1&quot; &quot;$LINENO&quot; 5
+-+      as_fn_error $? &quot;cannot find perl &gt;= 5.26.0&quot; &quot;$LINENO&quot; 5
+- 
+-   fi
+- else
+-Index: dpkg-1.22.18/m4/dpkg-progs.m4
+-===================================================================
+---- dpkg-1.22.18.orig/m4/dpkg-progs.m4
+-+++ dpkg-1.22.18/m4/dpkg-progs.m4
+-@@ -55,7 +55,7 @@ AC_DEFUN([DPKG_PROG_PAGER], [
+- # Locate perl interpreter in the path
+- AC_DEFUN([DPKG_PROG_PERL], [
+-   AC_ARG_VAR([PERL], [Perl interpreter])dnl
+--  m4_define([_PERL_MIN_VERSION], [5.32.1])
+-+  m4_define([_PERL_MIN_VERSION], [5.26.0])
+-   AC_SUBST([PERL_MIN_VERSION], [_PERL_MIN_VERSION])
+-   AC_CACHE_CHECK([for perl &gt;= _PERL_MIN_VERSION], [ac_cv_path_PERL], [
+-     AC_PATH_PROGS_FEATURE_CHECK([PERL], [perl], [
+-Index: dpkg-1.22.18/scripts/Dpkg/Changelog.pm
+-===================================================================
+---- dpkg-1.22.18.orig/scripts/Dpkg/Changelog.pm
+-+++ dpkg-1.22.18/scripts/Dpkg/Changelog.pm
+-@@ -457,7 +457,7 @@ sub abort_early {
+- 	}
+- 	my $start = my $end = $offset;
+- 	$end += $count-1 if $count &gt; 0;
+--        return $start &lt; @{$data} &gt; $end;
+-+	return ($start &lt; @$data and $end &lt; @$data);
+-     }
+- 
+-     return unless defined($r-&gt;{since}) or defined($r-&gt;{from});
+-Index: dpkg-1.22.18/scripts/dpkg-scanpackages.pl
+-===================================================================
+---- dpkg-1.22.18.orig/scripts/dpkg-scanpackages.pl
+-+++ dpkg-1.22.18/scripts/dpkg-scanpackages.pl
+-@@ -220,7 +220,7 @@ sub process_deb {
+-     GetOptions(\%options, @options_spec);
+- }
+- 
+--if (not 1 &lt;= @ARGV &lt;= 3) {
+-+if (not (@ARGV &gt;= 1 and @ARGV &lt;= 3)) {
+-     usageerr(g_('one to three arguments expected'));
+- }
+- 
+-Index: dpkg-1.22.18/scripts/dpkg-scansources.pl
+-===================================================================
+---- dpkg-1.22.18.orig/scripts/dpkg-scansources.pl
+-+++ dpkg-1.22.18/scripts/dpkg-scansources.pl
+-@@ -288,7 +288,7 @@ sub process_dsc {
+- }
+- 
+- usageerr(g_('one to three arguments expected'))
+--    if not 1 &lt;= @ARGV &lt;= 3;
+-+    if @ARGV &lt; 1 or @ARGV &gt; 3;
+- 
+- push @ARGV, undef if @ARGV &lt; 2;
+- push @ARGV, '' if @ARGV &lt; 3;
+-Index: dpkg-1.22.18/t/minimum-version.t
+-===================================================================
+---- dpkg-1.22.18.orig/t/minimum-version.t
+-+++ dpkg-1.22.18/t/minimum-version.t
+-@@ -28,5 +28,5 @@ my @files = Test::Dpkg::all_perl_files()
+- plan tests =&gt; scalar @files;
+- 
+- for my $file (@files) {
+--    minimum_version_ok($file, '5.32.1');
+-+    minimum_version_ok($file, '5.26.0');
+- }</comment>
+    <requestid>1350410</requestid>
+  </revision>
 </revisionlist>

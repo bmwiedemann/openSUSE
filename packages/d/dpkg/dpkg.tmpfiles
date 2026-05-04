@@ -1,0 +1,9 @@
+d /var/lib/dpkg               0755 root root  -
+d /var/lib/dpkg/info          0755 root root  -
+d /var/lib/dpkg/methods       0755 root root  -
+d /var/lib/dpkg/methods/file  0755 root root  -
+d /var/lib/dpkg/methods/ftp   0755 root root  -
+d /var/lib/dpkg/methods/media 0755 root root  -
+d /var/lib/dpkg/methods/mnt   0755 root root  -
+d /var/lib/dpkg/parts         0755 root root  -
+d /var/lib/dpkg/updates       0755 root root  -

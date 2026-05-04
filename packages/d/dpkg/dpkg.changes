@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May  1 20:02:57 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix 'dpkg' package for immutable mode (jsc#PED-14790).
+- Add dpkg.tmpfiles.
+- Update to 1.22.22 (minor bump from 1.22.21).
+- Changelog:
+  * dpkg-query: Fix segfault with empty -S argument.
+  * Perl modules:
+    - Dpkg::OpenPGP: Do not run verify with no keyrings.
+    - Dpkg::Shlibs::Objdump::Object:
+      Add support for "Version References" symbols.
+    - Dpkg::OpenPGP::Backend::GnuPG: Add missing Dpkg::Gettext import.
+  * Code internals:
+    - libdpkg: Terminate zstd decompression when we have no more data.
+      Fixes CVE-2026-2219.
+- Remove patch file:
+  * CVE-2026-2219.patch
+  * oldperl.patch
+    This patch has been removed as Leap 15.X has reached end-of-life.
+
+-------------------------------------------------------------------
 Wed Jul  2 12:43:36 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to version 1.22.21
