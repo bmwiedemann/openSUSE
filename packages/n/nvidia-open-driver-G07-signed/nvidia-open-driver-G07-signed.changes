@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  3 09:53:39 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- fix-objtool-warnings.patch (not applied on aarch64)
+  * Get rid of "'naked' return found in MITIGATION_RETHUNK build"
+    objtool warnings (boo#1212841, boo#1263834)
+- remove again disable-objtool-override.patch
+
+-------------------------------------------------------------------
 Tue Apr 28 18:46:41 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - update CUDA variant to 595.71.05
