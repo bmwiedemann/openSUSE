@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-binary-memcached
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-python-binary-memcached
-Version:        0.31.4
+Version:        0.32.0
 Release:        0
 Summary:        Access memcached via its binary protocol with SASL auth support
 License:        MIT

@@ -37,4 +37,13 @@
   * update metadata format to be compatible with latest version</comment>
     <requestid>1290689</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5fa6a3abcddde94a0c1a3a46ff8bae3d</srcmd5>
+    <version>0.32.0</version>
+    <time>1777892086</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.32.0:
+  * Add repository contribution guidelines.</comment>
+    <requestid>1350587</requestid>
+  </revision>
 </revisionlist>
