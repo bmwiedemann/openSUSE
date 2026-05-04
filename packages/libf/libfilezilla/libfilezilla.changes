@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  3 22:34:06 UTC 2026 - ecsos <ecsos@opensuse.org> - 0.55.4
+
+- Update to 0.55.4
+  * Bugfixes and minor changes:
+    - Fixed a crash if a nested event handler gets deleted
+- Changes from 0.55.3
+  * Bugfixes and minor changes:
+    - Fix initialization of sha2-384
+
+-------------------------------------------------------------------
 Sat Apr 11 10:33:37 UTC 2026 - ecsos <ecsos@opensuse.org> - 0.55.2
 
 - Update to 0.55.2
