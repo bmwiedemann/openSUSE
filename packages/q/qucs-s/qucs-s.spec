@@ -25,7 +25,7 @@
 %endif
 
 Name:           qucs-s
-Version:        25.2.0
+Version:        26.1.0
 Release:        0
 Summary:        Qucs with SPICE
 License:        GPL-2.0-or-later
@@ -83,7 +83,8 @@ format of Qucs and Qucs-S are fully compatible.
 %check
 
 %files
-%{_bindir}/*
+%{_bindir}/qucs*
+%{_bindir}/rxcalc
 %{_datadir}/%{name}
 %{_datadir}/icons/hicolor/
 %{_datadir}/applications/%{name}.desktop
