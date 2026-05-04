@@ -142,4 +142,15 @@
     <comment></comment>
     <requestid>1321715</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c29a58e7166e7cf9a46f4395adba1f2d</srcmd5>
+    <version>0.8.0</version>
+    <time>1777892064</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.0:
+  * Correct script execution command in _run_script function  - 
+  * Update required Python version to 3.9 in pyproject.toml and
+    streamline CI configuration</comment>
+    <requestid>1350555</requestid>
+  </revision>
 </revisionlist>
