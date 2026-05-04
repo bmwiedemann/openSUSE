@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri May  1 07:45:54 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.0:
+  * By default, Tk file dialogs are now used instead of Zenity in
+    Linux.
+  * Add support for Python 3.11, 3.12, 3.13, 3.14, 3.15
+    (gh#thonny/thonny#3213, gh#thonny/thonny#3577,
+    gh#thonny/thonny#3799, gh#thonny/thonny#2739,
+    gh#thonny/thonny#3744, gh#thonny/thonny#3082,
+    gh#thonny/thonny#3729, gh#thonny/thonny#3552).
+  * Check if in virtual environment on boot,
+    gh#thonny/thonny#3112.
+  * Add Python coloring for pyx-files (gh#thonny/thonny#3450).
+  * Allow stopping auto-scroll in Shell by scrolling up
+    (gh#thonny/thonny#1988).
+  * Get rid of a find-replace warning (gh#thonny/thonny#3593).
+  * Add support for newer setuptools versions.
+  * Add support for newer Tkinter versions
+    (gh#thonny/thonny#3744).
+  * Upgrade several bundled dependencies (Pylint, Mypy, esptool,
+    etc.).
+  * Make flashing dialogs support more families
+    (gh#thonny/thonny#3847).
+  * Updated translations.
+- New build dependency: python3-uv-build.
+
+-------------------------------------------------------------------
 Tue Oct 28 04:41:53 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.

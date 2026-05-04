@@ -1,7 +1,7 @@
 #
 # spec file for package thonny
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define desktop_file_name thonny
 
 Name:           thonny
-Version:        4.1.7
+Version:        5.0.0
 Release:        0
 Summary:        Python IDE for beginners
 License:        MIT
@@ -42,8 +42,8 @@ BuildRequires:  python3-pyserial
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tk
+BuildRequires:  python3-uv-build
 BuildRequires:  python3-wheel
-BuildRequires:  update-desktop-files
 ## MANUAL BEGIN
 Requires:       mypy
 Requires:       python3-Send2Trash
@@ -88,7 +88,6 @@ export LC_ALL=en_US.utf8
 # Install desktop file
 mkdir -p %{buildroot}%{_datadir}/applications/
 cp packaging/linux/org.thonny.Thonny.desktop %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop
-%suse_update_desktop_file %{desktop_file_name}
 # appdata
 mkdir -p %{buildroot}%{_datadir}/metainfo
 sed -i "s|org.thonny.Thonny|%{desktop_file_name}|g" packaging/linux/org.thonny.Thonny.appdata.xml
