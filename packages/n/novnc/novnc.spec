@@ -17,7 +17,7 @@
 
 
 Name:           novnc
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        VNC client using HTML5 (Web Sockets, Canvas) with encryption support
 License:        LGPL-3.0-only AND MPL-2.0

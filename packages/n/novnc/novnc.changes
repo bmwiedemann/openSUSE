@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 30 14:20:32 UTC 2026 - Manu Maier <mmanu84@outlook.de>
+
+- Update to 1.7.0
+    Application:
+      * Added Croatian translation
+      * Added Hungarian translation
+      * Fixed a styling bug where some buttons in the GUI would almost disappear
+      * The browser will now warn before the session's tab is closed when view only is not enable
+    Library:
+      * The NPM bundle has been converted to ES-module format
+      * The novnc_proxy script now uses the bash-builtin type instead of which when checking if websockify is installed
+      * Received image data is now dropped once rendered, resulting in more efficient memory usage
+      * Detection of H.264 has been improved
+      * The deprecated showDotCursor setting has now been removed
+
+-------------------------------------------------------------------
 Thu Apr 10 18:15:48 UTC 2025 - Manu Maier <mmanu84@outlook.de>
 
 - Update to 1.6.0
