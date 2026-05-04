@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 01 06:30:37 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1777617029.fd9e1e69:
+  * style: Enforce perlcritic policy ProhibitSingleCharAlternation
+  * fix(apparmor): Add jsonnet to worker profile
+  * style: Enforce perlcritic policy CodeLayout::ProhibitQuotedWordLists
+  * style: Enforce perlcritic policy RequireNumberSeparators
+  * build(deps-dev): bump eslint from 10.1.0 to 10.2.1
+  * style: Enforce perlcritic policy Variables::ProhibitUnusedVariables
+  * feat: Ensure temporary directory exists when caching assets
+  * fix(docs): fix mobile view rendering by ensuring CSS override
+  * chore(lint): extend stylelint to cover documentation CSS
+  * refactor: break down create_from_settings into smaller functions
+  * feat: automatically add configurable worker classes to jobs
+
+-------------------------------------------------------------------
 Wed Apr 29 14:51:21 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1777474261.55e5cd5e:
