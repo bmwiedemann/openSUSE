@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sun Apr 26 23:46:48 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.12.2:
+  + diagnostics: restore `is_pull` namespace argument
+  + vim.pos: require `buf` param on vim.pos, vim.range
+  + "fix(lsp): only resolve LSP configs once"
+  + gen_char_blob.lua: "bad argument to format" if path contains "%"
+  + editor: ZR performs :restart
+  + connect: filepath completion
+  + filetype: `vim.filetype.inspect()` returns copy of registry
+  + vim.version: add __eq to vim.VersionRange
+  + feat(api): rename buffer to buf
+  + feat(api): rename buffer to buf in retval
+  + feat(events): trigger MarkSet autocmd in :delmarks
+  + fix(ui2): ensure msg window is visible after closing tab
+  + refactor: update usages of deprecated "buffer" param
+  + test(lsp): extract buf/util parts from lsp_spec.lua
+  + don't make path empty when truncating trailing slashes
+  + api: expose fg_indexed/bg_indexed in nvim_get_hl
+  + api: nvim_clear_autocmds() "event" type check
+  + api: nvim_get_hl drops groups defined with link_global
+  + channel: fix Ctrl-C handling regression in terminal
+  + cmd: ++p, ++edit should match "word" boundary
+  + cmdline: 'inccommand' preview after setcmdline()
+  + cmdline: avoid 'incsearch' recursion after redraw
+  + cmdline: avoid Ex-mode NULL cmdline_block event
+  + completion: update CursorColumn during completion
+  + diagnostic: virtual_lines should anchor at end_lnum, not lnum
+  + difftool: ensure standardized locale for diff output parsing
+  + drawline: hang while redrawing diff filler above fold
+  + eval: crash on some NULL ptr deref
+  + float: don't unload 'hidden' float buffer with :close!
+  + gf: handle local `file:` URI paths
+  + health: recognize Zig build optimization levels
+  + highlight: preserve inherited colors when update=true breaks links
+  + lsp: apply_text_edits causes unwanted BufDelete events
+  + lsp: check filetype registry in health
+  + lsp: check stale context in hover/signature callback
+  + lsp: send didOpen on save to all clients+groups
+  + lsp: show CompletionItem.detail in info popup
+  + lsp: show_document can't position cursor past EOL in insert-mode
+  + lsp: skip codelens refresh redraw for deleted buffer
+  + lua: make `vim._with()` work with `buf=0` and `win=0` context
+  + lua: make vim.deep_equal cycle-safe
+  + lua: not obvious which _meta/ files are generated
+  + marks: adjust marks when unloading "nofile" buffer
+  + message: flush messages before "empty" msg_show
+  + messages: truncate warning messages only in display
+  + move: avoid integer overflow with large 'scrolloff'
+  + normal: pass count to 'keywordprg' as arg1
+  + options: default 'titlestring' shows CWD
+  + pack: GIT_DIR/GIT_WORK_TREE env vars may interfere
+  + pack: make 'stash' call compatible with older Git
+  + pack: more advice for out-of-sync lockfile
+  + pum: crash with 'pumborder' and wide item
+  + pum: info float width grows on reselect with 'linebreak'
+  + rpc: trigger UILeave earlier on channel close
+  + smoothscroll: crash when resizing to textoff with showbreak
+  + statusline: no window-local highlights for last line 'ruler'
+  + substitute: don't crash with very large count
+  + terminal: do not reflow altscreen on resize
+  + terminal: forward streamed bracketed paste properly
+  + treesitter: TSNode:id() with NUL byte causes unreliable select()
+  + treesitter: restore highlighting on 32 bit systems
+  + tui: check background color on resume
+  + ui2: dialog paging is inconsistent
+  + ui2: don't dismiss expanded messages for non-typed key
+  + vim.filetype: match() fails if g:ft_ignore_pat is not defined
+  + vim.pos: Range:intersect() drops `buf`
+- build anything lower than tumbleweed with lua51 rather than luajit
+
+-------------------------------------------------------------------
 Sat Apr  11 19:02:06 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.12.0:

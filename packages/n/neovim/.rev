@@ -1732,4 +1732,12 @@ FIXES (LSP):
 - add patch disable-version-check.patch (forwarded request 1346503 from rrahl0)</comment>
     <requestid>1346504</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>1d57a6e7fd854776821276a51989ae41</srcmd5>
+    <version>0.12.2</version>
+    <time>1777891986</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1350594</requestid>
+  </revision>
 </revisionlist>

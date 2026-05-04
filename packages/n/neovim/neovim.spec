@@ -16,13 +16,13 @@
 #
 
 
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} < 1650
 %bcond_with     luajit
 %else
 %bcond_without  luajit
 %endif
 Name:           neovim
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0
