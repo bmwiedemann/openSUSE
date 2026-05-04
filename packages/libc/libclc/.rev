@@ -435,4 +435,12 @@
 - Use clang/llvm-devel in Factory.</comment>
     <requestid>1348453</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>315d3d2b832fe37f3b873975150b4755</srcmd5>
+    <version>0.2.0+llvm22.1.0</version>
+    <time>1777891704</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1350102</requestid>
+  </revision>
 </revisionlist>

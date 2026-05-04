@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 23 03:14:06 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- build against llvm22/clang22 on older products than TW in order
+  to hopefully fix build ...
+
+-------------------------------------------------------------------
 Tue Apr 21 09:03:23 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - use 0%{?suse_version} >= 1699 for TW  (> 1600 now includes Leap 16.1)

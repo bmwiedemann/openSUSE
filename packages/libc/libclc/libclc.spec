@@ -38,8 +38,8 @@ BuildRequires:  cmake
 BuildRequires:  clang-devel
 BuildRequires:  llvm-devel
 %else
-BuildRequires:  clang21-devel
-BuildRequires:  llvm21-devel
+BuildRequires:  clang22-devel
+BuildRequires:  llvm22-devel
 %endif
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(LLVMSPIRVLib)
