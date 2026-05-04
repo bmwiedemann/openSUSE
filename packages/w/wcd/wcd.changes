@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 24 19:52:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.6:
+  - Updated installation instructions for Linux.
+  - Updated translations.
+  - man/man1/Makefile: Stopped using po4a-translate and po4a-updatepo.
+  - win*/Makefile:
+  - Removed DOSDIR copyright. It is not used anymore since version 6.0.0.
+  - Removed references to the MinGW.org project, because that
+    project doesn't exist anymore. MSYS2/MinGW-w64 remains.
+
+-------------------------------------------------------------------
 Fri Apr 28 12:12:44 UTC 2023 - Erwin Waterlander <waterlan@xs4all.nl>
 
 - Update to 6.0.5
@@ -75,7 +87,7 @@ Thu Dec  3 18:53:42 UTC 2015 - waterlan@xs4all.nl
 -------------------------------------------------------------------
 Sat Sep 26 12:12:29 UTC 2015 - waterlan@xs4all.nl
 
-- Update to 5.3.0: 
+- Update to 5.3.0:
   - Faster loading of the graphical tree, in about one third less time.
   - Fix reading UTF-16 treedata files.
   - Fix: Check for file I/O errors while reading files. These can happen
@@ -84,7 +96,7 @@ Sat Sep 26 12:12:29 UTC 2015 - waterlan@xs4all.nl
 -------------------------------------------------------------------
 Sun Apr 19 20:43:52 UTC 2015 - waterlan@xs4all.nl
 
-- Update to 5.2.7: 
+- Update to 5.2.7:
   - c3po/structur.h: Fix compilation error: unknown type name wchar_t.
     Happens on some systems when wcd is compiled with Unicode support.
   - Makefile, man/man1/Makefile: add option --no-wrap to xgettext and
@@ -124,7 +136,7 @@ Thu Jan 22 21:04:52 UTC 2015 - waterlan@xs4all.nl
 Tue Nov  4 18:18:28 UTC 2014 - waterlan@xs4all.nl
 
 - Cleanup with spec-cleaner.
-- Better conditional in %build section. 
+- Better conditional in %build section.
 
 -------------------------------------------------------------------
 Thu Oct 23 16:56:49 UTC 2014 - waterlan@xs4all.nl

@@ -111,4 +111,12 @@
     <comment>New upstream</comment>
     <requestid>1083525</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5b75cf50160f01c1f61639853842061e</srcmd5>
+    <version>6.0.6</version>
+    <time>1777891967</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1350396</requestid>
+  </revision>
 </revisionlist>

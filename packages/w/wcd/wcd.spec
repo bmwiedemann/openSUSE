@@ -1,7 +1,7 @@
 #
 # spec file for package wcd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define wcd_docdir %{_defaultdocdir}/%{name}
 Name:           wcd
-Version:        6.0.5
+Version:        6.0.6
 Release:        0
 Summary:        Chdir for DOS and Unix
 License:        GPL-2.0-only
