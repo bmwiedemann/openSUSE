@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyCondor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %bcond_without libalternatives
 Name:           python-PyCondor
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Python utility for HTCondor
 License:        MIT
 URL:            https://github.com/jrbourbeau/pycondor
-Source:         https://files.pythonhosted.org/packages/source/P/PyCondor/PyCondor-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyCondor/pycondor-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 64}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
@@ -43,7 +43,7 @@ BuildRequires:  %{python_module pytest}
 PyCondor (Python HTCondor) is a tool to help build and submit workflows to HTCondor in a straight-forward manner with minimal hassle.
 
 %prep
-%setup -q -n PyCondor-%{version}
+%setup -q -n pycondor-%{version}
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" pycondor/tests/example_script.py
 
 %build
