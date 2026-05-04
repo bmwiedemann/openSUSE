@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:11:01 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.6.5
+  * CVE-2026-5409: Monero dissector crash (bsc#1263751).
+  * CVE-2026-5408: BT-DHT dissector crash (bsc#1263752).
+  * CVE-2026-5406: FC-SWILS dissector crash (bsc#1263754).
+  * CVE-2026-5407: SMB2 dissector infinite loop (bsc#1263753).
+  * CVE-2026-5299: ICMPv6 dissector crash (bsc#1263757).
+  * CVE-2026-5401: AFP dissector crash (bsc#1263756).
+  * CVE-2026-5402: TLS dissector crash and possible code execution (bsc#1263755).
+  * CVE-2026-5404: K12 RF5 file parser crash (bsc#1263766).
+  * CVE-2026-5403: SBC codec crash and possible code execution (bsc#1263765).
+  * CVE-2026-5405: RDP dissector crash and possible code execution (bsc#1263767).
+  * CVE-2026-5654: AMR-NB codec crash (bsc#1263749).
+  * CVE-2026-5655: SDP dissector crash (bsc#1263748).
+  * CVE-2026-5657: iLBC audio codec crash (bsc#1263747).
+  * CVE-2026-5656: Profile import crash and possible code execution (bsc#1263809).
+  * CVE-2026-5653: DCP-ETSI protocol dissector crash (bsc#1263750).
+  * CVE-2026-6538: BEEP protocol dissector crash (bsc#1263728).
+  * CVE-2026-6537: ZigBee protocol dissector crash (bsc#1263729).
+  * CVE-2026-6536: DLMS/COSEM protcol dissector infinite loop (bsc#1263730).
+  * CVE-2026-6535: Dissection engine zlib decompression crash (bsc#1263731).
+  * CVE-2026-6534: USB HID protocol dissector infinite loop (bsc#1263732).
+  * CVE-2026-6533: Dissection engine LZ77 decompression crash (bsc#1263733).
+  * CVE-2026-6532: Kismet protocol dissector crash (bsc#1263734).
+  * CVE-2026-6531: SANE protocol dissector infinite loop (bsc#1263735).
+  * CVE-2026-6530: DCP-ETSI protocol dissector crash (bsc#1263736).
+  * CVE-2026-6529: iLBC audio codec crash (bsc#1263737).
+  * CVE-2026-6528: TLS dissector infinite loop (bsc#1263738).
+  * CVE-2026-6527: ASN.1 PER protocol dissector crash (bsc#1263739).
+  * CVE-2026-6526: RTSP protocol dissector crash (bsc#1263740).
+  * CVE-2026-6525: IEEE 802.11 protocol dissector crash (bsc#1263810).
+  * CVE-2026-6524: MySQL protocol dissector crash (bsc#1263741).
+  * CVE-2026-6523: GNW protocol dissector infinite loop (bsc#1263742).
+  * CVE-2026-6521: OpenFlow v5 protocol dissector infinite loops (bsc#1263744).
+  * CVE-2026-6520: OpenFlow v6 protocol dissector infinite loop (bsc#1263745).
+  * CVE-2026-6519: MBIM dissector infinite loop (bsc#1263746).
+  * CVE-2026-6522: RPKI-Router protocol dissector infinite loop (bsc#1263743).
+  * CVE-2026-6870: GSM RP protocol dissector crash (bsc#1263725).
+  * CVE-2026-6869: WebSocket protocol dissector crash (bsc#1263726).
+  * CVE-2026-6867: SMB2 protocol dissector crash (bsc#1263727)
+  * CVE-2026-6868: HTTP protocol dissector crash (bsc#1263762).
+  * CVE-2026-7379: Sharkd utility memory leak (bsc#1263758).
+  * CVE-2026-7376: Sharkd utility crash (bsc#1263760).
+  * CVE-2026-7378: Sharkd utility crash (bsc#1263759).
+  * CVE-2026-7375: UDS protocol dissector infinite loop (bsc#1263761).
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.6.5.html
+
+-------------------------------------------------------------------
 Thu Feb 26 08:38:19 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.6.4
@@ -119,7 +169,7 @@ Tue Feb  4 10:46:24 UTC 2025 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Tue Jan 28 08:14:39 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
-- Default to building with qt6 
+- Default to building with qt6
 
 -------------------------------------------------------------------
 Thu Jan  9 08:24:51 UTC 2025 - Robert Frohl <rfrohl@suse.com>
@@ -160,7 +210,7 @@ Thu Oct 10 07:50:19 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 -------------------------------------------------------------------
 Fri Aug 30 16:08:14 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 
-- Wireshark 4.4.0 
+- Wireshark 4.4.0
   * Many improvements and fixes to the graphing dialogs, including I/O Graphs,
     Flow Graph / VoIP Calls, and TCP Stream Graphs
   * Custom columns can be defined using any valid field expression, such as
