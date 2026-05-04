@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May  2 14:38:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.0
+  * removed deprecated stuff and cleaned up API.
+  * dropped hardsid support.
+  * dropped resid emulation.
+  * added new lightweigth sid emulation based on cRSID.
+  * moved residfp engine to an external library (libresidfp).
+  * improved kernal stub compatibility.
+  * changed the default sampling freq to 48KHz.
+
+-------------------------------------------------------------------
 Sun Feb 15 10:43:31 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.16.1

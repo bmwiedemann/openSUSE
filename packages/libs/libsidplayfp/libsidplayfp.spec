@@ -16,10 +16,10 @@
 #
 
 
-%define soname 6
+%define soname 7
 %define stilview_soname 0
 Name:           libsidplayfp
-Version:        2.16.1
+Version:        3.0.0
 Release:        0
 Summary:        A library to play Commodore 64 music
 License:        GPL-2.0-or-later
@@ -96,13 +96,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libstilview.so.%{stilview_soname}*
 
 %files devel
-%doc AUTHORS NEWS README TODO
+%doc AUTHORS.md NEWS.md README.md
 %{_libdir}/libsidplayfp.so
 %{_includedir}/sidplayfp/
 %{_libdir}/pkgconfig/libsidplayfp.pc
 
 %files -n libstilview-devel
-%doc AUTHORS NEWS README TODO
+%doc AUTHORS.md NEWS.md README.md
 %{_libdir}/libstilview.so
 %{_includedir}/stilview/
 %{_libdir}/pkgconfig/libstilview.pc

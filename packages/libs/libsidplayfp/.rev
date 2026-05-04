@@ -246,4 +246,19 @@ GStreamer.</comment>
   * Fixed warnings in USBSID builder.</comment>
     <requestid>1333183</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>95909e14718fa9870969768867e3df30</srcmd5>
+    <version>3.0.0</version>
+    <time>1777892017</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.0
+  * removed deprecated stuff and cleaned up API.
+  * dropped hardsid support.
+  * dropped resid emulation.
+  * added new lightweigth sid emulation based on cRSID.
+  * moved residfp engine to an external library (libresidfp).
+  * improved kernal stub compatibility.
+  * changed the default sampling freq to 48KHz.</comment>
+    <requestid>1350468</requestid>
+  </revision>
 </revisionlist>
