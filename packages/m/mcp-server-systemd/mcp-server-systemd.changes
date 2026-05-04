@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Thu Apr 30 17:05:06 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- update to v0.3.3 with following changes:  
+  * allow man page sections like 3p1
+  * call authorization before file access
+
+-------------------------------------------------------------------
+Fri Apr 24 15:07:18 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- update to v0.3.2 with following changes:
+  * valid json schemas for listing unit files
+  * testing list unit input schema via bats
+
+-------------------------------------------------------------------
+Tue Mar 31 13:24:36 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- update to v0.3.1 which split out the test and gatekeeper package
+
+-------------------------------------------------------------------
+Tue Mar 24 16:02:06 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- update to v0.3.0 which uses the gatekeeper servcie to access
+  systemd logs. Authorization can so be granted via Polkit
+
+-------------------------------------------------------------------
+Tue Mar 10 10:57:34 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- enable some functional testing and 15.7 builds
+
+-------------------------------------------------------------------
+Mon Mar  9 16:03:06 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+-Update to v0.2.0 which supports TLS 
+
+-------------------------------------------------------------------
+Fri Jan 16 15:56:18 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Update to version 0.2.0-preview3
+  * streamlined logging
+
+-------------------------------------------------------------------
+Wed Jan 14 16:27:32 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Update to version 0.2.0-preview2
+  * authorization via OAUTH2 is possible
+  * privilege access via polkit if started via polkit
+
+-------------------------------------------------------------------
+Fri Nov 28 15:38:02 UTC 2025 - cgoll@suse.com
+
+- Update to version 0.2.0-preview1:
+  * added too to access restricted files
+  * add man pages as documentation hint
+  * enhanced log filtering and retreival
+  * run as non root
+
+-------------------------------------------------------------------
+Fri Nov 28 15:37:28 UTC 2025 - cgoll@suse.com
+
+- Update to version 0.1.1:
+
+-------------------------------------------------------------------
+Fri Nov 28 15:34:32 UTC 2025 - cgoll@suse.com
+
+- Update to version 0.1.1:
+  * use PREFIX in Makefile
+  * updated README
+  * add posibilty to register with internal agent
+  * add authorization to all functions
+  * make dbus auth exportable
+  * added privelege escalation via pkexec
+  * read and write auth on commandline
+  * more debug messages and stateless auth
+
+-------------------------------------------------------------------
+Wed Nov 12 15:24:58 UTC 2025 - cgoll@suse.com
+
+- Update to version 0.1.1:
+  * added authorization via dbus and polkit
+
+-------------------------------------------------------------------
+Tue Aug 26 13:05:32 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Rename to mcp-server-systemd; provide binary under both names
+
+-------------------------------------------------------------------
+Tue Aug 26 13:01:53 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Rename to mcp-server-systemd; provide binary under both names
+
+-------------------------------------------------------------------
+Tue Aug 26 12:29:44 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Replace macros not available on older CentOS versions
+
+-------------------------------------------------------------------
+Thu Jul 17 08:02:19 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- inital commit of systemd-mcp
