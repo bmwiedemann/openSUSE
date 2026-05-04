@@ -1,7 +1,7 @@
 #
 # spec file for package neovide
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define skia_version m140-0.87.4
+%define skia_version m145-0.92.0
 %define wuffs_commit e3f919ccfe3ef542cfc983a82146070258fb57f8
 
 Name:           neovide
-Version:        0.15.2
+Version:        0.16.2
 Release:        0
 Summary:        Simple Neovim GUI
 License:        MIT
@@ -46,8 +46,8 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
-# clang++ needs gcc13 c++ headers to compile skia on Leap 15.6
-BuildRequires:  gcc13-c++
+# clang++ needs gcc15 c++ headers to compile skia on Leap 15.6
+BuildRequires:  gcc15-c++
 %endif
 Requires:       neovim >= 0.10.0
 
