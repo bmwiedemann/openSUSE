@@ -1300,4 +1300,13 @@ goes in line with 946250</comment>
     <comment>- Update to release 2.13</comment>
     <requestid>1349824</requestid>
   </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>71184a28fa33caf9763fe6f69d2ff035</srcmd5>
+    <version>2.13.0</version>
+    <time>1777891755</time>
+    <user>anag_factory</user>
+    <comment>- Add support for UsrEtc; (bsc#1257643); Add patch
+  0016-UsrEtc.patch</comment>
+    <requestid>1350294</requestid>
+  </revision>
 </revisionlist>

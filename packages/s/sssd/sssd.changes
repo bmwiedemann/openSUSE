@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 30 11:45:26 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Add support for UsrEtc; (bsc#1257643); Add patch
+  0016-UsrEtc.patch
+- The default configuration file is installed now in
+  /usr/etc/sssd/sssd.conf. It can be completely overridden by
+  manually creating the system specific config file
+  /etc/sssd/sssd.conf, or partially overridden by creating config
+  snippets in /etc/sssd/conf.d/ directory. Check sssd.conf manpage
+  for more details.
+- Use %pre scriptlet instead of %pretrans to migrate from
+  sssd-common [bsc#1257509].
+- The AD backend now uses realmd to update the machine account
+  password. The realmd package is recommended when installing
+  the ad backend.
+
+-------------------------------------------------------------------
 Tue Apr 28 11:21:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.13

@@ -36,6 +36,7 @@ Patch12:        harden_sssd-ifp.service.patch
 Patch13:        harden_sssd-kcm.service.patch
 Patch14:        symvers.patch
 Patch15:        logrotate.patch
+Patch16:        0016-UsrEtc.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  bind-utils
@@ -75,7 +76,6 @@ BuildRequires:  pkgconfig(libcrypto) >= 1.0.1
 %if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(libcurl)
 %endif
-BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libnfsidmap)
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnl-route-3.0) >= 3.0
@@ -107,6 +107,7 @@ BuildRequires:  pkgconfig(uuid)
 Requires(post): permissions
 Requires(verify): permissions
 Requires:       sssd-ldap = %version-%release
+Requires(pre):  pam-config
 Requires(postun): pam-config
 Provides:       libsss_sudo = %version-%release
 Provides:       sssd-client = %version-%release
@@ -123,6 +124,7 @@ Obsoletes:      sssd-common < %version-%release
 %define gpocachepath	%sssdstatedir/gpo_cache
 %define keytabdir	%sssdstatedir/keytabs
 %define mcpath		%sssdstatedir/mc
+%global secdbpath	%sssdstatedir/secrets
 %define ldbdir %(pkg-config ldb --variable=modulesdir)
 
 %if 0%{?suse_version} >= 1600
@@ -146,7 +148,7 @@ Summary:        The ActiveDirectory backend plugin for sssd
 License:        GPL-3.0-or-later
 Group:          System/Daemons
 Requires:       %name-krb5-common = %version-%release
-Requires:       adcli
+Recommends:     realmd
 
 %description ad
 A back-end provider that the SSSD can utilize to fetch identity data
@@ -201,6 +203,7 @@ Summary:        SSSD helpers needed for Kerberos and GSSAPI authentication
 License:        GPL-3.0-or-later
 Group:          System/Daemons
 Requires:       cyrus-sasl-gssapi
+Requires(post): sssd = %version-%release
 Requires(post): permissions
 Requires(verify): permissions
 
@@ -411,6 +414,9 @@ autoreconf -fiv
 	--without-python2-bindings \
 	--without-oidc-child \
 	--with-sssd-user="%sssd_user" \
+%if "%{?_distconfdir}" != ""
+	--with-vendordir="%_distconfdir/sssd" \
+%endif
 %if 0%{?suse_version} >= 1600
 	--with-selinux=yes \
 	--with-subid \
@@ -429,11 +435,10 @@ b="%buildroot"
 # Copy some defaults
 %if "%{?_distconfdir}" != ""
 install -Dpvm 0600 src/examples/sssd-example.conf "$b/%_distconfdir/sssd/sssd.conf"
-install -dvm 0755 "$b/%_distconfdir/sssd/conf.d"
 %else
 install -Dpm 0600 src/examples/sssd-example.conf "$b/%_sysconfdir/sssd/sssd.conf"
-install -dvm 0755 "$b/%_sysconfdir/sssd/conf.d"
 %endif
+install -dvm 0755 "$b/%_sysconfdir/sssd/conf.d"
 install -dv "$b/%_unitdir"
 %if 0%{?suse_version} > 1500
 install -dv "$b/%_distconfdir/logrotate.d"
@@ -497,6 +502,21 @@ ln -sv %_datadir/%name/krb5-snippets/enable_sssd_conf_dir \
 %make_build check || :
 
 %pre -f random.pre
+# Migrate sssd.service from sssd-common to sssd
+# bsc#1257509: systemctl is-active detects chroot in build env and
+# returns 0, creating the file and breaking the build. Use stdout
+# instead of return codes.
+if [ "$(systemctl is-enabled sssd.service)" = enabled ]; then
+	mkdir -p /run/systemd/rpm/
+	touch /run/systemd/rpm/sssd-was-enabled
+fi
+if [ "$(systemctl is-active sssd.service)" = active ]; then
+	mkdir -p /run/systemd/rpm/
+	touch /run/systemd/rpm/sssd-was-active
+fi
+# Migrate pam_sss.so from sssd-common to sssd (bsc#1226407)
+mkdir -p /run/systemd/rpm/
+%_sbindir/pam-config -q --sss 1> /run/systemd/rpm/pam-sss-state
 %service_add_pre sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
 %if "%{?_distconfdir}" != ""
 # Prepare for migration to /usr/etc; save any old .rpmsave
@@ -526,7 +546,9 @@ if [ "$1" = "0" ] && [ -x "%_sbindir/pam-config" ]; then
 	"%_sbindir/pam-config" -d --sss || :
 fi
 # del_postun includes a try-restart
-%service_del_postun sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
+%service_del_postun sssd.service sssd-autofs.socket sssd-nss.socket sssd-pac.socket sssd-pam.socket sssd-ssh.socket sssd-sudo.socket
+# These services have RefuseManualStart=true
+%service_del_postun_without_restart sssd-autofs.service sssd-nss.service sssd-pac.service sssd-pam.service sssd-ssh.service sssd-sudo.service
 
 %ldconfig_scriptlets -n libsss_certmap0
 %ldconfig_scriptlets -n libipa_hbac0
@@ -579,19 +601,6 @@ fi
 
 %pre proxy -f random.pre
 
-%pretrans
-# Migrate sssd.service from sssd-common to sssd
-systemctl is-enabled sssd.service > /dev/null
-if [ $? -eq 0 ]; then
-	mkdir -p /run/systemd/rpm/
-	touch /run/systemd/rpm/sssd-was-enabled
-fi
-systemctl is-active sssd.service > /dev/null
-if [ $? -eq 0 ]; then
-	mkdir -p /run/systemd/rpm/
-	touch /run/systemd/rpm/sssd-was-active
-fi
-
 %posttrans
 %if "%{?_distconfdir}" != ""
 # Migration to /usr/etc, restore just created .rpmsave
@@ -601,20 +610,26 @@ done
 %endif
 # Migrate sssd.service from sssd-common to sssd
 if [ -e /run/systemd/rpm/sssd-was-enabled ]; then
-	systemctl is-enabled sssd.service >/dev/null
-	if [ $? -ne 0 ]; then
+	if [ "$(systemctl is-enabled sssd.service)" != "enabled" ]; then
 		echo "Migrating sssd.service, was enabled"
 		systemctl enable sssd.service
 	fi
 	rm /run/systemd/rpm/sssd-was-enabled
 fi
 if [ -e /run/systemd/rpm/sssd-was-active ]; then
-	systemctl is-active sssd.service >/dev/null
-	if [ $? -ne 0 ]; then
+	if [ "$(systemctl is-active sssd.service)" != "active" ]; then
 		echo "Migrating sssd.service, was active"
 		systemctl start sssd.service
 	fi
 	rm /run/systemd/rpm/sssd-was-active
+fi
+# Migrate pam_sss.so from sssd-common to sssd (bsc#1226407)
+if [ -e /run/systemd/rpm/pam-sss-state ]; then
+	grep -q "auth:" /run/systemd/rpm/pam-sss-state
+	if [ $? -eq 0 ]; then
+		"%_sbindir/pam-config" -a --sss || :
+	fi
+	rm /run/systemd/rpm/pam-sss-state
 fi
 
 %files -f sssd.lang
@@ -634,10 +649,11 @@ fi
 %_unitdir/sssd-sudo.service
 %_sysusersdir/*sssd*
 %_tmpfilesdir/*sssd*
-%permissions_path/sssd
+%config(noreplace) %permissions_path/sssd
 %dir %_datadir/polkit-1
-%attr(0555,root,root) %dir %_datadir/polkit-1/rules.d
-%_datadir/polkit-1/rules.d/*
+%dir %attr(555,root,root) %_datadir/polkit-1/rules.d
+%_datadir/polkit-1/rules.d/sssd-pcsc.rules
+%_datadir/polkit-1/rules.d/sssd-realmd.rules
 %_bindir/sss_ssh_*
 %_sbindir/sssd
 %if 0%{?suse_version} < 1600
@@ -684,32 +700,32 @@ fi
 %_libexecdir/%name/sssd_autofs
 %_libexecdir/%name/sssd_be
 %_libexecdir/%name/sssd_nss
-%attr(750,root,%sssd_user) %caps(cap_dac_read_search=p) %_libexecdir/%name/sssd_pam
+%verify(not caps) %attr(750,root,%sssd_user) %_libexecdir/%name/sssd_pam
 %_libexecdir/%name/sssd_ssh
 %_libexecdir/%name/sssd_sudo
 %_libexecdir/%name/sss_signal
 %_libexecdir/%name/sssd_check_socket_activated_responders
 %if 0%{?suse_version} >= 1600
-%attr(750,root,%sssd_user) %caps(cap_setgid,cap_setuid=p) %_libexecdir/%name/selinux_child
+%verify(not caps) %attr(750,root,%sssd_user) %_libexecdir/%name/selinux_child
 %endif
-%dir %sssdstatedir
-%attr(700,%sssd_user,%sssd_user) %dir %dbpath/
-%attr(755,%sssd_user,%sssd_user) %dir %pipepath/
-%attr(700,%sssd_user,%sssd_user) %dir %pipepath/private/
-%attr(755,%sssd_user,%sssd_user) %dir %pubconfpath/
-%attr(755,%sssd_user,%sssd_user) %dir %gpocachepath/
-%attr(755,%sssd_user,%sssd_user) %dir %mcpath/
-%attr(700,%sssd_user,%sssd_user) %dir %keytabdir/
-%attr(750,%sssd_user,%sssd_user) %dir %_localstatedir/log/%name/
 %attr(775,%sssd_user,%sssd_user) %dir %sssdstatedir/
-%if "%{?_distconfdir}" != ""
-%attr(750,root,%sssd_user) %dir %_distconfdir/sssd/
-%attr(750,root,%sssd_user) %dir %_distconfdir/sssd/conf.d
-%attr(640,root,%sssd_user) %_distconfdir/sssd/sssd.conf
-%else
+%attr(770,%sssd_user,%sssd_user) %dir %dbpath/
+%attr(775,%sssd_user,%sssd_user) %dir %mcpath/
+%attr(775,%sssd_user,%sssd_user) %dir %pipepath/
+%attr(770,%sssd_user,%sssd_user) %dir %pipepath/private/
+%attr(775,%sssd_user,%sssd_user) %dir %pubconfpath/
+%attr(770,%sssd_user,%sssd_user) %dir %gpocachepath/
+%attr(770,%sssd_user,%sssd_user) %dir %keytabdir/
+%attr(770,%sssd_user,%sssd_user) %dir %secdbpath/
+%attr(770,%sssd_user,%sssd_user) %dir %_localstatedir/log/%name/
 %attr(750,root,%sssd_user) %dir %_sysconfdir/sssd/
 %attr(750,root,%sssd_user) %dir %_sysconfdir/sssd/conf.d
-%ghost %attr(640,root,%sssd_user) %config(noreplace) %_sysconfdir/sssd/sssd.conf
+%attr(750,root,%sssd_user) %dir %_sysconfdir/sssd/pki
+%if "%{?_distconfdir}" != ""
+%attr(750,root,%sssd_user) %dir %_distconfdir/sssd/
+%attr(640,root,%sssd_user) %_distconfdir/sssd/sssd.conf
+%else
+%attr(640,root,%sssd_user) %config(noreplace) %_sysconfdir/sssd/sssd.conf
 %endif
 %if 0%{?suse_version} > 1500
 %_distconfdir/logrotate.d/sssd
@@ -808,13 +824,13 @@ fi
 %_mandir/??/man5/sssd-krb5.5*
 
 %files krb5-common
-%attr(755,root,root) %dir %pubconfpath/krb5.include.d
+%attr(775,%sssd_user,%sssd_user) %dir %pubconfpath/krb5.include.d
 %config(noreplace,missingok) %{_sysconfdir}/krb5.conf.d/enable_sssd_conf_dir
 %dir %_libdir/%name/
 %_libdir/%name/libsss_krb5_common.so
 %dir %_libexecdir/%name/
-%attr(750,root,%sssd_user) %caps(cap_dac_read_search,cap_setgid,cap_setuid=p) %_libexecdir/%name/krb5_child
-%attr(750,root,%sssd_user) %caps(cap_dac_read_search=p) %_libexecdir/%name/ldap_child
+%verify(not caps) %attr(750,root,%sssd_user) %_libexecdir/%name/krb5_child
+%verify(not caps) %attr(750,root,%sssd_user) %_libexecdir/%name/ldap_child
 %dir %{_datadir}/sssd/krb5-snippets
 %_datadir/%name/krb5-snippets/enable_sssd_conf_dir
 %_datadir/%name/krb5-snippets/sssd_enable_idp
