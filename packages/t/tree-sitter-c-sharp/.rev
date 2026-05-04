@@ -151,4 +151,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1335331</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f649b0e2c533062abe92092c6ac9a8b</srcmd5>
+    <version>0.23.5</version>
+    <time>1777891982</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.23.5:
+  - perf: rework rules to reduce parser size
+  - feat: allow preprocessor directives in attribute lists
+  - Expose HIGHLIGHTS_QUERY. (#360)
+  - Support bodyless class/struct/record/enum/interface (#364)
+  - Include LICENSE file (#366)
+  - Pattern matching improvements (#355)
+  - Expose TAGS_QUERY (#384)
+  - Hexadecimal escape sequences (#394)
+  - feat: update bindings with 0.26.3 (#405)
+  - Fix #282 (#400)
+  - Update npm dependencies (#412)
+  - test: add test for class with primary constructor, base
+    invocation, a…
+  - Fix C# 13 params non-array types (#410)
+  - feat: collection expression support (#402)</comment>
+    <requestid>1350405</requestid>
+  </revision>
 </revisionlist>
