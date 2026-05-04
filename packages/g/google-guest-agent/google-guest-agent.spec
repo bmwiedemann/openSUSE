@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-guest-agent
-Version:        20260402.00
+Version:        20260430.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -34,10 +34,8 @@ Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
 Patch0:         disable_google_dhclient_script.patch
-# PATCH-FIX-UPSTREAM - Fix crafted JWE input with a missing encrypted key can lead to a denial of service
-Patch1:         CVE-2026-34986.patch
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.25
+BuildRequires:  golang(API) = 1.26
 Requires:       google-guest-configs
 Requires:       google-guest-oslogin >= 20231003
 Provides:       google-compute-engine-init = %{version}
@@ -53,9 +51,6 @@ Google Cloud Guest Agent
 %prep
 %setup -n %{repo}-%{version} -a1
 %patch -P 0 -p1
-pushd vendor/github.com/go-jose/go-jose/v4
-%patch -P 1 -p1
-popd
 
 %build
 %goprep %{import_path}
