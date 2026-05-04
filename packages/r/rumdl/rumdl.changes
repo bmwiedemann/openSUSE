@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun May 03 06:44:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.87:
+  * Added
+    - config: fall back to ~/.rumdl.toml and ~/rumdl.toml as user
+      config (8557089)
+  * Fixed
+    - code-block-tools: use yamlfmt lint mode for YAML (#606)
+      (0296f86)
+    - MD038: preserve spaces around nested backticks (#605)
+      (a9552c6)
+    - MD013: keep closing quote with parenthetical splits (#601)
+      (9a47b99)
+
+-------------------------------------------------------------------
+Fri May 01 10:44:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.86:
+  * Added
+    - cli: support inline TOML overrides via --config (ae5461f)
+
+-------------------------------------------------------------------
+Fri May 01 07:25:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.85:
+  * Added
+    - md051: add ignore-case and ignored-pattern for markdownlint
+      parity (4535a2b)
+    - md013: add heading-line-length, code-block-line-length, stern
+      (6c22f82)
+    - md033: add table-allowed-elements option for markdownlint
+      parity (10bdc18)
+    - md027: add list-items option for opt-in markdownlint parity
+      (2589aad)
+    - md060: add aligned-delimiter option for markdownlint parity
+      (ce6eaac)
+  * Fixed
+    - md051: unify ignore-case and ignored-pattern across same-doc
+      and cross-file paths (3c295bc)
+    - config: initialize canonical_project_root_cache in From impl
+      (306777d)
+    - md013: require GFM table evidence before classifying
+      list-item line (a04f742)
+    - config: log when normalize_match_path falls back to raw
+      absolute path (6a6ceed)
+    - md013: preserve tables nested inside list items during reflow
+      (fc3f89d)
+    - config: fall back to cwd when normalizing per-file glob paths
+      (360bde1)
+    - md054: include trailing [] in collapsed link span (caa3acc)
+  * Performance
+    - config: cache canonical project_root and harden
+      silent-fallback diagnostic (d4ea4ea)
+
+-------------------------------------------------------------------
 Thu Apr 30 10:49:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.84:
