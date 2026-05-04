@@ -18,7 +18,7 @@
 
 %global module os_doc_tools
 Name:           python-openstack-doc-tools
-Version:        4.0.1
+Version:        4.0.3
 Release:        0
 Summary:        OpenStack Docs Tools
 License:        Apache-2.0

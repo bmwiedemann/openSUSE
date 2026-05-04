@@ -152,4 +152,21 @@
 - update to wallaby template (url fixup)</comment>
     <requestid>1339533</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>725e4f336a69e50ced349bd55cb79553</srcmd5>
+    <version>4.0.3</version>
+    <time>1777892082</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.3:
+  * Fix script installation in pyproject.toml
+  * Update maintained and denied series
+  * Correct lastmod time zone offset in sitemaps
+  * Migrate setup configuration to pyproject.toml
+  * Remove tags from README
+  * Drop lower-constraints
+  * Remove unused iso8601
+  * Update maintained series in sitemap generator
+  * Bump hacking</comment>
+    <requestid>1350574</requestid>
+  </revision>
 </revisionlist>

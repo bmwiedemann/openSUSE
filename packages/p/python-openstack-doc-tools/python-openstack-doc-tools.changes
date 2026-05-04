@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  3 19:25:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.3:
+  * Fix script installation in pyproject.toml
+  * Update maintained and denied series
+  * Correct lastmod time zone offset in sitemaps
+  * Migrate setup configuration to pyproject.toml
+  * Remove tags from README
+  * Drop lower-constraints
+  * Remove unused iso8601
+  * Update maintained series in sitemap generator
+  * Bump hacking
+
+-------------------------------------------------------------------
 Tue Mar 17 08:53:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.1:
