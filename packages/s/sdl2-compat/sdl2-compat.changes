@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May  2 10:01:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.32.68
+  * Fixed gamepad rumble in Middle-earth: Shadow of Mordor and
+    other games on Linux
+  * Added an "SDL3_VERSION" hint that can be read by games using
+    sdl2-compat
+
+-------------------------------------------------------------------
 Sat Apr  4 00:56:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.32.66
