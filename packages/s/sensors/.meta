@@ -7,5 +7,5 @@ Which modules to load can be interactively detected as root by calling
 configuration in /etc/sensors.conf has to be checked and changed to fit
 the actual set up of the mainboard and the BIOS used on that specific
 mainboard!</description>
-  <devel project="Base:System" package="sensors"/>
+  <devel project="hardware" package="sensors"/>
 </package>

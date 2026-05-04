@@ -1,0 +1,37 @@
+From: Jean Delvare <jdelvare@suse.de>
+Subject: sensors-detect: Look for udevadm in /usr/bin
+References: boo#1259511
+
+Nowadays, udevadm gets installed in /usr/bin instead of /sbin where
+it used to live, so also search for this binary at that location.
+---
+ prog/detect/sensors-detect |   17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+--- a/prog/detect/sensors-detect
++++ b/prog/detect/sensors-detect
+@@ -3349,10 +3349,21 @@ sub load_module
+ # udev may take some time to create device nodes when loading modules
+ sub udev_settle
+ {
+-	if (!(-x "/sbin/udevadm" && system("/sbin/udevadm settle") == 0)
+-	 && !(-x "/sbin/udevsettle" && system("/sbin/udevsettle") == 0)) {
+-		sleep(1);
++	my @settle_options = (
++		[ "/usr/bin/udevadm", "settle" ],
++		[ "/sbin/udevadm", "settle" ],
++		[ "/sbin/udevstettle" ],
++	);
++
++	foreach my $settle (@settle_options) {
++		my $command = join " ", @{$settle};
++		print "command = \"$command\"\n";
++		if (-x $settle->[0] && system($command) == 0) {
++			return;
++		}
+ 	}
++
++	sleep(1);
+ }
+ 
+ sub initialize_modules_supported

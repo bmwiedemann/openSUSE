@@ -1,6 +1,7 @@
 #
 # spec file for package sensors
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,15 +39,19 @@ Patch1:         lm_sensors-3.1.1-build.patch
 Patch2:         lm_sensors-3.0.0-sensord-separate.patch
 Patch3:         lm_sensors-3.0.0-sysconfig_metadata.patch
 Patch4:         lm_sensors-3.0.3-hint-at-kernel-extra-package.patch
+Patch5:         pwm-fix-bad-scaling-due-to-use-of-integer-type.patch
+Patch6:         sensors-detect-udevadm-path.patch
 Patch8:         lm_sensors-3.5.0-libsensors-fix-soname.patch
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  perl-Test-Cmd
 BuildRequires:  rrdtool-devel
 BuildRequires:  systemd-rpm-macros
+%if 0%{?suse_version} >= 1600
+BuildRequires:  perl-Test-Cmd
 # qemu does not support PR_SET_PTRACER
 %if !0%{?qemu_user_space_build}
 BuildRequires:  valgrind
+%endif
 %endif
 Requires:       modutils
 %{?systemd_requires}
@@ -105,7 +110,13 @@ sense to the user.
 %autosetup -p1 -n %{_name}-%{_version}
 
 %build
+# SLE12's gcc defaults to gnu89 which can't build sensors due to the
+# use of the restrict type qualifier
+%if 0%{?sle_version} < 150000
+RPM_OPT_FLAGS="%{optflags} -std=gnu99"
+%else
 RPM_OPT_FLAGS="%{optflags}"
+%endif
 make %{?_smp_mflags} PROG_EXTRA:=sensord BUILD_STATIC_LIB:=0 PREFIX=%{_prefix} MANDIR=%{_mandir} LIBDIR=%{_libdir}
 
 %install
@@ -123,7 +134,9 @@ make %{?_smp_mflags} PROG_EXTRA:=sensord BUILD_STATIC_LIB:=0 PREFIX=%{_prefix} M
     cp -a %{SOURCE1}			%{buildroot}/%{_fillupdir}
 
 %check
+%if 0%{?suse_version} >= 1600
 make test
+%endif
 
 %pre
 %service_add_pre lm_sensors.service fancontrol.service

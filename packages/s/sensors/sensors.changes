@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 13 12:55:59 UTC 2026 - Jean Delvare <jdelvare@suse.com>
+
+- Add sensors-detect-udevadm-path.patch to deal with the move of
+  udevadm from /sbin to /usr/bin (boo#1259511).
+
+-------------------------------------------------------------------
+Wed Jan  7 17:33:42 UTC 2026 - Jean Delvare <jdelvare@suse.com>
+
+- Add pwm-fix-bad-scaling-due-to-use-of-integer-type.patch which
+  fixes PWM values being scaled to 0-128% instead of 0-100%
+  (boo#1255928).
+
+-------------------------------------------------------------------
 Thu Oct  2 12:52:41 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Don't use valgrind in qemu emulation
