@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun May  3 11:04:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.10.2
+  * pmb.config: Set correct permissions on /dev/random and
+    /dev/urandom.
+  * pmb.aportgen: generate gcc packages with the "toolchain"
+    option.
+  * pmb.helpers.run_core: fix fd leak in foreground_pipe().
+  * pmb.flasher: Update deviceinfo reference links
+  * pmb.flasher.variables: Fix fastboot variable used in
+    mtkclient block.
+  * pmb.flasher.variables: Default to "vendor_boot" in mtkclient
+    too.
+
+-------------------------------------------------------------------
+Tue Apr  7 19:15:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.10.1
+  * aportgen: correct carch string when generating kernel package.
+  * pmb.qemu.run: Install efi image unconditionally for qemu.
+  * pmb.parse.arguments: Add missing choices parameter for
+    sideload arch.
+  * pmb.types: Properly type action_kconfig.
+  * pmb: Make match statements exhaustive.
+  * pmb: Add error code to all type error ignores.
+  * pyproject.toml: Enable various mypy error codes.
+  * pmb: Add additional overload for root().
+  * pmb: Remove pigz zombie code.
+  * pmb.commands.qemu: Clean up host executable not found error.
+  * pmb.commands.qemu: Log that postmarketOS is running after
+    nstalling EFI.
+  * pmb.build.autodetect: Remove arch from deviceinfo logic.
+
+-------------------------------------------------------------------
 Sat Apr  4 15:48:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.10.0
