@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  3 20:49:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.2:
+  * Fixed links in https://docs.scrapy.org/llms.txt
+    (:issue:`7467`)
+  * Sharing of the SSL context between multiple connections,
+    introduced in 2.15.0
+
+-------------------------------------------------------------------
 Thu Apr 23 04:23:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.15.0:

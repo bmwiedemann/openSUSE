@@ -35,7 +35,7 @@
 %define skip_python314 1
 %{?sle15_python_module_pythons}
 Name:           python-Scrapy%{?psuffix}
-Version:        2.15.0
+Version:        2.15.2
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
