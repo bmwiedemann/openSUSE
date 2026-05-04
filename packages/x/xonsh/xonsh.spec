@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           xonsh
-Version:        0.22.8
+Version:        0.23.1
 Release:        0
 Summary:        A general purpose, Python-powered shell
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -26,36 +26,34 @@ Group:          Development/Languages/Python
 URL:            https://xon.sh/
 Source0:        https://github.com/xonsh/xonsh/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  python3-base >= 3.8
+BuildRequires:  python3-base >= 3.11
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools >= 61
 BuildRequires:  python3-wheel
+# Use the prompt_toolkit backend for interactive highlighting and editing
+Requires:       python3-prompt_toolkit >= 3.0.29
 Recommends:     python3-Pygments >= 2.2
 Recommends:     python3-distro
 Recommends:     python3-ply
-Recommends:     python3-prompt_toolkit >= 2.0
 Recommends:     python3-setproctitle
-# python3-base has no readline, required for tab completion, history lookup and basic command editing
-Requires:       python3 >= 3.5
 Suggests:       %{name}-doc
 Provides:       python3-xonsh = %{version}
 Obsoletes:      python3-xonsh < %{version}
 BuildArch:      noarch
 
 %package -n %{name}-doc
-Summary:        Documentation files for %name
+Summary:        Documentation files for %{name}
 Group:          Documentation/HTML
 
 %description
 xonsh is a Python-powered, Unix-gazing shell language and command prompt. The language is a superset of Python 3.5+ with additional shell primitives. xonsh (pronounced conch) is meant for the daily use of experts and novices alike.
 
 %description -n %{name}-doc
-HTML documentation on the API and examples for %name.
+HTML documentation on the API and examples for %{name}.
 
 %prep
 %setup -q -n xonsh-%{version}
 sed -i '1s/^#!.*//' xonsh/xoreutils/_which.py xonsh/webconfig/main.py xonsh/xoreutils/uname.py
-rm docs/api/.gitignore
 
 %build
 %pyproject_wheel

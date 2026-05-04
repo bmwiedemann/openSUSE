@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Sat Apr 25 07:49:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.1:
+  * avoid error when output dir is not `_build`
+  * **chore:** Fixed release-please depth to avoid reace with
+    nightly build
+  * **parser:** preserve "func()[subscript]" at statement level
+  * virtualenv name now has smarter formatting
+  * Error handling now supports logical operations, and raising
+    exceptions for chains is enabled by default.
+  * glob: `$DOTGLOB` now control all forms of globbing uniformly
+    (normal, regex) with special documentation page
+  * **Completer:** Order completions by both prefix and substring
+    matches and sort by substring position. Remove
+    `$CASE_SENSITIVE_COMPLETIONS`.
+  * Processes: Major improvements to core logic for threads,
+    pipes, file descriptors, and process output management across
+    all platforms.
+  * Windows/WSL Performance with Commands Cache: Improved
+    execution performance and prompt highlighting
+  * Windows Executor: Fixed executing the scripts and binary
+    files
+  * Parser: First version with support of PEP701 f-strings
+  * Performance: Compile xsh xontribs and imports
+  * `history show all` support ISO date in filter
+  * `xcontext` resolves the paths before showing
+  * Add `$XONSH_SUBPROC_ARG_EXPANDUSER` to ability to switch
+    expanding off
+  * Add `xcontext --json` and XContext class
+  * Add `xxonsh` - launches exactly the same ``xonsh`` that was
+    used to start the current session.
+  * Add dict support for alias return command and fix env overlay
+  * Add full featured git completer
+  * Added `a>p`, `e>p` to redirect all/stderr to pipe
+  * Added `uv` to xcontext
+  * Added Click CLI interface support for callable aliases
+  * Added support for subprocess substitution in the middle of a
+    string e.g. `echo prefix_$(whoami)_suffix` or `echo
+    path/$(@lines echo '1n2').suffix`
+  * Better help (?) and superhelp (??) for aliases and callable
+    aliases
+  * Callable alias Click CLI integration: completer
+  * Callable Alias refactoring: `env` arg as local overlay,
+    `(called_)alias_name` args. Added
+    `@aliases.(un)(threadable/capturable)` decorators.
+    Refactoring. Added distinct Callable Alias page in docs with
+    everything.
+  * Command Decorators: Added `@path`, `@paths`, `@error_raise`,
+    `@error_ignore`
+  * CommandPipeline: Add `pipecode` and `pipestatus`
+  * Completer: Support emoji and symbols inserting by setting
+    XONSH_COMPLETER_EMOJI_PREFIX and
+    XONSH_COMPLETER_SYMBOLS_PREFIX and running completer.
+  * **Completer:** Order completions by both prefix and substring
+    matches and sort by substring position. Remove
+    `$CASE_SENSITIVE_COMPLETIONS`.
+  * **completer:** underline matched substring in completion menu
+  * **environ:** Added help and superhelp support to env
+    variables i.e. `$VAR?` and `$VAR??`
+  * Error handling now supports logical operations, and raising
+    exceptions for chains is enabled by default.
+  * Experimental. Add Xonsh WinGet installer for Windows 8.1+
+  * Extend completion locations
+  * Flatpak support
+  * glob: Added regex glob "m" that returns match groups as
+    XonshList instead of paths e.g. "for path, file in
+    m'(.*)/(.*).png': print(path, file)"
+  * **history:** Reimplement sqlite history backend `erasedups`
+    and add json history backend support
+  * Introduced python macro substitution e.g. `echo @!(2+2)`
+  * **main:** acquire controlling terminal at startup (terminal
+    handshake)
+  * make event handlers reload-safe by keying on module+qualname
+    instead of id
+  * **nix:** Add Nix packaging
+  * Now xonsh repository has "Nightly build" with AppImage,
+    Flatpak, Nuitka binary, Windows Installer
+  * Parser: First version with support of PEP701 f-strings
+  * **parser:** Add correct parsing of `builtin --builtin` to
+    `$XONSH_BUILTINS_TO_CMD`
+  * **parser:** Added walrus operator support for env variables
+    e.g. `echo @($TMP := '/tmp') && ls $TMP`
+  * **parser:** Reduce shadowing by using experimental
+    `$XONSH_BUILTINS_TO_CMD=True`
+  * Performance: Compile xsh xontribs and imports
+  * Prompt-toolkit: Added `Tab`/`Shift-Tab` to (de)indent
+    selected lines. Added `Shift+Enter` to start next line.
+  * Prompt: Ability to set cursor position for the next command
+    in XONSH_PROMPT_NEXT_CMD
+  * Prompt: Added `Ctrl+C` in selection mode to copy selected
+    text
+  * **prompt:** Improve dedent and fix `# ` issue
+  * Source foreign: Added parsing multiline env variables
+  * Support env in on_command_not_found event
+  * Support OSC7 by default
+  * Windows/WSL Performance with Commands Cache: Improved
+    execution performance and prompt highlighting
+  * **Windows:** Added installation script and instructions to
+    the xonsh installation guide
+  * xonshcon output
+  * xonshcon output
+  * xonshcon output
+  * xonshcon output
+  * **Xontrib:** Show xontrib description in `xontrib list`
+    output
+
+-------------------------------------------------------------------
 Thu Mar 26 08:31:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.8:
