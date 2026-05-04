@@ -8,3 +8,7 @@ gromox source: source-nmu-has-incorrect-version-number
 # OBS debtransform versioning is not incomprehensible...
 gromox source: odd-historical-debian-changelog-version
 
+# Debconf templates are old sytle
+gromox source: not-using-po-debconf
+gromox source: untranslatable-debconf-templates
+

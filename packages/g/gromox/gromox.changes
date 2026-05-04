@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Apr 30 09:55:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.7
+  * Outlook no longer loses appointsments when a shared calendar is opened
+  * The "percentage complete" of an appointment was mangled when
+    passing through EWS, which has been fixed.
+  * EWS now synthesizes a value for the "Received Time" field.
+  * AutoDiscover no longer erroneously advertises OWA API support.
+    This had made it impossible for Thunderbird to connect.
+  * EWS: Setting the read flag on a message no longer generates the
+    E-2901/E-3418 error message on the server.
+  * The EWS implementation now performs retrieval/update of Out Of
+    Office settings such that it works in multi-server
+    environments.
+  * The use of Qmail as an outgoing SMTP server is now supported by
+    the message sending routines.
+  * Fix a case of Outlook notifications getting potentially suppressed.
+  * Fix a case of `sqlite_busy on /var/lib/gromox/user/xyz: held by
+    unknown` log message appearing in the exmdb daemon
+    (gromox-http/istore).
+  * Conversion from MAPI to iCal appoinments used the wrong UID for
+    exceptions in a recurring series, which has been fixed.
+  * Reading iCal timezone definitions mangled the daylightbias,
+    which was fixed.
+  * Logins with Outlook 2010 now work when Gromox is running with
+    OpenSSL 3.
+
+-------------------------------------------------------------------
+Thu Mar 26 07:43:12 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6
+  * exmdb: read multi-server map exclusively from SQL rather than
+    exmdb_list.txt
+  * oab: Gromox now serves Offline Addressbook files
+  * ews: implement task creation, update, and property retrieval
+  * ews: implement ExpandDL, GetPersona, CreateUserConfiguration,
+    UpdateUserConfiguration, DeleteUserConfiguration,
+    DeleteAttachment, AddDelegate, UpdateDelegate and
+    RemoveDelegate operations
+  * ews: implement calendar occurrence operations (create, update,
+    delete) with timezone support
+  * ews: implement lifecycle for meetings: invitation sending on
+    UpdateItem, cancellations on DeleteItem, and responses to
+    organizer on accept/decline
+  * ews: generate read receipts when marking messages as read,
+    honor SuppressReadReceipts on UpdateItem
+  * oxdisco: support for impersonation username syntax with EAS
+  * eml2mt: output GXMT data as soon as practical
+- Drop gcc16.patch (merged)
+
+-------------------------------------------------------------------
 Thu Feb 26 01:31:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.5

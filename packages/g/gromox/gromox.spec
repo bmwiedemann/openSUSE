@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        3.5
+Version:        3.7
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -28,7 +28,6 @@ URL:            https://grommunio.com/
 Source:         https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.zst
 Source2:        https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.asc
 Source8:        %name.keyring
-Patch1:         gcc16.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 BuildRequires:  gcc12-c++
@@ -91,7 +90,7 @@ Requires:       php-mysqlnd
 Requires:       php-posix
 Requires:       php-soap
 %endif
-Requires:       w3m
+Requires:       (chawan or w3m)
 Requires(pre):  user(grommunio)
 Requires(pre):  user(gromox)
 Requires(pre):  group(gromox)

@@ -456,4 +456,20 @@
     <comment>- Update to release 3.5</comment>
     <requestid>1335180</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>9f8ae34595e3d3a18077ce1491f49f63</srcmd5>
+    <version>3.6</version>
+    <time>1774555792</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.6</comment>
+    <requestid>1342726</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ae7c32af5988a12c9f5f96c18bbada73</srcmd5>
+    <version>3.7</version>
+    <time>1777891785</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.7</comment>
+    <requestid>1350289</requestid>
+  </revision>
 </revisionlist>
