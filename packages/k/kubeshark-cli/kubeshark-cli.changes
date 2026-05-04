@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Fri May 01 21:27:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 53.2.5 (.4 was not released):
+  Kubeshark 53.2.5 adds native MySQL and PostgreSQL protocol
+  dissection — both enabled out of the box — fixes server-side TLS
+  decryption for pre-fork servers like PostgreSQL, and introduces a
+  configurable dashboard entries limit. The release also includes
+  stream-history playback, a 4× heap memory reduction in the
+  dashboard, and several reliability fixes across the stack.
+  * New Features
+    - MySQL protocol dissector — Full wire-protocol dissection for
+      MySQL traffic on port 3306, enabled by default. Includes
+      worker dissector, hub dependency update, front-end UI
+      support, and e2e tests
+    - PostgreSQL protocol dissector — Full wire-protocol dissection
+      for PostgreSQL traffic on port 5432, enabled by default.
+      Includes worker dissector, hub dependency update, front-end
+      UI support, and e2e tests
+    - Stream history — New API and UI for streaming historical (raw
+      capture) traffic, enabling retrospective browsing of
+      previously captured data with a time-picker range control
+    - Dashboard entries limit — New tap.dashboard.entriesLimit Helm
+      value (default 300000) controls the maximum number of entries
+      the dashboard holds in memory
+  * Improvements
+    - Columnar entry storage — 4× heap memory reduction — Replaces
+      sparse per-entry maps with dictionary-backed columnar
+      storage, dramatically reducing browser memory usage
+    - Decode multi-message gRPC payloads — Request and response
+      views now decode concatenated gRPC frames instead of showing
+      raw bytes
+    - Surface grpc_method / grpc_status as KFL queries in UI —
+      Clicking the Path row on gRPC entries emits grpc_method ==
+      "..." and clicking Grpc-Status emits grpc_status == N
+    - Show both entry namespaces by default — Source and
+      destination namespaces are now always visible in the entry
+      list
+    - Copy button for snapshot failure reason — Adds a clipboard
+      copy button to snapshot error messages for easier debugging
+    - Document gRPC KFL fields in MCP schema — grpc, grpc_method,
+      grpc_status are now documented in the MCP KFL schema
+    - Adjust KFL input boxes — Visual refinements to KFL filter
+      input areas
+    - Release pipeline overhaul — Split the monolithic release-pr
+      Makefile target into three independent, idempotent targets
+      (release-siblings, release-pr-kubeshark, release-pr-helm)
+      that can be rerun individually without side effects
+    - Fix Chart.yaml sync to kubeshark.github.io — The helm PR
+      target was switching back to master before copying the chart,
+      shipping the pre-bump version
+  * Bug Fixes
+    - Fix server-side TLS decryption for pre-fork servers
+      (PostgreSQL) — Adds dual-key connection_context and
+      accept-symbol fallback for servers that fork before accepting
+      connections
+    - Fix TLS stop-capturing — Prevent closing uprobe hooks for TLS
+      workloads that are still being traced
+    - Fix Istio one-leg HTTP — Corrects single-leg HTTP capture in
+      Istio service mesh environments
+    - Fix HTTP api-server one-leg — Resolves single-leg API server
+      traffic capture
+    - Remove sliding-window TLS heuristic from all L7 dissectors —
+      Eliminates false-positive TLS detection that could
+      misclassify plaintext traffic
+    - Fix request/response matcher in MongoDB and Kafka — Corrects
+      pairing logic in the MongoDB and Kafka protocol dissectors
+    - Fix Pebble use-after-close — Resolves a crash from accessing
+      Pebble DB after it has been closed (worker#1114)
+    - Fix re-running dissection on failure — Snapshot dissection
+      can now be retried after a failure without manual
+      intervention
+    - Skip incomplete dissections from cloud upload — Prevents
+      partially dissected snapshots from being uploaded to cloud
+      storage
+    - Ensure auth credentials on all API requests — Mirrors auth
+      headers to cookies for consistent authentication across all
+      request types
+  * Infrastructure & Dependencies
+    - Revert time-boundaries display above snapshots table —
+      Reverted pending a redesign
+    - Update Go to 1.26.2
+    - Update build environment to latest version
+    - Bump deps to close Scout CVEs — Updates moby v2, go-jose,
+      jsonparser, and OpenTelemetry dependencies)
+    - Update spdystream — Addresses CVEs
+    - Bump KFL2 and lock in gRPC trailer merge
+    - Drop arm64 race builds due to toolchain limitations
+    - Update registry offsets — Refreshes embedded Go TLS offset
+      bundle
+    - Reduce noisy parse-packet log messages
+    - Update gRPC in e2e tests to address Dependabot issues
+    - Update hub dependencies for Docker Scout compliance
+
+-------------------------------------------------------------------
 Mon Apr 20 18:36:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 53.2.3:
