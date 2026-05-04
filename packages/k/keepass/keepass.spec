@@ -18,13 +18,13 @@
 
 %define _name KeePass
 Name:           keepass
-Version:        2.61
+Version:        2.61.1
 Release:        0
 Summary:        Password Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://keepass.info/
-Source0:        https://netcologne.dl.sourceforge.net/project/keepass/KeePass%202.x/%{version}/KeePass-%{version}-Source.zip
+Source0:        https://downloads.sourceforge.net/project/keepass/KeePass%202.x/%{version}/KeePass-%{version}-Source.zip
 Source1:        https://keepass.info/integrity/v2/KeePass-%{version}-Source.zip.asc
 # http://keepass.info/integrity/Dominik_Reichl.asc
 Source2:        keepass.keyring
