@@ -2521,4 +2521,14 @@ New stable rel</comment>
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346605</requestid>
   </revision>
+  <revision rev="284" vrev="2">
+    <srcmd5>47270d565030ce9a4b55f48a5dd75a7d</srcmd5>
+    <version>50.1</version>
+    <time>1777891720</time>
+    <user>anag_factory</user>
+    <comment>- Align with what meson setup checks for: Drop /usr/bin/Xvfb,
+  pkgconfig(gl), pkgconfig(x11), pkgconfig(xcursor),
+  pkgconfig(xft) and pkgconfig(xi) BuildRequires.</comment>
+    <requestid>1350305</requestid>
+  </revision>
 </revisionlist>

@@ -45,7 +45,6 @@ Patch1002:      gnome-control-center-more-power-button-actions.patch
 # PATCH-FEATURE-SLE gnome-control-center-bring-back-firewall-zone.patch fate#316719 sckang@suse.com -- network: Bring back the firewall zone combo box to select proper firewall zone for each connection.
 Patch1003:      gnome-control-center-bring-back-firewall-zone.patch
 
-BuildRequires:  /usr/bin/Xvfb
 BuildRequires:  blueprint-compiler >= 0.19
 BuildRequires:  cups-devel >= 1.4
 BuildRequires:  desktop-file-utils
@@ -65,7 +64,6 @@ BuildRequires:  pkgconfig(gcr-4) >= 4.1.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
 BuildRequires:  pkgconfig(gdk-wayland-3.0)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.76.6
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gnome-bluetooth-3.0)
@@ -99,10 +97,6 @@ BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(tecla)
 BuildRequires:  pkgconfig(udisks2) >= 2.8.2
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.8
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xcursor)
-BuildRequires:  pkgconfig(xft)
-BuildRequires:  pkgconfig(xi) >= 1.2
 ## CONDITIONAL BUILD REQUIREMENTS
 %if %{with wacom}
 BuildRequires:  pkgconfig(libwacom) >= 1.4
