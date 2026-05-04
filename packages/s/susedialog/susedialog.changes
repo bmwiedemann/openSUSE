@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 01 10:26:10 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260501.3969402:
+  * Add gettext support with initial set of 30 langs
+  * Improve gauge example which looked bit stuck
+  * Use examples.gif from the project
+  * Add examples of all features
+  * Add dialog-compatible gauge and radiolist support
+  * Same termination experience as with dialog
+  * Document user config and ctrl+t a11y toggle
+  * Add 'infobox' to widgets list in README
+
+-------------------------------------------------------------------
 Mon Apr 27 01:11:51 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260427.b33f52d:

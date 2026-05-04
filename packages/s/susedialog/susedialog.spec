@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           susedialog
-Version:        20260427.b33f52d
+Version:        20260501.3969402
 Release:        0
 Summary:        Fancy dialog replacement for openSUSE
 License:        MIT
@@ -52,6 +53,11 @@ install -Dpm0755 %{name} %{buildroot}%{_bindir}/%{name}
 install -Dpm0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 install -Dpm0644 susedialog.config %{buildroot}%{_sysconfdir}/%{name}/config
 install -Dpm0644 completion/bash/%{name} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -d %{buildroot}%{_datadir}/%{name}/po
+for catalog in po/*.po po/*.pot; do
+	[ -f "$catalog" ] || continue
+	install -m0644 "$catalog" %{buildroot}%{_datadir}/%{name}/po/
+done
 
 %files
 %license LICENSE
@@ -59,8 +65,11 @@ install -Dpm0644 completion/bash/%{name} %{buildroot}%{_datadir}/bash-completion
 %{_bindir}/susedialog
 %{_mandir}/man1/susedialog.1%{?ext_man}
 %{_datadir}/bash-completion/completions/%{name}
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/po
+%{_datadir}/%{name}/po/*.po
+%{_datadir}/%{name}/po/*.pot
 %dir %{_sysconfdir}/susedialog
 %config(noreplace) %{_sysconfdir}/susedialog/config
 
 %changelog
-
