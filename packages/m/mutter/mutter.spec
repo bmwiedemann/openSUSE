@@ -41,15 +41,10 @@ Patch4:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
-%ifnarch s390x
-BuildRequires:  (libxcvt if xorg-x11-server > 21)
-%endif
 BuildRequires:  meson >= 1.3.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-argcomplete
 BuildRequires:  python3-docutils
-BuildRequires:  xorg-x11-server
-BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
@@ -94,10 +89,17 @@ BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
 BuildRequires:  pkgconfig(wayland-eglstream)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.47
 BuildRequires:  pkgconfig(wayland-server) >= 1.23
+BuildRequires:  pkgconfig(xkbcommon) >= 0.4.3
+BuildRequires:  pkgconfig(xkbregistry)
+# Needed for Xwayland support
+%ifnarch s390x
+BuildRequires:  (libxcvt if xorg-x11-server > 21)
+%endif
+BuildRequires:  xorg-x11-server
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xau)
-BuildRequires:  pkgconfig(xcb-randr)
+BuildRequires:  pkgconfig(xcb-res)
 BuildRequires:  pkgconfig(xcomposite) >= 0.4
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xdamage)
@@ -105,15 +107,11 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes) >= 3
 BuildRequires:  pkgconfig(xi) >= 1.7.4
 BuildRequires:  pkgconfig(xinerama)
-BuildRequires:  pkgconfig(xkbcommon) >= 0.4.3
-BuildRequires:  pkgconfig(xkbcommon-x11)
-BuildRequires:  pkgconfig(xkbfile)
-BuildRequires:  pkgconfig(xkbregistry)
+BuildRequires:  pkgconfig(xkeyboard-config-2)
 BuildRequires:  pkgconfig(xkeyboard-config)
 BuildRequires:  pkgconfig(xrandr) >= 1.5.0
-BuildRequires:  pkgconfig(xrender)
-BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xwayland)
+#
 Requires:       glycin-loaders
 Requires:       gnome-settings-daemon
 Provides:       windowmanager
