@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  1 10:03:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Inject -DGLEW_MX into CFLAGS: fix build with new glew.
+
+-------------------------------------------------------------------
 Tue Dec 10 13:48:15 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building on Tumbleweed
