@@ -194,4 +194,14 @@
     <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002616 from dimstar)</comment>
     <requestid>1003148</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>7c5e9b23ec1df4dd13db8672f2f24a9b</srcmd5>
+    <version>0.2.9+5</version>
+    <time>1777898525</time>
+    <user>anag_factory</user>
+    <comment>- Add farstream-const-discards.patch: fix build against glibc 2.43
+  (initialization discards 'const' qualifier from pointer target
+  type).</comment>
+    <requestid>1350659</requestid>
+  </revision>
 </revisionlist>

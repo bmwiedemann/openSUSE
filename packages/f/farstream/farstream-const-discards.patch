@@ -1,0 +1,13 @@
+diff --git a/gst/fsrtpconference/fs-rtp-discover-codecs.c b/gst/fsrtpconference/fs-rtp-discover-codecs.c
+index e53fbdb2..39813d81 100644
+--- a/gst/fsrtpconference/fs-rtp-discover-codecs.c
++++ b/gst/fsrtpconference/fs-rtp-discover-codecs.c
+@@ -742,7 +742,7 @@ parse_codec_cap_list (GList *list, FsMediaType media_type)
+ static gboolean
+ klass_contains (const gchar *klass, const gchar *needle)
+ {
+-  gchar *found = strstr (klass, needle);
++  const gchar *found = strstr (klass, needle);
+ 
+   if (!found)
+     return FALSE;

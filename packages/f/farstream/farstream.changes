@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  4 10:15:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add farstream-const-discards.patch: fix build against glibc 2.43
+  (initialization discards 'const' qualifier from pointer target
+  type).
+
+-------------------------------------------------------------------
 Mon Aug 29 09:16:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Build farstream without gupnp support. Following this, drop

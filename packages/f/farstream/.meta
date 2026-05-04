@@ -6,5 +6,4 @@ generic API that makes it possible to write plugins for different
 streaming protocols, on the other side it offers an API for clients to
 use those plugins.
 </description>
-  <devel project="GNOME:Factory" package="farstream"/>
 </package>

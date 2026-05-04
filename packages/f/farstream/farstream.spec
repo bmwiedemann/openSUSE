@@ -36,6 +36,8 @@ Patch0:         farstream-plugin-path.patch
 Patch1:         farstream-glib-non-volatile.patch
 # PATCH-FIX-OPENSUSE farstream-drop-examples.patch -- Drop building examples
 Patch2:         farstream-drop-examples.patch
+# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/farstream/farstream/-/work_items/26
+Patch3:         farstream-const-discards.patch
 
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel >= 2.32
