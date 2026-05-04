@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 01 07:33:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.3.9:
+  No CLI-related changes
+  Dependency updates
+  * 0a2ba7c: chore(deps): bump SonarSource/sonarqube-scan-action
+    from 7.0.0 to 8.0.0 (cherry pick #27602 to release-3.3)
+    (#27610) (@dudinea)
+  * 184b8a9: chore(deps): bump go version to resolve CVEs (#27509)
+    (@crenshaw-dev)
+
+-------------------------------------------------------------------
 Wed Apr 22 05:46:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.3.8:
