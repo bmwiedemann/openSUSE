@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat May  2 12:37:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.1
+  * Close the TLS and DTLS sessions using an alert (#127).
+  * Enforce the RFC 2865 packet size limit (4096 bytes) when
+    packing outbound attributes, preventing a stack buffer
+    overflow if a caller supplies more attributes than fit in a
+    valid RADIUS packet. rc_pack_list() now returns -1 for packets
+    that would exceed 4096 bytes; previously oversized packets
+    were silently truncated.
+  * Compatibility: rc_avpair_gen() now appends decoded attributes
+    to the tail of the supplied VALUE_PAIR list instead of
+    prepending them to the head. Callers that pass a non-NULL
+    'pair' and rely on insertion order (e.g. newest-first
+    iteration, or rc_avpair_get() returning the most recently
+    decoded value on duplicate attributes) must be updated.
+  * The dictionary file is no longer required when using standard
+    RADIUS attributes. RFC 2865/2866/2867/2868/2869/3162/3576/
+    4675/4818/4849/6911 attributes are now built into the library;
+    the 'dictionary' config option is now needed only for
+    vendor-specific attributes.
+  * Compatibility notes on renamed attributes (apps using
+    numeric PW_* constants are unaffected in all cases):
+    * Attribute 2: the old Cistron dictionary used "Password";
+      the correct RFC 2865 name is "User-Password". The legacy
+      alias "Password" is retained so existing string-based
+      lookups continue to work.
+    * Attribute 5: the old Cistron dictionary used "NAS-Port-Id";
+      the correct RFC 2865 name is "NAS-Port". No alias is
+      possible because "NAS-Port-Id" is the canonical RFC 2869
+      name for attribute 87. Applications that reference attribute
+      5 by string must be updated to use "NAS-Port".
+    * Attribute 87: the old Cistron dictionary used
+      "NAS-Port-Id-String"; the correct RFC 2869 name is
+      "NAS-Port-Id". The legacy alias "NAS-Port-Id-String" is
+      retained.
+  * Replaced the old Cistron-era dictionary with a new one compiled
+    from the relevant IETF RFCs.
+
+-------------------------------------------------------------------
 Mon Apr  6 09:26:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.0
