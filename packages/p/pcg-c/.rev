@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>23795a8f91808279b9c76adf9c0a78ec</srcmd5>
+    <version>0.94.1</version>
+    <time>1777891904</time>
+    <user>anag_factory</user>
+    <comment>This seems like a mature and prolific project: https://www.pcg-random.org/ The original maintainer hasn't released in several years. This package provides a version I lightly modified, based on the maintainer's git repository (https://github.com/imneme/pcg-c).  Dealer's Choice uses a bundled version of pcg-c and if this is accepted into factory, I'll use this for the dealers-choice build on OpenSuse.</comment>
+    <requestid>1350394</requestid>
+  </revision>
+</revisionlist>
