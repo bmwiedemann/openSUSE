@@ -17,7 +17,7 @@
 
 
 %define gitname systemd-mcp
-%define vers 0.3.3
+%define vers 0.3.4
 #%%define verssuf -preview3
 #%%define verssuf_plain %%(echo %%{verssuf} | sed 's/^-//')
 Name:           mcp-server-systemd
@@ -33,7 +33,8 @@ BuildRequires:  go >= 1.24
 BuildRequires:  libcap-progs
 BuildRequires:  polkit
 BuildRequires:  systemd-devel
-Requires:       man
+# the server now itself checks if man is available
+Recommends:      man
 Recommends:     %{name}-gatekeeper
 
 %description
@@ -51,6 +52,7 @@ Contains the gatekeeper service which allows the user to access the system
 logs. The service itself listens to a socket to which is sends the file descriptors
 to the system log if authorized via polkit.
 
+# integrated tests checking also the man tool call, so man is needed here
 %package test
 Summary:        Test files for %{name}
 BuildArch:      noarch
