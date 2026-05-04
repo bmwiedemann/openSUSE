@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 01 19:58:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.112.0:
+  * Added Features
+    - Expand ignore rules to owned sub packages of distro packages
+      [#3368 #3326 @kzantow]
+  * Additional Changes
+    - update anchore dependencies [#3391 @anchore-oss-update-bot]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3391)
+
+-------------------------------------------------------------------
 Thu Apr 23 05:24:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.111.1:
