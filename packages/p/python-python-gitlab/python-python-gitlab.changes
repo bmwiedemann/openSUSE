@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 30 12:35:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.3.0:
+  * Bug Fixes
+    - api: Update CI/CD variable create and update attributes
+      (849301b)
+    - mixins: Register service account token classes in RotateMixin
+      CLI actions (2cf430b)
+  * Features
+    - api: Add full service account support at instance, group, and
+      project level (feb6ced)
+
+-------------------------------------------------------------------
 Sun Mar 29 18:21:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.2.0:

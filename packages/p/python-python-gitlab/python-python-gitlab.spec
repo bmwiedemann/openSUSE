@@ -17,7 +17,7 @@
 
 
 Name:           python-python-gitlab
-Version:        8.2.0
+Version:        8.3.0
 Release:        0
 Summary:        Python module for interacting with the GitLab API
 License:        LGPL-3.0-only
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module PyYAML >= 6.0.1}
 # relax constraint, as Tumbleweed already has 3.x
 BuildRequires:  %{python_module argcomplete >= 1.10.0 with %python-argcomplete < 4 }
 BuildRequires:  %{python_module gql >= 3.5.0 with %python-gql < 5 }
-BuildRequires:  %{python_module requests >= 2.32.0}
+BuildRequires:  %{python_module requests >= 2.33.1}
 BuildRequires:  %{python_module requests-toolbelt >= 1.0.0}
 # /SECTION
 # SECTION test requirements
@@ -47,7 +47,7 @@ BuildRequires:  %{python_module trio}
 # /SECTION
 # SECTION runtime requirements
 Requires:       python-PyYAML >= 6.0.1
-Requires:       python-requests >= 2.32.3
+Requires:       python-requests >= 2.33.1
 Requires:       python-requests-toolbelt >= 1.0.0
 # relax constraint, as Tumbleweed already has 3.x
 Requires:       (python-argcomplete >= 1.10.0 with python-argcomplete < 4)
