@@ -54,7 +54,9 @@ Sat Mar 21 15:10:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Mar  3 11:24:12 UTC 2026 - Andreas Schneider <asn@cryptomilk.org>
 
-- Update to version 65.14.3
+- Update to version 65.14.3 (
+      bsc#1255011, CVE-2025-65430,
+      bsc#1255012, CVE-2025-65431):
   * See https://github.com/pennersr/django-allauth/blob/65.14.3/ChangeLog.rst
     or the packaged ChangeLog.rst file.
 

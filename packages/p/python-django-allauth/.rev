@@ -248,4 +248,14 @@
     and authentication_failed (in allauth.mfa.signals).</comment>
     <requestid>1349436</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>cff8f020272dfa1031c5b4fc8a862b31</srcmd5>
+    <version>65.16.1</version>
+    <time>1777892108</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 65.14.3 (
+      bsc#1255011, CVE-2025-65430,
+      bsc#1255012, CVE-2025-65431):</comment>
+    <requestid>1350628</requestid>
+  </revision>
 </revisionlist>
