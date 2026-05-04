@@ -1,7 +1,7 @@
 #
 # spec file for package python-sip6
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-sip6
-Version:        6.14.0
+Version:        6.15.3
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        BSD-2-Clause
@@ -33,6 +33,7 @@ Source0:        https://github.com/Python-SIP/sip/archive/refs/tags/%{version}.t
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module packaging >= 24.2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -117,7 +118,7 @@ sed -i pyproject.toml \
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest discover -v test
+%pytest -v test
 
 %pre devel
 %python_libalternatives_reset_alternative sip-build

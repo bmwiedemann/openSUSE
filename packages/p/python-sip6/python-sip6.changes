@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Thu Apr 30 12:07:23 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 6.15.3:
+  * Fixed the handling of virtuals that return enums with a
+    non-int base type. Resolves #105
+  * A regression in v6.15.2 that caused a crash if
+    MinimumABIVersion was not specified was fixed. Resolves #106
+  * The use of the %MinimumABIVersion directive will be required in
+    SIP v7. Failing to use it now results in a deprecation warning.
+  * The tests now amend CXXFLAGS instead of overwriting them. This
+    fixes blhc (build log hardening check) in Debian.
+    Pull request #104.
+
+- Update to 6.15.2:
+  * The way in which the parser checks for duplicate attributes in
+    a scope is now quick and complete.
+  * Operators that take an enum as their first argument is now
+    fixed in ABI v13. The latest ABI v13 version is v13.11.1.
+  * The handling of the wrapped instance result of a call to a
+    method with the /Factory/ annotation has been fixed in the case
+    where result was created by a Python reimplementation of a C++
+    virtual.
+  * Fixed a warning about an unclosed file when generating code.
+  * Removed support for all remaining Python v2 exceptions.
+  * The tests are now included in the sdist. Resolves #103
+  * The mixins test was fixed so that it will run on Python v3.12
+    and earlier. Resolves #101
+  * Added tests including those related to enums and importing
+    wrapped modules.
+  * Tests may now use separate .h files rather then code embedded
+    in the .sip files.
+  * Added recommendations regarding the ways to specify the ABI
+    version to use.
+
+- Update to 6.15.1:
+  * A super-class of a disabled class was not ignored if it was
+    disabled itself.
+  * Fixed a regression in the generation of class definitions when
+    using old ABI versions that don't support arrays.
+  * Fixed a regression in the checking if a name clashed with the
+    name of a class in the same scope. Resolves #99
+  * Fixed a regression in the code generated for static functions
+    defined in hidden namespaces.
+
+- Update to 6.15.0:
+  * Python v3.9 is no longer supported. As a consequence PEP 604 is
+    now supported and type hints no longer use Optional and Union.
+  * A number of optimisations have been made to significantly
+    reduce the time taken to generate the bindings code. For
+    example the generation of the QGIS Python bindings (excluding
+    the compilation of the generated code) is around 5x faster.
+  * The test framework has been rewritten to use pytest instead of
+    unittest. Many tests have been added and the test suite can be
+    run for each supported ABI version. See the README.md file in
+    the test subdirectory for more details.
+  * The SIP_ABI pseudo-timeline was added to allow the ABI version
+    to be tested in %If directives.
+  * _Bool can now be used as a synonym for bool.
+  * The %SipModuleConfiguration directive is used by ABI v14 to
+    specify how the sip module is expected to behave. For example
+    it can be configured to behave like v12 or v13.
+  * The --option option has been added to the sip-module command
+    line tool in order to configure a generated sdist to behave
+    accordingly.
+  * In anticipation of the support for multiple interpreters and
+    free threading (to be implemented in ABI v14), and
+    multi_interpreter_support and gil_use have been added as
+    arguments to the %Module directive.
+  * The documentation for SIP_PYOBJECT and similar types has been
+    clarified to state that callables returning objects of those
+    types must return a new reference.
+  * Global or static string pointers (of any encoding) and Python
+    objects with NULL values are now interpreted as None rather
+    than causing a crash.
+  * Global or static void * variables caused invalid code to be
+    generated.
+  * Global or static explicitly signed or unsigned string pointers
+    caused invalid code to be generated.
+  * Global or static Py_hash_t and Py_ssize_t variables were being
+    completely ignored.
+  * The fully qualified names of simplewrapper, wrapper and
+    wrappertype in an embedded sip module are now correct.
+  * Attempting to delete a wrapped class instance attribute will
+    now raise an exception rather than crash.
+  * A regression that meant that generated wheels were not
+    compressed has been fixed.
+
+-------------------------------------------------------------------
 Wed Oct 29 09:27:08 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.14.0
