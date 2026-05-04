@@ -590,4 +590,27 @@
     <comment></comment>
     <requestid>1346479</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f0deb8c5ba3cabf65d9c98e5b1a5352c</srcmd5>
+    <version>3.5.0</version>
+    <time>1777922229</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.5.0:
+  * Remove the atexit callback. This callback caused greenlet
+    APIs to become unavailable far too soon during interpreter
+    shutdown. Now they remain available while all atexit
+    callbacks run. Sometime after Py_IsFinalizing becomes true,
+    they may begin misbehaving. Because the order in which C
+    extensions are finalized is undefined, C extensions that are
+    sensitive to this need to check the results of that function
+    before invoking greenlet APIs. As a convenience,
+    PyGreenlet_GetCurrent sets an exception and returns NULL when
+    this happens (and greenlet.getcurrent begins returning None);
+    other greenlet C API functions have undefined behaviour.
+    Methods invoked directly on pre-existing greenlet.greenlet
+    objects will continue to function at least until the greenlet
+    C extension has been garbage collected and finalized. See PR
+    508.</comment>
+    <requestid>1350569</requestid>
+  </revision>
 </revisionlist>
