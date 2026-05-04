@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  9 13:54:32 CET 2026 - Michael Schroeder <mls@suse.de>
+
+- update to 5.42.1
+  * fix transition to/from daylight savings time
+  * fix crashes in some two-variable "for" loop cases
+  * fix autovivification for ternary condition operators
+
+-------------------------------------------------------------------
 Fri Jul 11 12:40:31 CEST 2025 - mls@suse.de
 
 - update to 5.42.0

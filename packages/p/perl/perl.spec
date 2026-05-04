@@ -25,11 +25,11 @@
 
 %define versionlist_provides() %{lua:for i, n in ipairs(arg) do ; print(" perl(:MODULE_COMPAT_"..n..")") ; end}
 
-%define pversion 5.42.0
+%define pversion 5.42.1
 # set to nil when equal to pversion
-%global versionlist %nil
+%global versionlist 5.42.0
 Name:           perl%{?name_suffix}
-Version:        5.42.0
+Version:        5.42.1
 Release:        0
 Summary:        The Perl interpreter
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -40,6 +40,7 @@ Source1:        perl-rpmlintrc
 Source2:        macros.perl
 Source3:        README.macros
 Source4:        baselibs.conf
+Source100:      README.md
 Patch0:         perl-5.38.0.diff
 Patch3:         perl-nroff.diff
 Patch4:         perl-netcmdutf8.diff

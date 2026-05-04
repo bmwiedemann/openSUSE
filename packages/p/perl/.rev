@@ -1203,4 +1203,15 @@ I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should 
     <comment>- update to 5.42.0</comment>
     <requestid>1291949</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>1503788f817e19ef8d262e8be8b61686</srcmd5>
+    <version>5.42.1</version>
+    <time>1777891692</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.42.1
+  * fix transition to/from daylight savings time
+  * fix crashes in some two-variable &quot;for&quot; loop cases
+  * fix autovivification for ternary condition operators</comment>
+    <requestid>1350185</requestid>
+  </revision>
 </revisionlist>
