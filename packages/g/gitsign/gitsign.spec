@@ -17,7 +17,7 @@
 
 
 Name:           gitsign
-Version:        0.14.0
+Version:        0.15.1
 Release:        0
 Summary:        Keyless Git signing using Sigstore
 License:        Apache-2.0
