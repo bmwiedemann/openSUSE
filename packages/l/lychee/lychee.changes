@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 02 09:34:14 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update 001-exclude-octocrab.patch:
+  * update the patch to the latest dependencies
+- Update to version 0.24.2:
+  * chore: release v0.24.2 (#2166)
+  * chore: add pypi release (#1931)
+  * feat: user hints (#2021)
+  * chore: update all container images to debian trixie (#2177)
+  * chore(deps): bump the dependencies group with 8 updates
+  * ci: fix flaky binstall-check job (#2170)
+  * fix: typo in README.md (#2173)
+  * fix: update binstall metadata after 0.24.0 restructure (#2165)
+
+-------------------------------------------------------------------
 Sun Apr 26 12:51:42 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.24.1:

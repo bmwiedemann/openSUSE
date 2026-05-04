@@ -17,7 +17,7 @@
 
 
 Name:           lychee
-Version:        0.24.1
+Version:        0.24.2
 Release:        0
 Summary:        Fast, async, stream-based link checker written in Rust
 License:        Apache-2.0 OR MIT
