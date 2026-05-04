@@ -8176,4 +8176,12 @@
   mozilla-bmo2030493.patch</comment>
     <requestid>1349719</requestid>
   </revision>
+  <revision rev="485" vrev="1">
+    <srcmd5>11dc4978c710b8da28a7c339f1c78f1b</srcmd5>
+    <version>150.0.1</version>
+    <time>1777891726</time>
+    <user>anag_factory</user>
+    <comment>Mozilla Firefox 150.0.1 boo#1263110</comment>
+    <requestid>1350293</requestid>
+  </revision>
 </revisionlist>

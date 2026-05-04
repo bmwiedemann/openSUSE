@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Apr 28 15:44:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 150.0.1
+  MFSA 2026-35 (boo#1263110)
+  * CVE-2026-7320 (bmo#2027433)
+    Information disclosure due to incorrect boundary conditions
+    in the Audio/Video component
+  * CVE-2026-7322 (bmo#2021904, bmo#2022731, bmo#2027158, bmo#2027733,
+    bmo#2027973, bmo#2027976, bmo#2028231, bmo#2028731, bmo#2028886,
+    bmo#2029067, bmo#2029700, bmo#2029724, bmo#2029806, bmo#2029814,
+    bmo#2030108, bmo#2030111, bmo#2031524, bmo#2031921, bmo#2032040)
+    Memory safety bugs fixed in Firefox ESR 115.35.1, Firefox ESR
+    140.10.1, Thunderbird ESR 140.10.1, Firefox 150.0.1 and
+    Thunderbird 150.0.1
+  * CVE-2026-7323 (bmo#2028537, bmo#2029911, bmo#2031121, bmo#2033602)
+    Memory safety bugs fixed in Firefox ESR 140.10.1, Thunderbird
+    ESR 140.10.1, Firefox 150.0.1 and Thunderbird 150.0.1
+  * CVE-2026-7324 (bmo#2029419, bmo#2029717, bmo#2029769, bmo#2029886)
+    Memory safety bugs fixed in Firefox 150.0.1 and Thunderbird 150.0.1
+  * Fixed: Fixed an issue where Facebook and other websites might not
+    load properly for users with Bitdefender security software installed
+    (bmo#2034178)
+  * Fixed: Fixed an issue where denying a geolocation permission
+    prompt could cause Firefox to show the system permission
+    dialog again on a second attempt. (bmo#2034120)
+  * Fixed: Fixed an issue that prevented tabs from being added to
+    some older saved tab groups. (bmo#2031961)
+  * Fixed: Fixed a layout issue where some drop-down menus
+    expanded to display all list items at once. (bmo#2033117)
+- drop mozilla-bmo2031958.patch, included
+- requires NSS >= 3.122.2
+
+-------------------------------------------------------------------
 Mon Apr 27 12:18:31 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
 - Fix failing builds (boo#1258744)
