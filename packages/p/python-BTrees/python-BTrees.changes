@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  3 18:30:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4:
+  * Add support for automatically building and publishing
+    Windows/ARM64 wheels.
+  * Add support for automatically building and publishing source
+    distributions.
+
+-------------------------------------------------------------------
 Fri Dec  5 07:53:43 UTC 2025 - Anton Smorodskyi <anton.smorodskyi@suse.com>
 
 - Update to 6.3

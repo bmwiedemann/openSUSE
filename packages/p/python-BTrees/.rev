@@ -221,4 +221,16 @@
     <comment></comment>
     <requestid>1321250</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>885faf155007054e63491dde0fc06ea9</srcmd5>
+    <version>6.4</version>
+    <time>1777892072</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.4:
+  * Add support for automatically building and publishing
+    Windows/ARM64 wheels.
+  * Add support for automatically building and publishing source
+    distributions.</comment>
+    <requestid>1350562</requestid>
+  </revision>
 </revisionlist>
