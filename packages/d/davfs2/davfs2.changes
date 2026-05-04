@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  1 08:08:24 UTC 2026 - munix9@googlemail.com
+
+- update to 1.7.3:
+  * Add musl support
+  * Fix macro-substitution in manual pages
+  * Remove hardcoded neon versions from configure.ac
+
+-------------------------------------------------------------------
 Mon Oct 27 14:53:12 UTC 2025 - munix9@googlemail.com
 
 - update to 1.7.2:
