@@ -38,7 +38,7 @@ Source1:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name
 # https://src.fedoraproject.org/rpms/PDAL/blob/rawhide/f/PDAL_unbundle.patch
 # Upstream is not interested in this patch/change, so we'll have to keep it around
 Patch0:         PDAL_unbundle.patch
-# GDAL headers are located in %{_includedir}/gdal
+# GDAL headers are located in %%{_includedir}/gdal
 Patch1:         PDAL-fix-gdal-includes.patch
 # Drop venored gtest
 Patch2:         PDAL-remove-gtest.patch
@@ -78,16 +78,16 @@ BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  cmake(GTest)
-# Needed for documentation but we don't build it.
+# Needed for documentation but we don't build it (see comment below make_build)
 # BuildRequires:  dblatex
 # BuildRequires:  doxygen
-# BuildRequires:  python-docutils
-# BuildRequires:  python-Sphinx
 # BuildRequires:  python3-docutils
 # BuildRequires:  python3-Sphinx
+# BuildRequires:  python3-breathe
 # For doc but only in TW
-# BuildRequires:  python-sphinxcontrib-breathe
-# Doesn't exist on obs BuildRequires:  python3-breathe
+# %%if 0%%{?suse_version} > 1550
+# BuildRequires:  python3-sphinxcontrib-breathe
+# %%endif
 Requires:       lib%{name}%{soname} = %{version}
 Provides:       pdal = %{version}
 # https://github.com/connormanning/arbiter bundled in vendor/arbiter
@@ -188,6 +188,9 @@ find ./doc/ -type f -iname "*.ai" -delete
 export CXX=g++-12
 %endif
 
+# Note on -DBUILD_DOCS=OFF: doc building via cmake requires jupyter-book, which
+# is not packaged
+
 %cmake \
     -DCMAKE_VERBOSE_MAKEFILE=ON  \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \
@@ -195,7 +198,6 @@ export CXX=g++-12
     -DLIB_INSTALL_DIR=%{_libdir} \
     -DINCLUDE_INSTALL_DIR=%{_includedir} \
     -DENABLE_CTEST=ON \
-    -Dgtest_build_tests=OFF \
     -DWITH_TESTS=ON \
     -DUSE_EXTERNAL_GTEST_DEFAULT=ON \
     -DUSE_EXTERNAL_GTEST=ON \
@@ -204,20 +206,37 @@ export CXX=g++-12
     -DPOSTGRESQL_INCLUDE_DIR=%{_includedir}/pgsql \
     -DGEOTIFF_INCLUDE_DIR=%{_includedir}/libgeotiff \
     -DBUILD_SHARED_LIBS=ON \
-    -DNUMPY_INCLUDE_DIR=%{_libdir}/python%{py3_ver}/site-packages/numpy \
-    -DBUILD_PLUGIN_PYTHON=ON \
-    -DBUILD_PLUGIN_SQLITE=ON \
-    -DBUILD_PLUGIN_HEXBIN=OFF \
-    -DBUILD_PLUGIN_ICEBRIDGE=OFF \
-    -DBUILD_PLUGIN_NITF=OFF \
+    -DWITH_BACKTRACE=ON \
+    -DWITH_GCS=ON \
+    -DBUILD_TOOLS_LASDUMP=ON \
     -DBUILD_PLUGIN_PGPOINTCLOUD=ON \
-    -DBUILD_PGPOINTCLOUD_TESTS:BOOL=OFF \
     -DBUILD_PLUGIN_GREYHOUND=OFF \
     -DBUILD_PLUGIN_PCL=OFF \
+    -DBUILD_PLUGIN_CPD=OFF \
+    -DBUILD_PLUGIN_DRACO=OFF \
+    -DBUILD_PLUGIN_ICEBRIDGE=OFF \
+    -DBUILD_PLUGIN_HDF=OFF \
+    -DBUILD_PLUGIN_MATLAB=OFF \
+    -DBUILD_PLUGIN_NITF=OFF \
+    -DBUILD_PLUGIN_OPENSCENEGRAPH=OFF \
+    -DBUILD_PLUGIN_RIVLIB=OFF \
+    -DBUILD_PLUGIN_RDBLIB=OFF \
+    -DBUILD_PLUGIN_MBIO=OFF \
+    -DBUILD_PLUGIN_FBX=OFF \
+    -DBUILD_PLUGIN_TEASER=OFF \
+    -DBUILD_PLUGIN_TILEDB=OFF \
+    -DBUILD_PLUGIN_TRAJECTORY=OFF \
+    -DBUILD_PLUGIN_E57=OFF \
+    -DBUILD_PLUGIN_ARROW=OFF \
+    -DBUILD_PLUGIN_SPZ=OFF \
+    -DBUILD_TOOLS_NITFWRAP=OFF \
+    -DWITH_ABSEIL=OFF \
+    -DBUILD_PGPOINTCLOUD_TESTS=OFF \
+    -DBUILD_DOCS=OFF \
     ..
 
 %make_build
-# Make documentation once fixed upstream
+# Building the docs requires jupyter-book, which is not packaged
 # make doxygen html man pdf
 
 %install
@@ -249,21 +268,22 @@ sed -i 's,/usr//usr/lib64,%{_libdir},g' %{buildroot}/%{_libdir}/cmake/PDAL/PDALC
 #popd
 
 %check
+# We set a custom test timeout of 60s, since some tests will run until the default timeout,
+# which is about 20 minutes
+%define test_timeout 60
 ## test the compiled code (see doc/project/testing.rst)
-# A custom timeout of 60s is set. This avoids having tests timeout after the default
-# timeout (about 20 minutes)
 # we skip tests for selected architectures which need upstream fixes
 %ifarch armv7hl aarch64 ppc64le s390x
-%ctest --output-on-failure --timeout 60 || true
+%ctest --output-on-failure --timeout %{test_timeout} || true
 %else
 ## we skip the PG test (BUILD_PGPOINTCLOUD_TESTS:BOOL=OFF):
 # PGUSER=pdal PGPASSWORD=password PGHOST=localhost PGPORT=5432 ctest -V
 %ifarch i686
 # https://github.com/PDAL/PDAL/issues/3501 should work with PROJ 8.2 and gdal 3.2.3.
-%ctest --timeout 60 || :
+%ctest --timeout %{test_timeout} || :
 %else
 # https://github.com/PDAL/PDAL/issues/3501
-%ctest  --timeout 60 || :
+%ctest  --timeout %{test_timeout} || :
 %endif
 %endif
 

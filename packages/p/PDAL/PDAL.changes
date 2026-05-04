@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 27 19:30:02 UTC 2026 - Enno Tensing <tenno+suse@suij.in>
+
+- Spec-file cleanups
+  * Remove unused cmake options
+  * Add all options that we could set, only set those that were
+    set before or that are on by default
+  * Define the custom test timeout as a variable
+  * Document why we can not build the documentation (it requires
+    the jupyter-book package, which we don't have)
+
+-------------------------------------------------------------------
 Thu Apr  2 16:30:37 UTC 2026 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to PDAL 2.10.1
