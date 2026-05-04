@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Sun May  3 21:00:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2:
+  * VÖEN (Vergi ödəyicisinin eyniləşdirmə nömrəsi, Azerbaijan
+    tax number)
+  * Belgian OGM-VCS
+  * Leitweg-ID, a buyer reference or routing identifier for
+    electronic invoices
+  * European Excise Number (thanks Cédric Krier)
+  * n° d'accise (French number to identify taxpayers of excise
+    taxes)
+  * RCS (French trade registration number for commercial
+    companies)
+  * NUIT (Número Único de Identificação Tributaria, Mozambique
+    tax number)
+  * NINEA (Numéro d'Identification Nationale des Entreprises et
+    Associations, Senegal tax number)
+  * Fix handling of decimals in Application Identifiers (thanks
+    zipus)
+  * Update list of valid Chinese counties (thanks 电子旅人 and Luca)
+  * Mark more Romanian CNP county codes as valid (thanks
+    luella-s)
+  * Support Latvian personal codes issued after 2017 (thanks José
+    Luis López Pino)
+  * Provide aliases for Estonian numbers (thanks Joni Saarinen)
+  * Add validation of country code in BIC (thanks Luuk Gubbels)
+  * Add function to convert a French VAT number into a SIREN
+    (thanks Fabien MICHEL)
+  * Add a function to format a French SIREN (thanks Fabien
+    MICHEL)
+  * Add extra validation of Belgian VAT numbers (thanks Antonio
+    Ginestar)
+  * Add support for nace revision 2.1 (thanks KathrinM)
+  * Support the new Romanian ONRC format (thanks dotbit1)
+  * Support new format for Brazilian CNPJ (thanks Cloves
+    Oliveira)
+  * Add python_requires to setup.py to avoid installation with
+    older Python versions
+  * Remove superfluous modulus operation in Japanese Individual
+    Number
+  * Only support Python 3.8 and newer (drop Python 2 support so
+    major version bump)
+  * Include type hints for mypy (thanks David Salvisberg)
+  * eID Number (Belgian electronic Identity Card Number)
+  * SSN, INSZ, NISS (Belgian social security number)
+  * CAE (Código de Actividad y Establecimiento, Spanish
+    activity establishment code)
+  * NIK (Nomor Induk Kependudukan, Indonesian identity number)
+  * ISNI (International Standard Name Identifier) (thanks
+    Henning Kage)
+  * IN (個人番号, kojin bangō, Japanese Individual Number) (thanks
+    Luca Sicurello)
+  * Identiteitskaartnummer, Paspoortnummer (the Dutch passport
+    number)
+  * Fix Czech RČ check digit validation (thanks Jan Chaloupecky)
+  * Support Ecuador public RUC with juridical format (thanks
+    Leandro)
+  * Allow Uruguay RUT numbers starting with 22
+  * Add missing music industry ISRC country codes (thanks Victor
+    Sordoillet)
+  * Support 16 digit Indonesian NPWP numbers (thanks Chris Smola)
+  * Adjust Swiss uid module to accept numbers without CHE prefix
+    (thanks Jeff Horemans)
+  * Update Irish PPS validator to support new numbers (thanks
+    Olly Middleton)
+  * Add missing vat alias for Thailand VAT number (thanks Leandro
+    Regueiro)
+  * Add more tests for the Verhoeff implementation
+  * Ensure that certificate verification can be configured using
+    the verify
+  * argument when using web services
+  * The check_dgii() and search_dgii() functions from the
+    Dominican Republic Cedula
+  * and RNC modules no longer work due to a change in the DGII
+    online web service
+  * Various small code cleanups (thanks David Salvisberg)
+  * Various small fixes to update scripts
+
+-------------------------------------------------------------------
 Tue Jan  7 12:10:52 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update license to LGPL-2.1-or-later

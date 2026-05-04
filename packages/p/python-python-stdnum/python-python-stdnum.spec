@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-stdnum
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %global modname python-stdnum
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        1.20
+Version:        2.2
 Release:        0
 Summary:        Python module to handle standardized numbers and codes
 License:        LGPL-2.1-or-later
 URL:            https://arthurdejong.org/python-stdnum/
-Source:         https://files.pythonhosted.org/packages/source/p/python-stdnum/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-stdnum/python_stdnum-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
@@ -32,8 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       python-PySimpleSOAP
-Suggests:       python-suds
+Suggests:       python-zeep
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,7 +44,7 @@ Apart from the validate() function, modules generally provide extra
 parsing, validation, formatting or conversion functions.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n python_stdnum-%{version}
 
 %build
 %pyproject_wheel

@@ -140,4 +140,41 @@
     <comment></comment>
     <requestid>1235596</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7442e9ebfae35546ba867567096a8139</srcmd5>
+    <version>2.2</version>
+    <time>1777892088</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.2:
+  * VÖEN (Vergi ödəyicisinin eyniləşdirmə nömrəsi, Azerbaijan
+    tax number)
+  * Belgian OGM-VCS
+  * Leitweg-ID, a buyer reference or routing identifier for
+    electronic invoices
+  * European Excise Number (thanks Cédric Krier)
+  * n° d'accise (French number to identify taxpayers of excise
+    taxes)
+  * RCS (French trade registration number for commercial
+    companies)
+  * NUIT (Número Único de Identificação Tributaria, Mozambique
+    tax number)
+  * NINEA (Numéro d'Identification Nationale des Entreprises et
+    Associations, Senegal tax number)
+  * Fix handling of decimals in Application Identifiers (thanks
+    zipus)
+  * Update list of valid Chinese counties (thanks 电子旅人 and Luca)
+  * Mark more Romanian CNP county codes as valid (thanks
+    luella-s)
+  * Support Latvian personal codes issued after 2017 (thanks José
+    Luis López Pino)
+  * Provide aliases for Estonian numbers (thanks Joni Saarinen)
+  * Add validation of country code in BIC (thanks Luuk Gubbels)
+  * Add function to convert a French VAT number into a SIREN
+    (thanks Fabien MICHEL)
+  * Add a function to format a French SIREN (thanks Fabien
+    MICHEL)
+  * Add extra validation of Belgian VAT numbers (thanks Antonio
+    Ginestar)</comment>
+    <requestid>1350591</requestid>
+  </revision>
 </revisionlist>
