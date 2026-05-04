@@ -240,4 +240,16 @@
   * ensure file data are only sent as 1 parameter</comment>
     <requestid>1349219</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>603f1fb96dca74ef6d5f95f109c618d2</srcmd5>
+    <version>2.33.0</version>
+    <time>1777892076</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.33.0:
+  * **api:** api update
+  * **api:** correct prompt_cache_retention enum value from in-
+    memory to in_memory
+  * **ci:** remove release-doctor workflow</comment>
+    <requestid>1350567</requestid>
+  </revision>
 </revisionlist>

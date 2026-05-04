@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  3 19:08:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.33.0:
+  * **api:** api update
+  * **api:** correct prompt_cache_retention enum value from in-
+    memory to in_memory
+  * **ci:** remove release-doctor workflow
+
+-------------------------------------------------------------------
 Sat Apr 25 11:00:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.32.0:
