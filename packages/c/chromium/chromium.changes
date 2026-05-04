@@ -1,12 +1,20 @@
 -------------------------------------------------------------------
-Sat Apr 25 07:23:43 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+Sun May  3 14:15:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- promote Chromium 148 to early stable
+- Fix build failure in seccomp_bpf sandbox
+  add chromium-fix-sandbox-with-glibc-2.43.patch
 
 -------------------------------------------------------------------
-Thu Apr 23 19:03:26 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+Thu Apr 30 06:20:24 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Chromium 148.0.7778.56 (beta released 2026-04-23)
+- Chromium 148.0.7778.96 (earyly stable release 2026-04-29):
+  * no explicit changelog, includes security fixes from 
+    147.0.7727.137 (boo#1263158)
+
+-------------------------------------------------------------------
+Wed Apr 29 09:24:58 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 148.0.7778.56 (early stable released 2026-04-23)
 - bump version in buildrequires for gn (0.20260331)
   (needs variable inputs added in March 2026) 
 - added patches:
@@ -43,6 +51,41 @@ Thu Apr 23 19:03:26 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
   drop: third_party/libaom/source/libaom/third_party/SVT-AV1
 - force link to system gperf binary instead of hardcoded x86
   in tree copy
+
+-------------------------------------------------------------------
+Tue Apr 28 20:50:03 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 147.0.7727.137 (boo#1263158)
+  * CVE-2026-7363: Use after free in Canvas
+  * CVE-2026-7361: Use after free in iOS
+  * CVE-2026-7344: Use after free in Accessibility
+  * CVE-2026-7343: Use after free in Views
+  * CVE-2026-7333: Use after free in GPU
+  * CVE-2026-7360: Insufficient validation of untrusted input in Compositing
+  * CVE-2026-7359: Use after free in ANGLE
+  * CVE-2026-7358: Use after free in Animation
+  * CVE-2026-7334: Use after free in Views
+  * CVE-2026-7357: Use after free in GPU
+  * CVE-2026-7356: Use after free in Navigation
+  * CVE-2026-7354: Out of bounds read and write in Angle
+  * CVE-2026-7353: Heap buffer overflow in Skia
+  * CVE-2026-7352: Use after free in Media
+  * CVE-2026-7351: Race in MHTML
+  * CVE-2026-7350: Use after free in WebMIDI
+  * CVE-2026-7349: Use after free in Cast
+  * CVE-2026-7348: Use after free in Codecs
+  * CVE-2026-7335: Use after free in media
+  * CVE-2026-7336: Use after free in WebRTC
+  * CVE-2026-7337: Type Confusion in V8
+  * CVE-2026-7347: Use after free in Chromoting
+  * CVE-2026-7346: Inappropriate implementation in Tint
+  * CVE-2026-7345: Insufficient validation of untrusted input in Feedback
+  * CVE-2026-7338: Use after free in Cast
+  * CVE-2026-7342: Use after free in WebView
+  * CVE-2026-7341: Use after free in WebRTC
+  * CVE-2026-7339: Heap buffer overflow in WebRTC
+  * CVE-2026-7340: Integer overflow in ANGLE
+  * CVE-2026-7355: Use after free in Media
 
 -------------------------------------------------------------------
 Wed Apr 22 17:54:34 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>

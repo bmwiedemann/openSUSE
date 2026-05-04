@@ -6412,4 +6412,14 @@ https://src.opensuse.org/chromium/chromium/commit/865f270c0c9ba77f4a37d6fc6210f7
     <comment>Chromium 148 early stable</comment>
     <requestid>1349179</requestid>
   </revision>
+  <revision rev="517" vrev="1">
+    <srcmd5>d6704974ff284b34b86268014ee482e6</srcmd5>
+    <version>148.0.7778.96</version>
+    <time>1777891777</time>
+    <user>anag_factory</user>
+    <comment>- Fix build failure in seccomp_bpf sandbox
+
+Chromium 148.0.7778.96 (earyly stable release 2026-04-29)</comment>
+    <requestid>1350524</requestid>
+  </revision>
 </revisionlist>
