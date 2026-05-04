@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 03 14:56:51 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.14.3:
+  * This release introduces Windows service support, along with full TSIG 
+    verification across DoH, DoH3, QUIC, and gRPC transports, and improved
+    TSIG propagation and DoH request validation. 
+  * It also adds optional TLS for the metrics endpoint. 
+  * Performance and stability are improved through cache prefetching, QUIC 
+    optimizations, and a new max_age option in the forward plugin. 
+  * Additional updates include enhanced SVCB/HTTPS support, improved zone 
+    transfer behavior, and various DNSSEC, PROXY protocol, and concurrency
+    fixes. 
+  * The release is built with Go 1.26.2, which includes security
+    fixes addressing CVE-2026-32282, CVE-2026-32289, CVE-2026-33810, 
+    CVE-2026-27144, CVE-2026-27143, CVE-2026-32288, CVE-2026-32283, 
+    and CVE-2026-27140, and also includes fixes for CVE-2026-32936, 
+    CVE-2026-33190, CVE-2026-33489, CVE-2026-32934, and CVE-2026-35579.
+
+-------------------------------------------------------------------
 Sat Mar 07 15:16:57 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.14.2:
