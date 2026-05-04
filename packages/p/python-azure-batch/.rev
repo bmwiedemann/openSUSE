@@ -177,4 +177,17 @@
     <comment></comment>
     <requestid>1326982</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>acb4615cfd7fbe6f5e9fa3aae464d4bd</srcmd5>
+    <version>15.1.0</version>
+    <time>1777899514</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 15.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from pyproject.toml (forwarded request 1350618 from glaubitz)</comment>
+    <requestid>1350682</requestid>
+  </revision>
 </revisionlist>
