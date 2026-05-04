@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri May 01 07:47:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.6:
+  * Features:
+    - Feature #2658 Support regex matching for package name
+      overrides.
+    - Feature #2510 Scan Homebrew inventory using git repository
+      metadata.
+  * Fixes:
+    - Bug #2750 Sanitize \r/\n in default/table/vertical output to
+      prevent GitHub Actions workflow command injection.
+    - Bug #2641 Correctly output packages from osv-scanner.json
+      source in spdx format.
+    - Bug #2729 Increase color contrast of vulnerability stats.
+    - Bug #2664 Remove second newline at end of vertical output.
+    - Bug #2669 Sanitize \r in gh-annotations to prevent GitHub
+      Actions workflow command injection.
+  * Misc:
+    - Update osv-scalibr to v0.4.6-0.20260428235529-7791e288d6c1.
+    - Update Go version to 1.26.2 (#2706).
+
+-------------------------------------------------------------------
+Wed Mar 25 06:04:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.5 (.4 was not released):
+  * Features:
+    - Feature #2571 Enable transitive scanning for Python
+      requirements.txt files using the deps.dev API.
+    - Feature #2649 Add ability to allow unsafe plugins, logging a
+      warning when any unsafe plugin is enabled.
+  * Fixes:
+    - Bug #2630 Improve startup performance on Windows Terminal by
+      updating lipgloss.
+    - Bug #2599 Ensure the package deprecation enricher respects
+      the same configuration as other plugins.
+    - Bug #2600 Ensure the Java extractor plugin for call analysis
+      respects the same configuration as other plugins.
+  * Misc:
+    - Update osv-scalibr from v0.4.2 to v0.4.5. Release notes:
+      v0.4.3, v0.4.4, v0.4.5.
+    - Fix broken release workflow.
+  * Dependencies
+    - build(deps): bump github.com/cloudflare/circl from 1.6.1 to
+      1.6.3 in the go_modules group across 1 directory (#2550)
+    - build(deps): bump github.com/docker/cli from
+      28.3.3+incompatible to 29.2.0+incompatible in the go_modules
+      group across 1 directory (#2590)
+    - build(deps): bump github.com/modelcontextprotocol/go-sdk from
+      1.4.0 to 1.4.1 in the go_modules group across 1 directory
+      (#2659)
+    - build(deps-dev): bump json from 2.18.1 to 2.19.2 in /docs in
+      the bundler group across 1 directory (#2660)
+    - build(deps-dev): bump nokogiri from 1.18.10 to 1.19.1 in
+      /docs in the bundler group across 1 directory (#2536)
+    - chore(deps): lock file maintenance (#2563)
+    - chore(deps): update alpine:3.23 docker digest to 2510918
+      (#2561)
+    - chore(deps): update docker/setup-buildx-action action to v4
+      (#2621)
+    - chore(deps): update golang docker tag to v1.26.1 (#2618)
+    - chore(deps): update ruby:3 docker digest to cddc8a7 (#2647)
+    - chore(deps): update workflows (#2562)
+    - chore(deps): update workflows (#2620)
+    - chore(deps): update workflows (#2648)
+    - chore(deps): update workflows (major) (#2569)
+    - fix(deps): update module
+      github.com/modelcontextprotocol/go-sdk to v1.3.1 [security]
+      (#2560)
+    - fix(deps): update module google.golang.org/grpc to v1.79.3
+      [security] (#2655)
+    - fix(deps): update osv-scanner minor (#2566)
+    - fix(deps): update osv-scanner minor (#2619)
+
+-------------------------------------------------------------------
 Thu Feb 12 06:28:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.3.3:
