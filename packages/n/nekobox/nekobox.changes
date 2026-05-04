@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  4 12:51:19 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.11.7
+- Fix deletion items count
+- Drop lmdb option for Windows builds
+- Show 'proxy choose' dialog when system proxy clicked
+
+-------------------------------------------------------------------
 Mon May  4 08:58:27 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.11.6
