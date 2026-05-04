@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyQt6-sip
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 # Check PyPI for version: https://pypi.org/project/PyQt6-sip/
 Name:           python-PyQt6-sip
-Version:        13.10.2
+Version:        13.11.1
 Release:        0
 Summary:        The sip module support for PyQt6
 License:        BSD-2-Clause

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 30 11:56:44 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 13.11.1
+  * Added support for Python v3.14.
+  * Python v3.10 or later is required.
+
+-------------------------------------------------------------------
 Mon Jun  9 17:26:03 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 13.10.2
