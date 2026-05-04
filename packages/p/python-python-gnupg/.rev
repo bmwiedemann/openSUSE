@@ -247,4 +247,16 @@ providing the results. (forwarded request 695023 from mcepl)</comment>
     * Fix #255: Improve handling of exceptions raised in background threads.</comment>
     <requestid>1299387</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c7be1879b89783b5303f606aa59f94db</srcmd5>
+    <version>0.5.6</version>
+    <time>1777892087</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.6:
+  * Fix #261: Ensure capability, fingerprint and keygrip are added
+    to subkey_info.
+  * Set username in the result when Verify uses a signing key that
+    has expired or been revoked.</comment>
+    <requestid>1350588</requestid>
+  </revision>
 </revisionlist>

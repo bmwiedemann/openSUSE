@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gnupg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-gnupg
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 Summary:        A wrapper for the GNU Privacy Guard (GPG or GnuPG)
 License:        BSD-3-Clause
 URL:            https://pythonhosted.org/python-gnupg/index.html
-Source:         https://files.pythonhosted.org/packages/source/p/python-gnupg/python-gnupg-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-gnupg/python_gnupg-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
