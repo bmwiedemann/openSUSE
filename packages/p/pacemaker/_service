@@ -8,10 +8,10 @@
     To update to a new release, change "revision" to the desired
     git commit hash and bump "version" if necessary
 
-    <param name="version">3.0.1</param>
+    <param name="version">3.0.2</param>
 -->
-    <param name="versionformat">3.0.1+%cd.%h</param>
-    <param name="revision">f7f28ab32c</param>
+    <param name="versionformat">3.0.2+%cd.%h</param>
+    <param name="revision">40d19b75f1</param>
     <param name="changesgenerate">enable</param>
   </service>
 

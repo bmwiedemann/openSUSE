@@ -128,7 +128,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        3.0.1+20251208.f7f28ab3
+Version:        3.0.2+20260429.40d19b75
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -196,6 +196,8 @@ Requires:       %{name}-cluster-libs = %{version}-%{release}
 %endif
 Requires:       %{name}-libs = %{version}-%{release}
 Requires:       corosync >= 2.0.0
+# DLM controld RA requires xmllint
+Requires:       libxml2-tools
 Requires:       python3
 %if %{with linuxha}
 Requires:       python3-%{name} = %{version}-%{release}

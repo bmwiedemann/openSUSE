@@ -2577,4 +2577,41 @@ jsc#PED-14899
 - controller: Don't purge transient attributes on node loss (gh#ClusterLabs/pacemaker#3991) (forwarded request 1331597 from yan_gao)</comment>
     <requestid>1331598</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>43c188a3e2bb74b11f12551c6c1a65f6</srcmd5>
+    <version>3.0.2+20260429.40d19b75</version>
+    <time>1777891712</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.2+20260429.40d19b75:
+- libpe_status: Avoid leaking a pcmk_resource_t's xml/orig_xml
+
+- Update to version 3.0.2+20260428.6bbaaf3c:
+- Revert &quot;API: libraries: Update version numbers in so names&quot;
+
+- Update to version 3.0.2+20260424.8b5ef3b5 (Pacemaker-3.0.2-rc1):
+- ChangeLog: update for 3.0.2-rc1 release
+
+- Update to version 3.0.1+20260422.a77694f0:
+- tools: Avoid memory leak in crm_resource --clear
+- libpacemaker, tools: Avoid mem leak in crm_simulate/pcmk_simulate()
+- libcib: Avoid memory leak when processing CIB upgrade
+- libpe_status: Use first operations child when expanding template
+- libpe_status: Improve no resources message in unpack_template()
+- daemons: Only log a message if we're falling back.
+- update version information for 3.0.2
+- libraries: Update version numbers in so names
+- libraries: update shared object versions for 3.0.2
+- NLS: update translations before 3.0.2-rc1
+- libcrmcommon: Deprecate anonymous authentication.
+- libcrmcommon: Deprecate remote-clear-port.
+- libcib: Add support for PSK authentication for remote CIB ops.
+- daemons: Add support for PSK authentication for remote CIB ops.
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+  * bug-812269_pacemaker-fencing-device-register-messages.patch
+
+- Update to version 3.0.1+20260417.af202226:
+- libpacemaker: Fix a memory leak in inject_action. (forwarded request 1350240 from yan_gao)</comment>
+    <requestid>1350241</requestid>
+  </revision>
 </revisionlist>

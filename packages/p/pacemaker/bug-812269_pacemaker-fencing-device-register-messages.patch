@@ -4,29 +4,29 @@ Date:   Thu Apr 18 16:00:02 2013 +0800
 
     Log: fencing: Drop the severity of the messages on registering a stonith device
 
-Index: pacemaker-3.0.0+20250416.6085fd03bf/daemons/fenced/fenced_commands.c
+Index: pacemaker-3.0.1+20260422.a77694f0/daemons/fenced/fenced_commands.c
 ===================================================================
---- pacemaker-3.0.0+20250416.6085fd03bf.orig/daemons/fenced/fenced_commands.c
-+++ pacemaker-3.0.0+20250416.6085fd03bf/daemons/fenced/fenced_commands.c
-@@ -1439,7 +1439,7 @@ fenced_device_register(const xmlNode *de
+--- pacemaker-3.0.1+20260422.a77694f0.orig/daemons/fenced/fenced_commands.c
++++ pacemaker-3.0.1+20260422.a77694f0/daemons/fenced/fenced_commands.c
+@@ -1553,7 +1553,7 @@ fenced_device_register(const xmlNode *de
          g_hash_table_replace(device_table, device->id, device);
  
          ndevices = g_hash_table_size(device_table);
--        crm_notice("Added '%s' to device list (%d active device%s)",
-+        crm_info("Added '%s' to device list (%d active device%s)",
-                    device->id, ndevices, pcmk__plural_s(ndevices));
+-        pcmk__notice("Added '%s' to device list (%d active device%s)",
++        pcmk__info("Added '%s' to device list (%d active device%s)",
+                      device->id, ndevices, pcmk__plural_s(ndevices));
      }
  
-Index: pacemaker-3.0.0+20250416.6085fd03bf/daemons/fenced/fenced_cib.c
+Index: pacemaker-3.0.1+20260422.a77694f0/daemons/fenced/fenced_cib.c
 ===================================================================
---- pacemaker-3.0.0+20250416.6085fd03bf.orig/daemons/fenced/fenced_cib.c
-+++ pacemaker-3.0.0+20250416.6085fd03bf/daemons/fenced/fenced_cib.c
-@@ -516,7 +516,7 @@ update_cib_cache_cb(const char *event, x
+--- pacemaker-3.0.1+20260422.a77694f0.orig/daemons/fenced/fenced_cib.c
++++ pacemaker-3.0.1+20260422.a77694f0/daemons/fenced/fenced_cib.c
+@@ -538,7 +538,7 @@ update_cib_cache_cb(const char *event, x
+                  */
                  break;
-             case -pcmk_err_diff_resync:
              case -pcmk_err_diff_failed:
--                crm_notice("[%s] Patch aborted: %s (%d)", event, pcmk_strerror(rc), rc);
-+                crm_info("[%s] Patch aborted: %s (%d)", event, pcmk_strerror(rc), rc);
-                 pcmk__xml_free(local_cib);
-                 local_cib = NULL;
+-                pcmk__notice("[%s] Patch aborted: %s (%d)", event,
++                pcmk__info("[%s] Patch aborted: %s (%d)", event,
+                              pcmk_strerror(rc), rc);
+                 g_clear_pointer(&local_cib, pcmk__xml_free);
                  break;

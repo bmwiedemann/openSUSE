@@ -8,19 +8,16 @@ Subject: [PATCH] Log: pacemakerd: downgrade the warning about
  daemons/pacemakerd/pacemakerd.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/daemons/pacemakerd/pacemakerd.c b/daemons/pacemakerd/pacemakerd.c
-index 509b0f824..157df72ad 100644
---- a/daemons/pacemakerd/pacemakerd.c
-+++ b/daemons/pacemakerd/pacemakerd.c
-@@ -1325,7 +1325,7 @@ main(int argc, char **argv)
+Index: pacemaker-3.0.1+20260114.e8e400ec/daemons/pacemakerd/pacemakerd.c
+===================================================================
+--- pacemaker-3.0.1+20260114.e8e400ec.orig/daemons/pacemakerd/pacemakerd.c
++++ pacemaker-3.0.1+20260114.e8e400ec/daemons/pacemakerd/pacemakerd.c
+@@ -464,7 +464,7 @@ main(int argc, char **argv)
          startup_trigger = mainloop_add_trigger(G_PRIORITY_HIGH, init_children_processes, NULL);
      } else {
          if (running_with_sbd) {
--            crm_warn("Enabling SBD_SYNC_RESOURCE_STARTUP would (if supported "
-+            crm_notice("Enabling SBD_SYNC_RESOURCE_STARTUP would (if supported "
-                      "by your SBD version) improve reliability of "
-                      "interworking between SBD & pacemaker.");
+-            pcmk__warn("Enabling SBD_SYNC_RESOURCE_STARTUP would (if supported "
++            pcmk__notice("Enabling SBD_SYNC_RESOURCE_STARTUP would (if supported "
+                        "by your SBD version) improve reliability of "
+                        "interworking between SBD & pacemaker.");
          }
--- 
-2.26.2
-

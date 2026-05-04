@@ -1,4 +1,170 @@
 -------------------------------------------------------------------
+Thu Apr 30 08:38:01 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.2+20260429.40d19b75:
+- libpe_status: Avoid leaking a pcmk_resource_t's xml/orig_xml
+
+-------------------------------------------------------------------
+Thu Apr 30 08:24:39 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.2+20260428.6bbaaf3c:
+- Revert "API: libraries: Update version numbers in so names"
+
+-------------------------------------------------------------------
+Sat Apr 25 12:06:40 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.2+20260424.8b5ef3b5 (Pacemaker-3.0.2-rc1):
+- ChangeLog: update for 3.0.2-rc1 release
+
+-------------------------------------------------------------------
+Thu Apr 23 17:35:45 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20260422.a77694f0:
+- tools: Avoid memory leak in crm_resource --clear
+- libpacemaker, tools: Avoid mem leak in crm_simulate/pcmk_simulate()
+- libcib: Avoid memory leak when processing CIB upgrade
+- libpe_status: Use first operations child when expanding template
+- libpe_status: Improve no resources message in unpack_template()
+- daemons: Only log a message if we're falling back.
+- update version information for 3.0.2
+- libraries: Update version numbers in so names
+- libraries: update shared object versions for 3.0.2
+- NLS: update translations before 3.0.2-rc1
+- libcrmcommon: Deprecate anonymous authentication.
+- libcrmcommon: Deprecate remote-clear-port.
+- libcib: Add support for PSK authentication for remote CIB ops.
+- daemons: Add support for PSK authentication for remote CIB ops.
+
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+  * bug-812269_pacemaker-fencing-device-register-messages.patch
+
+-------------------------------------------------------------------
+Mon Apr 20 14:29:50 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20260417.af202226:
+- libpacemaker: Fix a memory leak in inject_action.
+- tools: Free the list at the end of cli_resource_print_operations.
+- tools: Fix memory leaks when printing crm_verify warnings/errors.
+- libpe: If pe__clone_default exits early, free the lists.
+- libpacemaker: Fix a segfault in order_resource_actions_after.
+- libcrmcommon: Properly return errno from pcmk__bare_output_new.
+- libpe: Free elements of rsc->priv->ticket_constraints...
+- libpacemaker: If process_rsc_history exits early, free the list.
+- daemons,libcib: Fix memory leaks in IPC code.
+- libservices: Deal with fgets errors in services__get_lsb_metadata.
+- libpacemaker: Check that instance is not NULL.
+- libcrmcommon: Avoid overflow when negating INT_MIN
+- libcrmcommon: Avoid overflow in crm_time_add_months()
+- libcib: Explicitly handle receiving a NACK from based.
+- libcib: Explicitly handle receiving a NACK from fenced.
+- daemons: Don't NACK an invalid remote message.
+- libcrmcommon: Don't log on error in pcmk__ipc_send_iov.
+- daemons: Don't return a NACK if execd gets an unknown message.
+- liblrmd: Explicitly handle receiving a NACK from execd.
+- liblrmd: Fix log messages in remote_proxy_cb.
+- daemons: Delay creating an xmlNode in handle_register_request.
+- libcrmcommon: Ignore empty time spec
+- tools: Don't wait on certain "pending" monitor actions. (gh#ClusterLabs/pacemaker#4073)
+- libcrmcommon: Create a log file if it doesn't exist.
+
+-------------------------------------------------------------------
+Thu Mar 19 12:52:49 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20260318.19f560dc:
+- fencer: Disable watchdog-based self-fencing if "fencing-watchdog-timeout" is unset (gh#ClusterLabs/pacemaker#4067)
+- fencer: Make the deprecated "stonith-watchdog-timeout" option work again (gh#ClusterLabs/pacemaker#4068)
+- libcrmcommon: Move deprecatd PCMK_OPT_STONITH_TIMEOUT back to options.h
+- pacemakerd: Correctly detect ping requests from sbd (gh#ClusterLabs/pacemaker#4066)
+
+-------------------------------------------------------------------
+Tue Mar 17 18:41:37 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20260316.ae2b2df6:
+- libcrmcommon: Improve message for qb_log_file_open() fail
+- libcrmcommon: Improve pcmk__add_logfile() message for fopen() fail
+- libcrmcommon: More specific error for set_logfile_permissions()
+- libcrmcommon: Improve validation of PCMK_logfile_mode
+- liblrmd: Don't assert if queue_time is < 0.
+- based: Don't log specially for PCMK__XA_CIB_UPDATE
+- controller: Don't treat patchset-apply errors as OK
+- libcrmcommon: xml_apply_patchset doesn't return diff_resync err
+- libcib: Don't convert -pcmk_err_diff_resync to pcmk_ok
+- libcrmcommon: Handle NULL PCMK_XA_FORMAT and PCMK_XA_DIGEST
+- libcib, tools: Empty CIB contains admin_epoch before epoch
+
+- Rebase:
+  * bug-812269_pacemaker-fencing-device-register-messages.patch
+
+-------------------------------------------------------------------
+Wed Feb 11 16:03:41 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20260210.eaef5834:
+- daemons: Fix user/group checking in based.
+- libcrmcommon: Fix a glib logging build error.
+- libcrmcommon: Don't delete unchanged attributes when applying patch
+- libcrmcommon: Fix potential use-after-free and double-free (gh#ClusterLabs/pacemaker#4044)
+- executor: Fix the typos in the logs.
+- libcrmcommon: Set config warnings on mismatched ACL perm specs
+- libcrmcommon: xml_acl_filtered_copy() returns false for NULL source (gh#ClusterLabs/pacemaker#4039)
+- libcrmcommon: Make parse_acl_entry() non-recursive
+- libcrmcommon: Set config warnings and errors for acl_permission
+- libcib: Log correct error message in replace_cib()
+- libcib: Fix setting origin attributes in CIB updates (gh#ClusterLabs/pacemaker#4028)
+- tools: Drop crm_attribute --inhibit-policy-engine/-i option
+- libcrmcommon: Fix memory leak in pcmk__read_series_sequence() (gh#ClusterLabs/pacemaker#4032)
+- liblrmd: Check that pcmk__init_tls doesn't set native->tls to NULL.
+- tools: Drop crm_attribute --attr-value/--delete-attr options
+- tools: Drop crm_attribute --attr-id option
+- based: Drop unhelpful trace messages
+- based: Improve a log message for IPC call options
+- libcib: {add,del}_notify_callback support only cib_diff_notify
+
+-------------------------------------------------------------------
+Thu Jan 15 10:44:02 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20260114.e8e400ec:
+- based: Return correct code from write_cib_async()
+- daemons: Use crm_ipc_client_response in lrmd_remote_client_msg.
+- daemons: Set ipc_flags in lrmd_remote_client_msg to 0.
+- daemons: Clean up XML memory in IPC dispatch functions.
+- daemons: Fix a segfault displaying fencer metadata.
+- based: Drop redundant messages from based_diff_notify()
+- build: Handle CMocka deprecations
+- various: Always NULL-check return value of pcmk__find_client()
+- libcrmcommon: Improve messages in child_kill_helper()
+- tools: Free memory in crm_resource.c:handle_metadata()
+- pacemakerd: Use g_str_has_prefix() in handle_ping_request()
+- libpacemaker: Correctly check node types in pcmk__list_nodes()
+- pacemakerd: Match correctly in PCMK_{valgrind,callgrind}_enabled
+- libcrmcommon: Match correctly in PCMK_debug, stderr, blackbox
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+  * bug-728579_pacemaker-stonith-dev-id.patch
+  * bug-812269_pacemaker-fencing-device-register-messages.patch
+  * bsc#1180966-0001-Log-pacemakerd-downgrade-the-warning-about-SBD_SYNC_.patch
+
+-------------------------------------------------------------------
+Wed Jan 14 10:46:42 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- spec: Requires libxml2-tools since DLM controld RA requires xmllint (bsc#1259345)
+
+-------------------------------------------------------------------
+Wed Jan 14 10:42:53 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20251217.b180b187:
+- daemons: Fix a typo if no existing attrd is found.
+- daemons: Call pcmk_cluster_disconnect at the end of fenced.
+
+-------------------------------------------------------------------
+Tue Jan 13 13:50:21 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.1+20251211.fd7af111:
+- libcrmcommon: Fix underflow in crm_time_add_days()
+- libcrmcommon: Avoid integer overflow in seconds_to_hms()
+
+-------------------------------------------------------------------
 Mon Jan 12 17:03:49 UTC 2026 - Yan Gao <ygao@suse.com>
 
 - spec: do not treat fillup templates as configuration files
