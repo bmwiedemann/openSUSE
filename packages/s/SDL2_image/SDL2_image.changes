@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May  2 10:02:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.12
+  * Fixed a memory overflow with corrupt LBM image
+  * Fixed a crash when decoding an invalid XCF image
+  * Fixed an out of bound read in the GIF decoder
+  * Reject invalid TGA images with 0 width or height
+
+-------------------------------------------------------------------
 Sun Apr  5 08:57:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.10
