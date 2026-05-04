@@ -101,4 +101,18 @@
     <comment></comment>
     <requestid>1276896</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7ce15ebe0ab805e604ffcf7fc6f8a5dc</srcmd5>
+    <version>1.0.1</version>
+    <time>1777892085</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.1:
+  * Set USE_IMAGE_NOT_FOUND_EXCEPTION to True by default.
+  * Made screenshot functions more restrictive and force the
+    region arg to a tuple of four ints, instead of converting them
+    to ints.
+  * Fix for PILLOW_VERSION not being correctly translated. #98 #101
+  * Fix readme example using click() #91</comment>
+    <requestid>1350586</requestid>
+  </revision>
 </revisionlist>

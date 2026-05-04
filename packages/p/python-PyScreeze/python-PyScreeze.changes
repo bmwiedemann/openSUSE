@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  3 20:51:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * Set USE_IMAGE_NOT_FOUND_EXCEPTION to True by default.
+  * Made screenshot functions more restrictive and force the
+    region arg to a tuple of four ints, instead of converting them
+    to ints.
+  * Fix for PILLOW_VERSION not being correctly translated. #98 #101
+  * Fix readme example using click() #91
+
+-------------------------------------------------------------------
 Mon May 12 12:58:24 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
