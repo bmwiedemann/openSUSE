@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun May  3 20:33:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.0:
+  * In the create Primary IP call, the `assignee_type` argument
+    is now only send when the `assignee_id` argument is set. The
+    `assignee_type` argument will stop defaulting to `server` in
+    the near future, consider explicitly setting this argument
+    when needed.
+  * As of 1 August 2026, the behavior of the Primary IP
+    `assignee_type` property will change, and will return
+    `unassigned` when the Primary IP is not assigned (when
+    `assignee_id` is `null`). The goal is to eventually assign
+    Primary IPs to other resource types, not only to `server`.
+  * In addition, the Primary IP request body `assignee_type`
+    property of the operation `POST /v1/primary_ips` is now
+    optional. Primary IPs created without `assignee_type` return
+    `server` until 1 August 2026, after this date, its value will
+    be `unassigned`.
+  * **primary-ip**: `assignee_type` behavior changed when
+    creating a primary ip
+
+-------------------------------------------------------------------
 Sat Apr 25 10:27:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.0:
