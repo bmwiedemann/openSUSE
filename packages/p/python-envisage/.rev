@@ -114,4 +114,41 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275982</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>adb4ec81f90a7ba2944f314b71af6bcf</srcmd5>
+    <version>7.0.4</version>
+    <time>1777892074</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.0.4:
+  * Fix a situation where preferences were incorrectly written by
+    the PreferencesPane before changes were approved.
+  * Add a name attribute to the EventManagerPlugin.
+  * Update copyright header end years for 2024, 2025.
+  * Add dependendabot config for GitHub Actions; bump individual
+    actions to their latest versions.
+  * Remove Slack notifications, which were using an outdated and
+    unmaintained GitHub Action.
+  * Require apptools 5.3 or later and Python 3.8 or later.
+  * Update black to version 24.3.0 to address a ReDoS
+    vulnerability in earlier versions.
+  * Remove skip decorator on some PySide6-related tests.
+  * Remove the sphinx.ext.githubpages extension.
+  * Fix the GitHub Actions workflow for automated documentation
+    updates on releases.
+  * Fix test-ordering issues with egg-based tests that modify
+    pkg_resources global state.
+  * Reorganise the gh-pages documentation. The main gh-pages page
+    (https://docs.enthought.com/envisage) now matches the
+    contents of the GitHub main branch, while subdirectories
+    (e.g., https://docs.enthought.com/envisage/7.0) provide
+    documentation for released versions. A 'latest' symlink is in
+    place, so https://docs.enthought.com/envisage/latest will
+    bring up the documentation for the latest release.
+  * Add GitHub Actions workflows to automate documentation
+    updates. The main documentation is updated on every push to
+    main, while the release documentation is updated on each
+    GitHub release creation.
+  * Fix the documentation build for Read the Docs.</comment>
+    <requestid>1350561</requestid>
+  </revision>
 </revisionlist>

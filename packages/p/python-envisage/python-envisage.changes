@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Sun May  3 18:23:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.4:
+  * Fix a situation where preferences were incorrectly written by
+    the PreferencesPane before changes were approved.
+  * Add a name attribute to the EventManagerPlugin.
+  * Update copyright header end years for 2024, 2025.
+  * Add dependendabot config for GitHub Actions; bump individual
+    actions to their latest versions.
+  * Remove Slack notifications, which were using an outdated and
+    unmaintained GitHub Action.
+  * Require apptools 5.3 or later and Python 3.8 or later.
+  * Update black to version 24.3.0 to address a ReDoS
+    vulnerability in earlier versions.
+  * Remove skip decorator on some PySide6-related tests.
+  * Remove the sphinx.ext.githubpages extension.
+  * Fix the GitHub Actions workflow for automated documentation
+    updates on releases.
+  * Fix test-ordering issues with egg-based tests that modify
+    pkg_resources global state.
+  * Reorganise the gh-pages documentation. The main gh-pages page
+    (https://docs.enthought.com/envisage) now matches the
+    contents of the GitHub main branch, while subdirectories
+    (e.g., https://docs.enthought.com/envisage/7.0) provide
+    documentation for released versions. A 'latest' symlink is in
+    place, so https://docs.enthought.com/envisage/latest will
+    bring up the documentation for the latest release.
+  * Add GitHub Actions workflows to automate documentation
+    updates. The main documentation is updated on every push to
+    main, while the release documentation is updated on each
+    GitHub release creation.
+  * Fix the documentation build for Read the Docs.
+  * Fix example code that was importing Font and Color from
+    Traits instead of TraitsUI.
+  * Mark Dickinson
+  * Chengyu Liu
+  * Corran Webster
+  * There's a new unbind_extension_point function that reverses
+    the effects of bind_extension_point. This can be useful for
+    clean teardown.
+  * All id string constants that were previously available from
+    envisage.ids are now also exported in envisage.api. Users are
+    encouraged to import everything they need from envisage.api,
+    and to open an issue if anything they need is not exported in
+    envisage.api.
+  * When exiting a TasksApplication, the plugins are now stopped
+    after exiting the event loop. Previously they were stopped
+    while the event loop was still running, causing some
+    lifecycle issues.
+  * The extension_registry argument to bind_extension_point is no
+    longer optional, and ExtensionPointBinding will no longer
+    look for an extension registry on the ExtensionPoint class.
+  * Operations that used to raise SystemError now raise something
+    more appropriate. In particular, the
+    PluginManager.start_plugin and PluginManager.stop_plugin
+    methods now raise ValueError rather than SystemError when
+    given an invalid plugin id.
+  * envisage.__version__ is no longer defined. If you need the
+    Envisage version at runtime, use importlib.metadata to
+    retrieve it.
+  * Python 3.6 is no longer supported. All current versions of
+    Python (3.7 through 3.11) are supported.
+  * The repr of a Plugin instance now correctly uses the name of
+    the plugin class.
+  * The EggPluginManager, EggBasketPluginManager and
+    PackagePluginManager are deprecated, and will be removed in
+    Envisage 8.0.
+  * The include and exclude traits on the PluginManager are
+    deprecated, and will be removed in Envisage 8.0.
+  * Plugins and machinery related to IPython have been removed.
+    Specifically, the IPythonKernelPlugin and
+    IPythonKernelUIPlugin plugins have been removed, along with
+    supporting classes InternalIPKernel and IPKernelApp.
+  * The ExtensionPoint.bind method has been removed.
+  * The previously deprecated safeweakref.ref class has been
+    removed.
+  * Some legacy unmaintained examples have been removed.
+  * The changelog is now included in the built documentation.
+  * Old-style namespace packages used for testing have been
+    replaced with normal non-namespace packages. This fixes some
+    warnings from the latest setuptools.
+  * The test suite now runs cleanly under pytest.
+  * Tests that are skipped due to a PySide6 problem should now be
+    run if the version of PySide6 is recent enough.
+  * Package configuration now uses pyproject.toml in place of the
+    old setup.py-based configuration.
+  * Optional dependencies are no longer declared.
+  * A new style-checking workflow has been added that runs black,
+    isort and flake8 over the codebase, and new code is expected
+    to comply with black and isort configurations.
+  * A new documentation-build workflow has been added. The built
+    documentation is uploaded as an artifact.
+
+-------------------------------------------------------------------
 Fri May  9 05:09:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
