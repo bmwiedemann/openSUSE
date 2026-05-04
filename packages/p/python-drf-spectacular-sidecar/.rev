@@ -49,4 +49,13 @@
     <comment></comment>
     <requestid>1347824</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5866b595c9a613feb7d99422ad990b77</srcmd5>
+    <version>2026.5.1</version>
+    <time>1777892064</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.5.1:
+  * update swagger-ui-dist bundle</comment>
+    <requestid>1350556</requestid>
+  </revision>
 </revisionlist>
