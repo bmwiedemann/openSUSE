@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 25 21:43:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.8.7:
+  * OpenID Connect backends can now opt in to PKCE support
+  * PKCE defaults now match RFC 7636 requirements
+  * Tightened redirect URL validation
+  * Tightened OAuth state handling for Clever, Eventbrite,
+    GoClio, MailChimp, SurveyMonkey and Untappd backends
+  * SAML authentication now restores saved sessions only after
+    response validation
+  * `storage.UserProtocol` now supports read-only attributes for
+    better type-checker compatibility
+  * Improved type annotations and enabled mypy type checking in
+    CI
+  * `sanitize_redirect()` now handles invalid redirect values
+    that raise `ValueError`
+  * Fixed timezone handling when working with dates
+  * Require `PyJWT >= 2.12.0` to address CVE-2026-32597
+
+-------------------------------------------------------------------
 Tue Mar 31 18:51:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.5:

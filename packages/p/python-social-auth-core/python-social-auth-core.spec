@@ -20,13 +20,13 @@
 %define modname social-core
 %{?sle15_python_module_pythons}
 Name:           python-social-auth-core
-Version:        4.8.5
+Version:        4.8.7
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause
 URL:            https://github.com/python-social-auth/social-core
 Source:         https://github.com/python-social-auth/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module PyJWT >= 2.11.0}
+BuildRequires:  %{python_module PyJWT >= 2.12.1}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module cryptography >= 42.0.8}
 BuildRequires:  %{python_module defusedxml >= 0.7.1}
@@ -35,14 +35,14 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python3-openid >= 3.2.0}
 BuildRequires:  %{python_module requests >= 2.32.5}
 BuildRequires:  %{python_module requests-oauthlib >= 2.0.0}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 78.0.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module google-auth}
+BuildRequires:  %{python_module google-auth >= 2.40.0}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module typing_extensions}
@@ -52,7 +52,7 @@ BuildRequires:  %{python_module python-jose >= 3.0.0}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module python3-saml >= 1.16.0}
 #/SECTION
-Requires:       python-PyJWT >= 2.11.0
+Requires:       python-PyJWT >= 2.12.1
 Requires:       python-cryptography >= 42.0.8
 Requires:       python-defusedxml >= 0.7.1
 Requires:       python-oauthlib >= 3.3.1

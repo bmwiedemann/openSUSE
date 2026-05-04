@@ -532,4 +532,12 @@
   * OIDC uses info from `id_token` when not present in the</comment>
     <requestid>1343962</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>17d2af3db49637ded182cb0950fd362e</srcmd5>
+    <version>4.8.7</version>
+    <time>1777892025</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1350487</requestid>
+  </revision>
 </revisionlist>
