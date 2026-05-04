@@ -4,5 +4,4 @@
 providing graphical log-ins and managing local and remote displays.
 
 This package provides the openSUSE default configuration for gdm.</description>
-  <devel project="GNOME:Factory" package="gdm-branding-openSUSE"/>
 </package>
