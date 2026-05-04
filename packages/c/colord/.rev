@@ -780,4 +780,16 @@ Note: This was reported for Leap, therefore please consider to backport this pro
     <comment></comment>
     <requestid>1301314</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>a77d82ea5b676bf6c7d074acf53765e7</srcmd5>
+    <version>1.4.8</version>
+    <time>1777891700</time>
+    <user>anag_factory</user>
+    <comment>- Mark both /var/lib/colord and /var/lib/colord/icc as %ghost
+  directories since both are created from a systemd-tmpfiles
+  config file provided by upstream (jsc#PED-14837)
+- Make colord-color-profiles noarch since it doesn't contain
+  binary files.</comment>
+    <requestid>1350041</requestid>
+  </revision>
 </revisionlist>

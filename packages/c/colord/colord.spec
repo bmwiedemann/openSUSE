@@ -92,6 +92,7 @@ Group:          System/Libraries
 # Last version of shared-color profiles packaged
 Obsoletes:      shared-color-profiles <= 0.1.6
 Provides:       shared-color-profiles = %{version}
+BuildArch:      noarch
 
 %description    color-profiles
 colord is a system activated daemon that maps devices to color profiles.
@@ -205,8 +206,8 @@ install -c -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/
 %doc AUTHORS NEWS
 %{_unitdir}/colord.service
 %{_udevrulesdir}/*.rules
-%attr(755,colord,colord) %dir %{_localstatedir}/lib/colord
-%ghost %attr(755,colord,colord) %{_localstatedir}/lib/colord/icc
+%ghost %attr(755,colord,colord) %dir %{_localstatedir}/lib/colord
+%ghost %attr(755,colord,colord) %dir %{_localstatedir}/lib/colord/icc
 %attr(644,,-,-) %{_datadir}/bash-completion/completions/colormgr
 %{_bindir}/cd-create-profile
 %{_bindir}/cd-fix-profile

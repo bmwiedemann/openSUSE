@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 22 16:56:58 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Mark both /var/lib/colord and /var/lib/colord/icc as %ghost
+  directories since both are created from a systemd-tmpfiles
+  config file provided by upstream (jsc#PED-14837)
+- Make colord-color-profiles noarch since it doesn't contain
+  binary files.
+
+-------------------------------------------------------------------
 Mon Aug 25 14:51:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.4.8:
