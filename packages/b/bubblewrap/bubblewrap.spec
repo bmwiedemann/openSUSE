@@ -18,17 +18,16 @@
 
 
 Name:           bubblewrap
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Core execution tool for unprivileged containers
 License:        LGPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://github.com/containers/bubblewrap
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
+Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz.sha256sum
 # https://www.pseudorandom.co.uk/2003/contact/
 # 0x4DE8FF2A63C7CC90, fingerprint: DA98 F25C 0871 C49A 59EA FF2C 4DE8 FF2A 63C7 CC90
-Source2:        %{name}.keyring
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc
 BuildRequires:  git

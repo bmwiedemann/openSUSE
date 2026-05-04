@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 29 16:20:45 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.11.2 (bsc#1262113):
+  * In setuid mode, don't run the low-privileged parts of the setup
+    as dumpable, as that allows it to be ptraced which can lead to
+    problems.  This is CVE-2026-41163.
+  * New build option `-Dsupport_setuid`, which if set to false
+    (which is the default) disables the support for setuid.
+    Binaries built with this will refuse to run if made setuid.
+
+-------------------------------------------------------------------
 Wed Apr 22 22:51:40 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Really drop the nobwrap.helper script as intended on Sep 29 2025.
