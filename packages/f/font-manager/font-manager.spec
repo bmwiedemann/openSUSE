@@ -1,7 +1,7 @@
 #
 # spec file for package font-manager
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        GPL-3.0-or-later
 URL:            https://fontmanager.github.io
 Source0:        https://github.com/FontManager/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Patch1:         0001-reproducible-build.patch
+# PATCH-FIX-UPSTREAM 0002-Fix-compilation-error-with-newer-Vala-versions.patch -- based on commit e2ad529a
+Patch2:         0002-Fix-compilation-error-with-newer-Vala-versions.patch
 BuildRequires:  appstream-glib
 BuildRequires:  gettext-runtime
 BuildRequires:  libgio-2_0-0 >= 2.7
@@ -106,7 +108,11 @@ Requires:       font-viewer >= %{version}
 This package provides integration with the Thunar file manager.
 
 %prep
-%autosetup -p0
+%setup -q
+%patch -P 1 -p1
+%if 0%{?suse_version} > 1600
+%patch -P 2 -p1
+%endif
 
 %build
 %meson \

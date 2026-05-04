@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  1 15:32:42 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- Add 0002-Fix-compilation-error-with-newer-Vala-versions.patch
+- Update 0001-reproducible-build.patch
+
+-------------------------------------------------------------------
 Mon Mar 10 13:28:09 UTC 2025 - Jan Baier <jbaier@suse.com>
 
 - Update to 0.9.4

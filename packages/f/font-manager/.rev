@@ -111,4 +111,12 @@
     <comment>Update to 0.9.4</comment>
     <requestid>1251811</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c4f0aa05aa0a38015973e5e4506dddf5</srcmd5>
+    <version>0.9.4</version>
+    <time>1777891885</time>
+    <user>anag_factory</user>
+    <comment>Fix compilation error with newer Vala versions</comment>
+    <requestid>1350386</requestid>
+  </revision>
 </revisionlist>
