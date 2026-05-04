@@ -24,7 +24,7 @@
 %endif
 
 Name:           difftastic
-Version:        0.68.0
+Version:        0.69.0
 Release:        0
 Summary:        A structural diff that understands syntax
 License:        Apache-2.0 AND MIT
@@ -36,7 +36,7 @@ Patch1:         reproducible.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  rust >= 1.77.0
+BuildRequires:  rust >= 1.85.0
 BuildRequires:  shared-mime-info
 %if 0%{?suse_version} < 1600
 BuildRequires:  libstdc++6-devel-gcc15

@@ -168,4 +168,32 @@
     + Fixed an issue with side-by-side rendering when files contain tabs. (forwarded request 1339603 from develop7)</comment>
     <requestid>1339606</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c976ce022e949ee597f41b7d2e84121f</srcmd5>
+    <version>0.69.0</version>
+    <time>1777892028</time>
+    <user>anag_factory</user>
+    <comment>- bump MSRV to 1.85
+- refreshed remove-jq-dependency.patch &amp; reproducible.patch
+- update to 0.69.0:
+  * Diffing
+    + Difftastic now understands that trailing punctuation is not always
+      significant, so `foo(1,)` and `foo(1)` can be treated as no
+      syntactic change.
+    + This is supported for Go, Java, JavaScript, Python, Rust, Swift,
+      and TypeScript.
+  * Parsing
+    + Added support for Assembly.
+    + Substantially improved parsing for Perl.
+    + Improved parsing for Clojure, Common Lisp, CSS, Dart, Erlang, F#,
+      OCaml, Python, Rust, Scala, TypeScript, and VHDL.
+    + Removed support for Hack as the upstream parser is no longer
+      maintained; `.php` files starting with `&lt;?hh` are now treated as text.
+  * File Detection
+    + Difftastic now considers `.gitattributes` when deciding if a file
+      is binary, recognising both `-text` and `binary` attributes.
+  * Build
+    + Difftastic now requires Rust 1.85 or later to build. (forwarded request 1350484 from develop7)</comment>
+    <requestid>1350485</requestid>
+  </revision>
 </revisionlist>

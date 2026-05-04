@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat May  2 17:57:20 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- bump MSRV to 1.85
+- refreshed remove-jq-dependency.patch & reproducible.patch
+- update to 0.69.0:
+  * Diffing
+    + Difftastic now understands that trailing punctuation is not always
+      significant, so `foo(1,)` and `foo(1)` can be treated as no
+      syntactic change.
+    + This is supported for Go, Java, JavaScript, Python, Rust, Swift,
+      and TypeScript.
+  * Parsing
+    + Added support for Assembly.
+    + Substantially improved parsing for Perl.
+    + Improved parsing for Clojure, Common Lisp, CSS, Dart, Erlang, F#,
+      OCaml, Python, Rust, Scala, TypeScript, and VHDL.
+    + Removed support for Hack as the upstream parser is no longer
+      maintained; `.php` files starting with `<?hh` are now treated as text.
+  * File Detection
+    + Difftastic now considers `.gitattributes` when deciding if a file
+      is binary, recognising both `-text` and `binary` attributes.
+  * Build
+    + Difftastic now requires Rust 1.85 or later to build.
+
+-------------------------------------------------------------------
 Tue Mar 17 11:18:49 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - bump MSRV to 1.77
@@ -265,4 +290,3 @@ Sun Oct 29 07:57:11 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 Mon Oct  9 09:19:54 UTC 2023 - munix9@googlemail.com
 
 - update to version 0.52.0
-

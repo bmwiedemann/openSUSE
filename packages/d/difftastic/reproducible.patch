@@ -4,11 +4,11 @@ Avoid a race in rust
 that caused random variations in the binary every time
 breaking reproducible builds.
 
-diff --git a/build.rs b/build.rs
-index 5c5b4f6..232f6fd 100644
---- a/build.rs
-+++ b/build.rs
-@@ -264,7 +264,7 @@ fn main() {
+Index: difftastic-0.69.0/build.rs
+===================================================================
+--- difftastic-0.69.0.orig/build.rs
++++ difftastic-0.69.0/build.rs
+@@ -110,7 +110,7 @@ fn main() {
          println!("cargo:rerun-if-changed={}", parser.src_dir);
      }
  
