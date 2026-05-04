@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  4 08:08:01 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- atinout-fix-build.patch: fixed build with new glibc/gcc
+
+-------------------------------------------------------------------
 Tue Feb 20 11:10:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

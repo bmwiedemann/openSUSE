@@ -1,7 +1,7 @@
-diff --git a/Makefile b/Makefile
-index 1daa431..c4525db 100644
---- a/Makefile
-+++ b/Makefile
+Index: atinout-0.9.1/Makefile
+===================================================================
+--- atinout-0.9.1.orig/Makefile
++++ atinout-0.9.1/Makefile
 @@ -1,12 +1,12 @@
  VERSION	= 0.9.1
  
@@ -18,11 +18,20 @@ index 1daa431..c4525db 100644
  
  all: atinout
  
-diff --git a/atinout.c b/atinout.c
-index 4801547..ae0444e 100644
---- a/atinout.c
-+++ b/atinout.c
-@@ -141,7 +141,7 @@ static bool is_final_result(const char * const response)
+Index: atinout-0.9.1/atinout.c
+===================================================================
+--- atinout-0.9.1.orig/atinout.c
++++ atinout-0.9.1/atinout.c
+@@ -78,7 +78,7 @@ static void help(const char * const argv
+ }
+ 
+ /* Replace '\n' with '\r', aka `tr '\012' '\015'` */
+-static bool tr_lf_cr(const char *s)
++static bool tr_lf_cr(char *s)
+ {
+ 	char *p;
+ 	p = strchr(s, '\n');
+@@ -141,7 +141,7 @@ static bool is_final_result(const char *
  		if (strcmp(&response[1], "K\r\n") == 0) {
  			return true;
  		}
