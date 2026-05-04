@@ -527,4 +527,12 @@
     to patch version v0.38.1 and create version 0.38.2</comment>
     <requestid>1348026</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b3f1d263aed01967f544bac51b9c1a18</srcmd5>
+    <version>0.39.1</version>
+    <time>1777891991</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1350434</requestid>
+  </revision>
 </revisionlist>

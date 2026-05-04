@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Sat Apr 25 07:56:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.39.1:
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.39.0...v0.39.1
+- update to 0.39.0:
+  * refactor(plan): simplify policy priorities and consolidate
+    read-only rules
+  * feat(test-utils): add memory usage integration test harness
+  * feat(memory): add /memory inbox command for reviewing
+    extracted skills
+  * chore(release): bump version to
+    0.39.0-nightly.20260408.e77b22e63
+  * fix(core): ensure robust sandbox cleanup in all process
+    execution paths
+  * chore: update ink version to 6.6.8
+  * Changelog for v0.38.0-preview.0
+  * chore: ignore conductor directory
+  * Changelog for v0.37.0
+  * feat(plan): require user confirmation for activate_skill in
+    Plan Mode
+  * feat(test-utils): add CPU performance integration test
+    harness
+  * fix(cli-ui): enable Ctrl+Backspace for word deletion in
+    Windows Terminal
+  * test(sdk): add unit tests for GeminiCliSession
+  * fix(core): resolve windows symlink bypass and stabilize
+    sandbox integration tests
+  * fix(cli): restore file path display in edit and write tool
+    confirmations
+  * feat(core): refine shell tool description display logic
+  * fix(core): dynamic session ID injection to resolve resume
+    bugs
+  * Update ink version to 6.6.9
+  * Generalize evals infra to support more types of evals,
+    organization and queuing of named suites
+  * fix(cli): optimize startup with lightweight parent process
+  * refactor(sandbox): use centralized sandbox paths in macOS
+    Seatbelt implementation
+  * feat(cli): refine tool output formatting for compact mode
+  * fix(sdk): skip broken sendStream tests to unblock nightly
+  * refactor(core): use centralized path resolution for Linux
+    sandbox
+  * Support ctrl+shift+g
+  * feat(core): refactor subagent tool to unified invoke_subagent
+    tool
+  * fix(core): add explicit git identity env vars to prevent
+    sandbox checkpointing error
+  * fix: respect hideContextPercentage when FooterConfigDialog is
+    closed without changes
+  * fix(cli): suppress unhandled AbortError logs during request
+    cancellation
+  * Automated documentation audit
+  * feat(cli): implement useAgentStream hook
+  * refactor(plan) Clean default plan toml
+  * refactor(core): remove legacy subagent wrapping tools
+  * fix(core): honor retryDelay in RetryInfo for 503 errors
+  * fix(core): remediate subagent memory leaks using AbortSignal
+    in MessageBus
+  * feat(cli): wire up useAgentStream in AppContainer
+  * feat(core): migrate chat recording to JSONL streaming
+  * fix(core): clear 5-minute timeouts in oauth flow to prevent
+    memory leaks
+  * fix(sandbox): centralize async git worktree resolution and
+    enforce read-only security
+  * feat(test): add high-volume shell test and refine perf
+    harness
+  * fix(core): silently handle EPERM when listing dir structure
+  * Changelog for v0.37.1
+  * fix: decode Uint8Array and multi-byte UTF-8 in API error
+    messages
+  * Automated documentation audit results
+  * debugging(ui): add optional debugRainbow setting
+  * fix: resolve lifecycle memory leaks by cleaning up listeners
+    and root closures
+  * docs(cli): updates f12 description to be more precise
+  * fix(cli): mark /settings as unsafe to run concurrently
+  * fix(core): remove buffer slice to prevent OOM on large output
+    streams
+  * feat(core): persist subagent agentId in tool call records
+  * chore(core): increase codebase investigator turn limits to 50
+  * refactor(core): consolidate execute() arguments into
+    ExecuteOptions
+  * feat(core): add Strategic Re-evaluation guidance to system
+    prompt
+  * fix(core): preserve shell execution config fields on update
+  * docs: add vi shortcuts and clarify MCP sandbox setup
+  * fix(cli): pass session id to interactive shell executions
+  * fix(cli): resolve text sanitization data loss due to C1
+    control characters
+  * feat(core): add large memory regression test
+  * fix(core): resolve PTY exhaustion and orphan MCP subprocess
+    leaks
+  * chore(deps): update vulnerable dependencies via npm audit fix
+  * perf(sandbox): optimize Windows sandbox initialization via
+    native ACL application
+  * chore: switch from keytar to @github/keytar
+  * fix: improve audio MIME normalization and validation in file
+    reads
+  * docs: Update docs-audit to include changes in PR body
+  * docs: correct documentation for enforced authentication type
+  * fix(cli): exclude update_topic from confirmation queue count
+  * Memory fix for trace's streamWrapper.
+  * fix(core): fix quota footer for non-auto models and improve
+    display
+  * docs(contributing): clarify self-assignment policy for issues
+  * feat(core): add skill patching support with /memory inbox
+    integration
+  * Stop suppressing thoughts and text in model response
+  * fix(release): prefix git hash in nightly versions to prevent
+    semver normalization
+  * feat(cli): extract QuotaContext and resolve infinite render
+    loop
+  * refactor(core): extract and centralize sandbox path utilities
+  * feat(ui): added enhancements to scroll momentum
+  * fix(core): replace custom binary detection with isbinaryfile
+    to correctly handle UTF-8 (U+FFFD)
+  * feat(agent): implement tool-controlled display protocol
+    (Steps 2-3)
+  * Stop showing scrollbar unless we are in terminalBuffer mode
+  * feat: support auth block in MCP servers config in agents
+  * fix(core): expose GEMINI_PLANS_DIR to hook environment
+  * feat(core): implement silent fallback for Plan Mode model
+    routing
+  * fix: correct redirect count increment in fetchJson
+  * fix(core): prevent secondary crash in ModelRouterService
+    finally block
+  * feat(core): introduce decoupled ContextManager and Sidecar
+    architecture
+  * docs(core): update generalist agent documentation
+  * chore(mcp): check MCP error code over brittle string match
+  * feat(plan): update plan mode prompt to allow showing plan
+    content
+  * test(core): improve sandbox integration test coverage and fix
+    OS-specific failures
+  * fix(core): use debug level for keychain fallback logging
+  * feat(test): add a performance test in asian language
+  * feat(cli): enable mouse clicking for cursor positioning in
+    AskUser multi-line answers
+  * fix(core): detect kmscon terminal as supporting true color
+  * ci: add agent session drift check workflow
+  * use macos-latest-large runner where applicable.
+  * Changelog for v0.37.2
+  * fix(patch): cherry-pick a4e98c0 to
+    release/v0.39.0-preview.0-pr-25138 to patch version
+    v0.39.0-preview.0 and create version 0.39.0-preview.1
+  * fix(patch): cherry-pick d6f88f8 to
+    release/v0.39.0-preview.1-pr-25670 to patch version
+    v0.39.0-preview.1 and create version 0.39.0-preview.2
+
+-------------------------------------------------------------------
 Sun Apr 19 13:29:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.38.2:
