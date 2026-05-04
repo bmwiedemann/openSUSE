@@ -1,0 +1,13 @@
+Index: bladeRF-2025.10/host/utilities/bladeRF-cli/src/input/tecla.c
+===================================================================
+--- bladeRF-2025.10.orig/host/utilities/bladeRF-cli/src/input/tecla.c
++++ bladeRF-2025.10/host/utilities/bladeRF-cli/src/input/tecla.c
+@@ -35,7 +35,7 @@ WordCompletion *tab_complete = NULL;
+ int tab_completion(WordCompletion *cpl, void *data, const char *line, int w_end)
+ {
+     static const char file_param[] = "file=";
+-    char *param = strstr(line, file_param);
++    const char *param = strstr(line, file_param);
+     int ret;
+ 
+     if (param != NULL) {

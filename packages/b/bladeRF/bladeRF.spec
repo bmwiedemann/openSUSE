@@ -1,7 +1,7 @@
 #
 # spec file for package bladeRF
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013-2015 Wojciech Kazubski, wk@ire.pw.edu.pl
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,6 +34,7 @@ URL:            https://nuand.com/
 #Git-Clone:     https://github.com/Nuand/bladeRF.git
 Source0:        %{name}-%{release_name}.tar.xz
 Patch0:         bladeRF-doxygen-no-timestamp.patch
+Patch1:         bladeRF-build-fix.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  4 08:13:25 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- bladeRF-build-fix.patch: fix build with new gcc
+
+-------------------------------------------------------------------
 Tue Oct  7 05:59:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2025.10
