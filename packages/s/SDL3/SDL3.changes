@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  1 20:11:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.6
+  * Fixed scaled cursor image selection on Wayland
+  * Fixed horizontal touchpad scrolling direction on X11
+  * Fixed crash on exit when using KMSDRM in atomic mode
+  * Fixed multi-threaded crashes using SDL GPU on Vulkan
+
+-------------------------------------------------------------------
 Sat Apr  4 00:47:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.4
