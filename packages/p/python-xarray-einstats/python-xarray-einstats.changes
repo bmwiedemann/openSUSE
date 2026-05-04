@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 26 19:55:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * Remove leftover print in `pinv` {pull}`87`
+  * Update minimum dependency versions {pull}`88`
+  * Ensure coords are preserved in `.rvs` method of RV wrappers
+  * Support PreliZ distributions as input to RV wrappers
+  * Support new SciPy random variables as input to RV wrappers
+  * Allow specifying the shape of `.rvs` output through `coords`
+    argument {pull}`70`
+  * Update publish workflow to follow best practices {pull}`70`
+  * Use `dim` in `xarray.dot` instead of deprecated `dims`
+  * Add type hints from docstrings through `docstub` {pull}`70`
+  * Remove coordinate values of sorted dimension in `sort`
+
+-------------------------------------------------------------------
 Sat Sep 21 13:17:28 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.8.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-xarray-einstats
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,23 +31,24 @@
 %endif
 
 %{?sle15_python_module_pythons}
+%global skip_python311 1
 Name:           python-xarray-einstats%{psuffix}
-Version:        0.8.0
+Version:        0.10.0
 Release:        0
 Summary:        Stats, linear algebra and einops for xarray
 License:        Apache-2.0
 URL:            https://github.com/arviz-devs/xarray-einstats
 Source:         https://github.com/arviz-devs/xarray-einstats/archive/refs/tags/v%{version}.tar.gz#/xarray-einstats-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.12}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Requires:       python-numpy >= 1.23
-Requires:       python-scipy >= 1.8
-Requires:       python-xarray >= 2022.9.0
+Requires:       python-numpy >= 2.0
+Requires:       python-scipy >= 1.13
+Requires:       python-xarray >= 2024.02.0
 %if %{with test}
 %if %{with numba}
 # Numba requires numpy < 2.1, numba is optional, don't pin numpy in runtime requirements!
@@ -93,6 +94,7 @@ ignoretests="$ignoretests --ignore tests/test_numba.py"
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
+%doc README.md
 %{python_sitelib}/xarray_einstats
 %{python_sitelib}/xarray_einstats-%{version}*-info
 %endif
