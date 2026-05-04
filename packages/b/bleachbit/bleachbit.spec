@@ -1,7 +1,7 @@
 #
 # spec file for package bleachbit
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 8/2011 by open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2010 - 7/2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -22,7 +22,7 @@
 # 'typelib(AppIndicator)' doesn't exist anymore. It is a fallback if AppIndicator3 can't be found (bleachbit/GUI.py:50)
 %global         __requires_exclude typelib\\(AppIndicator\\)
 Name:           bleachbit
-Version:        5.0.0
+Version:        6.0.0
 Release:        0
 Summary:        Tool for removing unnecessary files, freeing space, and maintaining privacy
 License:        GPL-3.0-only
@@ -113,10 +113,10 @@ chmod +x %{buildroot}%{_datadir}/%{name}/CLI.py
 chmod +x %{buildroot}%{_datadir}/%{name}/GUI.py
 
 %check
-export PATH=$PATH:/sbin
-export ALLTESTS=1
-touch ~/.profile
-xvfb-run make tests
+python3 bleachbit.py --sysinfo
+python3 bleachbit.py -l | wc -l
+python3 bleachbit.py -p system.cache | wc -l
+python3 -m unittest -v tests.TestFileUtilities tests.TestUnix
 
 %files
 %doc README.md doc/*
@@ -127,7 +127,6 @@ xvfb-run make tests
 %{_datadir}/applications/%{_desktopname}-root.desktop
 %{_datadir}/metainfo/%{_desktopname}.metainfo.xml
 %{_datadir}/pixmaps/%{name}.png
-%{_datadir}/pixmaps/%{name}-indicator.svg
 %{_datadir}/polkit-1/actions/org.%{name}.policy
 
 %files lang -f %{name}.lang

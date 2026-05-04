@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun May  3 08:20:34 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- copy method for running tests from upstream rpm spec
+- remove no longer supplied indicator icon from %files
+
+-------------------------------------------------------------------
+Mon Apr 27 06:26:06 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.0.0:
+  * Our biggest release in years, featuring significant new features, deeper
+    browser cleaning, and many usability improvements
+  * new cookie manager
+  * improved browser cleaning for Chromium and Firefox
+  * new Vivaldi and Zen browser cleaners
+  * numerous interface enhancements
+  * See https://www.bleachbit.org/news/bleachbit-600
+
+-------------------------------------------------------------------
+Wed Oct 29 10:32:00 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.0.2:
+  * Feature: to change font size, press CTRL plus -, +, or 0 or hold
+    CTRL while scrolling mouse wheel.
+  * Feature: Press F11 to toggle full screen.
+  * Fix: --debug-log option did not show debug messages.
+  * Fix: OperationalError when vacuuming Firefox versions 140 and later.
+  * Fix: Do not show error for non-existent custom folder.
+  * Fix: subprocess [number] is still running error message.
+  * Localization: 68 languages were updated with 940 changes.
+  * Feature: Clean pacman cache.
+  * Feature: Clean disabled snap packages
+  * Fix: Skip KDE files when cleaning system cache to improve KDE stability.
+  * Fix: Improve compatibility in headless and restricted environments such as crontab.
+  * Fix: ResourceWarning for subprocess.
+  * Add description for Exaile.
+  * Make AppStream data translatable.
+
+-------------------------------------------------------------------
 Tue Oct 21 07:22:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Exclude 'typelib(AppIndicator)' from install requirements.
