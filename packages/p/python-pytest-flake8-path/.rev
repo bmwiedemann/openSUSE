@@ -28,4 +28,13 @@ https://github.com/adamchainz/flake8-comprehensions/blob/main/requirements/requi
   * Support Python 3.13.</comment>
     <requestid>1222991</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1b49701f385a52c3eaca486862dba22e</srcmd5>
+    <version>1.7.0</version>
+    <time>1777892084</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.0:
+  * Support Python 3.14.</comment>
+    <requestid>1350585</requestid>
+  </revision>
 </revisionlist>

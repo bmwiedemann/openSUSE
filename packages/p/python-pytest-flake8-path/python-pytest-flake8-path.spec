@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-flake8-path
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        A pytest fixture for testing flake8 plugins
 License:        MIT
