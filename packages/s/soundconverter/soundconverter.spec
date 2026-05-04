@@ -1,7 +1,7 @@
 #
 # spec file for package soundconverter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,11 +33,13 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3
 BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
+BuildRequires:  python3-pip
 BuildRequires:  python3-pytest
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  typelib(Gst) = 1.0
 BuildRequires:  typelib(GstPbutils) = 1.0
 BuildRequires:  typelib(Gtk) = 3.0
@@ -63,10 +65,10 @@ to WAV, FLAC, MP3, AAC, and Ogg Vorbis, also with the help of GStreamer.
 %autosetup -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %find_lang %{name}
 
@@ -96,7 +98,7 @@ rm -rf %{buildroot}/usr/share/doc/soundconverter
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/glib-2.0/schemas/org.soundconverter.gschema.xml
 %{python3_sitelib}/%{name}
-%{python3_sitelib}/%{name}-*.egg-info
+%{python3_sitelib}/%{name}-%{version}.dist-info
 
 %files lang -f %{name}.lang
 
