@@ -3,4 +3,6 @@
                 <param name="url">https://github.com/wercker/stern</param>
               <param name="changesrevision">94f4ffb3b98a9dcd34aedf00f8a7e95b623b25d3</param></service><service name="tar_scm">
                 <param name="url">https://github.com/stern/stern</param>
-              <param name="changesrevision">72148a9169efb0cefc43086c1ff05216e88ed829</param></service></servicedata>
+              <param name="changesrevision">72148a9169efb0cefc43086c1ff05216e88ed829</param></service><service name="tar_scm">
+                <param name="url">https://github.com/stern/stern.git</param>
+              <param name="changesrevision">b6f1226e8eb72fb182cebfdcb5ef02c40813d6f3</param></service></servicedata>

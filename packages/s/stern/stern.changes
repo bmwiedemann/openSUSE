@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat May 02 13:53:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.34.0:
+  Notable Changes
+  * New --qps and --burst flags for client-side throttling
+    You can now control the rate of requests to the Kubernetes API
+    server with --qps and --burst flags. This is useful when you
+    are tailing many pods and want to avoid overwhelming the API
+    server.
+
+      stern . --qps 10 --burst 20
+
+  * Changes
+    - Add --qps and --burst flags to control client-side throttling
+      (#363) 7e59e4e (Abhishek Pareek)
+    - fix: honor klog -stderrthreshold even when -logtostderr is
+      true (#364) 8e4ece3 (Pierluigi Lenoci)
+    - Update dependencies for Kubernetes 1.36 (#365) 6761a78
+      (Takashi Kusumi)
+
+-------------------------------------------------------------------
 Tue Nov 04 20:20:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.33.1:
