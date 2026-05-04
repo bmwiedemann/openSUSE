@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 25 20:06:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * feat: Add Python 3.13 and 3.14 to the CI test matrix
+  * feat: replace deprecated `pkg_resources` with `packaging`
+    (#105) - thanks to @oh2fih
+  * Fix errors discovered with the unit tests
+  * Hashable type required. Convert list to tuple.
+  * Ignore incompatible types.
+  * Remove comments before passing the line to Req().
+  * Extras should be in lower case.
+  * Complete the list of comparison operators with &#39;!&#39;.
+  * fix: support extras and more chars in names for VCS lines
+  * fix: ValueError when parsing `-e .` (#99) thanks to @vergenzt
+  * feat: added support for alias @ &lt;vcs_url&gt; syntax (#101)
+  * feat: handle hashes without error (thanks to @dymart via #67)
+  * feat: upgrade CI workflows to get them running again
+- drop dont-install-readme.patch (obsolete)
+
+-------------------------------------------------------------------
 Thu Mar 28 12:15:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.0:

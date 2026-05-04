@@ -1,7 +1,7 @@
 #
 # spec file for package python-requirements-parser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-requirements-parser
-Version:        0.6.0
+Version:        0.13.0
 Release:        0
 Summary:        Pip requirement file parser
-License:        BSD-2-Clause
+License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://github.com/davidfischer/requirements-parser
-Source:         https://github.com/davidfischer/requirements-parser/archive/v%{version}.tar.gz#/requirements-parser-%{version}.tar.gz
-Patch1:         dont-install-readme.patch
+URL:            https://github.com/madpah/requirements-parser
+Source:         https://github.com/madpah/requirements-parser/archive/v%{version}.tar.gz#/requirements-parser-%{version}.tar.gz
+BuildRequires:  %{python_module packaging >= 23.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}
@@ -34,6 +34,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-packaging >= 23.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,7 +56,7 @@ A Pip requirement file parser.
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS.rst README.md
+%doc README.md
 %{python_sitelib}/requirements
 %{python_sitelib}/requirements_parser-%{version}.dist-info
 

@@ -103,4 +103,12 @@
   * ci: update actions to latest for all workflows</comment>
     <requestid>1163303</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dab1a6cacd5735948041412c9227694f</srcmd5>
+    <version>0.13.0</version>
+    <time>1777892025</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1350481</requestid>
+  </revision>
 </revisionlist>
