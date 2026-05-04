@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May  2 14:55:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.0
+  * Use Miniaudio for audio output.
+  * Use ghc::filesystem to handle paths.
+  * Use fmt for terminal output.
+  * Display keyboard help while playing.
+  * Allow customization of console colors.
+  * Allow using sidlite engine if available.
+  * Allow configuring old 6581 caps if available.
+
+-------------------------------------------------------------------
 Tue Feb 24 19:10:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.16.2
