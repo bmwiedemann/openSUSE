@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May  1 11:00:57 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to 0.21.01:
+  * New stressors
+    * fp-misc - exercise trivial floating point libm macros
+    * tlb-numa - NUMA aware TLB shootdown stressor
+    * rofs - read-only file system stressor
+  * Bugfixes
+    * stress-flock: remove erroneous flock ops
+    * various spelling mistake fixes
+  * Notable new features
+    * stress-clone: add CLONE_PIDFD_AUTOKILL and CLONE_NNP
+    * stress-file-ioctl: add EXT4_IOC_PRECACHE_EXTENTS, EXT4_IOC_GETSTATE, EXT4_IOC_GETFSUUID
+    * stress-fanotify: add FAN_FS_ERROR, FAN_MNT_ATTACH and FAN_MNT_DETACH
+    * new tlb --class option
+
+-------------------------------------------------------------------
 Thu Apr  2 08:01:29 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to 0.21.00:
