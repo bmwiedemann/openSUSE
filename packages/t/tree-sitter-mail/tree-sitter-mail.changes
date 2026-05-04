@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sat Mar 14 21:07:43 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0+20260308.5eddbfd:
+  * added maintenance note to readme
+  * updated tests
+  * regenerated parser
+  * Regen parser with ABI version 14
+  * feat: make quotes nest
+  * Add support for multiple recipients and folding
+
+-------------------------------------------------------------------
+Tue Jan 27 17:07:27 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0+20251230.d9be79f:
+  * Add comments for constants in grammar file
+  * Added multi-line headers
+  * Added note about Neovim integration to readme
+  * Formatted readme
+  * Identify signature in mails
+  * added mirror CI
+  * renamed readme
+  * updated readme
+  * added support for uppercase email addresses
+  * added support for email without delimiter header
+
+-------------------------------------------------------------------
+Tue Jan 27 17:06:33 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- initial packaging
