@@ -52,7 +52,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        11.8.5
+Version:        11.8.6
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -85,6 +85,9 @@ Patch11:        gcc13-fix.patch
 Patch12:        mariadb-fix-testsuite-openssl3.2.3.patch
 # PATCH-FIX-OPENSUSE fix-MDEV-32585.patch boo#1237555 antonio.teixeira@suse.com -- Fixes potential buffer overflow in get_defaults_options()
 Patch13:        fix-MDEV-32585.patch
+# PATCH-FIX-UPSTREAM https://github.com/MariaDB/server/pull/4667
+Patch14:        0001-MDEV-38874-Make-tests-pass-after-2030.patch
+Patch15:        MDEV-38811.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -373,6 +376,10 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch -P 11 -p1
 %patch -P 12 -p1
 %patch -P 13 -p1
+%ifnarch %{ix86} armv7l armv7hl
+%patch -P 14 -p1
+%endif
+%patch -P 15 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
@@ -720,7 +727,7 @@ cd mysql-test
 # spider test have been enabled in 10.6 and they fail, skip these tests
 # mariadb-client cannot connect to the server due to self-signed certificates
 ./mysql-test-run.pl \
-    --parallel=%{?jobs:%{jobs}}     \
+    --parallel=4                    \
     --force                         \
     --retry=3                       \
     --ssl                           \

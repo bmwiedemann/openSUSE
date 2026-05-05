@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Mon May  4 13:32:59 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 11.8.6:
+    https://mariadb.com/docs/release-notes/community-server/11.8/11.8.6
+    https://mariadb.com/docs/release-notes/community-server/changelogs/11.8/11.8.6
+  * fixes for the following security vulnerabilities:
+    11.8.6: CVE-2026-32710 (bsc#1260081)
+- Update skipped test list
+- Add MDEV-38811.patch
+  * Fixes crash in information_schema.table_constraints when --skip-grant-tables
+    (bsc#1263153)
+
+-------------------------------------------------------------------
 Thu Apr 16 13:03:08 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Returned provider_lzma.so plugin (boo#1262217).
+
+-------------------------------------------------------------------
+Thu Feb 19 16:34:28 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add 0001-MDEV-38874-Make-tests-pass-after-2030.patch (bsc#1258504)
+- Drop %jobs macro for reproducible builds (bsc#1237231)
 
 -------------------------------------------------------------------
 Tue Feb  3 19:22:56 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>

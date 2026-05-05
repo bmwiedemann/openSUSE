@@ -1,0 +1,288 @@
+From b4493ad53d1d2dbabbfa1c90b933ae42d199ac1a Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Thu, 19 Feb 2026 15:00:15 +0100
+Subject: [PATCH] MDEV-38874: Make tests pass after 2030
+
+Background:
+As part of my work on reproducible builds for openSUSE, I check that software still gives identical build results in the future.
+I tested with an offset of +11 years, because that is how long I expect some software will be used in some places.
+This showed up failing tests in our mariadb package build.
+See https://reproducible-builds.org/ for why this matters.
+---
+ mysql-test/main/mysqldump.result             | 42 ++++++++++----------
+ mysql-test/main/mysqldump.test               | 14 +++----
+ mysql-test/suite/events/events_2.result      |  4 +-
+ mysql-test/suite/events/events_2.test        |  2 +-
+ mysql-test/suite/versioning/r/sysvars.result |  4 +-
+ mysql-test/suite/versioning/t/insert.test    |  2 +-
+ mysql-test/suite/versioning/t/sysvars.test   |  2 +-
+ 7 files changed, 35 insertions(+), 35 deletions(-)
+
+diff --git a/mysql-test/main/mysqldump.result b/mysql-test/main/mysqldump.result
+index ec14b283894..2c28406d739 100644
+--- a/mysql-test/main/mysqldump.result
++++ b/mysql-test/main/mysqldump.result
+@@ -4688,43 +4688,43 @@ drop table words2;
+ create database first;
+ use first;
+ set time_zone = 'UTC';
+-create event ee1 on schedule at '2035-12-31 20:01:23' do set @a=5;
++create event ee1 on schedule at '2085-12-31 20:01:23' do set @a=5;
+ Warnings:
+ Warning	1105	Event scheduler is switched off, use SET GLOBAL event_scheduler=ON to enable it.
+ show events;
+ Db	Name	Definer	Time zone	Type	Execute at	Interval value	Interval field	Starts	Ends	Status	Originator	character_set_client	collation_connection	Database Collation
+-first	ee1	root@localhost	UTC	ONE TIME	2035-12-31 20:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
++first	ee1	root@localhost	UTC	ONE TIME	2085-12-31 20:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
+ show create event ee1;
+ Event	sql_mode	time_zone	Create Event	character_set_client	collation_connection	Database Collation
+-ee1		UTC	CREATE DEFINER=`root`@`localhost` EVENT `ee1` ON SCHEDULE AT '2035-12-31 20:01:23' ON COMPLETION NOT PRESERVE ENABLE DO set @a=5	latin1	latin1_swedish_ci	latin1_swedish_ci
++ee1		UTC	CREATE DEFINER=`root`@`localhost` EVENT `ee1` ON SCHEDULE AT '2085-12-31 20:01:23' ON COMPLETION NOT PRESERVE ENABLE DO set @a=5	latin1	latin1_swedish_ci	latin1_swedish_ci
+ drop database first;
+ create database second;
+ use second;
+ show events;
+ Db	Name	Definer	Time zone	Type	Execute at	Interval value	Interval field	Starts	Ends	Status	Originator	character_set_client	collation_connection	Database Collation
+-second	ee1	root@localhost	UTC	ONE TIME	2035-12-31 20:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
++second	ee1	root@localhost	UTC	ONE TIME	2085-12-31 20:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
+ show create event ee1;
+ Event	sql_mode	time_zone	Create Event	character_set_client	collation_connection	Database Collation
+-ee1		UTC	CREATE DEFINER=`root`@`localhost` EVENT `ee1` ON SCHEDULE AT '2035-12-31 20:01:23' ON COMPLETION NOT PRESERVE ENABLE DO set @a=5	latin1	latin1_swedish_ci	latin1_swedish_ci
+-create event ee2 on schedule at '2030-12-31 21:01:22' do set @a=5;
++ee1		UTC	CREATE DEFINER=`root`@`localhost` EVENT `ee1` ON SCHEDULE AT '2085-12-31 20:01:23' ON COMPLETION NOT PRESERVE ENABLE DO set @a=5	latin1	latin1_swedish_ci	latin1_swedish_ci
++create event ee2 on schedule at '2080-12-31 21:01:22' do set @a=5;
+ Warnings:
+ Warning	1105	Event scheduler is switched off, use SET GLOBAL event_scheduler=ON to enable it.
+-create event ee3 on schedule at '2030-12-31 22:01:23' do set @a=5;
++create event ee3 on schedule at '2080-12-31 22:01:23' do set @a=5;
+ Warnings:
+ Warning	1105	Event scheduler is switched off, use SET GLOBAL event_scheduler=ON to enable it.
+ show events;
+ Db	Name	Definer	Time zone	Type	Execute at	Interval value	Interval field	Starts	Ends	Status	Originator	character_set_client	collation_connection	Database Collation
+-second	ee1	root@localhost	UTC	ONE TIME	2035-12-31 20:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
+-second	ee2	root@localhost	UTC	ONE TIME	2030-12-31 21:01:22	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
+-second	ee3	root@localhost	UTC	ONE TIME	2030-12-31 22:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
++second	ee1	root@localhost	UTC	ONE TIME	2085-12-31 20:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
++second	ee2	root@localhost	UTC	ONE TIME	2080-12-31 21:01:22	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
++second	ee3	root@localhost	UTC	ONE TIME	2080-12-31 22:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
+ drop database second;
+ create database third;
+ use third;
+ show events;
+ Db	Name	Definer	Time zone	Type	Execute at	Interval value	Interval field	Starts	Ends	Status	Originator	character_set_client	collation_connection	Database Collation
+-third	ee1	root@localhost	UTC	ONE TIME	2035-12-31 20:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
+-third	ee2	root@localhost	UTC	ONE TIME	2030-12-31 21:01:22	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
+-third	ee3	root@localhost	UTC	ONE TIME	2030-12-31 22:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
++third	ee1	root@localhost	UTC	ONE TIME	2085-12-31 20:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
++third	ee2	root@localhost	UTC	ONE TIME	2080-12-31 21:01:22	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
++third	ee3	root@localhost	UTC	ONE TIME	2080-12-31 22:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
+ drop database third;
+ set time_zone = 'SYSTEM';
+ use test;
+@@ -4853,12 +4853,12 @@ DROP DATABASE mysqldump_test_db;
+ #
+ TRUNCATE mysql.event;
+ USE test;
+-CREATE event e29938 ON SCHEDULE AT '2035-12-31 20:01:23' DO SET @bug29938=29938;
++CREATE event e29938 ON SCHEDULE AT '2085-12-31 20:01:23' DO SET @bug29938=29938;
+ Warnings:
+ Warning	1105	Event scheduler is switched off, use SET GLOBAL event_scheduler=ON to enable it.
+ SHOW EVENTS;
+ Db	Name	Definer	Time zone	Type	Execute at	Interval value	Interval field	Starts	Ends	Status	Originator	character_set_client	collation_connection	Database Collation
+-test	e29938	root@localhost	SYSTEM	ONE TIME	2035-12-31 20:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	utf8mb4_uca1400_ai_ci
++test	e29938	root@localhost	SYSTEM	ONE TIME	2085-12-31 20:01:23	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	utf8mb4_uca1400_ai_ci
+ TRUNCATE mysql.event;
+ SHOW EVENTS;
+ Db	Name	Definer	Time zone	Type	Execute at	Interval value	Interval field	Starts	Ends	Status	Originator	character_set_client	collation_connection	Database Collation
+@@ -4954,7 +4954,7 @@ Bug #34861 - mysqldump with --tab gives weird output for triggers.
+ CREATE TABLE t1 (f1 INT);
+ CREATE TRIGGER tr1 BEFORE UPDATE ON t1 FOR EACH ROW SET @f1 = 1;
+ CREATE PROCEDURE pr1 () SELECT "Meow";
+-CREATE EVENT ev1 ON SCHEDULE AT '2030-01-01 00:00:00' DO SELECT "Meow";
++CREATE EVENT ev1 ON SCHEDULE AT '2080-01-01 00:00:00' DO SELECT "Meow";
+ Warnings:
+ Warning	1105	Event scheduler is switched off, use SET GLOBAL event_scheduler=ON to enable it.
+ 
+@@ -4963,7 +4963,7 @@ Trigger	Event	Table	Statement	Timing	Created	sql_mode	Definer	character_set_clie
+ tr1	UPDATE	t1	SET @f1 = 1	BEFORE	#		root@localhost	latin1	latin1_swedish_ci	latin1_swedish_ci
+ SHOW EVENTS;
+ Db	Name	Definer	Time zone	Type	Execute at	Interval value	Interval field	Starts	Ends	Status	Originator	character_set_client	collation_connection	Database Collation
+-test	ev1	root@localhost	SYSTEM	ONE TIME	2030-01-01 00:00:00	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
++test	ev1	root@localhost	SYSTEM	ONE TIME	2080-01-01 00:00:00	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
+ SELECT name,body FROM mysql.proc WHERE NAME = 'pr1';
+ name	body
+ pr1	SELECT "Meow"
+@@ -4991,7 +4991,7 @@ Trigger	Event	Table	Statement	Timing	Created	sql_mode	Definer	character_set_clie
+ tr1	UPDATE	t1	SET @f1 = 1	BEFORE	#		root@localhost	latin1	latin1_swedish_ci	latin1_swedish_ci
+ SHOW EVENTS;
+ Db	Name	Definer	Time zone	Type	Execute at	Interval value	Interval field	Starts	Ends	Status	Originator	character_set_client	collation_connection	Database Collation
+-test	ev1	root@localhost	SYSTEM	ONE TIME	2030-01-01 00:00:00	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
++test	ev1	root@localhost	SYSTEM	ONE TIME	2080-01-01 00:00:00	NULL	NULL	NULL	NULL	ENABLED	1	latin1	latin1_swedish_ci	latin1_swedish_ci
+ SELECT name,body FROM mysql.proc WHERE NAME = 'pr1';
+ name	body
+ pr1	SELECT "Meow"
+@@ -5766,7 +5766,7 @@ CREATE TRIGGER `trig
+ one` BEFORE INSERT ON `tab
+ one` FOR EACH ROW SET NEW.a = 1;
+ CREATE EVENT `event
+-one` ON SCHEDULE AT '2030-01-01 00:00:00' DO SET @a=5;
++one` ON SCHEDULE AT '2080-01-01 00:00:00' DO SET @a=5;
+ Warnings:
+ Warning	1105	Event scheduler is switched off, use SET GLOBAL event_scheduler=ON to enable it.
+ SHOW TABLES FROM bug25717383;
+@@ -6942,7 +6942,7 @@ DROP DATABASE test1;
+ create function f1() returns int return 1;
+ create function f2() returns int return 2;
+ update mysql.proc set body='return no_such_var' where db='test' and name='f1';
+-create event e1 on schedule every 1 year starts '2030-01-01' do select 1;
++create event e1 on schedule every 1 year starts '2080-01-01' do select 1;
+ Warnings:
+ Warning	1105	Event scheduler is switched off, use SET GLOBAL event_scheduler=ON to enable it.
+ update mysql.event set body ='select not_a_value' where db='test' and name='e1';
+@@ -6970,7 +6970,7 @@ DELIMITER ;;
+ /*!50003 SET sql_mode              = '' */ ;;
+ /*!50003 SET @saved_time_zone      = @@time_zone */ ;;
+ /*!50003 SET time_zone             = 'SYSTEM' */ ;;
+-/*!50106 CREATE*/ /*!50117 DEFINER=`root`@`localhost`*/ /*!50106 EVENT `e1` ON SCHEDULE EVERY 1 YEAR STARTS '2030-01-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO select not_a_value */ ;;
++/*!50106 CREATE*/ /*!50117 DEFINER=`root`@`localhost`*/ /*!50106 EVENT `e1` ON SCHEDULE EVERY 1 YEAR STARTS '2080-01-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO select not_a_value */ ;;
+ /*!50003 SET time_zone             = @saved_time_zone */ ;;
+ /*!50003 SET sql_mode              = @saved_sql_mode */ ;;
+ /*!50003 SET character_set_client  = @saved_cs_client */ ;;
+diff --git a/mysql-test/main/mysqldump.test b/mysql-test/main/mysqldump.test
+index 340f20a4a51..0e6bab151a6 100644
+--- a/mysql-test/main/mysqldump.test
++++ b/mysql-test/main/mysqldump.test
+@@ -1788,7 +1788,7 @@ use first;
+ set time_zone = 'UTC';
+ 
+ ## prove one works (with spaces and tabs on the end)
+-create event ee1 on schedule at '2035-12-31 20:01:23' do set @a=5;    	 	
++create event ee1 on schedule at '2085-12-31 20:01:23' do set @a=5;    	 	
+ show events;
+ show create event ee1;
+ --exec $MYSQL_DUMP --default-character-set=utf8mb4 --events first > $MYSQLTEST_VARDIR/tmp/bug16853-1.sql
+@@ -1803,8 +1803,8 @@ show create event ee1;
+ 
+ ## prove three works (with spaces and tabs on the end)
+ # start with one from the previous restore
+-create event ee2 on schedule at '2030-12-31 21:01:22' do set @a=5;	      
+-create event ee3 on schedule at '2030-12-31 22:01:23' do set @a=5;    		
++create event ee2 on schedule at '2080-12-31 21:01:22' do set @a=5;	      
++create event ee3 on schedule at '2080-12-31 22:01:23' do set @a=5;    		
+ show events;
+ --exec $MYSQL_DUMP --default-character-set=utf8mb4 --events second > $MYSQLTEST_VARDIR/tmp/bug16853-2.sql
+ drop database second;
+@@ -1912,7 +1912,7 @@ DROP DATABASE mysqldump_test_db;
+ TRUNCATE mysql.event;
+ 
+ USE test;
+-CREATE event e29938 ON SCHEDULE AT '2035-12-31 20:01:23' DO SET @bug29938=29938;
++CREATE event e29938 ON SCHEDULE AT '2085-12-31 20:01:23' DO SET @bug29938=29938;
+ SHOW EVENTS;
+ --exec $MYSQL_DUMP --default-character-set=utf8mb4 --skip-events --all-databases > $MYSQLTEST_VARDIR/tmp/bug29938.sql
+ 
+@@ -2057,7 +2057,7 @@ SET @@GLOBAL.CONCURRENT_INSERT = @OLD_CONCURRENT_INSERT;
+ CREATE TABLE t1 (f1 INT);
+ CREATE TRIGGER tr1 BEFORE UPDATE ON t1 FOR EACH ROW SET @f1 = 1;
+ CREATE PROCEDURE pr1 () SELECT "Meow";
+-CREATE EVENT ev1 ON SCHEDULE AT '2030-01-01 00:00:00' DO SELECT "Meow";
++CREATE EVENT ev1 ON SCHEDULE AT '2080-01-01 00:00:00' DO SELECT "Meow";
+ 
+ --echo
+ --replace_column 6 #
+@@ -2519,7 +2519,7 @@ one` BEFORE INSERT ON `tab
+ one` FOR EACH ROW SET NEW.a = 1;
+ 
+ CREATE EVENT `event
+-one` ON SCHEDULE AT '2030-01-01 00:00:00' DO SET @a=5;
++one` ON SCHEDULE AT '2080-01-01 00:00:00' DO SET @a=5;
+ 
+ SHOW TABLES FROM bug25717383;
+ --replace_column 6 #
+@@ -2994,7 +2994,7 @@ DROP DATABASE test1;
+ create function f1() returns int return 1;
+ create function f2() returns int return 2;
+ update mysql.proc set body='return no_such_var' where db='test' and name='f1';
+-create event e1 on schedule every 1 year starts '2030-01-01' do select 1;
++create event e1 on schedule every 1 year starts '2080-01-01' do select 1;
+ update mysql.event set body ='select not_a_value' where db='test' and name='e1';
+ create table t1 (i int);
+ --replace_result mariadb-dump.exe mariadb-dump
+diff --git a/mysql-test/suite/events/events_2.result b/mysql-test/suite/events/events_2.result
+index 58d725f241e..b6cb0876667 100644
+--- a/mysql-test/suite/events/events_2.result
++++ b/mysql-test/suite/events/events_2.result
+@@ -2,12 +2,12 @@ set sql_mode="";
+ drop database if exists events_test;
+ create database events_test;
+ use events_test;
+-create event e_26 on schedule at '2037-01-01 00:00:00' disable do set @a = 5;
++create event e_26 on schedule at '2087-01-01 00:00:00' disable do set @a = 5;
+ Warnings:
+ Warning	1105	Event scheduler is switched off, use SET GLOBAL event_scheduler=ON to enable it.
+ select db, name, body, definer, convert_tz(execute_at, 'UTC', 'SYSTEM'), on_completion from mysql.event;
+ db	name	body	definer	convert_tz(execute_at, 'UTC', 'SYSTEM')	on_completion
+-events_test	e_26	set @a = 5	root@localhost	2037-01-01 00:00:00	DROP
++events_test	e_26	set @a = 5	root@localhost	2087-01-01 00:00:00	DROP
+ drop event e_26;
+ create event e_26 on schedule at NULL disable do set @a = 5;
+ ERROR HY000: Incorrect AT value: 'NULL'
+diff --git a/mysql-test/suite/events/events_2.test b/mysql-test/suite/events/events_2.test
+index 9385f5d356d..630b9232c24 100644
+--- a/mysql-test/suite/events/events_2.test
++++ b/mysql-test/suite/events/events_2.test
+@@ -18,7 +18,7 @@ use events_test;
+ # mysql.event intact checking end
+ #
+ 
+-create event e_26 on schedule at '2037-01-01 00:00:00' disable do set @a = 5;
++create event e_26 on schedule at '2087-01-01 00:00:00' disable do set @a = 5;
+ select db, name, body, definer, convert_tz(execute_at, 'UTC', 'SYSTEM'), on_completion from mysql.event;
+ drop event e_26;
+ --error ER_WRONG_VALUE
+diff --git a/mysql-test/suite/versioning/r/sysvars.result b/mysql-test/suite/versioning/r/sysvars.result
+index a5a3f79990c..ec1e89ef9c2 100644
+--- a/mysql-test/suite/versioning/r/sysvars.result
++++ b/mysql-test/suite/versioning/r/sysvars.result
+@@ -12,10 +12,10 @@ system_versioning_asof	DEFAULT
+ select * from t;
+ a
+ 2
+-set system_versioning_asof= '2031-1-1 0:0:0';
++set system_versioning_asof= '2081-1-1 0:0:0';
+ show variables like 'system_versioning_asof';
+ Variable_name	Value
+-system_versioning_asof	2031-01-01 00:00:00.000000
++system_versioning_asof	2081-01-01 00:00:00.000000
+ select * from t;
+ a
+ 2
+diff --git a/mysql-test/suite/versioning/t/insert.test b/mysql-test/suite/versioning/t/insert.test
+index fe430b8e3b6..b276f8284eb 100644
+--- a/mysql-test/suite/versioning/t/insert.test
++++ b/mysql-test/suite/versioning/t/insert.test
+@@ -139,7 +139,7 @@ insert into t1(x, row_start, row_end) values (6, '1980-01-01 00:00:01', '1980-01
+ --error ER_WRONG_VERSIONING_RANGE
+ insert into t1(x, row_start, row_end) values (7, '1980-01-01 00:00:11', '1980-01-01 00:00:11');
+ insert into t1(x, row_start) values (8, '1980-01-01 00:00:22');
+---replace_regex /'202\d-\d\d-\d\d .*'/'now'/
++--replace_regex /'20[2-8]\d-\d\d-\d\d .*'/'now'/
+ --error ER_WRONG_VERSIONING_RANGE
+ insert into t1(x, row_end) values (9, '1980-01-01 00:00:33');
+ 
+diff --git a/mysql-test/suite/versioning/t/sysvars.test b/mysql-test/suite/versioning/t/sysvars.test
+index 91dd278a2e1..1bc406faa2f 100644
+--- a/mysql-test/suite/versioning/t/sysvars.test
++++ b/mysql-test/suite/versioning/t/sysvars.test
+@@ -8,7 +8,7 @@ show global variables like 'system_versioning_asof';
+ show variables like 'system_versioning_asof';
+ select * from t;
+ 
+-set system_versioning_asof= '2031-1-1 0:0:0';
++set system_versioning_asof= '2081-1-1 0:0:0';
+ show variables like 'system_versioning_asof';
+ select * from t;
+ 
+-- 
+2.52.0
+

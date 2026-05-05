@@ -56,3 +56,8 @@ main.ssl_cipher                                  : since 11.7.2 - all
 unit.conc_async                                  : since 11.7.2 - aarch64
 main.func_regexp_pcre                            : boo#1252518
 mysql_sha2.ssl_auto                              : since 11.8.5 - all
+
+main.chained_ssl_certificates                    : since 11.8.6 - all
+compat/oracle.sp-package                         : since 11.8.6 - armv7l
+main.xml                                         : since 11.8.6 - armv7l
+
