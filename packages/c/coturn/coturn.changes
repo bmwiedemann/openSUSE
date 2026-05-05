@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue May  5 12:48:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.11.0
+  * Filc harness and pointer typedefs (#1896).
+  * Load generator mode in turnutils_uclient (#1894).
+  * Cache hot lookups in TURN data-path handlers (#1893).
+  * Inline get_ioa_addr_len() in the header (#1891).
+  * Trim two redundant checks from per-packet relay hot path.
+  * Hoist turn_server_get_engine() out of per-packet hot path.
+  * Add fuzz coverage for integrity helpers (#1888).
+  * Add deterministic challenge-response builder to FuzzStun.
+  * Seed address-mapping table in fuzz initializer (#1885).
+  * Unblock fuzz coverage for is_http and rare STUN attributes.
+  * HTTP parsing fixes (#1882).
+  * Out of bound HTTP detection in parser (#1877).
+  * Delete log line per relay thread on start (#1876).
+  * Add Unity-based unit test scaffolding (#1875).
+  * Drop udp_relay_servers_number config and clean up dead UDP
+    id-space (#1874).
+  * Fix build failure: define _GNU_SOURCE for recvmmsg() on Linux.
+  * Pin session origin only after MESSAGE-INTEGRITY validates.
+  * Abort on malformed allowed/denied-peer-ip at startup (#1872).
+  * Fix format-string injection in Redis DB driver (#1870).
+  * Use constant-time compare for STUN MESSAGE-INTEGRITY HMAC.
+
+-------------------------------------------------------------------
 Tue Apr 14 12:31:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.10.0
