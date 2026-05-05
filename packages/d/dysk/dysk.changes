@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 04 18:08:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version v3.6.1:
+  * fix "use" column not taking into account some non-free space on
+    linux - Fix #117
+  * --bar-width parameter - Fix #114 - Thanks @PeithonKing
+
+-------------------------------------------------------------------
 Mon Jan 12 06:35:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.6.0:

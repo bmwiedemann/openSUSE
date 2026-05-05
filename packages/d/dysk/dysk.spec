@@ -17,7 +17,7 @@
 
 
 Name:           dysk
-Version:        3.6.0
+Version:        v3.6.1
 Release:        0
 Summary:        Get information on filesystems, like df but better
 License:        MIT
