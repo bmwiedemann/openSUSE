@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 30 08:08:16 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- NEW DEFAULT: Never check disks that do not spin
+  (boo#1259501, smartmontools-suse-default.patch).
+- Generate smartd.opts, even if smartd_opts is empty.
+- Use "systemctl" instead of "service"
+  (boo#1259501#c4, smartmontools.generate_smartd_opts.in).
+- Fix the package for immutable mode
+  (jsc#PED-14826, smartmontools.tmpfiles.in).
+- Remove obsolete checks from smartmontools-rpmlintrc.
+
+-------------------------------------------------------------------
 Sat Nov  8 21:51:07 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - update-smart-drivedb: Provide support for the new upstream

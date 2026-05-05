@@ -1,6 +1,7 @@
 [Unit]
 Description=Update smartd options
 Wants=local-fs.target
+Before=smartd.service
 
 [Service]
 # added automatically, for details please see

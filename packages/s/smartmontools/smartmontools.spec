@@ -1,7 +1,7 @@
 #
 # spec file for package smartmontools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ Source6:        smartmontools-drivedb_h-update.sh
 Source7:        smartmontools-drivedb.h
 Source8:        smartd_generate_opts.path
 Source9:        smartd_generate_opts.service
+Source10:       %{name}.tmpfiles.in
 # PATCH-FEATURE-UPSTREAM smartmontools-update-smart-drivedb.patch sbrabec@suse.com -- Support download from smartmontools migrated to github (cummulative patch).
 Patch1:         smartmontools-update-smart-drivedb.patch
 # PATCH-FEATURE-OPENSUSE smartmontools-suse-default.patch sbrabec@suse.cz -- Define smart SUSE defaults.
@@ -75,9 +76,11 @@ commands man smartctl and man smartd will provide more information.
 
 %prep
 %autosetup -p1
-cp -a %{SOURCE2} %{SOURCE5} .
+cp -a %{SOURCE2} .
+cp -a %{SOURCE5} generate_smartd_opts.in
 # Following line is handled by smartmontools-drivedb_h-update.sh.
 cp -a %{SOURCE7} drivedb.h.new
+cp -a %{SOURCE10} %{name}.tmpfiles.in
 #
 # PATCH-FEATURE-OPENSUSE (sed on smartd.service.in) sbrabec@suse.cz -- Use generated smartd_opts (from SUSE sysconfig file). Systemd smartd.service cannot be smart enough to parse SUSE sysconfig file and generate smartd_opts on fly. And we do not want to launch shell just for it in every boot.
 sed "s:/usr/local/etc/sysconfig/smartmontools:%{_sharedstatedir}/smartmontools/smartd_opts:" <smartd.service.in >smartd.service.in.new
@@ -126,8 +129,10 @@ export LDFLAGS="-pie"
 	--with-nvme-devicescan
 
 %make_build BUILD_INFO='"(SUSE RPM)"'
-SERVICE=%{_sbindir}/service
-sed "s:@prefix@:%{_prefix}:g;s:@localstatedir@:%{_localstatedir}:g;s:@SERVICE@:$SERVICE:" <smartmontools.generate_smartd_opts.in >generate_smartd_opts
+SERVICE=%{_bindir}/systemctl
+for NAME in generate_smartd_opts %{name}.tmpfiles ; do
+	sed "s:@prefix@:%{_prefix}:g;s:@localstatedir@:%{_localstatedir}:g;s:@SYSTEMCTL@:$SERVICE:" <$NAME.in >$NAME
+done
 
 %install
 %make_install
@@ -147,6 +152,9 @@ cp %{SOURCE9} %{buildroot}/%{_unitdir}
 rm %{buildroot}%{_defaultdocdir}/%{name}/INSTALL
 # Create empty ghost files for files created by update-smart-drivedb.
 touch %{buildroot}%{_sharedstatedir}/smartmontools/drivedb.h{,.{asc,error,error.raw,error.raw.asc,lastcheck,old,old.raw,old.raw.asc,raw,raw.asc}}
+# install tmpfiles
+mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
+install -m 644 %{name}.tmpfiles %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 
 # Check syntax of drivedb.h that may come from a later snapshot (code from update-smart-drivedb)
 if ./smartctl -B drivedb.h -P showall >/dev/null; then :; else
@@ -183,6 +191,7 @@ if test -f %{_sharedstatedir}/smartmontools/drivedb.h -a -f %{_sbindir}/update-s
 fi
 
 %post
+%tmpfiles_create %{name}.conf
 # First prepare sysconfig.
 %fillup_only
 # Up to Leap 42.3 and SLE 15 SP3 Maintenance Update there was a "Command" meta comment in the sysconfig file.
@@ -248,10 +257,9 @@ fi
 
 %files
 %doc %{_docdir}/%{name}
-%dir %{_datadir}/smartmontools
-%verify(not md5 size mtime) %{_datadir}/smartmontools/drivedb.h
+%{_datadir}/smartmontools
 %{_mandir}/man*/*
-%dir %{_sharedstatedir}/smartmontools
+%ghost %dir %{_sharedstatedir}/smartmontools
 %ghost %{_sharedstatedir}/smartmontools/smartd_opts
 %ghost %{_sharedstatedir}/smartmontools/drivedb.h
 %ghost %{_sharedstatedir}/smartmontools/drivedb.h.asc
@@ -265,6 +273,7 @@ fi
 %ghost %{_sharedstatedir}/smartmontools/drivedb.h.raw
 %ghost %{_sharedstatedir}/smartmontools/drivedb.h.raw.asc
 %{_prefix}/lib/smartmontools
+%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %{_unitdir}/*
 %{_sbindir}/*
 %config(noreplace) %{_sysconfdir}/smart_drivedb.h

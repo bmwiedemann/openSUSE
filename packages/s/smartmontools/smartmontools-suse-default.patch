@@ -2,7 +2,7 @@ Index: smartd.conf
 ===================================================================
 --- a/smartd.conf
 +++ b/smartd.conf
-@@ -9,6 +9,15 @@
+@@ -9,6 +9,17 @@
  # device per line. Text after a hash (#) is ignored, and you may use
  # spaces and tabs for white space. You may use '\' to continue lines.
  
@@ -13,7 +13,9 @@ Index: smartd.conf
 +#                 (Takes several minutes.)
 +#   -s L/:        Run Extended Self Test every first Sunday in the
 +#                 month. (Start earlier, it could take tens of hours.)
-+DEFAULT -d removable -s (S/../.././03|L/../(01|02|03|04|05|06|07)/7/01)
++#   -n standby,q  Never check disks that do not spin and do not report
++#                 about it.
++DEFAULT -d removable -s (S/../.././03|L/../(01|02|03|04|05|06|07)/7/01) -n standby,q
 +
  # The word DEVICESCAN will cause any remaining lines in this
  # configuration file to be ignored: it tells smartd to scan for all

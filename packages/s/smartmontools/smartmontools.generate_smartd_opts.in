@@ -14,7 +14,7 @@
 # Following code should be in sync with sysv init script for older distros!
 
 # source configuration file.
-smartd_opts=
+smartd_opts=@UNDEFINED@
 [ -r @localstatedir@/lib/smartmontools/smartd_opts ] && . @localstatedir@/lib/smartmontools/smartd_opts
 smartd_opts_old="$smartd_opts"
 [ -r /etc/sysconfig/smartmontools ] && . /etc/sysconfig/smartmontools
@@ -50,5 +50,5 @@ smartd_opts=\"$smartd_opts\"" >@localstatedir@/lib/smartmontools/smartd_opts
 # SMARTD_SKIP_INIT is used during installation.
 if test -z "$SMARTD_SKIP_INIT" ; then
 	# Behavior of both "Command" and "ServiceRestart" is undefined. Restart service here.
-	@SERVICE@ smartd try-restart
+	@SYSTEMCTL@ smartd try-restart
 fi
