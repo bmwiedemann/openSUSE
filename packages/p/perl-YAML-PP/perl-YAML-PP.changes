@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 24 16:10:36 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.40.0 (v0.40.0)
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  v0.40.0 2026-04-24 16:51:28+02:00
+
+      - Security: Limit default allowed maximum nesting level.
+        Set it via new option 'max_depth'.
+
+-------------------------------------------------------------------
 Mon Feb 10 05:32:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.39.0 (v0.39.0)
