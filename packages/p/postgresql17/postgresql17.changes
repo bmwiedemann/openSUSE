@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 30 12:56:04 UTC 2026 - Reinhard Max <max@suse.com>
+
+- bsc#1263804: After dropping update-alternatives we have to
+  package /usr/bin/pg_config as an actual symlink, not %ghost.
+- Fix spelling of build conditionals.
+
+-------------------------------------------------------------------
+Mon Mar 30 10:21:44 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Get rid of update-alternatives for openSUSE/SLE 16.0 and newer
+  to support immutable systems and transactional updates.
+  (jsc#PED-14825, bsc#1245875)
+
+-------------------------------------------------------------------
 Tue Feb 24 11:39:57 UTC 2026 - Reinhard Max <max@suse.com>
 
 - bsc#1258754: Update to 17.9 to fix two regressions in 17.8:

@@ -259,4 +259,12 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
     of transaction&quot;.</comment>
     <requestid>1335839</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8f6c835978994129f76443004e44f655</srcmd5>
+    <version>17.9</version>
+    <time>1777986988</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1350841</requestid>
+  </revision>
 </revisionlist>
