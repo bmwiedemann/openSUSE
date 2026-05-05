@@ -1214,4 +1214,50 @@
   * docs: update GitHub Action assets (#6427) (forwarded request 1341888 from jfkw)</comment>
     <requestid>1341889</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>9df694351a59139358f981dd6dfbbce8</srcmd5>
+    <version>2.11.4</version>
+    <time>1774555795</time>
+    <user>anag_factory</user>
+    <comment>- build with go 1.26 otherwise it panics on start (improve
+  check to actually find this)</comment>
+    <requestid>1342747</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>71bd0764776d3357ec6bed13c6348120</srcmd5>
+    <version>2.12.1</version>
+    <time>1777986966</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.12.1:
+  * chore: prepare release
+  * gomodguard: fix panic with migration suggestion (#6542)
+  * fix: install.sh script (#6539)
+  * docs: update GitHub Action assets (#6538)
+
+- Update to version 2.12.0:
+  * chore: prepare release
+  * build(deps): bump github.com/bombsimon/wsl/v5 from 5.6.0 to 5.8.0 (#6536)
+  * build(deps): bump github.com/Masterminds/semver/v3 from 3.4.0 to 3.5.0 (#6535)
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.23.1 to 2.24.1 (#6534)
+  * feat: embed the JSON schema in the binary (#6533)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.25.0 to 2.26.1 (#6532)
+  * build(deps): bump github.com/rs/zerolog from 1.35.0 to 1.35.1 in /pkg/golinters/arangolint/testdata in the linter-testdata group across 1 directory (#6531)
+  * dev: add GitHub Actions validations (#6530)
+  * build(deps): bump github.com/charmbracelet/lipgloss from v1.1.0 to v2.0.3 (#6529)
+  * dev: improve Docker login during release (#6527)
+  * build(deps): bump goreleaser/goreleaser-action from 7.1.0 to 7.2.1 in the github-actions group (#6526)
+  * dev: switch to crazy-max/ghaction-github-pages (#6525)
+  * build(deps): bump github.com/sourcegraph/go-diff from 0.7.0 to 0.8.0 (#6524)
+  * build(deps): bump goreleaser/goreleaser-action from 7.0.0 to 7.1.0 in the github-actions group (#6519)
+  * chore: remove homebrew tap (#6516)
+  * fix(custom): filter env vars when cloning the repository (#6515)
+  * build(deps): bump go-simpler.org/sloglint from 0.11.1 to 0.12.0 (#6512)
+  * Bump github.com/jingyugao/rowserrcheck from v1.1.1 to c5f79b8 (#6510)
+  * chore: publish SBOM (#6511)
+  * build(deps): bump the linter-testdata group across 2 directories with 3 updates (#6506)
+  * build(deps): bump github/codeql-action from 4.35.1 to 4.35.2 in the github-actions group (#6507)
+  * feat: add clickhouselint (#6485)
+  * build(deps): bump github.com/timakin/bodyclose from 1db5c5ca4d67 to 73d1f95b84b4 (#6504) (forwarded request 1350788 from jfkw)</comment>
+    <requestid>1350800</requestid>
+  </revision>
 </revisionlist>

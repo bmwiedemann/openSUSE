@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri May 01 16:06:44 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.12.1:
+  * chore: prepare release
+  * gomodguard: fix panic with migration suggestion (#6542)
+  * fix: install.sh script (#6539)
+  * docs: update GitHub Action assets (#6538)
+
+-------------------------------------------------------------------
+Fri May 01 12:36:46 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.12.0:
+  * chore: prepare release
+  * build(deps): bump github.com/bombsimon/wsl/v5 from 5.6.0 to 5.8.0 (#6536)
+  * build(deps): bump github.com/Masterminds/semver/v3 from 3.4.0 to 3.5.0 (#6535)
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.23.1 to 2.24.1 (#6534)
+  * feat: embed the JSON schema in the binary (#6533)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.25.0 to 2.26.1 (#6532)
+  * build(deps): bump github.com/rs/zerolog from 1.35.0 to 1.35.1 in /pkg/golinters/arangolint/testdata in the linter-testdata group across 1 directory (#6531)
+  * dev: add GitHub Actions validations (#6530)
+  * build(deps): bump github.com/charmbracelet/lipgloss from v1.1.0 to v2.0.3 (#6529)
+  * dev: improve Docker login during release (#6527)
+  * build(deps): bump goreleaser/goreleaser-action from 7.1.0 to 7.2.1 in the github-actions group (#6526)
+  * dev: switch to crazy-max/ghaction-github-pages (#6525)
+  * build(deps): bump github.com/sourcegraph/go-diff from 0.7.0 to 0.8.0 (#6524)
+  * build(deps): bump goreleaser/goreleaser-action from 7.0.0 to 7.1.0 in the github-actions group (#6519)
+  * chore: remove homebrew tap (#6516)
+  * fix(custom): filter env vars when cloning the repository (#6515)
+  * build(deps): bump go-simpler.org/sloglint from 0.11.1 to 0.12.0 (#6512)
+  * Bump github.com/jingyugao/rowserrcheck from v1.1.1 to c5f79b8 (#6510)
+  * chore: publish SBOM (#6511)
+  * build(deps): bump the linter-testdata group across 2 directories with 3 updates (#6506)
+  * build(deps): bump github/codeql-action from 4.35.1 to 4.35.2 in the github-actions group (#6507)
+  * feat: add clickhouselint (#6485)
+  * build(deps): bump github.com/timakin/bodyclose from 1db5c5ca4d67 to 73d1f95b84b4 (#6504)
+  * build(deps): bump github.com/ashanbrown/makezero/v2 from 2.2.0 to 2.2.1 (#6503)
+  * build(deps): bump github.com/ashanbrown/forbidigo/v2 from 2.3.0 to 2.3.1 (#6502)
+  * chore: improve GHA workflows (#6500)
+  * chore: minor issue template improvements
+  * chore: pin GitHub Actions
+  * chore: minor changes
+  * chore: new workflow to add a linter (#6497)
+  * build(deps): bump github.com/manuelarte/funcorder from 0.5.0 to 0.6.0 (#6494)
+  * build(deps): bump golang.org/x/tools from 0.43.0 to 0.44.0 (#6491)
+  * build(deps): bump github.com/ashanbrown/makezero/v2 from 2.1.0 to 2.2.0 (#6492)
+  * build(deps): bump golang.org/x/sys from 0.42.0 to 0.43.0 (#6493)
+  * build(deps): bump golang.org/x/mod from 0.34.0 to 0.35.0 (#6495)
+  * chore: add incident response plan
+  * chore: add a security policy
+  * chore: remove unused elements
+  * build(deps): bump github.com/jgautheron/goconst from 1.9.0 to 1.10.0 (#6482)
+  * build(deps): bump github.com/hashicorp/go-version from 1.8.0 to 1.9.0 (#6484)
+  * build(deps): bump github.com/shirou/gopsutil/v4 from 4.26.2 to 4.26.3 (#6483)
+  * goconst: ignore strings from tests (#6480)
+  * paralleltest: expose checkcleanup option (#6477)
+  * build(deps): bump github.com/golangci/dupl from f665c8d69b32 to c99c5cf5c202 (#6474)
+  * build(deps): bump the linter-testdata group across 4 directories with 5 updates (#6476)
+  * dev: improve migration suggestion for gomodguardv2 (#6472)
+  * build(deps): bump github.com/ryancurrah/gomodguard/v2 from 1.4.1 to 2.1.0 (#6465)
+  * build(deps): bump brace-expansion from 1.1.12 to 1.1.13 in /.github/peril (#6463)
+  * build(deps): bump github.com/tetafro/godot from 1.5.4 to 1.5.6 (#6460)
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.4 to 2.3.0 (#6461)
+  * build(deps): bump github.com/butuzov/ireturn from 0.4.0 to 0.4.1 (#6462)
+  * build(deps): bump picomatch from 2.3.1 to 2.3.2 in /.github/peril (#6457)
+  * chore: update go.mod
+  * feat: decrease cache entropy (#6445)
+  * build(deps): bump github.com/securego/gosec/v2 from 619ce2117e08 to 2.25.0 (#6443)
+  * build(deps): bump github.com/jgautheron/goconst from 1.8.2 to 1.9.0 (#6421)
+  * govet: add `inline` analyzer (#6385)
+  * docs: update documentation assets (#6454)
+  * docs: update GitHub Action assets (#6453)
+
+-------------------------------------------------------------------
+Thu Mar 26 09:51:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- build with go 1.26 otherwise it panics on start (improve
+  check to actually find this)
+
+-------------------------------------------------------------------
 Sun Mar 22 18:58:27 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.11.4:
