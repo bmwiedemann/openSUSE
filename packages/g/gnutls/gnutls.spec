@@ -42,7 +42,7 @@
 %bcond_with tpm
 %bcond_without leancrypto
 Name:           gnutls
-Version:        3.8.12
+Version:        3.8.13
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -70,9 +70,6 @@ Patch4:         gnutls-FIPS-disable-mac-sha1.patch
 Patch5:         gnutls-FIPS-140-3-references.patch
 #PATCH-FIX-SUSE bsc#1260395 Fix build with autoconf 2.73
 Patch6:         gnutls-C23.patch
-#PATCH-FIX-UPSTREAM bsc#1257934 Fix build with libnettle 4.0
-Patch7:         gnutls-libnettle4-2075.patch
-Patch8:         gnutls-libnettle4-2080.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
@@ -369,6 +366,7 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %{_includedir}/%{name}/compat.h
 %{_includedir}/%{name}/dtls.h
 %{_includedir}/%{name}/gnutls.h
+%{_includedir}/%{name}/hpke.h
 %{_includedir}/%{name}/openpgp.h
 %{_includedir}/%{name}/ocsp.h
 %{_includedir}/%{name}/pkcs7.h
@@ -376,11 +374,11 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %{_includedir}/%{name}/pkcs12.h
 %{_includedir}/%{name}/self-test.h
 %{_includedir}/%{name}/socket.h
+%{_includedir}/%{name}/system-keys.h
+%{_includedir}/%{name}/tpm.h
+%{_includedir}/%{name}/urls.h
 %{_includedir}/%{name}/x509.h
 %{_includedir}/%{name}/x509-ext.h
-%{_includedir}/%{name}/tpm.h
-%{_includedir}/%{name}/system-keys.h
-%{_includedir}/%{name}/urls.h
 %{_libdir}/libgnutls.so
 %{_libdir}/pkgconfig/gnutls.pc
 

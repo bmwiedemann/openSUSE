@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:47:18 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.8.13:
+  * libgnutls: Add more checks to DTLS reassembly
+    [GNUTLS-SA-2026-04-29-1, CVSS: high] [CVE-2026-33846, bsc#1263705]
+  * libgnutls: Fix qsort comparator in DTLS reassembly
+    [GNUTLS-SA-2026-04-29-2, CVSS: high] [CVE-2026-42009, bsc#1263708]
+  * libgnutls: Fix crashing on an underflow with a DTLS datagram
+    A remotely triggerable underflow in the DTLS reassembly code led to
+    a heap overrun.
+    [GNUTLS-SA-2026-04-29-3, CVSS: high] [CVE-2026-33845, bsc#1263704]
+  * libgnutls: Fix RSA-PSK identity truncation
+    [GNUTLS-SA-2026-04-29-4, CVSS: high] [CVE-2026-42010, bsc#1263709]
+  * libgnutls: Fix case-sensitivity of domain name comparison in name constraints
+    [GNUTLS-SA-2026-04-29-5, CVSS: high] [CVE-2026-3833, bsc#1263707]
+  * libgnutls: Fix intersecting empty constraints
+    [GNUTLS-SA-2026-04-29-6, CVSS: medium] [CVE-2026-42011, bsc#1263710]
+  * libgnutls: Suppress CN fallback in presence of URI and SRV SAN
+    [GNUTLS-SA-2026-04-27-7, CVSS: medium] [CVE-2026-42012, bsc#1263711]
+  * libgnutls: Suppress CN fallback for oversized SAN
+    [GNUTLS-SA-2026-04-27-8, CVSS: medium] [CVE-2026-42013, bsc#1263712]
+  * libgnutls: Fix use-after-free in gnutls_pkcs11_token_set_pin
+    [GNUTLS-SA-2026-04-29-9, CVSS: medium] [CVE-2026-42014, bsc#1263713]
+  * libgnutls: Fix overread in RSA key exchange with PKCS#11 keys
+    [GNUTLS-SA-2026-04-29-10, CVSS: medium] [CVE-2026-5260, bsc#1263715]
+  * libgnutls: Fix off-by-one in PKCS#12 bag element bounds check
+    [GNUTLS-SA-2026-04-29-11, CVSS: low] [CVE-2026-42015, bsc#1263714]
+  * libgnutls: Fix multi-entry OCSP response revocation bypass
+    [GNUTLS-SA-2026-04-29-12, CVSS: low] [CVE-2026-3832, bsc#1263706]
+  * libgnutls: Fix timing side-channel in PKCS#7 padding removal
+    [GNUTLS-SA-2026-04-29-13, CVSS: low] [CVE-2026-5419, bsc#1263716]
+  * libgnutls: Fix PSK username comparison during rehandshake
+  * libgnutls: Fix OID length check for OCSP delegated signer EKU
+  * libgnutls: Fix AES keys persisting with pkcs11-provider
+  * libgnutls: Fix missing RSA key coprimality check in verify_params
+  * libgnutls: Fix overread when parsing OpenSSL PEM private keys
+  * libgnutls: Fix a theoretical double-free during certificate import
+  * libgnutls: Fix heap overread in SCT extension parser
+  * libgnutls: Zeroize shared secret derived during hybrid key exchange
+  * build: Support building with Nettle 4.0
+    Nettle 4.0 was released in Feburary 2026, with API incompatibile
+    changes from 3.10. The library can now compile with it, while
+    Nettle 3.10 is still supported (#1791).
+  * libgnutls: Support deriving ML-DSA public key from an expanded private key
+    RFC 9881 defines 3 private key formats for ML-DSA: "seed",
+    "expandedKey" and both. It is now possible to derive a public key
+    from a private key in the "expandedKey" format (#1723).
+  * libgnutls: Fix loading BIT STRING encoded EdDSA key from PKCS#11
+    For compatibility reasons, the library supports two formats for
+    EdDSA private keys: either ASN.1 BIT STRING (raw) or OCTET STRING
+    (DER). Previously, loading a private key in the former format
+    resulted in a failure, which is now fixed (#1749).
+  * libgnutls: HPKE (RFC 9180) is now supported as a technology preview
+    The Hybrid Public Key Encryption (HPKE) is a flexible cryptographic
+    protocol which enables to encrypt arbitrary data to a recipient, by
+    combining key encapsulation mechanism (KEM) and authenticated
+    encryption with additional data (AEAD). GnuTLS now includes the
+    implementation contributed by David Dudas. Given this is a
+    technology preview, the implementation and the API might suffer
+    modification in the following period. Use --enable-hpke to turn on
+    this feature (#1506).
+  * libgnutls: Fix TLS 1.3 client certificate selection
+    For servers that send a signature_algorithms extension in CertificateRequest
+    with new rsa_pss_rsae_* algorithms and without the legacy rsa_pkcs1_* ones,
+    the client now properly considers RSA when selecting a certificate to send.
+    This fixes TLS 1.3 interoperability with newer Java servers
+    when using client certificates.
+  * libgnutls: Fix kTLS ChaCha20-Poly1305 IV for TLS 1.2
+    When using kTLS with ChaCha20-Poly1305 under TLS 1.2,
+    an incorrect value was passed as the IV to the kernel,
+    causing connections to fail early.
+  * libgnutls: Allow fetching object type metadata for PKCS#11 keys
+    A new library function, gnutls_pkcs11_obj_get_pk_algorithm,
+    has been added to check the public key algorithms of PKCS#11 key objects.
+    Object types other than CKO_PRIVATE_KEY are currently not supported.
+  * API and ABI modifications:
+    - gnutls_hpke_kem_t: New enum
+    - gnutls_hpke_kdf_t: New enum
+    - gnutls_hpke_aead_t: New enum
+    - gnutls_hpke_mode_t: New enum
+    - gnutls_hpke_role_t: New enum
+    - gnutls_hpke_context_st: New context structure
+    - gnutls_hpke_init: New function
+    - gnutls_hpke_deinit: New function
+    - gnutls_hpke_encap: New function
+    - gnutls_hpke_seal: New function
+    - gnutls_hpke_decap: New function
+    - gnutls_hpke_open: New function
+    - gnutls_hpke_derive_keypair: New function
+    - gnutls_hpke_export: New function
+    - gnutls_pkcs11_obj_get_pk_algorithm: New function
+  * Rebase gnutls-FIPS-140-3-references.patch
+  * Remove patches upstream:
+    - gnutls-libnettle4-2075.patch
+    - gnutls-libnettle4-2080.patch
+
+-------------------------------------------------------------------
 Fri Apr 17 11:26:12 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix build with libnettle 4.0: (bsc#1257934)
