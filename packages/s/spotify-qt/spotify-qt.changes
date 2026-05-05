@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon May  4 15:42:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.4:
+  * Fixed not being able to follow/unfollow playlists in some
+    cases.
+  * Fixed not being able to add/remove tracks to/from playlists
+    in some cases.
+  * Fixed not being able to like/unlike albums in some cases.
+  * Fixed showing empty/invalid playlists in search.
+  * Added selection and copying of lyrics lines (#237).
+  * No longer updates volume while volume slider is shown (#316).
+  * Improved performance when adding tracks to a playlist.
+  * Improved error handling when adding tracks to a playlist.
+  * Improved error handling when liking/unliking tracks.
+  * Now disables unavailable playlists in search.
+- update to 4.0.3:
+  * Fixed a common crash while starting the application (#311).
+  * Fixed playlists not loading correctly in some cases (#313).
+  * Fixed milliseconds in lyrics not being parsed correctly.
+  * Fixed podcasts not loading correctly in some cases.
+  * Fixed not loading artist albums in some cases.
+  * Fixed not being able to follow/unfollow artists in some
+    cases.
+  * Added Wayland support for AppImage builds (#249).
+  * Now hides followers and popularity from artist if
+    unavailable.
+  * Now hides genres description from artist if unavailable.
+  * Now hides popular tracks from artists if unavailable.
+  * Now hides album groups from artists if unavailable.
+  * Removed deprecated "New releases" from library.
+  * Now disables playlists that can't be loaded.
+  * Logs from Qt can now be viewed in the application.
+  * Improved error handling when player refresh fails.
+  * Improved error handling when device/queue menu fails.
+
+-------------------------------------------------------------------
 Wed Feb 11 08:31:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.2:
