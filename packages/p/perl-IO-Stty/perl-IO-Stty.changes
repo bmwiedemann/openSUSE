@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Thu Apr  9 11:55:19 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.80.0 (0.08)
+   see /usr/share/doc/packages/perl-IO-Stty/Changes
+
+  0.08 Thu Apr 02 2026
+    Bug fixes:
+     - Fix Perl 5.8 compatibility: replace // (defined-or) operator with
+       ternary equivalent. The // operator requires Perl 5.10 but
+       MIN_PERL_VERSION is 5.008. (GH #28, GH #29, PR #30, PR #31)
+     - Implement crterase alias (was documented but never coded) and
+       correct dec/crt combination documentation to match actual behavior.
+       (PR #33)
+     - Add exta, extb, and 134.5 baud rate aliases that were documented
+       but silently rejected. (PR #32)
+     - Use _POSIX_VDISABLE for disabling special characters instead of
+       hardcoded 0, fixing 'undef'/'^-' on macOS/BSD where VDISABLE is
+       255. Also fix sane/cooked combos to use 'undef' for eol. (PR #37)
+     - Handle VEOF/VMIN and VEOL/VTIME shared cc slots on Solaris/SVR4
+       systems where these overlap in the termios cc array. (GH #38,
+       PR #42)
+     - Fix _cc_to_hat() to use only _POSIX_VDISABLE, not hardcoded 0/255,
+       preventing wrong <undef> display on Linux and macOS. (PR #46)
+     - Add missing igncr flag to -a display output. (PR #50)
+     - Handle getattr() failure by returning undef instead of silently
+       continuing with zeroed flags. Return setattr() result so callers
+       can detect failure. (PR #36)
+     - Fix broken $private_subs reference in t/99-pod-coverage.t and
+       remove duplicate echok in sane combo expansion. (PR #34)
+    Improvements:
+     - Add evenp, oddp, parity, cbreak, and litout combination aliases
+       matching GNU stty behavior. (PR #35)
+     - Add 'speed' query parameter to return just the output baud rate,
+       matching GNU stty behavior. (PR #51)
+     - Document iexten as a settable local flag in POD. (PR #36)
+     - Document AI Policy
+    Maintenance:
+     - Add provides metadata to Makefile.PL for correct CPAN indexing,
+       using MM->parse_version() for dynamic version extraction. (PR #47,
+       PR #53)
+     - Add strict/warnings to boilerplate test files. (PR #34)
+     - Clarify in CLAUDE.md that README.md and MANIFEST are generated
+       files and that release prep is human-only. (PR #53, PR #54)
+  0.07 Sun Mar 22 2026
+    Bug fixes:
+     - Fix "Use of uninitialized value" warning in stty.pl when stdin is
+       not a terminal. stty() returns undef when isatty fails; the script
+       now guards with defined() before comparing. (PR #25)
+     - Fix broken C<-icanon> POD formatting and add missing iexten to sane
+       combination documentation. Replace "Needs documentation" stub with
+       proper docs for show_me_the_crap(). (PR #26)
+    Improvements:
+     - Show min and time values in -a output. These are critical for
+       non-canonical (raw/cbreak) mode users and match GNU stty behavior.
+       Also adds functional tests for hat-notation control char assignment,
+       undef/^- char disabling, and min/time setting. (PR #27)
+    Maintenance:
+     - Declare MIN_PERL_VERSION 5.008 in Makefile.PL to prevent CPAN from
+       attempting installation on too-old perls. (PR #25)
+     - Add IO::Pty as a test recommends in cpanfile for better test
+       coverage on CPAN testers and CI. (PR #25)
+     - Regenerate README.md from updated POD. (PR #26)
+  0.06 Fri Mar 20 2026
+    Bug fixes:
+     - Fix show_me_the_crap() emitting "speed  baud" (empty speed) when
+       getospeed() returns a value not mapped to any standard POSIX B*
+       constant (e.g. on OpenBSD). Now falls back to the raw numeric value.
+       (GH #19, PR #23)
+     - Display ispeed separately in -a output when it differs from ospeed,
+       using the same raw-numeric fallback for unmapped values. (PR #23)
+     - Fix ispeed test failure on Linux ptys where the kernel normalises
+       ispeed to match ospeed during tcsetattr(). Set both speeds in a
+       single stty() call to avoid the normalisation window.
+       (GH #16, PR #17, PR #21)
+     - Replace // (defined-or) operator in tests with ternary equivalent
+       for Perl 5.8 compatibility. (GH #20, PR #24)
+    Improvements:
+     - Recognize --version flag in stty.pl; previously only -v and bare
+       "version" were matched despite the POD documenting --version.
+       (PR #15)
+     - Modernize scripts/stty.pl: add strict/warnings, lexical variables,
+       and a portable shebang. (PR #15)
+    Maintenance:
+     - Harden ispeed baud rate test against Linux pty kernel normalisation.
+       (GH #16, PR #21)
+  0.05 Wed Mar 19 2026
+    Bug fixes:
+     - Fix broken single-arg baud rate setting. Passing a numeric rate like
+       "9600" as the sole argument now correctly sets both ispeed and ospeed.
+       The single-arg code path had two independent if/else blocks instead of
+       one if/elsif chain, so the baud rate was silently never applied. (PR #11)
+     - Replace unsafe symbolic dereference &{"POSIX::B" . $input} in the
+       ospeed/ispeed handlers with a static %BAUD_RATES hash lookup. The old
+       pattern was dead code in all public releases (use strict prevented it
+       from running) but is now properly fixed. Unknown rates produce a
+       warning instead of dying. (PR #7, PR #11)
+    Improvements:
+     - Add modern baud rates B57600, B115200, and B230400 with eval guards
+       for platforms that lack them. (PR #9)
+     - Render control characters in hat notation (e.g. ^C, ^D) in -a
+       output instead of raw numeric values. (PR #8)
+     - Add special character value parsing for stty(): accept hat notation
+       (^C), hexadecimal (0x03), octal (003), decimal, and single literal
+       characters when setting control char values. (PR #6)
+    Maintenance:
+     - Add functional pty-based test suite using IO::Pty covering flag
+       toggling, -g/-a roundtrips, raw/cooked/sane modes, baud rate setting,
+       and control character assignment. (PR #10)
+     - Add baud rate regression tests with a decoy-function guard against
+       reintroduction of symbolic dereference. (PR #7)
+     - Modernize CI: replace three separate workflow files with unified
+       testsuite.yml using current GitHub Actions. (GH #12, PR #13)
+     - Update stale GitHub URLs (http to https) and modernize CPAN metadata
+       to META spec v2 with TEST_REQUIRES. (PR #14)
+     - Add cpanfile for CI dependency management.
+     - Re-generate README from Stty.pm.
+     - Apply Perl::Tidy formatting.
+
+-------------------------------------------------------------------
 Mon Jan 20 03:09:11 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.04

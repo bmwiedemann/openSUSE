@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Stty
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,34 @@
 #
 
 
-Name:           perl-IO-Stty
-Version:        0.04
-Release:        0
 %define cpan_name IO-Stty
-Summary:        Change and print terminal line settings
+Name:           perl-IO-Stty
+Version:        0.80.0
+Release:        0
+# 0.08 -> normalize -> 0.80.0
+%define cpan_version 0.08
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
+Summary:        Change and print terminal line settings
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(IO::Stty) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 This is the PERL POSIX compliant stty.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -51,7 +54,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes README
+%doc AI_POLICY.md Changes README.md
 
 %changelog
