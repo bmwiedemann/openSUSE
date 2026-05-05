@@ -402,4 +402,12 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
     of transaction&quot;.</comment>
     <requestid>1335837</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>4a960952f13ea5970a822a7545e80da6</srcmd5>
+    <version>15.17</version>
+    <time>1777986991</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1350843</requestid>
+  </revision>
 </revisionlist>
