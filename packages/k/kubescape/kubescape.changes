@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon May 04 16:41:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.6:
+  * test: validate RawQuery in mockTransport
+  * fix: prevent goroutine leak in copaPatch on timeout
+  * test: validate mocked host in repositoryscanner_test
+  * test: handle json.Marshal error in mockTransport
+  * fix: address PR reviews for defaultHTTPClient timeout and test
+    mocking
+  * test: mock github api to restore repositoryscanner tests
+  * fix(portforwarder): surface ForwardPorts error and unblock
+    waitForPortForwardReadiness
+  * feat(cautils): populate scanMetadata excluded/include
+    namespaces
+  * fix(scan): make Helm value flags Helm-faithful and fail-fast on
+    bad overrides
+  * test: add test for partial resource pull failures
+  * fix(scan): make Helm value flags Helm-faithful and fail-fast on
+    bad overrides
+  * fix(test): add missing values.yaml fixture for kustomize+helm
+    test
+  * test(resourcehandler): address review — assert successful pod
+    survives, drive InfoMap tests through extracted helper
+  * feat(scan): plumb Helm value overrides throug kubescape scan
+  * test(resourcehandler): add tests for partial GVR collection
+    failure and InfoMap propagation
+  * fix(httphandler,cautils): clean up exceptions temp file after
+    scan
+  * test(httphandler): collect concurrent worker errors via channel
+    - Coderabbit suggested
+  * CodeRabbit Suggestions
+  * fix(httphandler): use unique temp file for per-request
+    exceptions
+  * fix(resourcehandler): guard InfoMap write on empty GVR data,
+    document query-granular limitation
+  * fix(resourcehandler): track pull failures at query granularity
+    to avoid suppressing partial GVR errors
+  * feat: Upgrade opa-utils dependency from v0.0.288 to v0.0.293
+  * fix(opaprocessor): remove redundant string comparison in
+    exception matching
+  * fix(opaprocessor): refine exception matching for manual
+    controls
+  * chore(deps): bump k8s-interface to v0.0.208 and adopt renamed
+    symbols
+  * Adding Cloud unavailable message
+  * fix(opaprocessor): add cluster matching to manual control
+    exceptions
+  * fix(resourcehandler): address reviewer feedback on GVR skip
+    guard and raw GVR key recording
+  * fix(opaprocessor): propagate OPA eval errors instead of
+    silently dropping resources
+  * fix: panic on nil map assignment in APIServerStore
+  * fix(resourcehandler): include rule.Match in
+    ResourceToControlsMap so failing K8s GVRs surface as skipped
+    controls
+  * fix(resourcehandler): surface partial resource collection
+    failures via InfoMap
+  * fix(opaprocessor): mark manual controls as passed when
+    exceptions apply
+  * remove leftover helm_chart_mapping_node example
+  * remove dead helm-template source-mapping code
+  * test: also assert InnerStatus is StatusSkipped after exception
+    is applied
+  * test: strengthen non-manual control subtest to isolate
+    manual-only guard
+  * fix(opaprocessor): replace processor dependency with explicit
+    control matching
+  * stop logging raw scan request bodies
+  * fix(opaprocessor): simplify applyExceptionsToManualControls
+    signature
+  * fix(opaprocessor): apply exceptions to manual controls in
+    summary
+  * docs: fix code block formatting and add all kustomize filenames
+  * docs: clarify Helm and Kustomize directory auto-detection
+  * fix host scans with data retrieved from the CRDs
+  *  fix(opaprocessor): apply namespace filter in failedIDs
+     pre-seed and surface rule eval errors
+  * fix(opaprocessor): eliminate false negatives when OPA rule
+    evaluation fails
+  * fix: use 'helm' instead of kustomize's hardcoded 'helmV3'
+    binary name
+  * test: add kustomize+helm regression coverage
+  * fix: enable helm support when rendering kustomize directories
+  * Fix namespace filter for cluster-scoped resources
+  * chore: remove accidental generated test artifact
+  * Remove accidentally committed test artifact
+  * Plan for namespace filter fix
+  * chore: plan support for kustomize with helm
+  * Initial plan
+  * Initial plan
+  * build(deps): Bump github.com/go-git/go-git/v5 from 5.17.1 to
+    5.18.0
+  * test(image-scan): add all-lowercase CVE ID test case
+  * fix(image-scan): normalize vulnerability exceptions across
+    casings
+
+-------------------------------------------------------------------
 Fri Apr 17 20:37:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.5:
