@@ -132,4 +132,17 @@
   * Adaptations for Lustre 2.15</comment>
     <requestid>1328630</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a3eff921b80e8b8878fff726c15bef1a</srcmd5>
+    <version>3.2.0</version>
+    <time>1777996693</time>
+    <user>anag_factory</user>
+    <comment>- added additional patches fix-compiler-warnings.patch
+  and fix-gcc16-strerror.patch for gcc16
+
+- added patches [bsc#1256983]
+  https://github.com/cea-hpc/robinhood/issues/149
+  * robinhood-gcc16.patch</comment>
+    <requestid>1350912</requestid>
+  </revision>
 </revisionlist>

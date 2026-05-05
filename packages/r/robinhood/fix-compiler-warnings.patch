@@ -1,0 +1,26 @@
+diff -Naur robinhood-3.2.0.orig/src/common/rbh_misc.c robinhood-3.2.0/src/common/rbh_misc.c
+--- robinhood-3.2.0.orig/src/common/rbh_misc.c
++++ robinhood-3.2.0/src/common/rbh_misc.c
+@@ -2517,7 +2517,7 @@
+     strcpy(ATTR(attrs_out, fullpath), fspath);
+     ATTR_MASK_SET(attrs_out, fullpath);
+ 
+-    char *name = strrchr(fspath, '/');
++    const char *name = strrchr(fspath, '/');
+     if (name) {
+         name++;
+         strcpy(ATTR(attrs_out, name), name);
+diff -Naur robinhood-3.2.0.orig/src/list_mgr/listmgr_config.c robinhood-3.2.0/src/list_mgr/listmgr_config.c
+--- robinhood-3.2.0.orig/src/list_mgr/listmgr_config.c
++++ robinhood-3.2.0/src/list_mgr/listmgr_config.c
+@@ -283,7 +283,9 @@
+         rc = fscanf(passfile, "%1023s", tmpstr);
+         if (ferror(passfile) || rc < 1) {
+             rc = errno;
+-            if (strerror_r(rc, errstr, sizeof(errstr))) {
++            int ret = strerror_r(rc, errstr, sizeof(errstr));
++            (void)ret;
++            if (ret != 0) {
+                 snprintf(errstr, sizeof(errstr), "%d", rc);
+             }
+             sprintf(msg_out, "Error reading password file %s : %s", tmpstr,

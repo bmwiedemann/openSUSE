@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  4 15:57:25 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- added additional patches fix-compiler-warnings.patch
+  and fix-gcc16-strerror.patch for gcc16
+
+
+-------------------------------------------------------------------
+Wed Feb 18 08:37:44 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches [bsc#1256983]
+  https://github.com/cea-hpc/robinhood/issues/149
+  * robinhood-gcc16.patch
+
+-------------------------------------------------------------------
 Thu Jan 22 08:35:31 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - update to version 3.2.0 with following changes:

@@ -1,0 +1,70 @@
+Index: robinhood-3.2.0/src/cfg_parsing/config_parsing.c
+===================================================================
+--- robinhood-3.2.0.orig/src/cfg_parsing/config_parsing.c
++++ robinhood-3.2.0/src/cfg_parsing/config_parsing.c
+@@ -309,14 +309,13 @@ int rh_config_CountBlockNames(config_fil
+ {
+     config_struct_t *config_struct = (config_struct_t *)cfg;
+     generic_item    *curr_block;
+-    unsigned int     i;
+     unsigned int     count = 0;
+ 
+     if (!config_struct->syntax_tree || !(*config_struct->syntax_tree))
+         return -1;
+ 
+-    for (i = 0, curr_block = (*config_struct->syntax_tree);
+-         curr_block != NULL; curr_block = curr_block->next, i++) {
++    for (curr_block = (*config_struct->syntax_tree);
++         curr_block != NULL; curr_block = curr_block->next) {
+         if (!strcasecmp(curr_block->item.block.block_name, name))
+             count++;
+     }
+Index: robinhood-3.2.0/src/common/rbh_logs.c
+===================================================================
+--- robinhood-3.2.0.orig/src/common/rbh_logs.c
++++ robinhood-3.2.0/src/common/rbh_logs.c
+@@ -640,19 +640,11 @@ void Alert_StartBatching()
+ static void FlushAlerts(bool release_mutex_asap)
+ {
+     alert_type_t   *pcurr;
+-    unsigned int    alert_types = 0;
+-    unsigned int    mail_size = 0;
+     char           *title;
+     GString        *contents = NULL;
+     time_t          now;
+     struct tm       date;
+ 
+-    /* first list scan, to determine the number of alerts, etc... */
+-    for (pcurr = alert_list; pcurr != NULL; pcurr = pcurr->next) {
+-        alert_types++;
+-        mail_size += pcurr->estim_size;
+-    }
+-
+     if (alert_count == 0) {
+         if (release_mutex_asap)
+             V(alert_mutex);
+Index: robinhood-3.2.0/src/robinhood/rbh_undelete.c
+===================================================================
+--- robinhood-3.2.0.orig/src/robinhood/rbh_undelete.c
++++ robinhood-3.2.0/src/robinhood/rbh_undelete.c
+@@ -226,7 +226,7 @@ static bool is_id_filter(entry_id_t *id)
+ 
+ static int list_rm(void)
+ {
+-    int rc, index;
++    int rc;
+     entry_id_t id;
+     attr_set_t attrs = ATTR_SET_INIT;
+     attr_mask_t mask;
+@@ -286,11 +286,8 @@ static int list_rm(void)
+             return -1;
+         }
+ 
+-        index = 0;
+         while ((rc = ListMgr_GetNextRmEntry(rm_list, &id, &attrs))
+                == DB_SUCCESS) {
+-            index++;
+-
+             print_attr_values(0, list, list_cnt, &attrs, &id, false, NULL);
+ 
+             /* prepare next call */

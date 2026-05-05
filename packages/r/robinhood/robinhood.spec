@@ -1,7 +1,7 @@
 #
 # spec file for package robinhood
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,10 @@ Patch3:         avoid-version.patch
 Patch4:         make-test_confparam-depend-on-lustre.patch
 Patch5:         harden_robinhood.service.patch
 Patch6:         harden_robinhood@.service.patch
+# https://github.com/cea-hpc/robinhood/issues/149
+Patch7:         robinhood-gcc16.patch
+Patch8:         fix-compiler-warnings.patch
+Patch9:         fix-gcc16-strerror.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
@@ -112,6 +116,9 @@ sed -i 's,WWWROOT,%{installdir_www}robinhood,g' web_gui/robinhood.conf
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
 # remove spurious executeable bits
 find ./doc/templates -type f -executable -exec chmod 644 {} +
 
@@ -119,7 +126,8 @@ find ./doc/templates -type f -executable -exec chmod 644 {} +
 autoreconf -fi
 
 %build
-export CFLAGS="%optflags -Wno-error=unused-result"
+export CFLAGS="%optflags -Wno-error -Wno-error=unused-result"
+
 %configure \
   --enable-lustre \
   --disable-static \

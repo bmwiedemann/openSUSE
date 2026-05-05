@@ -1,0 +1,15 @@
+Index: robinhood-3.2.0/src/list_mgr/listmgr_config.c
+===================================================================
+--- robinhood-3.2.0/src/list_mgr/listmgr_config.c.orig
++++ robinhood-3.2.0/src/list_mgr/listmgr_config.c
+@@ -283,9 +283,7 @@ static int lmgr_cfg_read(config_file_t
+         rc = fscanf(passfile, "%1023s", tmpstr);
+         if (ferror(passfile) || rc < 1) {
+             rc = errno;
+-            int ret = strerror_r(rc, errstr, sizeof(errstr));
+-            (void)ret;
+-            if (ret != 0) {
++            if (strerror_r(rc, errstr, sizeof(errstr)) != 0) {
+                 snprintf(errstr, sizeof(errstr), "%d", rc);
+             }
+             sprintf(msg_out, "Error reading password file %s : %s", tmpstr,
