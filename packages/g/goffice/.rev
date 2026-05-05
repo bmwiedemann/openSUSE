@@ -940,4 +940,21 @@ The canonical license of the spec file should be GPL-2.0 (forwarded request 1011
     <comment>Push from SCM</comment>
     <requestid>1343033</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>8affd0edd0acaf8c9260d6ada206b199</srcmd5>
+    <version>0.10.61</version>
+    <time>1777986973</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.10.61:
+  + Up gtk+ requirement to 3.20. Still ancient.
+  + Fix regression error reporting problems.
+  + Introspection fixes.
+  + Import go_reduce_pi from Gnumeric.
+  + Test improvements.
+  + Plug leaks.
+  + Fix problems with go_string_new_len.
+  + Fix problem with arc canvas item.
+  + Fix various issued with text canvas item.</comment>
+    <requestid>1350828</requestid>
+  </revision>
 </revisionlist>
