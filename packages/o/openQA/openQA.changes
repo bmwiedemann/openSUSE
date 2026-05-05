@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 04 11:54:48 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1777888278.38a3a85c:
+  * style: Enforce perlcritic policy ProhibitUselessTopic
+  * style: Enforce perlcritic policy BuiltinFunctions::RequireBlockGrep
+
+-------------------------------------------------------------------
 Fri May 01 06:30:37 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1777617029.fd9e1e69:
