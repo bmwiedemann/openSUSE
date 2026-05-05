@@ -1,2 +1,4 @@
-d /run/fetchmail 700 fetchmail fetchmail
-f /var/log/fetchmail 600 fetchmail root
+#Type   Path                            Mode    UID      GID      Age     Argument
+d /run/fetchmail 			700  fetchmail  fetchmail
+d /var/log/fetchmail 			600  fetchmail  root 
+d /var/lib/fetchmail 			755  root  	fetchmail -       -

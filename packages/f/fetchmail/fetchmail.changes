@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  4 08:53:36 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Fix package for immutable mode jsc#PED-14745 
+  * Moved /var/lib/fetchmail to generated with systemd-tmpfiles
+  * Moved /var/log/fetchmail logfile to inside /var/log/fetchmail directory
+  * Updated fetchmail.logrotate, fetchmail.tmpfiles                                                                   │
+
+-------------------------------------------------------------------
 Mon Nov 17 09:19:26 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 6.6.1

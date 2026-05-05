@@ -1,7 +1,7 @@
 #
 # spec file for package fetchmail
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -130,6 +130,8 @@ sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE6}
 install -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/%{name}.service
 install -m 0644 %{SOURCE7} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 install -m 0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{name}.conf
+# Make dirs for linking to /var/foo
+mkdir -p %{buildroot}%{_prefix}/lib/fetchmail/{var/lib,var/run/fetchmail}
 mkdir -p %{buildroot}%{_libexecdir}
 install -m 0755 %{SOURCE8} %{buildroot}%{_libexecdir}/%{name}-systemd-exec
 mkdir -p %{buildroot}%{_sbindir}
@@ -137,9 +139,7 @@ ln -s service %{buildroot}%{_sbindir}/rc%{name}
 touch %{buildroot}%{_sysconfdir}/fetchmailrc
 mkdir -p %{buildroot}%{_fillupdir}
 cp sysconfig.%{name} %{buildroot}%{_fillupdir}
-mkdir -p %{buildroot}%{_localstatedir}/log
-touch %{buildroot}%{_localstatedir}/log/fetchmail
-mkdir -p %{buildroot}%{_localstatedir}/lib/fetchmail
+
 # Deduplicate Python files
 %fdupes %{buildroot}%{python3_sitelib}
 # we don't need this, it's aimed at fetchmail developers
@@ -182,8 +182,7 @@ done
 %license COPYING
 %doc FAQ FEATURES NEWS NOTES OLDNEWS README README.NTLM README.OAUTH2 README.SSL README.SSL-SERVER TODO contrib *.html *.txt *.pdf
 %{_bindir}/fetchmail
-%dir %attr(0700, fetchmail, fetchmail) %{_localstatedir}/lib/fetchmail
-%ghost %attr(0600, fetchmail, root) %{_localstatedir}/log/fetchmail
+
 %{_mandir}/man1/fetchmail.1%{?ext_man}
 %ghost %config(noreplace) %attr(0600, fetchmail, root) %{_sysconfdir}/fetchmailrc
 %if 0%{?suse_version} > 1500
@@ -197,6 +196,10 @@ done
 %{_tmpfilesdir}/%{name}.conf
 %{_sysusersdir}/%{name}.conf
 %{_fillupdir}/sysconfig.%{name}
+
+%ghost %{_rundir}/fetchmail
+%ghost /var/lib/fetchmail
+%ghost  %{_localstatedir}/log/fetchmail
 
 %files -n fetchmailconf
 %{_bindir}/fetchmailconf
