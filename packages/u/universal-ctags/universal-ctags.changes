@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  4 22:24:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.1:
+  * This release fixes some critical bugs reported/found after
+    releasing 6.2.0
+  * R6: fix valgrind error
+  * tokeninfo: fix null pointer crash in tokenDelete function
+  * Fixes segmentation fault when processing certain R6Class
+    syntax patterns.
+  * ada: Fix crash with `is` at EOF
+  * Cxx: limit recursion when parsing too deep blocks
+  * fixup! C++: Update the parser version to 2.2
+
+-------------------------------------------------------------------
 Wed Jan 21 15:40:31 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.2.1
@@ -60,7 +74,7 @@ Mon Aug 26 12:53:42 UTC 2019 - Simon Schricker <s.schricker@mailbox.org>
 -------------------------------------------------------------------
 Tue Nov 20 16:05:41 UTC 2018 - sschricker@suse.de
 
-- Initial package, build from git commit befcb88 
+- Initial package, build from git commit befcb88
   * add patch 0001-Use-pandoc-instead-of-rst2pdf.patch
     Since rst2pdf is not available in Factory, which is required to build the
     man pages

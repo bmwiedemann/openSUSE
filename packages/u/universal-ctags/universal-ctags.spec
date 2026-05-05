@@ -22,7 +22,7 @@
 %bcond_with libalternatives
 %endif
 Name:           universal-ctags
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        A program to generate language tag files used with various editors
 License:        GPL-2.0-only

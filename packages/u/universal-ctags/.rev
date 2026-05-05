@@ -31,4 +31,23 @@
     <comment></comment>
     <requestid>1328686</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8efd8b9c0760e3a844dda72ef8564f62</srcmd5>
+    <version>6.2.1</version>
+    <time>1777987019</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.2.1:
+  * This release fixes some critical bugs reported/found after
+    releasing 6.2.0
+  * R6: fix valgrind error
+  * tokeninfo: fix null pointer crash in tokenDelete function
+  * Fixes segmentation fault when processing certain R6Class
+    syntax patterns.
+  * ada: Fix crash with `is` at EOF
+  * Cxx: limit recursion when parsing too deep blocks
+  * fixup! C++: Update the parser version to 2.2
+
+- Initial package, build from git commit befcb88</comment>
+    <requestid>1350881</requestid>
+  </revision>
 </revisionlist>
