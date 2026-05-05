@@ -1,7 +1,7 @@
 #
 # spec file for package neard
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010-2012 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           neard
-Version:        0.19
+Version:        0.20
 Release:        0
 Summary:        NFC for Linux
 License:        GPL-2.0-only
