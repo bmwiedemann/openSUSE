@@ -229,4 +229,15 @@
   + Updated translations.</comment>
     <requestid>1350048</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7184f6638eda7171e87734b8b742e8e6</srcmd5>
+    <version>1.16.9</version>
+    <time>1777986971</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.16.9:
+  + Fix a regression that breaks using online accounts
+  + Fix a regression when subscribing to local files
+  + Fix some memory leaks</comment>
+    <requestid>1350825</requestid>
+  </revision>
 </revisionlist>

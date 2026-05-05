@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  3 08:31:28 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.9:
+  + Fix a regression that breaks using online accounts
+  + Fix a regression when subscribing to local files
+  + Fix some memory leaks
+
+-------------------------------------------------------------------
 Sun Apr 26 08:31:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.8:

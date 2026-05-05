@@ -17,7 +17,7 @@
 
 
 Name:           liferea
-Version:        1.16.8
+Version:        1.16.9
 Release:        0
 Summary:        Linux Feed Reader
 License:        GPL-2.0-only
