@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Mon May  4 16:20:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.161.1:
+  * resources: Honor Retry-After header in resources.GetRemote
+    retries c4eba928 @bep #14828
+  * warpc: Move to parson.c in https://github.com/kgabis/parson
+    8b40a96b @bep #14823
+  * config/security: Add AllowChildProcess to
+    security.node.permissions d65af84d @bep #14824
+  * config/security: Restrict default http.urls "@" deny to
+    userinfo 454450a6 @bep #14825
+- update to 0.161.0:
+  * This release contains two security hardening fixes:
+  * We now run the Node tools PostCSS, Babel and TailwindCSS, by
+    default, with the `--permission` flag with the permissions
+    defined in security.node.permissions. This means that you
+    need Node >= 22 installed and that `css.TailwindCSS` now
+    requires that the Tailwind CSS CLI must be installed as a
+    Node.js package. The standalone executable is no longer
+    supported
+  * We have made the defaults in security.http.urls more
+    restrictive.
+- update to 0.160.1:
+  * Fix panic when passthrough elements are used in headings
+    8b00030b @bep #14677
+  * Fix panic on edit of legacy mapped template names that's also
+    a valid path in the new setup c4855167 @bep #14740
+  * Fix RenderShortcodes leaking context markers when indented
+    161d0d47 @bep #12457
+  * Strip nested page context markers from standalone
+    RenderShortcodes 45e45966 @bep #14732
+  * Rename deprecated cascade._target to cascade.target in tests
+    58927aa1 @bep
+  * Fix auto-creation of root sections in multilingual sites
+    ce009e3a @bep #14681
+  * readme: Fix links 07558724 @chicks-net
+
+-------------------------------------------------------------------
+Mon May 04 16:18:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.161.1:
+  * releaser: Bump versions for release of 0.161.1
+  * resources: Honor Retry-After header in resources.GetRemote retries
+  * warpc: Move to parson.c in https://github.com/kgabis/parson
+  * config/security: Add AllowChildProcess to security.node.permissions
+  * config/security: Restrict default http.urls "@" deny to userinfo
+  * releaser: Prepare repository for 0.162.0-DEV
+  * releaser: Bump versions for release of 0.161.0
+  * build(deps): bump github.com/getkin/kin-openapi from 0.135.0 to 0.137.0
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.21 to 0.0.22
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.12 to 2.24.13
+  * css: Support nested hugo:vars/<name> imports
+  * github: Update GitHub actions versions
+  * hugolib: Do not render aliases if the page is not rendered
+  * langs/i18n: Improve default content language fallback
+  * Replace deprecated .Site.Sites/.Page.Sites with hugo.Sites intests
+  * helpers: Remove unused code
+  * common/constants: Remove unused consts
+  *  common/paths: Remove unused code
+  * langs/i18n: Fix translation lookup when using language variants
+  * tests: Update Ruby setup action to v1.305.0
+  * build(deps): bump github.com/magefile/mage from 1.17.1 to 1.17.2
+  * deps: Upgrade github.com/bep/imagemeta v0.17.1 => v0.17.2
+  * langs: Use Language.Locale as primary localization key
+  * config/security: Add "! " negation to Whitelist, harden default http.urls
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront (#14789)
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.20 to 0.0.21 (#14788)
+  * build(deps): bump github.com/bep/mclib (#14787)
+  * Harden Node tool execution with --permission flag
+  * tpl/collections: Honor the Eqer interface in where comparisons
+  * build(deps): bump google.golang.org/api from 0.267.0 to 0.276.0
+  * build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.41.5 to 1.41.6
+  * modules: Ignore non-require blocks in go.mod rewrite
+  * Replace the concurrent map with an identical upstream version
+  * build(deps): bump github.com/getkin/kin-openapi from 0.134.0 to 0.135.0 (#14781)
+  * build(deps): bump github.com/bep/goportabletext from 0.1.0 to 0.2.0 (#14779)
+  * build(deps): bump golang.org/x/image from 0.38.0 to 0.39.0 (#14780)
+  * deps: Upgrade github.com/bep/imagemeta v0.17.0 => v0.17.1 (#14775)
+  * Add slice-based permalinks config with PageMatcher target
+  * commands: Add missing import
+  * Revert "common/hugo: Deprecate extended and extended_withdeploy editions"
+  * Adjust the SECURITY.md slightly
+  * create: Fix non-deterministic conflict detection in hugo new content
+  * build(deps): bump golang.org/x/tools from 0.43.0 to 0.44.0
+  * resources/page: Add passing test for Issue #14325
+  * agents: Add a note about having the issue ID in test names
+  * commands: Fix environment isolation for configuration settings
+  * build(deps): bump github.com/evanw/esbuild from 0.27.4 to 0.28.0
+  * build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.41.1 to 1.41.5
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.4 to 2.3.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.11 to 2.24.12
+  * Fix filename dimension identifiers (_role_X_, _version_X_) to replace mount config
+  * Add a more flexible filename identifier scheme that also allows setting roles and versions (#14754)
+  * Fix it so we never auto-fallback to page resources in other roles/versions
+  * common/hugo: Deprecate extended and extended_withdeploy editions
+  *  parser/pageparser: Add a parser fuzz test
+  * releaser: Bump versions for release of 0.160.1
+  * Fix panic when passthrough elements are used in headings
+  * Fix panic on edit of legacy mapped template names that's also a valid path in the new setup
+  * Fix RenderShortcodes leaking context markers when indented
+  * Strip nested page context markers from standalone RenderShortcodes
+  * Rename deprecated cascade._target to cascade.target in tests
+  * Fix auto-creation of root sections in multilingual sites
+  * readme: Fix links
+  * releaser: Prepare repository for 0.161.0-DEV
+
+-------------------------------------------------------------------
 Sat Apr 04 13:32:34 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.160.0:

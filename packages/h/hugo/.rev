@@ -1882,4 +1882,41 @@
   * releaser: Prepare repository for 0.160.0-DEV (forwarded request 1344781 from jfkw)</comment>
     <requestid>1344783</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>c59d6bf4b3df7ba9bd5236ad9a6f4631</srcmd5>
+    <version>0.161.1</version>
+    <time>1777986984</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.161.1:
+  * resources: Honor Retry-After header in resources.GetRemote
+    retries c4eba928 @bep #14828
+  * warpc: Move to parson.c in https://github.com/kgabis/parson
+    8b40a96b @bep #14823
+  * config/security: Add AllowChildProcess to
+    security.node.permissions d65af84d @bep #14824
+  * config/security: Restrict default http.urls &quot;@&quot; deny to
+    userinfo 454450a6 @bep #14825
+- update to 0.161.0:
+  * This release contains two security hardening fixes:
+  * We now run the Node tools PostCSS, Babel and TailwindCSS, by
+    default, with the `--permission` flag with the permissions
+    defined in security.node.permissions. This means that you
+    need Node &gt;= 22 installed and that `css.TailwindCSS` now
+    requires that the Tailwind CSS CLI must be installed as a
+    Node.js package. The standalone executable is no longer
+    supported
+  * We have made the defaults in security.http.urls more
+    restrictive.
+- update to 0.160.1:
+  * Fix panic when passthrough elements are used in headings
+    8b00030b @bep #14677
+  * Fix panic on edit of legacy mapped template names that's also
+    a valid path in the new setup c4855167 @bep #14740
+  * Fix RenderShortcodes leaking context markers when indented
+    161d0d47 @bep #12457
+  * Strip nested page context markers from standalone
+    RenderShortcodes 45e45966 @bep #14732
+  * Rename deprecated cascade._target to cascade.target in tests (forwarded request 1350763 from dirkmueller)</comment>
+    <requestid>1350847</requestid>
+  </revision>
 </revisionlist>
