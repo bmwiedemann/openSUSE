@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-swt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,8 +46,9 @@ Patch0:         eclipse-swt-avoid-javascript-at-build-%{major_version}_%{minor_v
 Patch1:         eclipse-swt-rm-eclipse-tasks-and-customize-build.patch
 Patch2:         eclipse-swt-fedora-build-native.patch
 Patch3:         eclipse-gcc10.patch
-Patch4:         eclipse-swt-no-werror.patch
-Patch5:         eclipse-swt-gcc15-%{major_version}_%{minor_version}.patch
+Patch4:         eclipse-webkit.patch
+Patch5:         eclipse-swt-no-werror.patch
+Patch6:         eclipse-swt-gcc15-%{major_version}_%{minor_version}.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -55,7 +56,6 @@ BuildRequires:  java-devel
 BuildRequires:  javapackages-local
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  webkit2gtk3-devel
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
@@ -83,10 +83,11 @@ This package contains the API documentation for %{name}.
 %patch -P 2 -p1
 %if %{__isa_bits} == 32
 %patch -P 3 -p2
-%else
 %patch -P 4 -p1
-%endif
+%else
 %patch -P 5 -p1
+%endif
+%patch -P 6 -p1
 mkdir -p %{swtsrcdir}/tasks
 cp %{SOURCE1} %{swtsrcdir}/tasks
 cp %{SOURCE2} %{SOURCE3} .

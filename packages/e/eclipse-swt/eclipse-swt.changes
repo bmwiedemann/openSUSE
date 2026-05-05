@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 13 17:59:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require WebKitGtk for building, since the code does not
+  link with it, but dlopens it.
+- Added patch:
+  * eclipse-webkit.patch
+    + let the 32-bit version use the same logic of dlopening
+      WebKitGtk libraries as the 64-bit version
+
+-------------------------------------------------------------------
 Wed Sep 24 19:26:15 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

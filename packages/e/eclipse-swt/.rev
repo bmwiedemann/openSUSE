@@ -95,4 +95,12 @@
     <comment>fix build with the new gtk+</comment>
     <requestid>1306991</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>0bc905a3e01139f134dd50fa8d8c6f40</srcmd5>
+    <version>4.29</version>
+    <time>1777991380</time>
+    <user>anag_factory</user>
+    <comment>Fix eclipse-swt vs. webkitgtk mismatch</comment>
+    <requestid>1350957</requestid>
+  </revision>
 </revisionlist>
