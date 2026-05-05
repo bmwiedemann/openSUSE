@@ -18,12 +18,13 @@
 
 %define         _name xml
 Name:           tree-sitter-xml
-Version:        0.7.0
+Version:        0.7.0+git.1768987141.5000ae8
 Release:        0
 Summary:        Xml grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-xml
-Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Source0:        %%{url}/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name} dtd
 
@@ -31,7 +32,7 @@ BuildRequires:  tree-sitter
 %{summary}.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %treesitter_configure
