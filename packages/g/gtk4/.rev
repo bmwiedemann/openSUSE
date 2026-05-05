@@ -1127,4 +1127,16 @@ New upstream release</comment>
     <comment>Update version</comment>
     <requestid>1348424</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>8a796a7ce0567293faf61d716caacec8</srcmd5>
+    <version>4.22.4</version>
+    <time>1777986879</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.22.4:
+  + Bugs fixed:
+    - Misc backports
+    - popoverbin: Point to the center of the widget when popping up
+  + Updated translations.</comment>
+    <requestid>1350821</requestid>
+  </revision>
 </revisionlist>
