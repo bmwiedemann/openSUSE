@@ -190,4 +190,41 @@ ship any actual functionality. ImGui suppose to be used as sources</comment>
     (gh#ocornut/imgui#8336, gh#ocornut/imgui#8241).</comment>
     <requestid>1265311</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fadcaaa7822cc06f04b12f316092f60a</srcmd5>
+    <version>1.92.7</version>
+    <time>1777986949</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.92.7:
+  * Decorated log and release notes:
+    https://github.com/ocornut/imgui/releases/tag/v1.92.7
+  * Separator: fixed a legacy quirk where `Separator()` was
+    submitting a zero-height item for layout purpose, even though
+    it draws a 1-pixel separator.
+  * Kept inline redirection enum (will obsolete).
+  * Combo(), ListBox(): commented out legacy signatures which
+    were obsoleted in 1.90
+
+      old: io.SetPlatformImeDataFn(ImGuiViewport* viewport,
+      It is expected that for a vast majority of users this is
+      automatically set by core library and/or platform backend so
+    You should never need those functions! You can do everything in
+      GetWindowContentRegionMax().x - GetCursorPos().x --&gt;
+      GetWindowContentRegionMax().x + GetWindowPos().x --&gt;
+      GetCursorScreenPos().x + GetContentRegionAvail().x
+      Obsoleted PushTabStop()/PopTabStop() in favor of using new
+      Renamed ImGuiSelectableFlags_DontClosePopups to
+      redirecting functions (will obsolete). + Internals:
+      ImGuiItemFlags_AutoClosePopups (default==true), same logic,
+  * Commented out obsolete ImGuiModFlags_XXX values
+      ImGuiModFlags_Ctrl -&gt; ImGuiMod_Ctrl, ImGuiModFlags_Shift -&gt;
+  * Backends: GLFW+Emscripten: Renamed
+  * IO: added io.PlatformOpenInShellFn() handler to open a
+      Added ImGuiItemFlags_NoNavDefaultFocus to disable item being
+      Added ImGuiItemFlags_ButtonRepeat to enable repeat on any
+      Added ImGuiItemFlags_AutoClosePopups to disable menu
+      This system implements standard multi-selection idioms (CTRL+mouse
+      etc.) with support for clipper (not submitting non-visible items),</comment>
+    <requestid>1350762</requestid>
+  </revision>
 </revisionlist>
