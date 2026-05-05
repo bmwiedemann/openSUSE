@@ -16,7 +16,7 @@
 #
 
 Name:           mistral-vibe
-Version:        2.9.3
+Version:        2.9.4
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
@@ -47,7 +47,7 @@ Requires:       python3-keyring >= 25.6.0
 Requires:       python3-linkify-it-py
 Requires:       python3-markdownify >= 1.2.2
 Requires:       python3-mcp >= 1.14.0
-Requires:       python3-mistralai >= 2.3.2
+Requires:       python3-mistralai >= 2.3.3
 Requires:       python3-opentelemetry-api >= 1.39.1
 Requires:       python3-opentelemetry-exporter-otlp-proto-http >= 1.39.1
 Requires:       python3-opentelemetry-sdk >= 1.39.1
@@ -94,7 +94,7 @@ BuildRequires:  python3-keyring >= 25.6.0
 BuildRequires:  python3-linkify-it-py
 BuildRequires:  python3-markdownify >= 1.2.2
 BuildRequires:  python3-mcp >= 1.14.0
-BuildRequires:  python3-mistralai >= 2.3.2
+BuildRequires:  python3-mistralai >= 2.3.4
 BuildRequires:  python3-opentelemetry-api >= 1.39.1
 BuildRequires:  python3-opentelemetry-exporter-otlp-proto-http >= 1.39.1
 BuildRequires:  python3-opentelemetry-sdk >= 1.39.1

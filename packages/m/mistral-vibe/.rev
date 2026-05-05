@@ -7,4 +7,31 @@
     <comment>Replacing python-mistral-vibe (we don't need multiple versions of this package).</comment>
     <requestid>1350756</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2a115b1892e3ca9c33c3fa7a9df9cec5</srcmd5>
+    <version>2.9.4</version>
+    <time>1777996748</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.9.4:
+  - Added
+    - /rename command to rename the current session
+    - feat: vibe.at_mention_inserted telemetry event
+    - &quot;Always allow&quot; tool permissions persist across sessions
+    - Eager agent-loop warmup so vibe.ready telemetry fires
+      sooner
+  - Changed
+    - bash (!command) bang commands run via async subprocess for
+      better latency
+    - Bumped mistral SDK to 2.4.4
+    - Bumped cryptography to address upstream CVEs
+  - Fixed
+    - Preserve non_retryable flag on exceptions raised through
+      _chat / _chat_streaming, so callers driving the agent loop
+      from a Temporal activity can signal &quot;do not retry&quot;
+    - /clear no longer chains parent_session_id to the previous
+      session
+    - vibe.new_session telemetry no longer fires when resuming
+      a session</comment>
+    <requestid>1350993</requestid>
+  </revision>
 </revisionlist>
