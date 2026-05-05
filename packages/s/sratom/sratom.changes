@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May  4 14:27:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.22:
+  * Add clang nullability annotations
+  * Address new warnings in clang and clang-tidy 21
+  * Fix documentation build without sphinx_lv2_theme
+  * Gracefully handle reading vectors with missing childType
+    properties
+  * Gracefully handle writing vectors with zero childSize
+    properties
+  * Improve error handling
+
+-------------------------------------------------------------------
 Wed Dec 10 08:32:12 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update to 0.6.20
@@ -14,7 +27,7 @@ Mon Mar 10 21:06:25 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 - update to 0.6.18:
   * Avoid snprintf when writing MIDI events
   * developer visible code fixes
-- includes changes from 0.6.16: 
+- includes changes from 0.6.16:
   * Constrain relative URI references to the base URI
   * maintenance and clean-up of build system
 
@@ -52,14 +65,14 @@ Tue Apr 12 08:35:33 UTC 2022 - Martin Liška <mliska@suse.cz>
 Mon Mar  8 23:14:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.8:
-  * Fix potential null pointer dereference 
+  * Fix potential null pointer dereference
 - disable docs from building: only in -devel package
 
 -------------------------------------------------------------------
 Mon Oct 26 22:01:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.6.6:
-  * Fix various minor warnings and other code quality issues 
+  * Fix various minor warnings and other code quality issues
 
 -------------------------------------------------------------------
 Wed May 27 00:18:25 UTC 2020 - Giordano Boschetti <geekosdaw@gmail.com>
