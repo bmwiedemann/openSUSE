@@ -249,6 +249,9 @@ Patch19:        mozilla-bmo531915.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch24:        mozilla-bmo1746799.patch
+Patch25:        mozilla-bmo2031958.patch
+Patch26:        mozilla-bmo1999625.patch
+Patch27:        mozilla-bmo2016618.patch
 # Firefox/browser
 Patch102:       firefox-branded-icons.patch
 %endif
@@ -420,7 +423,7 @@ export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
-export CFLAGS="%{optflags} -Wno-incompatible-pointer-types"
+export CFLAGS="%{optflags}"
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
 export CC=gcc-13
 export CXX=g++-13

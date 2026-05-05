@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  4 15:11:55 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add patches to address glibc-2.43 related issues:
+  * mozilla-bmo1999625.patch
+  * mozilla-bmo2016618.patch
+
+-------------------------------------------------------------------
+Fri May  1 08:54:47 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add mozilla-bmo2031958.patch to fix incompatible pointer types
+  (bmo#2031958); this way we don't need to add
+  "-Wno-incompatible-pointer-types" to CFLAGS anymore.
+
+-------------------------------------------------------------------
 Wed Apr 29 12:36:03 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Further tests have shown that the rule which llvm version should

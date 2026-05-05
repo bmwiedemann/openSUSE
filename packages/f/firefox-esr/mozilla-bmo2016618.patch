@@ -1,0 +1,16 @@
+Author: Jed Davis <jld@mozilla.com>
+Date:   Thu Feb 12 20:44:26 2026 -0800
+
+    Bug 2016618 - Fix Linux sandbox build breakage on glibc 2.43
+
+diff -rup a/security/sandbox/chromium/sandbox/linux/system_headers/linux_seccomp.h b/security/sandbox/chromium/sandbox/linux/system_headers/linux_seccomp.h
+--- a/security/sandbox/chromium/sandbox/linux/system_headers/linux_seccomp.h	2026-05-04 17:52:28.321714033 +0000
++++ b/security/sandbox/chromium/sandbox/linux/system_headers/linux_seccomp.h	2026-05-04 18:21:17.375513798 +0000
+@@ -12,6 +12,7 @@
+ // include files should be enabled:
+ // #include <linux/audit.h>
+ // #include <linux/seccomp.h>
++#include <signal.h>	// for SYS_SECCOMP
+ 
+ // For audit.h
+ #ifndef EM_ARM
