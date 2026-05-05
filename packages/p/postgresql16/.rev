@@ -304,4 +304,12 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
     of transaction&quot;.</comment>
     <requestid>1335838</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>ed4bdc237b65f8ef86765f4748476ab8</srcmd5>
+    <version>16.13</version>
+    <time>1777986990</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1350842</requestid>
+  </revision>
 </revisionlist>

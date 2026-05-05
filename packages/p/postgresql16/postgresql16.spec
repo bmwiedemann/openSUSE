@@ -68,6 +68,16 @@ Name:           %pgname
 %bcond_without derived
 %endif
 
+%if 0%{?suse_version} >= 1610
+%define         packaging_level 42
+%bcond_without alts
+Requires:       pg_alts
+%else
+%define         packaging_level 18
+%bcond_with alts
+%define install_alternatives /usr/share/postgresql/install-alternatives %pgmajor
+%endif
+
 %if %pgmajor >= 18 && 0%{?suse_version} >= 1500
     %bcond_without curl
     %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1600
@@ -183,6 +193,7 @@ BuildRequires:  pkgconfig(liburing)
 %if %{with numa}
 BuildRequires:  pkgconfig(numa)
 %endif
+BuildRequires:  postgresql-noarch == %packaging_level
 BuildRequires:  pkgconfig(systemd)
 #!BuildIgnore:  %pgname
 #!BuildIgnore:  %pgname-server
@@ -222,10 +233,10 @@ Patch11:        0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       postgresql = %version-%release
-Provides:       postgresql-implementation = %version-%release
+Provides:       postgresql-implementation = %packaging_level
 Requires:       %libpq >= %version
-Requires(post): postgresql-noarch >= %pgmajor
-Requires(postun): postgresql-noarch >= %pgmajor
+Requires(post): postgresql-noarch >= %packaging_level
+Requires(postun): postgresql-noarch >= %packaging_level
 # At this point we changed the package layout on SLE and conflict with
 # older releases to get a clean cut.
 Conflicts:      postgresql-noarch < 12.0.1
@@ -287,7 +298,7 @@ preprocessor for PostgreSQL.
 Summary:        PostgreSQL client development header files and libraries
 Group:          Development/Libraries/C and C++
 Provides:       postgresql-devel = %version-%release
-Provides:       postgresql-devel-implementation = %version-%release
+Provides:       postgresql-devel-implementation = %packaging_level
 %if %mini
 Requires:       this-is-only-for-build-envs
 Provides:       %libecpg = %version-%release
@@ -299,7 +310,7 @@ Conflicts:      %pgname-devel
 %else
 Requires:       %libecpg >= %version
 Requires:       %libpq >= %version
-Requires:       postgresql-devel-noarch >= %pgmajor
+Requires:       postgresql-devel-noarch >= %packaging_level
 %endif
 # Installation of postgresql??-devel is exclusive
 Provides:       postgresql-devel-exclusive = %pgmajor
@@ -309,9 +320,9 @@ Conflicts:      postgresql-devel-exclusive < %pgmajor
 Summary:        PostgreSQL server development header files and utilities
 Group:          Development/Libraries/C and C++
 Provides:       postgresql-server-devel = %version-%release
-Provides:       postgresql-server-devel-implementation = %version-%release
-Requires(post): postgresql-server-devel-noarch >= %pgmajor
-Requires(postun): postgresql-server-devel-noarch >= %pgmajor
+Provides:       postgresql-server-devel-implementation = %packaging_level
+Requires(post): postgresql-server-devel-noarch >= %packaging_level
+Requires(postun): postgresql-server-devel-noarch >= %packaging_level
 Requires:       %pgname-devel = %version
 Requires:       %pgname-server = %version-%release
 # Installation of postgresql??-devel is exclusive
@@ -367,13 +378,13 @@ Requires:       timezone
 %if %{with llvm}
 Recommends:     %{name}-llvmjit
 %endif
-Provides:       postgresql-server-implementation = %version-%release
+Provides:       postgresql-server-implementation = %packaging_level
 Requires:       %libpq >= %version
-Requires(pre):  postgresql-server-noarch >= %pgmajor
-Requires(preun): postgresql-server-noarch >= %pgmajor
-Requires(postun): postgresql-server-noarch >= %pgmajor
-Requires(post): postgresql-noarch >= %pgmajor
-Requires(postun): postgresql-noarch >= %pgmajor
+Requires(pre):  postgresql-server-noarch >= %packaging_level
+Requires(preun): postgresql-server-noarch >= %packaging_level
+Requires(postun): postgresql-server-noarch >= %packaging_level
+Requires(post): postgresql-noarch >= %packaging_level
+Requires(postun): postgresql-noarch >= %packaging_level
 
 %description server
 PostgreSQL is an advanced object-relational database management system
@@ -388,9 +399,9 @@ PostgreSQL databases.
 %package llvmjit
 Summary:        Just-in-time compilation support for PostgreSQL
 Group:          Productivity/Databases/Servers
-Provides:       postgresql-llvmjit-implementation = %version-%release
+Provides:       postgresql-llvmjit-implementation = %packaging_level
 Requires:       %pgname-server = %version-%release
-Requires:       postgresql-llvmjit-noarch >= %pgmajor
+Requires:       postgresql-llvmjit-noarch >= %packaging_level
 
 %description llvmjit
 PostgreSQL is an advanced object-relational database management system
@@ -407,12 +418,12 @@ queries.
 Summary:        PostgreSQL development files for extensions with LLVM support
 Group:          Development/Libraries/C and C++
 Provides:       postgresql-llvmjit-devel = %version-%release
-Provides:       postgresql-llvmjit-devel-implementation = %version-%release
+Provides:       postgresql-llvmjit-devel-implementation = %packaging_level
 Requires:       %pgname-server-devel = %version
 %if %{with llvm}
 Requires:       %pgname-llvmjit = %version
-Requires(post): postgresql-llvmjit-devel-noarch >= %pgmajor
-Requires(postun): postgresql-llvmjit-devel-noarch >= %pgmajor
+Requires(post): postgresql-llvmjit-devel-noarch >= %packaging_level
+Requires(postun): postgresql-llvmjit-devel-noarch >= %packaging_level
 %requires_file	%_bindir/llc
 %requires_file	%_bindir/clang
 %endif
@@ -431,9 +442,9 @@ if llvm is supported. Otherwise it will just pull the
 %package test
 Summary:        The test suite for PostgreSQL
 Group:          Productivity/Databases/Servers
-Provides:       postgresql-test-implementation = %version-%release
+Provides:       postgresql-test-implementation = %packaging_level
 Requires:       %pgname-server = %version
-Requires:       postgresql-test-noarch >= %pgmajor
+Requires:       postgresql-test-noarch >= %packaging_level
 
 %description test
 This package contains the sources and pre-built binaries of various
@@ -443,8 +454,8 @@ regression tests and benchmarks.
 %package docs
 Summary:        HTML Documentation for PostgreSQL
 Group:          Productivity/Databases/Tools
-Provides:       postgresql-docs-implementation = %version-%release
-Requires:       postgresql-docs-noarch >= %pgmajor
+Provides:       postgresql-docs-implementation = %packaging_level
+Requires:       postgresql-docs-noarch >= %packaging_level
 BuildArch:      noarch
 
 %description docs
@@ -461,8 +472,8 @@ postgresql package.
 %package contrib
 Summary:        Contributed Extensions and Additions to PostgreSQL
 Group:          Productivity/Databases/Tools
-Provides:       postgresql-contrib-implementation = %version-%release
-Requires:       postgresql-contrib-noarch >= %pgmajor
+Provides:       postgresql-contrib-implementation = %packaging_level
+Requires:       postgresql-contrib-noarch >= %packaging_level
 Requires(post): %pgname >= %{version}
 Requires:       %pgname >= %{version}
 PreReq:         %pgname-server = %version-%release
@@ -483,10 +494,10 @@ Documentation for the modules contained in this package can be found in
 %package plperl
 Summary:        The PL/Tcl, PL/Perl, and  PL/Python procedural languages for PostgreSQL
 Group:          Productivity/Databases/Servers
-Provides:       postgresql-plperl-implementation = %version-%release
+Provides:       postgresql-plperl-implementation = %packaging_level
 Requires:       %pgname-server = %version-%release
 Requires:       perl = %perl_version
-Requires:       postgresql-plperl-noarch >= %pgmajor
+Requires:       postgresql-plperl-noarch >= %packaging_level
 
 %description plperl
 This package contains the the PL/Tcl, PL/Perl, and PL/Python procedural
@@ -498,10 +509,10 @@ PostgreSQL also offers the builtin procedural language PL/SQL.
 %package plpython
 Summary:        The PL/Python Procedural Languages for PostgreSQL
 Group:          Productivity/Databases/Servers
-Provides:       postgresql-plpython-implementation = %version-%release
+Provides:       postgresql-plpython-implementation = %packaging_level
 Requires:       %pgname-server = %version-%release
 Requires:       %python
-Requires:       postgresql-plpython-noarch >= %pgmajor
+Requires:       postgresql-plpython-noarch >= %packaging_level
 
 %description plpython
 PostgreSQL is an advanced object-relational database management system
@@ -519,9 +530,9 @@ included in the postgresql-server package.
 %package pltcl
 Summary:        PL/Tcl Procedural Language for PostgreSQL
 Group:          Productivity/Databases/Tools
-Provides:       postgresql-pltcl-implementation = %version-%release
+Provides:       postgresql-pltcl-implementation = %packaging_level
 Requires:       %pgname-server = %version
-Requires:       postgresql-pltcl-noarch >= %pgmajor
+Requires:       postgresql-pltcl-noarch >= %packaging_level
 Requires:       tcl
 
 %description pltcl
@@ -704,19 +715,23 @@ genlists ()
     for f in $@
     do
         BIN=%_bindir/$f
-        ALTBIN=/etc/alternatives/$f
         PGBIN=%pgbindir/$f
         MAN=%pgmandir/man1/$f.1*
 
-	# Package only binaries that exist in this version
+        # Package only binaries that exist in this version
         test -e %buildroot$PGBIN || continue
 
+%if %{with alts}
+        ALTBIN=/usr/share/postgresql/pg_alts
+%else
+        ALTBIN=/etc/alternatives/$f
         touch %buildroot$ALTBIN
+        echo "%ghost $ALTBIN" >> $PKG.files
+%endif
         ln -s $ALTBIN %buildroot$BIN
 
         echo "$PGBIN" >> $PKG.files
         echo "$BIN" >> $PKG.files
-        echo "%ghost $ALTBIN" >> $PKG.files
         test -e %buildroot$MAN &&
             echo "%doc $MAN" >> $PKG.files
         %find_lang $f-$VLANG $PKG.files ||:
@@ -782,8 +797,10 @@ genlists contrib \
 for pl in plperl plpython pltcl; do
     %find_lang $pl-$VLANG $pl.lang
 done
+%if %{without alts}
 ln -s /etc/alternatives/postgresql %buildroot/usr/lib/postgresql
 touch %buildroot/etc/alternatives/postgresql
+%endif
 
 # Remove mostly unneeded buildtime requirements for server extensions
 sed -i '/^LIBS = /s/= .*/=/' %buildroot/%pglibdir/pgxs/src/Makefile.global
@@ -845,21 +862,21 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 /sbin/ldconfig
 
 %post server-devel
-/usr/share/postgresql/install-alternatives %pgmajor
+%{?install_alternatives}
 
 %postun server-devel
-/usr/share/postgresql/install-alternatives %pgmajor
+%{?install_alternatives}
 
 %if !%mini
 
 %postun
-/usr/share/postgresql/install-alternatives %pgmajor
+%{?install_alternatives}
 
 %post
-/usr/share/postgresql/install-alternatives %pgmajor
+%{?install_alternatives}
 
 %post server
-/usr/share/postgresql/install-alternatives %pgmajor
+%{?install_alternatives}
 
 %preun server
 # Stop only when we are uninstalling the currently running version
@@ -874,7 +891,7 @@ if test -n "$MAINPID" && test "$MAINPID" -ne 0; then
 fi
 
 %postun server
-/usr/share/postgresql/install-alternatives %pgmajor
+%{?install_alternatives}
 # Restart only when we are updating the currently running version
 test -x /usr/bin/systemctl &&
   MAINPID=$(/usr/bin/systemctl show postgresql.service --property=MainPID --value) ||:
@@ -887,10 +904,10 @@ if test -n "$MAINPID" && test "$MAINPID" -ne 0; then
 fi
 
 %post contrib
-/usr/share/postgresql/install-alternatives %pgmajor
+%{?install_alternatives}
 
 %postun contrib
-/usr/share/postgresql/install-alternatives %pgmajor
+%{?install_alternatives}
 
 %if %buildlibs
 %post -n %libpq -p /sbin/ldconfig
@@ -910,8 +927,10 @@ fi
 %dir %pgdocdir
 %pgdocdir/[[:upper:]]*
 %dir %pglibdir
+%if %{without alts}
 /usr/lib/postgresql
 %ghost /etc/alternatives/postgresql
+%endif
 
 %files test
 %defattr(-,root,root,-)
@@ -1012,7 +1031,7 @@ fi
 %doc %pgmandir/man1/ecpg.1*
 %files server-devel -f server-devel.files
 %defattr(-,root,root)
-%ghost %_bindir/pg_config
+%{!?with_alts:%ghost} %_bindir/pg_config
 %pgbindir/pg_config
 %pgincludedir/server
 %pglibdir/pgxs
