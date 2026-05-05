@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri May  1 10:34:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- ignore failing tests simple_sample and runner::hurl_file::run that
+  require a running squid proxy
+  https://github.com/Orange-OpenSource/hurl/blob/master/CONTRIBUTING.md?plain=1#L89
+
+-------------------------------------------------------------------
+Fri Apr 24 07:19:28 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 8.0.0:
+  https://github.com/Orange-OpenSource/hurl/releases/tag/8.0.0
+  https://github.com/Orange-OpenSource/hurl/blob/master/CHANGELOG.md#8.0.0
+  * Breaking Changes:
+    - Use CookieStore in HurlResult (crate compatibility) #4697
+    - Delete deprecated --interactive option #4712
+    - Replace legacy env var variable configuration HURL_foo by
+      HURL_VARIABLE_foo #4882
+    - Rename ignore-asserts to no-assert #4889
+    - Using new JSONPath module implementing RFC 9535 #4270
+  * Enhancements:
+    - Add raw multiline strings and remove deprecated multiline
+      attributes #1733
+    - Add --no-cookie-store option to deactivate cookie storage for
+      one file #2168
+    - Rename --noproxy to --no-proxy with backward compatible alias
+      #4709
+    - Separate color usage (ANSI codes) for standard output and
+      standard error #4790
+    - Add support for asserting/capturing TLS certificate value
+      #4698
+    - Use color/pretty when using output per request #4970
+    - Support color env variables configuration #4777
+    - Enhance error message for invalid filter input on filters
+      #4381
+    - Add rawbytes query #4250
+    - Using new JSONPath module implementing RFC 9535 #4270
+    - Add --verbosity option (globally and per request) #4613
+    - Add Subject Alt Name (SAN) attribute for certificate
+      assertions #4617
+  * Bugs Fixed:
+    - Reject invalid header value on command line option #4843
+    - Fix single quote in cookie value breaking curl output #4557
+    - Add support for curl --data-raw option in hurlfmt import
+      #4411
+    - Fix truncating existing output file when response is tiny
+      #4576
+  * Deprecations:
+    - Add charsetDecode filter and make decode deprecated #4732
+
+-------------------------------------------------------------------
+Tue Jan 20 08:43:25 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 7.1.0:
+  Enhancements:
+  * Add CLI option to pretty print the response body #1760
+  * Add pretty print option #1760
+  * Support adding secret with HURL_SECRET_foo env variable #3901
+  * Use happy path with http/https scheme for URL parsing to improve stress test use-cases #4144
+  * Support --secrets-file for injecting secrets #4309
+  * Add --ntlm option per request #4322
+  * Add --negotiate option per request #4323
+  * Add utf8Decode/utf8Encode filters #4382
+  * Replace unmaintained encoding crate with encoding_rs crate #4399
+  * Enhance logging for retry #4419
+  * Add support for hour duration #4422
+  * Enhance --test duration logging #4423
+  * Add parsing support for more types of date time strings to toDate filter #4439 #4440 #4441
+  * HTML report enhancements #4445 #4446
+  * Add retry count in the progress bar (only if retry >= 1) #4511
+  * Add isList predicate #4520
+  * Add isObject predicate #4520
+  Bugs Fixed:
+  * Parse --user, --negotiate, and --ntlm options in hurlfmt #4213
+  * Add parsing support for more types of date time strings to toDate filter #4439 #4440 #4441
+  * Accept more path names when appending HTML reports #4459
+  * Fix filtering of Authorization: and Cookie: headers when following redirections #4460
+  * Fix supporting space in cookie storage cookie values #4461
+  * Fix implicit "Content-Type" headers when following redirections #4522
+  * Fix curl debug command with dot-prefixed cookie domain #4558
+
+-------------------------------------------------------------------
 Fri Aug 01 12:54:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 7.0.0:
@@ -1359,4 +1440,4 @@ Fri Sep 30 05:31:24 UTC 2022 - kastl@b1-systems.de
 -------------------------------------------------------------------
 Tue Apr 19 14:10:59 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
-- first version of package hurl: Hurl is a command line tool that runs HTTP requests defined in a simple plain text format. 
+- first version of package hurl: Hurl is a command line tool that runs HTTP requests defined in a simple plain text format.
