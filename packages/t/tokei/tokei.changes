@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Apr 29 14:30:49 UTC 2026 - fcrozat@suse.com
+
+- Update to version 14.0.0+git0:
+  * chore: release v14.0.0 (#1299)
+  * Fix downcast type mismatches in clap_builder (#1310)
+  * chore: remove tokei.rs references
+  * Add support for Koka (#1306)
+  * Stop recommending comma-separated CLI args (#1305)
+  * feat: add support for C++20 modules (#1278)
+  * chore: fix typos (#1303)
+  * feat: Add language support for Ark TypeScript (#1300)
+  * Update clap-cargo from 0.13 to 0.18 (#1298)
+  * Add colors to --help (#1296)
+  * Add support for M1 assembly, the hex0/1/2 family, and kaem files (#1295)
+  * Add macro file extension `fnlm` for Fennel (#1293)
+  * Fix several typos (#1294)
+  * Add Avalonia Xaml support (#1280)
+  * Change name from VB6 to VB6/VBA and add missing VB6 extensions (#1281)
+  * Add `cli` default feature to remove unnecessary dependencies from library (#1203)
+  * chore: remove alpha prefix
+  * chore: release v13.0.0-alpha.9 (#1229)
+  * chore: use download-artifact v4
+  * chore: update upload artifact to v4
+  * Update README.md
+  * Fix CRLF or mixed CRLF/LF line terminations in Markdown files (#1219)
+  * Fix a minor typo in CLI help text (#1217)
+  * Fix a missing space in CLI help text (#1218)
+  * Relax lifetime constraints in language::embedding (#1225)
+  * chore: release v13.0.0-alpha.8 (#1195)
+  * add Mojo support (#1107) (#1185)
+  * Add support for 8th language (#1192)
+  * Add support for `Roc` language (#1197)
+  * Add support for Ballerina language (#1196)
+  * Remove 'conf' extension from the Bitbake config. (#1001)
+  * Add support for Cairo language (#1193)
+  * Add support for Uiua language (#1191)
+  * chore: release v13.0.0-alpha.7 (#1186)
+  * Fix alternative output formats (#1188)
+  * Add missing extension `fsti` for F* (#1184)
+  * chore: release (#1182)
+  * Add language definition for Lauterbach PRACTICE Script (#1162)
+  * Add support for justfiles (#1175)
+  * Add Virgil (#1178)
+  * Add templ support (#1122)
+  * Update README.md with HiCAD from d4a1814 (#1143)
+  * Add BQN support (#1151)
+  * chore: add more extensions for `Hlsl` (#1164)
+  * Add Phix (#1167)
+  * Add APL support (#1152)
+  * Add support for SIL (#1153)
+  * Use `OR` operator in Cargo.toml `license` field (#1165)
+  * feat: add `mbti` extension for MoonBit (#1168)
+  * Disable legacy Cargo features (#1158)
+  * add slint language support (#1054)
+  * Add Pyret support (#1032)
+  * Recognize GNUmakefile (#1021)
+
+-------------------------------------------------------------------
 Wed Sep 25 09:35:14 UTC 2024 - socvirnyl.estela@gmail.com
 
 - Update to version 13.0.0.alpha.5+git0:

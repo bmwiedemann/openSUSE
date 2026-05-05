@@ -3,11 +3,10 @@
     <param name="url">https://github.com/XAMPPRocky/tokei</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="scm">git</param>
-	<param name="revision">6e75f90751d23ae5f159abbe8b099cc0f972ddfe</param>
-    <param name="versionrewrite-pattern">v(\d+.\d+.\d+)-(\w+\.\d+)</param>
-    <param name="versionrewrite-replacement">\1.\2</param>
+	<param name="revision">v14.0.0</param>
+    <param name="versionrewrite-pattern">v(\d+.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
   </service>
   <service mode="buildtime" name="tar" />
   <service mode="buildtime" name="recompress">
