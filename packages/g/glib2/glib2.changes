@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May  2 15:01:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.88.1:
+  + Fix miscompilation with GCC 16 due to GLib’s use of the wrong
+    function attribute.
+  + Fix flag confusion security issue when using `GRegex` with
+    `G_REGEX_RAW` which can result in unbounded out-of-bounds heap
+    reads off the start of a regex input string.
+  + Fix various minor (low severity) security issues, typically
+    one-to-five-byte out-of-bounds reads or ones relying on very
+    specific (and unlikely) API calls or ones relying on
+    discouraged P2P D-Bus configurations.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 24 04:38:25 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Install the /usr/share/applications/gnome-mimeapps.list symlink

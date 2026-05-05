@@ -2522,4 +2522,22 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
   (jsc#PED-14839)</comment>
     <requestid>1349842</requestid>
   </revision>
+  <revision rev="306" vrev="1">
+    <srcmd5>f7217daa58384c18d800bd52bb1e2b0b</srcmd5>
+    <version>2.88.1</version>
+    <time>1777986881</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.88.1:
+  + Fix miscompilation with GCC 16 due to GLib’s use of the wrong
+    function attribute.
+  + Fix flag confusion security issue when using `GRegex` with
+    `G_REGEX_RAW` which can result in unbounded out-of-bounds heap
+    reads off the start of a regex input string.
+  + Fix various minor (low severity) security issues, typically
+    one-to-five-byte out-of-bounds reads or ones relying on very
+    specific (and unlikely) API calls or ones relying on
+    discouraged P2P D-Bus configurations.
+  + Updated translations.</comment>
+    <requestid>1350822</requestid>
+  </revision>
 </revisionlist>
