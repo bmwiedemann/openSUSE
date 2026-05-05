@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  5 08:48:05 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 3.1.0:
+  * Migration: add overlay and snapshots checks
+  * libvirt event: add server info
+
+- version 3.0.4:
+  * update distribution version management (yaml file)
+  * some layout improvments
+  * fix smoothing in virtui-remote-viewer
+  * clicking outside a modal get back to main window
+  * add more info about VM migration (nvram)
+
+- version 3.0.3:
+  * fix remote viewer issue
+  * fix listing net interface on remote host
+  * Clean up code (remove old functions)
+
+-------------------------------------------------------------------
 Fri Apr 17 07:31:07 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - version 3.0.2:
