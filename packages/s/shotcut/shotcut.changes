@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  4 15:41:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.4.30:
+  * see https://www.shotcut.org/blog/new-release-26.4.30/
+
+-------------------------------------------------------------------
 Mon Mar  2 08:31:22 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 26.2.26:
@@ -840,7 +846,7 @@ Wed Jun 29 00:09:40 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
   *Added support for reading Lottie and rawr JSON animation formats.
   *Added Open Other > Animation.
   *Added a Mask: Draw (Glaxnimate) video filter.
-  *Added Glaxnimate vector animation tool with a video preview of Shotcut. 
+  *Added Glaxnimate vector animation tool with a video preview of Shotcut.
   *Added support for Keyframes to the following audio filters:
     Low Pass
     High Pass
@@ -882,7 +888,7 @@ Thu Jun 23 06:21:58 UTC 2022 - Dave Plater <davejplater@gmail.com>
   *Fixed changing Export > Format does not suggest a file name
    extension.
   *Fixed keyframes for Corner Pin video filter.
-  *Fixed keyframes for Rotate parameter of the Size, 
+  *Fixed keyframes for Rotate parameter of the Size,
    Position & Rotate video filter after trimming the clip.
   *Fixed Size, Position & Rotate video filter UI incorrect for
    non-square pixels.
@@ -930,7 +936,7 @@ Tue Feb  1 14:58:44 UTC 2022 - Dave Plater <davejplater@gmail.com>
   *Fixed Hold undo in Noise Gate audio filter.
   *Fixed audio mutes after setting an in or out point when playing
    not 1x forward in Source.
-  *Fixed the Segment Gap goes to zero when reloading an 
+  *Fixed the Segment Gap goes to zero when reloading an
    Audio Spectrum Visualization filter.
   *Fixed Mask: Simple Shape > Rotate not working in presets.
   *Fixed page up/down incorrect when Current position (timecode)
@@ -1132,7 +1138,7 @@ Wed May  5 16:34:10 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
   * Added a button in the Keyframes parameter track header to
     vertically zoom in to the minimum and maximumn values.
   * Added a Use Sub-clip checkbox to the Convert to
-    Edit-friendly dialog, under Advanced. This will convert only 
+    Edit-friendly dialog, under Advanced. This will convert only
     the trimmed portion of a clip plus up to 15 seconds before
     the in point and after the out point for a timeline clip.
     When this is on, only the selected clip is replaced and not
@@ -1140,7 +1146,7 @@ Wed May  5 16:34:10 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
     especially convenient for use with Time Remap in which case
     it defaults to on if the clip has been trimmed.
   * Added a Keep Advanced open checkbox to the Convert to
-    Edit-friendly dialog that remembers your choice between 
+    Edit-friendly dialog that remembers your choice between
     sessions.
   * Added a status message tip about useful keyboard modifiers
     to use when dragging keyframes.
@@ -1268,7 +1274,7 @@ Mon Mar  1 08:30:07 UTC 2021 - Michael Vetter <mvetter@suse.com>
   * Fixed undo after trim in point to create a 1 frame transition may delete the clip.
   * Fixed right-click in Playlist icons view mode breaks multiple selection on Windows.
   * Fixed Properties > Convert after Timeline > Detach Audio makes video black.
-  * Fixed some keyboard shortcuts may be broken when not using Settings > Language > 
+  * Fixed some keyboard shortcuts may be broken when not using Settings > Language >
     English (United States).
   * Fixed possible crash on Windows due to not loading the packaged DLL over one in a
     system folder or in %PATH%.
@@ -1344,7 +1350,7 @@ Wed Jan  6 13:05:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Added Move Up, Move Down, and Deselect buttons to Filters.
   * Added command line option --QT_SCALE_FACTOR_ROUNDING_POLICY
   * Lots of bugfixes see https://shotcut.org/blog/new-release-201125/
-  
+
 -------------------------------------------------------------------
 Mon Nov  2 06:59:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
@@ -1414,7 +1420,7 @@ Tue Oct  6 09:09:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
     Color and Open Other > Text.
   * Fixed a possible crash when using Center bias in the Crop: Source filter.
   Text: Rich Video Filter:
-  * Fixed incorrect font size in export on Windows when the system Settings > Display > 
+  * Fixed incorrect font size in export on Windows when the system Settings > Display >
     Scale and layout is higher than 100% (High DPI).
   * Fixed problems when Export > Video > Parallel processing is on.
   * Added collpase & expand buttons to the editor’s toolbar.
@@ -1426,7 +1432,7 @@ Tue Oct  6 09:09:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
   Other:
   * Fixed the actual workspace layout may not match the currently selected layout when
   restarting after a crash.
-  * Fixed Filters and Keyframes broken on Source clip after changing Settings > Video 
+  * Fixed Filters and Keyframes broken on Source clip after changing Settings > Video
   Mode.
 
 -------------------------------------------------------------------
@@ -1620,7 +1626,7 @@ Sun Sep 22 20:03:12 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
   block is wide enough.
   *No longer seek after dropping a clip from the player to the
   Timeline.
-  
+
 -------------------------------------------------------------------
 Thu Aug 22 00:29:55 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
 
@@ -1792,7 +1798,7 @@ Wed May  8 08:09:35 UTC 2019 - plater <davejplater@gmail.com>
   *reading some AVCHD files after a camcorder splits.
   *Video Waveform scope graticule not showing on non-dark theme.
   *incorrect compositing z-order after Insert Track.
-  *current track changes after inserting or overwriting a clip in 
+  *current track changes after inserting or overwriting a clip in
    Timeline.
   *first clip does not start at beginning when drop to Timeline
    after File > New or File > Close.
@@ -2399,7 +2405,7 @@ Fri Aug 14 02:35:00 UTC 2015 - avvissu@yandex.ru
 
 - Update to 15.08:
   * see: http://www.shotcut.org/bin/view/Shotcut/ReleaseNotes
-- Add %BUILD_ORIG macro to build in Packman 
+- Add %BUILD_ORIG macro to build in Packman
 - Spec file cleanup
 
 -------------------------------------------------------------------

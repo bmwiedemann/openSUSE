@@ -731,4 +731,24 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>1335793</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>cbfd35012932d648b41e9000c8709811</srcmd5>
+    <version>26.4.30</version>
+    <time>1777986917</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.4.30:
+  * see https://www.shotcut.org/blog/new-release-26.4.30/
+
+  *Added Glaxnimate vector animation tool with a video preview of Shotcut.
+  *Fixed keyframes for Rotate parameter of the Size,
+  *Fixed the Segment Gap goes to zero when reloading an
+    Edit-friendly dialog, under Advanced. This will convert only
+    Edit-friendly dialog that remembers your choice between
+  * Fixed some keyboard shortcuts may be broken when not using Settings &gt; Language &gt;
+  * Fixed incorrect font size in export on Windows when the system Settings &gt; Display &gt;
+  * Fixed Filters and Keyframes broken on Source clip after changing Settings &gt; Video
+  *current track changes after inserting or overwriting a clip in
+- Add %BUILD_ORIG macro to build in Packman</comment>
+    <requestid>1350750</requestid>
+  </revision>
 </revisionlist>
