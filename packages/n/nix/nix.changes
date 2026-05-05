@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  4 20:14:28 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.34.7: [CVE-2026-44028, CVE-2026-44029]
+  see /usr/share/doc/packages/rl-2.34.md
+  https://discourse.nixos.org/t/security-advisory-local-privilege-escalation-in-lix-and-nix/77407
+
+-------------------------------------------------------------------
 Sun Apr 12 13:31:26 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.34.6:

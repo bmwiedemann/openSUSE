@@ -230,4 +230,14 @@ support for software auditability among other things</comment>
   see /usr/share/doc/packages/rl-2.34.md (forwarded request 1346186 from darix)</comment>
     <requestid>1346247</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4f45d54f2defef81abe31360cb88ed54</srcmd5>
+    <version>2.34.7</version>
+    <time>1777996740</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.34.7: [CVE-2026-44028, CVE-2026-44029]
+  see /usr/share/doc/packages/rl-2.34.md
+  https://discourse.nixos.org/t/security-advisory-local-privilege-escalation-in-lix-and-nix/77407</comment>
+    <requestid>1350935</requestid>
+  </revision>
 </revisionlist>
