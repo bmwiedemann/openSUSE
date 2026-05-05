@@ -158,4 +158,13 @@
     <comment>- Fix boo#1256041 (forwarded request 1332468 from hillwood)</comment>
     <requestid>1332469</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>163e01ea241169002830a852131bf0e5</srcmd5>
+    <version>1.24.0</version>
+    <time>1777996743</time>
+    <user>anag_factory</user>
+    <comment>- Run ssserver with root privileges to allow binding to privileged ports
+  and reading SSL certificates (boo#1263916) (forwarded request 1350728 from hillwood)</comment>
+    <requestid>1350741</requestid>
+  </revision>
 </revisionlist>

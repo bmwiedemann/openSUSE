@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  4 14:31:06 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Run ssserver with root privileges to allow binding to privileged ports
+  and reading SSL certificates (boo#1263916) 
+
+-------------------------------------------------------------------
 Wed Feb 11 12:26:43 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix boo#1256041 
