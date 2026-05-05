@@ -569,4 +569,25 @@ versions of libva(2)</comment>
     <comment></comment>
     <requestid>1347978</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>fb92a6748904ed587b826eadc5701e5e</srcmd5>
+    <version>26.2.0</version>
+    <time>1777996749</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 26.2.0
+  + Platform Support:
+    - Panther Lake (PTL): Upstreamed encoding and decoding support.
+    - Battlemage (BMG): Refinements and feature parity updates.
+  + Codec Enhancements:
+    - VVC (Versatile Video Coding): Added support for Decoding Level 6.3.
+    - VVC Profile: Added MFX_PROFILE_VVC_MAIN10_STILL_PICTURE support.
+    - HEVC/AVC/AV1: Exported more detailed capability information for 
+      OneVPL compatibility.
+  + Bug Fixes &amp; Refinements:
+    - Fixed XYUV color format handling issues.
+    - Improved memory management and surface allocation on newer hardware.
+    - Enhanced VA-API compliance for better alignment with Libva 2.22.0+.
+  + Updated supplements.inc.</comment>
+    <requestid>1351001</requestid>
+  </revision>
 </revisionlist>

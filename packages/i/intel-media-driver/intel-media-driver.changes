@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  5 10:00:00 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 26.2.0
+  + Platform Support:
+    - Panther Lake (PTL): Upstreamed encoding and decoding support.
+    - Battlemage (BMG): Refinements and feature parity updates.
+  + Codec Enhancements:
+    - VVC (Versatile Video Coding): Added support for Decoding Level 6.3.
+    - VVC Profile: Added MFX_PROFILE_VVC_MAIN10_STILL_PICTURE support.
+    - HEVC/AVC/AV1: Exported more detailed capability information for 
+      OneVPL compatibility.
+  + Bug Fixes & Refinements:
+    - Fixed XYUV color format handling issues.
+    - Improved memory management and surface allocation on newer hardware.
+    - Enhanced VA-API compliance for better alignment with Libva 2.22.0+.
+  + Updated supplements.inc.
+
+-------------------------------------------------------------------
 Sat Apr 18 15:28:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 26.1.6:
