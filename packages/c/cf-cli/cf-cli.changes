@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri Apr 17 17:54:35 UTC 2026 - Oliver Kurz <okurz@suse.com>
+
+- Update to version 8.18.3+git.0.83ce51d9c:
+  * [v8] Add examples for hash-based routing (#3746)
+
+-------------------------------------------------------------------
+Tue Apr 14 09:39:47 UTC 2026 - Oliver Kurz <okurz@suse.com>
+
+- Update to version 8.18.2+git.0.6a8289095:
+  * [v8] Update dependencies to resolve CVEs (#3764)
+  * [v8] Fix Windows build relocation error (#3763)
+  * Update Go version to 1.26.2 (#3755)
+  * Update go.mod dependencies (#3754)
+  * [v8] Use embedded process instances for "cf apps" summary (#3725)
+  * [v8](go): Bump the dependencies group across 1 directory with 3 updates (#3753)
+  * [v8](go): Bump the dependencies group with 7 updates (#3744)
+  * [v8](go): Bump the dependencies group with 8 updates (#3740)
+  * [v8](go): Bump the dependencies group with 4 updates (#3736)
+  * [v8](gha): Bump the dependencies group with 2 updates (#3737)
+
+-------------------------------------------------------------------
+Tue Apr 14 09:11:38 UTC 2026 - Oliver Kurz <okurz@suse.com>
+
+- Update to version 8.18.0+git.0.fad4bcb4b:
+  * New command "cleanup-outdated-service-bindings" (#3712)
+  * Allow setting the route destination port via the CF CLI map-route command using a new app-port parameter (#3734)
+  * [v8](gha): Bump the dependencies group with 2 updates (#3732)
+  * [v8](go): Bump the dependencies group with 4 updates (#3730)
+  * fix: add --json flag to "service-key" subcommand (#3728)
+  * Enable multiple service binding feature for int tests (#3711)
+  * [V8] RFC-0045: Stack Management Reason (#3718)
+  * [v8](go): Bump github.com/mattn/go-runewidth in the dependencies group (#3724)
+  * [v8](go): Bump the dependencies group with 10 updates (#3721)
+  * [v8]  RFC-0045: Stack management (#3687)
+  * Fix pipeline when USE_LATEST_CAPI=true is used (#3716)
+  * Update Go version to 1.25.7 (#3715)
+  * [v8](gha): Bump aws-actions/configure-aws-credentials (#3707)
+  * [v8](go): Bump the dependencies group with 3 updates (#3705)
+  * [v8] Command "unbind-service" can handle multiple bindings (#3665)
+  * Fix bbl print-env producing output in wrong format (#3701)
+  * [v8](go): Bump the dependencies group across 1 directory with 6 updates (#3695)
+  * Update Go version to 1.25.5 to address CVE-2025-61729 (#3682) (#3689)
+  * [v8](go): Bump the dependencies group with 8 updates (#3686)
+  * Small fixes (contribution docu, integration tests) (#3683)
+  * [v8] Add "--strategy" parameter to "bind-service" command (#3654)
+  * Command "services": Eliminate duplicate app names (#3663)
+  * [v8] Enhance "service" command for multiple service bindings (#3660)
+  * Update to run tests with 4 nodes to reduce infra load (#3681)
+  * [v8](go): Bump the dependencies group with 7 updates (#3680)
+  * [v8](go): Bump github.com/google/go-querystring (#3673)
+  * [v8](go): Bump the dependencies group with 6 updates (#3671)
+  * [v8](gha): Bump the dependencies group with 3 updates (#3669)
+  * [v8](go): Bump the dependencies group with 8 updates (#3667)
+  * Make droplet's lifecycle information available (#3634)
+  * Fix missing completion for the AppType 'cnb' (#3629)
+  * Fix improper Eventually usage in servicebrokerstub (#3647)
+  * Use http.DefaultTransport.Clone() in UAA version check (#3643)
+  * Fix CVEs and flaking tests (#3657)
+  * Upgrade to golang.org/x/tools v0.39.0 to fix generation (#3635)
+  * [v8](go): Bump the dependencies group across 1 directory with 7 updates (#3645)
+  * [v8](gha): Bump actions/checkout from 5 to 6 in the dependencies group (#3640)
+  * Fix missing completion for 'SpaceSupporter' (#3627)
+  * [v8](gha): Bump golangci/golangci-lint-action in the dependencies group (#3624)
+  * Fix panic in "cf curl" command when response contains {{ or }} (#3617)
+  * [v8](go): Bump the dependencies group across 1 directory with 12 updates (#3626)
+  * Bump go dependencies [v8] (#3620)
+  * [v8] upgrade module to v8 standard go version workflow (#3256)
+  * feat: add ready indicator to cf app command (#3615)
+  * Fix invalid related commands (#3591)
+  * [v8](gha): Bump the dependencies group across 1 directory with 4 updates (#3608)
+  * [v8](go): Bump the dependencies group with 2 updates (#3607)
+  * Fix(cf curl): Prevent errors when handling binary API responses (#3605)
+  * [v8](go): Bump the dependencies group with 5 updates (#3602)
+  * [v8](go): Bump the dependencies group across 1 directory with 9 updates (#3598)
+  * Bump MacOS runner to macos-14 (#3596)
+  * [v8](go): Bump the dependencies group with 5 updates (#3589)
+  * Migrate to golangci v2[v8] (#3588)
+  * [v8](go): Bump the dependencies group with 10 updates (#3578)
+  * Add debian 13 to test mattrix (#3583)
+
+-------------------------------------------------------------------
 Fri Oct 17 07:28:27 UTC 2025 - Berthold Gunreben <azouhr@opensuse.org>
 
 - remove GO111MODULE=off

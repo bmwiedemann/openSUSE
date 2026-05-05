@@ -1,7 +1,7 @@
 #
 # spec file for package cf-cli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,14 +28,14 @@
 
 %global provider        code.cloudfoundry
 %global provider_tld    org
-%global project         ""
 %global repo            cli
-%global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
-%global import_path     %{provider_prefix}
+%global major           v8
+%global provider_prefix %{provider}.%{provider_tld}/%{repo}
+%global import_path     %{provider_prefix}/%{major}
 
 %define         short_name cf-cli
 Name:           %{short_name}%{?name_ext}
-Version:        8.16.0+git.0.4b92b73e4
+Version:        8.18.3+git.0.83ce51d9c
 Release:        0
 Summary:        Cloud Foundry command line client
 License:        Apache-2.0
