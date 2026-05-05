@@ -16,17 +16,17 @@
 #
 
 
-%define sover		9
+%define sover		11
 %define soname      %{sover}_0_0
 %define libname		%{name}%{soname}
 %define develname	%{name}-devel
 
-%define libfilezillaversion 0.55.0
+%define libfilezillaversion 0.55.3
 
 Name:           libfzssh
-Version:        1.1.7
+Version:        1.2.0
 Release:        0
-Summary:        The fzssh is a SSH/SFTP library based on libfilezilla
+Summary:        A C++ SSH/SFTP library based on libfilezilla
 License:        AGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://fzssh.filezilla-project.org/
@@ -42,21 +42,15 @@ BuildRequires:  pkgconfig(libfilezilla) >= %{libfilezillaversion}
 BuildRequires:  pkgconfig(libargon2)
 
 %description
-fzssh is a SSH/SFTP library based on libfilezilla
-This library is free software, it is distributed under the terms and conditions of
-the GNU Affero General Public License v3+ with attribution, see the library's README file for details.
-fzssh is a cross-platform library for all major operating systems, including but not limited to Linux, *BSD, macOS and Windows.
+fzssh is a SSH/SFTP library based on libfilezilla.
 
 %package -n	%{libname}
-Summary:        C++ library for libfzsh
+Summary:        A C++ SSH/SFTP library based on libfilezilla
 Group:          System/Libraries
 Provides:       %{name} = %{version}
 
 %description -n	%{libname}
 fzssh is a SSH/SFTP library based on libfilezilla
-This library is free software, it is distributed under the terms and conditions of
-the GNU Affero General Public License v3+ with attribution, see the library's README file for details.
-fzssh is a cross-platform library for all major operating systems, including but not limited to Linux, *BSD, macOS and Windows.
 
 %package -n	%{develname}
 Summary:        Development package for %{name}
@@ -76,8 +70,7 @@ Files needed for development with %{name}.
 %install
 %meson_install
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %license agpl3.txt

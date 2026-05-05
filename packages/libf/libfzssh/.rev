@@ -7,4 +7,12 @@
     <comment>Required by filezilla</comment>
     <requestid>1348147</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ab2f81dac9c3c1e64d1aecd8e6ffbec6</srcmd5>
+    <version>1.2.0</version>
+    <time>1777987015</time>
+    <user>anag_factory</user>
+    <comment>Needed by filezilla</comment>
+    <requestid>1350937</requestid>
+  </revision>
 </revisionlist>

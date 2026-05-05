@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon May  4 10:12:26 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.2.0
+
+- Update to 1.2.0
+  * New features:
+    - Added support for the publickey-hostbound@openssh.com extension
+  * Bugfixes and minor changes:
+    - Send sftp_client::ready_event after obtaining peer version
+    - Small improvements to channel log messages
+- Changes from 1.1.10
+  * Bugfixes and minor changes:
+    - Default to a maximum large receive window of 2^31 - 1 octets
+      that safely fits into a signed 32-bit integer use by specification
+      violating servers, and white-list known-good servers for use
+      of 2^32 - 1 octet receive windows
+    - Allow larger incoming SFTP packets to match what OpenSSH accepts,
+      as there are servers that unfortunately send packets larger than
+      the safe 32768 octet limit from the specs
+- Changes from 1.1.9
+  * Bugfixes and minor changes:
+    - Handle nonsensical SSH_MSG_USERAUTH_INFO_REQUEST messages
+     with no name, no instructions and no prompt
+    - SFTP: Since the SSH_MSG_USERAUTH_BANNER packet can be safely
+      ignored, only loudly complain if it is malformed instead of
+      dropping the connection
+    - Require libfilezilla 0.55.3
+- Changes from 1.1.8
+  * Bugfixes and minor changes:
+    - SFTP: Allow empty longname in listing entries
+    - Some servers cannot handle large receive windows of up to 2^32 - 1 bytes,
+      despite RFC 4254 mandating that all implementations MUST support windows
+      of up to 2^32 - 1 bytes. If we believe to connect to such a server in
+      single-channel mode, use a smaller window of 2^31 - 1 bytes.
+
+-------------------------------------------------------------------
+Mon Apr 20 08:38:35 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim redundancies from descriptions.
+
+-------------------------------------------------------------------
 Sat Apr 11 11:27:31 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.1.7
 
 - Initial version 1.1.7
