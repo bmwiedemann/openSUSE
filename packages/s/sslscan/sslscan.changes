@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  4 14:29:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * Respect the -j option when building OpenSSL (credit hlein)
+
+-------------------------------------------------------------------
 Wed Mar 25 14:23:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.1:
