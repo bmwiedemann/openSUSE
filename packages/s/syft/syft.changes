@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May 01 18:09:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.44.0:
+  * Added Features
+    - Add support for linux-riscv64 [#4757 @luhenry]
+  * Bug Fixes
+    - Yarn lockfile cataloguing does not handle aliases [#4833
+      #4836 @cyphercodes]
+    - Some snippet files are saved in the previous test directory
+      [#4829 #4830 @witchcraze]
+    - empty rockspec causes index out of range [#4824 #4827
+      @aki1770-del]
+    - PE cataloger shows asp.net core ref assemblies using
+      fileversion build stamp instead of productversion [#4813
+      #4814 @rezmoss]
+    - Syft safeCopy silently swallows archive decompression errors
+      [#4806 #4807 @SAY-5]
+
+-------------------------------------------------------------------
 Thu Apr 23 05:22:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.43.0:
