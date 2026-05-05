@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 28 08:22:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.0:
+  * Added __delitem__ method to AsdfFile.
+  * Fixed bug in which empty/all-zero block checksums were
+    treated as invalid when validate_headers is enabled.
+  * Fixed a bug in which checksums for compressed blocks were
+    being computed in a way that didn't match the specification.
+  * Remove whole-tree validation in AsdfFile.add_history_entry
+    and replace it with validation of the newly created entry.
+  * Added optional block info table to asdftool info and
+    AsdfFile.info.
+  * Added support for disabling block checksums in file write
+    methods.
+
+-------------------------------------------------------------------
 Sun Mar 29 10:22:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.0:

@@ -27,21 +27,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asdf%{psuffix}
-Version:        5.2.0
+Version:        5.3.0
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf
 Source0:        https://files.pythonhosted.org/packages/source/a/asdf/asdf-%{version}.tar.gz
 Source99:       python-asdf.rpmlintrc
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 60}
 BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML >= 5.4.1
+Requires:       python-PyYAML >= 6.0
 Requires:       python-asdf-standard >= 1.1.0
 Requires:       python-asdf-transform-schemas >= 0.3
 Requires:       python-attrs >= 22.2
@@ -65,6 +65,7 @@ BuildRequires:  %{python_module lz4 >= 0.10}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest >= 8}
 BuildRequires:  %{python_module pytest-remotedata}
+BuildRequires:  %{python_module syrupy >= 5.1}
 %endif
 %python_subpackages
 

@@ -434,4 +434,12 @@
   * Drop support for python 3.9.</comment>
     <requestid>1343410</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ad63c369dbe170b47cdf96a79e8be351</srcmd5>
+    <version>5.3.0</version>
+    <time>1777987034</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1350920</requestid>
+  </revision>
 </revisionlist>
