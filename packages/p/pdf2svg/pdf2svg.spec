@@ -1,7 +1,7 @@
 #
 # spec file for package pdf2svg
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pdf2svg
-Url:            http://www.cityinthesky.co.uk/opensource/pdf2svg/
+URL:            http://www.cityinthesky.co.uk/opensource/pdf2svg/
 Summary:        PDF to SVG Converter
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Convertors
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Source0:        https://github.com/db9052/pdf2svg/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -45,7 +45,7 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root,-)
-%doc README COPYING AUTHORS ChangeLog LICENSE
+%doc README.md COPYING AUTHORS ChangeLog LICENSE
 %{_bindir}/%{name}
 
 %changelog

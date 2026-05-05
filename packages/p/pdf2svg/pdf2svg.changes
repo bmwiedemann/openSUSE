@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  4 11:07:55 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.4:
+  + Using cairo 1.17.6 and later, pdf2svg outputs SVGs with the
+    wrong width and height.
+
+-------------------------------------------------------------------
 Tue Dec  8 19:37:38 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 0.2.3
