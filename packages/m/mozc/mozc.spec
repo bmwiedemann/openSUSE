@@ -59,7 +59,7 @@ ExclusiveArch:  do_not_build
 %define document_dir %{_docdir}/ibus-mozc
 
 Name:           mozc
-Version:        2.31.5810.102
+Version:        3.33.6133.102
 Release:        0
 Summary:        Mozc - Japanese Input Method for Chromium OS, Mac and Linux
 License:        Apache-2.0 AND BSD-3-Clause AND SUSE-Public-Domain AND Zlib
@@ -85,7 +85,7 @@ Source4:        ibus-setup-mozc-jp.desktop.in
 # https://github.com/fcitx/mozc/tree/fcitx/src/unix/fcitx{,5}
 # Run ./make_archive.sh to make tar.xz
 %if %{with_fcitx4} || %{with_fcitx5}
-Source20:       fcitx-mozc-cf70daeb.tar.xz
+Source20:       fcitx-mozc-96fcec5b.tar.xz
 Source21:       fcitx-mozc-icons.tar.gz
 Patch20:        fcitx-mozc-bazel-build.patch
 %endif
@@ -94,14 +94,8 @@ Patch20:        fcitx-mozc-bazel-build.patch
 Patch1:         ibus-provide-layout-variations.patch
 # PATCH-FEATURE-OPENSUSE ftake@geeko.jp -- Use system python while building
 Patch2:         use-system-python.patch
-# PATCH-FEATURE-OPENSUSE ftake@geeko.jp -- Use system python while building (for Leap 15)
-Patch3:         use-system-python-3.12.patch
 
 BuildRequires:  bazel8
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
-BuildRequires:  python312
-%endif
 BuildRequires:  unzip
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -195,11 +189,7 @@ tar xvf %{SOURCE20}
 
 cp %{SOURCE1} .
 
-%if 0%{?suse_version} == 1500
-%patch -P 3 -p1
-%else
 %patch -P 2 -p1
-%endif
 
 # extract dependencies
 tar xf %{SOURCE2}
@@ -230,11 +220,6 @@ echo 'bazel_dep(name = "zlib", version = "1.3.1.bcr.5")' >> src/MODULE.bazel
 %build
 
 cd src
-
-%if 0%{?suse_version} == 1500
-export CC=gcc-10
-export CXX=g++-10
-%endif
 
 # Be careful bazel cache is not cleared by `obs build`
 # --output_base might help

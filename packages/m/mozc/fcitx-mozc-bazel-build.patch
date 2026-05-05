@@ -1,8 +1,8 @@
 diff --git a/src/MODULE.bazel b/src/MODULE.bazel
-index e432cdd16..fa57692f8 100644
+index 0c1866b30..a8bae14d4 100644
 --- a/src/MODULE.bazel
 +++ b/src/MODULE.bazel
-@@ -171,6 +171,23 @@ pkg_config_repository(
+@@ -192,6 +192,23 @@ pkg_config_repository(
      ],
  )
  
@@ -27,18 +27,18 @@ index e432cdd16..fa57692f8 100644
  pkg_config_repository(
      name = "qt_linux",
 diff --git a/src/session/BUILD.bazel b/src/session/BUILD.bazel
-index b813385b8..9a4c1b0fe 100644
+index 090eae44e..8da0728ce 100644
 --- a/src/session/BUILD.bazel
 +++ b/src/session/BUILD.bazel
-@@ -158,6 +158,7 @@ mozc_cc_library(
+@@ -155,6 +155,7 @@ mozc_cc_library(
+     visibility = [
          "//android/jni:__pkg__",
          "//ios:__pkg__",
-         "//server:__pkg__",
 +        "//unix/fcitx5:__pkg__",
      ],
      deps = [
          ":keymap",
-@@ -355,6 +356,7 @@ mozc_cc_library(
+@@ -351,6 +352,7 @@ mozc_cc_library(
      hdrs = ["key_info_util.h"],
      visibility = [
          "//client:__pkg__",

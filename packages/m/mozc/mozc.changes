@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun May  3 16:53:11 UTC 2026 - Fuminobu Takeyama <ftake@geeko.jp> - 3.33.6133.102
+
+- Upstream update to 3.33.6133
+  * Updated dictionaries: 20251026, Q4 2025
+  * Added OOV words / expressions to seed dictionary
+  * Demoted Hieroglyph symbols
+  * Overrode the top history suggestion with dictionary suggestion
+    when the post correction is reasonably high enough
+  * Supported `{HOUR}` and `{MINUTE}` for `DateRewriter`
+  * Fixed the failure of importing user dictionaries in the ATOK
+    format
+- Upstream update to 3.33.6089
+  * Demote the ranking of some Kana variants (e.g. Hentaigana,
+    Ainu-kana, voiced-kana, etc.)
+  * Changed the ranking of alphabet transliteration candidates
+  * Promote Emoji more than Emoticon
+  * Supported new inline style for reading correction
+  * Supported multiple custom date formats
+- Upstream update to 2.32.5994
+  * Do not remember punctuation-ending non-Japanese (ASCII) strings
+    directly input by the composer
+  * Stop providing "did you mean" description on language aware
+    rewriter
+  * Updated the language model
+  * Updated zip-code as of 2025-08-30
+  * Removed the 62-day storage limit for input history. Retain the
+    history up to the data size limit
+  * Fix an overfiltering of candidates that have the same key and
+    longer common prefix value
+  * Updated some data entries
+  * Updated the candidate filtering rule
+  * Updated the logic of word suggestion for multiple segments
+    (aka inner boundary)
+  * Fix an issue that the top candidate with multiple segments may
+    get broken
+  * Linux: Fix a crash issue on some Linux environment that does
+    not support _SC_GETPW_R_SIZE_MAX
+  * Updated dependencies
+* Upstream update to 2.31.5851
+  * Improved over triggering of number variants expansion
+  * Stopped adding punctuation characters for suggestion candidates
+  * Fixed a regression issue of SwitchKanaType by the Muhenkan key
+  * Linux: Fixed a regression issue that selected characters are
+    deleted on some applications
+- Drop Leap 15 support
+  * Drop use-system-python-3.12.patch
+- Refresh use-system-python.patch
+- Refresh fcitx-mozc-bazel-build.patch
+
+-------------------------------------------------------------------
 Sun Mar 29 09:11:15 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Update mozc.spec:
