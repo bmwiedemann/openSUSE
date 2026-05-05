@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  4 15:26:37 UTC 2026 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Use poling mode for Ethernet carrier detection on CM5
+  0001-arm64-dts-bcm2712-CM5-Ethernet-PHY-use-polling-mode.patch
+
+-------------------------------------------------------------------
 Thu Mar 19 10:34:54 UTC 2026 - Andrea della Porta <andrea.porta@suse.com>
 
 - Fix GPU support for RPi5

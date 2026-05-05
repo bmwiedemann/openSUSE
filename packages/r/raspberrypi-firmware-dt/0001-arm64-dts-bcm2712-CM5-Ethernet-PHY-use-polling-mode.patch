@@ -1,0 +1,36 @@
+From 918ee5c8c7a16e0b8556c08ac8eed97cbe7055ed Mon Sep 17 00:00:00 2001
+From: "Ivan T. Ivanov" <iivanov@suse.de>
+Date: Thu, 30 Apr 2026 13:52:31 +0300
+Subject: [PATCH] arm64: dts: bcm2712: CM5: Ethernet PHY use polling mode
+
+This is temporal fix for following kernel error message:
+...
+ gpio gpiochip4: (pinctrl-rp1): gpiochip_lock_as_irq: cannot get GPIO direction
+ gpio gpiochip4: (pinctrl-rp1): unable to lock HW IRQ 37 for IRQ
+ genirq: Failed to request resources for 1f00100000.ethernet-ffffffff:00 (irq 158) on irqchip pinctrl-rp1
+...
+
+The proper fix, which define IRQ GPIO direction and pull up
+did not work. Ethernet interface report 'no-carrier'.
+
+Signed-off-by: Ivan T. Ivanov <iivanov@suse.de>
+---
+ arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi
+index c3dc847..aba553f 100644
+--- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi
++++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi
+@@ -167,8 +167,6 @@ rp1_target: &pcie2 {
+ 		phy1: ethernet-phy@1 {
+ 			reg = <0x1>;
+ 			brcm,powerdown-enable;
+-			interrupt-parent = <&gpio>;
+-			interrupts = <37 IRQ_TYPE_LEVEL_LOW>;
+ 		};
+ 	};
+ };
+-- 
+2.51.0
+

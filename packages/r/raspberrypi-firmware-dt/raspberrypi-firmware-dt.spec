@@ -41,9 +41,10 @@ Patch6:         0001-ARM-dts-bcm2712-Slow-down-eMMC-interface.patch
 Patch7:         bcm2712-fix-compatible.patch
 Patch8:         0001-Amend-the-RP1-ethernet-node-to-work-with-upstream-dr.patch
 Patch9:         0001-dts-overlays-Adjust-them-for-RPi5.patch
-Patch10:	0001-dts-bcm2712-Extend-PCIe-range-to-encompass-firmware-.patch
-Patch11:	0001-dts-arm64-rp1-Fix-PCIe-topology.patch
-Patch12:	0001-arm64-bcm2712-Fix-GPU-support.patch
+Patch10:        0001-dts-bcm2712-Extend-PCIe-range-to-encompass-firmware-.patch
+Patch11:        0001-dts-arm64-rp1-Fix-PCIe-topology.patch
+Patch12:        0001-arm64-bcm2712-Fix-GPU-support.patch
+Patch13:        0001-arm64-dts-bcm2712-CM5-Ethernet-PHY-use-polling-mode.patch
 Requires:       raspberrypi-firmware
 Requires:       kernel >= 6.19.0
 BuildRequires:  dtc
