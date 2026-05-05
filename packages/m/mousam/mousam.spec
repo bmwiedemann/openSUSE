@@ -17,7 +17,7 @@
 
 
 Name:           mousam
-Version:        1.4.2
+Version:        2.0.2
 Release:        0
 Summary:        A lightweight weather app
 License:        GPL-3.0-or-later

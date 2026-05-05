@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May  4 19:17:31 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.2:
+  * Fix text color in light mode.
+- Changes from version 2.0.1:
+  * Revert to runtime-version 49.
+- Changes from version 2.0.0:
+  * add memory leak test and fix (gh#amit9838/mousam#261).
+  * feat: show air pollutents, implement async data loading and
+    redesign day/night card, improve UI (gh#amit9838/mousam#266).
+  * feat: implement compact weather mode with loading states,
+    polling, auto-refresh, and utility-based CSS
+    (gh#amit9838/mousam#267).
+  * fix: implement dynamic background styling and improve UI
+    update concurrency for compact mode (gh#amit9838/mousam#268).
+  * feat: add notifications alert with preference toggle, some UI
+    improvements (gh#amit9838/mousam#269).
+  * feat: implement dynamic window view switching and centralize
+    refresh logic (gh#amit9838/mousam#270).
+  * Refactor Architecture, State Management, and UI Enhancements
+    (gh#amit9838/mousam#271).
+  * feat: introduce a logging system with configurable debug mode
+    and log file management, improve const migration
+    (gh#amit9838/mousam#272).
+  * chore: update runtime to version 50 (gh#amit9838/mousam#276).
+  * fix: remove mobile form factor metadata from appdata
+    (gh#amit9838/mousam#277).
+
+-------------------------------------------------------------------
 Wed Feb 18 18:20:51 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.4.2:
