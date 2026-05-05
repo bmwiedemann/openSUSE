@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 04 10:38:57 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1777891128.f572829:
+  * fix: handle pre-marker pending text in script_output
+  * fix: echo json_cmd_token in isotovideo responses
+  * fix: re-install serial marker hook after console reset
+  * fix: support pretty_serial_markers in script_output regex
+  * fix(test): handle D-Bus AccessDenied in Open vSwitch test
+
+-------------------------------------------------------------------
 Thu Apr 30 08:28:11 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1777537682.913fce0:
