@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  3 13:37:51 UTC 2026 - llyyr <llyyr@yukari.in>
+
+- Add patch d013d97631bf86577e7eb44941b2b7b9cf4192d0.patch to fix
+  a leak with libfontconfig
+
+-------------------------------------------------------------------
 Sun Jun  8 22:22:08 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Update to 0.17.4:

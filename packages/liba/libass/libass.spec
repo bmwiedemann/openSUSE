@@ -1,7 +1,7 @@
 #
 # spec file for package libass
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/libass/libass
 Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+Patch1:         https://github.com/libass/libass/commit/d013d97631bf86577e7eb44941b2b7b9cf4192d0.patch
 BuildRequires:  nasm
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig) >= 2.10.92
@@ -63,7 +64,7 @@ Requires:       pkgconfig(libunibreak) >= 1.1
 This package is needed if you want to develop / compile against libass.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure \
