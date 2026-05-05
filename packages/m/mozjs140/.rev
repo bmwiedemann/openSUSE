@@ -97,4 +97,14 @@
   + See https://www.firefox.com/en-US/firefox/140.9.0/releasenotes/</comment>
     <requestid>1349527</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7bfa6910679e7d512967a9e5ce776d79</srcmd5>
+    <version>140.10.1</version>
+    <time>1777986881</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 140.10.1:
+  + Various security fixes
+  + See https://www.firefox.com/en-US/firefox/140.10.1/releasenotes/</comment>
+    <requestid>1350823</requestid>
+  </revision>
 </revisionlist>
