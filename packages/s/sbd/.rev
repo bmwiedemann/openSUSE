@@ -586,4 +586,12 @@ the sources.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1344320</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>3826dcaabafbdf8ac57b0f8a89fffec5</srcmd5>
+    <version>1.5.2+20260320.2c43532</version>
+    <time>1777987032</time>
+    <user>anag_factory</user>
+    <comment>- sbd-cluster: cleanly include &lt;crm/crm.h&gt; for crm_system_name and others (bsc#1259413) (forwarded request 1350916 from yan_gao)</comment>
+    <requestid>1350917</requestid>
+  </revision>
 </revisionlist>

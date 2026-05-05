@@ -10,7 +10,7 @@ Thu Mar 26 08:55:30 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 Fri Nov 14 08:49:54 UTC 2025 - Yan Gao <ygao@suse.com>
 
 - Update to version 1.5.2+20250909.68bc946:
-- sbd-cluster: cleanly include <crm/crm.h> for crm_system_name and others
+- sbd-cluster: cleanly include <crm/crm.h> for crm_system_name and others (bsc#1259413)
 
 -------------------------------------------------------------------
 Wed Feb 12 17:32:38 UTC 2025 - Yan Gao <ygao@suse.com>
