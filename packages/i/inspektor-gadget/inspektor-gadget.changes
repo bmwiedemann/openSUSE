@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Mon May 04 16:44:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.52.0:
+  * Welcome to the v0.52.0 of Inspektor Gadget. These are the most
+    important changes:
+    - ustack: Add OTel eBPF Profiler symbolizer for interpreted
+      language stacks by @alban in #4925
+    - charts: Add support for gadgetConfigMaps by @mqasimsarfraz in
+      #5485
+  * General Improvments
+    - ci: Remove 6.10+6.11 and add 6.12+6.18 by @burak-ok in #5420
+    - docs: fix typos in contributing.md and ci.md by @tushar743-ui
+      in #5422
+    - fix(oci): preserve OCI 1.1 referrer artifacts during image
+      import by @burak-ok in #5431
+    - Artifact Hub: Update gadgets version to v0.51.0 by
+      @github-actions[bot] in #5421
+    - Bump Go compiler 1.25.8 → 1.25.9 (CVE fix) by @Copilot in
+      #5445
+    - include: add CO-RE helpers for inode ctime and syscall access
+      by @dorser in #5365
+    - gadget-container/entrypoint: Fix symlink crash loop on
+      container restart by @nandiheath in #5429
+    - otel-profiles: Add service name by @mqasimsarfraz in #5452
+    - gadgets: reduce BPF stack frame size for older kernels by
+      @alban in #5446
+    - oci: release oras target after image operators finish loading
+      by @matthyx in #5462
+    - ebpf: release CollectionSpec after programs are attached by
+      @matthyx in #5461
+    - ebpf: release ELF/BPF object bytes after spec is loaded by
+      @matthyx in #5466
+    - github: Add copilot-instructions.md by @mqasimsarfraz in
+      #4684
+    - cmd: Convert Makefile.build to golang. by @eiffel-fl in #5469
+    - gadgets: extend trace_init_module with finit_module syscall
+      support by @claudiamarcubina in #5440
+    - container-utils/docker: populate image digest in GetContainer
+      by @dorser in #5464
+    - docs: Add file highlighting gadgets limitations. by
+      @eiffel-fl in #5426
+  * Dependencies updates
+    - ci: Bump benchmark-action/github-action-benchmark from 1.21.0
+      to 1.22.0 by @dependabot[bot] in #5417
+    - go: Bump the aws-sdk group across 1 directory with 3 updates
+      by @dependabot[bot] in #5412
+    - Dockerfiles: Bump debian from f065376 to 4724b8c in
+      /Dockerfiles by @dependabot[bot] in #5419
+    - ci: Bump dorny/paths-filter from 4.0.0 to 4.0.1 by
+      @dependabot[bot] in #5402
+    - ci: Bump github/codeql-action from 4.34.1 to 4.35.1 by
+      @dependabot[bot] in #5406
+    - ci: Bump actions/setup-go from 6.3.0 to 6.4.0 by
+      @dependabot[bot] in #5404
+    - ci: Bump azure/setup-helm from 4.3.1 to 5.0.0 by
+      @dependabot[bot] in #5416
+    - go: Bump the docker group across 1 directory with 3 updates
+      by @dependabot[bot] in #5424
+    - go: Bump go.opentelemetry.io/otel/sdk from 1.42.0 to 1.43.0
+      in /examples by @dependabot[bot] in #5427
+    - go: Bump go.opentelemetry.io/otel/sdk from 1.42.0 to 1.43.0
+      by @dependabot[bot] in #5428
+    - go: Bump the golang-x group across 2 directories with 4
+      updates by @dependabot[bot] in #5432
+    - go: bump github.com/aws/aws-sdk-go-v2/service/ec2 from
+      1.296.2 to 1.297.0 in /tools/eks-cleanup in the aws-sdk group
+      across 1 directory by @dependabot[bot] in #5438
+    - ci: bump docker/login-action from 4.0.0 to 4.1.0 by
+      @dependabot[bot] in #5436
+    - ci: bump peter-evans/create-pull-request from 8.1.0 to 8.1.1
+      by @dependabot[bot] in #5435
+    - ci: bump aws-actions/configure-aws-credentials from 6.0.0 to
+      6.1.0 by @dependabot[bot] in #5433
+    - ci: bump oras-project/setup-oras from 1.2.4 to 2.0.0 by
+      @dependabot[bot] in #5434
+    - go: bump github.com/sigstore/protobuf-specs from 0.5.0 to
+      0.5.1 by @dependabot[bot] in #5443
+    - go: bump google.golang.org/grpc from 1.79.3 to 1.80.0 by
+      @dependabot[bot] in #5444
+    - go: bump the k8s group across 2 directories with 7 updates by
+      @dependabot[bot] in #5447
+    - go: bump github.com/aws/aws-sdk-go-v2/config from 1.32.14 to
+      1.32.15 in /tools/eks-cleanup in the aws-sdk group across 1
+      directory by @dependabot[bot] in #5449
+    - go: bump the aws-sdk group across 1 directory with 3 updates
+      by @dependabot[bot] in #5458
+    - ci: bump actions/cache from 5.0.3 to 5.0.5 by
+      @dependabot[bot] in #5455
+    - ci: bump github/codeql-action from 4.35.1 to 4.35.2 by
+      @dependabot[bot] in #5456
+    - ci: bump actions/upload-artifact from 7.0.0 to 7.0.1 by
+      @dependabot[bot] in #5454
+    - Dockerfiles: Bump debian from 4724b8c to f9c6a2f in
+      /Dockerfiles by @dependabot[bot] in #5471
+    - go: bump the docker group across 1 directory with 3 updates
+      by @dependabot[bot] in #5465
+    - ci: bump zizmorcore/zizmor-action from 0.5.2 to 0.5.3 by
+      @dependabot[bot] in #5481
+    - ci: bump sigstore/cosign-installer from 4.1.0 to 4.1.1 by
+      @dependabot[bot] in #5479
+    - go: bump github.com/Azure/go-ntlmssp from 0.1.0 to 0.1.1 by
+      @dependabot[bot] in #5482
+    - ci: bump docker/build-push-action from 7.0.0 to 7.1.0 by
+      @dependabot[bot] in #5490
+
+-------------------------------------------------------------------
 Thu Apr 23 19:19:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.51.1:
