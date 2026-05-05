@@ -1,0 +1,12 @@
+<package name="python-owlrl" project="openSUSE:Factory">
+  <title>A simple implementation of the OWL2 RL Profile, as well as a basic RDFS inference, on top of RDFLib. Based mechanical forward chaining.</title>
+  <description>A simple implementation of the OWL2 RL Profile, as well as a basic RDFS inference, on top of RDFLib, based on forward chaining.
+
+This package is a Python library that also contains a couple of scripts:
+
+scripts/RDFConvertService: a CGI script to invoke the library. It may have to be adapted to the local server setup.
+
+scripts/owlrl: a script that can be run locally on to transform a file into RDF (on the standard output). Run the script with -h to get the available flags.
+</description>
+  <url>https://pypi.org/project/owlrl/</url>
+</package>
