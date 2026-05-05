@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 30 15:26:14 UTC 2026 - Kyle Scheuing <kyle@kylescheuing.com>
+
+- Update to version 1.1.0:
+  * feat: add line-by-line mode as default, stream without loading files into memory (#328)
+  * Upgrade assert_cmd
+  * Fix clippy warnings
+  * Retain file ownership on atomic writes (#326)
+  * xtask - clean up
+  * fix(manpage): add missing single quotes in example
+  * fix(#313): Replace unescape crate with more lenient implementation
+  * deps: bump libc from 0.2.149 to 0.2.155
+- Add man page
+
+-------------------------------------------------------------------
 Thu Feb  8 01:15:11 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Cleanup install section. No need to use mkdir when `-T` flag exists.

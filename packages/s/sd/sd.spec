@@ -1,7 +1,7 @@
 #
 # spec file for package sd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sd
-Version:        1.0.0+g0
+Version:        1.1.0
 Release:        0
 Summary:        Intuitive find & replace CLI
 URL:            https://github.com/chmln/sd
@@ -66,10 +66,12 @@ Bash command-line completion support for %{name}.
 %autosetup -a1
 
 %build
-%{cargo_build}
+%{cargo_build} --bin sd
 
 %install
-%{cargo_install}
+%{cargo_install -p sd-cli}
+
+install -Dm644 gen/sd.1 %{buildroot}/%{_mandir}/man1/%{name}.1
 
 # Zsh completion
 install -Dpm644 -T gen/completions/_sd %{buildroot}%{_datadir}/zsh/site-functions/_sd
@@ -84,6 +86,7 @@ install -Dpm644 -T gen/completions/sd.bash %{buildroot}%{_datadir}/bash-completi
 %license LICENSE
 %doc README.md CHANGELOG.md
 %{_bindir}/sd
+%{_mandir}/man1/%{name}.1%{ext_man}
 
 %files bash-completion
 %dir %{_datadir}/bash-completion
