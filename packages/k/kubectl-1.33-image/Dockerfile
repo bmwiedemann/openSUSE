@@ -30,6 +30,8 @@ RUN set -euo pipefail; ln -s /usr/bin/helm3 /target/usr/local/bin/helm
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
+    t=$(mktemp -d); mv /target/usr/lib/sysimage/rpm/Packages.db $t; rpmdb --rebuilddb --dbpath=$t; \
+    rm /target/usr/lib/sysimage/rpm/*.db && mv $t/Packages.db /target/usr/lib/sysimage/rpm/; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
@@ -42,6 +44,7 @@ RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
 RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /target/etc/shadow
 FROM opensuse/bci/bci-micro:latest
 COPY --from=builder /target /
+RUN set -euo pipefail; rm -vf /usr/lib/sysimage/rpm/Index.db
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.kubectl
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed kubectl"
@@ -61,5 +64,6 @@ LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 LABEL io.artifacthub.package.logo-url="https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png"
 ENTRYPOINT ["kubectl"]
 
-RUN set -euo pipefail; echo "user:x:999:100:User for CLI:/home/user:/usr/sbin/nologin" >> /etc/passwd && install -d -o 999 -g 100 -m 0755 /home/user
+RUN set -euo pipefail; echo "user:x:999:100:User for CLI:/home/user:/usr/sbin/nologin" >> /etc/passwd && install -d -o 999 -g 100 -m 0755 /home/user /home/user/.kube
+
 WORKDIR /home/user

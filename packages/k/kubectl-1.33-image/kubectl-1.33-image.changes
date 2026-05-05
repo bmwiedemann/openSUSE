@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  4 13:01:20 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- improve handling for running as non-root
+
+-------------------------------------------------------------------
+Thu Mar 26 12:42:13 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- rebuild rpm database to make it reproducible
+
+-------------------------------------------------------------------
 Tue Mar 10 21:46:15 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove move files that make containers unreproducible
