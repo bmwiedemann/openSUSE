@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mbstrdecoder
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Multi-byte character string decoder
 License:        MIT
