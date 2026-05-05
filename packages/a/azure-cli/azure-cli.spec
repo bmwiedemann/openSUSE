@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.85.0
+Version:        2.86.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -76,12 +76,12 @@ Requires:       %{pythons}-azure-mgmt-batchai >= 7.0.0b1
 Requires:       %{pythons}-azure-mgmt-billing >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-botservice >= 2.0.0b3
 Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
-Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 14.1.0
+Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 15.0.0~b1
 Requires:       %{pythons}-azure-mgmt-compute >= 34.1.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 15.1.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistrytasks >= 1.0.0~b1
-Requires:       %{pythons}-azure-mgmt-containerservice >= 41.0.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 41.1.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.9.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
@@ -132,11 +132,11 @@ Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
 Requires:       %{pythons}-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-web >= 9.0.0
 Requires:       %{pythons}-azure-monitor-query >= 1.2.0
-Requires:       %{pythons}-azure-storage-blob >= 12.28.0~b1
+Requires:       %{pythons}-azure-storage-blob >= 12.29.0~b1
 Requires:       %{pythons}-azure-storage-common >= 1.4
-Requires:       %{pythons}-azure-storage-file-datalake >= 12.23.0~b1
-Requires:       %{pythons}-azure-storage-file-share >= 12.24.0~b1
-Requires:       %{pythons}-azure-storage-queue >= 12.15.0~b1
+Requires:       %{pythons}-azure-storage-file-datalake >= 12.24.0~b1
+Requires:       %{pythons}-azure-storage-file-share >= 12.25.0~b1
+Requires:       %{pythons}-azure-storage-queue >= 12.16.0~b1
 Requires:       %{pythons}-azure-synapse-accesscontrol >= 0.5.0
 Requires:       %{pythons}-azure-synapse-artifacts >= 0.22.0
 Requires:       %{pythons}-azure-synapse-managedprivateendpoints >= 0.4.0
