@@ -2824,4 +2824,13 @@
   + device-x11: Fall back on raw key events if there is no focus.</comment>
     <requestid>1349697</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>948b74234897b08d21e562719bf2449c</srcmd5>
+    <version>2.60.3</version>
+    <time>1777986883</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.60.3:
+  + libatspi: Fix another NULL pointer dereference.</comment>
+    <requestid>1350830</requestid>
+  </revision>
 </revisionlist>
