@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May  4 16:17:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.1:
+  * Consolidate ClockMeter code into DateTimeMeter code
+  * Linux/PCP: Replace M_SHARE (SHR) with M_PRIV (PRIV) in
+    default Main screen columns
+  * PCP: Fix dynamic screen column (instance) sorting (incorrect
+    cast and field offsets)
+  * PCP: Fix units used when printing M_PRIV memory column values
+  * PCP: Add Darwin swap metric values and a fallback on Linux
+    for SwapMeter
+  * Fix null pointer dereference in actionBacktrace() (GCC LTO
+    -O2 -flto, Ubuntu 24.04)
+  * Make search function activate following on find consistently
+  * Make a panel click abort the search function
+
+-------------------------------------------------------------------
 Tue Apr 14 13:46:26 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - enable backtrace and demangling
@@ -365,13 +382,13 @@ Tue Nov 30 10:44:12 UTC 2021 - Michael Ströder <michael@stroeder.com>
 Mon Nov  1 10:32:29 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 -  Update to version 3.1.1 (boo#1192144):
-   * See https://github.com/htop-dev/htop/compare/3.1.0...3.1.1 
+   * See https://github.com/htop-dev/htop/compare/3.1.0...3.1.1
 
 -------------------------------------------------------------------
 Thu Sep 23 09:29:57 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Enable linux capabilities
-- Drop unsupported configure options 
+- Drop unsupported configure options
 
 -------------------------------------------------------------------
 Wed Sep 22 04:13:13 UTC 2021 - kh Lai <dlshcbmuipmam@hotmail.com>
@@ -772,7 +789,7 @@ Mon Oct 24 07:43:11 UTC 2016 - mpluskal@suse.com
 Sat Jul 23 08:06:45 UTC 2016 - mpluskal@suse.com
 
 - Update to version 2.0.2:
-  * Mac OS X: stop trying when task_for_pid fails for a process, 
+  * Mac OS X: stop trying when task_for_pid fails for a process,
     stops spamming logs with errors.
   * Add Ctrl+A and Ctrl+E to go to beginning and end of line
   * FreeBSD: fixes for CPU calculation
@@ -781,7 +798,7 @@ Sat Jul 23 08:06:45 UTC 2016 - mpluskal@suse.com
   * Improvement for reproducible builds.
   * BUGFIX: Fix behavior of Alt-key combinations
   * Various code tweaks and cleanups
-- Drop htop-2.0.1-fix-escdelay-usage.patch 
+- Drop htop-2.0.1-fix-escdelay-usage.patch
 - Update htop-desktop-file-fix-thoenig-01.patch
 - Drop some build dependencies
 - Enable taskstats
@@ -797,9 +814,9 @@ Sun May 22 15:23:24 UTC 2016 - develop7@develop7.info
 Fri May 13 18:15:43 UTC 2016 - develop7@develop7.info
 
 - Update to v2.0.1
-  * OpenBSD: Various fixes and improvements (thanks to Michael McConville and 
+  * OpenBSD: Various fixes and improvements (thanks to Michael McConville and
     Juan Francisco Cantero Hurtado)
-  * FreeBSD: fix CPU and memory readings (thanks to Tim Creech, Hung-Yi Chen, 
+  * FreeBSD: fix CPU and memory readings (thanks to Tim Creech, Hung-Yi Chen,
     Bernard Spil, Greg V)
   * FreeBSD: add battery support (thanks to Greg V)
   * Linux: Retain last-obtained name of a zombie process
@@ -871,7 +888,7 @@ Mon May 19 18:57:58 UTC 2014 - dmitry_r@opensuse.org
 -------------------------------------------------------------------
 Thu Dec 26 21:02:27 UTC 2013 - crrodriguez@opensuse.org
 
-- improve autools build, we do not want packages 
+- improve autools build, we do not want packages
   using, for example std=c99, instead determine the
   latest C standard with gnu extensions using autoconf macros.
   (htop-stdgnu.patch)
@@ -884,7 +901,7 @@ Tue Nov 26 13:28:46 UTC 2013 - jengelh@inai.de
 -------------------------------------------------------------------
 Mon Nov 12 12:11:20 UTC 2012 - puzel@suse.com
 
-- update to htop-1.0.2 
+- update to htop-1.0.2
   * Add IO priority support ('i' key)
   * Avoid deleting .htoprc if it is a symlink
   * Fail gracefully when /proc is not mounted
@@ -897,7 +914,7 @@ Mon Nov 12 12:11:20 UTC 2012 - puzel@suse.com
 Fri Feb 17 06:37:59 UTC 2012 - puzel@suse.com
 
 - update to htop-1.0.1 (bugfix release)
-  * respecting $XDG_CONFIG_HOME 
+  * respecting $XDG_CONFIG_HOME
     (thanks to Hadzhimurad Ustarkhan for the suggestion.)
   * Safer behavior on the kill screen, to make it harder to kill
     the wrong process.
@@ -910,7 +927,7 @@ Fri Feb 17 06:37:59 UTC 2012 - puzel@suse.com
 -------------------------------------------------------------------
 Thu Nov 24 16:27:15 UTC 2011 - puzel@suse.com
 
-- update to htop-1.0 
+- update to htop-1.0
   * Performance improvements
   * Support for splitting CPU meters into two or four columns
   * Switch from PLPA, which is now deprecated, to HWLOC.
@@ -933,7 +950,7 @@ Thu Nov 24 16:27:15 UTC 2011 - puzel@suse.com
 -------------------------------------------------------------------
 Sat Jul 30 17:25:43 UTC 2011 - crrodriguez@opensuse.org
 
-- Use --enable-unicode and switch to ncurses ABI v6 
+- Use --enable-unicode and switch to ncurses ABI v6
 
 -------------------------------------------------------------------
 Mon Nov 29 09:54:23 UTC 2010 - puzel@novell.com
@@ -994,7 +1011,7 @@ Tue Jun  2 12:54:34 CEST 2009 - puzel@suse.cz
 -------------------------------------------------------------------
 Fri Nov 21 10:57:51 CET 2008 - thoenig@suse.de
 
-- add python to build requires 
+- add python to build requires
 
 -------------------------------------------------------------------
 Fri Nov 21 09:45:29 CET 2008 - thoenig@suse.de
@@ -1013,7 +1030,7 @@ Tue Sep 23 19:15:12 CEST 2008 - thoenig@suse.de
 -------------------------------------------------------------------
 Thu Jul 31 13:57:32 CEST 2008 - puzel@suse.cz
 
-- configure with --enable-taskstats to enable 
+- configure with --enable-taskstats to enable
   per-processes IO statistics
 - use %configure and %makeinstall macros
 

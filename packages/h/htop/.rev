@@ -687,4 +687,38 @@
     <comment></comment>
     <requestid>1347638</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>b449100b1dfff50706b85d244d805ccc</srcmd5>
+    <version>3.5.1</version>
+    <time>1777986929</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.5.1:
+  * Consolidate ClockMeter code into DateTimeMeter code
+  * Linux/PCP: Replace M_SHARE (SHR) with M_PRIV (PRIV) in
+    default Main screen columns
+  * PCP: Fix dynamic screen column (instance) sorting (incorrect
+    cast and field offsets)
+  * PCP: Fix units used when printing M_PRIV memory column values
+  * PCP: Add Darwin swap metric values and a fallback on Linux
+    for SwapMeter
+  * Fix null pointer dereference in actionBacktrace() (GCC LTO
+    -O2 -flto, Ubuntu 24.04)
+  * Make search function activate following on find consistently
+  * Make a panel click abort the search function
+
+   * See https://github.com/htop-dev/htop/compare/3.1.0...3.1.1
+- Drop unsupported configure options
+  * Mac OS X: stop trying when task_for_pid fails for a process,
+- Drop htop-2.0.1-fix-escdelay-usage.patch
+  * OpenBSD: Various fixes and improvements (thanks to Michael McConville and
+  * FreeBSD: fix CPU and memory readings (thanks to Tim Creech, Hung-Yi Chen,
+- improve autools build, we do not want packages
+- update to htop-1.0.2
+  * respecting $XDG_CONFIG_HOME
+- update to htop-1.0
+- Use --enable-unicode and switch to ncurses ABI v6
+- add python to build requires
+- configure with --enable-taskstats to enable</comment>
+    <requestid>1350761</requestid>
+  </revision>
 </revisionlist>
