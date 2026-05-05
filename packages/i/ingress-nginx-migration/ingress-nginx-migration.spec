@@ -17,14 +17,15 @@
 
 
 Name:           ingress-nginx-migration
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        Analyze Kubernetes NGINX Ingress resources to help with migration to Traefik
 License:        Apache-2.0
 URL:            https://ingressnginxmigration.org
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.24
+# 16.0 fails with go.mod requires go >= 1.26.0 (running go 1.26rc3; GOTOOLCHAIN=local)
+BuildRequires:  go1.26 >= 1.26.0
 
 %description
 The Ingress NGINX Migration is a tool that analyzes Kubernetes NGINX Ingress

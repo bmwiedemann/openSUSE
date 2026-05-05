@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon May 04 16:38:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.0:
+  * Add e2e test for ExternalName service
+  * Display invalid annotations
+  * Fix e2e tests
+  * Add more tests for custom-headers annotation
+  * Add more tests for app-root annotation
+  * Add new rewrite target tests
+  * Add new TLS e2e tests
+
+-------------------------------------------------------------------
+Wed Mar 25 06:00:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.0:
+  * Attach annotations to a traefik version
+  * New annotations support
+  * Add e2e tests
+  * feat: upgrade go version + dependencies
+  * feat: support oidc provider
+  * chore: Improve README structure
+  * chore: pin GitHub Actions to SHA hashes for supply chain
+    security
+  * Improve share report documentation
+  * Add screenshot to Ingress NGINX Migration readme
+
+-------------------------------------------------------------------
 Tue Jan 13 09:25:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package ingress-nginx-migration: tool that analyzes
