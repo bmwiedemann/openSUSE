@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Apr 27 07:04:48 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.36.0:
+  * bumpo to release version of 1.36
+  * fix typo: intead -> instead
+  * Add SergeyKanzhelev and tallclair to sig-node-approvers
+  * Bump crate-ci/typos from 1.45.0 to 1.45.1
+  * Bump actions/cache from 5.0.4 to 5.0.5
+  * Bump actions/upload-artifact from 7.0.0 to 7.0.1
+  * Bump k8s.io dependencies to v0.36.0-rc.0
+  * more gitignore
+  * bump go tp 1.26.2
+  * Bump crate-ci/typos from 1.44.0 to 1.45.0
+  * Bump google.golang.org/grpc from 1.79.3 to 1.80.0 in the gomod group
+  * Bump actions/setup-go from 6.3.0 to 6.4.0
+  * validate: add KubernetesPodUIDLabel to container attributes test
+  * validate: use subset checks for labels and annotations
+  * removed deprecated TODO
+  * Use k8s v0.36.0-beta.0
+  * Remediate GHSA-6g7g-w4f8-9c9x (bummp jsonparser to 1.1.2)
+  * Remediate CVE-2026-33186 (bump grpc to 1.79.3)
+  * validate: add conformance tests for attribute preservation
+  * Revert "Disable runc integration tests due to AppArmor issue"
+  * adopt the latest cri client
+  * Bump actions/cache from 5.0.3 to 5.0.4
+  * feat: add prettier validation to Makefile and AGENTS.md
+  * crictl: replace utilyaml with sigs.k8s.io/yaml
+  * Add verify rule to Makefile
+  * created a local copy of AggregateGoroutines
+  * start using k8s.io/streaming
+  * use latest cri client with the logger used from context
+  * Bump ncipollo/release-action from 1.20.0 to 1.21.0
+  * add context to critest
+  * image ID consistency test
+  * ci: Skip exec tty test on Windows
+  * Bump the gomod group across 1 directory with 9 updates
+  * Bump the gomod group with 4 updates
+  * Bump crate-ci/typos from 1.43.5 to 1.44.0
+  * Bump the gomod group with 7 updates
+  * Bump actions/upload-artifact from 6.0.0 to 7.0.0
+  * Bump actions/setup-go from 6.2.0 to 6.3.0
+  * feat(critest): Add image manager consistency and idempotency tests
+  * first iteration of AGENTS.md
+  * Update golangci-lint to v2.10.1 and fix lint issues
+  * Bump github.com/onsi/gomega from 1.39.0 to 1.39.1 in the gomod group
+  * Bump the gomod group with 16 updates
+  * Bump crate-ci/typos from 1.43.4 to 1.43.5
+  * bump opentelemetry dependencies to latest
+  * Bump crate-ci/typos from 1.43.3 to 1.43.4
+  * Bump crate-ci/typos from 1.43.2 to 1.43.3
+  * Bump crate-ci/typos from 1.43.1 to 1.43.2
+  * Bump actions/cache from 5.0.2 to 5.0.3
+  * Bump crate-ci/typos from 1.42.3 to 1.43.1
+  * Make ginkgo less verbose
+  * Bump crate-ci/typos from 1.42.2 to 1.42.3
+  * Bump crate-ci/typos from 1.42.1 to 1.42.2
+  * Bump actions/checkout from 6.0.1 to 6.0.2
+  * Bump crate-ci/typos from 1.42.0 to 1.42.1
+  * Bump actions/cache from 5.0.1 to 5.0.2
+  * switch to GA bits of k8s API
+  * Add warning and documentation for crictl rmi multi-tag behavior
+  * Bump actions/cache from 4.3.0 to 5.0.1
+  * Bump actions/upload-artifact from 5.0.0 to 6.0.0
+  * Bump crate-ci/typos from 1.40.0 to 1.42.0
+  * Bump actions/setup-go from 6.1.0 to 6.2.0
+  * Fix CNI installation grep pattern for containerd 1.7
+  * special handling of containerd 1.7 CNI installation
+  * Update version
+
+-------------------------------------------------------------------
 Fri Feb 20 12:19:47 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.35.0:
