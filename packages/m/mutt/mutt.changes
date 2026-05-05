@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue May  5 08:07:58 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to mutt 2.3.2 (Bug fix release)
+  * Mutt 2.3.2 was released on April 26, 2026.
+    It is a bug-fix release, fixing an assortment of issues,
+    including a possible NULL dereference in the GPGME code.
+  * Mutt 2.3.1 was released on March 20, 2026.
+    It is a bug-fix release, fixing a build issue when configured
+    --without-wc-funcs, and a bug in the folder browser.
+  * Mutt 2.3.0 was released on January 25, 2026.
+    It release has new features and bug fixes.
+  + $socket_receive_timeout and $socket_send_timeout cause mutt to
+    timeout on a network read/write operation, respectively.  These
+    could be useful if you have an unreliable connection and
+    frequently find mutt gets stuck in a read.
+  ! The folder browser now differentiates browsing for a file versus a
+    mailbox.  For IMAP users, this means when attaching a file to an
+    email, mutt will browse your local computer by default.
+  ! <edit-label> no longer untags messages.  This is consistent with
+    other operations inside of mutt.
+  + $imap_reconnect_tries and $imap_reconnect_sleep control the number
+    of times mutt will try to reconnect when a connection is lost, and
+    how long to sleep between each retry.
+- Upgrading from Mutt 2.2.16 to 2.3.2 is a critical security jump to
+  fix the bugs boo#1263892, boo#1263893, boo#1263894, boo#1263895,
+  boo#1263896, and boo#1263897:
+  * CVE-2026-43862: Fixes a NULL pointer dereference in the GPGME
+    signature summary code that could crash the application.
+  * CVE-2026-43863 & CVE-2026-43864: Prevents crashes and potential
+    memory issues when handling IMAP AUTH-CRAM MD5 authentication.
+  * CVE-2026-43861 & CVE-2026-43860: Addresses issues with embedded
+    NUL characters in URL decoding, which could lead to bypasses or crashes.
+  * CVE-2026-43859: Fixes a security level size check in GSSAPI
+    authentication to prevent buffer-related errors.
+- Remove mutt-1.10.1-imap.patch as it seems to solved upstream now
+
+-------------------------------------------------------------------
 Wed Jan 21 10:50:54 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - In Leap 15.5/15.7 latest postfix is currently broken, let's

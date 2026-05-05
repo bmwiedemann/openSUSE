@@ -20,7 +20,7 @@
 %bcond_with    mutt_openssl
 %bcond_without mutt_gnutls
 Name:           mutt
-Version:        2.2.16
+Version:        2.3.2
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
@@ -55,8 +55,6 @@ Patch16:        mutt-1.5.23-carriage-return.path
 Patch18:        mutt-1.5.21-mailcap.diff
 # PATCH-FIX-SUSE: bsc#907453 - CVE-2014-9116: mutt: heap-based buffer overflow in mutt_substrdup()
 Patch19:        bsc907453-CVE-2014-9116-jessie.patch
-# PATCH-ENHANCE-SUSE: allow to list current imap folders
-Patch20:        mutt-1.10.1-imap.patch
 # PATCH-ENHANCE-SUSE: boo#1156477 - Mutt has an option to ask before quitting on ^C but quits immediately on ^4
 Patch21:        mutt-Fix-SIGQUIT-handling.patch
 BuildRequires:  autoconf
@@ -163,7 +161,6 @@ Provides translations to the package mutt.
 %patch -P 16  -b .crlf
 %patch -P 18  -b .mailcap
 %patch -P 19  -b .cvw2014.9116
-%patch -P 20  -b .imap
 %patch -P 21  -b .quit
 
 cp %{SOURCE2} .
