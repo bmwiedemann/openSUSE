@@ -631,4 +631,12 @@
 - Bump default to 17 for SLE-15-SP7.</comment>
     <requestid>1307156</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>45271c84471e050e6f96df5d76545b5f</srcmd5>
+    <version>18</version>
+    <time>1777986886</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1350845</requestid>
+  </revision>
 </revisionlist>

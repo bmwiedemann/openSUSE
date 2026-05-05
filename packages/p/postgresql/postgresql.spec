@@ -17,7 +17,54 @@
 
 
 %define pgmajor 18
-%define defaultpackage postgresql18
+
+# SLE-12
+%if 0%{?sle_version} >= 120200 && 0%{?sle_version} < 150000
+%define          defaultpackage postgresql14
+%endif
+
+# SLE-15-SP2
+%if 0%{?sle_version} == 150200
+%define          defaultpackage postgresql12
+%endif
+
+# SLE-15-SP3
+%if 0%{?sle_version} == 150300
+%define          defaultpackage postgresql13
+%endif
+
+# SLE-15-SP4
+%if 0%{?sle_version} == 150400
+%define          defaultpackage postgresql14
+%endif
+
+# SLE-15-SP5
+%if 0%{?sle_version} == 150500
+%define          defaultpackage postgresql15
+%endif
+
+# SLE-15-SP6
+%if 0%{?sle_version} == 150600
+%define          defaultpackage postgresql16
+%endif
+
+# SLE-15-SP7
+%if 0%{?sle_version} == 150700
+%define          defaultpackage postgresql17
+%endif
+
+# SLE-16.0
+%if 0%{?suse_version} == 1600
+%define         defaultpackage postgresql15
+%endif
+
+# SLE-16.1 and newer
+%if 0%{?suse_version} >= 1610
+%define         defaultpackage postgresql18
+%define         packaging_level 42
+%else
+%define         packaging_level %pgmajor
+%endif
 
 %if ! %{defined _rpmmacrodir}
 %define _rpmmacrodir %{_rpmconfigdir}/macros.d
@@ -57,9 +104,27 @@ Version:        %pgmajor
 Release:        0
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Provides:       postgresql-noarch = %version-%release
+Provides:       postgresql-noarch = %packaging_level
 Requires:       postgresql-implementation
+%if %packaging_level >= 42
+%bcond_without alts
+Provides:       pg_alts = %{version}
+Conflicts:      postgresql-contrib-implementation < %packaging_level
+Conflicts:      postgresql-devel-implementation < %packaging_level
+Conflicts:      postgresql-docs-implementation < %packaging_level
+Conflicts:      postgresql-implementation < %packaging_level
+Conflicts:      postgresql-llvmjit-devel-implementation < %packaging_level
+Conflicts:      postgresql-llvmjit-implementation < %packaging_level
+Conflicts:      postgresql-plperl-implementation < %packaging_level
+Conflicts:      postgresql-plpython-implementation < %packaging_level
+Conflicts:      postgresql-pltcl-implementation < %packaging_level
+Conflicts:      postgresql-server-devel-implementation < %packaging_level
+Conflicts:      postgresql-server-implementation < %packaging_level
+Conflicts:      postgresql-test-implementation < %packaging_level
+%else
+%bcond_with alts
 Requires:       update-alternatives
+%endif
 Recommends:     %defaultpackage
 # In June 2020 we changed the package layout for PostgreSQL and
 # conflict with older releases to get a clean cut-over.
@@ -87,6 +152,7 @@ Source8:        postgresql-extensions-macros
 Source9:        postgresql.sysusers
 Source10:       postgresql-README.SUSE
 Source11:       postgresql-README
+Source12:       pg_alts
 
 %if 0%{?suse_version} > 1100
     %define fwdir /etc/sysconfig/SuSEfirewall2.d/services
@@ -111,7 +177,8 @@ package.
 %package server
 Summary:        The Programs Needed to Create and Run a PostgreSQL Server
 Group:          Productivity/Databases/Servers
-Provides:       postgresql-server-noarch = %version-%release
+Provides:       postgresql-server-noarch = %packaging_level
+Requires:       postgresql-noarch = %packaging_level
 Requires:       postgresql = %version-%release
 Requires:       postgresql-server-implementation
 Recommends:     %defaultpackage-server
@@ -147,7 +214,8 @@ PostgreSQL databases.
 %package server-devel
 Summary:        PostgreSQL server development header files and utilities
 Group:          Development/Libraries/C and C++
-Provides:       postgresql-server-devel-noarch = %version-%release
+Provides:       postgresql-server-devel-noarch = %packaging_level
+Requires:       postgresql-noarch = %packaging_level
 Requires:       postgresql = %version-%release
 Requires:       postgresql-server-devel-implementation
 Recommends:     %defaultpackage-server-devel
@@ -165,7 +233,8 @@ applications, see the %defaultpackage-devel package.
 %package llvmjit
 Summary:        Just-in-time compilation support for PostgreSQL
 Group:          Productivity/Databases/Servers
-Provides:       postgresql-llvmjit-noarch = %version-%release
+Provides:       postgresql-llvmjit-noarch = %packaging_level
+Requires:       postgresql-noarch = %packaging_level
 Requires:       postgresql = %version-%release
 Requires:       postgresql-llvmjit-implementation
 Recommends:     %defaultpackage-llvmjit
@@ -184,7 +253,8 @@ queries.
 %package llvmjit-devel
 Summary:        Helper package to pull all dependencies to build with llvm support
 Group:          Productivity/Databases/Servers
-Provides:       postgresql-llvmjit-devel-noarch = %version-%release
+Provides:       postgresql-llvmjit-devel-noarch = %packaging_level
+Requires:       postgresql-noarch = %packaging_level
 Requires:       postgresql = %version-%release
 Requires:       postgresql-llvmjit-devel-implementation
 Requires:       postgresql-server-devel-noarch
@@ -203,10 +273,11 @@ Otherwise it will just pull the postgresqlXY-server-devel package
 %package test
 Summary:        The test suite for PostgreSQL
 Group:          Productivity/Databases/Servers
-Provides:       postgresql-test-noarch = %version-%release
+Provides:       postgresql-test-noarch = %packaging_level
+Requires:       postgresql-noarch = %packaging_level
 Requires:       postgresql = %version-%release
 Requires:       postgresql-test-implementation
-Recommends:     %defaultpackage-implementation
+Recommends:     %defaultpackage-test
 
 %description test
 This package contains the sources and pre-built binaries of various
@@ -216,7 +287,7 @@ regression tests and benchmarks.
 %package docs
 Summary:        HTML Documentation for PostgreSQL
 Group:          Productivity/Databases/Tools
-Provides:       postgresql-docs-noarch = %version-%release
+Provides:       postgresql-docs-noarch = %packaging_level
 Requires:       postgresql-docs-implementation
 Recommends:     %defaultpackage-docs
 
@@ -234,7 +305,8 @@ postgresql package.
 %package contrib
 Summary:        Contributed Extensions and Additions to PostgreSQL
 Group:          Productivity/Databases/Tools
-Provides:       postgresql-contrib-noarch = %version-%release
+Provides:       postgresql-contrib-noarch = %packaging_level
+Requires:       postgresql-noarch = %packaging_level
 Requires:       postgresql = %version-%release
 Requires:       postgresql-contrib-implementation
 Recommends:     %defaultpackage-contrib
@@ -255,7 +327,8 @@ Documentation for the modules contained in this package can be found in
 %package devel
 Summary:        PostgreSQL development header files and libraries
 Group:          Development/Libraries/C and C++
-Provides:       postgresql-devel-noarch = %version-%release
+Provides:       postgresql-devel-noarch = %packaging_level
+Requires:       postgresql-noarch = %packaging_level
 Provides:       pkgconfig(libecpg) = %{version}-%{release}
 Provides:       pkgconfig(libecpg_compat) = %{version}-%{release}
 Provides:       pkgconfig(libpgtypes) = %{version}-%{release}
@@ -279,7 +352,8 @@ which will interact with a PostgreSQL server.
 %package plperl
 Summary:        The PL/Tcl, PL/Perl, and  PL/Python procedural languages for PostgreSQL
 Group:          Productivity/Databases/Servers
-Provides:       postgresql-plperl-noarch = %version-%release
+Provides:       postgresql-plperl-noarch = %packaging_level
+Requires:       postgresql-noarch = %packaging_level
 Requires:       postgresql = %version-%release
 Requires:       postgresql-plperl-implementation
 Recommends:     %defaultpackage-plperl
@@ -297,7 +371,8 @@ functions, and triggers.
 %package plpython
 Summary:        The PL/Python Procedural Languages for PostgreSQL
 Group:          Productivity/Databases/Servers
-Provides:       postgresql-plpython-noarch = %version-%release
+Provides:       postgresql-plpython-noarch = %packaging_level
+Requires:       postgresql-noarch = %packaging_level
 Requires:       postgresql = %version-%release
 Requires:       postgresql-plpython-implementation
 Recommends:     %defaultpackage-plpython
@@ -315,7 +390,8 @@ functions, and triggers.
 %package pltcl
 Summary:        PL/Tcl Procedural Language for PostgreSQL
 Group:          Productivity/Databases/Tools
-Provides:       postgresql-pltcl-noarch = %version-%release
+Provides:       postgresql-pltcl-noarch = %packaging_level
+Requires:       postgresql-noarch = %packaging_level
 Requires:       postgresql = %version-%release
 Requires:       postgresql-pltcl-implementation
 Recommends:     %defaultpackage-pltcl
@@ -331,6 +407,12 @@ With thie module one can use Tcl to write stored procedures, functions,
 and triggers.
 
 %prep
+
+: '*******************************'
+: '**    %%suse_version = %{?suse_version}   **'
+%{?sle_version:: '**     %%sle_version = %{sle_version} **'}
+: '** %%packaging_level = %packaging_level     **'
+: '*******************************'
 
 %build
 
@@ -355,7 +437,11 @@ install -m644 %{S:2} %buildroot%fwdir/%fwname
 install -m755 -d %buildroot/usr/sbin
 
 install -m755 -d %buildroot/usr/share/postgresql
-install -m755 %{S:7} %buildroot/usr/share/postgresql/install-alternatives
+%if %{with alts}
+sed -i '2a# This script is disabled\nexit 0\n' %{S:7}
+install -m755 %{S:12} %buildroot/usr/share/postgresql/pg_alts
+%endif
+install -m755 %{S:7}  %buildroot/usr/share/postgresql/install-alternatives
 
 %if %{with systemd}
 install -m644 %{S:5} %buildroot/usr/share/postgresql/bash_profile
@@ -383,6 +469,11 @@ install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{name}-server.conf
 
 %define eflag /run/postgresql-was-enabled
 %define aflag /run/postgresql-was-running
+
+%pre
+%if %{with alts}
+rm -f /var/lib/alternatives/postgresql
+%endif
 
 %if %{with sysusers}
 %pre server -f %{name}-server.pre
@@ -475,6 +566,9 @@ fi
 %doc README.SUSE
 %dir /usr/share/postgresql
 /usr/share/postgresql/install-alternatives
+%if %{with alts}
+/usr/share/postgresql/pg_alts
+%endif
 
 %files server
 %defattr(-,root,root,-)

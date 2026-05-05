@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+# If the default version is not defined in the environment,
+# source the config file. If it is also not defined in the
+# config file, find the highest installed version
+#
+
+test -n "$PG_ALTS_DEBUG" && set -x
+
+BASEDIR=/usr/lib/postgresql
+
+if test -z "$POSTGRES_DEFAULTVERSION"; then
+    . /etc/sysconfig/postgresql
+fi
+if test -n "$POSTGRES_DEFAULTVERSION"; then
+    PGBINDIR=$BASEDIR$POSTGRES_DEFAULTVERSION/bin
+else
+    for DIR in $(ls -d $BASEDIR[1-8]?/bin); do
+        test -x $DIR/psql && PGBINDIR=$DIR
+    done
+fi
+
+BIN=$PGBINDIR/"${0##*/}"
+
+test -x $BIN && exec $BIN ${1+"$@"}
+
+echo "Cannot find a suitable executable for ${0##*/}."
+exit 1

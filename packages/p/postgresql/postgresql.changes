@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 10 13:55:24 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Get rid of update-alternatives and support immutable mode.
+  See README.SUSE for details. (bsc#1245862, jsc#PED-14820)
+
+-------------------------------------------------------------------
 Fri May  9 20:37:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Bump major and default to 18 for Factory and TW.

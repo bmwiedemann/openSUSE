@@ -8,30 +8,25 @@ OPTIONS=${POSTGRES_OPTIONS}
 INITDB_OPTS=${POSTGRES_INITDB_OPTS}
 PIDFILE=$DATADIR/postmaster.pid
 
-# 
 if test -r $DATADIR/PG_VERSION ; then
     DATA_VERSION=$(cat $DATADIR/PG_VERSION)
     POSTGRES=/usr/lib/postgresql$(echo -n $DATA_VERSION | tr -d .)/bin/postgres
 fi
-if test -x /usr/bin/postgres; then
-    ACTIVE=$(readlink -q -f /usr/bin/postgres)
-    test -z "$POSTGRES" && POSTGRES="$ACTIVE"
-fi
 if test -n "$DATA_VERSION"; then
-    if test -z "$ACTIVE" -o "$ACTIVE" != "$POSTGRES"; then
-	echo " Your database files were created by PostgreSQL version $DATA_VERSION."
-	if test -x "$POSTGRES"; then
-	    echo " Using the executables in $(dirname $POSTGRES)."
-	else
-	    echo " Could not find executables for this version."
-	    echo " Please install the PostgreSQL server package for version $DATA_VERSION."
-	fi
+    echo " Your database files were created by PostgreSQL version $DATA_VERSION."
+    if test -x "$POSTGRES"; then
+        echo " Using the executables in $(dirname $POSTGRES)."
+    else
+        echo " Could not find executables for this version."
+        echo " Please install the postgresql$DATA_VERSION-server package."
+	exit 1
     fi
-elif test -z "$ACTIVE"; then
-    echo " Cannot find an active PostgreSQL server binary. Please install one of the PostgreSQL"
-    echo " server packages or activate an already installed version using update-alternatives."
+else
+    POSTGRES=/usr/bin/postgres
 fi
 if test ! -x "$POSTGRES"; then
+    echo " Cannot find an active PostgreSQL server binary. Please install one of the PostgreSQL"
+    echo " server packages or activate an already installed version using ###-FIXME-###."
     exit 1
 fi
 BINDIR=$(dirname $POSTGRES)

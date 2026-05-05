@@ -15,10 +15,19 @@ postgresql15-contrib.
 
 Inside the packages the files are moved from their standard locations
 to a versioned location such as /usr/lib/postgresql14/bin or
-/usr/lib/postgresql15/bin to avoid file conflicts. The
+/usr/lib/postgresql15/bin to avoid file conflicts.
+
+For SUSE Linux Enterprise Server up to version 16.0 the
 update-alternatives mechanism is used to create and maintain symbolic
 links that cause one version (by default the highest installed
 version) to re-appear in the standard locations.
+
+Starting from SLES 16.1 a different mechanism called pg_alts is being
+used that is more flexible and supports transactional updates. By
+default it still picks the highest installed version, but that can be
+overridden system-wide by setting the variable POSTGRES_DEFAULTVERSION
+in /etc/sysconfig/postgresql or per user by setting an environment
+variable of the same name.
 
 There is also a set of unversioned packages (postgresql,
 postgresql-server, etc.) that contains some common stuff that is

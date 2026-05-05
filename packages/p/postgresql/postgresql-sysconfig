@@ -22,7 +22,6 @@ POSTGRES_DATADIR="~postgres/data"
 #
 POSTGRES_OPTIONS=""
 
-
 ## Path:           Applications/PostgreSQL
 ## Description:    The PostgreSQL Database System
 ## Type:           string()
@@ -65,3 +64,17 @@ POSTGRES_LANG=""
 # first time.
 #
 POSTGRES_INITDB_OPTS="--auth=ident"
+
+## Path:           Applications/PostgreSQL
+## Description:    The PostgreSQL Database System
+## Type:           string()
+## Default:        ""
+## ServiceRestart: ""
+#
+# When PostgreSQL gets started while no database cluster exists under
+# the directory stored in the POSTGRES_DATADIR variable, the initdb
+# tool gets called with that directory to initialize a new
+# cluster. This variable specifies the PostgreSQL version under which
+# the new database cluster will be initialized. If it is empty the
+# highest installed major version will be used.
+POSTGRES_DEFAULTVERSION=""
