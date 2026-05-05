@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  16 12:51:28 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
+
+- Change store root-path for selinux modules from /var/lib/selinux
+  to /etc (fixes bsc#1221342 PED-12492)
+
+-------------------------------------------------------------------
 Mon Mar  2 15:17:44 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
 
 - Don't own %{_localstatedir}/lib/selinux (PED-14772)

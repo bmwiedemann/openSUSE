@@ -673,4 +673,14 @@ Could not find any LGPL-2.1 &quot;only&quot; licensed files in the pacakge (forw
     <comment></comment>
     <requestid>1335876</requestid>
   </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>fe1004197d1af4138f6d0571a41fb1ee</srcmd5>
+    <version>3.10</version>
+    <time>1777986888</time>
+    <user>anag_factory</user>
+    <comment>/var/lib/selinux change. Please contact Zdenek Kubala in case of problems and also maybe sync up regarding publishing, thanks!
+
+Needs to go together with selinux-policy change</comment>
+    <requestid>1348497</requestid>
+  </revision>
 </revisionlist>

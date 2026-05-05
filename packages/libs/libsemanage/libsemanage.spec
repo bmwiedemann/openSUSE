@@ -71,6 +71,10 @@ Security.)
 Summary:        Configuration for the SELinux policy management library
 # before 3.1 the config file wasn't separated, so no parallel install is possible
 Group:          System/Libraries
+# PED-12492 (boo#1221342): selinux-policy needs to be able to Require the libsemanage package
+# that has the store-root set to /etc
+Provides:       %{name}-conf-storeroot-etc
+Conflicts:      (selinux-policy without selinux-policy-storeroot-etc)
 Obsoletes:      %{name}1 < 3.1
 
 %description conf
