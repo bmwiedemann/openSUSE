@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May  4 11:06:16 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Add device parameter to EncryptionProcess#finish_installation
+  (related to jsc#PED-10703).
+- 5.0.43
+
+-------------------------------------------------------------------
+Wed Mar 25 17:45:35 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-14507
+  - Removed reference to update-desktop-files from spec file
+  - 5.0.42
+-------------------------------------------------------------------
+Tue Mar 10 09:00:28 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-14507
+  - Removed reference to update-desktop-files from spec file
+  - 5.0.42
+-------------------------------------------------------------------
 Fri Mar  6 10:50:26 UTC 2026 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Added the needed infrastructure to specify what to do with the
@@ -309,7 +328,7 @@ Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 Wed Jul  5 13:42:12 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Ensure adding storage support software packages for MicroOS
-  which uses its custom partitions_proposal client, not the 
+  which uses its custom partitions_proposal client, not the
   standard inst_disk_proposal client (bsc#1212452)
   https://github.com/yast/yast-storage-ng/pull/1351
 - 4.6.12
