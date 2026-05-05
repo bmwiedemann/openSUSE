@@ -17,13 +17,12 @@
 
 
 Name:           rpcs3
-Version:        0.0.40~git20260310
+Version:        0.0.40~git20260505
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
 URL:            https://rpcs3.net
 Source0:        %{name}-%{version}.tar.xz
-Source1:        intel-ittapi.tar.xz
 Patch1:         fix-test-files.patch
 BuildRequires:  cmake >= 3.28.0
 BuildRequires:  gcc-c++
@@ -109,7 +108,7 @@ Recommends:     xpadneo
 An open-source PlayStation 3 emulator/debugger written in C++.
 
 %prep
-%autosetup -p1 -a 1
+%autosetup -p1
 
 #Generate Version Strings
 GIT_VERSION=$(echo %{version} | sed 's|.*git|git~|g')
@@ -127,20 +126,10 @@ echo "// This is a generated file.
 
 %build
 
-## llvm intel-ittapi workarounds
-
-# Work around git revision issues
-#sed -i -e 's:FATAL_ERROR:WARNING:g' llvm/lib/ExecutionEngine/IntelJITEvents/CMakeLists.txt
-
-# Fix paths
-mv intel-ittapi ittapi && mkdir intel-ittapi && mv ittapi intel-ittapi/
-export ITTAPI_DIR="$(pwd)/intel-ittapi"
-
 # we disable shared libraries because FAudio disables the target if
 # shared libraries are enabled
 
 %cmake \
-        -DITTAPI_SOURCE_DIR="${ITTAPI_DIR}" \
         -DUSE_SYSTEM_CURL=ON \
         -DUSE_SYSTEM_FFMPEG=ON \
         -DUSE_SYSTEM_LIBPNG=ON \

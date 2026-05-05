@@ -1212,4 +1212,397 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1339600</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>38e049756fdd61819a4e8fa6cd73cde9</srcmd5>
+    <version>0.0.40~git20260505</version>
+    <time>1777996741</time>
+    <user>anag_factory</user>
+    <comment>- Remove unneeded ittapi source module
+- Update to version 0.0.40~git20260505:
+  * fix minor issues with rpath logic
+  * add `/opt/homebrew` to prefix path instead
+  * macos: hack to fix homebrew rpath issues
+  * Update SDL to 3.4.8
+  * Update FAudio to 26.05
+  * Move multi-game ISO parsing code path to proper location
+  * Restore 0.85 compatibility for PS3 Binary Decryption
+  * Update MoltenVK and restore Game Mode support (as the relevant MVK regression has been fixed)
+  * game_list: Add multi-game collection support for ISO format discs
+  * Remove vm_ref.h
+  * Win: Update ffmpeg to 8.1
+  * Correct the MVK build config
+  * Update curl to 8.20.0
+  * Fix some warnings
+  * Qt: Add timeouts and abort logic to downloader
+  * ci: Bump docker version and use rpcs3 dropbox URL for vulkan SDK
+  * vk: Fix shader interpreter
+  * vk: Use bulk allocator for FP and VP constant blocks to reduce wastage
+  * vk: Use UBO for basic transform constants
+  * vk: Use UBO for vertex environment block
+  * rsx/vk: Implement bulk aligned allocator
+  * rsx: Handle edge case where window size falls outside memory range
+  * vk: Fix build on linux CI using outdated SDK
+  * vk: Fix UBO alignment mismatch on fragment constants binding
+  * vk: Use UBOs for critical per-fragment data
+  * CI: use dropbox for vulkan SDK installer
+  * vk/data-heap: Implement a caching sliding window buffer view system
+  * vk: Upgrade Vulkan SDK to 1.4.341
+  * rsx: Upgrade SPIRV generation to SPIRV 1.5 for vulkan.
+  * 3rdparty: Update glslang to release 16.2.0
+  * vk: Fix missing TRANSFER-&gt;FRAGMENT barrier for shadowed blocks
+  * vk: Simplify manual heap flush for shadowed blocks
+  * rsx/util: Add a simple wrapper for simple_array&lt;T&gt;::for_each
+  * rsx/util: Add simple_array&lt;T&gt;::filter
+  * vk: Support more heap types
+  * vk: Add iGPU detection
+  * Only set db_config if we boot with a title_id
+  * ISO: Improve path logging
+  * Fix uninizialized member warning
+  * Add some more logging for use of database config
+  * reduce check for raw device
+  * Avoid to open bd drive if no content is present
+  * Revert &quot;Fix race condition in memory_decommit/memory_reset on Apple ARM64&quot;
+  * Revert &quot;Remove redundant Apple ARM64 ifdef blocks&quot;
+  * Add support to play from a BD Drive (currently only on Windows) (#18648)
+  * Bump setup-nuget to v4
+  * Update 7zip to 26.01
+  * Qt: fix memory leak in confg_database
+  * USB: remove zero-length IN URB fake-completion workaround
+  * USB: use libusb enums for endpoint bitmask checks
+  * USB: fix passthrough of bulk endpoints on Linux
+  * Don't use Qt event loop in headless mode
+  * RSX: workaround for color/depth aliasing heurestic edge case failures (#18644)
+  * RSX Debugger: populate Captured Draw Calls list
+  * cellVdec: fixup
+  * cellVdec: fixup
+  * cellVdec: reimplement cellVdecQueryAttr()
+  * Stub video decoder modules
+  * sys_spu: Fix sys_isolated_spu_create
+  * Fix checks for flash device aliases
+  * Remove redundant Apple ARM64 ifdef blocks
+  * Fix race condition in memory_decommit/memory_reset on Apple ARM64
+  * Add clickable PR links in update changelog (#18465)
+  * gl: Fix crash when renderdoc compatibility is enabled on some hardware
+  * rsx: Fix deswizzle of wide texel formats
+  * Clans: PPU thread sleeping while making API calls
+  * Add ISO integrity check
+  * SPU Analyzer: Add some logging
+  * SPU LLVM: Fix RCHCNT write channel looping
+  * sys_fs: Fix O_CREATE and O_TRUNC for BDVD
+  * Enhance FAudio backend error handling and initialization processes (#18614)
+  * Add missing default setting after settings rework
+  * Add recursive scan support
+  * SPU LLVM: Fix unused variable warnings
+  * Qt: make emu_settings_type cfg_location dynamic
+  * qt: remove unused emu_settings_type
+  * cfg: remove redundant prefix from variable names
+  * Improve Mac Translation download (#18598)
+  * Fix region range check on ISO file
+  * Qt: Allow to compare configurations in gamelist context menu
+  * Fix database config application in continuous mode
+  * Loader: try to retrieve database config if not booted through the UI
+  * Log url of downloader
+  * Improve quit logging
+  * version_check: fix formating of result output
+  * Update libpng to 1.6.58
+  * Allow to skip optional packages installation
+  * cmake: do not disable &quot;WOLFSSL_HARDEN&quot; and fix build with latest WolfSSL
+  * Qt: fix regular boot without database config
+  * fix wrong folder creation
+  * Check for unknown keys during config validation
+  * sys_fs: Add unit tests
+  * sys_fs: Reimplement path analysis
+  * Try building MVK 1.4.2 privapi instead of DLing 1.4.1 privapi prebuilt
+  * Qt/input: fix mouse button names
+  * Qt: put Custom Config with Database Settings first
+  * linux/macOs: update compat_db and config_db on update
+  * Use database per default, remove global
+  * implement config db
+  * Fix Disk Usage thread
+  * Update wolfssl to 5.9.1
+  * Update libpng to 1.6.57
+  * Opt out of Game Mode on macOS due to throttling
+  * Qt: Add missing thread name
+  * Remove unused variable in find_dialog
+  * Remove nop loop
+  * Remove unused should_have_argument_increment
+  * Add missing fmt case for cpu_flag::req_exit
+  * Remove some unused variables
+  * Remove sneaky pragma optimize
+  * SPURecompiler: add missing default
+  * iso stuff
+  * input: fix mouse+kb combos
+  * Thread.cpp: Added stack trace and register logging to exception filter (#18564)
+  * Add 3D screen size setting
+  * sysinfo.cpp: Remove registry helpers (#18557)
+  * ISO: Add metadata cache to speed up game list scanning (#18546)
+  * gui: Group CPU accuracy settings together
+  * sysinfo.cpp: Replaced PEB read with ntdll function (OS version read)
+  * Fix ASan fatal-report access during emulator teardown
+  * Fix ASan logger shutdown use-after-free
+  * Add support to encrypted ISO
+  * fix LLVM assert in use_begin
+  * rsx: Allow DXT texture decoding to gracefully fall back to unaligned memory addresses
+  * rsx: Improve handling of aligned memory
+  * ppu: Enable vector NaN fixup by default
+  * CPUThread: fix ASAN use-after-free
+  * Qt: Show error if any package is corrupt before installation
+  * Include &lt;pthread.h&gt; for pthread_self
+  * Update docker to 1.11
+  * ISO: optimize some file reads (#18511)
+  * SPU: Remove RCHCNT loop handling of SPU_WrOutIntrMbox
+  * SPU: Remove RCHCNT loop handling of SPU_WrOutMbox
+  * vk: Fix crash when running CPU detiler path
+  * vk: Handle WAW and RAW hazards when performing &quot;flush&quot; operations
+  * vk: Wrap scratch buffer access with proper memory barriers
+  * vk: Insert a all_commands-&gt;transfer barrier before copying query results to scratch
+  * vk: Insert barriers on the scratch buffer when detiling memory
+  * vk: Insert transfer-&gt;transfer barriers before creating aggregates
+  * rsx: Extend cubemap_unwrap decode to handle cubemaps with mipmaps
+  * gl: Extend mipcount support for reconstructed images
+  * vk: Allow cubemap unwrap to generate more than 1 mipmap level
+  * rsx: Allow negative src and dst pitch in nv0039
+  * cellDmux: process PPU state after lv2 syscalls
+  * cellDmuxPamf: logging fix
+  * cellPamf: remove unused code
+  * cellDmux implementation
+  * Fix SPRX Loader segfault on Apple ARM64 by excluding MAP_JIT from memory mapping regions
+  * Update soundtouch to 2.4.1
+  * Update FAudio to 26.04
+  * Bump SDL to 3.4.4
+  * game_list_table: Allow reordering game list columns
+  * PPU LLVM: fix compilation for PPU Debug option
+  * LLVM: Add source location for bitcast error
+  * SPU LLVM: Remove debug code
+  *  SPU LLVM: Fix register updates in second block of Reduced Loop
+  * SPU Analyzer: Fix register origin for Reduced Loop
+  * Silence cellNetCtlGetInfo
+  * rsx: Silence Unknown render mode error
+  * SPU: Verify SPU Reduced loop completability
+  * Fixes PS button wrong input path check
+  * SPU Analyzer: More fix
+  * sys_fs: Implement ENOTDIR
+  * rsx: Propagate texture flags when MSAA sampling is required
+  * rsx/fp: Fix lane mask computation for varying registers
+  * SPU Analyzer: Acknowledge unknown targets
+  * SPU Anlyzer: Verify bitset index
+  * Add missing &lt;set&gt; include for MSVC compatibility (#18486)
+  * overlays: add toggle for boot sequence music
+  * overlays: add setting for fatal error hint (disabled by default)
+  * Qt: hide log frame by default
+  * rsx: Add missing break
+  * Qt: add some sorting options to the screenshot manager
+  * steam: disable steam input for shortcuts
+  * Update Qt to 6.11.0
+  * Update libpng to 1.6.56
+  * Update wolfssl to 5.9.0
+  * Fix some warnings
+  * Qt: Add some some more thread names
+  * overlays: show latching message for fatal errors
+  * Qt: add recording settings dialog
+  * sysinfo: Implement RAM Usage stats for Linux (#18473)
+  * find_dialog: fix compiler warning
+  * remove unused lambda captures
+  * CMake: fix the case USE_SYSTEM_ZLIB=OFF and USE_SYSTEM_CURL=OFF
+  * cmake: fix build with latest Curl
+  * rsx/vk: Try to reclaim memory aggressively when changing resolution scale
+  * rsx/rtts: Fix broken optimization check
+  * rsx/rtt: Fix transfer region calculation when source and destination scaling does not match
+  * rsx: Fix clang build
+  * rsx/overlays: Add resolution scale threshold to home menu
+  * rsx/overlay: Add resolution scale slider to home menu
+  * config: Make resolution scaling a dynamic option
+  * rsx: Add optimization to skip cloning surfaces whose dimensions did not change
+  * rsx: Implement resolution scale change handling in surface cache
+  * SaveStates: Fix restart after saving
+  * RPCS3: Notify RAM shortage, Log current and peak RAM usage
+  * Make performance overlays use window space (#18419)
+  * cellDmuxPamf: fix freezing FMVs in some games
+  * Thread.cpp: Fix game exit on access violation
+  * SPU Analyzer: Add pure opcode tag
+  * LLVM: Try to reuse BitCasts
+  * SPU Debugger: Measure rate of block ran
+  * SPU LLVM: Classify SPU memory and context memory instructions
+  * SPU LLVM: Optimize FM, FMA and FCGT in Reduced Loop
+  * Add floating ppoint hint
+  * SPU LLVM: Allow the reuse of address from LQX/STQX
+  * SPU LLVM: CEQHI pattern
+  * SPU LLVM: Implement reduced loop
+  * SPU: Detect reduced loop
+  * rsx: Make resolution scaling configuration non-global
+  * overlays/sdf: Avoid 0-height inner boxes for switch capsule
+  * cmake: fix build with bundled zlib
+  * make the code build with Clang 22
+  * CMake: remove option USE_MSVC_STATIC_CRT and clean up
+  * logs: Fix global log levels during boot and after changing log level settings
+  * HLE modules: process PPU state after lv2 syscalls
+  * Qt/input: Do not send gui input release events until there was at least one button press
+  * gui/input: disable stick anti deadzone in pad navigation
+  * Qt/Input: trace gui pad navigation button presses
+  * Qt: Improve find dialog
+  * Qt: Smoothly start/stop audio with fade in and fade out
+  * Qt: loop SND0.AT3 audio
+  * overlays: Bump the slider label font size
+  * overlays/sdf: Clamp rounded-rect border radius to never exceed the box sides
+  * gl: Properly initialize memory layout definition structs
+  * Fix GH &amp; brew breaking macOS builds again
+  * overlays: Restore slider handles to previous size
+  * overlays: Fixups for switch rendering
+  * overlays: Fix SDF rendering when scrolling is involved
+  * overlays: Redesign switches
+  * overlays/sdf: Take element padding into account
+  * gl: Integrate SDF rendering functionality
+  * overlays: Implement SDF config transforms
+  * overlays: Use ellipse SDF for circles
+  * vk: Add support for basic SDF rendering
+  * overlays: Use SDF equations to represent curved shapes
+  * overlay: Remove redundant redeclaration
+  * rpcs3: Add missing #include &lt;climits&gt;, fix gcc-16 compilation
+  * Qt: fix audio timer loop
+  * Add Zed config files to gitignore
+  * Qt: start hover audio/video after a timeout
+  * Qt: add gui audio volume setting
+  * Qt: add setting for disabling hover music
+  * Qt: Don't check for movies if play_hover_movies is disabled
+  * Qt/overlays: Add secondary audio output for emulation
+  * Qt: Remove some unused code
+  * rsx/cfg: Fix handling of instructions with literal input
+  * Add overlay notification for received messages
+  * Batch create/remove steam shortcuts
+  * overlays: Add a special message id for spinners with empty text
+  * overlays: Shrink the shader notification popup
+  * overlays: Add RSX memory tiling to settings page
+  * Fix mac builds (&amp; add some failsafes)
+  * overlay: Add 8px left margin on the sidebar
+  * rsx/fp/cfg: Add unit test for special cond inversion
+  * rsx/cfg: Log a warning when encountering empty IF blocks with ELSE aliasing
+  * rsx/cfg: Handle IF-ELSE aliasing statement as inverted condition
+  * Clean up code using mutable + const when possible
+  * qt: Update tooltips with new vsync behavior
+  * gl: Make vsync setting dynamic
+  * overlays: Add Vsync configuration to overlays
+  * gl/vk: Implement tri-state Vsync setting
+  * config: Enable start in fullscreen mode by default
+  * Qt: Do not close pad settings dialog if user said no in duplicate button dialog
+  * Qt: fix duplicate button or combo warning
+  * Update current firmware to 4.93
+  * Input: Fix keyboard stick handling
+  * Input: optimize keyboard button handling on release
+  * Input: Map PS button to start+select by default
+  * input: refactor combos into a struct for future use
+  * overlays/home: Fix restarting games from home menu
+  * input: Fix SDL buttons
+  * Qt: Fix game list selection after Refresh(true)
+  * Automatic combo button input
+  * Fix steam banners for iso files
+  * Use ICON0.PNG for steam cover
+  * Add more fallbacks to the steam banner
+  * Qt: Move game shortcut creation logic to shortcut_utils
+  * overlays: Relax vblank range to default
+  * overlays: Limit vblank setting in the UI
+  * overlays/home: Auto-resize the sidebar in case of long translated text
+  * overlays: Left align the savestates menu
+  * overlays: Allow home menu 'entries' to support different alignment options
+  * overlays: Backing out of settings menu returns to home menu
+  * overlays: Fix UX issues with dropdowns
+  * mmjoy: deduplicate some code
+  * input: implement button combos
+  * Qt: Create Steam banners as well during shortcut creation
+  * rsx/overlays: Fix linux build
+  * rsx/overlays: Fix clang build
+  * rsx/overlays: Fix weird spacing with reset prompt
+  * overlays/gl: Fix misbehaving clip regions
+  * overlays/tabs: Fix crash when scrolling through tabs quickly
+  * overlays/list-view: Use track to indicate scrolling instead of ugly highlight
+  * overlays: Fix bug with list view element count calculation and selection wrap-around
+  * overlays/home: Add icons to settings page
+  * overlays: Add some more icons
+  * overlays/home: Integrate the new dropdown widget
+  * rsx/overlays: Implement dropdown control
+  * overlays/utils: Add simple utility to center align a child component
+  * overlays/checkbox: Make sure backgrounds are opaque for clarity
+  * overlays: Improve slider label spacing
+  * utils: Implement enum size computation
+  * rsx/overlays: Implement arrow rendering
+  * rsx/overlays: Tabs - Do not touch renderer resources on the input thread!
+  * overlays/home: Use the new slider component
+  * rsx/overlays: Implement slider control
+  * overlays: Align switches to container end
+  * overlay/settings: Use switch element instead of checkbox
+  * rsx/overlays: Implement checkbox and switch controls
+  * overlays: Unified icon loading logic
+  * overlays: Add icons for trophies and friends
+  * overlays/home: Add icons to the home menu
+  * overlays: Extend list view to allow hassle-free insertion of overlay-element descendants
+  * overlays: Fix bug in box padding calculation
+  * overlays: Provide home icons in different sizes
+  * overlays/icon: Handle some edge cases
+  * rsx: Tighten data contract for &quot;external&quot; raw images
+  * overlays/home: Add icons repository wrapper
+  * overlays: Add some home menu icons from font-awesome
+  * overlays: Turn the home menu into a proper sidebar
+  * overlay/settings: Add missing sound effects
+  * rxs/overlays: Fix visual glitches in the tabbed settings dialogs
+  * rsx/overlays: Improvements for some containers
+  * rsx/overlays: Convert settings pages to a tabbed interface
+  * rsx/overlays: Replace home menu with a sidebar
+  * overlays/home: Refactor to support having some home pages inside other containers
+  * rsx/overlays: Implement tabbed containers
+  * input: log warning instead of throwing an exception when the dpad has an unknown value
+  * Qt: Add steam shortcuts
+  * VS: Add missing test files
+  * Fix callback initialization order
+  * cmake: Build with SDL by default
+  * cellDmuxPamf: LLE by default again
+  * config: Disable pad navigation by default
+  * qt: import QJsonDocument
+  * cmake: Only use Qt6::GuiPrivate for Qt &gt;= 6.10
+  * input: simplify mmjoy handler
+  * Fix iso shortcuts
+  * config/ui: Unify Shader Mode values
+  * ui: Split overlay settings, A-Z order emulator tab settings
+  * ui: Move SPU Loop Detection to advanced
+  * ui: Move PPU Non-Java Fixup to debug
+  * ui: Move Accurate DFMA to debug
+  * ui: A-Z order advanced tab settings
+  * config: Enable pad navigation by default
+  * ui: Allow toggling pad navigation on BSD
+  * ui: Merge pkg/pup install dialog options
+  * ui: Merge exit/boot game dialog options
+  * ui: Rename depth buffers to depth buffer
+  * ui: Specify Anti-Aliasing as MSAA
+  * config: Fix naming of SPU XFloat Accuracy
+  * config: Fix naming of Asynchronous Texture Streaming
+  * config: Move FSR CAS out of Vulkan subcategory
+  * VK: scale auto shader compiler workers on wide CPUs
+  * SPU LLVM: Emulate GBB with udot/sdot Greatly simplifies GB, GBH, and GBH. Uses udot/sdot with power of two masks to shift values and sum them in a single step, effectively gathering them
+  * SPU LLVM: ARM64: Use UDOT for emulating SUMB
+  * overlays: allow to reset current setting
+  * Use System Protobuf for Intel Mac
+  * Update curl to 8.19.0
+  * Qt: Fix log levels tooltip
+  * Qt: Rename Shortcuts to Keyboard Shortcuts
+  * overlays: play SND0.AT3 during initialization
+  * overlays: support playing audio with video_view
+  * Fix SaveStates cellDumxPamf regression
+  * Debugger: Add HW PPU threads view
+  * Silence sys_memory_get_user_memory_size
+  * rpcn: set default version to 2
+  * rpcn: Fix file access error when loading rpcn.yml with version 1
+  * rpcn: Fix segfault in rpcn_settings_dialog destructor
+  * gl: Implement proper, sectioned DMA transfers
+  * gl: Add guards to catch invalid configuration in image transfer functions
+  * gl: Improve object annotation for renderdoc debugging
+  * gl: Trace memory readback operations to debug tracking when renderdoc compat is enabled
+  * gl: Support packing/unpacking images with padding
+  * gl: Add optional row length to GPU image routines
+  * gl: Move ownership of the global blitter object from texture cache to global
+  * gl: Silence compiler warning
+  * gl: Fix shader interpreter compilation
+  * gl: Minor enhancements to blitter
+  * overlays: Fix image size estimation
+  * gl: Ignore range offset when doing readback operations
+</comment>
+    <requestid>1350921</requestid>
+  </revision>
 </revisionlist>

@@ -14,9 +14,6 @@
     <param name="exclude">3rdparty/llvm/llvm</param>
     <param name="exclude">3rdparty/XAudio2Redist</param>
     <param name="exclude">3rdparty/zlib/zlib</param>
-    <param name="exclude">*.bat</param>
-    <param name="exclude">*.cmd</param>
-    <param name="exclude">*.dll</param>
     <param name="exclude">*.vcproj</param>
     <param name="exclude">*.vcxproj</param>
     <param name="exclude">*.vcxproj.user</param>
@@ -24,12 +21,6 @@
     <param name="exclude">*.yml</param>
     <param name="exclude">*.props</param>
     <param name="exclude">*.sln</param>
-  </service>
-  <service name="tar_scm" mode="manual">
-    <param name="scm">git</param>
-    <param name="url">https://github.com/intel/ittapi.git</param>
-    <param name="filename">intel-ittapi</param>
-    <param name="version">_none_</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
