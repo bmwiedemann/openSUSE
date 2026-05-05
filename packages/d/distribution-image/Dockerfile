@@ -17,7 +17,7 @@
 
 #!BuildTag: opensuse/registry:%%registry_version%%-%RELEASE%
 #!BuildTag: opensuse/registry:%%registry_version%%
-#!BuildTag: opensuse/registry:3.0
+#!BuildTag: opensuse/registry:3.1
 #!BuildTag: opensuse/registry:latest
 
 FROM opensuse/bci/bci-micro:latest AS target
@@ -30,13 +30,15 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of distribution-registry that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' distribution-registry | \
-    cut -d '.' -f -2)" = "3.0" ]
+    cut -d '.' -f -2)" = "3.1" ]
 RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
     systemd-tmpfiles --create --root /target distribution-registry.conf
 
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
+    t=$(mktemp -d); mv /target/usr/lib/sysimage/rpm/Packages.db $t; rpmdb --rebuilddb --dbpath=$t; \
+    rm /target/usr/lib/sysimage/rpm/*.db && mv $t/Packages.db /target/usr/lib/sysimage/rpm/; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
@@ -49,6 +51,7 @@ RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
 RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /target/etc/shadow
 FROM opensuse/bci/bci-micro:latest
 COPY --from=builder /target /
+RUN set -euo pipefail; rm -vf /usr/lib/sysimage/rpm/Index.db
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.registry
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed OCI Container Registry (Distribution)"
