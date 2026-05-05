@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  4 16:28:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.20:
+  * Only warn when creating of named semaphore fails
+  * Fixed several typos
+
+-------------------------------------------------------------------
 Wed Oct 30 11:39:54 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Remove haveged-once.service.
@@ -72,7 +79,7 @@ Tue Feb 15 15:22:09 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
   * fix build on uclibc (origin/pr/58) [Pierre-Jean Texier]
   * Improved make check tests [Jirka Hladky]
   * Removed old init.d files. Configs are under contrib directory [Jirka Hladky]
-  * Support for Linux kernel LRNG patch set 
+  * Support for Linux kernel LRNG patch set
 
 -------------------------------------------------------------------
 Mon Nov 22 08:14:39 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
@@ -89,7 +96,7 @@ Tue Nov  2 08:18:49 UTC 2021 - Marcus Meissner <meissner@suse.com>
 --------------------------------------------------------------------
 Mon Oct 11 13:26:52 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- Improvements on the linux kernel random subsystem have made 
+- Improvements on the linux kernel random subsystem have made
   the haveged service/daemon obsolete, remove the service files,
   initrd modules and udev rules, the other components
   are still useful.
@@ -185,7 +192,7 @@ Tue Sep 11 11:00:13 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
 Mon Jul  2 13:37:19 UTC 2018 - werner@suse.de
 
 - Add patch change-sysroot.patch to
-  move forward to socket communication within private network 
+  move forward to socket communication within private network
 - Add haveged-switch-root.service which send the new root location
   to running haveged process
 
@@ -294,7 +301,7 @@ Mon May 12 10:49:09 UTC 2014 - tchvatal@suse.com
 -------------------------------------------------------------------
 Sat May 10 03:40:03 UTC 2014 - crrodriguez@opensuse.org
 
-- Fix "stop" of service, the daemon in foreground actually 
+- Fix "stop" of service, the daemon in foreground actually
  exits with a weird exit code. workaround this misbehaviour
  in the service file.
 
@@ -303,14 +310,14 @@ Sat May 10 02:34:26 UTC 2014 - crrodriguez@opensuse.org
 
 - revert to non-forking service, "forking" services are racy
   and provided by systemd purely for compatibility with old daemons.
-  see daemon(7) for the rationale. Only "simple" (default) and 
+  see daemon(7) for the rationale. Only "simple" (default) and
   "notify" services must be used if possible.
 
 - Also, there is no haveged.conf around, neither such file
   is parsed by the daemon at all.
 
 - Start the daemon as soon as the random device is available with
-  the help of udev, as starting services while starved of entropy 
+  the help of udev, as starting services while starved of entropy
   is no good.
 
 -------------------------------------------------------------------
@@ -325,7 +332,7 @@ Wed May  7 09:12:26 UTC 2014 - tchvatal@suse.com
 -------------------------------------------------------------------
 Tue Mar 11 10:21:46 UTC 2014 - dvaleev@suse.com
 
-- Add ppc64le support 
+- Add ppc64le support
 
 - added patches:
   * ppc64le.patch
@@ -341,7 +348,7 @@ Tue Feb 18 13:11:01 UTC 2014 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Mon Jan  6 10:28:03 UTC 2014 - mvyskocil@suse.com
 
-- update to 1.8 
+- update to 1.8
  * Fix return code for signalled termination.
  * Update init.d/service.fedora - new return code + simple, not forking
  * Add --enable_unitdir as DESTDIR for systemd install
@@ -350,7 +357,7 @@ Mon Jan  6 10:28:03 UTC 2014 - mvyskocil@suse.com
 Mon Jun 17 09:39:07 UTC 2013 - mvyskocil@suse.com
 
 - update to 1.7c
-  * Correct additional run-time test aligment problems on mips. 
+  * Correct additional run-time test aligment problems on mips.
   * Correct run-time test aligment problems on sparc and mips.
   * Correct ppc detection in build
     deprecates haveged-ppc.patch
@@ -366,9 +373,9 @@ Sun May  5 18:46:15 UTC 2013 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Thu May  2 18:25:33 UTC 2013 - crrodriguez@opensuse.org
 
-- haveged 1.7a 
-* Correct VPATH issues and modify check target to support 
-parallel builds and changes in automake 1.13 test harness. 
+- haveged 1.7a
+* Correct VPATH issues and modify check target to support
+parallel builds and changes in automake 1.13 test harness.
 Updated sample spec file and other documentation changes.
 
 -------------------------------------------------------------------
@@ -381,7 +388,7 @@ Tue Mar 26 14:19:46 UTC 2013 - mvyskocil@suse.com
 -------------------------------------------------------------------
 Wed Mar 20 23:28:42 UTC 2013 - crrodriguez@opensuse.org
 
-- Remove all sysvinit compatibility. 
+- Remove all sysvinit compatibility.
 
 -------------------------------------------------------------------
 Mon Jan 21 01:18:16 CET 2013 - ro@suse.de
@@ -400,15 +407,15 @@ Mon Jan 21 01:18:16 CET 2013 - ro@suse.de
   * Move all remaining static vars to allocated memory.
   * Rework include file structure to eliminate include sequence errors.
   * Fix (rare) segfault in test0 caused by 1.6 alignment fix
-  
+
 - update to  v1.6a
   * Fix typo in configure.ac
- 
+
 
 -------------------------------------------------------------------
 Fri Dec 21 11:53:16 UTC 2012 - dvaleev@suse.com
 
-- fix powerpc detection (haveged-ppc.patch) 
+- fix powerpc detection (haveged-ppc.patch)
 
 -------------------------------------------------------------------
 Sun Dec 16 02:11:10 UTC 2012 - pascal.bleser@opensuse.org
@@ -420,24 +427,24 @@ Sun Dec 16 02:11:10 UTC 2012 - pascal.bleser@opensuse.org
 -------------------------------------------------------------------
 Mon Nov 26 20:59:36 UTC 2012 - crrodriguez@opensuse.org
 
-- Current version does support ARM, remove the ExcludeArch 
+- Current version does support ARM, remove the ExcludeArch
 
 -------------------------------------------------------------------
 Mon Sep 24 19:48:16 UTC 2012 - crrodriguez@opensuse.org
 
 - Tight up systemd service file, this daemon does not
-  need network and can use PrivateNetwork=yes 
+  need network and can use PrivateNetwork=yes
 
 -------------------------------------------------------------------
 Mon Aug 13 13:15:15 UTC 2012 - mvyskocil@suse.cz
 
 - Update to 1.5
-  * Add online tests based on AIS-31 
+  * Add online tests based on AIS-31
   * Add -p option to specify the pid location.
   * Fix -F option to not take argument - i.e. now a switch
   * Factor diagnostic methods for capture and inject for better performance
-  * Fix install target, move to bin and eliminate script if not daemon, now use sysv and systemd templates 
-- use -F with no arguments in haveged.service 
+  * Fix install target, move to bin and eliminate script if not daemon, now use sysv and systemd templates
+- use -F with no arguments in haveged.service
 - work-around nist check on i586 by decreasing the size of static array in a test
 
 -------------------------------------------------------------------
@@ -458,7 +465,7 @@ Fri May 15 22:46:03 UTC 2012 - aboe@opensuse.org
 -------------------------------------------------------------------
 Thu Feb  9 21:20:37 UTC 2012 - crrodriguez@opensuse.org
 
-- build with -fpie 
+- build with -fpie
 
 -------------------------------------------------------------------
 Sat Dec 31 05:09:38 UTC 2011 - crrodriguez@opensuse.org
@@ -485,12 +492,12 @@ Tue Nov 29 03:21:09 UTC 2011 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Tue Nov 22 14:24:33 UTC 2011 - crrodriguez@opensuse.org
 
-- Use Service type "simple" in systemd unit 
+- Use Service type "simple" in systemd unit
 
 -------------------------------------------------------------------
 Tue Nov  1 17:46:35 CET 2011 - ro@suse.de
 
-- fix build on ia64, s390, s390x 
+- fix build on ia64, s390, s390x
 
 -------------------------------------------------------------------
 Tue Oct 25 08:37:28 UTC 2011 - pascal.bleser@opensuse.org
@@ -515,7 +522,7 @@ Sun Jul 24 19:23:34 UTC 2011 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Mon Jun  6 11:45:47 UTC 2011 - k0da@opensuse.org
 
-- fix ppc64 build 
+- fix ppc64 build
 
 -------------------------------------------------------------------
 Mon Jun  6 10:11:20 UTC 2011 - adrian@suse.de
@@ -526,7 +533,7 @@ Mon Jun  6 10:11:20 UTC 2011 - adrian@suse.de
 Sat May  7 20:06:23 UTC 2011 - crrodriguez@opensuse.org
 
 - Update to version 1.1, upstream version where the bugs
-  present in old versions have been fixed in different ways. 
+  present in old versions have been fixed in different ways.
 
 -------------------------------------------------------------------
 Tue Mar  1 10:03:17 CET 2011 - meissner@suse.de
@@ -547,7 +554,7 @@ Tue Jan  4 23:14:52 UTC 2011 - cristian.rodriguez@opensuse.org
 Tue Jan  4 17:18:34 UTC 2011 - cristian.rodriguez@opensuse.org
 
 - Fix build in older distros
-- run spec cleaner 
+- run spec cleaner
 
 -------------------------------------------------------------------
 Tue Dec  7 21:26:31 UTC 2010 - coolo@novell.com
@@ -575,33 +582,33 @@ Sat Nov  6 00:00:24 UTC 2010 - aj@suse.de
 -------------------------------------------------------------------
 Fri Nov  5 14:23:53 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- Link with full RELRO (-Wl,-z,relro,-z,now) 
+- Link with full RELRO (-Wl,-z,relro,-z,now)
 
 -------------------------------------------------------------------
 Wed Nov  3 20:50:59 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- add systemd support 
+- add systemd support
 
 -------------------------------------------------------------------
 Fri Sep 24 16:14:20 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- Drop as much capabilitites as possible using libcap-ng 
+- Drop as much capabilitites as possible using libcap-ng
 
 -------------------------------------------------------------------
 Sat Jul 31 23:55:20 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- I meant Enhances not Supplements 
+- I meant Enhances not Supplements
 
 -------------------------------------------------------------------
 Fri Jul 30 22:18:23 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- Implement hack to start by default only in VMs 
+- Implement hack to start by default only in VMs
 
 -------------------------------------------------------------------
 Tue Jul 27 22:02:20 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - Run the complete test suite (for the paranoid)
-- use O_CLOEXEC on fds 
+- use O_CLOEXEC on fds
 
 -------------------------------------------------------------------
 Tue Jul 20 21:27:49 UTC 2010 - cristian.rodriguez@opensuse.org
@@ -612,20 +619,20 @@ Tue Jul 20 21:27:49 UTC 2010 - cristian.rodriguez@opensuse.org
 -------------------------------------------------------------------
 Sun Jul 18 21:25:16 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- add proper Requires(pre) 
+- add proper Requires(pre)
 
 -------------------------------------------------------------------
 Fri Jul 16 17:30:31 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - build with no optimization, there are reports saying it
-  may crash with -O1 like http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=563938  
+  may crash with -O1 like http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=563938
 
 -------------------------------------------------------------------
 Thu Jul 15 17:37:11 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - move deamon to /sbin
 - tune the spec file
-- add a SUSE standard init script 
+- add a SUSE standard init script
 
 -------------------------------------------------------------------
 Fri May 28 14:03:54 CEST 2010 - meissner@suse.de
