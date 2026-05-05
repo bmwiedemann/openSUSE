@@ -64,5 +64,6 @@ LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 LABEL io.artifacthub.package.logo-url="https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.png"
 ENTRYPOINT ["kubectl"]
 
-RUN set -euo pipefail; echo "user:x:999:100:User for CLI:/home/user:/usr/sbin/nologin" >> /etc/passwd && install -d -o 999 -g 100 -m 0755 /home/user
+RUN set -euo pipefail; echo "user:x:999:100:User for CLI:/home/user:/usr/sbin/nologin" >> /etc/passwd && install -d -o 999 -g 100 -m 0755 /home/user /home/user/.kube
+
 WORKDIR /home/user
