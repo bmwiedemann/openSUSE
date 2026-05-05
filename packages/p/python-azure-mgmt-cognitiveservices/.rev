@@ -247,4 +247,17 @@
 - Update Requires from pyproject.toml (forwarded request 1319724 from glaubitz)</comment>
     <requestid>1319768</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6b05bea8449d62ea3b5e94e462b5dfc1</srcmd5>
+    <version>15.0.0~b1</version>
+    <time>1777996687</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 15.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 15.0.0~b1
+- Update Requires from pyproject.toml (forwarded request 1350962 from glaubitz)</comment>
+    <requestid>1350968</requestid>
+  </revision>
 </revisionlist>
