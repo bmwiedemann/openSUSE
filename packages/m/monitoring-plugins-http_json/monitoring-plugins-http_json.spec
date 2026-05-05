@@ -19,7 +19,7 @@
 %define modname monitoring-plugins-http_json
 %define pythons python3
 Name:           monitoring-plugins-http_json
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        Plugin for Nagios which checks json values from a given HTTP endpoint
 License:        Apache-2.0

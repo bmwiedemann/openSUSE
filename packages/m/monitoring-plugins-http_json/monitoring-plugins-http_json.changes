@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  4 08:43:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.0
+  * Add default timeout and handle timeout error.
+  * Add -M flag to map non-numeric perfdata values.
+  * Allow for bracket in key.
+
+-------------------------------------------------------------------
 Wed Feb 25 20:25:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.1
