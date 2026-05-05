@@ -1,7 +1,7 @@
 #
 # spec file for package tcpser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           tcpser
-Version:        1.0rc12+git.20191116
+Version:        1.1.4
 Release:        0
 Summary:        Serial to IP modem emulation program
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-URL:            https://github.com/FozzTexx/tcpser
-Source:         %{name}-%{version}.tar.xz
+URL:            https://github.com/go4retro/tcpser
+Source:         https://github.com/go4retro/tcpser/archive/refs/tags/v%{version}.tar.gz
 Source1:        tcpser.1
 Patch0:         tcpser-obey-cflags.patch
 
@@ -49,7 +49,7 @@ sed -i 's/\r$//' CHANGES
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -Dpm 0755 tcpser %{buildroot}/%{_bindir}/tcpser

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  4 21:50:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.4:
+  * Phone book core dump fix, -V to report version, and small
+    logging fixes.
+  * Fixup to compile again on Linux
+- tcpser-obey-cflags.patch: refresh
+
+-------------------------------------------------------------------
 Mon Feb 26 11:56:05 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

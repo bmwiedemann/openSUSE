@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1151263</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a6189c2e09ffea816f8c07e976041460</srcmd5>
+    <version>1.1.4</version>
+    <time>1777987016</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.4:
+  * Phone book core dump fix, -V to report version, and small
+    logging fixes.
+  * Fixup to compile again on Linux
+- tcpser-obey-cflags.patch: refresh (forwarded request 1350876 from dirkmueller)</comment>
+    <requestid>1350877</requestid>
+  </revision>
 </revisionlist>
