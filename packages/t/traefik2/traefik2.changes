@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon May  4 15:49:54 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 1.11.44
+- Updated go-jose to v4.1.4 which fixes CVE-2026-34986 - boo#1262982
+
+- Bug fixes:
+  * acme
+    - Bump github.com/go-acme/lego to v4.35.2
+  * middleware
+    - Add errorRequestHeaders option to Errors middleware
+
+- Version 1.11.43
+- CVE fixed:
+  * CVE-2026-40912 (Advisory GHSA-6jwx-7vp4-9847) - boo#1263868
+  * CVE-2026-39858 (Advisory GHSA-5m6w-wvh7-57vm) - boo#1263867
+  * CVE-2026-35051 (Advisory GHSA-6384-m2mw-rf54) - boo#1263866
+  * CVE-2026-41263 (Advisory GHSA-6x2q-h3cr-8j2h) - boo#1263870
+  * CVE-2026-41174 (Advisory GHSA-xhjw-95fp-8vgq) - boo#1263869
+
+- Bug fixes:
+  * k8s/crd, k8s
+    - Honor allowCrossNamespace with chain middleware CRD
+  * middleware, authentication
+    - Cleanup and make ForwardAuth logs consistent
+    - Fix trustForwardHeader on forward auth middleware
+    - Remove map lookup making the basic auth notFoundSecret empty
+  * middleware
+    - Remove untrusted X headers with underscores
+    - Sanitize the request URL after stripping the prefix
+
+-------------------------------------------------------------------
 Thu Mar 26 09:50:46 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 1.11.42
@@ -14,7 +45,7 @@ Thu Mar 26 09:50:46 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * CVE-2026-32595 (Advisory GHSA-g3hg-j4jv-cwfr) boo#1260016
   * CVE-2026-32305 (Advisory GHSA-wvvq-wgcr-9q48) boo#1260017
 
-- Bugs fixes:
+- Bug fixes:
   * http
     - Add maxResponseBodySize configuration on HTTP provider
   * tls
@@ -37,7 +68,7 @@ Fri Mar  6 16:33:32 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * CVE-2026-26999 (Advisory GHSA-xw98-5q62-jx94) boo#1259275
   * CVE-2026-29054 (Advisory GHSA-92mv-8f8w-wq52) boo#1259273
 
-- Bugs fixes:
+- Bug fixes:
   * middleware, authentication
     - Add maxResponseBodySize configuration to forwardAuth middleware, boo#1259276
   * middleware
