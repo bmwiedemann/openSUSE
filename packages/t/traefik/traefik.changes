@@ -1,8 +1,57 @@
 -------------------------------------------------------------------
+Mon May  4 15:29:06 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.6.15
+- Bug fixes:
+  * acme
+    - Bump github.com/go-acme/lego/v4 to v4.35.2
+  * k8s/ingress-nginx
+    - Do not require a port for ExternalName services
+  * middleware
+    - Add errorRequestHeaders option to Errors middleware
+  * server
+    - Bump github.com/vulcand/oxy to v2.1.0
+
+- Version 3.6.14
+- CVE fixed:
+    CVE-2026-40912 (Advisory GHSA-6jwx-7vp4-9847) - boo#1263868
+    CVE-2026-39858 (Advisory GHSA-5m6w-wvh7-57vm) - boo#1263867
+    CVE-2026-35051 (Advisory GHSA-6384-m2mw-rf54) - boo#1263866
+    CVE-2026-41263 (Advisory GHSA-6x2q-h3cr-8j2h) - boo#1263870
+    CVE-2026-41174 (Advisory GHSA-xhjw-95fp-8vgq) - boo#1263869
+
+- Updated go-jose to v4.1.4 which fixes CVE-2026-34986 - boo#1262982
+
+- Bug fixes:
+  * acme
+    - Bump github.com/go-acme/lego/v4 to v4.34.0
+  * docker
+    - Downgrade log level for missing container on inspect
+  * k8s/crd, k8s
+    - Honor allowCrossNamespace with chain middleware CRD
+  * middleware, authentication
+    - Cleanup and make ForwardAuth logs consistent
+    - Fix trustForwardHeader on forward auth middleware
+    - Remove map lookup making the basic auth notFoundSecret empty
+  * middleware
+    - Deprecate ForwardAuth.TrustForwardHeader option
+    - Remove untrusted X headers with underscores
+    - Sanitize the request URL after stripping the prefix
+  * sticky-session, k8s/crd
+    - Make SameSite cookie value case-insensitive
+  * webui
+    - Upgrade form-data to 2.5.4, 3.0.4, 4.0.4
+
+- Version 3.6.13
+- Bug fixes:
+  * middleware
+    - Bump github.com/klauspost/compress v1.18.4 and fix TestNegotiation
+
+-------------------------------------------------------------------
 Thu Mar 26 10:29:57 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.6.12
-- Bugs fixes:
+- Bug fixes:
   * acme
     - Bump github.com/go-acme/lego/v4 to v4.33.0
   * api
@@ -27,7 +76,7 @@ Thu Mar 26 10:29:57 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * CVE-2026-32305 (Advisory GHSA-wvvq-wgcr-9q48) boo#1260017
   * CVE-2026-32695 (Advisory GHSA-67jx-r9pv-98rj)
 
-- Bugs fixes:
+- Bug fixes:
   * http
     - Add maxResponseBodySize configuration on HTTP provider
   * tls
@@ -79,7 +128,7 @@ Version 3.6.9
   * CVE-2026-26999 (Advisory GHSA-xw98-5q62-jx94) boo#1259275
   * CVE-2026-29054 (Advisory GHSA-92mv-8f8w-wq52) boo#1259273
 
-- Bugs fixes:
+- Bug fixes:
   * acme
     - Bump github.com/go-acme/lego/v4 to v4.32.0
   * middleware, authentication
