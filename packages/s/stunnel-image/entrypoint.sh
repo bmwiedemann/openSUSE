@@ -21,6 +21,12 @@ if [[ -n "${STUNNEL_SERVICE_NAME}" ]] && [[ -n "${STUNNEL_ACCEPT}" ]] && [[ -n "
     echo "accept = ${STUNNEL_ACCEPT}" >> $conf
     echo "connect = ${STUNNEL_CONNECT}" >> $conf
     echo "client = ${STUNNEL_CLIENT}" >> $conf
+    if [[ -n "${STUNNEL_DELAY}" ]]; then
+        echo "delay = ${STUNNEL_DELAY}" >> $conf
+    fi
+    if [[ -n "${STUNNEL_RETRY}" ]]; then
+        echo "retry = ${STUNNEL_RETRY}" >> $conf
+    fi
 fi
 
 exec "$@"

@@ -28,7 +28,7 @@ entry point defaults to `/etc/stunnel/stunnel.key` for `STUNNEL_KEY` and
 The entry point can set up a single service via environment variables, so that
 the user doesn't have to write and mount their own configuration file. This can
 be specified via the environment variables `STUNNEL_SERVICE_NAME`,
-`STUNNEL_ACCEPT`, `STUNNEL_CONNECT`, and `STUNNEL_CLIENT`:
+`STUNNEL_ACCEPT`, `STUNNEL_CONNECT`, `STUNNEL_CLIENT`, `STUNNEL_DELAY` and `STUNNEL_RETRY`:
 
 - `STUNNEL_SERVICE_NAME`: name or otherwise unique identifier of the service
   (used for documentation purposes only)
@@ -46,6 +46,14 @@ be specified via the environment variables `STUNNEL_SERVICE_NAME`,
   connections and forwards them unencrypted). When set to `yes`, stunnel
   operates in client mode (accepts unencrypted connections and forwards them
   encrypted)
+
+- `STUNNEL_DELAY`: delay DNS lookup for the `connect` option (accepts `yes` or
+  `no`). Defaults to `no`. When set to `yes`, it is useful for dynamic DNS
+  or when the network might not be available at startup.
+
+- `STUNNEL_RETRY`: retry connecting to the `connect` target (accepts a time in ms, `yes` or
+  `no`). Defaults to `no`. When set to `yes`, stunnel will retry the connection
+  if it fails after 1000ms.
 
 
 For example, to create an SSL endpoint for a Web server listening on port `8000`
