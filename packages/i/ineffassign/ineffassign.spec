@@ -1,7 +1,7 @@
 #
 # spec file for package ineffassign
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           ineffassign
-Version:        0.0.0+git20230610.0e73809
+Version:        0.2.0
 Release:        0
 Summary:        Tool to detect ineffectual assignments in Go code
 License:        MIT
@@ -27,7 +25,7 @@ URL:            https://github.com/gordonklaus/ineffassign
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source99:       %{name}-rpmlintrc
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) >= 1.23
 
 %description
 This tool misses some cases because does not consider any type information in
@@ -35,25 +33,25 @@ its analysis. (For example, assignments to struct fields are never marked as
 ineffectual.) It should, however, never give any false positives.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -a 1
 
 %build
-go build \
-   -buildmode=pie ;
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build
 
 %install
 # Install the binary.
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
 
+%check
+# execute the binary as a basic check
+./%{name} --help
+
 %files
-%defattr(-,root,root)
-%doc README.md
-%if 0%{?suse_version} < 1500
-%doc LICENSE
-%else
 %license LICENSE
-%endif
+%doc README.md
 %{_bindir}/%{name}
 
 %changelog

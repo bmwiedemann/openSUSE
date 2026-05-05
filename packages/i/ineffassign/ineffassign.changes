@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon May  4 19:06:42 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Use BuildRequires: golang(API) >= 1.23 matching go.mod
+  * Use autosetup -a 1 to unpack source and vendored dependencies
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Add basic %check to execute binary --help
+
+-------------------------------------------------------------------
+Mon May 04 16:42:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.2.0:
+  * add flag to optionally check for escaping errors (#100)
+  * Remove unused import
+  * Use the IsGenerated function from the go/ast package (#98)
+  * Update ineffassign.go
+  * Process method receiver in function declaration
+  * Upgrade golang.org/x/tools and Go versions
+  * docs: update install instructions
+  * Update analyzer doc to match with golangci-lint
+  * add flag for printing the version
+
+-------------------------------------------------------------------
 Sat Aug 12 23:32:56 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.0.0+git20230610.0e73809:

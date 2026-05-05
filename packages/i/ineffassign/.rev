@@ -32,4 +32,20 @@
 - Use _service mode manual as better alias name than disabled (forwarded request 1103638 from jfkw)</comment>
     <requestid>1103640</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>15ac257d4974c53bb04739187853ddb8</srcmd5>
+    <version>0.2.0</version>
+    <time>1777986946</time>
+    <user>anag_factory</user>
+    <comment>- Packaging improvements:
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Use BuildRequires: golang(API) &gt;= 1.23 matching go.mod
+  * Use autosetup -a 1 to unpack source and vendored dependencies
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Add basic %check to execute binary --help (forwarded request 1350853 from jfkw)</comment>
+    <requestid>1350854</requestid>
+  </revision>
 </revisionlist>
