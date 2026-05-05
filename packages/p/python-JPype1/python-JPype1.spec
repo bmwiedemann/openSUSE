@@ -1,7 +1,7 @@
 #
 # spec file for package python-JPype1
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,15 @@
 %bcond_with     test_jdbc
 %{?sle15_python_module_pythons}
 Name:           python-JPype1
-Version:        1.5.2
+Version:        1.7.0
 Release:        0
 Summary:        Python to Java bridge
 License:        Apache-2.0
 URL:            https://github.com/jpype-project/jpype
 Source:         https://files.pythonhosted.org/packages/source/j/jpype1/jpype1-%{version}.tar.gz
-Patch0:         JPype1-java8compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module scikit-build-core}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  ant

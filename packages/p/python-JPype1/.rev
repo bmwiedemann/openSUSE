@@ -120,4 +120,40 @@
     <comment></comment>
     <requestid>1244788</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c51697e7218f90a94d3366ab3b710115</srcmd5>
+    <version>1.7.0</version>
+    <time>1777987031</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1349989 from mgrossu
+
+- Update to 1.7.0:
+    * Fixed compatibility with NumPy 2.3 breaking change where np.bool_ no longer inherits from Python bool. #1307
+    * Migrated build system from legacy setup.py to cmake and scikit-build-core.
+    * Added initial support and testing for Python 3.14. #1338
+    * Updated pyproject.toml metadata for PEP 639 license compliance. #1337
+    * Fixed a race condition in cross-module mutex initialization. #1333
+    * Fixed PySlice_CheckFull for 32-bit architectures. #1336
+    * Fixed unknown references in dbapi2 module. #1342
+    * Fixed regression in relative classpath resolution and modernized org.jpype.jar discovery.
+    * Optimized Azure CI pipelines with improved pip caching.
+    * Added documentation for building tracing-instrumented extensions.
+    * Added a support script to validate wheels.
+    * Fixed compatibility with NumPy 2.3. #1320
+    * Fixed a race condition upon JPype import on Windows. #1316
+    * Made jedi support optional
+  - 1.6.0:
+    * Maven Module Structure: Java components have been restructured to follow the Maven module style, improving project organization and dependency management.
+    * JArray Registration: JArray is now properly registered as a Sequence, enhancing compatibility and usability.
+    * Float16 Conversion Fix: Corrected the conversion of float16 values, specifically addressing issues with subnormal numbers.
+    * Null String Handling: Resolved a segmentation fault that occurred when handling null Strings.
+    * List Method Fixes: Fixed bugs related to the concatenation and repetition methods for java.util.List.
+    * JProxy Enhancement: Improved JProxy to allow wrapping an existing Python object with a Java interface.
+    * Map Interface Bug Fix: Addressed an issue where using an interface derived from Map with JProxy would fail.
+    * JConversion Respect: Fixed a bug where JPype did not honor a JConversion between two Java classes.
+    * Direct Buffer Enhancement: Updated convertToDirectBuffer to support wrapping bytes and read-only memoryviews as read-only Java ByteBuffers.
+  - Removed JPype1-java8compat.patch
+  - Added BuildRequires:  %{python_module scikit-build-core} in spec file</comment>
+    <requestid>1350799</requestid>
+  </revision>
 </revisionlist>
