@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwdatafind
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           python-gwdatafind
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 License:        GPL-3.0-only
 Summary:        Client library for the LIGO Data Replicator (LDR) service
 URL:            https://gwdatafind.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/g/gwdatafind/gwdatafind-%{version}.tar.gz
+Patch0:         fix_python314.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -51,7 +52,7 @@ Gravitational-Wave Frame (GWF) files containing data from the current
 gravitational-wave detectors
 
 %prep
-%setup -q -n gwdatafind-%{version}
+%autosetup -p1 -n gwdatafind-%{version}
 sed -i 's/--color=yes//' pyproject.toml
 
 %build

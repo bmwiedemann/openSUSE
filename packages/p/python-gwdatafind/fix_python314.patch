@@ -1,0 +1,28 @@
+From db879ef079634239f3e6699be9c3ec0238f32c07 Mon Sep 17 00:00:00 2001
+From: Duncan Macleod <macleoddm@cardiff.ac.uk>
+Date: Thu, 23 Apr 2026 22:28:12 +0100
+Subject: [PATCH] fix(ui): ensure segments are created using tuples
+
+Python 3.14 is stricter in not wanting to unpack iterables that are not tuples when creating segments
+
+Closes https://git.ligo.org/computing/gwdatafind/client/-/work_items/51
+---
+ gwdatafind/ui.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gwdatafind/ui.py b/gwdatafind/ui.py
+index 6da509e..49a040b 100644
+--- a/gwdatafind/ui.py
++++ b/gwdatafind/ui.py
+@@ -491,7 +491,7 @@ def find_times(
+         ext=ext,
+     )
+     times = get_json(qurl, session=session, **request_kw)
+-    segs = segments.segmentlist(map(segments.segment, times))
++    segs = segments.segmentlist(segments.segment(*t) for t in times)
+     log.debug("%d segments found", len(segs))
+     return segs
+ 
+-- 
+GitLab
+

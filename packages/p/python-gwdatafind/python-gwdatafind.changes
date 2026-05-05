@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  5 11:02:56 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 2.1.1:
+  * Disable pytest cache for Debian builds (!118)
+  * Use session argument in find_latest (!119)
+  * Fix searching for multi-ifo files (!120)
+- Add patch to fix build with python314:
+  * fix_python314.patch
+
+-------------------------------------------------------------------
 Mon Sep 29 04:35:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.1.0:
