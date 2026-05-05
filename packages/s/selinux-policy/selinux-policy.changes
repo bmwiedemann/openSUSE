@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 27 12:18:13 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
+
+- start cleanoldsepoldir.service after successfull health-checker.service
+  fixes occational fail on transactional systems when boot failed
+  (boo#1261698)
+
+-------------------------------------------------------------------
+Mon Apr 21 11:13:06 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
+
+- Change store root-path for selinux modules from /var/lib/selinux
+  to /etc (fixes bsc#1221342 PED-12492)
+  * Service file and script is installed to eventually delete
+    /var/lib/selinux once no snapshot is using it
+  * Fix copy custom modules to /etc and can be checked by the provided script
+    `/usr/libexec/selinux/cleanoldsepoldir.sh --check-custom-selinux-modules`
+  * Add filters for duplicate entries to rpmlintrc for now
+  * Drop dir-or-file-outside-snapshot rpmlint filter
+
+-------------------------------------------------------------------
 Wed Apr 15 15:18:29 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260414:

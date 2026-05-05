@@ -46,6 +46,16 @@ Source4:        selinux-policy.rpmlintrc
 Source5:        README.Update
 Source6:        update.sh
 Source7:        debug-build.sh
+# ATTENTION! PED-12492 (bsc#1221342) is the implementation of a _temporary_ fix for PED-12491
+# "Make SELinux packaging compliant with atomic/image based updates".
+# PED-12492 (bsc#1221342) moves the store-root of SELinux from /var/lib/selinux to /etc/selinux completely.
+# The proper implementation of PED-12491 should be done upstream and is tracked via PED-12493.
+#
+# PED-12492 (bsc#1221342): cleanoldsepoldir.service runs on every boot
+# and checks if all snapper snapshots are migrated to /etc.
+# If that is the case, it will delete the old /var/lib/selinux folder.
+Source8:        cleanoldsepoldir.service.in
+Source9:        cleanoldsepoldir.sh
 
 Source18:       modules-minimum.lst
 
@@ -62,7 +72,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_for_executables}
 BuildRequires:  %{python_for_executables}-policycoreutils
 %else
-BuildRequires:  %primary_python
+BuildRequires:  %{primary_python}
 BuildRequires:  %{python_module policycoreutils}
 %endif
 BuildRequires:  checkpolicy
@@ -75,6 +85,15 @@ BuildRequires:  policycoreutils-devel
 # we need selinuxenabled
 Requires(pre):  policycoreutils >= %{POLICYCOREUTILSVER}
 Requires(pre):  pam-config
+# PED-12492 (bsc#1221342): Depend on libsemanage package that has configured /etc/selinux as store-root
+Provides:       %{name}-storeroot-etc
+Conflicts:      (libsemanage-conf without libsemanage-conf-storeroot-etc)
+%if %{suse_version} >= 1600
+# PED-12492 (boo#1221342): for >= 1600 the systemd-presets-common-SUSE will enable cleanoldsepoldir.service
+# Users on older unsupported versions need to manually enable cleanoldsepoldir.service.
+Conflicts:      (systemd-presets-common-SUSE without systemd-presets-common-SUSE-selinux-storeroot-etc-service)
+%endif
+
 Requires(posttrans): pam-config
 Requires(posttrans): selinux-tools
 Requires(posttrans): /usr/bin/sha512sum
@@ -104,7 +123,7 @@ make %common_params UNK_PERMS=%3 NAME=%1 TYPE=%2 DESTDIR=%{buildroot} install \
 make %common_params UNK_PERMS=%3 NAME=%1 TYPE=%2 DESTDIR=%{buildroot} install-appconfig \
 make %common_params UNK_PERMS=%3 NAME=%1 TYPE=%2 DESTDIR=%{buildroot} SEMODULE="%{_sbindir}/semodule -p %{buildroot} -X 100 " load \
 %{__mkdir} -p %{buildroot}%{_sysconfdir}/selinux/%1/logins \
-%{__mkdir} -p %{buildroot}%{_sharedstatedir}/selinux/%1/active/modules/{1,2,4}00 \
+%{__mkdir} -p %{buildroot}%{_sysconfdir}/selinux/%1/active/modules/{1,2,4}00 \
 touch %{buildroot}%{_sysconfdir}/selinux/%1/contexts/files/file_contexts.subs \
 install -m0644 ./config/file_contexts.subs_dist %{buildroot}%{_sysconfdir}/selinux/%1/contexts/files \
 install -m0644 ./dist/%1/setrans.conf %{buildroot}%{_sysconfdir}/selinux/%1/setrans.conf \
@@ -117,7 +136,7 @@ rm -f %{buildroot}%{_datadir}/selinux/%1/*pp*  \
 %{_bindir}/sha512sum %{buildroot}%{_sysconfdir}/selinux/%1/policy/policy.* | cut -d' ' -f 1 > %{buildroot}%{_sysconfdir}/selinux/%1/.policy.sha512; \
 rm -rf %{buildroot}%{_sysconfdir}/selinux/%1/contexts/netfilter_contexts  \
 rm -rf %{buildroot}%{_sysconfdir}/selinux/%1/modules/active/policy.kern \
-rm -f %{buildroot}%{_sharedstatedir}/selinux/%1/active/*.linked \
+rm -f %{buildroot}%{_sysconfdir}/selinux/%1/active/*.linked \
 %nil
 
 %define fileList() \
@@ -126,14 +145,14 @@ rm -f %{buildroot}%{_sharedstatedir}/selinux/%1/active/*.linked \
 %config(noreplace) %{_sysconfdir}/selinux/%1/setrans.conf \
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/selinux/%1/seusers \
 %dir %{_sysconfdir}/selinux/%1/logins \
-%dir %{_sharedstatedir}/selinux/%1/active \
-%verify(not md5 size mtime) %{_sharedstatedir}/selinux/%1/semanage.read.LOCK \
-%verify(not md5 size mtime) %{_sharedstatedir}/selinux/%1/semanage.trans.LOCK \
-%dir %attr(700,root,root) %{_sharedstatedir}/selinux/%1/active/modules \
-%dir %{_sharedstatedir}/selinux/%1/active/modules/100 \
-%dir %{_sharedstatedir}/selinux/%1/active/modules/200 \
-%dir %{_sharedstatedir}/selinux/%1/active/modules/400 \
-%verify(not md5 size mtime) %{_sharedstatedir}/selinux/%1/active/modules/100/base \
+%dir %{_sysconfdir}/selinux/%1/active \
+%verify(not md5 size mtime) %{_sysconfdir}/selinux/%1/semanage.read.LOCK \
+%verify(not md5 size mtime) %{_sysconfdir}/selinux/%1/semanage.trans.LOCK \
+%dir %attr(700,root,root) %{_sysconfdir}/selinux/%1/active/modules \
+%dir %{_sysconfdir}/selinux/%1/active/modules/100 \
+%dir %{_sysconfdir}/selinux/%1/active/modules/200 \
+%dir %{_sysconfdir}/selinux/%1/active/modules/400 \
+%verify(not md5 size mtime) %{_sysconfdir}/selinux/%1/active/modules/100/base \
 %dir %{_sysconfdir}/selinux/%1/policy/ \
 %verify(not md5 size mtime) %{_sysconfdir}/selinux/%1/policy/policy.* \
 %{_sysconfdir}/selinux/%1/.policy.sha512 \
@@ -177,18 +196,18 @@ rm -f %{buildroot}%{_sharedstatedir}/selinux/%1/active/*.linked \
 %{_datadir}/selinux/%1/base.lst \
 %{_datadir}/selinux/%1/modules.lst \
 %{_datadir}/selinux/%1/nonbasemodules.lst \
-%dir %{_sharedstatedir}/selinux/%1 \
-%{_sharedstatedir}/selinux/%1/active/commit_num \
-%{_sharedstatedir}/selinux/%1/active/users_extra \
-%{_sharedstatedir}/selinux/%1/active/homedir_template \
-%{_sharedstatedir}/selinux/%1/active/seusers \
-%{_sharedstatedir}/selinux/%1/active/file_contexts \
-%{_sharedstatedir}/selinux/%1/active/policy.kern \
-%{_sharedstatedir}/selinux/%1/active/modules_checksum \
-%ghost %{_sharedstatedir}/selinux/%1/active/policy.linked \
-%ghost %{_sharedstatedir}/selinux/%1/active/seusers.linked \
-%ghost %{_sharedstatedir}/selinux/%1/active/users_extra.linked \
-%verify(not md5 size mtime) %{_sharedstatedir}/selinux/%1/active/file_contexts.homedirs \
+%dir %{_sysconfdir}/selinux/%1 \
+%{_sysconfdir}/selinux/%1/active/commit_num \
+%{_sysconfdir}/selinux/%1/active/users_extra \
+%{_sysconfdir}/selinux/%1/active/homedir_template \
+%{_sysconfdir}/selinux/%1/active/seusers \
+%{_sysconfdir}/selinux/%1/active/file_contexts \
+%{_sysconfdir}/selinux/%1/active/policy.kern \
+%{_sysconfdir}/selinux/%1/active/modules_checksum \
+%ghost %{_sysconfdir}/selinux/%1/active/policy.linked \
+%ghost %{_sysconfdir}/selinux/%1/active/seusers.linked \
+%ghost %{_sysconfdir}/selinux/%1/active/users_extra.linked \
+%verify(not md5 size mtime) %{_sysconfdir}/selinux/%1/active/file_contexts.homedirs \
 %nil
 
 %define relabel() \
@@ -201,6 +220,161 @@ if selinuxenabled; then \
   fi; \
   /sbin/restorecon -e /run/media -R /root /var/log /var/run %{_sysconfdir}/passwd* %{_sysconfdir}/group* %{_sysconfdir}/*shadow* 2> /dev/null; \
 fi;
+
+%define preMigration() \
+# PED-12492 (bsc#1221342): Snapper rollbacks can cause snapshots to still require the old /var/lib/selinux location. \
+# This part checks the state of the system and creates marker files for the rest of the migration. \
+# If necessary, it will create a backup of /var/lib/selinux. \
+previous_selinux_modules_dir="/var/lib/selinux"; \
+if [ %1 -ne 1 ] || [[ "$(ls -A ${previous_selinux_modules_dir} 2>/dev/null)" ]]; then \
+    check_tmpfiles=(%{_sysconfdir}/selinux/{temp_selinux_modules_dir_created,selinux_modules_migrated-%2,var_lib_selinux_deleted}); \
+    check_btrfs_snapshot_etc=0; \
+    is_btrfs=0; \
+    # check if / is btrfs \
+    if findmnt -t btrfs / > /dev/null 2>&1; then \
+        is_btrfs=1; \
+        # check if /etc is on a snapshotted root subvolume \
+        if [[ $(btrfs subvolume list / | grep -c "\@/etc") -gt 0 ]]; then \
+            check_btrfs_snapshot_etc=1; \
+            if [[ ! -f "${check_tmpfiles[1]}" || ! -f "${check_tmpfiles[2]}" ]]; then \
+                echo "--- WARNING: Non-default installation with separate subvolume for \\`/etc\\` detected. ---"; \
+                echo "---          Migration will continue but in case of rollback - manual intervention might be needed. ---"; \
+            elif [ -f "${check_tmpfiles[1]}" ]; then \
+                echo "---          If your system has non-snapshotted subvolume \\`/etc\\`, you need to reinstall selinux-policy packages after rollback."; \
+            elif [ -f "${check_tmpfiles[2]}" ]; then \
+                echo "--- INFO: SELinux policy modules are stored in \\`/etc/selinux\\`. ---"; \
+                echo "---       and \\`/var/lib/selinux\\` removed. No interaction needed. ---"; \
+            fi; \
+        fi; \
+    else \
+        if [[ ! -f "${check_tmpfiles[1]}" || ! -f "${check_tmpfiles[2]}" ]]; then \
+            echo "--- WARNING: Non-default installation with no btrfs \\`/\\` detected. ---"; \
+            echo "---          Migration will continue but in case of selinux-policy downgrade - manual intervention might be needed. ---"; \
+            echo "---          \\`/var/lib/selinux\\` will be deleted one month after migration ---"; \
+        elif [ -f "${check_tmpfiles[2]}" ]; then \
+            echo "--- INFO: SELinux policy modules are stored in \\`/etc/selinux\\`. ---"; \
+            echo "---       and \\`/var/lib/selinux\\` removed. No interaction needed. ---"; \
+	fi ; \
+    fi; \
+#------\
+    # check if /var/lib/selinux has been migrated and print info \
+    if [[ ! -f "${check_tmpfiles[1]}" && ! -f "${check_tmpfiles[2]}" ]]; then \
+        echo; \
+        echo "--- WARNING: Beware this package changes installation of SELinux modules (and copy custom ones for smooth transition) from \\`/var/lib/selinux\\` to \\`/etc/selinux\\` ---"; \
+        echo "---          Also it installs service \\`cleanoldsepoldir.service\\` and script in \\`%{_libexecdir}/selinux\\` which helps you to identify not migrated modules \(just in case of corner cases\). ---"; \
+        echo "---          On boot service will run a script to check snapshots and DELETE \\`/var/lib/selinux\\` when no snapshots use this directory. ---"; \
+        echo; \
+        if [ "${is_btrfs}" -eq 0 ]; then \
+            echo "INFO: No btrfs on \\`/\\`, \\`/var/lib/selinux\\` backup needed."; \
+        elif [ "${check_btrfs_snapshot_etc}" -eq 0 ]; then \
+            echo "INFO: \\`/etc\\` on snapshotted root, \\`/var/lib/selinux\\` backup needed."; \
+        else \
+            echo "INFO: \\`/etc\\` on separated subvolume, \\`/var/lib/selinux\\` backup needed."; \
+        fi; \
+        # check /var/lib/dir state and create tmp directory of SELinux policy \
+        touch %{_sysconfdir}/selinux/selinux_migration_pending-%2; \
+        temp_selinux_module_dir="/var/lib/selinux_tmpbck"; \
+        if [ -d "${previous_selinux_modules_dir}" ]; then \
+            echo "INFO: Creating tmp copy of \\`/var/lib/selinux\\` to keep previous rollbacks work for selinux-policy-%2."; \
+	    mkdir -p "${temp_selinux_module_dir}" && cp -a ${previous_selinux_modules_dir}/. ${temp_selinux_module_dir}/; \
+            echo "DO NOT DELETE THIS FILE - Part of SELinux policy migration - it will be deleted after installation of the package." > %{_sysconfdir}/selinux/temp_selinux_modules_dir_created; \
+	else \
+	    echo "ERROR: ${previous_selinux_modules_dir} does not exists."; \
+        fi; \
+    else \
+      # reminder when new update package arrives \
+        if [ -f "${check_tmpfiles[1]}" ]; then \
+            echo "INFO: SELinux policy store root already in \\`/etc/selinux\\`."; \
+            echo "--- In case of issues with custom SELinux modules you can run \\`%{_libexecdir}/selinux/cleanoldsepoldir.sh --check-custom-selinux-modules\\` or RE-APPLY them manually. ---"; \
+            echo "--- Backup of modules if exists is in \\`/var/lib/selinux/{minimum,sandbox,targeted,}/active\\`. --- "; \
+            echo "--- \\`/var/lib/selinux\\` will be automaticaly DELETED once there are no snapshots with old path. ---"; \
+        fi; \
+        if [ -f "${check_tmpfiles[2]}" ]; then \
+            echo "INFO: SELinux policy modules are stored in \\`/etc/selinux\\`."; \
+            echo "      and \\`/var/lib/selinux\\` removed. No interaction needed."; \
+        fi; \
+    fi; \
+else \
+    # in case of clean installation of the package create migration marker files \
+    if [ ! -f "%{_sysconfdir}/selinux/selinux_modules_migrated-%2" ]; then \
+        echo "DO NOT DELETE THIS FILE - Part of SELinux policy root path migration from \\'/var/lib/selinux\\' to \\'/etc/selinux\\'." > %{_sysconfdir}/selinux/selinux_modules_migrated-%2; \
+    else \
+        echo "INFO: Marker file selinux_modules_migrated-%2 exists."\
+    fi;\
+fi;\
+%nil
+
+%define postMigration() \
+# PED-12492 (bsc#1221342): Snapper rollbacks can cause snapshots to still require the old /var/lib/selinux location. \
+# This part copies the custom local SELinux changes to /etc/selinux. \
+current_selinux_modules_dir="%{_sysconfdir}/selinux"; \
+if [[ %1 -ne 1  || -f "${current_selinux_modules_dir}/selinux_migration_pending-%2" ]]; then \
+    # rename tmp dir /var/lib/selinux_tmpbck to old /var/lib/selinux so we can keep it in case of rollback \
+    check_tmpfiles=(%{_sysconfdir}/selinux/{temp_selinux_modules_dir_created,selinux_modules_migrated-%2,var_lib_selinux_deleted}); \
+    custom_local_files_relative_path="/selinux/%2/active"; \
+    previous_selinux_modules_dir="%{_sharedstatedir}/selinux"; \
+    temp_selinux_module_dir="/var/lib/selinux_tmpbck"; \
+    # Copy custom modules and local modifications to keep smooth transition to /etc/selinux for for selinux-policy-%2 \
+    if [[ -f "${check_tmpfiles[0]}" && ! -f "${check_tmpfiles[1]}" && ! -f "${check_tmpfiles[2]}" ]]; then \
+        if [ -d "${previous_selinux_modules_dir}" ]; then \
+            if [ -f "${current_selinux_modules_dir}/selinux_migration_pending-%2" ]; then \
+                # Copy local modifications (.local files) \
+                check_local_files="pkeys ibendports ports interfaces nodes booleans seusers users users_extra file_contexts"; \
+                for f in ${check_local_files}; do \
+                    [ -e "${temp_selinux_module_dir}/%2/active/${f}.local" ] && \
+                    cp -f "${temp_selinux_module_dir}/%2/active/${f}.local" "${current_selinux_modules_dir}/%2/active/${f}.local"; \
+                done; \
+                # Copy custom modules (200, 400, disabled) \
+                echo "INFO: Copying custom modules from ${previous_selinux_modules_dir} to ${current_selinux_modules_dir} for selinux-policy-%2."; \
+                if [ -d "${temp_selinux_module_dir}/%2/active/modules" ]; then \
+                    for d in 200 400 disabled; do \
+                        [ -d "${temp_selinux_module_dir}/%2/active/modules/${d}" ] && \
+                        cp -a "${temp_selinux_module_dir}/%2/active/modules/${d}" "${current_selinux_modules_dir}/%2/active/modules/"; \
+                    done; \
+                fi; \
+               # Finalize this flavor \
+                echo "DO NOT DELETE THIS FILE - Part of SELinux policy migration" > ${current_selinux_modules_dir}/selinux_modules_migrated-%2 && \
+                rm --preserve-root=all -f "${current_selinux_modules_dir}/selinux_migration_pending-%2"; \
+            fi; \
+            # Copy /var/lib/selinux_tmpback to /var/lib/selinux when no flavors missing migration \
+	    if ! ls "${current_selinux_modules_dir}"/ 2>/dev/null | grep -qE "selinux_migration_pending-(minimum|mls|targeted)$"; then \
+                if [[ "$(ls -A ${temp_selinux_module_dir} 2>/dev/null)" ]]; then \
+                    echo "INFO: All flavors migrated. Restoring /var/lib/selinux."; \
+                    find "${previous_selinux_modules_dir}" -mindepth 1 -delete 2>/dev/null && \
+                    cp -a "${temp_selinux_module_dir}/." "${previous_selinux_modules_dir}/" && \
+                    rm --preserve-root=all -rf "${temp_selinux_module_dir}" && \
+                    rm --preserve-root=all -f "${current_selinux_modules_dir}"/temp_selinux_modules_dir_created; \
+                    # check for possible not migrated custom modules \
+                    if [ ! -f "${check_tmpfiles[2]}" ]; then \
+                        [ -f "%{_libexecdir}/selinux/cleanoldsepoldir.sh" ] && %{_libexecdir}/selinux/cleanoldsepoldir.sh --check-custom-selinux-modules; \
+                    fi; \
+                else \
+                    echo "ERROR: Backup dir empty. Migration failure."; \
+                    exit 1; \
+                fi; \
+	    else \
+                echo "INFO: Not all flavors migrated. Not restoring /var/lib/selinux."; \
+            fi; \
+        else \
+            echo "ERROR: ${previous_selinux_modules_dir} does not exists."; \
+            exit 1; \
+        fi; \
+    fi; \
+fi; \
+%nil
+
+%define postunMigration() \
+# PED-12492 (bsc#1221342): Snapper rollbacks can cause snapshots to still require the old /var/lib/selinux location. \
+# This part delete marker files per flavor. \
+if [ "$1" = 0 ]; then \
+    check_tmpfiles=(%{_sysconfdir}/selinux/{temp_selinux_modules_dir_created,selinux_migration_pending-%2,selinux_modules_migrated-%2,var_lib_selinux_deleted}); \
+    current_selinux_modules_dir="%{_sysconfdir}/selinux"; \
+    for i in "${check_tmpfiles[@]}"; do \
+       [ -f "${i}" ] && rm --preserve-root=all "${i}" \
+    done \
+    # TBD - cleanup *.local files" \
+fi; \
+%nil
 
 %define preInstall() \
 if [ "$1" -ne 1 ] && [ -s %{_sysconfdir}/selinux/config ]; then \
@@ -218,7 +392,16 @@ if [ "$1" -ne 1 ] && [ -s %{_sysconfdir}/selinux/config ]; then \
       rm %{_sysconfdir}/selinux/%1/.rebuild; \
     fi; \
   fi; \
-fi;
+fi; \
+%nil
+
+%define postInstall() \
+. %{_sysconfdir}/selinux/config; \
+if [ -e %{_sysconfdir}/selinux/%2/.rebuild ]; then \
+  rm %{_sysconfdir}/selinux/%2/.rebuild; \
+  /usr/sbin/semodule -B -n -s %2 2> /dev/null; \
+fi; \
+%postInstallRelabel %1 %2
 
 %define postInstallRelabel() \
 if [ -n "${TRANSACTIONAL_UPDATE}" ]; then \
@@ -242,15 +425,36 @@ else \
     # run fixfiles on next boot \
     touch /etc/selinux/.autorelabel ; \
   fi; \
-fi;
-
-%define postInstall() \
-. %{_sysconfdir}/selinux/config; \
-if [ -e %{_sysconfdir}/selinux/%2/.rebuild ]; then \
-  rm %{_sysconfdir}/selinux/%2/.rebuild; \
-  /usr/sbin/semodule -B -n -s %2 2> /dev/null; \
 fi; \
-%postInstallRelabel %1 %2
+%nil
+
+%define postInstallMinimum() \
+modules=$(cat %{_datadir}/selinux/minimum/modules.lst); \
+basemodules=$(cat %{_datadir}/selinux/minimum/base.lst); \
+enabledmodules=$(cat %{_datadir}/selinux/minimum/modules-enabled.lst); \
+mkdir -p %{_sysconfdir}/selinux/minimum/active/modules/disabled; \
+if [ "$1" -eq 1 ]; then \
+    for p in $modules; do \
+        touch %{_sysconfdir}/selinux/minimum/active/modules/disabled/"$p"; \
+    done; \
+    for p in $basemodules $enabledmodules; do \
+        rm -f %{_sysconfdir}/selinux/minimum/active/modules/disabled/"$p"; \
+    done; \
+    printf "login -m  -s unconfined_u -r s0-s0:c0.c1023 __default__\\nlogin -m  -s unconfined_u -r s0-s0:c0.c1023 root\\n" | %{_sbindir}/semanage import -S minimum -f -; \
+    /sbin/restorecon -R /root /var/log /var/run 2> /dev/null; \
+    %{_sbindir}/semodule -B -s minimum 2> /dev/null; \
+else \
+    instpackages=$(cat %{_datadir}/selinux/minimum/instmodules.lst); \
+    for p in $modules; do \
+        touch %{_sysconfdir}/selinux/minimum/active/modules/disabled/"$p"; \
+    done; \
+    for p in $instpackages snapper dbus kerberos nscd rtkit; do \
+        rm -f %{_sysconfdir}/selinux/minimum/active/modules/disabled/"$p"; \
+    done; \
+    %{_sbindir}/semodule -B -s minimum 2> /dev/null; \
+fi; \
+%postInstallRelabel $1 minimum \
+%nil
 
 %define modulesList() \
 awk '$1 !~ "/^#/" && $2 == "=" && $3 == "module" { printf "%%s ", $1 }' ./policy/modules.conf > %{buildroot}%{_datadir}/selinux/%1/modules.lst \
@@ -260,7 +464,7 @@ awk '$1 !~ "/^#/" && $2 == "=" && $3 == "base" { printf "%%s ", $1 }' ./policy/m
 modules=$(cat %{buildroot}%{_datadir}/selinux/%1/modules.lst); \
 for i in $modules; do \
   if [ "$i" != "sandbox" ]; then \
-    echo "%verify(not md5 size mtime) %{_sharedstatedir}/selinux/%1/active/modules/100/$i" >> %{buildroot}%{_datadir}/selinux/%1/nonbasemodules.lst ; \
+    echo "%verify(not md5 size mtime) %{_sysconfdir}/selinux/%1/active/modules/100/$i" >> %{buildroot}%{_datadir}/selinux/%1/nonbasemodules.lst ; \
   fi; \
 done;
 
@@ -278,6 +482,8 @@ of systems and used as the basis for creating other policies.
 %ghost %config(noreplace) %{_sysconfdir}/selinux/config
 %{_tmpfilesdir}/selinux-policy.conf
 %{_rpmconfigdir}/macros.d/macros.selinux-policy
+%{_unitdir}/cleanoldsepoldir.service
+%{_libexecdir}/selinux/cleanoldsepoldir.sh
 
 %package sandbox
 Summary:        SELinux policy sandbox
@@ -292,7 +498,7 @@ SELinux sandbox policy used for the policycoreutils-sandbox package
 
 %post sandbox
 rm -f %{_sysconfdir}/selinux/*/modules/active/modules/sandbox.pp.disabled 2>/dev/null
-rm -f %{_sharedstatedir}/selinux/*/active/modules/disabled/sandbox 2>/dev/null
+rm -f %{_sysconfdir}/selinux/*/active/modules/disabled/sandbox 2>/dev/null
 %{_sbindir}/semodule -n -X 100 -i %{_datadir}/selinux/packages/sandbox.pp 2> /dev/null
 if %{_sbindir}/selinuxenabled ; then
   %{_sbindir}/load_policy
@@ -332,7 +538,7 @@ cp %{SOURCE60} %{buildroot}%{_tmpfilesdir}
 mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d
 install -m 644 %{SOURCE95} %{buildroot}%{_rpmconfigdir}/macros.d/
 sed -i 's|SELINUXPOLICYVERSION|%{version}-%{release}|' %{buildroot}%{_rpmconfigdir}/macros.d/macros.selinux-policy
-sed -i 's|SELINUXSTOREPATH|%{_sharedstatedir}/selinux|' %{buildroot}%{_rpmconfigdir}/macros.d/macros.selinux-policy
+sed -i 's|SELINUXSTOREPATH|%{_sysconfdir}/selinux|' %{buildroot}%{_rpmconfigdir}/macros.d/macros.selinux-policy
 
 # Always create policy module package directories
 mkdir -p %{buildroot}%{_datadir}/selinux/{targeted,mls,minimum,modules}/
@@ -346,7 +552,7 @@ make clean
 %makeModulesConf targeted
 %installCmds targeted mcs allow
 # recreate sandbox.pp
-rm -rf %{buildroot}%{_sharedstatedir}/selinux/targeted/active/modules/100/sandbox
+rm -rf %{buildroot}%{_sysconfdir}/selinux/targeted/active/modules/100/sandbox
 %make_build %common_params UNK_PERMS=allow NAME=targeted TYPE=mcs sandbox.pp
 mv sandbox.pp %{buildroot}%{_datadir}/selinux/packages/sandbox.pp
 %modulesList targeted
@@ -359,7 +565,7 @@ mv sandbox.pp %{buildroot}%{_datadir}/selinux/packages/sandbox.pp
 %installCmds minimum mcs allow
 # Sandbox is only targeted
 rm -f %{buildroot}%{_sysconfdir}/selinux/minimum/modules/active/modules/sandbox.pp
-rm -rf %{buildroot}%{_sharedstatedir}/selinux/minimum/active/modules/100/sandbox
+rm -rf %{buildroot}%{_sysconfdir}/selinux/minimum/active/modules/100/sandbox
 install -p -m 644 %{SOURCE18} %{buildroot}%{_datadir}/selinux/minimum/modules-enabled.lst
 %modulesList minimum
 %nonBaseModulesList minimum
@@ -391,6 +597,19 @@ mv %{buildroot}%{_datadir}/man/man8/style.css %{buildroot}%{_datadir}/selinux/de
 rm %{buildroot}%{_mandir}/man8/container_selinux.8*
 rm %{buildroot}%{_datadir}/selinux/devel/include/services/container.if
 %fdupes -s %{buildroot}%{_mandir}
+# Due to PED-12492 (bsc#1221342): hard link identical files in stead of hard copy
+# to fix rpmlint duplicate-files-waste error.
+%fdupes -s %{buildroot}%{_sysconfdir}/selinux/targeted/contexts
+%fdupes -s %{buildroot}%{_sysconfdir}/selinux/minimum/contexts
+
+
+# PED-12492 (bsc#1221342): install service file and script to check old snaphsots.
+sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{_sourcedir}/cleanoldsepoldir.service.in > cleanoldsepoldir.service
+install -D -m 644 cleanoldsepoldir.service %{buildroot}%{_unitdir}/cleanoldsepoldir.service
+install -D -m 754 %{SOURCE9} %{buildroot}%{_libexecdir}/selinux/cleanoldsepoldir.sh
+
+%pre
+%service_add_pre cleanoldsepoldir.service
 
 %post
 if [ ! -s %{_sysconfdir}/selinux/config ]; then
@@ -441,12 +660,14 @@ fi
 # Can be dropped once PED-12491 is implemented.
 if [ -n "${TRANSACTIONAL_UPDATE}" ]; then
   for p in targeted minimum mls; do
-    if [ -d %{_sharedstatedir}/selinux/$p/active/modules/100 ]; then
-      find %{_sharedstatedir}/selinux/$p/active/modules/100 -type d -empty -delete -print
+    if [ -d %{_sysconfdir}/selinux/$p/active/modules/100 ]; then
+      find %{_sysconfdir}/selinux/$p/active/modules/100 -type d -empty -delete -print
     fi
   done
 fi
 %endif
+
+%service_add_post cleanoldsepoldir.service
 exit 0
 
 %define post_un() \
@@ -463,7 +684,9 @@ if [ "$1" -eq 0 ]; then \
   fi; \
   pam-config -d --selinux ; \
 fi; \
-exit 0
+
+%preun
+%service_del_preun cleanoldsepoldir.service
 
 %postun
 if [ "$1" = 0 ]; then
@@ -471,7 +694,17 @@ if [ "$1" = 0 ]; then
   if [ -s %{_sysconfdir}/selinux/config ]; then
     sed -i 's/^SELINUX=.*/SELINUX=permissive/g' %{_sysconfdir}/selinux/config
   fi
+
+  # PED-12492 (bsc#1221342): cleanup of marker_files in /etc/selinux"
+  check_tmpfiles=(%{_sysconfdir}/selinux/{temp_selinux_modules_dir_created,selinux_modules_migrated-minimum, selinux_modules_migrated-mls, selinux_modules_migrated-targeted,var_lib_selinux_deleted})
+  current_selinux_modules_dir="%{_sysconfdir}/selinux"
+  for i in $check_tmpfiles; do
+     [[ -f "${current_selinux_modules_dir}/${i}" ]] && rm --preserve-root=all ${current_selinux_modules_dir}/{i}
+  done
 fi
+
+%service_del_postun cleanoldsepoldir.service
+
 exit 0
 
 %package devel
@@ -532,13 +765,17 @@ SELinux policy targeted base module.
 
 %pre targeted
 %preInstall targeted
+%preMigration $1 targeted
 
 %posttrans targeted
+%postMigration $1 targeted
 %postInstall $1 targeted
 exit 0
 
 %postun targeted
+%postunMigration $1 targeted
 %post_un $1 targeted
+exit 0
 
 %triggerin -- libpcre2-8-0
 %{_sbindir}/selinuxenabled && %{_sbindir}/semodule -nB 2> /dev/null
@@ -567,43 +804,21 @@ SELinux policy minimum base module.
 
 %pre minimum
 %preInstall minimum
+%preMigration $1 minimum
 if [ "$1" -ne 1 ]; then
   %{_sbindir}/semodule -s minimum --list-modules=full | awk '{ if ($4 != "disabled") print $2; }' > %{_datadir}/selinux/minimum/instmodules.lst
 fi
 
-%post minimum
-modules=$(cat %{_datadir}/selinux/minimum/modules.lst)
-basemodules=$(cat %{_datadir}/selinux/minimum/base.lst)
-enabledmodules=$(cat %{_datadir}/selinux/minimum/modules-enabled.lst)
-mkdir -p %{_sharedstatedir}/selinux/minimum/active/modules/disabled
-if [ "$1" -eq 1 ]; then
-  for p in $modules; do
-    touch %{_sharedstatedir}/selinux/minimum/active/modules/disabled/"$p"
-  done
-  for p in $basemodules $enabledmodules; do
-    rm -f %{_sharedstatedir}/selinux/minimum/active/modules/disabled/"$p"
-  done
-  %{_sbindir}/semanage import -S minimum -f - << __eof
-login -m  -s unconfined_u -r s0-s0:c0.c1023 __default__
-login -m  -s unconfined_u -r s0-s0:c0.c1023 root
-__eof
-  /sbin/restorecon -R /root /var/log /var/run 2> /dev/null
-  %{_sbindir}/semodule -B -s minimum 2> /dev/null
-else
-  instpackages=$(cat %{_datadir}/selinux/minimum/instmodules.lst)
-  for p in $modules; do
-    touch %{_sharedstatedir}/selinux/minimum/active/modules/disabled/"$p"
-  done
-  for p in $instpackages snapper dbus kerberos nscd rtkit; do
-    rm -f %{_sharedstatedir}/selinux/minimum/active/modules/disabled/"$p"
-  done
-  %{_sbindir}/semodule -B -s minimum 2> /dev/null
-fi
-%postInstallRelabel $1 minimum
+
+%posttrans minimum
+%postMigration $1 minimum
+%postInstallMinimum $1
 exit 0
 
 %postun minimum
+%postunMigration $1 minimum
 %post_un $1 minimum
+exit 0
 
 %files minimum -f %{buildroot}%{_datadir}/selinux/minimum/nonbasemodules.lst
 %config(noreplace) %{_sysconfdir}/selinux/minimum/contexts/users/unconfined_u
@@ -629,12 +844,16 @@ SELinux policy mls base module.
 
 %pre mls
 %preInstall mls
+%preMigration $1 mls
 
 %posttrans mls
+%postMigration $1 mls
 %postInstall $1 mls
 
 %postun mls
+%postunMigration $1 mls
 %post_un $1 mls
+exit 0
 
 %files mls -f %{buildroot}%{_datadir}/selinux/mls/nonbasemodules.lst
 %config(noreplace) %{_sysconfdir}/selinux/mls/contexts/users/unconfined_u

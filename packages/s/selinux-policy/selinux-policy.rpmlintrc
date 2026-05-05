@@ -4,7 +4,6 @@ addFilter("selinux-policy-(targeted|minimum|mls|sandbox).* W: non-conffile-in-et
 
 # Zero length files
 addFilter("selinux-policy-(targeted|minimum|mls|sandbox).* zero-length /etc/selinux/.*")
-addFilter("selinux-policy-(targeted|minimum|mls|sandbox).* zero-length /var/lib/selinux/.*")
 
 # Hidden sha512 file
 addFilter("selinux-policy-(targeted|minimum|mls|sandbox).* hidden-file-or-dir /etc/selinux/(targeted|minimum|mls|sandbox)/.policy.sha512")
@@ -12,5 +11,15 @@ addFilter("selinux-policy-(targeted|minimum|mls|sandbox).* hidden-file-or-dir /e
 # No check section needed
 addFilter("W: no-%check-section")
 
-# Suppress dir-or-file-outside-snapshot until policy is properly transactional (bsc#1253046)
-addFilter("dir-or-file-outside-snapshot")
+# PED-12492 (bsc#1221342)
+# Since store-root is set to /etc/selinux and files moved to /etc/selinux, rpmlint triggers this warning.
+# Files from STORE_ROOT/SELINUXTYPE/active will be copied to /etc/selinux/SELINUXTYPE/context/files
+# on policy rebuild. Adding these entries for now, might be restructured upstream anyway.
+addFilter("W: files-duplicate /etc/selinux/minimum/contexts/files/file_contexts /etc/selinux/minimum/active/file_contexts")
+addFilter("W: files-duplicate /etc/selinux/minimum/contexts/files/file_contexts.homedirs /etc/selinux/minimum/active/file_contexts.homedirs")
+addFilter("W: files-duplicate /etc/selinux/minimum/policy/policy.35 /etc/selinux/minimum/active/policy.kern")
+addFilter("W: files-duplicate /etc/selinux/minimum/seusers /etc/selinux/minimum/active/seusers")
+addFilter("W: files-duplicate /etc/selinux/targeted/contexts/files/file_contexts /etc/selinux/targeted/active/file_contexts")
+addFilter("W: files-duplicate /etc/selinux/targeted/contexts/files/file_contexts.homedirs /etc/selinux/targeted/active/file_contexts.homedirs")
+addFilter("W: files-duplicate /etc/selinux/targeted/policy/policy.35 /etc/selinux/targeted/active/policy.kern")
+addFilter("W: files-duplicate /etc/selinux/targeted/seusers /etc/selinux/targeted/active/seusers")

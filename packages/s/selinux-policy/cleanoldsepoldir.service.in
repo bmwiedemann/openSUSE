@@ -1,0 +1,25 @@
+[Unit]
+Description=Run SELinux Script on boot to check if it is safe to delete /var/lib/selinux after migration to /etc
+After=local-fs.target
+After=health-checker.service
+Conflicts=shutdown.target
+# do not run if file exists
+ConditionPathExists=!/etc/selinux/var_lib_selinux_deleted
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+User=root
+ExecStart=@LIBEXECDIR@/selinux/cleanoldsepoldir.sh
+TimeoutSec=300
+StandardOutput=journal
+StandardError=journal
+KillMode=mixed
+
+# Sandboxing directives
+WorkingDirectory=/
+ReadOnlyPaths=/
+ReadWritePaths=/etc /var/lib/
+
+[Install]
+WantedBy=multi-user.target

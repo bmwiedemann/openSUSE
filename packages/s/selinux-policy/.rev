@@ -2356,4 +2356,16 @@ there will be 4 permissive avcs left regarding pcrlock, but those will be fixed 
     <comment>fixes</comment>
     <requestid>1347140</requestid>
   </revision>
+  <revision rev="157" vrev="2">
+    <srcmd5>b2ef052eafa48c84795889f4ba4506dc</srcmd5>
+    <version>20260414</version>
+    <time>1777986890</time>
+    <user>anag_factory</user>
+    <comment>bsc#1261698
+
+/var/lib/selinux change. Please contact Zdenek Kubala in case of problems and also maybe sync up regarding publishing, thanks!
+
+Needs to go together with libsemanage change</comment>
+    <requestid>1349823</requestid>
+  </revision>
 </revisionlist>
