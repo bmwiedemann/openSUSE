@@ -667,4 +667,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1341095 from glaubitz)</comment>
     <requestid>1341137</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e6a8ab775edc75fc38116d5803de13cc</srcmd5>
+    <version>1.40.0</version>
+    <time>1777986865</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.40.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1350612 from glaubitz)</comment>
+    <requestid>1350680</requestid>
+  </revision>
 </revisionlist>
