@@ -17,14 +17,14 @@
 
 
 Name:           starboard
-Version:        0.15.32
+Version:        0.15.37
 Release:        0
 Summary:        Kubernetes-native security toolkit
 License:        Apache-2.0
 URL:            https://github.com/aquasecurity/starboard
 Source:         starboard-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.24 >= 1.24.11
+BuildRequires:  go1.26 >= 1.26.2
 
 %description
 Starboard integrates security tools into the Kubernetes environment, so that
@@ -38,11 +38,17 @@ security reports available through familiar Kubernetes tools.
 %autosetup -p 1 -a 1
 
 %build
-go build -mod=vendor \
+go build \
+   -mod=vendor \
+   -buildmode=pie \
    -o ./bin/starboard ./cmd/starboard/main.go
-go build -mod=vendor \
+go build \
+   -mod=vendor \
+   -buildmode=pie \
    -o ./bin/starboard-operator ./cmd/starboard-operator/main.go
-go build -mod=vendor \
+go build \
+   -mod=vendor \
+   -buildmode=pie \
    -o ./bin/starboard-scanner-aqua ./cmd/scanner-aqua/main.go
 
 %install

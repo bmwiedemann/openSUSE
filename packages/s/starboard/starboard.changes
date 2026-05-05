@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  4 16:51:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.15.37 (no releases between .32 and this one):
+  * 552aaa9 ci: fix timeout issue (#1443)
+
+-------------------------------------------------------------------
 Mon Feb  2 13:48:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.15.32:
