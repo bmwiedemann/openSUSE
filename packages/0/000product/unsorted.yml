@@ -1544,9 +1544,6 @@ unsorted:
   - bluez-deprecated 
   - bluez-devel 
   - bluez-devel-32bit 
-  - bluez-qt-devel 
-  - bluez-qt-imports 
-  - bluez-qt-udev 
   - bluez-test 
   - bluez-zsh-completion 
   - bmake 
@@ -3500,6 +3497,8 @@ unsorted:
   - dragonplayer-lang 
   - drawing 
   - drawing-lang 
+  - drawy 
+  - drawy-lang 
   - drbd 
   - drbd-formula 
   - drbd-kmp-default 
@@ -8060,7 +8059,6 @@ unsorted:
   - gssntlmssp 
   - gssntlmssp-devel 
   - gssproxy 
-  - gst-siddecfp 
   - gst-thumbnailers 
   - gst123 
   - gstreamer-32bit 
@@ -11213,7 +11211,6 @@ unsorted:
   - libKCompactDisc6-5 
   - libKDb3-4 
   - libKF5Attica5 
-  - libKF5BluezQt6 
   - libKF5CalendarEvents5 
   - libKF5Cddb5 
   - libKF5ConfigQml5 
@@ -13241,7 +13238,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla54 
+  - libfilezilla57 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -14897,9 +14894,9 @@ unsorted:
   - libnbd0 
   - libnblib_gmx0 
   - libncnn1 
-  - libnco-5_3_4 
+  - libnco-5_3_9 
   - libnco-devel 
-  - libnco_c++-5_3_4 
+  - libnco_c++-5_3_9 
   - libncurses5 
   - libncurses5-32bit 
   - libncurses6-32bit 
@@ -14953,8 +14950,8 @@ unsorted:
   - libnfc-tools 
   - libnfc6 
   - libnfd1 
-  - libnfdump-1_7_7 
-  - libnffile-1_7_7 
+  - libnfdump-1_7_8 
+  - libnffile-1_7_8 
   - libnfnetlink-devel 
   - libnfnetlink0-32bit 
   - libnfs-devel 
@@ -15361,6 +15358,8 @@ unsorted:
   - libpcap1-32bit 
   - libpcd-devel 
   - libpcd2 
+  - libpcg-c0 
+  - libpcg-c0-devel 
   - libpci3-32bit 
   - libpciaccess-devel 
   - libpciaccess0-32bit 
@@ -16246,7 +16245,7 @@ unsorted:
   - libshp4 
   - libshumate-devel 
   - libsidplayfp-devel 
-  - libsidplayfp6 
+  - libsidplayfp7 
   - libsigc++2-devel 
   - libsigc++3-devel 
   - libsigc-2_0-0-32bit 
@@ -16647,11 +16646,11 @@ unsorted:
   - libtheoraenc2-32bit 
   - libthreadar-devel 
   - libthreadar1000 
-  - libthrift-0_22_0 
+  - libthrift-0_23_0 
   - libthrift-devel 
   - libthrift_c_glib0 
-  - libthriftnb-0_22_0 
-  - libthriftz-0_22_0 
+  - libthriftnb-0_23_0 
+  - libthriftz-0_23_0 
   - libtidy-devel 
   - libtidy58 
   - libtidyp-1_04-0 
@@ -16703,7 +16702,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent40 
+  - libtorrent41 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -16811,7 +16810,7 @@ unsorted:
   - libudunits2-0 
   - libuev-devel 
   - libuev3 
-  - libuhd4_9_0 
+  - libuhd4_10_0 
   - libuhttpmock-1_0-1 
   - libulfius2_7 
   - libulockmgr1 
@@ -18800,6 +18799,9 @@ unsorted:
   - mcjoin 
   - mcomix 
   - mcp-dap-server 
+  - mcp-server-systemd 
+  - mcp-server-systemd-gatekeeper 
+  - mcp-server-systemd-test 
   - mcphost 
   - mcphost-bash-completion 
   - mcphost-fish-completion 
@@ -21029,7 +21031,6 @@ unsorted:
   - owncloud-extensions-resources 
   - owntone 
   - oxipng 
-  - oxygen5-sounds 
   - oxygen6 
   - oxygen6-cursors 
   - oxygen6-decoration 
@@ -23532,6 +23533,7 @@ unsorted:
   - postgresql18-orafce 
   - postgresql18-pgagent 
   - postgresql18-pgaudit 
+  - postgresql18-pgsql-ogr-fdw 
   - postgresql18-pgvector 
   - postgresql18-plperl 
   - postgresql18-plpython 
@@ -24395,7 +24397,6 @@ unsorted:
   - python311-PyNamecheap 
   - python311-PyOgg 
   - python311-PyOpenAL 
-  - python311-PyPDF2 
   - python311-PyPika 
   - python311-PyPrind 
   - python311-PyQRCode 
@@ -26212,7 +26213,6 @@ unsorted:
   - python311-leglight 
   - python311-lesscpy 
   - python311-lexicon 
-  - python311-lfdfiles 
   - python311-lhafile 
   - python311-lib4sbom 
   - python311-libarchive 
@@ -28037,7 +28037,6 @@ unsorted:
   - python311-xarray 
   - python311-xarray-accel 
   - python311-xarray-complete 
-  - python311-xarray-einstats 
   - python311-xarray-io 
   - python311-xarray-parallel 
   - python311-xarray-viz 
@@ -28308,7 +28307,6 @@ unsorted:
   - python313-PyNamecheap 
   - python313-PyOgg 
   - python313-PyOpenAL 
-  - python313-PyPDF2 
   - python313-PyPika 
   - python313-PyPrind 
   - python313-PyQRCode 
@@ -32227,7 +32225,6 @@ unsorted:
   - python314-PyNamecheap 
   - python314-PyOgg 
   - python314-PyOpenAL 
-  - python314-PyPDF2 
   - python314-PyPika 
   - python314-PyPrind 
   - python314-PyQRCode 
@@ -32294,6 +32291,7 @@ unsorted:
   - python314-Sphinx-latex 
   - python314-StrEnum 
   - python314-TagStats 
+  - python314-Telethon 
   - python314-TermRecord 
   - python314-Transplant 
   - python314-Trololio 
@@ -49124,6 +49122,8 @@ unsorted:
   - tree-sitter-luap-devel 
   - tree-sitter-luau 
   - tree-sitter-luau-devel 
+  - tree-sitter-mail 
+  - tree-sitter-mail-devel 
   - tree-sitter-markdown 
   - tree-sitter-meson 
   - tree-sitter-odin 
@@ -49171,6 +49171,8 @@ unsorted:
   - tree-sitter-ruby-devel 
   - tree-sitter-rust 
   - tree-sitter-rust-devel 
+  - tree-sitter-scheme 
+  - tree-sitter-scheme-devel 
   - tree-sitter-scss 
   - tree-sitter-scss-devel 
   - tree-sitter-smali 
@@ -49210,6 +49212,8 @@ unsorted:
   - tree-sitter-wgsl-bevy 
   - tree-sitter-wgsl-bevy-devel 
   - tree-sitter-wgsl-devel 
+  - tree-sitter-wikitext 
+  - tree-sitter-wikitext-devel 
   - tree-sitter-xcompose 
   - tree-sitter-xcompose-devel 
   - tree-sitter-xml 
@@ -49679,6 +49683,7 @@ unsorted:
   - ugrep-zsh-completion 
   - uhd-devel 
   - uhd-doc 
+  - uhd-examples 
   - uhd-firmware 
   - uhd-udev 
   - uhd-utils 
