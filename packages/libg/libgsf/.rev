@@ -606,4 +606,22 @@
     <comment>New stable rel (forwarded request 1339515 from iznogood)</comment>
     <requestid>1339618</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>942a70d26ba4beea2d7b3a625da4737d</srcmd5>
+    <version>1.14.58</version>
+    <time>1777986882</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.14.58:
+  + Fix gsf_infile_msole_child_by_index
+
+- Update to version 1.14.57:
+  + Fix problems with ole files bigger than 4G.
+  + Document property fix.
+  + Introspection fixes.
+  + Make gzip, bzip, zip handle 4G+ writes.
+  + Make gzip, bzip, zip handle 4G+ reads.
+  + Improve testing.
+  + Ole performace improvements with loads of children.</comment>
+    <requestid>1350827</requestid>
+  </revision>
 </revisionlist>

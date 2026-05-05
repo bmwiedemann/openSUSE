@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May  1 09:50:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.58:
+  + Fix gsf_infile_msole_child_by_index
+
+-------------------------------------------------------------------
+Thu Apr 30 06:42:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.57:
+  + Fix problems with ole files bigger than 4G.
+  + Document property fix.
+  + Introspection fixes.
+  + Make gzip, bzip, zip handle 4G+ writes.
+  + Make gzip, bzip, zip handle 4G+ reads.
+  + Improve testing.
+  + Ole performace improvements with loads of children.
+
+-------------------------------------------------------------------
 Tue Mar 17 08:43:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.56:
