@@ -367,4 +367,16 @@
 - Update Requires from setup.py (forwarded request 1325738 from glaubitz)</comment>
     <requestid>1325779</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>19ff223c5fe787ee6bb3af19a14bb361</srcmd5>
+    <version>12.24.0~b1</version>
+    <time>1777996689</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 12.24.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 12.24.0~b1 (forwarded request 1350973 from glaubitz)</comment>
+    <requestid>1350976</requestid>
+  </revision>
 </revisionlist>
