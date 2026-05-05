@@ -13432,7 +13432,7 @@ unsorted:
   - libfyaml-fy-tool 
   - libfzssh 
   - libfzssh-devel 
-  - libfzssh9_0_0 
+  - libfzssh11_0_0 
   - libga68-2 
   - libga68-2-32bit 
   - libgadu-devel 
@@ -19106,6 +19106,7 @@ unsorted:
   - mirror 
   - mirrormagic 
   - mirrorsorcerer 
+  - mistral-vibe 
   - mixxx 
   - mjpg-streamer 
   - mk-configure 
@@ -21576,6 +21577,7 @@ unsorted:
   - perl-Apache-SessionX 
   - perl-Apache2-AuthCookieDBI 
   - perl-App-Ack 
+  - perl-App-AppSpec 
   - perl-App-CELL 
   - perl-App-CLI 
   - perl-App-Cmd 
@@ -21589,6 +21591,7 @@ unsorted:
   - perl-App-Nopaste 
   - perl-App-Rad 
   - perl-App-Rad-Plugin-MoreHelp 
+  - perl-App-Spec 
   - perl-App-cpanminus 
   - perl-App-perlbrew 
   - perl-App-rsync-retry 
@@ -26626,6 +26629,7 @@ unsorted:
   - python311-outcome 
   - python311-overrides 
   - python311-ovirt-engine-sdk 
+  - python311-owlrl 
   - python311-pa-ringbuffer 
   - python311-packageurl-python 
   - python311-packaging-legacy 
@@ -30570,6 +30574,7 @@ unsorted:
   - python313-outcome 
   - python313-overrides 
   - python313-ovirt-engine-sdk 
+  - python313-owlrl 
   - python313-pa-ringbuffer 
   - python313-packageurl-python 
   - python313-packaging-legacy 
@@ -33731,6 +33736,7 @@ unsorted:
   - python314-gvar 
   - python314-gvm-tools 
   - python314-gwcs 
+  - python314-gwdatafind 
   - python314-gwosc 
   - python314-gwyfile 
   - python314-h11 
@@ -34486,6 +34492,7 @@ unsorted:
   - python314-outcome 
   - python314-overrides 
   - python314-ovirt-engine-sdk 
+  - python314-owlrl 
   - python314-pa-ringbuffer 
   - python314-packageurl-python 
   - python314-packaging 
