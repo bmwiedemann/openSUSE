@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon May  4 09:22:54 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.1.13.1
+  Immediately after tagging 3.1.13.0, we noticed a PR that should
+  have been included, but wasn't. So we did not draft an official
+  release based on 3.1.13.0, instead combining it to to release and
+  announce it as 3.1.13.1.
+
+  - IBA: Add FLIP perceptual image difference metric as an
+    experimental feature, including
+    ImageBufAlgo::experimental::FLIP_diff() C++ API, Python
+    ImageBufAlgo.FLIP_diff(), and oiiotool --flipdiff command
+    (requires --experimental flag). Also introduces oiiotool
+    --experimental flag to enable features not yet part of the
+    stable API. #5154 #5171 #5147
+  - fmath.h: degrees() and radians() are now constexpr. #5151
+  - ImageSpec: get_string_attribute() now correctly converts
+    non-string attributes to string #5161
+  - bmp: Correctly handle the combination of greyscale + RLE
+    compression #5163
+  - dds: Corruption protection: validate resolution and guard
+    against integer overflow #5131
+  - dpx: Several safety fixes for corrupt DPX files: integer
+    overflow protection in buffer size calculations, span-based
+    pointer safety, and use of check_open() for resolution/channel
+    validation #5170
+  - heif: Fix incorrect tracking of current subimage #5166
+  - iinfo: Better error handling and propagation, especially from
+    --hash; fix return code when a file could not be read #5168
+  - jpeg: Be more flexible with corrupt IPTC blocks; use
+    "imageinput:strict" to control whether a bad block is skipped
+    silently or fails the whole file #5140
+  - jpeg2000: Guard against integer overflow in buffer size
+    computation #5143
+  - rla: Harden against corrupted files: guard against RLE buffer
+    overruns and improve seek robustness #5153 #5172
+  - sgi: Better detection of corrupt RLE info that could overflow
+    #5141
+  - softimage: Multiple hardening fixes against corrupted input:
+    prevent RLE buffer overruns #5142, general hardening #5155, fix
+    malformed channel packets #5156
+  - targa: Protection against corrupt, mis-sized palette; fix
+    misunderstanding of non-zero palette start index #5165
+  - tiff: Care with missing rowsperstrip #5160; guard against
+    corrupt XMP blocks with TIFF-related tag names #5162
+  - xmp: Correctly parse XMP with self-closing <rdf:Description ...
+    /> elements #5106
+  - fix: Relax OpenColorIO exception handling: distinguish serious
+    errors from benign failures like unknown color roles #5164
+  - ci: Fix CI breakages: fmtlib renamed 'master' to 'main' #5127,
+    Mac CI missing jpeg-xl install #5139
+  - ci: Try to reduce costs and timeouts for expensive tests in
+    debug mode #5150
+  - deps: Update R3D SDK to version 9.2.0 #5148 (by Peter Kovář)
+  - build: Makefile wrapper fix to properly quote test regex #5146;
+    minor debugging fixes to dependency_utils #5128
+  - int: OIIO_NODISCARD_ERROR_ENABLE is now always on when building
+    OIIO itself #5145
+  - admin: Update security instructions to prefer GitHub security
+    advisory for vulnerability reports #5149
+
+-------------------------------------------------------------------
 Wed Apr  1 09:34:29 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.1.12.0
