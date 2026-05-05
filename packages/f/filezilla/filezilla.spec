@@ -16,18 +16,19 @@
 #
 
 
-%define libversion 3.70.0
-%define libfilezillaversion 0.55.0
+%define libversion 3.70.4
+%define libfilezillaversion 0.55.4
+%define libfzsshversion 1.2.0
 
 Name:           filezilla
-Version:        3.70.0
+Version:        3.70.4
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Clients
 URL:            https://filezilla-project.org/
 #Source0:        https://download.filezilla-project.org/client/FileZilla_%%{version}_src.tar.xz
-Source0:        FileZilla_%{version}.1_src.tar.xz
+Source0:        FileZilla_%{version}_src.tar.xz
 Patch0:         %{name}-welcome_dialog.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -64,7 +65,7 @@ BuildRequires:  pkgconfig(gnutls) >= 3.8.10
 BuildRequires:  pkgconfig(gnutls) >= 3.8.3
 %endif
 
-BuildRequires:  pkgconfig(libfzssh-client) >= 1.1.5
+BuildRequires:  pkgconfig(libfzssh-client) >= %{libfzsshversion}
 
 %description
 FileZilla is a modern and powerful FTP client.

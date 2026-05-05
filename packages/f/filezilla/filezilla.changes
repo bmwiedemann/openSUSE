@@ -1,12 +1,42 @@
 -------------------------------------------------------------------
+Mon May  4 09:58:46 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.70.4
+
+- Update to 3.70.4
+  * Bugfixes and minor changes:
+    - Updated to libfilezilla 0.55.4 to address a crash
+    - SFTP: Updated to fzssh 1.2.0
+- Changes from 3.70.3
+  * Bugfixes and minor changes:
+    - SFTP: Added a heuristic to reply to a keyboard-interactive
+      request with the site's password, if it consists of a single
+      prompt named "Password"
+    - SFTP: Updated to fzssh 1.1.10 for increased compatibility with
+      broken servers that blatantly violate the SSH specifications
+- Changes from 3.70.2
+  * Bugfixes and minor changes:
+    - SFTP: Updated to fzssh 1.1.9 to address an issue with servers
+      sending nonsensical SSH_MSG_USERAUTH_INFO_REQUEST packages
+- Changes from 3.70.1
+  * Bugfixes and minor changes:
+    - SFTP: Updated to fzssh 1.1.8 to address an issue with servers
+      sending empty longnames
+    - SFTP: Updated to fzssh 1.1.8 to address an issue with servers
+      incapable of handling large receive windows of 2^32 - 1 bytes
+    - SFTP: Fixed an issue creating directories during file upload
+
+-------------------------------------------------------------------
 Sat Apr 11 10:55:26 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.70.0
   * Bugfixes and minor changes:
-    - Replacing of invalid characters in filenames when downloading can no longer be disabled
-    - If saving of password was disabled, temporarily remembering passwords until FileZilla gets closed could result in additional password prompts
+    - Replacing of invalid characters in filenames when downloading
+      can no longer be disabled
+    - If saving of password was disabled, temporarily remembering
+      passwords until FileZilla gets closed could result in additional
+      password prompts
     - SFTP: Fix accessing symbolic links
-    - FileZilla is now distributed under the terms of the GPL version 3 or later (formerly version 2 or later)
+    - FileZilla is now distributed under the terms of
+      the GPL version 3 or later (formerly version 2 or later)
 - Changes from 3.70.0-rc3
   * Bugfixes and minor changes:
     - SFTP: Updated fzssh to 1.1.7 to address corrupted uploads
