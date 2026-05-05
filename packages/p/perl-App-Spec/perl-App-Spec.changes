@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Mar 26 05:33:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15.0 (v0.15.0)
+   see /usr/share/doc/packages/perl-App-Spec/Changes
+
+  v0.15.0 2025-03-25 21:54:22+01:00
+
+      - Use '/usr/bin/env bash' (#22 @alexiswl)
+      - Support multiline descriptions
+
+-------------------------------------------------------------------
+Sun Mar 23 16:57:56 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- initial package 0.13.0 (0.013)
+ * created by cpanspec 1.84.01
