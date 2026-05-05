@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 04 13:27:50 UTC 2026 - schubi@suse.com
+
+- Update to version 1+git20260504.f7cd8f6:
+  * Remove system-repart workaround for fstab generation
+
+-------------------------------------------------------------------
 Wed Jan 28 12:51:11 UTC 2026 - schubi@suse.com
 
 - Update to version 1+git20260128.1b0de2b:
