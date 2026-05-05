@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue May  5 09:53:04 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add thunderbird-glibc-2.43.patch as source22 and apply it only
+  if glibc newer than 2.42 is installed in the build environment.
+  It serves to remove conflicting definitions and adapt the syscall
+  in accordance with glibc-2.43.
+
+-------------------------------------------------------------------
+Wed Apr 29 14:22:59 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Further tests have shown that the rule which llvm version should
+  be used, can be simplified: only on TW, Slowroll and Factory we
+  need to explicitly BuildRequire the llvm21 based packages, while
+  on all other (i.e. Leap) distribution versions we can stick with
+  the distro's default release of llvm.
+
+-------------------------------------------------------------------
+Wed Apr 29 11:28:35 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 140.10.1 ESR
+  MFSA 2026-39 (bsc#1263110)
+  * CVE-2026-7320 (bmo#2027433)
+    Information disclosure due to incorrect boundary conditions
+    in the Audio/Video component
+  * CVE-2026-7321 (bmo#2029461)
+    Sandbox escape due to incorrect boundary conditions in the
+    WebRTC: Networking component
+  * CVE-2026-7322 (bmo#2021904, bmo#2022731, bmo#2027158,
+    bmo#2027733, bmo#2027973, bmo#2027976, bmo#2028231,
+    bmo#2028731, bmo#2028886, bmo#2029067, bmo#2029700,
+    bmo#2029724, bmo#2029806, bmo#2029814, bmo#2030108,
+    bmo#2030111, bmo#2031524, bmo#2031921, bmo#2032040)
+    Memory safety bugs fixed in Thunderbird ESR 140.10.1 and
+    Thunderbird 150.0.1
+  * CVE-2026-7323 (bmo#2028537, bmo#2029911, bmo#2031121,
+    bmo#2033602)
+    Memory safety bugs fixed in Thunderbird ESR 140.10.1 and
+    Thunderbird 150.0.1
+- added mozilla-bmo2031958.patch to fix incompatible pointer types
+  (bmo#2031958)
+
+-------------------------------------------------------------------
+Wed Apr 29 09:14:28 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Explicitly BuildIgnore: clang-tools to avoid pulling in the remaining
+  llvm22 packages. Also add BuildRequire for libclang13 provided by
+  the llvm version we use.
+- LLVM22 breaks building firefox-esr and MozillaThunderbird, restrict
+  clang-devel to clang21-devel on TW, Slowroll and Factory.
+  Use clang19-devel on all older distributions.
+
+-------------------------------------------------------------------
+Fri Apr 24 08:13:13 UTC 2026 - Max Lin <mlin@suse.com>
+
+- Fix suse_version check since SLE 16 SP1 will use a value of 1610
+
+-------------------------------------------------------------------
 Tue Apr 21 20:37:58 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 140.10.0 ESR

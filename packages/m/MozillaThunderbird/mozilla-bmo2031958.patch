@@ -1,0 +1,19 @@
+# HG changeset patch
+# User Wolfgang Rosenauer <wr@rosenauer.org>
+# Parent  692dd6e5e1d34667452311397d2f0921e3f856ca
+
+diff --git a/media/ffvpx/libavcodec/parser_list.c b/media/ffvpx/libavcodec/parser_list.c
+--- a/media/ffvpx/libavcodec/parser_list.c
++++ b/media/ffvpx/libavcodec/parser_list.c
+@@ -1,10 +1,10 @@
+ #include "config_components.h"
+ 
+-static const AVCodecParser * const parser_list[] = {
++static const FFCodecParser * const parser_list[] = {
+ #if CONFIG_VP8_PARSER
+     &ff_vp8_parser,
+ #endif
+ #if CONFIG_VP9_PARSER
+     &ff_vp9_parser,
+ #endif
+     NULL };

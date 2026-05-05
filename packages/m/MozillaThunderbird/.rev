@@ -6318,4 +6318,41 @@ I cannot test locally unfortunately.
     Spoofing issue in the DOM: Core &amp; HTML component</comment>
     <requestid>1348826</requestid>
   </revision>
+  <revision rev="386" vrev="1">
+    <srcmd5>3f7284722f303147bc445f9e996d90c2</srcmd5>
+    <version>140.10.1</version>
+    <time>1777998229</time>
+    <user>anag_factory</user>
+    <comment>- Add thunderbird-glibc-2.43.patch as source22 and apply it only
+  if glibc newer than 2.42 is installed in the build environment.
+  It serves to remove conflicting definitions and adapt the syscall
+  in accordance with glibc-2.43.
+
+- Further tests have shown that the rule which llvm version should
+  be used, can be simplified: only on TW, Slowroll and Factory we
+  need to explicitly BuildRequire the llvm21 based packages, while
+  on all other (i.e. Leap) distribution versions we can stick with
+  the distro's default release of llvm.
+
+- Mozilla Thunderbird 140.10.1 ESR
+  MFSA 2026-39 (bsc#1263110)
+  * CVE-2026-7320 (bmo#2027433)
+    Information disclosure due to incorrect boundary conditions
+    in the Audio/Video component
+  * CVE-2026-7321 (bmo#2029461)
+    Sandbox escape due to incorrect boundary conditions in the
+    WebRTC: Networking component
+  * CVE-2026-7322 (bmo#2021904, bmo#2022731, bmo#2027158,
+    bmo#2027733, bmo#2027973, bmo#2027976, bmo#2028231,
+    bmo#2028731, bmo#2028886, bmo#2029067, bmo#2029700,
+    bmo#2029724, bmo#2029806, bmo#2029814, bmo#2030108,
+    bmo#2030111, bmo#2031524, bmo#2031921, bmo#2032040)
+    Memory safety bugs fixed in Thunderbird ESR 140.10.1 and
+    Thunderbird 150.0.1
+  * CVE-2026-7323 (bmo#2028537, bmo#2029911, bmo#2031121,
+    bmo#2033602)
+    Memory safety bugs fixed in Thunderbird ESR 140.10.1 and
+    Thunderbird 150.0.1</comment>
+    <requestid>1350963</requestid>
+  </revision>
 </revisionlist>

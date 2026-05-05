@@ -30,8 +30,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.10.0
-%define orig_version   140.10.0
+%define mainver        %major.10.1
+%define orig_version   140.10.1
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
@@ -97,7 +97,7 @@ BuildRequires:  cargo1.84
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} < 1699
 BuildRequires:  gcc13
 BuildRequires:  gcc13-c++
 %else
@@ -147,11 +147,13 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
-%if 0%{?suse_version} < 1599
-BuildRequires:  clang15-devel
+%if 0%{?suse_version} > 1600
+BuildRequires:  clang21-devel
+BuildRequires:  llvm21-libclang13
 %else
 BuildRequires:  clang-devel
 %endif
+#!BuildIgnore:  clang-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
@@ -195,6 +197,7 @@ Source13:       spellcheck.js
 Source14:       https://github.com/openSUSE/firefox-scripts/raw/913fab1a196e2a0623b5c554598bfde3b4b49e29/create-tar.sh
 Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
 Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
+Source22:       thunderbird-glibc-2.43.patch
 # Gecko/Toolkit
 Patch1:         mozilla-nongnome-proxies.patch
 Patch3:         mozilla-ntlm-full-path.patch
@@ -212,6 +215,7 @@ Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch22:        thunderbird-silence-no-return.patch
 Patch24:        thunderbird-bmo2006630.patch
+Patch25:        mozilla-bmo2031958.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -296,6 +300,11 @@ fi
 %endif
 cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %autopatch -p1
+case "`rpm -q --qf '%%{version}\n' glibc-devel`" in
+    2.4[3-9]* )
+        patch -p1 < %{SOURCE22}
+        ;;
+esac
 %endif
 
 %build
@@ -326,7 +335,7 @@ export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
 %if 0%{?clang_build} == 0
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} < 1699
 export CC=gcc-13
 export CXX=g++-13
 %else
