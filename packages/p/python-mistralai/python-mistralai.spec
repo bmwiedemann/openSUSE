@@ -17,7 +17,7 @@
 
 
 Name:           python-mistralai
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        Python Client SDK for the Mistral AI API
 License:        Apache-2.0
