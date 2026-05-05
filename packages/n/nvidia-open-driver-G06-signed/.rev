@@ -1054,4 +1054,15 @@
      --&gt; from https://github.com/joanbm/nvidia-470xx-linux-mainline</comment>
     <requestid>1349912</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>e245e807807181935eb764e9c34b92ee</srcmd5>
+    <version>580.159.03</version>
+    <time>1777986866</time>
+    <user>anag_factory</user>
+    <comment>- fix-objtool-warnings.patch (not applied on aarch64)
+  * Get rid of &quot;'naked' return found in MITIGATION_RETHUNK build&quot;
+    objtool warnings (boo#1212841, boo#1263834)
+- remove again disable-objtool-override.patch</comment>
+    <requestid>1350699</requestid>
+  </revision>
 </revisionlist>

@@ -101,7 +101,9 @@ Source18:       Check4WrongSupplements.sh
 %if 0%{?sle_version} < 150600
 Patch0:         kernel-5.14.patch
 %endif
-Patch1:         disable-objtool-override.patch
+%ifnarch aarch64
+Patch1:         fix-objtool-warnings.patch
+%endif
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
