@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May  4 15:33:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * check for timegm() function to avoid slow fallback
+    implementation
+  * Re-enable the fill command
+  * Fix man page section numbers and reference formatting
+  * Make display of ids and annotations the default in
+    summary report for new users
+  * id filtering for charts and reports
+  * Add import command
+  * Extension names starting with 'timew' cause problems
+  * Document report hints with the respective commands
+  * Improve documentation on DOM references
+  * Add DOM references to query all tags
+  * Enable :fill hint for command 'modify'
+  * Add retag command to internal help
+  * Add zsh completion
+  * Fix installation of man pages from tarball
+  * Fix py3.12 warnings for datetime usage, non-raw regex
+    strings
+  * Make week number parsing ISO8601 compliant
+  * Add sub-command 'range' to command 'modify'
+
+-------------------------------------------------------------------
 Thu Feb 22 15:27:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire rubygem(asciidoctor) instead of %{rubygem

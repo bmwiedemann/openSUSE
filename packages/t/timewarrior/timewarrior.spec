@@ -1,7 +1,7 @@
 #
 # spec file for package timewarrior
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           timewarrior
-Version:        1.7.1
+Version:        1.9.1
 Release:        0
 Summary:        Command line time tracker
 License:        MIT
