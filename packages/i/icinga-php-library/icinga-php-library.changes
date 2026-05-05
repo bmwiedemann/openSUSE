@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  4 16:23:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.2 (bsc#1263991, CVE-2026-42224):
+  * This is a security release related to
+    https://github.com/Icinga/ipl-
+    web/security/advisories/GHSA-55wf-5m3q-6jjf, please upgrade
+    as soon as possible.
+
+-------------------------------------------------------------------
 Wed Apr  1 17:09:31 UTC 2026 - ecsos <ecsos@opensuse.org> - 0.19.1
 
 - Update to 0.19.1
