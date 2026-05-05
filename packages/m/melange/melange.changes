@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 04 16:41:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.5:
+  * build(deps): bump the gomod group with 3 updates (#2510)
+  * chore(workflows): add tcp.dl.google.com allowed endpoint
+    (#2509)
+
+-------------------------------------------------------------------
 Thu Apr 30 05:15:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.4:
