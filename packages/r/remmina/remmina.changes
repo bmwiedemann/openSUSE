@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  4 15:51:24 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Link against FreeRDP 3 again on Leap 16. This matches the
+  behavior of the version currently in Leap 16.0.
+
+-------------------------------------------------------------------
 Sat Mar 14 19:23:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.43:

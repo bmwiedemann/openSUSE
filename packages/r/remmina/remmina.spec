@@ -61,7 +61,7 @@ BuildRequires:  pkgconfig(libvncserver)
 BuildRequires:  pkgconfig(spice-client-gtk-3.0)
 BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
-%if 0%{?suse_version} > 1690
+%if 0%{?suse_version} > 1590
 BuildRequires:  pkgconfig(freerdp3) >= 3.0.0
 BuildRequires:  pkgconfig(winpr3)
 %else

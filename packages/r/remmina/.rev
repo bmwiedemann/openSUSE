@@ -1013,4 +1013,12 @@
   * src/remmina_ssh.c: zero-initialize RemminaSFTP structs !2698</comment>
     <requestid>1338994</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>3273b87ad42e2b8a754baf1cbe2e56af</srcmd5>
+    <version>1.4.43</version>
+    <time>1777995701</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1350908</requestid>
+  </revision>
 </revisionlist>
