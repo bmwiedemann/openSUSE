@@ -17,9 +17,9 @@ ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
-Type=forking
+Type=simple
 PIDFile=/run/shadowsocks/shadowsocks-libev-tunnel@%i.pid
-ExecStart=/usr/bin/ss-tunnel -c /etc/shadowsocks/%i.json -f /run/shadowsocks/shadowsocks-libev-tunnel@%i.pid -u --fast-open
+ExecStart=/usr/bin/ss-tunnel -c /etc/shadowsocks/%i.json -u --fast-open
 Restart=on-failure
 User=shadowsocks
 Group=shadowsocks

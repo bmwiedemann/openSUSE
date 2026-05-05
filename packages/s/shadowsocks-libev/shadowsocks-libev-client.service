@@ -17,9 +17,8 @@ ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
-Type=forking
-PIDFile=/run/shadowsocks/shadowsocks-libev-client.pid
-ExecStart=/usr/bin/ss-local -c /etc/shadowsocks/shadowsocks-libev-config.json -f /run/shadowsocks/shadowsocks-libev-client.pid -u --fast-open
+Type=simple
+ExecStart=/usr/bin/ss-local -c /etc/shadowsocks/shadowsocks-libev-config.json -u --fast-open
 Restart=on-failure
 User=shadowsocks
 Group=shadowsocks

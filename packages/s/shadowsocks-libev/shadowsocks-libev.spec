@@ -19,7 +19,7 @@
 
 %define libver 2
 Name:           shadowsocks-libev
-Version:        3.3.5
+Version:        3.3.6
 Release:        0
 Summary:        Libev port of Shadowsocks
 License:        GPL-3.0-or-later
@@ -39,13 +39,15 @@ Source10:       %{name}-tunnel@.service
 Source11:       %{name}-nat@.service
 Source12:       %{name}-redir@.service
 Source13:       %{name}.tmpfiles
-Patch0:         shadowsocks-libev-3.3.5-pcre2.patch
-Patch1:         001-migrate-to-mbedtls-3.patch
-Patch2:         002-migrate-to-mbedtls-3.patch
+Source99:       https://github.com/shadowsocks/libbloom/archive/437e1add5a2b9a87797d8c648df7cf5f3ee155a8/libbloom-437e1ad.tar.gz
+Source100:      https://github.com/shadowsocks/libcork/archive/074e074b26e9e372e90e6ade215217763c8644aa/libcork-074e074.tar.gz
+Source101:      https://github.com/shadowsocks/ipset/archive/3ea7fe30adf4b39b27d932e5a70a2ddce4adb508/ipset-3ea7fe3.tar.gz
+# PATCH-FIX-UPSTREAM shadowsocks-libev-gcc13-compat.patch hillwood@opensuse.org - Fix build with gcc 13
+Patch0:         shadowsocks-libev-gcc13-compat.patch
 BuildRequires:  asciidoc
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+BuildRequires:  cmake
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
@@ -54,6 +56,7 @@ BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libsodium) >= 1.0.4
+BuildRequires:  pkgconfig(mbedtls)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
 Requires(pre):  shadow
@@ -99,17 +102,20 @@ This package provides development headers for it.
 
 %prep
 %autosetup -p1
+rmdir libbloom libcork libipset
+tar -zxf %{SOURCE99}
+tar -zxf %{SOURCE100}
+tar -zxf %{SOURCE101}
+mv libbloom-437e1add5a2b9a87797d8c648df7cf5f3ee155a8 libbloom
+mv libcork-074e074b26e9e372e90e6ade215217763c8644aa libcork
+mv ipset-3ea7fe30adf4b39b27d932e5a70a2ddce4adb508 libipset
 
 %build
-autoreconf -fiv
-export CFLAGS="%{optflags} -fcommon"
-%configure \
-           --enable-shared
-
-%make_build
+%cmake -DWITH_STATIC=OFF
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -217,6 +223,7 @@ chmod 640 %{_sysconfdir}/shadowsocks/*
 %{_bindir}/ss-tunnel
 %{_bindir}/ss-manager
 %{_bindir}/ss-nat
+%{_bindir}/ss-setup
 %{_mandir}/man8/%{name}.8%{?ext_man}
 %{_mandir}/man1/ss-*.1%{?ext_man}
 %{_sbindir}/rcshadowsocks-libev-*

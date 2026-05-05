@@ -220,4 +220,15 @@
   * Add 002-migrate-to-mbedtls-3.patch (forwarded request 1344656 from hillwood)</comment>
     <requestid>1344657</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>06c568b88ce6aeed16ad88e42e889b09</srcmd5>
+    <version>3.3.6</version>
+    <time>1777986915</time>
+    <user>anag_factory</user>
+    <comment>While CAP_NET_BIND_SERVICE handles the port binding, managing ACLs or group ownership for SSL certificates is fragile. Certbot renewals often reset file permissions, which would lead to service failure. Running as root (like Apache or Nginx) provides a more robust solution for handling certificates managed by external tools.
+
+- Drop 001-migrate-to-mbedtls-3.patch, 002-migrate-to-mbedtls-3.patch and
+  shadowsocks-libev-3.3.5-pcre2.patch (forwarded request 1350902 from hillwood)</comment>
+    <requestid>1350903</requestid>
+  </revision>
 </revisionlist>

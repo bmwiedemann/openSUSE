@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  5 03:23:02 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.3.6
+  * Reduce memory copies in crypto encrypt/decrypt paths
+  * Fix unbounded buffer growth in aead_decrypt chunk reassembly
+- Add shadowsocks-libev-gcc13-compat.patch, fix build with gcc13
+- Drop 001-migrate-to-mbedtls-3.patch, 002-migrate-to-mbedtls-3.patch and
+  shadowsocks-libev-3.3.5-pcre2.patch
+- Run ss-server with root privileges to allow binding to privileged ports
+  and reading SSL certificates (boo#1263916)
+- All services have been switched to Type=simple mode, and PID file usage
+  has been removed (boo#1263914)
+
+-------------------------------------------------------------------
 Sun Apr  5 12:46:17 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Migrate to mbedtls 3(boo#1261529)

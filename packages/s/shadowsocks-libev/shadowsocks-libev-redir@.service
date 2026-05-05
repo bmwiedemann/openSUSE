@@ -17,9 +17,8 @@ ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
-Type=forking
-PIDFile=/run/shadowsocks/shadowsocks-libev-redir@%i.pid
-ExecStart=/usr/bin/ss-redir -c /etc/shadowsocks/%i.json -f /run/shadowsocks/shadowsocks-libev-redir@%i.pid -u --fast-open
+Type=simple
+ExecStart=/usr/bin/ss-redir -c /etc/shadowsocks/%i.json -u --fast-open
 Restart=on-failure
 User=shadowsocks
 Group=shadowsocks
