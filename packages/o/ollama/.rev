@@ -802,4 +802,19 @@ because we don't need git-web and the other stuff here (forwarded request 125417
     <comment>update (forwarded request 1350330 from adrianSuSE)</comment>
     <requestid>1350381</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>6104cc53e18a11825f53362d74eef592</srcmd5>
+    <version>0.23.0</version>
+    <time>1777987026</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.23.0:
+  * Launch Claude Desktop with ollama launch claude-desktop
+  * The Ollama app now surfaces featured models from
+    server-driven recommendations
+  * Fixed OpenClaw gateway timeout on Windows by enforcing
+    IPv4 loopback
+  * Hardened Metal initialization to gracefully handle ggml
+    kernel compilation failures (forwarded request 1350899 from adrianSuSE)</comment>
+    <requestid>1350900</requestid>
+  </revision>
 </revisionlist>

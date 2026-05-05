@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  4 18:34:37 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.23.0:
+  * Launch Claude Desktop with ollama launch claude-desktop
+  * The Ollama app now surfaces featured models from
+    server-driven recommendations
+  * Fixed OpenClaw gateway timeout on Windows by enforcing
+    IPv4 loopback
+  * Hardened Metal initialization to gracefully handle ggml
+    kernel compilation failures
+
+-------------------------------------------------------------------
 Fri May  1 07:36:39 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 0.22.1:
