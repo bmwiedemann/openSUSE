@@ -17,7 +17,7 @@
 
 
 Name:           svn2git
-Version:        1.0.18
+Version:        1.0.20
 Release:        0
 Summary:        Importer for one time conversion from SVN to Git
 License:        GPL-3.0-only
@@ -26,7 +26,8 @@ URL:            https://github.com/svn-all-fast-export/%{name}
 Source0:        https://github.com/svn-all-fast-export/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  subversion-devel
-BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
 Requires:       git
 Requires:       subversion
 
@@ -38,7 +39,7 @@ order to properly migrate all branches and tags.
 %setup -q
 
 %build
-%qmake5 -o Makefile fast-export2.pro CONFIG+=RELEASE
+%qmake6 -o Makefile fast-export2.pro CONFIG+=RELEASE
 %make_jobs
 
 %install

@@ -41,4 +41,27 @@
   * Use svn_repos_open() for Subversion 1.6 support</comment>
     <requestid>1098910</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cec0c5a0400077964e9e87ae417e3876</srcmd5>
+    <version>1.0.20</version>
+    <time>1777986916</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.20:
+  * Support both Qt 5 and Qt 6 at the same time (fixes #163)
+  * **Full Changelog**: https://github.com/svn-all-fast-
+    export/svn2git/compare/1.0.19...1.0.20
+- update to 1.0.19:
+  * Fail test execution if there were duplicate test names
+  * Fix some typos in the README and add a pointer to where
+    annotated tags
+  * Support git default branch name
+  * Error out if error happens in fast import process
+  * Do not warn the user if default branch does not exist
+  * Notes on end slash requirement
+  * Revert &quot;Error out if error happens in fast import process&quot;
+  * Add ubuntu22.04 build
+  * Update Dockerfile and CI it
+  * Revive CI</comment>
+    <requestid>1350749</requestid>
+  </revision>
 </revisionlist>
