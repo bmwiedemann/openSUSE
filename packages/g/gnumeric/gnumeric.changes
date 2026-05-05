@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:00:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.61:
+  + Up gtk+ requirement to 3.20. Still ancient.
+  + Audit code with Gemini AI.
+  + Plug leaks.
+  + Make tests run in parallel.
+  + Refactor analysis tools to be GObject-based.
+  + Fix sampling tool gui in the periodic case.
+  + Fix fill-series tool problems with dates.
+  + Fix chi-square tool problems with labels.
+  + Add basic testing of most analysis tools.
+  + Disable excelplugins (unrelated to xls/xlsx files).
+  + Fix gui crash
+  + Introspection fixes.
+  + Test suite enhancements.
+  + Preserve cvs-to-cvs and cvs-to-txt line endings.
+  + Fix problems with search-and-replace.
+  + Fix crash involding document properties and undo/redo.
+  + Fix potential overflow in NT_SIGMA.
+  + Improve primality test for large numbers.
+  + Speed up number theory functions for values with a large prime
+    factor.
+  + Fix TRIM to only cut spaces.
+  + Fix problems with OFFTRAF in extreme cases.
+  + Fix IFS semantics to match XL's as intended.
+  + New functions XLOOKUP and XMATCH.
+  + New functions TEXTBEFORE, TEXTAFTER, TEXTSPLIT.
+  + Improve xlsx importer's mapping of function names.
+  + Don't remove initial empty rows/columns for cvs/txt export.
+  + Fix parallel build trouble.
+  + Print using pango context from GtkPrintContext for consistency.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:46:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

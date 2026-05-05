@@ -17,7 +17,7 @@
 
 
 Name:           gnumeric
-Version:        1.12.60
+Version:        1.12.61
 Release:        0
 Summary:        Spreadsheet Application
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -45,11 +45,11 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
 # Introspection disabled, need to pass --enable-introspection to configure if we want it.
 #BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.38.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.8.7
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(libgda-6.0) >= 6.0.0
 BuildRequires:  pkgconfig(libgda-ui-6.0) >= 6.0.0
-BuildRequires:  pkgconfig(libgoffice-0.10) >= 0.10.51
-BuildRequires:  pkgconfig(libgsf-1) >= 1.14.33
+BuildRequires:  pkgconfig(libgoffice-0.10) >= 0.10.61
+BuildRequires:  pkgconfig(libgsf-1) >= 1.14.45
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.12
 BuildRequires:  pkgconfig(pango) >= 1.24.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.24.0
