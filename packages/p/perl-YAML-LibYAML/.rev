@@ -282,4 +282,20 @@
     <comment>- updated to 0.903.0 (v0.903.0) (CVE-2025-40908, [bsc#1243902]) (forwarded request 1288179 from pgajdos)</comment>
     <requestid>1288180</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>da6c6f35a32cccc536bf8db1fea54ad3</srcmd5>
+    <version>0.906.0</version>
+    <time>1777986875</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.906.0 (v0.906.0)
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+  v0.906.0 2026-04-26 11:12:32+02:00
+   - Fix detecting floats in YAML 1.2 Core Schema (issue#125)
+
+- updated to 0.905.0 (v0.905.0)
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+  v0.905.0 2026-04-24 09:37:22+02:00
+   - Fix memory leak for trailing UTF8 octets (PR#123)</comment>
+    <requestid>1350772</requestid>
+  </revision>
 </revisionlist>

@@ -9,6 +9,5 @@ support to date.
 
 This module exports the functions Dump and Load. These functions are intended
 to work exactly like YAML.pm's corresponding functions.</description>
-  <devel project="devel:languages:perl" package="perl-YAML-LibYAML"/>
   <url>http://search.cpan.org/dist/YAML-LibYAML/</url>
 </package>

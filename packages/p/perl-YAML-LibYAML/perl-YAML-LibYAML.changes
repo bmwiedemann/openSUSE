@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 27 07:46:39 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.906.0 (v0.906.0)
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+
+  v0.906.0 2026-04-26 11:12:32+02:00
+   - Fix detecting floats in YAML 1.2 Core Schema (issue#125)
+
+-------------------------------------------------------------------
+Fri Apr 24 15:26:56 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.905.0 (v0.905.0)
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+
+  v0.905.0 2026-04-24 09:37:22+02:00
+   - Fix memory leak for trailing UTF8 octets (PR#123)
+
+-------------------------------------------------------------------
 Fri May  9 05:36:18 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.904.0
