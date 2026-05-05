@@ -328,4 +328,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1325740 from glaubitz)</comment>
     <requestid>1325768</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>05f9562c818d6000b9acd56fe488ed96</srcmd5>
+    <version>12.16.0~b1</version>
+    <time>1777996690</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 12.16.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 12.16.0~b1 (forwarded request 1350978 from glaubitz)</comment>
+    <requestid>1350982</requestid>
+  </revision>
 </revisionlist>
