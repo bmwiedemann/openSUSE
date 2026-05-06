@@ -63,3 +63,45 @@ index dd6db1f8..2062c760 100644
      /boost/function//boost_function
      /boost/io//boost_io
      /boost/iterator//boost_iterator
+diff --git a/build.jam b/build.jam
+index a33b5f0..c4d7b96 100644
+--- libs/process/build.jam
++++ libs/process/build.jam
+@@ -22,7 +22,6 @@ constant boost_dependencies :
+     /boost/move//boost_move
+     /boost/optional//boost_optional
+     /boost/system//boost_system
+-    /boost/throw_exception//boost_throw_exception
+     /boost/tokenizer//boost_tokenizer
+     /boost/type_index//boost_type_index
+     /boost/type_traits//boost_type_traits
+diff --git a/build.jam b/build.jam
+index 9a3ae769..117808ac 100644
+--- libs/regex/build.jam
++++ libs/regex/build.jam
+@@ -11,7 +11,6 @@ constant boost_dependencies :
+     /boost/config//boost_config
+     /boost/predef//boost_predef
+     /boost/static_assert//boost_static_assert
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/regex
+diff --git a/build.jam b/build.jam
+index 33b7323..22c6218 100644
+--- libs/algorithm/build.jam
++++ libs/algorithm/build.jam
+@@ -12,13 +12,11 @@ constant boost_dependencies :
+     /boost/concept_check//boost_concept_check
+     /boost/config//boost_config
+     /boost/core//boost_core
+-    /boost/exception//boost_exception
+     /boost/function//boost_function
+     /boost/iterator//boost_iterator
+     /boost/mpl//boost_mpl
+     /boost/range//boost_range
+     /boost/regex//boost_regex
+-    /boost/throw_exception//boost_throw_exception
+     /boost/tuple//boost_tuple
+     /boost/type_traits//boost_type_traits
+     /boost/unordered//boost_unordered ;

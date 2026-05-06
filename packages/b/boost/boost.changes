@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 29 07:59:49 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- update to 1.91.0
+  * new libraries:
+    + Decimal (Header-only IEEE754 Decimal Floating Point Numbers)
+  * for details on all changes see,
+    https://www.boost.org/releases/1.91.0/
+- dynamic_linking.patch: updated
+- boost-no-exception.patch: updated
+
+-------------------------------------------------------------------
 Fri Apr 10 07:58:52 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - disable the cobalt module explicitly to avoid implicit enablement

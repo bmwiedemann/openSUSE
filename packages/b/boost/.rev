@@ -1657,4 +1657,12 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
   that module at the moment;  this fixes the packaging with GCC 16 (forwarded request 1345770 from rguenther)</comment>
     <requestid>1345771</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>ebab4feeb1447b249606eea984539978</srcmd5>
+    <version>1.91.0</version>
+    <time>1778087828</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1350552</requestid>
+  </revision>
 </revisionlist>

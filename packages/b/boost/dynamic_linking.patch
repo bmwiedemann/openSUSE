@@ -11,19 +11,19 @@ Index: boost_1_80_0/libs/test/build/Jamfile.v2
    : # default build
    : # usage-requirements
      <link>shared:<define>BOOST_TEST_DYN_LINK=1
-Index: boost_1_80_0/libs/exception/build/Jamfile.v2
+Index: boost_1_91_0/libs/exception/build/Jamfile.v2
 ===================================================================
---- boost_1_80_0.orig/libs/exception/build/Jamfile.v2
-+++ boost_1_80_0/libs/exception/build/Jamfile.v2
-@@ -7,7 +7,7 @@
- 
- project boost/exception
+--- boost_1_91_0.orig/libs/exception/build/Jamfile.v2.orig	2026-03-09 15:08:28.736367007 +0100
++++ boost_1_91_0/libs/exception/build/Jamfile.v2	2026-03-09 15:08:41.478030180 +0100
+@@ -8,7 +8,7 @@
+ project
      : source-location ../src
+     : common-requirements <include>../include <library>$(boost_dependencies)
 -    : requirements <link>static
 +    : # requirements <link>static
+     : usage-requirements <define>BOOST_EXCEPTION_NO_LIB=1
      ;
  
- lib boost_exception : clone_current_exception_non_intrusive.cpp ;
 Index: boost_1_80_0/libs/chrono/build/Jamfile.v2
 ===================================================================
 --- boost_1_80_0.orig/libs/chrono/build/Jamfile.v2

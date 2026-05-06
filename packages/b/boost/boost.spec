@@ -19,8 +19,8 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.90.0
-%define _ver 1_90_0
+%define ver 1.91.0
+%define _ver 1_91_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -72,9 +72,9 @@ ExclusiveArch:  do_not_build
 %define base_name boost%{?name_suffix}
 
 Name:           %{base_name}
-Version:        1.90.0
+Version:        1.91.0
 Release:        0
-%define library_version 1_90_0
+%define library_version 1_91_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
@@ -114,6 +114,7 @@ BuildRequires:  xz-devel
 BuildRequires:  pkgconfig(zlib)
 %if ! %{build_base}
 BuildRequires:  dos2unix
+BuildRequires:  patchelf
 %if %{with python3}
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
@@ -684,6 +685,7 @@ This package contains the Boost.Test runtime library.
 Summary:        Development headers for Boost.Test library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_headers%{library_version}-devel = %{version}
+Requires:       libboost_regex%{library_version}-devel = %{version}
 Requires:       libboost_test%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_test-devel-impl
@@ -710,6 +712,7 @@ Requires:       libboost_context%{library_version}-devel = %{version}
 Requires:       libboost_date_time%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_process%{library_version} = %{version}
+Requires:       libboost_regex%{library_version}-devel = %{version}
 Conflicts:      boost-devel < 1.88
 Conflicts:      libboost_process-devel-impl
 Provides:       libboost_process-devel-impl = %{version}
@@ -1133,7 +1136,7 @@ PY_LIBRARIES_FLAGS+=" --with-mpi"
 %endif
 
 # Dummy entry to make sure we don't build everything
-export LIBRARIES_FLAGS="--with-system"
+export LIBRARIES_FLAGS="--with-random"
 
 # Dummy entry replaced with real libraries, if we build something
 %if %{with mpi}
@@ -1345,8 +1348,6 @@ rm -r %{buildroot}%{_datadir}/boost-build/engine
 find %{buildroot}%{_datadir}/boost-build/ -type f \! -name \*.py \! -name \*.jam -delete
 find %{buildroot}%{_datadir}/boost-build/ -type f -exec chmod 644 {} +
 
-rm -r %{buildroot}%{_datadir}/boost_predef
-
 # Remove exception library, but only if the symbols are not
 # actually used. For now, the only symbol that is linked is
 # should never be used as it's only available on Windows. So,
@@ -1375,8 +1376,23 @@ rm -r %{buildroot}%{_libdir}/cmake/boost_headers-%{version}
 rm -rf %{buildroot}%{_libdir}/cmake/boost_{w,}serialization-%{version}
 rm -r %{buildroot}%{_libdir}/cmake/boost_container-%{version}
 rm -f %{buildroot}%{_libdir}/libboost_container.so*
+%if %{with mpi}
+rm -r %{buildroot}%{_libdir}/cmake/boost_atomic-%{version}
+rm -f %{buildroot}%{_libdir}/libboost_atomic.so*
+rm -r %{buildroot}%{_libdir}/cmake/boost_filesystem-%{version}
+rm -f %{buildroot}%{_libdir}/libboost_filesystem.so*
+%endif
 rm -r %{buildroot}%{_libdir}/cmake/boost_graph-%{version}
 rm -f %{buildroot}%{_libdir}/libboost_graph.so*
+rm -r %{buildroot}%{_libdir}/cmake/boost_random-%{version}
+rm -f %{buildroot}%{_libdir}/libboost_random.so*
+%if %{with mpi}
+rm -r %{buildroot}%{_libdir}/cmake/boost_regex-%{version}
+rm -f %{buildroot}%{_libdir}/libboost_regex.so*
+%endif
+
+# strip RPATH
+find %{buildroot} -type f -executable -exec patchelf --remove-rpath {} \;
 
 rm -r %{buildroot}%{_includedir}/boost
 rm -f %{buildroot}%{_libdir}/libboost_{w,}serialization*
