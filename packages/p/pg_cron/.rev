@@ -220,4 +220,18 @@
 - enable pg17</comment>
     <requestid>1245882</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>969f33492b2fb8aa3d49a3da0ec6e784</srcmd5>
+    <version>1.6.7</version>
+    <time>1778087975</time>
+    <user>anag_factory</user>
+    <comment>- Disable pg13
+
+- enable pg 18
+
+- update to 1.6.7
+  https://github.com/citusdata/pg_cron/releases/tag/v1.6.6
+  https://github.com/citusdata/pg_cron/releases/tag/v1.6.7</comment>
+    <requestid>1351150</requestid>
+  </revision>
 </revisionlist>
