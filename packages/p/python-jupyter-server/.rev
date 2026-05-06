@@ -758,4 +758,41 @@
   ## Bugs fixed</comment>
     <requestid>1287608</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>023b798fd043dec38f7ff3052f401672</srcmd5>
+    <version>2.18.1</version>
+    <time>1778087909</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.18.1 (bsc#1264161, CVE-2025-61669):
+  ## Bugs fixed
+  * Prevent reconnect stalls from orphaned kernel_info requests #1632
+    (@krassowski, @Copilot, @jtpio, @tonyx93)
+- update to 2.18.0:
+  ## Security patches
+  * CVE-2026-40110 GHSA-24qx-w28j-9m6p
+  * CVE-2025-61669 GHSA-qh7q-6qm3-653w
+  * CVE-2026-40934 GHSA-5mrq-x3x5-8v8f
+  * CVE-2026-35397 GHSA-5789-5fc7-67v3
+  ## API and Breaking Changes
+  * Add query param to sanitize HTML in GET /nbconvert/html #1618
+  * (@Yann-P, @Carreau)
+  ## Enhancements made
+  * Update handlers.py to fix ioloop blockers(sync file operations)
+    #1617 (@zolyfarkas-fb, @Carreau) Add resolvePath API for resolving
+  * kernel-relative paths #1331 (@krassowski, @Carreau, @blink1073)
+  ## Bugs fixed
+  * Move check origin into a util function and add it to websocket
+    #1630 (@Carreau, @Yann-P)
+  * Fix flaky test_restart_kernel by unsticking nudge() after
+    port-changing restart #1628 (@Carreau, @claude, @krassowski)
+  * Try to fix flaky test &quot;test_restart_kernel&quot; #1625 (@Carreau)
+  * Fix potential unraisable pytest error #1624 (@Carreau)
+  * fix: use %s placeholders in HTTPError to prevent Tornado from
+    doubling % in gateway URLs #1620 (@terminalchai, @krassowski,
+    @ptch314)
+  * Fix three file descriptor leaks in kernel connection lifecycle
+    (#1506) #1619 (@tonyx93, @Carreau)
+  * Use web.HTTPError for kernel restart failures #1616 (@YDawn,</comment>
+    <requestid>1351103</requestid>
+  </revision>
 </revisionlist>

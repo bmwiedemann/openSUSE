@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Wed May  6 05:44:42 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 2.18.1 (bsc#1264161, CVE-2025-61669):
+  ## Bugs fixed
+  * Prevent reconnect stalls from orphaned kernel_info requests #1632
+    (@krassowski, @Copilot, @jtpio, @tonyx93)
+- update to 2.18.0:
+  ## Security patches
+  * CVE-2026-40110 GHSA-24qx-w28j-9m6p
+  * CVE-2025-61669 GHSA-qh7q-6qm3-653w
+  * CVE-2026-40934 GHSA-5mrq-x3x5-8v8f
+  * CVE-2026-35397 GHSA-5789-5fc7-67v3
+
+  ## API and Breaking Changes
+  * Add query param to sanitize HTML in GET /nbconvert/html #1618
+  * (@Yann-P, @Carreau)
+
+  ## Enhancements made
+  * Update handlers.py to fix ioloop blockers(sync file operations)
+    #1617 (@zolyfarkas-fb, @Carreau) Add resolvePath API for resolving
+  * kernel-relative paths #1331 (@krassowski, @Carreau, @blink1073)
+
+  ## Bugs fixed
+  * Move check origin into a util function and add it to websocket
+    #1630 (@Carreau, @Yann-P)
+  * Fix flaky test_restart_kernel by unsticking nudge() after
+    port-changing restart #1628 (@Carreau, @claude, @krassowski)
+  * Try to fix flaky test "test_restart_kernel" #1625 (@Carreau)
+  * Fix potential unraisable pytest error #1624 (@Carreau)
+  * fix: use %s placeholders in HTTPError to prevent Tornado from
+    doubling % in gateway URLs #1620 (@terminalchai, @krassowski,
+    @ptch314)
+  * Fix three file descriptor leaks in kernel connection lifecycle
+    (#1506) #1619 (@tonyx93, @Carreau)
+  * Use web.HTTPError for kernel restart failures #1616 (@YDawn,
+    @Carreau)
+  * Handle EADDRINUSE and EACCES in _bind_http_server_tcp #1613
+    (@YDawn, @Zsailer, @minrk)
+  * Use st_birthtime for file created timestamp on macOS/BSD #1594
+    (@ktaletsk, @krassowski, @minrk)
+  * Fix double write when refusing hidden files in contents handler
+    #1585 (@Krish-876, @minrk)
+  * Close all sockets in _find_http_port explicitly #1584
+    (@MaryushSoroka, @minrk)
+  * Fix writing on remote file systems with attribute cache #1574
+    (@krassowski, @Zsailer)
+  * Add IdentityProvider.cookie_secret_hook #1569 (@emin63, @minrk)
+  * fix context pollution #1561 (@dualc, @Zsailer)
+  * Fix gateway cookie handling #1558 (@kevin-bates, @RRosio,
+    @lresende, @minrk)
+  * fix connection exception cause high cpu load #1484 (@dualc,
+    @lresende, @minrk)
+
+  ## Maintenance and upkeep improvements
+  * Start to test on Python 3.13 and 3.14 #1623 (@Carreau)
+  * Bump actions/create-github-app-token from 2 to 3 in the actions
+    group across 1 directory #1621 (@Carreau)
+  * Bump brace-expansion from 1.1.12 to 1.1.13 #1615 (@minrk)
+  * Fix package spec for jupytext #1614 (@krassowski, @Zsailer)
+  * chore: update pre-commit hooks #1607 (@minrk)
+  * try to fix ci on windows #1600 (@minrk, @krassowski)
+  * run prerelease tests on 3.14 #1599 (@minrk)
+  * Pin sphinx to an older version (<9) to fix docs #1597
+    (@krassowski, @minrk)
+  * Restore running all tests for Windows in CI workflow #1581
+    (@krassowski, @Zsailer)
+  * Fix flaky test_execution_state test #1579 (@krassowski, @Zsailer)
+  * Fix failing link check due to a blog post referred in docs
+    changing URL format #1577 (@krassowski, @Zsailer)
+  * Fix lint on CI, pin ruff to the same version in hatch fmt and
+    pre-commit #1576 (@krassowski, @Zsailer)
+  * Bump actions/checkout from 5 to 6 in the actions group #1572
+    (@minrk)
+  * don't link check npm #1568 (@minrk, @Zsailer)
+  * Bump brace-expansion from 1.1.11 to 1.1.12 #1546 (@minrk)
+  * Replace @flaky.flaky decorate with pytest marker #1544 (@mgorny,
+    @minrk)
+  * chore: update pre-commit hooks #1449 (@minrk)
+
+  ## Documentation improvements
+  * some docs fixes #1627 (@Carreau, @krassowski)
+  * Updated dev install instructions #1622 (@bloomsa, @Carreau)
+  * Fix outdated ContentsManager testing guidance #1611
+    (@terminalchai, @Zsailer, @lresende, @minrk)
+  * add missing word 'to' #1596 (@carlfarrington, @krassowski, @minrk)
+
+-------------------------------------------------------------------
+Mon Dec  1 22:31:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.0:
+  * Avoid redundant call to `_get_os_path` in `_dir_model` #1547
+  * Allow specifying extra params to scrub from logs #1538
+  * Add a logger to the ExtensionPoint API #1523 (@Zsailer)
+  * Allow user to update identity values #1518 (@brichet)
+  * Fix FileNotFoundError handling in rename_file methods #1548
+  * Use stdlib override when possible #1532 (@edrogers)
+  * CORS is not checked when browsing files. check origin now
+  * Bump the actions group across 1 directory with 2 updates
+  * Fix the failing "Test Lint" check on CI #1540 (@jtpio)
+
+-------------------------------------------------------------------
 Sat Jun 21 17:32:47 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.16.0
@@ -576,7 +677,7 @@ Wed Mar 23 18:53:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
     (@Zsailer) Enhancements made
   * Validate notebooks once per fetch or save #724 (@kevin-bates)
   * Register pre/post save hooks, call them sequentially #696
-    (@davidbrochart) 
+    (@davidbrochart)
   * Implement Required Methods in Async Manner #721 (@jhamet93)
   * Call pre_save_hook only on first chunk of large files #716
     (@davidbrochart)
@@ -839,8 +940,8 @@ Mon Feb  1 22:48:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * for the full changelog between 0.2.1 and 1.2.3 see
     https://github.com/jupyter-server/jupyter_server/blob/master/CHANGELOG.md
   * 1.0.6: Fix open redirect vulnerability GHSA-grfj-wjv9-4f9v
-    (CVE-2020-26232) 
-  * 1.0: Added new extension manager API for handling server 
+    (CVE-2020-26232)
+  * 1.0: Added new extension manager API for handling server
     extensions
   * 1.0: Dropped support for Python 3.5. (296)
   * 1.0: Removed ipykernel as a dependency of jupyter_server.
