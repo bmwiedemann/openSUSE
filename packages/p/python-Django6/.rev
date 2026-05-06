@@ -45,4 +45,48 @@ python312+, keeping primary Django on 5.2</comment>
     extraneous log messages when no exceptions are encountered</comment>
     <requestid>1336307</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6964b02540d664d45545603a8e843cd2</srcmd5>
+    <version>6.0.4</version>
+    <time>1775743793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.4
+  * CVE-2026-3902: ASGI header spoofing via underscore/hyphen
+    conflation (bsc#1261729)
+  * CVE-2026-4277: Privilege abuse in GenericInlineModelAdmin
+    (bsc#1261731)
+  * CVE-2026-4292: Privilege abuse in ModelAdmin.list_editable
+    (bsc#1261732)
+  * CVE-2026-33033: Potential denial-of-service vulnerability in
+    MultiPartParser via base64-encoded file upload (bsc#1261722)
+  * CVE-2026-33034: Potential denial-of-service vulnerability in
+    ASGI requests via memory upload limit bypass (bsc#1261724)
+  * Fixed a regression in Django 6.0 where alogin() and alogout() did not
+    respectively set or clear request.user if it had already been materialized
+  * Fixed a regression in Django 6.0 in admin forms where RelatedFieldWidgetWrapper
+    incorrectly wrapped all widgets in a &lt;fieldset&gt;
+  * Fixed a bug in Django 6.0 where the fields.E348 system check did not
+    detect name clashes between model managers and related_names for
+    non-self-referential relationships</comment>
+    <requestid>1345436</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>43a0f5de17be92d655dc2b8548e62121</srcmd5>
+    <version>6.0.5</version>
+    <time>1778087966</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0.5
+  * CVE-2026-5766: Potential denial-of-service vulnerability in ASGI
+    requests via file upload limit bypass (bsc#1264153)
+  * CVE-2026-35192: Session fixation via public cached pages and
+    SESSION_SAVE_EVERY_REQUEST (bsc#1264154)
+  * CVE-2026-6907: Potential exposure of private data due to incorrect
+    handling of Vary: * in UpdateCacheMiddleware (bsc#1264152)
+  * Fixed a misplaced &lt;/div&gt; in the django/contrib/admin/templates/admin/change_list.html
+    template added in Django 6.0 that could be problematic when
+    overriding the pagination block
+  * Fixed a bug in Django 6.0 where deprecation warnings incorrectly
+    skipped lines from third-party packages prefixed with “django”</comment>
+    <requestid>1351139</requestid>
+  </revision>
 </revisionlist>
