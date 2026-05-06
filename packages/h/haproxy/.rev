@@ -1939,4 +1939,41 @@
   * BUG/MINOR: tcpcheck: Allow connection reuse without prior traffic</comment>
     <requestid>1350257</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>a1c4be2a7cbaa935c132e147325c0898</srcmd5>
+    <version>3.3.9+git0.aa6f85a2f</version>
+    <time>1778088042</time>
+    <user>anag_factory</user>
+    <comment>- Fix attributes for /run/haproxy
+
+- Update to version 3.3.9+git0.aa6f85a2f:
+  * [RELEASE] Released version 3.3.9
+  * BUG/MEDIUM: h1: Enforce the authority validation during H1 request parsing
+  * BUG/MAJOR: http: forbid comma character in authority value
+  * BUG/MINOR: tools: read_line_to_trash() handle empty files without \n
+  * BUG/MEDIUM: h1_htx: Remove reverved block on error during contig chunks parsing
+  * BUG/MINOR: http-fetch: Fix http_auth_bearer() when custom header is used
+  * BUG/MINOR: acme: contact mail should be optional, don't pass ToS bool
+  * BUG/MINOR: h2: only accept :protocol with extended CONNECT
+  * MINOR: mux-h2: add a new message flag to indicate ext connect support
+  * BUG/MINOR: mux-h2: condition the processing of 8441 extension to global setting
+  * BUG/MINOR: h2: add decoding for :protocol in traces
+  * REGTESTS: http-messaging: always send RFC8441 client settings to use ext connect
+  * DOC: acme: document missing acme-vars and provider-name keywords
+
+- Update to version 3.3.8+git21.fdfa9abca:
+  * BUG/MINOR: mworker/cli: check ci_insert() return value in pcli_parse_request()
+  * BUG/MEDIUM: mworker/cli: fix user and operator permission via @@&lt;pid&gt; in master CLI
+  * REGTESTS: add a regtest to validate various NTLM transitions
+  * BUG/MINOR: resolvers: Free opts on parse error in resolv_parse_do_resolve()
+  * BUG/MINOR: resolvers: Fix lookup for a hostname in the state-file tree
+  * BUG/MINOR: resolvers: Free new requester on error when linking a resolution
+  * BUG/MINOR: tcpcheck: Properly report error for http health-checks
+  * BUG/MINOR: dns: always validate the source address in responses
+  * BUG/MAJOR: mux-h2: preset MSGF_BODY_CL on H2_SF_DATA_CLEN in h2c_dec_hdrs()
+  * BUG/MEDIUM: mux-h2: fix the body_len to check when parsing request trailers
+  * CI: github: add DEBUG_STRICT=2 to ASAN jobs
+  * BUG/MINOR: pattern: release the reference on failure to load from file</comment>
+    <requestid>1351249</requestid>
+  </revision>
 </revisionlist>

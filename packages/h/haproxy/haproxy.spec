@@ -35,7 +35,7 @@
 %bcond_with ech
 
 Name:           haproxy
-Version:        3.3.8+git0.75f414f92
+Version:        3.3.9+git0.aa6f85a2f
 Release:        0
 #
 Summary:        The Reliable, High Performance TCP/HTTP Load Balancer
@@ -199,7 +199,7 @@ rm examples/*init*
 %{_unitdir}/%{pkg_name}.service
 %{_sysusersdir}/haproxy-user.conf
 %{_tmpfilesdir}/%{name}.conf
-%dir %ghost %{_rundir}/%{name}
+%dir %ghost %attr(0750,root,haproxy) %{_rundir}/%{name}
 %{_sbindir}/haproxy
 %{_sbindir}/haproxy-halog
 %dir %ghost %{pkg_home}
