@@ -1655,4 +1655,40 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment>- remove 32bit for all SLES 16 based products (jsc#PED-15782)</comment>
     <requestid>1347181</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>a3ffa8df5a99f8e3ed885802f1e11ced</srcmd5>
+    <version>3.27.0</version>
+    <time>1778087841</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.27.0:
+  * VALGRIND_REPLACES_MALLOC Returns 1 if the tool replaces
+    malloc (e.g., memcheck).  Returns 0 if the tool does not replace
+    malloc (e.g., cachegrind and callgrind) or if the executable is
+    not running under VALGRIND.
+  * VALGRIND_GET_TOOLNAME Get the running tool name as a
+    string. Takes two arguments, an input buffer pointer and the
+    length of that buffer. Returns the required length (including
+    terminating nul) for the tool name. Returns 0 and the contents
+    supplied buffer are not modified if not running under Valgrind.
+  * linux lightweight guard pages (madvise MADV_GUARD_INSTALL)
+    supported
+  * glibc 2.42+ (with linux 6.13+) uses MADV_GUARD_INSTALL to
+    setup stack guard pages. These lightweight guard pages are now
+    supported under valgrind. By default, Valgrind can handle to up to 500
+    madvise guard pages. With thread heavy workloads the default value
+    might not be sufficient. Use --max-guard-pages=N to provide a different
+    limit.
+  * If --max-guard-pages is not set explicitly, then it will
+    default to the --max-threads setting.
+  * --num-callers now has a minimum value of 2.
+  * x86: Support for SSE4.1 instructions has been ported from
+    AMD64 to (32bit) x86.
+  * s390x: Machine models older than z196 are no longer
+    supported.
+  * s390x: Support new z/Architecture features from the 15th
+    edition.  In particular this enables running binaries compiled
+    with `-march=arch15' or `-march=z17' and exploiting the new MSA
+    extensions 10-13.</comment>
+    <requestid>1350875</requestid>
+  </revision>
 </revisionlist>
