@@ -171,7 +171,7 @@ Fri Nov 29 18:46:03 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferr
 -------------------------------------------------------------------
 Wed Sep 18 11:48:47 UTC 2024 - Yunus Acar <yunus.acar@suse.com>
 
-- Update to 1.23.0:
+- Update to 1.23.0 (bsc#1230676, CVE-2024-8947):
   * https://github.com/micropython/micropython/releases/tag/v1.23.0
 
 -------------------------------------------------------------------

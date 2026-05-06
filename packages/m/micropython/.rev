@@ -351,4 +351,12 @@
     - main: make static variable that's potentially clobbered by longjm</comment>
     <requestid>1345697</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>24e84fc802c17b2d17194bd0ca08ef3f</srcmd5>
+    <version>1.28.0</version>
+    <time>1778087993</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.23.0 (bsc#1230676, CVE-2024-8947):</comment>
+    <requestid>1351154</requestid>
+  </revision>
 </revisionlist>
