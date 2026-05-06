@@ -41,4 +41,12 @@
     <comment>- enable pg 18</comment>
     <requestid>1307186</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>5bded71d4bc2f7a6ce7543306d3320ae</srcmd5>
+    <version>2.0.1</version>
+    <time>1778087976</time>
+    <user>anag_factory</user>
+    <comment>- Disable pg13</comment>
+    <requestid>1351153</requestid>
+  </revision>
 </revisionlist>
