@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  6 09:25:41 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Disable pg13 and drop pgaudit-1.5.3.tar.gz.
+
+-------------------------------------------------------------------
 Thu Sep 25 16:11:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add support for pg 18 by adding the 18.0 version

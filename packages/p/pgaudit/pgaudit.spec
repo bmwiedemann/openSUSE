@@ -1,7 +1,7 @@
 #
 # spec file for package pgaudit
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,6 @@ Name:           pgaudit
 ExclusiveArch:  do_not_build
 %else
 Name:           %{name_pg}-pgaudit
-%endif
-%if "%{name_pg}" == "postgresql13"
-Version:        1.5.3
 %endif
 # you need to update both the Version: field and the define below for the factory check
 %if "%{name_pg}" == "postgresql14"

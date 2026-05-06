@@ -107,4 +107,12 @@
     - PostgreSQL 18 support.</comment>
     <requestid>1307188</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>113ac5c55325e308afe06420c7a3c1c4</srcmd5>
+    <version>unknown</version>
+    <time>1778087978</time>
+    <user>anag_factory</user>
+    <comment>- Disable pg13 and drop pgaudit-1.5.3.tar.gz.</comment>
+    <requestid>1351162</requestid>
+  </revision>
 </revisionlist>
