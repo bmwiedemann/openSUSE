@@ -687,4 +687,12 @@ I already created a maintenance request for 12.2 - #142949 (forwarded request 14
     <comment></comment>
     <requestid>1248915</requestid>
   </revision>
+  <revision rev="87" vrev="4">
+    <srcmd5>a11b48991054ac52f5be5a990ccf9626</srcmd5>
+    <version>3.2.5</version>
+    <time>1778087870</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1350997</requestid>
+  </revision>
 </revisionlist>

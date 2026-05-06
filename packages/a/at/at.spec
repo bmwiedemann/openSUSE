@@ -1,7 +1,7 @@
 #
 # spec file for package at
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Source2:        atd.pamd
 Source3:        sysconfig.atd
 Source5:        atd.service
 Source6:        system-user-at.conf
+Source7:        at-tmpfiles.conf
 Patch0:         at-3.2.2.patch
 Patch11:        at-3.1.13-documentation-dir.patch
 #PATCH-FIX-OPENSUSE add proper system users to the deny list
@@ -112,6 +113,7 @@ install -m644 %{SOURCE3} %{buildroot}%{_fillupdir}
 
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
+install -D -m 0644 %{SOURCE7} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 %pre -f at.pre
 %service_add_pre atd.service
@@ -129,6 +131,7 @@ done
 %{fillup_only -n atd}
 %set_permissions %{_bindir}/at
 %service_add_post atd.service
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
 %verifyscript
 %verify_permissions -e %{_bindir}/at
@@ -160,9 +163,10 @@ done
 %{_mandir}/man?/*
 %{_sbindir}/atd
 %{_sbindir}/atrun
-%attr(700,at,at) %dir %{_localstatedir}/spool/atspool
-%attr(1770,at,at) %dir %{_localstatedir}/spool/atjobs
-%attr(600,at,at) %{_localstatedir}/spool/atjobs/.SEQ
+%{_tmpfilesdir}/%{name}.conf
+%ghost %attr(700,at,at) %dir %{_localstatedir}/spool/atspool
+%ghost %attr(1770,at,at) %dir %{_localstatedir}/spool/atjobs
+%ghost %attr(600,at,at) %{_localstatedir}/spool/atjobs/.SEQ
 %{_fillupdir}/sysconfig.atd
 %{_unitdir}/atd.service
 %{_sysusersdir}/system-user-at.conf

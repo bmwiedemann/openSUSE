@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 30 11:54:15 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Use systemd-tmpfiles to create spool structure [jsc#PED-14783]
+- Added sources 
+  * at-tmpfiles.conf   
+
+-------------------------------------------------------------------
 Mon Feb 24 18:16:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid bashisms in build recipe.
