@@ -41,4 +41,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173247</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>454ea9dcdb6955fe67bd8963c7809897</srcmd5>
+    <version>0.1.1</version>
+    <time>1778088005</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 0.1.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename LICENSE.txt to LICENSE in %files section
+- Rename README.rst to README.md in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1351171 from glaubitz)</comment>
+    <requestid>1351175</requestid>
+  </revision>
 </revisionlist>
