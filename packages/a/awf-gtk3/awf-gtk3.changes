@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May  5 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (4.1.0)
+  * add statusbar flash on statusbar update
+  * refactor signal desktop theme change
+  * fix some memory leaks
+  * fix configure.ac
+  * fix toolbar tooltips
+  * remove class prbr2
+  * update translations
+  * add windows (xp) support
+
+-------------------------------------------------------------------
 Tue Mar  3 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (4.0.0)
