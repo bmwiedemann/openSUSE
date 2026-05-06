@@ -7,4 +7,21 @@
     <comment>AWS package for cloudwatch service</comment>
     <requestid>1335816</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5c40a242910564a80505fb9499940399</srcmd5>
+    <version>1.300064.0</version>
+    <time>1774470110</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-33186.patch to fix authorization bypass in grpc-go due to improper
+  validation of the HTTP/2 :path pseudo-header (bsc#1260314, CVE-2026-33186) (forwarded request 1342398 from glaubitz)</comment>
+    <requestid>1342498</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb56199df70fad91f672f69c3c456575</srcmd5>
+    <version>1.300066.1</version>
+    <time>1778087920</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1351116</requestid>
+  </revision>
 </revisionlist>

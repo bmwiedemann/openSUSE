@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue May  5 11:45:18 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.300066.1
+  * Downgrade PMD error logs for systemmetrics pipeline by @sky333999 in (#2073)
+- from version 1.300066.0
+  * Add OTLP export support with receivers, endpoint validation,
+    and agent health integration by @JayPolanco in (#2062)
+  * Add awsneuron metrics processor for Neuron Monitor by @petruanica in (#2050)
+  * Add otel components hyperpod efa kubelet by @mitali-salvi in (#2066)
+  * Remove ec2tagger from systemmetrics pipeline if IMDS is not accessible
+    by @sky333999 in (#2067)
+- from version 1.300065.0
+  * [Agent] Handle regex escaping for '+' in timestamp format by @jefchien in (#2008)
+  * [Agent] Add systemmetrics pipeline for recognized hosts by @sky333999 in (#2052)
+  * [Agent] Adds append_dimensions to collectd, supporting custom metric dimensions
+    by @TravisStark in (#1997)
+- from version 1.300064.1
+  * Built with newer version of Go
+    - 1.25.6 (S3, SSM, ECR, DockerHub)
+    - 1.24.13 (Amazon Linux YUM)
+- Add update-apache-thrift.patch to update github.com/apache/thrift
+  to v0.23.0 in go.mod and go.sum and regenerate vendor.tar.gz
+  * Fixes TFramedTransport frame size headers can lead to a
+    uint32 integer overflow (bsc#1263550, CVE-2026-41602)
+- Drop CVE-2026-33186.patch, merged upstream
+
+-------------------------------------------------------------------
+Wed Mar 25 08:25:36 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add CVE-2026-33186.patch to fix authorization bypass in grpc-go due to improper
+  validation of the HTTP/2 :path pseudo-header (bsc#1260314, CVE-2026-33186)
+
+-------------------------------------------------------------------
 Mon Mar  2 07:18:47 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial import of amazon-cloudwatch-agent 1.300064.0 (jsc#PED-12675)
