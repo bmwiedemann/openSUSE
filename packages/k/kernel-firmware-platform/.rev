@@ -230,4 +230,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * powervr: update Imagination Rogue firmware images</comment>
     <requestid>1347746</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>739946de60873ab17f303c924c5b4e36</srcmd5>
+    <version>20260505</version>
+    <time>1778087880</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260505 (git commit 027be1e3d201):
+  * linux-firmware:Add firmware for Lontium LT7911EXC bridge</comment>
+    <requestid>1351031</requestid>
+  </revision>
 </revisionlist>
