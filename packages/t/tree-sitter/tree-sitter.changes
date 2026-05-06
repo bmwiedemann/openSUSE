@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Apr 28 15:50:29 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+Review corrections:
+
+1. Fixed SLPP violation: Moved tree-sitter-load-path.el and the
+   grammar directory from the shared library package
+   (libtree-sitter0_26) to the main tree-sitter package. This
+   allows different library versions to be installed in parallel.
+2. Removed legacy transition logic: Deleted the Provides and
+   Obsoletes for older library versions (0_22 and 0_25) that were
+   causing hard-dependency conflicts during upgrades.
+3. Eliminated conflicting symlink: Added a command in the
+   %install section to remove the unused libtree-sitter.so.0
+   symlink, preventing potential file conflicts.
+4. Verified configuration: Confirmed baselibs.conf correctly
+   references the current library package.
+
+-------------------------------------------------------------------
+Fri Apr 24 14:18:36 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add `Provides: lib%{name}%{somajor} = %{version}-%{release}` to
+  the definition of `lib%{name}%{somajor}` subpackage.
+
+-------------------------------------------------------------------
+Tue Apr 21 22:19:05 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Correct changelog.
+
+-------------------------------------------------------------------
 Wed Apr 15 07:22:32 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix libtree-sitter0_26 upgrade conflict with libtree-sitter0_25
@@ -13,8 +42,23 @@ Wed Apr 15 07:22:32 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 Mon Apr 13 19:00:27 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Revendor to have wasmtime 36.0.7, which is patched against the
-  host data leakage with 64-bit tables and Winch (CVE-2026-34945,
-  bsc#1262007).
+  host data leakage with 64-bit tables and Winch (bsc#1261871
+  CVE-2026-34941, bsc#1261894 CVE-2026-34942, bsc#1261954
+  CVE-2026-34943, bsc#1261963 CVE-2026-34944, bsc#1261968
+  CVE-2026-34988, bsc#1261974 CVE-2026-34946, bsc#1262007,
+  CVE-2026-34945, bsc#1262032 CVE-2026-34987, bsc#1262036
+  CVE-2026-35186, bsc#1262040 CVE-2026-35195).
+
+-------------------------------------------------------------------
+Thu Apr  9 20:47:44 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update tree-sitter macros for ESM grammar imports
+  Add package metadata and temporary node_modules symlinks to
+  grammar build macros so dependent grammars resolve in both
+  legacy CommonJS-style setups and newer ESM package-subpath
+  imports. This fixes builds like tree-sitter-vue that import
+  tree-sitter-html/grammar.js during parser generation.
+- Switch of automatic generating of cargo provides (bsc#1261839).
 
 -------------------------------------------------------------------
 Thu Apr  9 20:30:34 UTC 2026 - Matej Cepl <mcepl@cepl.eu>

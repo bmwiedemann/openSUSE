@@ -17,9 +17,9 @@
 # Sync with macros.emacs from the emacs package
 %global _emacs_sitelispdir %{_datadir}/emacs/site-lisp
 %global _emacs_sitestartdir %{_emacs_sitelispdir}/site-start.d
-
-
 %define         somajor 0_26
+# switch of automatic generating of cargo provides (bsc#1261839)
+%global __provides_exclude_from ^%{_bindir}/%{name}$
 Name:           tree-sitter
 Version:        0.26.8
 Release:        0
@@ -31,7 +31,6 @@ Source1:        vendor.tar.zst
 Source11:       baselibs.conf
 Source20:       tree-sitter-target.py
 Source21:       macros.in
-%{load:%{SOURCE21}}
 Source22:       macros.lua
 Source23:       functions.lua
 Source24:       compile-macros.sh
@@ -39,12 +38,16 @@ Source25:       treesitter_grammar.attr
 Source26:       treesitter_grammar.req
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
+BuildRequires:  fdupes
 BuildRequires:  rust > 1.82.0
 # for macros.emacs
 # BuildRequires:  emacs-nox
 # Commented out since we don't want circular dependencies
 Requires:       lib%{name}%{somajor} = %{version}
 Requires:       nodejs
+Conflicts:      lib%{name}0_22 < %{version}
+Conflicts:      lib%{name}0_25 < %{version}
+%{load:%{SOURCE21}}
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -62,8 +65,9 @@ edited. Tree-sitter aims to be:
 
 %package     -n lib%{name}%{somajor}
 Summary:        Asychronous I/O support library
-Obsoletes:      lib%{name}0_22 < %{version}
-Obsoletes:      lib%{name}0_25 < %{version}
+Provides:       lib%{name}%{somajor} = %{version}-%{release}
+Provides:       lib%{name}0_22 = %{version}
+Provides:       lib%{name}0_25 = %{version}
 
 %description -n lib%{name}%{somajor}
 Tree-sitter is a parser generator tool and an incremental parsing
@@ -99,6 +103,7 @@ sed -i -e '/^VERSION/s/:= .*$/:= %{version}/' Makefile
 sh %{SOURCE24}
 
 %install
+%define majorver %(echo "%{version}"|cut -d. -f 1-2)
 %make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBDIR=%{_libdir} INCLUDEDIR=%{_includedir}
 install -p -m 0755 -D %{_builddir}/%{name}-%{version}/target/release/%{name} \
     %{buildroot}%{_bindir}/%{name}
@@ -112,13 +117,19 @@ install -Dm755 %{SOURCE26} %{buildroot}%{_rpmconfigdir}/$(basename %{SOURCE26})
 #remove .a/.la files
 find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
 
+# remove unused .so.0 symlink
+rm %{buildroot}%{_libdir}/lib%{name}.so.0
+
+# create .so symlink
+ln -sf lib%{name}.so.%{majorver} %{buildroot}%{_libdir}/lib%{name}.so
+
 # stupid workaround for "integrating" the grammars into neovim
 install -d %{buildroot}%{_treesitter_grammardir}
 install -d %{buildroot}%{_treesitter_grammar_develdir}
 
 #fix pkgconfig file
 for i in lib include; do
-sed -i 's|'$i'dir=${prefix}//usr/|'$i'dir=${prefix}/usr/|g' %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
+sed -i 's|'$i'dir=${prefix}/%{_prefix}/|'$i'dir=${prefix}%{_prefix}/|g' %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 done
 
 install -d %{buildroot}/%{_emacs_sitestartdir}
@@ -127,6 +138,8 @@ cat <<EOF > %{buildroot}/%{_emacs_sitestartdir}/tree-sitter-load-path.el
 ;; Add tree-sitter grammars packaged by openSUSE
 (add-to-list 'treesit-extra-load-path "%{_treesitter_grammardir}")
 EOF
+
+%fdupes docs/
 
 %ldconfig_scriptlets -n lib%{name}%{somajor}
 
@@ -140,15 +153,14 @@ EOF
 %{_fileattrsdir}/treesitter_grammar.attr
 %dir %{_emacs_sitelispdir}
 %dir %{_emacs_sitestartdir}
+%{_emacs_sitestartdir}/tree-sitter-load-path.el
 %dir %{_includedir}/%{_treesitter_base_name}
 %dir %{_treesitter_grammar_develdir}
-
+%dir %{_treesitter_grammardir}
 
 %files -n lib%{name}%{somajor}
 %license LICENSE
 %{_libdir}/lib%{name}.so.*
-%dir %{_treesitter_grammardir}
-%{_emacs_sitestartdir}/tree-sitter-load-path.el
 
 %files devel
 %doc docs/

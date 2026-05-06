@@ -6,7 +6,7 @@
 %_treesitter_grammar_develdir %{_includedir}/%{_treesitter_base_name}/grammars
 %_treesitter_grammar_base_libname lib%{_treesitter_base_name}
 %treesitter_target() %{_rpmconfigdir}/tree-sitter-target.py
-%treesitter_set_flags export NODE_PATH=$NODE_PATH:%{_treesitter_grammar_develdir}:$PWD
+%treesitter_set_flags export NODE_PATH="${NODE_PATH:+${NODE_PATH}:}%{_treesitter_grammar_develdir}:$PWD"; mkdir -p node_modules; for grammar in %{_treesitter_grammar_develdir}/tree-sitter-*; do [ -d "$grammar" ] || continue; ln -sfn "$grammar" "node_modules/$(basename "$grammar")"; done
 
 %__treesitter_devel_package_name() %name-devel
 %treesitter_devel_package \
