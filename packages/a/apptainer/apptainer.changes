@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May  6 06:30:25 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Fix CVE-2026-34986 (bsc#1262956)
+      * github.com/go-jose/go-jose/v4@v4.1.4
+      CVE-2026-33186 GO-2026-4762 (bsc#1260311)
+      * google.golang.org/grpc@v1.79.3
+      CVE-2026-24137 GO-2026-4358 (bsc#1264177)
+      * github.com/sigstore/sigstore@v1.10.4
+        Fix fallout:
+	github.com/moby/go-archive@v0.1.0
+	github.com/containers/image/v5=github.com/containers/image/v5@v5.36.0
+- Building Add `%%with_suid` macro to optionally build the
+  `suid` starter (default: off).
+
+-------------------------------------------------------------------
 Tue Feb 10 10:04:31 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Fix HTML parser misimplementation of a part of the HTML

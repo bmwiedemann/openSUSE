@@ -16,6 +16,8 @@
 #
 
 
+%{bcond_with suid}
+
 %define apptainerpath src/github.com/apptainer/
 %define _buildshell /bin/bash
 
@@ -68,12 +70,20 @@ Requires:       (apptainer-sle16 = %version if product(SUSE_SLE) = 16.0)
 Recommends:     gocryptfs
 PreReq:         permissions
 
-# there's no golang for ppc64 & %ix86, ppc64le does not have non pie builds
+# there's no golang for ppc64 & %%ix86, ppc64le does not have non pie builds
 ExcludeArch:    ppc64 ppc64le %ix86 s390 s390x
 
 %description
 Apptainer provides functionality to make portable
 containers that can be used across host environments.
+
+%package   suid
+Summary:        suid starter for Apptainer
+Requires:       apptainer = %version
+
+%description suid
+This package contains the suid starter for Apptainer.
+Do not install unless this is absolutely needed!
 
 %package   sle15_7
 Summary:        Apptainer Definition File Templates for SLE 15 SP7
@@ -127,7 +137,7 @@ echo %version > VERSION
         --sharedstatedir=%{_sharedstatedir} \
         --mandir=%{_mandir} \
         --infodir=%{_infodir} \
-        --without-suid \
+        --with%{!?with_suid:out}-suid \
         --reproducible
 
 %make_build -C builddir V=""
@@ -182,6 +192,11 @@ install -m 0644 %{S:2} %{S:5} %{S:6} %{S:10} %{buildroot}/%{_datarootdir}/apptai
 %dir %{_localstatedir}/lib/apptainer/mnt
 %dir %{_localstatedir}/lib/apptainer/mnt/session
 %{_mandir}/man1/*
+
+%if %{with suid}
+%files suid
+%{_libexecdir}/apptainer/bin/starter-suid
+%endif
 
 %files sle15_7
 %{_datarootdir}/apptainer/templates/%{basename:%{S:5}}

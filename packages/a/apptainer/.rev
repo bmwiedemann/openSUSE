@@ -527,4 +527,17 @@
   even never returns (CVE-2025-47911, GO-2026-4440, bsc#1258047).</comment>
     <requestid>1332841</requestid>
   </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>dad32495d84b7369732a03540444d40c</srcmd5>
+    <version>1.4.5</version>
+    <time>1778087961</time>
+    <user>anag_factory</user>
+    <comment>* github.com/go-jose/go-jose/v4@v4.1.4
+      * google.golang.org/grpc@v1.79.3
+      * github.com/sigstore/sigstore@v1.10.4
+        Fix fallout:
+	github.com/moby/go-archive@v0.1.0
+	github.com/containers/image/v5=github.com/containers/image/v5@v5.36.0 (forwarded request 1351163 from eeich)</comment>
+    <requestid>1351164</requestid>
+  </revision>
 </revisionlist>
