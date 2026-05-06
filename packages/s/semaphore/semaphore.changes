@@ -1,4 +1,180 @@
 -------------------------------------------------------------------
+Wed May 06 06:26:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.1 (.0 was not released):
+  * Secret storage: two new external backends + a hard look at ownership
+    - The headline feature of this release is first-class support
+      for two more enterprise secret backends, joining the existing
+      Devolutions Server (DVLS) integration:
+      - AWS Secrets Manager ([#3750](#3750)) — adds a full Secret
+        Storage type for AWS SM with a dedicated form, icon, and a
+        Sync button to pull secrets on demand. The PR also
+        introduced a generalized rekey flow and "source details"
+        surfacing for individual secrets.
+      - Azure Key Vault ([#3752](#3752)) — symmetric implementation
+        for Azure, using the official Microsoft SDKs (azcore,
+        azidentity, azsecrets). Auth follows the same DB / env-var
+        / file pattern as AWS SM and DVLS, and the backend was
+        refactored to consolidate SyncSecrets across all storage
+        types into a single function.
+  * Security-related fixed
+    - Alongside the new backends, an unusually large cluster of
+      secret-related security fixes landed — almost all of them
+      automatically flagged by cursor[bot] during review:
+      - [#3753](#3753) / [#3762](#3762) — broken ownership checks
+        on environment secret delete/update (nil deref + auth
+        bypass). These are real authorization bugs where an
+        unauthenticated edge case could fall through.
+      - [#3768](#3768) — broken ErrReadOnlyStorage sentinel + a
+        silent delete error on environment secrets (the operation
+        appeared to succeed while failing).
+      - [#3778](#3778) — vault rekey now correctly skips keys that
+        live in external storage (AWS/Azure/DVLS), since rekeying
+        them locally would be incoherent.
+      - [#3784](#3784) — unsetenv for sensitive config fields after
+        they're consumed, so they don't linger in process memory
+        available to child processes.
+      - [#3792](#3792) — missing return statements after error
+        responses in auth/env handlers (classic
+        continue-after-error logic bug).
+      The pattern here is notable: the new backends were merged
+      together with a methodical sweep of the existing
+      secret-handling code, suggesting the secrets subsystem
+      received a deliberate audit pass.
+  * API tokens grow up
+    - Two complementary PRs turn API tokens from disposable opaque
+      strings into something closer to a managed credential:
+      - Expiration support ([#3795](#3795)) — tokens can now carry
+        an optional expires_at. Creation rejects non-future values;
+        bearer-token authentication checks expiry on every request
+        via a new IsExpiredAt method, so revocation-by-time is
+        enforced before the request handler even runs. This also
+        added rollback SQL for the migration.
+      - Named tokens ([#3788](#3788)) — first contribution from
+        @setswei. Tokens get a name field, which is the small UX
+        touch that finally makes a token list legible when you have
+        more than two of them.
+      Together with [#3785](#3785) (a nil pointer dereference fix
+      in TOTP session verification), the auth surface in this
+      release is meaningfully more robust.
+  * Runners: tags become a first-class scheduling primitive
+    - [#3804](#3804) is the largest single feature in the release
+      (24 commits) and is worth understanding architecturally
+      rather than as a list of bullets:
+      - A new runner__tag join table replaces the previous
+        single-string tag column, so a runner can carry multiple
+        tags.
+      - Global runners can now be tagged, not just project runners.
+        This bridges the "platform team owns a fleet, project teams
+        target subsets" model that previously required workarounds.
+      - The runner list UI gains Default and Global labels, label
+        wrapping, autocompletion in the tag input, and a
+        partial-tag filter ("get runners with any tag matching X").
+      - A new RunnerTagFilterMode enum (CompleteMatch, HasNoTags,
+        IsDefault, IgnoreTags, HasAnyTag) governs how tasks pick
+        runners.
+      - Non-admin users have actions disabled on globally-tagged
+        runners — the UI honors the ownership boundary.
+      The PR is also a fascinating case study in automated code
+      review actually working: cursor[bot] repeatedly flagged an
+      inverted condition in services/tasks/RemoteJob.go where
+      tagFilterMode was set backward (tagged jobs would have routed
+      to untagged runners and vice versa, breaking the isolation
+      guarantee that's the whole point of the feature). Across
+      roughly five review cycles the maintainer (@fiftin) iterated
+      until the logic was right. A bolt driver caveat — db:"-" tags
+      causing tag persistence to silently break on Bolt deployments
+      — was raised by the Codex reviewer; worth verifying for
+      anyone still on Bolt.
+      A related smaller change, [#3793](#3793), refactored the sync
+      flag handling, which was prerequisite plumbing.
+  * Admin observability
+    - [#3782](#3782) adds a System Information dialog for admins —
+      a new admin-only GET /admin/info endpoint backing a UI dialog
+      that surfaces:
+      - tmp_path, home_dir_mode
+      - Go version / arch / OS, Ansible version, git client
+      - DB dialect, HA configuration
+      - Auth method flags (LDAP, OIDC, etc.)
+      - Task limits, runner settings, notification flags
+      This is genuinely useful for support triage — the kind of
+      "what version of everything is this server running?" question
+      that previously required SSH access. The endpoint is
+      correctly gated by adminMiddleware server-side, with the UI
+      also guarding render with v-if="user && user.admin". Notably,
+      several of these values were already exposed to all
+      authenticated users via /api/info; the new endpoint is more
+      restrictive than what existed before.
+  * Ansible jumps two major versions
+    - [#3736](#3736) (first contribution from @sevencastles) bumps
+      the bundled Ansible from 11.1.0 → 13.5.0 (ansible-core
+      2.20.4). This is a non-trivial jump for anyone running
+      Ansible workloads against the Semaphore image — playbooks
+      that relied on collections or behavior from Ansible 11 should
+      be re-tested. There are no notes about pinned-version
+      overrides, so the upgrade is mandatory for users on the
+      official image.
+  * Terraform: stop logic finally works
+    - [#3694](#3694) — a long-standing bug from @JulianKap:
+      stopping a Terraform task while it sat in
+      waiting_confirmation (the human-approval gate between plan
+      and apply) didn't actually stop it. Now it does. For anyone
+      using Terraform integration, this closes one of the more
+      annoying state machine quirks.
+  * Quality-of-life and infrastructure
+    - A few smaller items worth flagging:
+      - i18n correctness ([#3764](#3764), first contribution from
+        @lawrence3699) — CLI command strings are no longer
+        translated. Translating ansible-playbook into other
+        languages was, predictably, breaking command execution.
+      - Process file ownership ([#3777](#3777)) — chown is now
+        scoped to directories the process actually has access to,
+        instead of attempting it everywhere and erroring noisily.
+      - README ([#3742](#3742), first contribution from
+        @gaetan-steininger) — updated to recommend SQLite over
+        Bolt, which is now deprecated. Worth noting alongside the
+        Bolt-driver concern raised on #3804: Bolt's days are
+        numbered, and new features may not get the same testing
+        coverage on it.
+  * Dependency churn
+    This release pulled in a high volume of dependency bumps. The
+    notable security-relevant ones:
+    - go-git/go-git/v5 → v5.17.2 ([#3732](#3732), [#3751](#3751)) —
+      security advisory fix.
+    - go-jose/go-jose/v4 → v4.1.4 ([#3745](#3745)) — patches
+      CVE-2026-34986 (DoS via JWE decryption panic), which is in
+      Semaphore's path because it's transitively used by the OIDC
+      login flow.
+    - axios → v1.15.0/v1.15.2 ([#3756](#3756), [#3800](#3800)) —
+      security advisory.
+    - node-forge → 1.4.0 ([#3728](#3728))
+    - go-ldap/ldap/v3 → v3.4.13 ([#3767](#3767))
+    - Azure/go-ntlmssp → v0.1.1 ([#3794](#3794)) — also feeds into
+      the Azure work.
+    Plus routine bumps of lodash, picomatch, flatted,
+    follow-redirects, prettier, core-js, dotenv, openai, and
+    actions/checkout.
+    A small style/config cleanup
+    ([588b369d](https://github.com/semaphoreui/semaphore/commit/588b369d))
+    removes some extra config validation.
+  * Headline takeaways for upgraders
+    - If you use external secret managers, this is a meaningful
+      release — AWS SM and Azure KV are now first-class.
+    - If you provision API tokens programmatically, plan for the
+      new expires_at and name fields; they're optional but the
+      inflection point to start using them is now.
+    - If you run Ansible playbooks via Semaphore, validate against
+      ansible-core 2.20.4 before upgrading production.
+    - If you're still on the Bolt driver, evaluate migrating to
+      SQLite — the README now recommends it and at least one PR in
+      this release ([#3804](#3804)) had a noted Bolt-specific
+      concern.
+    - If you operate a multi-team installation, the new
+      tagged-global-runner model is worth designing around — it
+      removes one of the longest-standing rough edges in
+      shared-fleet runner setups.
+
+-------------------------------------------------------------------
 Thu Apr 30 06:11:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.39:
