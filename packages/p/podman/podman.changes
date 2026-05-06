@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr 27 11:37:15 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 5.8.2:
+  * Bump to v5.8.2
+  * Release notes for v5.8.2
+  * hyperV: fix powershell path escape (CVE-2026-33414)
+  * cirrus: bump linux machine aarch64 test timeout
+  * Remove iptables references in upgrade tests
+  * bindings: artifact extract reject invalid names
+  * use chrootarchive over plain archive package
+  * fix symlink handling in checkpoint restore
+  * add missing O_CLOEXEC to open calls
+  * Fix Quadlet `Lookup()` stripping unmatched quotes
+  * Add e2e test for shell driver DriverOpts cross-contamination fix
+  * Fix shell driver DriverOpts cross-contamination in secret creation
+  * libpod: fix data race on deferredErr in attachExecHTTP
+  * Consolidate build secret tests and assert no podman-build-secret leak
+  * Remote build: `nTar` secrets with relative paths and ignore bypass
+  * api: fix missing return after error in SystemCheck handler
+  * test: relax rootless runc pid namespace assertion
+  * New images 2026-03-19
+  * cirrus: ensure NOTIFY_SOCKET is properly unset for all tests
+  * update fedoral base image to 43 and related tests
+  * new image sfx for debian 14
+  * libpod: Don't dereference ctrSpec.Linux if it is nil
+  * quadlet: allow empty Entrypoint to clear image default
+  * [v5.8] Bump Buildah to 1.43.1, c/common v0.67.1, c/image v5.39.2
+  * bump go-jose/go-jose to v4.1.4
+  * [v5.8] Fix `unless-stopped` containers not restarting after ...
+  * Bump Podman to v5.8.2-dev
+
+-------------------------------------------------------------------
 Thu Mar 12 16:14:32 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to version 5.8.1:
