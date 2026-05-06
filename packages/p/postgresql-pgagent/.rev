@@ -101,4 +101,12 @@
 - Add patch boost.patch to not look for boost system.</comment>
     <requestid>1308190</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>35a2ccb7b8c26d5754865ad8c4dfa617</srcmd5>
+    <version>4.2.3</version>
+    <time>1778087977</time>
+    <user>anag_factory</user>
+    <comment>- Disable pg13</comment>
+    <requestid>1351155</requestid>
+  </revision>
 </revisionlist>
