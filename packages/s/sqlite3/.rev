@@ -2027,4 +2027,15 @@ CVE-2020-13871 boo#1172646</comment>
     application to add changes one at a time to the</comment>
     <requestid>1345589</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>3a4174dada9afce3e1833b9741c0534d</srcmd5>
+    <version>3.53.1</version>
+    <time>1778087857</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.53.1:
+  * Fixes for problems in 3.53.0 reported by users.
+  * See the check-in timeline for details:
+    https://sqlite.org/src/timeline?from=version-3.53.0&amp;to=version-3.53.1</comment>
+    <requestid>1350991</requestid>
+  </revision>
 </revisionlist>
