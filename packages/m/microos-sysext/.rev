@@ -19,4 +19,12 @@
   * k3s: move ID=_any from finalize to postinst</comment>
     <requestid>1301888</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>71767394cb3507f52b1c3ab8bf022c0d</srcmd5>
+    <version>unknown</version>
+    <time>1778088006</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1351181</requestid>
+  </revision>
 </revisionlist>

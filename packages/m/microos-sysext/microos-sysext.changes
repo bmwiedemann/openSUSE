@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 05 10:41:05 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20251105.cb5e98d:
+  * Add pandoc sysext image
+  * Add netcat-openbsd to debug sysext
+
+-------------------------------------------------------------------
 Fri Aug 29 07:43:54 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 20250805.d1286a3:

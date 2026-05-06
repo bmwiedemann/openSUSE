@@ -1,6 +1,6 @@
 <services>
     <service name="obs_scm" mode="manual">
-        <param name="url">https://github.com/thkukuk/microos-sysext.git</param>
+        <param name="url">https://github.com/openSUSE/microos-sysext.git</param>
         <param name="scm">git</param>
         <param name="revision">main</param>
         <param name="version">_none_</param>
@@ -9,7 +9,7 @@
         <param name="changesgenerate">enable</param>
     </service>
     <service name="obs_scm" mode="manual">
-        <param name="url">https://github.com/thkukuk/microos-sysext.git</param>
+        <param name="url">https://github.com/openSUSE/microos-sysext.git</param>
         <param name="scm">git</param>
         <param name="revision">main</param>
         <param name="version">_none_</param>
