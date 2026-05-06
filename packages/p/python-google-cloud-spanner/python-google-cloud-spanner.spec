@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-spanner%{psuffix}
-Version:        3.64.0
+Version:        3.65.0
 Release:        0
 Summary:        Google Cloud Spanner API client library
 License:        Apache-2.0
@@ -56,7 +56,7 @@ Requires:       python-google-cloud-core >= 1.4.4
 Requires:       python-grpc-google-iam-v1 >= 0.12.4
 Requires:       python-grpc-interceptor >= 0.15.4
 Requires:       python-proto-plus >= 1.22.0
-Requires:       python-protobuf >= 3.20.2
+Requires:       python-protobuf >= 4.25.8
 Requires:       python-sqlparse >= 0.4.4
 Suggests:       python-google-cloud-monitoring >= 2.16.0
 Suggests:       python-mmh3 >= 4.1.0
@@ -107,7 +107,6 @@ export GOOGLE_CLOUD_PROJECT="PROJECT"
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%pycache_only %{python_sitelib}/google/cloud/__pycache__
 %dir %{python_sitelib}/google
 %dir %{python_sitelib}/google/cloud
 %{python_sitelib}/google/cloud/aio*

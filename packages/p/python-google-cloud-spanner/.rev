@@ -101,4 +101,18 @@
 - Update Python file list in %files section (forwarded request 1345120 from glaubitz)</comment>
     <requestid>1345666</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b3db1e64b6fe985271725135b3eece53</srcmd5>
+    <version>3.65.0</version>
+    <time>1778088036</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.65.0
+  * chore: add librarian integration for google-cloud-spanner (#16548)
+  * fix(spanner): catch recursion and decode errors in proto parsing to p… (#16561)
+  * fix(google-cloud-spanner): address compatibility issues with spanner experimental (#16593)
+  * chore(google-cloud-spanner): create a release (#16638)
+- Remove __pycache__ files from %files section
+- Update Requires from setup.py (forwarded request 1351218 from glaubitz)</comment>
+    <requestid>1351227</requestid>
+  </revision>
 </revisionlist>

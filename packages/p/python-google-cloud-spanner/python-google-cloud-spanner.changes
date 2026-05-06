@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  6 13:03:39 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.65.0
+  * chore: add librarian integration for google-cloud-spanner (#16548)
+  * fix(spanner): catch recursion and decode errors in proto parsing to p… (#16561)
+  * fix(google-cloud-spanner): address compatibility issues with spanner experimental (#16593)
+  * chore(google-cloud-spanner): create a release (#16638)
+- Remove __pycache__ files from %files section
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Apr  8 06:32:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.64.0
