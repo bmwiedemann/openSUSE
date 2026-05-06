@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  4 12:27:21 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Split openSUSE-provided configuration to its own branding
+  package (jsc#PED-14656, coo#129)
+- Suggest podman to hint the solver towards it when neither
+  docker or podman are installed (jsc#PED-14656, coo#129)
+- Recommend flatpak rather than requiring it: it is only needed
+  for the host-exec feature, and it is not desirable to
+  pull it in on minimal installations.
+
+-------------------------------------------------------------------
 Mon Apr 27 18:03:10 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Drop fix-distrobox-to-newer-zypper.patch since it was merged upstream

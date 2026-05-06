@@ -29,12 +29,16 @@ Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find
 Requires:       %{_bindir}/grep
 Requires:       %{_bindir}/sed
+Requires:       %{name}-branding
 Requires:       (%{_bindir}/podman or %{_bindir}/docker)
 # Idea would be: if bash completion is already there, let's have it. If
 # not, let's "only" recommend it...
 Requires:       (%{name}-bash-completion if bash-completion)
 # For distrobox-exec to work properly, we need flatpak helper services (bsc#1220037)
-Requires:       flatpak
+Recommends:     flatpak
+# podman is preferred in *SUSE, so add a very weak relation to it
+# so that it is chosen if neither docker or podman are installed
+Suggests:       podman
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
 BuildArch:      noarch
@@ -55,6 +59,19 @@ BuildArch:      noarch
 
 %description bash-completion
 Bash command line completion support for distrobox.
+
+%package branding-openSUSE
+Summary:        Distrobox branding package for openSUSE
+Requires:       %{name} = %{version}
+Provides:       %{name}-branding = %{version}
+Conflicts:      %{name} < %{version}-%{release}
+Conflicts:      %{name}-branding
+Supplements:    (%{name} and branding-openSUSE)
+BuildArch:      noarch
+
+%description branding-openSUSE
+This package provides the default configuration for Distrobox for
+openSUSE.
 
 %prep
 %autosetup -p1 -n distrobox-%{version}
@@ -82,13 +99,6 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/distrobox/distrobox.conf
 %{_bindir}/%{name}-*
 %{_mandir}/man1/%{name}.1.gz
 %{_mandir}/man1/%{name}-*.1.gz
-%if 0%{?suse_version} > 1500
-%dir %{_distconfdir}/distrobox
-%{_distconfdir}/distrobox/distrobox.conf
-%else
-%config %{_sysconfdir}/distrobox
-%config(noreplace) %{_sysconfdir}/distrobox/distrobox.conf
-%endif
 %dir %{_datadir}/icons/hicolor/
 %dir %{_datadir}/icons/hicolor/*x*/
 %dir %{_datadir}/icons/hicolor/*x*/apps/
@@ -99,5 +109,14 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/distrobox/distrobox.conf
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/%{name}*
+
+%files branding-openSUSE
+%if 0%{?suse_version} > 1500
+%dir %{_distconfdir}/distrobox
+%{_distconfdir}/distrobox/distrobox.conf
+%else
+%config %{_sysconfdir}/distrobox
+%config(noreplace) %{_sysconfdir}/distrobox/distrobox.conf
+%endif
 
 %changelog
