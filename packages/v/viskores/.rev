@@ -17,4 +17,12 @@ While by itself is a great addition, Viskores is an important dependency of VTK 
     <comment>This SR brings the latest release of Viskores 1.1.0.</comment>
     <requestid>1321324</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2cc5b00e5ec83aee0eba7a449e1dc3d0</srcmd5>
+    <version>1.1.1</version>
+    <time>1778087901</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1351040</requestid>
+  </revision>
 </revisionlist>

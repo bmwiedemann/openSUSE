@@ -19,7 +19,7 @@
 %define flavor @BUILD_FLAVOR@%{nil}
 %define major_ver 1
 %define minor_ver 1
-%define patch_ver 0
+%define patch_ver 1
 %define short_ver %{major_ver}.%{minor_ver}
 
 %if "%{flavor}" != "%{nil}"

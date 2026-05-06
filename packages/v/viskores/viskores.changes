@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 29 00:00:00 UTC 2026  - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 1.1.1-0
+
+- Update to Viskores 1.1.1:
+  * Bug Fixes
+    - Fix for compiling with Cuda 13.2: Viskores now explicitly loads
+      Thrust headers that were previously included transitively, ensuring
+      compatibility with Cuda 13.2 and later.
+  * Release notes: https://github.com/Viskores/viskores/releases/tag/v1.1.1
+
+-------------------------------------------------------------------
 Fri Dec 05 00:00:00 UTC 2025  - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 1.1.0-0
 
 - Added Viskores 1.1.0:
