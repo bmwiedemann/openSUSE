@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Thu Apr 30 01:07:26 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.15.0~1:
+  * Add experimental concurrent cache support
+  * prepare release 0.15.0
+  * Add cargo-binstall metadata for prebuilt binary installation
+  * Fix coverage
+  * fix: handle directories in dep-info source file hashing
+  * docs(Rust.md): Add caveats from README
+  * Add retry for dists docker image build
+  * ci: set crt-static for riscv64 musl targets
+  * feat: Add loongarch64 support
+  * feat: Implement multi-tier caching with fallback and backfilling (#2581)
+  * msvc: add support for Y-, YI, Zf flags
+  * Group tests logging in CI
+  * Add failing test for cmake-modules + cmake 4 version
+  * Unfold ninja output in the test
+  * Add a comment for maintaining integration tests
+  * Move cmake-modules to integration tests
+  * fix: exclude CARGO_ENCODED_RUSTFLAGS from env var hash (#2651)
+  * chore(deps): update rust crate quinn-proto to v0.11.14
+  * Fix sync GCS initialization
+  * clippy: fix from_iter_instead_of_collect lint
+  * fix: add Win32_Security feature to windows-sys dependency
+  * build(deps): bump actions/download-artifact from 5 to 8
+  * msvc: Append the default .pdb extension for the /Fd argument (#2621)
+  * build(deps): bump actions/upload-artifact from 4 to 7
+  * clippy: fix ref_option lint
+  * ci: install grcov from prebuilt binary instead of cargo install
+  * ci: use default toolchain to install grcov
+  * ci: fix artifact_failure action when target dir does not exist
+  * Remove benchmark normalize_win_path_utf8 (#2634)
+  * Revert "actions: add security audit workflow (#2594)" (#2603)
+  * partial c++20 module support (#2516)
+  * clippy: fix ptr_as_ptr lint (#2611)
+  * Add support for `d1nodatetime` & `await:strict` MSVC flags (#2617)
+  * chore: switch thirtyfour_sync to thirtyfour (#2613)
+  * clippy: fix manual_string_new lint (#2609)
+  * clippy: fix unnecessary_semicolon lint (#2615)
+  * clippy: fix explicit_into_iter_loop lint (#2616)
+  * Avoid double-caching when ccache is installed in PATH (#2524)
+  * clippy: fix cloned_instead_of_copied lint (#2605)
+  * clippy: fix semicolon_if_nothing_returned lint (#2601)
+  * Move PreprocessorCacheModeConfig to src/config.rs (#2604)
+  * clippy: fix cloned_ref_to_slice_refs lint (#2602)
+  * prepare the new release (#2600)
+  * chore: update to toml 0.9 (#2599)
+  * ci: Add coverage to integration tests, report it to Codecov.io (#2598)
+  * Preparation for multilevel caching (#2597)
+  * Add sccache-dist to flake.nix (#2579)
+  * fixup! cargo fmt
+  * fixup! rustfmt update
+  * Extract FileObjectSource, CacheRead and CacheWrite to cache_io.rs
+  * chore: update to nix 0.30
+  * Add a helper method to get a correct backend name
+  * Add cos feature gate to RemoteStorage
+  * Simplify profiles for integration tests
+  * clippy: fix implicit_clone lint (#2584)
+  * actions: add security audit workflow (#2594)
+  * docs: fix examples showing an xz-compress toolchain archive (#2587)
+  * add benches for normalize_win_path strip_basedirs (#2588)
+  * snap: update to core24 (#2570)
+  * Add .rustfmt.toml for consistent style between `rustfmt` and `cargo fmt` (#2582)
+  * add comments about auth token requirements (#2583)
+  * chore: update to tokio-serde 0.9 (#2585)
+  * ci: update freebsd to 15.0 (#2586)
+  * distributed compilation support for asm & preprocessor outputs (#2557)
+  * remove unused declaration (#2577)
+  * Extract LazyDiskCache to a separated file (#2573)
+  * Revert "ci: show diff for toml_format" (#2578)
+  * Open Add SCCACHE_BASEDIRS support
+  * ci: show diff for toml_format
+  * chore: update to syslog 7
+  * refactor: use matrix to reduce deduplication
+  * fix: remove outdated `analysis` mode
+  * Unbreak the s390x CI
+  * ci: add macos-15-intel for prebuilt binary (#2555)
+  * Integration tests (#2564)
+  * Fix code review.
+  * Impl for COS.
+  * build(deps): bump opendal from 0.54.0 to 0.55.0
+  * Move integration tests related stuff to subdir
+  * Add Objective C Header for consistency
+
+-------------------------------------------------------------------
 Wed Feb 11 02:26:43 UTC 2026 - William Brown <william.brown@suse.com>
 
 - bsc#1257923 - CVE-2026-25727 - rfc 2822 format parsing may lead to stack exhaustion.
