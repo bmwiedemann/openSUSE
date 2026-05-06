@@ -1831,4 +1831,24 @@ also obs request: #660553
   - Add missing jsc reference to changes file</comment>
     <requestid>1307704</requestid>
   </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>927a1593a4922277dcc6bd66f51c4c97</srcmd5>
+    <version>0.90.4</version>
+    <time>1772127383</time>
+    <user>anag_factory</user>
+    <comment>- version 0.90.4
+  - netconfig: adjust condition to disable nis on 16.x (jsc#PED-15809)</comment>
+    <requestid>1335125</requestid>
+  </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>5a99c19ed50b58cf9ca8915f297ea61a</srcmd5>
+    <version>0.90.5</version>
+    <time>1778087851</time>
+    <user>anag_factory</user>
+    <comment>- version 0.90.5
+  * netconfig: Do not remove custom /etc/{resolv,yp}.conf on uninstall
+    of sysconfig-netconfig, but only the symlinks to /run/netconfig
+    files created by netconfig or tmpfiles.d(5) (bsc#1263889).</comment>
+    <requestid>1350931</requestid>
+  </revision>
 </revisionlist>

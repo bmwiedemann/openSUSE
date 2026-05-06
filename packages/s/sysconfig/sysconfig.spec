@@ -1,7 +1,7 @@
 #
 # spec file for package sysconfig
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,14 +39,14 @@
 
 # disable nis on 16.x (dropped),
 # keeping on tumbleweed and 15.x
-%if 0%{?suse_version} != 1600
+%if %{suse_version} < 1600 || %{suse_version} >= 1699
 %bcond_without  nis
 %else
 %bcond_with     nis
 %endif
 
 Name:           sysconfig
-Version:        0.90.3
+Version:        0.90.5
 Release:        0
 Summary:        The configuration scheme for traditional network scripts
 License:        GPL-2.0-or-later
@@ -199,10 +199,10 @@ EOF
 %{_tmpfilesdir}/netconfig.conf
 %ghost %attr(0755,root,root) %dir /run/netconfig
 %ghost %attr(0644,root,root) /run/netconfig/resolv.conf
-%ghost %attr(0644,root,root) /etc/resolv.conf
+%ghost %attr(0644,root,root) %config(noreplace) /etc/resolv.conf
 %if %{with nis}
 %ghost %attr(0644,root,root) /run/netconfig/yp.conf
-%ghost %attr(0644,root,root) /etc/yp.conf
+%ghost %attr(0644,root,root) %config(noreplace) /etc/yp.conf
 %endif
 
 %post -p /bin/bash
@@ -214,5 +214,16 @@ EOF
 
 %post netconfig -p /bin/bash
 %tmpfiles_create %{_tmpfilesdir}/netconfig.conf
+
+%postun netconfig -p /bin/bash
+if [ $1 -eq 0 ] ; then
+	# cleanup /etc/{resolv,yp}.conf symlinks on uninstall
+	case $(readlink -m /etc/resolv.conf 2>/dev/null) in
+	/run/netconfig/resolv.conf) rm -f /etc/resolv.conf || : ;;
+	esac
+	case $(readlink -m /etc/yp.conf 2>/dev/null) in
+	/run/netconfig/yp.conf) rm -f /etc/yp.conf || : ;;
+	esac
+fi
 
 %changelog

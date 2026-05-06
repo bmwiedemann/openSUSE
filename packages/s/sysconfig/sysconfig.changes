@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  4 16:02:54 UTC 2026 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.90.5
+  * netconfig: Do not remove custom /etc/{resolv,yp}.conf on uninstall
+    of sysconfig-netconfig, but only the symlinks to /run/netconfig
+    files created by netconfig or tmpfiles.d(5) (bsc#1263889).
+
+-------------------------------------------------------------------
+Wed Feb 25 14:30:16 UTC 2026 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.90.4
+  - netconfig: adjust condition to disable nis on 16.x (jsc#PED-15809)
+
+-------------------------------------------------------------------
 Mon Sep 29 08:48:10 UTC 2025 - Marius Tomaschewski <mt@suse.com>
 
 - version 0.90.3
