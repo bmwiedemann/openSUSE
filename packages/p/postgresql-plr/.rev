@@ -190,4 +190,13 @@ Fri Feb  13 13:13:13 UTC 2015 - bruno@ioda-net.ch
 Fri Dec  21 07:35:00 UTC 2015 - bruno@ioda-net.ch</comment>
     <requestid>1307185</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d558458caa7f21113668a0e2b6401245</srcmd5>
+    <version>8.4.8.6</version>
+    <time>1778088028</time>
+    <user>anag_factory</user>
+    <comment>- Disable pg13
+- Update to 8.4.8.6 to fix build on Factory.</comment>
+    <requestid>1351202</requestid>
+  </revision>
 </revisionlist>

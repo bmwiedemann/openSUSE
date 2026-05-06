@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 09:36:37 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Disable pg13
+- Update to 8.4.8.6 to fix build on Factory.
+
+-------------------------------------------------------------------
 Thu Sep 25 15:58:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - enable pg 18
@@ -6,7 +12,7 @@ Thu Sep 25 15:58:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Thu Sep 25 15:54:48 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 3.4.8
+- Update to 8.4.8
   - Rename aggregate function "gamma" to "gamma1" to avoid clash
     with PG18 function "gamma"
 - refreshed patch patch-Makefile-ldflags.patch

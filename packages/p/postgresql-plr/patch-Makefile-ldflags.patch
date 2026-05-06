@@ -1,17 +1,16 @@
-Index: plr-REL8_4_8/Makefile
-===================================================================
---- plr-REL8_4_8.orig/Makefile
-+++ plr-REL8_4_8/Makefile
-@@ -21,7 +21,7 @@ MODULE_big	= plr
+diff -ruBb plr-REL8_4_8_6/Makefile plr-REL8_4_8_6.new/Makefile
+--- plr-REL8_4_8_6/Makefile	2026-04-25 06:00:43.000000000 +0200
++++ plr-REL8_4_8_6.new/Makefile	2026-05-06 13:58:07.416573010 +0200
+@@ -21,7 +21,7 @@
  PG_CPPFLAGS	+= $(r_includespec)
  SRCS		+= plr.c pg_conversion.c pg_backend_support.c pg_userfuncs.c pg_rsupport.c
  OBJS		:= $(SRCS:.c=.o)
 -SHLIB_LINK	+= -L$(r_libdir1x) -L$(r_libdir2x) -lR
 +SHLIB_LINK	+= -L$(r_libdir1x) -L$(r_libdir2x) -lR $(LDFLAGS)
- DATA		= plr--8.4.8.sql plr--unpackaged--8.4.8.sql plr--8.3.0.18--8.4.sql plr--8.4.1--8.4.2.sql  plr--8.4.3--8.4.4.sql \
+ DATA		= plr--8.4.8.6.sql plr--unpackaged--8.4.8.6.sql plr--8.3.0.18--8.4.sql plr--8.4.1--8.4.2.sql  plr--8.4.3--8.4.4.sql \
  plr--8.4--8.4.1.sql plr--8.4.2--8.4.3.sql plr--8.4.4--8.4.5.sql plr--8.4.5--8.4.6.sql plr--8.4.6--8.4.7.sql \
- plr--8.4.7--8.4.8.sql
-@@ -71,6 +71,7 @@ ifneq (,$(findstring yes, $(shared_libr)
+ plr--8.4.7--8.4.8.sql plr--8.4.8--8.4.8.1.sql plr--8.4.8.1--8.4.8.2.sql plr--8.4.8.2--8.4.8.3.sql \
+@@ -72,6 +72,7 @@
  override CPPFLAGS := -I"$(srcdir)" -I"$(r_includespec)" $(CPPFLAGS)
  override CPPFLAGS += -DPKGLIBDIR=\"$(pkglibdir)\" -DDLSUFFIX=\"$(DLSUFFIX)\"
  override CPPFLAGS += -DR_HOME_DEFAULT=\"$(rhomedef)\"
@@ -19,3 +18,4 @@ Index: plr-REL8_4_8/Makefile
  
  else # can't build
  
+Nur in plr-REL8_4_8_6.new: Makefile.orig.
