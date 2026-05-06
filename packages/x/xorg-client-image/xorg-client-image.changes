@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  6 10:55:46 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- align user/group ids with what was used in SLE15
+
+-------------------------------------------------------------------
 Mon May  4 15:29:34 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - hardcode group id to 100
