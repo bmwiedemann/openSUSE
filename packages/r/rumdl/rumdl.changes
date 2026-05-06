@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed May 06 05:53:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.89:
+  * Added
+    - md031: enforce blank lines around Azure DevOps colon code
+      fences (488a157)
+    - lint_context: wire Azure DevOps colon fence detection and
+      extend code_blocks (a9dc0cd)
+    - lint_context: add colon fence detection for Azure DevOps
+      flavor (b2a742b)
+    - flavor: add AzureDevOps flavor variant with colon code fence
+      support (59592e5)
+  * Fixed
+    - md046: replace index loop with iterator to satisfy clippy
+      needless_range_loop (605c3da)
+    - md048: skip colon fence lines in style detection for Azure
+      DevOps flavor (b4833fa)
+    - md046: skip colon fence lines in style detection for Azure
+      DevOps flavor (386330c)
+    - md055: normalize style config to snake_case so kebab-case
+      values are applied (8d4dfd2)
+- Update to version 0.1.88:
+  * Added
+    - md051,md052: handle Pandoc implicit header refs and divergent
+      slugs (8805001)
+    - md042: document parser-level exclusion of Pandoc inline
+      footnotes, example refs, and implicit header refs (6e4f7d8)
+    - md040: accept Pandoc {=format} raw blocks; keep {r}/{python}
+      Quarto-only (f4e446f)
+    - md038: skip Pandoc inline code attribute syntax (db18bba)
+    - md037: skip Pandoc sub/superscripts and bracketed spans
+      (80a2be6)
+    - md034: skip URLs inside Pandoc line blocks and metadata
+      (24469fc)
+    - md029: skip Pandoc example-list markers under
+      Pandoc-compatible flavor (2421618)
+    - pandoc: add is_pandoc_raw_block_lang helper (60fb48f)
+    - pandoc: detect multi-line tables (52c242a)
+    - pandoc: detect grid tables (f331d65)
+    - pandoc: detect multi-block YAML metadata (0869d66)
+    - pandoc: detect pipe-table captions (44a20aa)
+    - pandoc: detect line blocks (8f9590a)
+    - pandoc: detect bracketed spans (0023c4a)
+    - pandoc: detect inline code attribute syntax (0cced5f)
+    - pandoc: detect subscripts and superscripts (d015748)
+    - pandoc: detect example lists and references (ae9aeba)
+    - pandoc: detect implicit header references (f290047)
+    - pandoc: detect inline footnotes ^[note] (b021786)
+    - rules: re-gate Pandoc-syntax skips on is_pandoc_compatible()
+      (b9748c2)
+    - lint_context: gate Pandoc pre-pass on is_pandoc_compatible()
+      (c342c93)
+    - cli: accept --flavor pandoc (5c83805)
+    - flavor: add is_pandoc_compatible() helper (7c5964c)
+    - flavor: add Pandoc variant to MarkdownFlavor (af7b6d3)
+  * Fixed
+    - server: resolve clap --config arg collision causing panic
+      (deb93ef)
+    - md051: emit Pandoc auto_identifiers suffix slugs for
+      duplicate headings (33c858e)
+    - md040: accept Pandoc {.class} code attributes as language
+      declaration (10a5a8e)
+    - pandoc: exclude link labels from citation detection (186533b)
+    - pandoc: require citation @ to sit at a citation boundary
+      (f4df478)
+    - md038: keep checking inner whitespace on attributed code
+      spans (1bc9bef)
+    - md063: keep numeric ordinals lower-cased in title case
+      (ef3d881)
+    - MD009: allow br_spaces on paragraph lines in strict mode
+      (526ec41)
+    - MD013: preserve wildcard asterisks during reflow (#604)
+      (012c477)
+
+-------------------------------------------------------------------
 Sun May 03 06:44:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.87:
