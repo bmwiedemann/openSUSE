@@ -1,8 +1,7 @@
 #
 # spec file for package nut
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +20,8 @@
 %define HTMLPATH	%{apache_serverroot}/htdocs/%{name}
 %define MODELPATH	%{_libexecdir}/ups/driver
 %define STATEPATH	%{_localstatedir}/lib/ups
-%define CONFPATH	%{_sysconfdir}/ups
 %define PIDPATH 	%{_rundir}
+%define CONFSUBDIR	ups
 %define NUT_USER	upsd
 %define NUT_GROUP	daemon
 %define LBRACE		(
@@ -34,6 +33,13 @@
 %define USBNONHIDDRIVERS %(zcat %{SOURCE0} | tr a-z A-Z | grep -a -A1 _USB       | sed -n 's/.*ATTR{IDVENDOR}==%{QUOTE}%{BACKSLASH}%{LBRACE}[^%{QUOTE}]*%{BACKSLASH}%{RBRACE}%{QUOTE}, ATTR{IDPRODUCT}==%{QUOTE}%{BACKSLASH}%{LBRACE}[^%{QUOTE}]*%{BACKSLASH}%{RBRACE}%{QUOTE}, MODE=.*/modalias%{LBRACE}usb:v%{BACKSLASH}1p%{BACKSLASH}2d*dc*dsc*dp*ic*isc*ip*%{RBRACE}/p' | tr '%{BACKSLASH}n' ' ')
 %define systemdsystemdutildir %(pkg-config --variable=systemdutildir systemd)
 %define bashcompletionsdir %(pkg-config bash-completion --variable=completionsdir)
+# FIXME: Find a smarter way to set those from main codebase recipes...
+# Something like `git grep 'version-info' '*.am'` ?
+%define SO_MAJOR_LIBUPSCLIENT	7
+%define SO_MAJOR_LIBNUTCLIENT	2
+%define SO_MAJOR_LIBNUTCLIENTSTUB	1
+%define SO_MAJOR_LIBNUTSCAN	4
+%define SO_MAJOR_LIBNUTCONF	0
 %bcond_with texdoc
 %if 0%{?suse_version} >= 1500
 %bcond_without libi2c
@@ -56,7 +62,7 @@
 %bcond_with libfreeipmi
 %endif
 Name:           nut
-Version:        2.8.4
+Version:        2.8.5
 Release:        0
 Summary:        Network UPS Tools Core (Uninterruptible Power Supply Monitoring)
 License:        GPL-2.0-or-later
@@ -153,59 +159,74 @@ together with nut to provide UPS networking support.
 Network UPS Tools is a collection of programs which provide a common
 interface for monitoring and administering UPS hardware.
 
-%package -n libnutclient2
+%package -n libupsclient%{SO_MAJOR_LIBUPSCLIENT}
 Summary:        Network UPS Tools Library (Uninterruptible Power Supply Monitoring)
 Group:          System/Libraries
-Conflicts:      libupsclient1
 
-%description -n libnutclient2
-Shared library for the Network UPS Tools.
+%description -n libupsclient%{SO_MAJOR_LIBUPSCLIENT}
+Shared library for the Network UPS Tools, used by its and third-party C clients.
 
 Network UPS Tools is a collection of programs which provide a common
 interface for monitoring and administering UPS hardware.
 
-%package -n libnutscan4
+Detailed information about supported hardware can be found in
+%{_docdir}/nut.
+
+%package -n libnutclient%{SO_MAJOR_LIBNUTCLIENT}
 Summary:        Network UPS Tools Library (Uninterruptible Power Supply Monitoring)
 Group:          System/Libraries
-Conflicts:      libupsclient1
 
-%description -n libnutscan4
-Shared library for the Network UPS Tools.
+%description -n libnutclient%{SO_MAJOR_LIBNUTCLIENT}
+Shared library for the Network UPS Tools, used by its and third-party C++ clients.
 
 Network UPS Tools is a collection of programs which provide a common
 interface for monitoring and administering UPS hardware.
 
-%package -n libupsclient7
+Detailed information about supported hardware can be found in
+%{_docdir}/nut.
+
+%package -n libnutclientstub%{SO_MAJOR_LIBNUTCLIENTSTUB}
 Summary:        Network UPS Tools Library (Uninterruptible Power Supply Monitoring)
 Group:          System/Libraries
-Conflicts:      libupsclient1
 
-%description -n libupsclient7
-Shared library for the Network UPS Tools.
+%description -n libnutclientstub%{SO_MAJOR_LIBNUTCLIENTSTUB}
+Shared stub library for the Network UPS Tools with memory-backed configurations,
+primarily used by tests and mocks with its and third-party C++ clients.
 
 Network UPS Tools is a collection of programs which provide a common
 interface for monitoring and administering UPS hardware.
 
-%package -n libnutclientstub1
+Detailed information about supported hardware can be found in
+%{_docdir}/nut.
+
+%package -n libnutscan%{SO_MAJOR_LIBNUTSCAN}
 Summary:        Network UPS Tools Library (Uninterruptible Power Supply Monitoring)
 Group:          System/Libraries
-Conflicts:      libupsclient1
 
-%description -n libnutclientstub1
-Shared library for the Network UPS Tools.
+%description -n libnutscan%{SO_MAJOR_LIBNUTSCAN}
+Shared library for the Network UPS Tools, used by its nut-scanner and nutconf tools,
+and possibly third-party C clients, integrations or tools.
 
 Network UPS Tools is a collection of programs which provide a common
 interface for monitoring and administering UPS hardware.
 
-%package -n libnutconf0
+Detailed information about supported hardware can be found in
+%{_docdir}/nut.
+
+# If not published, nutconf is built with a statically linked library variant
+%package -n libnutconf%{SO_MAJOR_LIBNUTCONF}
 Summary:        Network UPS Tools Library (Uninterruptible Power Supply Monitoring)
 Group:          System/Libraries
 
-%description -n libnutconf0
-Shared library for the Network UPS Tools.
+%description -n libnutconf%{SO_MAJOR_LIBNUTCONF}
+Shared library for the Network UPS Tools, used by its nutconf tool,
+and possibly third-party C++ clients, integrations or tools.
 
 Network UPS Tools is a collection of programs which provide a common
 interface for monitoring and administering UPS hardware.
+
+Detailed information about supported hardware can be found in
+%{_docdir}/nut.
 
 %package cgi
 Summary:        Network UPS Tools Web Server Support (UPS Status Pages)
@@ -333,8 +354,9 @@ autoreconf -fvi
 %configure \
 	--docdir=%{_docdir}/%{name} \
 	--disable-static \
-	--sysconfdir=%{CONFPATH} \
 	--datadir=%{_datadir}/%{name} \
+	--with-confdir-suffix=%{CONFSUBDIR} \
+	--enable-shared-private-libs \
 	--with-all \
 %if %{with texdoc}
 	--with-doc="man html-single html-chunked pdf" \
@@ -356,6 +378,7 @@ autoreconf -fvi
 %if %{without libi2c}
 	--without-i2c
 %endif
+	--with-confdir-suffix=%{CONFSUBDIR} \
 	--with-htmlpath=%{HTMLPATH} \
 	--with-cgipath=%{CGIPATH} \
 	--with-statepath=%{STATEPATH} \
@@ -396,6 +419,12 @@ rm -f %{buildroot}%{_docdir}/%{name}/html-doc/packager-guide.html
 rm -f %{buildroot}%{_docdir}/%{name}/cables/Makefile*
 rm -f %{buildroot}%{_docdir}/%{name}/cables/*.txt-prepped
 
+# Private libraries. Remove *.so
+rm %{buildroot}%{_libdir}/libnutprivate*.so
+
+# Defined in system-users
+rm %{buildroot}%{_prefix}/lib/sysusers.d/nut-common-sysusers.conf
+
 # Create symlinks for man pages
 %fdupes -s %{buildroot}%{_mandir}
 %fdupes %{buildroot}%{_docdir}/%{name}
@@ -408,13 +437,13 @@ getent passwd %{NUT_USER} >/dev/null || useradd -r -g %{NUT_GROUP} -s /bin/false
 
 %post
 # Generate initial passwords.
-if grep -q "password = @UPSD_INITIAL_MASTER_PASSWORD@" %{CONFPATH}/upsmon.conf %{CONFPATH}/upsd.users; then
+if grep -q "password = @UPSD_INITIAL_MASTER_PASSWORD@" %{_sysconfdir}/%{CONFSUBDIR}/upsmon.conf %{_sysconfdir}/%{CONFSUBDIR}/upsd.users; then
   UPSD_INITIAL_MASTER_PASSWORD=$(head -c 20 /dev/urandom | md5sum | head -c 10)
-  sed -i s/@UPSD_INITIAL_MASTER_PASSWORD@/$UPSD_INITIAL_MASTER_PASSWORD/ %{CONFPATH}/upsmon.conf %{CONFPATH}/upsd.users
+  sed -i s/@UPSD_INITIAL_MASTER_PASSWORD@/$UPSD_INITIAL_MASTER_PASSWORD/ %{_sysconfdir}/%{CONFSUBDIR}/upsmon.conf %{_sysconfdir}/%{CONFSUBDIR}/upsd.users
 fi
-if grep -q "password = @UPSD_INITIAL_SLAVE_PASSWORD@" %{CONFPATH}/upsd.users ; then
+if grep -q "password = @UPSD_INITIAL_SLAVE_PASSWORD@" %{_sysconfdir}/%{CONFSUBDIR}/upsd.users ; then
   UPSD_INITIAL_SLAVE_PASSWORD=$(head -c 20 /dev/urandom | md5sum | head -c 10)
-  sed -i s/@UPSD_INITIAL_SLAVE_PASSWORD@/$UPSD_INITIAL_SLAVE_PASSWORD/ %{CONFPATH}/upsd.users
+  sed -i s/@UPSD_INITIAL_SLAVE_PASSWORD@/$UPSD_INITIAL_SLAVE_PASSWORD/ %{_sysconfdir}/%{CONFSUBDIR}/upsd.users
 fi
 # Migrate Suspend to Disc to the new convention (bnc#449861 and later bnc#871406):
 # It was never on by default, but documentation up to 11.0 recommends
@@ -445,16 +474,24 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %ldconfig_scriptlets -n libupsclient7
 %ldconfig_scriptlets -n libnutconf0
 %else
-%post   -n libnutclient2 -p /sbin/ldconfig
-%postun -n libnutclient2 -p /sbin/ldconfig
-%post   -n libnutclientstub1 -p /sbin/ldconfig
-%postun -n libnutclientstub1 -p /sbin/ldconfig
-%post   -n libnutscan4 -p /sbin/ldconfig
-%postun -n libnutscan4 -p /sbin/ldconfig
-%post   -n libupsclient7 -p /sbin/ldconfig
-%postun -n libupsclient7 -p /sbin/ldconfig
-%post   -n libnutconf0 -p /sbin/ldconfig
-%postun -n libnutconf0 -p /sbin/ldconfig
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+%post   -n libnutclient%{SO_MAJOR_LIBNUTCLIENT} -p /sbin/ldconfig
+%postun -n libnutclient%{SO_MAJOR_LIBNUTCLIENT} -p /sbin/ldconfig
+%post   -n libnutclientstub%{SO_MAJOR_LIBNUTCLIENTSTUB} -p /sbin/ldconfig
+%postun -n libnutclientstub%{SO_MAJOR_LIBNUTCLIENTSTUB} -p /sbin/ldconfig
+%post   -n libnutscan%{SO_MAJOR_LIBNUTSCAN} -p /sbin/ldconfig
+%postun -n libnutscan%{SO_MAJOR_LIBNUTSCAN} -p /sbin/ldconfig
+%post   -n libupsclient%{SO_MAJOR_LIBNUTCLIENT} -p /sbin/ldconfig
+%postun -n libupsclient%{SO_MAJOR_LIBNUTCLIENT} -p /sbin/ldconfig
+%post   -n libnutconf%{SO_MAJOR_LIBNUTCONF} -p /sbin/ldconfig
+%postun -n libnutconf%{SO_MAJOR_LIBNUTCONF} -p /sbin/ldconfig
+%define SO_MAJOR_LIBUPSCLIENT	7
+%define SO_MAJOR_LIBNUTCLIENT	2
+%define SO_MAJOR_LIBNUTCLIENTSTUB	1
+%define SO_MAJOR_LIBNUTSCAN	4
+%define SO_MAJOR_LIBNUTCONF	0
+
 %endif
 
 %files
@@ -463,6 +500,7 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %config %{_sysconfdir}/logrotate.d/*
 %{_bindir}/*
 %{_datadir}/%{name}
+%{_libdir}/libnutprivate*.so.*
 %{_mandir}/man5/*%{ext_man}
 %{_mandir}/man7/*%{ext_man}
 %{_mandir}/man8/*%{ext_man}
@@ -473,15 +511,17 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %python_sitelib/PyNUT.py
 %{_sbindir}/*
 %{_udevrulesdir}/*.rules
-%config(noreplace) %{CONFPATH}/hosts.conf
-%config(noreplace) %attr(600,%{NUT_USER},root) %{CONFPATH}/upsd.conf
-%config(noreplace) %attr(600,%{NUT_USER},root) %{CONFPATH}/upsd.users
-%config(noreplace) %attr(600,%{NUT_USER},root) %{CONFPATH}/upsmon.conf
-%dir %{CONFPATH}
-%config(noreplace) %{CONFPATH}/nut.conf
-%config(noreplace) %{CONFPATH}/ups.conf
-%config(noreplace) %{CONFPATH}/upsset.conf
-%config(noreplace) %{CONFPATH}/upssched.conf
+%config(noreplace) %{_sysconfdir}/%{CONFSUBDIR}/hosts.conf
+%config(noreplace) %attr(600,%{NUT_USER},root) %{_sysconfdir}/%{CONFSUBDIR}/upsd.conf
+%config(noreplace) %attr(600,%{NUT_USER},root) %{_sysconfdir}/%{CONFSUBDIR}/upsd.users
+%config(noreplace) %attr(600,%{NUT_USER},root) %{_sysconfdir}/%{CONFSUBDIR}/upsmon.conf
+%dir %{_sysconfdir}/%{CONFSUBDIR}
+%config(noreplace) %{_sysconfdir}/%{CONFSUBDIR}/nut.conf
+%config(noreplace) %{_sysconfdir}/%{CONFSUBDIR}/ups.conf
+%config(noreplace) %{_sysconfdir}/%{CONFSUBDIR}/upsset.conf
+%config(noreplace) %{_sysconfdir}/%{CONFSUBDIR}/upssched.conf
+%config(noreplace) %{_sysconfdir}/%{CONFSUBDIR}/upsstats-modern-list.html
+%config(noreplace) %{_sysconfdir}/%{CONFSUBDIR}/upsstats-modern-single.html
 %dir %{MODELPATH}
 %{MODELPATH}/*
 %exclude %{MODELPATH}/snmp-ups
@@ -504,19 +544,19 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %{_mandir}/man8/netxml-ups*%{ext_man}
 %{_mandir}/man8/snmp-ups*%{ext_man}
 
-%files -n libnutclient2
-%{_libdir}/libnutclient.so.*
-
-%files -n libnutclientstub1
-%{_libdir}/libnutclientstub.so.*
-
-%files -n libnutscan4
-%{_libdir}/libnutscan.so.*
-
-%files -n libupsclient7
+%files -n libupsclient%{SO_MAJOR_LIBUPSCLIENT}
 %{_libdir}/libupsclient.so.*
 
-%files -n libnutconf0
+%files -n libnutclient%{SO_MAJOR_LIBNUTCLIENT}
+%{_libdir}/libnutclient.so.*
+
+%files -n libnutclientstub%{SO_MAJOR_LIBNUTCLIENTSTUB}
+%{_libdir}/libnutclientstub.so.*
+
+%files -n libnutscan%{SO_MAJOR_LIBNUTSCAN}
+%{_libdir}/libnutscan.so.*
+
+%files -n libnutconf%{SO_MAJOR_LIBNUTCONF}
 %{_libdir}/libnutconf.so.*
 
 %files cgi
@@ -525,8 +565,8 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %dir %{apache_serverroot}/htdocs
 %{CGIPATH}
 %{HTMLPATH}
-%config(noreplace) %{CONFPATH}/upsstats-single.html
-%config(noreplace) %{CONFPATH}/upsstats.html
+%config(noreplace) %{_sysconfdir}/%{CONFSUBDIR}/upsstats-single.html
+%config(noreplace) %{_sysconfdir}/%{CONFSUBDIR}/upsstats.html
 
 %files devel
 %{_includedir}/*.{h,hpp}

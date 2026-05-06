@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Apr 27 18:42:07 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.8.5 (jsc#PED-16186):
+  * Improvements in NUT STARTTLS handling
+  * Several new drivers were added, and older ones improved. Added
+    support for driver name aliasing.
+  * Multiple mishaps fixed about service startup. Numerous changes
+    and new features in upsdrvctl and upssched.
+  * Systemd units for some daemons were revised to honour the MODE
+    setting from nut.conf, if available, to gracefully not-start
+    when explicitly not-requested.
+  * NUT CGI and upsc clients can now optionally output JSON.
+    Modern-looking HTML/CSS/JS templates for upsstats CGI are now
+  * In upsd, extended processing of MAXCONN setting to allow larger
+    values than the operating system allows to handle. The
+    system-provided value can be further limited by
+    NUT_SYSMAXCONN_LIMIT environment variable.
+  * Introduced a configure --enable-shared-private-libs build-time
+    option to provide internal common NUT code as a set of shared
+    libraries.
+  * For details, see
+    https://networkupstools.org/docs/release-notes.chunked/NUT_Release_Notes.html#_release_notes_for_nut_2_8_5_what_8217_s_new_since_2_8_4
+  * For full changelog, see
+    https://github.com/networkupstools/nut/compare/v2.8.4...v2.8.5
+- Refresh harden_nut-monitor.service.patch
+
+-------------------------------------------------------------------
 Tue Aug 12 15:13:04 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 2.8.4:

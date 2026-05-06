@@ -1,7 +1,7 @@
-Index: b/scripts/systemd/nut-monitor.service.in
+Index: nut-2.8.5/scripts/systemd/nut-monitor.service.in
 ===================================================================
---- a/scripts/systemd/nut-monitor.service.in
-+++ b/scripts/systemd/nut-monitor.service.in
+--- nut-2.8.5.orig/scripts/systemd/nut-monitor.service.in
++++ nut-2.8.5/scripts/systemd/nut-monitor.service.in
 @@ -32,6 +32,17 @@ Documentation=man:nut.conf(@MAN_SECTION_
  Documentation=@NUT_WEBSITE_BASE@/docs/man/nut.conf.html
  
@@ -19,4 +19,4 @@ Index: b/scripts/systemd/nut-monitor.service.in
 +# end of automatic additions 
  EnvironmentFile=-@CONFPATH@/nut.conf
  SyslogIdentifier=%N
- ExecStartPre=-@SYSTEMD_TMPFILES_PROGRAM@ --create @systemdtmpfilesdir@/nut-common-tmpfiles.conf
+ # DO NOT actually start if MODE is known and is "none"; however
