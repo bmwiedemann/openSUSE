@@ -1,33 +1,85 @@
 -------------------------------------------------------------------
+Sun Apr 26 11:04:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.33.2:
+  * Patch Changes
+    - Globally-installed bins no longer fail with
+      ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND when pnpm was installed
+      via the standalone @pnpm/exe binary (e.g. curl -fsSL
+      https://get.pnpm.io/install.sh | sh -) on a system without a
+      separate Node.js installation. Previously, when which('node')
+      failed during pnpm add --global, pnpm fell back to
+      process.execPath, which in @pnpm/exe is the pnpm binary
+      itself — and that path was baked into the generated bin shim,
+      causing the shim to invoke pnpm instead of Node #11291,
+      #4645.
+    - Fix an infinite fork-bomb that could happen when pnpm was
+      installed with one version (e.g. npm install -g pnpm@A) and
+      run inside a project whose package.json selected a different
+      pnpm version via the packageManager field (e.g. pnpm@B),
+      while a pnpm-workspace.yaml also existed at the project root.
+    - The child's environment is now forced to
+      manage-package-manager-versions=false (v10) and
+      pm-on-fail=ignore (v11+), which disables the
+      package-manager-version handling in whichever pnpm runs as
+      the child.
+    - Fixes #11337.
+- update to 10.33.1:
+  * Patch Changes
+    - When a project's packageManager field selects pnpm v11 or
+      newer, commands that v10 would have passed through to npm
+      (version, login, logout, publish, unpublish, deprecate,
+      dist-tag, docs, ping, search, star, stars, unstar, whoami,
+      etc.) are now handed over to the wanted pnpm, which
+      implements them natively. Previously they silently shelled
+      out to npm — making, for example, pnpm version --help print
+      npm's help on a project with packageManager: pnpm@11.0.0-rc.3
+      #11328.
+
+-------------------------------------------------------------------
 Sun Mar 29 17:10:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 10.33:
-Minor Changes
-
-    Added a new dedupePeers setting that reduces peer dependency duplication. When enabled, peer dependency suffixes use version-only identifiers (name@version) instead of full dep paths, eliminating nested suffixes like (foo@1.0.0(bar@2.0.0)). This dramatically reduces the number of package instances in projects with many recursive peer dependencies #11070.
-
-Patch Changes
-
-    Fail on incompatible lockfiles in CI when frozen lockfile mode is enabled, while preserving non-frozen CI fallback behavior.
-
-    When package metadata is malformed or can't be fetched, the error thrown will now show the originating error.
-
-    Fixed intermittent failures when multiple pnpm dlx calls run concurrently for the same package. When the global virtual store is enabled, the importer now verifies file content before skipping a rename, avoiding destructive swap-renames that break concurrent processes. Also tolerates EPERM during bin creation on Windows and properly propagates enableGlobalVirtualStore through the install pipeline.
-
-    Fixed handling of non-string version selectors in hoistPeers, preventing invalid peer dependency specifiers.
-
-    Improve the non-interactive modules purge error hint to include the confirmModulesPurge=false workaround.
-
-    When pnpm needs to recreate node_modules but no TTY is available, the error now suggests either setting CI=true or disabling the purge confirmation prompt via confirmModulesPurge=false.
-
-    Adds a regression test for the non-TTY flow.
-
-    Fixed false "Command not found" errors on Windows when a command exists in PATH but exits with a non-zero code. Also fixed path resolution for --filter contexts where the command runs in a different package directory.
-
-    When a pnpm-lock.yaml contains two documents, ignore the first one. pnpm v11 will write two lockfile documents into pnpm-lock.yaml in order to store pnpm version integrities and config dependency resolutions.
-
-    Fixed a bug preventing the clearCache function returned by createNpmResolver from properly clearing metadata cache.
-
+  * Minor Changes
+    - Added a new dedupePeers setting that reduces peer dependency
+      duplication. When enabled, peer dependency suffixes use
+      version-only identifiers (name@version) instead of full dep
+      paths, eliminating nested suffixes like
+      (foo@1.0.0(bar@2.0.0)). This dramatically reduces the number
+      of package instances in projects with many recursive peer
+      dependencies #11070.
+  * Patch Changes
+    - Fail on incompatible lockfiles in CI when frozen lockfile
+      mode is enabled, while preserving non-frozen CI fallback
+      behavior.
+    - When package metadata is malformed or can't be fetched, the
+      error thrown will now show the originating error.
+    - Fixed intermittent failures when multiple pnpm dlx calls run
+      concurrently for the same package. When the global virtual
+      store is enabled, the importer now verifies file content
+      before skipping a rename, avoiding destructive swap-renames
+      that break concurrent processes. Also tolerates EPERM during
+      bin creation on Windows and properly propagates
+      enableGlobalVirtualStore through the install pipeline.
+    - Fixed handling of non-string version selectors in hoistPeers,
+      preventing invalid peer dependency specifiers.
+    - Improve the non-interactive modules purge error hint to
+      include the confirmModulesPurge=false workaround.
+    - When pnpm needs to recreate node_modules but no TTY is
+      available, the error now suggests either setting CI=true or
+      disabling the purge confirmation prompt via
+      confirmModulesPurge=false.
+    - Adds a regression test for the non-TTY flow.
+    - Fixed false "Command not found" errors on Windows when a
+      command exists in PATH but exits with a non-zero code. Also
+      fixed path resolution for --filter contexts where the command
+      runs in a different package directory.
+    - When a pnpm-lock.yaml contains two documents, ignore the
+      first one. pnpm v11 will write two lockfile documents into
+      pnpm-lock.yaml in order to store pnpm version integrities and
+      config dependency resolutions.
+    - Fixed a bug preventing the clearCache function returned by
+      createNpmResolver from properly clearing metadata cache.
 
 -------------------------------------------------------------------
 Sun Mar 15 08:32:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>

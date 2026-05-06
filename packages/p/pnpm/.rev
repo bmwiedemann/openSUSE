@@ -931,4 +931,41 @@ Patch Changes
     Fixed a bug preventing the clearCache function returned by createNpmResolver from properly clearing metadata cache.</comment>
     <requestid>1344529</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>3b873d295f7722eb8efc0268f7810c7e</srcmd5>
+    <version>10.33.2</version>
+    <time>1778087894</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.33.2:
+  * Patch Changes
+    - Globally-installed bins no longer fail with
+      ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND when pnpm was installed
+      via the standalone @pnpm/exe binary (e.g. curl -fsSL
+      https://get.pnpm.io/install.sh | sh -) on a system without a
+      separate Node.js installation. Previously, when which('node')
+      failed during pnpm add --global, pnpm fell back to
+      process.execPath, which in @pnpm/exe is the pnpm binary
+      itself — and that path was baked into the generated bin shim,
+      causing the shim to invoke pnpm instead of Node #11291,
+      #4645.
+    - Fix an infinite fork-bomb that could happen when pnpm was
+      installed with one version (e.g. npm install -g pnpm@A) and
+      run inside a project whose package.json selected a different
+      pnpm version via the packageManager field (e.g. pnpm@B),
+      while a pnpm-workspace.yaml also existed at the project root.
+    - The child's environment is now forced to
+      manage-package-manager-versions=false (v10) and
+      pm-on-fail=ignore (v11+), which disables the
+      package-manager-version handling in whichever pnpm runs as
+      the child.
+    - Fixes #11337.
+- update to 10.33.1:
+  * Patch Changes
+    - When a project's packageManager field selects pnpm v11 or
+      newer, commands that v10 would have passed through to npm
+      (version, login, logout, publish, unpublish, deprecate,
+      dist-tag, docs, ping, search, star, stars, unstar, whoami,
+      etc.) are now handed over to the wanted pnpm, which</comment>
+    <requestid>1351036</requestid>
+  </revision>
 </revisionlist>
