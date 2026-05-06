@@ -1,59 +1,71 @@
 -------------------------------------------------------------------
+Tue May  5 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (3.1.0)
+  * (gtk 2) update progressbar height
+  * (gtk 2) fix focus outline color
+  * (gtk 3) fix padding of popover menus
+  * (gtk 3) add Gimp theme based on Gimp system theme
+  * (qt5 & 6) fix design of vertical qslider
+  * (qt5 & 6) add design for spinbox buttons
+  * (qt5 & 6) add design for qdockwidget
+
+-------------------------------------------------------------------
 Tue Mar  3 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (3.0.0)
-   * rename directories (human → Human)
-   * (qt5 & 6) add Qt themes
-   * (gtk3 & 4) split base.css into several gtk-*.css files
-   * (gtk3 & 4) many small changes to reduce differences
-   * (gtk3 & 4) change checkbox and radio in treeview when selected
-   * (gtk3) update design of MATE Brisk Menu, MATE Menu, Mint Menu
-   * (gtk4) fix design of context menu of notebook tabs
-   * (gtk4) fix minimum height of menus from menubar
-   * (gtk4) add some missing icons
+  * rename directories (human → Human)
+  * (qt5 & 6) add Qt themes
+  * (gtk3 & 4) split base.css into several gtk-*.css files
+  * (gtk3 & 4) many small changes to reduce differences
+  * (gtk3 & 4) change checkbox and radio in treeview when selected
+  * (gtk3) update design of MATE Brisk Menu, MATE Menu, Mint Menu
+  * (gtk4) fix design of context menu of notebook tabs
+  * (gtk4) fix minimum height of menus from menubar
+  * (gtk4) add some missing icons
 
 -------------------------------------------------------------------
 Fri Aug  8 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.6.0)
-   * (gtk3) fix Geany statusbar (regression)
-   * (gtk3) fix separator for menu in toolbar
-   * (gtk3) fix background color for popover menus
-   * (gtk3) fix design of GNOME terminal
-   * (gtk3) fix design of Pluma statusbar
-   * (gtk4) fix menuitem height
-   * (gtk4) add styles for icons in menubar
-   * (gtk3 & 4) fix dialog layout and buttons position/margin,
-     with our without CSD dialogs,
-     so same layout between gtk3 & gtk4
-     → same as mate-appearance-properties
-     → some PR for MATE on github.com/mate-desktop
-   * add default colors for terminal (white on black)
-   * MATE users will enjoy fixed design for transparent panels
-   * MATE+Mint users will enjoy new design for Mint Menu applet
-     PR => github.com/linuxmint/mintmenu/pull/285
-     PR => github.com/ubuntu-mate/mate-menu/pull/89
-   * Xfce users will enjoy new design for Whisker Menu
+  * (gtk3) fix Geany statusbar (regression)
+  * (gtk3) fix separator for menu in toolbar
+  * (gtk3) fix background color for popover menus
+  * (gtk3) fix design of GNOME terminal
+  * (gtk3) fix design of Pluma statusbar
+  * (gtk4) fix menuitem height
+  * (gtk4) add styles for icons in menubar
+  * (gtk3 & 4) fix dialog layout and buttons position/margin,
+    with our without CSD dialogs,
+    so same layout between gtk3 & gtk4
+    → same as mate-appearance-properties
+    → some PR for MATE on github.com/mate-desktop
+  * add default colors for terminal (white on black)
+  * MATE users will enjoy fixed design for transparent panels
+  * MATE+Mint users will enjoy new design for Mint Menu applet
+    PR => github.com/linuxmint/mintmenu/pull/285
+    PR => github.com/ubuntu-mate/mate-menu/pull/89
+  * Xfce users will enjoy new design for Whisker Menu
 
 -------------------------------------------------------------------
 Fri Jun  6 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.5.0)
-   * (gtk3 & 4) fix statusbar and progressbar-in-statusbar
-     when window is fullscreen
-   * (gtk3) update design for MATE panel buttons
-     PR → github.com/mate-desktop/mate-panel/pull/1474
-     PR → github.com/mate-desktop/mate-applets/pull/678
-   * (gtk3) fix Xfce desktop icons
-   * (gtk3) update design of Caja/Thunar/Nemo tabs
-   * (gtk3) add experimental support for Cinnamon desktop
-   * (gtk3) fix headerbar for cinnamon/muffin/mutter (.ssd)
-   * (gtk3) ready for the future scrollbar__extra_zone.patch
-     for gtk3-classic
-   * (gtk4) fix design of print dialog
-   * MATE users will enjoy new common design for Compact Menu
-     button applet, clock applet, window selector button applet
-     → same as main menu bar applet
+  * (gtk3 & 4) fix statusbar and progressbar-in-statusbar
+    when window is fullscreen
+  * (gtk3) update design for MATE panel buttons
+    PR → github.com/mate-desktop/mate-panel/pull/1474
+    PR → github.com/mate-desktop/mate-applets/pull/678
+  * (gtk3) fix Xfce desktop icons
+  * (gtk3) update design of Caja/Thunar/Nemo tabs
+  * (gtk3) add experimental support for Cinnamon desktop
+  * (gtk3) fix headerbar for cinnamon/muffin/mutter (.ssd)
+  * (gtk3) ready for the future scrollbar__extra_zone.patch
+    for gtk3-classic
+  * (gtk4) fix design of print dialog
+  * MATE users will enjoy new common design for Compact Menu
+    button applet, clock applet, window selector button applet
+    → same as main menu bar applet
 
 -------------------------------------------------------------------
 Mon May  5 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
