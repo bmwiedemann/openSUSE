@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 06 06:14:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.4:
+  * d78272a Bump version to v0.9.4
+  * 6e89eda Update docker/build-push-action to v7
+  * 6ab30c9 Update goreleaser-action to v7
+  * 36c56b3 Update create-github-app-token to v3
+  * 56c93fd Update actions/checkout to v6
+  * b3f8047 Fix lint issues
+  * 20220bf Update golangci-lint to v2
+  * 13c0310 Update setup-go to v6
+  * b762378 Update Go to v1.26
+  * c6859ef Add support for Terraform v1.15
+  * d9de859 Add support for OpenTofu v1.11
+
+-------------------------------------------------------------------
 Thu Nov 20 11:43:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.3:

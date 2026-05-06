@@ -1,7 +1,7 @@
 #
 # spec file for package tfupdate
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           tfupdate
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        Update version constraints in your Terraform configurations
 License:        MPL-2.0
 URL:            https://github.com/minamijoyo/tfupdate
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Features
