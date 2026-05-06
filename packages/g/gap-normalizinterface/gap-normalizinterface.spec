@@ -17,7 +17,7 @@
 
 
 Name:           gap-normalizinterface
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        GAP: wrapper for Normaliz
 License:        GPL-2.0-or-later
