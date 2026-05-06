@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  5 01:43:11 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
+
+- Replace 'Support multiple entries' patch with 'drop GCD system memory check' patches
+  because the fix was merged upstream (bsc#1259640)
+  - Remove ovmf-ArmPkg-CpuDxe-Support-multiple-entries-in-RegionIsSy.patch
+  - Add backported patch drop GCD system memory check from MemoryAttribute protocol
+    - ovmf-ArmPkg-CpuDxe-Drop-GCD-system-memory-check-from-Memo.patch
+      99d8c3710a0f ArmPkg/CpuDxe: Drop GCD system memory check from MemoryAttribute protocol
+    - ovmf-ArmPkg-CpuDxe-Refuse-to-clear-XN-from-device-memory-.patch
+      c00c1216ce7f ArmPkg/CpuDxe: Refuse to clear XN from device memory mappings
+
+-------------------------------------------------------------------
+Mon May  4 00:26:04 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
+
+- Update OVMF descriptors
+  - Set priority for qcow2 over raw format images.
+  - Lower the priority of the CoCo OVMF descriptor.
+
+-------------------------------------------------------------------
 Thu Apr 23 05:58:58 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
 
 - Update mbedtls to 3.6.6 to fix CVE-2026-25833, CVE-2026-25834, CVE-2026-25835, 

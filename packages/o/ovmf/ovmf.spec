@@ -88,11 +88,12 @@ Patch17:        %{name}-Revert-UefiCpuPkg-ArmMmuLib-Add-support-for-LPA2.patch
 Patch18:        %{name}-Revert-UefiCpuPkg-BaseRiscV64CpuTimerLib-Add-constru.patch
 # https://github.com/tianocore/edk2/pull/12248
 Patch19:        %{name}-OvmfPkg-RiscVVirt-PlatformPei-Do-not-set-PcdTpmBaseA.patch
-# Bug 1259640 - OVMF crashes when exiting from aarch64 GRUB
-Patch20:        %{name}-ArmPkg-CpuDxe-Support-multiple-entries-in-RegionIsSy.patch
 # Bug 1260358 - [SLES][16.1][Build33.1][x86_64][kvm] Fail to install uefi 15-SP7 vm
 # Bug 1259826 - latest version of ovmf package dont support -kernel -initrd options
-Patch21:        %{name}-Revert-OvmfPkg-X86QemuLoadImageLib-flip-default-for-.patch
+Patch20:        %{name}-Revert-OvmfPkg-X86QemuLoadImageLib-flip-default-for-.patch
+# Bug 1259640 - OVMF crashes when exiting from aarch64 GRUB
+Patch21:        %{name}-ArmPkg-CpuDxe-Drop-GCD-system-memory-check-from-Memo.patch
+Patch22:        %{name}-ArmPkg-CpuDxe-Refuse-to-clear-XN-from-device-memory-.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
