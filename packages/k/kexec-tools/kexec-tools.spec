@@ -18,23 +18,19 @@
 
 # Temporarily bump version to aid package split
 Name:           kexec-tools
-Version:        2.0.30
+Version:        2.0.32+git15.g677dd2f
 Release:        0
 Summary:        Tools for loading replacement kernels into memory
 License:        GPL-2.0-or-later
 Group:          System/Kernel
 URL:            https://projects.horms.net/projects/kexec/
 Source:         https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{version}.tar.xz
-Source1:        https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{version}.tar.sign
+#Source1:        https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{version}.tar.sign
 Source2:        kexec-tools.keyring
 Source3:        kexec-load.service
 Source4:        %{name}-rpmlintrc
 Patch3:         %{name}-disable-test.patch
 Patch4:         %{name}-vmcoreinfo-in-xen.patch
-# https://patchwork.kernel.org/project/linux-riscv/patch/20190416123233.4779-1-mick@ics.forth.gr/
-Patch5:         %{name}-riscv64.patch
-Patch10:        %{name}-SYS_getrandom.patch
-Patch11:        %{name}-riscv-hotplug.patch
 BuildRequires:  aaa_base
 BuildRequires:  autoconf
 BuildRequires:  automake
