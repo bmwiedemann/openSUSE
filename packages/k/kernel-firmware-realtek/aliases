@@ -11,6 +11,7 @@ r8152: usb:v0BDAp8152d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v0BDAp8153d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v0BDAp8155d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v0BDAp8156d*dc*dsc*dp*ic*isc*ip*in*
+r8152: usb:v0BDAp8157d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v13B1p0041d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v17EFp304Fd*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v17EFp3054d*dc*dsc*dp*ic*isc*ip*in*
@@ -916,6 +917,8 @@ rtw89_8852bu: usb:v35BCp0100d*dc*dsc*dp*icFFiscFFipFFin*
 rtw89_8852bu: usb:v35BCp0108d*dc*dsc*dp*icFFiscFFipFFin*
 rtw89_8852bu: usb:v7392p6822d*dc*dsc*dp*icFFiscFFipFFin*
 rtw89_8852ce: pci:v000010ECd0000C852sv*sd*bc*sc*i*
+rtw89_8852cu: usb:v0411p03A6d*dc*dsc*dp*icFFiscFFipFFin*
+rtw89_8852cu: usb:v056Ep4024d*dc*dsc*dp*icFFiscFFipFFin*
 rtw89_8852cu: usb:v0BDApC832d*dc*dsc*dp*icFFiscFFipFFin*
 rtw89_8852cu: usb:v0BDApC85Ad*dc*dsc*dp*icFFiscFFipFFin*
 rtw89_8852cu: usb:v0BDApC85Dd*dc*dsc*dp*icFFiscFFipFFin*
@@ -924,6 +927,7 @@ rtw89_8852cu: usb:v28DEp2432d*dc*dsc*dp*icFFiscFFipFFin*
 rtw89_8852cu: usb:v35B2p0502d*dc*dsc*dp*icFFiscFFipFFin*
 rtw89_8852cu: usb:v35BCp0101d*dc*dsc*dp*icFFiscFFipFFin*
 rtw89_8852cu: usb:v35BCp0102d*dc*dsc*dp*icFFiscFFipFFin*
+rtw89_8852cu: usb:v37ADp0103d*dc*dsc*dp*icFFiscFFipFFin*
 snd_soc_rt1320_sdw: sdw:m025Dp1320v03c*
 snd_soc_rt1320_sdw: sdw:m025Dp1320v03c01*
 snd_soc_rt1320_sdw: sdw:m025Dp1321v03c01*

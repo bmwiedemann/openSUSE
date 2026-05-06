@@ -242,4 +242,12 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 7.0</comment>
     <requestid>1347748</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>848f691d6b9e3bcf0e460539689b60bd</srcmd5>
+    <version>20260214</version>
+    <time>1778087881</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.1-rc1</comment>
+    <requestid>1351034</requestid>
+  </revision>
 </revisionlist>
