@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed May 06 16:05:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.94.0:
+  * Features
+    - f620f7a2: feat(mr note create): add --reply flag and refactor
+      to options struct (Tomas Vik tvik@gitlab.com)
+    - bed805c0: feat(mr): create diff comments (Tomas Vik (OOO back
+      on 2026-05-11) tvik@gitlab.com)
+    - 56718ff9: feat(orbit): add glab orbit subcommands
+      (experimental) (Dmitry Gruzd dgruzd@gitlab.com)
+    - 56b22863: feat(workitems): add glab work-items create (Carlos
+      Corona ccorona@gitlab.com)
+    - 5b4bc4a6: feat: add --reviewer flag to glab stack sync (Gary
+      Holtz gholtz@gitlab.com)
+    - fa792f3c: feat: add glab work-items delete (Carlos Corona
+      ccorona@gitlab.com)
+    - 5d59e0be: feat: render Markdown links as OSC 8 hyperlinks in
+      help text (Brendan Lynch blynch@gitlab.com)
+  * Bug Fixes
+    - 9a6f9de4: fix(repo create): clone instead of git init when
+      --readme is used (Kai Armstrong karmstrong@gitlab.com)
+    - 339ff8cc: fix(snapcraft): /etc/gitconfig permissions (Filip
+      Aleksic faleksic@gitlab.com)
+    - 7f22b23c: fix: correct inverted condition for
+      GITLAB_RELEASE_ASSETS_USE_PACKAGE_REGISTRY env var (Kai
+      Armstrong karmstrong@gitlab.com)
+    - 3394d202: fix: eliminate data race in ci and job tests by
+      avoiding global os.Stdout/os.Stderr mutation (Timo Furrer
+      tfurrer@gitlab.com)
+    - a07c2c1c: fix: update flag description and remove backticks
+      (Brendan blynch@gitlab.com)
+  * Documentation
+    - 774ea4f2: docs: add carapace completions note (Jonathan Bowe
+      jonathan@bowedev.com)
+    - 53918c5a: docs: document both head and merge ref formats for
+      MR pipelines (Kai Armstrong karmstrong@gitlab.com)
+    - da6f7b2f: docs: ensure glab check-update is accurately
+      described (Brendan blynch@gitlab.com)
+  * Dependencies
+    - a0e977eb: chore(deps): update dependency @commitlint/cli to
+      ^20.5.2 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - d7008ef5: chore(deps): update module charm.land/bubbletea/v2
+      to v2.0.6 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 5453a863: chore(deps): update module github.com/docker/cli to
+      v29.4.1+incompatible (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - ea1e87bd: chore(deps): update module github.com/docker/cli to
+      v29.4.2+incompatible (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - ea24f0a9: chore(deps): update module
+      github.com/docker/docker-credential-helpers to v0.9.6 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 8bb00fb6: chore(deps): update module
+      github.com/gdamore/tcell/v2 to v2.13.9 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 5762ad2e: chore(deps): update module
+      github.com/mattn/go-isatty to v0.0.21 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 41d476fc: chore(deps): update module
+      github.com/mattn/go-isatty to v0.0.22 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - f1c53172: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.21.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 58ca66f7: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.22.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 6f317c36: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.24.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 230c924a: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.24.1 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - bd77d705: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.24.1 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - ada4904f: chore: sync commit-lint script from gitlab-lsp (Kai
+      Armstrong karmstrong@gitlab.com)
+    - f60689c7: chore: update docs linting tools and docs linting
+      container image (Evan Read eread@gitlab.com)
+    - 9e274d09: ci: add Duo agent environment configuration (Thomas
+      Schmidt tschmidt@gitlab.com)
+    - 76ba508c: refactor(checkout): inject GitRunner dependency for
+      testability (Gary Holtz gholtz@gitlab.com)
+    - fe74aaf3: refactor(duo): improve Duo CLI update notification
+      message (Arthur Foltz afoltz@gitlab.com)
+
+-------------------------------------------------------------------
 Thu Apr 23 19:30:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.93.0:
