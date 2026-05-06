@@ -331,4 +331,25 @@
     <comment>- Skip flaky tests, bsc#1261360</comment>
     <requestid>1346371</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>df37c49b366f5ce40c7b1d630e23b00f</srcmd5>
+    <version>3.29.0</version>
+    <time>1778087867</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.29.0:
+  * fix(async): use single-thread executor for lock consistency
+  * feat(soft): enable stale lock detection on Windows
+- update to 3.28.0:
+  * fix(ci): unbreak release workflow, publish to PyPI again
+- update to 3.27.0:
+  * feat(rw): add SoftReadWriteLock for NFS and HPC clusters
+- update to 3.26.1:
+  * fix(asyncio): add __exit__ to BaseAsyncFileLock and fix
+    __del__ loop handling
+- update to 3.26.0:
+  * ci(workflows): add zizmor security auditing
+  * fix(ci): restore git credentials for release job
+  * feat(soft): add PID inspection and lock breaking</comment>
+    <requestid>1350655</requestid>
+  </revision>
 </revisionlist>
