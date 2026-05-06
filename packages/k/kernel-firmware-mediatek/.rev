@@ -356,4 +356,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: update firmware for MT7925 WiFi device</comment>
     <requestid>1349833</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>8f4b6ae33101a0919aed90d444ae9288</srcmd5>
+    <version>20260423</version>
+    <time>1778087880</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.1-rc1</comment>
+    <requestid>1351030</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,6 @@
 btmtksdio: sdio:c*v037Ad7663*
 btmtksdio: sdio:c*v037Ad7668*
+btmtksdio: sdio:c*v037Ad790A*
 btmtksdio: sdio:c*v037Ad7961*
 btmtkuart: of:N*T*Cmediatek%2Cmt7622-bluetooth
 btmtkuart: of:N*T*Cmediatek%2Cmt7622-bluetoothC*
@@ -76,10 +77,12 @@ mt76x2u: usb:v7392pB711d*dc*dsc*dp*ic*isc*ip*in*
 mt7921e: pci:v00000B48d00007922sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00000608sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00000616sv*sd*bc*sc*i*
+mt7921e: pci:v000014C3d00007902sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00007920sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00007922sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00007961sv*sd*bc*sc*i*
 mt7921s: sdio:c*v037Ad7901*
+mt7921s: sdio:c*v037Ad7902*
 mt7921u: usb:v0846p9060d*dc*dsc*dp*icFFiscFFipFFin*
 mt7921u: usb:v0846p9065d*dc*dsc*dp*icFFiscFFipFFin*
 mt7921u: usb:v0E8Dp7961d*dc*dsc*dp*icFFiscFFipFFin*
