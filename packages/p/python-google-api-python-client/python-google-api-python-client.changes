@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed May  6 08:40:38 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.195.0
+  * **aiplatform:** Update the api
+  * **alertcenter:** Update the api
+  * **backupdr:** Update the api
+  * **ces:** Update the api
+  * **chromemanagement:** Update the api
+  * **chromemanagement:** Update the api
+  * **cloudkms:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **container:** Update the api
+  * **developerknowledge:** Update the api
+  * **displayvideo:** Update the api
+  * **docs:** Update the api
+  * **games:** Update the api
+  * **health:** Update the api
+  * **homegraph:** Update the api
+  * **merchantapi:** Update the api
+  * **networkmanagement:** Update the api
+  * **policytroubleshooter:** Update the api
+  * **searchads360:** Update the api
+  * **secretmanager:** Update the api
+  * **dataform:** Update the api
+  * **datamanager:** Update the api
+  * **observability:** Update the api
+  * **workspaceevents:** Update the api
+
+-------------------------------------------------------------------
 Fri Apr 10 23:25:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.194.0:

@@ -1745,4 +1745,36 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **backupdr:** Update the api</comment>
     <requestid>1345971</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>8c415156c8025a6ecd4a3dbd6f1ecfc2</srcmd5>
+    <version>2.195.0</version>
+    <time>1778088002</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.195.0
+  * **aiplatform:** Update the api
+  * **alertcenter:** Update the api
+  * **backupdr:** Update the api
+  * **ces:** Update the api
+  * **chromemanagement:** Update the api
+  * **chromemanagement:** Update the api
+  * **cloudkms:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **container:** Update the api
+  * **developerknowledge:** Update the api
+  * **displayvideo:** Update the api
+  * **docs:** Update the api
+  * **games:** Update the api
+  * **health:** Update the api
+  * **homegraph:** Update the api
+  * **merchantapi:** Update the api
+  * **networkmanagement:** Update the api
+  * **policytroubleshooter:** Update the api
+  * **searchads360:** Update the api
+  * **secretmanager:** Update the api
+  * **dataform:** Update the api
+  * **datamanager:** Update the api
+  * **observability:** Update the api
+  * **workspaceevents:** Update the api (forwarded request 1351133 from glaubitz)</comment>
+    <requestid>1351173</requestid>
+  </revision>
 </revisionlist>
