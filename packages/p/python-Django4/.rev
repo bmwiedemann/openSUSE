@@ -25,4 +25,39 @@
     <comment>- Add py314.patch to fix build with Python 3.14</comment>
     <requestid>1345131</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a6e12acb7ea6cbbf9a51f0ca4bfcb918</srcmd5>
+    <version>4.2.30</version>
+    <time>1775743776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.30
+  * CVE-2026-3902: ASGI header spoofing via underscore/hyphen
+    conflation (bsc#1261729)
+  * CVE-2026-4277: Privilege abuse in GenericInlineModelAdmin
+    (bsc#1261731)
+  * CVE-2026-4292: Privilege abuse in ModelAdmin.list_editable
+    (bsc#1261732)
+  * CVE-2026-33033: Potential denial-of-service vulnerability in
+    MultiPartParser via base64-encoded file upload (bsc#1261722)
+  * CVE-2026-33034: Potential denial-of-service vulnerability in
+    ASGI requests via memory upload limit bypass (bsc#1261724)</comment>
+    <requestid>1345434</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>73cdecd5fbfc7814da2442514c85c4de</srcmd5>
+    <version>4.2.30</version>
+    <time>1778087971</time>
+    <user>anag_factory</user>
+    <comment>- End of upstream support, hence adding security patches:
+  * CVE-2026-5766: Potential denial-of-service vulnerability in ASGI
+    requests via file upload limit bypass (bsc#1264153)
+    * CVE-2026-5766.patch
+  * CVE-2026-35192: Session fixation via public cached pages and
+    SESSION_SAVE_EVERY_REQUEST (bsc#1264154)
+    * CVE-2026-35192.patch
+  * CVE-2026-6907: Potential exposure of private data due to incorrect
+    handling of Vary: * in UpdateCacheMiddleware (bsc#1264152)
+    * CVE-2026-6907.patch</comment>
+    <requestid>1351152</requestid>
+  </revision>
 </revisionlist>

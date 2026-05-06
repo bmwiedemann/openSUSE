@@ -29,7 +29,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-Django4
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        4.2.29
+Version:        4.2.30
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -59,6 +59,12 @@ Patch7:         skip-flaky-tests.patch
 # PATCH-FIX-UPSTREAM https://github.com/django/django/commit/34066d6cf3d66b8a3c7fac86912455dbb2ed0ed6 Refs #35844 -- Fixed tests for test --parallel option on Python 3.14+.
 # PATCH-FIX-UPSTREAM https://github.com/django/django/commit/fcd9d08379a2aee3b2c49eab0d0b8db6fd66d091 Refs #35844 -- Fixed OtherModelFormTests.test_prefetch_related_queryset() test on Python 3.14+.
 Patch8:         py314.patch
+# PATCH-FIX-UPSTREAM CVE-2026-5766.patch bsc#1264153
+Patch9:         CVE-2026-5766.patch
+# PATCH-FIX-UPSTREAM CVE-2026-35192.patch bsc#1264154
+Patch10:        CVE-2026-35192.patch
+# PATCH-FIX-UPSTREAM CVE-2026-6907.patch bsc#1264152
+Patch11:        CVE-2026-6907.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}
