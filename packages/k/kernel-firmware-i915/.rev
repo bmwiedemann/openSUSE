@@ -234,4 +234,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * i915: Xe3LPD_3002 DMC v2.29</comment>
     <requestid>1347743</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>cf54112baf3baa69b2a95954a02ccd06</srcmd5>
+    <version>20260416</version>
+    <time>1778087878</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.1-rc1</comment>
+    <requestid>1351027</requestid>
+  </revision>
 </revisionlist>
