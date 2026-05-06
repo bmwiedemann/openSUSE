@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 06 09:10:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.11:
+  * Tweak solver's same-origin heuristic (#2208)
+  * build(deps): bump k8s.io/apimachinery from 0.35.4 to 0.36.0
+    (#2189)
+  * build(deps): bump google.golang.org/api from 0.276.0 to 0.277.0
+    (#2212)
+  * build(deps): bump github.com/klauspost/compress from 1.18.5 to
+    1.18.6 (#2211)
+  * build(deps): bump github/codeql-action from 4.35.2 to 4.35.3
+    (#2213)
+  * build(deps): bump step-security/harden-runner from 2.19.0 to
+    2.19.1 (#2214)
+  * build(deps): bump chainguard-dev/actions from 1.6.15 to 1.6.17
+    (#2215)
+  * retry package fetch+expand on transient errors (#2210)
+
+-------------------------------------------------------------------
 Mon May 04 16:37:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.10:
