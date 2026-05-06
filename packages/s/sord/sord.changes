@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  4 15:37:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.22:
+  * Add clang nullability annotations
+  * Address new warnings in clang and clang-tidy 21
+  * Make more API functions tolerate NULL
+
+-------------------------------------------------------------------
 Wed Dec 10 08:00:56 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update to 0.16.20
@@ -23,7 +31,7 @@ Sun Jan 19 00:15:11 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
   * Fix dependencies in pkg-config file
   * Override pkg-config dependency within meson
   * Port sord_validate to pcre2
-  * Switch to external zix dependency 
+  * Switch to external zix dependency
 
 -------------------------------------------------------------------
 Mon Feb 26 13:42:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -55,7 +63,7 @@ Fri Oct 14 11:26:43 UTC 2022 - Stephan Kulow <coolo@suse.com>
 -------------------------------------------------------------------
 Tue Aug  9 20:31:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add gpg validation of release 
+- add gpg validation of release
 
 -------------------------------------------------------------------
 Mon Jun 27 20:36:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
