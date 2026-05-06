@@ -725,4 +725,12 @@ This is needed so that the rpm hack to update config.sub works (forwarded reques
     <comment>- Enable custom pcp-selinux module (bsc#1223260)</comment>
     <requestid>1198240</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>98636f582bc0c33036e4374dcf364e36</srcmd5>
+    <version>6.3.8</version>
+    <time>1778087845</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1350886</requestid>
+  </revision>
 </revisionlist>

@@ -13,3 +13,6 @@ addFilter('E: devel-file-in-non-devel-package')
 addFilter('pcp-testsuite.*W: potential-bashisms');
 # pcp-testsuite.x86_64: E: env-script-interpreter
 addFilter('pcp-testsuite.*E: env-script-interpreter');
+# perl modules may be reported as defining rpath, but they don't
+# this has been double-checked
+addFilter('perl.*E: binary-or-shlib-defines-rpath')

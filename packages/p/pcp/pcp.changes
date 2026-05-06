@@ -1,4 +1,296 @@
 -------------------------------------------------------------------
+Tue Apr 28 00:49:51 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- fix: enable build on i586 and update to 6.3.8
+- update version from 6.3.7 to 6.3.8
+- bump copyright year to 2026
+- guard Perl-dependent subpackages behind disable_perl on ix86
+- disable Perl PMDA bindings on ix86 (perl lacks Y2038-safe time_t)
+- pass --with-perl=no to configure when disable_perl is set
+- disable nutcracker, snmp, sheet2pcp on ix86 (Perl dependencies)
+- consolidate disable_nutcracker into the ix86 conditional block
+- drop redundant standalone disable_snmp definition
+- set _binary_payload to w1.gzdio on ix86 to avoid cpio OOM during
+  RPM payload creation in 32-bit address space
+- wrap perl-PCP-{PMDA,MMV,LogImport,LogSummary} package and files
+  sections in disable_perl guards
+- wrap import-{sar2pcp,iostat2pcp,mrtg2pcp,ganglia2pcp} package and
+  files sections in disable_perl guards
+- wrap 24 Perl-based PMDA subpackages in disable_perl guards:
+  activemq, bind2, bonding, dbping, ds389, ds389log, gpfs, gpsd,
+  lustre, memcache, mysql, named, netfilter, news, nginx, oracle,
+  pdns, postfix, redis, rsyslog, samba, slurm, vmware, zimbra 
+- changes from 6.3.8:
+  * libpcp_web: fix selection and testing of exact match filtering
+  * pmproxy: add After:valkey to the pmproxy systemd unit file
+  * build: only regenerate debian/rules for Makepkgs builds
+  * build: use the conditional build-me makefile target for pmdabpf
+  * docs: update output format in pcp2elasticsearch man page
+  * docs: fix webapi man page links, no longer hosted on pcp.io
+
+-------------------------------------------------------------------
+Thu Oct  9 00:52:47 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix for bsc#1243420, label pmlogger's rc file properly.
+- Add patches:
+  * 0008-selinux-additional-labeling-rules.patch
+
+-------------------------------------------------------------------
+Wed May 28 18:02:38 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Stop supporting qt4 and use qt6 by default in Factory/SLE16
+  instead of qt5.
+
+-------------------------------------------------------------------
+Fri May  2 11:47:02 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- selinux: add permissions allowing proc_psi_t access (bsc#1241909)
+  * 0001-selinux-add-permissions-allowing-proc_psi_t-access.patch
+
+-------------------------------------------------------------------
+Wed Apr 30 13:56:01 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Add missing dependencies for selinux-policy-targeted in 
+  %post for pcp-selinux (bsc#1242052)
+
+-------------------------------------------------------------------
+Tue Apr 29 05:14:10 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Ensure pcp doesn't depend on a specific 'which' implementation (bsc#1239756).
+
+-------------------------------------------------------------------
+Fri Mar 28 15:51:54 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 6.3.7.
+  * Changes from 6.3.7:
+    - pmdadenki: RAPL MSR support
+    - pmdabind2: updates for more recent bind versions
+    - pmdalinux: additrional mptcp networking metrics
+    - pcp2elasticsearch: support dynamic mapping
+    - pmstat: avoid a corner-case infinite loop
+    - libpcp: additional locking in __pmLogChangeVol
+    - libpcp, pmproxy: PM_CTXFLAG_LAST_VOLUME pmNewContext flag
+    - libpcp_web, pmseries: dynamic --load request rate adjusting
+    - libpcp_web, pmseries: fix small memleak on archive load
+    - pmproxy: REST API metric filtering for scrape requests
+    - build: configure provides a manual pmdamysql override
+    - build: configure always packages desktop icons in pcp-gui
+    - build: debian packaging fixes and lintian improvements
+    - build: fix unreliable configure.ac tests on scandir/dirent
+    - build: use the vendor-supplied libinih package if available
+    - selinux: several policy updates
+    - docs: fix dup section in pmdaredis(1) man page
+  * Changes from 6.3.4:
+    - libpcp: fix endian issue in big-endian __pmTimestamp writing
+    - pcp-xsos: fine-tune error handling on bad command line options
+    - pcp-xsos: single-line pmPrintValue/pminfo values, escape shell chars
+    - pcp-atop: correct BPF per-process network metric names
+    - pmcd, pmdaproc: allow non-local username connection attributes
+    - pmlogger, libpcp: fix handling of dynamic instance domain labels
+    - pmrep: use BPF instead of BCC for proc networking metrics
+    - pmlogconf: use libbpf over BCC for networking metrics
+    - pmlogextract: fix logic around instances labels, allowing set updates
+    - pmdalinux: mem.numa.hugepages metrics (per node, per hugepage size)
+    - pmdabpftrace: fix for some python3 versions async IO create_task
+    - pmdanvidia: if present use dso from the libnvidia-ml runtime package
+    - pmdadm, pmieconf: default to enabling the dmthin pmie rules
+    - configure.ac: fix autoreconf, add AC_DEFINE_UNQUOTED descriptions
+    - rpm builds: enable bpf, bpftrace, bcc on riscv64 builds
+    - rpm builds: drop user creation scriptlets for rpm builds
+    - deb build: force debian/rules to be recreated each time
+    - containers: updates to the archive-analysis container
+    - selinux: several policy updates for new AVC denials
+    - docs: improve SSL/TLS diagnostic in pcp-verify script
+  * Changes from 6.3.3:
+    - Debian build changes - see debian/changelog for details
+  * Changes from 6.3.2:
+    - PMDA additions, enhancements and bug fixes:
+      pmdabpf: avoid a too-low rlimit setting within pmdabpf
+      pmdaproc: add an access control mechanism for remote sampling
+      pmdalinux: ensure divide-by-zero cannot happen with tmpfs.full
+      pmdalinux: additional MPTcpExt netstat metrics
+      pmdastatsd: keep correct track of pmns mapped metric count
+      pmdaopenmetrics: run as pcp user rather than root by default
+      pmdaopenmetrics: ensure correct cache file permissions used
+    - Server-side utilities and log management scripts:
+      libpcp, pmlogger: add support for zstd(1) compression of archives
+      pmlogbasename: new, maps filename to PCP archive basename
+      pmlogcompress: new, archive compression/decompression utility
+      pmlogcheck: performance improvements
+      pmlogcheck:  allow multiple archive options on command line
+      pmlogextract: extend -v option with the full pmlogger syntax
+      pmlogextract: fix for reporting file size on 32-bit platforms
+    - libpcp, libpcp_pmda, libpcp_mmv, libpcp_web and language bindings:
+      libpcp: fix 64-bit big endian v3 archive timestamp decoding
+      libpcp: change in archive value interpolation for non-counter metrics
+      python api: allow timeval and timespec init with float/datetime
+    - Client tools and utilities:
+      pminfo: minor error path reworking
+      pcp-buddyinfo: addition of a --no-interpol option
+      pcp-ps: added option to view full task name with its argument
+    - Build, infrastructure and packaging updates:
+      build: deal with botched deb package names from Debian
+      build: ensure pmie config.default created with correct ownership
+      systemd: move pcp-reboot-init rpm spec logic from zeroconf to pcp
+      selinux: ensure farm pmlogger/pmie processes labelled correctly
+    - Documentation:
+      docs: refine pmdaproc -A description details
+      docs: make pmstat(1) match the code for -t defaults
+
+-------------------------------------------------------------------
+Tue Oct  8 00:48:27 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Fix perl library linking; (bsc#1228100)
+  + Remove 0002-Remove-CPAN-rpaths.patch
+
+-------------------------------------------------------------------
+Tue Sep 17 02:06:03 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Upgrade to 6.3.1. Changelog:
+  - Client tools and utilities:
+      pcp2arrow: fix extraction of values for metrics with indoms
+      pcp-htop: fix platform setting enabling screen tabs
+      pcp-htop: update to latest upstream bug fixes
+      pcp-meminfo: added timestamp string for consistency
+  - PMDA additions, enhancements and bug fixes:
+      pmdaopenmetrics: add vLLM metrics support by default
+      pmdahacluster: handle pacemaker 2.1.6 crm_mon output changes
+      pmdahacluster: handle new style Pacemaker role descriptions
+      pmdalinux: MPJoinSynBackupRx, MPJoinSynAckBackupRx netstat metrics
+      pmdalinux: sysfs fallback from hinv.cpu.clock metric
+      pmdaproc: lazy initialisation for accounting metrics
+      pmdapmcd: expose pmcd limits as new metrics
+      pmdammv: use isnan instead of open-coding NaN checks
+  - Server-side utilities and log management scripts:
+      pmcd: put an explicit cap on max number of fetched PMIDs
+      pmcd: put an explicit cap on max number of contexts per client
+      pmcd: cleanup caching of local hostname string
+      pmpost: guard against possible symlink attack; CVE-2024-45770;
+      (bsc#1230552)
+      pmproxy: transition to dual Redis/Valkey support
+  - libpcp, libpcp_pmda, libpcp_mmv, libpcp_web and language bindings:
+      libpcp_web: fix a race in webgroup context teardown on timeout
+      libpcp_web: transition to dual Redis/Valkey support
+      libpcp: auto-load the proc PMDA in local context mode
+      libpcp: fix buffer overflow in __pmServerAddInterface
+      libpcp: refactor the attr PDU content checking
+      libpcp: desc PDU consistency check and error message rework
+      libpcp: text PDU consistency check and error message rework
+      libpcp: creds PDU consistency check and error message rework
+      libpcp: label PDU consistency check and error message rework
+      libpcp: instance PDU consistency check and error message rework
+      libpcp: rework some fetch PDU integrity checks and error messages
+      libpcp: reworked __pmDecodeIDList integrity checks and warnings
+      libpcp: ensure no fd leakage to child from __pmProcessPipe
+      libpcp: ensure container names contain limited characters
+      libpcp: fix buffer overrun test in __pmDecodeValueSet; CVE-2024-45769;
+      (bsc#1230551)
+      libpcp: hardening of the results PDU handling
+      libpcp: hardening of the creds PDU handling
+      libpcp: add new __pmCtlDebug() function
+      python API: fix MMV metric text, indom and semantics handling
+      python API: add log import timestamp convenience mechanisms
+  - Build, infrastructure and packaging updates:
+      build: tweak Makepkgs as dpkg-parsechangelog(1) is a bit picky
+      build: drop gfs2 PMDA from build if distro vendor opts-out
+      build: update denki.conf packaging location for consistency
+  - Documentation:
+      man pages: tidy up references to $PCP_DEBUG
+      man pages: __pmHash* added to man3i
+      man pages: pmnewcontext(3) unix: and local: option details
+      docs: man page updates transitioning away from Redis
+      docs: correct pmlogger(1) man page reference to section 5 page
+      docs: update the books to refer to key servers more generically
+      pmrep et al man pages: describe derived metric troubleshooting
+- Upgrade to 6.3.0. Changelog:
+  - Client tools and utilities:
+      pcp-htop: add AMD GPU metrics support
+      pcp-htop: fix Available Meter column list in Setup/F2
+      pcp-htop: fix nested derived metric definitions for devices
+      pcp-htop: fix label/color botch in the MySQL keys Meter config
+      pcp-xsos: fast system overview for Red Hat customer support
+      pcp-atop: fix units conversion for ipc.shm metric values
+      pcp2openmetrics: stricter adherence to the specification
+      pmview: developer preview only, incl. mpvis, dkvis, osvis
+      pmstat: include guest time in extra CPU stats
+      pmrep conf: add support for pmstat -x alike metricset
+      pmrep conf: fix collectl cpu metrics to match current versions
+      pmrep conf: add guest cpu time to vmstat output where missing
+      pmrep conf: add metricset to mimic pmstat(1)
+      pmrep conf: fix cpu metrics in sar/vmstat metricset formulas
+      pmconfig: add -L y2038_safe to know if 8-byte time_t used
+  - PMDA additions, enhancements and bug fixes:
+      pmdaamdgpu: metrics from libdrm and libdrm-amdgpu libraries
+      pmdabpftrace: use notready startup protocol with pmcd
+      pmdaproc: add AMD GPU support through fdinfo interface
+      pmdalinux: add support for Hyper-V balloon metrics
+      pmdalinux: add hinv.disk metrics for controller and disk model
+      pmdasockets: fix and defend against ss buffer overruns
+  - Server-side utilities and log management scripts:
+      pmcd scripts: ensure pmcd.conf not rewritten on every restart
+      pmcd scripts: tweak cross-platform ping(1) version sniffing
+      pmlogger_check: tighten ps|grep process search logic
+      pmlogconf: add configuration file for vmmemctl metrics
+      pmlogconf: add configuration file for hugepage metrics
+      pmlogconf: add configuration file for hyper-v metrics
+      pmlogctl, pmiectl: send -V output to stderr
+  - libpcp, libpcp_pmda, libpcp_mmv, libpcp_web and language bindings:
+      python api: harden pmconfig parsing of bad config settings
+      python api: _TIME_BITS=64 changes for 32-bit platforms
+      libpcp: additional PMNS locking
+      libpcp: fixup for child hang in __pmProcessPipe function
+      libpcp: _TIME_BITS=64 changes for 32-bit platforms
+      libpcp: rework for some AF routines and signal handling
+      libpcp: extend derived metrics unary functions
+      libpcp: fix PDU error handling botch with EINTR
+      libpcp_gui, libpcp_qed: changes to help pmview
+  - Build, infrastructure and packaging updates:
+      build: configure.ac rework for 32-bit time_t Y2038 changes
+      build: skip broken Perl modules for some 32-bit platforms
+      build: add deb Replaces for Ubuntu 24.04 package renaming
+      build: add rpm dependency on /bin/ps from procps[-ng] packages
+      qa: update java classes for more modern Java bytecode version
+      qa: rework sample pmda sample.updown.* metrics
+  - Documentation:
+      docs: rename pmcheck.1 to pcp-check.1 for perl pmcheck
+      docs: fix pmdahacluster long metric help text formatting
+- Upgrade to 6.2.2. Changelog:
+  - pmdalibvirt: add support for metric labels
+  - pmdalibvirt: new balloon, vCPU and domain info metrics
+  - pmdalibvirt: remove support for the ancient RHEL 5 era "oldapi"
+  - pmdalinux: implement mem.vmmemctl VM balloon metrics
+  - pmdauwsgi: improve handling of transient uWSGI servers
+  - pmdauwsgi: short-circuit handling of pmcheck failure
+  - pmdauwsgi: fix semantics of several metrics
+  - pmcd: rate-limit connection failure logging in case of bursts
+  - pmcheck: rework checkproc.sh when used in non-systemd environment
+  - pmrep conf: minor tweaks to sync with sysstat 12.7.5
+  - pmrep conf: fix few pidstat metric formulas
+  - pmlogdump: fix -V/--version option handling
+  - pmlogger_daily_report.sh: fix pmrep error filtering
+  - pcp2openmetrics: minor bug fixes, added archive timestamps
+  - indomcachectl: new tool to initialize/dump indom cache files
+  - libpcp_pmda: add PMDA_CACHE_WRITE indom cache operation
+  - libpcp_web: ensure openmetrics scrape sees all labels
+  - libpcp: derived metrics: add novalue() and defined(x) rework
+  - libpcp: derived metrics lazy binding for defined(x) ternary
+  - libpcp: add __pmNotifyThrottle and __pmResetNotifyThrottle
+  - python API: pass help text result as string not bytes
+  - python API: fix return value from pmLoadDerivedConfig
+  - tmpfiles.d: extend the tmpfiles.d directory set to logdirs
+  - bash,zsh: ensure completion for both pmlogdump and pmdumplog
+  - build: add missing python rpms to pcp-testsuite deps
+  - build: use Y2038-safe time_t interfaces on 32-bit platforms
+  - selinux: allow pmie/pmlogger services to use systemd status
+  - selinux: ignore pmie/pmlogger getattr on nsfs files
+  - docs: add pmrep(1) hint about CSV delimiter with metricsets
+  - man pages: pmnewcontext.3: reword PM_CONTEXT_LOCAL description
+  - man pages: man-spell updates
+- Remove 0010-services-switch-logutil-and-pmieutil-scripts-from-ty.patch
+  Which was upstreamed long ago.
+- Clean up superfluous spec file comments and whitespace.
+
+-------------------------------------------------------------------
 Tue May 14 20:25:32 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Remove 0011-disable-redis-proxying-by-default.patch. This patch has

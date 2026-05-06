@@ -1,0 +1,12 @@
+Index: pcp-6.3.7/src/selinux/pcp.fc
+===================================================================
+--- pcp-6.3.7.orig/src/selinux/pcp.fc
++++ pcp-6.3.7/src/selinux/pcp.fc
+@@ -15,6 +15,7 @@
+ 
+ /usr/libexec/pcp/lib/pmcd	--	gen_context(system_u:object_r:pcp_pmcd_initrc_exec_t,s0)
+ /usr/libexec/pcp/lib/pmlogger	--	gen_context(system_u:object_r:pcp_pmlogger_initrc_exec_t,s0)
++/etc/pcp/pmlogger/rc            --      gen_context(system_u:object_r:pcp_pmlogger_initrc_exec_t,s0)
+ /usr/libexec/pcp/lib/pmproxy	--	gen_context(system_u:object_r:pcp_pmproxy_initrc_exec_t,s0)
+ /usr/libexec/pcp/lib/pmie	--	gen_context(system_u:object_r:pcp_pmie_initrc_exec_t,s0)
+ 

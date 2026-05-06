@@ -1,7 +1,7 @@
 #
 # spec file for package pcp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,10 @@
 
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
+%endif
+
+%ifarch %{ix86}
+%define _binary_payload w1.gzdio
 %endif
 
 %if 0%{?suse_version}
@@ -66,7 +70,7 @@ Summary:        System-level performance monitoring and performance management
 License:        %{license_gplv2plus} AND %{license_lgplv2plus} AND %{license_cc_by}
 Group:          %{pcp_gr}
 Name:           pcp
-Version:        6.2.1
+Version:        6.3.8
 Release:        0
 %global buildversion 1
 
@@ -79,22 +83,20 @@ Source2:        pcp-rpmlintrc
 # PATCH-FIX-OPENSUSE, kkaempf@suse.de
 Patch1:         0001-Install-libraries-without-exec-permission.patch
 # PATCH-FIX-OPENSUSE, kkaempf@suse.de
-Patch2:         0002-Remove-CPAN-rpaths.patch
-# PATCH-FIX-OPENSUSE, kkaempf@suse.de
 Patch3:         0003-Remove-runlevel-4-from-init-scripts.patch
 # PATCH-FIX-OPENSUSE, kkaempf@suse.de
 Patch5:         0005-SUSE-fy-pmsnap-control-path.patch
 # PATCH-FIX-OPENSUSE, kkaempf@suse.de
 Patch6:         0006-pmsnap-control-var-www-srv-www.patch
 # PATCH-FIX-UPSTREAM, ddiss@suse.de
-Patch10:        0010-services-switch-logutil-and-pmieutil-scripts-from-ty.patch
+Patch7:         0001-selinux-add-permissions-allowing-proc_psi_t-access.patch
+# PATCH-FIX-OPENSUSE, jsegitz@suse.de
+Patch8:         0008-selinux-additional-labeling-rules.patch
 
 %global disable_selinux 0
 %if 0%{?suse_version} < 1600
 %global disable_selinux 1
 %endif
-
-%global disable_snmp 0
 
 # No libpfm devel packages for s390, armv7hl nor for some rhels, disable
 %ifarch s390 s390x armv7hl
@@ -121,7 +123,20 @@ Patch10:        0010-services-switch-logutil-and-pmieutil-scripts-from-ty.patch
 %global disable_statsd 1
 %endif
 
+# Perl PMDA bindings need a Y2038-safe Perl (64-bit time_t)
+%ifarch %{ix86}
+%global disable_perl 1
+%global disable_nutcracker 1
+%global disable_snmp 1
 %global disable_sheet2pcp 1
+%global with_perl --with-perl=no
+%else
+%global disable_perl 0
+%global disable_nutcracker 0
+%global disable_snmp 0
+%global disable_sheet2pcp 0
+%global with_perl --with-perl=yes
+%endif
 
 %global disable_python3 0
 # drop python2 packages
@@ -183,13 +198,6 @@ Patch10:        0010-services-switch-logutil-and-pmieutil-scripts-from-ty.patch
 %global disable_resctrl 1
 %endif
 
-# support for pmdanutcracker (perl deps missing on rhel)
-%if 0%{?rhel} == 0
-%global disable_nutcracker 0
-%else
-%global disable_nutcracker 1
-%endif
-
 # support for pmdarpm
 %if 0%{?rhel} == 0 || 0%{?rhel} > 5
 %global disable_rpm 0
@@ -210,7 +218,11 @@ Patch10:        0010-services-switch-logutil-and-pmieutil-scripts-from-ty.patch
 
 # We need qt5 for fedora and openSUSE / SLE factory
 %if 0%{?fedora} != 0 || 0%{?suse_version} > 1320
+%if 0%{suse_version} >= 1600
+%global default_qt 6
+%else
 %global default_qt 5
+%endif
 %endif
 
 # systemd services and pmdasystemd
@@ -350,13 +362,10 @@ BuildRequires:  pkgconfig(systemd)
 %endif
 %if !%{disable_qt}
 BuildRequires:  desktop-file-utils
-%if 0%{?default_qt} != 5
-%if 0%{?suse_version}
-BuildRequires:  libqt4-devel >= 4.4
-%else	# suse_version
-BuildRequires:  qt4-devel >= 4.4
-%endif	# suse_version
-%else	# default_qt
+%if 0%{?default_qt} == 6
+BuildRequires:  qt6-base-devel
+BuildRequires:  qt6-svg-devel
+%else	# default_qt == 5
 %if 0%{?suse_version}
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qtsvg-devel
@@ -374,13 +383,13 @@ Requires:       bash
 %if %{disable_systemd}
 Requires:       cron
 %endif
+Requires:       /usr/bin/which
 Requires:       fileutils
 Requires:       findutils
 Requires:       gawk
 Requires:       grep
 Requires:       perl
 Requires:       sed
-Requires:       which
 %if 0%{?suse_version}
 Requires:       /usr/bin/hostname
 Requires:       cpp
@@ -540,12 +549,6 @@ The PCP open source release provides a unifying abstraction for all of
 the interesting performance data in a system, and allows client
 applications to easily retrieve and process any subset of that data.
 
-
-
-
-#
-# pcp-conf
-#
 %package conf
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -560,12 +563,6 @@ Conflicts:      pcp-libs < 3.9
 %description conf
 Performance Co-Pilot (PCP) run-time configuration
 
-
-
-
-#
-# pcp-libs
-#
 %package -n %{lib_pkg}
 Summary:        Performance Co-Pilot run-time libraries
 License:        %{license_lgplv21plus}
@@ -648,12 +645,6 @@ Provides:       pcp-devel = %{version}
 %description -n %{lib_devel_pkg}
 Performance Co-Pilot (PCP) headers for development.
 
-
-
-
-#
-# pcp-devel
-#
 %package devel
 Summary:        Performance Co-Pilot (PCP) development tools and documentation
 License:        %{license_gplv2plus} AND %{license_lgplv21plus}
@@ -669,12 +660,6 @@ Requires:       pcp = %{version}-%{release}
 %description devel
 Performance Co-Pilot (PCP) documentation and tools for development.
 
-
-
-
-#
-# pcp-testsuite
-#
 %package testsuite
 Summary:        Performance Co-Pilot (PCP) test suite
 License:        %{license_gplv2plus} AND %{license_mit}
@@ -695,12 +680,7 @@ Provides:       group(pcpqa)
 %description testsuite
 Quality assurance test suite for Performance Co-Pilot (PCP).
 
-
-
-
-#
-# perl-PCP-PMDA. This is the PCP agent perl binding.
-#
+%if !%{disable_perl}
 %package -n perl-PCP-PMDA
 Summary:        Performance Co-Pilot (PCP) Perl bindings and documentation
 License:        %{license_gplv2plus}
@@ -717,13 +697,9 @@ building Performance Metric Domain Agents (PMDAs) using Perl.
 Each PMDA exports performance data for one specific domain, for
 example the operating system kernel, Cisco routers, a database,
 an application, etc.
+%endif
 
-
-
-
-#
-# perl-PCP-MMV
-#
+%if !%{disable_perl}
 %package -n perl-PCP-MMV
 Summary:        Performance Co-Pilot (PCP) Perl bindings for PCP Memory Mapped Values
 License:        %{license_gplv2plus}
@@ -741,13 +717,9 @@ building scripts instrumented with the Performance Co-Pilot
 This mechanism allows arbitrary values to be exported from an
 instrumented script into the PCP infrastructure for monitoring
 and analysis with pmchart, pmie, pmlogger and other PCP tools.
+%endif
 
-
-
-
-#
-# perl-PCP-LogImport
-#
+%if !%{disable_perl}
 %package -n perl-PCP-LogImport
 Summary:        Performance Co-Pilot Perl bindings for importing external archive data
 License:        %{license_gplv2plus}
@@ -762,13 +734,9 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 The PCP::LogImport module contains the Perl language bindings for
 importing data in various 3rd party formats into PCP archives so
 they can be replayed with standard PCP monitoring tools.
+%endif
 
-
-
-
-#
-# perl-PCP-LogSummary
-#
+%if !%{disable_perl}
 %package -n perl-PCP-LogSummary
 Summary:        Performance Co-Pilot Perl bindings for processing pmlogsummary output
 License:        %{license_gplv2plus}
@@ -786,13 +754,9 @@ pmlogsummary utility.  This utility produces various averages,
 minima, maxima, and other calculations based on the performance
 data stored in a PCP archive.  The Perl interface is ideal for
 exporting this data into third-party tools (e.g. spreadsheets).
+%endif
 
-
-
-
-#
-# pcp-import-sar2pcp
-#
+%if !%{disable_perl}
 %package import-sar2pcp
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -810,13 +774,9 @@ Requires:       sysstat
 %description import-sar2pcp
 Performance Co-Pilot (PCP) front-end tools for importing sar data
 into standard PCP archive logs for replay with any PCP monitoring tool.
+%endif
 
-
-
-
-#
-# pcp-import-iostat2pcp
-#
+%if !%{disable_perl}
 %package import-iostat2pcp
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -834,6 +794,7 @@ Requires:       sysstat
 %description import-iostat2pcp
 Performance Co-Pilot (PCP) front-end tools for importing iostat data
 into standard PCP archive logs for replay with any PCP monitoring tool.
+%endif
 
 %if !%{disable_sheet2pcp}
 #
@@ -853,12 +814,9 @@ Requires:       sysstat
 %description import-sheet2pcp
 Performance Co-Pilot (PCP) front-end tools for importing spreadsheet data
 into standard PCP archive logs for replay with any PCP monitoring tool.
-
 %endif
 
-#
-# pcp-import-mrtg2pcp
-#
+%if !%{disable_perl}
 %package import-mrtg2pcp
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -875,13 +833,9 @@ Requires:       perl-PCP-LogImport = %{version}-%{release}
 %description import-mrtg2pcp
 Performance Co-Pilot (PCP) front-end tools for importing MTRG data
 into standard PCP archive logs for replay with any PCP monitoring tool.
+%endif
 
-
-
-
-#
-# pcp-import-ganglia2pcp
-#
+%if !%{disable_perl}
 %package import-ganglia2pcp
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -898,13 +852,8 @@ Requires:       perl-PCP-LogImport = %{version}-%{release}
 %description import-ganglia2pcp
 Performance Co-Pilot (PCP) front-end tools for importing ganglia data
 into standard PCP archive logs for replay with any PCP monitoring tool.
+%endif
 
-
-
-
-#
-# pcp-import-collectl2pcp
-#
 %package import-collectl2pcp
 Summary:        Performance Co-Pilot archive tools for importing collectl data
 License:        %{license_lgplv2plus}
@@ -961,12 +910,6 @@ Performance Co-Pilot (PCP) front-end tools for exporting metric values
 to Elasticsearch - a distributed, RESTful search and analytics engine.
 See https://www.elastic.co/community for further details.
 
-
-
-
-#
-# pcp-export-pcp2graphite
-#
 %package export-pcp2graphite
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -984,11 +927,6 @@ Requires:       python3-pcp = %{version}-%{release}
 Performance Co-Pilot (PCP) front-end tools for exporting metric values
 to graphite (http://graphite.readthedocs.org).
 
-
-
-
-# pcp-export-pcp2influxdb
-#
 %package export-pcp2influxdb
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1008,12 +946,6 @@ BuildRequires:  python3-requests
 Performance Co-Pilot (PCP) front-end tools for exporting metric values
 to InfluxDB (https://influxdata.com/time-series-platform/influxdb).
 
-
-
-
-#
-# pcp-export-pcp2json
-#
 %package export-pcp2json
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1029,12 +961,6 @@ Requires:       python3-pcp = %{version}-%{release}
 Performance Co-Pilot (PCP) front-end tools for exporting metric values
 in JSON format.
 
-
-
-
-#
-# pcp-export-pcp2spark
-#
 %package export-pcp2spark
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1051,9 +977,6 @@ Performance Co-Pilot (PCP) front-end tools for exporting metric values
 in JSON format to Apache Spark. See https://spark.apache.org/ for
 further details on Apache Spark.
 
-#
-# pcp-export-pcp2xlsx
-#
 %if !%{disable_xlsx}
 %package export-pcp2xlsx
 URL:            https://pcp.io
@@ -1070,9 +993,6 @@ Performance Co-Pilot (PCP) front-end tools for exporting metric values
 in Excel spreadsheet format.
 %endif
 
-#
-# pcp-export-pcp2xml
-#
 %package export-pcp2xml
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1088,12 +1008,6 @@ Requires:       python3-pcp = %{version}-%{release}
 Performance Co-Pilot (PCP) front-end tools for exporting metric values
 in XML format.
 
-
-
-
-#
-# pcp-export-pcp2zabbix
-#
 %package export-pcp2zabbix
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1177,9 +1091,7 @@ collecting Infiniband statistics.  By default, it monitors the local HCAs
 but can also be configured to monitor remote GUIDs such as IB switches.
 %endif
 
-#
-# pcp-pmda-activemq
-#
+%if !%{disable_perl}
 %package pmda-activemq
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1194,14 +1106,9 @@ Requires:       perl(LWP::UserAgent)
 %description pmda-activemq
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the ActiveMQ message broker.
+%endif
 
-
-
-
-#end pcp-pmda-activemq
-#
-# pcp-pmda-bind2
-#
+%if !%{disable_perl}
 %package pmda-bind2
 Summary:        Performance Co-Pilot (PCP) metrics for BIND servers
 License:        %{license_gplv2plus}
@@ -1215,14 +1122,9 @@ Requires:       perl(XML::LibXML)
 %description pmda-bind2
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from BIND (Berkeley Internet Name Domain).
+%endif
 
-
-
-
-#end pcp-pmda-bind2
-#
-# pcp-pmda-redis
-#
+%if !%{disable_perl}
 %package pmda-redis
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1236,8 +1138,8 @@ Requires:       perl-PCP-PMDA = %{version}-%{release}
 %description pmda-redis
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from Redis servers (redis.io).
+%endif
 
-#end pcp-pmda-redis
 %if !%{disable_nutcracker}
 #
 # pcp-pmda-nutcracker
@@ -1257,12 +1159,9 @@ Requires:       perl(YAML::XS)
 %description pmda-nutcracker
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from NutCracker (TwemCache).
-#end pcp-pmda-nutcracker
 %endif
 
-#
-# pcp-pmda-bonding
-#
+%if !%{disable_perl}
 %package pmda-bonding
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1277,14 +1176,9 @@ Supplements:    pcp
 %description pmda-bonding
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about bonded network interfaces.
+%endif
 
-
-
-
-#end pcp-pmda-bonding
-#
-# pcp-pmda-dbping
-#
+%if !%{disable_perl}
 %package pmda-dbping
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1299,14 +1193,9 @@ Supplements:    pcp
 %description pmda-dbping
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Database response times and Availablility.
+%endif
 
-
-
-
-#end pcp-pmda-dbping
-#
-# pcp-pmda-ds389
-#
+%if !%{disable_perl}
 %package pmda-ds389
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1325,14 +1214,9 @@ Requires:       perl-PCP-PMDA = %{version}-%{release}
 %description pmda-ds389
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about a 389 Directory Server.
+%endif
 
-
-
-
-#end pcp-pmda-ds389
-#
-# pcp-pmda-ds389log
-#
+%if !%{disable_perl}
 %package pmda-ds389log
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1347,14 +1231,9 @@ Requires:       perl-PCP-PMDA = %{version}-%{release}
 %description pmda-ds389log
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from a 389 Directory Server log.
+%endif
 
-
-
-
-#end pcp-pmda-ds389log
-#
-# pcp-pmda-gpfs
-#
+%if !%{disable_perl}
 %package pmda-gpfs
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1368,14 +1247,9 @@ Requires:       perl-PCP-PMDA = %{version}-%{release}
 %description pmda-gpfs
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the GPFS filesystem.
+%endif
 
-
-
-
-#end pcp-pmda-gpfs
-#
-# pcp-pmda-gpsd
-#
+%if !%{disable_perl}
 %package pmda-gpsd
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1390,14 +1264,8 @@ Supplements:    pcp
 %description pmda-gpsd
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about a GPS Daemon.
+%endif
 
-
-
-
-#end pcp-pmda-gpsd
-#
-# pcp-pmda-docker
-#
 %package pmda-docker
 Summary:        Performance Co-Pilot (PCP) metrics from the Docker daemon
 License:        %{license_gplv2plus}
@@ -1408,13 +1276,7 @@ URL:            https://pcp.io
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics using the Docker daemon REST API.
 
-
-
-
-#end pcp-pmda-docker
-#
-# pcp-pmda-lustre
-#
+%if !%{disable_perl}
 %package pmda-lustre
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1428,14 +1290,8 @@ Requires:       perl-PCP-PMDA = %{version}-%{release}
 %description pmda-lustre
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Lustre Filesystem.
+%endif
 
-
-
-
-#end pcp-pmda-lustre
-#
-# pcp-pmda-lustrecomm
-#
 %package pmda-lustrecomm
 Summary:        Performance Co-Pilot (PCP) metrics for the Lustre Filesytem Comms
 License:        %{license_gplv2plus}
@@ -1451,13 +1307,7 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Lustre Filesystem Comms.
 
-
-
-
-#end pcp-pmda-lustrecomm
-#
-# pcp-pmda-memcache
-#
+%if !%{disable_perl}
 %package pmda-memcache
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1472,14 +1322,9 @@ Supplements:    pcp
 %description pmda-memcache
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Memcached.
+%endif
 
-
-
-
-#end pcp-pmda-memcache
-#
-# pcp-pmda-mysql
-#
+%if !%{disable_perl}
 %package pmda-mysql
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1498,14 +1343,9 @@ Supplements:    pcp
 %description pmda-mysql
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the MySQL database.
+%endif
 
-
-
-
-#end pcp-pmda-mysql
-#
-# pcp-pmda-named
-#
+%if !%{disable_perl}
 %package pmda-named
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1520,13 +1360,9 @@ Supplements:    pcp
 %description pmda-named
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Named nameserver.
+%endif
 
-
-
-
-#end pcp-pmda-named
-# pcp-pmda-netfilter
-#
+%if !%{disable_perl}
 %package pmda-netfilter
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1541,14 +1377,9 @@ Supplements:    pcp
 %description pmda-netfilter
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Netfilter packet filtering framework.
+%endif
 
-
-
-
-#end pcp-pmda-netfilter
-#
-# pcp-pmda-news
-#
+%if !%{disable_perl}
 %package pmda-news
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1563,14 +1394,9 @@ Supplements:    pcp
 %description pmda-news
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Usenet News.
+%endif
 
-
-
-
-#end pcp-pmda-news
-#
-# pcp-pmda-nginx
-#
+%if !%{disable_perl}
 %package pmda-nginx
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1586,14 +1412,9 @@ BuildRequires:  perl(LWP::UserAgent)
 %description pmda-nginx
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Nginx Webserver.
+%endif
 
-
-
-
-#end pcp-pmda-nginx
-#
-# pcp-pmda-oracle
-#
+%if !%{disable_perl}
 %package pmda-oracle
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1609,14 +1430,9 @@ BuildRequires:  perl(DBI)
 %description pmda-oracle
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Oracle database.
+%endif
 
-
-
-
-#end pcp-pmda-oracle
-#
-# pcp-pmda-pdns
-#
+%if !%{disable_perl}
 %package pmda-pdns
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1631,14 +1447,9 @@ Supplements:    pcp
 %description pmda-pdns
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the PowerDNS.
+%endif
 
-
-
-
-#end pcp-pmda-pdns
-#
-# pcp-pmda-postfix
-#
+%if !%{disable_perl}
 %package pmda-postfix
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1670,14 +1481,9 @@ Supplements:    postfix
 %description pmda-postfix
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Postfix (MTA).
+%endif
 
-
-
-
-#end pcp-pmda-postfix
-#
-# pcp-pmda-rsyslog
-#
+%if !%{disable_perl}
 %package pmda-rsyslog
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1697,14 +1503,9 @@ Supplements:    rsyslog
 %description pmda-rsyslog
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Rsyslog.
+%endif
 
-
-
-
-#end pcp-pmda-rsyslog
-#
-# pcp-pmda-samba
-#
+%if !%{disable_perl}
 %package pmda-samba
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1719,14 +1520,9 @@ Supplements:    pcp
 %description pmda-samba
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Samba.
+%endif
 
-
-
-
-#end pcp-pmda-samba
-#
-# pcp-pmda-slurm
-#
+%if !%{disable_perl}
 %package pmda-slurm
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1740,8 +1536,8 @@ Requires:       perl-PCP-PMDA = %{version}-%{release}
 %description pmda-slurm
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from the SLURM Workload Manager.
+%endif
 
-#end pcp-pmda-slurm
 %if !%{disable_snmp}
 #
 # pcp-pmda-snmp
@@ -1764,12 +1560,9 @@ Supplements:    pcp
 %description pmda-snmp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about SNMP.
-#end pcp-pmda-snmp
 %endif
 
-#
-# pcp-pmda-vmware
-#
+%if !%{disable_perl}
 %package pmda-vmware
 Summary:        Performance Co-Pilot (PCP) metrics for VMware
 License:        %{license_gplv2plus}
@@ -1781,14 +1574,9 @@ Supplements:    pcp
 %description pmda-vmware
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics for VMware.
+%endif
 
-
-
-
-#end pcp-pmda-vmware
-#
-# pcp-pmda-zimbra
-#
+%if !%{disable_perl}
 %package pmda-zimbra
 Summary:        Performance Co-Pilot (PCP) metrics for Zimbra
 License:        %{license_gplv2plus}
@@ -1800,14 +1588,8 @@ Supplements:    pcp
 %description pmda-zimbra
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Zimbra.
+%endif
 
-
-
-
-#end pcp-pmda-zimbra
-#
-# pcp-pmda-dm
-#
 %package pmda-dm
 Summary:        Performance Co-Pilot (PCP) metrics for the Device Mapper Cache and Thin Client
 License:        %{license_gplv2plus}
@@ -1821,7 +1603,6 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Device Mapper Cache and Thin Client.
 
-# end pcp-pmda-dm
 %if !%{disable_python3}
 #
 # pcp-pmda-gluster
@@ -1840,13 +1621,6 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the gluster filesystem.
 
-
-
-
-# end pcp-pmda-gluster
-#
-# pcp-pmda-nfsclient
-#
 %package pmda-nfsclient
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1861,7 +1635,6 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics for NFS Clients.
 
-#end pcp-pmda-nfsclient
 %if !%{disable_postgresql}
 #
 # pcp-pmda-postgresql
@@ -1878,12 +1651,8 @@ BuildRequires:  python3-psycopg2
 %description pmda-postgresql
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the PostgreSQL database.
-#end pcp-pmda-postgresql
 %endif
 
-#
-# pcp-pmda-zswap
-#
 %package pmda-zswap
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1898,13 +1667,6 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about compressed swap.
 
-
-
-
-# end pcp-pmda-zswap
-#
-# pcp-pmda-unbound
-#
 %package pmda-unbound
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1919,13 +1681,6 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Unbound DNS Resolver.
 
-
-
-
-# end pcp-pmda-unbound
-#
-# pcp-pmda-mic
-#
 %package pmda-mic
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1940,13 +1695,6 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Intel MIC cards.
 
-
-
-
-# end pcp-pmda-mic
-#
-# pcp-pmda-haproxy
-#
 %package pmda-haproxy
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -1961,7 +1709,6 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 extracting performance metrics from HAProxy over the HAProxy stats socket.
 
-# end pcp-pmda-haproxy
 %if !%{disable_libvirt}
 #
 # pcp-pmda-libvirt
@@ -1986,12 +1733,8 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 extracting virtualisation statistics from libvirt about behaviour of guest
 and hypervisor machines.
-# end pcp-pmda-libvirt
 %endif
 
-#
-# pcp-pmda-elasticsearch
-#
 %package pmda-elasticsearch
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -2006,13 +1749,6 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Elasticsearch.
 
-
-
-
-#end pcp-pmda-elasticsearch
-#
-# pcp-pmda-openvswitch
-#
 %package pmda-openvswitch
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -2027,13 +1763,6 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from Open vSwitch.
 
-
-
-
-#end pcp-pmda-openvswitch
-#
-# pcp-pmda-rabbitmq
-#
 %package pmda-rabbitmq
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -2048,7 +1777,6 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about RabbitMQ message queues.
 
-#end pcp-pmda-rabbitmq
 %if !%{disable_lio}
 #
 # pcp-pmda-lio
@@ -2076,12 +1804,8 @@ iSCSI target interface (LIO). The metrics are stored by LIO within the Linux
 kernels configfs filesystem. The PMDA provides per LUN level stats, and a
 summary instance per iSCSI target, which aggregates all LUN metrics within the
 target.
-#end pcp-pmda-lio
 %endif # !%%{disable_lio}
 
-#
-# pcp-pmda-openmetrics
-#
 %package pmda-openmetrics
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -2100,13 +1824,6 @@ Provides:       pcp-pmda-prometheus = %{version}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 extracting metrics from OpenMetrics (https://openmetrics.io/) endpoints.
 
-
-
-
-#end pcp-pmda-openmetrics
-#
-# pcp-pmda-lmsensors
-#
 %package pmda-lmsensors
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -2124,13 +1841,6 @@ Provides:       pcp-pmda-lmsensors-debuginfo = %{version}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Linux hardware monitoring sensors.
 
-
-
-
-# end pcp-pmda-lmsensors
-#
-# pcp-pmda-netcheck
-#
 %package pmda-netcheck
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -2148,7 +1858,6 @@ Requires:       python3-pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from simple network checks.
 
-# end pcp-pmda-netcheck
 %endif # !%%{disable_python3}
 
 %if !%{disable_mssql}
@@ -2168,7 +1877,6 @@ Requires:       python3-pcp
 %description pmda-mssql
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from Microsoft SQL Server.
-# end pcp-pmda-mssql
 %endif
 
 %if !%{disable_resctrl}
@@ -2188,12 +1896,8 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA)
 which exposes performance metrics values from the /sys/fs/resctrl
 interface to provide information on the last level cache.
-# end pcp-pmda-resctrl
 %endif
 
-#
-# pcp-pmda-uwsgi
-#
 %package pmda-uwsgi
 Summary:        Performance Co-Pilot (PCP) metrics uWSGI servers
 License:        %{license_gplv2plus}
@@ -2207,7 +1911,6 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA)
 for collecting metrics from uWSGI servers.
 
-# end pcp-pmda-uwsgi
 %if !%{disable_json}
 #
 # pcp-pmda-json
@@ -2229,13 +1932,8 @@ BuildRequires:  python3-jsonpointer
 %description pmda-json
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics output in JSON.
-# end pcp-pmda-json
 %endif # !%%{disable_json}
 
-#
-# C pmdas
-# pcp-pmda-apache
-#
 %package pmda-apache
 Summary:        Performance Co-Pilot (PCP) metrics for the Apache webserver
 License:        %{license_gplv2plus}
@@ -2250,13 +1948,6 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Apache webserver.
 
-
-
-
-# end pcp-pmda-apache
-#
-# pcp-pmda-bash
-#
 %package pmda-bash
 Summary:        Performance Co-Pilot (PCP) metrics for the Bash shell
 License:        %{license_gplv2plus}
@@ -2271,13 +1962,6 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Bash shell.
 
-
-
-
-# end pcp-pmda-bash
-#
-# pcp-pmda-cifs
-#
 %package pmda-cifs
 Summary:        Performance Co-Pilot (PCP) metrics for the CIFS protocol
 License:        %{license_gplv2plus}
@@ -2291,13 +1975,6 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Common Internet Filesytem.
 
-
-
-
-# end pcp-pmda-cifs
-#
-# pcp-pmda-cisco
-#
 %package pmda-cisco
 Summary:        Performance Co-Pilot (PCP) metrics for Cisco routers
 License:        %{license_gplv2plus}
@@ -2312,13 +1989,6 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Cisco routers.
 
-
-
-
-# end pcp-pmda-cisco
-#
-# pcp-pmda-gfs2
-#
 %package pmda-gfs2
 Summary:        Performance Co-Pilot (PCP) metrics for the GFS2 filesystem
 License:        %{license_gplv2plus}
@@ -2332,13 +2002,6 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the Global Filesystem v2.
 
-
-
-
-# end pcp-pmda-gfs2
-#
-# pcp-pmda-logger
-#
 %package pmda-logger
 Summary:        Performance Co-Pilot (PCP) metrics from arbitrary log files
 License:        %{license_gplv2plus}
@@ -2354,13 +2017,6 @@ This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from a specified set of log files (or pipes).  The PMDA
 supports both sampled and event-style metrics.
 
-
-
-
-# end pcp-pmda-logger
-#
-# pcp-pmda-mailq
-#
 %package pmda-mailq
 Summary:        Performance Co-Pilot (PCP) metrics for the sendmail queue
 License:        %{license_gplv2plus}
@@ -2375,13 +2031,6 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about email queues managed by sendmail.
 
-
-
-
-# end pcp-pmda-mailq
-#
-# pcp-pmda-mounts
-#
 %package pmda-mounts
 Summary:        Performance Co-Pilot (PCP) metrics for filesystem mounts
 License:        %{license_gplv2plus}
@@ -2396,13 +2045,6 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about filesystem mounts.
 
-
-
-
-# end pcp-pmda-mounts
-#
-# pcp-pmda-nvidia-gpu
-#
 %package pmda-nvidia-gpu
 Summary:        Performance Co-Pilot (PCP) metrics for the Nvidia GPU
 License:        %{license_gplv2plus}
@@ -2416,13 +2058,6 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Nvidia GPUs.
 
-
-
-
-# end pcp-pmda-nvidia-gpu
-#
-# pcp-pmda-roomtemp
-#
 %package pmda-roomtemp
 Summary:        Performance Co-Pilot (PCP) metrics for the room temperature
 License:        %{license_gplv2plus}
@@ -2438,7 +2073,6 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the room temperature.
 
-# end pcp-pmda-roomtemp
 %if !%{disable_rpm}
 #
 # pcp-pmda-rpm
@@ -2457,11 +2091,7 @@ Requires:       pcp = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about the installed RPM packages.
 %endif
-# end pcp-pmda-rpm
 
-#
-# pcp-pmda-sendmail
-#
 %package pmda-sendmail
 Summary:        Performance Co-Pilot (PCP) metrics for Sendmail
 License:        %{license_gplv2plus}
@@ -2477,13 +2107,6 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about Sendmail traffic.
 
-
-
-
-# end pcp-pmda-sendmail
-#
-# pcp-pmda-shping
-#
 %package pmda-shping
 Summary:        Performance Co-Pilot (PCP) metrics for shell command responses
 License:        %{license_gplv2plus}
@@ -2499,13 +2122,6 @@ This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about quality of service and response time measurements of
 arbitrary shell commands.
 
-
-
-
-# end pcp-pmda-shping
-#
-# pcp-pmda-smart
-#
 %package pmda-smart
 Summary:        Performance Co-Pilot (PCP) metrics for S.M.A.R.T values
 License:        %{license_gplv2plus}
@@ -2518,13 +2134,6 @@ This package contains the PCP Performance Metric Domain Agent (PMDA) for
 collecting metrics of disk S.M.A.R.T values making use of data from the
 smartmontools package.
 
-
-
-
-#end pcp-pmda-smart
-#
-# pcp-pmda-sockets
-#
 %package pmda-sockets
 License:        %{license_gplv2plus}
 Summary:        Performance Co-Pilot (PCP) per-socket metrics
@@ -2537,13 +2146,6 @@ Requires:       pcp = %{version}-%{release}
 This package contains the PCP Performance Metric Domain Agent (PMDA) for
 collecting per-socket statistics, making use of utilities such as 'ss'.
 
-
-
-
-#end pcp-pmda-sockets
-#
-# pcp-pmda-hacluster
-#
 %package pmda-hacluster
 License:        %{license_gplv2plus}
 Summary:        Performance Co-Pilot (PCP) metrics for High Availability Clusters
@@ -2555,13 +2157,6 @@ Requires:       pcp = %{version}-%{release}
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about linux High Availability (HA) Clusters.
 
-
-
-
-# end pcp-pmda-hacluster
-#
-# pcp-pmda-summary
-#
 %package pmda-summary
 Summary:        Performance Co-Pilot (PCP) summary metrics from pmie
 License:        %{license_gplv2plus}
@@ -2577,7 +2172,6 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about other installed pmdas.
 
-# end pcp-pmda-summary
 %if !%{disable_systemd}
 #
 # pcp-pmda-systemd
@@ -2594,12 +2188,8 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 %description pmda-systemd
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics from the Systemd journal.
-# end pcp-pmda-systemd
 %endif
 
-#
-# pcp-pmda-trace
-#
 %package pmda-trace
 Summary:        Performance Co-Pilot (PCP) metrics for application tracing
 License:        %{license_gplv2plus}
@@ -2614,13 +2204,6 @@ Supplements:    pcp
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about trace performance data in applications.
 
-
-
-
-# end pcp-pmda-trace
-#
-# pcp-pmda-weblog
-#
 %package pmda-weblog
 Summary:        Performance Co-Pilot (PCP) metrics from web server logs
 License:        %{license_gplv2plus}
@@ -2635,12 +2218,19 @@ Supplements:    pcp
 %description pmda-weblog
 This package contains the PCP Performance Metrics Domain Agent (PMDA) for
 collecting metrics about web server logs.
+ end C pmdas
 
+%package pmda-amdgpu
+Summary:        Performance Co-Pilot (PCP) metrics from AMD GPU devices
+License:        %{license_gplv2plus}
+Group:          %{pcp_gr}
+URL:            https://pcp.io
+Requires:       pcp = %{version}-%{release}
+BuildRequires:  libdrm-devel
 
-
-
-# end pcp-pmda-weblog
-# end C pmdas
+%description pmda-amdgpu
+This package contains the PCP Performance Metrics Domain Agent (PMDA) for
+extracting performance metrics from AMDGPU devices.
 
 %package zeroconf
 %if !%{disable_noarch}
@@ -2666,9 +2256,7 @@ A timer script also writes daily performance summary reports similar to
 those written by sysstat.
 
 %if !%{disable_python3}
-#
-# python3-pcp. This is the PCP library bindings for python3.
-#
+
 %package -n python3-pcp
 Summary:        Performance Co-Pilot (PCP) Python3 bindings and documentation
 License:        %{license_gplv2plus}
@@ -2690,9 +2278,7 @@ Metric Domain Agent (PMDA) collector tools written in Python3.
 %endif
 
 %if !%{disable_python3}
-#
-# pcp-system-tools
-#
+
 %package system-tools
 Summary:        Performance Co-Pilot (PCP) System and Monitoring Tools
 License:        %{license_gplv2plus}
@@ -2707,12 +2293,9 @@ Requires:       %{lib_pkg} = %{version}-%{release}
 This PCP module contains additional system monitoring tools written
 in python.
 %endif
-#end pcp-system-tools
 
 %if !%{disable_qt}
-#
-# pcp-gui package for Qt tools
-#
+
 %package gui
 Summary:        Visualization tools for the Performance Co-Pilot toolkit
 License:        %{license_gplv2plus} AND %{license_lgplv2plus}
@@ -2733,9 +2316,6 @@ monitoring systems using live and archived Performance Co-Pilot
 (PCP) sources.
 %endif
 
-#
-# pcp-doc package
-#
 %package doc
 %if !%{disable_noarch}
 BuildArch:      noarch
@@ -2760,9 +2340,6 @@ level performance management.  It includes tutorials, HOWTOs,
 and other detailed documentation about the internals of core
 PCP utilities and daemons, and the PCP graphical tools.
 
-#
-# pcp-selinux package
-#
 %if !%{disable_selinux}
 %package selinux
 Summary:        Selinux policy package
@@ -2770,6 +2347,7 @@ License:        %{license_gplv2plus} AND %{license_cc_by}
 Group:          Applications/System
 URL:            https://pcp.io
 BuildRequires:  selinux-policy-devel
+%{?selinux_requires}
 %if 0%{?rhel} == 5
 BuildRequires:  setools
 %else
@@ -3276,6 +2854,7 @@ fi
 %{_datadir}/pcp/htop/columns/delayacct
 %{_datadir}/pcp/htop/columns/fdcount
 %{_datadir}/pcp/htop/columns/guest
+%{_datadir}/pcp/htop/columns/gpu_memory
 %{_datadir}/pcp/htop/columns/memory
 %{_datadir}/pcp/htop/columns/sched
 %{_datadir}/pcp/htop/columns/swap
@@ -3284,6 +2863,7 @@ fi
 %{_datadir}/pcp/htop/columns/wchan
 %{_datadir}/pcp/htop/meters/entropy
 %{_datadir}/pcp/htop/meters/freespace
+%{_datadir}/pcp/htop/meters/gpu
 %{_datadir}/pcp/htop/meters/ipc
 %{_datadir}/pcp/htop/meters/locks
 %{_datadir}/pcp/htop/meters/memcache
@@ -3619,22 +3199,30 @@ fi
 %files testsuite
 %{_testsdir}
 
+%if !%{disable_perl}
 %files import-sar2pcp
 %{_bindir}/sar2pcp
+%endif
 
+%if !%{disable_perl}
 %files import-iostat2pcp
 %{_bindir}/iostat2pcp
+%endif
 
 %if !%{disable_sheet2pcp}
 %files import-sheet2pcp
 %{_bindir}/sheet2pcp
 %endif
 
+%if !%{disable_perl}
 %files import-mrtg2pcp
 %{_bindir}/mrtg2pcp
+%endif
 
+%if !%{disable_perl}
 %files import-ganglia2pcp
 %{_bindir}/ganglia2pcp
+%endif
 
 %files import-collectl2pcp
 %{_bindir}/collectl2pcp
@@ -3668,25 +3256,35 @@ fi
 %{_pmdasexecdir}/infiniband
 %endif
 
+%if !%{disable_perl}
 %files pmda-activemq
 %{_pmdasdir}/activemq
 %{_pmdasexecdir}/activemq
+%endif
 
+%if !%{disable_perl}
 %files pmda-bonding
 %{_pmdasdir}/bonding
 %{_pmdasexecdir}/bonding
+%endif
 
+%if !%{disable_perl}
 %files pmda-dbping
 %{_pmdasdir}/dbping
 %{_pmdasexecdir}/dbping
+%endif
 
+%if !%{disable_perl}
 %files pmda-ds389log
 %{_pmdasdir}/ds389log
 %{_pmdasexecdir}/ds389log
+%endif
 
+%if !%{disable_perl}
 %files pmda-ds389
 %{_pmdasdir}/ds389
 %{_pmdasexecdir}/ds389
+%endif
 
 %files pmda-elasticsearch
 %dir %{_confdir}/elasticsearch
@@ -3704,13 +3302,17 @@ fi
 %{_pmdasdir}/rabbitmq
 %{_pmdasexecdir}/rabbitmq
 
+%if !%{disable_perl}
 %files pmda-gpfs
 %{_pmdasdir}/gpfs
 %{_pmdasexecdir}/gpfs
+%endif
 
+%if !%{disable_perl}
 %files pmda-gpsd
 %{_pmdasdir}/gpsd
 %{_pmdasexecdir}/gpsd
+%endif
 
 %files pmda-docker
 %{_pmdasdir}/docker
@@ -3727,39 +3329,53 @@ fi
 %{_pmdasexecdir}/openmetrics
 %config(noreplace) %{_confdir}/openmetrics
 
+%if !%{disable_perl}
 %files pmda-lustre
 %{_pmdasdir}/lustre
 %{_pmdasexecdir}/lustre
 %config(noreplace) %{_confdir}/lustre
+%endif
 
 %files pmda-lustrecomm
 %{_pmdasdir}/lustrecomm
 %{_pmdasexecdir}/lustrecomm
 
+%if !%{disable_perl}
 %files pmda-memcache
 %{_pmdasdir}/memcache
 %{_pmdasexecdir}/memcache
+%endif
 
+%if !%{disable_perl}
 %files pmda-mysql
 %{_pmdasdir}/mysql
 %{_pmdasexecdir}/mysql
+%endif
 
+%if !%{disable_perl}
 %files pmda-named
 %{_pmdasdir}/named
 %{_pmdasexecdir}/named
+%endif
 
+%if !%{disable_perl}
 %files pmda-netfilter
 %{_pmdasdir}/netfilter
 %{_pmdasexecdir}/netfilter
+%endif
 
+%if !%{disable_perl}
 %files pmda-news
 %{_pmdasdir}/news
 %{_pmdasexecdir}/news
+%endif
 
+%if !%{disable_perl}
 %files pmda-nginx
 %{_pmdasdir}/nginx
 %{_pmdasexecdir}/nginx
 %config(noreplace) %{_confdir}/nginx
+%endif
 
 %files pmda-nfsclient
 %{_pmdasdir}/nfsclient
@@ -3772,18 +3388,24 @@ fi
 %config(noreplace) %{_confdir}/nutcracker
 %endif
 
+%if !%{disable_perl}
 %files pmda-oracle
 %{_pmdasdir}/oracle
 %{_pmdasexecdir}/oracle
 %config(noreplace) %{_confdir}/oracle
+%endif
 
+%if !%{disable_perl}
 %files pmda-pdns
 %{_pmdasdir}/pdns
 %{_pmdasexecdir}/pdns
+%endif
 
+%if !%{disable_perl}
 %files pmda-postfix
 %{_pmdasdir}/postfix
 %{_pmdasexecdir}/postfix
+%endif
 
 %if !%{disable_postgresql}
 %files pmda-postgresql
@@ -3793,19 +3415,25 @@ fi
 %config(noreplace) %{_confdir}/postgresql/pmdapostgresql.conf
 %endif
 
+%if !%{disable_perl}
 %files pmda-redis
 %dir %{_confdir}/redis
 %config(noreplace) %{_confdir}/redis/redis.conf
 %{_pmdasdir}/redis
 %{_pmdasexecdir}/redis
+%endif
 
+%if !%{disable_perl}
 %files pmda-rsyslog
 %{_pmdasdir}/rsyslog
 %{_pmdasexecdir}/rsyslog
+%endif
 
+%if !%{disable_perl}
 %files pmda-samba
 %{_pmdasdir}/samba
 %{_pmdasexecdir}/samba
+%endif
 
 %if !%{disable_snmp}
 %files pmda-snmp
@@ -3815,13 +3443,17 @@ fi
 %{_pmdasexecdir}/snmp
 %endif
 
+%if !%{disable_perl}
 %files pmda-slurm
 %{_pmdasdir}/slurm
 %{_pmdasexecdir}/slurm
+%endif
 
+%if !%{disable_perl}
 %files pmda-zimbra
 %{_pmdasdir}/zimbra
 %{_pmdasexecdir}/zimbra
+%endif
 
 %files pmda-dm
 %{_pmdasdir}/dm
@@ -3980,6 +3612,10 @@ fi
 %{_pmdasdir}/apache
 %{_pmdasexecdir}/apache
 
+%files pmda-amdgpu
+%{_pmdasdir}/amdgpu
+%{_pmdasexecdir}/amdgpu
+
 %files pmda-bash
 %{_pmdasdir}/bash
 %{_pmdasexecdir}/bash
@@ -4057,6 +3693,7 @@ fi
 %{_pmdasdir}/weblog
 %{_pmdasexecdir}/weblog
 
+%if !%{disable_perl}
 %files -n perl-PCP-PMDA -f perl-pcp-pmda.list
 %if 0%{?suse_version}
 %dir %{_prefix}/lib/perl5/vendor_perl/*/*-linux-thread-multi*/PCP
@@ -4081,6 +3718,7 @@ fi
 %files -n perl-PCP-LogSummary -f perl-pcp-logsummary.list
 %if 0%{?suse_version}
 %dir %{_prefix}/lib/perl5/vendor_perl/*/PCP
+%endif
 %endif
 
 %if !%{disable_python3}

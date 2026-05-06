@@ -1,0 +1,58 @@
+From 7047f77ccaa84e9af356b9918395a4057af23933 Mon Sep 17 00:00:00 2001
+From: Nathan Scott <nathans@redhat.com>
+Date: Mon, 14 Apr 2025 11:58:41 +1000
+Subject: [PATCH] selinux: add permissions allowing proc_psi_t access
+
+Access to /proc/pressure recently became selinux policy
+protected so we need to allow pcp_pmcd_t to access that
+as it contains important system level metrics.
+
+Resolves Red Hat bugzilla #2358326.
+---
+ src/selinux/pcp.if | 20 ++++++++++++++++++++
+ src/selinux/pcp.te |  1 +
+ 2 files changed, 21 insertions(+)
+
+diff --git a/src/selinux/pcp.if b/src/selinux/pcp.if
+index 3ce68c203..0297185c6 100644
+--- a/src/selinux/pcp.if
++++ b/src/selinux/pcp.if
+@@ -535,3 +535,23 @@ ifndef(`userdom_manage_tmp_files',`
+         ')
+     ')
+ ')
++
++########################################
++## <summary>
++##      Dummy kernel_read_psi().
++##      Allow caller to set up pressure stall information (PSI),
++##      but if you don't have actual kernel_read_psi() interface
++##      nothing needs to be done.
++## <param name="domain">
++##      <summary>
++##      Domain allowed access.
++##      </summary>
++## </summary> 
++#
++ifndef(`kernel_read_psi',`
++    interface(`kernel_read_psi',`
++        gen_require(`
++            type $1;
++        ')
++    ')
++')
+diff --git a/src/selinux/pcp.te b/src/selinux/pcp.te
+index 9ad27c5c9..a30144950 100644
+--- a/src/selinux/pcp.te
++++ b/src/selinux/pcp.te
+@@ -123,6 +123,7 @@ kernel_read_vm_sysctls(pcp_pmcd_t)
+ kernel_read_rpc_sysctls(pcp_pmcd_t)
+ kernel_search_network_sysctl(pcp_pmcd_t)
+ kernel_read_net_sysctls(pcp_pmcd_t)
++kernel_read_psi(pcp_pmcd_t)
+ 
+ corecmd_exec_bin(pcp_pmcd_t)
+ corecmd_exec_shell(pcp_pmcd_t)
+-- 
+2.49.0
+
