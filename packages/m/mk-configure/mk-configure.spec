@@ -1,7 +1,7 @@
 #
 # spec file for package mk-configure
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 Name:           mk-configure
-Version:        0.39.3
+Version:        0.40.0
 Release:        0
 Summary:        A build system on top of bmake
 License:        BSD-2-Clause AND MIT AND ISC
 Group:          Development/Tools/Building
 URL:            https://github.com/cheusov/mk-configure/
-Source:         https://sourceforge.net/projects/mk-configure/files/mk-configure/mk-configure-%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/cheusov/mk-configure/archive/refs/tags/mk-configure-%{version}/%{name}-%{name}-%{version}.tar.gz
 Source1:        mkcmake.macros
 Source9:        mk-configure-rpmlintrc
+# PATCH-FIX-UPSTREAM gcc16-compatibility.patch -- based on commit e7bbef7aabb9e7d2b715fb829771c7016aee9359
+Patch0:         gcc16-compatibility.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -63,7 +65,7 @@ Requires:       %{name}
 Mk-configure package: examples and presentation.
 
 %prep
-%setup -q
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %define env \
         unset MAKEFLAGS \
@@ -116,7 +118,7 @@ bmake nodeps-cleandir-tests
 %{_libexecdir}/mk-configure
 
 %files doc
+%doc %{_docdir}/%{name}-doc
 %doc %{_docdir}/%{name}-doc/examples
-%doc presentation/presentation.pdf
 
 %changelog

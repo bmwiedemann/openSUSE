@@ -1,0 +1,104 @@
+From e7bbef7aabb9e7d2b715fb829771c7016aee9359 Mon Sep 17 00:00:00 2001
+From: Aleksey Cheusov <vle@gmx.net>
+Date: Fri, 24 Apr 2026 20:29:48 +0300
+Subject: [PATCH] Replace tests for strstr(3) prototype with prototype for
+ execve(2) (issue #33)
+
+---
+ tests/configure_test/expect.out         | 12 ++++++------
+ tests/configure_test/mkc_test.mk        | 12 ++++++------
+ tests/configure_test/mkc_test_preset.mk |  4 ++--
+ 3 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/tests/configure_test/expect.out b/tests/configure_test/expect.out
+index bf46465d..7da68f01 100644
+--- a/tests/configure_test/expect.out
++++ b/tests/configure_test/expect.out
+@@ -86,9 +86,9 @@ HAVE_MEMBER.struct_mkc_test_t_a.include_mkc_test_h:
+ 1
+ HAVE_MEMBER.struct_mkc_test_t_b_c.include_mkc_test_h:
+ 1
+-HAVE_PROTOTYPE.strstr_ok:
++HAVE_PROTOTYPE.execve_ok:
+ 1
+-HAVE_PROTOTYPE.strstr_bad:
++HAVE_PROTOTYPE.execve_bad:
+ 0
+ HAVE_PROTOTYPE.function_absent:
+ 0
+@@ -159,7 +159,7 @@ MKC_AUTO_CPPFLAGS:
+ -DHAVE_FUNC5_MKC_TEST_FUNC_INCLUDE_MKC_TEST_H=1
+ -DCUSTOM_CUSTOM_CHECK1=1
+ -DCUSTOM_CUSTOM_CHECK5=1
+--DHAVE_PROTOTYPE_STRSTR_OK=1
++-DHAVE_PROTOTYPE_EXECVE_OK=1
+ MKC_AUTO_SRCS:
+ /somewhere/superfunc1.c
+ /somewhere/superfunc2.c
+@@ -274,9 +274,9 @@ HAVE_MEMBER.struct_mkc_test_t_a.include_mkc_test_h:
+ 1
+ HAVE_MEMBER.struct_mkc_test_t_b_c.include_mkc_test_h:
+ 1
+-HAVE_PROTOTYPE.strstr_ok:
++HAVE_PROTOTYPE.execve_ok:
+ 0
+-HAVE_PROTOTYPE.strstr_bad:
++HAVE_PROTOTYPE.execve_bad:
+ 1
+ HAVE_PROTOTYPE.function_absent:
+ 0
+@@ -351,7 +351,7 @@ MKC_AUTO_CPPFLAGS:
+ -DCUSTOM_CUSTOM_CHECK2=2
+ -DCUSTOM_CUSTOM_CHECK2_LINK=3
+ -DCUSTOM_CUSTOM_CHECK5=1
+--DHAVE_PROTOTYPE_STRSTR_BAD=1
++-DHAVE_PROTOTYPE_EXECVE_BAD=1
+ MKC_AUTO_SRCS:
+ /somewhere/superfunc1.c
+ /somewhere/superfunc2.c
+diff --git a/tests/configure_test/mkc_test.mk b/tests/configure_test/mkc_test.mk
+index ac8cd5dc..6041f932 100644
+--- a/tests/configure_test/mkc_test.mk
++++ b/tests/configure_test/mkc_test.mk
+@@ -102,12 +102,12 @@ MKC_CUSTOM_CACHE.custom_check5_noauto  =	cache2
+ 
+ MKC_REQUIRE_CUSTOM+=	custom_check3
+ 
+-MKC_CHECK_PROTOTYPES =	strstr_ok strstr_bad function_absent
+-MKC_PROTOTYPE_FUNC.strstr_ok  = char* strstr   (const  char*,  const char* )
+-MKC_PROTOTYPE_FUNC.strstr_bad = char* strstr(const char*, const char*, int lalala)
++MKC_CHECK_PROTOTYPES =	execve_ok execve_bad function_absent
++MKC_PROTOTYPE_FUNC.execve_ok  = int  execve (  const  char  *,  char  *  const *, char * const *   )
++MKC_PROTOTYPE_FUNC.execve_bad = int execve(const char*, const char*, int lalala)
+ MKC_PROTOTYPE_FUNC.function_absent = int absent_function(int lalala)
+-MKC_PROTOTYPE_HEADERS.strstr_ok  = string.h
+-MKC_PROTOTYPE_HEADERS.strstr_bad = string.h
++MKC_PROTOTYPE_HEADERS.execve_ok  = unistd.h
++MKC_PROTOTYPE_HEADERS.execve_bad = unistd.h
+ MKC_PROTOTYPE_HEADERS.function_absent = string.h
+ 
+ MKC_CHECK_CC_OPTS =	-DMACRO=zzz --zzz
+@@ -144,7 +144,7 @@ vars+=	HAVE_HEADER.sys_time_h HAVE_HEADER.string_h HAVE_HEADER.unistd_h \
+ 	HAVE_VAR.mkc_test_var.include_mkc_test_h \
+ 	HAVE_MEMBER.struct_mkc_test_t_a.include_mkc_test_h \
+ 	HAVE_MEMBER.struct_mkc_test_t_b_c.include_mkc_test_h \
+-	HAVE_PROTOTYPE.strstr_ok HAVE_PROTOTYPE.strstr_bad HAVE_PROTOTYPE.function_absent \
++	HAVE_PROTOTYPE.execve_ok HAVE_PROTOTYPE.execve_bad HAVE_PROTOTYPE.function_absent \
+ 	HAVE_CC_OPT.-DMACRO_zzz HAVE_CXX_OPT.-DMACRO_zzz \
+ 	HAVE_CCLD_OPT.-DMACRO_zzz HAVE_CXXLD_OPT.-DMACRO_zzz \
+ 	HAVE_CC_OPT.--zzz HAVE_CXX_OPT.--zzz \
+diff --git a/tests/configure_test/mkc_test_preset.mk b/tests/configure_test/mkc_test_preset.mk
+index 06a56d43..32a6b8c1 100644
+--- a/tests/configure_test/mkc_test_preset.mk
++++ b/tests/configure_test/mkc_test_preset.mk
+@@ -27,8 +27,8 @@ CUSTOM.custom_check2=2
+ CUSTOM.custom_check2_link=3
+ PROG.awk=
+ PROG.megaprog-x34=/bad/path
+-HAVE_PROTOTYPE.strstr_ok=0
+-HAVE_PROTOTYPE.strstr_bad=1
++HAVE_PROTOTYPE.execve_ok=0
++HAVE_PROTOTYPE.execve_bad=1
+ HAVE_CC_OPT.-DMACRO_zzz=5
+ HAVE_CXX_OPT.-DMACRO_zzz=5
+ HAVE_CCLD_OPT.-DMACRO_zzz=5
