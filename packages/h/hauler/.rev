@@ -271,4 +271,25 @@
   * smaller changes and updates for v1.4.2 release</comment>
     <requestid>1349540</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bbfd00297ff3f7ca5f0c2872bf007bf5</srcmd5>
+    <version>1.4.3</version>
+    <time>1778088432</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.3 (
+      bsc#1262353, CVE-2026-39984,
+      bsc#1262942, CVE-2026-34986):
+  * [1.4] Bump go.opentelemetry.io/otel/sdk from 1.40.0 to 1.43.0
+    in the go_modules group across 1 directory
+  * [1.4] Bump github.com/sigstore/timestamp-authority/v2 from
+    2.0.4 to 2.0.6 in the go_modules group across 1 directory
+  * [1.4] Bump google.golang.org/grpc from 1.78.0 to 1.79.3 in
+    the go_modules group across 1 directory
+  * fixed versions and dependencies on release/1.4
+  * [1.4] removed unnecessary rewrite flag from sync
+  * added makefile command for vulnerability checks (backport
+    #577)
+  * remove cherrypick bot and add mergify details (backport #581)</comment>
+    <requestid>1351259</requestid>
+  </revision>
 </revisionlist>
