@@ -148,6 +148,8 @@ Patch41:        avahi-CVE-2025-68471.patch
 Patch42:        avahi-CVE-2025-68276.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2026-34933.patch bsc#1261546 xwang@suse.com -- refuse to accept publish flags where both wide_area and multicast are set
 Patch43:        avahi-CVE-2026-34933.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2026-24401.patch bsc#1257235 alynx.zhou@suse.com -- detect loop in CNAME record
+Patch44:        avahi-CVE-2026-24401.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel

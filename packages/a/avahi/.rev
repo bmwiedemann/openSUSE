@@ -1395,4 +1395,13 @@ Pushing GNOME 45.rc packages</comment>
   since avahi-autoipd creates it on start (jsc#PED-14836).</comment>
     <requestid>1350040</requestid>
   </revision>
+  <revision rev="178" vrev="44">
+    <srcmd5>b88badf105ec9c5376254fa6a1478626</srcmd5>
+    <version>0.8</version>
+    <time>1778087857</time>
+    <user>anag_factory</user>
+    <comment>- Add avahi-CVE-2026-24401.patch: Fix unsolicited mDNS response
+  containing a recursive CNAME record (bsc#1257235).</comment>
+    <requestid>1350966</requestid>
+  </revision>
 </revisionlist>

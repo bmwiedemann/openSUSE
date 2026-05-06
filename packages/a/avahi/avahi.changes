@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 01:48:13 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add avahi-CVE-2026-24401.patch: Fix unsolicited mDNS response
+  containing a recursive CNAME record (bsc#1257235).
+	
+-------------------------------------------------------------------
 Mon Apr 27 02:40:59 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add avahi-CVE-2026-34933.patch: refuse to accept publish flags
