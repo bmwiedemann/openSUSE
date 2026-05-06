@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue May  5 21:15:22 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.70.5:
+  - Client Improvements
+    - Added packet capture to debug bundle and CLI. #5891
+    - Advertised relay server IP via signal for foreign-relay
+      fallback dial. #6004
+    - Released Status.mux before invoking notifier callbacks. #6039
+    - Used ctx.Err() instead of gRPC codes.Canceled to detect
+      shutdown. #6019
+    - Used atomic write/rename pattern for SSH config. #5867
+    - Replaced WG interface polling with netlink subscription on
+      Linux. #5857
+    - Displayed QR code for device auth login URL. #5415
+    - Bumped go-netroute to v0.4.0 and dropped fork. #6062
+    - Used fwmark-aware route lookup for raw socket UDP checksum
+      source. #6070
+  - Management Improvements
+    - Added monitoring for nmap update source. #6036
+    - Enabled PAT creation during setup. #6003
+    - Added public IPv4/IPv6 posture checks. #6038
+    - Tracked pending approval in peer event metadata. #6040
+    - Fixed proxy reconnect issues. #6063
+    - Mapped Entra OID claim as Dex user ID. #6067
+    - Fixed flaky invite token test. #6077
+  - Proxy Enhancements
+    - Consolidated mapping updates. #6072
+  - Miscellaneous
+    - Disabled govet inline analyzer. #6066
+    - Updated discussions and issues templates. #6073
+
+-------------------------------------------------------------------
 Wed Apr 29 22:49:19 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.70.4:
