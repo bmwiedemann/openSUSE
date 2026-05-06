@@ -63,7 +63,11 @@ This subpackage contains the documentation for Parallel.
 
 %install
 %make_install
-echo 'sub citation_notice(){}' >>"%buildroot/%_bindir/parallel"
+perl -i -lpe 's{^__END__}{sub citation_notice() {}\n__END__}' "%buildroot/%_bindir/parallel"
+out="$(echo echo openSUSE | %buildroot/%_bindir/parallel 2>&1)"
+if [ "$out" != "openSUSE" ]; then
+	exit 1
+fi
 cp -a CITATION NEWS README "%buildroot/%_docdir/%name/"
 
 # fix shebang to to not use env & preserve the time stamps

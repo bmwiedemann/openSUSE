@@ -842,4 +842,12 @@
     <comment>- Update to release 20260422</comment>
     <requestid>1349315</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>e8d6813476136e9269b9c2294e84c333</srcmd5>
+    <version>20260422</version>
+    <time>1778087849</time>
+    <user>anag_factory</user>
+    <comment>- Refine program substitutions [boo#1263831]</comment>
+    <requestid>1350913</requestid>
+  </revision>
 </revisionlist>
