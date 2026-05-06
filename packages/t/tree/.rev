@@ -331,4 +331,21 @@
     <comment></comment>
     <requestid>1332390</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>92020251540b0892297e9d7aa254e884</srcmd5>
+    <version>2.3.2</version>
+    <time>1778087839</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.2:
+  * Whitelist characters instead of blacklisting (had an
+    incomplete blacklist somehow,) in url_encode() (M. Richardson)
+  * Wrong path was being used to allocate a path string.
+  * Symbolic link name might be printed incorrectly when -f and
+    -l were used at the same time. (Masaki Hasegawa)
+  * Use EXIT_FAILURE / EXIT_SUCCESS instead of 1 / 0 in exit(),
+    supposedly more portable, but I am not sure I'm convinced.
+  * Fix regression (maybe) in --gitignore for paths that are
+    relative to the .gitignore file broken by using realpath to</comment>
+    <requestid>1350874</requestid>
+  </revision>
 </revisionlist>
