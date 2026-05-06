@@ -122,4 +122,14 @@
     <comment></comment>
     <requestid>1323399</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>58562ea0c2718bfa9876174ed93f9ce0</srcmd5>
+    <version>3.2.1</version>
+    <time>1778087907</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2.1:
+  * Improved table of contents of articles.
+  * Updated translations.</comment>
+    <requestid>1351107</requestid>
+  </revision>
 </revisionlist>
