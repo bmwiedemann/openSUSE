@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed May 06 05:34:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.145:
+  * Feat/exclude drift (#2650)
+  * conditionally enable summary (#2619)
+  * Fix default image repos (backend ee -> ce), add podAnnotations
+    (#2598)
+  * fix: add target url to link to workflow run (#2606)
+  * docs: secuirty page (#2605)
+  * docs: recommend docker-compose guide (#2604)
+  * fix: upgrade azure/login to v2.2.0 to prevent cleanup warnings
+    (#2584)
+  * Update Slack invitation links in CONTRIBUTING.md (#2646)
+  * ui github setup link fix (#2642)
+  * add timeout to generate service client so it does not fail
+    (#2622)
+
+-------------------------------------------------------------------
+Thu Mar 26 06:03:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.144:
+  * fix: bump internal checkout action to v4.3.1 (#2620)
+  * docs: rename modeToggle to appearance in JSON configuration
+    (#2614)
+  * docs: Update color scheme and add custom typography and navbar
+    styles (#2609)
+  * docs: updates based on PR feedback (#2599)
+  * docs: redirect old home page (#2595)
+  * docs: remove extra drift page link, fix self-host link (#2593)
+  * fix ordering (#2594)
+  * fix rebased docs merge out of order (#2591)
+  * docs: refresh docs to improve user onboarding (#2575)
+  * chore: improve drift page layout/copy (#2586)
+  * fix: add helm dependency build where necessary for CI (#2583)
+  * feat: revamp public helm charts (#2581)
+
+-------------------------------------------------------------------
 Thu Feb 26 06:21:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.143:
