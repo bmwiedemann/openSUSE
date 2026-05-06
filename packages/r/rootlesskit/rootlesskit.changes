@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Apr 14 05:49:44 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 3.0.0:
+  * v3.0.0
+  * docs: update
+  * v3.0.0-rc.0+dev
+  * v3.0.0-rc.0
+  * port/builtin: support source IP propagation for UDP via IP_TRANSPARENT
+  * testsuite: split protocol-specific code out of testTransparentWithPID
+  * testsuite: use non-loopback IP in TestTCPTransparent
+  * CI: add iptables (required by source-ip-transparent)
+  * Build(deps): Bump golang.org/x/sys from 0.42.0 to 0.43.0
+  * v3.0.0-beta.1+dev
+  * v3.0.0-beta.1
+  * docs/port.md: update
+  * port/gvisor-tap-vsock: fix incompatibility with Docker
+  * v3.0.0-beta.0+dev
+  * v3.0.0-beta.0
+  * rootlesskit-docker-proxy: postpone removal to v4
+  * Preserve real client source IP in builtin port driver via IP_TRANSPARENT
+  * CI: increase sleep
+  * fix: remove Setsid from runWithoutReap to restore TTY
+  * Build(deps): Bump golang.org/x/sys from 0.41.0 to 0.42.0
+  * Build(deps): Bump golang.org/x/sync from 0.19.0 to 0.20.0
+  * Dockerfile: update test deps
+  * Build(deps): Bump actions/attest-build-provenance from 3 to 4
+  * Build(deps): Bump github.com/containernetworking/plugins
+  * v3.0.0-alpha.2+dev
+  * v3.0.0-alpha.2
+  * Build(deps): Bump golang.org/x/sys from 0.39.0 to 0.40.0
+  * Build(deps): Bump github.com/containers/gvisor-tap-vsock
+  * fix(testsuite):fix flaky by ensure port is free to use
+  * Build(deps): Bump golang.org/x/sys from 0.38.0 to 0.39.0
+  * Build(deps): Bump github.com/containernetworking/plugins
+  * Build(deps): Bump golang.org/x/sync from 0.18.0 to 0.19.0
+  * Build(deps): Bump actions/setup-go from 5 to 6
+  * Build(deps): Bump actions/checkout from 5 to 6
+  * v3.0.0-alpha.1+dev
+  * v3.0.0-alpha.1
+  * Build(deps): Bump golang.org/x/sync from 0.17.0 to 0.18.0
+  * Build(deps): Bump golang.org/x/crypto from 0.42.0 to 0.45.0
+  * Build(deps): Bump actions/checkout from 5 to 6
+  * ci: fix missing tag variable in release note generation
+  *  network/port driver build tags support
+  * Build(deps): Bump github.com/gofrs/flock from 0.12.1 to 0.13.0
+  * v3.0.0-alpha.0+dev
+  * v3.0.0-alpha.0
+  * go.mod: bump up
+  * port.md: update benchmark description for gvisor-tap-vsock driver
+  * go.mod: update gvisor-tap-vsock to v0.8.8 and improve port driver benchmarks
+  * refactor: replace Debugf with Debug for logging messages
+  * bump go to version 1.24 (version 1.23 is not supported) update go.mod and go.sum for dependency upgrades and fix gvisor-tap-vsock compatibility
+  * Add gvisortapvsock port driver support
+  * Build(deps): Bump actions/attest-build-provenance from 2 to 3
+  * Build(deps): Bump actions/checkout from 4 to 5
+  * Build(deps): Bump golang.org/x/sys from 0.34.0 to 0.35.0
+  * Build(deps): Bump golang.org/x/sys from 0.33.0 to 0.34.0
+  * network: add support for gvisor-tap-vsock driver and integration tests
+  * Build(deps): Bump github.com/Masterminds/semver/v3 from 3.3.1 to 3.4.0
+  * Build(deps): Bump github.com/urfave/cli/v2 from 2.27.6 to 2.27.7
+  * Implement Pdeathsig behavior for child processes and enhance integration tests
+  * child: refactor command execution to use goroutines with Pdeathsig
+
+-------------------------------------------------------------------
 Tue Dec 23 04:53:07 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 2.3.6:
