@@ -460,4 +460,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update ADSP firmware for Kaanapali platform</comment>
     <requestid>1349834</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1d4f41456d0c302fe1b15fd442e39097</srcmd5>
+    <version>20260505</version>
+    <time>1778087881</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260505 (git commit 027be1e3d201):
+  * qcom: update ADSP firmware for x1e80100 platform
+  * qcom: Update CDSP firmware for Kaanapali platform</comment>
+    <requestid>1351033</requestid>
+  </revision>
 </revisionlist>
