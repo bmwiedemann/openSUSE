@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed May 06 12:22:32 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 1.5.1:
+  * Prepare new release
+  * Print schedule priority
+  * Bump uncenter/setup-taplo from 1 to 2
+  * Revert "Bump uncenter/setup-taplo from 1 to 2"
+  * Bump uncenter/setup-taplo from 1 to 2
+  * ci: restrict workflow permissions
+  * Update QEC definitions
+  * Update review template for QE-C
+  * Add Slowroll
+  * Add Tumbleweed RISC-V template
+  * Lint existing toml file
+  * Add tomllint
+  * Bump actions/checkout from 5 to 6
+  * Bump golang.org/x/crypto from 0.43.0 to 0.45.0
+  * Add SLES15-SP7 and SLES16
+  * Update dependencies
+  * Update the BCI job group
+  * Bump actions/setup-go from 5 to 6
+  * Update go version from 1.21 to 1.23
+  * Re-group into major topics
+  * Update QE-C template
+  * Bump actions/checkout from 4 to 5
+  * Update QEC Maintenance with latest state
+  * Update dependencies
+
+-------------------------------------------------------------------
 Thu May 22 08:02:54 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Switch source repo to new location
