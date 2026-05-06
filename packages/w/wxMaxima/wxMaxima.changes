@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon May  4 19:32:57 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 26.05.0:
+  * Fix search and replace. Before in a longer string - e.g.
+    "aaaaaaaaa" only every second occurrence was replaced, when
+    (e.g.) one wanted to replace "a" by "b".
+  * Improvements in Plot2dWiz and Plot3dWiz.
+  * Fix the "Hide all Sidebars" menu option, it did not work.
+    (Changed from "Hide all Toolbars"), it hides sidebars, not the
+    toolbar.
+  * Build system: Allow changing the C++ standard using
+    CMAKE_CXX_STANDARD.
+  * Build system: Use C++20 by default, if the compiler supports
+    it.  C++14 still works.
+  * Build system: Fix compiling with C++20, C++23 and C++26.
+  * Fix webp support for wxWidgets >= 3.3.0.
+  * Fix 2nd 'Special constant' button in the integrate wizard.
+  * Fix many issues in the integrate numerically menu
+    (gh#wxMaxima-developers/wxmaxima#2069).
+  * Also mentioned "QUADPACK" in the menu, so that one knows, from
+    what Maxima package these special functions come.
+  * Don't include dot files in the release archive
+    (gh#wxMaxima-developers/wxmaxima#2068).
+  * New compile option WXM_DISABLE_QA
+    (gh#wxMaxima-developers/wxmaxima#2064).
+  * Fix the 'Create a list from a list' menu (mentioned in the
+    discussion forum).
+  * Fix the 'Extract nth element of a list' menu.
+  * Fix the 'Do for all list elements' menu.
+  * Fix the 'export list to csv file' and 'read list from csv
+    file' menu.  It was not working at all. Renamed to 'read
+    nested list from csv file', the menu item is using
+    read_nested_list(). Mentioned in the discussion forum.
+  * Fix the 'Apply a function to each list element' menu.
+    Mentioned in the discussion forum.
+  * Fix the List/Push menu (wrong order of arguments). Mentioned
+    in the discussion forum.
+  * Provide a relevant OSDescription in the top bar.
+  * Discard intermediate PNG plots from with_slider_draw
+    (gh#wxMaxima-developers/wxmaxima#2081).
+  * A better 'List sort' wizard. (Mentioned in the discussion
+    forum).
+  * Fix the Help->Example and Help->Apropos menus.
+  * Fix the Matrix->Row and columns operations->Remove rows or
+    columns menu.
+  * Change to one 'Remove rows' and one 'Remove columns' menu.
+  * Fix statistics sidebar (wxbarsplot, wxboxplot, wxpiechart,
+    mean, median, std were not working)
+  * Fix inconsistent behavior in the list menu (mentioned in the
+    discussion forum)
+  * Make toolbar icons HDPI
+    (gh#wxMaxima-developers/wxmaxima#2074).
+
+-------------------------------------------------------------------
 Thu Jan 15 18:43:35 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 26.01.0:
