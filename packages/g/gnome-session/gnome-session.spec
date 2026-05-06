@@ -26,7 +26,6 @@ URL:            https://www.gnome.org
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gnome-session-fix-double-free-GError.patch bsc#1261932, glgo#GNOME/gnome-session!176 alynx.zhou@suse.com -- Fix a double-free on GError
 Patch0:         gnome-session-fix-double-free-GError.patch
-
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -40,8 +39,6 @@ Requires:       gnome-settings-daemon
 Requires:       gsettings-desktop-schemas >= 0.1.7
 Requires:       hicolor-icon-theme
 Requires:       xorg-x11-server-wayland
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 # gnome-session-default-session merged into gnome-session; the alternative - fallback-session - disappeared
 # with GNOME 3.8
 Provides:       %{name}-default-session = %{version}
@@ -49,10 +46,14 @@ Obsoletes:      %{name}-default-session < %{version}
 # With the change to GNOME 49, the XSession is no longer a thing
 Obsoletes:      gnome-session-xsession < 49
 # With the change to GNOME 49, core and wayland session are merged into the main package
-Obsoletes:      gnome-session-core    < 49.1
-Provides:       gnome-session-core    = %{version}
+Obsoletes:      gnome-session-core < 49.1
+Provides:       gnome-session-core = %{version}
 Obsoletes:      gnome-session-wayland < 49.1
 Provides:       gnome-session-wayland = %{version}
+%if 0%{?suse_version} < 1610
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 
 %description
 This package provides the basic session tools, like session management
@@ -76,11 +77,14 @@ functionality, for the GNOME Desktop.
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
+%if 0%{?suse_version} < 1610
 # Prepare for 'default.desktop' being update-alternative handled, boo#1039756
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-waylandsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_datadir}/wayland-sessions/default.desktop
+%endif
 
+%if 0%{?suse_version} < 1610
 %post
 %{_sbindir}/update-alternatives --install %{_datadir}/wayland-sessions/default.desktop \
   default-waylandsession.desktop %{_datadir}/wayland-sessions/gnome.desktop 25
@@ -88,15 +92,18 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %postun
 [ -f %{_datadir}/wayland-sessions/gnome.desktop ] || %{_sbindir}/update-alternatives \
   --remove default-waylandsession.desktop %{_datadir}/wayland-sessions/gnome.desktop
+%endif
 
 %files
 %license COPYING
 %doc NEWS README.md
 %{_datadir}/gnome-session/sessions/gnome.session
 %dir %{_datadir}/wayland-sessions
-%{_datadir}/wayland-sessions/default.desktop
 %{_datadir}/wayland-sessions/gnome.desktop
+%if 0%{?suse_version} < 1610
+%{_datadir}/wayland-sessions/default.desktop
 %ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop
+%endif
 %{_bindir}/gnome-session
 %{_bindir}/gnome-session-inhibit
 %{_bindir}/gnome-session-quit

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  5 07:49:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Eliminate usage of update-alternatives on suse_version >= 1610
+  (jsc#PED-15674): GNOME-Session was the only one installng that
+  handler into the wayland-sessions directory, and apparently
+  nothing is reading it. GNOME does not have the X-Session anymore,
+  making the step out easy at this time.
+
+-------------------------------------------------------------------
 Wed Apr 29 07:39:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - [git]: Do not store *.changes as LFS object.
