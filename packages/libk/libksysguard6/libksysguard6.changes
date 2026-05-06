@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  5 11:21:52 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add missing %verify(not caps) (boo#1263098)
+
+-------------------------------------------------------------------
 Tue Apr  7 14:59:31 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.4:

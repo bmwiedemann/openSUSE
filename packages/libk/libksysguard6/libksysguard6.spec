@@ -193,7 +193,7 @@ files.
 %{_kf6_sharedir}/polkit-1/actions/org.kde.ksysguard.processlisthelper.policy
 %{_kf6_libexecdir}/kauth/ksysguardprocesslist_helper
 %dir %{_libexecdir}/ksysguard/
-%{_libexecdir}/ksysguard/ksgrd_network_helper
+%verify(not caps) %{_libexecdir}/ksysguard/ksgrd_network_helper
 
 %files imports
 %dir %{_kf6_qmldir}/org/kde/ksysguard
