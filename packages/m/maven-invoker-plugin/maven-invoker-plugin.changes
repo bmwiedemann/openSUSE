@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  6 07:02:17 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.10.1
+  * Bug Fixes
+    + Provide separate logs for each execution for rerunning jobs
+  * Dependency updates
+    + Bump commons-codec:commons-codec from 1.21.0 to 1.22.0
+    + Bump commons-io:commons-io from 2.21.0 to 2.22.0
+
+-------------------------------------------------------------------
 Sun Apr 26 18:04:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.10.0
