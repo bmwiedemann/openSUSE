@@ -303,4 +303,13 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 7.0</comment>
     <requestid>1347744</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>43f1f3271b96ac138536812163061376</srcmd5>
+    <version>20260505</version>
+    <time>1778087879</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260505 (git commit 027be1e3d201):
+  * Linux-firmware: Add Dell ISH firmware 581.7783.0 for Intel Panther Lake systems.</comment>
+    <requestid>1351028</requestid>
+  </revision>
 </revisionlist>

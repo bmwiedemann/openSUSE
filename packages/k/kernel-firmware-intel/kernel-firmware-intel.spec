@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version e9cae76da75816f1e5643502bd15e1e98d19cbfc
+%define git_version 027be1e3d20125b338581e7e32629741888609c4
 
 Name:           kernel-firmware-intel
-Version:        20260408
+Version:        20260505
 Release:        0
 Summary:        Kernel firmware files for Intel-platform device drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260409.tar.gz#/kernel-firmware-tools-20260409.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260505.tar.gz#/kernel-firmware-tools-20260505.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
