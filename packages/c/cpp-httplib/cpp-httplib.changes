@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  5 15:20:24 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Updte to 0.43.3:
+  * Fix OSS-Fuzz #508342856: cap Content-Length reservation by payload_max_length_ to prevent excessive memory allocation (2d2efe4)
+  * Fix OSS-Fuzz #508087118: avoid stack overflow in str2tag (92aecf8)
+  * Fuzzing / tests
+  * Run all fuzzers via make fuzz_test (cae7534)
+  * Add OSS-Fuzz #508370122 reproducer to client_fuzzer corpus (b223e29)
+  * Make fuzz_test robust to missing corpus files (35c4026)
+  * Drop Str2tagTest unit test that broke split / -fno-exceptions builds (f6524c0)
+  * Document str2tag_core's compile-time-only role (40e1846)
+- 0.43.2:
+  * Reproducer test for #2431 (getaddrinfo_a use-after-free)
+  * Fix #2431: drop getaddrinfo_a path (stack-use-after-free)
+  * Add client fuzzing harness
+  * Fix #2435: allow mmap to open files held open for writing
+  * Re-enable getaddrinfo_a with worker-completion wait (#2431)
+
+-------------------------------------------------------------------
 Sun Apr 26 04:30:55 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 0.43.1:
