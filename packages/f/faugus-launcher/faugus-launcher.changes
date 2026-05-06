@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 05 21:18:21 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.18.12
+- Upstream changes:
+  * Downloads temp file in compatibilitytools
+  * Fixed compatibilitytools detection
+  * Fix get_compatibilitytools path suffix attachment
+- For version 1.18.11:
+  * Disable wayland driver for epic
+  * Fixed virtual keyboard losing focus when using shift
+  * Fixed autostart path
+  * Revert "Fix for Winetricks not working with Proton-CachyOS 11 on Wayland"
+  * Don't show splash window when upgrading FSR or DLSS
+  * Fix for Winetricks not working with Proton-CachyOS 11 on Wayland
+  * Updated paths to properly use xdg portal
+
+-------------------------------------------------------------------
 Thu Apr 30 22:39:46 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - .spec file:

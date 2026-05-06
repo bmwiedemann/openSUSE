@@ -440,4 +440,24 @@
   * simplify and make launcher script POSIX</comment>
     <requestid>1350311</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>43c70c70939d1c8ccd46abf24ca0643f</srcmd5>
+    <version>1.18.12</version>
+    <time>1778087902</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.18.12
+- Upstream changes:
+  * Downloads temp file in compatibilitytools
+  * Fixed compatibilitytools detection
+  * Fix get_compatibilitytools path suffix attachment
+- For version 1.18.11:
+  * Disable wayland driver for epic
+  * Fixed virtual keyboard losing focus when using shift
+  * Fixed autostart path
+  * Revert &quot;Fix for Winetricks not working with Proton-CachyOS 11 on Wayland&quot;
+  * Don't show splash window when upgrading FSR or DLSS
+  * Fix for Winetricks not working with Proton-CachyOS 11 on Wayland
+  * Updated paths to properly use xdg portal</comment>
+    <requestid>1351078</requestid>
+  </revision>
 </revisionlist>
