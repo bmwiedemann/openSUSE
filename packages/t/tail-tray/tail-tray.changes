@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 06 05:14:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.32:
+  * Bump version to 0.2.32 to get new Ubuntu LTS builds
+  * [CI] - Add Ubuntu 26.04 resolute to tagged releases
+  * [CI] - Add Ubuntu 26.04 dev builds
+
+-------------------------------------------------------------------
 Mon Apr 20 17:22:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.31:
