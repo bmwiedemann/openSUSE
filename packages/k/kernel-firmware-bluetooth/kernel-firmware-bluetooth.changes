@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 14:35:17 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260505 (git commit 027be1e3d201):
+  * rtl_bt: Add missing rtl8761a_config.bin for RTL8761AU
+
+-------------------------------------------------------------------
 Sun Apr 26 08:25:55 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260423 (git commit 479a01628094):
