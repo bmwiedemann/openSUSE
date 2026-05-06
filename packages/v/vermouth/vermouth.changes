@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue May 05 21:39:01 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.7.1
+- Upstream changes:
+  * Fix up the version of the spec file
+  * Specs for beta AUR and COPR
+  * Fix auto grid downloads and steam imports
+  * Refactor Game cards and grids
+  * Refactor the GridViews
+  * Added a standalone Retroarch runner
+  * Fix up the import dialog
+  * Fix loading the games on second open
+  * Add single source of truth for runtimes
+  * Steam runtime and import
+- For version 1.6.3:
+  * Fix winetricks for newer versions of proton
+  * Fix the background color of the grid views to match the theme
+- For version 1.6.1:
+  * Added changelog
+  * Visibility changes to romm components
+  * Only show the tab bar if RomM is enabled
+  * Bump version, update readme and descriptions
+  * Dark mode fixes for AppImage
+  * Only show the tab bar if RomM is enabled
+  * Add more cores in the map
+  * Fix up gamepad, better animation when selecting
+  * Platform logos, fixed focus
+  * Copy launch command for debugging
+  * Cores and launch
+  * Romm support
+  * Refactor some of the bloated functions
+  * Changed CORP address in readme
+  * Update SteamGridDB API key URL in SettingsDialog
+
+-------------------------------------------------------------------
 Thu Apr 30 22:45:43 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.5.1

@@ -99,4 +99,41 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * When launching a known exe through association, don't raise the main win</comment>
     <requestid>1350312</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0f384cb363cb126f73dfa8bf79d31b95</srcmd5>
+    <version>1.7.1</version>
+    <time>1778087903</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.7.1
+- Upstream changes:
+  * Fix up the version of the spec file
+  * Specs for beta AUR and COPR
+  * Fix auto grid downloads and steam imports
+  * Refactor Game cards and grids
+  * Refactor the GridViews
+  * Added a standalone Retroarch runner
+  * Fix up the import dialog
+  * Fix loading the games on second open
+  * Add single source of truth for runtimes
+  * Steam runtime and import
+- For version 1.6.3:
+  * Fix winetricks for newer versions of proton
+  * Fix the background color of the grid views to match the theme
+- For version 1.6.1:
+  * Added changelog
+  * Visibility changes to romm components
+  * Only show the tab bar if RomM is enabled
+  * Bump version, update readme and descriptions
+  * Dark mode fixes for AppImage
+  * Only show the tab bar if RomM is enabled
+  * Add more cores in the map
+  * Fix up gamepad, better animation when selecting
+  * Platform logos, fixed focus
+  * Copy launch command for debugging
+  * Cores and launch
+  * Romm support
+  * Refactor some of the bloated functions
+  * Changed CORP address in readme</comment>
+    <requestid>1351079</requestid>
+  </revision>
 </revisionlist>
