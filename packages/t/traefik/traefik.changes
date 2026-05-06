@@ -1,7 +1,25 @@
 -------------------------------------------------------------------
+Wed May  6 08:08:16 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.6.16
+- Bug fixes:
+  * docker, ecs
+    - Migrate to github.com/moby/moby modules
+  * k8s/crd
+    - Remove cross-provider sanitization for Kubernetes service loading
+  * k8s/ingress-nginx
+    - Fix typo in default CORS allowed headers
+  * logs, metrics, tracing
+    - Bump go.opentelemetry.io/otel
+
+-------------------------------------------------------------------
 Mon May  4 15:29:06 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.6.15
+  CVE fixed:
+  - CVE fixed:
+    CVE-2026-41181 (Advisory GHSA-p6hg-qh38-555r)
+
 - Bug fixes:
   * acme
     - Bump github.com/go-acme/lego/v4 to v4.35.2
