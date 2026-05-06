@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 05 15:34:46 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1777995277.b985bea2:
+  * style: Enforce perlcritic policy Variables::ProtectPrivateVars
+  * fix(docs): Fix links to documentation after converting to Markdown
+  * docs: fix broken references to former .asciidoc files
+  * docs: Fix wrapping list of directories after Markdown migration
+  * docs: Improve documentation of `git_auto_clone` feature
+  * docs: Make remark about worker cache service clearer using a comma
+  * docs: Fix casing of Git in the section about setting up Git support
+  * feat: Include log in IPA results
+  * feat: enhance dynamic job limit with fast ramp-up
+
+-------------------------------------------------------------------
 Mon May 04 11:54:48 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1777888278.38a3a85c:
