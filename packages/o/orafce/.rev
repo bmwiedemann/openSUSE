@@ -266,4 +266,12 @@
     <comment></comment>
     <requestid>1316870</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>9adc0384a9dc637618de43e4e5384183</srcmd5>
+    <version>4.16.2+git0.6a3cfa5</version>
+    <time>1778087974</time>
+    <user>anag_factory</user>
+    <comment>- Disable pg13</comment>
+    <requestid>1351147</requestid>
+  </revision>
 </revisionlist>
