@@ -1,7 +1,7 @@
 #
 # spec file for package goben
 #
-# Copyright (c) 2021-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           goben
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Measure TCP/UDP transport layer throughput between hosts
 License:        MIT

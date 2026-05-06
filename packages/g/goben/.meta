@@ -3,5 +3,6 @@
   <description>A tool to measure TCP/UDP transport layer throughput between hosts.
 
 </description>
+  <devel project="network:utilities" package="goben"/>
   <url>https://github.com/udhos/goben</url>
 </package>
