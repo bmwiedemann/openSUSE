@@ -44,4 +44,12 @@ Add reproducible.patch to avoid compile-time CPU-detection (boo#1100677)</commen
   * Fixed Index Searches in EXPLAIN output for Postgres 18</comment>
     <requestid>1342055</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8301c83a64600edda87327d626bcb09e</srcmd5>
+    <version>0.8.2</version>
+    <time>1778087976</time>
+    <user>anag_factory</user>
+    <comment>- Disable pg13</comment>
+    <requestid>1351151</requestid>
+  </revision>
 </revisionlist>
