@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Mon May 04 06:51:45 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version v0.3.2:
+  * Live Diff plugin (experimental)
+  * New Startup section in Settings
+  * Blank-workspace flow — Auto Create Empty Buffer On Last Buffer Close
+  * Skip Session Restore When Files Passed
+  * Restore Previous Session (existing, moved into Startup).
+  * File explorer side (thanks @paveloparev!): Side under File Explorer in 
+    Settings — left or right.
+  * Prompt Line now hidden by default
+  * Mark mode preserved through Go to Line so you can extend selections across 
+    the jump.
+  * Copy File Path commands: New commands: "Copy File Path" and 
+    "Copy Relative File Path"
+  * CLI Help Localization
+  * Relative +/- Goto Line: Infers absolute vs relative jumps from a leading 
+    sign (e.g., :+10 jumps 10 lines down, :10 jumps to line 10).
+  * Rust Toolchain Update
+  * Plugin loading deferred off the boot critical path — another ~225 ms saved
+  * Popup focus
+  * Status Bar visual integration
+  * Prompt interaction and scrolling
+  * Live Diff stability: Fixed crashes on surrogate-pair content (emojis) and 
+    corrected gutter rendering for empty lines inside added blocks.
+  * Syntax Highlight Caching: New multi-phase caching system (memoised scope 
+    lookups and whole-file cache for small files) significantly reduces CPU 
+    usage during rendering.
+
+-------------------------------------------------------------------
+Fri Apr 24 06:36:34 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version v0.3.0:
+  * new cool dashboard plugin: Built-in TUI dashboard that replaces the usual
+    "[No Name]" with useful at-a-glance info.
+  * Devcontainer support: Fresh integrates with the devcontainer CLI (install
+    it yourself)
+  * init.ts: Fresh now auto-loads ~/.config/fresh/init.ts! Allows you to run
+    plugin code on startup
+  * File explorer — cut/copy/paste + multi-selection + right-click context menu
+  * File explorer — keyboard preview 
+  * Quick Open / Go-to Line live preview
+  * Current-column highlight
+  * SSH URLs on the CLI: fresh ssh://user@host:port/path launches a session
+    whose filesystem and process authority point at the remote host.
+  * Terminal window title  
+  * LSP status popup upgrades
+  * Adaptive line-number gutter
+  * see more at https://github.com/sinelaw/fresh/releases/tag/v0.3.0
+
+-------------------------------------------------------------------
+Sun Apr 12 09:00:58 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version v0.2.23:
+  * Theme Editor and Package Manager: Multi-panel plugin UIs now behave like 
+    native splits — per-panel mouse-wheel scrolling and scrollbars, draggable
+    panel dividers, and the theme editor's own colors now use the active theme.
+  * File Finder in Command Palette (Ctrl+P): Much faster and more responsive 
+  * Review Diff: Brought back features that were dropped in the rewrite in 
+    version 0.2.22
+  * Keybinding Editor: Special keys like Esc, Tab, and Enter can now be bound
+  * Customizable Status Bar: The left and right sides of the status bar are now
+    configurable
+  * LSP Status Bar Indicator: Simplified to a single color-coded "LSP" label 
+  * Universal LSP Servers: LSP servers configured for all languages are now 
+    spawned once per project instead of once per opened language
+  * Regression - Fixed multi-byte UTF-8 characters not being parsed correctly 
+    in the input handler
+  * Fixed blank panels appearing after terminal resize.
+  * Fixed terminal mode not being exited when the active buffer is switched 
+    to a non-terminal.
+  * Fixed Review Diff hunk navigation (n/p) not working in the diff panel
+  * Fixed Settings UI section headers being invisible in the high-contrast theme
+  * Fixed word wrap producing single-character-per-line output on narrow 
+    terminals with deeply indented code 
+  * Fixed LSP completion popup showing duplicate entries when reopened
+  * Fixed LSP auto_start being ignored on a per-server basis when multiple 
+    servers are configured for one language
+
+- Update to version v0.2.22:
+  * review Diff Rewrite: The review diff view has been rewritten with a 
+    magit-style split-panel UI
+  * Remote Mode: SSH connections now auto-reconnect in the background with a
+    disconnected indicator in the status bar. Filesystem operations no longer 
+    block the event loop
+  * Create Directories on Save: When saving a file to a path where the parent
+    directory doesn't exist, Fresh now prompts to create the directory
+  * Grammar Short Name Aliases: Grammars can now be referenced by short names
+    (e.g., "bash" instead of "Bourne Again Shell (bash)") in config and the Set
+    Language popup.
+  * Default Language Setting: The default_language setting replaces the 
+    previous fallback object. Set it to a language key (e.g., "bash") so 
+    unrecognized file types use that language's full configuration
+  * AutoHotkey Syntax Highlighting: Built-in grammar for .ahk and .ahk2 files
+    with v1/v2 command coverage.
+  * Settings UI: Added inherit/unset support for nullable settings with an 
+    Inherit button and inherited badge. The Delete key now unsets a setting 
+    override.
+  * Theme Selector: Installed theme packages now appear correctly even when
+    multiple themes share the same name. The selector strips URL schemes and 
+    sizes the name column to content.
+  * File Finder (Ctrl+P): Fixed showing no files on Windows when git isn't 
+    being used.
+  * Selection Prompts: Pre-filled text is now selected so typing immediately
+    replaces it.
+  * Theme Fixes: Fixed low contrast in Nord, Solarized Dark, Light, and 
+    Dracula themes. Fixed command palette selected row using wrong foreground
+    color. Syntax highlighting colors are now preserved in text selections.
+  * Fixed out-of-memory crash caused by an infinite loop in the line-wrapping
+    transform when indentation exceeds half the available width
+  * Fixed didOpen notification only being sent to the first LSP server when 
+    multiple are configured for a language.
+  * Fixed status bar line number not updating when stepping through search 
+    matches with F3.
+  * Fixed session open-file command failing when a session exists but its name
+    doesn't match the socket.
+  * Fixed scrollbar track hover highlighting more than the hovered cell.
+  * Fixed self-update URL pattern not matching all release URLs.
+
+-------------------------------------------------------------------
 Tue Apr 07 13:44:46 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version v0.2.21:

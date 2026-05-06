@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define shortname fresh
 Name:           fresh-editor
-Version:        0.2.21
+Version:        0.3.2
 Release:        0
 Summary:        A terminal text editor you can just use
 License:        GPL-2.0-only
@@ -28,6 +29,8 @@ BuildRequires:  cargo-packaging
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
+A modern, full-featured terminal text editor, with zero configuration. Familiar keybindings, mouse support, and IDE-level features — no learning curve required.
+
 Why another text editor? Fresh brings the intuitive, conventional UX of editors like VS Code and Sublime Text to the terminal.
 While veterans like Emacs and Vim - and newer editors like Neovim and Helix - are excellent for power users who prefer modal, highly specialized workflows, they often present a steep learning curve for those used to standard GUI interactions. Fresh is built for the developer who wants a familiar, non-modal experience out-of-the-box, without sacrificing the speed and portability of the command line. Keyboard bindings, mouse support, menus, command palette etc. are all designed to be familiar to most modern users.
 Architecturally, Fresh is built to handle multi-gigabyte files or slow network streams efficiently, maintaining a negligible memory overhead regardless of file size. While traditional editors struggle with latency and RAM bloat on large files, Fresh delivers consistent, high-speed performance on any scale.

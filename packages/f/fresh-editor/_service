@@ -3,13 +3,13 @@
         <param name="url">https://github.com/sinelaw/fresh</param>
         <param name="scm">git</param>
         <param name="exclude">.git</param>
-        <param name="revision">v0.2.21</param>
+        <param name="revision">v0.3.2</param>
         <param name="versionformat">v@PARENT_TAG@</param>
         <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
         <param name="changesgenerate">enable</param>
     </service>
     <service name="set_version" mode="disabled">
-        <param name="basename">fresh</param>
+        <param name="basename">fresh-v</param>
     </service>
     <service name="recompress" mode="disabled">
         <param name="file">*.tar</param>
