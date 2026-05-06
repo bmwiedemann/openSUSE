@@ -142,6 +142,7 @@ consoles='console=ttyS0,115200 console=tty0'
 [[ "$kiwi_profiles" == *"ppc64"* ]] && consoles='console=hvc0,115200 console=tty0'
 [[ "$kiwi_profiles" == *"s390x-Cloud"* ]] && consoles='' # autodetect
 [[ "$kiwi_profiles" == *"s390x-dasd"* ]] && consoles='hvc_iucv=8'
+[[ "$kiwi_profiles" == *"RaspberryPi"* ]] && consoles='' # autodetect
 
 cmdline=('rw' 'quiet' 'systemd.show_status=1' ${consoles})
 

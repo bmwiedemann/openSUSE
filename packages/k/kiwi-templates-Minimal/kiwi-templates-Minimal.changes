@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  5 09:42:49 UTC 2026 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Remove serial console Linux kernel command line parameter from RPi images.
+  Device trees for all devices define proper chosen { stdout-path = }
+  which automatically makes it preferred console. This removes the
+  need of manual command line edition for devices which should use ttyAMA0
+  or ttyAMA10 instead of hard coded ttyS0. Tested on following devices:
+
+  ttyAMA0  - Raspberry Pi 2 Model B Rev 1.2
+  ttyS0    - Raspberry Pi 3 Model B Plus Rev 1.3
+  ttyS0    - Raspberry Pi 4 Model B Rev 1.1
+  ttyAMA0  - Raspberry Pi Compute Module 3 Rev 1.0
+  ttyS0    - Raspberry Pi Compute Module 4 Rev 1.0
+  ttyS0    - Raspberry Pi Zero 2 W Rev 1.0
+  ttyAMA10 - Raspberry Pi 5 Model B Rev 1.0 (c0 stepping)
+  ttyAMA10 - Raspberry Pi Compute Module 5 Rev 1.0 (dO stepping)
+
+-------------------------------------------------------------------
 Fri Apr 10 08:47:11 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Use set -euxo pipefail for generated script
