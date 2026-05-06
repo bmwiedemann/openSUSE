@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
+Wed May  6 08:14:59 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 2.11.45
+- Bug fixes:
+  * docker, ecs
+    - Migrate to github.com/moby/moby modules
+  * k8s/crd
+    - Remove cross-provider sanitization for Kubernetes service loading
+
+-------------------------------------------------------------------
 Mon May  4 15:49:54 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Version 1.11.44
-- Updated go-jose to v4.1.4 which fixes CVE-2026-34986 - boo#1262982
+- Version 2.11.44
+- CVE fixed:
+  * CVE-2026-41181 (Advisory GHSA-p6hg-qh38-555r)
+  * Updated go-jose to v4.1.4 which fixes CVE-2026-34986 - boo#1262982
 
 - Bug fixes:
   * acme
@@ -10,7 +22,7 @@ Mon May  4 15:49:54 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * middleware
     - Add errorRequestHeaders option to Errors middleware
 
-- Version 1.11.43
+- Version 2.11.43
 - CVE fixed:
   * CVE-2026-40912 (Advisory GHSA-6jwx-7vp4-9847) - boo#1263868
   * CVE-2026-39858 (Advisory GHSA-5m6w-wvh7-57vm) - boo#1263867
@@ -32,7 +44,7 @@ Mon May  4 15:49:54 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Thu Mar 26 09:50:46 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Version 1.11.42
+- Version 2.11.42
   * grpc
     - Bump google.golang.org/grpc to v1.79.3
   * middleware, authentication
@@ -40,7 +52,7 @@ Thu Mar 26 09:50:46 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * middleware
     - Fix StripPrefix and StripPrefixRegex to slice the prefix using encoded prefix length
 
-- Version 1.11.41
+- Version 2.11.41
 - CVEs fixed:
   * CVE-2026-32595 (Advisory GHSA-g3hg-j4jv-cwfr) boo#1260016
   * CVE-2026-32305 (Advisory GHSA-wvvq-wgcr-9q48) boo#1260017
@@ -56,13 +68,13 @@ Thu Mar 26 09:50:46 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Fri Mar  6 16:33:32 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Version 1.11.40
+- Version 2.11.40
   * docker 
     - Bump Docker and OpenTelemetry dependencies
   * server
     - Bump golang.org/x/net to v0.51.0
 
-- Version 1.11.38
+- Version 2.11.38
 - CVEs fixed:
   * CVE-2026-26998 (Advisory GHSA-fw45-f5q2-2p4x) boo#1259276
   * CVE-2026-26999 (Advisory GHSA-xw98-5q62-jx94) boo#1259275
@@ -79,13 +91,13 @@ Fri Mar  6 16:33:32 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Mon Feb 16 10:39:04 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Version 1.11.37
+- Version 2.11.37
   * healthcheck
     - Validate healthcheck path configuration
   * tls,server
     - Cap TLS record length to RFC 8446 limit in ClientHello peeking
 
-- Version 1.11.36
+- Version 2.11.36
   * service
     - Avoid recursion with services
   * webui
@@ -94,7 +106,7 @@ Mon Feb 16 10:39:04 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Sat Jan 31 13:14:32 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Version 1.11.35
+- Version 2.11.35
 Breaking change:
 As explained in the comment left on the CVE-2025-66490 fix, this new hotfix
 version makes the behavior opt-in. As a result, this release is breaking
@@ -112,15 +124,15 @@ migration guide to enable the feature. boo#1254879
     - Make encoded character options opt-in
 
 
-- Version 1.11.34
+- Version 2.11.34
   * server
     - Fix deny encoded characters
 
-- Version 1.11.33
+- Version 2.11.33
   * server
     - Print access logs for rejected requests and warn about new behavior
 
-- Version 1.11.32
+- Version 2.11.32
   CVE's fixed:
   CVE-2025-66490 (Advisory GHSA-gm3x-23wp-hc2c) boo#1254879
 
