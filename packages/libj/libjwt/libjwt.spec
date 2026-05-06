@@ -1,7 +1,7 @@
 #
 # spec file for package libjwt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define lib_name libjwt2
 
@@ -31,8 +32,8 @@ BuildRequires:  check-devel
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  libopenssl-devel
 BuildRequires:  libjansson-devel
+BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
 
 %description
@@ -76,8 +77,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 make check V=1
 
-%post -n %{lib_name} -p /sbin/ldconfig
-%postun -n %{lib_name} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lib_name}
 
 %files -n %{lib_name}
 %license LICENSE
@@ -87,9 +87,9 @@ make check V=1
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/jwt.h
 %{_libdir}/lib*.so
+%dir %{_libdir}/cmake
+%dir %{_libdir}/cmake/%{name}
 %{_libdir}/cmake/%{name}/*.cmake
 %{_bindir}/jwt*
-%dir /usr/lib64/cmake
-%dir /usr/lib64/cmake/%{name}
 
 %changelog

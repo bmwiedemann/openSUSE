@@ -7,4 +7,12 @@
     <comment>Dependency of sso-mib, see https://build.opensuse.org/requests/1338008</comment>
     <requestid>1338009</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b467b4a20600d16c85b051cdd9354dff</srcmd5>
+    <version>1.18.3</version>
+    <time>1778088040</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1351236</requestid>
+  </revision>
 </revisionlist>

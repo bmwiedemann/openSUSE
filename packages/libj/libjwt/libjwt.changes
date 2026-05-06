@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 14:46:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build on 32bit architectures: do not ever reference
+  /usr/lib64 in files section, but use %{_libdir}.
+
+-------------------------------------------------------------------
 Sun Mar 8 17:42:09 UTC 2026 - Luca Boccassi <luca.boccassi@gmail.com>
 
 - Import version 1.18.3
