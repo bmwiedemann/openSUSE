@@ -2706,4 +2706,41 @@ successfully tested on Tumbleweed x86_64</comment>
   o avoid-inherited-file-descriptor.patch</comment>
     <requestid>1348605</requestid>
   </revision>
+  <revision rev="271" vrev="1">
+    <srcmd5>1237a1840bf295b250dd61b48642d9a2</srcmd5>
+    <version>3.11.2</version>
+    <time>1778087872</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.11.2
+  * Bugfix (defect introduced: Postfix 3.11): the proxymap(8) daemon
+    dereferenced an uninitialized pointer after a request protocol
+    error. This daemon is not exposed to local or remote users.
+    Found by Claude Opus 4.6.
+  * Bugfix (defect introduced: 20260309) a change, to set the
+    service_name default value to &quot;amnesiac&quot;, violated a test that
+    parameter names in postconf output must match 1:1 with parameter
+    names in the postlink script.
+  * Portability: support for recent FreeBSD, NetBSD, and OpenBSD
+    versions.
+  * Bugfix (defect introduced: Postfix 2.2, date 20041207): When
+    truncating a database file, the cdb: database client looked at
+    the file size from before requesting an exclusive lock on a
+    database file, instead of the file size after the exclusive
+    lock was granted. Found by Claude Opus 4.6.
+  * Bugfix (defect introduced: Postfix alpha, date 19980309): file
+    descriptor leak after fork() failure. Found by Claude Opus 4.6.
+  * Mistakes in debug logging. Found by Claude Opus 4.6. This
+    affected two files in Postfix 3.8 and 3.9, three files in Postfix
+    3.10 and 3.11.
+  * Unchecked null pointer results after an out-of-memory condition
+    in a library dependency. Found by Claude Opus 4.6. The fix is
+    to return an error status or to log a fatal error. This affected
+    three source files.
+  * Missing or incomplete guards for ssize_t or int overflow, found
+    by Claude Opus 4.6. This affected three source files. These
+    limits are unlikely to be exceeded because the size of in-memory
+    objects is limited by design (the number of in-memory objects
+    is also limited).</comment>
+    <requestid>1351010</requestid>
+  </revision>
 </revisionlist>
