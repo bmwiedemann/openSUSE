@@ -206,4 +206,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * mediatek: vpu: drop old sym link</comment>
     <requestid>1347745</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4471b73f4aa4db4d2072038e9b1c6a5a</srcmd5>
+    <version>20260505</version>
+    <time>1778087879</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260505 (git commit 027be1e3d201):
+  * qcom: vpu: add Gen2 firmware binary for Agatti</comment>
+    <requestid>1351029</requestid>
+  </revision>
 </revisionlist>
