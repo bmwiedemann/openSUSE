@@ -17,7 +17,7 @@
 
 
 Name:           git-town
-Version:        22.7.1
+Version:        23.0.0
 Release:        0
 Summary:        Git branches made easy
 License:        MIT

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu May 07 05:07:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 23.0.0:
+  * BREAKING CHANGES
+    - The up and down commands have swapped behavior. up now
+      switches to the parent branch, down to the child branch. This
+      matches how Git Town visualizes branch hierarchies (#6085).
+    - When Git Town now detects when it runs in a non-interactive
+      environment, for example when it is executed by AI agents,
+      and automatically disables all interactive dialogs and
+      browser launches (#6123).
+    - The walk command now stops and returns control to the shell
+      when the executed command leaves uncommitted changes behind.
+      This lets you review and commit changes before proceeding
+      (#6171).
+    - Configuration precedence has changed. Git Town now resolves
+      configuration in this order (#6136):
+      - CLI flags
+      - Git metadata
+      - configuration file
+      - environment variables
+      - system-specific settings
+      - default values
+  * New Features
+    - Added a new interactive setting to control how Git Town
+      handles missing input.
+      - When enabled, Git Town prompts for missing information
+        interactively.
+      - When disabled, Git Town exits with an error explaining
+        which CLI flags to provide instead (#6123).
+    - Added --browser and --no-browser CLI flags to override the
+      configured browser per invocation (#6123).
+    - Proposal breadcrumbs now use forge-specific formatting
+      (#6144).
+  * Bug Fixes
+    - Git Town now only fetches proposal data for branches that are
+      part of the current operation (#6080, #6092).
+
+-------------------------------------------------------------------
 Fri Mar 27 06:14:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 22.7.1:
