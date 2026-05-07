@@ -1,7 +1,7 @@
 #
 # spec file for package iso-country-flags
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   flags
 Name:           iso-country-flags
-Version:        1.0.2
+Version:        1.0.4
 Release:        0
 Summary:        ISO country flags
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ A collection of country flags.
 
 %package png
 Summary:        ISO country flags in PNG
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          System/GUI/Other
 
 %description png
