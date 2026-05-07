@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 07 12:54:24 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+
+- Update to version 1.1.0:
+  * update dependencies
+  * fix: Give up on bundling gtk themes in favor of a much simpler mount strategy
+  * feat: Add option to install selected gtk theme to flatpak
+  * Include Spanish lang and keywords on nwg-look.desktop
+  * Create es_ES.yml
+  * fix: Only consider/show flatpak options if flatpak is installed
+  * feat: Add option to override flatpak GTK and icon themes
+  * pt_BR language file added.
+  * fix #107
+
+-------------------------------------------------------------------
 Sat Apr 25 12:38:49 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
 
 - Update to version 1.0.6:
