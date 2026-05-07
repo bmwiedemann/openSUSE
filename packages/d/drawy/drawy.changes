@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  7 05:50:25 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.0.1
+  * fix: prevent tooltip from changing background in the color
+    picker button
+  * fix: use kaboutdata correctly
+  * Update metadata
+
+-------------------------------------------------------------------
 Mon May  4 08:21:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Init drawy

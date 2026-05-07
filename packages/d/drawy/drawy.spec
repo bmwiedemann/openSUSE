@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           drawy
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Whiteboard application
 License:        GPL-3.0-or-later
@@ -67,7 +67,7 @@ Drawy lets you create ideas, diagrams, and visual notes on an infinite whiteboar
 
 # No use for development files
 rm -r %{buildroot}%{_includedir}/DrawyCore
-rm -r %{buildroot}%{_kf6_libdir}/*.so
+rm %{buildroot}%{_kf6_libdir}/*.so
 
 %find_lang %{name} --all-name --with-html
 
@@ -81,7 +81,7 @@ rm -r %{buildroot}%{_kf6_libdir}/*.so
 %{_kf6_bindir}/drawy
 %{_kf6_configkcfgdir}/drawyglobalconfig.kcfg
 %{_kf6_debugdir}/drawy.categories
-%{_kf6_iconsdir}/hicolor/*/apps/drawy.png
+%{_kf6_iconsdir}/hicolor/*/apps/drawy.*
 %{_kf6_iconsdir}/hicolor/*/mimetypes/application-x-drawy.png
 %{_kf6_libdir}/libdrawygui.so.*
 %{_kf6_libdir}/libdrawywidgets.so.*
