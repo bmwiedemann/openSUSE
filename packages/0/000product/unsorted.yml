@@ -534,6 +534,7 @@ unsorted:
   - alevtd 
   - alex 
   - aliftype-amiri-fonts 
+  - aliyun-alinas-utils 
   - aliyun-cli 
   - alkimia 
   - alkimia-devel 
@@ -11948,11 +11949,11 @@ unsorted:
   - libadapta-lang 
   - libaddrxlat-devel 
   - libaddrxlat3 
-  - libadios2-2_11 
-  - libadios2-minimal-2_11 
-  - libadios2-mpich-2_11 
-  - libadios2-mvapich2-2_11 
-  - libadios2-openmpi4-2_11 
+  - libadios2-2_12 
+  - libadios2-minimal-2_12 
+  - libadios2-mpich-2_12 
+  - libadios2-mvapich2-2_12 
+  - libadios2-openmpi4-2_12 
   - libadlmidi-devel 
   - libadms0 
   - libadns-devel 
@@ -23406,21 +23407,6 @@ unsorted:
   - postgresql-pltcl 
   - postgresql-server-devel 
   - postgresql-test 
-  - postgresql13 
-  - postgresql13-contrib 
-  - postgresql13-devel 
-  - postgresql13-docs 
-  - postgresql13-llvmjit 
-  - postgresql13-llvmjit-devel 
-  - postgresql13-pgsql-ogr-fdw 
-  - postgresql13-plperl 
-  - postgresql13-plpython 
-  - postgresql13-pltcl 
-  - postgresql13-postgis 
-  - postgresql13-postgis-utils 
-  - postgresql13-server 
-  - postgresql13-server-devel 
-  - postgresql13-test 
   - postgresql14 
   - postgresql14-contrib 
   - postgresql14-devel 
@@ -26306,6 +26292,7 @@ unsorted:
   - python311-lxml_html_clean 
   - python311-ly 
   - python311-lz4 
+  - python311-lzallright 
   - python311-macholib 
   - python311-magic 
   - python311-magic-wormhole 
@@ -26921,6 +26908,7 @@ unsorted:
   - python311-pydotplus 
   - python311-pydrive2 
   - python311-pydub 
+  - python311-pyduktape2 
   - python311-pydyf 
   - python311-pyeapi 
   - python311-pyedbglib 
@@ -27065,6 +27053,7 @@ unsorted:
   - python311-pyscreenshot 
   - python311-pysendfile 
   - python311-pyserial 
+  - python311-pyshacl 
   - python311-pyshark 
   - python311-pyshould 
   - python311-pyshp 
@@ -30229,6 +30218,7 @@ unsorted:
   - python313-lxml_html_clean 
   - python313-ly 
   - python313-lz4 
+  - python313-lzallright 
   - python313-macholib 
   - python313-magic 
   - python313-magic-wormhole 
@@ -30865,6 +30855,7 @@ unsorted:
   - python313-pydotplus 
   - python313-pydrive2 
   - python313-pydub 
+  - python313-pyduktape2 
   - python313-pydyf 
   - python313-pyeapi 
   - python313-pyedbglib 
@@ -31008,6 +30999,7 @@ unsorted:
   - python313-pyscard 
   - python313-pyscreenshot 
   - python313-pysendfile 
+  - python313-pyshacl 
   - python313-pyshark 
   - python313-pyshould 
   - python313-pyshp 
@@ -34159,6 +34151,7 @@ unsorted:
   - python314-lxml_html_clean 
   - python314-ly 
   - python314-lz4 
+  - python314-lzallright 
   - python314-macholib 
   - python314-magic 
   - python314-magic-wormhole 
@@ -34795,6 +34788,7 @@ unsorted:
   - python314-pydotplus 
   - python314-pydrive2 
   - python314-pydub 
+  - python314-pyduktape2 
   - python314-pydyf 
   - python314-pyeapi 
   - python314-pyedbglib 
@@ -34941,6 +34935,7 @@ unsorted:
   - python314-pyscreenshot 
   - python314-pysendfile 
   - python314-pyserial 
+  - python314-pyshacl 
   - python314-pyshould 
   - python314-pyshp 
   - python314-pysmb 

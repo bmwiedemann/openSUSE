@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20260506" schemaversion="4.1">
+<image name="OBS__MicroOS___20260507" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260506</productvar>
+      <productvar name="VERSION">20260507</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260506,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260507,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260506/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260507/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1024,7 +1024,6 @@
       <repopackage name="libppd2"/>
       <repopackage name="libproc2-1"/>
       <repopackage name="libprojectM3"/>
-      <repopackage name="libprotobuf-c1"/>
       <repopackage name="libprotobuf-lite34_1_0"/>
       <repopackage name="libproxy1"/>
       <repopackage name="libpskc0"/>
@@ -1727,7 +1726,6 @@
       <repopackage name="typelib-1_0-Gtk-3_0"/>
       <repopackage name="typelib-1_0-Handy-1_0"/>
       <repopackage name="typelib-1_0-HarfBuzz-0_0"/>
-      <repopackage name="typelib-1_0-Json-1_0"/>
       <repopackage name="typelib-1_0-NM-1_0"/>
       <repopackage name="typelib-1_0-Notify-0_7"/>
       <repopackage name="typelib-1_0-PackageKitGlib-1_0"/>
