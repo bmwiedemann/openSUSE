@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-keyvault-certificates
-Version:        4.11.0
+Version:        4.11.1
 Release:        0
 Summary:        Microsoft Azure Key Vault Certificates Client Library for Python
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-keyvault-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
+Requires:       python-cryptography >= 44.0.2
 Requires:       python-isodate >= 0.6.1
 Requires:       python-typing_extensions >= 4.6.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)

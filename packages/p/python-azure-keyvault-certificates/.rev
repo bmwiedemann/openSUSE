@@ -178,4 +178,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1348158 from glaubitz)</comment>
     <requestid>1348187</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>426e295d45d420c5e2b261457bfc58f2</srcmd5>
+    <version>4.11.1</version>
+    <time>1778161551</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 4.11.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1351124 from glaubitz)</comment>
+    <requestid>1351394</requestid>
+  </revision>
 </revisionlist>
