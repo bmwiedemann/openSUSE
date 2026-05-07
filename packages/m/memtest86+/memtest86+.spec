@@ -1,7 +1,7 @@
 #
 # spec file for package memtest86+
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           memtest86+
-Version:        7.20
+Version:        8.00
 Release:        0
 Summary:        Memory Testing Image for x86 Architecture
 License:        GPL-2.0-only
@@ -27,7 +27,6 @@ URL:            https://www.memtest.org
 Source:         https://github.com/memtest86plus/memtest86plus/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        20_memtest86
 #!BuildIgnore:  gcc-PIE
-Provides:       lilo:/boot/memtest.bin
 Obsoletes:      memtest86 <= 3.2
 Provides:       memtest86 > 3.2
 ExclusiveArch:  %{ix86} x86_64
@@ -49,9 +48,9 @@ it can be used to test the computer's memory.
 %build
 # dependencies are broken for the package and it should not be built in parallel
 %ifarch x86_64
-cd build64
+cd build/x86_64
 %else
-cd build32
+cd build/i586
 %endif
 make
 
@@ -60,14 +59,12 @@ make
 mkdir -p %{buildroot}/%{_sysconfdir}/grub.d
 install -m 755 %{SOURCE1} %{buildroot}/%{_sysconfdir}/grub.d/
 %ifarch x86_64
-cd build64
+cd build/x86_64
 %else
-cd build32
+cd build/i586
 %endif
-install -Dpm 0644 memtest.bin \
-  %{buildroot}%{_prefix}/lib/memtest86/memtest.bin
-install -Dpm 0644 memtest.efi \
-  %{buildroot}%{_prefix}/lib/memtest86/memtest.efi
+install -Dpm 0644 mt86plus \
+  %{buildroot}%{_prefix}/lib/memtest86/mt86plus.efi
 export BRP_PESIGN_FILES="*.efi"
 
 %post
@@ -81,7 +78,7 @@ export BRP_PESIGN_FILES="*.efi"
 %doc README.md
 %doc doc
 %dir %{_prefix}/lib/memtest86
-%{_prefix}/lib/memtest86/memtest.*
+%{_prefix}/lib/memtest86/mt86plus.efi
 %dir %{_sysconfdir}/grub.d
 %config(noreplace) %{_sysconfdir}/grub.d/20_memtest86
 

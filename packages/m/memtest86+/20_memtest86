@@ -5,6 +5,7 @@ set -e
 # Copyright (C) 2011  Michal Ambroz <rebus@seznam.cz>
 # Adapted for openSUSE by Andrey Borzenkov <arvidjaar@gmail.com>
 # Adapted for EFI by Hans-Peter Jansen <hpj@urpla.net>
+# Adapted for EFI+BIOS image (V8.00+) by Dennis Duda <seri@seri.tools>
 #
 # you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -33,23 +34,18 @@ else
   CLASS="--class $(echo ${GRUB_DISTRIBUTOR} | tr 'A-Z' 'a-z' | cut -d' ' -f1) ${CLASS}"
 fi
 
-# memtest86+ comes in two flavours, one EFI and one suitable for x86 real mode.
+if [ -f /usr/lib/memtest86/mt86plus.efi ]; then
+  memtest=/usr/lib/memtest86/mt86plus.efi
+else
+  #mt86plus.efi not found
+  exit 0
+fi
+
+# memtest86+'s binary supports running as both EFI and x86 real mode.
 if [ -d /sys/firmware/efi ]; then
-  if [ -f /usr/lib/memtest86/memtest.efi ]; then
-    memtest=/usr/lib/memtest86/memtest.efi
-  else
-    #memtest.efi not found
-    exit 0
-  fi
   loader='linux  '
   message="$(gettext_printf "Loading EFI memtest ...\n" | grub_quote)"
 else
-  if [ -f /usr/lib/memtest86/memtest.bin ]; then
-    memtest=/usr/lib/memtest86/memtest.bin
-  else
-    #memtest.bin not found
-    exit 0
-  fi
   loader='linux16'
   message="$(gettext_printf "Loading x86 memtest ...\n" | grub_quote)"
 fi

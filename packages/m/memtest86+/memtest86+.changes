@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 27 17:46:57 UTC 2026 - Dennis Duda <seri@seri.tools>
+
+- Update to 8.00
+  - Add support for latest Intel CPUs
+  - Add support for latest AMD CPUs
+  - Faster detection for many-cores CPUs
+  - Added Temperature reporting on DDR5
+  - Added optional Dark Mode
+  - Fix DDR5 XMP 3.0 issue
+  - Better BadRAM support and reporting
+  - Better SPD detection on early ICHs
+  - Better support for VTxxx serial console
+  - Various refinements for Loongson µarch
+  - Bug fixes & optimizations
+
+-------------------------------------------------------------------
 Sat Nov 16 09:57:55 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.20
