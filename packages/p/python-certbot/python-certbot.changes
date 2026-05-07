@@ -1,7 +1,24 @@
 -------------------------------------------------------------------
+Wed May  6 20:16:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.0:
+  * Moved nearly all code for the certbot-nginx and certbot-
+    apache plugins into private modules in the certbot package
+    which now offers "apache" and "nginx" extras. Users should
+    notice no major changes. certbot-apache and certbot-nginx
+    will continue to exist as simple packages that depend on
+    certbot and also help register the plugin with certbot so it
+    knows the functionality is available. Unit tests for these
+    plugins are now also part of the certbot package.
+  * The certbot.ocsp module has been deprecated and will be
+    removed in the next major release. This is not a change to
+    Certbot's OCSP functionality. The code is just being removed
+    from Certbot's public API.
+
+-------------------------------------------------------------------
 Mon Mar 16 12:12:03 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Update to 5.4.0 
+- Update to 5.4.0
   * The webroot plugin now supports IP address issuance.
 - Drop merged patch reset-mock-call-count.patch
 
@@ -21,7 +38,7 @@ Mon Feb  9 12:50:01 UTC 2026 - Markéta Machová <mmachova@suse.com>
     plugin. Note that for Let's Encrypt's implementation of IP address
     certificates, you'll also need to pass --preferred-profile shortlived.
   * Deploy directory hooks are now also run when using certbot certonly
-    or certbot run to get a new cert. 
+    or certbot run to get a new cert.
   * A few largely unused functions/types from certbot.crypto_util have been
     deprecated in our effort to remove our pyOpenSSL dependency.
   * Authenticator.get_chall_pref's argument has been renamed from domain
