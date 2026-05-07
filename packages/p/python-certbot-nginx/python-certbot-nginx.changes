@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May  6 20:40:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.0:
+  * Moved nearly all code for the certbot-nginx and certbot-
+    apache plugins into private modules in the certbot package
+    which now offers "apache" and "nginx" extras. Users should
+    notice no major changes. certbot-apache and certbot-nginx
+    will continue to exist as simple packages that depend on
+    certbot and also help register the plugin with certbot so it
+    knows the functionality is available. Unit tests for these
+    plugins are now also part of the certbot package.
+  * The certbot.ocsp module has been deprecated and will be
+    removed in the next major release. This is not a change to
+    Certbot's OCSP functionality. The code is just being removed
+    from Certbot's public API.
+
+-------------------------------------------------------------------
 Mon Mar 16 12:17:49 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to version 5.4.0
@@ -85,9 +102,9 @@ Fri Mar 21 12:31:08 UTC 2025 - Markéta Machová <mmachova@suse.com>
 - update to version 3.3.0
   * certbot-nginx now requires pyOpenSSL>=25.0.0.
   * certbot-nginx now requires pyparsing>=2.4.7.
-  * Allow nginx plugin to parse non-breaking spaces in nginx 
+  * Allow nginx plugin to parse non-breaking spaces in nginx
     configuration files.
-  * When adding ssl listen directives in nginx server blocks, 
+  * When adding ssl listen directives in nginx server blocks,
     IP addresses are now preserved.
   * Nginx configurations can now have the http block in files other
     than the root (nginx.conf)
