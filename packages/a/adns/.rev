@@ -240,4 +240,35 @@
     <comment></comment>
     <requestid>1177863</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3273c9d92af5e551c0e73789947c6069</srcmd5>
+    <version>1.6.2</version>
+    <time>1778161475</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.2:
+  * Disable debugging output to stderr from adns_addr2text and
+    adns_text2addr, when used with exciting values (eg scoped
+    addresses).
+  * Fix a harmelss compiler warning about sortlist never being
+    NULL.
+  * Rerun autogen.sh using autoconf 2.72 from Debian trixie.
+  * Minor fixes to README, INSTALL and some copyright notices.
+- refresh to newer rsa4k key
+
+- drop adns-1.5.1-gcc10.patch that is no longer needed
+  * adns-1.4-ipv6.patch
+- Remove already disabled %check section, tests require working
+  * This release provides full IPv6 support.  Applications can
+    request AAAA records (containing IPv6 addresses) as well as,
+    or instead of, A records (containing IPv4 addresses).  adns
+- remove debug statement in the spec file, leftover from
+- Build with large file support in 32 bit archs, autoconf
+- Added download url as source.
+- Change the visibility patch to not use the error prone
+- Use 64bit file offsets
+- export only public symbols
+- remove static libraries
+- added libadns.so.1 to filelist</comment>
+    <requestid>1351302</requestid>
+  </revision>
 </revisionlist>

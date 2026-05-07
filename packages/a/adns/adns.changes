@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  6 20:30:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.2:
+  * Disable debugging output to stderr from adns_addr2text and
+    adns_text2addr, when used with exciting values (eg scoped
+    addresses).
+  * Fix a harmelss compiler warning about sortlist never being
+    NULL.
+  * Rerun autogen.sh using autoconf 2.72 from Debian trixie.
+  * Minor fixes to README, INSTALL and some copyright notices.
+- refresh to newer rsa4k key
+
+-------------------------------------------------------------------
 Sat May 25 07:58:19 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix Factory submission and spec file tweaks
@@ -80,7 +93,7 @@ Mon Jun 15 12:40:37 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
   CVE-2017-9103, CVE-2017-9104, CVE-2017-9105, CVE-2017-9106,
   CVE-2017-9107, CVE-2017-9108, CVE-2017-9109
 - refresh adns-visibility.patch
-- drop adns-1.5.1-gcc10.patch that is no longer needed 
+- drop adns-1.5.1-gcc10.patch that is no longer needed
 
 -------------------------------------------------------------------
 Tue Jun  2 12:48:11 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
@@ -122,15 +135,15 @@ Mon Mar  2 19:52:21 UTC 2015 - mpluskal@suse.com
 
 - Remove obsolete patches
   * adns-ocloexec.patch
-  * adns-1.4-ipv6.patch 
+  * adns-1.4-ipv6.patch
 - Add gpg signature
 - Cleanup spec-file with spec-cleaner
-- Remove already disabled %check section, tests require working 
+- Remove already disabled %check section, tests require working
   network setup
 - Update to 1.5.0
-  * This release provides full IPv6 support.  Applications can 
-    request AAAA records (containing IPv6 addresses) as well as, 
-    or instead of, A records (containing IPv4 addresses).  adns 
+  * This release provides full IPv6 support.  Applications can
+    request AAAA records (containing IPv6 addresses) as well as,
+    or instead of, A records (containing IPv4 addresses).  adns
     1.5 can speak to nameservers over IPv6.
   * converting between addresses and address literals.  These carry
     less baggage than getaddrinfo and getnameinfo.
@@ -139,20 +152,20 @@ Mon Mar  2 19:52:21 UTC 2015 - mpluskal@suse.com
 -------------------------------------------------------------------
 Tue Jun 11 22:44:58 UTC 2013 - crrodriguez@opensuse.org
 
-- remove debug statement in the spec file, leftover from 
+- remove debug statement in the spec file, leftover from
  previous change.
 
 -------------------------------------------------------------------
 Mon Jun 10 19:35:24 UTC 2013 - crrodriguez@opensuse.org
 
-- Build with large file support in 32 bit archs, autoconf 
+- Build with large file support in 32 bit archs, autoconf
   stuff is fine, but C files included config.h after C library
   headers, therefore no prototypes for *64 functions found.
 
 -------------------------------------------------------------------
 Wed Mar 20 12:08:57 UTC 2013 - mmeister@suse.com
 
-- Added download url as source. 
+- Added download url as source.
   Please see http://en.opensuse.org/SourceUrls
 
 -------------------------------------------------------------------
@@ -169,7 +182,7 @@ Tue Nov 22 15:09:47 UTC 2011 - jengelh@medozas.de
 Tue Nov 22 02:23:10 UTC 2011 - crrodriguez@opensuse.org
 
 - Use O_CLOEXEC in library code.
-- Change the visibility patch to not use the error prone 
+- Change the visibility patch to not use the error prone
   version-script but rather GCC visibility
 
 -------------------------------------------------------------------
@@ -181,17 +194,17 @@ Fri Sep 16 19:06:22 UTC 2011 - jengelh@medozas.de
 -------------------------------------------------------------------
 Sun Dec 19 23:07:43 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- Use 64bit file offsets 
+- Use 64bit file offsets
 
 -------------------------------------------------------------------
 Fri Nov  5 20:35:16 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- export only public symbols 
+- export only public symbols
 
 -------------------------------------------------------------------
 Fri Jan 16 23:00:59 CET 2009 - crrodriguez@suse.de
 
-- remove static libraries 
+- remove static libraries
 
 -------------------------------------------------------------------
 Thu Sep 18 10:40:36 CEST 2008 - prusnak@suse.cz
@@ -235,7 +248,7 @@ Wed Jan 25 21:34:07 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Mon Dec 19 14:52:07 CET 2005 - ro@suse.de
 
-- added libadns.so.1 to filelist 
+- added libadns.so.1 to filelist
 
 -------------------------------------------------------------------
 Mon Apr  4 18:33:27 CEST 2005 - pth@suse.de

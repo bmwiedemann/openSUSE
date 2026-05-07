@@ -1,7 +1,7 @@
 #
 # spec file for package adns
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,14 @@
 
 %define lname	libadns1
 Name:           adns
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Advanced Easy-to-Use Asynchronous-Capable DNS Utilities
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/DNS/Utilities
 URL:            https://www.chiark.greenend.org.uk/~ian/adns/ftp/
-Source0:        http://www.chiark.greenend.org.uk/~ian/adns/ftp/%{name}-%{version}.tar.gz
-Source1:        http://www.chiark.greenend.org.uk/~ian/adns/ftp/%{name}-%{version}.tar.gz.sig
+Source0:        https://www.chiark.greenend.org.uk/~ian/adns/ftp/%{name}-%{version}.tar.gz
+Source1:        https://www.chiark.greenend.org.uk/~ian/adns/ftp/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        README.SUSE
 Source4:        baselibs.conf
