@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pynitrokey
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        Apache-2.0 OR MIT
@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 #
 BuildRequires:  %{python_module cffi >= 1.15 with %python-cffi < 3}
 BuildRequires:  %{python_module click >= 8.2 with %python-click < 9}
-BuildRequires:  %{python_module cryptography >= 43 with %python-cryptography < 47}
+BuildRequires:  %{python_module cryptography >= 43 with %python-cryptography < 49}
 BuildRequires:  %{python_module fido2 >= 2 with %python-fido2 < 3}
 # https://github.com/Nitrokey/pynitrokey/issues/601
 BuildRequires:  %{python_module hidapi >= 0.14.0.post2 with %python-hidapi < 0.14.0.post3}
@@ -53,8 +53,9 @@ BuildRequires:  %{python_module pytest}
 Requires:       (python-cffi >= 1.15 with python-cffi < 3)
 Requires:       (intelhex >= 2.3 with intelhex < 3)
 Requires:       (python-click >= 8.2  with python-click < 9)
-Requires:       (python-cryptography >= 43 with python-cryptography < 47)
+Requires:       (python-cryptography >= 43 with python-cryptography < 49)
 Requires:       (python-fido2 >= 2 with python-fido2 < 3)
+# https://github.com/Nitrokey/pynitrokey/issues/601
 Requires:       (python-hidapi >= 0.14.0.post2 with python-hidapi < 0.14.0.post3)
 Requires:       (python-libusb1 >= 3 with python-libusb1 < 4)
 Requires:       (python-nethsm >= 2.1 with python-nethsm < 3)

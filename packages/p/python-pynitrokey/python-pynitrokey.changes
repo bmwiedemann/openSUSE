@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  7 10:46:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.12.1:
+  * Allow cryptography v47 and v48 by @robin-nitrokey in #751
+  * Update dependencies and release v0.12.1 by @robin-nitrokey in #752
+
+-------------------------------------------------------------------
+Thu May  7 07:40:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- allow usage of cryptography 47 and 48
+  (https://github.com/Nitrokey/pynitrokey/issues/750)
+
+-------------------------------------------------------------------
 Wed Apr  1 06:26:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.12.0:
