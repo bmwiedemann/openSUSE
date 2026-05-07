@@ -813,4 +813,41 @@
     <comment>Automatic update from systemsmanagement:Agama:Release</comment>
     <requestid>1346927</requestid>
   </revision>
+  <revision rev="43" vrev="43">
+    <srcmd5>f2a75ce4ffbaa49bab36e2ea1ac71d54</srcmd5>
+    <version>0</version>
+    <time>1778161410</time>
+    <user>anag_factory</user>
+    <comment>- fix zypp tests to work with new rpm with more tight permissions
+  (bsc#1254914)
+
+- CLI: add new `agama status` command that prints current state of
+  agama with textual or json output format
+  (gh#agama-project/agama#3442)
+
+- Fix the path to the /private/resolvables/{id} endpoint (bsc#1262995).
+
+- Prefer local media to download (gh#agama-project/agama#3405),
+  when registering the system using the Full medium prefer the
+  packages from DVD to avoid downloading them from SCC, use the
+  DVD as a local cache
+
+- Expose the product-level `desktop_selection` option and the
+  pattern-level `desktop` property through the API so the web UI
+  can group desktop environments and alert when none is picked
+  (gh#agama-project/agama#3390, gh#agama-project/agama#3403).
+
+- Extend the OpenAPI specification (gh#agama-project/agama#3414):
+  - Add missing summaries, operation IDs and descriptions to each
+    path.
+  - Use tags to classify the paths.
+  - Add missing schemas.
+  - Add authentication paths and security the specification.
+  - Update &quot;cargo xtask openapi&quot; to generate the specification in
+    JSON and YAML formats.
+  - Replace utoipa with aide to generate the documentation.
+
+- network: Add ignore_auto_routes[46] and never_default[46]</comment>
+    <requestid>1350959</requestid>
+  </revision>
 </revisionlist>
