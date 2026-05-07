@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 07 12:31:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.2:
+  * Bugfixes
+    - Fix bug with reading environment variable SEMAPHORE_DB_PASS
+
+-------------------------------------------------------------------
 Wed May 06 06:26:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.1 (.0 was not released):
