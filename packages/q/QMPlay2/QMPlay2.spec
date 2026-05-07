@@ -1,7 +1,7 @@
 #
 # spec file for package QMPlay2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,7 +74,7 @@ BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(libsidplayfp)
+# BuildRequires:  pkgconfig(libsidplayfp)
 BuildRequires:  pkgconfig(libswresample) >= 3.1.100
 BuildRequires:  pkgconfig(libswscale) >= 5.1.100
 BuildRequires:  pkgconfig(libva)
@@ -145,6 +145,7 @@ It's a development package for %{name}.
 %else
   -DBUILD_WITH_QT6=OFF \
 %endif
+  -DUSE_CHIPTUNE_SID=OFF \
   -DUSE_PORTAUDIO=ON \
   -DUSE_PIPEWIRE=ON \
 %if 0%{?suse_version} >= 1699 || 0%{?sle_version} >= 150500

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  7 05:34:19 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- USE_CHIPTUNE_SID set to OFF due to build error because of Sidplayfp
+  update to v3: https://github.com/zaps166/QMPlay2/issues/1008
+
+-------------------------------------------------------------------
 Fri Nov 14 15:26:27 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
 
 - Add deno as a new dependency to make yt-dlp work better on
