@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Mar 12 10:40:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.1:
+  + This release adds the following features:
+    - Add a new fwupd security check for HP Sure Start
+    - Add a new plugin to verify Intel CSME using SMBIOS data
+    - Add a new tpm-eventlog command to explain the TPM eventlog output
+    - Add CycloneDX and SPDX support to uSWID
+    - Add support for AMD Platform Secure boot
+    - Add support for changing AMD GPU UMA carveout size
+    - Add support for emulation for bluetooth devices
+    - Allow systems to use the udev event source without using systemd
+    - Disable the UEFI plugins on 32bit x86
+    - Drop support for GPG signing of metadata and firmware
+    - No longer depend on json-glib, libarchive or protobuf-c
+    - Remove the concept of blocked firmware
+    - Show translated problems when a device cannot be installed
+  + This release fixes the following bugs:
+    - Add a timeout to the fwupd-refresh systemd unit
+    - Allow systemd service to access block-sr devices
+    - Always show the correct new firmware version in 'fwupdmgr get-history'
+    - Be more defensive with invalid Corsair device responses
+    - Cache the payload verification result to speed up installing modem firmware
+    - Check for integer overflow when constructing a partial stream
+    - Clear the remaining qc-firehose power reset logs
+    - Decompress a zip file in Aver HID rather than a bz2 archive
+    - Do not allow efivar update without TIME_BASED_AUTHENTICATED_WRITE_ACCESS
+    - Do not hang when parsing an invalid USB descriptor
+    - Do not include EV_NO_ACTION when calculating the TPM PCRs
+    - Do not return an error if the fastboot property is not provided
+    - Do not show all IDs as GUIDs if adding quirks after device setup
+    - Find shim when using systemd-boot and distro-specific locations
+    - Fix activation of dell-kestrel NVM when composite updates are completed
+    - Fix a dell-dock regression when enumerating the status component
+    - Fix a fuzzer timeout when parsing a Synaptics RMI SBL container
+    - Fix a missing error check when updating Genesys USB hubs
+    - Fix a potential heap OOB read in AMD Kria SOM EEPROM parser
+    - Fix a potential Logitech HID++ hang when parsing unexpected payload IDs
+    - Fix a potential out-of-bounds read in Dell dock
+    - Fix a regression causing MBIM QDU updates to fail
+    - Fix a regression when installing on the HP G5 dock
+    - Fix a small memory leak when removing a bluetooth device
+    - Fix an integer underflow when parsing a malicious PE file
+    - Fix get-updates --json silently skipping UPDATABLE_HIDDEN devices
+    - Fix the snapd-uefi request when multiple updates are processed
+    - Honor polkit auth for emulation tag modify device
+    - Make Logitech HID++ devices using RDFU actually work
+    - Only load the history database in the daemon when required
+    - Refactor the Snap support out into a new plugin
+    - Remove a warning when updating Intel GSC OPROMDATA
+    - Remove the bcm57xx recovery device support
+    - Require a CHID for generic ElanTP devices
+    - Speed up calculating the cabinet checksum by ~20%
+    - Support 8bitdo firmware with multiple packed images
+    - Try to claim the DFU USB interface more than once
+    - Use crc32() from zlib.h when computing the most common kind of CRC32
+    - Verify the uncompressed size when decompressing CAB files
+  + This release adds support for the following hardware:
+    - Blestech Touchpads
+    - ELAN Haptic MCU devices
+    - FocalTouch devices
+    - Himax Touchscreens
+    - HP Engage One G2 Advanced Hub
+    - KATAR PRO Wireless Gaming Dongle
+    - Lenovo keyboard and mice accessories
+    - Lenovo Sapphire Folio Keyboard
+    - Lightware Taurus HC40 and HC60
+    - Novatek touchscreens
+    - PixArt Touchpads
+    - Rolling RW101-CAT12 modems
+    - Sunwinon HID devices
+- Drop no longer required BuildRequires: pkgconfig(json-glib-1.0),
+  pkgconfig(libarchive), and pkgconfig(protobuf).
+- Drop upstream merged patch
+  0001-Allow-systemd-service-to-access-block-sr-cdrom-devic.patch
+- Drop fwupd-bsc1130056-change-shim-path.patch: no longer
+  applicable.
+
+-------------------------------------------------------------------
 Thu Feb 26 13:35:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.20:

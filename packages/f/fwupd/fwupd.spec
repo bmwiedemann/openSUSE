@@ -43,18 +43,13 @@
 %define shlib_sover  3
 
 Name:           fwupd
-Version:        2.0.20
+Version:        2.1.1
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://fwupd.org/
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM -- Allow fwupd to interace with cdrom; boo#1256507, gh#fwupd/fwupd#9770
-Patch0:         0001-Allow-systemd-service-to-access-block-sr-cdrom-devic.patch
-
-# PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
-Patch99:        fwupd-bsc1130056-change-shim-path.patch
 
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -98,8 +93,6 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(gusb) >= 0.2.9
 BuildRequires:  pkgconfig(jcat) >= 0.1.3
-BuildRequires:  pkgconfig(json-glib-1.0) >= 1.1.1
-BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcbor)
 BuildRequires:  pkgconfig(libcurl) >= 7.62.0
 BuildRequires:  pkgconfig(libdrm_amdgpu)
@@ -113,7 +106,6 @@ BuildRequires:  pkgconfig(mbim-glib)
 BuildRequires:  pkgconfig(mm-glib)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
-BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(qmi-glib)
 BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(sqlite3)
@@ -311,7 +303,7 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_datadir}/%{name}/install_dell_bios_exe.py
 %{_datadir}/%{name}/simple_client.py
 %if %{with efi_fw_update}
-%{_datadir}/%{name}/uefi-capsule-ux.tar.xz
+%{_datadir}/%{name}/uefi-capsule-ux.zip
 %endif
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs-testing.metainfo.xml
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs.metainfo.xml
@@ -336,12 +328,12 @@ rm -fr %{buildroot}%{_datadir}/fish
 %dir %{_sysconfdir}/pki
 %dir %{_sysconfdir}/pki/fwupd
 %dir %{_sysconfdir}/pki/fwupd-metadata
-%{_sysconfdir}/pki/fwupd-metadata/GPG-KEY-Linux-Foundation-Metadata
-%{_sysconfdir}/pki/fwupd-metadata/GPG-KEY-Linux-Vendor-Firmware-Service
+#%{_sysconfdir}/pki/fwupd-metadata/GPG-KEY-Linux-Foundation-Metadata
+#%{_sysconfdir}/pki/fwupd-metadata/GPG-KEY-Linux-Vendor-Firmware-Service
 %{_sysconfdir}/pki/fwupd-metadata/LVFS-CA-2025PQ.pem
 %{_sysconfdir}/pki/fwupd-metadata/LVFS-CA.pem
-%{_sysconfdir}/pki/fwupd/GPG-KEY-Linux-Foundation-Firmware
-%{_sysconfdir}/pki/fwupd/GPG-KEY-Linux-Vendor-Firmware-Service
+#%{_sysconfdir}/pki/fwupd/GPG-KEY-Linux-Foundation-Firmware
+#%{_sysconfdir}/pki/fwupd/GPG-KEY-Linux-Vendor-Firmware-Service
 %{_sysconfdir}/pki/fwupd/LVFS-CA-2025PQ.pem
 %{_sysconfdir}/pki/fwupd/LVFS-CA.pem
 %if %{with efi_fw_update}
