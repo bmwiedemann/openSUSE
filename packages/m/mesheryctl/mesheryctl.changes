@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu May  7 05:44:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.19
+  * General
+    - [Chore]: Bump meshery/schemas to v1.2.13 @l5io (#19145)
+    - [Chore]: Bump meshery/schemas to v1.2.12 @l5io (#18013)
+    - fix(auth): own post-login redirect locally in Meshery via
+      cookie @leecalcote (#19119)
+    - [Server] Replace JSON schema-version bridges with typed
+      copies @ritzorama (#19100)
+    - fix(events): flip event metadata keys to canonical camelCase
+      @leecalcote (#19099)
+  * Meshery CLI
+    - [mesheryctl] model init test: fix flag state leakage between
+      test cases @Joyboy48 (#19064)
+    - [mesheryctl] Align mesheryctl workspace with v1beta3
+      @PragalvaXFREZ (#19020)
+    - [mesheryctl] Fix perf result panic on empty load generators
+      @leecalcote (#19122)
+    - [mesheryctl] Standardize logging and error handling for
+      system config subcommands @ashwanisingh011 (#18588)
+    - fix: correct typo "newtwork" → "network" in
+      ErrUnmarshalDockerCompose @parth-agrawall (#19107)
+  * Maintenance
+    - [CI] Fix Hugo blocker and switch Noob Tester output to Issues
+      @Junnygram (#19141)
+    - chore: remove Docker edge push and description steps from CI
+      workflow @ianrwhitney (#19103)
+    - cleanup @yi-nuo426 (#19125)
+    - cleanup @yi-nuo426 (#19124)
+    - CI: convert first-time contributor workflow to agentic
+      workflow @Junnygram (#19053)
+    - chore: Migrate E2E test 'extensions.spec.js' to TypeScript
+      @ashwanisingh011 (#17423)
+    - chore(deps): Bump picomatch from 2.3.1 to 4.0.4 in /ui
+      @dependabot[bot] (#19101)
+    - Chore: Upgrade to Node 22 and React 19 @leecalcote (#19083)
+  * Documentation
+    - Chore: Upgrade to Node 22 and React 19 @leecalcote (#19083)
+
+-------------------------------------------------------------------
 Wed May  6 07:31:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.18:
