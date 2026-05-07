@@ -50,7 +50,7 @@
     <package name="bluez-firmware" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="bluez-obexd" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="bolt" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="boost-license1_90_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="boost-license1_91_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="breeze6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="breeze6-cursors" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -113,6 +113,7 @@
     <package name="distribution-logos-openSUSE-icons" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="distrobox" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="distrobox-bash-completion" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="distrobox-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="docbook-xsl-stylesheets" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="docbook_4" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="dolphin" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -761,7 +762,7 @@
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbluray3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libboost_thread1_90_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libboost_thread1_91_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbpf1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbrotlicommon1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbrotlidec1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->

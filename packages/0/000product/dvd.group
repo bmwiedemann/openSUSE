@@ -178,7 +178,7 @@
     <package name="bluez-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="bluez-obexd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bolt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="boost-license1_90_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="boost-license1_91_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="breeze6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="breeze6-cursors" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1690,16 +1690,16 @@
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbluray3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_filesystem1_90_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libboost_filesystem1_90_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libboost_iostreams1_90_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_iostreams1_90_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libboost_locale1_90_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_locale1_90_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libboost_python-py3-1_90_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="libboost_python-py3-1_90_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libboost_thread1_90_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libboost_thread1_90_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libboost_filesystem1_91_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libboost_filesystem1_91_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libboost_iostreams1_91_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_iostreams1_91_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libboost_locale1_91_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_locale1_91_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libboost_python-py3-1_91_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
+    <package name="libboost_python-py3-1_91_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libboost_thread1_91_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libboost_thread1_91_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libbox2d2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbpf1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbrlapi0_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

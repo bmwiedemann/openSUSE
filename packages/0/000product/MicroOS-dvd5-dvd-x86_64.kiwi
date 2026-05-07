@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20260505" schemaversion="4.1">
+<image name="OBS__MicroOS___20260506" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260505</productvar>
+      <productvar name="VERSION">20260506</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260505,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260506,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260505/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260506/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -85,7 +85,7 @@
       <repopackage name="bluez-cups"/>
       <repopackage name="bluez-firmware"/>
       <repopackage name="bolt"/>
-      <repopackage name="boost-license1_90_0"/>
+      <repopackage name="boost-license1_91_0"/>
       <repopackage name="branding-openSUSE"/>
       <repopackage name="breeze6"/>
       <repopackage name="breeze6-cursors"/>
@@ -163,6 +163,7 @@
       <repopackage name="distribution-logos-openSUSE-MicroOS"/>
       <repopackage name="distrobox"/>
       <repopackage name="distrobox-bash-completion"/>
+      <repopackage name="distrobox-branding-openSUSE"/>
       <repopackage name="dmidecode"/>
       <repopackage name="dnf-data"/>
       <repopackage name="docbook-xsl-stylesheets"/>
@@ -554,8 +555,8 @@
       <repopackage name="libblogger2"/>
       <repopackage name="libbluetooth3"/>
       <repopackage name="libbluray3"/>
-      <repopackage name="libboost_filesystem1_90_0"/>
-      <repopackage name="libboost_thread1_90_0"/>
+      <repopackage name="libboost_filesystem1_91_0"/>
+      <repopackage name="libboost_thread1_91_0"/>
       <repopackage name="libbpf1"/>
       <repopackage name="libbrotlicommon1"/>
       <repopackage name="libbrotlidec1"/>
