@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May  4 21:26:15 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.8
+  - Added support for unique jobs. Passing unique=True with job_id
+    prevents duplicate jobs from being enqueued or scheduled.
+  - Result now stores execution metadata (execution_id,
+    execution_started_at and execution_ended_at).
+  - Retry now supports enqueue_at_front=True, allowing retried jobs
+    to be requeued at the front of the queue.
+  - Custom job_id values may only contain letters, numbers,
+    underscores and dashes.
+  - When a job is stopped, its dependencies are no longer enqueued.
+  - DeferredJobRegistry is now scored by job creation time.
+  - Workers now print a warning instead of raising an exception when
+     CLIENT LIST is not supported.
+
+-------------------------------------------------------------------
 Sun Apr  5 14:41:23 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.7
