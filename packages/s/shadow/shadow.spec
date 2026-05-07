@@ -92,7 +92,7 @@ Summary:        The login.defs configuration file
 # Call shadow-login_defs-check.sh before!
 Group:          System/Base
 Provides:       login_defs-support-for-pam = 1.5.2
-Provides:       login_defs-support-for-util-linux = 2.41
+Provides:       login_defs-support-for-util-linux = 2.42
 BuildArch:      noarch
 
 %description -n login_defs
@@ -371,8 +371,8 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/chfn
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/chsh
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/expiry
-%verify(not mode) %attr(4755,root,root) %{_bindir}/newgidmap
-%verify(not mode) %attr(4755,root,root) %{_bindir}/newuidmap
+%verify(not mode caps) %attr(0755,root,root) %{_bindir}/newgidmap
+%verify(not mode caps) %attr(0755,root,root) %{_bindir}/newuidmap
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/passwd
 %{_datadir}/permissions/permissions.d/shadow
 %{_datadir}/permissions/permissions.d/shadow.paranoid

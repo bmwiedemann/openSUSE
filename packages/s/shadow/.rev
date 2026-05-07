@@ -1386,4 +1386,12 @@
   * Regression fix: build with GCC 10 and older</comment>
     <requestid>1335904</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>d44f030d6a3c11d72b538f444167512d</srcmd5>
+    <version>4.19.4</version>
+    <time>1778161378</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1350938</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May  5 10:38:06 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Use `%verify(not mode caps)` and remove setuid bit for newgidmap
+  and newuidmap.
+  Related to gh/openSUSE/post-build-checks#66
+
+-------------------------------------------------------------------
+Thu Apr 30 04:22:32 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- shadow-util-linux.patch: util-linux-2.42 introduced new variable:
+  LOGIN_SHELL_FALLBACK. Recognize it and update dependencies. The
+  patch includes gh/shadow-maint/shadow/pull#1621.
+- shadow-login_defs-check.sh: Adjust for new quilt.
+
+-------------------------------------------------------------------
 Mon Mar  2 19:50:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.19.4:

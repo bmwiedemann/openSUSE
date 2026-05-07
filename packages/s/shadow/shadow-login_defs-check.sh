@@ -38,21 +38,21 @@ if ! test -f openSUSE:Factory/util-linux/BUILD/*/configure.ac ; then
 	sed -i s/@BUILD_FLAVOR@// util-linux.spec
 # END HACK
 	quilt setup -d BUILD util-linux.spec
-	cd $(ls -1d BUILD/* | sed /SPECPARTS/d)
+	cd $(ls -1d BUILD/* | sed /SPECPARTS/d)/util-linux-*
 	quilt push -a
-	cd ../../../..
+	cd ../../../../..
 fi
 
 echo "Extracting variables from util-linux..."
-cd $(ls -1d openSUSE:Factory/util-linux/BUILD/* | sed /SPECPARTS/d)
+cd $(ls -1d openSUSE:Factory/util-linux/BUILD/* | sed /SPECPARTS/d)/util-linux-*
 (
 	grep -rh getlogindefs . |
 		sed -n 's/^.*getlogindefs[a-z_]*("\([A-Z0-9_]*\)".*$/\1/p'
 	grep -rh logindefs_setenv . |
 		sed -n 's/^.*logindefs_setenv*("[A-Z0-9_]*", "\([A-Z0-9_]*\)".*$/\1/p'
 ) |
-	LC_ALL=C sort -u >../../../../shadow-login_defs-check-util-linux.lst
-cd ../../../..
+	LC_ALL=C sort -u >../../../../../shadow-login_defs-check-util-linux.lst
+cd ../../../../..
 
 # login.defs is shared pam_unix*.so, pam_faildelay.so and pam_umask.so.
 # Extract list of referenced variables.
@@ -72,17 +72,17 @@ if ! test -f openSUSE:Factory/pam/BUILD/*/configure.ac ; then
 	fi
 	cd openSUSE:Factory/pam
 	quilt setup -d BUILD pam.spec
-	cd $(ls -1d BUILD/* | sed /SPECPARTS/d)
+	cd $(ls -1d BUILD/* | sed /SPECPARTS/d)/Linux-PAM-*
 	quilt push -a
-	cd ../../../..
+	cd ../../../../..
 fi
 
 echo "Extracting variables from pam..."
-cd $(ls -1d openSUSE:Factory/pam/BUILD/* | sed /SPECPARTS/d)
+cd $(ls -1d openSUSE:Factory/pam/BUILD/* | sed /SPECPARTS/d)/Linux-PAM-*
 grep -rh LOGIN_DEFS . |
 	sed -n 's/CRYPTO_KEY/\"HMAC_CRYPTO_ALGO\"/g;s/^.*search_key *([A-Za-z_]*, *[A-Z_]*LOGIN_DEFS, *"\([A-Z0-9_]*\)").*$/\1/p' |
-	LC_ALL=C sort -u >../../../../shadow-login_defs-check-pam.lst
-cd ../../../..
+	LC_ALL=C sort -u >../../../../../shadow-login_defs-check-pam.lst
+cd ../../../../..
 
 if ! test -f shadow-login_defs-check-build/stamp ; then
 	echo "Performing preprocessing of shadow by osc..."
@@ -116,7 +116,8 @@ if ! test -f shadow-login_defs-check-build/stamp ; then
 	BUILD_DIR=$(osc lbl | sed -n 's/^.* cd //p' | head -n1)
 	rm -rf shadow-login_defs-check-build
 	mkdir shadow-login_defs-check-build
-	cp -a "$BUILD_ROOT/$BUILD_DIR"/shadow-* shadow-login_defs-check-build/
+	# Some files report "permission denied"
+	cp -a "$BUILD_ROOT/$BUILD_DIR"/shadow-* shadow-login_defs-check-build/ || :
 	touch shadow-login_defs-check-build/stamp
 fi
 
