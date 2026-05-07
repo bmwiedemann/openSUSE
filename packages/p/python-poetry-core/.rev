@@ -502,4 +502,13 @@
     were duplicated (#923).</comment>
     <requestid>1343766</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>44e5dda43888f760b88d2b60e225b1af</srcmd5>
+    <version>2.4.0</version>
+    <time>1778161407</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  * Update list of supported licenses.</comment>
+    <requestid>1351348</requestid>
+  </revision>
 </revisionlist>
