@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu May  7 06:02:58 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.4.0:
+  ## Added
+  * Add solver.min-release-age setting to require package releases to be a
+    certain number of days old before they are considered during dependency
+    resolution.
+  * Add solver.min-release-age-exclude to exclude selected packages from age
+    filtering.
+  * Add solver.min-release-age-exclude-source to exclude all packages from
+    selected package indexes from age filtering.
+  ## Changed
+  * Raise an error instead of silently ignoring a package name that is not a
+    dependency when it is passed to poetry update.
+  * Automatically add a trailing slash to legacy repository URLs (used for
+    publishing) if missing.
+  * Require installer>=1.0.0.
+  * Allow findpython>=0.8.
+  ## Fixed
+  * Fix an issue where the order of markers in the lock file was not
+    deterministic.
+  * Fix an issue where the wrong command was suggested when poetry self
+    commands failed due to an outdated lock file.
+  * Fix an issue where poetry debug resolve failed when there was a package
+    with a marker.
+  * Fix an issue where the error message about a build backend failure
+    contained garbled --config-settings.
+  * Fix an issue where a false warning about a circular dependency was
+    printed.
+  * Fix an issue where falsy config values were incorrectly treated as not
+    set.
+  * Fix an issue where poetry publish --build ignored failing builds and
+    uploaded stale artifacts.
+  * Fix an issue where poetry publish was aborted instead of retrying after
+    package registration.
+  * Fix an issue where zip files were not closed after fetching metadata via
+    lazy-wheel.
+  * Fix an issue where data fetched via lazy-wheel was corrupted when part of
+    it had already been cached.
+  * Fix an issue where further packages were installed even though
+    installation should be aborted.
+  * Fix an issue where installed packages without a METADATA file caused an
+    exception on Python 3.15+.
+  * Fix an issue where http-basic could not be set for repository names with
+    periods.
+  * Fix an issue where calculating the hash of large wheels failed with a
+    memory error.
+
+-------------------------------------------------------------------
 Sun Apr 12 18:16:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.4:

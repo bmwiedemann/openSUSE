@@ -830,4 +830,41 @@
     directory (#10837).</comment>
     <requestid>1347109</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a34d702a493ba08a268fcc77680140e1</srcmd5>
+    <version>2.4.0</version>
+    <time>1778161530</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  ## Added
+  * Add solver.min-release-age setting to require package releases to be a
+    certain number of days old before they are considered during dependency
+    resolution.
+  * Add solver.min-release-age-exclude to exclude selected packages from age
+    filtering.
+  * Add solver.min-release-age-exclude-source to exclude all packages from
+    selected package indexes from age filtering.
+  ## Changed
+  * Raise an error instead of silently ignoring a package name that is not a
+    dependency when it is passed to poetry update.
+  * Automatically add a trailing slash to legacy repository URLs (used for
+    publishing) if missing.
+  * Require installer&gt;=1.0.0.
+  * Allow findpython&gt;=0.8.
+  ## Fixed
+  * Fix an issue where the order of markers in the lock file was not
+    deterministic.
+  * Fix an issue where the wrong command was suggested when poetry self
+    commands failed due to an outdated lock file.
+  * Fix an issue where poetry debug resolve failed when there was a package
+    with a marker.
+  * Fix an issue where the error message about a build backend failure
+    contained garbled --config-settings.
+  * Fix an issue where a false warning about a circular dependency was
+    printed.
+  * Fix an issue where falsy config values were incorrectly treated as not
+    set.
+  * Fix an issue where poetry publish --build ignored failing builds and</comment>
+    <requestid>1351349</requestid>
+  </revision>
 </revisionlist>
