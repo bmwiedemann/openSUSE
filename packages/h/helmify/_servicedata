@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/arttor/helmify/</param>
-              <param name="changesrevision">4f6d16b8113e927355730d34f2c62642f247ea3e</param></service></servicedata>
+              <param name="changesrevision">4f6d16b8113e927355730d34f2c62642f247ea3e</param></service><service name="tar_scm">
+                <param name="url">https://github.com/arttor/helmify.git</param>
+              <param name="changesrevision">c64d55f12c22f9305898916c9d71e3b443fa45f2</param></service></servicedata>
