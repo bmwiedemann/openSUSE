@@ -5682,4 +5682,13 @@
     to exit.</comment>
     <requestid>1349133</requestid>
   </revision>
+  <revision rev="330" vrev="103">
+    <srcmd5>62560aa9cb6fb2ff9fae2b9524389635</srcmd5>
+    <version>unknown</version>
+    <time>1778161380</time>
+    <user>anag_factory</user>
+    <comment>- Remove fix-mouse.patch as it is verified that patch 20260418
+  includes the fix (boo#1253379)</comment>
+    <requestid>1351183</requestid>
+  </revision>
 </revisionlist>

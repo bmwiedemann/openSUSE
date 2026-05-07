@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 27 13:49:49 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Remove fix-mouse.patch as it is verified that patch 20260418
+  includes the fix (boo#1253379)
+
+-------------------------------------------------------------------
 Fri Apr 24 12:51:57 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Disable fix-mouse.patch as it conflicts with current patch level.
