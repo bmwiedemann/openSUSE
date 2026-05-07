@@ -3139,4 +3139,40 @@
   Forgot to mock the architecture properly. This commit fixes it</comment>
     <requestid>1329679</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>9a3c9874ea58f79a23f2f679acb2ecea</srcmd5>
+    <version>10.3.3</version>
+    <time>1778161415</time>
+    <user>anag_factory</user>
+    <comment>- Bump version: 10.3.2 → 10.3.3
+
+- Relax check_checkmedia_used_with_msdos_table
+  Relax this runtime check to only apply for tagmedia/checkmedia
+  versions &lt; v6.6. Newer versions also supports GPT.
+  This Fixes bsc#1262229.
+
+- Fix TW aarch64 integration tests
+  systemd-sysvinit package got deleted from TW
+
+- Do not hardcode dracut omit module in live builder
+  This is a relict from the old days when the pure presence of
+  multipath in a live ISO caused issues at boot time. kiwi should
+  not maintain a hardcoded list of dracut modules except for those
+  that are mandatory for live boot, if there should be any special
+  setting needed it should come from an overlay setup in
+  /etc/dracut.conf.d/*.conf as part of the image description.
+  This is related to bsc#1260340
+
+- Bump version: 10.3.1 → 10.3.2
+
+- Fix TW integration tests
+  systemd-sysvinit package got deleted from TW
+
+- Update debian integration test
+  Add a test user (someone) and make sure to install login and
+  other essential packages explicitly. Also use the main console
+  for the Disk profile as example for see the installation workflow
+  without a serial console attached</comment>
+    <requestid>1351253</requestid>
+  </revision>
 </revisionlist>

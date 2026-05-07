@@ -1,4 +1,844 @@
 -------------------------------------------------------------------
+Wed May 06 18:15:10 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.3.2 → 10.3.3
+
+-------------------------------------------------------------------
+Wed May 06 11:35:19 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Relax check_checkmedia_used_with_msdos_table
+
+  Relax this runtime check to only apply for tagmedia/checkmedia
+  versions < v6.6. Newer versions also supports GPT.
+  This Fixes bsc#1262229.
+
+-------------------------------------------------------------------
+Wed May 06 11:00:39 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix TW aarch64 integration tests
+
+  systemd-sysvinit package got deleted from TW
+
+-------------------------------------------------------------------
+Wed May 06 10:28:49 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Do not hardcode dracut omit module in live builder
+
+  This is a relict from the old days when the pure presence of
+  multipath in a live ISO caused issues at boot time. kiwi should
+  not maintain a hardcoded list of dracut modules except for those
+  that are mandatory for live boot, if there should be any special
+  setting needed it should come from an overlay setup in
+  /etc/dracut.conf.d/*.conf as part of the image description.
+  This is related to bsc#1260340
+
+-------------------------------------------------------------------
+Tue May 05 10:13:15 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.3.1 → 10.3.2
+
+-------------------------------------------------------------------
+Sun May 03 11:29:14 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix TW integration tests
+
+  systemd-sysvinit package got deleted from TW
+
+-------------------------------------------------------------------
+Wed Apr 29 10:11:15 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update debian integration test
+
+  Add a test user (someone) and make sure to install login and
+  other essential packages explicitly. Also use the main console
+  for the Disk profile as example for see the installation workflow
+  without a serial console attached
+
+-------------------------------------------------------------------
+Fri Apr 24 10:44:50 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation for devicepersistency
+
+  Setting the devicepersistency also impacts an eventually
+  created install image. This information was missing in
+  the documentation.
+
+-------------------------------------------------------------------
+Wed Apr 22 16:47:07 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix toctree in documentation
+
+  The toctree directive does not support the 'only' statement
+
+-------------------------------------------------------------------
+Wed Apr 22 16:27:03 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update contribution chapter
+
+  Update contribution chapter with regards to AI usage
+  and also fixing outdated information regarding the
+  project
+
+-------------------------------------------------------------------
+Wed Apr 22 08:41:01 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Do not manually edit the grubenv file
+
+  Make sure to use grub2-editenv for changing content in
+  the grub env blob. This Fixes #2986
+
+-------------------------------------------------------------------
+Tue Apr 21 15:15:28 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix inconsistent comments regarding OVA creation
+
+  Prior open-vmdk the ovftool was used to create OVA images.
+  There are some left over misleading comments in code which
+  gets fixed by this commit. This is related to Issue #2292
+
+-------------------------------------------------------------------
+Fri Apr 17 13:51:06 CEST 2026 - Fabian Vogt <fvogt@suse.de>
+
+- Recreate VTOC with fdasd before recreating partitions
+
+  Changing partitions with fdasd after a parted resize leads to an internal
+  error because some internal structures mismatch. Work around that by
+  recreating the partition table initially.
+
+-------------------------------------------------------------------
+Fri Apr 17 11:32:31 CEST 2026 - Fabian Vogt <fvogt@suse.de>
+
+- Let udev settle after partition resize
+
+  The partition resize (resp. recreation) causes udev to remove the partition
+  from /dev temporarily. Make sure it's back before attempting to resize the
+  filesystem.
+
+-------------------------------------------------------------------
+Tue Apr 14 15:08:00 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.3.0 → 10.3.1
+
+-------------------------------------------------------------------
+Fri Apr 10 11:47:31 CEST 2026 - Rhys Oxenham <rhys.oxenham@suse.com>
+
+- Update Red Hat distribution CA certificate tool
+
+  In the original commit, we used `update-ca-certificates` for Red Hat
+  based distributions. This was a mistake, as since earlier versions of
+  RHEL it has used `update-ca-trust` instead. This commit fixes that earlier
+  mistake.
+
+-------------------------------------------------------------------
+Thu Apr 02 11:32:14 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor use of kiwi settings file
+
+  KIWI supports an optional runtime configuration file for
+  settings to control the behavior of the tools used by
+  KIWI on the build host. So far this config file could be
+  specified via --config or is searched in the user's HOME
+  or looked up as /etc/kiwi.yml. With this commit the
+  following changes to this heuristic are made:
+
+  1. Support reading of /etc/kiwi.yml.d/*.yml
+  2. Support reading of /usr/share/kiwi/kiwi.yml and /usr/share/kiwi/kiwi.yml.d/*.yml
+  3. Install default settings file as /usr/share/kiwi/kiwi.yml.example
+  from the main package and drop it from kiwi-man-pages which
+  was considered a weird place.
+
+-------------------------------------------------------------------
+Mon Mar 30 17:09:45 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed raid integration test
+
+  Was missing console setting
+
+-------------------------------------------------------------------
+Mon Mar 30 13:07:42 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.45 → 10.3.0
+
+-------------------------------------------------------------------
+Thu Mar 26 11:19:10 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix race condition on architecture setting
+
+  Make sure to not inherit arch settings from parallel runs
+  of the unit tests.
+
+-------------------------------------------------------------------
+Wed Mar 25 17:20:21 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix caller environment for non chroot scripts
+
+  Make sure non chroot scripts also knows about the kiwi
+  profile environment such that e.g. the current profile name
+  or other settings from the build can be used in the script
+
+-------------------------------------------------------------------
+Wed Mar 25 16:09:59 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- workaround patch to make it render
+
+  For some reason the idref of :contact on the main page
+  is not available on the docbook side. If possible this
+  workaround should go away
+
+-------------------------------------------------------------------
+Tue Mar 24 19:24:22 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix bootloader setup with custom partitions
+
+  If there is a custom partitions setup which provides bootloader
+  tools e.g. grub2-mkconfig at a path that is now in a custom
+  partition e.g /usr, those tools will not be found because the
+  respective bootloader code providing the system environment
+  did not mount them. This commit makes sure also custom partitions
+  are taken into account for all bootloader actions.
+  This Fixes #2160
+
+-------------------------------------------------------------------
+Tue Mar 24 11:13:55 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add schema rule for use of btrfs type attributes
+
+  The btrfs type attributes are not effectively used when LVM
+  was selected as the volume manager or the filesystem is not btrfs.
+  Instead of silently building an image that ignores these settings
+  a schema rule is introduced to check and prevent that combination.
+  This Fixes #2305
+
+-------------------------------------------------------------------
+Mon Mar 23 18:18:58 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update spec file due to new package restrictions
+
+  On SUSE new package restrictions where added to support the
+  concept of the so called immutable mode. The new guideline
+  says "Any files in the RPM spec %files section that are not
+  in /usr or /etc is likely to break in Immutable Mode". For
+  the kiwi packaging this applies to the kiwi-pxeboot sub
+  package. This commit implements the suggested solution based
+  on systemd-tmpfiles and only applies for SUSE.
+  This Fixes jira#PCT-1055
+
+-------------------------------------------------------------------
+Mon Mar 23 14:58:16 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix result bundler for uncompressed container data
+
+  When building container images with the respective runtime
+  configuration:
+
+  ```yaml
+  container:
+  - compress: false
+  ```
+
+  The resulting image output files will be uncompressed meaning
+  there is no ".xz" extension present. When running the result
+  bundler there is an index bug which causes the container format
+  type of the filename name e.g. ".docker" to be dropped from the
+  result names. This commit fixes it.
+
+-------------------------------------------------------------------
+Tue Mar 17 10:20:51 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed typo in image description
+
+-------------------------------------------------------------------
+Tue Mar 17 10:16:03 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add Physical_FBA_512 disk build profile
+
+  Add an FBA mode build profile to the s390 standard integration test
+
+-------------------------------------------------------------------
+Sat Mar 14 11:18:41 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for oci format for disk images
+
+  The (oci|docker):image_format format is a special case that
+  stores the disk image inside of an OCI-compliant
+  container. The disk image is stored in the specified
+  image_format in the disk/ directory of the container.
+  The disk format can be one of the above formats
+  or just raw if the disk should be stored as a raw disk
+  inside of the container. Custom naming conventions for
+  the disk image can be applied by using the bundle_format
+  attribute. The derived_from attribute can be used to
+  specify the source container. The resulting container
+  image will be built by adding the disk image as a
+  new layer on top of the specified reference container.
+  If there is no derived_from attribute, the container
+  image will be built from scratch using an empty root
+  directory. This format is particularly useful for building
+  an image which bundles the actual disk image and its
+  runtime requirements into one artifact.
+
+-------------------------------------------------------------------
+Fri Mar 13 17:29:24 CET 2026 - Andrew Lukoshko <andrew.lukoshko@gmail.com>
+
+- Add AlmaLinux EFI vendor directory support
+
+  Add EFI/almalinux to the list of known EFI vendor directories
+  so that the GRUB2 bootloader config can locate the vendor grubenv
+  file on AlmaLinux images.
+
+-------------------------------------------------------------------
+Fri Mar 13 14:39:19 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.44 → 10.2.45
+
+-------------------------------------------------------------------
+Fri Mar 13 12:24:45 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed TestSystemSetup::test_cleanup unit test
+
+  The test was missing proper mocking and did not work
+  as a generic test on all archs.
+
+-------------------------------------------------------------------
+Fri Mar 13 12:13:41 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix race condition in test_get_template_parameters
+
+  It should not depend on the order of the tests if the
+  custom_args parameter secure_image_file got initialized
+  or not
+
+-------------------------------------------------------------------
+Fri Mar 13 11:14:15 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix race condition on architecture setting
+
+  Make sure to not inherit arch settings from parallel runs
+  of the unit tests.
+
+-------------------------------------------------------------------
+Fri Mar 13 11:13:50 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Increase xdist workers to 8
+
+-------------------------------------------------------------------
+Thu Mar 12 19:23:59 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed docopt docstring
+
+  When using doctopt argument information that contains
+  the "|" symbol it gets wrongly evaluated as an option
+  in newer versions of docopt. This commit changes the
+  argument information to use a "," instead
+
+-------------------------------------------------------------------
+Thu Mar 12 19:05:31 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix unit tests
+
+  Due to us carrying a custom kiwi-revert-bls-default-for-suse.patch
+  patch there is a different grub bootloader BLS behavior
+  which causes some unit tests to fail when they run outside
+  of the general source. This commit fixes it.
+
+-------------------------------------------------------------------
+Wed Mar 11 15:52:25 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Delete duplicate information. Stick with the information
+  provided on the main page and drop the same information
+  from the overview page. Also fix a typo in the table
+  of supported distributions
+
+-------------------------------------------------------------------
+Wed Mar 11 15:41:20 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.43 → 10.2.44
+
+-------------------------------------------------------------------
+Tue Mar 10 19:29:51 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix spec file requirements for SUSE
+
+  The suse_version macro changes for code 16.1 to 1610.
+  Matches based on <= 1600 are going to fail. This commit
+  adapts the places where the spec uses the macro in this
+  way. This Fixes jira#PCT-899
+
+-------------------------------------------------------------------
+Tue Mar 10 19:05:59 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add SUSE metadata to the sphinx build
+
+  To support further features on the SUSE documentation
+  an additional metadata block needs to be added to the
+  XML representation of the sphinx documentation build
+  use by the make docs_suse target.
+
+-------------------------------------------------------------------
+Mon Mar 09 10:59:52 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for verity baked live ISO images
+
+  Allow to build verity checked live ISO images by setting
+  verity_blocks in combination with optional rd.kiwi.verity_options
+  kernel boot options
+
+-------------------------------------------------------------------
+Fri Mar 06 16:21:06 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed missing selinux context setup for live ISOs
+
+  When building live ISO images the selinux context was not created
+  for eventually new created files during the live ISO creation
+  process. This Fixes OSInside/kiwi-boxed-plugin#99
+
+-------------------------------------------------------------------
+Tue Mar 03 15:10:00 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add check_checkmedia_used_with_msdos_table
+
+  Add check_checkmedia_used_with_msdos_table runtime check
+  to check if the used partition table type is compatible
+  with the selected checkmedia/tagmedia tool. So far only
+  plain MBR tables are supported bei checkmedia.
+  This Fixes #2722
+
+-------------------------------------------------------------------
+Mon Mar 02 17:33:54 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- OVA support has been moved to open-vmdk
+
+  With the move to open-vmdk the only ovftype supported is
+  vmware. Should there be support for other OVA platforms
+  in the open-vmdk project we are going to add them on
+  demand. This Fixes #2627
+
+-------------------------------------------------------------------
+Mon Mar 02 13:03:56 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.42 → 10.2.43
+
+-------------------------------------------------------------------
+Mon Mar 02 12:26:16 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Add table of supported distributions with better visibility
+  on the main page
+
+-------------------------------------------------------------------
+Mon Mar 02 09:37:27 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update image info --add-repo option argument
+
+  Update the --add-repo argument for image info to work
+  in the same way as it can be specified in the system prepare/build
+  commands. This now also allows for using metalink repos from
+  the commandline as follows:
+
+  kiwi-ng image info \
+  --description build-tests/x86/rawhide/test-image-erofs/ \
+  --resolve-package-list \
+  --ignore-repos \
+  --add-repo 'https://mirrors.fedoraproject.org/metalink?repo=rawhide&arch=x86_64,,,,,,,,,,metalink'
+
+  This Fixes #2908
+
+-------------------------------------------------------------------
+Thu Feb 26 17:33:27 CET 2026 - Frank Schreiner <schreiner@suse.de>
+
+- retry `postinst configure` with second parameter '0'
+
+  retry `postinst configure` with second parameter '0'
+
+  As described in #2956 some newer postinst scripts like the one of
+  libselinux1 fail when called without the second parameter. On the other
+  hand it turned out that older versions like libgcrypt20 in Debian 12
+  fail installation if the get a second paramter because of faulty
+  implmentation.
+
+  With this patch kiwi calls it the old way without a second parameter and
+  retries with 0 as old version if it fails on the first attempt.
+
+  * Update unit tests
+
+  ---------
+
+  Co-authored-by: Marcus Schäfer <marcus.schaefer@gmail.com>
+
+-------------------------------------------------------------------
+Tue Feb 24 16:59:42 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed setup of kiwi_rootpartuuid in profile
+
+  The PARTUUID value for the root partition is expected
+  to be present in the profile for any build time.
+  However, due to a bug certain layouts e.g LUKS or
+  RAID did try to retrieve the partition UUID from
+  the wrong device. This commit fixes it.
+  This Fixes #2949
+
+-------------------------------------------------------------------
+Tue Feb 24 10:13:41 CET 2026 - Frank Schreiner <schreiner@suse.de>
+
+- pass version 0 to `postinst configure`
+
+  Fixes: #2956
+
+  This patch avoids problems when building images for current Debian Sid
+  which currently is raising the following error:
+
+  ```
+  [   59s] [ ERROR   ]: 08:20:03 | KiwiDebianBootstrapError: KiwiCommandError: chroot: stderr: /kiwi_debpost.rhgtuuvo/libselinux1.deb/postinst: 4: 2: parameter not set
+  ```
+
+-------------------------------------------------------------------
+Sun Feb 22 21:38:55 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix RepositoryApt and RepositoryPacman instances
+
+  Some arguments are not supported/implemented with these
+  repository classes. Make sure to sort them out and log
+  a warning that their use has no effect.
+  This Fixes #2953
+
+-------------------------------------------------------------------
+Sun Feb 22 20:58:34 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for arch attribute in profile requires
+
+  Allow to specify the arch attribute in the <requires>
+  sub section of a <profile> definition.
+  This Fixes #2948
+
+-------------------------------------------------------------------
+Wed Feb 18 15:17:19 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix repo setup for rawhide integration tests
+
+  Use OBS project config repos instead of a static
+  list in the kiwi file
+
+-------------------------------------------------------------------
+Wed Feb 18 13:14:12 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix repo alias setup when set from cmdline
+
+  Using --add-repo/--set-repo options on the commandline
+  allows to skip the repo alias setting by passing in an empty
+  value. That empty value however caused the alias attribute
+  in a repository section to be set to an empty string which
+  is not allowed by the schema. Instead an empty alias should
+  lead to no alias attribute set at all. This commit fixes it
+
+-------------------------------------------------------------------
+Wed Feb 18 10:52:16 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed leap/test-image-embedded integration test
+
+  No need to install dkms
+
+-------------------------------------------------------------------
+Wed Feb 18 10:42:21 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix shellcheck for MicroOS build test
+
+  Make sure shellcheck is happy for test-image-MicroOS/config.sh
+
+-------------------------------------------------------------------
+Wed Feb 18 10:28:52 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add Micro Build with extra data partition
+
+-------------------------------------------------------------------
+Mon Feb 16 17:46:37 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update TW integration tests
+
+  zypper no longer provides /etc/zypp/zypp.conf. Instead the
+  concept of /etc/zypp/zypp.conf.d/*.conf was introduced. This
+  broke all integration tests which modified the former zypp.conf.
+  I dropped all this modifications from the integration tests
+  as they seem to be obsolete anyway.
+
+-------------------------------------------------------------------
+Mon Feb 16 13:05:43 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation per review by Sean Marlow
+
+  Rephrase the note where to find help or how to get in contact
+
+-------------------------------------------------------------------
+Mon Feb 16 09:44:22 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added cpio to archlinux integration test
+
+  dracut requires cpio to be installed
+
+-------------------------------------------------------------------
+Sun Feb 15 18:15:21 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix dracut --printconfig for readonly systems
+
+  When calling dracut --printconfig it creates a temporary directory
+  and some dracut template in it below /var/tmp. On readonly systems
+  this location is not writable. As such make sure that the location
+  is a writable tmpfs during call time
+
+-------------------------------------------------------------------
+Sun Feb 15 17:31:13 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add mktemp and findmnt to strip list
+
+  For legacy kiwi initrd builds the new dracut version
+  uses mktemp and findmnt. As such this tool must not be dropped
+  from the kiwi initrd
+
+-------------------------------------------------------------------
+Sun Feb 15 17:09:15 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add realpath to strip list
+
+  For legacy kiwi initrd builds the new dracut version
+  uses realpath. As such this tool must not be dropped
+  from the kiwi initrd
+
+-------------------------------------------------------------------
+Fri Feb 06 10:03:39 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update leap/.repos for local test builds
+
+  Leap integration tests has been switched from Leap15 to Leap16.
+  Therefore the .repos setup for local building needs to be
+  adapted as well.
+
+-------------------------------------------------------------------
+Wed Feb 04 16:09:08 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix doc setup
+
+  Add missing exc_image_base_name placeholder
+
+-------------------------------------------------------------------
+Wed Feb 04 12:27:55 CET 2026 - lmue-inno <lmu@innovaphone.com>
+
+- Update customize_the_boot_process.rst
+
+-------------------------------------------------------------------
+Wed Feb 04 12:13:05 CET 2026 - lmue-inno <lmu@innovaphone.com>
+
+- dracut: add support for new kernel parameter smallest_disk
+
+-------------------------------------------------------------------
+Wed Feb 04 10:27:07 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.41 → 10.2.42
+
+-------------------------------------------------------------------
+Tue Feb 03 17:10:36 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed veritytab if root is on squashfs
+
+  squashfs does not support UUID or LABEL, as such the PARTUUID
+  device assignment is used for the veritytab in this case
+
+-------------------------------------------------------------------
+Tue Feb 03 15:45:39 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add confidential compute image for AWS
+
+  Add a Trusted Execution Environment in form of an image as
+  a read-only system that is also dm-verity baked. The image
+  build provides PCR measuerd UKI image (kernel+initrd+bootloader).
+  The PCR values can be checked against the attestation document
+  and can also serve as AWS KMS key to enforce boot restrictions.
+  The image includes an example workflow in form of an enclave
+  image also build via kiwi using the native eif_build tool from
+  AWS. The enclave runs a little server/client example application
+  which creates the attestion document and sends the enclave
+  PCR measurements as response back to the Trusted Execution
+  instance. The image serves as example into the AWS Nitro TPM
+  Attestation and AWS Nitro Enclaves services to establish a
+  confidential compute workflow.
+
+-------------------------------------------------------------------
+Tue Feb 03 11:54:18 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Clarify on confusing warning message
+
+-------------------------------------------------------------------
+Tue Feb 03 09:53:25 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Improve error message from CommandCapabilities
+
+  In case CommandCapabilities is called from a command
+  that does not exist and raise_on_error is requested
+  make sure to provide a better error message pointing
+  out that the command does not exist instead of the
+  misleading "Could not parse ... output" error message
+
+-------------------------------------------------------------------
+Tue Feb 03 01:00:08 CET 2026 - Adam Williamson <awilliam@redhat.com>
+
+- initrd format detection: make dracut --printconfig optional
+
+  In https://github.com/OSInside/kiwi/pull/2921 , based on the
+  commit message and the fact that the code uses an `if`, it's
+  pretty clear the use of `dracut --printconfig` is meant to be
+  optional. But setting the misleadingly-named `raise_on_error`
+  to `True` means it isn't. `raise_on_error` makes
+  `has_option_in_help` raise an exception if it *fails* - doesn't
+  find the specified flag - not if it *errors*. Since it does not
+  handle the exception, this code crashes if dracut does not have
+  the argument:
+  https://koji.fedoraproject.org/koji/taskinfo?taskID=141808928
+
+  DEBUG util.py:459:  [ ERROR   ]: 06:03:28 | KiwiCommandCapabilitiesError: Could not parse dracut output
+
+  I've sent https://github.com/OSInside/kiwi/pull/2943 to make the
+  message less of a lie, and this makes us stop crashing if the
+  arg isn't available.
+
+  Signed-off-by: Adam Williamson <awilliam@redhat.com>
+
+-------------------------------------------------------------------
+Tue Feb 03 00:50:38 CET 2026 - Adam Williamson <awilliam@redhat.com>
+
+- Make error logged/raised from has_option_in_help more accurate
+
+  If I'm following this code correctly, we're not raising here
+  because we "could not parse" the output. We're raising because
+  we parsed it and it did not have the flag we were looking for.
+
+  Signed-off-by: Adam Williamson <awilliam@redhat.com>
+
+-------------------------------------------------------------------
+Mon Feb 02 18:41:31 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix leap integration test
+
+-------------------------------------------------------------------
+Mon Feb 02 18:33:33 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix leap builds
+
+  Adaptions from Leap 15 to Leap 16 required
+
+-------------------------------------------------------------------
+Mon Feb 02 18:00:49 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop openSUSE-release from leap integration tests
+
+  This package no longer exists
+
+-------------------------------------------------------------------
+Mon Feb 02 14:55:35 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix checked for extended attributes
+
+  Make sure the check only issues a warning message if the
+  call for the extended attributes really states that the
+  target doesn't support extended attributes. In any other
+  case do not warn as it causes misleading error information
+  which is not an error we care for in this scope
+
+-------------------------------------------------------------------
+Mon Feb 02 11:14:01 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop SUSE SLE specific installation section
+
+  The provided information is SUSE Linux Enterprise
+  specific and is documented via the SUSE specific
+  documentation process and workflow. To avoid conflicting
+  information this chapter gets dropped from the upstream
+  docs
+
+-------------------------------------------------------------------
+Mon Feb 02 11:06:20 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.40 → 10.2.41
+
+-------------------------------------------------------------------
+Mon Feb 02 11:03:01 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add information about supported markups
+
+  Add more visible information that kiwi supports
+  XML, YAML and TOML markups to write an image description
+
+-------------------------------------------------------------------
+Mon Feb 02 11:01:53 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update concept and workflow diagram
+
+-------------------------------------------------------------------
+Mon Feb 02 10:33:09 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation start page
+
+  Rewrite the start page to improve clarity and focus of
+  the project. Also point out how to get started in a more
+  visible way.
+
+-------------------------------------------------------------------
+Sat Jan 31 18:42:45 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix documentation for language errors and wording
+
+-------------------------------------------------------------------
+Fri Jan 30 10:39:38 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.39 → 10.2.40
+
+-------------------------------------------------------------------
+Wed Jan 28 16:08:56 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Separate API docs from main documentation
+
+  Build the API documentation via pdoc and reference it from
+  the main documentation. This has the advantage that new code
+  will be automatically included into the pdoc generated result.
+  Another advantage is that the search field on the main page
+  is not primarily hitting search results from the big API
+  documentation and that the search field on the API page
+  only searches within the API documentation.
+
+-------------------------------------------------------------------
+Wed Jan 28 13:17:35 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.38 → 10.2.39
+
+-------------------------------------------------------------------
+Wed Jan 28 11:49:52 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix doc: Setting Up YaST at First Boot
+
+  The firstboot wizzard in YaST which allowed to run AutoYaST
+  from a specific trigger setup no longer exists and now
+  executes the yast-firstboot service. However, firstboot.xml
+  is something completely different than AutoYaST.xml which
+  obsoletes the documentation we wrote in kiwi about it and
+  also confuses our users. I was not able to find a proper
+  utility which allows an easy setup of firstboot.xml in
+  the same way as it existed for "yast autoyast". As SUSE
+  also obsoleted and dropped YaST from their products the
+  only stable move is to drop this chapter from the documentation.
+
+-------------------------------------------------------------------
+Wed Jan 28 11:42:31 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix doc: Booting a Live ISO Images from Grub2
+
+  The chapter described the setup of a menu entry for grub
+  to loop boot a kiwi live ISO. The information was outdated
+  and did not longer apply to the current state of the art.
+  This commit updates the documentation to be correct again.
+
+-------------------------------------------------------------------
 Wed Jan 28 10:20:59 CET 2026 - Fabian Vogt <fvogt@suse.de>
 
 - Fix booting non-encrypted live images

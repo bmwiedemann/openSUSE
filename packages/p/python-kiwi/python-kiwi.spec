@@ -56,7 +56,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        10.2.38
+Version:        10.3.3
 Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -69,6 +69,8 @@ Packager:       Marcus Schaefer <marcus.schaefer@suse.com>
 Group:          %{pygroup}
 Source0:        %{name}.tar.gz
 Source1:        %{name}-rpmlintrc
+# SUSE-specific source additions (1001+)
+Source1001:     systemd-tmpfiles-for-suse.conf
 # SUSE-specific patches (1001+)
 ## PATCH-FIX-OPENSUSE kiwi-revert-bls-default-for-suse.patch -- temporary until opensuse has bls
 Patch1001:      kiwi-revert-bls-default-for-suse.patch
@@ -301,7 +303,7 @@ Provides:       kiwi-filesystem:ext3
 Provides:       kiwi-filesystem:ext4
 Provides:       kiwi-filesystem:squashfs
 Provides:       kiwi-filesystem:xfs
-%if ! (0%{?suse_version} && 0%{?suse_version} <= 1600)
+%if ! (0%{?suse_version} && 0%{?suse_version} < 1600)
 Provides:       kiwi-filesystem:erofs
 Provides:       kiwi-image:erofs
 %endif
@@ -309,7 +311,7 @@ Provides:       kiwi-image:erofs
 Requires:       dosfstools
 Requires:       e2fsprogs
 Requires:       xfsprogs
-%if ! (0%{?suse_version} && 0%{?suse_version} <= 1600)
+%if ! (0%{?suse_version} && 0%{?suse_version} < 1600)
 Requires:       erofs-utils
 %endif
 %if 0%{?suse_version}
@@ -742,9 +744,13 @@ ln -sr %{buildroot}%{_bindir}/kiwi-ng %{buildroot}%{_bindir}/kiwi-ng-3
 %if "%{_vendor}" != "debbuild"
 # kiwi pxeboot directory structure to be packed in kiwi-pxeboot
 %ifarch %{ix86} x86_64
+%if 0%{?suse_version} >= 1600
+install -D -m 755 %{SOURCE1001} %{buildroot}%{_tmpfilesdir}/kiwi-pxeboot.conf
+%else
 for i in KIWI pxelinux.cfg image upload boot; do \
     mkdir -p %{buildroot}/srv/tftpboot/$i ;\
 done
+%endif
 %endif
 %endif
 
@@ -797,6 +803,9 @@ fi
 %files -n python%{python3_pkgversion}-kiwi
 %dir %{_defaultdocdir}/python-kiwi
 %dir %{_usr}/share/kiwi
+%dir %{_usr}/share/kiwi/kiwi.yml.d
+%dir %_sysconfdir/kiwi.yml.d
+%doc %{_usr}/share/kiwi/kiwi.yml.example
 %{_bindir}/kiwi
 %{_bindir}/kiwi-ng
 %{_bindir}/kiwi-ng-3*
@@ -809,7 +818,6 @@ fi
 %{_usr}/share/bash-completion/completions/kiwi-ng
 
 %files -n kiwi-man-pages
-%config %_sysconfdir/kiwi.yml
 %doc %{_mandir}/man8/*
 
 %files -n dracut-kiwi-lib
@@ -834,7 +842,22 @@ fi
 
 %if "%{_vendor}" != "debbuild"
 %ifarch %{ix86} x86_64
+
+%if 0%{?suse_version} >= 1600
+%post -n kiwi-pxeboot
+%tmpfiles_create kiwi-pxeboot.conf
+%endif
+
 %files -n kiwi-pxeboot
+%if 0%{?suse_version} >= 1600
+%{_tmpfilesdir}/kiwi-pxeboot.conf
+%ghost %dir %attr(0755,tftp,tftp) /srv/tftpboot
+%ghost %dir /srv/tftpboot/KIWI
+%ghost %dir /srv/tftpboot/pxelinux.cfg
+%ghost %dir /srv/tftpboot/image
+%ghost %dir /srv/tftpboot/upload
+%ghost %dir /srv/tftpboot/boot
+%else
 %if 0%{?suse_version} < 1550
 %dir %attr(0755,tftp,tftp) /srv/tftpboot
 %endif
@@ -843,6 +866,7 @@ fi
 %dir /srv/tftpboot/image
 %dir /srv/tftpboot/upload
 %dir /srv/tftpboot/boot
+%endif
 %endif
 %endif
 
