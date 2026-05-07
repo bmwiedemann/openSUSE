@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May  6 19:56:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.14:
+  * Fix indent after comma with align-pointer=type option
+  * Fix preprocessor indent with align-pointer=type option
+  * Fix padding of C# template delimiters with --pad-oper
+  * Fix indent of concatenated raw strings
+
+-------------------------------------------------------------------
 Thu Nov 20 21:37:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.13:

@@ -197,4 +197,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1320394</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6e5432fb6b9d1a650cba9cd5fbb6e3f0</srcmd5>
+    <version>3.6.14</version>
+    <time>1778161460</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.14:
+  * Fix indent after comma with align-pointer=type option
+  * Fix preprocessor indent with align-pointer=type option
+  * Fix padding of C# template delimiters with --pad-oper
+  * Fix indent of concatenated raw strings</comment>
+    <requestid>1351282</requestid>
+  </revision>
 </revisionlist>
