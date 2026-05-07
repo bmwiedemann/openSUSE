@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %bcond_with expt_sha256
 %endif
 Name:           %{pname}%{?psuffix}
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        C git library
 License:        GPL-2.0-only WITH GCC-exception-2.0
