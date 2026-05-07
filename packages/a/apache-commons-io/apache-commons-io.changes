@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed May  6 07:16:05 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.22.0
+  * New features
+    + Add and use IOUtils.closeQuietlySuppress(Closeable, Throwable)
+    + Add ProxyWriter.setReference(Writer)
+    + Add ProxyWriter.unwrap()
+    + Add ProxyReader.setReference(Reader)
+    +Add ProxyReader.unrwap()
+    + IO-883: ByteArraySeekableByteChannel should optionally
+      configure a read-only channel
+    + IO-883: Add ByteArraySeekableByteChannel.Builder and builder()
+    + IO-883: Add AbstractStreamBuilder.getByteArray()
+    + CloseShieldInputStream now supports a custom close shield as
+      a function
+    + Add FlushShieldOutputStream to workaround issues in generic
+      code that ends up calling third parties like like
+      org.tukaani.xz.LZMAOutputStream.flush()
+    + Add filter channels
+  * Fixed Bugs
+    + Fix Apache RAT plugin console warnings
+    + ByteArraySeekableByteChannel.position(long) and truncate(long)
+      shouldn't throw an IllegalArgumentException for a new positive
+      position that's too large
+    + Fix malformed Javadoc comments
+    + ReadAheadInputStream.close() doesn't always close its filtered
+      input stream
+    + ReadAheadInputStream now restores the current thread's
+      interrupt flag when catching InterruptedException
+    + FileAlterationMonitor.stop(long) now restores the current
+      thread's interrupt flag when catching InterruptedException
+    + FileCleaningTracker now restores the current thread's
+      interrupt flag when catching InterruptedException
+    + ThreadMonitor.run() now restores the current thread's
+      interrupt flag when catching InterruptedException
+    + ThrottledInputStream.throttle() now restores the current
+      thread's interrupt flag when catching InterruptedException
+    + ThrottledInputStream.throttle() doesn't preserve the original
+      InterruptedException as the cause of its
+      InterruptedIOException
+    + All thread names are now prefixed with "commons-io-"
+    + IO-639: ReversedLinesFileReader does not read first line if
+      its empty
+    + IO-886: Fixed incorrect regular expression in
+      PathUtils.RelativeSortedPaths.extractKey(String, String)
+    + Fix typos in Javadoc of FileUtils and related test classes
+    + IO-887: WriterOutputStream from a builder fails on malformed
+      or unmappable input bytes
+    + BoundedReader now extends ProxyReader
+    + AbstractStreamBuilder.setOpenOptions(OpenOption...) now makes
+      a defensive copy of its input array
+    + IO-885: Path visits follow links
+    + BOMInputStream fail-fast and tracks its ByteOrderMark as a final
+    + Refactor UnixLineEndingInputStream and
+      WindowsLineEndingInputStream for duplication
+    + IO-857: [Javadoc] PathUtils.cleanDirectory() methods vs FileUtils
+    + Fix JaCoCo report generation (code coverage)
+    + AbstractStreamBuilder.setBufferSizeDefault(int) now resets to
+      default for input less than or equal to zero
+  * Changes
+    + Bump org.apache.commons:commons-parent from 91 to 98
+    + Bump commons-codec:commons-codec from 1.19.0 to 1.21.0
+    + Bump commons.bytebuddy.version from 1.17.8 to 1.18.8
+    + Bump commons-lang3 from 3.19.0 to 3.20.0
+
+-------------------------------------------------------------------
 Fri Feb  6 12:48:41 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.21.0
