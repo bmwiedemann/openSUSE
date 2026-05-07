@@ -20,13 +20,18 @@
 #!BuildTag: opensuse/bci/php:8
 #!BuildTag: opensuse/bci/php:latest
 
-FROM opensuse/tumbleweed:latest
+FROM opensuse/tumbleweed:latest AS target
+FROM opensuse/tumbleweed:latest AS builder
+COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n install php8 php8-cli php-composer2 php8-curl php8-zip php8-zlib php8-phar php8-mbstring php8-readline
+    export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
+    zypper -n --installroot /target --gpg-auto-import-keys install php8 php8-cli php-composer2 php8-curl php8-zip php8-zlib php8-phar php8-mbstring php8-readline
 
 # cleanup logs and temporary files
-RUN set -euo pipefail; zypper -n clean -a; \
+RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
+    t=$(mktemp -d); mv /target/usr/lib/sysimage/rpm/Packages.db $t; rpmdb --rebuilddb --dbpath=$t; \
+    rm /target/usr/lib/sysimage/rpm/*.db && mv $t/Packages.db /target/usr/lib/sysimage/rpm/; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
@@ -36,8 +41,10 @@ RUN set -euo pipefail; zypper -n clean -a; \
     rm -f {/target,}/var/cache/ldconfig/aux-cache
 
 # set the day of last password change to empty
-RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shadow
-
+RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /target/etc/shadow
+FROM opensuse/tumbleweed:latest
+COPY --from=builder /target /
+RUN set -euo pipefail; rm -vf /usr/lib/sysimage/rpm/Index.db
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.php
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI PHP 8"
