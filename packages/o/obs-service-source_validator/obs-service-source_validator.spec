@@ -21,9 +21,8 @@
 %else
 %define build_pkg_name obs-build
 %endif
-
 Name:           obs-service-source_validator
-Version:        0.42+6
+Version:        0.42+8
 Release:        0
 Summary:        An OBS source service: running all the osc source-validator checks
 License:        GPL-2.0-or-later
@@ -31,18 +30,22 @@ Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-source_validator
 # use osc service mr to update
 Source:         %{name}-%{version}.tar.xz
+Patch0:         obs-service-source_validator-test-git-init.patch
 BuildRequires:  %{build_pkg_name}
+BuildRequires:  git
 BuildRequires:  zstd
 Requires:       %{_bindir}/cpio
 Requires:       %{_bindir}/xmllint
 Requires:       %{build_pkg_name}
 Requires:       bzip2
 Requires:       diffutils
+Requires:       git
 Requires:       patch
 Requires:       perl-TimeDate
 Requires:       unzip
 Requires:       xz
 Requires:       zstd
+Recommends:     minisign
 Provides:       osc-source_validator = %{version}
 Obsoletes:      osc-source_validator <= 0.1
 BuildArch:      noarch
@@ -52,7 +55,6 @@ Requires:       gpg2
 # Fedora
 Requires:       gnupg2
 %endif
-Recommends:     minisign
 
 %description
 This is a source service for openSUSE Build Service.
@@ -62,7 +64,7 @@ to guarantee that all checks succeed also on the service side. This plugin can b
 used via project wide defined services.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 :

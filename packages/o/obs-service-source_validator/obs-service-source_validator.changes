@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 28 16:16:25 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add obs-service-source_validator-test-git-init.patch which
+  makes the test suite work even from the tarball.
+
+-------------------------------------------------------------------
+Tue Apr 28 15:41:24 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.42+8:
+  * 20-files-present-and-referenced: ignore files matched by .gitignore
+
+-------------------------------------------------------------------
 Thu Mar 26 13:59:28 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - PKGBUILD changes

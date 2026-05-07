@@ -1,0 +1,16 @@
+---
+ t/test_gitignore.sh |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: obs-service-source_validator-0.42+8/t/test_gitignore.sh
+===================================================================
+--- obs-service-source_validator-0.42+8.orig/t/test_gitignore.sh	2026-04-24 22:26:56.000000000 +0200
++++ obs-service-source_validator-0.42+8/t/test_gitignore.sh	2026-04-28 18:12:14.476575465 +0200
+@@ -10,6 +10,7 @@
+ # Create test data directory if it doesn't exist
+ mkdir -p "$TEST_DATA_DIR"
+ trap 'rm -rf "$TEST_DATA_DIR"' EXIT
++git -C "$TEST_DATA_DIR" init -q
+ 
+ # Create a dummy spec file
+ cat > "$TEST_DATA_DIR/test.spec" <<EOF
