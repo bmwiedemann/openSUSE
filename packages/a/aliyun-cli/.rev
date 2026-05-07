@@ -150,4 +150,22 @@
   * Update Aliyun OpenAPI meta data (forwarded request 1349547 from glaubitz)</comment>
     <requestid>1349618</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>44f0b28333bcd698f4d24585d6fae567</srcmd5>
+    <version>3.3.12</version>
+    <time>1778161550</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.12
+  * Add AgentBay CLI command and implement language setting logic
+    by @CodeSpaceiiii in (#1311)
+  * {Profile} Add external-account-type for user profile
+    by @AllyW in (#1312)
+  * Implement CLI mock command with add, import, remove, list,
+    clear, and path subcommands by @CodeSpaceiiii in (#1313)
+  * {Openapi} Add agent segment to user-agent by @AllyW in (#1314)
+- from version 3.3.11
+  * Fix retrySaveProfile function to return success status and
+    update tests by @CodeSpaceiiii in (#1310) (forwarded request 1351381 from glaubitz)</comment>
+    <requestid>1351392</requestid>
+  </revision>
 </revisionlist>

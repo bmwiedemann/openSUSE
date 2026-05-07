@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  7 08:45:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.12
+  * Add AgentBay CLI command and implement language setting logic
+    by @CodeSpaceiiii in (#1311)
+  * {Profile} Add external-account-type for user profile
+    by @AllyW in (#1312)
+  * Implement CLI mock command with add, import, remove, list,
+    clear, and path subcommands by @CodeSpaceiiii in (#1313)
+  * {Openapi} Add agent segment to user-agent by @AllyW in (#1314)
+- from version 3.3.11
+  * Fix retrySaveProfile function to return success status and
+    update tests by @CodeSpaceiiii in (#1310)
+
+-------------------------------------------------------------------
 Mon Apr 27 09:58:25 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.10
