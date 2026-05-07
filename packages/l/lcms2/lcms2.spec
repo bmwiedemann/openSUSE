@@ -17,7 +17,7 @@
 
 
 Name:           lcms2
-Version:        2.19
+Version:        2.19.1
 Release:        0
 Summary:        Little CMS Engine - A color management library and tools
 License:        MIT

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  6 11:36:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.19.1
+  * Fixed sonames generation when using autotools.
+  * Recovered an undocumented memory write feature lost because a
+   "security" report.
+
+-------------------------------------------------------------------
 Sat Apr 25 10:50:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.19
