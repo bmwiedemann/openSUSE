@@ -736,4 +736,39 @@
     <comment>Automatic update from systemsmanagement:Agama:Release</comment>
     <requestid>1346929</requestid>
   </revision>
+  <revision rev="41" vrev="41">
+    <srcmd5>36a902fd14a2aef07430052aee57ebe0</srcmd5>
+    <version>0</version>
+    <time>1778161409</time>
+    <user>anag_factory</user>
+    <comment>- Show contextual hints when software selection is unavailable and
+  handle empty states when no patterns are available
+  (gh#agama-project/agama#3441, related to gh#agama-project/agama#3436
+  and gh#agama-project/agama#3420).
+
+- Handle desktop selection when no desktop environments are available
+  (gh#agama-project/agama#3436, related to gh#agama-project/agama#3420).
+
+- Added support for configuring a network bond using the UI
+  (gh#agama-project/agama#3412).
+
+- Sort software patterns by their order field within each category
+  (gh#agama-project/agama#3425).
+
+- Revamp the software selection page to separate desktop
+  environments from additional patterns and migrate it to a proper
+  form with explicit Accept/Cancel
+  (gh#agama-project/agama#3389, gh#agama-project/agama#3396).
+- Hint users when no desktop is selected on products that suggest
+  one: surface the choice in the installation summary and link
+  from confirmation alerts to the relevant section
+  (gh#agama-project/agama#3409).
+- Polish the patterns selection page with sticky headers, filter
+  feedback and a subtler auto-selected badge
+  (gh#agama-project/agama#3417).
+
+- Fix &quot;Accept&quot; button when connecting to iscsi target
+  (gh#agama-project/agama#3418)</comment>
+    <requestid>1350955</requestid>
+  </revision>
 </revisionlist>
