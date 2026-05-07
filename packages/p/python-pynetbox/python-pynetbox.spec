@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pynetbox
-Version:        7.6.1
+Version:        7.7.0
 Release:        0
 Summary:        NetBox API client library
 License:        Apache-2.0

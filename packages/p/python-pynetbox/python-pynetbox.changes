@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May  6 06:23:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.7.0
+  New Features
+  * #762 - Support NetBox 4.6: add VirtualMachineTypes model,
+    virtual_machine_type and device typed attributes on
+    VirtualMachines, oob_ip typed attribute on Devices, and
+    dcim.cablebundle / dcim.rackgroup content type mappings
+  Bug Fixes
+  * #756 - Use v2 token auth value in create_token (NetBox 4.5+).
+  * #708 - Record.serialize() now includes new properties added
+    by the user.
+  Compatibility
+  * Supports NetBox 4.6
+
+-------------------------------------------------------------------
 Tue Feb  3 08:49:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.6.1
