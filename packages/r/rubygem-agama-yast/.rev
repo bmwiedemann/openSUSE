@@ -665,4 +665,13 @@
     <comment>Automatic update from systemsmanagement:Agama:Release</comment>
     <requestid>1346930</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2e8e6dac76349deeb958efaf2eab0adb</srcmd5>
+    <version>20.devel269.73cf33d8f</version>
+    <time>1778161410</time>
+    <user>anag_factory</user>
+    <comment>- Add support for configuring pervasive encryption APQNs and key
+  type (gh#agama-project/agama#3384).</comment>
+    <requestid>1350960</requestid>
+  </revision>
 </revisionlist>
