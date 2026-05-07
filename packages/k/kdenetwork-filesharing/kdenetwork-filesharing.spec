@@ -1,7 +1,7 @@
 #
 # spec file for package kdenetwork-filesharing
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kdenetwork-filesharing
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        KDE Network Libraries
 License:        GPL-2.0-or-later
@@ -31,7 +31,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-Patch0:         0001-filepropertiesplugin-Fix-regression-in-smbd-path-loo.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
@@ -79,7 +78,7 @@ Used for configuring Samba shares.
 %license LICENSES/*
 %{_kf6_appstreamdir}/org.kde.kdenetwork-filesharing.metainfo.xml
 %{_kf6_dbuspolicydir}/org.kde.filesharing.samba.conf
-%{_kf6_libexecdir}/kauth/authhelper
+%{_kf6_libexecdir}/kauth/sambausershareplugin_authhelper
 %dir %{_kf6_plugindir}/kf6/propertiesdialog
 %{_kf6_plugindir}/kf6/propertiesdialog/SambaAcl.so
 %{_kf6_plugindir}/kf6/propertiesdialog/sambausershareplugin.so

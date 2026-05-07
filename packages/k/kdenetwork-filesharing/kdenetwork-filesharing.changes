@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:13:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- No code change since 26.03.90
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * Handle service being an alias
+  * filepropertiesplugin: Refactor the plugin initialization logic
+  * filepropertiesplugin: Enable and start the Samba service if needed
+  * filepropertiesplugin: Move the kauth helper into a directory, and give it a unique name
+  * filepropertiesplugin: Use non-deprecated Connections syntax
+  * filepropertiesplugin: Clip the user list and disable scrolling in its comboboxes
+  * cmake_minimum_required: drop outdated FATAL_ERROR arg
+  * filepropertiesplugin: Fix regression in smbd path lookup
+- Drop patch, merged upstream:
+  * 0001-filepropertiesplugin-Fix-regression-in-smbd-path-loo.patch
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:41 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
