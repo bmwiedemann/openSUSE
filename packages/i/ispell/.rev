@@ -362,4 +362,12 @@
     <comment></comment>
     <requestid>1279739</requestid>
   </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>a4f52268b79b0d0383d6c2ec8109d259</srcmd5>
+    <version>3.4.06</version>
+    <time>1778161555</time>
+    <user>anag_factory</user>
+    <comment>- Make it build again</comment>
+    <requestid>1351401</requestid>
+  </revision>
 </revisionlist>

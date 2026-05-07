@@ -1,7 +1,7 @@
 #
 # spec file for package ispell
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,6 +62,9 @@ Patch9:         ispell-3.3.02-strip.patch
 Patch10:        boo966124.dif
 # bug report and patch sent to ispell-bugs at itcorp.com
 Patch11:        ispell-3.4.06-gcc15.patch
+
+%define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
+%global optflags %{optflags} %{**}
 
 %description
 Ispell is a fast, screen-oriented spell checker that shows you your
@@ -152,6 +155,7 @@ squeeze or unsqueeze a sorted word list for better compression.
 %patch -P11 -p 1
 
 %build
+%add_optflags -std=gnu11
   PATH=$PATH:$PWD
   export PATH
   make local.h
