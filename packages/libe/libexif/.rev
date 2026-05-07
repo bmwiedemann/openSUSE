@@ -425,4 +425,23 @@
      better decoding (forwarded request 1239300 from msmeissn)</comment>
     <requestid>1239301</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>35aafcba01e4dc2bf5c68e683611d9b7</srcmd5>
+    <version>0.6.26</version>
+    <time>1778161395</time>
+    <user>anag_factory</user>
+    <comment>- libexif-0.6.26 (2026-04-14):
+  * Security issues fixed:
+    * CVE-2026-40386: An unsigned integer underflow in Fuji and Olympus
+      makernote handling (bsc#1262001)
+    * CVE-2026-40385: An unsigned integer overflow on 32bit systems in
+      Nikon makernote handling (bsc#1262000)
+    * CVE-2026-32775: A buffer overwrite via integer underflow in
+      makernote handling (bsc#1259755)
+  * handle JPEG APP3 marker
+  * added EXIF_TAG_IMAGE_DEPTH tag
+  * translations updated: Arabic, German, Spanish, Polish, Romanian,
+    Serbian, Swedish, Ukrainian, Chinese</comment>
+    <requestid>1351185</requestid>
+  </revision>
 </revisionlist>
