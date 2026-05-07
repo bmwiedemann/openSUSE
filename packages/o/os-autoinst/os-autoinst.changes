@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 06 20:05:17 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1778097909.35320dd:
+  * feat(qemu): improve port conflict detection and VNC error diagnostics
+  * fix: restore serial marker hook after switching users
+  * fix: handle pre-marker pending text in script_output
+  * fix: echo json_cmd_token in isotovideo responses
+  * style: unify copyright headers by dropping years
+
+-------------------------------------------------------------------
 Wed May 06 12:09:38 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1778069368.c751b82:
