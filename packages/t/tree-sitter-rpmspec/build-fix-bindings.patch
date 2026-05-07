@@ -1,0 +1,217 @@
+---
+ Cargo.toml                                      |    9 +++--
+ bindings/node/binding.cc                        |   16 +++++++-
+ bindings/python/tree_sitter_rpmspec/__init__.py |    4 +-
+ bindings/python/tree_sitter_rpmspec/binding.c   |   13 ++++++-
+ bindings/rust/build.rs                          |   43 ++++++------------------
+ bindings/rust/lib.rs                            |    9 +++--
+ setup.py                                        |    5 +-
+ 7 files changed, 52 insertions(+), 47 deletions(-)
+
+Index: tree-sitter-rpmspec-0+20260218.12ca618/Cargo.toml
+===================================================================
+--- tree-sitter-rpmspec-0+20260218.12ca618.orig/Cargo.toml	2026-02-18 00:10:58.000000000 +0100
++++ tree-sitter-rpmspec-0+20260218.12ca618/Cargo.toml	2026-05-01 22:28:34.652613389 +0200
+@@ -11,9 +11,12 @@
+ build = "bindings/rust/build.rs"
+ include = [
+   "bindings/rust/*",
+-  "grammar.js",
+-  "queries/*",
+-  "src/*",
++  "rpmspec/grammar.js",
++  "rpmspec/queries/*",
++  "rpmspec/src/*",
++  "rpmbash/grammar.js",
++  "rpmbash/queries/*",
++  "rpmbash/src/*",
+ ]
+ 
+ [lib]
+Index: tree-sitter-rpmspec-0+20260218.12ca618/bindings/node/binding.cc
+===================================================================
+--- tree-sitter-rpmspec-0+20260218.12ca618.orig/bindings/node/binding.cc	2026-02-18 00:10:58.000000000 +0100
++++ tree-sitter-rpmspec-0+20260218.12ca618/bindings/node/binding.cc	2026-05-01 23:11:26.701650891 +0200
+@@ -3,6 +3,7 @@
+ typedef struct TSLanguage TSLanguage;
+ 
+ extern "C" TSLanguage *tree_sitter_rpmspec();
++extern "C" TSLanguage *tree_sitter_rpmbash();
+ 
+ // "tree-sitter", "language" hashed with BLAKE2
+ const napi_type_tag LANGUAGE_TYPE_TAG = {
+@@ -11,9 +12,18 @@
+ 
+ Napi::Object Init(Napi::Env env, Napi::Object exports) {
+     exports["name"] = Napi::String::New(env, "rpmspec");
+-    auto language = Napi::External<TSLanguage>::New(env, tree_sitter_rpmspec());
+-    language.TypeTag(&LANGUAGE_TYPE_TAG);
+-    exports["language"] = language;
++
++    auto rpmspec = Napi::External<TSLanguage>::New(env, tree_sitter_rpmspec());
++    rpmspec.TypeTag(&LANGUAGE_TYPE_TAG);
++    exports["rpmspec"] = rpmspec;
++
++    auto rpmbash = Napi::External<TSLanguage>::New(env, tree_sitter_rpmbash());
++    rpmbash.TypeTag(&LANGUAGE_TYPE_TAG);
++    exports["rpmbash"] = rpmbash;
++
++    // For backward compatibility
++    exports["language"] = rpmspec;
++
+     return exports;
+ }
+ 
+Index: tree-sitter-rpmspec-0+20260218.12ca618/bindings/python/tree_sitter_rpmspec/__init__.py
+===================================================================
+--- tree-sitter-rpmspec-0+20260218.12ca618.orig/bindings/python/tree_sitter_rpmspec/__init__.py	2026-02-18 00:10:58.000000000 +0100
++++ tree-sitter-rpmspec-0+20260218.12ca618/bindings/python/tree_sitter_rpmspec/__init__.py	2026-05-01 23:11:26.702466461 +0200
+@@ -1,5 +1,5 @@
+ "Rpmspec grammar for tree-sitter"
+ 
+-from ._binding import language
++from ._binding import rpmspec, rpmbash, language
+ 
+-__all__ = ["language"]
++__all__ = ["rpmspec", "rpmbash", "language"]
+Index: tree-sitter-rpmspec-0+20260218.12ca618/bindings/python/tree_sitter_rpmspec/binding.c
+===================================================================
+--- tree-sitter-rpmspec-0+20260218.12ca618.orig/bindings/python/tree_sitter_rpmspec/binding.c	2026-02-18 00:10:58.000000000 +0100
++++ tree-sitter-rpmspec-0+20260218.12ca618/bindings/python/tree_sitter_rpmspec/binding.c	2026-05-01 23:11:26.702559747 +0200
+@@ -3,11 +3,16 @@
+ typedef struct TSLanguage TSLanguage;
+ 
+ TSLanguage *tree_sitter_rpmspec(void);
++TSLanguage *tree_sitter_rpmbash(void);
+ 
+-static PyObject* _binding_language(PyObject *Py_UNUSED(self), PyObject *Py_UNUSED(args)) {
++static PyObject* _binding_language_rpmspec(PyObject *Py_UNUSED(self), PyObject *Py_UNUSED(args)) {
+     return PyCapsule_New(tree_sitter_rpmspec(), "tree_sitter.Language", NULL);
+ }
+ 
++static PyObject* _binding_language_rpmbash(PyObject *Py_UNUSED(self), PyObject *Py_UNUSED(args)) {
++    return PyCapsule_New(tree_sitter_rpmbash(), "tree_sitter.Language", NULL);
++}
++
+ static struct PyModuleDef_Slot slots[] = {
+ #ifdef Py_GIL_DISABLED
+     {Py_mod_gil, Py_MOD_GIL_NOT_USED},
+@@ -16,7 +21,11 @@
+ };
+ 
+ static PyMethodDef methods[] = {
+-    {"language", _binding_language, METH_NOARGS,
++    {"rpmspec", _binding_language_rpmspec, METH_NOARGS,
++     "Get the tree-sitter language for rpmspec."},
++    {"rpmbash", _binding_language_rpmbash, METH_NOARGS,
++     "Get the tree-sitter language for rpmbash."},
++    {"language", _binding_language_rpmspec, METH_NOARGS,
+      "Get the tree-sitter language for this grammar."},
+     {NULL, NULL, 0, NULL}
+ };
+Index: tree-sitter-rpmspec-0+20260218.12ca618/bindings/rust/build.rs
+===================================================================
+--- tree-sitter-rpmspec-0+20260218.12ca618.orig/bindings/rust/build.rs	2026-02-18 00:10:58.000000000 +0100
++++ tree-sitter-rpmspec-0+20260218.12ca618/bindings/rust/build.rs	2026-05-01 22:28:34.652613389 +0200
+@@ -1,8 +1,5 @@
+ fn main() {
+-    let src_dir = std::path::Path::new("src");
+-
+     let mut c_config = cc::Build::new();
+-    c_config.include(&src_dir);
+     c_config
+         .flag_if_supported("-Wno-unused-parameter")
+         .flag_if_supported("-Wno-unused-but-set-variable")
+@@ -10,34 +7,16 @@
+     #[cfg(target_env = "msvc")]
+     c_config.flag("-utf-8");
+ 
+-    let parser_path = src_dir.join("parser.c");
+-    c_config.file(&parser_path);
+-
+-    // If your language uses an external scanner written in C,
+-    // then include this block of code:
+-
+-    /*
+-    let scanner_path = src_dir.join("scanner.c");
+-    c_config.file(&scanner_path);
+-    println!("cargo:rerun-if-changed={}", scanner_path.to_str().unwrap());
+-    */
++    for grammar in ["rpmspec", "rpmbash"] {
++        let src_dir = std::path::Path::new(grammar).join("src");
++        c_config.include(&src_dir);
++        let parser_path = src_dir.join("parser.c");
++        let scanner_path = src_dir.join("scanner.c");
++        c_config.file(&parser_path);
++        c_config.file(&scanner_path);
++        println!("cargo:rerun-if-changed={}", parser_path.to_str().unwrap());
++        println!("cargo:rerun-if-changed={}", scanner_path.to_str().unwrap());
++    }
+ 
+-    c_config.compile("parser");
+-    println!("cargo:rerun-if-changed={}", parser_path.to_str().unwrap());
+-
+-    // If your language uses an external scanner written in C++,
+-    // then include this block of code:
+-
+-    /*
+-    let mut cpp_config = cc::Build::new();
+-    cpp_config.cpp(true);
+-    cpp_config.include(&src_dir);
+-    cpp_config
+-        .flag_if_supported("-Wno-unused-parameter")
+-        .flag_if_supported("-Wno-unused-but-set-variable");
+-    let scanner_path = src_dir.join("scanner.cc");
+-    cpp_config.file(&scanner_path);
+-    cpp_config.compile("scanner");
+-    println!("cargo:rerun-if-changed={}", scanner_path.to_str().unwrap());
+-    */
++    c_config.compile("tree-sitter-rpmspec");
+ }
+Index: tree-sitter-rpmspec-0+20260218.12ca618/bindings/rust/lib.rs
+===================================================================
+--- tree-sitter-rpmspec-0+20260218.12ca618.orig/bindings/rust/lib.rs	2026-02-18 00:10:58.000000000 +0100
++++ tree-sitter-rpmspec-0+20260218.12ca618/bindings/rust/lib.rs	2026-05-01 22:28:34.652613389 +0200
+@@ -24,15 +24,18 @@
+ 
+ extern "C" {
+     fn tree_sitter_rpmspec() -> *const ();
++    fn tree_sitter_rpmbash() -> *const ();
+ }
+ 
+-/// The tree-sitter [`LanguageFn`] for this grammar.
+-pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_rpmspec) };
++pub const LANGUAGE_RPMSPEC: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_rpmspec) };
++pub const LANGUAGE_RPMBASH: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_rpmbash) };
++
++pub const LANGUAGE: LanguageFn = LANGUAGE_RPMSPEC;
+ 
+ /// The content of the [`node-types.json`][] file for this grammar.
+ ///
+ /// [`node-types.json`]: https://tree-sitter.github.io/tree-sitter/using-parsers#static-node-types
+-pub const NODE_TYPES: &str = include_str!("../../src/node-types.json");
++pub const NODE_TYPES: &str = include_str!("../../rpmspec/src/node-types.json");
+ 
+ // NOTE: uncomment these to include any queries that this grammar contains:
+ 
+Index: tree-sitter-rpmspec-0+20260218.12ca618/setup.py
+===================================================================
+--- tree-sitter-rpmspec-0+20260218.12ca618.orig/setup.py	2026-02-18 00:10:58.000000000 +0100
++++ tree-sitter-rpmspec-0+20260218.12ca618/setup.py	2026-05-01 23:11:26.702683540 +0200
+@@ -57,13 +57,14 @@
+             name="_binding",
+             sources=[
+                 "bindings/python/tree_sitter_rpmspec/binding.c",
+-                "src/parser.c",
++                "rpmspec/src/parser.c",
++                "rpmbash/src/parser.c",
+             ],
+             define_macros=[
+                 ("PY_SSIZE_T_CLEAN", None),
+                 ("TREE_SITTER_HIDE_SYMBOLS", None),
+             ],
+-            include_dirs=["src"],
++            include_dirs=["rpmspec/src", "rpmbash/src"],
+             py_limited_api=not get_config_var("Py_GIL_DISABLED"),
+         )
+     ],

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  4 21:17:42 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add build-fix-bindings.patch (see
+  gl#cryptomilk/tree-sitter-rpmspec!85), which fixes
+  multi-grammar support in language bindings.
+- Install also tree-sitter queries for use by Neovim (among other
+  clients).
+
+-------------------------------------------------------------------
 Thu Mar 19 09:24:53 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing comma to the patch and fix include directories.

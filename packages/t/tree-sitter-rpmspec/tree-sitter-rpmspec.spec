@@ -25,6 +25,9 @@ License:        MIT
 URL:            https://gitlab.com/cryptomilk/tree-sitter-rpmspec
 Source0:        %{name}-%{version}.tar.gz
 Patch1:         0001-fix-binding.gyp-correctly-list-source-files.patch
+# PATCH-FIX-UPSTREAM build-fix-bindings.patch gl#cryptomilk/tree-sitter-rpmspec!85 mcepl@suse.com
+# multi-grammar support in language bindings
+Patch2:         build-fix-bindings.patch
 BuildRequires:  tree-sitter
 # For rpmbash grammar
 BuildRequires:  treesitter_grammar_src(tree-sitter-bash)
@@ -34,7 +37,7 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-bash)
 %{summary}.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %treesitter_configure
@@ -43,10 +46,17 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-bash)
 %install
 %treesitter_install
 %treesitter_devel_install
+# Manual installation of queries as the macros don't handle them for sub-grammars
+for grammar in %{_name} rpmbash; do
+    install -d %{buildroot}%{_datadir}/tree-sitter/queries/$grammar
+    install -m 0644 $grammar/queries/*.scm %{buildroot}%{_datadir}/tree-sitter/queries/$grammar/
+done
 
 %files
 %license LICENSE
 %treesitter_files
+%dir %{_datadir}/tree-sitter
+%{_datadir}/tree-sitter/queries/
 
 %treesitter_devel_package
 

@@ -485,4 +485,16 @@ Index: tree-sitter-rpmspec.changes
     <comment>- Add missing comma to the patch and fix include directories.</comment>
     <requestid>1350283</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b9e16149e6a8d29bb0f9d83472ed2afb</srcmd5>
+    <version>0+20260218.12ca618</version>
+    <time>1778161549</time>
+    <user>anag_factory</user>
+    <comment>- Add build-fix-bindings.patch (see
+  gl#cryptomilk/tree-sitter-rpmspec!85), which fixes
+  multi-grammar support in language bindings.
+- Install also tree-sitter queries for use by Neovim (among other
+  clients).</comment>
+    <requestid>1351384</requestid>
+  </revision>
 </revisionlist>
