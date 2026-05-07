@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu May  7 09:45:31 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
+
+- Update SELinux module dir as macro to allow root path move from /var/lib/selinux
+  to /etc/selinux (bsc#1221342)
+
+-------------------------------------------------------------------
+Fri Feb 20 12:35:10 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- initial import
