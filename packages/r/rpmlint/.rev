@@ -5633,4 +5633,14 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * opensuse.toml: fix typo</comment>
     <requestid>1349542</requestid>
   </revision>
+  <revision rev="537" vrev="1">
+    <srcmd5>c50d10fd648ef7d1cbe7e6cfbdba5710</srcmd5>
+    <version>2.9.0+git20260429.e0ce0d7d</version>
+    <time>1778161382</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.9.0+git20260429.e0ce0d7d:
+  * systemd-tmpfiles whitelist: add google-guest-oslogin dirs (bsc#1261275)
+  * dbus-services: updated kdenetwork-filesharing whitelisting (bsc#1262258)</comment>
+    <requestid>1350930</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 29 08:59:48 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.9.0+git20260429.e0ce0d7d:
+  * systemd-tmpfiles whitelist: add google-guest-oslogin dirs (bsc#1261275)
+  * dbus-services: updated kdenetwork-filesharing whitelisting (bsc#1262258)
+
+-------------------------------------------------------------------
 Mon Apr 27 08:29:36 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 2.9.0+git20260423.8742fdc6:
