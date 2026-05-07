@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon May  4 11:45:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260430.00
+  * URLEncode request parameters sent to the metadata server. (#182)
+
+-------------------------------------------------------------------
+Tue Apr 28 21:41:26 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Add /var/google-sudoers.d to tmpfile config
+  + The /var/google-users.d directory is pre-created in the Makefile but
+    the google-sudoers.d is not. But the code wil not behave as expected
+    if the directory is not there. Because of the pre-creation missing in
+    Makefile this was missed initially.
+
+-------------------------------------------------------------------
+Tue Apr  7 19:48:07 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 20260227.00 (bsc#1257010)
+  + Fix broken cache_refresh behavior when groups are disabled. (#181)
+    * Implement a binary cache for OS Login passwd entries.
+      This change introduces a new binary cache format for storing OS Login
+      passwd information. It includes:
+      - `OsLoginPasswdCacheWriter`: A C++ class to build and write the cache
+         file. It buffers user entries, sorts them, and writes them to a
+         temporary file before atomically renaming it.
+      - `oslogin_passwd_cache_reader`: A C implementation for reading from
+         the cache file using mmap. It provides functions compatible with
+         NSS modules for looking up entries by UID, name, and iterating
+         through all entries.
+      - `eytzinger_layout.h`: A template function to convert a sorted vector
+         into an Eytzinger layout, used for the name index to improve cache
+         locality during lookups.
+      - `oslogin_index_structs.h`: Defines the structures used for the UID
+         and Name indices.
+      - New unit tests (`eytzinger_layout_test.cc`,
+        `oslogin_passwd_cache_reader_test.cc`, `round_trip_test.cc`) to
+        validate the cache functionality, including concurrent read access.
+      - The `Makefile` is updated to build and run the new tests. The `main`
+        function is removed from `oslogin_utils_test.cc` as `gtest_main.cc`
+        is now linked.
+    * Fix incorrect cache_refresh return value.
+  + Add google-guest-oslogin.conf and ggosl-no-var-content.patch (jsc#PED-14688)
+
+-------------------------------------------------------------------
 Thu Nov 19 08:07:41 UTC 2025 - Zdenek Kubala <zkubala@suse.com>
 
 - Update SELinux module dir as macro to allow root path move from

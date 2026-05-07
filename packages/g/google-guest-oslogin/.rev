@@ -392,4 +392,13 @@
   /var/lib/selinux to /etc/selinux (bsc#1221342) (forwarded request 1320114 from djz88)</comment>
     <requestid>1320137</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c73bbff1fc7b4774381b729940887035</srcmd5>
+    <version>20260430.00</version>
+    <time>1778161541</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260430.00
+  * URLEncode request parameters sent to the metadata server. (#182) (forwarded request 1350669 from glaubitz)</comment>
+    <requestid>1350678</requestid>
+  </revision>
 </revisionlist>

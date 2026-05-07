@@ -1,7 +1,7 @@
 #
 # spec file for package google-guest-oslogin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,15 @@
 %{!?_pam_moduledir: %define _pam_moduledir %{_pamdir}}
 
 Name:           google-guest-oslogin
-Version:        20251022.00
+Version:        20260430.00
 Release:        0
 Summary:        Google Cloud Guest OS Login
 License:        Apache-2.0
 Group:          System/Daemons
 URL:            https://github.com/GoogleCloudPlatform/guest-oslogin
 Source:         %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        google-guest-oslogin.conf
+Patch1:         ggosl-no-var-content.patch
 Requires:       openssh
 Requires:       pam
 Requires(post): glibc
@@ -78,6 +80,7 @@ This package provides the SELinux module for Google Cloud Guest OS Login.
 
 %prep
 %setup -q -n guest-oslogin-%{version}
+%patch -P 1
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
@@ -103,6 +106,9 @@ mv %{buildroot}%{_datadir}/selinux/packages/oslogin.pp %{buildroot}%{_datadir}/s
 
 mkdir -p %{buildroot}%{_sbindir}
 for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.service' $srv_name); ln -s service %{buildroot}%{_sbindir}/rc$rc_name; done
+
+mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
+install -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/tmpfiles.d/
 
 %pre
 %service_add_pre google-oslogin-cache.service
@@ -148,6 +154,7 @@ fi
 %{_presetdir}/*
 %{_sbindir}/*
 %{_unitdir}/*
+%{_prefix}/lib/tmpfiles.d/google-guest-oslogin.conf
 %if %{without use_selinux}
 %{_datadir}/selinux
 %{_datadir}/selinux/packages
