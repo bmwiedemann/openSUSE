@@ -501,4 +501,12 @@
 - drop local cscope_maps.vim, we distribute that from the cscope-maps tar</comment>
     <requestid>1343599</requestid>
   </revision>
+  <revision rev="57" vrev="64">
+    <srcmd5>e3cd26cd476a50b69d12eaad78f56be3</srcmd5>
+    <version>unknown</version>
+    <time>1778161533</time>
+    <user>anag_factory</user>
+    <comment>- vim-plugin-taglist: Require ctags OR universal-ctags</comment>
+    <requestid>1351358</requestid>
+  </revision>
 </revisionlist>

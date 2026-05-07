@@ -635,7 +635,7 @@ Release:        0
 Summary:        Source code browser with support for many languages
 License:        ISC
 Group:          Productivity/Text/Editors
-Requires:       ctags
+Requires:       (ctags or universal-ctags)
 Requires:       vim
 
 %description -n vim-plugin-taglist
