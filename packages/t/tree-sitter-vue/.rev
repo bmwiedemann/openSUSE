@@ -15,4 +15,16 @@
     <comment>- Remove redundant Neovim workaround</comment>
     <requestid>1336872</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>141f183492d102df0bd3a9124551d91f</srcmd5>
+    <version>0+20260124.ce8011a</version>
+    <time>1778161548</time>
+    <user>anag_factory</user>
+    <comment>- Supply corrected `binding.gyp` so `src/scanner.c` is linked into
+  the parser shared library.
+
+- Update to version 0+20260124.ce8011a:
+  *</comment>
+    <requestid>1350414</requestid>
+  </revision>
 </revisionlist>

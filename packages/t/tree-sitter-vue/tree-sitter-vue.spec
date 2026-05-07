@@ -18,12 +18,13 @@
 
 %define         _name vue
 Name:           tree-sitter-vue
-Version:        0+20240326.22bdfa6
+Version:        0+20260124.ce8011a
 Release:        0
 Summary:        Vue.js grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-vue
 Source0:        %{name}-%{version}.tar.gz
+Source1:        binding.gyp
 BuildRequires:  tree-sitter
 BuildRequires:  treesitter_grammar_src(tree-sitter-html)
 %treesitter_grammars %{_name}
@@ -33,6 +34,7 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-html)
 
 %prep
 %autosetup
+cp %{SOURCE1} binding.gyp
 
 %build
 %treesitter_configure

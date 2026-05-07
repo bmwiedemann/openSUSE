@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 11 08:30:00 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Supply corrected `binding.gyp` so `src/scanner.c` is linked into
+  the parser shared library.
+
+-------------------------------------------------------------------
+Thu Apr 09 20:22:15 UTC 2026 - mcepl@cepl.eu
+
+- Update to version 0+20260124.ce8011a:
+  * 
+
+-------------------------------------------------------------------
 Thu Mar  5 21:53:14 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Remove redundant Neovim workaround
