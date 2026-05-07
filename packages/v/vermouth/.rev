@@ -136,4 +136,16 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Changed CORP address in readme</comment>
     <requestid>1351079</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7595ca9bc1ec0d0f4cf831f1c207266f</srcmd5>
+    <version>1.7.2</version>
+    <time>1778161478</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.7.2
+- Upstream changes:
+  * Fix the search bar, tab bar and platform combobox in lights out mode
+  * fix: Fix for balooning icons and umu downloader
+  * Updated README with the new features</comment>
+    <requestid>1351307</requestid>
+  </revision>
 </revisionlist>
