@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  7 05:54:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.27
+  * Improved: translations
+  * Improved: new build option BUILD_DEVEL (D:ON), for all
+    public devel files
+  * Changed: cursor placed at begin/end of ended selection on
+    Left/Right keys
+  * Fixed: potential editing data breakages or crashes during
+    Undo/Redo
+
+-------------------------------------------------------------------
 Tue Apr  7 18:59:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.26.26
