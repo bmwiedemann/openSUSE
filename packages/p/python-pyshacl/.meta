@@ -1,0 +1,5 @@
+<package name="python-pyshacl" project="openSUSE:Factory">
+  <title>Python SHACL Validator</title>
+  <description>This is a pure Python module which allows for the validation of RDF graphs against Shapes Constraint Language (SHACL) graphs. This module uses the rdflib Python library for working with RDF and is dependent on the OWL-RL Python module for OWL2 RL Profile based expansion of data graphs.</description>
+  <url>https://github.com/RDFLib/pySHACL</url>
+</package>
