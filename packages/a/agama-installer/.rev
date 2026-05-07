@@ -516,4 +516,22 @@
     <comment>Automatic update from systemsmanagement:Agama:Release</comment>
     <requestid>1346931</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>c81da9fb9f1fa30bcab72e49dee513d9</srcmd5>
+    <version>20.0.0</version>
+    <time>1778161411</time>
+    <user>anag_factory</user>
+    <comment>- Fixed medium check (bsc#1262311)
+  - Properly check the medium when booting from HDD or USB flash
+  - Fixed waiting for a key press when the check is finished
+
+- bsc#1262229
+  - Dropped mediacheck from the kiwi file as it caused build errors
+    after kiwi upgraded to new version 
+
+- bsc#1261932
+  - Explicitly allow virtual terminal switching for the gnome kiosk
+    session</comment>
+    <requestid>1350961</requestid>
+  </revision>
 </revisionlist>
