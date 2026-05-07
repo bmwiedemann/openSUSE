@@ -475,4 +475,26 @@
     <comment>certbot version bump</comment>
     <requestid>1339350</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>fbcf5e7e96b26f87bafc82610859f34a</srcmd5>
+    <version>5.5.0</version>
+    <time>1778161469</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.5.0:
+  * Moved nearly all code for the certbot-nginx and certbot-
+    apache plugins into private modules in the certbot package
+    which now offers &quot;apache&quot; and &quot;nginx&quot; extras. Users should
+    notice no major changes. certbot-apache and certbot-nginx
+    will continue to exist as simple packages that depend on
+    certbot and also help register the plugin with certbot so it
+    knows the functionality is available. Unit tests for these
+    plugins are now also part of the certbot package.
+  * The certbot.ocsp module has been deprecated and will be
+    removed in the next major release. This is not a change to
+    Certbot's OCSP functionality. The code is just being removed
+    from Certbot's public API.
+
+  * Our runtime dependency on setuptools has been dropped from all</comment>
+    <requestid>1351308</requestid>
+  </revision>
 </revisionlist>
