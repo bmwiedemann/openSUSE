@@ -20,7 +20,7 @@
 # SLE
 %define _exclusive_arch x86_64 aarch64
 %else
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
 # ALP
 %define _exclusive_arch x86_64
 %else
@@ -171,7 +171,7 @@ case "${distro}" in
     registry=registry.opensuse.org
     ;;
 *)
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
     tagprefix=alp/kubevirt
     labelprefix=com.suse.kubevirt
     registry=registry.suse.com
