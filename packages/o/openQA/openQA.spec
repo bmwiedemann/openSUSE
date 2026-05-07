@@ -47,7 +47,12 @@
 %bcond_with devel_package
 %bcond_with munin_package
 %else
+# exclude devel sub package on Leap < 16 as not all develoment dependencies are present anymore
+%if 0%{?is_opensuse} && 0%{?suse_version} < 1600
+%bcond_with devel_package
+%else
 %bcond_without devel_package
+%endif
 %bcond_without munin_package
 %endif
 # runtime requirements that also the testsuite needs
@@ -90,16 +95,16 @@
 %define qemu qemu
 %endif
 # The following line is generated from dependencies.yaml
-%define style_check_requires ShellCheck pandoc perl(Code::TidyAll) perl(Perl::Critic) perl(Perl::Critic::Community) perl(Pod::Markdown) perl(Test::Perl::Critic) python3-gitlint python3-yamllint shfmt
+%define style_check_requires ShellCheck perl(Code::TidyAll) perl(Perl::Critic) perl(Perl::Critic::Community) perl(Pod::Markdown) perl(Test::Perl::Critic) python3-gitlint python3-yamllint shfmt
 # The following line is generated from dependencies.yaml
 %define cover_requires perl(Devel::Cover) perl(Devel::Cover::Report::Codecovbash)
 # The following line is generated from dependencies.yaml
-%define devel_no_selenium_requires %build_requires %cover_requires %qemu %style_check_requires %test_requires curl make perl(Perl::Tidy) perl(Test::CheckGitStatus) postgresql-devel rsync sudo tar xorg-x11-fonts
+%define devel_no_selenium_requires %build_requires %cover_requires %qemu %style_check_requires %test_requires curl make pandoc perl(Perl::Tidy) perl(TAP::Harness::JUnit) perl(Test::CheckGitStatus) postgresql-devel python3-weasyprint rsync sudo tar xorg-x11-fonts
 # The following line is generated from dependencies.yaml
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1777995277.b985bea2
+Version:        5.1778134320.e889287c
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later

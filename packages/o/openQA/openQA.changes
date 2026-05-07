@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May 07 06:12:10 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1778134320.e889287c:
+  * test: simplify postgres healthcheck in docker-compose
+  * fix: correctly handle MOJO_CLIENT_DEBUG in Helm chart
+  * test: add yamale and yamllint to test_helm_chart dependencies
+  * test: fail early in test_helm_chart if dependencies are missing
+  * test: use isolated environment for helm chart tests
+  * test: serialize helm chart test execution
+  * refactor: Remove superfluous line in script usage
+  * style: Enforce perlcritic policy Subroutines::RequireArgUnpacking
+  * fix: ktap: ignore selftest status comments
+  * fix(apparmor): allow write to /dev/tty necessary for Leap 16
+  * chore(spec): Exclude devel sub package from builds for Leap < 16
+  * ci: Ensure all required dependencies are part of the devel container
+  * fix(apparmor): allow further paths for 16.x
+
+-------------------------------------------------------------------
 Tue May 05 15:34:46 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1777995277.b985bea2:
