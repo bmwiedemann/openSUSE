@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  7 11:20:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0
+  Added
+  * Support SRV-style NTS pools (experimental).
+  * Support systemd service startup notifications.
+  Changed
+  * NTPv5 draft support now targets draft 8.
+  * Updated dependencies.
+
+-------------------------------------------------------------------
 Thu Apr  2 13:23:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.2
