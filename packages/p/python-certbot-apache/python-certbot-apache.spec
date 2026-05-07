@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-apache
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        Apache plugin for Certbot
 License:        Apache-2.0
@@ -52,7 +52,7 @@ The Apache plugin for Certbot.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# tests are in certbot main package
 
 %files %{python_files}
 %doc README.rst
