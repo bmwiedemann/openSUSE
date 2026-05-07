@@ -18,7 +18,7 @@ collection of phonetic encoding utilities."/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
   <property name="project.organization.url" value="http://commons.apache.org/proper/commons-codec/"/>
   
-  <property name="spec.version" value="1.21"/>
+  <property name="spec.version" value="1.22"/>
   <property name="project.version" value="${spec.version}.0"/>
   <property name="bundle.version" value="${project.version}"/>
   <property name="bundle.symbolicName" value="org.apache.commons.commons-codec"/>

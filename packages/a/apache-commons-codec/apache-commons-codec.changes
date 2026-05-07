@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May  6 07:06:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.22.0
+  * New features
+    + CODEC-326: Add Base58 support
+    + Add BaseNCodecInputStream.AbstracBuilder.setByteArray(byte[])
+    + CODEC-335: Add GitIdentifiers to compute Git blob and tree
+      object identifiers
+  * Fixed Bugs
+    + CODEC-249: Fix Incorrect transform of CH digraph according
+      Metaphone basic rules #423
+    + CODEC-317: ColognePhonetic can create duplicate consecutive
+      codes in some cases
+    + Add boundary tests for BinaryCodec.fromAscii partial-bit
+      inputs #425
+    + CODEC-336: Base64.Builder.setUrlSafe(boolean) Javadoc
+      incorrectly states null is accepted for primitive boolean
+      parameter
+  * Changes
+    + Bump org.apache.commons:commons-parent from 96 to 98
+
+-------------------------------------------------------------------
 Mon Mar 30 06:29:07 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Clean up the spec file
