@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  5 11:47:16 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Support the quote rpm macro
+- Build::Docker: parse microdnf as a dnf-equivalent package manager
+- SPDX: Put the '+' suffix into a licence reference
+- podman: fix armv7 option
+- use configured repositories from config file as default
+- s390x: recent kernels dropped 32bit support, personality handling fies
+
+-------------------------------------------------------------------
 Wed Apr 15 13:09:08 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Support a new "IgnoreRebuild" config.

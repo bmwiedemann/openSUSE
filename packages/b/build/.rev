@@ -2110,4 +2110,17 @@ Changes:
 - build-vm-lxc: support lxc &gt;= 5</comment>
     <requestid>1347152</requestid>
   </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>cdd2adcb38e3d2950eedb62c0a99c97c</srcmd5>
+    <version>20260505</version>
+    <time>1778161387</time>
+    <user>anag_factory</user>
+    <comment>- Support the quote rpm macro
+- Build::Docker: parse microdnf as a dnf-equivalent package manager
+- SPDX: Put the '+' suffix into a licence reference
+- podman: fix armv7 option
+- use configured repositories from config file as default
+- s390x: recent kernels dropped 32bit support, personality handling fies</comment>
+    <requestid>1350958</requestid>
+  </revision>
 </revisionlist>
