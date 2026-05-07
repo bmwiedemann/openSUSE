@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 06 16:05:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.16.0:
+  * Verify against raw git object bytes (#802)
+
+-------------------------------------------------------------------
 Fri May 01 21:27:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.15.1 (.0 was not released):
