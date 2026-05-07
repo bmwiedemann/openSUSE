@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Thu May  7 11:49:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Replace systemd with pkgconfig(systemd) in BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar 26 12:50:28 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Import initial version 2.2+20260207_0a55ca4 (jsc#PED-14486)
