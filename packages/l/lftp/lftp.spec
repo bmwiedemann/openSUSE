@@ -1,7 +1,7 @@
 #
 # spec file for package lftp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -49,13 +49,10 @@ BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       less
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Conflicts:      ftp
 
 %description
