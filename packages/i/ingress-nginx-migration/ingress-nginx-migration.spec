@@ -17,7 +17,7 @@
 
 
 Name:           ingress-nginx-migration
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Analyze Kubernetes NGINX Ingress resources to help with migration to Traefik
 License:        Apache-2.0
