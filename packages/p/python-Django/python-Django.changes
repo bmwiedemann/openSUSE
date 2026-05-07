@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  6 08:30:22 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.14
+  * CVE-2026-5766: Potential denial-of-service vulnerability in ASGI
+    requests via file upload limit bypass (bsc#1264153)
+  * CVE-2026-35192: Session fixation via public cached pages and
+    SESSION_SAVE_EVERY_REQUEST (bsc#1264154)
+  * CVE-2026-6907: Potential exposure of private data due to incorrect
+    handling of Vary: * in UpdateCacheMiddleware (bsc#1264152)
+
+-------------------------------------------------------------------
 Thu Apr  9 06:54:26 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.13

@@ -1524,4 +1524,18 @@
     ASGI requests via memory upload limit bypass (bsc#1261724)</comment>
     <requestid>1345439</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>a1361290b604fa26099f7cf3af804fe6</srcmd5>
+    <version>5.2.14</version>
+    <time>1778161392</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.2.14
+  * CVE-2026-5766: Potential denial-of-service vulnerability in ASGI
+    requests via file upload limit bypass (bsc#1264153)
+  * CVE-2026-35192: Session fixation via public cached pages and
+    SESSION_SAVE_EVERY_REQUEST (bsc#1264154)
+  * CVE-2026-6907: Potential exposure of private data due to incorrect
+    handling of Vary: * in UpdateCacheMiddleware (bsc#1264152)</comment>
+    <requestid>1351138</requestid>
+  </revision>
 </revisionlist>
