@@ -1,4 +1,16 @@
 --------------------------------------------------------------------
+Wed May 6 16:05:58 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#785
+- remove pipewire dependency (and w0vncserver) as it would include
+  all kinds of multimedia stuff
+- link /usr/lib/sysimage/rpm to /var/lib/rpm to ensure the dir is
+  writable (bsc#1254914)
+- adjust to latest memtest86+ package changes (bsc#1264242)
+- add dbus service compat symlink
+- 17.175
+
+--------------------------------------------------------------------
 Wed Feb 11 16:33:16 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#784
