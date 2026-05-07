@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  6 14:32:29 UTC 2026 - Jiri Bohac <jbohac@suse.com>
+
+- drop unconditional calibrate BuildRequires
+
+-------------------------------------------------------------------
 Fri Apr 10 15:09:45 UTC 2026 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.1.9

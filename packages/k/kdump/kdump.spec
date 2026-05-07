@@ -73,10 +73,7 @@ BuildRequires:  util-linux-systemd
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 #!BuildIgnore:  fop
-# dependencies needed when with_calibrate is turned on
-# OBS does not work with conditional buildrequires
-# so turn them on unconditionally
-# %if %{with calibrate}
+%if %{with calibrate}
 BuildRequires:  %qemu
 BuildRequires:  udev
 BuildRequires:  systemd
@@ -102,8 +99,7 @@ BuildRequires:  e2fsprogs
 BuildRequires:  qemu-ipxe
 BuildRequires:  qemu-vgabios
 %endif
-# end of with_calibrate dependencies
-# %endif
+%endif
 Requires:       /usr/bin/sed
 Requires:       dracut >= 047
 Requires:       kexec-tools

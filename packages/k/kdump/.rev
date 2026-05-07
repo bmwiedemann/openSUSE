@@ -1532,4 +1532,12 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
 - update calibrate values</comment>
     <requestid>1345855</requestid>
   </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>f83639b8d3eaa179a6e626029aa63b05</srcmd5>
+    <version>2.1.9</version>
+    <time>1778161406</time>
+    <user>anag_factory</user>
+    <comment>- drop unconditional calibrate BuildRequires</comment>
+    <requestid>1351231</requestid>
+  </revision>
 </revisionlist>
