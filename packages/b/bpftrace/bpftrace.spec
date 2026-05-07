@@ -87,6 +87,13 @@ find tools -name '*.bt' -type f \
 %define _lto_cflags %{nil}
 export CC="%cc_binary"
 export CXX="%xx_binary"
+
+%ifarch ppc64le
+# Use IEEE long double ABI to match system libbpf
+export CFLAGS="%{optflags} -mabi=ieeelongdouble"
+export CXXFLAGS="%{optflags} -mabi=ieeelongdouble"
+%endif
+
 %cmake \
 	-DCMAKE_INTERPROCEDURAL_OPTIMIZATION:BOOL=TRUE \
 	-DLLVM_REQUESTED_VERSION="${LLVM_VERSION}" \

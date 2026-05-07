@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  6 15:55:00 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Fix ppc64le build issue due to long double ABI mismatch with static libbpf
+ * Since 0.25.1, USE_SYSTEM_LIBBPF builds link against static libbpf.a
+ * Match GCC-built system libbpf's IEEE long double ABI on ppc64le
+
+-------------------------------------------------------------------
 Mon Apr 27 22:10:54 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Add libbpf-devel-static as build dependency
