@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 17:20:53 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update smartmontools-drivedb.h to the latest version from the
+  upstream branch 7.5.
+
+-------------------------------------------------------------------
 Mon Mar 30 08:08:16 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - NEW DEFAULT: Never check disks that do not spin
