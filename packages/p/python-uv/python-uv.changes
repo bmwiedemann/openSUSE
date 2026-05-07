@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed May  6 15:26:15 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.10 
+ * Enhancements
+  * Omit compatible release desugaring for pre-release hints 
+  * Fix file locks on Android 
+ * Preview
+  * uv audit add reporting for adverse project statuses 
+ * Bug fixes
+  * Allow pre-release Python requests with non-zero patch versions
+  * Discover versioned Python executables when requires-python pins a version 
+  * Fix URL prefix matching to require path boundaries 
+  * Fix transitive Git path dependencies in lockfiles 
+  * Handle incorrect unlock error in LockedFile::drop on Wine 
+  * Prevent uninstalling site-packages for empty top_level.txt in .egg-info 
+  * Use symlinks instead of junctions on Wine 
+  * Fix floating-point environment handling on ARMv7 
+  * Redact credentials from remote requirements URL in offline errors 
+  * Windows tramplolines no longer set PYTHONHOME and only set __PYVENV_LAUNCHER__ for virtual environments 
+ * Documentation
+  * Mark --native-tls and UV_NATIVE_TLS as deprecated 
+  * Re-add pytorch-triton-rocm to PyTorch ROCm docs 
+  * Add 'Exporting lockfiles' to the Concepts->Projects index 
+  * Clarify that uv init creates git files / folders in the projects guide 
+
+-------------------------------------------------------------------
 Tue Apr 28 10:13:26 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.8 
