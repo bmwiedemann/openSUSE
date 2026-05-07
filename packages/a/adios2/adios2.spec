@@ -1,7 +1,7 @@
 #
 # spec file for package adios2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@%{nil}
 %define major_ver 2
-%define minor_ver 11
+%define minor_ver 12
 %define patch_ver 0
 # Name the suffix of the pkg
 %if "%{flavor}" != "%{nil}"
@@ -81,7 +81,8 @@ Group:          Productivity/Scientific/Other
 URL:            https://adios2.readthedocs.io/en/
 Source0:        https://github.com/ornladios/ADIOS2/archive/refs/tags/v%{version}.tar.gz#/ADIOS2-%{version}.tar.gz
 Source1:        adios2-rpmlintrc
-# PATCH-FIX-UPSTREAM boo#1244421
+# Needed for arm64 jobs: https://github.com/ornladios/ADIOS2/pull/5006
+Patch0:         adios2-pr-5006.patch
 ExcludeArch:    %{ix86}
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -281,7 +282,6 @@ source %{pkg_prefix}/bin/mpivars.sh
 %files -n %{shlib}
 %license Copyright.txt
 %{pkg_libdir}/*.so.*
-%{pkg_libdir}/adios2-evpath-modules-%{major_ver}_%{minor_ver}
 
 %if %{with python}
 %files -n %{pylib}

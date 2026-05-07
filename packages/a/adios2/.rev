@@ -121,4 +121,36 @@
     <comment></comment>
     <requestid>1321401</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>52beaba14c1ad3eb2a8cf2364acdc479</srcmd5>
+    <version>2.12.0</version>
+    <time>1778161430</time>
+    <user>anag_factory</user>
+    <comment>- Added ADIOS2 v2.12.0:
+  * C API: new two-call pattern functions for safely retrieving strings of unknown length.
+  * New Selection class for Get() bundling spatial, block, and step parameters.
+  * Plugin Interface v2 (breaking): engine/operator plugins no longer inherit from internal core types.
+  * Minimum C++ standard raised from C++14 to C++17.
+  * BP5 can now write data files to S3-compatible object storage.
+  * Python bindings migrated from pybind11 to nanobind for smaller, faster extension modules.
+  * New Encryption operator using libsodium sealed-box (X25519 + XSalsa20-Poly1305).
+  * New SZ3 lossy compression operator.
+  * New RefactorProDM operator integrating ADIOS2 with ProDM decomposition library.
+  * Python bindings are now compatible with free-threaded Python (PEP 703, python3.13t).
+  * New HTTPS transport (XrootdHttpsRemote) using libcurl as XRootD alternative.
+  * XRootD server plugin: idle FD eviction, shared FD across engines, batched variable reads.
+  * Cross-endian interoperability always enabled; ADIOS2_USE_Endian_Reverse CMake option removed.
+  * Campaign reader: host aliases, XRootD entries, in-memory metadata caching, faster SQLite query.
+  * BP5 datasets and files can now be read from TAR archives.
+  * BP5 engine parameter DataTransport renamed to DataFileTransport (breaking).
+  * BP5 data reading now uses per-subpool locking for safe concurrent multi-thread reads.
+  * Python Stream: new minmax() method returns per-step or global min/max for a variable.
+  * Inline engine now supports basic output buffering.
+  * CI runs pip wheel integration tests on Windows and macOS.
+  * ADIOS2 now complies with the REUSE specification for machine-readable SPDX licenses.
+  * Release notes: https://github.com/ornladios/ADIOS2/releases/tag/v2.12.0
+- Added patch needed for aarch64 packages: adios2-pr-5006.patch
+</comment>
+    <requestid>1351251</requestid>
+  </revision>
 </revisionlist>
