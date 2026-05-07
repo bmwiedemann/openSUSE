@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  6 15:40:29 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.5.0:
+  * feat: add --write-output flag to helmfile fetch for air-gapped
+    environments by @yxxhero in #2572
+  * feat: add 'create' subcommand to scaffold helmfile deployment
+    projects by @yxxhero in #2574
+  * docs: restructure documentation and improve newcomer experience
+    by @yxxhero in #2573
+  * docs: deduplicate Technical Details sections in
+    values-and-merging.md by @yxxhero in #2575
+
+-------------------------------------------------------------------
 Sun May  3 09:28:39 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.4.5:
