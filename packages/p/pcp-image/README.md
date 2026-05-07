@@ -13,7 +13,7 @@ $ podman run -d \
     -p 44321:44321 \
     -p 44322:44322 \
     -v pcp-archives:/var/log/pcp/pmlogger \
-    registry.opensuse.org/opensuse/pcp:6.2.1
+    registry.opensuse.org/opensuse/pcp:6.3.8
 ```
 
 **Note:** On SELinux enabled systems, the following boolean needs to be set: `sudo setsebool -P container_manage_cgroup true`
@@ -29,7 +29,7 @@ $ sudo podman run -d \
     -e HOST_MOUNT=/host \
     -v pcp-archives:/var/log/pcp/pmlogger \
     -v /:/host:ro,rslave \
-    registry.opensuse.org/opensuse/pcp:6.2.1
+    registry.opensuse.org/opensuse/pcp:6.3.8
 ```
 
 ## Configuration
@@ -64,7 +64,7 @@ $ podman run -d \
     -e PCP_SERVICES=pmlogger \
     -v $(pwd)/pmlogger.control:/etc/pcp/pmlogger/control.d/local:z \
     -v pcp-archives:/var/log/pcp/pmlogger \
-    registry.opensuse.org/opensuse/pcp:6.2.1
+    registry.opensuse.org/opensuse/pcp:6.3.8
 ```
 
 pmlogger.control:

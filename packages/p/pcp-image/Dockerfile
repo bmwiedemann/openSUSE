@@ -15,9 +15,9 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/pcp:6.2.1-%RELEASE%
-#!BuildTag: opensuse/pcp:6.2.1
-#!BuildTag: opensuse/pcp:6.2
+#!BuildTag: opensuse/pcp:6.3.8-%RELEASE%
+#!BuildTag: opensuse/pcp:6.3.8
+#!BuildTag: opensuse/pcp:6.3
 #!BuildTag: opensuse/pcp:6
 #!BuildTag: opensuse/pcp:latest
 
@@ -43,13 +43,13 @@ RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shad
 # labelprefix=org.opensuse.application.pcp
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed Performance Co-Pilot (pcp)"
 LABEL org.opencontainers.image.description="Performance Co-Pilot (pcp) container based on the openSUSE Tumbleweed Base Container Image. This container is only supported with podman."
-LABEL org.opencontainers.image.version="6.2.1"
+LABEL org.opencontainers.image.version="6.3.8"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="6.2.1-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/pcp:6.2.1-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="6.3.8-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/pcp:6.3.8-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
