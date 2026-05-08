@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May  1 21:39:14 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to 1.17.0
+  * Added support for Mermaid diagrams, via new commands @mermaid,
+    @endmermaid, and @mermaidfile
+  * Added support for running dot on batches of dot graphs to
+    reduce process creation overhead.
+  * Added support for documenting unnamed parameters
+  * Improve multi-threading performance by avoiding mutex
+    contention
+- Add doxygen-12117-test-tagfile.patch to fix failing test.
+  Merged upstream from https://github.com/doxygen/doxygen/pull/12117
+
+-------------------------------------------------------------------
 Tue Jan 20 08:50:22 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - drop %suse_update_desktop_file usage

@@ -2553,4 +2553,21 @@ On Leap15/SLE15 a newer GCC is needed to build against Qt6. On SLE15 the default
   * doxywizard.desktop</comment>
     <requestid>1328250</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>912efa57225a1d2b48b60a04c93086b7</srcmd5>
+    <version>1.17.0</version>
+    <time>1778251352</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.17.0
+  * Added support for Mermaid diagrams, via new commands @mermaid,
+    @endmermaid, and @mermaidfile
+  * Added support for running dot on batches of dot graphs to
+    reduce process creation overhead.
+  * Added support for documenting unnamed parameters
+  * Improve multi-threading performance by avoiding mutex
+    contention
+- Add doxygen-12117-test-tagfile.patch to fix failing test.
+  Merged upstream from https://github.com/doxygen/doxygen/pull/12117 (forwarded request 1350428 from mathletic)</comment>
+    <requestid>1351386</requestid>
+  </revision>
 </revisionlist>
