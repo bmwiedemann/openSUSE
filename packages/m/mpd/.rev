@@ -894,4 +894,17 @@
   https://github.com/pupnp/pupnp/issues/528</comment>
     <requestid>1334722</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>645fe7eec3648e216914c9eac9b11895</srcmd5>
+    <version>0.24.10</version>
+    <time>1778251383</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.24.10
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.10/NEWS
+  * input: curl: fixed build failure after CURL 8.19 API change
+  * input: cache: fixed deadlock bug
+  * decoder: sidplay: supported libsidplayfp &gt;= 3 and millisecond-precision time stamps
+  * output: fixed auto-reopen after error times out</comment>
+    <requestid>1351467</requestid>
+  </revision>
 </revisionlist>

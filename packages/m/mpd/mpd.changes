@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  7 15:36:58 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.24.10
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.10/NEWS
+  * input: curl: fixed build failure after CURL 8.19 API change
+  * input: cache: fixed deadlock bug
+  * decoder: sidplay: supported libsidplayfp >= 3 and millisecond-precision time stamps
+  * output: fixed auto-reopen after error times out
+
+-------------------------------------------------------------------
 Tue Feb 24 12:28:02 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Used libnpupnp instead of libupnp,

@@ -18,7 +18,7 @@
 
 %define ver 0.24
 Name:           mpd
-Version:        %{ver}.8
+Version:        %{ver}.10
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
@@ -66,7 +66,7 @@ BuildRequires:  pkgconfig(libmodplug)
 BuildRequires:  pkgconfig(libmp3lame)
 BuildRequires:  pkgconfig(libmpdclient)
 BuildRequires:  pkgconfig(libmpg123)
-BuildRequires:  pkgconfig(libnfs) >= 4
+BuildRequires:  pkgconfig(libnfs)
 BuildRequires:  pkgconfig(libnpupnp)
 BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpcre2-8)
