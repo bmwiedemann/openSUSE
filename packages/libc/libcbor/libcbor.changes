@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Thu May  7 05:56:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.0:
+  * Fix NULL dereference in `cbor_move`, `cbor_serialized_size`,
+    and `cbor_serialize_tag` when a tag has no item set (reported
+    by Benjamin608608)
+  * Document large-allocation risk in `cbor_load` and clarify
+    test-only CMake flags
+  * Fix NULL dereference in `cbor_copy`/`cbor_copy_definite` on
+    allocation failure (reported by Benjamin608608)
+  * Explicitly guard against `size * 2` overflow in
+    `cbor_builder_map_start_callback` (reported by
+    Benjamin608608)
+  * Only generate CMake coverage build targets when explicitly
+    enabled
+  * [Fix CMake feature macro names and ensure `_CBOR_NODISCARD`
+    is defined with
+    `[[nodiscard]]`](https://github.com/PJK/libcbor/pull/385)
+  * Fix integer overflow in `cbor_copy_definite()` when
+    accumulating indefinite bytestring/string chunk lengths
+  * Add bounds check in `cbor_array_get()` to return NULL on out-
+    of-bounds access
+  * BREAKING: `cbor_tag_set_item` now releases the reference to
+    the previous tagged item
+  * Previously, replacing the tagged item would leak the old
+    item's reference. If you were manually releasing the old item
+    before calling `cbor_tag_set_item`, you should remove the
+    extra `cbor_decref`.
+  * Potentially BREAKING: `cbor_tag_item` now returns NULL if the
+    tag has no item set
+  * Previously, this would be undefined behavior (NULL pointer
+    dereference), so no valid clients should be affected.
+  * Potentially BUILD BREAKING: CPack Debian package architecture
+    is now detected via `dpkg` instead of being hardcoded to
+    `amd64`
+  * BUILD BREAKING: Remove deprecated `CBOR_CUSTOM_ALLOC` CMake
+    option
+  * The option has been a no-op since 0.10.0. If your build
+    passes `-DCBOR_CUSTOM_ALLOC=ON`, remove it.
+  * Modernize CMake build: use `project(VERSION ...)`, replace
+    `add_definitions()` with target-scoped
+    `target_compile_definitions()`, remove redundant
+    `include_directories()`
+  * Replace global `CMAKE_C_FLAGS` mutations with target-scoped
+    `target_compile_options()` via an INTERFACE library, and
+    simplify LTO configuration
+  * Fix Windows CI: propagate `_CRT_SECURE_NO_WARNINGS` to
+    examples/tests, restrict LTO to Release builds, parallelize
+    Windows CI build
+  * Add `cbor_map_get` for key-based map lookup with a caller-
+    supplied equality function
+  * Signature: `cbor_map_get(map, key, eq)` — pass any equality
+    predicate, e.g. `cbor_structurally_equal`
+  * Parameterised equality allows type-specific comparators or
+    custom data-model semantics without library changes
+  * See also: #96
+  * Add `cbor_structurally_equal` for encoding-level item
+    comparison
+  * Compares two items structurally: encoding width, definite-vs-
+    indefinite length, chunk boundaries, and map entry order all
+    count
+  * Runs in O(n) time in the encoded byte size with no additional
+    allocations
+  * See also: #96
+  * BREAKING: Fix NaN encoding in `cbor_encode_half` to preserve
+    sign and payload bits
+  * Previously, all NaN values were encoded as `0x7E00` (positive
+    quiet NaN, zero payload). Now the sign bit and the top 10
+    mantissa bits are preserved in the half-precision encoding.
+  * `_cbor_decode_half` now reconstructs the NaN bit pattern
+    faithfully, enabling encode/decode round-trips. Previously it
+    always returned the C `NAN` constant.
+  * Very small normal floats that previously rounded to `+0` now
+    round to `±0` depending on their sign.
+  * Clients that relied on all NaNs normalising to `0x7E00` will
+    see different output. See #215.
+
+-------------------------------------------------------------------
 Tue Sep  2 12:59:34 UTC 2025 - pgajdos@suse.com
 
 - version update to 0.13.0
@@ -55,7 +133,7 @@ Tue Sep  2 12:59:34 UTC 2025 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Jan 21 00:44:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Explicitly BuildRequire sphinx_rtd_theme. 
+- Explicitly BuildRequire sphinx_rtd_theme.
 
 -------------------------------------------------------------------
 Mon Sep 16 09:29:46 UTC 2024 - Eric Schirra <ecsos@opensuse.org>
@@ -102,7 +180,7 @@ Wed Feb 22 09:27:59 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 -------------------------------------------------------------------
 Mon Jan 16 15:32:07 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 0.10.1: 
+- Update to 0.10.1:
   * BREAKING: Fix cbor_copy leaking memory and creating invalid items when the allocator fails.
   * BREAKING: Improved half-float encoding for denormalized numbers. [#208]
   * Make the buffer_size optional in cbor_serialize_alloc [#205]
@@ -121,7 +199,7 @@ Fri Aug 26 05:23:10 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Tue Dec  7 15:27:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- fix duplicate src package name issue on multibuild 
+- fix duplicate src package name issue on multibuild
 
 -------------------------------------------------------------------
 Sun Dec  5 09:42:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -173,4 +251,4 @@ Fri Sep 28 18:57:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 Thu Apr 26 08:55:27 UTC 2018 - t.gruner@katodev.de
 
 - Initial release 0.5.0
- 
+
