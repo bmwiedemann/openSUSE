@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed May  6 19:02:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.33.4:
+  * Patch Changes
+    - Pin the integrity of git-hosted tarballs
+      (codeload.github.com, gitlab.com, bitbucket.org) in the
+      lockfile so that subsequent installs detect a tampered or
+      substituted tarball and refuse to install it. Previously the
+      lockfile only stored the tarball URL for git dependencies, so
+      a compromised git host or a man-in-the-middle could serve
+      arbitrary code on later installs without lockfile changes.
+    - A new gitHosted: true field is recorded on git-hosted tarball
+      resolutions in the lockfile, letting every reader/writer
+      route them by a single typed check instead of
+      pattern-matching the tarball URL in each call site. Lockfiles
+      written by older pnpm versions are enriched on load (URL
+      fallback) so the field can be relied on uniformly across the
+      codebase.
+    - Fix a regression where pnpm --recursive --filter '!<pkg>'
+      run/exec/test/add would include the workspace root in the
+      matched projects. The workspace root is now correctly
+      excluded by default when only negative --filter arguments are
+      provided, matching the documented behavior. To include the
+      root, pass --include-workspace-root #11341.
+- update to 10.33.3:
+  * Patch Changes
+    - When self-updating from v10's @pnpm/exe to v11+ on Intel
+      macOS (darwin-x64), pnpm self-update now transparently
+      switches to the JS-only pnpm package on npm instead of
+      installing @pnpm/exe@v11+ (which doesn't ship a working
+      binary for Intel Macs because of an upstream Node.js SEA bug
+      — see #11423 and nodejs/node#62893). Without this, the
+      self-update would silently leave the user with no working
+      pnpm binary. The new install requires Node.js to be available
+      on PATH; a warning is printed when the swap happens. All
+      other host/version combinations are unchanged.
+    - pnpm self-update (with no version argument) no longer
+      downgrades pnpm when the registry's latest dist-tag points to
+      an older release than the currently active version. Run pnpm
+      self-update latest to force a downgrade #11418.
+
+-------------------------------------------------------------------
 Sun Apr 26 11:04:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 10.33.2:

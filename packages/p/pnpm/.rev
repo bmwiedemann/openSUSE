@@ -968,4 +968,41 @@ Patch Changes
       etc.) are now handed over to the wanted pnpm, which</comment>
     <requestid>1351036</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>f22e951476af74ce1381183095b821ec</srcmd5>
+    <version>10.33.4</version>
+    <time>1778251566</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.33.4:
+  * Patch Changes
+    - Pin the integrity of git-hosted tarballs
+      (codeload.github.com, gitlab.com, bitbucket.org) in the
+      lockfile so that subsequent installs detect a tampered or
+      substituted tarball and refuse to install it. Previously the
+      lockfile only stored the tarball URL for git dependencies, so
+      a compromised git host or a man-in-the-middle could serve
+      arbitrary code on later installs without lockfile changes.
+    - A new gitHosted: true field is recorded on git-hosted tarball
+      resolutions in the lockfile, letting every reader/writer
+      route them by a single typed check instead of
+      pattern-matching the tarball URL in each call site. Lockfiles
+      written by older pnpm versions are enriched on load (URL
+      fallback) so the field can be relied on uniformly across the
+      codebase.
+    - Fix a regression where pnpm --recursive --filter '!&lt;pkg&gt;'
+      run/exec/test/add would include the workspace root in the
+      matched projects. The workspace root is now correctly
+      excluded by default when only negative --filter arguments are
+      provided, matching the documented behavior. To include the
+      root, pass --include-workspace-root #11341.
+- update to 10.33.3:
+  * Patch Changes
+    - When self-updating from v10's @pnpm/exe to v11+ on Intel
+      macOS (darwin-x64), pnpm self-update now transparently
+      switches to the JS-only pnpm package on npm instead of
+      installing @pnpm/exe@v11+ (which doesn't ship a working
+      binary for Intel Macs because of an upstream Node.js SEA bug
+      — see #11423 and nodejs/node#62893). Without this, the</comment>
+    <requestid>1351492</requestid>
+  </revision>
 </revisionlist>
