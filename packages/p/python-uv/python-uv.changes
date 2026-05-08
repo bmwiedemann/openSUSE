@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  7 16:50:46 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.11 
+ * Bug fixes
+   - Accept legacy ID format from pre-0.11.9 cache entries
+
+-------------------------------------------------------------------
 Wed May  6 15:26:15 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.10 
