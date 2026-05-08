@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  8 07:18:16 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.2.4
+  * fix changes merge tool registration to actually update the file
+
+-------------------------------------------------------------------
 Thu Sep 11 09:52:16 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - Update to 0.2.3
