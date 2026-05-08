@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  6 09:44:31 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Disable postgresql13 because it is EOL.
+
+-------------------------------------------------------------------
 Mon May  4 11:24:44 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to 1.1.7
