@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  4 09:12:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- spec: requires_ge takes a package name as parameter, not a full
+  NVR.arch string (that just happens to work sometimes): Fix by
+  passing '--qf "%%{name}' to the rpm call identifying the target
+  package name.
+
+-------------------------------------------------------------------
 Thu Apr 23 01:27:31 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Update to version 1.3.5:

@@ -131,7 +131,7 @@ Suggests:       PackageKit-command-not-found
 # Ensure AppStream repodata is processed
 Requires:       libdnf5-plugin-appstream
 # Stricter dependency to keep things sane
-%requires_ge %(rpm -qf "$(readlink -f %{_libdir}/libdnf5.so)")
+%requires_ge %(rpm --qf "%%{name}" -qf "$(readlink -f %{_libdir}/libdnf5.so)")
 
 %description backend-dnf5
 PackageKit is a system designed to make installing and updating
