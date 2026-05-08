@@ -18,7 +18,7 @@
 %global soversion 0
 
 Name:           sso-mib
-Version:        0.8.1
+Version:        0.9.0
 Release:        1%{?dist}
 Summary:        Tools and library for Single-Sign-On with CA for Entra via Himmelblau
 
@@ -95,10 +95,6 @@ on O365.
 %install
 %meson_install
 
-# Install bash completion for sso-mib-tool
-install -Dpm0644 debian/sso-mib-tool.bash-completion \
-    %{buildroot}%{_datadir}/bash-completion/completions/sso-mib-tool
-
 %check
 %meson_test
 
@@ -121,7 +117,6 @@ install -Dpm0644 debian/sso-mib-tool.bash-completion \
 %files -n sso-mib-tool
 %license LICENSES/GPL-2.0-only.txt
 %{_bindir}/sso-mib-tool
-%{_datadir}/bash-completion/completions/sso-mib-tool
 
 %files -n sso-mib-gch-smtp-o365
 %license LICENSES/MIT.txt

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 7 15:48:15 UTC 2026 - Luca Boccassi <luca.boccassi@gmail.com>
+
+- Import version 0.9.0
+  This bugfix release fixes building without libjwt and implements
+  asking for consent if needed when acquiring a token
+
+-------------------------------------------------------------------
 Thu Apr 23 11:32:49 UTC 2026 - Luca Boccassi <luca.boccassi@gmail.com>
 
 - Import version 0.8.1
