@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Fri May  1 13:45:10 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20260204:
+  * scamper:
+    * print out monitor field -- the name of the system that did the
+  * measurement -- in all json objects.  previously, only "trace" and
+  * "tracelb" measurements printed that field.
+    * do not leak IP4 raw sockets, triggered with use of -O raw in ping
+  * and trace.
+  * sc_remoted:
+    * if the metadata file can't be loaded on startup, say so.
+    * do not start if provided a positional argument, as sc_remoted does
+  * not accept positional arguments and use of positional arguments
+  * suggests user error.
+  * sc_bdrmap:
+    * convert sc_bdrmap to libscamperctrl
+    * add mux support to sc_bdrmap, so that bdrmap can be run on a single
+  * VP attached to a mux socket.  update manual page with details.
+    * gracefully handle measurements rejected by scamper policy -- skip
+  * over them.
+- update to version 20260331:
+  * scamper:
+    * trace: add -O back to conduct traceroutes with decreasing TTL values.
+  * this requires use of -m ttl option.
+    * trace: when -N > 1 is used on a path with a loop, update json to
+  * show path until loop condition was met, rather than on the first
+  * occurrence of an address involved in a loop.
+    * trace: emit traceroute flags in json output.
+    * host: add ability to query for HTTPS records
+    * http: add initial TLS Encrypted ClientHello (ECH) support.  this
+  * requires OpenSSL version 4.
+    * http: keep stop reason when cert validation fails, rather than
+  * overwrite with generic error stop reason.
+    * update man page for trace (-O back), host (-t https), http (ECH
+  * options)
+  * sc_remoted:
+    * set unix domain sockets non-blocking to prevent slow readers from
+  * stopping event loop
+    * add more error messages, annotate where error messages are covered
+  * by called functions in more places.
+  * libscamperctrl:
+    * handle data after GO when reading from mux
+    * document currently available libscamperctrl functions in man page.
+  * libscamperfile:
+    * do not loop infinitely when reading some truncated compressed files.
+  * Python module:
+    * EncryptedClientHello support for HTTP test
+    * support https record type in DNS test
+    * change internal uses of list/dict to sets/deque
+  * sc_pinger:
+    * catch SIGINT and SIGTERM to exit gracefully, rework error handling
+  * sc_minrtt:
+    * if a file can't be opened, skip over it, rather than stopping
+  * processing entirely.
+  * throughout:
+    * establish convention to #ifdef for O_NONBLOCK throughout, rather
+  * than HAVE_FCNTL.
+  * tests:
+    * add base64 tests
+    * expand http warts tests
+- update to version 20260420:
+  * scamper:
+    * fix potential one-byte buffer overflow in http when receiving a
+  * large TLS record, where '\0' could be stored the first byte beyond
+  * the end of the buffer.
+    * record receive interface with IPv6 UDP datagram sockets.
+    * handle IP_RECVTTL on BSDs, which returns IP_RECVTTL cmsg (IP_TTL on
+  * Linux).
+    * owamp: record received TTL value and DSCP bits.
+    * fix benign assert in privsep that needed to be updated before last
+  * release.
+    * factor out duplicate code in host
+  * sc_rxifd:
+    * new utility to respond to specific UDP packets with receive
+  * interface name, using DNS TXT records as wire format.
+    * https://www.caida.org/catalog/software/scamper/man/sc_rxifd.1.pdf
+    * pass --enable-sc_rxifd to configure to build this utility.
+  * sc_remoted:
+    * record IPv6 address if scamper were to connect to sc_remoted using
+  * IPv6 address.  load asn6 attribute from metadata.
+  * libscamperctrl:
+    * add scamper_vp_[asn|ipv]6_get routines, bump version.
+  * Python module:
+    * expose maxtime and hsrtt fields in ScamperHttp.
+    * expose ipv6, asn6 fields in ScamperVp, ScamperInst.
+
+-------------------------------------------------------------------
 Tue Jan  6 12:40:50 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 20260105:
