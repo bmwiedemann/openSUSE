@@ -16,7 +16,7 @@
 #
 
 Name:           mistral-vibe
-Version:        2.9.4
+Version:        2.9.5
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
