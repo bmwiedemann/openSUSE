@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Thu May  7 12:30:15 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 1.25.0:
+  Features:
+  * TTL behavior changes: cached records reaching TTL 0 are expired;
+    TTL 0 upstream answers are no longer cached by cachedb;
+    serve-expired-reply-ttl is now capped by the original TTL value;
+    TTL decoding updated to adhere to RFC 8767 section 4
+  * Add new statistics: num.queries.replyaddr_limit and
+    requestlist.current.replies
+  * Add 'log-thread-id' configuration option to log the system-wide
+    Linux thread ID for easier debugging
+  * Add ECC-GOST12 support per RFC 9558 (available as
+    contrib/gost12.patch)
+  * Allow synthesized DNAME TTL=0 to be served from cache within a
+    1-second grace period, reducing recursion for TTL=0 DNAMEs
+    (RFC 2308)
+  * Fix DoT/DoH/DoQ to reload certificates on config reload without
+    requiring a full restart; fast_reload now supports changes to
+    tls-service-key, tls-service-pem and tls-cert-bundle
+  * Allow ip@port notation in control-interface configuration
+  * Add iter-scrub-rrsig option (default: 8) to limit the number of
+    RRSIGs processed by the scrubber
+  * Add 'tls-protocols' configuration option to select which TLS
+    protocol versions are used; TLSv1.2 is re-enabled by default
+  * Add pthread_setname_np support for named threads
+
+  Bug Fixes:
+  * Fix handle leak in pythonmod on pythonmod_init
+  * Fix crash when mesh_detect_cycle_found() is called with no mesh
+    state
+  * Fix modstack_call_init to use the original string when it has
+    changed
+  * Fix fr_atomic_copy_cfg
+  * Fix auth-zone empty label for $ORIGIN when downloading via HTTP
+  * Fix respip and dns64 to be usable simultaneously; RPZ now works
+    with DNS64
+  * Fix HTTPS and QUIC not being enabled when port is listed in
+    interface-automatic-ports
+  * Allow wait-limit-cookie: 0 to disable cookie-validated wait limits
+  * Fix FIPS mode in OpenSSL causing unit test failure
+  * Fix discard-timeout to only drop UDP, not stream connections
+  * Reply with SERVFAIL when the wait-limit is exceeded
+  * Add extended DNS error code for invalid query type
+  * Replace deprecated SWIG $function with $action
+  * Log a warning for possible circular dependency when using hostnames
+    in stub/forward zones
+  * Fix infra cache for NAT64 by moving NAT64 synthesis to the
+    delegation point when adding target addresses
+  * Fix discard-timeout packet accounting in the mesh area
+  * Update IANA portlist
+  * Copy DNSTAP configuration from daemon to workers after fast_reload
+  * Fix HTTP/2 stream mesh state removal and drop handling for
+    postpone_drop and send failures
+  * Log THROWAWAY and (DNSSEC) LAME responses with clearer
+    categorization in log output
+  * Fix EDE removal logic consistency between encoding errors and
+    encoding replies
+  * Fix EDNS subnet scope-zero queries not being stored when
+    forward-no-cache or stub-no-cache is set
+  * Do not initialize quic_table unless QUIC is enabled
+  * Fix fast_reload to copy iter_scrub_ns, iter_scrub_cname and
+    max_global_quota options
+  * Fix allow-notify entries with hostnames to be copied after
+    IPv4/IPv6 lookup; fix skipping hostname lookups when only URLs
+    are configured
+  * Fix NAT64 inconsistency with do-not-query-address during retries
+  * Fix cachedb aggressive negative responses not setting the RA flag
+  * Fix root key priming failure after loading RPZ zones containing
+    ZONEMD RRtype
+  * Fix local-zone always_refuse to also block DS queries
+  * Fix cache lookup/store in external cachedb when forwarder/stub
+    uses the no-cache option
+  * Fix cachedb returning expired bogus data as non-bogus
+  * Fix validator unchecked state handling with validation recursion
+    and EDNS subnet
+  * Fix DNAME lookup flag and assertion in expired calculation debug
+    routine
+  * Fix DNS rebinding bypass via SVCB/HTTPS records; private-address
+    now also elides SVCB and HTTPS records matching the filter
+  * Warn for unused 'nodefault' local-zone configuration in
+    unbound-checkconf
+  * Fix lock/unlock for view in memory error handling
+  * Apply cache TTL policy to DNAME and synthesized CNAME on the
+    wire path
+  * Fix detection of HTTP listening port in fast_reload
+  * Fix ignoring out-of-zone DNAME records for CNAME synthesis
+  * Fix invalid HTTP content length/chunk size checks and RR rdata
+    field length validation in zone transfer, preventing heap
+    buffer-overflow read errors
+  * Fix defense in depth for service callback with empty packet
+  * Fix shared memory statistics with threads
+  * Fix EDNS client subnet to not store SERVFAIL in the global cache
+    after a failed lookup; stores a short-lived failure entry in the
+    subnet cache instead
+  * Fix memory corruption related core dumps when alloc_reg_obtain
+    encounters an empty list
+  * Fix RFC 7766 compliance when client sends EOF over TCP
+  * Fix DoH session cleanup when the same query appears on multiple
+    streams
+  * Fix TLS context setup for tls-service-pem
+  * Fix TTL comparisons in rdata_copy for 32-bit signed/unsigned values
+  * Fix memory leak in subnet SERVFAIL store
+  * Fix for the Jiggle Attack: server now answers errors for error
+    cases and no longer reflects parts of the incoming query
+  * Fix EDNS extended RCODE reflection: server no longer echoes
+    extended RCODE values after CHAOS class queries
+  * Fix iterator RCODE handling of YXDOMAIN: only accept YXDOMAIN
+    answers that contain a DNAME record
+  * Fix missing bounds check when decompressing dnames for downloaded
+    authority zones, preventing malformed content from truncated AXFR
+    packets
+  * Fix upstream TLS connections being reused for different names at
+    the same IP address
+  * Fix to disallow signatures with revoked DNSKEYs
+  * Fix DNAME with unsigned CNAME to check for the correct match,
+    preventing certain zone configurations from granting secure status
+    to unchecked CNAMEs
+  * Fix wildcard CNAME handling in the chain of trust
+  * Fix buffer overrun in doq_repinfo_retrieve_localaddr()
+
+  Packaging changes:
+  * Update keyring to new NLnet Labs release signing key
+
+-------------------------------------------------------------------
 Wed Nov 26 11:33:22 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 1.24.2:

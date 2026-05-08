@@ -751,4 +751,17 @@ Features
     <comment>- Update %suse_version checks for SLES 16.x (jsc#PED-15789)</comment>
     <requestid>1338508</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>8374f1ad95f762d92a56d843a8e94ce1</srcmd5>
+    <version>1.25.0</version>
+    <time>1778251373</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.25.0
+- Enable quic support by default on the distros where ngtcp2
+  supports quic.
+- complete the buildrequire set for quic support by also requiring
+  the devel files for the openssl backend in ngtcp2:
+  pkgconfig(libngtcp2_crypto_ossl)</comment>
+    <requestid>1351438</requestid>
+  </revision>
 </revisionlist>

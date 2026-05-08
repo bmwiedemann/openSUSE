@@ -25,8 +25,12 @@
 %bcond_without hardened_build
 %bcond_without dnstap
 %bcond_without systemd
+%if 0%{?suse_version} > 1600
+%bcond_without unbound_quic
+%else
 # needs openssl with quic enabled - aws-lc is sadly not a drop in as it removed some functions used by unbound
 %bcond_with unbound_quic
+%endif
 %if 0%{?suse_version} >= 1699
 %bcond_without unbound_redis
 %else
@@ -39,7 +43,7 @@
 %define piddir /run
 
 Name:           unbound
-Version:        1.24.2
+Version:        1.25.0
 Release:        0
 BuildRequires:  flex
 BuildRequires:  ldns-devel >= %{ldns_version}
@@ -60,6 +64,7 @@ BuildRequires:  swig
 BuildRequires:  pkgconfig(libnghttp2)
 %if %{with unbound_quic}
 BuildRequires:  pkgconfig(libngtcp2)
+BuildRequires:  pkgconfig(libngtcp2_crypto_ossl)
 %endif
 %if %{with unbound_redis}
 BuildRequires:  pkgconfig(hiredis)
@@ -96,7 +101,6 @@ Source16:       unbound-munin.README
 Source18:       unbound-anchor.service
 Source19:       unbound.sysusers
 Source20:       tmpfiles-unbound-anchor.conf
-Patch0:         unbound-swig-4.4.0-compat.patch
 
 Summary:        Validating, recursive, and caching DNS(SEC) resolver
 License:        BSD-3-Clause
