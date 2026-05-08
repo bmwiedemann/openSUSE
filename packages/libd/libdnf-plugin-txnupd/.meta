@@ -4,5 +4,6 @@
 as a libdnf plugin. This plugin hooks into libdnf5 for DNF and
 PackageKit to enable this functionality in normal use.
 </description>
+  <devel project="system:packagemanager:dnf" package="libdnf-plugin-txnupd"/>
   <url>https://gitlab.com/VelocityLimitless/Projects/libdnf-plugin-txnupd</url>
 </package>

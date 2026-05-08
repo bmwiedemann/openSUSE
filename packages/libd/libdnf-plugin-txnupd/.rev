@@ -7,4 +7,12 @@
     <comment>Introduce new version ported to dnf5</comment>
     <requestid>1334374</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>13dad12b81404d7c248e58575e10d8c5</srcmd5>
+    <version>0.2.0</version>
+    <time>1778251372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1351437</requestid>
+  </revision>
 </revisionlist>

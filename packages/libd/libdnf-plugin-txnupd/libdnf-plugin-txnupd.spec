@@ -60,8 +60,8 @@ Requires:       (PackageKit-backend-dnf5 if PackageKit)
 Requires:       dnf-data
 
 # Stricter dependency to keep things sane
-%requires_ge %(rpm -qf "$(readlink -f %{_libdir}/libdnf5.so)")
-%requires_ge %(rpm -qf "$(readlink -f %{_libdir}/libtukit.so)")
+%requires_ge %(rpm --qf "%%{name}" -qf "$(readlink -f %{_libdir}/libdnf5.so)")
+%requires_ge %(rpm --qf "%%{name}" -qf "$(readlink -f %{_libdir}/libtukit.so)")
 
 %description -n libdnf5-plugin-txnupd
 This package contains the plugin to implement transactional updates
