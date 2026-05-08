@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 08 06:41:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.8 (.7 was not released):
+  * Fixes:
+    - Fix installation issues with go install due to dependency
+      conflicts (downgrade containerd/cgroups/v3, moby/buildkit and
+      opencontainers/runtime-spec). (#2782)
+    - Bug #2762 Skip packages with short commit hashes instead of
+      aborting scan.
+    - Bug #2781 Secure file path handling with os.OpenRoot.
+    - Bug #2766 Correct typos across docs, configs, and Go source.
+  * Misc:
+    - Update osv-scalibr to v0.4.6-0.20260504042738-9293bfa4f86f.
+
+-------------------------------------------------------------------
 Fri May 01 07:47:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.3.6:
