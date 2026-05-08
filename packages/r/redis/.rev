@@ -192,4 +192,12 @@ Redis 8.0.0 supported atomic HGETDEL, HGETEX and HSETEX, and AGPL-3.0-only licen
     <comment></comment>
     <requestid>1350996</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>55306f068080429a7181e0b4c3a37518</srcmd5>
+    <version>8.6.3</version>
+    <time>1778251324</time>
+    <user>dimstar_suse</user>
+    <comment>Added bug numbers.</comment>
+    <requestid>1351262</requestid>
+  </revision>
 </revisionlist>
