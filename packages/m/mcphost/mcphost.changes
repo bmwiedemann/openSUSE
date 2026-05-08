@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May  8 12:23:17 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Updated to version 0.34.0
+  * Features:
+    - Upgraded charmbracelet libs to v2 (bubbletea, lipgloss, bubbles)
+    - Added Google Vertex AI support for Claude models
+    - Added new models.
+  * Fix:
+    - Eliminated escape sequence leak from spinner tea.Program instances.
+    - Fix anthropic api issue.
+    - Converted JSON Schema draft-07 exclusive bounds to draft-04 format.
+  * Upgraded all dependencies to latest versions, resolve security issues
+    and for Go 1.26 compatibility.
+    This addressed CVE-2025-30153 GO-2025-3533.
+- Fixed CVEs:
+  * CVE-2026-33186 GO-2026-4762 (bsc#1260224)
+  * CVE-2026-32285 GO-2026-4514 (bsc#1261230)
+
+-------------------------------------------------------------------
 Fri Jan  2 17:24:56 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Fix CVEs

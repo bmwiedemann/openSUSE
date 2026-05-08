@@ -16,14 +16,16 @@
 #
 
 Name:           mcphost
-Version:        0.32.0
+Version:        0.34.0
 Release:        0
 Summary:        A CLI host application for the Model Context Protocol (MCP)
 License:        MIT and Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/mark3labs/mcphost
 Source0:        https://github.com/mark3labs/mcphost/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.26
+BuildRequires:  govulncheck
+BuildRequires:  govulncheck-vulndb
 
 %description
 A CLI host application that enables Large Language Models (LLMs) to interact
