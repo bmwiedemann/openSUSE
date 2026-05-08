@@ -375,4 +375,16 @@
     <comment>Automatic update from systemsmanagement:Agama:Release</comment>
     <requestid>1346928</requestid>
   </revision>
+  <revision rev="33" vrev="33">
+    <srcmd5>eca00145c0ac4747e88de091fdd6cc52</srcmd5>
+    <version>0</version>
+    <time>1778251374</time>
+    <user>dimstar_suse</user>
+    <comment>- Declare the `desktop_selection` policy (suggested/optional) per
+  product and mark desktop patterns with the `desktop` property
+  so the UI can group and hint about desktop environments
+  (gh#agama-project/agama#3390, gh#agama-project/agama#3403,
+  gh#agama-project/agama#3406).</comment>
+    <requestid>1351831</requestid>
+  </revision>
 </revisionlist>
