@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  8 15:56:49 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Add 378.patch
+  * Fixes brightness adjustment on amdgpu systems
+
+-------------------------------------------------------------------
 Mon Apr 20 17:18:26 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 2.4.0:

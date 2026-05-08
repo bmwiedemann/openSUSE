@@ -447,4 +447,13 @@
 - Delete 0001-Support-logout-in-SystemdProvider.patch</comment>
     <requestid>1348638</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>0c8f9b4b223aaa9aa46b0ef7913143ae</srcmd5>
+    <version>2.4.0</version>
+    <time>1778266041</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 378.patch
+  * Fixes brightness adjustment on amdgpu systems</comment>
+    <requestid>1352051</requestid>
+  </revision>
 </revisionlist>

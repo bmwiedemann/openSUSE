@@ -26,6 +26,10 @@ Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
+# PATCH-FIX-UPSTREAM https://github.com/lxqt/liblxqt/pull/378
+# Makes the brightness adjustment work again on amd graphics
+Patch0:         378.patch
+
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
