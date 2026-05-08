@@ -266,4 +266,20 @@
     - telefe: rewritten and fixed plugin (forwarded request 1345983 from rrahl0)</comment>
     <requestid>1345984</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>aa5407d70ba9b1483743fd36c95efa68</srcmd5>
+    <version>8.4.0</version>
+    <time>1778251561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.4.0:
+  + SECURITY: fixed CVE-2026-44353
+  + Added: --stream-passthrough-encrypted for passing through encrypted
+    HLS/DASH segments to the output stream without any checks
+  + Fixed: --interface selection by name on macOS
+  + Fixed: --interface not being applied to adapters mounted after session init
+  + Updated plugins:
+    - goltelevision: rewritten and fixed plugin
+    - twitcasting: improved ad segment filtering (forwarded request 1351485 from rrahl0)</comment>
+    <requestid>1351486</requestid>
+  </revision>
 </revisionlist>
