@@ -18,7 +18,7 @@
 
 
 Name:           mergiraf
-Version:        0.16.3
+Version:        0.17.0
 Release:        0
 Summary:        A syntax-aware git merge driver
 License:        GPL-3.0-or-later

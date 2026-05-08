@@ -91,4 +91,12 @@
     <comment>Update to version 0.16.3 (forwarded request 1329329 from develop7)</comment>
     <requestid>1329330</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f1994e0f522e771804820b897294d331</srcmd5>
+    <version>0.17.0</version>
+    <time>1778263719</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.17.0 (forwarded request 1352029 from develop7)</comment>
+    <requestid>1352032</requestid>
+  </revision>
 </revisionlist>

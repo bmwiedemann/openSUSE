@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri May 08 11:53:59 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.17.0:
+  * Features
+    + Enable merging with syntax errors (#658) by @wetneb
+    + (solve) Respect `conflict-marker-size` attribute (#685) by @ada4a
+    + Extend attribute support (#703) by @ada4a
+    + Convert the committed .envrc to an example, with contribution 
+      instructions (#711) by @offby1
+    + Fortran support (#717) by @hmenke
+    + R language support (#724) by @grrrck
+    + Add "requirements" language (#731) by @George-Ogden
+  * Bug Fixes
+    + (supported_langs) Add missing JS/TS extensions (#691) by @jakebailey
+    + Run.sh provides a value to --allow-parse-errors (#712) by @offby1
+    + (cli) Allow passing `--allow-parse-errors` without an explicit 
+      `true` arg (#713) by @ada4a
+  * Refactor
+    + (visualizer) Minor clean-up (#692) by @ada4a
+    + Remove `empty_repr`s (#698) by @ada4a
+    + (`MergedText::render_full_lines`) Use `split_once` (#699) by @ada4a
+    + (merged_tree) Clean-up `MergedChild` (#706) by @ada4a
+    + (`LangProfile`) Rename `comment_nodes` 
+      to `extra_comment_nodes` (#722) by @ada4a
+    + (`LangProfile`) Make `.{file_names,extensions,atomic_nodes}` 
+      slices (#723) by @ada4a
+  * Documentation
+    + Document Git attributes used/recognized by Mergiraf (#716) by @ada4a
+    + Update adding a language help documentation (#730) by @George-Ogden
+    + Fix crosslink (#745) by @ada4a
+    + Add a comment to non-UTF-8 input handling code (#743) by @ada4a
+    + Alphabetize support languages in doc/src/languages.md (#760) by @NateEag
+  * Performance
+    + (merge_3dm::generate_pcs_triples) Create `base_changeset` by cloning 
+      `changeset` (#694) by @ada4a
+    + (`MergedText::push_line_based_merge`) Don't allocate when no indenting 
+      needed (#705) by @ada4a
+  * Governance
+    + Make mathsuf a publisher (#679) by @wetneb
+    + Add links to Zulip chat in various places (#742) by @wetneb
+  * Testing
+    + (supported_langs/children_of_commutative_parents_have_sigs) Make error 
+      message more descriptive (#721) by @ada4a
+    + Disable integration test in nix build (#719) by @ipsavitsky
+    + Refactor binary tests to use `assert_cmd` (#751) by @ada4a
+  * Miscellaneous Tasks
+    + Update dependencies (#686) by @ada4a
+    + Improve doc comments throughout the project (#693) by @wetneb
+    + Warn against uses of `dbg!` (#704) by @ada4a
+    + (rustfmt) Create an empty config file (#710) by @ada4a
+    + (helpers/run.sh) Clean-up (#714) by @ada4a
+    + Fix Fortran language definition after #723 by @wetneb
+    + Add Dockerfile used as base image (#736) by @wetneb
+    + Rename `DISABLING_ENV_VAR` to `ENABLING_ENV_VAR` (#741) by @ada4a
+    + Update rust to 1.91.1 (#740) by @ada4a
+    + Use Rust 1.91 (#744) by @wetneb
+    + Update Rust to 1.91 in release workflow as well (#755) by @wetneb
+    + Help PR authors fix formatting issues (#754) by @wetneb
+    + Set version to 0.17.0 by @wetneb
+  * New Contributors
+    + @NateEag made their first contribution in #760
+    + @George-Ogden made their first contribution in #731
+    + @grrrck made their first contribution in #724
+    + @hmenke made their first contribution in #717
+    + @offby1 made their first contribution in #712
+    + @jakebailey made their first contribution in #691
+
+-------------------------------------------------------------------
 Mon Jan 26 14:20:39 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 0.16.3:
