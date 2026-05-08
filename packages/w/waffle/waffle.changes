@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  8 11:05:36 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Fix build with C23 (glibc 2.41+)
+- Added c11-threads-c23.patch to avoid conflicts with once_flag,
+  call_once and ONCE_FLAG_INIT now provided by glibc in C23 mode.
+- Enable unit tests in %check section (core suite only).
+- Added BuildRequires on pkgconfig(cmocka) for tests.
+- Use %fdupes to remove duplicate files.
+
+-------------------------------------------------------------------
 Mon Aug 12 08:28:33 UTC 2024 - ming li <mli@suse.com>
 
 - Update to release 1.8.1:

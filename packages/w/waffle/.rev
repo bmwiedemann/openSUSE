@@ -172,4 +172,17 @@
     <comment></comment>
     <requestid>1195845</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>325b641c3426f94b9b21e58ef5a9d524</srcmd5>
+    <version>1.8.1</version>
+    <time>1778251694</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with C23 (glibc 2.41+)
+- Added c11-threads-c23.patch to avoid conflicts with once_flag,
+  call_once and ONCE_FLAG_INIT now provided by glibc in C23 mode.
+- Enable unit tests in %check section (core suite only).
+- Added BuildRequires on pkgconfig(cmocka) for tests.
+- Use %fdupes to remove duplicate files.</comment>
+    <requestid>1352005</requestid>
+  </revision>
 </revisionlist>

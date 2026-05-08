@@ -1,7 +1,7 @@
 #
 # spec file for package waffle
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,13 @@ License:        BSD-2-Clause
 Group:          Development/Libraries/X11
 URL:            https://people.freedesktop.org/~chadversary/waffle/index.html
 Source0:        https://gitlab.freedesktop.org/mesa/waffle/-/raw/website/files/release/%{name}-%{version}/%{name}-%{version}.tar.xz
+Patch0:         c11-threads-c23.patch
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
@@ -78,13 +81,16 @@ develop Waffle applications.
 %autosetup -p1
 
 %build
-%meson
+%meson -Dbuild-tests=true
 %meson_build
+
+%check
+%meson_test --suite core
 
 %install
 %meson_install
-mv examples examples.orig
 mv $RPM_BUILD_ROOT/%{_datadir}/doc/waffle1 .
+%fdupes waffle1/
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

@@ -1,0 +1,47 @@
+--- waffle-1.8.1/third_party/threads/threads.h.orig	2026-05-08 12:59:32.093919000 +0200
++++ waffle-1.8.1/third_party/threads/threads.h	2026-05-08 13:00:15.682044000 +0200
+@@ -90,7 +90,9 @@
+ #include <pthread.h>
+ 
+ /*---------------------------- macros ----------------------------*/
++#ifndef ONCE_FLAG_INIT
+ #define ONCE_FLAG_INIT PTHREAD_ONCE_INIT
++#endif
+ #ifdef INIT_ONCE_STATIC_INIT
+ #define TSS_DTOR_ITERATIONS PTHREAD_DESTRUCTOR_ITERATIONS
+ #else
+@@ -102,7 +104,9 @@
+ typedef pthread_t       thrd_t;
+ typedef pthread_key_t   tss_t;
+ typedef pthread_mutex_t mtx_t;
++#ifndef __once_flag_defined
+ typedef pthread_once_t  once_flag;
++#endif
+ 
+ #else
+ #error Not supported on this platform.
+@@ -138,7 +142,9 @@
+ 
+ 
+ /*-------------------------- functions --------------------------*/
++#ifndef __once_flag_defined
+ void call_once(once_flag *flag, void (*func)(void));
++#endif
+ 
+ int cnd_broadcast(cnd_t *cond);
+ void cnd_destroy(cnd_t *cond);
+--- waffle-1.8.1/third_party/threads/threads_posix.c.orig	2026-05-08 12:59:32.123957000 +0200
++++ waffle-1.8.1/third_party/threads/threads_posix.c	2026-05-08 13:00:32.118981000 +0200
+@@ -75,10 +75,12 @@
+ 
+ /*--------------- 7.25.2 Initialization functions ---------------*/
+ // 7.25.2.1
++#ifndef __once_flag_defined
+ void call_once(once_flag *flag, void (*func)(void))
+ {
+     pthread_once(flag, func);
+ }
++#endif
+ 
+ 
+ /*------------- 7.25.3 Condition variable functions -------------*/
