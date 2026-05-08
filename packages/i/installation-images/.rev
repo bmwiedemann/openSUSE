@@ -1985,4 +1985,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1351255</requestid>
   </revision>
+  <revision rev="248" vrev="1">
+    <srcmd5>18ff96f7f1b279f50400cbe78a929181</srcmd5>
+    <version>17.176</version>
+    <time>1778251374</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1351463</requestid>
+  </revision>
 </revisionlist>

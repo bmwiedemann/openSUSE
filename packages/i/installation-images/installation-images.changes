@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu May 7 15:39:58 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#786
+- memtest86+: work also with Legacy BIOS (bsc#1264242)
+- 17.176
+
+--------------------------------------------------------------------
 Wed May 6 16:05:58 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#785
