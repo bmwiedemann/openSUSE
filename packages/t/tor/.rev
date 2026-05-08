@@ -1232,4 +1232,25 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>1348032</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>04b075b066e41140cc814a90e71db4e4</srcmd5>
+    <version>0.4.9.8</version>
+    <time>1778251693</time>
+    <user>dimstar_suse</user>
+    <comment>now with boo and CVE references:
+Update to 0.4.9.8
+  * Fix out-of-bounds read (boo#1264341, CVE-2026-44597, TROVE-2026-011)
+  * Do not attempt or accept BEGIN_DIR via conflux legs
+    (boo#1264342, CVE-2026-44599,TROVE-2026-008)
+  * Adjust conflux out-of-order queue accounting when clearing a queue
+    (boo#1264343, CVE-2026-44600, TROVE-2026-010)
+  * Fix a client-side crash caused by double-close of a circuit while
+    under circuit queue memory pressure
+    (boo#1264344, CVE-2026-44601, TROVE-2026-009)
+  * Fix null pointer dereference when receiving a CERT cell out of
+    order (boo#1264345, CVE-2026-44602, TROVE-2026-006)
+  * Fix off-by-one out-of-bounds read if a malformed BEGIN cell is
+    received (boo#1264346, CVE-2026-44603, TROVE-2026-007)</comment>
+    <requestid>1352013</requestid>
+  </revision>
 </revisionlist>
