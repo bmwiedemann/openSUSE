@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu May 07 05:40:50 UTC 2026 - i thod <thod_@gmx.de>
+
+- Update to version INKSCAPE_1_4_4+git0.dcaf3e7d9e:
+  * Documentation update for Inkscape 1.4.4
+  * Revert "Switch PangoCairo rendering backend to Fontconfig"
+  * Revert "Fix canvas text label Unicode rendering"
+  * update translations
+  * Revert "Show cursor on Text tool constructor"
+  * Revert "Remove cursor show code from _updateCursor"
+  * Speed up drawing cache insert
+  * Prepare 1.4.4-rc
+  * Update man page + tutorials for 1.4.4rc
+  * Show cursor on Text tool constructor
+  * Remove cursor show code from _updateCursor
+  * Fix building with Poppler 26.04.0
+  * Fix build with poppler-26.03.0.
+  * Switch PangoCairo rendering backend to Fontconfig
+  * Add openmp on LLVM
+  * explicitely make GUI executables on windows
+  * Fix building with Poppler 0.26.02
+  * Fix warning with poppler 26.x.x
+  * Fix build with poppler 26.01.0
+  * Make text itemization code clearer
+  * Handle text with different lang across tspans
+  * Fix crash while using maximum scans in trace dialog
+  * Additional patching to make uri test work
+  * Fix crash when opening corrupted Rotate Copies LPE SVGs
+  * Fix crash in connector endpoint handling with null curve
+  * Fix #6040: svg with markers which dont have associated path data now don't cause issues
+  * Fix connector tool crash on overlapping shapes
+  * Add tests for try_attach() from uri-reference.cpp
+  * Fix Suprious Unsupported URI warning for web hyperlinks
+  * Fix mime type of ODF extension
+  * Disconnecting signals in dialog destructors
+  * Use unordered_map where the ordering is not important
+  * Fix crash and disable Corners LPE on groups
+  * Connector Tool: Fix crash when undoing connection
+  * Specify file is relicensed to GPL-2.0-or-later
+  * Add elementary palette
+  * Fix crash on adding knot to invalid gradient
+  * Fix cmdline help showing translation artefacts
+  * Fix clippath item visibility on releasing the clip
+  * Use is_expandable_space for justified text
+  * Fix crash while using tweak tool
+  * Fix canvas text label Unicode rendering
+  * Implement faster and smarter prettify_svgd
+  * Fix gradient tool performance
+  * EnablePages must always select a page if one isn't set.
+  * Fix Layers & Objects dialog slowness
+  * Fix crash on Break Apart with certain paths
+  * Guard against duplicate entries in recently-used.xbel
+  * Make splitPath() match previous behaviour
+  * Fix splitPath() ignoring drive letter on Windows
+  * Include implicit headers for gcc-16
+  * Avoid unchecked optional access in render_preview
+  * Remove !desktop check in export dialog destruction
+  * Robustify Cairo error handling in Canvas and Export dialog
+  * Fix instructions in the US zine template
+  * Fix crash with pen tablet connected
+  * Fix crash when selecting object with PowerStroke
+  * Fix color entry spamming undo stack
+  * Rename star turn upright for clarity
+  * Fix missing paste on page metadata
+  * Update graphics for 1.4.4
+  * Revert "Fix Unicode dialog crashing" for alternative fix
+  * Add Level Star action and add it to star toolbar
+  * Stop cursor from blinking when defocused
+  * Fix Opacity is not applied with last style if set with object and dialog
+  * Fix Unicode dialog crashing
+  * update translations
+  * Make expander in L&O dialog clickable in RTL interface
+  * Edit label and tooltip for Preserve Shape setting
+  * Fix Welcome dialog stacking up when run more than once
+  * Fix keyboard navigation in Objects dialog
+  * update translations
+  * Fix missing signal blocking in page toolbar
+  * Convert libuemf to a git submodule
+  * update translations
+- remove patches, applied upstream
+  * Fix_Poppler_26_01_00_compat.patch
+  * Fix_Poppler_26_02_0_compat.patch
+  * inkscape-gcc16.patch
+
+-------------------------------------------------------------------
 Thu Apr  9 07:41:56 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
