@@ -112,4 +112,12 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/S4HJD
   * 0001-kabi-drop-page_counter-size-assertion-for-non-SMP.patch (forwarded request 1317495 from ddiss)</comment>
     <requestid>1317496</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>26fba1235a5ba90514d1c377b8fa2f69</srcmd5>
+    <version>0.6.4+git.4329.245b493dd0e</version>
+    <time>1778251587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1351511</requestid>
+  </revision>
 </revisionlist>
