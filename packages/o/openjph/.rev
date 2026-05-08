@@ -228,4 +228,14 @@
 - Drop gh-openjph-262.patch</comment>
     <requestid>1346797</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c282c4524ef7f35473beeea51199cd5e</srcmd5>
+    <version>0.27.1</version>
+    <time>1778251342</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.27.1:
+  * Adds a check that we do not use reversible Sqcd/Sqcc with irreversible transform
+  * Detecting illegal precinct width or height #269</comment>
+    <requestid>1351343</requestid>
+  </revision>
 </revisionlist>
