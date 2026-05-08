@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  7 13:45:41 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.6.1
+  - Fix flatpak linter issues to comply with latest rules
+- update to 0.6.0
+  - Dependencies: Updated numerous Rust dependencies and migrated to the
+    GNOME 50 SDK environment.
+  - Fixes boo#1247192
+
+-------------------------------------------------------------------
 Thu Sep 28 14:12:34 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 0.5.1
