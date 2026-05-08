@@ -1,3 +1,16 @@
+------------------------------------------------------------------
+Thu May  7 12:36:54 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Fix IMA-ADPCM integer overflow (bsc#1263695, CVE-2026-37555):
+  libsndfile-CVE-2026-37555.patch
+
+-------------------------------------------------------------------
+Thu May  7 11:13:50 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Fix buffer overflow in the ircam_read_header function (bsc#1248458,
+  CVE-2025-52194):
+  libsndfile-CVE-2025-52194.patch
+
 -------------------------------------------------------------------
 Fri Jan 16 07:52:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 

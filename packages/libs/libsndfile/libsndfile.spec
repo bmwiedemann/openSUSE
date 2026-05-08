@@ -32,6 +32,9 @@ Patch1:         libsndfile-CVE-2022-33065.patch
 Patch2:         libsndfile-CVE-2024-50612.patch
 Patch3:         libsndfile-CVE-2025-56226.patch
 Patch4:         sndfile-convert-CVE-2025-56226.patch
+# not merged yet to the upstream
+Patch5:         libsndfile-CVE-2025-52194.patch
+Patch6:         libsndfile-CVE-2026-37555.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
 BuildRequires:  cmake
