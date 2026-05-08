@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  7 20:56:19 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.20.5
+  - Fixed: Bookmark context menu closes prematurely when any page is loaded.
+  - Fixed: Mismatched Bookmarks sidebar filter field background color.
+  - Fixed: Reject server responses where the header is too long.
+  - Improved build compatibility with old versions of SDL.
+  - Adjusted minimum page margins on desktop for increased breathing room.
+
+-------------------------------------------------------------------
 Sun Apr 19 11:27:12 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.20.4
