@@ -1,7 +1,7 @@
 #
 # spec file for package dracut-pcr-signature
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dracut-pcr-signature
-Version:        0.6+4
+Version:        0.7+0
 Release:        0
 Summary:        Dracut module to import PCR signatures
 License:        GPL-2.0-or-later
@@ -41,7 +41,7 @@ unlock the LUKS2 device via systemd-cryptsetup.
 
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/dracut/modules.d/50pcr-signature
-for i in module-setup.sh boot-efi-generator.sh pcr-signature.sh pcr-signature.service; do
+for i in module-setup.sh sysefi-generator.sh pcr-signature.sh pcr-signature.service; do
     cp "$i" %{buildroot}%{_prefix}/lib/dracut/modules.d/50pcr-signature
 done
 

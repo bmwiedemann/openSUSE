@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 06 12:30:45 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.7+0:
+  * Boot the ESP in /sysefi during initrd
+
+-------------------------------------------------------------------
 Thu Nov 06 12:51:58 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.6+4:
