@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  6 09:50:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.50.0
+  * chore: migration batch 2 (#16659)
+  * chore(nox): chore update noxfile with format session that uses ruff (#16647)
+  * feat: implement updated design for regional access boundary (#16084)
+  * fix(auth): Disable MDS mTLS feature by default. (#16786)
+  * chore: remove issue_tracker_override from librarian.yaml (#16820)
+  * chore(deps): update all dependencies (#16809)
+  * chore: remove name_pretty_override (batch 1) (#16869)
+  * feat(auth): Add blocking Regional Access Boundary Lookup and Seed Support (#16720)
+  * chore: librarian release pull request: 20260430T200912Z (#16902)
+
+-------------------------------------------------------------------
 Mon Apr 13 11:33:07 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.49.2
