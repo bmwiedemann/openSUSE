@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May 06 18:46:10 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260506.25d47bf:
+  * Drop systemd.machine_id if /etc/machine-id is present
+  * Support XBOOTLDR partition
+  * Add CLAUDE.md file
+  * Use command -v instead of hash
+  * Remove dead code
+  * Fix regular expression non-capturing group
+  * Add comment about default values in config file
+  * Clarify when swap is mounted
+  * Fix typo in comment
+  * Exit early if we are outside the initrd
+  * Fix variable name
+  * Fix typo
+  * When cleaning pcrlock.d remove only the content
+  * Do not check in_buildroot when updating entries
+  * update_kernels: Update entries for the system if no snapshot is provided
+
+-------------------------------------------------------------------
 Tue Apr 21 08:35:25 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260421.88e40c4:
