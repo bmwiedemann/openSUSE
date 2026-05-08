@@ -1,6 +1,5 @@
-diff -rubN forgejo-src-14.0.2/custom/conf/app.example.ini forgejo-src-14.0.2-patched/custom/conf/app.example.ini
---- forgejo-src-14.0.2/custom/conf/app.example.ini	2026-01-29 08:37:32.000000000 +0100
-+++ forgejo-src-14.0.2-patched/custom/conf/app.example.ini	2026-01-31 13:30:44.872131178 +0100
+--- forgejo-src-15.0.1/custom/conf/app.example.ini	2026-04-29 13:05:29.000000000 +0200
++++ forgejo-src-15.0.1-patched/custom/conf/app.example.ini	2026-05-02 14:41:22.869317792 +0200
 @@ -51,7 +51,7 @@
  ;APP_DISPLAY_NAME_FORMAT = {APP_NAME}: {APP_SLOGAN}
  ;;
@@ -92,7 +91,7 @@ diff -rubN forgejo-src-14.0.2/custom/conf/app.example.ini forgejo-src-14.0.2-pat
  ;;
  ;; Comma-separated list of allowed file extensions (`.zip`), mime types (`text/plain`) or wildcard type (`image/*`, `audio/*`, `video/*`). Empty value or `*/*` allows all types.
  ;ALLOWED_TYPES =
-@@ -1461,7 +1461,7 @@
+@@ -1458,7 +1458,7 @@
  ;ISSUE_INDEXER_TYPE = bleve
  ;;
  ;; Issue indexer storage path, available when ISSUE_INDEXER_TYPE is bleve
@@ -101,7 +100,7 @@ diff -rubN forgejo-src-14.0.2/custom/conf/app.example.ini forgejo-src-14.0.2-pat
  ;;
  ;; Issue indexer connection string, available when ISSUE_INDEXER_TYPE is elasticsearch (e.g. http://elastic:password@localhost:9200) or meilisearch (e.g. http://:apikey@localhost:7700)
  ;ISSUE_INDEXER_CONN_STR =
-@@ -1488,7 +1488,7 @@
+@@ -1485,7 +1485,7 @@
  ;REPO_INDEXER_TYPE = bleve
  ;;
  ;; Index file used for code search. available when `REPO_INDEXER_TYPE` is bleve
@@ -110,7 +109,7 @@ diff -rubN forgejo-src-14.0.2/custom/conf/app.example.ini forgejo-src-14.0.2-pat
  ;;
  ;; Code indexer connection string, available when `REPO_INDEXER_TYPE` is elasticsearch. i.e. http://elastic:changeme@localhost:9200
  ;REPO_INDEXER_CONN_STR =
-@@ -1526,7 +1526,7 @@
+@@ -1523,7 +1523,7 @@
  ;TYPE = persistable-channel
  ;;
  ;; data-dir for storing persistable queues and level queues, individual queues will default to `queues/common` meaning the queue is shared.
@@ -119,7 +118,7 @@ diff -rubN forgejo-src-14.0.2/custom/conf/app.example.ini forgejo-src-14.0.2-pat
  ;;
  ;; Default queue length before a channel queue will block
  ;LENGTH = 100000
-@@ -1893,7 +1893,7 @@
+@@ -1892,7 +1892,7 @@
  ;; file: session file path, e.g. `data/sessions`
  ;; redis: `redis://127.0.0.1:6379/0?pool_size=100&idle_timeout=180s` (or `redis+cluster://127.0.0.1:6379/0?pool_size=100&idle_timeout=180s` for a Redis cluster)
  ;; mysql: go-sql-driver/mysql dsn config string, e.g. `root:password@/session_table`
@@ -127,8 +126,8 @@ diff -rubN forgejo-src-14.0.2/custom/conf/app.example.ini forgejo-src-14.0.2-pat
 +PROVIDER_CONFIG = /var/lib/forgejo/data/sessions
  ;;
  ;; Session cookie name
- ;COOKIE_NAME = i_like_gitea
-@@ -1980,7 +1980,7 @@
+ ;COOKIE_NAME = session
+@@ -1979,7 +1979,7 @@
  ;;
  ;; Path for attachments. Defaults to `attachments`. Only available when STORAGE_TYPE is `local`
  ;; Relative paths will be resolved to `${AppDataPath}/${attachment.PATH}`
@@ -137,7 +136,7 @@ diff -rubN forgejo-src-14.0.2/custom/conf/app.example.ini forgejo-src-14.0.2-pat
  ;;
  ;; Minio endpoint to connect only available when STORAGE_TYPE is `minio`
  ;MINIO_ENDPOINT = localhost:9000
-@@ -2006,7 +2006,7 @@
+@@ -2005,7 +2005,7 @@
  ;MINIO_LOCATION = us-east-1
  ;;
  ;; Minio base path on the bucket only available when STORAGE_TYPE is `minio`
@@ -146,7 +145,7 @@ diff -rubN forgejo-src-14.0.2/custom/conf/app.example.ini forgejo-src-14.0.2-pat
  ;;
  ;; Minio enabled ssl only available when STORAGE_TYPE is `minio`
  ;MINIO_USE_SSL = false
-@@ -2590,10 +2590,10 @@
+@@ -2598,10 +2598,10 @@
  ;;
  ;STORAGE_TYPE = local
  ;; override the minio base path if storage type is minio
@@ -159,7 +158,7 @@ diff -rubN forgejo-src-14.0.2/custom/conf/app.example.ini forgejo-src-14.0.2-pat
  ;;
  ;; Maximum count of package versions a single owner can have (`-1` means no limits)
  ;LIMIT_TOTAL_OWNER_COUNT = -1
-@@ -2662,10 +2662,10 @@
+@@ -2670,10 +2670,10 @@
  ;STORAGE_TYPE = local
  ;;
  ;; Where your lfs files reside, default is data/lfs.
@@ -172,7 +171,7 @@ diff -rubN forgejo-src-14.0.2/custom/conf/app.example.ini forgejo-src-14.0.2-pat
  
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-@@ -2685,10 +2685,10 @@
+@@ -2693,10 +2693,10 @@
  ;STORAGE_TYPE = local
  ;;
  ;; Where your lfs files reside, default is data/lfs.

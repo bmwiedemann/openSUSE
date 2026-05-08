@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat May  2 21:40:27 UTC 2026 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Allow SSH mirroring and template customization in AppArmor profile
+
+-------------------------------------------------------------------
+Sat May  2 12:34:15 UTC 2026 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Update to version 15.0.1:
+  * major jump, reference upstream changelog:
+    - https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/15.0.1.md
+    - https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/15.0.0.md
+  * refresh node_modules
+  * refresh custom-app.ini.patch
+
+-------------------------------------------------------------------
+Sat Mar 21 09:32:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 14.0.3:
+  * fix: PKCE challenges to Forgejo's OAuth identity provider were not
+    validated when using the S256 algorithm
+  * fix: Forgejo supports using an OAuth Bearer token with HTTP basic
+    authentication, rather than Bearer token authentication, but did not
+    properly apply the limited scopes of the OAuth grant
+  * fix: missing permission checks in attachment-related web endpoints allowed
+    modifying attachments that a user did not own
+  * fix: email notifications for new releases could be sent to users that no
+    longer access to the repository, or to inactive users
+  * fix: missing permission checks in user/org-owned projects would allow
+    modifications of the open/closed state to be made to projects via insecure
+    direct object references
+  * fix: missing permission checks in a web endpoint allowed cancellation of
+    the automerge of a PR
+  * fix: prevent additional path-traversals in post-login redirect parameters
+    that allowed for arbitrary redirects
+  * fix(ui): hardcode sort options in search syntax hint, improve look
+  * fix: modals on small viewport height
+  * fix(ui/mde): inputs in table/link insertion modals
+  * fix(ui): prevent label overflow in PR CI checks on mobile
+  * fix: extend basic auth to /v2, always include WWW-Authenticate header
+  * prevent panic when importing issues from GitLab
+  * prevent panic when importing releases with more than 4 release assets from Gitlab
+  * correct re-mapping of merge-request numbers mentioned in GitLab comments
+  * fix: when expanding a dynamic matrix, original 'needs' access was lost
+  * fix: improve SQLite "database is locked" errors by increasing default SQLITE_TIMEOUT
+  * fix: use an absolute URL for compare links in atom feed
+
+-------------------------------------------------------------------
 Sat Jan 31 12:38:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 14.0.2:

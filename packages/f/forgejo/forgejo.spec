@@ -25,7 +25,7 @@
 %bcond_without apparmor
 %endif
 Name:           forgejo
-Version:        14.0.2
+Version:        15.0.1
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
