@@ -128,4 +128,14 @@
 - Add ghost entry for /var/lib/dhcpcd</comment>
     <requestid>1339332</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ae9ac17a0273fb7995c1832aafe466c8</srcmd5>
+    <version>10.3.2</version>
+    <time>1778251370</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.3.2
+  * DHCP: Don't run double EXPIRE hooks on carrier loss
+  * DHCP: free the state when dropping on state NONE</comment>
+    <requestid>1351403</requestid>
+  </revision>
 </revisionlist>

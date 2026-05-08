@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  7 11:26:27 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 10.3.2
+  * DHCP: Don't run double EXPIRE hooks on carrier loss
+  * DHCP: free the state when dropping on state NONE
+
+-------------------------------------------------------------------
 Mon Mar 16 12:13:49 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 10.3.1
