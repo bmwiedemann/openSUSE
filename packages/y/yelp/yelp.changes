@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  6 17:20:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.1:
+  + Fixed issue that could allow remote access to local files.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 20 15:25:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

@@ -970,4 +970,14 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1343017</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>0ae9ebf58114bfee0a2d6b76304fdf60</srcmd5>
+    <version>49.1</version>
+    <time>1778251349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 49.1:
+  + Fixed issue that could allow remote access to local files.
+  + Updated translations.</comment>
+    <requestid>1351359</requestid>
+  </revision>
 </revisionlist>
