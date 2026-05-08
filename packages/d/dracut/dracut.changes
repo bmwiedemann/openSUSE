@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 07 06:44:07 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Update to version 110+suse.29.g16072cee:
+  * fix(dracut-install): remove FTS_NOSTAT in install_modules() fts traversal
+  * fix(systemd-cryptsetup): load libcryptsetup via dlopen
+  * fix(systemd-repart): load libfdisk via dlopen
+  * fix(systemd-sysusers): do not run systemd-sysusers as part of the build process
+  * fix(systemd): revert changes related to deduplication of cryptsetup targets
+  * feat(systemd-coredump): save coredumps to journal
+
+-------------------------------------------------------------------
 Mon Mar 30 06:57:43 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Update to version 110+suse.23.g5d9502c7:

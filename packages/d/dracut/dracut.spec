@@ -26,7 +26,7 @@
 %endif
 
 Name:           dracut
-Version:        110+suse.23.g5d9502c7
+Version:        110+suse.29.g16072cee
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -372,6 +372,7 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/modules.d/11systemd-resolved
 %{dracutlibdir}/modules.d/11systemd-sysctl
 %{dracutlibdir}/modules.d/11systemd-sysext
+%{dracutlibdir}/modules.d/11systemd-sysusers
 %{dracutlibdir}/modules.d/11systemd-timedated
 %{dracutlibdir}/modules.d/11systemd-timesyncd
 %{dracutlibdir}/modules.d/11systemd-tmpfiles
@@ -486,7 +487,6 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/modules.d/77selinux
 %{dracutlibdir}/modules.d/77syslog
 %{dracutlibdir}/modules.d/77usrmount
-%{dracutlibdir}/modules.d/78systemd-sysusers
 %{dracutlibdir}/modules.d/80base
 %{dracutlibdir}/modules.d/84memstrack
 %{dracutlibdir}/modules.d/85shell-interpreter
