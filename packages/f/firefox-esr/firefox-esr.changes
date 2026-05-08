@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May  7 14:24:15 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 140.10.2 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 140.10.2
+  https://www.mozilla.org/security/advisories/mfsa2026-41
+  MFSA 2026-41 (boo#1264378)
+  * CVE-2026-8090 (bmo#2034352)
+    Use-after-free in the DOM: Networking component
+  * CVE-2026-8091 (bmo#2029301)
+    Incorrect boundary conditions in the Audio/Video: Playback
+    component
+  * CVE-2026-8094 (bmo#2035939)
+    Other issue in the WebRTC component
+  * CVE-2026-8092 (bmo#1806249, bmo#2021977, bmo#2022576,
+    bmo#2022722, bmo#2024439, bmo#2027883, bmo#2029463,
+    bmo#2030323, bmo#2032042, bmo#2032043, bmo#2033270,
+    bmo#2033637, bmo#2034422, bmo#2034496, bmo#2035879,
+    bmo#2036516)
+    Memory safety bugs fixed in Firefox ESR 115.35.2, Firefox ESR
+    140.10.2 and Firefox 150.0.2
+- Refresh mozilla-libavcodec58_91.patch
+- Update MozillaFirefox.desktop from a current build in Factory
+
+-------------------------------------------------------------------
 Mon May  4 15:11:55 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Add patches to address glibc-2.43 related issues:
