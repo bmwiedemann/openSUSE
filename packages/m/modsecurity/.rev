@@ -119,4 +119,14 @@
     <comment></comment>
     <requestid>1265356</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a34f7b795d92ff90fa9940f5dcc504c8</srcmd5>
+    <version>3.0.15</version>
+    <time>1778251567</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1351228 from AndreasStieger
+
+modsecurity 3.0.15</comment>
+    <requestid>1351498</requestid>
+  </revision>
 </revisionlist>
