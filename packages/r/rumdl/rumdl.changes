@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri May 08 05:11:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.91:
+  * Fixed
+    - cache: stabilize hash_config across identical config loads,
+      eliminating spurious "configuration hash changed" cache
+      misses caused by HashMap iteration order (#622, fixes #621)
+      (f46be05) — thanks @mattiasgronlund
+    - ci: branch off upstream master in sync-schemastore (787a7ea)
+- Update to version 0.1.90:
+  * Added
+    - cache: add structured cache miss reasons for verbose mode
+      (#618) (5c4f418)
+  * Fixed
+    - cli: allow --profile output in --silent mode (#619) (d9cde4d)
+  * Performance
+    - cache: warm cache profiling path with concurrent-safe writes
+      (#616) (5c2a00b)
+    - discovery: precompile exclude matchers and reuse walker file
+      types (#617) (49a1de2)
+
+-------------------------------------------------------------------
 Wed May 06 05:53:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.89:
