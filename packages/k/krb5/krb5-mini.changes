@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  6 09:52:46 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix Fix two NegoEx parsing vulnerabilities:
+  * CVE-2026-40355, bsc#1263366
+  * CVE-2026-40356, bsc#1263367
+- Add patch 0012-Fix-two-NegoEx-parsing-vulnerabilities.patch
+
+-------------------------------------------------------------------
 Sat Mar 21 10:40:16 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - Add compatibility with autoconf 2.73 by adding patch
