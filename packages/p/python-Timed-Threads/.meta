@@ -1,0 +1,10 @@
+<package name="python-Timed-Threads" project="openSUSE:Factory">
+  <title>Absolute time deadlines and thread cancelling for Python asynchronous threads</title>
+  <description>A python module that adds the ability to set relative elapsed time deadlines on
+asynchronous threads, and allows one thread to stop another by means of raising
+an exception.
+
+The main motivation of this module is to support TimedConstraint in the
+open-source implementation of Mathematica, called Mathics3.</description>
+  <url>https://github.com/Mathics3/python-timed-threads/</url>
+</package>
