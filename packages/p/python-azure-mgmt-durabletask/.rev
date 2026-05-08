@@ -15,4 +15,17 @@
     <comment>yet another Azure SDK package</comment>
     <requestid>1273402</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ec7ad2788d368284219a40dce7654c9</srcmd5>
+    <version>1.1.0</version>
+    <time>1778251696</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from pyproject.toml (forwarded request 1351528 from glaubitz)</comment>
+    <requestid>1352012</requestid>
+  </revision>
 </revisionlist>
