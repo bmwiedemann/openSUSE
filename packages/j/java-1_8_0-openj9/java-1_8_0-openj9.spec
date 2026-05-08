@@ -28,18 +28,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       482
-%global buildver        b08
+%global updatever       492
+%global buildver        b09
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   bf2eb7bfec47a1b10399bc02def282ae3dc10fa9
-%global root_branch     v0.57.0-release
+%global root_revision   0a800bff022b59d6f7e9da4afe99d212f0654c6c
+%global root_branch     v0.59.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    c8ee95c0c729ac0c0cb3a46a6fde45f0d0b8cc0d
-%global omr_branch      v0.57.0-release
+%global omr_revision    6426f03fa087b257a7e58f363ef61526c896fea3
+%global omr_branch      v0.59.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision f0754f410244ad2c42b07c5fe76983a3c7b61e87
-%global openj9_branch   v0.57.0-release
-%global openj9_tag      openj9-0.57.0
+%global openj9_revision c53b6b93f422b77b3395a3464d5578b706e9a618
+%global openj9_branch   v0.59.0-release
+%global openj9_tag      openj9-0.59.0
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0
@@ -92,7 +92,7 @@ Name:           java-1_8_0-openj9
 Version:        %{javaver}.%{updatever}
 Release:        0
 Summary:        OpenJDK 8 Runtime Environment with Eclipse OpenJ9 virtual machine
-License:        Apache-1.1 AND Apache-2.0 AND EPL-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
+License:        Apache-1.1 AND Apache-2.0 AND EPL-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND LicenseRef-SUSE-Public-Domain AND W3C
 Group:          Development/Languages/Java
 URL:            https://www.eclipse.org/openj9/
 # Sources from upstream OpenJDK8 project.
