@@ -7464,4 +7464,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>7.0.3 &amp; CONFIG_CRYPTO_BENCHMARK=m on arm; bugs: bsc#1012628 bsc#1247996 bsc#1262179 bsc#1262181 bsc#1262757 bsc#1263028 bsc#1263029 bsc#1263030 bsc#1263031 bsc#1263045 bsc#1263046 bsc#1263067 bsc#1263071 bsc#1263073 bsc#1263074 bsc#1263075 bsc#1263122 bsc#1263123 bsc#1263124 bsc#1263125 bsc#1263129 bsc#1263130 bsc#1263134 bsc#1263145 bsc#1263152 bsc#1263165 bsc#1263167 bsc#1263169 bsc#1263173 bsc#1263176 bsc#1263180 bsc#1263319 bsc#1263491 bsc#1263493 bsc#1263588 bsc#1263591 bsc#1263597 bsc#1263600 bsc#1263657 bsc#1263663 bsc#1263664 bsc#1263717 bsc#1263718 bsc#1263721 bsc#1263722 bsc#1263723</comment>
     <requestid>1350603</requestid>
   </revision>
+  <revision rev="839" vrev="1">
+    <srcmd5>2db3535260af9bf7c4fa328d319ccaa9</srcmd5>
+    <version>7.0.5</version>
+    <time>1778263715</time>
+    <user>dimstar_suse</user>
+    <comment>7.0.5 &amp; 7.0.4 &amp; patch cleanup; bugs: bsc#1012628 bsc#1254352</comment>
+    <requestid>1351825</requestid>
+  </revision>
 </revisionlist>
