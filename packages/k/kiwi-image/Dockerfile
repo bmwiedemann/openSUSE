@@ -17,7 +17,7 @@
 
 #!BuildTag: opensuse/bci/kiwi:%%kiwi_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/kiwi:%%kiwi_version%%
-#!BuildTag: opensuse/bci/kiwi:10.2
+#!BuildTag: opensuse/bci/kiwi:10.3
 #!BuildTag: opensuse/bci/kiwi:10
 #!BuildTag: opensuse/bci/kiwi:latest
 
@@ -41,8 +41,8 @@ RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shad
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.kiwi
-LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI KIWI Appliance Builder 10.2 (kiwi)"
-LABEL org.opencontainers.image.description="KIWI Appliance Builder 10.2 (kiwi) container based on the openSUSE Tumbleweed Base Container Image. This container is only supported in privileged mode."
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI KIWI Appliance Builder 10.3 (kiwi)"
+LABEL org.opencontainers.image.description="KIWI Appliance Builder 10.3 (kiwi) container based on the openSUSE Tumbleweed Base Container Image. This container is only supported in privileged mode."
 LABEL org.opencontainers.image.version="%%kiwi_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
@@ -60,5 +60,5 @@ LABEL usage="This container requires an openSUSE/SUSE host kernel for full funct
 # sanity check that the version from the tag is equal to the version of python3-kiwi that we expect
 RUN set -euo pipefail; \
     [ "$(rpm -q --qf '%{version}' python3-kiwi | \
-    cut -d '.' -f -2)" = "10.2" ]
+    cut -d '.' -f -2)" = "10.3" ]
 RUN set -euo pipefail; printf "runtime_checks:\n  - disable:\n    - check_target_dir_on_unsupported_filesystem\n\nmapper:\n  - part_mapper: kpartx\n" > /etc/kiwi.yml

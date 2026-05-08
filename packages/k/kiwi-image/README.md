@@ -1,4 +1,4 @@
-# KIWI Appliance Builder 10.2 (kiwi) container image
+# KIWI Appliance Builder 10.3 (kiwi) container image
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
@@ -26,7 +26,7 @@ like scripts or configuration files.
 To build a KIWI NG appliance, launch the container in privileged mode:
 
 ```ShellSession
-$ podman run --privileged -v /path/to/kiwi/descr:/image:Z registry.opensuse.org/opensuse/bci/kiwi:10.2
+$ podman run --privileged -v /path/to/kiwi/descr:/image:Z registry.opensuse.org/opensuse/bci/kiwi:10.3
 ```
 
 For more information about KIWI NG, see the [KIWI NG documentation](https://osinside.github.io/kiwi/),
