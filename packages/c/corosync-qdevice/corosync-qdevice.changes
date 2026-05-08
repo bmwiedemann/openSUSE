@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  8 09:24:37 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Modify 0001-harden-services-with-systemd-sandboxing.patch:
+  * Add NoNewPrivileges=true back
+
+-------------------------------------------------------------------
 Mon Jan 12 09:21:45 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Update corosync-qdevice.spec:
