@@ -16,7 +16,7 @@
 #
 
 Name:           nwg-look
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        GTK3 settings editor adapted to work in sway/wlroots environment
 License:        MIT

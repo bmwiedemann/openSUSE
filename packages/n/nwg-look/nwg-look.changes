@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 08 08:04:53 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+
+- Update to version 1.1.1:
+  * bump to 1.1.1
+  * Change format to json
+  * fix spanish lang
+  * update dependencies
+  * fix: Give up on bundling gtk themes in favor of a much simpler mount strategy
+  * feat: Add option to install selected gtk theme to flatpak
+  * Include Spanish lang and keywords on nwg-look.desktop
+  * fix: Only consider/show flatpak options if flatpak is installed
+  * feat: Add option to override flatpak GTK and icon themes
+  * fix typos and mismatched format specifiers in tools.go
+
+-------------------------------------------------------------------
 Thu May 07 12:54:24 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
 
 - Update to version 1.1.0:
