@@ -148,4 +148,21 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Updated README with the new features</comment>
     <requestid>1351307</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>669f40b93323c4343a7f4ce57e6bda04</srcmd5>
+    <version>1.7.4</version>
+    <time>1778251576</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 1.7.4
+- Upstream changes
+  * Fix runtime picker
+- For version 1.7.3:
+  * More AppImage fixes
+  * AppImage fixes, UI tweaks for better experience
+  * Readme update
+  * Changed the logo, added newer screenshots
+  * UI Cleanup
+  * Fix flatpak permissions for umu</comment>
+    <requestid>1351509</requestid>
+  </revision>
 </revisionlist>

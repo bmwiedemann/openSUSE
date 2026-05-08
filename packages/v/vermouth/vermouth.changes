@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 08 02:33:13 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.7.4
+- Upstream changes
+  * Fix runtime picker
+- For version 1.7.3:
+  * More AppImage fixes
+  * AppImage fixes, UI tweaks for better experience
+  * Readme update
+  * Changed the logo, added newer screenshots
+  * UI Cleanup
+  * Fix flatpak permissions for umu
+
+-------------------------------------------------------------------
 Wed May 06 20:35:04 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.7.2
