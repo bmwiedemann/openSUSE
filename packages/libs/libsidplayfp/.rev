@@ -261,4 +261,12 @@ GStreamer.</comment>
   * changed the default sampling freq to 48KHz.</comment>
     <requestid>1350468</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>a3906b1773ebca8287fbd241bb1ece41</srcmd5>
+    <version>3.0.0</version>
+    <time>1778251381</time>
+    <user>dimstar_suse</user>
+    <comment>- Added libresidfp dependency (need for mpd).</comment>
+    <requestid>1351457</requestid>
+  </revision>
 </revisionlist>

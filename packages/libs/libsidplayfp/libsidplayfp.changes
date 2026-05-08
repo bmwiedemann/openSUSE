@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  7 15:07:54 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Added libresidfp dependency (need for mpd).
+
+-------------------------------------------------------------------
 Sat May  2 14:38:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.0
@@ -409,4 +414,3 @@ Wed Feb 13 18:10:20 UTC 2013 - reddwarf@opensuse.org
 Sat Sep  1 09:36:29 UTC 2012 - reddwarf@opensuse.org
 
 - Initial package
-

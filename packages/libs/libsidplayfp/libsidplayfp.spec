@@ -23,29 +23,26 @@ Version:        3.0.0
 Release:        0
 Summary:        A library to play Commodore 64 music
 License:        GPL-2.0-or-later
-Group:          System/Libraries
-#Git-Clone:     https://github.com/libsidplayfp/libsidplayfp.git
-URL:            https://sourceforge.net/projects/sidplay-residfp/
+URL:            https://github.com/libsidplayfp/libsidplayfp
 Source0:        https://github.com/libsidplayfp/libsidplayfp/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  libgcrypt-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libftdi1)
+BuildRequires:  pkgconfig(libgcrypt)
+BuildRequires:  pkgconfig(libresidfp)
 
 %description
 A library to play Commodore 64 music based on libsidplay2.
 
-%package -n libsidplayfp%{soname}
+%package -n %{name}%{soname}
 Summary:        A library to play Commodore 64 music
-Group:          System/Libraries
 
-%description -n libsidplayfp%{soname}
+%description -n %{name}%{soname}
 A library to play Commodore 64 music based on libsidplay2.
 
 %package devel
-Summary:        Development files for libsidplayfp
-Group:          Development/Libraries/C and C++
-Requires:       libsidplayfp%{soname} = %{version}
+Summary:        Development files for %{name}
+Requires:       %{name}%{soname} = %{version}
 
 %description devel
 This package contains headers and libraries required to build applications that
@@ -53,14 +50,12 @@ use libsidplayfp.
 
 %package -n libstilview%{stilview_soname}
 Summary:        A library to play Commodore 64 music
-Group:          System/Libraries
 
 %description -n libstilview%{stilview_soname}
 A library to play Commodore 64 music based on libsidplay2.
 
 %package -n libstilview-devel
 Summary:        Development files for libstilview
-Group:          Development/Libraries/C and C++
 Requires:       libstilview%{stilview_soname} = %{version}
 
 %description -n libstilview-devel
@@ -80,16 +75,14 @@ EXTRA="--with-simd=none"
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+rm %{buildroot}%{_libdir}/{%{name},libstilview}.la
 
-%ldconfig_scriptlets -n libsidplayfp%{soname}
+%ldconfig_scriptlets -n %{name}%{soname}
 %ldconfig_scriptlets -n libstilview%{stilview_soname}
 
-%check
-
-%files -n libsidplayfp%{soname}
+%files -n %{name}%{soname}
 %license COPYING
-%{_libdir}/libsidplayfp.so.%{soname}*
+%{_libdir}/%{name}.so.%{soname}*
 
 %files -n libstilview%{stilview_soname}
 %license COPYING
@@ -97,14 +90,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %doc AUTHORS.md NEWS.md README.md
-%{_libdir}/libsidplayfp.so
-%{_includedir}/sidplayfp/
-%{_libdir}/pkgconfig/libsidplayfp.pc
+%{_libdir}/%{name}.so
+%{_includedir}/sidplayfp
+%{_libdir}/pkgconfig/%{name}.pc
 
 %files -n libstilview-devel
 %doc AUTHORS.md NEWS.md README.md
 %{_libdir}/libstilview.so
-%{_includedir}/stilview/
+%{_includedir}/stilview
 %{_libdir}/pkgconfig/libstilview.pc
 
 %changelog
