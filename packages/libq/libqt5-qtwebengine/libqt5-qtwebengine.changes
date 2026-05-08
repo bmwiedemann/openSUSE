@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  8 13:21:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Backport upstream change:
+  * qtwebengine-glibc-2_43.patch
+
+-------------------------------------------------------------------
 Mon Dec  1 12:40:02 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libqt5-qtwebengine-icu78.patch: Fix build against ICU 78.

@@ -1044,4 +1044,13 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
     <comment>- Add libqt5-qtwebengine-icu78.patch: Fix build against ICU 78. (forwarded request 1320822 from dimstar)</comment>
     <requestid>1320889</requestid>
   </revision>
+  <revision rev="109" vrev="3">
+    <srcmd5>b43c533f7dbf0d51e908a9e6738e9f37</srcmd5>
+    <version>5.15.19</version>
+    <time>1778265170</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport upstream change:
+  * qtwebengine-glibc-2_43.patch</comment>
+    <requestid>1352035</requestid>
+  </revision>
 </revisionlist>

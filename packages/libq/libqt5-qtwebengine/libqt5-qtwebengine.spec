@@ -71,10 +71,12 @@ Patch9:         sandbox_recvmsg.patch
 Patch10:        qtwebengine-5.15.18-gcc15-cstdint.patch
 # PATCH-FIX-UPSTREAM -- Fix build against ICU 78, borrowed from https://aur.archlinux.org/cgit/aur.git/tree/qt5-webengine-icu-78.patch?h=qt5-webengine
 Patch11:        libqt5-qtwebengine-icu78.patch
+# PATCH-FIX-UPSTREAM -- glibc 2.43 support
+Patch12:        qtwebengine-glibc-2_43.patch
 ### Patch 50-99 are applied conditionally
 # PATCH-FIX-UPSTREAM -- allow building qtwebengine with ffmpeg 5
-Patch50:        qtwebengine-ffmpeg5.patch
-Patch51:        qt5-webengine-ffmpeg7.patch
+Patch51:        qtwebengine-ffmpeg5.patch
+Patch52:        qt5-webengine-ffmpeg7.patch
 ###
 # http://www.chromium.org/blink is not ported to PowerPC & s390
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
@@ -301,24 +303,13 @@ Examples for the libqt5-qtpdf module.
 %prep
 # Leap's rpm doesn't understand '%%autopatch -M N'  nor '%%autopatch X Y Z -p1'
 %setup -q -n %{tar_version}
-%patch -P0 -p1
-%patch -P1 -p1
-%patch -P2 -p1
-%patch -P3 -p1
-%patch -P4 -p1
-%patch -P5 -p1
-%patch -P6 -p1
-%patch -P7 -p1
-%patch -P8 -p1
-%patch -P9 -p1
-%patch -P10 -p1
-%patch -P11 -p1
+%autopatch -p1 -M 50
 
 # FFmpeg 5
 %if %{with system_ffmpeg}
 %if %{pkg_vcmp pkgconfig(libavcodec) >= 5}
-%patch -P50 -p1
 %patch -P51 -p1
+%patch -P52 -p1
 %endif
 %endif
 
