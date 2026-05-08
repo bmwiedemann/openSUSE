@@ -38,7 +38,7 @@
 %define frr_daemondir %{_prefix}/lib/%{name}
 
 Name:           frr
-Version:        10.6.0
+Version:        10.6.1
 Release:        0
 Summary:        The FRRouting Protocol Suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May  8 07:59:01 UTC 2026 - Marius Tomaschewski <mt@suse.com>
+
+- Update to frr-10.6.1 (https://frrouting.org/release/10.6.1/)
+  providing several bug fixes. Already the previous update to
+  frr-10.6.0 includes security fixes for the following Denial
+  of Service (DoS) vulnerabilities:
+  - ospfd: harden TE/SR TLV iteration against malformed lengths
+    (bsc#1263859,CVE-2026-28532,gh#FRRouting/frr#21002)
+  - bgpd: fix off-by-one error in FlowSpec operator array bounds check
+    (bsc#1263863,CVE-2026-37457,gh#FRRouting/frr#21054)
+  - bgpd: Validate MP_REACH_NLRI attribute against incorrect next-hop
+    (bsc#1263974,CVE-2026-37458,gh#FRRouting/frr#21075)
+  - bgpd: Check if the NHC length is enough to fill TLV value + TLV header
+    (bsc#1264051,CVE-2026-37459,gh#FRRouting/frr#21074)
+
+-------------------------------------------------------------------
 Mon Apr 27 09:29:28 UTC 2026 - Marius Tomaschewski <mt@suse.com>
 
 - Update to frr-10.6.0 which brings a long list of enhancements and

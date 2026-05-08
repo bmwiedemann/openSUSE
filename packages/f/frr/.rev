@@ -448,4 +448,23 @@
   - 0004-bgpd-improve-packet-parsing-for-EVPN-and-ENCAP-VNC.patch</comment>
     <requestid>1349733</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>d881f4ac653ca78b84cdb6d0ffedf415</srcmd5>
+    <version>10.6.1</version>
+    <time>1778251692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to frr-10.6.1 (https://frrouting.org/release/10.6.1/)
+  providing several bug fixes. Already the previous update to
+  frr-10.6.0 includes security fixes for the following Denial
+  of Service (DoS) vulnerabilities:
+  - ospfd: harden TE/SR TLV iteration against malformed lengths
+    (bsc#1263859,CVE-2026-28532,gh#FRRouting/frr#21002)
+  - bgpd: fix off-by-one error in FlowSpec operator array bounds check
+    (bsc#1263863,CVE-2026-37457,gh#FRRouting/frr#21054)
+  - bgpd: Validate MP_REACH_NLRI attribute against incorrect next-hop
+    (bsc#1263974,CVE-2026-37458,gh#FRRouting/frr#21075)
+  - bgpd: Check if the NHC length is enough to fill TLV value + TLV header
+    (bsc#1264051,CVE-2026-37459,gh#FRRouting/frr#21074)</comment>
+    <requestid>1351832</requestid>
+  </revision>
 </revisionlist>
