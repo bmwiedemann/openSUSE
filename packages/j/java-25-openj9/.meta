@@ -1,4 +1,5 @@
 <package name="java-25-openj9" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="Java:Factory" package="java-25-openj9"/>
 </package>
