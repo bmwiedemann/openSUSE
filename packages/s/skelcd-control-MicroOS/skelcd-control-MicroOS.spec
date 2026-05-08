@@ -1,7 +1,7 @@
 #
 # spec file for package skelcd-control-MicroOS
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -121,7 +121,7 @@ Requires:       yast2-vm
 
 URL:            https://github.com/yast/skelcd-control-MicroOS
 AutoReqProv:    off
-Version:        20250723
+Version:        20260507
 Release:        0
 Summary:        The MicroOS control file needed for installation
 License:        MIT
