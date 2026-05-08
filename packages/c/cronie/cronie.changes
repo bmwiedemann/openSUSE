@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  5 12:13:26 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add missing %verify(not mode) (boo#1263098)
+
+-------------------------------------------------------------------
 Mon Jan 19 19:55:29 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Use systemd-tmpfiles to create files under /var. Set appropriate

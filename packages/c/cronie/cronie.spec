@@ -251,10 +251,10 @@ done
 
 %files -n cron
 %doc cron_to_cronie.README
-%dir %attr(755,root,root) %{_sysconfdir}/cron.d
-%dir %attr(755,root,root) %{_sysconfdir}/cron.hourly
-%dir %attr(755,root,root) %{_sysconfdir}/cron.daily
-%dir %attr(755,root,root) %{_sysconfdir}/cron.weekly
-%dir %attr(755,root,root) %{_sysconfdir}/cron.monthly
+%dir %verify(not mode) %attr(755,root,root) %{_sysconfdir}/cron.d
+%dir %verify(not mode) %attr(755,root,root) %{_sysconfdir}/cron.hourly
+%dir %verify(not mode) %attr(755,root,root) %{_sysconfdir}/cron.daily
+%dir %verify(not mode) %attr(755,root,root) %{_sysconfdir}/cron.weekly
+%dir %verify(not mode) %attr(755,root,root) %{_sysconfdir}/cron.monthly
 
 %changelog
