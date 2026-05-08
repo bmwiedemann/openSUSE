@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 10:15:40 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- ibm139x-pending-char-state.patch: Use pending character state in
+  IBM1390, IBM1399 character sets (CVE-2026-4046, bsc#1261206, BZ #33980)
+
+-------------------------------------------------------------------
 Mon Apr 13 12:48:17 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - sys-mount-cloexec-flag.patch: include: isolate __O_CLOEXEC flag for

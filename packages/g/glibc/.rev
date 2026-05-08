@@ -3227,4 +3227,13 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   in &lt;sys/mount.h&gt; if undefined (BZ #33921) (forwarded request 1346484 from Andreas_Schwab)</comment>
     <requestid>1346485</requestid>
   </revision>
+  <revision rev="304" vrev="2">
+    <srcmd5>c9a2bc8e89c73a0ad09e6f70d472b9a2</srcmd5>
+    <version>2.43</version>
+    <time>1778251378</time>
+    <user>dimstar_suse</user>
+    <comment>- ibm139x-pending-char-state.patch: Use pending character state in
+  IBM1390, IBM1399 character sets (CVE-2026-4046, bsc#1261206, BZ #33980) (forwarded request 1351130 from Andreas_Schwab)</comment>
+    <requestid>1351131</requestid>
+  </revision>
 </revisionlist>

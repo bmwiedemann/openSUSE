@@ -365,6 +365,8 @@ Patch1011:      tst-rseq-linux-7.patch
 Patch1012:      sys-mount-cloexec-flag.patch
 # PATCH-FIX-UPSTREAM Linux: Only define OPEN_TREE_* macros in <sys/mount.h> if undefined (BZ #33921)
 Patch1013:      sys-mount-open-tree-macros.patch
+# PATCH-FIX-UPSTREAM Use pending character state in IBM1390, IBM1399 character sets (CVE-2026-4046, BZ #33980)
+Patch1014:      ibm139x-pending-char-state.patch
 %endif
 
 ###
