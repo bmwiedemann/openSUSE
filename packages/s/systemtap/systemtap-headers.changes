@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 1 18:45:42 UTC 2026 - Tony Jones <tonyj@suse.com>
+
+- Upgrade to version 5.5. See systemtap.changes for changelog
+
+-------------------------------------------------------------------
 Thu Feb 19 21:59:13 UTC 2026 - Tony Jones <tonyj@suse.com>
 
 - Add R section headers to sed rule (for support_section_retain added

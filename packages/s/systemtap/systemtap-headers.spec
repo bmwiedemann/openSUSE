@@ -24,7 +24,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap-headers
-Version:        5.4
+Version:        5.5
 Release:        0
 Summary:        SystemTap headers
 License:        GPL-2.0-or-later

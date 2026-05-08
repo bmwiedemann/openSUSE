@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri May 1 18:45:42 UTC 2026 - Tony Jones <tonyj@suse.com>
+
+- Update to version 5.5
+
+  * SystemTap frontend (stap) changes
+    - Support for `@enum("name")` has been added.
+    - The string concatenation operator (`.`) has been generalized to handle
+      N operands more efficiently.
+    - BPF and language-server NULL pointer dereference bugfixes.
+    - SystemTap now prefers to advertise `dnf debuginfo-install` when
+      missing debuginfo is detected.
+    - The `-p1`, `-p2`, `-p3` frontend passes no longer force server/mok
+      mode unnecessarily.
+  
+  * SystemTap backend changes
+    - Multiple security and robustness fixes for `stap-serverd`, including
+      fixes for TOCTOU races in mountfs and certificate database permission
+      checks, CWE-476 NULL pointer dereferences, restricting SSL/TLS cipher
+      suites to strong algorithms only, and upgrading module signing to
+      SHA256.
+    - Added a hypothetical emergency experimental band-aid for
+      CVE-2026-31431.
+    - The prototype httpd server code has been removed.
+    - Compatibility updates for newer compilers including GCC 14+ and GCC
+      16.
+    - Initial support for kernels >= 7.0 (including silencing pahole version
+      warnings and testsuite preprocessor tolerance).
+    - Fixed potential buffer overflows in `sscanf` and module name
+      replacements.
+  
+  * SystemTap tapset changes
+    - Support for new kernel syscalls: `lsm_get_self_attr`,
+    `  lsm_set_self_attr`, `sys_file_setattr`, and `sys_file_getattr`.
+    - Support for memory management primitives `MADV_GUARD_INSTALL` and
+      `MADV_GUARD_REMOVE`.
+    - Adapted to kernel 6.16 `DECLARE_TRACE_EVENT` refactoring.
+
+  Drop patch: elaborate.cxx-fix-32-bit-build.patch (upstream)
+  Drop patch: guard-usage-of-vmlinux.h.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Jan 21 18:37:14 UTC 2026 - Tony Jones <tonyj@suse.com>
 
 - Upgrade to version 5.4

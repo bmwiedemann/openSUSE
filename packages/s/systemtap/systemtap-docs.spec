@@ -17,7 +17,7 @@
 
 
 Name:           systemtap-docs
-Version:        5.4
+Version:        5.5
 Release:        0
 Summary:        Documents and examples for systemtap
 License:        GPL-2.0-or-later
@@ -26,7 +26,6 @@ URL:            https://sourceware.org/systemtap/
 Source0:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz
 Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.asc
 Patch1:         systemtap-docdir-fix.diff
-Patch2:         elaborate.cxx-fix-32-bit-build.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake

@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap
-Version:        5.4
+Version:        5.5
 Release:        0
 Summary:        Instrumentation System
 License:        GPL-2.0-or-later
@@ -34,8 +34,6 @@ Source4:        README-KEYRING
 Source5:        stap-server.conf
 Source6:        stap.conf
 Patch1:         systemtap-build-source-dir.patch
-Patch2:         elaborate.cxx-fix-32-bit-build.patch
-Patch3:         guard-usage-of-vmlinux.h.patch
 
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
