@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  7 22:17:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.1:
+  * Update MLX and MLX-C with threading fixes
+  * go: bump to 1.26
+  * Add Gemma 4 MTP speculative decoding
+
+-------------------------------------------------------------------
 Mon May  4 18:34:37 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 0.23.0:

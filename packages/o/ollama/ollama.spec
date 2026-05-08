@@ -41,7 +41,7 @@
 %define cuda_version %{cuda_version_major}-%{cuda_version_minor}
 
 Name:           ollama
-Version:        0.23.0
+Version:        0.23.1
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -60,7 +60,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  shaderc
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.26
 BuildRequires:  group(render)
 BuildRequires:  group(video)
 Requires:       group(render)
