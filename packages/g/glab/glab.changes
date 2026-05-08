@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri May 08 17:05:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.95.0:
+  * Features
+    - e5b53d65: feat(duo): add --install and --yes flags to duo cli
+      command (Kai Armstrong karmstrong@gitlab.com)
+    - 76d00d65: feat(skills): add glab skills install to install
+      bundled agent skill (experimental) (Thomas Schmidt
+      tschmidt@gitlab.com)
+  * Documentation
+    - d173eac2: docs(issuable): add synopsis to close, note,
+      reopen, subscribe, and unsubscribe (Brendan Lynch
+      blynch@gitlab.com)
+    - de019774: docs(mr): add synopsis to approve, approvers, diff,
+      close, delete, for,... (Brendan Lynch blynch@gitlab.com)
+    - 4fbb1820: docs(mr): add synopsis to list, view, create,
+      checkout, merge, and update (Brendan Lynch blynch@gitlab.com)
+    - 86d43fd9: docs: Add synopsis to CI/CD pipeline and job
+      commands (Brendan Lynch blynch@gitlab.com)
+    - 655b6ca3: docs: add info on deprecation messages (Brendan
+      Lynch blynch@gitlab.com)
+    - 634601b0: docs: add synopsis to experimental subcommands
+      (Brendan Lynch blynch@gitlab.com)
+    - 49d4b88e: docs: add synopsis to fork, opentofu, and auth
+      docker commands (Brendan Lynch blynch@gitlab.com)
+    - a84c20e7: docs: add synopsis to list and view commands
+      (Brendan blynch@gitlab.com)
+    - d225cb5d: docs: add synopsis to set, update, list, and export
+      (Brendan blynch@gitlab.com)
+    - ea774f21: docs: add synopsis to trace, lint, and config
+      compile (Brendan Lynch blynch@gitlab.com)
+  * Dependencies
+    - 6e175217: chore(deps): update module
+      github.com/modelcontextprotocol/go-sdk to v1.6.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+
+-------------------------------------------------------------------
 Wed May 06 16:05:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.94.0:
