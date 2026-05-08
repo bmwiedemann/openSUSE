@@ -111,4 +111,12 @@
     <comment>January 2026 CPU fixes + OpenJ9 0.57.0</comment>
     <requestid>1330662</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d16fc699b414ab199606a32ee024fd5f</srcmd5>
+    <version>21.0.11.0</version>
+    <time>1778251666</time>
+    <user>dimstar_suse</user>
+    <comment>April 2026 CPU fixes</comment>
+    <requestid>1351816</requestid>
+  </revision>
 </revisionlist>
