@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Fri May  8 07:37:21 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 11.0.31 with OpenJ9 0.59.0 virtual machine
+- Include Oracle April 2026 CPU changes
+  * CVE-2026-22007 (bsc#1262490), CVE-2026-22013 (bsc#1262494),
+    CVE-2026-22016 (bsc#1262495), CVE-2026-22018 (bsc#1262496),
+    CVE-2026-22021 (bsc#1262497), CVE-2026-23865 (bsc#1259118),
+    CVE-2026-34268 (bsc#1262500), CVE-2026-34282 (bsc#1262501)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.59/
+
+-------------------------------------------------------------------
 Mon Feb  2 21:03:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
-- Updagte to OpenJDK 11.0.30 with OpenJ9 0.57.0 virtual machine
+- Update to OpenJDK 11.0.30 with OpenJ9 0.57.0 virtual machine
 - Including Oracle January 2026 CPU changes
   * CVE-2026-21925 (bsc#1257034), CVE-2026-21932 (bsc#1257036),
     CVE-2026-21933 (bsc#1257037), CVE-2026-21945 (bsc#1257038)
