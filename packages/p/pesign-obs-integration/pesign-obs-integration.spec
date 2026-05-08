@@ -22,7 +22,7 @@
 %endif
 
 Name:           pesign-obs-integration
-Version:        10.2+git20260409.5b7f1bb
+Version:        10.2+git20260506.67eda76
 Release:        0
 Summary:        Macros and scripts to sign the kernel and bootloader
 License:        GPL-2.0-or-later

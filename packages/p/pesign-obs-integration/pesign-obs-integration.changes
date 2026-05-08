@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 06 08:31:26 UTC 2026 - jlee@suse.com
+
+- Update to version 10.2+git20260506.67eda76:
+  * modsign-repackage: The input raw signature should be a PKCS#7 packet
+  * modsign-repackage: Handle RemovePathPostfixes
+  * Handle RemovePathPostFixes on build services
+  * brp-99-pesign: Extract and transfer RemovePathPostFixes information
+  * debian: skip shellcheck on i386
+
+-------------------------------------------------------------------
 Thu Apr 09 02:06:21 UTC 2026 - jlee@suse.com
 
 - Update to version 10.2+git20260409.5b7f1bb:
