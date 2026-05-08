@@ -37,7 +37,6 @@ not make sense.
 %package runtime_podman
 Summary:        Podman Container Runtime for non-clustered systems
 Group:          Metapackages
-Provides:       pattern() = container_runtime
 Provides:       pattern() = container_runtime_podman
 Provides:       pattern-category() = Containers
 Provides:       pattern-icon() = pattern-kubic
