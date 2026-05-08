@@ -1,7 +1,6 @@
 <services>
-  <service name="download_files" mode="manual" />
+  <service name="download_files" mode="manual"/>
   <service name="go_modules" mode="manual">
     <param name="archive">alertmanager-*.tar.gz</param>
-    <param name="replace">google.golang.org/grpc=google.golang.org/grpc@v1.79.3</param>
   </service>
 </services>
