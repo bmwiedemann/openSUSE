@@ -2,7 +2,7 @@
 <constraints>
   <hardware>
     <physicalmemory>
-      <size unit="M">2000</size>
+      <size unit="G">2</size>
     </physicalmemory>
     <disk>
       <size unit="G">5</size>
@@ -11,4 +11,3 @@
   <sandbox>kvm</sandbox>
   <hostlabel exclude="true">SLOW_CPU</hostlabel>
 </constraints>
-

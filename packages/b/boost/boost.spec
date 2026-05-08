@@ -21,24 +21,11 @@
 
 %define ver 1.91.0
 %define _ver 1_91_0
-%define file_version %_ver
-%define lib_appendix %_ver
-%define docs_version 1.56.0
-%define short_version 1_56
-%define pname boost
+
 %bcond_with    build_docs
 %bcond_without package_pdf
 %bcond_without build_quickbook
 %bcond_with    boost_devel
-%bcond_with ringdisabled
-
-%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
-%define DisOMPI3 ExclusiveArch:  do_not_build
-%endif
-
-%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
-%define DisOMPI4 ExclusiveArch:  do_not_build
-%endif
 
 %define package_name boost%{library_version}
 %define my_docdir %{_docdir}/boost%{library_version}
@@ -1359,7 +1346,7 @@ objdump -Ctj .text -Ctj .text %{buildroot}%{_libdir}/libboost_exception.so | \
 rm %{buildroot}%{_libdir}/libboost_exception.so
 rm %{buildroot}%{_libdir}/libboost_exception.so.%{version}
 
-# not used or duplicated in boost-extra flavour
+# not used or duplicated in boost-extra flavor
 rm -r %{buildroot}%{_libdir}/cmake/boost_exception-*
 rm -r %{buildroot}%{_libdir}/cmake/boost_graph_parallel-%{version}
 
@@ -1369,7 +1356,7 @@ mkdir -p %{buildroot}%{my_docdir}
 mkdir -p %{buildroot}%{_defaultlicensedir}
 %endif
 %else
-# duplicate from boost-base flavour
+# duplicate from boost-base flavor
 rm %{buildroot}%{_libdir}/cmake/BoostDetectToolset-%{version}.cmake
 rm -r %{buildroot}%{_libdir}/cmake/Boost-%{version}
 rm -r %{buildroot}%{_libdir}/cmake/boost_headers-%{version}
@@ -1402,6 +1389,8 @@ rmdir --ignore-fail-on-non-empty %{buildroot}%{_libdir}
 
 %if %{build_base}
 %ldconfig_scriptlets -n libboost_atomic%{library_version}
+%ldconfig_scriptlets -n libboost_charconv%{library_version}
+%ldconfig_scriptlets -n libboost_chrono%{library_version}
 %ldconfig_scriptlets -n libboost_container%{library_version}
 %ldconfig_scriptlets -n libboost_context%{library_version}
 %ldconfig_scriptlets -n libboost_contract%{library_version}
@@ -1409,38 +1398,35 @@ rmdir --ignore-fail-on-non-empty %{buildroot}%{_libdir}
 %ldconfig_scriptlets -n libboost_date_time%{library_version}
 %ldconfig_scriptlets -n libboost_fiber%{library_version}
 %ldconfig_scriptlets -n libboost_filesystem%{library_version}
+%ldconfig_scriptlets -n libboost_graph%{library_version}
 %ldconfig_scriptlets -n libboost_iostreams%{library_version}
-%ldconfig_scriptlets -n libboost_log%{library_version}
-%ldconfig_scriptlets -n libboost_test%{library_version}
-%ldconfig_scriptlets -n libboost_process%{library_version}
-%ldconfig_scriptlets -n libboost_program_options%{library_version}
-%ldconfig_scriptlets -n libboost_regex%{library_version}
-%ldconfig_scriptlets -n libboost_serialization%{library_version}
-%ldconfig_scriptlets -n libboost_thread%{library_version}
-%ldconfig_scriptlets -n libboost_type_erasure%{library_version}
 %ldconfig_scriptlets -n libboost_json%{library_version}
-%ldconfig_scriptlets -n libboost_charconv%{library_version}
+%ldconfig_scriptlets -n libboost_locale%{library_version}
+%ldconfig_scriptlets -n libboost_log%{library_version}
 %ldconfig_scriptlets -n libboost_math%{library_version}
 %ldconfig_scriptlets -n libboost_nowide%{library_version}
-%ldconfig_scriptlets -n libboost_graph%{library_version}
-%ldconfig_scriptlets -n libboost_stacktrace%{library_version}
-%ldconfig_scriptlets -n libboost_wave%{library_version}
-%ldconfig_scriptlets -n libboost_url%{library_version}
+%ldconfig_scriptlets -n libboost_process%{library_version}
+%ldconfig_scriptlets -n libboost_program_options%{library_version}
 %ldconfig_scriptlets -n libboost_random%{library_version}
-%ldconfig_scriptlets -n libboost_chrono%{library_version}
-%ldconfig_scriptlets -n libboost_locale%{library_version}
+%ldconfig_scriptlets -n libboost_regex%{library_version}
+%ldconfig_scriptlets -n libboost_serialization%{library_version}
+%ldconfig_scriptlets -n libboost_stacktrace%{library_version}
+%ldconfig_scriptlets -n libboost_test%{library_version}
+%ldconfig_scriptlets -n libboost_thread%{library_version}
 %ldconfig_scriptlets -n libboost_timer%{library_version}
+%ldconfig_scriptlets -n libboost_type_erasure%{library_version}
+%ldconfig_scriptlets -n libboost_url%{library_version}
+%ldconfig_scriptlets -n libboost_wave%{library_version}
 %else
 
 %if %{with python3}
-%ldconfig_scriptlets -n libboost_python-py3-%{library_version}
 %ldconfig_scriptlets -n libboost_numpy-py3-%{library_version}
+%ldconfig_scriptlets -n libboost_python-py3-%{library_version}
 %endif
 
 %if %{with mpi}
-%ldconfig_scriptlets -n libboost_mpi%{library_version}
 %ldconfig_scriptlets -n libboost_graph_parallel%{library_version}
-
+%ldconfig_scriptlets -n libboost_mpi%{library_version}
 %if %{with python3}
 %ldconfig_scriptlets -n libboost_mpi_python-py3-%{library_version}
 %endif
