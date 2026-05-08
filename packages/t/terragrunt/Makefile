@@ -40,7 +40,7 @@ tar:
 	/usr/lib64/go/$(GOLANG_EXECUTABLE_VERSION)/bin/go mod download
 	/usr/lib64/go/$(GOLANG_EXECUTABLE_VERSION)/bin/go mod vendor
 	echo "Creating tarball vendor.tar.gz"
-	tar czf ../../../vendor.tar.gz ./vendor
+	tar czf ../../../vendor.tar.gz ./vendor go.mod go.sum
 	ls -lh ../../../vendor.tar.gz
 	echo "Cleaning up"
 	go clean -modcache
