@@ -85,19 +85,20 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.41.3
+Version:        2.42
 Release:        0
 License:        GPL-2.0-or-later
 #Git-Clone:     https://github.com/util-linux/util-linux
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
-Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-%{version}.tar.xz
+Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.42/util-linux-%{version}.tar.xz
 Source2:        util-linux-login_defs-check.sh
+Source3:        util-linux-uuidd.tmpfiles.in
 Source7:        baselibs.conf
 Source8:        login.pamd
 Source9:        remote.pamd
 Source10:       su.pamd
 Source11:       su.default
-Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-%{version}.tar.sign
+Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.42/util-linux-%{version}.tar.sign
 Source13:       %{_name}.keyring
 Source14:       runuser.pamd
 Source15:       runuser-l.pamd
@@ -108,47 +109,14 @@ Source51:       blkid.conf
 Patch0:         make-sure-sbin-resp-usr-sbin-are-in-PATH.diff
 Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
-# PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
+# PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion, as SUSE uses chsh from shadow, not util-linux.
 Patch3:         util-linux-bash-completion-su-chsh-l.patch
+# PATCH-FIX-UPSTREAM util-linux-fix-build-with-libeconf.patch -- Fix build with libeconf.
+Patch4:         util-linux-fix-build-with-libeconf.patch
+# PATCH-FIX-SUSE static_lib.patch schubi@suse.com -- Fix build with libeconf. Not upstreamable in this form. Needs work!
 Patch5:         static_lib.patch
-# PATCH-FEATURE-UPSTREAM util-linux-lib-netlink.patch boo1139983 jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
-Patch6:         util-linux-lib-netlink.patch
-# PATCH-FEATURE-UPSTREAM util-linux-agetty-netlink.patch boo1139983 jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
-Patch7:         util-linux-agetty-netlink.patch
-# PATCH-FIX-UPSTREAM util-linux-lib-netlink-fix1.patch jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
-Patch8:         util-linux-lib-netlink-fix1.patch
-# PATCH-FIX-UPSTREAM util-linux-lib-netlink-fix2.patch jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
-Patch9:         util-linux-lib-netlink-fix2.patch
-# PATCH-FIX-UPSTREAM util-linux-lib-netlink-fix3.patch jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
-Patch10:        util-linux-lib-netlink-fix3.patch
-# PATCH-FIX-UPSTREAM util-linux-agetty-netlink-fix4.patch jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
-Patch11:        util-linux-agetty-netlink-fix4.patch
-# PATCH-FIX-UPSTREAM util-linux-lib-netlink-fix5.patch gh#util-linux/util-linux#4032 sbrabec@suse.com -- Fix NETLINK_ROUTE socket leak.
-Patch12:        util-linux-lib-netlink-fix5.patch
-# PATCH-FEATURE-UPSTREAM util-linux-lib-configs.patch gh#util-linux/util-linux#3752 schubi@suse.com -- Added lib "configs" for parsing configuration.
-Patch13:        util-linux-lib-configs.patch
-# PATCH-FEATURE-UPSTREAM util-linux-agetty-configs.patch gh#util-linux/util-linux#3752 schubi@suse.com -- agetty: using configs lib for parsing issue files.
-Patch14:        util-linux-agetty-configs.patch
-# PATCH-FIX-UPSTREAM util-linux-lib-configs-fix1.patch schubi@suse.com -- Fix agetty: using configs lib.
-Patch15:        util-linux-lib-configs-fix1.patch
-# PATCH-FIX-UPSTREAM util-linux-lib-configs-fix2.patch sbrabec@suse.com -- Fix agetty: using configs lib.
-Patch16:        util-linux-lib-configs-fix2.patch
-# PATCH-FIX-UPSTREAM util-linux-lib-configs-fix3.patch sbrabec@suse.com -- Fix agetty: using configs lib.
-Patch17:        util-linux-lib-configs-fix3.patch
-# PATCH-FIX-UPSTREAM util-linux-lib-configs-fix4.patch sbrabec@suse.com -- Fix agetty: using configs lib.
-Patch18:        util-linux-lib-configs-fix4.patch
-# PATCH-FIX-UPSTREAM util-linux-lib-configs-fix5.patch sbrabec@suse.com -- Fix agetty: using configs lib.
-Patch19:        util-linux-lib-configs-fix5.patch
-# PATCH-FIX-UPSTREAM util-linux-lib-configs-fix6.patch schubi@suse.com -- Fix agetty: using configs lib.
-Patch20:        util-linux-lib-configs-fix6.patch
-# PATCH-FIX-UPSTREAM util-linux-agetty-escape-erase.patch bsc#1194818 sbrabec@suse.com -- Fix agetty erase of escape characters.
-Patch21:        util-linux-agetty-escape-erase.patch
-# PATCH-FIX-BUILD util-linux-man-generated.patch sbrabec@suse.com -- Update generated man pages modified by patches.
-Patch22:        util-linux-man-generated.patch
-# PATCH-FIX-OPENSUSE bsc#1222465: fdisk creates broken partition table
-Patch23:        util-linux-bsc-1222465.patch
-# PATCH-FIX-SECURITY util-linux-CVE-2026-3184.patch bsc1258859 CVE-2026-3184 -- Use full hostname for PAM to ensure correct access control for "login -h".
-Patch24:        util-linux-CVE-2026-3184.patch
+# PATCH-FIX-UPSTREAM util-linux-su-revert-su-pass-arguments.patch -- Fix su passing argument regression.
+Patch6:         util-linux-su-revert-su-pass-arguments.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
@@ -220,7 +188,7 @@ Supplements:    filesystem(minix)
 # Upgrade this symbol version only if new variables appear!
 # Verify by shadow-login_defs-check.sh from shadow source package.
 # Use downstream version. Upstream may accept the patch later.
-Recommends:     login_defs-support-for-util-linux >= 4.17.4
+Recommends:     login_defs-support-for-util-linux >= 4.19.4
 Requires(post): coreutils
 %endif
 # ulsubset == core
@@ -506,9 +474,13 @@ SMP systems.
 %prep
 %setup -q -n %{_name}-%{version}
 cp -a %{S:2} .
+cp -a %{S:3} uuidd.tmpfiles.in
 %autopatch -p1
 # This test randomly fails or keeps hanging task inside build chroot (tested on 2.38).
 rm tests/ts/lsns/ioctl_ns
+# Sometimes lefts running tasks and hangs forever in pre-16.1 IBS. Remove these checks (tested on 2.42).
+rm tests/ts/lsfd/option-hyperlink
+rm tests/ts/lsfd/option-inet
 
 %build
 AUTOPOINT=true GTKDOCIZE=true autoreconf -vfi
@@ -618,6 +590,7 @@ cd ..
 ##############
 %if "%ulbuild" == "base"
 configure_and_build
+sed "s:@sharedstatedir@:%{_sharedstatedir}:" uuidd.tmpfiles.in >uuidd.tmpfiles
 %endif
 # ulbuild == base
 
@@ -648,7 +621,7 @@ fi
 ################
 %if "%ulbuild" == "base"
 %make_install
-mkdir -p "%{buildroot}%{_distconfdir}/default" "%{buildroot}%{_pam_vendordir}" "%{buildroot}%{_sysconfdir}/issue.d" "%{buildroot}/usr/lib/issue.d"
+mkdir -p "%{buildroot}%{_distconfdir}/default" "%{buildroot}%{_pam_vendordir}" "%{buildroot}%{_sysconfdir}/issue.d" "%{buildroot}/usr/lib/issue.d" "%{buildroot}%{_datadir}/user-tmpfiles.d"
 install -m 644 %{SOURCE51} %{buildroot}%{_distconfdir}/blkid.conf
 touch %{buildroot}%{_sysconfdir}/blkid.conf
 mkdir %{buildroot}%{_sysconfdir}/blkid.conf.d %{buildroot}%{_distconfdir}/blkid.conf.d
@@ -671,6 +644,7 @@ rm -fv "%{buildroot}/%{_sbindir}/raw" "%{buildroot}/sbin/raw" \
 	"%{buildroot}/%{_mandir}/man8/raw.8"*
 echo -e "#!/bin/sh\n/sbin/blockdev --flushbufs \$1" > %{buildroot}%{_sbindir}/flushb
 chmod 755 %{buildroot}%{_sbindir}/flushb
+install -m0644 uuidd.tmpfiles %{buildroot}%{_datadir}/user-tmpfiles.d/uuidd.conf
 
 # arch dependent
 
@@ -805,6 +779,11 @@ export TS_OPT_misc_mountpoint_known_fail="yes"
 export TS_OPT_lslocks_lslocks_known_fail=yes
 # FIXME: script/options sometimes fails on aarch64, arm7l and s390x
 export TS_OPT_script_options_known_fail=yes
+# Fails in chroot
+export TS_OPT_lsfd_column_mntid_nonroot_known_fail=yes
+# Fails in pre-16.1 IBS. Temporarily disable these checks.
+export TS_OPT_lsfd_mkfds_udp_known_fail=yes
+export TS_OPT_lsfd_mkfds_udp6_known_fail=yes
 #
 # hacks
 export PATH="$PATH:/sbin:/usr/sbin"
@@ -970,6 +949,7 @@ getent passwd uuidd >/dev/null || \
 # Useful for Tumbleweed or zypper dup only.
 mv /run/run/uuidd /run/uuidd >/dev/null 2>&1 || :
 rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
+%tmpfiles_create uuidd.conf
 %{service_add_post uuidd.socket uuidd.service}
 
 %preun -n uuidd
@@ -1080,14 +1060,15 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_bindir}/colcrt
 %core %{_bindir}/colrm
 %core %{_bindir}/column
+%core %{_bindir}/copyfilerange
 %core %{_bindir}/dmesg
 %core %{_bindir}/enosys
 %core %{_bindir}/exch
 %core %{_bindir}/fadvise
 %core %{_bindir}/fallocate
 %core %{_bindir}/fincore
-
 %core %{_bindir}/flock
+%core %{_bindir}/getino
 %core %{_bindir}/getopt
 %core %{_bindir}/hardlink
 %core %{_bindir}/hexdump
@@ -1292,6 +1273,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_mandir}/man1/colcrt.1.gz
 %core %{_mandir}/man1/colrm.1.gz
 %core %{_mandir}/man1/column.1.gz
+%core %{_mandir}/man1/copyfilerange.1.gz
 %core %{_mandir}/man1/coresched.1.gz
 %core %{_mandir}/man1/dmesg.1.gz
 %core %{_mandir}/man1/enosys.1.gz
@@ -1301,6 +1283,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_mandir}/man1/fallocate.1.gz
 %core %{_mandir}/man1/fincore.1.gz
 %core %{_mandir}/man1/flock.1.gz
+%core %{_mandir}/man1/getino.1.gz
 %core %{_mandir}/man1/getopt.1.gz
 %core %{_mandir}/man1/hardlink.1.gz
 %core %{_mandir}/man1/hexdump.1.gz
@@ -1427,6 +1410,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/logger
 %exclude %{_datadir}/bash-completion/completions/lsblk
 %exclude %{_datadir}/bash-completion/completions/lslogins
+%exclude %{_datadir}/user-tmpfiles.d/uuidd.conf
 
 %exclude %{_bindir}/findmnt
 %exclude %{_bindir}/logger
@@ -1486,6 +1470,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/colcrt
 %exclude %{_datadir}/bash-completion/completions/colrm
 %exclude %{_datadir}/bash-completion/completions/column
+%exclude %{_datadir}/bash-completion/completions/copyfilerange
 %exclude %{_datadir}/bash-completion/completions/coresched
 %exclude %{_datadir}/bash-completion/completions/ctrlaltdel
 %exclude %{_datadir}/bash-completion/completions/delpart
@@ -1505,6 +1490,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/fsck.minix
 %exclude %{_datadir}/bash-completion/completions/fsfreeze
 %exclude %{_datadir}/bash-completion/completions/fstrim
+%exclude %{_datadir}/bash-completion/completions/getino
 %exclude %{_datadir}/bash-completion/completions/getopt
 %exclude %{_datadir}/bash-completion/completions/hardlink
 %exclude %{_datadir}/bash-completion/completions/hexdump
@@ -1784,10 +1770,11 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %if "%ulsubset" == "systemd"
 %files -n uuidd
 %{_sbindir}/uuidd
-%attr(-,uuidd,uuidd) %dir %{_sharedstatedir}/libuuid
+%attr(-,uuidd,uuidd) %ghost %dir %{_sharedstatedir}/libuuid
 %attr(-,uuidd,uuidd) %ghost %{_sharedstatedir}/libuuid/clock.txt
 %attr(-,uuidd,uuidd) %ghost %dir /run/uuidd
 %{_datadir}/bash-completion/completions/uuidd
+%{_datadir}/user-tmpfiles.d/uuidd.conf
 %{_mandir}/man8/uuidd.8.gz
 %{_unitdir}/uuidd.service
 %{_unitdir}/uuidd.socket

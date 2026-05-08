@@ -8,13 +8,15 @@ util-linux implementation of chsh. But SUSE uses chsh from shadow
 package that does not include this feature. Use /etc/shells
 instead.
 
---- util-linux/bash-completion/su
-+++ util-linux/bash-completion/su
-@@ -14,7 +14,7 @@ _su_module()
+Index: util-linux-2.42/bash-completion/su
+===================================================================
+--- util-linux-2.42.orig/bash-completion/su
++++ util-linux-2.42/bash-completion/su
+@@ -15,7 +15,7 @@ _su_module()
  			return 0
  			;;
  		'-s'|'--shell')
--			COMPREPLY=( $(compgen -W "$(chsh -l)" -- $cur) )
+-			COMPREPLY=( $(compgen -W "$(command chsh -l)" -- $cur) )
 +			COMPREPLY=( $(compgen -W "$(</etc/shells)" -- $cur) )
  			return 0
  			;;

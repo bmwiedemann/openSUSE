@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Wed May  6 22:52:28 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Temporarily disable following test that do not work properly
+  in pre-16.1 IBS:
+  * lsfd/option-hyperlink
+  * lsfd/option-inet
+  * lsfd/mkfds_udp
+  * lsfd/mkfds_udp6
+
+-------------------------------------------------------------------
+Tue May  5 10:04:33 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix su passing argument regression
+  (util-linux-su-revert-su-pass-arguments.patch).
+
+-------------------------------------------------------------------
+Mon Apr 27 09:33:08 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.42 (jsc#PED-16188):
+  * Security fixes:
+    * CVE-2026-27456: mount(8) TOCTOU symlink attack via loop
+      device (bsc1261606).
+    * CWE-190 - Integer overflow in libblkid parse_dos_extended()
+      (boo#1222465, obsoletes
+      util-linux-bsc-1222465.patch).
+    * login(1): now uses the original FQDN (as specified by
+      "-h <host>") to configure the PAM RHOST item (bsc#1258859,
+      CVE-2026-3184, obsoletes util-linux-CVE-2026-3184.patch).
+  * login(1), if configured with LOGIN_SHELL_FALLBACK in
+    login.defs, can fall back to another valid shell from
+    /etc/shells if the user's configured shell is inaccessible due
+    to administrative errors
+    (refreshed util-linux-login_defs-check.sh).
+  * agetty reads issue file(s) in a way compatible with libeconf
+    and systemd, hermetic-usr and drop-ins are now supported. For
+    more details see
+    https://uapi-group.org/specifications/specs/configuration_files_specification/
+    (obsoletes util-linux-agetty-configs.patch,
+    util-linux-lib-configs-fix1.patch,
+    util-linux-lib-configs-fix2.patch
+    util-linux-lib-configs-fix3.patch
+    util-linux-lib-configs-fix4.patch
+    util-linux-lib-configs-fix5.patch
+    util-linux-lib-configs-fix6.patch
+    util-linux-lib-configs.patch).
+  * agetty uses netlink to get network interface information for
+    issue file output (obsoletes
+    util-linux-agetty-netlink-fix4.patch,
+    util-linux-agetty-netlink.patch,
+    util-linux-lib-netlink-fix1.patch,
+    util-linux-lib-netlink-fix2.patch,
+    util-linux-lib-netlink-fix3.patch,
+    util-linux-lib-netlink-fix5.patch,
+    util-linux-lib-netlink.patch,
+    util-linux-man-generated.patch).
+  * The libsmartcols-based tools with JSON support can now produce
+    additional JSON formats. The output format may be changed by
+    LIBSMARTCOLS_JSON={lines,compact} environment variable.
+  * column(1) now supports colors.
+  * New command copyfilerange(1) to copy file ranges using the
+    copy_file_range() syscall.
+  * New command getino(1) to print the unique inode number
+    associated with a process file descriptor or namespace for a
+    given PID.
+  * fadvise(1) now supports --fd to address a file by file
+    descriptor rather than by path.
+  * fallocate(1) now supports --report-holes to scan the file and
+    report the distribution of holes.
+  * A significant performance regression has been fixed in
+    hardlink(1).
+  * hardlink(1) now supports FIEMAP-based sparse file optimization.
+  * kill(1), waitpid(1) and nsenter(1) now support the PID:INO
+    convention to precisely address processes.
+  * mount(8) now supports --beneath to atomically replace a
+    filesystem at a mountpoint.
+  * mount(8) now supports --exclusive to ensure that the filesystem
+    is mounted as a unique instance and that the superblock is not
+    reused by the kernel.
+  * libmount now reads filesystem information from udevd (with
+    fallback to classic libblkid-based detection). This feature can
+    be disabled by --disable-libmount-udev-support.
+  * setarch(8) now supports --pid to show the personality of a
+    specified process.
+  * The pager support for tools like "dmesg -H" has been improved
+    to work better with signals.
+  * losetup(8) now supports --remove to remove a loop device node
+    from the system.
+  * lsblk(8), lslocks(8), lsmem(1) and lsclocks(1) support
+    <NAME>_COLUMNS environment variable to specify output columns
+    as an alternative to --output.
+  * lsfd(1) now supports new UNIX.IPEER, PACKET.PROTOCOL.RAW and
+    TUN.DEVNETNS columns.
+  * setpriv(1) now supports landlock via --landlock-access and
+    --landlock-rule options.
+  * Many other new features and fixes. For complete list see
+    https://kernel.org/pub/linux/utils/util-linux/v2.42/v2.42-ReleaseNotes
+- Refreshed patch: util-linux-bash-completion-su-chsh-l.patch.
+- Dropped upstream patch: util-linux-agetty-escape-erase.patch.
+- Fix build wih libeconf
+  (util-linux-fix-build-with-libeconf.patch).
+
+-------------------------------------------------------------------
+Mon Apr 27 02:30:07 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Make uuidd compatible with immutable mode (jsc#PED-16165).
+
+-------------------------------------------------------------------
 Wed Mar  4 22:28:26 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Do not create empty directories in /etc directly, but use
