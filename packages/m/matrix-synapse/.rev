@@ -1690,4 +1690,22 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.152.0</comment>
     <requestid>1349799</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>abc90c6a9a59db692839298f4d8ab738</srcmd5>
+    <version>1.152.1</version>
+    <time>1778251394</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1351449 from darix
+
+- Update to 1.152.1 (boo#1264445)
+  - Prevent CPU starvation (Denial of Service) under worker lock
+    contention, additionally capping the WorkerLock time out
+    interval to a maximum of 60 seconds. Contributed by Famedly.
+    (#19394, ELEMENTSEC-2026-1706, GHSA-8q93-326v-3m7g, CVE
+    pending)
+  - Prevent pagination ending when a page is full of rejected
+    events. (ELEMENTSEC-2025-1636, GHSA-6qf2-7x63-mm6v, CVE
+    pending)</comment>
+    <requestid>1351450</requestid>
+  </revision>
 </revisionlist>
