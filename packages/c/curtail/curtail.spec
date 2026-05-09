@@ -17,13 +17,14 @@
 
 
 Name:           curtail
-Version:        1.15.1
+Version:        1.16.0
 Release:        0
 Summary:        A simple and useful image compressor
 License:        GPL-3.0-or-later
 URL:            https://github.com/Huluti/curtail
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk4-tools

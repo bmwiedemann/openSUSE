@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  5 16:34:24 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.16.0:
+  * Add webp and svg to mime type data.
+  * Switch to Blueprint for UI.
+  * Better architecture for code.
+  * Update oxipng to v10.1.1.
+  * Updated translations.
+- New BuildRequires: blueprint-compiler.
+
+-------------------------------------------------------------------
 Tue Mar  3 09:11:54 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.15.1:
