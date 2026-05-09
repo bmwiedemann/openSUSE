@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  9 01:42:16 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build with Tumbleweed gcc, add
+  libmp4tag-2.0.3-fix-discarded-const-qualifier.patch
+
+-------------------------------------------------------------------
 Sun Feb  8 18:29:53 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.0.3:

@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1331894</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>84289ecf97540479b821735bc259d3cc</srcmd5>
+    <version>2.0.3</version>
+    <time>1778324401</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with Tumbleweed gcc (forwarded request 1352157 from AndreasStieger)</comment>
+    <requestid>1352158</requestid>
+  </revision>
 </revisionlist>

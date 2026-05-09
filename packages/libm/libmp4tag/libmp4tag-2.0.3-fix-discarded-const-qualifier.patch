@@ -1,0 +1,64 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Fri, 08 May 2026 18:39:09 -0700
+Subject: [PATCH] Fix discarded const qualifiers
+Upstream: sent (email)
+
+[   17s] /home/abuild/rpmbuild/BUILD/libmp4tag-2.0.3-build/libmp4tag-2.0.3/mp4tagutil.c: In function ‘mp4tag_check_tag’:
+[   17s] /home/abuild/rpmbuild/BUILD/libmp4tag-2.0.3-build/libmp4tag-2.0.3/mp4tagutil.c:151:10: error: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+[   17s]   151 |   result = bsearch (&key, mp4taglist, mp4taglistlen,
+[   17s]       |          ^
+[   17s] /home/abuild/rpmbuild/BUILD/libmp4tag-2.0.3-build/libmp4tag-2.0.3/mp4tagutil.c: In function ‘mp4tag_check_covr’:
+[   17s] /home/abuild/rpmbuild/BUILD/libmp4tag-2.0.3-build/libmp4tag-2.0.3/mp4tagutil.c:721:5: error: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+[   17s]   721 |   p = strrchr (fn, '.');
+[   17s]       |     ^
+
+
+Index: libmp4tag-2.0.3/mp4tagutil.c
+===================================================================
+--- libmp4tag-2.0.3.orig/mp4tagutil.c
++++ libmp4tag-2.0.3/mp4tagutil.c
+@@ -126,11 +126,11 @@ mp4tag_find_tag (libmp4tag_t *libmp4tag,
+ }
+ 
+ NODISCARD
+-mp4tagdef_t *
++const mp4tagdef_t *
+ mp4tag_check_tag (const char *tag)
+ {
+   mp4tagdef_t key;
+-  mp4tagdef_t *result;
++  const mp4tagdef_t *result;
+   char        tmp [MP4TAG_ID_DISP_LEN];
+ 
+   if (tag == NULL) {
+@@ -507,7 +507,7 @@ mp4tag_set_tag_binary (libmp4tag_t *libm
+     identtype = mp4tag_check_covr (tag, fn);
+     mp4tag->identtype = identtype;
+   } else {
+-    mp4tagdef_t *tagdef = NULL;
++    const mp4tagdef_t *tagdef = NULL;
+     bool        ok = false;
+ 
+     /* a new binary data tag */
+@@ -707,7 +707,7 @@ static int
+ mp4tag_check_covr (const char *tag, const char *fn)
+ {
+   int     identtype = MP4TAG_ID_DATA;
+-  char    *p;
++  const char    *p;
+   char    ext [10];
+ 
+   if (memcmp (tag, boxids [MP4TAG_COVR], MP4TAG_ID_LEN) != 0) {
+Index: libmp4tag-2.0.3/mp4tagint.h
+===================================================================
+--- libmp4tag-2.0.3.orig/mp4tagint.h
++++ libmp4tag-2.0.3/mp4tagint.h
+@@ -219,7 +219,7 @@ extern const char *MP4TAG_INPUT_DELIM;
+ void mp4tag_sort_tags (libmp4tag_t *libmp4tag);
+ int  mp4tag_find_tag (libmp4tag_t *libmp4tag, const char *tag, int dataidx);
+ int  mp4tag_parse_tagname (char *tag, int *dataidx);
+-NODISCARD mp4tagdef_t *mp4tag_check_tag (const char *tag);
++NODISCARD const mp4tagdef_t *mp4tag_check_tag (const char *tag);
+ int  mp4tag_compare (const void *a, const void *b);
+ int  mp4tag_compare_list (const void *a, const void *b);
+ int  mp4tag_add_tag (libmp4tag_t *libmp4tag, const char *tag, const char *data, ssize_t sz, uint32_t origflag, size_t origlen, const char *covername);
