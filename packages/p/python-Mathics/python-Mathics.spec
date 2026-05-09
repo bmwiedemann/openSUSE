@@ -1,7 +1,7 @@
 #
 # spec file for package python-Mathics
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,8 @@
 %if "%{flavor}" == "test"
 %bcond_without test
 %define psuffix -test
+# Skip python 3.11 for tests, since there are unrelated unresovables preventing build
+%define skip_python311 1
 %else
 %bcond_with test
 %define psuffix %{nil}
@@ -28,13 +30,16 @@
 
 %define pyname Mathics3
 Name:           python-Mathics%{psuffix}
-Version:        9.0.0
+Version:        10.0.0
 Release:        0
 Summary:        A general-purpose computer algebra system
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3
 License:        Apache-2.0 AND BSD-3-Clause AND GPL-3.0-only AND MIT
 URL:            https://mathics.github.io/
 Source0:        https://github.com/Mathics3/mathics-core/releases/download/%{version}/%{pyname}-%{version}.tar.gz
+# Manually include files missed from source tarball but required for tests [gh#Mathics3/mathics-core#1830]
+Source1:        https://raw.githubusercontent.com/Mathics3/mathics-core/refs/tags/10.0.0/test/format/format_tests.yaml
+Source2:        https://raw.githubusercontent.com/Mathics3/mathics-core/refs/heads/master/test/format/makeboxes_tests.yaml
 BuildRequires:  %{python_module Mathics-Scanner >= 2.0.0}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module devel >= 3.10}
@@ -48,9 +53,10 @@ BuildRequires:  %{python_module sympy >= 1.13.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Mathics-Scanner >= 2.0.0
+Requires:       python-Mathics-Scanner >= 10.0.0
 Requires:       python-Pint
 Requires:       python-Pympler
+Requires:       python-Timed-Threads
 Requires:       python-mpmath >= 0.19
 Requires:       python-numpy
 Requires:       python-palettable
@@ -69,6 +75,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Mathics = %{version}}
 BuildRequires:  %{python_module Pillow >= 9.2}
 BuildRequires:  %{python_module Pint}
+BuildRequires:  %{python_module Timed-Threads}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module palettable}
 BuildRequires:  %{python_module pytest}
@@ -86,6 +93,8 @@ free, lightweight alternative to Mathematica.
 
 %prep
 %autosetup -p1 -n mathics3-%{version}
+
+cp %{SOURCE1} %{SOURCE2} ./test/format/
 
 # REMOVE SHEBANGS FROM FILES INSTALLED TO NON-EXEC LOCATIONS
 pushd mathics
@@ -109,6 +118,8 @@ export USE_CYTHON=0
 export USE_CYTHON=0
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mathics
+%python_clone -a %{buildroot}%{_bindir}/mathics3
+%python_clone -a %{buildroot}%{_bindir}/mathics3-codeparser-parse
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -122,14 +133,20 @@ export USE_CYTHON=0
 %if %{without test}
 %post
 %python_install_alternative mathics
+%python_install_alternative mathics3
+%python_install_alternative mathics3-codeparser-parse
 
 %postun
 %python_uninstall_alternative mathics
+%python_uninstall_alternative mathics3
+%python_uninstall_alternative mathics3-codeparser-parse
 
 %files %{python_files}
 %license COPYING.txt
 %doc README.rst AUTHORS.txt
 %python_alternative %{_bindir}/mathics
+%python_alternative %{_bindir}/mathics3
+%python_alternative %{_bindir}/mathics3-codeparser-parse
 %{python_sitelib}/mathics/
 %{python_sitelib}/mathics3-%{version}*.*-info/
 %endif
