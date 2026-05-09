@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Thu May 07 06:06:07 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.10.1~git0.d02660a98:
+  * Release 1.10.1
+  * Fix copy in TOTP removal prompt and align TOTP case (#4314)
+  * Resolve base64 encoding of webauthn fields (#4312)
+
+-------------------------------------------------------------------
+Fri May 01 07:11:08 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.10.0-pre~git1.32e2f8ec6:
+  * Release 1.10.0
+  * Release 1.10.0-pre
+  * Release notes (#4304)
+  * Update ldap3/webauthn-rs (#4302)
+  * Merge commit from fork
+  * Merge commit from fork
+  * Merge commit from fork
+  * Merge commit from fork
+  * Add notes on server migration (#4301)
+  * 20260517 sparkle (#4280)
+  * Bump mozilla-actions/sccache-action in the all group (#4298)
+  * Bump the all group with 6 updates (#4299)
+  * Bump the all group across 1 directory with 3 updates (#4283)
+  * 20260331 send account recovery emails (#4259)
+  * Update oauth2 well known urls (#4296)
+  * Clippy for Rust 1.95 (#4291)
+  * Invert incorrect thread count logic (#4294)
+  * Allow modification of OAuth2 Refresh Expiry (#4276)
+  * 20260327 Introspection token auth metadata (#4230)
+  * fix: add missing kanidm-mail-sender binary (#4279)
+  * Correctly handle deleted accounts during page visits (#4275)
+  * don't fail auth when passed ui_locales (#4288)
+  * Bump actions/upload-pages-artifact from 4 to 5 in the all group (#4284)
+  * Fix link formatting in oauth2.rs documentation (#4278)
+  * Feat: Add OIDC Prompt Support (#4224)
+  * Handle multivalue URLs in SCIM (#4271)
+  * Correctly encode ssh tag values (#4272)
+  * Bump the all group with 2 updates (#4263)
+  * Bump the all group in /rlm_python with 4 updates (#4262)
+  * Bump the all group with 8 updates (#4264)
+  * Update deployment.md with configuration notes (#4258)
+  * Add .well-known/passkey-endpoints (#4255)
+  * show repl cert metadata and also handle socket timeouts (#4252)
+  * Update docs regarding replication cert lifetime (#4251)
+  * Log cleanup (#4248)
+  * adding timeouts and tests and port docs for mail_sender (#4246)
+  * Bump the all group with 5 updates (#4247)
+  * add dependency data to released containers (#4239)
+  * Fix to end code block and render remaining md correctly (#4241)
+  * Update readme.md for replication (#4236)
+  * Added note on primary email address and email aliases (#4237)
+  * Bump the all group with 6 updates (#4235)
+  * Bump the all group with 2 updates (#4234)
+  * Bump the uv group across 1 directory with 2 updates (#4231)
+  * cli: allow clearing person's legalname attribute (#4228)
+  * Add shell diagnostics (#4220)
+  * OpenSSL shall be vanquished (#4219)
+  * Bump the all group across 1 directory with 16 updates (#4225)
+  * Bump rustls-webpki from 0.103.9 to 0.103.10 (#4223)
+  * Bump flatted (#4222)
+  * Tabular data is tabular (#4221)
+  * Example sshd-config fragment, deployment de-activated on Debian (#4214)
+  * Update RELEASE_NOTES.md (#4215)
+  * fix(debian): Use correct bin path for kanidmd reload (#4212)
+  * Allow urlencoded client_id in basic auth (#4141)
+  * add nsswitch config check to unixd (#4210)
+  * 20260311 zxcvbn check (#4206)
+  * Enhance Traefik documentation (#4194)
+  * Re-add incorrectly removed utopia feature flag (#4207)
+  * Update ldap3 to 0.7.0 to resolve config filter issue (#4205)
+  * Added PasswordChangedTime attribute and database field (#3999)
+  * Defer on some routes (#4202)
+  * Remove thread local storage (#4204)
+  * Improve FreeBSD building, fully drop ring as a dependency.
+  * 20260218 credential reset emails (authenticated only) (#4151)
+  * android support for cli (#4197)
+  * Bump the all group with 4 updates (#4198)
+  * Bump the all group with 7 updates (#4199)
+  * feat: bind mount home strategy (#3997)
+  * Bump the all group with 2 updates (#4183)
+  * Bump the all group with 8 updates (#4184)
+  * Bump minimatch (#4180)
+  * Disable multithreading on RADIUS when DEBUG is False. (#4177)
+  * Don't revert admin changes in some groups during migrcation (#4176)
+  * Fix bug where DEBUG is always true in RADIUS entrypoint. (#4169)
+  * 20260220 prevent migration accidents (#4156)
+  * Bump the all group across 1 directory with 20 updates (#4163)
+  * Move the grafana group creation step (#4160)
+  * Alert on unsaved changes (#4155)
+  * pykanidm v1.3.0 - major rewrite to use openapi-generated codebase based on 1.9.0 spec (#4149)
+  * Warn about systemd-userdb (#4147)
+  * Dont require basic auth on token introspection (#4142)
+  * Dont be as upset when migration dir doesnt exist (#4146)
+  * Add AGENTS.md instructions (#4148)
+  * Feature OIDC updated at (#4007)
+  * pykanidm: clarify token use with service accounts (#4043)
+  * Fixed small typo in how_does_oauth2_work.md (#4138)
+  * Bye bye lazy static (#4134)
+  * Allow LDAP CA verification to be disabled in sync (#4133)
+  * Add oauth2 example, fix inter-migration reference handling (#4136)
+  * Add missing future migration in domain check (#4132)
+  * Corrected recycle_bin.md typo (#4135)
+  * 20260211 dev version (#4131)
+
+-------------------------------------------------------------------
+Thu Apr 30 02:42:37 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.9.3~git0.7d4108698:
+  * Release 1.9.3
+  * Security - High: SCIM Filters did not contain a bound on their parsing depth allowing stack exhaustion to occur leading to Denial of Service by an unauthenticated user
+  * Security - Moderate: PNG Image validation did not correctly handle short images allowing a panic to occur in a worker thread. This may lead to system instability over time
+  * Security - Low: HTML injection via user DisplayName in Passkey enrolment dialogs. This allows an admin to execute JS in the context of a users browser. Since the admin already can reset the users credentials, the impact of this is minimal.
+  * Security - Low: non-constant time comparison of OAuth2 client secret may allow a remote attacker to remotely recovery the bytes of the secret. Due to the length of the secret (48 chars) this is infeasible practically.
+  * Security - Low: incorrect handling of origin validation in Webauthn-RS allowed a malicious domain to collide with a valid one (badexample.com would match with example.com). This is mitigated by browsers detecting the forgery and preventing the authentication from proceeding.
+  * Security - High: LDAP Filters did not contain a bound on their parsing depth allowing stack exhaustion to occur leading to Denial of Service by an unauthenticated user.
+  * Update two vulnerable dependencies
+  * Release 1.9.2
+  * Allow urlencoded client_id in basic auth (#4141)
+  * Update ldap3 to 0.7.0 to resolve config filter issue (#4205)
+  * Remove thread local storage (#4204)
+
+-------------------------------------------------------------------
+Thu Apr 30 02:40:24 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.9.2~git6.896acba35:
+  * Release 1.9.3
+  * Merge commit from fork
+  * Merge commit from fork
+  * Merge commit from fork
+  * Merge commit from fork
+  * Update two vulnerable dependencies
+
+-------------------------------------------------------------------
 Fri Mar 13 05:30:43 UTC 2026 - william.brown@suse.com
 
 - Update to version 1.9.2~git0.6a2bb66bd:
