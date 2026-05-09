@@ -1,7 +1,7 @@
 #
 # spec file for package slf4j2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -116,6 +116,13 @@ Group:          Development/Libraries/Java
 %description migrator
 SLF4J Migrator.
 
+%package sources
+Summary:        SLF4J Source JARs
+Group:          Development/Libraries/Java
+
+%description sources
+SLF4J Source JARs.
+
 %prep
 %setup -q -n %{base_name}-%{version} -a1
 install -p -m 0644 %{SOURCE2} LICENSE-2.0.txt
@@ -126,16 +133,51 @@ build-jar-repository -s lib cal10n/cal10n-api javassist reload4j/reload4j
 
 ant package javadoc
 
+# Sources
+for i in api ext jdk14 jdk-platform-logging migrator nop reload4j simple; do
+  mkdir -p %{base_name}-${i}/target
+  jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=%{base_name}-${i}/target/%{base_name}-${i}-%{version}-sources.jar -C %{base_name}-${i}/src/main/java .
+  if [ -d %{base_name}-${i}/src/main/resources ]; then
+    jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+      --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+      --update --file=%{base_name}-${i}/target/%{base_name}-${i}-%{version}-sources.jar -C %{base_name}-${i}/src/main/resources .
+  fi
+done
+
+for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
+  mkdir -p ${i}/target
+  jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+    --create --file=${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/java .
+  if [ -d ${i}/src/main/resources ]; then
+    jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+      --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+      --update --file=${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/resources .
+  fi
+done
+
 %install
 install -d -m 0755 target/site/apidocs
 
 for i in api ext jdk14 jdk-platform-logging migrator nop reload4j simple; do
   %{mvn_artifact} %{base_name}-${i}/pom.xml %{base_name}-${i}/target/%{base_name}-${i}-%{version}.jar
+  %{mvn_artifact} org.slf4j:%{base_name}-${i}:jar:sources:%{version} %{base_name}-${i}/target/%{base_name}-${i}-%{version}-sources.jar
   cp -pr %{base_name}-${i}/target/site/apidocs target/site/apidocs/%{base_name}-${i}
 done
 
 for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   %{mvn_artifact} ${i}/pom.xml ${i}/target/${i}-%{version}.jar
+  %{mvn_artifact} org.slf4j:${i}:jar:sources:%{version} ${i}/target/${i}-%{version}-sources.jar
   cp -pr ${i}/target/site/apidocs target/site/apidocs/${i}
 done
 
@@ -143,7 +185,7 @@ done
 
 %{mvn_file} ':%{base_name}-{*}' %{base_name}/%{base_name}-@1 %{base_name}/@1
 
-%{mvn_package} :::sources: __noinstall
+%{mvn_package} :::sources: sources
 %{mvn_package} :%{base_name}-bom __noinstall
 %{mvn_package} :%{base_name}-parent __noinstall
 %{mvn_package} :%{base_name}-site __noinstall
@@ -175,6 +217,8 @@ done
 %files jdk-platform-logging -f .mfiles-jdk-platform-logging
 
 %files migrator -f .mfiles-migrator
+
+%files sources -f .mfiles-sources
 
 %files javadoc -f .mfiles-javadoc
 
