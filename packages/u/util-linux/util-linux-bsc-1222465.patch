@@ -1,0 +1,128 @@
+From 8b8da020f57414c90981371da71fdf32d2253ac7 Mon Sep 17 00:00:00 2001
+From: Martin Jungblut Schreiner <martinjungblut@gmail.com>
+Date: Mon, 29 Dec 2025 19:52:56 -0300
+Subject: [PATCH 1/2] libfdisk: (dos) fix logical partition start
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+fdisk could accept adjacent logical partitions, causing the EBR for the new
+logical partition to be written inside the previous partition’s data area.
+This can corrupt the EBR chain.
+
+Fix free-sector search to keep an EBR gap (first_lba) after logical partitions.
+---
+ libfdisk/src/dos.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/libfdisk/src/dos.c b/libfdisk/src/dos.c
+index c88d2a4f213..f85104b2828 100644
+--- a/libfdisk/src/dos.c
++++ b/libfdisk/src/dos.c
+@@ -1201,6 +1201,21 @@ static int find_first_free_sector_in_range(
+ 				p_start -= cxt->first_lba;
+ 			if (first < p_start)
+ 				continue;
++
++			/* if we're placing a logical partition start, ensure
++			there's room for the *next* EBR (stored at start - first_lba).
++			therefore enforce:
++			start(Lnew) >= end(Lprev) + first_lba + 1 */
++			if (logical && first > p_end && (first - p_end) <= cxt->first_lba) {
++				first = p_end + 1 + cxt->first_lba;
++				first_moved = 1;
++
++				if (first > end)
++					return -ENOSPC;
++
++				continue;
++			}
++
+ 			if (first <= p_end) {
+ 				first = p_end + 1 + (logical ? cxt->first_lba : 0);
+ 				first_moved = 1;
+
+From bf3d4aeec708fae7aa30530a1bf42ee1d35366f8 Mon Sep 17 00:00:00 2001
+From: Martin Jungblut Schreiner <martinjungblut@gmail.com>
+Date: Mon, 29 Dec 2025 20:46:39 -0300
+Subject: [PATCH 2/2] tests: fdisk: add regression test for missing EBR gap
+ between logical partitions
+
+Add a DOS/MBR test case where the first logical partition starts at 6145
+(extended start 2048). In the regressed behaviour fdisk allows the next
+logical partition to start at prev_end+1, which would place its EBR
+(start - 2048) inside the previous logical partition.
+
+The expected behaviour is to require the next starting sector to be at least
+prev_end + 2048 + 1 (e.g. 790528 in the testcase).
+
+Closes issue #3925.
+---
+ tests/expected/fdisk/mbr-logical-ebr-gap | 15 ++++++++++
+ tests/ts/fdisk/mbr-logical-ebr-gap       | 35 ++++++++++++++++++++++++
+ 2 files changed, 50 insertions(+)
+ create mode 100644 tests/expected/fdisk/mbr-logical-ebr-gap
+ create mode 100755 tests/ts/fdisk/mbr-logical-ebr-gap
+
+diff --git a/tests/expected/fdisk/mbr-logical-ebr-gap b/tests/expected/fdisk/mbr-logical-ebr-gap
+new file mode 100644
+index 00000000000..c25b9be7a8d
+--- /dev/null
++++ b/tests/expected/fdisk/mbr-logical-ebr-gap
+@@ -0,0 +1,15 @@
++
++---layout----------
++Disk <removed>: 1 GiB, 1073741824 bytes, 2097152 sectors
++Units: sectors of 1 * 512 = 512 bytes
++Sector size (logical/physical): 512 bytes / 512 bytes
++I/O size (minimum/optimal): 512 bytes / <removed> bytes
++Disklabel type: dos
++Disk identifier: <removed>
++
++Device     Boot   Start     End Sectors Id Type     Start-C/H/S End-C/H/S Attrs
++<removed>1         2048 2097151 2095104  5 Extended     0/32/33 130/138/8 
++<removed>5         6145  788479  782335 83 Linux        0/97/35  49/20/35 
++<removed>6      2097151 2097151       1 83 Linux      130/138/8 130/138/8 
++-------------------
++
+diff --git a/tests/ts/fdisk/mbr-logical-ebr-gap b/tests/ts/fdisk/mbr-logical-ebr-gap
+new file mode 100755
+index 00000000000..ffc9f96bc31
+--- /dev/null
++++ b/tests/ts/fdisk/mbr-logical-ebr-gap
+@@ -0,0 +1,35 @@
++#!/bin/bash
++TS_TOPDIR="${0%/*}/../.."
++TS_DESC="MBR: default start for logical must reserve EBR gap"
++. "$TS_TOPDIR"/functions.sh
++ts_init "$*"
++ts_check_test_command "$TS_CMD_FDISK"
++
++# 1GiB image => 2097152 sectors @ 512B
++TEST_IMAGE_NAME=$(ts_image_init 1024)
++
++# key assertion is in the resulting layout: L2 must not start at 788480,
++# but at 790528 (= 788480 + 2048), leaving room for the EBR.
++echo -e \
++"o
++n
++e
++1
++2048
++2097151
++n
++6145
++788479
++n
++788480
++2097151
++w
++q
++" | $TS_CMD_FDISK --noauto-pt "$TEST_IMAGE_NAME" &> /dev/null
++
++echo -ne "\n---layout----------\n" >> "$TS_OUTPUT"
++$TS_CMD_FDISK -x "$TEST_IMAGE_NAME" >> "$TS_OUTPUT"
++echo -ne "-------------------\n\n" >> "$TS_OUTPUT"
++ts_fdisk_clean "$TEST_IMAGE_NAME"
++
++ts_finalize

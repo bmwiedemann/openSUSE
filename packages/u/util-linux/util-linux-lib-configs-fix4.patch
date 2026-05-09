@@ -1,0 +1,108 @@
+From 03066584f148a8429386c4a928d093913b3e85e2 Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Wed, 1 Oct 2025 14:53:41 +0200
+Subject: [PATCH 6/8] lib/configs: improve readability
+
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ include/configs.h |  5 +++--
+ lib/configs.c     | 16 ++++++++++------
+ 2 files changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/include/configs.h b/include/configs.h
+index 783c10e30..ea72afacc 100644
+--- a/include/configs.h
++++ b/include/configs.h
+@@ -3,7 +3,8 @@
+  * it what you wish.
+  *
+  * Evaluting a list of configuration filenames which have to be handled/parsed.
+- * The order of this file list has been defined by 
++ *
++ * The order of this file list has been defined by
+  * https://github.com/uapi-group/specifications/blob/main/specs/configuration_files_specification.md
+  */
+ 
+@@ -89,4 +90,4 @@ int ul_configs_next_filename(struct list_head *file_list,
+ 			     struct list_head **current_entry,
+ 			     char **name);
+ 
+-#endif
++#endif /* UTIL_LINUX_CONFIGS_H */
+diff --git a/lib/configs.c b/lib/configs.c
+index 0534c18ef..a5d714f23 100644
+--- a/lib/configs.c
++++ b/lib/configs.c
+@@ -12,6 +12,7 @@
+ #if defined(HAVE_SCANDIRAT) && defined(HAVE_OPENAT)
+ #include <dirent.h>
+ #endif
++
+ #include "configs.h"
+ #include "list.h"
+ #include "fileutils.h"
+@@ -21,8 +22,8 @@ struct file_element {
+ 	char *filename;
+ };
+ 
+-/* Checking for main configuration file 
+- * 
++/* Checking for main configuration file
++ *
+  * Returning absolute path or NULL if not found
+  * The return value has to be freed by the caller.
+  */
+@@ -34,7 +35,7 @@ static char *main_configs(const char *root,
+ 	bool found = false;
+ 	char *path = NULL;
+ 	struct stat st;
+-	
++
+ 	if (config_suffix) {
+ 		if (asprintf(&path, "%s/%s/%s.%s", root, project, config_name, config_suffix) < 0)
+ 			return NULL;
+@@ -179,7 +180,7 @@ finish:
+ 	return counter;
+ }
+ 
+-#endif
++#endif /* HAVE_SCANDIRAT */
+ 
+ static void free_list_entry(struct file_element *element)
+ {
+@@ -187,7 +188,6 @@ static void free_list_entry(struct file_element *element)
+ 	free(element);
+ }
+ 
+-
+ int ul_configs_file_list(struct list_head *file_list,
+ 			 const char *project,
+ 			 const char *etc_subdir,
+@@ -201,7 +201,7 @@ int ul_configs_file_list(struct list_head *file_list,
+ 	struct list_head *etc_entry = NULL, *usr_entry = NULL;
+ 	struct file_element *add_element = NULL, *usr_element = NULL, *etc_element = NULL;
+ 	int counter = 0;
+-	
++
+ 	INIT_LIST_HEAD(file_list);
+ 
+ 	if (!config_name){
+@@ -256,11 +256,15 @@ int ul_configs_file_list(struct list_head *file_list,
+ #endif
+ 
+ 	list_for_each(etc_entry, &etc_file_list) {
++
+ 		etc_element = list_entry(etc_entry, struct file_element, file_list);
+ 		etc_basename = ul_basename(etc_element->filename);
++
+ 		list_for_each(usr_entry, &usr_file_list) {
++
+ 			usr_element = list_entry(usr_entry, struct file_element, file_list);
+ 			usr_basename = ul_basename(usr_element->filename);
++
+ 			if (strcmp(usr_basename, etc_basename) <= 0) {
+ 				if (strcmp(usr_basename, etc_basename) < 0) {
+ 					add_element = new_list_entry(usr_element->filename);
+-- 
+2.48.1
+

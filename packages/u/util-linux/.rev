@@ -2802,4 +2802,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment></comment>
     <requestid>1351328</requestid>
   </revision>
+  <revision rev="309" vrev="6">
+    <srcmd5>9e9389c570c75015040712d311a80ec7</srcmd5>
+    <version>2.41.3</version>
+    <time>1778324383</time>
+    <user>dimstar_suse</user>
+    <comment>https://progress.opensuse.org/issues/200802 and https://bugzilla.opensuse.org/show_bug.cgi?id=1264688</comment>
+    <requestid>1352185</requestid>
+  </revision>
 </revisionlist>

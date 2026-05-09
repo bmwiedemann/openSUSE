@@ -1,0 +1,21 @@
+Index: util-linux-2.41.2/term-utils/agetty.8
+===================================================================
+--- util-linux-2.41.2.orig/term-utils/agetty.8
++++ util-linux-2.41.2/term-utils/agetty.8
+@@ -456,6 +458,16 @@ Insert the IPv4 address of the specified
+ The same as \(rs4 but for IPv6.
+ .RE
+ .sp
++a
++.RS 4
++Insert list of "good" IP addresses for all interfaces. It prints best candidates for remote login IP addresses: global and site addresses; if not available, temporary address with the longest lifetime, if not available, link address. Note that link addresses are printed with local interface name, but they has to be done with the interface name on the machine where they will be used.
++.RE
++.sp
++A
++.RS 4
++Insert list of all IP addresses for all interfaces.
++.RE
++.sp
+ b
+ .RS 4
+ Insert the baudrate of the current line.
