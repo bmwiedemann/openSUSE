@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  9 05:12:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * maven4-resolver2017.patch
+    + Fix build with maven-resolver 2.0.17
+
+-------------------------------------------------------------------
 Thu Feb 12 19:26:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Use the compatibility version of maven-resolver2, since the

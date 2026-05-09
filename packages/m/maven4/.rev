@@ -55,4 +55,12 @@
     <comment>Prepare for maven-resolver2 2.0.15</comment>
     <requestid>1332844</requestid>
   </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>fcef27e1b6f1983bedc7b3bef840d4bd</srcmd5>
+    <version>4.0.0~rc5</version>
+    <time>1778324417</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with maven-resolver 2.0.17</comment>
+    <requestid>1352172</requestid>
+  </revision>
 </revisionlist>

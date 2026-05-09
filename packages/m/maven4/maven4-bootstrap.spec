@@ -38,6 +38,7 @@ Patch2:         0002-Invoke-logback-via-reflection.patch
 Patch3:         0001-Maven-4.0.x-w-Resolver-2.0.14-SNAPSHOT-11530.patch
 Patch4:         0001-Fix-a-ConcurrentModificationException-11429.patch
 Patch5:         0002-Fix-field-accessibility-leak-in-EnhancedCompositeBea.patch
+Patch6:         maven4-resolver2017.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 17
 BuildRequires:  javapackages-local
@@ -62,6 +63,7 @@ reporting and documentation from a central piece of information.
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 %pom_remove_dep -r :junit-bom
 %pom_remove_dep -r :mockito-bom
