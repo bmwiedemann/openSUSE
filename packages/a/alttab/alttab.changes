@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May  9 07:19:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.0:
+  * Disable bottom line by default.
+  * Avoid xnee dependency in tests.
+  * Build variable to debug icon source.
+  * More secure input filtering.
+  * Option -s 5 to prefer file icon if size is equal.
+  * Escape key to close UI.
+  * Handle COMPOUND WM_NAME.
+  * Secure window name loading in ratpoison.
+  * Show desktop names instead of numbers.
+  * Adapt test script for Darwin.
+  * Option -sortmin to show minimized windows last.
+  * Option -min to color minimized windows frames.
+  * Fix DISPLAY in test script.
+  * Fix C language errors.
+- Drop alttab-gcc15.patch
+
+-------------------------------------------------------------------
 Mon May  5 15:49:25 UTC 2025 - pgajdos@suse.com
 
 - added patches
