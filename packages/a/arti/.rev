@@ -221,4 +221,12 @@ It doesn't build on 15.5 because of rust being too old
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1338680</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c3bd11efc120bfd4ba80c54dd9c02436</srcmd5>
+    <version>2.2.0</version>
+    <time>1778324404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1352160</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:17:51 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 2.2.0:
+  * Arti 2.2.0 continues our work on relay development,
+    and brings us even closer to a working middle relay.
+  * The http-connect feature, which enables arti to run as an
+    HTTP CONNECT proxy, is now stable.
+  * Clients now support outbound HTTP CONNECT proxies.
+  * Relays can now successfully accept incoming TLS connections,
+    and authenticate to clients and other relays.
+  * The RPC client library (arti-rpc-client-core) now supports
+    non-blocking requests, and integration with application event
+    loops.
+  * The RPC system now supports "superuser" capabilities, which
+    applications can use to change and observe parts of Arti that
+    affect the entire system (and not only the application's own
+    traffic).
+  * For a full changelog see
+    /usr/share/doc/packages/arti/CHANGELOG.md
+
+-------------------------------------------------------------------
 Wed Mar  4 19:39:24 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 2.1.0:
