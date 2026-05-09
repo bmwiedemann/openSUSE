@@ -22,14 +22,14 @@
 %else
 %bcond_with bootstrap
 %endif
-%global platform_version 1.14.2
+%global platform_version 1.14.4
 %global jupiter_version %{version}
 %global vintage_version %{version}
 %global base_name junit5
 # The automatic requires would be java-headless >= 9, but the
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
-Version:        5.14.2
+Version:        5.14.4
 Release:        0
 License:        EPL-2.0
 Group:          Development/Libraries/Java
@@ -43,12 +43,12 @@ Source200:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform
 Source201:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console/%{platform_version}/junit-platform-console-%{platform_version}.pom
 Source202:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/%{platform_version}/junit-platform-console-standalone-%{platform_version}.pom
 Source203:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-engine/%{platform_version}/junit-platform-engine-%{platform_version}.pom
-Source205:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-launcher/%{platform_version}/junit-platform-launcher-%{platform_version}.pom
-Source206:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-runner/%{platform_version}/junit-platform-runner-%{platform_version}.pom
-Source207:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-suite-api/%{platform_version}/junit-platform-suite-api-%{platform_version}.pom
-Source208:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-reporting/%{platform_version}/junit-platform-reporting-%{platform_version}.pom
+Source204:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-launcher/%{platform_version}/junit-platform-launcher-%{platform_version}.pom
+Source205:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-runner/%{platform_version}/junit-platform-runner-%{platform_version}.pom
+Source206:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-suite-api/%{platform_version}/junit-platform-suite-api-%{platform_version}.pom
+Source207:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-suite-commons/%{platform_version}/junit-platform-suite-commons-%{platform_version}.pom
+Source208:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-suite-engine/%{platform_version}/junit-platform-suite-engine-%{platform_version}.pom
 Source209:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-testkit/%{platform_version}/junit-platform-testkit-%{platform_version}.pom
-Source210:      https://repo1.maven.org/maven2/org/junit/platform/junit-platform-suite-commons/%{platform_version}/junit-platform-suite-commons-%{platform_version}.pom
 # Jupiter POMs
 Source300:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter/%{jupiter_version}/junit-jupiter-%{jupiter_version}.pom
 Source301:      https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-api/%{jupiter_version}/junit-jupiter-api-%{jupiter_version}.pom
@@ -86,7 +86,6 @@ BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apiguardian:apiguardian-api)
 BuildRequires:  mvn(org.assertj:assertj-core)
-BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.opentest4j:opentest4j)
 Requires:       %{base_name}-minimal >= %{version}
 Obsoletes:      %{base_name}-guide < %{version}
@@ -123,12 +122,12 @@ cp -p %{SOURCE200} junit-platform-commons/pom.xml
 cp -p %{SOURCE201} junit-platform-console/pom.xml
 cp -p %{SOURCE202} junit-platform-console-standalone/pom.xml
 cp -p %{SOURCE203} junit-platform-engine/pom.xml
-cp -p %{SOURCE205} junit-platform-launcher/pom.xml
-cp -p %{SOURCE206} junit-platform-runner/pom.xml
-cp -p %{SOURCE207} junit-platform-suite-api/pom.xml
-cp -p %{SOURCE208} junit-platform-reporting/pom.xml
+cp -p %{SOURCE204} junit-platform-launcher/pom.xml
+cp -p %{SOURCE205} junit-platform-runner/pom.xml
+cp -p %{SOURCE206} junit-platform-suite-api/pom.xml
+cp -p %{SOURCE207} junit-platform-suite-commons/pom.xml
+cp -p %{SOURCE208} junit-platform-suite-engine/pom.xml
 cp -p %{SOURCE209} junit-platform-testkit/pom.xml
-cp -p %{SOURCE210} junit-platform-suite-commons/pom.xml
 cp -p %{SOURCE300} junit-jupiter/pom.xml
 cp -p %{SOURCE301} junit-jupiter-api/pom.xml
 cp -p %{SOURCE302} junit-jupiter-engine/pom.xml
@@ -137,17 +136,9 @@ cp -p %{SOURCE304} junit-jupiter-params/pom.xml
 cp -p %{SOURCE400} junit-vintage-engine/pom.xml
 cp -p %{SOURCE500} junit-bom/pom.xml
 
-for pom in $(find -mindepth 2 -name pom.xml | grep -v tests/); do
-    module=$(dirname $pom)
-    if [ -d ${module}/src/module ]; then
-      mkdir -p ${module}/src/main/java
-      mv ${module}/src/module/*/module-info.java ${module}/src/main/java/
-    fi
+for pom in $(find -mindepth 2 -name pom.xml | grep -v tests/ | sort -u); do
     # Set parent to aggregator
     %pom_add_parent org.fedoraproject.xmvn.junit5:aggregator:any $pom
-    # OSGi BSN
-    bsn=$(sed 's|/pom.xml$||;s|.*/|org.|;s|-|.|g' <<<"$pom")
-    %pom_xpath_inject pom:project "<properties><osgi.bsn>${bsn}</osgi.bsn></properties>" $pom
     # Incorrect scope - API guardian is just annotation, needed only during compilation
     %pom_xpath_set -f "pom:dependency[pom:artifactId='apiguardian-api']/pom:scope" provided $pom
     %pom_xpath_set -f "pom:dependency[pom:scope='runtime']/pom:scope" compile $pom
@@ -168,6 +159,145 @@ done
 # Disable the modules built in -minimal package
 %pom_disable_module junit-platform-commons
 %pom_disable_module junit-jupiter-api
+
+# Special BND instructions in several artifacts (converted from *.kts files)
+%pom_xpath_inject pom:project "
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>maven-bundle-plugin</artifactId>
+      <configuration>
+        <instructions combine.children=\"append\">
+          <Provide-Capability>
+            org.junit.platform.engine;
+            org.junit.platform.engine=junit-jupiter;
+            version:Version=\"\${version_cleanup;\${project.version}}\"
+          </Provide-Capability>
+          <Require-Capability>
+            org.junit.platform.launcher;
+            filter:='(&amp;(org.junit.platform.launcher=junit-platform-launcher)(version&gt;=\${version_cleanup;%{platform_version}})(!(version&gt;=\${versionmask;+;\${version_cleanup;%{platform_version}}})))';
+            effective:=active
+          </Require-Capability>
+        </instructions>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>" junit-jupiter-engine
+
+%pom_xpath_inject pom:project "
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>maven-bundle-plugin</artifactId>
+      <configuration>
+        <instructions combine.children=\"append\">
+          <Import-Package>
+            org.apiguardian.*;resolution:=\"optional\",
+            org.junit;version=\"[4.12,5)\",
+            org.junit.platform.commons.logging;status=INTERNAL,
+            org.junit.rules;version=\"[4.12,5)\",
+            *
+          </Import-Package>
+        </instructions>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>" junit-jupiter-migrationsupport
+
+%pom_xpath_inject pom:project "
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>maven-bundle-plugin</artifactId>
+      <configuration>
+        <instructions combine.children=\"append\">
+          <Require-Capability>
+            org.junit.platform.engine;
+            filter:='(&amp;(org.junit.platform.engine=junit-jupiter)(version&gt;=\${version_cleanup;\${project.version}})(!(version&gt;=\${versionmask;+;\${version_cleanup;\${project.version}}})))';
+            effective:=active
+          </Require-Capability>
+        </instructions>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>" junit-jupiter-params
+
+%pom_xpath_inject pom:project "
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>maven-bundle-plugin</artifactId>
+      <configuration>
+        <instructions combine.children=\"append\">
+          <Import-Package>
+            org.apiguardian.*;resolution:=\"optional\",
+            kotlin.*;resolution:="optional",
+            *
+          </Import-Package>
+          <_export-apiguardian></_export-apiguardian>
+        </instructions>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>" junit-platform-console-standalone
+
+%pom_xpath_inject pom:project "
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>maven-bundle-plugin</artifactId>
+      <configuration>
+        <instructions combine.children=\"append\">
+          <Provide-Capability>
+            org.junit.platform.launcher;
+            org.junit.platform.launcher=junit-platform-launcher;
+            version:Version=\"\${version_cleanup;\${project.version}}\"
+          </Provide-Capability>
+        </instructions>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>" junit-platform-launcher
+
+%pom_xpath_inject pom:project "
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>maven-bundle-plugin</artifactId>
+      <configuration>
+        <instructions combine.children=\"append\">
+          <Import-Package>
+            org.apiguardian.*;resolution:=\"optional\",
+            junit.runner;version=\"[4.12,5)\",
+            org.junit;version=\"[4.12,5)\",
+            org.junit.experimental.categories;version=\"[4.12,5)\",
+            org.junit.internal.builders;version=\"[4.12,5)\",
+            org.junit.platform.commons.logging;status=INTERNAL,
+            org.junit.runner.*;version=\"[4.12,5)\",
+            org.junit.runners.model;version=\"[4.12,5)\",
+            *
+          </Import-Package>
+          <Provide-Capability>
+            org.junit.platform.engine;
+            org.junit.platform.engine=junit-vintage;
+            version:Version=\"\${version_cleanup;\${project.version}}\"
+          </Provide-Capability>
+          <Require-Capability>
+            org.junit.platform.launcher;
+            filter:='(&amp;(org.junit.platform.launcher=junit-platform-launcher)(version&gt;=\${version_cleanup;%{platform_version}})(!(version&gt;=\${versionmask;+;\${version_cleanup;%{platform_version}}})))';
+            effective:=active
+          </Require-Capability>
+        </instructions>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>" junit-vintage-engine
 
 %{mvn_package} :junit-bom bom
 %{mvn_package} :aggregator __noinstall

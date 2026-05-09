@@ -7,11 +7,11 @@
   <!-- that they should prefer consuming it instead. -->
   <!-- do_not_remove: published-with-gradle-metadata -->
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.junit.vintage</groupId>
-  <artifactId>junit-vintage-engine</artifactId>
-  <version>5.14.2</version>
-  <name>JUnit Vintage Engine</name>
-  <description>Module "junit-vintage-engine" of JUnit 5.</description>
+  <groupId>org.junit.platform</groupId>
+  <artifactId>junit-platform-console-standalone</artifactId>
+  <version>1.14.4</version>
+  <name>JUnit Platform Console Standalone</name>
+  <description>Module "junit-platform-console-standalone" of JUnit 5.</description>
   <url>https://junit.org/</url>
   <licenses>
     <license>
@@ -61,35 +61,4 @@
     <developerConnection>scm:git:git://github.com/junit-team/junit-framework.git</developerConnection>
     <url>https://github.com/junit-team/junit-framework</url>
   </scm>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.junit</groupId>
-        <artifactId>junit-bom</artifactId>
-        <version>5.14.2</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-  <dependencies>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-engine</artifactId>
-      <version>1.14.2</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apiguardian</groupId>
-      <artifactId>apiguardian-api</artifactId>
-      <version>1.1.2</version>
-      <scope>compile</scope>
-    </dependency>
-  </dependencies>
 </project>

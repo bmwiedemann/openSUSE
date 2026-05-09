@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May  6 21:47:44 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 5.14.4
+  * Principal changes:
+    + Fixed a race condition in NodeTestTask.parentContext in Junit
+      Platform
+    + @EnabledOnJre and @DisabledOnJre once again work reliably when
+      used with JRE.OTHER in a test running on a Java runtime whose
+      version is higher than the version of the last JAVA_* constant
+      in the JRE enum (Junit Jupiter)
+    + Legacy XML reports now include the index of
+      @ClassTemplate/@ParameterizedClass invocations in test names
+      to make them unique (Junit Jupiter)
+    + Legacy XML reports now include parent display names to make it
+      easier to distinguish between invocations for different
+      parameters (Junit Jupiter)
+- Follow the same pattern of Bundle-SymbolicName in the artifacts of
+  junit5-minimal as in the rest of artifacts contained in the main
+  junit5 package. And align the Bundle-SymbolicName to what the
+  upstream gradle build produces
+
+-------------------------------------------------------------------
 Tue Jan 13 14:21:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 5.14.2
