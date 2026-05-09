@@ -1,8 +1,8 @@
 #
 # spec file for package petsc
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 Atri B. <badshah400@opensuse.org>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Atri B. <badshah400@opensuse.org>
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 
 # Please also update slepc, which is version locked with petsc
 %define pname petsc
-%define so_ver 3_23
+%define so_ver 3_25
 
 ExcludeArch:    s390 s390x
 
@@ -71,7 +71,7 @@ Name:           %{package_name}
 Summary:        Portable Extensible Toolkit for Scientific Computation
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Version:        3.23.0
+Version:        3.25.1
 Release:        0
 URL:            https://www.mcs.anl.gov/petsc/
 Source:         https://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-%{version}.tar.gz
@@ -121,6 +121,9 @@ Summary:        PETSc shared libraries
 Group:          System/Libraries
 # Fixup wrong package name
 Conflicts:      libpetsc3%{?mpi_suffix}
+Conflicts:      lib%{pname}3_23%{?mpi_suffix}
+Conflicts:      lib%{pname}3_24%{?mpi_suffix}
+Requires:       %{name}-data = %{version}
 
 %description -n %{libname}
 PETSc is a suite of data structures and routines for the scalable
@@ -131,6 +134,7 @@ differential equations.
 Summary:        Devel files for petsc
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
+Requires:       %{name}-data = %{version}
 Requires:       hdf5%{?mpi_suffix}-devel
 Requires:       suitesparse-devel
 Requires:       pkgconfig(yaml-0.1)
@@ -157,6 +161,19 @@ Group:          Documentation/HTML
 
 %description doc
 This package contains the documentation for petsc.
+
+%package data
+Summary:        Data and other shared files for petsc
+Group:          Development/Libraries/C and C++
+Conflicts:      lib%{pname}3_23%{?mpi_suffix}
+
+%description data
+PETSc is a suite of data structures and routines for the scalable
+(parallel) solution of scientific applications modeled by partial
+differential equations.
+
+This package provides data and other shared files for use by petsc shared
+library and devel package.
 
 %prep
 
@@ -282,9 +299,6 @@ export LD_LIBRARY_PATH+=:%{buildroot}%{p_libdir}
 
 %files -n %{libname}
 %{p_libdir}/*.so.*
-%{p_prefix}/share/petsc/
-%exclude %{p_prefix}/share/petsc/examples
-%exclude %{p_prefix}/share/petsc/saws
 
 %files %{?n_pre}devel
 %exclude %{p_libdir}/petsc/bin/saws
@@ -298,5 +312,10 @@ export LD_LIBRARY_PATH+=:%{buildroot}%{p_libdir}
 %endif
 %{p_libdir}/pkgconfig/*.pc
 %doc %{p_prefix}/share/petsc/examples
+
+%files data
+%{p_prefix}/share/petsc/
+%exclude %{p_prefix}/share/petsc/examples
+%exclude %{p_prefix}/share/petsc/saws
 
 %changelog

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue May  5 15:25:16 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.25.1:
+  * No upstream release notes.
+- Changes from version 3.25.0:
+  * Long list of changes, see
+    <https://petsc.org/release/changes/325/>
+- Rebase Allow-lib64-as-library-directory-for-scalapack.patch for
+  update.
+- Add shared library conflict against older 3.24 version to avoid
+  upgrade issues.
+
+-------------------------------------------------------------------
+Sun Mar  8 17:59:55 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Split off -data subpackage and require it from shared library
+  and devel package to prevent shared library conflicts when
+  upgrading.
+- Add shared library conflict against older 3.23 version to avoid
+  upgrade issues.
+
+-------------------------------------------------------------------
+Tue Mar  3 08:29:43 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.24.5:
+  * No upstream release notes.
+- Changes from version 3.24.0:
+  * Long list of changes, see 
+    https://petsc.org/release/changes/324/
+- Re-base patches for update:
+  * Allow-lib64-as-library-directory-for-scalapack.patch
+  * petsc-fix-libdir.patch
+
+-------------------------------------------------------------------
 Sat Sep 13 07:14:00 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop ptscotch-parmetis-*-devel BuildRequires as the devel files
