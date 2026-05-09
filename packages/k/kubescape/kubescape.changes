@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri May 08 17:06:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.7:
+  * fix(scan): gate CRD to live cluster scan mode only
+  * fix: remove out-of-scope ReportID check from fixhandler
+  * fix: scope empty-name guard to framework and control targets
+    only
+  * fix(initutils): gate CRD control inputs to live cluster scans
+    only
+  * fix(crdcontrolinputs): remove protobuf content type, probe CRD
+    before selecting
+  * feat: add ControlInput CRD for in-cluster control configuration
+  * fix: return error when empty name passed to download framework
+    or control
+  * feat(opaprocessor): filter expired exceptions before applying
+    results
+  * fix: use ReportID as sentinel to detect invalid report JSON
+  * fix: return clear error when wrong JSON structure passed to
+    kubescape fix
+  * test: address review comments on opaprocessor baseline tests
+  * test: add baseline tests for compliance-critical functions in
+    opaprocessor
+  * refactor(vap): drop --output flag, test real command paths
+  * fix: return clear error when directory passed to fix command
+  * docs: add Git-repository and Kustomize-directory to scan Long
+    description
+  * test: update TestGetScanCommand to match new Long description
+  * docs: replace placeholder Long description in scan command
+  * fix: only reject empty format when flag is explicitly set
+  * fix: validate empty format flag before running scan subcommands
+  * fix: atomically check idle state and delete results under mutex
+  * fix initializeSaaSEnv: restore file fallback, add timeout,
+    degrade gracefully on network errors
+  * get services from API, removing sidecar requirement
+  * fix: guard delete-all against concurrent scans
+  * docs: improve docstring for validateThresholdsOnly
+  * fix: address code review - preserve scanInfo.View and use
+    threshold-only validator
+  * fix: validate compliance-threshold and fail-threshold in scan
+    and scan workload subcommands
+  * fix: log errors from os.RemoveAll in removeResultDirs
+  * fix: replace os.ReadDir with os.RemoveAll in removeResultDirs
+  * fix(core): reword warning logs for unknown objects and include
+    IDs
+  * fix: raise scanner buffer limit and surface scanner errors
+  * fix: replace byte-split with line scanner for YAML document
+    separation
+  * fix: address error handling warnings for OpenSSF compliance
+  * fix: add early severity-threshold validation in control and
+    framework subcommands
+  * fix: add early severity-threshold validation in scan workload
+    command
+  * fix: validate severity-threshold flag before running scan
+  * fix: address review comments on YAML document splitting
+  * fix: surface YAML parse errors instead of silently dropping
+    documents
+  * fix(core): add warning logs for dropped workloads in local file
+    scans
+  * fix(cautils): preserve base path when K8SConfig.Host is a full
+    URL
+  * fix(httphandler): add error on partial TLS configuration
+  * feat(httphandler): support TLS key configuration via env vars
+  * test(vap): add tests for --output flag file writing and
+    writeOutput helper
+  * test(vap): add comprehensive test coverage for VAP commands
+    including HTTP mocking, YAML marshalling, and flag validation
+  * fix(cautils): use TrimPrefix to strip URL scheme in
+    CreatePortForwarder
+
+-------------------------------------------------------------------
 Mon May 04 16:41:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.6:
