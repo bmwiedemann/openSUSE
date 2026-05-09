@@ -20,7 +20,7 @@
 %define version_suffix 2
 %define _buildshell /bin/bash
 Name:           %{base_name}%{version_suffix}
-Version:        2.0.16
+Version:        2.0.17
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0

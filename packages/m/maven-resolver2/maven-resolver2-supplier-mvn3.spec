@@ -21,7 +21,7 @@
 %define fragment_name supplier-mvn3
 %define _buildshell /bin/bash
 Name:           %{base_name}%{version_suffix}-%{fragment_name}
-Version:        2.0.16
+Version:        2.0.17
 Release:        0
 Summary:        Maven Artifact Resolver Instance Supplier Maven3
 License:        Apache-2.0
@@ -38,6 +38,7 @@ BuildRequires:  %{base_name}%{version_suffix}-transport-apache
 BuildRequires:  %{base_name}%{version_suffix}-transport-file
 BuildRequires:  %{base_name}%{version_suffix}-util
 BuildRequires:  ant
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 17
 BuildRequires:  javapackages-local >= 6
@@ -81,6 +82,7 @@ This package provides %{summary}.
 %build
 mkdir -p lib
 build-jar-repository -s lib \
+    atinject \
     maven/maven-model-builder \
     maven/maven-resolver-provider \
     %{base_name}/maven-resolver-api-%{version_suffix} \

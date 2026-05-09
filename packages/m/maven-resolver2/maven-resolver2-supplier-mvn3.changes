@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat May  9 04:51:06 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.0.17
+  * New features and improvements
+    + Lower various component selection debug noise
+    + GH-1835: Expose qualifiers for generic version scheme
+    + Provide modern TrackingFileManager
+  * Bug Fixes
+    + Send "Accept" request header to indicate RFC 9457 compliance
+    + Remove unnecessary repository preparation in metadata
+      resolution for prefixes
+    + GH-1834: Version filtering context with BF fails
+  * Documentation updates
+    + RRF: Place remark about broken MRMs
+  * Maintenance
+    + Maintenance: tidy up IPC locks, make exclusive test timeout a
+      bit longer
+    + Increase timeout in tests
+  * Dependency updates
+    + Bump commons-codec:commons-codec from 1.21.0 to 1.22.0
+    + Bump com.google.code.gson:gson from 2.13.2 to 2.14.0
+    + Bump testcontainersVersion from 2.0.3 to 2.0.5
+    + Bump maven3Version from 3.9.12 to 3.9.15
+    + Bump com.github.siom79.japicmp:japicmp-maven-plugin from
+      0.25.4 to 0.25.6
+    + Bump bouncycastleVersion from 1.83 to 1.84
+    + Bump com.google.guava:guava from 33.5.0-jre to 33.6.0-jre
+    + Better control of plexus-utils
+    + Bump org.redisson:redisson from 4.2.0 to 4.3.1
+    + Bump org.codehaus.plexus:plexus-classworlds from 2.9.0 to
+      2.10.0
+    + Bump biz.aQute.bnd:bnd-maven-plugin from 7.2.1 to 7.2.3
+    + Bump org.codehaus.plexus:plexus-utils from 4.0.2 to 4.0.3 in
+      /maven-resolver-demos/maven-resolver-demo-snippets
+    + Bump io.minio:minio from 8.6.0 to 9.0.0
+    + Bump org.mockito:mockito-core from 5.21.0 to 5.23.0
+
+-------------------------------------------------------------------
 Mon Feb 23 13:41:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.0.16
