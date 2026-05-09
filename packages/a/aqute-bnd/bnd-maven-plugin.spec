@@ -86,7 +86,6 @@ popd
 %build
 pushd maven
 %{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dproject.build.sourceEncoding=UTF-8 -Dsource=8
 popd
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  8 20:36:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Remove unnecessary dependency on jline
+
+-------------------------------------------------------------------
 Mon Oct  7 22:55:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on osgi-service-subsystem to allow upgrade to

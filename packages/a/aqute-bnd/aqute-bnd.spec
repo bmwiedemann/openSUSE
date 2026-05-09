@@ -42,7 +42,6 @@ Patch6:         0006-Set-reproducible-build-from-environment.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  jline
 BuildRequires:  osgi-annotation
 BuildRequires:  osgi-compendium
 BuildRequires:  osgi-core
@@ -86,7 +85,7 @@ API documentation for %{name}.
 
 mkdir -p lib
 build-jar-repository -s lib \
-  slf4j/api slf4j/simple osgi-annotation osgi-core osgi-compendium osgi-service-subsystem ant jline
+  slf4j/api slf4j/simple osgi-annotation osgi-core osgi-compendium osgi-service-subsystem ant
 
 %patch -P 1 -p1
 %patch -P 2 -p1

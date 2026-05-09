@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  8 20:37:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- The maven build considers the SOURCE_DATE_EPOCH automatically now
+
+-------------------------------------------------------------------
 Mon Sep 23 09:26:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible builds
