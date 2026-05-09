@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>info.picocli</groupId>
   <artifactId>picocli-shell-jline2</artifactId>
-  <version>4.7.6</version>
+  <version>4.7.7</version>
   <name>picocli-shell-jline2</name>
   <description>Picocli Shell JLine2 - easily build interactive shell applications with JLine 2 and picocli.</description>
   <url>https://picocli.info</url>
@@ -32,7 +32,7 @@
     <dependency>
       <groupId>info.picocli</groupId>
       <artifactId>picocli</artifactId>
-      <version>4.7.6</version>
+      <version>4.7.7</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/remkop/picocli.git</param>
-		<param name="revision">270bd02f50e9b511d262d5143ee009b286e128fc</param>
+		<param name="revision">c6333b22c1db5ef8739de8a6cf56b207c0795313</param>
 		<param name="match-tag">v*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">v(.*)</param>

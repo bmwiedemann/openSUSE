@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>info.picocli</groupId>
   <artifactId>picocli-shell-jline3</artifactId>
-  <version>4.7.6</version>
+  <version>4.7.7</version>
   <name>picocli-shell-jline3</name>
   <description>Picocli Shell JLine3 - easily build interactive shell applications with JLine 3 and picocli.</description>
   <url>https://picocli.info</url>
@@ -32,13 +32,13 @@
     <dependency>
       <groupId>info.picocli</groupId>
       <artifactId>picocli</artifactId>
-      <version>4.7.6</version>
+      <version>4.7.7</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.jline</groupId>
       <artifactId>jline</artifactId>
-      <version>3.26.1</version>
+      <version>3.29.0</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>

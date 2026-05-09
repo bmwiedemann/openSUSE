@@ -21,7 +21,7 @@
 %define __requires_exclude java-headless
 %global base_name picocli
 Name:           %{base_name}-extras
-Version:        4.7.6
+Version:        4.7.7
 Release:        0
 Summary:        Tiny Command Line Interface
 License:        Apache-2.0

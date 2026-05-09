@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri May  8 21:46:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 4.7.7
+  * Enhancements:
+    + picocli.shell.jline3.PicocliCommands::invoke now returns
+      ParseResult instead of null
+    + Avoid syntax error in auto-completion script for invalid
+      option names and paramLabel values starting with a digit
+    + Variable interpolation should work for ArgGroup.heading
+      attribute
+  * Bug fixes:
+    + The built-in help subcommand should return the exit code of
+      the subcommand's exitCodeOnUsageHelp value for the subcommand
+      whose help was requested
+    + Module info missing in all jars except the main picocli jar
+      file
+    + AutoComplete with jline3 was showing hidden commands
+    + NullPointerException when using PropertiesDefaultProvider
+    + negatable=true option in an ArgGroup should not add negated
+      option twice
+    + Duplicate help output for ArgGroup from a Mixin
+    + Options get doubled in non validating ArgGroup when used in
+      Mixin
+    + Incorrect results when using ArgGroup + defaultValue + split +
+      List/Set
+    + DuplicateOptionAnnotationsException on using negatable option
+      in ArgGroup
+    + boolean with arity=0 and defaultValue=false behaved
+      unexpectedly
+  * Documentation fixes:
+    + User guide, CDI 2.0 (JSR 365) section: fix example and add
+      warning about dynamic proxies
+    + Fix line-endings in generated asciidoc HTML
+    + Fix broken link
+    + Add at least a link to how to use the CodeGen APT under Bazel
+
+-------------------------------------------------------------------
 Wed Feb 19 06:52:40 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Switch sources to the recent tip of upstream repository, since our
