@@ -1,0 +1,15 @@
+diff --git a/main.c b/main.c
+index 9793bfe746c8..469278efa16b 100644
+--- a/main.c
++++ b/main.c
+@@ -551,8 +551,8 @@ main(int argc, char *const *argv)
+         }
+ 
+         case 'H': {
+-            const char *type_str = optarg;
+-            const char *name = NULL;
++            char *type_str = optarg;
++            char *name = NULL;
+             const char *value = NULL;
+ 
+             char *split = strchr(type_str, ':');

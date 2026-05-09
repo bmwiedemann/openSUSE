@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  8 22:12:50 UTC 2026 - llyyr <llyyr@yukari.in>
+
+- Add patch to resolve build failure with glibc >= 2.43:
+  fix-build-glibc2.43.diff
+
+-------------------------------------------------------------------
 Thu Sep  5 08:18:12 UTC 2024 - llyyr <llyyr@yukari.in>
 
 - Update package to 1.0.4:

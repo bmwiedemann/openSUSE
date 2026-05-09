@@ -1,7 +1,7 @@
 #
 # spec file for package fyi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@ Summary:        notify-send alternative
 License:        MIT
 URL:            https://codeberg.org/dnkl/fyi
 Source0:        https://codeberg.org/dnkl/fyi/archive/%{version}.tar.gz
+Patch1:         fix-build-glibc2.43.diff
 BuildRequires:  meson
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(dbus-1)
