@@ -1,7 +1,7 @@
 #
 # spec file for package python-Mathics-Scanner
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,16 @@
 #
 
 
-%define modname mathics_scanner
+%define modname mathics3_scanner
 Name:           python-Mathics-Scanner
-Version:        2.0.0
+Version:        10.0.0
 Release:        0
 Summary:        Character Tables and Tokenizer for Mathics and the Wolfram Language
 License:        GPL-3.0-only
 URL:            https://mathics.org/
-Source:         https://files.pythonhosted.org/packages/source/M/Mathics-Scanner/%{modname}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/M/Mathics3-Scanner/%{modname}-%{version}.tar.gz
+# Manually include missed file
+Source1:        https://raw.githubusercontent.com/Mathics3/Mathics3-scanner/refs/tags/10.0.0/mathics_scanner/data/grouping-characters.yml
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -39,6 +41,7 @@ BuildRequires:  fdupes
 Requires:       python-PyYAML
 Requires:       python-chardet
 Requires:       python-click
+Provides:       python-Mathics3-Scanner = %{version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-ujson
@@ -49,41 +52,43 @@ BuildArch:      noarch
 Character Tables and Tokenizer for Mathics and the Wolfram Language.
 
 %prep
-%setup -q -n %{modname}-%{version}
-# Fix shbang
-sed -i "s|/usr/bin/env python|/usr/bin/python3|" mathics_scanner/generate/build_{,operator_}tables.py
-sed -i "s|/usr/bin/env python3|/usr/bin/python3|" mathics_scanner/generate/rl_inputrc.py
+%autosetup -n %{modname}-%{version}
+cp %{SOURCE1} ./mathics_scanner/data/
+chmod -x ./mathics_scanner/generate/*.py
+sed -Ei "1{\@^#!/usr/bin/env@d}" ./mathics_scanner/generate/*.py
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/mathics3-generate-json-table
-%python_clone -a %{buildroot}%{_bindir}/mathics3-generate-operator-json-table
-%python_clone -a %{buildroot}%{_bindir}/mathics3-tokens
+%python_clone -a %{buildroot}%{_bindir}/mathics3-codeparser-tokenize
+%python_clone -a %{buildroot}%{_bindir}/mathics3-make-boxing-character-json
+%python_clone -a %{buildroot}%{_bindir}/mathics3-make-named-character-json
+%python_clone -a %{buildroot}%{_bindir}/mathics3-make-operator-json
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-# Should be executable
-%python_expand chmod 0755 %{buildroot}%{$python_sitelib}/mathics_scanner/generate/{build_tables,build_operator_tables,rl_inputrc}.py
 
 %check
 %pytest
 
 %post
-%python_install_alternative mathics3-generate-json-table
-%python_install_alternative mathics3-generate-operator-json-table
-%python_install_alternative mathics3-tokens
+%python_install_alternative mathics3-codeparser-tokenize
+%python_install_alternative mathics3-make-boxing-character-json
+%python_install_alternative mathics3-make-named-character-json
+%python_install_alternative mathics3-make-operator-json
 
 %postun
-%python_uninstall_alternative mathics3-generate-json-table
-%python_uninstall_alternative mathics3-generate-operator-json-table
-%python_uninstall_alternative mathics3-tokens
+%python_uninstall_alternative mathics3-codeparser-tokenize
+%python_uninstall_alternative mathics3-make-boxing-character-json
+%python_uninstall_alternative mathics3-make-named-character-json
+%python_uninstall_alternative mathics3-make-operator-json
 
 %files %{python_files}
-%python_alternative %{_bindir}/mathics3-generate-json-table
-%python_alternative %{_bindir}/mathics3-generate-operator-json-table
-%python_alternative %{_bindir}/mathics3-tokens
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/[Mm]athics_[Ss]canner-%{version}*.*-info/
+%python_alternative %{_bindir}/mathics3-codeparser-tokenize
+%python_alternative %{_bindir}/mathics3-make-boxing-character-json
+%python_alternative %{_bindir}/mathics3-make-named-character-json
+%python_alternative %{_bindir}/mathics3-make-operator-json
+%{python_sitelib}/mathics_scanner/
+%{python_sitelib}/%{modname}-%{version}*.*-info/
 
 %changelog

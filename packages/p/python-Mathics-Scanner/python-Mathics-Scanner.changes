@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  5 17:19:08 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 10.0.0:
+  * More YAML/JSON tables added. mathics-core now imports values
+    via mathics.characters. Previously, it created JSON files on
+    its own.
+  * Name Pattern token introduced to handle ? and ?? operands.
+  * Token names align more closely with CodeParser`Tokenize.
+  * Add YAML/JSON table for box grouping characters
+  * Disambiguate Unicode for [Rule] and [DirectedEdge].
+  * Add Unicode to ASCII conversion table to named characters
+  * Corrections to YAML table entries, e.g., "latex" field;
+    additional/corrections in named characters.
+  * Numerous spelling corrections were performed over the code.
+- Manually include `grouping-characters.yml`, a file missed from
+  tarball, as source.
+
+-------------------------------------------------------------------
 Sun Aug 31 04:48:13 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.0.0:

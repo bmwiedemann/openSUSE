@@ -1,0 +1,106 @@
+# Information about Wolfram Language grouping characters.
+#
+
+# Following WMA terminology, we use "Left", and "Right" for opening
+# and closing delimiters. We also use "TeX" (as opposed to LaTeX, or
+# AMSLaTeX) in field names since the concept works equally well in all
+# forms of TeX. (This is not the situation in named-characters.yml for
+# AMSLaTeX symbols.)
+
+# All of the key names *except* Parenthesis should be a valid operator
+# name.
+
+#
+# Fields
+# ======
+#
+
+# ASCII-Left (string)
+# -------------------
+# The left-most or opening character(s) in ASCII.
+
+# ASCII-Right (string)
+# -------------------
+# The right-most or closing character(s) in ASCII.
+
+# TeX-Left (string)
+# -----------------
+# The left-most or opening character(s) in either TeX and variants
+# (LaTeX, AMSLaTeX).
+
+# TeX-Right (string)
+# -------------------
+# The right-most or closing character(s) in either TeX and variants
+# (LaTeX, AMSLaTeX).
+
+# Unicode-Left (string)
+# ---------------------
+# The left-most or opening character(s) in Unicode.
+
+# Unicode-Right (string)
+# ----------------------
+# The right-most or closing character(s) in Unicode.
+
+#
+# is-resizable (boolean)
+# ----------------------
+# If true, then character(s) are resizable in TeX using \left or
+# \right. Note that if there is more than one (ASCII) character both
+# characters need to be prefaced with \left or \right.
+#
+# Right now, all grouping symbols are resizable, but we'll make this
+# explicit in case there is one pops up that is not resizable.
+
+# Note that font changing can be used as well via: \bigr, \bigl,
+# \Bigl, \Bigr, \biggl, \biggr, \Biggl, or \Biggr.
+
+# AngleBracket is an operator with no built-in meaning
+AngleBracket:
+  Unicode-Left: '\[LeftAngleBracket]'
+  Unicode-Right: '\[RightAngleBracket]'
+  is-resizable: true
+
+Association:
+  ASCII-Left: "<|"
+  ASCII-Right: "|>"
+  TeX-Left: '\langle\vert '
+  TeX-Right: '\vert\rangle '
+  Unicode-Left: '\[LeftAssociation]'
+  Unicode-Right: '\[RightAssociation]'
+  is-resizable: true
+
+# BracketingBar is an operator with no built-in meaning
+BracketingBar:
+  TeX-Left: '|'
+  TeX-Right: '|'
+  Unicode-Left: '\[LeftBracketingBar]'
+  Unicode-Right: '\[RightBracketingBar]'
+  is-resizable: true
+
+# DoubleBracketingBar is an operator with no built-in meaning
+DoubleBracketingBar:
+  TeX-Left: '\|'
+  TeX-Right: '\|'
+  Unicode-Left: '\[LeftDoubleBracketingBar]'
+  Unicode-Right: '\[RightDoubleBracketingBar]'
+  is-resizable: true
+
+# Note DoubleVerticalBar which sort of looks like DoubleBracketingBar
+# is an *infix* operator with no built-in meaning.
+
+List:
+  Left: "{" # <- sharp added to make viewing in Emacs highlight work
+  Right: "}"
+  is-resizable: true
+
+Part:
+  ASCII-Left: "[["
+  ASCII-Right: "]]"
+  is-resizable: true
+
+# Note: Parenthesis is exceptional in that it is *not*
+# listed in operators.yml as an operator.
+Parenthesis:
+  ASCII-Left: "("
+  ASCII-Right: ")"
+  is-resizable: true
