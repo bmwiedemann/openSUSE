@@ -135,4 +135,12 @@
     <comment>Explicitely declare jsr305 in build requires</comment>
     <requestid>1273843</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>01542cc142d02045114ab2d2f933a510</srcmd5>
+    <version>3.28.0</version>
+    <time>1778324388</time>
+    <user>dimstar_suse</user>
+    <comment>3.28.0</comment>
+    <requestid>1352135</requestid>
+  </revision>
 </revisionlist>

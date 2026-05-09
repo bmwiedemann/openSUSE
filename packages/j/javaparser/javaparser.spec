@@ -1,7 +1,7 @@
 #
 # spec file for package javaparser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           javaparser
-Version:        3.26.2
+Version:        3.28.0
 Release:        0
 Summary:        Java Parser and Abstract Syntax Tree for Java
 License:        Apache-2.0 OR LGPL-3.0-or-later
@@ -34,6 +34,8 @@ BuildRequires:  mvn(org.checkerframework:checker-qual)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:javacc-maven-plugin)
 BuildRequires:  mvn(org.javassist:javassist)
+BuildRequires:  mvn(org.junit:junit-bom:pom:)
+BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-engine)
 BuildArch:      noarch
 
 %description
@@ -47,13 +49,14 @@ Summary:        Javadoc for %{name}
 This package contains API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{name}-parent-%{version}
+%autosetup -n %{name}-%{name}-parent-%{version}
 
 sed -i 's/\r//' readme.md
 
 # Remove plugins unnecessary for RPM builds
 %pom_remove_plugin -r :jacoco-maven-plugin
 %pom_remove_plugin :maven-source-plugin
+%pom_remove_plugin org.sonatype.central:central-publishing-maven-plugin
 
 %pom_add_dep org.checkerframework:checker-qual::provided javaparser-symbol-solver-core
 %pom_add_dep com.google.code.findbugs:jsr305::provided javaparser-symbol-solver-core
