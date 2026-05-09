@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May  8 18:19:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.7.0
+  * New features and improvements
+    + XDOC: document required fields in generated model docs
+  * Bug Fixes
+    + Refactor PLURAL_EXCEPTIONS to use ThreadLocal for thread
+      safety
+    + Initialize model parameters in VelocityGenerator
+    + Use correct getter method prefix for type "Boolean"
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus-utils from 3.0.24 to 3.6.1 in
+      /modello-maven-plugin/src/it/maven-model
+    + Bump org.codehaus.plexus:plexus-utils from 4.0.2 to 4.0.3
+    + Bump org.codehaus.woodstox:stax2-api from 4.2.2 to 4.3.0
+    + Bump com.fasterxml.jackson:jackson-bom from 2.21.0 to 2.21.2
+    + Bump org.yaml:snakeyaml from 2.5 to 2.6
+    + Bump org.apache.maven.plugins:maven-shade-plugin from 3.6.1 to
+      3.6.2
+    + Bump sisu.version from 0.9.0.M4 to 1.0.0
+    + Bump plexus.compiler.version from 2.16.1 to 2.16.2
+
+-------------------------------------------------------------------
 Fri Feb 27 14:27:59 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 2.6.0

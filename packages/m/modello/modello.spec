@@ -17,7 +17,7 @@
 
 
 Name:           modello
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        Modello Data Model toolkit
 License:        Apache-2.0 AND MIT
