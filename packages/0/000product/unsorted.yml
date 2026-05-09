@@ -9419,8 +9419,9 @@ unsorted:
   - jconvolver-examples 
   - jcsp 
   - jcsp-javadoc 
-  - jctools 
   - jctools-channels 
+  - jctools-core 
+  - jctools-core-jdk11 
   - jctools-experimental 
   - jctools-javadoc 
   - jcuber 
@@ -15391,9 +15392,9 @@ unsorted:
   - libperseus-sdr-devel 
   - libperseus-sdr-udev 
   - libperseus-sdr0 
-  - libpetsc3_23 
-  - libpetsc3_23-openmpi4 
-  - libpetsc3_23-openmpi5 
+  - libpetsc3_25 
+  - libpetsc3_25-openmpi4 
+  - libpetsc3_25-openmpi5 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -22942,8 +22943,11 @@ unsorted:
   - pesign 
   - pesign-obs-integration 
   - pesign-systemd 
+  - petsc-data 
   - petsc-devel 
+  - petsc-openmpi4-data 
   - petsc-openmpi4-devel 
+  - petsc-openmpi5-data 
   - petsc-openmpi5-devel 
   - pf-bb-config 
   - pfsalign 
@@ -38062,6 +38066,7 @@ unsorted:
   - slf4j2-jdk14 
   - slf4j2-migrator 
   - slf4j2-reload4j 
+  - slf4j2-sources 
   - slib 
   - slicot-devel-static 
   - slim 
