@@ -26,12 +26,11 @@ URL:            https://github.com/codehaus-plexus/plexus-interactivity
 Source0:        %{name}-%{version}.tar.xz
 Source1:        LICENSE.MIT
 Source100:      %{name}-build.tar.xz
-Patch0:         %{name}-jline2.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  jline >= 2
+BuildRequires:  jline3-reader
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-utils
 BuildRequires:  sisu-inject
@@ -62,16 +61,13 @@ API module for %{name}.
 %prep
 %setup -q -a100
 
-%patch -P 0 -p1
-%pom_change_dep :jline-reader jline:jline:2.10 %{name}-api
-
 cp %{SOURCE1} .
 
 %build
 mkdir -p lib
 build-jar-repository -s lib \
     atinject \
-    jline \
+    jline3/jline-reader \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
     plexus/utils

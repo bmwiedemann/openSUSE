@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  8 20:02:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * plexus-interactivity-jline2.patch
+    + Build against the jline3's jline-reader as the upstream does
+
+-------------------------------------------------------------------
 Fri Feb 27 16:26:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.5.1

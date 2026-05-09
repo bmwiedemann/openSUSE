@@ -55,4 +55,12 @@
     <comment>1.5.1</comment>
     <requestid>1335486</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fd709cae10af7ccd0b913efa6242f936</srcmd5>
+    <version>1.5.1</version>
+    <time>1778324389</time>
+    <user>dimstar_suse</user>
+    <comment>Build against the jline3's jline-reader as the upstream does</comment>
+    <requestid>1352137</requestid>
+  </revision>
 </revisionlist>
