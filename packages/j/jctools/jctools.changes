@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 28 07:43:16 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 4.0.6
+  * This release has 2 artifacts. The old jctools-core with the
+    following changes:
+    + Where plain access to field is used by queues, the field is
+      not volatile and volatile access is done using Unsafe.
+    + Use a generated ConcurrentCircularXXXQueue instead of hand
+      rolled base classes in generated code.
+    + Padding blocks formatting is improved in generated code.
+  * The release introduces a new artifact, jctools-core-jdk11 which
+    included generated VarHandle queues (padded and unpadded).
+    These queues do not rely on Unsafe, and offer better performance
+    than the AtomicFieldUpdater generated code. We expect many users
+    will prefer these variants going forward to break their reliance
+    on Unsafe.
+- Added patch:
+  * 0001-Update-javaparser-3.24.4-3.28.0.patch
+    + Fix build with javaparser 3.28.0's breaking changes
+
+-------------------------------------------------------------------
 Thu Dec  5 12:32:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 4.0.5

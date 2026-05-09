@@ -1,7 +1,7 @@
 #
 # spec file for package jctools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %global srcname JCTools
 Name:           jctools
-Version:        4.0.5
+Version:        4.0.6
 Release:        0
 Summary:        Java Concurrency Tools for the JVM
 License:        Apache-2.0
 URL:            https://github.com/JCTools/JCTools
 Source0:        %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz
+Patch0:         0001-Update-javaparser-3.24.4-3.28.0.patch
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 11
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.github.javaparser:javaparser-core) >= 3.14.16
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -52,6 +53,20 @@ Summary:        JCTools Channel implementations
 Channel implementations for the
 Java Concurrency Tools Library.
 
+%package core
+Summary:        Java Concurrency Tools Core Library
+Provides:       %{name} = %{version}
+Obsoletes:      %{name} < %{version}
+
+%description core
+Core Library for Java Concurrency Tools Library
+
+%package core-jdk11
+Summary:        Java Concurrency Tools Core Library - JDK 11+
+
+%description core-jdk11
+JDK 11 + Core Library for Java Concurrency Tools Library
+
 %package experimental
 Summary:        JCTools Experimental implementations
 
@@ -67,17 +82,18 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n %{srcname}-%{version}
+%patch -P 0 -p1
 
 # set correct version in all pom.xml files
 %pom_xpath_set pom:project/pom:version %{version}
-%pom_xpath_set pom:parent/pom:version %{version} jctools-{build,core,channels,experimental}
+%pom_xpath_set pom:parent/pom:version %{version} jctools-{build,core,core-jdk11,channels,experimental}
 
 # remove plugins unnecessary for RPM builds
-%pom_remove_plugin :coveralls-maven-plugin jctools-core
-%pom_remove_plugin :jacoco-maven-plugin jctools-core
-%pom_remove_plugin :maven-enforcer-plugin
-%pom_remove_plugin :maven-source-plugin jctools-core
-%pom_remove_plugin :maven-javadoc-plugin jctools-core
+%pom_remove_plugin -r :coveralls-maven-plugin
+%pom_remove_plugin -r :jacoco-maven-plugin
+%pom_remove_plugin -r :maven-enforcer-plugin
+%pom_remove_plugin -r :maven-source-plugin
+%pom_remove_plugin -r :maven-javadoc-plugin
 
 # disable unused modules with unavailable dependencies
 %pom_disable_module jctools-benchmarks
@@ -87,7 +103,7 @@ This package contains javadoc for %{name}.
 %pom_xpath_set "pom:project/pom:properties/pom:java.test.version" "1.8"
 
 # Avoid runtime dependency on test-jar
-%pom_xpath_set "pom:dependency[pom:scope='compile']/pom:scope" test jctools-experimental
+%pom_xpath_set "pom:dependency[pom:scope='compile']/pom:scope" test jctools-experimental jctools-core-jdk11
 # Deprecated classes "only used for testing" needed for compiling jctools-experimental
 mkdir -p jctools-experimental/src/main/java/org/jctools/queues/
 cp -r jctools-core/src/test/java/org/jctools/queues/spec jctools-experimental/src/main/java/org/jctools/queues/
@@ -99,17 +115,17 @@ cp -r jctools-core/src/test/java/org/jctools/queues/spec jctools-experimental/sr
 %{mvn_package} :jctools-parent __noinstall
 
 %build
-%{mvn_build} -sf -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dsource=8
+%{mvn_build} -sf -- -Dsource=8
 
 %install
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
-%files -f .mfiles-jctools-core
+%files core -f .mfiles-jctools-core
 %doc README.md
 %license LICENSE
+
+%files core-jdk11 -f .mfiles-jctools-core-jdk11
 
 %files channels -f .mfiles-jctools-channels
 
