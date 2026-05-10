@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 10 11:20:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.1:
+  * Add Starlette 1.x support #1151
+  * Array parameter default regression with SchemaPath #1158
+  * Fix unstable error message for additional properties #1159
+
+-------------------------------------------------------------------
 Mon Mar 16 08:30:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.23.0:
