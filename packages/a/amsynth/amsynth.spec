@@ -1,7 +1,7 @@
 #
 # spec file for package amsynth
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           amsynth
-Version:        1.13.4
+Version:        2.0b1
 Release:        0
 Summary:        Analog modelling (a.k.a virtual analog) software synthesizer
 License:        GPL-2.0-or-later
 URL:            https://amsynth.github.io/
-Source:         https://github.com/amsynth/amsynth/archive/refs/tags/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -37,11 +37,18 @@ BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dssi)
-BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(liblo)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Amsynth is an analog modelling (a.k.a virtual analog) software synthesizer.
@@ -149,7 +156,7 @@ This package includes the VST implementation of the synthesizer.
 %lang_package
 
 %prep
-%autosetup -n %{name}-release-%{version} -p1
+%autosetup -n %{name}-%{version} -p1
 
 %build
 autoreconf -fiv
@@ -167,7 +174,7 @@ intltoolize -f
 
 %files
 %license COPYING
-%doc AUTHORS README NEWS
+%doc AUTHORS README.md CHANGELOG.md
 %{_bindir}/amsynth
 %{_datadir}/amsynth
 %{_datadir}/applications/amsynth.desktop
