@@ -4408,7 +4408,10 @@ unsorted:
   - foot-themes 
   - fooyin 
   - forecast 
+  - forge 
+  - forge-bash-completion 
   - forge-parent 
+  - forge-zsh-completion 
   - forgejo 
   - forgejo-apparmor 
   - forgejo-cli 
@@ -14044,7 +14047,7 @@ unsorted:
   - libhyprgraphics4 
   - libhyprlang2 
   - libhyprtoolkit5 
-  - libhyprutils10 
+  - libhyprutils12 
   - libhyprwire3 
   - libi2c0 
   - libi2c0-devel 
@@ -17124,7 +17127,7 @@ unsorted:
   - libwebrtc_audio_processing1 
   - libwebsockets-devel 
   - libwebsockets-evlib_uv 
-  - libwebsockets19 
+  - libwebsockets21 
   - libweston-14 
   - libweston-14-0 
   - libwf-config1 
