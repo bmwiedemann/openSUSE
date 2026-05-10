@@ -17,7 +17,7 @@
 
 
 Name:           msedit
-Version:        1.2.1
+Version:        2.0.0
 Release:        0
 Summary:        A simple editor for simple needs
 License:        MIT
@@ -41,14 +41,17 @@ easily use.
 
 %build
 export RUSTC_BOOTSTRAP=1
+pushd crates/edit
 %{cargo_build}
 
 %check
 export RUSTC_BOOTSTRAP=1
+pushd crates/edit
 %{cargo_test}
 
 %install
 export RUSTC_BOOTSTRAP=1
+pushd crates/edit
 %{cargo_install}
 mv %{buildroot}%{_bindir}/edit %{buildroot}%{_bindir}/msedit
 install -Dm644 -T %{_builddir}/%{buildsubdir}/assets/manpage/edit.1 %{buildroot}%{_mandir}/man1/%{name}.1
