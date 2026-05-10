@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 10 10:03:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * Fixed null pointer dereferncing in NumPy bool instance
+    checking. #1360
+  * Required Python version is back to 3.8. #1361
+
+-------------------------------------------------------------------
 Wed Apr 29 12:17:53 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 1.7.0:
@@ -69,12 +77,12 @@ Wed Sep 11 21:14:09 UTC 2024 - Fergal Mc Carthy <fmccarthy@suse.com>
 -------------------------------------------------------------------
 Thu Aug 22 14:52:07 UTC 2024 - Aline Werner <aline.werner@suse.com>
 
-- Switch to modern python on sle15. 
+- Switch to modern python on sle15.
 
 -------------------------------------------------------------------
 Tue Feb 27 01:50:13 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Switch to pyproject and autosetup macros. 
+- Switch to pyproject and autosetup macros.
 
 -------------------------------------------------------------------
 Sat Jan  6 17:12:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
@@ -126,7 +134,7 @@ Tue Aug 16 21:45:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.4.0
   Support for all different buffer type conversions.
-  * Improved buffer transfers to numpy as guaranteed to match Java types. 
+  * Improved buffer transfers to numpy as guaranteed to match Java types.
     However, exact dtype for conversions is os/numpy version dependent.
   * Support for byte order channels on buffer transfers.
   * Byte size for buffers now fixed to Java definitions.
@@ -138,12 +146,12 @@ Tue Aug 16 21:45:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Improved matching for Java functors based on parameter count.
   * Dropped support for Python 3.5 and 3.6
   * dbapi2 handles drivers that don't support autocommit.
-  * Fixed issue when Java classes with dunder methods such as __del__ caused 
+  * Fixed issue when Java classes with dunder methods such as __del__ caused
     conflicts in Python type system. Java method which match dunder patterns are longer
     translated to Python.
   * Fix issue with numpy arrays with no dimensions resulting in crash.
   * Support for user defined conversions for java.lang.Class and array types.
-  * Fixed issue with ssize_t on Windows for Python 3.10. 
+  * Fixed issue with ssize_t on Windows for Python 3.10.
 
 -------------------------------------------------------------------
 Mon Feb 21 12:18:03 UTC 2022 - John Vandenberg <jayvdb@gmail.com>

@@ -156,4 +156,21 @@
   - Added BuildRequires:  %{python_module scikit-build-core} in spec file</comment>
     <requestid>1350799</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>677839733baa23b50601768429451cf6</srcmd5>
+    <version>1.7.1</version>
+    <time>1778424502</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1:
+  * Fixed null pointer dereferncing in NumPy bool instance
+    checking. #1360
+  * Required Python version is back to 3.8. #1361
+
+- Switch to modern python on sle15.
+- Switch to pyproject and autosetup macros.
+  * Improved buffer transfers to numpy as guaranteed to match Java types.
+  * Fixed issue when Java classes with dunder methods such as __del__ caused
+  * Fixed issue with ssize_t on Windows for Python 3.10.</comment>
+    <requestid>1352261</requestid>
+  </revision>
 </revisionlist>
