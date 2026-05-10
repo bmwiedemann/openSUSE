@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwyfile
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,21 @@
 
 %define packagename gwyfile
 Name:           python-gwyfile
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Pure Python implementation of the Gwyddion file format
 License:        MIT
 URL:            https://github.com/tuxu/gwyfile
 Source:         https://github.com/tuxu/gwyfile/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Fix_depreciated_fromstring_warning.patch andythe_great@pm.me -- Fix fromstring depreciated to frombuffer warning during testing.
-Patch0:         Fix_depreciated_fromstring_warning.patch
-# PATCH-FIX-OPENSUSE python312.patch
-Patch1:         python312.patch
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools-scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,9 +43,11 @@ Pure Python implementation of the Gwyddion file format.
 %autosetup -p1 -n %{packagename}-%{version}
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
