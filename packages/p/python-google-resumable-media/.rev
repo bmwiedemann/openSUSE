@@ -303,4 +303,13 @@
   now ships.</comment>
     <requestid>1344790</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>00d256d118fb832ea08889060b566e1f</srcmd5>
+    <version>2.9.0</version>
+    <time>1778424497</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.0:
+  * drop support for python 3.9</comment>
+    <requestid>1352252</requestid>
+  </revision>
 </revisionlist>
