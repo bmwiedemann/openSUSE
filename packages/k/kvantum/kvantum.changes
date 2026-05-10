@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May  9 18:26:52 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.1.7
+  * A workaround is added for the new behavior of Wayland sub-menus,
+    that can't be moved by QWidget::move() anymore.
+  * Another workaround is added for positions of Wayland context
+    menus with RTL layouts.
+
+-------------------------------------------------------------------
 Thu Feb 12 02:19:08 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 1.1.6
