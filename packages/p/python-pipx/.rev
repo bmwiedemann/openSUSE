@@ -259,4 +259,40 @@
     interpreter is removed on Windows by detecting stale venv</comment>
     <requestid>1342191</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4a5aff2e9d7abb353cc140fea2c9bd1d</srcmd5>
+    <version>1.12.0</version>
+    <time>1778424485</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.0:
+  * Add `--fetch-python` and `PIPX_FETCH_PYTHON` to control
+    standalone Python downloads, with values `always`, `missing`,
+    or `never`.
+  * Add an opt-in `uv` backend. Install `pipx[uv]` (or put `uv`
+    on `PATH`) and pipx will create venvs with `uv venv`, manage
+  * packages with `uv pip`, and run ephemeral apps via `uv tool
+    run`.
+  * Selection precedence: `--backend` &gt; recorded venv metadata &gt;
+    `PIPX_DEFAULT_BACKEND` &gt; auto-detect. The env var sits
+  * *below* metadata so setting `PIPX_DEFAULT_BACKEND=uv` does
+    not silently retarget existing pip-backed venvs; the recorded
+  * backend wins until you flip it explicitly. `pipx environment`
+    exposes the resolved backend and its source as
+  * `PIPX_RESOLVED_BACKEND` and `PIPX_BACKEND_SOURCE`.
+  * Ignore `PIP_TARGET` environment variable to prevent pip from
+    installing outside the venv.
+  * Fix `pipx install` failing on Windows when the username
+    contains non-Latin characters (e.g. cyrillic, Chinese).
+  * Show installed version and suggest `upgrade` when `install`
+    detects an existing installation.
+  * `--verbose` and `--quiet` flags before the subcommand are no
+    longer silently ignored.
+  * Remove dependency app symlinks when uninjecting a package
+    that was injected with `--include-deps`.
+  * Remove `setuptools` from shared libs to prevent version
+    conflicts when app venvs use a different Python.
+  * Prevent `uninject` from removing dependencies still needed by
+    other packages in the venv.</comment>
+    <requestid>1352219</requestid>
+  </revision>
 </revisionlist>
