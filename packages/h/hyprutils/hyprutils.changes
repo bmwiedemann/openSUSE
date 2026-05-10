@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat May  9 14:36:45 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.13.1:
+  + A minor patch release to catch hyprland.
+  + Changes:
+    - path: add function overloads with extension param
+
+- Changes from version 0.13.0:
+  + A new ABI-breaking release with a bit of stuff
+  + Changes:
+    - process: free argv allocations on execvp failure
+    - process: handle execvp failure in runAsync and fix fd cleanup
+	  on fork error
+    - animations: add spring controlled curves
+    - fix: CBox::overlaps should not count adjacent boxes
+
+- Changes from version 0.12.0:
+  + A new release with an ABI break.
+  + Changes:
+    - string/varlist2: add string_view ctors
+    - Add libc++ < 20 fallback for floating-point strToNumber
+
+- Changes from version 0.11.1:
+  + A patch release with some additions.
+  + Changes:
+    - string: add isNumber2 for sv
+    - path: add resolvePath
+    - string/numeric: add hex parsing
+    - string/numeric: add numeric parsing
+    - memory: add dynamicPointerCast for weak ptrs
+    - memory: fix a few UAF cases, add asan to test
+    - cli/logger: flush stdout after logging
+    - signal: check for trivially copyable
+    - signals: check if listeners is empty in emitInternal
+    - logger: bump to C++26, set FD_CLOEXEC on log file descriptor
+    - i18n: include vector header
+
+-------------------------------------------------------------------
 Mon Dec 29 21:26:11 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.11.0:
