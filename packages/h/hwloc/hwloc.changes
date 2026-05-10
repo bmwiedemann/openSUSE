@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May  4 16:39:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.0:
+  * CPU kind improvements
+    + Put Intel LP E-cores in the IntelLowPower cpukind in the x86 backend,
+      thanks to Dmitri N Mokhov for the patch.
+    + Adjust sysfs capacity on Intel CPUs on Linux 6.16+ together with
+      max frequencies when they differ because of Turbo Boost Max 3.0.
+    + Disable Linux cpukinds on AMD before Zen5 since these CPUs are
+      homogeneous and it may cause slowness on some platforms.
+      The new env var HWLOC_LINUX_CPUKINDS=1 may be used to reenable it.
+      Thanks to Benedikt Steinbusch and Jan André Reuter for the report.
+  * Fix CUDACoresPerMP on NVIDIA GPUs with compute capability 7.x.
+  * Tools
+    + Send the lstopo ASCII output to a pager (less by default).
+    + hwloc-patch now has a --dry-run option.
+  * Plugins are now supported for OpenCL, CUDA and XML components
+    on Windows using the HWLOC_ENABLE_PLUGINS CMake option,
+    thanks to Julian Hornich.
+    + HWLOC_BUILD_SHARED_LIBS is removed in favor of BUILD_SHARED_LIBS.
+- drop 0001-lstopo-x11-add-desktop-translations.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jan 22 07:29:22 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - remove all dependencies on update-desktop-files (jsc#PED-15208)
@@ -22,7 +45,7 @@ Wed Sep  3 08:11:15 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
   * Do not treat INTERSECT_LOCALITY as a superset of LARGER and SMALLER
   * Duplicate distance grouping info in hwloc_internal_distances_dup
   * Fix lstopo man page
-  * Make hwloc_distances_get_by_name accept empty kinds 
+  * Make hwloc_distances_get_by_name accept empty kinds
   * NEWS
     +: add distances bullet
     + add hwloc-calc improvement bullet
@@ -31,7 +54,7 @@ Wed Sep  3 08:11:15 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
     + bullet about syscalls
     + bullet about x86/flsl issues
     + bullets about L0 rework
-    + bullets about heterogeneous memory improvements 
+    + bullets about heterogeneous memory improvements
     + mention systemd-dbus-api changes in hwloc-calc
     + reorder and improve 2.11.2 bullets
     + some fixes in 2.11 bullets
@@ -208,7 +231,7 @@ Wed Sep  3 08:11:15 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
 -------------------------------------------------------------------
 Mon Apr 28 07:32:19 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
 
-- fix division by zero exception with recent versions of GCC 
+- fix division by zero exception with recent versions of GCC
   (bsc#1236038)
   * add 0001-x86-work-around-legacy_max_proc-being-0-while-HTT-fe.patch
 
