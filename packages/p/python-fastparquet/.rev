@@ -318,4 +318,14 @@
   * update for py3.13</comment>
     <requestid>1225996</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f6956751bd35b5008a4741b8211ee157</srcmd5>
+    <version>2026.3.0</version>
+    <time>1778424500</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.3.0:
+  * Releases since 2023 are essentially bugfixes only and updating
+    supported python versions</comment>
+    <requestid>1352253</requestid>
+  </revision>
 </revisionlist>

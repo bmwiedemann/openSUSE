@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastparquet
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fastparquet
-Version:        2024.11.0
+Version:        2026.3.0
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
 URL:            https://github.com/dask/fastparquet/
 # Use GitHub archive, because it containts the test modules and data, requires setting version manuall for setuptools_scm
 Source:         https://github.com/dask/fastparquet/archive/%{version}.tar.gz#/fastparquet-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.23}
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module Cython >= 0.29.31}
 BuildRequires:  %{python_module cramjam >= 2.3.0}
+BuildRequires:  %{python_module devel >= 3.10}
 # version requirement not declared for runtime, but necessary for tests.
 BuildRequires:  %{python_module fsspec >= 2021.6.0}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module numpy-devel >= 2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 1.5.0}
 BuildRequires:  %{python_module pip}
@@ -46,7 +46,7 @@ BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-cramjam >= 2.3.0
 Requires:       python-fsspec
-Requires:       python-numpy
+Requires:       python-numpy >= 2
 Requires:       python-packaging
 Requires:       python-pandas >= 1.5.0
 Recommends:     python-python-lzo
@@ -78,6 +78,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 # Test suite is not working correctly in s390x so not running it.
 echo "Not running tests for s390x"
 %else
+mv fastparquet _fastparquet
 %pytest_arch --pyargs fastparquet --import-mode append -n auto
 %endif
 
