@@ -26,6 +26,8 @@ URL:            https://github.com/assimp/assimp
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM -- don't reject 'find_package(assimp 5)' calls
 Patch0:         0001-Accept-find_package-Assimp-5.x-calls.patch
+# PATCH-FIX-UPSTREAM -- CVE-2025-70067
+Patch1:         CVE-2025-70067.patch
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

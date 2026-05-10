@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  8 11:52:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (CVE-2025-70067, boo#1263960)
+  * CVE-2025-70067.patch
+
+-------------------------------------------------------------------
 Sat May  2 12:31:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.0.5

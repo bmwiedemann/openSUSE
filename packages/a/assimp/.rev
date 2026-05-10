@@ -390,4 +390,13 @@
     <comment>Update to 6.0.5</comment>
     <requestid>1350460</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>c69ec595f1cde6db81549bf7ae26bfad</srcmd5>
+    <version>6.0.5</version>
+    <time>1778424428</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change (CVE-2025-70067, boo#1263960)
+  * CVE-2025-70067.patch</comment>
+    <requestid>1352019</requestid>
+  </revision>
 </revisionlist>
