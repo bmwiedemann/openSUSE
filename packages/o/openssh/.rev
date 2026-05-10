@@ -2041,4 +2041,15 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment>Submit openssh 10.3p1 with some minor changelog fixes (forwarded request 1348977 from hpjansson)</comment>
     <requestid>1348978</requestid>
   </revision>
+  <revision rev="202" vrev="2">
+    <srcmd5>3e51c1130611f73e688f0a62cc56dfd4</srcmd5>
+    <version>10.3p1</version>
+    <time>1778424419</time>
+    <user>dimstar_suse</user>
+    <comment>- Update openssh-7.7p1-fips.patch (bsc#1262555): Don't bail out on
+  startup if a non-FIPS algorithm is requested. Filter it out and
+  warn instead.
+- Update openssh-8.0p1-gssapi-keyex.patch: Apply to GSS too. (forwarded request 1351499 from hpjansson)</comment>
+    <requestid>1351501</requestid>
+  </revision>
 </revisionlist>

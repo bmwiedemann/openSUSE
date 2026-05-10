@@ -1274,7 +1274,18 @@ Index: openssh-10.3p1/kex-names.c
  	return NULL;
  }
  
-@@ -380,3 +442,26 @@ kex_assemble_names(char **listp, const c
+@@ -246,6 +308,10 @@ kex_alg_by_name_any(const char *name)
+ 		if (strcmp(k->name, name) == 0)
+ 			return k;
+ 	}
++	for (k = gss_kexalgs_all; k->name != NULL; k++) {
++		if (strncmp(k->name, name, strlen(k->name)) == 0)
++			return k;
++	}
+ 	return NULL;
+ }
+ 
+@@ -406,3 +472,26 @@ kex_assemble_names(char **listp, const c
  	free(ret);
  	return r;
  }
@@ -1334,9 +1345,9 @@ Index: openssh-10.3p1/kex.h
  	char	*failed_choice;
  	int	(*verify_host_key)(struct sshkey *, struct ssh *);
  	struct sshkey *(*load_host_public_key)(int, int, struct ssh *);
-@@ -197,8 +212,10 @@ int	 kex_nid_from_name(const char *);
- int	 kex_is_pq_from_name(const char *);
+@@ -198,8 +213,10 @@ int	 kex_is_pq_from_name(const char *);
  int	 kex_names_valid(const char *);
+ int	 kex_names_valid_any(const char *);
  char	*kex_alg_list(char);
 +char	*kex_gss_alg_list(char);
  char	*kex_names_cat(const char *, const char *);
@@ -1345,7 +1356,7 @@ Index: openssh-10.3p1/kex.h
  int	 kex_assemble_names(char **, const char *, const char *);
  void	 kex_proposal_populate_entries(struct ssh *, char *prop[PROPOSAL_MAX],
      const char *, const char *, const char *, const char *, const char *);
-@@ -232,6 +249,12 @@ int	 kexgex_client(struct ssh *);
+@@ -233,6 +250,12 @@ int	 kexgex_client(struct ssh *);
  int	 kexgex_server(struct ssh *);
  int	 kex_gen_client(struct ssh *);
  int	 kex_gen_server(struct ssh *);
@@ -1358,7 +1369,7 @@ Index: openssh-10.3p1/kex.h
  
  int	 kex_dh_keypair(struct kex *);
  int	 kex_dh_enc(struct kex *, const struct sshbuf *, struct sshbuf **,
-@@ -270,6 +293,12 @@ int	 kexgex_hash(int, const struct sshbu
+@@ -271,6 +294,12 @@ int	 kexgex_hash(int, const struct sshbu
      const BIGNUM *, const u_char *, size_t,
      u_char *, size_t *);
  
@@ -2963,7 +2974,7 @@ Index: openssh-10.3p1/readconf.c
  	case oBatchMode:
  		intptr = &options->batch_mode;
  		goto parse_flag;
-@@ -2737,7 +2784,13 @@ initialize_options(Options * options)
+@@ -2739,7 +2786,13 @@ initialize_options(Options * options)
  	options->fwd_opts.streamlocal_bind_unlink = -1;
  	options->pubkey_authentication = -1;
  	options->gss_authentication = -1;
@@ -2977,7 +2988,7 @@ Index: openssh-10.3p1/readconf.c
  	options->password_authentication = -1;
  	options->kbd_interactive_authentication = -1;
  	options->kbd_interactive_devices = NULL;
-@@ -2903,8 +2956,18 @@ fill_default_options(Options * options)
+@@ -2905,8 +2958,18 @@ fill_default_options(Options * options)
  		options->pubkey_authentication = SSH_PUBKEY_AUTH_ALL;
  	if (options->gss_authentication == -1)
  		options->gss_authentication = 0;
@@ -2996,7 +3007,7 @@ Index: openssh-10.3p1/readconf.c
  	if (options->password_authentication == -1)
  		options->password_authentication = 1;
  	if (options->kbd_interactive_authentication == -1)
-@@ -3789,7 +3852,14 @@ dump_client_config(Options *o, const cha
+@@ -3791,7 +3854,14 @@ dump_client_config(Options *o, const cha
  	dump_cfg_fmtint(oGatewayPorts, o->fwd_opts.gateway_ports);
  #ifdef GSSAPI
  	dump_cfg_fmtint(oGssAuthentication, o->gss_authentication);
@@ -3054,7 +3065,7 @@ Index: openssh-10.3p1/servconf.c
  	options->password_authentication = -1;
  	options->kbd_interactive_authentication = -1;
  	options->permit_empty_passwd = -1;
-@@ -395,12 +399,20 @@ fill_default_server_options(ServerOption
+@@ -397,12 +401,20 @@ fill_default_server_options(ServerOption
  		options->kerberos_get_afs_token = 0;
  	if (options->gss_authentication == -1)
  		options->gss_authentication = 0;
@@ -3075,7 +3086,7 @@ Index: openssh-10.3p1/servconf.c
  	if (options->password_authentication == -1)
  		options->password_authentication = 1;
  	if (options->kbd_interactive_authentication == -1)
-@@ -590,6 +602,7 @@ typedef enum {
+@@ -592,6 +604,7 @@ typedef enum {
  	sPerSourcePenalties, sPerSourcePenaltyExemptList,
  	sClientAliveInterval, sClientAliveCountMax, sAuthorizedKeysFile,
  	sGssAuthentication, sGssCleanupCreds, sGssDelegateCreds, sGssStrictAcceptor,
@@ -3083,7 +3094,7 @@ Index: openssh-10.3p1/servconf.c
  	sAcceptEnv, sSetEnv, sPermitTunnel,
  	sMatch, sPermitOpen, sPermitListen, sForceCommand, sChrootDirectory,
  	sUsePrivilegeSeparation, sAllowAgentForwarding,
-@@ -677,14 +690,24 @@ static struct {
+@@ -679,14 +692,24 @@ static struct {
  #ifdef GSSAPI
  	{ "gssapiauthentication", sGssAuthentication, SSHCFG_ALL },
  	{ "gssapicleanupcredentials", sGssCleanupCreds, SSHCFG_GLOBAL },
@@ -3108,7 +3119,7 @@ Index: openssh-10.3p1/servconf.c
  	{ "passwordauthentication", sPasswordAuthentication, SSHCFG_ALL },
  	{ "kbdinteractiveauthentication", sKbdInteractiveAuthentication, SSHCFG_ALL },
  	{ "challengeresponseauthentication", sKbdInteractiveAuthentication, SSHCFG_ALL }, /* alias */
-@@ -1680,6 +1703,10 @@ process_server_config_line_depth(ServerO
+@@ -1682,6 +1705,10 @@ process_server_config_line_depth(ServerO
  		intptr = &options->gss_authentication;
  		goto parse_flag;
  
@@ -3119,7 +3130,7 @@ Index: openssh-10.3p1/servconf.c
  	case sGssCleanupCreds:
  		intptr = &options->gss_cleanup_creds;
  		goto parse_flag;
-@@ -1692,6 +1719,22 @@ process_server_config_line_depth(ServerO
+@@ -1694,6 +1721,22 @@ process_server_config_line_depth(ServerO
  		intptr = &options->gss_strict_acceptor;
  		goto parse_flag;
  
@@ -3142,7 +3153,7 @@ Index: openssh-10.3p1/servconf.c
  	case sPasswordAuthentication:
  		intptr = &options->password_authentication;
  		goto parse_flag;
-@@ -3322,6 +3365,9 @@ dump_config(ServerOptions *o)
+@@ -3324,6 +3367,9 @@ dump_config(ServerOptions *o)
  	dump_cfg_fmtint(sGssCleanupCreds, o->gss_cleanup_creds);
  	dump_cfg_fmtint(sGssDelegateCreds, o->gss_deleg_creds);
  	dump_cfg_fmtint(sGssStrictAcceptor, o->gss_strict_acceptor);

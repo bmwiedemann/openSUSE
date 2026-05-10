@@ -894,7 +894,7 @@ Index: openssh-10.3p1/cipher.c
  static const struct sshcipher ciphers_all[] = {
  #ifdef WITH_OPENSSL
  #ifndef OPENSSL_NO_DES
-@@ -446,7 +427,7 @@ cipher_get_length(struct sshcipher_ctx *
+@@ -471,7 +452,7 @@ cipher_get_length(struct sshcipher_ctx *
  void
  cipher_free(struct sshcipher_ctx *cc)
  {
@@ -1081,7 +1081,7 @@ Index: openssh-10.3p1/mac.c
 ===================================================================
 --- openssh-10.3p1.orig/mac.c
 +++ openssh-10.3p1/mac.c
-@@ -268,6 +268,20 @@ mac_clear(struct sshmac *mac)
+@@ -286,6 +286,20 @@ mac_clear(struct sshmac *mac)
  	mac->umac_ctx = NULL;
  }
  
@@ -1101,7 +1101,7 @@ Index: openssh-10.3p1/mac.c
 +
  /* XXX copied from ciphers_valid */
  #define	MAC_SEP	","
- int
+ static int
 Index: openssh-10.3p1/mac.h
 ===================================================================
 --- openssh-10.3p1.orig/mac.h

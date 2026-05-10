@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  7 21:15:35 UTC 2026 - Hans Petter Jansson <hpj@suse.com>
+
+- Update openssh-7.7p1-fips.patch (bsc#1262555): Don't bail out on
+  startup if a non-FIPS algorithm is requested. Filter it out and
+  warn instead.
+- Update openssh-8.0p1-gssapi-keyex.patch: Apply to GSS too.
+
+-------------------------------------------------------------------
 Thu Apr 23 11:57:57 UTC 2026 - Hans Petter Jansson <hpj@suse.com>
 
 - Update to openssh 10.3p1:
