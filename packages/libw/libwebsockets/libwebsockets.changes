@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat May  9 17:23:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.5.8
+  Changes since 4.3.5
+  * fix for mountpoint headers being sticky for all following
+    mounts too.
+  * b64 apis: fixes and new api tests.
+  * clipboard and file sharing.
+  * mbedtls updates / fixes.
+  * support basic auth on h2 POST.
+  * add X-FORWARDED-FOR support to lws proxying, other fixes.
+  * ctest improvements for speed and OSX UDS support.
+  * NEW APIs: lws_humanize_pad.
+  * NEW APIs: lws_dir_via_info.
+  * NEW APIs: lws_http_mp_sm POST form api, plus examples.
+  * NEW APIs: lws_wsmsg: lws_buflist variant that handles
+    fragmentation flags.
+  * ctest: disable broken amazon tests: broken at amazon.
+  * lws_struct: extra api tests, docs.
+  * ws: now checks sanity of fragment ordering at ws and ss
+    levels.
+  * stdin also allowed as source for commandline, add examples.
+  * 307/308 POST support.
+  * lws_hexdump_user() that was missing added in.
+  * API CHANGE: VFS open() has an extra file_ops pointer at the
+    beginning.
+  * Secure Streams: this is a thin layer on top of the traditional
+    lws apis, which continue unchanged. You can choose to continue
+    with the old ways or look at using Secure Streams, it
+    basically abstracts out the differences between what protocol
+    you're using into a JSON policy.
+  * html parsing: see READMEs/README.html-parser.md  This uses the
+    lws support for DLO (Display List Objects) and png / jpeg
+    linewise decoding, which allows it to work on devices with very
+    little RAM.
+  * Support for various embedded EPD devices.
+    See minimal-examples/embedded/lhp 
+  * Many fixes and cleanups
+
+-------------------------------------------------------------------
 Thu Apr 24 19:51:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.3.5:
