@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  8 21:22:45 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Make sure we don't lose the distribution compiler flags.
+- Remove unnecessary dependency of llvm-devel on libtool.
+
+-------------------------------------------------------------------
 Sat Apr 11 12:15:33 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Drop ld.lld as an ld alternative (boo#1259813).

@@ -145,4 +145,13 @@
 </comment>
     <requestid>1346172</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>e894f43bad74f0e078af68141236091c</srcmd5>
+    <version>20.1.8</version>
+    <time>1778424460</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure we don't lose the distribution compiler flags.
+- Remove unnecessary dependency of llvm-devel on libtool.</comment>
+    <requestid>1352207</requestid>
+  </revision>
 </revisionlist>
