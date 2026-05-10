@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  9 09:55:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.18.2
+  * This release fixes a regression, introduced in 6.18.1, in the
+    symlink handling of block devices.
+    For example /dev/disk/by-id/ata... .
+
+-------------------------------------------------------------------
 Mon Apr 27 11:42:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.18.1
