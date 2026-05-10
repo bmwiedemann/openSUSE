@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May  9 14:47:23 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.5.1:
+  + A new patch release
+  + Changes:
+    - Add missing #include
+    - feat: add isImageFile() static utility method
+    - egl: add egl formats and helpers
+    - Fix missing include for span
+
+-------------------------------------------------------------------
 Wed Jan  7 22:14:26 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.5.0:

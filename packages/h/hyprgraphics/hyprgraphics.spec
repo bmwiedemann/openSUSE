@@ -20,17 +20,20 @@
 %define sover 4
 
 Name:           hyprgraphics
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Hyprland graphics / resource utilities
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprgraphics
 Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  Mesa-libGL-devel
+BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(hyprutils) >= 0.8.0
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libjxl_cms)
