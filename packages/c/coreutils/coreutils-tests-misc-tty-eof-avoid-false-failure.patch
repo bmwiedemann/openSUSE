@@ -1,0 +1,22 @@
+commit 0f85d79ed60de25b7530af7bbf1a97523fbbfca2
+Author: Pádraig Brady <P@draigBrady.com>
+Date:   Mon Apr 27 11:14:51 2026 +0100
+
+    tests: avoid false failure with perl-IO-Tty >= 1.24
+    
+    * tests/misc/tty-eof.pl: https://bugzilla.redhat.com/2463168
+
+diff --git a/tests/misc/tty-eof.pl b/tests/misc/tty-eof.pl
+index d21e2ea02..3f5abbe98 100755
+--- a/tests/misc/tty-eof.pl
++++ b/tests/misc/tty-eof.pl
+@@ -121,7 +121,8 @@ normalize_tty_output ($)
+           $exp->spawn("$cmd 2> $stderr")
+             or (warn "$ME: cannot run '$cmd' ($mode): $!\n"),
+                $fail=1, next;
+-          set_tty_eof_char ($exp->slave, $eof_char);
++          # Fails on perl-IO-Tty >= 1.24 https://bugzilla.redhat.com/2463168
++          # set_tty_eof_char ($exp->slave, $eof_char);
+ 
+           my $input = "a b\n";
+           if ($with_input)

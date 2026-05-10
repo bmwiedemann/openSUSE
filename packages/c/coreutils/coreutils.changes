@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  7 13:06:43 UTC 2026 - rw@suse.com
+
+- coreutils-tests-misc-tty-eof-avoid-false-failure.patch: Add upstream patch:
+  tests: avoid false failure with perl-IO-Tty >= 1.24 (bsc#1264052)
+
+-------------------------------------------------------------------
 Tue Apr 21 21:09:39 UTC 2026 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - Update to 9.11:

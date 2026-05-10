@@ -63,6 +63,7 @@ Patch501:       coreutils-test_without_valgrind.patch
 # tests: skip tests/rm/ext3-perf.sh temporarily as it hangs on OBS.
 Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
 Patch900:       coreutils-tests-workaround-make-fdleak.patch
+Patch901:       coreutils-tests-misc-tty-eof-avoid-false-failure.patch
 
 BuildRequires:  automake
 BuildRequires:  gmp-devel
@@ -178,6 +179,7 @@ package coreutils-systemd:
 
 %patch -P 810
 %patch -P 900
+%patch -P 901 -p 1
 
 # ================================================
 %build
