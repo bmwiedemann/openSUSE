@@ -18,7 +18,7 @@
 
 %define         major 1
 Name:           vkd3d
-Version:        1.18
+Version:        1.19
 Release:        0
 Summary:        Direct3D 12 to Vulkan translation library
 License:        LGPL-2.1-or-later

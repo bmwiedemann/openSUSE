@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat May  9 17:24:18 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 1.19:
+  - libvkd3d
+    Barriers are inserted as required between render passes
+    targeting the same images. Typical desktop GPUs tend to not
+    care much about these, but this is important for correctness
+    on tile-based renderers.
+    The ‘minimum’ and ‘maximum’ texture filtering reduction modes
+    are supported.
+  - libvkd3d-shader
+    Much improved handling of clip and cull distance shader
+    input/output arrays for SPIR-V targets. Direct3D source
+    formats represent clip and cull distances as 2 4-component
+    registers, while SPIR-V represents them as scalar arrays. The
+    previous code for mapping between these conventions was
+    unfortunately relatively fragile and unable to handle a number
+    of cases.
+    Several new features and improvements for the HLSL source
+    type:
+        Effects (FX) target profiles can output embedded shader
+        blobs. These are created by the CompileShader() and
+        ConstructGSWithSO() intrinsic functions.
+        Statically initialised variables are considered to be
+        static expressions. For example,
+        ‘int count = 4; float4 array[count];’ is now accepted as
+        valid by the compiler.
+        Store operations to ‘RWStructuredBuffer’ resources.
+        Load operations from structured thread group shared
+        memory.
+        Copy operations involving structured resources.
+        Casts of floating-point constants to Boolean values now
+        correctly fold any non-zero value to ‘true’. Previously
+        ‘(bool)0.25f’ for example would get constant folded to
+        ‘false’.
+        The ‘static’ storage-class specifier is allowed on
+        functions.
+        The ‘Buffer’, ‘StructuredBuffer’, and ‘ByteAddressBuffer’
+        types are supported in effects (FX) target profiles.
+    The following legacy Direct3D byte-code instructions are
+    implemented:
+        dp2add
+        loop/endloop
+        lrp
+        nrm
+        pow
+        rep/endrep
+    When the VKD3D_SHADER_DUMP_PATH environment variable is used
+    to dump input and output shaders, compilation messages like
+    errors and warnings produced by the compiler will be dumped as
+    well.
+    New interfaces:
+        The VKD3D_SHADER_PARAMETER_NAME_PROJECTED_TEXTURE_MASK
+        shader parameter specifies which textures in a shader
+        model 1.0-1.3 pixel shader should be considered to be
+        projected textures.
+  - build
+    New environment variables:
+        VKD3D_TEST_WRAPPER can be used to wrap test execution.
+
+-------------------------------------------------------------------
 Wed Jan 14 16:26:33 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 1.18:
