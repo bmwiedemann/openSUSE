@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May  2 06:57:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 3.19.7:
+  * Formats and Converters:
+    - CSV: Fix crash when escaping multistring values
+    - HTML: Properly escape translated HTML attributes
+    - PO: Avoid inferring obsolete unit state twice
+  * Other:
+    - Correct type annotations
+    - Automate updating release notes on GitHub
+    - Update development tooling and CI dependencies
+- Changes from 3.19.6:
+  * Formats and Converters:
+    - Fluent: Improve error handling
+    - Android: Improve XML formatting preservation
+    - Markdown: Add optional full exposure of placeholders
+    - INI: Preserve newline style
+  * Other: printf filter to detect POSIX thousands separator flag
+
+-------------------------------------------------------------------
 Fri Apr 17 08:05:16 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 3.19.5

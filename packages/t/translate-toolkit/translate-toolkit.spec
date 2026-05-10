@@ -51,7 +51,7 @@ ExcludeArch: %ix86
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.19.5
+Version:        3.19.7
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
