@@ -1,7 +1,7 @@
 #
 # spec file for package gap-json
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-json
-Version:        2.2.3
+Version:        2.4.0
 Release:        0
 Summary:        GAP: Package for reading and writing JSON
 License:        BSD-2-Clause
