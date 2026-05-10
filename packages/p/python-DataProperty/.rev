@@ -117,4 +117,16 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282962</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bedfc086ec58939e6504279ca808f1b9</srcmd5>
+    <version>1.1.1</version>
+    <time>1778424496</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1:
+  * Bump the actions-dependencies group across 1 directory with 6
+    updates
+  * Add support for Python 3.14
+  * Update `typepy` version constraint to &lt;3</comment>
+    <requestid>1352251</requestid>
+  </revision>
 </revisionlist>

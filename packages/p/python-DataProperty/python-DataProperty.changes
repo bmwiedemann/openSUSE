@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 10 09:10:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Bump the actions-dependencies group across 1 directory with 6
+    updates
+  * Add support for Python 3.14
+  * Update `typepy` version constraint to <3
+
+-------------------------------------------------------------------
 Thu Jun  5 06:01:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
