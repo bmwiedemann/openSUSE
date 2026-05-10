@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May  9 16:28:53 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260508:
+  * Don't complain about incompatible tones on import if no tone mode selected
+  * ic2730: Add IC-2730E (European variant) support
+  * ar8200: Add new driver for AOR AR8200
+  * Updated Italian Translation
+
+-------------------------------------------------------------------
 Sat May  2 18:12:29 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260501:
