@@ -1,8 +1,8 @@
-Index: mesa-25.3.0/src/util/00-mesa-defaults.conf
+Index: mesa-26.1.0/src/util/00-mesa-defaults.conf
 ===================================================================
---- mesa-25.3.0.orig/src/util/00-mesa-defaults.conf
-+++ mesa-25.3.0/src/util/00-mesa-defaults.conf
-@@ -822,6 +822,14 @@ TODO: document the other workarounds.
+--- mesa-26.1.0.orig/src/util/00-mesa-defaults.conf
++++ mesa-26.1.0/src/util/00-mesa-defaults.conf
+@@ -855,6 +855,14 @@ TODO: document the other workarounds.
          <application name="Rocket League" executable="RocketLeague">
              <option name="radeonsi_zerovram" value="true" />
          </application>
@@ -14,6 +14,6 @@ Index: mesa-25.3.0/src/util/00-mesa-defaults.conf
 +        <application name="Totem" executable="totem">
 +            <option name="allow_rgb10_configs" value="false" />
 +        </application>
-         <!-- YoYo game engine workarounds -->
-         <application name="Monolith demo5" executable="runner" sha1="0c40d509a74e357f0280cb1bd882e9cd94b91bdf">
-             <option name="radeonsi_sync_compile" value="true" />
+ 
+         <!-- This applies to all apps having "runner" as their executable, but that's OK.
+             Apps where this workaround is needed:

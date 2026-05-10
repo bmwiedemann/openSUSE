@@ -142,9 +142,9 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        26.0.6
+Version:        26.1.0
 Release:        0
-%define pkg_version 26.0.6
+%define pkg_version 26.1.0
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
@@ -175,15 +175,10 @@ Source12:       README-suse-maintenance.md
 # download with 'osc service runall download_files'; github tarballs have different checksums!
 Source22:       http://crates.io/api/v1/crates/rustc-hash/%{_rustc_hash_crate_ver}/download#/rustc-hash-%{_rustc_hash_crate_ver}.tar.gz
 Patch2:         n_add-Mesa-headers-again.patch
-Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
-Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
-Patch13:        python36-buildfix1.patch
 Patch17:        tlsdesc_test.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
-Patch500:       u_dep_xcb.patch
-Patch700:       u_meson-lower-python-version-requirement.patch
 Patch800:       u_d3d12.patch
 Patch1222041:   u_mesa-CVE-2023-45919.patch
 Patch1222042:   u_mesa-CVE-2023-45922.patch
@@ -752,18 +747,12 @@ cp %{SOURCE22} subprojects/packagecache/
 %if %provide_gl_headers_for_mesa == 0
 %patch -P 2 -p1
 %endif
-# fixes build against python 3.6
-%patch -P 11 -p1
-%patch -P 12 -p1
-%patch -P 13 -p1
 %patch -P 17 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
 %patch -P 54 -p1
 %endif
 %patch -P 100 -p1
-%patch -P 500 -p1
-%patch -P 700 -p1
 %patch -P 800 -p1
 %patch -P 1222041 -p1
 %patch -P 1222042 -p1
