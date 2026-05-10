@@ -26,6 +26,7 @@
 %bcond_with kmp
 %endif
 
+%define sover 1
 %define pkgname leancrypto
 %define libname lib%{pkgname}
 Name:           %{pkgname}%{psuffix}
@@ -46,6 +47,7 @@ Patch0:         leancrypto-ABI-fix.patch
 Patch1:         0001-Linux-kernel-leancrypto_kernel_rng_tester-include-li.patch
 
 BuildRequires:  clang
+BuildRequires:  fipscheck
 BuildRequires:  meson
 %if %{with kmp}
 BuildRequires:  %kernel_module_package_buildreqs
@@ -59,10 +61,10 @@ to be used on stack as well as on heap. Accelerated algorithms are transparently
 enabled if possible.
 
 %if %{without kmp}
-%package -n %{libname}1
+%package -n %{libname}%{sover}
 Summary:        Cryptographic library with stack-only support and PQC-safe algorithms
 
-%description -n %{libname}1
+%description -n %{libname}%{sover}
 Leancrypto provides a general-purpose cryptographic library with PQC-safe
 algorithms. Further it only has POSIX dependencies, and allows all algorithms
 to be used on stack as well as on heap. Accelerated algorithms are transparently
@@ -70,7 +72,7 @@ enabled if possible.
 
 %package devel
 Summary:        Development files for leancrypto, a cryptographic library
-Requires:       %{libname}1 = %{version}
+Requires:       %{libname}%{sover} = %{version}
 Requires:       glibc-devel
 
 %description devel
@@ -95,10 +97,10 @@ enabled if possible.
 This subpackage contains the static version of the library
 used for development.
 
-%package -n %{libname}-fips1
+%package -n %{libname}-fips%{sover}
 Summary:        Cryptographic library with stack-only support and PQC-safe algorithms
 
-%description -n %{libname}-fips1
+%description -n %{libname}-fips%{sover}
 Leancrypto provides a general-purpose cryptographic library with PQC-safe
 algorithms. Further it only has POSIX dependencies, and allows all algorithms
 to be used on stack as well as on heap. Accelerated algorithms are transparently
@@ -177,12 +179,30 @@ done
 %endif
 
 %if %{without kmp}
-%ldconfig_scriptlets -n %{libname}1
-%ldconfig_scriptlets -n %{libname}-fips1
 
-%files -n %{libname}1
+# the hmac hashes:
+#
+# this is a hack that re-defines the __os_install_post macro
+# for a simple reason: the macro strips the binaries and thereby
+# invalidates a HMAC that may have been created earlier.
+# solution: create the hashes _after_ the macro runs.
+#
+# this shows up earlier because otherwise the %%expand of
+# the macro is too late.
+# remark: This is the same as running
+#   openssl dgst -sha256 -hmac 'orboDeJITITejsirpADONivirpUkvarP'
+%{expand:%%global __os_install_post {%__os_install_post
+%{_bindir}/fipshmac %{buildroot}%{_libdir}/%{libname}.so.%{sover}
+%{_bindir}/fipshmac %{buildroot}%{_libdir}/%{libname}-fips.so.%{sover}
+}}
+
+%ldconfig_scriptlets -n %{libname}%{sover}
+%ldconfig_scriptlets -n %{libname}-fips%{sover}
+
+%files -n %{libname}%{sover}
 %license LICENSE LICENSE.bsd LICENSE.gplv2
 %{_libdir}/%{libname}.so.*
+%{_libdir}/.%{libname}.so.%{sover}.hmac
 
 %files devel
 %doc README.md CHANGES.md
@@ -197,8 +217,9 @@ done
 %{_libdir}/%{libname}.a
 %{_libdir}/%{libname}-fips.a
 
-%files -n %{libname}-fips1
+%files -n %{libname}-fips%{sover}
 %{_libdir}/%{libname}-fips.so.*
+%{_libdir}/.%{libname}-fips.so.%{sover}.hmac
 
 %files -n %{name}-tools
 %{_libexecdir}/%{name}

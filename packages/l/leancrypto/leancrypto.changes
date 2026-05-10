@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 30 14:36:46 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Calculate the FIPS HMAC for the leancrypto and the leancrypto-fips
+  libraries. (bsc#1262399)
+
+-------------------------------------------------------------------
 Thu Apr 16 05:13:36 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - Fix build on kernel 7.0

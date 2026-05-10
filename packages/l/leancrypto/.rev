@@ -92,4 +92,13 @@
   * Add patch leancrypto-ABI-fix.patch (forwarded request 1347327 from lmulling)</comment>
     <requestid>1347328</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>db8f3766e4b0b63949d1124ccd494fc4</srcmd5>
+    <version>1.7.2</version>
+    <time>1778424434</time>
+    <user>dimstar_suse</user>
+    <comment>- Calculate the FIPS HMAC for the leancrypto and the leancrypto-fips
+  libraries. (bsc#1262399) (forwarded request 1351461 from pmonrealgonzalez)</comment>
+    <requestid>1352025</requestid>
+  </revision>
 </revisionlist>
