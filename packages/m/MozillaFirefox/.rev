@@ -8184,4 +8184,41 @@
     <comment>Mozilla Firefox 150.0.1 boo#1263110</comment>
     <requestid>1350293</requestid>
   </revision>
+  <revision rev="486" vrev="1">
+    <srcmd5>40ce7645d1966f41ad4b6fb4723bca83</srcmd5>
+    <version>150.0.2</version>
+    <time>1778424399</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 150.0.2
+  MFSA 2026-40 (bsc#1264378)
+  * CVE-2026-8090 (bmo#2034352)
+    Use-after-free in the DOM: Networking component
+  * CVE-2026-8092 (bmo#1806249, bmo#2021977, bmo#2022576, bmo#2022722,
+    bmo#2024439, bmo#2027883, bmo#2029463, bmo#2030323, bmo#2032042,
+    bmo#2032043, bmo#2033270, bmo#2033637, bmo#2034422, bmo#2034496,
+    bmo#2035879, bmo#2036516)
+    Memory safety bugs fixed in Firefox ESR 115.35.2, Firefox ESR
+    140.10.2 and Firefox 150.0.2
+  * CVE-2026-8093 (bmo#1981270, bmo#2027154, bmo#2028332, bmo#2029327,
+    bmo#2029428, bmo#2029894, bmo#2032189, bmo#2034837, bmo#2035968,
+    bmo#2036256)
+    Memory safety bugs fixed in Firefox 150.0.2
+  * Fixed an issue where websites on internal or corporate
+    networks that require a login prompt would show a blank page.
+    (bmo#2034752)
+  * Fixed an issue that prevented highlighting from
+    working on scanned images in the built-in PDF viewer. (bmo#2034980)
+  * Fixed an issue where the &quot;New&quot; badge persisted on
+    Split View menu items. (bmo#2027793)
+  * Fixed an issue that prevented some webcams from working
+    correctly in video calls. (bmo#2034722)
+  * Fixed an issue where a tab would crash when dragging and
+    dropping nested folders onto a webpage. (bmo#2030461)
+  * Improved how Firefox displays websites with advanced 3D
+    effects, fixing cases where parts of the page could
+    disappear or appear incorrectly. (bmo#2034283)
+  * Fixed an issue that could prevent Firefox’s local backup
+    feature from completing successfully. (bmo#2029240)</comment>
+    <requestid>1351500</requestid>
+  </revision>
 </revisionlist>
