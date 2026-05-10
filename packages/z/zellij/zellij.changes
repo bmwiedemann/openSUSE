@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 05 08:31:46 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 0.44.2:
+  * chore(release): v0.44.2
+  * fix: when publishing, publish current branch rather than hardcoded main (#5127)
+  * Fullscreen resize fixes (#5117)
+  * fix: buffer pty processing while waiting for host query reply (#5113)
+  * fix(windows): stop reusing terminal pane ids (#5082)
+  * Update CHANGELOG.md
+  * fix: incorrect interpretation of unicode keys (#5110)
+  * Implement DECQRM for CSI2031 (#5111)
+  * Support CSI2031 (dark/light theme switching) + remove STDIN cache to avoid stale color queries (#5105)
+  * upgrade rustls-webpki (#5106)
+  * docs(changelog): duplicate char fix
+  * fix(web-client): prevent IME input text repetition (#4975)
+  * fix: lost web characters (#5080)
+  * fix: kitty keyboard restore on error path + 2026 DECRPM state 3 handling (#5058)
+  * Some idle CPU and disk/io fixes, new CommandChanged plugin Event (#5063)
+  * fix(windows): skip modifier re-encoding for Char keys in cast_crossterm_key (#5014)
+  * bump development version
+  * fix(ci): pin WiX CLI to v6.0.2 to avoid v7 OSMF EULA gate (#5012)
+
+-------------------------------------------------------------------
 Fri Apr 10 07:07:39 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 0.44.1:
