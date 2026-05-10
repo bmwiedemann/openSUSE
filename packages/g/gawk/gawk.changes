@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri May  8 09:22:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.0:
+  * 1. This release now uses Mike Haertel's MinRX regular
+    expression matcher as the default regexp engine. The old regex
+    and dfa engines are still available. More detail is available
+    in the manual, and in the file README_d/README.matchers.
+    At the very least, read that file!
+  * 2. The manual, in the Bugs section, now makes it explicit
+    that (a) Ad hominem attacks on the lists will not be tolerated,
+    and (b) Discussion of proprietary software is strongly
+    discouraged. Repeated offenses are grounds for being banned
+    from the lists.
+  * 3. There is now a new directive, @nsinclude, which works like
+    @include but does not reset the namespace for the included file
+    to "awk". See the manual for details.
+  * 4. When using lshift() or rshift() and attempting to shift by
+    as many or more bits than in a uintmax_t, gawk returns zero,
+    instead of whatever the C compiler and hardware might have done.
+  * 5. Gawk's use of persistent memory has changed somewhat:
+  * A. Gawk now stores additional meta-information in the backing
+    file.
+  * This means that if you have a backing file with important
+    data in it, you should dump the data to a text file using the
+    old version, create a new backing file, and then read your data
+    back in with the new version, to a *brand new* backing file.
+  * 6. The ordchr extension now supports multibyte / wide
+    characters.
+  * 7. Per the 2024 POSIX standard, `length(array)' is no longer
+    an extension, but a regular feature.  Thus --posix no longer
+    rejects it and --lint no longer warns about it.
+  * 8. The --traditional option has been rationalized to bring
+    gawk into sync with BWK awk. It no longer affects the return
+    code from system(), and it no longer prevents using a regexp
+    for RS. Internally, the code was cleaned up some as well.
+  * 9. Assertions in the C code are now enabled.  To disable
+    them, manually edit the various Makefiles after running
+    configure and before running make. You will need to add
+    -DNDEBUG to the CFLAGS variable.
+
+-------------------------------------------------------------------
 Fri Apr  4 16:43:14 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU awk 5.3.2:
@@ -17,7 +58,7 @@ Wed Mar 19 12:13:33 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 -------------------------------------------------------------------
 Mon Jan 27 07:55:53 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
-- Stop using -fprofile-arcs in the final build 
+- Stop using -fprofile-arcs in the final build
   instrumentation is not wanted there and
   it broke reproducible builds (boo#1040589)
 

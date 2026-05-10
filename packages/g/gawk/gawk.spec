@@ -1,7 +1,7 @@
 #
 # spec file for package gawk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gawk
-Version:        5.3.2
+Version:        5.4.0
 Release:        0
 Summary:        Domain-specific language for text processing
 License:        GPL-3.0-or-later
@@ -43,7 +43,7 @@ almost completely POSIX 1003.2 compliant.
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -DNDEBUG"
 %configure
 %if %{do_profiling} && !0%{?want_reproducible_builds}
   %make_build CFLAGS="$CFLAGS %{cflags_profile_generate}" LDFLAGS="-fprofile-arcs"
