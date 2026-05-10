@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May  8 20:36:46 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 12.2.0:
+  * Add a hotkey to launch the UEFI Shell from the boot menu.
+  * Free UEFI buffers with their original allocation size after
+    LocateHandle to avoid pool corruption on strict firmwares.
+  * Reallocate the UEFI memory map buffer if it grows during the
+    ExitBootServices retry loop.
+  * Drop a redundant IER write in the serial driver that clobbered DLM at
+    low baud rates.
+  * Limine boot protocol: Allow trimming reserved entries that overlap
+    framebuffer pages.
+  * Harden the ELF loader against crafted RELR tables that overflow the
+    relocation count on 32-bit builds (found via fuzzing).
+  * Reject PE images with `SectionAlignment` = 0 (found via fuzzing).
+  * Miscellaneous bug fixes.
+
+-------------------------------------------------------------------
 Tue Apr 21 16:57:35 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 11.4.1:
