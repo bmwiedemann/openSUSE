@@ -23,4 +23,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1350621</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f5432e216592d8df0880a63c281cec91</srcmd5>
+    <version>4.6.2</version>
+    <time>1778424491</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.2:
+  * Use 1-based cursor position on Windows</comment>
+    <requestid>1352232</requestid>
+  </revision>
 </revisionlist>

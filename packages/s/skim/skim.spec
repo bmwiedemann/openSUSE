@@ -17,7 +17,7 @@
 
 
 Name:           skim
-Version:        4.6.1
+Version:        4.6.2
 Release:        0
 Summary:        A fuzzy finder for the command line
 License:        MIT
