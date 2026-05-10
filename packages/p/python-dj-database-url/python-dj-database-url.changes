@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 10 09:56:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.2:
+  * Bump cryptography from 46.0.3 to 46.0.5
+  * Bump django from 5.2.9 to 5.2.11
+  * Bump urllib3 from 2.6.2 to 2.6.3
+  * Bump wheel from 0.45.1 to 0.46.2
+- update to 3.1.1:
+  * Add tests directory to source distribution
+  * Switch linting and formatting from flake8+isort+black to
+    ruff; add typos to pre-commit; fix typos
+  * Add project URLs to pyproject.toml
+  * Update .pre-commit-config.yaml to use pinned version numbers.
+- update to 3.1.0:
+  * Update license to BSD-3-Clause in setup.py
+  * CI: run typechecks only once, not for each Django/Python
+    version
+
+-------------------------------------------------------------------
 Sun Jul 13 13:38:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.1:
