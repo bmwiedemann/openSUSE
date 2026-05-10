@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  9 16:08:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * 0001-Change-o_strchr-and-o_strstr-return-value-to-const-c.patch
+    Fix build failure with glibc 2.43
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Mon Sep 18 14:51:21 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.3

@@ -1,0 +1,140 @@
+From ee2f45b5da8b7fb2c747419c17880ccdca14521d Mon Sep 17 00:00:00 2001
+From: Nicolas Mora <github@babelouest.org>
+Date: Sun, 26 Apr 2026 09:37:06 -0400
+Subject: [PATCH] Change o_strchr* and o_strstr* return value to const char *
+ to fit glibc 2.43
+
+---
+ include/orcania.h | 10 +++++-----
+ src/orcania.c     | 17 +++++++++--------
+ 2 files changed, 14 insertions(+), 13 deletions(-)
+
+diff --git a/include/orcania.h b/include/orcania.h
+index 4482d9e..65237ac 100644
+--- a/include/orcania.h
++++ b/include/orcania.h
+@@ -148,7 +148,7 @@ int o_strncasecmp(const char * p1, const char * p2, size_t n);
+  * @param needle the string to search in haystack
+  * @return the pointer to the first occurence of needle in haystack or NULL if not found
+  */
+-char * o_strstr(const char * haystack, const char * needle);
++const char * o_strstr(const char * haystack, const char * needle);
+ 
+ /**
+  * o_strnstr
+@@ -158,7 +158,7 @@ char * o_strstr(const char * haystack, const char * needle);
+  * @param len the maximum length to look for in haystack
+  * @return the pointer to the first occurence of needle in haystack or NULL if not found
+  */
+-char * o_strnstr(const char * haystack, const char * needle, size_t len);
++const char * o_strnstr(const char * haystack, const char * needle, size_t len);
+ 
+ /**
+  * o_strcasestr
+@@ -167,7 +167,7 @@ char * o_strnstr(const char * haystack, const char * needle, size_t len);
+  * @param needle the string to search in haystack
+  * @return the pointer to the first occurence of needle in haystack or NULL if not found
+  */
+-char * o_strcasestr(const char * haystack, const char * needle);
++const char * o_strcasestr(const char * haystack, const char * needle);
+ 
+ /**
+  * o_strchr
+@@ -176,7 +176,7 @@ char * o_strcasestr(const char * haystack, const char * needle);
+  * @param c the character to look for in haystack
+  * @return the pointer to the first occurence of c in haystack or NULL if not found
+  */
+-char * o_strchr(const char * haystack, int c);
++const char * o_strchr(const char * haystack, int c);
+ 
+ /**
+  * o_strnchr
+@@ -195,7 +195,7 @@ const char * o_strnchr(const char * haystack, size_t len, char c);
+  * @param c the character to look for in haystack
+  * @return the pointer to the last occurence of c in haystack or NULL if not found
+  */
+-char * o_strrchr(const char * haystack, int c);
++const char * o_strrchr(const char * haystack, int c);
+ 
+ /**
+  * o_strrnchr
+diff --git a/src/orcania.c b/src/orcania.c
+index 8dd91a8..1dffce1 100644
+--- a/src/orcania.c
++++ b/src/orcania.c
+@@ -54,7 +54,8 @@ typedef SSIZE_T ssize_t;
+  */
+ 
+ char * str_replace(const char * source, const char * str_old, const char * str_new) {
+-  char * to_return, * ptr, * pre, * next;
++  char * to_return, * pre, * next;
++  const char * ptr;
+   size_t len, pre_len;
+   
+   if (source == NULL || str_old == NULL || str_new == NULL) {
+@@ -248,7 +249,7 @@ int o_strncasecmp(const char * p1, const char * p2, size_t n) {
+   }
+ }
+ 
+-char * o_strstr(const char * haystack, const char * needle) {
++const char * o_strstr(const char * haystack, const char * needle) {
+   if (haystack == NULL || needle == NULL) {
+     return NULL;
+   } else {
+@@ -256,7 +257,7 @@ char * o_strstr(const char * haystack, const char * needle) {
+   }
+ }
+ 
+-char * o_strchr(const char * haystack, int c) {
++const char * o_strchr(const char * haystack, int c) {
+   if (haystack == NULL) {
+     return NULL;
+   } else {
+@@ -280,7 +281,7 @@ const char * o_strnchr(const char * haystack, size_t len, char c) {
+  * o_strrchr
+  * a modified strrchr function that don't crash when haystack is NULL
+  */
+-char * o_strrchr(const char * haystack, int c) {
++const char * o_strrchr(const char * haystack, int c) {
+   if (haystack == NULL) {
+     return NULL;
+   } else {
+@@ -301,7 +302,7 @@ const char * o_strrnchr(const char * haystack, size_t len, char c) {
+ }
+ 
+ #if defined(__linux__) || defined(__GLIBC__) || defined(_WIN32) || defined(O_STRSTR)
+-static char *strnstr(const char *haystack, const char *needle, size_t len) {
++static const char *strnstr(const char *haystack, const char *needle, size_t len) {
+   int i;
+   size_t needle_len;
+ 
+@@ -320,7 +321,7 @@ static char *strnstr(const char *haystack, const char *needle, size_t len) {
+ #endif
+ 
+ #ifdef _WIN32
+-static char *strcasestr(const char *haystack, const char *needle) {
++static const char *strcasestr(const char *haystack, const char *needle) {
+   size_t n;
+   if (haystack == NULL || needle == NULL) {
+     return NULL;
+@@ -335,7 +336,7 @@ static char *strcasestr(const char *haystack, const char *needle) {
+ }
+ #endif
+ 
+-char * o_strnstr(const char * haystack, const char * needle, size_t len) {
++const char * o_strnstr(const char * haystack, const char * needle, size_t len) {
+   if (haystack == NULL || needle == NULL) {
+     return NULL;
+   } else {
+@@ -343,7 +344,7 @@ char * o_strnstr(const char * haystack, const char * needle, size_t len) {
+   }
+ }
+ 
+-char * o_strcasestr(const char * haystack, const char * needle) {
++const char * o_strcasestr(const char * haystack, const char * needle) {
+   if (haystack == NULL || needle == NULL) {
+     return NULL;
+   } else {
+-- 
+2.54.0
+

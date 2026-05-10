@@ -1,8 +1,8 @@
 #
 # spec file for package orcania
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2018-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2018-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        LGPL-2.1-or-later
 Group:          Development/Languages/C and C++
 URL:            https://github.com/babelouest/orcania
 Source:         https://github.com/babelouest/orcania/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         0001-Change-o_strchr-and-o_strstr-return-value-to-const-c.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -51,21 +52,21 @@ Requires:       liborcania%{sover} = %{version}
 Development and header files for orcania.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+export CFLAGS="%{optflags} -Wno-error=discarded-qualifiers"
 %cmake
 make %{?_smp_mflags}
 
 %install
 %cmake_install
 
-%post   -n liborcania%{sover} -p /sbin/ldconfig
-%postun -n liborcania%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n liborcania%{sover}
 
 %files -n liborcania%{sover}
-%doc CHANGELOG.md README.md
 %license LICENSE
+%doc CHANGELOG.md README.md
 %{_libdir}/liborcania.so.*
 
 %files devel
