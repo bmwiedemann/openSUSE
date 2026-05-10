@@ -270,4 +270,14 @@ without RUNPATH on libc++.so.
 </comment>
     <requestid>1346175</requestid>
   </revision>
+  <revision rev="23" vrev="17">
+    <srcmd5>44ef4b06f191b62af26f923712918761</srcmd5>
+    <version>15.0.7</version>
+    <time>1778424475</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure we don't lose the distribution compiler flags.
+- Remove unnecessary dependency of llvm-devel on libtool.
+</comment>
+    <requestid>1352210</requestid>
+  </revision>
 </revisionlist>
