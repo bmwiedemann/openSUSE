@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 10 04:38:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.3.0
+  * Support 24-bit and 32-bit output.
+  * Use XMP_MAX_SRATE as the limit for -f instead of 48000.
+  * Report pan value "---" for instruments/samples without a
+    default panning value (sub->pan < 0).
+  * Don't unmute muted IT channels unless explicitly unmuted by the
+    -S/--solo option.
+  * ALSA: fix 8-bit and unsigned format mismatches after init.
+  * PulseAudio: support 8-bit output.
+
+-------------------------------------------------------------------
 Sat Jun 17 11:45:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.2.0

@@ -93,4 +93,12 @@
     <comment>- Update to release 4.2.0</comment>
     <requestid>1093575</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c0c789bec8ebe3ee8ed41ea696fdba06</srcmd5>
+    <version>4.3.0</version>
+    <time>1778424490</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.3.0</comment>
+    <requestid>1352233</requestid>
+  </revision>
 </revisionlist>

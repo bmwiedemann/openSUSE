@@ -1,7 +1,7 @@
 #
 # spec file for package xmp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xmp
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Extended Module Player for MOD/S3M/XM/IT/etc.
 License:        GPL-2.0-or-later
