@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sat May 09 09:25:51 UTC 2026 - msuchanek@suse.de
+
+- Update to version 0.5.0:
+  * Add bitbucket to --forge-type and auth --type help text
+  * Use Link headers for gitea pagination so server-clamped page sizes don't truncate results
+  * Surface transport error when forge type detection fails
+  * Make --forge-type skip network detection for custom hosts (#83)
+
+-------------------------------------------------------------------
+Thu May 07 19:06:02 UTC 2026 - msuchanek@suse.de
+
+- Update to version 0.4.2+5.465a911:
+  * Infer host from git remote for owner-only commands and add --host flag (#79)
+  * Resolve milestone by name on gitea issue Create/Update (#77)
+  * Support GitLab nested group/namespace repo paths (#71)
+  * Replace labels on gitea/forgejo issue Update (#75)
+  * Strip control characters from forge-sourced text before printing (#74)
+  * Ignore ssh_host from project .forge config (#73)
+
+-------------------------------------------------------------------
+Wed May  6 13:47:57 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- forge 0.4.2
