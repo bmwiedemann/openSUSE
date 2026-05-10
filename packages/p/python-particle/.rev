@@ -217,4 +217,17 @@
     files.</comment>
     <requestid>1334403</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0591a85a084b98ab7dc7f457b9984749</srcmd5>
+    <version>0.26.2</version>
+    <time>1778424505</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.26.2:
+  * Statically type the particle and PDGID literals using `cog`.
+  * Chore to support Pandas 3.
+  * Test suite statically typed.
+  * Updates and improvements to pre-commit hooks and CI YAML
+    files.</comment>
+    <requestid>1352269</requestid>
+  </revision>
 </revisionlist>

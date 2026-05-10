@@ -19,7 +19,7 @@
 %global modname particle
 %{?sle15_python_module_pythons}
 Name:           python-particle
-Version:        0.26.1
+Version:        0.26.2
 Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause

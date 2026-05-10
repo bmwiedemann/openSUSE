@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 10 11:22:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26.2:
+  * Statically type the particle and PDGID literals using `cog`.
+  * Chore to support Pandas 3.
+  * Test suite statically typed.
+  * Updates and improvements to pre-commit hooks and CI YAML
+    files.
+
+-------------------------------------------------------------------
 Mon Feb 23 08:39:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.26.1:
