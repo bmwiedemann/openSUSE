@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May  7 07:30:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- remove the userspace fallback implementation for openat2
+
+-------------------------------------------------------------------
+Tue May  5 13:55:07 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix bsc#1246399 / CVE-2025-45582.
+- Add patch:
+  * CVE-2025-45582.patch
+- Refresh patch:
+  * tar-fix-extract-unlink.patch
+
+-------------------------------------------------------------------
 Tue Mar 10 07:09:32 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Ensure the date in .info files is reproducible (boo#1047218)
@@ -75,7 +89,7 @@ Wed Dec  6 16:04:39 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
   * Fix crash on tar --checkpoint-action exec=\".
   * Fix low-memory crash when reading incremental dumps.
   * Fix --exclude-vcs-ignores memory allocation misuse.
-- Added patch: 
+- Added patch:
   * add_forgotten-tests.patch: added 2 tests that upstream forgot in the release.
 - Update patch:
   * tar-backup-spec-fix-paths.patch: upstream fixed 2/3rd of paths
@@ -134,7 +148,7 @@ Thu Oct 27 13:55:03 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 -------------------------------------------------------------------
 Sat Aug 20 06:23:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- drop tar-recursive--files-from.patch (causes bsc#918487) 
+- drop tar-recursive--files-from.patch (causes bsc#918487)
 
 -------------------------------------------------------------------
 Wed Aug 17 05:09:11 UTC 2022 - Simon Lees <sflees@suse.de>
@@ -233,14 +247,14 @@ Mon Mar 25 15:07:06 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
   * Fix possible NULL dereference (savannah bug #55369)
     [bsc#1130496] [CVE-2019-9923]
   * Improve the testsuite
-- remove tar-1.31-tests_dirrem.patch and 
+- remove tar-1.31-tests_dirrem.patch and
   tar-1.31-racy_compress_tests.patch that are no longer needed
   (applied usptream)
 
 -------------------------------------------------------------------
 Fri Mar 15 13:47:43 UTC 2019 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- Remove libattr-devel from buildrequires, tar no longer uses 
+- Remove libattr-devel from buildrequires, tar no longer uses
   it but finds xattr functions in libc.
 
 -------------------------------------------------------------------
@@ -268,7 +282,7 @@ Thu Feb 14 12:20:29 UTC 2019 - kstreitova@suse.com
 - remove the following patches (upstreamed)
   * tar-1.30-tests-difflink.patch
   * tar-1.30-tests_dirrem_race.patch
-- refresh add_readme-tests.patch 
+- refresh add_readme-tests.patch
 - add tar-1.31-tests_dirrem.patch to fix expected output in dirrem
   tests
 - add tar-1.31-racy_compress_tests.patch to fix compression tests
@@ -290,7 +304,7 @@ Tue Apr  3 14:58:19 CEST 2018 - kukuk@suse.de
 Thu Jan  4 13:24:20 UTC 2018 - kstreitova@suse.com
 
 - add tar-1.30-tests-difflink.patch to fix difflink.at test
-  (https://www.mail-archive.com/bug-tar@gnu.org/msg05440.html) 
+  (https://www.mail-archive.com/bug-tar@gnu.org/msg05440.html)
 
 -------------------------------------------------------------------
 Mon Dec 18 03:45:51 UTC 2017 - avindra@opensuse.org
@@ -328,7 +342,7 @@ Thu Mar 27 21:04:03 UTC 2017 - svalx@svalx.net
 - Disable tar-1.26-remove_O_NONBLOCK.patch - this issue has been
   fixed in tar-1.27
 - backup-scripts subpackage change to noarch
-- Change rpm group of tar-tests to Development/Tools/Other 
+- Change rpm group of tar-tests to Development/Tools/Other
 - Enable rmt building, change package description
 - Switch rmt to alternatives system
 - Separate rmt subpackage - it can be used by different archiving
@@ -347,7 +361,7 @@ Thu Mar 23 13:52:13 UTC 2017 - kstreitova@suse.com
 - move binaries from /bin to /usr/bin [bsc#1029977]
   * refresh tar-backup-spec-fix-paths.patch to change path of the
     tar binary from TAR=/bin/tar to TAR=/usr/bin/tar
-- use spec-cleaner 
+- use spec-cleaner
 
 -------------------------------------------------------------------
 Thu Dec 15 17:05:04 UTC 2016 - vcizek@suse.com
@@ -361,10 +375,10 @@ Thu Dec 15 17:05:04 UTC 2016 - vcizek@suse.com
 Tue Nov  8 17:50:44 UTC 2016 - kstreitova@suse.com
 
 - add tar-1.29-extract_pathname_bypass.patch to fix POINTYFEATHER
-  vulnerability - GNU tar archiver can be tricked into extracting 
-  files and directories in the given destination, regardless of the 
-  path name(s) specified on the command line [bsc#1007188] 
-  [CVE-2016-6321] 
+  vulnerability - GNU tar archiver can be tricked into extracting
+  files and directories in the given destination, regardless of the
+  path name(s) specified on the command line [bsc#1007188]
+  [CVE-2016-6321]
 
 -------------------------------------------------------------------
 Sat May 28 19:06:33 UTC 2016 - astieger@suse.com
@@ -469,7 +483,7 @@ Thu Oct 24 21:57:57 UTC 2013 - andreas.stieger@gmx.de
 - update to 1.27
 - bug fixes:
   * PAX-format sparse archive files no longer restricted to 8 GiB.
-  * adjust diagnostics and output to GNU coding 
+  * adjust diagnostics and output to GNU coding
 - new features:
   * The --owner and --group options now accept numeric IDs
   * restore traditional functionality of --keep-old-files and
@@ -506,7 +520,7 @@ Thu Aug 22 12:47:33 UTC 2013 - vcizek@suse.com
 -------------------------------------------------------------------
 Fri Apr  5 10:43:39 UTC 2013 - idonmez@suse.com
 
-- Add Source URL, see https://en.opensuse.org/SourceUrls 
+- Add Source URL, see https://en.opensuse.org/SourceUrls
 
 -------------------------------------------------------------------
 Sat Feb  2 20:38:34 UTC 2013 - schwab@suse.de
@@ -522,7 +536,7 @@ Tue Jul 17 08:05:33 UTC 2012 - aj@suse.de
 -------------------------------------------------------------------
 Wed May 30 13:08:28 UTC 2012 - sweet_f_a@gmx.de
 
-- avoid automake dependency 
+- avoid automake dependency
 
 -------------------------------------------------------------------
 Fri Apr 20 19:55:01 UTC 2012 - crrodriguez@opensuse.org
@@ -544,7 +558,7 @@ Mon Dec 19 13:43:45 UTC 2011 - tcech@suse.cz
 - tar-1.26-remove_O_NONBLOCK.patch:
   don't use O_NONBLOCK as a flag for read,
   when file is offline, read with O_NONBLOCK returns EAGAIN,
-  but tar doesn't handle it 
+  but tar doesn't handle it
   (bnc#737331)
 
 -------------------------------------------------------------------
@@ -571,7 +585,7 @@ Thu Sep 29 11:32:04 UTC 2011 - sweet_f_a@gmx.de
 -------------------------------------------------------------------
 Tue Mar 15 08:18:08 UTC 2011 - puzel@novell.com
 
-- update to tar-1.26 
+- update to tar-1.26
   * Fix the --verify option, which broke in version 1.24.
   * Fix storing long sparse file names in PAX archives.
   * Fix correctness of --atime-preserve=replace
@@ -603,12 +617,12 @@ Tue Nov  9 13:05:29 UTC 2010 - puzel@novell.com
     such as last-modified time and link permissions, if the
     operating system supports this.
   * The --dereference (-h) option now applies to files that are
-    copied into or out of archives, independently of other options. 
+    copied into or out of archives, independently of other options.
   * When receiving SIGPIPE, tar would exit with error status and
     "write error" diagnostics.
 - disable-silent-rules
 - updated tar-fortifysourcessigabrt.patch
-    
+
 -------------------------------------------------------------------
 Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
 
@@ -634,12 +648,12 @@ Fri Mar 12 16:21:49 UTC 2010 - mseben@novell.com
   * Fix storing and listing of the volume labels in POSIX format
   * Improve algorithm for splitting long file names (ustar format)
   * Fix possible memory overflow in the rmt client code (CVE-2010-0624)
-- deprecated heap_overflow_in_rtapelib.patch  
+- deprecated heap_overflow_in_rtapelib.patch
 
 -------------------------------------------------------------------
 Wed Mar  3 09:29:23 UTC 2010 - mseben@novell.com
 
-- added heap_overflow_in_rtapelib.patch fix possible heap overflow in 
+- added heap_overflow_in_rtapelib.patch fix possible heap overflow in
   rtapelib.c (bnc#579475)
 
 -------------------------------------------------------------------
@@ -650,7 +664,7 @@ Tue Feb  2 20:35:03 UTC 2010 - mseben@novell.com
   * Short option -J is reassigned as a shortcut for --xz
   * The option -I is a shortcut for --use-compress-program
   * The --no-recursive option works with --incremental
-- deprecated recognize_xz.patch 
+- deprecated recognize_xz.patch
 - created tar-backup-scripts subpackage (bnc#574688)
 
 -------------------------------------------------------------------
@@ -680,7 +694,7 @@ Wed Feb 11 10:41:36 CET 2009 - coolo@suse.de
    * New short option -J - A shortcut for --lzma.
    * New option --lzop
    * Compressed format recognition
-   * Using --exclude-vcs handles also files used internally by 
+   * Using --exclude-vcs handles also files used internally by
      Bazaar, Mercurial and Darcs.
 - split out language subpackage
 - recommend xz instead of the old name of lzma
@@ -688,7 +702,7 @@ Wed Feb 11 10:41:36 CET 2009 - coolo@suse.de
 -------------------------------------------------------------------
 Wed Nov 19 12:30:35 CET 2008 - mkoenig@suse.de
 
-- fix incremental backup with wildcard option [bnc#445411] 
+- fix incremental backup with wildcard option [bnc#445411]
 
 -------------------------------------------------------------------
 Mon Jun 23 17:16:19 CEST 2008 - mkoenig@suse.de
@@ -705,7 +719,7 @@ Mon Jun 23 17:16:19 CEST 2008 - mkoenig@suse.de
 Fri Mar 28 17:00:19 CET 2008 - mkoenig@suse.de
 
 - apply upstream patch to avoid error message when updating
-  an archive that does not exist [bnc#347525] 
+  an archive that does not exist [bnc#347525]
 
 -------------------------------------------------------------------
 Wed Nov 14 18:09:03 CET 2007 - mkoenig@suse.de
@@ -719,31 +733,31 @@ Wed Nov 14 18:09:03 CET 2007 - mkoenig@suse.de
   * Recognition of broken archives
 - merged patches:
   tar-1.15.1-CVE-2001-1267.patch
-  tar-1.17-paxlib-owl-alloca.patch 
+  tar-1.17-paxlib-owl-alloca.patch
 
 -------------------------------------------------------------------
 Fri Oct  5 16:06:49 CEST 2007 - mkoenig@suse.de
 
-- update to version 1.18 
+- update to version 1.18
   Licensed under the GPLv3
 - merged patches:
-  tar-1.17-testsuite12.patch 
+  tar-1.17-testsuite12.patch
 
 -------------------------------------------------------------------
 Mon Oct  1 10:48:23 CEST 2007 - mkoenig@suse.de
 
-- fix build with gcc-4.3 
+- fix build with gcc-4.3
 
 -------------------------------------------------------------------
 Fri Aug 31 12:55:24 CEST 2007 - mkoenig@suse.de
 
 - fixed another directory traversal vulnerability, CVE-2001-1267,
-  CVE-2002-0399, [#29973] 
+  CVE-2002-0399, [#29973]
 
 -------------------------------------------------------------------
 Mon Aug 20 17:56:38 CEST 2007 - mkoenig@suse.de
 
-- use correct patch for paxlib stack overflow [#301416] 
+- use correct patch for paxlib stack overflow [#301416]
 
 -------------------------------------------------------------------
 Fri Aug 17 14:14:39 CEST 2007 - lmichnovic@suse.cz
@@ -759,7 +773,7 @@ Thu Jun 21 10:17:56 CEST 2007 - mkoenig@suse.de
   * Fix operation of --verify --listed-incremental
   * Fix --occurence
   * Scope of --transform and --strip-components options
-  * End-of-volume script can send the new volume name to tar 
+  * End-of-volume script can send the new volume name to tar
 - remove patch (fixed upstream)
   tar-1.6.1-futimens.patch
 - fix test 12
@@ -768,7 +782,7 @@ Thu Jun 21 10:17:56 CEST 2007 - mkoenig@suse.de
 -------------------------------------------------------------------
 Tue May 22 13:37:49 CEST 2007 - mkoenig@suse.de
 
-- fix build 
+- fix build
 
 -------------------------------------------------------------------
 Tue May 15 19:20:14 CEST 2007 - coolo@suse.de
@@ -782,10 +796,10 @@ Wed Jan 24 10:51:46 CET 2007 - mkoenig@suse.de
   * tar-1.16-CVE-2006-6097.patch merged upstream
   * tar-1.16-xheader_unused.patch merged upstream
   * New option --exclude-tag
-  * The --exclude-cache option excludes directories that 
+  * The --exclude-cache option excludes directories that
     contain the CACHEDIR.TAG file from being archived
   * Race conditions have been fixed that in some cases briefly
-    allowed files extracted by 'tar -x --same-owner' to be 
+    allowed files extracted by 'tar -x --same-owner' to be
     accessed by users that they shouldn't have been.
 
 -------------------------------------------------------------------
@@ -805,30 +819,30 @@ Tue Dec 05 16:07:51 CET 2006 - mkoenig@suse.de
     modification times.
   New features:
   * New option --mtime allows to set modification times
-  * New option --transform allows to transform file names before 
+  * New option --transform allows to transform file names before
     storing
-  * --strip-components option works when deleting and comparing.  
+  * --strip-components option works when deleting and comparing.
   * New option --show-transformed-names
-  * Short option -l is now an alias of --check-links option, 
+  * Short option -l is now an alias of --check-links option,
     which complies with UNIX98
-  * The --checkpoint option takes an optional argument specifying 
+  * The --checkpoint option takes an optional argument specifying
     the number of records between the two successive checkpoints.
   * The --totals option can be used with any tar operation
-  * Any number of -T (--files-from) options may be used in the 
+  * Any number of -T (--files-from) options may be used in the
     command line.
-  * List files containing null-separated file names are detected 
+  * List files containing null-separated file names are detected
     and processed automatically.
-  * New option --no-unquote disables the unquoting of input file 
+  * New option --no-unquote disables the unquoting of input file
     names.
   * New option --test-label tests the archive volume label.
   * New option --show-stored-names.
-  * New option --to-command pipes the contents of archive members 
+  * New option --to-command pipes the contents of archive members
     to the specified command.
   * New option --atime-preserve=system
   * New option --delay-directory-restore
-  * New option --restrict prohibits use of some potentially harmful 
+  * New option --restrict prohibits use of some potentially harmful
     tar options.
-  * New options --quoting-style and --quote-chars control the way 
+  * New options --quoting-style and --quote-chars control the way
     tar quotes member names on output.
   * Better support for full-resolution time stamps.
   Incompatible changes:
@@ -916,7 +930,7 @@ Tue Dec 21 13:33:31 CET 2004 - mmj@suse.de
   o New option --exclude-caches instructs tar to exclude cache
     directories automatically on archive creation. Cache directories
     are those containing a standardized tag file, as specified at:
-    http://www.brynosaurus.com/cachedir/spec.html	
+    http://www.brynosaurus.com/cachedir/spec.html
   o New configure option --with-rmt allows to specify full path
     name to the `rmt' utility. This supercedes DEFAULT_RMT_COMMAND
     variable introduced in version 1.14
@@ -976,14 +990,14 @@ Sat Jan 10 16:51:03 CET 2004 - adrian@suse.de
 -------------------------------------------------------------------
 Fri Jun 20 02:39:41 CEST 2003 - ro@suse.de
 
-- build with current gettext 
+- build with current gettext
 
 -------------------------------------------------------------------
 Thu May 15 11:25:45 CEST 2003 - pthomas@suse.de
 
 - Remove unneeded files from build root.
 - Add autoconf tests to properly guard K&R prototypes
-- Clean up signed/unsigned compares.  
+- Clean up signed/unsigned compares.
 
 -------------------------------------------------------------------
 Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
@@ -993,7 +1007,7 @@ Thu Apr 24 12:20:23 CEST 2003 - ro@suse.de
 -------------------------------------------------------------------
 Fri Feb  7 02:30:52 CET 2003 - ro@suse.de
 
-- added install_info macros 
+- added install_info macros
 
 -------------------------------------------------------------------
 Mon Nov 18 14:28:50 CET 2002 - ro@suse.de
@@ -1003,7 +1017,7 @@ Mon Nov 18 14:28:50 CET 2002 - ro@suse.de
 -------------------------------------------------------------------
 Thu Aug  1 15:40:08 CEST 2002 - ro@suse.de
 
-- add acinclude.m4 with missing macros 
+- add acinclude.m4 with missing macros
 
 -------------------------------------------------------------------
 Tue Jun  4 12:01:42 CEST 2002 - pthomas@suse.de

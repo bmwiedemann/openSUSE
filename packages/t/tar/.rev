@@ -723,4 +723,41 @@
     <comment></comment>
     <requestid>1348031</requestid>
   </revision>
+  <revision rev="89" vrev="7">
+    <srcmd5>d5aa7bb4ab598125952f90f58b43e3d4</srcmd5>
+    <version>1.35</version>
+    <time>1778424435</time>
+    <user>dimstar_suse</user>
+    <comment>- remove the userspace fallback implementation for openat2
+
+- Fix bsc#1246399 / CVE-2025-45582.
+- Add patch:
+  * CVE-2025-45582.patch
+- Refresh patch:
+  * tar-fix-extract-unlink.patch
+
+- Added patch:
+- drop tar-recursive--files-from.patch (causes bsc#918487)
+- remove tar-1.31-tests_dirrem.patch and
+- Remove libattr-devel from buildrequires, tar no longer uses
+- refresh add_readme-tests.patch
+  (https://www.mail-archive.com/bug-tar@gnu.org/msg05440.html)
+- Change rpm group of tar-tests to Development/Tools/Other
+- use spec-cleaner
+  vulnerability - GNU tar archiver can be tricked into extracting
+  files and directories in the given destination, regardless of the
+  path name(s) specified on the command line [bsc#1007188]
+  [CVE-2016-6321]
+  * adjust diagnostics and output to GNU coding
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+- avoid automake dependency
+  but tar doesn't handle it
+- update to tar-1.26
+    copied into or out of archives, independently of other options.
+- deprecated heap_overflow_in_rtapelib.patch
+- added heap_overflow_in_rtapelib.patch fix possible heap overflow in
+- deprecated recognize_xz.patch
+   * Using --exclude-vcs handles also files used internally by</comment>
+    <requestid>1351363</requestid>
+  </revision>
 </revisionlist>

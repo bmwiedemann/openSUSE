@@ -53,6 +53,7 @@ Patch13:        bsc1202436.patch
 Patch16:        fix-CVE-2022-48303.patch
 Patch17:        add_forgotten-tests.patch
 Patch18:        tar-fix-deletion-from-archive.patch
+Patch19:        CVE-2025-45582.patch
 BuildRequires:  automake >= 1.15
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
@@ -120,6 +121,8 @@ it may as well access remote devices or files.
 %prep
 %autosetup -p1
 touch -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} doc/tar.texi # ensure mtime is reproducible as it ends up in tar.info (boo#1047218)
+# Fallback implementation of openat2 that is security unsafe. make sure it doesn't get used.
+echo > gnu/openat2.c
 cp %{S:3} tests
 
 %build
