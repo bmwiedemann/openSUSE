@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun May 10 09:03:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.0:
+  * Add support for python 3.14
+  * Add support for django 6.0
+  * Add support for DRF 3.17
+  * Set the minimum version of drf-spectacular to 0.29.0
+  * Account for the `format` query parameter raising 404 errors
+    when generating the API schema for error responses. This
+  * will result in any project using the default value for
+    `REST_FRAMEWORK["URL_FORMAT_OVERRIDE"]` showing 404 errors
+    for
+  * every operation. That's because DRF enables the `format`
+    query parameter in every endpoint by default. If you don't
+  * need the `format` query parameter for content negotiation,
+    you can disable it by setting `"URL_FORMAT_OVERRIDE"`
+  * to `None` in DRF settings. Refer
+  * to DRF docs for more information.
+
+-------------------------------------------------------------------
 Sun Apr 12 12:37:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.0:

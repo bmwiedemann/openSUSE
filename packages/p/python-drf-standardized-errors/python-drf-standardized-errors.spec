@@ -17,7 +17,7 @@
 
 
 Name:           python-drf-standardized-errors
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Standardize your API error responses
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module django-filter}
 BuildRequires:  %{python_module djangorestframework >= 3.12}
-BuildRequires:  %{python_module drf-spectacular >= 0.27.0}
+BuildRequires:  %{python_module drf-spectacular >= 0.29.0}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -45,7 +45,7 @@ Suggests:       python-myst-parser
 Suggests:       python-flit
 Suggests:       python-keyring
 Suggests:       python-tbump
-Suggests:       python-drf-spectacular >= 0.27.0
+Suggests:       python-drf-spectacular >= 0.29.0
 Suggests:       python-inflection
 BuildArch:      noarch
 %python_subpackages
@@ -76,6 +76,8 @@ export DJANGO_SETTINGS_MODULE=tests.settings
 %pytest
 
 %files %{python_files}
+%license LICENSE
+%doc README.md
 %{python_sitelib}/drf_standardized_errors
 %{python_sitelib}/drf_standardized_errors-%{version}.dist-info
 
