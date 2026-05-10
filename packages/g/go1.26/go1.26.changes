@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu May  7 16:14:14 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.25.10 (released 2026-05-07) includes security fixes to the go
+  command, the pack tool, and the html/template, net, net/http,
+  net/http/httputil, net/mail, and syscall packages, as well as bug
+  fixes to the go command, the compiler, the linker, the runtime,
+  and the crypto/fips140, go/types, and os packages.
+  Refs boo#1255111 go1.26 release tracking
+  CVE-2026-33811 CVE-2026-33814 CVE-2026-39817 CVE-2026-39819 CVE-2026-39820 CVE-2026-39823 CVE-2026-39825 CVE-2026-39826 CVE-2026-39836 CVE-2026-42499 CVE-2026-42501
+  * go#78813 go#78803 boo#1264508 security: fix CVE-2026-33811 net: crash when handling long CNAME response
+  * go#78478 go#78476 boo#1264506 security: fix CVE-2026-33814 net/http: infinite loop in HTTP/2 transport when given bad SETTINGS_MAX_FRAME_SIZE
+  * go#78791 go#78778 boo#1264505 security: fix CVE-2026-39817 cmd/go: "go tool pack" does not sanitize output paths
+  * go#78588 go#78584 boo#1264504 security: fix CVE-2026-39819 cmd/go: "go bug" follows symlinks in predictable temporary filenames
+  * go#78568 go#78566 boo#1264503 security: fix CVE-2026-39820 net/mail: quadratic string concatentation in consumeComment
+  * go#79032 go#78913 boo#1264509 security: fix CVE-2026-39823 html/template: bypass of meta content URL escaping causes XSS
+  * go#78986 go#78948 boo#1264500 security: fix CVE-2026-39825 net/http/httputil: ReverseProxy forwards queries with more than urlmaxqueryparams parameters
+  * go#79025 go#78981 boo#1264507 security: fix CVE-2026-39826 html/template: escaper bypass leads to XSS
+  * go#79029 go#79006 boo#1264501 security: fix CVE-2026-39836 net/http/httputil: ReverseProxy forwards queries with more than urlmaxqueryparams parameters
+  * go#79004 go#78987 boo#1264502 security: fix CVE-2026-42499 net/mail: quadratic string concatenation in consumePhrase
+  * go#79073 go#79070 boo#1264499 security: fix CVE-2026-42501 cmd/go: malicious module proxy can bypass checksum database
+  * go#77297 cmd/compile: go1.22+ cmd with go.mod 1.21 generates per-loop variable when using line directive
+  * go#77801 cmd/fix: change -diff to exit 1 if diffs exist
+  * go#77931 runtime: regression Synology's Linux fork of linux causes syscall conflict on older kernel versions
+  * go#77935 runtime: on 32bits arches timespec (64) definition is wrong
+  * go#78155 testing: within a B.Loop loop, assigning function result to _ allows body to be optimized away (1.26 regression)
+  * go#78198 cmd/compile: panic on invalid generic append with type parameter spread
+  * go#78354 crypto/internal/fips140/drbg: unnecessary linear memory increase on Wasm with Go 1.26
+  * go#78372 crypto/tls: X25519MLKEM768 listed in allowedCurvePreferencesFIPS but always fails under GODEBUG=fips140=only
+  * go#78375 cmd/compile: incorrect loop trip count
+  * go#78406 cmd/link: stop requiring gold on arm64 when GNU ld is fixed
+  * go#78409 cmd/compile: devirtualization causes incorrect runtime panic on promoted method of value-embedded generic struct
+  * go#78412 cmd/go: test -cover can't find covdata tool with switched toolchain and empty tests
+  * go#78511 cmd/cgo/internal/testsanitizers: TestLSAN/lsan1,2, and 3 always fail on linux with glibc 2.42
+  * go#78583 cmd/go: test cache uses stale coverage data with -coverpkg
+  * go#78676 cmd/compile: ice expecting positive value on loop iterating by math.MinInt64 (regression)
+  * go#78867 os: RemoveAll can leak internal errSymlink as a user-visible PathError on Unix
+  * go#78984 lib/fips140: update certified and inprocess aliases
+  * go#79021 crypto/fips140: missing package comment
+- Packaging improvements:
+  * Drop dont-force-gold-on-arm64.patch as upstream no longer forces gold on arm64
+    Fixes boo#1170826
+
+-------------------------------------------------------------------
 Tue Apr  7 19:38:49 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.26.2 (released 2026-04-07) includes security fixes to the go

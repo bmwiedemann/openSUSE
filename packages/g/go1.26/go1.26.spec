@@ -111,7 +111,7 @@
 %endif
 
 Name:           go1.26
-Version:        1.26.2
+Version:        1.26.3
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -126,8 +126,6 @@ Source6:        go.gdbinit
 # Source100:      llvm-tsan_commit.tar.xz
 Source100:      llvm-51bfeff0e4b0757ff773da6882f4d538996c9b04.tar.xz
 Source101:      llvm-c3c24be13f7928460ca1e2fe613a1146c868854e.tar.xz
-# PATCH-FIX-OPENSUSE: https://go-review.googlesource.com/c/go/+/391115
-Patch7:         dont-force-gold-on-arm64.patch
 Patch9:         go-fixseccomp.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
@@ -226,7 +224,6 @@ Go standard library compiled to a dynamically loadable shared object libstd.so
 
 # go
 %setup -q -n go
-%patch -P 7 -p1
 
 # SLE-12 only: Add declarations to Cgo seccomp_linux.go
 # for new syscalls seccomp and getrandom which are not present
