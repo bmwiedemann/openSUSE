@@ -678,4 +678,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1350612 from glaubitz)</comment>
     <requestid>1350680</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>c6b7b09e9d065fed6424f6674e8158ff</srcmd5>
+    <version>1.41.0</version>
+    <time>1778424432</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.41.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1351524 from glaubitz)</comment>
+    <requestid>1352021</requestid>
+  </revision>
 </revisionlist>
