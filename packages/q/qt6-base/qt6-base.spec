@@ -44,6 +44,7 @@ Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
 Patch0:         0001-Do-not-persist-unicode-error-state-across-dirents.patch
 Patch1:         0001-Ensure-custom-types-are-normalized.patch
+Patch2:         0001-freetype-Handle-failing-glyph-rendering.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
@@ -61,7 +62,7 @@ BuildRequires:  cups-devel
 BuildRequires:  gcc14-PIE
 BuildRequires:  gcc14-c++
 %endif
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
 BuildRequires:  gcc15-PIE
 BuildRequires:  gcc15-c++
 %endif
@@ -74,7 +75,7 @@ BuildRequires:  libproxy-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-macros
+BuildRequires:  qt6-macros >= 20260508
 %ifnarch ppc64le s390x
 %if 0%{?suse_version} >= 1699
 # Not available in Leap 15 nor 16, and fails to build for ppc and s390x
@@ -203,7 +204,7 @@ Summary:        Qt 6 Core development utilities
 Requires:       cmake
 Requires:       gcc-c++
 Requires:       pkgconfig
-Requires:       qt6-macros
+Requires:       qt6-macros >= 20260508
 # qtpaths moved from qt6-tools to qt6-base with Qt 6.2
 Provides:       qt6-tools-qtpaths = 6.2.0
 Obsoletes:      qt6-tools-qtpaths < 6.2.0
@@ -258,7 +259,7 @@ Requires:       qt6-base-common-devel = %{version}
 Requires:       gcc14-PIE
 Requires:       gcc14-c++
 %endif
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
 Requires:       gcc15-PIE
 Requires:       gcc15-c++
 %endif
@@ -811,7 +812,7 @@ Qt 6 wayland plugins.
 %if 0%{?suse_version} == 1500
 %patch -p1 -P 201
 %endif
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
 %patch -p1 -P 202
 %endif
 

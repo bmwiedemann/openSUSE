@@ -700,4 +700,15 @@
     <comment></comment>
     <requestid>1344390</requestid>
   </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>5d98c80cb90f1e4e88fc5e23c619f031</srcmd5>
+    <version>6.11.0</version>
+    <time>1778424426</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream fix (QTBUG-145310, kde#518105):
+  * 0001-freetype-Handle-failing-glyph-rendering.patch
+
+- Also use GCC 15 on Leap 16.1</comment>
+    <requestid>1352008</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  8 11:19:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (QTBUG-145310, kde#518105):
+  * 0001-freetype-Handle-failing-glyph-rendering.patch
+
+-------------------------------------------------------------------
+Fri May  8 07:25:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Also use GCC 15 on Leap 16.1
+
+-------------------------------------------------------------------
 Thu Apr  2 12:42:22 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Added patch to fix qdbus segfaults (QTBUG-145359)
