@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwcs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-gwcs
-Version:        0.25.2
+Version:        1.0.3
 Release:        0
 Summary:        Generalized World Coordinate System
 License:        BSD-3-Clause
@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-%{ver
 BuildRequires:  %{python_module asdf >= 3.3.0}
 BuildRequires:  %{python_module asdf-astropy >= 0.8.0}
 BuildRequires:  %{python_module asdf_wcs_schemas >= 0.5.0}
-BuildRequires:  %{python_module astropy >= 6}
+BuildRequires:  %{python_module astropy >= 6.0}
 BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module numpy >= 1.25}
 BuildRequires:  %{python_module pip}
@@ -40,13 +40,13 @@ BuildRequires:  python-rpm-macros
 Requires:       python-asdf >= 3.3.0
 Requires:       python-asdf-astropy >= 0.8.0
 Requires:       python-asdf_wcs_schemas >= 0.5.0
-Requires:       python-astropy >= 6
+Requires:       python-astropy >= 6.0
 Requires:       python-numpy >= 1.25
 Requires:       python-scipy >= 1.14.1
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module pytest >= 9.0}
 BuildRequires:  %{python_module pytest-astropy >= 0.11.0}
-BuildRequires:  %{python_module pytest >= 8}
 # /SECTION
 %python_subpackages
 
@@ -62,6 +62,7 @@ World Coordinate System of astronomical data.
 
 %install
 %pyproject_install
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/docs
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

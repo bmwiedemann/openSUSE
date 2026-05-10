@@ -210,4 +210,31 @@
   * Add FITSImagingWCSTransform.</comment>
     <requestid>1301518</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f5ae0e00babdc80d32c0a8676e78a025</srcmd5>
+    <version>1.0.3</version>
+    <time>1778424499</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3:
+  * Bugfix for supporting non-coordinate inputs to transforms
+    supporting quantities.
+  * Fix two bugs in the LabelMapperConverter:   When
+    roundtripping a LabelMapperArray, with a non-default number
+    of inputs, deserialization fails because the init of the
+    LabelMapperArray will set the number of inputs in the model
+    to the default value of 2, which is then attempted to be
+    overridden by later deseriaization methods. The converter
+    fails when lazy_load is set to false and the mapper is an
+    array.   Both of these issues have been resolved. (#701)
+  * When roundtripping a LabelMapperArray, with a non-default
+    number of inputs, deserialization fails because the init of
+    the LabelMapperArray will set the number of inputs in the
+    model to the default value of 2, which is then attempted to
+    be overridden by later deseriaization methods.
+  * The converter fails when lazy_load is set to false and the
+    mapper is an array.
+  * Fix gwcs evaluation when the input or output frames are None
+    or EmptyFrame.</comment>
+    <requestid>1352249</requestid>
+  </revision>
 </revisionlist>
