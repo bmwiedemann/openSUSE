@@ -196,7 +196,7 @@
         -DCMAKE_CXX_COMPILER:STRING=g++-14 \\\
         -DCMAKE_CXX_LINK_PIE_SUPPORTED:BOOL=ON \\\
 %endif \
-%if 0%{?suse_version} == 1600 \
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699 \
         -DCMAKE_C_COMPILER:STRING=gcc-15 \\\
         -DCMAKE_CXX_COMPILER:STRING=g++-15 \\\
         -DCMAKE_CXX_LINK_PIE_SUPPORTED:BOOL=ON \\\
@@ -204,9 +204,9 @@
         -DQT_DISABLE_RPATH:BOOL=ON \\\
         -DCMAKE_C_FLAGS:STRING="%{optflags}" \\\
         -DCMAKE_CXX_FLAGS:STRING="%{optflags}" \\\
-        -DCMAKE_EXE_LINKER_FLAGS:STRING="-Wl,--as-needed -Wl,--no-undefined" \\\
-        -DCMAKE_MODULE_LINKER_FLAGS:STRING="-Wl,--as-needed -Wl,--no-undefined" \\\
-        -DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--as-needed -Wl,--no-undefined"
+        -DCMAKE_EXE_LINKER_FLAGS:STRING="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined" \\\
+        -DCMAKE_MODULE_LINKER_FLAGS:STRING="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined" \\\
+        -DCMAKE_SHARED_LINKER_FLAGS:STRING="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined"
 
 #--------------------------------------------------------------
 
@@ -332,7 +332,7 @@ Examples for the %{name} modules. \
   %__qt6_qmake \\\
   QMAKE_CXXFLAGS="$CXXFLAGS %{optflags}" \\\
   QMAKE_CFLAGS="$CFLAGS %{optflags}" \\\
-  QMAKE_LFLAGS="$LDFLAGS -Wl,--as-needed -Wl,--no-undefined"
+  QMAKE_LFLAGS="$LDFLAGS %{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined"
 
 #--------------------------------------------------------------
 

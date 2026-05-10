@@ -80,4 +80,14 @@
     <comment>- Switch to GCC 14 for Leap 15 and GCC 15 for Leap 16</comment>
     <requestid>1310290</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8c825b5e7e774b9870de47a43afb6133</srcmd5>
+    <version>20260508</version>
+    <time>1778424424</time>
+    <user>dimstar_suse</user>
+    <comment>- Also use GCC 15 for Leap 16.1
+
+- Add %{?build_ldflags} to LD flags</comment>
+    <requestid>1351802</requestid>
+  </revision>
 </revisionlist>
