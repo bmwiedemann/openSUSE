@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Sun May 10 10:17:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.1.0:
+  * Small refactoring to provide a hook for custom
+    synchronization of clocks in subclasses. (:GL:`40`)
+  * Switch to pyrefly for type checking.
+  * Remove support for Python 3.9.
+  * Documentation improvements.
+  * Add support for Python 3.13 and 3.14; remove support for
+    Python 3.8.
+  * Modernize type hints.
+  * Add support for Python 3.12. (:GL:`35`)
+  * Switch to hatch, replacing pdm and tox. (:GL:`36`)
+  * Switch to ruff from blue and isort.  (:GL:`37`)
+  * Update dependencies.
+  * Other minor improvements and cleanups.
+  * Minor documentation fix.
+  * Drop Python 3.7 support (:GL:`34`)
+  * Added a claimfile property to Lock objects (:GL:`30`)
+  * Switch to pdm-backend (:GL:`33`)
+  * Use ruff for linting, since its much faster. (:GL:`17`)
+  * Bump dependencies.
+  * More GitLab CI integration improvements.
+  * Make tox.ini consistent with flufl defaults.
+  * Improvements to the GitLab CI integration.
+  * Add support for Python 3.11.
+  * Update to pdm 1.3.
+  * Update all dependencies eagerly.
+  * Fix spurious log messages when not breaking the lock.
+    (:GL:`29`)
+  * Use modern package management by adopting pdm and
+    pyproject.toml, and dropping setup.py and setup.cfg.
+  * Build the docs with Python 3.8.
+  * Update to version 3.0 of Sybil.
+  * Adopt the Furo documentation theme.
+  * Add a favicon and logos to the published documentation.
+  * Use importlib.metadata.version() as a better way to get the
+    package version number for the documentation.
+  * Drop Python 3.6 support.
+  * Update Windows GitLab runner to include Python 3.10.
+  * Update copyright years.
+  * Added a default_timeout argument to the Lock constructor,
+    which can be used in the context manager syntax as well.
+    (:GL:`24`)
+  * When a Lock uses a lock file that already exists and does not
+    appear to be a lock file (i.e. because its contents are ill-
+    formatted), do a better job of not clobbering that file.
+    (:GL:`25`)
+  * Improve some QA by re-adding diff-cover, Gitlab SAST during
+    CI, and testing on Python 3.10 beta (except for Windows)
+  * The master branch is renamed to main. (:GL:`28`)
+  * Added a py.typed file to satisfy type checkers.  (:GL:`27`)
+  * I blue it!
+  * Update copyright years.
+  * Include test/__init__.py and docs/__init__.py.
+  * Rename top-level tests/ directory to test/ (:GL:`26`)
+  * Minor housekeeping and cleanups.
+  * Add some missing licensing text.
+  * Don't install the tests and docs directories at the top of
+    site-packages (:GL:`22`)
+  * Fix the Windows CI tests.
+  * Add an index to the documentation.
+  * Reorganized docs and tests out of the code directory.
+  * Fix Read The Docs presentation.
+  * Breaking change - The following methods have been removed:
+    Lock.transfer_to(), Lock.take_possession(), Lock.disown().
+    These were crufty, undocumented APIs used in older versions
+    of Mailman and were not sustainable.  (:GL:`21`)
+  * Added official support for Python 3.9.
+  * Improvements to the documentation, including a better API
+    reference and a "theory of operation" page that gives more
+    implementation technical details. (:GL:`20`) (:GL:`17`)
+  * Boosted test coverage to 100%. (:GL:`18`)
+  * Breaking change - In Lock.refresh() and Lock.unlock() the
+    unconditionally flag is now a keyword-only argument.
+    (:GL:`13`)
+  * Breaking change - Removed Lock.__del__() and Lock.finalize().
+    It's impossible to make __del__() work properly, and this is
+    obsoleted by context manager protocol support anyway.  Since
+    finalize() only existed to help with __del__() and its
+    functionality is identical to .unlock(unconditionally=True),
+    this method is also removed.  (:GL:`7`)
+  * Added a Lock.expiration property. (:GL:`15`)
+  * Added a Lock.lockfile property. (:GL:`16`)
+  * Added a Lock.state property and the LockState enum.
+    (:GL:`12`)
+  * In all APIs, the lifetime parameter can now also be an
+    integer number of seconds, in addition to the previously
+    allowed datetime.timedelta.  The lifetime property always
+    gives you a datetime.timedelta.
+  * The API is now properly type annotated.
+  * Some library-defined exceptions support exception chaining.
+  * Getting the repr() of a lock no longer refreshes it
+    (:GL:`11`)
+  * Add support for Python 3.7 and 3.8; drop support for Python
+    3.4 and 3.5.
+  * We now run the test suite on both Linux and Windows.
+  * The LICENSE file is now included in the sdist tarball.
+  * API documentation is now built automatically.
+  * Numerous quality improvements and modernizations.
+  * Expose the host name used in the .details property, as a
+    property. (Closes #4).
+  * Expose the SEP as a public attribute.  (Closes #3)
+  * Drop Python 2.7, add Python 3.6.  (Closes #2)
+  * Added Windows support.
+  * Switch to the Apache License Version 2.0.
+  * Use flufl.testing for nose2 and flake8 plugins.
+  * Allow the claim file separator to be configurable, to support
+    file systems where the vertical bar is problematic.  Defaults
+    to ^ on Windows and | everywhere else (unchanged).  (Closes
+    #1)
+  * Fix the MANIFEST.in so that tox.ini is included in the sdist.
+  * Drop Python 2.6 compatibility.
+  * Add Python 3.5 compatibility.
+  * Include MANIFEST.in in the sdist tarball, otherwise the
+    Debian package won't built correctly.
+  * Fix documentation bug.  (LP: #1026403)
+  * Catch ESTALE along with ENOENT, as NFS servers are supposed
+    to (but don't always) throw ESTALE instead of ENOENT.  (LP:
+    #977999)
+  * Purge all references to distribute.  (LP: #1263794)
+  * Add classifiers to setup.py and make the long description
+    more compatible with the Cheeseshop.
+  * Other changes to make the Cheeseshop page look nicer.  (LP:
+    #680136)
+  * setup_helper.py version 2.1.
+  * Support Python 3 without the use of 2to3.
+  * Make the documentation clear that the flufl.test.subproc
+    functions are not part of the public API.  (LP: #838338)
+  * Fix claim file format in take_possession().  (LP: #872096)
+  * Provide a new API for dealing with possible additional
+    unexpected errnos while trying to read the lock file.  These
+    can happen in some NFS environments.  If you want to retry
+    the read, set the lock file's retry_errnos property to a
+    sequence of errnos.  If one of those errnos occurs, the read
+    is unconditionally (and infinitely) retried. retry_errnos is
+    a property which must be set to a sequence; it has a getter
+    and a deleter too.  (LP: #882261)
+  * Fixed TypeError in .lock() method due to race condition in
+    _releasetime property.  Found by Stephen A. Goss. (LP:
+    #827052)
+  * Added lock.details.
+  * Small adjustment to doctest.
+  * Add missing exception to __all__.
+  * Package renamed to flufl.lock.
+
+-------------------------------------------------------------------
 Sun Mar 15 18:50:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.0.0:

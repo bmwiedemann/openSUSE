@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flufl.lock
-Version:        9.0.0
+Version:        9.1.0
 Release:        0
 Summary:        NFS-safe file locking with timeouts for POSIX and Windows
 License:        Apache-2.0
