@@ -176,4 +176,14 @@
 </comment>
     <requestid>1346173</requestid>
   </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>26463a9edd4331f07a5253b79ced893e</srcmd5>
+    <version>19.1.7</version>
+    <time>1778424461</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure we don't lose the distribution compiler flags.
+- Remove unnecessary dependency of llvm-devel on libtool.
+</comment>
+    <requestid>1352208</requestid>
+  </revision>
 </revisionlist>
