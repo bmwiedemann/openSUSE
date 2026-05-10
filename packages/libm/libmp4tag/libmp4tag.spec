@@ -18,13 +18,12 @@
 
 %define sover 2
 Name:           libmp4tag
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        MP4 tagging library
 License:        Zlib
 URL:            https://libmp4tag.sourceforge.io/
 Source:         https://sourceforge.net/projects/libmp4tag/files/%{name}-src-%{version}.tar.gz
-Patch0:         libmp4tag-2.0.3-fix-discarded-const-qualifier.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.18
 
