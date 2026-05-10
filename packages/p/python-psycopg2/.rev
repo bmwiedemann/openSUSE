@@ -477,4 +477,13 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
     <comment></comment>
     <requestid>1319752</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>bd619cc1e5268e7003df5d6e59d13efa</srcmd5>
+    <version>2.9.12</version>
+    <time>1778424504</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.12:
+  * Fix infinite loop with malformed interval (:ticket:`1835`).</comment>
+    <requestid>1352271</requestid>
+  </revision>
 </revisionlist>

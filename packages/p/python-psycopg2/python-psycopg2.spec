@@ -1,7 +1,7 @@
 #
 # spec file for package python-psycopg2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-psycopg2
-Version:        2.9.11
+Version:        2.9.12
 Release:        0
 Summary:        Python-PostgreSQL Database Adapter
-License:        LGPL-3.0-or-later AND (LGPL-3.0-or-later OR ZPL-2.0) AND SUSE-GPL-2.0-with-openssl-exception
+License:        LGPL-3.0-or-later AND (LGPL-3.0-or-later OR ZPL-2.0) AND LicenseRef-SUSE-GPL-2.0-with-openssl-exception
 URL:            https://www.psycopg.org/
 Source:         https://files.pythonhosted.org/packages/source/p/psycopg2/psycopg2-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.9}
