@@ -65,4 +65,18 @@
 </comment>
     <requestid>1284010</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>162de82d450c05fe963107202b5c5a0c</srcmd5>
+    <version>0.4.3</version>
+    <time>1778424499</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.3:
+  * Improve error handling
+- update to 0.4.2:
+  * Bump the actions-dependencies group across 1 directory with 6
+    updates
+  * Drop support for Python 3.9 and add support for Python 3.14
+  * Update typepy version constraint to &lt;3</comment>
+    <requestid>1352260</requestid>
+  </revision>
 </revisionlist>

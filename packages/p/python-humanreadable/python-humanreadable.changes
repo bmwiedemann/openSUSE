@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 10 10:00:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.3:
+  * Improve error handling
+- update to 0.4.2:
+  * Bump the actions-dependencies group across 1 directory with 6
+    updates
+  * Drop support for Python 3.9 and add support for Python 3.14
+  * Update typepy version constraint to <3
+
+-------------------------------------------------------------------
 Fri Jun  6 11:23:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.4.1
