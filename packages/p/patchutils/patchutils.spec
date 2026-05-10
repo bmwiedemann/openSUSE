@@ -1,7 +1,7 @@
 #
 # spec file for package patchutils
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           patchutils
-Version:        0.4.3
+Version:        0.4.5
 Release:        0
 Summary:        A Collection of Tools for Manipulating Patch Files
 License:        GPL-2.0-or-later
@@ -72,17 +72,23 @@ files in a patch. Rediff corrects hand-edited patches.
 %{_bindir}/flipdiff
 %{_bindir}/gitdiff
 %{_bindir}/gitdiffview
+%{_bindir}/gitshow
+%{_bindir}/gitshowview
 %{_bindir}/grepdiff
 %{_bindir}/interdiff
 %{_bindir}/lsdiff
+%{_bindir}/move-to-front
 %{_bindir}/patchview
+%{_bindir}/patchview-wrapper
 %{_bindir}/recountdiff
 %{_bindir}/rediff
 %{_bindir}/splitdiff
 %exclude %{_bindir}/svndiff
-%exclude %{_bindir}/svndiffview
+%{_bindir}/svndiffview
 %{_bindir}/unwrapdiff
 %{_mandir}/man1/*.1%{?ext_man}
+%exclude %{_mandir}/man1/svndiff.1%{?ext_man}
 %{_datadir}/bash-completion/completions/*
+%exclude %{_datadir}/bash-completion/completions/svndiff
 
 %changelog

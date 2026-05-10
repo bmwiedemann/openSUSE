@@ -1,9 +1,35 @@
 -------------------------------------------------------------------
+Sat May  9 10:36:39 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- don't package svndiff (conflics with package subversion)
+
+-------------------------------------------------------------------
+Sat May  9 08:00:00 UTC 2026 - Gemini CLI <gemini-cli@example.com>
+
+- update to 0.4.5:
+  * Reverted incompatible behavior change from version 0.4.4.
+  * Added --git-extended-diffs option.
+  * Fixed grepdiff -s/--status to display correct file status
+    indicators.
+  * Improved error handling for command pipelines.
+  * Replaced old Git/SVN patchview scripts with unified
+    patchview-wrapper.
+  * Fixed binary file handling in lsdiff and filterdiff.
+  * Enhanced Git diff format support in filterdiff/lsdiff/grepdiff.
+  * Fixed interdiff --color option handling and improved color
+    output.
+  * Added manual pages for gitdiff, gitdiffview, svndiff, and
+    svndiffview commands.
+
+-------------------------------------------------------------------
 Sun Sep 21 16:01:15 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.4.3:
   * Add --in-place option to more tools for editing files in place
-  * Add --color option to interdiff with automatic terminal
+  * Fix several memory leaks and crashes
+  * Add --color option to interdiff and combinediff
+  * Support for newer Git diff features
+  * PCRE2 support for grepdiff
     detection
   * Improve PCRE2 support
   * Add support for CRLF line endings in patch files
