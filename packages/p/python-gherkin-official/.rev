@@ -22,4 +22,23 @@
     artifacts</comment>
     <requestid>1344060</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a29291d72127e70168e3cb59a7215489</srcmd5>
+    <version>39.1.0</version>
+    <time>1778424498</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 39.1.0:
+  * (i18n) Expanded Turkish keywords
+  * [Ruby, Python, JavaScript, Perl, C++, .NET] Optimise parser
+    class/speed by removing redundant null `#detach` method
+    (#561).
+  * [c] Fixed memory leak with respect to the pickle ast ids.
+  * [c] Fixed potential read past null terminator. Fixed
+    allocation of more memory than necessary (#559).
+  * [PHP] Fix PHP 8.4 deprecation warnings (#550).
+  * [cpp] Added missing include guard in parser.hpp
+  * [cpp] Removed unreachable code in parser.hpp
+  * [Python] Drop support for python 3.9.</comment>
+    <requestid>1352258</requestid>
+  </revision>
 </revisionlist>

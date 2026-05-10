@@ -18,7 +18,7 @@
 
 # PyPi name
 Name:           python-gherkin-official
-Version:        39.0.0
+Version:        39.1.0
 Release:        0
 Summary:        Gherkin parser (official, by Cucumber team)
 License:        MIT
