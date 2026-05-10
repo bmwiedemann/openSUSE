@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  7 18:11:12 UTC 2026 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 7.2.2
+
+  * Fixed upgrade to share-safe not dropping all store requirements (22f5fb843bc2
+  * Fixed chg commands sharing too much config with the top process (a6cb1a89cd02)
+  * Restore option for including obsmarkers in streaming clone bundles (362b64997b57)
+  * Adjustments to the support for Python 3.15's alpha and the general lazy-loading modules
+
+-------------------------------------------------------------------
 Wed Apr  1 23:17:29 UTC 2026 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 7.2.1
