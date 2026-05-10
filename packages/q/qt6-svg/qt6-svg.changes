@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  8 07:55:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (CVE-2026-6210, boo#1264301)
+  * 0001-Test-types-of-nodes-before-downcasting-them.patch
+
+-------------------------------------------------------------------
 Mon Mar 23 10:37:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0
