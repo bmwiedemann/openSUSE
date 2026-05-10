@@ -100,4 +100,23 @@
     <comment></comment>
     <requestid>1323983</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3cfa635484eee129b4c26a2b0a544b84</srcmd5>
+    <version>0.15.4</version>
+    <time>1778424489</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.4:
+  * fix &quot;jump to definition&quot; follows wrong link
+  * zk config --list &lt;object&gt; (by @andrebauer, 484)
+  * Ignore commented links for LSP diagnostics. Use an AST to parse files, fixing
+  * other similar edge cases.
+  * Links in markdown footnotes now included in :ZkLinks
+  * Indexing notebook now 35% and 74% faster for full and incremental indexing
+  * respectively
+  * Stop crashing lsp server when server received textDocument/completion request with out of range parameters.
+  * lsp: Provide completion after [[ on lines with multi-byte characters
+  * Prevent crash in LookForward when the parameters is out of characters number.
+</comment>
+    <requestid>1352231</requestid>
+  </revision>
 </revisionlist>

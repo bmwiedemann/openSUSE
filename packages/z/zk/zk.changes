@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 10 00:40:37 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.15.4:
+  * fix "jump to definition" follows wrong link
+  * zk config --list <object> (by @andrebauer, 484)
+  * Ignore commented links for LSP diagnostics. Use an AST to parse files, fixing
+  * other similar edge cases.
+  * Links in markdown footnotes now included in :ZkLinks
+  * Indexing notebook now 35% and 74% faster for full and incremental indexing
+  * respectively
+  * Stop crashing lsp server when server received textDocument/completion request with out of range parameters.
+  * lsp: Provide completion after [[ on lines with multi-byte characters
+  * Prevent crash in LookForward when the parameters is out of characters number.
+
+-------------------------------------------------------------------
 Sun Dec 21 15:05:38 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.15.2
