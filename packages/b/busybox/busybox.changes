@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Fri May  8 04:36:01 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Fix heap buffer overflow vulnerability in the DHCPv6 client 
+  (CVE-2026-29004, bsc#1263989)
+  * 0001-udhcpc6-fix-buffer-overflow.patch
+  * 0002-udhcpc6-check-the-size-of-D6_OPT_IAPREFIX-option.patch
+
+-------------------------------------------------------------------
 Fri Feb 13 13:44:52 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
 
-- Fix arbitrary file modification and privilege escalation via
+- Fix arbitrary file overwrite and potential code execution via
+  incomplete path sanitization (CVE-2026-26157, bsc#1258163),
+  fix arbitrary file modification and privilege escalation via
   unvalidated tar archive entries (CVE-2026-26158, bsc#1258167)
   * 0001-tar-strip-unsafe-hardlink-components-GNU-tar-does-th.patch
   * 0002-tar-only-strip-unsafe-components-from-hardlinks-not-.patch
@@ -78,7 +88,7 @@ Fri Oct  4 11:55:30 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Sat Sep 28 20:48:01 UTC 2024 - Matthias G. Eckermann <mge@suse.com>
 
-- Update to 1.37.0
+- Update to 1.37.0 (jsc#PED-13039)
 - remove unnecessary patch ash-fix-segfault-d417193cf.patch
 - Update default config to match 1.37.0 expectations
 - fix use-after-free in xasprintf (CVE-2023-42363, bsc#1217580)

@@ -934,4 +934,20 @@
     <comment></comment>
     <requestid>1333723</requestid>
   </revision>
+  <revision rev="96" vrev="10">
+    <srcmd5>96b60a8c91b0cb6805406d085f87e158</srcmd5>
+    <version>1.37.0</version>
+    <time>1772127386</time>
+    <user>anag_factory</user>
+    <comment>annotate . changes file with CVE fixes and JIRA issue for 1.37.0 update</comment>
+    <requestid>1335136</requestid>
+  </revision>
+  <revision rev="97" vrev="11">
+    <srcmd5>6842331ad3cf738d8be8a66c3202cb41</srcmd5>
+    <version>1.37.0</version>
+    <time>1778424419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1351513</requestid>
+  </revision>
 </revisionlist>

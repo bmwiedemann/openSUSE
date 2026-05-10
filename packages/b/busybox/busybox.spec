@@ -63,10 +63,13 @@ Patch13:        0001-archival-libarchive-sanitize-filenames-on-output-pre.patch
 Patch14:        wget-don-t-allow-control-characters-in-url.patch
 # PATCH-FIX-UPSTREAM - Fix bsc#1249237, from upstream commit 362159593
 Patch15:        0001-nsenter-unshare-don-t-use-xvfork_parent_waits_and_ex.patch
-# PATCH-FIX-UPSTREAM - Fix bsc#1258163 from upstream commit 3fb6b31c716669e12f75a2accd31bb7685b1a1cb
+# PATCH-FIX-UPSTREAM - Fix bsc#1258163 (CVE-2026-26157), bsc#1258167 (CVE-2026-26157) from upstream commit 3fb6b31c7
 Patch16:        0001-tar-strip-unsafe-hardlink-components-GNU-tar-does-th.patch
 # PATCH-FIX-UPSTREAM - The fix above introducesa problem rewriting symlink targets too
 Patch17:        0002-tar-only-strip-unsafe-components-from-hardlinks-not-.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1263989, (CVE-2026-29004) from upsrteam commits 42202bf, d368f3f
+Patch18:        0001-udhcpc6-fix-buffer-overflow.patch
+Patch19:        0002-udhcpc6-check-the-size-of-D6_OPT_IAPREFIX-option.patch
 
 # other patches
 Patch100:       busybox.install.patch
