@@ -1,12 +1,13 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Thunderbird
-GenericName=Mail/News Client
-Comment=Mail/News Client
+_Name=Thunderbird
+_GenericName=Mail/News Client
+_Comment=Mail/News Client
 TryExec=thunderbird
 Exec=thunderbird %u
 Icon=thunderbird
 Terminal=false
 Type=Application
 StartupNotify=true
+Categories=Network;Email;GTK;
 MimeType=x-scheme-handler/mailto;

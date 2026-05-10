@@ -30,8 +30,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.10.1
-%define orig_version   140.10.1
+%define mainver        %major.10.2
+%define orig_version   140.10.2
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
@@ -136,8 +136,8 @@ BuildRequires:  python3-devel
 %endif
 %endif
 BuildRequires:  rust-cbindgen >= 0.27
+BuildRequires:  translate-suse-desktop
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
 %if 0%{?do_profiling}
 BuildRequires:  xvfb-run
@@ -184,7 +184,7 @@ Group:          Productivity/Networking/Email/Clients
 URL:            https://www.thunderbird.net/
 %if !%{with only_print_mozconfig}
 Source:         http://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz
-Source1:        thunderbird.desktop
+Source1:        thunderbird.desktop.in
 Source2:        thunderbird-rpmlintrc
 Source3:        mozilla.sh.in
 Source4:        tar_stamps
@@ -298,6 +298,7 @@ fi
 %else
 %setup -q -n %{srcname}-%{orig_version}
 %endif
+cp %{SOURCE1} %{desktop_file_name}.desktop.in
 cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %autopatch -p1
 case "`rpm -q --qf '%%{version}\n' glibc-devel`" in
@@ -308,6 +309,7 @@ esac
 %endif
 
 %build
+%translate_suse_desktop %{desktop_file_name}.desktop
 %if !%{with only_print_mozconfig}
 # no need to add build time to binaries
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{pkgname}.changes")"
@@ -551,9 +553,8 @@ chmod 755 %{buildroot}%{progdir}/%{progname}.sh
 ln -sf ../..%{progdir}/%{progname}.sh %{buildroot}%{_bindir}/%{progname}
 # desktop file
 mkdir -p %{buildroot}%{_datadir}/applications
-install -m 644 %{SOURCE1} \
+install -m 644 %{_builddir}/%{source_prefix}/%{desktop_file_name}.desktop \
                %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop
-%suse_update_desktop_file %{desktop_file_name} Network Email GTK
 # additional mime-types
 #mkdir -p %{buildroot}%{_datadir}/mime/packages
 # cp %{SOURCE8} %{buildroot}%{_datadir}/mime/packages/%{progname}.xml

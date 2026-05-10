@@ -6355,4 +6355,26 @@ I cannot test locally unfortunately.
     Thunderbird 150.0.1</comment>
     <requestid>1350963</requestid>
   </revision>
+  <revision rev="387" vrev="1">
+    <srcmd5>534f1d5a16e0e91ce33f5d7a77034990</srcmd5>
+    <version>140.10.2</version>
+    <time>1778424442</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 140.10.2
+  MFSA 2026-44 (bsc#1264378)
+  * CVE-2026-8090 (bmo#2034352)
+    Use-after-free in the DOM: Networking component
+  * CVE-2026-8094 (bmo#2035939)
+    Other issue in the WebRTC component
+  * CVE-2026-8092 (bmo#1806249, bmo#2021977, bmo#2022576, bmo#2022722,
+    bmo#2024439, bmo#2027883, bmo#2029463, bmo#2030323, bmo#2032042,
+    bmo#2032043, bmo#2033270, bmo#2033637, bmo#2034422, bmo#2034496,
+    bmo#2035879, bmo#2036516)
+    Memory safety bugs fixed in Thunderbird ESR 140.10.2 and
+    Thunderbird 150.0.2
+
+- Migrate from deprecated %suse_update_desktop_file to
+  %translate_suse_desktop. (boo#1158957)</comment>
+    <requestid>1352196</requestid>
+  </revision>
 </revisionlist>
