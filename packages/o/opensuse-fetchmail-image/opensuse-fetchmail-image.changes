@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 09 11:10:30 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1778324988.c8c187b:
+  * fetchmail: fix ownership and permission of /var/lib/fetchmail
+  * fetchmail: make sure /var/lib/fetchmail exists
+  * Remove busybox-coreutils if ca-certificates get's installed
+
+-------------------------------------------------------------------
 Wed Apr 22 08:11:16 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - ca-certificates requires coreutils, does not work with busybox
