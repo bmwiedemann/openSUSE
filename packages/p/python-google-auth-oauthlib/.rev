@@ -213,4 +213,14 @@
 - Switch to autosetup macro.</comment>
     <requestid>1344796</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f19bc7f696a60100a77af820c0555b50</srcmd5>
+    <version>1.4.0</version>
+    <time>1778511521</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.0
+  * Drop support for Python 3.9 (#16939)
+  * replace deprecated `utcfromtimestamp` in google-auth-oauthlib (#16732) (forwarded request 1352419 from glaubitz)</comment>
+    <requestid>1352479</requestid>
+  </revision>
 </revisionlist>
