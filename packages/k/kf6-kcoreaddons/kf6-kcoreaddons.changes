@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat May  2 07:52:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.26.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.26.0
+- Changes since 6.25.0:
+  * Update dependency version to 6.26.0
+  * kcoreaddons_target_static_plugins: Fix typo in variable that is checked for
+  * Propagate LibMount dependency to static library consumers
+  * Add KAboutRelease::untranslatedDescription
+  * determine filesystem if mountinfo returns fuseblk
+  * kfilesystemtype: reduce variable scope
+  * fix use after free
+  * kfilesystemtype: use libmount instead of statfs when available (kde#433611)
+  * Remove control characters when quoting args Using these characters can lead to unexpected results.
+  * Rename AppStream test file to avoid scripty processing it
+  * Split KAboutData::fromAppStream() into three separate methods
+  * Parse release notes from AppStream data
+  * Add KAboutRelease, for listing application release notes
+  * AppStream-backed KAboutData
+  * Add a way to set KAboutLicense objects on KAboutData
+  * Update version to 6.26.0
+
+-------------------------------------------------------------------
 Tue Apr  7 19:18:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.25.0

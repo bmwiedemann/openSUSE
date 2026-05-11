@@ -16,7 +16,7 @@
 #
 
 
-%define qt6_version 6.8.0
+%define qt6_version 6.9.0
 
 %define rname kcoreaddons
 
@@ -32,11 +32,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.25.0)
+# Full KF6 version (e.g. 6.26.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kcoreaddons
-Version:        6.25.0
+Version:        6.26.0
 Release:        0
 Summary:        Utilities for core application functionality and accessing the OS
 License:        LGPL-2.1-or-later
@@ -47,6 +47,7 @@ Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
@@ -54,6 +55,8 @@ BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  pkgconfig(mount)
+BuildRequires:  pkgconfig(libudev)
 # SECTION bindings
 %if %{with kde_python_bindings}
 BuildRequires:  %{mypython}-build
