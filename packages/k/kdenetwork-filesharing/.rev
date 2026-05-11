@@ -657,4 +657,12 @@
     <comment>Update to 26.04.0</comment>
     <requestid>1351367</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>d3176f8eb188c2f3896068a34f399f0a</srcmd5>
+    <version>26.04.1</version>
+    <time>1778510957</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.1 (forwarded request 1351447 from krop)</comment>
+    <requestid>1351630</requestid>
+  </revision>
 </revisionlist>
