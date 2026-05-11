@@ -1,7 +1,7 @@
 #
 # spec file for package python-Parsley
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %{?sle15_python_module_pythons}
 %define modname  Parsley
@@ -36,8 +42,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 Provides:       python-parsley
 Obsoletes:      %{oldpython}-Parsley-doc
 Obsoletes:      python-Parsley-doc
@@ -83,6 +94,11 @@ done
 export LANG=en_US.UTF-8
 %pytest ometa/test
 %pytest terml/test
+
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative parsley-stage
+%python_libalternatives_reset_alternative parsley-generate_parser
 
 %post
 %python_install_alternative parsley-stage

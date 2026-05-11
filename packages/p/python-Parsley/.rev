@@ -70,4 +70,15 @@
 - Lowercase metadata directory name.</comment>
     <requestid>1269101</requestid>
   </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>02b70a5224ff53183678fa764501daa5</srcmd5>
+    <version>1.3</version>
+    <time>1778511481</time>
+    <user>anag_factory</user>
+    <comment>- Use libalternatives instead of update-alternatives in SLES-16 and
+  Tumbleweed
+
+bsc#1264408</comment>
+    <requestid>1352381</requestid>
+  </revision>
 </revisionlist>
