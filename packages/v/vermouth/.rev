@@ -165,4 +165,16 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Fix flatpak permissions for umu</comment>
     <requestid>1351509</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a0aa5c16daabefcad85adce4cf76e0ed</srcmd5>
+    <version>1.7.5</version>
+    <time>1778511434</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.7.5
+- Upstream changes:
+  * Launch options now support appends
+  * Another stab at the icon.
+  * Game grid fixes</comment>
+    <requestid>1352329</requestid>
+  </revision>
 </revisionlist>
