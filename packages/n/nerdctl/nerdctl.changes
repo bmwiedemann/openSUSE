@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Mon May 11 09:12:24 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 2.3.0:
+  * docs: fix missing list prefix for --security-opt label entry
+  * build(deps): bump github.com/containerd/containerd/v2
+  * hack: update release note
+  * build(deps): bump github.com/containerd/continuity from 0.4.5 to 0.5.0
+  * MAINTAINERS: update ChengyuZhu6's gpg key
+  * test: replace `Not(NoSelinux)` with `Selinux`
+  * nerdctl info: fulfill SELinux support info
+  * CI: Windows: set NO_HYPERV for canary
+  * CI: Windows: downgrade containerd to v2.2
+  * CI: split containerd-version into windows/linux
+  * update Kubo (0.41.0)
+  * update soci-snapshotter (0.13.0)
+  * update Nydus (2.4.1)
+  * update stargz-snapshotter (0.18.2)
+  * update BuildKit (0.29.0)
+  * update runc (1.4.2)
+  * build(deps): bump the docker group across 1 directory with 3 updates
+  * fix: free up reserved ports in rootful mode
+  * feature: support selinux
+  * go.mod: github.com/moby/moby/v2 v2.0.0-beta.9
+  * update containerd (2.3.0-beta.2)
+  * rootlessutil: remove dead -r/ from nsenter args
+  * fix: clean up unused iptables chains not being deleted on container removal
+  * fix: wait for logger to finish before reading logs of stopped containers
+  * fix: support human-readable sizes for fluentd-buffer-limit log option
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * go.mod: github.com/containerd/containerd/v2 v2.3.0-beta.2
+  * feat: add missing HostConfig fields to dockercompat inspect response
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * build(deps): bump github.com/docker/go-connections from 0.6.0 to 0.7.0
+  * update containerd (2.3.0-beta.1)
+  * go.mod: github.com/containerd/containerd/v2 v2.3.0-beta.1
+  * CI: drop Go 1.25
+  * build(deps): bump actions/cache from 5.0.4 to 5.0.5
+  * build(deps): bump github.com/ipfs/go-cid from 0.6.0 to 0.6.1
+  * fix: ignore missing /proc/net/tcp6 and /proc/net/udp6 on IPv6-disabled systems
+  * build(deps): bump the golang-x group with 4 updates
+  * build(deps): bump docker/build-push-action from 7.0.0 to 7.1.0
+  * Fix nil pointer panic in commonLock defer
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.20 to 0.0.21
+  * Update RootlessKit (3.0.0)
+  * build(deps): bump github.com/docker/cli in the docker group
+  * build(deps): bump golang.org/x/sys in the golang-x group
+  * update cosign to v3.0.5 in Dockerfile
+  * inital draft for the compose_linux_restart test refactor
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * docs: update list of unimplemented Docker features
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump github.com/containerd/platforms
+  * Revert "TestLoadStdinFromPipe: mark as flaky"
+  * test: resolve a flaky test of TestLoadStdinFromPipe
+  * Dockerfile: fix building runc >= 1.5.0-rc.2
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * build(deps): bump github.com/go-jose/go-jose/v4 from 4.1.3 to 4.1.4
+  * build(deps): bump the stargz group with 3 updates
+  * build(deps): bump docker/login-action from 4.0.0 to 4.1.0
+  * build(deps): bump github.com/fatih/color from 1.18.0 to 1.19.0
+  * fix: clean up the directory for port-reserver pid on error in applyNetworkSettings
+  * test: refactor compose_ps_linux_test.go to use tigron
+  * build(deps): bump github.com/klauspost/compress from 1.18.4 to 1.18.5
+  * build(deps): bump the golang-x group across 1 directory with 6 updates
+  * TestLoadStdinFromPipe: mark as flaky
+  * TestLogs: mark as flaky
+  * TestRunWithSystemdTrueEnabled: mark as "needs fixing"
+  * test: refactor container_inspect_linux_test.go to use Tigron
+  * CI: update Go (1.26)
+  * update Kubo (0.40.1)
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.4 to 2.3.0
+  * build(deps): bump github.com/docker/cli in the docker group
+  * build(deps): bump actions/setup-go from 6.3.0 to 6.4.0
+  * fix: clean up port-reserver.pid and the parent dir when the container is removed
+  * build(deps): bump actions/cache from 5.0.3 to 5.0.4
+  * update CNI plugins (1.9.1)
+  * update BuildKit (0.28.1)
+  * test: remove a new line from containerID for correct test execution
+  * fix: allow binding containers on different IPs to the same port
+  * build(deps): bump google.golang.org/grpc from 1.78.0 to 1.79.3
+  * Makefile: add uninstall target
+  * test: refactor compose_pull_linux_test.go to use nerdtest/tigron
+  * build(deps): bump github.com/containernetworking/plugins
+  * add MAC, IPv4, IPv6 addresses to nework inspect
+  * Dockerfile: runc: omit libpathrs
+  * build(deps): bump github.com/containerd/containerd/v2
+  * build(deps): bump docker/metadata-action from 5.10.0 to 6.0.0
+  * build(deps): bump docker/setup-buildx-action from 3.12.0 to 4.0.0
+  * Add progress bar
+  * build(deps): bump docker/build-push-action from 6.19.2 to 7.0.0
+  * build(deps): bump crazy-max/ghaction-github-runtime from 3.1.0 to 4.0.0
+  * tests: de-parallelize TestImageConvert/soci
+  * tests: fix flaky TestLogs since/until 1s subtests
+  * build(deps): bump docker/setup-qemu-action from 3.7.0 to 4.0.0
+  * build(deps): bump docker/login-action from 3.7.0 to 4.0.0
+  * Revert "CI: temporarily disable release check for PRs"
+  * CI: temporarily disable release check for PRs
+  * CNI: add Homebrew's installation path
+  * build(deps): bump actions/attest-build-provenance from 3.2.0 to 4.1.0
+  * build(deps): bump actions/setup-go from 6.2.0 to 6.3.0
+  * CI: show consistently failing test names at end of job log
+  * CI: fix `fatal: Remote branch v not found in upstream origin`
+  * fix: TestRunWithSystemdTrueEnabled flakiness
+  * docs: update list of unimplemented Docker features
+  * build(deps): bump github.com/containerd/cgroups/v3 from 3.1.2 to 3.1.3
+  * build(deps): bump docker/build-push-action from 6.19.1 to 6.19.2
+  * build(deps): bump docker/build-push-action from 6.18.0 to 6.19.1
+  * fix: shared IPC ns when setting shareable
+  * style: format code on container_run_linux tests
+  * test: refactor container_restart_linux_test.go to use Tigron
+  * build(deps): bump github.com/klauspost/compress from 1.18.3 to 1.18.4
+  * build(deps): bump the golang-x group with 5 updates
+  * Detect vendor before crafting cdiDeviceIDs for --gpus
+  * test: refactor container_cp_acid_linux_test.go to use Tigron
+  * build(deps): bump github.com/docker/cli in the docker group
+  * test: refactor container_remove_windows_test.go to use Tigron
+  * fix: correct usage display to show [command] instead of [flags]
+  * build(deps): bump github.com/docker/cli in the docker group
+  * test: refactor container_run_windows_test.go to use Tigron
+  * test: refactor container_run_user_linux_test.go to use Tigron
+  * test: refactor container_inspect_windows_test.go to use Tigron
+  * test: refactor container_run_user_windows_test.go to use Tigron
+  * fix: add missing --ipc options in help text and shell completion
+  * test: improve TestComposeMultiplePorts setup and parallel handling
+  * test: refactor compose_port_linux_test.go to use Tigron
+  * build(deps): bump actions/attest-build-provenance from 3.1.0 to 3.2.0
+  * build(deps): bump actions/cache from 5.0.2 to 5.0.3
+  * build(deps): bump docker/login-action from 3.6.0 to 3.7.0
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/coreos/go-systemd/v22 from 22.6.0 to 22.7.0
+  * build(deps): bump actions/checkout from 6.0.1 to 6.0.2
+  * tests: fix race condition in TestRunWithSystemdTrueEnabled
+  * feat: add support for container cp with tarballs
+  * feat: add --source-policy-file flag to nerdctl build
+  * test: refactor container_update_linux_test.go to use Tigron
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * test: refactor container_run_systemd_linux_test.go to use Tigron
+  * build(deps): bump github.com/klauspost/compress from 1.18.2 to 1.18.3
+  * build(deps): bump github.com/docker/cli in the docker group
+  * build(deps): bump actions/cache from 5.0.1 to 5.0.2
+  * test: refactor container_rename_linux_test.go to use Tigron
+  * test: refactor container_exec_linux_test.go to use Tigron
+  * test: refactor container_rename_windows_test.go to use Tigron
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * build(deps): bump the golang-x group with 2 updates
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * test: refactor compose_pause_linux_test.go to use Tigron
+  * test: refactor container_run_runtime_linux_test.go to use Tigron
+  * build(deps): bump github.com/go-viper/mapstructure/v2
+  * build(deps): bump actions/setup-go from 6.1.0 to 6.2.0
+  * docs/command-reference.md: fix anchors without blue_square
+  * fix: return error for invalid --pull option in nerdctl compose create
+  * build(deps): bump github.com/docker/cli in the docker group
+  * build(deps): bump the golang-x group with 2 updates
+  * build(deps): bump golang.org/x/sys in the golang-x group
+  * MAINTAINERS: add Hayato Kiwata (haytok) as a REVIEWER
+  * CI: lint: increase timeout
+  * Refactor container_start_test.go to use Tigron
+  * test: refactor compose_kill_linux_test.go to use Tigron
+  * support nerdctl search command
+  * fix: allow localhost DNS servers when using host network
+  * MAINTAINERS: promote Chengyu Zhu (ChengyuZhu6) from a REVIEWER to a COMMITTER
+  * test: refactor compose_down_linux_test.go to use Tigron
+  * test: refactor compose_create_linux_test.go to use Tigron
+  * fix: use private namespace for image build in private namespace
+  * Support legacy push/pull for containerd 1.7.x
+  * configure containerd config with remote snapshotter
+  * Handle --gpus flag using CDI
+  * Refactor image management to use transfer service
+
+-------------------------------------------------------------------
 Tue Apr 14 05:38:59 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 2.2.2:
