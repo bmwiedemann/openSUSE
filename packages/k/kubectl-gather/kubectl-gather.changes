@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Sun May 10 14:42:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.13.0:
+  * docs: document addons
+  * ramen: annotate VRG resources with cluster time
+  * addon: support multiple resources per addon
+  * addon: add Name() method to Addon interface
+  * gather: add ramen addon for DRPlacementControl resources
+  * gather: pass cluster time to Inspect()
+  * gather: call Inspect() before dumpResource()
+  * e2e: keep test output and logs after make clean
+  * e2e: add build tag to skip e2e tests without clusters
+  * e2e: upload e2e.log with test artifacts in CI
+  * e2e: use logging and test packages in e2e CLI and tests
+  * e2e: add test package with T wrapper for logging test failures
+  * e2e: add logging package for shared logger configuration
+  * go: Update toolchain to go1.26.2
+  * e2e: Extract minikube package from clusters
+  * build: Remove leftover cd e2e
+  * Remove e2e module
+  * ci: Simplify unit test matrix
+  * test: Force LF line endings for testdata files
+  * ci: Add unit test job
+  * make: Add unit-tests and test targets
+  * ci: Rename e2e job to e2e-matrix
+  * make: Rename test target to e2e-tests
+  * remote: Remove redundant must-gather.log
+  * container: Add gawk to container image for must-gather volume
+    checker
+  * container: Switch from Alpine to UBI for image scanning support
+  * make: Simplify container-push
+  * docs: Add example sanitized secret to README
+  * e2e: Remove e2e/out directories in artifacts
+  * ci: Run e2e tests in test workflow
+  * ci: Update build binaries job
+  * container: Add util-linux for setsid -w support
+  * e2e: Pin PVs to PVCs with claimRef to fix flaky tests
+  * e2e: Switch to docker driver on linux
+  * e2e: Remove tarfile before podman save
+  * e2e: Run verifyDNS only on darwin
+  * e2e: Configure DNS in minikube clusters on macOS
+  * e2e: Add runMinikube() helper
+  * build: Push container using skopeo
+  * e2e: Use vmnet-shared networking on macOS
+  * e2e: Switch from kind to minikube
+  * e2e: Use devel version for e2e builds
+  * docs: Update container build and push docs
+  * build: Make container build platforms configurable
+  * e2e: Add TestRemoteGather
+  * e2e: Add Validator struct to validate remote gather
+  * e2e: Add remote subtest to TestOutput
+  * e2e: Prepare TestOutput for remote gather testing
+  * e2e: Remove test output before running tests
+  * cmd: Show richer --version output in YAML format
+  * cmd: Add --must-gather-version flag
+  * build: Clean up container images in make clean
+  * container: Fix ldflags not passed to go build
+  * e2e: Build and load container image for remote tests
+  * docs: Simplify testing instructions
+  * e2e: Consolidate into single Makefile
+  * e2e: Add load command for parallel image loading into clusters
+  * docs: Document how to create the podman machine
+  * e2e: More consistent usage of clusterKubeconfig
+  * container: Add OCI source label to link image to repository
+  * container: Use Go compile object cache for faster rebuilds
+  * container: Use toolchain version for base image
+  * ci: Build container images natively in parallel
+  * ci: Update docker/login-action to v4
+
+-------------------------------------------------------------------
+Thu Mar 26 11:51:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.12.0:
+  * doc: Update readme with secret sanitization support
+  * e2e: Add e2e tests for secret sanitization
+  * gather: Add unit tests for secret sanitization
+  * gather: Sanitize secret data with PBKDF2 hashes
+  * Update actions for node 24 (#121)
+  * deps: Update k8s.io dependencies to oldest supported k8s
+    version
+  * Update zap to v1.27.1
+  * Update cobra to latest version
+  * Update go to 1.25.0
+
+-------------------------------------------------------------------
 Thu Oct 23 05:40:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.0:
