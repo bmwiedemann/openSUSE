@@ -1,7 +1,7 @@
 #
 # spec file for package kokkos
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define major_ver 4
-%define minor_ver 6
-%define patch_ver 01
+%define major_ver 5
+%define minor_ver 1
+%define patch_ver 1
 %define shlib   libkokkos-%{major_ver}_%{minor_ver}
 %global kokkos_desc \
 Kokkos Core implements a programming model in C++ for writing performance \
@@ -76,8 +76,10 @@ This package contains the development files of %{name}.
 
 %prep
 %autosetup -p1
-sed -i '1c #!/usr/bin/bash' bin/hpcbind bin/runtest
+sed -i '1c #!/usr/bin/bash' bin/hpcbind
 sed -i '1s|/usr/bin/env bash|/usr/bin/bash|' bin/kokkos_launch_compiler bin/nvcc_wrapper
+# Kokkos>5 force the creation of static libs due to a MSVC bug, we only want shared
+sed -i 's/set(LINK_TYPE STATIC)/set(LINK_TYPE SHARED)/' cmake/kokkos_tribits.cmake
 
 %build
 %global __builder ninja
@@ -86,15 +88,16 @@ sed -i '1s|/usr/bin/env bash|/usr/bin/bash|' bin/kokkos_launch_compiler bin/nvcc
 %if 0%{?suse_version} <= 1500
   -DCMAKE_CXX_COMPILER=g++-11 \
 %endif
+  -DBUILD_SHARED_LIBS=ON \
   -DCMAKE_CXX_FLAGS=-pthread \
   -DCMAKE_INSTALL_INCLUDEDIR=include/kokkos \
   -DKokkos_ENABLE_AGGRESSIVE_VECTORIZATION=ON \
   -DKokkos_ENABLE_DEPRECATED_CODE_4=ON \
   -DKokkos_ENABLE_DEPRECATION_WARNINGS=OFF \
   -DKokkos_ENABLE_HWLOC=ON \
-  -DKokkos_ENABLE_TESTS=ON \
-  -DKokkos_ENABLE_SERIAL=ON \
   -DKokkos_ENABLE_OPENMP=ON \
+  -DKokkos_ENABLE_SERIAL=ON \
+  -DKokkos_ENABLE_TESTS=ON \
   %{nil}
 %cmake_build
 

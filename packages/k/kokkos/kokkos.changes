@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  6 00:00:00 UTC 2026 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Update to version 5.1.1:
+  * Fix misalignment in CUDA and HIP combined reducers (gh#kokkos/kokkos#8989).
+  * Restrict lock-free host atomics to actually lock-free sizes (gh#kokkos/kokkos#8991).
+  * Fix graph API to support lvalue execution policies (gh#kokkos/kokkos#9027).
+  * Fix host-only function calls in basic_simd<T, abi::scalar> (gh#kokkos/kokkos#9004).
+  * Fix SYCL issues on Windows for Kokkos::abort and nan (gh#kokkos/kokkos#9043).
+  * Resolve std::iterator deprecation warning for NVCC + GCC 12 (gh#kokkos/kokkos#9063).
+  * Fix simd compilation when std::ranges is unavailable (gh#kokkos/kokkos#9065).
+  * Resolve mismatch between View::extent and View::extent_int for large extents (gh#kokkos/kokkos#9072).
+  * Fix View index type error message for multiple index types (gh#kokkos/kokkos#9085).
+  * Fix simd::reduce ambiguity with non-scalar ABIs (gh#kokkos/kokkos#9079).
+  * Fix race condition in OpenACC parallel_scan (gh#kokkos/kokkos#9078).
+  * Fix compilation on pre-Volta NVIDIA GPUs (gh#kokkos/kokkos#9091).
+  * Provide ROCM_PATH to rocthrust (gh#kokkos/kokkos#9101).
+  * More info: <https://github.com/kokkos/kokkos/blob/5.1.1/CHANGELOG.md>
+
+-------------------------------------------------------------------
 Mon May  5 20:24:59 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.6.01:
