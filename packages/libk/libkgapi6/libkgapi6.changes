@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  7 08:03:25 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * Fix qstring comparisons
+  * Add conversion test
+  * Fix conversions for addresses
+  * Improve addressee edit details handling
+  * Add method to set person from kcontacts addressee
+  * Fix wrong data insert that breaks recurrent event exceptions
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
