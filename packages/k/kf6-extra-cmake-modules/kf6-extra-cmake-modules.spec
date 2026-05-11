@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-extra-cmake-modules
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@
 
 %define rname extra-cmake-modules
 
-# Full KF6 version (e.g. 6.25.0)
+# Full KF6 version (e.g. 6.26.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without doc
 %bcond_without released
 Name:           kf6-extra-cmake-modules%{?pkg_suffix}
-Version:        6.25.0
+Version:        6.26.0
 Release:        0
 Summary:        CMake modules
 License:        BSD-3-Clause
@@ -39,25 +39,24 @@ Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  cmake >= 3.27
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 BuildRequires:  gcc-c++
 Requires:       gcc-c++
 %else
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc14-c++
 BuildRequires:  gcc14-PIE
-Requires:       gcc14-c++
+BuildRequires:  gcc14-c++
 Requires:       gcc14-PIE
+Requires:       gcc14-c++
 %else
-%if 0%{?suse_version} == 1600
-BuildRequires:  gcc15-c++
+# 16x0
 BuildRequires:  gcc15-PIE
-Requires:       gcc15-c++
+BuildRequires:  gcc15-c++
 Requires:       gcc15-PIE
+Requires:       gcc15-c++
 %endif
 %endif
-%endif
-BuildRequires:  kf6-filesystem
+BuildRequires:  kf6-filesystem >= 20260508
 %if "%{flavor}" != "doc"
 Requires:       cmake >= 3.27
 
