@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-testrepository
 Version:        0.0.22
@@ -39,8 +45,13 @@ Requires:       python-dbm
 Requires:       python-fixtures
 Requires:       python-iso8601
 Requires:       python-python-subunit >= 1.0.0
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -74,6 +85,10 @@ export PYTHON=$python
 $python ./testr init
 $python ./testr run --parallel
 }
+
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative testr
 
 %post
 %python_install_alternative testr

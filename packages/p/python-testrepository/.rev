@@ -260,4 +260,15 @@
 - Change {Build,}Requires to reflect reality.</comment>
     <requestid>1337547</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>41f1b86ef60cf6b2593aba759843985e</srcmd5>
+    <version>0.0.22</version>
+    <time>1778511483</time>
+    <user>anag_factory</user>
+    <comment>- Use libalternatives instead of update-alternatives in SLES-16 and
+  Tumbleweed
+
+bsc#1264411</comment>
+    <requestid>1352382</requestid>
+  </revision>
 </revisionlist>

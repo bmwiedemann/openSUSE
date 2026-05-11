@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 07:37:19 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use libalternatives instead of update-alternatives in SLES-16 and
+  Tumbleweed
+
+-------------------------------------------------------------------
 Mon Mar  9 01:07:35 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.0.22:
