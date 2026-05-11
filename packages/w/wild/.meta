@@ -1,0 +1,7 @@
+<package name="wild" project="openSUSE:Factory">
+  <title>wild</title>
+  <description>Wild is a linker with the goal of being very fast for iterative development.
+
+The plan is to eventually make it incremental, however that isn't yet implemented. It is however already pretty fast even without incremental linking.</description>
+  <url>https://github.com/wild-linker/wild</url>
+</package>

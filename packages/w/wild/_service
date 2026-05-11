@@ -1,0 +1,16 @@
+<services>
+    <service name="download_files" mode="manual" />
+
+    <service name="cargo_vendor" mode="manual">
+        <param name="srcdir">wild-*.tar.gz</param>
+        <param name="compression">zst</param>
+        <param name="update">false</param>
+
+        <!--
+        Fixed by an update to the `perf-event` crate, but wild is still
+        not compatible with the latest version of `perf-event`. See
+        https://github.com/wild-linker/wild/issues/1590
+        -->
+        <param name="i-accept-the-risk">RUSTSEC-2026-0007</param>
+    </service>
+</services>
