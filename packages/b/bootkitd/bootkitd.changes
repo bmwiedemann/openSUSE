@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Thu Apr 23 11:07:00 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to v0.4.1
+  * Fix version reported in v0.4.0 release
+
+-------------------------------------------------------------------
+Thu Apr 16 09:45:04 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to v0.4.0
+  * events: Trigger file_changed on grubenv modification
+  * dbus: Add API for using current snapshot
+  * Fix a bug with 100% CPU usage caused by inotify events
+
+-------------------------------------------------------------------
+Wed Jan  7 16:58:12 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to v0.3.0
+  * Fix an issue with selected kernel not being recognized properly
+  * Logs are now also logged into a file. /var/log/bootkitd.log by default
+  * Improved how errors are being logged
+
+
+-------------------------------------------------------------------
+Wed Dec 31 11:30:27 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to v0.2.0
+  * Fixed bug with EOL not handled properly in /etc/default/grub
+  * Make systemd dbus service work on-demand
+  * Made journal logging cleaner
+  * Report errors as native D-Bus errors instead of wrapping them in json
+
+
+-------------------------------------------------------------------
+Tue Dec 30 12:52:41 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Initial packaging for bootkid
