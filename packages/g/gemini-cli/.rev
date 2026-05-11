@@ -535,4 +535,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1350434</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1863fe676514785e7b0a1b977f9b3624</srcmd5>
+    <version>0.41.1</version>
+    <time>1778511486</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.41.1:
+  * fix(patch): cherry-pick 3627f47 to release/v0.41.0-pr-26542
+    to patch version v0.41.0 and create version 0.41.1
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.41.0...v0.41.1
+- update to 0.41.0:
+  * chore(release): bump version to
+    0.41.0-nightly.20260423.gaa05b4583
+  * fix(core): only show `list` suggestion if the partial input
+    is empty
+  * feat(cli): secure .env loading and enforce workspace trust in
+    headless mode
+  * fix: fatal hard-crash on loop detection via unhandled
+    AbortError
+  * update package-lock.json
+  * feat(core): enhance shell command validation and add core
+    tools allowlist
+  * fix(ui): corrected background color check in user message
+    components
+  * perf(core): fix slow boot by fetching experiments and quota
+    asynchronously
+  * feat(core,cli): add support for Gemma 4 models (experimental)
+  * update FatalUntrustedWorkspaceError message to include doc
+    link
+  * docs: add Gemini CLI course link to README
+  * feat(repo): add gemini-cli-bot metrics and workflows
+  * fix(cli): allow output redirection for cli commands
+  * fix(core): fail closed in YOLO mode when shell parsing fails
+    for restricted rules
+  * fix(cli-ui): revert backspace handling to fix Windows</comment>
+    <requestid>1352387</requestid>
+  </revision>
 </revisionlist>
