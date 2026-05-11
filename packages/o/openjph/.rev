@@ -238,4 +238,13 @@
   * Detecting illegal precinct width or height #269</comment>
     <requestid>1351343</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4e48ccc480fe3ffbdb9544719f78d364</srcmd5>
+    <version>0.27.2</version>
+    <time>1778510905</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.27.2:
+  * Fix version information</comment>
+    <requestid>1352236</requestid>
+  </revision>
 </revisionlist>
