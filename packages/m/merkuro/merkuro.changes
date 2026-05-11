@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May  7 08:03:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * Adapt to KMime having moved to Frameworks
+  * Fix busy indicator visibility on collection navigation view
+  * Fix clang-format
+  * Fix initial state of time combo in incidence editor
+  * Fix overflow of location text in schedule view
+  * Fix mapping calls for popup incidence viewer
+  * Add QML init code to MouseTracker
+  * Fix opening of day view when clicking on week view day header
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
