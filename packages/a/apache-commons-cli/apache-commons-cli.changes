@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 11 08:33:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.11.0
+  * New Features
+    + Add CommandLine.getOptionCount() to measure option repetition
+  * Fixed Bugs
+    + CLI-351: Multiple trailing BREAK_CHAR_SET characters cause
+      infinite loop in HelpFormatter
+    + CLI-351:  Fix issue with groups not being reported in help
+      output
+  * Updates
+    + Bump org.apache.commons:commons-parent from 85 to 91
+    + Bump commons-io:commons-io from 2.20.0 to 2.21.0
+- Modified patch:
+  * CLI-253-workaround.patch
+    + rediff
+
+-------------------------------------------------------------------
 Wed Nov  5 07:25:32 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 1.10.0

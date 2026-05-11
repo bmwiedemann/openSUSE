@@ -8,7 +8,7 @@ CommitDate: Mon Jun 22 15:04:05 2015 +0200
 
 --- a/src/main/java/org/apache/commons/cli/Options.java
 +++ b/src/main/java/org/apache/commons/cli/Options.java
-@@ -195,6 +195,20 @@ public class Options implements Serializ
+@@ -209,6 +209,20 @@ public class Options implements Serializ
          return this;
      }
  
@@ -31,15 +31,15 @@ CommitDate: Mon Jun 22 15:04:05 2015 +0200
       *
 --- a/src/main/java/org/apache/commons/cli/PosixParser.java
 +++ b/src/main/java/org/apache/commons/cli/PosixParser.java
-@@ -141,7 +141,7 @@ public class PosixParser extends Parser
+@@ -157,7 +157,7 @@ public class PosixParser extends Parser
                      } else if (matchingOpts.size() > 1) {
                          throw new AmbiguousOptionException(opt, matchingOpts);
                      } else {
 -                        currentOption = options.getOption(matchingOpts.get(0));
 +                        currentOption = options.getLongOption(matchingOpts.get(0));
- 
-                         tokens.add("--" + currentOption.getLongOpt());
+                         tokens.add(OptionFormatter.DEFAULT_LONG_OPT_PREFIX + currentOption.getLongOpt());
                          if (pos != -1) {
+                             tokens.add(token.substring(pos + 1));
 --- /dev/null
 +++ b/src/test/java/org/apache/commons/cli/bug/BugCLI253Test.java
 @@ -0,0 +1,44 @@
