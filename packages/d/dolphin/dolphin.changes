@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  7 08:02:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * panels/information: when not hovering anything show selection
+  * search/popup: hide the popup when launching kfind
+  * Avoid string concatenation for command line building
+  * Revert "KItemListController: Use entire row for drag and drop if highlightEntireRow is true"
+
+-------------------------------------------------------------------
 Sat Apr 11 16:13:23 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
