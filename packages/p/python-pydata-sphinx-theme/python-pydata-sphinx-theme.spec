@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydata-sphinx-theme
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-pydata-sphinx-theme
-Version:        0.16.1
+Version:        0.17.1
 Release:        0
 Summary:        Bootstrap-based Sphinx theme from the PyData community
 License:        BSD-3-Clause
 URL:            https://github.com/pydata/pydata-sphinx-theme
-Source:         pydata-sphinx-theme-%{version}.tar.gz
-# Source: https://files.pythonhosted.org/packages/source/p/pydata-sphinx-theme/pydata_sphinx_theme-%%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pydata-sphinx-theme/pydata_sphinx_theme-%{version}.tar.gz#/pydata-sphinx-theme-%{version}.tar.gz
 # Source1 and Source2 created with ./prepare_vendor.sh
 Source1:        python-pydata-sphinx-theme-%{version}-vendor.tar.xz
 Source2:        python-pydata-sphinx-theme-%{version}-vendor-licenses.txt
@@ -80,7 +79,7 @@ BuildRequires:  yarn
 Bootstrap-based Sphinx theme from the PyData community
 
 %prep
-%autosetup -p1 -n pydata-sphinx-theme-%{version} -a1
+%autosetup -p1 -n pydata_sphinx_theme-%{version} -a1
 sed -i 's,^\(node-version = \)".*",\1"%{nodejs_version}",' pyproject.toml
 
 # Create a node header tarball so we don't try to download it
@@ -114,6 +113,7 @@ donttest="test_pygments_fallbacks"
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/pydata_sphinx_theme*
+%{python_sitelib}/pydata_sphinx_theme
+%{python_sitelib}/pydata_sphinx_theme-%{version}*info
 
 %changelog

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 11 11:18:32 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.17.1 (CVE-2026-6321, bsc#1264374)
+  * Add --pst-color-heading fallback
+  * Add search-as-you-type (inline search results) feature
+  * Add support for versionremoved directive
+  * Upload Playwright trace if test fails
+  * Fix miscellaneous issues with UI
+  * Fix error when back-to-top button is disabled
+  * Fix default behavior when shorten_urls is unset
+  * feat: add disable_search theme option
+- Drop _service and all accessories, the build works just fine with
+  traditional PyPI tarball
+
+-------------------------------------------------------------------
 Wed Jun 11 08:51:24 UTC 2025 - mcepl@cepl.eu
 
 - Update to version 0.16.1 (CVE-2025-5889, bsc#1244343):

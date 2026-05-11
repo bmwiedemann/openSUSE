@@ -3,9 +3,9 @@
 # https://src.fedoraproject.org/rpms/python-pydata-sphinx-theme/blob/rawhide/f/prepare_vendor.sh
 
 PKG_DIR="$(pwd)"
-PKG_PATH=pydata-sphinx-theme
 PKG_NAME=python-pydata-sphinx-theme
-PKG_VERSION=0.16.1
+PKG_VERSION=0.17.1
+PKG_PATH=pydata_sphinx_theme-$PKG_VERSION
 
 cleanup_tmpdir() {
     popd 2>/dev/null
