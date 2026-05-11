@@ -1143,4 +1143,41 @@
   * chore(deps): update dependency typescript to v6 (#2557)</comment>
     <requestid>1344947</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>c9eec284db63ce99790e86c70138c1f1</srcmd5>
+    <version>0.42.2</version>
+    <time>1778511489</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.42.2:
+  * 0.42.2 bump version
+  * chore(deps): update rust crate tokio to v1.52.3 (#2620)
+  * fix(deps): update rust-wasm-bindgen monorepo (#2623)
+  * fix: enable npx install fallback but still keep postinstall
+  * chore(deps): update rust crate clap_complete to v4.6.4 (#2627)
+  * chore(deps): update dependency @types/node to v24.12.3 (#2624)
+  * chore: bump kotlin version
+  * chore(deps): update rust crate tree-sitter-swift to v0.7.2 (#2619)
+  * chore(deps): update dependency oxlint to v1.63.0 (#2621)
+  * fix: replace postinstall script with binary resolution in ast-grep (#2595)
+  * fix(lsp): use cwd instead of config dir as workspace fallback (#2600)
+  * fix(deps): update rust-wasm-bindgen monorepo (#2613)
+  * chore(deps): update rust crate napi-derive to v3.5.5 (#2615)
+  * chore(deps): update rust crate napi to v3.8.6 (#2614)
+  * chore(deps): update rust crate clap_complete to v4.6.3 (#2610)
+  * chore(deps): update dependency oxlint to v1.62.0 (#2611)
+  * chore(deps): update astral-sh/setup-uv action to v8 (#2604)
+  * fix: solve linting
+  * chore(deps): update rust crate tree-sitter-c to v0.24.2 (#2608)
+  * fix(deps): update rust crate tree-sitter-dart to 0.2.0 (#2609)
+  * chore(deps): update robinraju/release-downloader action to v1.13 (#2606)
+  * fix(lsp): report unused suppressions without rules (#2607)
+  * chore(deps): update rust crate clap_complete to v4.6.2 (#2589)
+  * chore(deps): update dependency oxlint to v1.61.0 (#2605)
+  * chore(deps): update rust crate similar to v3.1.0 (#2587)
+  * fix(deps): update rust crate tree-sitter-scala to 0.26.0 (#2602)
+  * chore(deps): update rust crate tree-sitter-scala to v0.25.1 (#2601)
+  * chore(deps): update rust crate tree-sitter-c-sharp to v0.23.5 (#2591)
+  * chore(deps): update dependency oxlint to v1.60.0 (#2588)</comment>
+    <requestid>1352389</requestid>
+  </revision>
 </revisionlist>
