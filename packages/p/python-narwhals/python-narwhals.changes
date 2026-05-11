@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun May 10 19:56:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.21.0:
+  * feat: expressify str.{starts,ends}_with
+  * feat: Add `Expr.quantile` for spark-like backends
+  * fix: Fix `over` with `partition_by` and `order_by` with
+    scrambed groups for pandas
+  * fix: Add fallback for incompatible string concenation in
+    pandas
+  * fix: Allow `float('nan')` as value in join for duckdb
+  * [fix]: Fix bug in ibis where log base is not set to e by
+    default
+  * ci: Add check for building docs in strict mode
+  * docs: Clarify behavior of `Expr.over(order_by=...)`
+  * docs: Add note on return type of columns property
+  * adding pysummaries to packages using narwhals
+  * docs: Add OpenSSF and LFX Health score cards
+  * docs: Add missing exceptions in api-reference
+  * fix(docs): Include dask and ibis in docs dependencies
+  * fix(docs): Include dask and ibis in docs dependencies
+  * feat: Add `{Expr,Series}.str.to_time`
+  * fix: pandas-like `quantile` in group-by context
+
+-------------------------------------------------------------------
 Sat Apr 25 10:58:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.20.0:
