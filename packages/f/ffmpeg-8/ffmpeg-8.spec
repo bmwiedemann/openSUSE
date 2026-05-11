@@ -96,7 +96,7 @@
 %define _major_expected 9
 
 Name:           ffmpeg-8
-Version:        8.1
+Version:        8.1.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -131,7 +131,7 @@ BuildRequires:  pkgconfig(ffnvcodec) >= 8.1.24.15
 BuildRequires:  pkgconfig(fontconfig) >= 2.4.2
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(fribidi) >= 0.19.0
-BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libass) >= 0.11.0
@@ -534,8 +534,8 @@ LDFLAGS="%_lto_cflags" \
 %if %{with smbclient}
 	--enable-libsmbclient \
 %endif
-	--disable-openssl \
-	--enable-gnutls \
+	--enable-openssl \
+	--disable-gnutls \
 	--enable-ladspa \
 %if %{with vulkan}
 	--enable-libshaderc \
@@ -790,7 +790,7 @@ done
 #
 #!BcntSyncTag:  ffmpeg-8
 Name:           ffmpeg-8-mini
-Version:        8.1
+Version:        8.1.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -873,7 +873,7 @@ CFLAGS="%optflags" \
 	--disable-muxers --disable-demuxers \
 	--disable-encoders --disable-decoders \
 	--disable-programs --disable-doc
-for i in H264 HEVC VC1; do
+for i in H264 HEVC VC1 VVC; do
 	grep -q "#define CONFIG_${i}_DECODER 0" config_components.h
 done
 cat config.h
