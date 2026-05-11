@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 11 06:16:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.3.0
+  * Changes
+    + #237 useLastCommittedRevision on git returns Revision
+    + #208 property failTheBuild=false also ignore general scm
+      failure
+    + Upgrade maven-scm to 2.2.1 and add compatibility fixes
+  * Dependency updates
+    + Bump org.codehaus.mojo:mojo-parent from 85 to 95
+    + Bump org.codehaus.mojo:extra-enforcer-rules from 1.8.0 to
+      1.11.0
+    + Bump com.google.code.gson:gson from 2.11.0 to 2.13.2
+    + Bump actions/stale from 9 to 10
+    + Bump org.codehaus.plexus:plexus-utils from 4.0.1 to 4.0.2
+
+-------------------------------------------------------------------
 Thu Sep 25 15:20:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.2.1
