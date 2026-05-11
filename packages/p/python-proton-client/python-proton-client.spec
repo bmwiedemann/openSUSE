@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ProtonMail/proton-python-client
 Source:         https://github.com/ProtonMail/proton-python-client/archive/refs/tags/%{version}.tar.gz#/proton-python-client-%{version}.tar.gz
 Patch1:         urllib3-v2-migration.patch
+Patch2:         drop-long-password-test.patch
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module gnupg}
 BuildRequires:  %{python_module pip}

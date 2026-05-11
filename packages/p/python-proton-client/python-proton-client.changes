@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 09:12:14 UTC 2026 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Add drop-long-password-test.patch to fix build issue with bcrypt 5.0
+  caused by https://github.com/pyca/bcrypt/commit/d50ab05b2bece07d5c8d6a4179064fc714fd9126  
+
+-------------------------------------------------------------------
 Thu Sep 26 04:09:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on pyOpenSSL. 

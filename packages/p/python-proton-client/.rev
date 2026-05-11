@@ -33,4 +33,12 @@
     <comment>- Add missing BuildRequires on pyOpenSSL.</comment>
     <requestid>1203729</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>f949ed7901fdcc0a1305a56fcdaa7a7e</srcmd5>
+    <version>0.7.1</version>
+    <time>1778511498</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1352417</requestid>
+  </revision>
 </revisionlist>
