@@ -73,4 +73,13 @@
   * CVE-2026-32285 GO-2026-4514 (bsc#1261230)</comment>
     <requestid>1352028</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9e05e0e0a40f0db796dbc9da66f40c62</srcmd5>
+    <version>0.34.0</version>
+    <time>1778511510</time>
+    <user>anag_factory</user>
+    <comment>    This addressed CVE-2025-30153 GO-2025-3533 (bsc#1264762).
+  * CVE-2026-32285 GO-2026-4514 (bsc#1264759)</comment>
+    <requestid>1352450</requestid>
+  </revision>
 </revisionlist>
