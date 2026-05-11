@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 11 05:03:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.15:
+  * build(deps): bump github.com/anchore/stereoscope from 0.1.22 to
+    0.1.23 (#1956)
+  * build(deps): bump goreleaser/goreleaser-action from 7.1.0 to
+    7.2.1 (#1963)
+  * build(deps): bump chainguard-dev/actions from 1.6.15 to 1.6.19
+    (#1968)
+  * build(deps): bump the chainguard group with 3 updates (#1967)
+  * build(deps): bump step-security/harden-runner from 2.19.0 to
+    2.19.1 (#1969)
+
+-------------------------------------------------------------------
 Thu Apr 30 05:42:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.14:
