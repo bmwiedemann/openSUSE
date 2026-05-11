@@ -2012,4 +2012,17 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>1349609</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>7e3f9a69c011a677a585eb4f449a7ca4</srcmd5>
+    <version>410</version>
+    <time>1778510906</time>
+    <user>anag_factory</user>
+    <comment>- update to 410:
+  * amend  one  of  the  fixes  for Debian #738794 in patch #407,
+    which caused combining characters to be outlined (report by
+    &quot;Martin&quot;).
+  * clarify  in  ctlseqs.ms  which modes listed for DECSET are
+    readonly (prompted by discussion with Thomas Wolff). (forwarded request 1352223 from dirkmueller)</comment>
+    <requestid>1352244</requestid>
+  </revision>
 </revisionlist>

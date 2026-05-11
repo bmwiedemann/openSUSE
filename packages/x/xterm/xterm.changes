@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  9 20:29:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 410:
+  * amend  one  of  the  fixes  for Debian #738794 in patch #407,
+    which caused combining characters to be outlined (report by
+    "Martin").
+  * clarify  in  ctlseqs.ms  which modes listed for DECSET are
+    readonly (prompted by discussion with Thomas Wolff).
+
+-------------------------------------------------------------------
 Mon Apr 20 08:30:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 409:
