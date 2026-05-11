@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  8 10:27:32 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.2.3
+  * cryptography: serialization.Encoding is no longer a standard Enum
+- Drop support-cryptography-47.patch, merged upstream
+
+-------------------------------------------------------------------
 Wed Apr 29 03:50:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-cryptography-47.patch:

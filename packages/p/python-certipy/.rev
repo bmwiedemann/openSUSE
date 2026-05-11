@@ -49,4 +49,12 @@
 - {Build,}Requires cryptography not pyOpenSSL.</comment>
     <requestid>1349913</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c94a09c41c82900051d2cbc5325b0d07</srcmd5>
+    <version>0.2.3</version>
+    <time>1778516592</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1352484</requestid>
+  </revision>
 </revisionlist>

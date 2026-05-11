@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-certipy
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Create and sign CAs and certificates
 License:        BSD-3-Clause
@@ -27,8 +27,6 @@ URL:            https://github.com/LLNL/certipy
 Source:         https://files.pythonhosted.org/packages/source/c/certipy/certipy-%{version}.tar.gz
 # MANIFEST.in was merged; check next release
 Source1:        https://raw.githubusercontent.com/LLNL/certipy/master/LICENSE
-# PATCH-FIX-UPSTREAM gh#llnl/certipy#27
-Patch0:         support-cryptography-47.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
