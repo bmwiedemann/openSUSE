@@ -81,4 +81,13 @@
   * Update repository and home-page URL.</comment>
     <requestid>1343859</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c9ca6ee18c3ea3b12d25f59dc15f15d1</srcmd5>
+    <version>0.4.0</version>
+    <time>1778511520</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.0
+  * Drop support for Python 3.7, 3.8, and 3.9 (#16937) (forwarded request 1352408 from glaubitz)</comment>
+    <requestid>1352472</requestid>
+  </revision>
 </revisionlist>
