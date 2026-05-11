@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kmime
-Version:        26.04.0
+Version:        26.04.1
 Release:        0
 Summary:        KDE PIM libraries MIME support
 License:        LGPL-2.1-or-later

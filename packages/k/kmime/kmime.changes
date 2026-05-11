@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  7 08:02:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * Harden RFC 2047 parsing against null bytes in the charset, take II (kde#519599)
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
