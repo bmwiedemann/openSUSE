@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May 08 16:05:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-12.14
+- ParallelSieve.cpp: Prevent CPU false sharing
+- PrimeSieveClass.hpp: Prevent CPU false sharing
+- malloc_vector.h: Fix undefined behavior
+- calculator.hpp: Fix std::tolower undefined behavior
+- CpuInfo.cpp: Fix std::isdigit undefined behavior
+- CmdOptions.cpp: Fix 64-bit integer overflow in optionTimeout()
+- PrimeSieveClass.cpp: Reduce mutex contention
+- iterator-c.cpp: Fix use after free in primesieve_free_iterator()
+- config.hpp: Add MAX_CACHE_LINE_SIZE
+- macros.hpp: Add MAYBE_UNUSED
+- Vector.hpp: Improve Vector exception safety
+- GitHub Actions CI: Fix node 20 deprecation warning
+- CMakeLists.txt: On Windows rename static library to primesieve_static.lib #183
+- CMakeLists.txt: Remove WITH_MSVC_CRT_STATIC option
+
+-------------------------------------------------------------------
 Fri Feb 06 16:52:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
 
 - Fix missing version in .pc file
