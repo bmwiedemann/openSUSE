@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon May 11 08:05:30 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.196.0
+  * **aiplatform:** Update the api
+  * **assuredworkloads:** Update the api
+  * **backupdr:** Update the api
+  * **bigtableadmin:** Update the api
+  * **cloudsearch:** Update the api
+  * **composer:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **containeranalysis:** Update the api
+  * **container:** Update the api
+  * **dataplex:** Update the api
+  * **dataproc:** Update the api
+  * **datastream:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **dns:** Update the api
+  * **domains:** Update the api
+  * **drive:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebaseapphosting:** Update the api
+  * **firestore:** Update the api
+  * **gkehub:** Update the api
+  * **health:** Update the api
+  * **hypercomputecluster:** Update the api
+  * **merchantapi:** Update the api
+  * **networkmanagement:** Update the api
+  * **networksecurity:** Update the api
+  * **networkservices:** Update the api
+  * **oracledatabase:** Update the api
+  * **osconfig:** Update the api
+  * **paymentsresellersubscription:** Update the api
+  * **run:** Update the api
+  * **securitycenter:** Update the api
+  * **smartdevicemanagement:** Update the api
+  * **storagebatchoperations:** Update the api
+  * **workstations:** Update the api
+  * **agentregistry:** Update the api
+  * **clouderrorreporting:** Update the api
+  * **threatintelligence:** Update the api
+  * **trafficdirector:** Update the api
+
+-------------------------------------------------------------------
 Wed May  6 08:40:38 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.195.0

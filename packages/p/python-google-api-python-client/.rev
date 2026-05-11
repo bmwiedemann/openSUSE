@@ -1777,4 +1777,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **workspaceevents:** Update the api (forwarded request 1351133 from glaubitz)</comment>
     <requestid>1351173</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>78a0a226394666279029f0554b1ce371</srcmd5>
+    <version>2.196.0</version>
+    <time>1778511512</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.196.0
+  * **aiplatform:** Update the api
+  * **assuredworkloads:** Update the api
+  * **backupdr:** Update the api
+  * **bigtableadmin:** Update the api
+  * **cloudsearch:** Update the api
+  * **composer:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **containeranalysis:** Update the api
+  * **container:** Update the api
+  * **dataplex:** Update the api
+  * **dataproc:** Update the api
+  * **datastream:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **dns:** Update the api
+  * **domains:** Update the api
+  * **drive:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebaseapphosting:** Update the api
+  * **firestore:** Update the api
+  * **gkehub:** Update the api
+  * **health:** Update the api
+  * **hypercomputecluster:** Update the api
+  * **merchantapi:** Update the api
+  * **networkmanagement:** Update the api
+  * **networksecurity:** Update the api
+  * **networkservices:** Update the api
+  * **oracledatabase:** Update the api (forwarded request 1352392 from glaubitz)</comment>
+    <requestid>1352457</requestid>
+  </revision>
 </revisionlist>
