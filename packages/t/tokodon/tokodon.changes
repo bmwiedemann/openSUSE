@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  7 08:03:43 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * Fix viewportWidth for quoted post media attachments
+  * Fix read markers when used with GoToSocial instance
+  * Fix Android build with Qt 6.11
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
