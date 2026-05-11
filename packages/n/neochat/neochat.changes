@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu May  7 08:03:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * Linkify URLs with apostrophes (kde#501960)
+  * Don't mangle URLs with two consecutive underscores (kde#503933)
+  * Add hack to stop multi-line pinned messages from appearing
+  * Don't allow previewing audio/video before sending it (kde#519112)
+  * Fix how underscores were parsed in our new rich text system
+  * Fix Quotient version checks
+  * Only spell-check words if turned on again (kde#519565)
+  * chatbar/EmojiDelegate: Explicitly set the Kirigami colorset
+  * Remove dependency on io.github.quotient_im.libquotient
+  * Clear pinned message when no pinned events remain
+  * Use stable branch of libquotient
+  * Unescape non-breaking spaces
+  * Fix last >= first assertion in QAIM::beginInsertRows()
+  * Fix actions dealing with powerlevels in v12 rooms
+  * Bundle missing icons from delegate context menu and room page on Android
+  * Fix crash when link preview comes in after room was deleted
+  * Fix hiding video while it's playing
+  * snapcraft: Set set cmake vars for libquotient
+  * snapcraft: Prepare for a stable release
+  * Fix RoomSearchPage searching logic
+  * Fix ShareAction not working in NeochatMaximizeComponent
+  * Fix some typos and some QML warnings
+  * Fix forwarding messages with libQuotient >= 0.10.0
+  * Respect the system locale's short time format
+  * Fix Android build with Qt 6.11
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
