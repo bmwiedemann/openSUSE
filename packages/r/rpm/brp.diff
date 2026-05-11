@@ -1,5 +1,7 @@
---- scripts/brp-strip-comment-note.orig	2024-10-07 09:35:46.000000000 +0000
-+++ scripts/brp-strip-comment-note	2024-12-16 09:15:41.572425334 +0000
+Index: scripts/brp-strip-comment-note
+===================================================================
+--- scripts/brp-strip-comment-note.orig
++++ scripts/brp-strip-comment-note
 @@ -15,7 +15,7 @@ esac
  
  # Strip .comment and .note sections (the latter only if it is not allocated)
@@ -9,13 +11,15 @@
  	note="-R .note"
  	if $OBJDUMP -h $f | grep '^[ 	]*[0-9]*[ 	]*.note[ 	]' -A 1 | \
  		grep ALLOC >/dev/null; then
---- scripts/brp-strip.orig	2024-10-07 09:35:46.000000000 +0000
-+++ scripts/brp-strip	2024-12-16 09:15:41.572425334 +0000
-@@ -37,6 +37,7 @@ strip_elf_binaries()
+Index: scripts/brp-strip
+===================================================================
+--- scripts/brp-strip.orig
++++ scripts/brp-strip
+@@ -38,6 +38,7 @@ strip_elf_binaries()
      ! -name "*.py" ! -name "*.js" ! -name "*.rb" \
      ! -name "*.go" -links "${nlinks}" -print0 | \
      xargs -0 -r -P${nprocs} -n${MAX_ARGS} sh -c "file \"\$@\" | \
-+    grep -v ' shared object,' | grep -v '/lib/modules/ | \
++    grep -v ' shared object,' | grep -v '/lib/modules/' | \
      sed -n -e 's/^\(.*\):[ 	]*ELF.*, not stripped.*/\1/p' | \
      grep -v 'no machine' | \
      xargs -I\{\} $STRIP -g \{\}" ARG0

@@ -1,7 +1,7 @@
 #
 # spec file for package rpm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +72,7 @@ Source9:        sysconfig.services-rpm
 Source12:       baselibs.conf
 Source13:       rpmconfigcheck.service
 Source14:       build-aux.tar.bz2
+Source15:       rpm.tmpfiles
 # quilt patches start here
 Patch5:         usr-lib-sysimage-rpm.patch
 Patch13:        ignore-auxv.diff
@@ -321,6 +322,7 @@ mkdir -p %{buildroot}/usr/sbin
 install -m 755 %{SOURCE8} %{buildroot}/usr/sbin
 mkdir -p %{buildroot}/usr/lib/systemd/system
 install -m 644 %{SOURCE13} %{buildroot}/usr/lib/systemd/system/
+install -D -m 644 %{SOURCE15} %{buildroot}%{_tmpfilesdir}/rpm.conf
 mkdir -p %{buildroot}/usr/lib/rpm/macros.d
 mkdir -p %{buildroot}/usr/lib/rpm/suse
 for d in BUILD RPMS SOURCES SPECS SRPMS BUILDROOT ; do
@@ -385,37 +387,13 @@ sed -e '/^%%__systemd_sysusers/s/^/#/' -i %{buildroot}/usr/lib/rpm/macros
 %post
 %{fillup_only -an services}
 
-# var/lib/rpm migration: set forwards compatible symlink for /usr/lib/sysimage/rpm so scriptlets in same transaction will still work
-if test ! -L var/lib/rpm -a ! -f usr/lib/sysimage/rpm/Packages -a ! -f usr/lib/sysimage/rpm/Packages.db ; then
-  if test -f var/lib/rpm/Packages -o -f var/lib/rpm/Packages.db ; then
-    rmdir usr/lib/sysimage/rpm
-    ln -s ../../../var/lib/rpm usr/lib/sysimage/rpm
-  fi
-fi
-
-test -f usr/lib/sysimage/rpm/Packages -o -f usr/lib/sysimage/rpm/Packages.db || rpmdb --initdb
-test -e var/lib/rpm || ln -s ../../usr/lib/sysimage/rpm var/lib/rpm
-
 %posttrans
-# var/lib/rpm migration
+# legacy var/lib/rpm detection
 if test ! -L var/lib/rpm ; then
-  # delete no longer maintained databases
-  rm -f var/lib/rpm/Filemd5s var/lib/rpm/Filedigests var/lib/rpm/Requireversion var/lib/rpm/Provideversion
-
   if test -f var/lib/rpm/Packages -o -f var/lib/rpm/Packages.db ; then
-    echo "migrating rpmdb from /var/lib/rpm to /usr/lib/sysimage/rpm..."
-
-    # remove forwards compatible symlink
-    if test -L usr/lib/sysimage/rpm ; then
-      rm -f usr/lib/sysimage/rpm
-      mkdir -p usr/lib/sysimage/rpm
-    fi
-
-    mv -f var/lib/rpm/.[!.]* usr/lib/sysimage/rpm/
-    mv -f var/lib/rpm/* usr/lib/sysimage/rpm/
+    echo "legacy rpmdb location detected. Please move /var/lib/rpm to /usr/lib/sysimage/rpm..."
+    exit 1
   fi
-  test -d var/lib/rpm && rmdir var/lib/rpm
-  test -e var/lib/rpm || ln -s ../../usr/lib/sysimage/rpm var/lib/rpm
 fi
 
 %files -f rpm.lang
@@ -460,6 +438,7 @@ fi
 	%{_libdir}/librpm.so.*
 	%{_libdir}/librpmio.so.*
 	%{_libdir}/librpmsign.so.*
+        %{_tmpfilesdir}/rpm.conf
 %doc	%{_mandir}/man[18]/*.[18]*
 %dir 	/usr/lib/sysimage
 %dir 	/usr/lib/sysimage/rpm

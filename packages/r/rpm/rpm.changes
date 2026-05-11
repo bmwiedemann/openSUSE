@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar  5 11:06:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix "unexpected EOF" when using rpmbuild to install ELF binaries
+  due to syntax error in /usr/lib/rpm/brp-strip from brp.diff
+  (boo#1259215)
+
+-------------------------------------------------------------------
+Wed Nov 19 12:23:05 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Remove /var/lib/rpm migration scripting, retain an error if old
+  location is found
+- Use systemd-tmpfiles to create & maintain /var/lib/rpm symlink
+  (boo#1253139)
+
+-------------------------------------------------------------------
 Tue Jul 29 16:15:58 CEST 2025 - mls@suse.de
 
 - flush scriptlet notification messages in --runposttrans

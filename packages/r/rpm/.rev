@@ -2619,4 +2619,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>- flush scriptlet notification messages in --runposttrans</comment>
     <requestid>1296339</requestid>
   </revision>
+  <revision rev="326" vrev="7">
+    <srcmd5>4492a4a309e328f429ed3ba5f3a2eabf</srcmd5>
+    <version>4.20.1</version>
+    <time>1778510899</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1336739</requestid>
+  </revision>
 </revisionlist>
