@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri May  8 11:08:40 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.6.3:
+  * docs: Add Debian 14 and Ubuntu 26.04 installation instructions
+    by @nadzyah in #311
+  * README: Document how to install snap by @JohnAZoidberg in #312
+  * --pdports: Clarify output by @JohnAZoidberg in #315
+  * README: Fix snap install command formatting by @brlin-tw in #317
+  * Add Intel Core Ultra Series 3 detection by @JohnAZoidberg in #321
+  * Add support for new touchpads by @JohnAZoidberg in #322
+  * Fix typo in EXAMPLES.md for brightness percentage
+    by @techyporcupine in #323
+  * Add --inputdeck-mode examples by @JohnAZoidberg in #324
+  * Snap packaging by @JohnAZoidberg in #314
+  * branding: Laptop 1X not Framwork 1X by @JohnAZoidberg in #325
+  * snap: Update path to completions by @JohnAZoidberg in #331
+  * --inputdeck-mode: Add reset command by @JohnAZoidberg in #330
+  * contrib: Fix formatting by @JohnAZoidberg in #313
+  * chore: Bump version to 0.6.3 by @JohnAZoidberg in #333
+  * Add haptic settings for Laptop 13 Pro touchpad by @JohnAZoidberg in #332
+  * haptic: clarify that settings are not persistent by @JohnAZoidberg in #334
+  * Allow reading touchscreen version on Laptop 13 by @JohnAZoidberg in #335
+  * Validate EEPROM after writing it by @JohnAZoidberg in #316
+
+-------------------------------------------------------------------
 Tue Apr  7 13:54:41 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.6.2:
