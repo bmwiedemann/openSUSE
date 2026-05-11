@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May  7 08:02:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * Ship application icon in flatpak build
+  * Add unit tests for string cleanup operation
+  * Fix loading of previously priority filter level "no filter"
+  * Fix journal DB switching corner cases
+  * Use QT_ENABLE_STRICT_MODE_UP_TO for Qt 6.5 API
+  * Cleanup cleanupString method
+  * Avoid overhead for color code cleanups
+  * Imporove JournaldViewModel::readEntries hot path
+  * Improve JournaldHelper::cleanupString hot path
+  * Disable filter critieras when categories are empty
+  * Use QQmlParserStatus to avoid redundant filter criteria model resets during startup
+  * Fix race in filter criteria cache generation
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
