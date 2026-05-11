@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  7 08:03:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * Adapt to KMime having moved to Frameworks
+  * calendarview.cpp - use the "from scratch" newTodo if summary is empty (kde#472725)
+  * kitemiconcheckcombo.cpp - enable all icons in monthview too (kde#161652)
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:20 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
