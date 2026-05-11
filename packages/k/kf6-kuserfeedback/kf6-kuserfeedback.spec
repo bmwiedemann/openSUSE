@@ -16,15 +16,15 @@
 #
 
 
-%define qt6_version 6.8.0
+%define qt6_version 6.9.0
 
 %define rname kuserfeedback
 
-# Full KF6 version (e.g. 6.25.0)
+# Full KF6 version (e.g. 6.26.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kuserfeedback
-Version:        6.25.0
+Version:        6.26.0
 Release:        0
 Summary:        Framework for collecting feedback from application users
 License:        MIT
