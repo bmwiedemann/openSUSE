@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat May  2 07:52:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.26.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.26.0
+- Changes since 6.25.0:
+  * Update dependency version to 6.26.0
+  * Python: add frozendict as builtin
+  * Python: add the keywords "lazy import" and "lazy from" (python 3.15)
+  * fix comment of StateData::push(): captures is inserted in all contexts
+  * Improve SSIM flight designator/leg sequence column highlighting
+  * Add highlighting for IATA SSIM flight schedules
+  * GN: Update GN unit test
+  * Handle GN properties (similar to QML properties)
+  * Add more builtin variables
+  * Use tabs instead of spaces
+  * Fix build
+  * Add GN syntax highlighting unit tests
+  * Update license
+  * Add GN (Generate Ninja) syntax highlighting definition
+  * Update version to 6.26.0
+
+-------------------------------------------------------------------
 Tue Apr  7 19:19:41 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.25.0
