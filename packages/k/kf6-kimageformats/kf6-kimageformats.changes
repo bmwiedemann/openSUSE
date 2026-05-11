@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat May  2 07:52:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.26.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.26.0
+- Changes since 6.25.0:
+  * Update dependency version to 6.26.0
+  * JXR: check all library return codes
+  * EXIF improvements and bugfixes
+  * JXR: fix Use-of-uninitialized-value
+  * EXR: fix Null-dereference READ in OpenEXR
+  * HDR: fix incorrect use of s.atEnd()
+  * JXR: minimal support for multichannel 3 and 4
+  * JXR: fix memory leaks
+  * Improved documentation for DDS, JP2 and PSD formats
+  * EXR: fix incorrect loading of EXR files saved by Photoshop 2026
+  * Fix HOST Computer metadata
+  * Add more info about unsecure JXR plugin
+  * Update version to 6.26.0
+
+-------------------------------------------------------------------
 Tue Apr  7 19:19:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.25.0
