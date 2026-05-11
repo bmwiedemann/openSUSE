@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat May  2 07:52:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.26.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.26.0
+- Changes since 6.25.0:
+  * Update dependency version to 6.26.0
+  * ktranscript: avoid that engine deletes the object
+  * ktranscript: parent the QJEngine instead of using deleteLater
+  * Enable LSAN in CI
+  * CI: Remove alpine. It has been failing for 4 consecutive weeks
+  * Fix static build
+  * fix: no translation will be loaded on macOS
+  * Update version to 6.26.0
+
+-------------------------------------------------------------------
 Tue Apr  7 19:19:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.25.0
