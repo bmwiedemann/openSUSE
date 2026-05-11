@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon May 11 08:18:51 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 4.5.7 (bsc#1264348):
+  ## Security patches
+  * CVE-2026-42557 GHSA-mqcg-5x36-vfcg
+  * CVE-2026-42266 GHSA-37w4-hwhx-4rc4
+  * CVE-2026-40171 GHSA-rch3-82jr-f9w9
+
+  # Bugs fixed
+  * Video and Audio Content Providers: Fix JupyterLite support #18652
+    (@martinRenou)
+  * Fix notebook hang when dropping cells #18808 (@MUFFANUJ)
+  * Fix Contextual Help keyboard shortcut reliability and menu Help
+    functionality #18747 (@itsmejay80)
+  * Fix focusing input element when opening a dialog from Command
+    Palette #18735 (@Carreau)
+  * Fix native context menu blocked even when context menu is
+    suppressed #18753 (@utsav-develops)
+  * Fix flaky toolbar item placement in popup #18618 (@filipeoliveira05)
+  * Update terminal default font family to honor macOS system-wide
+    ui-monospace #18647 (@flaviomartins)
+
+  ## Maintenance and upkeep improvements
+  * Fix linting issue #18819 (@krassowski)
+  * Fix syntax for Python 3.9 on 4.5.x branch #18817 (@krassowski)
+  * Remove unused CodeMirror v5 CSS rule #18785 (@Carreau)
+  * Remove unused CSS rule forgotten after CodeMirror migration #18763 (@Carreau)
+  * Remove unused progress bar CSS rule in execution indicator #18759 (@Carreau)
+  * Remove dead .jp-VariableRenderer-TrustButton CSS rule #18762 (@Carreau)
+  * Remove used .jp-Cell-Placeholder CSS rules #18761 (@Carreau)
+
+  ## Documentation improvements
+  * Fix name of option for extension manager implementation in docs
+    #18788 (@krassowski)
+  * Remove 4.5.0 announcement from docs #18740 (@krassowski)
+
+-------------------------------------------------------------------
 Mon Mar 16 23:02:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.6:
