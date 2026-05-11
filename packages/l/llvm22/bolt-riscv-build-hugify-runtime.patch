@@ -1,0 +1,24 @@
+diff --git a/bolt/runtime/hugify.cpp b/bolt/runtime/hugify.cpp
+index de896307f24f..d972ff9853cc 100644
+--- a/bolt/runtime/hugify.cpp
++++ b/bolt/runtime/hugify.cpp
+@@ -6,7 +6,8 @@
+ //
+ //===---------------------------------------------------------------------===//
+ 
+-#if (defined(__x86_64__) || defined(__aarch64__) || defined(__arm64__)) &&     \
++#if (defined(__x86_64__) || defined(__aarch64__) || defined(__arm64__) ||      \
++     defined(__riscv)) &&                                                      \
+     !defined(__APPLE__)
+ 
+ #include "common.h"
+@@ -181,6 +182,9 @@ extern "C" __attribute((naked)) void __bolt_hugify_self() {
+                                 "add x16, x16, #:lo12:__bolt_hugify_start_program\n"
+                                 "br x16\n"
+                                 :::);
++#elif defined(__riscv)
++  __asm__ __volatile__(SAVE_ALL "jal __bolt_hugify_self_impl\n" RESTORE_ALL
++                                "tail __bolt_hugify_start_program");
+ #else
+   __exit(1);
+ #endif

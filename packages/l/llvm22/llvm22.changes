@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May  9 12:08:56 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 22.1.5.
+  * This release contains bug-fixes for the LLVM 22.1.0 release.
+    This release is API and ABI compatible with 22.1.0.
+- Add bolt-riscv-build-hugify-runtime.patch to enable the bolt
+  hugify runtime on riscv64.
+
+-------------------------------------------------------------------
+Fri May  8 21:22:45 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Make sure we don't lose the distribution compiler flags.
+- Remove unnecessary dependency of llvm-devel on libtool.
+
+-------------------------------------------------------------------
 Sun Apr 26 20:49:40 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 22.1.4.

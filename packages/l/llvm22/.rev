@@ -53,4 +53,18 @@
 </comment>
     <requestid>1349631</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c4fec9c94a7da43fbae6bb284ab8be8f</srcmd5>
+    <version>22.1.5</version>
+    <time>1778510904</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 22.1.5.
+  * This release contains bug-fixes for the LLVM 22.1.0 release.
+    This release is API and ABI compatible with 22.1.0.
+- Add bolt-riscv-build-hugify-runtime.patch to enable the bolt
+  hugify runtime on riscv64.
+- Make sure we don't lose the distribution compiler flags.
+- Remove unnecessary dependency of llvm-devel on libtool.</comment>
+    <requestid>1352226</requestid>
+  </revision>
 </revisionlist>
