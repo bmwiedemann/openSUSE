@@ -460,4 +460,31 @@
   * Updated paths to properly use xdg portal</comment>
     <requestid>1351078</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b270cc2cc35600f142a424b4bbe97f7f</srcmd5>
+    <version>1.19.3</version>
+    <time>1778511434</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.19.3
+- Upstream changes:
+  * Removed category outline
+  * Updated Portuguese translation
+  * Added uncategorized option
+  * Check mangohud and gamemode before running
+  * Fixed bat file being removed when editing an entry
+  * Allow multiple categories for games
+- For version 1.19.2:
+  * Fixed app menu shortcut path
+  * 1.19 category strings
+- For version 1.19.1:
+  * Updated screenshots
+  * Updated Portuguese translation
+  * Update json file
+  * Added categories
+  * update Spanish
+  * Allow relative paths in launch arguments
+  * Added vulkan-tools as dependency
+  * Updated Translation - translated new 'minimized start' string - fixed a couple of previously mis-translated strings</comment>
+    <requestid>1352328</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun May 10 21:45:49 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.19.3
+- Upstream changes:
+  * Removed category outline
+  * Updated Portuguese translation
+  * Added uncategorized option
+  * Check mangohud and gamemode before running
+  * Fixed bat file being removed when editing an entry
+  * Allow multiple categories for games
+- For version 1.19.2:
+  * Fixed app menu shortcut path
+  * 1.19 category strings
+- For version 1.19.1:
+  * Updated screenshots
+  * Updated Portuguese translation
+  * Update json file
+  * Added categories
+  * update Spanish
+  * Allow relative paths in launch arguments
+  * Added vulkan-tools as dependency
+  * Updated Translation - translated new 'minimized start' string - fixed a couple of previously mis-translated strings
+
+-------------------------------------------------------------------
 Tue May 05 21:18:21 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.18.12
