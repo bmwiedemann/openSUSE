@@ -16,7 +16,7 @@
 #
 
 
-%define qt6_version 6.8.0
+%define qt6_version 6.9.0
 
 %define rname kwidgetsaddons
 
@@ -32,11 +32,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.25.0)
+# Full KF6 version (e.g. 6.26.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kwidgetsaddons
-Version:        6.25.0
+Version:        6.26.0
 Release:        0
 Summary:        Large set of desktop widgets
 License:        LGPL-2.1-or-later
@@ -128,9 +128,14 @@ This package provides a python interface for kf6-kwidgetsaddons.
 %{_kf6_includedir}/KWidgetsAddons/
 %{_kf6_libdir}/libKF6WidgetsAddons.so
 %{_kf6_plugindir}/designer/kwidgetsaddons6widgets.so
+%if %{with kde_python_bindings}
+%dir %{_includedir}/PySide6/
+%{_includedir}/PySide6/KWidgetsAddons/
+%endif
 
 %if %{with kde_python_bindings}
 %files -n python3-kf6-kwidgetsaddons
+%{_kf6_sharedir}/PySide6/typesystems/typesystem_kwidgetsaddons.xml
 %{mypython_sitearch}/*.so
 %endif
 
