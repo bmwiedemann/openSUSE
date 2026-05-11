@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 11 09:50:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.41.7:
+  Fixes
+  * Fixed mysql.server panic on crafted client handshake (remote
+    DoS). Fixes CVE-2026-8276 (boo#1264701).
+  * Fixed zerogod IPP chunked body panic via OOB uint64 allocation
+    (#1263). Fixes CVE-2026-8275 (boo#1264702).
+  * Close connection on panic recovery in the TCP acceptor.
+  * Fixed flags value (0x0c → 0xc0) in prefix option for ICMPv6
+    router advertisement.
+  * Use only iwlist to detect supported channels (fixes #1243).
+  * Fixed dropped graph error.
+  * Fixed JS SBCB deserialization and JSSVCB key int64 typing.
+  * int64 conversion for otto backwards compatibility.
+  Improvements
+  * Enhanced PMKID validation and debug logging.
+
+-------------------------------------------------------------------
 Mon Dec 15 17:44:50 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.41.5:
