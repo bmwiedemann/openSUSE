@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 11 08:15:52 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 7.5.6 (bsc#1264348):
+  ## Security patches
+  * CVE-2026-42557 GHSA-mqcg-5x36-vfcg
+  * CVE-2026-40171 GHSA-rch3-82jr-f9w9
+  ## Maintenance and upkeep improvements
+  * Update to JupyterLab v4.5.7 #7902 (@jtpio)
+  ## Documentation improvements
+  * docs: Fix broken links in troubleshooting and migration docs #7824
+    (@RamiNoodle733)
+
+-------------------------------------------------------------------
 Sun Mar 29 14:08:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.5.5:
