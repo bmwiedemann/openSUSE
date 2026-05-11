@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Mon May 11 05:41:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.1.4
+  * New features and improvements
+    + Enable GitHub Issues
+    + Release drafter configuration and PR Automation
+  * Dependency updates
+    + Bump resolverVersion from 1.9.18 to 1.9.22
+    + Bump mavenVersion from 3.9.6 to 3.9.9
+  * Maintenance
+    + PR Automation only on close event
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    + Fix IT deploy-bom for Maven rc-2
+
+-------------------------------------------------------------------
+Mon May 11 05:37:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.1.3
+  * Bug
+    + MDEPLOY-297: [REGRESSION] deploy-file no longer honor
+      'packaging' parameter
+    + MDEPLOY-311: Regression in 3.0.0: deploy-file: -Dpackaging is
+      not considered during artifact upload
+    + MDEPLOY-321: -Dpackaging= is ignored when using mvn
+      deploy:deploy-file
+  * Improvement
+    + MDEPLOY-320: Unclear exception prompt
+  * Dependency upgrade
+    + MDEPLOY-322: Use parent POM 43
+  * Other changes
+    + Bump resolverVersion from 1.9.18 to 1.9.20
+    + Build with Maven4
+    + MDEPLOY-319: Cleanup of test code
+    + MDEPLOY-319: Remove unfinished test
+    + MDEPLOY-318: invalid-pom
+
+-------------------------------------------------------------------
+Mon May 11 05:33:06 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.1.2
+  * Improvement
+    + MDEPLOY-313: Upgrade maven-plugin parent to 41
+    + MDEPLOY-314: Include artifactId in messages of
+      DeployMojo#processProject
+  * Dependency upgrade
+    + MDEPLOY-316: Update parent to 42, up prerequisite to 3.6.3
+  * Other changes
+    + MNG-6829: Replace StringUtils#isEmpty(String) and
+      #isNotEmpty(String)
+    + DeployFileMojo#readModel(File): fixed MojoExecutionException
+      javadoc
+    + Bump org.mockito:mockito-core from 2.28.2 to 4.11.0
+
+-------------------------------------------------------------------
+Mon May 11 05:31:23 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.1.1
+  * Change
+    + MDEPLOY-308: Add parameter to lax project validation
+
+-------------------------------------------------------------------
+Mon May 11 05:28:52 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.1.0
+  * Bug
+    + MDEPLOY-200: deployAtEnd fails if the last project to build
+      skip deployment
+    + MDEPLOY-204: Must deploy maven-metadata.xml last
+    + MDEPLOY-224: Overriding deployAtEnd fails
+    + MDEPLOY-225: DeployAtEnd fails when overriding skip
+    + MDEPLOY-226: DeployAtEnd fails when module has extension
+    + MDEPLOY-305: Improvement in DeployAtEnd
+  * New Feature
+    + MDEPLOY-206: Support parallel deployment at end (needs
+      resolver changes as well)
+    + MDEPLOY-272: Add skip capability to deploy-file goal
+  * Task
+    + MDEPLOY-282: Revert MDEPLOY-231
+    + MDEPLOY-292: Require Java 8
+    + MDEPLOY-303: Refresh download page
+    + MDEPLOY-304: Clean up ITs
+  * Dependency upgrade
+    + MDEPLOY-299: Upgrade maven-plugin parent to 37
+    + MDEPLOY-302: Upgrade maven-plugin parent to 39
+
+-------------------------------------------------------------------
+Mon May 11 05:20:06 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.0.0
+  * Bug
+    + MDEPLOY-193: deployAtEnd does not deploy artifacts for
+      multi-module project with build extensions
+  * Task
+    + MDEPLOY-291: Update POM parent and Maven
+    + MDEPLOY-296: Cleanup the plugin
+- Removed patches:
+  * 0001-MDEPLOY-291-Update-POM-parent-and-Maven-22.patch
+  * 0002-Fix-tests-with-Java-16.patch
+    + integrated in this version
+
+-------------------------------------------------------------------
 Wed May 11 06:43:07 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag 3.0.0 milestone M2

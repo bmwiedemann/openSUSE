@@ -1,7 +1,7 @@
 #
 # spec file for package maven-deploy-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,48 +16,32 @@
 #
 
 
-%global base_ver 3.0.0
-%global milestone M2
-%bcond_with tests
 Name:           maven-deploy-plugin
-Version:        %{base_ver}~%{milestone}
+Version:        3.1.4
 Release:        0
 Summary:        Maven Deploy Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-deploy-plugin/
-Source0:        https://github.com/apache/%{name}/archive/refs/tags/%{name}-%{base_ver}-%{milestone}.tar.gz
+Source0:        https://github.com/apache/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
-Patch0:         0001-MDEPLOY-291-Update-POM-parent-and-Maven-22.patch
-Patch1:         0002-Fix-tests-with-Java-16.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
-BuildRequires:  mvn(commons-io:commons-io)
+BuildRequires:  mvn(javax.inject:javax.inject)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
-BuildRequires:  mvn(org.apache.maven.shared:maven-artifact-transfer)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-api)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-util)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  mvn(org.eclipse.aether:aether-api)
-BuildRequires:  mvn(org.eclipse.aether:aether-util)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(org.apache.maven.plugin-testing:maven-plugin-testing-harness)
-BuildRequires:  mvn(org.apache.maven:maven-aether-provider)
-BuildRequires:  mvn(org.apache.maven:maven-compat)
-BuildRequires:  mvn(org.eclipse.aether:aether-connector-basic)
-BuildRequires:  mvn(org.eclipse.aether:aether-transport-file)
-BuildRequires:  mvn(org.eclipse.aether:aether-transport-http)
-BuildRequires:  mvn(org.mockito:mockito-core)
-BuildRequires:  mvn(org.slf4j:slf4j-nop)
-%endif
 
 %description
 Uploads the project artifacts to the internal remote repository.
@@ -70,19 +54,14 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{name}-%{base_ver}-%{milestone}
+%setup -q -n %{name}-%{name}-%{version}
 cp %{SOURCE1} LICENSE
-%autopatch -p1
 
 %build
 
 %{mvn_file} :%{name} %{name}
 
-%{mvn_build} \
-%if %{without tests}
-    -f \
-%endif
-    -- \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
