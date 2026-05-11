@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun May 10 15:31:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.8:
+  * Fix: back-propagate connector URLs to configObj in
+    initializeCloudAPI
+  * Initial plan
+  * Coderabbit findings
+  * suppress spurious interrupt signal log on graceful exit
+  * docs: fix TOC nesting and heading capitalization
+  * docs: add PDF output format and fix heading inconsistencies in
+    getting-started.md
+  * fix(vap): create parent directories in writeOutput
+  * fix(vap): use K8s upstream validation helpers for names and
+    namespaces
+  * fix(vap): use DNS label validation for namespace names
+  * fix(vap): build MatchLabels from parsed requirements, not raw
+    split
+  * fix(vap): reject DoubleEquals, downstream split on = would
+    break
+  * fix(vap): restrict label validation to equality selectors only
+  * fix(vap): use k8s labels.Parse for label selector validation
+  * fix(vap): fix K8s name and label selector validation
+  * feat(vap): add --timeout flag to deploy-library command
+
+-------------------------------------------------------------------
 Fri May 08 17:06:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.7:
