@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  9 21:31:00 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to support systemd 260 power handling (kde#518174):
+  * 0001-libkworkspace-Handle-new-states-from-logind.patch
+
+-------------------------------------------------------------------
 Tue Apr  7 15:00:05 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.4:

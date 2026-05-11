@@ -1,0 +1,37 @@
+From 8f6d71715a70e5c73d322619163dce738993724b Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Thu, 30 Apr 2026 21:41:44 +0200
+Subject: [PATCH] libkworkspace: Handle new states from logind
+
+systemd 260 introduces new states for CanReboot/CanPoweroff/etc
+
+We need to adjust our code to not trip over those
+
+This is a bit of a hotfix, ideally we would properly indicate in the UI that a given action is temporarily inhibited
+
+BUG: 518174
+(cherry picked from commit 07750c8a7cc89d532ec852a677772b0402a16ba8)
+---
+ libkworkspace/sessionmanagementbackend.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libkworkspace/sessionmanagementbackend.cpp b/libkworkspace/sessionmanagementbackend.cpp
+index c5631c16c8..d0742bfb9a 100644
+--- a/libkworkspace/sessionmanagementbackend.cpp
++++ b/libkworkspace/sessionmanagementbackend.cpp
+@@ -113,9 +113,11 @@ LogindSessionBackend::LogindSessionBackend()
+             *argToUpdate = false;
+         } else {
+             // both "yes" and "challenge" will show up in the UI
++            // also accept "inhibited" for now, TODO expose this more fine-grained and indicate in the UI that the action is inhibited (and why)
+             const QString value = reply.value();
+             *argToUpdate = false;
+-            if (value == QLatin1String("yes") || value == QLatin1String("challenge")) {
++            if (value == QLatin1String("yes") || value == QLatin1String("challenge") || value == QLatin1String("inhibited")
++                || value == QLatin1String("inhibited-blocked") || value == QLatin1String("challenge-inhibitor-blocked")) {
+                 *argToUpdate = true;
+             }
+         }
+-- 
+2.53.0
+
