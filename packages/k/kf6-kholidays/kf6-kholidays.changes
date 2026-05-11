@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat May  2 07:52:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.26.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.26.0
+- Changes since 6.25.0:
+  * Update dependency version to 6.26.0
+  * Modifier holiday_ca-qc_fr Correction of typos
+  * Modifier holiday_ca-qc_fr
+  * .kde-ci.yml - require MRs to pass cppcheck cleanly
+  * Disable HolidayParserDriverPlan copy/move as found by cppcheck
+  * .clang-tidy - add clang-tidy configuration
+  * cppcheck-suppressions.xml - suppress shadowFunction, functionStatic
+  * .gitlab-ci.yml - add clazy builds to merge requests
+  * clang-tidy performance-avoid-endl fix
+  * clang-tidy fix readability-isolate-declaration
+  * Add support for HolidayCategories
+  * cppcheck suppress knownConditionTrueFalse
+  * cppcheck constVariable fix
+  * cppcheck useInitializationList fix
+  * CI - configure for cppcheck
+  * clazy range-loop-detach fix
+  * CMakeLists.txt - add pre-commit support
+  * Philippines holidays - fix the Easter holidays (kde#518523)
+  * Update version to 6.26.0
+
+-------------------------------------------------------------------
 Tue Apr  7 19:19:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.25.0
