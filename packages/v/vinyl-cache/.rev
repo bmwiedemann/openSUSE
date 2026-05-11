@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>03cbdccb24ecc6adb11bcce94f94c74a</srcmd5>
+    <version>9.0.0</version>
+    <time>1778511436</time>
+    <user>anag_factory</user>
+    <comment>conflict; not only are manpages shared, but there is no ideal way to automatically move config files from varnish to become vinyl</comment>
+    <requestid>1352430</requestid>
+  </revision>
+</revisionlist>
