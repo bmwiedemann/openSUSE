@@ -19,7 +19,7 @@
 %define executable_name kubectl-kuttl
 
 Name:           kuttl
-Version:        0.25.0
+Version:        0.26.0
 Release:        0
 Summary:        KUbernetes Test TooL
 License:        Apache-2.0
@@ -29,7 +29,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 
 %description
 KUbernetes Test TooL (KUTTL) provides a declarative approach to test Kubernetes

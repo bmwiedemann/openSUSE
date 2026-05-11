@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon May 11 07:11:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.0:
+  * Note:
+    - Ephemeral namespaces are now kuttl-<random> rather than
+      kuttl-test-<random>.
+    - Also looking for feedback from homebrew users on the formula
+      cask migration.
+  * Bug Fixes
+    - fix: retry transient API errors in wait/poll loops (#685)
+    - fix: add random suffix to namespace name to prevent
+      collisions (#682)
+  * Dependency bumps
+    - migrate homebrew from formula to cask:
+      kudobuilder/homebrew-tap#3
+    - chore(deps): replace docker/docker with moby/moby modules
+      (#683)
+    - chore: bump golangci-lint to v2.11.4 and enable additional
+      linters (#686)
+    - chore(deps): bump the kubernetes group across 1 directory
+      with 7 updates (#689, #681, #677, #676, #675)
+    - chore(deps): bump github.com/Masterminds/semver/v3 from 3.4.0
+      to 3.5.0 (#687)
+    - chore: update goreleaser config to 2.15.2 (#680)
+    - chore(deps): bump github.com/google/cel-go from 0.27.0 to
+      0.28.0 (#679)
+    - chore(deps): bump
+      go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+      from 1.27.0 to 1.43.0 (#678)
+
+-------------------------------------------------------------------
 Wed Feb 18 09:21:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.25.0:
