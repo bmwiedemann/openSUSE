@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May  6 14:48:09 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 1.16.1
+  * Bug Fixes
+    logging: Fix startup deadlock when components log before
+             logging config is evaluated
+    Update to Beyla 3.9.8
+    Migrate from Docker to Moby
+
+-------------------------------------------------------------------
+Wed May  6 12:42:22 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2026-41602: Fix Integer Overflow or Wraparound vulnerability in Apache
+  Thrift (bsc#1263530)
+  * Add 0002-Bump-Apache-Thrift.patch
+
+-------------------------------------------------------------------
 Wed Apr 29 16:06:30 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Use systemd tmpfiles.d to create /var/lib/alloy hierarchy
@@ -131,6 +148,7 @@ Wed Apr 22 15:47:02 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
     - database_observability: Ensure connection_info_monitor
       goroutine exits on Stop
     - prometheus.exporter.postgres: Close DB connections on update
+  * CVE-2026-34986: Fix panic in JWE decryption (bsc#1262955)
 
 -------------------------------------------------------------------
 Thu Mar 26 08:34:00 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
