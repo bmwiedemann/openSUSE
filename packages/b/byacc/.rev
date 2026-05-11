@@ -333,4 +333,14 @@ http://invisible-island.net/byacc/CHANGES (forwarded request 185697 from elvigia
     <comment></comment>
     <requestid>1304245</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2a6603a81a43c2c07f4afdde80a83f8d</srcmd5>
+    <version>20260126</version>
+    <time>1778510909</time>
+    <user>anag_factory</user>
+    <comment>- update to 20260126:
+  * add/use puts_trim() to trim trailing blanks from output files
+</comment>
+    <requestid>1352327</requestid>
+  </revision>
 </revisionlist>

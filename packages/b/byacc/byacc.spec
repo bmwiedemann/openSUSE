@@ -1,7 +1,7 @@
 #
 # spec file for package byacc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,10 +18,10 @@
 
 
 Name:           byacc
-Version:        20241231
+Version:        20260126
 Release:        0
 Summary:        LALR(1) parser generator
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Development/Languages/C and C++
 URL:            https://invisible-island.net/byacc/byacc.html
 Source0:        https://invisible-mirror.net/archives/byacc/byacc-%{version}.tgz
