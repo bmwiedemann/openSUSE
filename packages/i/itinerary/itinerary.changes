@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  7 08:02:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * Add 26.04.1 release notes
+  * Build against released dependencies
+  * Switch Flatpak build to the stable libQuotient branch
+
+-------------------------------------------------------------------
 Sat Apr 11 16:13:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
