@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 10 00:00:00 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Bump bundled libbpf submodule to v1.7.0 to fix build failures
+  against current toolchains.
+
+-------------------------------------------------------------------
 Wed Oct  1 08:00:48 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update _service file to reflect version format
