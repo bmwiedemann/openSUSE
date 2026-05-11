@@ -34,4 +34,12 @@
   * Fix for empty string value from pyvenv.cfg parsing (forwarded request 1278287 from jfkw)</comment>
     <requestid>1278288</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f02e3a8a059c153ceff2ecc483278191</srcmd5>
+    <version>1.26</version>
+    <time>1778511425</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1352308</requestid>
+  </revision>
 </revisionlist>

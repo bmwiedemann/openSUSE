@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  3 18:12:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26:
+  * Fix typo in args.go, s/choosen/chosen
+  * Add ability to use the FQDN as the hostname
+  * Make more segment indicators configurable
+  * fix hardcoded .docker path
+  * Update segment-aws to use profile OR region
+  * fix segment-gcp crashes with simple configuration
+  * feat: segment-azure for displaying current active Azure
+    subscription and resource group
+  * Add version flag
+
+-------------------------------------------------------------------
 Sun May 18 09:10:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.25:
