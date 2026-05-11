@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun May  3 18:05:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * fix: typing Protocol not being able to instantiate on 3.10
+- update to 3.2.0:
+  * CI: skip Python 3.7 on MacOs
+  * ci: Fix ci
+  * Support Python 3.13
+  * Migrate colorcet to using pixi for development
+  * ci: Fix build step
+  * Drop support for python versions <3.9
+  * Broken links: update Continuous.ipynb to fix broken link to
+    test image.
+  * Add Type Hints to core module
+  * Include Python 3.13 in the CI
+  * Fix image link
+  * Update README links to use https
+  * Update index.ipynb
+  * Python 3.14 support
+  * compat: Remove rc for Python 3.14
+  * Updated membership
+  * Add @maximlt to the list of maintainers
+  * ci: Update github action versions and add downstream option
+  * type: Also type check with TY
+  * chore: Use Ruff for linting
+  * chore!: Drop Python 3.9 EOL
+  * build: Align infrastructure with other repos
+  * update readme to work on PyPI
+
+-------------------------------------------------------------------
 Fri Apr  3 15:36:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0:
