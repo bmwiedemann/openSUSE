@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  7 08:03:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * fax: Warn if the arbitrary limits are triggered
+  * fax: Fix possible overflows
+  * fax: Initialize extra "data" space
+  * fax: The Ghostscript / PC Research fax header handling at line 109 performs
+  * fax: A zero-byte .g3 file causes getstrip() to allocate a 4-byte buffer
+  * snapcraft: Prepare for beta release
+  * Add column-number to emacsclient command in editor-settings (kde#518741)
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
