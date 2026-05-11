@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Apr 16 09:43:36 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to version 1
+  * Add ability to accept modifications made by 3rd parties
+  * Bug fixes
+  * Translation updates
+
+-------------------------------------------------------------------
+Wed Dec 31 11:00:54 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to version 0.4:
+  * Properly depend on bootkitd package
+  * Remove unused vendor.tar.zst
+
+-------------------------------------------------------------------
+Wed Dec 17 11:26:21 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to version 0.3
+  * Implement snapshots
+  * Include vendor.tar.zst for Cargo dependencies
+  * Remove unneeded load-css-overrides.patch
+
+-------------------------------------------------------------------
+Tue Nov 11 11:04:35 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to version 0.2:
+  * Initial boot options
+
+-------------------------------------------------------------------
+Tue Oct 28 12:20:08 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Initial technical preview
