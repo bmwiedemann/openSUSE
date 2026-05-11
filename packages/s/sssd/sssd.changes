@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  5 11:22:52 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Add new build dependencies required to run the tests
+- Do not ignore tests results at build time; (bsc#1246196)
+
+-------------------------------------------------------------------
 Thu Apr 30 11:45:26 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
 
 - Add support for UsrEtc; (bsc#1257643); Add patch

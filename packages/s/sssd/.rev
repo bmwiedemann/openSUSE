@@ -1309,4 +1309,13 @@ goes in line with 946250</comment>
   0016-UsrEtc.patch</comment>
     <requestid>1350294</requestid>
   </revision>
+  <revision rev="150" vrev="3">
+    <srcmd5>883132cfc8a06913f5aa1de1aed2dc8d</srcmd5>
+    <version>2.13.0</version>
+    <time>1778510905</time>
+    <user>anag_factory</user>
+    <comment>- Add new build dependencies required to run the tests
+- Do not ignore tests results at build time; (bsc#1246196)</comment>
+    <requestid>1352235</requestid>
+  </revision>
 </revisionlist>

@@ -39,6 +39,7 @@ Patch15:        logrotate.patch
 Patch16:        0016-UsrEtc.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
+BuildRequires:  bc
 BuildRequires:  bind-utils
 BuildRequires:  check-devel
 BuildRequires:  cifs-utils-devel
@@ -49,6 +50,8 @@ BuildRequires:  libcmocka-devel
 %if 0%{?suse_version} >= 1600
 BuildRequires:  libsubid-devel
 %endif
+BuildRequires:  openssh
+BuildRequires:  openssl-3
 BuildRequires:  libopenssl-3-devel
 BuildRequires:  libtool
 BuildRequires:  libunistring-devel
@@ -57,9 +60,11 @@ BuildRequires:  libxslt-tools
 BuildRequires:  nss_wrapper
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
+BuildRequires:  pam_wrapper
 BuildRequires:  pkg-config >= 0.21
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
+BuildRequires:  softhsm-devel >= 2.1.0
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  uid_wrapper
@@ -67,6 +72,7 @@ BuildRequires:  pkgconfig(augeas) >= 1.0.0
 BuildRequires:  pkgconfig(dbus-1) >= 1.0.0
 BuildRequires:  pkgconfig(dhash) >= 0.4.2
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(ini_config) >= 1.3
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(ldb) >= 1.2.0
@@ -95,6 +101,7 @@ BuildRequires:  pkgconfig(talloc)
 BuildRequires:  pkgconfig(tdb) >= 1.1.3
 BuildRequires:  pkgconfig(tevent)
 BuildRequires:  pkgconfig(uuid)
+BuildRequires:  pkgconfig(valgrind)
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 # samba-client-devel pulls samba-client-libs pulls libldap-2_4-2 wants libldap-data(-2.4);
 # this conflicts with
@@ -398,6 +405,9 @@ Security Services Daemon (sssd).
 %autosetup -p1
 
 %build
+%set_build_flags
+export CFLAGS="$CFLAGS -ffat-lto-objects"
+export LDFLAGS="$CFLAGS -ffat-lto-objects"
 autoreconf -fiv
 %configure \
 	--with-db-path="%dbpath" \
@@ -498,8 +508,11 @@ ln -sv %_datadir/%name/krb5-snippets/enable_sssd_conf_dir \
        "$b/%_sysconfdir/krb5.conf.d/enable_sssd_conf_dir"
 
 %check
+%set_build_flags
+export CFLAGS="$CFLAGS -ffat-lto-objects"
+export LDFLAGS="$CFLAGS -ffat-lto-objects"
 # sss_config-tests fails
-%make_build check || :
+%make_build check
 
 %pre -f random.pre
 # Migrate sssd.service from sssd-common to sssd
