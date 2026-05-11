@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat May  2 07:52:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.26.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.26.0
+- Changes since 6.25.0:
+  * Update dependency version to 6.26.0
+  * kioworkers/trash: Use qRound64 instead of qRound (kde#515511)
+  * KFileItemActions: In insertOpenWithActionsTo check that items is not empty
+  * searchproviders: add Startpage search provider (kde#503976)
+  * davjob: Use \n instead of \r\n in xml
+  * FilePreviewJob: Increase timeout to 5 seconds
+  * Drop MinimumKeepSize config from workers
+  * Deprecate KProtocolManager::minimumKeepSize
+  * Drop MinimumKeepSize config
+  * gui/previewjob: avoid wrapping job->errorString with buildErrorString
+  * kfileitemdelegate: Do not use antialising in order to avoid glitches with some QStyles
+  * autotests: Force language on kfileplacesmodeltest
+  * KFilePlacesModel: Support kdeconnect device
+  * KFileWidget: Update placeholder text to show the current folder
+  * KFileWidget: Allow opening current directory in Directory mode
+  * KFileItemDelegate: Check if emblem rect is null
+  * KfileItemSelection: Allow using selectionEmblem in directory mode with singleclick
+  * KDirOperator: Select whole row on toggle
+  * PasteDialog: Add MIME type icon to format combo box
+  * paste: Give context object to connect
+  * paste: Also set default file name when pasting text contents
+  * paste: Guess MIME type from text content
+  * PasteDialog: Use MIME type icon for dialog if available
+  * Open/execute dialog: remove "don't ask again" checkbox
+  * Update version to 6.26.0
+
+-------------------------------------------------------------------
 Tue Apr  7 19:19:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.25.0
