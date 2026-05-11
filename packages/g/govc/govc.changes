@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Sun May 10 14:42:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.0:
+  * Fix
+    - [a8ff1b1] parsing vApp properties while converting from OVF
+      envelope to VM ConfigSpec(#3964) (#3964)
+  * API Changes
+    - [92f18db] add FetchVmGroupForMultiwriterDisks vim25 bindings
+      and vcsim support
+    - [5ee9945] Fix OVF disk ID func
+    - [6579127] Support NetworkSpec in Namespaces
+    - [b54705c] More OVF->ConfigSpec testing
+    - [25afc66] Support OVF->ConfigSpec SR-IOV NICs
+    - [513e626] OVF->ConfigSpec support nil VHW
+    - [6c60d63] Default to first VirtualSystem in OVF
+    - [78a5ee4] Support disks sans contrllers
+    - [36033df] Add OVF test fixtures
+    - [76edb74] vSphere-specific OVF qualifiers
+    - [aa91758] Uber OVF
+    - [8dc36fe] Product categories
+    - [945cef7] Disk capacity via prop, invalid prop keys
+    - [e3e5a48] Fix string min/max
+    - [9d8ceb0] Support explicit deployment configuration
+    - [a695944] Parse OVF property qualifiers per DSP0243
+    - [7bd6976] File-backed disks in OVF->ConfigSpec
+  * govc (CLI)
+    - [b9612be] add library.import disks option
+  * Chore
+    - [df7c057] Update version.go for v0.54.0
+  * Commits
+    - [df7c057] chore: Update version.go for v0.54.0
+    - [280e083] feat(updateSpec): Remove omitempty from storage
+      spec to have it always rendered Signed-off-by: tribock
+      <louis.baumann93@gmail.com>
+    - [fb18fe0] feat(marshal): Implement new Marshal Function to
+      implement the removal of the last storage policy or the
+      deletion of all policies Signed-off-by: tribock
+      <louis.baumann93@gmail.com>
+    - [92f18db] api: add FetchVmGroupForMultiwriterDisks vim25
+      bindings and vcsim support
+    - [b7f92a5] feat(init): add initial implementation of
+      NamespaceNetwork to support Network override in
+      CreateNamespace Signed-off-by: tribock
+      <louis.baumann93@gmail.com>
+    - [8edadde] chore(deps): bump nokogiri from 1.19.2 to 1.19.3 in
+      /gen
+    - [a287dcf] chore(deps): bump goreleaser/goreleaser-action from
+      7.1.0 to 7.2.1 (#4000) (#4000)
+    - [24621e0] chore(deps): bump goreleaser/goreleaser-action from
+      7.0.0 to 7.1.0 (#3998) (#3998)
+    - [7b1c384] chore(deps): bump chuhlomin/render-template from
+      1.11 to 1.12
+    - [d0181b9] chore(deps): bump chuhlomin/render-template (#3996)
+      (#3996)
+    - [61e1166] minor change on QueryVolume result verification
+    - [69ec24a] chore(deps): bump chuhlomin/render-template from
+      1.10 to 1.11 (#3995) (#3995)
+    - [953f8e1] chore(deps): bump actions/cache from 5.0.4 to 5.0.5
+      (#3994) (#3994)
+    - [774caab] Add API for CNS CBT Control
+    - [7d4ac0d] chore(deps): bump actions/upload-artifact from
+      7.0.0 to 7.0.1 (#3992) (#3992)
+    - [bfeb281] chore(deps): bump peter-evans/create-pull-request
+      from 8.1.0 to 8.1.1 (#3991) (#3991)
+    - [5ee9945] api: Fix OVF disk ID func
+    - [f950446] chore(deps): bump actions/setup-go from 6.3.0 to
+      6.4.0
+    - [6579127] api: Support NetworkSpec in Namespaces
+    - [4592669] chore(deps): bump nokogiri from 1.19.1 to 1.19.2 in
+      /gen
+    - [57d3dfb] chore(deps): bump actions/cache from 5.0.3 to 5.0.4
+      (#3983) (#3983)
+    - [b356a6b] ovf spec parser for dmtf os types
+    - [b54705c] api: More OVF->ConfigSpec testing
+    - [25afc66] api: Support OVF->ConfigSpec SR-IOV NICs
+    - [513e626] api: OVF->ConfigSpec support nil VHW
+    - [6c60d63] api: Default to first VirtualSystem in OVF
+    - [78a5ee4] api: Support disks sans contrllers
+    - [36033df] api: Add OVF test fixtures
+    - [76edb74] api: vSphere-specific OVF qualifiers
+    - [aa91758] api: Uber OVF
+    - [8dc36fe] api: Product categories
+    - [945cef7] api: Disk capacity via prop, invalid prop keys
+    - [e3e5a48] api: Fix string min/max
+    - [9d8ceb0] api: Support explicit deployment configuration
+    - [a695944] api: Parse OVF property qualifiers per DSP0243
+    - [7bd6976] api: File-backed disks in OVF->ConfigSpec
+    - [b9612be] govc: add library.import disks option
+    - [562d9cb] chore(deps): bump actions/upload-artifact from
+      6.0.0 to 7.0.0 (#3970) (#3970)
+    - [9e3cc86] reevert: "chore(deps): bump go to 1.24.13 (#3956)"
+      (#3969) (#3956) (#3969)
+    - [2a8ba44] chore(deps): bump actions/setup-go from 6.2.0 to
+      6.3.0 (#3968) (#3968)
+    - [a8ff1b1] fix: parsing vApp properties while converting from
+      OVF envelope to VM ConfigSpec(#3964) (#3964)
+    - [e205430] chore(gh): update release workflow (#3967) (#3967)
+    - [2ad7482] chore(gh): update govc tests workflow (#3966)
+      (#3966)
+    - [ed441b7] chore(deps): bump goreleaser/goreleaser-action from
+      6.4.0 to 7.0.0 (#3965) (#3965)
+
+-------------------------------------------------------------------
 Wed Apr 22 05:58:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.53.1:
