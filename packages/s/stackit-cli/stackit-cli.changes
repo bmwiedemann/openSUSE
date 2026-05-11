@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon May 11 09:07:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.62.0:
+  * onboard sfs project lock command (#1397)
+  * chore(docs): move contribution guide (#1401)
+  * chore(deps): bump goreleaser/goreleaser-action from 7.1.0 to
+    7.2.1 (#1398)
+  * fix(config): fix deletion of profiles on some systems (#1389)
+  * chore(sfs): migrate to new SDK structure (#1396)
+  * feat(iaas): add agent provisioning flag to server create cmd
+    (#1213)
+  * fix(observability): print valid JSON/YAML output for list cmds
+    (#1393)
+  * fix(resourcemanager): print valid JSON/YAML output for list
+    cmds (#1394)
+  * chore(deps): bump k8s.io/apimachinery from 0.35.3 to 0.35.4
+    (#1390)
+  * fix(loadbalancer): print valid JSON/YAML output for list cmds
+    (#1382)
+  * chore(deps): bump golang.org/x/text from 0.35.0 to 0.36.0
+    (#1386)
+  * chore(deps): bump goreleaser/goreleaser-action from 7 to 7.1.0
+    (#1388)
+  * fix(serverupdate): print valid JSON/YAML output for list cmds
+    (#1380)
+  * fix(serverbackup): print valid JSON/YAML output for list cmds
+    (#1379)
+  * feat(intake): port to v1betaapi (#1364)
+  * fix(runcommand): print valid JSON/YAML output for list cmds
+    (#1378)
+  * Feat/stackitcli 318 secret flags 3 (#1377)
+  * feat(secret flag) add reusable secret flag implementation,
+    update guide (#1366)
+  * feat(cli): upgraded golangci-lint to v2.11 (#1374)
+  * chore(deps): bump golang.org/x/term from 0.40.0 to 0.42.0
+    (#1372)
+
+-------------------------------------------------------------------
 Tue Apr 21 05:50:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.61.0:
