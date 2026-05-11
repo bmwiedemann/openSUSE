@@ -17,7 +17,7 @@
 
 
 Name:           sops
-Version:        3.12.2
+Version:        3.13.0
 Release:        0
 Summary:        Simple and flexible tool for managing secrets
 License:        MPL-2.0
