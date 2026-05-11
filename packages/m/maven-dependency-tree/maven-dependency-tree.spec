@@ -1,7 +1,7 @@
 #
 # spec file for package maven-dependency-tree
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-dependency-tree
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Maven dependency tree artifact
 License:        Apache-2.0

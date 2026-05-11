@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 11 05:51:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.3.0
+  * Bug Fixes
+    + MSHARED-1286: Display if dependency is optional in tree
+  * Dependency updates
+    + MSHARED-1400: Bump org.apache.maven.shared
+      :maven-shared-components from 40 to 42
+    + Bump apache/maven-gh-actions-shared from 3 to 4
+    + Bump parent from 37 to 39
+    + Bump apache/maven-gh-actions-shared from 2 to 3
+  * Maintenance
+    + Bump org.junit.jupiter:junit-jupiter-api from 5.9.3 to 5.10.2
+
+-------------------------------------------------------------------
 Tue Jun  3 08:16:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on objectweb-asm to build with sisu 0.9.0.M4
