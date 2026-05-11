@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May  2 07:52:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.26.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.26.0
+- Changes since 6.25.0:
+  * Update dependency version to 6.26.0
+  * Reapply "Enable LSAN in CI"
+  * GridDelegate: Don't interfere with Space/Enter key handling (kde#519194)
+  * kcmshell: Use flat style by default
+  * Improve layout of kcm loading errors
+  * Update version to 6.26.0
+
+-------------------------------------------------------------------
 Tue Apr  7 19:18:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.25.0
