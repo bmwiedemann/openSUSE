@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 11 05:04:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.6:
+  * Add linter to complain about shipping libtool linker files.
+    (#2520)
+  * build(deps): bump github.com/chainguard-dev/yam from 0.2.57 to
+    0.2.58 in the gomod group across 1 directory (#2516)
+  * linter: validate cfg.Package.Version against path traversal in
+    saveLintResults (#2515)
+  * fix(ci): harden against template injection and credential
+    exposure (#2514)
+
+-------------------------------------------------------------------
 Mon May 04 16:41:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.5:
