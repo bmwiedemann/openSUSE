@@ -1,7 +1,7 @@
 #
 # spec file for package apr-util
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         libname lib%{name}%{apuver}-0
 %define         dso_libdir %{_libdir}/apr-util-%{apuver}
 %define         includedir %{_includedir}/apr-%{apuver}
-%global         libapr %(rpm -qf $(realpath %{_libdir}/libapr-1.so))
+%global         libapr %(rpm --qf "%%{name}" -qf $(realpath %{_libdir}/libapr-1.so))
 Name:           apr-util
 Version:        1.6.3
 Release:        0

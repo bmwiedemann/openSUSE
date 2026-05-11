@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  5 10:07:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- requires_ge takes a package name as parameter, not a full
+  NVR.arch string (that just happens to work sometimes): Fix by
+  passing '--qf "%%{name}' to the rpm call identifying the target
+  package name.
+
+-------------------------------------------------------------------
 Thu Oct 31 15:56:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix dependency on libapr: in 2021, libapr1 was renamed to
