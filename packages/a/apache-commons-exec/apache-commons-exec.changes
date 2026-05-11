@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Mon May 11 07:04:51 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.6.0
+  * New features:
+    + TimeoutObserver now extends Consumer<Watchdog>
+    + Add org.apache.commons.exec.Watchdog.getTimeout()
+  * Fixed Bugs:
+    + Watchdog.builder().get() now uses a default timeout of 30
+      seconds instead of throwing a NullPointerException
+    + ExecuteWatchdog.builder().get() now uses a default timeout of
+      30 seconds instead of throwing a NullPointerException
+    + Calling org.apache.commons.exec.Watchdog.Builder
+      .setTimeout(Duration) with null now resets to the default
+      INFINITE_TIMEOUT_DURATION timeout
+    + Calling org.apache.commons.exec.ExecuteWatchdog.Builder
+      .setTimeout(Duration) with null now resets to the default
+      INFINITE_TIMEOUT_DURATION timeout
+    + Calling org.apache.commons.exec.Watchdog.Builder
+      .setThreadFactory(ThreadFactory) with null now resets to the
+      default java.util.concurrent.Executors.defaultThreadFactory()
+    + Calling org.apache.commons.exec.ExecuteWatchdog.Builder
+      .setThreadFactory(ThreadFactory) with null now resets to the
+      default java.util.concurrent.Executors.defaultThreadFactory()
+    + Fix Checkstyle issues
+    + Fix StringUtils.quoteArgument(String) when input contains
+      single and double quotes #309
+    + Fix Apache RAT plugin console warnings
+  * Changes:
+    + Bump org.apache.commons:commons-parent from 83 to 93
+    + Bump org.apache.commons:commons-lang3 from 3.17.0 to 3.20.0
+
+-------------------------------------------------------------------
+Mon May 11 06:59:40 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.5.0
+  * New features:
+    + Add Maven property project.build.outputTimestamp for build
+      reproducibility
+    + Add CommandLine.CommandLine(Path)
+    + Add Executor.getWorkingDirectoryPath()
+    + Add DefaultExecutor.Builder.setWorkingDirectory(Path)
+    + Add CommandLauncher.exec(CommandLine, Map<String, String>,
+      Path)
+  * Fixed Bugs:
+    + EXEC-122: Document PumpStreamHandler stream thread-safety
+      requirements
+    + Fix CI only running on Ubuntu and improve OS-specific tests
+    + Fix PMD UnnecessaryFullyQualifiedName in DefaultExecutor
+    + Fix PMD EmptyCatchBlock by allowing commented blocks
+    + Fix PMD EmptyControlStatement by allowing commented blocks
+    + Replace OS.OS_* use of Locale.ENGLISH with Locale.ROOT
+    + Deprecate DebugUtils.DebugUtils()
+    + Deprecate MapUtils.MapUtils()
+    + Deprecate StringUtils.StringUtils()
+    + Fix Javadoc warnings
+    + Fix SpotBugs AT_STALE_THREAD_WRITE_OF_PRIMITIVE: Shared
+      primitive variable "shouldDestroy" in one thread may not yield
+      the value of the most recent write from another thread
+      [org.apache.commons.exec.ShutdownHookProcessDestroyer
+      $ProcessDestroyerThread]
+    + Fix SpotBugs AT_STALE_THREAD_WRITE_OF_PRIMITIVE: Shared
+      primitive variable "added" in one thread may not yield the
+      value of the most recent write from another thread
+      [org.apache.commons.exec.ShutdownHookProcessDestroyer]
+  * Changes:
+    + Bump org.apache.commons:commons-parent from 65 to 83
+  * Removed:
+    + Remove obsolete and unmaintained Ant build file
+- Generate Ant build file for our build
+- Removed patch:
+  * commons-exec-1.3-build_xml.patch
+    + not needed anymore
+
+-------------------------------------------------------------------
+Mon May 11 06:54:03 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.4.0
+  * New features:
+    + Add ShutdownHookProcessDestroyer.isEmpty()
+    + Add DefaultExecuteResultHandler.waitFor(Duration)
+    + Add Watchdog.Watchdog(Duration)
+    + Add ExecuteWatchdog.ExecuteWatchdog(Duration)
+    + Add PumpStreamHandler.setStopTimeout(Duration) and deprecate
+      PumpStreamHandler.setStopTimeout(long)
+    + Add DefaultExecutor.Builder
+    + Add DaemonExecutor.Builder
+    + Add ExecuteWatchdog.Builder
+    + Add Watchdog.Builder
+  * Fixed Bugs:
+    + EXEC-105: Fix code snippet in tutorial page
+    + EXEC-100: Sync org.apache.commons.exec.OS with the newest Ant
+      source file.
+    + EXEC-64: DefaultExecutor swallows IOException cause instead
+      of propagating it (work-round for Java 1.5)
+    + Java-style Array declaration and remove empty finally block
+    + Use JUnit 5 assertThrows()
+    + [StepSecurity] ci: Harden GitHub Actions
+    + Port from JUnit 4 to 5
+    + [Javadoc] CommandLine.toCleanExecutable(final String
+      dirtyExecutable) IllegalArgumentException #61
+    + ExecuteException propagates its cause to its IOException
+      superclass
+    + Propagate exception in DebugUtils.handleException(String,
+      Exception)
+    + Deprecate StringUtils.toString(String[], String) in favor of
+      String.join(CharSequence, CharSequence...)
+    + EXEC-78: No need to use System.class.getMethod("getenv",...)
+      any more
+    + EXEC-70: Delegate thread creation to
+      java.util.concurrent.ThreadFactory
+    + Avoid NullPointerException in MapUtils.prefix(Map, String)
+  * Changes:
+    + Bump github actions #52
+    + EXEC-111: Update from Java 5 to 6
+    + Update from Java 7 to 8
+    + Bump actions/cache from 2 to 3.0.11
+    + Bump actions/checkout from 2.3.2 to 3.1.0
+    + Bump actions/setup-java from 1.4.0 to 3.8.0
+    + Bump junit from 4.13 to 5.9.1 Vintage
+    + Bump maven-pmd-plugin from 2.7.1 to 3.19.0
+    + Bump maven-checkstyle-plugin from 2.13 to 3.2.0
+    + Bump commons-parent from 52 to 65
+    + Bump japicmp-maven-plugin from 0.15.6 to 0.16.0
+  * Removed:
+    + Deprecate DefaultExecuteResultHandler.waitFor(long)
+    + Deprecate ExecuteWatchdog.ExecuteWatchdog(long)
+    + Deprecate Watchdog.Watchdog(long)
+    + Drop obsolete and unmaintained Ant build
+    + Drop CLIRR plugin, replaced by JApiCmp
+
+-------------------------------------------------------------------
 Wed Oct  2 15:30:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Spec file cleanup

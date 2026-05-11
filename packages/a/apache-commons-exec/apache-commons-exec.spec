@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-exec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,19 @@
 
 %global base_name exec
 %global short_name commons-%{base_name}
-%bcond_with tests
 Name:           apache-%{short_name}
-Version:        1.3
+Version:        1.6.0
 Release:        0
 Summary:        Java library to reliably execute external processes from within the JVM
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/exec/
 Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
-Patch0:         commons-exec-1.3-build_xml.patch
+Source100:      %{name}-build.xml
 BuildRequires:  ant
-BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-%endif
 
 %description
 Commons Exec is a library for dealing with external process execution and
@@ -49,26 +44,11 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%autosetup -p1 -n %{short_name}-%{version}-src
-
-# Fix wrong end-of-line encoding
-dos2unix LICENSE.txt NOTICE.txt RELEASE-NOTES.txt STATUS
-
-# Shell scripts used for unit tests must be executable (see
-# http://commons.apache.org/exec/faq.html#environment-testing)
-chmod a+x src/test/scripts/*.sh
-
-# Skip Exec57Test (it is unstable), see rhbz#1202260
-find -name Exec57Test.java -delete
-
-%pom_remove_parent .
+%setup -n %{short_name}-%{version}-src
+cp %{SOURCE100} build.xml
 
 %build
-ant \
-%if %{without tests}
-    -Dmaven.test.skip=true \
-%endif
-    jar javadoc
+ant jar javadoc
 
 %install
 # jar
@@ -86,7 +66,7 @@ cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 
 %files -f .mfiles
 %license LICENSE.txt NOTICE.txt
-%doc STATUS RELEASE-NOTES.txt
+%doc RELEASE-NOTES.txt
 %{_javadir}/%{name}.jar
 
 %files javadoc
