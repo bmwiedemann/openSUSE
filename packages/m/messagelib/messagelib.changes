@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  7 08:03:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * Adapt to KMime having moved to Frameworks
+  * Tentative crash fix
+  * Don't save phishing database configuration on shutdown
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
