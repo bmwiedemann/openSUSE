@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  7 08:03:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * Prevent QTabBar from closing tabs on middle mouse clicks (kde#515014)
+  * TerminalPainter: Don't start cursor animation when option is disabled
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
