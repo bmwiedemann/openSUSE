@@ -397,4 +397,21 @@
   * Try password login if FAST login fails.</comment>
     <requestid>1328216</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>823190179bc0e40f45e6c983913cab7d</srcmd5>
+    <version>0.15.6</version>
+    <time>1778511433</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15.6:
+  Added:
+  * New config option allow_plain.
+  Changed:
+  * Explain each configuration option in manpage go-sendxmpp(5).
+  * Improve config parsing robustness.
+  * Update link in manpage as Gitlab calls issues now work items.
+  * Recognize stanza size limit updates after authentication (via go-xmpp &gt;= v0.3.3).
+  * Tell connection target in error message when failing to connect.
+- Drop tar-scm service and use regular tarball and go_modules</comment>
+    <requestid>1352326</requestid>
+  </revision>
 </revisionlist>

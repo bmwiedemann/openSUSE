@@ -17,21 +17,22 @@
 
 
 Name:           go-sendxmpp
-Version:        0.15.5
+Version:        0.15.6
 Release:        0
 Summary:        A little tool to send messages to an XMPP contact or MUC
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://salsa.debian.org/mdosch/go-sendxmpp
-Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source:         https://salsa.debian.org/mdosch/go-sendxmpp/-/archive/v%{version}/go-sendxmpp-v%{version}.tar.gz
+Source1:        vendor.tar.zst
 BuildRequires:  golang-packaging
+BuildRequires:  zstd
 
 %description
 A little tool to send messages to an XMPP contact or MUC.
 
 %prep
-%setup -q -a1
+%autosetup -p1 -a1 -n %{name}-v%{version}
 
 %build
 go build \
