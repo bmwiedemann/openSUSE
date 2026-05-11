@@ -1,0 +1,35 @@
+diff -Nur tuxpaint-0.9.35-orig/src/i18n.c tuxpaint-0.9.35/src/i18n.c
+--- tuxpaint-0.9.35-orig/src/i18n.c	2025-04-19 21:51:18.000000000 +0200
++++ tuxpaint-0.9.35/src/i18n.c	2026-05-10 21:01:30.636048544 +0200
+@@ -256,7 +256,8 @@
+ 
+ int need_own_font;
+ int need_right_to_left;
+-const char *lang_prefix, *short_lang_prefix;
++const char *lang_prefix;
++char *short_lang_prefix;
+ 
+ w_langs wished_langs[255];
+ 
+diff -Nur tuxpaint-0.9.35-orig/src/i18n.h tuxpaint-0.9.35/src/i18n.h
+--- tuxpaint-0.9.35-orig/src/i18n.h	2025-04-19 21:51:18.000000000 +0200
++++ tuxpaint-0.9.35/src/i18n.h	2026-05-10 21:02:29.605572119 +0200
+@@ -185,7 +185,8 @@
+ extern const char *lang_prefixes[NUM_LANGS];
+ extern int need_own_font;
+ extern int need_right_to_left;  // Right-justify
+-extern const char *lang_prefix, *short_lang_prefix;
++extern const char *lang_prefix;
++extern char *short_lang_prefix;
+ 
+ typedef struct w_langs
+ {
+@@ -194,7 +195,7 @@
+   int need_right_to_left;
+   int lang_y_nudge;
+   const char *lang_prefix;
+-  const char *short_lang_prefix;
++  char *short_lang_prefix;
+ } w_langs;
+ 
+ extern w_langs wished_langs[255];

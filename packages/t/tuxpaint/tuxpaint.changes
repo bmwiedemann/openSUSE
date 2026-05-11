@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 10 19:08:03 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add tuxpaint-fix-consts-definition.patch, fixes building with 
+  newer gcc
+
+-------------------------------------------------------------------
 Sun Jun  8 03:24:18 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.9.35:

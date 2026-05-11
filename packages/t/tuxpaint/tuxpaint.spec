@@ -1,7 +1,7 @@
 #
 # spec file for package tuxpaint
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Patch0:         tuxpaint-import-eval.patch
 Patch1:         tuxpaint-makefile.patch
 # PATCH-FIX-UPSTREAM tuxpaint-pango-cflags.patch -- Include cflags from pango's pkgconfig file, needed only for sdl2 flavour
 Patch2:         tuxpaint-pango-cflags.patch
+# PATCH-FIX-UPSTREAM tuxpaint-fix-consts-definition.patch -- Fix assignment of read-only location
+Patch3:         tuxpaint-fix-consts-definition.patch
 BuildRequires:  ImageMagick
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(sdl%{?sdlver})
