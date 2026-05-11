@@ -343,4 +343,31 @@
     - Fix hash table size handling and remove compile warnings in syck_st</comment>
     <requestid>1346901</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>93deff951857c3ff3bc3ab3189d84828</srcmd5>
+    <version>1.450.0</version>
+    <time>1778511424</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.450.0 (1.45)
+   see /usr/share/doc/packages/perl-YAML-Syck/Changes
+  1.45 Apr 23 2026
+    [Bug Fixes]
+    - Fix: use syck_base64_free() to fix Windows &quot;Free to wrong pool&quot; crash
+      in base64 encode/decode buffers; also plugs a memory leak (PR #189)
+    - Fix: clear type tag on blessed scalar alias early-return so the stale
+      tag no longer leaks onto the next emitted item (GH #193, PR #194)
+    - Fix: negative float#base60 values produce wrong results; strip sign
+      before accumulating and avoid negative zero for portable
+      stringification (PR #191)
+    - Fix: prevent memory leaks when Load/LoadJSON croak on parse errors
+      (PR #192)
+    [Maintenance]
+    - Test: add coverage for SortKeys and JSON MaxDepth (PR #188)
+    - Test: add error handling coverage for LoadFile/DumpFile (PR #190)
+    - Update README
+
+      bsc#1259757
+    CVE-2025-11683 bsc#1252111</comment>
+    <requestid>1352298</requestid>
+  </revision>
 </revisionlist>

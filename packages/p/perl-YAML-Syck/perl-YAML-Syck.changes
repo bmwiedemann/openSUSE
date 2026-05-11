@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 24 07:18:13 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.450.0 (1.45)
+   see /usr/share/doc/packages/perl-YAML-Syck/Changes
+
+  1.45 Apr 23 2026
+
+    [Bug Fixes]
+    - Fix: use syck_base64_free() to fix Windows "Free to wrong pool" crash
+      in base64 encode/decode buffers; also plugs a memory leak (PR #189)
+    - Fix: clear type tag on blessed scalar alias early-return so the stale
+      tag no longer leaks onto the next emitted item (GH #193, PR #194)
+    - Fix: negative float#base60 values produce wrong results; strip sign
+      before accumulating and avoid negative zero for portable
+      stringification (PR #191)
+    - Fix: prevent memory leaks when Load/LoadJSON croak on parse errors
+      (PR #192)
+
+    [Maintenance]
+    - Test: add coverage for SortKeys and JSON MaxDepth (PR #188)
+    - Test: add error handling coverage for LoadFile/DumpFile (PR #190)
+    - Update README
+
+-------------------------------------------------------------------
 Wed Apr  8 20:19:34 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.440.0 (1.44)
@@ -87,6 +111,7 @@ Wed Apr  8 20:19:34 UTC 2026 - Tina Müller <timueller+perl@suse.de>
     - Add LoadBytes, LoadUTF8, DumpBytes, DumpUTF8 functions (GH #51)
     [Fixes]
     - Fix heap buffer overflow in the YAML emitter - CVE-2026-4177 (GH #67)
+      bsc#1259757
     - Fix DumpFile with tied filehandles (IO::String, IO::Scalar) (GH #22)
     - Fix _is_glob to recognize IO::Handle subclasses (GH #23)
     - Fix memory leak when dumping filehandles (RT#41199, GH #42)
@@ -132,6 +157,7 @@ Tue Oct 14 12:27:18 UTC 2025 - Tina Müller <timueller+perl@suse.de>
   1.36 Oct 10 2025
   - Address memory corruption leading to 'str' value being set on empty keys
     Thanks @timlegge
+    CVE-2025-11683 bsc#1252111
   1.35 Oct 9 2025
   - Address parsing error related to string detection on read for empty strings.
 
