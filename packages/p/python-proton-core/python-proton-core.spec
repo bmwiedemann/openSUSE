@@ -26,6 +26,7 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ProtonVPN/python-proton-core
 Source:         https://github.com/ProtonVPN/python-proton-core/archive/refs/tags/v%{version}.tar.gz
+Patch1:         drop-long-password-test.patch
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module gnupg}

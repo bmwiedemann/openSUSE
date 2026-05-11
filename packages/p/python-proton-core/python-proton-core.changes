@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 09:02:52 UTC 2026 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Add drop-long-password-test.patch to fix build issue with bcrypt 5.0
+  caused by https://github.com/pyca/bcrypt/commit/d50ab05b2bece07d5c8d6a4179064fc714fd9126 
+
+-------------------------------------------------------------------
 Sun Nov  2 15:24:54 UTC 2025 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to 0.7.0:
