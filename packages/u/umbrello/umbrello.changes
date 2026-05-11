@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  7 08:03:43 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * svn2png: Fix bug not checking the correct svg renderer instance
+  * Fix clip4 paste of sequence messages across instances (kde#418395)
+  * Fix bug not initializing the scene background color (kde#519794)
+  * Qt6: Fix not finding configuration files for layout generator (kde#519790)
+  * Refine association duplicate check to full edge identity
+  * Fix duplicate named association widgets during diagram load (kde#519215)
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
