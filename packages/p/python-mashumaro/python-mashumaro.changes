@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May  8 05:13:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.21:
+  * Added support for recursive dataclasses in JSON Schema (#308)
+  * Fixed building JSON Schema for dataclasses with slots (#307)
+  * Fixed issue with deferred evaluation of annotations for
+    serialization strategies and serializable types that include
+    PEP 695 generic type parameters (#310)
+  * Fixed errors for PEP 695 type aliases with generic arguments or
+    cyclic references (#311, #312)
+  * Code coverage report tool coveralls.io was replaced by
+    codecov.io (#309)
+  * Fixed propagation of lazy_compilation config value in generic
+    dataclasses with inheritance (#319)
+  * Added ability for serialization strategies to match subclasses
+    (#298, #317)
+  * Dropped support for Python 3.9 (#314)
+
+-------------------------------------------------------------------
 Tue Feb 10 05:52:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.20:
