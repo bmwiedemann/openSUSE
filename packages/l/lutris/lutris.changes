@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 10 12:41:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-webkit-typelib.patch: typelib-1_0-WebKit2-4_0 does not
+  exist on Tumbleweed anymore, patch to only look for
+  typelib-1_0-WebKit2-4_1 (boo#1262104).
+- Add typelib(AppIndicator3/AyatanaAppIndicator3) exclude, this is
+  not a hard Requires, but our generator erroneously sets it as one
+- Following the above, add typelib-1_0-AppIndicator3-0_1 or
+  typelib-1_0-AyatanaAppIndicator3-0_1 Recommends: Either one of
+  those is enough to allow the tray icon to work on supported
+  desktops.
+
+-------------------------------------------------------------------
 Wed Feb 25 08:00:31 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.22:

@@ -622,4 +622,12 @@
   * Update release targets in PPA CI</comment>
     <requestid>1334925</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>88564e41de6e7deb90230b2c860914ee</srcmd5>
+    <version>0.5.22</version>
+    <time>1778511430</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1352323</requestid>
+  </revision>
 </revisionlist>

@@ -19,6 +19,7 @@
 %define         _py 311
 %define         _pyb 3.11
 %define         appid net.lutris.Lutris
+%global __requires_exclude typelib\\(AppIndicator3|AyatanaAppIndicator3\\)
 %{?sle15_python_module_pythons}
 Name:           lutris
 Version:        0.5.22
@@ -28,6 +29,7 @@ License:        GPL-3.0-or-later
 URL:            https://lutris.net
 Source0:        https://github.com/lutris/lutris/archive/refs/tags/v%{version}.tar.gz
 Source1:        %{name}.apparmor
+Patch0:         fix-webkit-typelib.patch
 Requires:       xrandr
 # boo#1213440
 Recommends:     ca-certificates-steamtricks
@@ -109,6 +111,7 @@ Requires:       python%{_py}-moddb
 # boo#1257536
 Requires:       libvulkan1-32bit
 %endif
+Recommends:     (typelib-1_0-AppIndicator3-0_1 or typelib-1_0-AyatanaAppIndicator3-0_1)
 
 %lang_package
 
@@ -127,7 +130,7 @@ Supplements:    (%{name} and apparmor-profiles)
 %{summary}.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} >= 1600

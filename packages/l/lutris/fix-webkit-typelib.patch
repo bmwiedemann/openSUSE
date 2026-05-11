@@ -1,0 +1,13 @@
+Index: lutris-0.5.22/lutris/gui/dialogs/webconnect_dialog.py
+===================================================================
+--- lutris-0.5.22.orig/lutris/gui/dialogs/webconnect_dialog.py
++++ lutris-0.5.22/lutris/gui/dialogs/webconnect_dialog.py
+@@ -12,7 +12,7 @@ if TYPE_CHECKING:
+ try:
+     gi.require_version("WebKit2", "4.1")
+ except ValueError:
+-    gi.require_version("WebKit2", "4.0")
++    gi.require_version("WebKit2", "4.1")
+ from gi.repository import WebKit2  # type: ignore[attr-defined]
+ 
+ from lutris.config import LutrisConfig
