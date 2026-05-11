@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 11 05:03:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.12:
+  * build(deps): bump chainguard-dev/actions from 1.6.17 to 1.6.19
+    (#2219)
+  * fix(ci): harden against template injection and credential
+    exposure (#2217)
+
+-------------------------------------------------------------------
 Wed May 06 09:10:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.11:
