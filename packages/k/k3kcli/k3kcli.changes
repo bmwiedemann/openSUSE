@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Mon May 11 10:58:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.0:
+  * update chart to v1.1.0-rc7 (#841)
+  * Filter requests. infrastructure resources for node capacity
+    (#834)
+  * Add server and worker resource request and limits (#832)
+  * Bump charts to `1.1.0-rc6` (#822)
+  * Update Kubernetes dependencies (#811)
+  * update chart to v1.1.0-rc5 (#821)
+  * Update registry.suse.com/bci/bci-base Docker tag to v16 (#819)
+  * Fix cgroup dirs for virtual mode clusters (#792)
+  * Update rancher/renovate-config digest to 9d3c102 (#817)
+  * Remove the node capacity from the merged lists (#816)
+  * Update rancher/renovate-config digest to e1355a7 (#799)
+  * Add WorkerLimit to shared cluster and add unit tests (#798)
+  * fix kubeconfig (#795)
+  * chore(deps): update rancher/renovate-config digest to a9fa41f
+    (#784)
+  * chore(deps): update github/codeql-action digest to ce64ddc
+    (#793)
+  * Bump charts to `1.1.0-rc4` (#790)
+  * Fix helm install (#791)
+  * Add hostUsers to cluster spec (#787)
+  * chore(deps): update actions/upload-artifact digest to 043fb46
+    (#776)
+  * Added Policy finalizer (#781)
+  * Remove goreleaser action (#788)
+  * fix pvc race condition (#786)
+  * Bump `testcontainers-go` and `helm` modules to latest versions
+    (#782)
+  * add importas linter (#779)
+  * Refactoring of tests moving common logic in `tests/framework`
+    (#769)
+  * check err nillness (#774)
+  * bump charts to 1.1.0-rc3 [skip ci] (#768)
+  * Update opentelemetry to `1.43.0` (#766)
+  * Update modules `go.etcd.io/etcd` to `v3.6.10` (#764)
+  * chore(deps): update rancher/renovate-config digest to 240174f
+    (#760)
+  * Conformance tests report (#757)
+  * bump go to 1.25.9 and golancilint (#759)
+  * Add support for projected service account tokens in shared mode
+    (#660)
+  * Custom runtime class and security context  (#742)
+  * chore(deps): update module helm.sh/helm/v3 to v3.20.1 (#746)
+  * chore(deps): update rancher/renovate-config digest to 20f34a3
+    (#743)
+  * minor fix to translated ingress tls secrets in ingress object
+    (#672)
+  * Cleanup tests and small fixes (#741)
+  * Added `release/v1.0` branch to renovate config (#740)
+  * Fix networkpolicy for kube-ovn network (#691)
+  * chore(deps): update github actions (#731)
+  * Schedule Pods in the same Node with a preferred affinity (#724)
+  * update K3S_HOST_VERSION and use variable in cli tests (#734)
+  * Removed Pod mutating Webhook (`shared` mode) (#699)
+  * chore(deps): update kubernetes dependencies (#722)
+  * Pin installed versions to specific hashes (#730)
+  * Refactor tests to their own directories (#723)
+  * Bump version to 1.1.0-rc2 in Chart.yaml (#721)
+  * Add initial affinity to podspecs (#696)
+  * Add `status` field in CRDs docs (#720)
+  * chore(deps): update github actions (#711)
+  * chore(deps): update github actions (#653)
+  * Update virtual-kubelet (v1.12) and Kubernetes deps (v1.35)
+    (#716)
+  * chore(ci): bump aquasecurity/trivy-action to v0.35.0
+  * Don't start the metrics server in tests.
+  * update golang grpc module (#712)
+  * Bump some tes dependencies and fix lint (#708)
+  * Use CompactSequenceIndent faeture of yq
+  * chore(deps): update github actions (#642)
+  * chore(deps): update dependency go to v1.25.8 (#664)
+  * Run go generate
+  * Use yq instead of sed
+  * Change build and generate scripts for arm64 compatibility
+  * Add sync of Host StorageClasses (#681)
+  * Change the nodes type to worker.
+  * Refactor distribution algorithm to account for host capacity
+    (#688)
+  * refactor: streamline K3S Docker installation and chart setup
+    with dynamic repository handling (#692)
+  * use apireader instead of client for node registration in mirror
+    host node (#686)
+  * Added `policy` in Cluster Status (#663)
+  * fix: switch ControllerReferences over to OwnerReferences
+
+-------------------------------------------------------------------
+Mon May 11 10:53:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.3:
+  * Add server and worker resource request and limits (#833)
+  * Update rancher/renovate-config digest to 9d3c102 (#820)
+  * bump charts 1.0.3-rc1 (#813)
+  * Update rancher/renovate-config digest to e1355a7 (#803)
+  * [release/v1.0] Add WorkerLimit to shared cluster and add unit
+    tests (#804)
+  * fix pvc race condition (#786) (#789)
+  * chore(deps): update rancher/renovate-config digest to a9fa41f
+    (#785)
+  * chore(deps): update github/codeql-action digest to ce64ddc
+    (#794)
+  * chore(deps): update rancher/renovate-config digest to 240174f
+    (#770)
+  * test framework refactor cherry pick (#780)
+  * Update some modules and Go to `v1.25.9` (#765)
+  * chore(deps): update github actions (#763)
+  * chore(deps): update rancher/renovate-config digest to 20f34a3
+    (#749)
+  * Schedule Pods in the same Node with a preferred affinity (#724)
+    (#736)
+  * Pin installed versions to specific hashes (#730) (#732)
+  * [v1.0] Refactor tests to their own directories (#725)
+  * update golang grpc module (#712) (#713)
+  * Backport macOS script compatibility changes (#709)
+  * Bump some tes dependencies and fix lint (#708) (#710)
+  * chore(deps): update github actions (#707)
+  * chore(deps): update dependency go to v1.25.8 (#664) (#706)
+  * Refactor distribution algorithm to account for host capacity
+    (#695)
+  * refactor: streamline K3S Docker installation and chart setup
+    with dynamic repository handling (#694)
+  * use apireader instead of client for node registration in mirror
+    host node (#687)
+  * Added `policy` in Cluster Status (#663) (#677)
+  * fix: switch ControllerReferences over to OwnerReferences
+  * Release v1.0.2 updates
+
+-------------------------------------------------------------------
 Tue Feb 17 05:59:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.2:
