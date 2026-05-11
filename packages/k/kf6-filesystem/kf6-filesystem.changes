@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 11:25:52 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix usage of %suse_version in Leap 16.1 which increases it to
+1610. 
+
+-------------------------------------------------------------------
 Wed Jan 21 11:12:37 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - macros.kf6: Add %{?build_ldflags} to linker flags

@@ -17,7 +17,7 @@
 
 
 Name:           kf6-filesystem
-Version:        20251007
+Version:        20260508
 Release:        0
 Summary:        RPM macros for KDE packages using Qt6
 License:        MIT
