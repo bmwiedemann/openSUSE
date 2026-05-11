@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  7 08:02:52 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * Fix required Qt version
+  * Reflect the move of KMime to Frameworks in the dependency data
+  * Add Condor PKPass extractor
+  * Add extractor script for monbus.es tickets
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
