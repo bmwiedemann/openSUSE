@@ -16,12 +16,12 @@
 #
 
 
-%define qt6_version 6.8.0
+%define qt6_version 6.9.0
 
 %define rname solid
 %bcond_without released
 Name:           kf6-solid
-Version:        6.25.0
+Version:        6.26.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
