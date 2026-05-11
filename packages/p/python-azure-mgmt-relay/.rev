@@ -83,4 +83,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173316</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>abfaa48761e0fbe5a9668f0789a50639</srcmd5>
+    <version>1.1.1</version>
+    <time>1778511516</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.1.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from pyproject.toml (forwarded request 1352377 from glaubitz)</comment>
+    <requestid>1352456</requestid>
+  </revision>
 </revisionlist>
