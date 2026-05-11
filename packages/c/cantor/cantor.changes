@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  7 08:02:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * Fix compilation with R 4.6 (kde#519764)
+  * snapcraft: Fix analitza version
+  * snapcraft: Some minor runtime fixes
+  * snapcraft: Remove symlinks
+  * snapcraft: Turn off nss3 and bump version okular
+  * snapcraft: Prepare for beta release
+
+-------------------------------------------------------------------
 Sat Apr 11 16:13:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
