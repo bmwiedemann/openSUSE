@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Apr 30 07:33:01 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Update to v1.17.0
+  * Add support for opt-in debug logging
+  * Fix typing issue with gRPC metadata when key ends in -bin
+  * Disabled universe-domain validation
+  * Deprecate credentials_file argument
+  * Allow Protobuf 7.x
+  * Improved type checking throughout the codebase 
+
+-------------------------------------------------------------------
+Wed Oct 23 00:29:57 UTC 2024 - Charu Jain <cjain@suse.com>
+
+- Initial Build of v1.12.5
