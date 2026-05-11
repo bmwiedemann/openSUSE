@@ -5,7 +5,7 @@ AD.03	Encamp	Encamp	3040684
 AD.02	Canillo	Canillo	3041203
 AD.07	Andorra la Vella	Andorra la Vella	3041566
 AD.08	Escaldes-Engordany	Escaldes-Engordany	3338529
-AE.07	Umm al Qaywayn	UmmalQaywayn	290595
+AE.07	Umm Al Quwain	Umm Al Quwain	290595
 AE.05	Ras Al Khaimah	Ras Al Khaimah	291075
 AE.03	Dubai	Dubai	292224
 AE.06	Sharjah	Sharjah	292673
@@ -142,7 +142,7 @@ AT.09	State of Vienna	State of Vienna	2761367
 AT.08	Vorarlberg	Vorarlberg	2762300
 AT.07	Tyrol	Tyrol	2763586
 AT.06	Styria	Styria	2764581
-AT.05	State of Salzburg	State of Salzburg	2766823
+AT.05	Salzburg	Salzburg	2766823
 AT.04	Upper Austria	Upper Austria	2769848
 AT.03	Lower Austria	Lower Austria	2770542
 AT.02	Carinthia	Carinthia	2774686
@@ -155,7 +155,7 @@ AU.06	Tasmania	Tasmania	2147291
 AU.04	Queensland	Queensland	2152274
 AU.02	New South Wales	New South Wales	2155400
 AU.01	Australian Capital Territory	Australian Capital Territory	2177478
-AX.211	Mariehamns stad	Mariehamns stad	9611689
+AX.211	Mariehamn	Mariehamn	9611689
 AX.212	Ålands landsbygd	Alands landsbygd	9611692
 AX.213	Ålands skärgård	Alands skaergard	9611694
 AZ.12	Beyləqan	Beylaqan	146879
@@ -187,7 +187,7 @@ AZ.56	Shusha City	Shusha City	409419
 AZ.57	Tartar District	Tartar District	409420
 AZ.61	Xankǝndi	Xankandi Sahari	409421
 AZ.65	Khojavend	Khojavend	409423
-AZ.71	Zərdab	Zardab	584583
+AZ.71	Zardab	Zardab	584583
 AZ.70	Zaqatala District	Zaqatala District	584604
 AZ.67	Yevlax	Yevlax	584650
 AZ.37	Oğuz	Oguz	584742
@@ -219,7 +219,7 @@ AZ.04	Ağdaş	Agdas	587376
 AZ.19	Gadabay District	Gadabay District	627535
 AZ.05	Ağstafa	Agstafa	828297
 AZ.20	Gǝncǝ	Ganja City	828298
-AZ.33	Mingǝcevir	Mingacevir City	828299
+AZ.33	Mingacevir City	Mingacevir City	828299
 AZ.34	Naftalan	Naftalan	828300
 AZ.41	Qobustan	Qobustan	828301
 AZ.52	Samux	Samux	828302
@@ -563,11 +563,11 @@ CI.98	Yamoussoukro	Yamoussoukro	10629377
 CI.76	Bas-Sassandra District	Bas-Sassandra District	11153052
 CI.94	Comoé District	Comoe District	11153053
 CI.77	Denguélé District	Denguele District	11153054
-CI.95	Gôh-Djiboua	Goh-Djiboua	11153055
+CI.95	Goh-Djiboua	Goh-Djiboua	11153055
 CI.81	Lacs District	Lacs District	11153056
 CI.82	Lagunes District	Lagunes District	11153057
 CI.78	Montagnes	Montagnes	11153058
-CI.96	Sassandra-Marahoué	Sassandra-Marahoue	11153059
+CI.96	Sassandra-Marahoue	Sassandra-Marahoue	11153059
 CI.87	Savanes District	Savanes District	11153060
 CI.90	Vallée du Bandama District	Vallee du Bandama District	11153061
 CI.97	Woroba	Woroba	11153062
@@ -584,16 +584,16 @@ CK.11695388	Penrhyn	Penrhyn	11695388
 CK.11695389	Pukapuka	Pukapuka	11695389
 CK.11695390	Rakahanga	Rakahanga	11695390
 CK.11695425	Rarotonga	Rarotonga	11695425
-CL.01	Valparaíso	Valparaiso	3868621
+CL.01	Valparaiso	Valparaiso	3868621
 CL.15	Tarapacá	Tarapaca	3870116
 CL.12	Santiago Metropolitan	Santiago Metropolitan	3873544
 CL.11	Maule Region	Maule Region	3880306
 CL.14	Los Lagos Region	Los Lagos Region	3881974
 CL.08	O'Higgins Region	O'Higgins Region	3883281
 CL.07	Coquimbo Region	Coquimbo Region	3893623
-CL.06	Biobío	Biobio	3898380
+CL.06	Biobio	Biobio	3898380
 CL.05	Atacama	Atacama	3899191
-CL.04	Araucanía	Araucania	3899463
+CL.04	Araucania	Araucania	3899463
 CL.03	Antofagasta	Antofagasta	3899537
 CL.02	Aysén	Aysen	3900333
 CL.10	Region of Magallanes	Region of Magallanes	4036650
@@ -727,17 +727,17 @@ CY.02	Keryneia	Keryneia	146411
 CY.01	Ammochostos	Ammochostos	146615
 CZ.52	Prague	Prague	3067695
 CZ.78	South Moravian	South Moravian	3339536
-CZ.79	Jihočeský kraj	Jihocesky kraj	3339537
-CZ.80	Vysočina	Vysocina	3339538
-CZ.81	Karlovarský kraj	Karlovarsky kraj	3339539
-CZ.82	Královéhradecký kraj	Kralovehradecky kraj	3339540
-CZ.83	Liberecký kraj	Liberecky kraj	3339541
-CZ.84	Olomoucký	Olomoucky	3339542
-CZ.85	Moravskoslezský	Moravskoslezsky	3339573
-CZ.86	Pardubický	Pardubicky	3339574
+CZ.79	South Bohemian Region	South Bohemian Region	3339537
+CZ.80	Vysocina	Vysocina	3339538
+CZ.81	Carlsbad Region	Carlsbad Region	3339539
+CZ.82	Hradec Králové Region	Hradec Kralove Region	3339540
+CZ.83	Liberec Region	Liberec Region	3339541
+CZ.84	Olomouc Region	Olomouc Region	3339542
+CZ.85	Moravian-Silesian Region	Moravian-Silesian Region	3339573
+CZ.86	Pardubice Region	Pardubice Region	3339574
 CZ.87	Plzeň Region	Plzen Region	3339575
 CZ.88	Central Bohemia	Central Bohemia	3339576
-CZ.89	Ústecký kraj	Ustecky kraj	3339577
+CZ.89	Ústí nad Labem Region	Usti nad Labem Region	3339577
 CZ.90	Zlín	Zlin	3339578
 DE.15	Thuringia	Thuringia	2822542
 DE.10	Schleswig-Holstein	Schleswig-Holstein	2838632
@@ -749,8 +749,8 @@ DE.07	North Rhine-Westphalia	North Rhine-Westphalia	2861876
 DE.06	Lower Saxony	Lower Saxony	2862926
 DE.12	Mecklenburg-Vorpommern	Mecklenburg-Vorpommern	2872567
 DE.05	Hesse	Hesse	2905330
-DE.04	Free and Hanseatic City of Hamburg	Free and Hanseatic City of Hamburg	2911297
-DE.03	Free Hanseatic City of Bremen	Free Hanseatic City of Bremen	2944387
+DE.04	Hamburg	Hamburg	2911297
+DE.03	Bremen	Bremen	2944387
 DE.11	Brandenburg	Brandenburg	2945356
 DE.16	State of Berlin	State of Berlin	2950157
 DE.02	Bavaria	Bavaria	2951839
@@ -883,7 +883,7 @@ EC.08	El Oro	El Oro	3658195
 EC.07	Cotopaxi	Cotopaxi	3658766
 EC.06	Chimborazo Province	Chimborazo Province	3659237
 EC.05	Carchi	Carchi	3659718
-EC.04	Cañar	Canar	3659849
+EC.04	Canar	Canar	3659849
 EC.03	Bolívar	Bolivar	3660130
 EC.02	Azuay	Azuay	3660431
 EC.22	Sucumbíos	Sucumbios	3830305
@@ -1011,7 +1011,7 @@ FR.94	Corsica	Corsica	3023519
 FR.24	Centre-Val de Loire	Centre-Val de Loire	3027939
 FR.53	Brittany	Brittany	3030293
 FR.27	Bourgogne	Bourgogne	11071619
-FR.75	Nouvelle-Aquitaine	Nouvelle-Aquitaine	11071620
+FR.75	New Aquitaine	New Aquitaine	11071620
 FR.28	Normandy	Normandy	11071621
 FR.44	Grand Est	Grand Est	11071622
 FR.76	Occitanie	Occitanie	11071623
@@ -1389,7 +1389,7 @@ IQ.07	Baghdad	Baghdad	98180
 IQ.06	Babil	Babil	98227
 IQ.13	Kirkuk	Kirkuk	98410
 IQ.05	Sulaymaniyah	Sulaymaniyah	98465
-IQ.17	An Najaf	An Najaf	98862
+IQ.17	Najaf	Najaf	98862
 IQ.04	Al-Qadisiyah	Al-Qadisiyah	99022
 IQ.03	Muthanna	Muthanna	99032
 IQ.01	Anbar	Anbar	99592
@@ -1681,16 +1681,16 @@ KY.10375969	Bodden Town	Bodden Town	10375969
 KY.10375970	North Side	North Side	10375970
 KY.10375971	East End	East End	10375971
 KY.10375972	Sister Island	Sister Island	10375972
-KZ.07	Batys Qazaqstan	Batys Qazaqstan	607847
-KZ.09	Mangghystaū	Mangghystau	608879
+KZ.07	West Kazakhstan	West Kazakhstan	607847
+KZ.09	Mangystau	Mangystau	608879
 KZ.06	Atyrau Oblisi	Atyrau Oblisi	609862
-KZ.04	Aktyubinskaya Oblast’	Aktyubinskaya Oblast'	610688
+KZ.04	Aktobe	Aktobe	610688
 KZ.15	East Kazakhstan	East Kazakhstan	1517381
 KZ.03	Aqmola	Aqmola	1518003
 KZ.16	North Kazakhstan	North Kazakhstan	1519367
 KZ.11	Pavlodar Region	Pavlodar Region	1520239
-KZ.14	Qyzylorda	Qyzylorda	1521406
-KZ.13	Qostanay	Qostanay	1521671
+KZ.14	Kyzylorda	Kyzylorda	1521406
+KZ.13	Kostanay	Kostanay	1521671
 KZ.12	Karaganda	Karaganda	1523401
 KZ.17	Zhambyl	Zhambyl	1524444
 KZ.10	Turkistan	Turkistan	1524787
@@ -1720,13 +1720,13 @@ LA.22	Bokeo	Bokeo	1904616
 LA.23	Bolikhamsai	Bolikhamsai	1904617
 LA.24	Vientiane Prefecture	Vientiane Prefecture	1904618
 LA.28	Xaisomboun	Xaisomboun	11395958
-LB.05	Mont-Liban	Mont-Liban	273607
-LB.04	Beyrouth	Beyrouth	276780
-LB.09	Liban-Nord	Liban-Nord	278297
+LB.05	Mount Lebanon	Mount Lebanon	273607
+LB.04	Beirut	Beirut	276780
+LB.09	North Lebanon	North Lebanon	278297
 LB.06	South Governorate	South Governorate	279894
-LB.08	Béqaa	Beqaa	280282
-LB.07	Nabatîyé	Nabatiye	444191
-LB.10	Aakkâr	Aakkar	6201370
+LB.08	Bekaa	Bekaa	280282
+LB.07	Nabatieh	Nabatieh	444191
+LB.10	Akkar	Akkar	6201370
 LB.11	Baalbek-Hermel Governorate	Baalbek-Hermel Governorate	6201371
 LC.10	Vieux-Fort	Vieux-Fort	3576413
 LC.09	Soufrière	Soufriere	3576441
@@ -1820,7 +1820,7 @@ LV.21	Ogre	Ogre	457061
 LV.20	Madonas novads	Madonas novads	457712
 LV.19	Ludza Municipality	Ludza Municipality	457773
 LV.18	Limbaži Municipality	Limbazi Municipality	457889
-LV.16	Liepāja	Liepaja	457955
+LV.16	Liepaja	Liepaja	457955
 LV.15	Kuldīga Municipality	Kuldiga Municipality	458459
 LV.14	Krāslava Municipality	Kraslava Municipality	458621
 LV.13	Jūrmala	Jurmala	459202
@@ -1849,45 +1849,45 @@ LV.D1	Smiltene Municipality	Smiltene Municipality	7628380
 LV.DN	South Kurzeme Municipality	South Kurzeme Municipality	12276857
 LV.AN	Augšdaugava Municipality	Augsdaugava Municipality	12276858
 LY.70	Darnah	Darnah	87204
-LY.69	Banghāzī	Banghazi	88318
+LY.69	Banghazi	Banghazi	88318
 LY.66	Al Marj	Al Marj	88904
 LY.65	Al Kufrah	Al Kufrah	88932
-LY.63	Al Jabal al Akhḑar	Al Jabal al Akhdar	443289
+LY.63	Al Jabal al Akhdar	Al Jabal al Akhdar	443289
 LY.77	Tripoli	Tripoli	2210245
 LY.76	Surt	Surt	2210553
 LY.75	Sabha District	Sabha District	2212774
-LY.74	Nālūt	Nalut	2214432
+LY.74	Nalut	Nalut	2214432
 LY.73	Murzuq District	Murzuq District	2214602
-LY.72	Mişrātah	Misratah	2214845
-LY.71	Ghāt	Ghat	2217350
-LY.68	Az Zāwiyah	Az Zawiyah	2218972
-LY.78	Ash Shāţiʼ	Wadi ash Shati'	2219413
+LY.72	Misratah	Misratah	2214845
+LY.71	Ghat	Ghat	2217350
+LY.68	Az Zawiyah	Az Zawiyah	2218972
+LY.78	Wadi ash Shati'	Wadi ash Shati'	2219413
 LY.64	Al Jufrah	Al Jufrah	2219944
-LY.67	An Nuqāţ al Khams	An Nuqat al Khams	2593778
-LY.79	Al Buţnān	Al Butnan	7602688
+LY.67	An Nuqat al Khams	An Nuqat al Khams	2593778
+LY.79	Al Butnan	Al Butnan	7602688
 LY.80	Jabal al Gharbi	Jabal al Gharbi	7602689
-LY.81	Al Jafārah	Al Jafarah	7602690
+LY.81	Al Jafarah	Al Jafarah	7602690
 LY.82	Al Marqab	Al Marqab	7602691
-LY.83	Al Wāḩāt	Al Wahat	7602692
-LY.84	Wādī al Ḩayāt	Wadi al Hayat	7602693
+LY.83	Al Wahat	Al Wahat	7602692
+LY.84	Wadi al Hayat	Wadi al Hayat	7602693
 MA.01	Tanger-Tetouan-Al Hoceima	Tanger-Tetouan-Al Hoceima	11281874
 MA.02	Oriental	Oriental	11281875
-MA.03	Fès-Meknès	Fes-Meknes	11281876
+MA.03	Fes-Meknes	Fes-Meknes	11281876
 MA.04	Rabat-Salé-Kénitra	Rabat-Sale-Kenitra	11281877
-MA.05	Béni Mellal-Khénifra	Beni Mellal-Khenifra	11281878
+MA.05	Beni Mellal-Khenifra	Beni Mellal-Khenifra	11281878
 MA.06	Casablanca-Settat	Casablanca-Settat	11281879
 MA.07	Marrakesh-Safi	Marrakesh-Safi	11281880
 MA.08	Drâa-Tafilalet	Draa-Tafilalet	11281881
 MA.09	Souss-Massa	Souss-Massa	11281882
 MA.10	Guelmim-Oued Noun	Guelmim-Oued Noun	11281884
-MA.11	Laâyoune-Sakia El Hamra	Laayoune-Sakia El Hamra	11281885
+MA.11	Laayoune-Sakia El Hamra	Laayoune-Sakia El Hamra	11281885
 MA.12	Dakhla-Oued Ed-Dahab	Dakhla-Oued Ed-Dahab	11281886
 MC.00	Municipality of Monaco	Municipality of Monaco	3319178
 MD.73	Raionul Edineţ	Raionul Edinet	617077
 MD.92	Ungheni	Ungheni	617181
 MD.91	Teleneşti	Telenesti	617255
 MD.90	Taraclia	Taraclia	617264
-MD.88	Ştefan-Vodă	Stefan-Voda	617283
+MD.88	Stefan-Voda	Stefan-Voda	617283
 MD.89	Strășeni	Straseni	617301
 MD.87	Soroca District	Soroca District	617366
 MD.84	Rîşcani	Riscani	617483
@@ -2103,7 +2103,7 @@ MN.12	Hovd	Hovd	1515696
 MN.10	Govi-Altai Province	Govi-Altai Province	1515917
 MN.09	Dzabkhan	Dzabkhan	1516012
 MN.03	Bayan-Ölgii Province	Bayan-OElgii Province	1516278
-MN.02	Bayanhongor	Bayanhongor	1516290
+MN.02	Bayankhongor	Bayankhongor	1516290
 MN.20	Ulaanbaatar	Ulaanbaatar	2028461
 MN.18	Central Aimak	Central Aimak	2028849
 MN.17	Sühbaatar	Suhbaatar	2029155
@@ -2125,9 +2125,9 @@ MO.11875155	Santo António	Santo Antonio	11875155
 MO.11875156	São Lázaro	Sao Lazaro	11875156
 MO.11875157	Sé	Se	11875157
 MO.11875158	São Lourenço	Sao Lourenco	11875158
-MO.11875159	Nossa Senhora do Carmo	Nossa Senhora do Carmo	11875159
+MO.11875159	Our Lady of Carmo	Our Lady of Carmo	11875159
 MO.11875160	Cotai	Cotai	11875160
-MO.11875161	São Francisco Xavier	Sao Francisco Xavier	11875161
+MO.11875161	Saint Francis Xavier	Saint Francis Xavier	11875161
 MP.100	Rota	Rota	4041530
 MP.110	Saipan	Saipan	4041552
 MP.120	Tinian	Tinian	4041650
@@ -2147,7 +2147,7 @@ MR.03	Assaba	Assaba	2381344
 MR.07	Adrar	Adrar	2381972
 MR.13	Nouakchott West	Nouakchott West	11496391
 MR.14	Nouakchott North	Nouakchott North	11496392
-MR.15	Nouakchott Sud	Nouakchott Sud	11496393
+MR.15	Nouakchott South	Nouakchott South	11496393
 MS.03	Saint Peter	Saint Peter	3578039
 MS.02	Saint Georges	Saint Georges	3578044
 MS.01	Saint Anthony	Saint Anthony	3578045
@@ -2161,7 +2161,7 @@ MT.07	Dingli	Dingli	8299706
 MT.08	Il-Fgura	Il-Fgura	8299707
 MT.09	Floriana	Floriana	8299708
 MT.10	Il-Fontana	Il-Fontana	8299709
-MT.11	Għajnsielem	Ghajnsielem	8299710
+MT.11	Ghajnsielem	Ghajnsielem	8299710
 MT.12	L-Għarb	L-Gharb	8299711
 MT.13	Ħal Għargħur	Hal Gharghur	8299712
 MT.14	L-Għasri	L-Ghasri	8299713
@@ -2479,7 +2479,7 @@ PA.04	Colón	Colon	3712073
 PA.03	Coclé	Cocle	3712162
 PA.02	Chiriquí Province	Chiriqui Province	3712410
 PA.01	Bocas del Toro Province	Bocas del Toro Province	3713954
-PA.11	Emberá	Embera	7303686
+PA.11	Embera	Embera	7303686
 PA.12	Ngöbe-Buglé Comarca	Ngoebe-Bugle Comarca	7303688
 PA.13	Panamá Oeste Province	Panama Oeste Province	11353126
 PA.NT	Naso Tjër Di	Naso Tjer Di	12508964
@@ -2509,11 +2509,11 @@ PE.07	Callao	Callao	3946080
 PE.05	Ayacucho	Ayacucho	3947018
 PE.04	Arequipa	Arequipa	3947319
 PE.03	Apurímac Department	Apurimac Department	3947421
-PF.04	Îles Marquises	Iles Marquises	4019991
-PF.03	Îles Tuamotu-Gambier	Iles Tuamotu-Gambier	4030621
+PF.04	Marquesas Islands	Marquesas Islands	4019991
+PF.03	Tuamotu-Gambier Islands	Tuamotu-Gambier Islands	4030621
 PF.02	Leeward Islands	Leeward Islands	4034364
 PF.01	Îles du Vent	Iles du Vent	4034365
-PF.05	Îles Australes	Iles Australes	4034366
+PF.05	Austral Islands	Austral Islands	4034366
 PG.17	West New Britain Province	West New Britain Province	2083546
 PG.06	Western Province	Western Province	2083549
 PG.16	Western Highlands Province	Western Highlands Province	2083551
@@ -2710,17 +2710,17 @@ PY.04	Caaguazú Department	Caaguazu Department	3439312
 PY.02	Amambay Department	Amambay Department	3439433
 PY.01	Alto Paraná Department	Alto Parana Department	3439440
 PY.23	Alto Paraguay	Alto Paraguay	3439441
-PY.22	Asunción	Asuncion	3474570
+PY.22	Asuncion	Asuncion	3474570
 PY.24	Boquerón Department	Boqueron Department	3867442
-QA.08	Madīnat ash Shamāl	Madinat ash Shamal	389462
+QA.08	Madinat ash Shamal	Madinat ash Shamal	389462
 QA.04	Al Khor	Al Khor	389465
 QA.09	Umm Salal	Umm Salal	389467
-QA.06	Baladīyat ar Rayyān	Baladiyat ar Rayyan	389469
-QA.01	Baladīyat ad Dawḩah	Baladiyat ad Dawhah	389470
+QA.06	Baladiyat ar Rayyan	Baladiyat ar Rayyan	389469
+QA.01	Baladiyat ad Dawhah	Baladiyat ad Dawhah	389470
 QA.10	Al Wakrah	Al Wakrah	389472
 QA.13	Al Daayen	Al Daayen	8030540
 QA.14	Al-Shahaniya	Al-Shahaniya	11777514
-RE.RE	Réunion	Reunion	6690283
+RE.RE	Reunion	Reunion	6690283
 RO.40	Vrancea	Vrancea	662447
 RO.39	Vâlcea County	Valcea County	662892
 RO.38	Vaslui County	Vaslui County	663116
@@ -2752,7 +2752,7 @@ RO.13	Cluj County	Cluj County	681291
 RO.12	Caraș-Severin County	Caras-Severin County	682714
 RO.41	Călărași County	Calarasi County	683016
 RO.11	Buzău County	Buzau County	683121
-RO.10	București	Bucuresti	683504
+RO.10	Bucharest	Bucharest	683504
 RO.09	Brașov County	Brasov County	683843
 RO.08	Brăila County	Braila County	683901
 RO.07	Botoșani County	Botosani County	684038
@@ -3183,7 +3183,7 @@ SM.04	Faetano	Faetano	3345306
 SM.05	Fiorentino	Fiorentino	3345307
 SM.08	Montegiardino	Montegiardino	3345308
 SN.12	Ziguinchor	Ziguinchor	2243939
-SN.07	Thiès	Thies	2244800
+SN.07	Thies	Thies	2244800
 SN.05	Tambacounda	Tambacounda	2244990
 SN.14	Saint-Louis	Saint-Louis	2246451
 SN.15	Matam	Matam	2248753
@@ -3194,7 +3194,7 @@ SN.09	Fatick	Fatick	2251910
 SN.03	Diourbel Region	Diourbel Region	2252308
 SN.01	Dakar	Dakar	2253350
 SN.16	Kaffrine	Kaffrine	7303935
-SN.17	Kédougou	Kedougou	7303936
+SN.17	Kedougou	Kedougou	7303936
 SN.18	Sédhiou	Sedhiou	7303937
 SO.20	Woqooyi Galbeed	Woqooyi Galbeed	50360
 SO.19	Togdheer	Togdheer	51230
@@ -3236,20 +3236,20 @@ SS.02	Eastern Equatoria	Eastern Equatoria	408668
 SS.08	Warrap	Warrap	408670
 ST.02	São Tomé Island	Sao Tome Island	2410764
 ST.01	Príncipe	Principe	2410878
-SV.14	Usulután	Usulutan	3582882
+SV.14	Usulutan	Usulutan	3582882
 SV.13	Sonsonate Department	Sonsonate Department	3583101
 SV.12	San Vicente Department	San Vicente Department	3583176
 SV.11	Santa Ana Department	Santa Ana Department	3583332
 SV.10	San Salvador Department	San Salvador Department	3583360
 SV.09	San Miguel Department	San Miguel Department	3583462
-SV.08	Morazán	Morazan	3584317
-SV.07	La Unión	La Union	3584767
+SV.08	Morazan	Morazan	3584317
+SV.07	La Union	La Union	3584767
 SV.06	La Paz Department	La Paz Department	3585087
 SV.05	La Libertad Department	La Libertad Department	3585155
-SV.04	Cuscatlán	Cuscatlan	3586831
+SV.04	Cuscatlan	Cuscatlan	3586831
 SV.03	Chalatenango Department	Chalatenango Department	3587090
-SV.02	Cabañas	Cabanas	3587217
-SV.01	Ahuachapán	Ahuachapan	3587425
+SV.02	Cabanas	Cabanas	3587217
+SV.01	Ahuachapan	Ahuachapan	3587425
 SY.14	Tartus	Tartus	163342
 SY.13	Damascus Governorate	Damascus Governorate	167541
 SY.12	Idlib	Idlib	169387
@@ -3402,7 +3402,7 @@ TL.AL	Aileu	Aileu	1651815
 TM.02	Balkan	Balkan	162152
 TM.01	Ahal	Ahal	162181
 TM.S	Ashgabat	Ashgabat	162182
-TM.03	Daşoguz	Dasoguz	601465
+TM.03	Dasoguz	Dasoguz	601465
 TM.05	Mary	Mary	1218666
 TM.04	Lebap	Lebap	1219651
 TN.37	Zaghouan Governorate	Zaghouan Governorate	2464038
@@ -3429,9 +3429,9 @@ TN.16	Monastir Governorate	Monastir Governorate	2473495
 TN.15	Mahdia Governorate	Mahdia Governorate	2473574
 TN.14	Kef Governorate	Kef Governorate	2473637
 TN.39	Manouba	Manouba	6201192
-TO.03	Vava‘u	Vava`u	4032231
+TO.03	Vavau	Vavau	4032231
 TO.02	Tongatapu	Tongatapu	4032279
-TO.01	Ha‘apai	Ha`apai	4032637
+TO.01	Haapai	Haapai	4032637
 TO.EU	ʻEua	'Eua	7668021
 TO.NI	Niuas	Niuas	7668055
 TR.66	Yozgat	Yozgat	296560

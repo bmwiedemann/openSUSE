@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  7 08:03:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * MediaViewPage: Fix typo affecting next button visibility
+  * Release/26.04 snap qml runtim env
+  * snapcraft: Add missing expat dep
+  * snapcraft: Add missing brotli dep
+  * MediaViewPage: Fix going from fullscreen to maximized going to windowed instead
+  * snapcraft: Add zlib dep
+
+-------------------------------------------------------------------
 Sat Apr 11 16:14:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.0
