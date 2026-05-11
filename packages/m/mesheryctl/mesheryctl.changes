@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun May 10 15:13:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.20:
+  * General
+    - [Chore]: Bump meshery/schemas to v1.2.15 @l5io (#19165)
+    - [Docs] Update README.md @Maanvi212006 (#19160)
+    - fix(remote-provider): only set X-API-Key for the anonymous
+      global token @leecalcote (#19166)
+    - [Server] Fix incorrect catalog path in DefaultLocalProvider
+      @jahnavigajjala-3 (#19155)
+    - [Chore]: Bump meshery/schemas to v1.2.14 @l5io (#19147)
+    - Update administrators and add new member details @hortison
+      (#19121)
+  * Meshery CLI
+    - [mesheryctl] model init: fix misleading logs for connections
+      and credentials @Joyboy48 (#19066)
+  * Maintenance
+    - [CI] Broaden first-time contributor check to include NONE
+      association @Junnygram (#19156)
+    - [CI] Fix docs-noob-tester: remove invalid property and
+      recompile lock file @rishiraj38 (#19159)
+    - chore(deps): bump @meshery/schemas to v1.2.14 (enumNames in
+      import-mo… @leecalcote (#19148)
+    - fix(ui): unblock e2e Import Model + Delete Connections tests
+      @leecalcote (#19146)
+  * Documentation
+    - Revert "Remove kanvas docs from extensions" @ritzorama
+      (#19182)
+    - [Docs] Update adapter contributor proto path and generation
+      command @chaitanyamedidar (#19189)
+
+-------------------------------------------------------------------
 Thu May  7 05:44:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.19
