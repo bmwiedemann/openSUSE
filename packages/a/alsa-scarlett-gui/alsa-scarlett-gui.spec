@@ -16,13 +16,14 @@
 #
 
 Name:           alsa-scarlett-gui
-Version:        0.5.1
+Version:        1.0.0~b7
 Release:        0
 Summary:        ALSA Scarlett Gen 2/3/4 Control Panel
 License:        GPL-3.0-or-later or LGPL-3.0-or-later
 URL:            https://github.com/geoffreybennett/alsa-scarlett-gui
-Source:         https://github.com/geoffreybennett/alsa-scarlett-gui/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  alsa-devel
+BuildRequires:  fdupes
 BuildRequires:  gtk4-devel
 BuildRequires:  libopenssl-devel
 # Focusrite Scarlett Gen 1
@@ -57,15 +58,18 @@ Supplements:    modalias(usb:v1235p8217*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1235p8218*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1235p8219*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1235p821a*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v1235p821b*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v1235p821c*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v1235p821d*dc*dsc*dp*ic*isc*ip*in*)
 
 %description
 A Gtk4 GUI for the ALSA controls presented by the Linux kernel Focusrite Scarlett2 USB Protocol Mixer Driver.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%make_build -C src PREFIX=%{_prefix}
+%make_build -C src VERSION=%{version} PREFIX=%{_prefix}
 
 %install
 %make_install -C src PREFIX=%{_prefix}
@@ -79,6 +83,8 @@ cp *.md $DOC_DIRECTORY
 cp demo/* $DOC_DIRECTORY/demo
 cp docs/* $DOC_DIRECTORY/docs
 cp img/*  $DOC_DIRECTORY/img
+
+%fdupes %{buildroot}%{_prefix}
 
 %files
 %license LICENSES/GPL-3.0-or-later.txt LICENSES/LGPL-3.0-or-later.txt

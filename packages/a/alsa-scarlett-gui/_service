@@ -1,0 +1,22 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/geoffreybennett/alsa-scarlett-gui</param>
+    <param name="revision">1.0beta7</param>
+    <param name="match-tag">*</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+
+    <!-- 1.0beta7 -> 1.0.0~b7 -->
+    <param name="versionrewrite-pattern">^([0-9]+)\.([0-9]+)beta([0-9]+)$</param>
+    <param name="versionrewrite-replacement">\1.\2.0~b\3</param>
+  </service>
+
+  <service mode="manual" name="tar"/>
+
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service mode="manual" name="set_version"/>
+</services>

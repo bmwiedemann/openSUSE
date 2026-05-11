@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Mon May 11 12:17:18 UTC 2026 - Mikhail Paulyshka <me@mixaill.net>
+
+- remove 0001-suppress-Wcpp-warnings.patch
+- fix version display
+- add supplements for Focusrite Scarlett 4rd Gen 16i16/18i16/18i20
+- v1.0.0~b7 
+   * Add Front Panel tab for brightness and sleep time
+   * Add config-helpers for shared bold/help labels and separators
+   * Set configuration checkbox style explicitly
+   * Remove unused routing_src_menu field from alsa_card
+   * Add right-click context menu for stereo linking in routing window
+   * Fix ALSA info events getting ignored
+   * Move -fPIE to non-overridable CFLAGS
+   * Simplify USB serial number lookup via sysfs class symlinks
+   * Add strerror(errno) to fopen error messages in alsa.c
+   * Add Preferences window with mixer and levels settings
+   * Fix const qualifier warning in parse_max_rate()
+   * Cache static dial layer to reduce render overhead
+   * Rotate mixer input labels 30°
+   * Fix const qualifier warning in sim_card_name()
+   * Add welcome popup for beta release
+   * Add demo configs in native format and update alsactl configs
+   * Add Ctrl+W shortcut to close window
+   * Fix routing socket/label pair placement
+   * Add alsa-scarlett-config CLI tool for loading .conf files
+   * Add debug infrastructure with category-based filtering
+   * Prevent mixer-to-mixer routing on devices that don't support it
+   * Add Scarlett 1st Gen device PIDs and port names
+   * Slow down the reboot progress bar
+   * Fix Digital I/O Mode description for 16i16/18i16
+   * Fix buffer overflow in levels window meter array
+   * Fix mixer gain meter peak-hold freezing when level drops to zero
+   * Add Escape and close button handling for modal dialogs
+   * Save initial configuration on first-ever interface load
+   * Fix modal window title bar styling
+   * Replace deprecated GTK dialog APIs
+   * Replace deprecated GTK widget coordinate/size functions
+   * Add talkback button stereo linking support
+   * Add DSP stereo linking support
+   * Filter ALSA callbacks to only fire when value changes
+   * Add window visibility persistence and restore on startup
+   * Rebuild monitor groups UI when port enable state changes
+   * Add stereo-aware monitor group source dropdown
+   * Add default stereo link state detection on first run
+   * Extend DSP gain range to ±24 dB with display range toggle
+   * Fix filter type misidentification from coefficient echo
+   * Add multi-value integer element support to ALSA simulation
+   * Replace dial centre lines with arc tick marks
+   * Increase MAX_MUX_IN to 53 for 4th Gen 18i20 support
+   * Add stereo linking for routing, mixer, and monitor groups
+   * Add monitor group indicators and mute display for outputs
+   * Fix output level meters to use sink levels with meter labels
+   * Keep output mute controls enabled when in monitor group
+   * Add multi-step firmware upgrade for Gen 4 and fix modal window layering
+   * Add FCP socket firmware update support for Scarlett4 devices
+   * Add FCP socket support for reset configuration
+   * Add Presets feature for quick save/load of configurations
+   * Add hotkeys and styling to hardware window
+   * Forward hotkeys from subwindows to main window
+   * Add support for S/PDIF Source control to routing window
+   * Add S/PDIF Source control to configuration window
+   * Clean up sink label handling
+   * Fix drop-down popup styling and selection indicator
+   * Fix 4th Gen master volume display broken by Gen 1 support
+   * Show mixer unavailability at quad-band sample rates
+   * Show digital I/O availability based on mode and sample rate
+   * Replace DSP section enable buttons with labels
+   * Show compressor level dot in red when clipping
+   * Show PCM channel availability based on sample rate
+   * Add autogain configuration tab
+   * Refactor window-configuration.c
+   * Remove application config file during device config reset
+   * Add more grid lines and labels to filter response graph
+   * Add preset support to DSP window sections
+   * Add native config file save/load support
+   * Use grid layout for DSP filter stage controls
+   * Use custom DSP output names for DSP window headers
+   * Replace filter sliders with editable text entries
+   * Update DSP filter widgets when biquad coefficients change externally
+   * Add level indicator dot to compressor curve visualisation
+   * Add device-specific default port names
+   * Add #defines for USB PIDs
+   * Add big 4th Gen models to hardware.c
+   * Add corner label to mixer window pointing at mixer inputs and outputs
+   * Persist DSP filter parameters across restarts
+   * Fix level display for devices with implicit level maps
+   * Fix inotify_callback() loop over events
+   * Add first-order (6 dB/octave) filter types
+   * Add filter type dropdown widget with icons
+   * Read filter state from hardware on startup
+   * Add biquad coefficient analysis and gain filter type
+   * Convert DSP and section enable controls to toggle buttons
+   * Add DSP and section enable visualisation to filter/compressor widgets
+   * Add mouse wheel Q adjustment for filter handles
+   * Add bidirectional hover highlighting between filter stages and graph
+   * Add draggable filter handles to EQ response graph
+   * Add hover highlighting for filter handles in response graph
+   * Add filter handles to EQ response graph
+   * Add shading between 0 dB line and individual filter curves
+   * Add hover highlighting for filter bands in response graph
+   * Add parametric EQ filter controls with visualisation
+   * Add compressor transfer curve visualisation to DSP window
+   * Add DSP window for Vocaster compressor and filter controls
+   * Restructure optional state file with sections and fix port naming
+   * Fix resource cleanup on window close
+   * Add level metering display to gain dials
+   * Persist configuration window tab selection
+   * Add glow effect for unconnected routing sources
+   * Support Gen 4 monitor groups with effective routing display
+   * Refactor optional_state API to take card pointer
+   * Fix gtkdial redraw on sensitivity change
+   * Set card serial for simulated cards
+   * Make the Gen 1 routing sink match more specific
+   * Add support for main/alt group output source and trim controls
+   * Add Main/Alt Group controls and reorganise configuration into tabs
+   * Add glow behind labels in the mixer window
+   * Allow the configuration window to be resized
+   * Update talkback buttons with the mixer output custom names
+   * Allow the boolean widget labels to be changed
+   * Add glow effect to routing lines
+   * Split fixed mixer input configuration into columns by port type
+   * Debounce optional-state save
+   * Add arrow indicators when routing to/from hidden ports
+   * Update mixer window to hide disabled I/O
+   * Update routing window to hide hidden I/O
+   * Add checkboxes to the configuration window to show/hide I/O
+   * Fix Clock Source popover styling
+   * Fix startup long descriptions text colour
+   * Style the configuration window nicely
+   * Add support for renaming all the I/O
+   * Add support for setting card name
+   * Finish freeing resources in card_destroy_callback()
+   * Add "-I" to the alsactl command line
+   * Add support for Vocaster speaker/headphone mute controls
+   * Stop alsa-state/alsa-restore rather than rebooting
+   * Clear card->window_modal in modal_no_callback()
+
+-------------------------------------------------------------------
+Tue Mar 25 12:16:59 UTC 2025 - Mikhail Paulyshka <me@mixaill.net>
+
+- add -Wno-error=cpp flag, fixes compilation with OpenSUSE 15.6 
+
+-------------------------------------------------------------------
 Sat Mar 22 15:31:44 UTC 2025 - Mikhail Paulyshka <me@mixaill.net>
 
 - add suuplements for Focusrite 1st Gen

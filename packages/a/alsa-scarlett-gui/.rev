@@ -10,4 +10,12 @@ Already included in Arch Linux, Debian and Ubuntu. ( https://repology.org/projec
 </comment>
     <requestid>1255922</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1bc71f9fa8672807f55087cd608450cd</srcmd5>
+    <version>1.0.0~b7</version>
+    <time>1778511767</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1352468</requestid>
+  </revision>
 </revisionlist>
