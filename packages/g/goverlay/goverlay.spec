@@ -17,7 +17,7 @@
 
 
 Name:           goverlay
-Version:        1.7.5
+Version:        1.8.1
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
@@ -27,6 +27,7 @@ Source0:        https://github.com/benjamimgois/goverlay/archive/refs/tags/%{ver
 Patch0:         goverlay-enable-debuginfo-generation.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
 BuildRequires:  lazarus
 BuildRequires:  libQt6Pas-devel
 BuildRequires:  pkgconfig
@@ -58,6 +59,7 @@ chmod -x LICENSE README.md
 %make_install prefix=%{_prefix} libexecdir=/%{_lib}
 %suse_update_desktop_file -r io.github.benjamimgois.%{name} Development Profiling
 %{__strip} %{buildroot}/usr/lib64/goverlay
+%fdupes -s %{buildroot}%{_datadir}
 
 %check
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
@@ -67,6 +69,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.benjamimgoi
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
+%{_datadir}/%{name}
 %{_libdir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*%{name}.png
