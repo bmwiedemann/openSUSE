@@ -59,7 +59,6 @@
     <package name="WindowMaker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-x11 -->
     <package name="aaa_base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="aaa_base-extras" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="accounts-qml-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="accountsservice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="accountsservice-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="acl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

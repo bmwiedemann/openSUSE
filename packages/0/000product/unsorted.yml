@@ -1589,6 +1589,7 @@ unsorted:
   - bootiso 
   - bootiso-bash-completion 
   - bootiso-zsh-completion 
+  - bootkitd 
   - bootsplash-branding-KDE 
   - bootsplash-branding-upstream 
   - borgbackup 
@@ -2425,6 +2426,7 @@ unsorted:
   - coccigrep-vim-plugin 
   - coccinelle 
   - cockpit 
+  - cockpit-bootloader 
   - cockpit-client-launcher 
   - cockpit-devel 
   - cockpit-doc 
@@ -14358,7 +14360,7 @@ unsorted:
   - libknet1-crypto-plugins-all 
   - libknet1-plugins-all 
   - libknot15 
-  - libkokkos-4_6 
+  - libkokkos-5_1 
   - libkomparediff2-devel 
   - libkpathsea6 
   - libkrun-devel 
@@ -16979,6 +16981,7 @@ unsorted:
   - libvidstab-devel 
   - libvidstab1_2-32bit 
   - libvigraimpex11 
+  - libvinylapi3 
   - libvips-devel 
   - libvips42 
   - libvirt 
@@ -24098,6 +24101,7 @@ unsorted:
   - python3-inspektor 
   - python3-ipa_hbac 
   - python3-kea 
+  - python3-kf6-kcalendarcore 
   - python3-kf6-kcoreaddons 
   - python3-kf6-kguiaddons 
   - python3-kf6-kjobwidgets 
@@ -25816,13 +25820,18 @@ unsorted:
   - python311-google-auth 
   - python311-google-auth-httplib2 
   - python311-google-auth-oauthlib 
+  - python311-google-cloud-aiplatform 
   - python311-google-cloud-appengine-logging 
   - python311-google-cloud-artifact-registry 
   - python311-google-cloud-audit-log 
+  - python311-google-cloud-bigquery 
+  - python311-google-cloud-bigquery-storage 
   - python311-google-cloud-bigtable 
   - python311-google-cloud-build 
   - python311-google-cloud-compute 
   - python311-google-cloud-core 
+  - python311-google-cloud-dataplex 
+  - python311-google-cloud-discoveryengine 
   - python311-google-cloud-dns 
   - python311-google-cloud-domains 
   - python311-google-cloud-firestore 
@@ -25832,6 +25841,7 @@ unsorted:
   - python311-google-cloud-logging 
   - python311-google-cloud-monitoring 
   - python311-google-cloud-pubsub 
+  - python311-google-cloud-resource-manager 
   - python311-google-cloud-run 
   - python311-google-cloud-secret-manager 
   - python311-google-cloud-service-directory 
@@ -25839,9 +25849,11 @@ unsorted:
   - python311-google-cloud-speech 
   - python311-google-cloud-storage 
   - python311-google-cloud-storage-control 
+  - python311-google-cloud-testutils 
   - python311-google-cloud-translate 
   - python311-google-cloud-vpc-access 
   - python311-google-crc32c 
+  - python311-google-genai 
   - python311-google-resumable-media 
   - python311-google_trans_new 
   - python311-googleapis-common-protos 
@@ -26571,6 +26583,7 @@ unsorted:
   - python311-openqa_client 
   - python311-openstacksdk 
   - python311-opentelemetry-api 
+  - python311-opentelemetry-exporter-gcp-logging 
   - python311-opentelemetry-exporter-otlp 
   - python311-opentelemetry-exporter-otlp-proto-common 
   - python311-opentelemetry-exporter-otlp-proto-grpc 
@@ -29741,13 +29754,18 @@ unsorted:
   - python313-google-auth 
   - python313-google-auth-httplib2 
   - python313-google-auth-oauthlib 
+  - python313-google-cloud-aiplatform 
   - python313-google-cloud-appengine-logging 
   - python313-google-cloud-artifact-registry 
   - python313-google-cloud-audit-log 
+  - python313-google-cloud-bigquery 
+  - python313-google-cloud-bigquery-storage 
   - python313-google-cloud-bigtable 
   - python313-google-cloud-build 
   - python313-google-cloud-compute 
   - python313-google-cloud-core 
+  - python313-google-cloud-dataplex 
+  - python313-google-cloud-discoveryengine 
   - python313-google-cloud-dns 
   - python313-google-cloud-domains 
   - python313-google-cloud-firestore 
@@ -29757,6 +29775,7 @@ unsorted:
   - python313-google-cloud-logging 
   - python313-google-cloud-monitoring 
   - python313-google-cloud-pubsub 
+  - python313-google-cloud-resource-manager 
   - python313-google-cloud-run 
   - python313-google-cloud-secret-manager 
   - python313-google-cloud-service-directory 
@@ -29764,9 +29783,11 @@ unsorted:
   - python313-google-cloud-speech 
   - python313-google-cloud-storage 
   - python313-google-cloud-storage-control 
+  - python313-google-cloud-testutils 
   - python313-google-cloud-translate 
   - python313-google-cloud-vpc-access 
   - python313-google-crc32c 
+  - python313-google-genai 
   - python313-google-resumable-media 
   - python313-google_trans_new 
   - python313-googleapis-common-protos 
@@ -30520,6 +30541,7 @@ unsorted:
   - python313-openstackdocstheme 
   - python313-openstacksdk 
   - python313-opentelemetry-api 
+  - python313-opentelemetry-exporter-gcp-logging 
   - python313-opentelemetry-exporter-otlp 
   - python313-opentelemetry-exporter-otlp-proto-common 
   - python313-opentelemetry-exporter-otlp-proto-grpc 
@@ -33669,13 +33691,18 @@ unsorted:
   - python314-google-auth 
   - python314-google-auth-httplib2 
   - python314-google-auth-oauthlib 
+  - python314-google-cloud-aiplatform 
   - python314-google-cloud-appengine-logging 
   - python314-google-cloud-artifact-registry 
   - python314-google-cloud-audit-log 
+  - python314-google-cloud-bigquery 
+  - python314-google-cloud-bigquery-storage 
   - python314-google-cloud-bigtable 
   - python314-google-cloud-build 
   - python314-google-cloud-compute 
   - python314-google-cloud-core 
+  - python314-google-cloud-dataplex 
+  - python314-google-cloud-discoveryengine 
   - python314-google-cloud-dns 
   - python314-google-cloud-domains 
   - python314-google-cloud-firestore 
@@ -33685,6 +33712,7 @@ unsorted:
   - python314-google-cloud-logging 
   - python314-google-cloud-monitoring 
   - python314-google-cloud-pubsub 
+  - python314-google-cloud-resource-manager 
   - python314-google-cloud-run 
   - python314-google-cloud-secret-manager 
   - python314-google-cloud-service-directory 
@@ -33692,9 +33720,11 @@ unsorted:
   - python314-google-cloud-speech 
   - python314-google-cloud-storage 
   - python314-google-cloud-storage-control 
+  - python314-google-cloud-testutils 
   - python314-google-cloud-translate 
   - python314-google-cloud-vpc-access 
   - python314-google-crc32c 
+  - python314-google-genai 
   - python314-google-resumable-media 
   - python314-google_trans_new 
   - python314-googleapis-common-protos 
@@ -34442,6 +34472,7 @@ unsorted:
   - python314-openqa_client 
   - python314-openstacksdk 
   - python314-opentelemetry-api 
+  - python314-opentelemetry-exporter-gcp-logging 
   - python314-opentelemetry-exporter-otlp 
   - python314-opentelemetry-exporter-otlp-proto-common 
   - python314-opentelemetry-exporter-otlp-proto-grpc 
@@ -50063,6 +50094,8 @@ unsorted:
   - vinci 
   - vino 
   - vino-lang 
+  - vinyl-cache 
+  - vinyl-cache-devel 
   - vips-bash-completion 
   - vips-doc 
   - vips-modules-8.0 
@@ -50365,6 +50398,7 @@ unsorted:
   - wiiuse-devel 
   - wike 
   - wike-lang 
+  - wild 
   - wildmidi 
   - wildmidi-devel 
   - wimlib-devel 
