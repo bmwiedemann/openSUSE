@@ -171,4 +171,13 @@
     <comment>- Drop ld.lld as an ld alternative (boo#1259813).</comment>
     <requestid>1346171</requestid>
   </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>b307237b4eea2560a7654d6831e35555</srcmd5>
+    <version>21.1.8</version>
+    <time>1778510902</time>
+    <user>anag_factory</user>
+    <comment>- Make sure we don't lose the distribution compiler flags.
+- Remove unnecessary dependency of llvm-devel on libtool.</comment>
+    <requestid>1352206</requestid>
+  </revision>
 </revisionlist>

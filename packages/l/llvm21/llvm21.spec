@@ -516,7 +516,6 @@ Requires:       libomp%{_sonum}-devel
 Requires:       libLLVM%{_sonum} = %{version}
 Requires:       libLTO%{_sonum} = %{version}
 Requires:       libstdc++-devel
-Requires:       libtool
 Requires:       llvm%{_sonum}-gold
 %if %{with polly}
 # Referenced by LLVMExports.cmake
@@ -1091,21 +1090,24 @@ cd ..
 # This reduces the total amount of disk space used during build. (bnc#1074625)
 find ./stage1 \( -name '*.o' -or -name '*.a' \) -delete
 
-# 3) Remove -fstack-clash-protection on architectures where it isn't supported.
-#    Using it just prints a warning, but that warning prevents the configuration
-#    step, which uses -Werror, from recognizing the availability of other flags.
-if ! ./stage1/bin/clang -c -xc -Werror -fstack-clash-protection -o /dev/null /dev/null;
-then
-    flags=$(echo %flags | sed 's/-fstack-clash-protection//');
-fi
-# 4) Add -fno-plt: With -Wl,-z,now the PLT is basically dead code, so we can
+# 3) Add -fno-plt: With -Wl,-z,now the PLT is basically dead code, so we can
 #    now go the direct route for quite frequent cross-DSO calls. This reduces
 #    branches in a typical execution by ~5 percent, instructions/cycles
 #    by ~4 percent, and reduces pressure on the instruction cache. We do this
 #    only on x86_64 where it doesn't increase the code size significantly.
 %ifarch x86_64
-flags="$flags -fno-plt"
+%global flags %flags -fno-plt
 %endif
+
+# 4) Remove -fstack-clash-protection on architectures where it isn't supported.
+#    Using it just prints a warning, but that warning prevents the configuration
+#    step, which uses -Werror, from recognizing the availability of other flags.
+if ! ./stage1/bin/clang -c -xc -Werror -fstack-clash-protection -o /dev/null /dev/null;
+then
+    flags=$(echo "%flags" | sed 's/-fstack-clash-protection//');
+else
+    flags="%flags"
+fi
 
 CFLAGS=$flags
 CXXFLAGS=$flags
