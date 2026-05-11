@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 11 09:56:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.75.0
+  * chore: complete migration of googleapis-common-protos to librarian (#16688)
+  * chore: remove issue_tracker_override from librarian.yaml (#16820)
+  * chore: address product documentation in googleapis-common-protos (#16841)
+  * chore: remove name_pretty_override from selected packages (#16861)
+  * chore: librarian release pull request: 20260506T163115Z (#16964)
+
+-------------------------------------------------------------------
 Tue Apr  7 10:13:37 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.74.0
