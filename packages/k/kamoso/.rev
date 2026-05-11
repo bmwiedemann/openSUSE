@@ -800,4 +800,12 @@
     <comment>KDE release gear 26.04 (forwarded request 1346091 from krop)</comment>
     <requestid>1347388</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>08845dba250973bb26e412f9cfc9a12d</srcmd5>
+    <version>26.04.1</version>
+    <time>1778511178</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.1 (forwarded request 1351447 from krop)</comment>
+    <requestid>1351603</requestid>
+  </revision>
 </revisionlist>
