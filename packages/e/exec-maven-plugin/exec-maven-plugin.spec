@@ -1,7 +1,7 @@
 #
 # spec file for package exec-maven-plugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
 Name:           exec-maven-plugin
-Version:        3.5.1
+Version:        3.6.3
 Release:        0
 Summary:        Exec Maven Plugin
 License:        Apache-2.0
@@ -31,20 +31,21 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  unzip
-BuildRequires:  mvn(org.apache.commons:commons-exec)
+BuildRequires:  mvn(javax.inject:javax.inject)
+BuildRequires:  mvn(org.apache.commons:commons-exec) >= 1.6
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven.shared:maven-artifact-transfer)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-util)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
-BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.mojo:mojo-parent:pom:)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
-BuildRequires:  mvn(org.slf4j:slf4j-jdk14)
+BuildRequires:  mvn(org.ow2.asm:asm)
+BuildRequires:  mvn(org.ow2.asm:asm-commons)
 Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
@@ -69,6 +70,8 @@ find . -name *.jar -delete
 #Drop test part. sonatype-aerther not available
 %pom_remove_dep :mockito-core
 %pom_remove_dep :maven-plugin-testing-harness
+# Only used to copy test dependencies
+%pom_remove_plugin :maven-dependency-plugin
 
 rm -rf src/test/
 

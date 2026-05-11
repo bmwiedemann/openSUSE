@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon May 11 08:14:02 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.6.3
+  * Documentation updates
+    + Document thread group isolation limitation in java goal
+  * Maintenance
+    + JUnit 5 best practices
+    + Move ExecJavaMojoTest, ExecMojoTest to JUnit 5
+    + Add support for JEP 512 for for package-private static main
+      method
+    + Move to JUnit 5
+  * Dependency updates
+    + Bump asm.version from 9.9 to 9.9.1
+    + Bump org.apache.commons:commons-exec from 1.5.0 to 1.6.0
+
+-------------------------------------------------------------------
+Mon May 11 08:12:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.6.2
+  * New features and improvements
+    + Add JPMS ServiceLoader Support with Multi-Release JAR
+  * Dependency updates
+    + Bump asm.version from 9.8 to 9.9
+
+-------------------------------------------------------------------
+Mon May 11 08:11:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.6.1
+  * Bug Fixes
+    + Revert change from #480 - plugin dependencies must be resolved
+      from plugin repositories
+  * Dependency updates
+    + Bump org.codehaus.mojo:mojo-parent from 93 to 94
+
+-------------------------------------------------------------------
+Mon May 11 08:00:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.6.0
+  * New features and improvements
+    + [ExecMojo]Add getShebang method to correctly set the command
+      line executable name JEP 512 Support
+  * Bug Fixes
+    + fix inheritIo option
+    + Fix for #479 - Wrong repositories used to collect deps
+  * Maintenance
+    + Use JSR-330 for component injection
+    + Re-run failed tests
+    + Restore default matrix build
+  * Dependency updates
+    + Use Maven 3.9.11 in dependencies, still requires 3.6.3 as
+      minimum
+    + Bump org.codehaus.mojo:mojo-parent from 89 to 93
+
+-------------------------------------------------------------------
 Mon Jul 21 09:15:07 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.5.1
