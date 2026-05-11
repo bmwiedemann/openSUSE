@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  8 12:18:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.8.1
+  * readthedocs: Add missing sphinx config key
+  * readthedocs: Bump OS, Python version
+  * Fix getting config from git config
+  * Fix type issue
+
+-------------------------------------------------------------------
 Wed Apr 15 20:09:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.0:

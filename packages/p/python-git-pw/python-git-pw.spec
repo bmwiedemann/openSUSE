@@ -19,7 +19,7 @@
 %define modname git_pw
 %{?sle15_python_module_pythons}
 Name:           python-git-pw
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        A tool for integrating Git with Patchwork
 License:        MIT
