@@ -305,4 +305,12 @@
   * 0002-bookserver-Add-authentication-token.patch</comment>
     <requestid>1349976</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>83d46612474e52b28da19cb91b1518a1</srcmd5>
+    <version>26.04.1</version>
+    <time>1778511143</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.1 (forwarded request 1351447 from krop)</comment>
+    <requestid>1351562</requestid>
+  </revision>
 </revisionlist>

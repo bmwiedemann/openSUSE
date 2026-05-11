@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May  7 08:02:09 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.1/
+- Changes since 26.04.0:
+  * bookserver: Add authentication token
+  * bookserver: Use qrc: as access control protocol
+- Drop patches:
+  * 0001-bookserver-Use-qrc-as-access-control-protocol.patch
+  * 0002-bookserver-Add-authentication-token.patch
+
+-------------------------------------------------------------------
 Wed Apr 29 11:25:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes (CVE-2026-42095, boo#1262800)
