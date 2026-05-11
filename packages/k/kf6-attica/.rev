@@ -207,4 +207,12 @@
     <comment>KDE Frameworks 6.25 (forwarded request 1345661 from krop)</comment>
     <requestid>1345859</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>de454c7d80fed168e4a6957c00c72d9a</srcmd5>
+    <version>6.26.0</version>
+    <time>1778511130</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1352177</requestid>
+  </revision>
 </revisionlist>
