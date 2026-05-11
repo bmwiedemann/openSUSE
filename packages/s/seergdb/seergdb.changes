@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed May  6 04:42:04 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+* Upgrade to version 2.7
+
+
+ * Add syntax highlighting support for other languages
+ * Add deleteall and deleteselected to RMB context menu for Logger and Tracker
+ * 313 configuring gdb with set print pretty on messes up loggertracker variable display
+ * Show syntax highlighing for C/C++, Rust and Odin.
+ * 370 ergonomics add shortcuts to common tasks
+ * Cleaning up test program.
+ * Add recursive test, Rpi4 and stm32 build script
+ * Print gdb MI log from gdbWidget and gdbMonitor
+ * 371 ergonomics add shortcuts to common rr tasks
+ * Elaborate gdb variable output
+ * Update recursive test
+ * Add config to set gdb's architecture.
+ * Update SeerUlt.cpp::parseCommaList
+ * Update Cursor margin
+ * Feature/add bold text on tracker
+ * fix recursive painting
+ * 393 add external define to set default gdb to use
+ * Fix fail to run gdb
+ * 377 suggestion consider publishing this project on flathub
+ * Add a specific git commit sha.
+ * 377 suggestion consider publishing this project on flathub
+ * Erase color of level 0 backtrace when target is running
+ * Move Seer icons to better locations for flathub.
+ * 377 suggestion consider publishing this project on flathub
+ * Update seer.github.yml to be like seer.yml.
+ * Enhance status indicator
+ * Add a Ctrl+Shift+T shortcut to reopen closed files
+ * 260 would be nice if assembly view was shown by default when there is no source code
+ * 408 file menu doesnt show
+ * 413 signal handle functionality feature request
+ * 414 add macro keys for user created commands
+ * Fix typo in SeerGdbWidget.cpp
+ * Add feature: Mouse navigation
+ * 421 add a hot key for restart
+ * 419 automatically refresh editor view if source file is modified
+ * 420 add a hotkey for run to cursor
+ * write config: don't require to click two dialogs away, just show a transient message box instead
+ * 429 remember variables in tracker for the next session
+ * Fix regression for message tab raising.
+ * Fix compile error when gdb logout is enabled
+ * SeerMainWindow: Change action buttons when status changed
+ * Add reset button
+ * docs(README): flatpak-spawn usage
+ * SeerSourceSymbolLibraryManagerWidget: Add close un-used tabs option
+ * Add feature: Go to definition
+ * Go to definition, but with Ctrl + Click
+ * Feat: add copy value only option on logger and tracker
+ * 446 editorfont dialog not all monospace fonts are displayed
+ * 451 no proper return from stepping into non user functions
+ - Temporarily using OBS service to generate tarball due to 
+   https://github.com/epasveer/seer/pull/457
+
+-------------------------------------------------------------------
 Wed Nov 26 21:02:36 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 * Upgrade to v2.6.

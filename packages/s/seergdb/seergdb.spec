@@ -1,7 +1,7 @@
 #
 # spec file for package seergdb
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,18 +24,23 @@
 %endif
 
 Name:           seergdb
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        A GUI front-end for GNU gdb
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/epasveer/seer
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/seergdb-%{version}.tar.gz
+# Temporarily building our own tarball, see:
+# https://github.com/epasveer/seer/pull/457
+# Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/seergdb-%{version}.tar.gz
+Source0:        seer-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  qt6-base-devel
 BuildRequires:  qt6-charts-devel
+BuildRequires:  qt6-core-devel
+BuildRequires:  qt6-gui-devel
 BuildRequires:  qt6-svg-devel
 Requires:       gdb
 Recommends:     libQt6Svg6
@@ -63,19 +68,19 @@ mkdir -p %{buildroot}%{_datadir}/applications
 install -m 0644 src/resources/%{name}.desktop %{buildroot}/%{_datadir}/applications/%{name}.desktop
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/32x32/apps
-install -m 0644 src/resources/%{name}_32x32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
+install -m 0644 src/resources/icons/hicolor/32x32/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/64x64/apps
-install -m 0644 src/resources/%{name}_64x64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/%{name}.png
+install -m 0644 src/resources/icons/hicolor/64x64/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/%{name}.png
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/128x128/apps
-install -m 0644 src/resources/%{name}_128x128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
+install -m 0644 src/resources/icons/hicolor/128x128/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
-install -m 0644 src/resources/%{name}_256x256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
+install -m 0644 src/resources/icons/hicolor/256x256/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/512x512/apps
-install -m 0644 src/resources/%{name}_512x512.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/%{name}.png
+install -m 0644 src/resources/icons/hicolor/512x512/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/%{name}.png
 
 %files
 %{_bindir}/%{name}
