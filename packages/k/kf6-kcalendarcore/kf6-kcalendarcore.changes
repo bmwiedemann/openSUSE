@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat May  2 07:52:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.26.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.26.0
+- Changes since 6.25.0:
+  * Documentation fixes
+  * Update dependency version to 6.26.0
+  * Expose calendar color role in CalendarListModel
+  * Read/write calendar name from iCal
+  * Add support for the calendar color property
+  * Avoid failing the build on warnings in generated code
+  * Add Python bindings for KCalendarCore
+  * Remove undefined MAX_DATE symbol
+  * .gitlab-ci.yml - add clazy builds to merge requests
+  * clazy use-static-qregularexpression fix
+  * cppcheck unreadVariable fix
+  * clazy fully-qualified-moc-types fix
+  * clazy range-loop-detach fixes
+  * clazy range-loop-reference fix
+  * cppcheck variableScope fixes
+  * clazy detaching-temporary fixes
+  * cppcheck constVariablePointer fixes
+  * CI - cppcheck suppressions and define ICAL_CHECK_VERSION
+  * Update version to 6.26.0
+
+-------------------------------------------------------------------
 Tue Apr  7 19:18:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.25.0

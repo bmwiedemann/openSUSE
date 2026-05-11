@@ -16,15 +16,28 @@
 #
 
 
-%define qt6_version 6.8.0
+%define qt6_version 6.9.0
 
 %define sonum 6
 %define rname kcalendarcore
-# Full KF6 version (e.g. 6.25.0)
+
+%bcond_without kde_python_bindings
+%if %{with kde_python_bindings}
+%if 0%{suse_version} > 1500
+%define pythons %{primary_python}
+%else
+%{?sle15_python_module_pythons}
+%endif
+%define mypython %pythons
+%define __mypython %{expand:%%__%{mypython}}
+%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
+%endif
+
+# Full KF6 version (e.g. 6.26.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kcalendarcore
-Version:        6.25.0
+Version:        6.26.0
 Release:        0
 Summary:        Library to access and handle calendar data
 License:        LGPL-2.0-or-later
@@ -42,6 +55,16 @@ BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+# SECTION bindings
+%if %{with kde_python_bindings}
+BuildRequires:  %{mypython}-build
+BuildRequires:  %{mypython}-devel >= 3.9
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-wheel
+BuildRequires:  cmake(Shiboken6)
+BuildRequires:  cmake(PySide6)
+%endif
+# /SECTION
 
 %description
 KCalendarCore is a library to provide access to and handling of calendar data.
@@ -77,6 +100,14 @@ It supports the standard formats iCalendar and vCalendar and the group
 scheduling standard iTIP. This package contains the headers necessary to
 develop applications making use of KCalendarCore.
 
+%if %{with kde_python_bindings}
+%package -n python3-kf6-kcalendarcore
+Summary:        Python bindings for kf6-kcalendarcore
+
+%description -n python3-kf6-kcalendarcore
+This package provides Python bindings for kf6-kcalendarcore.
+%endif
+
 %prep
 %autosetup -p1 -n %{rname}-%{version}
 
@@ -85,7 +116,11 @@ develop applications making use of KCalendarCore.
 %define _lto_cflags %{nil}
 %endif
 
-%cmake_kf6
+%cmake_kf6 \
+%if %{with kde_python_bindings}
+  -DPython_EXECUTABLE:STRING=%{__mypython}
+%endif
+%{nil}
 
 %kf6_build
 
@@ -111,5 +146,15 @@ develop applications making use of KCalendarCore.
 %{_kf6_includedir}/KCalendarCore/
 %{_kf6_libdir}/libKF6CalendarCore.so
 %{_kf6_pkgconfigdir}/KF6CalendarCore.pc
+%if %{with kde_python_bindings}
+%dir %{_includedir}/PySide6/
+%{_includedir}/PySide6/KCalendarCore/
+%endif
+
+%if %{with kde_python_bindings}
+%files -n python3-kf6-kcalendarcore
+%{mypython_sitearch}/*.so
+%{_kf6_sharedir}/PySide6/typesystems/typesystem_kcalendarcore.xml
+%endif
 
 %changelog
