@@ -17,7 +17,7 @@
 
 
 Name:           git-next
-Version:        2025.12.1
+Version:        2026.5.2
 Release:        0
 Summary:        Trunk-based development manager for a solo developer
 License:        MIT
@@ -28,6 +28,9 @@ BuildRequires:  cargo >= 1.81
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
 BuildRequires:  pkgconfig(dbus-1)
+
+# rustc-LLVM ERROR: out of memory
+ExcludeArch:    %{arm}
 
 %description
 Trunk-based developement manager.

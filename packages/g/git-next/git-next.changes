@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Sun May 10 15:02:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2026.5.2:
+  * Bug Fixes
+    - fix(docker): add git, dbus-libs and libgcc to runtime image
+      (ecddddd5)
+  * Other Changes
+    - chore(justfile): add 'docker-release ' recipe (40301f0b)
+- Update to version 2026.5.2:
+  * Features
+    - feat(docker): optimize Dockerfile runtime with Alpine and
+      release profile (999c5ec7)
+    - feat(server): add /health endpoint and health CLI subcommand
+      (c59b5afe)
+    - feat: standardize CI and fix test validation (b137edce)
+  * Bug Fixes
+    - fix: resolve clippy warnings for trailing commas and sort_by
+      (dc59d9a0)
+    - fix: prevent webhook self-notification feedback loop
+      (3b5a8267)
+    - fix: add Docker-in-Docker host path translation to ci recipe
+      (1b9f6cf3)
+    - fix(tests): replace brittle server tests with proper test
+      isolation (ad14eed2)
+  * Other Changes
+    - chore: bump version to 2026.5.1 (e0920864)
+    - chore(deps): bump crossterm/ratatui to 0.29/0.30 (3ab28db7)
+    - chore: bump rust image to 5.3.0 in crowci (latest in
+      justfile/ci) (c4fa1426)
+    - chore(deps): bump git-url-parse from 0.4 to 0.6 (7b7e728e)
+    - chore(docker): update base image from v4.7.0 to v5.2.0
+      (ca7350e6)
+    - refactor(server): extract setup_forge method from
+      receive_valid_app_config handler (beb8fee9)
+    - refactor: group RepoActor fields into config and state
+      structs (7fe9a3d7)
+    - refactor(xui): extract RepoUpdate-to-RepoState mapping into
+      apply_update (9c83e005)
+    - refactor: remove cognitive_complexity suppressions from 4
+      handlers (7a17614c)
+    - refactor: promote RepoKey to core, eliminate data clump
+      (a51d9ee4)
+    - refactor: consolidate webhook orchestration into
+      ForgeApiClient (ddb0f082)
+    - refactor: extract render_simple_popup helper in data_state
+      (8485a122)
+    - refactor: remove commented-out dead code stubs in 3 files
+      (b0d67253)
+    - chore(deps): bump tui-scrollview from 0.5 to 0.6 (998050e4)
+    - chore(ci): remove docker build and release-plz steps
+      (ae4dd9b7)
+    - refactor: rename advance to next-edit, add advance-push
+      recipes (30ffcfe2)
+    - chore(deps): bump git-conventional from 0.12 to 1.0
+      (0213d28d)
+    - chore: add stub lib.rs to enable support for
+      cargo-semver-checks (9ad8a99c)
+    - style: flatten imports with rustfmt imports_granularity and
+      add fmt recipe (bf2591b3)
+    - refactor(config): split monolithic tests.rs into per-type
+      test files (2bc24ccd)
+    - refactor(repo): extract RepoActorConfig to reduce constructor
+      parameters (1633cb2a)
+    - refactor(tests): consolidate duplicated test helpers into
+      shared module (4b3dcf08)
+    - refactor(repo): extract helper methods from ValidateRepo
+      handler (59d8feb8)
+    - refactor(gitlib): extract helpers from git_repository.rs,
+      remove duplicate revwalk and clippy suppressions (t11)
+      (8ddf7237)
+    - refactor(forges): extract shared ForgeApiClient from
+      duplicated Forgejo/GitHub API clients (4e320fa1)
+    - refactor(ui): remove deprecated TUI, make XUI the default UI
+      (06fa024c)
+    - ci: add Docker build workflow (20fb67a3)
+    - build(ci): local ci must run as root to instal apk deps
+      (03ce695a)
+    - build(ci): justfile uses stable (641b106d)
+    - chore(deps): bump version in lock (5bf63327)
+
+-------------------------------------------------------------------
 Tue Jan 13 06:30:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2025.12.1:
