@@ -1968,4 +1968,25 @@
   * GO-2026-4962 CVE-2026-33812 (forwarded request 1349135 from jfkw)</comment>
     <requestid>1349136</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>58659192ce8aff8699059766a912f77a</srcmd5>
+    <version>0.0.20260507T192140</version>
+    <time>1778511438</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20260507T192140 2026-05-07T19:21:40Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2026-4918 CVE-2026-33814
+  * GO-2026-4971 CVE-2026-39836
+  * GO-2026-4976 CVE-2026-39825
+  * GO-2026-4977 CVE-2026-42499
+  * GO-2026-4978 CVE-2026-39819
+  * GO-2026-4979 CVE-2026-39817
+  * GO-2026-4980 CVE-2026-39826
+  * GO-2026-4981 CVE-2026-33811
+  * GO-2026-4982 CVE-2026-39823
+  * GO-2026-4984 CVE-2026-42501
+  * GO-2026-4986 CVE-2026-39820 (forwarded request 1352343 from jfkw)</comment>
+    <requestid>1352344</requestid>
+  </revision>
 </revisionlist>
