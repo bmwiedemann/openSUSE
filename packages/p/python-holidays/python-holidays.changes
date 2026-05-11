@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 11 10:37:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.96
+  * Add static type checking support for `countries` and `financial` aliases
+  * Refactor India holidays testcases
+  * Update .po files generator: use git user identity for "Last-Translator"
+  * Update Arabic localization: fix "estimated" and "observed" labels translation
+  * Update Brazil holidays
+  * Update Germany holidays: add school holidays support
+  * Update Mongolia holidays
+  * Update Nepal holidays: fix some holiday names
+  * Update Switzerland holidays: split Zürich canton and city holidays
+  * Update United States holidays: fix Georgia's State Holiday observance
+  * Add pinned version comment after GitHub Actions Commit Hashes
+  * Pre-Commit Check for Normalized Unicode
+  * Scope `Warning` handling in tests to `DeprecationWarning`
+
+-------------------------------------------------------------------
 Sat Apr 25 08:29:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.95:
