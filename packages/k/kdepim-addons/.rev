@@ -1003,4 +1003,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE release gear 26.04 (forwarded request 1346091 from krop)</comment>
     <requestid>1347419</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>cc11c478586df02945573a8f38a64ede</srcmd5>
+    <version>26.04.1</version>
+    <time>1778510958</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.1 (forwarded request 1351447 from krop)</comment>
+    <requestid>1351632</requestid>
+  </revision>
 </revisionlist>
