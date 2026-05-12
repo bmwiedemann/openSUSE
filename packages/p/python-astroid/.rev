@@ -767,4 +767,12 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     integers).</comment>
     <requestid>1342069</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>de81c007fe27ccce50ba6ee19dfdc41a</srcmd5>
+    <version>4.2.0</version>
+    <time>1778606767</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1352301</requestid>
+  </revision>
 </revisionlist>

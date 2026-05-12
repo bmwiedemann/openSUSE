@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  3 17:24:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * Fix ``RecursionError`` in ``_compute_mro()`` when circular
+    class hierarchies are created through runtime name rebinding.
+  * Changed `block_range` to consider `else` its own block,
+    allowing `pylint` to apply disables to just the block.
+
+-------------------------------------------------------------------
 Mon Mar 23 15:57:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.2:
