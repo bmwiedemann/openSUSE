@@ -1,0 +1,155 @@
+From 04b5dce4bfe9c5b30a926a5756337a445dcd2d8a Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Sun, 11 Mar 2018 17:50:08 +0100
+Subject: [PATCH] re PR debug/58150 (debug info about definition of enum class
+ not emitted if the declaration was already used in a class)
+To: gcc-patches@gcc.gnu.org
+
+From: Jakub Jelinek <jakub@redhat.com>
+
+	PR debug/58150
+	* dwarf2out.c (gen_enumeration_type_die): Don't guard adding
+	DW_AT_declaration for ENUM_IS_OPAQUE on -gdwarf-4 or -gno-strict-dwarf,
+	but on TYPE_SIZE.  Don't do anything for ENUM_IS_OPAQUE if not creating
+	a new die.  Don't set TREE_ASM_WRITTEN if ENUM_IS_OPAQUE.  Guard
+	addition of most attributes on !orig_type_die or the attribute not
+	being present already.  Assert TYPE_VALUES is NULL for ENUM_IS_OPAQUE.
+
+	* g++.dg/debug/dwarf2/enum2.C: New test.
+
+From-SVN: r258434
+(cherry picked from commit cd5437ab5d98cf95cc6686a533b7d3582bcb1706)
+---
+ gcc/dwarf2out.c                           | 37 ++++++++++++++---------
+ gcc/testsuite/g++.dg/debug/dwarf2/enum2.C | 30 ++++++++++++++++++
+ 2 files changed, 52 insertions(+), 15 deletions(-)
+ create mode 100644 gcc/testsuite/g++.dg/debug/dwarf2/enum2.C
+
+diff --git a/gcc/dwarf2out.c b/gcc/dwarf2out.c
+index 317fd84b9de..026c74216c5 100644
+--- a/gcc/dwarf2out.c
++++ b/gcc/dwarf2out.c
+@@ -21083,6 +21083,7 @@ static dw_die_ref
+ gen_enumeration_type_die (tree type, dw_die_ref context_die)
+ {
+   dw_die_ref type_die = lookup_type_die (type);
++  dw_die_ref orig_type_die = type_die;
+ 
+   if (type_die == NULL)
+     {
+@@ -21090,20 +21091,18 @@ gen_enumeration_type_die (tree type, dw_die_ref context_die)
+ 			  scope_die_for (type, context_die), type);
+       equate_type_number_to_die (type, type_die);
+       add_name_attribute (type_die, type_tag (type));
+-      if (dwarf_version >= 4 || !dwarf_strict)
+-	{
+-	  if (ENUM_IS_SCOPED (type))
+-	    add_AT_flag (type_die, DW_AT_enum_class, 1);
+-	  if (ENUM_IS_OPAQUE (type))
+-	    add_AT_flag (type_die, DW_AT_declaration, 1);
+-	}
++      if ((dwarf_version >= 4 || !dwarf_strict)
++	  && ENUM_IS_SCOPED (type))
++	add_AT_flag (type_die, DW_AT_enum_class, 1);
++      if (ENUM_IS_OPAQUE (type) && TYPE_SIZE (type))
++	add_AT_flag (type_die, DW_AT_declaration, 1);
+       if (!dwarf_strict)
+ 	add_AT_unsigned (type_die, DW_AT_encoding,
+ 			 TYPE_UNSIGNED (type)
+ 			 ? DW_ATE_unsigned
+ 			 : DW_ATE_signed);
+     }
+-  else if (! TYPE_SIZE (type))
++  else if (! TYPE_SIZE (type) || ENUM_IS_OPAQUE (type))
+     return type_die;
+   else
+     remove_AT (type_die, DW_AT_declaration);
+@@ -21115,10 +21114,14 @@ gen_enumeration_type_die (tree type, dw_die_ref context_die)
+     {
+       tree link;
+ 
+-      TREE_ASM_WRITTEN (type) = 1;
+-      add_byte_size_attribute (type_die, type);
+-      add_alignment_attribute (type_die, type);
+-      if (dwarf_version >= 3 || !dwarf_strict)
++      if (!ENUM_IS_OPAQUE (type))
++	TREE_ASM_WRITTEN (type) = 1;
++      if (!orig_type_die || !get_AT (type_die, DW_AT_byte_size))
++	add_byte_size_attribute (type_die, type);
++      if (!orig_type_die || !get_AT (type_die, DW_AT_alignment))
++	add_alignment_attribute (type_die, type);
++      if ((dwarf_version >= 3 || !dwarf_strict)
++	  && (!orig_type_die || !get_AT (type_die, DW_AT_type)))
+ 	{
+ 	  tree underlying = lang_hooks.types.enum_underlying_base_type (type);
+ 	  add_type_attribute (type_die, underlying, TYPE_UNQUALIFIED, false,
+@@ -21126,8 +21129,10 @@ gen_enumeration_type_die (tree type, dw_die_ref context_die)
+ 	}
+       if (TYPE_STUB_DECL (type) != NULL_TREE)
+ 	{
+-	  add_src_coords_attributes (type_die, TYPE_STUB_DECL (type));
+-	  add_accessibility_attribute (type_die, TYPE_STUB_DECL (type));
++	  if (!orig_type_die || !get_AT (type_die, DW_AT_decl_file))
++	    add_src_coords_attributes (type_die, TYPE_STUB_DECL (type));
++	  if (!orig_type_die || !get_AT (type_die, DW_AT_accessibility))
++	    add_accessibility_attribute (type_die, TYPE_STUB_DECL (type));
+ 	}
+ 
+       /* If the first reference to this type was as the return type of an
+@@ -21141,6 +21146,7 @@ gen_enumeration_type_die (tree type, dw_die_ref context_die)
+ 	  dw_die_ref enum_die = new_die (DW_TAG_enumerator, type_die, link);
+ 	  tree value = TREE_VALUE (link);
+ 
++	  gcc_assert (!ENUM_IS_OPAQUE (type));
+ 	  add_name_attribute (enum_die,
+ 			      IDENTIFIER_POINTER (TREE_PURPOSE (link)));
+ 
+@@ -21170,7 +21176,8 @@ gen_enumeration_type_die (tree type, dw_die_ref context_die)
+ 	}
+ 
+       add_gnat_descriptive_type_attribute (type_die, type, context_die);
+-      if (TYPE_ARTIFICIAL (type))
++      if (TYPE_ARTIFICIAL (type)
++	  && (!orig_type_die || !get_AT (type_die, DW_AT_artificial)))
+ 	add_AT_flag (type_die, DW_AT_artificial, 1);
+     }
+   else
+diff --git a/gcc/testsuite/g++.dg/debug/dwarf2/enum2.C b/gcc/testsuite/g++.dg/debug/dwarf2/enum2.C
+new file mode 100644
+index 00000000000..6ccd4e436ec
+--- /dev/null
++++ b/gcc/testsuite/g++.dg/debug/dwarf2/enum2.C
+@@ -0,0 +1,30 @@
++// PR debug/58150
++// { dg-do compile }
++// { dg-options "-std=c++11 -gdwarf-4 -dA -fno-merge-debug-strings" }
++// { dg-final { scan-assembler-times "DIE\[^\n\r\]*DW_TAG_enumeration_type" 3 } }
++// { dg-final { scan-assembler-times " DW_AT_enum_class" 3 } }
++// { dg-final { scan-assembler-times " DW_AT_declaration" 1 } }
++// { dg-final { scan-assembler-times "\"E1..\"\[^\n\]*DW_AT_name" 1 } }
++// { dg-final { scan-assembler-times "\"E2..\"\[^\n\]*DW_AT_name" 1 } }
++// { dg-final { scan-assembler-times "\"F1..\"\[^\n\]*DW_AT_name" 1 } }
++// { dg-final { scan-assembler-times "\"F2..\"\[^\n\]*DW_AT_name" 1 } }
++
++enum class E : int;
++enum class F : int;
++enum class G : int;
++struct S { E s; };
++struct T { G t; };
++enum class E : int
++{
++  E1, E2
++};
++enum class F : int
++{
++  F1, F2
++};
++
++bool
++foo (E e, F f, G g)
++{
++  return e == E::E1 && f == F::F1 && (int) g == 0;
++}
+-- 
+2.51.0
+

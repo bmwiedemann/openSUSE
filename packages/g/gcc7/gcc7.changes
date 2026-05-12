@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 11 12:01:59 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr105225.patch to fix build with glibc 2.43 
+- Drop -fcf-protection from optflags, it's not supported by GCC 7.
+
+-------------------------------------------------------------------
+Thu Jan 15 08:13:22 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr58150.patch to fix annoying missing debug info with
+  enum class forward declarations.
+
+-------------------------------------------------------------------
 Fri Sep  5 11:44:58 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Add gcc7-libsanitizer-termio.patch, removing uses of termio from

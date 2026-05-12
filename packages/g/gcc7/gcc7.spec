@@ -1,7 +1,7 @@
 #
 # spec file for package gcc7
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -340,6 +340,8 @@ Patch49:        gcc7-bsc1239566.patch
 Patch50:        gcc7-enable-mpx-in-as.patch
 Patch70:        gcc7-pr81103.patch
 Patch71:        gcc7-libsanitizer-termio.patch
+Patch72:        gcc7-pr58150.patch
+Patch73:        gcc7-pr105225.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -1734,7 +1736,7 @@ Runtime library for the GNU Go language.
 
 %package -n gcc7-testresults
 Summary:        Testsuite results
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Development/Languages/C and C++
 
 %description -n gcc7-testresults
@@ -1891,6 +1893,8 @@ ln -s nvptx-newlib/newlib .
 %if %{suse_version} >= 1600
 %patch -P 71 -p1
 %endif
+%patch -P 72 -p1
+%patch -P 73 -p1
 %patch -P 51
 %patch -P 60
 %patch -P 61
@@ -1940,7 +1944,7 @@ rm -rf obj-%{GCCDIST}
 mkdir obj-%{GCCDIST}
 cd obj-%{GCCDIST}
 RPM_OPT_FLAGS="$RPM_OPT_FLAGS -U_FORTIFY_SOURCE"
-RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-fno-rtti//g' -e 's/-fno-exceptions//g' -e 's/-Wmissing-format-attribute//g' -e 's/-fstack-protector[^ ]*//g' -e 's/-ffortify=.//g' -e 's/-Wall//g' -e 's/-m32//g' -e 's/-m64//g'`
+RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-fno-rtti//g' -e 's/-fno-exceptions//g' -e 's/-Wmissing-format-attribute//g' -e 's/-fstack-protector[^ ]*//g' -e 's/-ffortify=.//g' -e 's/-fcf-protection[^ ]*//g' -e 's/-Wall//g' -e 's/-m32//g' -e 's/-m64//g'`
 %ifarch %ix86
 # -mcpu is superceded by -mtune but -mtune is not supported by
 # our bootstrap compiler.  -mcpu gives a warning that stops
@@ -2533,6 +2537,7 @@ rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/bits/unistd_ext.h
 rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/sys/rseq.h
 rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/sys/mount.h
 rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/bits/sched.h
+rm -f $RPM_BUILD_ROOT%{libsubdir}/include-fixed/bits/fcntl-linux.h
 %if !%{enable_plugins}
 # no plugins
 rm -rf $RPM_BUILD_ROOT%{libsubdir}/plugin

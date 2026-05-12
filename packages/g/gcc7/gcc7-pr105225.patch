@@ -1,0 +1,36 @@
+From 90e87839c2406f4cb85ed8307be017b51e7f846c Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Wed, 29 Jun 2022 15:32:04 -0700
+Subject: [PATCH] libgo: handle stat st_atim32 field and SYS_SECCOMP
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+To: gcc-patches@gcc.gnu.org
+
+From: Ian Lance Taylor <iant@golang.org>
+
+Patches for musl support, from Sören Tempel.
+
+Fixes PR go/105225
+
+Reviewed-on: https://go-review.googlesource.com/c/gofrontend/+/415294
+(cherry picked from commit 762fd5e5547e464e25b4bee435db6df4eda0de90)
+---
+ libgo/mksysinfo.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libgo/mksysinfo.sh b/libgo/mksysinfo.sh
+index 3c2c2d2ad01..3158a9fb2e1 100755
+--- a/libgo/mksysinfo.sh
++++ b/libgo/mksysinfo.sh
+@@ -98,6 +98,7 @@ fi
+ 
+ # The syscall numbers.  We force the names to upper case.
+ grep '^const _SYS_' gen-sysinfo.go | \
++  grep -v '^const _SYS_SECCOMP = ' | \
+   sed -e 's/const _\(SYS_[^= ]*\).*$/\1/' | \
+   while read sys; do
+     sup=`echo $sys | tr abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ`
+-- 
+2.51.0
+
