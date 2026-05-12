@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 10 21:05:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.30.13
+  * Bug Fixes
+    + fix: correct inverted bounds check in readBuffered methods
+    + fix: remove proactive isNativeAccessEnabled() checks from
+      terminal providers
+    + fix: status bar duplication after vertical resize
+
+-------------------------------------------------------------------
 Wed Apr 29 12:08:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.30.11

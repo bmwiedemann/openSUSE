@@ -31,7 +31,7 @@ JLine 3.x is an evolution of JLine 2.x.
 %endif
 %bcond_with ssh
 Name:           jline3
-Version:        3.30.11
+Version:        3.30.13
 Release:        0
 Summary:        Java library for handling console input
 License:        BSD-3-Clause
