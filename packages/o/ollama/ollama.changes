@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 11 07:46:45 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- update to 0.23.2:
+  *  ollama launch no longer includes Claude Desktop due to the
+     third-party integration being limited to Anthropic models.
+  * Use ollama launch claude-desktop --restore to restore
+    Claude Desktop to its normal state.
+  * /api/show responses are now cached, improving median latency
+    by ~6.7x which will increase load speed for integrations
+    like VS Code.
+  * Improved backup workflow when managing launch integrations
+
+-------------------------------------------------------------------
 Thu May  7 22:17:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.23.1:

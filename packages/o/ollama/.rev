@@ -825,4 +825,12 @@ because we don't need git-web and the other stuff here (forwarded request 125417
     <comment></comment>
     <requestid>1351547</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>cc113302f406d923da7c522cdf03bd6b</srcmd5>
+    <version>0.23.2</version>
+    <time>1778606880</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1352640</requestid>
+  </revision>
 </revisionlist>
