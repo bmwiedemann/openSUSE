@@ -30,7 +30,7 @@ BuildRequires:  zstd
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(x11)
-ExclusiveArch:  %{rust_tier1_arches}
+ExclusiveArch:  %{rust_tier1_arches} riscv64
 
 %description
 A modern shell written in Rust.
