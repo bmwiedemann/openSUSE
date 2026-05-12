@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue May 12 12:00:31 UTC 2026 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- use sover macro avoiding the typos in a spec
+- fixes the nothing provides libfswatch15=
+
+-------------------------------------------------------------------
+Sun May 10 09:15:11 UTC 2026 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- update to 1.21.0
+  * The public C++ fsw::monitor layout changed. C++ clients should be
+    rebuilt against this release. The soname is changes to libfswatch15
+  * CLI, Issues 104 and 273: Add --filter-mode=conjunctive. In this mode,
+    include filters define the candidate set and exclude filters subtract from
+    it: a path is accepted when it matches an include filter, or when no
+    include filters are specified, and does not match any exclude filter.
+  * CLI, Issue 151: Add --prune to prevent recursive traversal from
+    descending into matching directories where the selected monitor performs
+    traversal in fswatch or libfswatch. This is distinct from --exclude:
+    --exclude filters emitted events, while --prune prevents recursive
+    descent into matching subtrees.
+  * Compatibility: Legacy include/exclude filter behavior remains the default.
+    In legacy mode, include filters may still override exclude filters.
+  * Bug fix, Issue 247: Keep explicit root paths eligible for monitor setup
+    even when path filters would reject the root path itself, allowing matching
+    children to be discovered and reported.
+  * Add filtering regression coverage for legacy and conjunctive filter modes,
+    root-path eligibility, and traversal pruning.
+  * API: Add C API support for filter mode selection and prune filters.
+  * Compatibility: Legacy filter behavior remains the default.
+  * Bug fix, Issue 247: Keep explicit root paths eligible for monitor setup
+    even when path filters would reject the root path itself, allowing matching
+    children to remain discover able.
+
+-------------------------------------------------------------------
 Thu Apr 30 09:26:39 UTC 2026 - Michal Vyskocil <mvyskocil@opensuse.org>
 
 - Update to 1.20.1
