@@ -31,7 +31,7 @@ BuildRequires:  clang-devel
 BuildRequires:  libelf-devel
 BuildRequires:  systemd-rpm-macros
 Recommends:     logrotate
-ExclusiveArch:  %{rust_tier1_arches}
+ExclusiveArch:  %{rust_tier1_arches} riscv64
 
 %description
 below is an interactive tool to view and record historical system data. It has support for:

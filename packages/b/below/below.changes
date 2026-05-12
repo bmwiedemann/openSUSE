@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 11 12:10:45 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Sun May  3 16:04:09 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Add 002-llvm22-explicit-casts.patch to address LLVM22 issues
