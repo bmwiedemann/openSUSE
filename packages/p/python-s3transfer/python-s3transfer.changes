@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 11 10:53:36 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.17.0
+  * feature:Python: End of support for Python 3.9
+- from version 0.16.1
+  * enhancement:``TransferManager``: Add support for customer-provided
+    full-object checksums using the SHA512, MD5, XXHASH3, XXHASH64,
+    and XXHASH128 algorithms.
+
+-------------------------------------------------------------------
 Tue Dec  9 12:31:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.16.0
