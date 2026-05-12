@@ -134,4 +134,12 @@
     <comment>- Use pkgconfig() to locate build requirements</comment>
     <requestid>1293174</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b68741578346da3a0d831d5fc7b16278</srcmd5>
+    <version>2.8.2</version>
+    <time>1778606885</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.8.2</comment>
+    <requestid>1352660</requestid>
+  </revision>
 </revisionlist>

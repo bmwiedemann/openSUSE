@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_mixer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           SDL2_mixer
 %define lname	libSDL2_mixer-2_0-0
-Version:        2.8.1
+Version:        2.8.2
 Release:        0
 Summary:        SDL2 sound mixer library
 License:        Zlib
@@ -34,11 +34,13 @@ BuildRequires:  dos2unix
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libxmp)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2) >= 2.24
 BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(wavpack)
 Suggests:       timidity
 
 %description
@@ -78,14 +80,17 @@ rm -rf external
 #
 %configure \
 	--disable-music-ogg-stb --enable-music-ogg-vorbis \
+	--disable-music-ogg-vorbis-shared \
 	--disable-music-flac-drflac --enable-music-flac-libflac \
-	--disable-music-mp3-drmp3 --enable-music-mp3-mpg123 \
+	--disable-music-flac-libflac-shared \
+	--enable-music-mp3-mpg123 \
 	--disable-music-mod-modplug --enable-music-mod-xmp \
 	--disable-music-mod-xmp-shared \
 	--disable-music-midi-fluidsynth-shared \
-	--disable-music-ogg-shared \
-	--disable-music-flac-shared \
 	--disable-music-mp3-mpg123-shared \
+	--disable-music-gme-shared \
+	--disable-music-wavpack-shared \
+	--disable-music-opus-shared \
 	--disable-static
 %make_build
 

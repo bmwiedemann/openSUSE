@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 08:01:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.2
+  * Improved OGG decoding speed when using stb_vorbis
+- Enable GME and Wavpack formats
+
+-------------------------------------------------------------------
 Mon Jul 14 14:45:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Use pkgconfig() to locate build requirements
