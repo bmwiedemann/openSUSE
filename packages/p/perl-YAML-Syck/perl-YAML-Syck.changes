@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 11 20:37:37 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Remove workaround for gcc15
+  https://github.com/cpan-authors/YAML-Syck/issues/61
+  Fixed in https://github.com/cpan-authors/YAML-Syck/pull/69
+
+-------------------------------------------------------------------
 Fri Apr 24 07:18:13 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.450.0 (1.45)

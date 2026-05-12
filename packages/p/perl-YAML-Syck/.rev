@@ -370,4 +370,14 @@
     CVE-2025-11683 bsc#1252111</comment>
     <requestid>1352298</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>f0848214041968a453b2c4f578123b52</srcmd5>
+    <version>1.450.0</version>
+    <time>1778606844</time>
+    <user>anag_factory</user>
+    <comment>- Remove workaround for gcc15
+  https://github.com/cpan-authors/YAML-Syck/issues/61
+  Fixed in https://github.com/cpan-authors/YAML-Syck/pull/69</comment>
+    <requestid>1352569</requestid>
+  </revision>
 </revisionlist>

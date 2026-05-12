@@ -53,8 +53,7 @@ backward-compatibility with 'YAML.pm'.
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-# https://github.com/cpan-authors/YAML-Syck/issues/61
-perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags} -DI_STDLIB -DI_STRING -std=gnu11"
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags} -DI_STDLIB -DI_STRING"
 make %{?_smp_mflags}
 
 %check
