@@ -14,7 +14,7 @@ ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
-EnvironmentFile=-/etc/sysconfig/fetchmail
+EnvironmentFile=/etc/sysconfig/fetchmail
 User=fetchmail
 ExecStart=@LIBEXECDIR@/fetchmail-systemd-exec
 RestartSec=1

@@ -1,10 +1,25 @@
 -------------------------------------------------------------------
+Mon May 11 07:50:57 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- bsc#1263944 Fix multiple issues caused by fixes for immutable mode jsc#PED-14745 
+  * Fix permissions of /var/log/fetchmail directory
+  * Make logrotate run as fetchmail to avoid privellege escalation attacks
+  * Fix permissiosn of /var/lib/fetchmail 
+  * Configure correct logfile for daemon, create logfile
+ 
+-------------------------------------------------------------------
+Fri May  8 11:49:38 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- fix permissions of /var/lib/fetchmail/ - user "fetchmail" needs
+  to write there (as before the move to systemd-tmpfiles)
+
+-------------------------------------------------------------------
 Mon May  4 08:53:36 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
 
 - Fix package for immutable mode jsc#PED-14745 
   * Moved /var/lib/fetchmail to generated with systemd-tmpfiles
   * Moved /var/log/fetchmail logfile to inside /var/log/fetchmail directory
-  * Updated fetchmail.logrotate, fetchmail.tmpfiles                                                                   │
+  * Updated fetchmail.logrotate, fetchmail.tmpfiles
 
 -------------------------------------------------------------------
 Mon Nov 17 09:19:26 UTC 2025 - Angel Yankov <angel.yankov@suse.com>

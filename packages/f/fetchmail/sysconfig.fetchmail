@@ -35,7 +35,7 @@ FETCHMAIL_SILENT="no"
 # specified log file or syslog(3) system if available. If empty, omits
 # any logging options.
 #
-FETCHMAIL_DEFAULT_LOGFILE="/var/log/fetchmail"
+FETCHMAIL_DEFAULT_LOGFILE="/var/log/fetchmail/fetchmail"
 
 ## Type:        string
 ## Default:     ""
