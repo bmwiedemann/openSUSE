@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 09:52:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.1
+  * `makedoc.g` now works when called from outside the package
+    directory.
+
+-------------------------------------------------------------------
 Thu Apr  9 12:25:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.0
