@@ -1,4 +1,228 @@
 -------------------------------------------------------------------
+Tue May 12 04:54:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.0:
+  * Command-Line Interface
+    - New Feature restrict insecure unauthenticated server to
+      loopback binds (#5354) by Jarek Kowalski
+    - registration mechanism for storage providers (#5350) by Julio
+      López
+    - hash benchmarking count (#5312) by Julio López
+    - leverage x/term.IsTerminal (#5308) by Julio López
+    - handle potential conversion overflow when setting progress
+      default (#5271) by Julio López
+  * KopiaUI App
+    - skip htmlui tests that are timing out (#5257) by Julio López
+  * General Improvements
+    - bigmapbench profiling (#5321) by Julio López
+    - clean nits (#5313) by Julio López
+    - remove support for LZ4 (#5296) by Julio López
+    - retained log size double counting (#5302) by Julio López
+    - make counters and size stats uint64 for consistency (#5262)
+      by Julio López
+    - address potential conversion overflows (#5266) by Julio López
+    - string nits (#5265) by Julio López
+    - cleanup nits (#5236) by Julio López
+    - do not included concatenated entries in log (#5231) by lif
+    - move SafeLongFilename to ospath (#5227) by Julio López
+    - add byte units to maintenance stat summaries (#5178) by Julio
+      López
+  * Repository
+    - sync index blob file before closing (#5292) by Julio López
+    - failures when exceeding Windows MAX_PATH (#5226) by Julio
+      López
+  * Snapshots
+    - ErrorEntry policy resolution to use child policy (#5234) by
+      Baixiaochun
+    - inaccessible entry causes parent directory to be skipped
+      (#5217) by Julio López
+  * Storage Providers
+    - warn messages for extra storage providers (#5324) by Julio
+      López
+    - perform maximum of 2 attempt in PutBlobInPath (#5168) by
+      Julio López
+    - require.NoError (#5166) by Julio López
+    - update injected error message (#5165) by Julio López
+    - make tests with injected errors more robust (#5164) by Julio
+      López
+    - cleanup temporary file on put blob failure (#5157) by Julio
+      López
+    - notify after releasing the lock (#5154) by Julio López
+    - sync file in FS provider to ensure data is persisted (#5150)
+      by Julio López
+  * Testing
+    - prefer assert.NoError (#5299) by Julio López
+    - nits in TestSnapFail tests (#5228) by Julio López
+    - TestSnapshotFail* (#5225) by Julio López
+  * Infrastructure
+    - tweak copilot instructions (#5278) by Julio López
+    - update agent instructions (#5153) by Julio López
+  * CI/CD
+    - split out linux-based lint targets (#5349) by ashmrtn
+    - license-check-go make target (#5347) by Julio López
+    - skip setup step on PRs on MacOS (#5344) by Julio López
+    - generate govulncheck SARIF report (#5300) by Julio López
+    - avoid duplicate test failure output (#5222) by Julio López
+    - add install-checklocks convenience target (#5152) by Julio
+      López
+  * Dependencies
+    - build(deps-dev): update govulncheck version (#5367)
+    - build(deps): bump fast-uri from 3.1.0 to 3.1.2 in /app
+      (#5366)
+    - Update golang toolchain to 1.25.10 (#5365)
+    - build(deps): bump github.com/klauspost/compress from 1.18.5
+      to 1.18.6 (#5357)
+    - build(deps): bump github.com/klauspost/reedsolomon from
+      1.13.3 to 1.14.0 (#5358)
+    - build(deps): bump go.uber.org/zap from 1.27.1 to 1.28.0
+      (#5356)
+    - build(deps): bump the common-golang-dependencies group with 2
+      updates (#5355)
+    - build(deps-dev): bump electron (#5351)
+    - build(deps): bump github/codeql-action in the github-actions
+      group (#5352)
+    - build(deps): bump github.com/hanwen/go-fuse/v2 from 2.9.0 to
+      2.10.1 (#5343)
+    - build(deps-dev): bump the kopia-ui-npm-dependencies group
+      across 1 directory with 3 updates (#5328)
+    - build(deps-dev): bump @xmldom/xmldom from 0.8.12 to 0.8.13 in
+      /app (#5327)
+    - build(deps-dev): bump postcss (#5346)
+    - build(deps): upgrade uuid to v14 to resolve moderate npm
+      audit vulnerability (#5341)
+    - build(deps): bump the common-golang-dependencies group with 2
+      updates (#5325)
+    - build(deps): bump actions/upload-artifact in the
+      github-actions group (#5318)
+    - build(deps-dev): bump the kopia-ui-npm-dependencies group
+      (#5317)
+    - build(deps): dependabot cooldown (#5316)
+    - build(deps): upgrade to github.com/golang-jwt/jwt v5.3.1
+      (#5314)
+    - build(deps): bump github.com/mattn/go-isatty from 0.0.20 to
+      0.0.21 (#5305)
+    - build(deps): bump github.com/mocktools/go-smtp-mock/v2
+      (#5306)
+    - build(deps): bump the common-golang-dependencies group with 8
+      updates (#5304)
+    - build(deps): Go 1.25.9 (#5297)
+    - build(deps): bump cloud.google.com/go/storage (#5290)
+    - build(deps): bump github.com/mocktools/go-smtp-mock/v2
+      (#5281)
+    - build(deps): bump the telemetry-dependencies group with 4
+      updates (#5280)
+    - build(deps): bump the common-golang-dependencies group with 3
+      updates (#5279)
+    - build(deps): bump github.com/go-jose/go-jose/v4 from 4.1.3 to
+      4.1.4 (#5277)
+    - build(deps-dev): bump lodash from 4.17.23 to 4.18.1 in /app
+      (#5272)
+    - build(deps): bump the github-actions group with 4 updates
+      (#5267)
+    - build(deps-dev): bump the kopia-ui-npm-dependencies group
+      (#5270)
+    - build(deps): bump the docker group with 2 updates (#5268)
+    - build(deps): bump codecov/codecov-action from 5.5.2 to 6.0.0
+      (#5269)
+    - build(deps-dev): bump @xmldom/xmldom from 0.8.11 to 0.8.12 in
+      /app (#5261)
+    - build(deps-dev): bump brace-expansion from 1.1.12 to 1.1.13
+      in /app (#5260)
+    - build(deps): bump google.golang.org/api (#5254)
+    - build(deps-dev): bump yaml from 2.8.2 to 2.8.3 in /site
+      (#5250)
+    - build(deps-dev): bump picomatch from 2.3.1 to 2.3.2 in /site
+      (#5248)
+    - build(deps-dev): bump picomatch from 4.0.3 to 4.0.4 in /app
+      (#5249)
+    - build(deps-dev): gotestsum to v1.13.0 (#5246)
+    - build(deps): bump github.com/fatih/color from 1.18.0 to
+      1.19.0 (#5242)
+    - build(deps): bump github.com/zalando/go-keyring from 0.2.6 to
+      0.2.8 (#5241)
+    - build(deps): bump github.com/klauspost/compress from 1.18.4
+      to 1.18.5 (#5240)
+    - build(deps): bump google.golang.org/grpc from 1.79.2 to
+      1.79.3 (#5229)
+    - build(deps): bump the common-golang-dependencies group with 7
+      updates (#5220)
+    - build(deps-dev): bump tar from 7.5.10 to 7.5.11 in /app
+      (#5213)
+    - build(deps): bump github.com/mxk/go-vss from 1.2.0 to 1.2.1
+      (#5210)
+    - build(deps): bump github.com/klauspost/reedsolomon from
+      1.13.2 to 1.13.3 (#5211)
+    - build(deps): bump the telemetry-dependencies group with 4
+      updates (#5209)
+    - build(deps): bump the common-golang-dependencies group across
+      1 directory with 7 updates (#5214)
+    - build(deps): upgrade Go to 1.25.8 (#5212)
+    - build(deps-dev): bump tar from 7.5.9 to 7.5.10 in /app
+      (#5204)
+    - build(deps): bump the telemetry-dependencies group with 4
+      updates (#5196)
+    - build(deps-dev): bump electron (#5189)
+    - build(deps): bump the github-actions group with 6 updates
+      (#5192)
+    - build(deps-dev): bump minimatch from 3.1.2 to 3.1.5 in /app
+      (#5193)
+    - build(deps): bump the common-golang-dependencies group with 2
+      updates (#5191)
+    - build(deps): bump google.golang.org/api (#5179)
+    - build(deps): bump ajv from 6.12.6 to 6.14.0 in /app (#5175)
+    - build(deps-dev): bump electron (#5171)
+    - build(deps): bump google.golang.org/api (#5170)
+    - build(deps): bump the kopia-ui-npm-dependencies group across
+      1 directory with 14 updates (#5126)
+    - build(deps-dev): bump tar from 7.5.7 to 7.5.9 in /app (#5159)
+    - build(deps): bump the common-golang-dependencies group with 3
+      updates (#5158)
+    - build(deps): bump github.com/klauspost/compress from 1.18.3
+      to 1.18.4 (#5149)
+    - build(deps): bump the common-golang-dependencies group with 7
+      updates (#5148)
+    - build(deps): bump github.com/klauspost/reedsolomon from
+      1.13.1 to 1.13.2 (#5141)
+    - build(deps): bump google.golang.org/api (#5140)
+    - build(deps): upgrade Go to 1.25.7 (#5143)
+    - build(deps): bump the common-golang-dependencies group across
+      1 directory with 2 updates (#5136)
+    - build(deps): bump github.com/coreos/go-systemd/v22 from
+      22.6.0 to 22.7.0 (#5135)
+    - build(deps-dev): bump @isaacs/brace-expansion in /app (#5133)
+    - build(deps): bump the common-golang-dependencies group across
+      1 directory with 5 updates (#5131)
+    - build(deps): bump dawidd6/action-homebrew-bump-formula from 5
+      to 7 (#5089)
+    - build(deps): bump github.com/klauspost/reedsolomon from
+      1.12.6 to 1.13.1 (#5129)
+    - build(deps): bump the github-actions group with 3 updates
+      (#5125)
+    - build(deps): bump the telemetry-dependencies group with 4
+      updates (#5128)
+    - build(deps): bump github.com/studio-b12/gowebdav from 0.11.0
+      to 0.12.0 (#5119)
+    - build(deps): bump github.com/klauspost/compress from 1.18.2
+      to 1.18.3 (#5111)
+    - build(deps-dev): bump lodash from 4.17.21 to 4.17.23 in /app
+      (#5114)
+    - build(deps): bump codecov/codecov-action from 5.5.1 to 5.5.2
+      (#5090)
+    - build(deps): bump tar and electron-builder in /app (#5121)
+    - Upgrade Go to 1.25.6 (#5127)
+    - build(deps): bump docker/setup-buildx-action in the docker
+      group (#5088)
+    - build(deps): bump github.com/prometheus/common (#5093)
+    - build(deps): bump the github-actions group with 5 updates
+      (#5087)
+    - build(deps): bump google.golang.org/protobuf (#5073)
+    - build(deps): bump the telemetry-dependencies group with 4
+      updates (#5068)
+    - build(deps): bump the common-golang-dependencies group with
+      10 updates (#5067)
+    - deps(build): upgrade Go to 1.25.5 (#5059)
+
+-------------------------------------------------------------------
 Thu Dec 04 06:26:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.22.3:
