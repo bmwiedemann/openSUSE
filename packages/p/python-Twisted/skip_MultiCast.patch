@@ -2,11 +2,11 @@
  src/twisted/test/test_udp.py |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: twisted-25.5.0/src/twisted/test/test_udp.py
+Index: twisted-26.4.0/src/twisted/test/test_udp.py
 ===================================================================
---- twisted-25.5.0.orig/src/twisted/test/test_udp.py
-+++ twisted-25.5.0/src/twisted/test/test_udp.py
-@@ -22,7 +22,7 @@ from socket import (
+--- twisted-26.4.0.orig/src/twisted/test/test_udp.py
++++ twisted-26.4.0/src/twisted/test/test_udp.py
+@@ -23,7 +23,7 @@ from socket import (
      inet_pton,
      socket,
  )
@@ -15,7 +15,7 @@ Index: twisted-25.5.0/src/twisted/test/test_udp.py
  
  from twisted.internet import defer, error, interfaces, protocol, reactor, udp
  from twisted.internet.address import IPv4Address, IPv6Address
-@@ -638,6 +638,7 @@ class MulticastTests(TestCase):
+@@ -665,6 +665,7 @@ class MulticastTests(TestCase):
      wrongAddressFamily: str = "::1"
  
      def setUp(self):

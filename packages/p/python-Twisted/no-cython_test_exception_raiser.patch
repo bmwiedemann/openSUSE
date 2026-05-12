@@ -1,9 +1,9 @@
-diff --git a/src/twisted/test/test_failure.py b/src/twisted/test/test_failure.py
-index a9e920c10e..de9c499972 100644
---- a/src/twisted/test/test_failure.py
-+++ b/src/twisted/test/test_failure.py
-@@ -19,7 +19,8 @@ from types import TracebackType
- from typing import Any, Generator, cast
+Index: twisted-26.4.0/src/twisted/test/test_failure.py
+===================================================================
+--- twisted-26.4.0.orig/src/twisted/test/test_failure.py
++++ twisted-26.4.0/src/twisted/test/test_failure.py
+@@ -20,7 +20,8 @@ from types import TracebackType
+ from typing import Any, cast
  from unittest import skipIf
  
 -from cython_test_exception_raiser import raiser

@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue May 12 04:51:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 26.4.0:
+  ## Security
+  * Prevent a Denial of Service (DoS) attack via resource exhaustion during
+    DNS name decompression. (CVE-2026-42304)
+  ## Features
+  * twisted.internet.ssl.CertificateOptions has a new constructor argument,
+    contextForServerName, which takes a callback that will get invoked when a
+    client sends a server name indication, with the sent servername, and
+    returns a new OpenSSL.SSL.Context that the connection will switch to.
+  * twisted.internet.endpoints.serverFromString now supports the tls endpoint
+    type, which allows you to do twist web
+    --listen=tls:.../certbot-dir/config/live pointed at a certbot live
+    configuration directory and have your certbot certificates automatically
+    discovered and served appropriately.
+  * twisted.internet.reactor now has type annotations and will appear to be
+    an object of an appropriate type, allowing for idiomatic common usages
+    with correct type information.
+  * twisted.conch.ssh.SSHUserAuthServer now supports the security key ssh
+    types "sk-ecdsa-sha2-nistp256@openssh.com" and
+    "sk-ssh-ed25519@openssh.com" and extracting the application property from
+    these new key types.
+  ## Bugfixes
+  * twisted.mail.smtp will now return a meaningful Failure when TLS
+    validation fails.
+  * TLS version range constraints passed to
+    twisted.internet.ssl.CertificateOptions are now properly respected rather
+    than excluding the version being passed as the desired constraint.
+  * A potential reference cycle that might cause intermittent memory spikes
+    while using twisted.internet.defer.inlineCallbacks was removed.
+  * Trial no longer emits the error RuntimeWarning: TestResult has no
+    addDuration method when running PyUnit tests.
+  * twisted.python.rebuild.rebuild() now handles changes to sys.modules
+    gracefully. Prior to the change, it could possibly raise a "dictionary
+    changed size during iteration" error if the module list changed.
+  * twisted.internet.protocol.ReconnectingClientFactory: Don't multiply by
+    factor for initial delay, but use initialDelay directly.
+  * twisted.internet.ssl and twisted.protocols.tls no longer mutate the
+    pyOpenSSL context after creating pyOpenSSL connections, maintaining
+    compatibility with an upcoming version of pyOpenSSL and increasing
+    reliability.
+  * twisted.internet.testing.MemoryReactor.callWhenRunning now invokes the
+    callback immediately, if already started.
+  * Twisted now correctly detects EOF on OpenSSL 4.
+  ## Deprecations and Removals
+  * Support for the obsolete TLS "Next Protocol Negotiation" has been removed
+    from twisted.protocols.tls.
+  * Remove support for python3.8.
+- Dropped patches:
+  * no-test_successResultOfWithFailureHasTraceback.patch, no longer required
+  * py314.patch, merged upstream
+  * createElement.patch, merged upstream
+- Rebased patches:
+  * skip_MultiCast.patch
+  * 1521_delegate_parseqs_stdlib_bpo42967.patch
+  * no-cython_test_exception_raiser.patch
+  * remove-dependency-version-upper-bounds.patch
+- Drop unneeded BuildRequires on setuptools and wheel.
+
+-------------------------------------------------------------------
 Mon Dec 29 09:46:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add createElement.patch to fix tests with fixed python interpreters

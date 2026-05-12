@@ -1,8 +1,8 @@
-Index: twisted-25.5.0/pyproject.toml
+Index: twisted-26.4.0/pyproject.toml
 ===================================================================
---- twisted-25.5.0.orig/pyproject.toml
-+++ twisted-25.5.0/pyproject.toml
-@@ -97,8 +97,8 @@ serial = [
+--- twisted-26.4.0.orig/pyproject.toml
++++ twisted-26.4.0/pyproject.toml
+@@ -96,8 +96,8 @@ serial = [
  ]
  
  http2 = [

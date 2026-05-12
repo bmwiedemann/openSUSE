@@ -1,7 +1,7 @@
 #
 # spec file for package python-Twisted
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Twisted%{psuffix}
-Version:        25.5.0
+Version:        26.4.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
@@ -39,26 +39,18 @@ URL:            https://twisted.org
 Source0:        https://files.pythonhosted.org/packages/source/t/twisted/twisted-%{version}.tar.gz
 Source99:       python-Twisted.rpmlintrc
 Patch0:         skip_MultiCast.patch
-# PATCH-FIX-UPSTREAM no-test_successResultOfWithFailureHasTraceback.patch https://twistedmatrix.com/trac/ticket/9665 mcepl@suse.com
-# skip over the test test_successResultOfWithFailureHasTraceback
-Patch2:         no-test_successResultOfWithFailureHasTraceback.patch
 # PATCH-FIX-UPSTREAM 1521_delegate_parseqs_stdlib_bpo42967.patch https://twistedmatrix.com/trac/ticket/10096 mcepl@suse.com
 # overcome incompatibility with the solution for bpo#42967.
-Patch3:         1521_delegate_parseqs_stdlib_bpo42967.patch
+Patch1:         1521_delegate_parseqs_stdlib_bpo42967.patch
 # PATCH-FIX-OPENSUSE We don't want to package yet another module, and it is easily skippable
-Patch5:         no-cython_test_exception_raiser.patch
+Patch2:         no-cython_test_exception_raiser.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
-Patch6:         remove-dependency-version-upper-bounds.patch
-# PATCH-FIX-UPSTREAM https://github.com/twisted/twisted/issues/12430 Add support for Python 3.14
-Patch7:         py314.patch
-# PATCH-FIX-UPSTREAM https://github.com/twisted/twisted/pull/12551 use createElement in the test rather than instantiating Element
-Patch8:         createElement.patch
+Patch3:         remove-dependency-version-upper-bounds.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module incremental >= 24.7.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
@@ -66,13 +58,13 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Twisted-tls = %{version}
 BuildArch:      noarch
 # SECTION install requires
-Requires:       python-Automat >= 0.8.0
-Requires:       python-attrs >= 19.2.0
+Requires:       python-Automat >= 24.8.0
+Requires:       python-attrs >= 22.2
 Requires:       python-constantly >= 15.1
 Requires:       python-hyperlink >= 17.1.1
 Requires:       python-incremental >= 24.7.0
-Requires:       python-typing_extensions >= 3.6.5
-Requires:       python-zope.interface >= 4.4.2
+Requires:       python-typing_extensions >= 4.2
+Requires:       python-zope.interface >= 5
 # /SECTION
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -110,7 +102,7 @@ This package contains the documentation for python-Twisted
 Summary:        TLS support for Twisted
 Requires:       python-Twisted = %{version}
 Requires:       python-idna >= 2.4
-Requires:       python-pyOpenSSL >= 16.0.0
+Requires:       python-pyOpenSSL >= 25.2
 Requires:       python-service_identity >= 18.1.0
 
 %description tls
@@ -123,8 +115,8 @@ This metapackage is for the optional feature tls
 Summary:        Conch for Twisted
 Requires:       python-Twisted = %{version}
 Requires:       python-appdirs >= 1.4.0
-Requires:       python-bcrypt >= 3.0.0
-Requires:       python-cryptography >= 2.6
+Requires:       python-bcrypt >= 3.2.1
+Requires:       python-cryptography >= 38
 
 %description conch
 Twisted is an extensible framework for Python programming, with special focus
@@ -154,7 +146,7 @@ This metapackage is for the optional feature serial
 %package http2
 Summary:        HTTP/2 support for Twisted
 Requires:       python-Twisted = %{version}
-Requires:       python-h2 >= 3.0
+Requires:       python-h2 >= 3.2
 Requires:       python-priority >= 1.1.0
 
 %description http2
