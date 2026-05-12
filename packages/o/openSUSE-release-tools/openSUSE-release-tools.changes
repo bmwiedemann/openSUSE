@@ -1,4 +1,197 @@
 -------------------------------------------------------------------
+Tue May 05 13:16:57 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260505.9d4790bf:
+  * check_bugowner: Detect corrupt Git caches and clean them.
+
+-------------------------------------------------------------------
+Mon May 04 14:42:34 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260504.7d0ce1df:
+  * check_bugowner: Allow overriding OSRT_BUGOWNER_CACHE_HOME for the systemd service.
+
+-------------------------------------------------------------------
+Mon May 04 14:20:01 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260504.245b9e1d:
+  * scm/git.py: fix git fetch
+
+-------------------------------------------------------------------
+Wed Apr 29 12:11:21 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260429.6a56c231:
+  * gocd: add new Factory staging Glibc
+
+-------------------------------------------------------------------
+Tue Apr 28 08:17:08 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260428.8257d986:
+  * osclib: repochecks: maintain compatibility with Python 3.6
+
+-------------------------------------------------------------------
+Tue Apr 28 06:48:37 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260428.677b57e7:
+  * check_bugowner: Add support for new _maintainership.json format.
+
+-------------------------------------------------------------------
+Mon Apr 27 12:14:46 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260427.07e5e8b0:
+  * Improve source/testing/published column styling
+  * Add styling to the dashboard
+  * Group imports: stdlib, third-party, with blank line separator
+  * Add error handling in fetch_ttm_status
+  * Fix missing self reference in Project.build_summary
+  * Add PROGRESS_SCALE to replace 10000, other small changes
+  * Remove unnecessary object inheritance and unused self.opts parameter
+  * always show the openQA results in the same order
+  * Merge repository.html template into dashboard.html as a macro
+  * Move hardcoded project configs into FACTORY_PROJECTS/LEAP_PROJECTS lists
+
+-------------------------------------------------------------------
+Wed Apr 22 12:10:45 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260422.cc1e99ce:
+  * check_source: normalize names between git repoisitory and spec file
+
+-------------------------------------------------------------------
+Tue Apr 21 08:49:37 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260421.37879a25:
+  * check_bugowner: Fix checkout for existing AGit branches.
+
+-------------------------------------------------------------------
+Thu Apr 16 14:16:48 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260416.3bf616dd:
+  * check_bugowner: Fix for AGit created branches.
+
+-------------------------------------------------------------------
+Thu Apr 16 14:11:14 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260416.4611b41b:
+  * check_bugowner: Fetch only existing branches.
+
+-------------------------------------------------------------------
+Thu Apr 16 14:08:25 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260416.f551b3f7:
+  * check_bugowner: Better support for AGit created branches.
+
+-------------------------------------------------------------------
+Thu Apr 16 13:54:44 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260416.4ff12039:
+  * check_bugowner: Fail gracefully if python-ldap is missing.
+  * scm: git: Fast forward when fetching non current local branches.
+  * check_bugowner: Fix crash when --ldap is not passed.
+
+-------------------------------------------------------------------
+Tue Apr 14 16:49:05 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260414.393c229f:
+  * dist: adjust packaging for osrt-git-installcheck
+  * Makefile: ship staginginstallchecker module and create working directory for osrt-git-installcheck
+  * config: add default environment configuration for osrt-git-installcheck
+  * systemd: add service and timer for git-installcheck
+  * git-installcheck: add installchecker bot for Gitea workflows
+  * staging-installcheck: move the InstallChecker class to its own loadable module
+
+-------------------------------------------------------------------
+Tue Apr 14 15:44:39 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260414.cb03929f:
+  * fix: pass in branch name in checkout_package
+
+-------------------------------------------------------------------
+Tue Apr 14 14:08:40 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260414.fb774ca8:
+  * check_source.py: Allow forks to be named differently
+
+-------------------------------------------------------------------
+Tue Apr 14 13:25:02 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260414.9624f548:
+  * Drop Persistent=true - not needed as we run very often
+  * Remove extra space
+  * check-source: add systemd service and timer
+
+-------------------------------------------------------------------
+Tue Apr 14 12:53:52 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260414.fb50e939:
+  * freeze: Do not resign binaries when aggrgating from Ring1
+
+-------------------------------------------------------------------
+Mon Apr 13 12:47:33 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260413.eff4a3a8:
+  * Gitea review bots: pin RPM requirements to same version
+
+-------------------------------------------------------------------
+Mon Apr 13 10:09:59 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260413.623db857:
+  * docs: bot-framework: search_review() is always a generator now
+  * plat: obs: turn search_review() into a generator
+  * ReviewBot: set_request_ids_search_review: ensure we store a list
+
+-------------------------------------------------------------------
+Mon Apr 13 09:32:34 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260413.f33e297b:
+  * plat: gitea: store labels
+  * plat: gitea: add review support
+
+-------------------------------------------------------------------
+Mon Apr 13 09:03:10 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260413.03d69ffe:
+  * check_bugowner: Handle review comments.
+  * ReviewBot: Avoid leaking access tokens through kernel command line facility.
+  * check_bugowner: Support homonymous branches.
+  * check_bugowner: Emit missing PR or submodule warnings based on case insensitive check.
+  * check_bugowner: Fix systemd service file.
+  * check_bugowner: Implement platform-specific functions as private functions.
+  * plat/obs: Add stub for get_user procedure.
+  * plat/base: Add abstract get_user method to platform interface.
+  * check_bugowner: Add systemd unit file.
+  * check_bugowner: Update specfile.
+  * check_bugowner: Please flaker.
+  * check_bugowner: More granular error handling.
+  * check_bugowner: Make cache directory configurable.
+  * check_bugowner: More robust LDAP error handling.
+  * check_bugowner: Better error handling.
+  * check_bugowner: Simplify message in case of a PR that does not touch package submodules.
+  * check_bugowner: Support PR branches to have the same name as the base branch.
+  * check_bugowner: Fix PRs coming from the same remote as base.
+  * check_bugowner: Use branch name instead of commit hash to compute a given PR diff.
+  * check_bugowner: Report on the PR when the mentioned package PRs are inconsistent with changed submodules.
+  * check_bugowner: Read _maintainership.json from HEAD instead of base branch.
+  * check_bugowner: Check whether maintainer's account is active on LDAP.
+  * check_bugowner: Clone the repository only once and only fetch revisions.
+  * check_bugowner: Print maintainer for assigned packages.
+  * check_bugowner: diff_submodules: Support submodule deletions.
+  * check_bugowner: Perform checks only for packages whose package PR is mentioned in the description.
+  * check_bugowner: Check all changed packages according to the Release Management requirements.
+  * check_bugowner: Add whitelist check, allowing to restrict the bugowner check to shipped packages.
+  * check_bugowner: Add Git workflow compatible bugowner checker.
+
+-------------------------------------------------------------------
+Thu Apr 09 08:47:37 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260409.247b21e1:
+  * gocd: Monitor devel:ARM:Factory:ARMv9
+
+-------------------------------------------------------------------
+Wed Apr 08 08:46:43 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260408.6ac43e14:
+  * gocd: Add devel:ARM:Factory:ARMv9
+
+-------------------------------------------------------------------
 Thu Mar 12 08:03:10 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260311.8d21e901:
