@@ -17,14 +17,13 @@
 
 
 Name:           zenith
-Version:        0.14.3
+Version:        0.15.0
 Release:        0
 Summary:        Sort of like top or htop but with zoom-able charts
 License:        MIT
 URL:            https://github.com/bvaisvil/zenith
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         001-strip-cargo-config.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 # Disable this line if you wish to support all platforms.

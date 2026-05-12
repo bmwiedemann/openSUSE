@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue May 12 09:03:30 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Drop 001-strip-cargo-config.patch since cargo config was removed upstream
+- Update to version 0.15.0:
+  * Scroll File Systems list when selection overflows the pane
+  * Scroll Graphics Devices list when selection overflows the pane
+  * add tests for zprocess
+  * add some tests; update ci to run the tests
+  * add pr template
+  * Add peak tracking for processes
+  * fix i32<->u32
+  * fix i32<->u32
+  * fix comments/clippy suggestions
+  * fix comments/clippy suggestions
+  * custom macos used memory calculation
+  * custom macos used memory calculation
+  * silence unused imports
+  * add linux support
+  * add linux support
+  * add linux support
+  * add linux support
+  * add linux support
+  * add linux support
+  * add linux support
+  * fix memory display
+  * remove unused crate
+  * removed unused imports
+  * working - more or less
+  * fix: warning: `zenith/.cargo/config` is deprecated (#178)
+
+-------------------------------------------------------------------
 Sat Jan 10 12:21:41 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.14.3:
