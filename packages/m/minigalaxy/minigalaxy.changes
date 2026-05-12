@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 05:54:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-webkit-typelib.patch: typelib-1_0-WebKit2-4_0 does not
+  exist on Tumbleweed anymore, patch to only look for
+  typelib-1_0-WebKit2-4_1
+
+-------------------------------------------------------------------
 Thu Jan 22 20:54:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.1:

@@ -1,0 +1,11 @@
+Index: minigalaxy-1.4.1/minigalaxy/ui/webkit.py
+===================================================================
+--- minigalaxy-1.4.1.orig/minigalaxy/ui/webkit.py
++++ minigalaxy-1.4.1/minigalaxy/ui/webkit.py
+@@ -3,5 +3,5 @@ import gi
+ try:
+     gi.require_version('WebKit2', '4.1')
+ except ValueError:
+-    gi.require_version('WebKit2', '4.0')
++    gi.require_version('WebKit2', '4.1')
+ from gi.repository import WebKit2  # noqa: E402,F401

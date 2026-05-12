@@ -25,6 +25,7 @@ Group:          Amusements/Games/Other
 URL:            https://github.com/sharkwouter/minigalaxy
 Source0:        https://github.com/sharkwouter/minigalaxy/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         minigalaxy-0.9.0-desktop.patch
+Patch1:         fix-webkit-typelib.patch
 BuildRequires:  gobject-introspection
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
