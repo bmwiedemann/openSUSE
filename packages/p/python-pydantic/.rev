@@ -689,4 +689,20 @@
   ## Fixes</comment>
     <requestid>1347218</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>daf60c5b9ce19a49c4890cfc219ecef4</srcmd5>
+    <version>2.13.4</version>
+    <time>1778606771</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.13.4:
+  * Bump libc from 0.2.155 to 0.2.185 by @Viicos in #13109
+  * Adapt `pydantic-core` linker flags on macOS by @washingtoneg
+    and @Viicos in #13147
+  * Preserve `RootModel` core metadata by @Viicos in #13129
+  * Handle `AttributeError` subclasses with `from_attributes` by
+    @Viicos in #13096
+  * Fix `ValidationInfo.field_name` missing with
+    `model_validate_json()` by @Viicos in #13084</comment>
+    <requestid>1352320</requestid>
+  </revision>
 </revisionlist>

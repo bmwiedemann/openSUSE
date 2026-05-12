@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 10 19:57:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.4:
+  * Bump libc from 0.2.155 to 0.2.185 by @Viicos in #13109
+  * Adapt `pydantic-core` linker flags on macOS by @washingtoneg
+    and @Viicos in #13147
+  * Preserve `RootModel` core metadata by @Viicos in #13129
+  * Handle `AttributeError` subclasses with `from_attributes` by
+    @Viicos in #13096
+  * Fix `ValidationInfo.field_name` missing with
+    `model_validate_json()` by @Viicos in #13084
+
+-------------------------------------------------------------------
 Thu Apr 16 05:48:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.13.1:
