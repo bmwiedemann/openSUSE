@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri May  8 19:20:39 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.7.1:
+  * fix a regression in 4.7.0 that caused the web config
+    (fish_config) to fail to start (#12717)
+- includes 4.7.0:
+  * The default theme (i.e. the fish_color_* variables) is no
+    longer set in non-interactive shells.
+  * prompt_pwd now strips control characters.
+  * Repaint events (as triggered by changes to color variables or
+    by event handlers running commandline -f repaint) no longer
+    reset the completion pager and other transient UI states (#12683)
+  * fish_color_valid_path now respects background and underline colors (#12622)
+  * funced will no longer lose work if there are parse errors
+    multiple times without new changes to the file.
+  * Fixed a case where directory completions were sorted in a
+    surprising order (#12695)
+  * When at the command token, the alt-o binding will now open
+    read-only files too (#12671)
+  * Private mode in-memory history (set fish_history) is no
+    longer shared with builtin read (#12662
+  * History is no longer corrupted with NUL bytes when fish
+    receives SIGTERM or SIGHUP (#10300)
+  * fish_update_completions now handles groff \X'...' device
+    control escapes, fixing completion generation for man pages
+    produced by help2man 1.50 and later (such as coreutils 9.10)
+  * Removing history entries via the web-based config is more intuitive.
+  * If XDG_DATA_DIRS is empty, the default value is assumed,
+    which means that fish will now also use configuration from
+    paths like $PREFIX/share/fish/vendor_completions.d (#11349)
+  * Some internal file descriptors were moved to number 10 or
+    higher, to reduce risk of clashes with those used by the user in scripts.
+  * The wording of error messages has been made consistent,
+    especially for builtin subcommands (#12556)
+  * fix: (from 4.6) Vi mode dl (#12461)
+  * fix: (from 4.6) Backspace after newline (#12583)
+  * fix: (from 4.3.3) Long options were spuriously completed
+    after typing short options (85e76ba)
+  * fix: (from 3.2) nosuchcommand || echo hello executes the
+    right hand side again (#12654)
+
+-------------------------------------------------------------------
+Mon Mar 30 21:23:52 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.6.0:
+  * New Spanish translations (#12489)
+  * New Japanese translations (#12499)
+  * The default width for emoji is switched from 1 to 2,
+    improving the experience for users connecting to old systems
+    from modern desktops. Users of old desktops who notice that
+    lines containing emoji are misaligned can set $fish_emoji_width back to 1 (#12562)
+  * The tab completion pager now left-justifies the description
+    of each column (#12546)
+  * fish now supports the SHELL_PROMPT_PREFIX, SHELL_PROMPT_SUFFIX,
+    and SHELL_WELCOME environment variables. The prefix and
+    suffix are automatically prepended and appended to the left
+    prompt, and the welcome message is displayed on startup after
+    the greeting. These variables are set by systemd’s run0 for example (#10924)
+  * set_color is able to turn off italics, reverse mode,
+    strikethrough and underline individually (e.g. --italics=off).
+  * set_color learned the foreground (--foreground or -f) and
+    reset (--reset) options.
+  * An error caused by slow terminal responses at macOS startup
+    has been addressed (#12571)
+  * Signals like SIGWINCH (as sent on terminal resize) no longer
+    interrupt builtin output (#12496)
+  * For compatibility with Bash, fish now accepts |& as alternate
+    spelling of &|, for piping both standard output and standard error (#11516)
+  * fish_indent now preserves comments and newlines immediately
+    preceding a brace block ({ }) (#12505)
+  * A crash when suspending certain pipelines with ctrl-z has been fixed (#12301)
+  * fix (from 4.5.0) Intermediate ⏎ artifact when redrawing prompt (#12476)
+  * fix (from 4.4.0) history honors explicitly specified --color= again (#12512)
+  * fix (from 4.4.0) Vi mode dl and dh (#12461)
+  * fix (from 4.3.0) Error completing of commands starting with - (#12522)
+
+-------------------------------------------------------------------
 Tue Feb 17 19:17:58 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 4.5.0
