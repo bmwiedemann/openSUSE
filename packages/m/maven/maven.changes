@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 13:22:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- There is no need to link the jansi-native library into the tree,
+  since our jansi java library will load it from the system anyway
+
+-------------------------------------------------------------------
 Mon Apr 20 10:10:59 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.9.15

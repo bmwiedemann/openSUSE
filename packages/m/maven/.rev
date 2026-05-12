@@ -288,4 +288,12 @@ put into adi:2</comment>
     <comment>3.9.15</comment>
     <requestid>1348227</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>81396ed0f991e7ca9ad96e568995e2b4</srcmd5>
+    <version>3.9.15</version>
+    <time>1778606801</time>
+    <user>anag_factory</user>
+    <comment>Do not link binary to /usr/share</comment>
+    <requestid>1352497</requestid>
+  </revision>
 </revisionlist>

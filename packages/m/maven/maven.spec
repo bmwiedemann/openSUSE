@@ -287,6 +287,7 @@ install -d -m 755 %{buildroot}%{confdir}
 install -d -m 755 %{buildroot}%{_datadir}/bash-completion/completions/
 
 cp -a apache-maven/src/{bin,conf,lib} %{buildroot}%{homedir}/
+rm -rf %{buildroot}%{homedir}/lib/*-native/
 chmod +x %{buildroot}%{homedir}/bin/*
 unix2dos %{buildroot}%{homedir}/bin/*.cmd %{buildroot}%{homedir}/bin/*.conf
 chmod -x %{buildroot}%{homedir}/bin/*.cmd %{buildroot}%{homedir}/bin/*.conf
@@ -331,8 +332,6 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     slf4j/jcl-over-slf4j
 
 cp %{buildroot}%{_javadir}/%{name}/*.jar %{buildroot}%{homedir}/lib/
-
-ln -sf %{_libdir}/jansi/libjansi.so %{buildroot}%{homedir}/lib/jansi-native/
 
 build-jar-repository -p %{buildroot}%{homedir}/boot \
     plexus-classworlds
