@@ -246,6 +246,7 @@ for i in \
   maven-compat \
   maven-core \
   maven-embedder \
+  maven-jline \
   maven-model-builder \
   maven-model \
   maven-plugin-api \

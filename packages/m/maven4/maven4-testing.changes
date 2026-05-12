@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 10 20:00:18 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build using maven-resolver-transport-apache with compatibility
+  version
+
+-------------------------------------------------------------------
+Sun May 10 14:49:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Install also maven-jline with compat version, since the artifact
+  will exist in maven 3.10.x too
+
+-------------------------------------------------------------------
 Sat May  9 05:12:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

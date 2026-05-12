@@ -63,4 +63,12 @@
     <comment>Fix build with maven-resolver 2.0.17</comment>
     <requestid>1352172</requestid>
   </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>293c9ca9b0854abe33d641ed0962c4b9</srcmd5>
+    <version>4.0.0~rc5</version>
+    <time>1778606803</time>
+    <user>anag_factory</user>
+    <comment>Fix build with resolver 2.0.17</comment>
+    <requestid>1352502</requestid>
+  </revision>
 </revisionlist>

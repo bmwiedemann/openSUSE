@@ -161,7 +161,7 @@ build-jar-repository -s lib \
   maven-resolver/maven-resolver-named-locks-2 \
   maven-resolver/maven-resolver-spi-2 \
   maven-resolver/maven-resolver-util-2 \
-  maven-resolver/maven-resolver-transport-apache \
+  maven-resolver/maven-resolver-transport-apache-2 \
   maven-resolver/maven-resolver-transport-file-2 \
   mockito/mockito-core \
   opentest4j/opentest4j \
