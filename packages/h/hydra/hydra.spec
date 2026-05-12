@@ -16,30 +16,21 @@
 #
 
 Name:           hydra
-Version:        9.6
+Version:        9.7
 Release:        0
 Summary:        A network logon cracker with support for many different services
 License:        AGPL-3.0-only
 Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/vanhauser-thc/thc-hydra
 Source0:        https://github.com/vanhauser-thc/thc-hydra/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch1:         fix-prototype-mismatches.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(apr-1)
 BuildRequires:  pkgconfig(apr-util-1)
-%if 0%{?suse_version} >= 1600
-BuildRequires:  pkgconfig(freerdp3)
-%else
-BuildRequires:  pkgconfig(freerdp2)
-%endif
-BuildRequires:  pkgconfig(gail)
-BuildRequires:  pkgconfig(gdk-2.0)
-BuildRequires:  pkgconfig(gdk-x11-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(gtk+-unix-print-2.0)
-BuildRequires:  pkgconfig(gtk+-x11-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.24
 BuildRequires:  pkgconfig(libgcrypt)
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(libmariadb)
@@ -49,6 +40,15 @@ BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(libsvn_client)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(smbclient)
+%if 0%{?suse_version} > 1600
+BuildRequires:  bson-devel
+BuildRequires:  mongo-c-driver-devel
+%endif
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(freerdp3)
+%else
+BuildRequires:  pkgconfig(freerdp2)
+%endif
 
 %description
 A parallelized network login cracker, created as a proof of concept
@@ -68,6 +68,7 @@ and password combination.
 
 prev="$PWD"
 cd hydra-gtk
+autoreconf -fiv
 %configure
 %make_build
 cd "$prev"

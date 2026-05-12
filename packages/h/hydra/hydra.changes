@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  4 08:08:00 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.7
+  * GTK3 support for xhydra.
+  * mongo v2 support.
+  * POP3 buffer overflow fix.
+- Build with support for MongoDBv2
+- Drop patch:
+  * fix-prototype-mismatches.patch
+
+-------------------------------------------------------------------
 Wed Sep 17 11:59:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add conditional pkgconfig(freerdp3) BuildRequires, support for
