@@ -1,7 +1,7 @@
 #
 # spec file for package python-incremental
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,24 +26,30 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-incremental%{psuffix}
-Version:        24.7.2
+Version:        24.11.0
 Release:        0
 Summary:        Library that versions your Python projects
 License:        MIT
 URL:            https://github.com/twisted/incremental
 Source:         https://files.pythonhosted.org/packages/source/i/incremental/incremental-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling >= 1.6.0}
+BuildRequires:  %{python_module packaging >= 17.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 61.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{python_version_nodots} < 311
+BuildRequires:  %{python_module tomli}
+%endif
+Requires:       python-packaging >= 17.0
+%if %{python_version_nodots} < 311
+Requires:       python-tomli
+%endif
 Suggests:       python-Twisted >= 16.4.0
-Suggests:       python-click >= 6.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Twisted >= 16.4.0}
 BuildRequires:  %{python_module build}
-BuildRequires:  %{python_module click >= 6.0}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
@@ -60,6 +66,7 @@ Incremental is a small library that versions your Python projects.
 %install
 %if %{without test}
 %pyproject_install
+rm -v %{buildroot}%{_bindir}/incremental
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
