@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri May  8 11:07:58 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.1
+  * testutils: fix test flake on HEAD request
+  * Temporarily pause making release discussions
+- from version 0.4.0
+  * test: add test_use_UnixAdapter_directly
+  * Inherit HTTPConnection through urllib3.connection, not httplib
+  * adapters: fix for requests 2.32.2+
+  * Replace `python setup.py install` with `pip install .`
+  * Drop support for Python 3.8 and below
+  * Wire pbr via PEP 517
+  * Migrate from `pbr` to `setuptools-scm`
+  * Migrate metadata declaration to PEP 621
+  * Add dist building envs to tox
+  * Put test requirements to a dependency group
+  * Remove the old CI workflow
+  * Add a CI/CD setup w/ PyPI uploads
+  * Temporarily drop `pytest-cov` args from CI
+- Adjust upstream source name in spec file
+- Drop AUTHORS from %doc section, removed upstream
+- Drop ChangeLog from %doc section, removed upstream
+- Drop requests232.patch, merged upstream
+- Drop urllib3-2.patch, merged upstream
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Wed Jun 11 13:03:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

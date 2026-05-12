@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-unixsocket
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-requests-unixsocket
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
 Summary:        UNIX domain socket backend for python-requests
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/msabramo/requests-unixsocket
-Source:         https://files.pythonhosted.org/packages/source/r/requests-unixsocket/requests-unixsocket-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM urllib3-2.patch -- gh#msabramo/requests-unixsocket#69
-Patch0:         urllib3-2.patch
-# PATCH-FIX-UPSTREAM https://github.com/msabramo/requests-unixsocket/pull/72 adapters: fix for requests 2.32.2+
-Patch1:         requests232.patch
+Source:         https://files.pythonhosted.org/packages/source/r/requests_unixsocket/requests_unixsocket-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -49,7 +46,7 @@ With this module, python-requests is enhanced by the ability to talk
 HTTP via a UNIX domain socket.
 
 %prep
-%autosetup -p1 -n requests-unixsocket-%{version}
+%autosetup -p1 -n requests_unixsocket-%{version}
 # do not require additional test deps
 sed -i -e '/addopts/d' pytest.ini
 
@@ -64,7 +61,7 @@ sed -i -e '/addopts/d' pytest.ini
 %pytest requests_unixsocket/tests
 
 %files %{python_files}
-%doc AUTHORS ChangeLog README.rst
+%doc README.rst
 %license LICENSE
 %{python_sitelib}/requests_unixsocket
 %{python_sitelib}/requests_unixsocket-%{version}*-info
