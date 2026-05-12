@@ -154,4 +154,12 @@
     <comment>Push from SCM</comment>
     <requestid>1343028</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>5e3708dff3e4ddc0b96e33c9585f5fe4</srcmd5>
+    <version>13</version>
+    <time>1778606836</time>
+    <user>anag_factory</user>
+    <comment>- Update constraints to 28 GB, needed for aarch64 to complete build</comment>
+    <requestid>1352543</requestid>
+  </revision>
 </revisionlist>

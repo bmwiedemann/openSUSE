@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 11 07:40:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update constraints to 28 GB, needed for aarch64 to complete build
+
+-------------------------------------------------------------------
 Wed Mar 25 07:59:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Turn off updates of vendors in _service file, use what upstream
