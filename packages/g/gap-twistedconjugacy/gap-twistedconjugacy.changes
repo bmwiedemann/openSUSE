@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 12 09:51:12 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.3.2
+  * Slightly improved `DoubleCosetIndex` for finite groups.
+
+-------------------------------------------------------------------
 Wed May  6 11:31:58 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.3.1
