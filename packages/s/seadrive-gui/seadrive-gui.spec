@@ -18,7 +18,7 @@
 
 
 Name:           seadrive-gui
-Version:        3.0.20
+Version:        3.0.22
 Release:        0
 Summary:        GUI part of seafile drive
 License:        GPL-3.0-only
