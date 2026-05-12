@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 09:54:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.05.11
+  * Fix an issue when running a `makedoc.g` from outside its
+    package's directory.
+
+-------------------------------------------------------------------
 Mon May  4 09:49:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2026.05.03
