@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sun Apr 26 09:33:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 8.3.3:
+- update to 8.3.3 (bsc#1263898, CVE-2026-7246):
   * Use :func:`shlex.split` to split pager and editor commands
     into argv lists for :class:`subprocess.Popen`, removing
     shell=True. :issue:`1026` :pr:`1477` :pr:`2775`
