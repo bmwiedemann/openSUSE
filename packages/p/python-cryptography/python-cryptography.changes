@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun May 10 11:37:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 48.0.0:
+  * BACKWARDS INCOMPATIBLE: Support for Python 3.8 has been
+    removed. cryptography now requires Python 3.9 or later.
+  * BACKWARDS INCOMPATIBLE: Loading an X.509 CRL whose inner
+    TBSCertList.signature algorithm does not match the outer
+    signatureAlgorithm now raises ValueError. Previously, such
+    CRLs were parsed successfully and only rejected during
+    signature validation.
+  * Added support for :doc:`/hazmat/primitives/asymmetric/mlkem`
+    and :doc:`/hazmat/primitives/asymmetric/mldsa` when using
+    OpenSSL 3.5.0 or later, in addition to the existing AWS-LC
+    and BoringSSL support. This means post-quantum algorithms are
+    now available to users of our wheels. Note: Going forward, we
+    do not guarantee that all functionality in cryptography will
+    be available when building against OpenSSL. See
+    :doc:`/statements/state-of-openssl` for more information.
+  * Note: Going forward, we do not guarantee that all
+    functionality in cryptography will be available when building
+    against OpenSSL. See :doc:`/statements/state-of-openssl` for
+    more information.
+
+-------------------------------------------------------------------
 Sun Apr 26 11:02:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 47.0.0:
