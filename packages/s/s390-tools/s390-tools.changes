@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 12 09:52:10 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated read_values.c (bsc#1263041, bsc#1263992)
+  * Includes /proc/sysinfo fallback to prevent the qclib 
+    "Unable to open configuration, return_code =-2" errors. 
+- Re-venor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Mon May  4 06:21:20 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tools to version 2.42
