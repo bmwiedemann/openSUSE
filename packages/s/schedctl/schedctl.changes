@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 12 08:49:20 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 1.2.1:
+  * chore(deps): bump golang.org/x/crypto from 0.50.0 to 0.51.0 (#110)
+  * feat: verify scheduler image signatures before run (#109)
+  * chore(deps): bump github.com/google/go-containerregistry (#107)
+  * ci: rebuild test kernel with nftables built-in (#108)
+  * feat: implement version picking and version listing for schedulers (#106)
+  * feat: generate manpages from the CLI definitions (#105)
+  * feat: add a `doctor` command (#104)
+  * feat: add a `status` command (#103)
+  * chore: switch to `urfave/cli/v3` for the CLI layer (#102)
+
+-------------------------------------------------------------------
 Sat May 02 09:31:43 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 1.1.1:
