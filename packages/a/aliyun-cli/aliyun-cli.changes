@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 12 09:06:44 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.14
+  * feat(appmanager): add appmanager subcommand with PyPI+OSS
+    dual-source by @mengjunwei-mjw in (#1317)
+  * {Misc} Add --name and update version check message for plugin
+    install and adjust agent detection by @AllyW in (#1316)
+- from version 3.3.13
+  * (no changes)
+
+-------------------------------------------------------------------
 Thu May  7 08:45:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.12

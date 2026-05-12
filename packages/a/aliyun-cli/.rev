@@ -168,4 +168,18 @@
     update tests by @CodeSpaceiiii in (#1310) (forwarded request 1351381 from glaubitz)</comment>
     <requestid>1351392</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1972b2a4164f39c42039da82bdbcaa84</srcmd5>
+    <version>3.3.14</version>
+    <time>1778606982</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.14
+  * feat(appmanager): add appmanager subcommand with PyPI+OSS
+    dual-source by @mengjunwei-mjw in (#1317)
+  * {Misc} Add --name and update version check message for plugin
+    install and adjust agent detection by @AllyW in (#1316)
+- from version 3.3.13
+  * (no changes) (forwarded request 1352656 from glaubitz)</comment>
+    <requestid>1352731</requestid>
+  </revision>
 </revisionlist>
