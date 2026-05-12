@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 08 16:20:47 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.74.1:
+  * Version v1.74.1
+  * build: update golang.org/x/net to v0.53.0 to fix CVE-2026-33814
+  * build: fix multiple CVEs by upgrading to go1.26.3
+  * drime: fix uploads of 100..200M files
+  * drime: fix large file uploads landing in drive root instead of configured folder
+  * docs: sponsor updates
+  * s3: add new Fastly Object Storage regions
+  * cloudinary: fix retrying every error and fix pacer sleep units
+  * s3: fix STS call per request by caching AssumeRole credentials
+  * protondrive: fix segfault when copying files missing revision metadata
+  * protondrive: route library logging through rclone's logger
+  * protondrive: route HTTP through rclone's transport
+  * bisync: fix retryable without --resync error message when --resync has a critical failure
+  * cmd/serve/s3: return object listings in key order
+  * Start v1.74.1-DEV development
+
+-------------------------------------------------------------------
 Fri May 01 16:15:20 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.74.0:
