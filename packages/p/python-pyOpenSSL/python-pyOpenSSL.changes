@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 10 00:00:00 UTC 2026 - Gemini CLI <gemini-cli@suse.com>
+
+- update to 26.2.0:
+  * Maximum supported cryptography version is now 48.x.
+  * Added OpenSSL.SSL.Connection.set_options to set options on a
+    per-connection basis.
+  * Removed deprecated OpenSSL.crypto.X509Extension,
+    OpenSSL.crypto.X509Req.add_extension,
+    OpenSSL.crypto.X509Req.get_extensions,
+    OpenSSL.crypto.X509.add_extension,
+    OpenSSL.crypto.X509.get_extensions.
+  * It is now an error to calling any mutating method on
+    OpenSSL.SSL.Context after it has been used to create a
+    Connection.
+- refresh skip-networked-test.patch
+
+-------------------------------------------------------------------
 Sun Apr 26 10:26:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 26.1.0 (CVE-2026-40475, bsc#1262803):

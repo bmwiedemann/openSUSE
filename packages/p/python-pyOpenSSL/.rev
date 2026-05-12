@@ -728,4 +728,24 @@
     to BudongJW for reporting the issue. CVE-2026-40475</comment>
     <requestid>1349507</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>0098839a6a80d2edf5ecf0368580ebb8</srcmd5>
+    <version>26.2.0</version>
+    <time>1778606756</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.2.0:
+  * Maximum supported cryptography version is now 48.x.
+  * Added OpenSSL.SSL.Connection.set_options to set options on a
+    per-connection basis.
+  * Removed deprecated OpenSSL.crypto.X509Extension,
+    OpenSSL.crypto.X509Req.add_extension,
+    OpenSSL.crypto.X509Req.get_extensions,
+    OpenSSL.crypto.X509.add_extension,
+    OpenSSL.crypto.X509.get_extensions.
+  * It is now an error to calling any mutating method on
+    OpenSSL.SSL.Context after it has been used to create a
+    Connection.
+- refresh skip-networked-test.patch</comment>
+    <requestid>1352273</requestid>
+  </revision>
 </revisionlist>

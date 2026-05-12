@@ -1,8 +1,8 @@
-Index: pyopenssl-25.0.0/tests/test_ssl.py
+Index: pyopenssl-26.2.0/tests/test_ssl.py
 ===================================================================
---- pyopenssl-25.0.0.orig/tests/test_ssl.py
-+++ pyopenssl-25.0.0/tests/test_ssl.py
-@@ -1303,6 +1303,7 @@ class TestContext:
+--- pyopenssl-26.2.0.orig/tests/test_ssl.py
++++ pyopenssl-26.2.0/tests/test_ssl.py
+@@ -1414,6 +1414,7 @@ class TestContext:
          reason="set_default_verify_paths appears not to work on Windows.  "
          "See LP#404343 and LP#404344.",
      )
@@ -10,20 +10,20 @@ Index: pyopenssl-25.0.0/tests/test_ssl.py
      def test_set_default_verify_paths(self) -> None:
          """
          `Context.set_default_verify_paths` causes the platform-specific CA
-Index: pyopenssl-25.0.0/setup.cfg
+Index: pyopenssl-26.2.0/setup.cfg
 ===================================================================
---- pyopenssl-25.0.0.orig/setup.cfg
-+++ pyopenssl-25.0.0/setup.cfg
+--- pyopenssl-26.2.0.orig/setup.cfg
++++ pyopenssl-26.2.0/setup.cfg
 @@ -11,4 +11,3 @@ doc_files = doc/_build/html
  [egg_info]
  tag_build = 
  tag_date = 0
 -
-Index: pyopenssl-25.0.0/pyproject.toml
+Index: pyopenssl-26.2.0/pyproject.toml
 ===================================================================
---- pyopenssl-25.0.0.orig/pyproject.toml
-+++ pyopenssl-25.0.0/pyproject.toml
-@@ -39,6 +39,9 @@ ignore_missing_imports = true
+--- pyopenssl-26.2.0.orig/pyproject.toml
++++ pyopenssl-26.2.0/pyproject.toml
+@@ -40,6 +40,9 @@ ignore_missing_imports = true
  [tool.pytest.ini_options]
  addopts = "-r s --strict-markers"
  testpaths = ["tests"]
