@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Sun May 10 15:00:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.56.0:
+  The tmux command parity release. ~50 new public methods land
+  across Server, Pane, Window, and Session, plus expanded flag
+  coverage on existing wrappers, plus a control_mode test fixture
+  that lets commands requiring an attached client run under CI
+  without a TTY. Net result: callers no longer need to drop down to
+  Server.cmd(...) for the commands tmux ships out of the box.
+  No breaking changes — public API is purely additive.
+  * Highlights
+    - Interactive tmux commands now scriptable
+      New wrappers for commands that require an attached client:
+        Pane.display_popup, Pane.display_panes
+        Pane.choose_buffer, Pane.choose_client, Pane.choose_tree
+        Server.display_menu, Server.command_prompt,
+        Server.confirm_before Session.detach_client,
+        Server.detach_client, Server.detach_all_clients
+      The three detach-client wrappers each map to one tmux flag
+      group exactly, with a single subprocess call
+      (Details see
+      https://github.com/tmux-python/libtmux/releases/tag/v0.56.0)
+    - tmux buffer I/O suite
+      Round-trip pane content through named tmux buffers — useful
+      for clipboard interop and inter-process data hand-off:
+        Server.set_buffer, Server.show_buffer, Server.delete_buffer
+        Server.save_buffer, Server.load_buffer, Server.list_buffers
+        Pane.paste_buffer
+    - Key bindings, shell execution, and client management
+        Server:
+          bind_key, unbind_key, list_keys, list_commands,
+          run_shell, if_shell, source_file, list_clients,
+          start_server, lock_server, lock_client, refresh_client,
+          suspend_client, server_access, show_messages,
+          show_prompt_history, clear_prompt_history
+        Session: lock_session
+        Pane: send_prefix
+    - Window and pane manipulation parity
+        Window:
+          swap, link, unlink, respawn, last_pane, next_layout,
+          previous_layout, rotate
+        Pane:
+          swap, join, break_pane, move, pipe, clear_history,
+          respawn, copy_mode, clock_mode, customize_mode,
+          find_window
+        Server: wait_for
+        Session: last_window, next_window, previous_window
+    - Filled-in flag coverage on existing methods
+      Most pre-existing wrappers now expose the remaining tmux
+      flags:
+      - Pane.send_keys — literal, hex_keys, key_name,
+        expand_formats, target_client, repeat, reset, copy_mode_cmd
+      - Pane.split — percentage=
+      - Pane.capture_pane — alternate_screen, quiet, mode_screen,
+        to_buffer (writes capture into a tmux buffer instead of
+        returning it)
+      - Pane.display_message — format_string, verbose, delay,
+        notify, update_pane, target_client
+      - Pane.display_popup — target_client=, -c
+      - Window.move_window — after, before, kill, renumber
+      - Window.select_layout — spread, next, previous
+      - Server.new_session — detach_others, no_size, config
+      - Session.new_window — kill_existing, select_existing
+      - EnvironmentMixin.set_environment — expand_format, hidden
+      - OptionsMixin.show_options — quiet
+    - control_mode pytest fixture
+      A new fixture spawns a real tmux -C attach-session subprocess
+      that registers as a real client, satisfying commands like
+      Pane.display_popup, Session.detach_client,
+      Server.command_prompt, and Server.confirm_before — no TTY
+      required. Exposed via libtmux.pytest_plugin and into the
+      doctest namespace via conftest.py.
+      (Code example see
+      https://github.com/tmux-python/libtmux/releases/tag/v0.56.0)
+  * Bug fixes
+    - Window.move_window() returns up-to-date state after the move.
+      Previously left the Window object pointing at its pre-move
+      index, so attribute reads could appear stale until a manual
+      refresh() call. The moved window now refreshes automatically.
+    - Pane.swap makes target optional when move_up/move_down is
+      set, since tmux's swap-pane -U/-D already imply the target.
+    - OptionsMixin.show_options wires quiet= through the public
+      API, fixing a flag that was previously inert.
+    - Window.last_pane calls tmux last-pane directly instead of
+      select-pane -l, exposing its native flags (disable_input=-d,
+      enable_input=-e, keep_zoom=-Z) with correct mappings per
+      cmd-select-pane.c.
+  * Compatibility
+    - TMUX_MAX_VERSION bumped 3.6 → 3.7, unlocking method coverage
+      already version-gated for tmux 3.7 — notably
+      Server.command_prompt(bspace_exit=...) and
+      Server.show_messages(terminals=..., jobs=...). No effect on
+      installations running tmux 3.6 or earlier.
+    - Every version-gated flag uses has_gte_version(...) with a
+      warnings.warn(stacklevel=2) fallback when the running tmux is
+      too old, matching the existing trim_trailing pattern.
+    - All new methods and parameters are annotated with ..
+      versionadded:: 0.56 so downstream readers can see
+      availability at a glance.
+  * Documentation
+    - Bumped gp-sphinx docs stack to v0.0.1a16 — docs site now
+      renders via gp-furo-theme, a Tailwind v4 respin of Furo, with
+      sphinx-vite-builder handling theme-asset builds (#666).
+  * Tests
+    - test_no_server_* and test_raise_if_dead_no_server_raises now
+      reuse the server fixture for a unique socket name and
+      finalizer cleanup, instead of hardcoded socket names with no
+      finalizer that broke whenever a stale tmux daemon survived at
+      the same path (#665, fixes #664).
+  * What's Changed
+    - test_server(fix[isolation]): use server fixture for "no
+      server" tests by @tony in #665
+    - Bump gp-sphinx → 0.0.1a16 (sphinx-vite-builder consolidation)
+      by @tony in #666
+    - tmux parity: add interactive command coverage and align flag
+      semantics with tmux by @tony in #653
+
+-------------------------------------------------------------------
 Wed Apr 22 07:13:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.55.1:
