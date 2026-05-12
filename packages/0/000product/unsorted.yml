@@ -1657,6 +1657,8 @@ unsorted:
   - broadvoice32-devel 
   - broot 
   - brotli 
+  - brotli-java 
+  - brotli-java-javadoc 
   - browserpass-native 
   - brp-check-suse 
   - brp-extract-translations 
@@ -3791,8 +3793,6 @@ unsorted:
   - eog-plugins 
   - eog-plugins-data 
   - eog-plugins-lang 
-  - eolie 
-  - eolie-lang 
   - eom 
   - eom-devel 
   - eom-doc 
@@ -7387,7 +7387,6 @@ unsorted:
   - gnome-shell-extensions-common-lang 
   - gnome-shell-search-provider-bijiben 
   - gnome-shell-search-provider-boxes 
-  - gnome-shell-search-provider-eolie 
   - gnome-shell-search-provider-epiphany 
   - gnome-shell-search-provider-gnome-calendar 
   - gnome-shell-search-provider-gnome-recipes 
@@ -13406,7 +13405,7 @@ unsorted:
   - libfstrcmp0 
   - libfsverity0 
   - libfswatch-devel 
-  - libfswatch14 
+  - libfswatch15 
   - libfsxfs-devel 
   - libfsxfs-tools 
   - libfsxfs1 
@@ -16945,7 +16944,6 @@ unsorted:
   - libvarlink-devel 
   - libvarlink0 
   - libvarlink0-x86-64-v3 
-  - libvarnishapi3 
   - libvbr2 
   - libvc-devel 
   - libvc0 
@@ -20667,6 +20665,7 @@ unsorted:
   - openSUSE-release-tools 
   - openSUSE-release-tools-abichecker 
   - openSUSE-release-tools-announcer 
+  - openSUSE-release-tools-check-bugowner 
   - openSUSE-release-tools-check-source 
   - openSUSE-release-tools-docker-publisher 
   - openSUSE-release-tools-maintenance 
@@ -25267,7 +25266,6 @@ unsorted:
   - python311-cloup 
   - python311-cluster 
   - python311-cma 
-  - python311-cmapfile 
   - python311-cmarkgfm 
   - python311-cmd2 
   - python311-cmdln 
@@ -25356,7 +25354,6 @@ unsorted:
   - python311-cymruwhois 
   - python311-cyrtranslit 
   - python311-cytoolz 
-  - python311-czifile 
   - python311-dacite 
   - python311-daemonize 
   - python311-daiquiri 
@@ -25372,7 +25369,6 @@ unsorted:
   - python311-dask-dataframe 
   - python311-dask-diagnostics 
   - python311-dask-distributed 
-  - python311-dask-image 
   - python311-dask-test 
   - python311-dataclasses-json 
   - python311-datadiff 
@@ -26550,7 +26546,6 @@ unsorted:
   - python311-odorik 
   - python311-ogr 
   - python311-oic 
-  - python311-oiffile 
   - python311-okta 
   - python311-oktaloginwrapper 
   - python311-olefile 
@@ -27473,7 +27468,6 @@ unsorted:
   - python311-robotframework 
   - python311-robotframework-pythonlibcore 
   - python311-robotframework-seleniumlibrary 
-  - python311-roifile 
   - python311-rollbar 
   - python311-roman 
   - python311-roman-numerals 
@@ -30333,7 +30327,6 @@ unsorted:
   - python313-miniupnpc 
   - python313-misaka 
   - python313-mistletoe 
-  - python313-mistral-vibe 
   - python313-mistralai 
   - python313-mistralclient 
   - python313-mistune 
@@ -34272,7 +34265,6 @@ unsorted:
   - python314-miniupnpc 
   - python314-misaka 
   - python314-mistletoe 
-  - python314-mistral-vibe 
   - python314-mistralai 
   - python314-mistune 
   - python314-mistune2 
@@ -49957,8 +49949,6 @@ unsorted:
   - varlink-bash-completion 
   - varlink-util 
   - varlink-vim 
-  - varnish 
-  - varnish-devel 
   - vault-sync 
   - vboot 
   - vbrfix 
@@ -51269,6 +51259,8 @@ unsorted:
   - zsh-htmldoc 
   - zsh-sh 
   - zstd-gzip 
+  - zstd-jni 
+  - zstd-jni-javadoc 
   - zswap-cli 
   - zsync 
   - zug-devel 
