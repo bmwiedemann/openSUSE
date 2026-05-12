@@ -418,4 +418,16 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345422</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f557836e51aca0ae474e63f37c1e0caf</srcmd5>
+    <version>50.1</version>
+    <time>1778606839</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.1:
+  + Build/CI updates.
+  + Fix high-contrast CSS properties.
+  + Accessibility fix for preferences switch.
+  + Updated translations.</comment>
+    <requestid>1352552</requestid>
+  </revision>
 </revisionlist>

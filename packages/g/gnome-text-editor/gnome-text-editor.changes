@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 11 07:06:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.1:
+  + Build/CI updates.
+  + Fix high-contrast CSS properties.
+  + Accessibility fix for preferences switch.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:43:56 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
