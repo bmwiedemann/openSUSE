@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  3 17:46:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.136.1:
+  * Update Pydantic v2 code to address deprecations. PR #15101
+
+-------------------------------------------------------------------
 Fri Apr 17 17:33:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.136.0:
