@@ -66,4 +66,12 @@
   	cidrvalidate() bug fix.</comment>
     <requestid>1310020</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>be4038fa2f2fe6a24a039e06f96349ac</srcmd5>
+    <version>0.270.0</version>
+    <time>1778606831</time>
+    <user>anag_factory</user>
+    <comment>    bsc#1259024 CVE-2021-4456</comment>
+    <requestid>1352537</requestid>
+  </revision>
 </revisionlist>

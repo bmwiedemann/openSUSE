@@ -31,6 +31,7 @@ Sat May 24 05:34:50 UTC 2025 - Tina Müller <timueller+perl@suse.de>
   0.24
   2025-03-09   brian d foy <briandfoy@pobox.com>
   	* Strip leading zeros from octets from addr2cidr
+    bsc#1259024 CVE-2021-4456
 
 -------------------------------------------------------------------
 Tue Mar 11 05:33:41 UTC 2025 - Tina Müller <timueller+perl@suse.de>
