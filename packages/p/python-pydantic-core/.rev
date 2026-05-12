@@ -231,4 +231,41 @@
 - Update URL to new home inside pydantic.</comment>
     <requestid>1347217</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6e076f693cb67ef4ac5bddba9e8e0ed1</srcmd5>
+    <version>2.46.4</version>
+    <time>1778606771</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.46.4:
+  * Preserve RootModel core metadata
+
+  * optimizations in URL implementation by @davidhewitt in #1833
+Clean up serialization warnings for invalid data in unions
+Fix variance issue in `_IncEx` type alias, only allow `True`
+Bump version to v2.23.3
+Fix `_IncEx` type annotation
+Fix tagged union serialization warning when using aliases
+Bump serde_json from 1.0.127 to 1.0.128
+Negative integers with leading zeros raise ValueError
+Bump serde_json from 1.0.121 to 1.0.127
+Bump regex from 1.10.5 to 1.10.6
+Bump uuid from 1.9.1 to 1.10.0
+Bump idna from 1.0.1 to 1.0.2
+Bump serde from 1.0.204 to 1.0.209
+Bump the python-packages group with 8 updates
+Try removing flaky xfail test
+Version bump for docs update
+Adding missing API docs to `pydantic_core`
+Prep for `v2.23.1` patch release
+Refactor `BigInt` boilerplate
+Support `BigInt` serialization for `int` subclasses
+Use more explicit warning regarding serialization warning for missing fields
+Prep for v2.23.0
+Breaking change: Change `metadata` type hint from `Any` -&gt; `Dict[str, Any] | None`
+Adding `cls` reference to `TypedDictSchema`
+Disable automatic assignees with `hooky`
+Version bump to prep for new release
+Introduce `exactness` into `Decimal` validation logic</comment>
+    <requestid>1352319</requestid>
+  </revision>
 </revisionlist>
