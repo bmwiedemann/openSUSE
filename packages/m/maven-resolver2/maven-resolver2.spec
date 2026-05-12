@@ -203,6 +203,7 @@ This package provides %{summary}.
 %{mvn_compat_version} :maven-resolver-named-locks %{version_suffix} %{version}
 %{mvn_compat_version} :maven-resolver-spi %{version_suffix} %{version}
 %{mvn_compat_version} :maven-resolver-test-util %{version_suffix} %{version}
+%{mvn_compat_version} :maven-resolver-transport-apache %{version_suffix} %{version}
 %{mvn_compat_version} :maven-resolver-transport-classpath %{version_suffix} %{version}
 %{mvn_compat_version} :maven-resolver-transport-file %{version_suffix} %{version}
 %{mvn_compat_version} :maven-resolver-transport-wagon %{version_suffix} %{version}

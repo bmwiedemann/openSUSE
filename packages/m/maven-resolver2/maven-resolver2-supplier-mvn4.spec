@@ -92,7 +92,7 @@ build-jar-repository -s lib \
     %{base_name}/maven-resolver-impl-%{version_suffix} \
     %{base_name}/maven-resolver-named-locks-%{version_suffix} \
     %{base_name}/maven-resolver-spi-%{version_suffix} \
-    %{base_name}/maven-resolver-transport-apache \
+    %{base_name}/maven-resolver-transport-apache-%{version_suffix} \
     %{base_name}/maven-resolver-transport-file-%{version_suffix} \
     %{base_name}/maven-resolver-util-%{version_suffix}
 

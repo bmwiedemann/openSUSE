@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 10 19:54:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Build the maven-resolver-transport-apache as compat version in
+  order to make the upgrade of the main maven-resolver easier
+
+-------------------------------------------------------------------
 Sat May  9 04:51:06 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.0.17
