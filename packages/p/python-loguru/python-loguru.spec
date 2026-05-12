@@ -1,7 +1,7 @@
 #
 # spec file for package python-loguru
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,8 @@ Summary:        Python logging component with a simple interface
 License:        MIT
 URL:            https://github.com/Delgan/loguru
 Source:         https://github.com/Delgan/loguru/archive/refs/tags/%{version}.tar.gz#/loguru-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support newer mypy than upstream
-Patch0:         support-new-mypy.patch
 # PATCH-FIX-UPSTREAM gh#Delgan/loguru#84023e2bd8339de95250470f422f096edcb8f7b7
-Patch1:         support-python314.patch
+Patch0:         support-python314.patch
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module freezegun}
@@ -64,7 +62,9 @@ if [ $(getconf LONG_BIT) = 32 ]; then
   # Threads have different references on 32-bit
   donttest=" or (test_log_formatters and thread and not thread.name)"
 fi
-%pytest -k "not (donttestexprprefixdummy $donttest)"
+# Do not run mypy https://github.com/Delgan/loguru/issues/1460
+ignore="--ignore=tests/typesafety/test_logger.yml"
+%pytest $ignore -k "not (donttestexprprefixdummy $donttest)"
 
 %files %{python_files}
 %license LICENSE

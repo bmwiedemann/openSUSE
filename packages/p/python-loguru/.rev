@@ -195,4 +195,13 @@
 - Removed uneeded BuildRequires on pytest-mypy.</comment>
     <requestid>1317229</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>9ead0cd29ef6dc6bbceb73bfa1cbdcd3</srcmd5>
+    <version>0.7.3</version>
+    <time>1778606859</time>
+    <user>anag_factory</user>
+    <comment>- Skip the mypy portion of the testsuite, it is incredibly brittle.
+- Drop patch support-new-mypy.patch, no longer required.</comment>
+    <requestid>1352595</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 12 05:39:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip the mypy portion of the testsuite, it is incredibly brittle.
+- Drop patch support-new-mypy.patch, no longer required.
+
+-------------------------------------------------------------------
 Wed Nov 12 03:32:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python314.patch:
