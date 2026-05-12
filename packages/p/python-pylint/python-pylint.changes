@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 11 15:37:45 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip failing test_enable_message_block test
+  (gh#pylint-dev/pylint#11009).
+- Remove invalid use of `%{?python_version_nodots}` macros.
+
+-------------------------------------------------------------------
 Thu Mar 12 09:41:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update upper bound for isort

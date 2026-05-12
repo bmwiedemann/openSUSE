@@ -40,19 +40,15 @@ BuildRequires:  python-rpm-macros
 Requires:       python-dill >= 0.3.7
 Requires:       python-platformdirs >= 2.2
 Requires:       python-tomlkit >= 0.10.1
-Requires:       (python-astroid >= 4.0.2 with python-astroid < 4.2.0)
+Requires:       (python-astroid >= 4.2.0 with python-astroid < 4.3.0)
 Requires:       (python-isort >= 5 with python-isort < 9)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
+Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
+Requires:       (python-typing-extensions >= 3.10 if python-base < 3.10)
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 311
-Requires:       python-tomli >= 1.1.0
-%endif
-%if 0%{?python_version_nodots} < 310
-Requires:       python-typing-extensions >= 3.10
-%endif
 %if %{with tests}
 # SECTION pylint deps
-BuildRequires:  %{python_module astroid >= 4.0.2 with %python-astroid < 4.2.0}
+BuildRequires:  %{python_module astroid >= 4.2.0 with %python-astroid < 4.3.0}
 BuildRequires:  %{python_module dill >= 0.3.7}
 BuildRequires:  %{python_module enchant}
 BuildRequires:  %{python_module isort >= 5 with %python-isort < 9}
@@ -120,6 +116,8 @@ export LC_ALL="en_US.UTF-8"
 donttest="test_linter_with_unpickleable_plugins_is_pickleable"
 # Broken upstream
 donttest+=" or test_functional or test_progress_reporting"
+# gh#pylint-dev/pylint#11009
+donttest+=" or test_enable_message_block"
 %pytest -vv -n auto --ignore tests/benchmark --reruns 5 -rsfER -k "not ($donttest)"
 %endif
 

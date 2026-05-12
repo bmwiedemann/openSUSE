@@ -906,4 +906,14 @@
     <comment>- update upper bound for isort</comment>
     <requestid>1338435</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>a66021a671430979eb4a05e7c0a138e6</srcmd5>
+    <version>4.0.5</version>
+    <time>1778606795</time>
+    <user>anag_factory</user>
+    <comment>- Skip failing test_enable_message_block test
+  (gh#pylint-dev/pylint#11009).
+- Remove invalid use of `%{?python_version_nodots}` macros.</comment>
+    <requestid>1352564</requestid>
+  </revision>
 </revisionlist>
