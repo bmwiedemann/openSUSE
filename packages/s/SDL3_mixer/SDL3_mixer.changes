@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 12 07:37:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.2
+  * MIX_DestroyTrack may now be called from a mixer callback
+  * Fixed WAV decoding on big-endian systems
+- Deactive backends vorbis_stb, flac_drflac, mp3_drmp3,
+  since the formats are already supported via vorbis_vorbisfile,
+  flac_libflac, mp3_mpg123.
+- Switch from dlopen to have dependencies ELF-linked.
+
+-------------------------------------------------------------------
 Fri Mar 13 02:42:16 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - SDL3_mixer 3.2.0, first release

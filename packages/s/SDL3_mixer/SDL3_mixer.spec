@@ -1,7 +1,7 @@
 #
 # spec file for package SDL3_mixer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover	0
 Name:           SDL3_mixer
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 Summary:        SDL3 sound mixer library
 License:        Zlib
@@ -77,7 +77,14 @@ Timidity MIDI, and mpg123 MP3 libraries.
 	-DSDLMIXER_INSTALL_MAN:BOOL=ON \
 	-DSDLMIXER_EXAMPLES_INSTALL:BOOL=OFF \
 	-DSDLMIXER_TESTS_INSTALL:BOOL=OFF \
-	%{nil}
+	-DSDLMIXER_VORBIS_STB:BOOL=OFF \
+	-DSDLMIXER_VORBIS_VORBISFILE:BOOL=ON \
+	-DSDLMIXER_VORBIS_TREMOR:BOOL=OFF \
+	-DSDLMIXER_FLAC_LIBFLAC:BOOL=ON \
+	-DSDLMIXER_FLAC_DRFLAC:BOOL=OFF \
+	-DSDLMIXER_MP3_MPG123:BOOL=ON \
+	-DSDLMIXER_MP3_DRMP3:BOOL=OFF \
+	-DSDLMIXER_DEPS_SHARED:BOOL=OFF
 %cmake_build
 
 %install
