@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue May 12 05:24:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.152.0:
+  * No telemetrygen-related changes
+  * Dependencies
+    - [chore] Update core dependencies (#48261)
+    - [chore][govuln] Update golang.org/x/net to v0.53.0 to fix
+      GO-2026-4918 (#48224)
+    - Update module github.com/prometheus/prometheus to v0.311.3
+      (#47949)
+    - Update module github.com/apache/thrift to v0.23.0 [SECURITY]
+      - abandoned (#48179)
+    - Bump github.com/apache/thrift from 0.22.0 to 0.23.0 in
+      /receiver/zipkinreceiver (#48177)
+    - [chore] [receiver/postgresqlreceiver] update lib-pq from
+      v1.10.9 to v1.12.3 (#47162)
+    - Update module google.golang.org/api to v0.278.0 (#48162)
+    - Update redis Docker tag to v8.6.3 (#48158)
+    - Update module github.com/cockroachdb/pebble/v2 to v2.1.5
+      (#48152)
+    - Update module gitlab.com/gitlab-org/api/client-go/v2 to
+      v2.24.1 (#48153)
+    - Update module google.golang.org/api to v0.277.0 (#48147)
+    - Update module github.com/go-sql-driver/mysql to v1.10.0
+      (#48138)
+    - Update module gitlab.com/gitlab-org/api/client-go/v2 to
+      v2.24.0 (#48141)
+    - Update module github.com/fsnotify/fsnotify to v1.10.1 -
+      abandoned (#48135)
+    - Update module google.golang.org/grpc to v1.81.0 (#48142)
+    - Update module github.com/ClickHouse/clickhouse-go/v2 to
+      v2.46.0 (#48134)
+    - Update module github.com/Masterminds/semver/v3 to v3.5.0
+      (#48139)
+    - Update module github.com/buger/jsonparser to v1.2.0 (#48131)
+    - Update docker-compose deps to v0.151.0 (#48130)
+    - Update module go.opentelemetry.io/ebpf-profiler to
+      v0.0.202618 (#48124)
+    - Update module
+      github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+      to v1.3.90 (#48122)
+    - Update module github.com/twmb/franz-go to v1.21.1 (#48123)
+    - Update module github.com/shirou/gopsutil/v4 to v4.26.4
+      (#48121)
+    - Update module github.com/DataDog/agent-payload/v5 to v5.0.195
+      (#48116)
+    - Update module github.com/klauspost/compress to v1.18.6
+      (#48117)
+    - Update module github.com/SAP/go-hdb to v1.16.7 (#48120)
+    - Update module github.com/getsentry/sentry-go to v0.46.2
+      (#48119)
+    - Update All github.com/aws packages (#48114)
+    - Update github-actions deps (#48115)
+    - [chore] Update core dependencies (#48069)
+    - Update module go.uber.org/zap to v1.28.0 (#47997)
+    - [chore][exporter/kafka] Bump franz-go from v1.20.7 to
+      v1.21.0, kfake to v0.0.0-20260421215025 (#48004)
+    - Update module
+      github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+      to v1.3.89 (#48001)
+
+-------------------------------------------------------------------
 Thu Apr 30 06:20:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.151.0:
