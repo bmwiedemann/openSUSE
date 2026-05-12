@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May  8 22:43:38 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing tarball for 1.9.0 release.
+
+-------------------------------------------------------------------
+Tue May 05 11:30:00 UTC 2026 - Adam Majer <amajer@suse.com>
+
+- Update to version 1.9.0:
+  * Fix ldns-verify-zone hangs with missing NSEC3 RRs (#287)
+  * Exclude ZONEMD RRs in ldns-compare-zone (PR #220)
+  * More clang static analysis fixes
+
+- ldns-1.8.4-swig-3.4.0.patch: removed, included upstream
+
+-------------------------------------------------------------------
 Fri Mar 27 21:40:03 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Fix-illegal-redefinition-of-_Bool.patch to fix

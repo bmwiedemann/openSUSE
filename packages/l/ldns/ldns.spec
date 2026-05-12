@@ -19,7 +19,7 @@
 
 %define libname libldns3
 Name:           ldns
-Version:        1.8.4
+Version:        1.9.0
 Release:        0
 Summary:        A library for developing the Domain Name System
 License:        BSD-3-Clause
@@ -29,7 +29,6 @@ Source:         https://www.nlnetlabs.nl/downloads/ldns/ldns-%{version}.tar.gz
 Source1:        https://www.nlnetlabs.nl/downloads/ldns/ldns-%{version}.tar.gz.asc
 Source2:        ldns.keyring
 Patch1:         0001-Fix-illegal-redefinition-of-_Bool.patch
-Patch2:         ldns-1.8.4-swig-3.4.0.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libpcap-devel

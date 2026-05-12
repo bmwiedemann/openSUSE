@@ -426,4 +426,18 @@ Index: ldns-1.7.1.tar.gz.asc
   build failure with glibc-2.43 [boo#1257250, boo#1257259]</comment>
     <requestid>1343612</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>16ce54da873a0d03c63a2cdc517bb913</srcmd5>
+    <version>1.9.0</version>
+    <time>1778606783</time>
+    <user>anag_factory</user>
+    <comment>- Add missing tarball for 1.9.0 release.
+
+- Update to version 1.9.0:
+  * Fix ldns-verify-zone hangs with missing NSEC3 RRs (#287)
+  * Exclude ZONEMD RRs in ldns-compare-zone (PR #220)
+  * More clang static analysis fixes
+- ldns-1.8.4-swig-3.4.0.patch: removed, included upstream</comment>
+    <requestid>1352409</requestid>
+  </revision>
 </revisionlist>
