@@ -30,7 +30,7 @@
 
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.4.3
+Version:        6.4.4
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -40,9 +40,6 @@ Source0:        %{name}-%{version}.tar.gz
 #Source0:        https://github.com/Xpra-org/xpra/archive/refs/tags/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 Source99:       xpra-rpmlintrc
 Source100:      README.md
-#Patch0:         FIX-is_distribution_variant.diff
-# PATCH-FIX-UPSTREAM xpra-use-pkg-config-for-include-path.patch bsc#259349 alynx.zhou@suse.com -- Use pkg-config for include path
-Patch1:         xpra-use-pkg-config-for-include-path.patch
 BuildRequires:  ImageMagick
 BuildRequires:  brotli
 BuildRequires:  cups
