@@ -1536,4 +1536,12 @@
   * Respect metadata_directory in build_wheel per PEP 517</comment>
     <requestid>1346282</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>ab80db579e93eba8e0040d0d410b0833</srcmd5>
+    <version>1.13.1</version>
+    <time>1778606762</time>
+    <user>anag_factory</user>
+    <comment>- Fix the value of conditional Requires</comment>
+    <requestid>1352562</requestid>
+  </revision>
 </revisionlist>

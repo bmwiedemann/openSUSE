@@ -46,9 +46,7 @@ Requires:       alts
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
-%if 0%{?python_version_nodots} < 311
-Requires:       python-tomli >= 1.1.0
-%endif
+Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 %python_subpackages
 
 %description
