@@ -82,4 +82,20 @@
   * CVE-2026-32285 GO-2026-4514 (bsc#1264759)</comment>
     <requestid>1352450</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6a0562130dface63805d0683c1fd964a</srcmd5>
+    <version>0.34.0</version>
+    <time>1778606850</time>
+    <user>anag_factory</user>
+    <comment>    - Upgrade charmbracelet libs to v2 (bubbletea, lipgloss, bubbles)
+    - Add Google Vertex AI support for Claude models
+    - Add new models.
+  * Fixes:
+    - Eliminate escape sequence leak from spinner tea.Program instances.
+    - Convert JSON Schema draft-07 exclusive bounds to draft-04 format.
+  * Upgrade all dependencies to latest versions, resolve security issues
+    and to obtain Go 1.26 compatibility.
+    This addresses CVE-2025-30153 GO-2025-3533 (bsc#1264762).</comment>
+    <requestid>1352775</requestid>
+  </revision>
 </revisionlist>
