@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 12 11:14:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.2:
+  This release updates the version of Go used to build the OPA
+  binaries and images to 1.26.3; addressing a number of
+  vulnerabilities.
+  https://groups.google.com/g/golang-announce/c/qcCIEXso47M
+  This is CVE-2026-42501 and Go issue https://go.dev/issue/79070
+  * build: bump go 1.26.2 -> 1.26.3
+
+-------------------------------------------------------------------
 Fri May 01 14:00:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.16.1:

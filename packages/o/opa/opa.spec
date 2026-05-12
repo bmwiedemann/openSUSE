@@ -17,7 +17,7 @@
 
 
 Name:           opa
-Version:        1.16.1
+Version:        1.16.2
 Release:        0
 Summary:        Open source, general-purpose policy engine
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.26 >= 1.26.3
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
 
 %description
 Open Policy Agent (OPA) is an open source, general-purpose policy engine that
