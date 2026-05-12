@@ -17,7 +17,7 @@
 
 
 Name:           skupper
-Version:        2.1.4
+Version:        2.2.0
 Release:        0
 Summary:        Virtual Application Network, enabling rich hybrid cloud communication
 License:        Apache-2.0
@@ -93,7 +93,7 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags=" \
-   -X github.com/skupperproject/skupper/pkg/version.Version=%{version}" \
+   -X github.com/skupperproject/skupper/internal/version.Version=v%{version}" \
    -o bin/%{name} ./cmd/%{name}
 
 %install
@@ -113,7 +113,8 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %check
-%{buildroot}/%{_bindir}/%{name} version | grep 'cli.*%{version}'
+%{buildroot}/%{_bindir}/%{name} version
+%{buildroot}/%{_bindir}/%{name} version | grep v%{version}
 
 %files
 %doc README.md
