@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyhanko-certvalidator
-Version:        0.30.2
+Version:        0.31.1
 Release:        0
 Summary:        Validates X509 certificates and paths
 License:        MIT
@@ -31,7 +31,8 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module asn1crypto >= 1.5.1}
 BuildRequires:  %{python_module aiohttp >= 3.9}
-BuildRequires:  %{python_module cryptography >= 41.0.5}
+BuildRequires:  %{python_module certifi >= 2023.5.7}
+BuildRequires:  %{python_module cryptography >= 48.0.0}
 BuildRequires:  %{python_module freezegun >= 1.1.0}
 BuildRequires:  %{python_module oscrypto >= 1.1.0}
 BuildRequires:  %{python_module pytest-aiohttp >= 1.0.4}
@@ -42,11 +43,12 @@ BuildRequires:  %{python_module uritools >= 3.0.1}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-asn1crypto >= 1.5.1
-Requires:       python-cryptography >= 41.0.5
+Requires:       python-cryptography >= 48.0.0
 Requires:       python-oscrypto >= 1.1.0
 Requires:       python-requests >= 2.31.0
 Requires:       python-uritools >= 3.0.1
 Suggests:       python-aiohttp >= 3.9
+Suggests:       python-certifi >= 2023.5.7
 Suggests:       python-freezegun >= 1.1.0
 BuildArch:      noarch
 %python_subpackages

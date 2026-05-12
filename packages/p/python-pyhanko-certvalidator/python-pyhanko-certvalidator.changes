@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 10 19:59:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.31.1:
+  * ML-DSA support.
+  * Always short-circuit OCSP fetching if no URLs.
+  * Tests and testability fixes for AdES TS handling.
+  * Get rid of unnecessary async marker on get_session() in the
+    aiohttp fetcher.
+  * Align default certs with certifi for aiohttp usage.
+- add certifi as test and suggested dependency
+
+-------------------------------------------------------------------
 Sat Apr 25 19:46:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.30.2:
