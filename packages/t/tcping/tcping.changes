@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 11 14:40:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.0
+  * feat: add a non-interactive mode through --non-interactive flag
+    so that tcping can run in the background using nohup or disown.
+  * feat: add support for host:port format in command arguments.
+  * fix: omit printing the IP address twice when the given target
+    is an IP address itself.
+  * fix: add missing comma separator in no-color statistics output
+  * fix: version typo resulting in erroneous update message.
+
+-------------------------------------------------------------------
 Sun Jan 26 11:57:29 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.1
