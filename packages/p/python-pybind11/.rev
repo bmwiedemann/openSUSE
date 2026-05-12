@@ -428,4 +428,22 @@
     public vectorcall APIs where available).</comment>
     <requestid>1345232</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8c2ce819f79f6257d99142f2cf8f35a6</srcmd5>
+    <version>3.0.4</version>
+    <time>1778606773</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.4:
+  * Fixed test builds with installed Eigen 5 by improving
+    `Eigen3` CMake package detection.
+  * Fixed move semantics of `scoped_ostream_redirect` to preserve
+    buffered output and avoid crashes when moved redirects
+    restore stream buffers.
+  * Fixed `py::dynamic_attr()` traversal on Python 3.13+ to
+    correctly propagate `PyObject_VisitManagedDict()` results.
+  * Fixed `std::shared_ptr&lt;T&gt;` fallback casting to avoid
+    unnecessary copy-constructor instantiation in
+    `reference_internal` paths.</comment>
+    <requestid>1352321</requestid>
+  </revision>
 </revisionlist>

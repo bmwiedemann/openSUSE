@@ -18,23 +18,21 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
-%bcond_without test
 %define psuffix -test
+%bcond_without test
 %else
-%bcond_with test
 %define psuffix %{nil}
+%bcond_with test
 %endif
-
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-pybind11%{psuffix}
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
@@ -49,9 +47,10 @@ BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros >= 20220912
+BuildArch:      noarch
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -62,7 +61,6 @@ BuildRequires:  %{python_module pybind11-devel = %{version}}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -89,7 +87,7 @@ Requires:       %{plainpython}(abi) = %{python_version}
 This package contains files for developing applications using pybind11.
 
 %prep
-%setup -q -n pybind11-%{version}
+%autosetup -p1 -n pybind11-%{version}
 
 %build
 %if !%{with test}

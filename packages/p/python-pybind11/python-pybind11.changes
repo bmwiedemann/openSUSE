@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 10 11:21:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.4:
+  * Fixed test builds with installed Eigen 5 by improving
+    `Eigen3` CMake package detection.
+  * Fixed move semantics of `scoped_ostream_redirect` to preserve
+    buffered output and avoid crashes when moved redirects
+    restore stream buffers.
+  * Fixed `py::dynamic_attr()` traversal on Python 3.13+ to
+    correctly propagate `PyObject_VisitManagedDict()` results.
+  * Fixed `std::shared_ptr<T>` fallback casting to avoid
+    unnecessary copy-constructor instantiation in
+    `reference_internal` paths.
+
+-------------------------------------------------------------------
 Wed Apr  8 15:25:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.3:
