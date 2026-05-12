@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 13:11:20 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update unpin-autopep8.patch not to sed-edit patched file.
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
 Sat Dec 20 12:42:54 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.14.0

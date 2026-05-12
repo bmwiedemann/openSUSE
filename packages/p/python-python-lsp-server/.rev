@@ -451,4 +451,13 @@
 </comment>
     <requestid>1323800</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>d9603672532c0a6cff31a54805845a6b</srcmd5>
+    <version>1.14.0</version>
+    <time>1778606845</time>
+    <user>anag_factory</user>
+    <comment>- Update unpin-autopep8.patch not to sed-edit patched file.
+- Clean up SPEC file.</comment>
+    <requestid>1352566</requestid>
+  </revision>
 </revisionlist>

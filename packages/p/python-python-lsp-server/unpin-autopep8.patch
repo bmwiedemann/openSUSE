@@ -1,17 +1,27 @@
-Index: python_lsp_server-1.12.0/pyproject.toml
+---
+ pyproject.toml |   11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+Index: python_lsp_server-1.14.0/pyproject.toml
 ===================================================================
---- python_lsp_server-1.12.0.orig/pyproject.toml
-+++ python_lsp_server-1.12.0/pyproject.toml
-@@ -27,7 +27,7 @@ Homepage = "https://github.com/python-ls
+--- python_lsp_server-1.14.0.orig/pyproject.toml	2025-12-06 16:53:29.000000000 +0100
++++ python_lsp_server-1.14.0/pyproject.toml	2026-05-11 22:59:16.900587779 +0200
+@@ -29,18 +29,18 @@
  
  [project.optional-dependencies]
  all = [
 -    "autopep8>=2.0.4,<2.1.0",
+-    "flake8>=7.1,<8",
 +    "autopep8>=2.0.4",
-     "flake8>=7.1,<8",
++    "flake8>=7.2,<8",
      "mccabe>=0.7.0,<0.8.0",
-     "pycodestyle>=2.12.0,<2.13.0",
-@@ -38,7 +38,7 @@ all = [
+-    "pycodestyle>=2.12.0,<2.13.0",
++    "pycodestyle>=2.14.0,<2.15.0",
+     "pydocstyle>=6.3.0,<6.4.0",
+-    "pyflakes>=3.2.0,<3.3.0",
++    "pyflakes>=3.4.0,<3.5.0",
+     "pylint>=3.1,<4.1.0",
+     "rope>=1.11.0",
      "yapf>=0.33.0",
      "whatthepatch>=1.0.2,<2.0.0"
  ]
@@ -20,3 +30,11 @@ Index: python_lsp_server-1.12.0/pyproject.toml
  flake8 = ["flake8>=7.1,<8"]
  mccabe = ["mccabe>=0.7.0,<0.8.0"]
  pycodestyle = ["pycodestyle>=2.12.0,<2.13.0"]
+@@ -183,7 +183,6 @@
+ 
+ [tool.pytest.ini_options]
+ testpaths = ["test"]
+-addopts = "--cov-report html --cov-report term --junitxml=pytest.xml --cov pylsp --cov test"
+ 
+ [tool.coverage.run]
+ concurrency = ["multiprocessing", "thread"]

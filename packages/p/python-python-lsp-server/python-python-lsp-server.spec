@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-lsp-server
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,11 +69,9 @@ Requires:       python-black
 Requires:       python-docstring-to-markdown
 Requires:       python-pluggy >= 1.0.0
 Requires:       python-ujson >= 3.0.0
+Requires:       (python-importlib_metadata >= 4.8.3 if python-base < 3.10)
 Requires:       (python-jedi >= 0.17.2 with python-jedi < 0.20)
 Requires:       (python-python-lsp-jsonrpc >= 1.1.0 with python-python-lsp-jsonrpc < 2)
-%if 0%{?python_version_nodots} < 310
-Requires:       python-importlib_metadata >= 4.8.3
-%endif
 BuildArch:      noarch
 %if %{with libalternatives}
 Requires:       alts
@@ -125,14 +123,6 @@ python-lsp-server[all] extra requirement
 
 %prep
 %autosetup -p1 -n python_lsp_server-%{version}
-# Remove pytest addopts
-sed -i '/addopts/d' pyproject.toml
-# see flake8 comment above, check
-# https://github.com/PyCQA/flake8/blob/main/setup.cfg
-sed -i  pyproject.toml \
-    -e 's/flake8>=7.1,<8/flake8>=7.2,<8/' \
-    -e 's/pycodestyle>=2.12.0,<2.13.0/pycodestyle>=2.14.0,<2.15.0/' \
-    -e 's/pyflakes>=3.2.0,<3.3.0/pyflakes>=3.4.0,<3.5.0/'
 
 %build
 %pyproject_wheel
