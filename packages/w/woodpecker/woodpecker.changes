@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 12 11:32:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.14.1:
+  * Security
+    - Server: make sure agent_id can not be spoofed by agent
+      [#6567]
+
+-------------------------------------------------------------------
 Fri May 01 11:34:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.14.0:
