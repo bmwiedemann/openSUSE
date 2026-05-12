@@ -17,10 +17,10 @@
 
 
 %define executable_name opencloud-server
-%define web_assets_version v6.2.0
+%define web_assets_version v7.0.0
 
 Name:           opencloud-server
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Secure and private way to store, access, and share your files
 License:        Apache-2.0
