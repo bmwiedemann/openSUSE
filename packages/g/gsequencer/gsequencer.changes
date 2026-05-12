@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 05:46:44 UTC 2026 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v8.2.4 added language support Georgian.
+- deprecated some of AgsSoundcard interface
+- implemented new modular synth
+
+-------------------------------------------------------------------
 Mon Jul 21 20:04:15 UTC 2025 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new major release of GSequencer version 8.0.13
