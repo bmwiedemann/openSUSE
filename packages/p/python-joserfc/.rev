@@ -62,4 +62,16 @@
     <comment></comment>
     <requestid>1336670</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>17098d5d784e7492974155cbd3485ad8</srcmd5>
+    <version>1.6.5</version>
+    <time>1778606851</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6.5:
+  * use | instead of Optional for typing
+  * remove InvalidCEKLengthError exception
+- Add patch support-cryptography-47.patch:
+  * Normalize P-521 test fixture for cryptography 47+</comment>
+    <requestid>1352577</requestid>
+  </revision>
 </revisionlist>

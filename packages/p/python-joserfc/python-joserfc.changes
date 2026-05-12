@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 12 01:31:16 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.6.5:
+  * use | instead of Optional for typing
+  * remove InvalidCEKLengthError exception
+- Add patch support-cryptography-47.patch:
+  * Normalize P-521 test fixture for cryptography 47+
+
+-------------------------------------------------------------------
 Wed Mar  4 14:44:25 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.6.3 (fixes CVE-2026-27932, bsc#1259154)
