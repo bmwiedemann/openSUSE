@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 12 05:07:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.0:
+  * Bump to OCM v1.3.0 (#550)
+  * join: update the cluster-info not found warning message (#548)
+  * cluster-manager Helm values overrides (#549)
+  * chore: bump vesion bundle for 1.0.1 and 1.1.3 (#543)
+  * Bump to v1.2.1 (#542)
+  * fix: report clusteradm version consistently; remove irrelevant
+    server version (#538)
+  * Mark singleton flag in init deprecated (#532)
+  * Replace deprecated kubebuilder-release-tools PR verifier with
+    inline scripts (#539)
+
+-------------------------------------------------------------------
 Mon Apr 20 18:35:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.1:
