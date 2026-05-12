@@ -1,7 +1,7 @@
 #
 # spec file for package python-dns-lexicon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dns-lexicon
-Version:        3.23.2
+Version:        3.25.1
 Release:        0
 Summary:        DNS record manipulation utility
 License:        MIT
@@ -38,6 +38,7 @@ BuildRequires:  %{python_module beautifulsoup4 >= 4}
 BuildRequires:  %{python_module cryptography >= 3}
 BuildRequires:  %{python_module pyotp}
 BuildRequires:  %{python_module requests >= 2}
+BuildRequires:  %{python_module requests-unixsocket >= 0.4}
 BuildRequires:  %{python_module tldextract >= 2}
 # /SECTION
 # SECTION extras
@@ -61,6 +62,7 @@ Requires:       python-cryptography >= 2
 Requires:       python-dnspython >= 2
 Requires:       python-pyotp
 Requires:       python-requests >= 2
+Requires:       python-requests-unixsocket >= 0.4
 Requires:       python-tldextract >= 2
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
