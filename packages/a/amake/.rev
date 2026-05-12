@@ -7,4 +7,12 @@
     <comment> New package, see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/7IS2BVNVE4IFQPLK3XLL4WNWUJZWOT52/ </comment>
     <requestid>1345043</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>36d379547d401847611024f4343bd5e7</srcmd5>
+    <version>0.4.0</version>
+    <time>1778606887</time>
+    <user>anag_factory</user>
+    <comment>Update amake to v0.4.0</comment>
+    <requestid>1352666</requestid>
+  </revision>
 </revisionlist>
