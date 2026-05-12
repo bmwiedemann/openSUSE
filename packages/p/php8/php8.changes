@@ -65,6 +65,16 @@ Thu May  7 19:08:59 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
         Fixed bug GH-21468 (Segfault in file_get_contents w/ a https URL and a proxy set).
     URI:
         Fixed CVE-2026-42371 (uriparser before 1.0.1 has numeric truncation in text range comparison). (CVE-2026-42371)
+- fixes CVE-2025-14179 [bsc#1264778]
+        CVE-2026-7568 [bsc#1264769]
+        CVE-2026-7263 [bsc#1264770]
+        CVE-2026-7261 [bsc#1264772]
+        CVE-2026-7259 [bsc#1264773]
+        CVE-2026-7258 [bsc#1264774]
+        CVE-2026-6722 [bsc#1264776]
+        CVE-2026-6104 [bsc#1264777]
+        CVE-2026-6735 [bsc#1264775]
+        CVE-2026-7262 [bsc#1264771]
 
 -------------------------------------------------------------------
 Tue Apr 21 17:29:13 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>

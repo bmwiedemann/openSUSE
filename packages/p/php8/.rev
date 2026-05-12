@@ -1873,4 +1873,21 @@
         Fixed CVE-2026-42371 (uriparser before 1.0.1 has numeric truncation in text range comparison). (CVE-2026-42371) (forwarded request 1351487 from adkorte)</comment>
     <requestid>1352371</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>78f80b3f326cff59c955e14ec5b4d20c</srcmd5>
+    <version>8.5.6</version>
+    <time>1778606848</time>
+    <user>anag_factory</user>
+    <comment>- fixes CVE-2025-14179 [bsc#1264778]
+        CVE-2026-7568 [bsc#1264769]
+        CVE-2026-7263 [bsc#1264770]
+        CVE-2026-7261 [bsc#1264772]
+        CVE-2026-7259 [bsc#1264773]
+        CVE-2026-7258 [bsc#1264774]
+        CVE-2026-6722 [bsc#1264776]
+        CVE-2026-6104 [bsc#1264777]
+        CVE-2026-6735 [bsc#1264775]
+        CVE-2026-7262 [bsc#1264771]</comment>
+    <requestid>1352649</requestid>
+  </revision>
 </revisionlist>
