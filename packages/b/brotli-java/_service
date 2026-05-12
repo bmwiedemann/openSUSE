@@ -1,0 +1,18 @@
+<services>
+	<service name="tar_scm" mode="manual">
+		<param name="url">https://github.com/google/brotli.git</param>
+		<param name="scm">git</param>
+		<param name="include">java</param>
+		<param name="include">LICENSE</param>
+		<param name="include">README*</param>
+        <param name="revision">v1.2.0</param>
+		<param name="match-tag">v*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">v(.*)</param>
+	</service>
+	<service name="recompress" mode="manual">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="manual"/>
+</services>

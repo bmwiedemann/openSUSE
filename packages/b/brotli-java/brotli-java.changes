@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Mon May 11 11:35:59 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.2.0
+  * Added
+    + decoder: BrotliDecoderAttachDictionary
+    + decoder: BrotliDecoderOnFinish callback behind
+      BROTLI_REPORTING
+    + decoder: BrotliDecoderSetMetadataCallbacks
+    + encoder: BrotliEncoderPrepareDictionary,
+      BrotliEncoderDestroyPreparedDictionary,
+      BrotliEncoderAttachPreparedDictionary
+    + decoder: BrotliEncoderOnFinish callback behind
+      BROTLI_REPORTING
+    + decoder / encoder: added static initialization to reduce
+      binary size
+    + common: BrotliSharedDictionaryCreateInstance,
+      BrotliSharedDictionaryDestroyInstance,
+      BrotliSharedDictionaryAttach
+    + java: encoder wrapper: Parameters.mode
+    + java: Brotli{Input|Output}Stream.attachDictionary
+    + java: wrapper: partial byte array input
+  * Removed
+    + java: dropped finalize() for native entities
+  * Fixed
+    + java: JNI decoder failed sometimes on power of 2 payloads
+    + java: in compress pass correct length to native encoder
+  * Improved
+    + java / js: smaller decoder footprint
+    + decoder: faster decoding
+    + encoder: faster encoding
+    + encoder: smaller stack frames
+  * Changed
+    + decoder / encoder: static tables use "small" model (allows
+      2GiB+ binaries)
+- Rewrite build system to use ant in order to build this early
+
+-------------------------------------------------------------------
+Thu Mar 27 15:23:19 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with both xmvn-mojo:javadoc and javadoc:aggregate
+
+-------------------------------------------------------------------
+Tue Sep 12 12:30:47 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Fri Nov 25 18:49:31 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v1.0.9
