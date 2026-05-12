@@ -42,4 +42,12 @@
   * Replace deprecated tifffile.stripnull function.</comment>
     <requestid>1337355</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>471b2a4c3cc7fb928e65940d19ba73ff</srcmd5>
+    <version>2026.4.30</version>
+    <time>1778607057</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1352782</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue May 12 13:58:31 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- update to 2026.4.30:
+  * Omit axes from coords when no meaningful metadata is available (breaking).
+  * Return coords['T'] as float seconds instead of datetime64 (breaking).
+  * Replace pixel_series with coord_scales in CziImage.attrs (breaking).
+  * Add coord_offsets, coord_scales, coord_units, and mpp properties to CziImage.
+  * Add datetime property to CziImage returning acquisition start as datetime64.
+  * Drop support for numpy 2.0 (SPEC0).
+- 2026.4.11:
+  * Fall back to parsing numeric channel names as float coords['C']
+- 2026.3.17:
+  * Add cache for decoded subblock arrays.
+  * Prefer imagecodecs' WIC over JPEGXR codec if available.
+  * Import imagecodecs functions on demand.
+- 2026.3.15:
+  * Replace CziImagePlanes with CziImageChunks (breaking).
+  * Add CziImage.chunks method for flexible chunk-based iteration.
+  * Add CziFile.metadata_segment property.
+  * Add offset properties to CziAttachmentEntryA1 and subblock entry classes.
+  * Add CziSegmentId.packed property returning the 16-byte on-disk field.
+  * Manage update_pending flag in CziFile context manager for writable handles.
+  * Improve documentation.
+- 2026.3.14:
+  * Add option to return pixel data at stored resolution.
+  * Allow sequence and slice of scene indices in imread and asarray/asxarray.
+  * Interpret dimension slice selection as absolute coordinates.
+  * Fix CziImagePlanes not upsampling Airyscan fast-scan tiles.
+  * Fix CziImagePlanes not downsampling PALM super-resolution tiles.
+  * Add command line options to select dimensions.
+- 2026.3.12:
+  * Rewrite with many breaking changes.
+  * Support Zstd compression schemes.
+  * Support reading subblock masks.
+  * Add CziFile.scene interface.
+  * Add pyramid level access via CziImage.levels.
+  * Add option to read subset of image data.
+  * Add option to iterate over image planes in any dimension order.
+  * Add xarray-style attributes.
+  * Add asxarray method to return image as xarray DataArray with metadata.
+  * Add fillvalue and maxworkers parameters to asarray.
+  * Add option to specify pixel type.
+  * Promote pixel type when channels have mixed types.
+  * Remove Mosaic dimension from CziDirectoryEntryDV.dims; use mosaic_index.
+  * Reduce caching of CziDirectoryEntryDV properties.
+  * Remove resize and order parameters from asarray (breaking).
+  * Remove czi2tif function and command line script.
+  * Prefix public class names with Czi.
+  * Raise CziFileError for issues with CZI file structure.
+  * Use logging instead of warnings.
+  * Improve representation of instances.
+  * Add pytest-based unit tests.
+  * Add type hints.
+  * Convert docstrings to Google style with Sphinx directives.
+  * Remove imagecodecs-lite fallback; require imagecodecs.
+  * Remove scipy/ndimage dependency.
+  * Make tifffile an optional dependency.
+  * Drop support for Python < 3.12 and numpy < 2 (SPEC 0).
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file 
+  (bsc#1263906)
+- Remove czi2tif references in spec file because in version 2026.3.12 
+  the function and comand line script was removed
+- Use libalternatives instead of update-alternatives in SLES-16 and 
+  Tumbleweed
+ 
+-------------------------------------------------------------------
 Fri Mar  6 16:47:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2019.7.2.3:

@@ -16,9 +16,16 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %define packagename czifile
+%global skip_python311 1
 Name:           python-czifile
-Version:        2019.7.2.3
+Version:        2026.4.30
 Release:        0
 Summary:        Read Carl Zeiss(r) Image (CZI) files
 License:        BSD-3-Clause
@@ -38,8 +45,13 @@ Requires:       python-imagecodecs >= 2019.1.1
 Requires:       python-numpy >= 1.11.3
 Requires:       python-scipy >= 1.1
 Requires:       python-tifffile >= 2019.7.2
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,11 +60,6 @@ Read image and metadata from Carl Zeiss(r) ZISRAW (CZI) microscopy files.
 
 %prep
 %setup -q -n %{packagename}-%{version}
-# Fix W: non-executable-script
-sed -i '/^#!/d' %{packagename}/czi2tif.py
-
-# Fix warning: wrong end-of-line encoding
-sed -i 's/\r//' README.rst
 
 %build
 %pyproject_wheel
@@ -63,21 +70,16 @@ for p in %{packagename} ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
 
-for p in czi2tif ; do
-    %python_clone -a %{buildroot}%{_bindir}/$p
-done
-
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%prepare_alternative %{packagename}
-%prepare_alternative czi2tif
+
+%pre
+%python_libalternatives_reset_alternative %{packagename}
 
 %post
 %python_install_alternative %{packagename}
-%python_install_alternative czi2tif
 
 %postun
 %python_uninstall_alternative %{packagename}
-%python_uninstall_alternative czi2tif
 
 %check
 # No test provided.
@@ -85,7 +87,6 @@ done
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python_alternative %{_bindir}/czi2tif
 %python_alternative %{_bindir}/czifile
 %{python_sitelib}/%{packagename}
 %{python_sitelib}/%{packagename}-%{version}.dist-info
