@@ -16,6 +16,7 @@
 #
 
 
+%global skip_python311 1
 %{?sle15_python_module_pythons}
 Name:           python-cmapfile
 Version:        2026.1.8
