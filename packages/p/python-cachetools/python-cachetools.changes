@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  3 17:51:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0:
+  * Add type stubs based on the work of the good people at
+    typeshed.
+  * Update unit tests.
+
+-------------------------------------------------------------------
 Sun Apr 26 10:00:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.6:
