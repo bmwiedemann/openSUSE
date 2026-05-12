@@ -614,4 +614,12 @@
     <comment>Disable building with spice for virt-viewer on SLES16</comment>
     <requestid>1279670</requestid>
   </revision>
+  <revision rev="78" vrev="8">
+    <srcmd5>197a3f3c25d2e92395c164eb2537e301</srcmd5>
+    <version>11.0</version>
+    <time>1778606841</time>
+    <user>anag_factory</user>
+    <comment>Fix virt-viewer build failure in Factory because of glibc 2.43 update.</comment>
+    <requestid>1352545</requestid>
+  </revision>
 </revisionlist>

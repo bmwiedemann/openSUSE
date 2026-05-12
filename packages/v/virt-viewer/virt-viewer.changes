@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 11 11:15:13 MDT 2026 - carnold@suse.com
+
+- Fix build failure in Factory because of glibc 2.43 new const
+  preserving macros.
+  fix-discards-const-qualifier-error.patch
+
+-------------------------------------------------------------------
 Fri May 23 13:47:44 MDT 2025 - carnold@suse.com
 
 - Disable spice for running on SLES16 (jsc#PED-12706)
@@ -648,7 +655,7 @@ Mon Feb 27 08:29:31 MST 2014 - carnold@suse.com
   530b1cfc-german-translation-send-key-fix.patch
 
 -------------------------------------------------------------------
-Mon Jan 27 11:24:06 MDT 2014 - carnold@suse.com
+Mon Jan 27 11:24:06 MST 2014 - carnold@suse.com
 
 - Update to virt-viewer version 0.6.0
   * Require govirt 0.3.0

@@ -1,0 +1,21 @@
+Glibc 2.43 has introduced const-preserving macros that return a const char * if the input is const.
+This introduces the following error calling strstr.
+
+../src/virt-viewer-app.c: In function ‘virt_viewer_app_set_window_subtitle’:
+../src/virt-viewer-app.c:964:20: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+  964 |         gchar *d = strstr(title, "%d");
+      |                    ^~~~~~
+cc1: all warnings being treated as errors
+
+
+--- virt-viewer-11.0/src/virt-viewer-app.c.orig	2026-05-11 10:59:35.879279065 -0600
++++ virt-viewer-11.0/src/virt-viewer-app.c	2026-05-11 11:06:19.747288689 -0600
+@@ -961,7 +961,7 @@ virt_viewer_app_set_window_subtitle(Virt
+ 
+     if (title != NULL) {
+         VirtViewerDisplay *display = virt_viewer_window_get_display(window);
+-        gchar *d = strstr(title, "%d");
++        gchar *d = (gchar *)strstr(title, "%d");
+         gchar *desc = NULL;
+ 
+         if (display && VIRT_VIEWER_IS_DISPLAY_VTE(display)) {

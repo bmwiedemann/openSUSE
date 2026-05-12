@@ -1,7 +1,7 @@
 #
 # spec file for package virt-viewer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,7 @@ Patch51:        virtview-desktop.patch
 Patch52:        virtview-dont-show-Domain-0.patch
 Patch53:        virtview-fix-build-with-meson-0.61.patch
 Patch100:       gcc-warnings-as-errors.patch
+Patch101:       fix-discards-const-qualifier-error.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  bash-completion-devel
