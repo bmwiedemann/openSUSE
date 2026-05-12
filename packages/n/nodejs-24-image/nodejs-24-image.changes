@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 11 15:11:15 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- use base/micro splitting
+
+-------------------------------------------------------------------
+Thu Mar 26 12:42:13 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- rebuild rpm database to make it reproducible
+
+-------------------------------------------------------------------
+Tue Mar 24 15:13:56 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- introduce a micro based nodejs container
+
+-------------------------------------------------------------------
 Tue Mar 10 21:46:15 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove move files that make containers unreproducible
