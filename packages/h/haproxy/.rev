@@ -1976,4 +1976,27 @@
   * BUG/MINOR: pattern: release the reference on failure to load from file</comment>
     <requestid>1351249</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>3edca44112895dd8395479faacbb2479</srcmd5>
+    <version>3.3.10+git0.0a72d7f9f</version>
+    <time>1778606813</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.10+git0.0a72d7f9f:
+  * [RELEASE] Released version 3.3.10
+  * BUG/MEDIUM: tasks: Keep the TASK_RUNNING flag until queued
+  * BUG/MINOR: cfgparse-listen: do not emit extraneous line in rule order warnings
+  * BUG/MEDIUM: servers: Only requeue servers if they are up
+  * BUG/MINOR: mux_quic: refresh timeout only if I/O performed
+  * BUG/MEDIUM: mux_quic: adjust qcc_is_dead() to account detached streams
+  * BUG/MEDIUM: stick-table: properly check permissions on CLI's set/clear cmd
+  * BUG/MEDIUM: mux-h2: fix the detection of the ext connect support
+  * Revert &quot;BUG/MINOR: mux-h2: condition the processing of 8441 extension to global setting&quot;
+
+- Update to version 3.3.9+git4.129865971:
+  * Revert &quot;BUG/MEDIUM: cli: fix master CLI connection slot leak on client disconnect&quot;
+  * BUG/MEDIUM: mux-h2: Properly consume padding for DATA frames
+  * BUG/MINOR: mux_quic: fix max stream ID reuse estimation
+  * BUG/MINOR: ssl: Use the sequence number with kTLS and TLS 1.2</comment>
+    <requestid>1352527</requestid>
+  </revision>
 </revisionlist>
