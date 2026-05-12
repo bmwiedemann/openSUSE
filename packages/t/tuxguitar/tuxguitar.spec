@@ -37,6 +37,7 @@ Patch1:         0001-no-lv2.patch
 Patch2:         0002-no-fluidsynth.patch
 Patch3:         0003-default-soundfont.patch
 Patch4:         0004-startscript.patch
+Patch5:         tuxguitar-new-commons-compress.patch
 BuildRequires:  alsa-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -96,6 +97,7 @@ sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME 
 
 %patch -P 3 -p1
 %patch -P 4 -p1
+%patch -P 5 -p1
 
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-windows']]" desktop/pom.xml
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-macos-cocoa']]" desktop/pom.xml

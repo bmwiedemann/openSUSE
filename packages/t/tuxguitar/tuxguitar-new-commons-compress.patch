@@ -1,0 +1,14 @@
+--- tuxguitar-2.0.1/common/TuxGuitar-lib/src/main/java/app/tuxguitar/io/tg/TGSongWriterImpl.java	2026-05-11 18:59:34.099910823 +0200
++++ tuxguitar-2.0.1/common/TuxGuitar-lib/src/main/java/app/tuxguitar/io/tg/TGSongWriterImpl.java	2026-05-11 19:06:04.961565429 +0200
+@@ -76,7 +76,10 @@
+ 			this.saveDocument(outputStream);
+ 			outputStream.closeArchiveEntry();
+ 			outputStream.close();
+-		} catch (ArchiveException | IOException e) {
++		} catch (ArchiveException e) {
++			e.printStackTrace();
++			throw new TGFileFormatException(e);
++		} catch (IOException e) {
+ 			e.printStackTrace();
+ 			throw new TGFileFormatException(e);
+ 		}

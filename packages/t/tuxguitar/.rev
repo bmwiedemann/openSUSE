@@ -217,4 +217,12 @@
     <comment>SLE16.1 will have %%suse_version 1610</comment>
     <requestid>1338385</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>d471ddd232bd95e3b9891c5fa74f74d5</srcmd5>
+    <version>2.0.1</version>
+    <time>1778606826</time>
+    <user>anag_factory</user>
+    <comment>Prepare for new apache-commons-compress</comment>
+    <requestid>1352535</requestid>
+  </revision>
 </revisionlist>

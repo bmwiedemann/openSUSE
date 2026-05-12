@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Mon May 11 17:03:06 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * tuxguitar-new-commons-compress.patch
+    + fix build with newer apache-commons-compress, where the
+      org.apache.commons.compress.archivers.ArchiveException is a
+      subclass of java.io.IOException and thus they cannot be
+      alternatives in a multi-catch statement.
+
+-------------------------------------------------------------------
 Wed Mar 11 13:21:21 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
-- SLE16.1 will have %%suse_version 1610
+- SLE16.1 will have %suse_version 1610
 
 -------------------------------------------------------------------
 Sun Dec 28 11:12:54 UTC 2025 - guiv42 <guiv42@tuta.io>
