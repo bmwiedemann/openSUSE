@@ -61,4 +61,18 @@
     <comment></comment>
     <requestid>1344941</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5bcb7334a37a909c871643fcf8699151</srcmd5>
+    <version>0.3.5</version>
+    <time>1778606770</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.3.5:
+  * Add usage examples for clean() and Cleaner arguments
+  * Add doctest coverage for module docstrings and RST files
+  * Bump pyo3 from 0.28.2 to 0.28.3
+  * Add tags parameter to clean_text
+
+- Update vendor tarball to fix CVE-2024-12224 (bsc#1243866)</comment>
+    <requestid>1352318</requestid>
+  </revision>
 </revisionlist>

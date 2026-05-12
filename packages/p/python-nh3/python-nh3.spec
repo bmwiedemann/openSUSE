@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nh3
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        Ammonia HTML sanitizer Python binding
 License:        MIT
