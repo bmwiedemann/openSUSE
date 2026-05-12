@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon May  4 09:22:54 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 3.1.13.1
+- Update to 3.1.13.1 (boo#1264653 CVE-2026-7582)
   Immediately after tagging 3.1.13.0, we noticed a PR that should
   have been included, but wasn't. So we did not draft an official
   release based on 3.1.13.0, instead combining it to to release and
