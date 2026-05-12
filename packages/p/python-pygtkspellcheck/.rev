@@ -7,4 +7,13 @@
     <comment>Required by iotas</comment>
     <requestid>1276187</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>56dade52d08fb0171bd4ed3e19f1928b</srcmd5>
+    <version>5.0.4</version>
+    <time>1778606840</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.0.4:
+  + fix: catch unhandled Enchant exceptions.</comment>
+    <requestid>1352554</requestid>
+  </revision>
 </revisionlist>

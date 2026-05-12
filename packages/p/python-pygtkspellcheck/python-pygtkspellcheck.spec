@@ -18,7 +18,7 @@
 
 %define modname gtkspellcheck
 Name:           python-pygtkspellcheck
-Version:        5.0.3
+Version:        5.0.4
 Release:        0
 Summary:        A spellchecking library for GTK written in pure Python
 License:        GPL-3.0-or-later
