@@ -25,4 +25,13 @@
     <comment></comment>
     <requestid>1346473</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cb612fb2a50586ff8500661f8a928bac</srcmd5>
+    <version>0.10.0</version>
+    <time>1778606766</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.0:
+  * Sync mypy and add smoke tests</comment>
+    <requestid>1352256</requestid>
+  </revision>
 </revisionlist>
