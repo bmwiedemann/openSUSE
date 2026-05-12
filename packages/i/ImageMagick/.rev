@@ -4421,4 +4421,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>version update to 7.1.2.21</comment>
     <requestid>1349921</requestid>
   </revision>
+  <revision rev="334" vrev="2">
+    <srcmd5>a07e00a0da2cc5c7cd9169a4daf33310</srcmd5>
+    <version>7.1.2.21</version>
+    <time>1778606781</time>
+    <user>anag_factory</user>
+    <comment>(CVE-2026-31853,, [bsc#1259528])</comment>
+    <requestid>1352386</requestid>
+  </revision>
 </revisionlist>

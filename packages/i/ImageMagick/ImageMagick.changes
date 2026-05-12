@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 11 07:44:45 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  fix overflow check (CVE-2026-31853, [bsc#1259528])
+  * ImageMagick-fix-overflow-check.patch
+
+-------------------------------------------------------------------
 Wed Apr 29 06:27:20 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 7.1.2.21
@@ -8,7 +15,7 @@ Wed Apr 29 06:27:20 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * support MSYS2
   * allow namespace::pattern when checking policy rights
   * mentioned symlink system policy
-  * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-7mxf-ff4f-jj7p 2598004
+  * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-7mxf-ff4f-jj7p
 
 -------------------------------------------------------------------
 Wed Apr 15 08:30:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>

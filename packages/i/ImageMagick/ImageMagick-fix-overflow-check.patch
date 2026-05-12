@@ -1,0 +1,23 @@
+From f028fe940b90aa3d3cd78b4199e2a05bf9e0190d Mon Sep 17 00:00:00 2001
+From: Dirk Lemstra <dirk@lemstra.org>
+Date: Sat, 2 May 2026 17:16:28 +0200
+Subject: [PATCH] Another fix to check for the 32-bit overflow.
+
+---
+ coders/sfw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/coders/sfw.c b/coders/sfw.c
+index cca66ab0508..083fb84a112 100644
+--- a/coders/sfw.c
++++ b/coders/sfw.c
+@@ -251,7 +251,7 @@ static Image *ReadSFWImage(const ImageInfo *image_info,ExceptionInfo *exception)
+     Read image into a buffer.
+   */
+   extent=(size_t) GetBlobSize(image)+MagickPathExtent;
+-  if (GetBlobSize(image) != extent)
++  if (extent < GetBlobSize(image))
+     ThrowReaderException(ResourceLimitError,"MemoryAllocationFailed");
+   if (GetBlobSize(image) < 141)
+     ThrowReaderException(CorruptImageError,"ImproperImageHeader");
+

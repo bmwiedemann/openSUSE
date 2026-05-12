@@ -52,6 +52,8 @@ Patch0:         ImageMagick_policy_etc.patch
 Patch1:         ImageMagick-configuration-SUSE.patch
 # library installation
 Patch2:         ImageMagick-library-installable-in-parallel.patch
+# fix overflow check (CVE-2026-31853, [bsc#1259528])
+Patch3:         ImageMagick-fix-overflow-check.patch
 Patch1000:      ImageMagick-s390x-disable-tests.patch
 
 BuildRequires:  chrpath
