@@ -63,4 +63,25 @@
     - Ensure enable_telemetry takes precedence over enable_otel</comment>
     <requestid>1352026</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a80a9d2d470c76dabe587eff43698b44</srcmd5>
+    <version>2.9.6</version>
+    <time>1778606846</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.9.6:
+  - Added
+    - Syntax-highlighted file diffs for write_file and
+      search_replace in the IDE agent webview
+    - Spinner and loader for ! (bang) command output
+    - prepare release script can resume after resolving merge
+      conflicts
+  - Fixed
+    - Strip wildcard suffix when persisting bash allowlist
+      patterns
+    - Build a combined SSL context for all outbound HTTPS
+      requests
+    - Hide non-interactive tools from the LLM in ACP and
+      programmatic mode</comment>
+    <requestid>1352576</requestid>
+  </revision>
 </revisionlist>
