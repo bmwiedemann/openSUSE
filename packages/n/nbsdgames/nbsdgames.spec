@@ -1,7 +1,7 @@
 #
 # spec file for package nbsdgames
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           nbsdgames
-Version:        5
+Version:        6.0.1
 Release:        0
 Summary:        A collection of text-based games
 License:        CC0-1.0
 Group:          Amusements/Games/Other
 URL:            https://github.com/abakh/nbsdgames
-Source:         %{url}/archive/refs/tags/v%{version}.tar.gz
+Source:         https://github.com/abakh/nbsdgames/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ncurses-devel
-BuildRequires:  update-desktop-files
 
 %description
 A new collection of console games inspired by the classic bsd-games collection.
@@ -43,10 +42,9 @@ make install GAMES_DIR=%{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_mandir}/man6
 make manpages MAN_DIR=%{buildroot}%{_mandir}/man6
 
-install -D nbsdgames.desktop %{buildroot}%{_datadir}/applications/nbsdgames.desktop
+install -m 0644 -D nbsdgames.desktop %{buildroot}%{_datadir}/applications/nbsdgames.desktop
 install -D nbsdgames.svg %{buildroot}%{_datadir}/pixmaps/nbsdgames.svg
 chmod -x %{buildroot}%{_datadir}/pixmaps/nbsdgames.svg
-%suse_update_desktop_file %{name}
 
 %files
 %license LICENSE
