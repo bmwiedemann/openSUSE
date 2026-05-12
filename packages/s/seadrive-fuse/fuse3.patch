@@ -4,10 +4,10 @@ Date:   Tue Jan 13 13:56:28 2026 +0100
 
     Port to fuse3
 
-diff --git a/README.md b/README.md
-index 8be6fc9..f2af371 100644
---- a/README.md
-+++ b/README.md
+Index: seadrive-fuse-3.0.21/README.md
+===================================================================
+--- seadrive-fuse-3.0.21.orig/README.md
++++ seadrive-fuse-3.0.21/README.md
 @@ -4,7 +4,7 @@ SeaDrive daemon with FUSE interface
  # Building
  ## Ubuntu Linux
@@ -17,10 +17,10 @@ index 8be6fc9..f2af371 100644
  ```
  
  First, you shoud get the latest source of [libsearpc](https://github.com/haiwen/libsearpc) with `v3.2-latest` tag and [seadrive-fuse](https://github.com/haiwen/seadrive-fuse).
-diff --git a/configure.ac b/configure.ac
-index 3860ee5..7129f83 100644
---- a/configure.ac
-+++ b/configure.ac
+Index: seadrive-fuse-3.0.21/configure.ac
+===================================================================
+--- seadrive-fuse-3.0.21.orig/configure.ac
++++ seadrive-fuse-3.0.21/configure.ac
 @@ -154,7 +154,7 @@ GLIB_REQUIRED=2.16.0
  SEARPC_REQUIRED=1.0
  JANSSON_REQUIRED=2.2.1
@@ -39,10 +39,10 @@ index 3860ee5..7129f83 100644
     AC_SUBST(FUSE_CFLAGS)
     AC_SUBST(FUSE_LIBS)
  fi
-diff --git a/src/fuse-ops.c b/src/fuse-ops.c
-index afd4936..cb5d4e5 100644
---- a/src/fuse-ops.c
-+++ b/src/fuse-ops.c
+Index: seadrive-fuse-3.0.21/src/fuse-ops.c
+===================================================================
+--- seadrive-fuse-3.0.21.orig/src/fuse-ops.c
++++ seadrive-fuse-3.0.21/src/fuse-ops.c
 @@ -2,8 +2,8 @@
  
  #if defined __linux__ || defined __APPLE__
@@ -63,7 +63,7 @@ index afd4936..cb5d4e5 100644
  notify_fs_op_error (const char *type, const char *path)
  {
      json_t *msg = json_object();
-@@ -327,8 +327,9 @@ get_category_dir_mtime (const char *server, const char *user, RepoType type)
+@@ -327,8 +327,9 @@ get_category_dir_mtime (const char *serv
  }
  
  int
@@ -74,7 +74,7 @@ index afd4936..cb5d4e5 100644
      FusePathComps comps;
      int ret = 0;
      uid_t uid;
-@@ -438,7 +439,7 @@ readdir_root_accounts (void *buf, fuse_fill_dir_t filler)
+@@ -441,7 +442,7 @@ readdir_root_accounts (void *buf, fuse_f
      }
      for (ptr = accounts; ptr; ptr = ptr->next) {
          account = ptr->data;
@@ -83,7 +83,7 @@ index afd4936..cb5d4e5 100644
      }
      g_list_free_full (accounts, (GDestroyNotify)seaf_account_free);
  
-@@ -459,10 +460,10 @@ readdir_root (AccountInfo *account, void *buf, fuse_fill_dir_t filler)
+@@ -462,10 +463,10 @@ readdir_root (AccountInfo *account, void
          type_str = ptr->data;
  #ifdef __APPLE__
          dname_nfd = g_utf8_normalize (type_str, -1, G_NORMALIZE_NFD);
@@ -96,7 +96,7 @@ index afd4936..cb5d4e5 100644
  #endif
      }
  
-@@ -498,10 +499,10 @@ readdir_category (AccountInfo *account, RepoType type, void *buf, fuse_fill_dir_
+@@ -501,10 +502,10 @@ readdir_category (AccountInfo *account,
          dname = g_path_get_basename (info->display_name);
  #ifdef __APPLE__
          dname_nfd = g_utf8_normalize (dname, -1, G_NORMALIZE_NFD);
@@ -109,7 +109,7 @@ index afd4936..cb5d4e5 100644
  #endif
  
          g_free (dname);
-@@ -550,7 +551,7 @@ readdir_repo (const char *repo_id, const char *path, void *buf, fuse_fill_dir_t
+@@ -553,7 +554,7 @@ readdir_repo (const char *repo_id, const
          if (seaf_repo_manager_is_path_invisible (seaf->repo_mgr, repo_id, dname)) {
              continue;
          }
@@ -118,7 +118,7 @@ index afd4936..cb5d4e5 100644
      }
      g_hash_table_destroy (dirents);
  
-@@ -562,8 +563,10 @@ out:
+@@ -565,8 +566,10 @@ out:
  int
  seadrive_fuse_readdir(const char *path, void *buf,
                        fuse_fill_dir_t filler, off_t offset,
@@ -130,7 +130,7 @@ index afd4936..cb5d4e5 100644
      FusePathComps comps;
      int ret = 0;
  
-@@ -572,8 +575,8 @@ seadrive_fuse_readdir(const char *path, void *buf,
+@@ -575,8 +578,8 @@ seadrive_fuse_readdir(const char *path,
      if (!seaf->started)
          return 0;
  
@@ -141,7 +141,7 @@ index afd4936..cb5d4e5 100644
  
      memset (&comps, 0, sizeof(comps));
  
-@@ -1225,8 +1228,11 @@ out:
+@@ -1228,8 +1231,11 @@ out:
      return ret;
  }
  
@@ -154,7 +154,7 @@ index afd4936..cb5d4e5 100644
      FusePathComps comps1, comps2;
      int ret = 0;
  
-@@ -1556,8 +1562,9 @@ int seadrive_fuse_release (const char *path, struct fuse_file_info *info)
+@@ -1559,8 +1565,9 @@ int seadrive_fuse_release (const char *p
  }
  
  int
@@ -165,7 +165,7 @@ index afd4936..cb5d4e5 100644
      FusePathComps comps;
      char *repo_id, *file_path;
      FileCacheStat st;
-@@ -1697,8 +1704,9 @@ seadrive_fuse_statfs (const char *path, struct statvfs *buf)
+@@ -1700,8 +1707,9 @@ seadrive_fuse_statfs (const char *path,
  }
  
  int
@@ -173,10 +173,10 @@ index afd4936..cb5d4e5 100644
 +seadrive_fuse_chmod (const char *path, mode_t mode, struct fuse_file_info *fi)
  {
 +    (void)fi;
-     FusePathComps comps;
- 
-     seaf_debug ("chmod %s called. mode = %o.\n", path, mode);
-@@ -1713,8 +1721,9 @@ seadrive_fuse_chmod (const char *path, mode_t mode)
+     RepoTreeStat tree_st;
+     char *repo_id = NULL, *file_path = NULL;
+     SeafRepo *repo = NULL;
+@@ -1766,8 +1774,9 @@ out:
  }
  
  int
@@ -187,10 +187,10 @@ index afd4936..cb5d4e5 100644
      RepoTreeStat tree_st;
      char *repo_id = NULL, *file_path = NULL;
      SeafRepo *repo = NULL;
-diff --git a/src/fuse-ops.h b/src/fuse-ops.h
-index 22339a4..3dc90d9 100644
---- a/src/fuse-ops.h
-+++ b/src/fuse-ops.h
+Index: seadrive-fuse-3.0.21/src/fuse-ops.h
+===================================================================
+--- seadrive-fuse-3.0.21.orig/src/fuse-ops.h
++++ seadrive-fuse-3.0.21/src/fuse-ops.h
 @@ -3,13 +3,17 @@
  
  #if defined __linux__ || defined __APPLE__
@@ -212,7 +212,7 @@ index 22339a4..3dc90d9 100644
  
  int seadrive_fuse_mknod (const char *path, mode_t mode, dev_t dev);
  
-@@ -19,7 +23,7 @@ int seadrive_fuse_unlink (const char *path);
+@@ -19,7 +23,7 @@ int seadrive_fuse_unlink (const char *pa
  
  int seadrive_fuse_rmdir (const char *path);
  
@@ -221,7 +221,7 @@ index 22339a4..3dc90d9 100644
  
  int seadrive_fuse_open (const char *path, struct fuse_file_info *info);
  
-@@ -31,13 +35,13 @@ int seadrive_fuse_write (const char *path, const char *buf, size_t size,
+@@ -31,13 +35,13 @@ int seadrive_fuse_write (const char *pat
  
  int seadrive_fuse_release (const char *path, struct fuse_file_info *fi);
  
@@ -238,10 +238,10 @@ index 22339a4..3dc90d9 100644
  
  int seadrive_fuse_symlink (const char *from, const char *to);
  
-diff --git a/src/seadrive.c b/src/seadrive.c
-index 63271f3..667a64d 100644
---- a/src/seadrive.c
-+++ b/src/seadrive.c
+Index: seadrive-fuse-3.0.21/src/seadrive.c
+===================================================================
+--- seadrive-fuse-3.0.21.orig/src/seadrive.c
++++ seadrive-fuse-3.0.21/src/seadrive.c
 @@ -41,9 +41,9 @@ static void print_version ()
  #include <fcntl.h>
  #include <sys/file.h>

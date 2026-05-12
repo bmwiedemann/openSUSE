@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 12 07:02:29 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 3.0.22:
+  * Record as network error
+  * Stop update attr when repo is readonly
+
+-------------------------------------------------------------------
+Thu Mar 26 07:38:48 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 3.0.21:
+  * Access repo_locked_files requires hash_lock (#33)
+  * Check repo list per 30s
+  * Remove sync error (#32)
+
+-------------------------------------------------------------------
 Tue Jan 13 13:05:16 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fuse3.patch

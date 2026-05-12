@@ -69,4 +69,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1328284</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8f8b559a780af9a375096da8fcdde232</srcmd5>
+    <version>3.0.21</version>
+    <time>1774555781</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.21:
+  * Access repo_locked_files requires hash_lock (#33)
+  * Check repo list per 30s
+  * Remove sync error (#32)
+</comment>
+    <requestid>1342712</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bc686eefbc2cdaa6a8fcb14f3ed9b165</srcmd5>
+    <version>3.0.22</version>
+    <time>1778606871</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.22:
+  * Record as network error
+  * Stop update attr when repo is readonly
+</comment>
+    <requestid>1352620</requestid>
+  </revision>
 </revisionlist>
