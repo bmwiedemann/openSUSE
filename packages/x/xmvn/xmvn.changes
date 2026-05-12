@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 11 13:35:59 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Adapt to no libjansi.so linked into the arch independent path
+
+-------------------------------------------------------------------
 Sun Sep 29 19:52:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build after removal of the default %%{java_home} define

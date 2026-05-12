@@ -110,7 +110,6 @@ fi
 %dir %{_datadir}/%{name}/lib
 %{_datadir}/%{name}/lib/*.jar
 %{_datadir}/%{name}/lib/ext
-%{_datadir}/%{name}/lib/jansi-native
 %{_datadir}/%{name}/bin/m2.conf
 %{_datadir}/%{name}/bin/mvn
 %{_datadir}/%{name}/bin/mvnDebug

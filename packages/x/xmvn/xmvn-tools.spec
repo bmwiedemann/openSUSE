@@ -202,7 +202,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # helper scripts
-%jpackage_script org.fedoraproject.xmvn.tools.install.cli.InstallerCli "" "" %{parent}/%{parent}-install:%{parent}/%{parent}-api:%{parent}/%{parent}-core:beust-jcommander:slf4j/api:slf4j/simple:objectweb-asm/asm:commons-compress:commons-io %{parent}-install
+%jpackage_script org.fedoraproject.xmvn.tools.install.cli.InstallerCli "" "" %{parent}/%{parent}-install:%{parent}/%{parent}-api:%{parent}/%{parent}-core:beust-jcommander:slf4j/api:slf4j/simple:objectweb-asm/asm:commons-compress:commons-io:commons-lang3 %{parent}-install
 %jpackage_script org.fedoraproject.xmvn.tools.resolve.ResolverCli "" "" %{parent}/%{parent}-resolve:%{parent}/%{parent}-api:%{parent}/%{parent}-core:beust-jcommander %{parent}-resolve
 %jpackage_script org.fedoraproject.xmvn.tools.subst.SubstCli "" "" %{parent}/%{parent}-subst:%{parent}/%{parent}-api:%{parent}/%{parent}-core:beust-jcommander %{parent}-subst
 
