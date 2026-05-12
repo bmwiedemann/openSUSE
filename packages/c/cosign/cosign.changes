@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 12 09:15:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.6 (bsc#1261859, CVE-2026-39395):
+  * Fix DSSE predicate check (GHSA-w6c6-c85g-mmv6) (#4801)
+  * Handle whitespace-only certificate annotation (#4760)
+  * fix(sign): closing SignerVerifier too early when signing with
+    a security key (#4761)
+  * Disallow --new-bundle-format and --rfc3161-timestamp (#4762)
+  * support managed keys in conformance testing (#4728)
+  * Add support for GCE metadata server env var (#4732)
+  * fix: preserve per-layer annotations in
+    WriteAttestationsReferrer (#4709)
+  * Fix parsing of in-toto for string predicates
+  * Mark batch of flags for deprecation (#4698)
+  * disallow key and cert identity being used together
+    during verification (#4636)
+  * support key creation in GitLab group (#4704)
+
+-------------------------------------------------------------------
 Sun Feb 22 12:25:59 UTC 2026 - meissner@suse.com
 
 - Update to version 3.0.5: (jsc#SLE-23879)
@@ -320,7 +339,7 @@ Wed Oct  2 15:34:01 UTC 2024 - Marcus Meissner <meissner@suse.com>
 -------------------------------------------------------------------
 Tue Aug 20 19:14:06 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
-- Set CGO_ENABLED=1 for fixing s390x failed build 
+- Set CGO_ENABLED=1 for fixing s390x failed build
 
 -------------------------------------------------------------------
 Wed Jul 24 15:22:12 UTC 2024 - Marcus Meissner <meissner@suse.com>
@@ -593,7 +612,7 @@ Mon Apr 17 07:56:14 UTC 2023 - Marcus Meissner <meissner@suse.com>
 Tue Apr  4 20:02:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - fix buildtags
-- build against a maintained golang version (upstream uses go1.20) 
+- build against a maintained golang version (upstream uses go1.20)
 
 -------------------------------------------------------------------
 Mon Feb 27 12:31:33 UTC 2023 - Marcus Meissner <meissner@suse.com>

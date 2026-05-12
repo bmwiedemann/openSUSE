@@ -829,4 +829,29 @@
     <comment>- Update to version 3.0.5: (jsc#SLE-23879)</comment>
     <requestid>1334883</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1b07b7be9e3d2bca5007d2fd89015dff</srcmd5>
+    <version>3.0.6</version>
+    <time>1778606888</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.6 (bsc#1261859, CVE-2026-39395):
+  * Fix DSSE predicate check (GHSA-w6c6-c85g-mmv6) (#4801)
+  * Handle whitespace-only certificate annotation (#4760)
+  * fix(sign): closing SignerVerifier too early when signing with
+    a security key (#4761)
+  * Disallow --new-bundle-format and --rfc3161-timestamp (#4762)
+  * support managed keys in conformance testing (#4728)
+  * Add support for GCE metadata server env var (#4732)
+  * fix: preserve per-layer annotations in
+    WriteAttestationsReferrer (#4709)
+  * Fix parsing of in-toto for string predicates
+  * Mark batch of flags for deprecation (#4698)
+  * disallow key and cert identity being used together
+    during verification (#4636)
+  * support key creation in GitLab group (#4704)
+
+- Set CGO_ENABLED=1 for fixing s390x failed build
+- build against a maintained golang version (upstream uses go1.20) (forwarded request 1352661 from dirkmueller)</comment>
+    <requestid>1352668</requestid>
+  </revision>
 </revisionlist>
