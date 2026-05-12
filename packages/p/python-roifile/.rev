@@ -126,4 +126,15 @@
   * Fix code review issues.</comment>
     <requestid>1343969</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>709862fa65aa0f744ac9f070b5256c56</srcmd5>
+    <version>2026.2.10</version>
+    <time>1778606895</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1352652 from mgrossu
+
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file 
+    (bsc#1263906)</comment>
+    <requestid>1352685</requestid>
+  </revision>
 </revisionlist>

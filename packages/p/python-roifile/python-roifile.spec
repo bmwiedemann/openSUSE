@@ -17,6 +17,7 @@
 
 
 %define packagename roifile
+%global skip_python311 1
 Name:           python-roifile
 Version:        2026.2.10
 Release:        0
