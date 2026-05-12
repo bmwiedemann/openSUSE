@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-parso
-Version:        0.8.6
+Version:        0.8.7
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
@@ -61,11 +61,12 @@ python310_args=("-k" "not test_python_exception_matches")
 # Python 3.12 and newer also changes how f-strings are parsed
 python312_args=("-k" "not test_python_exception_matches")
 python313_args=("-k" "not test_python_exception_matches")
+python314_args=("-k" "not test_python_exception_matches")
 %pytest "${$python_args[@]}"
 
 %files %{python_files}
 %license LICENSE.txt
-%doc AUTHORS.txt CHANGELOG.rst README.rst
+%doc CHANGELOG.rst README.rst
 %{python_sitelib}/parso-%{version}.dist-info
 %{python_sitelib}/parso/
 
