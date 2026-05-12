@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Mon May 11 10:40:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to v1.5.7.8
+  * no structured changelog provided by upstream
+- Rewrite the build system to use ant
+- Update patch:
+  * 00-load-system-library.patch
+- Remove the flags used for SLE_12_SP5, since we are not building
+  on that version anymore. This simplifies and cleans up the spec
+  file.
+
+-------------------------------------------------------------------
+Thu Sep 19 14:46:29 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible builds
+
+-------------------------------------------------------------------
+Tue Feb 20 13:23:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Mon Mar  6 13:53:54 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.5.4.2
+- Update patch:
+  * 00-load-system-library.patch
+
+-------------------------------------------------------------------
+Mon Aug  1 12:55:01 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.5.2.3
+- Use %cmake* macros for building
+- Add build dependency on gcc-c++
+- Add CXX to the project languages
+- Fix build errors at SLE_12_SP5:
+  * add build dependency on glibc-devel
+  * add CFLAGS=-std=c99
+
+-------------------------------------------------------------------
+Thu May  5 16:39:17 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v1.5.2.2
