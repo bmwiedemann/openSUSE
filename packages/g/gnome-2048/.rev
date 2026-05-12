@@ -207,4 +207,15 @@
     <comment>Version update</comment>
     <requestid>1348754</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>befbba4176ac6edc88d9b50d5ea6ff03</srcmd5>
+    <version>50.2</version>
+    <time>1778606838</time>
+    <user>anag_factory</user>
+    <comment>- Add ecdf8e39eab3e4b4fb86a4cdc53f0aa02af2353d.patch: Remove
+  timeout option for unit tests.
+- Add 24d6df1c822f8ae2ce6d1f403e39c12be357423f.patch: Set timeout
+  option to 0 (wait infinitly) for unit tests.</comment>
+    <requestid>1352548</requestid>
+  </revision>
 </revisionlist>

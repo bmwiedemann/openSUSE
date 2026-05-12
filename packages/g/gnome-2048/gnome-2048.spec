@@ -25,6 +25,10 @@ Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/2048
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
+# PATCH-FIX-UPSTREAM ecdf8e39eab3e4b4fb86a4cdc53f0aa02af2353d.patch -- Remove timeout option for unit tests
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-2048/-/commit/ecdf8e39eab3e4b4fb86a4cdc53f0aa02af2353d.patch
+# PATCH-FIX-UPSTREAM 24d6df1c822f8ae2ce6d1f403e39c12be357423f.patch -- Set timeout option to 0 (wait infinitly) for unit tests
+Patch1:         https://gitlab.gnome.org/GNOME/gnome-2048/-/commit/24d6df1c822f8ae2ce6d1f403e39c12be357423f.patch
 BuildRequires:  cargo
 BuildRequires:  desktop-file-utils
 BuildRequires:  itstool

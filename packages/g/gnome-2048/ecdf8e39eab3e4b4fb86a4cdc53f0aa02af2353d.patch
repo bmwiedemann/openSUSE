@@ -1,0 +1,22 @@
+From ecdf8e39eab3e4b4fb86a4cdc53f0aa02af2353d Mon Sep 17 00:00:00 2001
+From: Andrey Kutejko <andy128k@gmail.com>
+Date: Sun, 10 May 2026 15:44:55 +0200
+Subject: [PATCH] Remove timeout option for unit tests
+
+---
+ src/meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index 8fa464c..e730896 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -51,5 +51,4 @@ test(
+   env: cargo_env,
+   args: ['test', '--no-fail-fast'] + cargo_options,
+   depends: [libgnome_games_support_dependency],
+-  timeout: 180
+ )
+-- 
+GitLab
+

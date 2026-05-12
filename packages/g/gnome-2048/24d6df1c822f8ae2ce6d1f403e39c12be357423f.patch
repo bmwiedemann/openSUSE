@@ -1,0 +1,22 @@
+From 24d6df1c822f8ae2ce6d1f403e39c12be357423f Mon Sep 17 00:00:00 2001
+From: Andrey Kutejko <andy128k@gmail.com>
+Date: Sun, 10 May 2026 15:44:55 +0200
+Subject: [PATCH] Set timeout option to 0 (wait infinitly) for unit tests
+
+---
+ src/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/meson.build b/src/meson.build
+index e730896..1942ba7 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -51,4 +51,5 @@ test(
+   env: cargo_env,
+   args: ['test', '--no-fail-fast'] + cargo_options,
+   depends: [libgnome_games_support_dependency],
++  timeout: 0,
+ )
+-- 
+GitLab
+
