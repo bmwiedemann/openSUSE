@@ -95,4 +95,15 @@
   * Improve code quality.</comment>
     <requestid>1337647</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b53760ad8f51318d6b31ee2346615029</srcmd5>
+    <version>2026.2.8</version>
+    <time>1778606896</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1352671 from mgrossu
+
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file 
+    (bsc#1263906)</comment>
+    <requestid>1352689</requestid>
+  </revision>
 </revisionlist>

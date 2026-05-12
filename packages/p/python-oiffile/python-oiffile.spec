@@ -16,6 +16,7 @@
 #
 
 
+%global skip_python311 1
 Name:           python-oiffile
 Version:        2026.2.8
 Release:        0

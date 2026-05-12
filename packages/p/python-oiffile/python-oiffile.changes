@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 12 09:39:24 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file 
+  (bsc#1263906) 
+
+-------------------------------------------------------------------
 Mon Mar  9 11:50:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.2.8:
