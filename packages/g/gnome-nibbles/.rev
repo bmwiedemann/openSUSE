@@ -458,4 +458,14 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342961</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a421086722c2760d7a1b8f9b4ac90701</srcmd5>
+    <version>4.5.2</version>
+    <time>1778606838</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.5.2:
+  + Fix issue: Stop dead AI worms from respawning.
+  + Updated translations.</comment>
+    <requestid>1352550</requestid>
+  </revision>
 </revisionlist>

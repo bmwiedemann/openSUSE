@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 10 05:48:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.5.2:
+  + Fix issue: Stop dead AI worms from respawning.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:40:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
