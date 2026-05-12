@@ -2,5 +2,6 @@
   <title>Sony PlayStation 2 Emulator</title>
   <description>Sony PlayStation 2 emulator.
   </description>
+  <devel project="Emulators" package="pcsx2"/>
   <url>http://www.pcsx2.net/</url>
 </package>
