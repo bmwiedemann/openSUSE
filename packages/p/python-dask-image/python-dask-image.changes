@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 13:16:51 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file 
+  (bsc#1263906)
+- Skip memory-intensive test on 32-bit i586
+
+-------------------------------------------------------------------
 Sun Mar  1 23:23:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 2025.11.0.

@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%global skip_python311 1
 Name:           python-dask-image
 Version:        2025.11.0
 Release:        0
@@ -70,7 +70,11 @@ Distributed image processing
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%ifarch i586
+%pytest -k 'not (test_generic_filter_identity or test_generic_filter_comprehensions)' --ignore=tests/test_dask_image/test_ndinterp/test_affine_transformation.py
+%else
 %pytest -k 'not (test_generic_filter_identity or test_generic_filter_comprehensions)'
+%endif
 
 %files %{python_files}
 %doc README.rst
