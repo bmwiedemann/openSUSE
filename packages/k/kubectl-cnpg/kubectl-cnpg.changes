@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue May 12 11:20:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.29.1:
+  https://github.com/cloudnative-pg/cloudnative-pg/releases/tag/v1.29.1
+  Security and Supply Chain
+  * CVE remediation in github.com/jackc/pgx/v5: bumped to v5.9.2 to
+    pick up upstream fixes for CVE-2026-33816 (memory-safety in
+    pgproto3) and GHSA-j88v-2chj-qfwx (SQL injection via
+    simple-protocol dollar-quoted string handling). (#10437,
+    #10499)
+  * Dependencies
+    - chore(deps): update dependency go to v1.26.3 (#10647)
+    - fix(deps): update all non-major go dependencies
+      (release-1.29) (#10631)
+    - chore(deps): update all github action (release-1.29) (#10619)
+    - chore(deps): update operator framework (release-1.29)
+      (#10611)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to e0b6e93 (release-1.29) (#10610)
+    - chore(deps): update all github action (release-1.29) (major)
+      (#10584)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.11.4 (release-1.29) (#10482)
+    - chore(deps): update dependency rook/rook to v1.19.4
+      (release-1.29) (#10505)
+    - fix(deps): update all non-major go dependencies
+      (release-1.29) (#10499)
+    - chore(deps): update goreleaser/goreleaser-action digest to
+      e24998b (release-1.29) (#10495)
+    - chore(deps): update operator framework (release-1.29)
+      (#10471)
+    - fix(deps): update kubernetes patches (release-1.29) (#10475)
+    - chore(deps): update jonasbn/github-action-spellcheck docker
+      tag to v0.60.0 (release-1.29) (#10470)
+    - chore(deps): update all non-major github action
+      (release-1.29) (#10449)
+    - chore(deps): update dependency go to v1.26.2 (release-1.29)
+      (#10463)
+    - fix(deps): update all non-major go dependencies
+      (release-1.29) (#10437)
+
+-------------------------------------------------------------------
 Thu Apr 02 10:34:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.29.0:
