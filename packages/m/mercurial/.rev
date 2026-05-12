@@ -1980,4 +1980,12 @@ Regularly scheduled major release. (forwarded request 1186324 from develop7)</co
     <comment>- Mercurial 7.2.2</comment>
     <requestid>1351483</requestid>
   </revision>
+  <revision rev="224" vrev="2">
+    <srcmd5>ceda5e1262da8d00a2bfe28480d93e25</srcmd5>
+    <version>7.2.2</version>
+    <time>1778606784</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1352458</requestid>
+  </revision>
 </revisionlist>

@@ -69,7 +69,6 @@ Requires:       ca-certificates
 %if %{with tests}
 Source90:       tests.blacklist
 BuildRequires:  %{python_module Pygments}
-BuildRequires:  breezy
 BuildRequires:  git
 BuildRequires:  gpg
 BuildRequires:  ncurses-devel
