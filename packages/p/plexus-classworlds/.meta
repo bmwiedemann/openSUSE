@@ -10,6 +10,5 @@ can benefit from the classloading control provided by
 classworlds.
 
 </description>
-  <devel project="Java:packages" package="plexus-classworlds"/>
   <url>https://github.com/codehaus-plexus/plexus-classworlds</url>
 </package>

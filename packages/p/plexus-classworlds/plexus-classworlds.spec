@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-classworlds
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global short_name classworlds
 Name:           plexus-%{short_name}
-Version:        2.9.0
+Version:        2.11.0
 Release:        0
 Summary:        Plexus Classworlds Classloader Framework
 License:        Apache-2.0 AND Plexus

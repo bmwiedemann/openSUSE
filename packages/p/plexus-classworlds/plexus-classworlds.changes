@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue May 12 08:51:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.11.0
+  * New features and improvements
+    + Add Automatic-Module-Name to JAR manifest for JPMS
+      compatibility
+  * Bug Fixes
+    + Restore Maven 2 compatibility - revert "Drop deprecated
+      package org.codehaus.classworlds"
+  * Dependency updates
+    + Bump org.jacoco:jacoco-maven-plugin from 0.8.12 to 0.8.14
+
+-------------------------------------------------------------------
+Tue May 12 08:49:28 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.10.0
+  * Breaking changes
+    + Drop deprecated package org.codehaus.classworlds
+  * Maintenance
+    + Add comprehensive test coverage improvements
+    + Bump jakarta.xml.bind:jakarta.xml.bind-api from 4.0.2 to 4.0.4
+    + JUnit Jupiter best practices
+    + Some automatic code cleanups
+    + Remove no longer needed code
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus from 20 to 25
+
+-------------------------------------------------------------------
 Wed Jun  4 15:45:07 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.9.9
