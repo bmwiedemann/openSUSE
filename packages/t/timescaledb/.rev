@@ -624,4 +624,12 @@ Stop storing build machine kernel version (boo#1101107)</comment>
     <comment>- Update to 2.26.4</comment>
     <requestid>1349898</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9e6c2f0dd22cca85164b841b90edfdd0</srcmd5>
+    <version>2.27.0</version>
+    <time>1778606976</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.27.0</comment>
+    <requestid>1352693</requestid>
+  </revision>
 </revisionlist>
