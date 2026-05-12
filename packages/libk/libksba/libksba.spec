@@ -18,7 +18,7 @@
 
 %define soname 8
 Name:           libksba
-Version:        1.6.8
+Version:        1.7.0
 Release:        0
 Summary:        A X.509 Library
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND MIT
@@ -27,7 +27,7 @@ URL:            https://www.gnupg.org
 Source:         https://gnupg.org/ftp/gcrypt/libksba/%{name}-%{version}.tar.bz2
 Source2:        https://gnupg.org/ftp/gcrypt/libksba/%{name}-%{version}.tar.bz2.sig
 # https://www.gnupg.org/signature_key.html
-Source3:        https://gnupg.org/signature_key.asc#/%{name}.keyring
+Source3:        %{name}.keyring
 Source4:        libksba.changes
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
 Patch0:         libksba-nobetasuffix.patch
@@ -35,7 +35,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gpg-error) >= 1.8
+BuildRequires:  pkgconfig(gpg-error) >= 1.28
 
 %description
 KSBA is a library to simplify the task of working with X.509

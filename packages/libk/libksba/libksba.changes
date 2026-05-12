@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 10 10:14:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.7.0:
+ * Add support for building AuthEnvelopedData
+ * New function ksba_cms_add_attribute
+ * Fix silent truncation of 64 bit length fields
+ * Fix incorrect overflow guard condition in _ksba_ber_read_tl
+ * Interface changes relative to the 1
+   ksba_cms_add_attribute           NEW.
+
+-------------------------------------------------------------------
 Tue Feb 24 11:56:51 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.6.8:
