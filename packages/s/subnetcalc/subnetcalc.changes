@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  4 14:26:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.6:
+  * Updated CI scripts
+  * po: Add Georgian language
+  * Updated documentation.
+  * Updated CI scripts
+  * Updated CI configuration
+  * Updated build helper script.
+  * Updated CI configuration
+
+-------------------------------------------------------------------
 Sat Oct 18 14:09:46 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.6.5:
@@ -27,7 +39,7 @@ Sat Jan  4 17:55:43 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 Thu Feb 22 06:28:06 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.4.1:
-  * Fix for output to stderr instead of stdout for 6to4 address 
+  * Fix for output to stderr instead of stdout for 6to4 address
   * Update metadata and code clean-up
   * Format IPv4-embedded IPv6 addresses
   * Test script fix
@@ -56,7 +68,7 @@ Tue Feb 21 12:48:37 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 - Update to 2.4.21:
   * project URL change from UDE to NNTB.
   * Updated build scripts
-  * Updated README.md 
+  * Updated README.md
 
 -------------------------------------------------------------------
 Mon Nov 15 19:21:35 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
