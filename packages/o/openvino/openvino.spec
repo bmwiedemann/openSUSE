@@ -1,7 +1,6 @@
 #
 # spec file for package openvino
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Alessandro de Oliveira Faria (A.K.A. CABELO) <cabelo@opensuse.org> or <alessandro.faria@owasp.org>
 #
@@ -448,9 +447,6 @@ rm -fr %{buildroot}%{_datadir}/licenses/*
 %license LICENSE
 %{_includedir}/%{name}/
 %{_libdir}/cmake/%{prj_name}/
-%ifarch riscv64
-%{_libdir}/cmake/xbyak_riscv/
-%endif
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/openvino.pc
 

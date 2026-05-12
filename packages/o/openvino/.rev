@@ -1022,4 +1022,14 @@ Support Change and Deprecation Notices
     <comment></comment>
     <requestid>1346475</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ce72cc7ca247b57b610cfdbc3fd3a24b</srcmd5>
+    <version>2026.1.0</version>
+    <time>1778606903</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1352514 from Andreas_Schwab
+
+- Upate file list for riscv64</comment>
+    <requestid>1352683</requestid>
+  </revision>
 </revisionlist>
