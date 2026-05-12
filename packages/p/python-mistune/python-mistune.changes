@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 11 11:06:28 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.2.1 (fixes CVE-2026-33079 - bsc#1264347,
+  CVE-2026-44897 - bsc#1264750, CVE-2026-44708 - bsc#1264751,
+  CVE-2026-33441 - bsc#1264752, CVE-2026-44896 - bsc#1264754)
+  * Resolve Windows compatibility issues in file inclusion and tests
+    - by @Yuki9814
+  * Escape html text - by @lepture
+  * Update link reference - by @lepture
+  * Handle escaped dollar signs in inline math - by @saschabuehrle
+  * Escape id of toc - by @lepture
+  * Escape id of headings - by @lepture
+  * Remove double-encoding of image alt text - by @lawrence3699
+  * Escape xml for math plugin - by @lepture
+  * Use strict regex for image's height and width - by @lepture
+
+-------------------------------------------------------------------
 Mon Mar 16 20:49:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:
