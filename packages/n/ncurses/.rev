@@ -5691,4 +5691,25 @@
   includes the fix (boo#1253379)</comment>
     <requestid>1351183</requestid>
   </revision>
+  <revision rev="331" vrev="104">
+    <srcmd5>b948afab7bd4d35fb73ace062aac1382</srcmd5>
+    <version>unknown</version>
+    <time>1778606791</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260509
+  + modify adjust_cancels() to allow for cancelled boolean extended
+    capabilities.
+  + cancel XF, XT in warp -TD
+  + review kitty -TD
+  + review contour -TD
+  + eliminate vt100-style line drawing from xterm-utf8 -TD
+- Add ncurses patch 20260502
+  + add warp -TD
+  + correct loop limit in lib_twait.c (OpenSUSE boo#1262780, cf: 20260411)
+- Add ncurses patch 20260425
+  + review screen4 vs screen5 -TD
+  + review some XR/xr pairs -TD
+  + fix a few gcc analyzer warnings.</comment>
+    <requestid>1352375</requestid>
+  </revision>
 </revisionlist>

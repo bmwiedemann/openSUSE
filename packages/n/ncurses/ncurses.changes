@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 11 06:36:20 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260509
+  + modify adjust_cancels() to allow for cancelled boolean extended
+    capabilities.
+  + cancel XF, XT in warp -TD
+  + review kitty -TD
+  + review contour -TD
+  + eliminate vt100-style line drawing from xterm-utf8 -TD
+- Add ncurses patch 20260502
+  + add warp -TD
+  + correct loop limit in lib_twait.c (OpenSUSE boo#1262780, cf: 20260411)
+- Add ncurses patch 20260425
+  + review screen4 vs screen5 -TD
+  + review some XR/xr pairs -TD
+  + fix a few gcc analyzer warnings.
+
+-------------------------------------------------------------------
 Mon Apr 27 13:49:49 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Remove fix-mouse.patch as it is verified that patch 20260418
