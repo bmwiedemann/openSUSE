@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 12 05:02:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.4:
+  * Security:
+    - Validate server URL in token auth. (PR 1075)
+    - Upgrading Go fixes CVE-2026-33814 and CVE-2026-39836, other
+      vulnerabilities fixed in 1.26.3 were not called by this
+      project. (PR 1084)
+  * Features:
+    - Support scanning OCI Layout for referrers. (PR 1074)
+    - Add created timestamp in OCI Layout entries. (PR 1081)
+    - tag.ls now accepts the same pagination parameters as repo.ls.
+      (PR 1086)
+  * Fixes:
+    - Push tags for minor and major releases on Docker Hub. (PR
+      1087)
+
+-------------------------------------------------------------------
 Sat Apr 18 05:34:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.3:
