@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>1114047</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b25735ee65381f658263896be626c8d2</srcmd5>
+    <version>0.4018</version>
+    <time>1778607068</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.4018
+   see /usr/share/doc/packages/perl-Starman/Changes
+  0.4018  2026-04-27 12:29:41 PDT
+          - Fix HTTP request smuggling: Transfer-Encoding now takes precedence
+            over Content-Length per RFC 7230 §3.3.3 (CVE-2026-40560, bsc#1263364)</comment>
+    <requestid>1352800</requestid>
+  </revision>
 </revisionlist>

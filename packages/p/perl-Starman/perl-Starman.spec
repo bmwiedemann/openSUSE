@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Starman
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name Starman
 Name:           perl-Starman
-Version:        0.4017
+Version:        0.4018
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        High-performance preforking PSGI/Plack web server
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -33,19 +34,20 @@ BuildRequires:  perl(HTTP::Date)
 BuildRequires:  perl(HTTP::Parser::XS)
 BuildRequires:  perl(HTTP::Status)
 BuildRequires:  perl(LWP::UserAgent)
-BuildRequires:  perl(Module::Build::Tiny) >= 0.034
-BuildRequires:  perl(Net::Server) >= 2.007
-BuildRequires:  perl(Plack) >= 0.9971
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.34
+BuildRequires:  perl(Net::Server) >= 2.7
+BuildRequires:  perl(Plack) >= 0.997.100
 BuildRequires:  perl(Test::Requires)
-BuildRequires:  perl(Test::TCP) >= 2.00
+BuildRequires:  perl(Test::TCP) >= 2.0
 BuildRequires:  perl(parent)
 Requires:       perl(Data::Dump)
 Requires:       perl(HTTP::Date)
 Requires:       perl(HTTP::Parser::XS)
 Requires:       perl(HTTP::Status)
-Requires:       perl(Net::Server) >= 2.007
-Requires:       perl(Plack) >= 0.9971
-Requires:       perl(Test::TCP) >= 2.00
+Requires:       perl(Net::Server) >= 2.7
+Requires:       perl(Plack) >= 0.997.100
+Requires:       perl(Test::TCP) >= 2.0
 Requires:       perl(parent)
 %{perl_requires}
 
@@ -96,7 +98,7 @@ Supports chunked requests and responses, keep-alive and pipeline requests.
 This server does not support Win32.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
