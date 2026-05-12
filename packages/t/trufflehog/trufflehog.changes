@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 12 04:54:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.95.3:
+  * adding customizable successRanges and rotatedRanges to customDetector (#4892)
+  * Add Pinecone API key detector (#4917)
+  * Make detector Result.SecretParts initialization stricter (#4948)
+  * Add default Content-Type: application/json header for custom detector verification request (#4947)
+  * chore: bump golangci-lint-action v7 → v9 (Node 24) (#4936)
+  * ci: bump JS actions to Node 24 majors (checkout v6, setup-go v6, codeql v4, auth v3, goreleaser v7, mikepenz v6, jaxxstorm v3.0.0, docker login/qemu v4) (#4933)
+  * [INS-320] Cloudinary detector (#4747)
+  * Log non-critical chunk errors at V(2).Info instead of Error (#4928)
+  * Deduplicate concurrent credential verification requests via singleflight (#4314)
+  * Make checksecretparts required in CI (#4921)
+  * Populate SecretParts on all detectors (#4919)
+  * Add a static check for detectors that don't set SecretParts (#4913)
+  * Document SecretParts contract in detector-authoring docs (#4912)
+  * Rename AnalysisInfo field to SecretParts on detectors.Result (#4911)
+  * Renamed AnypointOAuth2 detector's AnalysisInfo keys to make it consistent with its Analyzer (#4906)
+
+-------------------------------------------------------------------
 Wed Apr 22 06:08:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.95.2:
