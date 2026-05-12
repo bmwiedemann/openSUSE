@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 11 23:08:14 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- canfigger 0.3.2
+  + Add canfigger_cache_dir(): $XDG_CACHE_HOME/appname or $HOME/.cache/appname
+    on POSIX; %LOCALAPPDATA%\appname on Windows
+  + Add canfigger_config_file(): returns $XDG_CONFIG_HOME/filename or
+    $HOME/.config/filename, for config files that live directly under the
+    config root rather than in a per-application subdirectory
+  * Headers are now installed to /usr/include/canfigger/; the pkgconfig
+    Cflags is updated accordingly so #include <canfigger.h> continues to
+    work without changes
+  * Only build examples if not a subproject
+
+-------------------------------------------------------------------
 Mon Apr 20 20:34:15 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
 
 - Split docs into a separate package

@@ -4,5 +4,6 @@
 It provides functionality to read them and represent their contents as a
 linked list of key-value pairs, along with associated attributes for
 each pair.</description>
+  <devel project="devel:libraries:c_c++" package="canfigger"/>
   <url>https://github.com/andy5995/canfigger</url>
 </package>

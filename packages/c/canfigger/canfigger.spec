@@ -22,9 +22,9 @@
 %define devname lib%{name}%{soname}-devel
 
 Name:           canfigger
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
-Summary:        Simple configuration file parser library
+Summary:        Lightweight configuration file parser library with XDG path helpers
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/andy5995/canfigger
@@ -36,17 +36,21 @@ BuildRequires:  meson >= 0.48.0
 Canfigger is a lightweight C language library designed to parse configuration
 files. It provides functionality to read them and represent their contents as
 a linked list of key-value pairs, along with associated attributes for each
-pair.
+pair. It also includes utility functions for locating standard per-user
+directories (config, data, cache) and joining paths, with support for XDG on
+Linux/macOS and the Windows CSIDL equivalents.
 
 %package -n %{libname}
-Summary:        Lightweight library for parsing configuration files
+Summary:        Lightweight configuration file parser library with XDG path helpers
 Group:          System/Libraries
 
 %description -n %{libname}
 Canfigger is a lightweight C language library designed to parse configuration
 files. It provides functionality to read them and represent their contents as
 a linked list of key-value pairs, along with associated attributes for each
-pair.
+pair. It also includes utility functions for locating standard per-user
+directories (config, data, cache) and joining paths, with support for XDG on
+Linux/macOS and the Windows CSIDL equivalents.
 
 This package contains the shared library for %{name}
 
@@ -88,15 +92,16 @@ rm %{buildroot}%{_docdir}/%{libname}/LICENSE
 %files -n %{libname}
 %defattr(-,root,root)
 %license LICENSE
-%doc README.md ChangeLog.txt ReleaseNotes.txt example-01.c example-01.conf example-02.c example-02.conf
+%doc README.md ChangeLog.txt example-01.c example-01.conf example-02.c example-02.conf
 %{_libdir}/libcanfigger.so.*
 
 %files -n %{devname}
 %defattr(-,root,root)
 %{_libdir}/libcanfigger.so
 %{_libdir}/pkgconfig/canfigger.pc
-%{_includedir}/canfigger.h
-%{_includedir}/canfigger_version.h
+%dir %{_includedir}/canfigger
+%{_includedir}/canfigger/canfigger.h
+%{_includedir}/canfigger/canfigger_version.h
 
 %files -n %{libname}-doc
 %defattr(-,root,root)
