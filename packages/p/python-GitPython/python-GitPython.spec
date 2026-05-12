@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-GitPython
-Version:        3.1.48
+Version:        3.1.49
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause

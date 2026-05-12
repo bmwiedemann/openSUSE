@@ -1,11 +1,22 @@
 -------------------------------------------------------------------
+Fri May 08 11:44:48 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to version 3.1.49 (fixes CVE-2026-44244, bsc#1264608):
+  * bump version to 3.1.49
+  * Address rev-parse review feedback
+  * Fix rev-parse CI issues
+  * Improve pure Python rev-parse coverage and behavior (#2135)
+  * avoid duplicate validation in set_value
+  * reject control chars in written values in configuration
+
+-------------------------------------------------------------------
 Wed Apr 29 11:45:40 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
-- Update to version 3.1.48:
+- Update to version 3.1.48 (fixes CVE-2026-44243, bsc#1264606):
   * a new release with safer reference creation
   * address review feedback and CI failures
   * prevent out-of-repo access when manipulating references.
-- 3.1.47:
+- 3.1.47 (fixes CVE-2026-42215, bsc#1264604, CVE-2026-42284, bsc#1264605):
   * git.cmd: harden unsafe option canonicalization and isolate push test cases
   * linter fix
   * Block unsafe underscored git kwargs / Fix for GHSA-rpm5-65cw-6hj4
