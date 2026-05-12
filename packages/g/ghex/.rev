@@ -648,4 +648,13 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment>Push GNOME 50</comment>
     <requestid>1345339</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>5aa9ca4c6141c211aa592dcc6e62f196</srcmd5>
+    <version>50.1</version>
+    <time>1778606837</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.1:
+  + Updated translations.</comment>
+    <requestid>1352546</requestid>
+  </revision>
 </revisionlist>
