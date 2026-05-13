@@ -190,4 +190,12 @@
   * go#78412 cmd/go: test -cover can't find covdata tool with switched toolchain and empty tests (forwarded request 1351539 from jfkw)</comment>
     <requestid>1351541</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>fb421973c398db5ee9ff31e86c3297e9</srcmd5>
+    <version>1.26.3</version>
+    <time>1778685559</time>
+    <user>anag_factory</user>
+    <comment>go1.26.3 fix changelog entry with correct list of updated packages. (forwarded request 1352504 from jfkw)</comment>
+    <requestid>1352506</requestid>
+  </revision>
 </revisionlist>

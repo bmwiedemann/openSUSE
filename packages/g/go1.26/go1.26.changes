@@ -1,11 +1,12 @@
 -------------------------------------------------------------------
 Thu May  7 16:14:14 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
-- go1.25.10 (released 2026-05-07) includes security fixes to the go
+- go1.26.3 (released 2026-05-07) includes security fixes to the go
   command, the pack tool, and the html/template, net, net/http,
   net/http/httputil, net/mail, and syscall packages, as well as bug
-  fixes to the go command, the compiler, the linker, the runtime,
-  and the crypto/fips140, go/types, and os packages.
+  fixes to the go command, the go fix command, the compiler, the
+  linker, the runtime, and the crypto/fips140, crypto/tls,
+  go/types, and os packages.
   Refs boo#1255111 go1.26 release tracking
   CVE-2026-33811 CVE-2026-33814 CVE-2026-39817 CVE-2026-39819 CVE-2026-39820 CVE-2026-39823 CVE-2026-39825 CVE-2026-39826 CVE-2026-39836 CVE-2026-42499 CVE-2026-42501
   * go#78813 go#78803 boo#1264508 security: fix CVE-2026-33811 net: crash when handling long CNAME response
