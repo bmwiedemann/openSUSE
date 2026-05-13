@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 12 13:57:51 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.5
+- Changes since 6.6.4:
+  * Update version for new release 6.6.5
+  * applets/weather: Fix typo on fallback icon name
+
+-------------------------------------------------------------------
 Tue Apr  7 14:59:09 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.4:
