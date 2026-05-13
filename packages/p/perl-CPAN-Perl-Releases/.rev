@@ -1335,4 +1335,13 @@
    see /usr/share/doc/packages/perl-CPAN-Perl-Releases/Changes</comment>
     <requestid>1346897</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>e868162ed7e1accd6ea9ef0bd58484b2</srcmd5>
+    <version>5.202.604.200</version>
+    <time>1778685752</time>
+    <user>anag_factory</user>
+    <comment>- updated to 5.202.604.200 (5.20260420)
+   see /usr/share/doc/packages/perl-CPAN-Perl-Releases/Changes</comment>
+    <requestid>1352973</requestid>
+  </revision>
 </revisionlist>
