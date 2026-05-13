@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 11 08:43:16 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.5.0
+  * New features
+    + Add IteratorUtils.toSet(Iterator)
+    + Add IteratorUtils.toSet(Iterator, int)
+    + Add EnumerationUtils.toSet(Enumeration)
+    + COLLECTIONS-693: Please add OWASP Dependency Check to the
+      build
+  * Fixed Bugs
+    + Refactor AbstractPropertiesFactory.load(File) to use NIO
+    + Refactor AbstractPropertiesFactory.load(String) to use NIO
+  * Changes
+    + Bump commons-codec:commons-codec from 1.17.1 to 1.18.0
+    + Bump org.apache.commons:commons-parent from 78 to 81
+    + Bump commons.jacoco.version from 0.8.13-SNAPSHOT to 0.13.0
+    + [test] Bump commons-io:commons-io from 2.18.0 to 2.19.0
+
+-------------------------------------------------------------------
 Wed Oct 25 14:24:18 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 4.4

@@ -9,8 +9,10 @@
   <property file="build.properties"/>
   <property name="project.groupId" value="org.apache.commons"/>
   <property name="project.artifactId" value="commons-collections4"/>
-  <property name="project.version" value="4.4"/>
-  <property name="bundle.version" value="${project.version}.0"/>
+
+  <property name="spec.version" value="4.5"/>
+  <property name="project.version" value="${spec.version}.0"/>
+  <property name="bundle.version" value="${project.version}"/>
 
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>
@@ -128,7 +130,7 @@
 		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
 		<attribute name="Specification-Title" value="Apache Commons Collections"/>
 		<attribute name="Specification-Vendor" value="The Apache Software Foundation"/>
-		<attribute name="Specification-Version" value="${project.version}"/>
+		<attribute name="Specification-Version" value="${spec.version}"/>
       </manifest>
     </jar>
   </target>

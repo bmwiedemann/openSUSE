@@ -23,4 +23,12 @@
     <comment>4.4 == fix build with jdk 21</comment>
     <requestid>1120322</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>acb68f3d6319d25df739096626ba9ad2</srcmd5>
+    <version>4.5.0</version>
+    <time>1778685554</time>
+    <user>anag_factory</user>
+    <comment>4.5.0</comment>
+    <requestid>1352435</requestid>
+  </revision>
 </revisionlist>

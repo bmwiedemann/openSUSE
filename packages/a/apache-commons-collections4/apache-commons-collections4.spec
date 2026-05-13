@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-collections4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define short_name      commons-%{base_name}
 %bcond_with tests
 Name:           apache-%{short_name}
-Version:        4.4
+Version:        4.5.0
 Release:        0
 Summary:        Extension of the Java Collections Framework
 License:        Apache-2.0
