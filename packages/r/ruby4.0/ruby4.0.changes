@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon May 11 23:40:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- make install also need the locale set on 15.x
+
+-------------------------------------------------------------------
+Mon May 11 22:42:53 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.4
+  - Bug #21955: Fiber#transfer: machine stack not released when
+    fiber terminates, causing FiberError: can't set a guard page -
+    Ruby - Ruby Issue Tracking System
+  - Bug #21964: Fiber stack acquire can expand unnecessarily - Ruby
+    - Ruby Issue Tracking System
+  - Bug #21971: Fix regexp performance regression for patterns
+    starting with s/k - Ruby - Ruby Issue Tracking System
+  - Bug #21961: Marshal.load freeze option fail to freeze linked
+    strings - Ruby - Ruby Issue Tracking System
+  - Bug #21959: rb_internal_thread_event_hooks_rw_lock is not
+    reinitialized after fork causing deadlocks - Ruby - Ruby Issue
+    Tracking System
+  - Bug #21954: NoMethodError instead of Gem::LoadError on gem
+    activation problem in Ruby 4.0.2 - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21844: Inconsistent ArgumentError message for
+    Data::define.new - Ruby - Ruby Issue Tracking System
+  - Bug #21992: Defining BasicObject#initialize causes segmentation
+    fault - Ruby - Ruby Issue Tracking System
+  - Bug #22018: ISeq created via
+    RubyVM::InstructionSequence.compile don't support coverage -
+    Ruby - Ruby Issue Tracking System
+  - Bug #21985: RubyVM::AST negative numbers do not include - in
+    location - Ruby - Ruby Issue Tracking System
+  - Bug #21986: RubyVM::AST incorrect location for literals
+    followed by modifier if - Ruby - Ruby Issue Tracking System
+  - Bug #21933: Ruby::Box: named capture local variable can become
+    nil after non-matching lines - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21940: Ruby::Box: $_ returns stale value due to gvar_tbl
+    caching - Ruby - Ruby Issue Tracking System
+  - Bug #22004: parse.y doesn't executes loop body with while true
+    || true condition - Ruby - Ruby Issue Tracking System
+  - Bug #21952: Ruby::Box double free at process exit when
+    fiddle/import is required in multiple boxes - Ruby - Ruby Issue
+    Tracking System
+  - Bug #22003: .bundle extensions not built when doing
+    out-of-source build - Ruby - Ruby Issue Tracking System
+  - Bug #22002: argument stack underflow (-1) - Ruby - Ruby Issue
+    Tracking System
+
+-------------------------------------------------------------------
 Tue Apr 21 10:05:13 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.0.3 (boo#1262441)

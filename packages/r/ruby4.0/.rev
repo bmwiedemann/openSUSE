@@ -225,4 +225,41 @@ Binary file ruby-4.0.1.tar.xz (revision 4) deleted</comment>
   https://www.ruby-lang.org/en/news/2026/04/21/ruby-4-0-3-released/</comment>
     <requestid>1348486</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5b3c70884dbf756d92d5d8b0250a4a87</srcmd5>
+    <version>4.0.4</version>
+    <time>1778685580</time>
+    <user>anag_factory</user>
+    <comment>- make install also need the locale set on 15.x
+
+- Update to 4.0.4
+  - Bug #21955: Fiber#transfer: machine stack not released when
+    fiber terminates, causing FiberError: can't set a guard page -
+    Ruby - Ruby Issue Tracking System
+  - Bug #21964: Fiber stack acquire can expand unnecessarily - Ruby
+    - Ruby Issue Tracking System
+  - Bug #21971: Fix regexp performance regression for patterns
+    starting with s/k - Ruby - Ruby Issue Tracking System
+  - Bug #21961: Marshal.load freeze option fail to freeze linked
+    strings - Ruby - Ruby Issue Tracking System
+  - Bug #21959: rb_internal_thread_event_hooks_rw_lock is not
+    reinitialized after fork causing deadlocks - Ruby - Ruby Issue
+    Tracking System
+  - Bug #21954: NoMethodError instead of Gem::LoadError on gem
+    activation problem in Ruby 4.0.2 - Ruby - Ruby Issue Tracking
+    System
+  - Bug #21844: Inconsistent ArgumentError message for
+    Data::define.new - Ruby - Ruby Issue Tracking System
+  - Bug #21992: Defining BasicObject#initialize causes segmentation
+    fault - Ruby - Ruby Issue Tracking System
+  - Bug #22018: ISeq created via
+    RubyVM::InstructionSequence.compile don't support coverage -
+    Ruby - Ruby Issue Tracking System
+  - Bug #21985: RubyVM::AST negative numbers do not include - in
+    location - Ruby - Ruby Issue Tracking System
+  - Bug #21986: RubyVM::AST incorrect location for literals
+    followed by modifier if - Ruby - Ruby Issue Tracking System
+  - Bug #21933: Ruby::Box: named capture local variable can become</comment>
+    <requestid>1352573</requestid>
+  </revision>
 </revisionlist>

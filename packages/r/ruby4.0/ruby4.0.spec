@@ -36,7 +36,7 @@
 
 %global patch_level p0
 Name:           ruby4.0%{psuffix}
-Version:        4.0.3
+Version:        4.0.4
 Release:        0
 %global pkg_version %{version}
 # make the exported API version explicit
@@ -358,10 +358,13 @@ export ASFLAGS="$CFLAGS"
   --enable-shared \
   --disable-static \
   --disable-rpath
-make %{?_smp_mflags} all V=1 STRIP=/bin/true
+%make_build all V=1 STRIP=/bin/true
 
 %install
 %if "%{flavor}" != "testsuite"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
 %make_install V=1 STRIP=/bin/true
 perl -p -i -e 's|#!/usr/local/bin/ruby|%{_bindir}/ruby|g' $(grep -r -l /usr/local/bin/ruby %{buildroot})
 echo "%defattr(-,root,root,-)" > devel-extra-excludes
