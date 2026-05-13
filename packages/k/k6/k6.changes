@@ -1,4 +1,258 @@
 -------------------------------------------------------------------
+Wed May 13 05:34:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.0.0:
+  k6 v2.0.0 is the final release of the v2 major version,
+  completing the cleanup of deprecated APIs, old commands, and
+  obsolete configuration options that was started with v2.0.0-rc1.
+  If you were already running the release candidate, this release
+  includes a handful of additional changes on top — they are marked
+  with (new since v2.0.0-rc1) throughout these notes.
+  Here's a glimpse of what's changed in this release:
+  - The Go module path has changed to go.k6.io/k6/v2 — all
+    extensions must update their import paths to be compatible with
+    v2.
+  - Removal of all long-deprecated CLI commands and flags: k6
+    login, k6 pause, k6 resume, k6 scale, k6 status, --no-summary,
+    --upload-only, and more.
+  - The externally-controlled executor has been removed — scripts
+    using executor: externally-controlled will no longer run.
+  - Cloud run non-threshold aborts (aborted by user, system,
+    timeout, etc.) now return exit code 97 instead of 0.
+  - options.ext.loadimpact is no longer supported — use
+    options.cloud.
+  - k6/experimental/redis module has been removed.
+  - The k6 cloud script.js positional form has been fully removed —
+    use k6 cloud run script.js.
+  - A stack is now required for all k6 cloud commands — the
+    previous fallback to the first available stack has been
+    removed.
+  - The web-vitals library has been updated to v5.1.0, removing the
+    deprecated FID metric.
+  - (new since v2.0.0-rc1) easyjson has been dropped in favor of
+    stdlib encoding/json — extension authors relying on
+    easyjson-generated methods on k6 types must update.
+  - (new since v2.0.0-rc1) The k6 HTTP API server no longer starts
+    by default — pass --address to enable it.
+  - (new since v2.0.0-rc1) New k6 cloud project list command to
+    list Grafana Cloud k6 projects.
+  - (new since v2.0.0-rc1) Cloud secrets are now automatically
+    available in k6 cloud run --local-execution; use
+    --no-cloud-secrets to opt out.
+
+  For the full list of changes please check the release notes:
+  https://github.com/grafana/k6/releases/tag/v2.0.0
+
+  * Breaking changes
+    These are changes that require you to update your scripts,
+    CI/CD pipelines, or configuration files before upgrading.
+    - Go module path changed to go.k6.io/k6/v2 #5777
+      Following the Go module versioning conventions, the k6 module
+      path has changed from go.k6.io/k6 to go.k6.io/k6/v2.
+      Any extension or external package that imports go.k6.io/k6
+      must update all import paths to go.k6.io/k6/v2. For the vast
+      majority of extensions this is the only change needed — a
+      mechanical find-and-replace across the codebase:
+
+        go.k6.io/k6/ → go.k6.io/k6/v2/
+
+      For example:
+
+        // Before
+        import "go.k6.io/k6/js/modules"
+
+        // After
+        import "go.k6.io/k6/v2/js/modules"
+
+    - Removed CLI commands #5653
+      The following commands for controlling a running test have
+      been removed. They have not been functional for most use
+      cases since the REST API they relied on was limited to
+      specific execution modes:
+      - k6 pause
+      - k6 resume
+      - k6 scale
+      - k6 status
+      Migration: There is no replacement. These commands relied on
+      the externally-controlled executor, which has also been
+      removed in v2.0.0 (see below).
+    - Removed externally-controlled executor #5846
+      The externally-controlled executor has been removed. It was
+      legacy code from an older k6 Cloud architecture that allowed
+      external systems to scale VUs and pause/resume a running test
+      via the k6 REST API — the capability that k6 pause, k6
+      resume, k6 scale, and k6 status relied on.
+      Migration: There is no replacement. Any test script with
+      executor: externally-controlled will fail to start. Migrate
+      to a different executor based on the desired load profile
+      (e.g., ramping-vus, constant-vus, constant-arrival-rate).
+    - Removed k6 login command #5134
+      The top-level k6 login command and its subcommands (k6 login
+      cloud, k6 login influxdb) have been removed.
+      Migration:
+      - Replace k6 login cloud → k6 cloud login
+      - InfluxDB authentication is no longer configurable via a
+        login command. Use environment variables such as
+        K6_INFLUXDB_* to configure the InfluxDB output directly.
+    - Removed k6 cloud script.js positional form #5624, #5912
+      (completed in v2.0.0)
+      The old positional-argument form k6 cloud script.js has been
+      fully removed. In v2.0.0-rc1 it was changed to show help
+      instead of running; in v2.0.0 the deprecated command handler
+      itself has been removed entirely. The run subcommand has been
+      the recommended path since k6 cloud run was introduced.
+      Migration: Replace k6 cloud script.js with k6 cloud run
+      script.js.
+    - Removed --upload-only flag #5844
+      The --upload-only flag on the k6 cloud command has been
+      removed.
+      Migration: Use k6 cloud upload script.js to upload a test
+      without running it.
+    - Removed --no-summary flag #5729
+      The --no-summary flag has been removed.
+      Migration: Replace --no-summary with --summary-mode=disabled.
+    - Removed --summary-mode=legacy #5730
+      The legacy value for --summary-mode has been removed.
+      Migration: There is no direct equivalent — the new summary
+      format is different from the legacy one. Review the available
+      summary modes and choose the one that best fits your needs:
+      compact (the default) or full for more detailed output.
+    - Removed options.ext.loadimpact support #5774
+      The options.ext.loadimpact configuration block in test
+      scripts is no longer supported.
+      Migration: Move all cloud-related configuration from
+      options.ext.loadimpact to options.cloud:
+
+        // Before
+        export const options = {
+          ext: {
+            loadimpact: {
+              projectID: 12345,
+              name: "My Test",
+            },
+          },
+        };
+
+        // After
+        export const options = {
+          cloud: {
+            projectID: 12345,
+            name: "My Test",
+          },
+        };
+
+    - Removed k6/experimental/redis module #5485
+      The k6/experimental/redis module has been removed from the k6
+      core binary. It was shipped as an experiment and has not been
+      promoted to stable.
+      Migration: Change your import from k6/experimental/redis to
+      k6/x/redis. With auto-extension-resolution, k6 will
+      automatically provision the xk6-redis extension when it sees
+      the k6/x/redis import.
+    - Removed ExporterType option from OpenTelemetry output #5754
+      The deprecated exporterType configuration option for the
+      OpenTelemetry output has been removed.
+      Migration: Replace K6_OTEL_EXPORTER_TYPE with
+      K6_OTEL_EXPORTER_PROTOCOL. The accepted values are grpc and
+      http/protobuf.
+    - Removed SingleCounterForRate option from OpenTelemetry output
+      #5830
+      The temporary SingleCounterForRate escape-hatch option for
+      the OpenTelemetry output has been removed. It was introduced
+      as a one-release migration aid in #5164 to let users revert
+      to the old pair-of-counters format (<metric>.occurred +
+      <metric>.total) while upgrading. Rate metrics are now always
+      exported as a single counter with a condition attribute
+      (nonzero/zero).
+      Migration: Remove any K6_OTEL_SINGLE_COUNTER_FOR_RATE=true
+      configuration. If you were using the old pair-of-counters
+      format, update your dashboards and queries to use the single
+      counter with condition attribute instead.
+    - Removed K6_BINARY_PROVISIONING environment variable #5734
+      The K6_BINARY_PROVISIONING environment variable, deprecated
+      in v1.2.0, has been removed.
+      Migration: Remove K6_BINARY_PROVISIONING from your
+      environment. Auto-extension-resolution is enabled by default;
+      K6_AUTO_EXTENSION_RESOLUTION only needs to be set explicitly
+      if you want to disable it.
+    - Removed K6_ENABLE_COMMUNITY_EXTENSIONS environment variable
+      #5733
+      The K6_ENABLE_COMMUNITY_EXTENSIONS environment variable has
+      been removed. The community and cloud extension catalogs were
+      merged server-side, making this flag a no-op since the
+      catalogs were unified.
+      Migration: Remove K6_ENABLE_COMMUNITY_EXTENSIONS from your
+      environment. Community extensions are now resolved through
+      the default build service URL automatically.
+    - Stack is now required for all k6 cloud commands #5833
+      Providing a stack is now mandatory for all k6 cloud commands
+      (k6 cloud run, k6 cloud upload, k6 cloud run
+      --local-execution). Previously, omitting a stack would fall
+      back to the first available stack with a deprecation warning
+      — that fallback has been removed. Likewise, k6 cloud login
+      now requires both a token and a stack; passing one without
+      the other fails with an explicit error.
+      Migration: Run k6 cloud login which will ask you for the
+      stack and setup correctly for the new version of k6.
+      Alternatively, the K6_CLOUD_STACK_ID environment variable, or
+      the stackID script option are available to be set before
+      running any k6 cloud command .
+    - Removed legacy configuration file path migration #5609
+      k6 no longer automatically migrates configuration files from
+      the old {USER_CONFIG_DIR}/loadimpact/config.json path
+      introduced before k6 v1.0.0.
+      Migration: If you still have a config file at the old path,
+      move it to {USER_CONFIG_DIR}/k6/config.json. You can also
+      re-run k6 cloud login to regenerate the file at the correct
+      location.
+    - Cloud run non-threshold aborts now exit with code 97 #5769
+      Previously, most cloud abort scenarios returned an exit code
+      of 0, making it impossible for CI pipelines to distinguish a
+      failed run from a successful one. These scenarios now return
+      exit code 97.
+
+      Scenario 	                                                Before 	After
+      Finished 	                                                0 	0
+      Aborted by threshold 	                                    99 	99
+      Aborted by system, limit, script error, user, or timeout 	0 	97
+
+      Migration: Review any CI pipeline logic that treats exit code
+      0 as success for cloud runs. Cloud runs that abort for
+      reasons other than threshold violations will now return exit
+      code 97.
+    - Browser: FID metric removed, web vitals updated to v5.1.0 #5661
+      The browser_web_vital_fid metric has been removed. FID (First
+      Input Delay) was deprecated as a Core Web Vital and replaced
+      by INP (Interaction to Next Paint). The embedded web-vitals
+      library has been updated from v3 to v5.1.0, which reflects
+      this change.
+      Migration: Update any dashboards, alerts, or threshold rules
+      that reference browser_web_vital_fid to use
+      browser_web_vital_inp instead.
+    - Dropped easyjson in favor of stdlib encoding/json (new since
+      v2.0.0-rc1) #5853
+      k6 no longer uses easyjson for JSON serialization. Several
+      types in the public Go API previously had easyjson-generated
+      MarshalJSON/UnmarshalJSON methods; those are now gone,
+      replaced by stdlib encoding/json. This change was
+      intentionally held until v2 to avoid a breaking change
+      mid-cycle.
+      Migration: Extension authors who relied on easyjson-generated
+      methods on k6 types should remove those dependencies.
+      Standard encoding/json marshaling applies to all affected
+      types.
+    - HTTP API server no longer starts by default (new since
+      v2.0.0-rc1) #5876
+      The k6 HTTP API server no longer starts automatically.
+      Previously, k6 always listened on localhost:6565 unless opted
+      out. The server now only starts when an address is explicitly
+      provided via the --address flag or the K6_ADDRESS environment
+      variable.
+      Migration: If you use the k6 REST API, pass
+      --address=localhost:6565 (or any address) to re-enable the
+      server.
+
+-------------------------------------------------------------------
 Tue Mar 31 05:04:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.7.1:
