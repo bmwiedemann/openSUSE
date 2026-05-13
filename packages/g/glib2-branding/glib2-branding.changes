@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 01:20:33 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Update .gschema.override.in: fix key name typo of
+  monospace-font-name (bsc#1263043).
+
+-------------------------------------------------------------------
 Thu Mar  5 07:33:44 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
 
 - Make the key name and comments for

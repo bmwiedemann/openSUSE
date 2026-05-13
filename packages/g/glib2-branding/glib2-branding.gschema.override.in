@@ -59,8 +59,8 @@ tap-to-click = true
 @@IF_LEAP@@[org.gnome.desktop.interface]
 @@IF_SLE@@## Make SUSE Mono fonts default in SLE and Leap
 @@IF_LEAP@@## Make SUSE Mono fonts default in SLE and Leap
-@@IF_SLE@@monospace-font-family = "SUSE Mono 11"
-@@IF_LEAP@@monospace-font-family = "SUSE Mono 11"
+@@IF_SLE@@monospace-font-name = "SUSE Mono 11"
+@@IF_LEAP@@monospace-font-name = "SUSE Mono 11"
 
 [org.gnome.settings-daemon.plugins.housekeeping]
 ## To avoid popup warnings on default UEFI installation (bsc#919217)
