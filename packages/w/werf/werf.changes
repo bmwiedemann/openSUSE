@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 13 04:50:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.68.0:
+  * Features
+    - deploy: adopt chart ts init for werf (#7489) (63542e2)
+  * Bug Fixes
+    - compose: show docker compose config error instead of bare
+      exit code (6cc27d8)
+    - init docker config in InitCommonComponents when docker
+      registry is requested (#7488) (76ca703)
+    - propagate --docker-config to image pulling in bundle copy
+      (#7448) (c02babe)
+
+-------------------------------------------------------------------
 Tue Apr 21 16:44:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.67.2:
