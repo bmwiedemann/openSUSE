@@ -2673,4 +2673,13 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     pkgconfig(libcanberra-gtk3)</comment>
     <requestid>1350308</requestid>
   </revision>
+  <revision rev="289" vrev="3">
+    <srcmd5>e8a47fc9294f393b1c9680b8835d7692</srcmd5>
+    <version>50.1</version>
+    <time>1778685569</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-ibus-engine-race-condition-on-unlock.patch, Fix IBus input failure
+  after screen unlock</comment>
+    <requestid>1352551</requestid>
+  </revision>
 </revisionlist>

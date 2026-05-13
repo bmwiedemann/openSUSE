@@ -1,0 +1,69 @@
+From 39677c790df829c27debd599ef61e35d72cc12ca Mon Sep 17 00:00:00 2001
+From: Hillwood Yang <hillwood@opensuse.org>
+Date: Wed, 29 Apr 2026 21:24:02 +0800
+Subject: [PATCH] Fix IBus activation failure and source reset on unlock
+
+In GNOME 49+, the focus transition during the transition from the lock
+screen to the user session can cause IBus setEngine requests to be
+cancelled by the DBus daemon. This leads to the input method becoming
+unresponsive after unlock.
+
+Additionally, a synchronous reload during this chaotic focus state often
+causes the MRU (Most Recently Used) list to fail to restore correctly,
+resulting in the input source being reset to the first default item.
+
+This commit fixes these issues by:
+1. Keeping the synchronous reload() at the top level to maintain GDM
+   (Greeter) stability.
+2. Introducing a 200ms delay specifically for user session unlocks
+   (!Main.sessionMode.isGreeter) to re-trigger the activation of the
+   last used input source once the focus is stable.
+
+This ensures the input method is both functional and correctly selected
+immediately after unlocking.
+---
+ js/ui/status/keyboard.js | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/js/ui/status/keyboard.js b/js/ui/status/keyboard.js
+index 4f7471ef5a..216863bc20 100644
+--- a/js/ui/status/keyboard.js
++++ b/js/ui/status/keyboard.js
+@@ -716,6 +716,9 @@ export class InputSourceManager extends Signals.EventEmitter {
+         // the focus change caused by the switcher popup causing this purpose change.
+         if (this._switcherPopup)
+             return;
++
++        let isUnlock = false;
++
+         if (purpose === IBus.InputPurpose.PASSWORD) {
+             if (Object.keys(this._inputSources).length === Object.keys(this._ibusSources).length)
+                 return;
+@@ -728,8 +731,23 @@ export class InputSourceManager extends Signals.EventEmitter {
+             if (!this._disableIBus)
+                 return;
+             this._disableIBus = false;
++            isUnlock = true;
+         }
++
++        // Keep the synchronous reload at the top level.
++        // This is strictly required for the proper initialization of GDM (Greeter).
+         this.reload();
++
++        // FIX: Retry activation after unlock to bypass the DBus CANCELLED race condition.
++        // This ensures the current input source is properly reactivated once focus is stable,
++        // preventing it from resetting to the first item in the list.
++        if (isUnlock && !Main.sessionMode.isGreeter) {
++            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
++                if (this._mruSources && this._mruSources.length > 0)
++                    this._mruSources[0].activate(false);
++                return GLib.SOURCE_REMOVE;
++            });
++        }
+     }
+ 
+     _getNewInputSource(current) {
+-- 
+GitLab
+
+

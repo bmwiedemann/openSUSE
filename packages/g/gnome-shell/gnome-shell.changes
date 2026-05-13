@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  3 07:15:00 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-ibus-engine-race-condition-on-unlock.patch, Fix IBus input failure
+  after screen unlock 
+  
+-------------------------------------------------------------------
 Sun Apr 26 15:44:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Align BuildRequires with what meson setup checks for:

@@ -38,6 +38,8 @@ Source100:      noise-texture.png
 
 # PATCH-FIX-UPSTREAM gnome-shell-fix-cursor-on-hide-preedit.patch glgo#GNOME/gnome-shell!3318 alynx.zhou@suse.com -- Correctly reset cursor when hide preedit
 Patch1:         gnome-shell-fix-cursor-on-hide-preedit.patch
+# PATCH-FIX-UPSTREAM fix-ibus-engine-race-condition-on-unlock.patch hillwood@opensuse.org glgo#GNOME/gnome-shell!4202 -- Delay IBus reload on unlock to prevent race conditions
+Patch2:         fix-ibus-engine-race-condition-on-unlock.patch
 
 # PATCH-FEATURE-OPENSUSE -- Do not ask to launch gnome-tour; openSUSE handles the logic in opensuse-welcome-launcher
 Patch100:       gnome-shell-no-gnome-tour.patch
