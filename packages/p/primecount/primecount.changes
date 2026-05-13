@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun May 10 07:46:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-8.5 (API & ABI are backwards compatible).
+- ci.yml: Add FreeBSD GitHub Actions CI tests, GitHub#118.
+- PiTable.cpp: Annotate OpenMP barrier with nowait.
+- main.cpp: Set LLVM OpenMP environment variables to tune performance, GitHub#117.
+- CMakeLists.txt: Set WITH_DIV32=OFF by default to fix Clang-22 performance regression in the D algorithm.
+- CMakeLists.txt: Add support for building primecount as a shared library (primecount.dll) on Windows using MSVC.
+- CMakeLists.txt: Remove WITH_MSVC_CRT_STATIC option.
+- FactorTable.hpp: Fix 64-bit integer overflow.
+- CmdOptions.cpp: Validate alpha tuning factor command-line options.
+- calculator.hpp: Fix std::tolower() undefined behavior.
+- util.cpp: Improve get_time() precision.
+- StatusS2.cpp: Support use in lockfree code.
+- LoadBalancerS2.cpp: Use lockfree implementation, get rid of mutex, GitHub#116.
+- LoadBalancerAC.cpp: Use lockfree implementation, get rid of mutex, GitHub#116.
+- LoadBalancerP2.cpp: Use lockfree implementation, get rid of mutex, GitHub#116.
+- nth_prime.cpp: Use new nth_prime_sieve() implementation.
+- nth_prime_sieve.cpp: Improved multi-threading.
+- RiemannR.cpp: Add RiemannR(psi(x)) implementation.
+- CmdOptions.cpp: Add --RiemannR-psi & --RiemannR-psi-inverse.
+- README.md: Document --RiemannR-psi & --RiemannR-psi-inverse.
+- doc/primecount.txt: Add --RiemannR-psi & --RiemannR-psi-inverse.
+- doc/primecount.1: Add --RiemannR-psi & --RiemannR-psi-inverse.
+- test/nth_prime_sieve.cpp: Update nth_prime_sieve() test.
+- test/RiemannR_psi.cpp: New test for RiemannR(psi(x)) implementation.
+
+-------------------------------------------------------------------
 Sun Apr 05 12:30:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-8.4 (API & ABI are backwards compatible).
