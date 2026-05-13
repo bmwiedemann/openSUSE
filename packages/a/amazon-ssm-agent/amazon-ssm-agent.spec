@@ -25,6 +25,9 @@ Group:          System/Management
 URL:            https://github.com/aws/amazon-ssm-agent
 Source0:        https://github.com/aws/amazon-ssm-agent/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        amazon-ssm-agent.tmpfiles
+# PATCH-FIX-UPSTREAM - HTTP authentication credential leak when following redirects during smart-HTTP clone and fetch operations
+# Partial patch taken from https://github.com/go-git/go-git/pull/2004/changes/bcd20a9c525826081262a06a9ed9c3167abfcd53
+Patch0:         CVE-2026-41506.patch
 BuildRequires:  golang(API) >= 1.25.8
 BuildRequires:  pkgconfig(systemd)
 Requires:       systemd
@@ -96,6 +99,9 @@ environment that are configured for Systems Manager.
 
 %prep
 %setup -q
+pushd vendor/github.com/go-git/go-git/v5
+%patch -P0 -p1
+popd
 sed -i -e 's#const[ \s]*Version.*#const Version = "%{version}"#g' agent/version/version.go
 sed -i 's#/bin/#/sbin/#' packaging/linux/amazon-ssm-agent.service
 sed -i 's#var defaultWorkerPath = "/usr/bin/"#var defaultWorkerPath = "/usr/sbin/"#' agent/appconfig/constants_unix.go

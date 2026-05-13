@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 10:44:03 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add CVE-2026-41506.patch to fix HTTP authentication credential
+  leak when following redirects during smart-HTTP clone and fetch
+  operations (bsc#1264952, CVE-2026-41506)
+
+-------------------------------------------------------------------
 Thu Apr 23 07:05:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.4268.0

@@ -617,4 +617,14 @@
   * Make Greengrass component registration resilient with retry (forwarded request 1348883 from glaubitz)</comment>
     <requestid>1348913</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>045d8d150f35ae2153885f8fc1366075</srcmd5>
+    <version>3.3.4268.0</version>
+    <time>1778685641</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-41506.patch to fix HTTP authentication credential
+  leak when following redirects during smart-HTTP clone and fetch
+  operations (bsc#1264952, CVE-2026-41506) (forwarded request 1352715 from glaubitz)</comment>
+    <requestid>1352892</requestid>
+  </revision>
 </revisionlist>
