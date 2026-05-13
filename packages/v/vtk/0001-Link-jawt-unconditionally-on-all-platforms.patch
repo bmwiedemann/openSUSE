@@ -1,0 +1,43 @@
+From 0000000000000000000000000000000000000001 Mon Sep 17 00:00:00 2001
+From: Vicente Bolea <vicente.bolea@gmail.com>
+Date: Mon, 05 May 2026 16:22:00 -0400
+Subject: [PATCH] Link jawt unconditionally on all platforms
+
+Modern linkers on Linux reject undefined references in shared libraries.
+JAWT_GetAWT is called directly in vtkJavaAwt.h so libjawt must be linked
+explicitly rather than relying on runtime resolution.
+---
+ Utilities/Java/CMakeLists.txt | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
+
+--- a/Utilities/Java/CMakeLists.txt
++++ b/Utilities/Java/CMakeLists.txt
+@@ -24,19 +24,13 @@
+     ${JAVA_JVM_LIBRARY}
+ )
+ 
+-# On Windows and macOS, we need to link against jawt for JAWT_GetAWT.
+-# On Linux, avoid linking against AWT libraries - linking against
+-# JAVA_AWT_LIBRARY causes early loading of libawt_xawt.so which fails with
+-# "undefined symbol: JNU_ThrowNoSuchFieldError" on some JDK versions because
+-# the JVM's internal symbols aren't yet available. JAWT is loaded dynamically
+-# at runtime on Linux.
+-if (APPLE OR NOT UNIX)
+-  if (JAVA_AWT_LIBRARY)
+-    vtk_module_link(VTK::Java
+-      PUBLIC
+-        ${JAVA_AWT_LIBRARY}
+-    )
+-  endif ()
++# Link against jawt for JAWT_GetAWT on all platforms. Modern linkers on Linux
++# reject undefined references in shared libraries, so libjawt must be explicit.
++if (JAVA_AWT_LIBRARY)
++  vtk_module_link(VTK::Java
++    PUBLIC
++      ${JAVA_AWT_LIBRARY}
++  )
+ endif ()
+ 
+ if (NOT VTK_ABI_NAMESPACE_NAME STREQUAL "<DEFAULT>" AND NOT DEFINED ENV{CI})
+--
+2.43.0

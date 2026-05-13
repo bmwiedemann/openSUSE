@@ -1,7 +1,7 @@
 #
 # spec file for package vtk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -103,9 +103,9 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.5.2
+Version:        9.6.1
 Release:        0
-%define series  9.5
+%define series  9.6
 Summary:        The Visualization Toolkit - A high level 3D visualization library
 # This is a variant BSD license, a cross between BSD and ZLIB.
 # For all intents, it has the same rights and restrictions as BSD.
@@ -123,14 +123,16 @@ Patch7:         0001-Add-missing-guard-required-for-GLES-to-disable-stere.patch
 Patch8:         0001-Correct-GL_BACK-GL_BACK_LEFT-mapping-on-GLES.patch
 # PATCH-FIX-UPSTREAM -- Fix building with Qt GLES builds
 Patch9:         0002-Use-GL_DRAW_BUFFER0-instead-of-GL_DRAW_BUFFER-for-GL.patch
-# PATCH-FIX-UPSTREAM -- Always create python package metadata (egg-info)
+# PATCH-FIX-UPSTREAM -- Always generate Python Metadata when WRAP_PYTHON is active
 Patch17:        0001-Always-generate-Python-Metadata-when-WRAP_PYTHON-is-.patch
-# PATCH-FIX-UPSTREAM -- Copy generated metadata to the right directory
+# PATCH-FIX-OPENSUSE -- Place Python metadata files alongside vtkmodules so setup.py can be run without PYTHONPATH tricks
 Patch18:        0001-Consider-VTK_PYTHON_SITE_PACKAGES_SUFFIX-for-Python-.patch
 # PATCH-FIX-UPSTREAM
 Patch19:        0001-Add-missing-libm-link-library-for-bundled-ExodusII.patch
 # PATCH-FIX-OPENSUSE
 Patch20:        0001-Fix-missing-GLAD-symbol-mangling-in-Rendering-GL2PSO.patch
+# PATCH-FIX-OPENSUSE -- Link jawt unconditionally; modern linkers reject undefined refs
+Patch21:        0001-Link-jawt-unconditionally-on-all-platforms.patch
 BuildRequires:  cgns-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.12
@@ -537,6 +539,7 @@ export CXXFLAGS="%{optflags}"
     -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=%{?with_nlohmann:ON}%{!?with_nlohmann:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=%{?with_system_pegtl:YES}%{!?with_system_pegtl:NO} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_scn:BOOL=OFF \
     -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite:BOOL=ON \
     -DVTK_MODULE_USE_EXTERNAL_VTK_token:BOOL=OFF \
     -DVTK_MODULE_USE_EXTERNAL_VTK_verdict=%{?with_verdict:ON}%{!?with_verdict:OFF} \
@@ -618,7 +621,8 @@ mkdir -p %{buildroot}%{_licensedir}
 mv %{buildroot}%{my_datadir}/licenses/VTK %{buildroot}%{_licensedir}/%{name}
 
 %if ! %{with mpi}
-# Generate and install python distribution metadata
+# Generate and install python distribution metadata.
+# setup.py and vtk_features.py are generated alongside vtkmodules by Patch18.
 pushd build/%{_lib}/python%{python3_version}/site-packages/
 python3 setup.py install_egg_info -d %{buildroot}%{python3_sitearch}
 popd
@@ -673,6 +677,7 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 # Should go into java-devel, but referenced by VTK-targets*.cmake
 %{my_bindir}/%{pkgname}WrapJava
 %{my_bindir}/%{pkgname}ParseJava
+%{my_bindir}/%{pkgname}WrapJavaScript
 %{my_bindir}/%{pkgname}WrapPython
 %{my_bindir}/%{pkgname}WrapPythonInit
 %{my_bindir}/%{pkgname}WrapSerDes

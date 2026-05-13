@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri May  8 00:00:00 UTC 2026 - Vicente Adolfo Bolea Sanchez <vicente.bolea@kitware.com>
+
+- Update to version 9.6.1, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/v9.6.1/Documentation/release/9.6.md
+- Notable changes relevant to Linux packaging:
+  * Add Wayland backend for vtkEGLRenderWindow (VTK_USE_WAYLAND_OPENGL)
+  * Add Python free-threading support (PEP 703, Python 3.13+)
+  * VTK_LEGACY_REMOVE is now ON by default
+  * h5Part replaced by h5hut 2.0.0; double-conversion removed in favor of fmt
+  * hdf5 updated to 1.14.6, netCDF to 4.9.3, fmt to 12.1.0
+- Add patches:
+  * 0001-Link-jawt-unconditionally-on-all-platforms.patch:
+    Remove the Linux exclusion for linking libjawt. Modern ELF
+    linkers reject undefined references in shared libraries, so
+    libjawt must be linked explicitly on Linux as well.
+- Changed patches:
+  * 0001-Always-generate-Python-Metadata-when-WRAP_PYTHON-is-.patch:
+    Rebased for VTK 9.6.1. Moves Python metadata file generation
+    (setup.py, MANIFEST.in, LICENSE, README.md) from
+    vtkWheelPreparation.cmake into a new vtkPythonMetadata.cmake
+    included whenever VTK_WRAP_PYTHON is ON.
+  * 0001-Consider-VTK_PYTHON_SITE_PACKAGES_SUFFIX-for-Python-.patch:
+    Rebased for VTK 9.6.1. Generates setup.py, vtk_features.py and
+    requirements*.txt into ${CMAKE_BINARY_DIR}/${VTK_PYTHON_SITE_PACKAGES_SUFFIX}/
+    so they are co-located with the vtkmodules directory, allowing
+    setup.py install_egg_info to run without PYTHONPATH workarounds.
+- Use bundled scn library (VTK_MODULE_USE_EXTERNAL_VTK_scn=OFF);
+  scn 4.0.0 is not yet available as a system package.
+
+-------------------------------------------------------------------
 Wed Dec 19 19:54:00 UTC 2025 - Vicente Adolfo Bolea Sanchez <vicente.bolea@kitware.com>
 
 - Enable modules needed for ParaView to build using external VTK.
