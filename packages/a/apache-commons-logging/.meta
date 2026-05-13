@@ -11,6 +11,5 @@ the two, and to allow a developer to not tie himself to a particular
 logging implementation.
 
 </description>
-  <devel project="Java:packages" package="apache-commons-logging"/>
   <url>http://commons.apache.org/logging/</url>
 </package>

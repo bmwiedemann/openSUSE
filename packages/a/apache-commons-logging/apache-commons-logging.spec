@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-logging
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,17 +20,16 @@
 %define base_name  logging
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        Apache Commons Logging
 License:        Apache-2.0
 URL:            https://commons.apache.org/%{base_name}
 Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Source1:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
-Source2:        %{name}.keyring
+Source2:        https://downloads.apache.org/commons/KEYS#/%{name}.keyring
 Source5:        build.xml
 Source6:        build.properties
-Patch0:         commons-logging-1.3.3-dependencies.patch
 BuildRequires:  ant
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
@@ -55,14 +54,16 @@ the two, and to allow a developer to not tie himself to a particular
 logging implementation.
 
 %prep
-%autosetup -p1 -n %{short_name}-%{version}-src
+%setup -q -n %{short_name}-%{version}-src
 
 cp %{SOURCE5} build.xml
 cp %{SOURCE6} build.properties
 
-sed -i 's/\r//' RELEASE-NOTES.txt LICENSE.txt
+rm \
+    src/main/java/org/apache/commons/logging/impl/Log4jApiLogFactory.java \
+    src/main/java/org/apache/commons/logging/impl/Slf4jLogFactory.java
 
-%pom_remove_parent .
+sed -i 's/\r//' RELEASE-NOTES.txt LICENSE.txt
 
 %build
 export MAVEN_REPO_LOCAL=$(pwd)/.m2/repository
