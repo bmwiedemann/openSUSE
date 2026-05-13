@@ -841,4 +841,13 @@
   yuv2ya16_X_c_template() (bsc#1255392, CVE-2025-63757).</comment>
     <requestid>1327349</requestid>
   </revision>
+  <revision rev="92" vrev="12">
+    <srcmd5>85d1c195d3bb8baa483a2e7879a63dcb</srcmd5>
+    <version>4.4.6</version>
+    <time>1778687614</time>
+    <user>anag_factory</user>
+    <comment>- Add ffmpeg-4-CVE-2026-40962.patch: Use 64bit in CENC subsample
+  bounds checks. (CVE-2026-40962, bsc#1262237)</comment>
+    <requestid>1353058</requestid>
+  </revision>
 </revisionlist>
