@@ -17,7 +17,7 @@
 
 
 Name:           pinact
-Version:        3.9.2
+Version:        3.10.0
 Release:        0
 Summary:        CLI to edit GitHub Workflows and pin versions of Actions and Reusable Workflows
 License:        MIT
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.26 >= 1.26.2
+BuildRequires:  go1.26 >= 1.26.3
 BuildRequires:  zsh
 
 %description

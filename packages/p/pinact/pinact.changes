@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed May 13 11:29:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.10.0:
+  * Features
+    - #1530 Support pinning branches to latest stable tags by the
+      --branch-to-tag option
+      The default behabiour isn't changed.
+      By default, pinact doesn't pin branches such as main or
+      master.
+      If you want to pin specific branches, you can use the
+      --branch-to-tag option.
+      e.g.
+
+        pinact run --branch-to-tag '^main$' --branch-to-tag '^release/.*$'
+
+  * Dependencies
+    - fix(deps): update module github.com/urfave/cli/v3 to v3.9.0
+      (#1528)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.511.1 (#1527)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.511.0 (#1526)
+    - chore(deps): update dependency crate-ci/typos to v1.46.1
+      (#1525)
+    - fix(deps): update module github.com/google/go-github/v85 to
+      v86 (#1524)
+    - chore(deps): update go module directive to v1.26.3 (#1523)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.12.2 (#1522)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.510.0 (#1521)
+    - chore(deps): update dependency aquaproj/aqua to v2.58.1
+      (#1520)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.509.0 (#1519)
+    - chore(deps): update dependency mvdan/gofumpt to v0.10.0
+      (#1518)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.508.0 (#1517)
+    - chore(deps): update dependency goreleaser/goreleaser to
+      v2.15.4 (#1516)
+    - chore(deps): update dependency aquaproj/aqua to v2.58.0
+      (#1515)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.507.0 (#1514)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.12.1 (#1513)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.12.0 (#1510)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.506.0 (#1512)
+    - chore(deps): update dependency anchore/syft to v1.44.0
+      (#1511)
+    - chore(deps): update dependency crate-ci/typos to v1.46.0
+      (#1509)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.505.0 (#1506)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.504.0 (#1505)
+    - chore(deps): update suzuki-shunsuke/go-release-workflow
+      action to v8 (#1504)
+    - chore(deps): update dependency suzuki-shunsuke/ghalint to
+      v1.5.6 (#1502)
+    - chore(deps): update suzuki-shunsuke/go-test-full-workflow
+      action to v5.0.2 (#1503)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.503.0 (#1501)
+    - chore(deps): update dependency crate-ci/typos to v1.45.2
+      (#1500)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.502.0 (#1499)
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.501.0 (#1498)
+    - chore(deps): update dependency suzuki-shunsuke/pinact to
+      v3.9.2 (#1497)
+
+-------------------------------------------------------------------
 Thu Apr 30 05:49:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.9.2:
