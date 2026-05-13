@@ -199,4 +199,22 @@
     <comment></comment>
     <requestid>1339283</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>db916bd6e3030774d2636abcd86c5c82</srcmd5>
+    <version>0.6.2</version>
+    <time>1778685587</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to 0.6.2
+  + Update the SBAT offset boundary check (bsc#1265042)
+
+- Update to 0.6.1
+  + Advance the comparison event pointer after comparison
+  + Partially support shim extra files
+  + Locate shim extra files
+  + Synthesize shim extra events
+  + Fix various issues from review by Claude Code and introduce
+    adversarial testing</comment>
+    <requestid>1352942</requestid>
+  </revision>
 </revisionlist>

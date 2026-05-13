@@ -1,7 +1,7 @@
 #
 # spec file for package pcr-oracle
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           pcr-oracle
-Version:        0.6.0
+Version:        0.6.2
 Release:        0
 Summary:        Predict TPM PCR values
 License:        GPL-2.0-or-later

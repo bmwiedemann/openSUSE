@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 13 06:20:47 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.6.2
+  + Update the SBAT offset boundary check (bsc#1265042)
+
+-------------------------------------------------------------------
+Tue May 12 02:15:52 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.6.1
+  + Advance the comparison event pointer after comparison
+  + Partially support shim extra files
+  + Locate shim extra files
+  + Synthesize shim extra events
+  + Fix various issues from review by Claude Code and introduce
+    adversarial testing
+
+-------------------------------------------------------------------
 Mon Mar 16 08:14:36 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.6.0
