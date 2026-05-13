@@ -69,4 +69,30 @@
   * Ignore DeprecationWarning about asyncio event loop policies.</comment>
     <requestid>1317762</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>391a94b18e47d1ea2a0c5a36a629975f</srcmd5>
+    <version>1.6.0</version>
+    <time>1778685510</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6.0:
+  ## Features
+  * #206: Add fp.regex() for regex-based command argument matching.
+  * #103: Improve matching commands that contain quoted arguments.
+  ## Bug fixes
+  * #207: Fix poll() not reflecting returncode when a callback is registered.
+  * #205: Fix stdin not respecting text mode when text=True or encoding is
+    set.
+  * #192: Fix ResourceWarning for unclosed file handles in
+    test_universal_newlines and test_text by explicitly closing
+    process.stdout after reading, preventing intermittent failures on
+    Python 3.12+.
+  * #196: Handle stderr=STDOUT when stdout is a file handle.
+  * #194: Patch imported subprocess.Popen aliases.
+  * #186: Support file handles in stdout and stderr.
+  ## Other changes
+  *  #197: Officially support Python 3.14 and 3.15.
+- Drop patch py314-fix-tests.patch, merged upstream.
+- Drop unneeded _service file.</comment>
+    <requestid>1352635</requestid>
+  </revision>
 </revisionlist>
