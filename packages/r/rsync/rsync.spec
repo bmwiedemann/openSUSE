@@ -1,7 +1,7 @@
 #
 # spec file for package rsync
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,9 @@ Patch6:         rsync341-gcc15-bool.patch
 # bsc#1254441, CVE-2025-10158: rsync: Out of bounds array access via negative index
 # https://github.com/RsyncProject/rsync/commit/797e17fc4a6f15e3b1756538a9f812b63942686f
 Patch7:         rsync-CVE-2025-10158.patch
+# bsc#1262223, CVE-2026-41035: rsync: count of entries mismatch can lead to a use-after-free
+# https://github.com/RsyncProject/rsync/pull/875
+Patch8:         rsync-CVE-2026-41035.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler

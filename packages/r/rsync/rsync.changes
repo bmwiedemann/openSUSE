@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 07 16:06:15 UTC 2026 - David Anes <david.anes@suse.com>
+
+- Security update (CVE-2026-41035, bsc#1262223): rsync: count of 
+  entries mismatch can lead to a use-after-free
+  - Add rsync-CVE-2026-41035.patch
+
+-------------------------------------------------------------------
 Tue Dec 16 12:40:48 UTC 2025 - David Anes <david.anes@suse.com>
 
 - Security update (CVE-2025-10158, bsc#1254441): rsync: Out of
