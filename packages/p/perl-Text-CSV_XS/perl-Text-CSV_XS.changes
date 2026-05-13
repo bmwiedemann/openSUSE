@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 30 07:42:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.620.0 (1.62)
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.62	- 2026-04-29, H.Merijn Brand
+      * It is 2026
+      * Fix possible stack corruption (thanks leont) (issue 65)
+        Fixes CVE-2026-7111
+        bsc#1263690
+
+-------------------------------------------------------------------
 Wed Aug 13 13:00:44 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 1.610.0 (1.61)
