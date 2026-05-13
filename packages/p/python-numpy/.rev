@@ -1462,4 +1462,21 @@ This was now merged upstream, so I added relevant metadata
   %python_flavored_alternatives</comment>
     <requestid>1341130</requestid>
   </revision>
+  <revision rev="145" vrev="3">
+    <srcmd5>048465e0778dbf744d8540a4220f30ea</srcmd5>
+    <version>2.4.3</version>
+    <time>1774469850</time>
+    <user>anag_factory</user>
+    <comment>- Add custom code for copy binaries for tests, the python-rpm-macros
+  doesn't provide all the needed binaries automatically.</comment>
+    <requestid>1342383</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>d6b76d2426a8589539dd11c0addb34e5</srcmd5>
+    <version>2.4.4</version>
+    <time>1778685531</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1352728</requestid>
+  </revision>
 </revisionlist>

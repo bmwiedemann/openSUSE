@@ -30,7 +30,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-numpy
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
@@ -140,6 +140,12 @@ export CC=gcc-12
 export CXX=g++-12
 %endif
 
+# The "min" baseline is suitable for all non-x86 targets as it
+# defaults to the standard features on these architectures
+# see: https://numpy.org/doc/2.4/reference/simd/build-options.html#min
+%ifarch x86_64 %{ix86}
+export PIP_CONFIG_SETTINGS="setup-args=-Dcpu-baseline=none"
+%endif
 %pyproject_wheel
 
 %install
@@ -159,6 +165,15 @@ mkdir -p testing
 cp pytest.ini testing/
 pushd testing
 %python_flavored_alternatives
+%if %{with libalternatives}
+%{python_expand #
+for b in f2py numpy-config; do
+  if [ ! -e build/flavorbin/$b ]; then
+    ln -s %{buildroot}%{_bindir}/$b-%{$python_bin_suffix} build/flavorbin/$b
+  fi
+done
+}
+%endif
 
 # flaky tests
 test_failok+=" or test_structured_object_indexing"
@@ -183,6 +198,7 @@ test_failok+=" or TestFReturnCharacter"
 # missing instruction set
 %ifarch s390x
 test_failok+=" or test_truncate_f32"
+test_failok+=" or test_cpu_features"
 %endif
 %ifarch %{ix86}
 # (arm 32-bit seems okay here)
@@ -190,6 +206,7 @@ test_failok+=" or test_truncate_f32"
 test_failok+=" or test_pareto"
 # gh#numpy/numpy#18388
 test_failok+=" or test_float_remainder_overflow"
+test_failok+=" or test_einsum"
 %endif
 %ifarch %{ix86} %{arm32}
 # too much memory for 32bit

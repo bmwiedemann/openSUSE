@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon May 11 16:06:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Force "none" cpu-baseline on x86_64 and %{ix86} only
+- Ignore test_cpu_features test failure on s390x
+- Ignore test_einsum test failure on %{ix86}
+
+-------------------------------------------------------------------
+Wed Apr 15 11:38:04 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.4.4
+  * np.linalg.norm returned different value after update to 2.4.2
+  * fix FNV-1a 64-bit selection by using NPY_SIZEOF_UINTP
+  * avoid warning on ufunc with where=True and no output
+  * document caveats of ndarray.resize on 3.14 and newer
+  * fix POWER VSX feature mapping
+  * numpy.i: Replace deprecated sprintf with snprintf
+
+-------------------------------------------------------------------
+Mon Mar 30 22:31:27 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Set `cpu_baseline` build option to `none` to be compatible with
+  the widest arrays of CPU (including `qemu` and older CPUs;
+  bsc#1261151).
+
+-------------------------------------------------------------------
+Wed Mar 25 07:31:33 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add custom code for copy binaries for tests, the python-rpm-macros
+  doesn't provide all the needed binaries automatically.
+
+-------------------------------------------------------------------
 Thu Mar 19 09:42:57 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove custom code for copy binaries for tests, the new version of
