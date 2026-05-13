@@ -335,4 +335,12 @@
     <comment>- Add missing %verify(not caps) (boo#1263098) (forwarded request 1350947 from Vogtinator)</comment>
     <requestid>1350949</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9cb0d070187a5903b6e1d95dfb48608b</srcmd5>
+    <version>6.6.5</version>
+    <time>1778701070</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.6.5 (forwarded request 1352821 from Vogtinator)</comment>
+    <requestid>1352854</requestid>
+  </revision>
 </revisionlist>
