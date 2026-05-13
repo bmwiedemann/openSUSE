@@ -18,7 +18,7 @@
 
 
 Name:           mediainfo
-Version:        26.01
+Version:        26.05
 Release:        0
 Summary:        Audio/video file technical and tag information utility
 License:        GPL-2.0-or-later
@@ -150,7 +150,10 @@ gzip -n -9 History_*.txt
 %dir %{_datadir}/apps
 %dir %{_datadir}/apps/konqueror
 %dir %{_datadir}/apps/konqueror/servicemenus
+%dir %{_datadir}/kio
+%dir %{_datadir}/kio/servicemenus
 %{_datadir}/apps/konqueror/servicemenus/*.desktop
+%{_datadir}/kio/servicemenus/*.desktop
 %{_kf5_servicesdir}/ServiceMenus/*.desktop
 
 %changelog
