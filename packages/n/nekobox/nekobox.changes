@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 13 09:36:41 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.11.15
+- Improve RouteProfile import/export
+- Fix bug related to default outbound in RouteProfiles
+
+-------------------------------------------------------------------
+Tue May 12 13:27:17 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.11.14
+- Improve group updater
+- Replace lmdb with leveldb
+- Add kcp v2ray transport
+- Fix nekoray links
+
+-------------------------------------------------------------------
 Tue May  5 17:04:29 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.11.8

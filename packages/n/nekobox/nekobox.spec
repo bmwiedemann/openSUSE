@@ -17,7 +17,7 @@
 %define debug_package %{nil}
 %define core nekobox_core
 Name:           nekobox
-Version:        5.11.8
+Version:        5.11.15
 Release:        0%{?autorelease}
 Summary:        Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 License:        GPL-3.0-only
@@ -28,6 +28,8 @@ Source2:        nekobox-core.spec.in
 
 %if 0%{?suse_version} > 0
 BuildRequires:  patchelf
+BuildRequires:  ccache
+BuildRequires:  libboost_filesystem-devel
 %else
 BuildRequires:  (chrpath or patchelf)
 %endif
@@ -39,7 +41,7 @@ BuildRequires:  libacl-devel
 BuildRequires:  lmdb-devel
 BuildRequires:  thrift
 BuildRequires:  (libboost-devel or boost-devel)
-BuildRequires:  (libthrift-devel or thrift-devel)
+BuildRequires:  pkgconfig(thrift)
 BuildRequires:  (ninja or ninja-build)
 BuildRequires:  cmake(Qt6)
 BuildRequires:  cmake(Qt6Core)
@@ -49,6 +51,9 @@ BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  cmake(yaml-cpp)
+BuildRequires:  cmake(leveldb)
+BuildRequires:  cmake(Snappy)
 BuildRequires:  gcc-c++
 %bcond cpr 0%{?cpr_available}
 
@@ -74,11 +79,6 @@ Requires:       %{name}-qt = %{version}
 
 %if %{with upx}
 BuildRequires: upx
-%endif
-
-%if 0%{?suse_version} > 0
-BuildRequires:  ccache
-BuildRequires:  libboost_filesystem-devel
 %endif
 
 %files
@@ -110,9 +110,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n nekobox-unified-source-%{version}
-%if 0%{?suse_version} > 0
-rm res/public/emoji.ttf
-%endif
 
 %{?!%__builddir:%define __builddir %__cmake_builddir}
 %{?!%__cmake_builddir:%define __cmake_builddir build}
@@ -173,5 +170,6 @@ done
 %endif
 
 %changelog
+
 
 
