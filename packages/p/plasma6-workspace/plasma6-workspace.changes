@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue May 12 14:00:32 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.5
+- Changes since 6.6.4:
+  * Update version for new release 6.6.5
+  * applets/kicker: show separator after service runner Recent Files (kde#518978)
+  * kcms/font: Make buttons accessible (kde#519471)
+  * runners/helprunner: Fix broken icon and text
+  * xembedsniproxy: fix icon transparency
+  * libkworkspace: Handle new states from logind (kde#518174)
+  * ktimezoned.cpp: Fix what appears a copy-paste error
+  * appiumtests: fix race condition in mediacontrollertest MPRIS player
+  * appiumtests: fix D-Bus Properties Get return type in mediacontrollertest
+  * appiumtests: fix unstable D-Bus activated plasmoid test in CI
+  * kcms/soundtheme: Use on(Double)Clicked from GridDelegate instead of custom TapHandler
+  * logout: Fix broken text legiblity with themes like Air and Breeze Light (kde#518001)
+  * klipper: always set clipboard when moving entry to top (kde#514095)
+  * SourcesPage: Fix sourceDelegate padding calculations
+  * kcms/region_language: fix locale suffix matching (kde#518878)
+  * applets/systemtray: Fix scroll orientation string case mismatch
+  * applets/notifications: fix null-guard bugs in Globals.qml (kde#519046)
+  * Fix kde_output_device_v2 bind version in devicenotifications
+  * libclock: Fix stale transition metadata on timezone change
+  * applets/activitybar: import Kirigami
+  * libclock: fix lockscreen timezone init race on multi-screen
+- Drop patches, now upstream:
+  * 0001-libkworkspace-Handle-new-states-from-logind.patch
+
+-------------------------------------------------------------------
 Sat May  9 21:31:00 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to support systemd 260 power handling (kde#518174):
