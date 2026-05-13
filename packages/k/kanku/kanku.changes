@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  4 14:03:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add BuildConflicts: udev-mini: due to us pulling in
+  libvirt-daemon, and that in turn relying on systemd-containers,
+  we need to guard against systemd-mini/udev-mini.
+
+-------------------------------------------------------------------
 Tue Mar 18 09:31:11 UTC 2025 - Frank Schreiner <fschreiner@suse.de>
 
  - Update to version 1.0.0:

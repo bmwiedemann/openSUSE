@@ -32,6 +32,7 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  perl-macros
 BuildRequires:  systemd-rpm-macros
+#!BuildConflicts: udev-mini
 
 %if 0%{?suse_version}
 BuildRequires:  sysuser-tools
