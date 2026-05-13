@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed May 13 13:26:14 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.5.1:
+  * fix: add trackFailOnError option to control kubedog exit code by
+    @yxxhero in #2576
+  * docs: update helmfile skill to reflect v1.1 documentation by
+    @yxxhero in #2577
+  * fix(state): resolve OCI repo prefix in ad-hoc release
+    dependencies by @dschmidt in #2579
+  * feat(state): add mergeStrategy: fallback for first-file-wins env
+    values by @dschmidt in #2578
+  * Expose internal apis by @ceriath in #2520
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.100.1 to 1.101.0 by @dependabot[bot] in #2581
+  * chore: Deduplicate preparation code of sync and apply by
+    @ceriath in #2523
+  * build(deps): bump gitpython from 3.1.47 to 3.1.49 in /docs by
+    @dependabot[bot] in #2582
+  * chore: Emit "cleanup" events later to match the behavior in
+    "apply" by @ceriath in #2522
+  * build(deps): bump golang.org/x/term from 0.42.0 to 0.43.0 by
+    @dependabot[bot] in #2584
+  * build(deps): bump gitpython from 3.1.49 to 3.1.50 in /docs by
+    @dependabot[bot] in #2585
+  * fix: template helmDefaults.postRendererArgs with release data
+    by @yxxhero in #2583
+
+-------------------------------------------------------------------
 Wed May  6 15:40:29 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.5.0:
