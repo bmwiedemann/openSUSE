@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May 13 08:50:12 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Allow checking if a bootloader type is BLS-compliant (related to
+  jsc#PED-10703).
+- 5.0.45
+
+-------------------------------------------------------------------
+Tue May 12 15:58:21 UTC 2026 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- New BlsEfi strategy to be used by Agama to create partitions for
+  booting in a way that is compliant to the BLS specification
+  (related to jsc#PED-10703).
+- 5.0.44
+
+-------------------------------------------------------------------
+Tue May 12 15:49:27 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Add TPM BLS encrytion method (related to jsc#PED-10703).
+
+-------------------------------------------------------------------
 Mon May  4 11:06:16 UTC 2026 - José Iván López González <jlopez@suse.com>
 
 - Add device parameter to EncryptionProcess#finish_installation
