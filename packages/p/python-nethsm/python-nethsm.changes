@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 13 04:47:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.1.1:
+  * Bugfixes
+    - Fix endpoint path in NetHSM.set_cluster_ca_certificate
+
+-------------------------------------------------------------------
 Fri Mar 27 11:47:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.1.0:

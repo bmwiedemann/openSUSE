@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nethsm
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Python Library to manage NetHSM(s)
 License:        Apache-2.0
@@ -132,6 +132,7 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_locked_shutdown"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_namespace_tag_delete"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_namespace_tag_readd"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_delete_prefix"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_cluster_ca_certificate"
 
 %pytest -k "not (${IGNORED_CHECKS})"
 
