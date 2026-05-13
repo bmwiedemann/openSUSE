@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Wed May 13 08:18:33 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.0.1:
+  * QR import (file picker and webcam) no longer duplicates pre-
+    existing tokens (#435). Root cause: data_to_add was not cleared
+    after update_db, so subsequent imports re-merged the entire
+    list.
+  * Set Group / Remove from Group / New Group act on the right
+    token when a group filter or column sort is active (#437).
+  * Token actions — delete, edit, show QR, move to database, HOTP
+    increment — act on the right token when a filter or column sort
+    is active. Same root cause as #437: bare selection position was
+    used as a JSON index, ignoring the filter+sort offset.
+  * Clicking a database row in the sidebar now actually loads that
+    database (#436). The selection callback was an empty stub left
+    over from the AdwOverlaySplitView refactor.
+  * The sidebar now distinguishes the default database (loaded on
+    startup, marked with a star) from the currently open database
+    (shown in bold).
+  * Creating or opening an additional database no longer overrides
+    which one loads on startup — that's now controlled exclusively
+    by right-click → Set as Primary. Previously, every new or
+    opened database silently became the default.
+  * Set as Primary now persists across restarts. The startup
+    sidebar repopulation was clobbering the saved choice with
+    whichever database happened to be added to the list first.
+
+-------------------------------------------------------------------
+Fri May  8 12:23:26 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.0.0:
+  First stable release of the GTK4 / libadwaita rewrite, with
+  multi-database support, token grouping, an opt-in trigger
+  keyword for the desktop search provider, and a sweeping
+  crypto and import-path hardening pass. Existing v2 databases
+  unlock and migrate automatically.
+
+  Features
+    * Complete GUI rewrite on GTK4 + libadwaita.
+    * Persistent multi-database support with sidebar and
+      right-click "Move to..." between databases.
+    * Token grouping with header-bar dropdown and "group:" /
+      "#" search prefix; groups round-trip through Aegis,
+      AuthPro and 2FAS.
+    * Cross-database search with auto-select-and-copy on a
+      single result.
+    * Hidden-by-default OTPs with click-to-reveal and
+      auto-hide.
+    * Async unlock with KDF spinner.
+    * Search-provider trigger keyword (default "otp");
+      KRunner subtitle no longer leaks live codes; activation
+      copies the OTP.
+    * Settings -> Backup is the unified entry point for
+      native (encrypted) backup and restore; format-specific
+      export becomes migration-only with a plaintext warning.
+    * Settings import/export, Welcome and What's New
+      dialogs, KDF presets, paste-to-fill otpauth:// URI,
+      backup-age banner, lock-time clipboard wipe.
+    * Scriptable CLI output (--output=table|json|csv),
+      translated CLI strings, --list-databases, HOTP counter
+      in CSV, bash/zsh/fish completions.
+    * Native StatusNotifierItem tray
+      (libayatana-appindicator dependency removed).
+
+  Security
+    * Argon2id header validation refuses out-of-bounds
+      parameters on unlock.
+    * KDF byte-length fix: gcry_kdf_* was passed character
+      count instead of byte count, weakening keys for
+      non-ASCII passwords; transparent retry plus
+      opportunistic re-encryption on the next write.
+    * O_NOFOLLOW + fstat S_ISREG on every importer and
+      database read site, closing the symlink-swap TOCTOU
+      window.
+    * 0600 mode on backup files; PR_SET_DUMPABLE=0 +
+      RLIMIT_CORE=0 to suppress core dumps.
+    * AEAD validation tightened across decrypt paths; 2FAS
+      no longer accepts plaintext on tag mismatch.
+    * Search provider refuses every D-Bus method when the
+      keyword is empty (closes arbitrary local enumeration
+      of accounts).
+    * otpauth:// URI capped at 4 KB, HOTP counter capped at
+      2^48, PNG QR capped at 4096x4096, settings import
+      capped at 1 MiB.
+    * Signal-safe clipboard wipe on SIGINT/SIGTERM/SIGHUP;
+      CLI --password-file refuses group/world-readable
+      files; secret service disabled by default.
+    * HOTP counter increment is transactional (rolled back
+      if save fails).
+
+  Fixes
+    * NULL-deref crashes across Aegis, AuthPro, 2FAS,
+      FreeOTP+ and otpauth importers on malformed input.
+    * Use-after-free in async secret lookup; double-free of
+      filter_model in window dispose; DBus assertion on
+      exit.
+    * Notification spam during store rebuilds and search-bar
+      close.
+    * Window size and group dropdown restored across
+      sessions; schema and icon cache updated on install.
+
+  Performance
+    * KDF-derived key cache, lazy cross-DB OTP, deferred
+      HOTP writes, pre-folded labels in search provider.
+
+  Breaking
+    * GTK 4.18+ and libadwaita 1.5+ required; configuration
+      migrated to GSettings (GKeyFile not migrated
+      automatically).
+
+-------------------------------------------------------------------
 Wed Apr 22 09:36:00 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.5.0:
