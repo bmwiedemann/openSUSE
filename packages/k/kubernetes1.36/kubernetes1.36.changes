@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 13 13:16:05 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.36.1:
+  * kubeadm: use dedicated ClusterRole for apiserver kubelet client
+  * KEP-5304: DecodeMetadataFromStream only skips metadata entries with unknown API versions
+  * DRA: merge same request metadata across drivers
+  * kubeadm: skip LocalAPIEndpoint defaulting on worker join
+  * kubeadm: use the localAPIEndpoint for all API calls in 'init'
+  * kube-proxy: don't do full periodic syncs on large cluster mode
+  * Delete remote endpoint if it has same ip as local endpoint in the system.
+  * Delete remote endpoint if it has same ip as local endpoint in the system.
+  * hack/update-vendor.sh
+  * register zfs cadvisor plugin
+  * Add a (*Client) addEndpoint method
+  * Evaluate etcd cluster health using quorum
+  * test/localupcluster: stop all components before starting replacements
+  * localupcluster: set readiness polling interval to 1 second
+  * localupcluster: properly query /readyz and /healthz
+  * Escape path inside the container
+
+-------------------------------------------------------------------
 Thu Apr 23 10:56:40 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 -  drop kubeadm-opensuse-flexvolume.patch:
