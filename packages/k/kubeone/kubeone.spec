@@ -20,7 +20,7 @@
 %define KUBERNETES_STABLE_VERSION v1.35.4
 
 Name:           kubeone
-Version:        1.13.4
+Version:        1.13.5
 Release:        0
 Summary:        CLI for the kubeone cluster automation
 License:        Apache-2.0
