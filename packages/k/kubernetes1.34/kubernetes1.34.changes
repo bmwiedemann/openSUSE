@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 13 13:17:26 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.34.8:
+  * kubeadm: use dedicated ClusterRole for apiserver kubelet client
+  * kubeadm: skip LocalAPIEndpoint defaulting on worker join
+  * kubeadm: use the localAPIEndpoint for all API calls in 'init'
+  * kube-proxy: don't do full periodic syncs on large cluster mode
+  * Delete remote endpoint if it has same ip as local endpoint in the system.
+  * Delete remote endpoint if it has same ip as local endpoint in the system.
+  * Add a (*Client) addEndpoint method
+  * Evaluate etcd cluster health using quorum
+  * Escape path inside the container
+  * scheduler: address recreated pod review feedback
+  * scheduler: skip requeueing recreated pods on scheduling failure
+  * scheduler: fix inFlightPods leak when pod is recreated during scheduling failure
+  * Fix IPv6 allocator for /64 CIDRs
+  * podStartSLOduration excludes init container runtime and image pulling time, includes only stateless and immediately schedulable pods
+
+-------------------------------------------------------------------
 Thu Apr 16 06:01:27 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.34.7:
