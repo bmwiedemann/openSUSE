@@ -179,4 +179,40 @@ so the bots can find them
     <comment>Update</comment>
     <requestid>1302801</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e7a44b9a70ce6531ba8bf5068a826597</srcmd5>
+    <version>0.89.0</version>
+    <time>1778698732</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.89.0 (0.089)
+   see /usr/share/doc/packages/perl-CryptX/Changes
+  0.089   2026-05-10
+          - new: Crypt::ASN1
+          - new: Crypt::AuthEnc::SIV
+          - new: Crypt::AuthEnc::XChaCha20Poly1305
+          - new: Crypt::Cipher::SM4
+          - new: Crypt::Digest::TurboSHAKE
+          - new: Crypt::Digest::KangarooTwelve
+          - new: Crypt::PK::Ed448
+          - new: Crypt::PK::X448
+          - new: Crypt::Stream::XChaCha
+          - new: Crypt::Stream::XSalsa20
+          - Crypt::PK::Ed25519 - new functions: sign_message_ctx, verify_message_ctx, sign_message_ph, verify_message_ph
+          - Crypt::Digest: object digest accessors now finalize the object; use reset() before reuse
+          - Crypt::Mac + Crypt::AuthEnc: finalized-object lifecycle is now enforced consistently
+          - security/hardening fixes across Digest/Mac/AuthEnc/Mode/Stream/PK/PRNG
+          - fixes related to wycheproof test suite
+          - documentation cleanup &amp; improvements
+          - support for RFC 8702 RSA-PSS-SHAKE128/256 and ECDSA-SHAKE128/256
+          - support for FRP256v1 elliptic-curve
+          - bundled libtomcrypt update branch:develop (commit: 8b5af49b 2026-05-06)
+  0.088   2026-04-23
+          - Crypt::KeyDerivation - new functions: pbkdf1_openssl, bcrypt_pbkdf, scrypt_pbkdf, argon2_pbkdf
+          - Crypt::Misc - new functions: random_v7uuid, is_uuid
+          - bundled libtomcrypt update branch:develop (commit: 2e441a17 2026-04-15)
+          - bundled libtommath update branch:develop (commit: ae40a87 2026-04-20)
+          - security fix CVE-2026-41564 https://github.com/DCIT/perl-CryptX/security/advisories/GHSA-24c2-gp6c-24c6
+            bsc#1262697</comment>
+    <requestid>1352784</requestid>
+  </revision>
 </revisionlist>
