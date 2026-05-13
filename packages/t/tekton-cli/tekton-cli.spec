@@ -19,7 +19,7 @@
 %define executable_name tkn
 
 Name:           tekton-cli
-Version:        0.44.1
+Version:        0.45.0
 Release:        0
 Summary:        CLI for interacting with the Tekton CD system
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.6
+BuildRequires:  go1.25 >= 1.25.8
 BuildRequires:  zsh
 Provides:       tkn = %{version}
 
