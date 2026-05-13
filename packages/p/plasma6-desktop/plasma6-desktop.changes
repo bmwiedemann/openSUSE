@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 12 13:59:33 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.5
+- Changes since 6.6.4:
+  * Update version for new release 6.6.5
+  * applets/kicker: open category on return again
+  * applets/kicker: don't show sidebar scrollbar without screen (kde#517535)
+  * kcms/tablet: Improve line drawing
+  * kcms/tablet: Initially set start position (kde#519600)
+  * kcm_keys_test: Fix shortcut element name
+  * kcms/keyboard: Fix KeyBindings resetButton positioning
+  * keysrunner: Align dbus path sanitization with kglobalacceld which fixes triggering plasma-systemmonitor actions using krunner
+  * applets/kicker: don't activate when dropping
+  * applets/kicker: match background opacity in submenus (kde#517495)
+
+-------------------------------------------------------------------
 Tue Apr  7 14:59:44 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.4:
