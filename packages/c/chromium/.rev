@@ -6422,4 +6422,12 @@ https://src.opensuse.org/chromium/chromium/commit/865f270c0c9ba77f4a37d6fc6210f7
 Chromium 148.0.7778.96 (earyly stable release 2026-04-29)</comment>
     <requestid>1350524</requestid>
   </revision>
+  <revision rev="518" vrev="1">
+    <srcmd5>7d0d96e9cdc9661bb905d981bd105c17</srcmd5>
+    <version>148.0.7778.167</version>
+    <time>1778704390</time>
+    <user>anag_factory</user>
+    <comment>Chromium 148.0.7778.167 (boo#1265159)</comment>
+    <requestid>1352906</requestid>
+  </revision>
 </revisionlist>

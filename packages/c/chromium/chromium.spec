@@ -132,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        148.0.7778.96
+Version:        148.0.7778.167
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -169,7 +169,7 @@ Patch9:         system-libdrm.patch
 # gentoo/fedora/arch patchset
 Patch15:        chromium-125-compiler.patch
 Patch98:        chromium-102-regex_pattern-array.patch
-Patch99:        chromium-fix-sandbox-with-glibc-2.43.patch
+Patch99:        chromium-148-sandbox-glibc-2.43.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
 Patch240:       chromium-117-string-convert.patch
@@ -202,13 +202,14 @@ Patch396:       chromium-146-value_or.patch
 Patch397:       chromium-146-has_no_clone.patch
 Patch398:       chromium-147-comment_safe_assert.patch
 Patch399:       chromium-148-no_dep_on_intree_rustc_binary.patch
+Patch400:       disable-ai.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
-Patch400:       chromium-141-glibc-2.42-SYS_SECCOMP.patch
-Patch402:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
+Patch451:       chromium-141-glibc-2.42-SYS_SECCOMP.patch
+Patch452:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
 # similar to patch 483 but in llvm-10 tree
 # so we do not use chromium-143-swiftshader-llvm-16.0.patch
-Patch403:       0001-swiftshader-fix-build-llvm10.patch
+Patch453:       0001-swiftshader-fix-build-llvm10.patch
 #
 Patch459:       ppc-fedora-add-ppc64-architecture-string.patch
 Patch461:       ppc-fedora-0001-sandbox-Enable-seccomp_bpf-for-ppc64.patch
@@ -549,10 +550,10 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %prep
 %setup -q -n %{rname}-%{version}
 # apply all patches up to 399
-%autopatch -p1 -M 399
+%autopatch -p1 -M 449
 
 %ifarch ppc64le
-%autopatch -p1 -m 400 -M 599
+%autopatch -p1 -m 450 -M 599
 %endif
 
 %if %{without libxml2_2_12}

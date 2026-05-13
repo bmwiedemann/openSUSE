@@ -1,0 +1,12 @@
+Source: Gentoo, https://github.com/gentoo/gentoo/blob/master/www-client/chromium/files/cr144-glibc-2.43.patch
+Upstream: Reported, https://crbug.com/456218403
+Reason: Fix build with glibc 2.43
+
+--- a/sandbox/linux/system_headers/linux_seccomp.h
++++ b/sandbox/linux/system_headers/linux_seccomp.h
+@@ -7,4 +7,5 @@
+ 
+ #include <stdint.h>
++#include <signal.h>
+ #include <sys/ioctl.h>
+ 
