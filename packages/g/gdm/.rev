@@ -2370,4 +2370,12 @@
 - Drop check-devel, we already have pkgconfig(check) BuildRequires.</comment>
     <requestid>1350303</requestid>
   </revision>
+  <revision rev="299" vrev="4">
+    <srcmd5>a1f0c446773a3aeecc5380d7be492324</srcmd5>
+    <version>50.0</version>
+    <time>1778685564</time>
+    <user>anag_factory</user>
+    <comment>- Drop pam_gdm from gdm-fingerprint.pamd (boo#1258070, glgo#GNOME/gdm#1074)</comment>
+    <requestid>1352544</requestid>
+  </revision>
 </revisionlist>
