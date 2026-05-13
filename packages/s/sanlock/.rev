@@ -404,4 +404,12 @@ corruption of the VM's disk image.  See FATE#306399.</comment>
 - Update spec and service file with new sanlock project URL</comment>
     <requestid>1344794</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>4cb70bb8c100e7b53dc748cf9f6f9f76</srcmd5>
+    <version>5.1.0</version>
+    <time>1778685562</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1352538</requestid>
+  </revision>
 </revisionlist>

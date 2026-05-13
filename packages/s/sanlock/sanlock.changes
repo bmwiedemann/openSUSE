@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  8 07:56:23 UTC 2026 - Heming Zhao <heming.zhao@suse.com>
+
+- spec: add missing script file systemd-wdmd, which was introduced in v3.9.1
+
+-------------------------------------------------------------------
 Mon Apr 06 20:14:43 UTC 2026 - jfehlig@suse.com
 
 - Update to version 5.1.0:

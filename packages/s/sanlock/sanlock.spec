@@ -100,6 +100,7 @@ install -D -m 644 init.d/sanlock.service %{buildroot}/%{_unitdir}/sanlock.servic
 ln -s service %{buildroot}%{_sbindir}/rcsanlock
 install -D -m 644 init.d/wdmd.service %{buildroot}/%{_unitdir}/wdmd.service
 ln -s service %{buildroot}%{_sbindir}/rcwdmd
+install -D -m 755 init.d/systemd-wdmd %{buildroot}/%{_prefix}/lib/systemd/systemd-wdmd
 
 install -Dm 0644 src/logrotate.sanlock \
 	%{buildroot}%{_sysconfdir}/logrotate.d/sanlock
@@ -142,6 +143,7 @@ getent passwd sanlock > /dev/null || useradd \
 %{_fillupdir}/sysconfig.wdmd
 %{_unitdir}/sanlock.service
 %{_unitdir}/wdmd.service
+%{_prefix}/lib/systemd/systemd-wdmd
 %{_sbindir}/sanlock
 %{_sbindir}/wdmd
 %{_mandir}/man8/wdmd*
