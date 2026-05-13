@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Mon May  4 20:37:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.18.2:
+  * convolution: avoid using unsigned accumulators [nakrovati]
+  * exif: check ifdN range [trailofbits]
+  * tiffload: check jpeg and jp2k components [wooseokdotkim]
+  * uhdrsave: set Q for gainmap recompress, don't chroma
+    subsample RGB gainmaps
+  * uhdrsave: prevent early unref of image with alpha channel
+    [lovell]
+  * rad2float: limit band count when converting from radiance
+    [lovell]
+  * jxlload: check EXIF buffer size before reading header
+    [lovell]
+  * vector: mask supported Highway targets by builtin targets
+    [kleisauke]
+  * fix Highway paths on big-endian targets [kleisauke]
+  * fix build with MSVC [star-hengxing]
+  * fix compatibility with glibc 2.43 [mtasaka]
+  * pngload: avoid an expensive check during header read
+    [kleisauke]
+  * improve vips7 JPEG load compatibility [kleisauke]
+  * fix saving 3-band MATRIX images [kleisauke]
+  * uhdrload: expose original gainmap scale factor [lovell]
+  * uhdrsave: control generated gainmap scale factor [lovell]
+  * source: guard against length truncation [Niebelungen-D]
+  * shrinkh: fix possible OOB read in Highway path [dloebl]
+    [kleisauke]
+  * string_to_array_double: ensure delimiter list is consistent
+    [dloebl] [lovell]
+  * fix loading/saving of non-8-bit JXL images [DarthSim]
+  * invertlut: check height before interpolating values [dloebl]
+    [lovell]
+  * extract: check bounds using unsigned arithmetic
+    [Niebelungen-D] [lovell]
+  * matrixload: guard against empty and very large inputs
+    [Niebelungen-D] [lovell]
+  * unpremultiply: check `alpha_band` is in range [Niebelungen-D]
+    [lovell]
+  * maplut: ensure lookup table index is unsigned [dloebl]
+    [lovell]
+  * fwfft: fix heap-buffer-overflow for single-row images
+    [dloebl]
+  * draw_flood: reject out-of-bounds start point [dloebl]
+  * openexrload: fix a leak with invalid images [kleisauke]
+  * canny: fix UB in atan2 lookup table init [dloebl] [kleisauke]
+  * conva: guard against divide by zero [kleisauke]
+  * csvload: check whitespace and separator are ASCII
+    [Niebelungen-D] [lovell]
+  * bandrank: check `index` is in range [Niebelungen-D] [lovell]
+  * remainder_const: guard against divide by zero [kleisauke]
+  * vips_window_take: prevent int underflow for small mapped
+    images [jcupitt]
+  * composite: fix UB (invalid-enum-value) in `->build()`
+    [kleisauke]
+  * add: prevent possible int overflow [kleisauke]
+  * bandmean: prevent possible int overflow [kleisauke]
+  * fastcor: prevent possible int overflow [kleisauke]
+  * multiply: prevent possible int overflow [kleisauke]
+  * subtract: prevent possible int overflow [kleisauke]
+  * hist_cum: prevent possible int overflow [kleisauke]
+  * convasep: prevent possible int overflow [kleisauke]
+  * conva: prevent possible int overflow [kleisauke]
+  * convi: prevent possible int overflow [kleisauke]
+  * draw_circle: prevent possible int overflow [kleisauke]
+  * csvload: guard against negative index access [kleisauke]
+  * convi: guard against invalid shift [kleisauke]
+  * nary: guard against empty input [kleisauke]
+  * maplut: add missing overflow checks [kleisauke]
+  * jpegsave: fix assert fail when saving 2-band image
+    [kleisauke]
+  * LabS2LabQ: fix UB (undefined-shift) [kleisauke]
+  * convasep: use unsigned accumulator where appropriate
+    [kleisauke]
+  * min: fix possible OOB read with complex images [kleisauke]
+  * max: fix possible OOB read with complex images [kleisauke]
+  * guard against dimension overflow [ElhananHaenel] [kleisauke]
+  * gifload: prevent int overflow on 32-bit platforms
+    [ElhananHaenel] [kleisauke]
+  * sign: use ready image instead of `unary->in` [kleisauke]
+  * statistic: use ready image instead of `statistic->in`
+  * hist_plot: handle near-zero ranges for float images
+  * affine: check bounds using unsigned arithmetic [kleisauke]
+
+-------------------------------------------------------------------
 Thu Dec 18 07:28:31 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 8.18.0:
@@ -226,7 +311,7 @@ Tue Jun 20 07:39:09 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
   * ensure ICC transforms keep all precision [kleisauke]
   * fix openslideload associated=XXX load [jcupitt]
   * fix compatibility with MSVC [SpaceIm]
-- For changes from older releases see provided ChangeLog 
+- For changes from older releases see provided ChangeLog
 - Drop no longer needed:
   * vips-8.9.2-implicit-fortify-decl.patch
   * vips-8.4.2_libexif-header.patch
@@ -273,7 +358,7 @@ Mon Sep 12 20:07:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Jul 25 21:18:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update to 8.13.0: 
+- update to 8.13.0:
   * last release with autotools build system
   * configure fails for requested but unmet dependencies
   * add support for another quantiser
@@ -315,13 +400,13 @@ Sat Jun 18 14:40:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * make exif resuint optional and default to inch
   * win: don't set create time on inappropriate file descriptors [lovell]
   * fall back to magicksave for gif if cgif is not present [erik-frontify]
-  * fix a crash with 0 length vectors 
+  * fix a crash with 0 length vectors
   * change default frame delay for GIFs from 1s to 0.1s
   * remove stray trailing comma from iiif3 dirnames [whalehub]
   * fix TTF load [chregu]
   * revise GIF save alpha threshold [jfcalvo]
   * raise libpng pixel size limit from 1m to 10m pixels [jskrzypek]
-  * fix gif save change detector [TheEssem] 
+  * fix gif save change detector [TheEssem]
   * fix load from pipe with variable size reads
 
 -------------------------------------------------------------------
@@ -340,7 +425,7 @@ Fri Jan 21 19:36:55 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 - adds buildrequires for missing features:
   pkgconfig(imagequant)
   pkgconfig(libopenjp2) >= 2.4
-- Fix requires of the devel package to match the pkg-config files 
+- Fix requires of the devel package to match the pkg-config files
 
 -------------------------------------------------------------------
 Wed Jul 14 06:28:25 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
@@ -419,7 +504,7 @@ Sat Aug 15 14:43:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   - add max and min to region shrink [rgluskin]
   - allow \ as an escape character in vips_break_token() [akemrir]
   - tiffsave has a "depth" param to set max pyr depth
-  - libtiff LOGLUV images load and save as libvips XYZ 
+  - libtiff LOGLUV images load and save as libvips XYZ
   - add gifload_source, csvload_source, csvsave_target, matrixload_source,
     matrixsave_source, pdfload_source, heifload_source, heifsave_target,
     ppmload_source, ppmsave_target
@@ -431,16 +516,16 @@ Sat Aug 15 14:43:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   - add subsample_mode, deprecate no_subsample in jpegsave [Elad-Laufer]
   - add vips_isdirf()
   - add PAGENUMBER support to tiff write [jclavoie-jive]
-  - add "all" mode to smartcrop 
+  - add "all" mode to smartcrop
   - flood fill could stop half-way for some very complex shapes
   - better handling of unaligned reads in multipage tiffs [petoor]
   - mark old --delete option to vipsthumbnail as deprecated [UweOhse]
   - png save with a bad ICC profile just gives a warning
-  - add "premultipled" option to vips_affine(), clarified vips_resize() 
+  - add "premultipled" option to vips_affine(), clarified vips_resize()
     behaviour with alpha channels
   - improve bioformats support with read and write of tiff subifd pyramids
   - thumbnail exploits subifd pyramids
-  - handle all EXIF orientation cases, deprecate 
+  - handle all EXIF orientation cases, deprecate
     vips_autorot_get_angle() [Elad-Laufer]
   - load PNGs with libspng, if possible
   - deprecate heifload autorotate -- it's now always on
@@ -456,7 +541,7 @@ Sat Aug 15 14:43:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   - vipsheader allows "stdin" as a filename
   - gifload allows gifs with images outside the canvas
   - wasm compatibility patches [kleisauke]
-  - webpsave has a @profile param 
+  - webpsave has a @profile param
 
 -------------------------------------------------------------------
 Mon May  4 07:54:59 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
@@ -498,7 +583,7 @@ Mon Dec 11 02:47:34 UTC 2017 - avvissu@yandex.by
 - Change in 8.5.4
   * don't depend on image width when setting n_lines
 - Change in 8.5.3
-  * more link fixing in docs 
+  * more link fixing in docs
   * revise cache sizing again to help out of order errors under heavy load
 - Change in 8.5.2
   * better behaviour for truncated PNG files
@@ -530,12 +615,12 @@ Mon Dec 11 02:47:34 UTC 2017 - avvissu@yandex.by
   * deprecate vips_warn() / vips_info(); use g_warning() / g_info() instead
   * vipsthumbnail supports much fancier geometry strings
   * vips_thumbnail() has new @size option
-  * fix --vips-cache-max etc. 
+  * fix --vips-cache-max etc.
   * add compute reordering, plus some new API to support it:
     vips_reorder_margin_hint() and vips_reorder_prepare_many(), thanks
     aferrero2707
-  * kick load operations from cache on read error 
-  * fix return from C++ assignment operator overloads (+=, -= etc) 
+  * kick load operations from cache on read error
+  * fix return from C++ assignment operator overloads (+=, -= etc)
   * add @max_slope to vips_hist_local() to implement CLAHE
   * vips_gaussnoise() pixels are reproducible on recalc
   * max/min sort values by y and x coordinate
@@ -575,7 +660,7 @@ Tue Nov  8 16:33:37 UTC 2016 - avvissu@yandex.by
   * many more wepsave options [Felix Bünemann]
   * added quant_table option to wepsave [Felix Bünemann]
   * added @n option to pdfload, thanks andris
-  * dzsave won't write empty tiles in google mode, thanks bverem, 
+  * dzsave won't write empty tiles in google mode, thanks bverem,
     perog, felixbuenemann
   * allow nested [] in CLI args
   * restore BandFmt on unpremultiply in vipsthumbnail
@@ -590,18 +675,18 @@ Tue Nov  8 16:33:37 UTC 2016 - avvissu@yandex.by
   * free pixel buffers on image close as well as thread exit
     thread buffers clogging up the system
   * dzsave can write compressed zips [Felix Bünemann]
-  * vips_image_write() only refs the input when it has to ... makes 
+  * vips_image_write() only refs the input when it has to ... makes
     it easier to combine many images in bounded memory
   * VImage::write() implementation was missing
-  * VImage::write() return value changed from void to VImage to help 
+  * VImage::write() return value changed from void to VImage to help
     chaining
-  * added C++ arithmetic assignment overloads, += etc. 
+  * added C++ arithmetic assignment overloads, += etc.
   * VImage::ifthenelse() with double args was missing =0 on options
   * better accuracy for reducev with smarter multiplication
-  * better quality for vips_resize() with linear/cubic kernels 
+  * better quality for vips_resize() with linear/cubic kernels
   * pyvips8 can create new metadata
   * better upsizing with vips_resize()
-  * add imagemagick v7 support, thanks sachinwalia2k8 
+  * add imagemagick v7 support, thanks sachinwalia2k8
   * added vips_worley(), vips_perlin() noise generators
   * added vips_convf(), vips_convi(), vips_convasep(), vips_conva()
     im_conv*() functions rewritten as classes
@@ -611,14 +696,14 @@ Tue Nov  8 16:33:37 UTC 2016 - avvissu@yandex.by
   * support --strip for pngsave
   * add svgz support [Felix Bünemann]
   * rename boostrap.sh -> autogen.sh to help snapcraft
-  * support unicode filenames on Windows 
+  * support unicode filenames on Windows
   * added VIPS_ROUND as well as VIPS_RINT
-  * resize/reduce*/shrink*/affine now round output size to nearest rather 
+  * resize/reduce*/shrink*/affine now round output size to nearest rather
     than rounding down, thanks ioquatix
   * better support for tile overlaps in google maps mode in dzsave
-  * dzsave puts vips-properties.xml in the main dir for gm and zoomify 
+  * dzsave puts vips-properties.xml in the main dir for gm and zoomify
     layouts
-  * resize and reduce have @centre option for centre convention 
+  * resize and reduce have @centre option for centre convention
     downsampling
   * vipsthumbnail uses centre convention to better match imagemagick
 - Change in 8.3.4:
@@ -639,11 +724,11 @@ Tue Nov  8 16:33:37 UTC 2016 - avvissu@yandex.by
   * fix giflib4 detection [felixbuenemann]
 - Change in 8.3:
   * add vips_reduce*() ... a fast path for affine downsize
-  * vips_resize() uses vips_reduce() with lanczos3 
+  * vips_resize() uses vips_reduce() with lanczos3
   * bicubic is better on 32-bit int images
-  * add pdfload, svgload, gifload for PDF, SVG and GIF rendering 
+  * add pdfload, svgload, gifload for PDF, SVG and GIF rendering
   * vipsthumbnail knows about pdfload and svgload
-  * added @page param to magickload 
+  * added @page param to magickload
   * matload is more specific (thanks bithive)
   * lower mem use for progressive jpg decode
   * sharpen has a new @sigma param, @radius is deprecated
@@ -687,17 +772,17 @@ Thu Apr 21 10:12:28 UTC 2016 - normand@linux.vnet.ibm.com
 Tue Feb 16 15:05:45 UTC 2016 - eshmarnev@suse.com
 
 - Update to version 8.2.2
-    - changes to ease compiling C++ binding with MSVC 
+    - changes to ease compiling C++ binding with MSVC
     - reorder file tests to put slow loaders last
     - ifthenelse needs less C stack during eval
     - better rounding in bilinear interpolator
-    - fix to "make check" in non-C locales 
-    - use compiler builtins isnan, isinf, fabs, fmin, fmax, ceil, 
-      floor when possible 
-      - tune vips_shrinkh(), 30% faster 
-      - remove SEQ hint from vips_subsample(), fixes cli performance 
-      - fix double free on attach ICC profile from file in tiff write 
-      - use g_assert_not_reached() 
+    - fix to "make check" in non-C locales
+    - use compiler builtins isnan, isinf, fabs, fmin, fmax, ceil,
+      floor when possible
+      - tune vips_shrinkh(), 30% faster
+      - remove SEQ hint from vips_subsample(), fixes cli performance
+      - fix double free on attach ICC profile from file in tiff write
+      - use g_assert_not_reached()
     - better vips-from-C docs
     - remove Duff from im_conv() / im_conv_f() for a 25% speedup
 
@@ -787,10 +872,10 @@ Fri Aug 22 17:35:33 UTC 2014 - dmitry_r@opensuse.org
   * argh fix affine, again, there were sometimes black bars with
     nohalo and the vips8 interface
   * pngsave in interlaced mode makes a copy of the image, so it's
-    always seq 
+    always seq
   * vipsthumbnail shrinks to 1/2 window_size
   * vipsthumbnail has an anti-alias filter between shrink and affine
-  * vipsthumbnail defaults to bicubic 
+  * vipsthumbnail defaults to bicubic
   * better rounding behaviour for fixed-point bicubic reduces noise
   * fix colour for openslide read associated
 
@@ -802,7 +887,7 @@ Tue Jul 29 07:54:41 UTC 2014 - dmitry_r@opensuse.org
   * vips_scale() now does round to nearest to avoid rounding errors
   * improve im_openout() compat macro
   * more robust vips_system()
-  * add webp support to vips7 
+  * add webp support to vips7
   * fix interlaced thumbnails in vipsthumbnail
   * fits save now caches the image before write, so it's top-to-bottom
   * add --properties argument to dzsave
@@ -834,7 +919,7 @@ Tue Jun 24 18:58:00 UTC 2014 - dmitry_r@opensuse.org
   * vips_system() now supports many input images and you can
     change image argument order
   * support 16-bit palette TIFFs, plus palette TIFFs can have an alpha
-  * dzsave can directly write a ZIP file 
+  * dzsave can directly write a ZIP file
   * add ".vips" as an alternative suffix for vips files
   * support 1/2/4 bit palette tiff images with alpha
   * added Travis CI config
@@ -871,7 +956,7 @@ Tue Jan 21 15:44:22 UTC 2014 - dmitry_r@opensuse.org
 
 - Update to version 7.38.1
   * bump soname
-  * better conversion to and from scrgb/xyz for rad (hdr) 
+  * better conversion to and from scrgb/xyz for rad (hdr)
   * fix --interpolate flag to vipsthumbnail
 
 -------------------------------------------------------------------
@@ -886,7 +971,7 @@ Sun Jan 19 06:33:02 UTC 2014 - dmitry_r@opensuse.org
   * vips_init() now does some ABI compat checking, though this
     change requires an ABI break
   * add "interlace" option to vips_jpegsave()
-  * remove vips_image_copy_fields() and vips_demand_hint() and add 
+  * remove vips_image_copy_fields() and vips_demand_hint() and add
     vips_image_pipeline() to do both jobs
   * vipsthumbnail allows non-square bounding boxes, thanks seth
   * add vips_matrixprint()
@@ -902,8 +987,8 @@ Sun Jan 19 06:33:02 UTC 2014 - dmitry_r@opensuse.org
   * support XYZ as a PCS for vips_icc_import() and vips_icc_export()
   * add --strip option to jpegsave
   * added vips_gaussblur() convenience function
-  * added --vips-profile, records and dumps thread timing and memory 
-    use info 
+  * added --vips-profile, records and dumps thread timing and memory
+    use info
   * added vipsprofile, visualises --vips-profile output
   * auto-vectorization-friendly inner loops
   * added vips::init() and vips::shutdown() to C++ API
@@ -960,7 +1045,7 @@ Sat Oct  5 17:07:19 UTC 2013 - dmitry_r@opensuse.org
   * added vips_matrixload() and vips_matrixsave(), load and save
     vips mat format
   * rename image arrays as image matrices ... INTERPRETATION_ARRAY ->
-    INTERPRETATION_MATRIX etc. 
+    INTERPRETATION_MATRIX etc.
   * rewrite im_buildlut(), im_identity*(), im_maplut(),
     im_falsecolour(), im_gammacorrect(), im_histgr(), im_histcum(),
     im_histnorm(), im_heq(), im_histnD(), im_histindexed(),
@@ -972,14 +1057,14 @@ Sat Oct  5 17:07:19 UTC 2013 - dmitry_r@opensuse.org
   * added vips_error_freeze() / vips_error_thaw()
   * used freeze() / thaw() to stop file format sniffers logging
     spurious errors
-  * vipsthumbnail uses embedded jpg thumbnails if it can 
+  * vipsthumbnail uses embedded jpg thumbnails if it can
   * rename vips_diag() as vips_info(), add --vips-info flag
   * deprecate im_hsp()
   * added vips_webpload(), vips_webpload_buffer(), vips_webpsave(),
     vips_webpsave_buffer(), vips_webpsave_mime()
   * tiff reader allows separate planes for strip read
   * tiff reader and writer allow many more formats,
-    eg. 32-bit int, complex, etc. 
+    eg. 32-bit int, complex, etc.
   * tiff reader and writer allow any number of bands
   * added vips_image_new_matrixv()
   * dzsave basename param now called filename, so you can use .dz
@@ -1069,7 +1154,7 @@ Wed Dec 19 20:45:52 UTC 2012 - dmitry_r@opensuse.org
 Wed Sep 26 07:20:13 UTC 2012 - dmitry_r@opensuse.org
 
 - Change license to GPL-2.0+ (bnc#780722)
-  
+
 -------------------------------------------------------------------
 Thu Sep 13 20:51:57 UTC 2012 - dmitry_r@opensuse.org
 
