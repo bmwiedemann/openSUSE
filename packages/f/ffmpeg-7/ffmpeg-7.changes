@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 13 07:13:19 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add ffmpeg-7-CVE-2026-40962.patch: Use 64bit in CENC subsample
+  bounds checks. (CVE-2026-40962, bsc#1262237)
+
+-------------------------------------------------------------------
 Fri Apr  3 11:06:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable VVC decoders/encoders by default.

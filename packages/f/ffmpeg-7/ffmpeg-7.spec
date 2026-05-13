@@ -121,6 +121,7 @@ Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 Patch19:        ffmpeg-7-CVE-2025-22921.patch
+Patch20:        ffmpeg-7-CVE-2026-40962.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  nasm

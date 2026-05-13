@@ -199,4 +199,13 @@ retry submit due to git-&gt;obs autosync delays</comment>
     <comment>- Disable VVC decoders/encoders by default.</comment>
     <requestid>1344459</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>26a7c358d5e4bb1d2da028645f4f0165</srcmd5>
+    <version>7.1.3</version>
+    <time>1778687615</time>
+    <user>anag_factory</user>
+    <comment>- Add ffmpeg-7-CVE-2026-40962.patch: Use 64bit in CENC subsample
+  bounds checks. (CVE-2026-40962, bsc#1262237)</comment>
+    <requestid>1353059</requestid>
+  </revision>
 </revisionlist>
