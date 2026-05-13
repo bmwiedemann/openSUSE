@@ -3236,4 +3236,15 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   IBM1390, IBM1399 character sets (CVE-2026-4046, bsc#1261206, BZ #33980) (forwarded request 1351130 from Andreas_Schwab)</comment>
     <requestid>1351131</requestid>
   </revision>
+  <revision rev="305" vrev="3">
+    <srcmd5>6f9c43b93006afa5bffa4e96c3f6b0d3</srcmd5>
+    <version>2.43</version>
+    <time>1778685498</time>
+    <user>anag_factory</user>
+    <comment>- ungetwc-byte-stream.patch: libio: Fix ungetwc operating on byte stream
+  (CVE-2026-5928, bsc#1262464, BZ #33998)
+- scanf-mc-buffer-overflow.patch: stdio-common: Fix buffer overflow in
+  scanf %mc (CVE-2026-5450, bsc#1262465, BZ #34008) (forwarded request 1352664 from Andreas_Schwab)</comment>
+    <requestid>1352665</requestid>
+  </revision>
 </revisionlist>

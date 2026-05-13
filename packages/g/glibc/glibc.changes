@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 11 09:00:52 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- ungetwc-byte-stream.patch: libio: Fix ungetwc operating on byte stream
+  (CVE-2026-5928, bsc#1262464, BZ #33998)
+- scanf-mc-buffer-overflow.patch: stdio-common: Fix buffer overflow in
+  scanf %mc (CVE-2026-5450, bsc#1262465, BZ #34008)
+
+-------------------------------------------------------------------
 Tue May  5 10:15:40 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - ibm139x-pending-char-state.patch: Use pending character state in

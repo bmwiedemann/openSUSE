@@ -367,6 +367,10 @@ Patch1012:      sys-mount-cloexec-flag.patch
 Patch1013:      sys-mount-open-tree-macros.patch
 # PATCH-FIX-UPSTREAM Use pending character state in IBM1390, IBM1399 character sets (CVE-2026-4046, BZ #33980)
 Patch1014:      ibm139x-pending-char-state.patch
+# PATCH-FIX-UPSTREAM libio: Fix ungetwc operating on byte stream (CVE-2026-5928, BZ #33998)
+Patch1015:      ungetwc-byte-stream.patch
+# PATCH-FIX-UPSTREAM stdio-common: Fix buffer overflow in scanf %mc (CVE-2026-5450, BZ #34008)
+Patch1016:      scanf-mc-buffer-overflow.patch
 %endif
 
 ###
