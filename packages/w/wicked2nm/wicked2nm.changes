@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 12 15:58:32 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update v1.5.0
+  * Respect create-cid and client-id in interface xml
+  * Require at least one file for migrate and show commands
+  * Perform extra validation for correct xml file
+  * Improve dhcp.update default and user info
+  * Update dependencies
+  * Allow DHCP+staticIP addresses
+  * Fix DHCLIENT_SET_DEFAULT_ROUTE="no"
+  * Handle 'STATIC_FALLBACK' and 'NetworkManager' in netconfig
+  * Implement team to bond migration
+  * Update agama-network to remove dependency on curl
+- Reenable `update` in cargo vendor service
+
+-------------------------------------------------------------------
 Tue Feb 10 12:55:51 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to v1.4.1

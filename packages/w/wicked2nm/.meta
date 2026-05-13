@@ -2,4 +2,5 @@
   <title>wicked2nm</title>
   <description>Wicked to NetworkManager migration tool  
     https://github.com/openSUSE/wicked2nm</description>
+  <devel project="network" package="wicked2nm"/>
 </package>

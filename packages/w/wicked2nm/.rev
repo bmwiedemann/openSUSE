@@ -87,4 +87,23 @@
   are incompatible for now.</comment>
     <requestid>1332264</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ab893b650455021a4a53d6b989fe0351</srcmd5>
+    <version>1.5.0</version>
+    <time>1778685622</time>
+    <user>anag_factory</user>
+    <comment>- Update v1.5.0
+  * Respect create-cid and client-id in interface xml
+  * Require at least one file for migrate and show commands
+  * Perform extra validation for correct xml file
+  * Improve dhcp.update default and user info
+  * Update dependencies
+  * Allow DHCP+staticIP addresses
+  * Fix DHCLIENT_SET_DEFAULT_ROUTE=&quot;no&quot;
+  * Handle 'STATIC_FALLBACK' and 'NetworkManager' in netconfig
+  * Implement team to bond migration
+  * Update agama-network to remove dependency on curl
+- Reenable `update` in cargo vendor service</comment>
+    <requestid>1352790</requestid>
+  </revision>
 </revisionlist>
