@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 11 18:45:43 UTC 2026 - Hans Petter Jansson <hpj@suse.com>
+
+- Update openssh-7.7p1-fips.patch (bsc#1264787): Add the rijndael
+  alias to the list of all ciphers, making the FIPS list a strict
+  subset.
+
+-------------------------------------------------------------------
 Thu May  7 21:15:35 UTC 2026 - Hans Petter Jansson <hpj@suse.com>
 
 - Update openssh-7.7p1-fips.patch (bsc#1262555): Don't bail out on

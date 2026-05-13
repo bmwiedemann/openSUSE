@@ -2052,4 +2052,14 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
 - Update openssh-8.0p1-gssapi-keyex.patch: Apply to GSS too. (forwarded request 1351499 from hpjansson)</comment>
     <requestid>1351501</requestid>
   </revision>
+  <revision rev="203" vrev="3">
+    <srcmd5>06facd8f65a637981695642c13ed48f4</srcmd5>
+    <version>10.3p1</version>
+    <time>1778685506</time>
+    <user>anag_factory</user>
+    <comment>- Update openssh-7.7p1-fips.patch (bsc#1264787): Add the rijndael
+  alias to the list of all ciphers, making the FIPS list a strict
+  subset. (forwarded request 1352549 from hpjansson)</comment>
+    <requestid>1352555</requestid>
+  </revision>
 </revisionlist>

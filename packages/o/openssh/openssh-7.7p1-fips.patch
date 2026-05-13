@@ -39,7 +39,16 @@ Index: openssh-10.3p1/cipher.c
  #ifdef WITH_OPENSSL
  #ifndef OPENSSL_NO_DES
  	{ "3des-cbc",		8, 24, 0, 0, CFLAG_CBC, EVP_des_ede3_cbc },
-@@ -109,8 +112,50 @@ static const struct sshcipher ciphers[]
+@@ -90,6 +93,8 @@ static const struct sshcipher ciphers[]
+ 	{ "aes128-cbc",		16, 16, 0, 0, CFLAG_CBC, EVP_aes_128_cbc },
+ 	{ "aes192-cbc",		16, 24, 0, 0, CFLAG_CBC, EVP_aes_192_cbc },
+ 	{ "aes256-cbc",		16, 32, 0, 0, CFLAG_CBC, EVP_aes_256_cbc },
++	{ "rijndael-cbc@lysator.liu.se",
++				16, 32, 0, 0, CFLAG_CBC, EVP_aes_256_cbc },
+ 	{ "aes128-ctr",		16, 16, 0, 0, 0, EVP_aes_128_ctr },
+ 	{ "aes192-ctr",		16, 24, 0, 0, 0, EVP_aes_192_ctr },
+ 	{ "aes256-ctr",		16, 32, 0, 0, 0, EVP_aes_256_ctr },
+@@ -109,8 +114,50 @@ static const struct sshcipher ciphers[]
  	{ NULL,			0, 0, 0, 0, 0, NULL }
  };
  
@@ -90,7 +99,7 @@ Index: openssh-10.3p1/cipher.c
  /* Returns a comma-separated list of supported ciphers. */
  char *
  cipher_alg_list(char sep, int auth_only)
-@@ -119,7 +164,7 @@ cipher_alg_list(char sep, int auth_only)
+@@ -119,7 +166,7 @@ cipher_alg_list(char sep, int auth_only)
  	const struct sshcipher *c;
  	char sep_str[2] = {sep, '\0'};
  
@@ -99,7 +108,7 @@ Index: openssh-10.3p1/cipher.c
  		if ((c->flags & CFLAG_INTERNAL) != 0)
  			continue;
  		if (auth_only && c->auth_len == 0)
-@@ -193,19 +238,19 @@ const struct sshcipher *
+@@ -193,19 +240,19 @@ const struct sshcipher *
  cipher_by_name(const char *name)
  {
  	const struct sshcipher *c;
@@ -124,7 +133,7 @@ Index: openssh-10.3p1/cipher.c
  
  	if (names == NULL || strcmp(names, "") == 0)
  		return 0;
-@@ -213,7 +258,7 @@ ciphers_valid(const char *names)
+@@ -213,7 +260,7 @@ ciphers_valid(const char *names)
  		return 0;
  	for ((p = strsep(&cp, CIPHER_SEP)); p && *p != '\0';
  	    (p = strsep(&cp, CIPHER_SEP))) {
@@ -133,7 +142,7 @@ Index: openssh-10.3p1/cipher.c
  		if (c == NULL || (c->flags & CFLAG_INTERNAL) != 0) {
  			free(cipher_list);
  			return 0;
-@@ -223,6 +268,31 @@ ciphers_valid(const char *names)
+@@ -223,6 +270,31 @@ ciphers_valid(const char *names)
  	return 1;
  }
  
