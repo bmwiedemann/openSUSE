@@ -103,4 +103,12 @@
     <comment>bsc#1246397, CVE-2025-48924</comment>
     <requestid>1293479</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7dca11205751cd23698d7d4bc57c9435</srcmd5>
+    <version>3.20.0</version>
+    <time>1778685561</time>
+    <user>anag_factory</user>
+    <comment>3.20.0</comment>
+    <requestid>1352516</requestid>
+  </revision>
 </revisionlist>
