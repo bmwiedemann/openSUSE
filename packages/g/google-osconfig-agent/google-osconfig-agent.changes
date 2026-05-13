@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed May 13 07:43:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260511.00
+  * switch to t2a-standard-2 on ARM package build (#977)
+- from version 20260505.03
+  * Cover zypper_patch by unit tests (#958)
+- from version 20260505.02
+  * Remove unused functions DisableAutoUpdates (#970)
+- from version 20260505.01
+  * Bump go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc (#966)
+- from version 20260505.00
+  * Upgrade a few dependencies across the repo (#968)
+    + github.com/go-git/go-git/v5 5.16.2->5.18.0 (bsc#1264923, CVE-2026-41506)
+    + github.com/go-jose/go-jose/v4 4.1.3->4.1.4 (bsc#1262926, CVE-2026-34986)
+    + github.com/go-viper/mapstructure/v2 2.3.0->2.4.0
+    + go.opentelemetry.io/otel 1.40.0->1.41.0
+    + go.opentelemetry.io/otel/sdk 1.39.0->1.43.0
+- from version 20260504.01
+  * bump github.com/docker/cli to 29.2.0 (#962)
+- from version 20260504.00
+  * Bump github.com/opencontainers/selinux (#960)
+- Add missing CVE reference to previous changelog entry
+- Drop CVE-2026-34986.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon May  4 08:56:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260428.00
@@ -9,6 +34,7 @@ Mon May  4 08:56:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Cover patch_linux.go by unit tests (#932)
 - from version 20260422.00
   * upgrade grpc package in main package and e2e tests (#959)
+    (bsc#1260264, CVE-2026-33186)
 - from version 20260417.04
   * Bump OSV-Scalibr version to v0.4.3 (#956)
 - from version 20260417.03
