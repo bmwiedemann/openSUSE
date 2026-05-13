@@ -1183,4 +1183,15 @@
 </comment>
     <requestid>1347761</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>87c5db77a667b708b3de369e65daa04f</srcmd5>
+    <version>2.70.3</version>
+    <time>1778685635</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.70.3:
+  - Fixes
+    * fix: Handle single quoted strings in /etc/os-release
+</comment>
+    <requestid>1352799</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 16:26:54 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.70.3:
+  - Fixes
+    * fix: Handle single quoted strings in /etc/os-release
+
+-------------------------------------------------------------------
 Fri Apr 17 16:38:12 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.70.2:
