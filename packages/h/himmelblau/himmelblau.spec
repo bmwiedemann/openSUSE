@@ -30,7 +30,7 @@
 %endif
 
 Name:           himmelblau
-Version:        2.3.9+git0.a9fd29b
+Version:        3.1.5+git0.445569d9
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -39,6 +39,7 @@ Group:          Productivity/Networking/Security
 Source:         %{name}-%{version}.tar.bz2
 Source1:        vendor.tar.zst
 Source2:        cargo_config
+Patch0:         python311-build.patch
 BuildRequires:  binutils
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
@@ -72,7 +73,12 @@ BuildRequires:  pcre2-devel
 BuildRequires:  pkg-config
 BuildRequires:  policycoreutils
 BuildRequires:  policycoreutils-devel
+%if 0%{?suse_version} < 1600
+# SLE 15.x ships Python 3.6; gen_param_code.py requires Python 3.9+ for dataclasses + PEP 585
+BuildRequires:  python311
+%else
 BuildRequires:  python3
+%endif
 BuildRequires:  sqlite3-devel
 BuildRequires:  systemd-mini
 BuildRequires:  tpm2-0-tss-devel
@@ -92,6 +98,8 @@ Recommends:     krb5
 Recommends:     libnss_himmelblau2
 Recommends:     pam-himmelblau
 Recommends:     system-user-tss
+Recommends:     tpm2.0-tools
+Suggests:       himmelblau-sso
 
 %description
 Himmelblau is an interoperability suite for Microsoft Azure Entra Id
@@ -101,7 +109,8 @@ Entra Id credentials.
 %package -n pam-himmelblau
 Summary:        Azure Entra Id authentication PAM module
 Requires:       %{name} = %{version}
-Recommends:     oddjob_mkhomedir
+Recommends:     (oddjob-mkhomedir if authselect)
+Suggests:       himmelblau-qr-greeter
 Suggests:       authselect
 
 %description -n pam-himmelblau
@@ -126,6 +135,7 @@ Entra Id credentials.
 Summary:        Azure Entra Id SSHD Configuration
 Requires:       %{name} = %{version}
 Requires:       openssh-server
+Supplements:    (pam-himmelblau and openssh-server)
 BuildRequires:  openssh-server
 BuildArch:      noarch
 
@@ -140,6 +150,10 @@ Requires:       %{name} = %{version}
 Recommends:     curl
 Recommends:     jq
 Recommends:     libfuse2
+Supplements:    (MozillaFirefox and himmelblau)
+Supplements:    (chromium and himmelblau)
+Supplements:    (google-chrome-stable and himmelblau)
+Supplements:    (microsoft-edge-stable and himmelblau)
 
 %description -n himmelblau-sso
 Himmelblau SSO provides Azure Entra Id browser single sign-on via
@@ -150,7 +164,8 @@ web apps for common Office 365 applications (Teams, Outlook, etc).
 %package -n himmelblau-qr-greeter
 Summary:        Azure Entra Id DAG URL QR code GNOME Shell extension
 Requires:       gnome-shell
-Recommends:     systemd-container
+Requires:       himmelblau
+Recommends:     dconf
 BuildArch:      noarch
 
 %description -n himmelblau-qr-greeter
@@ -158,7 +173,7 @@ GNOME Shell extension that adds a QR code to authentication prompts
 when a MS DAG URL is detected.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 
 %build
 make rpm-servicefiles
@@ -182,7 +197,7 @@ make authselect
 %if !(0%{?suse_version} >= 1600)
 export HIMMELBLAU_ALLOW_MISSING_SELINUX=1
 %endif
-%{cargo_test} --workspace --exclude himmelblau-fuzz
+%{cargo_test} --workspace --exclude himmelblau-fuzz --exclude qr-greeter
 
 %install
 # NSS
@@ -277,21 +292,24 @@ install -m 0644 src/o365/generated/*.desktop %{buildroot}/%{_datadir}/applicatio
 install -m 0644 src/o365/src/*.png %{buildroot}/%{_iconsdir}/hicolor/256x256/apps/
 install -m 0755 target/release/linux-entra-sso %{buildroot}/%{_bindir}/linux-entra-sso
 install -m 0644 src/sso/src/firefox/linux_entra_sso.json %{buildroot}/%{_libdir}/mozilla/native-messaging-hosts/
-install -m 0644 src/sso/src/firefox/policies.json %{buildroot}/%{_sysconfdir}/firefox/policies/
+install -m 0644 src/sso-policies/src/firefox/policies.json %{buildroot}/%{_sysconfdir}/firefox/policies/
 install -m 0644 src/sso/src/chrome/linux_entra_sso.json %{buildroot}/%{chrome_nm_dir}/
 install -m 0644 src/sso/src/chrome/linux_entra_sso.json %{buildroot}/%{chromium_nm_dir}/
 install -m 0644 src/sso/src/chrome/extension.json %{buildroot}/%{chrome_ext_dir}/jlnfnnolkbjieggibinobhkjdfbpcohn.json
-install -m 0644 src/sso/src/chrome/policies.json %{buildroot}/%{chrome_policy_dir}/himmelblau.json
-install -m 0644 src/sso/src/chrome/policies.json %{buildroot}/%{chromium_policy_dir}/himmelblau.json
+install -m 0644 src/sso-policies/src/chrome/policies.json %{buildroot}/%{chrome_policy_dir}/himmelblau.json
+install -m 0644 src/sso-policies/src/chrome/policies.json %{buildroot}/%{chromium_policy_dir}/himmelblau.json
 install -m 0644 platform/opensuse/com.microsoft.identity.broker1.service %{buildroot}/%{_datadir}/dbus-1/services/
 install -m 0755 target/release/broker %{buildroot}/%{_sbindir}/
 
 # QR Greeter
 install -D -d -m 0755 %{buildroot}%{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org
 install -m 0644 target/release/qr-greeter-build/qr-greeter@himmelblau-idm.org/extension.js %{buildroot}/%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/extension.js
+install -m 0644 target/release/qr-greeter-build/qr-greeter@himmelblau-idm.org/qrcodegen.js %{buildroot}/%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/qrcodegen.js
+install -m 0644 target/release/qr-greeter-build/qr-greeter@himmelblau-idm.org/qrselection.js %{buildroot}/%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/qrselection.js
 install -m 0644 target/release/qr-greeter-build/qr-greeter@himmelblau-idm.org/metadata.json %{buildroot}/%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/metadata.json
 install -m 0644 target/release/qr-greeter-build/qr-greeter@himmelblau-idm.org/stylesheet.css %{buildroot}/%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/stylesheet.css
 install -m 0644 target/release/qr-greeter-build/qr-greeter@himmelblau-idm.org/msdag.png %{buildroot}/%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/msdag.png
+install -m 0644 target/release/qr-greeter-build/qr-greeter@himmelblau-idm.org/ms-consumer-dag.png %{buildroot}/%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/ms-consumer-dag.png
 
 %post -n libnss_himmelblau2
 /sbin/ldconfig
@@ -450,8 +468,11 @@ if [ -d /usr/share/icons/hicolor ] && command -v gtk-update-icon-cache >/dev/nul
 %dir %{_datarootdir}/gnome-shell/extensions
 %dir %{_datarootdir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org
 %{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/extension.js
+%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/qrcodegen.js
+%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/qrselection.js
 %{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/metadata.json
 %{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/stylesheet.css
 %{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/msdag.png
+%{_datadir}/gnome-shell/extensions/qr-greeter@himmelblau-idm.org/ms-consumer-dag.png
 
 %changelog

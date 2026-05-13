@@ -1688,4 +1688,21 @@ on leap 15.6, selinux-policy-devel doesn't exist
     <comment></comment>
     <requestid>1344208</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8a7fa3d92e1306b463584f3321334c88</srcmd5>
+    <version>3.1.5+git0.445569d9</version>
+    <time>1778685623</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.1.5+git0.445569d9:
+  * feat(firefox): Update Firefox extension to v1.8.0
+  * fix(auth): apply request_timeout to attempt_online() HTTP probes
+  * Reject auth when token spn local part differs from requested account_id
+  * Correct the description of connection_timeout config
+  * Add configurable request_timeout to fix multi-address DNS failures
+  * Update libhimmelblau to latest version
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 31 updates
+  * Adds python311-build.patch for ensuring 15.x builds succeed.
+</comment>
+    <requestid>1352791</requestid>
+  </revision>
 </revisionlist>

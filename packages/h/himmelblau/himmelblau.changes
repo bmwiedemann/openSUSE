@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 07 19:15:04 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 3.1.5+git0.445569d9:
+  * feat(firefox): Update Firefox extension to v1.8.0
+  * fix(auth): apply request_timeout to attempt_online() HTTP probes
+  * Reject auth when token spn local part differs from requested account_id
+  * Correct the description of connection_timeout config
+  * Add configurable request_timeout to fix multi-address DNS failures
+  * Update libhimmelblau to latest version
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 31 updates
+  * Adds python311-build.patch for ensuring 15.x builds succeed.
+
+-------------------------------------------------------------------
 Wed Apr 01 16:32:53 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 2.3.9+git0.a9fd29b:

@@ -1,0 +1,23 @@
+diff --git a/src/common/build.rs b/src/common/build.rs
+index 6ea819c1..fd622886 100644
+--- a/src/common/build.rs
++++ b/src/common/build.rs
+@@ -25,7 +25,17 @@ fn main() {
+     }
+
+     // Call the Python script to generate Rust code
+-    let status = Command::new("python3")
++    // Try python311 first (for SLE 15.x), fall back to python3
++    let python_cmd = if Command::new("python3.11")
++        .arg("--version")
++        .output()
++        .is_ok()
++    {
++        "python3.11"
++    } else {
++        "python3"
++    };
++    let status = Command::new(python_cmd)
+         .arg(&script_path)
+         .arg("--gen-rust")
+         .arg("--rust-output")
