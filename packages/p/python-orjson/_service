@@ -1,8 +1,19 @@
 <services>
-  <service name="cargo_vendor" mode="manual">
-    <param name="srctar">orjson-*-devendored.tar.xz</param>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/ijl/orjson</param>
+    <param name="revision">3.11.9</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="exclude">(Cargo.lock|.cargo/*|bench/*)</param>
+  </service>
+  <service name="recompress" mode="manual">
     <param name="compression">xz</param>
-    <param name="update">true</param>
+    <param name="file">*.tar</param>
+ </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srctar">orjson-*.tar.xz</param>
+    <param name="compression">xz</param>
+    <param name="update">false</param>
   </service>
   <service name="cargo_audit" mode="manual"></service>
 </services>

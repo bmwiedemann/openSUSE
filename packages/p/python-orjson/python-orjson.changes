@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  8 14:43:37 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.11.9
+  * Build now depends on Rust 1.95 or later instead of 1.89.
+  * Fix building on Rust 1.95.
+- switch to tar_scm source service since link to upstream tarball was missing
+- drop devendoring script in favor of excludes in tar_scm service
+- update test dependencies
+
+-------------------------------------------------------------------
 Thu Apr 16 11:50:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.11.8

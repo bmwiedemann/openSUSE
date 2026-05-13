@@ -237,4 +237,18 @@
     <comment></comment>
     <requestid>1347832</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2c2e712aa1dfb51cf10c8688334ebf70</srcmd5>
+    <version>3.11.9</version>
+    <time>1778685511</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.11.9
+  * Build now depends on Rust 1.95 or later instead of 1.89.
+  * Fix building on Rust 1.95.
+- switch to tar_scm source service since link to upstream tarball was missing
+- drop devendoring script in favor of excludes in tar_scm service
+- update test dependencies
+</comment>
+    <requestid>1352654</requestid>
+  </revision>
 </revisionlist>

@@ -18,31 +18,36 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-orjson
-Version:        3.11.8
+Version:        3.11.9
 Release:        0
 Summary:        Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy
 License:        (Apache-2.0 OR MIT) AND MPL-2.0
 URL:            https://github.com/ijl/orjson
-# Update: Change version and run `osc rm orjson-*.tar.gz && osc service runall download_files && sh ./devendor-sdist.sh && osc service runall cargo_vendor`
-Source0:        orjson-%{version}-devendored.tar.xz
+Source0:        orjson-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source3:        devendor-sdist.sh
-Source4:        PACKAGING_README.md
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module maturin >= 1.9.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+# Requires rust 1.95 since v3.11.9
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# TODO: de-vendor yyjson in include/yyjson
+# BuildRequires: yyjson-devel
+
 # SECTION test requirements
+BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module xxhash}
+%ifarch x86_64
+BuildRequires:  %{python_module pendulum}
+BuildRequires:  %{python_module psutil}
+%endif
+
 BuildRequires:  timezone
 # /SECTION
 %python_subpackages
