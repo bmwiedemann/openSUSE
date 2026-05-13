@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May  9 08:38:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.56.3:
+  + Fix crash when user_data is defined before callback
+  + Add missing msg argument to asyncio cancel()
+  + Fix potential buffer overflow errors
+  + Fix memory leak when initializing GTK templates
+
+-------------------------------------------------------------------
 Wed Mar 25 19:38:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.56.2:

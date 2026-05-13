@@ -918,4 +918,16 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment>New upstream release</comment>
     <requestid>1342873</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>cfab4129440775eae85968d2e0397727</srcmd5>
+    <version>3.56.3</version>
+    <time>1778685572</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.3:
+  + Fix crash when user_data is defined before callback
+  + Add missing msg argument to asyncio cancel()
+  + Fix potential buffer overflow errors
+  + Fix memory leak when initializing GTK templates</comment>
+    <requestid>1352553</requestid>
+  </revision>
 </revisionlist>
