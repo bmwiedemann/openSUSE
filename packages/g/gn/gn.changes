@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Apr 30 12:27:42 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 0.20260429:
+  * Run update reference in CI
+  * Add `gn suggest` subcommand.
+  * Update documentation
+  * [apple] Optimise enumeration of additional files for Xcode project
+  * [gn] Split SOURCE_SET phony targets to exclude additional outputs from linking
+  * Run formatter in CI
+  * Rework update_reference.sh to run correctly in CI.
+  * IWYU: gn/target.h
+  * Revert "Run formatter and update reference in CI"
+  * Revert "Fix: Ensure only actual object files are included in link inputs"
+  * Run formatter and update reference in CI
+  * Add --diff to run_formatter and update_reference
+  * Fix: Ensure only actual object files are included in link inputs
+  * Run `infra/recipes.py test train`.
+  * Improve EXPECT_EQ diff printing
+  * Simplify success expectations in GN.
+  * Add support for c_additional_outputs in config
+  * Add diffs to EXPECT_EQ.
+  * Advertise QtCreator v20+ built-in GN support
+  * Rename impl:$MODULE to $MODULE_Private.
+  * Only output -fmodule-map-file for the root generated modulemap.
+  * Add function `expand_directory` to gn.
+  * Refactor ModuleType from an enum to a bitset.
+  * Generate two modulemaps per target.
+  * Put dependencies in modulemaps
+  * Run formatter
+  * Include your own modulemap files in module_deps_no_self.
+  * Change default module name in GN to be the full label.
+
+-------------------------------------------------------------------
 Tue Apr  7 15:52:49 UTC 2026 - Ruediger Oertel <ro@suse.com>
 
 - added patches:

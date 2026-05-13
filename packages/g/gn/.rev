@@ -263,4 +263,12 @@
     <comment>gn version bump, required for chromium &gt;= 148</comment>
     <requestid>1348995</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>888a737022bc652f976b1d37e040b0db</srcmd5>
+    <version>0.20260429</version>
+    <time>1778704392</time>
+    <user>anag_factory</user>
+    <comment>gn 0.20260429, build dependency for chromium 149</comment>
+    <requestid>1352908</requestid>
+  </revision>
 </revisionlist>
