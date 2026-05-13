@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 12 12:09:25 UTC 2026 - Alexander Bergmann <abergmann@suse.com>
+
+- net-snmp Immutable Mode adaptation
+  * implementation task jsc#PED-14728 from epic jsc#PED-14688
+  * modify net-snmp.spec
+  * modify net-snmp-tmpfs.conf 
+
+-------------------------------------------------------------------
 Thu Feb  5 07:03:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix dependency on renamed library in baselibs devel package.

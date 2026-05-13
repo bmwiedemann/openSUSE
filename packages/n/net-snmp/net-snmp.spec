@@ -295,11 +295,22 @@ popd
 
 %install
 %make_install INSTALL_PREFIX=%{buildroot}
-install -Dd %{buildroot}%{_localstatedir}/log %{buildroot}%{_localstatedir}/lib/net-snmp %{buildroot}%{_libexecdir}/net-snmp/agents %{buildroot}%{netsnmp_agentx_socket_dir_fhs}
+# Create directory structure
+install -d %{buildroot}%{_libexecdir}/net-snmp/agents
+install -d %{buildroot}%{_datadir}/net-snmp/config-templates
+install -d %{buildroot}%{_sysconfdir}/snmp
+
+# Install vendor default configs to /usr/share (Immutable Mode compatible)
+install -D -m 0644 %{SOURCE1} \
+    %{buildroot}%{_datadir}/net-snmp/config-templates/snmpd.conf
+
+# Install systemd service files
 install -D -m 0644 dist/snmpd.service %{buildroot}%{_unitdir}/snmpd.service
 install -D -m 0644 dist/snmptrapd.service %{buildroot}%{_unitdir}/snmptrapd.service
-install -D -m 0600 %{SOURCE1} %{buildroot}%{_sysconfdir}/snmp/snmpd.conf
+
+# Install SUSE readme documentation
 install -m 0644 %{SOURCE2} .
+
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_distconfdir}/logrotate.d/net-snmp
@@ -311,7 +322,7 @@ install -m 0744 %{SOURCE4} testing/
 ln -sf service %{buildroot}%{_sbindir}/rcsnmpd
 ln -sf service %{buildroot}%{_sbindir}/rcsnmptrapd
 %endif
-install -m 0644 /dev/null  %{buildroot}%{netsnmp_logfile}
+
 pushd perl
     %perl_make_install
     %perl_process_packlist
@@ -328,8 +339,6 @@ install -D -m 0644 %{SOURCE11} %{buildroot}%{_fillupdir}/sysconfig.snmptrapd
 # tmpfiles
 install -m 755 -d %{buildroot}/%{_tmpfilesdir}
 install -m 644 %{SOURCE20} %{buildroot}/%{_tmpfilesdir}/net-snmp.conf
-#
-ln -s -f %{netsnmp_agentx_socket_dir_fhs} %{buildroot}%{netsnmp_agentx_socket_dir_rfc}
 #
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -353,8 +362,27 @@ done
 %post
 %fillup_only -n snmpd
 %fillup_only -n snmptrapd
+
+# Create tmpfiles entries
 %tmpfiles_create %{_tmpfilesdir}/net-snmp.conf
+
+# Add systemd services
 %service_add_post snmpd.service snmptrapd.service
+
+# Immutable Mode: Copy default config if none exists
+# Note: This runs in %post which happens during transactional-update
+# so it's safe to write to /etc here (we're modifying the new snapshot)
+if [ "$1" -eq 1 ]; then
+    # Fresh install (not upgrade)
+    if [ ! -f %{_sysconfdir}/snmp/snmpd.conf ]; then
+        echo "Installing default snmpd configuration from vendor template..."
+        cp %{_datadir}/net-snmp/config-templates/snmpd.conf \
+           %{_sysconfdir}/snmp/snmpd.conf
+        chmod 0600 %{_sysconfdir}/snmp/snmpd.conf
+    fi
+fi
+# Create agentx symlink from /var to /run directory
+ln -s -f %{netsnmp_agentx_socket_dir_fhs} %{netsnmp_agentx_socket_dir_rfc}
 
 %preun
 %service_del_preun snmpd.service snmptrapd.service
@@ -370,8 +398,10 @@ done
 %doc AGENT.txt EXAMPLE.conf EXAMPLE.conf.def
 %doc FAQ NEWS TODO CHANGES
 %doc README README.agent-mibs README.agentx README.krb5 README.snmpv3 README.thread
+%dir %{_datadir}/net-snmp
+%dir %{_datadir}/net-snmp/config-templates
+%{_datadir}/net-snmp/config-templates/snmpd.conf
 %dir %{_sysconfdir}/snmp
-%config(noreplace) %{_sysconfdir}/snmp/snmpd.conf
 %{_unitdir}/snmpd.service
 %{_unitdir}/snmptrapd.service
 %{_tmpfilesdir}/net-snmp.conf
@@ -412,9 +442,7 @@ done
 %dir %{_libexecdir}/net-snmp/agents
 %{_mandir}/man[158]/*
 %{_sbindir}/*
-%{_localstatedir}/lib/net-snmp
 %dir %ghost %attr(700,root,root) %{netsnmp_agentx_socket_dir_fhs}
-%ghost %{netsnmp_logfile}
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/net-snmp
 %else
@@ -422,7 +450,6 @@ done
 %endif
 %{_fillupdir}/sysconfig.snmpd
 %{_fillupdir}/sysconfig.snmptrapd
-%{netsnmp_agentx_socket_dir_rfc}
 %{_datadir}/snmp/snmpconf-data/
 %{_datadir}/snmp/snmp_perl.pl
 %{_datadir}/snmp/snmp_perl_trapd.pl
