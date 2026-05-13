@@ -16,7 +16,7 @@
 #
 
 Name:           goshs
-Version:        2.0.6
+Version:        2.0.8
 Release:        0
 Summary:        A simple HTTP server
 License:        MIT
@@ -25,6 +25,9 @@ URL:            https://goshs.de/
 #Git-Clone:     https://github.com/patrickhener/goshs.git
 Source:         https://github.com/patrickhener/goshs/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
+BuildRequires:  zsh
+BuildRequires:  fish
 BuildRequires:  go >= 1.24.1
 BuildRequires:  golang-packaging
 # shared-mime-info needed for tests
@@ -49,13 +52,25 @@ go build \
 %install
 install -Dm 0755 goshs.bin %{buildroot}%{_bindir}/goshs
 
+for shell in bash fish zsh; do
+  %{buildroot}%{_bindir}/goshs --completion "$shell"
+done
+install -Dm 0644 /home/abuild/.local/share/bash-completion/completions/goshs %{buildroot}/%{_datadir}/bash-completion/completions/%{name}.bash
+install -Dm 0644 /home/abuild/.config/fish/completions/goshs.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+install -Dm 0644 /home/abuild/.local/share/zsh/site-functions/_goshs %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
+
 %check
-make run-unit-no-network
+%make_build run-unit-no-network
 
 %files
 %license LICENSE
 %doc README.md
 %doc example/goshs.json.example
 %{_bindir}/goshs
+%{_datadir}/bash-completion/completions/goshs.bash
+%dir %{_datadir}/fish
+%{_datadir}/fish/*
+%dir %{_datadir}/zsh
+%{_datadir}/zsh/*
 
 %changelog

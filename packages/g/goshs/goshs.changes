@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 13 14:14:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.8
+   * Add shell completion.
+- Update to version 2.0.7
+  Security
+  * Security Update: The auto-update check now verifies the
+    download against MITM attacks using the checksum.
+  * Fixed GHSA-mxg3-432p-mr72: A mismatched host key during tunnel
+    setup exits the process immediately instead of silently
+    continuing.
+  Bug Fixes
+  * Fixed SMB credential logging being silently dropped when -b
+    (basic auth) was active.
+  * Fixed HTTP collaborator frontend incorrectly parsing certain
+    base64-encoded log entries.
+
+-------------------------------------------------------------------
 Wed Apr 29 18:36:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.6
