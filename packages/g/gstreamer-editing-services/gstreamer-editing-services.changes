@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 12 07:25:34 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.3:
+  + Plug memory leaks reported running valgrind on our testsuite
+  + Fix use-after-free in GESUriSource decodebin callbacks
+  + Fix use-after-free in structured-interface and asset cache
+
+-------------------------------------------------------------------
 Wed Apr  8 13:37:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.2:
