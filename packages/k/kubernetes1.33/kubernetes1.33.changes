@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 13 13:18:38 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.33.12:
+  * kubeadm: use dedicated ClusterRole for apiserver kubelet client
+  * kubeadm: skip LocalAPIEndpoint defaulting on worker join
+  * kubeadm: use the localAPIEndpoint for all API calls in 'init'
+  * Add a (*Client) addEndpoint method
+  * Evaluate etcd cluster health using quorum
+
+-------------------------------------------------------------------
 Thu Apr 16 06:05:24 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.33.11:
