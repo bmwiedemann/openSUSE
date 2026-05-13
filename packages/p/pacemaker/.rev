@@ -2614,4 +2614,18 @@ jsc#PED-14899
 - libpacemaker: Fix a memory leak in inject_action. (forwarded request 1350240 from yan_gao)</comment>
     <requestid>1350241</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>ed899143bb464d28af3c7eb08d3b4669</srcmd5>
+    <version>3.0.2+20260511.6629f2e0</version>
+    <time>1778685528</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.2+20260511.6629f2e0 (Pacemaker-3.0.2-rc2):
+- libcib: Handle cib_xpath_address for an XPath query for an attribute (gh#ClusterLabs/pacemaker#4108)
+- libcib: Prevent based or cibadmin from crashing when handling an XPath query for an attribute (bsc#1249217, gh#ClusterLabs/pacemaker#4108)
+
+- Update to version 3.0.2+20260504.2f55330a:
+- libcrmcommon: Deprecate PCMK_dh_max_bits.
+- libcib: Full-CIB replace op no longer segfaults with cib_xpath (forwarded request 1352713 from yan_gao)</comment>
+    <requestid>1352714</requestid>
+  </revision>
 </revisionlist>
