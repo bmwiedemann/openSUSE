@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue May 12 06:57:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.3:
+  + appsink, appsrc: Allow passing NULL callbacks
+  + appsrc: Fix dropped counting with bufferlist
+  + audioaggregator:
+    - Don't drop pending input buffers on sinkpads on srcpad caps
+      changes
+    - Don't reset samples_per_buffer unless sample rate /
+      output-buffer-duration has changed
+    - Don't try converting buffers on caps changes if impossible
+  + audioresample: Fix extra samples produced at speech-to-silence
+    transitions
+  + audio-resampler-neon: fix Thumb encoding and use Clang O2
+    calculation for strides
+  + audio sounds strange on release 1.28.2 for armv7hf
+  + decodebin2: fix leak of endpads list on shutdown while exposing
+  + discoverer: Take the DISCO_LOCK while parsing stream topology
+  + exiftag: Use a hashtable instead of a linked list for storing
+    the pending tags
+  + gl: add GBRA swizzle support
+  + id3v2:
+    - Add input validation and refactor id3v2_ununsync_data
+    - Check valid frame sizes more
+  + opengl: Fix glcolorconvert vertical flip issue on crop
+  + glcolorconvert: GBRA input hits unreachable swizzle path
+  + subparse / samiparse: Various robustness fixes and minor other
+    fixes
+  + subparse:
+    - Fix memory leakage for text colour and background colour
+    - O(N^2) complexity in SAMI parser causes timeout with crafted
+      large input
+  + tag:
+    - Prevent ubsan and wrong fraction usage
+    - Off-by-one checking for id3v2 unnsync tag parsing
+  + video: add precondition check on dma helpers
+  + videodmabufpool: Break ref cycle between the pool and its
+    thread
+
+-------------------------------------------------------------------
 Wed Apr  8 11:29:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.2:
