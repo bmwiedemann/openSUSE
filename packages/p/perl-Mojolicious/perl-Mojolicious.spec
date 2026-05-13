@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojolicious
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Mojolicious
 Name:           perl-Mojolicious
-Version:        9.420.0
+Version:        9.450.0
 Release:        0
-# 9.42 -> normalize -> 9.420.0
-%define cpan_version 9.42
+# 9.45 -> normalize -> 9.450.0
+%define cpan_version 9.45
 License:        Artistic-2.0
 Summary:        Real-time web framework
 URL:            https://metacpan.org/release/%{cpan_name}

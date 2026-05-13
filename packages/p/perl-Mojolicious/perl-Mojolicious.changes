@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May  6 07:47:09 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.450.0 (9.45)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.45  2026-05-05
+    - Fixed portability issue in WebSocket tests.
+
+  9.44  2026-05-05
+    - Fixed various spec compliance issues in Mojo::DOM.
+    - Fixed permessage-deflate support in Mojo::Transaction::WebSocket to be more interoperable with non-spec compliant
+      implementations.
+
+  9.43  2026-05-04
+    - Fixed punycode roundtrip bug in Mojo::Util.
+    - Fixed Windows compatibility issues of Mojo::File::list_tree.
+
+-------------------------------------------------------------------
 Thu Oct  9 20:01:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.420.0 (9.42)

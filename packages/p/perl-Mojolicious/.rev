@@ -1724,4 +1724,22 @@ Tons of changes, just the peak of the ice berg:
     - Fixed async/await memory leak in Mojo::Promise. (TFBW)</comment>
     <requestid>1310541</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>793b86f30d346745751cdcc23cf4ea71</srcmd5>
+    <version>9.450.0</version>
+    <time>1778685688</time>
+    <user>anag_factory</user>
+    <comment>- updated to 9.450.0 (9.45)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+  9.45  2026-05-05
+    - Fixed portability issue in WebSocket tests.
+  9.44  2026-05-05
+    - Fixed various spec compliance issues in Mojo::DOM.
+    - Fixed permessage-deflate support in Mojo::Transaction::WebSocket to be more interoperable with non-spec compliant
+      implementations.
+  9.43  2026-05-04
+    - Fixed punycode roundtrip bug in Mojo::Util.
+    - Fixed Windows compatibility issues of Mojo::File::list_tree.</comment>
+    <requestid>1352905</requestid>
+  </revision>
 </revisionlist>
