@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue May  5 13:11:16 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- relocate /var/lib/pcp content for transactional-update targets
+- remove all dependencies on update-desktop-files (jsc#PED-15232)
+- Add pcp-stash-relocate.sh: a buildroot-relocation helper
+  invoked from %install. It walks each subpackage's .list file,
+  classifies entries under /var/lib/pcp and /var/log/pcp by buildroot
+  type (symlink/file/dir), and rewrites the lists in place to ghost
+  legacy paths and (where applicable) ship stash-side equivalents.
+- Add %{_stashdir} macro pointing at %{_libexecdir}/pcp/stash. Sited
+  under %{_libexecdir} rather than %{_datadir} because pcp-testsuite
+  ships ELF binaries (test PMDAs and Qt unit tests); FHS reserves
+  /usr/share for arch-independent content and rpmlint badness for
+  arch-dependent-file-in-usr-share would block OBS publication.
+- Add per-subpackage tmpfiles snippets generated at build time. The
+  script emits one pcp-<listname>-stash.conf per processed list, with
+  L+ entries recreating the legacy /var/lib/pcp tree at boot:
+  - For PMDAs and other symlink-only subpackages, L+ entries point at
+    the pre-existing /usr/libexec/pcp/... or /etc/pcp/... targets
+    that PCP's upstream install already places there.
+  - For pcp-testsuite, real files are cp -a'd into the stash and L+
+    entries point at the stash copy.
+- Convert ~70 subpackages to %files -f <listname>.list form: every
+  PMDA except the conditionally-disabled ones (bcc, bpftrace, mssql,
+  podman, postgresql, statsd, libvirt), plus pcp-conf, pcp-devel,
+  pcp-gui, pcp-zeroconf, pcp-testsuite and base pcp.
+- Add %post / %postun pairs for each converted subpackage that invoke
+  %tmpfiles_create on install and systemd-tmpfiles --remove on full
+  uninstall. Existing scriptlets (base pcp, pcp-zeroconf) are
+  augmented rather than replaced.
+- Add %dir %{_stashdir} ownership to base pcp so OBS check-filelist
+  is satisfied; the stash dir is otherwise empty for symlink-only
+  installs.
+- Add ancestor %dir entries to base pcp's base.list for the top-level
+  /var/lib/pcp, /var/lib/pcp/config, /var/lib/pcp/pmdas, /var/lib/
+  pcp/tmp + 6 children, /var/log/pcp + 5 children, and config/pmda.
+  These were previously inline %dir lines in %files -f base.list;
+  moved into base.list so the relocation script can ghost them.
+- pcp-pmda-dm gets an additional %{_ieconfdir}/dm enumeration; the
+  Pattern 5 PMDAs (uwsgi, resctrl) get individually-listed file
+  removal from %files; pcp-pmda-perfevent's redundant
+  %config(noreplace) %{_pmdasdir}/perfevent/perfevent.conf line is
+  dropped (it's a symlink to /etc/pcp/perfevent/perfevent.conf which
+  the relocation handles directly).
+- PCP's runtime (PCP_VAR_DIR=/var/lib/pcp baked into binaries) is
+  unchanged; the relocation is invisible to PCP itself. Symlinks
+  recreated at boot by systemd-tmpfiles transparently redirect
+  reads to the read-only stash or upstream-shipped targets.
+- Required for shipping PCP onto SUSE's transactional-update /
+  immutable-OS images (MicroOS, SLE Micro), where /var is a
+  separate writable subvolume from the read-only /usr snapshot.
+
+-------------------------------------------------------------------
 Tue Apr 28 00:49:51 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - fix: enable build on i586 and update to 6.3.8

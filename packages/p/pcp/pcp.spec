@@ -79,6 +79,11 @@ Source0:        https://github.com/performancecopilot/pcp/archive/refs/tags/%{ve
 %if 0%{?suse_version}
 Source2:        pcp-rpmlintrc
 %endif
+# Removes packaged content from /var/lib/pcp in the buildroot and
+# generates per-subpackage tmpfiles snippets that recreate the tree at
+# boot via systemd-tmpfiles. Required for transactional-update /
+# immutable-OS targets (boo#XXXXXXX).
+Source50:       pcp-stash-relocate.sh
 
 # PATCH-FIX-OPENSUSE, kkaempf@suse.de
 Patch1:         0001-Install-libraries-without-exec-permission.patch
@@ -347,14 +352,9 @@ BuildRequires:  systemtap-sdt-devel
 %if !%{disable_libuv}
 BuildRequires:  libuv-devel >= 1.0
 %endif
+BuildRequires:  man
 BuildRequires:  openssl-devel >= 1.0.2p
 BuildRequires:  perl-ExtUtils-MakeMaker
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%else
-BuildRequires:  initscripts
-%endif
-BuildRequires:  man
 %if !%{disable_systemd}
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
@@ -413,6 +413,17 @@ Provides:       pcp-pmda-nvidia = %{version}
 %global _selinuxdir     %{_datadir}/selinux/packages/targeted
 %global _logconfdir	%{_localstatedir}/lib/pcp/config/pmlogconf
 %global _ieconfdir	%{_localstatedir}/lib/pcp/config/pmieconf
+# Stash directory under /usr for content that genuinely cannot remain
+# under /var/lib/pcp on transactional-update targets (testsuite real
+# files). PMDA symlinks do not need a stash — their targets in
+# /usr/libexec/pcp are already snapshot-included.
+#
+# The stash lives under %{_libexecdir} (not %{_datadir}) because the
+# testsuite ships ELF binaries (broken/dynamic test PMDAs and Qt unit
+# tests). %{_datadir} (= /usr/share) is reserved by FHS for arch-
+# independent content; rpmlint flags ELF files there as
+# arch-dependent-file-in-usr-share with very high badness.
+%global _stashdir	%{_libexecdir}/pcp/stash
 %global _tapsetdir	%{_datadir}/systemtap/tapset
 %global _bashcompdir	%{_datadir}/bash-completion/completions
 %if 0%{?suse_version}
@@ -2479,7 +2490,6 @@ rm -rf %{buildroot}/usr/share/doc/pcp-gui
 mkdir -p %{buildroot}/%{_pixmapdir}
 mv %{buildroot}/%{_datadir}/pcp-gui/pixmaps/*.png %{buildroot}/%{_pixmapdir}
 rm -rf %{buildroot}/%{_datadir}/pcp-gui/pixmaps
-%suse_update_desktop_file -r -G 'Performance Copilot Chart' %{buildroot}/%{_datadir}/applications/pmchart.desktop System Monitor
 %else
 desktop-file-validate %{buildroot}/%{_datadir}/applications/pmchart.desktop
 %endif
@@ -2613,6 +2623,18 @@ cat base_bin.list base_exec.list base_bashcomp.list |\
   grep -E "$PCP_GUI" >> pcp-gui.list
 echo %{_confdir}/pmchart >>pcp-gui.list
 echo %{_libexecdir}/pcp/bin/pmsnap >>pcp-gui.list
+
+# pcp-gui ships symlinks under /var/lib/pcp/config/{pmsnap,pmchart}
+# pointing into /etc/pcp/{pmsnap,pmchart}, plus a single
+# /var/lib/pcp/config/pmafm/pcp-gui symlink. Enumerate those so the
+# relocation step ghosts them and emits L+ tmpfiles entries.
+for d in pmsnap pmchart; do
+    ( cd %{buildroot}%{_localstatedir}/lib/pcp/config/$d && \
+      find . -mindepth 1 -printf "/var/lib/pcp/config/$d/%%P\n" ) \
+      >> pcp-gui.list
+    echo "%%dir /var/lib/pcp/config/$d" >> pcp-gui.list
+done
+echo '/var/lib/pcp/config/pmafm/pcp-gui' >> pcp-gui.list
 %endif
 
 ls -1 %{buildroot}/%{_logconfdir}/ |\
@@ -2633,6 +2655,45 @@ mkdir -p %{buildroot}/%{_tmpfilesdir}
 mv $DIST_TMPFILES %{buildroot}/%{_tmpfilesdir}/pcp.conf
 echo %{_tmpfilesdir}/pcp.conf >> base.list
 %endif
+
+# Base pcp ships a number of paths under /var/lib/pcp and /var/log/pcp:
+#  - 4 built-in PMDA trees (denki, farm, overhead, podman) consisting of
+#    symlinks into %{_libexecdir}/pcp/pmdas/<name>
+#  - 2 pmlogredact symlinks into /etc/pcp/pmlogredact/
+#  - assorted runtime-state and log directories.
+# Enumerate them all into base.list so the relocation step ghosts the
+# legacy paths and emits a single tmpfiles snippet (pcp-base-stash.conf)
+# that recreates the tree at boot.
+for pmda in denki farm overhead podman; do
+    ( cd %{buildroot}%{_pmdasdir}/$pmda && \
+      find . -mindepth 1 -printf "/var/lib/pcp/pmdas/$pmda/%%P\n" ) \
+      >> base.list
+    echo "%%dir /var/lib/pcp/pmdas/$pmda" >> base.list
+done
+( cd %{buildroot}%{_localstatedir}/lib/pcp/config/pmlogredact && \
+  find . -mindepth 1 -printf '/var/lib/pcp/config/pmlogredact/%%P\n' ) \
+  >> base.list
+echo '%%dir /var/lib/pcp/config/pmlogredact' >> base.list
+
+# Top-level container directories owned by base pcp.
+echo '%%dir /var/lib/pcp'                          >> base.list
+echo '%%dir /var/lib/pcp/config'                   >> base.list
+echo '%%dir /var/lib/pcp/pmdas'                    >> base.list
+
+# Runtime-state directories (mode 0775 pcp:pcp via PERM_OVERRIDES).
+echo '%%dir /var/lib/pcp/tmp'                      >> base.list
+for d in bash json mmv pmie pmlogger pmproxy; do
+    echo "%%dir /var/lib/pcp/tmp/$d" >> base.list
+done
+
+# pmda runtime-state directory (also 0775 pcp:pcp).
+echo '%%dir /var/lib/pcp/config/pmda'              >> base.list
+
+# Log directories.
+echo '%%dir /var/log/pcp'                          >> base.list
+for d in pmcd pmlogger pmie pmproxy pmfind; do
+    echo "%%dir /var/log/pcp/$d" >> base.list
+done
 
 # all devel pcp package files except those split out into sub packages
 ls -1 %{buildroot}/%{_mandir}/man3 |\
@@ -2656,11 +2717,443 @@ for pmda in sample simple trivial txmon; do
 done
 echo %{_confdir}/simple/simple.conf >>devel.list
 
+# pcp-devel ships sample/simple/trivial/txmon PMDAs whose
+# /var/lib/pcp/pmdas/<name> trees consist of symlinks into
+# %{_libexecdir}/pcp/pmdas/<name>. Enumerate those trees so the
+# relocation step below ghosts the legacy paths and emits L+ tmpfiles
+# entries pointing at the original /usr/libexec/... targets.
+for pmda in sample simple trivial txmon; do
+    ( cd %{buildroot}%{_pmdasdir}/$pmda && \
+      find . -mindepth 1 -printf "/var/lib/pcp/pmdas/$pmda/%%P\n" ) \
+      >> devel.list
+    echo "%%dir /var/lib/pcp/pmdas/$pmda" >> devel.list
+done
+
+# Generate a .list file for pmda-activemq so the relocation step below
+# picks up its /var/lib/pcp/pmdas/activemq tree (which on disk consists
+# entirely of symlinks pointing into %{_pmdasexecdir}/activemq). The
+# %files block for pmda-activemq below reads the rewritten list back
+# via -f. (%%P and %%dir doubled so RPM passes them to the shell.)
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/activemq && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/activemq/%%P\n' ) \
+  >> pmda-activemq.list
+echo '%%dir /var/lib/pcp/pmdas/activemq' >> pmda-activemq.list
+%endif
+
+# Batch A: generate per-PMDA .list files so the stash relocation
+# below picks up each PMDA tree under /var/lib/pcp/pmdas/<name>/
+# (which on disk consists entirely of symlinks pointing into
+# %{_pmdasexecdir}/<name>). The corresponding %files blocks read
+# these rewritten lists back via -f. (%%P and %%dir are doubled
+# so RPM passes them through to the shell unchanged.)
+( cd %{buildroot}%{_pmdasdir}/amdgpu && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/amdgpu/%%P\n' ) \
+  >> pmda-amdgpu.list
+echo '%%dir /var/lib/pcp/pmdas/amdgpu' >> pmda-amdgpu.list
+( cd %{buildroot}%{_pmdasdir}/apache && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/apache/%%P\n' ) \
+  >> pmda-apache.list
+echo '%%dir /var/lib/pcp/pmdas/apache' >> pmda-apache.list
+( cd %{buildroot}%{_pmdasdir}/bash && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/bash/%%P\n' ) \
+  >> pmda-bash.list
+echo '%%dir /var/lib/pcp/pmdas/bash' >> pmda-bash.list
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/bonding && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/bonding/%%P\n' ) \
+  >> pmda-bonding.list
+echo '%%dir /var/lib/pcp/pmdas/bonding' >> pmda-bonding.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/cifs && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/cifs/%%P\n' ) \
+  >> pmda-cifs.list
+echo '%%dir /var/lib/pcp/pmdas/cifs' >> pmda-cifs.list
+( cd %{buildroot}%{_pmdasdir}/cisco && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/cisco/%%P\n' ) \
+  >> pmda-cisco.list
+echo '%%dir /var/lib/pcp/pmdas/cisco' >> pmda-cisco.list
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/dbping && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/dbping/%%P\n' ) \
+  >> pmda-dbping.list
+echo '%%dir /var/lib/pcp/pmdas/dbping' >> pmda-dbping.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/docker && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/docker/%%P\n' ) \
+  >> pmda-docker.list
+echo '%%dir /var/lib/pcp/pmdas/docker' >> pmda-docker.list
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/ds389 && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/ds389/%%P\n' ) \
+  >> pmda-ds389.list
+echo '%%dir /var/lib/pcp/pmdas/ds389' >> pmda-ds389.list
+%endif
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/ds389log && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/ds389log/%%P\n' ) \
+  >> pmda-ds389log.list
+echo '%%dir /var/lib/pcp/pmdas/ds389log' >> pmda-ds389log.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/gfs2 && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/gfs2/%%P\n' ) \
+  >> pmda-gfs2.list
+echo '%%dir /var/lib/pcp/pmdas/gfs2' >> pmda-gfs2.list
+%if !%{disable_python3}
+( cd %{buildroot}%{_pmdasdir}/gluster && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/gluster/%%P\n' ) \
+  >> pmda-gluster.list
+echo '%%dir /var/lib/pcp/pmdas/gluster' >> pmda-gluster.list
+%endif
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/gpfs && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/gpfs/%%P\n' ) \
+  >> pmda-gpfs.list
+echo '%%dir /var/lib/pcp/pmdas/gpfs' >> pmda-gpfs.list
+%endif
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/gpsd && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/gpsd/%%P\n' ) \
+  >> pmda-gpsd.list
+echo '%%dir /var/lib/pcp/pmdas/gpsd' >> pmda-gpsd.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/hacluster && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/hacluster/%%P\n' ) \
+  >> pmda-hacluster.list
+echo '%%dir /var/lib/pcp/pmdas/hacluster' >> pmda-hacluster.list
+%if !%{disable_infiniband}
+( cd %{buildroot}%{_pmdasdir}/infiniband && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/infiniband/%%P\n' ) \
+  >> pmda-infiniband.list
+echo '%%dir /var/lib/pcp/pmdas/infiniband' >> pmda-infiniband.list
+%endif
+%if !%{disable_lio}
+( cd %{buildroot}%{_pmdasdir}/lio && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/lio/%%P\n' ) \
+  >> pmda-lio.list
+echo '%%dir /var/lib/pcp/pmdas/lio' >> pmda-lio.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/lmsensors && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/lmsensors/%%P\n' ) \
+  >> pmda-lmsensors.list
+echo '%%dir /var/lib/pcp/pmdas/lmsensors' >> pmda-lmsensors.list
+( cd %{buildroot}%{_pmdasdir}/logger && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/logger/%%P\n' ) \
+  >> pmda-logger.list
+echo '%%dir /var/lib/pcp/pmdas/logger' >> pmda-logger.list
+( cd %{buildroot}%{_pmdasdir}/lustrecomm && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/lustrecomm/%%P\n' ) \
+  >> pmda-lustrecomm.list
+echo '%%dir /var/lib/pcp/pmdas/lustrecomm' >> pmda-lustrecomm.list
+( cd %{buildroot}%{_pmdasdir}/mailq && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/mailq/%%P\n' ) \
+  >> pmda-mailq.list
+echo '%%dir /var/lib/pcp/pmdas/mailq' >> pmda-mailq.list
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/memcache && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/memcache/%%P\n' ) \
+  >> pmda-memcache.list
+echo '%%dir /var/lib/pcp/pmdas/memcache' >> pmda-memcache.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/mic && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/mic/%%P\n' ) \
+  >> pmda-mic.list
+echo '%%dir /var/lib/pcp/pmdas/mic' >> pmda-mic.list
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/mysql && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/mysql/%%P\n' ) \
+  >> pmda-mysql.list
+echo '%%dir /var/lib/pcp/pmdas/mysql' >> pmda-mysql.list
+%endif
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/named && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/named/%%P\n' ) \
+  >> pmda-named.list
+echo '%%dir /var/lib/pcp/pmdas/named' >> pmda-named.list
+%endif
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/netfilter && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/netfilter/%%P\n' ) \
+  >> pmda-netfilter.list
+echo '%%dir /var/lib/pcp/pmdas/netfilter' >> pmda-netfilter.list
+%endif
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/news && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/news/%%P\n' ) \
+  >> pmda-news.list
+echo '%%dir /var/lib/pcp/pmdas/news' >> pmda-news.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/nfsclient && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/nfsclient/%%P\n' ) \
+  >> pmda-nfsclient.list
+echo '%%dir /var/lib/pcp/pmdas/nfsclient' >> pmda-nfsclient.list
+( cd %{buildroot}%{_pmdasdir}/nvidia && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/nvidia/%%P\n' ) \
+  >> pmda-nvidia-gpu.list
+echo '%%dir /var/lib/pcp/pmdas/nvidia' >> pmda-nvidia-gpu.list
+( cd %{buildroot}%{_pmdasdir}/openvswitch && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/openvswitch/%%P\n' ) \
+  >> pmda-openvswitch.list
+echo '%%dir /var/lib/pcp/pmdas/openvswitch' >> pmda-openvswitch.list
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/pdns && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/pdns/%%P\n' ) \
+  >> pmda-pdns.list
+echo '%%dir /var/lib/pcp/pmdas/pdns' >> pmda-pdns.list
+%endif
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/postfix && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/postfix/%%P\n' ) \
+  >> pmda-postfix.list
+echo '%%dir /var/lib/pcp/pmdas/postfix' >> pmda-postfix.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/roomtemp && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/roomtemp/%%P\n' ) \
+  >> pmda-roomtemp.list
+echo '%%dir /var/lib/pcp/pmdas/roomtemp' >> pmda-roomtemp.list
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/rsyslog && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/rsyslog/%%P\n' ) \
+  >> pmda-rsyslog.list
+echo '%%dir /var/lib/pcp/pmdas/rsyslog' >> pmda-rsyslog.list
+%endif
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/samba && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/samba/%%P\n' ) \
+  >> pmda-samba.list
+echo '%%dir /var/lib/pcp/pmdas/samba' >> pmda-samba.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/sendmail && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/sendmail/%%P\n' ) \
+  >> pmda-sendmail.list
+echo '%%dir /var/lib/pcp/pmdas/sendmail' >> pmda-sendmail.list
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/slurm && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/slurm/%%P\n' ) \
+  >> pmda-slurm.list
+echo '%%dir /var/lib/pcp/pmdas/slurm' >> pmda-slurm.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/smart && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/smart/%%P\n' ) \
+  >> pmda-smart.list
+echo '%%dir /var/lib/pcp/pmdas/smart' >> pmda-smart.list
+( cd %{buildroot}%{_pmdasdir}/sockets && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/sockets/%%P\n' ) \
+  >> pmda-sockets.list
+echo '%%dir /var/lib/pcp/pmdas/sockets' >> pmda-sockets.list
+%if !%{disable_systemd}
+( cd %{buildroot}%{_pmdasdir}/systemd && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/systemd/%%P\n' ) \
+  >> pmda-systemd.list
+echo '%%dir /var/lib/pcp/pmdas/systemd' >> pmda-systemd.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/trace && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/trace/%%P\n' ) \
+  >> pmda-trace.list
+echo '%%dir /var/lib/pcp/pmdas/trace' >> pmda-trace.list
+( cd %{buildroot}%{_pmdasdir}/unbound && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/unbound/%%P\n' ) \
+  >> pmda-unbound.list
+echo '%%dir /var/lib/pcp/pmdas/unbound' >> pmda-unbound.list
+( cd %{buildroot}%{_pmdasdir}/weblog && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/weblog/%%P\n' ) \
+  >> pmda-weblog.list
+echo '%%dir /var/lib/pcp/pmdas/weblog' >> pmda-weblog.list
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/zimbra && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/zimbra/%%P\n' ) \
+  >> pmda-zimbra.list
+echo '%%dir /var/lib/pcp/pmdas/zimbra' >> pmda-zimbra.list
+%endif
+%if !%{disable_python3}
+( cd %{buildroot}%{_pmdasdir}/zswap && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/zswap/%%P\n' ) \
+  >> pmda-zswap.list
+echo '%%dir /var/lib/pcp/pmdas/zswap' >> pmda-zswap.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/elasticsearch && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/elasticsearch/%%P\n' ) \
+  >> pmda-elasticsearch.list
+echo '%%dir /var/lib/pcp/pmdas/elasticsearch' >> pmda-elasticsearch.list
+( cd %{buildroot}%{_pmdasdir}/haproxy && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/haproxy/%%P\n' ) \
+  >> pmda-haproxy.list
+echo '%%dir /var/lib/pcp/pmdas/haproxy' >> pmda-haproxy.list
+( cd %{buildroot}%{_pmdasdir}/netcheck && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/netcheck/%%P\n' ) \
+  >> pmda-netcheck.list
+echo '%%dir /var/lib/pcp/pmdas/netcheck' >> pmda-netcheck.list
+( cd %{buildroot}%{_pmdasdir}/rabbitmq && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/rabbitmq/%%P\n' ) \
+  >> pmda-rabbitmq.list
+echo '%%dir /var/lib/pcp/pmdas/rabbitmq' >> pmda-rabbitmq.list
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/redis && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/redis/%%P\n' ) \
+  >> pmda-redis.list
+echo '%%dir /var/lib/pcp/pmdas/redis' >> pmda-redis.list
+%endif
+%if !%{disable_snmp}
+( cd %{buildroot}%{_pmdasdir}/snmp && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/snmp/%%P\n' ) \
+  >> pmda-snmp.list
+echo '%%dir /var/lib/pcp/pmdas/snmp' >> pmda-snmp.list
+%endif
+%if !%{disable_json}
+( cd %{buildroot}%{_pmdasdir}/json && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/json/%%P\n' ) \
+  >> pmda-json.list
+echo '%%dir /var/lib/pcp/pmdas/json' >> pmda-json.list
+%endif
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/lustre && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/lustre/%%P\n' ) \
+  >> pmda-lustre.list
+echo '%%dir /var/lib/pcp/pmdas/lustre' >> pmda-lustre.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/mounts && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/mounts/%%P\n' ) \
+  >> pmda-mounts.list
+echo '%%dir /var/lib/pcp/pmdas/mounts' >> pmda-mounts.list
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/nginx && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/nginx/%%P\n' ) \
+  >> pmda-nginx.list
+echo '%%dir /var/lib/pcp/pmdas/nginx' >> pmda-nginx.list
+%endif
+%if !%{disable_nutcracker}
+( cd %{buildroot}%{_pmdasdir}/nutcracker && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/nutcracker/%%P\n' ) \
+  >> pmda-nutcracker.list
+echo '%%dir /var/lib/pcp/pmdas/nutcracker' >> pmda-nutcracker.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/openmetrics && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/openmetrics/%%P\n' ) \
+  >> pmda-openmetrics.list
+echo '%%dir /var/lib/pcp/pmdas/openmetrics' >> pmda-openmetrics.list
+%if !%{disable_perl}
+( cd %{buildroot}%{_pmdasdir}/oracle && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/oracle/%%P\n' ) \
+  >> pmda-oracle.list
+echo '%%dir /var/lib/pcp/pmdas/oracle' >> pmda-oracle.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/shping && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/shping/%%P\n' ) \
+  >> pmda-shping.list
+echo '%%dir /var/lib/pcp/pmdas/shping' >> pmda-shping.list
+( cd %{buildroot}%{_pmdasdir}/summary && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/summary/%%P\n' ) \
+  >> pmda-summary.list
+echo '%%dir /var/lib/pcp/pmdas/summary' >> pmda-summary.list
+( cd %{buildroot}%{_pmdasdir}/dm && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/dm/%%P\n' ) \
+  >> pmda-dm.list
+echo '%%dir /var/lib/pcp/pmdas/dm' >> pmda-dm.list
+# pmda-dm additionally ships content under %{_ieconfdir}/dm; enumerate
+# that tree as well so the script will ghost it and emit tmpfiles
+# entries pointing at the underlying /etc/pcp/pmieconf/dm targets.
+( cd %{buildroot}%{_ieconfdir}/dm && \
+  find . -mindepth 1 -printf '/var/lib/pcp/config/pmieconf/dm/%%P\n' ) \
+  >> pmda-dm.list
+echo '%%dir /var/lib/pcp/config/pmieconf/dm' >> pmda-dm.list
+%if !%{disable_perfevent}
+( cd %{buildroot}%{_pmdasdir}/perfevent && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/perfevent/%%P\n' ) \
+  >> pmda-perfevent.list
+echo '%%dir /var/lib/pcp/pmdas/perfevent' >> pmda-perfevent.list
+%endif
+
+# Pattern 5 PMDAs (resctrl, uwsgi): hand-listed %files blocks above
+# include their /var/lib/pcp/pmdas/<name> paths individually. We
+# enumerate those subtrees here so the relocation step ghosts them and
+# emits L+ tmpfiles entries pointing at the existing %{_libexecdir}
+# (and, for uwsgi.conf, %{_confdir}) targets.
+%if !%{disable_resctrl}
+( cd %{buildroot}%{_pmdasdir}/resctrl && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/resctrl/%%P\n' ) \
+  >> pmda-resctrl.list
+echo '%%dir /var/lib/pcp/pmdas/resctrl' >> pmda-resctrl.list
+%endif
+( cd %{buildroot}%{_pmdasdir}/uwsgi && \
+  find . -mindepth 1 -printf '/var/lib/pcp/pmdas/uwsgi/%%P\n' ) \
+  >> pmda-uwsgi.list
+echo '%%dir /var/lib/pcp/pmdas/uwsgi' >> pmda-uwsgi.list
+
+# pcp-conf ships symlinks under /var/lib/pcp/config/derived/ pointing
+# into /etc/pcp/derived/.
+( cd %{buildroot}%{_localstatedir}/lib/pcp/config/derived && \
+  find . -mindepth 1 -printf '/var/lib/pcp/config/derived/%%P\n' ) \
+  >> conf.list
+echo '%%dir /var/lib/pcp/config/derived' >> conf.list
+
+# pcp-zeroconf ships symlinks under /var/lib/pcp/config/{pmieconf,pmlogconf}/zeroconf/
+# pointing into /etc/pcp/{pmieconf,pmlogconf}/zeroconf/.
+for d in pmieconf pmlogconf; do
+    ( cd %{buildroot}%{_localstatedir}/lib/pcp/config/$d/zeroconf && \
+      find . -mindepth 1 -printf "/var/lib/pcp/config/$d/zeroconf/%%P\n" ) \
+      >> zeroconf.list
+    echo "%%dir /var/lib/pcp/config/$d/zeroconf" >> zeroconf.list
+done
+
+# pcp-testsuite is the only subpackage exercising the script's
+# real-file relocation path: ~5500 actual files under
+# /var/lib/pcp/testsuite/ get cp'd into %{_stashdir}/testsuite/ and
+# %ghost'd at their legacy location. The dirs are also enumerated so
+# the rewritten list and tmpfiles snippet cover the whole tree.
+( cd %{buildroot}%{_testsdir} && \
+  find . -mindepth 1 \( -type f -o -type l \) \
+        -printf "/var/lib/pcp/testsuite/%%P\n" ) \
+  >> testsuite.list
+( cd %{buildroot}%{_testsdir} && \
+  find . -mindepth 1 -type d \
+        -printf "%%%%dir /var/lib/pcp/testsuite/%%P\n" ) \
+  >> testsuite.list
+echo '%%dir /var/lib/pcp/testsuite' >> testsuite.list
+###############################################################################
+# Stash relocation (boo#XXXXXXX).
+#
+# At this point all subpackage .list files have been generated in $BACKDIR.
+# For each entry naming a path under /var/lib/pcp:
+#   - if the buildroot has a symlink there, delete it and emit an
+#     'L+ <path> - - - - <original-target>' tmpfiles entry;
+#   - if the buildroot has a real file there (testsuite case), move it
+#     to %{_stashdir} and emit an 'L+ <path> - - - - <stash-path>' entry.
+# The .list files are rewritten in place to %ghost the legacy paths and
+# (for relocated files) name the stash paths.
+#
+# Required for transactional-update / immutable-OS targets where /var
+# is a separate writable subvolume from the read-only /usr snapshot.
+###############################################################################
+install -m 0755 %{SOURCE50} $BACKDIR/pcp-stash-relocate.sh
+$BACKDIR/pcp-stash-relocate.sh \
+    --buildroot   %{buildroot} \
+    --legacy-root /var/lib/pcp \
+    --legacy-root /var/log/pcp \
+    --stash-root  %{_stashdir} \
+    --listdir     $BACKDIR \
+    --tmpfilesdir %{_tmpfilesdir} \
+    --skip        base_pmdas \
+    --skip        base_conf \
+    --skip        base_pmns \
+    --skip        base_bin \
+    --skip        base_exec \
+    --skip        base_bashcomp \
+    --skip        pcp-logconf \
+    --skip        pcp-ieconf
+
 %pre testsuite
 test -d %{_testsdir} || mkdir -p -m 755 %{_testsdir}
 getent group pcpqa >/dev/null || groupadd -r pcpqa
 getent passwd pcpqa >/dev/null || \
   useradd -c "PCP Quality Assurance" -g pcpqa -d %{_testsdir} -M -r -s /bin/bash pcpqa 2>/dev/null
+
+%post testsuite
+%tmpfiles_create pcp-testsuite-stash.conf
+
+%postun testsuite
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-testsuite-stash.conf >/dev/null 2>&1 || :
+fi
 
 %pre
 %if 0%{?suse_version} && !%{disable_systemd}
@@ -2702,7 +3195,621 @@ then
 fi
 %endif
 
+# Batch A: %post/%postun for relocated PMDAs. Each invokes
+# systemd-tmpfiles to materialise the /var/lib/pcp/pmdas/<name>
+# symlink tree at install time and clean it up on uninstall.
+%post pmda-amdgpu
+%tmpfiles_create pcp-pmda-amdgpu-stash.conf
+
+%postun pmda-amdgpu
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-amdgpu-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-apache
+%tmpfiles_create pcp-pmda-apache-stash.conf
+
+%postun pmda-apache
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-apache-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-bash
+%tmpfiles_create pcp-pmda-bash-stash.conf
+
+%postun pmda-bash
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-bash-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-bonding
+%tmpfiles_create pcp-pmda-bonding-stash.conf
+
+%postun pmda-bonding
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-bonding-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-cifs
+%tmpfiles_create pcp-pmda-cifs-stash.conf
+
+%postun pmda-cifs
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-cifs-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-cisco
+%tmpfiles_create pcp-pmda-cisco-stash.conf
+
+%postun pmda-cisco
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-cisco-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-dbping
+%tmpfiles_create pcp-pmda-dbping-stash.conf
+
+%postun pmda-dbping
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-dbping-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-docker
+%tmpfiles_create pcp-pmda-docker-stash.conf
+
+%postun pmda-docker
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-docker-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-ds389
+%tmpfiles_create pcp-pmda-ds389-stash.conf
+
+%postun pmda-ds389
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-ds389-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_perl}
+%post pmda-ds389log
+%tmpfiles_create pcp-pmda-ds389log-stash.conf
+
+%postun pmda-ds389log
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-ds389log-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-gfs2
+%tmpfiles_create pcp-pmda-gfs2-stash.conf
+
+%postun pmda-gfs2
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-gfs2-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_python3}
+%post pmda-gluster
+%tmpfiles_create pcp-pmda-gluster-stash.conf
+
+%postun pmda-gluster
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-gluster-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_perl}
+%post pmda-gpfs
+%tmpfiles_create pcp-pmda-gpfs-stash.conf
+
+%postun pmda-gpfs
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-gpfs-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_perl}
+%post pmda-gpsd
+%tmpfiles_create pcp-pmda-gpsd-stash.conf
+
+%postun pmda-gpsd
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-gpsd-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-hacluster
+%tmpfiles_create pcp-pmda-hacluster-stash.conf
+
+%postun pmda-hacluster
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-hacluster-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_infiniband}
+%post pmda-infiniband
+%tmpfiles_create pcp-pmda-infiniband-stash.conf
+
+%postun pmda-infiniband
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-infiniband-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_lio}
+%post pmda-lio
+%tmpfiles_create pcp-pmda-lio-stash.conf
+
+%postun pmda-lio
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-lio-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-lmsensors
+%tmpfiles_create pcp-pmda-lmsensors-stash.conf
+
+%postun pmda-lmsensors
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-lmsensors-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-logger
+%tmpfiles_create pcp-pmda-logger-stash.conf
+
+%postun pmda-logger
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-logger-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-lustrecomm
+%tmpfiles_create pcp-pmda-lustrecomm-stash.conf
+
+%postun pmda-lustrecomm
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-lustrecomm-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-mailq
+%tmpfiles_create pcp-pmda-mailq-stash.conf
+
+%postun pmda-mailq
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-mailq-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-memcache
+%tmpfiles_create pcp-pmda-memcache-stash.conf
+
+%postun pmda-memcache
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-memcache-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-mic
+%tmpfiles_create pcp-pmda-mic-stash.conf
+
+%postun pmda-mic
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-mic-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-mysql
+%tmpfiles_create pcp-pmda-mysql-stash.conf
+
+%postun pmda-mysql
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-mysql-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_perl}
+%post pmda-named
+%tmpfiles_create pcp-pmda-named-stash.conf
+
+%postun pmda-named
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-named-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_perl}
+%post pmda-netfilter
+%tmpfiles_create pcp-pmda-netfilter-stash.conf
+
+%postun pmda-netfilter
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-netfilter-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_perl}
+%post pmda-news
+%tmpfiles_create pcp-pmda-news-stash.conf
+
+%postun pmda-news
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-news-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-nfsclient
+%tmpfiles_create pcp-pmda-nfsclient-stash.conf
+
+%postun pmda-nfsclient
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-nfsclient-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-nvidia-gpu
+%tmpfiles_create pcp-pmda-nvidia-gpu-stash.conf
+
+%postun pmda-nvidia-gpu
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-nvidia-gpu-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-openvswitch
+%tmpfiles_create pcp-pmda-openvswitch-stash.conf
+
+%postun pmda-openvswitch
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-openvswitch-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-pdns
+%tmpfiles_create pcp-pmda-pdns-stash.conf
+
+%postun pmda-pdns
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-pdns-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_perl}
+%post pmda-postfix
+%tmpfiles_create pcp-pmda-postfix-stash.conf
+
+%postun pmda-postfix
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-postfix-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-roomtemp
+%tmpfiles_create pcp-pmda-roomtemp-stash.conf
+
+%postun pmda-roomtemp
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-roomtemp-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-rsyslog
+%tmpfiles_create pcp-pmda-rsyslog-stash.conf
+
+%postun pmda-rsyslog
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-rsyslog-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_perl}
+%post pmda-samba
+%tmpfiles_create pcp-pmda-samba-stash.conf
+
+%postun pmda-samba
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-samba-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-sendmail
+%tmpfiles_create pcp-pmda-sendmail-stash.conf
+
+%postun pmda-sendmail
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-sendmail-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-slurm
+%tmpfiles_create pcp-pmda-slurm-stash.conf
+
+%postun pmda-slurm
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-slurm-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-smart
+%tmpfiles_create pcp-pmda-smart-stash.conf
+
+%postun pmda-smart
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-smart-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-sockets
+%tmpfiles_create pcp-pmda-sockets-stash.conf
+
+%postun pmda-sockets
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-sockets-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_systemd}
+%post pmda-systemd
+%tmpfiles_create pcp-pmda-systemd-stash.conf
+
+%postun pmda-systemd
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-systemd-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-trace
+%tmpfiles_create pcp-pmda-trace-stash.conf
+
+%postun pmda-trace
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-trace-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-unbound
+%tmpfiles_create pcp-pmda-unbound-stash.conf
+
+%postun pmda-unbound
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-unbound-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-weblog
+%tmpfiles_create pcp-pmda-weblog-stash.conf
+
+%postun pmda-weblog
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-weblog-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-zimbra
+%tmpfiles_create pcp-pmda-zimbra-stash.conf
+
+%postun pmda-zimbra
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-zimbra-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_python3}
+%post pmda-zswap
+%tmpfiles_create pcp-pmda-zswap-stash.conf
+
+%postun pmda-zswap
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-zswap-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-elasticsearch
+%tmpfiles_create pcp-pmda-elasticsearch-stash.conf
+
+%postun pmda-elasticsearch
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-elasticsearch-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-haproxy
+%tmpfiles_create pcp-pmda-haproxy-stash.conf
+
+%postun pmda-haproxy
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-haproxy-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-netcheck
+%tmpfiles_create pcp-pmda-netcheck-stash.conf
+
+%postun pmda-netcheck
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-netcheck-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-rabbitmq
+%tmpfiles_create pcp-pmda-rabbitmq-stash.conf
+
+%postun pmda-rabbitmq
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-rabbitmq-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-redis
+%tmpfiles_create pcp-pmda-redis-stash.conf
+
+%postun pmda-redis
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-redis-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_snmp}
+%post pmda-snmp
+%tmpfiles_create pcp-pmda-snmp-stash.conf
+
+%postun pmda-snmp
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-snmp-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_perfevent}
+%post pmda-perfevent
+%tmpfiles_create pcp-pmda-perfevent-stash.conf
+
+%postun pmda-perfevent
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-perfevent-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_resctrl}
+%post pmda-resctrl
+%tmpfiles_create pcp-pmda-resctrl-stash.conf
+
+%postun pmda-resctrl
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-resctrl-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-uwsgi
+%tmpfiles_create pcp-pmda-uwsgi-stash.conf
+
+%postun pmda-uwsgi
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-uwsgi-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post conf
+%tmpfiles_create pcp-conf-stash.conf
+
+%postun conf
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-conf-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post devel
+%tmpfiles_create pcp-devel-stash.conf
+
+%postun devel
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-devel-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_qt}
+%post gui
+%tmpfiles_create pcp-pcp-gui-stash.conf
+
+%postun gui
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pcp-gui-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_json}
+%post pmda-json
+%tmpfiles_create pcp-pmda-json-stash.conf
+
+%postun pmda-json
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-json-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_perl}
+%post pmda-lustre
+%tmpfiles_create pcp-pmda-lustre-stash.conf
+
+%postun pmda-lustre
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-lustre-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-mounts
+%tmpfiles_create pcp-pmda-mounts-stash.conf
+
+%postun pmda-mounts
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-mounts-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-nginx
+%tmpfiles_create pcp-pmda-nginx-stash.conf
+
+%postun pmda-nginx
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-nginx-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%if !%{disable_nutcracker}
+%post pmda-nutcracker
+%tmpfiles_create pcp-pmda-nutcracker-stash.conf
+
+%postun pmda-nutcracker
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-nutcracker-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-openmetrics
+%tmpfiles_create pcp-pmda-openmetrics-stash.conf
+
+%postun pmda-openmetrics
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-openmetrics-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-oracle
+%tmpfiles_create pcp-pmda-oracle-stash.conf
+
+%postun pmda-oracle
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-oracle-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
+%post pmda-shping
+%tmpfiles_create pcp-pmda-shping-stash.conf
+
+%postun pmda-shping
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-shping-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-summary
+%tmpfiles_create pcp-pmda-summary-stash.conf
+
+%postun pmda-summary
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-summary-stash.conf >/dev/null 2>&1 || :
+fi
+
+%post pmda-dm
+%tmpfiles_create pcp-pmda-dm-stash.conf
+
+%postun pmda-dm
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-dm-stash.conf >/dev/null 2>&1 || :
+fi
+
+%if !%{disable_perl}
+%post pmda-activemq
+%tmpfiles_create pcp-pmda-activemq-stash.conf
+
+%postun pmda-activemq
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-pmda-activemq-stash.conf >/dev/null 2>&1 || :
+fi
+%endif
+
 %post zeroconf
+%tmpfiles_create pcp-zeroconf-stash.conf
 %if 0%{?suse_version}
 %else
 %if !%{disable_systemd}
@@ -2723,7 +3830,13 @@ fi
 %endif
 %endif #zeroconf
 
+%postun zeroconf
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-zeroconf-stash.conf >/dev/null 2>&1 || :
+fi
+
 %post
+%tmpfiles_create pcp-base-stash.conf
 PCP_PMNS_DIR=%{_pmnsdir}
 PCP_LOG_DIR=%{_logsdir}
 %{install_file "$PCP_PMNS_DIR" .NeedRebuild}
@@ -2787,6 +3900,9 @@ PCP_LOG_DIR=%{_logsdir}
 %if 0%{?suse_version}
 %postun
 /sbin/ldconfig
+if [ $1 -eq 0 ]; then
+    systemd-tmpfiles --remove pcp-base-stash.conf >/dev/null 2>&1 || :
+fi
 %if !%{disable_systemd}
 %service_del_postun pmcd pmlogger pmproxy pmie pmie_check.timer pmie_daily.timer pmlogger_daily.timer pmlogger_check.timer
 %else
@@ -2872,21 +3988,6 @@ fi
 %{_datadir}/pcp/htop/meters/redis
 %{_datadir}/pcp/htop/meters/tcp
 %{_datadir}/pcp/zeroconf/pmlogger
-%{_localstatedir}/lib/pcp/pmdas/denki/Install
-%{_localstatedir}/lib/pcp/pmdas/denki/README
-%{_localstatedir}/lib/pcp/pmdas/denki/Remove
-%{_localstatedir}/lib/pcp/pmdas/denki/domain.h
-%{_localstatedir}/lib/pcp/pmdas/denki/help
-%{_localstatedir}/lib/pcp/pmdas/denki/pmda_denki.so
-%{_localstatedir}/lib/pcp/pmdas/denki/pmdadenki
-%{_localstatedir}/lib/pcp/pmdas/denki/root
-%{_localstatedir}/lib/pcp/pmdas/podman/Install
-%{_localstatedir}/lib/pcp/pmdas/podman/Remove
-%{_localstatedir}/lib/pcp/pmdas/podman/domain.h
-%{_localstatedir}/lib/pcp/pmdas/podman/help
-%{_localstatedir}/lib/pcp/pmdas/podman/pmda_podman.so
-%{_localstatedir}/lib/pcp/pmdas/podman/pmdapodman
-%{_localstatedir}/lib/pcp/pmdas/podman/root
 
 %dir %{_sysconfdir}/pcp/sockets
 %dir %{_libexecdir}/pcp/pmdas/denki
@@ -2895,28 +3996,17 @@ fi
 %dir %{_datadir}/pcp/htop/columns
 %dir %{_datadir}/pcp/htop/meters
 %dir %{_datadir}/pcp/zeroconf
-%dir %{_localstatedir}/lib/pcp/pmdas/denki
-%dir %{_localstatedir}/lib/pcp/pmdas/podman
 
 %dir %{_confdir}
-%dir %{_pmdasdir}
 %dir %{_pmdasexecdir}
 %dir %{_datadir}/pcp
 %dir %{_libexecdir}/pcp
+%dir %{_stashdir}
 %dir %{_libexecdir}/pcp/bin
-%dir %{_localstatedir}/lib/pcp
-%dir %{_localstatedir}/lib/pcp/config
 %if %{disable_qt}
 # part of pcp-gui
 %exclude %{_localstatedir}/lib/pcp/config/pmafm/pcp-gui
 %endif
-%dir %attr(0775,pcp,pcp) %{_tempsdir}
-%dir %attr(0775,pcp,pcp) %{_tempsdir}/bash
-%dir %attr(0775,pcp,pcp) %{_tempsdir}/json
-%dir %attr(0775,pcp,pcp) %{_tempsdir}/mmv
-%dir %attr(0775,pcp,pcp) %{_tempsdir}/pmie
-%dir %attr(0775,pcp,pcp) %{_tempsdir}/pmlogger
-%dir %attr(0775,pcp,pcp) %{_tempsdir}/pmproxy
 
 %dir %{_datadir}/pcp/lib
 %{_datadir}/pcp/lib/ReplacePmnsSubtree
@@ -2968,27 +4058,6 @@ fi
 %{_libexecdir}/pcp/pmdas/overhead/pmns
 %{_libexecdir}/pcp/pmdas/overhead/root
 %{_libexecdir}/pcp/pmdas/podman/pmns
-%{_localstatedir}/lib/pcp/config/pmlogredact/network
-%{_localstatedir}/lib/pcp/config/pmlogredact/usernames
-%{_localstatedir}/lib/pcp/pmdas/denki/pmns
-%{_localstatedir}/lib/pcp/pmdas/farm/Install
-%{_localstatedir}/lib/pcp/pmdas/farm/Remove
-%{_localstatedir}/lib/pcp/pmdas/farm/domain.h
-%{_localstatedir}/lib/pcp/pmdas/farm/help
-%{_localstatedir}/lib/pcp/pmdas/farm/pmda_farm.so
-%{_localstatedir}/lib/pcp/pmdas/farm/pmdafarm
-%{_localstatedir}/lib/pcp/pmdas/farm/pmns
-%{_localstatedir}/lib/pcp/pmdas/farm/root
-%{_localstatedir}/lib/pcp/pmdas/overhead/Install
-%{_localstatedir}/lib/pcp/pmdas/overhead/README
-%{_localstatedir}/lib/pcp/pmdas/overhead/Remove
-%{_localstatedir}/lib/pcp/pmdas/overhead/default.conf
-%{_localstatedir}/lib/pcp/pmdas/overhead/domain.h
-%{_localstatedir}/lib/pcp/pmdas/overhead/pmdaoverhead
-%{_localstatedir}/lib/pcp/pmdas/overhead/pmns
-%{_localstatedir}/lib/pcp/pmdas/overhead/root
-%{_localstatedir}/lib/pcp/pmdas/overhead/sample.conf
-%{_localstatedir}/lib/pcp/pmdas/podman/pmns
 %{_sysconfdir}/pcp/pmlogredact/network
 %{_sysconfdir}/pcp/pmlogredact/usernames
 %{_unitdir}/pcp-geolocate.service
@@ -3004,21 +4073,12 @@ fi
 %{_usr}/share/pcp/htop/screens/opensnoop
 %dir %{_libexecdir}/pcp/pmdas/farm
 %dir %{_libexecdir}/pcp/pmdas/overhead
-%dir %{_localstatedir}/lib/pcp/config/pmlogredact
-%dir %{_localstatedir}/lib/pcp/pmdas/farm
-%dir %{_localstatedir}/lib/pcp/pmdas/overhead
 %dir %{_sysconfdir}/pcp/overhead
 %dir %{_sysconfdir}/pcp/overhead/conf.d
 %dir %{_sysconfdir}/pcp/overhead/examples
 %dir %{_sysconfdir}/pcp/pmlogredact
 %dir %{_usr}/share/pcp/htop/screens
 
-%dir %attr(0775,pcp,pcp) %{_logsdir}
-%attr(0775,pcp,pcp) %{_logsdir}/pmcd
-%attr(0775,pcp,pcp) %{_logsdir}/pmlogger
-%attr(0775,pcp,pcp) %{_logsdir}/pmie
-%attr(0775,pcp,pcp) %{_logsdir}/pmproxy
-%attr(0775,pcp,pcp) %{_logsdir}/pmfind
 %{_localstatedir}/lib/pcp/pmns
 %if %{disable_systemd}
 %{_initddir}/pcp
@@ -3113,7 +4173,6 @@ fi
 %attr(0644,pcp,pcp) %{_localstatedir}/lib/pcp/config/pmlogger/*
 %dir %{_logconfdir}
 %{_localstatedir}/lib/pcp/config/pmlogrewrite
-%dir %attr(0775,pcp,pcp) %{_localstatedir}/lib/pcp/config/pmda
 
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
@@ -3122,24 +4181,20 @@ fi
 %{_tapsetdir}/pmcd.stp
 %endif
 
-%files zeroconf
+%files zeroconf -f zeroconf.list
 %if !%{disable_systemd}
 %else
 %endif
 %config(noreplace) %{_confdir}/pmieconf/zeroconf
 %config(noreplace) %{_confdir}/pmlogconf/zeroconf
-%config(noreplace) %{_ieconfdir}/zeroconf
-%config(noreplace) %{_logconfdir}/zeroconf
 
 #additional pmlogger config files
 
-%files conf
+%files conf -f conf.list
 %config %{_confdir}/derived/*
-%config %{_localstatedir}/lib/pcp/config/derived/*
 %config %{_sysconfdir}/pcp.conf
 %dir %{_confdir}/derived
 %dir %{_includedir}/pcp
-%dir %{_localstatedir}/lib/pcp/config/derived
 %{_includedir}/pcp/builddefs
 %{_includedir}/pcp/buildrules
 
@@ -3190,14 +4245,9 @@ fi
 
 # PMDAs that ship src and are not for production use
 # straight out-of-the-box, for devel or QA use only.
-%{_pmdasdir}/simple
 %config(noreplace) %{_confdir}/simple
-%{_pmdasdir}/sample
-%{_pmdasdir}/trivial
-%{_pmdasdir}/txmon
 
-%files testsuite
-%{_testsdir}
+%files testsuite -f testsuite.list
 
 %if !%{disable_perl}
 %files import-sar2pcp
@@ -3242,168 +4292,139 @@ fi
 %endif
 
 %if !%{disable_perfevent}
-%files pmda-perfevent
-%{_pmdasdir}/perfevent
+%files pmda-perfevent -f pmda-perfevent.list
 %{_pmdasexecdir}/perfevent
 %dir %{_confdir}/perfevent
-%config(noreplace) %{_pmdasdir}/perfevent/perfevent.conf
 %config(noreplace) %{_confdir}/perfevent/perfevent.conf
 %endif
 
 %if !%{disable_infiniband}
-%files pmda-infiniband
-%{_pmdasdir}/infiniband
+%files pmda-infiniband -f pmda-infiniband.list
 %{_pmdasexecdir}/infiniband
 %endif
 
 %if !%{disable_perl}
-%files pmda-activemq
-%{_pmdasdir}/activemq
+%files pmda-activemq -f pmda-activemq.list
 %{_pmdasexecdir}/activemq
 %endif
 
 %if !%{disable_perl}
-%files pmda-bonding
-%{_pmdasdir}/bonding
+%files pmda-bonding -f pmda-bonding.list
 %{_pmdasexecdir}/bonding
 %endif
 
 %if !%{disable_perl}
-%files pmda-dbping
-%{_pmdasdir}/dbping
+%files pmda-dbping -f pmda-dbping.list
 %{_pmdasexecdir}/dbping
 %endif
 
 %if !%{disable_perl}
-%files pmda-ds389log
-%{_pmdasdir}/ds389log
+%files pmda-ds389log -f pmda-ds389log.list
 %{_pmdasexecdir}/ds389log
 %endif
 
 %if !%{disable_perl}
-%files pmda-ds389
-%{_pmdasdir}/ds389
+%files pmda-ds389 -f pmda-ds389.list
 %{_pmdasexecdir}/ds389
 %endif
 
-%files pmda-elasticsearch
+%files pmda-elasticsearch -f pmda-elasticsearch.list
 %dir %{_confdir}/elasticsearch
 %config(noreplace) %{_confdir}/elasticsearch/elasticsearch.conf
-%{_pmdasdir}/elasticsearch
 %{_pmdasexecdir}/elasticsearch
 
-%files pmda-openvswitch
-%{_pmdasdir}/openvswitch
+%files pmda-openvswitch -f pmda-openvswitch.list
 %{_pmdasexecdir}/openvswitch
 
-%files pmda-rabbitmq
+%files pmda-rabbitmq -f pmda-rabbitmq.list
 %dir %{_confdir}/rabbitmq
 %config(noreplace) %{_confdir}/rabbitmq/rabbitmq.conf
-%{_pmdasdir}/rabbitmq
 %{_pmdasexecdir}/rabbitmq
 
 %if !%{disable_perl}
-%files pmda-gpfs
-%{_pmdasdir}/gpfs
+%files pmda-gpfs -f pmda-gpfs.list
 %{_pmdasexecdir}/gpfs
 %endif
 
 %if !%{disable_perl}
-%files pmda-gpsd
-%{_pmdasdir}/gpsd
+%files pmda-gpsd -f pmda-gpsd.list
 %{_pmdasexecdir}/gpsd
 %endif
 
-%files pmda-docker
-%{_pmdasdir}/docker
+%files pmda-docker -f pmda-docker.list
 %{_pmdasexecdir}/docker
 
 %if !%{disable_lio}
-%files pmda-lio
-%{_pmdasdir}/lio
+%files pmda-lio -f pmda-lio.list
 %{_pmdasexecdir}/lio
 %endif
 
-%files pmda-openmetrics
-%{_pmdasdir}/openmetrics
+%files pmda-openmetrics -f pmda-openmetrics.list
 %{_pmdasexecdir}/openmetrics
 %config(noreplace) %{_confdir}/openmetrics
 
 %if !%{disable_perl}
-%files pmda-lustre
-%{_pmdasdir}/lustre
+%files pmda-lustre -f pmda-lustre.list
 %{_pmdasexecdir}/lustre
 %config(noreplace) %{_confdir}/lustre
 %endif
 
-%files pmda-lustrecomm
-%{_pmdasdir}/lustrecomm
+%files pmda-lustrecomm -f pmda-lustrecomm.list
 %{_pmdasexecdir}/lustrecomm
 
 %if !%{disable_perl}
-%files pmda-memcache
-%{_pmdasdir}/memcache
+%files pmda-memcache -f pmda-memcache.list
 %{_pmdasexecdir}/memcache
 %endif
 
 %if !%{disable_perl}
-%files pmda-mysql
-%{_pmdasdir}/mysql
+%files pmda-mysql -f pmda-mysql.list
 %{_pmdasexecdir}/mysql
 %endif
 
 %if !%{disable_perl}
-%files pmda-named
-%{_pmdasdir}/named
+%files pmda-named -f pmda-named.list
 %{_pmdasexecdir}/named
 %endif
 
 %if !%{disable_perl}
-%files pmda-netfilter
-%{_pmdasdir}/netfilter
+%files pmda-netfilter -f pmda-netfilter.list
 %{_pmdasexecdir}/netfilter
 %endif
 
 %if !%{disable_perl}
-%files pmda-news
-%{_pmdasdir}/news
+%files pmda-news -f pmda-news.list
 %{_pmdasexecdir}/news
 %endif
 
 %if !%{disable_perl}
-%files pmda-nginx
-%{_pmdasdir}/nginx
+%files pmda-nginx -f pmda-nginx.list
 %{_pmdasexecdir}/nginx
 %config(noreplace) %{_confdir}/nginx
 %endif
 
-%files pmda-nfsclient
-%{_pmdasdir}/nfsclient
+%files pmda-nfsclient -f pmda-nfsclient.list
 %{_pmdasexecdir}/nfsclient
 
 %if !%{disable_nutcracker}
-%files pmda-nutcracker
-%{_pmdasdir}/nutcracker
+%files pmda-nutcracker -f pmda-nutcracker.list
 %{_pmdasexecdir}/nutcracker
 %config(noreplace) %{_confdir}/nutcracker
 %endif
 
 %if !%{disable_perl}
-%files pmda-oracle
-%{_pmdasdir}/oracle
+%files pmda-oracle -f pmda-oracle.list
 %{_pmdasexecdir}/oracle
 %config(noreplace) %{_confdir}/oracle
 %endif
 
 %if !%{disable_perl}
-%files pmda-pdns
-%{_pmdasdir}/pdns
+%files pmda-pdns -f pmda-pdns.list
 %{_pmdasexecdir}/pdns
 %endif
 
 %if !%{disable_perl}
-%files pmda-postfix
-%{_pmdasdir}/postfix
+%files pmda-postfix -f pmda-postfix.list
 %{_pmdasexecdir}/postfix
 %endif
 
@@ -3416,49 +4437,41 @@ fi
 %endif
 
 %if !%{disable_perl}
-%files pmda-redis
+%files pmda-redis -f pmda-redis.list
 %dir %{_confdir}/redis
 %config(noreplace) %{_confdir}/redis/redis.conf
-%{_pmdasdir}/redis
 %{_pmdasexecdir}/redis
 %endif
 
 %if !%{disable_perl}
-%files pmda-rsyslog
-%{_pmdasdir}/rsyslog
+%files pmda-rsyslog -f pmda-rsyslog.list
 %{_pmdasexecdir}/rsyslog
 %endif
 
 %if !%{disable_perl}
-%files pmda-samba
-%{_pmdasdir}/samba
+%files pmda-samba -f pmda-samba.list
 %{_pmdasexecdir}/samba
 %endif
 
 %if !%{disable_snmp}
-%files pmda-snmp
+%files pmda-snmp -f pmda-snmp.list
 %dir %{_confdir}/snmp
 %config(noreplace) %{_confdir}/snmp/snmp.conf
-%{_pmdasdir}/snmp
 %{_pmdasexecdir}/snmp
 %endif
 
 %if !%{disable_perl}
-%files pmda-slurm
-%{_pmdasdir}/slurm
+%files pmda-slurm -f pmda-slurm.list
 %{_pmdasexecdir}/slurm
 %endif
 
 %if !%{disable_perl}
-%files pmda-zimbra
-%{_pmdasdir}/zimbra
+%files pmda-zimbra -f pmda-zimbra.list
 %{_pmdasexecdir}/zimbra
 %endif
 
-%files pmda-dm
-%{_pmdasdir}/dm
+%files pmda-dm -f pmda-dm.list
 %{_pmdasexecdir}/dm
-%{_ieconfdir}/dm
 %dir %{_confdir}/pmieconf/dm
 %config(noreplace) %{_confdir}/pmieconf/dm
 
@@ -3476,26 +4489,21 @@ fi
 %endif
 
 %if !%{disable_python3}
-%files pmda-gluster
-%{_pmdasdir}/gluster
+%files pmda-gluster -f pmda-gluster.list
 %{_pmdasexecdir}/gluster
 
-%files pmda-zswap
-%{_pmdasdir}/zswap
+%files pmda-zswap -f pmda-zswap.list
 %{_pmdasexecdir}/zswap
 
-%files pmda-unbound
-%{_pmdasdir}/unbound
+%files pmda-unbound -f pmda-unbound.list
 %{_pmdasexecdir}/unbound
 
-%files pmda-mic
-%{_pmdasdir}/mic
+%files pmda-mic -f pmda-mic.list
 %{_pmdasexecdir}/mic
 
-%files pmda-haproxy
+%files pmda-haproxy -f pmda-haproxy.list
 %dir %{_confdir}/haproxy
 %config(noreplace) %{_confdir}/haproxy/haproxy.conf
-%{_pmdasdir}/haproxy
 %{_pmdasexecdir}/haproxy
 
 %if !%{disable_libvirt}
@@ -3539,14 +4547,12 @@ fi
 %{_bindir}/pcp2zabbix
 %{_bashcompdir}/pcp2zabbix
 
-%files pmda-lmsensors
-%{_pmdasdir}/lmsensors
+%files pmda-lmsensors -f pmda-lmsensors.list
 %{_pmdasexecdir}/lmsensors
 
-%files pmda-netcheck
+%files pmda-netcheck -f pmda-netcheck.list
 %dir %{_confdir}/netcheck
 %config(noreplace) %{_confdir}/netcheck/netcheck.conf
-%{_pmdasdir}/netcheck
 %{_pmdasexecdir}/netcheck
 
 %endif # !%%{disable_python3}
@@ -3566,7 +4572,7 @@ fi
 %endif
 
 %if !%{disable_resctrl}
-%files pmda-resctrl
+%files pmda-resctrl -f pmda-resctrl.list
 %{_libexecdir}/pcp/pmdas/resctrl/Install
 %{_libexecdir}/pcp/pmdas/resctrl/Remove
 %{_libexecdir}/pcp/pmdas/resctrl/domain.h
@@ -3575,122 +4581,87 @@ fi
 %{_libexecdir}/pcp/pmdas/resctrl/pmdaresctrl
 %{_libexecdir}/pcp/pmdas/resctrl/pmns
 %{_libexecdir}/pcp/pmdas/resctrl/root
-%{_localstatedir}/lib/pcp/pmdas/resctrl/Install
-%{_localstatedir}/lib/pcp/pmdas/resctrl/Remove
-%{_localstatedir}/lib/pcp/pmdas/resctrl/domain.h
-%{_localstatedir}/lib/pcp/pmdas/resctrl/help
-%{_localstatedir}/lib/pcp/pmdas/resctrl/pmda_resctrl.so
-%{_localstatedir}/lib/pcp/pmdas/resctrl/pmdaresctrl
-%{_localstatedir}/lib/pcp/pmdas/resctrl/pmns
-%{_localstatedir}/lib/pcp/pmdas/resctrl/root
 %{_unitdir}/sys-fs-resctrl.mount
 %dir %{_libexecdir}/pcp/pmdas/resctrl
-%dir %{_localstatedir}/lib/pcp/pmdas/resctrl
 %endif
 
-%files pmda-uwsgi
+%files pmda-uwsgi -f pmda-uwsgi.list
 %config(noreplace) %{_confdir}/uwsgi/uwsgi.conf
 %{_libexecdir}/pcp/pmdas/uwsgi/Install
 %{_libexecdir}/pcp/pmdas/uwsgi/Remove
 %{_libexecdir}/pcp/pmdas/uwsgi/pmdauwsgi.python
-%{_localstatedir}/lib/pcp/pmdas/uwsgi/Install
-%{_localstatedir}/lib/pcp/pmdas/uwsgi/Remove
-%{_localstatedir}/lib/pcp/pmdas/uwsgi/pmdauwsgi.python
-%{_localstatedir}/lib/pcp/pmdas/uwsgi/uwsgi.conf
 %dir %{_confdir}/uwsgi
 %dir %{_libexecdir}/pcp/pmdas/uwsgi
-%dir %{_localstatedir}/lib/pcp/pmdas/uwsgi
 
 %if !%{disable_json}
-%files pmda-json
-%{_pmdasdir}/json
+%files pmda-json -f pmda-json.list
 %{_pmdasexecdir}/json
 %config(noreplace) %{_confdir}/json
 %endif
 
-%files pmda-apache
-%{_pmdasdir}/apache
+%files pmda-apache -f pmda-apache.list
 %{_pmdasexecdir}/apache
 
-%files pmda-amdgpu
-%{_pmdasdir}/amdgpu
+%files pmda-amdgpu -f pmda-amdgpu.list
 %{_pmdasexecdir}/amdgpu
 
-%files pmda-bash
-%{_pmdasdir}/bash
+%files pmda-bash -f pmda-bash.list
 %{_pmdasexecdir}/bash
 
-%files pmda-cifs
-%{_pmdasdir}/cifs
+%files pmda-cifs -f pmda-cifs.list
 %{_pmdasexecdir}/cifs
 
-%files pmda-cisco
-%{_pmdasdir}/cisco
+%files pmda-cisco -f pmda-cisco.list
 %{_pmdasexecdir}/cisco
 
-%files pmda-gfs2
-%{_pmdasdir}/gfs2
+%files pmda-gfs2 -f pmda-gfs2.list
 %{_pmdasexecdir}/gfs2
 
-%files pmda-logger
-%{_pmdasdir}/logger
+%files pmda-logger -f pmda-logger.list
 %{_pmdasexecdir}/logger
 
-%files pmda-mailq
-%{_pmdasdir}/mailq
+%files pmda-mailq -f pmda-mailq.list
 %{_pmdasexecdir}/mailq
 
-%files pmda-mounts
-%{_pmdasdir}/mounts
+%files pmda-mounts -f pmda-mounts.list
 %{_pmdasexecdir}/mounts
 %config(noreplace) %{_confdir}/mounts
 
-%files pmda-nvidia-gpu
-%{_pmdasdir}/nvidia
+%files pmda-nvidia-gpu -f pmda-nvidia-gpu.list
 %{_pmdasexecdir}/nvidia
 
-%files pmda-roomtemp
-%{_pmdasdir}/roomtemp
+%files pmda-roomtemp -f pmda-roomtemp.list
 %{_pmdasexecdir}/roomtemp
 
-%files pmda-sendmail
-%{_pmdasdir}/sendmail
+%files pmda-sendmail -f pmda-sendmail.list
 %{_pmdasexecdir}/sendmail
 
-%files pmda-shping
-%{_pmdasdir}/shping
+%files pmda-shping -f pmda-shping.list
 %{_pmdasexecdir}/shping
 %config(noreplace) %{_confdir}/shping
 
-%files pmda-smart
-%{_pmdasdir}/smart
+%files pmda-smart -f pmda-smart.list
 %{_pmdasexecdir}/smart
 
-%files pmda-sockets
-%{_pmdasdir}/sockets
+%files pmda-sockets -f pmda-sockets.list
 %{_pmdasexecdir}/sockets
 
-%files pmda-hacluster
-%{_pmdasdir}/hacluster
+%files pmda-hacluster -f pmda-hacluster.list
 %{_pmdasexecdir}/hacluster
 
-%files pmda-summary
-%{_pmdasdir}/summary
+%files pmda-summary -f pmda-summary.list
 %{_pmdasexecdir}/summary
 %config(noreplace) %{_confdir}/summary
 
 %if !%{disable_systemd}
-%files pmda-systemd
-%{_pmdasdir}/systemd
+%files pmda-systemd -f pmda-systemd.list
 %{_pmdasexecdir}/systemd
 %endif
 
-%files pmda-trace
-%{_pmdasdir}/trace
+%files pmda-trace -f pmda-trace.list
 %{_pmdasexecdir}/trace
 
-%files pmda-weblog
-%{_pmdasdir}/weblog
+%files pmda-weblog -f pmda-weblog.list
 %{_pmdasexecdir}/weblog
 
 %if !%{disable_perl}
@@ -3730,9 +4701,6 @@ fi
 %{_pixmapdir}/pmchart.png
 %{_confdir}/pmsnap
 %config(noreplace) %{_confdir}/pmsnap/control
-%{_localstatedir}/lib/pcp/config/pmsnap
-%{_localstatedir}/lib/pcp/config/pmchart
-%{_localstatedir}/lib/pcp/config/pmafm/pcp-gui
 %{_datadir}/applications/pmchart.desktop
 %{_bashcompdir}/pmdumptext
 %endif
