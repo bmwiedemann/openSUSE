@@ -53,7 +53,6 @@ Group:          System/Filesystems
 Provides:       ntfsprogs-fuse = 1.13.1
 Obsoletes:      ntfsprogs-fuse < 1.13.1
 %if 0%{?suse_version}
-Requires(post): update-alternatives
 Supplements:    filesystem(ntfs-3g)
 %endif
 
@@ -142,12 +141,6 @@ ntfsprogs/mkntfs -q -F $TESTFS 3000
 src/ntfs-3g.probe --readonly  $TESTFS
 src/ntfs-3g.probe --readwrite $TESTFS
 rm -v $TESTFS
-
-%post -n ntfs-3g
-# Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
-if [ ! -f %{sbindir}/mount.ntfs-3g ]; then
-  update-alternatives --remove mount.ntfs %{sbindir}/mount.ntfs-3g
-fi
 
 %post -n libntfs-3g%{sover} -p /sbin/ldconfig
 %postun -n libntfs-3g%{sover} -p /sbin/ldconfig
