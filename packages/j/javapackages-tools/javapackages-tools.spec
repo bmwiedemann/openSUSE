@@ -1,7 +1,7 @@
 #
 # spec file for package javapackages-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,15 @@
 %bcond_with python
 %endif
 %if %{with python}
+%bcond_with gradle
+%bcond_without ivy
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           javapackages-tools-%{flavor}
 %else
 Name:           javapackages-tools
 %endif
-Version:        6.4.1
+Version:        6.5.1
 Release:        0
 Summary:        Macros and scripts for Java packaging support
 License:        BSD-3-Clause
@@ -54,8 +56,8 @@ BuildRequires:  rubygem(asciidoctor)
 %if %{with python}
 BuildRequires:  javapackages-filesystem
 %else
-Requires:       javapackages-filesystem = %{version}-%{release}
 Requires:       findutils
+Requires:       javapackages-filesystem = %{version}-%{release}
 %endif
 # Used on too many places
 Provides:       jpackage-utils = %{version}
@@ -89,6 +91,16 @@ This package provides some basic directories into which Java packages
 install their content.
 
 %if %{with python}
+%package -n javapackages-gradle
+Summary:        Local mode for Gradle (files)
+Group:          Development/Languages/Java
+Requires:       javapackages-local = %{version}
+Requires:       javapackages-tools = %{version}
+
+%description -n javapackages-gradle
+This package contains files needed by local mode for Gradle, which
+allows artifact resolution using XMvn resolver.
+
 %package -n javapackages-ivy
 Summary:        Local mode for Apache Ivy (files)
 Group:          Development/Languages/Java
@@ -146,10 +158,22 @@ perl -pi -e "s#usr/lib#${new_dir}#g" configs/*.xml
 
 %build
 %configure \
-%if %{with python}
-    --pyinterpreter=%{_bindir}/python3
+%if %{with gradle}
+    --with-gradle \
 %else
-    --pyinterpreter=%{nil}
+    --without-gradle \
+%endif
+%if %{with ivy}
+    --with-ivy \
+%else
+    --without-ivy \
+%endif
+%if %{with python}
+    --pyinterpreter=%{_bindir}/python3 \
+    --with-generators
+%else
+    --pyinterpreter=%{nil} \
+    --without-generators
 %endif
 ./build
 %if %{with python}
@@ -195,9 +219,7 @@ files="
 %{_mandir}/man1/find-jar.1
 %{_datadir}/maven-metadata/javapackages-metadata.xml
 %{_datadir}/xmvn/configuration.xml
-%{_bindir}/gradle-local
-%{_datadir}/gradle-local
-%{_mandir}/man7/gradle_build.7
+%{_mandir}/man7/jpackage_script.7
 "
 for i in $files; do
     rm -rf %{buildroot}/$i
@@ -237,8 +259,15 @@ popd
 %files -n javapackages-local -f files-common -f files-compat -f files-generators
 %dir %{_datadir}/java-utils
 
+%if %{with gradle}
+%files -n javapackages-gradle -f files-gradle
+%dir %{_datadir}/gradle-local
+%endif
+
+%if %{with ivy}
 %files -n javapackages-ivy -f files-ivy
 %dir %{_sysconfdir}/ant.d
+%endif
 
 %files %{python_files javapackages}
 %license LICENSE

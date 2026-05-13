@@ -8,7 +8,7 @@
  
  m2home
  
-@@ -81,6 +82,7 @@ test -z "${mandir}" && mandir="${datadir}/man"
+@@ -98,6 +99,7 @@ test -z "${mandir}" && mandir="${datadir}/man"
  test -z "${rundir}" && rundir="${localstatedir}/run"
  test -z "${sysconfdir}" && sysconfdir="${prefix}/etc"
  test -z "${root_sysconfdir}" && root_sysconfdir="${prefix}/etc"

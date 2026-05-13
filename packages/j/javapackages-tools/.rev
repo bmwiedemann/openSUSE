@@ -455,4 +455,12 @@
     <comment>Require findutils for working build-classpath (bsc#1245969)</comment>
     <requestid>1307554</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>a8896f56672da2801cd3a3b5786af51d</srcmd5>
+    <version>6.5.1</version>
+    <time>1778698734</time>
+    <user>anag_factory</user>
+    <comment>6.5.1</comment>
+    <requestid>1352812</requestid>
+  </revision>
 </revisionlist>

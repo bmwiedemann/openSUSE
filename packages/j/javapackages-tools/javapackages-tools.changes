@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 12 16:07:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 6.5.1
+  * Changes
+    Bump actions/setup-python from 5 to 6
+    Bump actions/checkout from 4 to 6
+    Bump codecov/codecov-action from 4.6.0 to 5.5.2
+    Remove Codecov call from GitHub CI workflow
+    Remove unused and outdated Vagrantfile
+    Java launcher script improvements
+    Add jpackage_script manpage
+    Implement feature contitionals
+    Fix installation of jpackage_script.7 manpage
+- Modified patch:
+  * python-optional.patch
+  * suse-use-libdir.patch
+    + rediff
+- Make the gradle and ivy support configurable
+
+-------------------------------------------------------------------
 Sun Sep 28 10:46:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Require findutils for working build-classpath (bsc#1245969)
@@ -200,11 +220,6 @@ Sun May 28 19:15:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 - Enable the tests also for older distributions
 - Require python3-xml (python-xml for distributions that use
   versioned modules), since module xml needed by some scripts.
-
--------------------------------------------------------------------
-Wed Nov  9 08:50:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
-
-- Reflect the removal of gradle from repositories
 
 -------------------------------------------------------------------
 Thu Jul  7 06:50:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>

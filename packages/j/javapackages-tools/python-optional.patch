@@ -8,7 +8,7 @@
 -(cd ./python && "${pyinterpreter}" setup.py build)
 --- a/configure
 +++ b/configure
-@@ -85,7 +85,6 @@ test -z "${rpmconfigdir}" && rpmconfigdir="${prefix}/lib/rpm"
+@@ -104,7 +104,6 @@ test -z "${rpmconfigdir}" && rpmconfigdir="${prefix}/lib/rpm"
  test -z "${rpmmacrodir}" && rpmmacrodir="${rpmconfigdir}/macros.d"
  
  test -z "${m2home}" && m2home="${datadir}/xmvn"
@@ -18,10 +18,10 @@
  eval $(sed -n 's/^%_\('"$vars_re"'\)\ *\(.*\)$/\1="\2"/;T;s/%{_\(.*}\)/${\1/;p' macros.d/macros.javapackages-filesystem)
 --- a/install
 +++ b/install
-@@ -237,8 +237,3 @@ exec >files-gradle
- inst_exec target/gradle-local "${bindir}"
- inst_data gradle/init.gradle "${datadir}/gradle-local"
- inst_data target/gradle_build.7 "${mandir}/man7"
+@@ -239,8 +239,3 @@ if $with_gradle; then
+     inst_data gradle/init.gradle "${datadir}/gradle-local"
+     inst_data target/gradle_build.7 "${mandir}/man7"
+ fi
 -
 -exec >files-python
 -(cd ./python && "${pyinterpreter}" setup.py install -O1 --skip-build --prefix "${prefix}" --root "${DEST}") >&2
