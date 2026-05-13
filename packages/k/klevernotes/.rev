@@ -55,4 +55,19 @@
     <comment>Update to 1.2.5</comment>
     <requestid>1318065</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0997b06a1caaae0a75c304ad60406562</srcmd5>
+    <version>1.3.1</version>
+    <time>1778685646</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.3.1
+  * Update md4qt to version 5.0.15
+
+- Update to 1.3.0
+  * md4qt version 5.0.0 has been introduced to KleverNotes
+  * Possibility to sort note by last modified date
+  * Possibility to draw perfect circle and square
+  * Various small bugs fixes and improvements.</comment>
+    <requestid>1352824</requestid>
+  </revision>
 </revisionlist>
