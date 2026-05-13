@@ -17,8 +17,8 @@
 
 
 %define pkg_name dovecot
-%define dovecot_version 2.4.3
-%define dovecot_pigeonhole_version 2.4.3
+%define dovecot_version 2.4.4
+%define dovecot_pigeonhole_version 2.4.4
 %define dovecot_branch  2.4
 %define dovecot_pigeonhole_source_dir %{pkg_name}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
@@ -48,7 +48,7 @@
 %endif
 
 Name:           dovecot24
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT

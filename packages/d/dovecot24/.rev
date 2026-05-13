@@ -220,4 +220,12 @@ bugowner: varkoly</comment>
 - Added signature files for source tarballs</comment>
     <requestid>1346077</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6683deba1263a5c9a3f2ef61b20b1327</srcmd5>
+    <version>2.4.4</version>
+    <time>1778685631</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.4 (boo#1265146 boo#1265147 boo#1265148 boo#1265149 boo#1265150)</comment>
+    <requestid>1352803</requestid>
+  </revision>
 </revisionlist>
