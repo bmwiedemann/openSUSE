@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue May 12 06:33:22 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 3.4.11
+  * [CVE-2026-42217](https://www.cve.org/CVERecord?id=CVE-2026-42217)
+    Shift exponent overflow in `readVariableLengthInteger()` (`ImfIDManifest.cpp`)
+  * [CVE-2026-42216](https://www.cve.org/CVERecord?id=CVE-2026-42216)
+    Out-of-bounds read in `IDManifest::init()` during prefix expansion
+  * [CVE-2026-41142](https://www.cve.org/CVERecord?id=CVE-2026-41142)
+    Integer overflow in `ImageChannel::resize` leads to heap OOB write
+    via OpenEXRUtil public API
+  * OSS-fuzz [504280155](https://issues.oss-fuzz.com/issues/504280155)
+    Heap-buffer-overflow in `DwaCompressor_uncompress`
+  * OSS-fuzz [505062709](https://issues.oss-fuzz.com/issues/505062709)
+    Null-dereference READ in `Imf_3_3::prefixFromLayerName`
+  - version update to 3.4.10
+  * [CVE-2026-39886](https://www.cve.org/CVERecord?id=CVE-2026-39886)
+    HTJ2K Signed Integer Overflow in `ht_undo_impl()`
+  * [CVE-2026-40244](https://www.cve.org/CVERecord?id=CVE-2026-40244)
+    Integer overflow in DWA `setupChannelData` `planarUncRle` pointer
+    arithmetic (missed variant of CVE-2026-34589)
+  * [CVE-2026-40250](https://www.cve.org/CVERecord?id=CVE-2026-40250)
+    Integer overflow in DWA decoder `outBufferEnd` pointer arithmetic
+    (missed variant of CVE-2026-34589)
+- fixes [bsc#1264354], [bsc#1264356], [bsc#1264353]
+
+-------------------------------------------------------------------
 Mon Apr 20 09:22:38 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable testLargeDataWindowOffsets on 32-bit arm

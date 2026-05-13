@@ -26,7 +26,7 @@
 %endif
 
 Name:           openexr
-Version:        3.4.9
+Version:        3.4.11
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause

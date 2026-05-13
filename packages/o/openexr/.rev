@@ -1053,4 +1053,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1349949</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>b0087cc7c1133ec05d2591154ac830da</srcmd5>
+    <version>3.4.11</version>
+    <time>1778685507</time>
+    <user>anag_factory</user>
+    <comment>[CVE-2026-42217](https//www.cve.org/CVERecord?id=CVE-2026-42217), [CVE-2026-42216](https//www.cve.org/CVERecord?id=CVE-2026-42216), [CVE-2026-41142](https//www.cve.org/CVERecord?id=CVE-2026-41142), [CVE-2026-39886](https//www.cve.org/CVERecord?id=CVE-2026-39886), [CVE-2026-40244](https//www.cve.org/CVERecord?id=CVE-2026-40244), CVE-2026-34589), [CVE-2026-40250](https//www.cve.org/CVERecord?id=CVE-2026-40250), CVE-2026-34589), [bsc#1264354],, [bsc#1264356],, [bsc#1264353]</comment>
+    <requestid>1352615</requestid>
+  </revision>
 </revisionlist>
