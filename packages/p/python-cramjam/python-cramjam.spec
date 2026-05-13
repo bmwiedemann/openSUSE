@@ -29,7 +29,7 @@
 %define modname cramjam
 %{?sle15_python_module_pythons}
 Name:           python-cramjam%{psuffix}
-Version:        2.11.0
+Version:        2.12.0
 Release:        0
 Summary:        Thin Python bindings to de/compression algorithms in Rust
 License:        MIT
@@ -40,8 +40,8 @@ Source1:        vendor.tar.xz
 Patch0:         cramjam-opensuse-config.patch
 # PATCH-FIX-UPSTREAM cramjam-issue193-test_variants.patch gh#milesgranger/cramjam#193
 Patch1:         cramjam-issue193-test_variants.patch
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module maturin >= 0.13}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module maturin >= 0.14}
 BuildRequires:  %{python_module pip}
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -57,10 +57,10 @@ BuildRequires:  pkgconfig(libzstd)
 # SECTION test dependencies
 %if %{with test}
 BuildRequires:  %{python_module %{modname} = %{version}}
-BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module hypothesis >= 6.60.0}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest >= 5.30}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
 %endif
 # /SECTION
 BuildRequires:  fdupes
@@ -72,6 +72,8 @@ Allows for using algorithms such as Snappy, without any system dependencies.
 
 %prep
 %autosetup -p1 -n %{modname}-%{version} -a1
+# https://github.com/milesgranger/cramjam/issues/238
+sed -i 's/2.12.0-rc1/%{version}/' pyproject.toml
 
 %build
 %if %{without test}
@@ -95,6 +97,7 @@ donttest="(test_variants_raise_exception and deflate)"
 %if %{without test}
 %files %{python_files}
 %license LICENSE
+%doc README.md
 %{python_sitearch}/%{modname}
 %{python_sitearch}/%{modname}-%{version}.dist-info
 %endif

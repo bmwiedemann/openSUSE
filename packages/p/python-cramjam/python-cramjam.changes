@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  6 01:39:19 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Work around version misnumbering.
+
+-------------------------------------------------------------------
+Sun May  3 18:42:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.0:
+  * Add 3.8 for 2.11.0 release & disable hypothesis derandomize
+  * Drop 3.8 support
+  * Configure `python-source` to include type stubs
+  * Add 3.8 for 2.11.0 release & disable hypothesis derandomize
+
+-------------------------------------------------------------------
 Fri Jan  2 16:11:13 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.11.0
@@ -19,7 +33,7 @@ Fri Jan  2 16:11:13 UTC 2026 - Ben Greiner <code@bnavigator.de>
     in #197
   * Bump libcramjam -> 0.7.0 by @milesgranger in #198
   * Update PyO3 to 0.24 by @musicinmybrain in #207
-- Disable test_variants_raise_exception[deflate] 
+- Disable test_variants_raise_exception[deflate]
   * gh#milesgranger/cramjam#211
 - Disable blosc2 because it fails to compile right now and upstream
   degraded it from the default feature set to experimental

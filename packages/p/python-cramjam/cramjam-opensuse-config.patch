@@ -1,11 +1,11 @@
-Index: cramjam-2.11.0/pyproject.toml
+Index: cramjam-2.12.0/pyproject.toml
 ===================================================================
---- cramjam-2.11.0.orig/pyproject.toml
-+++ cramjam-2.11.0/pyproject.toml
-@@ -15,7 +15,26 @@ requires = ["maturin>=0.14"]
- build-backend = "maturin"
+--- cramjam-2.12.0.orig/pyproject.toml
++++ cramjam-2.12.0/pyproject.toml
+@@ -16,7 +16,26 @@ build-backend = "maturin"
  
  [tool.maturin]
+ python-source = "src"
 -strip = true
 +strip = false
 +no-default-features = true
@@ -30,11 +30,11 @@ Index: cramjam-2.11.0/pyproject.toml
  
  [dependency-groups]
  dev = [
-Index: cramjam-2.11.0/Cargo.toml
+Index: cramjam-2.12.0/Cargo.toml
 ===================================================================
---- cramjam-2.11.0.orig/Cargo.toml
-+++ cramjam-2.11.0/Cargo.toml
-@@ -79,7 +79,8 @@ libcramjam = { version = "^0.8", default
+--- cramjam-2.12.0.orig/Cargo.toml
++++ cramjam-2.12.0/Cargo.toml
+@@ -104,7 +104,8 @@ libcramjam = { version = "^0.8", default
  pyo3-build-config = "^0.25"
  
  [profile.release]
