@@ -414,4 +414,23 @@
 - Drop tar-scm service and use regular tarball and go_modules</comment>
     <requestid>1352326</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e6986c7da78e7093c8a101cf3accdd2e</srcmd5>
+    <version>0.15.8</version>
+    <time>1778685725</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15.8:
+  * Fix windows build (windows doesn't support syscalls Setgid and Setuid).
+
+- Update to 0.15.7:
+  * Fix http-upload with legacy PGP encryption.
+  * Fix reading of environment variables.
+  * Fix a bug in looking up host meta 2.
+  * Try to drop root privileges before connecting to the server.
+  * Fix crash if a config key has no value.
+  * Use a salt for stored FAST token.
+  * Increase scrypt iterations for storing FAST token from 32768 to 65536.
+  * Log a warning when --no-tls-verify or -n is set.</comment>
+    <requestid>1352929</requestid>
+  </revision>
 </revisionlist>

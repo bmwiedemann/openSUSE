@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 13 05:56:48 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.8:
+  * Fix windows build (windows doesn't support syscalls Setgid and Setuid).
+
+-------------------------------------------------------------------
+Wed May 13 05:56:31 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.7:
+  * Fix http-upload with legacy PGP encryption.
+  * Fix reading of environment variables.
+  * Fix a bug in looking up host meta 2.
+  * Try to drop root privileges before connecting to the server.
+  * Fix crash if a config key has no value.
+  * Use a salt for stored FAST token.
+  * Increase scrypt iterations for storing FAST token from 32768 to 65536.
+  * Log a warning when --no-tls-verify or -n is set.
+
+-------------------------------------------------------------------
 Sun May 10 20:56:33 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.6:
