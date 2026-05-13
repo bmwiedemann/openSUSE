@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 11 13:50:48 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Thu Mar  5 15:00:36 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - adjusted logic for %suse_version bump with SLE16.1 Beta2 (jsc#PED-15824)
