@@ -568,7 +568,7 @@ index 0000000..14ee9ea
 +   end
 +-%>
 diff --git a/templates/opensuse.spec.erb b/templates/opensuse.spec.erb
-index 37de592..623e7d4 100644
+index 37de592..be1b17a 100644
 --- a/templates/opensuse.spec.erb
 +++ b/templates/opensuse.spec.erb
 @@ -1,7 +1,12 @@
@@ -577,7 +577,7 @@ index 37de592..623e7d4 100644
 +# spec file for package rubygem-<%= spec.name %><%= config[:version_suffix] %>
  #
 -# Copyright (c) 2009 SUSE LINUX Products GmbH, Nuernberg, Germany.
-+# Copyright (c) <%= Time.now.year %> SUSE LLC
++# Copyright (c) <%= Time.now.year %> SUSE LLC and contributors
 +<% if config[:additional_copyrights] -%>
 +<% for copyright in config[:additional_copyrights] -%>
 +# Copyright (c) <%= copyright %>
@@ -586,7 +586,7 @@ index 37de592..623e7d4 100644
  #
  # All modifications and additions to the file contributed by third parties
  # remain the property of their copyright owners, unless otherwise agreed
-@@ -12,61 +17,235 @@
+@@ -12,61 +17,232 @@
  # license that conforms to the Open Source Definition (Version 1.9)
  # published by the Open Source Initiative.
  
@@ -626,14 +626,12 @@ index 37de592..623e7d4 100644
 +%define mod_full_name %{mod_name}-%{version}
 +<% if config[:version_suffix] -%>
 +%define mod_version_suffix <%= config[:version_suffix] %>
- <% end -%>
--<% for d in spec.dependencies -%>
++<% end -%>
 +<% if config[:preamble] -%>
 +# MANUAL
 +<%= config[:preamble] %>
 +# /MANUAL
 +<% end -%>
-+BuildRequires:  ruby-macros >= 5
 +<% for req in spec.required_ruby_version -%>
 +<%   unless req.empty? -%>
 +<%     if spec.extensions.empty? -%>
@@ -648,7 +646,8 @@ index 37de592..623e7d4 100644
 +BuildRequires:  %{rubydevel}
 +<%     end -%>
 +<%   end -%>
-+<% end -%>
+ <% end -%>
+-<% for d in spec.dependencies -%>
 +<% for d in spec.runtime_dependencies -%>
 +<% if ['rdoc'].include?(d.name.to_s) or config[:runtime_deps_as_buildrequires] -%>
 +# <%= d.name %> <%= d.__getobj__().requirement %>
@@ -665,11 +664,9 @@ index 37de592..623e7d4 100644
 -Summary:        <%= spec.summary.gsub(/\.$/, "") %>
 +<% end -%>
 +BuildRequires:  %{rubygem gem2rpm}
++BuildRequires:  ruby-macros >= 5
 +<% unless spec.rdoc_options.empty? || config[:disable_automatic_rdoc_dep] -%>
 +BuildRequires:  %{rubygem rdoc > 3.10}
-+<% end -%>
-+<% unless spec.executables.empty? -%>
-+BuildRequires:  update-alternatives
 +<% end -%>
 +<% unless spec.homepage.nil? || spec.homepage.empty? -%>
 +URL:            <%= spec.homepage %>

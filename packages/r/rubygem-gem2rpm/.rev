@@ -449,4 +449,17 @@ A    0033-Use-File.exist-instead-of-File.exists-which-was-remo.patch
 - Enable ruby 4.0 support</comment>
     <requestid>1324400</requestid>
   </revision>
+  <revision rev="40" vrev="29">
+    <srcmd5>56a501f9a9caacc1512075339d94416e</srcmd5>
+    <version>0.10.1</version>
+    <time>1778685529</time>
+    <user>anag_factory</user>
+    <comment>- update suse.patch
+  - fix copyright header
+  - fix BR order
+
+- update suse.patch
+  - remove unneeded buildrequires for u-a</comment>
+    <requestid>1352716</requestid>
+  </revision>
 </revisionlist>

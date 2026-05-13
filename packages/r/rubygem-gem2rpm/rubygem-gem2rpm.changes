@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 12 10:42:01 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update suse.patch
+  - fix copyright header
+  - fix BR order
+
+-------------------------------------------------------------------
+Mon May 11 22:58:42 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update suse.patch
+  - remove unneeded buildrequires for u-a
+
+-------------------------------------------------------------------
 Thu Dec 25 12:29:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - use final 4.0 ABI
