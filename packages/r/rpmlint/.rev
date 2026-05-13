@@ -5643,4 +5643,17 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * dbus-services: updated kdenetwork-filesharing whitelisting (bsc#1262258)</comment>
     <requestid>1350930</requestid>
   </revision>
+  <revision rev="538" vrev="1">
+    <srcmd5>ebe843f9a8ab6a7036556c5bf1287d4c</srcmd5>
+    <version>2.9.0+git20260512.4e2e3f93</version>
+    <time>1778685551</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.9.0+git20260512.4e2e3f93:
+  * permissions-whitelist: merge postfix and postfix-bdb sections
+- Update to version 2.9.0+git20260511.cfc961f7:
+  * permissions-whitelist: adjust postfix paths (bsc#1264563)
+  * permissions-whitelist: drop no longer used texlive-filesystem entry
+</comment>
+    <requestid>1352646</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 12 08:16:36 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.9.0+git20260512.4e2e3f93:
+  * permissions-whitelist: merge postfix and postfix-bdb sections
+
+-------------------------------------------------------------------
+Mon May 11 12:01:18 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.9.0+git20260511.cfc961f7:
+  * permissions-whitelist: adjust postfix paths (bsc#1264563)
+  * permissions-whitelist: drop no longer used texlive-filesystem entry
+
+-------------------------------------------------------------------
 Wed Apr 29 08:59:48 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 2.9.0+git20260429.e0ce0d7d:
