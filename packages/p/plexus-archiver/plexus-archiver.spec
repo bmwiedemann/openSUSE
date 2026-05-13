@@ -25,10 +25,9 @@ Group:          Development/Libraries/Java
 URL:            https://codehaus-plexus.github.io/plexus-archiver
 Source0:        https://github.com/codehaus-plexus/plexus-archiver/archive/plexus-archiver-%{version}.tar.gz
 Source1:        %{name}-build.xml
-Patch0:         0001-Remove-support-for-zstd.patch
-Patch2:         y2038.patch
+Patch0:         y2038.patch
 BuildRequires:  ant
-BuildRequires:  apache-commons-compress
+BuildRequires:  apache-commons-compress >= 1.28.0
 BuildRequires:  apache-commons-io
 BuildRequires:  atinject
 BuildRequires:  fdupes
@@ -61,19 +60,6 @@ Javadoc for %{name}.
 cp %{SOURCE1} build.xml
 
 %patch -P 0 -p1
-%pom_remove_dep com.github.luben:zstd-jni
-rm -rf src/main/java/org/codehaus/plexus/archiver/zstd
-rm -rf src/test/java/org/codehaus/plexus/archiver/zstd
-rm -rf src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTZstdFileResourceCollection.java
-rm -rf src/main/java/org/codehaus/plexus/archiver/tar/ZstdTarFile.java
-rm -rf src/main/java/org/codehaus/plexus/archiver/tar/TZstdUnArchiver.java
-rm -rf src/main/java/org/codehaus/plexus/archiver/tar/TZstdArchiver.java
-rm -rf src/main/java/org/codehaus/plexus/archiver/tar/TarZstdUnArchiver.java
-rm -rf src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarZstdFileResourceCollection.java
-rm -rf src/main/java/org/codehaus/plexus/archiver/tar/TarZstdArchiver.java
-rm -rf src/test/java/org/codehaus/plexus/archiver/tar/TarZstdUnArchiverTest.java
-
-%patch -P 2 -p1
 
 %build
 mkdir -p lib

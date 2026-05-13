@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 11 13:03:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * 0001-Remove-support-for-zstd.patch
+    + we now have the dependencies to be able to build the zstd
+      support
+
+-------------------------------------------------------------------
 Fri Feb  6 13:27:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 4.11.0
