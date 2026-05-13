@@ -55,4 +55,12 @@
     <comment>1.26.1</comment>
     <requestid>1174010</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c360c044dc61cb3f093cec170ecc3741</srcmd5>
+    <version>1.28.0</version>
+    <time>1778698743</time>
+    <user>anag_factory</user>
+    <comment>1.28.0 with zstd, pack200 and brotli support</comment>
+    <requestid>1352968</requestid>
+  </revision>
 </revisionlist>

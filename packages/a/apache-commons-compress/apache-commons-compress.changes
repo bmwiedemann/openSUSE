@@ -1,4 +1,257 @@
 -------------------------------------------------------------------
+Mon May 11 12:01:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.28.0
+  * New Features
+    + Add GzipParameters.getModificationInstant()
+    + Add GzipParameters.setModificationInstant(Instant)
+    + Add GzipParameters.OS, setOS(OS), getOS()
+    + Add GzipParameters.toString()
+    + COMPRESS-638: Add GzipParameters.setFileNameCharset(Charset)
+      and getFileNameCharset() to override the default ISO-8859-1
+      Charset
+    + Add support for gzip extra subfields, see
+      GzipParameters.setExtra(HeaderExtraField)
+    + Add CompressFilterOutputStream and refactor to use
+    + Add ZipFile.stream()
+    + GzipCompressorInputStream reads the modification time (MTIME)
+      and stores its value incorrectly multiplied by 1,000
+    + GzipCompressorInputStream writes the modification time (MTIME)
+      the value incorrectly divided by 1,000
+    + Add optional FHCRC to GZIP header
+    + Add GzipCompressorInputStream.Builder allowing to customize
+      the file name and comment Charsets
+    + Add GzipCompressorInputStream.Builder
+      .setOnMemberStart(IOConsumer) to monitor member parsing
+    + Add GzipCompressorInputStream.Builder
+      .setOnMemberEnd(IOConsumer) to monitor member parsing
+    + Add PMD check to default Maven goal
+    + Add SevenZFile.Builder.setMaxMemoryLimitKiB(int)
+    + Add MemoryLimitException.MemoryLimitException(long, int,
+      Throwable) and deprecate MemoryLimitException
+      .MemoryLimitException(long, int, Exception)
+    + COMPRESS-692: Add support for zstd compression in zip archives
+    + Add support for XZ compression in ZIP archives
+    + COMPRESS-695: Add ZipArchiveInputStream
+      .createZstdInputStream(InputStream) to provide a different
+      InputStream implementation for Zstandard (Zstd)
+    + Add org.apache.commons.compress.harmony.pack200
+      .Pack200Exception.Pack200Exception(String, Throwable)
+    + COMPRESS-697: Move BitStream.nextBit() method to BitInputStream
+    + Add org.apache.commons.compress.compressors.lzma
+      .LZMACompressorInputStream.builder/Builder()
+    + Add org.apache.commons.compress.compressors.lzma
+      .LZMACompressorOutputStream.builder/Builder()
+    + Add org.apache.commons.compress.compressors.xz
+      .XZCompressorInputStream.builder/Builder()
+    + Add org.apache.commons.compress.compressors.xz
+      .XZCompressorOutputStream.builder/Builder()
+    + Add org.apache.commons.compress.compressors.xz
+      .ZstdCompressorOutputStream.builder/Builder()
+    + Add org.apache.commons.compress.compressors.xz.ZstdConstants
+    + Add org.apache.commons.compress.archivers.ArchiveException
+      .requireNonNull(T, Supplier<String>)
+    + Add org.apache.commons.compress.compressors
+      .CompressorException as the root for all custom exceptions
+      ArchiveException and CompressorException
+    + Add ArchiveException.ArchiveException(String, Throwable)
+    + Add ArchiveException.ArchiveException(Throwable)
+    + Add org.apache.commons.compress.archivers.sevenz
+      .SevenZArchiveEntry.isEmptyStream()
+    + Add generics for org.apache.commons.compress.compressors
+      .CompressorStreamProvider.createCompressorOutputStream(String, T)
+  * Fixed Bugs
+    + COMPRESS-686: Better exception messages in
+      SeekableInMemoryByteChannel
+    + COMPRESS-691: ZipArchiveOutputStream.addRawArchiveEntry()
+      should check is2PhaseSource
+    + ArchiveException extends IOException
+    + CompressorException extends IOException
+    + Update outdated descriptions in IOUtils and IOUtilsTest
+    + Remove unused local variable in ZipFile
+    + Optimize ZipEightByteInteger
+    + ZipEightByteInteger.toString() now returns a number string
+      without text prefix, like BigInteger
+    + Throw an IllegalArgumentException when a file name or comment
+      in gzip parameters encodes to a byte array with a 0 byte
+    + Update outdated links in ZipMethod Javadoc
+    + Deprecate ZipUtil.signedByteToUnsignedInt(byte) in favor of
+      Byte.toUnsignedInt(byte)
+    + ZipArchiveOutputStream.close() does not close its underlying
+      output stream
+    + ZipArchiveOutputStream.close() does not close its underlying
+      output stream
+    + Don't use deprecated code in TarArchiveInputStream
+    + Don't use deprecated code in TarFile
+    + CpioArchiveInputStream.read(byte[], int, int) now throws an
+      IOException on a data pad count mismatch
+    + CpioArchiveInputStream.readNewEntry(boolean) now throws an
+      IOException on a header pad count mismatch
+    + CpioArchiveInputStream.readOldBinaryEntry(boolean) now throws
+      an IOException on a header pad count mismatch
+    + Fix Javadoc and names in the org.apache.commons.compress
+      .archivers.sevenz package to specify kibibyte scale in memory
+      limits
+    + Fix Javadoc and names in the org.apache.commons.compress
+      .compressors.lzw package to specify kibibyte scale in memory
+      limits
+    + Fix Javadoc and names in the org.apache.commons.compress
+      .compressors.z package to specify kibibyte scale in memory
+      limits
+    + Refactor LZ77Compressor block classes to reduce duplication
+    + Package-private and private classes can be final
+    + Deprecate ArjArchiveEntry.HostOs.HostOs()
+    + Drop coveralls reference (no longer needed) 
+    + Some ZIP operations won't read all data from a non-blocking
+      file channel
+    + COMPRESS-696: ZipArchiveInputStream.getCompressedCount()
+      throws NullPointerException if called before getNextEntry()
+    + org.apache.commons.compress.harmony.unpack200
+      .SegmentConstantPool.getConstantPoolEntry(int, long) now
+      throws Pack200Exception instead of Error and does better range
+      checking of the index argument
+    + org.apache.commons.compress.harmony.unpack200
+      .SegmentConstantPool.getInitMethodPoolEntry(int, long, String)
+      now throws Pack200Exception instead of Error and does better
+      range checking of the index argument
+    + org.apache.commons.compress.harmony.unpack200
+      .SegmentConstantPool.getInitMethodPoolEntry(int, long, String)
+      now throws Pack200Exception instead of Error on bad constant
+      pool type input
+    + org.apache.commons.compress.harmony.unpack200
+      .SegmentConstantPool.getClassSpecificPoolEntry(int, long,
+      String) now throws Pack200Exception instead of Error on bad
+      constant pool type input
+    + org.apache.commons.compress.harmony.unpack200
+      .SegmentConstantPool.getClassPoolEntry(String) now throws
+      Pack200Exception instead of Error on some bad inputs and
+      states
+    + org.apache.commons.compress.harmony.unpack200.bytecode
+      .ByteCode.extractOperands(OperandManager, Segment, int) now
+      throws Pack200Exception instead of Error on some bad inputs
+      and states
+    + org.apache.commons.compress.harmony.unpack200.bytecode.forms
+      .ByteCodeForm.setByteCodeOperands(ByteCode, OperandManager,
+      int) now throws Pack200Exception instead of Error on some bad
+      inputs and states
+    + org.apache.commons.compress.harmony.unpack200.bytecode
+      .CodeAttribute.CodeAttribute(int, int, byte[], Segment,
+      OperandManager, List) now throws Pack200Exception instead of
+      Error on some bad inputs and states
+    + org.apache.commons.compress.harmony.unpack200.bytecode.forms
+      .IMethodRefForm.setByteCodeOperands(ByteCode, OperandManager,
+      int) now throws Pack200Exception instead of Error on some bad
+      inputs and states
+    + org.apache.commons.compress.harmony.unpack200.bytecode.forms
+      .MultiANewArrayForm.setByteCodeOperands(ByteCode,
+      OperandManager, int) now throws Pack200Exception instead of
+      Error on some bad inputs and states
+    + org.apache.commons.compress.harmony.unpack200.bytecode.forms
+      .NewClassRefForm.setByteCodeOperands(ByteCode, OperandManager,
+      int) now throws Pack200Exception instead of Error on some bad
+      inputs and states
+    + org.apache.commons.compress.harmony.unpack200.bytecode.forms
+      .ReferenceForm.setByteCodeOperands(ByteCode, OperandManager,
+      int) now throws Pack200Exception instead of Error on some bad
+      inputs and states
+    + Deprecate org.apache.commons.compress.harmony.pack200
+      .CanonicalCodecFamilies.CanonicalCodecFamilies()
+    + Deprecate FileNameUtils#getBaseName(Path)
+    + Deprecate FileNameUtils#getExtension(Path)
+    + org.apache.commons.compress.harmony.unpack200.Archive.unpack()
+      should not log to system out (the console)
+    + [site] Fix minor zip docs type: remove extraneous 'a'
+    + Throw a better exception in org.apache.commons.compress
+      .archivers.sevenz.SevenZFile.readFilesInfo(ByteBuffer,
+      Archive)
+    + MemoryLimitException now extends CompressException instead of
+      IOException (CompressException extends IOException)
+    + DumpArchiveException now extends ArchiveException instead of
+      IOException (ArchiveException extends CompressException)
+    + PasswordRequiredException now extends CompressException
+      instead of IOException (CompressException extends IOException)
+    + Pack200Exception now extends CompressException instead of
+      IOException (CompressException extends IOException)
+    + ArArchiveInputStream.getBSDLongName(String) now throws its
+      EOFException with a message
+    + ZipEncodingHelper.getZipEncoding(*) can throw
+      NullPointerException and IllegalArgumentException on bad input
+      instead of returning a value using the default Charset
+    + Javadoc improvements throughout
+    + COMPRESS-699: ArchiveStreamFactory.detect(inputStream)
+      ArchiveException for TAR regression
+    + COMPRESS-700: Can't detect file
+      flutter_awesome_buttons-0.1.0.tar as a TAR file
+    + Deprecate org.apache.commons.compress.utils.TimeUtils
+      .toUnixTime(FileTime) in favor of org.apache.commons.io.file
+      .attribute.FileTimes.toUnixTime(FileTime)
+    + Deprecate org.apache.commons.compress.utils.TimeUtils
+      .truncateToHundredNanos(FileTime)
+  * Changes
+    + Bump org.apache.commons:commons-parent from 72 to 85
+    + Bump com.github.luben:zstd-jni from 1.5.6-4 to 1.5.7-4
+    + Bump org.apache.commons:commons-lang3 from 3.16.0 to 3.18.0
+    + Bump commons-io:commons-io from 2.16.1 to 2.20.0
+    + Bump com.github.marschall:memoryfilesystem from 2.8.0 to 2.8.1
+    + Bump org.ow2.asm:asm from 9.7 to 9.7.1
+    + Bump commons-codec:commons-codec from 1.17.1 to 1.19.0
+  * Removed
+    + COMPRESS-638: GzipCompressorOutputStream no longer
+      percent-endcodes in US-ASCII a file name or comment that the
+      Charset in GzipParameters.setFileNameCharset(Charset) cannot
+      encode
+    + Remove ZstdCompressorOutputStream.toString(), it was
+      misleading by returning the delegate's toString()
+- Changes of version 1.27.1
+  * Fixed Bugs
+    + COMPRESS-686: Compression into BZip2 format has unexpected end
+      of file when using a BufferedOutputStream
+    + Changes
+    + Bump org.apache.commons:commons-lang3 from 3.15.0 to 3.16.0
+- Changes of version 1.27.0
+  * New Features
+    + Add ArchiveInputStream.forEach(IOConsumer)
+    + Add ArchiveInputStream.iterator()
+    + Add ArchiveOutputStream.isFinished()
+    + Add ArchiveOutputStream.checkFinished()
+  * Fixed Bugs
+    + Fix PMD UnnecessaryFullyQualifiedName and others
+    + COMPRESS-681: Support reading a 7z file that writing archive
+      properties
+    + Upgrade commons-io from 2.15.1 to 2.16.1
+    + CompressorOutputStream now extends FilterOutputStream
+    + ArchiveOutputStream now extends FilterOutputStream
+    + COMPRESS-685: Update Javadoc description for
+      GzipCompressorInputStream
+    + Replace FileNameUtil.getCompressedFileName(String) use of
+      Locale.ENGLISH with Locale.ROOT
+    + Fix SpotBugs DLS_DEAD_LOCAL_STORE in
+      SevenZFile.readPackInfo(ByteBuffer, Archive)
+    + Fix SpotBugs NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE in
+      ZipFile.openZipChannel(Path, long, OpenOption[])
+    + Fix SpotBugs UC_USELESS_OBJECT in
+      unpack200.CpBands.parseCpSignature(InputStream)
+    + Fix PMD UselessOverridingMethod in
+      unpack200.bytecode.InnerClassesAttribute
+    + Fix PMD UselessOverridingMethod in
+      unpack200.bytecode.LineNumberTableAttribute
+    + Fix PMD CheckSkipResult in ZipArchiveInputStream.closeEntry()
+  * Changes
+    + COMPRESS-684: Replace assert with Exception 
+    + Bump org.apache.commons:commons-parent from 69 to 72
+    + Bump PMD from 6.x to 7.2.0
+    + Bump commons-codec:commons-codec from 1.17.0 to 1.17.1
+    + Bump org.apache.commons:commons-lang3 from 3.14.0 to 3.15.0
+    + Bump com.github.luben:zstd-jni from 1.5.6-3 to 1.5.6-4
+    + Bump org.tukaani:xz from 1.9 to 1.10
+    + Bump org.hamcrest:hamcrest from 2.2 to 3.0
+- Removed patches:
+  * 0001-Remove-Brotli-compressor.patch
+  * 0002-Remove-ZSTD-compressor.patch
+  * 0003-Remove-Pack200-compressor.patch
+    + we have now the dependencies for zstd and brotli
+
+-------------------------------------------------------------------
 Tue May 14 10:26:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 1.26.1

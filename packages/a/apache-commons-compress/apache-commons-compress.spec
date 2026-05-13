@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-compress
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global base_name       compress
 %global short_name      commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        1.26.1
+Version:        1.28.0
 Release:        0
 Summary:        Java API for working with compressed files and archivers
 License:        Apache-2.0
@@ -27,17 +27,17 @@ Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/proper/commons-compress/
 Source0:        https://archive.apache.org/dist/commons/compress/source/%{short_name}-%{version}-src.tar.gz
 Source1:        %{name}-build.xml
-Patch0:         0001-Remove-Brotli-compressor.patch
-Patch1:         0002-Remove-ZSTD-compressor.patch
-Patch2:         0003-Remove-Pack200-compressor.patch
 BuildRequires:  ant
+BuildRequires:  brotli-java
 BuildRequires:  commons-codec
 BuildRequires:  commons-io >= 2.14
 BuildRequires:  commons-lang3
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  objectweb-asm
 BuildRequires:  xz-java
+BuildRequires:  zstd-jni
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
@@ -61,32 +61,16 @@ This package provides %{summary}.
 %setup -q -n %{short_name}-%{version}-src
 cp %{SOURCE1} build.xml
 
-# Unavailable Google Brotli library (org.brotli.dec)
-%patch -P 0 -p1
-%pom_remove_dep org.brotli:dec
-rm -r src/{main,test}/java/org/apache/commons/compress/compressors/brotli
-
-# Unavailable ZSTD JNI library
-%patch -P 1 -p1
-%pom_remove_dep :zstd-jni
-rm -r src/{main,test}/java/org/apache/commons/compress/compressors/zstandard
-
-# Remove support for pack200 which depends on ancient asm:asm:3.2
-%patch -P 2 -p1
-rm -r src/{main,test}/java/org/apache/commons/compress/harmony
-rm -r src/main/java/org/apache/commons/compress/compressors/pack200
-rm src/main/java/org/apache/commons/compress/java/util/jar/Pack200.java
-rm -r src/test/java/org/apache/commons/compress/compressors/pack200
-rm src/test/java/org/apache/commons/compress/java/util/jar/Pack200Test.java
-
-# NPE with jdk10
-%pom_remove_plugin :maven-javadoc-plugin
-
-%pom_xpath_remove "pom:profiles/pom:profile[pom:id[text()='java9+']]"
-
 %build
 mkdir -p lib
-build-jar-repository -s lib xz-java commons-io commons-codec commons-lang3
+build-jar-repository -s lib \
+    brotli/dec \
+    commons-io \
+    commons-codec \
+    commons-lang3 \
+    objectweb-asm/asm \
+    xz-java \
+    zstd-jni/zstd-jni
 %{ant} package javadoc
 
 %install
@@ -97,7 +81,7 @@ ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
 %{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
-%add_maven_depmap %{short_name}.pom %{short_name}.jar -a commons:commons-compress,commons-compress:commons-compress
+%add_maven_depmap %{short_name}.pom %{short_name}.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
