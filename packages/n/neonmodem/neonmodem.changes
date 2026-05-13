@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 12 14:10:01 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update golang.org/x/image dependency to v0.38.0 due to bsc#1260727
+- Update golang.org/x/term dependency to v0.42.0 due to bsc#1260727
+
+-------------------------------------------------------------------
 Mon Jun 16 06:19:39 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 1.0.7+git0.346d1d3:

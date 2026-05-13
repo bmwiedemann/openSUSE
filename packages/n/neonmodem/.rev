@@ -66,4 +66,13 @@
   * Change chat button (forwarded request 1285984 from ph03nix)</comment>
     <requestid>1286092</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8f60b193ae497bde12ee4f13e7f342da</srcmd5>
+    <version>1.0.7+git0.346d1d3</version>
+    <time>1778685686</time>
+    <user>anag_factory</user>
+    <comment>- Update golang.org/x/image dependency to v0.38.0 due to bsc#1260727
+- Update golang.org/x/term dependency to v0.42.0 due to bsc#1260727 (forwarded request 1352776 from ph03nix)</comment>
+    <requestid>1352898</requestid>
+  </revision>
 </revisionlist>
