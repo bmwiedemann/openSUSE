@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 12 13:59:10 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 110+suse.31.ga81148a:
+
+  Support NTP configuration for airgapped scenarios (jsc#PED-16110):
+  * feat(chrony): introducing the chrony module
+  * feat(network-manager): write info about NTP servers in dhcpopts file
+
+-------------------------------------------------------------------
 Thu May 07 06:44:07 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Update to version 110+suse.29.g16072cee:

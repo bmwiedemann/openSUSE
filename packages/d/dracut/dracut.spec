@@ -1,7 +1,7 @@
 #
 # spec file for package dracut
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           dracut
-Version:        110+suse.29.g16072cee
+Version:        110+suse.31.ga81148a
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -442,6 +442,7 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %ifarch s390 s390x
 %{dracutlibdir}/modules.d/73zipl
 %endif
+%{dracutlibdir}/modules.d/74chrony
 %{dracutlibdir}/modules.d/74cifs
 %ifarch s390 s390x
 %{dracutlibdir}/modules.d/74dcssblk
