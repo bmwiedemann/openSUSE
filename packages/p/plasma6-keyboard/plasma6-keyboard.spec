@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-keyboard
-Version:        6.6.4
+Version:        6.6.5
 Release:        0
 Summary:        Virtual Keyboard for Qt based desktops
 License:        GPL-2.0-or-later AND GPL-3.0-only
