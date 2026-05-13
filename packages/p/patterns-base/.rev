@@ -1253,4 +1253,12 @@ by zypper, as no packages with those names exist</comment>
     <comment></comment>
     <requestid>1348541</requestid>
   </revision>
+  <revision rev="145" vrev="29">
+    <srcmd5>8fda283a576fd512319d5d30543adb94</srcmd5>
+    <version>20241218</version>
+    <time>1778698741</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1352946</requestid>
+  </revision>
 </revisionlist>

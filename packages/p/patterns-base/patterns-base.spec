@@ -832,11 +832,11 @@ Requires:       tpm2.0-tools
 # probably needed for fsck.fat on efi partitions
 Requires:       dosfstools
 %else
+Requires:       distrobox
+Requires:       distrobox-branding-SLE
 Requires:       iputils
 Requires:       supportutils
 Requires:       systemd-presets-branding-SLE_immutable
-Requires:       toolbox
-Requires:       toolbox-branding-SLE
 Requires:       group(wheel)
 # zypper ps is useless in transactional mode. It also checks for
 # /run/reboot-needed though which is created by transactional-update
@@ -878,7 +878,7 @@ Requires:       microos-tools
 %ifnarch %{arm}
 Requires:       kdump
 %endif
-Requires:       vim-small
+Requires:       (vim-small or vim)
 Requires:       pattern() = base
 Suggests:       health-checker
 %if 0%{?suse_version} < 1699

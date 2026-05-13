@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 12 12:30:32 UTC 2026 - Jiri Srain <jsrain@suse.com>
+
+- use distrobox instead of toolbox on SLE (jsc#PED-13820)
+
+-------------------------------------------------------------------
+Mon May 11 11:12:36 UTC 2026 - Jiri Srain <jsrain@suse.com>
+
+- do not require vim-small if vim is installed (bsc#1262334)
+
+-------------------------------------------------------------------
 Tue Apr 21 10:04:09 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - immutable_base: Pull in systemd-presets-branding-SLE_immutable
