@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue May 12 07:06:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.3:
+  + ajasink: Correctly set reference source
+  + analytics: fix meta transform function for copy cases
+  + av1parse: Fix null pointer deference
+  + bpmdetect: Fix calculation of number of samples for >1 channels
+  + codecparsers: Stack Buffer Overflow in H.265 Buffering Period
+    SEI Parser
+  + cudaconvert: fix performance regression caused by double
+    precision floating point constants
+  + decklink: Fix various refcount issues and related leaks
+  + h263parse:
+    - Fix wrong ratio masking
+    - Missing handling of reserved invalid EPAR_D value
+  + h265parser:
+    - Use sub-layer 0 CPB count in buffering_period SEI loops
+    - Add missing clearing function for H266 SEI message
+    - Avoid out-of-bounds write when parsing PPS tile slices
+  + mpegdemux: Add various bounds checks related to PES header
+    parsing
+  + interlace: Revert "Drop framerate from query caps of sinkpad"
+  + mpegtsdemux: Various fixes
+  + mpegtspacketizer: Avoid potential overflow
+  + mse: Also disable the library if the meson option is disabled
+  + mxf:
+    - Fix multiple writing / parsing issues when handling VANC
+      packets
+    - Theoretical heap Buffer Overflow in MXF AES3 Audio Descriptor
+      write_tags
+  + mxfdemux: Fix reverse temporal offsets array upper bounds check
+  + mxfmux: aes-bwf: Use correct size when serializing user data /
+    channel status mode
+  + nvcodec: Fix missing adapter-luid when loading decoders
+  + nvdec regression in 1.28.2: "Couldn't create new device with
+    adapter luid 0"
+  + pngparse: Fix Use-after-free bug
+  + qml6d3d11sink: Clear texture on Paused-to-Ready transition
+  + qt6d3d11: fix null check in SetForceAspectRatio()
+  + tsdemux:
+    - Fix parsing of PES ESCR and following PES header fields
+    - Fix segfault when trying to handle SCTE-35 with incorrect
+      program specified
+  + va: do not post error message when push fails
+  + vkupload/vkdownload: Fix possible corrupted image due to
+    mismatched stride/padding
+  + vtdec:
+    - Avoid blocking decoder output callback
+    - Avoid locking up during a decoder reset
+    - Deadlock when restarting pipeline
+    - Fix deadlock when restarting pipeline
+  + webrtc: take ownership of src_bin and sink_bin and don't leak
+    error message
+  + Require C std gnu11 or c11, remove custom 'restrict'
+    definition, fixing build with Qt 6.11
+
+-------------------------------------------------------------------
 Fri Apr 17 13:33:09 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add an explicit BuildRequires: pkgconfig(libvmaf) instead of
