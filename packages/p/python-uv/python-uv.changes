@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 13 10:12:26 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.14 
+ * Enhancements
+  * Add Astral mirror URL override 
+  * Ignore top_level.txt entries in uninstall that are not valid Python identifiers 
+ * Bug fixes
+  * Avoid applying .env files in parent process 
+  * Filter ANSI codes in logging output 
+  * Fix uv tree showing extra-conditional deps for packages required without extras 
+  * Respect build options (e.g., --no-build) during lock validation 
+
+-------------------------------------------------------------------
 Mon May 11 13:28:49 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.13
@@ -6,7 +19,7 @@ Mon May 11 13:28:49 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
   * Include data files in editable builds 
   * Respect --require-hashes when installing from pylock.toml files 
   * Respect --no-dev over UV_DEV=1 
-  * Don't suggest non-existent --no-frozen flag  (#19294)
+  * Don't suggest non-existent --no-frozen flag
  * Enhancements
   * Add --no-editable support to uv pip install 
   * Require git refs in URLs to be percent-encoded 

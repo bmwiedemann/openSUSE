@@ -2543,4 +2543,22 @@
   * Fix bug from inconsistent workflow name in GHA-PyPI guide example</comment>
     <requestid>1352563</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>338ca043c3bfc07bb124949a279e2645</srcmd5>
+    <version>0.11.14</version>
+    <time>1778698761</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.14 
+ * Enhancements
+  * Add Astral mirror URL override 
+  * Ignore top_level.txt entries in uninstall that are not valid Python identifiers 
+ * Bug fixes
+  * Avoid applying .env files in parent process 
+  * Filter ANSI codes in logging output 
+  * Fix uv tree showing extra-conditional deps for packages required without extras 
+  * Respect build options (e.g., --no-build) during lock validation 
+
+  * Don't suggest non-existent --no-frozen flag</comment>
+    <requestid>1353048</requestid>
+  </revision>
 </revisionlist>
