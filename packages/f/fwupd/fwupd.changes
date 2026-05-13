@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Tue May 12 11:10:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.3:
+  + This release adds the following features:
+    - Add support for Redfish bearer token authentication
+    - Add support for several XMC SPI chips
+    - Parse JCat files in libfwupd without using libjcat
+  + This release fixes the following bugs:
+    - Allow configuring a Redfish URI with a path prefix
+    - Avoid firmware matching errors for Cat-6 and Cat-12 modems
+    - Calculate and export a floating point percentage progress value
+    - Do not print clean remote success message if aborted
+    - Do not probe all Nordic devices with USB VID 0x1915
+    - Fix force table support in Elan IC types 0x13 and 0x14
+    - Fix Raydium information check flow to avoid incorrect validation
+    - Fix the Thunderbolt version number by ignoring the reserved bits
+    - Load well-known paths in dbxtool to prevent a regression
+    - Match a specific Raydium device to prevent resetting older hardware
+    - Only copy the HIDRAW USB properties if a DS-20 has been provided
+    - Use CA1 for a SK Hynix NVMe drive
+  + This release adds support for the following hardware:
+    - SHIFT6mq and SHIFTphone 8
+
+-------------------------------------------------------------------
+Thu May  7 14:09:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.2:
+  + This release adds the following features:
+    - Add an HSI check for AMD SB-7033 aka EntrySign
+    - Add native CBOR parsing and drop libcbor2 as a dep
+    - Add server platform detection to suspend HSI checks
+    - Allow setting a maximum version number for a device
+    - Allow setting context flags from HWID matches
+    - Increment the progressbar when waiting for replug
+    - Require Windows 8+ for the MSI build artifact
+    - Support loading EFI authenticated variables with ContentInfo headers
+  + This release fixes the following bugs:
+    - Add daemon support for modems that export ttyUSB devices
+    - Add decompression ratio limit to prevent parsing emulation ZIP bombs
+    - Add device activation flag for Dell servers after firmware upgrade
+    - Allow using a custom Telink HidToolVer quirk
+    - Check the UEFI capsule payload is less than 4GiB in size
+    - Cleanup all the user inhibits when required
+    - Do not allow using non-regular files like devnull as metadata
+    - Do not use capsule-on-disk on Lenovo ThinkCentre M60e Tiny
+    - Fix a buffer overread when parsing a malicious PE file
+    - Fix a CRC validation mistake in ZIP firmware parser
+    - Fix a maybe-impossible NULL pointer dereference when parsing netlink data
+    - Fix a small memory leak when writing Redfish firmware
+    - Fix accessing Nordic devices connected through a dongle
+    - Fix handling snapd payloads with only a default image
+    - Fix potential NULL pointer dereference in QMI firmware write
+    - Fix the auto-generated Redfish HBA device name
+    - Fix the displayed Thunderbolt version number by ignoring reserved bits
+    - Fix UF2 race with UDisks2 volume discovery during replug
+    - Fix warning when probing removable USB devices with no medium
+    - Guard HSI feature with platforms requirements
+    - Hardcode the modification timestamp in generated zip archive
+    - Increase the resolution of the progress bar updates
+    - Limit the maximum number of files that can be parsed from ZIP archives
+    - Prevent users from asking for unlimited system inhibits
+    - Properly handle Dell iDRAC when using Redfish
+    - Reject DFU sectors with zero size to prevent a possible infinite loop
+    - Restore the VID check in Algoltek USBCR probe function
+    - Set sensible parsing limits in each FuFirmware subclass
+    - Show a suitable version when the Novatek update is interrupted
+    - Support CAB image filenames longer than 255 chars
+    - Update the Focal touch firmware format to the latest release
+    - Use overflow-checked arithmetic for all offset calculations
+    - Use prepared queries when querying silos
+    - Validate CCGX record data size before flash write
+    - Validate Nordic HID peer index before accessing peers cache array
+    - Validate Synaptics cxaudio EEPROM size before trusting it
+    - Wait for mock snapd API socket to appear when running tests
+    - Wait for the new version when updating the Nordic TK059 Keyboard
+  + This release adds support for the following hardware:
+    - Elan TP IC type 0x19
+    - Google Moonstone
+    - HP 400 and 405 Mouse
+    - Lenovo USB-4 dock
+    - LX Semicon SW42101 touch controller
+    - Parade USB hubs with GPIO control
+    - Pixart PLP239 devices
+    - Raydium TP devices
+    - Sunplus cameras
+- Drop pkgconfig(libcbor) BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
 Thu Mar 12 10:40:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.1.1:

@@ -43,7 +43,7 @@
 %define shlib_sover  3
 
 Name:           fwupd
-Version:        2.1.1
+Version:        2.1.3
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -93,7 +93,6 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(gusb) >= 0.2.9
 BuildRequires:  pkgconfig(jcat) >= 0.1.3
-BuildRequires:  pkgconfig(libcbor)
 BuildRequires:  pkgconfig(libcurl) >= 7.62.0
 BuildRequires:  pkgconfig(libdrm_amdgpu)
 BuildRequires:  pkgconfig(libelf)
@@ -228,11 +227,15 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Ddocs=enabled \
   -Dsupported_build=enabled \
   -Dtests=false \
+  -Dumockdev_tests=disabled \
   -Dvalgrind=disabled \
   -Dvendor_ids_dir=/usr/share/hwdata \
   -Dman=true \
 %ifarch s390x ppc64le
   -Dplugin_flashrom=disabled \
+%endif
+%ifnarch %{ix86} x86_64
+  -Dhsi=disabled \
 %endif
   %{nil}
 %meson_build
