@@ -31,6 +31,13 @@
 %define pf_html_directory    %{_docdir}/postfix-doc/html
 %define pf_sample_directory  %{_docdir}/postfix-doc/samples
 %define pf_data_directory    %{_localstatedir}/lib/postfix
+%if 0%{?suse_version} >= 1600
+%define pf_permissions_dir   %{_datadir}/permissions/permissions.d
+%define pf_permissions_dir_config %nil
+%else
+%define pf_permissions_dir   %{_sysconfdir}/permissions.d
+%define pf_permissions_dir_config %config
+%endif
 %if 0%{?suse_version} < 1330
 %define pf_uid               51
 %define pf_gid               51
@@ -282,9 +289,9 @@ mkdir -p %{buildroot}%{_includedir}/postfix
     install -m 644 postfix-SUSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
 %endif
 mkdir -p %{buildroot}%{_sysconfdir}/sasl2
-mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
-install -pm 0644 postfix-SUSE/permissions %{buildroot}%{_sysconfdir}/permissions.d/postfix
-install -pm 0644 postfix-SUSE/permissions.paranoid %{buildroot}%{_sysconfdir}/permissions.d/postfix.paranoid
+mkdir -p %{buildroot}%{pf_permissions_dir}
+install -pm 0644 postfix-SUSE/permissions %{buildroot}%{pf_permissions_dir}/postfix
+install -pm 0644 postfix-SUSE/permissions.paranoid %{buildroot}%{pf_permissions_dir}/postfix.paranoid
 
 install -m 600 postfix-SUSE/smtpd.conf %{buildroot}%{_sysconfdir}/sasl2/smtpd.conf
 %{buildroot}%{_sbindir}/postconf -c %{buildroot}%{_sysconfdir}/postfix \
@@ -414,7 +421,6 @@ fi
 %config %{_sysconfdir}/pam.d/*
 %endif
 %dir %{_sysconfdir}/postfix
-%exclude %{_sysconfdir}/postfix/*mysql*
 %config(noreplace) %{_sysconfdir}/postfix/*
 %attr(0750,root,root) %config %{_sysconfdir}/postfix/post-install
 %attr(0750,root,root) %config %{_sysconfdir}/postfix/postfix-tls-script
@@ -425,8 +431,8 @@ fi
 %config(noreplace) %{_sysconfdir}/sasl2/smtpd.conf
 %config %{_sysconfdir}/postfix/LICENSE
 %config %{_sysconfdir}/postfix/TLS_LICENSE
-%config %{_sysconfdir}/permissions.d/postfix
-%config %{_sysconfdir}/permissions.d/postfix.paranoid
+%pf_permissions_dir_config %{pf_permissions_dir}/postfix
+%pf_permissions_dir_config %{pf_permissions_dir}/postfix.paranoid
 %attr(0644, root, root) %config %{_sysconfdir}/postfix/makedefs.out
 %{pf_shlib_directory}/postfix-files
 # create our default postfix ssl DIR (/etc/postfix/ssl)

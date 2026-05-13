@@ -33,6 +33,13 @@
 %define pf_html_directory    %{_docdir}/%{name}-doc/html
 %define pf_sample_directory  %{_docdir}/%{name}-doc/samples
 %define pf_data_directory    %{_localstatedir}/lib/%{name}
+%if 0%{?suse_version} >= 1600
+%define pf_permissions_dir   %{_datadir}/permissions/permissions.d
+%define pf_permissions_dir_config %nil
+%else
+%define pf_permissions_dir   %{_sysconfdir}/permissions.d
+%define pf_permissions_dir_config %config
+%endif
 %define mail_group           mail
 %define unitdir %{_prefix}/lib/systemd
 %if 0%{?suse_version} < 1599
@@ -284,7 +291,7 @@ for i in qmqp-source smtp-sink smtp-source; do
 	install -pm 0755 bin/$i %{buildroot}%{_sbindir}/$i
 done
 mkdir -p %{buildroot}/sbin/conf.d
-mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
+mkdir -p %{buildroot}%{pf_permissions_dir}
 mkdir -p %{buildroot}/%{_libdir}/sasl2
 mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}/%{pf_sample_directory}
@@ -315,8 +322,8 @@ install -pm 0600 %{name}-SUSE/smtpd.conf %{buildroot}%{_sysconfdir}/sasl2/smtpd.
 	   "disable_vrfy_command = yes" \
 	   'smtpd_banner      = $myhostname ESMTP'
 #Set Permissions
-install -pm 0644 %{name}-SUSE/permissions %{buildroot}%{_sysconfdir}/permissions.d/%{name}
-install -pm 0644 %{name}-SUSE/permissions.paranoid %{buildroot}%{_sysconfdir}/permissions.d/%{name}.paranoid
+install -pm 0644 %{name}-SUSE/permissions %{buildroot}%{pf_permissions_dir}/%{name}
+install -pm 0644 %{name}-SUSE/permissions.paranoid %{buildroot}%{pf_permissions_dir}/%{name}.paranoid
 sed -i	-e 's/\(.*ldap.*\)/#\1/g' \
 	-e 's/\(.*mysql.*\)/#\1/g' \
 	-e 's/\(.*pgsql.*\)/#\1/g' \
@@ -439,8 +446,8 @@ sed -i 's/hash:/lmdb:/g' %{buildroot}%{_sysconfdir}/%{name}/main.cf
 %ghost %attr(0644,root,root) %{_sysconfdir}/aliases.lmdb
 %dir %{_sysconfdir}/sasl2
 %config(noreplace) %{_sysconfdir}/sasl2/smtpd.conf
-%config %{_sysconfdir}/permissions.d/%{name}
-%config %{_sysconfdir}/permissions.d/%{name}.paranoid
+%pf_permissions_dir_config %{pf_permissions_dir}/%{name}
+%pf_permissions_dir_config %{pf_permissions_dir}/%{name}.paranoid
 %{pf_meta_directory}/%{name}-files
 %dir %{pf_systemd_directory}
 %attr(0755,root,root) %{pf_systemd_directory}/*

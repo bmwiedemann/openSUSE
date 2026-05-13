@@ -2743,4 +2743,17 @@ successfully tested on Tumbleweed x86_64</comment>
     is also limited).</comment>
     <requestid>1351010</requestid>
   </revision>
+  <revision rev="272" vrev="2">
+    <srcmd5>8acbb97126b6f78a40cd4dbb805af4b0</srcmd5>
+    <version>3.11.2</version>
+    <time>1778685547</time>
+    <user>anag_factory</user>
+    <comment>Fix build problem of postfix-bdb
+- AUDIT-0: postfix: move permissions from /etc to /usr/share/permissions
+  (bsc#1264563) Apply proposed changes. 
+
+- AUDIT-0: postfix: move permissions from /etc to /usr/share/permissions
+  (bsc#1264563) Apply proposed changes.</comment>
+    <requestid>1352599</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  8 16:32:55 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- AUDIT-0: postfix: move permissions from /etc to /usr/share/permissions
+  (bsc#1264563) Apply proposed changes. 
+
+-------------------------------------------------------------------
 Mon May  4 19:34:23 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.11.2
