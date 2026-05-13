@@ -16,4 +16,14 @@
   * Configure libssh to listen on IPv6 (bsc#1253117)</comment>
     <requestid>1333615</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>09833342daf3bd871c30964ae34d5490</srcmd5>
+    <version>0.4</version>
+    <time>1778685535</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4:
+  * Skip showing fingerprints for DSA host keys (boo#1264665)
+- Add dependency on /usr/bin/awk</comment>
+    <requestid>1352733</requestid>
+  </revision>
 </revisionlist>

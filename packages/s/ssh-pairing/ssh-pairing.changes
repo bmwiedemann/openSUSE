@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 11:42:07 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 0.4:
+  * Skip showing fingerprints for DSA host keys (boo#1264665)
+- Add dependency on /usr/bin/awk
+
+-------------------------------------------------------------------
 Tue Feb 17 16:29:09 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 0.3:

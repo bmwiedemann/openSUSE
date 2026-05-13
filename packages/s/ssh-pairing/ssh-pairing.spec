@@ -17,7 +17,7 @@
 
 
 Name:           ssh-pairing
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Passwordless SSH key exchange through pairing
 License:        GPL-2.0-or-later
@@ -27,7 +27,9 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libssh)
 Requires:       dialog
+# Note: busybox hostname does not work here, missing hostname -I
 Requires:       hostname
+Requires:       /usr/bin/awk
 Requires:       /usr/bin/ssh-keygen
 
 %description
