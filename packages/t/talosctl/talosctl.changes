@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 12 13:35:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.13.2 (.1 was not released):
+  https://github.com/siderolabs/talos/releases/tag/v1.13.2
+  No talosctl-related changes or dependency updates.
+  Talos is built with Go 1.26.3.
+
+-------------------------------------------------------------------
 Thu Apr 30 06:56:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.13.0:
