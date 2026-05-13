@@ -335,4 +335,12 @@
     <comment>Plasma 6.6.4. ksshaskpass is now in /usr/bin/ as well, for consistency with upstream and other distros. (forwarded request 1345504 from Vogtinator)</comment>
     <requestid>1345646</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ec71c7100d5971031b1011d2249b71c6</srcmd5>
+    <version>6.6.5</version>
+    <time>1778685668</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.6.5 (forwarded request 1352821 from Vogtinator)</comment>
+    <requestid>1352879</requestid>
+  </revision>
 </revisionlist>
