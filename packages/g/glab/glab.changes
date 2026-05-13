@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed May 13 04:41:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.97.0:
+  * Features
+    - 2b685d63: feat(orbit): add 'glab orbit local' command +
+      extract binarymgr package (Kai Armstrong
+      karmstrong@gitlab.com)
+  * Others
+    - ee2757f9: test(ask): skip flaky TestAskCmd ahead of removal
+      (Kai Armstrong karmstrong@gitlab.com)
+- Update to version 1.96.0:
+  * Features
+    - 43f15255: feat: add duo cli support for arm64 windows (Andrei
+      Zubov azubov@gitlab.com)
+  * Bug Fixes
+    - d14064ca: fix(cmdutils): Avoid race on global viper state in
+      GroupOverride (Caleb Madara calebmadara58@gmail.com)
+  * Dependencies
+    - ce62ac33: chore(deps): bump go to v1.26.3 (Kai Armstrong
+      karmstrong@gitlab.com)
+    - cd438239: chore(deps): update dependency @commitlint/cli to
+      ^20.5.3 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 5a11bf9b: chore(dep): update x/net (Filip Aleksic
+      faleksic@gitlab.com)
+    - 31255b35: refactor(git): decouple StandardGitCommand from
+      run.PrepareCmd (Gary Holtz gholtz@gitlab.com)
+
+-------------------------------------------------------------------
 Fri May 08 17:05:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.95.0:
