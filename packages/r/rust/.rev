@@ -969,4 +969,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.94.0 - for details see the rust1.94 package</comment>
     <requestid>1338175</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>325255588827ee3e39a974f3e4154971</srcmd5>
+    <version>1.95.0</version>
+    <time>1778685504</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1349042</requestid>
+  </revision>
 </revisionlist>
