@@ -1,4 +1,4 @@
-From 47b076274c44f687b81406acdc016bbaab769cde Mon Sep 17 00:00:00 2001
+From b9da04f83eeadb027d5f3a85186b9ada3c7723d2 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Mon, 1 Sep 2025 16:05:24 +1000
 Subject: [PATCH 1/2] openSUSE: point users to docker-buildx package
@@ -40,5 +40,5 @@ index d6d74919b..3fc465f86 100644
  )
  
 -- 
-2.52.0
+2.54.0
 
