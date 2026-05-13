@@ -340,4 +340,12 @@ Without this, the theme can't be selected:
     <comment>Plasma 6.6.4. ksshaskpass is now in /usr/bin/ as well, for consistency with upstream and other distros. (forwarded request 1345504 from Vogtinator)</comment>
     <requestid>1345649</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a1f765f9f14fa7d69d6a707b1183c5a7</srcmd5>
+    <version>6.6.5</version>
+    <time>1778685682</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.6.5 (forwarded request 1352821 from Vogtinator)</comment>
+    <requestid>1352882</requestid>
+  </revision>
 </revisionlist>
