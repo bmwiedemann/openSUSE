@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue May  5 00:00:00 UTC 2026 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Update to version 6.1.0:
+  * New ANARI rendering integration with dynamic UI properties
+    for renderers including VisRTX, Helide, and environment.
+  * New USD scene exporter via File -> Export Scene supporting
+    polygonal geometry, color maps, lights, cameras, and PBR.
+  * Selections are now saved and loaded from .pvsm and Python
+    state files (ID, frustum, blocks, etc.).
+  * Rectilinear Grid support for OverlappingAMR and
+    NonOverlappingAMR datasets with XML reader/writer.
+  * Chart representations for Partitioned Dataset Collections
+    gain new "Array Selection Mode" property defaulting to
+    merged blocks view.
+  * Statistical analysis filters refactored to use Partitioned
+    Dataset Collections with simplified pipeline construction.
+  * New ONNX plugin for neural network inference via the
+    new ONNX Predict filter.
+  * New Points Matching Transform filter with Interactive Four
+    Lines widget for point-set registration.
+  * EAM Data Reader for E3SM atmospheric NetCDF data producing
+    2D surface and 3D volumetric outputs.
+  * Clip filter now supports exact box clipping when Invert is off.
+  * Calculator filter supports multi-component array syntax
+    ({x, y, z, ...}) and the constants pi and inf.
+  * LOD computation no longer triggered by window resize,
+    fixing potential crashes with large datasets.
+  * Load State button added to the Main Controls toolbar.
+  * Color toolbar reorganized with preset colormap selector
+    and scalar bar editor buttons.
+  * Abort button for canceling long-running local server
+    operations.
+  * Status bar now shows warning and error indicator icons.
+  * Box widget has new Matrix tab for direct 4x4 matrix input
+    with live synchronization to position/rotation/scale fields.
+  * New current_time variable in Python Calculator and Python
+    Annotation filters.
+  * Various CAVE/VR improvements including new First Person
+    Camera and Joystick Camera interactor styles.
+  * Deprecated removed proxy filters replaced with new names
+    (e.g. GhostCells, SurfaceNormals, ProcessIds, etc.).
+  * More info:
+    <https://www.kitware.com/paraview-6-1-0-release-notes/>
+- Dropped patches:
+  * fix-soversion-soname.patch
+
+-------------------------------------------------------------------
 Tue Feb 24 00:01:00 UTC 2026 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
 
 - Added simple python import test to check correct deployment.

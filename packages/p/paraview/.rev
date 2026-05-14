@@ -645,4 +645,12 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>1335362</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>23fba05b21a8ee10408e87cbb0104d2b</srcmd5>
+    <version>6.1.0</version>
+    <time>1778787832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1353107</requestid>
+  </revision>
 </revisionlist>

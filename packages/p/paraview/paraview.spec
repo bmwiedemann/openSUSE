@@ -18,12 +18,12 @@
 
 
 %define major_ver 6
-%define minor_ver 0
+%define minor_ver 1
 %define short_ver %{major_ver}.%{minor_ver}
 %define shlib libparaview%{major_ver}_%{minor_ver}
 
 Name:           paraview
-Version:        %{short_ver}.1
+Version:        %{short_ver}.0
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
@@ -32,13 +32,11 @@ URL:            https://www.paraview.org
 Source0:        https://www.paraview.org/files/v%{short_ver}/ParaView-v%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # CAUTION: GettingStarted may or may not be updated with each minor version
-Source2:        https://www.paraview.org/files/v%{short_ver}/ParaViewGettingStarted-%{major_ver}.%{minor_ver}.1.pdf
+Source2:        https://www.paraview.org/files/v%{short_ver}/ParaViewGettingStarted-%{version}.pdf
 # PATCH-FIX-UPSTREAM paraview-desktop-entry-fix.patch badshah400@gmail.com -- Fix desktop menu entry by inserting proper required categories
 Patch0:         paraview-desktop-entry-fix.patch
 # PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking (gh#libharu/libharu#213)
 Patch1:         fix-libharu-missing-m.patch
-# We need to change the default soname for vtk modules.
-Patch2:         fix-soversion-soname.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-Add-missing-libm-link-library-for-bundled-ExodusII.patch
 BuildRequires:  Mesa-devel
