@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 12 12:33:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 33
+  Added
+  * New Meson-based build system, which also works with Muon. This
+    is considered experimental for now, and therefore the existing
+    GNU Make-based one is still supported.
+  Changed
+  * Development has moved to Codeberg, with the old GitHub
+    repository now being a mirror.
+  * Try to detect whether the compiler supports the bounded
+    attribute via __has_attribute(), and enable its usage
+    automatically when available.
+  * Updated sources from upstream OpenBSD and libbsd 0.12.1
+  Fixed
+  * Fix compilation issues when -Wimplicit-function-declaration is
+    in effect, which is the case with Clang 16 and GCC 13 (or
+    newer).
+
+-------------------------------------------------------------------
 Sun Mar 10 12:22:51 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 32

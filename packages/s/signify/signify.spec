@@ -1,7 +1,7 @@
 #
 # spec file for package signify
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           signify
-Version:        32
+Version:        33
 Release:        0
 Summary:        OpenBSD tool to sign and verify signatures on files (portable version)
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Security
-URL:            https://github.com/aperezdc/signify
-Source0:        %{url}/releases/download/v%{version}/signify-%{version}.tar.xz
-Source1:        %{url}/releases/download/v%{version}/signify-%{version}.tar.xz.asc
-# https://github.com/aperezdc/signify/blob/master/README.md#release-signing
+URL:            https://codeberg.org/aperezdc/signify
+Source0:        https://codeberg.org/aperezdc/signify/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source1:        https://codeberg.org/aperezdc/signify/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libbsd) >= 0.11.0
@@ -36,7 +35,7 @@ A portable version of the OpenBSD tool to sign and verify signatures on files.
 See http://www.tedunangst.com/flak/post/signify for more information.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export EXTRA_CFLAGS="%{optflags} -D_GNU_SOURCE"
