@@ -477,4 +477,12 @@
     from Certbot's public API.</comment>
     <requestid>1351303</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>6ea48a4565525fc06a74777561d51f15</srcmd5>
+    <version>5.6.0</version>
+    <time>1778787894</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>1353146</requestid>
+  </revision>
 </revisionlist>
