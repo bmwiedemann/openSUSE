@@ -2995,7 +2995,6 @@ unsorted:
   - crudini 
   - crun 
   - crun-vm 
-  - crush 
   - cryfs 
   - cryptctl 
   - cryptsetup-ssh 
@@ -21024,6 +21023,11 @@ unsorted:
   - osv-scanner 
   - otf2bdf 
   - otpclient 
+  - otpclient-bash-completion 
+  - otpclient-fish-completion 
+  - otpclient-gnome-search-provider 
+  - otpclient-krunner 
+  - otpclient-zsh-completion 
   - otter-browser 
   - otter-browser-lang 
   - ouch 
@@ -25229,6 +25233,7 @@ unsorted:
   - python311-cfn-lint 
   - python311-cftime 
   - python311-changelog-chug 
+  - python311-changelog-gen 
   - python311-chardet 
   - python311-chartify 
   - python311-check-manifest 
@@ -25846,6 +25851,7 @@ unsorted:
   - python311-google-cloud-storage 
   - python311-google-cloud-storage-control 
   - python311-google-cloud-testutils 
+  - python311-google-cloud-trace 
   - python311-google-cloud-translate 
   - python311-google-cloud-vpc-access 
   - python311-google-crc32c 
@@ -29154,6 +29160,7 @@ unsorted:
   - python313-cfn-lint 
   - python313-cftime 
   - python313-changelog-chug 
+  - python313-changelog-gen 
   - python313-chardet 
   - python313-chartify 
   - python313-check-manifest 
@@ -29778,6 +29785,7 @@ unsorted:
   - python313-google-cloud-storage 
   - python313-google-cloud-storage-control 
   - python313-google-cloud-testutils 
+  - python313-google-cloud-trace 
   - python313-google-cloud-translate 
   - python313-google-cloud-vpc-access 
   - python313-google-crc32c 
@@ -33090,6 +33098,7 @@ unsorted:
   - python314-cfn-lint 
   - python314-cftime 
   - python314-changelog-chug 
+  - python314-changelog-gen 
   - python314-chardet 
   - python314-charset-normalizer 
   - python314-chartify 
@@ -33714,6 +33723,7 @@ unsorted:
   - python314-google-cloud-storage 
   - python314-google-cloud-storage-control 
   - python314-google-cloud-testutils 
+  - python314-google-cloud-trace 
   - python314-google-cloud-translate 
   - python314-google-cloud-vpc-access 
   - python314-google-crc32c 
