@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 13 14:35:59 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1550+20260513.3b99372:
+  * profiles: whitelist apparmor aa-notify.from_file action (bsc#1265157)
+
+-------------------------------------------------------------------
 Tue Apr 28 13:14:41 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
 
 - Update to version 1550+20260428.f2a5d2e:
