@@ -1,4 +1,164 @@
 -------------------------------------------------------------------
+Wed May 13 21:40:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.42.0:
+  * fix(cli): prevent automatic updates from switching to less
+    stable channels
+  * chore(release): bump version to
+    0.42.0-nightly.20260428.g59b2dea0e
+  * fix(cli): pass node arguments via NODE_OPTIONS during
+    relaunch to support SEA
+  * fix(cli): handle DECKPAM keypad Enter sequences in terminal
+  * docs(cli): point plan-mode session retention to actual
+    /settings labels
+  * fix(core): add missing oauth fields support in subagent
+    parsing
+  * fix(core): disconnect extension-backed MCP clients in
+    stopExtension
+  * Update documentation workflows with workspace trust
+  * refactor(acp): modularize monolithic acpClient into
+    specialized files
+  * test: fix failures due to antigravity environment leakage
+  * fix(core): add explicit empty log guard in A2A pushMessage
+  * feat(cli): add --delete flag to /exit command for session
+    deletion
+  * test(core): add regression test for issue for
+    ToolConfirmationResponse
+  * Add the ability to @ mention the gemini robot.
+  * test(evals): add EvalMetadata JSDoc annotations to older
+    tests
+  * fix(core): reduce default API timeout to 60s and enable
+    retries for undici timeouts
+  * fix(core): distinguish fallback chains and fix maxAttempts
+    for auto vs explicit model selection
+  * fix(cli): handle InvalidStream event gracefully without
+    throwing
+  * ci(github-actions): switch to github app token and fix bot
+    self-trigger
+  * Respect logPrompts flag for logging sensitive fields
+  * fix: correct API key validation logic in handleApiKeySubmit
+  * fix(agent): prevent exit_plan_mode from being called via
+    shell
+  * # Fix: Inconsistent Case-Sensitivity in GrepTool
+  * docs(core): add automated gemma setup guide
+  * Allow non-https proxy urls to support container environments
+  * fix(bot): productivity and backlog optimizations
+  * refactor(acp): delegate prompt turn processing logic to
+    GeminiClient
+  * fix(cli): refine platform-specific undo/redo and smart
+    bubbling for WSL
+  * fix: suppress duplicate extension warnings during startup
+  * fix(cli): use byte length instead of string length for
+    readStdin size limits
+  * fix(ui): made shell tool header wrap on Ctrl+O
+  * Changelog for v0.41.0-preview.0
+  * Skip binary CLI relaunch
+  * fix(cli): do not override GOOGLE_CLOUD_PROJECT in Cloud Shell
+    when using Vertex AI
+  * docs(cli): add skill discovery troubleshooting checklist to
+    tutorial
+  * docs(policy-engine): link to tools reference for tool names
+    and args
+  * Fix posting invalid response to a comment
+  * fix(cli): prevent informational logs from polluting json
+    output
+  * feat(ui): added microphone and updated placeholder for voice
+    mode
+  * feat(cli): Add 'list' subcommand to '/commands'
+  * fix(core): ensure tool output cleanup on session deletion for
+    legacy files
+  * Docs: Update Agent Skills documentation
+  * test(acp): add missing coverage for extensions command error
+    paths
+  * Changelog for v0.40.0
+  * fix: report AgentExecutionBlocked in non-interactive
+    programmatic modes
+  * feat(extensions): add 'delete' as an alias for /extensions
+    uninstall
+  * fix(core): silently skip GEMINI.md paths that are directories
+    (EISDIR)
+  * fix(ci): checkout PR branch instead of main in bot workflow
+  * fix(cli): use resolved sandbox state for auto-update check
+  * # Metrics Integrity & Standardized Reporting (BT-01)
+  * Add Star History section to README
+  * Add Star History section to README
+  * Remove Star History section from README
+  * test(evals): add behavioral eval for file creation and
+    write_file tool selection
+  * feat(config): enable Gemma 4 models by default via Gemini API
+  * fix(cli): insert voice transcription at cursor position
+    instead of ap…
+  * fix(ui): fix issue with box edges
+  * fix(cli): respect .env override for GOOGLE_CLOUD_PROJECT
+  * fix(ci): robust version checking in release verification
+  * fix(cli): enable daemon relaunch in binary and bundle keytar
+  * fix(core): discourage unprompted git add . in prompt snippets
+  * feat(ui): added wave animation for voice mode
+  * fix(cli): prevent Escape from clearing input buffer
+  * fix(cli): undeprecate --prompt and correct positional query
+    docs
+  * Metrics updates
+  * fix(core): remove "System: Please continue." injection on
+    InvalidStream events
+  * docs(policy-engine): add tool argument keys reference and
+    shell policy cross-links
+  * fix(cli): resolve Ghostty/raw-mode False Cancellation in
+    oauth flow
+  * fix(core): reset session-scoped state on resumption
+  * Fix bulk of remaining issues with generalist profile
+  * fix(core): make subagents aware of active approval modes
+  * fix(acp): resolve agent mode disconnect and improve mode
+    awareness
+  * docs(sdk): add JSDoc to exported interfaces in
+    packages/sdk/src/types.ts
+  * perf: skip redundant GEMINI.md loading in partialConfig
+  * Enhance React guidelines
+  * feat(core): reinforce Inquiry constraints to prevent
+    unauthorized changes
+  * revert: fix(ci): robust version checking in release
+    verification
+  * refactor(UI): created constants file for ThemeDialog
+  * docs: fix GitHub capitalization in releases guide
+  * fix(cli): ensure branch indicator updates in sub-directories
+    and worktrees
+  * feat: add minimal V8 heap snapshot utility for memory
+    diagnostics
+  * fix(hooks): preserve non-text parts in fromHookLLMRequest
+  * fix(cli): allow early stdout when config is undefined
+  * fix(cli)#21297: clear skills consent dialog before reload
+  * fix(cli): render LaTeX-style output as Unicode in the TUI
+  * fix(core): use close event instead of exit in child_process
+    fallback
+  * feat(voice): add privacy and compliance UX warning for Gemini
+    Live backend
+  * feat(memory): add Auto Memory inbox flow with canonical-patch
+    contract
+  * test(cleanup): fix temporary directory leaks in test suites
+  * feat: add ignoreLocalEnv setting and --ignore-env flag
+  * docs(sdk): add JSDoc to all exported interfaces and types
+  * feat(cli): improve /agents refresh logging
+  * Fix: make Dockerfile self-contained with multi-stage build
+  * fix(core): filter unsupported multimodal types from tool
+    responses
+  * fix(core): properly format markdown in AskUser tool by
+    unescaping newlines
+  * feat(bot): add actions spend metric script
+  * feat(cli): add /bug-memory command and auto-capture heap
+    snapshot in /bug
+  * fix(cli): make SkillInboxDialog fit and scroll in alternate
+    buffer
+  * Robust Scale-Safe Lifecycle Consolidation
+  * fix(ci): respect exempt labels when closing stale items
+  * fix(cli): use os.homedir() for home directory warning check
+  * fix(a2a-server): resolve tool approval race condition and
+    improve status reporting
+  * fix(cli): prevent settings dialog border clipping using
+    maxHeight
+  * feat: allow queuing messages during compression
+  * fix(core): retry on ERR_STREAM_PREMATURE_CLOSE errors
+  * fix(core): Minor fixes for generalist profile.
+
+-------------------------------------------------------------------
 Wed May  6 20:12:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.41.1:

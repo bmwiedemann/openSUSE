@@ -572,4 +572,41 @@
   * fix(cli-ui): revert backspace handling to fix Windows</comment>
     <requestid>1352387</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d9c65c15b2b1722bd02e69d7cc6dafee</srcmd5>
+    <version>0.42.0</version>
+    <time>1778787829</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.42.0:
+  * fix(cli): prevent automatic updates from switching to less
+    stable channels
+  * chore(release): bump version to
+    0.42.0-nightly.20260428.g59b2dea0e
+  * fix(cli): pass node arguments via NODE_OPTIONS during
+    relaunch to support SEA
+  * fix(cli): handle DECKPAM keypad Enter sequences in terminal
+  * docs(cli): point plan-mode session retention to actual
+    /settings labels
+  * fix(core): add missing oauth fields support in subagent
+    parsing
+  * fix(core): disconnect extension-backed MCP clients in
+    stopExtension
+  * Update documentation workflows with workspace trust
+  * refactor(acp): modularize monolithic acpClient into
+    specialized files
+  * test: fix failures due to antigravity environment leakage
+  * fix(core): add explicit empty log guard in A2A pushMessage
+  * feat(cli): add --delete flag to /exit command for session
+    deletion
+  * test(core): add regression test for issue for
+    ToolConfirmationResponse
+  * Add the ability to @ mention the gemini robot.
+  * test(evals): add EvalMetadata JSDoc annotations to older
+    tests
+  * fix(core): reduce default API timeout to 60s and enable
+    retries for undici timeouts
+  * fix(core): distinguish fallback chains and fix maxAttempts
+    for auto vs explicit model selection</comment>
+    <requestid>1353104</requestid>
+  </revision>
 </revisionlist>
