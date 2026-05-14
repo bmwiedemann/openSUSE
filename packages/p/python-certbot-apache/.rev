@@ -501,4 +501,12 @@
     from Certbot's public API.</comment>
     <requestid>1351311</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>fd15abb552a6f500e65b33cdb333db65</srcmd5>
+    <version>5.6.0</version>
+    <time>1778787893</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>1353143</requestid>
+  </revision>
 </revisionlist>
