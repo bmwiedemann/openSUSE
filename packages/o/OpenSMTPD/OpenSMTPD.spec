@@ -1,7 +1,7 @@
 #
 # spec file for package OpenSMTPD
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 SUSE Software Solutions
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 Name:           OpenSMTPD
 %global         name_lowercase %(echo -n "%{name}" | tr '[:upper:]' '[:lower:]')
-Version:        7.8.0p0
+Version:        7.8.0p1
 Release:        0
 Summary:        A free implementation of the server-side SMTP protocol
 License:        BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND ISC
@@ -28,8 +28,6 @@ Group:          Productivity/Networking/Email/Servers
 Source:         https://www.opensmtpd.org/archives/opensmtpd-%{version}.tar.gz
 Source1:        %{name}-user.conf
 Source2:        %{name}.service
-# PATCH-FIX-OPENSUSE OpenSMTPD-reduced-permissions-on-SMTPD_SOCKET.patch boo#1247781
-Patch1:         OpenSMTPD-reduced-permissions-on-SMTPD_SOCKET.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 %sysusers_requires
@@ -61,7 +59,6 @@ It allows ordinary machines to exchange e-mails with other systems speaking the 
 %prep
 %setup -q -n %{name_lowercase}-%{version}
 ./bootstrap
-%patch -P 1 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE1} %{name} %{name}-user.conf

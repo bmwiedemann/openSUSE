@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 14 14:07:28 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Updated to version 7.8.0p1: (boo#1263040)
+  - table_proc: ensure the request does not contain newlines
+- Removed OpenSMTPD-reduced-permissions-on-SMTPD_SOCKET.patch to
+  support use case described in boo#1263040
+- Further hardened the systemd service configuration by switching
+  RestrictAddressFamilies from blocklist to allowlist
+
+-------------------------------------------------------------------
 Mon Nov  3 20:50:59 UTC 2025 - Mislav Bozicevic <mislav.bozicevic@suse.com>
 
 - Updated to version 7.8.0p0: (CVE-2025-62875 boo#1250838)
