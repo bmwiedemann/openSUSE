@@ -481,4 +481,12 @@
     <comment>- Update to release SDK-1.4.341.0</comment>
     <requestid>1330637</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>2daeca5426f91a96917a7af0af9112e0</srcmd5>
+    <version>1.4.350</version>
+    <time>1778787723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tag SDK-1.4.350.0</comment>
+    <requestid>1353000</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 13 02:26:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.350.0
+  * New extensions: VK_QCOM_cooperative_matrix_conversion,
+    VK_VALVE_shader_mixed_float_dot_product,
+    VK_ARM_shader_instrumentation, VK_KHR_device_address_commands,
+    VK_KHR_device_fault, VK_KHR_shader_abort,
+    VK_KHR_shader_constant_data,
+    VK_ARM_data_graph_instruction_set_tosa,
+    VK_ARM_scheduling_controls revision 2,
+    VK_EXT_primitive_restart_index, VK_QCOM_queue_perf_hint,
+    VK_ARM_data_graph_optical_flow, VK_KHR_maintenance11,
+    VK_ARM_data_graph_neural_accelerator_statistics,
+    VK_SEC_throttle_hint.
+
+-------------------------------------------------------------------
 Mon Feb  2 19:50:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.4.341.0
