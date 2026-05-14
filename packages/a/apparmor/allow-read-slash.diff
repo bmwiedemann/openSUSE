@@ -1,0 +1,43 @@
+From https://gitlab.com/apparmor/apparmor/-/merge_requests/2079
+
+
+From 32da667806e38b9cddf07f6f2793eba5b74bad6d Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Tue, 28 Apr 2026 19:59:16 +0200
+Subject: [PATCH] Allow smbd and dovecot to read /
+
+Denials get reported with the update to systemd 260.
+
+Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1263051
+---
+ profiles/apparmor.d/usr.sbin.dovecot | 1 +
+ profiles/apparmor.d/usr.sbin.smbd    | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/profiles/apparmor.d/usr.sbin.dovecot b/profiles/apparmor.d/usr.sbin.dovecot
+index d1bbbdb56..12f441a90 100644
+--- a/profiles/apparmor.d/usr.sbin.dovecot
++++ b/profiles/apparmor.d/usr.sbin.dovecot
+@@ -39,6 +39,7 @@ profile dovecot /usr/{bin,sbin}/dovecot flags=(attach_disconnected) {
+   unix (receive, send) type=stream peer=(label=/usr/lib*/dovecot/anvil),
+   unix (receive, send) type=stream peer=(label=dovecot-anvil),
+ 
++  / r,
+   /etc/dovecot/** r,
+   /etc/mtab r,
+   /etc/lsb-release r,
+diff --git a/profiles/apparmor.d/usr.sbin.smbd b/profiles/apparmor.d/usr.sbin.smbd
+index b54b4f551..b62b38202 100644
+--- a/profiles/apparmor.d/usr.sbin.smbd
++++ b/profiles/apparmor.d/usr.sbin.smbd
+@@ -27,6 +27,7 @@ profile smbd /usr/{bin,sbin}/smbd {
+ 
+   signal send set=term peer=samba-bgqd,
+ 
++  / r,
+   /etc/mtab r,
+   /etc/netgroup r,
+   /etc/printcap r,
+-- 
+GitLab
+

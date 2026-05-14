@@ -3098,4 +3098,53 @@ Also note that the &quot;mailserver_setup&quot; test in https://openqa.opensuse.
     for the full upstream changelog (forwarded request 1341448 from cboltz)</comment>
     <requestid>1341449</requestid>
   </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>d25590f5f028ccb3591968c030e778b8</srcmd5>
+    <version>5.0.0</version>
+    <time>1778787744</time>
+    <user>dimstar_suse</user>
+    <comment>Update to AppArmor 5.0.0 + some additional fixes and improvements
+
+Detailed changelog:
+
+[new in this SR]
+
+- add syslog-ng-slashes.diff: avoid double slashes (and therefore a
+  path mismatch) in syslog-ng profile
+
+- Use %{_tmpfilesdir} macro and package apparmor.conf tmpfiles
+  configuration.
+
+[already part of superseded SR 1350857]
+
+- add allow-read-slash.diff and postfix-profiles-slash.diff to allow
+  reading / in samba, dovecot and postfix profiles (boo#1263051)
+
+- update to AppArmor 5.0
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_5.0.0
+    for the full upstream changelog
+- update lessopen.sh profile to abi/5.0
+- enable all tests in profiles/
+
+- Add and use tmpfiles.d/apparmor.conf for log and cache path creation
+  (jsc#PED-14916) (jsc#PED-14917)
+  + drop removal of pre-2.12 cache location
+  + retain &quot;apparmor_parser --purge-cache&quot; calls for non-transactional
+    systems
+
+- update to AppArmor 5.0rc5
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_5.0.0-rc5
+- drop upstreamed parser-lib-path.diff
+
+- update to AppArmor 5.0rc4
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_5.0.0-rc4
+    for the full upstream changelog
+  - add BR libzstd-devel
+- add parser-lib-path.diff to ensure parser finds libapparmor in  make check
+
+- refresh apache-extra-profile-include-if-exists.diff
+- add 'make -C init' (apparmor.service and aa-teardown now live in
+  a separate directory)</comment>
+    <requestid>1353063</requestid>
+  </revision>
 </revisionlist>

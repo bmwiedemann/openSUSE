@@ -2,7 +2,7 @@
 # spec file for package apparmor
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2011-2024 Christian Boltz
+# Copyright (c) 2011-2026 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,20 +51,21 @@
 %define CATALINA_HOME /usr/share/tomcat6
 %define JAR_FILE changeHatValve.jar
 
-%define tarversion v4.1.7
-%define pyeggversion 4.1.7
+%define tarversion v5.0.0
+%define pyeggversion 5.0.0
 
 Name:           apparmor
-Version:        4.1.7
+Version:        5.0.0
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://gitlab.com/apparmor/apparmor/
-Source0:        https://gitlab.com/apparmor/apparmor/-/archive/%{tarversion}/apparmor-%{tarversion}.tar.gz
+Source0:        https://gitlab.com/apparmor/apparmor/-/archive/%{tarversion}/apparmor-%{tarversion}.tar.bz2
 # from https://gitlab.com/apparmor/apparmor/-/wikis/%%{version}_Signatures
-Source1:        apparmor-%{tarversion}.tar.gz.asc
+Source1:        apparmor-%{tarversion}.tar.bz2.asc
 Source2:        %{name}.keyring
+Source3:        apparmor.tmpfiles.conf
 
 Source6:        baselibs.conf
 Source7:        apparmor-rpmlintrc
@@ -85,6 +86,15 @@ Patch7:         apparmor-enable-precompiled-cache.diff
 # /usr/etc/krb5.conf - boo#1246689 - not submitted upstream yet since https://github.com/krb5/krb5/pull/1437/ is still open
 Patch11:        kerberosclient-usrmerge.diff
 
+# allow "/ r," which is needed since systemd 260 (boo#1263051)
+# taken from upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2079 (merged into 4.0..master)
+Patch12:        allow-read-slash.diff
+# taken from upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2087 (merged into 5.0 and master)
+Patch13:        postfix-profiles-slash.diff
+
+# avoid double slashes (and therefore a path mismatch) in syslog-ng profile (merged upstream 2026-05-05 https://gitlab.com/apparmor/apparmor/-/merge_requests/2090 for 5.0 and master, will be in 5.0.1)
+Patch14:        syslog-ng-slashes.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -96,6 +106,7 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  iproute2
 BuildRequires:  libtool
+BuildRequires:  libzstd-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3
 BuildRequires:  swig
@@ -354,6 +365,9 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch -P 7
 %endif
 %patch -P 11 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
 
 %build
 export SUSE_ASNEEDED=0
@@ -412,6 +426,9 @@ make -C profiles
 parser/apparmor_parser --config-file $(pwd)/parser/parser.conf --write-cache -QT  -L $(pwd)/profiles/cache -I profiles/apparmor.d/ profiles/apparmor.d/
 %endif
 
+# aa-teardown and apparmor.service
+make -C init
+
 # create filelist of previously (up to 3.1.x) shipped local/* files
 # (adding them as %ghost prevents modified files from being moved to *.rpmsave)
 for oldlocal in \
@@ -433,9 +450,7 @@ make check -C binutils
 
 # some tests depend on kernel LSM (e.g. access /proc/PID/attr/apparmor/current)
 if grep -q apparmor /sys/kernel/security/lsm; then
-	# profiles make check fails for the utils (they expect
-	# /sbin/apparmor_parser to exist), therefore only do parser-based check
-	make -C profiles check-parser
+	make -C profiles check
 
 %if %{with precompiled_cache}
 	# test for a few files that should exist in the cache
@@ -450,7 +465,12 @@ else
 	true
 fi
 
+# aa-teardown and apparmor.service
+make -C init check
+
 %install
+install -D -m 644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/apparmor.conf
+
 # libapparmor: swig bindings only, libapparmor is packaged via libapparmor.spec
 %makeinstall -C libraries/libapparmor/swig
 
@@ -477,9 +497,7 @@ test -f %{buildroot}/usr/share/apparmor/cache/*/bin.ping
 
 %makeinstall SBINDIR="%{buildroot}%{sbindir}" APPARMOR_BIN_PREFIX="%{buildroot}%{apparmor_bin_prefix}" -C parser
 # default cache dir (starting with 2.13) is /etc/apparmor.d/cache.d - also not the best location
-# Use /var/cache/apparmor and make /etc/apparmor.d/cache.d a symlink to it
-mkdir -p %{buildroot}%{_localstatedir}/cache/apparmor
-( cd %{buildroot}/%{_sysconfdir}/apparmor.d/ && ln -s ../../%{_localstatedir}/cache/apparmor cache.d )
+# Use /var/cache/apparmor and make /etc/apparmor.d/cache.d a symlink to it via tmpfiles.d
 
 %if %{with apache}
   %makeinstall -C changehat/mod_apparmor
@@ -493,6 +511,9 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/apparmor
   mkdir -p %{buildroot}/%{CATALINA_HOME}
   %makeinstall -C changehat/tomcat_apparmor/tomcat_5_5 CATALINA_HOME=%{buildroot}/%{CATALINA_HOME}
 %endif
+
+# aa-teardown and apparmor.service
+%makeinstall SBINDIR="%{buildroot}%{sbindir}" APPARMOR_BIN_PREFIX="%{buildroot}%{apparmor_bin_prefix}" -C init
 
 find %{buildroot} -name .packlist -exec rm -vf {} \;
 find %{buildroot} -name perllocal.pod -exec rm -vf {} \;
@@ -552,11 +573,12 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %{_sbindir}/exec
 %dir %attr(-, root, root) %{_sysconfdir}/apparmor
 %dir %{_sysconfdir}/apparmor.d
-%{_sysconfdir}/apparmor.d/cache.d
+%ghost %{_sysconfdir}/apparmor.d/cache.d
 %{sbindir}/rcapparmor
 %{_unitdir}/apparmor.service
+%{_tmpfilesdir}/apparmor.conf
 %config(noreplace) %{_sysconfdir}/apparmor/parser.conf
-%{_localstatedir}/cache/apparmor
+%ghost %{_localstatedir}/cache/apparmor
 %dir %attr(-, root, root) %{apparmor_bin_prefix}
 %{apparmor_bin_prefix}/rc.apparmor.functions
 %{apparmor_bin_prefix}/apparmor.systemd
@@ -588,6 +610,8 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/abi/3.0
 %config(noreplace) %{_sysconfdir}/apparmor.d/abi/4.0
 %config(noreplace) %{_sysconfdir}/apparmor.d/abi/4.0-ip
+%config(noreplace) %{_sysconfdir}/apparmor.d/abi/5.0
+%config(noreplace) %{_sysconfdir}/apparmor.d/abi/5.0-interface
 %config(noreplace) %{_sysconfdir}/apparmor.d/abi/kernel-5.4-outoftree-network
 %config(noreplace) %{_sysconfdir}/apparmor.d/abi/kernel-5.4-vanilla
 %dir %{_sysconfdir}/apparmor.d/abstractions
@@ -605,9 +629,61 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.*
 
 %config(noreplace) %{_sysconfdir}/apparmor.d/1password
+%config(noreplace) %{_sysconfdir}/apparmor.d/alsamixer
+%config(noreplace) %{_sysconfdir}/apparmor.d/babeld
+%config(noreplace) %{_sysconfdir}/apparmor.d/bfdd
+%config(noreplace) %{_sysconfdir}/apparmor.d/bgpd
+%config(noreplace) %{_sysconfdir}/apparmor.d/curl
+%config(noreplace) %{_sysconfdir}/apparmor.d/dig
 %config(noreplace) %{_sysconfdir}/apparmor.d/Discord
+%config(noreplace) %{_sysconfdir}/apparmor.d/dnstracer
+%config(noreplace) %{_sysconfdir}/apparmor.d/eigrpd
+%config(noreplace) %{_sysconfdir}/apparmor.d/fabricd
+%config(noreplace) %{_sysconfdir}/apparmor.d/free
+%config(noreplace) %{_sysconfdir}/apparmor.d/fusermount3
+%config(noreplace) %{_sysconfdir}/apparmor.d/gs
+%config(noreplace) %{_sysconfdir}/apparmor.d/hostname
+%config(noreplace) %{_sysconfdir}/apparmor.d/iotop-c
+%config(noreplace) %{_sysconfdir}/apparmor.d/isisd
+%config(noreplace) %{_sysconfdir}/apparmor.d/john
+%config(noreplace) %{_sysconfdir}/apparmor.d/ldpd
+%config(noreplace) %{_sysconfdir}/apparmor.d/locale
+%config(noreplace) %{_sysconfdir}/apparmor.d/lsblk
+%config(noreplace) %{_sysconfdir}/apparmor.d/lsof
+%config(noreplace) %{_sysconfdir}/apparmor.d/lsusb
+%config(noreplace) %{_sysconfdir}/apparmor.d/mbsync
 %config(noreplace) %{_sysconfdir}/apparmor.d/MongoDB_Compass
+%config(noreplace) %{_sysconfdir}/apparmor.d/mosquitto
+%config(noreplace) %{_sysconfdir}/apparmor.d/nc.openbsd
+%config(noreplace) %{_sysconfdir}/apparmor.d/nhrpd
+%config(noreplace) %{_sysconfdir}/apparmor.d/notify-send
+%config(noreplace) %{_sysconfdir}/apparmor.d/nslookup
+%config(noreplace) %{_sysconfdir}/apparmor.d/ospf6d
+%config(noreplace) %{_sysconfdir}/apparmor.d/ospfd
+%config(noreplace) %{_sysconfdir}/apparmor.d/pathd
+%config(noreplace) %{_sysconfdir}/apparmor.d/pbrd
+%config(noreplace) %{_sysconfdir}/apparmor.d/pim6d
+%config(noreplace) %{_sysconfdir}/apparmor.d/pimd
+%config(noreplace) %{_sysconfdir}/apparmor.d/proftpd
+%config(noreplace) %{_sysconfdir}/apparmor.d/qpdf
 %config(noreplace) %{_sysconfdir}/apparmor.d/QtWebEngineProcess
+%config(noreplace) %{_sysconfdir}/apparmor.d/ripd
+%config(noreplace) %{_sysconfdir}/apparmor.d/ripngd
+%config(noreplace) %{_sysconfdir}/apparmor.d/rygel
+%config(noreplace) %{_sysconfdir}/apparmor.d/ssh-keyscan
+%config(noreplace) %{_sysconfdir}/apparmor.d/staticd
+%config(noreplace) %{_sysconfdir}/apparmor.d/systemd-detect-virt
+%config(noreplace) %{_sysconfdir}/apparmor.d/tar
+%config(noreplace) %{_sysconfdir}/apparmor.d/tinyproxy
+%config(noreplace) %{_sysconfdir}/apparmor.d/tnftp
+%config(noreplace) %{_sysconfdir}/apparmor.d/tshark
+%config(noreplace) %{_sysconfdir}/apparmor.d/vrrpd
+%config(noreplace) %{_sysconfdir}/apparmor.d/wg
+%config(noreplace) %{_sysconfdir}/apparmor.d/wg-quick
+%config(noreplace) %{_sysconfdir}/apparmor.d/who
+%config(noreplace) %{_sysconfdir}/apparmor.d/wpa_supplicant
+%config(noreplace) %{_sysconfdir}/apparmor.d/znc
+
 %config(noreplace) %{_sysconfdir}/apparmor.d/balena-etcher
 %config(noreplace) %{_sysconfdir}/apparmor.d/brave
 %config(noreplace) %{_sysconfdir}/apparmor.d/buildah
@@ -695,7 +771,6 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/surfshark
 %config(noreplace) %{_sysconfdir}/apparmor.d/systemd-coredump
 %config(noreplace) %{_sysconfdir}/apparmor.d/thunderbird
-%config(noreplace) %{_sysconfdir}/apparmor.d/toybox
 %config(noreplace) %{_sysconfdir}/apparmor.d/transmission
 %config(noreplace) %{_sysconfdir}/apparmor.d/trinity
 %config(noreplace) %{_sysconfdir}/apparmor.d/tup
@@ -741,6 +816,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %{_sbindir}/aa-mergeprof
 %{_sbindir}/aa-notify
 %{_sbindir}/aa-remove-unknown
+%{_sbindir}/aa-show-usage
 %{_sbindir}/aa-unconfined
 %{_sbindir}/audit
 %{_sbindir}/autodep
@@ -758,7 +834,8 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %dir %{_datadir}/polkit-1
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/net.apparmor.pkexec.aa-notify.policy
-%dir %{_localstatedir}/log/apparmor
+# created via tmpfiles.d conf shipped with apparmor-parser
+%ghost %{_localstatedir}/log/apparmor
 %doc %{_mandir}/man5/logprof.conf.5.gz
 %doc %{_mandir}/man8/apparmor_notify.8.gz
 %doc %{_mandir}/man8/aa-audit.8.gz
@@ -774,6 +851,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %doc %{_mandir}/man8/aa-mergeprof.8.gz
 %doc %{_mandir}/man8/aa-notify.8.gz
 %doc %{_mandir}/man8/aa-remove-unknown.8.gz
+%doc %{_mandir}/man8/aa-show-usage.8.gz
 %doc %{_mandir}/man8/aa-unconfined.8.gz
 %doc %{_mandir}/man8/audit.8.gz
 %doc %{_mandir}/man8/autodep.8.gz
@@ -841,10 +919,12 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %endif
 
 %post parser
+%tmpfiles_create apparmor.conf
 %service_add_post apparmor.service
 
 %preun parser
 %service_del_preun apparmor.service
+systemd-tmpfiles --remove /usr/lib/tmpfiles.d/apparmor.conf || :
 
 %postun parser
 # bnc#853019 aka boo#853019 is still a thing, but in the meantime apparmor.service has ExecStop=/bin/true (= do nothing),
@@ -852,14 +932,13 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %service_del_postun apparmor.service
 
 %posttrans abstractions
-# workaround for bnc#904620#c8 / lp#1392042 and bnc#1242553
-apparmor_parser --purge-cache
+# workaround for bnc#904620#c8 / lp#1392042 and bnc#1242553.
+# Transactional update needs to defer cache purge until after /var is mounted
+# read-write. We're currently lacking a tmpfiles_remove macro for this.
+[ -z "$TRANSACTIONAL_UPDATE" ] && apparmor_parser --purge-cache
 %restart_on_update apparmor
 
 %post profiles
-# delete old cache (location up to 2.12)
-rm -f /var/lib/apparmor/cache/* 2>/dev/null
-
 # cleanup old, unchanged local/* files
 for oldlocal in \
     bin.ping lsb_release nvidia_modprobe php-fpm samba-bgqd samba-dcerpcd samba-rpcd samba-rpcd-classic samba-rpcd-spoolss sbin.klogd sbin.syslogd sbin.syslog-ng \
@@ -877,7 +956,7 @@ done
 
 %posttrans profiles
 # workaround for bnc#904620#c8 / lp#1392042 and bnc#1242553
-apparmor_parser --purge-cache
+[ -z "$TRANSACTIONAL_UPDATE" ] && apparmor_parser --purge-cache
 %restart_on_update apparmor
 
 %if %{with tomcat}

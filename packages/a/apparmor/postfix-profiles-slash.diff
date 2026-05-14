@@ -1,0 +1,105 @@
+From https://gitlab.com/apparmor/apparmor/-/merge_requests/2087
+
+
+From fb7fbc23e10ce2040837c37eb4444a2d97f0b175 Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Sat, 2 May 2026 20:20:46 +0200
+Subject: [PATCH 1/2] abstractions/postfix-common: allow  / r,
+
+This is needed at least by
+
+- postfix-lmtp
+- postfix-master
+- postfix-qmgr
+- postfix-pickup
+- @{sbin}/postqueue
+- postfix-tlsmgr
+- postfix-smtpd
+- postfix-proxymap
+- postfix-trivial-rewrite
+- postfix-cleanup
+- postalias
+
+probably since the update to systemd 260
+---
+ profiles/apparmor.d/abstractions/postfix-common | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/profiles/apparmor.d/abstractions/postfix-common b/profiles/apparmor.d/abstractions/postfix-common
+index d1498c9a8..b3fe784f0 100644
+--- a/profiles/apparmor.d/abstractions/postfix-common
++++ b/profiles/apparmor.d/abstractions/postfix-common
+@@ -2,7 +2,7 @@
+ #
+ #    Copyright (C) 2002-2005 Novell/SUSE
+ #    Copyright (C) 2015-2018 Canonical, Ltd.
+-#    Copyright (C) 2020-2021 Christian Boltz
++#    Copyright (C) 2020-2026 Christian Boltz
+ #
+ #    This program is free software; you can redistribute it and/or
+ #    modify it under the terms of version 2 of the GNU General Public
+@@ -23,6 +23,7 @@
+ 
+   unix (send, receive) peer=(label=postfix-master),
+ 
++  /                     r,
+   /etc/mailname         r,
+   /etc/postfix/*.cf     r,
+   /etc/postfix/*.db     rk,
+-- 
+GitLab
+
+
+From 3171a3e2cdc529af0f5e5001ee4ea38679a24d6e Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Sat, 2 May 2026 20:24:34 +0200
+Subject: [PATCH 2/2] postalias: modernize profile + allow disconnected
+ /dev/null
+
+Modernize the postalias profile by adding a profile name.
+
+Also add attach_disconnected.path and allow access to disconnected
+/dev/null.
+---
+ profiles/apparmor/profiles/extras/usr.sbin.postalias | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/profiles/apparmor/profiles/extras/usr.sbin.postalias b/profiles/apparmor/profiles/extras/usr.sbin.postalias
+index 702625e8b..1aa51d97f 100644
+--- a/profiles/apparmor/profiles/extras/usr.sbin.postalias
++++ b/profiles/apparmor/profiles/extras/usr.sbin.postalias
+@@ -1,7 +1,7 @@
+ # ------------------------------------------------------------------
+ #
+ #    Copyright (C) 2002-2005 Novell/SUSE
+-#    Copyright (C) 2021 Christian Boltz
++#    Copyright (C) 2021-2026 Christian Boltz
+ #
+ #    This program is free software; you can redistribute it and/or
+ #    modify it under the terms of version 2 of the GNU General Public
+@@ -13,12 +13,15 @@ abi <abi/5.0>,
+ 
+ include <tunables/global>
+ 
+-/usr/sbin/postalias {
++profile postalias /usr/sbin/postalias flags=(attach_disconnected.path=/att/postalias/) {
+   include <abstractions/base>
+   include <abstractions/kerberosclient>
+   include <abstractions/nameservice>
+   include <abstractions/consoles>
+   include <abstractions/postfix-common>
++
++  /att/postalias/dev/null              r,
++
+   /etc/aliases                         r,
+   /etc/aliases.{lm,}db                 rwlk,
+   /etc/postfix                         r,
+@@ -38,4 +41,5 @@ include <tunables/global>
+ 
+   # Site-specific additions and overrides. See local/README for details.
+   include if exists <local/usr.sbin.postalias>
++  include if exists <local/postalias>
+ }
+-- 
+GitLab
+

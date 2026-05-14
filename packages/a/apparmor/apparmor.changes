@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed May 13 15:38:08 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- add syslog-ng-slashes.diff: avoid double slashes (and therefore a
+  path mismatch) in syslog-ng profile
+
+-------------------------------------------------------------------
+Tue May 12 00:08:13 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Use %{_tmpfilesdir} macro and package apparmor.conf tmpfiles
+  configuration.
+
+-------------------------------------------------------------------
+Mon May  4 19:03:10 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- add allow-read-slash.diff and postfix-profiles-slash.diff to allow
+  reading / in samba, dovecot and postfix profiles (boo#1263051)
+
+-------------------------------------------------------------------
+Sun Apr 26 15:06:07 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 5.0
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_5.0.0
+    for the full upstream changelog
+- update lessopen.sh profile to abi/5.0
+- enable all tests in profiles/
+
+-------------------------------------------------------------------
+Sun Apr 26 05:22:47 UTC 2026 - David Disseldorp <ddiss@suse.com>
+
+- Add and use tmpfiles.d/apparmor.conf for log and cache path creation
+  (jsc#PED-14916) (jsc#PED-14917)
+  + drop removal of pre-2.12 cache location
+  + retain "apparmor_parser --purge-cache" calls for non-transactional
+    systems
+
+-------------------------------------------------------------------
+Wed Apr 22 12:29:57 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 5.0rc5
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_5.0.0-rc5
+- drop upstreamed parser-lib-path.diff
+
+-------------------------------------------------------------------
+Fri Apr 17 19:11:58 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 5.0rc4
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_5.0.0-rc4
+    for the full upstream changelog
+  - add BR libzstd-devel
+- add parser-lib-path.diff to ensure parser finds libapparmor in  make check
+- refresh apache-extra-profile-include-if-exists.diff
+- add 'make -C init' (apparmor.service and aa-teardown now live in
+  a separate directory)
+
+-------------------------------------------------------------------
 Thu Mar 19 18:55:12 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 4.1.7

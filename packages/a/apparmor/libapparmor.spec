@@ -2,7 +2,7 @@
 # spec file for package libapparmor
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2011-2024 Christian Boltz
+# Copyright (c) 2011-2026 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 #
 
 
-%define tarversion v4.1.7
+%define tarversion v5.0.0
 
 Name:           libapparmor
-Version:        4.1.7
+Version:        5.0.0
 Release:        0
 Summary:        Utility library for AppArmor
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.com/apparmor/apparmor/
-Source0:        https://gitlab.com/apparmor/apparmor/-/archive/%{tarversion}/apparmor-%{tarversion}.tar.gz
+Source0:        https://gitlab.com/apparmor/apparmor/-/archive/%{tarversion}/apparmor-%{tarversion}.tar.bz2
 # from https://gitlab.com/apparmor/apparmor/-/wikis/%{version}_Signatures
-Source1:        apparmor-%{tarversion}.tar.gz.asc
+Source1:        apparmor-%{tarversion}.tar.bz2.asc
 Source2:        apparmor.keyring
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive

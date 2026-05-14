@@ -1,0 +1,37 @@
+From https://gitlab.com/apparmor/apparmor/-/merge_requests/2090
+
+
+From 657ec6792e54bdb1cd06e70cbed24850c3e37ee1 Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Tue, 5 May 2026 14:00:03 +0200
+Subject: [PATCH] syslog-ng: avoid double slash in @{CHROOT_BASE}@{run}
+
+With empty @{CHROOT_BASE}, we end up with `//run/...` - and since
+AppArmor 5.0, de-duplication of leading slashes no longer happens.
+
+Remove the slash between the two variables to avoid that the result
+starts with `//`.
+
+This is a workaround for https://gitlab.com/apparmor/apparmor/-/work_items/622
+---
+ profiles/apparmor.d/sbin.syslog-ng | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/profiles/apparmor.d/sbin.syslog-ng b/profiles/apparmor.d/sbin.syslog-ng
+index 36451cbff..76620384b 100644
+--- a/profiles/apparmor.d/sbin.syslog-ng
++++ b/profiles/apparmor.d/sbin.syslog-ng
+@@ -55,8 +55,8 @@ profile syslog-ng /{usr/,}{bin,sbin}/syslog-ng {
+   @{CHROOT_BASE}/var/lib/*/dev/log w,
+   @{CHROOT_BASE}/var/lib/syslog-ng/syslog-ng.persist* rw,
+   @{CHROOT_BASE}/var/log/** w,
+-  @{CHROOT_BASE}/@{run}/syslog-ng.pid krw,
+-  @{CHROOT_BASE}/@{run}/syslog-ng.ctl rw,
++  @{CHROOT_BASE}@{run}/syslog-ng.pid krw,
++  @{CHROOT_BASE}@{run}/syslog-ng.ctl rw,
+   /{var,var/run,run}/log/journal/ r,
+   /{var,var/run,run}/log/journal/*/ r,
+   /{var,var/run,run}/log/journal/*/*.journal r,
+-- 
+GitLab
+
