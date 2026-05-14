@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu May 14 12:45:26 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.0.5: significantly improves clustering,
+  data integrity guarantees, and makes managing rqlite easier.
+  * introduces a major improvement to the Raft Snapshot and Log
+    Truncation process. Previously, a Snapshot stream to a Follower
+    would block the Leader from taking new Snapshots. Normally a
+    subsequent retry of the snapshot operation would succeed, but a
+    persistently slow Follower that kept requiring Snapshots could
+    starve the Leader entirely. With v10, Snapshotting on the
+    Leader is no longer blocked by any other operation happening in
+    the Snapshot Store, including streaming a pre-existing snapshot
+    to a Follower.
+  * Concurrent read and write access to the database has been
+    improved. In previous releases Raft snapshotting -- and, as a
+    result, writes -- could be blocked for an extended period if
+    there was a long-running read. In v10 the Raft snapshotting
+    process is canceled and retried later if a long-running read is
+    active.
+  * v10 also uses CRC32 checksumming more comprehensively to detect
+    issues such as file system corruption and inadvertent
+    modification of the underlying data files by systems other than
+    rqlite.
+  * introduces a new built-in console app, making it more convenient
+    to manage a rqlite deployment. The console app is available at
+    http://localhost:4001/console by default.
+  * Upgrading from v7 or later is seamless and has been extensively
+    tested, though upgrading first to the latest v9 release is
+    recommended. Upgrading to v10 supports rolling upgrades, but you
+    cannot join a new v10 node to a v9 (or earlier) cluster. Upgrade
+    your existing cluster to v10 before adding new nodes. Back up
+    your rqlite system before upgrading.
+  * cli change: -on-disk-path has been removed. It provided little
+    benefit while making it too easy to corrupt a node. To upgrade a
+    rqlite system which uses this flag first backup your rqlite node
+    deploy a new v10 system, and then initialize the new deployment
+    using the backup.
+  * cli change: -raft-timeout is now -raft-heartbeat-timeout, to
+    better reflect its purpose.
+
+-------------------------------------------------------------------
 Tue Mar 10 19:12:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 9.4.5:
