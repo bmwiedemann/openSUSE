@@ -24,4 +24,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1338286</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>876b856db0f5c4186578ac7f66f62f50</srcmd5>
+    <version>0.8.0</version>
+    <time>1778787970</time>
+    <user>dimstar_suse</user>
+    <comment>- Package cutter plugin</comment>
+    <requestid>1353220</requestid>
+  </revision>
 </revisionlist>
