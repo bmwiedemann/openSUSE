@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 13 17:50:49 CEST 2026 - ma@suse.de
+
+- Add --filter-version-change to zypper lu.
+  Adds filtering by version change significance to reduce noise in
+  update listings. Supports levels: rebuild (hides rebuild-only
+  changes) and package (hides all release-only changes).
+- version 1.14.97
+
+-------------------------------------------------------------------
 Mon Apr 20 15:51:19 CEST 2026 - ma@suse.de
 
 - Autorefresh ris-services the way as plugin-services (bsc#1246504)
