@@ -98,4 +98,14 @@
     This addresses CVE-2025-30153 GO-2025-3533 (bsc#1264762).</comment>
     <requestid>1352775</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>063d0c33ea3d8a25214b47b3a89a3304</srcmd5>
+    <version>0.34.0</version>
+    <time>1778787959</time>
+    <user>dimstar_suse</user>
+    <comment>Add tickets as provided by the security team:
+  * GO-2025-4135 (CVE-2025-47914) (bsc#1265275)
+  * GO-2025-4116 (CVE-2025-47913) (bsc#1265274)</comment>
+    <requestid>1353208</requestid>
+  </revision>
 </revisionlist>
