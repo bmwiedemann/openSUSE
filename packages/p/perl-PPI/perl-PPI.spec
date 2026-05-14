@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PPI
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define cpan_name PPI
 Name:           perl-PPI
-Version:        1.284.0
+Version:        1.291.0
 Release:        0
-# 1.284 -> normalize -> 1.284.0
-%define cpan_version 1.284
+# 1.291 -> normalize -> 1.291.0
+%define cpan_version 1.291
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse, Analyze and Manipulate Perl (without perl)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MI/MITHALDU/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Source100:      README.md
 BuildArch:      noarch

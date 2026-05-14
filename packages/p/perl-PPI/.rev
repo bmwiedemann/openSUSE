@@ -391,4 +391,32 @@
       - fix regex anchors in PPI::Statement::Compound-&gt;type (GH#316) (Lukas Mai)</comment>
     <requestid>1317136</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e46b948c7e4415a4ea4f43d90606ef3e</srcmd5>
+    <version>1.291.0</version>
+    <time>1778787709</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.291.0 (1.291)
+   see /usr/share/doc/packages/perl-PPI/Changes
+  1.291   2026-04-25 21:05:04Z
+  	- fail parse on double-referenced input
+  1.290   2026-04-25 14:12:21Z
+  	- docs fix
+  1.289   2026-04-25 14:03:51Z
+  	- docs fix
+  1.288   2026-04-25 13:50:04Z
+  	- fix two misbehaviors of location indexing code (GH#326) (myrrhlin)
+  1.287   2026-04-25 09:50:16Z
+  	- improve parse performance impact of feature tracking even more with
+  	  a parse stack cache (GH#318) (Lukas Mai (mauke))
+  1.286   2026-04-24 13:35:14Z
+  	- fix for performance degradation on initial parse
+  	  (GH#318) (Lukas Mai (mauke))
+  	- better reporting of Document-&gt;new input errors
+  1.285   2026-04-23 15:30:36Z
+  	- add support for dotted bitwise operators (GH#322) (Philippe Bruhat (BooK))
+  	- file opening errors are now reported usefully by PPI::Document
+  	- remove the executable bit on several files (GH#323) (Philippe Bruhat (BooK))</comment>
+    <requestid>1352975</requestid>
+  </revision>
 </revisionlist>
