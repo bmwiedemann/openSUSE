@@ -1,7 +1,7 @@
 #
 # spec file for package python-djangorestframework
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,12 @@
 %bcond_with test
 %endif
 Name:           python-djangorestframework%{psuffix}
-Version:        3.16.1
+Version:        3.17.1
 Release:        0
 Summary:        A REST Framework for Django
 License:        BSD-2-Clause
 URL:            https://www.django-rest-framework.org/
 Source:         https://github.com/encode/django-rest-framework/archive/%{version}.tar.gz#/djangorestframework-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/encode/django-rest-framework/pull/9056 Migrate packaging to pyproject.toml
-# just for packaging comfort
-Patch:          pyproject.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -79,7 +76,7 @@ authentication and permission policies out of the box.
 # Remove pytest params incompatible with older pytest on Leap
 sed -i '/addopts/d' pyproject.toml
 # Remove pytest params breaking Tumbleweed
-sed -i '/filterwarnings/d' pyproject.toml
+sed -i '/^filterwarnings/,/^\]/d' pyproject.toml
 
 %build
 %pyproject_wheel

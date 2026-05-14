@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed May 13 13:08:40 UTC 2026 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix sed for filterwarnings
+
+-------------------------------------------------------------------
+Sun May  3 17:54:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.1:
+  * Fix `HTMLFormRenderer` with empty `datetime` values
+- update to 3.17.0:
+  * Drop support for Python 3.9
+  * Drop deprecated coreapi support
+  * Add ability to specify output format for `DurationField`
+  * Add missing decorators: `@versioning_class()`,
+    `@content_negotiation_class()`, `@metadata_class()` for
+    function-based views
+  * Add support for Python 3.14
+  * Support `violation_error_code` and `violation_error_message`
+    from `UniqueConstraint` in `UniqueTogetherValidator`
+  * Add support for `ipaddress` objects in `JSONEncoder`
+  * Add optional support to serialize `BigInteger` to string
+  * Add Django 6.0 support
+  * Prevent small risk of `Token` overwrite
+  * Fix `UniqueTogetherValidator` validation when condition
+    references a read-only field
+  * Fix validation on many to many field when `default=None`
+  * Fix invalid SPDX license expression in `__init__.py`
+  * Fix `HTMLFormRenderer` to ensure a valid `datetime-local`
+    format
+  * Fix mutable default arguments in OrderingFilter methods
+  * Update TokenAdmin to respect USERNAME_FIELD of the user model
+  * Preserve ordering in `MultipleChoiceField`
+  * ### Translations
+  * Update French translation
+  * Update Brazilian Portuguese translations
+  * Fix and improve French translations
+  * Add missing Russian translation
+- drop pyproject.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Oct  1 09:01:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 3.16.1
