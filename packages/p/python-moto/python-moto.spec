@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-moto
-Version:        5.1.20
+Version:        5.2.1
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
@@ -139,6 +139,10 @@ done
 # unpin exact version
 sed -i '/py-partiql-parser/ s/==/>=/' setup.cfg
 
+# https://github.com/getmoto/moto/issues/9976
+mv moto/ec2/resources moto/ec2/models
+sed -i 's@../resources@resources@' moto/ec2/models/*.py
+
 %build
 %pyproject_wheel
 
@@ -184,6 +188,8 @@ donttest+=" or TestResponsesMockWithPassThru"
 # (?)
 donttest+=" or test_send_raw_email"
 donttest+=" or test_dynamodb_import_tabl or test_dynamodb_statements"
+# https://github.com/getmoto/moto/issues/9976
+donttest+=" or patch_baseline_for_patch_group_default"
 # 32-bit platforms can't handle dates beyond 2038
 [ $(getconf LONG_BIT) -eq 32 ] && donttest+=" or test_list_pipelines_created_after"
 # see Makefile
