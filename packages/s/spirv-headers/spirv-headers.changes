@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 13 06:16:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.350.0 (Git ad9184e)
+  * Added Added SPV_VALVE_mixed_float_dot_product,
+    SPV_KHR_poison_freeze, SPV_KHR_abort, SPV_KHR_constant_data.
+
+-------------------------------------------------------------------
 Fri Jan 23 23:21:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to post-snapshot SDK-1.4.335.0 commit 04f10f65
