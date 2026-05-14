@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun May 10 16:51:42 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.2.10
+  Bugfixes:
+  * new doesn’t work with ref object
+  * Switch default mangling back to cpp
+  * unhandled exception: field 'sym' is not accessible with 
+    type W[N] = seq[tuple[b: N]] 
+  * proc f(x: static[auto]) doesn’t treat x as static
+  * Invalid codegen for accessing tuple in array
+  * proc v[T: typedesc]() = discard / v[0]() compiles even though 0 isn’t 
+    a typedesc
+  * ICE evaluating closure iter with object conversion
+  * Regression from v2.2.6 to v2.2.8 and also devel in refc {.align.} pragma
+    where each 16-byte-aligned heap objects gets its own page
+  * Nim v2.2.x ORC adds extra nimZeroMem/nimCopyMem/stack usage over refc
+  * Regression from 2.0 to version-2-2/devel with refc, LTO and -fstack-usage
+  * internal error: getTypeDescAux(tyVoid) with either discard 
+    default(tuple[b: void]) or discard default((void,))
+  * parseFloat/parseBiggestFloat lose sign of -NaN (signbit is negative)
+  * ARC/ORC SIGSEGV with captured variables and closure iterators in 
+    reset/nimDecRefIsLastCyclicStatic
+  * discard mapIt([0], 0) results in lib/pure/collections/sequtils.nim
+    Hint: 'it' is declared but not used [XDeclaredButNotUsed]
+  * proc r(_: typedesc, _: static uint | static int) = discard; r(uint, 0)
+    causes cannot generate code for: mStatic
+  * two overflowed *= causes program deadloop sysFatal on –exceptions:goto
+  * commands: –maxLoopIterationsVM validation used wrong condition 
+    (not/bind precedence)
+  * docgen: cmpDecimalsIgnoreCase uses wrong index in max() for digit window
+  * parsecfg: IndexDefect in replace() when value ends with ‘\c’
+  * Regression: object with self-referential lent proc field fails to compile
+  * proc g() {.exportc, error: "".} = (; let a = 0) causes Error: internal 
+    error: expr(nkIdent); unknown node kind
+  * Doc comment makes nimvm ignore assignment through template
+  * orc: seq assignment slow
+  * Regression from v2.2.6 to v2.2.8 and also devel in refc {.align.} 
+    pragma where each 32-byte-aligned heap objects gets its own page
+  * nimsuggest –v3 and –v4 “outline” output does not list methods
+  * {.borrow.} on iterator for distinct seq triggers internal error
+  * template with overload redefines proc
+  * Invalid C code generation with iterator/nimvm
+  * std/parseopt no longer support - when shortNoVal is given
+  * Using sum types with module specifiers typechecks inconsistently
+  * Conversion from distinct in for forces a copy of underlying instance
+  * static: (for f in [0]: discard a.b == f) causes nim check unhandled 
+    exception: field 'intVal' is not accessible for type 'TFullReg' using
+    'kind = rkNone' [FieldDefect]
+  * JS backend crashes when returning Option[T] with custom =destroy
+  * setLenUnit slow, actually initializes seq (refc)
+  * Stack overflow/materialization-based segfault in refc and ORC with large 
+    object initialization and heap assignment
+
+-------------------------------------------------------------------
 Tue Apr  7 13:45:28 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.2.8

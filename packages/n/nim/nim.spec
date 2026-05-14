@@ -20,7 +20,7 @@
 %define _sat_commit e63eaea8baf00bed8bcd5a29ffd8823abb265b39
 
 Name:           nim
-Version:        2.2.8
+Version:        2.2.10
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
