@@ -59,6 +59,8 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
+# PATCH-FIX-UPSTREAM https://github.com/astropy/astropy/pull/19341 fix "_POSIX_C_SOURCE redefined" error and warnings
+Patch0:         posix-c-source.patch
 # https://docs.astropy.org/en/stable/install.html#requirements
 BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 4}
 BuildRequires:  %{python_module devel >= 3.11}

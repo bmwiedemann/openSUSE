@@ -2628,4 +2628,12 @@
   * The trait astropy.cosmology.traits.CurvatureComponent has been</comment>
     <requestid>1325027</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>6cb871c3431f305c457522b7ab0dea39</srcmd5>
+    <version>7.2.0</version>
+    <time>1778787907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1353163</requestid>
+  </revision>
 </revisionlist>
