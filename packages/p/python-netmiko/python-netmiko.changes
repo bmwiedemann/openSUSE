@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Wed May 13 14:00:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.7.0
+  New Platforms
+  * Optilink GOLT.
+  * Cisco Access Points.
+  * IPInfusion OcNOS (commit model).
+  * Aviat WTM.
+  * Nokia ISAM.
+  * Perle IOLAN Console.
+  * Smartoptics DWDM.
+  * APC AOS.
+  * OpenGear.
+  * Cisco WLC IOS.
+  * Calix EXA.
+  * Hioso OLT.
+  * Huawei ONT.
+  * Raisecom ROS.
+  * IIJ Seilos.
+  * Avara.
+  * Lancom LCOSsx5.
+  * Fujitsu SIR.
+  * Hirschmann HIOS.
+  * Furukawa FITELnet.
+  * ZPE Nodegrid.
+  Changes
+  * Fixes 'enable' call issue when device prompt is a substring of
+    literal 'password' string.
+  * Fix missing flags in re.search call in enable().
+  * Aruba OS: Add file transfer support.
+  * Minor updates to Aruba OS file transfer.
+  * Ocnos commit description map to 'comment' argument.
+  * Remove superfluous executable bits.
+  * Fix typing hints for timeouts: change from int to float.
+  * Mikrotik space fix issue in #3739.
+  * Use proper type hints for session_log argument of
+    BaseConnection constructor.
+  * Minor perle fixes.
+  * Fix Check Point Gaia double command echo issue.
+  * Improve Check Point Gaia.
+  * Fix Garderos GRS alt_prompt.
+  * Fix error in enable_secret_handler().
+  * nokia_isam improvements.
+  * Add cleanup method for graceful cleanup for Gaia.
+  * Add save config method for Gaia.
+  * Add additional search pattern for AOS-CX (e.g. CX 6300M).
+  * Adva driver fixes.
+  * IOS-XR add 'replace' option to commit method.
+  * Improve Paramiko Cleanup.
+  * Improve error pattern.
+  * Update a10 driver.
+  * Mikrotik check file exists.
+  * Mikrotik login.
+  * Cisco s500 driver mapped to s300 class.
+  * Hide empty cli results.
+  * Fix Adva F2/F3 session_preparation enter behavior.
+  * Add fsas_sir as alias for fujitsu_sir device_type.
+  * Raise ValueError on trailing backslash in InLineTransfer TCL
+    string.
+  * Add dell_sonic to FILE_TRANSFER_MAP in ssh_dispatcher.
+  * Fix check_serial_port to use exact match instead of regex grep
+  * Fix Furukawa FITELnet driver bug in #3825.
+  * Remove strip_command() override from FurukawaFitelnet driver.
+  * Include matched error in ConfigInvalidException
+    for cmd_verify=False in #3828.
+  * Fix Huawei telnet password using "\r" instead of TELNET_RETURN
+  * Fix Juniper commit() expect_string false positive on '>'
+  * Add save_config to DellSonicSSH using 'write memory'
+  * Fix save_config for DellDNOS6 — use short command form with
+    confirmation.
+  * Implement enable mode for Cisco FTD via diagnostic CLI.
+  * Use NoEnable mixin for CiscoXrBase.
+  * Config mode fix in A10 driver.
+  * Fix remote space function in ZPE Nodegrid driver.
+  * Fix session_log flush so data is written immediately on write()
+  * Add unit tests for SessionLog.
+  * Fix typing import issue on PY3.13.
+  * Fix exit_enable_mode issue with not verifying command echo.
+  * Update poetry lock file to pin Paramiko version <5 (paramiko5
+    caused significant breakage) in #3852.
+  * Refactor _build_ssh_client to use _get_ssh_client_instance
+    (also fixes SSH-agent not working for certain drivers).
+
+-------------------------------------------------------------------
 Sun Jan 18 14:38:47 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Fix dependencies
