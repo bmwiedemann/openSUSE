@@ -17,7 +17,7 @@
 
 
 Name:           noctalia-shell
-Version:        4.7.6
+Version:        4.7.7
 Release:        0
 Summary:        A sleek and minimal desktop shell for Wayland
 License:        MIT

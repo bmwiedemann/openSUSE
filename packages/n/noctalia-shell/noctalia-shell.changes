@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed May 13 18:03:24 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 4.7.7:
+  * Release v4.7.7
+  * compositor: Fixed whitespace for diff
+  * chore(flake): update flake.lock
+  * chore(issue template): adjust community name
+  * chore(issue template): adjust invite link
+  * chore(issue templates): adjust assignees
+  * compositor: Removed unintentional change of monitorEvents.includes(event.name)
+  * compositor: Updated Hyprland functions to support new Lua syntax
+  * chore(flake): update flake.lock
+  * chore(workflow): update label metadata
+  * chore(issue templates): update bug report
+  * chore(ISSUE_TEMPLATES): update templates
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * fix pixelation of colorized dock icons
+  * NBusyIndicator: follow color change
+  * fix(ipc): added missing entry to Control settingsTabMap
+  * chore(flake): update flake.lock
+  * Add Qt colors light, mid
+  * fix(nix): set warnings as top-level config
+  * fix syntax error
+  * chore(flake): update flake.lock
+  * safeguard custom commands from trailing whitespaces
+  * added couple of selectors
+  * chore(nix): add systemd deprecation warnings
+  * fix(template): generate current-theme.conf for kitty with wallpaper gen
+  * fix(bar): swallow right/middle on hot strip to avoid Qt context-menu SIGSEGV
+  * disable Bluetooth toggle when Bluetooth is blocked
+  * chore(flake): update flake.lock
+  * chore(version): bumping to v4.7.7-git
+  * fix(theming): readjusting the starship config file for a more reliable script
+  * update ColorsSubTab.qml
+  * fix problem with Airplane Mode toggle visibility &  add some default values for the Color Scheme settings
+
+-------------------------------------------------------------------
 Fri Apr 24 11:57:43 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
 
 - Removed some dependencies:

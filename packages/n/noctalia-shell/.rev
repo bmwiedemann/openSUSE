@@ -17,4 +17,12 @@
   * removed dejavu-fonts and google-roboto-fonts, both aren't needed as a required packages, noctalia-shell uses system default font</comment>
     <requestid>1349154</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b5fed4453c57ac1a7d1e4bdb423e26ef</srcmd5>
+    <version>4.7.7</version>
+    <time>1778787815</time>
+    <user>dimstar_suse</user>
+    <comment>update to v4.7.7</comment>
+    <requestid>1353071</requestid>
+  </revision>
 </revisionlist>
