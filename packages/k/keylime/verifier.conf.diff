@@ -1,18 +1,16 @@
-diff --git a/config/verifier.conf b/config/verifier.conf
-index b1655f5..1c1b12b 100644
---- a/config/verifier.conf
-+++ b/config/verifier.conf
-@@ -8,7 +8,8 @@ version = 2.4
- uuid = default
- 
- # The binding address and port for the verifier server
+--- verifier.conf.ORIG	2026-05-13 15:15:20.416693445 +0200
++++ verifier.conf	2026-05-13 15:18:06.361780870 +0200
+@@ -10,7 +10,8 @@
+ # The binding address and port for the verifier server. Use a specific address
+ # to bind one interface, "0.0.0.0" to listen on all IPv4 interfaces, or "::"
+ # to listen on all IPv6 interfaces (also accepts IPv4 on dual-stack hosts).
 -ip = "127.0.0.1"
 +# ip = "127.0.0.1"
 +ip = "0.0.0.0"
  port = 8881
  
  # The address and port of registrar server that the verifier communicates with
-@@ -245,7 +246,8 @@ require_allow_list_signatures = False
+@@ -345,7 +346,8 @@
  enabled_revocation_notifications = ['agent']
  
  # The binding address and port of the revocation notifier service via ZeroMQ.

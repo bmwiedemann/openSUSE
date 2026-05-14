@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Wed May 13 12:38:53 UTC 2026 - aplanas@suse.com
+
+- Update to version 7.14.2 (CVE-2026-6420, bsc#1264265):
+  * Bump to version 7.14.2
+  * verifier: Fix hardcoded attestation challenge nonce (CVE-2026-6420)
+  * verifier: Extend TOCTOU race guard to TENANT_FAILED state
+  * test: Add unit tests for _complete_deletion_if_terminated
+  * verifier: Fix pyright reportArgumentType for mtls_cert
+  * verifier: Fix TOCTOU race in process_agent state writes
+  * docs: address wildcard bind feedback, document 0.0.0.0 / :: instead of *
+  * Document verifier wildcard bind address
+  * Place attestation fields in correct API version docs
+  * Add attestation_status, attestation_period, maximum_attestation_interval
+  * verifier: Fix type error in mtls_cert guard
+  * ci: Replace /var/run/dbus with /run/dbus in test wrapper
+  * installer: Replace /var/run/keylime with /run/keylime
+  * Replace /var/run/keylime with /run/keylime in Python code
+  * shared_data: Remove log calls from cleanup
+  * shared_data: Use temp dir when /var/run/keylime/ is not usable
+  * [Automatic] Update Keylime base image 2026-05-04
+  * [Automatic] Update Keylime base image 2026-05-01
+  * installer: Add tmpfiles.d config for all keylime directories
+  * shared_data: Move SyncManager socket to /var/run/keylime/
+  * test: Support test execution for installed package
+  * timestamp: Fix timezone handling in Unix timestamp conversion
+  * shared_data: Ignore SIGTERM and SIGINT on Manager and parent processes
+  * verifier: Cancel pending poll timer on agent stop
+  * test: Add tests for pending-event and attestation storage
+  * verifier: Prevent race condition when deleting agent
+  * verifier: Replace assert with proper error handling
+  * json: Suppress mypy call-overload false positive
+  * Switch from CA organization of MITLL to Keylime
+  * [Automatic] Update Keylime base image 2026-04-01
+  * Add unit tests for shutdown coordination and drain logic
+  * Add graceful shutdown and lifecycle hooks to new Server architecture
+  * Cancel pending retries and drain in-flight work on verifier shutdown
+  * Add shutdown coordination module
+  * Fix SharedDataManager cleanup crash in forked worker processes
+  * docs: Add tables with push-attestation configuration options
+  * templates: Sync agent config options with keylime-agent.conf
+  * templates: Remove unused ima_ml_count_file option
+  * Remove enable_authentication agent config option
+  * fix(mem leak) - remove unbounded functools.cache from latest_attestation
+  * fix: Add fork-safety to DBManager via dispose()
+  * fix: Check active flag in _extract_identity and guard receive_pop
+  * db: Clean up scoped session after each request
+  * refactor: Remove dead code AuthSession.authenticate_agent()
+  * Align black configuration between tox and pre-commit
+  * Fix linter errors in PersistableModel.get() and .all()
+  * Fix race condition on in SessionManager
+  * Address some improvements from code review
+  * Include thread-safe session management
+  * Close DB sessions to prevent connection exhaustion
+  * docs: Add v3.0 registrar API reference and changelog entry
+  * tests: Add unit tests for v3 registrar routes and VersionController
+  * registrar: Add routes for API version 3.0
+  * [Automatic] Update Keylime base image 2026-03-02
+  * [Automatic] Update Keylime base image 2026-03-01
+  * Document agent-driven (push) attestation
+  * fix misspelling of overridden (#1856)
+  * web: fix typo in base/route.py
+  * Bump to version 7.14.1
+  * ca: Add Subject Alternative Names to the certificates
+  * config: move push-mode options to [verifier] section in template
+  * packit: Add missing tests
+  * Fix session_lifetime default to prevent immediate token expiry
+  * migrations: Fix migration to drop invalid sessions
+  * tenant: Only negotiate API version v2.x
+  * Fix leftover formatting issues
+  * tests: fix measured boot tests to skip when efivarlibs is missing
+  * tests: fix setup-rpm-tests to define _topdir
+
+-------------------------------------------------------------------
 Wed Feb 18 08:32:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix version rewrite to show the exact tag when there is no
