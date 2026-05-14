@@ -30,7 +30,7 @@ Patch0:         harden_telegraf.service.patch
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 %{?systemd_ordering}
 
 %description

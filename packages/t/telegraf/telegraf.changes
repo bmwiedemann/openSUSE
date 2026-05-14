@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 13 12:59:59 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Bump golang to match go modules file
+
+-------------------------------------------------------------------
 Mon May 11 23:41:34 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.38.4:
