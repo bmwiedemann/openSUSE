@@ -461,4 +461,12 @@ join Staging:E</comment>
     <comment>- Add gcc16.patch</comment>
     <requestid>1345301</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>9c39dfe326021895ac435393d4a178f9</srcmd5>
+    <version>2026.2~rc2</version>
+    <time>1778787722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2026.2~rc2</comment>
+    <requestid>1352999</requestid>
+  </revision>
 </revisionlist>
