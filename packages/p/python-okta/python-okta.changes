@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 14 12:03:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.3
+  * fix: remove required constraints from
+    SamlApplicationSettingsSignOn schema.
+- Update to version 3.4.2
+  * Fix: Security vulnerability in #527
+- Update to version 3.4.1
+  * Fix: Primitive Fallback for oneOf Deserialization in Device
+    Assurance Models.
+
+-------------------------------------------------------------------
 Thu Apr  9 19:00:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.4.0
