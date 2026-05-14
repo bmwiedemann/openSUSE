@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 24 07:14:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.680.0 (2.68)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.68    2026-04-23
+
+  - This release is based on version 2026b of the Olson database. This release includes contemporary
+    changes for British Columbia, CA.
+
+-------------------------------------------------------------------
 Fri Mar  6 06:02:02 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.670.0 (2.67)

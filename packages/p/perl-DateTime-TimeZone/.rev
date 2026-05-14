@@ -766,4 +766,16 @@
     changes for Moldova.</comment>
     <requestid>1338051</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>6223220041e044de81bfc487fc14ee65</srcmd5>
+    <version>2.680.0</version>
+    <time>1778787708</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.680.0 (2.68)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+  2.68    2026-04-23
+  - This release is based on version 2026b of the Olson database. This release includes contemporary
+    changes for British Columbia, CA.</comment>
+    <requestid>1352974</requestid>
+  </revision>
 </revisionlist>
