@@ -23,7 +23,7 @@
 %endif
 
 Name:           shaderc
-Version:        2026.1
+Version:        2026.2
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
