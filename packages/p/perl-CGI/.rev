@@ -300,4 +300,16 @@
       - fixes GH #276</comment>
     <requestid>1310543</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a96c2d7bf9640e93b0da0caaae2c69b0</srcmd5>
+    <version>4.720.0</version>
+    <time>1778787714</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.720.0 (4.72)
+   see /usr/share/doc/packages/perl-CGI/Changes
+  4.72 2026-05-05
+      [ INTERNALS ]
+      - fix regression due to edge case bug introduced in 4.71 (GH #278, thanks to dddonovan)</comment>
+    <requestid>1352985</requestid>
+  </revision>
 </revisionlist>

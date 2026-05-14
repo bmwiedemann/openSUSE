@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  6 07:45:02 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.720.0 (4.72)
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.72 2026-05-05
+
+      [ INTERNALS ]
+      - fix regression due to edge case bug introduced in 4.71 (GH #278, thanks to dddonovan)
+
+-------------------------------------------------------------------
 Thu Oct  9 19:57:25 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.710.0 (4.71)
