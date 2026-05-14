@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 13 03:50:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.350.0
+  * vulkaninfo: Enable device groups extension
+  * vulkaninfo: Check extensions before querying properties
+
+-------------------------------------------------------------------
 Mon Feb  2 19:57:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.341.0
