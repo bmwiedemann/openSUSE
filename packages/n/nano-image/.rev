@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of nano-image</comment>
     <requestid>1350025</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0f32e0317f094c474edcf38d868e49ac</srcmd5>
+    <version>%OS_VERSION_ID_SP%.0.0</version>
+    <time>1778787820</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1353099</requestid>
+  </revision>
 </revisionlist>
