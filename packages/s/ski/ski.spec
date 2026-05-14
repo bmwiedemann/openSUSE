@@ -1,7 +1,7 @@
 #
 # spec file for package ski
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ski
-Version:        6.15
+Version:        6.16
 Release:        0
 Summary:        Skiing simulation with curses interface in python
 License:        BSD-3-Clause
@@ -44,6 +44,7 @@ fancy graphical user interfaces to have a good time.
 
 %prep
 %autosetup -p0
+sed -i -e 's|PREFIX      ?= /usr/local|PREFIX      ?= /usr|g' Makefile
 
 %build
 %make_build CFLAGS="%{optflags}"
@@ -53,7 +54,7 @@ fancy graphical user interfaces to have a good time.
 
 %files
 %license COPYING
-%doc NEWS README
+%doc NEWS README.adoc
 %dir %{_datadir}/appdata/
 %{_bindir}/%{name}
 %{_datadir}/appdata/ski.adoc
