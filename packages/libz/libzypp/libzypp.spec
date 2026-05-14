@@ -98,7 +98,7 @@
 %endif
 
 Name:           libzypp
-Version:        17.38.7
+Version:        17.38.8
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -124,6 +124,7 @@ Provides:       libzypp(plugin:services) = 1
 Provides:       libzypp(plugin:system) = 1
 Provides:       libzypp(plugin:urlresolver) = 0
 Provides:       libzypp(plugin:repoverification) = 0
+Provides:       libzypp(plugin:sigcheck) = 0
 Provides:       libzypp(repovarexpand) = 1.1
 Provides:       libzypp(econf) = 0
 
@@ -412,6 +413,7 @@ mkdir -p %{buildroot}/%{_prefix}/lib/zypp/plugins
 mkdir -p %{buildroot}/%{_prefix}/lib/zypp/plugins/appdata
 mkdir -p %{buildroot}/%{_prefix}/lib/zypp/plugins/commit
 mkdir -p %{buildroot}/%{_prefix}/lib/zypp/plugins/services
+mkdir -p %{buildroot}/%{_prefix}/lib/zypp/plugins/sigcheck
 mkdir -p %{buildroot}/%{_prefix}/lib/zypp/plugins/system
 mkdir -p %{buildroot}/%{_prefix}/lib/zypp/plugins/urlresolver
 mkdir -p %{buildroot}/%{_var}/lib/zypp
