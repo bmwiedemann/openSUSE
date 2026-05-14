@@ -497,4 +497,12 @@
   * Our runtime dependency on setuptools has been dropped from all</comment>
     <requestid>1351308</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>b566e464db698a4d717c033720802731</srcmd5>
+    <version>5.6.0</version>
+    <time>1778787896</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>1353151</requestid>
+  </revision>
 </revisionlist>
