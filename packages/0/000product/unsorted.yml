@@ -9674,6 +9674,7 @@ unsorted:
   - jsch-demo 
   - jsch-javadoc 
   - jsdec 
+  - jsdec-cutter 
   - jshon 
   - json-glib-devel 
   - json-java 
@@ -11628,7 +11629,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2026_1-32bit 
+  - libSPIRV-Tools-2026_2_rc2-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -15349,7 +15350,7 @@ unsorted:
   - libpapi 
   - libpappl1 
   - libparanoia1_0 
-  - libparaview6_0 
+  - libparaview6_1 
   - libpari-gmp-tls9 
   - libparlatype-devel 
   - libparlatype7 
@@ -25200,6 +25201,7 @@ unsorted:
   - python311-cassandra-driver 
   - python311-cassowary 
   - python311-casttube 
+  - python311-catalogus 
   - python311-catkin-pkg 
   - python311-cattrs 
   - python311-cauldron-notebook 
@@ -27958,6 +27960,7 @@ unsorted:
   - python311-varlink 
   - python311-vcrpy 
   - python311-vcs-versioning 
+  - python311-vcsgraph 
   - python311-vcver 
   - python311-vcversioner 
   - python311-vdirsyncer 
@@ -29127,6 +29130,7 @@ unsorted:
   - python313-cassowary 
   - python313-castellan 
   - python313-casttube 
+  - python313-catalogus 
   - python313-catkin-pkg 
   - python313-cattrs 
   - python313-cauldron-notebook 
@@ -31921,6 +31925,7 @@ unsorted:
   - python313-varlink 
   - python313-vcrpy 
   - python313-vcs-versioning 
+  - python313-vcsgraph 
   - python313-vcver 
   - python313-vcversioner 
   - python313-vdf 
@@ -33064,6 +33069,7 @@ unsorted:
   - python314-cassandra-driver 
   - python314-cassowary 
   - python314-casttube 
+  - python314-catalogus 
   - python314-catkin-pkg 
   - python314-cattrs 
   - python314-cauldron-notebook 
@@ -33498,6 +33504,7 @@ unsorted:
   - python314-entrypoint2 
   - python314-entrypoints 
   - python314-envier 
+  - python314-environ-config 
   - python314-environmental-override 
   - python314-envisage 
   - python314-envs 
@@ -34303,6 +34310,9 @@ unsorted:
   - python314-mongoengine 
   - python314-more-itertools 
   - python314-moreorless 
+  - python314-moto 
+  - python314-moto-all 
+  - python314-moto-server 
   - python314-mpi4py 
   - python314-mpi4py-devel 
   - python314-mpl-animators 
@@ -34564,6 +34574,7 @@ unsorted:
   - python314-pandocfilters 
   - python314-panel 
   - python314-panflute 
+  - python314-papermill 
   - python314-parallax 
   - python314-param 
   - python314-parameterized 
@@ -35508,6 +35519,7 @@ unsorted:
   - python314-sklearn-crfsuite 
   - python314-sklearn-pandas 
   - python314-skyfield 
+  - python314-slack-sdk 
   - python314-slicerator 
   - python314-slimit 
   - python314-slixmpp 
@@ -35867,6 +35879,7 @@ unsorted:
   - python314-varlink 
   - python314-vcrpy 
   - python314-vcs-versioning 
+  - python314-vcsgraph 
   - python314-vcver 
   - python314-vcversioner 
   - python314-vdirsyncer 
