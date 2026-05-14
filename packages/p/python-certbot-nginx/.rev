@@ -497,4 +497,12 @@
   * When adding ssl listen directives in nginx server blocks,</comment>
     <requestid>1351310</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>39dcd07c622e1e6a276647bc46d519ff</srcmd5>
+    <version>5.6.0</version>
+    <time>1778787899</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>1353157</requestid>
+  </revision>
 </revisionlist>
