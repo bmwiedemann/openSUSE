@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-CIDR-Lite
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Net-CIDR-Lite
 Name:           perl-Net-CIDR-Lite
-Version:        0.220.0
+Version:        0.240.0
 Release:        0
-# 0.22 -> normalize -> 0.220.0
-%define cpan_version 0.22
+# 0.24 -> normalize -> 0.240.0
+%define cpan_version 0.24
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension for merging IPv4 or IPv6 CIDR addresses
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/ST/STIGTSP/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -40,7 +41,7 @@ Faster alternative to Net::CIDR when merging a large number of CIDR address
 ranges. Works for IPv4 and IPv6 addresses.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

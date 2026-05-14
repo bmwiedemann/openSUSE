@@ -113,4 +113,20 @@
 </comment>
     <requestid>1278678</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c32c9d7e56663b6b274be9713274fcde</srcmd5>
+    <version>0.240.0</version>
+    <time>1778787736</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.240.0 (0.24)
+   see /usr/share/doc/packages/perl-Net-CIDR-Lite/Changes
+  0.24  2026-05-10
+      - Security: (CVE-2026-45190) Reject Unicode digits and trailing
+        newlines in parser inputs. bsc#1264710
+      - Security: (CVE-2026-45191) Reject zero-padded CIDR masks. bsc#1264709
+  0.23  2026-04-10
+      - Security: (CVE-2026-40199) Fix IPv4 mapped IPv6 packed length. bsc#1262088
+      - Security: (CVE-2026-40198) Reject invalid uncompressed IPv6. bsc#1262088</comment>
+    <requestid>1353046</requestid>
+  </revision>
 </revisionlist>

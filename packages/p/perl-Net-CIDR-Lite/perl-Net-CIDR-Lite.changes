@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 11 08:38:53 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.240.0 (0.24)
+   see /usr/share/doc/packages/perl-Net-CIDR-Lite/Changes
+
+  0.24  2026-05-10
+      - Security: (CVE-2026-45190) Reject Unicode digits and trailing
+        newlines in parser inputs. bsc#1264710
+      - Security: (CVE-2026-45191) Reject zero-padded CIDR masks. bsc#1264709
+
+  0.23  2026-04-10
+      - Security: (CVE-2026-40199) Fix IPv4 mapped IPv6 packed length. bsc#1262088
+      - Security: (CVE-2026-40198) Reject invalid uncompressed IPv6. bsc#1262088
+
+-------------------------------------------------------------------
 Tue May 20 11:38:58 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version
