@@ -6807,4 +6807,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * n_drirc-disable-rgb10-for-chromium-on-amd.patch</comment>
     <requestid>1351830</requestid>
   </revision>
+  <revision rev="577" vrev="2">
+    <srcmd5>f5ea71a5658ce86f3abb4d24df55d7c3</srcmd5>
+    <version>26.1.0</version>
+    <time>1778787706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1352970</requestid>
+  </revision>
 </revisionlist>

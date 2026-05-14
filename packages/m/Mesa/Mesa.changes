@@ -28,6 +28,13 @@ Fri May  8 09:51:16 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
   * n_drirc-disable-rgb10-for-chromium-on-amd.patch
 
 -------------------------------------------------------------------
+Wed May  6 10:22:09 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch from https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/40161
+  to fix build on armv6/7:
+  * u_PR-40161.patch
+
+-------------------------------------------------------------------
 Wed Apr 29 21:32:12 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 26.0.6 bugfix release

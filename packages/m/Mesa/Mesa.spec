@@ -176,6 +176,7 @@ Source12:       README-suse-maintenance.md
 Source22:       http://crates.io/api/v1/crates/rustc-hash/%{_rustc_hash_crate_ver}/download#/rustc-hash-%{_rustc_hash_crate_ver}.tar.gz
 Patch2:         n_add-Mesa-headers-again.patch
 Patch17:        tlsdesc_test.patch
+Patch18:        u_PR-40161.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
@@ -748,6 +749,7 @@ cp %{SOURCE22} subprojects/packagecache/
 %patch -P 2 -p1
 %endif
 %patch -P 17 -p1
+%patch -P 18 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
 %patch -P 54 -p1
