@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 14 09:13:21 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 5.6.0
+  * certbot now requires version 1.7+ of the library distro
+
+-------------------------------------------------------------------
 Wed May  6 20:16:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.0:

@@ -643,4 +643,12 @@
     or certbot run to get a new cert.</comment>
     <requestid>1351313</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>2ce74777d764645bb0d4ff2f9b664bd0</srcmd5>
+    <version>5.6.0</version>
+    <time>1778787892</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>1353142</requestid>
+  </revision>
 </revisionlist>

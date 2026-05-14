@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-certbot
-Version:        5.5.0
+Version:        5.6.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module acme >= %{version}}
 BuildRequires:  %{python_module configargparse >= 1.5.3}
 BuildRequires:  %{python_module configobj >= 5.0.6}
 BuildRequires:  %{python_module cryptography >= 43.0.0}
-BuildRequires:  %{python_module distro >= 1.0.1}
+BuildRequires:  %{python_module distro >= 1.7}
 BuildRequires:  %{python_module josepy >= 2.0.0}
 BuildRequires:  %{python_module parsedatetime >= 2.6}
 BuildRequires:  %{python_module pip}
@@ -47,7 +47,7 @@ Requires:       python-acme >= %{version}
 Requires:       python-configargparse >= 1.5.3
 Requires:       python-configobj >= 5.0.6
 Requires:       python-cryptography >= 43.0.0
-Requires:       python-distro >= 1.0.1
+Requires:       python-distro >= 1.7
 Requires:       python-josepy >= 2.0.0
 Requires:       python-parsedatetime >= 2.6
 Requires:       python-pyRFC3339
