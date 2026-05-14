@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 13 15:02:52 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 10.21.3:
+  * FIX: Fix regression that allows a snippet to be loaded outside
+    of the base path using directory traversal when
+    restrict_base_path is enabled (the default). Found by @gistrec.
+
+-------------------------------------------------------------------
 Mon Mar 30 20:14:46 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 10.21.2:
