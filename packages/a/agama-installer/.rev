@@ -534,4 +534,40 @@
     session</comment>
     <requestid>1350961</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>c38773e75a26d08810ec19b56e04826a</srcmd5>
+    <version>20.0.0</version>
+    <time>1778787732</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release
+
+--- agama-installer.changes (revision 31)
++++ agama-installer.changes (revision 61)
+@@ -1,4 +1,24 @@
+ -------------------------------------------------------------------
++Thu May  7 13:06:27 UTC 2026 - Ladislav Slezák &lt;lslezak@suse.com&gt;
++
++- Restore back the checkmedia option in the *.kiwi file
++  (reverts the change for bsc#1262229, the latest checkmedia
++  supports GPT partition tables and kiwi improved the check to
++  detect the checkmedia version)
++
++-------------------------------------------------------------------
++Thu May  7 08:19:56 UTC 2026 - Michal Filka &lt;mfilka@suse.com&gt;
++
++- bsc#1264099
++  - use --enable-vt-switch option conditionally only if gnome-kiosk
++    supports it
++
++-------------------------------------------------------------------
++Wed May  6 14:11:57 UTC 2026 - Ladislav Slezák &lt;lslezak@suse.com&gt;
++
++- Removed development GPG keys (bsc#1262143)
++
++-------------------------------------------------------------------
+ Thu Apr 23 08:20:09 UTC 2026 - Ladislav Slezák &lt;lslezak@suse.com&gt;
+ 
+ - Fixed medium check (bsc#1262311)</comment>
+    <requestid>1353023</requestid>
+  </revision>
 </revisionlist>
