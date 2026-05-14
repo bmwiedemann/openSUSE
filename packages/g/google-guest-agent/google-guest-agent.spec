@@ -16,12 +16,7 @@
 #
 
 
-%global provider        github
-%global provider_tld    com
-%global project         GoogleCloudPlatform
-%global repo            guest-agent
-%global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
-%global import_path     %{provider_prefix}
+%define shortname guest-agent
 
 Name:           google-guest-agent
 Version:        20260430.00
@@ -30,11 +25,10 @@ Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
 Group:          System/Daemons
 URL:            https://%{provider_prefix}
-Source0:        %{repo}-%{version}.tar.gz
+Source0:        %{shortname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
 Patch0:         disable_google_dhclient_script.patch
-BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.26
 Requires:       google-guest-configs
 Requires:       google-guest-oslogin >= 20231003
@@ -42,21 +36,20 @@ Provides:       google-compute-engine-init = %{version}
 Obsoletes:      google-compute-engine-init < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-%{go_nostrip}
-%{go_provides}
-
 %description
 Google Cloud Guest Agent
 
 %prep
-%setup -n %{repo}-%{version} -a1
+%setup -n %{shortname}-%{version} -a1
 %patch -P 0 -p1
 
 %build
-%goprep %{import_path}
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
 for bin in gce_workload_cert_refresh google_guest_agent google_metadata_script_runner; do
     pushd "$bin"
-    CGO_ENABLED=0 go build -buildmode=pie -ldflags="-s -w -X main.version=%{version}" -mod=vendor
+    go build
     popd
 done
 

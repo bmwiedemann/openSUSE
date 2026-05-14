@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May 13 21:18:38 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Remove define github project name components no longer needed
+  * Define shortname corresponding to binary name when different
+    from package name. Use shortname where applicable to normalize
+    common lines across Go app packages, similar to name macro.
+  * Drop BuildRequires: golang-packaging. The original macros for
+    file movements into GOPATH are obsolete with Go modules. Macro
+    go_nostrip is no longer needed with current binutils and Go.
+  * Remove go_nostrip macro which is no longer recommended
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Remove goprep macro which is no longer recommended
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop export CGO_ENABLED="0". Use the default unless there is a
+    defined requirement or benefit.
+  * For this package, we were seeing the expected error
+    "-buildmode=pie requires external (cgo) linking, but cgo is not
+    enabled" when using buildmode=pie and CGO_ENABLED=0. The error
+    manifested only on s390x and i586 architectures, which was not
+    expected. Resolve by using default CGO_ENABLED.
+  * Remove ldflags -s (Omit symbol table and debug info) and -w
+    (Omit DWARF symbol table). This information is used to produce
+    separate debuginfo packages and binaries are stripped for
+    reduced size by GNU strip during RPM build.
+  * Remove ldflags -X entry for embedding build version metadata.
+    This information is embedded in binaries with go1.18+ and
+    available via go version -m or runtime/debug.ReadBuildInfo().
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+
+-------------------------------------------------------------------
 Mon May  4 11:35:59 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260430.00

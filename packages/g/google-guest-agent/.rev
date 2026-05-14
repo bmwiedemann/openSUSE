@@ -1067,4 +1067,12 @@
   * Remove routes script from packaging (#566) (forwarded request 1350667 from glaubitz)</comment>
     <requestid>1350668</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>1fc1f304bb5d6a4cc4233c43b6438c28</srcmd5>
+    <version>20260430.00</version>
+    <time>1778787930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1353168</requestid>
+  </revision>
 </revisionlist>
