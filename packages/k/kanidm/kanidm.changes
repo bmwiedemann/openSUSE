@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 14 07:08:18 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.10.2~git0.f3dc9ef1f:
+  * Release 1.10.2
+  * Security - CRITICAL - authenticated user privilege escalation
+  * Refactor modification access paths to remove duplication
+  * Revert ClientID header (#4334)
+  * Disable prompt=login (#4340)
+  * Add missing `/sbin/kanidm-mail-sender` (#4323)
+  * Remove debug symbols in release builds. (#4319)
+
+-------------------------------------------------------------------
 Thu May 07 06:06:07 UTC 2026 - william.brown@suse.com
 
 - Update to version 1.10.1~git0.d02660a98:
