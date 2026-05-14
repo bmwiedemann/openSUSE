@@ -1697,4 +1697,15 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
 </comment>
     <requestid>1334645</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>18157c801d74a79cfee28fdb3be8aabb</srcmd5>
+    <version>1699_20260512</version>
+    <time>1778787746</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1699_20260512:
+  * iputils: Fix capability permissions for clockdiff
+  * profiles: drop nfs-utils rmtab entry
+  * README: document RPM installation time race condition</comment>
+    <requestid>1352762</requestid>
+  </revision>
 </revisionlist>

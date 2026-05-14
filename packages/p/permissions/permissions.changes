@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 12 13:21:44 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 1699_20260512:
+  * iputils: Fix capability permissions for clockdiff
+  * profiles: drop nfs-utils rmtab entry
+  * README: document RPM installation time race condition
+
+-------------------------------------------------------------------
 Tue Feb 24 07:23:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Declare a BuildConflict instead of a build-dependency.
