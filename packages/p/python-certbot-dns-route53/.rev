@@ -491,4 +491,12 @@
     should not affect any users of the plugin and instead would only</comment>
     <requestid>1351305</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b7b4a59717fb5738e032c038754d8b96</srcmd5>
+    <version>5.6.0</version>
+    <time>1778787897</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>1353156</requestid>
+  </revision>
 </revisionlist>
