@@ -135,4 +135,24 @@
     <comment>Update version</comment>
     <requestid>1348439</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9a8af0cf3fa6a7678201695976c41927</srcmd5>
+    <version>2.52.3</version>
+    <time>1778787818</time>
+    <user>dimstar_suse</user>
+    <comment>- riscv-platformenable.patch: Fix build for riscv64
+
+- Update to version 2.52.3:
+  + Add support for the scrollbar-color CSS property.
+  + Add WPEPlatform setting to toggle overlay scrollbars.
+  + Fix some emoji glyphs being rendered as missing glyph boxes.
+  + Fix web view focus handling for touch input in the built-in
+    WPEPlatform Wayland implementation.
+  + Fix linking the WPE Qt binding in some cases due to undefined
+    symbols.
+  + Fix JavaScriptCore crashes on architectures other than x86_64.
+  + Fix the build on s390x.
+  + Fix several crashes and rendering issues.</comment>
+    <requestid>1353090</requestid>
+  </revision>
 </revisionlist>
