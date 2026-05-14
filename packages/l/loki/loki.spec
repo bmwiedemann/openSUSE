@@ -27,7 +27,7 @@
 %global promtail_binaries promtail
 
 Name:           loki
-Version:        3.6.8
+Version:        3.7.2
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
@@ -47,7 +47,7 @@ Patch0:         proper-data-directories.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 Requires:       logcli = %{version}
 Requires(pre):  group(loki)
 Requires(pre):  user(loki)
@@ -116,43 +116,57 @@ export GOLDFLAGS="-X %{buildpkg}.Version=%{version} \
 for i in %{loki_public_binaries} %{?loki_internal_binaries}  ; do
   go build -ldflags="$GOLDFLAGS" ./cmd/${i}
 done
+%if %{with promtail}
 CGO_ENABLED=1 go build -ldflags="$GOLDFLAGS" --tags=promtail_journal_enabled,netgo ./clients/cmd/promtail
+%endif
 
-#check
+%check
 ./lokitool version
-for i in %{loki_public_binaries} %{?loki_internal_binaries} %{promtail_binaries} ; do
+for i in %{loki_public_binaries} %{?loki_internal_binaries} ; do
   if [ "x${i}" != "xlokitool" -a "x${i}" != "xlogql-analyzer" ] ; then
 ./${i} --version
   fi
 done
 
-%install
+%if %{with promtail}
+./promtail --version
+%endif
 
+%install
 # Service files for Loki and promtail
 install -Dm644 %{SOURCE1} %{buildroot}%{_unitdir}/loki.service
-install -Dm644 %{SOURCE2} %{buildroot}%{_unitdir}/promtail.service
 install -Dm644 %{SOURCE5} %{buildroot}%{_unitdir}/loki@.service
-install -Dm644 %{SOURCE6} %{buildroot}%{_unitdir}/promtail@.service
 install -Dm644 %{SOURCE7} %{buildroot}%{_unitdir}/loki.target
-install -Dm644 %{SOURCE8} %{buildroot}%{_unitdir}/promtail.target
 
 install -Dm644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.loki
-install -Dm644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.promtail
 
 install -dm755 %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcloki
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpromtail
 
 # Config files
 install -Dm640 cmd/loki/loki-local-config.yaml \
     %{buildroot}%{_sysconfdir}/loki/loki.yaml
+
+%if %{with promtail}
+install -Dm644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.promtail
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpromtail
+
+install -Dm644 %{SOURCE2} %{buildroot}%{_unitdir}/promtail.service
+install -Dm644 %{SOURCE8} %{buildroot}%{_unitdir}/promtail.target
+install -Dm644 %{SOURCE6} %{buildroot}%{_unitdir}/promtail@.service
+
 install -Dm640 clients/cmd/promtail/promtail-local-config.yaml \
     %{buildroot}%{_sysconfdir}/loki/promtail.yaml
+%endif
 
 # Binaries
-install -D -m 0755 -t %{buildroot}%{_bindir} %{loki_public_binaries} %{?loki_internal_binaries} %{promtail_binaries}
+install -D -m 0755 -t %{buildroot}%{_bindir} %{loki_public_binaries} %{?loki_internal_binaries}
+install -D -m 0750 -d %{buildroot}%{loki_datadir} %{buildroot}%{loki_logdir}
 
-install -D -m 0750 -d %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir} %{buildroot}%{loki_logdir}
+%if %{with promtail}
+install -D -m 0755 -t %{buildroot}%{_bindir} %{promtail_binaries}
+install -D -m 0750 -d %{buildroot}%{promtail_datadir}
+%endif
 
 %pre
 %service_add_pre %{loki_services}
@@ -165,8 +179,13 @@ install -D -m 0750 -d %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir
 %service_del_preun %{loki_services}
 
 %postun
-%service_del_postun %{loki_services} %{promtail_services}
+%service_del_postun %{loki_services} \
+%if %{with promtail}
+%{promtail_services} \
+%endif
+%{nil}
 
+%if %{with promtail}
 %pre -n promtail
 %service_add_pre %{promtail_services}
 
@@ -179,6 +198,7 @@ install -D -m 0750 -d %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir
 
 %postun -n promtail
 %service_del_postun %{promtail_services}
+%endif
 
 %files
 %license LICENSE
@@ -196,6 +216,7 @@ install -D -m 0750 -d %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir
 %dir %attr(-,loki,loki) %{loki_datadir}/
 %dir %attr(-,loki,loki) %{loki_logdir}/
 
+%if %{with promtail}
 %files -n promtail
 %{_unitdir}/promtail.target
 %{_unitdir}/promtail.service
@@ -206,6 +227,7 @@ install -D -m 0750 -d %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir
 %config(noreplace) %{_sysconfdir}/loki/promtail.yaml
 %{_sbindir}/rcpromtail
 %dir %{promtail_datadir}/
+%endif
 
 %files -n logcli
 %license LICENSE
