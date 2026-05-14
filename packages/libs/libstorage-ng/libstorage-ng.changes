@@ -1,4 +1,22 @@
 --------------------------------------------------------------------
+Wed May 13 16:49:39 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1071
+- improved xml parser
+- coding style
+- 4.5.316
+
+--------------------------------------------------------------------
+Wed May 13 09:53:00 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1070
+- fixed test
+- added tests
+- use modern C++
+- minor improvements
+- 4.5.315
+
+--------------------------------------------------------------------
 Tue Apr 21 10:57:35 UTC 2026 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1069
