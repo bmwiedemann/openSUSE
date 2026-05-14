@@ -674,4 +674,26 @@
   type (gh#agama-project/agama#3384).</comment>
     <requestid>1350960</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7125f176d0944f4bcaa571b599ac1a5b</srcmd5>
+    <version>20.devel384.151dec0bb</version>
+    <time>1778787731</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release
+
+--- rubygem-agama-yast.changes (revision 42)
++++ rubygem-agama-yast.changes (revision 74)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Thu May  7 12:11:45 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
++
++- Import the ntp-client section from a AutoYaST profiles
++  (jsc#PED-15144).
++
++-------------------------------------------------------------------
+ Fri Apr 17 10:29:38 UTC 2026 - José Iván López González &lt;jlopez@suse.com&gt;
+ 
+ - Add support for configuring pervasive encryption APQNs and key</comment>
+    <requestid>1353022</requestid>
+  </revision>
 </revisionlist>

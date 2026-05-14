@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-agama-yast
-Version:        20.devel269.73cf33d8f
+Version:        20.devel384.151dec0bb
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}
