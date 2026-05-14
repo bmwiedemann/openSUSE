@@ -47,7 +47,6 @@ Requires:       python-setuptools
 Recommends:     git-core > 2.11
 Recommends:     python-pip
 Recommends:     python-wheel
-Suggests:       breezy
 Suggests:       mercurial
 Suggests:       subversion
 BuildArch:      noarch
