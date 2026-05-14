@@ -850,4 +850,58 @@
 - network: Add ignore_auto_routes[46] and never_default[46]</comment>
     <requestid>1350959</requestid>
   </revision>
+  <revision rev="44" vrev="44">
+    <srcmd5>06c35379036841f0372d705404e4932c</srcmd5>
+    <version>0</version>
+    <time>1778787729</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release
+
+--- agama.changes (revision 43)
++++ agama.changes (revision 114)
+@@ -1,4 +1,42 @@
+ -------------------------------------------------------------------
++Tue May 12 10:17:19 UTC 2026 - Josef Reidinger &lt;jreidinger@suse.com&gt;
++
++- Add new popup when package installation failed if user wants
++  to retry it. (gh#agama-project/agama#3484)
++
++-------------------------------------------------------------------
++Fri May  8 12:36:00 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Move product availability issues to software scope
++  (gh#agama-project/agama#3456).
++
++-------------------------------------------------------------------
++Thu May  7 10:56:21 UTC 2026 - Ladislav Slezák &lt;lslezak@suse.com&gt;
++
++- Improved saving libzypp service (related to bsc#1261351)
++
++-------------------------------------------------------------------
++Thu May  7 09:50:03 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
++
++- Improve handling of updates in the &quot;agama monitor&quot; command
++  (gh#agama-project/agama#3470).
++
++-------------------------------------------------------------------
++Thu May  7 06:03:28 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
++
++- Add support for synchronizing and configuring the NTP service
++  using an Agama configuration file (jsc#PED-15144).
++
++-------------------------------------------------------------------
++Wed May  6 08:54:42 UTC 2026 - Josef Reidinger &lt;jreidinger@suse.com&gt;
++
++- HTTP API:
++  - remove v2 part of path
++  - add new X-API-Version response header with value 2
++  - move /profile path to /private/profile
++  (gh#agama-project/agama#3461)
++
++-------------------------------------------------------------------
+ Mon May  4 10:46:08 UTC 2026 - Josef Reidinger &lt;jreidinger@suse.com&gt;
+ 
+ - fix zypp tests to work with new rpm with more tight permissions</comment>
+    <requestid>1353019</requestid>
+  </revision>
 </revisionlist>
