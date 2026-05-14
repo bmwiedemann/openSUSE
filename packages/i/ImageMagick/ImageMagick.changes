@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 13 12:08:36 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 7.1.2.22
+  * no upstream changelog
+- seem to fix following GH security advisories:
+  * GHSA-7wff-wpr6-vmhm
+  * GHSA-85r7-8qr6-54gh
+  * GHSA-cr6r-hmj8-pr7r
+  * GHSA-cwpj-h54c-xjpx
+  * GHSA-g5mf-wqq5-vwg6
+  * GHSA-gj92-pwm7-jcmp
+  * GHSA-hg5x-pmmv-4q7g
+  * GHSA-j3pv-77gf-fw2g
+  * GHSA-jqq5-8px3-9m6m
+  * GHSA-pfvh-m9xv-8966
+  * GHSA-rw3g-wvj6-3p7w
+  * GHSA-v6qj-8rm4-fpgj
+  * GHSA-vf33-6r7x-66xx
+  * GHSA-vhrh-72hq-w8m7
+- deleted patches
+  * ImageMagick-fix-overflow-check.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon May 11 07:44:45 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
@@ -16,6 +39,7 @@ Wed Apr 29 06:27:20 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * allow namespace::pattern when checking policy rights
   * mentioned symlink system policy
   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-7mxf-ff4f-jj7p
+- fixes CVE-2026-42050 [bsc#1265048]
 
 -------------------------------------------------------------------
 Wed Apr 15 08:30:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>

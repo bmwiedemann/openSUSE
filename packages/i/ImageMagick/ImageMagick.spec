@@ -21,7 +21,7 @@
 %define debug_build    0
 %define asan_build     0
 %define mfr_version    7.1.2
-%define mfr_revision   21
+%define mfr_revision   22
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -52,8 +52,6 @@ Patch0:         ImageMagick_policy_etc.patch
 Patch1:         ImageMagick-configuration-SUSE.patch
 # library installation
 Patch2:         ImageMagick-library-installable-in-parallel.patch
-# fix overflow check (CVE-2026-31853, [bsc#1259528])
-Patch3:         ImageMagick-fix-overflow-check.patch
 Patch1000:      ImageMagick-s390x-disable-tests.patch
 
 BuildRequires:  chrpath
