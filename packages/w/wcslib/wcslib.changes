@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed May 13 21:09:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.7:
+  * - In wcshdo_util(), a static helper function for wcshdo(),
+    fixed a bug that would have caused the keycomment to be
+    truncated to a single character when keyvalues exceeded 20
+    characters.
+  * Fixed various memory-related issues, such as potential
+    memory leaks on error return, potentially dereferencing null
+    pointers, incorrect handling of failed calls to realloc(),
+    etc. in wcsprt(), wcssub(), wcstrim(), wcspcx(), disset(),
+    discpy(), diswarp(), and various of the static distortions
+    helper functions.
+  * In wcsprintf(), call va_end() if memory allocation fails in
+    order to release the memory allocated by va_start()
+  * In wcserr_clear(), ensure that errp is non-NULL before
+    dereferencing it.
+  * In tabini(), check that the total number of elements in the
+    coordinate array does not exceed INT_MAX.
+  * In wcsinit(), lininit(), and disinit(), check that the
+    value provided for naxis is not too large.  Negative values also
+    now return WCSERR_BAD_PARAM rather than WCSERR_MEMORY.
+  * In conjunction with the above, global variables that record
+    various limits are now declared in a new header file, wcslimits.h.
+    Their values are set in wcs.c, including a limit of 31 for NAXIS
+    and also the default limits for the number of PVi_ma, PSi_ma, DPja,
+    and DQia keywords, which may be changed.
+  * In cylfix(), use the maximum value of NAXIS from wcslimits.h.
+  * Likewise, in wcsprintf() and wcsfprintf(), replaced use of
+  * vsprintf() with vsnprintf().
+  * In linx2p(), replaced two uses of goto statements to work
+    around an apparent compiler bug.  Reported by Cyril Richard.
+  * PGSBOX now accounts for the possibility that the coordinate
+    system is not defined outside the frame.  Previously this was
+    important for determining axis crossings and hence axis
+    labelling.  However, it is not valid for -TAB coordinates in
+    FITS for which extrapolation is strictly limited to half a pixel.
+
+-------------------------------------------------------------------
 Thu Jan  1 15:33:06 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.5
@@ -373,7 +412,7 @@ Mon Mar  1 21:17:40 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
     - Added cautions about translating CDi_ja to PCi_ja plus
       CDELTia for those historical distortion functions (TPV, TNX,
       ZPX) that expect to operate on intermediate world
-      coordinates, rather than intermediate pixel coordinates. 
+      coordinates, rather than intermediate pixel coordinates.
       Consequent on feedback from Mohammad Akhlaghi.
     - Documentation generation moved to doxygen 1.9.1 (was 1.8.19).
 
@@ -988,7 +1027,7 @@ Thu Jan 28 13:37:56 UTC 2016 - toddrme2178@gmail.com
   * PGSBOX
     - In PGCRLB, fixed an incorrect use of the MOD intrinsic reported by
       'gfortran -std=f95' via Jean-Baptiste Marquette.
-- Remove upstream-included build_flags.patch 
+- Remove upstream-included build_flags.patch
 
 -------------------------------------------------------------------
 Sun Feb 22 19:48:55 UTC 2015 - asterios.dramis@gmail.com
