@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 13 20:22:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 318:
+  * Bump Standards-Version to 4.7.4.
+  * Remove a misleading comment.
+  * Limit python3-guestfs Build-Dependency to !i386. (Closes:
+    #1132974)
+  * Try to fix PYPI_ID_TOKEN debugging.
+  * Add ppc64el to the list of architectures for python3-guestfs.
+  * Fix compatibility with LLVM version 22.
+  * Add some debugging info for PyPI debugging.
+  * Adjust PGP file detection regex.
+  * Don't run "test_code_is_black_clean" test in autopkgtests.
+  * Reformat using Black 26.1.0.
+  * Update external tool reference for 7z on guix.
+
+-------------------------------------------------------------------
 Wed Feb 11 08:06:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 312:
