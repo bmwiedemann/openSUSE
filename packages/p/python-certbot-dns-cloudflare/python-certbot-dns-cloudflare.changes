@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May 14 09:15:03 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to version 5.6.0
+  * certbot-dns-cloudflare requires 4.0+ of the Cloudflare Python 
+    library
+
+-------------------------------------------------------------------
+Wed May  6 20:44:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.0:
+  * Moved nearly all code for the certbot-nginx and certbot-
+    apache plugins into private modules in the certbot package
+    which now offers "apache" and "nginx" extras. Users should
+    notice no major changes. certbot-apache and certbot-nginx
+    will continue to exist as simple packages that depend on
+    certbot and also help register the plugin with certbot so it
+    knows the functionality is available. Unit tests for these
+    plugins are now also part of the certbot package.
+  * The certbot.ocsp module has been deprecated and will be
+    removed in the next major release. This is not a change to
+    Certbot's OCSP functionality. The code is just being removed
+    from Certbot's public API.
+
+-------------------------------------------------------------------
 Mon Mar 16 12:15:33 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to version 5.4.0
@@ -75,7 +99,7 @@ Tue Apr 22 03:45:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 Fri Mar 21 12:29:24 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to version 3.3.0
-  * certbot-cloudflare-dns is now pinned to version 2.19 of 
+  * certbot-cloudflare-dns is now pinned to version 2.19 of
     Cloudflare's python library
 
 -------------------------------------------------------------------
