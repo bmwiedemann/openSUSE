@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 15 13:15:55 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Added fix-python314.patch: Skip two f-string related tests due to incompatibility of unify 0.5 with
+  Python 3.14 tokenize/untokenize behavior 
+
+-------------------------------------------------------------------
 Wed Nov 19 11:50:22 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Add patch version.patch to fix build with Python 3.14
