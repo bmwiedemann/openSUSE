@@ -231,4 +231,34 @@ This will obsolete current packages man-pages-fr &amp; man-pages-fr-extra (to be
 </comment>
     <requestid>1319276</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e69f43713dd4dd643fc2e764711bdc55</srcmd5>
+    <version>4.30.2</version>
+    <time>1778882160</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude files conflicting with net-tools and wireless-tools.
+- Update to 4.30.2:
+  * Remove more undistributable files
+  * Start collecting license information for the individual upstream man pages
+  * Updated and added translations
+- Changes from 4.30.1:
+  * For all unmaintained and almost all maintained languages the tedious
+    coreutils update has been performed, so many pages reappear (compared to 4.30)
+  * Updated and added many translations
+  * Reactivate Arabic translations and make them installable
+- Update macros.
+- update to 4.30.0:
+  * Updated and added many translations
+  * Integrate man page translations for wireless-tools
+  * Switch opensuse-leap-16-0 → opensuse-leap-16-1
+  * Switch fedora-43 → fedora-44
+  * Remove translation with &quot;:&quot; in its name. Make cannot handle it atm.
+  * Fix copyright header in various Hungarian translations
+  * Some unfuzzing in unmaintained languages
+  * Updated and added many translations
+- remove manpages-l10n-4.28.0-fix-links.patch
+- add manpages-l10n-4.30.0-fix-links.patch
+</comment>
+    <requestid>1353452</requestid>
+  </revision>
 </revisionlist>
