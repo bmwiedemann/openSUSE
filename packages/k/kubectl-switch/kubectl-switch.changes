@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May 15 06:46:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.19:
+  * Bug Fixes
+    - 1d93486: fix(go): update kubernetes monorepo ( v0.36.0 →
+      v0.36.1 ) (#245) (@mr-borboto[bot])
+  * Chores
+    - 1b955e2: chore(mise): install svu via ubi
+      (@mircea-pavel-anton)
+    - 6f975ec: chore(mise): update aqua:golangci/golangci-lint (
+      2.11.4 → 2.12.1 ) (#243) (@mr-borboto[bot])
+    - ea562b5: chore(mise): update go ( 1.26.2 → 1.26.3 )
+      (@mr-borboto[bot])
+    - a4aec3a: chore(mise): update golangci-lint ( 2.12.1 → 2.12.2
+      ) (@mr-borboto[bot])
+    - 8d2b071: chore(mise): update golangci-lint backend
+      (@mircea-pavel-anton)
+
+-------------------------------------------------------------------
 Thu Apr 23 05:31:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.18:
