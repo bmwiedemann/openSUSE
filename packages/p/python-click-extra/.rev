@@ -266,4 +266,12 @@ update to 6.1.0</comment>
     strings and handles hidden-param unhiding. format_param_row()</comment>
     <requestid>1349910</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8de61e17c85697303f5db1f7fd3f19e8</srcmd5>
+    <version>7.16.1</version>
+    <time>1778882191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1353416</requestid>
+  </revision>
 </revisionlist>
