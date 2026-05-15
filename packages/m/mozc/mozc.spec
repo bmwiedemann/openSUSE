@@ -154,8 +154,8 @@ Requires:       fcitx5
 Requires:       mozc = %{version}
 Requires:       mozc-gui-tools = %{version}
 Provides:       locale(fcitx5:ja)
-%if 0%{?suse_version > 1600}
-# fcitx4 is dropped from TW
+%if 0%{?suse_version} >= 1600
+# fcitx4 is dropped from TW and Leap 16.0
 Provides:       fcitx-mozc = %{version}
 Obsoletes:      fcitx-mozc <= %{version}
 %endif

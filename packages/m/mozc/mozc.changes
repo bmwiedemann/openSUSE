@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 15 06:25:36 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Provide fcitx-mozc also on Leap 16.0
+- Fix the condition that always evaluated to true
+  as long as %{suse_version} is greater than 0
+
+-------------------------------------------------------------------
 Sun May  3 16:53:11 UTC 2026 - Fuminobu Takeyama <ftake@geeko.jp> - 3.33.6133.102
 
 - Upstream update to 3.33.6133
