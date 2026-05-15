@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May 10 12:40:03 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to 0.8.36:
+  * viewer: exposure time and increment support
+  * viewer: more pixel format support
+  * gstplugin: memory leak fix
+  * usb3vision: fix handling of control endpoints
+  * gigevision: more cameras to the legacy endianness lists
+  * gigevision: undefined behaviour fixes
+  * genicam: local error propagation fixes
+  * msvc: avoid symbol export in static builds
+  * python: read write memory binding fixes
+
+-------------------------------------------------------------------
 Thu May  8 11:11:50 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to 0.8.35:
