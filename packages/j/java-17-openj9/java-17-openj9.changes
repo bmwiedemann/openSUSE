@@ -7,6 +7,8 @@ Fri May  8 07:44:19 UTC 2026 - Fridrich Strba <fstrba@suse.com>
     CVE-2026-22016 (bsc#1262495), CVE-2026-22018 (bsc#1262496),
     CVE-2026-22021 (bsc#1262497), CVE-2026-23865 (bsc#1259118),
     CVE-2026-34268 (bsc#1262500), CVE-2026-34282 (bsc#1262501)
+- OpenJ9 specific security fix
+  * CVE-2026-1188 (bsc#1265261)
   * OpenJ9 changes, see
     https://www.eclipse.org/openj9/docs/version0.59/
 
