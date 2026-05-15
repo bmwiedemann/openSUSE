@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-sql
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-sql
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Library to write SQL queries
 License:        BSD-3-Clause
@@ -27,11 +27,13 @@ URL:            https://pypi.io/project/python-sql
 ## Source:         https://pypi.io/packages/source/p/python-sql/python-sql-%%{version}.tar.gz
 ## Naming scheme broken upsream
 Source:         https://files.pythonhosted.org/packages/source/p/python_sql/python_sql-%{version}.tar.gz
+BuildRequires:  %{python_module hatch-tryton}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-hatch-tryton
 BuildArch:      noarch
 %python_subpackages
 
