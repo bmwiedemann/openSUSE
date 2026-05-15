@@ -19,7 +19,7 @@
 %define __requires_exclude typelib\\((GtkosxApplication)\\)
 %define _name   Exaile
 Name:           exaile
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        GTK Amarok-like music player
 License:        GPL-3.0-or-later
@@ -29,6 +29,8 @@ Source:         https://github.com/exaile/exaile/releases/download/%{version}/%{
 Patch0:         %{name}-no-splash-default.patch
 # PATCH-FEATURE-OPENSUSE exaile-mate-screensaver.patch sor.alexei@meowr.ru -- Make the screensaverpause plugin work with MATE Screensaver.
 Patch1:         %{name}-mate-screensaver.patch
+# PATCH-FIX-OPENSUSE fix-webkit-typelib.patch -- Patch to only look for the correct webkit typelib
+Patch2:         fix-webkit-typelib.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 12 06:03:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.2.2:
+  * Fixed startup crash that happens if gst-python >= 1.28 is
+    installed.
+  * Fixed error in Preferences → Playback (regression introduced in
+    4.2.0).
+  * Plugins: desktopcover: Re-added Preferences page that was
+    accidentally removed in version 4.0.0.
+  * Updated translations.
+- Add fix-webkit-typelib.patch: typelib-1_0-WebKit2-4_0 does not
+  exist on Tumbleweed anymore, patch to only look for
+  typelib-1_0-WebKit2-4_1
+
+-------------------------------------------------------------------
 Wed Feb 11 08:04:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.1:

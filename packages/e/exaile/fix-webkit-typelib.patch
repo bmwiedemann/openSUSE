@@ -1,0 +1,13 @@
+Index: exaile-4.2.2/plugins/wikipedia/__init__.py
+===================================================================
+--- exaile-4.2.2.orig/plugins/wikipedia/__init__.py
++++ exaile-4.2.2/plugins/wikipedia/__init__.py
+@@ -33,7 +33,7 @@ import gi
+ try:
+     gi.require_version('WebKit2', '4.1')
+ except:
+-    gi.require_version('WebKit2', '4.0')
++    gi.require_version('WebKit2', '4.1')
+ from gi.repository import WebKit2
+ 
+ log = logging.getLogger(__name__)
