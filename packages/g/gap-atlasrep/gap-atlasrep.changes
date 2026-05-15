@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 15 04:49:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.11
+  * The user preference "AtlasRepDataDirectory" had its default
+    changed for the sake of running Julia.
+  * The timeout feature of `Download` can now be used in
+    functions that download data from the internet (such as
+    `AtlasGroup`).
+  * The code for downloading data now supports the component
+    MirrorsURL in table of contents files.
+  * A method for `OrdinaryCharacterTable` (which will get called by
+    `CharacterTable` has been added that uses a GAP library
+    character table and a straight line program for computing class
+    representatives.
+
+-------------------------------------------------------------------
 Tue Dec 31 19:49:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.9

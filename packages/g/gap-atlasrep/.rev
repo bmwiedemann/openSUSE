@@ -29,4 +29,12 @@
     <comment>- Update to release 2.1.9</comment>
     <requestid>1234181</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ebf9b24161633693d423d5af3ca58f05</srcmd5>
+    <version>2.1.11</version>
+    <time>1778882014</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.1.11</comment>
+    <requestid>1353257</requestid>
+  </revision>
 </revisionlist>
