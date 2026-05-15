@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri May  8 06:48:20 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Also provide python-sqlalchemy-spanner to match package name used
+  in pypi. Upstream and repo name is SQLAlchemy-spanner
+
+-------------------------------------------------------------------
+Thu May  7 14:08:51 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- inital commit of python-SQLAlchemy-spanner 1.17.3
