@@ -16,17 +16,15 @@
 #
 
 
-%define realversion 12.29.0b1
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-storage-blob
-Version:        12.29.0~b1
+Version:        12.29.0
 Release:        0
 Summary:        Microsoft Azure Storage Blob Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_storage_blob/azure_storage_blob-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_storage_blob/azure_storage_blob-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-storage-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -67,7 +65,7 @@ Blob storage is ideal for:
 * Storing data for analysis by an on-premises or Azure-hosted service
 
 %prep
-%setup -q -n azure_storage_blob-%{realversion}
+%setup -q -n azure_storage_blob-%{version}
 
 %build
 %pyproject_wheel
