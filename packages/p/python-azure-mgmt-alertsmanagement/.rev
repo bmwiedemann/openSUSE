@@ -68,4 +68,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173281</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>250212cec14e7570f3c890ea66162399</srcmd5>
+    <version>1.0.1</version>
+    <time>1778882175</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove temporary version override
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from pyproject.toml (forwarded request 1353330 from glaubitz)</comment>
+    <requestid>1353394</requestid>
+  </revision>
 </revisionlist>
