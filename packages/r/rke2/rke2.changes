@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri May 15 07:39:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.36.0+rke2r1:
+  * This release updates Kubernetes to v1.36.0, and fixes a number
+    of issues.
+  * Details see
+    https://github.com/rancher/rke2/releases/tag/v1.36.0+rke2r1
+
+  Warning
+  * Upstream ingress-nginx Retirement & Transition to Traefik
+    Because ingress-nginx was retired upstream as of March 2026,
+    Traefik is now the default for new clusters starting in v1.36
+    (existing clusters will keep their current ingress upon upgrade
+    to avoid breakage). This transition brings the following
+    structural changes:
+    - Airgapped Environments: The rke2-images-core tarball now
+      contains Traefik images instead of ingress-nginx. The
+      standalone rke2-images-traefik tarball has been removed.
+      Users who must continue using ingress-nginx will now need to
+      manually provide the rke2-images-ingress-nginx tarball.
+    - Future Removal: The ingress-nginx chart will not receive any
+      additional updates and will be completely removed in v1.37
+      for community users.
+    - Prime Customers: Please refer to the official product
+      documentation for specific Prime considerations.
+
+-------------------------------------------------------------------
 Tue Apr 28 04:50:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.35.4+rke2r1:
