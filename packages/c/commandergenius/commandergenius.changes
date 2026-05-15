@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 14 21:23:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.3
+  * Execution of the Vorticon engine with level flags did not work,
+    which was fixed.
+  * Some bug fixes with respect to resolution changes
+    within the game.
+- Delete gs.patch (merged)
+
+-------------------------------------------------------------------
 Thu Apr 24 13:55:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add x11 to explicit BuildRequires, as we depended upon sdl2

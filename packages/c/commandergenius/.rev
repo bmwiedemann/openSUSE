@@ -339,4 +339,12 @@
   implicitly pulling it in previously.</comment>
     <requestid>1272453</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>df5ebda85819b917468fb720f1c99482</srcmd5>
+    <version>3.6.3</version>
+    <time>1778882012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.6.3</comment>
+    <requestid>1353253</requestid>
+  </revision>
 </revisionlist>
