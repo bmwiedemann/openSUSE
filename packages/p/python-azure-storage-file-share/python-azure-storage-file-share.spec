@@ -16,17 +16,15 @@
 #
 
 
-%define realversion 12.25.0b1
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-storage-file-share
-Version:        12.25.0~b1
+Version:        12.25.0
 Release:        0
 Summary:        Azure Storage File Share client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_storage_file_share/azure_storage_file_share-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_storage_file_share/azure_storage_file_share-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-storage-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -63,7 +61,7 @@ Azure file shares can be used to:
    diagnostic share, and Dev/Test/Debug tools
 
 %prep
-%setup -q -n azure_storage_file_share-%{realversion}
+%setup -q -n azure_storage_file_share-%{version}
 
 %build
 %pyproject_wheel
