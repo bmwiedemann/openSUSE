@@ -15,6 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 Name:           python-ropgadget
 Version:        7.7
@@ -23,16 +28,24 @@ Summary:        This tool lets you search your gadgets on your binaries to facil
 License:        BSD-3-Clause
 URL:            https://github.com/JonathanSalwan/ROPgadget
 Source:         https://files.pythonhosted.org/packages/source/r/ropgadget/ropgadget-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python3-capstone >= 5.0.1
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  python3-capstone >= 5.0.1
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python3-capstone >= 5.0.1
-BuildArch:      noarch
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
+
 %python_subpackages
 
 %description
@@ -48,6 +61,11 @@ This tool lets you search your gadgets on your binaries to facilitate your ROP e
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ROPgadget
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%pre
+%if %{with libalternatives}
+%python_libalternatives_reset_alternative <name>
+%endif
 
 %post
 %python_install_alternative ROPgadget
