@@ -1,5 +1,30 @@
 You can run Jamulus as a client, as well as a headless public or private server.
 
+Client:
+=======
+Under pipewire you must start PIPEWIRE_LATENCY="128/48000" Jamulus from console.
+
+Or as descriped in jamulus docu:
+Configure PipeWire
+
+PipeWire provides its own JACK server. When you launch the Jamulus Client, PipeWire automatically runs a JACK server.
+However, there are a few parameters to adjust.
+You need to set your audio interface to the “pro-audio” profile and define PipeWire’s “rate” and “quantum” parameters beforehand.
+You can find more information about the configuration in the PipeWire wiki.
+
+To set up your system:
+
+    Open pavucontrol (the audio mixer) and choose the “pro-audio” profile for your sound hardware in the configuration tab.
+    In a terminal use the following two commands to force PipeWire’s rate and quantum:
+
+    pw-metadata -n settings 0 clock.force-rate 48000
+    pw-metadata -n settings 0 clock.force-quantum 128
+
+
+
+Server:
+=======
+
 There are two service files for starting in headless mode.
 Additional two service files for switching recording and for start new recording.
 
@@ -22,3 +47,4 @@ and open UDP port: 22124 in your firewall.
 Connecting to your private server
 =================================
 To connect locally to your private server, you must use localhost as the server in the GUI.
+

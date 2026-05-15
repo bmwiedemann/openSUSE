@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sat May  9 10:59:31 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.12.0
+  - FreeBSD: make -6 option work properly with both IPv6 and IPv4 peers (#3664).
+  - Added missing override specifiers for virtual methods (#3667).
+  - Client+Server: Correct QoS setting for IPv6 (#3622).
+  - Tools: Updated checkkeys.pl to flag missing accelerator key in translation (#3635).
+  - Tools: Updated changelog-helper to report skipped PRs (#3639).
+  - Server/Client: Allow registration and display of longer version numbers (#3657).
+  - Extended SRV record support (#3556).
+  - Client RPC: Added a jamulusclient/setFaderLevel method to the RPC remote interface (#3571).
+  - Client RPC: Added jamulusclient/pollServerList methods and jamulusclient/receivedServerList notification to JSON-RPC interface (#3479).
+  - Server RPC: Added jamulusserver/setDirectory request (#3533).
+  - iOS/Android: Use compact view as default view on mobile OS for better usability (#3587).
+  - Added link to privacy policy (#3586).
+  - Tools: checkkeys.pl now automatically finds the translation directory (#3590).
+  - Tools: updated checkkeys.pl to use XML::LibXML (#3558).
+  - Tools: added improvements to changelog-helper.sh (#3459).
+  - Tools: Added missing Makefile.in files to Opus 1.5.2 distro (#3488).
+  - Translation: Added Japanese translation (#3568).
+  - Translation: Updated Slovak translation (#3650).
+  - Translations updated from Hosted Weblate (#3540, #3453, #3441, #3388, #3652, #3638, #3620, #3656, #3663).
+  - Client: Added MIDI tab to Settings GUI exposing MIDI parameters. MIDI Learn feature also added (#3502).
+  - Client: Added screen-reader accessibility to server list in the Connect dialog (#3606).
+  - Client: Bug: Fix missing variables passed to connect dialog (#3578).
+  - Client: Use the commit time rather than commit id for sort in --showallserver (#3562).
+  - Client: Fix sorting of version number in connect dialog with --showallservers (#3557).
+  - Client: Display version for each server in the Connect dialog (#3416).
+  - Client: Added "Sort by Channel" to mixer view (#3418).
+  - Client: allocate channel numbers locally and always give user own channel of 0 (#3426).
+  - Client: Apply rate-limiting to Pan change messages to eliminate lag in their effect (#3429).
+  - Client: Added native MIDI support to the ASIO (non-Jack) Windows build (#3431).
+  - Server: Disabled swap memory usage on Linux (#3381).
+  - Server: The -m/--htmlstatus option is considered deprecated and has been replaced by JSON RPC's jamulusserver/getClients method.
+    The -m option will be removed in future (#3398).
+  - Windows: Avoid screensaver or sleeping if connected to a server (#3498).
+  - Linux: Reorder service initialization to wait for network interface before starting the Server (#3440).
+  - iOS: Fixed GUI issue preventing the connect dialog to show correctly (#3343).
+  - iOS: Add notes for iOS compiling documentation (#3594).
+  - iOS: Add workaround from QTBUG-129651 for iOS FFMPEG linking (#3581).
+  - iOS: Upgrade build for Qt 6 compatibility (#3445).
+  - iOS: Return correct operating system version if run as server (#3360).
+  - iOS: Added icon to iOS app (#3410).
+  - iOS: Fix app hang if the language was changed (#3411).
+  - iOS: Fix crash on Qt6 after closing the chat window (#3413).
+  - Build: Updated bundled Qt6 to version 6.10.1 (iOS 6.7.3) (#3407, #3262, #3599).
+  - Build: Updated Windows Installer base (NSIS) to version 3.11 (#3483).
+  - Build: Bump maxim-lobanov/setup-xcode from 1.6.0 to 1.7.0 (#3645).
+  - uild: Bump actions/download-artifact from 7 to 8 (#3633).
+  - Build: Bump actions/upload-artifact from 6 to 7 (#3634).
+  - Build: Improvements and ASIO fix for Windows dependencies (#3612).
+  - Build: Windows: Move ASIO to GPL (#3553).
+  - Build: Updated Opus library to v1.5.2 (#3409).
+  - Build: Upgrade Android Runner to Ubuntu 22.04 (#3444).
+  - Build: Switch Linux ARM builds to be built on arm runners (#3470).
+  - Build: Provide continued legacy macOS support (but moving Sierra to High Sierra as minimum target) (#3579).
+  - Build: Updated the Github build runner for MacOS Legacy to macos-13 (#3436).
+  - Build: Bump ASIO-SDK from asiosdk_2.3.3_2019-06-14 to ASIO-SDK_2.3.4_2025-10-15 (#3617).
+  - Build: Bump Qt6 from 6.10.1 to 6.10.2 (#3616).
+  - Build: Updated create-dmg (macOS) to version 1.2.3 (#3561).
+  - Build: Bump actions/checkout from 4 to 6 (#3566).
+  - Build: Bump github/codeql-action from 3 to 4 (#3549).
+  - Build: Bump actions/cache from 4 to 5 (#3574).
+  - Build: Bump actions/upload-artifact from 4 to 6 (#3576).
+  - Build: Bump actions/download-artifact from 4 to 7 (#3575).
+  - Build: Bump DoozyX/clang-format-lint-action from 0.18.2 to 0.20 (#3490).
+  - Build: Bump DoozyX/clang-format-lint-action from 11b773b1598aa4ae3b32f023701bca5201c3817d to c71d0bf4e21876ebec3e5647491186f8797fde31 (#3368).
+- Drop Jamulus-version.patch because now in upstream.
+- Set jack from require to recommend to use Jamulus under wayland.
+- Insert description for pipewire in README.SUSE.
+- Fix boo#1222081: Use opus from jamulus and not from suse.
+
+-------------------------------------------------------------------
 Sat Feb 15 12:32:39 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add Jamulus-version.patch to fix wrong version in about jamulus.

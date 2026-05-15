@@ -1,7 +1,7 @@
 #
 # spec file for package Jamulus
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,10 +21,10 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 
-%define tarball_version 3_10_0
+%define tarball_version 3_12_0
 
 Name:           Jamulus
-Version:        3.11.0
+Version:        3.12.0
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later
@@ -38,7 +38,6 @@ Source13:       %{name}-togglerec.service
 Source20:       %{name}.sysconfig
 Source21:       %{name}.firewalld
 Source90:       README.SUSE
-Patch1:         %{name}-version.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
@@ -49,14 +48,14 @@ BuildRequires:  jack-devel >= 1.9.21
 BuildRequires:  pkgconfig
 BuildRequires:  pwdutils
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt6Concurrent) >= 6.6.3
+BuildRequires:  pkgconfig(Qt6Linguist)
 BuildRequires:  pkgconfig(Qt6Multimedia)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(Qt6Xml)
-BuildRequires:  pkgconfig(opus)
-Requires:       jack >= 1.9.21
+#BuildRequires:  pkgconfig(opus)
+Recommends:     jack >= 1.9.21
 Requires(pre):  shadow
 Requires(pre):  %fillup_prereq
 Requires(pre):  group(nogroup)
@@ -77,8 +76,9 @@ and sends the mix back to each client.
 install -m644 %{SOURCE90} .
 
 %build
-%qmake6 CONFIG+=opus_shared_lib CONFIG+=disable_version_check
-%make_jobs
+#%%qmake6 CONFIG+=opus_shared_lib CONFIG+=disable_version_check
+%qmake6 CONFIG+=disable_version_check
+%cmake_build
 
 %install
 install -D -m0755 Jamulus %{buildroot}%{_bindir}/%{name}
@@ -86,7 +86,7 @@ install -D -m0755 Jamulus %{buildroot}%{_bindir}/%{name}
 # icons
 for s in 16 22 32 48 64 72 96 128 192; do
    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps
-   #convert -strip -resize ${s}x${s} %{name}_icon.png \
+   #convert -strip -resize ${s}x${s} %%{name}_icon.png \
    convert -strip -resize ${s}x${s} src/res/io.jamulus.jamulus.png \
     %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/io.jamulus.jamulus.png
 done
@@ -124,7 +124,6 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcjamulus-togglerec
 sed -i -e 's|$$TARGET|Jamulus|g' linux/jamulus.desktop.in
 sed -i -e 's|Icon=jamulus|Icon=Jamulus|g' linux/jamulus.desktop.in
 install -D -m 0644 linux/jamulus.desktop.in %{buildroot}%{_datadir}/applications/%{name}.desktop
-%suse_update_desktop_file %{name}
 
 %fdupes %{buildroot}%{_datadir}
 
