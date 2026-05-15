@@ -18,14 +18,14 @@
 
 %define dirbase ardour9
 Name:           ardour
-Version:        9.2.0
+Version:        9.4.0
 Release:        0
 Summary:        Multichannel Digital Audio Workstation
 # Legal: Ardour is a mix of GPL-2.0-or-later, [L]GPL-3.0-or-later and a couple copyleft
 #  licensed files (BSD, WTFPL). Use GPL-3.0-only for the compiled package.
 License:        GPL-3.0-only
 URL:            https://ardour.org/
-Source0:        https://community.ardour.org/download/release/628#/Ardour-9.2.0.tar.bz2
+Source0:        https://community.ardour.org/download/release/640#/Ardour-%{version}.tar.bz2
 Source99:       ardour-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -67,6 +67,7 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcurl) >= 7.25.0
 BuildRequires:  pkgconfig(libexslt)
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblo) >= 0.26
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libssl)
