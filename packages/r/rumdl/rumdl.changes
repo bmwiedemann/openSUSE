@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 15 07:20:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.92:
+  * Added
+    - config: accept [rules.X] wrapper as alias for [X] (229ff7d)
+  * Fixed
+    - md060: accept single-space empty cells in compact style
+      (9518a81)
+
+-------------------------------------------------------------------
 Fri May 08 05:11:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.91:
