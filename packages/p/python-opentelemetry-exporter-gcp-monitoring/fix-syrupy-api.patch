@@ -1,0 +1,19 @@
+--- opentelemetry_exporter_gcp_monitoring-1.11.0a0.orig/tests/fixtures/snapshot_gcmcalls.py	2022-12-05 18:05:36.000000000 +0100
++++ opentelemetry_exporter_gcp_monitoring-1.11.0a0/tests/fixtures/snapshot_gcmcalls.py	2026-04-29 16:46:28.172269260 +0200
+@@ -40,6 +40,7 @@
+         self,
+         data: SerializableData,
+         *,
++        include: Optional[PropertyFilter] = None,
+         exclude: Optional[PropertyFilter] = None,
+         matcher: Optional[PropertyMatcher] = None,
+     ) -> SerializedData:
+@@ -59,7 +60,7 @@
+                 dict_requests.append(json_format.MessageToDict(call.message))
+             json[method] = dict_requests
+ 
+-        return super().serialize(json, exclude=exclude, matcher=matcher)
++        return super().serialize(json, include=include, exclude=exclude, matcher=matcher)
+ 
+ 
+ @pytest.fixture(name="snapshot_gcmcalls")
