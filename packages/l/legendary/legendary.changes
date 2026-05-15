@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 14 22:27:58 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix (boo#1263937) add missing runtime dependency: python3-pycryptodomex
+  * Fix ModuleNotFoundError: No module named 'Cryptodome'
+  * Fixes launch failure of legendary CLI and Heroic integration
+
+-------------------------------------------------------------------
 Thu Apr 23 19:36:22 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to 0.20.43 Riding Shotgun (Hotfix)

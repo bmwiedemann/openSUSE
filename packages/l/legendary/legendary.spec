@@ -33,6 +33,7 @@ Requires:       python3
 Requires:       python3-requests < 3.0
 Requires:       python3-filelock
 Requires:       python3-requests-futures
+Requires:       python3-pycryptodomex
 BuildArch:      noarch
 
 %description
