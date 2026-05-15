@@ -22,9 +22,11 @@ Release:        0
 Summary:        Use any linux distribution inside your terminal
 License:        GPL-3.0-only
 URL:            https://github.com/89luca89/distrobox
-Source:         https://github.com/89luca89/distrobox/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        distrobox.conf
 Patch1:         0001-add-newline-when-appending-tty-group-via-printf-bsc-.patch
+# PATCH-FIX-UPSTREAM 892f93baaa066ea36b31b2f721332ca49c9e5ad7.patch -- fix: flags for read-only and recursive slave mount
+Patch2:         %{url}/commit/892f93baaa066ea36b31b2f721332ca49c9e5ad7.patch
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find
 Requires:       %{_bindir}/grep

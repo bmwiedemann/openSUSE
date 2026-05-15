@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 10 06:18:16 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 892f93baaa066ea36b31b2f721332ca49c9e5ad7.patch: fix: flags
+  for read-only and recursive slave mount.
+
+-------------------------------------------------------------------
 Mon May  4 12:27:21 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Split openSUSE-provided configuration to its own branding
