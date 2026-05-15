@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  6 02:00:39 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-packaging-26.1.patch:
+  * Fix docstring test to support packaging 26.1 changes.
+
+-------------------------------------------------------------------
 Tue Apr  1 15:36:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools

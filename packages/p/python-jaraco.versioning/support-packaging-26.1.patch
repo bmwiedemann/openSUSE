@@ -1,0 +1,13 @@
+Index: jaraco.versioning-1.1.0/jaraco/versioning.py
+===================================================================
+--- jaraco.versioning-1.1.0.orig/jaraco/versioning.py
++++ jaraco.versioning-1.1.0/jaraco/versioning.py
+@@ -52,7 +52,7 @@ class SummableVersion(packaging.version.
+     A special version that can be added to another Version.
+ 
+     >>> SummableVersion('1.1') + packaging.version.Version('2.3')
+-    <Version('3.4')>
++    <SummableVersion('3.4')>
+     """
+ 
+     def __add__(self, other):

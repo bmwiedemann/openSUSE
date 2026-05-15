@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.versioning
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        More sophisticated version manipulation (than packaging)
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.versioning
 Source:         https://files.pythonhosted.org/packages/source/j/jaraco.versioning/jaraco.versioning-1.1.0.tar.gz
+# PATCH-FIX-OPENSUSE https://github.com/jaraco/jaraco.versioning/issues/4
+Patch0:         support-packaging-26.1.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}

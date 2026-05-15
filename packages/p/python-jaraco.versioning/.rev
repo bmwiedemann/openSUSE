@@ -25,4 +25,16 @@
 - Normalize metadata directory name.</comment>
     <requestid>1266242</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fc5d885ddcf2706187b7bd2c08aef2ab</srcmd5>
+    <version>1.1.0</version>
+    <time>1778881974</time>
+    <user>dimstar_suse</user>
+    <comment>this needs to go to the same staging as python-packaging (Staging:C at the time of writing)
+
+- Add patch support-packaging-26.1.patch:
+  * Fix docstring test to support packaging 26.1 changes.
+</comment>
+    <requestid>1353432</requestid>
+  </revision>
 </revisionlist>
