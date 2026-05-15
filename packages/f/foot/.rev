@@ -954,4 +954,21 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.26.1 for more details.</comment>
     <requestid>1338983</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5ddf8aa954ddaaca58ab553bf69f4326</srcmd5>
+    <version>1.27.0</version>
+    <time>1778882082</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.27.0:
+  * foot.ini options:
+    * Added url.style option to choose how URL underlines are drawn.
+      Defaults to &quot;dotted&quot;.
+  * Cursor now remains visible if its colors and the default colors of
+    the current cell are all identical.
+  * Fixed applications receiving garbage in paste responses if the user
+    typed while the response was being received.
+  * Fixed a crash and various other issues.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.27.0 for more details.</comment>
+    <requestid>1353306</requestid>
+  </revision>
 </revisionlist>
