@@ -17,7 +17,7 @@
 
 
 Name:           gap-cvec
-Version:        2.8.4
+Version:        2.8.5
 Release:        0
 Summary:        GAP: Compact vectors over finite fields
 License:        GPL-2.0-or-later

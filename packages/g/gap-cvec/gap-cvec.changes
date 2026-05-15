@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 15 15:34:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.5
+  * Add `CompatibleVectorFilter` method for `IsCMatRep`
+
+-------------------------------------------------------------------
 Fri Jun 20 11:51:34 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.4
