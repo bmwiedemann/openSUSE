@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 15 11:15:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.63.0:
+  * fix(sfs): add missing custom endpoint output (#1407)
+  * feat(sfs): extend snapshot create with
+    --snaplock-retention-hours (#1402)
+  * feat(sfs): extend resource-pool commands with snapshotPolicyId
+    (#1404)
+  * Feat/stackitcli 398 snaplock expiry time (#1405)
+  * feat(docs): link commit message guide (#1406)
+  * feat(sfs): onboard snapshot policy commands (#1399)
+  * feat(sfs): Onboard snaptshot update command (#1403)
+  * feat(sfs): show usedBySnapshotsGB in resource-pool
+    list/describe (#1400)
+
+-------------------------------------------------------------------
 Mon May 11 09:07:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.62.0:
