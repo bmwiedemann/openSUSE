@@ -1,7 +1,7 @@
 #
 # spec file for package gap-browse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-browse
-Version:        1.8.21
+Version:        1.8.22
 Release:        0
 Summary:        GAP: ncurses interface and browsing applications
 License:        GPL-3.0-or-later

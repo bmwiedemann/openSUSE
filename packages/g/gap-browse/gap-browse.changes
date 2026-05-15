@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 15 08:24:57 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.22
+  * Fixed C prototypes for functions with no argument.
+  * Fixed an incompatibility with ncurses 6.5.
+
+-------------------------------------------------------------------
 Thu Jun  5 18:52:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove BIBL
