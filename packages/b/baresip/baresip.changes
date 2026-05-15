@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 14 10:28:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.8.0
+  * contact: null pointer check.
+  * misc: auresamp lost after dynamic codec switch.
+  * menu: delayed answer fixes.
+  * contact: avoid duplicate contacts.
+  * contact: intelligent matching for incoming calls.
+  * call: support rejecting re-INVITE.
+  * jbuf/gnack: improve RTCP_GNACK handling (fixes UB).
+  * srtp: use rtp_is_rtcp_packet() from libre.
+  * g726: remove deprecated module.
+  * menu: multiple call auto answer.
+  * test: expand mediaenc to include dtls_srtp and mux.
+  * misc/modules: fix redefinition once_flag errors.
+  * ua: ua_regladdr LIST_FOREACH cleanup.
+  * test: update doxygen header for dial_number.c .
+  * call: Use CRLF in REFER NOTIFY sipfrag body.
+
+-------------------------------------------------------------------
 Wed Apr 29 04:27:03 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Raise minimum version of libre.
