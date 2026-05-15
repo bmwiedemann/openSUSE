@@ -17,7 +17,7 @@
 
 
 Name:           hcloud-upload-image
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Quickly upload any raw disk images into your Hetzner Cloud projects
 License:        MIT
@@ -27,7 +27,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Quickly upload any raw disk images into your Hetzner Cloud projects!
