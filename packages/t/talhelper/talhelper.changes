@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri May 15 07:31:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.10:
+  * docs: update CLI reference documentation (#1595)
+  * chore(deps): update dependency siderolabs/talos to v1.13.2
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.36.1
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.13.2
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.14
+  * chore(schema): update talos-extensions.yaml JSON schema (#1593)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1588)
+  * feat(flake): update flake
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v1.3.0
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module github.com/getsops/sops/v3 to v3.13.0
+  * chore(container): update ghcr.io/getsops/sops docker tag to
+    v3.13.0
+  * fix(deps): update module golang.org/x/mod to v0.36.0
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.12.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#1580)
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.13
+  * fix(genconfig): bridge vlan filtering should be generated when
+    defined
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.12.1
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.12.0
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * feat: update supported version
+  * chore(schema): update talos-extensions.yaml JSON schema (#1573)
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.14.0-alpha.0
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.12
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v1.2.0
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.1.9
+  * feat: update flake
+  * feat: update Scoop for talhelper version v3.1.9
+
+-------------------------------------------------------------------
 Thu Apr 30 06:00:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.1.9:
