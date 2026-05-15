@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Thu May  7 17:20:14 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix build with PipeWire >= 1.4.x: spa_pod_builder struct became opaque,
+  replace direct field access with spa_pod_builder_init() API call
+  in vendored libspa-0.8.0 (vendor/libspa-0.8.0/src/pod/builder.rs)
+  * fix-libspa-pipewire-1.4-opaque-builder.patch
+
+-------------------------------------------------------------------
+Thu May 07 15:42:19 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 1.18.0:
+  * Bump version to 1.18.0
+  * init: don't fail if a fs is already mounted
+  * init: explictly issue sync+reboot
+  * AUTHORS: add new contributors
+  * Rename krun_display and krun_input directories
+  * Add a "description" field to every internal crate
+  * Add a repo reference to every crate
+  * Add a "license" field to every internal crate
+  * Consolidate crate "authors" field
+  * Set up versioning for local crates
+  * Rename packages for crates.io compatibility
+  * CI: enable virtio-net tests
+  * CI: exclude rootfs from artifact uploads
+  * CI: install buildah, passt from source, dnsmasq, iperf3
+  * tests: Introduce iperf3 network performance tests
+  * tests: Introduce virtio-net tests
+  * tests: show failure reason in GitHub summary
+  * tests: Save test stdout to file for debugging, read it back for asertion
+  * tests: Add per-test timeout to prevent hanging the suite
+  * tests: Add cleanup PID tracking for background processes
+  * tests: Introduce Report test outcome
+  * tests: Make check() return TestOutcome
+  * tests: Support running tests on virtiofs generated via podman
+  * tests: Use buildah unshare for proper subuid/subgid namespace mapping
+  * tests: Move per-test unshare into the runner
+  * tests: Make TcpTester server ip adress configurable
+  * init: fix FreeBSD build by conditionally disabling dhcp client
+  * rutabaga_gralloc: disable unit tests on macOS
+  * event_manager: test fixes suggested by Claude
+  * Makefile: fix order of CC_BSD arguments
+  * vmm: avoid calling `memory_init` twice in `test_vm_memory_init`
+  * i8042: compile for x86_64 only
+  * vmm: fixed linking of crate against Hypervisor when running separately
+  * vmm: fix unit tests on macOS
+  * Makefile fixes for FreeBSD
+  * CI: Add init cross-compilation workflow
+  * Makefile: Add Linux -> FreeBSD init cross-compilation support
+  * init/aws-nitro: support partial read/write ethernet packet forwarding
+  * Queue Rng device events only when active
+  * virtio/gpu: mmap dma-buf blob fds into the guest shm region
+  * virtio/fs/macos: fix fallocate semantics
+  * tests: add virtiofs-root-ro test
+  * tests: extract setup_rootfs() from setup_fs_and_enter()
+  * tests: skip guest unit tests on non-Linux hosts
+  * init: Implement fallback for DHCP servers without Rapid Commit
+  * init: use SO_BINDTODEVICE instead of temp address for DHCP
+  * init: embed a simple DHCP client
+  * devices/snd: Remove unnecessary .into_iter() call (clippy warning)
+  * cpuid: Fix import ordering to make latest rustfmt happy
+  * Add KRUN_FS_ROOT_TAG define and document krun_set_root alternative
+  * virtio/console: Fixed libkrun panic caused by console resizing during VM startup
+  * init.c: port to FreeBSD, try to load json config from /dev/iso9660/KRUN_CONFIG
+  * fix cargo feature propagation
+  * libkrun: support krun_check_nested_virt on linux
+  * vmm: support nested virt on Linux
+  * cpuid: implement nested virt support
+  * devices/mmio: Read QueueSizeMax from queue_config instead of actual queues
+  * virtiofs: preserve read-only control ioctls
+  * virtiofs: fix read-only DAX on macOS
+  * virtiofs: add read-only mount support via krun_add_virtiofs3
+  * vmm: Fix bzip2 magic header detection
+  * libkrun: Produce a proper Rust library
+  * Use vm-memory 0.17
+  * init: another macOS build fix
+  * Fix cross-compilation of build.rs for aarch64 target
+  * Fix fence completion race in virtio-gpu worker
+  * init: Remove MAX_ARGS limit
+  * init: Fix out of argv array bounds accesses
+  * init: Handle failed memory allocations in argv processing
+  * vmm: wire riscv64 legacy serial interrupts through IrqChip
+  * init: Fix out of bounds access when reading config file
+  * virtio/net/unixgram: Unify read/write logs
+  * virtio/net/unixgram: Track ENOBUFS retry count
+  * virtio/net/unixgram: Retry ENOBUFS after delay
+  * virtio/net/worker: add timer-based TX retry
+  * utils/macos/epoll: add one-shot timer support
+  * virtio/net/worker: Stop tx loop on NothingWritten
+  * Fix hang on SIGINT when I/O pipes are broken
+  * Don't install libcap-ng-dev in CI
+  * Makefile: use absolute sysroot path in CC_LINUX
+  * devices: Make sure to drain virtio TX port on stop
+  * devices: build init binary in Cargo OUT_DIR
+  * cpuid: allow unused unsafes
+  * Revert "cpuid: remove unsafe from cpuid methods"
+  * devices: build init binary as part of build script
+  * devices: simplify Makefile
+  * devices: work with proper paths in build script
+  * tests: Explicitly specify a /tmp directory
+  * tests: Fix TcpTester::run_server closing TCP stream too early
+  * tests: Add support for skipping tests
+  * tests/README.md: document running tests on macOS
+  * Makefile, test/run.sh: add macOS support to test target
+  * tests/run.sh: Add macOS cross-compilation support for guest-agent
+  * utils/macos/epoll: Fix EV_EOF hangup type mapping
+  * virtio/net/unixgram: Fix SO_SNDBUF size on macOS
+  * virtio/net: replace vnet_hdr_len() with a constant
+  * devices: Replace cap-ng dependency with caps
+  * init: exit clock_worker child process on failure
+  * init: Don't use newlines in perror messages
+  * rutabaga: do not rely on seals to detect read-only shm fds
+  * rutabaga: fix access mask WRITE being converted to READ
+  * vmm/builder: correctly handle invalid fd for serial console
+  * devices/fs, vmm: allow overriding embedded binary paths via env variables
+  * cpuid: remove unsafe from cpuid methods
+  * utils/macos/epoll: Derive event_name from kevent
+  * utils/macos/epoll: Improve kevent debug log
+  * utils/macos/epoll: cast kevent count to usize before the loop
+  * utils/macos/epoll: Return early on errors
+  * libkrun: use microsecond timestamps in debug logs
+  * vmm: prevent CR translation to LF in interactive term
+  * init/aws-nitro: Separate linux module loading
+  * awsnitro: Start debug output earlier in boot
+  * init/awsnitro: Update error message
+  * Makefile: Add -s flag to awsnitro init binary
+  * misc: configure gemini for manual reviews
+  * virtio/fs/macos: preload directory entries to avoid calling telldir()
+  * libkrun, fs: Restrict the usage of REMOVE_ROOT_DIR_REQ ioctl
+  * virtio/fs/macos: fix buffer size on setxattr
+  * virtio/fs/macos: improve [set|get]_attr_stat
+  * virtio/fs/macos: optimize set_xattr_stat
+  * virtio/fs/macos: optimize lstat and fstat
+  * virtio/fs/macos: merge InodeHandle and StatFile
+  * virtio/fs: implement KILLPRIV_V2 support
+  * ci: install libcap-ng-dev on Linux runners
+  * virtio/fs: don't announce HANDLE_KILLPRIV
+  * ci: remove publish prebuilt job
+  * virtio/fs/macos: duplicate fd for fdopendir
+  * virtio/fs/macos: check error before unlinked_fd
+  * CODEOWNERS: add dorindabassey
+  * vsock/tsi: fix listen backlog > SOMAXCONN fails with EINVAL
+  * libkrun: converts BSD sockaddr to Linux wire format
+  * vsock/tsi: lower EventSet::OUT error to debug
+  * vsock/tsi: use EDGE_TRIGGERED on EventSet::OUT
+  * devices/mmio: Automatically enable device_idx feature for queues
+  * device/gpu: Refactor queue event handling
+  * devices: Refactor to make virtio queues managed by the transport layer (mmio)
+
+-------------------------------------------------------------------
 Wed Mar 11 11:22:20 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - spec file refactoring (use more/better some RPM macros)
