@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 15 05:55:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.22
+  * Fix CVE-2026-46433, out-of-bound read access when removing
+    VLAN tag (#787).
+  * Reject 0-length management address in LLDP.
+  * Fix race condition when creating the control socket.
+  * Fix FDP MAC address.
+  * Fix memory leak in the BSD bridge query path.
+  * Fix duplicate management addresses when merging EDP VLAN
+    frames.
+
+-------------------------------------------------------------------
 Sat Mar 14 22:19:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.21
