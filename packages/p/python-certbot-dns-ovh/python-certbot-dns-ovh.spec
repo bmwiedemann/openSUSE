@@ -17,21 +17,23 @@
 
 
 Name:           python-certbot-dns-ovh
-Version:        5.4.0
+Version:        5.6.0
 Release:        0
 Summary:        OVH DNS Authenticator plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
 Source:         https://github.com/certbot/certbot/releases/download/v%{version}/certbot_dns_ovh-%{version}.tar.gz
+BuildRequires:  %{python_module acme >= %{version}}
 BuildRequires:  %{python_module certbot >= %{version}}
-BuildRequires:  %{python_module dns-lexicon >= 3.15.1}
+BuildRequires:  %{python_module dns-lexicon >= 3.25.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-acme >= %{version}
 Requires:       python-certbot >= %{version}
-Requires:       python-dns-lexicon >= 3.15.1
+Requires:       python-dns-lexicon >= 3.25.1
 BuildArch:      noarch
 %python_subpackages
 
