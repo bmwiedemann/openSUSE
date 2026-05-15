@@ -21,7 +21,7 @@
 %endif
 
 Name:           vulkan-validationlayers
-Version:        1.4.341
+Version:        1.4.350
 Release:        0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
@@ -36,8 +36,8 @@ BuildRequires:  glslang-devel >= 16.1
 BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  spirv-headers >= 1.6.4+sdk335+take2
-BuildRequires:  spirv-tools-devel >= 2026.1
+BuildRequires:  spirv-headers >= 1.6.4+sdk350
+BuildRequires:  spirv-tools-devel >= 2026.2~rc2
 BuildRequires:  vulkan-headers >= %version
 BuildRequires:  vulkan-utility-libraries-devel >= %version
 BuildRequires:  pkgconfig(libxxhash)
@@ -74,7 +74,8 @@ export CXX="$PWD/gxx"
 	-DBUILD_LAYER_SUPPORT_FILES=ON \
 	-DUSE_ROBIN_HOOD_HASHING=OFF \
 	-DVulkanRegistry_DIR="%_datadir/vulkan/registry" \
-	-DSPIRV_HEADERS_INSTALL_DIR="%_prefix"
+	-DSPIRV_HEADERS_INSTALL_DIR="%_prefix" \
+	-DUPDATE_DEPS:BOOL=OFF
 %cmake_build
 
 %install

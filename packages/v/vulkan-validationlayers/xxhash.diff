@@ -11,19 +11,19 @@ xxhash as well, so that the ABI matches.
  layers/utils/hash_util.cpp |    7 +------
  2 files changed, 2 insertions(+), 7 deletions(-)
 
-Index: Vulkan-ValidationLayers-vulkan-sdk-1.4.335.0/layers/CMakeLists.txt
+Index: Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0/layers/CMakeLists.txt
 ===================================================================
---- Vulkan-ValidationLayers-vulkan-sdk-1.4.335.0.orig/layers/CMakeLists.txt
-+++ Vulkan-ValidationLayers-vulkan-sdk-1.4.335.0/layers/CMakeLists.txt
-@@ -38,7 +38,6 @@ target_sources(VkLayer_utils PRIVATE
-     error_message/error_strings.h
+--- Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0.orig/layers/CMakeLists.txt
++++ Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0/layers/CMakeLists.txt
+@@ -40,7 +40,6 @@ target_sources(VkLayer_utils PRIVATE
+     error_message/error_strings.cpp
      error_message/record_object.h
      error_message/log_message_type.h
 -    external/xxhash.h
      external/inplace_function.h
      ${API_TYPE}/generated/error_location_helper.cpp
      ${API_TYPE}/generated/error_location_helper.h
-@@ -98,6 +97,7 @@ target_link_libraries(VkLayer_utils PUBL
+@@ -101,6 +100,7 @@ target_link_libraries(VkLayer_utils PUBL
      Vulkan::SafeStruct
      Vulkan::UtilityHeaders
      ${CMAKE_DL_LIBS}
@@ -31,10 +31,10 @@ Index: Vulkan-ValidationLayers-vulkan-sdk-1.4.335.0/layers/CMakeLists.txt
  )
  target_include_directories(VkLayer_utils SYSTEM PRIVATE external)
  target_include_directories(VkLayer_utils PUBLIC . ${API_TYPE})
-Index: Vulkan-ValidationLayers-vulkan-sdk-1.4.335.0/layers/utils/hash_util.cpp
+Index: Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0/layers/utils/hash_util.cpp
 ===================================================================
---- Vulkan-ValidationLayers-vulkan-sdk-1.4.335.0.orig/layers/utils/hash_util.cpp
-+++ Vulkan-ValidationLayers-vulkan-sdk-1.4.335.0/layers/utils/hash_util.cpp
+--- Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0.orig/layers/utils/hash_util.cpp
++++ Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0/layers/utils/hash_util.cpp
 @@ -23,12 +23,7 @@
  #define XXH_IMPLEMENTATION
  

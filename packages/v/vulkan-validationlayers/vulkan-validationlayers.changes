@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 13 03:58:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.350.0
+  * gpuav: Add AABB validation
+  * gpuav: Add triangles transform validation
+  * Validate heap is bound (#11693)
+  * layers: Add VK_KHR_present_mode_fifo_latest_ready
+  * tests: Add more syncval dynamic rendering tests
+  * gpuav: RT index buffer consistency validation
+  * sync: Add initial multiview support
+  * layers: Validate heap image descriptor layout
+  * gpuav: Add active/inactive AS vertex validation
+  * layers: Add missing basic Mesh checks
+  * tests: Add CreateAccelerationStructure2KHR support
+  * layers: Add TrackDeviceAddressRange for DGC
+  * tests: Add shared present layout tests
+  * layers: Add event host stage validation
+
+-------------------------------------------------------------------
 Mon Feb  2 19:47:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.4.341.0
