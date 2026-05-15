@@ -379,4 +379,16 @@
 - Override upstream version with 12.24.0~b1 (forwarded request 1350973 from glaubitz)</comment>
     <requestid>1350976</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>79bb55033b9e0c297a5b816611c27d11</srcmd5>
+    <version>12.24.0</version>
+    <time>1778882170</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.24.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 1353347 from glaubitz)</comment>
+    <requestid>1353389</requestid>
+  </revision>
 </revisionlist>

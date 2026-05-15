@@ -16,17 +16,15 @@
 #
 
 
-%define realversion 12.24.0b1
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-storage-file-datalake
-Version:        12.24.0~b1
+Version:        12.24.0
 Release:        0
 Summary:        Azure DataLake service client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_storage_file_datalake/azure_storage_file_datalake-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_storage_file_datalake/azure_storage_file_datalake-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-storage-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -60,7 +58,7 @@ This includes:
    (HNS) accounts.
 
 %prep
-%setup -q -n azure_storage_file_datalake-%{realversion}
+%setup -q -n azure_storage_file_datalake-%{version}
 
 %build
 %pyproject_wheel
