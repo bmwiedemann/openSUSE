@@ -37,7 +37,7 @@
 %endif
 
 Name:           openCryptoki
-Version:        3.26.0
+Version:        3.27.0
 Release:        0
 Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
 License:        CPL-1.0
@@ -49,14 +49,11 @@ Source2:        openCryptoki-TFAQ.html
 Source3:        openCryptoki-rpmlintrc
 # Patch 0 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
-Patch000:       ocki-3.26-remove-make-install-chgrp.patch
-#
-Patch010:       openCryptoki-CVE-2026-22791-commit-e37e912.patch
-Patch011:       openCryptoki-CVE-2026-23893-commit-5e6e4b4.patch
-Patch012:       openCryptoki-CVE-2026-40253-commit-ed378f4.patch
+Patch000:       ocki-3.27-remove-make-install-chgrp.patch
 #
 BuildRequires:  bison
 BuildRequires:  dos2unix
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
@@ -152,7 +149,7 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 %endif
 
 %prep
-# setup -q -n %{oc_cvs_tag}-%{version}
+# setup -q -n %%{oc_cvs_tag}-%%{version}
 %autosetup -p 1 -n %{oc_cvs_tag}-%{version}
 
 cp %{SOURCE2} .
@@ -238,7 +235,7 @@ d /var/log/opencryptoki 0770 root pkcs11 - -
 L+ /etc/pkcs11 - - - - /var/lib/opencryptoki
 EOF
 
-# Remove manual directory creation in %install that belongs in /var
+# Remove manual directory creation in %%install that belongs in /var
 rm -rf %{buildroot}%{_localstatedir}/lib/opencryptoki
 rm -rf %{buildroot}%{_localstatedir}/log/opencryptoki
 #
@@ -278,6 +275,11 @@ cd %{buildroot}%{_libdir}/opencryptoki/stdll
 [ -f libpkcs11_ep11.so ] && ln -snf libpkcs11_ep11.so PKCS11_EP11.so || true
 cd -
 %endif
+
+%fdupes %{buildroot}
+
+%check
+# No checks, for now...
 
 %pre -f opencryptoki.pre
 %{service_add_pre pkcsslotd.service}

@@ -1,5 +1,6 @@
---- a/Makefile.am	2025-11-11 08:58:19.000000000 +0100
-+++ b/Makefile.am	2025-11-12 10:21:00.563936369 +0100
+diff -Naur a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2026-05-13 13:19:05.000000000 +0200
++++ b/Makefile.am	2026-05-15 09:38:26.931516571 +0200
 @@ -51,19 +51,9 @@
  include doc/doc.mk
  

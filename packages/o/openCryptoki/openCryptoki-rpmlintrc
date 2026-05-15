@@ -1,1 +1,4 @@
 addFilter("openCryptoki.* tmpfile-not-in-filelist /var/lock/opencryptoki")
+addFilter("tmpfile-not-in-filelist /run/opencryptoki.*")
+addFilter("tmpfile-not-in-filelist /var/lib/opencryptoki.*")
+addFilter("tmpfile-not-in-filelist /var/log/opencryptoki.*")
