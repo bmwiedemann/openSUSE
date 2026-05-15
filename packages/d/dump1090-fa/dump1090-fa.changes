@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 15 09:35:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 11.0
+  * dump1090: update DSP code to use latest starch version.
+  * dump1090: fix compilation errors with newer gcc & clang.
+  * dump1090: add --device-setting option for SoapySDR devices.
+  * skyaware: Update aircraft database to 2026-04-09.
+- Drop patch:
+  * dump1090-fix-gcc15.patch (not longer needed)
+
+-------------------------------------------------------------------
 Tue Nov 18 15:12:23 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.2
