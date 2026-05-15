@@ -2,7 +2,7 @@
 # spec file for package mousai
 #
 # Copyright (c) 2025 mantarimay
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define _lto_cflags %{nil}
 Name:           mousai
-Version:        0.7.9
+Version:        0.7.10
 Release:        0
 Summary:        Identify songs in seconds
 License:        GPL-3.0-or-later
@@ -27,17 +27,17 @@ URL:            https://github.com/SeaDve/Mousai
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
+BuildRequires:  desktop-file-utils
 BuildRequires:  libxml2-tools
 BuildRequires:  meson
-BuildRequires:  desktop-file-utils
-BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(libsoup-3.0)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
+BuildRequires:  pkgconfig(libsoup-3.0)
 
 %description
 Discover songs you are aching to know with an easy-to-use interface.
@@ -62,7 +62,7 @@ return the title and artist of that song!
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 appstream-util validate-relax --nonet \
-      %{buildroot}%{_datadir}/metainfo/*.metainfo.xml 
+      %{buildroot}%{_datadir}/metainfo/*.metainfo.xml
 
 %files
 %license COPYING
