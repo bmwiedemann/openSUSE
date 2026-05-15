@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// SPDX-FileCopyrightText: (c) 2026 SUSE LLC
+
 #include <sys/syscall.h>
 #ifdef __aarch64__
 #include <signal.h>
