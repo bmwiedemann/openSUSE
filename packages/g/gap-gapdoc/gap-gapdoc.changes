@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 15 10:01:00 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.9
+  * Added a "dark" mode for the HTML manuals (experimental).
+  * Support "doi" fields in BibTeX files. If given they are used in
+    the text and HTML version of manuals. For the pdf-version add,
+    e.g., 'Style="alphaurl"' to the <Bibliography>-element (this
+    may need some extra installation in your LaTeX setup).
+  * Improved spacing in title page (in particular in case of many
+    authors or long URLs).
+
+-------------------------------------------------------------------
 Sat Mar 23 21:40:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.7

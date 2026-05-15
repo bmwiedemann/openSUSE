@@ -1,7 +1,7 @@
 #
 # spec file for package gap-gapdoc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-gapdoc
-Version:        1.6.7
+Version:        1.6.9
 Release:        0
 Summary:        GAP: package for GAP Documentation
 License:        GPL-2.0-or-later
@@ -38,7 +38,7 @@ producing text, PDF or HTML versions of such documents, with
 hyperlinks, if possible.
 
 %prep
-%setup -qn GAPDoc-%version
+%autosetup -n GAPDoc-%version -p1
 
 %build
 
