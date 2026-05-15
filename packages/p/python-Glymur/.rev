@@ -193,4 +193,12 @@
   flavor on TW needs it, the python38 flavor is okay with it being</comment>
     <requestid>1339136</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2b81d891eda503a7e37910f143bafda2</srcmd5>
+    <version>0.14.8</version>
+    <time>1778882189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1353412</requestid>
+  </revision>
 </revisionlist>

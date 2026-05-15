@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 15 09:13:26 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- update to 0.14.8:
+  * Fix KeyError on JPH image
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file 
+  (bsc#1263906)
+
+-------------------------------------------------------------------
 Sun Mar 15 18:51:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.7:
