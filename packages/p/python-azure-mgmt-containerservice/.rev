@@ -689,4 +689,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1349788 from glaubitz)</comment>
     <requestid>1349894</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>98f641d78fffe208b698de5502161cfa</srcmd5>
+    <version>41.2.0</version>
+    <time>1778882179</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 41.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1353341 from glaubitz)</comment>
+    <requestid>1353397</requestid>
+  </revision>
 </revisionlist>
