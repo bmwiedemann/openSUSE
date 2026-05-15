@@ -23,4 +23,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1302734</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>793f4f722ad09d0bcab041938d33aab4</srcmd5>
+    <version>1.16.0</version>
+    <time>1778882015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.16.0:
+  - Require Python 3.10+
+  - Add support for parsing and writing UDF Extended File Entries
+  - Add an optional encoding parameter to full_path_from_dirrecord so
+    Shift-JIS and other non-UTF-8 ISOs can be walked
+  - Fix modify_file_in_place corruption when the on-disk directory
+    order differs from the in-memory sorted order
+  - Fix on-disk extent ordering for files larger than 8.6 GB
+  - Fix UDF reads of large files returning truncated data on
+    UDF-bridge ISOs
+  - Fix Rock Ridge version detection when 1.12 evidence lives only in
+    the CE continuation block (bsc#1209983)
+  - Fix the second UDF anchor being written to an unreachable extent
+    when a re-write shrinks the layout
+  - Fix parsing of ISOs whose directory data_length is
+    sub-extent-aligned (Windows install media, PS2 GT4)
+  - Fix parsing of FreeBSD 14.3 ISOs by tightening XA-record detection
+  - Fix a stale-position bug in PyCdlibIO when the underlying file
+    descriptor is shared with other operations
+  - Accept several non-compliant artifacts produced by VirtualBox (SP
+    records outside the root, shared CE regions, NM records combining
+    a name with the CURRENT / PARENT / HOST flag)
+  - Reject overly long UDF filenames at entry-creation time with a
+    clear error message instead of failing later in struct.pack
+  - Improve the error message when Rock Ridge versions are
+    inconsistent across an ISO
+  - Treat an ISO with no Rock Ridge ER record as non-Rock-Ridge so
+    callers using rr_path get a clear error at the API boundary
+  - Several performance improvements in directory-record sorting,
+    struct unpacking, dot-dot lookup, and UDF CRC computation</comment>
+    <requestid>1353268</requestid>
+  </revision>
 </revisionlist>

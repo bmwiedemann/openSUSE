@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycdlib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,10 @@
 %endif
 
 Name:           python-pycdlib
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        Pure python ISO manipulation library
-License:        LGPL-2.0-only
+License:        LGPL-2.1-only
 Group:          Development/Languages/Python
 URL:            https://github.com/clalancette/pycdlib
 Source:         %{URL}/archive/v%{version}.tar.gz#/pycdlib-%{version}.tar.gz
@@ -89,8 +89,6 @@ This package includes the common files.
 %python_group_libalternatives pycdlib-explorer pycdlib-extract-files pycdlib-genisoimage
 
 %check
-export LC_ALL=ja_JP.UTF-8
-export TZ=Asia/Tokyo
 %pytest -k unit
 
 %pre
