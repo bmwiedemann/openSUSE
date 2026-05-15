@@ -67,7 +67,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{pprefix}-packaging%{?psuffix}
-Version:        26.0
+Version:        26.2
 Release:        0
 Summary:        Core utilities for Python packages
 License:        Apache-2.0 AND BSD-2-Clause
@@ -82,6 +82,7 @@ BuildRequires:  python-rpm-macros
 #!BuildIgnore:  post-build-checks-malwarescan
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module packaging = %{version}}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest >= 6.2}

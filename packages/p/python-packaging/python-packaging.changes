@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed May  6 05:56:11 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing test BuildRequires on hypothesis.
+
+-------------------------------------------------------------------
+Sun May  3 19:18:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.2:
+  * Fix incorrect sysconfig var name for pyemscripten in
+  * Make Version, Specifier, SpecifierSet, Tag, Marker, and
+    Requirement pickle-safe and backward-compatible with pickles
+    created in 25.0-26.1 (including references to the removed
+    packaging._structures module) (:pull:`1163`, :pull:`1168`,
+    :pull:`1170`, :pull:`1171`)
+  * Re-export ExceptionGroup in metatadata for now in
+    (:pull:`1164`)
+  * Add errors section and fix missing details in (:pull:`1159`)
+  * Document our property-based test suite in (:pull:`1167`)
+  * Fix a DirectUrl typo in (:pull:`1167`)
+  * Add example of is_unsatisfiable in (:pull:`1166`)
+  * Enable the auditor persona on zizmor in (:pull:`1158`)
+  * Test new pickle gaurentees in (:pull:`1174`)
+  * Use new native ReadTheDocs uv integration in (:pull:`1175`)
+  * PEP 783: add handling for Emscripten wheel tags in
+    (:pull:`804`) (old name used in implementation, fixed in next
+    release)
+  * PEP 803: add handling for the abi3.abi3t free-threading tag
+  * PEP 723: add packaging.dependency_groups module, based on the
+    dependency-groups package in (:pull:`1065`)
+  * Add the packaging.direct_url module in (:pull:`944`)
+  * Add the packaging.errors module in (:pull:`1071`)
+  * Add SpecifierSet.is_unsatisfiable using ranges (new internals
+    that will be expanded in future versions) in (:pull:`1119`)
+  * Add create_compatible_tags_selector to select compatible tags
+    in (:pull:`1110`)
+  * Add a key argument to SpecifierSet.filter() in (:pull:`1068`)
+  * Support & and | for Marker's in (:pull:`1146`)
+  * Normalize Version.__replace__ and add Version.from_parts in
+  * Add an option to validate compressed tag set sort order in
+    parse_wheel_filename in (:pull:`1150`)
+  * Narrow exclusion of pre-releases for <V.postN to match spec
+  * Narrow exclusion of post-releases for >V to match spec in
+  * Rename format_full_version to _format_full_version to make it
+    visibly private in (:pull:`1125`)
+  * Restrict local version to ASCII in (:pull:`1102`)
+  * Add pylock select function in (:pull:`1092`)
+  * Document pylock select() method and PylockSelectError in
+    (:pull:`1153`)
+  * Add filename property to PackageSdist and PackageWheel, more
+    validation in (:pull:`1095`)
+
+-------------------------------------------------------------------
 Mon Feb  9 11:07:43 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add pythons_for_pypi macro. This macro will help to build the python
