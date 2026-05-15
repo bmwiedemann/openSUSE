@@ -1,0 +1,15 @@
+Index: numericalunits-1.26/numericalunits.py
+===================================================================
+--- numericalunits-1.26.orig/numericalunits.py
++++ numericalunits-1.26/numericalunits.py
+@@ -450,8 +450,8 @@ def nu_eval(expression):
+     operators = {ast.Mult: op.mul, ast.Div: op.truediv, ast.Pow: op.pow, ast.USub: op.neg}
+ 
+     def _eval(node):
+-        if isinstance(node, ast.Num):
+-            return node.n
++        if isinstance(node, ast.Constant):
++            return node.value
+         elif isinstance(node, ast.BinOp):  # <left> <operator> <right>
+             return operators[type(node.op)](_eval(node.left), _eval(node.right))
+         elif isinstance(node, ast.UnaryOp):  # <operator> <operand> e.g., -1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-numericalunits
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        MIT
 URL:            https://github.com/sbyrnes321/numericalunits
 Source:         https://files.pythonhosted.org/packages/source/n/numericalunits/numericalunits-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/sbyrnes321/numericalunits/master/tests/tests.py
+Patch0:         fix-python314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -47,6 +48,7 @@ way with unique advantages:
 %setup -q -n numericalunits-%{version}
 dos2unix numericalunits.py
 cp %{SOURCE1} .
+%patch -P 0 -p1
 
 %build
 %pyproject_wheel
