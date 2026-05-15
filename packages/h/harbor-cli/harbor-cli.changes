@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri May 15 06:52:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.20:
+  * Feature: Extending Retention Cmd PR (#564)
+  * feat: Adding Scoop publish (#844)
+  * fix: update instance api print statement; made test and lint
+    fail (#907)
+  * refactor(output): replace log.Info and log.Infof statements
+    with Printf and log.Debugf statements (#884)
+  * fix(doc): update missing man pages and doc entry (#893)
+  * fix(ldap): add url and scope validation to ldap ping command
+    (#804)
+  * feat(repo): Implement Repository Update Command (#714)
+  * feat: adding test helper and tests for project list (#797)
+  * fix: Adding the --project flag for setting the scope of the
+    label to artifact (#822)
+  * fix(login): enforce mutual exclusivity of --password and
+    --password-stdin flags (#849)
+  * feat : instance remaining subcommands (#812)
+  * fix: return errors instead of panicking in list command (#865)
+  * fix: add more stable validation for harbor-cli login (#810)
+  * fix: replace reflect.Ptr with reflect.Pointer to fix govet
+    inline (#872)
+  * docs: update Install section in README (#794)
+  * fix: adding CNAME for gh-pages (apt-releases) (#826)
+
+-------------------------------------------------------------------
 Tue Apr 21 15:46:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.19:
