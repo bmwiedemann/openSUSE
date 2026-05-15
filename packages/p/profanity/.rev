@@ -804,4 +804,29 @@
   * Support building libstrophe as a subproject (#2141)</comment>
     <requestid>1345856</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f7b795b0ea65e8c54d7b5c892e9221cb</srcmd5>
+    <version>0.18.1</version>
+    <time>1778882206</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.1:
+  Bug Fixes:
+  * Fix connect with empty resource
+  * Resolve issues with async editor (#2150)
+  * Resolve DB migration failure (#2163)
+  * Restore message receipt requests when capabilities unknown (#2161)
+  Build System:
+  * Fix running functional tests by meson (#2159)
+  Documentation:
+  * Explain how to enable spell checking (#2153)
+  * XEP list does not need to be updated manually on a release (#2155)
+  Tests:
+  * Add missing stub to unit tests
+  Chores:
+  * Explain how to add a backtrace in issue template (#2151)
+  * Mention omemo backend in issue template as well (#2151)
+
+- Swith from libsignal-protocol-c to libomemo-c</comment>
+    <requestid>1353447</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 15 13:16:27 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.1:
+  Bug Fixes:
+  * Fix connect with empty resource
+  * Resolve issues with async editor (#2150)
+  * Resolve DB migration failure (#2163)
+  * Restore message receipt requests when capabilities unknown (#2161)
+  Build System:
+  * Fix running functional tests by meson (#2159)
+  Documentation:
+  * Explain how to enable spell checking (#2153)
+  * XEP list does not need to be updated manually on a release (#2155)
+  Tests:
+  * Add missing stub to unit tests
+  Chores:
+  * Explain how to add a backtrace in issue template (#2151)
+  * Mention omemo backend in issue template as well (#2151)
+
+-------------------------------------------------------------------
 Fri Apr 10 16:45:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.0:
@@ -19,6 +39,7 @@ Fri Apr 10 16:45:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
   Chores:
   * Fix release years in doap file
   * Support building libstrophe as a subproject (#2141)
+- Swith from libsignal-protocol-c to libomemo-c
 
 -------------------------------------------------------------------
 Thu Mar 26 11:32:20 UTC 2026 - Michael Vetter <mvetter@suse.com>
