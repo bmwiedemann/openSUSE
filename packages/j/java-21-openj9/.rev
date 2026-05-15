@@ -119,4 +119,12 @@
     <comment>April 2026 CPU fixes</comment>
     <requestid>1351816</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>468c7bf4f0d9e776e4db21b464356c6f</srcmd5>
+    <version>21.0.11.0</version>
+    <time>1778882039</time>
+    <user>dimstar_suse</user>
+    <comment>Add a bug reference</comment>
+    <requestid>1353275</requestid>
+  </revision>
 </revisionlist>
