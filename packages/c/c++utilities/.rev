@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>60286d4ff0117c95f0d8dd259102eb3f</srcmd5>
+    <version>5.34.1</version>
+    <time>1778882006</time>
+    <user>dimstar_suse</user>
+    <comment>This submission adds `cpp-utilities`, a reusable C++ support library providing commonly needed utility classes and helper routines used by several upstream applications.
+
+The library offers functionality for:
+
+* command-line argument parsing with Bash completion support
+* endian-aware binary I/O helpers
+* string conversion and manipulation utilities
+* date/time helpers
+* INI file handling
+* testing helpers for CppUnit
+* reusable CMake modules/templates
+* miscellaneous algorithms and data structures
+
+The package is useful as a shared dependency for applications from the same upstream ecosystem and helps avoid bundling duplicated utility code in downstream packages.
+
+The project follows a documented API/ABI compatibility policy, supports modern CMake-based builds, and is actively maintained upstream.
+
+Packaging this library in Factory enables proper dependency tracking, shared system libraries, security updates, and reduces maintenance overhead compared to bundled copies.
+</comment>
+    <requestid>1353242</requestid>
+  </revision>
+</revisionlist>
