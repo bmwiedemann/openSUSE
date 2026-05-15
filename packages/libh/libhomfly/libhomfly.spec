@@ -1,7 +1,7 @@
 #
 # spec file for package libhomfly
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define lname   libhomfly0
 Name:           libhomfly
-Version:        1.03
+Version:        1.04
 Release:        0
 Summary:        Library to compute the homfly polynomial of a link
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/miguelmarco/libhomfly
 Source:         https://github.com/miguelmarco/libhomfly/releases/download/%version/%name-%version.tar.gz
