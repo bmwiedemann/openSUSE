@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 15 20:51:57 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.8.1 Fine Wine
+- Upstream changes:
+  * Launch options work for retro and native now
+  * Cmake version bump
+  * Added the source files to cmake
+  * Remove unneeded function
+  * Wine picker and downloader
+  * Suppress the buttons when combined
+  * Add the ability to remap the fullscreen trigger on a gamepad
+  * Clearly label Proton Vs Wine
+  * Update the button that browses for the wine prefix
+  * Better wine prefixes
+  * Game grid menu fixes
+
+-------------------------------------------------------------------
 Sun May 10 21:42:01 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.7.5

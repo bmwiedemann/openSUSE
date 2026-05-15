@@ -177,4 +177,24 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Game grid fixes</comment>
     <requestid>1352329</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6abf9fd53797f383763c0df9813cb3c7</srcmd5>
+    <version>1.8.1</version>
+    <time>1778882238</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 1.8.1 Fine Wine
+- Upstream changes:
+  * Launch options work for retro and native now
+  * Cmake version bump
+  * Added the source files to cmake
+  * Remove unneeded function
+  * Wine picker and downloader
+  * Suppress the buttons when combined
+  * Add the ability to remap the fullscreen trigger on a gamepad
+  * Clearly label Proton Vs Wine
+  * Update the button that browses for the wine prefix
+  * Better wine prefixes
+  * Game grid menu fixes</comment>
+    <requestid>1353465</requestid>
+  </revision>
 </revisionlist>
