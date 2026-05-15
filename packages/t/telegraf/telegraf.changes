@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 14 23:55:33 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add /etc/telegraf/telegraf.d as the missing directory makes the
+  service start fail
+
+-------------------------------------------------------------------
 Wed May 13 12:59:59 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Bump golang to match go modules file

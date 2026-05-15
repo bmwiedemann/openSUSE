@@ -90,6 +90,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %doc CHANGELOG.md CONTRIBUTING.md README.md
 %license LICENSE
 %dir %{_config_dir}
+%dir %{_config_dir}/telegraf.d/
 %config(noreplace) %{_config_dir}/%{name}.conf
 %{_bindir}/%{name}
 %dir /var/lib/telegraf
