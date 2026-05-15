@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May 15 17:20:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.5:
+  * Features
+    - Fix builder inspect showing known builders as untrusted
+      (#2571 by @runesoerensen)
+    - Add heroku/builder:26 as a trusted builder (#2569 by
+      @runesoerensen)
+  * Dependencies
+    - chore: upgrade Go to 1.25.10 to fix stdlib CVEs (#2602)
+    - chore: upgrade Go to 1.25.10 to fix stdlib CVEs
+    - build(deps): bump the go-dependencies group across 1
+      directory with 7 updates (#2601)
+    - build(deps): bump github.com/go-git/go-git/v5 from 5.18.0 to
+      5.19.0 (#2596)
+    - build(deps): bump the go-dependencies group with 3 updates
+      (#2592)
+
+-------------------------------------------------------------------
 Sun May 03 06:45:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.4:
