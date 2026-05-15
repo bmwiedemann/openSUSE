@@ -1,4 +1,193 @@
 -------------------------------------------------------------------
+Thu May 14 21:28:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.15.0
+  * New features
+    + Add experimental CycloneDX VEX file
+    + TEXT-235: Add Damerau-Levenshtein distance
+    + Add unit tests to increase coverage
+    + Add new test for CharSequenceTranslator#with()
+    + Add tests and assertions to org.apache.commons.text.similarity
+      to get to 100% code coverage
+  * Fixed Bugs
+    + Fix exception message typo in XmlStringLookup
+      .XmlStringLookup(Map, Path...)
+    + TEXT-236: Inserting at the end of a TextStringBuilder throws
+      a StringIndexOutOfBoundsException
+    + Fix TextStringBuilderTest.testAppendToCharBuffer() to use
+      proper argument type
+    + Fix Apache RAT plugin console warnings
+    + Fix site XML to use version 2.0.0 XML schema
+    + Removed unreachable threshold verification code in
+      src/main/java/org/apache/commons/text/similarity
+    + Enable secure processing for the XML parser in XmlStringLookup
+      in case the underlying JAXP implementation doesn't
+
+-------------------------------------------------------------------
+Thu May 14 21:27:32 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.14.0
+  * New features
+    + Interface StringLookup now extends UnaryOperator<String>
+    + Interface TextRandomProvider extends IntUnaryOperator
+    + Add RandomStringGenerator.Builder
+      .usingRandom(IntUnaryOperator)
+    + Add PMD check to default Maven goal
+    + Add org.apache.commons.text.RandomStringGenerator.Builder
+      .setAccumulate(boolean)
+  * Fixed Bugs
+    + Fix PMD UnnecessaryFullyQualifiedName in StringLookupFactory
+    + Fix PMD UnnecessaryFullyQualifiedName in
+      DefaultStringLookupsHolder
+    + Fix PMD UnnecessaryFullyQualifiedName in
+      PropertiesStringLookup
+    + Fix PMD UnnecessaryFullyQualifiedName in
+      JavaPlatformStringLookup
+    + Fix PMD UnnecessaryFullyQualifiedName in StringSubstitutor
+    + Fix PMD UnnecessaryFullyQualifiedName in StrSubstitutor
+    + Fix PMD UnnecessaryFullyQualifiedName in AlphabetConverter
+    + Fix PMD AvoidBranchingStatementAsLastInLoop in
+      TextStringBuilder
+    + Fix PMD AvoidBranchingStatementAsLastInLoop in StrBuilder
+    + org.apache.commons.text.translate.LookupTranslator
+      .LookupTranslator(Map CharSequence>) now throws
+      NullPointerException instead of
+      java.security.InvalidParameterException
+
+-------------------------------------------------------------------
+Thu May 14 21:26:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.13.1
+  * Fixed Bugs
+    + Remove -nouses directive from maven-bundle-plugin. OSGi
+      package imports now state 'uses' definitions for package
+      imports, this doesn't affect JPMS
+      (from org.apache.commons:commons-parent:80)
+    + Deprecate EntityArrays.EntityArrays()
+    + StringLookupFactory.DefaultStringLookupsHolder
+      .createDefaultStringLookups() maps DefaultStringLookup
+      .LOCAL_HOST twice instead of once for LOCAL_HOST and
+      LOOPBACK_ADDRESS
+
+-------------------------------------------------------------------
+Thu May 14 21:26:21 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.13.0
+  * New features
+    + Add StringLookupFactory.loopbackAddressStringLookup()
+    + Add StringLookupFactory.KEY_LOOPBACK_ADDRESS
+    + Add DefaultStringLookup.LOOPBACK_ADDRESS
+    + Add richer inputs in package org.apache.commons.text
+      .similarity with SimilarityInput
+    + Add HammingDistance.apply(SimilarityInput, SimilarityInput)
+    + Add JaccardDistance.apply(SimilarityInput, SimilarityInput)
+    + Add JaccardSimilarity.apply(SimilarityInput, SimilarityInput)
+    + Add JaroWinklerDistance.apply(SimilarityInput,
+      SimilarityInput)
+    + Add JaroWinklerSimilarity.apply(SimilarityInput,
+      SimilarityInput)
+    + Add LevenshteinDetailedDistance.apply(SimilarityInput,
+      SimilarityInput)
+    + Add LevenshteinDistance.apply(SimilarityInput,
+      SimilarityInput)
+  * Fixed Bugs
+    + Fix build on Java 22
+    + Fix build on Java 23-ea
+    + Make package-private constructor private:
+      StrLookup.MapStrLookup.MapStrLookup(Map)
+    + Make package-private constructor private: StrLookup
+      .SystemPropertiesStrLookup.SystemPropertiesStrLookup()
+    + Make package-private class private and final: MapStrLookup
+    + Make package-private class private: StrMatcher.CharMatcher
+    + Make package-private class private: StrMatcher.CharSetMatcher
+    + Make package-private class private: StrMatcher.NoMatcher
+    + Make package-private class private: StrMatcher.StringMatcher
+    + Make package-private class private: StrMatcher.TrimMatcher
+    + Make package-private class private and final:
+      IntersectionSimilarity.BagCount
+    + Make package-private class private and final:
+      IntersectionSimilarity.TinyCount
+    + Deprecate LevenshteinDistance.LevenshteinDistance() in favor
+      of LevenshteinDistance.getDefaultInstance()
+    + Deprecate LevenshteinDetailedDistance
+      .LevenshteinDetailedDistance() in favor of
+      LevenshteinDetailedDistance.getDefaultInstance()
+    + TEXT-234: Improve StrBuilder documentation for new line text
+    + TEXT-234: Improve TextStringBuilder documentation for new line
+      text
+    + TEXT-233: Required OSGi Import-Package version numbers in
+      MANIFEST.MF
+
+-------------------------------------------------------------------
+Thu May 14 21:25:30 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.12.0
+  * New features
+    + Add StringLookupFactory.fileStringLookup(Path...) and
+      deprecated fileStringLookup()
+    + Add StringLookupFactory.propertiesStringLookup(Path...) and
+      deprecated propertiesStringLookup()
+    + Add StringLookupFactory.xmlStringLookup(Map, Path...) and
+      deprecated xmlStringLookup() and xmlStringLookup(Map)
+    + Add StringLookupFactory.builder() for fencing Path resolution
+      of the file, properties and XML lookups
+    + Add DoubleFormat.Builder.get() as Builder now implements
+      Supplier
+  * Fixed Bugs
+    + TEXT-232: WordUtils.containsAllWords?() may throw
+      PatternSyntaxException
+    + TEXT-175: Fix regression for determining whitespace in
+      WordUtils
+    + Deprecate Builder in favor of Supplier
+
+-------------------------------------------------------------------
+Thu May 14 21:21:21 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.11.0
+  * New features
+    + TEXT-224: Set SecureProcessing feature in XmlStringLookup by
+      default
+    + TEXT-224: Add StringLookupFactory.xmlStringLookup(Map<String,
+      Boolean>...)
+    + Add @FunctionalInterface to FormatFactory
+    + Add RandomStringGenerator.builder()
+    + TEXT-229: Add XmlEncoderStringLookup/XmlDecoderStringLookup
+    + Add StringSubstitutor.toString()
+  * Fixed Bugs
+    + TEXT-219: Fix StringTokenizer.getTokenList to return an
+      independent modifiable list
+    + Fix Javadoc for StringEscapeUtils.escapeHtml4
+    + TextStringBuidler#hashCode() allocates a String on each call
+    + TEXT-221: Fix Bundle-SymbolicName to use the package name
+      org.apache.commons.text
+    + Add and use a package-private singleton for RegexTokenizer
+    + Add and use a package-private singleton for CosineSimilarity
+    + Add and use a package-private singleton for
+      LongestCommonSubsequence
+    + Add and use a package-private singleton for
+      JaroWinklerSimilarity
+    + Add and use a package-private singleton for JaccardSimilarity
+    + [StepSecurity] ci: Harden GitHub Actions
+    + Improve AlphabetConverter Javadoc
+    + Fix exception message in IntersectionResult to make
+      set-theoretic sense
+    + Add null-check in RandomStringGenerator#Builder#selectFrom()
+      to avoid NullPointerException
+    + Add null-check in RandomStringGenerator#Builder#withinRange()
+      to avoid NullPointerException
+    + TEXT-228: Fix TextStringBuilder to over-allocate when ensuring
+      capacity
+    + Constructor for ResourceBundleStringLookup should be private
+      instead of package-private
+    + Constructor for UrlDecoderStringLookup should be private
+      instead of package-private
+    + Constructor for UrlEncoderStringLookup should be private
+      instead of package-private
+    + TEXT-230: Javadoc of org.apache.commons.text.lookup
+      .DefaultStringLookup.XML is incorrect
+    + Update DoubleFormat to state it is based on Double.toString
+
+-------------------------------------------------------------------
 Mon Oct 31 19:49:13 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key and verify source signature
@@ -59,16 +248,16 @@ Fri Oct 14 12:47:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
     + Release Notes page hasn't been updated for 1.9 release yet
     + Add StrBuilder.isNotEmpty()
   * Changes of 1.9:
-    + Removed non-existing parameter from Javadocs and spelled out 
+    + Removed non-existing parameter from Javadocs and spelled out
       parameters in throws
-    + StringEscapeUtils.unescapeCsv doesn't remove quotes at begin 
+    + StringEscapeUtils.unescapeCsv doesn't remove quotes at begin
       and end of string
     + ScriptStringLookup does not accept ":"
     + StringSubstitutor incorrectly removes some escape characters
     + Make ConstantStringLookup.constantCache final
     + Simplify if in CaseUtils
     + Add StringMatcher.size()
-    + Refactor TextStringBuilder.readFrom(Readable), extracting 
+    + Refactor TextStringBuilder.readFrom(Readable), extracting
       readFrom(CharBuffer) and readFrom(Reader)
     + Add BiStringLookup and implementation BiFunctionStringLookup
     + Add org.apache.commons.text.StringSubstitutor
@@ -76,7 +265,7 @@ Fri Oct 14 12:47:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
     + Add org.apache.commons.text.TextStringBuilder
       .TextStringBuilder(CharSequence)
     + Add org.apache.commons.text.TextStringBuilder.drainChar(int)
-    + Add org.apache.commons.text.TextStringBuilder.drainChars(int, 
+    + Add org.apache.commons.text.TextStringBuilder.drainChars(int,
       int, char[]. int)
     + Add org.apache.commons.text.TextStringBuilder.isNotEmpty()
     + Add org.apache.commons.text.TextStringBuilder.isReallocated()
@@ -84,7 +273,7 @@ Fri Oct 14 12:47:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
       int)
     + Add org.apache.commons.text.TextStringBuilder.set(String)
     + Add org.apache.commons.text.TextStringBuilder.wrap(char[])
-    + Add org.apache.commons.text.TextStringBuilder.wrap(char[], 
+    + Add org.apache.commons.text.TextStringBuilder.wrap(char[],
       int)
     + Add org.apache.commons.text.io.StringSubstitutorReader
     + Add org.apache.commons.text.lookup.StringLookupFactory
@@ -113,4 +302,4 @@ Sat Nov  9 18:36:06 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Tue Jun 25 07:38:44 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
-- Initial release v1.6 on OBS 
+- Initial release v1.6 on OBS

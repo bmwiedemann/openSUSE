@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-text
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global base_name text
 %global short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        1.10.0
+Version:        1.15.0
 Release:        0
 Summary:        A library focused on algorithms working on strings
 License:        Apache-2.0
@@ -27,13 +27,11 @@ Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/proper/commons-text/
 Source0:        http://archive.apache.org/dist/commons/text/source/commons-text-%{version}-src.tar.gz
 Source1:        %{name}-build.xml
-Source2:        http://archive.apache.org/dist/commons/text/source/commons-text-%{version}-src.tar.gz.asc
-Source3:        https://www.apache.org/dist/commons/KEYS#/%{name}.keyring
 BuildRequires:  ant
 BuildRequires:  apache-commons-lang3
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -50,9 +48,6 @@ This package contains the API documentation for %{name}.
 %setup -q -n commons-text-%{version}-src
 cp %{SOURCE1} build.xml
 
-%pom_remove_parent
-%pom_xpath_inject pom:project "<groupId>org.apache.commons</groupId>"
-
 %build
 mkdir -p lib
 build-jar-repository -s lib apache-commons-lang3
@@ -65,7 +60,7 @@ install -m 0644 target/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{na
 
 # pom
 install -dm 755 %{buildroot}%{_mavenpomdir}/%{name}
-install -m 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{short_name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{short_name}.pom
 %add_maven_depmap %{name}/%{short_name}.pom %{name}/%{short_name}.jar
 
 # javadoc
