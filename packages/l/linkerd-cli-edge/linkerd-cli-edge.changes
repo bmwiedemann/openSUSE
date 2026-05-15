@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri May 15 17:24:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.5.2:
+  * build(deps): bump google.golang.org/grpc from 1.81.0 to 1.81.1
+    (#15280)
+  * build(deps): bump tonic-prost from 0.14.5 to 0.14.6 (#15260)
+  * build(deps): bump pin-project from 1.1.12 to 1.1.13 (#15277)
+  * build(deps): bump aws-lc-rs from 1.16.3 to 1.17.0 (#15276)
+  * build(deps): bump helm.sh/helm/v3 from 3.20.2 to 3.21.0
+    (#15275)
+  * build(deps-dev): bump jest from 30.3.0 to 30.4.2 in /web/app
+    (#15252)
+  * build(deps-dev): bump sinon from 21.1.2 to 22.0.0 in /web/app
+    (#15251)
+  * build(deps-dev): bump @babel/preset-env in /web/app (#15253)
+  * build(deps-dev): bump jest-environment-jsdom in /web/app
+    (#15254)
+  * build(deps): bump google.golang.org/grpc/cmd/protoc-gen-go-grpc
+    (#15270)
+  * build(deps): bump golang.org/x/tools from 0.44.0 to 0.45.0
+    (#15256)
+  * build(deps): bump tokio from 1.52.2 to 1.52.3 (#15259)
+  * build(deps): bump cc from 1.2.61 to 1.2.62 (#15258)
+  * chore: update golang to 1.25.10 (#15265)
+  * build(deps): bump tonic from 0.14.5 to 0.14.6 in the grpc group
+    (#15244)
+  * build(deps): bump tower-http from 0.6.9 to 0.6.10 (#15245)
+  * build(deps): bump wasip2 from 1.0.2+wasi-0.2.9 to
+    1.0.3+wasi-0.2.9 (#15209)
+  * build(deps): bump data-encoding from 2.10.0 to 2.11.0 (#15211)
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.21 to
+    0.0.22 (#15214)
+  * build(deps-dev): bump eslint-plugin-promise in /web/app
+    (#15230)
+  * build(deps-dev): bump @babel/preset-env in /web/app (#15231)
+  * build(deps): bump postcss from 8.5.6 to 8.5.10 in /web/app
+    (#15208)
+  * build(deps): bump tower-http from 0.6.8 to 0.6.9 (#15239)
+  * build(deps): bump pin-project from 1.1.11 to 1.1.12 (#15238)
+  * build(deps): bump h2 from 0.4.13 to 0.4.14 (#15237)
+  * chore: upgrade to network-validator 0.1.9 (#15240)
+  * build(deps): bump tokio from 1.52.1 to 1.52.2 (#15236)
+  * build(deps): bump openssl from 0.10.78 to 0.10.79 (#15235)
+  * build(deps): bump google.golang.org/grpc from 1.80.0 to 1.81.0
+    (#15234)
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.9.0 to
+    1.10.1 (#15233)
+  * build(deps): bump rustls from 0.23.37 to 0.23.40 (#15224)
+  * build(deps): bump openssl-sys from 0.9.114 to 0.9.115 (#15232)
+  * build(deps): bump json-patch from 4.1.0 to 4.2.0 (#15227)
+
+-------------------------------------------------------------------
 Fri May 01 18:09:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.5.1:
