@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 14 10:24:54 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Updte to version 4.8.0
+  * test,sipreg: enable outbound testing.
+  * hash: safety check for string.
+  * tls: upgrade usage of legacy functions.
+  * tls: use SSL_set1_dnsname() for OpenSSL 4.0.0 and later.
+  * tls/openssl/sni: fix OpenSSL 4 deprecation and refactor.
+  * http: Send HTTP request with explicit server address.
+  * tls/openssl: fix OpenSSL 4.0.0 consts.
+  * mem: update mem_debug_tail() doxygen comment.
+
+-------------------------------------------------------------------
 Tue Apr  7 08:09:44 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.7.0
