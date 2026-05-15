@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May 14 09:16:01 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to version 5.6.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Wed May  6 20:39:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.0:
+  * Moved nearly all code for the certbot-nginx and certbot-
+    apache plugins into private modules in the certbot package
+    which now offers "apache" and "nginx" extras. Users should
+    notice no major changes. certbot-apache and certbot-nginx
+    will continue to exist as simple packages that depend on
+    certbot and also help register the plugin with certbot so it
+    knows the functionality is available. Unit tests for these
+    plugins are now also part of the certbot package.
+  * The certbot.ocsp module has been deprecated and will be
+    removed in the next major release. This is not a change to
+    Certbot's OCSP functionality. The code is just being removed
+    from Certbot's public API.
+
+-------------------------------------------------------------------
 Mon Mar 16 12:16:50 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to version 5.4.0
@@ -74,14 +97,14 @@ Tue Apr 22 03:45:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 Fri Mar 21 12:30:13 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to version 3.3.0
-  * Removed support for Linode API v3 which was sunset at the end 
+  * Removed support for Linode API v3 which was sunset at the end
     of July 2023.
 
 -------------------------------------------------------------------
 Mon Jan 27 14:37:51 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to version 3.1.0
-  * Our runtime dependency on setuptools has been dropped from all 
+  * Our runtime dependency on setuptools has been dropped from all
     Certbot components.
 
 -------------------------------------------------------------------
