@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-configuration2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global base_name       configuration2
 %global short_name      commons-%{base_name}
 Name:           apache-commons-configuration2
-Version:        2.10.1
+Version:        2.15.0
 Release:        0
 Summary:        Java library providing a generic Configuration interface
 License:        Apache-2.0
@@ -33,12 +33,13 @@ BuildRequires:  apache-commons-jexl
 BuildRequires:  apache-commons-jxpath
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-logging
-BuildRequires:  apache-commons-text
+BuildRequires:  apache-commons-text >= 1.14
 BuildRequires:  apache-commons-vfs2
 BuildRequires:  fdupes
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  jackson-core
 BuildRequires:  jackson-databind
+BuildRequires:  jakarta-servlet
 BuildRequires:  javacc
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  reload4j
@@ -92,6 +93,7 @@ build-jar-repository -s -p lib \
     apache-commons-text \
     commons-beanutils \
     commons-codec \
+    commons-io \
     commons-jexl \
     commons-jxpath \
     commons-lang3 \
@@ -100,6 +102,7 @@ build-jar-repository -s -p lib \
     glassfish-servlet-api \
     jackson-core \
     jackson-databind \
+    jakarta-servlet/jakarta.servlet-api \
     javacc \
     reload4j \
     snakeyaml \

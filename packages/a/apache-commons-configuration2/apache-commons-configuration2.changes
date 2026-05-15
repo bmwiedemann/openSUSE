@@ -1,4 +1,149 @@
 -------------------------------------------------------------------
+Thu May 14 22:07:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.15.0
+  * Changes
+    + Disable include schemes http[s] by default, see
+      AbstractFileLocationStrategy
+    + Detect and avoid processing cycles in YAML input
+      (YAMLConfiguration) (bsc#1265299, CVE-2026-45205)
+    + Extend scheme validation to inner schemes of jar: URLs
+
+-------------------------------------------------------------------
+Thu May 14 22:06:40 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.14.0
+  * New features
+    + Add XMLConfiguration.read(Element)
+    + Add ConfigurationException.ConfigurationException(String,
+      Object...)
+    + Add ConfigurationException.ConfigurationException(Throwable,
+      String, Object...)
+    + Add ConversionException.ConversionException(String, Object...)
+    + Add ConversionException.ConversionException(Throwable, String,
+      Object...)
+    + Add ConfigurationRuntimeException
+      .ConfigurationRuntimeException(Throwable, String, Object...)
+  * Fixed Bugs
+    + Fix Apache RAT plugin console warnings
+    + Migrate from deprecated APIs
+
+-------------------------------------------------------------------
+Thu May 14 22:06:09 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.13.0
+  * New features
+    + Add org.apache.commons.configuration2.ImmutableConfiguration
+      .entrySet()
+    + Add org.apache.commons.configuration2.ImmutableConfiguration
+      .forEach(BiConsumer<String, Object>)
+    + Add VEX entry for CVE-2025-48924
+  * Fixed Bugs
+    + Shared primitive variable "throwExceptionOnMissing" in one
+      thread may not yield the value of the most recent write from
+      another thread [org.apache.commons.configuration2
+      .AbstractConfiguration] At AbstractConfiguration.java:
+      [line 1493] AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Shared primitive variable "forceSingleLine" in one thread may
+      not yield the value of the most recent write from another
+      thread [org.apache.commons.configuration2
+      .PropertiesConfigurationLayout]
+      At PropertiesConfigurationLayout.java:[line 821]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + CONFIGURATION-849: Fix undoubling of strings
+    + CONFIGURATION-852: Mark the package jakarta.servlet.* import
+      as optional in OSGi
+    + Fix build [WARNING] Parameter 'forkMode' is unknown for plugin
+      'maven-surefire-plugin:3.5.3:test (default-test)'
+
+-------------------------------------------------------------------
+Thu May 14 22:05:21 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.12.0
+  * New features:
+    + Add PrefixedKeysIterator.toString() to package-private
+      PrefixedKeysIterator
+    + CONFIGURATION-836: New web configurations using the
+      jakarta.servlet namespace are now available
+    + CONFIGURATION-836: Add org.apache.commons.configuration2.web
+      .JakartaServletConfiguration
+    + CONFIGURATION-836: Add org.apache.commons.configuration2.web
+      .JakartaServletContextConfiguration
+    + CONFIGURATION-836: Add org.apache.commons.configuration2.web
+      .JakartaServletFilterConfiguration
+    + CONFIGURATION-836: Add org.apache.commons.configuration2.web
+      .JakartaServletRequestConfiguration
+    + Add org.apache.commons.configuration2
+      .AbstractHierarchicalConfiguration.getKeysInternal(String,
+      String)
+  * Fixed Bugs:
+    + PropertyConverter.to(Class, Object, DefaultConversionHandler)
+      doesn't convert custom java.lang.Number subclasses
+    + DefaultConversionHandler.convertValue(Object, Class,
+      ConfigurationInterpolator) doesn't convert custom java.lang
+      .Number subclasses
+    + DefaultConversionHandler.to(Object, Class,
+      ConfigurationInterpolator) doesn't convert custom java.lang
+      .Number subclasses
+    + CONFIGURATION-848: SubsetConfiguration does not account for
+      delimiters as it did in 2.9.0
+    + CONFIGURATION-848: CompositeConfiguration does not account for
+      delimiters as it did in 2.9.0
+    + Describe the security model
+    + De-emphasize the 1.x version line on the website
+    + CONFIGURATION-851: HomeDirectoryLocationStrategy no longer
+      resolves the user HOME directory correctly
+
+-------------------------------------------------------------------
+Thu May 14 22:04:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.11.0
+  * New features
+    + CONFIGURATION-844: Add support for empty sections
+    + Add ImmutableConfiguration.containsValue(Object)
+  * Fixed Bugs
+    + Fail-fast with a NullPointerException if DataConfiguration
+      .DataConfiguration(Configuration) is called with null
+    + Fail-fast with a NullPointerException if
+      XMLPropertiesConfiguration.XMLPropertiesConfiguration(Element)
+      is called with null
+    + Fail-fast with a NullPointerException if a SubsetConfiguration
+      constructor is called with a null Configuration
+    + CONFIGURATION-843: Methods should not be empty
+    + Guard MapConfiguration against null maps
+    + Fail-fast with a NullPointerException if
+      AppletConfiguration(Applet) is called with null
+    + Fail-fast with a NullPointerException if
+      ServletConfiguration(Servlet) is called with null
+    + Fail-fast with a NullPointerException if
+      ServletConfiguration(ServletConfig) is called with null
+    + Fail-fast with a NullPointerException if
+      ServletContextConfiguration(Servlet) is called with null
+    + Fail-fast with a NullPointerException if
+      ServletContextConfiguration(ServletContext) is called with null
+    + Fail-fast with a NullPointerException if
+      ServletFilterConfiguration(FilterConfig) is called with null
+    + Fail-fast with a NullPointerException if
+      ServletRequestConfiguration(ServletRequest) is called with
+      null
+    + Deprecate DatabaseConfiguration.getDatasource() in favor of
+      getDataSource()
+    + Fix PMD DynamicCombinedConfiguration in
+      AbstractImmutableNodeHandler
+    + Fix PMD DynamicCombinedConfiguration in
+      AbstractListDelimiterHandler
+    + Fix PMD DynamicCombinedConfiguration in
+      DefaultPrefixLookupsHolder
+    + Fix PMD DynamicCombinedConfiguration in
+      DynamicCombinedConfiguration
+    + Fix PMD DynamicCombinedConfiguration in
+      PropertiesConfiguration
+    + CONFIGURATION-846: Restore previous behavior allowing Spring
+      to inject multiple values
+    + CONFIGURATION-847: Property with an empty string value was not
+      processed
+
+-------------------------------------------------------------------
 Fri Mar 22 11:28:25 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to version 2.10.1
