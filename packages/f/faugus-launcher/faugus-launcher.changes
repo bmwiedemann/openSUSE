@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 15 20:35:32 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.19.4
+- Upstream changes:
+  * Fixed desktop path
+  * Fixed some context menu not showing properly
+  * Fix blurry icon/banner on high DPI display
+  * Updated Dutch translation
+  * translate category feature
+
+-------------------------------------------------------------------
 Sun May 10 21:45:49 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.19.3

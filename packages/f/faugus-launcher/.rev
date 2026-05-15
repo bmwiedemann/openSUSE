@@ -487,4 +487,18 @@
   * Updated Translation - translated new 'minimized start' string - fixed a couple of previously mis-translated strings</comment>
     <requestid>1352328</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b15beb65c7d834d1008a5eb17ee9e925</srcmd5>
+    <version>1.19.4</version>
+    <time>1778882237</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 1.19.4
+- Upstream changes:
+  * Fixed desktop path
+  * Fixed some context menu not showing properly
+  * Fix blurry icon/banner on high DPI display
+  * Updated Dutch translation
+  * translate category feature</comment>
+    <requestid>1353464</requestid>
+  </revision>
 </revisionlist>
