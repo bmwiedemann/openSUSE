@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 15 08:26:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.1.31
+  * Fixed a bug in RepresentativeAction for affine cryst groups due
+    to incorrect handling of empty list of point group
+    generators.
+
+-------------------------------------------------------------------
 Sat Oct 11 17:49:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.1.30

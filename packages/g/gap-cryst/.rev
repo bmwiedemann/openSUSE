@@ -15,4 +15,12 @@
     <comment>- Update to release 4.1.30</comment>
     <requestid>1310750</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd335b3fa4fd35ba011741fc17cf33bf</srcmd5>
+    <version>4.1.31</version>
+    <time>1778882157</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.1.31</comment>
+    <requestid>1353366</requestid>
+  </revision>
 </revisionlist>
