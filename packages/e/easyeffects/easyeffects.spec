@@ -17,7 +17,7 @@
 
 
 Name:           easyeffects
-Version:        8.2.1
+Version:        8.2.2
 Release:        0
 Summary:        Simple audio effects
 License:        GPL-3.0-or-later
@@ -67,6 +67,7 @@ Requires:       qt6-graphs-imports
 Recommends:     breeze6
 Recommends:     lv2-calf
 Recommends:     lv2-lsp-plugins
+Recommends:     lv2-x42-plugins
 Recommends:     lv2-zam-plugins
 Recommends:     mda-lv2
 
@@ -98,6 +99,7 @@ export CXX=g++-15
 %doc README.md src/contents/docs/community/CHANGELOG.md
 %{_datadir}/icons/hicolor/scalable/apps/com.github.wwmm.%{name}.svg
 %{_datadir}/icons/hicolor/scalable/apps/com.github.wwmm.%{name}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/com.github.wwmm.%{name}-off-symbolic.svg
 %{_datadir}/metainfo/com.github.wwmm.%{name}.metainfo.xml
 %{_datadir}/applications/com.github.wwmm.%{name}.desktop
 %{_bindir}/%{name}
