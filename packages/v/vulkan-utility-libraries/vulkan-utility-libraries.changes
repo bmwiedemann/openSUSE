@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 13 03:40:35 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.350.0
+  * Remove GetCustomStypeInfo from safe_struct and settings library
+
+-------------------------------------------------------------------
 Mon Feb  2 20:43:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.341.0

@@ -16,13 +16,13 @@
 #
 
 
-%define lname libVulkanLayerSettings-1_4_341
+%define lname libVulkanLayerSettings-1_4_350
 %if 0%{?suse_version} < 1600
 %define gcc_version 13
 %endif
 
 Name:           vulkan-utility-libraries
-Version:        1.4.341
+Version:        1.4.350
 Release:        0
 Summary:        Utility libraries for Vulkan
 License:        Apache-2.0
