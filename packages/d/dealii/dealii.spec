@@ -32,10 +32,6 @@
 %bcond_without doc
 %endif
 
-%if 0%{?suse_version} < 1650
-%define gcc_ver 9
-%endif
-
 # SECTION MPI DEFINITIONS
 %if "%{flavor}" == "openmpi4"
 %global mpi_flavor openmpi
@@ -185,6 +181,7 @@ export CXXFLAGS="%{optflags}"
 # SO SIMPLY USE CMAKE_BUILD_TYPE="Release"
 %cmake -DCMAKE_INSTALL_PREFIX:PATH=%{my_prefix} \
        -DCMAKE_PREFIX_PATH:PATH=%{my_prefix} \
+       -DCMAKE_CXX_STANDARD=20 \
        -DCMAKE_BUILD_TYPE:STRING="Release" \
        -DCMAKE_INSTALL_RPATH_USE_LINK_PATH:BOOL=OFF \
        -DDEAL_II_COMPONENT_DOCUMENTATION:BOOL=%{?with_doc:ON}%{!?with_doc:OFF} \

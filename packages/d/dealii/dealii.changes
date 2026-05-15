@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 14 11:01:46 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Explicitly pass c++20 standard to fix builds.
+- Fix builds for Leap 16.X by dropping gcc9 requirement.
+
+-------------------------------------------------------------------
 Sun Sep 21 19:16:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.7.1:
