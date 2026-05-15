@@ -17,7 +17,7 @@
 
 
 Name:           tiled
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        A tilemap editor
 License:        GPL-2.0-or-later
@@ -42,6 +42,7 @@ BuildRequires:  qt6-quickcontrols2-devel
 BuildRequires:  qt6-svg-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libzstd)
 Recommends:     tmxtools
 Provides:       tiled-qt
 

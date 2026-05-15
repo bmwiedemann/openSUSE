@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 14 01:14:35 UTC 2026 - Sean Baggaley <me@drinkybird.net>
+
+- Enabled support for Zstandard compression
+
+-------------------------------------------------------------------
+Thu Mar 26 06:55:43 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.1:
+  * Fixed Properties view flicker when switching between objects or files (#4460)
+  * Fixed selection mode indicator to not toggle on Alt when it would move objects (#4434)
+  * Fixed status bar pixel coords being rounded instead of floored (#4426)
+
+-------------------------------------------------------------------
 Mon Mar 16 09:23:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.0:

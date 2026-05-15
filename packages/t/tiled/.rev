@@ -998,4 +998,23 @@
   * Fixed panning with space bar not always working on first click (with Oval, #4338)</comment>
     <requestid>1339310</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3d1323844ba274c8bb841ed91f8c0cd4</srcmd5>
+    <version>1.12.1</version>
+    <time>1774555730</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.1:
+  * Fixed Properties view flicker when switching between objects or files (#4460)
+  * Fixed selection mode indicator to not toggle on Alt when it would move objects (#4434)
+  * Fixed status bar pixel coords being rounded instead of floored (#4426)</comment>
+    <requestid>1342707</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>fdb8ad8f9b018d22736e32a0f765fa35</srcmd5>
+    <version>1.12.1</version>
+    <time>1778882116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1353332</requestid>
+  </revision>
 </revisionlist>
