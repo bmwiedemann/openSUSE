@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 15 11:37:11 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.2.6
+  * fix double line detection for .gitignore files
+
+-------------------------------------------------------------------
+Thu May 14 11:18:22 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.2.5
+  * Extend .gitignore also with .assets
+  * Syntax fix for bs_mergechanges registration
+
+-------------------------------------------------------------------
 Fri May  8 07:18:16 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to 0.2.4

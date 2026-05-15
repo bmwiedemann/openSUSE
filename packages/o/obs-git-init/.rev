@@ -51,4 +51,17 @@
   * fix changes merge tool registration to actually update the file</comment>
     <requestid>1351799</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>be0c428b366aefbbc6c39061255f4caa</srcmd5>
+    <version>0.2.6</version>
+    <time>1778881991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.6
+  * fix double line detection for .gitignore files
+
+- Update to 0.2.5
+  * Extend .gitignore also with .assets
+  * Syntax fix for bs_mergechanges registration</comment>
+    <requestid>1353376</requestid>
+  </revision>
 </revisionlist>
