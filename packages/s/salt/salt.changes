@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 14 12:45:32 UTC 2026 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Use non vendored tornado with Python 3.11 (bsc#1257583, bsc#1259700)
+
+- Added:
+  * use-non-vendored-tornado-with-python-3.11.patch
+
+-------------------------------------------------------------------
 Mon Apr 27 07:33:48 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
 
 - BDSA-2025-60810: Harden Tornado from invalid HTTP reason phrases

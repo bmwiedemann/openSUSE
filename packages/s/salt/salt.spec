@@ -638,6 +638,8 @@ Patch202:       read-full-uri-from-ldap-pillar-config-753.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68855
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/757
 Patch203:       bdsa-2025-60810-harden-against-invalid-http-reason-p.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/755
+Patch204:       use-non-vendored-tornado-with-python-3.11.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
@@ -900,9 +902,9 @@ Recommends:     %{python_module passlib}
 Recommends:     python-passlib
 %endif
 
-%if 0%{?suse_version} >= 1600
+%if 0%{?python_version_nodots} >= 311
 Requires:       python-tornado
-%if 0%{?python3_version_nodots} > 312
+%if 0%{?python_version_nodots} > 312
 Requires:       python-legacy-cgi
 %endif
 %else
