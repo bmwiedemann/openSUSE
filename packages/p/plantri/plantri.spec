@@ -17,13 +17,13 @@
 
 
 Name:           plantri
-Version:        5.5
+Version:        5.8
 Release:        0
 Summary:        Programs for generating certain types of planar graphs
 License:        Apache-2.0
 Group:          Productivity/Scientific/Math
 URL:            https://users.cecs.anu.edu.au/~bdm/plantri/
-Source:         https://users.cecs.anu.edu.au/~bdm/plantri/plantri55.tar.gz
+Source:         https://users.cecs.anu.edu.au/~bdm/plantri/plantri58.tar.gz
 # changelog is in plantri-guide.txt appendix F / plantri.c
 BuildRequires:  c_compiler
 
@@ -37,7 +37,7 @@ Isomorphisms are defined with respect to the imbeddings, so in some
 cases outputs may be isomorphic as abstract graphs.
 
 %prep
-%autosetup -n plantri55
+%autosetup -n plantri58 -p1
 
 %build
 %make_build CC="%__cc" CFLAGS="%optflags"

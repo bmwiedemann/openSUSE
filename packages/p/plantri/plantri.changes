@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 16 00:16:39 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.8
+  * Options -m2, -m3 and -c2 were implemented for arbitrary
+    quadrangulations.
+  * Added quadrangulations of a disk (-qP or -QP).
+  * Change the meaning of 'd' after the number of vertices to
+    specify the number of vertices in the dual (i.e., the number of
+    faces. This is valid only for triangulations and
+    quadrangulations and illegal otherwise.
+
+-------------------------------------------------------------------
 Sun Feb  9 23:42:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.5
