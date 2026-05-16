@@ -40,11 +40,12 @@ Source0:        %{url}/releases/download/%{libmodulemd_version}/modulemd-%{libmo
 Patch0:         https://github.com/fedora-modularity/libmodulemd/commit/89d4afb3.patch
 Patch1:         https://github.com/fedora-modularity/libmodulemd/commit/e33ecf1c.patch
 
+BuildRequires:  %{python_module gobject}
 BuildRequires:  gcc
 BuildRequires:  glib2-doc
 BuildRequires:  help2man
 BuildRequires:  meson >= 0.47.0
-BuildRequires:  python3-gobject
+BuildRequires:  python-rpm-macros
 BuildRequires:  rpm-devel
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
@@ -52,6 +53,9 @@ BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(yaml-0.1)
 # For tests
 BuildRequires:  gcc-c++
+
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 C Library for manipulating module metadata files.
@@ -65,14 +69,14 @@ Requires:       %{libname}%{?_isa} = %{libmodulemd_version}-%{release}
 The modulemd-validator tool provides the facility for verifying
 constructed modulemd data is correct and usable.
 
-%package -n python3-%{name}
+%package -n python-%{name}
 Summary:        Python 3 bindings for %{name}
 Group:          Development/Libraries/Python
 Requires:       %{girname}%{?_isa} = %{libmodulemd_version}-%{release}
-Requires:       python3-gobject
-Requires:       python3-six
+Requires:       python-gobject
+Requires:       python-six
 
-%description -n python3-%{name}
+%description -n python-%{name}
 This package provides the Python 3 bindings for %{name}.
 
 %package -n %{libname}
@@ -119,6 +123,10 @@ export LC_CTYPE=C.utf8
 %install
 %meson_install
 
+%{python_expand #
+install -Dpm 0644 bindings/python/gi/overrides/Modulemd.py %{buildroot}%{$python_sitearch}/gi/overrides/Modulemd.py
+}
+
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
@@ -128,8 +136,8 @@ export LC_CTYPE=C.utf8
 %{_bindir}/modulemd-validator
 %{_mandir}/man1/modulemd-validator.1*
 
-%files -n python3-%{name}
-%{python3_sitearch}/gi/overrides/Modulemd.py
+%files %{python_files %{name}}
+%{python_sitearch}/gi/overrides/Modulemd.py
 
 %files -n %{libname}
 %license COPYING
