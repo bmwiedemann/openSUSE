@@ -41,7 +41,9 @@ Source3:        gdm-launch-environment.pamd
 Source4:        gdm-fingerprint.pamd
 Source5:        gdm-smartcard.pamd
 # /etc/xinit.d/xdm integration script
+%if %{suse_version} < 1610 || %{suse_version} >= 1699
 Source7:        X11-displaymanager-gdm
+%endif
 # Use tmpfiles to create directories under /var to support transactional updates
 Source9:        gdm.tmpfiles
 # Use reserveVT.conf to make autologin user session not to select tty1
@@ -183,6 +185,7 @@ providing graphical log-ins and managing local and remote displays.
 
 This package provides the upstream default configuration for gdm.
 
+%if %{suse_version} < 1610 || %{suse_version} >= 1699
 %package xdm-integration
 Summary:        GDM integration into the xdm wrapper script
 Group:          System/GUI/GNOME
@@ -195,6 +198,7 @@ BuildArch:      noarch
 %description xdm-integration
 GDM's XDM wrapper integration
 By default openSUSE uses xdm which enables the DM based on sysconfig.
+%endif
 
 %package systemd
 Summary:        Systemd gdm.service file
@@ -276,10 +280,12 @@ cp %{SOURCE15} %{buildroot}%{_pam_vendordir}/gdm-smartcard
 ln -s gdm %{buildroot}%{_pam_vendordir}/gdm-password
 ## Install other files
 #Install /etc/xinit.d/xdm integration script
+%if %{suse_version} < 1610 || %{suse_version} >= 1699
 install -D -m 644 %{SOURCE7} %{buildroot}%{_prefix}/lib/X11/displaymanagers/gdm
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-displaymanager
 ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_prefix}/lib/X11/displaymanagers/default-displaymanager
+%endif
 # Install other files
 mkdir -p %{buildroot}/run/gdm
 mkdir -p %{buildroot}%{_bindir}
@@ -322,17 +328,21 @@ fi
 %post
 %tmpfiles_create gdm.conf
 
+%if %{suse_version} < 1610 || %{suse_version} >= 1699
 %post xdm-integration
 %{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
   default-displaymanager %{_prefix}/lib/X11/displaymanagers/gdm 25
+%endif
 
 %posttrans
 # Create dconf database for gdm, to lockdown the gdm session
 dconf update
 
+%if %{suse_version} < 1610 || %{suse_version} >= 1699
 %postun xdm-integration
 [ -f %{_prefix}/lib/X11/displaymanagers/gdm ] || %{_sbindir}/update-alternatives \
   --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/gdm
+%endif
 
 %pre systemd
 %service_add_pre gdm.service
@@ -414,12 +424,14 @@ fi
 %{_userunitdir}/gnome-session@gnome-login.target.d/gnome-login.session.conf
 %{_unitdir}/gnome-headless-session@.service
 
+%if %{suse_version} < 1610 || %{suse_version} >= 1699
 %files xdm-integration
 # /etc/xinit.d/xdm integration
 %dir %{_prefix}/lib/X11/displaymanagers
 %{_prefix}/lib/X11/displaymanagers/default-displaymanager
 %{_prefix}/lib/X11/displaymanagers/gdm
 %ghost %{_sysconfdir}/alternatives/default-displaymanager
+%endif
 
 %files -n libgdm1
 %{_libdir}/libgdm.so.*

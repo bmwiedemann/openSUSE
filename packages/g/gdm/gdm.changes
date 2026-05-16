@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 13 01:31:22 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Drop xdm-integration in SLE 16.1 to remove the update-alternatives
+  dependency (bsc#1264389, jsc#PED-15673).
+
+-------------------------------------------------------------------
 Thu May 06 11:13:10 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Drop pam_gdm from gdm-fingerprint.pamd (boo#1258070, glgo#GNOME/gdm#1074)
