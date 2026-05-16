@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri May 08 08:16:46 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260508:
+  * Add boolean ntp_refclock_access (bsc#1262711)
+  * Add /var/log/ntp in ntp named filetrans interface (bsc#1262711)
+  * Allow thump_t setattr on thumb_tmp_t lnk_files
+  * Allow accounts-daemon read accountsd_share_t symlinks (bsc#1262502)
+  * Label /usr/bin/sudo-rs and /usr/bin/su-rs
+  * Allow pwupdd to read cracklib (bsc#1259138)
+  * Allow pwupdd to log to audit log (bsc#1259138)
+  * Move accountutils_pwaccessd_varlink_socket_connect from auth_use_pam (bsc#1259138)
+  * Allow gpsd the setcap process capability
+  * Add note about the process to merge template
+  * Add mgetty_allow_sendfax boolean (bsc#1258666)
+  * Do not backslash-escape underscores in file context specifications
+  * Label /var/log/mgetty.* getty_log_t (bsc#1258666)
+  * Allow systemd_homework_t to delete systemd_homed_record_t dirs (bsc#1261359)
+  * Allow sshd-auth/sshd-session get attributes of their sshd parent
+  * Allow systemd-tmpfiles to adjust resource limits
+  * Allow logwatch to getattr nsfs files
+  * Allow xdm dbus chat with rhsmcertd
+  * Allow dhcpc_hook_t unix_dgram_socket and module_request
+  * Allow accountsd list accountsd_share_t dirs
+
+-------------------------------------------------------------------
 Mon Apr 27 12:18:13 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
 
 - start cleanoldsepoldir.service after successfull health-checker.service

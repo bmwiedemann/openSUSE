@@ -2368,4 +2368,12 @@ there will be 4 permissive avcs left regarding pcrlock, but those will be fixed 
 Needs to go together with libsemanage change</comment>
     <requestid>1349823</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>8c705abf8f5a96b9de5b6d80eba94b98</srcmd5>
+    <version>20260508</version>
+    <time>1778952227</time>
+    <user>dimstar_suse</user>
+    <comment>bugfixes</comment>
+    <requestid>1353333</requestid>
+  </revision>
 </revisionlist>
