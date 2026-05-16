@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May 15 14:02:29 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.1.5:
+  * Support XBOOTLDR (jsc#PED-16142)
+  * modprobe.conf: split RNDIS blacklist, add interactive unblacklist support
+    (boo#1262299, boo#1217268)
+  * weak-modules2: don't remove symlinks in the rpm --reinstall case
+    (bsc#1257055)
+
+-------------------------------------------------------------------
+Tue Feb 24 21:40:46 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.1.4:
+  * Remove erofs from the list of blacklisted file systems
+    (jsc#PED-14573)
+  * weak-modules2: don't remove symlinks in the rpm --reinstall case
+    (bsc#1257055)
+
+-------------------------------------------------------------------
 Wed Feb 04 20:59:32 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.1.3:

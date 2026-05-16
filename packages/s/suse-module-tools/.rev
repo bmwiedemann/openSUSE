@@ -985,4 +985,29 @@ source service setup which messed up my spec file.
   * kernel-scriptlets: use /run consistently</comment>
     <requestid>1331067</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>1b55680797b694a418dabd6663fe86f0</srcmd5>
+    <version>16.1.4</version>
+    <time>1772127479</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 16.1.4:
+  * Remove erofs from the list of blacklisted file systems
+    (jsc#PED-14573)
+  * weak-modules2: don't remove symlinks in the rpm --reinstall case
+    (bsc#1257055)</comment>
+    <requestid>1334878</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>cb48df395caefef5ea109f58f3d9be6a</srcmd5>
+    <version>16.1.5</version>
+    <time>1778952245</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.1.5:
+  * Support XBOOTLDR (jsc#PED-16142)
+  * modprobe.conf: split RNDIS blacklist, add interactive unblacklist support
+    (boo#1262299, boo#1217268)
+  * weak-modules2: don't remove symlinks in the rpm --reinstall case
+    (bsc#1257055)</comment>
+    <requestid>1353446</requestid>
+  </revision>
 </revisionlist>
