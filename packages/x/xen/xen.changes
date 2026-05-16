@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 12 13:03:24 MDT 2026 - carnold@suse.com
+
+- bsc#1264066 - VUL-0: CVE-2025-54518: xen: AMD-SN-7052: CPU OP
+  Cache Corruption
+  6a034fca-x86-mitigate-AMD-SN-7052.patch
+
+-------------------------------------------------------------------
 Tue Apr 28 09:33:12 MDT 2026 - carnold@suse.com
 
 - bsc#1262178 - VUL-0: CVE-2026-23557: xen: Xenstored DoS via

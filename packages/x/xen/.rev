@@ -3166,4 +3166,12 @@
     <comment>Security and Maintenance Update. Fixes for bsc#1262178 CVE-2026-23557 XSA-484, bsc#1262180 CVE-2026-23558 XSA-486, bsc#1262428 CVE-2025-54505 XSA-488. Also a few additional upstream fixes.</comment>
     <requestid>1349848</requestid>
   </revision>
+  <revision rev="374" vrev="1">
+    <srcmd5>1028a02b947f11ac31be73acf84f9f23</srcmd5>
+    <version>4.21.1_06</version>
+    <time>1778952271</time>
+    <user>dimstar_suse</user>
+    <comment>Security Update for Xen. Fix for bsc#1264066 CVE-2025-54518 XSA-490 AMD-SN-7052: CPU OP Cache Corruption</comment>
+    <requestid>1353106</requestid>
+  </revision>
 </revisionlist>
