@@ -43,7 +43,7 @@ ExclusiveArch:  do_not_build
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
-Version:        6.152.2
+Version:        6.152.6
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -103,8 +103,10 @@ BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module python-dateutil >= 1.4}
 BuildRequires:  %{python_module rich >= 9.0.0}
+BuildRequires:  %{python_module syrupy}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module watchdog}
+BuildRequires:  git-core
 %if %{with complete_tests}
 BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module fakeredis}
@@ -177,7 +179,7 @@ donttest+=" or test_backend_deadline_exceeded_raised_as_flaky_backend_failure or
 # flaky tests
 donttest+=" or test_has_string_of_max_length or test_database_listener_directory"
 # drop tests testing functionality we don't have
-rm tests/crosshair/test_crosshair.py
+rm tests/crosshair/test_*.py
 # adapted from pytest.ini in github repo toplevel dir (above hypothesis-python)
 echo '[pytest]
 addopts=

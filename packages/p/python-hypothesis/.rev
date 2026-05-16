@@ -1085,4 +1085,12 @@ This version fixes the license naming issue.</comment>
     simplify that expression into a more readable one.</comment>
     <requestid>1349200</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>a583ff933d314ca76d4f5ffa70a67dc0</srcmd5>
+    <version>6.152.6</version>
+    <time>1778952236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1353410</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 12 16:55:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 6.152.6:
+  * This patch adds a shrinking pass that tries natural text
+    transformations - unicode decomposition (NFD/NFKD) and case
+    mapping - on individual characters in string choices.
+
+-------------------------------------------------------------------
 Sat Apr 25 08:34:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.152.2:
