@@ -1524,4 +1524,23 @@
     + Add release script (#3411) (forwarded request 1347708 from develop7)</comment>
     <requestid>1347709</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f1e0125282680f5fbc35edbbf5227aa4</srcmd5>
+    <version>18.16.1</version>
+    <time>1778952363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.16.1:
+  * Bug Fixes
+    + (shell/xonsh) Use os.devnull instead of hard-coded /dev/null (#3464)
+    + Atuin update on windows (#3453)
+    + Ensure local key matches remote data before syncing (#3474)
+  * Documentation
+    + Add related projects section to README
+  * Features
+    + (ui) Prominent banner for wrong-key errors at login/sync (#3475)
+  * Miscellaneous Tasks
+    + Generate LLM-optimized docs (#3468)
+    + Rename 'atuin hex' to 'atuin pty-proxy' (#3473) (forwarded request 1353515 from develop7)</comment>
+    <requestid>1353516</requestid>
+  </revision>
 </revisionlist>
