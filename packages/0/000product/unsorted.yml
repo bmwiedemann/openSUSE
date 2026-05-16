@@ -1873,6 +1873,7 @@ unsorted:
   - bzip2-doc 
   - bzip3 
   - bzip3-devel 
+  - c++utilities-devel 
   - c-ares-devel 
   - c-ares-utils 
   - c-intro-and-ref-html 
@@ -11654,7 +11655,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVulkanLayerSettings-1_4_341 
+  - libVulkanLayerSettings-1_4_350 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
@@ -12509,6 +12510,7 @@ unsorted:
   - libc++1 
   - libc++abi-devel 
   - libc++abi1 
+  - libc++utilities5 
   - libc4core0_2_5 
   - libcaca-devel 
   - libcaca-ruby 
@@ -18397,6 +18399,7 @@ unsorted:
   - mame-data 
   - mame-tools 
   - man-pages 
+  - man-pages-ar 
   - man-pages-cs 
   - man-pages-da 
   - man-pages-de 
@@ -24328,7 +24331,6 @@ unsorted:
   - python311-GitPython 
   - python311-Glances 
   - python311-Gloo 
-  - python311-Glymur 
   - python311-GooCalendar 
   - python311-GooseMPL 
   - python311-GridDataFormats 
@@ -24451,6 +24453,7 @@ unsorted:
   - python311-SPARQLWrapper 
   - python311-SQLAlchemy 
   - python311-SQLAlchemy-Utils 
+  - python311-SQLAlchemy-spanner 
   - python311-SQLAlchemy1 
   - python311-Scrapy 
   - python311-SecretStorage 
@@ -26587,6 +26590,8 @@ unsorted:
   - python311-openstacksdk 
   - python311-opentelemetry-api 
   - python311-opentelemetry-exporter-gcp-logging 
+  - python311-opentelemetry-exporter-gcp-monitoring 
+  - python311-opentelemetry-exporter-gcp-trace 
   - python311-opentelemetry-exporter-otlp 
   - python311-opentelemetry-exporter-otlp-proto-common 
   - python311-opentelemetry-exporter-otlp-proto-grpc 
@@ -28374,6 +28379,7 @@ unsorted:
   - python313-Rtree 
   - python313-SPARQLWrapper 
   - python313-SQLAlchemy-Utils 
+  - python313-SQLAlchemy-spanner 
   - python313-SQLAlchemy1 
   - python313-Scrapy 
   - python313-SecretStorage 
@@ -30547,6 +30553,8 @@ unsorted:
   - python313-openstacksdk 
   - python313-opentelemetry-api 
   - python313-opentelemetry-exporter-gcp-logging 
+  - python313-opentelemetry-exporter-gcp-monitoring 
+  - python313-opentelemetry-exporter-gcp-trace 
   - python313-opentelemetry-exporter-otlp 
   - python313-opentelemetry-exporter-otlp-proto-common 
   - python313-opentelemetry-exporter-otlp-proto-grpc 
@@ -32312,6 +32320,7 @@ unsorted:
   - python314-SPARQLWrapper 
   - python314-SQLAlchemy 
   - python314-SQLAlchemy-Utils 
+  - python314-SQLAlchemy-spanner 
   - python314-SQLAlchemy1 
   - python314-SecretStorage 
   - python314-Send2Trash 
@@ -34437,6 +34446,7 @@ unsorted:
   - python314-numba 
   - python314-numba-devel 
   - python314-numcodecs 
+  - python314-numericalunits 
   - python314-numexpr 
   - python314-numpy 
   - python314-numpy-devel 
@@ -34485,6 +34495,8 @@ unsorted:
   - python314-openstacksdk 
   - python314-opentelemetry-api 
   - python314-opentelemetry-exporter-gcp-logging 
+  - python314-opentelemetry-exporter-gcp-monitoring 
+  - python314-opentelemetry-exporter-gcp-trace 
   - python314-opentelemetry-exporter-otlp 
   - python314-opentelemetry-exporter-otlp-proto-common 
   - python314-opentelemetry-exporter-otlp-proto-grpc 
@@ -35839,6 +35851,7 @@ unsorted:
   - python314-unicodecsv 
   - python314-unicodedata2 
   - python314-unidiff 
+  - python314-unify 
   - python314-uniseg 
   - python314-unittest-mixins 
   - python314-unittest-xml-reporting 
@@ -37079,6 +37092,7 @@ unsorted:
   - rke2 
   - rke2-1.33 
   - rke2-1.34 
+  - rke2-1.35 
   - rke2-selinux 
   - rkward 
   - rmail 
