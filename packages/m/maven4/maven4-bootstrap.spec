@@ -95,14 +95,6 @@ rm apache-maven/src/main/appended-resources/META-INF/LICENSE.vm
 # Disable plugins which are not useful for us
 %pom_remove_plugin -r :apache-rat-plugin
 %pom_remove_plugin -r :buildnumber-maven-plugin
-sed -i "
-/buildNumber=/ d
-/timestamp=/ d
-" `find -name build.properties`
-sed -i "s/version=.*/version=%{file_version}/" `find -name build.properties`
-sed -i "s/distributionId=.*/distributionId=apache-maven/" `find -name build.properties`
-sed -i "s/distributionShortName=.*/distributionShortName=Maven/" `find -name build.properties`
-sed -i "s/distributionName=.*/distributionName=Apache\ Maven/" `find -name build.properties`
 
 %{mvn_package} :apache-maven __noinstall
 %{mvn_package} ::mdo: __noinstall

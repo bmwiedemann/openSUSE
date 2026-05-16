@@ -71,4 +71,12 @@
     <comment>Fix build with resolver 2.0.17</comment>
     <requestid>1352502</requestid>
   </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>b09d8965c5679dfc628cc13deaee3e6c</srcmd5>
+    <version>4.0.0~rc5</version>
+    <time>1778952302</time>
+    <user>dimstar_suse</user>
+    <comment>Generate the build.propertis file dynamically during the build</comment>
+    <requestid>1353472</requestid>
+  </revision>
 </revisionlist>

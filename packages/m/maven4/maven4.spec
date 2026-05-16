@@ -34,6 +34,7 @@ Source0:        https://archive.apache.org/dist/%{base_name}/%{base_name}-4/%{fi
 Source1:        maven-bash-completion
 Source2:        mvn.1
 Source10:       apache-%{base_name}-build.tar.xz
+Source100:      pom_properties.py
 Patch1:         0001-Adapt-mvn-script.patch
 # Downstream-specific, avoids dependency on logback
 Patch2:         0002-Invoke-logback-via-reflection.patch
@@ -94,6 +95,7 @@ BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-sec-dispatcher4
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml4
+BuildRequires:  python3
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  slf4j2
@@ -196,6 +198,7 @@ BuildArch:      noarch
 
 %pom_xpath_set pom:project/pom:properties/pom:plexusXmlVersion 4
 %pom_xpath_set pom:project/pom:properties/pom:resolverVersion 2
+%pom_xpath_set pom:project/pom:properties/pom:slf4jVersion 2
 
 %pom_remove_dep -r :junit-bom
 %pom_remove_dep -r :mockito-bom
@@ -227,14 +230,6 @@ rm apache-maven/src/main/appended-resources/META-INF/LICENSE.vm
 # Disable plugins which are not useful for us
 %pom_remove_plugin -r :apache-rat-plugin
 %pom_remove_plugin -r :buildnumber-maven-plugin
-sed -i "
-/buildNumber=/ d
-/timestamp=/ d
-" `find -name build.properties`
-sed -i "s/version=.*/version=%{file_version}/" `find -name build.properties`
-sed -i "s/distributionId=.*/distributionId=apache-maven/" `find -name build.properties`
-sed -i "s/distributionShortName=.*/distributionShortName=Maven/" `find -name build.properties`
-sed -i "s/distributionName=.*/distributionName=Apache\ Maven/" `find -name build.properties`
 
 %{mvn_package} :apache-maven __noinstall
 %{mvn_package} ::mdo: __noinstall
@@ -260,6 +255,7 @@ done
 %{mvn_file} :{*} %{base_name}/@1
 
 %build
+(cd impl/maven-core && python3 %{SOURCE100} pom.xml >build.properties)
 
 mkdir -p lib
 build-jar-repository -s lib \
@@ -301,7 +297,9 @@ build-jar-repository -s lib \
     stax2-api \
     woodstox-core
 
-ant package javadoc
+ant \
+  -DbuildNumber= \
+  package javadoc
 
 %{mvn_artifact} pom.xml
 %{mvn_artifact} api/pom.xml

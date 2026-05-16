@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 15 23:37:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Generate the build.propertis file containing properties needed for
+  resources filtering dynamically during the build
+
+-------------------------------------------------------------------
 Sun May 10 20:00:18 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build using maven-resolver-transport-apache with compatibility
