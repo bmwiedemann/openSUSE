@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Thu May  7 11:01:24 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Remove last remnants of update-alternatives.
+
+-------------------------------------------------------------------
+Wed May  6 19:36:59 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 2.4.67
+  *) SECURITY: CVE-2026-34059: Apache HTTP Server: mod_proxy_ajp:
+     Heap Over-Read and memory disclosure in  ajp_parse_data()
+     [boo#1263950]
+     Buffer Over-read vulnerability in Apache HTTP Server.
+     This issue affects Apache HTTP Server: through 2.4.66.
+     Users are recommended to upgrade to version 2.4.67, which fixes
+     the issue.
+  *) SECURITY: CVE-2026-34032: Apache HTTP Server: mod_proxy_ajp:
+     Heap Buffer Over-Read Due to Missing Null-Termination Check
+     (ajp_msg_get_string) [boo#1263951]
+     Improper Null Termination, Out-of-bounds Read vulnerability in
+     Apache HTTP Server.
+     This issue affects Apache HTTP Server: through 2.4.66.
+     Users are recommended to upgrade to version 2.4.67, which fixes
+     the issue.
+  *) SECURITY: CVE-2026-33857: Apache HTTP Server: Off-by-one OOB
+     reads in AJP getter functions [boo#1263952]
+     Out-of-bounds Read vulnerability in mod_proxy_ajp of
+     Apache HTTP Server.
+     This issue affects Apache HTTP Server: through 2.4.66.
+     Users are recommended to upgrade to version 2.4.67, which fixes
+     the issue.
+  *) SECURITY: CVE-2026-33523: Apache HTTP Server: multiple modules:
+     HTTP response splitting forwarding malicious status line
+     [boo#1263953]
+     HTTP response splitting vulnerability in multiple Apache HTTP
+     Server modules with untrusted or compromised backend servers.
+     This issue affects Apache HTTP Server: from through 2.4.66.
+     Users are recommended to upgrade to version 2.4.67, which fixes
+     the issue.
+  *) SECURITY: CVE-2026-33007: Apache HTTP Server: mod_authn_socache
+     crash [boo#1263954]
+     A NULL pointer dereference in the mod_authn_socache in Apache
+     HTTP Server 2.4.66 and earlier allows an unauthenticated remote
+     user to crash a child process in a caching forward proxy
+     configuration.
+     Users are recommended to upgrade to version 2.4.67, which fixes
+     this issue.
+  *) SECURITY: CVE-2026-33006: Apache HTTP Server: mod_auth_digest
+     timing attack [boo#1263955]
+     A timing attack against mod_auth_digest in Apache HTTP Server
+     2.4.66 allows a bypass of Digest authentication by a remote
+     attacker.
+     Users are recommended to upgrade to version 2.4.67, which fixes
+     this issue.
+  *) SECURITY: CVE-2026-29169: Apache HTTP Server: mod_dav_lock
+     indirect lock crash [boo#1263956]
+     A NULL pointer dereference in mod_dav_lock in Apache HTTP Server
+     2.4.66 and earlier may allow an attacker to crash the server
+     with a malicious request.mod_dav_lock is not used internally by
+     mod_dav or mod_dav_fs.
+     The only known use-case for mod_dav_lock was mod_dav_svn from
+     Apache Subversion earlier than version 1.2.0.
+     Users are recommended to upgrade to version 2.4.66, which fixes
+     this issue, or remove mod_dav_lock.
+  *) SECURITY: CVE-2026-29168: Apache HTTP Server: mod_md
+     unrestricted OCSP response [boo#1264150]
+     Allocation of Resources Without Limits or Throttling
+     vulnerability in Apache HTTP Server'sÂ  mod_md via OCSP response
+     data.
+     This issue affects Apache HTTP Server: from 2.4.30 through
+     2.4.66.
+     Users are recommended to upgrade to version 2.4.67, which fixes
+     the issue.
+  *) SECURITY: CVE-2026-28780: Apache HTTP Server: buffer overflow in
+     mod_proxy_ajp via  ajp_msg_check_header() [boo#1264163]
+     Heap-based Buffer Overflow vulnerability in mod_proxy_ajp of
+     Apache HTTP Server.
+     If mod_proxy_ajp connects to a malicious AJP server this AJP
+     server can send a malicious AJP message back to mod_proxy_ajp
+     and cause it to write 4 attacker controlled bytes after the end
+     of a heap based buffer.
+     This issue affects Apache HTTP Server: through 2.4.66.
+     Users are recommended to upgrade to version 2.4.67, which fixes
+     the issue.
+  *) SECURITY: CVE-2026-24072: Apache HTTP Server: mod_rewrite
+     elevation of privileges via ap_expr [boo#1263935]
+     An escalation of privilege bug in various modules in Apache HTTP
+     2.4.66 and earlier allows local .htaccess authors to read files
+     with the privileges of the httpd user.
+     Users are recommended to upgrade to version 2.4.67, which fixes
+     this issue.
+  *) SECURITY: CVE-2026-23918: Apache HTTP Server: http2: double free
+     and possible RCE on early reset [boo#1263957]
+     Double Free and possible RCE vulnerability in Apache HTTP Server
+     with the HTTP/2 protocol.
+     This issue affects Apache HTTP Server: 2.4.66.
+     Users are recommended to upgrade to version 2.4.67, which fixes
+     the issue.
+  *) mod_md: update to version 2.6.10
+     - Fix issue #420 <https://github.com/icing/mod_md/issues/420> by ignoring
+       job.json files that claim to have completely finished a certificate
+       renewal, but have not produced the necessary result files.
+  *) mod_http2: update to version 2.0.39
+     Remove streams own memory allocator after reports of memory problems
+     with third party modules.
+  *) mod_http2: update to version 2.0.38
+     Source sync with mod_h2 github repository. No functional change.
+  *) Updated conf/mime.types: added vnd.sqlite3, HEIC, HEIF
+  *) mod_md: update to version 2.6.7
+     - Fix a regression in `MDStapleOthers` which broke in v2.6.0 and no longer
+       applied, no matter the configuration.
+  *) mod_md: update to version 2.6.9
+     - Pebble 2.9+ reports another error when terms of service agreement is
+       not set. Treating all "userActionRequired" errors as permanent now.
+  *) mod_md: update to version 2.6.8
+     - Fix the ARI related `replaces` property in ACME order creation to only
+       be used when the CA supports ARI and it is enabled in the menu config.
+     - Fix compatibility with APR versions before 1.6.0 which do not have
+       `apr_cstr_casecmp` and should use `apr_strnatcasecmp` instead.
+  *) mod_http2: update to version 2.0.37
+     Prevent double purge of a stream, resulting in a double free.
+     Fixes PR 69899.
+  *) mod_md: Use correct function name when compiling against APR < 1.6.0.
+
+-------------------------------------------------------------------
 Fri May  1 21:45:25 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - cgi-bin is disabled by default in modern Apache configurations;

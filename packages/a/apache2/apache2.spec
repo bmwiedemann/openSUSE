@@ -104,7 +104,7 @@
 %define build_http2 1
 
 Name:           apache2%{psuffix}
-Version:        2.4.66
+Version:        2.4.67
 Release:        0
 Summary:        The Apache HTTPD Server
 License:        Apache-2.0
@@ -297,7 +297,6 @@ Obsoletes:      apache2-doc <= %{version}
 Requires(pre):  permissions
 Requires(post): %fillup_prereq
 Requires(post): grep
-Requires(postun): update-alternatives
 %endif
 %if %{test} || "%{flavor}" == "manual"
 BuildArch:      noarch
@@ -822,7 +821,7 @@ exit 0
 # main package files
 %if "%{flavor}" == ""
 %files
-%doc INSTALL READM* ABOUT_APACHE CHANGES
+%doc READM* ABOUT_APACHE CHANGES
 %license LICENSE
 %{_tmpfilesdir}/apache2.conf
 %ghost %dir %{datadir}
@@ -915,15 +914,6 @@ exit 0
 
 # MPMs scriptlets
 %if ! %{test} && "%{mpm}" != ""
-%pre
-if [ "$1" = 0 ]; then
-  %{_sbindir}/update-alternatives --quiet --force --remove httpd %{_sbindir}/httpd
-  for module in %{dynamic_modules}; do
-    %{_sbindir}/update-alternatives --quiet --force --remove mod_$module.so %{_libdir}/apache2/mod_$module.so
-  done
-fi
-exit 0
-
 %postun
 if [ "$1" = 1 ]; then
   %apache_request_restart
