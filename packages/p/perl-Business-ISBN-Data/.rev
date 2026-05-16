@@ -745,4 +745,25 @@
   	* data update for 2026-03-11</comment>
     <requestid>1346896</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>c9422441102d8f7a415b4931d1af4e29</srcmd5>
+    <version>20260508.1.0</version>
+    <time>1778952256</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20260508.1.0 (20260508.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20260508.001 2026-05-08T20:41:04Z
+  	* data update for 2026-05-08
+  20260502.001 2026-05-04T14:22:06Z
+  	* data update for 2026-05-02
+  20260424.001 2026-04-24T14:49:48Z
+  	* data update for 2026-04-24
+  20260416.001 2026-04-16T14:26:58Z
+  	* stop unintended autovivification of ISBN_RANGE_MESSAGE (#236)
+  20260411.001 2026-04-11T09:00:38Z
+  	* data update for 2026-04-11
+  20260410.001 2026-04-10T09:43:45Z
+  	* data update for 2026-04-10</comment>
+    <requestid>1353045</requestid>
+  </revision>
 </revisionlist>
