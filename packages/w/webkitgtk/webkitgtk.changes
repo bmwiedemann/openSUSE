@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 11 08:06:56 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- riscv-platformenable.patch: Fix build for riscv64
+- Update constraints for riscv64
+
+-------------------------------------------------------------------
 Fri Apr 17 23:43:04 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.52.3:

@@ -77,6 +77,9 @@ Patch0:         reproducibility.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-aarch64-build-fix.patch webkit#306638 mgorse@suse.com -- fix JavaScriptCore build on aarch64 with JIT disabled.
 Patch1:      webkit2gtk3-aarch64-build-fix.patch
 
+# PATCH-FIX-UPSTREAM riscv-platformenable.patch gh#Webkit/Webkit#64268
+Patch2:         riscv-platformenable.patch
+
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  Mesa-libGLESv1_CM-devel

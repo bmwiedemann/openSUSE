@@ -23,4 +23,13 @@
     <comment>Update version</comment>
     <requestid>1348438</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d4cab99eadfc9bfe9a662848f2014761</srcmd5>
+    <version>2.52.3</version>
+    <time>1778952267</time>
+    <user>dimstar_suse</user>
+    <comment>- riscv-platformenable.patch: Fix build for riscv64
+- Update constraints for riscv64</comment>
+    <requestid>1353089</requestid>
+  </revision>
 </revisionlist>
