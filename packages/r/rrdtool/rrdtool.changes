@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 13 18:51:56 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add fix-graph-overlapping-legends.patch
+  * Fix overlapping graph labels (bsc#1262407)
+
+-------------------------------------------------------------------
 Wed Mar  4 07:34:19 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group() capabilities for the generated account.

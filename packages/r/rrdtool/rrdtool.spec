@@ -51,6 +51,8 @@ Source99:       %{name}.changes
 Patch1:         rrdtool-zero_vs_nothing.patch
 Patch2:         harden_rrdcached.service.patch
 Patch3:         link_ruby_bindings.patch
+# PATCH-FIX-UPSTREAM -- bsc#1262407
+Patch4:         fix-graph-overlapping-legends.patch
 # Needed for tests
 BuildRequires:  bc
 BuildRequires:  cairo-devel >= 1.2
