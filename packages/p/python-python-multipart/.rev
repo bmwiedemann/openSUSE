@@ -145,4 +145,17 @@ Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and
   * Cleanup metadata dunders from __init__.py</comment>
     <requestid>1348345</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>74c572d808b52e5579b6b41242edfe82</srcmd5>
+    <version>0.0.28</version>
+    <time>1778952281</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.0.28 (CVE-2026-42561, bsc#1265250):
+  * Speed up partial-boundary tail scan via bytes.find by @Kludex in #281
+  * Cap multipart boundary length at 256 bytes by @Kludex in #282
+- 0.0.27:
+  * Pass parse offsets via constructors by @Kludex in #268
+  * Add multipart header limits by @Kludex in #267</comment>
+    <requestid>1353179</requestid>
+  </revision>
 </revisionlist>
