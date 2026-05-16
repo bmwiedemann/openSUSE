@@ -79,4 +79,12 @@
     <comment>- Update to version 8.1.1:</comment>
     <requestid>1352198</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9c629806c318bf1dbb3995dff475ee9e</srcmd5>
+    <version>8.1.1</version>
+    <time>1778952215</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable glslang filters</comment>
+    <requestid>1353246</requestid>
+  </revision>
 </revisionlist>

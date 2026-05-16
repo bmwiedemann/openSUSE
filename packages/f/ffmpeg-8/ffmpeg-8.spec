@@ -244,6 +244,7 @@ BuildRequires:  (pkgconfig(libplacebo) >= 4.192.0 with pkgconfig(libplacebo) < 6
 %endif
 BuildRequires:  pkgconfig(shaderc) >= 2019.1
 BuildRequires:  pkgconfig(vulkan) >= 1.3.255
+BuildRequires:  glslang-devel
 %endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
