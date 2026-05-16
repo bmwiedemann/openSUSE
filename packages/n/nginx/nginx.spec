@@ -24,7 +24,7 @@
 %bcond_with    awslc
 #
 Name:           nginx
-Version:        1.29.8
+Version:        1.31.0
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause

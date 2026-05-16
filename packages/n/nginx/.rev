@@ -1454,4 +1454,15 @@
   * Fixed the $request_port and $is_request_port variables were not available in subrequests.</comment>
     <requestid>1345030</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>d8cf63ca2f0f35c0e3b46c216a1f47ce</srcmd5>
+    <version>1.31.0</version>
+    <time>1778952258</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1353076 from darix
+
+- Updated to 1.31.0 ( boo#1265228 boo#1265229 boo#1265230
+  boo#1265231 boo#1265232 boo#1265233 )</comment>
+    <requestid>1353077</requestid>
+  </revision>
 </revisionlist>
