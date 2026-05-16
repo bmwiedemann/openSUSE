@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 13 17:29:43 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- POWER performance enhancements
+  * Optimized MLDSA NTT, supports p8 and above architectures (jsc#PED-14569)
+  * Add patch:
+    openssl-ppc64le-Optimized-MLKEM-NTT-supports-p8-ISA-2.07-and-above-architectures.patch
+
+-------------------------------------------------------------------
 Tue Apr  7 20:16:04 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Adapt spec file for immutability via systemd-tmpfiles (jsc#PED-14813)

@@ -176,6 +176,9 @@ Patch72:        openssl-CVE-2026-31790-tests.patch
 Patch73:        openssl-NULL-pointer-dereference-in-ocsp_find_signer_sk.patch
 # PATCH-FIX-UPSTREAM CVE-2026-28390: NULL pointer dereference during processing of a crafted CMS EnvelopedData message with KeyTransportRecipientInfo (bsc#1261678)
 Patch74:        openssl-CVE-2026-28390.patch
+# PATCH-FIX-UPSTREAM: Optimized MLKEM NTT, supports p8 (ISA 2.07) and above architectures (jsc#PED-14569)
+Patch75:        openssl-ppc64le-Optimized-MLKEM-NTT-supports-p8-ISA-2.07-and-above-architectures.patch
+
 # ulp-macros is available according to SUSE version.
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1540
 BuildRequires:  ulp-macros
