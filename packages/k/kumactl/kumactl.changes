@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat May 16 07:40:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.6:
+  * fix(k8s): replace deprecated mgr.GetEventRecorderFor() (#16628)
+  * chore(deps): bump helm.sh/helm/v4 from 4.0.2 to 4.1.4 (#16258)
+  * fix(xds): enable reuse_port on inbound:passthrough listener
+    (backport of #16605) (#16607)
+  * fix(helm): catch placeholder (backport of #16589) (#16595)
+  * feat(charts): expose CP HPA behavior (backport of #16576)
+    (#16581)
+  * fix(dp-server): bound shutdown, propagate appCtx (backport of
+    #16541) (#16565)
+  * chore(deps): bump golang.org/x/net from 0.48.0 to 0.53.0
+    (#16538)
+  * chore(deps/dev): bump go from 1.26.2 to 1.26.3 (#16512)
+
+-------------------------------------------------------------------
 Thu Apr 30 14:52:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.5:
