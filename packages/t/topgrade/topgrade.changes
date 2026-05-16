@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat May 16 00:34:44 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.5.0:
+  * chore: release v17.5.0 (#1984)
+  * fix(terminal): only accept actual keypresses in menus (#2020)
+  * fix(oh-my-bash): fix oh-my-bash failing in non-bash shells (#2014)
+  * chore(pre-commit): autoupdate (#2012)
+  * chore(deps): update actions/dependency-review-action action to v5 (#2000)
+  * chore(deps): update github/codeql-action action to v4.35.4 (#1999)
+  * chore(deps): update release-plz/action action to v0.5.129 (#2008)
+  * chore(deps): lock file maintenance (#2009)
+  * feat(step): add install-release (#2011)
+  * feat(vim): support neovim vim.pack updates (#2010)
+  * feat(protonplus): support flatpak installation of ProtonPlus (#2006)
+  * chore: label all new issues as 'needs triage' (#2007)
+  * chore(pre-commit): autoupdate (#1997)
+  * chore(deps): update github/codeql-action action to v4.35.3 (#1994)
+  * chore(deps): lock file maintenance (#1996)
+  * feat(mise): add options for quiet, silent, verbose, and add assume_yes support (#1990)
+  * feat(clamav): don't run if systemd autoupdater is active (#1988)
+  * chore(deps): lock file maintenance (#1987)
+  * feat: passwordless reboot and shutdown using `system_shutdown` (#1985)
+  * feat(cargo): add locked option for cargo install-update (#1980)
+
+-------------------------------------------------------------------
 Fri Apr 24 10:56:12 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.4.0:
