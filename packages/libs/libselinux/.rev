@@ -787,4 +787,16 @@
 </comment>
     <requestid>1331575</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>525dca7c0d12a65aa1772e81d5e1a626</srcmd5>
+    <version>3.10</version>
+    <time>1778952230</time>
+    <user>dimstar_suse</user>
+    <comment>- Change License from SUSE-Public-Domain to LicenseRef-SUSE-Public-Domain
+  due to rpmlint invalid-license warning.
+- Change License from SUSE-Public-Domain to LicenseRef-SUSE-Public-Domain
+  due to rpmlint invalid-license warning.
+</comment>
+    <requestid>1353334</requestid>
+  </revision>
 </revisionlist>

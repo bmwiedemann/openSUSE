@@ -24,7 +24,7 @@ Name:           libselinux-bindings
 Version:        3.10
 Release:        0
 Summary:        SELinux runtime library and utilities
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
 Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{upname}-%{version}.tar.gz
