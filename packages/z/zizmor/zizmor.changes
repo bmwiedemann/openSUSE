@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 16 06:56:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.25.2:
+  * Bug Fixes
+    - Fixed a bug where the unpinned-tools audit would incorrectly
+      flag the aquasecurity/trivy-action action as installing an
+      unpinned tool version, rather than aquasecurity/setup-trivy
+      (#2018)
+- Update to version 1.25.1:
+  * Bug Fixes
+    - Fixed a bug where the cache-poisoning audit would fail to
+      consider release events as exempt from cache usage findings
+      when filtered by a tag condition (#2004)
+    - Fixed a typo when suggesting --fix flags for findings (#2010)
+    - Fixed a typo in unpinned-tools annotations (#2008)
+    - Fixed a bug where the github-app audit would incorrectly flag
+      some safe uses of actions/create-github-app-token as unsafe
+      (#2011)
+
+-------------------------------------------------------------------
 Fri May 15 07:31:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.25.0:
