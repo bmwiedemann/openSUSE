@@ -4,7 +4,7 @@ Tue May 12 04:51:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 - Update to 26.4.0:
   ## Security
   * Prevent a Denial of Service (DoS) attack via resource exhaustion during
-    DNS name decompression. (CVE-2026-42304)
+    DNS name decompression. (CVE-2026-42304) (bsc#1265265)
   ## Features
   * twisted.internet.ssl.CertificateOptions has a new constructor argument,
     contextForServerName, which takes a callback that will get invoked when a

@@ -1743,4 +1743,12 @@
   * Trial no longer emits the error RuntimeWarning: TestResult has no</comment>
     <requestid>1352593</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>2622cf3a6c72dae5656a2f04238f3d8e</srcmd5>
+    <version>26.4.0</version>
+    <time>1778952215</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing security bug reference</comment>
+    <requestid>1353254</requestid>
+  </revision>
 </revisionlist>
