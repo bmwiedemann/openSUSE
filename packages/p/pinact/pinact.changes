@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 16 06:16:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.10.1:
+  * Bug Fixes
+    - #1535 pin uses lines with multiple spaces after the YAML list
+      dash
+  * Dependencies
+    - chore(deps): update dependency aquaproj/aqua-registry to
+      v4.512.0 (#1533)
+    - chore(deps): update dependency suzuki-shunsuke/pinact to
+      v3.10.0 (#1532)
+
+-------------------------------------------------------------------
 Wed May 13 11:29:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.10.0:
