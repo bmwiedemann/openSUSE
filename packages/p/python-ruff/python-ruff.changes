@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu May 14 18:12:30 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.13 
+ * Preview features
+  * Add a rule to flag lazy imports that are eagerly evaluated 
+  * [pylint] Standardize diagnostic message (PLR0914, PLR0917) 
+ * Bug fixes
+  * Fix F811 false positive for class methods 
+  * Fix setting selection for multi-folder workspace 
+  * [eradicate] Fix false positive for lines with leading whitespace (ERA001) 
+  * [flake8-pyi] Fix false positive for f-string debug specifier (PYI016) 
+ * Rule changes
+  * Always include panic payload in panic diagnostic message 
+  * Restrict PYI034 for in-place operations to enclosing class 
+  * Improve error message for parameters that are declared global 
+  * Update known stdlib 
+ * Performance
+  * [isort] Avoid constructing glob::Patterns for literal known modules 
+ * CLI
+  * Add TOML examples to --config help text 
+  * Colorize ruff check 'All checks passed' 
+ * Configuration
+  * Increase max allowed value of line-length setting 
+ * Documentation
+  * Add D203 to rules that conflict with the formatter 
+  * Clarify COM819 and formatter interaction 
+  * Clarify that NotImplemented is a value, not an exception (F901) 
+  * Update number of lint rules supported 
+ * Other changes
+  * Simplify the playground's markdown template 
+
+-------------------------------------------------------------------
 Sat Apr 25 16:03:17 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.15.12 
