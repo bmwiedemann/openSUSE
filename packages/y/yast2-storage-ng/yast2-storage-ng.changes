@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 15 13:43:54 UTC 2026 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Use the session keyring instead of the user one to communicate
+  with sdbootutil (related to jsc#PED-10703).
+- 5.0.48 
+
+-------------------------------------------------------------------
+Fri May 15 10:59:55 UTC 2026 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Make sure to mount sys/kernel/security for the final steps of
+  the installation (related to jsc#PED-10703).
+- 5.0.47
+
+-------------------------------------------------------------------
+Thu May 14 08:03:48 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Set BLS LEGACY bootloader as BLS (related to jsc#PED-10703).
+- 5.0.46
+
+-------------------------------------------------------------------
 Wed May 13 08:50:12 UTC 2026 - José Iván López González <jlopez@suse.com>
 
 - Allow checking if a bootloader type is BLS-compliant (related to
