@@ -15,4 +15,12 @@
     <comment>Some packages might still be behind wlroots version. </comment>
     <requestid>1338437</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c143b9bf5674b5a3055e3b0fd2990031</srcmd5>
+    <version>0.18.2</version>
+    <time>1778952304</time>
+    <user>dimstar_suse</user>
+    <comment>fix build in package</comment>
+    <requestid>1353471</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  9 11:26:18 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Fix build by ignoring error discarded-qualifiers
+
+-------------------------------------------------------------------
 Thu Mar 12 05:57:38 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Attempt to ignore error "unhandled switch"

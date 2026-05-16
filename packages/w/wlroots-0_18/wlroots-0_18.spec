@@ -105,7 +105,7 @@ Pluggable, composable modules for building a Wayland compositor.
 %autosetup -p1 -n wlroots-%{version}
 
 %build
-export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls -Wno-error=switch"
+export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls -Wno-error=switch -Wno-error=discarded-qualifiers"
 %meson \
   "-Dbackends=[
     %{?with_drm_backend:'drm',}
