@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat May 16 07:36:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.117.0:
+  * Features
+    - feat: add azure devops support @olblak (#8586)
+    - feat(autodiscovery/argocd): enhance support of ApplicationSet
+      with multiple sources @af-beng (#8677)
+    - feat: allow Updatecli manifest dependson @olblak (#8437)
+    - feat: show updatecli warning if using outdated version
+      @olblak (#8567)
+  * Bug Fixes
+    - fix(autodiscovery/golang): correctly handle pseudo version
+      @olblak (#8698)
+    - fix(autodiscovery/flux): skip HelmRelease without chart
+      template to avoid nil pointer panic @jouve (#8680)
+    - fix: handle skipped condition dependencies in target gating
+      @nickzerjeski (#8426)
+    - feat(autodiscovery/precommit): detect rev version from
+      comment @nickzerjeski (#8402)
+    - fix(bitbucket): use FindBranch and paginate PR listing in
+      pullrequest… @roulettedares (#8584)
+  * Maintenance
+    - deps: Bump Golang version to 1.26.3 @updateclibot[bot]
+      (#8709)
+    - chore(deps): update github.com/Masterminds/semver/v3 to
+      v3.5.0 @olblak (#8699)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.18.0 to
+      5.19.0 in the go_modules group across 1 directory
+      @dependabot[bot] (#8690)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.299.1
+      @updateclibot[bot] (#8671)
+    - chore(ci): upgrade uv version @updateclibot[bot] (#8663)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.17 @updateclibot[bot] (#8661)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.19.16
+      @updateclibot[bot] (#8653)
+    - deps(go): bump module github.com/aws/smithy-go to v1.25.1
+      @updateclibot[bot] (#8640)
+    - deps(go): bump module github.com/invopop/jsonschema to
+      v0.14.0 @updateclibot[bot] (#8623)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.299.0
+      @updateclibot[bot] (#8619)
+    - deps(go): bump module github.com/jferrl/go-githubauth to
+      v1.6.0 @updateclibot[bot] (#8615)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.8.3 @updateclibot[bot] (#8610)
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.5.4 @updateclibot[bot] (#8601)
+    - deps(go): bump module github.com/zclconf/go-cty to v1.18.1
+      @updateclibot[bot] (#8558)
+    - deps(go): bump module github.com/drone/go-scm to v1.42.2
+      @updateclibot[bot] (#8557)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.297.1
+      @updateclibot[bot] (#8552)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.16 @updateclibot[bot] (#8544)
+    - chore: update updatecli version and streamline workflow steps
+      @olblak (#8534)
+    - deps: bump Updatecli GH action @olblak (#8524)
+  * Documentation
+    - doc: add devoxx fr talk record @olblak (#8725)
+
+-------------------------------------------------------------------
 Mon Apr 20 17:13:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.116.3:
