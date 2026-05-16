@@ -1,7 +1,7 @@
 #
 # spec file for package stb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source0:        stb-%{version}.tar.xz
 Source1:        stb.pc.in
 # perlin.h got removed in git, breaking build
 Patch1:         fix-compile.patch
+# Properly handle all LP64 platforms
+Patch2:         lp64.patch
 BuildRequires:  c++_compiler
 BuildArch:      noarch
 
