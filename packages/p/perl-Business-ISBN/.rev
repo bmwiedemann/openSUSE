@@ -259,4 +259,17 @@
   	* require a newer version.pm for v5.10.1 tests (forwarded request 1278601 from tinita)</comment>
     <requestid>1279036</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>fdef828f79768b78abec73a9bc71f696</srcmd5>
+    <version>3.14.0</version>
+    <time>1778952263</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.14.0 (3.014)
+   see /usr/share/doc/packages/perl-Business-ISBN/Changes
+  3.014 2026-05-07T03:15:25Z
+  	* update tests whose bad ISBNs are now good (#27)
+  3.013 2026-03-11T18:28:36Z
+  	* be more careful about guarding -&gt;png in png_barcode (#6)</comment>
+    <requestid>1353085</requestid>
+  </revision>
 </revisionlist>

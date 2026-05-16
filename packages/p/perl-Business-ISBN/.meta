@@ -2,5 +2,4 @@
   <title>Work with International Standard Book Numbers</title>
   <description>This modules handles International Standard Book Numbers, including ISBN-10
 and ISBN-13.</description>
-  <devel project="devel:languages:perl" package="perl-Business-ISBN"/>
 </package>
