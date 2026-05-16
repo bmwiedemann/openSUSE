@@ -47,24 +47,23 @@ ExcludeArch: %ix86
     tbx2po template2translation tiki2po toml2po ts2po txt2po web2py2po wxl2po xliff2odf xliff2oo xliff2po yaml2po}
 %define binaries %{shrink: %binaries_and_manpages\
     pocommentclean pocompendium pocount pomigrate2 popuretext poreencode posplit prop2mozfunny \
-    pydiff junitmsgfmt md2po po2md po2sub sub2po}
+    pydiff junitmsgfmt md2po mdx2po po2md po2mdx po2sub sub2po}
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.19.7
+Version:        3.19.9
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
 URL:            https://toolkit.translatehouse.org/
 Source:         https://github.com/translate/translate/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
-BuildRequires:  %{python_module cheroot >= 10}
 BuildRequires:  %{python_module iniparse >= 0.5}
 BuildRequires:  %{python_module lxml >= 5.2.0}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module phply >= 1.2.6}
-BuildRequires:  %{python_module ruamel.yaml >= 0.18.0}
+BuildRequires:  %{python_module ruamel.yaml >= 0.19.1}
 BuildRequires:  %{python_module setuptools >= 78.0.2}
 BuildRequires:  %{python_module vobject >= 0.9.9}
 BuildRequires:  %{python_module wheel}
@@ -86,18 +85,15 @@ Recommends:     %{name}-doc
 Recommends:     %{name}-man
 Recommends:     gaupol
 Recommends:     iso-codes
-Recommends:     python-Levenshtein >= 0.21.0
-Recommends:     python-aeidon >= 1.14.1
-Recommends:     python-beautifulsoup4 >= 4.13.0
+Recommends:     python-aeidon >= 1.15
 Recommends:     python-charset-normalizer >= 3.4.0
-Recommends:     python-cheroot >= 10
 Recommends:     python-fluent.syntax >= 0.19.0
 Recommends:     python-iniparse >= 0.5
 Recommends:     python-mistletoe >= 1.4.0
 Recommends:     python-phply >= 1.2.6
-Recommends:     python-pyenchant >= 3.2.2
+Recommends:     python-pyenchant >= 3.3.0
 Recommends:     python-pyparsing >= 3.2.0
-Recommends:     python-ruamel.yaml >= 0.18.0
+Recommends:     python-ruamel.yaml >= 0.19.1
 Recommends:     python-vobject >= 0.9.9
 %if %{without test} && %{without doc} && ("%{python_flavor}" == "python3" || "%{?python_provides}" == "python3")
 Provides:       translate-toolkit = %{version}-%{release}
@@ -105,13 +101,11 @@ Obsoletes:      translate-toolkit < %{version}-%{release}
 %endif
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Levenshtein >= 0.21.0}
-BuildRequires:  %{python_module aeidon >= 1.14.1}
-BuildRequires:  %{python_module beautifulsoup4 >= 4.13.0}
-BuildRequires:  %{python_module charset-normalizer >= 3.3.2}
+BuildRequires:  %{python_module aeidon >= 1.15}
+BuildRequires:  %{python_module charset-normalizer >= 3.4.0}
 BuildRequires:  %{python_module fluent.syntax >= 0.19.0}
 BuildRequires:  %{python_module mistletoe >= 1.4.0}
-BuildRequires:  %{python_module pyenchant >= 3.2.2}
+BuildRequires:  %{python_module pyenchant >= 3.3.0}
 BuildRequires:  %{python_module pyparsing >= 3.2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-xdist}
@@ -249,7 +243,8 @@ done
 %check
 %if %{with test}
 rm -v tests/translate/storage/test_fluent.py
-%pytest
+# test_cli_case tests concerning binaries are broken with libalternatives (bin_name vs bin_name-3.11)
+%pytest -k "not (test_cli_case and po)"
 %endif
 
 %if !%{with test}

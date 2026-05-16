@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 12 07:39:45 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.19.9
+  * Various improvements to many formats
+  * Require ruamel.yaml 0.19.1 or newer
+  * Convert command-line tests to syrupy snapshots
+
+-------------------------------------------------------------------
 Sat May  2 06:57:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to 3.19.7:
