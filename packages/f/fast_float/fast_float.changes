@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 15 02:44:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.5
+  * Replace std::min with ternary operators to avoid a dependency
+    on the <algorithm> header
+
+-------------------------------------------------------------------
 Fri Mar 20 09:02:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.2.4
