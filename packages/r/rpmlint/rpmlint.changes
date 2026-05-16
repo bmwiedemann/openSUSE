@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 14 09:23:01 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.9.0+git20260514.3411f3eb:
+  * dbus-services: added wall-broadcaster whitelisting (bsc#1263701)
+
+-------------------------------------------------------------------
 Tue May 12 08:16:36 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 2.9.0+git20260512.4e2e3f93:

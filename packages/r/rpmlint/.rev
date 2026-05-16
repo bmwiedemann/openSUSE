@@ -5656,4 +5656,14 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1352646</requestid>
   </revision>
+  <revision rev="539" vrev="1">
+    <srcmd5>d305644de1e84f35d608e7ab0069c4b6</srcmd5>
+    <version>2.9.0+git20260514.3411f3eb</version>
+    <time>1778952276</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.0+git20260514.3411f3eb:
+  * dbus-services: added wall-broadcaster whitelisting (bsc#1263701)
+</comment>
+    <requestid>1353153</requestid>
+  </revision>
 </revisionlist>
