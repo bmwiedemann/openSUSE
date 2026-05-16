@@ -17,7 +17,7 @@
 
 
 %define srcversion 7.0
-%define patchversion 7.0.6
+%define patchversion 7.0.7
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        7.0.6
+Version:        7.0.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g437be88
+Release:        <RELEASE>.gf1d450c
 %else
 Release:        0
 %endif
