@@ -1,0 +1,73 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2026-05-16 08:17:24.516015653 +0200
+
+SDL2_net is not doing symbol tracking (and there is no expectation
+that this will occur for SDL2; only for SDL3_net, if that ever
+happens). [This patch is similar to SDL2/sdl2-symvers.patch.]
+
+---
+ Makefile.am |    1 +
+ sdl2.sym    |   44 ++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 45 insertions(+)
+
+Index: SDL2_net-2.4.0/Makefile.am
+===================================================================
+--- SDL2_net-2.4.0.orig/Makefile.am
++++ SDL2_net-2.4.0/Makefile.am
+@@ -34,6 +34,7 @@ EXTRA_DIST = \
+ 
+ libSDL2_net_la_CPPFLAGS = -I$(srcdir)/include
+ libSDL2_net_la_LDFLAGS = 	\
++	-Wl,--version-script=${top_srcdir}/sdl2.sym \
+ 	-no-undefined		\
+ 	-release $(LT_RELEASE)	\
+ 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LT_EXTRA)
+Index: SDL2_net-2.4.0/sdl2.sym
+===================================================================
+--- /dev/null
++++ SDL2_net-2.4.0/sdl2.sym
+@@ -0,0 +1,44 @@
++SUSE_2.0.0 {
++global:
++	SDLNet_Linked_Version;
++	SDLNet_Init;
++	SDLNet_Quit;
++	SDLNet_ResolveHost;
++	SDLNet_ResolveIP;
++	SDLNet_GetLocalAddresses;
++	SDLNet_TCP_Open;
++	SDLNet_TCP_Accept;
++	SDLNet_TCP_GetPeerAddress;
++	SDLNet_TCP_Send;
++	SDLNet_TCP_Recv;
++	SDLNet_TCP_Close;
++	SDLNet_AllocPacket;
++	SDLNet_ResizePacket;
++	SDLNet_FreePacket;
++	SDLNet_AllocPacketV;
++	SDLNet_FreePacketV;
++	SDLNet_UDP_Open;
++	SDLNet_UDP_SetPacketLoss;
++	SDLNet_UDP_Bind;
++	SDLNet_UDP_Unbind;
++	SDLNet_UDP_GetPeerAddress;
++	SDLNet_UDP_SendV;
++	SDLNet_UDP_Send;
++	SDLNet_UDP_RecvV;
++	SDLNet_UDP_Recv;
++	SDLNet_UDP_Close;
++	SDLNet_AllocSocketSet;
++	SDLNet_AddSocket;
++	SDLNet_DelSocket;
++	SDLNet_CheckSockets;
++	SDLNet_FreeSocketSet;
++	SDLNet_SetError;
++	SDLNet_GetError;
++local:
++	*;
++};
++SUSE_2.4.0 {
++global:
++	SDLNet_TCP_OpenServer;
++	SDLNet_TCP_OpenClient;
++} SUSE_2.0.0;
