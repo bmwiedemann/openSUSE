@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed May 13 21:07:07 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.6.5:
+  * This is a bugfix release that is API and ABI compatible with
+    the previous 1.6.x releases.
+  * Highlights
+    - Fix muted output in some cases.
+    - Removed the pipe filter in filter-graph.
+    - More fixes and improvements.
+  * PipeWire
+    - Fix an issue in pw-filter where it could end up in a loop
+      where buffers are stuck on a port and the port becomes
+      silent. (#5249 (closed))
+  * Modules
+    - Improve ROC receiver start/stop, fixes memory leaks.
+      (#5250 (closed))
+    - Remove the pipe filter from filter-graph, it's broken by
+      design and a security nightmare.
+    - Fix the midi buffer size in jack-tunnel.
+  * SPA
+    - Rate limit out-of-buffers errors. (#5249 (closed))
+    - Partially revert the line-out mute patch, it seems to break
+      things and leave audio muted when plugging-unplugging jacks.
+      (#5246)
+    - Improve renegotiation in audioconvert when the graph rate
+      changes and the resampler was disabled. (#4933 (closed)).
+    - Fix potential crash in alsa when logging.
+  * Pulse-server
+    - A whole bunch of extra security checks and hardening fixes.
+
+-------------------------------------------------------------------
 Tue Apr 28 09:34:26 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not require pulseaudio-setup anymore 
