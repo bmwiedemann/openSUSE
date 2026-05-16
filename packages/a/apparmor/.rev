@@ -3147,4 +3147,12 @@ Detailed changelog:
   a separate directory)</comment>
     <requestid>1353063</requestid>
   </revision>
+  <revision rev="234" vrev="2">
+    <srcmd5>44b0407d06fc0516d71eedfeba68fb52</srcmd5>
+    <version>5.0.0</version>
+    <time>1778952250</time>
+    <user>dimstar_suse</user>
+    <comment>- add wpa_supplicant.diff: fix wpa_supplicant profile (boo#1265377) (forwarded request 1353519 from cboltz)</comment>
+    <requestid>1353520</requestid>
+  </revision>
 </revisionlist>
