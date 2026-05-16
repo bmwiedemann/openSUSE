@@ -925,4 +925,12 @@ Currently, openSUSE:Factory:Staging:E.
     <comment></comment>
     <requestid>1349982</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>c6fe16d20c432c240591d85036e8ba24</srcmd5>
+    <version>0.3.30</version>
+    <time>1778952239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1353421</requestid>
+  </revision>
 </revisionlist>

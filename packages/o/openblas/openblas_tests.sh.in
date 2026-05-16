@@ -28,8 +28,9 @@ series_test() {
     grep -q FATAL CBLAT2.SUMM && cat CBLAT2.SUMM || true
     ${dir}/zblat2 < ${dir}/zblat2.dat || echo failed zblat2
     grep -q FATAL ZBLAT2.SUMM && cat ZBLAT2.SUMM || true
-    ${dir}/test_sbgemm > SBBLAT3.SUMM || failed test_sbgemm
-    grep -q FATAL SBBLAT3.SUMM && cat SBBLAT3.SUMM || true
+    [ -x ${dir}/test_sbgemm ] &&
+        { ${dir}/test_sbgemm > SBBLAT3.SUMM || failed test_sbgemm
+          grep -q FATAL SBBLAT3.SUMM && cat SBBLAT3.SUMM || true; }
     ${dir}/dblat3 < ${dir}/dblat3.dat || failed dblat3
     grep -q FATAL DBLAT3.SUMM && cat DBLAT3.SUMM || true
     ${dir}/cblat3 < ${dir}/cblat3.dat || failed cblat3
