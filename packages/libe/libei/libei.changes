@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 15 04:43:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * A new ei_text interface that provides the ei_text.keysym and
+    ei_text.utf8 requests and events. These allow an emulating
+    client to send keysyms or straight utf8, useful for situations
+    where a keysym needs to be sent independent of the available
+    keymap on the ei_keyboard device.
+  * Preparatory work for future table support:
+  * ei_device.ready is a request sent by compatible clients after
+    ei_device.done to notify the EIS implementation that the client
+    is done with any device-specific configuration.
+  * ei_seat.request_device is a request sent by compatible clients
+    to request a device with specific capabilities. The EIS
+    implementation is not required to honor this request.
+
+-------------------------------------------------------------------
 Tue Aug 26 08:05:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.0

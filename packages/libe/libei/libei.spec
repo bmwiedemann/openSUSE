@@ -1,7 +1,7 @@
 #
 # spec file for package libei
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define lname libei1
 Name:           libei
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Library for emulated input in Wayland
 License:        MIT
