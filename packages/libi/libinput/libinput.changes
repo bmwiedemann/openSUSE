@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 14 23:58:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.31.2
+  * A bunch of device-specific quirks
+  * Fix for the new fast-swipe interaction during 3fg dragging. A
+    wrong timestamp calculation could cause slow movements to be
+    interpreted as swipes in some cases.
+  * A fix for the Acer Swift SFX14-73G (and likely other devices
+    with a similar touchpad) fixes a stuttering cursor caused by
+    wrong SYN_REPORT handling in libinput.
+
+-------------------------------------------------------------------
 Thu Apr  2 07:22:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.31.1
