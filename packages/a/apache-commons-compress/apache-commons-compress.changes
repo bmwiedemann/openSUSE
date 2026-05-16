@@ -101,7 +101,7 @@ Mon May 11 12:01:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
     + Refactor LZ77Compressor block classes to reduce duplication
     + Package-private and private classes can be final
     + Deprecate ArjArchiveEntry.HostOs.HostOs()
-    + Drop coveralls reference (no longer needed) 
+    + Drop coveralls reference (no longer needed)
     + Some ZIP operations won't read all data from a non-blocking
       file channel
     + COMPRESS-696: ZipArchiveInputStream.getCompressedCount()
@@ -237,7 +237,7 @@ Mon May 11 12:01:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
       unpack200.bytecode.LineNumberTableAttribute
     + Fix PMD CheckSkipResult in ZipArchiveInputStream.closeEntry()
   * Changes
-    + COMPRESS-684: Replace assert with Exception 
+    + COMPRESS-684: Replace assert with Exception
     + Bump org.apache.commons:commons-parent from 69 to 72
     + Bump PMD from 6.x to 7.2.0
     + Bump commons-codec:commons-codec from 1.17.0 to 1.17.1

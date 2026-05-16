@@ -122,9 +122,8 @@
         <attribute name="Implementation-Vendor" value="The Apache Software Foundation"/>
         <attribute name="Implementation-Version" value="${build.version}"/>
         <attribute name="Import-Package" value="com.github.luben.zstd;resolution:=optional,javax.crypto.spec;resolution:=optional,javax.crypto;resolution:=optional,org.apache.commons.codec.digest;resolution:=optional,org.apache.commons.codec;resolution:=optional,org.apache.commons.io.build;resolution:=optional,org.apache.commons.io.file.attribute;resolution:=optional,org.apache.commons.io.file;resolution:=optional,org.apache.commons.io.function;resolution:=optional,org.apache.commons.io.input;resolution:=optional,org.apache.commons.io.output;resolution:=optional,org.apache.commons.io;resolution:=optional,org.apache.commons.lang3.function;resolution:=optional,org.apache.commons.lang3.reflect;resolution:=optional,org.apache.commons.lang3;resolution:=optional,org.brotli.dec;resolution:=optional,org.objectweb.asm;resolution:=optional,org.tukaani.xz;resolution:=optional"/>
-        <attribute name="Include-Resource" value="META-INF/LICENSE.txt=LICENSE.txt,META-INF/NOTICE.txt=NOTICE.txt"/>
         <attribute name="Main-Class" value="org.apache.commons.compress.archivers.Lister"/>
-        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=1.8))&quot;"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
         <attribute name="Specification-Title" value="Apache Commons Compress"/>
         <attribute name="Specification-Vendor" value="The Apache Software Foundation"/>
         <attribute name="Specification-Version" value="${build.version}"/>

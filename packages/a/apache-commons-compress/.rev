@@ -63,4 +63,12 @@
     <comment>1.28.0 with zstd, pack200 and brotli support</comment>
     <requestid>1352968</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7b91b6c3738893351018b088a34b3fb3</srcmd5>
+    <version>1.28.0</version>
+    <time>1778952220</time>
+    <user>dimstar_suse</user>
+    <comment>Fix a lag of git workflow</comment>
+    <requestid>1353305</requestid>
+  </revision>
 </revisionlist>
