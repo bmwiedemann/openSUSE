@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed May 13 21:03:43 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.5.20:
+  * gpgsm: Implement GCM encryption.  Note that decryption works
+    since version 2
+  * gpgsm: New option --attribute and server command SETATTR to
+    include arbitrary signed or unsigned attributes into a signature.
+    Enable only with libksba 1
+  * gpgsm: Introduce system attribute _signingCertificateV2.
+  * gpg: Fix wrong assertion failure which could very rarely occur
+    during key signature checking
+  * gpg: Consider certify-only keys for revocation signature check.
+  * gpgsm: Fix possible double free in the CMS parser
+  * gpgsm: Fix possible too early removal of ephemeral keys
+  * gpgsm: Avoid emitting a final FAILURE status line if --status-fd
+    is not used
+  * gpgsm: Fix a regression in 2.5.19 for password encrypted GCM
+    data
+  * agent: Fix not using cache for pinentry loopback
+  * agent: Fix command PUT_SECRET by saving input line
+  * keyboxd: Mark keys searched but not imported via LDAP correctly
+    as ephemeral
+  * scdaemon: Avoid buffer overflow with SC-HSM cards providing RSA
+    keys > 2k
+  * dirmngr: Fix uninitialized use of the dns_any union in
+    dns_rr_cmp
+
+-------------------------------------------------------------------
 Sat Apr 25 17:44:26 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.5.19:
