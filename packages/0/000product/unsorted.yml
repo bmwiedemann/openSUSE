@@ -24137,7 +24137,6 @@ unsorted:
   - python3-libftdi1 
   - python3-libguestfs 
   - python3-libixion 
-  - python3-libmodulemd 
   - python3-libnbd 
   - python3-libnvme 
   - python3-liborcus 
@@ -26224,6 +26223,7 @@ unsorted:
   - python311-ldaptor 
   - python311-ldas-tools-al-swig 
   - python311-leather 
+  - python311-legacy-cgi 
   - python311-legacycrypt 
   - python311-leglight 
   - python311-lesscpy 
@@ -26260,6 +26260,7 @@ unsorted:
   - python311-liblnk 
   - python311-libluksde 
   - python311-libmodi 
+  - python311-libmodulemd 
   - python311-libmount 
   - python311-libmsiecf 
   - python311-libmsym 
@@ -30201,6 +30202,7 @@ unsorted:
   - python313-liblnk 
   - python313-libluksde 
   - python313-libmodi 
+  - python313-libmodulemd 
   - python313-libmount 
   - python313-libmsiecf 
   - python313-libmsym 
@@ -34151,6 +34153,7 @@ unsorted:
   - python314-liblnk 
   - python314-libluksde 
   - python314-libmodi 
+  - python314-libmodulemd 
   - python314-libmount 
   - python314-libmsiecf 
   - python314-libmsym 
