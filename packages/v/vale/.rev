@@ -957,4 +957,19 @@
   * fix: correctly ignore `class` values in HTML (forwarded request 1341618 from jfkw)</comment>
     <requestid>1341620</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>1486c2272d137cd8bf92fd30f95c4240</srcmd5>
+    <version>3.14.2</version>
+    <time>1778952298</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.14.2:
+  * chore: drop yaml v2
+  * fix: move to gopkg.in/yaml.v3
+  * Bugfix/path expansion (#1096)
+  * chore(deps): upgrade github.com/olekukonko/tablewriter from v0.0.5 to v1.1.4 (#1092)
+  * fix: add FLAG num support for agglutinative languages (#1090)
+  * chore: update clone path
+  * chore(deps): bump github.com/tomwright/dasel/v3 from 3.3.1 to 3.3.2 (#1088) (forwarded request 1353467 from jfkw)</comment>
+    <requestid>1353468</requestid>
+  </revision>
 </revisionlist>
