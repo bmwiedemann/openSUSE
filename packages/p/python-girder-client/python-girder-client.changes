@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 17 14:02:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.6:
+  * Replaced pkg_resources usage with importlib.metadata.
+  * Added a 'list' command to the CLI for browsing resources.
+  * Updated Python requirement to >= 3.10.
+  * Updated tarball directory name to girder_client.
+
+-------------------------------------------------------------------
 Sat Feb  3 13:40:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:

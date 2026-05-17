@@ -78,4 +78,16 @@
 - switch to PEP517 build</comment>
     <requestid>1143811</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>316e1b6cc40d9911d3865245164a92e0</srcmd5>
+    <version>5.0.6</version>
+    <time>1779037026</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.6:
+  * Replaced pkg_resources usage with importlib.metadata.
+  * Added a 'list' command to the CLI for browsing resources.
+  * Updated Python requirement to &gt;= 3.10.
+  * Updated tarball directory name to girder_client.</comment>
+    <requestid>1353589</requestid>
+  </revision>
 </revisionlist>

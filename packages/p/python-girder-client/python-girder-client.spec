@@ -1,7 +1,7 @@
 #
 # spec file for package python-girder-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-girder-client
-Version:        3.2.1
+Version:        5.0.6
 Release:        0
 Summary:        Python Girder client
 License:        Apache-2.0
 URL:            https://girder.readthedocs.io/en/latest/python-client.html
-Source:         https://files.pythonhosted.org/packages/source/g/girder-client/girder-client-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/girder-client/girder_client-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -46,7 +46,7 @@ This package provides the client for interacting
 with Girder servers
 
 %prep
-%setup -q -n girder-client-%{version}
+%setup -q -n girder_client-%{version}
 sed -i -e '/^#!\//, 1d' girder_client/*.py
 
 %build
