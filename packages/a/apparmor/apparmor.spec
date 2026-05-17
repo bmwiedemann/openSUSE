@@ -95,8 +95,11 @@ Patch13:        postfix-profiles-slash.diff
 # avoid double slashes (and therefore a path mismatch) in syslog-ng profile (merged upstream 2026-05-05 https://gitlab.com/apparmor/apparmor/-/merge_requests/2090 for 5.0 and master, will be in 5.0.1)
 Patch14:        syslog-ng-slashes.diff
 
-# wpa_supplicant profile additions (boo#1265377)
+# wpa_supplicant profile additions (boo#1265377) (submitted upstream 2026-05-16 https://gitlab.com/apparmor/apparmor/-/merge_requests/2103 for 5.0 and master)
 Patch15:        wpa_supplicant.diff
+
+# lsusb profile additions (submitted upstream 2026-05-16 https://gitlab.com/apparmor/apparmor/-/merge_requests/2102 for 5.0 and master)
+Patch16:        lsusb.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -372,6 +375,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch -P 13 -p1
 %patch -P 14 -p1
 %patch -P 15 -p1
+%patch -P 16 -p1
 
 %build
 export SUSE_ASNEEDED=0

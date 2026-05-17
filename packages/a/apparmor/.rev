@@ -3155,4 +3155,12 @@ Detailed changelog:
     <comment>- add wpa_supplicant.diff: fix wpa_supplicant profile (boo#1265377) (forwarded request 1353519 from cboltz)</comment>
     <requestid>1353520</requestid>
   </revision>
+  <revision rev="235" vrev="3">
+    <srcmd5>ab601b9837383516eb4c5292d2292268</srcmd5>
+    <version>5.0.0</version>
+    <time>1779036991</time>
+    <user>dimstar_suse</user>
+    <comment>- add lsusb.diff: fix lsusb profile (forwarded request 1353556 from cboltz)</comment>
+    <requestid>1353557</requestid>
+  </revision>
 </revisionlist>

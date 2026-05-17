@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 16 18:41:47 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- add lsusb.diff: fix lsusb profile
+
+-------------------------------------------------------------------
 Sat May 16 11:44:12 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
 
 - add wpa_supplicant.diff: fix wpa_supplicant profile (boo#1265377)
