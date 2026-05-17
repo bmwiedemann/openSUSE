@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 15 08:02:11 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.8.0:
+  * New function ksba_cms_get_attribute. [rKf40bfced7c]
+  * Support building of unsigned attributes with
+    ksba_cms_add_attribute.  [rK54d7e3bea8]
+  * Release-info: https://dev.gnupg.org/T8253
+
+-------------------------------------------------------------------
 Sun May 10 10:14:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.7.0:
