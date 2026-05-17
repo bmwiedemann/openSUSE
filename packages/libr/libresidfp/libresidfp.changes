@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 16 13:25:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Updated to version 1.0.2
+  * Linked with pthread.
+  * Fixed a bunch of shadow warnings.
+  * Restored pre-c++17 compatibility.
+
+-------------------------------------------------------------------
 Thu May  7 15:47:45 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Initialized 1.0.1.
