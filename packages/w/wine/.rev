@@ -5882,4 +5882,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.8 release</comment>
     <requestid>1350458</requestid>
   </revision>
+  <revision rev="492" vrev="1">
+    <srcmd5>501b24c076b726ff04a68d93bbc0d948</srcmd5>
+    <version>11.9</version>
+    <time>1779037003</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 11.9 release
+  - Bundled SQLite library.
+  - Initial support for system threads.
+  - Thread suspension in emulated code on ARM64.
+  - More VBScript compatibility improvements.
+  - Various bug fixes.
+- update staging to 11.9 release</comment>
+    <requestid>1353552</requestid>
+  </revision>
 </revisionlist>

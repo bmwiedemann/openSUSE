@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 16 11:59:05 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.9 release
+  - Bundled SQLite library.
+  - Initial support for system threads.
+  - Thread suspension in emulated code on ARM64.
+  - More VBScript compatibility improvements.
+  - Various bug fixes.
+- update staging to 11.9 release
+
+-------------------------------------------------------------------
 Sat May  2 11:37:53 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.8 release
