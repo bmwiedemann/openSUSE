@@ -12,4 +12,16 @@ so far the only drawback is that user has to login compared from flatpak
 secaudit requested in boo#1259068</comment>
     <requestid>1337287</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>30dfd956f091492f7c79ed172cfdca64</srcmd5>
+    <version>361</version>
+    <time>1779037015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 361 (boo#1262600):
+  + Replace libwebkit2gtk3 and typelib-1_0-WebKit2-4_1 with
+    libwebkit2gtk4 and typelib-1_0-WebKit-6_0 Requires following
+    cockpits port to gtk4.
+  + Add typelib-1_0-Adw-1 Requires, new run-time dependency.</comment>
+    <requestid>1353571</requestid>
+  </revision>
 </revisionlist>

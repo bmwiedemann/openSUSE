@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 Name:           cockpit-client-launcher
-Version:        356
+Version:        361
 Release:        0
 Summary:        Flatpak-free launcher for the Cockpit GTK client
 License:        LGPL-2.1-or-later
@@ -26,9 +26,9 @@ Source3:        cockpit-icon-y2-colors.svg
 BuildRequires:  hicolor-icon-theme
 Requires:       cockpit-ws
 Requires:       cockpit-system
-# Not so sure about this particular one
-Requires:       libwebkit2gtk3
-Requires:       typelib-1_0-WebKit2-4_1
+Requires:       libwebkit2gtk4
+Requires:       typelib-1_0-WebKit-6_0
+Requires:       typelib-1_0-Adw-1 
 Requires:       zenity
 Recommends:     cockpit-ws-selinux
 BuildArch:      noarch

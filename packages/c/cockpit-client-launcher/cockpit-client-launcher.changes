@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 26 19:09:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 361 (boo#1262600):
+  + Replace libwebkit2gtk3 and typelib-1_0-WebKit2-4_1 with
+    libwebkit2gtk4 and typelib-1_0-WebKit-6_0 Requires following
+    cockpits port to gtk4.
+  + Add typelib-1_0-Adw-1 Requires, new run-time dependency.
+
+-------------------------------------------------------------------
 Thu Mar  5 23:32:13 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add dependency on a cockpit-system
