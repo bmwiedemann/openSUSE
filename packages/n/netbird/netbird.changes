@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat May 16 15:32:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.71.2:
+  - [management] Avoid peer IP reallocation when account settings
+    update preserves the network range by @lixmal in #6173
+  - [management] Avoid context cancellation in cancelPeerRoutines
+    by @mlsmaycon in #6175
+  - [client] Clean up legacy 32-bit and HKCU registry entries on
+    Windows install by @lixmal in #6176
+
+-------------------------------------------------------------------
+Fri May 15 19:04:53 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.71.1:
+  - [client] Mirror v4 exit selection onto v6 pair and honour
+    SkipAutoApply per route by @lixmal in #6150
+  - [client] Drop DNS probes for passive health projection by
+    @lixmal in #5971
+  - [proxy] auth token generation on mapping by @crn4 in #6157
+
+-------------------------------------------------------------------
 Thu May 14 19:00:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.71.0:
