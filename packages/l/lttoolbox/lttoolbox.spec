@@ -1,7 +1,7 @@
 #
 # spec file for package lttoolbox
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 Name:           lttoolbox
 %define lname   liblttoolbox3
-Version:        3.8.2
+Version:        3.8.3
 Release:        0
 Summary:        Toolbox for lexical processing and morphological analysis
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://apertium.org/
 Source:         https://github.com/apertium/lttoolbox/archive/v%version.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake-full
+BuildRequires:  boost-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  utfcpp-devel

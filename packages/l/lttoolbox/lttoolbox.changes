@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 16 00:14:25 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.8.3
+  * Drop stray \t in ATT printing
+  * Allow C2Y, C23, C++26 compilation modes
+
+-------------------------------------------------------------------
 Fri Aug 15 00:08:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.8.2
