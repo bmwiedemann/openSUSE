@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 10 09:17:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Minimum supported Python version is now 3.11.
+  * numpy >= 1.21 is required.
+  * License changed to LGPL-3.0-or-later.
+
+-------------------------------------------------------------------
 Fri May  9 05:10:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -149,4 +157,3 @@ Wed Jan 11 14:56:08 UTC 2012 - toddrme2178@gmail.com
 Thu Sep  8 23:50:57 UTC 2011 - alinm.elena@gmail.com
 
 - initial commit
-

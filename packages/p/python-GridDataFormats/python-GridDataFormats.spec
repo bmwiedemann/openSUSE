@@ -1,7 +1,7 @@
 #
 # spec file for package python-GridDataFormats
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,25 @@
 
 
 Name:           python-GridDataFormats
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        Python Tools for Reading and writing of data on regular grids
-License:        GPL-3.0-only
+License:        LGPL-3.0-or-later
 URL:            https://github.com/MDAnalysis/GridDataFormats/
-Source0:        https://files.pythonhosted.org/packages/source/G/GridDataFormats/GridDataFormats-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/G/GridDataFormats/griddataformats-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 40.9.0}
+BuildRequires:  %{python_module versioningit}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mrcfile
-Requires:       python-numpy >= 1.0.3
+Requires:       python-numpy >= 1.21
 Requires:       python-scipy
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mrcfile}
-BuildRequires:  %{python_module numpy >= 1.0.3}
-BuildRequires:  %{python_module paramiko}
+BuildRequires:  %{python_module numpy >= 1.21}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 # /SECTION
@@ -48,7 +48,7 @@ make them available as a :class:`Grid` object, and allows one to
 write out the data again.
 
 %prep
-%autosetup -p1 -n GridDataFormats-%{version}
+%autosetup -p1 -n griddataformats-%{version}
 
 %build
 %pyproject_wheel
@@ -61,7 +61,7 @@ write out the data again.
 %pytest
 
 %files %{python_files}
-%doc AUTHORS CHANGELOG README.rst
+%doc CHANGELOG README.rst
 %license COPYING*
 %{python_sitelib}/gridData
 %{python_sitelib}/[Gg]rid[Dd]ata[Ff]ormats-%{version}.dist-info
