@@ -25,4 +25,15 @@
     <comment>update to v4.7.7</comment>
     <requestid>1353071</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>953abf579921fc509249a8df571789d2</srcmd5>
+    <version>4.7.7</version>
+    <time>1779037007</time>
+    <user>dimstar_suse</user>
+    <comment>- Changes: 
+  * Removed 'matugen' as Recommends dependency (noctalia has its own built in template colors generator)
+  * Fixed launch command in %description from 'noctalia-qs' to 'qs' (noctalia-qs only applied to NixOS users, openSUSE and other distributions still use 'quickshell' or 'qs' as launch commands)
+  * Changed 'tar' and 'recompress' services mode to 'buildtime'</comment>
+    <requestid>1353561</requestid>
+  </revision>
 </revisionlist>

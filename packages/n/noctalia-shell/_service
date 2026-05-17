@@ -9,8 +9,8 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">noctalia-shell</param>
   </service>
-  <service name="tar" mode="manual" />
-  <service name="recompress" mode="manual">
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">zst</param>
   </service>

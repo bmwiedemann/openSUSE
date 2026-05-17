@@ -36,7 +36,6 @@ Recommends:     cliphist
 Recommends:     ddcutil
 Recommends:     inter-fonts
 Recommends:     inter-variable-fonts
-Recommends:     matugen
 Recommends:     power-profiles-daemon
 Recommends:     upower
 Recommends:     wlsunset
@@ -59,9 +58,7 @@ out of compositor responsibilities.
 Native support is provided for Niri, Hyprland, Sway, Scroll, Labwc
 and MangoWC. Launch with:
 
-    noctalia-qs -c noctalia-shell
-
-from your compositor autostart, or simply run "qs -c noctalia-shell".
+    qs -c noctalia-shell
 
 %prep
 %autosetup -p1
