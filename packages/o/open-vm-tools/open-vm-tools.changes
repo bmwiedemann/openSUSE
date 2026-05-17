@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri May 15 07:22:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.1.0 release based on build 25218885: (boo#1265304)
+  Please refer to the Release Notes at
+  https://github.com/vmware/open-vm-tools/blob/stable-13.1.0/ReleaseNotes.md.
+  Support for GNOME Toolkit version 4.
+
+  This release of open-vm-tools supports building with either the
+  GNOME Toolkit version 4 (GTK4) or to continue using version 3
+  (GTK3). The configure script will accept options to restrict the
+  build to either GTK3 or GTK4. If no restriction is applied, the
+  latest version for which the required development package(s) are
+  installed will be used. Please see the What's New section of the
+  Release Notes for details.
+  The following github issues have been resolved:
+  - issue #707
+  - issue #763
+
+  The granular changes that have gone into the open-vm-tools 13.1.0
+  release are in the ChangeLog at
+  https://github.com/vmware/open-vm-tools/blob/stable-13.1.0/open-vm-tools/ChangeLog.
+
+  For a more complete description of what is new in this release,
+  see the What's New and Resolved Issues sections of the Release
+  Notes.
+  https://github.com/vmware/open-vm-tools/blob/stable-13.1.0/ReleaseNotes.md#whatsnew
+  https://github.com/vmware/open-vm-tools/blob/stable-13.1.0/ReleaseNotes.md#resolved-issues
+
+-------------------------------------------------------------------
 Mon Apr 27 12:03:07 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
 - Fix build with glibc 2.43 (boo#1257312)

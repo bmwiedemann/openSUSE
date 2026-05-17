@@ -38,7 +38,7 @@
 %define with_X 1
 
 Name:           open-vm-tools
-Version:        13.0.10
+Version:        13.1.0
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
