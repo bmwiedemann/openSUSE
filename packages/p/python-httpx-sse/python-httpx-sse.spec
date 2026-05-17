@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpx-sse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpx-sse
-Version:        0.4.0
+Version:        0.4.3
 Release:        0
 Summary:        Consume Server-Sent Event (SSE) messages with HTTPX
 License:        MIT
 URL:            https://github.com/florimondmanca/httpx-sse
-Source:         https://files.pythonhosted.org/packages/source/h/httpx-sse/httpx-sse-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/florimondmanca/httpx-sse/pull/29 chore: Migrate test case and bump python version
-Patch0:         httpx028.patch
+Source:         https://files.pythonhosted.org/packages/source/h/httpx-sse/httpx_sse-%{version}.tar.gz
 BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -44,7 +42,7 @@ BuildArch:      noarch
 Consume Server-Sent Event (SSE) messages with HTTPX.
 
 %prep
-%autosetup -p1 -n httpx-sse-%{version}
+%autosetup -p1 -n httpx_sse-%{version}
 # we don't need to run coverage
 sed -i '/--cov/d' setup.cfg
 

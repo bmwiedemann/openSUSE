@@ -7,4 +7,12 @@
     <comment>Required by `python-mcp`, which is in turn one of dependencies of `python-mistral-vibe`.</comment>
     <requestid>1327297</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>01d629496bc0ff52585ae0cc3f2adbf3</srcmd5>
+    <version>0.4.3</version>
+    <time>1779037017</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1353574</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 10 09:07:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.3:
+  * Fix performance issue introduced by the improved line parsing
+    from release 0.4.2. (Pull #40)
+  * Fix incorrect newline parsing that was not compliant with SSE
+    spec. (Pull #37)
+  * Always close the response async generator in `aiter_sse()`.
+    (Pull #30)
+- drop httpx028.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Jun 23 15:02:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Initial release (v0.4.0), needed by python-mcp
