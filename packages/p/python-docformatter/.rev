@@ -126,4 +126,33 @@
     <comment></comment>
     <requestid>1318159</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a6a69ebc4e67193f34259003650b6196</srcmd5>
+    <version>1.7.8</version>
+    <time>1779037024</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.8:
+  * [#335] Match spacing after module docstring between black and
+    `--black`  (@adamtheturtle)
+  * [#336] fix: handle multiline string in parameter formatting
+    (@finswimmer)
+  * [#339] fix: add multi-line window creation for section header
+    detection  (@finswimmer)
+  * [#330] fix: resolve several empty line regressions
+    (@finswimmer)
+  * [#325] Remove external untokenize package. Use tokenize from
+    the Python standard library.  (@tdenewiler)
+  * [#323] fix: issue 321  (@weibullguy)
+  * [#322] test: add tests to ensure no regression leading to bug
+    in issue 259  (@weibullguy)
+  * [#318] refactor: split long functions into smaller functions
+    (@weibullguy)
+  * [#314] fix: update README example  (@weibullguy)
+  * [#320] chore: issue 288  (@weibullguy)
+- drop ignore-utf16.patch (upstream)
+
+  * Document and test disabling of wrapping
+  * Add @kapsh</comment>
+    <requestid>1353587</requestid>
+  </revision>
 </revisionlist>

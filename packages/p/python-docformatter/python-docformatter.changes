@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun May 17 13:50:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.8:
+  * [#335] Match spacing after module docstring between black and
+    `--black`  (@adamtheturtle)
+  * [#336] fix: handle multiline string in parameter formatting
+    (@finswimmer)
+  * [#339] fix: add multi-line window creation for section header
+    detection  (@finswimmer)
+  * [#330] fix: resolve several empty line regressions
+    (@finswimmer)
+  * [#325] Remove external untokenize package. Use tokenize from
+    the Python standard library.  (@tdenewiler)
+  * [#323] fix: issue 321  (@weibullguy)
+  * [#322] test: add tests to ensure no regression leading to bug
+    in issue 259  (@weibullguy)
+  * [#318] refactor: split long functions into smaller functions
+    (@weibullguy)
+  * [#314] fix: update README example  (@weibullguy)
+  * [#320] chore: issue 288  (@weibullguy)
+- drop ignore-utf16.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Nov 14 13:51:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream ignore-utf16.patch to fix test failure
@@ -115,8 +138,8 @@ Sun Jul 29 13:14:37 UTC 2018 - jengelh@inai.de
 Thu May 24 17:31:41 UTC 2018 - toddrme2178@gmail.com
 
 - Update to version 1.0
-  * Document and test disabling of wrapping 
-  * Add @kapsh 
+  * Document and test disabling of wrapping
+  * Add @kapsh
   * Make text wrapping trigger more conservative
   * Adds support for argument lists
 - Spec file cleanups

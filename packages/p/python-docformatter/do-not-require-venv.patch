@@ -1,8 +1,8 @@
-Index: docformatter-1.7.5/tests/conftest.py
+Index: docformatter-1.7.8/tests/conftest.py
 ===================================================================
---- docformatter-1.7.5.orig/tests/conftest.py
-+++ docformatter-1.7.5/tests/conftest.py
-@@ -113,8 +113,9 @@ def run_docformatter(arguments, temporar
+--- docformatter-1.7.8.orig/tests/conftest.py
++++ docformatter-1.7.8/tests/conftest.py
+@@ -114,8 +114,9 @@ def run_docformatter(arguments, temporar
              os.environ["VIRTUAL_ENV"] + "/bin/docformatter",
          ]
      else:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-docformatter
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-docformatter
-Version:        1.7.7
+Version:        1.7.8
 Release:        0
 Summary:        Utility to re-format docstrings per PEP 257
 License:        MIT
@@ -26,22 +26,24 @@ URL:            https://github.com/myint/docformatter
 Source:         https://github.com/PyCQA/docformatter/archive/refs/tags/v%{version}.tar.gz#/docformatter-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Do not require virtualenvs to run the tests
 Patch0:         do-not-require-venv.patch
-# PATCH-FIX-UPSTREAM cherry-pick from https://github.com/PyCQA/docformatter/pull/323 fix: issue 321
-Patch1:         ignore-utf16.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-charset-normalizer
-Requires:       python-untokenize
+Requires:       python-charset-normalizer >= 3.0.0
+%if %{python_version_nodots} < 311
+Requires:       python-tomli >= 2.0.0
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module charset-normalizer >= 3.0}
-BuildRequires:  %{python_module untokenize}
+BuildRequires:  %{python_module pytest >= 8.4.0}
+BuildRequires:  %{python_module charset-normalizer >= 3.0.0}
+%if %{python_version_nodots} < 311
+BuildRequires:  %{python_module tomli >= 2.0.0}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -90,7 +92,7 @@ export BUILDROOT=%{buildroot}
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS.rst README.rst
+%doc README.rst
 %python_alternative %{_bindir}/docformatter
 %{python_sitelib}/docformatter
 %{python_sitelib}/docformatter-%{version}.dist-info
