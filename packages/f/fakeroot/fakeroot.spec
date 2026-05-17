@@ -17,7 +17,7 @@
 
 
 Name:           fakeroot
-Version:        1.37.1.2
+Version:        1.38
 Release:        0
 Summary:        Wrapper that gives a fake root environment
 License:        GPL-3.0-or-later

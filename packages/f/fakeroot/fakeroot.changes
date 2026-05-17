@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 17 09:21:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.38:
+  * fix xattr handling
+
+-------------------------------------------------------------------
+Tue Mar 24 21:26:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.37.2:
+  * Standardize endianness macro usage (BYTE_ORDER).
+  * Use IPPROTO_TCP instead of SOL_TCP for TCP_NODELAY.
+  * Add support for machine/endian.h header.
+  * Fix logic grouping in faked.c chmod compatibility check.
+  * Add bzip3 distribution target support in Makefile.
+
+-------------------------------------------------------------------
 Fri Jan  2 11:06:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.37.1.2:

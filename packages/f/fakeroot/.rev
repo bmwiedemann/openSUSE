@@ -190,4 +190,26 @@ is ready when we switch the default compiler.  Thanks! (forwarded request 118982
   - Romanian man page translation update from Remus-Gabriel Chelu.</comment>
     <requestid>1325105</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1068e55a8a04d58f1bd4b819e17a3ddb</srcmd5>
+    <version>1.37.2</version>
+    <time>1774469911</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.37.2:
+  * Standardize endianness macro usage (BYTE_ORDER).
+  * Use IPPROTO_TCP instead of SOL_TCP for TCP_NODELAY.
+  * Add support for machine/endian.h header.
+  * Fix logic grouping in faked.c chmod compatibility check.
+  * Add bzip3 distribution target support in Makefile.</comment>
+    <requestid>1342314</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0c7263f06903ad3c8ab0b902a4b381b9</srcmd5>
+    <version>1.38</version>
+    <time>1779037020</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.38:
+  * fix xattr handling</comment>
+    <requestid>1353572</requestid>
+  </revision>
 </revisionlist>
