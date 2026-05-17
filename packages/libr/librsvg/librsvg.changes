@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 15 05:40:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.2:
+  + librsvg crate version 2.62.2
+  + librsvg-rebind crate version 0.3.0
+  + Fix blurry embeded SVG images by rasterizing them at device
+    resolution.
+  + Fix build when gobject-introspection is enabled but gdk-pixbuf
+    is disabled.
+- Changes from version 2.62.1:
+  + librsvg crate version 2.62.1
+  + librsvg-rebind crate version 0.3.0
+  + There are no changes from 2.62.0, just an update of the
+    image-rs crate to align it with the rest of GNOME 50's versions
+    for dependencies.
+
+-------------------------------------------------------------------
 Fri Mar 20 13:15:46 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
