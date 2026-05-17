@@ -1592,4 +1592,23 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
     <comment>Finally enable soft-reboots by default again</comment>
     <requestid>1345664</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>fc63a8adf6591f4e9af91a889a46a627</srcmd5>
+    <version>6.1.0</version>
+    <time>1779036989</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 6.1.0:
+  * t-u: Reintroduce kdump command for fadump functionality
+  * t-u: Fix skipped error paths due to querying wrong return code
+  * libtukit: Integrate OCI functionality into tukit core
+  * libtukit: Allow configuration of snapshot manager
+  * libtukit: Allow manually setting configuration options
+  * tukitd: Extend D-Bus interfaces with generic option field
+  * doc: Rework documentation generation with central HTML document
+    and D-Bus interface
+- Add build dependencies for documentation
+- Add -doc package for HTML documentation
+</comment>
+    <requestid>1353466</requestid>
+  </revision>
 </revisionlist>

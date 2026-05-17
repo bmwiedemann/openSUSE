@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        6.0.7
+Version:        6.1.0
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -48,6 +48,8 @@ BuildRequires:  gcc10-c++
 %else
 BuildRequires:  gcc-c++
 %endif
+BuildRequires:  gtk-doc
+BuildRequires:  libgio-2_0-0
 BuildRequires:  libtool
 BuildRequires:  libxml2-tools
 BuildRequires:  libzypp
@@ -103,6 +105,15 @@ BuildArch:      noarch
 In some cases, especially for the update timer, transactional-update has to
 know which update method to use. If the installed system is not using 'dup'
 as the default, then this package should be installed.
+
+%package doc
+Summary:        Documentation for transactional-update
+Group:          Documentation/HTML
+BuildArch:      noarch
+
+%description doc
+The Transactional Update Guide, man pages and D-Bus interface documentation
+in HTML format.
 
 %package -n tukit
 Summary:        Tool for doing transactional updates using Btrfs snapshots
@@ -216,9 +227,6 @@ install -m 644 10-use-up-as-default.conf %{buildroot}%{_distconfdir}/transaction
 # Delete libtool cruft
 rm -rf %{buildroot}%{_libdir}/*.la
 
-# Delete unwanted HTML documentation
-rm -rf %{buildroot}%{_docdir}/%{name}/*.html
-
 # move logrotate files from /etc/logrotate.d to /usr/etc/logrotate.d
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
@@ -298,8 +306,6 @@ done
 
 %files
 %license COPYING gpl-2.0.txt
-%doc NEWS
-%doc %{_docdir}/%{name}/transactional-update.txt
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/transactional-update
 %else
@@ -320,6 +326,11 @@ done
 
 %files up-as-default
 %{_distconfdir}/transactional-update.conf.d/10-use-up-as-default.conf
+
+%files doc
+%doc NEWS
+%dir %{_docdir}/%{name}
+%doc %{_docdir}/%{name}/*
 
 %files -n tukit
 %license COPYING gpl-2.0.txt
