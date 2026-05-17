@@ -1,0 +1,8 @@
+<package name="morse2ascii" project="openSUSE:Factory">
+  <title>Decode morse code from PCM WAV files</title>
+  <description>Experimental tool for decoding the morse codes from a PCM WAV file using a
+volume/peak based method. The tool can also decode the morse codes from text
+and RAW PCM files. It contains some options for parsing abbreviations, prosigns
+and qcodes.</description>
+  <url>https://aluigi.altervista.org/mytoolz.htm#morse2ascii</url>
+</package>
