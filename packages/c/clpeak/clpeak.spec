@@ -18,10 +18,10 @@
 
 
 Name:           clpeak
-Version:        1.1.7
+Version:        2.0.6
 Release:        0
 Summary:        Find peak OpenCL capacities like bandwidth & compute
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          System/Benchmark
 URL:            https://github.com/krrishnarraj/clpeak
 Source:         %{name}-%{version}.tar.xz
@@ -41,8 +41,7 @@ bandwidth & compute.
 %autosetup
 
 %build
-%cmake \
-  -Wno-dev
+%cmake
 %cmake_build
 
 %install

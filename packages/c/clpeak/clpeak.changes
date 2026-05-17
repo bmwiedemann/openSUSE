@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Wed May 13 16:55:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.6:
+  * CUDA integer4/int8 sparse tests, cleanup.
+  * Runtime gate for opencl int8 dp test.
+
+-------------------------------------------------------------------
+Mon May 11 09:37:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.5:
+  * [vulkan] reduce work size when CU is not known.
+  * Zero Vulkan atomic buffers before dispatch.
+  * Calibrate with single-iteration probes.
+  * [vulkan] remove local bandwidth v8.
+  * Increase max-time default to 500 ms.
+  * Initial commit for time based runs.
+  * Atomic throughput: bump ATOMIC_REPS 64 -> 256 (M1 was
+    under-measuring).
+  * Atomic throughput: cut ATOMIC_REPS 512 -> 64 to avoid GPU
+    watchdog.
+  * Vulkan: reduce fp64 dispatch size to avoid GPU watchdog on
+    RDNA4 + RADV
+  * Kernel latency: report submit failures instead of bogus
+    roundtrip times.
+
+-------------------------------------------------------------------
+Fri May 08 18:14:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.3:
+  * Vulkan: fix inf/bogus bandwidth on Adreno (Turnip) + drivers
+    with broken timers.
+  * Atomic throughput: cut per-test work and unify metric names
+    across backends.
+  * Vulkan: split coopmat dispatch into FP and INT phases.
+  * Vulkan: expand compute test variants and add new tests from
+    other backends.
+
+-------------------------------------------------------------------
+Thu May 07 14:13:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.2:
+  * Remove debug signing config from build file.
+  * Change ZERO_COPY_MULTIPLIER from 5.0 to 3.0.
+  * [cmake] version - don't use long version on release.
+
+-------------------------------------------------------------------
+Thu May 07 08:28:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.0:
+  New Backends
+  * Vulkan Compute, bandwidth, atomics, cooperative matrix (tensor
+    core equivalent).
+  * CUDA Compute, bandwidth, WMMA/BMMA tensor cores, cuBLASLt
+    GEMM.
+  * OpenCL Unchanged baseline; now explicitly selectable via
+    --opencl
+  New Benchmarks
+  * Floating-point Compute
+    + BFloat16 (BF16) throughput.
+    + CUDA WMMA tensor cores: FP16, BF16, FP8-E4M3, FP8-E5M2, TF32, FP64
+    + CUDA BMMA (binary matrix).
+    + Vulkan cooperative matrix: FP16, BF16, INT8, FP8 variants.
+    + Metal simdgroup matrix: FP16, BF16.
+  * Integer Compute
+    + INT8 dot-product (DP4a).
+    + Packed INT4 (emulated).
+    + CUDA WMMA INT8 / INT4.
+  * GEMM — vendor-SDK peak
+    + CUDA: cuBLASLt (FP32, TF32, FP16, BF16, FP8-E4M3, FP8-E5M2,
+      INT8, INT4).
+    + Metal: MPS / MPSGraph (FP32, FP16, BF16).
+  Memory & Latency
+  * Local (shared) memory bandwidth.
+  * Image / texture memory bandwidth.
+  * Host↔Device transfer bandwidth (Vulkan, CUDA).
+  * Atomic throughput.
+  CLI Changes
+  * Several flags from v1.x have been renamed or removed.
+  Output Format Changes
+  * XML — breaking schema change (format_version="2")
+    v1.x XML files are not accepted as --compare baselines.
+  Bug Fixes & Improvements
+  * Unified measurement methodology: batch timing replaces
+    per-iteration event timing across all backends.
+  * Dispatch sizes auto-scaled to GPU compute unit / SM count.
+  * RAII scope guard replaces manual resultScopeBegin() /
+    resultScopeEnd() calls.
+  * Baseline comparison via --compare FILE accepts any v2 JSON,
+    CSV, or XML file.
+
+-------------------------------------------------------------------
 Sat Mar 14 10:25:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.7:
