@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed May 13 19:45:36 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.5.2
+  - Security fix:
+    - PR #2307, Improve LUT loading checks (CVE-2026-42450)
+    - This PR addressed the following GitHub security reports.
+      These were all potential stack buffer overflow
+      vulnerabilities due to unsafe use of sscanf in the parsers
+      for .spi3d, .spi1d, .cube, and .lut formats:
+    - GHSA-rxp3-rrgx-f547
+    - GHSA-66xr-9rgw-v6m8
+    - GHSA-28jr-x9w2-5pc4
+    - GHSA-fgx7-35rr-5mx2
+  - Bug fixes and security enhancements:
+    - PR #2270, Fix vector comparison expression for HLSL
+    - PR #2276, Adsk Contrib - Hue curve python binding was not
+      copying all parameters
+    - PR #2281, Fix OpenGL ES type issues in ACES2 FixedFunction
+      Ops
+    - PR #2308, Adsk Contrib - Miscellaneous improvements suggested
+      by Claude
+  - Build, documentation, and website enhancements:
+    - PR #2304, Add /bigobj for pybind11 target on Windows
+    - PR #2273, Fix linking to self-built deps on Windows + Clang
+    - PR #2302, Improve CMake and Actions settings
+    - PR #2285, Adsk Contrib - Update Python documentation
+      requirements
+    - PR #2252, Update 2.5 documentation regarding ABI
+      compatability
+    - PR #2264, Add more info to the documentation overview page
+
+-------------------------------------------------------------------
 Tue Jan 13 11:15:14 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.5.1
