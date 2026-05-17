@@ -14,24 +14,22 @@ rsb_common.h:32:1: note: ‘extern "C"’ linkage started here
 under at least gcc-15.
 
 ---
- rsb_common.h |   16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ rsb_common.h |   14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
 
-Index: librsb-1.3.0.2/rsb_common.h
+Index: librsb-1.3.0.3/rsb_common.h
 ===================================================================
---- librsb-1.3.0.2.orig/rsb_common.h
-+++ librsb-1.3.0.2/rsb_common.h
-@@ -29,9 +29,6 @@ If not, see <http://www.gnu.org/licenses
- #define RSB_COMMON_H_INCLUDED
+--- librsb-1.3.0.3.orig/rsb_common.h
++++ librsb-1.3.0.3/rsb_common.h
+@@ -107,7 +107,6 @@ If not, see <https://www.gnu.org/license
+ #endif /* __cplusplus */
  
  #ifdef __cplusplus
 -extern "C" {
--#endif /* __cplusplus */
--#ifdef __cplusplus
- #define restrict	/* for now, the restrict keyword is not allowed in C++ */
- #endif  /* __cplusplus */
- /**
-@@ -216,7 +213,13 @@ typedef int rsb_int;
+ #endif /* __cplusplus */
+ 
+ /* the NDEBUG and DEBUG symbols will affect lot of checking code */
+@@ -217,7 +216,13 @@ typedef int rsb_int;
  #if RSB_WANT_ACTION
  #define RSB_SHALL_QUIT ( rsb__quit_rsbench != 0 )
  #define RSB_INTERNALS_RSBENCH_HEAD_DECLS extern int rsb__quit_rsbench;
@@ -45,7 +43,7 @@ Index: librsb-1.3.0.2/rsb_common.h
  #define RSB_SIGHR rsb__sigr();
  #else /* RSB_WANT_ACTION */
  #define RSB_SHALL_QUIT ( 0 != 0 )
-@@ -1420,12 +1423,18 @@ struct rsb_optrace_t {
+@@ -1437,12 +1442,18 @@ struct rsb_optrace_t {
  #define RSB_MARF_EPS_NO_TEXT	(0x00000800)			/*!< #rsb_marf_t No text in EPS. */
  #define RSB_MARF_LATEX_RECURSION	(0x00001000)			/*!< #rsb_marf_t Matrix recursion as LaTeX. */
  
@@ -64,7 +62,7 @@ Index: librsb-1.3.0.2/rsb_common.h
  
  #ifdef RSB_HAVE_ASSERT_H 
  #ifdef RSB_USE_ASSERT
-@@ -1510,7 +1519,6 @@ rsb_char_t rsb__getenv_char(const char *
+@@ -1527,7 +1538,6 @@ rsb_char_t rsb__getenv_char(const char *
  #include "rsb_tune.h"		/* */
  
  #ifdef __cplusplus
