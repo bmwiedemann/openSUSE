@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 16 17:05:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.13.1:
+  * Fix minimum Go version in contributor docs.
+  * Redirect documentation to getsops.io.
+  * Bump Go version in contributing docs.
+  * Redirect documentation changes to getsops/docs.
+  * Avoid percent-encoding of cache key to blow up size > 50
+    characters.
+  * Apply 'gofmt -w -s' to all .go files.
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump the go group with 9 updates
+
+-------------------------------------------------------------------
 Sun May 10 14:42:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.13.0:
