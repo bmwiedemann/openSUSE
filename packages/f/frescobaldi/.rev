@@ -275,4 +275,59 @@
     several times.</comment>
     <requestid>1275016</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>82f6f804a96bfb60c624d0dfa688f31e</srcmd5>
+    <version>4.0.5</version>
+    <time>1774469915</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.5:
+  * The DPI setting for the Copy selection to image feature of
+    the Music View is now working again (#2117). Fixed in
+    qpageview version 1.0.2.
+  * Fix an OverflowError during rapid kinetic scrolling (#2130).
+    Fixed in qpageview version 1.0.3.
+  * Fix some bugs with Score Wizard synth parts (#2138).
+  * Score Wizard: use treble_8 clef by default for classical
+    guitar (#2135).
+  * Updated translations: Italian.
+  * MIDI input now works reliably on all operating systems and
+    macOS in particular (#2060).
+  * Avoid MIDI playback issues while using multiple windows
+    (#2053).
+  * Set the maximum zoom for the PDF viewer to 800%. This is to
+    prevent qpageview performance issues, but it's also a
+    reasonable max value (#2056).
+  * Fix snippet shortcuts breaking when a main window is closed
+    (#2048).
+  * Prevent crashes on Windows when opening the Documentation
+    Browser (#2016).
+  * Fix open .ly file from Finder (macOS) (#2051).
+  * The Raster page layout option has been renamed Grid layout
+    and a tooltip now explains how it works (#2027). This
+    requires qpageview 1.0.1.
+  * Some small bugfixes.
+  * Remove pygame from project dependencies and let Linux
+    packagers use PortMidi instead (#2007).
+  * Since the release of Briefcase version 0.3.24, file
+    associations are now supported also on macOS (#2057).</comment>
+    <requestid>1342317</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e08112da9479f0cd389ab94176578773</srcmd5>
+    <version>4.0.6</version>
+    <time>1779037027</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.6:
+  * Use a background thread for music related parsing/computation
+    while editing (#2152). This fixes the old bug #473, where
+    Frescobaldi had lags and freezes while editing very big
+    files.
+  * Fix redundant Shift modifier in shortcuts for symbol keys
+  * Automatically unconfigure missing LilyPond versions
+  * Set the Preferences dialog to a more reasonable initial size
+  * LilyPond preferences: allow Custom menu in flatpak
+  * Require 3.10 as minimum Python version
+  * Add a GitHub Action workflow to build a flatpak package</comment>
+    <requestid>1353585</requestid>
+  </revision>
 </revisionlist>

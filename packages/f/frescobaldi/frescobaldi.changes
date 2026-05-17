@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun May 17 13:47:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.6:
+  * Use a background thread for music related parsing/computation
+    while editing (#2152). This fixes the old bug #473, where
+    Frescobaldi had lags and freezes while editing very big
+    files.
+  * Fix redundant Shift modifier in shortcuts for symbol keys
+  * Automatically unconfigure missing LilyPond versions
+  * Set the Preferences dialog to a more reasonable initial size
+  * LilyPond preferences: allow Custom menu in flatpak
+  * Require 3.10 as minimum Python version
+  * Add a GitHub Action workflow to build a flatpak package
+
+-------------------------------------------------------------------
+Tue Mar 24 21:31:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.5:
+  * The DPI setting for the Copy selection to image feature of
+    the Music View is now working again (#2117). Fixed in
+    qpageview version 1.0.2.
+  * Fix an OverflowError during rapid kinetic scrolling (#2130).
+    Fixed in qpageview version 1.0.3.
+  * Fix some bugs with Score Wizard synth parts (#2138).
+  * Score Wizard: use treble_8 clef by default for classical
+    guitar (#2135).
+  * Updated translations: Italian.
+  * MIDI input now works reliably on all operating systems and
+    macOS in particular (#2060).
+  * Avoid MIDI playback issues while using multiple windows
+    (#2053).
+  * Set the maximum zoom for the PDF viewer to 800%. This is to
+    prevent qpageview performance issues, but it's also a
+    reasonable max value (#2056).
+  * Fix snippet shortcuts breaking when a main window is closed
+    (#2048).
+  * Prevent crashes on Windows when opening the Documentation
+    Browser (#2016).
+  * Fix open .ly file from Finder (macOS) (#2051).
+  * The Raster page layout option has been renamed Grid layout
+    and a tooltip now explains how it works (#2027). This
+    requires qpageview 1.0.1.
+  * Some small bugfixes.
+  * Remove pygame from project dependencies and let Linux
+    packagers use PortMidi instead (#2007).
+  * Since the release of Briefcase version 0.3.24, file
+    associations are now supported also on macOS (#2057).
+  * The tarball used by packagers is now built automatically by a
+    GitHub Action workflow (#2000).
+  * Improve the installation instructions (#2028).
+  * Updated translations: Japanese, Korean.
+  * MIDI playback on macOS works again, thanks to the switch to
+  * the Pygame Community Edition fork (#1987).
+  * Select an appropriate default editor font for each platform:
+    Consolas for Windows; SF Mono, Menlo or Monaco for macOS; the
+    system monospace default for Linux (#1960).
+  * Add a keyboard shortcut `Ctrl+,` to open the Preferences in
+    any operating system (#1952).
+  * Updated translations: German, Japanese, Polish.
+
+-------------------------------------------------------------------
 Tue May  6 19:40:35 UTC 2025 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 4.0.2:
@@ -106,7 +167,7 @@ Sat Dec 26 13:13:51 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 Thu Sep 10 15:38:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Switch to python-qt5-sip, although it is not really needed
-  gh#frescobaldi/frescobaldi#1332 
+  gh#frescobaldi/frescobaldi#1332
 
 -------------------------------------------------------------------
 Tue Apr 14 09:30:21 UTC 2020 - Cor Blom <cornelis@solcon.nl>
@@ -121,7 +182,7 @@ Mon Apr 13 13:54:32 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update frescobaldi to 3.1.2:
   * Bug fixes:
-    - fixed #1255, AttributeError: 'NoneType' object has no 
+    - fixed #1255, AttributeError: 'NoneType' object has no
       attribute 'cursor'
     - fixed "Two Pages (first page right)" for both modes, other
       should be "left"
@@ -149,16 +210,16 @@ Mon Apr 13 13:54:32 UTC 2020 - Cor Blom <cornelis@solcon.nl>
     - updated Italian translation by Davide Liessi
 - Update python-ly to 0.9.6:
   * Various improvements to the experimental MusicXML output
-    - Fixed #32 Correctly export measures without the help of 
+    - Fixed #32 Correctly export measures without the help of
       explicit barchecks
     - Fixed #102 MusicXML: \mark is not exported
     - Fixed #107 MusicXML: scale_rest bug
     - Fixed #110 MusicXML: stem direction is not supported
     - Fixed #114 Empty measures created with no attributes
-    - Many improvements by Felippe Roza, Peter Bjuhr, Urs Liska, 
+    - Many improvements by Felippe Roza, Peter Bjuhr, Urs Liska,
       Endre Oma and others, thanks!
   - Fixed Frescobaldi#1213 eps-file -> epsfile
-  - improved indentation of Scheme code, thanks to Paul Morris 
+  - improved indentation of Scheme code, thanks to Paul Morris
     (#132)
 
 -------------------------------------------------------------------
@@ -246,7 +307,7 @@ Wed Jun 27 19:56:01 UTC 2018 - cornelis@solcon.nl
 -------------------------------------------------------------------
 Wed Jun 27 14:08:46 UTC 2018 - edogawa@aon.at
 
-- fixed dependency, require python3-poppler-qt5 
+- fixed dependency, require python3-poppler-qt5
 - added %find_lang to stop rpmlint warnings
 
 -------------------------------------------------------------------
@@ -257,8 +318,8 @@ Wed Feb 22 21:13:17 UTC 2017 - cornelis@solcon.nl
     - Frescobaldi now requires Python3.2+, Qt5, PyQt5, python-poppler-qt5
   * New features:
     - Zoom with pinch gesture in Music View, contributed by David Rydh
-    - An option (enabled by default) to move the cursor to the end of the line 
-      when PageDown is pressed on the last line, and to move the cursor to the 
+    - An option (enabled by default) to move the cursor to the end of the line
+      when PageDown is pressed on the last line, and to move the cursor to the
       start of the first line if PageUp is pressed on the first line
   * Improvements:
     - Retina display support in Music View, contributed by David Rydh
@@ -297,7 +358,7 @@ Wed Feb 22 14:10:48 UTC 2017 - cornelis@solcon.nl
     - updated German by Henning Hraban Ramm
     - updated Czech by Pavel Fric
 - Update python-ly to 0.9.5:
-  * basic support for tokenizing the MUP format 
+  * basic support for tokenizing the MUP format
   * fix wbsoft/frescobaldi#832: wrong duration handling with \partial when
     changing durations
   * xml export tests now work correctly with Python3
@@ -559,7 +620,7 @@ Tue Jun 17 16:58:21 UTC 2014 - cornelis@solcon.nl
       on doubleclick in the text, reported by an Apple user
     - fix AttributeError: 'ScoreWizard' object has no attribute 'showInsertDialog'
       reported by an Apple user
-    - fix UnicodeDecodeError in lilypondinfo datadir method 
+    - fix UnicodeDecodeError in lilypondinfo datadir method
 
 -------------------------------------------------------------------
 Tue Apr  8 19:15:23 UTC 2014 - cornelis@solcon.nl
@@ -716,7 +777,7 @@ Wed Nov 10 22:58:08 UTC 2010 - jcnengel@googlemail.com
     - French updated by Valentin Villenave
 
   Changes in 1.1.7 -- October 4th, 2010
-  
+
   * New features:
     - New tool to download LilyPond binary releases. Go to Settings -> Configure
       Frescobaldi -> LilyPond Preferences, Versions -> Add -> Download to use it.
@@ -739,7 +800,7 @@ Wed Nov 10 22:58:08 UTC 2010 - jcnengel@googlemail.com
     - Turkish updated by Server Acim
 
   Changes in 1.1.6 -- September 10th, 2010
-  
+
   * New features:
     - New built-in MIDI player using the KMidPart of KMid 2.4.0 or higher
     - Notification popup when a long build finishes while Frescobaldi is hidden
@@ -756,7 +817,7 @@ Wed Nov 10 22:58:08 UTC 2010 - jcnengel@googlemail.com
     - make uninstall now possible
 
   Changes in 1.1.5 -- August 16th, 2010
-  
+
   * Bugfixes and improvements:
     - Work-around a crash introduced in KDE 4.5 when using the --smart option
       to set the cursor position.
@@ -767,14 +828,14 @@ Wed Nov 10 22:58:08 UTC 2010 - jcnengel@googlemail.com
     - Polish updated by Piotr Komorowski
     - French updated by Ryan Kavanagh
     - Turkish updated by Server Acim
-  
+
   Changes in 1.1.4 -- July 28th, 2010
-  
+
   * Bugfixes:
     - Fix Point and Click when running from 'run' script
-  
+
   Changes in 1.1.3 -- July 25th, 2010
-  
+
   * General:
     - Tabs can be reordered (can be turned off)
     - Tabs don't get automatic shortcuts, they sometimes conflict with ours
@@ -801,9 +862,9 @@ Wed Nov 10 22:58:08 UTC 2010 - jcnengel@googlemail.com
   * Translations:
     - Dutch updated by Wilbert Berendsen
     - Turkish updated by Server Acim
-  
+
   Changes in 1.1.2 -- July 8th, 2010
-  
+
   * New features:
     - Segno bar line added (available in LilyPond 2.13.19 and higher)
     - It is now possible to configure the path that is used to find
@@ -832,18 +893,18 @@ Wed Nov 10 22:58:08 UTC 2010 - jcnengel@googlemail.com
     - Dutch updated by Wilbert Berendsen
     - French updated by Valentin Villenave
     - Italian updated by Gianluca D'Orazio
-  
+
   Changes in 1.1.1 -- May 3rd, 2010
-  
+
   * LilyPond Documentation Browser:
     - Indexing help items fixed with new website (2.13+)
   * Fixed Python error message on opening settings dialog with recent SIP/PyQt
   * Translations:
     - Dutch updated by Wilbert Berendsen
     - Turkish updated by Server Acim
-  
+
   Changes in 1.1.0 -- March 26th, 2010
-  
+
   * It is now possible to use multiple versions of LilyPond easily from within
     Frescobaldi. LilyPond instances can be configured under Settings, Paths.
     There is also a custom Run LilyPond command where a version can be chosen,
@@ -879,13 +940,13 @@ Wed Nov 10 22:58:08 UTC 2010 - jcnengel@googlemail.com
       -DBYTECOMPILE=NO to the cmake command line
     - building the icons from SVN or out-of-source requires LilyPond 2.13.11+
   * Some workarounds for subtle SIP 4.10/KDE 4.4 garbage collection bugs
-  
+
   Changes in 1.0.2 -- February 18th, 2010
-  
+
   * Make Frescobaldi working with SIP 4.10 and KDE 4.4
-  
+
   Changes in 1.0.1 -- January 17th, 2010
-  
+
   * Translations:
     - New Galician translation by Manuel A. Vázquez
   * Bugfixes:
@@ -894,9 +955,9 @@ Wed Nov 10 22:58:08 UTC 2010 - jcnengel@googlemail.com
       the same one as shortInstrumentName
     - Stability improvements
     - Some corrections in the default expansions of the Expansion Manager
-  
+
   Changes in 1.0.0 -- December 26th, 2009
-  
+
   * Editor:
     - Right-click menu action on \include command now opens the named file from
       the LilyPond data directory if that exists and there is no local file with
@@ -944,9 +1005,9 @@ Wed Nov 10 22:58:08 UTC 2010 - jcnengel@googlemail.com
     - Czech updated by Pavel Fric
     - Polish updated by Piotr Komorowski
     - German updated by Georg Hennig
-  
+
   Changes in 0.7.17 -- November 29th, 2009
-  
+
   * Expansion Dialog:
     - It is now possible to assign keyboard shortcuts to snippets in the dialog
     - Improved syntax coloring in snippet entry
@@ -979,9 +1040,9 @@ Wed Nov 10 22:58:08 UTC 2010 - jcnengel@googlemail.com
     - Polish updated by Piotr Komorowski
     - Czech updated by Pavel Fric
     - French updated by Ryan Kavanagh
-  
+
   Changes in 0.7.16 -- November 15th, 2009
-  
+
   * New command to transpose music
   * New commands for conversion between relative and absolute pitches
   * New: Alt+Shift+Up/Down selects text till next or previous blank line, and
@@ -1010,7 +1071,7 @@ Tue Oct 13 20:07:53 UTC 2009 - jcnengel@googlemail.com
     - named colors are shown in the right color
     - some often used block commands like \header now also insert the braces,
       and place the cursor between them.
-    - names of variables (like composer in the header) automagically append ' = ' 
+    - names of variables (like composer in the header) automagically append ' = '
       if the remainder of the line does not start with the '=' character.
   * New commands in the Log context menu to copy or save its contents.
   * LilyPond symbol icons are displayed white if the users color palette settings
