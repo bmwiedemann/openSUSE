@@ -65,9 +65,6 @@ edited. Tree-sitter aims to be:
 
 %package     -n lib%{name}%{somajor}
 Summary:        Asychronous I/O support library
-Provides:       lib%{name}%{somajor} = %{version}-%{release}
-Provides:       lib%{name}0_22 = %{version}
-Provides:       lib%{name}0_25 = %{version}
 
 %description -n lib%{name}%{somajor}
 Tree-sitter is a parser generator tool and an incremental parsing

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May  5 06:30:03 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also don't provide lib%{name}%{somajor}: this is already the
+  sub package's exact name and as such is implicitly provided.
+
+-------------------------------------------------------------------
+Mon May  4 17:33:40 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- We actually don’t provide lower version APIs and it is not
+  right to claim so. Also, packages linking to this library will
+  ignore it anyway.
+
+-------------------------------------------------------------------
 Tue Apr 28 15:50:29 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 Review corrections:
@@ -48,6 +61,7 @@ Mon Apr 13 19:00:27 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
   CVE-2026-34988, bsc#1261974 CVE-2026-34946, bsc#1262007,
   CVE-2026-34945, bsc#1262032 CVE-2026-34987, bsc#1262036
   CVE-2026-35186, bsc#1262040 CVE-2026-35195).
+- Also fixing bsc#1265300 (CVE-2026-44216).
 
 -------------------------------------------------------------------
 Thu Apr  9 20:47:44 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
