@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 16 18:45:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.6.3
+  * Remove moduleState init from gapbind14 kernel extension
+  * Remove test for 'Matrix(GF(3), [[]]);'
+
+-------------------------------------------------------------------
 Wed Apr 15 16:12:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.6.2
