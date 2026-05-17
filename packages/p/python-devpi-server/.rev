@@ -289,4 +289,14 @@
     serials using the streaming changelog endpoint.</comment>
     <requestid>1350559</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dd6a3fbeedec36f06f40147934c19620</srcmd5>
+    <version>6.20.1</version>
+    <time>1779037029</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.20.1:
+  * Pass through request headers when streaming .metadata from
+    mirror. Refs #1018</comment>
+    <requestid>1353590</requestid>
+  </revision>
 </revisionlist>

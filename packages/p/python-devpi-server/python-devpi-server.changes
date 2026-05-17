@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 17 13:54:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.20.1:
+  * Pass through request headers when streaming .metadata from
+    mirror. Refs #1018
+
+-------------------------------------------------------------------
 Sun May  3 17:55:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.20.0:
