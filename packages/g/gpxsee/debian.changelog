@@ -1,3 +1,10 @@
+gpxsee (16.7) stable; urgency=low
+
+  * Request media location permissions on Android when needed.
+  * Minor Mapsforge maps style improvements.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 15 May 2026 22:40:03 +0200
+
 gpxsee (16.6) stable; urgency=medium
 
   * Fixed possible buffer overflow in GPI Parser.

@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        16.6
+Version:        16.7
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -104,7 +104,11 @@ lrelease6 gpxsee.pro
 %endif
 %{qmake6} gpxsee.pro
 %else
+%if 0%{?fedora_version} > 44
+lrelease-pro-qt6 gpxsee.pro
+%else
 lrelease-qt6 gpxsee.pro
+%endif
 %{qmake_qt6} gpxsee.pro
 %endif
 make %{?_smp_mflags}
