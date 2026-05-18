@@ -30,14 +30,41 @@ mkdir -p /var/lib/docker-registry
 Then you can start the container with the following command:
 
 ```bash
-podman run -d --restart=always -p 5000:5000 -v /path/to/config.yml:/etc/registry/config.yml \
+podman run -it --restart=always -p 5000:5000 -v /path/to/config.yml:/etc/registry/config.yml \
   -v /var/lib/docker-registry:/var/lib/docker-registry --name registry registry.opensuse.org/opensuse/registry:3.1
 ```
 
-The registry is available at `http://localhost:5000`. To keep the registry running after a reboot, create a systemd service as follows:
+The registry is available at `http://localhost:5000`.
+
+To run the registry as a Systemd service using Podman Quadlet, create a unit file named `/etc/containers/systemd/registry.container` with the following content (update variables accordingly):
+
+```
+[Unit]
+Description=openSUSE Tumbleweed OCI Container Registry (Distribution)
+
+[Container]
+Image=registry.opensuse.org/opensuse/registry:3.1
+ContainerName=registry
+PublishPort=5000:5000
+Volume=/path/to/config.yml:/etc/registry/config.yml:Z
+Volume=/var/lib/docker-registry:/var/lib/docker-registry:Z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+To generate a systemd service for the registry container, execute the following command:
 
 ```bash
-sudo podman generate systemd registry > /etc/systemd/system/registry.service
+sudo systemctl daemon-reload
+```
+
+To enable and start the registry service, execute the following command:
+
+```bash
 sudo systemctl enable --now registry
 ```
 
