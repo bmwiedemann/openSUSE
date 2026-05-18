@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 17 18:48:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.20.0:
+  * HTTP Services now support the field `timeout_idle`, which
+    controls the time a HTTP connection is allowed to idle before
+    it is being dropped.
+
+-------------------------------------------------------------------
 Sun May  3 20:33:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.19.0:

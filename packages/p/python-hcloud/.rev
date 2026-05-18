@@ -222,4 +222,15 @@
     creating a primary ip</comment>
     <requestid>1350582</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d2a7dfb48cd9150edf2cc74907b8bc10</srcmd5>
+    <version>2.20.0</version>
+    <time>1779119204</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.20.0:
+  * HTTP Services now support the field `timeout_idle`, which
+    controls the time a HTTP connection is allowed to idle before
+    it is being dropped.</comment>
+    <requestid>1353606</requestid>
+  </revision>
 </revisionlist>
