@@ -17,39 +17,43 @@
 
 
 Name:           python-keystoneauth1
-Version:        5.13.1
+Version:        5.14.0
 Release:        0
 Summary:        OpenStack authenticating tools
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/keystoneauth
 Source0:        https://files.pythonhosted.org/packages/source/k/keystoneauth1/keystoneauth1-%{version}.tar.gz
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module betamax}
-BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module PyYAML >= 3.13}
+BuildRequires:  %{python_module betamax >= 0.7.0}
+BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module iso8601 >= 2.0.0}
-BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module oauthlib}
-BuildRequires:  %{python_module os-service-types >= 1.8.0}
-BuildRequires:  %{python_module oslo.config}
-BuildRequires:  %{python_module oslo.utils}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module lxml >= 4.2.0}
+BuildRequires:  %{python_module oauthlib >= 0.6.2}
+BuildRequires:  %{python_module os-service-types >= 1.2.0}
+BuildRequires:  %{python_module oslo.config >= 5.2.0}
+BuildRequires:  %{python_module oslo.utils >= 3.33.0}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module requests-kerberos}
-BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module stestr}
-BuildRequires:  %{python_module testresources}
-BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module requests >= 2.14.2}
+BuildRequires:  %{python_module requests-kerberos >= 0.8.0}
+BuildRequires:  %{python_module requests-mock >= 1.2.0}
+BuildRequires:  %{python_module stestr >= 1.0.0}
+BuildRequires:  %{python_module stevedore >= 1.20.0}
+BuildRequires:  %{python_module testresources >= 2.0.0}
+BuildRequires:  %{python_module testtools >= 2.2.0}
+BuildRequires:  %{python_module typing-extensions >= 4.12}
 BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-Requires:       python-PyYAML
+Requires:       python-PyYAML >= 3.13
 Requires:       python-iso8601 >= 2.0.0
-Requires:       python-lxml
-Requires:       python-oauthlib
-Requires:       python-os-service-types >= 1.8.0
+Requires:       python-lxml >= 4.2.0
+Requires:       python-oauthlib >= 0.6.2
+Requires:       python-os-service-types >= 1.2.0
 Requires:       python-requests >= 2.14.2
-Requires:       python-requests-kerberos
+Requires:       python-requests-kerberos >= 0.8.0
 Requires:       python-stevedore >= 1.20.0
 Requires:       python-typing-extensions >= 4.12
 %if "python%{python_nodots_ver}" == "%{primary_python}"
@@ -93,7 +97,6 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
-rm -v keystoneauth1/tests/unit/test_hacking_checks.py
 %{openstack_stestr_run}
 
 %files %{python_files}

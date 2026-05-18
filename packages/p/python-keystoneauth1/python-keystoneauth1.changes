@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 17 19:51:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.14.0:
+  * typing: Fix type for EndpointData.raw_endpoint
+  * typing: Add hints to fixtures
+  * Run mypy from tox
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Drop unused types-simplejson
+  * Correct Content-Length for betamax tape
+  * Update master for stable/2026.1
+  * Bump pre-commit versions
+  * Accept float value for timeout
+  * Remove unused Makefile for doc
+  * Bump flake8-import-order
+
+-------------------------------------------------------------------
 Mon Mar  9 15:25:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.13.1:
