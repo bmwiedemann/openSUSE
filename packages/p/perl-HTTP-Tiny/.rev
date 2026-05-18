@@ -209,4 +209,18 @@
       - Fixed link to LIMITATIONS in documentation.</comment>
     <requestid>1325875</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>888e5a1bd779db55c5cfd6d613e521e5</srcmd5>
+    <version>0.094</version>
+    <time>1779119288</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.094
+   see /usr/share/doc/packages/perl-HTTP-Tiny/Changes
+  0.094     2026-05-17 10:31:00+02:00 Europe/Brussels
+      - No changes from 0.093-TRIAL
+  0.093     2026-05-11 17:18:12+02:00 Europe/Brussels (TRIAL RELEASE)
+      - fix to prevent invalid characters in all headers, and prevent header
+        smuggling (CVE-2026-7010) bsc#1264992</comment>
+    <requestid>1353775</requestid>
+  </revision>
 </revisionlist>
