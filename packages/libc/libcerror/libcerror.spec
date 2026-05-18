@@ -1,7 +1,7 @@
 #
 # spec file for package libcerror
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libcerror
 %define lname	libcerror1
-Version:        20240413
+Version:        20260513
 Release:        0
 Summary:        Library for C error functions
 License:        LGPL-3.0-or-later
