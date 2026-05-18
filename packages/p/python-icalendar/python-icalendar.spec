@@ -21,7 +21,7 @@
 %define	modname icalendar
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        7.0.3
+Version:        7.1.0
 Release:        0
 Summary:        Python parser/generator of iCalendar files package
 License:        BSD-2-Clause
