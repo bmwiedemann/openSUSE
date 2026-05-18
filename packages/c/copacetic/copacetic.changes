@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May 18 05:15:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.14.1:
+  * Bug fixes
+    - Frontend image: restore /tmp on the published
+      copacetic-frontend image. v0.14.0's FROM scratch rootfs
+      caused every patch run via the BuildKit frontend to fail with
+      stat /tmp: no such file or directory. Switched to
+      gcr.io/distroless/static-debian12:nonroot plus a
+      defense-in-depth ensureTempDir(). E2E now builds the real
+      frontend.Dockerfile so this regression class cannot recur.
+      (#1597)
+    - Preserve original manifest annotations on patched images.
+      Same-tag patches silently dropped
+      org.opencontainers.image.{source,revision,version,title}. Now
+      captured pre-patch and forwarded to both single-platform and
+      multi-platform export paths, with image.version rewritten
+      consistently. (#1605)
+  * Docs
+    - Document current app-level patching limitation re: private
+      registries. (#1595)
+    - Generate v0.14.x docs snapshot. (#1590)
+
+-------------------------------------------------------------------
 Wed May 06 07:12:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.14.0:
