@@ -96,4 +96,13 @@
     <comment></comment>
     <requestid>1293838</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>af988c2f22e8d4af7ff20a0a30fdfa50</srcmd5>
+    <version>0.11~20260503</version>
+    <time>1779119260</time>
+    <user>anag_factory</user>
+    <comment>- Update from git 2d53565c74d3b1db9e (0.11);
+  * build and bug fixes (forwarded request 1353079 from dsterba)</comment>
+    <requestid>1353734</requestid>
+  </revision>
 </revisionlist>
