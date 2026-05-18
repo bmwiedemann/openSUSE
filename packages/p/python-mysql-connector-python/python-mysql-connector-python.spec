@@ -17,7 +17,7 @@
 
 
 Name:           python-mysql-connector-python
-Version:        9.6.0
+Version:        9.7.0
 Release:        0
 Summary:        MySQL driver written in Python
 License:        SUSE-GPL-2.0-with-FLOSS-exception

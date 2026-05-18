@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 18 10:23:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.7.0:
+  * This release contains no functional changes.
+
+-------------------------------------------------------------------
 Fri Apr 24 07:03:39 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to using pyproject macros to build and install.

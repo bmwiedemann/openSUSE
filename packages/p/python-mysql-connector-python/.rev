@@ -206,4 +206,13 @@
   * Do not import the NIH bdist_wheel function in setup.py.</comment>
     <requestid>1349080</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7da42b6dc48c3ff52d0e65103da316cd</srcmd5>
+    <version>9.7.0</version>
+    <time>1779119299</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.7.0:
+  * This release contains no functional changes.</comment>
+    <requestid>1353779</requestid>
+  </revision>
 </revisionlist>
