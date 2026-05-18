@@ -144,4 +144,22 @@
   * Dropped support for Python 3.8 and 3.9 #205 #246</comment>
     <requestid>1339288</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e80d200a85bd06b5d1188d3c4aea9633</srcmd5>
+    <version>0.9.0</version>
+    <time>1779119289</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.0:
+  * Enforce properties required flag #290
+  * OAS 3.1/3.2 discriminator is annotation-only #279
+  * `OAS31Validator` and `OAS32Validator` no longer use
+    discriminator-driven schema selection for `oneOf`, `anyOf`,
+    or `allOf`.
+  * For OpenAPI 3.1 and 3.2, `discriminator` is now treated as a
+    hint/annotation and does not change validation outcome.
+  * Validation results may change for schemas that previously
+    relied on discriminator-based narrowing or on discriminator
+    mapping resolution errors during validation.</comment>
+    <requestid>1353768</requestid>
+  </revision>
 </revisionlist>

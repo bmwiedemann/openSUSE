@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 18 09:59:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Enforce properties required flag #290
+  * OAS 3.1/3.2 discriminator is annotation-only #279
+  * `OAS31Validator` and `OAS32Validator` no longer use
+    discriminator-driven schema selection for `oneOf`, `anyOf`,
+    or `allOf`.
+  * For OpenAPI 3.1 and 3.2, `discriminator` is now treated as a
+    hint/annotation and does not change validation outcome.
+  * Validation results may change for schemas that previously
+    relied on discriminator-based narrowing or on discriminator
+    mapping resolution errors during validation.
+
+-------------------------------------------------------------------
 Mon Mar 16 08:39:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.1:

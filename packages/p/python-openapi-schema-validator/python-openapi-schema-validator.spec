@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openapi-schema-validator
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        OpenAPI schema validator for Python
 License:        BSD-3-Clause
