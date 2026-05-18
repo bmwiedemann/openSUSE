@@ -3,13 +3,14 @@
     <param name="url">https://github.com/Thor77/hetzner-flatcar</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">0.7.0</param>
+    <param name="revision">0.8.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual">
   </service>
   <service name="go_modules" mode="manual">
+    <param name="basename">hetzner-flatcar-0.8.0</param>
   </service>
   <!-- services below are running at buildtime -->
   <service name="tar" mode="buildtime">

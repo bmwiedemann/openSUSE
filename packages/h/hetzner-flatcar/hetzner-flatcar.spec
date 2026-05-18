@@ -1,7 +1,7 @@
 #
 # spec file for package hetzner-flatcar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           hetzner-flatcar
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        A tool to deploy Flatcar Linux on Hetzner Cloud
 License:        MIT
 URL:            https://github.com/Thor77/hetzner-flatcar
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.18
+BuildRequires:  golang(API) >= 1.26
 
 %description
 A tool to deploy Flatcar Linux on Hetzner Cloud. Includes transpiling of

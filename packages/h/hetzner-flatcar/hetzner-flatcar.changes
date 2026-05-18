@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 18 05:15:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.0:
+  * Update dependencies
+  * Replace deprecated ioutil package
+  * Bump goreleaser/goreleaser-action from 6 to 7
+  * Bump actions/checkout from 5 to 6
+  * Bump actions/setup-go from 5 to 6
+  * Bump actions/checkout from 4 to 5
+  * Bump golang.org/x/net from 0.12.0 to 0.33.0
+  * Bump golang.org/x/crypto from 0.11.0 to 0.31.0
+
+-------------------------------------------------------------------
 Mon Jan 20 06:16:35 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.7.0:
