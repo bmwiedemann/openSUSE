@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/nginx:1.29-%RELEASE%
-#!BuildTag: opensuse/nginx:1.29
+#!BuildTag: opensuse/nginx:1.31-%RELEASE%
+#!BuildTag: opensuse/nginx:1.31
 #!BuildTag: opensuse/nginx:latest
 
 FROM opensuse/bci/bci-micro:latest AS target
@@ -29,10 +29,12 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of nginx that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' nginx | \
-    cut -d '.' -f -2)" = "1.29" ]
+    cut -d '.' -f -2)" = "1.31" ]
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
+    t=$(mktemp -d); mv /target/usr/lib/sysimage/rpm/Packages.db $t; rpmdb --rebuilddb --dbpath=$t; \
+    rm /target/usr/lib/sysimage/rpm/*.db && mv $t/Packages.db /target/usr/lib/sysimage/rpm/; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
@@ -45,17 +47,18 @@ RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
 RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /target/etc/shadow
 FROM opensuse/bci/bci-micro:latest
 COPY --from=builder /target /
+RUN set -euo pipefail; rm -vf /usr/lib/sysimage/rpm/Index.db
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.nginx
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed NGINX"
 LABEL org.opencontainers.image.description="NGINX open source all-in-one load balancer, content cache and web server based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="1.29"
+LABEL org.opencontainers.image.version="1.31"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="1.29-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/nginx:1.29-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="1.31-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/nginx:1.31-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
