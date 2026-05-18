@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 13:17:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- explicitly require pbr for building
+
+-------------------------------------------------------------------
 Wed Apr  1 07:36:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0:

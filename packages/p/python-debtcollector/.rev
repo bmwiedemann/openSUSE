@@ -325,4 +325,12 @@
   * reno: Update master for unmaintained/victoria</comment>
     <requestid>1346059</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2657b41f936f9bd3132cc2606598a9d8</srcmd5>
+    <version>3.1.0</version>
+    <time>1779119386</time>
+    <user>anag_factory</user>
+    <comment>- explicitly require pbr for building</comment>
+    <requestid>1353839</requestid>
+  </revision>
 </revisionlist>

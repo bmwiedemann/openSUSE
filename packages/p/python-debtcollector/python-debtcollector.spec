@@ -25,6 +25,7 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/debtcollector/latest/
 Source0:        https://files.pythonhosted.org/packages/source/d/debtcollector/debtcollector-%{version}.tar.gz
 BuildRequires:  %{python_module fixtures >= 3.0.0}
+BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
