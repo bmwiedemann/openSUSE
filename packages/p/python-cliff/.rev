@@ -680,4 +680,23 @@
 - drop cmd2-3.1.0-compat.patch: upstream</comment>
     <requestid>1345955</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>af66f84c0b392f538b4a49ea4d72e1b7</srcmd5>
+    <version>4.14.0</version>
+    <time>1779119213</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.14.0:
+  * Fix command name alignment broken by ANSI color codes in help
+    output
+  * typing: Remove additional use of private _argparse module
+  * typing: Use objects from typing
+  * trivial: Use objects from collections.abc
+  * typing: Broaden return type of Command.get_parser
+  * ruff: Configure hacking as external linter
+  * tests: Drop use of testscenarios
+  * Relax help usage assertion for module-based runners
+  * Fix compatibility with cmd2 3.1.0+
+  * Fix cliff sphinxextention for Python 3.14</comment>
+    <requestid>1353615</requestid>
+  </revision>
 </revisionlist>
