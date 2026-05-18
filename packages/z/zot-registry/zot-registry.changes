@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon May 18 06:10:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.17:
+  * chore: bump zui version (#4074)
+  * chore: fix dependabot alerts (#4072)
+  * feat(metrics): add Prometheus GC metrics (#3863)
+  * fix(lint): silence deprecated gomodguard linter warning (#4070)
+  * chore: fix dependabot alerts (#4059)
+  * fix: downgrade expected missing-blob HEAD logging from error to
+    debug (#4056)
+  * chore: fix dependabot alerts (#4048)
+  * ci: fix golangci-lint install URL (#4052)
+  * ci: sync go 1.26 images to ghcr.io/project-zot/golang (#4049)
+  * feat(authz): introduce conditional access control via CEL
+    (#4040)
+    deprecated syntax (#4037)
+  * refactor(build): move build metadata to pkg/buildinfo (#4045)
+    validation (#4030)
+  * feat(api): log session/audit subject from UserAccessControl
+    (#4029)
+  * fix(auth): refine OIDC identity handling and claim-mapping logs
+    (#4028)
+  * test: refactor countingReader into partialReaderOpenTracker and
+    partialReaderReadCloser (#4027)
+  * feat(auth): map OpenID groups claim (#3999)
+  * feat(cosign): add support for cosign bundle (#4023)
+  * docs(config): reference generated config schema (#4015)
+  * Multipart download enhancements (#4021)
+  * fix(sync): apply tag filters before destination mapping (#4003)
+  * fix(api): support multipart range blob pulls (#3995)
+  * chore: fix dependabot alerts (#4020)
+  * fix(security): enhance timeout configurations and body size
+    limits fo… (#3984)
+  * feat(auth): support OIDC RP-Initiated Logout (#3975)
+  * chore: fix dependabot alerts (#3990)
+  * fix(api): recognize Docker Compose/Buildx User-Agent in v2
+    challenge workaround (#3992)
+  * feat(zb): Support for TTFB measurement + on-demand sync tests
+    (#3929)
+  * fix(api): return 416 for bad upload range on PUT; fix GET
+    upload Range at size zero (#3983)
+
+-------------------------------------------------------------------
 Mon Apr 20 18:27:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.16:
