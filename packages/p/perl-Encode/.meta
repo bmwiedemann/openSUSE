@@ -23,6 +23,5 @@ When Perl is processing &quot;binary data&quot;, the programmer wants Perl to pr
 character&quot;.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Encode"/>
   <url>http://search.cpan.org/dist/Encode/</url>
 </package>

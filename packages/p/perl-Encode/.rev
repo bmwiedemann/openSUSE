@@ -208,4 +208,13 @@
 </comment>
     <requestid>1156474</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9686a0a6e748fa69739d39deea80e846</srcmd5>
+    <version>3.24</version>
+    <time>1779119285</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.24
+   see /usr/share/doc/packages/perl-Encode/Changes</comment>
+    <requestid>1353762</requestid>
+  </revision>
 </revisionlist>
