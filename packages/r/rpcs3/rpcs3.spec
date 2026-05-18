@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(zlib)
 #graphics backend dependencies:
 #-------------------------------------------------
 ##opengl:
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 BuildRequires:  pkgconfig(glew) >= 2.3.1
 %else
 BuildRequires:  pkgconfig(glew) >= 1.13.0

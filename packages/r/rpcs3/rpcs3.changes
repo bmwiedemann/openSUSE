@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 18 09:50:48 UTC 2026 - Max Lin <mlin@suse.com>
+
+- Adjust the condition of the requirement version of glew
+  * Leap 16.1 does not have glew 2.3.1 or above
+  * %suse_version has been updated to 1610 since 16.1
+
+-------------------------------------------------------------------
 Tue May 05 06:51:34 UTC 2026 - Yunhe Guo <i@guoyunhe.me>
 
 - Remove unneeded ittapi source module
