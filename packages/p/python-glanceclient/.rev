@@ -756,4 +756,12 @@ update to version 2.3.0
   * Update master for stable/2025.2</comment>
     <requestid>1347759</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>fdcabf283e224ab8e2e03edf0e337f5b</srcmd5>
+    <version>4.11.0</version>
+    <time>1779119367</time>
+    <user>anag_factory</user>
+    <comment>- remove os-client-config dependency</comment>
+    <requestid>1353829</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 13:05:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- remove os-client-config dependency
+
+-------------------------------------------------------------------
 Fri Apr 17 16:37:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add 0001-Fix-bytes-related-test-failures-with-urllib-3.patch

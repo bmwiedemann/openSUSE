@@ -30,7 +30,6 @@ BuildRequires:  %{python_module PrettyTable >= 0.7.1}
 BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module keystoneclient}
-BuildRequires:  %{python_module os-client-config}
 BuildRequires:  %{python_module oslo.utils >= 3.33.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 17.1.0}
