@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>1320963</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5c8e2a55e24798dffbd04e1252b18421</srcmd5>
+    <version>1.1.7</version>
+    <time>1779119253</time>
+    <user>anag_factory</user>
+    <comment>- Require update-alternarives for installation</comment>
+    <requestid>1353717</requestid>
+  </revision>
 </revisionlist>

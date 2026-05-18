@@ -1,7 +1,7 @@
 #
 # spec file for package python-huggingface-hub
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,8 +42,10 @@ Requires:       python-fsspec >= 2023.5.0
 Requires:       python-packaging >= 20.9
 Requires:       python-requests
 Requires:       python-tqdm >= 4.42.1
-Requires:       python-typing-extensions >= 3.7.4.3
 Requires:       python-typer
+Requires:       python-typing-extensions >= 3.7.4.3
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
