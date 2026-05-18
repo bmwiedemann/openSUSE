@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 17 21:34:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.0:
+  * `pre-commit hook-impl`: allow `--hook-dir` to be missing to
+    enable easier usage with `git` 2.54+ git hooks.
+  * `pre-commit hook-impl`: `--hook-type` is required.
+
+-------------------------------------------------------------------
 Mon Jan 19 02:10:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.5.1:

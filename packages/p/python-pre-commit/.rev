@@ -309,4 +309,15 @@
     + Fix language: r installation when initiated by RStudio.</comment>
     <requestid>1327973</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5474e96dc4a3ee9e51481d6e062e07f3</srcmd5>
+    <version>4.6.0</version>
+    <time>1779119224</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.6.0:
+  * `pre-commit hook-impl`: allow `--hook-dir` to be missing to
+    enable easier usage with `git` 2.54+ git hooks.
+  * `pre-commit hook-impl`: `--hook-type` is required.</comment>
+    <requestid>1353631</requestid>
+  </revision>
 </revisionlist>
