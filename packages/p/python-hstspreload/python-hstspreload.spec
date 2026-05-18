@@ -1,7 +1,7 @@
 #
 # spec file for package python-hstspreload
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           python-hstspreload
-Version:        2025.1.1
+Version:        2026.5.1
 Release:        0
 Summary:        Python Chromium HSTS Preload list
 License:        BSD-3-Clause
 URL:            https://github.com/sethmlarson/hstspreload
-Source:         https://files.pythonhosted.org/packages/source/h/hstspreload/hstspreload-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/python-http/hstspreload/master/test_hstspreload.py
+Source:         https://github.com/sethmlarson/hstspreload/archive/refs/tags/%{version}.tar.gz#/hstspreload-%{version}-gz.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -37,8 +36,7 @@ BuildArch:      noarch
 Chromium HSTS Preload list as a Python package.
 
 %prep
-%setup -q -n hstspreload-%{version}
-cp %{SOURCE1} .
+%autosetup -p1 -n hstspreload-%{version}
 
 %build
 %pyproject_wheel

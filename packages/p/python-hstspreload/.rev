@@ -154,4 +154,13 @@
   * Automated updates to the HSTS preload list on 2025-1-1</comment>
     <requestid>1292496</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d34ac57094ef582871516b77c91bfa35</srcmd5>
+    <version>2026.5.1</version>
+    <time>1779119214</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.5.1:
+  * Automated updates to the HSTS preload list on 2026-5-1</comment>
+    <requestid>1353616</requestid>
+  </revision>
 </revisionlist>
