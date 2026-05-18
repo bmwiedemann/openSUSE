@@ -1,7 +1,7 @@
 #
 # spec file for package vym
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,36 +17,33 @@
 
 
 Name:           vym
-Version:        2.9.28
+Version:        2.9.613
 Release:        0
 Summary:        Tool to generate and manipulate thought maps
 License:        GPL-2.0-only
 Group:          Productivity/Office/Other
-URL:            http://www.insilmaril.de/vym/index.html
+URL:            https://www.insilmaril.de/vym/index.html
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        debian.dirs
 Source2:        debian.docs
-Source3:        makedist.config
 
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
 
-BuildRequires:  cmake(Qt5Core) >= 5.15.2
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Script)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Qml)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Xml)
 
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
-
+Requires:       libQt6Svg6
 Requires:       unzip
 Requires:       zip
+
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -60,19 +57,16 @@ overview over complex contexts, to sort ideas etc.
 
 %build
 %global cmake_options \\\
-    -DCMAKE_INSTALL_DATAROOTDIR="share/vym" \\\
+    -DCMAKE_INSTALL_DATAROOTDIR="share" \\\
     -DCMAKE_INSTALL_MANDIR="%{_mandir}/man1" \\\
-    -DCMAKE_INSTALL_DOCDIR="%{_defaultdocdir}/%{name}"
+    -DCMAKE_INSTALL_DOCDIR="%{_defaultdocdir}/%{name}" \\\
+    -DCMAKE_SKIP_INSTALL_RPATH=1
 
 %cmake %{cmake_options}
 %cmake_build
 
 %install
 %cmake_install
-
-%if 0%{?suse_version}
-%suse_update_desktop_file -i vym Office ProjectManagement
-%endif
 
 # Make scripts executable already installed with cmake above
 chmod 755 %{buildroot}%{_datadir}/%{name}/scripts/vivym
@@ -88,9 +82,9 @@ fi
 %{_datadir}/applications/*
 
 # Directories can be owned by multiple packages:
+%dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/48x48
 %dir %{_datadir}/icons/hicolor/48x48/apps
-%dir %{_datadir}/icons/hicolor/48x48/mimetypes
 
 %{_datadir}/icons/*/*/*/*.*
 %{_bindir}/vym

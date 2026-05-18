@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri May  8 21:51:38 UTC 2026 - Uwe Drechsel <vym@insilmaril.de>
+
+- More detailed changelog for 2.9.613, as requested:
+
+  vym has been rewritten in large parts and updated to Qt6
+
+     * New layout engine
+       - Supports rotation and scaling of elements
+       - Supports frames around subtrees
+       - Transparency for frame colors
+
+     * Introducing MapDesign
+       - Mapdesign defines how a map looks visually, e.g. colors, frames,
+         links
+       - The design can be saved within the map, e.g. with the default map,
+         which is loaded initially
+       - MapDesign defines how elements look depending on depth, e.g.
+         MapCenters and first level MainBranches may have frames, other
+         branches not.
+
+     * More personalization options
+       - Mapdesign above allows to save personal preferences for designs in
+         default maps or easily share them
+       - Theming has improved
+         - Dark mode support
+         - New icons and additional icons for dark mode
+         - Even selection box can be styled (so far only be modifying
+           mapdesign in xml file, e.g. using vivym script)
+
+     * Improved text handling in NoteEditor and HeadingEditor
+         - RichText in headings of branches
+         - Improved color handling
+
+     * Keyboard shortcuts
+
+     * Speedup and optimizations
+
+     * New scripting engine based on QJSEngine
+
+     * For more details and a complete list of bugfixes and features see
+       https://github.com/insilmaril/vym/blob/a76fbbd9a2b4c791d022598cd1d5eb4b0894d118/release-notes-3.0.md
+
+-------------------------------------------------------------------
+Tue Apr 28 18:17:04 UTC 2026 - Uwe Drechsel <vym@insilmaril.de>
+
+- Update to version 2.9.613 (RC for 3.0.0) 
+
+-------------------------------------------------------------------
 Tue Jul 16 02:51:57 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 2.9.28
@@ -257,6 +305,7 @@ Fri Sep  5 00:57:51 UTC 2014 - chris@computersalat.de
   * Patch to allow hardening in Debian by p0llux
   * Fixed project file
  
+-------------------------------------------------------------------
 Fri Sep 13 15:50:00 CEST 2013 - uwedr@suse.de
 
 - Version 2.3.20
@@ -1448,7 +1497,7 @@ Wed Jul 11 09:42:44 CEST 2007 - uwedr@suse.de
           channel
 - Bugfix: Fixed broken check for non-existent OO-export configuration 
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Wed Jan  3 17:37:25 CET 2007 - stbinner@suse.de
 
 - cleanup BuildRequires to fix build for < 10.1
@@ -1517,29 +1566,24 @@ Mon Apr 24 13:50:42 CET 2006 - uwedr@suse.de
 - Feature: Import KDE bookmarks
 - Feature: Own class xsltproc for doing xml transformations
 
--------------------------------------------------------------------
 Tue Jan 25 16:07:53 CET 2006 - uwedr
 
 - Version 1.7.7
 - Feature: Export to Open Office 2.x (Open Document) basically works 
 - Feature: Export to XHTML uses smaller icon for URLs now
 
--------------------------------------------------------------------
 Wed Jan 18 13:29:52 CET 2006 - uwedr
 
 - Feature: Multiple File selection while loading maps and images
 
--------------------------------------------------------------------
 Tue Jan  3 12:20:08 CET 2006 - uwe
 
 - Feature: Small optimization in zip/unzip functions
 
--------------------------------------------------------------------
 Mon Jan  2 21:03:05 CET 2006 - uwe
 
 - Feature: FATE support for URLs 
 
--------------------------------------------------------------------
 Wed Dec 28 12:09:59 CET 2005 - uwe
 
 - Version 1.7.6
@@ -1550,27 +1594,23 @@ Wed Dec 28 12:09:59 CET 2005 - uwe
   relinked to new parent  
 - Bugfix: Editing heading of mapcenter now also corrects position  
 
--------------------------------------------------------------------
 Mon Oct 10 13:18:29 CEST 2005 - uwedr
 
 - Bugfix: Copy/Paste was currently not possible for images. Now
   completly rewrote mechanism. Instead of invisible map now XML import
   is used (Multiple clipboards should be not difficult now) 
 
--------------------------------------------------------------------
 Mon Oct  3 10:33:09 CEST 2005 - uwe
 
 - Bugfix: Added small fix from Khaled Ahmed needed for display of 
   arabic languages 
 
--------------------------------------------------------------------
 Mon Sep 12 21:39:38 CEST 2005 - uwedr
 
 - Version 1.7.5
 - Feature: Currently 15 levels of undo (GUI to set value still missing)
 - Feature: Experimental LaTeX Export (without headers and opions so far)
 
--------------------------------------------------------------------
 Sun Sep  5 10:26:15 CEST 2005 - uwedr
 
 - Version 1.7.4
@@ -1581,13 +1621,11 @@ Sun Sep  5 10:26:15 CEST 2005 - uwedr
 - Bugfix: BranchObj no longer need to connect to TextEditor, BranchObj
   is no longer a QOBJECT
 
--------------------------------------------------------------------
 Thu Sep  1 12:26:24 CEST 2005 - uwedr
 
 - Bugfix: Some minor changes so that translations use arguments now
   instead of several calls to tr()
 
--------------------------------------------------------------------
 Tue Aug 30 13:38:31 CEST 2005 - uwedr
 
 - Bugfix: Fixed pasting vymlinks: Pasting a branch to a target in
@@ -1596,18 +1634,15 @@ Tue Aug 30 13:38:31 CEST 2005 - uwedr
 - Bugfix: Invisible floatimages (which have a scrolled parent) no longer
   can be selected  
 
--------------------------------------------------------------------
 Fri Aug 19 09:12:49 CEST 2005 - uwedr
 
 - Feature: added debian subdirectory created by Steffen Joeris
 - Feature: added license to new aboutwindow
 
--------------------------------------------------------------------
 Tue Aug 16 19:22:56 CEST 2005 - jhilmer
 
 - Bugfix: Fixed link handling in aboutdialog.
 
--------------------------------------------------------------------
 Tue Aug 16 12:25:09 CEST 2005 - uwedr
 
 - Feature: Added keyboard shortcut to reset zoom factor
@@ -1615,25 +1650,21 @@ Tue Aug 16 12:25:09 CEST 2005 - uwedr
 - Bugfix: The setting option "Delete Key" is working again
 - Bugfix: A branch moved from left side to right had wrong orienation
 
--------------------------------------------------------------------
 Tue Aug  2 09:59:24 CEST 2005 - uwedr
 
 -  Bugfix: Heading sizes now correct after moving e.g. mainbranch to 
    a branch
 
--------------------------------------------------------------------
 Mon Aug  1 22:40:29 CEST 2005 - jhilmer
 
 - Bugfix: Problems with closing of note editor when text was modified.
 - Feature: Added subscript and superscript to note editor
 	
--------------------------------------------------------------------
 Thu Jul 28 11:57:38 CEST 2005 
 
 - Version 1.7.3
 - Bugfix: Frames didn't become invisible if scrolled
 
--------------------------------------------------------------------
 Thu Jul 28 11:57:38 CEST 2005 
 
 - Version 1.7.2
@@ -1641,55 +1672,46 @@ Thu Jul 28 11:57:38 CEST 2005
   branch
 - included math.h again to enable compiling with gcc4  
 
--------------------------------------------------------------------
 Mi Jul 27 17:27:14 CEST 2005
 
 - Bugfix: if selection changed before undo, undo worked on wrong branch
 
--------------------------------------------------------------------
 Mon Jul 25 22:22:21 CEST 2005
 
 - Bugfix: changed MapEditor::undo and ::saveState to also save selection
 
--------------------------------------------------------------------
 Di Jul 19 16:42:31 CEST 2005
 
 - Version: 1.7.1
 - Feature: Drag and Drop also for .vym and files (Jakob Hilmer)
 - Feature: More speedup on moving/relinking branches
 
--------------------------------------------------------------------
 
 Mi Jul 13 11:44:10 CEST 2005 
 
 - Drag and Drop also for URLs
 
--------------------------------------------------------------------
 Di Jul 12 20:56:09 CEST 2005
 
 - Version: 1.7.0
 
--------------------------------------------------------------------
 Mon Jul  4 21:13:42 CEST 2005 
 
 - Version: 1.6.9
 - Bugfix: TextEditor doesn't get minimized in KDE any longer (KDE-bug?)
 
--------------------------------------------------------------------
 Tue Jun 14 11:43:44 CEST 2005
 
 - Feature: printer name is saved in vymrc now
 - Feature: added image drag/drop (by Jakob Hilmer)
 - Bugfix: Importing map into new map now has correct (empty) filename 
 
--------------------------------------------------------------------
 2005-06-07 
 
 - Version: 1.6.8
 - Feature: Dramatic speedup in some operations 
 				(e.g. move branch up/down) due to extended 
 				undo engine
--------------------------------------------------------------------
  2005-05-27 
  
 - Version: 1.6.7	
@@ -1698,13 +1720,11 @@ Tue Jun 14 11:43:44 CEST 2005
 - Bugfix: drawing error when using modModeCopy
 - Bugfix: replaced lrint by qRound for BSD port
 		
------------------------------------------------------------
  2005-05-23
 
 - Version 1.6.6	
 - Feature: Exclusive standard flags		
 
------------------------------------------------------------
 2005-05-19 
 
 - Version: 1.6.5
@@ -1719,14 +1739,12 @@ Tue Jun 14 11:43:44 CEST 2005
 	      links again
 - Bugfix: Paste icon is disabled if clipboard is empty 
 		
------------------------------------------------------------
 2005-04-15
 
 - Version: 1.6.4	
 - Feature: xLinks (connection between 2 branches) works
            in a basic version (straight line)	
 
------------------------------------------------------------
 2005-03-30
 
 - Version: 1.6.3
@@ -1734,7 +1752,6 @@ Tue Jun 14 11:43:44 CEST 2005
 - Bugfix: Closing the noteeditor by closing its window now
           also toggles the responding toolbar button. &
 
------------------------------------------------------------
 2005-03-24
 
 - Version: 1.6.2	
@@ -1742,7 +1759,6 @@ Tue Jun 14 11:43:44 CEST 2005
 - Feature: Linking branches is basically possible, though it can't be
            edited/saved yet 
 
------------------------------------------------------------
 2005-01-30
 
 - Version: 1.6.1	 
@@ -1752,13 +1768,11 @@ Tue Jun 14 11:43:44 CEST 2005
 - Bugfix: ugly unitialized lines, when temporary drawn link 
           was moved from a temporary parent back to canvas		  
 
------------------------------------------------------------
 2004-12-14  
 
 - Version: 1.6.0 	 
 - Feature: Added saving of xhtml settings in map 
 
------------------------------------------------------------
 2004-12-13  
 
 - Version: 1.5.2 	 
@@ -1778,13 +1792,11 @@ Tue Jun 14 11:43:44 CEST 2005
 - Bugfix: Wrong URLs in xhtml output				  
 - Bugfix: Segfault fixed at Cursor left/right in empty map  
 
------------------------------------------------------------
 2004-10-01 
 
 - Version: 1.5.1
 - Feature: More options in xhtml export: external scripts 	 
 
------------------------------------------------------------
 2004-09-26 
 
 - Version: 1.5.0 	 
@@ -1796,7 +1808,6 @@ Tue Jun 14 11:43:44 CEST 2005
 - Bugfix: Wrong ordering of branches, if mainbranch is exactly left of
   center 
 
------------------------------------------------------------
 2004-09-24 
 
 - Version: 1.4.7 	 
@@ -1805,7 +1816,6 @@ Tue Jun 14 11:43:44 CEST 2005
 - Bugfix: spaces and dots in filenames	 
 - Bugfix: Error message if xsltproc is not installed 
 
------------------------------------------------------------
 2004-09-15	
 
 - Version: 1.4.6 	 
@@ -1813,24 +1823,17 @@ Tue Jun 14 11:43:44 CEST 2005
 - Feature: Note Editor supports Rich Text now.
 - Feature: Parser now also nows {\tt standardflag} (all letters lowercase)
 
------------------------------------------------------------
 2004-08-23	
 
 - Version: 1.4.5 	 
 - Feature: Correct handling of font size in Heading			 
 
------------------------------------------------------------
------------------------------------------------------------
------------------------------------------------------------
------------------------------------------------------------
------------------------------------------------------------
 2004-07-29	
 
 - Version: 1.4.4 	 
 - Selecting with cursor now works between subtrees	 
 - Bugfix: vymLink was set to temporary dir in 1.4.3	 
 
------------------------------------------------------------
 2004-07-19  
 
 - Version: 1.4.3 	 
@@ -1852,11 +1855,9 @@ Tue Jun 14 11:43:44 CEST 2005
 - Bugfix: CTRL-N was used twice		
 - Bugfix: Del didn't work on floatimage 
 
------------------------------------------------------------
 - Version: 1.4.2 	 
 - Bugfix: Float image could not be deleted  
 
------------------------------------------------------------
 2004-05-25  
 
 - Version: 1.4.1 	 
@@ -1864,7 +1865,6 @@ Tue Jun 14 11:43:44 CEST 2005
 - Bugfix: wrong path at HTML export	             
 - Bugfix: map is not save with special characters in path   
 
------------------------------------------------------------
 2004-05-17 
 
 - Version: 1.4.0 	 
@@ -1884,7 +1884,6 @@ Tue Jun 14 11:43:44 CEST 2005
 - Bugfix: Old maplink is shown when editing maplink 
 - Bugfix: always show cursor while editing heading  
 
------------------------------------------------------------
 2004-04-16 
 
 - Version: 1.3.5 	 
@@ -1892,7 +1891,6 @@ Tue Jun 14 11:43:44 CEST 2005
 - Export to any of QTs image formats	 
 - Also right side of selection is always visible now. 
 
------------------------------------------------------------
 2004-04-07 
 
 - Version: 1.3.4 	 
@@ -1900,7 +1898,6 @@ Tue Jun 14 11:43:44 CEST 2005
 - save last image path for loading	 
 - Also export standard flags to dir.	 
 
------------------------------------------------------------
 2004-03-26 
 
 - Version: 1.3.3 	 
@@ -1908,31 +1905,26 @@ Tue Jun 14 11:43:44 CEST 2005
 - Heading can be copied to URL		
 - Bugfix: GIFs are automatically converted to PNG now
 
------------------------------------------------------------
 2004-03-26 
 
 - Version: 1.3.2 	 
 - Add and move branches above/below selection, Texteditor copy all, 
 
------------------------------------------------------------
 2004-03-25 
 
 - Version: 1.3.1 	 
 - Export to directory, changed naming in .vym 
 
------------------------------------------------------------
 2004-03-23 
 
 - Version: 1.3.0 	 
 - Bugfix: Check if map can be saved at all 
 
------------------------------------------------------------
 2004-03-22 
 
 - Version: 1.2.12	 
 - Select image format before saving image	 
 
------------------------------------------------------------
 2004-03-18 
 
 - Version: 1.2.11	
@@ -1943,7 +1935,6 @@ Tue Jun 14 11:43:44 CEST 2005
 -		Bugfix: 50\% less objects on canvas				
 -		Bugfix: Ignoring LANG, now always written as UTF8
 
------------------------------------------------------------
 2004-03-16 
 
 - Version: 1.2.10	
@@ -1951,26 +1942,22 @@ Tue Jun 14 11:43:44 CEST 2005
 - Import directory structure						
 - Bugfix: Set FrameType of MapCenter while loading map 
 
------------------------------------------------------------
 2004-03-12 
 
 - Version: 1.2.9	
 - Jump to another vym map		         
 - Mainbranches are alwas ordered clockwise        
 
------------------------------------------------------------
 2004-03-03 
 
 - Version: 1.2.8	 
 - Change frame types in context menu   
 
------------------------------------------------------------
 2004-02-25 
 
 - Version: 1.2.7	
 - Copy / Paste and save Floatimages  
 
------------------------------------------------------------
 2004-02-24 
 
 - Version: 1.2.6	 
@@ -1978,38 +1965,32 @@ Tue Jun 14 11:43:44 CEST 2005
 - Context menu for branches					  
 - Selection is saved in .vym file				  
 
------------------------------------------------------------
 2004-02-18 
 
 - Version: 1.2.5	 
 - URLs to external links can be added 
 - All actions are deactived if not possible  
 
------------------------------------------------------------
 2004-02-16 
 
 - Version: 1.2.4	 
 - Images: Can be loaded, saved, relinked to other parents
 
------------------------------------------------------------
 2004-01-27  
 
 - Version: 1.2.3	 
 - Zoom: Reset and finer steps shrinking/enlarging	 
 
------------------------------------------------------------
 2004-01-27 
 
 - Version: 1.2.2	 
 - Editing of links (style and color)	 
 
------------------------------------------------------------
 2004-01-27 
 
 - Version: 1.2.1	
 - Bugfix: LineEdit when adding branch has correct position again.								 
 
------------------------------------------------------------
 2004-01-23 
 
 - Version: 1.2.0	 
@@ -2019,57 +2000,48 @@ Tue Jun 14 11:43:44 CEST 2005
 - Bugfix: Moving of branches is faster and more accurat when adding to
   mapcenter 
 
------------------------------------------------------------
 2003-12-04 
 
 - Version: 1.1.7	 
 - Bugfix: Remember filename of note in noteeditor	 
 
------------------------------------------------------------
 2003-12-02 
 
 - Version: 1.1.6	 
 - Find Text also in Notes.	 
 
------------------------------------------------------------
 2003-11-07 
 
 - Version: 1.1.5	
 - Bugfix: Correct setting and positioning when relinking branches	 
 
------------------------------------------------------------
 2003-11-03 
 
 - Version: 1.1.4	 
 - Scroll mode added (folding of subtrees).		 
 - Bugfix: Wrong position of linedit in zoomed view 
 
------------------------------------------------------------
 2003-10-09  
 
 - Version: 1.1.3	 
 -		Added clear button in find window, bugfixes     
 
------------------------------------------------------------
 2003-10-07  
 
 - Version: 1.1.2	 
 - Links can be colored with color of heading      
 
------------------------------------------------------------
 2003-09-26  
 
 - Version: 1.1.1	 
 - Improved visualization of linking to new branch 
 
------------------------------------------------------------
 2003-09-25  
 
 - Version: 1.1.0	 
 - Find Function							
 - Selection always stays in view		  
 
------------------------------------------------------------
 2003-09-18
 
 - Version: 1.0.1	 
@@ -2079,17 +2051,14 @@ Tue Jun 14 11:43:44 CEST 2005
   (speedup)	 
 - New Linestyles (still hardcoded)			 
 
------------------------------------------------------------
 2003-09-16 	 	
 
 - Version: 1.0.0	 
 - First public stable release			 
 
------------------------------------------------------------
 - Version: 0.9.0	 
 - added quick color picker (CTRL + Left Mouse)  ?	 
 
------------------------------------------------------------
 - Version: 0.8.0	 
 - added automatic canvas resizer, removed manual resizing of canvas  
 - added settings option to paste text into new branch	 
@@ -2108,7 +2077,6 @@ Tue Jun 14 11:43:44 CEST 2005
 - Set background color	 
 - Fixed bug: Flags in toolbar not updated when selecting map center	  
 
------------------------------------------------------------
 - Version: 0.7.0	 
 - No more segfault, when an object is deleted while being edited  
 - Keep focus constant when zooming in/out  
@@ -2123,17 +2091,14 @@ Tue Jun 14 11:43:44 CEST 2005
 - Changes in NoteEditor window are recognized by main window, too, thus
   preventing loosing data when quitting the program.   
 
------------------------------------------------------------
 - Version: 0.6.0	
 - New rendering engine: Faster, no flickering   
 
------------------------------------------------------------
 - Version: 0.5.0	 
 -  Changed printing to use maximum space on paper  
 -  Note editor is hidden, too, when mapeditor is minimized  
 -  New (compressed) file format  
 
------------------------------------------------------------
 - Version: 0.4.0     
 - Size of map is saved  
 - Multi Line Headings   
@@ -2142,19 +2107,16 @@ Tue Jun 14 11:43:44 CEST 2005
 - Enabled moving of map center  
 - Multi-line headings   
 
------------------------------------------------------------
 - Version: 0.3.0
 - Introduced Undo  
 - Fixed some bugs    
 
------------------------------------------------------------
 - Version: 0.2.0     
 - Moving view of map improved:  
 - New handling (acrobat reader style)  
 - New mousepointer  
 - Several tools to color a map  
 
------------------------------------------------------------
 - Version: 0.1.0  
 - Inital version, basic map layout   
 - Data is stored in XML 
@@ -2234,7 +2196,6 @@ Fri Aug 19 09:12:49 CEST 2005 - uwedr@suse.de
 - Feature: added debian subdirectory created by Steffen Joeris
 - Feature: added license to new aboutwindow
 
--------------------------------------------------------------------
 Tue Aug 16 19:22:56 CEST 2005 - jhilmer
 
 - Bugfix: Fixed link handling in aboutdialog.
@@ -2253,7 +2214,6 @@ Tue Aug  2 09:59:24 CEST 2005 - uwedr@suse.de
 -  Bugfix: Heading sizes now correct after moving e.g. mainbranch to 
    a branch
 
--------------------------------------------------------------------
 Mon Aug  1 22:40:29 CEST 2005 - jhilmer
 
 - Bugfix: Problems with closing of note editor when text was modified.
