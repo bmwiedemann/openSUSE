@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 17 11:57:06 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use SDL3 also for Leap 16, SDL3 is now default SDL version
+
+-------------------------------------------------------------------
 Fri May 15 13:19:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.70

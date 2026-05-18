@@ -37,11 +37,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(openal)
-%if 0%{?suse_version} > 1600
 BuildRequires:  pkgconfig(sdl3)
-%else
-BuildRequires:  pkgconfig(sdl2)
-%endif
 
 %description
 Yamagi Quake II is an enhanced client for id Software's Quake II. The
