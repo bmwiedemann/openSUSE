@@ -98,4 +98,29 @@
   See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
     <requestid>1310651</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>230a21287b3d56ee9b2985376b10a6cd</srcmd5>
+    <version>0.420.0</version>
+    <time>1779119275</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.420.0 (0.42)
+   see /usr/share/doc/packages/perl-Test-Most/Changes
+  0.42    2026-05-07
+          - Bugfix: restore support for `use Test::Most import =&gt; [...]` to
+            select which symbols to export. The 0.39 export rework broke it.
+            See https://github.com/Ovid/test--most/issues/18
+  0.41    2026-04-30
+          - No functional changes
+          - ANOTHER book-keeping fix. Once a module has been indexed it needs
+            to always have a version number. Grargh!
+  0.40    2026-04-30
+          - No functional changes
+          - Test::Most::Exception didn't get indexed last time because I forgot
+            to bump the version. It doesn't need a version at all, so get rid of
+            it to avoid this happening again.
+  0.39    2026-04-30
+          - Bugfix: prevent strange import behaviour caused by @EXPORT twiddling
+            see @dmaestro's patch f436edb and also later 7d20ddb</comment>
+    <requestid>1353752</requestid>
+  </revision>
 </revisionlist>
