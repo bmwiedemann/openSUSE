@@ -1,5 +1,25 @@
 -------------------------------------------------------------------
-Wed Jan 31 09:50:00 AEST 2024 - John Zaitseff <J.Zaitseff@zap.org.au>
+Mon May 18 11:20:53 UTC 2026 - J.Zaitseff@zap.org.au
+
+- The factory-auto reviewer is much more picky these days :-) so convert
+  all dates to the UTC timezone.
+- After carefully reviewing update-desktop-files.tar.gz in the build
+  results, removed "BuildRequires: update-desktop-files" and the
+  associated %suse_update_desktop_file macro.
+  * Every file in that archive was either (a) identical to upstream
+    (possibly reformatted), (b) a subset of upstream or (c) absolute
+    nonsense, such as translating "Star Traders" to "New Spreadsheet" or
+    "Krusader"!
+
+-------------------------------------------------------------------
+Mon May 18 10:51:00 UTC 2026 - J.Zaitseff@zap.org.au
+
+- New upstream release of Star Traders: version 7.21
+  * Require at least Gettext 0.22 for building
+  * Updated the included Gnulib snapshot
+
+-------------------------------------------------------------------
+Tue Jan 30 22:50:00 UTC 2024 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.20
   * Changed documentation (history of the game)
@@ -16,7 +36,7 @@ Fri Jan 12 15:24:04 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
    * Require at least Gettext 0.21 and Automake 1.16 for building.
 
 -------------------------------------------------------------------
-Sat Aug  6 09:45:00 AEST 2021 - John Zaitseff <J.Zaitseff@zap.org.au>
+Fri Aug  6 23:45:00 UTC 2021 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.18.
   * From version 7.17: fixed two TOCTOU (time-of-check / time-of-use)
@@ -53,24 +73,24 @@ Thu Apr 29 18:59:55 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
   * Updated the Russian translation
 
 -------------------------------------------------------------------
-Thu Jan  9 14:22:00 AEDT 2020 - J.Zaitseff@zap.org.au
+Thu Jan  9 03:22:00 UTC 2020 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.14.
   * New Brazilian Portuguese translation
   * Updated French, Hungarian and Esperanto translations
 
 -------------------------------------------------------------------
-Wed Nov 27 02:10:00 AEDT 2019 - J.Zaitseff@zap.org.au
+Tue Nov 26 15:10:00 UTC 2019 - J.Zaitseff@zap.org.au
 
 - Use %license for the COPYING file.
 
 -------------------------------------------------------------------
-Fri Nov 15 09:00:00 AEDT 2019 - J.Zaitseff@zap.org.au
+Thu Nov 14 22:00:00 UTC 2019 - J.Zaitseff@zap.org.au
 
 - Update the spec file to match the result of "osc build".
 
 -------------------------------------------------------------------
-Fri Nov 15 08:30:00 AEDT 2019 - J.Zaitseff@zap.org.au
+Thu Nov 14 21:30:00 UTC 2019 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.13.
   * Updated Esperanto translation
@@ -85,18 +105,18 @@ Thu Jan  4 19:47:53 UTC 2018 - avindra@opensuse.org
 - cleanup with spec-cleaner
 
 -------------------------------------------------------------------
-Sun Jun 18 07:20:00 EST 2017 - J.Zaitseff@zap.org.au
+Sat Jun 17 21:20:00 UTC 2017 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.11.
 
 -------------------------------------------------------------------
-Mon Jun 05 20:49:00 EST 2017 - J.Zaitseff@zap.org.au
+Mon Jun  5 10:49:00 UTC 2017 - J.Zaitseff@zap.org.au
 
 - Changed build dependency from pkgconfig(ncurses) back to ncurses-devel
   so that the package can build on OpenSUSE 42.x.
 
 -------------------------------------------------------------------
-Mon Jun 05 20:12:00 EST 2017 - J.Zaitseff@zap.org.au
+Mon Jun  5 10:12:00 UTC 2017 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.10.
 - Make the lang package unconditional (assume suse_version >= 1100).
@@ -108,66 +128,66 @@ Mon Jun 05 20:12:00 EST 2017 - J.Zaitseff@zap.org.au
 - Remove the clean section, as per current OpenSUSE packaging guidelines.
 
 -------------------------------------------------------------------
-Tue Jan 05 12:52:00 EST 2016 - J.Zaitseff@zap.org.au
+Tue Jan  5 02:52:00 UTC 2016 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.9.
 
 -------------------------------------------------------------------
-Thu Sep 10 09:35:00 EST 2015 - J.Zaitseff@zap.org.au
+Wed Sep  9 23:35:00 UTC 2015 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.8.
 
 -------------------------------------------------------------------
-Tue Aug 18 13:30:00 EST 2015 - J.Zaitseff@zap.org.au
+Tue Aug 18 03:30:00 UTC 2015 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.7.
 
 -------------------------------------------------------------------
-Wed Aug 13 12:50:00 EST 2014 - J.Zaitseff@zap.org.au
+Wed Aug 13 02:50:00 UTC 2014 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.6.
 
 -------------------------------------------------------------------
-Sat May 24 09:30:00 EST 2014 - J.Zaitseff@zap.org.au
+Fri May 23 23:30:00 UTC 2014 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.5.
 
 -------------------------------------------------------------------
-Wed May 09 14:20:00 EST 2012 - J.Zaitseff@zap.org.au
+Wed May  9 04:20:00 UTC 2012 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: version 7.4.
 
 -------------------------------------------------------------------
-Mon Apr 30 08:37:00 EST 2012 - J.Zaitseff@zap.org.au
+Sun Apr 29 22:37:00 UTC 2012 - J.Zaitseff@zap.org.au
 
 - Updated the variable rpm_release_num to 3
 - More tweaking just for the very pedantic "osc ci"
 
 -------------------------------------------------------------------
-Mon Apr 30 08:20:00 EST 2012 - J.Zaitseff@zap.org.au
+Sun Apr 29 22:20:00 UTC 2012 - J.Zaitseff@zap.org.au
 
 - Updated the variable rpm_release_num to 2
 - Added missing %changelog section to RPM spec file
 - Changed some RPM spec fields to match what "osc ci" requires
 
 -------------------------------------------------------------------
-Mon Apr 30 07:51:00 EST 2012 - J.Zaitseff@zap.org.au
+Sun Apr 29 21:51:00 UTC 2012 - J.Zaitseff@zap.org.au
 
 - Made the RPM spec file more specific for OpenSUSE by removing
   Fedoraisms.
 
 -------------------------------------------------------------------
-Sat Apr 14 16:26:00 EST 2012 - J.Zaitseff@zap.org.au
+Sat Apr 14 06:26:00 UTC 2012 - J.Zaitseff@zap.org.au
 
 - New upstream release of Star Traders: 7.4-pre2
 
 -------------------------------------------------------------------
-Fri Mar 30 15:00:27 CEST 2012 - pth@suse.de
+Fri Mar 30 13:00:27 UTC 2012 - pth@suse.de
 
 - Complete translation added.
 
 -------------------------------------------------------------------
-Thu Mar 29 17:30:55 CEST 2012 - pth@suse.de
+Thu Mar 29 15:30:55 UTC 2012 - pth@suse.de
 
 - Initial openSUSE package
 - Add german translation and add de to po/LINGUAS

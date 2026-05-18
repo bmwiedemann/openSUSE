@@ -1,8 +1,8 @@
 #
 # spec file for package trader
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2012-24 John Zaitseff <J.Zaitseff@zap.org.au>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2012-26 John Zaitseff <J.Zaitseff@zap.org.au>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,19 @@
 # ***********************************************************************
 # *                                                                     *
 # *            Star Traders: A Game of Interstellar Trading             *
-# *               Copyright (C) 1990-2024, John Zaitseff                *
+# *               Copyright (C) 1990-2026, John Zaitseff                *
 # *                                                                     *
 # ***********************************************************************
 
 # Author: John Zaitseff <J.Zaitseff@zap.org.au>
-# $Id: 5ea51da60ce864d2de82d656ebbb3ce70601059a $
+# $Id: c7ebacd36ed2eaac2d771e21cec1ea0126ccb003 $
 
 # This file is distributed under the same licence as Star Traders itself:
 # the GNU General Public License, version 3 or later.
 
-%define upstream_version   7.20
-%define normalised_version 7.20
-%define rpm_release_num    1
+%define upstream_version   7.21
+%define normalised_version 7.21
+%define rpm_release_num    2
 
 Name:           trader
 Version:        %{normalised_version}
@@ -51,11 +51,10 @@ BuildRequires:  gcc
 BuildRequires:  gettext
 BuildRequires:  gperf
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(ncurses)
 
 Requires(post): hicolor-icon-theme
-Requires(postun):hicolor-icon-theme
+Requires(postun): hicolor-icon-theme
 Recommends:     %{name}-lang = %{version}
 
 %description
@@ -75,7 +74,6 @@ order to become the wealthiest player (the winner).
 %install
 %make_install
 %find_lang %{name}
-%suse_update_desktop_file au.org.zap.%{name}
 
 %files
 %doc README NEWS
