@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 18 05:15:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.13:
+  * cpio: add FromLayers for multi-layer CPIO archives (#2216)
+  * build(deps): bump go.step.sm/crypto from 0.77.9 to 0.78.0
+    (#2224)
+  * build(deps): bump gopkg.in/ini.v1 from 1.67.1 to 1.67.2 (#2218)
+  * build(deps): bump google.golang.org/api from 0.277.0 to 0.278.0
+    (#2223)
+  * build(deps): bump github/codeql-action from 4.35.3 to 4.35.4
+    (#2225)
+  * build(deps): bump sigstore/cosign-installer from 4.1.1 to 4.1.2
+    (#2226)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.18.0 to
+    5.19.0 in the go_modules group across 1 directory (#2222)
+  * build(deps): bump golang.org/x/sys from 0.43.0 to 0.44.0
+    (#2221)
+
+-------------------------------------------------------------------
 Mon May 11 05:03:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.12:
