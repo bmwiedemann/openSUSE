@@ -17,22 +17,23 @@
 
 
 Name:           python-gcsfs
-Version:        2026.3.0
+Version:        2026.5.0
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
 URL:            https://github.com/fsspec/gcsfs
 # Use the GitHub tarball for test data
 Source:         https://github.com/fsspec/gcsfs/archive/refs/tags/%{version}.tar.gz#/gcsfs-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling >= 1.27.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp >= 3.9.0
 Requires:       python-decorator > 4.1.2
-Requires:       python-fsspec = %{version}
+Requires:       python-fsspec >= 2026.3.0
 Requires:       python-google-auth >= 1.2
 Requires:       python-google-auth-oauthlib
 Requires:       python-google-cloud-storage >= 3.9.0
@@ -46,7 +47,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module aiohttp >= 3.9.0}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module decorator > 4.1.2}
-BuildRequires:  %{python_module fsspec = %{version}}
+BuildRequires:  %{python_module fsspec >= 2026.3.0}
 BuildRequires:  %{python_module fusepy}
 BuildRequires:  %{python_module google-api-core}
 BuildRequires:  %{python_module google-api-python-client}
@@ -78,12 +79,14 @@ This package provides the optional FUSE interface.
 
 %prep
 %autosetup -p1 -n gcsfs-%{version}
-sed -i 's/--color=yes//' setup.cfg
+sed -i 's/--color=yes//' setup.cfg pyproject.toml
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %pyproject_wheel
 
 %install
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

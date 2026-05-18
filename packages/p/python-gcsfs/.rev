@@ -244,4 +244,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1344957</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>592338ba00d70a1e3c25670fa153ad46</srcmd5>
+    <version>2026.5.0</version>
+    <time>1779119205</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.5.0:
+  * Fix zonal documentation about finalized objects
+  * Enable branch wise tracking
+  * fix: adjust fsspec dependency version constraint
+  * Add support for partial prefixes in find method for HNS
+    buckets
+  * Add workflow to automate PyPI package publishing on release
+  * Fix HttpError message formatting and handle None content in
+    validate_response
+  * Integrate prefetcher engine with zonal buckets
+  * Update the benchmark config, and fix the block size
+    propogation</comment>
+    <requestid>1353607</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 17 18:54:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.5.0:
+  * Fix zonal documentation about finalized objects
+  * Enable branch wise tracking
+  * fix: adjust fsspec dependency version constraint
+  * Add support for partial prefixes in find method for HNS
+    buckets
+  * Add workflow to automate PyPI package publishing on release
+  * Fix HttpError message formatting and handle None content in
+    validate_response
+  * Integrate prefetcher engine with zonal buckets
+  * Update the benchmark config, and fix the block size
+    propogation
+
+-------------------------------------------------------------------
 Tue Mar 31 09:40:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.3.0:
