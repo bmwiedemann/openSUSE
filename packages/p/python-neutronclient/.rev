@@ -659,4 +659,12 @@
   * Drop unused os-client-config</comment>
     <requestid>1342252</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>b53c095a3b30afc3aae535d6009fe064</srcmd5>
+    <version>11.8.0</version>
+    <time>1779119367</time>
+    <user>anag_factory</user>
+    <comment>- remove os-client-config dependency</comment>
+    <requestid>1353833</requestid>
+  </revision>
 </revisionlist>

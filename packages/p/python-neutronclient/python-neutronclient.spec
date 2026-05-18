@@ -29,7 +29,6 @@ BuildRequires:  %{python_module cliff >= 3.4.0}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module keystoneclient}
 BuildRequires:  %{python_module netaddr >= 0.7.18}
-BuildRequires:  %{python_module os-client-config >= 1.28.0}
 BuildRequires:  %{python_module osc-lib >= 1.12.0}
 BuildRequires:  %{python_module oslo.i18n >= 3.15.3}
 BuildRequires:  %{python_module oslo.log >= 3.36.0}

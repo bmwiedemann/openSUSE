@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 13:06:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- remove os-client-config dependency
+
+-------------------------------------------------------------------
 Mon Mar  9 15:30:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 11.8.0:
