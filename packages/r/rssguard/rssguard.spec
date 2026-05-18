@@ -1,7 +1,7 @@
 #
 # spec file for package rssguard
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,36 @@
 #
 
 
-%define libver  4_8_6
+%define libver  5_1_2
 Name:           rssguard
-Version:        4.8.6
+Version:        5.1.2
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
-License:        AGPL-3.0-or-later AND GPL-3.0-only
 Group:          Productivity/Networking/News/Clients
+License:        AGPL-3.0-or-later AND GPL-3.0-only
 URL:            https://github.com/martinrotter/rssguard
-Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}.changes
-# PATCH-FIX-OPENSUSE rssguard-4.8.1-add_library_version.patch aloisio@gmx.com -- add version to shared library
-Patch0:         rssguard-4.8.1-add_library_version.patch
+#Source0:        https://github.com/martinrotter/rssguard/archive/%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.gz
+Source2:        %{name}.changes
+# PATCH-FIX-OPENSUSE rssguard-4.7.2-add_library_version.patch aloisio@gmx.com -- add version to shared library
+Patch0:         rssguard-add_library_version.patch
+# PATCH-FIX-OPENSUSE  rssguard-go.patch -- To build article-extractor
+Patch1:         rssguard-go.patch
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core) >= 6.3.0
 BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6GuiPrivate)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Multimedia)
 BuildRequires:  cmake(Qt6Network)
@@ -45,6 +56,7 @@ BuildRequires:  cmake(Qt6Sql)
 BuildRequires:  cmake(Qt6WebEngineWidgets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  golang(API)
 BuildRequires:  pkgconfig(mpv)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
@@ -75,24 +87,40 @@ Shared library for %{name} to be used by external plugins.
 %autosetup -p1
 # remove executable bit
 find src/librssguard -name "*.h" -exec chmod -x {} \;
+# extract go vendor for article-extractor
+tar -xvzf %{SOURCE1} -C resources/scripts/standalone/article-extractor
 
 %build
-%cmake_qt6 -DBUILD_WITH_QT6:BOOL=ON \
-%if 0%{?suse_version} > 1600 || 0%{?sle_version} > 150600
+%if 0%{?suse_version} < 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
+
+# first bild article-extractor
+pushd resources/scripts/standalone/article-extractor
+go build \
+   -mod=vendor \
+   -buildmode=pie
+popd
+
+%cmake -DBUILD_WITH_QT6:BOOL=ON \
+%if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 150600
     -DENABLE_MEDIAPLAYER_LIBMPV:BOOL=ON \
 %else
     -DENABLE_MEDIAPLAYER_LIBMPV:BOOL=OFF \
 %endif
-    -DUSE_SYSTEM_SQLITE:BOOL=ON
-%{qt6_build}
+    -DUSE_SYSTEM_SQLITE:BOOL=ON \
+    -DNO_UPDATE_CHECK=1
+%cmake_build
 
 %install
-%{qt6_install}
+%cmake_install
 # install autostart
 mkdir -pv %{buildroot}%{_datadir}/autostart
 %fdupes -s %{buildroot}
 
-%ldconfig_scriptlets -n lib%{name}-%{libver}
+%post -n lib%{name}-%{libver} -p /sbin/ldconfig
+%postun -n lib%{name}-%{libver} -p /sbin/ldconfig
 
 %files
 %license LICENSE.md
@@ -101,6 +129,7 @@ mkdir -pv %{buildroot}%{_datadir}/autostart
 %dir %{_datadir}/metainfo
 %dir %{_libdir}/%{name}
 %{_bindir}/%{name}
+%{_bindir}/%{name}-article-extractor
 %{_datadir}/applications/io.github.martinrotter.%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/io.github.martinrotter.%{name}.png
 %{_datadir}/metainfo/io.github.martinrotter.%{name}.metainfo.xml

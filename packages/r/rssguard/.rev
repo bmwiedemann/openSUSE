@@ -611,4 +611,20 @@ version is under development
 </comment>
     <requestid>1307590</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>91ff23e509abb30bb935bd10a232985e</srcmd5>
+    <version>5.0.4</version>
+    <time>1775743857</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>1345469</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8943c02ad731740378ce6007ac89726d</srcmd5>
+    <version>5.1.2</version>
+    <time>1779119303</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1353787</requestid>
+  </revision>
 </revisionlist>

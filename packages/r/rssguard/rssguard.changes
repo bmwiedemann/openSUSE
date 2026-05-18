@@ -1,3 +1,368 @@
+-------------------------------------------------------------------
+Mon May 11 21:13:22 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 5.1.2:
+  * save
+  * better support for direct images, add sane defaults
+  * #2254 - working attachment height adjustments
+  * support custom width of attachments
+  * Japanese translation for rssguard_en.ts [skip ci] (#2262)
+  * save
+  * save
+  * forgotten ability to img save/copy/url
+  * use cache
+  * use older clean html when images are switched off
+  * rough implementation
+  * update image format a bit
+  * fix #1230
+  * game mode detection, some related fixes
+  * fixed #2211
+  * Finnish translation for rssguard_en.ts [skip ci] (#2259)
+  * Finnish translation for rssguard_en.ts [skip ci] (#2258)
+  * fix connect on qt5
+  * fix #2139
+  * docs for #2252
+  * update docs
+  * fix #2252
+  * New Crowdin updates (#2257)
+  * fix #2097
+  * fix #2097
+  * fix #2097
+  * lang
+  * New Crowdin updates (#2255)
+  * update deps
+  * use proxy on text-browser, sadly it is quite difficult on web-version too
+  * added diag/gpu
+  * ability to change webengine flags in the UI
+  * allow chrome internal pages to load, work on flags
+  * docs
+  * New Crowdin updates (#2247)
+  * test
+  * optional chromium flags
+  * save
+  * enable robust logging for webengine
+  * #2227
+  * Japanese translation for rssguard_en.ts [skip ci] (#2246)
+  * New Crowdin updates (#2244)
+
+-------------------------------------------------------------------
+Tue May 05 08:43:41 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 5.1.1:
+  * lang
+  * fixed #2238
+  * changelog
+  * Ukrainian translation for rssguard_en.ts [skip ci] (#2243)
+  * Ukrainian translation for rssguard_en.ts [skip ci] (#2242)
+  * only allow repo for qt5 when needed
+  * install qt5/6 separately
+  * fix the crash god sake
+  * New Crowdin updates (#2239)
+  * fix nullptr access
+  * lang
+  * files
+  * fix #2226
+  * fixed #2065
+  * Japanese translation for rssguard_en.ts [skip ci] (#2237)
+  * try qt5/linux/web
+  * try qt5/linux/web
+  * try qt5/linux/web
+  * enable qt5/text build for linux
+  * fix #2234 by adding proper exe/lib manifest
+  * New Crowdin updates (#2235)
+  * re-bump qt
+  * try to lower qt version to check #2234
+  * fixed #2230
+  * gumbo master
+  * Build gumbo properly
+  * Chinese Simplified translation for rssguard_en.ts
+  * fix gemini scheme handler and QPalette color grp warnings
+  * Japanese translation for rssguard_en.ts
+
+-------------------------------------------------------------------
+Tue May 05 08:42:47 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 5.1.0:
+  * fix nullptr access
+  * changelog for 5.1.0
+  * fix #2221
+  * use more references and pointers to avoid object copying all the time in article filters window
+  * fix #2175
+  * fix #2220
+  * Revert "bump qt for win!"
+  * bump qt for win!
+  * changeloog
+  * revert some behavior of limitting articles
+  * New Crowdin updates (#2219)
+  * ability to switch article viewer with cli arg
+  * ability to switch article viewer with cli arg
+  * Dutch translation for rssguard_en.ts [skip ci] (#2218)
+  * changelog
+  * readable letters in generated icons
+  * Japanese translation for rssguard_en.ts
+  * save
+  * fix #2212
+  * fix #2212
+  * fix #2212
+  * New Crowdin updates (#2215)
+  * lang update
+  * changelog
+  * Fix and improve macOS builds (#2052) (#2214)
+  * changelog
+  * fix #2213
+  * fix #2206
+  * support for multi-url feed discovery
+  * support for multi-url feed discovery
+  * save
+  * Linux: Adjust app id based on build variant (#2208)
+  * New Crowdin updates (#2209)
+  * Linux: Mention XMPP PubSub and Gemini Protocol support in metainfo (#2210)
+  * changelog, lets wait few days, do some refactoring, refresh langs etc
+  * fix #923 and #1741
+  * save
+  * New Crowdin updates (#2205)
+  * Dutch translation for rssguard_en.ts
+  * fix #2201 for feed list too
+  * fix #2201
+  * New Crowdin updates (#2203)
+  * docs
+  * New Crowdin updates (#2202)
+  * properly resolve relative URLs in feed discovery
+  * ability to color bg of category items in feed list
+  * update langs, ability to have invalid color ignored in custom skin color settings
+  * fix build
+  * fix build
+  * account for XMPP plugin in installers
+  * show no of sel artcs only when +1 is selected
+  * scrollable page acts menu
+  * with bg colors to fixed values, add variant to about dialog
+  * update docs
+  * update docs
+  * fix build
+  * qol enhancements for text-browser
+  * polish no-image handling
+  * added web actions
+  * save
+  * gumbo
+  * save
+  * fix build
+  * fix build
+  * fix build
+  * build all variants on win
+  * save
+  * textbrowserviwer init
+  * fix qt5 build due to missing qaction signals
+  * ability to enable/disable web actions as needed by the views
+  * bit smaller default font
+  * ssl deploy on qt5/win fix
+  * docs
+  * docs
+  * ability to save complete webpage in MHTML format
+  * ability to export to plain text
+  * qt5 build working, more things to webengine, PDF printing
+  * save
+  * work on webengine
+  * smalller font
+  * work on fixing qt6 builds, also qt5 build on linux does not have qtwebengine, so skip (for now?)
+  * work on fixing qt6 builds, also qt5 build on linux does not have qtwebengine, so skip (for now?)
+  * serial port miss?
+  * fix #2108 and update some docs
+  * bit shorter
+  * cleanup
+  * docs update
+  * channel
+  * build with webenbgine on qt6/win
+  * cleanup a bit
+  * fix webengine attr loading
+  * ability to cleanup cache
+  * QOL things for web browser, ability to open new browser tab, ability to search
+  * save
+  * save
+  * more work, printing working, navigation working, overally much better
+  * work on engine
+  * work on engine
+  * initial working build
+  * remove litehtml, work on webengine
+  * fixed #2179
+  * fix reconnection bug
+  * lowercase
+  * reload translations
+  * more work on XMPP, working fetching basically, just have to enable it, but tested already
+  * docs
+  * work on xmpp more
+  * save
+  * XMPP ui
+  * update label
+  * big work on xmpp
+  * Work on XMPP, accepts direct MUC addresses
+  * fix gemini timeout not triggering, also fix HTML escaping problem for article titles - fixes #2168
+  * 6.10.2
+  * bump qt
+  * docs basic
+  * readme
+  * Initial XMPP plugin - needs a lot of work but kind of works for testing (#2174)
+  * Bump github.com/antchfx/xpath (#2172)
+  * make sync-in async
+  * fixed #2158
+  * fix nextcloud fetching too large icons which leads to huge performance issues
+  * Document how to set up CSS2RSS in the Flatpak package (#2151)
+  * major version-specific unique ID for singleApp, makes rssguard4 and 5 co-runnable at the same time
+
+-------------------------------------------------------------------
+Fri Mar 13 08:56:30 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 5.0.4:
+  * changelog
+  * bit of changes
+  * update nsis installer a bit
+  * warning before install
+  * warning before install
+  * warning before install
+  * nsis delete strategy updated, changelog
+  * switcahble counts in labels and important article in feed list - #2111
+  * do not rename zsync
+  * update zsync
+  * update zsync
+  * svg icon
+  * Add svg icon to repo - #1796
+  * Add warning when paused on auto-fetch when fetching after startup
+  * work on nextcloud api
+  * Dutch translation for rssguard_en.ts [skip ci] (#2135)
+  * migrate nextcloud to 1.3 api
+  * docs
+  * New Crowdin updates (#2134)
+  * Fix for #2119
+  * Fix for #2119
+  * lang sync
+  * New Crowdin updates (#2131)
+  * terminology
+  * use sane Accept headers for classic feeds, update default user-agent
+  * properly catch qtconcurrent exceptions!, fix queries a bit
+  * fix #2128
+  * some solution for bug in #2127
+  * properly import QuiteRSS deleted articles and move them to recycle bin
+  * New Crowdin updates (#2123)
+  * allow dragging selected text too
+  * fix #2108 and perform quite wide refactoring around those reas
+  * New Crowdin updates (#2120)
+  * fix problem in installer, work on extractor
+  * save
+  * save
+  * extractor work
+  * update lang
+  * New Crowdin updates (#2117)
+  * New Crowdin updates (#2116)
+  * New Crowdin updates (#2115)
+  * fix build?
+  * fix alignment #2086
+  * fixed #2090
+  * fixed #2111
+  * Chinese Traditional translation for rssguard_en.ts
+  * simplifications for expands
+  * fixed #2106
+  * fix PlainToolButton rendering -  fixed #2104
+  * fixed #2102
+  * New Crowdin updates (#2105)
+  * Chinese Traditional translation for rssguard_en.ts [skip ci] (#2101)
+- Rename rssguard-4.8.1-add_library_version.patch to rssguard-add_library_version.patch
+- Add rssguard-go.patch
+
+-------------------------------------------------------------------
+Fri Mar 06 16:24:14 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 5.0.3:
+  * version
+  * changelog
+  * fixed #2091
+  * remove unused expand code
+  * fix build
+  * fix some inconsistencies in searching in feed list, particularly for qt5
+  * fix qt5 build and crash when clicking login
+  * New Crowdin updates (#2096)
+  * fixed #2086
+  * separate settings tabs a bit
+  * changelog
+  * fixed #2085
+  * Chinese Traditional translation for rssguard_en.ts [skip ci] (#2093)
+  * fix some bug in style name detection, also fix #2089 - also i had to change some defaults to make sure that sane default look is guaranteed, users can of course change in settings
+  * fixed UI scrollbar in settings -> gui section
+  * New Crowdin updates (#2087)
+  * use colly to fetch URL in scraper
+  * account for HTTP codes when fetching full articles
+  * bit stricter error handling in fetch full articles code
+  * fix #2080
+  * new script for processing built-in icons, new icons from upstream, renamed some icons
+  * fix #2081
+  * disable poll
+
+-------------------------------------------------------------------
+Wed Mar 04 08:22:24 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 5.0.2:
+  * use separate install dir for rssguard5
+  * changelog
+  * add sorting menu items back to main menu -> sort submenu
+  * docs
+  * docs
+  * keep poll enabled for 5.0.2
+  * open docs root on installer success
+  * New Crowdin updates (#2082)
+  * Probably solves problem with erased data in 5.0.0 - 5.0.1 updated
+  * turn off poll
+  * Bump actions/download-artifact from 7 to 8 (#2072)
+  * Bump actions/upload-artifact from 6 to 7 (#2073)
+  * Chinese Traditional translation for rssguard_en.ts [skip ci] (#2074)
+
+-------------------------------------------------------------------
+Tue Mar 03 12:32:43 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 5.0.1:
+  * some enhancements to notifications and database behavior
+  * default light/dark skin/icon alternatives, enable survey
+  * Spanish translation for rssguard_en.ts [skip ci] (#2071)
+  * Japanese translation for rssguard_en.ts [skip ci] (#2070)
+  * Chinese Traditional translation for rssguard_en.ts [skip ci] (#2068)
+  * Darker highlight shade and white highlight text (#2067)
+  * New Crowdin updates (#2066)
+  * some guarding
+  * changelog
+  * New Crowdin updates (#2064)
+  * fix #2061
+  * fix #2059
+  * support multiple domains for et - fixes #2057
+  * support multiple domains for et - fixes #2057
+  * make full fetch work with article in extra tab
+  * ability to manually fetch full article contents - #2051
+  * revert skin background to transparent, fix #2040
+  * New Crowdin updates (#2063)
+  * solution for #2042
+  * enable three digits in tray icon again
+  * better docs
+  * better docs
+  * fix #2044, will update colors a bit later
+  * fix problematic drag/drop behavior which collides with link clicking
+  * bit darker icon, bigger number when there are two digits or one digit - #1999
+  * fix #2038
+  * solution for #2032
+  * solution for #2033
+  * Fix building with `ENABLE_MEDIAPLAYER_(LIBMPV|QTMULTIMEDIA)=OFF` (#2031)
+  * New Crowdin updates (#2030)
+
+-------------------------------------------------------------------
+Tue Mar 03 11:54:50 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 5.0.0:
+  * ok, here we go
+  * update docs a bit
+  * just switch some cmake statements
+  * New Crowdin updates (#2027)
+  * lang update, sync inversed highlighting logic
+  * Portuguese translation for rssguard_en.ts [skip ci] (#2025)
+  * many fixes in DB layer abstractions + ability to selecte article date preference #2024
+  * fast exit
+  * massive db driver refactoring, much better abstraction
+- Add rssguard-go.patch to build article-extractor.
+- Rebase rssguard-add_library_version.patch.
 
 -------------------------------------------------------------------
 Sun Sep 28 14:35:01 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
@@ -12,8 +377,7 @@ version is under development
     are selected.
 
 - dropped patch fix_missing_returns.patch as merged into upstream
-- ran spec_cleaner
-
+- run spec_cleaner
 
 -------------------------------------------------------------------
 Thu May 29 21:00:46 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
@@ -1745,4 +2109,3 @@ Tue Jan 24 10:00:57 UTC 2017 - aloisio@gmx.com
 Sun Dec  3 18:09:26 UTC 2016 - aloisio@gmx.com
 
 - Initial package (version 3.3.5)
-

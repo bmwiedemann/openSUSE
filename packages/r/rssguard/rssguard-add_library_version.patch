@@ -1,7 +1,7 @@
-Index: rssguard-4.8.6/localization/CMakeLists.txt
+Index: rssguard-5.1.1/localization/CMakeLists.txt
 ===================================================================
---- rssguard-4.8.6.orig/localization/CMakeLists.txt
-+++ rssguard-4.8.6/localization/CMakeLists.txt
+--- rssguard-5.1.1.orig/localization/CMakeLists.txt
++++ rssguard-5.1.1/localization/CMakeLists.txt
 @@ -8,7 +8,7 @@ if(UPDATE_TRANSLATIONS AND BUILD_WITH_QT
      "${CMAKE_SOURCE_DIR}/src/librssguard*/*.h"
      "${CMAKE_SOURCE_DIR}/src/librssguard*/*.ui")
@@ -27,11 +27,11 @@ Index: rssguard-4.8.6/localization/CMakeLists.txt
 -  add_dependencies(rssguard rssguard_lrelease)
 +  add_dependencies(rssguard-${APP_VERSION} rssguard_lrelease)
  endif()
-Index: rssguard-4.8.6/src/librssguard/CMakeLists.txt
+Index: rssguard-5.1.1/src/librssguard/CMakeLists.txt
 ===================================================================
---- rssguard-4.8.6.orig/src/librssguard/CMakeLists.txt
-+++ rssguard-4.8.6/src/librssguard/CMakeLists.txt
-@@ -506,11 +506,11 @@ if(WIN32)
+--- rssguard-5.1.1.orig/src/librssguard/CMakeLists.txt
++++ rssguard-5.1.1/src/librssguard/CMakeLists.txt
+@@ -511,11 +511,11 @@ if(WIN32)
    list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
  endif()
  
@@ -45,7 +45,7 @@ Index: rssguard-4.8.6/src/librssguard/CMakeLists.txt
      PRIVATE
      FORCE_BUNDLE_ICONS
    )
-@@ -518,7 +518,7 @@ if(FORCE_BUNDLE_ICONS)
+@@ -523,7 +523,7 @@ if(FORCE_BUNDLE_ICONS)
    message(STATUS "Forcibly bundling icon themes.")
  endif()
  
@@ -54,28 +54,31 @@ Index: rssguard-4.8.6/src/librssguard/CMakeLists.txt
    PUBLIC
    ${CMAKE_CURRENT_SOURCE_DIR}
    ${CMAKE_CURRENT_SOURCE_DIR}/gui
-@@ -534,24 +534,24 @@ target_include_directories(rssguard
+@@ -539,7 +539,7 @@ target_include_directories(rssguard
  )
  
- if(SQLite3_FOUND)
--  target_include_directories(rssguard AFTER
-+  target_include_directories(rssguard-${APP_VERSION} AFTER
+ # qtlinq
+-target_include_directories(rssguard
++target_include_directories(rssguard-${APP_VERSION}
+   PUBLIC
+   ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/qtlinq/include
+ )
+@@ -547,18 +547,18 @@ target_include_directories(rssguard
+ 
+ # gumbo (for QTextBrowser-based article/web viewer)
+ if(MSVC)
+-  target_include_directories(rssguard
++  target_include_directories(rssguard-${APP_VERSION}
      PRIVATE
-     ${SQLite3_INCLUDE_DIRS}
-   )
- 
--  target_compile_definitions(rssguard
-+  target_compile_definitions(rssguard-${APP_VERSION}
-     PRIVATE
- 
-     SYSTEM_SQLITE3
-   )
- 
--  target_link_libraries(rssguard PRIVATE
-+  target_link_libraries(rssguard-${APP_VERSION} PRIVATE
-     ${SQLite3_LIBRARIES}
+     ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/gumbo/visualc/include
    )
  endif()
+ 
+-#target_compile_definitions(rssguard PRIVATE UNICODE _UNICODE _CRT_SECURE_NO_WARNINGS)
+-#target_compile_definitions(rssguard PRIVATE WINVER=0x0602 _WIN32_WINNT=0x0602
++#target_compile_definitions(rssguard-${APP_VERSION} PRIVATE UNICODE _UNICODE _CRT_SECURE_NO_WARNINGS)
++#target_compile_definitions(rssguard-${APP_VERSION} PRIVATE WINVER=0x0602 _WIN32_WINNT=0x0602
+ #    WIN32_LEAN_AND_MEAN)
  
  # Qt.
 -target_link_libraries(rssguard PUBLIC
@@ -83,13 +86,13 @@ Index: rssguard-4.8.6/src/librssguard/CMakeLists.txt
    Qt${QT_VERSION_MAJOR}::Core
    Qt${QT_VERSION_MAJOR}::Gui
    Qt${QT_VERSION_MAJOR}::Network
-@@ -563,97 +563,97 @@ target_link_libraries(rssguard PUBLIC
+@@ -571,117 +571,117 @@ target_link_libraries(rssguard PUBLIC
  )
  
- if(QT_VERSION_MAJOR EQUAL 6)
+ if(WEB_ARTICLE_VIEWER_WEBENGINE)
 -  target_link_libraries(rssguard PUBLIC
 +  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
-     Qt${QT_VERSION_MAJOR}::Core5Compat
+     Qt${QT_VERSION_MAJOR}::WebEngineWidgets
    )
  endif()
  
@@ -97,13 +100,6 @@ Index: rssguard-4.8.6/src/librssguard/CMakeLists.txt
 -  target_link_libraries(rssguard PUBLIC
 +  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
      Qt${QT_VERSION_MAJOR}::GuiPrivate
-   )
- endif()
- 
- if(NO_LITE)
--  target_link_libraries(rssguard PUBLIC
-+  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
-     Qt${QT_VERSION_MAJOR}::WebEngineWidgets
    )
  endif()
  
@@ -121,6 +117,13 @@ Index: rssguard-4.8.6/src/librssguard/CMakeLists.txt
    )
  endif()
  
+ if(ENABLE_TESTS)
+-  target_link_libraries(rssguard PUBLIC
++  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::Test
+   )
+ endif()
+ 
  if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
 -  target_link_libraries(rssguard PUBLIC
 +  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
@@ -131,6 +134,7 @@ Index: rssguard-4.8.6/src/librssguard/CMakeLists.txt
    if(MEDIAPLAYER_FORCE_OPENGL)
 -    target_link_libraries(rssguard PUBLIC
 +    target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+       Qt${QT_VERSION_MAJOR}::Quick
        Qt${QT_VERSION_MAJOR}::OpenGL
      )
  
@@ -154,7 +158,21 @@ Index: rssguard-4.8.6/src/librssguard/CMakeLists.txt
    )
  endif()
  
- if(UNIX AND NOT APPLE AND NOT ANDROID)
+ if(ENABLE_ICU)
+-  target_include_directories(rssguard AFTER
++  target_include_directories(rssguard-${APP_VERSION} AFTER
+     PRIVATE
+     ${ICU_INCLUDE_DIRS}
+   )
+ 
+-  target_link_libraries(rssguard PRIVATE
++  target_link_libraries(rssguard-${APP_VERSION} PRIVATE
+     ICU::uc
+     ICU::data
+   )
+ endif()
+ 
+ if(UNIX AND NOT APPLE)
 -  target_link_libraries(rssguard PUBLIC
 +  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
      Qt${QT_VERSION_MAJOR}::DBus
@@ -176,33 +194,41 @@ Index: rssguard-4.8.6/src/librssguard/CMakeLists.txt
  
  if((WIN32 AND NOT BUILD_MSYS2) OR OS2)
 -  install(TARGETS rssguard DESTINATION .)
-+  install(TARGETS rssguard-${APP_VERSION}  DESTINATION .)
++  install(TARGETS rssguard-${APP_VERSION} DESTINATION .)
    set(HEADERS_FOLDER "include/librssguard")
- elseif((MINGW AND BUILD_MSYS2) OR (UNIX AND NOT APPLE AND NOT ANDROID))
+ elseif((MINGW AND BUILD_MSYS2) OR (UNIX AND NOT APPLE))
    include (GNUInstallDirs)
 -  install(TARGETS rssguard
-+  install(TARGETS rssguard-${APP_VERSION} 
++  install(TARGETS rssguard-${APP_VERSION}
      LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
      ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
      RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
    set(HEADERS_FOLDER "${CMAKE_INSTALL_INCLUDEDIR}/librssguard")
  elseif(APPLE)
 -  install(TARGETS rssguard DESTINATION Contents/MacOS)
-+  install(TARGETS rssguard-${APP_VERSION}  DESTINATION Contents/MacOS)
++  install(TARGETS rssguard-${APP_VERSION} DESTINATION Contents/MacOS)
    set(HEADERS_FOLDER "Contents/Resources/Include")
  endif()
  
  # Add specific definitions.
 -target_compile_definitions(rssguard
-+target_compile_definitions(rssguard-${APP_VERSION} 
++target_compile_definitions(rssguard-${APP_VERSION}
    PRIVATE
    RSSGUARD_DLLSPEC=Q_DECL_EXPORT
    RSSGUARD_LIBDIR="${CMAKE_INSTALL_LIBDIR}"
-Index: rssguard-4.8.6/src/rssguard/CMakeLists.txt
+ )
+ 
+ if(LOAD_PLUGINS_FROM_PARENT)
+-  target_compile_definitions(rssguard
++  target_compile_definitions(rssguard-${APP_VERSION}
+     PRIVATE
+     LOAD_PLUGINS_FROM_PARENT
+   )
+Index: rssguard-5.1.1/src/rssguard/CMakeLists.txt
 ===================================================================
---- rssguard-4.8.6.orig/src/rssguard/CMakeLists.txt
-+++ rssguard-4.8.6/src/rssguard/CMakeLists.txt
-@@ -21,7 +21,7 @@ target_link_libraries(app PUBLIC
+--- rssguard-5.1.1.orig/src/rssguard/CMakeLists.txt
++++ rssguard-5.1.1/src/rssguard/CMakeLists.txt
+@@ -29,7 +29,7 @@ target_link_libraries(app PUBLIC
    Qt${QT_VERSION_MAJOR}::Core
    Qt${QT_VERSION_MAJOR}::Gui
    Qt${QT_VERSION_MAJOR}::Widgets
@@ -210,11 +236,11 @@ Index: rssguard-4.8.6/src/rssguard/CMakeLists.txt
 +  rssguard-${APP_VERSION}
  )
  
- if(QT_VERSION_MAJOR EQUAL 6)
-Index: rssguard-4.8.6/src/cmake_plugins.cmake
+ if(APPLE)
+Index: rssguard-5.1.1/src/cmake_plugins.cmake
 ===================================================================
---- rssguard-4.8.6.orig/src/cmake_plugins.cmake
-+++ rssguard-4.8.6/src/cmake_plugins.cmake
+--- rssguard-5.1.1.orig/src/cmake_plugins.cmake
++++ rssguard-5.1.1/src/cmake_plugins.cmake
 @@ -15,7 +15,7 @@ function(prepare_rssguard_plugin plugin_
    add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
  
