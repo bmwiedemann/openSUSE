@@ -17,12 +17,12 @@
 
 
 %define internal_ver %{version}
-%define imgui_ver 1.89.9
+%define imgui_ver 1.91.6
 %define imgui_wrap 1
 %define implot_ver 0.16
-%define vulkan_ver 1.2.158
+%define vulkan_ver 1.4.346
 Name:           mangohud
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        A Vulkan and OpenGL overlay for monitoring
 License:        MIT
@@ -30,14 +30,12 @@ URL:            https://github.com/flightlessmango/MangoHud
 Source0:        %{url}/archive/v%{internal_ver}.tar.gz#/%{name}-%{internal_ver}.tar.gz
 Source1:        https://github.com/ocornut/imgui/archive/v%{imgui_ver}/imgui-%{imgui_ver}.tar.gz
 Source2:        https://wrapdb.mesonbuild.com/v2/imgui_%{imgui_ver}-%{imgui_wrap}/get_patch#/imgui-%{imgui_ver}-%{imgui_wrap}-wrap.zip
-Source3:        https://wrapdb.mesonbuild.com/v2/vulkan-headers_%{vulkan_ver}-2/get_patch#/vulkan-headers-%{vulkan_ver}-2-wrap.zip
+Source3:        https://wrapdb.mesonbuild.com/v2/vulkan-headers_%{vulkan_ver}-1/get_patch#/vulkan-headers-%{vulkan_ver}-wrap.zip
 Source4:        https://github.com/KhronosGroup/Vulkan-Headers/archive/v%{vulkan_ver}.tar.gz#/vulkan-headers-%{vulkan_ver}.tar.gz
 Source5:        https://github.com/epezent/implot/archive/refs/tags/v%{implot_ver}.zip#/implot-%{implot_ver}.tar.gz
 Source6:        https://wrapdb.mesonbuild.com/v2/implot_%{implot_ver}-1/get_patch#/implot-%{implot_ver}-1-wrap.zip
+Source7:        https://github.com/KhronosGroup/Vulkan-Utility-Libraries/archive/v1.4.346.tar.gz#/Vulkan-Utility-Libraries-%{vulkan_ver}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM mangohud-gpu_fdinfo-add-missing-sstream-header-include.patch bsc#1262011
-# https://github.com/flightlessmango/MangoHud/pull/1884
-Patch0:         mangohud-gpu_fdinfo-add-missing-sstream-header-include.patch
 BuildRequires:  AppStream
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150500
 BuildRequires:  gcc12-c++
@@ -95,12 +93,16 @@ easy visual comparison between benchmarks.
 %setup -n MangoHud-%{internal_ver} -DTa4
 %setup -n MangoHud-%{internal_ver} -DTa5
 %setup -n MangoHud-%{internal_ver} -DTa6
+%setup -n MangoHud-%{internal_ver} -DTa7
 sed -i -e '1d;2i#!%{_bindir}/bash' bin/mangohud.in
 sed -i 's,^@ld_libdir_mangohud@ ,%{_prefix}/\$LIB/mangohud/,' bin/mangohud.in
 sed -i 's|@ld_libdir_mangohud_abs@|%{_prefix}/\$LIB/mangohud|g' src/mangohud.json.in
 mv imgui-%{imgui_ver} subprojects/
 mv implot-%{implot_ver} subprojects/
 mv Vulkan-Headers-%{vulkan_ver} subprojects/
+mv Vulkan-Utility-Libraries-%{vulkan_ver} subprojects/
+mv subprojects/packagefiles/vulkan-headers/* subprojects/Vulkan-Headers-%{vulkan_ver}
+mv subprojects/packagefiles/vulkan-utility-libraries/* subprojects/Vulkan-Utility-Libraries-%{vulkan_ver}
 sed -i 's/0.60.0/0.59/g' meson.build
 
 # Fix tests building with GCC 13
@@ -129,6 +131,7 @@ export CXX=g++-12
 %install
 %meson_install
 sed -i "s@#!/usr/bin/env python@#!/usr/bin/python3@" %{buildroot}%{_bindir}/mangoplot
+rm %{buildroot}%{_libdir}/libimgui.a
 
 %files
 %license LICENSE

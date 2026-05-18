@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon May 18 03:31:50 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.3:
+  * egl: added missing HAVE_WAYLAND check
+  * amdgpu: sometimes cpu power is not available in gpu_metrics 
+    so try sysfs
+  * amdgpu: would try to access cpuStats during shutdown
+  * amdgpu: gpu_metrics was not working on 32bit due to incorrect 
+    size checks
+  * params: race condition that would cause a crash when 
+    using presets
+  * gpus: fixed a double free of params crash
+  * glx: don't permit setting vsync to -1 as it's not in spec 
+    and will crash Zink
+  * glx: fix corrupted font textures in some games
+  * mangoapp: font was not being recreated
+  * mangoapp: fix locking render thread on no_display
+  * colors: HDR wasn't being converted after config reload
+  * display_server: was being displayed without explicitly 
+    setting it
+  * vulkan: fix swapchain image handling by indexing per-image 
+    state by image index instead of acquisition order
+  * no_small_font: was not working at all
+  * vulkan: added missing free for commandbuffer in shutdown
+  * ImGui/Implot: was not being cleaned up properly
+  * GL: reverted dlsym changes that caused crashes with 
+    nvidia drivers
+  * preset: 4: procmem was not being set
+  * Allow HUD sizes smaller than 32px.
+  * FEX: was not working with gamescope
+  * Added panthor driver support
+  * Added support for DDR5 Ram temp through SPD5118 driver. 
+    ram_temp option
+  * Added support for more units than KiB for gpu memory in fdinfo
+  * gpu_list permit using + and : as separators
+  * proc_vram displayed for all GPUs
+  * Blacklist: added GardenGate_Launcher.exe
+  * Blacklist: added KanvasLauncher.exe
+  * MANGOHUD_FPS_LIMIT adds limit to the front of the limits list
+  * Added SDL GPU as an engine
+  * cpu_custom_temp_sensor Use custom hwmon sensor 
+    for cpu temperature.
+  * Remove mangohud-gpu_fdinfo-add-missing-sstream-header-include.patch
+
+-------------------------------------------------------------------
 Wed Apr 15 04:54:52 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Add mangohud-gpu_fdinfo-add-missing-sstream-header-include.patch
