@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 13 08:40:29 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 0.44.3:
+  * chore(release): v0.44.3
+  * fix: stale grid after forwarding host reply (#5163)
+  * fix: clear bell when focusing with mouse (#5161)
+  * Welcome screen del fix (#5160)
+  * docs(changelog): update permissions pr
+  * fix(plugin): require specific permissions for new tab panes (#5143)
+  * docs(changelog): session manager close pr
+  * Fix session-manager Esc/Ctrl-c to close plugin instead of hiding (#5055)
+  * Fix esc mouse (#5157)
+  * fix(webclient): handle host query responses for pixel dimensions and colors (#5156)
+  * fix: deadlock with blocking panes (#5152)
+  * fix: occasional stall when querying host terminal (introduced in 0.44.1) (#5149)
+  * fix(windows): bump windows-sys to 0.59 (#5139)
+
+-------------------------------------------------------------------
 Tue May 05 08:31:46 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 0.44.2:
