@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 18 10:57:43 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- bump net-imap 0.6.3 --> 0.6.4 (bsc#1265364,bsc#1265368)
+  * net-imap-0.6.4.gem
+
+-------------------------------------------------------------------
 Thu Apr  9 12:36:10 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
  
 - bump ruby gem rack to 3.2.6 (bsc#1261385,bsc#1261393,bsc#1261402,bsc#1261416,bsc#1261423,bsc#1261432,bsc#1261443,

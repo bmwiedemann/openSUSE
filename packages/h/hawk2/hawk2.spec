@@ -96,7 +96,7 @@ Source47:       marcel-1.1.0.gem
 Source48:       mini_mime-1.1.5.gem
 Source49:       mini_portile2-2.8.9.gem
 Source50:       minitest-6.0.3.gem
-Source51:       net-imap-0.6.3.gem
+Source51:       net-imap-0.6.4.gem
 Source52:       net-pop-0.1.2.gem
 Source53:       net-protocol-0.2.2.gem
 Source54:       net-smtp-0.5.1.gem
