@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 18 05:15:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.16:
+  * build(deps): bump golang.org/x/text from 0.36.0 to 0.37.0
+    (#1974)
+  * build(deps): bump golang.org/x/term from 0.42.0 to 0.43.0
+    (#1975)
+  * build(deps): bump zizmorcore/zizmor-action from 0.5.3 to 0.5.4
+    (#1977)
+  * build(deps): bump step-security/harden-runner from 2.19.2 to
+    2.19.3 (#1978)
+  * build(deps): bump step-security/harden-runner from 2.19.1 to
+    2.19.2 (#1976)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.18.0 to
+    5.19.0 (#1971)
+  * build(deps): bump the chainguard group across 1 directory with
+    3 updates (#1973)
+
+-------------------------------------------------------------------
 Mon May 11 05:03:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.15:
