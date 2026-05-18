@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Mon May 04 15:35:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.3.0:
+  * build(bazel): update lockfile
+  * ci: switch to supported macos-13
+  * feat(push): allow any url prefix for push gateway
+  * feat(push): simplify gateway constructors
+  * feat(push): Add presetupCurl to push Gateway
+  * build: prepare for 1.3.0 release
+  * docs: add note about Bazel BCR
+  * test(cmake): check for exported version number
+  * Add config for basic package version file
+  * build(bazel): Add support for --incompatible_disallow_empty_glob
+  * Use civetweb as bazel_dep
+  * ci(cmake): switch to a macOS image with vcpkg installed
+  * ci: update github actions
+  * chore(bazel): update dependencies
+  * build(bazel): move curl into non-module section
+  * chore(push): upgrade to curl 8.7.1
+  * Use curl as bazel_dep
+  * Move benchmark activation logic under ENABLE_TESTING
+  * docs: mention Ubuntu PPA
+  * build: prepare for 1.2.4 release
+  * build(bazel): update lockfile
+  * Remove duplicate, but unused downloads of googletest/benchmark, zlib and boringssl. This was due to function reused for both legacy repo download, and exposed as new bzlmod one. When it was used in the second case, these were pulled like: _main~data_deps_ext~zlib (and similar for the rest). The reduction is visible in the MODULE.bazel.lock file
+  * Fixing #699. Also spotted that @//conditions was used instead of //conditions.
+  * build: prepare for 1.2.3 release
+  * test(pull): cope with old curl versions
+  * test(core): properly declare manual time
+  * test(pull): fix build with shared libs
+  * ci: build one config with shared libs
+  * fix(util): don't declare install include dir
+  * build(util): don't use CMake 3.19 features
+  * fixup! fix(push): encode push labels
+  * build: use Ubuntu 22.04 for clang-format
+  * test(core): add more tests
+  * fixup! docs: Prepare for 1.2.0 release
+  * docs: Prepare for 1.2.0 release
+  * chore(core): use hidden friends
+  * build(bazel): add bzlmod lockfile
+  * build(bazel): explicitly enable or disable bzlmod
+  * chore(push): use curl 8.5.0
+  * chore(pull): remove pre v1.14 civetweb work-around
+  * test(pull): add tests for authentication
+  * docs: update shields
+  * feat(push): allow timeout for HTTP requests
+  * feat(core): optimize add
+  * fix(push): encode push labels
+  * fix(util): avoid sign extension in base64 encodesr
+  * ci: disable Bazel on macOS for SSL build
+  * chore: move base64 implementation into internal utility library
+  * feat: add base64 encoder
+  * ci(renovate): use recommended config
+  * chore(deps): update boringssl digest to 2ff4b968
+  * chore: move renocate config into github folder
+  * chore(deps): update dependency zlib to v1.3
+  * chore(deps): update dependency google_benchmark to v1.8.3
+  * chore(deps): update dependency rules_cc to v0.0.9
+  * chore(deps): update dependency platforms to v0.0.8
+  * chore(deps): update dependency com_github_google_benchmark to v1.8.3
+  * Add renovate.json
+  * build(bazel): use Bazel module for google_benchmark
+  * chore: use google benchmark 1.8.2
+  * ci: replace removed Ubuntu 18.04 action runner
+  * build(bazel): set Z_HAVE_UNISTD_H for zlib
+  * feat(pull): use civetweb 1.16
+  * chore: update rules_cc Bazel module
+  * chore(push): update boringssl Bazel module
+  * chore(push): use curl 7.88.0
+  * chore(push): update boringssl to same version as grpc
+  * core: Add Reset APIs to histogram and counters
+  * build(bazel): use Bazel modules
+  * ci: use Ubuntu telegraf installation
+  * Update platform constraints to be compatible with bazel 6
+  * Use std::atomic::fetch_add in modern C++.
+  * chore: use Google Benchmark 1.7.1
+  * test(push): gethostname requires Winsock library
+  * build: revert back to C++11
+  * cmake: fix typo in CXXFLAGS (was CXXLFAGS)
+  * chore: Use Google Benchmark 1.7.0
+  * chore: Use GoogleTest 1.12.1
+  * docs: state C++14 requirement
+  * ci: update actions/cache to v3
+  * ci: add IWYU quirk for chrono
+  * chore(push): use curl 7.86.0
+  * chore(push): use zlib 1.2.13
+  * feat(push): Add push support http header customization
+  * chore(push): use curl 7.84.0
+  * feat(core): Add Info metric
+  * feat(pull): Add SSL support to Bazel build
+  * fixup! chore(push): Use curl 7.83.1
+  * test(core): prevent rotation on slow CPUs
+  * fix: handle absolute paths in pkgconfig files
+  * ci: fix iwyu
+  * ci: use actions/checkout@v3
+  * chore(core): Use zlib 1.2.12
+  * chore(push): Use curl 7.83.1
+  * Add third mirror for zlib
+  * fix(core): reject invalid label names
+  * fix: fix issues found by CLion static analyzer
+  * Update copyright for 2022
+  * build: require C++14
+  * docs(core): add Doxygen comments to new functions
+  * build: increase version number
+  * Add new constructor for Histogram and Summary taking rvalue ref of parameters
+  * Binary search for bucket boundaries in Histogram::Observe
+  * Fix incorrect doc reference to "counter" in histogram.h
+  * Set clang-format to always left align references and pointers
+  * Add missing std:: on size_t
+  * core: enforce requirements on bucket boundaries
+  * ci: replace windows-2016 agent
+  * ci: use clang-format-12
+  * chore: Use Google Benchmark 1.6.1
+  * chore(push): Use curl 7.82.0
+  * fix(push): Allow POST empty data
+  * feat(push): Add method to delete metrics for instance
+  * fix(push): remove unused variable
+  * feat(core): Allow to remove a Family from their Registry
+  * chore(core): Introduce Labels type
+  * feat(core)!: remove nonstandard append mode
+  * fix(core): gracefully handle label hash collisions
+  * fix(push): Lock access to collectables_
+  * chore(push): Refactored curl_wrapper
+  * fix(pull): Properly lock Exposer functions
+  * docs: Prepare for 1.0.0 release
+  * chore(push): Use curl 7.80.0
+  * docs(core): Document atomic increment
+  * chore(clang-tidy): Fix cppcoreguidelines-special-member-functions
+  * chore(clang-tidy): Fix modernize-use-override
+  * fix(clang-tidy): Fix errors detected by clang-tidy
+  * Rule of Five applied on Gateway, avoid unnecessary copies of std::string
+  * fix: there is a race condition when pushing and collecting histogram data
+  * fix(readme): update the link to the cmake example
+
+-------------------------------------------------------------------
 Tue Sep 17 13:07:17 UTC 2024 - ncutler@suse.com - 0.13.0
 
 - Update to version 0.13.0:

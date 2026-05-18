@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-cpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define sover_major 0
-%define libname lib%{name}%{sover_major}_13
+%define sover_major 1
+%define libname lib%{name}%{sover_major}_3
 
 Name:           prometheus-cpp
-Version:        0.13.0
+Version:        1.3.0
 Release:        0
 Summary:        Prometheus client library for C++
 License:        MIT
