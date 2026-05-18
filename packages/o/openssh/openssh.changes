@@ -69,11 +69,13 @@ Thu Apr 23 11:57:57 UTC 2026 - Hans Petter Jansson <hpj@suse.com>
     trusted CA keys in authorized_keys, the main certificate
     authentication path (TrustedUserCAKeys/AuthorizedPrincipalsFile)
     is not affected. Reported by Vladimir Tokarev.
+    (CVE-2026-35414, bsc#1261430).
   * scp(1): when downloading files as root in legacy (-O) mode and
     without the -p (preserve modes) flag set, scp did not clear
     setuid/setgid bits from downloaded files as one might typically
     expect. This bug dates back to the original Berkeley rcp program.
     Reported by Christos Papakonstantinou of Cantina and Spearbit.
+    (CVE-2026-35385, bsc#1261427).
   * sshd(8): fix incomplete application of PubkeyAcceptedAlgorithms
     and HostbasedAcceptedAlgorithms with regard to ECDSA keys.
     Previously if one of these directives contains any ECDSA algorithm
