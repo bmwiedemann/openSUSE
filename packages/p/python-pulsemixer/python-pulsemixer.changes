@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 15 12:02:50 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Use libalternatives instead of update-alternatives in SLES-16 and 
+  Tumbleweed 
+
+-------------------------------------------------------------------
 Sat Jun  3 01:26:58 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Initial package of python-pulsemixer 1.5.1 for openSUSE

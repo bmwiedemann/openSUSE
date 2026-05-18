@@ -1,7 +1,7 @@
 #
 # spec file for package python-pulsemixer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-pulsemixer
 Version:        1.5.1
 Release:        0
@@ -23,11 +29,18 @@ License:        MIT
 Group:          Productivity/Multimedia/Sound/Mixers
 URL:            https://github.com/GeorgeFilipkin/pulsemixer
 Source:         https://files.pythonhosted.org/packages/source/p/pulsemixer/pulsemixer-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,6 +57,9 @@ pulsemixer - CLI and curses mixer for PulseAudio
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pulsemixer
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%pre
+%python_libalternatives_reset_alternative pulsemixer
 
 %post
 %python_install_alternative pulsemixer
