@@ -228,4 +228,18 @@
     Sync after a Parse</comment>
     <requestid>1334422</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>49c6c619b0322ba5db4c7766f6aa787a</srcmd5>
+    <version>3.3.4</version>
+    <time>1779119297</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.4:
+  * Fix possible spurious connection timeout in systems with very
+    long uptimes in C extension (:ticket:`#1280`).
+  * Fix client-side adaptation of enums whose name require quotes
+    (:ticket:`#1298`).
+  * Consistently populate ~Cursor.statusmessage after
+    ~Cursor.executemany() (:ticket:`#1302`).</comment>
+    <requestid>1353777</requestid>
+  </revision>
 </revisionlist>
