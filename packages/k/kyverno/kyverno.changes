@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 18 11:07:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.1:
+  * fix: pass AdmissionRequest to updaterequests for mutate
+    existing policy (#16050) (#16072)
+  * fix: support cluster-scoped resource generation in
+    GeneratingPolicy (#16018) (#16031)
+
+-------------------------------------------------------------------
 Thu Apr 30 06:15:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.18.0:
