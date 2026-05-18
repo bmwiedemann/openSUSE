@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Log-Any
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Log-Any
 Name:           perl-Log-Any
-Version:        1.718.0
+Version:        1.720.0
 Release:        0
-# 1.718 -> normalize -> 1.718.0
-%define cpan_version 1.718
+# 1.720 -> normalize -> 1.720.0
+%define cpan_version 1.720
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Bringing loggers and listeners together
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PR/PREACTION/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

@@ -12,6 +12,5 @@ mechanism.
 
 The application, in turn, may choose one or more logging mechanisms via
 Log::Any::Adapter.</description>
-  <devel project="devel:languages:perl" package="perl-Log-Any"/>
   <url>http://search.cpan.org/dist/Log-Any</url>
 </package>

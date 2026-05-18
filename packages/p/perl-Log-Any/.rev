@@ -288,4 +288,23 @@
       modules.</comment>
     <requestid>1282014</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7f83a414f73702a85f182a262cfc3011</srcmd5>
+    <version>1.720.0</version>
+    <time>1779119283</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.720.0 (1.720)
+   see /usr/share/doc/packages/perl-Log-Any/Changes
+  1.720     2026-04-25 12:58:08+02:00 Europe/Vienna
+    - This release contains some performance improvements. Thanks @XSven! [Github #116]
+  1.719     2026-03-16 08:53:34-05:00 America/Chicago
+    This release contains fixes for test failures and documentation.
+    [Fixed]
+    - Fixed t/proxy-with-stack-trace.t failing tests on Windows. Thanks @Akron!
+      [Github #104]
+    - Fixed requirement on Storable &gt; 3.06 for Log::Any::Proxy::WithStackTrace.
+      Thanks @perlpunk! [Github #105]
+    - Fixed POD lists rendering horribly. Thanks @mikkoi! [Github #113]</comment>
+    <requestid>1353758</requestid>
+  </revision>
 </revisionlist>

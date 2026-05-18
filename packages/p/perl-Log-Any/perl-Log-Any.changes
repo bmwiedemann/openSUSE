@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr 26 07:06:56 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.720.0 (1.720)
+   see /usr/share/doc/packages/perl-Log-Any/Changes
+
+  1.720     2026-04-25 12:58:08+02:00 Europe/Vienna
+    - This release contains some performance improvements. Thanks @XSven! [Github #116]
+  1.719     2026-03-16 08:53:34-05:00 America/Chicago
+    This release contains fixes for test failures and documentation.
+    [Fixed]
+    - Fixed t/proxy-with-stack-trace.t failing tests on Windows. Thanks @Akron!
+      [Github #104]
+    - Fixed requirement on Storable > 3.06 for Log::Any::Proxy::WithStackTrace.
+      Thanks @perlpunk! [Github #105]
+    - Fixed POD lists rendering horribly. Thanks @mikkoi! [Github #113]
+
+-------------------------------------------------------------------
 Mon Jun  2 05:37:14 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.718.0 (1.718)
