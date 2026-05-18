@@ -310,4 +310,20 @@ Update to the commit d499b6e.
     golang.org/x/crypto/ssh/agent to v0.45.0</comment>
     <requestid>1320059</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>837950110dae44050e6c34ba1ecd53ec</srcmd5>
+    <version>0.10.1</version>
+    <time>1779119252</time>
+    <user>anag_factory</user>
+    <comment>- Fix CVE-2026-1229 and CVE-2026-41506
+
+  - CVE-2026-1229: CIRCL has an incorrect calculation in
+    secp384r1 CombinedMult (bsc#1265416, GO-2026-4550) update
+    github.com/cloudflare/circl to v1.6.3
+  - CVE-2026-41506: HTTP authentication credential leak when
+    following redirects during smart-HTTP clone and fetch
+    operations (bsc#1264955, GO-2026-4910),
+    update github.com/go-git/go-git/v5 to v5.17.1</comment>
+    <requestid>1353788</requestid>
+  </revision>
 </revisionlist>

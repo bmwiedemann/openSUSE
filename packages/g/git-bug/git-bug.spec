@@ -34,6 +34,7 @@ BuildRequires:  golang(API) = 1.24
 # Patch0:         501-export.patch
 BuildRequires:  golang-packaging
 BuildRequires:  git
+BuildRequires:  golang(API) = 1.22
 
 %description
 git-bug is a bug tracker that:

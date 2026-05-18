@@ -7,7 +7,8 @@
         <param name="changesgenerate">enable</param>
         <param name="changesauthor">mcepl@cepl.eu</param>
     </service>
-    <service name="recompress" mode="manual">
+    <service name="tar" mode="buildtime"/>
+    <service name="recompress" mode="buildtime">
         <param name="file">*.tar</param>
         <param name="compression">gz</param>
     </service>
@@ -15,7 +16,8 @@
     <service name="go_modules" mode="manual">
       <param name="replace">golang.org/x/crypto=golang.org/x/crypto@v0.43.0</param>
       <param name="replace">github.com/go-viper/mapstructure/v2=github.com/go-viper/mapstructure/v2@v2.4.0</param>
-      <param name="replace">github.com/cloudflare/circl=github.com/cloudflare/circl@v1.6.1</param>
+      <param name="replace">github.com/cloudflare/circl=github.com/cloudflare/circl@v1.6.3</param>
+      <param name="replace">github.com/go-git/go-git/v5=github.com/go-git/go-git/v5@v5.17.1</param>
       <param name="replace">golang.org/x/crypto/ssh=golang.org/x/crypto/ssh@v0.45.0</param>
       <param name="replace">golang.org/x/crypto/ssh/agent=golang.org/x/crypto/ssh/agent@v0.45.0</param>
     </service>
