@@ -40,6 +40,7 @@ Patch02:        libica-sles15sp5-FIPS-hmac-key.patch
 ###
 Patch10:        libica-CONFIGURE-Make-the-OpenSSL-FIPS-config-file-name-configurable.patch
 Patch11:        libica-Fix-mutex-thread-lock-in-drbg_uninstantiate-function.patch
+Patch12:        libica-Block-SHA1-mechanism-for-FIPS-140-3.patch
 ###
 
 BuildRequires:  autoconf

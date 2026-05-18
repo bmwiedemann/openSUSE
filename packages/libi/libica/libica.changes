@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 18 09:17:52 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch to block SHA1 mechanism for FIPS 140-3 (bsc#1260938)
+  * libica-Block-SHA1-mechanism-for-FIPS-140-3.patch 
+
+-------------------------------------------------------------------
 Fri Mar  6 10:04:14 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch for FIPS 140-3 project for SLES16.0 and SL Micro 6.2
