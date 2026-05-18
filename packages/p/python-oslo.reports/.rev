@@ -256,4 +256,17 @@
   * Update master for stable/2025.2</comment>
     <requestid>1334423</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d24bd92d73a7c297866a6159f94cde0e</srcmd5>
+    <version>3.8.0</version>
+    <time>1779119295</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.8.0:
+  * tox: Use new constraints option
+  * typing: Update for typed oslotest
+  * Add typing
+  * Apply ruff
+  * Update master for stable/2026.1</comment>
+    <requestid>1353773</requestid>
+  </revision>
 </revisionlist>

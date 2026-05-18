@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.reports
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        OpenStack oslo.reports library
 License:        Apache-2.0
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module psutil >= 3.2.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 Requires:       python-Jinja2 >= 2.10
+Requires:       python-oslo.config >= 5.1.0
 Requires:       python-oslo.i18n >= 3.15.3
 Requires:       python-oslo.serialization >= 2.18.0
 Requires:       python-oslo.utils >= 3.33.0

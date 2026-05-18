@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 18 10:04:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.0:
+  * tox: Use new constraints option
+  * typing: Update for typed oslotest
+  * Add typing
+  * Apply ruff
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Mon Feb 23 09:15:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.0:
