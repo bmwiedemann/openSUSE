@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May 18 09:22:00 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.1
+  * Bug Fixes
+    + Prevent too aggressive reuse of interfaces used for Plexus/Sisu
+    + Import doxia-core packages
+  * Maintenance
+    + Cleanup tests
+    + Bump m-invoker-p to 3.9.1 for Java 25
+    + feat: enable prevent branch protection rules
+    + Enable Github Issues
+    + MSHARED-1313 Refresh download page
+  * Dependency updates
+    * Bump org.apache.maven.shared:maven-shared-components from 43
+      to 48
+    + Bump org.apache.maven.doxia:doxia-site-renderer from 2.0.0 to
+      2.1.0
+    + Bump org.apache.maven.doxia:doxia-sink-api from 2.0.0 to 2.1.0
+    + Bump org.apache.maven.plugin-testing
+      :maven-plugin-testing-harness from 3.3.0 to 3.5.1
+    + Bump org.codehaus.plexus:plexus-classworlds from 2.6.0 to
+      2.9.0
+
+-------------------------------------------------------------------
 Tue Oct 15 18:38:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.0.0

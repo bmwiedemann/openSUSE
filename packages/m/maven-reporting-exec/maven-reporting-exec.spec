@@ -1,7 +1,7 @@
 #
 # spec file for package maven-reporting-exec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-reporting-exec
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Classes to manage report plugin executions with Maven 3
 License:        Apache-2.0

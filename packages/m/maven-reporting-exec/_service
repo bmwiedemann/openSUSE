@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/apache/maven-reporting-exec.git</param>
-		<param name="revision">maven-reporting-exec-2.0.0</param>
+		<param name="revision">maven-reporting-exec-2.0.1</param>
 		<param name="match-tag">maven-reporting-exec-*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">maven-reporting-exec-(.*)</param>
