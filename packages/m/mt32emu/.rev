@@ -212,4 +212,25 @@ Need for dosbox and aplaymidi for play MT-32 sound.</comment>
     h/w does this. (#132).</comment>
     <requestid>1342096</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eaab0a6b4e6dc673441e197971ffde0d</srcmd5>
+    <version>2.8.0</version>
+    <time>1779119221</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 2.8.0
+  * Added basic unit tests. Details on the build requirements and
+    configuration options can be found in README.md file.
+  * Provided callbacks to retrieve notifications about events when
+    the synth engine runs out of available partials.
+  * Improved emulation accuracy of partial allocator implemented in
+    old-gen devices.
+  * Invalid short MIDI messages are no longer tolerated but
+    ignored.
+  * The Master Volume setting can now be overridden, so that
+    changing it via SysEx messages is not possible.
+  * Added a function to store internal synth state into a SysEx
+    bank and another one to load a number of SysEx messages
+    from a SysEx bank.</comment>
+    <requestid>1353626</requestid>
+  </revision>
 </revisionlist>
