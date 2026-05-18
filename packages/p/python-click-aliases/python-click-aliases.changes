@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 17 19:03:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.6:
+  * Fix name handling in ClickAliasedGroup.add_command
+  * fix #27: Use `importlib.metadata.version` instead of
+    `__version__`
+
+-------------------------------------------------------------------
 Tue Oct 22 13:58:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.5:

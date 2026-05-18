@@ -44,4 +44,15 @@
   * dependency bumps</comment>
     <requestid>1217047</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>77964a8018db1e550745b2a533d15adc</srcmd5>
+    <version>1.0.6</version>
+    <time>1779119207</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.6:
+  * Fix name handling in ClickAliasedGroup.add_command
+  * fix #27: Use `importlib.metadata.version` instead of
+    `__version__`</comment>
+    <requestid>1353611</requestid>
+  </revision>
 </revisionlist>
