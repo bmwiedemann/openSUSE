@@ -165,4 +165,41 @@
     <comment></comment>
     <requestid>838759</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>58bb9a2337da2621828285c747d2e84f</srcmd5>
+    <version>0.520.0</version>
+    <time>1779119283</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.520.0 (0.52)
+   see /usr/share/doc/packages/perl-Net-Daemon/ChangeLog
+  2026-04-05 Todd Rinaldo &lt;toddr@cpan.org&gt; (0.52)
+      Bug fixes:
+  	* Fix dead $RegExpLock that was never acquired in ithreads mode.
+  	  The lock variable existed but was never actually locked before
+  	  regexp compilation, leaving ithreads unprotected. Also fix
+  	  share() call to pass explicit ref for runtime-loaded prototype.
+  	  PR #33
+  	* Fix ithreads auto-detection to gate on Perl 5.10+ and exclude
+  	  Windows. On Perl 5.8.x threads::shared is never loaded, making
+  	  lock() a no-op. On Windows, DuplicateHandle() corrupts Winsock
+  	  sockets — WSADuplicateSocket() is required instead.
+  	  GH #19, GH #30, GH #34, PR #35, PR #50
+  	* Correct $eventId hash key typo in Log.pm that prevented event
+  	  IDs from being logged. PR #36
+  	* Fix Done() call in test server Loop method — was called without
+  	  arguments, preventing proper server shutdown. PR #38
+  	* Clean up stale test artifacts (log, ndtest.cnt). PR #40
+  	* Harden ReadConfigFile against $@ contamination and $! errors.
+  	  PR #44
+  	* Skip pidfile write when pidfile option is not set, preventing
+  	  spurious empty pidfile creation. PR #45
+  	* Close cloned listening socket in ithreads handler threads.
+  	  Perl ithreads dup every open handle into new threads; on
+  	  Windows closing these at thread exit invalidated the parent's
+  	  handle. Also re-add Windows skip with root-cause documentation.
+  	  GH #19, GH #30, PR #46
+  	* Address CPAN testers failures in t/reap.t and t/fork.t. PR #48
+  	* Skip ithread-detach.t on Perl &lt; 5.10. PR #49</comment>
+    <requestid>1353759</requestid>
+  </revision>
 </revisionlist>

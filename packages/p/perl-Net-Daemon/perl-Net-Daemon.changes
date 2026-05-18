@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Thu Apr  9 11:56:29 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.520.0 (0.52)
+   see /usr/share/doc/packages/perl-Net-Daemon/ChangeLog
+
+  2026-04-05 Todd Rinaldo <toddr@cpan.org> (0.52)
+      Bug fixes:
+  	* Fix dead $RegExpLock that was never acquired in ithreads mode.
+  	  The lock variable existed but was never actually locked before
+  	  regexp compilation, leaving ithreads unprotected. Also fix
+  	  share() call to pass explicit ref for runtime-loaded prototype.
+  	  PR #33
+  	* Fix ithreads auto-detection to gate on Perl 5.10+ and exclude
+  	  Windows. On Perl 5.8.x threads::shared is never loaded, making
+  	  lock() a no-op. On Windows, DuplicateHandle() corrupts Winsock
+  	  sockets — WSADuplicateSocket() is required instead.
+  	  GH #19, GH #30, GH #34, PR #35, PR #50
+  	* Correct $eventId hash key typo in Log.pm that prevented event
+  	  IDs from being logged. PR #36
+  	* Fix Done() call in test server Loop method — was called without
+  	  arguments, preventing proper server shutdown. PR #38
+  	* Clean up stale test artifacts (log, ndtest.cnt). PR #40
+  	* Harden ReadConfigFile against $@ contamination and $! errors.
+  	  PR #44
+  	* Skip pidfile write when pidfile option is not set, preventing
+  	  spurious empty pidfile creation. PR #45
+  	* Close cloned listening socket in ithreads handler threads.
+  	  Perl ithreads dup every open handle into new threads; on
+  	  Windows closing these at thread exit invalidated the parent's
+  	  handle. Also re-add Windows skip with root-cause documentation.
+  	  GH #19, GH #30, PR #46
+  	* Address CPAN testers failures in t/reap.t and t/fork.t. PR #48
+  	* Skip ithread-detach.t on Perl < 5.10. PR #49
+  	* Verify privilege drop succeeded in Bind(). Assigning to $>/$)
+  	  silently fails without permission — the daemon would continue
+  	  running as root. PR #51
+  	* Use POSIX::setuid/setgid for permanent privilege drop in
+  	  Bind(). The previous $< = ($> = $user) left saved-set-user-ID
+  	  as root, allowing a compromised process to regain privileges.
+  	  PR #55
+      Improvements:
+  	* Modernize open() calls to 3-arg form with lexical filehandles
+  	  throughout the codebase. PR #41
+      Maintenance:
+  	* Fix POD typos and remove outdated alpha warning. PR #37
+  	* Fix stale --mode=threads references and config example syntax
+  	  in documentation. PR #39
+  	* Update ancient FSF address in Net::Daemon::Test copyright.
+  	  PR #35
+  	* Convert server tests from raw TAP to Test::More. PR #42
+  	* Convert ithreads tests to Test::More and fix Test.pm fd leak.
+  	  PR #43
+  	* Convert remaining tests (loop.t, loop-child.t, unix_clients.t,
+  	  forkm.t) to Test::More. PR #47
+  2026-03-22 Todd Rinaldo <toddr@cpan.org> (0.51)
+      Bug fixes:
+  	* Fix Socket::INADDR_ANY constant for unix socket client auth.
+  	  GH #1, PR #27
+  	* Fix post_clone() hook - Clone() never called new(), so the
+  	  $self->{'parent'} check in new() was dead code. Added post_clone()
+  	  method that Clone() calls after creating the new object.
+  	  GH #2, PR #26
+  	* Open logfile when filename string is provided via --logfile.
+  	  OpenLog() previously returned the logfile value as-is when it was
+  	  a defined string, causing Log() to fall through to STDERR.
+  	  GH #3, PR #25 (rt.cpan.org #76133)
+  	* Reap forked child processes to prevent zombie accumulation.
+  	  SigChildHandler now uses a proper waitpid reaper instead of
+  	  returning 'IGNORE', fixing zombie buildup on Windows/Strawberry
+  	  Perl after ~64 connections.
+  	  GH #5, PR #23
+  	* Fix ReadConfigFile implementation traversing @INC.
+  	  GH #8 (rt.cpan.org #123213)
+  	* Detach threads in ChildFunc to prevent memory leaks. Thread
+  	  objects were never joined or detached, causing leftover thread
+  	  mappings to accumulate.
+  	  GH #12, PR #22
+  	* Only load threads if forks hasn't already been loaded and
+  	  threads exists. GH #16
+      Improvements:
+  	* Add post_clone() hook for per-connection initialization.
+  	  Subclasses can override to perform per-connection setup.
+  	  GH #2, PR #26
+  	* Add --listen option to Options() to allow overriding the
+  	  default listen backlog of 10. GH #4, PR #24
+      Maintenance:
+  	* Modernize Makefile.PL metadata: add LICENSE, MIN_PERL_VERSION,
+  	  TEST_REQUIRES, upgrade META_MERGE to meta-spec v2, update
+  	  GitHub URLs. PR #28
+  	* Modernize CI workflow: upgrade actions/checkout to v4, use
+  	  perldocker/perl-tester images, dynamic Perl version matrix
+  	  covering 5.8 through devel, add disttest job. PR #29
+  	* Disable t/ithreadm.t for Windows. GH #19
+  	* Improve skip messages and detection of ithreads/forks in tests.
+  	* Convert t/base.t to Test::More.
+  	* Apply consistent perltidy formatting.
+  	* Add strict/warnings, replace 'use vars' with 'our'.
+  	* Remove perl 4-ish subroutine calls.
+
+-------------------------------------------------------------------
 Wed Sep 30 10:51:17 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Add manual license

@@ -9,5 +9,4 @@ needs: Starting up, logging, accepting clients, authorization, restricting
 its own environment for security and doing the true work. You only have to
 override those methods that aren't appropriate for you, but typically
 inheriting will safe you a lot of work anyways.</description>
-  <devel project="devel:languages:perl" package="perl-Net-Daemon"/>
 </package>
