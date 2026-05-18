@@ -1,0 +1,6 @@
+<servicedata>
+    <service name="tar_scm">
+        <param name="url">https://github.com/Neverball/neverball.git</param>
+        <param name="changesrevision">4bcc69f60bf3228febcd78cba72bb8c5058c6177</param>
+    </service>
+</servicedata>

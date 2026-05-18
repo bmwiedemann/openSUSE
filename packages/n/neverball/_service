@@ -1,0 +1,15 @@
+<services>
+  <service mode="manual" name="tar_scm">
+    <param name="url">https://github.com/Neverball/neverball.git</param>
+    <param name="revision">4bcc69f60bf3228febcd78cba72bb8c5058c6177</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">neverball</param>
+    <param name="versionformat">1.6+git.%cd</param>
+  </service>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>
