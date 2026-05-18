@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon May 18 12:30:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.46.0:
+  This release introduces an enhanced AI agent session tracking
+  model with liveness classification and a suite of
+  machine-readable CLI commands designed for stable automation and
+  LLM integration.
+  * Features
+    - Agent Session Liveness Classification: Replaced binary
+      session tracking with a four-state liveness model (active,
+      recent, suspect, inactive) and source attribution (e.g.,
+      exact_file, cwd_heuristic).
+    - Persistent Session Registry: Added a disk-based session
+      registry that allows agent sessions to persist across
+      refreshes even when transcript files cannot be parsed.
+    - Machine-Readable CLI Commands: Introduced new stable
+      JSON-ready commands for automation:
+      - doctor: Reports repository, tool, and configuration health.
+      - worktrees resolve: Canonicalizes worktree names, branches,
+        or paths.
+      - worktrees context: Provides combined note and agent session
+        data for a specific worktree.
+      - notes get: Retrieves structured note metadata.
+      - describe: Emits the CLI command structure as JSON for
+        introspection.
+    - Enhanced UI Feedback: Added liveness badges to the agent
+      sessions pane to indicate the confidence level and source of
+      session data at a glance.
+  * Bug Fixes
+    - Non-Interactive Execution: Background Git operations now
+      disable interactive terminal prompts and enforce SSH batch
+      mode to prevent the application from hanging on
+      authentication requests.
+    - Worktree Renaming: Updated renaming logic to target the
+      worktree directory name rather than the branch name, ensuring
+      consistent filesystem state.
+    - Path Resolution: Tightened worktree matching to prevent
+      sibling directories with similar prefixes (e.g., feature vs
+      feature-2) from being misidentified.
+    - Filename Safety: Switched to NUL-delimited Git status parsing
+      (-z) for untracked files and symlink helpers to correctly
+      handle filenames containing spaces.
+    - Thread Safety: Added mutex protection to the global icon
+      provider to resolve race conditions during concurrent model
+      creation.
+    - Input Normalization: Fixed issues where trailing slashes on
+      path inputs caused CLI resolution failures.
+    - Relative Path Handling: Improved detection of relative
+      worktree directories to ensure they are correctly resolved as
+      repo-local.
+  * Maintenance
+    - Documentation:
+      - Added detailed guides and reference tables for agent
+        session liveness filtering.
+      - Restored the root DESIGN.md architecture note.
+      - Repaired broken troubleshooting and diagnostic links in the
+        README.
+      - Updated the contributor guide to reflect Go 1.25
+        requirements.
+    - CI/CD: Replaced deprecated GitHub Actions and optimized
+      caching for setup-uv.
+    - Build Tooling: Updated Makefile targets to exclude
+      temporary/scratch packages from routine test and lint runs.
+  * Dependencies
+    - Updated various Go dependencies, including urfave/cli/v3,
+      fsnotify, golang.org/x/term, and ultraviolet. (#59, #61)
+
+-------------------------------------------------------------------
 Thu Apr 30 05:29:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.45.1:
