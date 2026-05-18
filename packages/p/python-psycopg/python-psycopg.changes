@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 18 10:30:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.4:
+  * Fix possible spurious connection timeout in systems with very
+    long uptimes in C extension (:ticket:`#1280`).
+  * Fix client-side adaptation of enums whose name require quotes
+    (:ticket:`#1298`).
+  * Consistently populate ~Cursor.statusmessage after
+    ~Cursor.executemany() (:ticket:`#1302`).
+
+-------------------------------------------------------------------
 Mon Feb 23 08:44:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.3:
