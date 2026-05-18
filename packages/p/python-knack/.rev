@@ -224,4 +224,16 @@
     <comment></comment>
     <requestid>1315336</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>882d372ac70655161029e1802d70980c</srcmd5>
+    <version>0.14.0</version>
+    <time>1779119223</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.14.0:
+  * Declare support for Python 3.14 and drop support for Python
+    3.9
+  * Fix help text rendering for Python 3.14 argparse strict
+    validation</comment>
+    <requestid>1353630</requestid>
+  </revision>
 </revisionlist>
