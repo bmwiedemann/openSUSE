@@ -460,4 +460,12 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
     <comment></comment>
     <requestid>1350844</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>afd8eef8d70bfd57dbb64be62d2057fe</srcmd5>
+    <version>14.23</version>
+    <time>1779119348</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1353815</requestid>
+  </revision>
 </revisionlist>
