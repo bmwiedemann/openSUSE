@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 18 06:12:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.17:
+  * fix(zli config): print help for missing args (#4046)
+  * feat(zli): add config list/show/get/set/reset and isolate
+    deprecated syntax (#4037)
+  * refactor(zli): add typed ~/.zot config layer and strict
+    validation (#4030)
+  * docs(config): reference generated config schema (#4015)
+  * fix(zli): Improve zli CVE diff output (#3994)
+  * fix(security): enhance timeout configurations and body size
+    limits fo… (#3984)
+
+-------------------------------------------------------------------
 Mon Apr 20 18:26:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.16:
