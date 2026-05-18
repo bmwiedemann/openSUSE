@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Signature
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %define cpan_name Module-Signature
 Name:           perl-Module-Signature
-Version:        0.930.0
+Version:        0.960.0
 Release:        0
-# 0.93 -> normalize -> 0.930.0
-%define cpan_version 0.93
+# 0.96 -> normalize -> 0.960.0
+%define cpan_version 0.96
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND CC0-1.0
 Summary:        Module signature file manipulation
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -85,6 +86,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc ANDK2020.pub AUDREYT2018.pub AUTHORS Changes NIKLASHOLM2018.pub PAUSE2022.pub SECURITY.md TIMLEGGE2024.pub
+%doc ANDK2020.pub AUDREYT2018.pub AUTHORS Changes NIKLASHOLM2018.pub PAUSE2022.pub TIMLEGGE2024.pub
 
 %changelog

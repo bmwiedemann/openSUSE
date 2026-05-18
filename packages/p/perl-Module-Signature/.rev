@@ -287,4 +287,20 @@ License purports to be CC zero, not CC-BY. Also, see the script/cpansign and Mod
   * Change build process to Dist::Zilla</comment>
     <requestid>1291916</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8a349e08c49f002e5ff60d81b1f242d1</srcmd5>
+    <version>0.960.0</version>
+    <time>1779119287</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.960.0 (0.96)
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+  0.96 -- Mon Apr 27 11:27:02 ADT 2026
+  * Fix issue from last release where search keys is interactive
+  0.95 -- Sun Apr 26 11:44:20 ADT 2026
+  * Announce deprecation of the module
+  * Update change log (forgotten in 0.94)
+  0.94 -- Sun Apr 26 11:37:00 ADT 2026
+  * Announce deprecation of the module</comment>
+    <requestid>1353764</requestid>
+  </revision>
 </revisionlist>

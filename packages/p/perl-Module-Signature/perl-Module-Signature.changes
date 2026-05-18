@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 28 07:44:42 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.960.0 (0.96)
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+
+  0.96 -- Mon Apr 27 11:27:02 ADT 2026
+  * Fix issue from last release where search keys is interactive
+  0.95 -- Sun Apr 26 11:44:20 ADT 2026
+  * Announce deprecation of the module
+  * Update change log (forgotten in 0.94)
+  0.94 -- Sun Apr 26 11:37:00 ADT 2026
+  * Announce deprecation of the module
+
+-------------------------------------------------------------------
 Sat Jun 28 05:33:39 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.930.0 (0.93)
