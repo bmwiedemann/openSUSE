@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 18 05:15:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.7:
+  * build(deps): bump sigstore/cosign-installer (#2526)
+  * chore: Bump go to 1.26.2 (#2528)
+
+-------------------------------------------------------------------
 Mon May 11 05:04:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.6:
