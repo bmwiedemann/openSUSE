@@ -1,7 +1,7 @@
 #
 # spec file for package links
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            http://links.twibright.com/
 Source:         http://links.twibright.com/download/links-%{version}.tar.bz2
+Patch1:         fix-strchr-const-write.patch
 Patch2:         configure.diff
 BuildRequires:  autoconf
 BuildRequires:  automake

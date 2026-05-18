@@ -444,4 +444,12 @@ bsc#1022468</comment>
     <comment>links 2.30 (forwarded request 1196920 from AndreasStieger)</comment>
     <requestid>1196929</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>9d9589e12f5a5d0d7eaf8d2ef3fcdaec</srcmd5>
+    <version>2.30</version>
+    <time>1779119255</time>
+    <user>anag_factory</user>
+    <comment>fix build failure (forwarded request 1353649 from azouhr)</comment>
+    <requestid>1353730</requestid>
+  </revision>
 </revisionlist>

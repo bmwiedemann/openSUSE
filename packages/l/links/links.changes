@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 17 22:51:58 UTC 2026 - Berthold Gunreben <azouhr@opensuse.org>
+
+- fix build 
+  * add  fix-strchr-const-write.patch
+
+-------------------------------------------------------------------
 Wed Aug 28 11:37:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.30:
