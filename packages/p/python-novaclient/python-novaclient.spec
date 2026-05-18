@@ -28,7 +28,6 @@ Source0:        https://files.pythonhosted.org/packages/source/p/python-novaclie
 BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module openstacksdk}
-BuildRequires:  %{python_module os-client-config}
 BuildRequires:  %{python_module osprofiler}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests-mock}

@@ -809,4 +809,12 @@ update to version 5.1.0
   * Use pre-commit for lint jobs</comment>
     <requestid>1342251</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>188e6dd171a03fc4896063b71f7323cd</srcmd5>
+    <version>18.12.0</version>
+    <time>1779119368</time>
+    <user>anag_factory</user>
+    <comment>- remove os-client-config dependency</comment>
+    <requestid>1353836</requestid>
+  </revision>
 </revisionlist>
