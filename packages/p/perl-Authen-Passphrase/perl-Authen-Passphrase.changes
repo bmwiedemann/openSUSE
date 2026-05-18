@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 16 07:04:24 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9.0 (0.009)
+   see /usr/share/doc/packages/perl-Authen-Passphrase/Changes
+
+  version 0.009; 2026-04-15
+    * Mark module as deprecated
+    * Switch from Data::Entropy to Crypt::SysRandom
+    * Fix various documentation issues.
+
+-------------------------------------------------------------------
 Tue Jun  3 14:03:43 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

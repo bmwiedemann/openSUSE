@@ -17,4 +17,17 @@
 </comment>
     <requestid>1282379</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b6b2bb9864aba745da77de7712753bcc</srcmd5>
+    <version>0.9.0</version>
+    <time>1779119878</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.9.0 (0.009)
+   see /usr/share/doc/packages/perl-Authen-Passphrase/Changes
+  version 0.009; 2026-04-15
+    * Mark module as deprecated
+    * Switch from Data::Entropy to Crypt::SysRandom
+    * Fix various documentation issues.</comment>
+    <requestid>1353849</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Authen-Passphrase
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define cpan_name Authen-Passphrase
 Name:           perl-Authen-Passphrase
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
-# 0.008 -> normalize -> 0.8.0
-%define cpan_version 0.008
+# 0.009 -> normalize -> 0.9.0
+%define cpan_version 0.009
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Hashed passwords/passphrases as objects
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -34,9 +35,9 @@ BuildRequires:  perl(Crypt::DES)
 BuildRequires:  perl(Crypt::Eksblowfish::Bcrypt) >= 0.8
 BuildRequires:  perl(Crypt::Eksblowfish::Uklblowfish) >= 0.8
 BuildRequires:  perl(Crypt::MySQL) >= 0.30
-BuildRequires:  perl(Crypt::PasswdMD5) >= 1.0.0
+BuildRequires:  perl(Crypt::PasswdMD5) >= 1.0
+BuildRequires:  perl(Crypt::SysRandom)
 BuildRequires:  perl(Crypt::UnixCrypt_XS) >= 0.80
-BuildRequires:  perl(Data::Entropy::Algorithms)
 BuildRequires:  perl(Digest::MD4) >= 1.200
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(Module::Build)
@@ -48,9 +49,9 @@ Requires:       perl(Crypt::DES)
 Requires:       perl(Crypt::Eksblowfish::Bcrypt) >= 0.8
 Requires:       perl(Crypt::Eksblowfish::Uklblowfish) >= 0.8
 Requires:       perl(Crypt::MySQL) >= 0.30
-Requires:       perl(Crypt::PasswdMD5) >= 1.0.0
+Requires:       perl(Crypt::PasswdMD5) >= 1.0
+Requires:       perl(Crypt::SysRandom)
 Requires:       perl(Crypt::UnixCrypt_XS) >= 0.80
-Requires:       perl(Data::Entropy::Algorithms)
 Requires:       perl(Digest::MD4) >= 1.200
 Requires:       perl(Digest::SHA)
 Requires:       perl(Module::Runtime) >= 0.11
@@ -79,6 +80,10 @@ Provides:       perl(Authen::Passphrase::VMSPurdy) = %{version}
 %{perl_requires}
 
 %description
+*THIS MODULE IS DEPRECATED*. For a module that's more extensible, and less
+held-back by legacy algorithms, you may want to use Crypt::Passphrase
+instead.
+
 This is the base class for a system of objects that encapsulate
 passphrases. An object of this type is a passphrase recogniser: its job is
 to recognise whether an offered passphrase is the right one. For security,
