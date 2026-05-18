@@ -177,4 +177,13 @@
     <comment></comment>
     <requestid>1292413</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e62d5cd0bbfb6a14fb280cbe65974718</srcmd5>
+    <version>0.185.0</version>
+    <time>1779119276</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.185.0 (v0.185.0)
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes</comment>
+    <requestid>1353754</requestid>
+  </revision>
 </revisionlist>

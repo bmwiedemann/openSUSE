@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-MockModule
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,25 @@
 
 %define cpan_name Test-MockModule
 Name:           perl-Test-MockModule
-Version:        0.180.0
+Version:        0.185.0
 Release:        0
-# v0.180.0 -> normalize -> 0.180.0
-%define cpan_version v0.180.0
+# v0.185.0 -> normalize -> 0.185.0
+%define cpan_version v0.185.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Override subroutines in a module for unit testing
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GF/GFRANKS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Class::Load)
 BuildRequires:  perl(Module::Build) >= 0.423.400
+BuildRequires:  perl(Moose)
+BuildRequires:  perl(Mouse)
 BuildRequires:  perl(SUPER) >= 1.200
+BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warnings)
 Requires:       perl(SUPER) >= 1.200
