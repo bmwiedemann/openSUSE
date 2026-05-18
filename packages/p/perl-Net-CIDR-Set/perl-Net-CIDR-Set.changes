@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 28 07:45:14 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.200.0 (0.20)
+   see /usr/share/doc/packages/perl-Net-CIDR-Set/Changes
+
+  0.20      2026-04-27 19:02:28+01:00 Europe/London
+    [Documentation]
+    - Mentioned CONTRIBUTING.md in SOURCE.
+    - Updated copyright year.
+    - Updated the current maintainer email.
+    [Tests]
+    - Added and improved author tests.
+    - Moved author tests into xt.
+    [Toolchain]
+    - Set up GitHub workflow for testing.
+    - Stopped using Module::Signature for signing modules.
+
+-------------------------------------------------------------------
 Tue Oct  7 13:33:02 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.190.0 (0.19)

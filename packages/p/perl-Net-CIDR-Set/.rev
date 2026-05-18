@@ -89,4 +89,24 @@
     - Add more author tests.</comment>
     <requestid>1310019</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a13144d4bc3f1d126646cdef3a4d2c7f</srcmd5>
+    <version>0.200.0</version>
+    <time>1779119286</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.200.0 (0.20)
+   see /usr/share/doc/packages/perl-Net-CIDR-Set/Changes
+  0.20      2026-04-27 19:02:28+01:00 Europe/London
+    [Documentation]
+    - Mentioned CONTRIBUTING.md in SOURCE.
+    - Updated copyright year.
+    - Updated the current maintainer email.
+    [Tests]
+    - Added and improved author tests.
+    - Moved author tests into xt.
+    [Toolchain]
+    - Set up GitHub workflow for testing.
+    - Stopped using Module::Signature for signing modules.</comment>
+    <requestid>1353763</requestid>
+  </revision>
 </revisionlist>
