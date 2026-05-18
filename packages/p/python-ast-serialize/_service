@@ -1,0 +1,6 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+     <param name="srcdir">ast_serialize-*.tar.gz</param>
+     <param name="update">true</param>
+  </service>
+</services>
