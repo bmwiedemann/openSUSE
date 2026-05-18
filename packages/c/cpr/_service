@@ -1,0 +1,16 @@
+<services>
+	<service name="run" mode="manual">
+		<param name="command">
+outdir="${outdir:-.}"
+sed -i "s@\(%define.*mongv.*\).*@%define mongv $(curl -Ls https://raw.githubusercontent.com/libcpr/cpr/refs/heads/master/CMakeLists.txt | sed -n 's~.*URL .* https.*/cesanta/mongoose/archive/\(.*\)\.tar\.gz.*~\1~p')@g;" cpr.spec
+</param>
+	</service>
+	<service name="download_url" mode="manual">
+		<param name="url">https://api.github.com/repos/libcpr/cpr/releases/latest</param> 
+	</service>
+	<service name="set_version" mode="manual">
+		<param name="fromfile">latest</param>
+		<param name="regex">.*"tag_name"\s*:\s*"(.*)".*</param>
+	</service>
+	<service name="download_files" mode="manual"/>
+</services>
