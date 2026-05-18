@@ -18,10 +18,10 @@
 
 %define cpan_name Graphics-Toolkit-Color
 Name:           perl-Graphics-Toolkit-Color
-Version:        2.20.0
+Version:        2.110.0
 Release:        0
-# 2.02 -> normalize -> 2.20.0
-%define cpan_version 2.02
+# 2.11 -> normalize -> 2.110.0
+%define cpan_version 2.11
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Calculate color (sets), IO many spaces and formats
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,6 +31,7 @@ Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Test::Builder) >= 1
 BuildRequires:  perl(Test::More) >= 1.3
 BuildRequires:  perl(Test::Warn) >= 0.300
 Provides:       perl(Graphics::Toolkit::Color) = %{version}
@@ -43,13 +44,20 @@ Provides:       perl(Graphics::Toolkit::Color::Space) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Basis) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Format) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Hub) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::AdobeRGB) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::AppleRGB) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::CIELAB) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::CIELCHab) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::CIELCHuv) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::CIELUV) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::CIERGB) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::CIEXYZ) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::CMY) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::CMYK) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::DCIP3) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::DCIP3Linear) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::DisplayP3) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::DisplayP3Linear) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::HSB) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::HSL) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::HSV) = %{version}
@@ -58,7 +66,12 @@ Provides:       perl(Graphics::Toolkit::Color::Space::Instance::HunterLAB) = %{v
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::NCol) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::OKLAB) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::OKLCH) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::ProPhotoRGB) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::RGB) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::RGBLinear) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::Rec2020) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::Rec709) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::WideGamutRGB) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::YIQ) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::YUV) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Shape) = %{version}

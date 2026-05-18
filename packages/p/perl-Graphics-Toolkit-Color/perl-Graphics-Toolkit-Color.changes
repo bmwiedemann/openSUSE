@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat May  9 07:22:47 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.110.0 (2.11)
+   see /usr/share/doc/packages/perl-Graphics-Toolkit-Color/Changes
+
+  2.11   2026-05-08   lichtkind
+  -------
+      * = bug fix release
+      * ! fix hash in scalar context bug while arg spltting in new
+      * ! HSB should never have had constraints as HSV
+
+  2.1    2026-05-05   lichtkind
+  -------
+      * = big feature release: +12 spaces, +6 args, +2 features
+      * * add color spaces: LinearRGB, CIERGB, Adobe 98 RGB, Apple RGB,
+                            ProPhoto RGB, Wide Gamut RGB,      Rec.709, Rec.2020,
+                            Linear Display P3, Display P3, Linear DCI P3, DCI P3
+      * + add 'is_in_gamut' argument 'color' and 'in' (check if color is in gamut of some space)
+      * + add constructor argument 'color', and 'range' to input custom ranged values
+      * + add constructor argument 'color' and 'raw' to input unclamped, imaginary colors
+      * + add argument 'raw' to method 'values' to return even out of gamut values
+      * + add argument 'only' as alias of 'select' in method 'distance'
+      * + added hash format for range definitions: {r => 100, g => 'normal', b => [-.5,.5]}
+      * + added ouput format ARRAY (tuple) (output only)
+      * + can insert ' ', '-', '_' and '.' into color space names
+      * ? document the 'only' argument of 'invert'
+      * & compact test suite with custom color tuple test function
+      * ~ CIEXYZ converts now from and to linearRGB
+      * ! HSB, HWB and NCol space got same constraints as HSV
+
+-------------------------------------------------------------------
 Wed Apr  8 20:11:16 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.20.0 (2.02)
