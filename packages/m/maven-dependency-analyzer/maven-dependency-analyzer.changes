@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 18 09:29:47 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.17.1
+  * New features and improvements
+    + Optimize artifact lookup in DefaultProjectDependencyAnalyzer
+  * Maintenance
+    + Add tag-template to release-drafter configuration
+    + Implement missing tests and cleanup TODOs in
+      DependencyVisitorTest
+  * Dependency updates
+    + Update parent 48
+    + Bump mavenVersion from 3.9.12 to 3.9.15
+
+-------------------------------------------------------------------
 Mon Feb  2 09:53:59 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.17.0
@@ -72,7 +86,7 @@ Tue Oct 15 19:07:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
     + MSHARED-1398: Fix StringIndexOutOfBoundsException in dynamic
       bootstrap types
     + MSHARED-1407: Track dependency usage by referencing classes
-    + MSHARED-1410: Track used declared dependency usage by 
+    + MSHARED-1410: Track used declared dependency usage by
       referencing classes
     + MSHARED-1428: Bump
       org.apache.maven.shared:maven-shared-components from 42 to 43
