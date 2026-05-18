@@ -1,7 +1,7 @@
 #
 # spec file for package dustrac
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,25 @@
 
 
 Name:           dustrac
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Tile-based 2D Racing Game
 License:        GPL-3.0-only AND CC-BY-SA-3.0
 Group:          Amusements/Games/Action/Race
 URL:            https://juzzlin.github.io/DustRacing2D/
 Source:         https://github.com/juzzlin/DustRacing2D/archive/%{version}/DustRacing2D-%{version}.tar.gz
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.10
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6OpenGL)
+BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(vorbisfile)
