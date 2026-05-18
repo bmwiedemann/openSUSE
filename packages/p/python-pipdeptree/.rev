@@ -290,4 +290,17 @@
     output</comment>
     <requestid>1349246</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bcb71c717e1f729312c74d16a212d018</srcmd5>
+    <version>2.35.3</version>
+    <time>1779119308</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.35.3:
+  * perf(extras): make --extras tractable on real environments
+- update to 2.35.2:
+  * fix(types): resolve ty 0.0.30 check failures
+  * Fix dependency sorting for freeze, text, and rich output
+    formats</comment>
+    <requestid>1353795</requestid>
+  </revision>
 </revisionlist>

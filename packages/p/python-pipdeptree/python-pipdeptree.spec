@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-pipdeptree
-Version:        2.35.1
+Version:        2.35.3
 Release:        0
 Summary:        Command line utility to show dependency tree of packages
 License:        MIT

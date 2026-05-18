@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 18 11:22:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.35.3:
+  * perf(extras): make --extras tractable on real environments
+- update to 2.35.2:
+  * fix(types): resolve ty 0.0.30 check failures
+  * Fix dependency sorting for freeze, text, and rich output
+    formats
+
+-------------------------------------------------------------------
 Sat Apr 25 17:36:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.35.1:
