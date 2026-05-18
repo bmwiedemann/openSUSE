@@ -2750,6 +2750,7 @@ unsorted:
   - cppunit-devel-32bit 
   - cppunit-devel-doc 
   - cppzmq-devel 
+  - cpr-devel 
   - cpu-x 
   - cpu-x-bash-completion 
   - cpu-x-fish-completion 
@@ -4003,6 +4004,7 @@ unsorted:
   - falcoctl-zsh-completion 
   - falcosidekick 
   - falkon-lang 
+  - fanficfare 
   - fann-devel 
   - fapg 
   - fapolicyd 
@@ -12779,6 +12781,7 @@ unsorted:
   - libcppunit-1_15-1-32bit 
   - libcppunit_subunit0 
   - libcppunit_subunit0-devel 
+  - libcpr1 
   - libcpuid-devel 
   - libcpuid-tools 
   - libcpuid17 
@@ -15538,7 +15541,7 @@ unsorted:
   - libprofanity0 
   - libprofiler0 
   - libproj25 
-  - libprometheus-cpp0_13 
+  - libprometheus-cpp1_3 
   - libprotobuf-lite34_1_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
@@ -16115,7 +16118,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-5_0_4 
+  - librssguard-5_1_2 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -19974,6 +19977,10 @@ unsorted:
   - netty3 
   - netty3-javadoc 
   - network-autoconfig 
+  - neverball 
+  - neverball-doc 
+  - neverball-mapc 
+  - neverball-neverputt 
   - newlib 
   - newsboat 
   - newsboat-lang 
@@ -24621,6 +24628,7 @@ unsorted:
   - python311-aspectlib 
   - python311-assertpy 
   - python311-ast-decompiler 
+  - python311-ast-serialize 
   - python311-asteval 
   - python311-astor 
   - python311-astral 
@@ -24832,6 +24840,7 @@ unsorted:
   - python311-azure-mgmt-carbonoptimization 
   - python311-azure-mgmt-cdn 
   - python311-azure-mgmt-certificateregistration 
+  - python311-azure-mgmt-changeanalysis 
   - python311-azure-mgmt-chaos 
   - python311-azure-mgmt-cloudhealth 
   - python311-azure-mgmt-cognitiveservices 
@@ -28555,6 +28564,7 @@ unsorted:
   - python313-aspectlib 
   - python313-assertpy 
   - python313-ast-decompiler 
+  - python313-ast-serialize 
   - python313-asteval 
   - python313-astor 
   - python313-astral 
@@ -28767,6 +28777,7 @@ unsorted:
   - python313-azure-mgmt-carbonoptimization 
   - python313-azure-mgmt-cdn 
   - python313-azure-mgmt-certificateregistration 
+  - python313-azure-mgmt-changeanalysis 
   - python313-azure-mgmt-chaos 
   - python313-azure-mgmt-cloudhealth 
   - python313-azure-mgmt-cognitiveservices 
@@ -32498,6 +32509,7 @@ unsorted:
   - python314-aspectlib 
   - python314-assertpy 
   - python314-ast-decompiler 
+  - python314-ast-serialize 
   - python314-asteval 
   - python314-astor 
   - python314-astral 
@@ -32711,6 +32723,7 @@ unsorted:
   - python314-azure-mgmt-carbonoptimization 
   - python314-azure-mgmt-cdn 
   - python314-azure-mgmt-certificateregistration 
+  - python314-azure-mgmt-changeanalysis 
   - python314-azure-mgmt-chaos 
   - python314-azure-mgmt-cloudhealth 
   - python314-azure-mgmt-cognitiveservices 
