@@ -57,4 +57,16 @@
     https://github.com/WojciechMula/pyahocorasick/pull/194</comment>
     <requestid>1329412</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eaf55825ca5752be541d497a8d86f8cc</srcmd5>
+    <version>2.3.1</version>
+    <time>1779119290</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.1:
+  * Add support for linux arm wheels
+    https://github.com/WojciechMula/pyahocorasick/pull/217
+    https://github.com/WojciechMula/pyahocorasick/pull/215
+    https://github.com/WojciechMula/pyahocorasick/issues/200</comment>
+    <requestid>1353769</requestid>
+  </revision>
 </revisionlist>

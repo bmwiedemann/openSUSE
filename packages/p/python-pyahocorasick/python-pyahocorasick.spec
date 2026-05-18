@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyahocorasick%{?psuffix}
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Library for exact or approximate multi-pattern string search
 License:        BSD-3-Clause

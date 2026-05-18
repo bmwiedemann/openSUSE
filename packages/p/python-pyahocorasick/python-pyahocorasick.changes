@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 18 10:00:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Add support for linux arm wheels
+    https://github.com/WojciechMula/pyahocorasick/pull/217
+    https://github.com/WojciechMula/pyahocorasick/pull/215
+    https://github.com/WojciechMula/pyahocorasick/issues/200
+
+-------------------------------------------------------------------
 Tue Jan 27 07:07:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:
