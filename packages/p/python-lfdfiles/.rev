@@ -134,4 +134,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1350593</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8ac0c3230978831b64913f2558aedbd6</srcmd5>
+    <version>2026.4.30</version>
+    <time>1779119219</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.4.30:
+  * Remove FlimboxFbd, FlimboxFbf, and FlimboxFbs (breaking; use
+    fbdfile).
+  * Remove CziFile, NetpbmFile, OifFile, and TiffFile wrappers
+    (breaking).
+  * Add typed __init__ overrides to subclasses with class-
+    specific parameters.
+  * Drop support for numpy 2.0 (SPEC0).</comment>
+    <requestid>1353632</requestid>
+  </revision>
 </revisionlist>

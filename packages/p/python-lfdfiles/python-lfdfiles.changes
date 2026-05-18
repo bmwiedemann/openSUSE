@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 17 21:39:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.4.30:
+  * Remove FlimboxFbd, FlimboxFbf, and FlimboxFbs (breaking; use
+    fbdfile).
+  * Remove CziFile, NetpbmFile, OifFile, and TiffFile wrappers
+    (breaking).
+  * Add typed __init__ overrides to subclasses with class-
+    specific parameters.
+  * Drop support for numpy 2.0 (SPEC0).
+
+-------------------------------------------------------------------
 Sun Apr 26 22:44:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.3.18:
