@@ -87,4 +87,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173294</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b5721868921c3599e0ed8ebef0fd15c2</srcmd5>
+    <version>9.0.1</version>
+    <time>1779119356</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 9.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from pyproject.toml (forwarded request 1353798 from glaubitz)</comment>
+    <requestid>1353808</requestid>
+  </revision>
 </revisionlist>
