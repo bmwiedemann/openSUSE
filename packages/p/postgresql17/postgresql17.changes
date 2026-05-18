@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed May 13 08:26:21 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to version 17.10:
+  * bsc#1265172, CVE-2026-6472: ensure the user has CREATE
+    privilege on the schema specified
+  * bsc#1265173, CVE-2026-6473: integer overflows in
+    memory-allocation calculations
+  * bsc#1265174, CVE-2026-6474: Guard against malicious time zone
+    names
+  * bsc#1265175, CVE-2026-6475: Prevent path traversal in
+    pg_basebackup and pg_rewind
+  * bsc#1265176, CVE-2026-6476: Properly quote subscription names
+    in pg_createsubscriber
+  * bsc#1265177, CVE-2026-6477: Mark PQfn() as unsafe, and avoid
+    using it within libpq
+  * bsc#1265178, CVE-2026-6478: Use timing-safe string comparisons
+    in authentication code
+  * bsc#1265179, CVE-2026-6479: Prevent unbounded recursion while
+    processing startup packets
+  * bsc#1265181, CVE-2026-6637: Prevent SQL injection and buffer
+    overruns in contrib/spi
+  * bsc#1265182, CVE-2026-6638: Properly quote object names in
+    logical replication origin checks
+  * https://www.postgresql.org/docs/release/17.10/
+
+-------------------------------------------------------------------
 Thu Apr 30 12:56:04 UTC 2026 - Reinhard Max <max@suse.com>
 
 - bsc#1263804: After dropping update-alternatives we have to

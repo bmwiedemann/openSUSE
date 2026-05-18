@@ -267,4 +267,12 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
     <comment></comment>
     <requestid>1350841</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>34e6e7cf45b9a908797415770a56ef73</srcmd5>
+    <version>17.10</version>
+    <time>1779119354</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1353818</requestid>
+  </revision>
 </revisionlist>
