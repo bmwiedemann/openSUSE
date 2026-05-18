@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  5 07:31:32 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14.0 (0.014)
+   see /usr/share/doc/packages/perl-IRI/Changes
+
+  0.014  2026-05-04
+
+   - (Update) New version to address bad SIGNATURE in 0.13 release.
+   - (Update) Update Makefile.PL to use GNU tar on MacOS when creating new
+     releases.
+
+-------------------------------------------------------------------
 Mon Sep 30 05:32:43 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.13.0 (0.013)

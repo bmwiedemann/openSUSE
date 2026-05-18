@@ -63,4 +63,17 @@
     <comment></comment>
     <requestid>1235277</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>03ce338ef737712b275bd61b43df7a91</srcmd5>
+    <version>0.14.0</version>
+    <time>1779119285</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.14.0 (0.014)
+   see /usr/share/doc/packages/perl-IRI/Changes
+  0.014  2026-05-04
+   - (Update) New version to address bad SIGNATURE in 0.13 release.
+   - (Update) Update Makefile.PL to use GNU tar on MacOS when creating new
+     releases.</comment>
+    <requestid>1353761</requestid>
+  </revision>
 </revisionlist>
