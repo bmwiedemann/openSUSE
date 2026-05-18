@@ -25,4 +25,22 @@
 - initial package</comment>
     <requestid>1225991</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b10d73d059d57c6cd3291a8009ebc9c</srcmd5>
+    <version>2.0.2</version>
+    <time>1779119210</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.2:
+  * TYP: improve internal type checking (fix errors flagged by
+    basedpyright)
+- update to 2.0.1:
+  * This is a compatibility release for matplotlib &gt;= 3.13
+    (future). The only user-facing changes are
+    avoid deprecation warnings from the development version of
+  * BUG: avoid a deprecation warning from matplotlib 3.11 (dev)
+  * REL: prepare release 2.0.1
+  * **Full Changelog**: https://github.com/yt-
+    project/cmyt/compare/v2.0.0...v2.0.1</comment>
+    <requestid>1353609</requestid>
+  </revision>
 </revisionlist>

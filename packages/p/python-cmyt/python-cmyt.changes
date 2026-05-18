@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 26 21:51:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * TYP: improve internal type checking (fix errors flagged by
+    basedpyright)
+- update to 2.0.1:
+  * This is a compatibility release for matplotlib >= 3.13
+    (future). The only user-facing changes are
+    avoid deprecation warnings from the development version of
+  * BUG: avoid a deprecation warning from matplotlib 3.11 (dev)
+  * REL: prepare release 2.0.1
+  * **Full Changelog**: https://github.com/yt-
+    project/cmyt/compare/v2.0.0...v2.0.1
+
+-------------------------------------------------------------------
 Sat Nov 23 16:59:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip failing test on 32bit platforms

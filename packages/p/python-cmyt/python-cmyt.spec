@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmyt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,24 @@
 
 
 Name:           python-cmyt
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        A collection of Matplotlib colormaps from the yt project
 License:        BSD-3-Clause
 URL:            https://github.com/yt-project/cmyt
-Source:         https://files.pythonhosted.org/packages/source/c/cmyt/cmyt-%{version}.tar.gz
-BuildRequires:  %{python_module colorspacious}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy}
+Source:         https://github.com/yt-project/cmyt/archive/refs/tags/v%{version}.tar.gz#/cmyt-%{version}-gh.tar.gz
+BuildRequires:  %{python_module colorspacious >= 1.1.2}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module matplotlib >= 3.8.0}
+BuildRequires:  %{python_module numpy >= 1.26.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest-mpl}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 6.2.4}
+BuildRequires:  %{python_module pytest-mpl >= 0.13}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-matplotlib
-Requires:       python-numpy
+Requires:       python-matplotlib >= 3.8.0
+Requires:       python-numpy >= 1.26.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,6 +57,8 @@ Matplotlib colormaps from the yt project !
 %pytest -k "not test_overview_to_fig"
 
 %files %{python_files}
+%license LICENSE
+%doc README.md
 %{python_sitelib}/cmyt
 %{python_sitelib}/cmyt-%{version}.dist-info
 
