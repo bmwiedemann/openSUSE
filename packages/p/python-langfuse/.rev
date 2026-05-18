@@ -222,4 +222,16 @@
   * fix(openai): preserve native v1 stream contract</comment>
     <requestid>1349211</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9b1d20c2fe78f942a0ee23c364582a6a</srcmd5>
+    <version>4.6.1</version>
+    <time>1779119223</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.6.1:
+  * feat(ci): add RunnerContext and RegressionError for
+    experiment GH action
+  * ci: allow prerelease branch releases
+  * fix(openai): handle Azure stream chunks without delta</comment>
+    <requestid>1353629</requestid>
+  </revision>
 </revisionlist>

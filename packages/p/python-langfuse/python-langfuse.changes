@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 17 21:13:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.1:
+  * feat(ci): add RunnerContext and RegressionError for
+    experiment GH action
+  * ci: allow prerelease branch releases
+  * fix(openai): handle Azure stream chunks without delta
+
+-------------------------------------------------------------------
 Sat Apr 25 10:20:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.1:
