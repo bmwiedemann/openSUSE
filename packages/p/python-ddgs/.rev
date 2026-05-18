@@ -23,4 +23,37 @@
   * refactor(annasarchive): randomize search domain selection</comment>
     <requestid>1349415</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>67370a4f5d276c4ed4765993dd5afff4</srcmd5>
+    <version>9.14.4</version>
+    <time>1779119208</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.14.4:
+  * fix(engines): update DuckDuckgo
+- update to 9.14.3:
+  * feat(engines): add Startpage
+- update to 9.14.2:
+  * refactor(ddgs): improve engine selection and error handling
+- update to 9.14.1:
+  * fix(engines): disable Google until fixed
+  * build(deps): bump primp to 1.2.3
+- update to 9.14.0:
+  * feat(dht): add beta p2p distributed cache network
+  * DHT distributed peer-to-peer search result cache network
+  * Full libp2p Kademlia implementation
+  * Automatic peer discovery and bootstrap network
+  * Local cache with TTL eviction
+  * REST API endpoints via `ddgs[api]` extra
+- update to 9.13.1:
+  * fix(cli): handle deprecated -k flag and add bing to images
+    backends
+  * fix(base): remove per-element strip in extract_results
+- update to 9.13.0:
+  * feat(engines): add BingImages engine
+  * refactor(api): decouple MCP server from FastAPI
+- update to 9.12.1:
+  * refactor(ddgs): replace global ThreadPoolExecutor with per-
+    call bounded executor</comment>
+    <requestid>1353612</requestid>
+  </revision>
 </revisionlist>

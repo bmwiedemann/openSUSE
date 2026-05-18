@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-ddgs
-Version:        9.12.0
+Version:        9.14.4
 Release:        0
 Summary:        Dux Distributed Global Search. A metasearch library that aggregates results from diverse web search services
 License:        MIT
