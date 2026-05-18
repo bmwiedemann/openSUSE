@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 18 12:32:02 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.6.16
+  CVE fixed:
+  * CVE-2026-44774 (Advisory GHSA-96qj-4jj5-wcjc) - boo#1265372
+
+Bug fixes:
+  * k8s/ingress, k8s/crd, k8s/gatewayapi
+    -  Add CrossProviderNamespaces option
+  * k8s/crd
+    - Fix cross-provider ref check for Kubernetes CRD provider
+
+-------------------------------------------------------------------
 Wed May  6 08:08:16 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.6.16
@@ -18,7 +31,7 @@ Mon May  4 15:29:06 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 - Version 3.6.15
   CVE fixed:
   - CVE fixed:
-    CVE-2026-41181 (Advisory GHSA-p6hg-qh38-555r)
+    CVE-2026-41181 (Advisory GHSA-p6hg-qh38-555r) - boo#1265371
 
 - Bug fixes:
   * acme
