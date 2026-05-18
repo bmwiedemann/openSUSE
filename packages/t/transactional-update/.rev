@@ -1611,4 +1611,14 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
 </comment>
     <requestid>1353466</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>6feaf56b66c8847b55fa97848fc677bd</srcmd5>
+    <version>6.1.1</version>
+    <time>1779119372</time>
+    <user>anag_factory</user>
+    <comment>- Version 6.1.1:
+  * Fix broken rsync command during /etc sync for apply-oci
+</comment>
+    <requestid>1353797</requestid>
+  </revision>
 </revisionlist>

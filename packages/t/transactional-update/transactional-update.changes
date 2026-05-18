@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 18 11:24:16 UTC 2026 - Ignaz Forster <iforster@suse.com>
+
+- Version 6.1.1:
+  * Fix broken rsync command during /etc sync for apply-oci
+
+-------------------------------------------------------------------
 Fri May 15 21:21:28 UTC 2026 - Ignaz Forster <iforster@suse.com>
 
 - Version 6.1.0:
