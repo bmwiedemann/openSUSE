@@ -62,4 +62,28 @@
     - Added support for tool annotations. (d3flex)</comment>
     <requestid>1333898</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>77ff0254793376cf530f2ec6d6fab4f8</srcmd5>
+    <version>0.100.0</version>
+    <time>1779119280</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.100.0 (0.10)
+   see /usr/share/doc/packages/perl-MCP/Changes
+  0.10  2026-05-06
+    - Added opt-in server-to-client streaming and session termination to the HTTP transport. Not compatible with
+      pre-forking web servers.
+    - Added support for list_changed notifications.
+    - Added support for progress notifications.
+    - Added MCP::Primitive class.
+    - Added MCP::Server::Context class.
+    - Added MCP::Server::Session class.
+    - Added heartbeat, session_timeout, sessions, and streaming attributes, and a notify method, to
+      MCP::Server::Transport::HTTP.
+    - Added notify method to MCP::Server::Transport::Stdio.
+    - Added notifications method to MCP::Server::Transport.
+    - Added notify_all method to MCP::Server::Transport::HTTP and MCP::Server::Transport::Stdio.
+    - Added notify_list_changed method to MCP::Server.
+    - Added delete_session method to MCP::Client.</comment>
+    <requestid>1353756</requestid>
+  </revision>
 </revisionlist>

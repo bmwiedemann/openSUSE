@@ -18,10 +18,10 @@
 
 %define cpan_name MCP
 Name:           perl-MCP
-Version:        0.80.0
+Version:        0.100.0
 Release:        0
-# 0.08 -> normalize -> 0.80.0
-%define cpan_version 0.08
+# 0.10 -> normalize -> 0.100.0
+%define cpan_version 0.10
 License:        MIT
 Summary:        Connect Perl with AI using MCP (Model Context Protocol)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -41,9 +41,12 @@ Requires:       perl(Mojolicious) >= 9.410
 Provides:       perl(MCP) = %{version}
 Provides:       perl(MCP::Client)
 Provides:       perl(MCP::Constants)
+Provides:       perl(MCP::Primitive)
 Provides:       perl(MCP::Prompt)
 Provides:       perl(MCP::Resource)
 Provides:       perl(MCP::Server)
+Provides:       perl(MCP::Server::Context)
+Provides:       perl(MCP::Server::Session)
 Provides:       perl(MCP::Server::Transport)
 Provides:       perl(MCP::Server::Transport::HTTP)
 Provides:       perl(MCP::Server::Transport::Stdio)

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May  7 08:03:53 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.100.0 (0.10)
+   see /usr/share/doc/packages/perl-MCP/Changes
+
+  0.10  2026-05-06
+    - Added opt-in server-to-client streaming and session termination to the HTTP transport. Not compatible with
+      pre-forking web servers.
+    - Added support for list_changed notifications.
+    - Added support for progress notifications.
+    - Added MCP::Primitive class.
+    - Added MCP::Server::Context class.
+    - Added MCP::Server::Session class.
+    - Added heartbeat, session_timeout, sessions, and streaming attributes, and a notify method, to
+      MCP::Server::Transport::HTTP.
+    - Added notify method to MCP::Server::Transport::Stdio.
+    - Added notifications method to MCP::Server::Transport.
+    - Added notify_all method to MCP::Server::Transport::HTTP and MCP::Server::Transport::Stdio.
+    - Added notify_list_changed method to MCP::Server.
+    - Added delete_session method to MCP::Client.
+
+-------------------------------------------------------------------
 Wed Feb 18 06:16:48 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.80.0 (0.08)
