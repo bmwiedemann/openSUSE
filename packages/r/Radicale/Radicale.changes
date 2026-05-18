@@ -1,5 +1,94 @@
 -------------------------------------------------------------------
-Thu Dec 18 19:30:57 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+Sun May 10 15:43:09 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Update to 3.7.2
+  * Fix: sharing/csv: quote handling and honor stock encoding
+  * Fix: broken storage/mtime granularity detection on vfat
+  * Improve: path_to_filesystem() by pre-detection of collision-free file system
+  * Improve: [auth] catch bcrypt>=5.0.0 enforced max password length early and support legacy "passlib" as well as "libpass" (rework 3.6.0, "packaging" not needed anymore)
+  * Improve: application will stop on startup if TEMP is provided but not existing or not writable
+  * Improve: sharing supports now unicode
+  * Improve: WebUI (general and relating to sharing)
+  * Adjustment: MKCOL/MKCALENDAR return now CONFLICT instead of BADREQUEST of file name collision
+  * Adjust: several log levels incl. final result depending on status code
+  * Adjust: respond with 500 in case principal collection cannot be created (e.g. filesystem issues)
+  * Extension: tox with new optional test cases to test with LinuxOS vfat, hfsplus, ntfs filesystems
+  * Extension: sharing: add ICAL:calendar-order to property overlay whitelist
+  * Extension: extend hook data with 'actor' to keep original 'user' before mapping a share
+  * Add: [server] new options validate_user_value/validate_path_value for ability to block unwanted values (autoenable "strict" on non-unicode filesystem) 
+
+-------------------------------------------------------------------
+Sun Apr 12 06:33:27 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Update to 3.7.1
+  * Fix: share address book collection as birthday calendar not working on non-DEBUG level
+  * Fix: sharing/propfind+proppatch: permission check related to properties
+  * Fix: sharing/delete: trigger storage hook
+  * Fix: hook/email: add support for date-only events
+  * Fix: prevent login variable overwrite during failed cache cleanup
+  * Fix: performance improvement of path_to_filesystem() in 3.7.0 caused unexpected issue in case of softlinks are used
+  * Fix: WebUI generic and related to sharing
+  * Adjustment: replace logging/trace_on_debug by new log level "trace"
+  * Adjustment: sharing/token: adjust default permissions to "rp"
+  * Extension: hook/email: in case of mass-email was enabled but only one attendee fall-back to non-mass-email
+  * Extension: share accept now PATH and USER for matching email addresses as well
+
+- Changelog from 3.7.0 (was not packaged due to major bugs)
+  * Feature: collection sharing by map or token incl. management API and WebUI extension (#1978)
+    see for more: (https://github.com/Kozea/Radicale/blob/master/SHARING.md)
+    major credits to @maxberger for WebUI extension/rework/cleanup
+  * Feature: share address book collection as birthday calendar (#1463)
+    * KNOWN ISSUE: not working on non-debug level: #2071
+  * Add: [server] delay_on_error option
+  * Add: [auth] oauth2: allow custom client_id and client_secret (optional)
+  * Add: [logging] limit_content option
+  * Add: [headers] Content-Security-Policy is now set to be strict on new configs
+  * Performance: improve path_to_filesystem()
+  * Performance: preload access rights from file
+  * Improve: [server] max_resource_size is now also checked on storage discover+get to avoid issues with items stored outside using PUT
+  * Improve: hook preparation (check whether enabled, early skip if not VCALENDAR)
+  * Cleanup: WebUI is now split into smaller javascript files
+  * Cleanup: WebUI is now fit for strict content security policy
+  * Cleanup: WebUI: Simplfied Caching and Navigation internally
+  * Cleanup: WebUI: Unified error handling
+  * Cleanup: Added integration test for verification of end-to-end behavior of WebUI
+  * Cleanup: deprecate config option 'ldap_use_ssl' for good
+
+-------------------------------------------------------------------
+Wed Feb 25 13:46:51 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Update to 3.6.1
+  * Maintain: Refactor Web UI Javascript into separate files
+  * Maintain: code preparation for upcoming "sharing" extension and optimizations
+  * Fix: MOVE failing with URL-encoded destination header
+  * Fix: RECURRENCE-ID comparison on all-day events
+  * Fix: format_ut problem on 32-bit systems (got lost inbetween since fixed in 3.5.8)
+  * Improve: add workaround to remove empty lines in item to avoid reject by vobject parser
+  * Improve: check/enforce RECURRENCE-ID MUST have the same value type as DTSTART in the recurring component (RFC 5545 3.8.4.4)
+
+-------------------------------------------------------------------
+Fri Feb 13 07:53:03 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Fix 32 bit tests and make the package available there, too
+
+-------------------------------------------------------------------
+Tue Feb 10 20:53:12 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- passlib → libpass change didn't take effect because of https://github.com/Kozea/Radicale/issues/1980
+- Update to 3.6.0
+  * Change: dependency PyPI/passlib (stale since 2020) replaced with PyPI/libpass >= 1.9.3
+  * Extend: logwatch script
+  * Extend: [logging] bad_put_request_content: log checksum and hexdump of request on debug level
+  * Extend: [logging] request_content_on_debug: log checksum of request on debug level
+  * Extend: add command line option "--verify-item " for dedicated item file analysis
+  * Extend: PROPFIND response for VADDRESSBOOK with "CR:supported-address-data" and "CS:getctag"
+  * Extend: conditionally announce vCard 4.0 in case vobject version is >= 1.0.0
+  * Extend: add a check whether bcrypt version is compatible with passlib(libpass) version (requires "packaging")
+  * Fix: hook for server-side e-mail notification
+  * Improve: autodetection of hashes in htpasswd (SHA256/SHA512 "rounds" are now supported)
+
+-------------------------------------------------------------------
+Thu Dec 18 19:30:57 UTC 2025 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.5.10
   * Add: [logging] option to log response header on debug loglevel
@@ -14,18 +103,18 @@ Thu Dec 18 19:30:57 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
   * Improve: logging of broken calendar items during PUT
   * Improve: remove unnecessary open+read for mtime+size cache
   * Fix: improper detection of HTTP_X_FORWARDED_PORT on MOVE
-  * Adjust: [logging] header/content debug log indended by space to be skipped by logwatch 
+  * Adjust: [logging] header/content debug log indended by space to be skipped by logwatch
 
 -------------------------------------------------------------------
-Mon Dec  1 08:40:59 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+Mon Dec  1 08:40:59 UTC 2025 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.5.9
   * Extend: [auth] add support for type http_remote_user
   * Extend: logging of invalid sync-token with user, path, remote host and useragent
-  * Fix: typo related to collection delete hook (can cause OOM error) 
+  * Fix: typo related to collection delete hook (can cause OOM error)
 
 -------------------------------------------------------------------
-Sun Nov  9 11:44:40 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+Sun Nov  9 11:44:40 UTC 2025 - Ákos Szőts <akos@szots.dev>
 
 - Enable Argon2 support for testing and as a recommendation
 - Update to 3.5.8
@@ -37,7 +126,7 @@ Sun Nov  9 11:44:40 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
   * Doc: Telugu translation
 
 -------------------------------------------------------------------
-Sun Sep 28 09:11:54 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+Sun Sep 28 09:11:54 UTC 2025 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.5.7
   * Extend: [auth] dovecot: add support for version >= 2.4
@@ -45,7 +134,7 @@ Sun Sep 28 09:11:54 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
   * Adjust: use of option [auth] ldap_ignore_attribute_create_modify_timestamp for support of Authentik LDAP server
 
 -------------------------------------------------------------------
-Wed Sep 17 15:02:38 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+Wed Sep 17 15:02:38 UTC 2025 - Ákos Szőts <akos@szots.dev>
 
 - Use the provided "rights" example file as the base config file (instead of an empty one)
 - Update to 3.5.6
@@ -55,7 +144,7 @@ Wed Sep 17 15:02:38 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
   * Add: [auth] remote_ip_source: set the remote IP source for auth algorithms
 
 -------------------------------------------------------------------
-Fri Aug 22 07:57:21 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+Fri Aug 22 07:57:21 UTC 2025 - Ákos Szőts <akos@szots.dev>
 
 - Set "radicale" as the syslog identifier (replacing the generic "python3") when started via systemd
 - Update to 3.5.5
@@ -77,14 +166,14 @@ Fri Aug 22 07:57:21 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
   * Add: storage hook placeholder now supports "request" and "to_path" (MOVE only)
 
 -------------------------------------------------------------------
-Wed May 28 20:02:32 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+Wed May 28 20:02:32 UTC 2025 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.5.4
   * item filter enhanced for 3rd level supporting VALARM and honoring TRIGGER (offset or absolute)
   * add Caddy config file example (see contrib directory)
 
 -------------------------------------------------------------------
-Wed May 21 06:40:59 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+Wed May 21 06:40:59 UTC 2025 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.5.3
   * Add: [auth] htpasswd: support for Argon2 hashes
@@ -92,7 +181,7 @@ Wed May 21 06:40:59 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
   * Improve: catch error on calendar collection upload and display problematic item content on debug level
 
 -------------------------------------------------------------------
-Thu May  1 06:31:41 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+Thu May  1 06:31:41 UTC 2025 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.5.2
   * Adjust: [auth] ldap: use ldap_user_attr either first element of list or directly
@@ -102,7 +191,7 @@ Thu May  1 06:31:41 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
   * Extend: log PYTHONPATH on startup if found in environment
 
 -------------------------------------------------------------------
-Wed Apr 16 05:51:57 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+Wed Apr 16 05:51:57 UTC 2025 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.5.1
   * Add: option [auth] ldap_ignore_attribute_create_modify_timestamp for support of Authentik LDAP server
@@ -140,7 +229,7 @@ Sat Mar 22 23:36:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 - Remove Radicale.rpmlintrc, as that is not needed anymore
 
 -------------------------------------------------------------------
-Mon Jan 13 21:00:07 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+Mon Jan 13 21:00:07 UTC 2025 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.4.0
   * Add: option [auth] cache_logins/cache_successful_logins_expiry/cache_failed_logins for caching logins
@@ -180,7 +269,7 @@ Mon Jan 13 21:00:07 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
   * Improve: auth.ldap config shown on startup, terminate in case no password is supplied for bind user
 
 -------------------------------------------------------------------
-Wed Nov 27 14:00:09 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
+Wed Nov 27 14:00:09 UTC 2024 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.3.1
   * Add: option [auth] type=dovecot
@@ -202,7 +291,7 @@ Wed Nov 27 14:00:09 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
   * Cleanup: Python 3.7 leftovers
 
 -------------------------------------------------------------------
-Fri Aug 30 04:42:28 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
+Fri Aug 30 04:42:28 UTC 2024 - Ákos Szőts <akos@szots.dev>
 
 - Cleaned up unnecessary BuildRequires
 - Update to 3.2.3
@@ -218,7 +307,7 @@ Fri Aug 30 04:42:28 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
   * Improve: Refactored some date parsing code
 
 -------------------------------------------------------------------
-Tue Jun 18 17:37:27 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
+Tue Jun 18 17:37:27 UTC 2024 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.2.2
   * Enhancement: add support for auth.type=denyall (will be default for security reasons in upcoming releases)
@@ -232,7 +321,7 @@ Tue Jun 18 17:37:27 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
   * Fix: "verify-collection" skips non-collection directories, logging improved
 
 -------------------------------------------------------------------
-Fri Jun  7 07:20:17 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
+Fri Jun  7 07:20:17 UTC 2024 - Ákos Szőts <akos@szots.dev>
 
 - Filtered out false positive rpmlint error message
 - Update to 3.2.1
@@ -243,7 +332,7 @@ Fri Jun  7 07:20:17 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
   * Test: update/adjustments for workflows (pytest>=7, typeguard<4.3)
 
 -------------------------------------------------------------------
-Sun May  5 10:21:51 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
+Sun May  5 10:21:51 UTC 2024 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.2.0
   * Enhancement: add hook support for event changes+deletion hooks (initial support: "rabbitmq")
@@ -256,7 +345,7 @@ Sun May  5 10:21:51 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
   * Fix: allow quoted-printable encoding for vObjects
 
 -------------------------------------------------------------------
-Mon Mar 18 08:22:57 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
+Mon Mar 18 08:22:57 UTC 2024 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.1.9
   * Add: support for Python 3.11 + 3.12
@@ -279,12 +368,12 @@ Mon Mar 18 08:22:57 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
   * General: code cosmetics
 
 -------------------------------------------------------------------
-Sun Jan 15 10:06:31 UTC 2023 - Ákos Szőts <szotsaki@gmail.com>
+Sun Jan 15 10:06:31 UTC 2023 - Ákos Szőts <akos@szots.dev>
 
 - Security fortifications (provided by systemd)
 
 -------------------------------------------------------------------
-Thu Jul 14 22:11:43 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
+Thu Jul 14 22:11:43 UTC 2022 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.1.8
   * Fix setuptools requirement if installing wheel
@@ -292,7 +381,7 @@ Thu Jul 14 22:11:43 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
   * Small changes to build system configuration and tests
 
 -------------------------------------------------------------------
-Wed Jun 22 18:47:02 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
+Wed Jun 22 18:47:02 UTC 2022 - Ákos Szőts <akos@szots.dev>
 
 - Add python passlib as a recommendation as it is needed for
   htpasswd authentication
@@ -303,7 +392,7 @@ Mon Jun 13 10:37:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 - Trim filler wording from descriptions.
 
 -------------------------------------------------------------------
-Mon Apr 25 06:20:20 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
+Mon Apr 25 06:20:20 UTC 2022 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.1.7
   * Fix random href fallback
@@ -317,7 +406,7 @@ Tue Apr 19 09:30:05 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
     case-insensitive filesystem
 
 -------------------------------------------------------------------
-Tue Feb  8 22:20:29 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
+Tue Feb  8 22:20:29 UTC 2022 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.1.5
   * Ignore configuration file if access is denied
@@ -325,21 +414,21 @@ Tue Feb  8 22:20:29 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
   * Fallback if F_FULLFSYNC is not supported by the filesystem
 
 -------------------------------------------------------------------
-Tue Feb  1 22:00:25 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
+Tue Feb  1 22:00:25 UTC 2022 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.1.4
   * Fallback if RENAME_EXCHANGE is not supportd by the filesystem
   * Assume POSIX compatibility if sys.platform is not win32
 
 -------------------------------------------------------------------
-Wed Jan 26 22:09:11 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
+Wed Jan 26 22:09:11 UTC 2022 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.1.3
   * Redirect '…/.well-known/caldav' and '…/.well-known/carddav' to base prefix
   * Warning instead of error when base prefix ends with '/'
 
 -------------------------------------------------------------------
-Sat Jan 22 07:29:12 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
+Sat Jan 22 07:29:12 UTC 2022 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.1.2
   * Verify that base prefix starts with '/' but doesn't end with '/'
@@ -347,7 +436,7 @@ Sat Jan 22 07:29:12 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
   * Never send body for HEAD requests (again)
 
 -------------------------------------------------------------------
-Wed Jan 19 17:01:23 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
+Wed Jan 19 17:01:23 UTC 2022 - Ákos Szőts <akos@szots.dev>
 
 - Minimum Python version changed from 3.6.0 to 3.6 to be able to
   compile it on Leap 15.3 and 15.2
@@ -360,14 +449,14 @@ Wed Jan 19 17:01:23 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
   * Don't sanitize WSGI script name
 
 -------------------------------------------------------------------
-Mon Jan  3 09:47:24 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
+Mon Jan  3 09:47:24 UTC 2022 - Ákos Szőts <akos@szots.dev>
 
 - Fix download URL
   * This release contains a "v" in front of the version number
     in the URL
 
 -------------------------------------------------------------------
-Mon Dec 27 08:23:49 UTC 2021 - Ákos Szőts <szotsaki@gmail.com>
+Mon Dec 27 08:23:49 UTC 2021 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.1.0
   * Single <D:propstat> element in PROPPATCH response
@@ -397,41 +486,41 @@ Tue Sep 28 07:06:52 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
   not like them [bsc#1190203]
 
 -------------------------------------------------------------------
-Sun Aug 22 07:31:36 UTC 2021 - Ákos Szőts <szotsaki@gmail.com>
+Sun Aug 22 07:31:36 UTC 2021 - Ákos Szőts <akos@szots.dev>
 
 - Add firewalld service description for Radicale
   Based on the previous work of Martin Haas <sandrick@seznam.cz>
 
 -------------------------------------------------------------------
-Sun Aug 22 06:56:19 UTC 2021 - Ákos Szőts <szotsaki@gmail.com>
+Sun Aug 22 06:56:19 UTC 2021 - Ákos Szőts <akos@szots.dev>
 
 - Migrate legacy user creation to sysusers.d(5)
 
 -------------------------------------------------------------------
-Sat Jun 19 07:40:36 UTC 2021 - Ákos Szőts <szotsaki@gmail.com>
+Sat Jun 19 07:40:36 UTC 2021 - Ákos Szőts <akos@szots.dev>
 
 - Fix error message "Address family for hostname not supported" (EAFNOSUPPORT)
   when trying to bind to a non-loopback address during startup
 
 -------------------------------------------------------------------
-Sat Apr 3 10:21:00 UTC 2021 - Ákos Szőts <szotsaki@gmail.com>
+Sat Apr 3 10:21:00 UTC 2021 - Ákos Szőts <akos@szots.dev>
 
 - Remove code for v1 -> v2/v3 upgrading since v1 times are long gone
 
 -------------------------------------------------------------------
-Thu Dec 10 10:18:57 UTC 2020 - Ákos Szőts <szotsaki@gmail.com>
+Thu Dec 10 10:18:57 UTC 2020 - Ákos Szőts <akos@szots.dev>
 
 - Remove %{?systemd_requires} macro as it is not always needed
 - Give full path of the interpreter in the .service file as a security hardening
 - URL update for upgrading from v1.x
 
 -------------------------------------------------------------------
-Thu Oct  8 19:32:00 UTC 2020 - Ákos Szőts <szotsaki@gmail.com>
+Thu Oct  8 19:32:00 UTC 2020 - Ákos Szőts <akos@szots.dev>
 
 - Removed Radicale.logrotate since there's no /var/log/radicale anymore
 
 -------------------------------------------------------------------
-Tue Sep 15 06:25:11 UTC 2020 - Ákos Szőts <szotsaki@gmail.com>
+Tue Sep 15 06:25:11 UTC 2020 - Ákos Szőts <akos@szots.dev>
 
 - Radicale 3.0.6
   * Allow web plugins to handle POST requests
@@ -440,7 +529,7 @@ Tue Sep 15 06:25:11 UTC 2020 - Ákos Szőts <szotsaki@gmail.com>
 - Add DOCUMENTATION.md into %doc
 
 -------------------------------------------------------------------
-Fri Sep 11 07:29:30 UTC 2020 - Ákos Szőts <szotsaki@gmail.com>
+Fri Sep 11 07:29:30 UTC 2020 - Ákos Szőts <akos@szots.dev>
 
 - Start using openSUSE built-in python packaging scripts
 - Wait with startup until network comes online. This helps the
@@ -498,7 +587,7 @@ Wed May 20 11:51:18 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 See https://github.com/Kozea/Radicale/blob/master/NEWS.md for more info.
 
 -------------------------------------------------------------------
-Thu Nov 29 10:10:46 UTC 2018 - Ákos Szőts <szotsaki@gmail.com>
+Thu Nov 29 10:10:46 UTC 2018 - Ákos Szőts <akos@szots.dev>
 
 - Added python3-systemd for direct systemd journal logging
 - Upgrade messages from 1 to 2 now appear in update logs and shown after transaction
@@ -507,7 +596,7 @@ Thu Nov 29 10:10:46 UTC 2018 - Ákos Szőts <szotsaki@gmail.com>
   * Fix moving items between collections
 
 -------------------------------------------------------------------
-Wed Aug 29 17:51:59 UTC 2018 - szotsaki@gmail.com
+Wed Aug 29 17:51:59 UTC 2018 - akos@szots.dev
 
 - Radicale 2.1.10
   * Update required versions for dependencies
@@ -518,7 +607,7 @@ Wed Aug 29 17:51:59 UTC 2018 - szotsaki@gmail.com
   * Log output from hook
 
 -------------------------------------------------------------------
-Sun Apr 22 10:32:26 UTC 2018 - szotsaki@gmail.com
+Sun Apr 22 10:32:26 UTC 2018 - akos@szots.dev
 
 - Radicale 2.1.9
   * Specify versions for dependencies
@@ -530,7 +619,7 @@ Sun Apr 22 10:32:26 UTC 2018 - szotsaki@gmail.com
   * Windows: Fix crash when item path is a directory
 
 -------------------------------------------------------------------
-Sun Sep 24 06:07:41 UTC 2017 - szotsaki@gmail.com
+Sun Sep 24 06:07:41 UTC 2017 - akos@szots.dev
 
 - Radicale 2.1.8
   * Flush files before fsync'ing
@@ -548,7 +637,7 @@ Sun Sep 24 06:07:41 UTC 2017 - szotsaki@gmail.com
   * Remove D:getetag and D:getlastmodified properties from regular collections
 
 -------------------------------------------------------------------
-Sat Sep 16 19:59:41 UTC 2017 - szotsaki@gmail.com
+Sat Sep 16 19:59:41 UTC 2017 - akos@szots.dev
 
 - Radicale 2.1.6
   * Fix content-type of VLIST
@@ -561,7 +650,7 @@ Sat Sep 16 19:59:41 UTC 2017 - szotsaki@gmail.com
   * Use X-WR-CALNAME and X-WR-CALDESC from calendars published via WebDAV
 
 -------------------------------------------------------------------
-Mon Aug 28 04:42:45 UTC 2017 - szotsaki@gmail.com
+Mon Aug 28 04:42:45 UTC 2017 - akos@szots.dev
 
 - Radicale 2.1.5
   * Add --verify-storage command-line argument
@@ -572,7 +661,7 @@ Mon Aug 28 04:42:45 UTC 2017 - szotsaki@gmail.com
   * Show warning message if server.timeout is used with Python < 3.5.2
 
 -------------------------------------------------------------------
-Mon Aug  7 03:13:45 UTC 2017 - szotsaki@gmail.com
+Mon Aug  7 03:13:45 UTC 2017 - akos@szots.dev
 
 - Radicale 2.1.4
   * Fix incorrect time range matching and calculation for some edge-cases with rescheduled recurrences
@@ -585,7 +674,7 @@ Mon Aug  7 03:13:45 UTC 2017 - szotsaki@gmail.com
   * Prevent slow down when multiple requests hit a collection during cache warm-up
 
 -------------------------------------------------------------------
-Tue Jul 25 05:08:35 UTC 2017 - szotsaki@gmail.com
+Tue Jul 25 05:08:35 UTC 2017 - akos@szots.dev
 
 - Radicale 2.1.2
   * Remove workarounds for bugs in VObject < 0.9.5
@@ -595,7 +684,7 @@ Tue Jul 25 05:08:35 UTC 2017 - szotsaki@gmail.com
   * Improve logging of VObject serialization
 
 -------------------------------------------------------------------
-Sat Jul  1 16:16:29 UTC 2017 - szotsaki@gmail.com
+Sat Jul  1 16:16:29 UTC 2017 - akos@szots.dev
 
 - Radicale 2.1.1
   * Add missing UIDs instead of failing
@@ -652,18 +741,18 @@ Sat Jul  1 16:16:29 UTC 2017 - szotsaki@gmail.com
     version control
 
 -------------------------------------------------------------------
-Mon Jun 26 20:30:05 UTC 2017 - szotsaki@gmail.com
+Mon Jun 26 20:30:05 UTC 2017 - akos@szots.dev
 
 - Radicale 1.1.4
 - Use shutil.move for --export-storage
 
-Sat May 27 13:18:20 UTC 2017 - szotsaki@gmail.com
+Sat May 27 13:18:20 UTC 2017 - akos@szots.dev
 
 - Radicale 1.1.3
 - Add a --export-storage=FOLDER command-line argument (by Unrud, see #606)
 
 -------------------------------------------------------------------
-Mon May  1 08:48:53 UTC 2017 - szotsaki@gmail.com
+Mon May  1 08:48:53 UTC 2017 - akos@szots.dev
 
 - Radicale 1.1.2
 - Security fix: Add a random timer to avoid timing oracles and simple bruteforce attacks when using the htpasswd authentication method.
@@ -686,13 +775,13 @@ Sun Apr 24 10:04:38 UTC 2016 - bosim@opensuse.org
 - Added python3 requirement
 
 -------------------------------------------------------------------
-Fri Jan 15 09:22:21 UTC 2016 - szotsaki@gmail.com
+Fri Jan 15 09:22:21 UTC 2016 - akos@szots.dev
 
 - Radicale 1.1.1
 - Fix the owner_write rights rule
 
 -------------------------------------------------------------------
-Fri Jan  1 12:39:18 UTC 2016 - szotsaki@gmail.com
+Fri Jan  1 12:39:18 UTC 2016 - akos@szots.dev
 
 - Radicale 1.1
 - Improve the regex used for well-known URIs (by Unrud)
@@ -707,7 +796,7 @@ Fri Jan  1 12:39:18 UTC 2016 - szotsaki@gmail.com
 - Test with Python 3.5
 
 -------------------------------------------------------------------
-Fri Sep 18 18:18:55 UTC 2015 - szotsaki@gmail.com
+Fri Sep 18 18:18:55 UTC 2015 - akos@szots.dev
 
 - Radicale 1.0
 - Enhanced performances (by Mathieu Dupuy)
@@ -718,7 +807,7 @@ Fri Sep 18 18:18:55 UTC 2015 - szotsaki@gmail.com
 - Tests launched on Travis
 
 -------------------------------------------------------------------
-Wed Jan 21 08:33:41 UTC 2015 - szotsaki@gmail.com
+Wed Jan 21 08:33:41 UTC 2015 - akos@szots.dev
 
 - Radicale 0.10
 - Support well-known URLs (by Mathieu Dupuy)
@@ -729,7 +818,7 @@ Wed Jan 21 08:33:41 UTC 2015 - szotsaki@gmail.com
 - Don't spam the logs about non-SSL IMAP connections to localhost (by Giel van Schijndel)
 
 -------------------------------------------------------------------
-Fri Oct 24 15:23:43 UTC 2014 - szotsaki@gmail.com
+Fri Oct 24 15:23:43 UTC 2014 - akos@szots.dev
 
 - Radicale 0.9
 - Custom handlers for auth, storage and rights (by Sergey Fursov)
@@ -748,19 +837,19 @@ Fri Oct 24 15:23:43 UTC 2014 - szotsaki@gmail.com
 - Allow requests without base_prefix (by jheidemann)
 
 -------------------------------------------------------------------
-Fri Aug  8 19:34:27 UTC 2014 - szotsaki@gmail.com
+Fri Aug  8 19:34:27 UTC 2014 - akos@szots.dev
 
 - Adding missing config/log files and directories
 - Adding logrotate script
 - Fixing bnc#890094
 
 --------------------------------------------------------------------
-Fri Aug  8 18:02:22 UTC 2014 - szotsaki@gmail.com
+Fri Aug  8 18:02:22 UTC 2014 - akos@szots.dev
 
 - Addressing an issue when creating new groups and users for Radicale (bnc#890093)
 
 --------------------------------------------------------------------
-Wed Sep 25 08:15:49 UTC 2013 - szotsaki@gmail.com
+Wed Sep 25 08:15:49 UTC 2013 - akos@szots.dev
 
 - Radicale 0.8
 - New authentication and rights management modules (by Matthias Jordan)
@@ -773,7 +862,7 @@ Wed Sep 25 08:15:49 UTC 2013 - szotsaki@gmail.com
 - Configurable realm message
 
 -------------------------------------------------------------------
-Thu Sep 27 08:55:00 UTC 2012 - szotsaki@gmail.com
+Thu Sep 27 08:55:00 UTC 2012 - akos@szots.dev
 
 - branch from mrueckert version (thank you for the .spec file)
 - Radicale 0.7.1

@@ -1,8 +1,8 @@
 #
 # spec file for package Radicale
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2012-2025 Ákos Szőts <szotsaki@gmail.com>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2012-2026 Ákos Szőts <akos@szots.dev>
 # Copyright (c) 2011 Marcus Rueckert <darix@opensu.se>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,18 +22,19 @@
 %define pkg_config     %{_sysconfdir}/%{pkg_name}
 %define pkg_home       %{_localstatedir}/lib/%{pkg_name}
 %define pkg_user_group %{pkg_name}
-%define py_min_ver 3.9
-%define vo_min_ver 0.9.6
 %define pk_min_ver 1.1.0
 %define pt_min_ver 7
+%define st_min_ver 61.2
+%define py_min_ver 3.9
+%define vo_min_ver 0.9.6
 Name:           Radicale
-Version:        3.5.10
+Version:        3.7.2
 Release:        0
 Summary:        A CalDAV calendar and CardDav contact server
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://www.radicale.org/
-Source:         https://github.com/Kozea/Radicale/archive/v%{version}.tar.gz
+Source:         https://github.com/Kozea/Radicale/archive/v%{version}.tar.gz#/Radicale-%{version}.tar.gz
 Source1:        radicale.service
 Source2:        system-user-%{pkg_user_group}.conf
 Source3:        radicale.firewalld
@@ -45,10 +46,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-argon2-cffi
 BuildRequires:  python3-bcrypt
 BuildRequires:  python3-defusedxml
+BuildRequires:  python3-ldap3
 BuildRequires:  python3-passlib
-BuildRequires:  python3-pika
+BuildRequires:  python3-pika >= %{pk_min_ver}
 BuildRequires:  python3-pytest >= %{pt_min_ver}
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools >= %{st_min_ver}
 BuildRequires:  python3-vobject >= %{vo_min_ver}
 BuildRequires:  python3-waitress
 BuildRequires:  systemd-rpm-macros
@@ -82,6 +84,10 @@ Radicale is a server for CalDAV (calendars, to-do lists) and CardDAV (contacts).
 %prep
 %autosetup
 test -f setup.py || echo 'import setuptools; setuptools.setup()' > setup.py
+
+# Restore "passlib" requirement until libpass files for PEP 541
+# https://github.com/Kozea/Radicale/issues/1980
+sed -i 's|libpass[^"]*|passlib|' pyproject.toml
 
 %build
 %python3_build
@@ -120,6 +126,7 @@ test -e %{pkg_config}/users  || touch %{pkg_config}/users
 
 %postun
 %service_del_postun %{pkg_name}.service
+%firewalld_reload
 
 %files
 %license COPYING.md
