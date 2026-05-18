@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  5 07:30:55 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.200.0 (0.20)
+   see /usr/share/doc/packages/perl-HTTP-Tinyish/Changes
+
+  0.20  2026-05-04 09:50:45 PDT
+          - Fix mirror() in Curl and Wget backends to not create a local file on
+            failed HTTP requests, matching HTTP::Tiny's behavior. Fixes #27
+          - Fix Wget mirror() to properly return HTTP error status codes (e.g. 404)
+            instead of converting them to 599 internal errors
+
+-------------------------------------------------------------------
 Fri Mar 22 16:12:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.19

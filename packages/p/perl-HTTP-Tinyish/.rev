@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>1165832</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a2d9e3a56808ccdd98422d859e31887b</srcmd5>
+    <version>0.200.0</version>
+    <time>1779119281</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.200.0 (0.20)
+   see /usr/share/doc/packages/perl-HTTP-Tinyish/Changes
+  0.20  2026-05-04 09:50:45 PDT
+          - Fix mirror() in Curl and Wget backends to not create a local file on
+            failed HTTP requests, matching HTTP::Tiny's behavior. Fixes #27
+          - Fix Wget mirror() to properly return HTTP error status codes (e.g. 404)
+            instead of converting them to 599 internal errors</comment>
+    <requestid>1353757</requestid>
+  </revision>
 </revisionlist>

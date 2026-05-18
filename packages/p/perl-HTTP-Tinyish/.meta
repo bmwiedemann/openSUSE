@@ -4,5 +4,4 @@
 
 It provides an API compatible to HTTP::Tiny, and the implementation has been extracted out of App::cpanminus. This module can be useful in a restrictive environment where you need to be able to download CPAN modules without an HTTPS support in built-in HTTP library.
 </description>
-  <devel project="devel:languages:perl" package="perl-HTTP-Tinyish"/>
 </package>
