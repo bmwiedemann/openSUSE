@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon May 18 12:30:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.94:
+  * Added
+    - md080: add heading-anchor-collision rule (df9146d)
+  * Fixed
+    - docs: match unwrapped 'N lint rules' counts in guard
+      (8a768bf)
+    - docs: make rule-count guard fail on unwrapped counts
+      (07226b8)
+    - md049: neutralize inline-code dollars before math filtering
+      (28a73dd)
+    - md049,md080: code-block-aware math filter; mark MD080
+      unfixable (49e1150)
+    - math: drop unmatched line-start $$ opener instead of
+      swallowing document (f02f63f)
+    - math: unify $$ math model across rules and make MD049
+      byte-accurate (bf05e5c)
+    - math: align line map with byte model for multi-pair dollar
+      lines (1a21816)
+    - align math line map with byte model; run heading rules for
+      blockquote-only docs (444482b)
+    - md080: mirror MD051 anchor model instead of per-rule HTML
+      guards (e38730d)
+    - md080: allow markdown-enabled HTML blocks through the skip
+      (7d48cb7)
+    - md080: skip blockquote headings inside HTML blocks (334d301)
+    - md080: address codex review findings (cb5acc3)
+    - math: close line-level math state at the fence, ignore prose
+      $$ (540b624)
+    - math: require line-start opener for $$ display blocks
+      (89e1a60)
+    - math: close $$ display blocks when fence shares a line with
+      content (f839492)
+  * Performance
+    - md049: binary-search merged math ranges for membership
+      (feafbf8)
+    - md049: precompute math ranges once instead of per span
+      (00d3a83)
+
+-------------------------------------------------------------------
+Fri May 15 11:15:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.93:
+  * Added
+    - quarto: add MD078 missing-chunk-labels and MD079
+      chunk-label-spaces (818cba4)
+  * Fixed
+    - md079: flag whitespace in quoted positional chunk labels
+      (ea069c5)
+    - quarto: harden chunk header parser against codex review
+      findings (9ee8e28)
+    - test: drive pipeline idempotency tests through real fix
+      coordinator (5f9fdb9)
+    - test: remove redundant default on MD077 unit struct (6b383b0)
+
+-------------------------------------------------------------------
 Fri May 15 07:20:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.92:
