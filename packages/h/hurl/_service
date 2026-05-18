@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">8.0.0</param>
-    <param name="changesgenerate">enable</param>
+    <param name="revision">8.0.1</param>
+    <param name="changesgenerate">disable</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

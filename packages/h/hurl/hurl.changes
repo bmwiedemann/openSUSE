@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  6 19:30:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.0.1:
+  * Bugs Fixed:
+    - Support _ in jsonpath member name shorthand #4995
+
+-------------------------------------------------------------------
 Fri May  1 10:34:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - ignore failing tests simple_sample and runner::hurl_file::run that
@@ -84,54 +91,54 @@ Fri Aug 01 12:54:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 7.0.0:
   * Breaking Changes:
-    - Add replaceRegex filter and fix replace filter to not take
-      regex #4018
+	- Add replaceRegex filter and fix replace filter to not take
+	  regex #4018
   * Enhancements:
-    - Add query for HTTP redirects #922
-    - Add urlQueryParam filter #2199
-    - Show curl command when error format option is set to long
-      #2226
-    - Add option to configure max-time per request #3162
-    - Add date comparison predicates #3480
-    - Add pinnedpubkey cli option #3563
-    - Add base64 url safe encode and decode filters #3840
-    - parse curl's --cookie flag #3877
-    - Show hurl --help with color #3882
-    - Add toHex filter #3963
-    - Add first and last filters #3998
-    - Remove hex crate dependency #4011
-    - Small tweaks to --test progress output #4028
-    - Add support for negative values for nth filter #4050
-    - Add option to configure pinnedpubkey per request #4084
-    - Add timeline link on status label in source and run pages
-      #4128
-    - Support template in nth filter parameter #4152
-    - Implement predicate isUuid #4179
-    - Improve captures error messages when filter chain returned no
-      value #4214
-    - Add --ntlm cli option #4216
-    - Add --negotiate option #4246
+	- Add query for HTTP redirects #922
+	- Add urlQueryParam filter #2199
+	- Show curl command when error format option is set to long
+	  #2226
+	- Add option to configure max-time per request #3162
+	- Add date comparison predicates #3480
+	- Add pinnedpubkey cli option #3563
+	- Add base64 url safe encode and decode filters #3840
+	- parse curl's --cookie flag #3877
+	- Show hurl --help with color #3882
+	- Add toHex filter #3963
+	- Add first and last filters #3998
+	- Remove hex crate dependency #4011
+	- Small tweaks to --test progress output #4028
+	- Add support for negative values for nth filter #4050
+	- Add option to configure pinnedpubkey per request #4084
+	- Add timeline link on status label in source and run pages
+	  #4128
+	- Support template in nth filter parameter #4152
+	- Implement predicate isUuid #4179
+	- Improve captures error messages when filter chain returned no
+	  value #4214
+	- Add --ntlm cli option #4216
+	- Add --negotiate option #4246
   * Bugs Fixed:
-    - Fix incorrect curl command for POST redirect #2797
-    - Fix hurlfmt to disallow invalid header argument in curl
-      command #3668
-    - Parse verbose flag in curl command #3760
-    - Keep secret value forever, even if a secret variable override
-      an existing one #3898
-    - Fix zsh completion #3938
-    - Parse cookie Expires date attribute with '-' #3956
-    - Replace deprecated libxml2 initGenericErrorDefaultFunc with
-      xmlSetGenericErrorFunc #3975
-    - HTML report: fix span for lines in comment. #4002
-    - Fix HTML closing tag for line with trailing comment #4017
-    - Add replaceRegex filter and fix replace filter to not take
-      regex #4018
-    - Fix request body during redirections #4073
-    - Fix "variables" token in GraphQL HTML export #4117
-    - Support negative index in jsonpath #4154
+	- Fix incorrect curl command for POST redirect #2797
+	- Fix hurlfmt to disallow invalid header argument in curl
+	  command #3668
+	- Parse verbose flag in curl command #3760
+	- Keep secret value forever, even if a secret variable override
+	  an existing one #3898
+	- Fix zsh completion #3938
+	- Parse cookie Expires date attribute with '-' #3956
+	- Replace deprecated libxml2 initGenericErrorDefaultFunc with
+	  xmlSetGenericErrorFunc #3975
+	- HTML report: fix span for lines in comment. #4002
+	- Fix HTML closing tag for line with trailing comment #4017
+	- Add replaceRegex filter and fix replace filter to not take
+	  regex #4018
+	- Fix request body during redirections #4073
+	- Fix "variables" token in GraphQL HTML export #4117
+	- Support negative index in jsonpath #4154
   * Security Issues Fixed:
-    - Fix JavaScript injection in HTML report through regex literal
-      #4125
+	- Fix JavaScript injection in HTML report through regex literal
+	  #4125
 
 -------------------------------------------------------------------
 Thu Mar 27 17:48:06 UTC 2025 - mvetter@suse.com
@@ -171,97 +178,97 @@ Wed Mar 12 15:01:43 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 6.1.0:
   * Breaking Changes:
-    - Remove deprecated predicates (notEquals, greaterThan etc...)
-      in favor of operators #3532
-    - Remove deprecated keyword HTTP/* for HTTP #3697
+	- Remove deprecated predicates (notEquals, greaterThan etc...)
+	  in favor of operators #3532
+	- Remove deprecated keyword HTTP/* for HTTP #3697
   * Enhancements:
-    - Removed limitation for --cookie-jar to use only one hurl file
-      #2537
-    - Add HTTP version query #1706
-    - Add curl -H/--header option to globally add headers to all
-      requests #1905 #2144
-    - Add toString Filter #2035 #3798
-    - Add base64 decode filter #2145
-    - Add base64 encode filter #2145
-    - Redacts secrets from JUnit reports #2947 #2972
-    - Redacts secrets from JSON report #2947 #2972
-    - Redact secret in HTML report #2947 #2972
-    - Redact secrets from curl export #2947 #2972
-    - Redact secrets from cookies export #2947 #2972
-    - Add IP address query #3106
-    - Add isIpv4 / isIpv6 asserts on IP versions #3106
-    - Allow sending empty HTTP header #3536
-    - Redact dynamic values from logs #3543
-    - Add header option per request #3575
-    - Fix invalid escape in hurlfmt parse func #3615
-    - hurlfmt: Use Hurl predicates identifiers for Hurl to JSON
-      file export #3662
-    - Add aarch64 deb package #3829
+	- Removed limitation for --cookie-jar to use only one hurl file
+	  #2537
+	- Add HTTP version query #1706
+	- Add curl -H/--header option to globally add headers to all
+	  requests #1905 #2144
+	- Add toString Filter #2035 #3798
+	- Add base64 decode filter #2145
+	- Add base64 encode filter #2145
+	- Redacts secrets from JUnit reports #2947 #2972
+	- Redacts secrets from JSON report #2947 #2972
+	- Redact secret in HTML report #2947 #2972
+	- Redact secrets from curl export #2947 #2972
+	- Redact secrets from cookies export #2947 #2972
+	- Add IP address query #3106
+	- Add isIpv4 / isIpv6 asserts on IP versions #3106
+	- Allow sending empty HTTP header #3536
+	- Redact dynamic values from logs #3543
+	- Add header option per request #3575
+	- Fix invalid escape in hurlfmt parse func #3615
+	- hurlfmt: Use Hurl predicates identifiers for Hurl to JSON
+	  file export #3662
+	- Add aarch64 deb package #3829
   * Bugs Fixed:
-    - Fix missing request line errors in HTML report #3534
-    - Eval template in JSON object key #3593
-    - Show error message if format is invalid in format filter
-      #3613
-    - Create parent folders if missing when using --cookie-jar FILE
-      #3637
-    - Remove lint errors and Fix non-zero exit code in case of
-      error #3648
-    - Support BigInteger in variable #3656
-    - fix hurlfmt html export loosing some whitespaces #3675
-    - Fix template to source #3675
-    - Fix changing HTTP version per request sometimes not effective
-      #3719
-    - Add bash file completion for hurl/hurlfmt #3750
-    - Fix multilines HTML export #3768
-    - Change parsing file content type in multipart form data #3796
+	- Fix missing request line errors in HTML report #3534
+	- Eval template in JSON object key #3593
+	- Show error message if format is invalid in format filter
+	  #3613
+	- Create parent folders if missing when using --cookie-jar FILE
+	  #3637
+	- Remove lint errors and Fix non-zero exit code in case of
+	  error #3648
+	- Support BigInteger in variable #3656
+	- fix hurlfmt html export loosing some whitespaces #3675
+	- Fix template to source #3675
+	- Fix changing HTTP version per request sometimes not effective
+	  #3719
+	- Add bash file completion for hurl/hurlfmt #3750
+	- Fix multilines HTML export #3768
+	- Change parsing file content type in multipart form data #3796
   * Deprecations:
-    - Deprecate includes in favor of contains predicate #1896
-    - Warn for deprecated multilines string attributes #3622
-    - Warn for --interactive deprecation #3763
+	- Deprecate includes in favor of contains predicate #1896
+	- Warn for deprecated multilines string attributes #3622
+	- Warn for --interactive deprecation #3763
 
 -------------------------------------------------------------------
 Wed Dec 04 05:54:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 6.0.0:
   * Breaking Changes:
-    - Check that variables do not conflict with existing functions
-      #3229
-    - Remove deprecated --fail-at-end option #3430
-    - Change API for setting variable in hurl::runner::run #3440
-    - Remove hurlfmt deprecated --format option #3445
-    - Rename feature flag from vendored-openssl to static-openssl
-      #3460
+	- Check that variables do not conflict with existing functions
+	  #3229
+	- Remove deprecated --fail-at-end option #3430
+	- Change API for setting variable in hurl::runner::run #3440
+	- Remove hurlfmt deprecated --format option #3445
+	- Rename feature flag from vendored-openssl to static-openssl
+	  #3460
   * Enhancements:
-    - Implement function newUuid #973
-    - Implement --limit-rate from curl #1222
-    - Add --curl option to export executed requests to curl
-      commands #2679
-    - Configure --connect-timeout per request #3163
-    - Support short name for sections [QueryStringParams] =>
-      [Query], [FormParams] => [Form], [MultipartFormData] =>
-      [Multipart] #3238
-    - Remove url-specific parser (align with grammar) #3244
-    - Remove the crate float-cmp #3247
-    - Jsonpath / Add filter on boolean value #3252
-    - Jsonpath / Add non-equal filter on string and number value
-      #3261
-    - Add support for backtick strings in predicates values #3317
-    - Categorise options in --help #3339
-    - Support more JSON / XML "like" mimetypes with debug output
-      #3343
-    - Add curl debug command to --json and JSON report #3374
-    - Add curl debug command to HTML report #3386
-    - Render Date value #3431
-    - Add newDate generator #3443
+	- Implement function newUuid #973
+	- Implement --limit-rate from curl #1222
+	- Add --curl option to export executed requests to curl
+	  commands #2679
+	- Configure --connect-timeout per request #3163
+	- Support short name for sections [QueryStringParams] =>
+	  [Query], [FormParams] => [Form], [MultipartFormData] =>
+	  [Multipart] #3238
+	- Remove url-specific parser (align with grammar) #3244
+	- Remove the crate float-cmp #3247
+	- Jsonpath / Add filter on boolean value #3252
+	- Jsonpath / Add non-equal filter on string and number value
+	  #3261
+	- Add support for backtick strings in predicates values #3317
+	- Categorise options in --help #3339
+	- Support more JSON / XML "like" mimetypes with debug output
+	  #3343
+	- Add curl debug command to --json and JSON report #3374
+	- Add curl debug command to HTML report #3386
+	- Render Date value #3431
+	- Add newDate generator #3443
   * Bugs Fixed:
-    - Fix reading standard input multiple times #3216
-    - Fix filename parsing (used by cert option) #3242
-    - Add additional check for --max-filesize option #3245
-    - Support case-insensitive Cookie Attributes #3265
-    - Allow any string in Location Header when not following
-      redirection #3293
-    - Fix graceful shutdown of workers threads in --test #3297
-    - Fix missing space in variable option HTML export #3412
+	- Fix reading standard input multiple times #3216
+	- Fix filename parsing (used by cert option) #3242
+	- Add additional check for --max-filesize option #3245
+	- Support case-insensitive Cookie Attributes #3265
+	- Allow any string in Location Header when not following
+	  redirection #3293
+	- Fix graceful shutdown of workers threads in --test #3297
+	- Fix missing space in variable option HTML export #3412
 
 -------------------------------------------------------------------
 Fri Oct 04 19:36:41 UTC 2024 - opensuse_buildservice@ojkastl.de
