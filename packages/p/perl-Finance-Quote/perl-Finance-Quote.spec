@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Finance-Quote
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Finance-Quote
 Name:           perl-Finance-Quote
-Version:        1.680.0
+Version:        1.690.0
 Release:        0
-# 1.68 -> normalize -> 1.680.0
-%define cpan_version 1.68
+# 1.69 -> normalize -> 1.690.0
+%define cpan_version 1.69
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Get stock and mutual fund quotes from various exchanges
@@ -134,6 +134,7 @@ Provides:       perl(Finance::Quote::CurrencyRates::ECB) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::FinanceAPI) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::Fixer) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::OpenExchange) = %{version}
+Provides:       perl(Finance::Quote::CurrencyRates::TwelveData) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::YahooJSON) = %{version}
 Provides:       perl(Finance::Quote::Deka) = %{version}
 Provides:       perl(Finance::Quote::FTfunds) = %{version}
