@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  3 07:28:05 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.20.2
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+-------------------------------------------------------------------
 Thu May 29 12:00:11 UTC 2025 - pgajdos@suse.com
 
 - -std=gnu11 to fix build with gcc15
