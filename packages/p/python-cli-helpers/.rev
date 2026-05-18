@@ -180,4 +180,13 @@
   * Pin Pygments library to older version v2.19.2 to fix tests.</comment>
     <requestid>1348091</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0b698f4ac94a74230a6a99045da6a112</srcmd5>
+    <version>2.15.0</version>
+    <time>1779119213</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.15.0:
+  * Add `mysql_heavy` table format.</comment>
+    <requestid>1353613</requestid>
+  </revision>
 </revisionlist>
