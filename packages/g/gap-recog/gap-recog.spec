@@ -1,7 +1,7 @@
 #
 # spec file for package gap-recog
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-recog
-Version:        1.4.4
+Version:        1.5.1
 Release:        0
 Summary:        GAP: A collection of group recognition methods
 License:        GPL-3.0-or-later
@@ -45,7 +45,6 @@ matrix groups and projective groups.
 
 %build
 chmod a-x misc/bbox/*.g
-rm -v doc/clean
 perl -i -lpe 's{^#!/usr/bin/env py\w+}{#!/usr/bin/python3}' misc/bbox/bbtogap.py
 
 %install

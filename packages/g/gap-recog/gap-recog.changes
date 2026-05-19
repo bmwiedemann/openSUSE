@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 19 13:56:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.1
+  * Added a small workaround for compatibility with the gap-matgrp
+    package.
+
+-------------------------------------------------------------------
+Tue May 19 11:43:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.0
+  * Added a first `StdPresentation` implementation (needs further
+    tuning).
+  * Implemented verification via a new property `IsCorrect`.
+
+-------------------------------------------------------------------
 Wed Jan 22 10:27:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.4
