@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Tue May 19 12:16:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 53.3.0:
+  Kubeshark 53.3.0 promotes the TLSX dissector to on-by-default
+  with full TLS handshake visibility (ClientHello / ServerHello
+  fields, SNI summary, TLS 1.3 detection), ships a complete
+  authorization refactoring across CLI, Helm chart, hub and front,
+  and adds L7 data boundaries with a LIVE filter button for scoping
+  traffic queries. Snapshot creation now supports namespace and
+  pod-regex filters, and a new internal bearer-token auth layer
+  secures in-cluster gRPC calls. The release also introduces three
+  new AI skills: security audit, install guidance, and PostgreSQL
+  KFL support.
+  * New Features
+    - TLSX dissector enabled by default — The TLS handshake
+      dissector is now active out of the box, exposing ClientHello
+      and ServerHello fields (cipher suites, supported versions,
+      SNI, ALPN) as first-class KFL variables (tlsx, tls_sni,
+      tls_version, etc.)
+    - L7 data boundaries with LIVE filter — New MCP tool, API
+      endpoint, and frontend button to query L7 data time
+      boundaries and scope traffic views to live data
+    - Snapshot namespace & pod filters — Snapshot creation dialog
+      now accepts namespace and pod-regex filters, making it easy
+      to capture targeted slices of traffic
+    - Internal bearer-token auth for in-cluster gRPC — Hub now
+      issues and validates bearer tokens for worker-to-hub gRPC
+      calls, replacing implicit trust; worker pods are labeled for
+      token-review access
+    - Security-audit AI skill — MITRE ATT&CK-based threat detection
+      methodology for Kubeshark MCP-powered security audits
+    - Install AI skill — Guided Kubeshark deployment skill covering
+      CLI, Helm, platform-specific config, auth, and
+      troubleshooting
+    - PostgreSQL KFL support — KFL skill updated with PostgreSQL
+      protocol filter reference
+  * Improvements
+    - Authorization refactoring — Unified authz model across Helm
+      chart, CLI, hub, and front with cleaner role/permission
+      boundaries
+    - TLS handshake detail fields — Human-readable string
+      representations added to TlsServerHelloInfo proto for easier
+      inspection
+    - Responsive snapshot creation dialog — Snapshot dialog now
+      adapts to smaller viewports
+    - Swap tab order — API Stream tab now appears before Map tab
+      for faster access to the most-used view
+    - Force credential re-prompt on login — Auth flow now forces a
+      fresh credential prompt on every login instead of reusing
+      stale sessions
+    - Filter out Kubeshark's own DNS queries — Self-generated DNS
+      traffic is no longer shown in the traffic stream
+    - Update license error messages and capacity limits — Clearer
+      messaging for license-related issues
+    - Don't gate UI for Descope auth backend — UI no longer blocks
+      rendering while waiting for Descope auth state
+  * Bug Fixes
+    - Fix race in dissectors KFL module loading — Resolves a race
+      condition when loading KFL modules in dissectors
+    - Fix dissection toggle button not responding to clicks —
+      Toggle now reliably enables/disables dissection
+    - Fix snapshot download — Adds missing addToast import that
+      broke snapshot file downloads
+    - Fix loading payloads for realtime and delayed-dissection
+      entries — Corrects payload rendering for both live and
+      historical traffic
+    - Fix Descope user profile mirroring — Descope SDK user profile
+      (email/name) now correctly populates the identity atom
+    - Stop polling when unauthenticated — Frontend stops API
+      polling after auth is revoked, preventing cascading 401
+      errors
+    - Handle Sentry-reported network errors — Graceful handling of
+      network errors surfaced via Sentry
+    - Prevent MS Outlook crawl errors in Sentry — Suppresses noise
+      from Outlook prefetch probes
+    - Guard rawcapture against removed worker —
+      recordSuccess/recordFailure no longer panic when a worker has
+      been removed
+    - Fix equality filter for missing fields (KFL2) — Equality
+      filters now correctly handle entries that lack the filtered
+      field
+    - PCAP-only boundaries + race-tolerant streaming — Snapshot
+      data service handles PCAP boundaries correctly and tolerates
+      concurrent access
+    - Fix memory leak in delayed dissection — Resolves leak
+      introduced after the HTTP one-leg fix
+    - Fix sentry error severity levels — Errors now report with
+      correct severity
+    - Fix slice bounds out of range in HTTP dissection — Prevents
+      panic on malformed HTTP payloads
+    - Add PCAP boundary for preventing truncated packets — Guards
+      against partial packet writes
+    - Extract error status codes from Kafka responses — Kafka
+      dissector now surfaces error codes from response frames
+  * Infrastructure & Dependencies
+    - Rename TLS proto types from Tls to Tlsx — Consistent naming
+      across api2, kfl2, worker, and hub
+    - Bump Go to 1.26.3
+    - Bump Node from 25-alpine to 26-alpine (front)
+    - Helm: grant hub tokenreviews RBAC and label worker pods for
+      internal auth
+    - UX: improved error toast messages across the frontend
+
+-------------------------------------------------------------------
 Fri May 01 21:27:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 53.2.5 (.4 was not released):
