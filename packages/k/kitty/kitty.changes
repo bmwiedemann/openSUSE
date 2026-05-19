@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Tue May 19 14:02:49 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.47.0:
+  * A new Drag and drop kitten to allow drag and drop of files from your shell
+    to any GUI program even across SSH (#9984)
+    - https://sw.kovidgoyal.net/kitty/kittens/dnd/
+  * A new option palette_generate to automatically generate the 256 color
+    palette from the first 16 colors (#9426)
+  * For builtin key mappings automatically fallback to matching the US-PC
+    layout key when the pressed key has no matches and is a non-English
+    character (#9671)
+  * Allow drag and drop of windows to re-arrange them, move them to another
+    tab/OS Window or detach them into a new OS Window. See
+    toggle_window_title_bars to temporarily show window title bars to drag
+    them around (#9626)
+  * Have scroll_line_up and scroll_line_down smooth scroll by default. Can be
+    restored to old behavior by re-mapping without the smooth argument (#9689)
+  * Draw a progress bar at the top of the window when a program reports
+    progress using the OSC 9;4 escape sequence, controlled by
+    progress_bar (#9777)
+  * Automatically reload configuration on changes, controlled by
+    auto_reload_config
+  * Allow specifying multiple background images for background_image that are
+    stored on GPU to allow fast image switching (#9836)
+  * Remote control: Expose session_name and last_focused_at in the output of
+    kitten @ ls for each window (#9732, #9799)
+    - https://sw.kovidgoyal.net/kitty/remote-control/
+  * Allow optionally dragging URLs with the mouse, see left (#9804)
+  * Change focus_follows_mouse to switch the active window only when the mouse
+    crosses into a different window, instead of on every mouse motion event.
+    Prevents accidental mouse bumps from undoing a keyboard-driven window
+    switch.
+  * Wayland: Use hold gestures to cancel momentum scrolling when fingers are
+    placed on the trackpad, for a more natural kinetic scrolling
+    experience (#9863)
+  * macOS: Switch to new Tahoe style application icon with different
+    background in light and dark modes
+  * Fix thickness of diagonal lines in box drawing characters not the same
+    as horizontal/vertical lines (#9719)
+  * Graphics protocol: Fix crash when handling invalid PNG image with direct
+    transmission (CVE 2026-33633)
+  * Graphics protocol: Fix crash when handling invalid offset values in
+    graphics compose commands (CVE 2026-33642)
+  * X11: Fix a regression in the previous release that caused an occasional
+    crash on input device removal (#9723)
+  * XWayland: Fix a regression where some wheel mice were not scrolling
+    properly (#9770)
+  * Command palette: Improve searching to use word level matching (#9727)
+  * hints kitten: A new option to set the background color of matched
+    text (#9745)
+  * The show_hyperlink_targets option now allows specifying a keyboard
+    modifier so that target URLs are only shown on hover when the modifier
+    is pressed (#9741)
+  * Fix a spurious mouse button release event being sent when dragging out of
+    an OS window causes focus loss
+  * Fix scrollbar hover/interaction not working when the scrollbar is drawn in
+    the window margin area (#9756)
+  * Fix completion for edit-in-kitty not including some common text file types
+  * Allow holding the Alt key and triple-clicking to select from the first
+    cell even if it is empty (#9758)
+  * Fix double click to rename tab being triggered too easily (#9774)
+  * Fix a crash when user tries to select while the client program is using
+    synchronised rendering and generating large amounts of output (#9778)
+  * macOS: Add Copy and Paste menu items to the Edit menu in the global
+    menu bar (#9780)
+  * Fix dragging of splits layout borders sometimes moving in the wrong
+    direction or having no effect (#9447)
+  * Fix triple-click line selection and double-click word selection not
+    extending wrapped lines beyond the edges of the viewport
+  * Password input in kittens: hide the cursor and display a blinking 🔒 at
+    the end of typed characters to make it visually clear the user is
+    entering a password
+  * edit-in-kitty: Ignore environment variables as some editors execute code
+    present in env vars. Similarly ignore conf file specifications for
+    colors (CVE 2026-42851)
+  * Command palette ctrl+shift+f3: nicer grouping of aliases and combined
+    actions (#9819)
+  * hints kitten: Fix trailing punctuation not being removed from URLs (#9828)
+  * Fix copy/paste dropping spaces at soft-wrap boundaries when
+    strip_trailing_spaces is set (#9834)
+  * Allow setting negative values for inactive_text_alpha to control whether
+    to only fade inactive windows or unfocused windows (#9837)
+  * A new option macos_fullscreen_ignore_safe_area_insets to control whether
+    to ignore the notch space when using macos_traditional_fullscreen (#9841)
+  * Fix some responses from terminal sometimes leaking into shell after
+    kitten exit (#9839)
+  * Render block elements from the Unicode Symbols for Legacy Computing
+    Supplement block (U+1CC00–U+1CEBF): separated block quadrants,
+    separated block sextants, one sixteenth blocks, and one quarter block
+    partial fills (#9849)
+  * Improve performance of using active process data when rendering the tab
+    bar by only scanning processes once per second (#9862)
+  * macOS: Fix occasional phantom cursors being drawn on screen (#9725)
+  * diff kitten: Keep the current (topmost) filename visible when scrolling,
+    controlled by a new option kitten-diff.sticky_header (#9891)
+  * Add an option to focus_follows_mouse to only switch focus on drops rather
+    than movement (#9896)
+  * Fix setting momentum_scroll to zero not fully disabling momentum
+    scrolling (#9904)
+  * macOS: Fix args passed via open --args being ignored when
+    macos-launch-services-cmdline is present (#9910)
+  * save_as_session: when the filename input by the user has no extension,
+    automatically add the .kitty-session extension (#9919)
+  * Linux: Workaround bug in Nvidia drivers that caused color corruption when
+    resuming after suspend (#9844)
+  * choose-files kitten: Output a trailing newline when writing to a tty in
+    text format (#9982)
+  * ssh kitten: Sanitize user controlled data in error messages that might
+    leak to shell (CVE 2026-42850)
+  * Linux: Respect the fontconfig matrix setting commonly used for fake slant
+    with fonts that do not have italic variants (#9990)
+
+-------------------------------------------------------------------
 Sat Mar 21 15:51:53 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.46.2:
