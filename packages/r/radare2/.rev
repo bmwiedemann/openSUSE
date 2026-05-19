@@ -145,4 +145,12 @@
   * Visual: fix UAF/leaks, improve panels and UX</comment>
     <requestid>1347121</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>18ff56045cc253766cdfc9d9c4fca608</srcmd5>
+    <version>6.1.4</version>
+    <time>1779205750</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-8695.patch (bsc#1265403)</comment>
+    <requestid>1353910</requestid>
+  </revision>
 </revisionlist>

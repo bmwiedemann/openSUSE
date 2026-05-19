@@ -35,6 +35,7 @@ Source1:        https://github.com/radareorg/sdb/archive/%{sdb_rev}/sdb-%{sdb_re
 Source2:        https://github.com/quickjs-ng/quickjs/archive/%{qjs_rev}/quickjs-%{qjs_rev}.tar.gz
 Source3:        https://github.com/radareorg/radare2-testbins/archive/%{tests_rev}/radare2-testbins-%{tests_rev}.tar.gz
 Patch0:         pkgconfig.patch
+Patch1:         https://github.com/radareorg/radare2/commit/c213ad6894a1eb9086ac8bf5fae35757e9e1683c.patch#/CVE-2026-8695.patch
 BuildRequires:  chrpath
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
