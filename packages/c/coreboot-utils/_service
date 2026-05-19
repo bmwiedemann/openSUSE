@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://review.coreboot.org/coreboot.git</param>
     <param name="scm">git</param>
-    <param name="changesgenerate">enable</param>
+    <!--param name="changesgenerate">enable</param -->
     <param name="revision">main</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
   </service>
@@ -13,7 +13,3 @@
     <param name="compression">xz</param>
   </service>
 </services>
-<!--
-    <param name="filename">rasdaemon</param>
-
--->

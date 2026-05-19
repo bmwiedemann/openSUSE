@@ -1,8 +1,7 @@
 #
 # spec file for package coreboot-utils
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +17,7 @@
 
 
 Name:           coreboot-utils
-Version:        25.12+git562.f89ac4e6ce
+Version:        26.03+git727.8bef605155
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only
@@ -46,6 +45,7 @@ used to develop and configure systems with coreboot.
 make %{?_smp_mflags} CFLAGS="%{optflags}" -C util/ectool
 make %{?_smp_mflags} CC="cc %{optflags}" -C util/superiotool
 make %{?_smp_mflags} CFLAGS="%{optflags} -DCMOS_HAL=1 -I." -C util/nvramtool
+make %{?_smp_mflags} CFLAGS="%{optflags} -I ../../src/commonlib/bsd/include" -C util/intelmetool
 make %{?_smp_mflags} CFLAGS="%{optflags}" -C util/cbmem
 make %{?_smp_mflags} CFLAGS="%{optflags} -I../../src/commonlib/include" -C util/ifdtool
 %ifarch x86_64
