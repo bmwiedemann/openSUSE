@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue May 19 07:09:24 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable tests
+- Add patch (from Fedora) to fix tests:
+  * 0001-hack-test.patch
+- Fix permissions on SO libraries
+
+-------------------------------------------------------------------
+Tue May 19 06:49:24 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.8.2:
+  * Update: tests: add python test script for cross platform
+    use - replace linux only bash scripts.
+  * Update: opencsd: memory access - added debug to trace memory
+    accesses by library under control of env var.
+  * Bugfix: tests: windows test program names differ from linux ones
+    - fix to make same
+  * Bugfix: etmv4: ete: Fix corner case for exception packet
+    processing - issue with exception address representing the
+    previous branch target and the exception return address, plus
+    return stack issues. (github #88)
+  * Bugfix: Fix mac-os build for test programs.
+- Skipped 1.8.1:
+  * Bugfix: Fix issue with raw trace printer NULL pointer if
+    deformatter not present.
+  * Bugfix: Fix issue with deformatter not correctly handling FSYNC
+    detection correctly
+    on short 2 byte aligned buffers or split across buffer boundary.
+  * Bugfix: etmv4: Packet description string typo fixed. (github #84)
+  * Bugfix: stm: Issue with waitASync routine (github #85), fix freq
+    packet handling
+- Skipped 1.8.0:
+  * Update: ete: Add support for FEAT_S1POE2 - handle TEXIT as branch
+    for trace decode.
+  * Update: ARM64 build: Add in support for ARM64 target in windows
+    VS2022.
+  * Update: etm4x: Add support for V8.1M additional T32 instructions
+    LE, LETP, WS, WSTP as branches for trace decode. (github PR #73)
+  * Update: build: Add in #include required by later versions of
+    CLANG tools. (github PR #82)
+  * Bugfix: Fix double run of ITM test.
+  * Bugfix: Fix build warnings in windows builds.
+
+-------------------------------------------------------------------
 Mon Jan 26 08:10:30 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.7.1:

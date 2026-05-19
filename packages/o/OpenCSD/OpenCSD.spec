@@ -21,13 +21,14 @@
 
 %define libnum  1
 Name:           OpenCSD
-Version:        1.7.1
+Version:        1.8.2
 Release:        0
 Summary:        CoreSight Trace Decode library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/Linaro/OpenCSD
 Source0:        https://github.com/Linaro/OpenCSD/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         0001-hack-test.patch
 BuildRequires:  gcc-c++
 %if %{with build_html_doc}
 BuildRequires:  doxygen
@@ -69,19 +70,23 @@ BuildArch:      noarch
 OpenCSD is an Arm CoreSight Trace Decode library.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
+%set_build_flags
 %make_build -C decoder/build/linux DISABLE_STATIC=1 \
 %if %{with build_html_doc}
 docs
 %endif
 
 %install
-%make_install -C decoder/build/linux DISABLE_STATIC=1 LIB_PATH=%{_lib}
+%make_install -C decoder/build/linux DISABLE_STATIC=1 DEF_SO_PERM=755 LIB_PATH=%{_lib}
 # Install man page
 mkdir -p %{buildroot}/usr/share/man/man1/
-%make_install -C decoder/build/linux DISABLE_STATIC=1 LIB_PATH=%{_lib} install_man
+%make_install -C decoder/build/linux DISABLE_STATIC=1 DEF_SO_PERM=755 LIB_PATH=%{_lib} install_man
+
+%check
+LD_LIBRARY_PATH=%{buildroot}%{_libdir} decoder/tests/run_pkt_decode_tests.bash -bindir %{buildroot}%{_bindir}/ use-installed
 
 %post	-n libopencsd%{libnum} -p /sbin/ldconfig
 
