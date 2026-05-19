@@ -17,7 +17,7 @@
 
 
 Name:           helm
-Version:        4.1.4
+Version:        4.2.0
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -32,7 +32,7 @@ BuildRequires:  zsh
 # go is not available on Framework one for x86
 ExcludeArch:    %ix86
 %endif
-BuildRequires:  golang(API) = 1.25
+BuildRequires:  golang(API) = 1.26
 
 %description
 Helm is a tool for managing Kubernetes charts. Charts are packages of

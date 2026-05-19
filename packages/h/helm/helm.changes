@@ -1,4 +1,316 @@
 -------------------------------------------------------------------
+Fri May 15 06:48:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.2.0 (bsc#1265428, CVE-2026-41888):
+  * Bump to version v4.2 0646808 (George Jenkins)
+  * build: Clean up Goreleaser change (#32098) e23bf3a (Scott
+    Rigby)
+  * fix: add -extldflags -static to dist target to match
+    build-cross f60ab7c (Terry Howe)
+  * build: use goreleaser build with manual archive creation
+    64aa46f (Terry Howe)
+  * chore: remove build-cross dependency from test-acceptance
+    d199a1a (Terry Howe)
+  * ci: add fetch-depth 0 to canary checkout for goreleaser 8289940
+    (Terry Howe)
+  * fix: address goreleaser build issues flagged in review c075022
+    (Terry Howe)
+  * fix: pass VERSION as GORELEASER_CURRENT_TAG to preserve
+    v-prefix in archive names 04885dd (Terry Howe)
+  * fix: disable goreleaser checksums.txt and restrict zip to
+    windows only 93103ce (Terry Howe)
+  * fix: use index for optional env var in version_template e49a1dc
+    (Terry Howe)
+  * fix: canary build file names eaa0910 (Terry Howe)
+  * Fix archive name 5a75279 (Terry Howe)
+  * fix goreleaser archive 37284a9 (Terry Howe)
+  * add support for loong64 45336cc (Terry Howe)
+  * fix artifact directory a9659b0 (Terry Howe)
+  * update configuration to v2 e368f17 (Terry Howe)
+  * remove GOTOOLCHAIN e7bea85 (Terry Howe)
+  * chore: replace mitchellh/gox with goreleaser 075c096 (Terry
+    Howe)
+  * chore(deps): bump github.com/distribution/distribution/v3
+    12f2c41 (dependabot[bot])
+  * chore(deps): bump github/codeql-action from 4.35.2 to 4.35.3
+    58e8ffd (dependabot[bot])
+  * chore(deps): bump github.com/Masterminds/semver/v3 from 3.4.0
+    to 3.5.0 e61bbfb (dependabot[bot])
+  * Upgrade kstatus to 1.2 and controller-runtime to 0.24 081c6df
+    (Matheus Pimenta)
+  * fix: adds topLevel permissions to improve openSSF scores
+    277d970 (Gagan H R)
+  * Upgrade Go to 1.26, Kubernetes to 1.36, kstatus to 1.1 a4a9cc7
+    (Matheus Pimenta)
+  * fix(templating): hooks conflicting with templates in
+    post-renderers (#32049) 8f56f24 (Matheus Pimenta)
+  * docs: fix grammar and spacing in CONTRIBUTING.md db40adb
+    (Mohit)
+  * chore(deps): bump the k8s-io group with 7 updates 775e794
+    (dependabot[bot])
+  * chore(deps): bump github/codeql-action from 4.35.1 to 4.35.2
+    934ace3 (dependabot[bot])
+  * fix(templating): SplitManifests must preserve line endings for
+    downstream YAML parsers (#31952) 265c5eb (Matheus Pimenta)
+  * chore(deps): bump github.com/mattn/go-shellwords from 1.0.12 to
+    1.0.13 48e2b7d (dependabot[bot])
+  * Update pkg/chart/common/util/coalesce.go a8e2497 (Evans Mungai)
+  * test(values): Add test for nil cleanup in partially overridden
+    subchart maps 52fc971 (Johannes Lohmer)
+  * fix(values): do not copy chart-default nils into coalesced
+    values 0063877 (Johannes Lohmer)
+  * test(values): add test for subchart nil producing %!s() 6eb4ebf
+    (Johannes Lohmer)
+  * test(values): add tests for subchart nil value regressions
+    5cb4e7d (Johannes Lohmer)
+  * chore(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1
+    b5c7c80 (dependabot[bot])
+  * fix(templating): fix wrong YAML separator parsing for
+    post-renderers (#31941) a27f1ad (Matheus Pimenta)
+  * fix: add debug logging to HTTP getter for helm pull c26be60
+    (Cairon)
+  * chore(deps): bump golang.org/x/crypto from 0.49.0 to 0.50.0
+    953f5f0 (dependabot[bot])
+  * chore(deps): bump golang.org/x/term from 0.41.0 to 0.42.0
+    10fc5f3 (dependabot[bot])
+  * chore(deps): bump golang.org/x/text from 0.35.0 to 0.36.0
+    d89e7c6 (dependabot[bot])
+  * chore: Update release notes script for Helm v4 8a95461 (George
+    Jenkins)
+  * refactor(cli): share RetryingRoundTripper via pkg/kubeenv
+    213c869 (Sumit Solanki)
+  * chore(deps): bump github.com/lib/pq from 1.12.2 to 1.12.3
+    bd5027a (dependabot[bot])
+  * fix: unnecessary-format lint issues from merge 087736b (George
+    Jenkins)
+  * fix: Plugin missing provenance bypass 586eb57 (George Jenkins)
+  * chore(deps): bump github.com/fluxcd/cli-utils c8c5dfa
+    (dependabot[bot])
+  * chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp
+    998466c (dependabot[bot])
+  * chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+    b0cec58 (dependabot[bot])
+  * chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp
+    6ebfb29 (dependabot[bot])
+  * test(kube): fix flaky WaitForDelete test by avoiding informer
+    sync race a7f8443 (Terry Howe)
+  * test(kube): fix flaky WaitForDelete timing in status wait tests
+    4c0d21f (Terry Howe)
+  * chore(deps): bump github.com/distribution/distribution/v3
+    08dea9c (dependabot[bot])
+  * Minor nit: fix import instructions to comply with canonical
+    import paths de58531 (Anmol Virdi)
+  * chore(deps): bump github.com/distribution/distribution/v3
+    9b1ad4c (dependabot[bot])
+  * fix(action): return correct error variable in prepareUpgrade
+    8ef2d45 (Rhys McNeill)
+  * chore(deps): bump github.com/lib/pq from 1.12.1 to 1.12.2
+    cd7cf76 (dependabot[bot])
+  * chore(deps): bump github/codeql-action from 4.30.7 to 4.35.1
+    45ee55b (dependabot[bot])
+  * chore(deps): bump github.com/lib/pq from 1.12.0 to 1.12.1
+    9a06741 (dependabot[bot])
+  * chore(deps): bump actions/setup-go from 6.2.0 to 6.4.0 d1e31ca
+    (dependabot[bot])
+  * fix(kube): clarify server-side apply patch errors f257c95
+    (abhay1999)
+  * fix: pin codeql-action/upload-sarif to commit SHA in scorecards
+    workflow 7025480 (Terry Howe)
+  * refactor(cli): decouple EnvSettings from pkg/kube 64f1d0a
+    (Sumit Solanki)
+  * docs(registry): fix incorrect and improve clarity of comments
+    in client.go 85bf56e (Debasish Mohanty)
+  * refactor(cli): decouple EnvSettings from pkg/kube to avoid
+    import cycles 1549937 (Sumit Solanki)
+  * chore(deps): bump github.com/ProtonMail/go-crypto from 1.3.0 to
+    1.4.1 c7a75b1 (dependabot[bot])
+  * chore(deps): bump github.com/lib/pq from 1.11.2 to 1.12.0
+    3a7573a (dependabot[bot])
+  * chore(deps): bump github.com/fatih/color from 1.18.0 to 1.19.0
+    0229da1 (dependabot[bot])
+  * docs(engine): fix misleading toTOML doc comment c1a5a6e (Ilya
+    Kiselev)
+  * feat(engine): add mustToToml template function b075f7a (Ilya
+    Kiselev)
+  * chore: fix unnecessary-format issues from revive 7edfff3
+    (Matthieu MOREL)
+  * chore(deps): bump google.golang.org/grpc from 1.78.0 to 1.79.3
+    37185d2 (dependabot[bot])
+  * chore: fix bool-compare issues from testifylint 071558d
+    (Matthieu MOREL)
+  * chore: enable perfsprint linter 6249489 (Matthieu MOREL)
+  * ignore error plugin loads (cli, getter) 47a0840 (George
+    Jenkins)
+  * chore(deps): bump golang.org/x/crypto from 0.48.0 to 0.49.0
+    3d06fd1 (dependabot[bot])
+  * fix(kube): remove legacy import comments from test files
+    e64d628 (Terry Howe)
+  * pkg/kube: remove legacy import comments d7cdc9e (abhay1999)
+  * fix: Plugin version path traversal 36dcc27 (George Jenkins)
+  * chore(deps): bump golang.org/x/term from 0.40.0 to 0.41.0
+    c4be7af (dependabot[bot])
+  * chore: fix some minor issues in the comments 259f181 (tsinglua)
+  * fix: Chart dot-name path bug 6018499 (George Jenkins)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.23.1 to
+    0.23.3 74e7cf8 (dependabot[bot])
+  * fix: insert newline after doc separators glued to content by
+    template trimming af94abf (Matheus Pimenta)
+  * chore(deps): bump github.com/cloudflare/circl from 1.6.1 to
+    1.6.3 16073b1 (dependabot[bot])
+  * chore: enable modernize linter (#31860) e31a078 (Matthieu
+    MOREL)
+  * Restored --atomic flag on install command 16573f8 (Travis
+    Leeden)
+  * fix: bump go.opentelemetry.io/otel/sdk to v1.40.0 for
+    GO-2026-4394 b550ce9 (Terry Howe)
+  * fix: bump fluxcd/cli-utils to v0.37.2-flux.1 1dfa77e (Terry
+    Howe)
+  * Update pkg/cmd/status.go 5d40f17 (Matthieu MOREL)
+  * chore(internal): enable perfsprint linter (#31871) d4f6193
+    (Matthieu MOREL)
+  * chore(deps): bump actions/upload-artifact from 6.0.0 to 7.0.0
+    82d9bed (dependabot[bot])
+  * chore(pkg): fix perfsprint linter issues part 6 dc0e3f1
+    (Matthieu MOREL)
+  * chore(pkg): enable perfsprint linter e3c74fd (Matthieu MOREL)
+  * chore(pkg): enable perfsprint linter 1d2d63c (Matthieu MOREL)
+  * chore(pkg): enable perfsprint linter 63f03c0 (Matthieu MOREL)
+  * chore(pkg): enable perfsprint linter c25c988 (Matthieu MOREL)
+  * chore(pkg): enable perfsprint linter 0fecfd0 (Matthieu MOREL)
+  * chore(internal): enable perfsprint linter 6524162 (Matthieu
+    MOREL)
+  * chore(pkg): enable perfsprint linter 6c2cb2f (Matthieu MOREL)
+  * chore(internal): enable perfsprint linter 9409226 (Matthieu
+    MOREL)
+  * Replace unneeded use of t.Fatalf with t.Fatal 36cb3a2 (Mads
+    Jensen)
+  * fix: enable nolinlint linter 5b6c6bb (Matthieu MOREL)
+  * fixup strings.Cut variables b667317 (George Jenkins)
+  * chore: Improve AGENTS.md 956c724 (George Jenkins)
+  * chore: fixes 92b64e8 (George Jenkins)
+  * fix: correct import comment in statuswait.go from v3 to v4
+    c59c140 (rohansood10)
+  * fix: handle OCI digest algorithm prefix in chart downloader
+    (#31601) ee01860 (Evans Mungai)
+  * chore(deps): bump actions/stale from 10.1.1 to 10.2.0 304d25f
+    (dependabot[bot])
+  * chore(deps): bump the k8s-io group with 7 updates 0b13436
+    (dependabot[bot])
+  * feat(release): add internal/release/v2 package for chart v3
+    support (#31709) 4a91f3a (Evans Mungai)
+  * chore(deps): bump golang.org/x/crypto from 0.47.0 to 0.48.0
+    7823853 (dependabot[bot])
+  * chore(deps): bump golang.org/x/term from 0.39.0 to 0.40.0
+    aec7ace (dependabot[bot])
+  * chore(deps): bump github.com/lib/pq from 1.11.1 to 1.11.2
+    a23b638 (dependabot[bot])
+  * chore(deps): bump golang.org/x/text from 0.33.0 to 0.34.0
+    5cddc95 (dependabot[bot])
+  * chore(deps): bump sigs.k8s.io/kustomize/kyaml from 0.21.0 to
+    0.21.1 2e266c3 (dependabot[bot])
+  * fix(pkg): errorlint linter 259f76a (Matthieu MOREL)
+  * fix(internal): errorlint linter 0254182 (Matthieu MOREL)
+  * fix(pkg): errorlint linter 6d1490e (Matthieu MOREL)
+  * fix(pkg): errorlint linter 4d0ae7f (Matthieu MOREL)
+  * fix(internal): errorlint linter abecafa (Matthieu MOREL)
+  * fix(pkg): errorlint linter 4330bde (Matthieu MOREL)
+  * fix(pkg): errorlint linter c8989d9 (Matthieu MOREL)
+  * fix(cmd): errorlint linter edbd705 (Matthieu MOREL)
+  * chore: new KEYS entry for George Jenkins 5638c35 (George
+    Jenkins)
+  * fix(downloader): safely handle concurrent file writes on
+    Windows 76eb37c (Orgad Shaneh)
+  * fix(install): check nil for restClientGetter and fix tests
+    9817a68 (Manuel Alonso)
+  * feat(create): add --chart-api-version flag (when
+    HELM_EXPERIMENTAL_CHART_V3 env var is set) (#31592) 5aac320
+    (Evans Mungai)
+  * chore(pkg): fix modernize linter 0d75d86 (Matthieu MOREL)
+  * chore(internal): fix modernize linter 859292e (Matthieu MOREL)
+  * chore(pkg): fix modernize linter 5cc2e55 (Matthieu MOREL)
+  * chore(pkg): fix modernize linter ba38159 (Matthieu MOREL)
+  * chore(internal): fix modernize linter e2d184c (Matthieu MOREL)
+  * chore(pkg): fix modernize linter 111d4e6 (Matthieu MOREL)
+  * add image index test e8f386b (Pedro Tôrres)
+  * fix pulling charts from OCI indices d983696 (Pedro Tôrres)
+  * chore(deps): bump github.com/lib/pq from 1.10.9 to 1.11.1
+    9c9c3a6 (dependabot[bot])
+  * Revert "Consider GroupVersionKind when matching resources"
+    787b61c (Matheus Pimenta)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.23.0 to
+    0.23.1 becf9bf (dependabot[bot])
+  * fix(template): deprecate unused --hide-notes and
+    --render-subchart-notes flags 6d5f56f (Scott Rigby)
+  * chore(deps): bump github.com/fluxcd/cli-utils b53198e
+    (dependabot[bot])
+  * chore(deps): bump actions/checkout from 6.0.1 to 6.0.2 b59e533
+    (dependabot[bot])
+  * whitespace ec07265 (Austin Abro)
+  * fix(copystructure): handle nil elements in slice copying
+    e3829eb (Philipp Born)
+  * use logger with waiter 63b40a7 (Austin Abro)
+  * feat(kstatus): fine-grained context options for waiting b0b35f1
+    (Matheus Pimenta)
+  * Apply suggestions from code review 26e28e8 (George Jenkins)
+  * Remove legacy sync-repo.sh script 97fd007 (Jeevan Yewale)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.22.4 to
+    0.23.0 5262007 (dependabot[bot])
+  * docs: document uninstall using cascade foreground flag e70d59d
+    (Evans Mungai)
+  * bugfix(kstatus): do not wait forever on failed resources
+    bbec77c (Matheus Pimenta)
+  * Modernize Helm v3 CONTRIBUTING.md 443a2a6 (George Jenkins)
+  * chore(defaults): server-side apply SDK defaults should always
+    match the CLI defaults c1cc625 (Matheus Pimenta)
+  * chore: clarify --wait flag help text 828038a (Evans Mungai)
+  * chore(deps): bump actions/setup-go from 6.1.0 to 6.2.0 e223771
+    (dependabot[bot])
+  * chore(refactor): better testing and functionality for
+    installing crd 6501ef4 (Manuel Alonso)
+  * bugfix(storage): fix storage not getting logger from driver
+    a8eb527 (Matheus Pimenta)
+  * chore(deps): bump golang.org/x/crypto from 0.46.0 to 0.47.0
+    da1d68a (dependabot[bot])
+  * fix(test): fix tests and check nil for restclient 0f949a9
+    (Manuel Alonso)
+  * fix(test): merge fix correctly 561410a (Manuel Alonso Gonzalez)
+  * Remove refactorring changes from coalesce_test.go 0298b2f
+    (Evans Mungai)
+  * Fix import b8937ad (Evans Mungai)
+  * Update pkg/chart/common/util/coalesce_test.go a333bba (Evans
+    Mungai)
+  * Fix rollback for missing resources 374aeb4 (Feruzjon
+    Muyassarov)
+  * fix(install): add more tests and check nil file data 00f0a48
+    (Manuel Alonso)
+  * fix(test): no check empty resources 0357e8d (Manuel Alonso)
+  * fix(install): check lenght and file nil, add tests 52235cc
+    (Manuel Alonso)
+  * fix(action): crd resources can be empty 268593b (Manuel Alonso)
+  * fix: casing issue fixed 1709114 (Mujib Ahasan)
+  * fix: error handled correctly 9486062 (Mujib Ahasan)
+  * fix: doc string added 12e8b71 (Mujib Ahasan)
+  * Fix lint warning 3416dd5 (Evans Mungai)
+  * Preserve nil values in chart already 679f051 (Evans Mungai)
+  * fix(values): preserve nil values when chart default is empty
+    map 292fe70 (Evans Mungai)
+  * update: test coverage added for helper function
+    validateNameAndGenerateName 1154099 (Mujib Ahasan)
+  * update: helper function added for the business logic 522d2fe
+    (Mujib Ahasan)
+  * generateName is also considered in logic 6769fb6 (Mujib Ahasan)
+  * fxi: test concurrency download index 64bae71 (Terry Howe)
+  * update: business logic respected for skipping object missing
+    name b357bca (Mujib Ahasan)
+  * fixed: --dry-run=server now respect generateName 2820ebe (Mujib
+    Ahasan)
+  * Make error message instructional for the case of lock file
+    being out of date 1836c59 (Andreas Sommer)
+
+-------------------------------------------------------------------
 Thu Apr  9 08:43:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.1.4 (bsc#1261939, CVE-2026-35204,

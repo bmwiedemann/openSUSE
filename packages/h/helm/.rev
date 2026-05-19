@@ -1149,4 +1149,41 @@ See changelog in:
       bsc#1261938 CVE-2026-35206):</comment>
     <requestid>1346237</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>5783832005095987d2255e3caeb142da</srcmd5>
+    <version>4.2.0</version>
+    <time>1779207501</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.0 (bsc#1265428, CVE-2026-41888):
+  * Bump to version v4.2 0646808 (George Jenkins)
+  * build: Clean up Goreleaser change (#32098) e23bf3a (Scott
+    Rigby)
+  * fix: add -extldflags -static to dist target to match
+    build-cross f60ab7c (Terry Howe)
+  * build: use goreleaser build with manual archive creation
+    64aa46f (Terry Howe)
+  * chore: remove build-cross dependency from test-acceptance
+    d199a1a (Terry Howe)
+  * ci: add fetch-depth 0 to canary checkout for goreleaser 8289940
+    (Terry Howe)
+  * fix: address goreleaser build issues flagged in review c075022
+    (Terry Howe)
+  * fix: pass VERSION as GORELEASER_CURRENT_TAG to preserve
+    v-prefix in archive names 04885dd (Terry Howe)
+  * fix: disable goreleaser checksums.txt and restrict zip to
+    windows only 93103ce (Terry Howe)
+  * fix: use index for optional env var in version_template e49a1dc
+    (Terry Howe)
+  * fix: canary build file names eaa0910 (Terry Howe)
+  * Fix archive name 5a75279 (Terry Howe)
+  * fix goreleaser archive 37284a9 (Terry Howe)
+  * add support for loong64 45336cc (Terry Howe)
+  * fix artifact directory a9659b0 (Terry Howe)
+  * update configuration to v2 e368f17 (Terry Howe)
+  * remove GOTOOLCHAIN e7bea85 (Terry Howe)
+  * chore: replace mitchellh/gox with goreleaser 075c096 (Terry
+    Howe)
+  * chore(deps): bump github.com/distribution/distribution/v3</comment>
+    <requestid>1354054</requestid>
+  </revision>
 </revisionlist>
