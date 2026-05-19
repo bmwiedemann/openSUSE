@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 18 16:29:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.16:
+  * Extend timeout for firmware inventory
+  * Handle older XCC3 firmware that can't provide the indicated
+    service data
+  * Explicitly close socket on certificate error
+  * Add more data to service logs from XCC3
+
+-------------------------------------------------------------------
 Wed Mar 18 22:16:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.14:

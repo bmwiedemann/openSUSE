@@ -547,4 +547,17 @@
   * Recognize an alternate MegaRAC system name</comment>
     <requestid>1341043</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5ec9f90ad618a6a1122cb5bc31e1eca1</srcmd5>
+    <version>1.6.16</version>
+    <time>1779205707</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.16:
+  * Extend timeout for firmware inventory
+  * Handle older XCC3 firmware that can't provide the indicated
+    service data
+  * Explicitly close socket on certificate error
+  * Add more data to service logs from XCC3</comment>
+    <requestid>1353865</requestid>
+  </revision>
 </revisionlist>
