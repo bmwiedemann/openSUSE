@@ -28,9 +28,9 @@ RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends ca-certificates-mozilla-prebuilt coreutils timezone openSUSE-release openSUSE-release-appliance-docker
 
-RUN set -euo pipefail; rpm --root /target -e --noscripts --nodeps bash glibc compat-usrmerge-tools coreutils terminfo-base \
+RUN set -euo pipefail; rpm --root /target -e --noscripts --nodeps bash bash-sh glibc compat-usrmerge-tools coreutils terminfo-base \
     $(rpm --root /target -qa --qf '%{NAME}\n' | grep -E '^lib') \
-    && rm /target/usr/{sbin,bin}/* -v
+    && rm /target/usr/sbin/* -v
 
 COPY pause.c ./pause.c
 RUN set -euo pipefail; zypper -n install glibc-devel-static gcc binutils \
