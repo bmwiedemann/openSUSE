@@ -1,7 +1,7 @@
 #
 # spec file for package tlp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 %{!?_udevrulesdir: %define _udevrulesdir %{_udevdir}/rules.d}
 Name:           tlp
-Version:        1.9.1
+Version:        1.10.1
 Release:        0
 Summary:        Tools to save battery power on laptops
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -209,7 +209,6 @@ make install-man      DESTDIR=%{buildroot}
 make install-man-rdw  DESTDIR=%{buildroot}
 
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rctlp
-
 
 %pre
 %service_add_pre tlp.service

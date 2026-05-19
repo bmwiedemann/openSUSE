@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Mon May 18 12:58:09 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Update to version 1.10.1:
+  * *** 1.10.1 Release ***
+  * manpages: update version, date
+  * README: articulate benefits more clearly
+  * bat.d/thinkpad: cover edge case with force-discharge capable coreboot
+  * tlp.service: fix start on Fedora
+  * bat.d/lenovo: charges_types='Fast' also means threshold is off
+  * *** 1.10.0 Release ***
+  * manpages: update version, date
+  * tlp.conf: typo
+  * Makefile checkconf: check tlp.conf for non-empty lines without leading '#'
+  * tlp-stat -d: fix incomplete, anonymized device list
+  * tlp.conf: fix missing '#'
+  * *** 1.10.0-beta.2 ***
+  * manpages: update version, date
+  * Remove accidential code
+  * bat.d/framework: remove obsolete plugin
+  * tlp suspend/resume: skip non-existent radio devices
+  * tlp suspend/resume: do not persist bluetooth state if system76-driver is installed
+  * tlp.conf: document ASPM default
+  * bat.d/lenovo: tlp-stat -b: fix missing line break
+  * feat: Add PCIE_ASPM_ON_SAV parameter for power-saver profile
+  * Fix INTEL_GPU_POWER_PROFILE_* not working for GPU with multiple gtX
+  * tlp.conf: explain TLP_AUTO_SWITCH depending on TLP_PROFILE_AC/BAT
+  * INTEL_GPU_POWER_PROFILE_ON_BAT: change default to power_saving
+  * tlp.conf: clarity
+  * TLP_AUTO_SWITCH: intercept borked config
+  * Fix debug log
+  * TLP_DISABLE_DEFAULTS: exclude TLP_AUTO_SWITCH=2
+  * *** 1.10.0-beta.1 ***
+  * manpages: update version, date
+  * Fix/unclutter debug log
+  * Sandbox tlp/tlp-pd.service
+  * tlp-stat -s: improve tlp-pd.service message
+  * LICENSE: update FSF address
+  * Cleanup radio switching on startup/shutdown and profile change
+  * tlp-stat -T: show timestamps w/ microseconds
+  * "power profile" --> "(TLP )profile"
+  * bat.d: revise discharge init error messages
+  * bat.d: refactor discharge flow
+  * bat.d/cros-ec: fix force-discharge initialization
+  * tlp-pd: add GLib.Error code to all exceptions raised
+  * tlp-pd: reduce input sanitation appropriately
+  * tlp-pd: unify parameters.unpack in _handle_method_call()
+  * tlp-pd: truncate all D-Bus input
+  * tlp-pd: do not raise GLib.Error for invalid profile changes
+  * tlp-pd: make property BatteryAware de facto readonly
+  * tlp-pd: unify introspection XML args declaration
+  * tlp-pd: derive property BatteryAware from TLP_AUTO_SWITCH
+  * tlp.conf: use the term "autosuspend" for PCIe as well
+  * RUNTIME_PM_DRIVER_DENYLIST: add amdgpu, nvidia to default; remove radeon
+  * tlp-stat -e: indicate when autosuspend is deactivated
+  * Deprecate RADEON_DPM_STATE_ON_AC/BAT/SAV
+  * Deprecate RESTORE_DEVICE_STATE_ON_STARTUP
+  * bat.d: fix message
+  * bat.d/cros-ec: catch reset during force-discharge initialization
+  * bat.d/thinkpad{-legacy}: catch reset during force-discharge initialization
+  * tlp resume: drop lg-legacy
+  * tlp auto|start|resume: do not apply charge thresholds during force-discharge
+  * tlp-readconfs: simplify line filter regex
+  * tlp-readconfs: spare TLP_PROFILE_AC/BAT from TLP_DISABLE_DEFAULTS=1
+  * Deprecate TLP_PERSISTENT_DEFAULT
+  * Rename TLP_DEFAULT_MODE to TLP_PROFILE_DEFAULT
+  * TLP_PROFILE_AC/BAT: customize automatic TLP profiles for AC and battery
+  * defaults.conf: add RADEON_DPM_PERF_LEVEL_ON_SAV=low
+  * CQM: make shellcheck happy
+  * tlp.conf: change "power profile" to "TLP profile" (matching tlp-stat -s)
+  * defaults.conf: change to RESTORE_THRESHOLDS_ON_BAT=1
+  * tlp-pd: fix polkit auth result
+  * tlp-stat -s: remove blank check for AC quirk
+  * tlp-stat -s: tidy up system and BIOS identification
+  * bat.d/thinkpad: fix detection of T580 w/ libreboot
+  * bat.d: batdrv_calc_soc() generic implementation
+  * tlpctl: no --version before a command
+  * tlpctl: recover --version
+  * tlp-pd: reverse profile order to correspond with p-p-d in desktop UIs
+  * tlp-pd: rewrite to use only Gio/GLib D-Bus methods
+  * Refactor list concatenation
+  * tlp-stat -g: drop obsolete i915 sysfs attribute variants
+  * tlp-stat -g: fix Intel Xe frequencies
+  * INTEL_GPU_MIN/MAX_FREQ_ON_AC/BAT/SAV: support Intel Xe GPU
+  * INTEL_GPU_POWER_PROFILE_ON_AC/BAT/SAV: support Intel Xe SLPC power profile
+  * Refactor GPU PM
+  * tlp-stat -g: include the Intel xe driver
+  * tlp-stat -s: rename "Power profile" to "TLP profile"
+  * tlp-stat -g: show power_state for AMD and Nvidia GPUs
+  * Improve message readability: “invoke” -> “run”
+  * tlp-stat -s: fix parsing of Gentoo's /etc/os-release with '' quoting
+  * bat.d/lenovo: clarify tlp-stat -b output
+  * bat.d/lg-legacy: remove plugin that is only required by kernel < 5.18
+  * Makefile checkwip: ignore research* files
+  * tlp.conf: better describe how thresholds work
+  * Remove backward compatibility with /etc/default/tlp
+  * tlp-stat -b -v: refactor battery readings
+  * tlp-stat -b -v: show serial number
+  * bat.d/lenovo: enable transition to lenovo-legacy
+  * tlp-stat -s: rename "Power profile" to "TLP profile"
+  * bat.d/lenovo: support charge_types attribute as of kernel 6.17
+  * Allow '[', ']' in parameter values
+  * bat.d/lenovo-legacy: split off for kernel < 6.17
+  * bat.d/TEMPLATE: unify messages
+  * Update 1.9.1 changelog with info from the SUSE security advisory
+  * bat.d/wilco-ec: tlp-stat -b: align output
+  * Add INTEL_GPU_MIN/MAX/BOOST_FREQ_ON_SAV
+  * tlp.conf: rearrange RADEON_DPM_* values
+  * defaults.conf: add RADEON_DPM_PERF_LEVEL_ON_SAV=auto
+  * tlp.conf: add RADEON_DPM_PERF_ON_SAV, RADEON_DPM_STATE_ON_SAV
+  * Add RADEON_DPM_PERF_ON_SAV, RADEON_DPM_STATE_ON_SAV
+  * bat.d/wilco-ec: update specs
+  * bat.d/wilco-ec: thresholds apply to all batteries; adapt messages
+  * bat.d/wilco-ec: drop X_THRESH_SIMULATE_LOCKEDBIOS logic
+  * bat.d/wilco-ec: tlp-stat -b: use consolidated battery readout
+  * Add plugin support for wilco-ec battery care
+  * tlp-stat -s: align output
+  * bat.d/samsung: tlp-stat -b: fix output
+  * bat.d/*: tlp-stat -b: use consolidated battery readouts
+  * tlp-stat -b: consolidate battery readouts
+  * bat.d/*: tlp-stat -b: use consolidated energy/charge readout
+  * bat.d/thinkpad{-legacy}: tlp-stat -b: use consolidated energy/charge readout
+  * bat.d/dell: tlp-stat -b: use consolidated energy/charge readout
+  * tlp-stat -b: display mW(h) values next to mA(h) values
+  * tlp-stat -s: fix columns
+  * Simplify battery and natacpi detection block and change $ACPIBATDIR/wilco-charger/charge_type to $_bf_chtype
+  * Add plugin support for wilco-ec battery care
+  * Makefile checkwip: detect "FIXME"
+  * Fix RESTORE_THRESHOLDS_ON_BAT
+  * Explicitly use daemon facility for logging
+
+-------------------------------------------------------------------
 Wed Jan 14 12:01:10 UTC 2026 - Thomas Renninger <trenn@suse.de>
 
 - Make completion pkgs require their command providing pkg
