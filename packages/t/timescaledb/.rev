@@ -632,4 +632,29 @@ Stop storing build machine kernel version (boo#1101107)</comment>
     <comment>- Update to 2.27.0</comment>
     <requestid>1352693</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>8a09fa2ed7db7ebf4069342131a8d33a</srcmd5>
+    <version>2.27.1</version>
+    <time>1779205859</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.27.1
+  Please note: When updating your database, you should connect
+  using This page lists all the latest features and updates to
+  TimescaleDB. When you use psql to update your database, use the
+  -X flag and prevent any .psqlrc commands from accidentally
+  triggering the load of a previous DB version.
+  This release contains performance improvements and bug fixes
+  since the 2.27.0 release. We recommend that you upgrade at the
+  next available opportunity.
+  Bugfixes
+  - #9795 Delete orphaned compression_settings before migrating
+    catalog table
+  - #9799 Fix job_errors view leaking failed jobs to non-owners
+  - #9800 Check hypertable ownership before recompression
+  - #9801 Fix information leak in policy_reorder_remove
+  - #9824 Adding migration scripts for composite bloom filters
+  - #9828 Skip columnar index scan when grouping by an expression
+  - #9830 Skip ColumnarIndexScan for GROUPING SETS / ROLLUP / CUBE</comment>
+    <requestid>1354001</requestid>
+  </revision>
 </revisionlist>
