@@ -464,6 +464,7 @@ unsorted:
   - aegisub 
   - aelfred 
   - aelfred-javadoc 
+  - aeon-check 
   - aer-inject 
   - aerc 
   - aespipe 
@@ -2514,6 +2515,7 @@ unsorted:
   - colormake 
   - colorpicker 
   - colorpicker-lang 
+  - combustion 
   - comet 
   - commandergenius 
   - commons-compiler 
@@ -8862,6 +8864,7 @@ unsorted:
   - ifuse 
   - iga 
   - igerman98-doc 
+  - ignition 
   - igrep 
   - igsc 
   - igsc-devel 
@@ -26105,7 +26108,6 @@ unsorted:
   - python311-jinja2-pluralize 
   - python311-jinja2-time 
   - python311-jira 
-  - python311-jirafs 
   - python311-jiter 
   - python311-jiwer 
   - python311-joblib 
@@ -26624,7 +26626,6 @@ unsorted:
   - python311-orderedmultidict 
   - python311-orderly-set 
   - python311-orjson 
-  - python311-os-client-config 
   - python311-os-service-types 
   - python311-os-traits 
   - python311-osc-lib 
@@ -26768,7 +26769,6 @@ unsorted:
   - python311-pikepdf 
   - python311-pilkit 
   - python311-pillow-heif 
-  - python311-pims 
   - python311-pingparsing 
   - python311-pip-api 
   - python311-pip-licenses 
@@ -30590,7 +30590,6 @@ unsorted:
   - python313-orderedmultidict 
   - python313-orderly-set 
   - python313-orjson 
-  - python313-os-client-config 
   - python313-os-service-types 
   - python313-os-traits 
   - python313-osc-lib 
@@ -32491,7 +32490,9 @@ unsorted:
   - python314-argparse-manpage 
   - python314-argparse_addons 
   - python314-arrow 
+  - python314-arviz 
   - python314-arviz-base 
+  - python314-arviz-plots 
   - python314-arviz-stats 
   - python314-asciimatics 
   - python314-asciitree 
@@ -33014,6 +33015,7 @@ unsorted:
   - python314-base58 
   - python314-bashate 
   - python314-bcrypt 
+  - python314-beartype 
   - python314-beautifulsoup4 
   - python314-before-after 
   - python314-behave 
@@ -33383,6 +33385,7 @@ unsorted:
   - python314-django-grappelli 
   - python314-django-gravatar2 
   - python314-django-guardian 
+  - python314-django-haystack 
   - python314-django-health-check 
   - python314-django-import-export 
   - python314-django-invitations 
@@ -34203,6 +34206,7 @@ unsorted:
   - python314-ligo-lw 
   - python314-ligo-segments 
   - python314-ligotimegps 
+  - python314-limnoria 
   - python314-line_profiler 
   - python314-linetable 
   - python314-lineup-widget 
@@ -34535,7 +34539,6 @@ unsorted:
   - python314-orderedmultidict 
   - python314-orderly-set 
   - python314-orjson 
-  - python314-os-client-config 
   - python314-os-service-types 
   - python314-os-traits 
   - python314-osc-lib 
@@ -35997,6 +36000,7 @@ unsorted:
   - python314-wyoming 
   - python314-x86-64-v3 
   - python314-xapian 
+  - python314-xapian-haystack 
   - python314-xapp 
   - python314-xarray 
   - python314-xarray-accel 
@@ -38822,6 +38826,7 @@ unsorted:
   - systemd-devel 
   - systemd-devel-32bit 
   - systemd-doc 
+  - systemd-experimental 
   - systemd-generator-cron2timer 
   - systemd-homed 
   - systemd-journal-remote 
