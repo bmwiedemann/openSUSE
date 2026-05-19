@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible-core
-Version:        2.20.5
+Version:        2.20.6
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later

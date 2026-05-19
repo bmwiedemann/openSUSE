@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 19 07:08:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.20.6:
+  https://github.com/ansible/ansible/blob/v2.20.6/changelogs/CHANGELOG-v2.20.rst
+  * Security Fixes
+    - psrp - Do not log raw stdout/stderr on verbosity 5 when task
+      has no_log: true set
+    - winrm - Do not log raw stdout/stderr on verbosity 5 when task
+      has no_log: true set
+  * Bugfixes
+    - ansible-test remote alias - Alias values for --controller and
+      --target are properly resolved for remote. Previously, remote
+      alias values (e.g. fedora/latest) resolved to the correct
+      name only for the legacy --remote arg, failing with an
+      unknown image error for the newer args.
+    - git - use the branch configured in .gitmodules or the remote
+      HEAD instead of hardcoding master when track_submodules=yes
+      (#77691).
+    - module_utils/basic.py - Fix AnsibleModule.run_command() to
+      handle None return from non-blocking pipe reads (#86920).
+
+-------------------------------------------------------------------
 Tue Apr 21 06:09:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.20.5:
