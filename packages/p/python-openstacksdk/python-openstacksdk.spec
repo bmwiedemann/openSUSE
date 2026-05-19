@@ -17,7 +17,7 @@
 
 
 Name:           python-openstacksdk
-Version:        4.10.0
+Version:        4.13.0
 Release:        0
 Summary:        An SDK for building applications to work with OpenStack
 License:        Apache-2.0
@@ -25,53 +25,48 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/openstacksdk
 Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML >= 3.13}
-BuildRequires:  %{python_module appdirs}
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module ddt}
+BuildRequires:  %{python_module cryptography >= 2.7}
+BuildRequires:  %{python_module ddt >= 1.0.1}
 BuildRequires:  %{python_module decorator >= 4.4.1}
 BuildRequires:  %{python_module deprecation}
 BuildRequires:  %{python_module dogpile.cache >= 0.6.5}
-BuildRequires:  %{python_module extras}
-BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module fixtures >= 3.0.0}
+BuildRequires:  %{python_module iso8601 >= 0.1.11}
 BuildRequires:  %{python_module jmespath >= 0.9.0}
 BuildRequires:  %{python_module jsonpatch >= 1.16}
-BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module jsonschema >= 3.2.0}
+BuildRequires:  %{python_module keyring >= 24.0.0}
 BuildRequires:  %{python_module keystoneauth1 >= 5.12.0}
-BuildRequires:  %{python_module munch}
-BuildRequires:  %{python_module netifaces >= 0.10.4}
 BuildRequires:  %{python_module os-service-types >= 1.8.1}
-BuildRequires:  %{python_module oslo.config}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module oslo.config >= 6.1.0}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
 BuildRequires:  %{python_module pbr >= 2.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 3}
-BuildRequires:  %{python_module prometheus_client}
-BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module prometheus_client >= 0.4.2}
+BuildRequires:  %{python_module psutil >= 3.2.2}
 BuildRequires:  %{python_module python-subunit}
-BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module requestsexceptions >= 1.2.0}
-BuildRequires:  %{python_module statsd}
-BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module requests-mock >= 1.2.0}
+BuildRequires:  %{python_module statsd >= 3.3.0}
+BuildRequires:  %{python_module stestr >= 1.0.0}
 BuildRequires:  %{python_module stevedore}
-BuildRequires:  %{python_module testscenarios}
-BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module testscenarios >= 0.4}
+BuildRequires:  %{python_module testtools >= 2.2.0}
+BuildRequires:  %{python_module typing-extensions >= 4.12.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-PyYAML >= 3.13
-Requires:       python-appdirs
 Requires:       python-cryptography >= 2.7
 Requires:       python-decorator >= 4.4.1
 Requires:       python-dogpile.cache >= 0.6.5
 Requires:       python-iso8601 >= 0.1.11
 Requires:       python-jmespath >= 0.9.0
 Requires:       python-jsonpatch >= 1.16
-Requires:       python-keystoneauth1 >= 5.12.0
-Requires:       python-munch
-Requires:       python-netifaces >= 0.10.4
+Requires:       python-keystoneauth1 >= 5.10.0
 Requires:       python-os-service-types >= 1.8.1
 Requires:       python-platformdirs >= 3
-Requires:       python-psutil
-Requires:       python-requestsexceptions >= 1.2.0
+Requires:       python-psutil >= 3.2.2
+Requires:       python-typing-extensions >= 4.12.0
 BuildArch:      noarch
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-openstacksdk < %{version}

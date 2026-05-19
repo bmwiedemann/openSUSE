@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon May 18 11:18:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13.0:
+  * Add _max_microversion to ShareGroupSnapshot
+  * typing: Add annotations to all Proxy.create_* methods
+  * typing: Add annotations for Resource.create
+  * Deprecate version module
+  * volume v2: Add force delete
+  * zuul: Make networking-ext non-voting
+  * Replace OVN Metadata agent with OVN agent
+  * Update packaging configuration
+  * volume: Migrate create_image proxy methods
+  * load_balancer: add vip_sg_ids field to LoadBalancer resource
+  * typing: Fix type for Connection.connect_as_project
+  * key_manager: Remove unnecessary overrides of base_path
+  * Read connect_retry_delay in get_session_client
+  * Fix type of the networking related attributes
+  * Add SecurityGroupsDefaultStatefulness resource
+  * fix hashlib ValueError message check for py3.15
+
+-------------------------------------------------------------------
+Sun May 10 11:18:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.12.0:
+  * Identity: add update_password function
+  * baremetal: Add warnings for useless find methods
+  * resource: Add general _clean_body helper
+  * Fix ZoneImport base_path to match Designate API
+  * Add type hints for all find_* methods
+  * tests: Move test of Resource.patch
+  * cloud: Fix has_service for keystone
+  * identity: Fix limit, registered limit update
+  * typing: Make config stricter again
+  * typing: Add remaining types to service_description
+  * typing: Add remaining types to Resource
+  * typing: Add remaining types to QueryParameters
+  * resource: Split _prepare_request_body
+  * resource: Allow populating %(id)s in base_path
+  * typing: Add annotations for Resource.patch
+  * resource: Drop Resource.commit_jsonpatch
+  * image: Allow Image.patch calls
+  * identity: Add Limit.domain_id field
+  * resource: Simplify create, bulk_create
+  * Add a PUT command to update a router associated to an agent
+  * Remove outdated comment in setup.py
+  * Add ``ha_chassis_priority`` field to the Agent resource
+  * typing: Remove unnecessary Resource.find overloads
+  * typing: Use objects from typing_extensions
+  * typing: Use objects from typing
+  * typing: Use objects from collections.abc
+  * typing: Update for typed oslotest
+  * Add shares API to compute
+  * Fix port binding host parameter handling
+  * Fix UserGroup.base_path format specifier
+  * Add schema_version property to idp mappings
+  * Fix RecursionError when deepcopy is called on CloudRegion
+  * Identity: Support authorization_ttl property for identity
+    providers
+  * trivial: Remove excess indentation
+  * Remove requestsexceptions
+  * Remove references to urllib3.exceptions.SubjectAltNameWarning
+  * Adapt to new testtools
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+  * Fix help for cloud.port_create
+  * image: Fix docstring typo
+  * typing: Annotate openstack.service_description
+  * utils: Add ensure_service_version helper
+  * service_description: Avoid use of built kwargs
+  * service_description: Add missing None checks
+  * service_description: Trivial fixups
+  * proxy: Add api_version attribute
+  * tests: Use common structure for functional tests
+  * trivial: Misc test fixes
+  * Remove unused babel.cfg
+  * Fix type issue
+  * Allow configuring connect_retry_delay
+  * Remove MANIFEST.in
+  * Run mypy from tox
+  * trivial: Align tox indentation with other SDK projects
+  * Deprecate support for InfluxDB
+
+-------------------------------------------------------------------
 Mon Mar  9 11:49:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.10.0:

@@ -710,4 +710,41 @@
   * update requirements for os-service-types to new release 1.8.1</comment>
     <requestid>1337646</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>12a867b56ac2a778298fc69a4f4f3141</srcmd5>
+    <version>4.13.0</version>
+    <time>1779205704</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.13.0:
+  * Add _max_microversion to ShareGroupSnapshot
+  * typing: Add annotations to all Proxy.create_* methods
+  * typing: Add annotations for Resource.create
+  * Deprecate version module
+  * volume v2: Add force delete
+  * zuul: Make networking-ext non-voting
+  * Replace OVN Metadata agent with OVN agent
+  * Update packaging configuration
+  * volume: Migrate create_image proxy methods
+  * load_balancer: add vip_sg_ids field to LoadBalancer resource
+  * typing: Fix type for Connection.connect_as_project
+  * key_manager: Remove unnecessary overrides of base_path
+  * Read connect_retry_delay in get_session_client
+  * Fix type of the networking related attributes
+  * Add SecurityGroupsDefaultStatefulness resource
+  * fix hashlib ValueError message check for py3.15
+
+- update to 4.12.0:
+  * Identity: add update_password function
+  * baremetal: Add warnings for useless find methods
+  * resource: Add general _clean_body helper
+  * Fix ZoneImport base_path to match Designate API
+  * Add type hints for all find_* methods
+  * tests: Move test of Resource.patch
+  * cloud: Fix has_service for keystone
+  * identity: Fix limit, registered limit update
+  * typing: Make config stricter again
+  * typing: Add remaining types to service_description
+  * typing: Add remaining types to Resource</comment>
+    <requestid>1353901</requestid>
+  </revision>
 </revisionlist>
