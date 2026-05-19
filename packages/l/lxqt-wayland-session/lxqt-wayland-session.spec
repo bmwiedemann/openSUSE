@@ -17,7 +17,7 @@
 #
 
 # Disable hyprland and river for SLE/Leap
-%if 0%{?suse_version} && 0%{?suse_version} <= 1600
+%if 0%{?suse_version} && 0%{?suse_version} < 1699
   %bcond river_session 0
   %bcond hyprland_session 0
 %else

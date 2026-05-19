@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 19 05:11:01 UTC 2026 - Max Lin <mlin@suse.com>
+
+- Adjust the version condition since %suse_version macro is changed
+  in Leap 16.1 to 1610
+
+-------------------------------------------------------------------
 Tue Apr 21 14:04:48 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 0.4.0:
