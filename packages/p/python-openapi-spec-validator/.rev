@@ -206,4 +206,13 @@
   * Update jsonschema dependency version range #489</comment>
     <requestid>1350568</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>9382d2f0266df636ac426301c1706417</srcmd5>
+    <version>0.8.5</version>
+    <time>1779210502</time>
+    <user>anag_factory</user>
+    <comment>- remove upper bound on schema-validator
+  (gh#openapi-spec-validator#503)</comment>
+    <requestid>1354052</requestid>
+  </revision>
 </revisionlist>
