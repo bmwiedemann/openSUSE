@@ -17,14 +17,14 @@
 
 
 Name:           gap-forms
-Version:        1.2.14
+Version:        1.3.0
 Release:        0
 Summary:        GAP: Sesquilinear and quadratic forms
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/forms/
 #Git-Clone:     https://github.com/gap-packages/forms
-#Changelog:     <source>/doc/intro.xml
+#Changelog:     <source>/doc/intro.xml or <source>/doc/chap1.html (page end)
 Source:         https://github.com/gap-packages/forms/releases/download/v%version/forms-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
