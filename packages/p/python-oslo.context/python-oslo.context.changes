@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 18 22:12:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.0:
+  * tox: Use new constraints option
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Re-implement the interface to override is_admin check
+  * Update master for stable/2026.1
+  * Ignore errant warning
+  * Parse domain_name header
+
+-------------------------------------------------------------------
 Mon Mar  9 15:15:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.3.0:

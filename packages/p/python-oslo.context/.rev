@@ -355,4 +355,19 @@
   * Update master for stable/2025.2</comment>
     <requestid>1348074</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>180960d0ee9c226a3c4becbe53565869</srcmd5>
+    <version>6.4.0</version>
+    <time>1779205712</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.4.0:
+  * tox: Use new constraints option
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Re-implement the interface to override is_admin check
+  * Update master for stable/2026.1
+  * Ignore errant warning
+  * Parse domain_name header</comment>
+    <requestid>1353905</requestid>
+  </revision>
 </revisionlist>

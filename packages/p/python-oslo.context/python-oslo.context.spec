@@ -18,19 +18,20 @@
 
 %bcond_without test
 Name:           python-oslo.context
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        OpenStack Oslo context library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.context
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo_context/oslo_context-%{version}.tar.gz
-BuildRequires:  %{python_module pbr >= 2.0.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module typing-extensions >= 4.12.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 BuildArch:      noarch
+Requires:       python-pbr >= 2.0.0
 Requires:       python-typing-extensions >= 4.12.0
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-oslo.context < %{version}
