@@ -182,4 +182,12 @@
     <comment>Update to 0.14.0 (forwarded request 1347887 from ojkastl_buildservice)</comment>
     <requestid>1347927</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cad12e45a52103942acd5e117baa2ac7</srcmd5>
+    <version>0.14.1</version>
+    <time>1779205736</time>
+    <user>anag_factory</user>
+    <comment>update to 0.14.1 (forwarded request 1353309 from ojkastl_buildservice)</comment>
+    <requestid>1353895</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri May 15 07:21:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.14.1:
+  * fix(deps): update module github.com/go-authgate/sdk-go to
+    v0.11.0 in #988
+  * fix(deps): update module golang.org/x/term to v0.43.0 in #989
+  * fix(deps): update module code.gitea.io/sdk/gitea to v0.25.1 in
+    #991
+  * fix(deps): update module github.com/urfave/cli/v3 to v3.9.0 in
+    #992
+  * fix(deps): update github.com/urfave/cli to v3.9.0 in #993
+  * Fix login edit to check config existence in #987
+  * fix(deps): update module code.gitea.io/sdk/gitea to v0.25.0 in
+    #984
+  * fix: pass the name flag value as the organization FullName in
+    #832
+  * Fix login edit to open one editor only in #977
+  * fix(deps): update module github.com/go-authgate/sdk-go to
+    v0.10.0 in #976
+  * feat: add additional admin users subcommands in #842
+  * feat(ssh-keys): add ssh-keys command to manage SSH public keys
+    in #940
+  * Multiple PRs in #848
+  * Move integration tests to tests/ directory in #973
+  * fix(deps): update module github.com/go-authgate/sdk-go to
+    v0.9.0 in #974
+  * fix(deps): update module github.com/go-authgate/sdk-go to
+    v0.8.0 in #972
+  * fix(webhook): Fix when creating webhook, branch filter and auth
+    header cannot be added in #964
+  * fix: read --assignee flag value instead of nonexistent
+    --assigned-to in #971
+  * Fix man page section in #969
+  * fix(deps): update module github.com/go-authgate/sdk-go to
+    v0.7.0 in #970
+  * chore(deps): update docker.gitea.com/gitea docker tag to
+    v1.26.1 in #968
+  * fix(pagination): replace Page:-1 with explicit pagination loops
+    in #967
+  * fix(cmd): Update CmdRepos description and usage in repos.go in
+    #946
+  * fix(context): skip local repo detection for repo slugs in #960
+  * fix(deps): update module charm.land/lipgloss/v2 to v2.0.3 in
+    #959
+  * fix(deps): update module github.com/go-git/go-git/v5 to v5.18.0
+    in #961
+  * chore(deps): update docker.gitea.com/gitea docker tag to
+    v1.26.0 in #962
+
+-------------------------------------------------------------------
 Sat Apr 18 05:59:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.14.0:
