@@ -47,6 +47,8 @@ Requires:       python3-libvirt-python
 Requires:       python3-PyYAML
 Requires:       7zip
 %endif
+Requires: 	python3-netifaces
+Requires: 	python3-linkify-it-py
 Requires:       python3-textual >= 8.0.0
 Requires:       python3-markdown-it-py
 Requires:       tmux
