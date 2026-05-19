@@ -28,12 +28,10 @@ Source0:        https://files.pythonhosted.org/packages/source/e/ephem/ephem-%{v
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytzdata}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytzdata
 %python_subpackages
 
 %description

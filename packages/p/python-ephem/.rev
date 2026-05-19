@@ -150,4 +150,12 @@
     like editors, debuggers, and type checkers.</comment>
     <requestid>1343863</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2a0c0f6d6ca7d224b5284297815ee1cf</srcmd5>
+    <version>4.2.1</version>
+    <time>1779205721</time>
+    <user>anag_factory</user>
+    <comment>- remove pytzdata dependency (uses zoneinfo now)</comment>
+    <requestid>1353880</requestid>
+  </revision>
 </revisionlist>
