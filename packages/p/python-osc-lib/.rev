@@ -385,4 +385,23 @@
   * Add typing classifier</comment>
     <requestid>1337636</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8b1e6f6521d022368d1b9860eac2bafa</srcmd5>
+    <version>4.6.0</version>
+    <time>1779205701</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.6.0:
+  * clientmanager: Add filters for
+    ClientManger.is_service_available
+  * fix: unbound variable when both values are false
+  * typing: union-attrs on find_project()
+  * typing: Use objects from typing
+  * typing: Use objects from collections.abc
+  * typing: Broaden return type of
+    OpenStackShell.build_option_parser
+  * ruff: Configure hacking as external linter
+  * Return list from sort_items
+  * Update master for stable/2026.1</comment>
+    <requestid>1353845</requestid>
+  </revision>
 </revisionlist>

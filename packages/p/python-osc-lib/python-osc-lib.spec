@@ -17,7 +17,7 @@
 
 
 Name:           python-osc-lib
-Version:        4.4.0
+Version:        4.6.0
 Release:        0
 Summary:        OpenStackClient Library
 License:        Apache-2.0
@@ -27,13 +27,15 @@ Source0:        https://files.pythonhosted.org/packages/source/o/osc_lib/osc_lib
 BuildRequires:  %{python_module cliff >= 4.9.0}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module keystoneauth1 >= 5.10.0}
-BuildRequires:  %{python_module openstacksdk >= 4.7.1}
+BuildRequires:  %{python_module openstacksdk >= 4.12.0}
 BuildRequires:  %{python_module oslo.i18n >= 6.6.0}
 BuildRequires:  %{python_module oslo.utils >= 9.1.0}
 BuildRequires:  %{python_module oslotest}
 BuildRequires:  %{python_module osprofiler}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs}
+BuildRequires:  %{python_module requests >= 2.14.2}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module simplejson}
 BuildRequires:  %{python_module stestr}
@@ -43,11 +45,12 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-cliff >= 4.9.0
 Requires:       python-keystoneauth1 >= 5.10.0
-Requires:       python-openstacksdk >= 4.7.1
+Requires:       python-openstacksdk >= 4.12.0
 Requires:       python-oslo.i18n >= 6.6.0
 Requires:       python-oslo.utils >= 9.1.0
 Requires:       python-pbr >= 2.0.0
 Requires:       python-platformdirs
+Requires:       python-requests >= 2.14.2
 Requires:       python-simplejson
 Requires:       python-stevedore >= 1.20.0
 %if "python%{python_nodots_ver}" == "%{primary_python}"

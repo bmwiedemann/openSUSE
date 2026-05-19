@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 18 13:23:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.0:
+  * clientmanager: Add filters for
+    ClientManger.is_service_available
+  * fix: unbound variable when both values are false
+  * typing: union-attrs on find_project()
+  * typing: Use objects from typing
+  * typing: Use objects from collections.abc
+  * typing: Broaden return type of
+    OpenStackShell.build_option_parser
+  * ruff: Configure hacking as external linter
+  * Return list from sort_items
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Mon Mar  9 10:50:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.0:
