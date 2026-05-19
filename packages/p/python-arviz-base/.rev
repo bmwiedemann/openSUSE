@@ -7,4 +7,27 @@
     <comment>- Initial release of 1.0.0.</comment>
     <requestid>1335950</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ae4654516088d14549d57135de61ce5a</srcmd5>
+    <version>1.1.0</version>
+    <time>1779205814</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1.0:
+  ## New Features
+  * Handle objects with _array_ method in convert_to_datatree
+  * load_data provide better suggestions
+  * Numpyro Converter refactor
+  ## Documentation
+  * Update readme
+  * Add CITATION.CFF
+  * Fix parameter name mismatch in extract and add missing parameter descriptions
+  * Add missing parameter descriptions in utils.py and fix typo
+  * Update reference for ArviZ
+  ## Maintenance and bug fixes
+  * set kind=auto as default and add validation module
+  * remove unused isort and black from check extras
+  * add ignore for xarray related timedelta dtype deprecation
+  * Improve type hints in utils module</comment>
+    <requestid>1353938</requestid>
+  </revision>
 </revisionlist>

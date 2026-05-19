@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 19 05:47:38 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.1.0:
+  ## New Features
+  * Handle objects with _array_ method in convert_to_datatree
+  * load_data provide better suggestions
+  * Numpyro Converter refactor
+
+  ## Documentation
+  * Update readme
+  * Add CITATION.CFF
+  * Fix parameter name mismatch in extract and add missing parameter descriptions
+  * Add missing parameter descriptions in utils.py and fix typo
+  * Update reference for ArviZ
+
+  ## Maintenance and bug fixes
+  * set kind=auto as default and add validation module
+  * remove unused isort and black from check extras
+  * add ignore for xarray related timedelta dtype deprecation
+  * Improve type hints in utils module
+
+-------------------------------------------------------------------
 Tue Mar  3 04:34:20 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 1.0.0.

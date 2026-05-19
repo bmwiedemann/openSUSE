@@ -19,7 +19,7 @@
 # Upstream supports Python 3.12+
 %define skip_python311 1
 Name:           python-arviz-base
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Base ArviZ features and converters
 License:        Apache-2.0
@@ -36,11 +36,13 @@ BuildRequires:  %{python_module xarray-complete >= 2024.11.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module lazy_loader}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-numpy >= 2
 Requires:       python-typing-extensions >= 3.10
 Requires:       python-xarray >= 2024.11.0
+Requires:       python-lazy_loader
 Suggests:       python-h5netcdf
 Suggests:       python-netcdf4
 Suggests:       python-h5netcdf
