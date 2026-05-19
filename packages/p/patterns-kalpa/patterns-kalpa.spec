@@ -92,13 +92,11 @@ Requires:       procps
 Requires:       rpm
 Requires:       shadow
 Requires:       snapper
-Requires:       vim
 Requires:       wtmpdb
 # people are addicted to sudo
 Requires:       sudo
 Requires:       systemd
 Requires:       systemd-coredump
-Requires:       systemd-experimental
 Requires:       system-group-wheel
 Requires:       systemd-zram-service
 Requires:       terminfo-base
@@ -170,8 +168,9 @@ Requires:       ntfsprogs
 
 
 ### Firstboot Configuration
-Requires:       combustion
-Requires:       ignition-dracut
+# Revisit later
+# Requires:       combustion
+# Requires:       ignition-dracut
 
 
 ### SELinux requirements
@@ -316,13 +315,14 @@ Requires:       kf6-baloo-file
 Requires:       kf6-purpose
 Requires:       kf6-qqc2-desktop-style
 Requires:       kgamma6
-Requires:       khelpcenter
+# Not in current images, and nobody is complaining, re-evaluate later
+# Requires:       khelpcenter
 Requires:       kio-extras
 Requires:       kio-gdrive
 Requires:       ksshaskpass6
 Requires:       kunifiedpush
 Requires:       kwalletmanager
-Requires:       libappindicator-gtk3
+Requires:       libappindicator3-1
 Requires:       ocean-sound-theme6
 Requires:       oxygen5-sounds
 Requires:       pam_kwallet6
@@ -342,7 +342,7 @@ Requires:       xdg-desktop-portal-kde6
 
 ### Themeing and Branding
 # Add Aeon-check
-Requires:       aeon-check
+# Requires:       aeon-check
 Requires:       branding-openSUSE
 Requires:       distribution-logos-openSUSE-Kalpa
 Requires:       (gtk4-metatheme-breeze if gtk4)
@@ -370,7 +370,7 @@ Requires:       yakuake
 Requires:       partitionmanager
 Requires:       spectacle
 Requires:       susepaste
-Requires:       vim
+Requires:       vim-small
 Requires:       openssh
 
 
@@ -395,34 +395,6 @@ Requires:       hack-fonts
 Requires:       ibm-plex-mono-fonts
 Requires:       liberation-fonts
 Requires:       suse-fonts
-
-
-
-####
-%dnl ### Packages formerly provided by x11
-%dnl Requires:       xf86-input-libinput
-%dnl Requires:       xorg-x11-fonts-core
-%dnl Requires:       xorg-x11-server
-%dnl Recommends:     dejavu-fonts
-%dnl Recommends:     libyui-qt
-%dnl Recommends:     libyui-qt-pkg
-%dnl Recommends:     noto-sans-fonts
-%dnl Recommends:     tigervnc
-%dnl Recommends:     x11-tools
-%dnl Recommends:     xdmbgrd
-%dnl Recommends:     xorg-x11-Xvnc
-%dnl Recommends:     xorg-x11-driver-video
-%dnl Recommends:     xorg-x11-essentials
-%dnl Recommends:     xorg-x11-fonts
-%dnl Recommends:     xorg-x11-server-extra
-%dnl Recommends:     xterm
-%dnl Recommends:     xtermset
-%dnl Recommends:     yast2-control-center
-# bsc#1071953
-%dnl %ifnarch s390 s390x
-%dnl Recommends:     xf86-input-vmmouse
-%dnl Recommends:     xf86-input-wacom
-%dnl %endif
 
 
 %description base
