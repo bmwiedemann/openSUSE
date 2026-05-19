@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 19 12:56:11 UTC 2026 - Xu Zhao <i@xuzhao.net>
+
+- Remove tg_owt-h264-dlopen.patch.
+- Stop vendoring OpenH264 headers and build against noopenh264-devel.
+- Switch tg_owt to the packaged OpenH264 dependency path.
+
+-------------------------------------------------------------------
 Tue May 12 14:11:10 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated telegram-desktop to 6.8.2

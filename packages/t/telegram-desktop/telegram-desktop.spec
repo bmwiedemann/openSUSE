@@ -21,7 +21,6 @@
 %define api_id    611335
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
 %define ada_ver   3.4.4
-%define h264_ver  2.6.0
 %define owt_ver   git20260123
 %define td_ver    git20260508
 Name:           telegram-desktop
@@ -32,13 +31,10 @@ License:        GPL-3.0-only
 URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
 Source1:        https://github.com/ada-url/ada/archive/refs/tags/v%{ada_ver}.tar.gz#/ada-%{ada_ver}.tar.gz
-# v=2.6.0 && n=openh264 && d=$n-headers-$v && f=$d.tar.xz && cd /tmp && git clone -bv$v --depth=1 https://github.com/cisco/$n.git && mkdir $d && mv $n/codec/api/wels/*.h $d && rm -rf $n && tar c --remove-files "$d" | xz -9e > "$f"
-Source2:        openh264-headers-%{h264_ver}.tar.xz
-# n=tg_owt && cd /tmp && git clone --depth=1 https://github.com/desktop-app/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && git submodule update --init --depth=1 && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
-Source3:        tg_owt-%{owt_ver}.tar.xz
+# n=tg_owt && cd /tmp && git clone --depth=1 https://github.com/desktop-app/$n && pushd $n && git checkout 5c5c71258777d0196dbb3a09cc37d2f56ead28ab && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && git submodule update --init --depth=1 && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+Source2:        tg_owt-%{owt_ver}.tar.xz
 # n=td && cd /tmp && git clone --depth=1 https://github.com/tdlib/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
-Source4:        td-%{td_ver}.tar.xz
-Patch0:         tg_owt-h264-dlopen.patch
+Source3:        td-%{td_ver}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
@@ -49,6 +45,7 @@ BuildRequires:  libboost_regex-devel
 BuildRequires:  libdispatch-devel
 BuildRequires:  mold
 BuildRequires:  ninja
+BuildRequires:  noopenh264-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  cmake(Microsoft.GSL)
@@ -129,17 +126,11 @@ always immediately published, whereas its server-side code is closed-source and 
 The service also provides APIs to independent developers.
 
 %prep
-%setup -q -n tdesktop-%{version}-full -b1 -b2 -b3 -b4
+%setup -q -n tdesktop-%{version}-full -b1 -b2 -b3
 
 mv ../ada-%{ada_ver} Telegram/ThirdParty/ada
 
-mkdir -p Telegram/ThirdParty/openh264/include
-mv ../openh264-headers-%{h264_ver} Telegram/ThirdParty/openh264/include/wels
-
 mv ../tg_owt-%{owt_ver} Telegram/ThirdParty/tg_owt
-pushd Telegram/ThirdParty/tg_owt
-%autopatch -p1 0
-popd
 
 mv ../td-%{td_ver} Telegram/ThirdParty/td
 
@@ -177,8 +168,6 @@ cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/tg_owt
       -DCMAKE_C_FLAGS="$CFLAGS" \
       -DCMAKE_CXX_FLAGS="$CFLAGS" \
       -DCMAKE_INSTALL_PREFIX="%{_builddir}/local" \
-      -DTG_OWT_DLOPEN_H264=ON \
-      -DTG_OWT_OPENH264_INCLUDE_PATH="../openh264/include" \
       -DTG_OWT_PACKAGED_BUILD=ON
 %cmake_build
 ninja install
