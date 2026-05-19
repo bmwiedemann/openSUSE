@@ -20,7 +20,7 @@
 # Upstream supports Python 3.12+
 %define skip_python311 1
 Name:           python-arviz
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Exploratory analysis of Bayesian models
 License:        Apache-2.0

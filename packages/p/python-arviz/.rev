@@ -194,4 +194,36 @@
     + Now {Build,}Requires arviz-{base,plots,stats}.</comment>
     <requestid>1335953</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>68088294d9054e93d6c4295745856f67</srcmd5>
+    <version>1.1.0</version>
+    <time>1779205816</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1.0:
+  ArviZ 1.1 builds on the 1.0 release with incremental improvements
+  and no major breaking changes.
+  The 1.0 ArviZ introduced many breaking changes: See the migration
+  guide for an overview of improvements and guidance on things that
+  will break and how to update them.
+  The whole library has been refactored for extra flexibility and
+  modularity as well as reducing the cost of maintaining and adding
+  new features to the library. arviz is now a metapackage that exposes
+  all the common functions that are implemented in independent
+  packages of the ArviZverse. For a detailed list of changes you can
+  check the changelog of each of these packages.
+  Take a look at the online book on Exploratory Analysis of Bayesian
+  Models to see it in action and at the docs of the 3 ArviZ packages:
+  arviz-base, arviz-stats and arviz-plots (note all the objects at the
+  top level namespace of these 3 libraries are also exposed as
+  arviz.xyz)
+  ## Changes in the metapackage.
+  - Add Apache license headers by @ellatso in #2534
+  - Schema updates by @OriolAbril in #2544
+  - Replace gitter mentions with GitHub discussions by @cheelaakhil in
+    #2561
+  - Check legacy imports by @symeneses in #2567
+  - Emit prominent MigrationWarning instead of breaking InferenceData
+    import by @michaelosthege in #2575</comment>
+    <requestid>1353969</requestid>
+  </revision>
 </revisionlist>
