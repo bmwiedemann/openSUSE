@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 19 07:08:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.20.6:
+  * ci: refresh dev dependencies (#3670)
+  * faq: update doc for generating password hash (#3473) (#3664)
+  * ci: refresh dev dependencies (#3655)
+  * ci: refresh dev dependencies (#3651)
+  * code_of_conduct: add reference to AI policy, add the license
+    section (#3640) (#3643)
+  * Add Ansible AI Policy (#3588) (#3638)
+  * Fix documentation: value name is `removed_at_date` not
+    `remove_by_date` for `deprecated` (#3590) (#3635)
+  * ci: refresh dev dependencies (#3626)
+  * add docs on resource reporting (#3595) (#3624)
+  * updates to collection namespace requests (#3603) (#3622)
+  * Add the Ansible community 13.6.0 porting guide (#3614) (#3615)
+
+-------------------------------------------------------------------
 Tue Apr 21 06:09:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.20.5:
