@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 19 07:12:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.17:
+  https://github.com/ansible/ansible/blob/v2.18.17/changelogs/CHANGELOG-v2.18.rst
+  * Security Fixes
+    - psrp - Do not log raw stdout/stderr on verbosity 5 when task
+      has no_log: true set
+    - winrm - Do not log raw stdout/stderr on verbosity 5 when task
+      has no_log: true set
+  * Bugfixes
+    - ansible-test remote alias - Alias values for --controller and
+      --target are properly resolved for remote. Previously, remote
+      alias values (e.g. fedora/latest) resolved to the correct
+      name only for the legacy --remote arg, failing with an
+      unknown image error for the newer args.
+
+-------------------------------------------------------------------
 Wed Apr 22 05:49:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.16:
