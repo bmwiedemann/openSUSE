@@ -41,8 +41,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.10.2
-%define orig_version   140.10.2
+%define mainver        %major.11.0
+%define orig_version   140.11.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
@@ -249,7 +249,6 @@ Patch19:        mozilla-bmo531915.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch24:        mozilla-bmo1746799.patch
-Patch25:        mozilla-bmo2031958.patch
 Patch26:        mozilla-bmo1999625.patch
 Patch27:        mozilla-bmo2016618.patch
 # Firefox/browser
