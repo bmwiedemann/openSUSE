@@ -75,6 +75,9 @@ export PYTHONPATH=$PWD
 donttest="elasticsearch or solr or test_ensure_wgs84"
 # fails to highlight anything
 donttest+=" or (WhooshSearchBackendTestCase and test_highlight)"
+# multiprocessing.Pool requires working /dev/shm
+donttest+=" or test_multiprocessing"
+
 %pytest -rs -k "not ($donttest)"
 
 %files %{python_files}

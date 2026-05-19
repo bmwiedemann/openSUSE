@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 18 23:12:55 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip test_multiprocessing, which doesn't work in the osc build
+  environment without working /dev/shm.
+
+-------------------------------------------------------------------
 Thu Mar  5 03:41:14 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pytest macro.
