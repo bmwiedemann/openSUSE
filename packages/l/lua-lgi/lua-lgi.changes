@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 19 09:05:29 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Add 002-Fix-GLib-2.87-regressions.patch for bsc#1261931
+  to fix problems with fromarray in GLib 2.87.0
+
+-------------------------------------------------------------------
 Fri Jan 23 21:38:17 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Enable lua55 build.

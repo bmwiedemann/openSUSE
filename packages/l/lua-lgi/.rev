@@ -111,4 +111,13 @@
     <comment>- Enable lua55 build.</comment>
     <requestid>1336371</requestid>
   </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>cf1cfc7d16d30165f20ffddf3f57c87c</srcmd5>
+    <version>0.9.2</version>
+    <time>1779205866</time>
+    <user>anag_factory</user>
+    <comment>- Add 002-Fix-GLib-2.87-regressions.patch for bsc#1261931
+  to fix problems with fromarray in GLib 2.87.0</comment>
+    <requestid>1354006</requestid>
+  </revision>
 </revisionlist>

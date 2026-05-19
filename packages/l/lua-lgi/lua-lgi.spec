@@ -38,6 +38,8 @@ Patch3:         pango-1_56_2.patch
 # PATCH-FIX-UPSTREAM network_metered-property.patch gh#lgi-devs/lgi!215 mcepl@suse.com
 # support for network_metered property
 Patch4:         network_metered-property.patch
+# PATCH-FIX-UPSTREAM 002-Fix-GLib-2.87-regressions.patch gh#lgi-devs/lgi!352 dheidler@suse.de
+Patch5:         002-Fix-GLib-2.87-regressions.patch
 BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  pkgconfig
