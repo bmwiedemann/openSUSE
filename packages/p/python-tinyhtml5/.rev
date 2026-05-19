@@ -7,4 +7,23 @@
     <comment>needed by weasyprint</comment>
     <requestid>1221498</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>025daca86cba64150c06bf47ddf295b1</srcmd5>
+    <version>2.1.0</version>
+    <time>1774470004</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.0:
+  * Support Python 3.14.
+  * Drop support of Python 3.9.
+  * Allow useless parameters for all HTML input streams.</comment>
+    <requestid>1342403</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>31f6e0eacb12f9e9cb1676d20ab11426</srcmd5>
+    <version>2.1.0</version>
+    <time>1779205894</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1354030</requestid>
+  </revision>
 </revisionlist>

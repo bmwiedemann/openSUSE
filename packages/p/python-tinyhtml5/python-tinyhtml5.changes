@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 19 12:13:52 UTC 2026 - Jakub Špaček <jakub.spacek07@email.cz>
+
+- Fixed invalid URL and remove chanelog tag from spec file
+
+------------------------------------------------------------------
+Wed Mar 25 08:42:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Support Python 3.14.
+  * Drop support of Python 3.9.
+  * Allow useless parameters for all HTML input streams.
+
+-------------------------------------------------------------------
 Tue Nov  5 14:41:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build

@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinyhtml5
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,17 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-tinyhtml5
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        HTML parser based on the WHATWG HTML specification
 License:        MIT
-URL:            None
+URL:            https://github.com/CourtBouillon/tinyhtml5
 Source:         https://files.pythonhosted.org/packages/source/t/tinyhtml5/tinyhtml5-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module webencodings >= 0.5.1}
 BuildRequires:  %{python_module pytest}
@@ -61,7 +62,6 @@ required to contribute to tinyhtml5. Unless explicitly stated otherwise, any
 contribution intentionally submitted for inclusion is licensed under the MIT
 license, without any additional terms or conditions. For full authorship
 information, see the version control history.
-
 
 %prep
 %autosetup -p1 -n tinyhtml5-%{version}
