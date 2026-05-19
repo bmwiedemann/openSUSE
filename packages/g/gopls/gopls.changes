@@ -1,4 +1,174 @@
 -------------------------------------------------------------------
+Mon May 18 19:10:49 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.22.0:
+  * gopls: update go.mod for v0.22.0-pre.4
+  * gopls/internal/settings: move file watcher setting to user options
+  * gopls/doc/release: include server side file watching in release note
+  * gopls: update go.mod for v0.22.0-pre.3
+  * gopls: deprecate importsSource and remove its use
+  * gopls: update go.mod for v0.22.0-pre.2
+  * gopls/internal/analysis/errorsastype: imporove example clarity
+  * gopls/internal/cmd: remove gopls -port=int debugging flag
+  * gopls: add errorsastype analyzer
+  * gopls/doc/release/v0.22.0.md: update release notes
+  * gopls/internal/cmd: remove gopls -port=int debugging flag
+  * gopls/internal/golang: return unmodified if interactivity is not needed
+  * gopls/doc/release/v0.22.0.md: update release notes
+  * gopls/internal/settings: add embedlit analyzer
+  * gopls/internal/golang: return unmodified if interactivity is not needed
+  * gopls/internal/golang: fix invalid comment on hover
+  * all: fix some minor issues in the comments
+  * gopls/internal/golang: fix invalid comment on hover
+  * gopls: actually don't emit shadowing modifier in the builtin pkg
+  * gopls/integration/misc: Test61208 flaky
+  * internal/typesinternal/typeindex: support generic functions in index.Calls
+  * go/analysis/passes/modernize: stringscut: detect modifying use in all assignments
+  * gopls: update go.mod for v0.22.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.22
+  * gopls/internal/golang: ApplyFix: refine assertion
+  * gopls/internal/golang/completion: fix completion after dot with no RHS typed
+  * gopls/internal/golang/completion: fix replacement range in invalid code
+  * gopls/internal/mcp: do not push instruction by default
+  * gopls/internal/protocol: add existence & kind to document uri
+  * gopls/internal/server: update neovim source URL
+  * gopls/internal/golang/completion: update comment for generic methods
+  * gopls: don't emit shadowing modifier in the builtin pkg
+  * gopls/doc/design: add integrating interactive refactoring doc
+  * gopls/internal/cache/methodsets: don't store positions of imported methods
+  * gopls/internal/golang: pre-filter identifiers by name in localReferences
+  * gopls/internal/analysis/yield: use monotone flow for precision
+  * gopls/internal/cache: set Pass.Module
+  * gopls/test/integation/misc: Add logging for flaky test
+  * gopls/internal/cache: store analyzeSummary fields on analysisNode
+  * gopls/internal/util/frob: change Codec.Decode to return the value
+  * gopls/internal/cache: try pre func before getPackageHandles in forEachPackage
+  * gopls/internal/golang/hover: include doc comment for assign stmts
+  * gopls/doc/features: add documentation for implement interface
+  * gopls/doc/features: add interactive refactoring feature doc
+  * gopls: remove trailing slash from replace directory path
+  * gopls/internal/settings: rename from file uri to document uri
+  * gopls/internal/test/marker: send SIGABRT to stuck go commands
+  * gopls: add test cases for embedded fields in struct literals
+  * gopls/completion: prepend space when completing right after "//" before a declaration
+  * gopls/doc/release: add months to release notes
+  * gopls/doc: simplify 'supported Go versions' section
+  * gopls/doc: update go command version support description
+  * gopls/internal/test/integragtion: remove obsolete Settings
+  * gopls: add shadowing semantic token modifier
+  * gopls: improve doc link matching to support links followed by a colon
+  * gopls/internal/filecache: cache decoded objects in memCache
+  * gopls/internal/golang: check dialog support directly against forms
+  * gopls/internal/golang: refactor the file structure of dialog support
+  * gopls/internal/server: return lazy enum or string for stub methods
+  * gopls/internal/server: InteractiveListEnum support workspaceSymbol queries
+  * gopls/internal/golang: improve invisibility error message
+  * gopls/internal/golang: detect package invisibility when stub methods
+  * gopls/internal/golang: detect import cycle when stub methods
+  * gopls/internal/protocol: preserve FormAnswers upon interactive resolution
+  * gopls/internal/test/marker: refactor code action marker with dialog
+  * gopls/internal/filewatcher: suppress flaky assertion on Windows
+  * gopls/internal/server: add form for implement interface command
+  * gopls/internal/server: implement code action implement interface X
+  * gopls/internal/server: add code action implement interface X
+  * gopls/internal/golang/hover: improve embedded method hover info
+  * gopls/codeaction: Add dialog tests for editing struct tags
+  * gopls/internal/filewatcher: enable file watcher as a gopls config
+  * gopls/internal/server: use plain text in govulncheck prompt
+  * internal/graph: add AllPaths, use in cmd/digraph
+  * gopls/test/imports: add diagnostic logging for flaky test
+  * gopls/internal/test/integration: fix TestIssue67156 flake
+  * gopls/internal/protocol/semtok: fix delta encoding bug
+  * gopls/internal/test/integration/misc: relax match for fmt.newPrinter
+  * gopls/internal/golang: fix crash in function extraction
+  * gopls/internal/filewatcher: add poll-based watcher
+  * gopls/internal/cmd: fix flaky MCP test, disable Close() err logging
+  * gopls/internal/golang: CodeActions: remove redundant parameter
+  * gopls: delete obsolete code
+  * gopls/doc/features: add instructions for config gopls mcp server
+  * gopls/internal/test/marker: require -cgo for fixedbugs/issue74581
+  * gopls/internal/golang/completion: fix panic on redeclared idents
+  * gopls/internal/test/marker: disable osarch_suffix test on riscv64
+  * gopls/doc: fix checkout example dir when working with the Go project
+  * gopls/internal/filewatcher: add watcher interface
+  * gopls/internal/mcp: only register watch for roots
+  * gopls/internal/golang: fix crash renaming import . "C"
+  * gopls/internal/settings: restore fieldalignment analyzer
+  * go/analysis/passes/modernize: reflecttypefor: all .Elem() cases
+  * gopls/internal/mcp: refactor unified diff generation
+  * gopls/test/integration/misc: add diagnostics to flaky test
+  * gopls/internal/golang: fix hover panic in raw strings with CRLF
+  * gopls/internal/analysis/driverutil: remove unnecessary new imports
+  * gopls: update to go1.26
+  * gopls/internal/lsprpc: increase test timeout 1s -> 10s
+  * gopls/internal/protocol: add lazy enum form input type
+  * gopls/internal/analysis: add new Analyzer writestring
+  * go/analysis/passes/modernize: stringsbuilder: allow multiple rvalue uses
+  * gopls/internal/server: send notification when go.work file changes
+  * gopls/internal/server: limit checkGoModDeps during bulk operations
+  * gopls/integration/govim: deal with breaking change to gs CLI
+  * gopls/internal/test/integration/completion: fix flaky TestUnimportedCompletion_VSCodeIssue3365
+  * gopls/internal/test/integration/completion: fix flaky TestUnimportedCompletion_VSCodeIssue3365
+  * gopls/codeaction: support struct tag dialog
+  * gopls/internal/test/marker: use openbsd/riscv64 in OS/ARCH suffix test
+  * gopls/internal/server: add telemetry for vulncheck_prompt
+  * gopls: fix typos
+  * gopls/test/imports_test: add logging for flaky test
+  * gopls/bench: disable one DidChange benchmark
+  * all: upgrade go directive to at least 1.25.0 [generated]
+  * gopls/internal/debug: replace timeUnits with time.Duration
+  * gopls/internal/protocol: add document uri field type
+  * gopls/doc: update link to Acme LSP plugin
+  * gopls/internal/server: respect SemanticTokens option during initialization
+  * gopls/filecache: prevent premature CAS file eviction
+  * gopls/internal/golang: refactor.inline.variable: add parens
+  * gopls/internal/golang: migrate pkgdoc to cursor
+  * gopls/internal/golang: replace PathEnclosingInterval with cursor
+  * gopls/internal/protocol: replace position usage to range
+  * gopls/internal/server: add interactive resolve server capabilities
+  * gopls/internal/settings: read interactive client capabilities
+  * gopls/internal/golang: semtok: use types.VarKind distinctions
+  * gopls/internal/golang: remove util func labelFor
+  * gopls/internal/cmd: log 'gopls mcp' stderr
+  * gopls/internal/golang: hover - fix doc links to pointer types
+  * gopls/internal/cache: fix Windows path buffer overflow
+  * gopls/internal/settings: expose file cache budget as setting
+  * gopls: replace all uses of Myers diff
+  * gopls/internal/golang: don't shadow existing methods
+  * gopls/internal/test: use explicit positions in position-based tests
+  * gopls/internal/protocol: replace lsp link with experimental comment
+  * gopls/internal/golang: fix extract function behavior with goto
+  * gopls/internal/protocol: replace codeAction with command/resolve
+  * all: assume GODEBUG=gotypesalias=1 and simplify
+  * gopls: handle LabeledStmts properly in extract function
+  * gopls/internal/protocol: generate sorted methods
+  * gopls/internal/golang: Definition: fix Windows bug wrt //go:embed
+  * gopls/completion: check Selection invariant
+  * gopls/internal/analysis/unusedfunc: remove warnings for unused enum consts
+  * gopls/internal/util/typesutil: refine EnclosingSignature bug.Report
+  * gopls/internal/analysis/modernize: mapsloop: undefined loop-var
+  * gopls/benchmark: skip unimported completion if not local
+  * gopls/internal/server: disable TestVulncheckPreference for wasm
+  * gopls/mod: find references to required modules
+  * gopls/internal/server: store vulncheck prompt preference
+  * go/analysis,gopls: update two modernizes' URLs
+  * gopls/internal/server: disable TestCheckGoModDeps for js and wasm
+  * gopls/internal/analysis/modernize: fix URL
+  * gopls/internal/cache/parsego: construct File.Cursor lazily
+  * gopls/internal/protocol: patch RenameParams to extend PositionParams
+  * gopls/internal/server: modify checkGoModDeps condition
+  * gopls/internal/golang: implement type definition for builtin types
+  * gopls/internal/test/marker: add optional error to typedef marker
+  * gopls/internal/server: support type def with selected range
+  * gopls/internal/cache: avoid unnecessary mod tidy invalidation
+  * gopls/internal/marker: make checkDiffs less fragile
+  * gopls/go.mod: update dependencies following the v0.21.0 release
+  * gopls/internal/server: consolidate showMessageRequest in prompt.go
+  * gopls/internal/server: trigger vulncheck prompt for go.mod changes
+  * gopls/internal/golang: add support for variadic functions and constructors in generated tests
+  * all: fix function name mismatch in updateBasicLitPos comment
+
+-------------------------------------------------------------------
 Fri Feb 13 03:54:34 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.21.1:

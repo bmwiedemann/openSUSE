@@ -394,4 +394,41 @@
   * go/ast/inspector: FindByPos returns the first innermost node (forwarded request 1332792 from jfkw)</comment>
     <requestid>1332793</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>de6436fc737cd1c712919f8498cfdf47</srcmd5>
+    <version>0.22.0</version>
+    <time>1779205729</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.22.0:
+  * gopls: update go.mod for v0.22.0-pre.4
+  * gopls/internal/settings: move file watcher setting to user options
+  * gopls/doc/release: include server side file watching in release note
+  * gopls: update go.mod for v0.22.0-pre.3
+  * gopls: deprecate importsSource and remove its use
+  * gopls: update go.mod for v0.22.0-pre.2
+  * gopls/internal/analysis/errorsastype: imporove example clarity
+  * gopls/internal/cmd: remove gopls -port=int debugging flag
+  * gopls: add errorsastype analyzer
+  * gopls/doc/release/v0.22.0.md: update release notes
+  * gopls/internal/cmd: remove gopls -port=int debugging flag
+  * gopls/internal/golang: return unmodified if interactivity is not needed
+  * gopls/doc/release/v0.22.0.md: update release notes
+  * gopls/internal/settings: add embedlit analyzer
+  * gopls/internal/golang: return unmodified if interactivity is not needed
+  * gopls/internal/golang: fix invalid comment on hover
+  * all: fix some minor issues in the comments
+  * gopls/internal/golang: fix invalid comment on hover
+  * gopls: actually don't emit shadowing modifier in the builtin pkg
+  * gopls/integration/misc: Test61208 flaky
+  * internal/typesinternal/typeindex: support generic functions in index.Calls
+  * go/analysis/passes/modernize: stringscut: detect modifying use in all assignments
+  * gopls: update go.mod for v0.22.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.22
+  * gopls/internal/golang: ApplyFix: refine assertion
+  * gopls/internal/golang/completion: fix completion after dot with no RHS typed
+  * gopls/internal/golang/completion: fix replacement range in invalid code
+  * gopls/internal/mcp: do not push instruction by default
+  * gopls/internal/protocol: add existence &amp; kind to document uri (forwarded request 1353891 from jfkw)</comment>
+    <requestid>1353892</requestid>
+  </revision>
 </revisionlist>
