@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu May  7 14:40:39 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.6.0
+  Fixed bugs:
+  * Fix key assignment dialog for Wayland
+  * Fix Windows package building
+  * Fix AppImage dependencies
+  * Fix joystick status window defer deletion upon close
+  * Fix use warning log level by default as stated in man
+  * Fix Fedora 42 build
+  Implemented enhancements:
+  * Provide InputDevice IPC via D-Bus
+  * Simplify usage of setActiveSetNumber in inputdevice
+  Notable changes:
+  * New translations: Danish, Slovak, Czech
+  * Update translations for: Spanish, Chinese (Simplified),
+    Swedish, Portuguese (Brazil), Italian, Russian, Ukrainian,
+    Tamil, Indonesian, Persian, Korean, Finnish
+  * Create devcontainer config for AntiMicroX
+  * Drop usage of Ubuntu 20.04 Runner
+  * Bump windows CI runner to 2022 version
+  * Sync flatpak config with file from
+    https://github.com/flathub/io.github.antimicrox.antimicrox
+  * Remove funding from repository
+  * Docstring cleanup and update:
+    https://antimicrox.github.io/doxygen/
+  * General code and docs cleanup
+- Drop Leap 15 workarounds, Leap 15 is EOL
+- Update BuildRequires
+
+-------------------------------------------------------------------
 Sat Oct  4 07:10:04 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Build with qt6

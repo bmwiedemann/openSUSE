@@ -1,7 +1,8 @@
 #
 # spec file for package antimicrox
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Carsten Ziepke <kieltux@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +17,8 @@
 #
 
 
-# a c++17 compiler is needed at least
-%if 0%{?sle_version} && 0%{?sle_version} < 160000
-%global force_gcc_version 13
-%endif
 Name:           antimicrox
-Version:        3.5.1
+Version:        3.6.0
 Release:        0
 Summary:        Graphical program used to map keyboard keys and mouse controls to a game-pad
 # antimicrox is GPL-3.0-or-later except SDL_GameControllerDB which is Zlib
@@ -36,19 +33,21 @@ Patch1:         fix_xcb_linker.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  gcc%{?force_gcc_version}-c++
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  itstool
 BuildRequires:  libQt6Core5Compat6
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-base-devel
-BuildRequires:  qt6-linguist-devel
-BuildRequires:  qt6-tools-devel
-BuildRequires:  shared-mime-info
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xtst)
+BuildRequires:  shared-mime-info
 
 %description
 Antimicrox is a graphical program used to map keyboard keys and mouse
@@ -65,9 +64,6 @@ which was later abandoned and revived by juliagoda.
 %autosetup -p1
 
 %build
-%if 0%{?force_gcc_version}
-export CXX="g++-%{force_gcc_version}"
-%endif
 %cmake
 %cmake_build
 
