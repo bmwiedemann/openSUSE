@@ -7,4 +7,39 @@
     <comment>- Initial release of 1.0.0.</comment>
     <requestid>1335951</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c8b0f6961a5424f3b3035cea408d96c2</srcmd5>
+    <version>1.1.0</version>
+    <time>1779205815</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1.0:
+  ## New Features
+  - Adding new plotting functionality to plot_ridge by
+  - Add plot_loo_interval
+  - Add set_x_scale
+  - Add new uniformity test
+  - plot_compare: Default to plot ELPD differences
+  ## Maintenance and bug fixes
+  - Move ess evolution helper
+  - Special handling of single plot figure in none backend
+  - Add hypothesis test for plot_compare
+  - Fix [tool.pytest] -&gt; [tool.pytest.ini_options] in pyproject.toml
+  - Fix rootogram coords issue
+  - Fix xlabel plot_loo_pit when coverage True
+  - Use new validators
+  - Fix plot_compare when relative_scale is true
+  - Update dataset construction
+  - Refactor plot_ppc_pit
+  - ecdf_pit: fix colors and p_value_text
+  - Handle mixed dims and MultiIndex warnings
+  - misc bugs
+  - Add tests for combine_plots
+  ## Documentation
+  - Format bare URL in README
+  - Sort glossary alphabetically
+  - Configure docstub and add type hints for forest_plot
+  - Use negative elpd_diff in gallery example
+  - Add tutorial for accessing matplotlib axes from PlotCollection</comment>
+    <requestid>1353939</requestid>
+  </revision>
 </revisionlist>

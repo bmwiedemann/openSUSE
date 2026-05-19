@@ -19,7 +19,7 @@
 # Upstream supports Python 3.12+
 %define skip_python311 1
 Name:           python-arviz-plots
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Ready to use and composable plots for Bayesian Workflow
 License:        Apache-2.0
