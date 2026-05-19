@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Tue May 19 05:19:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.57.1:
+  * libtmux 0.57.1 restores the lenient-by-default behavior for
+    Server.sessions and Server.clients. Both accessors return an
+    empty QueryList on tmux failure (socket permission errors,
+    subprocess crashes, missing daemon) again, matching the
+    contract Server.sessions has carried since 0.17.0.
+    Code written for 0.57.0 with try/except LibTmuxException around
+    these accessors keeps working — the except clause just becomes
+    unreachable. For an explicit connectivity signal, use
+    Server.is_alive() or Server.raise_if_dead().
+    Server.search_sessions, Server.search_windows, and
+    Server.search_panes continue to raise — they take a
+    caller-supplied filter where a tmux error carries meaningful
+    signal.
+    See the CHANGES entry for full details.
+    - Server(fix[sessions,clients]): Return empty on tmux errors by
+      @tony in #677
+
+-------------------------------------------------------------------
+Mon May 18 06:09:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.57.0:
+  libtmux 0.57.0 broadens tmux support around attached clients,
+  tmux-native filtering, and format-token fields. Client gives
+  callers a typed object for attached terminals, search_*() methods
+  let tmux return only matching sessions, windows, and panes, and
+  more tmux format tokens are exposed as typed attributes.
+  LibTmuxException now records which tmux subcommand failed, making
+  command errors easier to handle downstream.
+  Full release notes: https://libtmux.git-pull.com/history.html#libtmux-0-57-0-2026-05-17
+  * Breaking changes
+    - LibTmuxException string form gains a subcommand prefix
+      When LibTmuxException is raised from a libtmux method,
+      str(exc) now begins with the originating tmux subcommand name
+      followed by ": ". An error from Session.last_window() used to
+      render as "can't find window" and now renders as
+      "last-window: can't find window".
+      exc.args[0] still carries the original tmux error text, and
+      the new LibTmuxException.subcommand attribute exposes the
+      tmux subcommand name as a separate field.
+      The error-payload type also changed: exc.args[0] is now str,
+      joined with "\n" when tmux emitted multiple stderr lines.
+      Previously it was list[str]. Code that pattern-matches on
+      str(exc) exactly, anchors a regex with ^ against the old
+      shape, or indexes exc.args[0] element-by-element will no
+      longer match. Substring matches ("can't find" in str(exc))
+      and unanchored re.search patterns continue to work unchanged.
+      See the migration guide for the upgrade pattern.
+      https://libtmux.git-pull.com/migration.html#libtmux-0-57-0-subcommand-tagged-exceptions-672
+    - Server.sessions, Server.clients, Server.search_sessions raise
+      on tmux errors
+      Previously, a tmux command failure under these accessors
+      could return an empty QueryList indistinguishable from "no
+      sessions / no clients attached" or "filter matched nothing".
+      They now let LibTmuxException propagate for real tmux
+      failures.
+      Genuine empty results — a server with no attached clients, or
+      a filter that matched zero sessions — still return an empty
+      QueryList. A missing or not-yet-started tmux server is also
+      still treated as an empty result, preserving the historic
+      contract that a fresh Server can be safely introspected
+      before its daemon is up. Other tmux errors, such as socket
+      permission failures or unsupported flags, now surface.
+  * What's new
+    - Client object and Server.clients accessor. New typed
+      dataclass for tmux's attached-client model. client_name is
+      the stable identifier; attached_session / attached_window /
+      attached_pane re-read list-clients before resolving.
+      attached_pane follows the attached session's current window —
+      that can differ from the per-client active pane set by
+      select-pane -P.
+    - Server.display_message and Window.display_message. Server
+      reads like #{version} and #{socket_path} work without a pane
+      handle; window reads (#{window_zoomed_flag},
+      #{window_active_clients_list}) auto-bind to the window's id.
+      All three display_message wrappers (including the existing
+      Pane.display_message) surface tmux stderr via warnings.warn
+      rather than dropping it silently.
+    - tmux-native filtering with search_*(). Server.search_panes /
+      search_windows / search_sessions plus the Session and Window
+      analogues take a filter= kwarg routed to tmux's -f flag. tmux
+      evaluates the expression and returns only matching objects.
+      Caveat: tmux silently expands a malformed expression to
+      empty, which it treats as false — a typo looks identical to
+      "no matches".
+    - Pane.send_keys(cmd=None, …) flag-only invocation. Pass
+      cmd=None together with reset=True or repeat=N to invoke
+      tmux's flag-only send-keys -R / send-keys -N <n> form without
+      any trailing key argument.
+    - Server.list_buffers(format_string=, filter=). Project a
+      chosen -F template or push a buffer-name match expression
+      through tmux's format engine — same bad-filter caveat as the
+      search_* methods.
+    - Server.run_shell(cwd=, show_stderr=). New kwargs map to
+      tmux's -c (3.4+) and -E (3.6+) flags. Older tmux warns and
+      ignores the kwarg instead of erroring.
+    - Pane.capture_pane(pending=True). Return bytes tmux has read
+      from the pane but not yet committed to the terminal — useful
+      for diagnosing programs whose output stalls mid-sequence.
+    - More format-token fields on tmux objects. Pane / Window /
+      Session / Client expose more typed attributes for pane state
+      (pane_dead, pane_in_mode, pane_marked, pane_synchronized,
+      pane_path, pane_pipe), window state (window_zoomed_flag,
+      window_silence_flag, window_flags), session state
+      (session_marked), and client state (client_session,
+      client_readonly, client_termtype). Tokens the running tmux
+      does not support stay None instead of making the listing
+      fail.
+  * Fixes
+    - Pane.reset() now clears pane scrollback. In 0.56.0 the
+      history clear silently no-op'd, leaving the scrollback intact
+      (#650).
+  * Documentation
+    - New API page: libtmux.client.
+    - New Format-Token Fields topic explains why some fields
+      describe an active child object — for example,
+      session.pane_id reflects the active pane in the session's
+      current window.
+
+-------------------------------------------------------------------
 Sun May 10 15:00:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.56.0:
