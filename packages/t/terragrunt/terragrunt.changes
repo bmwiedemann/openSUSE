@@ -1,4 +1,368 @@
 -------------------------------------------------------------------
+Tue May 19 05:00:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.5:
+  * New Features
+    - Full .terraform.lock.hcl files from the provider cache server
+      When the provider cache server is used against the OpenTofu
+      provider registry, Terragrunt now writes .terraform.lock.hcl
+      files containing h1: hashes for every platform the registry
+      supports. A single terragrunt init produces a lock file that
+      works on every platform, removing the need to run tofu
+      providers lock -platform=... separately for each target
+      architecture.
+
+        provider "registry.opentofu.org/hashicorp/null" {
+          version     = "3.2.2"
+          constraints = "3.2.2"
+          hashes = [
+            "h1:+1mRmfyz6oA00IhrrSkHK3h/Mdh032x2p0F6OMdMo5s=",
+            "h1:FjLTqvaaYo+vHN8pHZB1cOwEGiNzOj+I9kQyHmr9/7o=",
+            # ... one entry per supported platform ...
+            "zh:00e5877d19fb1c1d8c4b3536334a46a5c86f57146fd115c7b7b4b5d2bf2de86d",
+            # ... one entry per supported platform ...
+          ]
+        }
+
+      The hashes come from the registry's per-platform download
+      response. When the registry does not supply them (for
+      example, a third-party registry that has not adopted the
+      field), Terragrunt falls back to its previous behavior of
+      writing an h1: hash for the current platform plus zh: hashes
+      for every platform listed in the shasums document.
+
+     Thanks to the OpenTofu team
+     This feature builds on work done by the OpenTofu team to
+     expose per-platform hashes directly from the OpenTofu provider
+     registry. Starting with OpenTofu 1.12, tofu init populates
+     .terraform.lock.hcl with hashes for every supported platform
+     out of the box, with no tofu providers lock invocation
+     required. Users on older OpenTofu versions still get the same
+     lock files when running through Terragrunt's provider cache
+     server, but upgrading to 1.12 is the easiest way to get the
+     same behavior everywhere, including when using the automatic
+     provider cache dir.
+  * Performance Improvements
+    - stack output fetches unit outputs in parallel
+      terragrunt stack output now fetches outputs from multiple
+      units at the same time, which is noticeably faster on larger
+      stacks. Use the existing --parallelism flag (or
+      TG_PARALLELISM) to lower concurrency if you need to.
+
+        terragrunt stack output --parallelism 4
+
+  * Tips Added
+    - Stack-target hint when --filter is missing | type=stack
+      run and stack generate now emit a tip when a --filter path
+      resolves to a directory containing terragrunt.stack.hcl but
+      the filter is not restricted to stacks. Without | type=stack,
+      stack generate ignores the filter and run does not generate
+      that stack.
+      The tip prints the offending filter, the suggested rewrite,
+      and a link to the filter docs. Suppress it with --no-tip
+      stack-target-missing-type-stack or --no-tips.
+  * Bug Fixes
+    - Auth provider command returning null no longer crashes
+      Terragrunt
+      If the command configured via --auth-provider-cmd wrote the
+      JSON value null to stdout, Terragrunt crashed with a nil
+      pointer dereference before it could obtain credentials.
+      A null response is now treated as an empty response: no
+      environment variables and no credentials are applied, and the
+      run continues.
+    - Auto-init now re-runs after a source change when modules are
+      already cached
+      terragrunt plan/apply could fail with Error: Required plugins
+      are not installed after a source-version change in any unit
+      with a module "" block. The .terragrunt-init-required marker
+      written on source change was being ignored because
+      modulesNeedInit short-circuited as soon as
+      .terraform/modules/ existed.
+      The marker check now lives at the top of needsInitRunCfg and
+      is honored regardless of cached .terraform/modules/ contents.
+    - --download-dir is now respected through dependency blocks and
+      read_terragrunt_config
+      A custom download directory set via --download-dir (or
+      TG_DOWNLOAD_DIR) was honored for the unit being run, but lost
+      as soon as parsing crossed into another config. dependency
+      blocks and read_terragrunt_config() would fall back to the
+      dependency's local .terragrunt-cache next to its
+      terragrunt.hcl, ignoring the user-set path.
+
+        TG_DOWNLOAD_DIR=/tmp/tg-cache terragrunt run --all plan
+        # Root unit: outputs landed in /tmp/tg-cache ✓
+        # Dependency outputs: written next to each dependency's terragrunt.hcl ✗
+
+      When the parsing context switches to a new config path, the
+      download directory is now updated only if it still points at
+      the previous module's default location. A user-supplied path
+      never matches any module's default and is carried through
+      every dependency hop unchanged.
+    - remote_state — apply tags during DynamoDB lock table creation
+      Terragrunt previously applied dynamodb_table_tags to DynamoDB
+      lock tables after table creation rather than during the
+      initial CreateTable API request.
+      This caused failures in environments enforcing required AWS
+      resource tags through SCPs or tag policies, where tags must
+      be present at resource creation time.
+      Terragrunt now includes dynamodb_table_tags in the initial
+      DynamoDB table creation request during remote state
+      bootstrap.
+
+        remote_state {
+          backend = "s3"
+
+          config = {
+            bucket         = "my-state-bucket"
+            dynamodb_table = "terraform-locks"
+
+            dynamodb_table_tags = {
+              Environment = "prod"
+              Team        = "platform"
+            }
+          }
+        }
+
+    - Engine archive extraction rejects path-traversal entries
+      When Terragrunt extracted an engine archive while the engine
+      experiment was active, entries whose target path resolved
+      outside the extraction directory were not rejected correctly.
+      Such an entry could overwrite files anywhere the Terragrunt
+      process could write.
+      These entries are now rejected early with a descriptive error
+      before any bytes are written. Engine archives produced by
+      Gruntwork were never affected; the gap only mattered for a
+      tampered or untrusted archive.
+    - --filter combined with a negation no longer parses excluded
+      units
+      When a positive path filter was combined with a negated one,
+      Terragrunt classified any unit that matched neither
+      expression as requiring defensive parsing before exclusion
+      instead of being excluded early.
+      e.g.
+
+        $ terragrunt run --all --filter './foo' --filter '!./baz'
+        # If `./bar` existed on disk, it would be parsed before being excluded. This is no longer the case.
+
+      Any positive filepath filter now consistently results in
+      units that cannot be discovered during Terragrunt discovery
+      being excluded from parsing for evaluating candidacy of
+      inclusion. When a sufficiently complex filter is present,
+      like the following:
+
+        $ terragrunt run --all --filter './foo' --filter '!./baz' --filter 'reading=root.hcl'
+        # If `./bar` existed on disk, it will still be parsed before being excluded to determine if it reads `root.hcl`.
+
+    - Fixed 403 Forbidden on nested private modules when using the
+      provider cache server
+      With TG_PROVIDER_CACHE enabled, OpenTofu/Terraform sent
+      nested module-registry lookups to the upstream registry with
+      the cache server's API key as the bearer token, instead of
+      the credentials configured for that host. Private registries
+      rejected those requests:
+
+        Error: Error accessing remote module registry
+
+        Failed to retrieve available versions for module "<name>" from
+        <registry>: error looking up module versions: 403 Forbidden.
+
+      Terragrunt sets TF_TOKEN_<host> to the cache server's API key
+      so the cache can front provider downloads. Module-registry
+      requests bypassed the cache and went straight to the
+      upstream, so the registry saw the cache key instead of the
+      user's token.
+      The cache server now also fronts the modules.v1 endpoint for
+      each configured registry. It drops the inbound cache-server
+      bearer, looks up the user's credentials for the upstream host
+      from the loaded CLI config (TF_TOKEN_<host>,
+      ~/.terraform.d/credentials.tfrc.json, etc.), and forwards the
+      request with that token.
+    - Run report file generation no longer stalls or deadlocks with
+      many runs
+      Generating a run report via --report-file could stall or
+      deadlock when a queue contained many runs and some were still
+      recording their final status as the report was written.
+      Reports now serialize each run independently, so writing a
+      report no longer blocks status updates from runs that are
+      still finishing.
+    - Declining a run --all or --graph confirmation no longer skips
+      cleanup
+      When terragrunt run --all destroy (or --all state, --all
+      apply, or the equivalent --graph variants) prompted for
+      confirmation and the user answered "no", Terragrunt
+      terminated the process directly, skipping cleanup the run had
+      registered.
+      Cleanup now runs before Terragrunt exits.
+    - s3:: and gcs:: stack sources now download
+      Stack file source URLs starting with s3::https:// or
+      gcs::https:// previously failed with a credentials error even
+      when valid credentials were available. They now download.
+      Existing stack files need no change.
+      Plain https://www.googleapis.com/storage/... URLs are now
+      intended to download anonymously without GCP credentials, but
+      Terragrunt continues to use GCS credentials to download them
+      for backward compatibility, emitting a deprecation warning
+      the first time it does so. To opt into the new behavior,
+      enable the legacy-gcs-public-prefix strict control. To pull
+      from a private GCS bucket explicitly, prefix the URL with
+      gcs:: yourself.
+    - Fixed nested key order in terragrunt stack output
+      When a unit lived inside more than one nested stack,
+      terragrunt stack output rendered its key with the stack names
+      reversed, so a unit inside root_stack_3 > stack_v3 > stack_v2
+      appeared under stack_v2.stack_v3.root_stack_3 instead of
+      root_stack_3.stack_v3.stack_v2. Deeply nested units also
+      leaked to the top level of the output.
+      The output now joins stack names from outermost to innermost,
+      matching the declared hierarchy in both the HCL and JSON
+      formats.
+    - Fixed failed to create directory ...: file exists from the
+      provider cache server
+      If a previous run had cached a provider by symlinking
+      ~/.terraform.d/plugins/<provider> into Terragrunt's own
+      provider cache, and that user plugin directory was later
+      moved or deleted, the symlink was left dangling. The next run
+      failed with failed to create directory ...: file exists and
+      refused to cache the provider.
+      Terragrunt now removes a dangling symlink at the cache path
+      on the next run and proceeds to download the provider. A
+      non-symlink at that path is left in place and surfaced as an
+      error.
+  * Experiments Added
+    - azure-backend — Native Azure Storage (azurerm) remote-state
+      support
+      The azure-backend experiment has been added as the gate for
+      native Terragrunt support of the Azure Storage (azurerm)
+      remote-state backend. Once it stabilizes, Terragrunt will
+      bootstrap, delete, and migrate Azure storage accounts and
+      blob containers the same way it already does for S3 and GCS,
+      and read state directly from Azure blobs for
+      --dependency-fetch-output-from-state.
+      In this release the flag is reserved only. Enabling it has no
+      behavioral effect, and remote_state { backend = "azurerm" }
+      continues to pass through to the OpenTofu and Terraform
+      native azurerm backend.
+      Track progress and share feedback in #4307. For setup steps,
+      see the experiment documentation.
+  * Experiments Updated
+    - CAS keeps a central Git store for incremental fetches
+      CAS now keeps one bare Git repository per remote URL inside
+      its store, under ~/.cache/terragrunt/cas/store/git/ on Linux
+      by default. See Storage for where this lives on macOS and
+      Windows. On a cache miss, Terragrunt fetches just the
+      requested ref into that repository instead of running a fresh
+      shallow clone into a temporary directory. Repeated misses
+      against the same remote reuse the existing pack files, so
+      fetching a second ref from the same repository transfers only
+      the new objects.
+      Concurrent Terragrunt runs against the same remote URL share
+      one fetch instead of cloning in parallel; later runs reuse
+      what the first one transferred. If the shared fetch hangs or
+      fails, Terragrunt logs a warning and falls back to a
+      temporary clone so cloning still succeeds.
+      You can reclaim space at any time by deleting the git/
+      subdirectory:
+
+        rm -rf ~/.cache/terragrunt/cas/store/git
+
+    - cas — Commit SHAs accepted in ref=
+      Source URLs of the form git::<url>?ref=<commit-sha> now
+      resolve through CAS. Previously these clones failed because
+      Terragrunt asked the remote to look up the SHA as a symbolic
+      reference, which Git servers don't support.
+      Both full SHAs (SHA-1 and SHA-256) and abbreviated SHAs are
+      accepted. Abbreviated SHAs must disambiguate inside the
+      repository, the same rule Git itself applies.
+
+        terraform {
+          source = "git::https://github.com/acme/infrastructure-modules.git//vpc?ref=a1b2c3d4e5f67890abcdef1234567890deadbeef"
+        }
+
+      The first cold clone of a repository pinned to a commit SHA
+      fetches the full history of every branch. Shallow fetches
+      require a ref name, and fetching a commit SHA at limited
+      depth depends on a server option
+      (uploadpack.allowAnySHA1InWant) that is not universally
+      enabled, so CAS fetches all branches at full depth and
+      resolves the SHA locally. Subsequent clones reuse the cached
+      repository and never touch the network for the same commit.
+      Branch and tag refs continue to use the existing shallow
+      path.
+    - cas — mutable attribute on terraform, unit, and stack blocks
+      A new mutable attribute opts a block out of CAS hardlinking
+      when its source is fetched through CAS. With mutable = true,
+      files materialized into .terragrunt-cache (for terraform) or
+      .terragrunt-stack (for unit and stack) are copied from the
+      CAS store and the working tree is editable.
+      The default is false. Files are materialized read-only so an
+      accidental edit cannot reach back into the shared CAS store.
+
+        terraform {
+          source  = "git::https://github.com/acme/infrastructure-modules.git//vpc?ref=v1.0.0"
+          mutable = true
+        }
+
+      The flag is orthogonal to update_source_with_cas and has no
+      effect when content is fetched through the standard download
+      path, which already produces an independent copy.
+    - cas — update_source_with_cas now idempotent across unit and
+      stack blocks
+      A terragrunt.stack.hcl with two blocks pointing at the same
+      template directory used to fail stack generate when each
+      block had update_source_with_cas = true. The first block's
+      pass rewrote the shared template's source to a
+      cas::sha256:... reference, then the second block's pass
+      re-read the rewritten file and treated the reference as a
+      relative path.
+      CAS now skips re-processing a source once it already carries
+      the cas:: prefix, so multiple unit or stack blocks can share
+      a template and resolve to the same synthetic tree.
+    - cas — symlinks in the source repository
+      Source repositories fetched through CAS used to materialize
+      committed symlinks as regular files whose contents were the
+      link target path. The destination tree no longer matched the
+      upstream layout, and any tooling that followed the link saw
+      plain text instead.
+      CAS now writes a real symbolic link at the destination.
+      Symlink targets that resolve outside the destination tree are
+      rejected so a hostile or stale source cannot escape the
+      working directory.
+    - catalog-redesign — component tags
+      The catalog-redesign experiment now reads a tags field from
+      the component's README.md front-matter. Tags appear as
+      colored pills next to the component in the list view and in
+      the detail view above the rendered README.
+
+        <!-- Frontmatter
+        name: VPC App
+        description: A VPC for application workloads.
+        tags: [networking, aws, module]
+        -->
+
+      Either inline-array or dash-list YAML form is accepted. Tags
+      render in gray by default. When a tag matches a known
+      component-type name (module, template, unit, or stack,
+      case-insensitive), the pill takes on that type's color.
+      A tag matching a component-type name also promotes the
+      component into that type's tab. A template whose tags include
+      module appears under both Templates (by its native kind) and
+      Modules (by tag), without changing how it scaffolds.
+      To learn more, see Component tags.
+      https://docs.terragrunt.com/features/catalog/tui#component-tags
+  * Dependencies
+    - chore: add support for Opentofu 1.12 (#6134)
+    - chore(deps): bump sigstore/cosign-installer from 4.0.0 to
+      4.1.2 (#5772)
+    - chore(deps): bump actions/cache from 5.0.3 to 5.0.5 (#5735)
+    - chore(deps): bump fast-xml-builder (#6105)
+    - chore(deps): bump fast-xml-parser and @aws-sdk/xml-builder
+      (#5981)
+    - chore(deps): bump aws-actions/configure-aws-credentials
+      (#5812)
+    - chore(deps): bump jdx/mise-action from 4.0.0 to 4.0.1 (#5734)
+    - chore(deps): bump astro from 6.1.6 to 6.1.10 in /docs (#6087)
+
+-------------------------------------------------------------------
 Fri May 08 05:11:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.4:
