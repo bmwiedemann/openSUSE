@@ -725,4 +725,41 @@ update to version 3.1.0
   * Implement conflict resolution</comment>
     <requestid>1337759</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>99b40e36d253a39e5e1681955e1c134d</srcmd5>
+    <version>10.0.0</version>
+    <time>1779205703</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.0.0:
+  * quotas: do not fail to set/delete if an endpoint is missing
+  * remove pbr as runtime dependency
+  * fix: properly check if endpoints are enabled
+  * Cinder: Adds a api mv 3.66 check for snapshot creation
+  * typing: Typing updates for recent SDK changes
+  * Identity: Migrate 'identity provider' commands to SDK
+  * Follow-Up for networking-bgpvpn osc client migration
+  * Adds CLI support for glance md-tags
+  * typing: Add py.typed file
+  * typing: Add missing ensure_service_version calls
+  * typing: Fixes for typed SDK find_* proxy methods
+  * Fix user password set command
+  * Remove nova-network support
+  * [FWaaS] Deprecate --share and --enable options in the Unset
+    commands
+  * Use project_id strings in fwaas tests
+  * Neutron: Move bgpvpn osc client code from neutronclient
+  * typing: Add hints to base functional test
+  * typing: Add hints to network commands
+  * typing: Add hints to object commands
+  * typing: Add hints to image commands
+  * typing: Add hints to common commands
+  * typing: Add hints to identity commands
+  * typing: Add hints to volume commands
+  * typing: Add hints to compute commands
+  * typing: Add hints to api module
+  * api: Remove dead image v1, v2 API
+  * typing: Add hints to shell module
+  * typing: Use objects from typing (redux)</comment>
+    <requestid>1353859</requestid>
+  </revision>
 </revisionlist>

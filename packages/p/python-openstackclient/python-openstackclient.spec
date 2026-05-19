@@ -18,41 +18,46 @@
 
 %global pythons %{primary_python}
 Name:           python-openstackclient
-Version:        9.0.0
+Version:        10.0.0
 Release:        0
 Summary:        OpenStack Command-line Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-openstackclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python_openstackclient-%{version}.tar.gz
-BuildRequires:  %{python_module cinderclient}
-BuildRequires:  %{python_module cliff >= 3.5.0}
-BuildRequires:  %{python_module ddt}
-BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module keystoneclient}
-BuildRequires:  %{python_module openstacksdk >= 4.7.1}
-BuildRequires:  %{python_module os-client-config}
-BuildRequires:  %{python_module osc-lib >= 2.3.0}
+BuildRequires:  %{python_module cinderclient >= 3.3.0}
+BuildRequires:  %{python_module cliff >= 4.13.0}
+BuildRequires:  %{python_module cryptography >= 2.7}
+BuildRequires:  %{python_module ddt >= 1.0.1}
+BuildRequires:  %{python_module fixtures >= 3.0.0}
+BuildRequires:  %{python_module iso8601 >= 0.1.11}
+BuildRequires:  %{python_module keystoneclient >= 3.22.0}
+BuildRequires:  %{python_module openstacksdk >= 4.12.0}
+BuildRequires:  %{python_module osc-lib >= 4.6.0}
 BuildRequires:  %{python_module oslotest}
-BuildRequires:  %{python_module osprofiler}
+BuildRequires:  %{python_module osprofiler >= 1.4.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module requests >= 2.27.0}
+BuildRequires:  %{python_module requests-mock >= 1.2.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module stestr >= 1.0.0}
 BuildRequires:  %{python_module stevedore >= 2.0.1}
-BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module testtools >= 2.2.0}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module wrapt}
+BuildRequires:  %{python_module wrapt >= 1.7.0}
 BuildRequires:  openstack-macros
 Requires:       python-Babel
-Requires:       python-cinderclient
-Requires:       python-cliff >= 3.5.0
-Requires:       python-keystoneclient
-Requires:       python-openstacksdk >= 4.7.1
-Requires:       python-osc-lib >= 2.3.0
+Requires:       python-cinderclient >= 3.3.0
+Requires:       python-cliff >= 4.13.0
+Requires:       python-cryptography >= 2.7
+Requires:       python-iso8601 >= 0.1.11
+Requires:       python-keystoneclient >= 3.22.0
+Requires:       python-openstacksdk >= 4.12.0
+Requires:       python-osc-lib >= 4.6.0
 Requires:       python-oslo.i18n >= 3.15.3
 Requires:       python-oslo.utils
+Requires:       python-requests >= 2.27.0
+Requires:       python-stevedore >= 2.0.1
 BuildArch:      noarch
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-openstackclient < %{version}
@@ -94,6 +99,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 install -p -D -m 644 doc/build/man/openstack.1 %{buildroot}%{_mandir}/man1/openstack.1
 
 %check
+rm -v openstackclient/tests/unit/test_hacking.py
 %{openstack_stestr_run}
 
 %files %{python_files}

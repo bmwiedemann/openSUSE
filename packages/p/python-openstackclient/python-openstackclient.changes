@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon May 18 13:10:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.0.0:
+  * quotas: do not fail to set/delete if an endpoint is missing
+  * remove pbr as runtime dependency
+  * fix: properly check if endpoints are enabled
+  * Cinder: Adds a api mv 3.66 check for snapshot creation
+  * typing: Typing updates for recent SDK changes
+  * Identity: Migrate 'identity provider' commands to SDK
+  * Follow-Up for networking-bgpvpn osc client migration
+  * Adds CLI support for glance md-tags
+  * typing: Add py.typed file
+  * typing: Add missing ensure_service_version calls
+  * typing: Fixes for typed SDK find_* proxy methods
+  * Fix user password set command
+  * Remove nova-network support
+  * [FWaaS] Deprecate --share and --enable options in the Unset
+    commands
+  * Use project_id strings in fwaas tests
+  * Neutron: Move bgpvpn osc client code from neutronclient
+  * typing: Add hints to base functional test
+  * typing: Add hints to network commands
+  * typing: Add hints to object commands
+  * typing: Add hints to image commands
+  * typing: Add hints to common commands
+  * typing: Add hints to identity commands
+  * typing: Add hints to volume commands
+  * typing: Add hints to compute commands
+  * typing: Add hints to api module
+  * api: Remove dead image v1, v2 API
+  * typing: Add hints to shell module
+  * typing: Use objects from typing (redux)
+  * Revert "Workaround for failing tests on openstacksdk change"
+  * trivial: Sort AZ helpers alphabetically
+  * typing: Remove unnecessary type: ignore statements
+  * typing: Have NetDetectionMixin subclass Command
+  * typing: Use objects from typing
+  * Neutron: Move FWaaS OSC client code from neutronclient
+  * Imported Translations from Zanata
+  * tests: Fix test_module for Python 3.14
+  * typing: Fix for typed openstacksdk proxies
+  * Add share commands to compute
+  * Remove tenant_id from networking code
+  * tests: Explicitly specify network agent fields for output
+  * hacking: Add tests
+  * hacking: Add doctests
+  * hacking: Fix check for missing ignore_missing calls
+  * hacking: Check for overly complicated client access
+  * tests: Make use of fake client aliases
+  * hacking: Make check for duplicate clients less specific
+  * hacking: Fix typos
+  * tests: Add object store v1 FakeClientMixin
+  * Expand help of server migrate command
+  * compute: Stop sending rxtx_factor when unset
+  * hacking: Ensure use of openstackclient.command
+  * Update packaging configuration
+  * Add --cluster option to volume migration
+  * identity: Fix project list
+  * tests: Remove image v1 functional tests
+  * tests: Trivial capitalization fixes
+  * typing: Add class variables to testcases
+  * Update master for stable/2026.1
+  * Remove unused Makefile for doc
+  * trivial: Enable ruff-specific (RUF) rules
+
+-------------------------------------------------------------------
 Mon Mar  9 15:33:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.0.0:
