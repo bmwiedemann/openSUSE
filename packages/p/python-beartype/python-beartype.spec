@@ -34,7 +34,9 @@ BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module numba}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest >= 4.0.0}
-BuildRequires:  %{python_module torch}
+# python-torch is failing to build, commented build requirement until
+# the package is fixed
+# BuildRequires:  %%{python_module torch}
 BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 BuildRequires:  fdupes

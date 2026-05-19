@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 19 05:31:39 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Commented python-torch build requirement. python-torch package is
+  failing and is making this one unresolvable when it's just an
+  optional dependency.
+
+-------------------------------------------------------------------
 Wed Mar 18 06:53:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.9:

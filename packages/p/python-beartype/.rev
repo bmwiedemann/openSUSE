@@ -327,4 +327,14 @@
     vulnerability disclosure process.</comment>
     <requestid>1340823</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>7b9ae2d9f439f684ec1349aa3ae3dfd4</srcmd5>
+    <version>0.22.9</version>
+    <time>1779205782</time>
+    <user>anag_factory</user>
+    <comment>- Commented python-torch build requirement. python-torch package is
+  failing and is making this one unresolvable when it's just an
+  optional dependency.</comment>
+    <requestid>1353924</requestid>
+  </revision>
 </revisionlist>
