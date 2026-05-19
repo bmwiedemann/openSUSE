@@ -133,4 +133,18 @@
   * Fix overflow on XmbLookupString buffer</comment>
     <requestid>1154493</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0f2ee67236560b0a8d3b378647d881cb</srcmd5>
+    <version>1.2.7</version>
+    <time>1779205835</time>
+    <user>anag_factory</user>
+    <comment>- update to version 1.2.7
+  * adds support for -help, --help, and --version options
+  * cleans up the man page
+  * adds missing indentation to the CreateNotify event output
+  * protects against XErrors when getting output info
+- switch to meson build
+- refreshed u_Add-event-filter-for-motion-and-button-events.patch</comment>
+    <requestid>1353962</requestid>
+  </revision>
 </revisionlist>

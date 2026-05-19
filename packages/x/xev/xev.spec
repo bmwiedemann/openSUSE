@@ -1,7 +1,7 @@
 #
 # spec file for package xev
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xev
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        Utility to print contents of X events
 License:        X11
@@ -27,10 +27,11 @@ Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{v
 Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Patch0:         u_Add-event-filter-for-motion-and-button-events.patch
+BuildRequires:  meson >= 1.1.0
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xorg-macros) >= 1.8
-BuildRequires:  pkgconfig(xproto) >= 7.0.17
+BuildRequires:  pkgconfig(xproto) >= 7.0.22
 BuildRequires:  pkgconfig(xrandr) >= 1.2
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
@@ -48,11 +49,11 @@ usage.
 %autosetup -p1
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING

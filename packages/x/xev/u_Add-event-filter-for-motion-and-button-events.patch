@@ -13,24 +13,24 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  xev.c       |    7 ++++++-
  2 files changed, 7 insertions(+), 2 deletions(-)
 
-Index: xev-1.2.4/man/xev.man
+Index: xev-1.2.7/man/xev.man
 ===================================================================
---- xev-1.2.4.orig/man/xev.man
-+++ xev-1.2.4/man/xev.man
-@@ -62,7 +62,7 @@ The
- option can be specified multiple times to select multiple types of events.
+--- xev-1.2.7.orig/man/xev.man
++++ xev-1.2.7/man/xev.man
+@@ -62,7 +62,7 @@ option can be specified multiple times t
  When not specified, all events are selected.
- Available event masks: keyboard mouse expose visibility structure substructure
--focus property colormap owner_grab_button randr button
-+focus property colormap owner_grab_button randr motion button
+ Available event masks:
+ \fBkeyboard mouse expose visibility structure substructure
+-focus property colormap owner_grab_button randr button\fP
++focus property colormap owner_grab_button randr motion button\fP
  .TP 8
- .B \-version
- This option prints the program version and exits.
-Index: xev-1.2.4/xev.c
+ .B \-help
+ This option prints the program usage and exits
+Index: xev-1.2.7/xev.c
 ===================================================================
---- xev-1.2.4.orig/xev.c
-+++ xev-1.2.4/xev.c
-@@ -1120,7 +1120,7 @@ usage(const char *errmsg)
+--- xev-1.2.7.orig/xev.c
++++ xev-1.2.7/xev.c
+@@ -1138,7 +1138,7 @@ usage(const char *errmsg, int exitstatus
  "    -event event_mask                   select 'event_mask' events\n"
  "           Supported event masks: keyboard mouse expose visibility structure\n"
  "                                  substructure focus property colormap\n"
@@ -39,7 +39,7 @@ Index: xev-1.2.4/xev.c
  "           This option can be specified multiple times to select multiple\n"
  "           event masks.\n"
  "    -1                                  display only a single line per event\n"
-@@ -1170,6 +1170,11 @@ parse_event_mask(const char *s, long eve
+@@ -1189,6 +1189,11 @@ parse_event_mask(const char *s, long eve
            LeaveWindowMask | PointerMotionMask | Button1MotionMask |
            Button2MotionMask | Button3MotionMask | Button4MotionMask |
            Button5MotionMask | ButtonMotionMask },

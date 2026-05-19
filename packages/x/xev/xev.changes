@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 19 09:30:57 CEST 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.2.7
+  * adds support for -help, --help, and --version options
+  * cleans up the man page
+  * adds missing indentation to the CreateNotify event output
+  * protects against XErrors when getting output info
+- switch to meson build
+- refreshed u_Add-event-filter-for-motion-and-button-events.patch
+
+-------------------------------------------------------------------
 Mon Mar  4 04:14:08 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to version 1.2.6
