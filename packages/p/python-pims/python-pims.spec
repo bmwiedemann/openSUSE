@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%global skip_python311 1
 Name:           python-pims
 Version:        0.7
 Release:        0
