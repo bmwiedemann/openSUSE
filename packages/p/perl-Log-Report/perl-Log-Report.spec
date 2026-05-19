@@ -18,10 +18,10 @@
 
 %define cpan_name Log-Report
 Name:           perl-Log-Report
-Version:        1.440.0
+Version:        1.450.0
 Release:        0
-# 1.44 -> normalize -> 1.440.0
-%define cpan_version 1.44
+# 1.45 -> normalize -> 1.450.0
+%define cpan_version 1.45
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Report a problem, pluggable handlers and language support
 URL:            https://metacpan.org/release/%{cpan_name}

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 14 07:04:10 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.450.0 (1.45)
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.45: Fri 10 Apr 11:17:51 CEST 2026
+
+  	Fixes:
+  	- fix clone() with _class
+  	  [Sam Kington] github issue #18
+  	- import with multiple dispatchers
+  	  [Andy Berverley] github issue #19
+
+  	Improvements:
+  	- ::Message::addTags() and ::Message::hasTag()
+  	- section Accessors -> Attributes
+  	- ::Message::freeze() and ::thaw()
+  	  [Andy Beverley] github issue #20
+
+-------------------------------------------------------------------
 Fri Jan  2 15:30:14 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.440.0 (1.44)

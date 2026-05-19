@@ -7,4 +7,24 @@
     <comment>New dependency for perl-User-Identity</comment>
     <requestid>1325755</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0f0aeb43d08514a70ab22ad0b29f81f3</srcmd5>
+    <version>1.450.0</version>
+    <time>1779205700</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.450.0 (1.45)
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+  version 1.45: Fri 10 Apr 11:17:51 CEST 2026
+  	Fixes:
+  	- fix clone() with _class
+  	  [Sam Kington] github issue #18
+  	- import with multiple dispatchers
+  	  [Andy Berverley] github issue #19
+  	Improvements:
+  	- ::Message::addTags() and ::Message::hasTag()
+  	- section Accessors -&gt; Attributes
+  	- ::Message::freeze() and ::thaw()
+  	  [Andy Beverley] github issue #20</comment>
+    <requestid>1353851</requestid>
+  </revision>
 </revisionlist>
