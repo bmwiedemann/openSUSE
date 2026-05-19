@@ -1,7 +1,7 @@
 #
 # spec file for package gap-autpgrp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-autpgrp
-Version:        1.11.1
+Version:        1.12.0
 Release:        0
 Summary:        GAP: Computing the Automorphism Group of a p-Group
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ URL:            https://gap-packages.github.io/autpgrp/
 Source:         https://github.com/gap-packages/autpgrp/releases/download/v%version/autpgrp-%version.tar.gz
 BuildRequires:  gap-rpm-devel
 BuildArch:      noarch
-Requires:       gap-core >= 4.4
+Requires:       gap-core >= 4.7
 
 %description
 The AutPGrp package introduces a new function to compute the
