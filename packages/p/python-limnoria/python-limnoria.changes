@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 18 17:23:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.5.8:
+  * Google: fix double-escaping of text argument
+  * Fix _rlimit_min
+  * ChannelUserDB: Close FD after reading
+  * Remove 'return' statements from 'finally' clauses
+  * registry: Escape default values with newlines and linewrap long ones
+  * SedRegex: Split _replacer_process into smaller functions
+  * Service: Fix 'Holding JOIN to' log
+  * Exclude CTCP and formatting characters from URL regexp
+
+-------------------------------------------------------------------
 Tue Nov 18 15:09:19 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 2025.11.2

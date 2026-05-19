@@ -335,4 +335,20 @@ Add coreutils-systemd to BuildRequires for the `uptime` command needed for a tes
   - Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1318487</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d3d159f6e3cf1aef75bdfbd0e6dffb34</srcmd5>
+    <version>2026.5.8</version>
+    <time>1779205723</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.5.8:
+  * Google: fix double-escaping of text argument
+  * Fix _rlimit_min
+  * ChannelUserDB: Close FD after reading
+  * Remove 'return' statements from 'finally' clauses
+  * registry: Escape default values with newlines and linewrap long ones
+  * SedRegex: Split _replacer_process into smaller functions
+  * Service: Fix 'Holding JOIN to' log
+  * Exclude CTCP and formatting characters from URL regexp</comment>
+    <requestid>1353882</requestid>
+  </revision>
 </revisionlist>

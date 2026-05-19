@@ -1,7 +1,7 @@
 #
 # spec file for package python-limnoria
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-limnoria
-Version:        2025.11.2
+Version:        2026.5.8
 Release:        0
 Summary:        A modified version of Supybot (an IRC bot and framework)
 License:        BSD-3-Clause
@@ -33,15 +33,14 @@ Patch0:         skip-fediverse-profile-tests.patch
 BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module feedparser}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-gnupg}
-BuildRequires:  %{python_module pytzdata}
 # pyxmpp2-scram not available, the code actually covers the non-availability
 #BuildRequires:  %%{python_module pyxmpp2-scram}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module wheel}
 # full python for sqlite3 module
 BuildRequires:  %{pythons}
@@ -54,11 +53,10 @@ Requires:       python
 Requires:       python-PySocks
 Requires:       python-chardet
 Requires:       python-cryptography
-Requires:       python-ecdsa
 Requires:       python-feedparser
 Requires:       python-python-dateutil
 Requires:       python-python-gnupg
-Requires:       python-pytzdata
+Requires:       python-tzdata
 #Requires:       python-pyxmpp2-scram
 Provides:       Supybot = %{version}
 Obsoletes:      Supybot < 1.0

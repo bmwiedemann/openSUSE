@@ -1,16 +1,16 @@
-Index: limnoria-2025.11.2/plugins/Fediverse/test.py
+Index: limnoria-2026.5.8/plugins/Fediverse/test.py
 ===================================================================
---- limnoria-2025.11.2.orig/plugins/Fediverse/test.py
-+++ limnoria-2025.11.2/plugins/Fediverse/test.py
-@@ -33,6 +33,7 @@ import copy
+--- limnoria-2026.5.8.orig/plugins/Fediverse/test.py
++++ limnoria-2026.5.8/plugins/Fediverse/test.py
+@@ -31,6 +31,7 @@
+ import os
+ import copy
  import json
++import unittest
  import functools
  import contextlib
-+import unittest
- from multiprocessing import Manager
  
- from supybot import conf, log, utils
-@@ -155,6 +156,7 @@ class NetworklessFediverseTestCase(BaseF
+@@ -154,6 +155,7 @@ class NetworklessFediverseTestCase(BaseF
                  list(expected_requests), [], "Less requests than expected."
              )
  
@@ -18,7 +18,7 @@ Index: limnoria-2025.11.2/plugins/Fediverse/test.py
      def testFeaturedNone(self):
          featured = {
              "@context": "https://www.w3.org/ns/activitystreams",
-@@ -176,6 +178,7 @@ class NetworklessFediverseTestCase(BaseF
+@@ -175,6 +177,7 @@ class NetworklessFediverseTestCase(BaseF
                  "featured @someuser@example.org", "No featured statuses."
              )
  
@@ -26,7 +26,7 @@ Index: limnoria-2025.11.2/plugins/Fediverse/test.py
      def testFeaturedSome(self):
          featured = {
              "@context": [
-@@ -242,6 +245,7 @@ class NetworklessFediverseTestCase(BaseF
+@@ -241,6 +244,7 @@ class NetworklessFediverseTestCase(BaseF
                  "featured @someuser@example.org", "This is a pinned toot"
              )
  
@@ -34,7 +34,7 @@ Index: limnoria-2025.11.2/plugins/Fediverse/test.py
      def testProfile(self):
          expected_requests = [
              (HOSTMETA_URL, HOSTMETA_DATA),
-@@ -255,6 +259,7 @@ class NetworklessFediverseTestCase(BaseF
+@@ -254,6 +258,7 @@ class NetworklessFediverseTestCase(BaseF
                  "\x02someuser\x02 (@someuser@example.org): My Biography",
              )
  
@@ -42,7 +42,7 @@ Index: limnoria-2025.11.2/plugins/Fediverse/test.py
      def testProfileNoHostmeta(self):
          expected_requests = [
              (HOSTMETA_URL, utils.web.Error("blah")),
-@@ -268,6 +273,7 @@ class NetworklessFediverseTestCase(BaseF
+@@ -267,6 +272,7 @@ class NetworklessFediverseTestCase(BaseF
                  "\x02someuser\x02 (@someuser@example.org): My Biography",
              )
  
@@ -50,7 +50,7 @@ Index: limnoria-2025.11.2/plugins/Fediverse/test.py
      def testProfileSnarfer(self):
          with self.mockWebfingerSupport("not called"), self.mockRequests([]):
              self.assertSnarfNoResponse("aaa @nonexistinguser@example.org bbb")
-@@ -343,6 +349,7 @@ class NetworklessFediverseTestCase(BaseF
+@@ -342,6 +348,7 @@ class NetworklessFediverseTestCase(BaseF
                      "\x02someuser\x02 (@someuser@example.org): My Biography",
                  )
  
@@ -58,7 +58,7 @@ Index: limnoria-2025.11.2/plugins/Fediverse/test.py
      def testProfileUnknown(self):
          expected_requests = [
              (HOSTMETA_URL, HOSTMETA_DATA),
-@@ -404,6 +411,7 @@ class NetworklessFediverseTestCase(BaseF
+@@ -403,6 +410,7 @@ class NetworklessFediverseTestCase(BaseF
                  "@FirstAuthor I am replying to you",
              )
  
