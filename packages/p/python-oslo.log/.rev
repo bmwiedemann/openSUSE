@@ -559,4 +559,19 @@
   * Update master for stable/2025.2</comment>
     <requestid>1337644</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>db7cf9c0431e0047270f795c54646cc3</srcmd5>
+    <version>8.2.0</version>
+    <time>1779205706</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.2.0:
+  * tox: Use new constraints option
+  * typing: Update for typed oslotest
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+  * Skip grenade job and devstack job for test code update
+  * Fix new mypy errors</comment>
+    <requestid>1353864</requestid>
+  </revision>
 </revisionlist>

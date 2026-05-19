@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 18 16:23:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2.0:
+  * tox: Use new constraints option
+  * typing: Update for typed oslotest
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+  * Skip grenade job and devstack job for test code update
+  * Fix new mypy errors
+
+-------------------------------------------------------------------
 Mon Mar  9 11:46:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.1.0:

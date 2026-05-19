@@ -17,24 +17,24 @@
 
 
 Name:           python-oslo.log
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        OpenStack log library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.log
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo_log/oslo_log-%{version}.tar.gz
-BuildRequires:  %{python_module eventlet}
+BuildRequires:  %{python_module eventlet >= 0.38.2}
 BuildRequires:  %{python_module oslo.config >= 5.2.0}
 BuildRequires:  %{python_module oslo.context >= 2.21.0}
 BuildRequires:  %{python_module oslo.i18n >= 3.20.0}
 BuildRequires:  %{python_module oslo.serialization >= 2.25.0}
 BuildRequires:  %{python_module oslo.utils >= 3.36.0}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module oslotest >= 3.3.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil >= 2.7.0}
-BuildRequires:  %{python_module stestr}
-BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module stestr >= 2.0.0}
+BuildRequires:  %{python_module testtools >= 2.3.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  openstack-macros
