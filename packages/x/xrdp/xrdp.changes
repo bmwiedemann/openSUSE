@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May 16 03:06:33 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Add patches for security fixes:
+  * xrdp-CVE-2026-32105-1-fips-slowpath.patch (bsc#1262312,
+    CVE-2026-32105)
+  * xrdp-CVE-2026-32105-2-fips-fastpath.patch (bsc#1262312,
+    CVE-2026-32105)
+  * xrdp-CVE-2026-32105-3-nonfips-slowpath.patch (bsc#1262312,
+    CVE-2026-32105)
+  * xrdp-CVE-2026-32105-4-nonfips-fastpath.patch (bsc#1262312,
+    CVE-2026-32105)
+  * xrdp-CVE-2026-32624.patch (bsc#1262321, CVE-2026-32624)
+  * xrdp-CVE-2026-32107.patch (bsc#1262313, CVE-2026-32107)
+  * xrdp-CVE-2026-32623.patch (bsc#1262316, CVE-2026-32623)
+  * xrdp-CVE-2026-33145.patch (bsc#1262331, CVE-2026-33145)
+  * xrdp-CVE-2026-33689.patch (bsc#1262332, CVE-2026-33689)
+  * xrdp-CVE-2026-35512.patch (bsc#1262333, CVE-2026-35512)
+
+-------------------------------------------------------------------
 Mon Feb  2 02:59:30 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - update to 0.9.27:
@@ -6,6 +25,31 @@ Mon Feb  2 02:59:30 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
   * Unauthenticated RDP security scan finding/partial auth bypass
   * CVE-2025-68670: Improper bounds checking of domain string
     length leads to Stack-based Buffer Overflow (bsc#1257362)
+- Drop upstreamed patches:
+  * xrdp-memory-allocation-security-fix.patch
+  * xrdp-remove-unecessary-gmalloc.patch
+  * xrdp-safe-data-chunk-reassembly.patch
+  * xrdp-add-stub-implementation-for-s_check_rem_and_log.patch
+  * xrdp-CVE-2022-23468.patch
+  * xrdp-CVE-2022-23478.patch
+  * xrdp-CVE-2022-23479.patch
+  * xrdp-CVE-2022-23480.patch
+  * xrdp-CVE-2022-23481.patch
+  * xrdp-CVE-2022-23482.patch
+  * xrdp-CVE-2022-23483.patch
+  * xrdp-CVE-2022-23484.patch
+  * xrdp-CVE-2022-23493.patch
+  * xrdp-CVE-2022-23477.patch
+  * xrdp-CVE-2023-40184.patch
+  * xrdp-CVE-2023-42822.patch
+  * xrdp-CVE-2024-39917.patch
+  * xrdp-CVE-2025-68670.patch
+
+-------------------------------------------------------------------
+Fri Jan 30 06:19:37 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add xrdp-CVE-2025-68670.patch: Fix a potential overflow
+  (bsc#1257362 CVE-2025-68670).
 
 -------------------------------------------------------------------
 Sat May  3 20:51:12 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
@@ -33,6 +77,14 @@ Sat May  3 20:51:12 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 - Rebase xrdp-systemd-services.patch
 
 -------------------------------------------------------------------
+Fri Jan 24 08:49:57 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
+
+- Enforce no login screen if require_credentials is set
+  (bsc#1227769)
+  + Add xrdp-CVE-2024-39917.patch
+  + Rebase xrdp-fate318398-change-expired-password.patch
+
+-------------------------------------------------------------------
 Tue Jan 14 13:17:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix escaping of commented out patch: with RPM 4.20, %patch
@@ -52,6 +104,12 @@ Mon Feb 26 12:18:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 - Use %patch -P N instead of deprecated %patchN.
 
 -------------------------------------------------------------------
+Fri Dec  8 01:46:15 UTC 2023 - Daike Yu <yu.daike@suse.com>
+
+- Update xrdp-CVE-2023-42822.patch
+  + fix bsc#1217759: xrdp login screen does not show any text
+
+-------------------------------------------------------------------
 Thu Nov 30 20:47:32 UTC 2023 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 
 - Trivial rebase of xrdp-disable-8-bpp-vnc-support.patch.
@@ -63,6 +121,12 @@ Thu Nov 30 20:47:32 UTC 2023 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 - Trivial rebase of xrdp-filter-tab-from-mstsc-on-focus-change.patch.
 - Disable xrdp-fate318398-change-expired-password.patch. It does not apply
   cleanly since xrdp 0.9.18. Reconsider its usage.
+
+-------------------------------------------------------------------
+Tue Nov 21 02:45:32 UTC 2023 - Daike Yu <yu.daike@suse.com>
+
+- xrdp-CVE-2023-42822.patch (bsc#1215803)
+  + unchecked access to font glyph info
 
 -------------------------------------------------------------------
 Wed Oct 18 09:23:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -85,6 +149,12 @@ Wed Oct 18 09:23:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
       restricted to around 250 characters.
     - X11 clipboard clients now no longer hang when requesting a
       clipboard format which isn't available.
+
+-------------------------------------------------------------------
+Tue Sep 12 07:47:53 UTC 2023 - Daike Yu <yu.daike@suse.com>
+
+- xrdp-CVE-2023-40184.patch (bsc#1214805)
+  + restriction bypass via improper session handling
 
 -------------------------------------------------------------------
 Thu Aug  3 04:01:39 UTC 2023 - Linnaea Lavia <linnaea@lavia.moe>
@@ -132,6 +202,15 @@ Thu Aug  3 04:01:39 UTC 2023 - Linnaea Lavia <linnaea@lavia.moe>
     xrdp-update-pam.d-path.patch
 
 -------------------------------------------------------------------
+Mon Jul 10 15:20:01 UTC 2023 - Josef Cejka <jcejka@suse.com>
+
+ - Convert username exported to env variables to canonical form
+   to prevent issues with different username and domain formats (bsc#1211740)
+   + xrdp-Add-function-to-get-user-information-by-UID.patch
+   + xrdp-Moved-initgroups-call-to-before-auth_start_session.patch
+   + xrdp-fix-username-in-env.patch
+
+-------------------------------------------------------------------
 Tue Jun  6 14:19:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not call %stop_on_removal and %restart_on_update in
@@ -175,6 +254,8 @@ Tue Jan 10 02:08:45 UTC 2023 - Daike Yu <yu.daike@suse.com>
 Wed Dec 28 04:47:31 UTC 2022 - Daike Yu <yu.daike@suse.com>
 
 - Security fixes:
+  + xrdp-add-stub-implementation-for-s_check_rem_and_log.patch
+    * add stub implementation for s_check_rem_and_log()
   + xrdp-CVE-2022-23468.patch (bsc#1206300)
     * Buffer overflow in xrdp_login_wnd_create()
   + xrdp-CVE-2022-23478.patch (bsc#1206302)
@@ -320,6 +401,15 @@ Wed Jan  6 07:06:23 UTC 2021 - Felix Zhang <fzhang.foss@gmail.com>
 - Drop xrdp-usr-etc-support.patch: fixed upstream
 - Rebase xrdp-avahi.diff
 - Rebase xrdp-fate318398-change-expired-password.patch
+
+-------------------------------------------------------------------
+Mon Nov  9 07:31:16 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Introduce more buffer protection fixes (jsc#SLE-11518):
+  + Add xrdp-memory-allocation-security-fix.patch
+  + Add xrdp-remove-unecessary-gmalloc.patch
+  + Add xrdp-safe-data-chunk-reassembly.patch
+- Make the serial number of SLE patches on the bottom
 
 -------------------------------------------------------------------
 Mon Oct 19 02:32:24 UTC 2020 - Yifan Jiang <yfjiang@suse.com>

@@ -1,19 +1,19 @@
-Index: xrdp-0.9.23.1/configure.ac
+Index: xrdp-0.9.27/configure.ac
 ===================================================================
---- xrdp-0.9.23.1.orig/configure.ac
-+++ xrdp-0.9.23.1/configure.ac
-@@ -9,6 +9,7 @@ AC_PROG_CC
- AC_C_CONST
+--- xrdp-0.9.27.orig/configure.ac
++++ xrdp-0.9.27/configure.ac
+@@ -9,6 +9,7 @@ AC_CONFIG_MACRO_DIR([m4])
+ AC_PROG_CC
  AC_PROG_LIBTOOL
  
 +PKG_CHECK_MODULES(AVAHI, avahi-client >= 0.6.4)
  PKG_PROG_PKG_CONFIG
  if test "x$PKG_CONFIG" = "x"; then
    AC_MSG_ERROR([please install pkg-config])
-Index: xrdp-0.9.23.1/xrdp/Makefile.am
+Index: xrdp-0.9.27/xrdp/Makefile.am
 ===================================================================
---- xrdp-0.9.23.1.orig/xrdp/Makefile.am
-+++ xrdp-0.9.23.1/xrdp/Makefile.am
+--- xrdp-0.9.27.orig/xrdp/Makefile.am
++++ xrdp-0.9.27/xrdp/Makefile.am
 @@ -14,6 +14,7 @@ AM_CPPFLAGS = \
    -I$(top_srcdir)/common \
    -I$(top_srcdir)/sesman/libscp \
@@ -38,11 +38,11 @@ Index: xrdp-0.9.23.1/xrdp/Makefile.am
    $(XRDP_EXTRA_LIBS)
  
  xrdpsysconfdir=$(sysconfdir)/xrdp
-Index: xrdp-0.9.23.1/xrdp/xrdp.h
+Index: xrdp-0.9.27/xrdp/xrdp.h
 ===================================================================
---- xrdp-0.9.23.1.orig/xrdp/xrdp.h
-+++ xrdp-0.9.23.1/xrdp/xrdp.h
-@@ -580,3 +580,10 @@ server_add_char_alpha(struct xrdp_mod *m
+--- xrdp-0.9.27.orig/xrdp/xrdp.h
++++ xrdp-0.9.27/xrdp/xrdp.h
+@@ -582,3 +582,10 @@ server_add_char_alpha(struct xrdp_mod *m
  int
  server_session_info(struct xrdp_mod *mod, const char *data, int data_bytes);
  
@@ -53,10 +53,10 @@ Index: xrdp-0.9.23.1/xrdp/xrdp.h
 +xrdp_avahi_fini(void);
 +void
 +xrdp_avahi_get_port(char *port);
-Index: xrdp-0.9.23.1/xrdp/xrdp_avahi.c
+Index: xrdp-0.9.27/xrdp/xrdp_avahi.c
 ===================================================================
 --- /dev/null
-+++ xrdp-0.9.23.1/xrdp/xrdp_avahi.c
++++ xrdp-0.9.27/xrdp/xrdp_avahi.c
 @@ -0,0 +1,182 @@
 +/*
 +   This program is free software; you can redistribute it and/or modify
@@ -240,10 +240,10 @@ Index: xrdp-0.9.23.1/xrdp/xrdp_avahi.c
 +    if (fd != -1)
 +        g_file_close(fd);
 +}
-Index: xrdp-0.9.23.1/common/arch.h
+Index: xrdp-0.9.27/common/arch.h
 ===================================================================
---- xrdp-0.9.23.1.orig/common/arch.h
-+++ xrdp-0.9.23.1/common/arch.h
+--- xrdp-0.9.27.orig/common/arch.h
++++ xrdp-0.9.27/common/arch.h
 @@ -22,27 +22,7 @@
  #include <stdlib.h>
  #include <string.h>
