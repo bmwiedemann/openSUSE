@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 18 17:00:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.10.0:
+  * tox: Use new constraints option
+  * Add handling of Decimal format
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Don't iterate over addresses in netaddr.IPRange
+  * Add back tzdata
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Mon Mar  9 21:28:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.9.1:

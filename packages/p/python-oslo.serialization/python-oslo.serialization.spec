@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.serialization
-Version:        5.9.1
+Version:        5.10.0
 Release:        0
 Summary:        OpenStack serialization library
 License:        Apache-2.0
@@ -25,12 +25,14 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.serialization
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo_serialization/oslo_serialization-%{version}.tar.gz
 BuildRequires:  %{python_module msgpack >= 0.5.2}
-BuildRequires:  %{python_module netaddr}
-BuildRequires:  %{python_module oslo.i18n}
+BuildRequires:  %{python_module netaddr >= 0.7.18}
+BuildRequires:  %{python_module oslo.i18n >= 3.15.3}
 BuildRequires:  %{python_module oslo.utils >= 3.33.0}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module stestr >= 2.0.0}
+BuildRequires:  %{python_module tzdata >= 2022.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-msgpack >= 0.5.2

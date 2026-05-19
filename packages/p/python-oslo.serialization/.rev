@@ -376,4 +376,19 @@
   * Update master for stable/2025.2</comment>
     <requestid>1342030</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c44ee731d8ead71cc793569d59425c3c</srcmd5>
+    <version>5.10.0</version>
+    <time>1779205709</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.10.0:
+  * tox: Use new constraints option
+  * Add handling of Decimal format
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Don't iterate over addresses in netaddr.IPRange
+  * Add back tzdata
+  * Update master for stable/2026.1</comment>
+    <requestid>1353874</requestid>
+  </revision>
 </revisionlist>
