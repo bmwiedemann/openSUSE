@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 19 05:00:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.4:
+  * Changelog
+    - 7ca373d fix(docker): check reg token file
+  * What's Changed
+    - truncate commit message by runes, not bytes by @4n70w4 in
+      #3836
+    - fix(db): honor legacy environment_id when saving templates by
+      @cursor[bot] in #3841
+    - api-docs: align spec with actual REST API behavior by
+      @Omicron7 in #3852
+
+-------------------------------------------------------------------
 Thu May 07 12:31:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.2:
