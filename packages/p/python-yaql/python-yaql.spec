@@ -1,7 +1,7 @@
 #
 # spec file for package python-yaql
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-yaql
 Version:        3.2.0
 Release:        0
@@ -24,7 +25,6 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/yaql
 Source0:        https://files.pythonhosted.org/packages/source/y/yaql/yaql-%{version}.tar.gz
-BuildRequires:  openstack-macros
 # for testing
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module pip}
@@ -35,6 +35,9 @@ BuildRequires:  %{python_module stestr}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
+BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-python-dateutil
 BuildArch:      noarch
 %if "python%{python_nodots_ver}" == "%{primary_python}"
@@ -53,14 +56,12 @@ written in python and is distributed via PyPI.
 
 %prep
 %autosetup -p1 -n yaql-%{version}
-%py_req_cleanup
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-
 %python_clone -a %{buildroot}%{_bindir}/yaql
 
 %pre
@@ -73,7 +74,7 @@ written in python and is distributed via PyPI.
 %python_uninstall_alternative yaql
 
 %check
-%{openstack_stestr_run}
+%python_exec -m stestr.cli run
 
 %files %{python_files}
 %license LICENSE

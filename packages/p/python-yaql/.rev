@@ -227,4 +227,12 @@
 - add 0b006f07226138ef26ab8296494f1dc1c09908e2.patch</comment>
     <requestid>1316885</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>dd25b608d308baa9f6048e64ad5b89a1</srcmd5>
+    <version>3.2.0</version>
+    <time>1779205713</time>
+    <user>anag_factory</user>
+    <comment>- fix build after u-a removal</comment>
+    <requestid>1353906</requestid>
+  </revision>
 </revisionlist>
