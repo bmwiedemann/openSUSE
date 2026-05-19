@@ -230,4 +230,28 @@
           - the &quot;\&quot; character now triggers double-quoting</comment>
     <requestid>1312574</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0092a7cb50812c68b0750bee1a911a23</srcmd5>
+    <version>3.100.0</version>
+    <time>1775743726</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.100.0 (3.100)
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+  3.100     2026-04-01 10:35:56-04:00 America/New_York
+          - when present, use Log::Fmt::XS for emitting logfmt
+          - abstract out logfmt tests for use in both Log::Fmt and Log::Fmt::XS
+            test suites (but don't consider this public yet)</comment>
+    <requestid>1345217</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a145ef24e181b43c35ca52e9eb914118</srcmd5>
+    <version>3.101.0</version>
+    <time>1779205699</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.101.0 (3.101)
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+  3.101     2026-04-13 13:31:24-04:00 America/New_York
+          - fix auto-using of Log::Fmt::XS, which was straight up broken</comment>
+    <requestid>1353850</requestid>
+  </revision>
 </revisionlist>

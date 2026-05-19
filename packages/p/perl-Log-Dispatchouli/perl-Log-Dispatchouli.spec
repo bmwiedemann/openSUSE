@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Log-Dispatchouli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Log-Dispatchouli
 Name:           perl-Log-Dispatchouli
-Version:        3.13.0
+Version:        3.101.0
 Release:        0
-# 3.013 -> normalize -> 3.13.0
-%define cpan_version 3.013
+# 3.101 -> normalize -> 3.101.0
+%define cpan_version 3.101
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple wrapper around Log::Dispatch
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -48,6 +48,8 @@ BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Try::Tiny) >= 0.40
 BuildRequires:  perl(experimental)
+BuildRequires:  perl(parent)
+Requires:       perl(JSON::MaybeXS)
 Requires:       perl(Log::Dispatch)
 Requires:       perl(Log::Dispatch::Array)
 Requires:       perl(Log::Dispatch::File)
@@ -58,12 +60,17 @@ Requires:       perl(String::Flogger)
 Requires:       perl(Sub::Exporter)
 Requires:       perl(Sub::Exporter::GlobExporter) >= 0.2
 Requires:       perl(Sys::Syslog) >= 0.16
+Requires:       perl(Test::Deep)
+Requires:       perl(Test::More) >= 0.96
 Requires:       perl(Try::Tiny) >= 0.40
 Requires:       perl(experimental)
+Requires:       perl(parent)
 Provides:       perl(Log::Dispatchouli) = %{version}
 Provides:       perl(Log::Dispatchouli::Global) = %{version}
+Provides:       perl(Log::Dispatchouli::LogFmtTester) = %{version}
 Provides:       perl(Log::Dispatchouli::Proxy) = %{version}
 Provides:       perl(Log::Fmt) = %{version}
+Provides:       perl(Log::Fmt::Test) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 

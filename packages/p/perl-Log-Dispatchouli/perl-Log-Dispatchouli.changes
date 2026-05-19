@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 14 07:03:37 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.101.0 (3.101)
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  3.101     2026-04-13 13:31:24-04:00 America/New_York
+          - fix auto-using of Log::Fmt::XS, which was straight up broken
+
+-------------------------------------------------------------------
+Wed Apr  1 21:47:18 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.100.0 (3.100)
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  3.100     2026-04-01 10:35:56-04:00 America/New_York
+          - when present, use Log::Fmt::XS for emitting logfmt
+          - abstract out logfmt tests for use in both Log::Fmt and Log::Fmt::XS
+            test suites (but don't consider this public yet)
+
+-------------------------------------------------------------------
 Fri Oct 17 19:27:08 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.13.0 (3.013)
