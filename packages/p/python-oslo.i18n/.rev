@@ -391,4 +391,18 @@
   * Add missing py.typed file</comment>
     <requestid>1334410</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>cc27e718a8f79d52a026a02182240e69</srcmd5>
+    <version>6.8.0</version>
+    <time>1779205708</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.8.0:
+  * typing: Fix type for translate method
+  * tox: Use new constraints option
+  * typing: Fix compat with typed testtools
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1</comment>
+    <requestid>1353867</requestid>
+  </revision>
 </revisionlist>

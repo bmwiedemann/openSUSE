@@ -17,17 +17,17 @@
 
 
 Name:           python-oslo.i18n
-Version:        6.7.2
+Version:        6.8.0
 Release:        0
 Summary:        OpenStack i18n library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.i18n
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo_i18n/oslo_i18n-%{version}.tar.gz
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module stestr}
-BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module stestr >= 2.0.0}
+BuildRequires:  %{python_module testscenarios >= 0.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 BuildArch:      noarch
@@ -73,7 +73,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{python_sitelib}/oslo_i18n-%{version}.dist-info
 
 %files -n python-oslo.i18n-doc
-%doc doc/build/html ChangeLog CONTRIBUTING.rst README.rst
+%doc doc/build/html ChangeLog README.rst
 %license LICENSE
 
 %changelog
