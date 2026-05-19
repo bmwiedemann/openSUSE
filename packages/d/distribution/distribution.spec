@@ -18,7 +18,7 @@
 
 %define goipath github.com/distribution/distribution/v3
 Name:           distribution
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        The toolset to pack, ship, store, and deliver content
 License:        Apache-2.0

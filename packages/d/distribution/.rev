@@ -170,4 +170,41 @@
   * s3-aws: fix build for 386</comment>
     <requestid>1349543</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>91e8289933d6a559476de51990422c08</srcmd5>
+    <version>3.1.1</version>
+    <time>1779205717</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.1 (bsc#1265429, CVE-2026-41888):
+  * Fixes CVE-2026-41888
+  * Bounds-check the file basename in PurgeUploads Walk callback
+  * Add S3 Express One Zone support to the S3 storage driver
+  * Fix tag list endpoint in proxy mode
+  * Clamp oversized `n` query parameter in proxy mode instead of
+    returning 400
+  * See the full changelog below for the full list of changes.
+  * internal/client/auth/challenge: cleanups and minor refactor
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp
+    from 0.18.0 to 0.19.0 in the go_modules group across 1
+    directory
+  * build(deps): bump go.opentelemetry.io/otel/exporters/otlp/otl
+    ptrace/otlptracehttp from 1.42.0 to 1.43.0 in the go_modules
+    group across 1 directory
+  * build(deps): bump github/codeql-action from 4.34.1 to 4.35.1
+  * chore(build): Bump go version to latest
+  * refactor: use slices.Backward to simplify the code
+  * fix(proxy): fix tag list endpoint in proxy mode
+  * Update docker-compose structure in deploying.md
+  * build(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1
+  * build(deps): bump actions/upload-pages-artifact from 4.0.0 to
+    5.0.0
+  * build(deps): bump docker/login-action from 4.0.0 to 4.1.0
+  * build(deps): bump docker/bake-action from 7.0.0 to 7.1.0
+  * fix(proxy): clamp oversized n query param instead of
+    returning 400
+  * feat(s3): add express zone one support to S3 driver
+  * fix(storage): bounds-check the file basename in PurgeUploads</comment>
+    <requestid>1353883</requestid>
+  </revision>
 </revisionlist>
