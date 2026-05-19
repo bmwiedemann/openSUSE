@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue May 19 05:04:17 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.1
+  * Compile fixes for clang libc++
+
+-------------------------------------------------------------------
+Fri May 15 15:02:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.0
+  * Fix overlapping cache keys
+  * Fix cong add gen pairs
+  * Feature: Added operators `<=` and `>=` for constants
+  * Row dimension checking for compile-time matrices
+  * Add max-plus implementation for Konieczny
+  * matrix: impl `product_inplace` with checks
+  * Split `matrix.hpp` into multiple files, out-of-line functions,
+    and otherwise update
+  * presentation-examples: add double Catalan monoid
+  * Add functions for working with commutators
+  * Add parsing for commutators in `operator""_p`
+  * ToddCoxeter: throw if non-core strategy and run_for
+
+-------------------------------------------------------------------
+Wed Apr  8 14:19:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.5
+  * cong: set the congruence report prefix in constructors
+  * Remove redundant 'already finished' reporting when
+    computing/enumerating AbacusJonesMonoid elements
+
+-------------------------------------------------------------------
 Tue Mar 31 13:14:38 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.5.4

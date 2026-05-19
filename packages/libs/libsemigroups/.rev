@@ -355,4 +355,20 @@
     <comment>- Update to release 3.5.4</comment>
     <requestid>1343913</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0973c08b56ded44cf0c66d5013317c28</srcmd5>
+    <version>3.5.5</version>
+    <time>1775743751</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.5.5</comment>
+    <requestid>1345225</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>77d7fbd91c87655e974314e39777f659</srcmd5>
+    <version>3.6.1</version>
+    <time>1779205784</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.6.1</comment>
+    <requestid>1353926</requestid>
+  </revision>
 </revisionlist>
