@@ -193,4 +193,27 @@ migrations as well as point release upgrades
   * Update ports temp repo url for Tumbleweed</comment>
     <requestid>1348389</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>91fa06d25247f470ee48c094ab7406a6</srcmd5>
+    <version>20260517.df4e731</version>
+    <time>1779205819</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260517.df4e731:
+  * Update README.md
+  * ci: set minimal token permissions for shellcheck workflow
+  * fix: avoid shellcheck false positives for os-release vars
+  * Initial plan
+  * Potential fix for pull request finding
+  * Run shellcheck also on post scripts
+  * Initial addressing of shellcheck issues
+  * Add shellcheck workflow
+  * Use consistently command -v for toolcheck
+  * Ensure that we pass DIALOGCMD to sudo
+  * Update screenshot with susedialog
+  * Use susedialog if available
+  * Potential fix for pull request finding
+  * Handle prerelease states local distro.json fallback
+  * Remove leftover debug print and add a little bit of quoting</comment>
+    <requestid>1353948</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun May 17 16:56:14 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260517.df4e731:
+  * Update README.md
+  * ci: set minimal token permissions for shellcheck workflow
+  * fix: avoid shellcheck false positives for os-release vars
+  * Initial plan
+  * Potential fix for pull request finding
+  * Run shellcheck also on post scripts
+  * Initial addressing of shellcheck issues
+  * Add shellcheck workflow
+  * Use consistently command -v for toolcheck
+  * Ensure that we pass DIALOGCMD to sudo
+  * Update screenshot with susedialog
+  * Use susedialog if available
+  * Potential fix for pull request finding
+  * Handle prerelease states local distro.json fallback
+  * Remove leftover debug print and add a little bit of quoting
+
+-------------------------------------------------------------------
 Tue Apr 21 07:35:28 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260421.e72b645:
