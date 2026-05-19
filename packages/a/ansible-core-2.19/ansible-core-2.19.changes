@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 19 07:08:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.10:
+  https://github.com/ansible/ansible/blob/v2.19.10/changelogs/CHANGELOG-v2.19.rst
+  * Security Fixes
+    - psrp - Do not log raw stdout/stderr on verbosity 5 when task
+      has no_log: true set
+    - winrm - Do not log raw stdout/stderr on verbosity 5 when task
+      has no_log: true set
+  * Bugfixes
+    - ansible-test remote alias - Alias values for --controller and
+      --target are properly resolved for remote. Previously, remote
+      alias values (e.g. fedora/latest) resolved to the correct
+      name only for the legacy --remote arg, failing with an
+      unknown image error for the newer args.
+    - module_utils/basic.py - Fix AnsibleModule.run_command() to
+      handle None return from non-blocking pipe reads (#86920).
+
+-------------------------------------------------------------------
 Tue Apr 21 06:09:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.19.9:
