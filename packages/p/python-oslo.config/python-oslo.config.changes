@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 18 22:11:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.4.0:
+  * tox: Use new constraints option
+  * typing: Update for typed oslotest
+  * Update packaging configuration
+  * Add typing
+  * sphinxext: Replace ViewList with StringList
+  * Synchronise function signatures
+  * tests: Tweak mocking
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+  * Replace usage of undocumented logging.WARN
+
+-------------------------------------------------------------------
 Sun Mar  8 20:39:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.3.0:

@@ -950,4 +950,22 @@ all changed Requires/Buildrequires seem to be available
   * Remove reference to tag framework</comment>
     <requestid>1339164</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2046c2bc2a3d650ec665ff6b02fa8626</srcmd5>
+    <version>10.4.0</version>
+    <time>1779205711</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.4.0:
+  * tox: Use new constraints option
+  * typing: Update for typed oslotest
+  * Update packaging configuration
+  * Add typing
+  * sphinxext: Replace ViewList with StringList
+  * Synchronise function signatures
+  * tests: Tweak mocking
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+  * Replace usage of undocumented logging.WARN</comment>
+    <requestid>1353904</requestid>
+  </revision>
 </revisionlist>

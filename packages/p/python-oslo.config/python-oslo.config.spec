@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.config
-Version:        10.3.0
+Version:        10.4.0
 Release:        0
 Summary:        OpenStack common configuration library
 License:        Apache-2.0
@@ -25,31 +25,28 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.config
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo_config/oslo_config-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML >= 5.1}
-BuildRequires:  %{python_module debtcollector >= 1.2.0}
-BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module netaddr >= 0.7.18}
 BuildRequires:  %{python_module oslo.i18n >= 3.15.3}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.18.0}
-BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module requests-mock >= 1.5.0}
 BuildRequires:  %{python_module rfc3986 >= 1.2.0}
-BuildRequires:  %{python_module stestr}
-BuildRequires:  %{python_module stevedore >= 1.20.0}
-BuildRequires:  %{python_module testscenarios}
-BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module stestr >= 2.1.0}
+BuildRequires:  %{python_module stevedore >= 5.6.0}
+BuildRequires:  %{python_module testscenarios >= 0.4}
+BuildRequires:  %{python_module testtools >= 2.2.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-PyYAML >= 5.1
-Requires:       python-debtcollector >= 1.2.0
-Requires:       python-fixtures
-Requires:       python-importlib-metadata
 Requires:       python-netaddr >= 0.7.18
 Requires:       python-oslo.i18n >= 3.15.3
+Requires:       python-pbr >= 6.1.1
 Requires:       python-requests >= 2.18.0
 Requires:       python-rfc3986 >= 1.2.0
-Requires:       python-stevedore >= 1.20.0
+Requires:       python-stevedore >= 5.6.0
 BuildArch:      noarch
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-oslo.config < %{version}
