@@ -506,4 +506,41 @@
   * caddyhttp: Avoid nil pointer dereference in proxyWrapper (#7521)</comment>
     <requestid>1341619</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>068a915b1c58d56165a3d25a61109a39</srcmd5>
+    <version>2.11.3</version>
+    <time>1779205732</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.11.3:
+  * go.mod: Upgrade quic-go to v0.59.1
+  * metrics: Add nil check for metricsHandler in AdminMetrics.serveHTTP (#7553)
+  * rewrite: escape file matcher paths before rewriting (#7683)
+  * templates: Explicitly warn about misconfigurations
+  * docs: add documentation for fileExists and fileStat template functions (#7700)
+  * caddytls: avoid duplicate automation for wildcard-covered hosts (#7697)
+  * tls: add alpn to managed HTTPS records (#7653)
+  * fastcgi: Fix lint
+  * Merge commit from fork
+  * httpcaddyfile: accept duration strings for log sampling interval (#7694)
+  * chore: Fix golangci-lint 2.12.1 findings (#7690)
+  * caddyauth: Revert &quot;set user placeholders before auth rejection (#7685)&quot; (#7688)
+  * caddyauth: set user placeholders before auth rejection (#7685)
+  * caddytls: Expand ACME credentials (#7554)
+  * admin: reject non-canonical config array indices (#7592)
+  * listeners: clean up stale Unix socket files on Windows (#7676)
+  * reverseproxy: Add ability to clear dynamic upstreams cache during retries (#7662)
+  * admin: require path segment boundary in remote access control (#7673)
+  * build(deps): bump github.com/jackc/pgx/v5 from 5.9.0 to 5.9.2 (#7668)
+  * httpcaddyfile: inherit global ACME issuer settings in tls shortcuts (#7617)
+  * logging: add regression coverage for rotated file mode (#7620)
+  * metrics: Implement pushing via OLTP (#7664)
+  * chore: Use atomics where appropriate (#7648)
+  * go.mod: Upgrade dependencies including CertMagic
+  * admin: Limit config size (by @omercnet)
+  * Typo fix in security policy
+  * core: propagate ECH keys to the QUIC listener (#7670)
+  * caddyhttp: prefer port 443 in auto-HTTPS and add tests (#7666)
+  * reverseproxy: add `lb_retry_match` condition on response status (#7569) (forwarded request 1353889 from jfkw)</comment>
+    <requestid>1353890</requestid>
+  </revision>
 </revisionlist>

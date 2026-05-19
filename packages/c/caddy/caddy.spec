@@ -17,7 +17,7 @@
 
 
 Name:           caddy
-Version:        2.11.2
+Version:        2.11.3
 Release:        0
 Summary:        Fast, multi-platform web server with automatic HTTPS
 License:        Apache-2.0
