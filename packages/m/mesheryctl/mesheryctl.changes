@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Tue May 19 06:21:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.23:
+  * General
+    - [Chore]: Bump meshery/schemas to v1.2.20 @l5io (#19540)
+    - fix: url path of 'Repository Overview' under 'Join the
+      Meshery Community' @Maanvi212006 (#19515)
+    - Delete policies/test directory @leecalcote (#19497)
+    - [CI] Skip eslint PR failure comments on forked pull requests
+      @copilot-swe-agent[bot] (#19475)
+    - [server] Guard MeshSync metadata lookup when registry tables
+      are absent @leecalcote (#19386)
+    - [Makefile] Validate Node version in dep-check @miacycle
+      (#19385)
+    - [Agent] add: schema-backed gen-relationship Skill for
+      automated relationship definitions @dipanshurdev (#18701)
+    - chore(deps): bump @babel/plugin-transform-modules-systemjs
+      from 7.28.5 to 7.29.4 in /install/docker-extension/ui
+      @dependabot[bot] (#19205)
+    - [Server] Add adapter tracker lifecycle tests
+      @chaitanyamedidar (#19180)
+  * Meshery CLI
+    - Remove wrk2 load-generator support completely @ritzorama
+      (#19539)
+    - [mesheryctl] model init: use v1beta2 schema constructs for
+      scaffold generation @YASHMAHAKAL (#19409)
+    - [UI] Fix failing Vitest test suite @copilot-swe-agent[bot]
+      (#19472)
+    - Remove Nighthawk load generator integration @hortison
+      (#19463)
+    - mesheryctl: remove golden test fixture @miacycle (#19464)
+    - Fix formatting and update Artifact Hub references @hortison
+      (#19281)
+  * Maintenance
+    - Remove wrk2 load-generator support completely @ritzorama
+      (#19539)
+    - chore/update org reference @ritzorama (#19537)
+    - Delete .github/workflows/kanvas.yml @CodexRaunak (#19532)
+    - chore(ui/e2e): migrate remaining E2E specs to TypeScript
+      @UtkarshAnandd (#19454)
+    - chore/remove references @pontusringblom (#19453)
+    - [Docs] Remove test-status page @pontusringblom (#19408)
+    - Update hugo.yml @pontusringblom (#19407)
+    - Delete .github/workflows/docs-noob-tester.lock.yml @miacycle
+      (#19390)
+    - Delete .github/workflows/first-time-contributor.md @miacycle
+      (#19388)
+    - Delete .github/workflows/docs-noob-tester.md @miacycle
+      (#19389)
+    - Delete .github/workflows/first-time-contributor.lock.yml
+      @miacycle (#19387)
+    - chore: update CI workflow to use pull_request event and
+      remove unused… @ianrwhitney (#19378)
+    - test(ui): comprehensive Vitest + React Testing Library
+      coverage @leecalcote (#19359)
+    - Update CodeQL workflow triggers @jamieplu (#19379)
+    - chore: remove unused Docker push and description steps from
+      CI workflow @ianrwhitney (#19326)
+    - [CI] Avoid logging adapter provider auth material
+      @chaitanyamedidar (#19341)
+    - Add CodeQL analysis workflow configuration @leecalcote
+      (#19367)
+    - Fix formatting and update Artifact Hub references @hortison
+      (#19281)
+  * Documentation
+    - Remove wrk2 load-generator support completely @ritzorama
+      (#19539)
+    - chore/update org reference @ritzorama (#19537)
+    - Remove Nighthawk load generator integration @hortison
+      (#19463)
+    - Docs: cheanup footer @miacycle (#19465)
+    - chore/remove references @pontusringblom (#19453)
+    - [CI] Fix PR reviewer activation logic @pontusringblom
+      (#19421)
+    - [Docs] Remove test-status page @pontusringblom (#19408)
+    - [Docs] Update community name reference in docs @yi-nuo426
+      (#19411)
+    - [Docs] Displace vendor references from installation,
+      concepts, guides, and reference pages @yi-nuo426 (#19406)
+    - [Docs] Displace vendor references from remaining tutorial
+      pages @yi-nuo426 (#19404)
+    - [Docs] Displace Kanvas and Layer5 from Kubernetes tutorial
+      pages @yi-nuo426 (#19403)
+    - [Docs] Enable intra-page navigation on REST API overview page
+      @shteypandey28-hue (#19170)
+    - Fix formatting and update Artifact Hub references @hortison
+      (#19281)
+    - [Docs] Prevent indexing of previous documentation versions
+      @hamza-mohd (#19283)
+  * Security
+    - [CI] Avoid logging adapter provider auth material
+      @chaitanyamedidar (#19341)
+    - Add CodeQL analysis workflow configuration @leecalcote
+      (#19367)
+
+-------------------------------------------------------------------
 Wed May 13 06:26:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.22:
