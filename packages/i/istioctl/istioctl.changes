@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 19 05:05:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.29.3:
+  https://istio.io/latest/news/releases/1.29.x/announcing-1.29.3/
+  istioctl-related changes
+  * Fixed an issue where istioctl ztunnel-config service JSON and
+    YAML output did not include the canonical field from the
+    ztunnel configuration dump. (Issue #59961)
+  Security update
+  * Fixed an authorization bypass in AuthorizationPolicy where
+    regex metacharacters in certain identity fields were embedded
+    in the generated Envoy SafeRegex without escaping. As a result,
+    legal Kubernetes names containing characters like . or [ could
+    be treated as regex wildcards, admitting identities beyond the
+    policy author’s intent. This issue affected source.principals
+    (specifically suffix matches starting with *) and
+    source.namespaces. (Issue #59992)
+
+-------------------------------------------------------------------
 Fri Apr 17 20:11:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.29.2:
