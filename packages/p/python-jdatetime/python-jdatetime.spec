@@ -1,7 +1,7 @@
 #
 # spec file for package python-jdatetime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            https://github.com/slashmili/python-jalali
 Source:         https://github.com/slashmili/python-jalali/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module jalali-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytzdata}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

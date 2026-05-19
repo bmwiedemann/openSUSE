@@ -100,4 +100,12 @@
     <comment></comment>
     <requestid>1246714</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bfe93e6eff1c8c6b269b1fcddbb5d6c1</srcmd5>
+    <version>5.2.0</version>
+    <time>1779205719</time>
+    <user>anag_factory</user>
+    <comment>- fix dependency on pytz</comment>
+    <requestid>1353878</requestid>
+  </revision>
 </revisionlist>
