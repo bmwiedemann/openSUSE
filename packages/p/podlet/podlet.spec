@@ -17,7 +17,7 @@
 
 
 Name:           podlet
-Version:        0.3.1~0
+Version:        0.3.2~0
 Release:        0
 Summary:        Podman quadlet generator
 License:        MPL-2.0

@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/k9withabone/podlet</param>
-              <param name="changesrevision">ca463af859931a9a43688d869eae5fe3a95e7143</param></service></servicedata>
+              <param name="changesrevision">ca463af859931a9a43688d869eae5fe3a95e7143</param></service><service name="tar_scm">
+                <param name="url">https://github.com/k9withabone/podlet.git</param>
+              <param name="changesrevision">47ec1bdfe26878cc8f403a64ca8aad489c1698d3</param></service></servicedata>
