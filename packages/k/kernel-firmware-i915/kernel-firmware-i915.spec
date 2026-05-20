@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version a2f5a294187885b9f6ee5a508358eb74c03ffd69
+%define git_version 5b2bc2e7d14c56e14c59a3d6e7b5b0641dc45c88
 
 Name:           kernel-firmware-i915
-Version:        20260416
+Version:        20260514
 Release:        0
 Summary:        Kernel firmware files for Intel i915 graphics driver
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260409.tar.gz#/kernel-firmware-tools-20260409.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260516.tar.gz#/kernel-firmware-tools-20260516.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
