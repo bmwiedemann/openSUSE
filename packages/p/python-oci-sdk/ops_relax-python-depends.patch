@@ -1,9 +1,7 @@
-diff -Nru oci-python-sdk-2.172.0.orig/requirements.txt oci-python-sdk-2.172.0/requirements.txt
---- oci-python-sdk-2.172.0.orig/requirements.txt	2026-04-21 06:47:35.000000000 +0200
-+++ oci-python-sdk-2.172.0/requirements.txt	2026-04-21 12:15:04.740673318 +0200
-@@ -1,32 +1,23 @@
--autodocsumm==0.1.11
-+autodocsumm>=0.1.11
+diff -Nru oci-python-sdk-2.175.0.orig/requirements.txt oci-python-sdk-2.175.0/requirements.txt
+--- oci-python-sdk-2.175.0.orig/requirements.txt	2026-05-19 15:29:25.000000000 +0200
++++ oci-python-sdk-2.175.0/requirements.txt	2026-05-20 08:44:38.001968951 +0200
+@@ -1,28 +1,18 @@
  certifi
 -coverage==4.5.2
 -cryptography==42.0.8; python_full_version == '3.9.0' or python_full_version == '3.9.1'
@@ -16,17 +14,14 @@ diff -Nru oci-python-sdk-2.172.0.orig/requirements.txt oci-python-sdk-2.172.0/re
 -attrs==19.1.0
 -python-dateutil>=2.5.3,<=2.7.3
 +coverage>=4.5.2
-+cryptography>=42.0.8
++cryptography>=3.2.1
 +flake8>=3.6.0
-+mock>=2.0.0
 +pyOpenSSL>=17.5.0
 +pytest>=4.1.0
 +pytest-cov>=2.6.1
 +attrs>=19.1.0
 +python-dateutil>=2.5.3
  pytz>=2016.10
--sphinx-rtd-theme==0.4.2
--sphinx==1.8.3
 -tox==3.14.3
 -virtualenv==20.0.6; python_version < '3.8'
 -virtualenv==20.17.1; python_version == '3.8'
@@ -41,12 +36,9 @@ diff -Nru oci-python-sdk-2.172.0.orig/requirements.txt oci-python-sdk-2.172.0/re
 -circuitbreaker>=1.3.1,<3.0.0; python_version >= '3.7'
 -urllib3==1.26.20; python_version < '3.10.0'
 -urllib3>=2.6.3; python_version >= '3.10.0'
--docutils<0.18
 -Jinja2<3.0.0; python_version == '3.6'
 -Jinja2>=3.1.5,<4.0.0; python_version >= '3.7'
 \ No newline at end of file
-+sphinx-rtd-theme>=0.4.2
-+sphinx>=1.8.3
 +tox>=3.14.3
 +virtualenv>=20.36.1
 +vcrpy>=2.0.1
@@ -54,11 +46,10 @@ diff -Nru oci-python-sdk-2.172.0.orig/requirements.txt oci-python-sdk-2.172.0/re
 +setuptools>=78.1.1
 +circuitbreaker>=1.3.1
 +urllib3>=2.6.3
-+docutils
 +Jinja2>=3.1.5
-diff -Nru oci-python-sdk-2.172.0.orig/setup.py oci-python-sdk-2.172.0/setup.py
---- oci-python-sdk-2.172.0.orig/setup.py	2026-04-21 06:47:35.000000000 +0200
-+++ oci-python-sdk-2.172.0/setup.py	2026-04-21 12:13:22.612095936 +0200
+diff -Nru oci-python-sdk-2.175.0.orig/setup.py oci-python-sdk-2.175.0/setup.py
+--- oci-python-sdk-2.175.0.orig/setup.py	2026-05-19 15:29:25.000000000 +0200
++++ oci-python-sdk-2.175.0/setup.py	2026-05-20 08:43:20.311860333 +0200
 @@ -31,15 +31,12 @@
  
  requires = [
