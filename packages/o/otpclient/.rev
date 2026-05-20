@@ -599,4 +599,27 @@
     <comment>Update to 5.0.1</comment>
     <requestid>1353044</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>315afbd3d70e04d945f0693e09367185</srcmd5>
+    <version>5.0.3</version>
+    <time>1779283584</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.0.3:
+  * Startup crash gdk_display_manager_get() was called before
+    gtk_init() when use-dark-theme is enabled on environments without
+    a portal-reported color scheme (#440). The dark-theme preference
+    was being applied before AdwApplication's startup chain ran, so
+    adw_style_manager_get_default() reached into an uninitialized GDK
+    display and aborted. Now applied after chaining up to the parent
+    startup().
+
+- Update to 5.0.2:
+  * NEW: Add → Scan QR from Clipboard (#438). Reads a GdkTexture from
+    the focused display's clipboard, downloads it to RGBA, converts
+    to grayscale, and decodes via zbar.
+  * FIX: Scanning a QR that does not encode an otpauth:// URI now
+    surfaces a toast instead of silently doing nothing. Applies to
+    file and webcam scans too, not just the new clipboard path.</comment>
+    <requestid>1354193</requestid>
+  </revision>
 </revisionlist>
