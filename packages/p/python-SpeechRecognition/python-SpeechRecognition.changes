@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue May 19 21:06:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.16.1:
+  * Prepare CI for Python 3.14
+  * Add isolated CI coverage for extras and guard optional-
+    dependency tests
+  * Switch to PyPI Trusted publisher
+- update to 3.16.0:
+  * feat: Add Cohere Transcribe API support
+- update to 3.15.2:
+  * chore: Secure GitHub Actions specifier
+  * ci: Try actions/stale only for needinfo issues in
+  * docs: Extract CONTRIBUTING in
+  * docs: About AI-generated contributions in
+- update to 3.15.1:
+  * fix: remove tests from wheel
+  * docs: Add Code Wiki badge
+- update to 3.15.0:
+  * chore: Migrate the project to `pyproject.toml`
+  * chore: Make FLAC binaries executable in
+    https://github.com/Uberi/speech_recognition/pull/876
+  * fix: Exclude the models data directory from package discovery
+    in https://github.com/Uberi/speech_recognition/pull/875
+- update to 3.14.6:
+  * docs: OpenAI-compatible self-hosted endpoints are already
+    supported
+- update to 3.14.5:
+  * docs: Fix Groq API broken documentation URLs
+  * chore: Run type check on GitHub Actions
+  * fix: make `GroqOptionalParameters` fields optional
+- update to 3.14.4:
+  * Add verbose parameter to recognize_vosk()
+  * feat: Download Vosk model with `sprc download vosk`
+  * Include `soundfile` in `faster-whisper` extra
+  * docs: add additional type inference for consumers
+- update to 3.14.3:
+  * Fix vosk's URL model list broken link in error message
+  * refactor: Extract logic as `AudioData.from_file()`
+  * Add --prompt & --verbose in `python -m
+    speech_recognition.recognizers.whisper_api.openai`
+- update to 3.14.2:
+  * Support gpt-4o-transcribe and gpt-4o-mini-transcribe (in
+    `whisper_api.openai` recognizer)
+- update to 3.14.1:
+  * Support PocketSphinx >= 5
+  * Fix PocketSphinx tests failure on ubuntu-24.04
+- update to 3.14.0:
+  * Support Faster Whisper
+- update to 3.13.0:
+  * Adds Parameter `use_enhanced` and `model` to
+    GoogleCloudSpeech (Fix #734)
+  * Refine google_cloud recognizer's parameters
+  * Introduce extra: `pip install SpeechRecognition[google-
+    cloud]`
+  * Use pipx to lint simpler and faster
+  * Use pipx for lint and rstcheck
+
+-------------------------------------------------------------------
 Wed Mar 26 00:52:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Lowercase metadata directory name.
@@ -117,4 +175,4 @@ Wed Nov 15 16:20:51 UTC 2017 - alarrosa@suse.com
 -------------------------------------------------------------------
 Mon Sep  4 17:54:27 UTC 2017 - alarrosa@suse.com
 
-- Initial release of python-SpeechRecognition 3.7.1 
+- Initial release of python-SpeechRecognition 3.7.1

@@ -91,4 +91,41 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264850</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4e70b3c99502df4e2318da6d8c0f267f</srcmd5>
+    <version>3.16.1</version>
+    <time>1779283471</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.16.1:
+  * Prepare CI for Python 3.14
+  * Add isolated CI coverage for extras and guard optional-
+    dependency tests
+  * Switch to PyPI Trusted publisher
+- update to 3.16.0:
+  * feat: Add Cohere Transcribe API support
+- update to 3.15.2:
+  * chore: Secure GitHub Actions specifier
+  * ci: Try actions/stale only for needinfo issues in
+  * docs: Extract CONTRIBUTING in
+  * docs: About AI-generated contributions in
+- update to 3.15.1:
+  * fix: remove tests from wheel
+  * docs: Add Code Wiki badge
+- update to 3.15.0:
+  * chore: Migrate the project to `pyproject.toml`
+  * chore: Make FLAC binaries executable in
+    https://github.com/Uberi/speech_recognition/pull/876
+  * fix: Exclude the models data directory from package discovery
+    in https://github.com/Uberi/speech_recognition/pull/875
+- update to 3.14.6:
+  * docs: OpenAI-compatible self-hosted endpoints are already
+    supported
+- update to 3.14.5:
+  * docs: Fix Groq API broken documentation URLs
+  * chore: Run type check on GitHub Actions
+  * fix: make `GroqOptionalParameters` fields optional
+- update to 3.14.4:
+  * Add verbose parameter to recognize_vosk()</comment>
+    <requestid>1354103</requestid>
+  </revision>
 </revisionlist>

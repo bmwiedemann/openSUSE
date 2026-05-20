@@ -1,7 +1,7 @@
 #
 # spec file for package python-SpeechRecognition
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,15 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %define justpython python
 Name:           python-SpeechRecognition
-Version:        3.12.0
+Version:        3.16.1
 Release:        0
 Summary:        Library for performing speech recognition, with support for several engines
 # Note: The sources include third party code with different licenses.
@@ -32,9 +38,12 @@ Patch0:         fix-readme.patch
 BuildRequires:  %{python_module audioop-lts if %python-base >= 3.13}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module google-cloud-speech}
+BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module respx}
+BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module standard-aifc if %python-base >= 3.13}
 BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  %{python_module wheel}
@@ -52,6 +61,14 @@ Requires:       python-standard-aifc
 %endif
 Recommends:     python-pocketsphinx-python
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
+
 %python_subpackages
 
 %description
@@ -87,8 +104,7 @@ rm LICENSE-FLAC.txt
 
 %install
 %pyproject_install
-# Do not ship tests
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
+%python_clone -a %{buildroot}%{_bindir}/sprc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 mkdir -p %{buildroot}%{_datadir}/speech_recognition
 cp -Ra speech_recognition/pocketsphinx-data %{buildroot}%{_datadir}/speech_recognition/
@@ -102,14 +118,25 @@ ignore+=" --ignore tests/test_whisper_recognition.py"
 # PocketSphinx is only built for primary Python
 %pytest $ignore -k 'not test_sphinx_'
 
+%post
+%python_install_alternative sprc
+
+%postun
+%python_uninstall_alternative sprc
+
+%pre
+%python_libalternatives_reset_alternative sprc
+
 %files %{python_files}
 %license LICENSE.txt
+%doc README.rst
+%python_alternative %{_bindir}/sprc
 %{python_sitelib}/speech_recognition
 %{python_sitelib}/speechrecognition-%{version}.dist-info
-%dir %{_datadir}/speech_recognition/
-%dir %{_datadir}/speech_recognition/pocketsphinx-data
 
 %files -n python-SpeechRecognition-common-en-US
+%dir %{_datadir}/speech_recognition/
+%dir %{_datadir}/speech_recognition/pocketsphinx-data
 %{_datadir}/speech_recognition/pocketsphinx-data/en-US
 
 %changelog
