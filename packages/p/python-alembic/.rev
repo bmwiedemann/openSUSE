@@ -1880,4 +1880,12 @@
   * **[feature] [autogenerate]** Autogenerate reflection sweeps</comment>
     <requestid>1333398</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>8e10955f89ae4de282099d85ad4c6e70</srcmd5>
+    <version>1.18.4</version>
+    <time>1779283429</time>
+    <user>anag_factory</user>
+    <comment>- fix dependency on tzdata</comment>
+    <requestid>1353881</requestid>
+  </revision>
 </revisionlist>

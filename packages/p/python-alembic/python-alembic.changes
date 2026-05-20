@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 17:26:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix dependency on tzdata
+
+-------------------------------------------------------------------
 Mon Feb 16 16:52:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to el_1_18_4:

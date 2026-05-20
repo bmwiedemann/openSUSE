@@ -38,8 +38,8 @@ BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytzdata}
 BuildRequires:  %{python_module typing-extensions >= 4}
+BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
