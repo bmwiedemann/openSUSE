@@ -292,4 +292,12 @@
   * remove cherrypick bot and add mergify details (backport #581)</comment>
     <requestid>1351259</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>5659eb11eb01abbb8974ef8f702e9337</srcmd5>
+    <version>1.4.3</version>
+    <time>1779286512</time>
+    <user>anag_factory</user>
+    <comment>- update x/net to v0.53.0 to address CVE-2026-33814 (bsc#1265765)</comment>
+    <requestid>1354244</requestid>
+  </revision>
 </revisionlist>

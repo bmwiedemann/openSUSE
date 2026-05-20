@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 20 13:30:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update x/net to v0.53.0 to address CVE-2026-33814 (bsc#1265765)
+
+-------------------------------------------------------------------
 Wed May  6 16:52:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.3 (
