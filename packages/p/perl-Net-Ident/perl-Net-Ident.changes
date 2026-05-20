@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Apr  9 11:57:00 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.310.0 (1.31)
+   see /usr/share/doc/packages/perl-Net-Ident/Changes
+
+  1.31 2026-04-02
+      [Improvements]
+      - PR #43 - Add functional tests for lookupFromInAddr() and lookup()
+        covering scalar/list context, error propagation, unreachable remotes,
+        bad filehandles, and the ident_lookup alias
+      - PR #44 - Add timeout behavior tests for query() and ready() covering
+        expired timeouts, select() timeout, partial data accumulation, timeout
+        propagation through username(), and non-blocking ready()
+      [Maintenance]
+      - PR #38 - Add missing patterns to MANIFEST.SKIP (blib/, pm_to_blib,
+        Makefile.old, dist directories, .tar.gz files)
+      - PR #39 - Add AI policy (AI_POLICY.md) and link from README
+      - PR #40 - Remove dead Apache/mod_perl infrastructure from Makefile.PL,
+        reducing it from 660 lines to 44
+      - PR #41 - Clean up POD warnings and remove dead compat-mode markers
+      - PR #42 - Remove stale INSTALL file and fix MANIFEST inconsistency
+  1.29 2026-03-24
+      [Improvements]
+      - PR #36 - Add constructor tests for new() and _passfh resolution
+        covering glob ref, string, qualified name, FileHandle, error-state
+        objects, newFromInAddr, and connected socket without identd
+      [Maintenance]
+      - PR #35 - Regenerate README.md from current POD to pick up badge,
+        example code, and typo fixes
+      - PR #37 - Fix .gitignore to match all dist directories, not just 0.x
+  1.28 2026-03-22
+      [Bug Fixes]
+      - GH #26, PR #33 - Handle ECONNRESET from sysread on Windows where
+        socketpair emulation sends TCP RST instead of FIN on close
+      - GH #28, PR #31 - Handle ESPIPE from sysread on Solaris socketpairs
+        where remote close returns "Illegal seek" instead of EOF
+      - GH #29, PR #30 - Add use 5.010 to remaining test files for Perl 5.8.x
+        defense in depth
+      [Maintenance]
+      - PR #25 - Add use 5.010 to Makefile.PL for clean failure on old perls
+      - PR #34 - Sync cpanfile and PREREQ_PM with actual dependencies: remove
+        unused Fcntl and Config, add missing Errno
+  1.27 2026-03-20
+      [Bug Fixes]
+      - GH #19, PR #23 - Remove select() exception mask checks that fail on Solaris
+      - GH #20, PR #24 - Remove select() exception mask that fails on Solaris socketpair
+      - GH #18, PR #22 - Add use 5.010 for clean failure on Perl < 5.10
+      - GH #17, PR #21 - Make t/query.t portable to Windows
+      [Improvements]
+      - PR #15 - Add comprehensive tests for export hook mechanism
+      [Maintenance]
+      - PR #16 - Improve CPAN metadata in Makefile.PL (LICENSE, MIN_PERL_VERSION,
+        TEST_REQUIRES, META spec v2)
+  1.26 2026-03-18
+      [Bug Fixes]
+      - GH #2 - Fix compat mode
+      - GH #12 - Fix sysread EOF in ready() to prevent infinite loop
+      - GH #9 - Fix unreachable elsif in ready() that broke repeated calls
+      - GH #10 - Fix SUPER::export_fail to use method call so class is passed correctly
+      - GH #11 - Fix newFromInAddr state inconsistency
+      [Improvements]
+      - GH #14 - Replace string eval with blocking(0) for non-blocking sockets
+      - GH #8 - Add unit tests for RFC1413 response parsing
+      - GH #13 - Add comprehensive async interface tests
+      - GH #10 - Modernize tests from hand-rolled TAP to Test::More
+      [Maintenance]
+      - GH #3 - Fix Makefile.PL bugs, fix pod typos
+      - GH #11 - Fix POD example and typos
+      - GH #7 - Modernize CI: consolidate workflows, fix deprecated Docker images
+      - GH #4 - Update repository URLs to reflect new cpan-authors location
+
+-------------------------------------------------------------------
 Mon Jan 20 03:13:49 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.25
