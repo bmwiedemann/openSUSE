@@ -1,7 +1,7 @@
 #
 # spec file for package python-Mathics-Django
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,22 @@
 #
 
 
-%define modname mathics_django
+%define modname mathics3_django
 Name:           python-Mathics-Django
-Version:        9.0.0
+Version:        10.0.0
 Release:        0
 Summary:        A Django front end for Mathics3
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3
 License:        Apache-2.0 AND BSD-3-Clause AND GPL-3.0-only AND MIT
 URL:            https://mathics.org/
-Source:         https://files.pythonhosted.org/packages/source/m/mathics-django/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/mathics3-django/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module django}
-BuildRequires:  %{python_module Mathics-Scanner >= 1.4.1}
+BuildRequires:  %{python_module Mathics-Scanner >= 10.0.0}
 BuildRequires:  %{python_module Mathics3 >= 9.0.0}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module networkx >= 3.0}
@@ -40,13 +40,14 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-Mathics-Scanner >= 1.4.1
-Requires:       python-Mathics3 >= 9.0.0
+Requires:       python-Mathics-Scanner >= 10.0.0
+Requires:       python-Mathics3 >= 10.0.0
 Requires:       python-django
 Requires:       python-matplotlib
 Requires:       python-networkx >= 3.0
 Requires:       python-pygments
 Requires:       python-requests
+Provides:       python-Mathics3-Django
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -57,7 +58,7 @@ BuildArch:      noarch
 browser.
 
 %prep
-%autosetup -p1 -n mathics_django-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 find ./ -name *~ -delete -print
 find ./mathics_django/web/ -name *.js -exec chmod -x {} \;
 sed -Ei "1{\@^#\!/usr/bin/env python@d}" ./mathics_django/{docpipeline,manage,server}.py
@@ -69,7 +70,7 @@ sed -Ei "1{\@^#\!/usr/bin/env python@d}" ./mathics_django/web/templatetags/*.py
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/mathicsserver
+%python_clone -a %{buildroot}%{_bindir}/Mathics3Server
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -81,13 +82,13 @@ $python %{buildroot}%{$python_sitelib}/mathics_django/manage.py test test_django
 }
 
 %post
-%python_install_alternative mathicsserver
+%python_install_alternative Mathics3Server
 
 %postun
-%python_uninstall_alternative mathicsserver
+%python_uninstall_alternative Mathics3Server
 
 %files %{python_files}
-%python_alternative %{_bindir}/mathicsserver
+%python_alternative %{_bindir}/Mathics3Server
 %{python_sitelib}/mathics_django/
 %{python_sitelib}/%{modname}-%{version}.dist-info/
 
