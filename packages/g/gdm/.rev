@@ -2387,4 +2387,13 @@
   dependency (bsc#1264389, jsc#PED-15673).</comment>
     <requestid>1353088</requestid>
   </revision>
+  <revision rev="301" vrev="6">
+    <srcmd5>dcc8b60594cd4c33a8527e28c43b3759</srcmd5>
+    <version>50.0</version>
+    <time>1779288474</time>
+    <user>anag_factory</user>
+    <comment>- Drop pam_gnome_keyring from gdm-fingerprint.pamd, fix regression
+  from boo#1258070.</comment>
+    <requestid>1353714</requestid>
+  </revision>
 </revisionlist>

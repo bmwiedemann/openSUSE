@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 15 18:50:40 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pam_gnome_keyring from gdm-fingerprint.pamd, fix regression
+  from boo#1258070.
+
+-------------------------------------------------------------------
 Wed May 13 01:31:22 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Drop xdm-integration in SLE 16.1 to remove the update-alternatives
