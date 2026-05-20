@@ -1186,4 +1186,12 @@ See changelog in:
   * chore(deps): bump github.com/distribution/distribution/v3</comment>
     <requestid>1354054</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>d9af2a5e6900e8ee14c765d4ed94aa37</srcmd5>
+    <version>4.2.0</version>
+    <time>1779283457</time>
+    <user>anag_factory</user>
+    <comment>- update golang/x/net to v0.53.0 (bsc#1265758, CVE-2026-33814)</comment>
+    <requestid>1354084</requestid>
+  </revision>
 </revisionlist>

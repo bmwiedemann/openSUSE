@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 19:58:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update golang/x/net to v0.53.0 (bsc#1265758, CVE-2026-33814)
+
+-------------------------------------------------------------------
 Fri May 15 06:48:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.2.0 (bsc#1265428, CVE-2026-41888):
