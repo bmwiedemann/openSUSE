@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-stevedore
-Version:        5.7.0
+Version:        5.8.0
 Release:        0
 Summary:        Manage dynamic plugins for Python applications
 License:        Apache-2.0
 URL:            https://docs.openstack.org/stevedore/latest/
 Source:         https://files.pythonhosted.org/packages/source/s/stevedore/stevedore-%{version}.tar.gz
-BuildRequires:  %{python_module pbr >= 2.0.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -35,8 +35,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testtools}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-importlib-metadata
-Requires:       python-pbr
+Requires:       python-pbr >= 6.1.1
 %if "%{?python_provides}" == "python3"
 Provides:       python3-stevedore = %{version}
 Obsoletes:      python3-stevedore < 5.6.0
@@ -71,7 +70,7 @@ rm stevedore/tests/extension_unimportable.py
 %pytest
 
 %files %{python_files}
-%doc AUTHORS ChangeLog README.rst
+%doc ChangeLog README.rst
 %license LICENSE
 %{python_sitelib}/stevedore
 %{python_sitelib}/stevedore-%{version}.dist-info

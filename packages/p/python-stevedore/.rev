@@ -593,4 +593,19 @@
   * Remove reference to tag framework</comment>
     <requestid>1335224</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f76d71a5cb0025bc3bbe6aec3a553cf8</srcmd5>
+    <version>5.8.0</version>
+    <time>1779283480</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.8.0:
+  * typing: Correct type of Extension.plugin argument
+  * tox: Use new constraints option
+  * pre-commit: Bump dependencies
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+  * Remove unused Makefile for doc</comment>
+    <requestid>1354106</requestid>
+  </revision>
 </revisionlist>
