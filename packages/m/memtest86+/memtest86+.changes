@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 17 17:50:27 UTC 2026 - Dennis Duda <seri@seri.tools>
+
+- Update to 8.10
+  - Add support for x2APIC
+  - Better support for Intel Lunar/Panther Lake
+  - Better Bandwidth measurement for caches and RAM
+  - Enable SIMD (SSE2) on x86_64 build
+  - Fix timings on LPDDR5
+  - Fix AMI BIOS boot issues due to unannounced W^X policy change
+  - Fix older GRUB boot issues
+  - Fix SecureBoot code & binary structure for future shim review
+  - LA64-specific improvements
+  - Bug fixes
+
+-------------------------------------------------------------------
 Mon Apr 27 17:46:57 UTC 2026 - Dennis Duda <seri@seri.tools>
 
 - Update to 8.00
