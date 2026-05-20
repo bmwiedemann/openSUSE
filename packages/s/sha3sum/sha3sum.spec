@@ -17,7 +17,7 @@
 
 
 Name:           sha3sum
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        SHA-3 and Keccak checksum utility
 License:        ISC

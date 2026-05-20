@@ -1,8 +1,9 @@
-From 839aed0b45b47462b2e319b016153bdff91b125f Mon Sep 17 00:00:00 2001
+From 08b187d4746baecd7509942c85f69541ce7454e7 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 12 Apr 2024 13:35:43 +0200
 Subject: [PATCH] build: repair wrong order of link arguments
-References: https://codeberg.org/jengelh/sha3sum
+References: https://codeberg.org/maandree/sha3sum/issues/2
+Upstream: unwilling to care about portability
 
 GNU Make gives *pattern rules* a higher precedence over *suffix
 rules*. It does not track whether rule commands came from built-in
@@ -27,8 +28,8 @@ and Solaris make.
 Fixes: #2, #3.
 ---
  Makefile  | 4 ++--
- config.mk | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ config.mk | 3 ++-
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile b/Makefile
 index bcd7f66..b8ea851 100644
@@ -53,15 +54,16 @@ index bcd7f66..b8ea851 100644
  check: $(BIN)
  	./test
 diff --git a/config.mk b/config.mk
-index 62cbae7..da9de58 100644
+index 0a1f45a..9bd657b 100644
 --- a/config.mk
 +++ b/config.mk
-@@ -6,4 +6,4 @@ CC = c99
+@@ -12,4 +12,5 @@ GCC_SANITIZE    = -O1 $(COMMON_SANITIZE)
  
  CPPFLAGS =
- CFLAGS   =
--LDFLAGS  = -lkeccak
+ CFLAGS   = $(SANITIZE)
+-LDFLAGS  = $(SANITIZE) -lkeccak
++LDFLAGS  = $(SANITIZE)
 +LDLIBS   = -lkeccak
 -- 
-2.44.0
+2.54.0
 
