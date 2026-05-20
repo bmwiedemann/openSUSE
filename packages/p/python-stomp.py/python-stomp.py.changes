@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 19 21:59:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.0.0:
+  * Update to docopt-ng
+  * Pass ssl version from ssl_params
+  * Use single thread for IO when using TLS
+  * Added SSL error message from cert validation to log warning
+  * Rename stomp.logging to stomp.log, since python doesn't "like"
+    overloading the logging module
+
+-------------------------------------------------------------------
 Thu Feb 12 04:26:54 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use poetry-core for building rather than poetry.
@@ -154,10 +165,10 @@ Thu Apr 18 16:12:05 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
  * Infinite retry attempts
  * Terminate heartbeat thread on shutdown
  * Remove unused wait_on_receipt parameter
- * Reduce verbosity in logging to not include headers unless debug 
+ * Reduce verbosity in logging to not include headers unless debug
    level is turned on (potential security issue)
  * Fix for disconnect receipt usage in transport
- * Add __enter__/__exit__ to Connection so it can be used as a 
+ * Add __enter__/__exit__ to Connection so it can be used as a
    context
  * Additional ssl options
 

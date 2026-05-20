@@ -176,4 +176,21 @@
     <comment>- Use poetry-core for building rather than poetry.</comment>
     <requestid>1332594</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>506591b7a3e5ded15799fbd0837e47cd</srcmd5>
+    <version>9.0.0</version>
+    <time>1779283495</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.0.0:
+  * Update to docopt-ng
+  * Pass ssl version from ssl_params
+  * Use single thread for IO when using TLS
+  * Added SSL error message from cert validation to log warning
+  * Rename stomp.logging to stomp.log, since python doesn't &quot;like&quot;
+    overloading the logging module
+
+ * Reduce verbosity in logging to not include headers unless debug
+ * Add __enter__/__exit__ to Connection so it can be used as a</comment>
+    <requestid>1354125</requestid>
+  </revision>
 </revisionlist>

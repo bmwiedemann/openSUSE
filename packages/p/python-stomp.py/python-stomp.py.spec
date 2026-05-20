@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-stomp.py
-Version:        8.2.0
+Version:        9.0.0
 Release:        0
 Summary:        Python STOMP client
 License:        Apache-2.0
