@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 16 19:11:07 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260514 (git commit 5b2bc2e7d14c):
+  * lt*_fw.bin: move to Lontium subdir
+  * linux-firmware: Add firmware for Lontium LT9611C
+
+-------------------------------------------------------------------
 Tue May  5 14:35:41 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260505 (git commit 027be1e3d201):

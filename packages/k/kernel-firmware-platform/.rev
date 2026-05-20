@@ -239,4 +239,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware:Add firmware for Lontium LT7911EXC bridge</comment>
     <requestid>1351031</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>471f1d6693a267a2178afefb73c27823</srcmd5>
+    <version>20260514</version>
+    <time>1779288481</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260514 (git commit 5b2bc2e7d14c):
+  * lt*_fw.bin: move to Lontium subdir
+  * linux-firmware: Add firmware for Lontium LT9611C</comment>
+    <requestid>1353748</requestid>
+  </revision>
 </revisionlist>
