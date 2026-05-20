@@ -440,4 +440,15 @@ There are 4 months worth of complicated commit, and I cannot go through them all
     <comment>Update to 2.1.0</comment>
     <requestid>1326553</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e12ee8eb4d42fff44d356effb4a905a2</srcmd5>
+    <version>2.1.1</version>
+    <time>1779283599</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.1.1
+- updated description with new supported processors
+- added compilation for ppc64le architecture
+</comment>
+    <requestid>1354210</requestid>
+  </revision>
 </revisionlist>

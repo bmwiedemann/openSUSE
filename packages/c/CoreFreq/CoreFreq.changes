@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Wed May 20 08:55:16 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- updated description with new supported processors
+- added compilation for ppc64le architecture
+- removed fix-leap16-compilation.patch
+- Update to 2.1.1
+  * [AMD]
+    - Added CodeName "Zen4/Hawk Point 2" "AMD Ryzen 5 PRO 220", "AMD Ryzen 5 220", "AMD Ryzen 5 PRO 215"
+    - Added Gorgon Point architecture with CPUID BF_68h * [Strix Halo] RYZEN AI MAX+ 392 and RYZEN AI MAX+ 388
+    - Add Family 1Ah Model 01h support with SMU-based per-CCD thermal mapping
+    - Add support of various EPYC SKU
+    - [Cezanne] Added Ryzen 7 PRO 5755GE
+    - [CPUID_Fn80000026] Capture the APIC ID at the Core level
+    - [CZN] Added unlocked turbo processors Ryzen 5X05G(E) series
+    - [DRAGON RANGE] Fixed brand string to "AMD Ryzen 7 8840HX"
+    - [EPYC] Add OEM SKUs across Rome, Milan, Genoa, Bergamo & Turin
+    - [EPYC][Milan] Recognize additional OEM SKUs (7B13, 7K83)
+    - [EPYC][Rome/7Fx2] Fix CCD remap and temperature handling (#573)
+    - [EPYC][Rome] Add support for additional OEM SKUs (7B12, 7D12, 7K62, 7R32)
+    - [F17h-F19h] Add one to the shift operand when SMT is enabled
+    - [F17h-F1Ah] Change fallback computation of Core and Thread Ids
+    - [F1Ah] Fix to the processor temperature control value (Tctl)
+    - [F1Ah] Query CPB/XFR ratios from HSMP' Core Clock if implemented
+    - [F1Ah] Read HSMP socket frequency range
+    - [F1Ah] Refactoring the CPU topology from leaf 0x80000026 * Documentation of package socket types
+    - [F1Ah] Split thermal collect in two functions: * Per Socket, using SMU Tctl register 0x00059800 * Per Cluster, still attempting F19h_61h' SMU CCD addresses
+    - [GNR] Added Ryzen PRO 9X45 series
+    - [GNR] Added unlocked turbo processors Ryzen 9X00F series
+    - [GORGON POINT] Add Ryzen AI 400G/400GE desktop series [CR] Remove stray Unicode characters from copied documentation text
+    - [Gorgon Point] Add the Sharp Dragon product series
+    - [Granite Ridge] Add the Ryzen 9 9950X3D2 Dual Edition Desktop Processor
+    - [Hawk Point 2] Ryzen 3 PRO 210 ; Ryzen 3 210 ; Ryzen 5 220
+    - [Hawk Point] Add the Sharp Dragon product series
+    - [MDN] Ryzen 10 Series ; Athlon 10 Series [AMD][RMB-R] Ryzen 100 Series
+    - [PHR-R] Added Ryzen PRO 8X05G(E) Series
+    - [PHX-R] Added unlocked turbo processors Ryzen 8X05G(E) series
+    - [Picasso] Turbo Unlocked state of Athlon 300 and 3000 Series
+    - [Renoir] Add the Ryzen 7 4700LE Desktop Processor
+    - [RPL] Added the Ryzen 5 7500X3D * Mark X3D processors as unlocked with an additional boosted frequency bin
+    - [Turin][Genoa] Measure DRAM power consumption for SP5 socket
+    - [VMR] Added the Ryzen 5 5600F [AMD][RPL] Added the Ryzen 5 PRO 7445 [AMD][RPL] Added the Ryzen 5 7400
+    - [Zen4] Fix missing temperature with Phoenix Point (issue #580)
+    - [Zen5][Eldora] Add EPYC 4005 Series support [AMD][Zen4][Raphael] Use EPYC 4004 Series naming
+    - [Zen] Choose TjMax from SMU if no specific value was previously set * Set Ryzen 3950X to auto (0) * Set EPYC 7F72 to 95
+    - [Zen] Core Performance Boost is now based on CPUID:CPB and HWCR:CPB
+    - [Zen] Set architecture from codename prior assigning the thermal function
+    - [Zen][UMC] Attempt PCI accesses through assembly functions
+    - [Zen][UMC] No longer use functions provided by CONFIG_AMD_NB
+  * [Intel]
+    - Add reporting for CPUID leaf 7 subleaf 1 extensions
+    - Declare the 'Monitorless Mwait' extension bits
+    - [Kaby Lake] Unlatch turbo with unlocked K processors
+    - Reclassify Coffee Lake, Whiskey Lake & Amber Lake processors
+    - Report the SHA512 instruction set
+  * [x86_64]
+    - Add initial support for Zhaoxin x86_64 processors
+    - Detect Zhaoxin ("CentaurHauls")
+    - Fix atomic/IPI context issues in controller and sampling paths
+  * [CLI]
+    - [x86_64] Print PQE and PQM labels in the Features output
+  * [UI]
+    - Avoid duplicate tabs in the Ruler
+    - Clarify UNLOCK state with HWP/CPPC hints for Turbo/Uncore controls
+    - Fix incorrect calculation of window height (issue #582)
+    - Fix omitted UI_TRANSPARENCY build flag;
+    - Round the unique ratios of the Ruler
+    - Scale ruler tab stops to frequency units
+    - Switch ratios to float (.N) across ports - replace Q16.16 (Q,R) usage
+	  in userspace with precomputed float ratios - keep fixed-point in driver,
+	  convert once in daemon hot path - simplify UI logic and formatting
+	  (native real numbers) - validated on ppc64 (POWER10), arm64 (RK3588), riscv64 (SpacemiT)
+    - Theme fix for the Time Of the Day transparency
+    - Zero value floating-point format fix
+  * [CR]
+    - Add StrChrCopy helper to copy first comma-separated token
+    - [AMD][SMU] Filter registers with a read value of 0xffffffff [Doc][F1A_01h] Mark PSTATEDEF register support
+    - Fix missing READ_ONCE/WRITE_ONCE in kernel lower than 3.18.13
+    - Move thermal polling from hrtimer to deferrable workqueue
+    - Optimize build with a conditional CONFIG_DMI
+    - Populate board name string from device tree
+    - Populate system vendor string from device tree
+    - Prefix with static rather than inline in kernel module
+    - Refactor COF math to Q16.16 fixed-point for non-x86 archs
+    - Replace instance mutex with atomic lock and fix RFLAGS sampling
+    - RISC-V:Populate BIOS vendor and serial number from device tree
+    - Use enum for AMD CPUID PackageType
+    - [x86_64] Fix potential out-of-bounds addressing issue
+	- [Zen] Optimize the Thermal Monitor sensors remapping
+    - [EPYC][Rome] Filter case of two thermal sensors
+	- [Zen] Extended Apic ID is now mask to 3 LSB within second nibble
+  * [Build]
+    - [x86_64] Compatibility fix with CPUFREQ on AlmaLinux (#590)
+    - [x86_64] Compatibility fix with CPUFREQ on RHEL 9.7 (#590)
+  * [Doc]
+    - [Linux 7.x] Prefer processor.nocst over acpi initcall blacklist
+    - [Linux 7.x] Prevent acpi_idle, enable CoreFreq cpuidle
+  * [Kernel]
+    - [aarch64][ppc64][riscv64] CPPC reference_perf fix
+    - Compile functions based on CONFIG_CPU_FREQ
+    - Fix CPPC reference_perf build issue with Linux v7
+    - Fix CPPC reference_perf build issue with Linux v7.0
+    - [ppc64][aarch64][riscv64] Fix missing OF function prototypes
+    - Provide missing OF definitions to legacy Linux versions
+    - Replace vm_flags_reset_once with vm_flags_set
+    - [v7.1-rc1] Merge branch 'cppc_reference_perf'
+  * [CI]
+    - Add riscv64 and ppc64le architectures to the build matrix (v4)
+    - Allow legacy Node 20-based actions
+  * [PCI]
+    - The Machine Refresh event now probes controller again
+  * [arm64]
+    - Program PMU counter 4 to track core interrupts/events
+    - [riscv64][ppc64] Do scale to Hz the OPP voltage search per frequency [arm64]
+	  Refactor the calculus of the C1 idle state [arm64] Attempt to fix the Core
+	  cycle and Retired Instruction counters state [CR] Misc code cleanup in the UI
+  * [ppc64]
+    - Refactor baseclock & instruction/cycle counters
+  * [riscv64]
+    - [aarch64][ppc64] Sync base clock handling with SoC refactor
+  * [riscv64, arm64]
+    - Workaround: move thermal read out of atomic context
+  * [RISC-V]
+    - Architectures match & Caches topology improvements
+    - Compute a factory base clock from device tree
+    - Execute firmware ecall to enable the fixed counters
+    - Extend ratio range for clock estimation
+    - Getting temperature from Linux Thermal Management
+    - Parse the CPU Cluster ID from DT on SOC_SPACEMIT_K1
+    - Parse the last level cache
+    - UI fix of min/max frequencies
+    - Use vm_flags_set instead of vm_flags_reset_once to avoid fault
+
+-------------------------------------------------------------------
 Sat Jan 10 19:36:43 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 2.1.0

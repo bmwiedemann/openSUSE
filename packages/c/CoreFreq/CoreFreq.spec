@@ -17,7 +17,7 @@
 
 
 Name:           CoreFreq
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        CPU monitoring software for 64-bit processors
 License:        GPL-2.0-or-later
@@ -25,27 +25,23 @@ URL:            https://github.com/cyring/CoreFreq
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      corefreqd.service
 Source101:      preamble
-# PATCH-FIX-OPENSUSE  fix-leap16-compilation.patch bsc#1247592
-Patch:          fix-leap16-compilation.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       CoreFreq-kmp = %{version}
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64 ppc64le
 %systemd_ordering
 %kernel_module_package -p preamble -x preempt 64kb
 
 %description
-A CPU monitoring software with BIOS-like functionalities for
-64-bit processors like Intel Atom, Core2, Nehalem, SandyBridge
-and superiors, and AMD Families 0Fh–17h (Zen), 18h (Hygon
-Dhyana).
+CPU monitoring software with BIOS like functionalities designed for
+64-bit processors of architecture Intel Atom, Core2, Nehalem, SandyBridge and superiors;
+AMD Families from 0Fh ... up to 17h (Zen , Zen+ , Zen 2), 18h (Hygon Dhyana),
+19h (Zen 3, Zen 3+, Zen 4, Zen 4c), 1Ah (Zen 5, Zen 5c);
+Arm A64; RISC-V RV64; PowerPC64 (LE)
 
 %prep
 %setup
-%if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
-%patch -P 0 -p 1
-%endif
 
 %build
 %make_build
