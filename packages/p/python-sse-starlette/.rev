@@ -78,4 +78,15 @@
     starlette/compare/v3.3.3...v3.3.4</comment>
     <requestid>1343508</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d6562628fbf17f9daaabf893246cab4d</srcmd5>
+    <version>3.4.4</version>
+    <time>1779283494</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.4:
+  * **Full Changelog**: https://github.com/sysid/sse-
+    starlette/compare/v3.3.4...v3.4.4
+  * Chore/starlette sync</comment>
+    <requestid>1354120</requestid>
+  </revision>
 </revisionlist>
