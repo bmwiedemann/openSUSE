@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 19 20:38:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.1:
+  * Minor documentation improvements.
+  * Update build environment.
+  * Add type stubs.
+  * Improve unit tests.
+
+-------------------------------------------------------------------
 Sat Apr 25 20:55:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.2:

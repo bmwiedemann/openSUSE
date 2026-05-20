@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uritools
-Version:        6.0.2
+Version:        6.1.1
 Release:        0
 Summary:        URI parsing, classification and composition
 License:        MIT
@@ -26,7 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/tkem/uritools/
 Source:         https://files.pythonhosted.org/packages/source/u/uritools/uritools-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 78}
+BuildRequires:  %{python_module setuptools-scm >= 8.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
