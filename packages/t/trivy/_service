@@ -16,5 +16,6 @@
   </service>
   <service name="go_modules" mode="manual">
     <param name="compression">zst</param>
+    <param name="replace">github.com/go-git/go-git/v5=github.com/go-git/go-git/v5@v5.18.0</param>
   </service>
 </services>

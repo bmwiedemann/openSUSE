@@ -1478,4 +1478,23 @@ dropped patch file
   * fix(sbom): preserve Red Hat BuildInfo when scanning SBOMs without layer info (#10378)</comment>
     <requestid>1349537</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>732e8556d65e44cbd5598a37c37d7e9d</srcmd5>
+    <version>0.70.0</version>
+    <time>1779283459</time>
+    <user>anag_factory</user>
+    <comment>- update go-git to 5.18.0 (bsc#1264873, CVE-2026-41506)
+
+     bsc#1265648, CVE-2026-33814,
+- Update to version 0.68.2:
+  * release: v0.68.2 [release/v0.68] (#9950)
+  * fix(deps): bump alpine from `3.22.1` to `3.23.0` [backport: release/v0.68] (#9949)
+  * ci: enable `check-latest` for `setup-go` [backport: release/v0.68] (#9946)
+
+- Update to version 0.68.1 (bsc#1251363, CVE-2025-47911,
+  bsc#1251547, CVE-2025-58190, bsc#1253512, CVE-2025-47913,
+  bsc#1253512, CVE-2025-47913, bsc#1253786, CVE-2025-58181,
+  bsc#1253977, CVE-2025-47914):</comment>
+    <requestid>1354091</requestid>
+  </revision>
 </revisionlist>
