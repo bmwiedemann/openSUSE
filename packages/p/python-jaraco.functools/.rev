@@ -203,4 +203,15 @@
   * Add noop.</comment>
     <requestid>1324574</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5638d64bfcdfd1d90873e0be7f72ec9c</srcmd5>
+    <version>4.5.0</version>
+    <time>1779288468</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.5.0:
+  * bypass_when and bypass_unless now accept callable checks and
+    evaluate them on each invocation instead of binding only at
+    decoration time.</comment>
+    <requestid>1353618</requestid>
+  </revision>
 </revisionlist>
