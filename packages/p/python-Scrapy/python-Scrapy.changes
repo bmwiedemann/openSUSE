@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 12 16:39:02 UTC 2026 - mcepl@cepl.eu
+
+- Update to version 2.15.2+git.1778596491.3b34ab88c:
+  * docs: document daily log file rotation (#7501)
+  * Update the TLS code to Twisted 26.4.0 (#7347)
+  * Cleanup/clarifications of proxy support and improvements for proxy tests (#7496)
+  * sphinx-scrapy: 0.8.5 → 0.8.6 (#7507)
+  * Pin pyOpenSSL to the versions allowing mutable contexts. (#7494)
+  * Enable mypy warn_return_any. (#7492)
+  * Silence deprecation warnings in TestFormRequest. (#7491)
+  * chore: simplify some code, get rid of nested fns where it's makes sence + pylint (#7401)
+  * Deprecate FormRequest in favor of form2request (#6438)
+  * Drop start_requests() support. (#7490)
+
+-------------------------------------------------------------------
+Tue May 12 12:45:40 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add twisted-26_0.patch to make package compatible with Twisted
+  26.0+
+
+-------------------------------------------------------------------
 Sun May  3 20:49:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15.2:

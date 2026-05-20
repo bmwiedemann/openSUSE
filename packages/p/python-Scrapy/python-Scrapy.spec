@@ -32,16 +32,17 @@
 %endif
 # Upstream (and Twisted) are unclear about Python 3.14 support
 # https://github.com/scrapy/scrapy/pull/6604
-%define skip_python314 1
+%define release_version 2.15.2
 %{?sle15_python_module_pythons}
 Name:           python-Scrapy%{?psuffix}
-Version:        2.15.2
+Version:        2.15.2+git.1778596491.3b34ab88c
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
 URL:            https://scrapy.org
 # SourceRepo:     https://github.com/scrapy/scrapy
-Source:         https://files.pythonhosted.org/packages/source/s/scrapy/scrapy-%{version}.tar.gz
+# Source:         https://files.pythonhosted.org/packages/source/s/scrapy/scrapy-%%{version}.tar.gz
+Source0:        scrapy-%{version}.tar.xz
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -50,19 +51,22 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module Scrapy = %{version}}
 BuildRequires:  %{python_module Brotli >= 1.2.0}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module PyDispatcher >= 2.0.5}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module botocore >= 1.4.87}
+BuildRequires:  %{python_module cryptography >= 37.0.0}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pexpect >= 4.8.1}
 BuildRequires:  %{python_module pyftpdlib >= 2.0.1}
-BuildRequires:  %{python_module pytest-twisted >= 1.14.3}
+BuildRequires:  %{python_module pytest-twisted}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sybil >= 1.3.0}
 BuildRequires:  %{python_module testfixtures}
 BuildRequires:  %{python_module tldextract}
 BuildRequires:  %{python_module uvloop}
+BuildRequires:  %{python_module w3lib >= 1.17.2}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -73,12 +77,12 @@ BuildRequires:  python3-sphinx-scrapy
 Requires:       python-Protego >= 0.1.15
 Requires:       python-PyDispatcher >= 2.0.5
 Requires:       python-Twisted >= 21.7.0
-Requires:       python-cryptography >= 36.0.0
+Requires:       python-cryptography >= 37.0.0
 Requires:       python-cssselect >= 0.9.1
 Requires:       python-defusedxml >= 0.7.1
 Requires:       python-itemadapter >= 0.1.0
 Requires:       python-itemloaders >= 1.0.1
-Requires:       python-lxml >= 4.4.1
+Requires:       python-lxml >= 4.6.4
 Requires:       python-packaging
 Requires:       python-parsel >= 1.5.0
 Requires:       python-pyOpenSSL >= 22.0.0
@@ -163,7 +167,7 @@ skiplist="$skiplist or test_pos_string or test_key_resp_or_url"
 %license LICENSE
 %doc AUTHORS README.rst
 %{python_sitelib}/scrapy
-%{python_sitelib}/[Ss]crapy-%{version}.dist-info
+%{python_sitelib}/[Ss]crapy-%{release_version}.dist-info
 %python_alternative %{_bindir}/scrapy
 
 %files -n %{name}-doc

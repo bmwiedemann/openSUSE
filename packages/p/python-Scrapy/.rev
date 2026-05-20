@@ -393,4 +393,12 @@ Requires python-setuptools 78 to build successfully.
     introduced in 2.15.0</comment>
     <requestid>1350589</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3640cda86c2ab1b8dd0a48d9f13ee189</srcmd5>
+    <version>2.15.2+git.1778596491.3b34ab88c</version>
+    <time>1779283469</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1354101</requestid>
+  </revision>
 </revisionlist>
