@@ -268,4 +268,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1348660</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6b6f6656a2a3c069ece45d879e54b923</srcmd5>
+    <version>5.12.1</version>
+    <time>1779283515</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.12.1:
+  * Fix encoding ref leak with non-English character (#714)
+    @nhancdt2602
+  * Fix memory leak when `ujson.dump()` is unable to write to its
+    file (0bf630aaef59c0aafd0c8a4fc8bbe2a7bcefa853) @bwoodsend
+  * Note that pre-built wheels for graalpy on macOS have been
+    omitted from this release due to infrastructural issues
+    building them (#731).</comment>
+    <requestid>1354135</requestid>
+  </revision>
 </revisionlist>

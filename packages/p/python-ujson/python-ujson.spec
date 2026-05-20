@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ujson
-Version:        5.12.0
+Version:        5.12.1
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 19 22:31:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.12.1:
+  * Fix encoding ref leak with non-English character (#714)
+    @nhancdt2602
+  * Fix memory leak when `ujson.dump()` is unable to write to its
+    file (0bf630aaef59c0aafd0c8a4fc8bbe2a7bcefa853) @bwoodsend
+  * Note that pre-built wheels for graalpy on macOS have been
+    omitted from this release due to infrastructural issues
+    building them (#731).
+
+-------------------------------------------------------------------
 Wed Apr 15 00:52:39 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not ship version file in sitearch.
