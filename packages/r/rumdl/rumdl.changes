@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 20 05:08:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.95:
+  * Added
+    - md010: add code_blocks config option, consistent code-block
+      handling (#630) (b98ca52)
+    - md010: add code_blocks config option (default false)
+      (2c95e17)
+  * Fixed
+    - md010: treat fenced and indented code blocks consistently
+      (#630) (435df34)
+
+-------------------------------------------------------------------
 Mon May 18 12:30:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.94:
