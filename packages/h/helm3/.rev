@@ -89,4 +89,40 @@
     <comment>- Fix packages for %suse_version bump (jsc#PED-15794)</comment>
     <requestid>1347125</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b1b2f81507ea3353ce9b1bdfdacc2aec</srcmd5>
+    <version>3.21.0</version>
+    <time>1779283447</time>
+    <user>anag_factory</user>
+    <comment>- update distribution dependency to v3.1.1 to address (bsc#1265428,
+  CVE-2026-41888)
+- update x/net to 0.53.0 (bsc#1265758, CVE-2026-33814)
+
+- Update to version 3.21.0:
+  * [v3] Bump to version v3.21 e0878d4 (George Jenkins)
+  * fix: upgrade opentelemetry packages to patch CVEs 13d5fc4
+    (Terry Howe)
+  * fix: Chart dot-name path bug 2552884 (George Jenkins)
+  * fix: pin codeql-action/upload-sarif to commit SHA in scorecards
+    workflow ec05dd5 (Terry Howe)
+  * add image index test b0dfec5 (Pedro Tôrres)
+  * fix pulling charts from OCI indices e629995 (Pedro Tôrres)
+  * Remove refactorring changes from coalesce_test.go e2df39f
+    (Evans Mungai)
+  * Fix import 97affe0 (Evans Mungai)
+  * Update pkg/chart/common/util/coalesce_test.go c264166 (Evans
+    Mungai)
+  * Fix lint warning d409df8 (Evans Mungai)
+  * Preserve nil values in chart already 6fdd101 (Evans Mungai)
+  * fix(values): preserve nil values when chart default is empty
+    map b13743c (Evans Mungai)
+  * chore(deps): bump the k8s-io group with 7 updates
+  * chore(deps): bump golang.org/x/crypto from 0.47.0 to 0.48.0
+  * chore(deps): bump golang.org/x/term from 0.39.0 to 0.40.0
+  * chore(deps): bump github.com/lib/pq from 1.11.1 to 1.11.2
+  * chore(deps): bump golang.org/x/text from 0.33.0 to 0.34.0
+  * chore(deps): bump github.com/lib/pq from 1.10.9 to 1.11.1
+  * chore(deps): bump golang.org/x/crypto from 0.46.0 to 0.47.0</comment>
+    <requestid>1354085</requestid>
+  </revision>
 </revisionlist>
