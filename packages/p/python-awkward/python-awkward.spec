@@ -1,7 +1,7 @@
 #
 # spec file for package python-awkward
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == ""
-%define psuffix %{nil}
-%bcond_with test
-BuildArch:      noarch
-%else
+%if "%{flavor}" == "test"
+%define psuffix -%{flavor}
 %bcond_without test
 # Test suite fails on numerous tests when trying to convert 64-bit types
 ExcludeArch:    %{ix86} %{arm32}
-%define psuffix -%{flavor}
+%else
+%define psuffix %{nil}
+%bcond_with test
 %endif
 
-%define awkward_cpp_version 50
+%define awkward_cpp_version 52
 %{?sle15_python_module_pythons}
 Name:           python-awkward%{psuffix}
-Version:        2.8.9
+Version:        2.9.0
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
@@ -104,7 +103,7 @@ donttest="$donttest or (test_1125_to_arrow_from_arrow and test_recordarray)"
 donttest="$donttest or (test_1294_to_and_from_parquet and test_recordarray)"
 donttest="$donttest or (test_1440_start_v2_to_parquet and test_recordarray)"
 # no cupy / cuda on obs
-%pytest -n auto --ignore tests-cuda/ --ignore tests-cuda-kernels/ -k "not ($donttest)"
+%pytest -k "not ($donttest)" --ignore-glob=tests-cuda*
 %endif
 
 %if !%{with test}

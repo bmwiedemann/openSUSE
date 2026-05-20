@@ -595,4 +595,12 @@
     + fix: cudf strings column</comment>
     <requestid>1311606</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0cb23ea24ccee1514202684fc70fc277</srcmd5>
+    <version>2.9.0</version>
+    <time>1779283593</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1354203</requestid>
+  </revision>
 </revisionlist>

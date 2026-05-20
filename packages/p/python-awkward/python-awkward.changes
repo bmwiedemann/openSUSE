@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Tue May 19 21:01:38 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use `--ignore-glob` to disable tests from test-cuda* dirs.
+
+-------------------------------------------------------------------
+Sun Apr 19 08:21:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- be compatible with quilt(1) again
+
+-------------------------------------------------------------------
+Sat Apr 11 17:35:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * feat: drop Python 3.9
+  * fix: pass the right input type to
+    `awkward_NumpyArray_subrange_equal*` kernels
+  * fix: define behavior class within the test function in
+    `test_1511_set_attribute.py` to make it thread-local
+  * fix: properly respect requested byteorder in
+    `ak.from_buffers` for ndarray buffers
+  * fix: use `set_mask` instead of `set_base_mask` in `to_cudf`
+  * chore: use "M8" dtype instead of "
+
+-------------------------------------------------------------------
+Sat Mar 14 21:46:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.12:
+  * ## New features
+  * feat: improve merging of `NumpyArray`s and simplification of
+    `UnionArray`s + fix `ak.almost_equal` for `UnionArray`s
+  * feat: Add `ak.sort()` for CUDA backend
+  * feat: Make `ak.combinations` faster on GPU by using
+    `cp.searchsorted` to compute output list indexes
+  * feat: add argmax implementation using CCCL
+  * feat: make `ak.combinations` faster on GPU by using
+    `cp.searchsorted` to compute output list indexes
+  * feat: add argmin implementation using CCCL
+  * ## Bug-fixes and performance
+  * fix: incorrect type passed down for the `mergeastable`
+    argument
+  * fix: fix `ak.validity_error` for typetracer-backed layouts
+    with unknown length
+  * fix: make `ak.enforce_type` work with typetracers
+  * fix: `ArrayBuilder.show()` formatter forwarding
+  * fix: fix and test `Form.length_zero/one_array()`
+  * fix: make named axis thread-safe and start testing using
+    multiple threads in CI
+  * ## Other
+  * ci: use codecov token
+  * chore(ci): use macOS to test ML dependencies
+  * chore(deps): bump the actions group across 1 directory with 5
+    updates
+  * ci: xfail failing cudf tests until fixed
+  * chore: update pre-commit hooks
+  * chore: request for tensorflow in requirements only if python
+    < 3.14
+  * chore: fix noxfile on Intel macOS
+  * docs: add X0708a as a contributor for code
+  * docs: add a comparison of different argmax implementations
+    (using unary_transform, segmented_reduce and cuda-kernels)
+  * docs: Document GPU backend and cuDF compatibility limitations
+- update to 2.8.11:
+  * ## New features
+  * feat: add behavior cls validation hook
+  * feat: add a playground for cccl studies
+  * feat: add cuda.compute implementation to CCCL study
+  * feat: ability to optionally disable the caching of virtual
+    arrays on themselves
+  * ## Bug-fixes and performance
+  * fix: string array numpy conversion fails with int32 offsets
+    from parquet
+  * fix: only check length against empty form in
+    `ak.from_buffers` if it is known
+  * fix: typestr respects now limit_cols for .show and
+    _repr_mimebundle_
+  * fix: `ArrayBuilder.__bool__ ` raises `TypeError` when builder
+    length is 1
+  * fix: prevent teardown from crashing GPU test suite
+  * fix: hide awkward.ak_* and awkward.str.akstr_* from 'awkward'
+    and 'awkward.str' module
+  * fix: align multi-level indices before merge in
+    `to_dataframe()`
+  * fix: numba test failures on Python 3.14
+  * fix: incorrect passing of `Index` inside nplike function in
+    `to_IndexedOptionArray64`
+  * fix: weights should not be raised to the power n in the n-th
+    moment calculation
+  * fix: `ak.Record` creation from iterable with nested dicts
+  * fix: keep track of buffer key instead of field path for
+    VirtualNDArrays & PlaceholderArrays
+  * fix: typetracer nplike's `all` function leads to infinite
+    recursion for `axis=None`
+  * ## Other
+  * ci: fix compilation on self-hosted CI and test with multiple
+    versions of CUDA
+  * chore: update acknowledgements to include NumFOCUS
+    affiliation
+  * chore: update pre-commit hooks
+  * chore: pytest log_level is better than log_cli_level
+  * chore: update requirements files for latest possible python
+    versions
+  * chore(deps): bump the actions group with 2 updates
+  * chore: update pre-commit hooks
+  * chore: Remove CUDA 11 support
+  * chore(ci): use macos-15-intel for x86 wheel building and
+    testing
+  * docs: add new versions to version selector
+  * docs: 3.14 is supported
+  * docs: add T90REAL as a contributor for code
+  * docs: Add dependency and version change guidelines
+  * docs: add shwina as a contributor for code
+  * docs: Add an example summation reducer using cccl
+- update to 2.8.10:
+  * ## New features
+  * feat: preserve field order when replacing existing fields in
+    with_field
+  * feat: add to_/from_safetensors
+  * ## Bug-fixes and performance
+  * fix: update image cell in thinking-in-arrays.ipynb
+  * fix: prefix with an underscore unused variables
+  * fix(ci): fix issues with dependencies for GPU tests
+  * fix: convert integer-like objects to python integers in
+    shapes
+  * fix: avoid recursion limit when concatenating `EmptyArray`s
+  * fix: only check `VirtualNDArray`'s `shape` versus `count` in
+    `from_buffers` if both are known
+  * fix: preserve the type when indexed by an empty array
+  * fix: ensure masked string/bytestring dtypes can hold 'nan'
+    fill value…
+  * fix: add missing units to datetime/timedelta in a test
+  * fix: pass attrs parameter to wrap_layout in from_*
+  * fix: use jax's `__setitem__` syntax in
+    `ak.merge_union_of_records` to make it work with the jax
+    backend
+  * ## Other
+  * chore(deps): bump pypa/cibuildwheel from 3.1 to 3.2 in the
+    actions group
+  * chore(deps): bump the actions group with 2 updates
+  * chore: update pre-commit hooks
+  * chore: mac os 13 hosted runner image is closing down
+  * chore: improve pyproject.toml from sp-repo-review checks
+  * chore(deps): bump astral-sh/setup-uv from 6 to 7 in the
+    actions group
+  * chore: small inconsistency/typo with the non-jax case below
+  * chore(deps): bump the actions group with 2 updates
+  * docs: add TaiSakuma as a contributor for code
+  * docs: add DylanModesitt as a contributor for code
+  * docs: add JamesBrofos as a contributor for code
+  * test: add cuda tests for virtual arrays
+  * test: add a test on flattering empty arrays
+
+-------------------------------------------------------------------
 Thu Oct 16 05:17:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.8.9:
