@@ -223,4 +223,16 @@
     typo fix in the man page.</comment>
     <requestid>1198927</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>adb738d9943ce00e760f9af09511af91</srcmd5>
+    <version>1.8.3</version>
+    <time>1779283396</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.8.3
+  * This release fixes an issue with potentially uninitialized
+    memory if auxiliary events (DeviceValuatorNotify,
+    KeyStateNotify, ButtonStateNotify) are received when the event
+    they are supposed to follow got lost.</comment>
+    <requestid>1353727</requestid>
+  </revision>
 </revisionlist>

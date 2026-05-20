@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 18 08:10:49 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8.3
+  * This release fixes an issue with potentially uninitialized
+    memory if auxiliary events (DeviceValuatorNotify,
+    KeyStateNotify, ButtonStateNotify) are received when the event
+    they are supposed to follow got lost.
+
+-------------------------------------------------------------------
 Thu Sep  5 09:34:29 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.8.2
