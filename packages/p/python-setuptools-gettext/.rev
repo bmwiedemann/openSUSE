@@ -70,4 +70,19 @@
   * Migrate disperse configuration to toml</comment>
     <requestid>1316820</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b5ebd58e0c104204a0e5fbb5125e4b15</srcmd5>
+    <version>0.1.18</version>
+    <time>1779283497</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.1.18:
+  * Add support for `locale//LC_MESSAGES/.po` layout
+  * Allow configuring the `msgfmt` compiler in `pyproject.toml`
+  * Include `.po` files in sdist and run `build_mo` via `python
+    -m build`
+- update to 0.1.17:
+  * Include .po files in sdist and run build_mo via python -m
+    build</comment>
+    <requestid>1354126</requestid>
+  </revision>
 </revisionlist>

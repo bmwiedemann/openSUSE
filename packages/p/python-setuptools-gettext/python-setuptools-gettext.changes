@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 19 22:04:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.18:
+  * Add support for `locale//LC_MESSAGES/.po` layout
+  * Allow configuring the `msgfmt` compiler in `pyproject.toml`
+  * Include `.po` files in sdist and run `build_mo` via `python
+    -m build`
+- update to 0.1.17:
+  * Include .po files in sdist and run build_mo via python -m
+    build
+
+-------------------------------------------------------------------
 Mon Nov 10 08:24:58 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.16:
