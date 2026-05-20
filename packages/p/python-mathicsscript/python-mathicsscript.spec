@@ -1,7 +1,7 @@
 #
 # spec file for package python-mathicsscript
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,19 +26,19 @@
 %endif
 %define modname mathicsscript
 Name:           python-mathicsscript%{psuffix}
-Version:        9.0.0
+Version:        10.0.0
 Release:        0
 Summary:        A command line interface to Mathics
 License:        GPL-3.0-or-later
 URL:            https://mathics.org/
 Source0:        https://github.com/Mathics3/mathicsscript/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module Mathics >= 9.0.0}
+BuildRequires:  %{python_module Mathics >= 10.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Mathics >= 9.0.0
-Requires:       python-Mathics-Scanner >= 2.0.0
+Requires:       python-Mathics >= 10.0.0
+Requires:       python-Mathics-Scanner >= 10.0.0
 Requires:       python-Pygments
 Requires:       python-click
 Requires:       python-colorama
@@ -68,7 +68,7 @@ BuildArch:      noarch
 Mathicsscript is a feature-rich command line interface to Mathics.
 
 %prep
-%autosetup -n %{modname}-%{version}
+%autosetup -n Mathics3-script-%{version}
 
 %build
 %if %{without test}
@@ -84,8 +84,6 @@ sed -i "1{\@/usr/bin/env@d}" \
   %{buildroot}%{$python_sitelib}/%{modname}/fake_psviewer.py \
   %{buildroot}%{$python_sitelib}/%{modname}/__main__.py \
   %{buildroot}%{$python_sitelib}/%{modname}/asymptote.py
-# Move test dir into main module dir
-mv %{buildroot}%{$python_sitelib}/test %{buildroot}%{$python_sitelib}/%{modname}/
 %fdupes %{buildroot}%{$python_sitelib}/
 }
 

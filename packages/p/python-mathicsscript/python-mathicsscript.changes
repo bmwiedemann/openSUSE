@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 15 12:26:25 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 10.0.0:
+  * Support Python 3.14.
+  * Python 3.10 support dropped.
+  * Track API changes in mathics-core and Mathics3-scanner.
+  * Fix bug in --full-form handling.
+  * Allow matplotlib to render TeXForm output.
+
+-------------------------------------------------------------------
 Sun Aug 31 18:52:05 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.0.0:
