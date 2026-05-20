@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 20 05:56:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.12
+  * TrackerHttp now does requests for both IPv4 and IPv6.
+  * Now uses a single UDP socket for all UDP tracker requests.
+
+-------------------------------------------------------------------
 Sat May  2 10:22:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.11
