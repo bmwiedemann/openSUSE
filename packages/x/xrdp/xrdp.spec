@@ -78,6 +78,8 @@ Patch1002:      xrdp-filter-tab-from-mstsc-on-focus-change.patch
 Patch1003:      xrdp-bsc965647-allow-admin-choose-desktop.patch
 # PATCH-NEEDS-REBASE xrdp-fate318398-change-expired-password.patch fate#318398 - fezhang@suse.com -- enable user to update expired password via PAM. Was: PATCH-FEATURE-SLE
 Patch1004:      xrdp-fate318398-change-expired-password.patch
+# PATCH-FIX-SLE xrdp-fix-old-gcc-error.patch - yfjiang@suse.com -- The '{0}' not accepted in older gcc before C++ as a universal zero initialiser
+Patch1005:      xrdp-fix-old-gcc-error.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -148,6 +150,9 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch -P 1002 -p1
 %patch -P 1003 -p1
 #%%patch -P 1004 -p1
+%if  0%{?sle_version} <= 120500 && !0%{?is_opensuse}
+%patch -P 1005 -p1
+%endif
 %endif
 
 %build

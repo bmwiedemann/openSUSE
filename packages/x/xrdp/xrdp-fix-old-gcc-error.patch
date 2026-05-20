@@ -1,0 +1,13 @@
+Index: xrdp-0.9.27/common/guid.c
+===================================================================
+--- xrdp-0.9.27.orig/common/guid.c
++++ xrdp-0.9.27/common/guid.c
+@@ -33,7 +33,7 @@
+ struct guid
+ guid_new(void)
+ {
+-    struct guid guid = {0};
++    struct guid guid = {{0}};
+     g_random(guid.g, sizeof(guid.g));
+     return guid;
+ }
