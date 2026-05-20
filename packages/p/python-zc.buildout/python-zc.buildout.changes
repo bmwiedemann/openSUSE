@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 19 21:11:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * Restrict setuptools to less than 82 if it is not pinned. When
+    zc.buildout checks if it should upgrade itself or setuptools,
+    under some circumstances this could lead to a too new
+    setuptools version getting installed. [maurits]
+  * Test with pip 26.1.  [maurits]
+
+-------------------------------------------------------------------
 Sat Mar 14 20:26:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.3:

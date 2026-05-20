@@ -314,4 +314,17 @@ See Request#518161</comment>
     80.3+. [maurits]</comment>
     <requestid>1339010</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c42f38cae60d9313c729e0ce191792f8</srcmd5>
+    <version>5.2.0</version>
+    <time>1779283482</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.2.0:
+  * Restrict setuptools to less than 82 if it is not pinned. When
+    zc.buildout checks if it should upgrade itself or setuptools,
+    under some circumstances this could lead to a too new
+    setuptools version getting installed. [maurits]
+  * Test with pip 26.1.  [maurits]</comment>
+    <requestid>1354107</requestid>
+  </revision>
 </revisionlist>

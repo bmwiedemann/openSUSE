@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-zc.buildout
-Version:        5.1.3
+Version:        5.2.0
 Release:        0
 Summary:        System for managing development buildouts
 License:        ZPL-2.1
