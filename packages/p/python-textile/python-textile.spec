@@ -1,7 +1,7 @@
 #
 # spec file for package python-textile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-textile
-Version:        4.0.3
+Version:        4.0.4
 Release:        0
 Summary:        Textile processing for python
 License:        BSD-3-Clause

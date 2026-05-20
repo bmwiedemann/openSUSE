@@ -102,4 +102,15 @@
     <comment></comment>
     <requestid>1207163</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9fcbbf5ff5cdf38eae6fcad57e7e4488</srcmd5>
+    <version>4.0.4</version>
+    <time>1779283499</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.4:
+  * Update supported python versions to include 3.13, and 3.14.
+    Minimum support for pypy has increased to pypy3.11.
+  * Allow text blocks with spaces around first and last newlines</comment>
+    <requestid>1354127</requestid>
+  </revision>
 </revisionlist>
