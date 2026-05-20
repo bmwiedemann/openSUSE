@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-idna
-Version:        3.13
+Version:        3.15
 Release:        0
 Summary:        Internationalized Domain Names in Applications (IDNA)
 License:        BSD-3-Clause
@@ -27,8 +27,6 @@ URL:            https://github.com/kjd/idna
 Source0:        https://files.pythonhosted.org/packages/source/i/idna/idna-%{version}.tar.gz
 BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20220106.80d3756
 BuildArch:      noarch
@@ -60,7 +58,7 @@ library but currently only supports the older 2003 specification.
 
 %files %{python_files}
 %license LICENSE.md
-%doc README.rst HISTORY.rst
+%doc README.md HISTORY.md
 %{python_sitelib}/idna
 %{python_sitelib}/idna-%{version}*-info
 

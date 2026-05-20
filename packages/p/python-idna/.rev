@@ -247,4 +247,30 @@ update to version v2.5
     including segmentation of data structures specific to Jython.</comment>
     <requestid>1349205</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fdbf572ba313e5b39721cf9cba553e00</srcmd5>
+    <version>3.15</version>
+    <time>1779288478</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.15 (bsc#1265413, CVE-2026-45409):
+  * Enforce DNS-length cap on individual labels early in
+    `check_label`, short-circuiting contextual-rule processing for
+    oversized input while staying compatible with UTS 46 usage.
+  * Tidy core helpers: hoist bidi category sets to module-level
+  * frozensets (avoiding per-codepoint list construction),
+    simplify length checks, and reuse the shared `_unicode_dots_re`
+    from `idna.core` in the codec module.
+  * Use `raise ... from err` for proper exception chaining and
+    switch internal string formatting to f-strings.
+  * Allow `flit_core` 4.x in the build backend.
+  * Expand the ruff lint set (flake8-bugbear, flake8-simplify,
+  * pyupgrade, perflint) and apply the surfaced fixes; pin lint
+    to Python 3.14.
+  * Reference CVE-2026-45409 for the 3.14 advisory in place of
+    the initial GHSA identifier.
+  * Removed opportunity to process long inputs into quadratic
+  * time by rejecting oversize inputs up-front. Closes a bypass
+  * of the CVE-2024-3651 mitigation. [CVE-2026-45409]</comment>
+    <requestid>1353725</requestid>
+  </revision>
 </revisionlist>

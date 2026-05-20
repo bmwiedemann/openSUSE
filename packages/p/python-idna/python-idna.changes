@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun May 17 21:35:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.15 (bsc#1265413, CVE-2026-45409):
+  * Enforce DNS-length cap on individual labels early in
+    `check_label`, short-circuiting contextual-rule processing for
+    oversized input while staying compatible with UTS 46 usage.
+  * Tidy core helpers: hoist bidi category sets to module-level
+  * frozensets (avoiding per-codepoint list construction),
+    simplify length checks, and reuse the shared `_unicode_dots_re`
+    from `idna.core` in the codec module.
+  * Use `raise ... from err` for proper exception chaining and
+    switch internal string formatting to f-strings.
+  * Allow `flit_core` 4.x in the build backend.
+  * Expand the ruff lint set (flake8-bugbear, flake8-simplify,
+  * pyupgrade, perflint) and apply the surfaced fixes; pin lint
+    to Python 3.14.
+  * Reference CVE-2026-45409 for the 3.14 advisory in place of
+    the initial GHSA identifier.
+  * Removed opportunity to process long inputs into quadratic
+  * time by rejecting oversize inputs up-front. Closes a bypass
+  * of the CVE-2024-3651 mitigation. [CVE-2026-45409]
+
+-------------------------------------------------------------------
 Sat Apr 25 09:05:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.13:
