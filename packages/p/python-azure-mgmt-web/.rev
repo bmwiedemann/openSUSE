@@ -279,4 +279,16 @@
 - Update Requires from pyproject.toml (forwarded request 1318681 from glaubitz)</comment>
     <requestid>1318692</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e0964db2259739c54f1376b78bd0cd8b</srcmd5>
+    <version>11.0.0</version>
+    <time>1779283590</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 11.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1354159 from glaubitz)</comment>
+    <requestid>1354196</requestid>
+  </revision>
 </revisionlist>
