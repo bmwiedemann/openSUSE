@@ -3,6 +3,13 @@ Fri Apr 10 13:55:24 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Get rid of update-alternatives and support immutable mode.
   See README.SUSE for details. (bsc#1245862, jsc#PED-14820)
+- Merge the spec files from different products and use the product
+  versions to decide about the default PostgreSQL version.
+
+-------------------------------------------------------------------
+Fri Nov 28 13:12:27 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Bump major to 18 on SLE.
 
 -------------------------------------------------------------------
 Fri May  9 20:37:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
