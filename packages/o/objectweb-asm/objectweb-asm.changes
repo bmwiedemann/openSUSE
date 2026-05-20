@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 18 09:59:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to verision 9.10
+  * new Opcodes.V27 constant for Java 27
+  * bug fixes
+    + 318041: Compilation failure with JDK 5
+    + 318043: TraceSignatureVisitor bug
+
+-------------------------------------------------------------------
 Wed Dec 17 06:40:09 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 9.9.1
