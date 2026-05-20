@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Apr 22 13:24:59 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.57:
+  * Added print conversions for Garmin FIT enum tags
+  * Decode a number of undocumented Garmin FIT tags
+  * Reverted XML patch of 13.56 which broke structured JSON output
+
+-------------------------------------------------------------------
+Wed Apr 22 13:24:27 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.56:
+  * Added new tags of the Exif 3.1 specification
+  * Added ability to geotag directly from any supported file(s) containing GPS
+  * Added read support for Garmin FIT files, and the ability to use them with the -geotag option
+  * Added a new Panasonic AFAreaMode
+  * Decode maker notes from newer FLIR cameras (github #408)
+  * Improved config_files/local_time.config to add LocalTag UserParam feature
+  * Updated Compression value re-purposed by GoPro (github #411)
+  * Allow a few more different characters in the Windows -progress title string
+  * Avoid trying to return structured information from XML files
+  * Patched bug when reading QuickTime MTDT metadata
+  * API Changes:
+    + Enhanced GetValue so input tag name is no longer case sensitive
+
+-------------------------------------------------------------------
 Fri Apr 10 10:55:18 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.55:
