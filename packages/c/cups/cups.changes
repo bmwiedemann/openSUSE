@@ -41,12 +41,8 @@ Mon Apr 20 07:53:23 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
     job password strings (bsc#1261743)
   * CVE-2026-39316: Fixed a printer subscription bug
     in the scheduler (bsc#1261742)
-  * CVE-2026-NNNNN: Fixed a SNMP string conversion bug
-    in the backends.
-  The last CVE number is requested from Github for several
-  days now, the number will be corrected once we have one,
-  but we decided to make a release to share the other fixes
-  ("we" means the CUPS upstream maintainers).
+  * CVE-2026-41079: Fixed a SNMP string conversion bug
+    in the backends (bsc#1263116)
 - The release includes other fixes as well, listed in CHANGES.md.
   Issues are those at https://github.com/OpenPrinting/cups/issues
   Detailed list (from CHANGES.md):

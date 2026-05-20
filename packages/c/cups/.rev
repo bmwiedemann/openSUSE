@@ -1401,4 +1401,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>CUPS version upgrade to 2.4.19 fixes regression 'non-local users cannot print' of fix for CVE-2026-27447 bsc#1261572 (forwarded request 1349843 from jsmeix)</comment>
     <requestid>1349844</requestid>
   </revision>
+  <revision rev="184" vrev="2">
+    <srcmd5>2f127ff3a64fce61ccab4cc8e8b5e53b</srcmd5>
+    <version>2.4.19</version>
+    <time>1779283411</time>
+    <user>anag_factory</user>
+    <comment>in cups.changes added missing CVE number CVE-2026-41079 (bsc#1263116) (forwarded request 1353799 from jsmeix)</comment>
+    <requestid>1353800</requestid>
+  </revision>
 </revisionlist>
