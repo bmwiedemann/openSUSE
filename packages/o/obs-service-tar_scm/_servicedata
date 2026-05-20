@@ -12,6 +12,6 @@
   </service>
   <service name="tar_scm">
     <param name="url">https://github.com/openSUSE/obs-service-tar_scm.git</param>
-    <param name="changesrevision">77c523cce41c1757acd91054208fe8b71c121366</param>
+    <param name="changesrevision">64adb15a175b50be1ff71938251e7e12e846e1ac</param>
   </service>
 </servicedata>

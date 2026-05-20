@@ -1588,4 +1588,22 @@ They are not in common use these days. (forwarded request 1191834 from iznogood)
 </comment>
     <requestid>1349710</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>30e41f5e0620085c5d25dbf49eb26aa4</srcmd5>
+    <version>0.12.3</version>
+    <time>1779283431</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.12.3:
+  * Update spec file from package
+  * Fix format call (Fixes #543)
+  * We have some more places with --filter switch before command
+  * Fixing git fetch breakage of f1c1bbd205239a63b3d43b634b1b6a6353543794
+
+- Drop support on Bazaar (bzr), it's only provided by breezy and
+  it's being dropped from Factory. 
+
+- Update to version 0.12.1:
+  * fix for python2 auth()</comment>
+    <requestid>1354010</requestid>
+  </revision>
 </revisionlist>
