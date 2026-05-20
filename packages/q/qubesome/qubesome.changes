@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue May 19 17:24:55 UTC 2026 - Paulo Gomes <pjbgf@linux.com>
+
+- Update to version 0.0.19:
+  * build(deps): bump github.com/go-git/go-git/v6
+  * fix(deps): update module github.com/urfave/cli/v3 to v3.9.0
+  * fix(deps): update module google.golang.org/grpc to v1.81.1
+  * build(deps): bump github.com/go-git/go-billy/v6
+  * fix(deps): update module github.com/go-git/go-git/v6 to v6.0.0-alpha.3 [security]
+  * fix(deps): update golang
+  * fix(deps): update module google.golang.org/grpc to v1.81.0
+  * fix(profiles): adapt clone auth to go-git v6 client options API
+  * build(deps): bump github.com/go-git/go-git/v6
+  * fix(deps): update golang
+  * fix(deps): update module github.com/go-git/go-git/v6 to v6.0.0-alpha.1
+  * fix(deps): update module google.golang.org/grpc to v1.80.0
+  * fix(deps): update module github.com/urfave/cli/v3 to v3.8.0
+  * chore(deps): update dependency golangci/golangci-lint to v2.11.4
+  * fix(deps): update module github.com/zalando/go-keyring to v0.2.8
+  * fix(deps): update module github.com/zalando/go-keyring to v0.2.7
+  * chore(deps): update dependency protocolbuffers/protobuf to v34.1
+  * fix(deps): update module google.golang.org/grpc to v1.79.3
+  * chore(deps): update dependency golangci/golangci-lint to v2.11.3
+  * chore(deps): update dependency golangci/golangci-lint to v2.11.2
+  * fix(deps): update module golang.org/x/term to v0.41.0
+  * fix(deps): update module golang.org/x/sys to v0.42.0
+  * fix(deps): update module github.com/urfave/cli/v3 to v3.7.0
+  * fix(deps): update module google.golang.org/grpc to v1.79.2
+  * chore(deps): update dependency protocolbuffers/protobuf to v34
+  * build(deps): bump github.com/cloudflare/circl
+  * Fix gosec lint issues: G115, G706, G703 and update stale proto files
+  * Initial plan
+  * chore(deps): update dependency golangci/golangci-lint to v2.10.1
+
+-------------------------------------------------------------------
 Tue Feb 24 13:52:34 UTC 2026 - Paulo Gomes <pjbgf@linux.com>
 
 - Update to version 0.0.18:
