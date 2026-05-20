@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May 18 07:34:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.7:
+  * ULT: Sustain loops were stopped after a portamento.
+
+-------------------------------------------------------------------
+Wed Mar 25 07:23:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.6:
+  * [Sec] The security fix in libopenmpt 0.8.5 (r25042) was
+    incomplete, causing a regression when playing short looped
+    ("chip2) samples (r25084).
+
+-------------------------------------------------------------------
+Mon Mar 23 19:19:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 0.8.5:
+  * [Sec] Possible out-of-bounds sample data read in a specific
+    combination of reverse sample playback + offset past sample
+    loop. (r25042).
+  * MOD: ProTracker arpeggio wrapraound results in an effective
+    period of 65536 on Paula, not pausing the sample entirely.
+  * ULT: Loop points were incorrectly limited for 16-bit samples.
+
+-------------------------------------------------------------------
 Thu Dec 18 19:43:48 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.8.4:
