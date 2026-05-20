@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 18 07:18:04 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.30
+  * Add new API libusb_get_device_string() to access device
+    strings without opening the device.
+  * Add new API libusb_get_session_data() which returns the
+    OS-specific handle.
+  * Fix device removal races on non-hotplug builds.
+  * Improve descriptor parsing memory safety.
+  * Fix various compiler warnings, improved tests and examples.
+
+-------------------------------------------------------------------
 Wed Jun 18 13:55:34 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.29

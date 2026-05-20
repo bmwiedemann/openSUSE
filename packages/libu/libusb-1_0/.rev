@@ -378,4 +378,12 @@ It is exactly just the previous request, just fixes format of udev BuildRequires
     <comment></comment>
     <requestid>1287931</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e00ff20b28846d0f1852f52cc2809318</srcmd5>
+    <version>1.0.30</version>
+    <time>1779288473</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1353712</requestid>
+  </revision>
 </revisionlist>
