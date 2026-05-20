@@ -207,4 +207,12 @@
   * fix(storage): bounds-check the file basename in PurgeUploads</comment>
     <requestid>1353883</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0c52a0d46adbad474cc90894667034f0</srcmd5>
+    <version>3.1.1</version>
+    <time>1779286514</time>
+    <user>anag_factory</user>
+    <comment>remove accidentally duplicated changes entry</comment>
+    <requestid>1354245</requestid>
+  </revision>
 </revisionlist>

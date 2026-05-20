@@ -35,32 +35,6 @@ Mon May 18 18:00:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
   * chore(release): prepare for v3.1.1 release
 
 -------------------------------------------------------------------
-Mon May 18 17:59:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
-
-- Update to version 3.1.1:
-  * chore(release): prepare for v3.1.1 release
-  *  fix: prevent tag deletion when storage.delete.enabled is false
-  * fix(storage): bounds-check the file basename in PurgeUploads Walk callback
-  * feat(s3): add express zone one support to S3 driver
-  * fix(proxy): clamp oversized n query param instead of returning 400
-  * Update docker-compose structure in deploying.md
-  * build(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1
-  * build(deps): bump docker/bake-action from 7.0.0 to 7.1.0
-  * build(deps): bump actions/upload-pages-artifact from 4.0.0 to 5.0.0
-  * Bump Go 1.26 in CI
-  * chore(build): Bump go version to latest 1.25
-  * build(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
-  * refactor: use slices.Backward to simplify the code
-  * build(deps): bump docker/login-action from 4.0.0 to 4.1.0
-  * fix(proxy): fix tag list endpoint in proxy mode
-  * build(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp
-  * build(deps): bump github/codeql-action from 4.34.1 to 4.35.1
-  * internal/client/auth/challenge: fix minor linting issues
-  * internal/client/auth/challenge: cleanup URL-normalization
-  * internal/client/auth/challenge: simpleManager: make zero value usable
-  * internal/client/auth/challenge: simpleManager: un-export fields
-
--------------------------------------------------------------------
 Mon Apr 27 09:26:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0 (
