@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 15 02:17:23 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update valkey-conf.patch:
+  When we switched to the new configuration schema we forgot to
+  cleanup some config settings which should be instance specific
+  from the include file.
+
+-------------------------------------------------------------------
 Wed May  6 10:19:33 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 9.0.4: (boo#1264164 boo#1264166 boo#1264165)

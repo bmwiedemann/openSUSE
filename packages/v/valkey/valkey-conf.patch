@@ -1,8 +1,15 @@
-Index: valkey-9.0.0/sentinel.conf
+Index: valkey-9.0.4/sentinel.conf
 ===================================================================
---- valkey-9.0.0.orig/sentinel.conf
-+++ valkey-9.0.0/sentinel.conf
-@@ -13,11 +13,12 @@ port 26379
+--- valkey-9.0.4.orig/sentinel.conf
++++ valkey-9.0.4/sentinel.conf
+@@ -7,17 +7,18 @@ protected-mode no
+ 
+ # port <sentinel-port>
+ # The port that this sentinel instance will run on
+-port 26379
++# port 26379
+ 
+ # By default Valkey Sentinel does not run as a daemon. Use 'yes' if you need it.
  # Note that Valkey will write a pid file in /var/run/valkey-sentinel.pid when
  # daemonized.
  daemonize no
@@ -12,7 +19,7 @@ Index: valkey-9.0.0/sentinel.conf
  # /var/run/valkey-sentinel.pid by default. You can specify a custom pid file
  # location here.
 -pidfile /var/run/valkey-sentinel.pid
-+pidfile /run/valkey/sentinel-default.pid
++# pidfile /run/valkey/sentinel-default.pid
  
  # Specify the server verbosity level.
  # This can be one of:
@@ -21,14 +28,65 @@ Index: valkey-9.0.0/sentinel.conf
  # Sentinel to log on the standard output. Note that if you use standard
  # output for logging but daemonize, logs will be sent to /dev/null
 -logfile ""
-+logfile /var/log/valkey/sentinel-default.log
++# logfile /var/log/valkey/sentinel-default.log
  
  # To enable logging to the system logger, just set 'syslog-enabled' to yes,
  # and optionally update the other syslog parameters to suit your needs.
-Index: valkey-9.0.0/valkey.conf
+@@ -70,7 +71,7 @@ logfile ""
+ # For Valkey Sentinel to chdir to /tmp at startup is the simplest thing
+ # for the process to don't interfere with administrative tasks such as
+ # unmounting filesystems.
+-dir /tmp
++# dir /tmp
+ 
+ # sentinel monitor <master-name> <ip> <valkey-port> <quorum>
+ #
+@@ -89,7 +90,7 @@ dir /tmp
+ #
+ # Note: master name should not include special characters or spaces.
+ # The valid charset is A-z 0-9 and the three characters ".-_".
+-sentinel monitor mymaster 127.0.0.1 6379 2
++# sentinel monitor mymaster 127.0.0.1 6379 2
+ 
+ # sentinel auth-pass <master-name> <password>
+ #
+@@ -133,7 +134,7 @@ sentinel monitor mymaster 127.0.0.1 6379
+ # Down).
+ #
+ # Default is 30 seconds.
+-sentinel down-after-milliseconds mymaster 30000
++# sentinel down-after-milliseconds mymaster 30000
+ 
+ 
+ # Sentinel's ACL users are defined in the following format:
+@@ -205,7 +206,7 @@ acllog-max-len 128
+ # during the failover. Use a low number if you use the replicas to serve query
+ # to avoid that all the replicas will be unreachable at about the same
+ # time while performing the synchronization with the master.
+-sentinel parallel-syncs mymaster 1
++# sentinel parallel-syncs mymaster 1
+ 
+ # sentinel failover-timeout <master-name> <milliseconds>
+ #
+@@ -230,7 +231,7 @@ sentinel parallel-syncs mymaster 1
+ #   the exact parallel-syncs progression as specified.
+ #
+ # Default is 3 minutes.
+-sentinel failover-timeout mymaster 180000
++# sentinel failover-timeout mymaster 180000
+ 
+ # SCRIPTS EXECUTION
+ #
+@@ -358,4 +359,4 @@ SENTINEL announce-hostnames no
+ # accept a -LOADING response after a primary has been rebooted, before failing
+ # over.
+ 
+-SENTINEL primary-reboot-down-after-period mymaster 0
++# SENTINEL primary-reboot-down-after-period mymaster 0
+Index: valkey-9.0.4/valkey.conf
 ===================================================================
---- valkey-9.0.0.orig/valkey.conf
-+++ valkey-9.0.0/valkey.conf
+--- valkey-9.0.4.orig/valkey.conf
++++ valkey-9.0.4/valkey.conf
 @@ -395,7 +395,7 @@ daemonize no
  # The default is "no". To run under upstart/systemd, you can simply uncomment
  # the line below:
@@ -43,7 +101,7 @@ Index: valkey-9.0.0/valkey.conf
  # Note that on modern Linux systems "/run/valkey.pid" is more conforming
  # and should be used instead.
 -pidfile /var/run/valkey_6379.pid
-+pidfile /run/valkey/default.pid
++# pidfile /run/valkey/default.pid
  
  # Specify the server verbosity level.
  # This can be one of:
@@ -53,7 +111,7 @@ Index: valkey-9.0.0/valkey.conf
  # output for logging but daemonize, logs will be sent to /dev/null
 -logfile ""
 +# logfile ""
-+logfile /var/log/valkey/default.log
++# logfile /var/log/valkey/default.log
  
  # To enable logging to the system logger, just set 'syslog-enabled' to yes,
  # and optionally update the other syslog parameters to suit your needs.
@@ -62,14 +120,14 @@ Index: valkey-9.0.0/valkey.conf
  # for example when a child process is running, related file operations may
  # have unexpected effects.
 -dir ./
-+dir /var/lib/valkey/default/
++# dir /var/lib/valkey/default/
  
  ################################# REPLICATION #################################
  
-Index: valkey-9.0.0/valkey.default.conf
+Index: valkey-9.0.4/valkey.default.conf
 ===================================================================
 --- /dev/null
-+++ valkey-9.0.0/valkey.default.conf
++++ valkey-9.0.4/valkey.default.conf
 @@ -0,0 +1,7 @@
 +include /etc/valkey/includes/valkey.defaults.conf
 +
@@ -78,14 +136,17 @@ Index: valkey-9.0.0/valkey.default.conf
 +pidfile /run/valkey/default.pid
 +logfile /var/log/valkey/default.log
 +
-Index: valkey-9.0.0/sentinel.default.conf
+Index: valkey-9.0.4/sentinel.default.conf
 ===================================================================
 --- /dev/null
-+++ valkey-9.0.0/sentinel.default.conf
-@@ -0,0 +1,6 @@
++++ valkey-9.0.4/sentinel.default.conf
+@@ -0,0 +1,9 @@
 +include /etc/valkey/includes/sentinel.defaults.conf
 +
 +port 26379
++dir /var/lib/valkey/sentinel-default/
 +pidfile /run/valkey/sentinel-default.pid
 +logfile /var/log/valkey/sentinel-default.log
 +
++# for configuring all your valkey nodes see:
++# https://valkey.io/topics/sentinel/
