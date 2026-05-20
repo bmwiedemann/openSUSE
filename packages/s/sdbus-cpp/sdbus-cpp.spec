@@ -19,8 +19,8 @@
 
 
 %global version_major 2
-%global version_minor 1
-%global version_micro 0
+%global version_minor 3
+%global version_micro 1
 
 Name:           sdbus-cpp
 Version:        %{version_major}.%{version_minor}.%{version_micro}

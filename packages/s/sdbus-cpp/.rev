@@ -113,4 +113,12 @@ The spec file was imported from Fedora and adapted for SUSE.</comment>
     <comment></comment>
     <requestid>1228539</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>255984a613f91224d3dbf85ba3b0d7b0</srcmd5>
+    <version>2.3.1</version>
+    <time>1779288484</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1354240</requestid>
+  </revision>
 </revisionlist>
