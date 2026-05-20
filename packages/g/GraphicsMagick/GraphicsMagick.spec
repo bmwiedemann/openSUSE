@@ -43,6 +43,8 @@ Patch4:         GraphicsMagick-CVE-2026-28690.patch
 Patch5:         GraphicsMagick-CVE-2026-26284.patch
 # CVE-2026-33535: Out-of-Bounds write of a zero byte in X11 display interaction [bsc#1260874]
 Patch6:         GraphicsMagick-CVE-2026-33535.patch
+# CVE-2026-42050: Stack buffer overflow in XTileImage [bsc#1265048]
+Patch7:         GraphicsMagick-CVE-2026-42050.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++

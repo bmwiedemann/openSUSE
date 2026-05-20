@@ -1394,4 +1394,12 @@ New Features:
     <comment>CVE-2026-33535, [bsc#1260874]</comment>
     <requestid>1348129</requestid>
   </revision>
+  <revision rev="103" vrev="7">
+    <srcmd5>0d3e58923b43b6d6a8f9ac6b5e8c895c</srcmd5>
+    <version>1.3.46</version>
+    <time>1779283399</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-42050, [bsc#1265048]</comment>
+    <requestid>1353738</requestid>
+  </revision>
 </revisionlist>

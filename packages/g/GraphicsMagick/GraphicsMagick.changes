@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 18 09:20:27 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-42050: Stack buffer overflow in XTileImage [bsc#1265048]
+  * GraphicsMagick-CVE-2026-42050.patch
+
+-------------------------------------------------------------------
 Mon Apr 20 07:44:32 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
