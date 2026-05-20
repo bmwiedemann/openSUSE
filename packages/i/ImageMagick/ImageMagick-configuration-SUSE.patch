@@ -1,8 +1,8 @@
-Index: ImageMagick-7.1.2-18/config/policy-SUSE.xml
+Index: ImageMagick-7.1.2-23/config/policy-SUSE.xml
 ===================================================================
---- ImageMagick-7.1.2-18.orig/config/policy-SUSE.xml
-+++ ImageMagick-7.1.2-18/config/policy-SUSE.xml
-@@ -62,7 +62,7 @@
+--- ImageMagick-7.1.2-23.orig/config/policy-SUSE.xml
++++ ImageMagick-7.1.2-23/config/policy-SUSE.xml
+@@ -65,7 +65,7 @@
    <policy domain="resource" name="disk" value="2GiB"/>
    <!-- Set the maximum length of an image sequence.  When this limit is
         exceeded, an exception is thrown. -->
@@ -11,7 +11,7 @@ Index: ImageMagick-7.1.2-18/config/policy-SUSE.xml
    <!-- Set the maximum width of an image.  When this limit is exceeded, an
         exception is thrown. -->
    <policy domain="resource" name="width" value="8KP"/>
-@@ -85,11 +85,11 @@
+@@ -88,11 +88,11 @@
    <!-- Replace passphrase for secure distributed processing -->
    <!-- <policy domain="cache" name="shared-secret" value="secret-passphrase" stealth="true"/> -->
    <!-- Do not permit any delegates to execute. -->
@@ -25,7 +25,7 @@ Index: ImageMagick-7.1.2-18/config/policy-SUSE.xml
    <policy domain="path" rights="none" pattern="fd:*"/>
    <!-- Sensitive paths are not permitted. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
-@@ -112,4 +112,20 @@
+@@ -115,4 +115,20 @@
    <policy domain="system" name="max-memory-request" value="256MiB"/>
    <!-- If the basename of path is a symbolic link, the open fails -->
    <policy domain="system" name="symlink" rights="none" pattern="follow"/>

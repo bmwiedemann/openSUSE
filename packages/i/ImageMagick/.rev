@@ -4437,4 +4437,31 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>CVE-2026-42050, [bsc#1265048]</comment>
     <requestid>1352996</requestid>
   </revision>
+  <revision rev="336" vrev="1">
+    <srcmd5>a6b5c34df5264c8fad0456083126dcec</srcmd5>
+    <version>7.1.2.23</version>
+    <time>1779283423</time>
+    <user>anag_factory</user>
+    <comment>- version update to 7.1.2.23
+  * no upstream changelog
+- fixes following GH security advisories:
+  * GHSA-36wm-hprc-mcf5
+  * GHSA-3rvp-mpr5-qjm9
+  * GHSA-4g75-9r48-jf92
+  * GHSA-533m-3wf6-c33v
+  * GHSA-5r4x-w6p5-222q
+  * GHSA-6gxq-f64p-5w6f
+  * GHSA-7gg8-qqx7-92g5
+  * GHSA-88wq-x9gc-45h8
+  * GHSA-jcqp-6r6f-3mfx
+  * GHSA-p93h-f2jc-477j
+  * GHSA-rcr6-g7jc-f57g
+  * GHSA-xf64-q5rg-85g5
+- modified patches
+  * ImageMagick-configuration-SUSE.patch (refreshed)
+  * ImageMagick_policy_etc.patch (refreshed)
+
+- fixes following GH security advisories:</comment>
+    <requestid>1353857</requestid>
+  </revision>
 </revisionlist>
