@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 20 06:57:53 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.8.2
+- Upstream changes:
+  * fix(flatpak): Use freedesktop.portal for inhibition
+  * Fix up flatpak permissions
+  * feat: Richer welcome screen
+  * fix: Don't react to gamepad events when app is out of focus
+  * feat: Sleep inhibition is sticky now.
+  * Move testrun.sh to scripts
+  * Steam detector on initial startup and/or empty library
+
+-------------------------------------------------------------------
 Fri May 15 20:51:57 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.8.1 Fine Wine

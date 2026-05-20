@@ -197,4 +197,20 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Game grid menu fixes</comment>
     <requestid>1353465</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a77f76fd65042fdc51e5e459d1558e8c</srcmd5>
+    <version>1.8.2</version>
+    <time>1779283555</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.8.2
+- Upstream changes:
+  * fix(flatpak): Use freedesktop.portal for inhibition
+  * Fix up flatpak permissions
+  * feat: Richer welcome screen
+  * fix: Don't react to gamepad events when app is out of focus
+  * feat: Sleep inhibition is sticky now.
+  * Move testrun.sh to scripts
+  * Steam detector on initial startup and/or empty library</comment>
+    <requestid>1354166</requestid>
+  </revision>
 </revisionlist>
