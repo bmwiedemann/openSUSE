@@ -3263,7 +3263,7 @@
     <package name="perl-BSD-Resource" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-CGI" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="perl-Class-Inspector" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="perl-Clone" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Clone" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Convert-ASN1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Convert-BinHex" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Cpanel-JSON-XS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3282,22 +3282,22 @@
     <package name="perl-Digest-SHA1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="perl-Email-Address-XS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Encode-Detect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Encode-Locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Encode-Locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Error" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Exporter-Tiny" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="perl-File-Listing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-File-Listing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-File-ShareDir" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-GD" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Geography-Countries" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Git" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="perl-HTML-Parser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-HTML-Tagset" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-HTTP-Cookies" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-HTTP-Date" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-HTTP-Message" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-HTTP-Negotiate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-IO-HTML" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-IO-Socket-SSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-HTML-Parser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-HTML-Tagset" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-HTTP-Cookies" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-HTTP-Date" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-HTTP-Message" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-HTTP-Negotiate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-IO-HTML" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-IO-Socket-SSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-IO-String" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-IO-Tty" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-IO-stringy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3305,11 +3305,11 @@
     <package name="perl-IPC-Run3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_plasma -->
     <package name="perl-JSON" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-JSON-XS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-LWP-MediaTypes" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-LWP-Protocol-https" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-LWP-MediaTypes" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-LWP-Protocol-https" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-List-MoreUtils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-List-MoreUtils-XS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="perl-MIME-Base32" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-MIME-Base32" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-MIME-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Mail-AuthenticationResults" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Mail-DKIM" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3319,13 +3319,13 @@
     <package name="perl-Net-CIDR-Lite" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-DBus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Net-DNS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Net-HTTP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Net-HTTP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Net-Ident" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-LibIDN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-LibIDN2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-Patricia" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-SMTP-SSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="perl-Net-SSLeay" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Net-SSLeay" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Net-Server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-NetAddr-IP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Params-Util" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3334,12 +3334,12 @@
     <package name="perl-Socket6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Term-ReadKey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="perl-Term-ReadLine-Gnu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-TimeDate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Try-Tiny" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-TimeDate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-Try-Tiny" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Types-Serialiser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-URI" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-URI" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Unix-Syslog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-WWW-RobotRules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-WWW-RobotRules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-X11-Protocol" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-X500-DN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="perl-XML-Dumper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3354,7 +3354,7 @@
     <package name="perl-common-sense" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-gettext" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="perl-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-libwww-perl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-libwww-perl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-razor-agents" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="permctl" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="permissions" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

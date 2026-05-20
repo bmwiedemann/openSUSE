@@ -1633,9 +1633,6 @@ unsorted:
   - brasero-devel 
   - brasero-lang 
   - breeze6-devel 
-  - breezy 
-  - breezy-bash-completion 
-  - breezy-lang 
   - brial-devel 
   - brickd 
   - brickv 
@@ -11122,10 +11119,10 @@ unsorted:
   - libArcus-devel 
   - libArcus3 
   - libAvogadro1 
-  - libBulletFileLoader3_17 
-  - libBulletInverseDynamicsUtils3_17 
-  - libBulletWorldImporter3_17 
-  - libBulletXmlWorldImporter3_17 
+  - libBulletFileLoader3_25 
+  - libBulletInverseDynamicsUtils3_25 
+  - libBulletWorldImporter3_25 
+  - libBulletXmlWorldImporter3_25 
   - libCCfits2_7 
   - libCLHEP-2_4_7_2 
   - libCLHEP-Cast-2_4_7_2 
@@ -11149,7 +11146,7 @@ unsorted:
   - libCoinUtils3 
   - libColPack0 
   - libColorFull0 
-  - libConvexDecomposition3_17 
+  - libConvexDecomposition3_25 
   - libCppMicroServices4 
   - libDebugUtils1 
   - libDetour1 
@@ -11174,7 +11171,7 @@ unsorted:
   - libFcitx5Qt6DBusAddons1 
   - libFcitx5Qt6WidgetsAddons2 
   - libFcitx5Utils2 
-  - libGIMPACTUtils3_17 
+  - libGIMPACTUtils3_25 
   - libGLC-devel 
   - libGLC0 
   - libGLEW2_3 
@@ -11186,7 +11183,7 @@ unsorted:
   - libGLwM1 
   - libGraphicsMagick++-devel 
   - libGraphicsMagickWand-Q16-2 
-  - libHACD3_17 
+  - libHACD3_25 
   - libHTTPDFaust0 
   - libHX-devel 
   - libHYPRE301 
@@ -12217,7 +12214,7 @@ unsorted:
   - libb64-devel 
   - libbacktrace-devel 
   - libbamf3-2 
-  - libbandicoot3 
+  - libbandicoot4 
   - libbaresip27 
   - libbarvinok23 
   - libbase 
@@ -12503,7 +12500,7 @@ unsorted:
   - libbudgie-raven-plugin0 
   - libbudgietheme0 
   - libbullet-devel 
-  - libbullet3_17 
+  - libbullet3_25 
   - libburn-devel 
   - libbytesize-devel 
   - libbz2-1-32bit 
@@ -12673,8 +12670,8 @@ unsorted:
   - libcircle2 
   - libcircllhist-devel 
   - libcircllhist0_0_1 
-  - libcivetweb-cpp1_15_0 
-  - libcivetweb1_15_0 
+  - libcivetweb-cpp1_16_0 
+  - libcivetweb1_16_0 
   - libcjose-devel 
   - libcjose0 
   - libcjs0 
@@ -16720,7 +16717,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent41 
+  - libtorrent42 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -24215,6 +24212,7 @@ unsorted:
   - python3-pvirsh 
   - python3-pwquality 
   - python3-pyaskalono 
+  - python3-pybullet 
   - python3-pycadf-common 
   - python3-pycadf-doc 
   - python3-pycdlib-common 
@@ -25689,7 +25687,6 @@ unsorted:
   - python311-fake-useragent 
   - python311-fakeredis 
   - python311-falcon 
-  - python311-fanficfare 
   - python311-fangfrisch 
   - python311-fann2 
   - python311-fastapi 
@@ -28120,7 +28117,6 @@ unsorted:
   - python311-yq 
   - python311-yt 
   - python311-ytmusicapi 
-  - python311-zarr 
   - python311-zc.buildout 
   - python311-zc.customdoctests 
   - python311-zc.lockfile 
@@ -29625,7 +29621,6 @@ unsorted:
   - python313-fake-useragent 
   - python313-fakeredis 
   - python313-falcon 
-  - python313-fanficfare 
   - python313-fangfrisch 
   - python313-fann2 
   - python313-fastapi 
@@ -32335,6 +32330,7 @@ unsorted:
   - python314-SQLAlchemy-Utils 
   - python314-SQLAlchemy-spanner 
   - python314-SQLAlchemy1 
+  - python314-Scrapy 
   - python314-SecretStorage 
   - python314-Send2Trash 
   - python314-Shapely 
@@ -33574,7 +33570,6 @@ unsorted:
   - python314-fake-useragent 
   - python314-fakeredis 
   - python314-falcon 
-  - python314-fanficfare 
   - python314-fangfrisch 
   - python314-fann2 
   - python314-fastapi 
