@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 15 14:14:09 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.1:
+  * Fixes for compiler warnings.
+  * Robustness fixes for unit tests.
+- Changes from version 4.0.0:
+  * Major overhaul of the internal meta-programming framework,
+    allowing automatic fusion of many operations into a single GPU
+    operation.
+  * Add preliminary experimental support for the Vulkan backend.
+  * Add .is_symmetric().
+  * Add .is_sympd().
+  * Bugfixes for inplace matrix multiplication and backend memory
+    safety.
+  * Various optimisations for better expression handling.
+
+-------------------------------------------------------------------
 Fri Jan 23 13:26:13 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.0:

@@ -16,10 +16,10 @@
 #
 
 
-%define sover 3
+%define sover 4
 %define shlib lib%{name}%{sover}
 Name:           bandicoot
-Version:        3.1.0
+Version:        4.0.1
 Release:        0
 Summary:        C++ library for GPU accelerated linear algebra
 License:        Apache-2.0
