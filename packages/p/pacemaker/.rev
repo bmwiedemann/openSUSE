@@ -2628,4 +2628,14 @@ jsc#PED-14899
 - libcib: Full-CIB replace op no longer segfaults with cib_xpath (forwarded request 1352713 from yan_gao)</comment>
     <requestid>1352714</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>16e77fa2d8134f29f1b42bf49270b949</srcmd5>
+    <version>3.0.2+20260515.277473d9</version>
+    <time>1779288477</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.2+20260515.277473d9:
+- pacemakerd: Properly find and track all existing sub-daemons (bsc#1265201, gh#ClusterLabs/pacemaker#4115)
+- tools: Use the VERSION variable instead of invoking `crm_attribute --version` (bsc#1265183, gh#ClusterLabs/pacemaker#4114) (forwarded request 1353720 from yan_gao)</comment>
+    <requestid>1353721</requestid>
+  </revision>
 </revisionlist>

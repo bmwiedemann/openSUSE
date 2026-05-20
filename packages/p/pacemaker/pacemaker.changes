@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 18 07:17:08 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.2+20260515.277473d9:
+- pacemakerd: Properly find and track all existing sub-daemons (bsc#1265201, gh#ClusterLabs/pacemaker#4115)
+- tools: Use the VERSION variable instead of invoking `crm_attribute --version` (bsc#1265183, gh#ClusterLabs/pacemaker#4114)
+
+-------------------------------------------------------------------
 Tue May 12 08:45:09 UTC 2026 - Yan Gao <ygao@suse.com>
 
 - Update to version 3.0.2+20260511.6629f2e0 (Pacemaker-3.0.2-rc2):
