@@ -449,4 +449,16 @@
   - Graph: Implement patchbay node search functionality: adds a</comment>
     <requestid>1339013</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>840c9e94164d38b9121b61644b170526</srcmd5>
+    <version>1.0.6</version>
+    <time>1779283507</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.6:
+  * Graph: make sure thumb-view widget background is
+    filled/opaque
+  * Fixed JACK metadata properties assignment (aka. pretty-names)
+    vs. native client/port name aliases.</comment>
+    <requestid>1354114</requestid>
+  </revision>
 </revisionlist>

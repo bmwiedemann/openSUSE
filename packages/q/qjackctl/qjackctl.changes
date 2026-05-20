@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 19 21:22:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.6:
+  * Graph: make sure thumb-view widget background is
+    filled/opaque
+  * Fixed JACK metadata properties assignment (aka. pretty-names)
+    vs. native client/port name aliases.
+
+-------------------------------------------------------------------
 Sat Mar 14 20:33:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.5:

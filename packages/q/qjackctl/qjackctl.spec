@@ -25,7 +25,7 @@
 %define with_qt6 0
 %endif
 Name:           qjackctl
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Graphical User Interface to Control JACK Servers
 License:        GPL-2.0-or-later
