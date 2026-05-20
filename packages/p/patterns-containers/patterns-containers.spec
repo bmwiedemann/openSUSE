@@ -43,8 +43,13 @@ Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9030
 Provides:       pattern-visible()
 Requires:       podman
+# SLES 16.1+ switched to distrobox, removing toolbox (jsc#PED-14656)
+%if 0%{suse_version} >= 1610 && 0%{suse_version} < 1699
+Requires:       distrobox
+%else
 Requires:       (distrobox if patterns-microos-desktop-common else toolbox)
 Suggests:       toolbox
+%endif
 Requires:       pattern() = basesystem
 Obsoletes:      patterns-containers-container_runtime < %{version}
 Provides:       patterns-containers-container_runtime = %{version}

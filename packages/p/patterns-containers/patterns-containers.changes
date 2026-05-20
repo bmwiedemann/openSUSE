@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 13 10:05:21 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Always require distrobox in place of toolbox in SLES 16.1+
+  (jsc#PED-14656) 
+
+-------------------------------------------------------------------
 Thu Apr 16 12:13:49 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
 
 - Remove incorrect and redundant parent provides in podman subpattern
