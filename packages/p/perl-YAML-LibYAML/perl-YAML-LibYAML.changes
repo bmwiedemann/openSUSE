@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 11 08:40:01 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.907.0 (v0.907.0)
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+
+  v0.907.0 2026-05-10 19:47:04+02:00
+   - Turn off cyclic references by default
+
+-------------------------------------------------------------------
 Mon Apr 27 07:46:39 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.906.0 (v0.906.0)

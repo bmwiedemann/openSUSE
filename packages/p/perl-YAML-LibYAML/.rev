@@ -298,4 +298,15 @@
    - Fix memory leak for trailing UTF8 octets (PR#123)</comment>
     <requestid>1350772</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>22f8efc83d5e9f1138413465beb4348d</srcmd5>
+    <version>0.907.0</version>
+    <time>1779283403</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.907.0 (v0.907.0)
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+  v0.907.0 2026-05-10 19:47:04+02:00
+   - Turn off cyclic references by default</comment>
+    <requestid>1353751</requestid>
+  </revision>
 </revisionlist>
