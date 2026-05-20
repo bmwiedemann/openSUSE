@@ -71,4 +71,17 @@
     <comment></comment>
     <requestid>1134627</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>62892294110e6b304ddd0596cf8c887c</srcmd5>
+    <version>1.6+git1776611085.588860e3</version>
+    <time>1779283559</time>
+    <user>anag_factory</user>
+    <comment>- take latest snapshot from github
+  * Fix for CVE-2025-55763 
+    (see: https://github.com/civetweb/civetweb/issues/1351)
+  * 1385.patch added to fix build error
+  
+</comment>
+    <requestid>1354158</requestid>
+  </revision>
 </revisionlist>

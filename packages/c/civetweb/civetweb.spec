@@ -1,7 +1,7 @@
 #
 # spec file for package civetweb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,19 @@
 #
 
 
-%define         soname  1_15_0
+%define         soname  1_16_0
 %define         _libname libcivetweb
 Name:           civetweb
-Version:        1.16
+Version:        1.6+git1776611085.588860e3
 Release:        0
 Summary:        A C/C++ web server
 License:        MIT
 Group:          Productivity/Networking/Web/Servers
 URL:            https://github.com/civetweb/civetweb
-Source0:        https://github.com/civetweb/civetweb/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        civetweb.conf
+Patch0:         1385.patch
+
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-devel
@@ -64,7 +66,7 @@ you will need to install %{name}-devel and check %{name}'s API at its
 comprisable header file.
 
 %prep
-%setup -q
+%autosetup -p1
 
 install -pm0644  %{SOURCE1} .
 
@@ -75,7 +77,7 @@ rm .git* .clan*
 %build
 rm -rf build
 
-export CFLAGS="%optflags -DUSE_X_DOM_SOCKET"
+export CFLAGS="%optflags -DUSE_X_DOM_SOCKET -DCMAKE_INSTALL_DATADIR=%{buildroot}/usr/lib64/pkgconfig/"
 
 %cmake -DCIVETWEB_ENABLE_WEBSOCKETS=ON \
        -DCIVETWEB_BUILD_TESTING=OFF \
@@ -112,8 +114,8 @@ export CFLAGS="%optflags -DUSE_X_DOM_SOCKET"
 %{_includedir}/CivetServer.h
 %{_libdir}/lib%{name}.so
 %{_libdir}/lib%{name}-cpp.so
-%{_datadir}/pkgconfig/%{name}.pc
-%{_datadir}/pkgconfig/%{name}-cpp.pc
+%{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{name}-cpp.pc
 
 %dir %{_libdir}/cmake/%{name}
 %{_libdir}/cmake/%{name}/*cmake

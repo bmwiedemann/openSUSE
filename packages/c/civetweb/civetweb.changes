@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 22 19:28:11 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- take latest snapshot from github
+  * Fix for CVE-2025-55763 
+    (see: https://github.com/civetweb/civetweb/issues/1351)
+  * 1385.patch added to fix build error
+  
+-------------------------------------------------------------------
 Mon Dec 18 20:53:12 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - explicit compiler options for websockets, zlib, ssl and ssl v3 added
