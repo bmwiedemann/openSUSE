@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 14 09:45:16 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Remove redundant CMake build flags
+  * Since bcc cmake already overwrites REVISION_LAST from REVISION,
+    so drop the redundant REVISION_LAST definition.
+
+-------------------------------------------------------------------
 Tue Apr 28 06:46:10 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - fix build for LLVM 22 due to createDiagnostics() signature change

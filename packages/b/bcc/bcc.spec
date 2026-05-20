@@ -174,7 +174,6 @@ pushd build
 CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" cmake \
 	-DCMAKE_USE_LIBBPF_PACKAGE=yes \
 	-DPYTHON_CMD=python3 \
-	-DREVISION_LAST=%{version} \
 	-DREVISION=%{version} \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 %if 0%{?suse_version} > 1320
