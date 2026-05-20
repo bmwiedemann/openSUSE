@@ -279,4 +279,15 @@
     <comment></comment>
     <requestid>1010989</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>bc9eba2205a0aae335f3fd80ae39e635</srcmd5>
+    <version>4.110.0</version>
+    <time>1779283420</time>
+    <user>anag_factory</user>
+    <comment>- updated to 4.110.0 (4.11)
+   see /usr/share/doc/packages/perl-JSON/Changes
+  4.11 2026-03-22
+      - updated backportPP with JSON::PP 4.18</comment>
+    <requestid>1353852</requestid>
+  </revision>
 </revisionlist>

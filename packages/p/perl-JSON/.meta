@@ -31,6 +31,5 @@ is left just as it is.
 Module name : 'JSON'
 
 Format type : JSON</description>
-  <devel project="devel:languages:perl" package="perl-JSON"/>
   <url>http://search.cpan.org/dist/JSON/</url>
 </package>
