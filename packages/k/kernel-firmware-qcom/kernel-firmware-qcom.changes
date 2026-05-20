@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 16 19:11:11 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260514 (git commit 5b2bc2e7d14c):
+  * qcom: update ADSP firmware for x1e80100 platform
+  * qcom: Add cdsp1r.jsn for sa8775p platform
+
+-------------------------------------------------------------------
 Tue May  5 14:35:44 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260505 (git commit 027be1e3d201):
