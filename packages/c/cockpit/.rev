@@ -936,4 +936,21 @@ outside of Factory
   * bsc#1259210</comment>
     <requestid>1345802</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>858ffa767c9455758ce28b36cb1ecf3f</srcmd5>
+    <version>361</version>
+    <time>1779288471</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-4802.patch to backport upstreams fix for bsc#1265040/CVE-2026-4802
+
+- Update to 361
+  * 361
+    - Remove all &quot;Mount&quot; actions in Anaconda mode
+    - Dependency updates
+
+- Add 0011-Warn-root-login-disabled.patch jsc#PED-15706/jsc#CPT-183
+
+- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996, bsc#1259013/CVE-2026-27904</comment>
+    <requestid>1353668</requestid>
+  </revision>
 </revisionlist>

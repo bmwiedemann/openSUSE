@@ -56,7 +56,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-3.0 AND BSD-3-Clause
 URL:            https://cockpit-project.org/
 
-Version:        360
+Version:        361
 Release:        0
 Source0:        cockpit-%{version}.tar.gz
 Source2:        cockpit-rpmlintrc
@@ -74,6 +74,7 @@ Patch3:         suse-microos-branding.patch
 Patch4:         css-overrides.patch
 Patch5:         storage-btrfs.patch
 Patch6:         esbuild-ppc64.patch
+Patch7:         CVE-2026-4802.patch
 # SLE Micro specific patches
 Patch101:       hide-pcp.patch
 Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
@@ -91,6 +92,7 @@ Patch112:       0002-cockpit-kdump-support-SLE-micro-6.2.patch
 Patch113:       0003-branding-use-SUSE_SUPPORT_PRODUCT-and-SUSE_SUPPORT_P.patch
 Patch114:       0009-packagekit-reboot-notification.patch
 Patch115:       0010-Override-kdump-message.patch
+Patch116:       0011-Warn-root-login-disabled.patch
 Patch201:       remove_rh_links.patch
 
 %define build_all 1
@@ -249,6 +251,7 @@ BuildRequires:  python3-pytest-timeout
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
+%patch -P 7 -p1
 
 %patch -P 101 -p1
 %patch -P 106 -p1
@@ -281,6 +284,7 @@ BuildRequires:  python3-pytest-timeout
 %endif
 %endif
 
+%patch -P 116 -p1
 %patch -P 201 -p1
 
 # If we're not using cockpit.suse.pam

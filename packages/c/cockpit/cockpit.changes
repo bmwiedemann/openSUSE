@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 18 03:33:13 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Add CVE-2026-4802.patch to backport upstreams fix for bsc#1265040/CVE-2026-4802
+
+-------------------------------------------------------------------
+Wed Apr 22 11:58:43 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 361
+  * 361
+    - Remove all "Mount" actions in Anaconda mode
+    - Dependency updates
+
+-------------------------------------------------------------------
+Tue Apr 14 06:32:31 UTC 2026 - Luna D Dragon <luna.dragon@suse.com>
+
+- Add 0011-Warn-root-login-disabled.patch jsc#PED-15706/jsc#CPT-183
+
+-------------------------------------------------------------------
 Thu Apr  9 13:05:29 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to 360
@@ -36,7 +54,7 @@ Wed Mar 18 11:36:38 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
 -------------------------------------------------------------------
 Mon Feb 23 13:16:16 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
-- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996
+- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996, bsc#1259013/CVE-2026-27904
 
 -------------------------------------------------------------------
 Wed Feb 11 16:52:06 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>

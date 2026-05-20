@@ -1,0 +1,13 @@
+diff --git c/pkg/static/login.js i/pkg/static/login.js
+index d815b59a40..24710c6d2b 100644
+--- c/pkg/static/login.js
++++ i/pkg/static/login.js
+@@ -1024,7 +1024,7 @@ function debug(...args) {
+                     } else if (is_conversation) {
+                         login_failure(_("Authentication failed"));
+                     } else {
+-                        login_failure(_("Authentication failed"), _("Wrong user name or password"));
++                        login_failure(_("Authentication failed"), _("Wrong user name or password. Root login may be disabled by the admin"));
+                     }
+                 }
+             } else if (xhr.status == 403) {
