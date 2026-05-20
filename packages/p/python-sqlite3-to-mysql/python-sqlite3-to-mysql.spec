@@ -22,7 +22,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-sqlite3-to-mysql
-Version:        2.5.8
+Version:        2.6.0
 Release:        0
 Summary:        A Python tool to transfer data from SQLite 3 to MySQL
 License:        MIT
