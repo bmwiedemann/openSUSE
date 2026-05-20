@@ -134,4 +134,41 @@
   * Fixed anchor released when scrolling down with the trackpad</comment>
     <requestid>1349279</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fbf54c5c9b8b9e008e0c480596be3742</srcmd5>
+    <version>8.2.7</version>
+    <time>1779283491</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.2.7:
+  * Additionally there are a few more shortcuts to the Text Area.
+  * This release sponsored by Mistral AI. See release notes for
+    detail.
+  * Added support for Kitty key protocol &quot;Report all keys as
+    escape codes&quot; which enabled alt+backspace on Warp
+  * Added support for detecting separate modifier keys for
+    terminals that support the Kitty key protocol
+  * Added `TEXTUAL_DISABLE_KITTY_KEY` env var to disable Kitty
+    key protocol support (debug aid).
+  * Undo/redo/copy/cut/paste in TextArea will now work with cmd+
+    on supported terminals
+  * In TextArea, ctrl+u will now delete a newline if the cursor
+    is at the start
+  * in TextArea alt+delete is now bound to delete word right
+  * Text opacity applied to an ansi theme will now set the dim
+    attribute if the opacity is &lt; 50%
+- update to 8.2.6:
+  * Improved text select logic. You can select text without first
+    clicking on a content area.
+  * Fixed selection to the right of code fence blocks (may break
+    some snapshots)
+  * Fixed Markdown code fences losing content when switching
+    themes https://github.com/Textualize/textual/pull/6537
+  * Added ability to select outside of text, so the user doesn't
+    need to be quite so precise
+- update to 8.2.5:
+  * Two new themes: &quot;ansi-dark&quot; and &quot;ansi-light&quot;
+  * Added an `ansi` value to themes
+  * `App.ansi_color` may now be `None` to use the `ansi` value</comment>
+    <requestid>1354118</requestid>
+  </revision>
 </revisionlist>
