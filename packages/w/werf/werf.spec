@@ -17,7 +17,7 @@
 
 
 Name:           werf
-Version:        2.68.0
+Version:        2.68.1
 Release:        0
 Summary:        CLI for the Werf CI/CD system
 License:        Apache-2.0

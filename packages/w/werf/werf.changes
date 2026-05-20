@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May 20 04:58:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.68.1:
+  * Bug Fixes
+    - build, stapel, import: regenerate import checksums if it`s
+      empty (#7506) (eebb1df)
+    - build: non-local synchronization server requires --repo be
+      set (f078e04)
+    - build: resolve dependency image refs in FROM stage before
+      computing cache digest (#7492) (b42f0b1)
+    - build: show "default" in log network field when no explicit
+      network (c54a78d)
+    - build: use image tag instead of sha256 for docker run
+      (725a629)
+    - ci: trigger website production deploy after trdl channel
+      update (#7502) (310298c)
+    - deploy: retry on webhook unavailable errors (#7505) (1718543)
+    - host-cleanup: support nested cli command (ee5f78a)
+    - host-clenaup: apply WERF_SELF_INVOCATION_COMMAND in Detach
+      (faf5bf2)
+    - parallel: eliminate race between context timeout and
+      goroutine (ed67c0f)
+
+-------------------------------------------------------------------
 Wed May 13 04:50:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.68.0:
