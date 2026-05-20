@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 19 22:20:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.11.0:
+  * Update hacking to 7.0.0
+  * tls: Short circuit retries on hard tls errors
+  * Fix verify option usage with tls version settings
+  * Add TLS configuration support to sushy
+  * Prevent double-wrapping timeout tuple in Connector _op
+  * Revert "Skipping UsbCd workaround on Supermicro ARS-111GL-
+    NHR"
+  * Add missing __init__.py
+  * Fix docs lint issue in docstring
+  * Update master for stable/2026.1
+  * Handle missing RelatedProperties in TransferProtocolType
+    detection
+- drop Prevent-double-wrapping-timeout-tuple-in-Connector-_op.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Thu Apr  9 12:37:24 UTC 2026 - Nicolas Belouin <nicolas.belouin@suse.com>
 
 - Add Prevent-double-wrapping-timeout-tuple-in-Connector-_op.patch

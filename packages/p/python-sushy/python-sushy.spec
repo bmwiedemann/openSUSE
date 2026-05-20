@@ -17,22 +17,22 @@
 
 
 Name:           python-sushy
-Version:        5.10.0
+Version:        5.11.0
 Release:        0
 Summary:        Python library to communicate with Redfish based systems
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/sushy
 Source0:        https://files.pythonhosted.org/packages/source/s/sushy/sushy-%{version}.tar.gz
-# [PATCH] Prevent double-wrapping timeout tuple in Connector _op
-Patch0:         Prevent-double-wrapping-timeout-tuple-in-Connector-_op.patch
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
+BuildRequires:  %{python_module pbr >= 6.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.7.0}
 BuildRequires:  %{python_module requests >= 2.14.2}
 BuildRequires:  %{python_module stevedore >= 1.29.0}
 BuildRequires:  %{python_module wheel}
+Requires:       python-pbr >= 6.0.0
 Requires:       python-python-dateutil >= 2.7.0
 Requires:       python-requests >= 2.14.2
 Requires:       python-stevedore >= 1.29.0
@@ -54,7 +54,7 @@ Sushy is a Python library to communicate with `Redfish` based systems.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n sushy-%{version}
+%autosetup -n sushy-%{version}
 
 %build
 %pyproject_wheel

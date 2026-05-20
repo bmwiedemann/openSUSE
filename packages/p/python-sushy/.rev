@@ -364,4 +364,26 @@
     <comment></comment>
     <requestid>1345703</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>30ab88f30bf642a312d9db83ec6b890a</srcmd5>
+    <version>5.11.0</version>
+    <time>1779283511</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.11.0:
+  * Update hacking to 7.0.0
+  * tls: Short circuit retries on hard tls errors
+  * Fix verify option usage with tls version settings
+  * Add TLS configuration support to sushy
+  * Prevent double-wrapping timeout tuple in Connector _op
+  * Revert &quot;Skipping UsbCd workaround on Supermicro ARS-111GL-
+    NHR&quot;
+  * Add missing __init__.py
+  * Fix docs lint issue in docstring
+  * Update master for stable/2026.1
+  * Handle missing RelatedProperties in TransferProtocolType
+    detection
+- drop Prevent-double-wrapping-timeout-tuple-in-Connector-_op.patch
+  (upstream)</comment>
+    <requestid>1354133</requestid>
+  </revision>
 </revisionlist>
