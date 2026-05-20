@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 19 21:15:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.54.1:
+  * When using system Harfbuzz, link the harfbuzz-raster
+    component
+- update to 0.54.0:
+  * Split _harfbuzz.pyx into multiple files
+  * Switch build from harfbuzz-subset.cc to harfbuzz-world.cc
+  * Bind harfbuzz-raster APIs
+  * Update HarfBuzz to main branch
+
+-------------------------------------------------------------------
 Sat Apr 25 20:39:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.53.7:
