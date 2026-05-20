@@ -26,7 +26,7 @@
 %endif
 %global skip_python311 1
 Name:           python-tifffile%{psuffix}
-Version:        2026.4.11
+Version:        2026.5.15
 Release:        0
 Summary:        Read and write TIFF files
 License:        BSD-3-Clause
