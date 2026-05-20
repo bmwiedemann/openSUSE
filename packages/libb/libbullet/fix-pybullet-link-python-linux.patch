@@ -1,0 +1,13 @@
+--- a/examples/pybullet/CMakeLists.txt
++++ b/examples/pybullet/CMakeLists.txt
+@@ -85,8 +85,9 @@ IF (WIN32)
+   TARGET_LINK_LIBRARIES(pybullet ${PYTHON_LIBRARIES})
+ ELSEIF (APPLE)
+   SET_TARGET_PROPERTIES(pybullet PROPERTIES LINK_FLAGS "-undefined dynamic_lookup")
++ELSE ()
++  TARGET_LINK_LIBRARIES(pybullet ${PYTHON_LIBRARIES} m)
+ ENDIF ()
+-# else Linux: dont link
+
+ IF(WIN32)
+   SET(PYTHON_SITE_PACKAGES Lib/site-packages CACHE PATH "Python install path")

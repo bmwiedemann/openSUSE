@@ -1,0 +1,10 @@
+--- a/examples/ThirdPartyLibs/Gwen/CMakeLists.txt
++++ b/examples/ThirdPartyLibs/Gwen/CMakeLists.txt
+@@ -24,6 +24,8 @@ ADD_LIBRARY(gwen ${gwen_SRCS} ${gwen_HDRS})
+ IF (BUILD_SHARED_LIBS)
+ IF(WIN32 OR APPLE)
+   target_link_libraries(gwen ${OPENGL_gl_LIBRARY})
++ELSE()
++  target_link_libraries(gwen OpenGLWindow)
+ ENDIF()
+ ENDIF()

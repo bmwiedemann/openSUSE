@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May  9 00:00:00 UTC 2026 - andythe_great@protonmail.com
+
+- Update to 3.25
+  * Various bug fixes and improvements from 3.17 through 3.25
+  * Improved deformable body simulation
+  * Performance improvements in collision detection
+- Add python3-pybullet subpackage with Python bindings
+  * Enables pybullet physics simulation from Python
+  * Includes NumPy support for array-based data exchange
+  * Enables robotics simulation (BulletRoboticsGUI, BulletRobotics)
+- Add BuildRequires: python3-devel, python3-numpy, python3-numpy-devel, pkgconfig(gl), pkgconfig(egl)
+- Add fix-gwen-linux-link.patch: link libgwen against OpenGLWindow on Linux
+  to resolve glad_glXxx symbol references at shared library link time
+- Add fix-pybullet-numpy2-compat.patch: cast PyObject* to PyArrayObject* in
+  PyArray_DATA() calls to fix build with GCC 14 and NumPy 2.x
+- Add fix-pybullet-link-python-linux.patch: explicitly link pybullet.so
+  against libpython and libm on Linux to satisfy -Wl,--no-undefined
+- Switch BUILD_OPENGL3_DEMOS=ON so SimpleOpenGL3App compiles (Demos3 dir
+  absent, only effect is removal of -DNO_OPENGL3 guard)
+
+-------------------------------------------------------------------
 Thu Feb 29 15:36:04 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
