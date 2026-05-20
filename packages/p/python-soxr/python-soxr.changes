@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 19 21:47:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Added experimental **variable-rate resampling** and improved
+    **ResampleStream performance**.
+  * There are no breaking changes in this release.
+  * **Added (Experimental) Variable-rate Resampling**
+  * Now available via `ResampleStream(vr=True)` and
+    `set_io_ratio()`.
+  * Improved processing speed **≈5–10%** (benchmarked with
+    1920-sample chunks).
+  * Optimized internal memory allocation logic within
+    `ResampleStream`.
+  * Added **randomized test cases** to enhance stability and
+    edge-case coverage.
+
+-------------------------------------------------------------------
 Tue Mar 31 19:00:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.0:

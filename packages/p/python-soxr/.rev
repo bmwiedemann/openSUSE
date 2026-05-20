@@ -55,4 +55,24 @@
       ~100% faster VHQ on x86_64.</comment>
     <requestid>1343967</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9a5a6db0ff9a052a1a57a45990b64bba</srcmd5>
+    <version>1.1.0</version>
+    <time>1779283502</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.0:
+  * Added experimental **variable-rate resampling** and improved
+    **ResampleStream performance**.
+  * There are no breaking changes in this release.
+  * **Added (Experimental) Variable-rate Resampling**
+  * Now available via `ResampleStream(vr=True)` and
+    `set_io_ratio()`.
+  * Improved processing speed **≈5–10%** (benchmarked with
+    1920-sample chunks).
+  * Optimized internal memory allocation logic within
+    `ResampleStream`.
+  * Added **randomized test cases** to enhance stability and
+    edge-case coverage.</comment>
+    <requestid>1354119</requestid>
+  </revision>
 </revisionlist>
