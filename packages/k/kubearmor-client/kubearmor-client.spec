@@ -1,7 +1,7 @@
 #
 # spec file for package kubearmor-client
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kubearmor-client
-Version:        1.4.5
+Version:        1.4.7
 Release:        0
 Summary:        KubeArmor cli tool aka kArmor
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         kubearmor-client-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.24 >= 1.24.9
+BuildRequires:  go1.26 >= 1.26.3
 BuildRequires:  zsh
 
 %description
