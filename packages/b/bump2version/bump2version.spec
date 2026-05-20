@@ -1,7 +1,7 @@
 #
 # spec file for package bump2version
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 # Flavor to build for
 %define pythons python3
@@ -30,14 +36,21 @@ URL:            https://github.com/c4urself/bump2version
 Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-test_usage_string.patch -- fixes test_usage_string
 Patch0:         https://github.com/c4urself/bump2version/commit/1c4f04b6ab90f6d432b6c4117e0de38b006a5de5.patch#/fix-test_usage_string.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testfixtures >= 6.0.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Obsoletes:      bumpversion <= 0.6.0
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
+%endif
+Obsoletes:      bumpversion <= 0.6.0
 BuildArch:      noarch
 
 %python_subpackages
@@ -56,18 +69,23 @@ This package obsoletes bumpversion.
 %autosetup -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/bump2version
 %python_clone -a %{buildroot}%{_bindir}/bumpversion
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%fdupes -s %{buildroot}%{bindir}
 
 %check
 # test_usage_string_fork: bumpversion is not in PATH
 # test_usage_string: https://github.com/c4urself/bump2version/issues/254
 %pytest -k 'not (test_usage_string_fork or test_usage_string)'
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative bump2version bumpversion
 
 %post
 %{python_install_alternative bump2version bumpversion}
@@ -80,6 +98,7 @@ This package obsoletes bumpversion.
 %license LICENSE.rst
 %python_alternative %{_bindir}/bump2version
 %python_alternative %{_bindir}/bumpversion
-%{python_sitelib}/*
+%{python_sitelib}/bumpversion
+%{python_sitelib}/bump2version-%{version}.dist-info
 
 %changelog

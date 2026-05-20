@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 12 06:27:46 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Refresh fix-test_usage_string.patch to match what GitHub is serving.
+
+-------------------------------------------------------------------
+Fri Jun 13 13:31:02 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- migrate to pip based build and use libalternatives on modern versions
+
+-------------------------------------------------------------------
 Thu Mar 21 07:42:47 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}
