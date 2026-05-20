@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.proxy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zope.proxy%{psuffix}
-Version:        7.1
+Version:        7.2
 Release:        0
 Summary:        Generic Transparent Proxies
 License:        ZPL-2.1

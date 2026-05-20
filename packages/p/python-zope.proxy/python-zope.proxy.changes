@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 19 22:18:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2:
+  * Add support for automatically building and publishing
+    Windows/ARM64 wheels.
+  * Add support for automatically building and publishing source
+    distributions.
+
+-------------------------------------------------------------------
 Thu Dec 11 04:18:14 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.1:
