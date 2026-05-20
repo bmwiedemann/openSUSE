@@ -36,7 +36,7 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           oci-cli%{psuffix}
-Version:        3.76.2
+Version:        3.83.0
 Release:        0
 Summary:        Oracle Cloud Infrastructure CLI
 License:        Apache-2.0
@@ -52,7 +52,7 @@ BuildRequires:  %{pythons}-click >= 8.0.4
 BuildRequires:  %{pythons}-cryptography >= 3.2.1
 BuildRequires:  %{pythons}-devel
 BuildRequires:  %{pythons}-jmespath >= 0.10.0
-BuildRequires:  %{pythons}-oci-sdk >= 2.168.3
+BuildRequires:  %{pythons}-oci-sdk >= 2.175.0
 BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-pyOpenSSL >= 22.1.0
 BuildRequires:  %{pythons}-python-dateutil >= 2.5.3
@@ -64,26 +64,27 @@ BuildRequires:  %{pythons}-wheel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{pythons}-Jinja2 >= 2.11.3
+BuildRequires:  %{pythons}-Jinja2 >= 3.1.5
 BuildRequires:  %{pythons}-Sphinx >= 1.6.4
 BuildRequires:  %{pythons}-appdirs >= 1.4.3
 BuildRequires:  %{pythons}-cffi >= 1.9.1
 BuildRequires:  %{pythons}-coverage >= 4.5.2
 BuildRequires:  %{pythons}-ndg-httpsclient >= 0.4.2
-BuildRequires:  %{pythons}-packaging >= 20.2
+BuildRequires:  %{pythons}-packaging >= 22.0
 BuildRequires:  %{pythons}-pluggy >= 0.13.0
 BuildRequires:  %{pythons}-py >= 1.11.0
 BuildRequires:  %{pythons}-pyasn1 >= 0.2.3
 BuildRequires:  %{pythons}-pycparser >= 2.20
 BuildRequires:  %{pythons}-pyparsing >= 2.2.0
+BuildRequires:  %{pythons}-pytest >= 7.1.2
 BuildRequires:  %{pythons}-pytest-cov >= 2.5.1
 BuildRequires:  %{pythons}-pytest-forked >= 1.0.2
 BuildRequires:  %{pythons}-pytest-xdist >= 1.22.2
-BuildRequires:  %{pythons}-requests >= 2.21.0
+BuildRequires:  %{pythons}-requests >= 2.32.4
 BuildRequires:  %{pythons}-sphinx_rtd_theme >= 0.4.3
 BuildRequires:  %{pythons}-tox >= 3.23.0
-BuildRequires:  %{pythons}-vcrpy >= 4.2.1
-BuildRequires:  %{pythons}-virtualenv >= 16.7.10
+BuildRequires:  %{pythons}-vcrpy >= 7.0.0
+BuildRequires:  %{pythons}-virtualenv >= 20.26.6
 BuildRequires:  (%{pythons}-vcrpy >= 1.13.0 if python-base <= 3.9)
 BuildRequires:  (%{pythons}-vcrpy >= 4.2.1 if python-base >= 3.10)
 BuildRequires:  (%{pythons}-vcrpy >= 4.6.10 if python-base <= 3.9)
@@ -95,7 +96,7 @@ Requires:       %{pythons}-certifi >= 2025.1.31
 Requires:       %{pythons}-click >= 8.0.4
 Requires:       %{pythons}-cryptography >= 3.2.1
 Requires:       %{pythons}-jmespath >= 0.10.0
-Requires:       %{pythons}-oci-sdk >= 2.154.3
+Requires:       %{pythons}-oci-sdk >= 2.175.0
 Requires:       %{pythons}-prompt_toolkit >= 3.0.38
 Requires:       %{pythons}-pyOpenSSL >= 22.1.0
 Requires:       %{pythons}-python-dateutil >= 2.5.3
