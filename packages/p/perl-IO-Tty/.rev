@@ -252,4 +252,41 @@
   1.24 2026-03-27 Todd Rinaldo &lt;toddr@cpan.org&gt;</comment>
     <requestid>1346902</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ffdde4899e2f8d032c5247beee9935c9</srcmd5>
+    <version>1.290.0</version>
+    <time>1779283407</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.290.0 (1.29)
+   see /usr/share/doc/packages/perl-IO-Tty/ChangeLog
+  1.29 2026-04-23 Todd Rinaldo &lt;toddr@cpan.org&gt;
+    Bug Fixes:
+      * GH #87, PR #88 - Fix configure-time function detection probes being
+        broken by compiler optimization. The probes stored function pointers
+        in local variables which -O2/-Os (added to probe flags in PR #81)
+        eliminated as dead stores, so the linker never saw the function
+        reference. On systems where openpty() lives in -lutil (older glibc,
+        BSDs), the probe falsely succeeded without -lutil, producing
+        &quot;undefined symbol: openpty&quot; at runtime. Fixed by storing the
+        function pointer in a file-scope global variable which the optimizer
+        cannot eliminate.
+    Maintenance:
+      * PR #89 - Add Ubuntu LTS version matrix (20.04, 22.04, 24.04) to the
+        GitHub Actions test suite. Exercises the system perl on each current
+        Ubuntu LTS release via Docker containers, running after the main
+        ubuntu job.
+  1.28 2026-04-23 Todd Rinaldo &lt;toddr@cpan.org&gt;
+    Bug Fixes:
+      * PR #69 - Fix make_slave_controlling_terminal() on Solaris/HP-UX to use
+        _open_tty() instead of IO::Tty-&gt;open(), ensuring STREAMS modules (ptem,
+        ldterm, ttcompat) are pushed via I_PUSH when the slave is opened for
+        controlling terminal setup. Parallel fix to the slave() method fix in
+        1.24.
+      * PR #74 - Fix Perl 5.40+ &quot;Possible memory corruption: ioctl overflowed
+        3rd argument&quot; warning in clone_winsize_from() and get_winsize(). Use
+        pack_winsize(0,0,0,0) to pre-allocate the ioctl buffer with SvCUR
+        matching sizeof(struct winsize) instead of an empty string.
+      * PR #76, PR #79 - Fix diagnostic warnings being silently suppressed when</comment>
+    <requestid>1353766</requestid>
+  </revision>
 </revisionlist>

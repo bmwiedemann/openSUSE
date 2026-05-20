@@ -18,10 +18,10 @@
 
 %define cpan_name IO-Tty
 Name:           perl-IO-Tty
-Version:        1.270.0
+Version:        1.290.0
 Release:        0
-# 1.27 -> normalize -> 1.270.0
-%define cpan_version 1.27
+# 1.29 -> normalize -> 1.290.0
+%define cpan_version 1.29
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Pseudo ttys and constants
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -36,34 +36,24 @@ Provides:       perl(IO::Tty) = %{version}
 %{perl_requires}
 
 %description
-'IO::Tty' is used internally by 'IO::Pty' to create a pseudo-tty. You
-wouldn't want to use it directly except to import constants, use 'IO::Pty'.
+'IO::Tty' is used internally by IO::Pty to create a pseudo-tty. You
+wouldn't want to use it directly except to import constants, use IO::Pty.
 For a list of importable constants, see IO::Tty::Constant.
 
-Windows is now supported, but ONLY under the Cygwin environment, see
-http://sources.redhat.com/cygwin/.
+Windows is now supported under the Cygwin environment, see
+http://cygwin.com/.
 
-Please note that pty creation is very system-dependend. From my experience,
-any modern POSIX system should be fine. Find below a list of systems that
-'IO::Tty' should work on. A more detailed table (which is slowly getting
-out-of-date) is available from the project pages document manager at
-SourceForge http://sourceforge.net/projects/expectperl/.
+Please note that pty creation is very system-dependent. Any modern POSIX
+system should be fine. The test suite is run via GitHub Actions CI on
+Linux, macOS, FreeBSD, OpenBSD, and NetBSD.
 
-If you have problems on your system and your system is listed in the
-"verified" list, you probably have some non-standard setup, e.g. you
-compiled your Linux-kernel yourself and disabled ptys (bummer!). Please ask
-your friendly sysadmin for help.
+If you have problems on your system and it is listed below, you probably
+have a non-standard setup, e.g. you compiled your Linux-kernel yourself and
+disabled ptys (bummer!). Please ask your friendly sysadmin for help.
 
 If your system is not listed, unpack the latest version of 'IO::Tty', do a
-''perl Makefile.PL; make; make test; uname -a'' and send me
-(_RGiersig@cpan.org_) the results and I'll see what I can deduce from that.
-There are chances that it will work right out-of-the-box...
-
-If it's working on your system, please send me a short note with details
-(version number, distribution, etc. 'uname -a' and 'perl -V' is a good
-start; also, the output from "perl Makefile.PL" contains a lot of
-interesting info, so please include that as well) so I can get an overview.
-Thanks!
+''perl Makefile.PL; make; make test; uname -a'' and report issues at
+https://github.com/cpan-authors/IO-Tty/issues.
 
 %prep
 %autosetup -n %{cpan_name}-%{cpan_version} -p1
