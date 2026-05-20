@@ -27,7 +27,7 @@ Requires(pre):  group(nogroup)
 %define dnsmasq_group nogroup
 %endif
 Name:           dnsmasq
-Version:        2.92
+Version:        2.92rel2
 Release:        0
 Summary:        DNS Forwarder and DHCP Server
 License:        GPL-2.0-only OR GPL-3.0-only

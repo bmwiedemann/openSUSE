@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 12 09:06:00 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to security release 2.92rel2:
+  * CVE-2026-2291, bsc#1258251: dnsmasq can be abused to record
+    false cached data enabling DoS or attacker redirect.
+  * CVE-2026-4890, bsc#1265001: DoS vulnerability in the DNSSEC
+    validation.
+  * CVE-2026-4891, bsc#1265002: heap-based out-of-bounds read
+    vulnerability in the DNSSEC validation.
+  * CVE-2026-4892, bsc#1265003: heap-based out-of-bounds write
+    vulnerability in the DHCPv6 implementation.
+  * CVE-2026-4893, bsc#1265004: information disclosure
+    vulnerability in dnsmasq allows remote attackers to bypass
+    source checks.
+  * CVE-2026-5172, bsc#1265006: buffer overflow in dnsmasq’s
+    extract_addresses() function.
+
+-------------------------------------------------------------------
 Wed Apr 22 12:09:45 UTC 2026 - Reinhard Max <max@suse.com>
 
 - bsc#1262487, CVE-2026-6507, dnsmasq-CVE-2026-6507.patch:

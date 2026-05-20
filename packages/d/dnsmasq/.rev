@@ -1006,4 +1006,12 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
   * Add dnsmasq-Fix-FTBFS-nettle-4.0.patch and merge 4070a748.patch</comment>
     <requestid>1348772</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>3afeed5347b090e0d2f94d47b71891ce</srcmd5>
+    <version>2.92rel2</version>
+    <time>1779283388</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1353993</requestid>
+  </revision>
 </revisionlist>
