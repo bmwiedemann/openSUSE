@@ -551,4 +551,13 @@
   * update olson db to 2026a</comment>
     <requestid>1341036</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>d7ab3261cc662783e7a9f5339ccc7045</srcmd5>
+    <version>2026.2</version>
+    <time>1779283426</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.2:
+  * update olson db to 2026b</comment>
+    <requestid>1353869</requestid>
+  </revision>
 </revisionlist>
