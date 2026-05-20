@@ -18,10 +18,10 @@
 
 %define cpan_name XML-Parser
 Name:           perl-XML-Parser
-Version:        2.570.0
+Version:        2.580.0
 Release:        0
-# 2.57 -> normalize -> 2.570.0
-%define cpan_version 2.57
+# 2.58 -> normalize -> 2.580.0
+%define cpan_version 2.58
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        Artistic-2.0
 Summary:        Perl module for parsing XML documents
@@ -43,6 +43,7 @@ Provides:       perl(XML::Parser::Style::Stream)
 Provides:       perl(XML::Parser::Style::Subs)
 Provides:       perl(XML::Parser::Style::Tree)
 %undefine       __perllib_provides
+Recommends:     perl(LWP::UserAgent)
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libexpat-devel
@@ -89,7 +90,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc AI_POLICY.md Changes README.md samples
+%doc AI_POLICY.md Changes CONTRIBUTING.md README.md samples SECURITY.md
 %license LICENSE
 
 %changelog

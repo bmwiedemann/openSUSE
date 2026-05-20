@@ -343,4 +343,41 @@ See also https://github.com/cpan-authors/XML-Parser/pull/99 (forwarded request 1
       - PR #228 Add test coverage for recognized_string, default_current,</comment>
     <requestid>1345222</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3f930caace9afc22c76211486d31aef6</srcmd5>
+    <version>2.580.0</version>
+    <time>1779283405</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.580.0 (2.58)
+   see /usr/share/doc/packages/perl-XML-Parser/Changes
+  2.58 2026-04-23 (by Todd Rinaldo)
+    Fixes:
+      - PR #260 Prevent element-name SV leak when Start or End handlers
+        die: wrap the call_sv in ENTER/SAVEFREESV/LEAVE so an exception
+        thrown from a handler no longer leaks one SV per call. Audited
+        all 19 XS callbacks — startElement and endElement were the only
+        ones with non-mortal SVs across a call_sv boundary
+      - PR #259 Add NULL check for GvIOp in XML_Do_External_Parse to
+        prevent a segfault when an ExternEnt handler returns an
+        unopened filehandle. GvIOp returns NULL for a glob that has
+        never been opened; both call sites previously passed the NULL
+        straight to newRV_inc
+      - PR #258 Release the parser when an Init or Final handler dies.
+        The release() call used to be skipped on exception, leaving a
+        circular reference through self_sv so DESTROY never ran and the
+        parser leaked permanently
+      - PR #257 Free doctype_sysid during normal parser teardown and
+        NULL self_sv after release. Every parse of a document with a
+        &lt;!DOCTYPE ... SYSTEM &quot;...&quot;&gt; declaration previously leaked the
+        system-id string on the non-error path (free_cbv already freed
+        it on the error path)
+      - PR #255 Use bare return instead of &quot;return undef&quot; in
+        ContentModel::children() and expand_ns_prefix(). &quot;return undef&quot;
+        in list context produces (undef) — a one-element list — which
+        silently broke callers checking @result for emptiness
+      - PR #246 Use three-argument open in file_ext_ent_handler so that
+        pipe characters and IO-mode prefixes in external-entity SYSTEM
+        identifiers can never be interpreted by Perl's two-argument</comment>
+    <requestid>1353765</requestid>
+  </revision>
 </revisionlist>

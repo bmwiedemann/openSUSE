@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Fri Apr 24 07:17:39 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.580.0 (2.58)
+   see /usr/share/doc/packages/perl-XML-Parser/Changes
+
+  2.58 2026-04-23 (by Todd Rinaldo)
+    Fixes:
+      - PR #260 Prevent element-name SV leak when Start or End handlers
+        die: wrap the call_sv in ENTER/SAVEFREESV/LEAVE so an exception
+        thrown from a handler no longer leaks one SV per call. Audited
+        all 19 XS callbacks — startElement and endElement were the only
+        ones with non-mortal SVs across a call_sv boundary
+      - PR #259 Add NULL check for GvIOp in XML_Do_External_Parse to
+        prevent a segfault when an ExternEnt handler returns an
+        unopened filehandle. GvIOp returns NULL for a glob that has
+        never been opened; both call sites previously passed the NULL
+        straight to newRV_inc
+      - PR #258 Release the parser when an Init or Final handler dies.
+        The release() call used to be skipped on exception, leaving a
+        circular reference through self_sv so DESTROY never ran and the
+        parser leaked permanently
+      - PR #257 Free doctype_sysid during normal parser teardown and
+        NULL self_sv after release. Every parse of a document with a
+        <!DOCTYPE ... SYSTEM "..."> declaration previously leaked the
+        system-id string on the non-error path (free_cbv already freed
+        it on the error path)
+      - PR #255 Use bare return instead of "return undef" in
+        ContentModel::children() and expand_ns_prefix(). "return undef"
+        in list context produces (undef) — a one-element list — which
+        silently broke callers checking @result for emptiness
+      - PR #246 Use three-argument open in file_ext_ent_handler so that
+        pipe characters and IO-mode prefixes in external-entity SYSTEM
+        identifiers can never be interpreted by Perl's two-argument
+        open. The existing regex check is now defense-in-depth rather
+        than the sole protection
+      - PR #242 Add NULL-after-allocation checks with cascading cleanup
+        to the three New() calls in LoadEncoding, consistent with the
+        pattern established for XML_ParserCreate_MM in PR #204
+    Improvements:
+      - PR #267 Address CPANTS Kwalitee issues: add =head1 LICENSE to
+        Parser.pm, add use warnings to Expat.pm, add provides to
+        META_MERGE (using MM->parse_version() to avoid hardcoding), and
+        add SECURITY.md and CONTRIBUTING.md
+      - PR #265 Fix Doctype handler Internal parameter documentation in
+        Parser.pm — the XS code pushes PL_sv_yes/PL_sv_no (a boolean
+        indicating whether an internal subset exists), not the subset
+        string the POD claimed. Also correct the DoctypeFin parameter
+        label from (Parser) to (Expat) and a minor Expat.pm POD typo
+      - PR #264 Add use strict and use warnings to Makefile.PL and
+        Expat/Makefile.PL, and convert $expat_libpath / $expat_incpath
+        from bare globals to lexicals
+      - PR #262 Modernize META resources to CPAN Meta spec v2 —
+        structured bugtracker and repository entries so MetaCPAN and
+        CPAN tooling can extract richer information (separate git URL,
+        web URL, and tracker type)
+      - PR #256 Add use warnings to Parser.pm and all five Style
+        modules. Expat.pm is intentionally excluded and already
+        documents why (it uses int() on strings in namespace methods)
+      - PR #254 Improve const-correctness in Expat.xs: propagate
+        const char * through newUTF8SVpv, newUTF8SVpvn, and
+        append_error, and drop 30+ now-unnecessary (char *) casts. No
+        functional change — identical generated code
+      - PR #251 Add a Codecov coverage badge to README.md alongside the
+        existing CI badge
+      - PR #250 Document the Codecov coverage integration in CLAUDE.md,
+        including the two flags (perl via Devel::Cover, xs via
+        gcov/lcov) and a link to the dashboard
+      - PR #247 Add a Devel::Cover code-coverage CI job that measures
+        both Perl and XS/C coverage (via gcc --coverage + lcov) and
+        uploads to Codecov with separate perl/xs flags
+      - PR #241 Add a SECURITY section to Parser.pm POD documenting the
+        BillionLaughsAttackProtection*, AllocTracker*, and
+        ReparseDeferralEnabled options, with cross-references from the
+        new() option list
+    Maintenance:
+      - PR #266 Add 22 tests in t/expat_guards.t covering Expat.pm
+        input validation (setHandlers type/arity checks), parse-state
+        guards, and reference-exception preservation
+      - PR #263 Upgrade cross-platform-actions from v0.32 to v1 in the
+        BSD (FreeBSD, OpenBSD, NetBSD) CI jobs
+      - PR #261 Add 4 missing test files to MANIFEST via make manifest
+        and extend MANIFEST.SKIP with standard exclusions for build
+        artifacts (blib/, *.o, *.so, *.bs, *.c, cover_db/, .DS_Store,
+        Makefile.old) so future regenerations stay clean
+      - PR #253 Add missing use strict and use warnings to 9 test files
+        so the whole suite is consistent, and fix an undeclared
+        $parser in t/file.t surfaced by the new strictures
+      - PR #252 Upgrade actions/checkout from v4 to v6 in the release
+        workflow (the testsuite workflow was already upgraded)
+      - PR #249 Add t/expat_xs_coverage.t with 26 tests targeting
+        previously-uncovered paths in Expat.xs (93% → 95% line
+        coverage), focused on skip_until suspend/resume, namespace
+        cleanup in finish(), and external-entity edge cases
+      - PR #248 Add t/coverage_gaps.t with 31 tests for previously
+        uncovered Perl code paths identified via Devel::Cover — Debug
+        and Stream style Proc/PI handlers, Expat direct parse methods,
+        ContentModel MIXED asString, and security-API argument
+        validation. Subroutine coverage reaches 100% across all modules
+      - PR #245 Add 16 targeted Stream_Delimiter boundary tests that
+        exercise the XS parse_stream delimiter detection logic directly
+        with small controlled documents (t/stream.t only exercised it
+        against one large sample file)
+      - PR #244 Add t/parser_api.t covering the XML::Parser API
+        surface: setHandlers return and croak semantics, parsefile Base
+        save/restore (including on error), parser reuse, parse return
+        values in scalar and list context, Init handler invocation,
+        and Pkg defaulting
+
+-------------------------------------------------------------------
 Wed Apr  8 06:55:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.570.0 (2.57)
