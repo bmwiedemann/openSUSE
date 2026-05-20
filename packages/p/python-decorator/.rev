@@ -264,4 +264,19 @@
     <comment></comment>
     <requestid>1278578</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>18724123a5d3477da71e308951204833</srcmd5>
+    <version>5.3.0</version>
+    <time>1779288467</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.3.0:
+  * Added official support for Python 3.14
+  * Fixed a bug with &quot;return await&quot;
+  * Moved decorator.py to a package structure
+  * added a stub file (decorator/__init__.pyi)
+
+- python3 package added
+- Update to upstream tarball, no code changes</comment>
+    <requestid>1353608</requestid>
+  </revision>
 </revisionlist>

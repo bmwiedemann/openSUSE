@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 17 18:49:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.0:
+  * Added official support for Python 3.14
+  * Fixed a bug with "return await"
+  * Moved decorator.py to a package structure
+  * added a stub file (decorator/__init__.pyi)
+
+-------------------------------------------------------------------
 Tue May 20 09:26:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.2.1
@@ -251,7 +260,7 @@ Wed May 23 07:56:17 UTC 2012 - highwaystar.ru@gmail.com
 
 - update to version 3.3.3
 - minor spec improvement
-- python3 package added 
+- python3 package added
 
 -------------------------------------------------------------------
 Tue Nov 29 19:14:17 UTC 2011 - cfarrell@suse.com
@@ -262,7 +271,7 @@ Tue Nov 29 19:14:17 UTC 2011 - cfarrell@suse.com
 -------------------------------------------------------------------
 Thu Nov 24 13:38:58 UTC 2011 - idoenmez@suse.de
 
-- Update to upstream tarball, no code changes 
+- Update to upstream tarball, no code changes
 
 -------------------------------------------------------------------
 Mon Sep 26 07:56:23 UTC 2011 - saschpe@suse.de

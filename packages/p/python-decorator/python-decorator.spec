@@ -1,7 +1,7 @@
 #
 # spec file for package python-decorator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 #
 %{?sle15_python_module_pythons}
 Name:           python-decorator
-Version:        5.2.1
+Version:        5.3.0
 Release:        0
 Summary:        Decorators for Humans
 License:        BSD-2-Clause
@@ -45,8 +45,7 @@ programmer so as to make decorators such as memoize, tracing,
 redirecting_stdout, locked, etc. more accessible.
 
 %prep
-%setup -q -n decorator-%{version}
-%autopatch -p1
+%autosetup -p1 -n decorator-%{version}
 
 %build
 %pyproject_wheel
@@ -61,8 +60,7 @@ redirecting_stdout, locked, etc. more accessible.
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.md README.rst
-%{python_sitelib}/decorator.py*
-%pycache_only %{python_sitelib}/__pycache__/decorator.*.py*
+%{python_sitelib}/decorator
 %{python_sitelib}/decorator-%{version}.dist-info
 
 %changelog
