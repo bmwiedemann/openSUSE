@@ -335,4 +335,21 @@ This fixes the file conflict in factory (forwarded request 171294 from TheBlackC
   * Added REM and other CSS3 length units to length macros.</comment>
     <requestid>1349394</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>058b16e67caa58a7a49ad18c4dae113c</srcmd5>
+    <version>2.15.0</version>
+    <time>1779283443</time>
+    <user>anag_factory</user>
+    <comment>- enable tests
+
+- Update to 2.15.0
+  * Added support for Selectors Level 4 pseudo-classes that accept
+    full selector lists as arguments (:has(), :is(), :where(),
+    :matches(), :any()). (#66)
+  * Fixed pseudo-class specificity calculation. Pseudo-classes (e.g.
+    ``:hover``, ``:last-child``, ``:nth-child()``) now correctly
+    contribute to the class-weight column per the CSS Selectors spec.
+    (#76)</comment>
+    <requestid>1354063</requestid>
+  </revision>
 </revisionlist>

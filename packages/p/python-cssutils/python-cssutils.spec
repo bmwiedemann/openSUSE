@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-cssutils
-Version:        2.14.0
+Version:        2.15.0
 Release:        0
 Summary:        A CSS Cascading Style Sheets library for Python
 License:        LGPL-3.0-or-later
@@ -29,8 +29,10 @@ Source0:        https://files.pythonhosted.org/packages/source/c/cssutils/cssuti
 Source1:        %{name}.rpmlintrc
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module encutils}
+BuildRequires:  %{python_module jaraco.test}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module wheel}
@@ -51,6 +53,9 @@ A Python package to parse and build CSS Cascading Style Sheets. DOM only, not an
 
 %build
 %pyproject_wheel
+
+%check
+%pytest tests/
 
 %install
 %pyproject_install
