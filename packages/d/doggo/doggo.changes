@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 20 08:20:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.6:
+  * Bug fixes
+    - 7ea250d: fix(edns): default UDP buffer size to 1232 per DNS
+      Flagday 2020 (@mr-karan)
+  * Others
+    - 802e38b: Fix "DNS over QUIC" sidebar anchor text (@isker)
+    - 79dee5c: Merge pull request #236 from isker/patch-1
+      (@mr-karan)
+    - 2bcf2f7: chore(deps): upgrade Go to 1.26 and bump
+      dependencies (@mr-karan)
+
+-------------------------------------------------------------------
 Wed Feb 25 09:26:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.5:
