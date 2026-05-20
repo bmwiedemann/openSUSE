@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 11 20:00:46 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 26.2.3.2:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/26.2.3/RC1
+    https://wiki.documentfoundation.org/Releases/26.2.3/RC2
+
+-------------------------------------------------------------------
 Tue Mar 31 23:24:22 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Fix i586 build by lowering the memory requirements for RPM compression. 
