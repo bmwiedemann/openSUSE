@@ -22,7 +22,7 @@
 %define agent_group  zabbix
 
 Name:           zabbix
-Version:        7.0.22
+Version:        7.0.26
 Release:        0
 Summary:        Distributed monitoring system
 License:        Apache-2.0 AND GPL-2.0-or-later AND EPL-2.0 AND MPL-2.0 AND BSD-3-Clause
