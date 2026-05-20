@@ -365,4 +365,41 @@
   * Bump astral-sh/setup-uv from 5 to 7 in the actions group</comment>
     <requestid>1343974</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e835cce3fbeadbb757351f73ee743d65</srcmd5>
+    <version>3.2.1</version>
+    <time>1779283478</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.1:
+  * feat:metadata package
+  * fix: CastValue wrap validation bug
+  * fix: use contextual arrayspec when validating / evolving
+    codecs
+  * fix: defer to fsspec for memory url scheme
+  * release : 3.2.1 release notes
+  * **Full Changelog**: https://github.com/zarr-developers/zarr-
+    python/compare/v3.2.0...v3.2.1
+- update to 3.2.0:
+  * Rename the `DimensionNames` type to `DimensionNamesLike`.
+  * docs: remove incorrect redirect
+  * fix: handle special uint32 arrays on Windows correctly
+  * add release trigger that takes a tag as input
+  * Removes testpypi as a target for the workflow-dispatch-
+    triggered release workflow.
+  * perf: full shard write fast path
+  * Revert the changes applied in #3821 + #3822
+  * Fix needs_release_notes.yml workflow
+  * feat: return a useful value from `CodecPipeline.read()`
+  * docs: fix the docstring for `CodecPipeline.write`
+  * Improve layout of work in progress page
+  * perf: oindex optimization
+  * chore: spec0 compat (python 3.14 compat, python 3.12 min)
+  * fix: remove numcodecs off-spec warning
+  * DOC: remove result=&quot;ansi&quot; causing empty code blocks in user
+    guide
+  * chore: use `coverage run` instead of `pytest --cov`
+  * DOC: document init_group removal in v3 migration guide
+  * perf/chunktransform</comment>
+    <requestid>1354104</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue May 19 20:50:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * feat:metadata package
+  * fix: CastValue wrap validation bug
+  * fix: use contextual arrayspec when validating / evolving
+    codecs
+  * fix: defer to fsspec for memory url scheme
+  * release : 3.2.1 release notes
+  * **Full Changelog**: https://github.com/zarr-developers/zarr-
+    python/compare/v3.2.0...v3.2.1
+- update to 3.2.0:
+  * Rename the `DimensionNames` type to `DimensionNamesLike`.
+  * docs: remove incorrect redirect
+  * fix: handle special uint32 arrays on Windows correctly
+  * add release trigger that takes a tag as input
+  * Removes testpypi as a target for the workflow-dispatch-
+    triggered release workflow.
+  * perf: full shard write fast path
+  * Revert the changes applied in #3821 + #3822
+  * Fix needs_release_notes.yml workflow
+  * feat: return a useful value from `CodecPipeline.read()`
+  * docs: fix the docstring for `CodecPipeline.write`
+  * Improve layout of work in progress page
+  * perf: oindex optimization
+  * chore: spec0 compat (python 3.14 compat, python 3.12 min)
+  * fix: remove numcodecs off-spec warning
+  * DOC: remove result="ansi" causing empty code blocks in user
+    guide
+  * chore: use `coverage run` instead of `pytest --cov`
+  * DOC: document init_group removal in v3 migration guide
+  * perf/chunktransform
+  * Fill missing chunks
+  * fix: numpy default NaT handling
+  * DOC: document threading.max_workers config option
+  * chore: add zizmor to repo checks
+  * fix: convert zarr Array to numpy before __setitem__ async
+    dispatch
+  * fix: auto-open ZipStore in list(), list_dir() and exists()
+  * chore: update pre-commit hooks
+  * chore: fix release workflow triggers
+  * Revert "chore: update pre-commit hooks"
+  * chore: fix typos
+  * Update TEAM.md
+  * chore: separate benchmarks into a distinct CI job
+  * feat: add experimental support for rectilinear (variable-
+    sized) chunks
+  * chore: pin mkdocs<2
+  * chore: add a CI workflow that identifies unlinked types
+  * chore: prefix registry variable names with a single
+    underscore
+  * chore: update failure conditions for docs workflow
+  * fix: simplify and fix codspeed workflow
+  * chore: remove deprecated convenience and creation modules
+  * chore: remove .create methods from arrays
+  * chore: clean up metadata tests
+  * chore: expunge deprecated `zarr_version` parameter
+  * TESTS: don't force rectilinear config true in the test
+  * chore: remove deprecated group methods
+  * feat/memory store registry
+  * Implement support for `structured` and `struct` zarr-
+    extension defined dtypes
+  * fix: make upstream tests pass
+  * docs: add experimental API policy to contributing guide
+  * fix: apply path normalization to fsspec store
+  * Use f-strings
+  * fix(storage): preserve leading slashes in FsspecStore.path
+  * feat: add cast_value and scale_offset codecs
+  * chore: automate more of the release process
+  * chore/3.2.0 release notes
+  * docs: build 3.2.0 release notes
+
+-------------------------------------------------------------------
 Tue Mar 31 19:40:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.6:

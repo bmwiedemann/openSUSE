@@ -22,8 +22,9 @@
 %bcond_with libalternatives
 %endif
 %{?sle15_python_module_pythons}
+%global skip_python311 1
 Name:           python-zarr
-Version:        3.1.6
+Version:        3.2.1
 Release:        0
 Summary:        An implementation of chunked, compressed, N-dimensional arrays for Python
 License:        MIT
@@ -31,19 +32,19 @@ URL:            https://github.com/zarr-developers/zarr-python
 Source:         https://files.pythonhosted.org/packages/source/z/zarr/zarr-%{version}.tar.gz
 # Needs full python stdlib, base is not enough
 BuildRequires:  %{pythons}
-BuildRequires:  %{python_module base >= 3.11}
+BuildRequires:  %{python_module base >= 3.12}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling >= 1.29.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python >= 3.11
+Requires:       python >= 3.12
 Requires:       python-donfig >= 0.8
 Requires:       python-google-crc32c >= 1.5
 Requires:       python-numcodecs >= 0.14
 Requires:       python-numpy >= 2.0
 Requires:       python-packaging >= 22
-Requires:       python-typing_extensions >= 4.12
+Requires:       python-typing_extensions >= 4.13
 Suggests:       python-dbm
 Suggests:       python-ipytree
 BuildArch:      noarch
@@ -67,7 +68,7 @@ BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomlkit}
-BuildRequires:  %{python_module typing_extensions >= 4.12}
+BuildRequires:  %{python_module typing_extensions >= 4.13}
 # /SECTION
 %python_subpackages
 
