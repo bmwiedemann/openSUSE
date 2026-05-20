@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 19 15:19:36 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 33.0.5:
+  * fix logger for stdout
+    (gh#nextcloud/desktop#9975)
+  * Fix settings dialog minimum size
+    (gh#nextcloud/desktop#9982)
+  * editLocally: evaluate lock-record DB call outside Q_ASSERT
+    (gh#nextcloud/desktop#9973)
+  * fix: remove admin recall feature
+    (gh#nextcloud/desktop#10017)
+  * logs: change update channel log severity to info
+    (gh#nextcloud/desktop#10037)
+  * discovery: do not sync shares with "Allow download and sync"
+    unset
+    (gh#nextcloud/desktop#9963)
+  * double background in settings navigation
+    (gh#nextcloud/desktop#10046)
+    
+-------------------------------------------------------------------
 Tue May  5 03:33:27 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
 
 - Update to version 33.0.4:
