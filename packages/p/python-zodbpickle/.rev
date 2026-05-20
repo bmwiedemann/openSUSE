@@ -183,4 +183,20 @@
   * Add support for Python 3.14.</comment>
     <requestid>1321877</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>35d157aaca97e2879ab1a1e12ab7844c</srcmd5>
+    <version>4.4</version>
+    <time>1779283487</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.4:
+  * Add support for automatically building and publishing
+    Windows/ARM64 wheels.
+  * Add support for automatically building and publishing source
+    distributions.
+  * Fix compilation on free-threaded Python 3.14t: use
+    Py_REFCNT() macro instead of direct ob_refcnt struct access,
+    and Py_TYPE() instead of direct ob_type struct access.
+  * Add CI testing for free-threaded Python 3.14t (Linux).</comment>
+    <requestid>1354112</requestid>
+  </revision>
 </revisionlist>

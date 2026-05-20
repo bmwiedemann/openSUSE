@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 19 21:21:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4:
+  * Add support for automatically building and publishing
+    Windows/ARM64 wheels.
+  * Add support for automatically building and publishing source
+    distributions.
+  * Fix compilation on free-threaded Python 3.14t: use
+    Py_REFCNT() macro instead of direct ob_refcnt struct access,
+    and Py_TYPE() instead of direct ob_type struct access.
+  * Add CI testing for free-threaded Python 3.14t (Linux).
+
+-------------------------------------------------------------------
 Wed Dec 10 04:43:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.3:

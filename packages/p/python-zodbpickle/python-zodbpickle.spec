@@ -1,7 +1,7 @@
 #
 # spec file for package python-zodbpickle
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zodbpickle
-Version:        4.3
+Version:        4.4
 Release:        0
 Summary:        Fork of Python 3 pickle module
 License:        Python-2.0 AND ZPL-2.1
