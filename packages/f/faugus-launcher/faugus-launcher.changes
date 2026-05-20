@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 20 06:54:21 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.19.5
+- Upstream changes:
+  * Updated UI and added animation
+  * Fixed splash window missing when running Steam game
+  * Attempt to fix gamepad interacting with the app when a game is running
+  * Revert "Print message for debug"
+  * Print message for debug
+  * Banner border shadow
+  * Updated Debian instructions
+  * Some visual changes
+
+-------------------------------------------------------------------
 Fri May 15 20:35:32 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.19.4

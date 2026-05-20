@@ -501,4 +501,21 @@
   * translate category feature</comment>
     <requestid>1353464</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>74ef230ddab0139d6f798717d4d192df</srcmd5>
+    <version>1.19.5</version>
+    <time>1779283552</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.19.5
+- Upstream changes:
+  * Updated UI and added animation
+  * Fixed splash window missing when running Steam game
+  * Attempt to fix gamepad interacting with the app when a game is running
+  * Revert &quot;Print message for debug&quot;
+  * Print message for debug
+  * Banner border shadow
+  * Updated Debian instructions
+  * Some visual changes</comment>
+    <requestid>1354165</requestid>
+  </revision>
 </revisionlist>
