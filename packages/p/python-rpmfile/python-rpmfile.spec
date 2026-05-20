@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpmfile
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rpmfile
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Python module to read rpm files
 License:        MIT
 URL:            https://github.com/srossross/rpmfile
-Source:         https://files.pythonhosted.org/packages/source/r/rpmfile/rpmfile-%{version}.tar.gz
+Source:         https://github.com/srossross/rpmfile/archive/refs/tags/v%{version}.tar.gz#/rpmfile-%{version}-gh.tar.gz
+BuildRequires:  %{python_module hatch-vcs >= 0.4}
+BuildRequires:  %{python_module hatchling >= 1.27}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -60,6 +60,7 @@ Tools for inspecting RPM files in python. This module is modeled after the tarfi
 sed -i '1{/#!/d}' rpmfile/cpiofile.py
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install

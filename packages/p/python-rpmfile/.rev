@@ -58,4 +58,13 @@
 - Fix alternatives, and use update-alternatives in SLE-15</comment>
     <requestid>1300053</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fa2a86226ef90ccdeaad08e19683443a</srcmd5>
+    <version>2.2.1</version>
+    <time>1779283467</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.2.1:
+  * early check boundaries</comment>
+    <requestid>1354097</requestid>
+  </revision>
 </revisionlist>

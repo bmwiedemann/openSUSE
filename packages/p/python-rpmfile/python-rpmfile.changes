@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 19 20:51:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.1:
+  * early check boundaries
+
+-------------------------------------------------------------------
 Mon Aug 18 11:34:01 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add %{?sle15_python_module_pythons}
