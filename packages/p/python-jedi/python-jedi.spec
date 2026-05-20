@@ -1,7 +1,7 @@
 #
 # spec file for package python-jedi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jedi
-Version:        0.19.2
+Version:        0.20.0
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
@@ -26,7 +26,7 @@ URL:            https://github.com/davidhalter/jedi
 Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 # The author of jedi and parso takes pinning very seriously, adhere to it!
-BuildRequires:  %{python_module parso >= 0.8.4 with %python-parso < 0.9}
+BuildRequires:  %{python_module parso >= 0.8.6 with %python-parso < 0.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module setuptools}
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # See pinning note above
-Requires:       (python-parso >= 0.8.4 with python-parso < 0.9)
+Requires:       (python-parso >= 0.8.6 with python-parso < 0.9)
 BuildArch:      noarch
 %python_subpackages
 
@@ -72,12 +72,10 @@ skiptests+=" or test_speed"
 skiptests+=" or test_init_extension_module"
 # This fails on 15.4_py39 server-side but not locally (!?)
 skiptests+=" or test_get_default_environment_when_embedded"
-# few instances of test_string_annotation fail with Python 3.14 https://github.com/davidhalter/jedi/pull/2070
-skiptests+=" or (test_string_annotation and (8 or 9 or 10 or 11)) or test_compiled_signature_annotation_string"
 %pytest -k "not ($skiptests)"
 
 %files %{python_files}
-%doc AUTHORS.txt CHANGELOG.rst README.rst
+%doc CHANGELOG.rst README.rst
 %license LICENSE.txt
 %{python_sitelib}/jedi
 %{python_sitelib}/jedi-%{version}.dist-info

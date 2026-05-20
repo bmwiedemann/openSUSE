@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 17 21:38:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.0:
+  * Python 3.14 support
+  * Removed support for Python 3.8 and 3.9
+  * Upgraded Typeshed
+  * Better support for Final/ClassVar
+  * __new__ is now also recognized as a signature and TypeVar
+    inference
+  * Support for Self
+  * Support for TypeAlias, generics for type[...] and tuple[...]
+
+-------------------------------------------------------------------
 Mon Sep 22 12:43:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Skip tests failing with Python 3.14

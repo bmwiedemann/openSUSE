@@ -422,4 +422,20 @@
     <comment></comment>
     <requestid>1306729</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>2b4ffa9f54b5601e2f92b1aa19fe0a1d</srcmd5>
+    <version>0.20.0</version>
+    <time>1779288470</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.20.0:
+  * Python 3.14 support
+  * Removed support for Python 3.8 and 3.9
+  * Upgraded Typeshed
+  * Better support for Final/ClassVar
+  * __new__ is now also recognized as a signature and TypeVar
+    inference
+  * Support for Self
+  * Support for TypeAlias, generics for type[...] and tuple[...]</comment>
+    <requestid>1353633</requestid>
+  </revision>
 </revisionlist>
