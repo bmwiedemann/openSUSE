@@ -27,4 +27,15 @@
     <comment></comment>
     <requestid>1308427</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7dd03f55656be80c5fa7bedf7707f738</srcmd5>
+    <version>1.3.0</version>
+    <time>1779283490</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3.0:
+  * Stripped `include` directives to prevent `AttributeError` in
+    Sphinx. Included files are checked separately for existence
+    and not just ignored.</comment>
+    <requestid>1354117</requestid>
+  </revision>
 </revisionlist>
