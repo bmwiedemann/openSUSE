@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 14 08:41:00 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Remove redundant CMake build flags
+ * Drop unused BUILD_STATIC_LIBS option
+ * Drop LIBBFD_LIBRARIES/LIBOPCODES_LIBRARIES override
+
+-------------------------------------------------------------------
 Wed May  6 15:55:00 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Fix ppc64le build issue due to long double ABI mismatch with static libbpf
