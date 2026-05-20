@@ -34,4 +34,13 @@
   * Sync mypy and add smoke tests</comment>
     <requestid>1352256</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e742378c68abb3feca2bccaab50e8737</srcmd5>
+    <version>0.11.0</version>
+    <time>1779288469</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.0:
+  * expose librt.random</comment>
+    <requestid>1353622</requestid>
+  </revision>
 </revisionlist>

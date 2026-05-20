@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 17 19:55:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * expose librt.random
+
+-------------------------------------------------------------------
 Sun May 10 09:55:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.0:
