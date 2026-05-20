@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 19 22:15:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.0:
+  * This is a major release only because of a minor ngclient API
+    tweak: there are no large functional changes.
+  * Fix GHSA-qp9x-wp8f-qgjj:
+  * Incorrect delegation path matching on Windows
+  * Various documentation fixes
+  * ngclient: `Updater()` now requires the named bootstrap
+    argument to make it clearer that providing one is strongly
+    recommended: previous default functionality can be reproduced
+    with `bootstrap=None`
+  * Prepare for removal of securesystemslib.hash
+
+-------------------------------------------------------------------
 Wed Apr 16 01:34:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.0:

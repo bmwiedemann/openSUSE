@@ -23,4 +23,22 @@
 - Remove duplicate BuildRequires on fdupes.</comment>
     <requestid>1269748</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>15088ae5018878a678175425e9164b17</srcmd5>
+    <version>7.0.0</version>
+    <time>1779283504</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.0.0:
+  * This is a major release only because of a minor ngclient API
+    tweak: there are no large functional changes.
+  * Fix GHSA-qp9x-wp8f-qgjj:
+  * Incorrect delegation path matching on Windows
+  * Various documentation fixes
+  * ngclient: `Updater()` now requires the named bootstrap
+    argument to make it clearer that providing one is strongly
+    recommended: previous default functionality can be reproduced
+    with `bootstrap=None`
+  * Prepare for removal of securesystemslib.hash</comment>
+    <requestid>1354129</requestid>
+  </revision>
 </revisionlist>
