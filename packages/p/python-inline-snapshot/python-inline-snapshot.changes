@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun May 17 19:14:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.33.0:
+  * `snapshot_arg()`, which lets you move `snapshot()` calls from
+    the call site into the helper function itself.
+  * **Example.is_formatted()**: new method to check whether a
+    Python file in the example is already Black-formatted.
+  * **Example.run_inline**: exception strings in `raises` are now
+    formatted the same way `inline_snapshot.extra.raises` does,
+    which is shorter for small assertions like
+    `raises=snapshot("UsageError: default value cannot be a
+    Custom value")`.
+  * **Example.run_inline**: the `raises`, `stderr`, and
+    `changed_files` arguments are now handled with
+    `snapshot_arg()`, so `snapshot()` is no longer needed at the
+    call site. `raises` defaults to `"<no exception>"` and
+    `changed_files` defaults to `{}`.
+  * **Example.run_inline**: the `reported_categories` argument is
+    now handled with `snapshot_arg()` and its type changed from
+    `list[Category]` to `set[Category]`. It is now only asserted
+    when the reported categories differ from the CLI flags passed
+    via `args`.
+  * Fixed `repr(external_file(...))` to use a path relative to
+    the calling file instead of the absolute path, which also
+    fixes incorrect reprs on Windows.
+
+-------------------------------------------------------------------
+Sun May 17 19:12:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.32.5:
+  * Fixed a bug where tuples used as snapshot keys caused problems
+    because they had the same hash value (#358)
+- update to 0.32.4:
+  * Added context_managers parameter to Example.run_inline()
+  * Fixed UsageError during session teardown when using -k (#355)
+- update to 0.32.3:
+  * Improved performance of snapshot() by using lazy evaluation
+  * Fixed code generation for Call objects
+  * use the handler for datetime types only for the concrete types
+- update to 0.32.2:
+  * Tuples in snapshots were converted internally into lists (#349)
+- update to 0.32.1:
+  * Fixed handling of datetime and time objects with timezone information
+  * Fixed customize hook registration
+- update to 0.32.0:
+  * removed support for python 3.8
+  * pathlib.Path/PurePath values are now platform independent
+  * Support for import statement generation for all types
+  * Added a new way to customize snapshot creation with @customize
+  * Added a plugin system
+  * Added support for conditional external storage
+  * Added built-in handlers for datetime.datetime, date, time, and timedelta
+  * Generates __file__ instead of the filename string
+  * Uses dirty-equals IsNow() instead of current datetime
+- drop regenerate-snapshots.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Feb  4 01:31:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch regenerate-snapshots.patch:
@@ -112,7 +169,7 @@ Mon May 26 14:14:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Wed Jan 29 02:19:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Inject multibuild to break a build cycle. 
+- Inject multibuild to break a build cycle.
 
 -------------------------------------------------------------------
 Thu Jan 16 05:40:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>

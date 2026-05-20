@@ -163,4 +163,41 @@ and python-pydantic-settings</comment>
   * Regenerate snapshots due to Python 3.12 changes. (bsc#1257517)</comment>
     <requestid>1330838</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>80202724929bcc5609402fe1b12e03bb</srcmd5>
+    <version>0.33.0</version>
+    <time>1779283393</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.33.0:
+  * `snapshot_arg()`, which lets you move `snapshot()` calls from
+    the call site into the helper function itself.
+  * **Example.is_formatted()**: new method to check whether a
+    Python file in the example is already Black-formatted.
+  * **Example.run_inline**: exception strings in `raises` are now
+    formatted the same way `inline_snapshot.extra.raises` does,
+    which is shorter for small assertions like
+    `raises=snapshot(&quot;UsageError: default value cannot be a
+    Custom value&quot;)`.
+  * **Example.run_inline**: the `raises`, `stderr`, and
+    `changed_files` arguments are now handled with
+    `snapshot_arg()`, so `snapshot()` is no longer needed at the
+    call site. `raises` defaults to `&quot;&lt;no exception&gt;&quot;` and
+    `changed_files` defaults to `{}`.
+  * **Example.run_inline**: the `reported_categories` argument is
+    now handled with `snapshot_arg()` and its type changed from
+    `list[Category]` to `set[Category]`. It is now only asserted
+    when the reported categories differ from the CLI flags passed
+    via `args`.
+  * Fixed `repr(external_file(...))` to use a path relative to
+    the calling file instead of the absolute path, which also
+    fixes incorrect reprs on Windows.
+
+- update to 0.32.5:
+  * Fixed a bug where tuples used as snapshot keys caused problems
+    because they had the same hash value (#358)
+- update to 0.32.4:
+  * Added context_managers parameter to Example.run_inline()
+  * Fixed UsageError during session teardown when using -k (#355)</comment>
+    <requestid>1353619</requestid>
+  </revision>
 </revisionlist>

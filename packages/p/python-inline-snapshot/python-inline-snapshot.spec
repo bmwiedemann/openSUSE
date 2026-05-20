@@ -26,25 +26,24 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-inline-snapshot%{psuffix}
-Version:        0.31.1
+Version:        0.33.0
 Release:        0
 Summary:        Create and update inline snapshots in your Python code
 License:        MIT
 URL:            https://github.com/15r10nk/inline-snapshot/
 Source:         https://files.pythonhosted.org/packages/source/i/inline-snapshot/inline_snapshot-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Regenerate snapshots for Python 3.12 changes
-Patch0:         regenerate-snapshots.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
+BuildRequires:  %{python_module attrs >= 24.3.0}
 BuildRequires:  %{python_module black >= 23.3.0}
-BuildRequires:  %{python_module click >= 8.1.4}
-BuildRequires:  %{python_module dirty-equals >= 0.7.0}
+BuildRequires:  %{python_module dirty-equals >= 0.9.0}
 BuildRequires:  %{python_module hypothesis >= 6.75.5}
 BuildRequires:  %{python_module inline-snapshot = %{version}}
+BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module mypy >= 1.2.0}
 BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pyright >= 1.1.359}
@@ -61,12 +60,12 @@ Requires:       python-asttokens >= 2.0.5
 Requires:       python-executing >= 2.2.0
 Requires:       python-pytest >= 8.3.4
 Requires:       python-rich >= 13.7.1
+Requires:       python-typing-extensions
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 2.0.0
 %endif
 Suggests:       python-black >= 23.3
-Suggests:       python-click >= 8.1.4
-Suggests:       python-dirty-equals >= 0.9
+Suggests:       python-dirty-equals >= 0.9.0
 BuildArch:      noarch
 %python_subpackages
 
