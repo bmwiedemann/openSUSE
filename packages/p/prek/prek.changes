@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 20 05:07:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.1:
+  * Enhancements
+    - Fix pre-push range after rebase (#2089)
+    - Prefer extensions over loose filename tags (#2092)
+    - Skip installs for hooks that will not run (#2103)
+  * Performance
+    - Optimize meta hook file scans (#2106)
+    - Reduce run filtering allocations (#2090)
+
+-------------------------------------------------------------------
 Fri May 15 07:20:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.4.0:
