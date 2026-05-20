@@ -362,4 +362,15 @@ For staging:n</comment>
   gem_install.sh.</comment>
     <requestid>1325981</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>0d227b1f223182e5f250d5c3a3d1fe15</srcmd5>
+    <version>4.0.0</version>
+    <time>1779283427</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1353875 from darix
+
+- Fix shebang line patching (yeah quoting through 3 layers!)
+- Have diff output so we can easily see patching worked.</comment>
+    <requestid>1353876</requestid>
+  </revision>
 </revisionlist>

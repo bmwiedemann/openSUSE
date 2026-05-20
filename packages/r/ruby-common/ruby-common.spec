@@ -112,6 +112,12 @@ Some helper tools for packaging rubygems and rails apps.
 %prep
 
 %build
+ruby_real_path="/usr/bin/ruby.%{rb_default_ruby_suffix}"
+for f in $(grep -r -l '^#./usr/bin/ruby' ${RPM_SOURCE_DIR}) ; do
+  perl -p -i.back -e "s|^#\\!.*ruby(?<suffix>\S+)?(?<optional_args>\s+\S+.*)?|#\\!${ruby_real_path}$+{optional_args}\n|g" $f
+  diff -urN ${f}{.back,} || :
+  rm ${f}.back           || :
+done
 
 %install
 # we need to make sure it overwrites older macro versions and rpm sorts alphabetically

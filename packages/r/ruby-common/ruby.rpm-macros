@@ -106,3 +106,14 @@ done \
 
 %requires_on_provides_eq() %{expand:%(t=$(echo '%1' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %1 = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not"); test -n "$t" || echo "%%{error: %%%%{requires_on_provides_eq %1} does not resolve}"; echo "$t")}
 %requires_on_provides_ge() %{expand:%(t=$(echo '%1' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %1 >= %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not"); test -n "$t" || echo "%%{error: %%%%{requires_on_provides_ge %1} does not resolve}"; echo "$t")}
+
+# We are stealing this from python
+%ruby_fix_shebang \
+%ruby_fix_shebang_path %{buildroot}%{_bindir}/*  %{buildroot}%{_sbindir}/*
+
+%ruby_fix_shebang_path(+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-=) \
+myargs="%{**}" \
+ruby_real_path=$(/usr/bin/ruby -r rbconfig -e 'puts "/usr/bin/#{RbConfig::CONFIG[\"ruby_install_name"]}"') \
+for f in ${myargs}; do \
+  [ -f $f ] && perl -p -i.back -e "s|^#\\!.*ruby(?<suffix>\\S+)?(?<optional_args>\\s+\\S+.*)?|#\\!${ruby_real_path}$+{optional_args}\\n|g" ${f} ; diff -urN ${f}{.back,} ||: ; rm ${f}.back \
+done
