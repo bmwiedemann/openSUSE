@@ -5712,4 +5712,18 @@
   + fix a few gcc analyzer warnings.</comment>
     <requestid>1352375</requestid>
   </revision>
+  <revision rev="332" vrev="105">
+    <srcmd5>7db7b707d41db4809704015001c2ffc5</srcmd5>
+    <version>unknown</version>
+    <time>1779283330</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260516
+  + defer initialization of magic-cookies, which disables some
+    capabilities, until the first screen update using a video attribute
+    which might introduce a magic cookie (report by Frank Palazzolo).
+  + correct buffer limit in recur_wgetnstr() (report by Daniel Anderson).
+  + correct logic in safe_name() function of infocmp, used in -E/-e
+    options (report/patch by Daniel Anderson).</comment>
+    <requestid>1353723</requestid>
+  </revision>
 </revisionlist>
