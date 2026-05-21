@@ -20,7 +20,7 @@
 %define         _kf5_plasmadir      /usr/share/plasma
 
 Name:           dracula-gtk-theme
-Version:        4.0.0+git141.1892c79
+Version:        4.0.0+git146.2618a03
 Release:        0
 Summary:        A dark theme for GTK
 License:        GPL-3.0-only

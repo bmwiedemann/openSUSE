@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 14 07:12:58 UTC 2026 - maurizio.galli@suse.com
+
+- Update to version 4.0.0+git146.2618a03:
+  * feat(gnome-shell): Improve appearance of search results
+  * feat(gnome-shell): Improve app grid view appearance
+  * feat(gnome-shell): Improve app switcher appearance
+  * fix(gnome): fix appearance of buttons in context menu in Papers app
+  * feat(cinnamon)!: Add styles for new menu design in cinnamon v6.6
+
+-------------------------------------------------------------------
 Tue Jan 13 08:43:27 UTC 2026 - maurizio.galli@suse.com
 
 - Update to version 4.0.0+git141.1892c79:
