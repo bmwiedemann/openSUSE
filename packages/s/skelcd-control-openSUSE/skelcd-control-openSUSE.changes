@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 10 09:37:23 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable non-oss on aarch64 and armv6/7
+  gh#yast/skelcd-control-openSUSE#291
+
+-------------------------------------------------------------------
 Thu Feb 26 08:50:52 UTC 2026 - Stefan Schubert <schubi@suse.de>
 
 - Set default bootloader to systemd-boot (jsc#PED-1906).

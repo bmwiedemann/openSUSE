@@ -27,7 +27,7 @@
 #
 ######################################################################
 Name:           skelcd-control-openSUSE
-Version:        20260226
+Version:        20260519
 Release:        0
 Summary:        The openSUSE Installation Control file
 License:        MIT
@@ -166,8 +166,8 @@ install -m 644 control/${CONTROL_FILE} $RPM_BUILD_ROOT%{?skelcdpath}/CD1/control
     # Update external link
     sed -i -e "s,https://download.opensuse.org/YaST/Repos/openSUSE_Factory_Servers.xml,https://download.opensuse.org/YaST/Repos/openSUSE_$ports_arch\_Factory_Servers.xml," %{buildroot}%{?skelcdpath}/CD1/control.xml
     sed -i -e "s,https://download.opensuse.org/YaST/Repos/openSUSE_Leap_,https://download.opensuse.org/YaST/Repos/openSUSE_$ports_arch\_Leap_," %{buildroot}%{?skelcdpath}/CD1/control.xml
-    %ifnarch %ix86
-        #we parse out non existing non-oss repo for ports, except on i586, where nonoss exists
+    %ifnarch %ix86 aarch64 %{arm}
+        #we parse out non existing non-oss repo for ports, except on i586, aarch64, armv6/7 where nonoss exists
         xsltproc -o %{buildroot}%{?skelcdpath}/CD1/control_ports.xml control/nonoss.xsl %{buildroot}%{?skelcdpath}/CD1/control.xml
         mv %{buildroot}%{?skelcdpath}/CD1/control{_ports,}.xml
     %endif
