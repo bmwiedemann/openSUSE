@@ -83,7 +83,6 @@ libxdp.
 %set_build_flags
 export LIBDIR='%{_libdir}'
 export CLANG=%{_bindir}/clang
-export LLC=%{_bindir}/llc
 export PRODUCTION=1
 export DYNAMIC_LIBXDP=1
 export FORCE_SYSTEM_LIBBPF=1

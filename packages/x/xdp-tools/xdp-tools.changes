@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 14 09:14:51 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Remove redundant build environment
+ * Since 1.5.4, upstream builds BPF objects directly with clang instead of LLC
+ * Drop LLC from the xdp-tools build environment
+
+-------------------------------------------------------------------
 Sat Apr 11 21:01:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.3:
