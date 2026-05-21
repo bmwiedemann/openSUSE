@@ -16,6 +16,7 @@
 #
 
 %define         __builder ninja
+
 Name:           noctalia-qs
 Version:        0.0.12
 Release:        0

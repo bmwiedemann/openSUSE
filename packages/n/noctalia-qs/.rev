@@ -7,4 +7,26 @@
     <comment> New package, see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/NAZ6ADP5OY5TXIUALWH5QZAZLFIYYPDN/ </comment>
     <requestid>1348291</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1f1b63c1ac36d123a16498a8433d8705</srcmd5>
+    <version>0.0.12</version>
+    <time>1779381166</time>
+    <user>anag_factory</user>
+    <comment>- Updated to git master version (noctalia-qs will probably not be maintained anymore so updated to git master version to have crash patches, etc.)
+- Changed 'tar' and 'recompress' services mode to buildtime
+- Update to version 0.0.12 (commit 4116b41cdc89e186be7cb8b24a9b6022af95d742):
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * fix(bluetooth): lift rfkill soft block when enabling a blocked adapter
+  * chore(flake): update flake.lock
+  * core/model: make diffUpdate handle reordering without duplicating rows
+  * chore(flake): update flake.lock
+  * fix(pipewire): avoid crash on device disconnect in default tracker
+  * chore(ci/nix): port fixes from noctalia-shell
+  * chore(flake): update flake.lock
+  * fix(pipewire): use QPointer to prevent use-after-free on node removal
+  * chore(flake): update flake.lock</comment>
+    <requestid>1354456</requestid>
+  </revision>
 </revisionlist>

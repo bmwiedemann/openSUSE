@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 19 00:36:07 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+
+- Updated to git master version (noctalia-qs will probably not be maintained anymore so updated to git master version to have crash patches, etc.)
+- Changed 'tar' and 'recompress' services mode to buildtime
+- Update to version 0.0.12 (commit 4116b41cdc89e186be7cb8b24a9b6022af95d742):
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * fix(bluetooth): lift rfkill soft block when enabling a blocked adapter
+  * chore(flake): update flake.lock
+  * core/model: make diffUpdate handle reordering without duplicating rows
+  * chore(flake): update flake.lock
+  * fix(pipewire): avoid crash on device disconnect in default tracker
+  * chore(ci/nix): port fixes from noctalia-shell
+  * chore(flake): update flake.lock
+  * fix(pipewire): use QPointer to prevent use-after-free on node removal
+  * chore(flake): update flake.lock
+
+-------------------------------------------------------------------
 Fri Apr 17 17:02:55 UTC 2026 - Alessio Biancalana <alessio.biancalana@suse.com>
 
 - Update to version 0.0.12:
