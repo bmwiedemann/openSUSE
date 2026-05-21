@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 13 20:39:13 UTC 2026 - Parker Gibson <pgibson@sdf.org>
+
+- Improve %prep LDAP regex to preserve subdirectories (e.g., ope-
+  nbsd-compat/) and handle optional [ab]/ prefixes.
+
+-------------------------------------------------------------------
 Mon May 11 18:45:43 UTC 2026 - Hans Petter Jansson <hpj@suse.com>
 
 - Update openssh-7.7p1-fips.patch (bsc#1264787): Add the rijndael

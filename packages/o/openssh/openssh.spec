@@ -376,10 +376,10 @@ cp %{SOURCE3} %{SOURCE4} %{SOURCE11} .
 
 %autopatch -p1
 
-# set libexec dir in the LDAP patch
+# set libexec dir in the LDAP patch (Must not be a "flat" patch)
 sed -i.libexec 's,@LIBEXECDIR@,%{_libexecdir}/ssh,' \
     $( grep -Rl @LIBEXECDIR@ \
-        $( grep "^+++" %{PATCH31} | sed -r 's@^.+/([^/\t ]+).*$@\1@' )
+        $( grep "^+++" %{PATCH31} | sed -r 's@^\+{3}\s*([ab]/|[^/]+/)?([^\t ]+).*@\2@' )
     )
 
 %build
