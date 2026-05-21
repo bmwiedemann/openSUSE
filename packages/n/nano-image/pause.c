@@ -2,19 +2,12 @@
 // SPDX-FileCopyrightText: (c) 2026 SUSE LLC
 
 #include <sys/syscall.h>
-#ifdef __aarch64__
-#include <signal.h>
-#endif
 #include <unistd.h>
-#ifdef __aarch64__
-sigset_t mask;
-#endif
 
 void _start() {
-#ifdef __aarch64__
-    sigemptyset(&mask);
-    syscall(SYS_rt_sigsuspend, &mask, 8);
-#else
+#ifdef SYS_pause
     syscall(SYS_pause);
+#else
+    syscall(SYS_ppoll, NULL, 0, NULL, NULL);
 #endif
 }
