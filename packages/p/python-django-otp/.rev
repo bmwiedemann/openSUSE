@@ -47,4 +47,12 @@
   * #182: Correct missing Spanish translations</comment>
     <requestid>1333421</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>426696b09cbd88b3bcf125c859123e5a</srcmd5>
+    <version>1.7.0</version>
+    <time>1779380851</time>
+    <user>anag_factory</user>
+    <comment>- add doc/license</comment>
+    <requestid>1354269</requestid>
+  </revision>
 </revisionlist>

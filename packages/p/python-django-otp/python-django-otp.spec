@@ -69,6 +69,8 @@ interested in `django-two-factor-auth
 # no unit tests, just a test project which I didn't manage to launch
 
 %files %{python_files}
+%license LICENSE
+%doc README.rst CHANGES.rst
 %{python_sitelib}/django_otp
 %{python_sitelib}/django_otp-%{version}.dist-info
 
