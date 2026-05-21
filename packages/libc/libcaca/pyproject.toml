@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "caca"
+version = "0.99.beta20"
+authors = [
+    {name = "Alex Foulon", email = "alxf@lavabit.com"}
+]
+description = "Python bindings for libcaca - Colour ASCII-Art library"
+readme = "README"
+requires-python = ">=3.6"
+license = "WTFPL"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://libcaca.zoy.org/"
+
+[tool.setuptools]
+packages = ["caca"]
+package-dir = {caca = "caca"}

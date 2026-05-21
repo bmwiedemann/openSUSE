@@ -1,8 +1,12 @@
-Index: libcaca-da28e9684ef445ac8d42745644336b8a75c01855/src/img2txt.c
+---
+ src/img2txt.c |   10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+Index: libcaca-0.99.beta20+git.1776622070.7c8e333/src/img2txt.c
 ===================================================================
---- libcaca-da28e9684ef445ac8d42745644336b8a75c01855.orig/src/img2txt.c
-+++ libcaca-da28e9684ef445ac8d42745644336b8a75c01855/src/img2txt.c
-@@ -177,7 +177,13 @@ int main(int argc, char **argv)
+--- libcaca-0.99.beta20+git.1776622070.7c8e333.orig/src/img2txt.c	2026-05-16 00:21:08.412048470 +0200
++++ libcaca-0.99.beta20+git.1776622070.7c8e333/src/img2txt.c	2026-05-16 00:21:13.547761159 +0200
+@@ -189,7 +189,13 @@
      }
  
      /* Assume a 6×10 font */
@@ -17,8 +21,8 @@ Index: libcaca-da28e9684ef445ac8d42745644336b8a75c01855/src/img2txt.c
      {
          cols = 60;
          lines = cols * i->h * font_width / i->w / font_height;
-@@ -214,7 +220,7 @@ int main(int argc, char **argv)
-     export = caca_export_canvas_to_memory(cv, format?format:"ansi", &len);
+@@ -226,7 +232,7 @@
+     export = caca_export_canvas_to_memory(cv, format, &len);
      if(!export)
      {
 -        fprintf(stderr, "%s: Can't export to format '%s'\n", argv[0], format);

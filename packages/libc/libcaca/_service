@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/cacalabs/libcaca.git</param>
+    <param name="versionprefix">0.99.beta20+git</param>
+    <param name="revision">main</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">mcepl@cepl.eu</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>

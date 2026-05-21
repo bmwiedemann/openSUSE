@@ -1,7 +1,7 @@
 #
 # spec file for package libcaca
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,17 @@
 
 
 Name:           libcaca
-Version:        0.99.beta20
+Version:        0.99.beta20+git.1776622070.7c8e333
 Release:        0
 Summary:        Library for Colour ASCII Art, text mode graphics
 License:        WTFPL
 Group:          Development/Languages/C and C++
 URL:            http://caca.zoy.org
-Source0:        https://github.com/cacalabs/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+# Source0:        https://github.com/cacalabs/%%{name}/releases/download/v%%{version}/%%{name}-%%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+# bugno mcepl@suse.com
+Source2:        pyproject.toml
 Patch0:         %{name}-X11_test.patch
 Patch1:         %{name}-ruby_am_cflags.patch
 Patch2:         %{name}-ruby_vendor_install.patch
@@ -37,6 +40,9 @@ Patch8:         bsc1184751-add-space-for-NUL-byte.patch
 Patch9:         bsc1197028-correctly-handle-zero-width-or-height-images.patch
 Patch10:        %{name}-autoconf-2.69.patch
 Patch11:        %{name}-0.99.beta20-gcc14.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -45,7 +51,6 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
 BuildRequires:  ruby-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
@@ -53,6 +58,8 @@ BuildRequires:  pkgconfig(imlib2)
 BuildRequires:  pkgconfig(slang)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 libcaca is the Colour AsCii Art library. It provides high level
@@ -82,13 +89,13 @@ Requires:       %{name}0-plugins = %{version}
 This package contains the header files and static libraries needed to
 compile applications or shared objects that use libcaca.
 
-%package -n python3-caca
+%package -n python-caca
 Summary:        Python3 support for %{name}
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
-%description -n python3-caca
+%description -n python-caca
 This package contains all that is needed to use libcaca from python3.
 
 %package -n libcaca0-plugins
@@ -131,11 +138,16 @@ drawing, triangle filling and sprite blitting.
 
 %prep
 %autosetup -p1
+
+cp %{SOURCE2} python/
+
 RUBY="ruby-`echo %{rb_ver} | sed 's|\.[^\.]*$||'`"
 find . -type f -exec sed -i "s|ruby-1.9|$RUBY|" \{\} \;
 pushd python
 #Change python script headers to python3
 for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
+# Remove setup.py as we use pyproject.toml
+rm -f setup.py
 popd
 
 %build
@@ -155,15 +167,23 @@ export CXXFLAGS="$CXXFLAGS %{optflags}"
     --enable-conio=no \
     --enable-plugins \
     --enable-java=no \
-    --enable-python
+    --enable-python=no
 %make_build
+
+pushd python
+%pyproject_wheel
+popd
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
+pushd python
+%pyproject_install
+popd
+
 %fdupes -s %{buildroot}%{_mandir}/
-%fdupes -s %{buildroot}%{python3_sitelib}
+%fdupes -s %{buildroot}%{_prefix}/lib/python*
 
 %post -n libcaca0 -p /sbin/ldconfig
 %postun -n libcaca0 -p /sbin/ldconfig
@@ -191,8 +211,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{rb_vendorarch}/*
 %{rb_vendorlib}/caca.rb
 
-%files -n python3-caca
-%{python3_sitelib}/*
+%files %{python_files caca}
+%{python_sitelib}/caca
+%{python_sitelib}/caca-*.dist-info
 
 %files -n libcaca0-plugins
 %dir %{_libdir}/caca

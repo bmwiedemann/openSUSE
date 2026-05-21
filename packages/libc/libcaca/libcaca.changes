@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 15 22:18:02 UTC 2026 - mcepl@cepl.eu
+
+- Updated to version 0.99.beta20+git.1776622070.7c8e333:
+  * Switched to typed Ruby wrapping.
+  * Simplified caca_create_display call.
+  * Do not used _caca_alloc2d in the Ruby extension.
+  * Prevented Init_caca from being hidden.
+  * Reverted 156781dd67d024dc067010ef8640d0b91c5c3356.
+  * Switched from MiniTest to Minitest.
+  * Prevented undefined behaviour in overflow check (CVE-2026-42046 bsc1264984).
+  * Fixed a crash on 0 sized font in img2txt.
+  * Fixed an error message in img2txt.
+  * Fixed handling of zero sized image in img2txt.
+- Rewrited the SPEC file to correctly generate Python packages in
+  all available versions.
+
+-------------------------------------------------------------------
 Thu Feb 27 10:09:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pkgconfig(ftgl) BuildRequires: ftgl is unmaintained and

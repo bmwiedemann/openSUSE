@@ -1,60 +1,153 @@
 index 5dc66ab..826d4d8 100644
---- a/ruby/caca-canvas.c
-+++ b/ruby/caca-canvas.c
-@@ -16,6 +16,7 @@
+---
+ configure.ac        |    4 ++--
+ ruby/Makefile.am    |    2 +-
+ ruby/caca-canvas.c  |    1 +
+ ruby/caca-display.c |    3 ++-
+ ruby/caca-dither.c  |    3 ++-
+ ruby/caca-event.c   |    1 +
+ ruby/caca-event.h   |    1 -
+ ruby/caca-font.c    |    3 ++-
+ ruby/caca.c         |    2 ++
+ ruby/common.h       |    2 +-
+ 10 files changed, 14 insertions(+), 8 deletions(-)
+
+Index: libcaca-0.99.beta20+git.1776622070.7c8e333/configure.ac
+===================================================================
+--- libcaca-0.99.beta20+git.1776622070.7c8e333.orig/configure.ac	2026-05-16 01:08:49.212054665 +0200
++++ libcaca-0.99.beta20+git.1776622070.7c8e333/configure.ac	2026-05-16 01:08:49.224645534 +0200
+@@ -391,8 +391,8 @@
+ # Optimizations
+ CFLAGS="${CFLAGS} -g -O2 -fno-strength-reduce -fomit-frame-pointer"
+ # Code qui fait des warnings == code de porc == deux baffes dans ta gueule
+-CFLAGS="${CFLAGS} -Wall -Wpointer-arith -Wcast-align -Wcast-qual -Wstrict-prototypes -Wshadow -Waggregate-return -Wmissing-prototypes -Wnested-externs -Wsign-compare"
+-CXXFLAGS="${CXXFLAGS} -Wall -Wpointer-arith -Wcast-align -Wcast-qual -Wshadow -Wsign-compare"
++CFLAGS="${CFLAGS} -Wall -Wpointer-arith -Wcast-align -Wstrict-prototypes -Wshadow -Waggregate-return -Wmissing-prototypes -Wnested-externs -Wsign-compare"
++CXXFLAGS="${CXXFLAGS} -Wall -Wpointer-arith -Wcast-align -Wshadow -Wsign-compare"
+ 
+ dnl Visibility annotations...
+ saved_CFLAGS="$CFLAGS"
+Index: libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/Makefile.am
+===================================================================
+--- libcaca-0.99.beta20+git.1776622070.7c8e333.orig/ruby/Makefile.am	2026-05-16 01:08:49.108576641 +0200
++++ libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/Makefile.am	2026-05-16 01:08:49.225012435 +0200
+@@ -12,7 +12,7 @@
+ endif
+ endif
+ 
+-AM_CFLAGS = -Wno-strict-prototypes -Wno-missing-prototypes
++AM_CFLAGS = -Wno-strict-prototypes -Wno-missing-prototypes -Wno-cast-qual
+ 
+ caca_la_CPPFLAGS = -I$(top_srcdir)/caca -I../caca $(RUBY_CFLAGS)
+ caca_la_SOURCES = caca.c \
+Index: libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca-canvas.c
+===================================================================
+--- libcaca-0.99.beta20+git.1776622070.7c8e333.orig/ruby/caca-canvas.c	2026-05-16 01:08:45.314658272 +0200
++++ libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca-canvas.c	2026-05-16 01:08:49.225294257 +0200
+@@ -14,6 +14,7 @@
+ #include <ruby.h>
+ #include <caca.h>
  #include <errno.h>
++#include "caca-canvas.h"
  #include "caca-dither.h"
  #include "caca-font.h"
-+#include "caca_internals.h"
+ #include "caca_internals.h"
+Index: libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca-display.c
+===================================================================
+--- libcaca-0.99.beta20+git.1776622070.7c8e333.orig/ruby/caca-display.c	2026-05-16 01:08:45.318982906 +0200
++++ libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca-display.c	2026-05-16 01:08:49.225491418 +0200
+@@ -13,12 +13,13 @@
+ #include <caca.h>
+ #include <errno.h>
+ #include "caca-event.h"
++#include "caca-display.h"
+ #include "caca-canvas.h"
  #include "common.h"
  
- VALUE cCanvas;
-@@ -143,7 +143,7 @@ static VALUE put_str(VALUE self, VALUE x
-     return self;
- }
+ VALUE cDisplay;
  
--static VALUE get_attr(VALUE self, VALUE x, VALUE y)
-+static VALUE get_attr(VALUE self, VALUE x, VALUE y, VALUE)
+-void display_free(void *display)
++static void display_free(void *display)
  {
-     unsigned long int ch;
-     ch = caca_get_attr(_SELF, NUM2INT(x), NUM2INT(y));
-@@ -454,7 +454,7 @@ static VALUE fill_triangle(VALUE self, V
-     return self;
+     caca_free_display((caca_display_t *)display);
  }
- 
--static VALUE fill_triangle_textured(VALUE self, VALUE coords, VALUE texture, VALUE uv)
-+static VALUE fill_triangle_textured(VALUE self, VALUE coords, VALUE texture, VALUE uv, VALUE)
- {
-     caca_canvas_t *ctexture;
-     int i, l;
-index ac29daf..36020a9 100644
---- a/ruby/caca-display.c
-+++ b/ruby/caca-display.c
-@@ -226,7 +226,7 @@ static VALUE get_event(VALUE self, VALUE event_mask, VALUE timeout)
-     return e;
- }
- 
--static VALUE driver_list(void)
-+static VALUE driver_list(VALUE)
- {
-     VALUE ary;
-     char const* const* list;
-index 705f928..c5f5d27 100644
---- a/ruby/caca-font.c
-+++ b/ruby/caca-font.c
-@@ -41,7 +41,7 @@ static VALUE font_initialize(VALUE self, VALUE name)
-     return self;
- }
- 
--static VALUE font_list(void)
-+static VALUE font_list(VALUE)
- {
-     VALUE ary;
-     char const* const* list;
-Index: libcaca-0.99.beta20/ruby/common.h
+Index: libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca-dither.c
 ===================================================================
---- libcaca-0.99.beta20.orig/ruby/common.h
-+++ libcaca-0.99.beta20/ruby/common.h
+--- libcaca-0.99.beta20+git.1776622070.7c8e333.orig/ruby/caca-dither.c	2026-05-16 01:08:45.323013194 +0200
++++ libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca-dither.c	2026-05-16 01:08:49.225670125 +0200
+@@ -12,11 +12,12 @@
+ #include <ruby.h>
+ #include <caca.h>
+ #include <errno.h>
++#include "caca-dither.h"
+ #include "common.h"
+ 
+ VALUE cDither;
+ 
+-void dither_free(void *dither)
++static void dither_free(void *dither)
+ {
+     caca_free_dither((caca_dither_t *)dither);
+ }
+Index: libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca-event.c
+===================================================================
+--- libcaca-0.99.beta20+git.1776622070.7c8e333.orig/ruby/caca-event.c	2026-05-16 01:08:45.327343468 +0200
++++ libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca-event.c	2026-05-16 01:08:49.225823434 +0200
+@@ -13,6 +13,7 @@
+ #include <ruby.h>
+ #include <caca.h>
+ #include <errno.h>
++#include "caca-event.h"
+ #include "common.h"
+ 
+ VALUE cEvent;
+Index: libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca-event.h
+===================================================================
+--- libcaca-0.99.beta20+git.1776622070.7c8e333.orig/ruby/caca-event.h	2026-05-16 01:08:45.329576428 +0200
++++ libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca-event.h	2026-05-16 01:09:32.532902321 +0200
+@@ -18,7 +18,6 @@
+ extern VALUE cEvent;
+ extern VALUE cEventKeyPress;
+ extern VALUE cEventKeyRelease;
+-extern VALUE cEventMouse;
+ extern VALUE cEventMousePress;
+ extern VALUE cEventMouseRelease;
+ extern VALUE cEventMouseMotion;
+Index: libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca-font.c
+===================================================================
+--- libcaca-0.99.beta20+git.1776622070.7c8e333.orig/ruby/caca-font.c	2026-05-16 01:08:45.331684853 +0200
++++ libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca-font.c	2026-05-16 01:08:49.225967386 +0200
+@@ -12,11 +12,12 @@
+ #include <ruby.h>
+ #include <caca.h>
+ #include <errno.h>
++#include "caca-font.h"
+ #include "common.h"
+ 
+ VALUE cFont;
+ 
+-void font_free(void *font)
++static void font_free(void *font)
+ {
+     caca_free_font((caca_font_t *)font);
+ }
+Index: libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca.c
+===================================================================
+--- libcaca-0.99.beta20+git.1776622070.7c8e333.orig/ruby/caca.c	2026-05-16 01:08:45.335244024 +0200
++++ libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/caca.c	2026-05-16 01:08:49.226118891 +0200
+@@ -24,6 +24,8 @@
+     return rb_str_new2(caca_get_version());
+ }
+ 
++void Init_caca(void);
++
+ #if defined CACA_ENABLE_VISIBILITY
+ extern __attribute__((visibility("default")))
+ #endif
+Index: libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/common.h
+===================================================================
+--- libcaca-0.99.beta20+git.1776622070.7c8e333.orig/ruby/common.h	2026-05-16 01:08:45.337209640 +0200
++++ libcaca-0.99.beta20+git.1776622070.7c8e333/ruby/common.h	2026-05-16 01:08:49.226267502 +0200
 @@ -16,7 +16,7 @@
  #define _SELF  (DATA_PTR(self))
  
