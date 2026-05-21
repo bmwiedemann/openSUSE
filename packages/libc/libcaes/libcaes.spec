@@ -1,7 +1,7 @@
 #
 # spec file for package libcaes
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define lname	libcaes1
 Name:           libcaes
-Version:        20251121
+Version:        20260520
 Release:        0
 Summary:        Library for AES encryption
 License:        LGPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcerror) >= 20260513
 BuildRequires:  pkgconfig(openssl) >= 1.0
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
