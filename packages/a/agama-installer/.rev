@@ -570,4 +570,12 @@
  - Fixed medium check (bsc#1262311)</comment>
     <requestid>1353023</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>833116b57a40a8355b8c957df3ffa841</srcmd5>
+    <version>21.0.0</version>
+    <time>1779380752</time>
+    <user>anag_factory</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1353701</requestid>
+  </revision>
 </revisionlist>
