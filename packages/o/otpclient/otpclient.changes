@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu May 21 07:55:45 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.0.5:
+  * Welcome dialog Back/Next/page-indicator row got pushed below the
+    visible area when an AdwStatusPage's natural height exceeded the
+    dialog's content area (#441). The nav row lived inside the same
+    GtkBox as the stack; now pinned via AdwToolbarView's bottom bar
+    so it stays visible while the status page's internal scroll
+    handles long descriptions. Dialog also bumped from 500×420 to
+    560×560.
+  * Keyboard focus did not land on the token list after unlock
+    (#445). 5.x was leaving focus on whatever widget the stack last
+    rendered, so Up/Down/Enter required a mouse click into the list
+    first. Restored the 4.x default of focusing the token list after
+    unlock, and extended the same idea to the empty and no-database
+    pages so the obvious next action (add the first token / create
+    the first database) is one keystroke away. Focus only moves on
+    page transitions, so search-bar typing and in-page item changes
+    don't get stolen.
+  * Per-launch loop when the registered Secret Service is unavailable
+    (#446). On Kubuntu/KDE Plasma with KWallet disabled (but still
+    owning the org.freedesktop.secrets D-Bus name), libsecret has no
+    way to fall back to gnome-keyring — that has to be configured at
+    the session layer. The previous behavior looped: every launch did
+    a failing lookup, prompted for the password, then a failing store
+    fired a notification. Now the "Use Secret Service" toggle pre-
+    flights the keyring with a sync store/lookup/verify/clear round-
+    trip when you enable it; if the round-trip fails the switch
+    reverts and you get a dialog with the libsecret error. If the
+    keyring breaks after the setting was already enabled, the first
+    failed lookup or store flips the setting OFF, surfaces one
+    notification, and falls through to the password dialog so you can
+    still unlock. CLI and search-provider also fall through
+    gracefully without mutating GSettings (avoids races with the GUI
+    session).
+  * Lock bypass via unlock dialog dismissal (#447). The token list
+    was still rendered and on_otp_selection_changed was unguarded, so
+    a click would copy the OTP; the right-click "Show QR" action also
+    remained enabled and would render the secret. Defense in depth:
+    password dialog set non-dismissable for DECRYPT, new locked page
+    in content_stack hides the token list while locked,
+    lock_app_lock() wipes cached OTP values via
+    otpclient_window_clear_displayed_otps(), set_db_actions_enabled()
+    expanded from 5 to 18 actions gating every token-touching path
+    including show-qr. Lock guards added in on_otp_selection_changed,
+    on_drag_prepare, and on_token_right_click. A closed-signal
+    handler re-presents the dialog if it ever slips closed while
+    still locked.
+
+-------------------------------------------------------------------
 Fri May 15 12:57:29 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.0.3:
