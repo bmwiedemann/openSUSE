@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certifi
-Version:        2026.2.25
+Version:        2026.4.22
 Release:        0
 Summary:        Python package for providing Mozilla's CA Bundle
 License:        MPL-2.0
@@ -38,6 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
 Requires:       ca-certificates-mozilla
+Requires:       openssl
 BuildArch:      noarch
 %python_subpackages
 

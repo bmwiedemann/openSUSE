@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 20 11:39:52 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing BR openssl for `/etc/ssl/ca-bundle.pem`.
+
+-------------------------------------------------------------------
 Tue Mar  3 14:12:07 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2026.2.25

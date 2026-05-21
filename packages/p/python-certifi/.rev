@@ -427,4 +427,12 @@
     <comment></comment>
     <requestid>1336295</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>21e5f467d404caef82da4bdf27df6ccf</srcmd5>
+    <version>2026.4.22</version>
+    <time>1779380766</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BR openssl for `/etc/ssl/ca-bundle.pem`.</comment>
+    <requestid>1354228</requestid>
+  </revision>
 </revisionlist>

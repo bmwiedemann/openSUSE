@@ -1,8 +1,12 @@
-Index: certifi-2025.6.15/certifi/core.py
+---
+ certifi/core.py |   80 ++++++--------------------------------------------------
+ 1 file changed, 9 insertions(+), 71 deletions(-)
+
+Index: certifi-2026.4.22/certifi/core.py
 ===================================================================
---- certifi-2025.6.15.orig/certifi/core.py
-+++ certifi-2025.6.15/certifi/core.py
-@@ -3,81 +3,19 @@ certifi.py
+--- certifi-2026.4.22.orig/certifi/core.py	2026-04-22 13:25:36.000000000 +0200
++++ certifi-2026.4.22/certifi/core.py	2026-05-20 13:30:31.148536139 +0200
+@@ -3,81 +3,19 @@
  ~~~~~~~~~~
  
  This module returns the installation location of cacert.pem or its contents.
