@@ -4289,6 +4289,7 @@ Requires:       perl(LWP::Simple)
 Requires:       perl(List::AllUtils)
 Requires:       perl(List::MoreUtils)
 Requires:       perl(Log::Log4perl)
+Requires:       perl(Parse::RecDescent)
 Requires:       perl(Regexp::Common)
 Requires:       perl(Sort::Key)
 Requires:       perl(Text::BibTeX) >= 0.88

@@ -1378,4 +1378,12 @@
   well ... here to use -std=g++17 (boo#1262013)</comment>
     <requestid>1347091</requestid>
   </revision>
+  <revision rev="116" vrev="119">
+    <srcmd5>7c7f2abe0169a663ad7cbb86b7ea4fb6</srcmd5>
+    <version>unknown</version>
+    <time>1779380675</time>
+    <user>anag_factory</user>
+    <comment>- Add perl(Parse::RecDescent) to perl-biber requirements (boo#1265577)</comment>
+    <requestid>1354018</requestid>
+  </revision>
 </revisionlist>

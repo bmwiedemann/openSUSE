@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 19 12:29:21 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add perl(Parse::RecDescent) to perl-biber requirements (boo#1265577) 
+
+-------------------------------------------------------------------
 Wed Apr 15 07:54:52 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patch source-tl-r78399.dif
