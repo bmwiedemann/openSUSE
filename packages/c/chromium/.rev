@@ -6438,4 +6438,12 @@ Chromium 148.0.7778.96 (earyly stable release 2026-04-29)</comment>
     <comment>add CVEs for 148.0.7778.167 (boo#1265159) - changelog change only</comment>
     <requestid>1353272</requestid>
   </revision>
+  <revision rev="520" vrev="1">
+    <srcmd5>1b0526e7b179b93e45fbe60324b46046</srcmd5>
+    <version>148.0.7778.178</version>
+    <time>1779380769</time>
+    <user>anag_factory</user>
+    <comment>Chromium 148.0.7778.178 (boo#1265848)</comment>
+    <requestid>1354293</requestid>
+  </revision>
 </revisionlist>

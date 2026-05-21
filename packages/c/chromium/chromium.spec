@@ -132,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        148.0.7778.167
+Version:        148.0.7778.178
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -153,6 +153,7 @@ Source104:      chromium-symbolic.svg
 Source105:      INSTALL.sh
 #
 Source106:      chrome-wrapper
+Source107:      chromium.conf
 # global patches
 Patch0:         chromium-libusb_interrupt_event_handler.patch
 # PATCH-FIX-OPENSUSE Make the 1-click-install ymp file always download [bnc#836059]
@@ -1266,6 +1267,8 @@ ln -s %{_libdir}/browser-plugins %{buildroot}%{_libdir}/chromium/plugins
 # Install the master_preferences file
 mkdir -p %{buildroot}%{_sysconfdir}/chromium
 install -m 0644 %{SOURCE30} %{buildroot}%{_sysconfdir}/chromium
+# install system wide config
+install -m 0644 %{SOURCE107} %{buildroot}%{_sysconfdir}/chromium/chromium.conf
 # Compat link
 ln -s %{_bindir}/chromium-browser %{buildroot}%{_bindir}/chromium
 # Policy dirs
@@ -1296,6 +1299,7 @@ ccache --show-stats
 %dir %{_sysconfdir}/chromium/policies/recommended
 %dir %{_sysconfdir}/chromium/native-messaging-hosts
 %config %{_sysconfdir}/chromium/master_preferences
+%config(noreplace)  %{_sysconfdir}/chromium/chromium.conf
 %{_libdir}/chromium
 %{_datadir}/applications/*.desktop
 %{_datadir}/metainfo/chromium-browser.appdata.xml
