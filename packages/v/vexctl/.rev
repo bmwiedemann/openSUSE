@@ -215,4 +215,19 @@ VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, so
   * Bump the all group with 2 updates (forwarded request 1349660 from jfkw)</comment>
     <requestid>1349661</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>50612b510f2d9e61bfe15f20e923adbd</srcmd5>
+    <version>0.4.1+git147.b7e6ef0</version>
+    <time>1779380896</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.1+git147.b7e6ef0:
+  * build(deps): Bump the all group across 1 directory with 2 updates
+  * build(deps): Bump goreleaser/goreleaser-action in the all group
+  * Bump sigstore/cosign-installer from 4.1.1 to 4.1.2 in the all group
+  * Bump chainguard-dev/actions from 1.6.17 to 1.6.19 in the all group
+  * Bump chainguard-dev/actions from 1.6.16 to 1.6.17 in the all group
+  * Bump github.com/package-url/packageurl-go in the all group
+  * Bump the all group with 2 updates (forwarded request 1354237 from jfkw)</comment>
+    <requestid>1354340</requestid>
+  </revision>
 </revisionlist>
