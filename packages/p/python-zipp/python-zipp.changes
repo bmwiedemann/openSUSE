@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 19 22:07:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * Path.iterdir now raises NotADirectoryError (formerly
+    ValueError) when call on something that's not a directory.
+  * Drop workaround for stacklevel bug on older PyPy releases.
+
+-------------------------------------------------------------------
 Tue Apr 14 21:58:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.23.1:

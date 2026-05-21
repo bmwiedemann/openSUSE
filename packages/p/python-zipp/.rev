@@ -305,4 +305,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1348652</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e8bd7fdbb4e9b82172220c739a684b77</srcmd5>
+    <version>4.1.0</version>
+    <time>1779380736</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.1.0:
+  * Path.iterdir now raises NotADirectoryError (formerly
+    ValueError) when call on something that's not a directory.
+  * Drop workaround for stacklevel bug on older PyPy releases.</comment>
+    <requestid>1354128</requestid>
+  </revision>
 </revisionlist>
