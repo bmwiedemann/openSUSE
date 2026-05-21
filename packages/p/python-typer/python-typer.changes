@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 19 21:10:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.1:
+  * Add Typer Library Skill for Agents.
+- update to 0.25.0:
+  * Don't truncate code lines in traceback when formatted with
+    Rich.
+
+-------------------------------------------------------------------
 Sat Apr 25 20:45:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.24.2:

@@ -552,4 +552,16 @@
   * Clean up documentation in `install.md` file. PR #1606 by</comment>
     <requestid>1349285</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e139c506cffe974bfe9b399d58f5c403</srcmd5>
+    <version>0.25.1</version>
+    <time>1779380730</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.25.1:
+  * Add Typer Library Skill for Agents.
+- update to 0.25.0:
+  * Don't truncate code lines in traceback when formatted with
+    Rich.</comment>
+    <requestid>1354105</requestid>
+  </revision>
 </revisionlist>

@@ -25,7 +25,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-typer
-Version:        0.24.2
+Version:        0.25.1
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
