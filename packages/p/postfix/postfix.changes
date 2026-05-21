@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 17 18:49:21 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.11.3
+  * Bitrot: builds with musl libc broke, because they were using an
+    obsolete NO_SNPRINTF code path that had not been updated for Claude
+    Code findings.
+  * Two fixes for a signed integer overshift condition (a left shift into
+    the sign bit). This "works" on contemporary CPUs, but may break in
+    the future. One reported by Kamil Frankowicz, and one by Robert Sayre.
+  * Viktor Dukhovni fixed an 'uninitialized value' error in the
+    'collate.pl' script.
+  * Test code fixes by Viktor Dukhovni for a deprecation warning with
+    OpenSSL 4.0, and for a race condition that caused a test script
+    to fail.
+
+-------------------------------------------------------------------
 Fri May  8 16:32:55 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - AUDIT-0: postfix: move permissions from /etc to /usr/share/permissions

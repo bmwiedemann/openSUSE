@@ -2756,4 +2756,12 @@ successfully tested on Tumbleweed x86_64</comment>
   (bsc#1264563) Apply proposed changes.</comment>
     <requestid>1352599</requestid>
   </revision>
+  <revision rev="273" vrev="1">
+    <srcmd5>427827ede7565f3943de60204b3e17c9</srcmd5>
+    <version>3.11.3</version>
+    <time>1779380691</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1354034</requestid>
+  </revision>
 </revisionlist>

@@ -49,7 +49,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix
-Version:        3.11.2
+Version:        3.11.3
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0
