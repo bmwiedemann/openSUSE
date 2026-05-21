@@ -3,7 +3,7 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/pegasus-isi/pegasus.git</param>
     <param name="subdir">packages/pegasus-common</param>
-    <param name="revision">5.0.9</param>
+    <param name="revision">5.1.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="filename">pegasus-wms.common-gh</param>
   </service>

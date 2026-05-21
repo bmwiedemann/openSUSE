@@ -17,7 +17,7 @@
 
 
 Name:           python-pegasus-wms.common
-Version:        5.0.9
+Version:        5.1.2
 Release:        0
 Summary:        Pegasus Workflow Management System Python Commons
 License:        Apache-2.0
