@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Wed May 20 03:15:55 UTC 2026 - Glen Masgai <glen.masgai@gmail.com>
+
+- Update to version 3.26.0:
+  + CVE fixes:
+    * 3 High ranking (no numbers assigned yet)
+  + Bug and security fixes release
+  + Changes:
+    * cmake: Findyuv: Use correct pkgconfig name (#12666)
+    * Remove deallocator attribute from rfx_message_free (#12681)
+    * [winpr,utils] improve winpr/ntlm.h (#12677)
+    * rdpecam-v4l: stop the capture thread when streaming is cleared (#12690)
+    * fix(winpr,ncrypt): support PIV retired key slots for smartcard logon (#12684)
+    * [core,instance] fix deprecation guards (#12691)
+    * [ci,alt-arch] enable internal MD4, MD5 and RC4 (#12692)
+    * Add VideoToolbox H.264 support for ffmpeg (#12694)
+    * [client,common] add /args-from:file: syntax (#12697)
+    * [ci,freebsd] update freebsd builds (#12698, #12700, #12701, #12702)
+    * [client, android] UI modernization, SQLCipher and more (#12685, #12686, #12687, #12730,
+    * #12731, #12736, #12737, #12688)
+    * [cmake,deps] use alias target for sso-mib (#12706)
+    * [core,settings] add auto reconnect triggered flag (#12709)
+    * Force YUV420P when videotoolbox is used (#12711)
+    * Release cleanups (#12712)
+    * [gdi,gfx] fix bounds checks and proxy unit tests (#12713)
+    * Improved input checks (#12714)
+    * [winpr,utils] add unit tests for command line parser (#12716)
+    * Cmdline fixes (#12717)
+    * [codec,planar] fix bounds checks (#12718)
+    * [client,common] add freerdp_client_settings_parse_command_line_argume… (#12724)
+    * [winpr,sspi] clean up ntlm code (#12732)
+
+- Update to version 3.25.0:
+  + CVE fixes:
+    * CVE-2026-40254
+  + Bug and security fixes release:
+    * Experimental AV1 support has been added. This currently works only with FreeRDP based servers.
+    * Most notably there is now support for [MS-RDPEWA] (FIDO2 redirection)
+    * Android client received a (small) facelift
+    * Improved SDL3 client drawing performance
+    * Console output support for SDL3 (windows) and windows native client
+    * RDP proxy now supports NSCodec and RFX modes.
+    * RDP PRoxy now has smartcard emulation and SAM file support (via config file)
+    * Smartcard KSP support for NLA authentication
+  + Changes:
+    * [winpr,wlog] add WLog_SetGlobalPrefix (#12497)
+    * [channels,video] fix wrong cast (#12511)
+    * [codec,openh264] reject encoder ABI mismatch on runtime-loaded library (#12510)
+    * [client,sdl] create a copy of rdpPointer (#12512)
+    * [codec,video] properly pass intermediate format (#12518)
+    * [utils, signal] lazily initialize Windows CRITICAL_SECTION to match POSIX static mutex behavior (#12520)
+    * winpr: improve libunwind backtraces (#12530)
+    * [server,shadow] remember selected caps (#12528)
+    * Zero credential data before free in NLA and NTLM context (#12532)
+    * [server,proxy] ignore missing client in input channel (#12536)
+    * [server,proxy] ignore rdpdr messages (#12537)
+    * [winpr,sspi] improve kerberos logging (#12538)
+    * Codec fixes (#12542)
+    * [winpr,sspi] Fix context nullptr handling (#12543)
+    * Dev 3.24.3 dev0 (#12545)
+    * Fix memory leak in gdi_create_bitmap() on gdi_CreateBitmap failure (libfreerdp/gdi/graphics.c) (#12547)
+    * Fix memory leak in vgids_read_do_fkt() on Stream_New failure (libfreerdp/emu/scard/smartcard_virtual_gids.c) (#12548)
+    * Proxy config improve (#12549)
+    * Proxy config improve (#12550)
+    * [client,sdl] clamp cursor hotspot (#12553)
+    * RFC: Research/av1 codec extension (#12527)
+    * [winpr,kerberos] fix krb_log_context_encryption (#12555)
+    * [client,sdl] fix global init return check (#12558)
+    * Fix remote credential with windows11h2 (#12560)
+    * Proxy scard auth improvements (#12561)
+    * [winpr,sspi] guard krb5_get_etype_info (#12562)
+    * [utils,smartcard] fix STATUS_BUFFER_TOO_SMALL (#12564)
+    * [client,common] do not manipulate security settings for smartcard-logon (#12567)
+    * [channels,audin] fix regression for microphone (#12570)
+    * [client,sdl] add SDL_KMOD_MODE and SDL_KMOD_LEVEL5 (#12569)
+    * Fix unbound strlen on slotDescription (#12571)
+    * build: Update FindFFmpeg.cmake to support Apple frameworks with 'lib' prefix (#12565)
+    * [channels,rdpewa] add WebAuthn virtual channel support (#12572)
+    * [core] fix freerdp_get_nla_sspi_error always returning 0 on client (#12574)
+    * [ci] enable rdpewa channel (#12576)
+    * small refactoring (#12578)
+    * Rdpewa unify notifications (#12581)
+    * [client,sdl] fix crash when clicking 'cancel' on PIN popup (#12580)
+    * [channels,drive] refine bounds checks (#12584)
+    * fix: smartcard logon with ECC keys and minidriver-assigned container names (#12585)
+    * Various papercuts (#12583)
+    * fix: console output on Windows client (#12573)
+    * [winpr,crt] dump stack on aligned memory errors (#12588)
+    * [client,x11] keep scancode input for Ctrl/Alt/Super combinations in /kbd:unicode mode (#12590)
+    * [codec,progressive] fix underflow guard in progressive_rfx_quant_sub (#12592)
+    * fix: wfreerdp floatbar visibility (#12594)
+    * [winpr,json] return a copy from WINPR_JSON_Print* (#12595)
+    * [client,sdl] drop WITH_DEBUG_SDL_EVENTS (#12599)
+    * Ncrypt and asn1 cleanup (#12604)
+    * Video channel fix (#12593)
+    * [codec,h264] fix media foundation backend (#12606)
+    * fix(sdl): detect Hyprland and river in tryFallback() (#12608)
+    * Proxy stress fixes (#12597)
+    * Add new fuzzer tests (#12613)
+    * fix(sdl): use SDL_Renderer instead of software surfaces (#12607)
+    * fix(sdl): BFS neighbor walk pop/begin mismatch in addOrUpdateDisplay (#12614)
+    * fix(sdl): promote first monitor as primary when subset excludes primary (#12618)
+    * [ci,android] default to only aarch64 (#12622)
+    * Fix process exit code on non-pidfd platforms (macOS, BSD)#12534) (#12586)
+    * warning cleanups (#12626)
+    * fix: prevent PostQuitMessage in RemoteApp WM_DESTROY handler (#12629)
+    * [winpr,ntlm] fix message cleanup across the SSPI lifecycle (#12609)
+    * Code bug fixes (#12632)
+    * Oss fixes (#12633)
+    * [client,android] add an option to enable keeping screen on when connected (#12630)
+    * [client, android] Fix layout overlaps, migrate to AndroidX, and update UI components (#12628)
+    * Proxy config tests (#12636)
+    * Proxy config optional targethost (#12637)
+    * [client,sdl] set SDL_HINT_SCREENSAVER_INHIBIT_ACTIVITY_NAME (#12639)
+    * Nightly deb fix (#12640, #12641, #12649, #12650, #12642, #12643)
+    * [winpr,input] fix korean keyboard mapping (#12646)
+    * [client,sdl] set hints before SDL_Init (#12644)
+    * Sdl inhibit option (#12647)
+    * [client,X11] fix residual race in xf_clipboard_formats_free (#12648)
+    * (sdl3): Fix oversized window on HiDPI Wayland (#12635)
+    * [cache,bitmap] fix off-by-one in bitmap_cache_put bounds check (#12651)
+    * [winpr,sspi] free fields buffer immediately (#12654)
+    * [codec,dsp] fix fencepost error in dsp_ima_clamp_step (#12655)
+
+-------------------------------------------------------------------
 Tue Apr 14 20:41:44 UTC 2026 - Dennis Duda <seri@seri.tools>
 
 - Build with SDL3 instead of SDL2 on Tumbleweed
@@ -25,11 +149,11 @@ Wed Apr  1 04:21:42 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
     * CVE-2026-33977 (bsc#1261198)
     * CVE-2026-33983 (bsc#1261200)
     * CVE-2026-33984 (bsc#1261211)
-    * CVE-2026-33985 (bsc#1261217) 
-    * CVE-2026-33982 (bsc#1261222) 
-    * CVE-2026-33986 (bsc#1261223) 
-    * CVE-2026-33987 (bsc#1261226) 
-    * CVE-2026-33995 (bsc#1261227) 
+    * CVE-2026-33985 (bsc#1261217)
+    * CVE-2026-33982 (bsc#1261222)
+    * CVE-2026-33986 (bsc#1261223)
+    * CVE-2026-33987 (bsc#1261226)
+    * CVE-2026-33995 (bsc#1261227)
   + Bug and security fixes release
     * [channels,video] fix wrong cast (#12511)
     * [codec,openh264] reject encoder ABI mismatch on
@@ -632,7 +756,7 @@ Wed Oct 23 05:10:01 UTC 2024 - ecsos <ecsos@opensuse.org>
     speeding up builds
   * New API for client channels to run tasks on RDP thread
   * New extended transport layer API
-  * RDPECAM MJPEG support	
+  * RDPECAM MJPEG support
   * the first updates of timezone definitions from our automated ci
   Noteworthy changes:
   * Fix bugs in SSE4.1/AVX2 image copy (#10720)
@@ -673,14 +797,14 @@ Fri Aug 23 20:06:53 UTC 2024 - Michael Gorse <mgorse@suse.com>
 Fri Aug  9 05:05:59 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.7.0
-  * Support for FDK-AAC for sound and microphone redirection 
+  * Support for FDK-AAC for sound and microphone redirection
     (activate with -DWITH_FDK_AAC=ON build option)
     This allows enabling the AAC compression that do not ship faad2 and/or faac
   * Support keyboard layouts as JSON resources
     (activate with -DWITH_KEYBOARD_LAYOUT_FROM_FILE=ON build option,
     also requires JSON support)
     This allows editing keyboard layouts for existing releases should the need arise
-  * Support timezones as JSON resources 
+  * Support timezones as JSON resources
     (activate with -DWITH_TIMEZONE_FROM_FILE=ON -DWITH_TIMEZONE_COMPILED=OFF build options,
     also requires JSON support)
     Allows reading the mapping between IANA and windows timezones
@@ -923,7 +1047,7 @@ Fri Dec 15 11:02:39 UTC 2023 - Joan Torres <joan.torres@suse.com>
   * This is due to the wlfreerdp client being deprecated.
 
 - Cleanup specfile.
-  * Rely preferably on pkgconfig to pull devel packages instead of 
+  * Rely preferably on pkgconfig to pull devel packages instead of
     hardcoding them.
 
 -------------------------------------------------------------------
@@ -1004,7 +1128,7 @@ Wed Aug 30 16:48:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
   * Fix CVE-2023-39351 - boo#1214857
     Null Pointer Dereference leading DoS in RemoteFX
   * Fix CVE-2023-39352 - boo#1214858
-    Invalid offset validation leading to Out Of Bound Write 
+    Invalid offset validation leading to Out Of Bound Write
   * Fix CVE-2023-39353 - boo#1214859
     Missing offset validation leading to Out Of Bound Read
   * Fix CVE-2023-39354 - boo#1214860
@@ -1070,7 +1194,7 @@ Thu Feb 16 15:05:54 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 -------------------------------------------------------------------
 Fri Dec 16 12:11:10 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
-- Complement fix for -DBUILTIN_CHANNELS=OFF to fix freerdp-proxy 
+- Complement fix for -DBUILTIN_CHANNELS=OFF to fix freerdp-proxy
   accessing librdpgfx-client.so: freerdp-fix-rpath-settings.diff
   Fixes second part of bnc#1205595.
 
@@ -1170,7 +1294,7 @@ Tue Apr 26 06:02:24 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   * various NTLM fixes
   * WINPR_ASSERT to ease future backports
   * Fixed CVE-2022-24882 - boo#1198919
-    NTLM not properly check parameters 
+    NTLM not properly check parameters
   * Fixed CVE-2022-24883 - boo#1198921
     Fix authentication against invalid SAM files
 
@@ -1249,7 +1373,7 @@ Thu Oct 21 10:15:38 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
   Important security issues, boo#1191895:
   *  CVE-2021-41159: Improper client input validation for gateway connections allows to overwrite memory
   *  CVE-2021-41160: Improper region checks in all clients allow out of bound write to memory
- 
+
   Noteworthy changes:
   * Refactored RPC gateway parsing code
   * OpenSSL 3.0 compatibility fixes
@@ -1278,7 +1402,7 @@ Thu Oct  7 17:15:54 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 -------------------------------------------------------------------
 Wed Oct  6 10:43:11 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
-- Remove freerdp-fix-plugin-path.patch again, the problem was 
+- Remove freerdp-fix-plugin-path.patch again, the problem was
   introduced/fixed by cmake changes
 
 -------------------------------------------------------------------
@@ -1392,7 +1516,7 @@ Thu Feb 25 09:46:34 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Added freerdp-rpmlintrc to supress a false positive as gethostbyname() is
   a windows-function call not a unix one.
- 
+
 -------------------------------------------------------------------
 Mon Jul 20 14:22:07 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
@@ -1418,12 +1542,12 @@ Mon Jul 20 14:22:07 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Fri Jul 17 08:19:56 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
-- Drop BuildRequires of libavcodec for Leap/SLE (bsc#1174200) 
+- Drop BuildRequires of libavcodec for Leap/SLE (bsc#1174200)
 
 -------------------------------------------------------------------
 Thu Jul  2 06:57:31 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Added freerdp_Mask_CACHED_BRUSH_when_checking_brush_style.patch 
+- Added freerdp_Mask_CACHED_BRUSH_when_checking_brush_style.patch
   which fixed frequent crashes described in boo#1173605 and gh#FreeRDP/FreeRDP#6298
 
 -------------------------------------------------------------------
@@ -1567,7 +1691,7 @@ Sun Apr 12 06:06:44 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
     thanks to @kubistika
   * Smartcard received some refactoring. Missing functions were added and input
     validation was improved (gh#FreeRDP/FreeRDP#5884)
-  * A new option /cert that unifies all certificate related options (gh#FreeRDP/FreeRDP#5880)  
+  * A new option /cert that unifies all certificate related options (gh#FreeRDP/FreeRDP#5880)
     The old options (cert-ignore, cert-deny, cert-name, cert-tofu) are still
     available but marked as deprecated
   * Support for Remote Assistance Protocol Version 2 [MS-RA]

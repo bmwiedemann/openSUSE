@@ -1,7 +1,7 @@
 #
 # spec file for package freerdp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,14 +41,16 @@
 %define uwac_package %{uwac_version}-%{uwac_version}
 
 Name:           freerdp
-Version:        3.24.2
+Version:        3.26.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
 Group:          Productivity/Networking/Other
 URL:            https://www.freerdp.com/
-Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/FreeRDP-%{version}.tar.gz
-Source1:        freerdp-rpmlintrc
+Source0:        https://github.com/FreeRDP/FreeRDP/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/FreeRDP/FreeRDP/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
+Source3:        freerdp-rpmlintrc
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
@@ -259,7 +261,7 @@ Group:          System/Libraries
 This package contains the FreeRDP Server Proxy library files.
 
 %prep
-%autosetup -p1 -n FreeRDP-%{version}
+%autosetup
 
 %build
 if [ -z "$SOURCE_DATE_EPOCH" ]; then
