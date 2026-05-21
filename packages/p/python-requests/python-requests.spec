@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-requests%{psuffix}
-Version:        2.33.1
+Version:        2.34.2
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
@@ -34,18 +34,18 @@ URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fix-chardet-RequestsDependencyWarning.patch munix9@googlemail.com -- based on PR 7239
 Patch0:         fix-chardet-RequestsDependencyWarning.patch
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
 Requires:       python
-Requires:       python-certifi >= 2017.4.17
+Requires:       python-certifi >= 2023.5.7
 Requires:       python-charset-normalizer >= 2.0.0
 Requires:       python-idna >= 2.5
-Requires:       python-urllib3 >= 1.21.1
+Requires:       python-urllib3 >= 1.26
 BuildArch:      noarch
 %if 0%{?_no_weakdeps}
 Requires:       ca-certificates-mozilla
@@ -63,7 +63,7 @@ BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module PySocks >= 1.5.6}
 BuildRequires:  %{python_module charset-normalizer >= 2.0.0}
 BuildRequires:  %{python_module idna >= 2.5}
-BuildRequires:  %{python_module pytest-httpbin >= 0.0.7}
+BuildRequires:  %{python_module pytest-httpbin >= 2.1.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= %{version}}
@@ -119,7 +119,7 @@ touch Pipfile
 
 %if !%{with test}
 %files %{python_files}
-%license LICENSE
+%license LICENSE NOTICE
 %doc HISTORY.md README.md
 %{python_sitelib}/requests
 %{python_sitelib}/requests-%{version}.dist-info

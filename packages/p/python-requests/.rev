@@ -1036,4 +1036,41 @@
     (gh#psf/requests#7239)</comment>
     <requestid>1345517</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>3249bb0822fc5084b77235f3a0fda291</srcmd5>
+    <version>2.34.2</version>
+    <time>1779380727</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.34.2:
+  * Moved `headers` input type back to `Mapping` to avoid
+    invariance issues with `MutableMapping` and inferred dict types.
+    Users calling `Request.headers.update()` may need to narrow
+    typing in their code.
+  * Widened `json` input type from `dict` and `list` to `Mapping`
+  * and `Sequence`.
+  * Changed `headers` input type to MutableMapping and removed
+    `None` from `Request.headers` typing to improve handling for
+     users.
+  * `Response.reason` moved from `str | None` to `str` to improve
+    handling for users.
+  * Fixed a bug where some bodies with custom `__getattr__`
+    implementations weren't being properly detected as Iterables.
+  * Requests 2.34.0 introduces inline types, replacing those
+    provided by typeshed. Public API types should be fully
+    compatible with mypy, pyright, and ty. We believe types are
+    comprehensive but if you find issues, please report them to the
+    pinned tracking issue.
+  * Digest Auth hashing algorithms have added
+    `usedforsecurity=False` to clarify security considerations.
+  * Requests added support for Python 3.15 based on beta1.
+  * Requests added support for Python 3.14t.
+  * ``Response.history`` no longer contains a reference to
+    itself, preventing accidental looping when traversing the
+    history list.
+  * Requests no longer performs greedy matching on no_proxy
+    domains. The proxy_bypass implementation has been updated with
+    CPython's fix from bpo-39057.
+  * Requests no longer incorrectly strips duplicate leading</comment>
+    <requestid>1354099</requestid>
+  </revision>
 </revisionlist>
