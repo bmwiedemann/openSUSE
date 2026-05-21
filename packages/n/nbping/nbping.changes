@@ -1,3 +1,14 @@
+Thu May 21 12:10:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.0:
+  * feat(ui): implement layout module for improved UI structure.
+  * feat(ui/theme): introduce theming support for UI components.
+  * feat(view): add view management for UI navigation.
+  * style(ui): enhance UI aesthetics with rounded borders and
+    improved spacing.
+  * feat(ui): add p95 latency calculation and display in various
+    UI components.
+
 -------------------------------------------------------------------
 Sun Jan 25 15:28:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
