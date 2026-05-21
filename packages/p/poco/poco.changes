@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu May 21 13:43:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.15.3
+  * Bug fixes.
+  * expat CVE updates in bundled deps
+  * MongoDB 6.0/7.0/8.0 compatibility
+  * PostgreSQL URI connection strings
+  * Corrected %c date/time format specifier (breaking).
+- Update to version 1.15.2
+  * Security hardening and bug fixes.
+  * TLS 1.3 support for NetSSL_Win, building Crypto and NetSSL
+    with OPENSSL_NO_DEPRECATED, removal of deprecated non-EVP
+    OpenSSL code (breaking change)
+  * significant multipart parsing performance improvements,
+    Prometheus thread/CPU metrics
+  * Numerous bug fixes across networking, cryptography, and data
+    handling.
+- Update to version 1.15.1
+  * PropertyFileConfiguration now supports an !include directive
+    for composing configuration from multiple files, and preserves
+    the original file layout (comments, blank lines, key order)
+    when saving changes.
+  * ProcessRunner gained a PROCESS_KILL_TREE option for terminating
+    entire process trees on supported platforms.
+  * LoggingConfigurator can now create fully configured loggers at
+    runtime.
+- Update to version 1.15.0
+  * Major feature release with C++20 as the default standard
+  * comprehensive MongoDB replica set support, a new reactor-based
+    HTTP server implementation.
+  * ULID support.
+  * C++17 modernization of core classes.
+
+-------------------------------------------------------------------
 Sun Jul  6 15:51:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.14.2
