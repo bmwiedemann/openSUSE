@@ -134,6 +134,7 @@ CVS, and GNU arch.
 %package core
 Summary:        Core git tools
 Group:          Development/Tools/Version Control
+Requires:       /usr/bin/awk
 Requires:       /usr/bin/less
 Obsoletes:      git-remote-helpers < %{version}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300

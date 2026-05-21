@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 15 22:39:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add requires for awk as it is used by
+  /usr/share/bash-completion/completions/git
+
+-------------------------------------------------------------------
 Mon Apr 20 18:31:24 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.54.0:
