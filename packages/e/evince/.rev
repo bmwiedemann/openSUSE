@@ -1478,4 +1478,13 @@ New stable release</comment>
 - Migrate to xz compression and manual service run</comment>
     <requestid>1350042</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>3a933f06182e792346267819424dc976</srcmd5>
+    <version>48.2</version>
+    <time>1779380841</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.2:
+  + shell: Quote strings in arguments used when calling ev_spawn</comment>
+    <requestid>1354271</requestid>
+  </revision>
 </revisionlist>
