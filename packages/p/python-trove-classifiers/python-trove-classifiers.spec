@@ -33,7 +33,7 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-trove-classifiers%{?psuffix}
-Version:        2026.1.14.14
+Version:        2026.5.7.17
 Release:        0
 Summary:        Canonical source for classifiers on PyPI
 License:        Apache-2.0

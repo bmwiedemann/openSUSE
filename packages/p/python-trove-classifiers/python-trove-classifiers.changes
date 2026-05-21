@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 19 22:32:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 2026.5.7.17:
+  * "Framework :: Litestar"
+  * Python :: 3.16
+
+-------------------------------------------------------------------
 Wed Feb  4 11:46:41 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add pythons_for_pypi macro. This macro will help to build the python

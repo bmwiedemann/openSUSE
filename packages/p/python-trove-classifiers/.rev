@@ -220,4 +220,14 @@
   minimal stack for different python versions.</comment>
     <requestid>1330937</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>da54a40c2b0d08a77e5aff3f05947561</srcmd5>
+    <version>2026.5.7.17</version>
+    <time>1779380739</time>
+    <user>anag_factory</user>
+    <comment>- udpate to 2026.5.7.17:
+  * &quot;Framework :: Litestar&quot;
+  * Python :: 3.16</comment>
+    <requestid>1354136</requestid>
+  </revision>
 </revisionlist>
