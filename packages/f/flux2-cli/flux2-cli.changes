@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed May 20 12:22:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.8.8:
+  * Fixes:
+    - Add a configurable HTTP timeout for artifact fetching,
+      preventing fetches that could block indefinitely and stall
+      reconciliations (helm-controller)
+    - Fix unbounded memory growth caused by a Kubernetes client
+      transport retry wrapper accumulating on every reconcile
+      (helm-controller)
+    - Stop force-applying non-CRD objects placed under a chart's
+      crds/ directory (helm-controller)
+    - Fix the Helm test action failing to find releases with names
+      longer than 53 characters (helm-controller)
+    - Improve path handling in the source reconcilers
+      (source-controller)
+    - Support Helm semver build-metadata encoding in OCIRepository
+      tags (source-controller)
+  * Improvements:
+    - Update go-git to v5.19.1 which fixes CVE-2026-45571 and
+      CVE-2026-45570 (source-controller,
+      image-automation-controller)
+    - Move Helm back to upstream v4.2.0 (source-controller,
+      helm-controller)
+    - Add support for GCP sovereign cloud artifact registries
+      (source-controller, image-reflector-controller)
+    - Upgrade Kubernetes to 1.36.1 (source-controller,
+      helm-controller)
+    - Update fluxcd/pkg dependencies
+  * Components changelog
+    - helm-controller v1.5.5
+    - image-automation-controller v1.1.4
+    - image-reflector-controller v1.1.2
+    - source-controller v1.8.5
+  * CLI changelog
+    - Update toolkit components by @fluxcdbot in #5904
+
+-------------------------------------------------------------------
 Tue May 12 13:33:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.8.7:
