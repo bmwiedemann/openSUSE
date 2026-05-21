@@ -32,7 +32,7 @@
 %bcond_with systemd
 %endif
 Name:           cacti
-Version:        1.2.30+git306.82d5aef5
+Version:        1.2.30+git422.049d9187
 %global base_version %(echo %{version} | sed 's/+[^+]*//')
 %global next_base_version %(echo %{base_version} | awk -F. -v OFS=. '{$NF++; print}')
 Release:        0

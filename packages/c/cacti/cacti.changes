@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Thu May 14 15:10:25 UTC 2026 - obs@mtlfab.com
+
+- Update to version 1.2.30+git422.049d9187:
+  * fix(cli): repair dead PHP-binary dash-prefix guard in push_out_hosts.php (#7148)
+  * security: require POST for data_input.php?action=whitelist_update (#7149)
+  * fix(database): guard db_fetch_cell_return against missing column name (#7150)
+  * fix(poller-cache): reset loop-scoped $oid and $script_path between iterations (#7136)
+  * security(1.2.x): cacti_validate_sort_column allowlist and related sink hardening (#7072)
+  * fix: Minor wording missed in last pull (#7144)
+  * Data input push issues (#7143)
+  * fix: cacti_input_string_is_safe rejected quoted and digit-suffixed placeholders (#7130)
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * fix(poller-cache): four integrity bugs in lib/utility.php (#7134)
+  * Checkbox defaults and unsafe metachars (#7141)
+  * fix(test-infra): point Playwright harness plugin defaults at develop, not develop-1.2.x (#7140)
+  * Update translation files
+  * Translated using Weblate (Latvian)
+  * Update translation files
+  * Translated using Weblate (Latvian)
+  * fix: Worflow issues with push_out_hosts.php (#7120)
+  * fix(ci): proc_close exit code on PHP 8.0-8.2; add_device path (#7118)
+  * revert debug change (#7119)
+  * fix: dqselect change handler passes full prefix to dqUpdateDeps (#7117)
+  * security: fix cacti_input_string_is_safe() bypass and add cacti_exec() (GHSA-c4qp-j9r9-fq24) (#7112)
+  * revert: Restore rrdtool hack to compensate for missing CFs in RRDfiles (#7116)
+  * fix: Updating harnesses (#7115)
+  * fix: Restore functions removed in #7098 (#7114)
+  * fix(mailer): prevent null from_name reaching PHPMailer preg_replace() (#7113)
+  * security: harden CSP compliance changes and fix potential XSS in data attributes (#7100)
+  * security: audit and implement SafeSort helpers across missing endpoints (#7098)
+  * fix: Some more CSP Level 3 warnings (#7110)
+  * security: fix sort_column SQL injection in reports list (GHSA-72vr-jr4v-55vf) (#7111)
+  * security: fix stored XSS in CDEF/VDEF/GPRINT preset names (GHSA-v2mq-mxpw-55pf) (#7109)
+  * fix: Stop CSP Level 3 issues on forms (#7107)
+  * fix: One last round of CSP Level 3 fixes (#7106)
+  * feature: Update jstree to 3.3.17 for CSP Level 3 compliance (#7105)
+  * fix: Improve the performance around the internal plugin (#7104)
+  * Dispense with open redirects in link.php to remove any CWE exploit paths (#7103)
+  * fix: Minor Issues Identified by Copilot in Reports Pull Request (#7102)
+  * fix: Remove most of inline reports in Cacti (#7096)
+  * fix(auth): use cacti_cookie_session_set in cacti_auth_transition (#7093)
+  * test(csp): plugin e2e harness covers thold + monitor (#7081)
+  * fix: Auth issues with cookies (#7094)
+  * fix: Harness tests (#7092)
+  * fix: Reduce navigation nonces (#7087)
+  * security: CVE In tree rules interface (#7086)
+  * fix: Add nonces to script tags (#7085)
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * fix: Adjust placement and wording, update cacti.pot (#7079)
+  * security(csp): nonce mode behind config flag + 3-page pilot + tests (1.2.x) (#7071)
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * Update translation files
+  * feat(security): architectural security helpers — eliminate vulnerability classes at root (#7054)
+  * docs(changelog): add 12 CVE-2026 security entries resolved in 1.2.31 (#7059)
+
+-------------------------------------------------------------------
 Tue Apr 21 20:28:22 UTC 2026 - obs@mtlfab.com
 
 - Update to version 1.2.30+git306.82d5aef5:
