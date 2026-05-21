@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed May 20 19:16:21 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.1.2:
+  * OSDF transfers are now always delagated to HTCondor to manage
+    using HTCondor file IO, especially when turning on Bypass
+    Input File Staging. 
+  * Support for running workflows on HPC resources managed by Flux
+    resource manager.
+  * Modified Pegasus versioning scheme to use Semantic Versioning
+    Scheme v2 (gh#pegasus-isi/pegasus#2126)
+  * Support for Python 3.14
+  * avoid parsing sub workflows into memory when parsing the top
+    level workflow that includes them
+    (gh#pegasus-isi/pegasus#2148).
+  * pick user provided env script for PegasusLite from the site
+    where the job runs (gh#pegasus-isi/pegasus#2136).
+  * limit the number of pegasus-monitord launches in
+    pegasus-dagman (gh#pegasus-isi/pegasus#2134).
+  * enable condorio support for bosco/ssh style job submissions
+    for remote HPC clusters (gh#pegasus-isi/pegasus#2121).
+  * use job classad variables to shorten paths in
+    transfer_input_files key in the job submit directories
+    (gh#pegasus-isi/pegasus#2120).
+  * enforce maximum document parsing size for yaml docs to 2047 MB
+    (gh#pegasus-isi/pegasus#2152).
+  * expand wf_submit_dir when generating AWS Batch job
+    descriptions #2151 (gh#pegasus-isi/pegasus#2151).
+  * cpu atttributes are not included in the job composite event
+    (gh#pegasus-isi/pegasus#2150).
+  * ensure user JAVA_HEAPMAX and JAVA_HEAPMIN values are
+    propagated to the planner invocations for sub workflows
+    (gh#pegasus-isi/pegasus#2147).
+  * pegasus-wms.worker incompatible with globus-sdk 4
+    (gh#pegasus-isi/pegasus#2146).
+  * bypass in condorio mode gets incorrectly triggered if a
+    directory path specified for a local file
+    (gh#pegasus-isi/pegasus#2142).
+  * cleanup jobs running remotely in nonsharedfs get associated
+    with a container (gh#pegasus-isi/pegasus#2137).
+  * CLI tools pollute PYTHONPATH (gh#pegasus-isi/pegasus#2135).
+  * condor quoting is not triggered for arguments for glite and
+    ssh style jobs (gh#pegasus-isi/pegasus#2132).
+  * monitord fails to parse job.out file if location record is
+    malformed (gh#pegasus-isi/pegasus#2131).
+  * pegasus-init remote cluster option creates incorrect paths for
+    local site (gh#pegasus-isi/pegasus#2125).
+  * worker package staging broken in sharedfs for create dir job
+    (if set to run remotely) (gh#pegasus-isi/pegasus#2124).
+  * monitord overwrites transfer_attempts records found in the
+    job.out file (gh#pegasus-isi/pegasus#2123).
+  * pegasus-analyzer --debug-job option broken
+    (gh#pegasus-isi/pegasus#2122).
+  * pegasus-mpi-cluster: cpuinfo validation fails on hybrid CPU
+    architectures (gh#pegasus-isi/pegasus#2119).
+- Changes from version 5.1.1:
+  * See https://github.com/pegasus-isi/pegasus/releases/tag/5.1.1
+- Changes from version 5.1.0:
+  * No release notes.
+
+-------------------------------------------------------------------
 Fri Feb 16 15:15:33 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.0.6

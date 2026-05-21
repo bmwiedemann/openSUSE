@@ -1,7 +1,7 @@
 #
 # spec file for package python-pegasus-wms.api
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pegasus-wms.api
-Version:        5.0.6
+Version:        5.1.2
 Release:        0
 Summary:        Pegasus Workflow Management System Python API
 License:        Apache-2.0
@@ -67,6 +67,11 @@ sed -i test/api/conftest.py \
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%{python_expand # must come from pegasus-wms.common
+rm -fr %{buildroot}/%{$python_sitelib}/Pegasus/__init__.py
+rm -fr %{buildroot}/%{$python_sitelib}/Pegasus/__pycache__/
+}
+
 %check
 # same output but different order in 'uses' field (full name in one string is not excluded on Leap)
 donttest="test_workflow and to_subworkflow_conversion_in_write"
@@ -76,7 +81,7 @@ donttest="test_workflow and to_subworkflow_conversion_in_write"
 %doc README.md
 %license LICENSE
 %dir %{python_sitelib}/Pegasus
-%{python_sitelib}/Pegasus/api
-%{python_sitelib}/pegasus_wms.api-%{version}.dist-info
+%{python_sitelib}/Pegasus/api/
+%{python_sitelib}/pegasus_wms_api-%{version}.dist-info/
 
 %changelog

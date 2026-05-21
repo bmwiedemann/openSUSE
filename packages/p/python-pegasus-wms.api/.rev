@@ -58,4 +58,12 @@
     the .dag.condor.sub file (forwarded request 1147126 from bnavigator)</comment>
     <requestid>1147127</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>85cd5d6e2d13de99ea49acc185bec362</srcmd5>
+    <version>5.1.2</version>
+    <time>1779381216</time>
+    <user>anag_factory</user>
+    <comment>Please stage alongside sr#1354479</comment>
+    <requestid>1354481</requestid>
+  </revision>
 </revisionlist>
