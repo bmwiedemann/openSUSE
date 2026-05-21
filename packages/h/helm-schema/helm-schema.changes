@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 21 05:22:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.3:
+  * chore: version++
+  * chore: Update dependencies
+  * docs: Add new helm-docs feature
+  * feat: support for helm-docs anyof
+  * chore(deps): update orhun/git-cliff-action digest to f50e115
+  * chore(deps): update goreleaser/goreleaser-action digest to
+    1a80836
+
+-------------------------------------------------------------------
 Sun Apr 26 08:03:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.2:
