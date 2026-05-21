@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue May 19 09:50:41 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch back to full use of corrosion, fixes build on 16.0
+- Set CARGO_HOME appropriately
+- Fix URL
+
+-------------------------------------------------------------------
+Fri May 15 07:34:50 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * Fix_offline_build.patch
+
+-------------------------------------------------------------------
+Thu May 14 12:46:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Init cxx-rust-cssparser

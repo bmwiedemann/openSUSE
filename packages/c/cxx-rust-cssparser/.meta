@@ -1,0 +1,5 @@
+<package name="cxx-rust-cssparser" project="openSUSE:Factory">
+  <title>Library for parsing CSS using the Rust cssparser crate</title>
+  <description>A C++ library for parsing CSS that uses the Rust cssparser crate internally.</description>
+  <url>https://invent.kde.org/libraries/kirigami-addons</url>
+</package>

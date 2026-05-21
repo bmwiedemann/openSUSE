@@ -1,0 +1,9 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">cxx-rust-cssparser-*.tar.xz</param>
+     <param name="compression">zst</param>
+     <param name="update">false</param>
+     <!-- Can't set filter true, then cxxbridge-cmd is missing, needed by corrosion-->
+     <param name="cargotoml">rust/Cargo.toml</param>
+  </service>
+</services>
