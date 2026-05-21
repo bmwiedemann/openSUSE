@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 19 22:30:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.2:
+  * Fixed IndexError raised from check_signature_compatible when
+    the subject method has no positional parameters
+
+-------------------------------------------------------------------
 Tue Mar 10 08:16:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.1:

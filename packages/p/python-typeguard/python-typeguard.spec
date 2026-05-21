@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typeguard
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
 Summary:        Library for runtime checking of Python types
 License:        MIT

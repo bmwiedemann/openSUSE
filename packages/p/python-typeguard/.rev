@@ -219,4 +219,14 @@
     x, = (&quot;foo&quot;,)) falsely raising TypeCheckedError</comment>
     <requestid>1337897</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b5b9ad1500f0a0f1b08ef37944db537c</srcmd5>
+    <version>4.5.2</version>
+    <time>1779380738</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.5.2:
+  * Fixed IndexError raised from check_signature_compatible when
+    the subject method has no positional parameters</comment>
+    <requestid>1354134</requestid>
+  </revision>
 </revisionlist>
