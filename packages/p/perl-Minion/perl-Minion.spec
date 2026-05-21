@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Minion
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Minion
 Name:           perl-Minion
-Version:        11.0.0
+Version:        12.0.0
 Release:        0
-# 11.0 -> normalize -> 11.0.0
-%define cpan_version 11.0
+# 12.0 -> normalize -> 12.0.0
+%define cpan_version 12.0
 License:        Artistic-2.0
 Summary:        Job queue
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -43,6 +43,7 @@ Provides:       perl(Minion::Backend)
 Provides:       perl(Minion::Backend::Pg)
 Provides:       perl(Minion::Command::minion)
 Provides:       perl(Minion::Command::minion::job)
+Provides:       perl(Minion::Command::minion::schedule)
 Provides:       perl(Minion::Command::minion::worker)
 Provides:       perl(Minion::Iterator)
 Provides:       perl(Minion::Job)
@@ -56,11 +57,12 @@ Provides:       perl(Mojolicious::Plugin::Minion::Admin)
 %description
 Minion is a high performance job queue for the Perl programming language,
 with support for multiple named queues, priorities, high priority fast
-lane, delayed jobs, job dependencies, job progress, job results, retries
-with backoff, rate limiting, unique jobs, expiring jobs, statistics,
-distributed workers, parallel processing, autoscaling, remote control, at
-https://mojolicious.org admin ui, resource leak protection and multiple
-backends (such as at https://www.postgresql.org).
+lane, delayed jobs, cron style recurring jobs, job dependencies, job
+progress, job results, retries with backoff, rate limiting, unique jobs,
+expiring jobs, statistics, distributed workers, parallel processing,
+autoscaling, remote control, at https://mojolicious.org admin ui, resource
+leak protection and multiple backends (such as at
+https://www.postgresql.org).
 
 Job queues allow you to process time and/or computationally intensive tasks
 in background processes, outside of the request/response lifecycle of web

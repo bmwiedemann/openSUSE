@@ -658,4 +658,26 @@
     - Fixed a problem where remote control commands would not immediately update the worker status.</comment>
     <requestid>1309341</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>71cd4b1a320f428830de3b055c722dc7</srcmd5>
+    <version>12.0.0</version>
+    <time>1779381140</time>
+    <user>anag_factory</user>
+    <comment>- updated to 12.0.0 (12.0)
+   see /usr/share/doc/packages/perl-Minion/Changes
+  12.0 2026-05-12
+    - Added support for cron-style recurring jobs with schedule, unschedule, pause_schedule, resume_schedule,
+      list_schedules and dispatch_schedules methods to Minion.
+    - Added enqueue_from_schedule event to Minion.
+    - Added schedules page to the Minion::Admin UI.
+    - Added schedules and inactive_schedules fields to stats.
+    - Added dispatch_interval status option to Minion::Worker.
+    - Added next_cron_time and parse_cron functions to Minion::Util.
+    - Added minion schedule command for managing schedules from the command line.
+    - Added --dispatch-interval option to the minion worker command.
+    - Updated Perl requirement to 5.20 for Mojo::Pg.
+    - Improved Minion::Job to store process ids in job notes for easier debugging.
+    - Fixed compatibility with new versions of DBD::Pg.</comment>
+    <requestid>1354453</requestid>
+  </revision>
 </revisionlist>
