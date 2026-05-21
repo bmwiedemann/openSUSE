@@ -249,4 +249,12 @@
     <comment>1.3.6</comment>
     <requestid>1352589</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>a8b60671157ec6dbf82760f95ce8e3e1</srcmd5>
+    <version>1.3.6</version>
+    <time>1779380673</time>
+    <user>anag_factory</user>
+    <comment>No need to verify sources during the build</comment>
+    <requestid>1353972</requestid>
+  </revision>
 </revisionlist>

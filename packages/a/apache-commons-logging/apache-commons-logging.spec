@@ -26,10 +26,8 @@ Summary:        Apache Commons Logging
 License:        Apache-2.0
 URL:            https://commons.apache.org/%{base_name}
 Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
-Source1:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
-Source2:        https://downloads.apache.org/commons/KEYS#/%{name}.keyring
-Source5:        build.xml
-Source6:        build.properties
+Source1:        build.xml
+Source2:        build.properties
 BuildRequires:  ant
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
@@ -56,8 +54,8 @@ logging implementation.
 %prep
 %setup -q -n %{short_name}-%{version}-src
 
-cp %{SOURCE5} build.xml
-cp %{SOURCE6} build.properties
+cp %{SOURCE1} build.xml
+cp %{SOURCE2} build.properties
 
 rm \
     src/main/java/org/apache/commons/logging/impl/Log4jApiLogFactory.java \
