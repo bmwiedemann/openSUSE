@@ -20,14 +20,14 @@
 %bcond_with test
 %define appid net.nokyan.Resources
 Name:           resources
-Version:        1.10.0
+Version:        1.10.2
 Release:        0
 Summary:        Monitor your system processes
 License:        GPL-3.0-or-later
-URL:            https://github.com/nokyan/resources
+URL:            https://gitlab.gnome.org/GNOME/Incubator/resources
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-BuildRequires:  appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson

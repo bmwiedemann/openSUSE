@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun May 17 11:07:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.2:
+  + Bug fixes: Usage values for Intel NPUs were implausible
+  + Improvements:
+    - Added power usage monitoring for Intel GPUs using the xe
+      driver.
+    - Added core frequency monitoring for Intel NPUs
+- Changes from version 1.10.1:
+  + Bug fixes:
+    - Fixed a unit conversion error when calculating per-process
+      memory usage
+    - Fixed network speeds not being displayed correctly depending
+      on settings
+  + Improvements: Resources should now be easier to find in your
+    application launcher due to new keywords in the .desktop file
+- Replace appstream-glib with AppStream BuildRequires.
+- Switch url to to new upstream home.
+
+-------------------------------------------------------------------
 Mon Feb  2 08:59:18 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.10.0:
