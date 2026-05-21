@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu May 21 12:32:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.13.1
+  Library improvements
+  * SMB: Improved server and relay behavior with SMB server
+    signing support, optional read-only shares, Kerberos/NTLMi
+    authentication controls, graceful SMB relay packet handling,
+    SMBv1 relay fixes, SMB 3.1.1 negotiation fixes, and clearer
+    errors for truncated SMB responses.
+  * Kerberos: Fixed S4U2Self service ticket parsing, non-ASCII
+    authentication encoding, LSA Kerberos key decryption, GSSAPI
+    BER length parsing, ccache/kirbi conversion edge cases, and
+    PAC preservation/signing helpers used by ticket tooling.
+  * MSSQL/TDS: Added TDS 8.0 support for Force Strict Encryption
+    targets, EPA channel binding handling, TDS_SSVARIANT parsing,
+    stricter TLS-backed packet handling, workstation/application
+    name support, and more reliable SQL reply error tracking.
+  * DCE/RPC and WMI: Added WMI PutClass/DeleteClass support,
+    Remote Event Log subscription calls, Remote Desktop Services
+    process parsing fixes, SCMR failure action marshaling fixes,
+    and safer TCP transport handling on empty receives.
+  * Directory and data parsing: Added LDAP CRUD helpers, improved
+    LDAP attribute handling, fixed large-page ESE tag parsing for
+    Windows Server 2025 NTDS.dit files, improved NTFS sparse and
+    INDEX_ROOT reads, fixed DPAPI_BLOB parsing with oversized
+    input, and corrected high-codepoint unicode structure sizing.
+  * Added a reusable ACL helper module and expanded regression
+    coverage for ACLs, NTFS, TDS, Kerberos, ESE, SCMR, WMI, SMB,
+    and packet parsing.
+  Examples improvements
+  * ntlmrelayx.py:
+    + Added MSSQL and RDP relay servers, strict MSSQL relay
+      support, TLS-backed TDS frame reassembly, NTLM sign/seal
+      removal paths for CVE-2025-33073-related relay workflows,
+      and --remove-mic handling.
+    + Improved WinRM relay error handling and NTLMv2 detection,
+      fixed WinRM NTLM relay behavior, made SMB relay negotiation
+      more conservative by avoiding unsupported NEGOEX
+      advertisement, and added multibyte AD CS template name
+      support.
+    + Added shadow credentials commands to the interactive LDAP
+      shell and updated KeyCreds handling for the January 2026
+      Windows changes.
+  * secretsdump.py: Added SAM history parsing, improved offline
+    machine account and Kerberos key recovery, fixed negative
+    timestamps on Windows, added SAM password timestamp output,
+    and filtered offline NTDS rows by local domain SID.
+  * regsecrets.py: Added SAM history parsing.
+  * ticketer.py: Improved ccache handling and preserved KDC-issued
+    lifetimes for diamond tickets.
+  * ticketConverter.py: Improved kirbi/ccache conversion, preserved
+    ticket flags, converted all TGS entries, and added base64
+    output support.
+  * describeTicket.py: Fixed credential indexing after skipped
+    decrypts and improved Kerberoast debug output.
+  * raiseChild.py: Preserved PAC buffers, added AES support for
+    modern Windows environments, and improved ticket retry
+    behavior.
+  * smbclient.py: Added ACL management support, recursive rget, and
+    richer share listing output with type and comments.
+  * mssqlclient.py: Added workstation/application name options,
+    linked-server RPC enable/disable commands, custom CBT support,
+    and better MSSQL shell behavior.
+  * ntfs-read.py: Improved INDEX_ROOT file listing, sparse file
+    support, error handling, and read correctness.
+  * tstool.py: Added Remote Desktop Shadowing support.
+  * badsuccessor.py: Fixed ACE filtering and ObjectType GUID
+    parsing that could cause false negatives when searching OUs.
+  * GetUserSPNs.py: Added an option to avoid forcing RC4-HMAC when
+    requesting a TGT.
+  * owneredit.py: Improved distinguished name lookup behavior.
+  * exchanger.py: Added Basic Authentication support.
+  * reg.py: Added support for persistent registry key creation.
+  New examples
+  * dpapidump.py dumps DPAPI-related secrets.
+  * checkMSSQLStatus.py checks MSSQL status and CBT behavior.
+  Project & packaging
+  * Removed the run-time dependency on setuptools.
+  * Removed remaining Python 2 compatibility code from WMI and ESE
+    modules.
+
+-------------------------------------------------------------------
 Thu Oct 23 09:08:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.13.0
