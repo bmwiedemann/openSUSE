@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Wed May 13 18:36:40 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.32 → 3.1.33
+
+-------------------------------------------------------------------
+Wed May 13 18:28:16 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Call tools from /usr/sbin with abspath
+
+  Calling tools from /usr/sbin like mkfs.ext2 might not
+  be found by the calling shell if the PATH does not contain
+  /usr/sbin. Make sure to call these tools with an absolute
+  path. Also make sure to cleanup a broken filesystem artifact
+  when mkfs could not be called
+
+-------------------------------------------------------------------
+Wed May 13 09:01:10 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Update examples and architecture diagram
+
+-------------------------------------------------------------------
+Tue May 12 23:26:22 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.31 → 3.1.32
+
+-------------------------------------------------------------------
+Tue May 12 23:25:34 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Create tap device ourselves
+
+-------------------------------------------------------------------
+Tue May 12 21:59:49 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.30 → 3.1.31
+
+-------------------------------------------------------------------
+Tue May 12 18:20:43 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Require root permissions only for provisioning
+
+  When using the firecracker pilot require root permissions
+  only when provisioning data into the instance. This requires
+  mounting the overlay for which root permissions would be
+  needed. All the rest can be done rootless and provisioning
+  data is an optional setting
+
+-------------------------------------------------------------------
+Tue May 12 15:41:18 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add appstore for prebuilt images
+
+-------------------------------------------------------------------
+Mon May 11 11:17:31 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.29 → 3.1.30
+
+-------------------------------------------------------------------
+Mon May 11 11:16:21 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Start sshd in sci
+
+  Run sshd if present as part of the sci guest tool
+
+-------------------------------------------------------------------
+Mon May 11 10:23:17 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed typo
+
+-------------------------------------------------------------------
+Sun May 10 15:28:47 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.28 → 3.1.29
+
+-------------------------------------------------------------------
+Sun May 10 11:05:52 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix stdio/stderr and stdin channel setup
+
+  When calling firecracker pilot using vsock as transport, it
+  is required that all standard channels gets detached from
+  the firecracker process such that the following pty/vsock
+  channel operates correctly.
+
+-------------------------------------------------------------------
 Wed Apr 15 14:11:56 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Update spec file due to new package restrictions

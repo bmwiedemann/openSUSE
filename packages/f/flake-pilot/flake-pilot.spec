@@ -19,7 +19,7 @@
 
 
 Name:           flake-pilot
-Version:        3.1.28
+Version:        3.1.33
 Release:        0
 Summary:        Launcher for flake applications
 License:        MIT
@@ -144,7 +144,7 @@ mkdir -p %{buildroot}/overlayroot
 mkdir -p %{buildroot}/usr/lib/flake-pilot
 
 %if 0%{?suse_version} >= 1600
-install -D -m 755 %{SOURCE1001} %{buildroot}%{_tmpfilesdir}/flake-pilot-firecracker.conf
+install -D -m 644 %{SOURCE1001} %{buildroot}%{_tmpfilesdir}/flake-pilot-firecracker.conf
 %else
 mkdir -p %{buildroot}/var/lib/firecracker/images
 mkdir -p %{buildroot}/var/lib/firecracker/storage
