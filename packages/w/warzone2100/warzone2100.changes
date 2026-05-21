@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon May 18 18:29:50 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use '%{?suse_version} >= 1699' instead '%{?suse_version} > 1600',
+  exclude Tumbleweed from using vulkan because vulkan is too recent
+  in Tumbleweed
+  
+-------------------------------------------------------------------
+Sun May 17 11:45:10 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 4.7.0
+  Campaign:
+  * Change: Additional Remastered balance updates
+  * Fix: Typo in Reclamation level 4 pushing a unit to an
+    imaginary unit spawn array
+  Translations:
+  * Change: Translation updates
+  Other:
+  * Fix: pieblitfunc: Reset mTexture pointer after deleting
+  * Fix: Various compilation issues
+- Changes in 4.7.0-beta2
+  General:
+  * Add: Reclamation soundtrack
+  Multiplayer:
+  * Fix: Various netplay and netlobby improvements
+  Networking:
+  * Fix: urlrequest: Improve handling of pending requests at
+    shutdown
+  Other:
+  * Fix: Flatpak: Migrate to new flat-manager-client
+  * Fix: CI: Update various dependencies
+- Changes in 4.7.0-beta1
+  General:
+  * Add: Add Weapon Stats flag for configuring Captured Units
+    Teleport
+  * Fix: Mouse cursor not respecting display scale on some OSes
+  * Fix: Fix 'disabled' state of mouse key code
+  Graphics:
+  * Fix: Vulkan: Major improvements for synchronization &
+    recreating swapchain, fixing graphical issues and behavior on
+    some systems
+  * Fix: Numerous model fixes, resolving many shadow issues
+  * Fix: Remove built in shadows for most skyscrapers and make
+    pipes float less
+  * Fix: Objects incorrectly darkened due to terrain
+    darkness / satellite strike
+  Campaign:
+  * Add: Update Remastered balance, additional spawns 2.0
+  * Add: "Pumpkin" v1.10 Campaign Balance Mod
+  * Add: Campaign balance descriptions help panel
+  * Fix: Classic campaign Howitzer tree path
+  * Fix: Various guide topic issues
+  * Fix: Missing Intel message issues
+  Multiplayer:
+  * Add: New netlobby support, with IPv4 + IPv6, improved security
+    & privacy, enhanced options, better performance &
+    compatibility with difficult ISPs, and much more
+  * Add: New unified lobby + join screen
+  * Add: Expanded "Host Lobby Options" panel
+  * Add: New --lobbyjoin and --lobbyspectate CLI options 
+  * Fix: Properly persist player mute option
+  * Fix: Easily join multiplayer games by Lobby GameID
+  Networking:
+  * Fix: poll_descriptor_set: Handle POLLNVAL in
+    PollDescriptorSet::isSet()
+  Scripting:
+  * Add: Add "Reset Sun" button to the script debugger
+  * Add: Add an emitSound() JS function
+  AI:
+  * Fix: Semperfi AI: Fully rearm VTOLs
+  Balance MP:
+  * Fix: Add missing Particle Gun times to camTechEnabler.js
+  Other:
+  * Change: steering: Introduce extensible steering behavior
+    management system
+  * Fix: Remove unused power property from sensor.json
+  * Fix: Reduce apsFeatureLists to a single list and rename to
+    apsFeatureList
+  * Fix: framework: Simplify some SFINAE checks for
+    PagedEntityContainer and LoopBodyHandlerCallStrategy
+- Add BuildRequires libjpeg8-devel
+- Drop BuildRequires update-desktop-files
+
+-------------------------------------------------------------------
 Thu Feb  5 18:47:34 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 4.6.3

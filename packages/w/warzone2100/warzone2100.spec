@@ -1,7 +1,7 @@
 #
 # spec file for package warzone2100
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define _lto_cflags %{nil}
-# NOTE Vulkan is disabled for Leap 15 due to older VK Headers
-%if 0%{?suse_version} > 1500
-%bcond_without vulkan
-%else
+# NOTE Disable Vulkan for Tumbleweed since Vulkan is too recent in Tumbleweed
+%if 0%{?suse_version} >= 1699
 %bcond_with vulkan
+%else
+%bcond_without vulkan
 %endif
 Name:           warzone2100
-Version:        4.6.3
+Version:        4.7.0
 Release:        0
 Summary:        Innovative 3D real-time strategy
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.1-only
@@ -38,13 +38,13 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
+BuildRequires:  libjpeg8-devel
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libzip-tools
 BuildRequires:  physfs-devel
 BuildRequires:  pkg-config
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  zip
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gl)
@@ -125,6 +125,7 @@ find .  -name '*.cpp' | xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 # Remove cmake4 error due to not setting
 # min cmake version - sflees.de
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
 %cmake .. \
 %if %{without vulkan}
         -DWZ_ENABLE_BACKEND_VULKAN=OFF \
@@ -132,28 +133,32 @@ export CMAKE_POLICY_VERSION_MINIMUM=3.5
         -DBUILD_SHARED_LIBS=OFF \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
+        -DWZ_APPSTREAM_ID=warzone2100 \
         -DWZ_DISTRIBUTOR="openSUSE" \
         -DWZ_ENABLE_WARNINGS_AS_ERRORS=OFF \
-        -DWZ_APPSTREAM_ID=warzone2100
+        -DWZ_USE_SYSTEM_LIBJPEG_TURBO=ON
+        
 %cmake_build
 
 %install
 %cmake_install
 %find_lang %{name}
 %find_lang %{name}_guide
-%suse_update_desktop_file -i %{name}
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
 mv %{buildroot}%{_datadir}/icons/warzone2100.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/warzone2100.png
 
 %fdupes %{buildroot}%{_datadir}
 
+# remove warzone2100.debug file
+rm -rf %{buildroot}%{_bindir}/%{name}.debug
+
 %files -f %{name}.lang
 
 %files -f %{name}_guide.lang
 %license COPYING COPYING.NONGPL COPYING.README
 %doc %{_docdir}/%{name}
-%{_bindir}/*
+%{_bindir}/%{name}
 %{_datadir}/applications/*
 %{_datadir}/metainfo/warzone2100.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/warzone2100.png
