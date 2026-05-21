@@ -818,4 +818,12 @@
  - Show contextual hints when software selection is unavailable and</comment>
     <requestid>1353021</requestid>
   </revision>
+  <revision rev="43" vrev="43">
+    <srcmd5>66353cfe0b1ca6b192329d22aa77977b</srcmd5>
+    <version>0</version>
+    <time>1779380750</time>
+    <user>anag_factory</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1353699</requestid>
+  </revision>
 </revisionlist>
