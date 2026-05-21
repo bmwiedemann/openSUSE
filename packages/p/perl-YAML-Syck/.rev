@@ -380,4 +380,12 @@
   Fixed in https://github.com/cpan-authors/YAML-Syck/pull/69</comment>
     <requestid>1352569</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>1619db2318dd7cd3173ce96be965c7c5</srcmd5>
+    <version>1.450.0</version>
+    <time>1779381234</time>
+    <user>anag_factory</user>
+    <comment>    - Fix: prevent buffer underflow in base60 (sexagesimal) parsing (PR #133) CVE-2026-4177 bsc#1259757</comment>
+    <requestid>1354490</requestid>
+  </revision>
 </revisionlist>

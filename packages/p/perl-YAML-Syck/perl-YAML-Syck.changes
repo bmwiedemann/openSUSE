@@ -103,7 +103,7 @@ Wed Apr  8 20:19:34 UTC 2026 - Tina Müller <timueller+perl@suse.de>
     [Bug Fixes]
     - Fix: escape solidus (/) as \/ in JSON::Syck::Dump for XSS safety (GH #125, PR #130)
     - Fix: anchor tracking for blessed scalar refs in Dump (GH #126, PR #131)
-    - Fix: prevent buffer underflow in base60 (sexagesimal) parsing (PR #133)
+    - Fix: prevent buffer underflow in base60 (sexagesimal) parsing (PR #133) CVE-2026-4177 bsc#1259757
     - Fix: guard against NULL type from strtok in tag parsing (PR #135)
     - Fix: correct copy-paste bug in syck_seq_assign() ASSERT macros (PR #137)
     [Improvements]
