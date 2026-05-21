@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 19 15:33:39 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix for newer kernel when header + one data descriptior are combined in a
+  single descriptor (linux 6.2+)
+  * devices-vsock-support-multi-descriptor-TX-chains.patch
+
+-------------------------------------------------------------------
 Thu May  7 17:20:14 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix build with PipeWire >= 1.4.x: spa_pod_builder struct became opaque,
