@@ -18,7 +18,7 @@
 
 Name:           libfmos
 %define lname	libfmos1
-Version:        20260131
+Version:        20260520
 Release:        0
 Summary:        Library for MacOS data types
 License:        LGPL-3.0-or-later
@@ -31,9 +31,9 @@ BuildRequires:  %python_module devel
 BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20240413
-BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libcerror) >= 20260513
+BuildRequires:  pkgconfig(libcnotify) >= 20260520
+BuildRequires:  pkgconfig(libcthreads) >= 20260518
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 

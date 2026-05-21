@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 20 15:26:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260520
+  * Changed the implementation of libfmos_lzfse_count_leading_zeros
+
+-------------------------------------------------------------------
 Sat Jan 31 10:01:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260131
