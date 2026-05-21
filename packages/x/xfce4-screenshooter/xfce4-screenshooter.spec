@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screenshooter
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,6 +19,12 @@
 
 %define xfce_version 4.18.0
 %define plugin screenshooter
+
+%if 0%{?suse_version} >= 1600
+%bcond_without wayland_support
+%else
+%bcond_with wayland_support
+%endif
 
 Name:           xfce4-screenshooter
 Version:        1.11.3
@@ -47,8 +53,7 @@ BuildRequires:  pkgconfig(libxfce4ui-2) >= %{xfce_version}
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{xfce_version}
 BuildRequires:  pkgconfig(libxfconf-0) >= %{xfce_version}
 BuildRequires:  pkgconfig(pango) >= 1.44.0
-# We only want wayland on TW and Leap 16
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1600
+%if %{with wayland_support}
 BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(wayland-client) >= 1.20
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.37
@@ -94,14 +99,13 @@ This package contains the xfce4-screenshooter Xfce panel plugin.
 %autosetup -p1
 
 %build
-# We only want wayland on TW and Leap 16
-%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
 %meson \
-	-D wayland=disabled \
-	%{nil}
+%if %{with wayland_support}
+	-D wayland=enabled \
 %else
-%meson
+	-D wayland=disabled \
 %endif
+	%{nil}
 
 %meson_build
 
