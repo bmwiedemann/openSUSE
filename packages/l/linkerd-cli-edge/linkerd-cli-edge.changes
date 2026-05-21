@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 21 13:47:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.5.3:
+  * build(deps): bump tower-http from 0.6.10 to 0.6.11 (#15290)
+  * build(deps): bump openssl from 0.10.79 to 0.10.80 (#15285)
+
+-------------------------------------------------------------------
 Fri May 15 17:24:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.5.2:
