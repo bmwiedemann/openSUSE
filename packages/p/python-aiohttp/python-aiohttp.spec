@@ -115,8 +115,6 @@ sed -i '/--cov/d' setup.cfg
 
 # vendored llhttp
 tar xfv %{S:2}
-# prepare cython files manually for now
-make cythonize
 
 %build
 export CFLAGS="%{optflags}"

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 19 12:51:05 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Revendor vendor-llhttp.tar.gz.
+- Don't cythonize on our own, build process does it on its own.
+
+-------------------------------------------------------------------
 Wed Apr  1 08:56:47 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 3.13.5

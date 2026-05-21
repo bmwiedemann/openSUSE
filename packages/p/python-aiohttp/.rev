@@ -873,4 +873,13 @@
     <comment>Add missing bug references</comment>
     <requestid>1346419</requestid>
   </revision>
+  <revision rev="67" vrev="4">
+    <srcmd5>dc7d20c5e974964a8fc29af55418ff07</srcmd5>
+    <version>3.13.5</version>
+    <time>1779380702</time>
+    <user>anag_factory</user>
+    <comment>- Revendor vendor-llhttp.tar.gz.
+- Don't cythonize on our own, build process does it on its own. (forwarded request 1354038 from mcepl)</comment>
+    <requestid>1354039</requestid>
+  </revision>
 </revisionlist>
