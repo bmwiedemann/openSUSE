@@ -468,4 +468,15 @@ Index: filter-pyopenssl-deprecationwarning.patch
     <comment></comment>
     <requestid>1328693</requestid>
   </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>d503de3cfcacd32879089de5cd12f513</srcmd5>
+    <version>1.26.20</version>
+    <time>1779380670</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-44431: sensitive information disclosure due to sensitive
+  headers being forwarded across origins in proxied low-level redirects
+  (bsc#1265267)
+  Add patch CVE-2026-44431.patch</comment>
+    <requestid>1353971</requestid>
+  </revision>
 </revisionlist>

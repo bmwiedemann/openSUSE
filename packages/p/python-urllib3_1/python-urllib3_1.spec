@@ -46,6 +46,8 @@ Patch3:         CVE-2025-66471.patch
 Patch4:         CVE-2025-66418.patch
 # PATCH-FIX-UPSTREAM CVE-2026-21441.patch bsc#1256331 gh#urllib3/urllib3@8864ac4
 Patch5:         CVE-2026-21441.patch
+# PATCH-FIX-UPSTREAM CVE-2026-44431.patch bsc#1265267
+Patch6:         CVE-2026-44431.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

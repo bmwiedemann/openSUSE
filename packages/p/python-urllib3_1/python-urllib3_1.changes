@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 19 08:39:33 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- CVE-2026-44431: sensitive information disclosure due to sensitive
+  headers being forwarded across origins in proxied low-level redirects
+  (bsc#1265267)
+  Add patch CVE-2026-44431.patch
+
+-------------------------------------------------------------------
 Wed Jan 21 16:44:35 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Add security patches:
