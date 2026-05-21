@@ -267,4 +267,13 @@
     inputs.</comment>
     <requestid>1337914</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>37e19a058a9f64aba93c77c38dfac1ad</srcmd5>
+    <version>0.15.0</version>
+    <time>1779380726</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.0:
+  * Update parser to support TOML spec v1.1.0.</comment>
+    <requestid>1354096</requestid>
+  </revision>
 </revisionlist>

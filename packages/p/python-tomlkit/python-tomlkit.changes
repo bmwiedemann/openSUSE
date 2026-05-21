@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 19 20:49:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.0:
+  * Update parser to support TOML spec v1.1.0.
+
+-------------------------------------------------------------------
 Tue Mar 10 08:36:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.0:
