@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 20 08:40:15 UTC 2026 - Ali Abdallah <ali.abdallah@suse.com>
+
+- Change minimum UID from 500 to 1000 (bsc#1262458).
+
+-------------------------------------------------------------------
+Tue Mar 10 09:00:28 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-14507
+  - Removed reference to update-desktop-files from spec file 
+  - 5.0.5
+-------------------------------------------------------------------
 Thu Feb  5 13:18:03 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - write proper /etc/selinux/config according to expected format

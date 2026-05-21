@@ -17,7 +17,7 @@
 
 
 Name:           yast2-security
-Version:        5.0.4
+Version:        5.0.6
 Release:        0
 Group:          System/YaST
 License:        GPL-2.0-only
@@ -29,7 +29,6 @@ Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  doxygen
 BuildRequires:  perl-XML-Writer
 BuildRequires:  pkg-config
-BuildRequires:  update-desktop-files
 # Pam.List
 BuildRequires:  yast2-pam >= 4.3.1
 BuildRequires:  yast2-devtools >= 4.2.2

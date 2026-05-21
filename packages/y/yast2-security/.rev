@@ -983,4 +983,20 @@
     <comment>submit new version 5.0.4</comment>
     <requestid>1332255</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>46965661674250c2bca8d256fcc18077</srcmd5>
+    <version>5.0.5</version>
+    <time>1774555625</time>
+    <user>anag_factory</user>
+    <comment>submit new version 5.0.5</comment>
+    <requestid>1342591</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>d5e52c2e6566282fd225e2fd0a96d0a8</srcmd5>
+    <version>5.0.6</version>
+    <time>1779380755</time>
+    <user>anag_factory</user>
+    <comment>submit new version 5.0.6</comment>
+    <requestid>1354197</requestid>
+  </revision>
 </revisionlist>
