@@ -296,4 +296,12 @@ put into adi:2</comment>
     <comment>Do not link binary to /usr/share</comment>
     <requestid>1352497</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>1975e2d713b3b67d7b38190b62292356</srcmd5>
+    <version>3.9.16</version>
+    <time>1779380843</time>
+    <user>anag_factory</user>
+    <comment>3.9.16</comment>
+    <requestid>1354259</requestid>
+  </revision>
 </revisionlist>

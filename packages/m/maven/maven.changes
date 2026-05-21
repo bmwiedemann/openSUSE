@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 18 09:39:09 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.16
+  * Bug Fixes
+    + Trim threadConfiguration to accept input surrounded with
+      spaces
+    + Backport: Maven 3.10.x fixed plugin resolution
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus-classworlds from 2.9.0 to
+      2.11.0
+    + [3.9.x] Bump to parent POM 48
+    + Bump commons-io:commons-io from 2.21.0 to 2.22.0
+    + Bump com.google.guava:guava from 33.5.0-jre to 33.6.0-jre
+    + Bump actions/cache from 5.0.4 to 5.0.5
+
+-------------------------------------------------------------------
 Mon May 11 13:22:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - There is no need to link the jansi-native library into the tree,
