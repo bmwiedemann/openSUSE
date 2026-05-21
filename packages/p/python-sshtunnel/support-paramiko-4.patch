@@ -1,0 +1,133 @@
+From e199cb1467516189703d14b1ce8d540b879f1a1b Mon Sep 17 00:00:00 2001
+From: kalyanr <kalyan.ben10@live.com>
+Date: Wed, 29 Oct 2025 07:19:45 +0530
+Subject: [PATCH] remove DSS key references; upgrade paramiko dependency to
+ version 4.0
+
+---
+ README.rst              | 4 ++--
+ setup.py                | 2 +-
+ sshtunnel.py            | 9 ++++-----
+ tests/test_forwarder.py | 8 +++-----
+ 4 files changed, 10 insertions(+), 13 deletions(-)
+
+diff --git a/README.rst b/README.rst
+index 7400816e..ff277335 100644
+--- a/README.rst
++++ b/README.rst
+@@ -255,9 +255,9 @@ CLI usage
+       -k SSH_HOST_KEY, --ssh_host_key SSH_HOST_KEY
+                             Gateway's host key
+       -K KEY_FILE, --private_key_file KEY_FILE
+-                            RSA/DSS/ECDSA private key file
++                            RSA/ECDSA private key file
+       -S KEY_PASSWORD, --private_key_password KEY_PASSWORD
+-                            RSA/DSS/ECDSA private key password
++                            RSA/ECDSA private key password
+       -t, --threaded        Allow concurrent connections to each tunnel
+       -v, --verbose         Increase output verbosity (default: ERROR)
+       -V, --version         Show version number and quit
+diff --git a/setup.py b/setup.py
+index ccaaab8c..ae6c7afd 100644
+--- a/setup.py
++++ b/setup.py
+@@ -97,7 +97,7 @@
+     # requirements files see:
+     # https://packaging.python.org/en/latest/requirements.html
+     install_requires=[
+-        'paramiko>=2.7.2',
++        'paramiko>=4.0',
+     ],
+ 
+     # List additional groups of dependencies here (e.g. development
+diff --git a/sshtunnel.py b/sshtunnel.py
+index a7db0c44..c512a012 100644
+--- a/sshtunnel.py
++++ b/sshtunnel.py
+@@ -1090,7 +1090,6 @@ def get_keys(logger=None, host_pkey_directories=None, allow_agent=False):
+             host_pkey_directories = [DEFAULT_SSH_DIRECTORY]
+ 
+         paramiko_key_types = {'rsa': paramiko.RSAKey,
+-                              'dsa': paramiko.DSSKey,
+                               'ecdsa': paramiko.ECDSAKey}
+         if hasattr(paramiko, 'Ed25519Key'):
+             # NOQA: new in paramiko>=2.2: http://docs.paramiko.org/en/stable/api/keys.html#module-paramiko.ed25519key
+@@ -1286,7 +1285,7 @@ def read_private_key_file(pkey_file,
+ 
+         Arguments:
+             pkey_file (str):
+-                File containing a private key (RSA, DSS or ECDSA)
++                File containing a private key (RSA or ECDSA)
+         Keyword Arguments:
+             pkey_password (Optional[str]):
+                 Password to decrypt the private key
+@@ -1295,7 +1294,7 @@ def read_private_key_file(pkey_file,
+             paramiko.Pkey
+         """
+         ssh_pkey = None
+-        key_types = (paramiko.RSAKey, paramiko.DSSKey, paramiko.ECDSAKey)
++        key_types = (paramiko.RSAKey, paramiko.ECDSAKey)
+         if hasattr(paramiko, 'Ed25519Key'):
+             # NOQA: new in paramiko>=2.2: http://docs.paramiko.org/en/stable/api/keys.html#module-paramiko.ed25519key
+             key_types += (paramiko.Ed25519Key, )
+@@ -1806,7 +1805,7 @@ def _parse_arguments(args=None):
+         dest='ssh_private_key',
+         metavar='KEY_FILE',
+         type=str,
+-        help='RSA/DSS/ECDSA private key file'
++        help='RSA/ECDSA private key file'
+     )
+ 
+     parser.add_argument(
+@@ -1814,7 +1813,7 @@ def _parse_arguments(args=None):
+         dest='ssh_private_key_password',
+         metavar='KEY_PASSWORD',
+         type=str,
+-        help='RSA/DSS/ECDSA private key password'
++        help='RSA/ECDSA private key password'
+     )
+ 
+     parser.add_argument(
+diff --git a/tests/test_forwarder.py b/tests/test_forwarder.py
+index 40662d08..02af1758 100644
+--- a/tests/test_forwarder.py
++++ b/tests/test_forwarder.py
+@@ -81,11 +81,9 @@ def capture_stdout_stderr():
+ 
+ SSH_USERNAME = get_random_string()
+ SSH_PASSWORD = get_random_string()
+-SSH_DSS = b'\x44\x78\xf0\xb9\xa2\x3c\xc5\x18\x20\x09\xff\x75\x5b\xc1\xd2\x6c'
+ SSH_RSA = b'\x60\x73\x38\x44\xcb\x51\x86\x65\x7f\xde\xda\xa2\x2b\x5a\x57\xd5'
+ ECDSA = b'\x25\x19\xeb\x55\xe6\xa1\x47\xff\x4f\x38\xd2\x75\x6f\xa5\xd5\x60'
+ FINGERPRINTS = {
+-    'ssh-dss': SSH_DSS,
+     'ssh-rsa': SSH_RSA,
+     'ecdsa-sha2-nistp256': ECDSA,
+ }
+@@ -1202,7 +1200,7 @@ def test_parse_arguments_short(self):
+                 '-P={0}'.format(SSH_PASSWORD),  # GW password
+                 '-R', '10.0.0.1:8080', '10.0.0.2:8080',  # remote bind list
+                 '-L', ':8081', ':8082',  # local bind list
+-                '-k={0}'.format(SSH_DSS),  # hostkey
++                '-k={0}'.format(SSH_RSA),  # hostkey
+                 '-K={0}'.format(__file__),  # pkey file
+                 '-S={0}'.format(SSH_PASSWORD),  # pkey password
+                 '-t',  # concurrent connections (threaded)
+@@ -1232,7 +1230,7 @@ def test_parse_arguments_long(self):
+              '--password={0}'.format(SSH_PASSWORD),  # GW password
+              '--remote_bind_address', '10.0.0.1:8080', '10.0.0.2:8080',
+              '--local_bind_address', ':8081', ':8082',  # local bind list
+-             '--ssh_host_key={0}'.format(SSH_DSS),  # hostkey
++             '--ssh_host_key={0}'.format(SSH_RSA),  # hostkey
+              '--private_key_file={0}'.format(__file__),  # pkey file
+              '--private_key_password={0}'.format(SSH_PASSWORD),
+              '--threaded',  # concurrent connections (threaded)
+@@ -1254,7 +1252,7 @@ def _test_parser(self, parser):
+                              [('10.0.0.1', 8080), ('10.0.0.2', 8080)])
+         self.assertListEqual(parser['local_bind_addresses'],
+                              [('', 8081), ('', 8082)])
+-        self.assertEqual(parser['ssh_host_key'], str(SSH_DSS))
++        self.assertEqual(parser['ssh_host_key'], str(SSH_RSA))
+         self.assertEqual(parser['ssh_private_key'], __file__)
+         self.assertEqual(parser['ssh_private_key_password'], SSH_PASSWORD)
+         self.assertTrue(parser['threaded'])

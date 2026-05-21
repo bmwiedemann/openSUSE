@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 12 01:49:37 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-unittest-mock.patch:
+  * Convert sed call to a patch to use unittest.mock.
+- Add patch support-paramiko-4.patch:
+  * Support paramiko 4.0+ changes.
+
+-------------------------------------------------------------------
 Mon Aug 25 13:53:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

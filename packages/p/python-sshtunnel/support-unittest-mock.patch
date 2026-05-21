@@ -1,0 +1,48 @@
+From 5949d2a227af0d7f81288c37c540523bd68faf2a Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 12 Feb 2026 12:40:08 +1100
+Subject: [PATCH] Attempt to import unittest.mock first
+
+As the standard library has included mock since 3.3, we should attempt
+to use it first. Add a fallback if we can't import it, and only install
+it if required with a marker.
+
+Closes #259
+---
+ tests/requirements.txt  | 2 +-
+ tests/test_forwarder.py | 6 +++++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/tests/requirements.txt b/tests/requirements.txt
+index 6a91ea46..c8b4f880 100644
+--- a/tests/requirements.txt
++++ b/tests/requirements.txt
+@@ -1,5 +1,5 @@
+ coveralls
+-mock
++mock; python_version < '3.3'
+ pytest
+ pytest-cov
+ pytest-xdist
+diff --git a/tests/test_forwarder.py b/tests/test_forwarder.py
+index 40662d08..b5734ab1 100644
+--- a/tests/test_forwarder.py
++++ b/tests/test_forwarder.py
+@@ -14,12 +14,16 @@
+ from functools import partial
+ from contextlib import contextmanager
+ 
+-import mock
+ import paramiko
+ import sshtunnel
+ import shutil
+ import tempfile
+ 
++try:
++    from unittest import mock
++except ImportError:
++    import mock
++
+ if sys.version_info[0] == 2:
+     from cStringIO import StringIO
+     if sys.version_info < (2, 7):

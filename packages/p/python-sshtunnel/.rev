@@ -98,4 +98,16 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301296</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>93adc1bb350a42ccb2f94149f554cee1</srcmd5>
+    <version>0.4.0</version>
+    <time>1779381206</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-unittest-mock.patch:
+  * Convert sed call to a patch to use unittest.mock.
+- Add patch support-paramiko-4.patch:
+  * Support paramiko 4.0+ changes.
+</comment>
+    <requestid>1354474</requestid>
+  </revision>
 </revisionlist>

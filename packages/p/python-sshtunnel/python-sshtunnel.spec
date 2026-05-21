@@ -1,7 +1,7 @@
 #
 # spec file for package python-sshtunnel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,13 @@ Version:        0.4.0
 Release:        0
 Summary:        SSH tunnels to remote server
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pahaz/sshtunnel/
 Source:         https://files.pythonhosted.org/packages/source/s/sshtunnel/sshtunnel-%{version}.tar.gz
-BuildRequires:  %{python_module paramiko >= 2.7.2}
+# PATCH-FIX-UPSTREAM gh#pahaz/sshtunnel#310
+Patch0:         support-unittest-mock.patch
+# PATCH-FIX-UPSTREAM gh#pahaz/sshtunnel#307/changes/e199cb1467516189703d14b1ce8d540b879f1a1b
+Patch1:         support-paramiko-4.patch
+BuildRequires:  %{python_module paramiko >= 4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -40,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  openssh
 BuildRequires:  python-rpm-macros
 Requires:       openssh
-Requires:       python-paramiko >= 2.7.2
+Requires:       python-paramiko >= 4
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -58,7 +61,7 @@ the same functionality provided by the SSH command using the -L
 and -R parameters.
 
 %prep
-%setup -q -n sshtunnel-%{version}
+%autosetup -p1 -n sshtunnel-%{version}
 # Remove shebang line
 sed -i '1{\,^#!%{_bindir}/env python,d}' sshtunnel.py
 
@@ -71,8 +74,6 @@ sed -i '1{\,^#!%{_bindir}/env python,d}' sshtunnel.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/pahaz/sshtunnel/issues/259
-sed -i 's:import mock:from unittest import mock:' tests/test_forwarder.py
 %pytest
 
 %pre
