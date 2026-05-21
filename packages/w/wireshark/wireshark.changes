@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 20 07:17:31 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.6.6
+  * ROHC protocol dissector crash.
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.6.6.html
+
+-------------------------------------------------------------------
 Thu Apr 30 07:11:01 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.6.5
