@@ -1,4 +1,191 @@
 -------------------------------------------------------------------
+Thu May 21 05:37:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.19.4:
+  * Misc Changes:
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#45725, @cilium-renovate[bot])
+    - Fix incorrect 'skipping test' reason messages
+      (cilium/cilium#46043, @atykhyy)
+    - Fix new golangci-lint findings (cilium/cilium#45894,
+      @HadrienPatte)
+    - chore(deps): update gcr.io/distroless/static:latest docker
+      digest to 3592aa8 by @renovate[bot] in #3235
+    - chore(deps): update docker.io/library/golang:1.26.3 docker
+      digest to 313faae by @renovate[bot] in #3234
+    - chore(deps): update cilium/cilium digest to 08329ad by
+      @renovate[bot] in #3231
+    - chore(deps): update cilium by @renovate[bot] in #3236
+    - renovate: add dependency cooldown, don't pin digests for
+      cilium/cilium GitHub actions by @tklauser in #3238
+    - chore(deps): update cilium/cilium digest to b72d04b by
+      @renovate[bot] in #3237
+    - ci: add write permissions to release workflow by @tklauser in
+      #3233
+    - ci: pin cilium/cilium actions to v1.19.4, avoid digest
+      updates by @tklauser in #3240
+
+-------------------------------------------------------------------
+Thu May 21 05:20:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.19.3:
+  * Minor Changes:
+    - A new parameter, --log-check-only-test-time, has been added
+      to Cilium CLI connectivity tests. When set to true, only the
+      logs written after the point in time where the tests have
+      been started get checked. This aims at avoiding false
+      positive. (cilium/cilium#44988, @fgiloux)
+    - Additionally collect Cluster Mesh certificate generation
+      artifacts in sysdumps (cilium/cilium#44773, @giorio94)
+    - cilium-cli: add --cleanup flag for connectivity test
+      artifacts (cilium/cilium#44075, @harshakumar25)
+    - encryption: remove deprecated enable-encryption-strict-mode
+      encryption-strict-mode-cidr and
+      encryption-strict-mode-allow-remote-node-identities options
+      (cilium/cilium#45452, @smagnani96)
+    - Remove deprecated v2alpha1 CiliumNodeConfig API that was
+      promoted to v2 in cilium 1.16. (cilium/cilium#44739,
+      @HadrienPatte)
+  * Bugfixes:
+    - envoy: Fix xds server npds listeners accounting
+      (cilium/cilium#44830, @fristonio)
+    - Fix cilium-cli crash when using corrupted Helm values for
+      clustermesh (cilium/cilium#45095, @Aprazor)
+  * CI Changes:
+    - ci:tcpdump: harden sniffer startup with retries
+      (cilium/cilium#45421, @smagnani96)
+    - cilium-cli/connectivity: fix static route setup/teardown
+      (cilium/cilium#45388, @tklauser)
+    - cilium-cli/connectivity: require static routes only on kind
+      (cilium/cilium#45824, @tklauser)
+    - cilium-cli: Add log-check-extra-exceptions flag for
+      connectivity test (cilium/cilium#45443, @rastislavs)
+    - cilium-cli: Deploy FRR daemonset only once per node
+      (cilium/cilium#45523, @rastislavs)
+    - cilium-cli: Fix port conflict for echo-external-node
+      (cilium/cilium#45530, @pchaigno)
+    - cilium-cli: Ignore gobgp tcp close error in log checks
+      (cilium/cilium#45010, @ysksuzuki)
+    - cilium-cli: introduce dedicated connectivity test skip
+      condition helpers (cilium/cilium#45200, @tklauser)
+    - connectivity: make conn-disrupt sub-tests independently
+      deployable (cilium/cilium#45382, @ysksuzuki)
+    - Fix cilium connectivity test namespace setup so configured
+      namespace labels also apply to CCNP test namespaces.
+      (cilium/cilium#45101, @Synte-Peng)
+    - Fix wildcard egress tls sni policy connectivity tests
+      (cilium/cilium#44505, @fristonio)
+    - Remove sequential and only use concurrent tests
+      (cilium/cilium#40103, @aanm)
+    - Use fake external targets on nodes without Cilium in GKE CI
+      workflows for better stability. (cilium/cilium#41713,
+      @gentoo-root)
+  * Misc Changes:
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#44565, @cilium-renovate[bot])
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#44667, @cilium-renovate[bot])
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#44948, @cilium-renovate[bot])
+    - chore(deps): update base-images (main) (cilium/cilium#44566,
+      @cilium-renovate[bot])
+    - chore(deps): update base-images (main) (cilium/cilium#44663,
+      @cilium-renovate[bot])
+    - chore(deps): update base-images (main) (cilium/cilium#44781,
+      @cilium-renovate[bot])
+    - chore(deps): update base-images (main) (cilium/cilium#44923,
+      @cilium-renovate[bot])
+    - chore(deps): update base-images (main) (cilium/cilium#45460,
+      @cilium-renovate[bot])
+    - chore(deps): update base-images (main) (cilium/cilium#45611,
+      @cilium-renovate[bot])
+    - chore(deps): update base-images (main) (cilium/cilium#45726,
+      @cilium-renovate[bot])
+    - chore(deps): update base-images to v1.26.2 (main)
+      (cilium/cilium#45297, @cilium-renovate[bot])
+    - cilium-cli/connectivity: add --exit-zero-on-failure flag
+      (cilium/cilium#44433, @darox)
+    - cilium-cli/connectivity: use WithCiliumVersion to skip tests
+      per Cilium version (cilium/cilium#44765, @tklauser)
+    - cilium-cli/sysdump: collect Cilium L2 Announcement Policies
+      (cilium/cilium#45353, @tklauser)
+    - cilium-cli: Disable Helm Server Side Apply
+      (cilium/cilium#44546, @YutaroHayakawa)
+    - cilium-cli: Fix panic parsing IPv6 URL in connectivity tests
+      (cilium/cilium#45337, @HadrienPatte)
+    - modernize: Enable waitgroup analyzer (cilium/cilium#44660,
+      @HadrienPatte)
+    - renovate: Add support to manage echo-advanced image
+      (cilium/cilium#44623, @HadrienPatte)
+    - Update release instructions by @tklauser in #3192
+    - Update stable release to v0.19.2 by @tklauser in #3193
+    - chore(deps): update actions/setup-go action to v6.3.0 by
+      @renovate[bot] in #3194
+    - chore(deps): update gcr.io/distroless/static:latest docker
+      digest to eca24e6 by @renovate[bot] in #3195
+    - chore(deps): update docker.io/library/golang:1.26.0 docker
+      digest to 9edf713 by @renovate[bot] in #3196
+    - RELEASE: confirm that CLI release works for optional Cloud
+      environments by @julianwiedmann in #3200
+    - chore(deps): update gcr.io/distroless/static:latest docker
+      digest to 28efbe9 by @renovate[bot] in #3198
+    - chore(deps): update go by @renovate[bot] in #3201
+    - chore(deps): update all github action dependencies by
+      @renovate[bot] in #3199
+    - chore(deps): update docker.io/library/golang docker tag to
+      v1.26.1 by @renovate[bot] in #3202
+    - chore(deps): update all github action dependencies by
+      @renovate[bot] in #3203
+    - chore(deps): update golangci-lint by @renovate[bot] in #3204
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v2.11.2 by @renovate[bot] in #3205
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v2.11.3 by @renovate[bot] in #3206
+    - chore(deps): update actions/download-artifact action to
+      v8.0.1 by @renovate[bot] in #3207
+    - chore(deps): update gcr.io/distroless/static:latest docker
+      digest to 47b2d72 by @renovate[bot] in #3211
+    - chore(deps): update softprops/action-gh-release action to
+      v2.5.1 by @renovate[bot] in #3210
+    - chore(deps): update docker.io/library/golang:1.26.1 docker
+      digest to c7e98cc by @renovate[bot] in #3208
+    - chore(deps): update softprops/action-gh-release action to
+      v2.6.1 by @renovate[bot] in #3212
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v2.11.4 by @renovate[bot] in #3214
+    - chore(deps): update docker.io/library/golang:1.26.1 docker
+      digest to 595c784 by @renovate[bot] in #3213
+    - chore(deps): update dependency cilium/cilium to v1.19.2 by
+      @renovate[bot] in #3215
+    - chore(deps): update actions/setup-go action to v6.4.0 by
+      @renovate[bot] in #3217
+    - chore(deps): pin cilium/cilium action to 0f7ddbf by
+      @renovate[bot] in #3216
+    - chore(deps): update go to v1.26.2 by @renovate[bot] in #3218
+    - chore(deps): update cilium/cilium digest to 143928b by
+      @renovate[bot] in #3219
+    - chore(deps): update docker/build-push-action action to v7.1.0
+      by @renovate[bot] in #3220
+    - chore(deps): update all github action dependencies by
+      @renovate[bot] in #3223
+    - chore(deps): update cilium by @renovate[bot] in #3222
+    - chore(deps): update cilium/cilium digest to 41774fc by
+      @renovate[bot] in #3224
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v2.12.0 by @renovate[bot] in #3225
+    - chore(deps): update docker.io/library/golang:1.26.2 docker
+      digest to 5f3787b by @renovate[bot] in #3221
+    - chore(deps): update cilium/cilium digest to 71eacde by
+      @renovate[bot] in #3226
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v2.12.1 by @renovate[bot] in #3227
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.12.2 by @renovate[bot] in #3229
+    - chore(deps): update go to v1.26.3 by @renovate[bot] in #3230
+    - chore(deps): update cilium/cilium digest to 3188dcd by
+      @renovate[bot] in #3228
+
+-------------------------------------------------------------------
 Thu Feb 26 06:20:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.19.2:

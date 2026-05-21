@@ -19,7 +19,7 @@
 %define executable_name cilium
 
 Name:           cilium-cli
-Version:        0.19.2
+Version:        0.19.4
 Release:        0
 Summary:        CLI to install, manage & troubleshoot Kubernetes clusters running Cilium
 License:        Apache-2.0
@@ -31,7 +31,7 @@ Source11:       https://raw.githubusercontent.com/cilium/cilium/main/stable.txt
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 
 %description
 CLI to install, manage and troubleshoot Kubernetes clusters running Cilium
