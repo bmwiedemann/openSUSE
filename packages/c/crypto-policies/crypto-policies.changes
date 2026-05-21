@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 20 09:26:21 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove crypto-policies-Allow-sshd-in-FIPS-mode-using-DEFAULT.patch
+  to allow X25519 as required for sntrup761x25519-sha512@openssh.com
+  and sntrup761x25519-sha512 in the DEFAULT policy. (bsc#1259825)
+  Rebase crypto-policies-Allow-openssl-other-policies-in-FIPS-mode.patch
+
+-------------------------------------------------------------------
+Mon May  4 11:24:37 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Add PQC support for OpenSSH (bsc#1258311, bsc#1259825)
+  * Enable sntrup761x25519-sha512 for OpenSSH by default
+  * Add crypto-policies-OpenSSH-PQC.patch
+
+-------------------------------------------------------------------
 Wed Apr 22 13:00:49 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Modify the output of fips-mode-setup to hint the user when

@@ -49,14 +49,14 @@ Patch2:         crypto-policies-policygenerators.patch
 Patch3:         crypto-policies-nss.patch
 #PATCH-FIX-OPENSUSE enable SHA1 sigver in DEFAULT
 Patch4:         crypto-policies-enable-SHA1-sigver-in-DEFAULT.patch
-#PATCH-FIX-OPENSUSE Allow sshd in FIPS mode when using the DEFAULT policy [bsc#1227370]
-Patch5:         crypto-policies-Allow-sshd-in-FIPS-mode-using-DEFAULT.patch
 #PATCH-FIX-OPENSUSE Fix the output comments around setting the FIPS mode
-Patch6:         crypto-policies-FIPS-output.patch
+Patch5:         crypto-policies-FIPS-output.patch
 #PATCH-FIX-OPENSUSE Adapt the manpages to SUSE/openSUSE
-Patch7:         crypto-policies-SUSE-manpages.patch
+Patch6:         crypto-policies-SUSE-manpages.patch
 #PATCH-FIX-OPENSUSE Allow openssl to load when using any policy in FIPS mode [bsc#1243830, bsc#1242233]
-Patch8:         crypto-policies-Allow-openssl-other-policies-in-FIPS-mode.patch
+Patch7:         crypto-policies-Allow-openssl-other-policies-in-FIPS-mode.patch
+#PATCH-FIX-UPSTREAM Add PQC support for OpenSSH (bsc#1258311, bsc#1259825)
+Patch8:         crypto-policies-OpenSSH-PQC.patch
 BuildRequires:  python3-base >= 3.11
 %if %{with manbuild}
 BuildRequires:  asciidoc

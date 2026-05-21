@@ -1,0 +1,42 @@
+Index: fedora-crypto-policies-20250714.cd6043a/policies/DEFAULT.pol
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/policies/DEFAULT.pol
++++ fedora-crypto-policies-20250714.cd6043a/policies/DEFAULT.pol
+@@ -65,6 +65,9 @@ cipher@SSH = AES-256-GCM AES-256-CCM CAM
+ # interoperability issues in TLS.
+ key_exchange = KEM-ECDH ECDHE RSA DHE DHE-RSA PSK DHE-PSK ECDHE-PSK RSA-PSK ECDHE-GSS DHE-GSS
+ 
++# Enable SNTRUP by default for OpenSSH
++key_exchange@ssh = +SNTRUP
++
+ protocol@TLS = TLS1.3 TLS1.2 DTLS1.2
+ protocol@IKE = IKEv2
+ 
+Index: fedora-crypto-policies-20250714.cd6043a/policies/FUTURE.pol
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/policies/FUTURE.pol
++++ fedora-crypto-policies-20250714.cd6043a/policies/FUTURE.pol
+@@ -54,6 +54,9 @@ cipher@SSH = -*-CBC
+ 
+ key_exchange = KEM-ECDH ECDHE DHE DHE-RSA PSK DHE-PSK ECDHE-PSK ECDHE-GSS DHE-GSS
+ 
++# Enable SNTRUP by default for OpenSSH
++key_exchange@ssh = +SNTRUP
++
+ protocol@TLS = TLS1.3 TLS1.2 DTLS1.2
+ protocol@IKE = IKEv2
+ 
+Index: fedora-crypto-policies-20250714.cd6043a/policies/LEGACY.pol
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/policies/LEGACY.pol
++++ fedora-crypto-policies-20250714.cd6043a/policies/LEGACY.pol
+@@ -66,6 +66,9 @@ cipher@{sequoia,RPM} = AES-256-CFB AES-2
+ # interoperability issues in TLS.
+ key_exchange = KEM-ECDH ECDHE RSA DHE DHE-RSA DHE-DSS PSK DHE-PSK ECDHE-PSK RSA-PSK ECDHE-GSS DHE-GSS
+ 
++# Enable SNTRUP by default for OpenSSH
++key_exchange@ssh = +SNTRUP
++
+ protocol@TLS = TLS1.3 TLS1.2 TLS1.1 TLS1.0 DTLS1.2 DTLS1.0
+ protocol@IKE = IKEv2
+ 
