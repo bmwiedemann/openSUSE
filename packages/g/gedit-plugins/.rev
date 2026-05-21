@@ -625,4 +625,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342951</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>cd7d8765c10bca24b2feb605ea959056</srcmd5>
+    <version>50.0</version>
+    <time>1779380839</time>
+    <user>anag_factory</user>
+    <comment>Update to 50.0</comment>
+    <requestid>1354227</requestid>
+  </revision>
 </revisionlist>

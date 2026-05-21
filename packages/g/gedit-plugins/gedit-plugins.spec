@@ -18,7 +18,7 @@
 
 
 Name:           gedit-plugins
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        A collection of plugins for gedit
 License:        GPL-2.0-or-later
@@ -36,7 +36,7 @@ BuildRequires:  vala >= 0.28.0
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(dbus-python) >= 0.82
-BuildRequires:  pkgconfig(gedit) >= 49
+BuildRequires:  pkgconfig(gedit) >= 50
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.9.0
@@ -44,7 +44,7 @@ BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.0.6
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.7.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.7.0
 BuildRequires:  pkgconfig(vte-2.91)
-Requires:       gedit >= 48.1
+Requires:       gedit >= 50
 Recommends:     %{name}-data
 Suggests:       gedit-plugin-bookmarks
 Suggests:       gedit-plugin-drawspaces
