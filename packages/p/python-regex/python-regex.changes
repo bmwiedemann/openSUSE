@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 19 21:31:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.5.9:
+  * Reverse matching with full unicode casefolding could lead to
+    out-of-range string indexes.
+
+-------------------------------------------------------------------
 Sun Apr 12 21:05:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.4.4:
