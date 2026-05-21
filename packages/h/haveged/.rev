@@ -636,4 +636,19 @@ Updated sample spec file and other documentation changes. (forwarded request 174
     <comment></comment>
     <requestid>1350794</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>b0fdde68e70e73bbf63de9af2b32f583</srcmd5>
+    <version>1.9.21</version>
+    <time>1779380696</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.21 (bsc#1264086, CVE-2026-41054):
+  * Fix privilege escalation via command socket (CVE-2026-41054)
+  * Check peer credentials before reading command
+    (CVE-2026-41054)
+  * Handle failing opening of semaphore [Werner Fink]
+  * Fix /dev/shm permissions to use sticky bit [Dirk Müller]
+  * Use chmod after mkdir to ensure correct /dev/shm permissions
+  * Update libtool: add lib64 search paths, remove dead code (forwarded request 1354029 from dirkmueller)</comment>
+    <requestid>1354037</requestid>
+  </revision>
 </revisionlist>
