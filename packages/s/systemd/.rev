@@ -8015,4 +8015,39 @@ handle manual pages that consist only of a .so directive such as
     3cee294fe8 core: validate input cgroup path more prudently (bsc#1259418 CVE-2026-29111)</comment>
     <requestid>1348897</requestid>
   </revision>
+  <revision rev="468" vrev="2">
+    <srcmd5>1d0cea8e34862b1e104d79a1ac47d141</srcmd5>
+    <version>260.1</version>
+    <time>1779380760</time>
+    <user>anag_factory</user>
+    <comment>- Add a weak runtime dependency on libtss2-tcti-device0 to udev (bsc#1260357 bsc#1264224)
+
+- systemd.spec: drop deprecated meson options 'libidn' and 'libiptc'
+  Remove -Dlibidn and -Dlibiptc from meson options as both have been fully
+  deprecated by upstream and will be removed in a future release.
+  The libidn library support was completely dropped in commit 429cbac508 and has
+  been replaced by libidn2.
+  OTOH, systemd-networkd and systemd-nspawn no longer support creating NAT rules
+  via iptables/libiptc APIs; only nftables is now supported (see commit
+  c3c42b30dd).
+
+- Import commit 1e45daa2fb423eb95ad00dcc389e03cfea8f86dc
+  1e45daa2fb vconsole-setup: skip setfont(8) when the console driver lacks font support (bsc#1212970)
+
+- Import commit 571d61da82f2654afacf52c620ceec3fbf220f6b
+  571d61da82 cryptsetup: avoid a segfault when a keyfile is passed along with a TPM device (bsc#1263117)
+  4e16626c0e mkosi: user and group bin needed for a test
+  e5f2b85204 TEST-24-CRYPTSETUP: Use virtio-blk-pci
+  9bac241fc1 TEST-64-UDEV-STORAGE: Add missing scsi controllers
+  8581b451ed Revert &quot;mkosi: Mark minimal images as Incremental=relaxed&quot;
+  5a53f0c965 mkosi-tool/opensuse: add libtss2-tcti-device0 package
+
+- systemd.spec: drop ancient Obsoletes for pm-utils, suspend and
+  systemd-analyze that predate 2020.
+
+  This update includes the following fix:
+    b6469b0191 kmod-setup: load vsock_loopback alongside vsock (bsc#1259145)
+    e5a5656b55 machined: do not allow unprivileged users to shell into the root namespace via varlink (bsc#1261978 CVE-2026-40224 GHSA-6pwp-j5vg-5j6m)</comment>
+    <requestid>1353801</requestid>
+  </revision>
 </revisionlist>

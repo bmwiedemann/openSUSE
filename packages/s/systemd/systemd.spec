@@ -33,7 +33,7 @@
 %if %{without obs_service_set_version}
 %define systemd_version    260.1
 %define systemd_release    0
-%define archive_version    %{nil}
+%define archive_version    +suse.7.g1e45daa2fb
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -197,20 +197,16 @@ Provides:       systemd-coredump = %{version}-%{release}
 Obsoletes:      systemd-coredump < %{version}-%{release}
 Provides:       systemd-logger = %{version}-%{release}
 Obsoletes:      systemd-logger < %{version}-%{release}
-Provides:       systemd-analyze = %{version}-%{release}
-Obsoletes:      pm-utils <= 1.4.1
-Obsoletes:      suspend <= 1.0
-Obsoletes:      systemd-analyze < 201
 Source0:        systemd-%{version}%{?archive_version}.tar.xz
 Source1:        systemd-rpmlintrc
-Source3:        systemd-update-helper
-Source5:        tmpfiles-suse.conf
-Source6:        baselibs.conf
-Source7:        triggers.systemd
-Source8:        pam.systemd-user
-Source9:        pam.systemd-run0
-Source14:       kbd-model-map.legacy
-Source15:       testsuite-mkosi.local.conf
+Source2:        systemd-update-helper
+Source3:        tmpfiles-suse.conf
+Source4:        baselibs.conf
+Source5:        triggers.systemd
+Source6:        pam.systemd-user
+Source7:        pam.systemd-run0
+Source8:        kbd-model-map.legacy
+Source9:        testsuite-mkosi.local.conf
 
 Source100:      fixlet-systemd-post.sh
 
@@ -219,14 +215,14 @@ Source201:      files.udev
 Source202:      files.container
 Source203:      files.networkd
 Source204:      files.devel
-Source206:      files.uefi-boot
-Source207:      files.experimental
-Source208:      files.resolved
-Source209:      files.homed
-Source210:      files.lang
-Source211:      files.journal-remote
-Source212:      files.portable
-Source213:      files.ukify
+Source205:      files.uefi-boot
+Source206:      files.experimental
+Source207:      files.resolved
+Source208:      files.homed
+Source209:      files.lang
+Source210:      files.journal-remote
+Source211:      files.portable
+Source212:      files.ukify
 
 #
 # All changes backported from upstream are tracked by the git repository, which
@@ -356,6 +352,8 @@ Recommends:     libfido2
 Recommends:     libtss2-esys0
 Recommends:     libtss2-mu0
 Recommends:     libtss2-rc0
+# Needed by systemd-creds (bsc#1260357)
+Recommends:     libtss2-tcti-device0
 %endif
 Conflicts:      ConsoleKit < 0.4.1
 Conflicts:      dracut < 059
@@ -488,7 +486,7 @@ systemd-networkd is a system service that manages networks. It detects and
 configures network devices as they appear, as well as manages network addresses
 and routes for any link for which it finds a .network file, see
 systemd.network(5). It can also create virtual network devices based on their
-description given by systemd.netdev(5) files. It may be controlle by
+description given by systemd.netdev(5) files. It may be controlled by
 networkctl(1).
 %endif
 
@@ -513,7 +511,7 @@ local applications. It implements a caching and validating DNS/DNSSEC stub
 resolver, as well as an LLMNR and MulticastDNS resolver and responder. It may be
 controlled by resolvectl(1).
 
-Addtionally, this package also contains a plug-in module for the Name Service
+Additionally, this package also contains a plug-in module for the Name Service
 Switch (NSS), which enables hostname resolutions by contacting
 systemd-resolved(8). It replaces the nss-dns plug-in module that traditionally
 resolves hostnames via DNS.
@@ -738,7 +736,6 @@ for the C APIs.
         -Dglib=disabled \
         -Dgshadow=false \
         -Dldconfig=false \
-        -Dlibidn=disabled \
         -Dsmack=false \
         -Dvmlinux-h=disabled \
         -Dxenctrl=disabled \
@@ -758,7 +755,6 @@ for the C APIs.
         -Dlibarchive=%{disabled_with bootstrap} \
         -Dlibfido2=%{disabled_with bootstrap} \
         -Dlibidn2=%{enabled_with resolved} \
-        -Dlibiptc=%{disabled_with bootstrap} \
         -Dlz4=%{disabled_with bootstrap} \
         -Dqrencode=%{disabled_with bootstrap} \
         -Dkmod=%{disabled_with bootstrap} \
@@ -791,7 +787,9 @@ for the C APIs.
         -Dcoredump=%{when_not bootstrap} \
         -Dhomed=%{enabled_with homed} \
         -Dhtml=%{enabled_with docs} \
+        -Dhwdb=%{when_not bootstrap} \
         -Dimportd=%{enabled_with importd} \
+        -Dlocaled=%{when_not bootstrap} \
         -Dmachined=%{when machined} \
         -Dman=%{enabled_with docs} \
         -Dnetworkd=%{when networkd} \
@@ -799,6 +797,9 @@ for the C APIs.
         -Dportabled=%{when portabled} \
         -Dremote=%{enabled_with journal_remote} \
         -Dselinux=%{enabled_with selinux} \
+        -Dsysusers=true \
+        -Dtmpfiles=true \
+        -Dvconsole=%{when_not bootstrap} \
         \
         -Dbootloader=%{enabled_with sd_boot} \
         -Defi=%{when sd_boot} \
@@ -821,7 +822,7 @@ for the C APIs.
         -Dsshdconfdir=%{_distconfdir}/ssh/sshd_config.d \
         -Dsshconfdir=%{_distconfdir}/ssh/ssh_config.d \
         -Dsshdprivsepdir=no \
-        -Dsysupdate=%{when_not bootstrap} \
+        -Dsysupdate=%{disabled_with bootstrap} \
         -Dsysupdated=%{disabled_with bootstrap} \
         -Dvmspawn=%{disabled_with bootstrap} \
         \
@@ -857,15 +858,16 @@ rm -f %{buildroot}%{_sbindir}/resolvconf
 rm -f %{buildroot}%{_mandir}/man1/resolvconf.1*
 %endif
 
-install -m0755 -D %{SOURCE3} %{buildroot}/%{_systemd_util_dir}/systemd-update-helper
+install -m0755 -D %{SOURCE2} %{buildroot}/%{_systemd_util_dir}/systemd-update-helper
 
 # Install the fixlets
 mkdir -p %{buildroot}%{_systemd_util_dir}/rpm
 install -m0755 %{SOURCE100} %{buildroot}%{_systemd_util_dir}/rpm/
 
-# Make sure /usr/lib/modules-load.d exists in udev(-mini)?, so other
-# packages can install modules without worry
+# Make sure these directories exist for the mini flavor so other packages can
+# install files without worry.
 mkdir -p %{buildroot}%{_modulesloaddir}
+mkdir -p %{buildroot}%{_udevhwdbdir}
 
 # Make sure we don't ship static enablement symlinks in /etc during
 # installation, presets should be honoured instead.
@@ -873,8 +875,8 @@ rm -rf %{buildroot}%{_sysconfdir}/systemd/system/*.target.{requires,wants}
 rm -f %{buildroot}%{_sysconfdir}/systemd/system/default.target
 
 # Replace upstream PAM configuration files with openSUSE ones.
-install -m0644 -D %{SOURCE8} %{buildroot}%{_pam_vendordir}/systemd-user
-install -m0644 -D %{SOURCE9} %{buildroot}%{_pam_vendordir}/systemd-run0
+install -m0644 -D %{SOURCE6} %{buildroot}%{_pam_vendordir}/systemd-user
+install -m0644 -D %{SOURCE7} %{buildroot}%{_pam_vendordir}/systemd-run0
 
 # Don't enable wall ask password service, it spams every console (bnc#747783).
 rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.path
@@ -991,7 +993,7 @@ echo 'disable *' >%{buildroot}%{_systemd_util_dir}/initrd-preset/99-default.pres
 # systemd. For lack of a better place some (deprecated) paths are still shipped
 # along with the systemd package.
 rm -f %{buildroot}%{_tmpfilesdir}/{etc,home,legacy,tmp,var}.conf
-install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/systemd-suse.conf
+install -m 644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/systemd-suse.conf
 
 # These 2 following file are useless because on SUSE distros ssh can parse
 # drop-ins in /usr.
@@ -1006,10 +1008,12 @@ rm -fr %{buildroot}%{_datadir}/factory/*
 
 # kbd-model-map.legacy is used to provide mapping for legacy keymaps, which may
 # still be used by yast.
-cat %{SOURCE14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
+%if %{without bootstrap}
+cat %{SOURCE8} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
+%endif
 
 %if %{with testsuite}
-install -m0644 %{SOURCE15} %{buildroot}%{_testsuitedir}/mkosi/mkosi.local.conf
+install -m0644 %{SOURCE9} %{buildroot}%{_testsuitedir}/mkosi/mkosi.local.conf
 install -m0644 test/integration-tests/README.md %{buildroot}%{_testsuitedir}/integration-tests/
 %endif
 
@@ -1089,7 +1093,7 @@ pam-config --add --systemd || :
 %{_systemd_util_dir}/rpm/fixlet-systemd-post.sh $1 || :
 
 %postun
-# Avoid restarting logind until fixed upstream (issue #1163)
+# Avoid restarting logind until fixed upstream (issue #17308)
 %systemd_postun_with_restart systemd-hostnamed.service
 %systemd_postun_with_restart systemd-journald.service
 %systemd_postun_with_restart systemd-localed.service
@@ -1268,7 +1272,7 @@ rm -rf \
     elfbins.list
 
 # File trigger definitions
-%include %{SOURCE7}
+%include %{SOURCE5}
 
 %files
 %include %{SOURCE200}
@@ -1278,7 +1282,7 @@ rm -rf \
 
 %if %{with sd_boot}
 %files boot
-%include %{SOURCE206}
+%include %{SOURCE205}
 %endif
 
 %if %{with container}
@@ -1293,7 +1297,7 @@ rm -rf \
 
 %if %{with resolved}
 %files resolved
-%include %{SOURCE208}
+%include %{SOURCE207}
 %endif
 
 %files devel
@@ -1312,7 +1316,7 @@ rm -rf \
 
 %if %{without bootstrap}
 %files lang -f systemd.lang
-%include %{SOURCE210}
+%include %{SOURCE209}
 %endif
 
 %if %{with docs}
@@ -1322,21 +1326,21 @@ rm -rf \
 %endif
 
 %files experimental
-%include %{SOURCE207}
+%include %{SOURCE206}
 
 %if %{with journal_remote}
 %files journal-remote
-%include %{SOURCE211}
+%include %{SOURCE210}
 %endif
 
 %if %{with homed}
 %files homed
-%include %{SOURCE209}
+%include %{SOURCE208}
 %endif
 
 %if %{with portabled}
 %files portable
-%include %{SOURCE212}
+%include %{SOURCE211}
 %endif
 
 %if %{with testsuite}
@@ -1347,7 +1351,7 @@ rm -rf \
 
 %if %{with sd_boot}
 %files ukify
-%include %{SOURCE213}
+%include %{SOURCE212}
 %endif
 
 %changelog

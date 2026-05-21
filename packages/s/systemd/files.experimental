@@ -25,17 +25,31 @@
 %dir %{_unitdir}/initrd.target.wants
 %dir %{_unitdir}/storage-target-mode.target.wants
 %endif
+%if %{with upstream}
+%dir %{_unitdir}/system-install.target.wants
+%endif
 # Main config files have been replaced in favor of drop-ins.
 %ghost %{_sysconfdir}/systemd/oomd.conf
 %if %{without bootstrap}
 %{_bindir}/oomctl
 %endif
+%if %{with upstream}
+%{_bindir}/storagectl
+%endif
 %{_bindir}/systemd-mstack
 %{_bindir}/systemd-mute-console
 %if %{without bootstrap}
+%if %{with upstream}
+%{_bindir}/systemd-sysinstall
+%{_bindir}/systemd-sysupdate
+%endif
 %{_bindir}/systemd-vmspawn
 %{_bindir}/updatectl
 %{_datadir}/bash-completion/completions/oomctl
+%if %{with upstream}
+%{_datadir}/bash-completion/completions/storagectl
+%{_datadir}/bash-completion/completions/systemd-sysinstall
+%endif
 %{_datadir}/bash-completion/completions/systemd-vmspawn
 %{_datadir}/dbus-1/interfaces/org.freedesktop.oom1.Manager.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.sysupdate1.Job.xml
@@ -47,15 +61,24 @@
 %{_datadir}/dbus-1/system.d/org.freedesktop.sysupdate1.conf
 %if %{with upstream}
 %{_datadir}/polkit-1/actions/io.systemd.imds.policy
+%{_datadir}/polkit-1/actions/io.systemd.storage.policy
 %endif
 %{_datadir}/polkit-1/actions/org.freedesktop.sysupdate1.policy
 %{_datadir}/zsh/site-functions/_oomctl
+%if %{with upstream}
+%{_datadir}/zsh/site-functions/_storagectl
+%{_datadir}/zsh/site-functions/_systemd-sysinstall
+%endif
 %endif
 %{_distconfdir}/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
 %if %{with docs}
 %{_mandir}/man1/mount.mstack.1.gz
+%if %{with upstream}
+%{_mandir}/man1/mount.storage.1.gz
+%endif
 %{_mandir}/man1/oomctl.1.gz
 %if %{with upstream}
+%{_mandir}/man1/storagectl.1.gz
 %{_mandir}/man1/systemd-imds-import.service.1.gz
 %{_mandir}/man1/systemd-imds.1.gz
 %endif
@@ -119,8 +142,20 @@
 %{_mandir}/man8/systemd-pcrproduct.service.8.gz
 %endif
 %{_mandir}/man8/systemd-ssh-generator.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-storage-block.8.gz
+%{_mandir}/man8/systemd-storage-block.socket.8.gz
+%{_mandir}/man8/systemd-storage-block@.service.8.gz
+%{_mandir}/man8/systemd-storage-fs.8.gz
+%{_mandir}/man8/systemd-storage-fs.socket.8.gz
+%{_mandir}/man8/systemd-storage-fs@.service.8.gz
+%endif
 %{_mandir}/man8/systemd-storagetm.8.gz
 %{_mandir}/man8/systemd-storagetm.service.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-sysinstall.8.gz
+%{_mandir}/man8/systemd-sysinstall.service.8.gz
+%endif
 %{_mandir}/man8/systemd-sysupdate-reboot.service.8.gz
 %{_mandir}/man8/systemd-sysupdate-reboot.timer.8.gz
 %{_mandir}/man8/systemd-sysupdate.8.gz
@@ -150,6 +185,9 @@
 %endif
 %endif
 %{_sbindir}/mount.mstack
+%if %{with upstream}
+%{_sbindir}/mount.storage
+%endif
 %if %{with importd}
 %{_systemd_util_dir}/oci-registry/default.oci-registry
 %{_systemd_util_dir}/oci-registry/image.alpine.oci-registry
@@ -188,6 +226,10 @@
 %endif
 %{_systemd_util_dir}/systemd-ssh-issue
 %{_systemd_util_dir}/systemd-ssh-proxy
+%if %{with upstream}
+%{_systemd_util_dir}/systemd-storage-block
+%{_systemd_util_dir}/systemd-storage-fs
+%endif
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-storagetm
 %{_systemd_util_dir}/systemd-sysupdate
@@ -244,6 +286,10 @@
 %if %{with sd_boot}
 %{_unitdir}/sockets.target.wants/systemd-pcrextend.socket
 %endif
+%if %{with upstream}
+%{_unitdir}/sockets.target.wants/systemd-storage-block.socket
+%{_unitdir}/sockets.target.wants/systemd-storage-fs.socket
+%endif
 %if %{without bootstrap}
 %{_unitdir}/storage-target-mode.target
 %endif
@@ -259,6 +305,10 @@
 %{_unitdir}/sysinit.target.wants/systemd-pcrproduct.service
 %{_unitdir}/sysinit.target.wants/systemd-tpm2-setup-early.service
 %{_unitdir}/sysinit.target.wants/systemd-tpm2-setup.service
+%endif
+%if %{with upstream}
+%{_unitdir}/system-install.target
+%{_unitdir}/system-install.target.wants/systemd-sysinstall.service
 %endif
 %{_unitdir}/system-systemd\x2dmute\x2dconsole.slice
 %if %{without bootstrap}
@@ -303,6 +353,9 @@
 %{_unitdir}/systemd-pcrlock@.service
 %{_unitdir}/systemd-pcrmachine.service
 %{_unitdir}/systemd-pcrnvdone.service
+%if %{with upstream}
+%{_unitdir}/systemd-pcrosseparator.service
+%endif
 %{_unitdir}/systemd-pcrphase-factory-reset.service
 %{_unitdir}/systemd-pcrphase-initrd.service
 %{_unitdir}/systemd-pcrphase-storage-target-mode.service
@@ -315,9 +368,18 @@
 %{_unitdir}/systemd-report-basic@.service
 %{_unitdir}/systemd-report-cgroup.socket
 %{_unitdir}/systemd-report-cgroup@.service
+%{_unitdir}/systemd-storage-block.socket
+%{_unitdir}/systemd-storage-block@.service
+%{_unitdir}/systemd-storage-fs.socket
+%{_unitdir}/systemd-storage-fs@.service
 %endif
 %if %{without bootstrap}
 %{_unitdir}/systemd-storagetm.service
+%endif
+%if %{with upstream}
+%{_unitdir}/systemd-sysinstall.service
+%endif
+%if %{without bootstrap}
 %{_unitdir}/systemd-sysupdate-reboot.service
 %{_unitdir}/systemd-sysupdate-reboot.timer
 %{_unitdir}/systemd-sysupdate.service
@@ -337,6 +399,13 @@
 %{_unitdir}/systemd-vmspawn@.service
 %endif
 %{_userunitdir}/sockets.target.wants/systemd-journalctl.socket
+%if %{with upstream}
+%{_userunitdir}/sockets.target.wants/systemd-storage-fs.socket
+%endif
 %{_userunitdir}/systemd-journalctl.socket
 %{_userunitdir}/systemd-journalctl@.service
+%if %{with upstream}
+%{_userunitdir}/systemd-storage-fs.socket
+%{_userunitdir}/systemd-storage-fs@.service
+%endif
 /usr/etc/profile.d/80-systemd-osc-context.sh

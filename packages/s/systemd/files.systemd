@@ -19,7 +19,9 @@
 %dir %{_datadir}/dbus-1/system-services
 %dir %{_datadir}/dbus-1/system.d
 %dir %{_datadir}/factory
+%if %{without bootstrap}
 %dir %{_datadir}/systemd
+%endif
 %dir %{_datadir}/user-tmpfiles.d
 %if %{without bootstrap}
 %dir %{_datadir}/zsh
@@ -109,7 +111,9 @@
 %endif
 %{_bindir}/hostnamectl
 %{_bindir}/journalctl
+%if %{without bootstrap}
 %{_bindir}/localectl
+%endif
 %{_bindir}/loginctl
 %{_bindir}/run0
 %{_bindir}/systemctl
@@ -177,7 +181,9 @@
 # dbus introspection data for code generators: https://github.com/systemd/systemd/pull/20294
 %{_datadir}/dbus-1/interfaces/org.freedesktop.LogControl1.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.hostname1.xml
+%if %{without bootstrap}
 %{_datadir}/dbus-1/interfaces/org.freedesktop.locale1.xml
+%endif
 %{_datadir}/dbus-1/interfaces/org.freedesktop.login1.Manager.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.login1.Seat.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.login1.Session.xml
@@ -199,12 +205,16 @@
 %{_datadir}/dbus-1/interfaces/org.freedesktop.timedate1.xml
 %{_datadir}/dbus-1/services/org.freedesktop.systemd1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.hostname1.service
+%if %{without bootstrap}
 %{_datadir}/dbus-1/system-services/org.freedesktop.locale1.service
+%endif
 %{_datadir}/dbus-1/system-services/org.freedesktop.login1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.systemd1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.timedate1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.hostname1.conf
+%if %{without bootstrap}
 %{_datadir}/dbus-1/system.d/org.freedesktop.locale1.conf
+%endif
 %{_datadir}/dbus-1/system.d/org.freedesktop.login1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.systemd1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.timedate1.conf
@@ -214,14 +224,18 @@
 %{_datadir}/polkit-1/actions/io.systemd.credentials.policy
 %{_datadir}/polkit-1/actions/io.systemd.sysext.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.hostname1.policy
+%if %{without bootstrap}
 %{_datadir}/polkit-1/actions/org.freedesktop.locale1.policy
+%endif
 %{_datadir}/polkit-1/actions/org.freedesktop.login1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.systemd1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.timedate1.policy
 %{_datadir}/polkit-1/rules.d/10-systemd-logind-root-ignore-inhibitors.rules.example
 %{_datadir}/polkit-1/rules.d/empower.rules
+%if %{without bootstrap}
 %{_datadir}/systemd/kbd-model-map
 %{_datadir}/systemd/language-fallback-map
+%endif
 %{_datadir}/user-tmpfiles.d/20-systemd-varlink.conf
 %if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_busctl
@@ -491,7 +505,9 @@
 %{_systemd_util_dir}/systemd-executor
 %{_systemd_util_dir}/systemd-hostnamed
 %{_systemd_util_dir}/systemd-journald
+%if %{without bootstrap}
 %{_systemd_util_dir}/systemd-localed
+%endif
 %{_systemd_util_dir}/systemd-logind
 %{_systemd_util_dir}/systemd-reply-password
 %{_systemd_util_dir}/systemd-shutdown
@@ -580,7 +596,9 @@
 %{_unitdir}/container-getty@.service
 %{_unitdir}/ctrl-alt-del.target
 %{_unitdir}/dbus-org.freedesktop.hostname1.service
+%if %{without bootstrap}
 %{_unitdir}/dbus-org.freedesktop.locale1.service
+%endif
 %{_unitdir}/dbus-org.freedesktop.login1.service
 %{_unitdir}/dbus-org.freedesktop.timedate1.service
 %{_unitdir}/debug-shell.service
@@ -725,7 +743,9 @@
 %{_unitdir}/systemd-journald@.service
 %{_unitdir}/systemd-journald@.socket
 %{_unitdir}/systemd-kexec.service
+%if %{without bootstrap}
 %{_unitdir}/systemd-localed.service
+%endif
 %{_unitdir}/systemd-logind-varlink.socket
 %{_unitdir}/systemd-logind.service
 %{_unitdir}/systemd-loop@.service

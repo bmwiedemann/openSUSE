@@ -44,7 +44,9 @@
 %dir %{_udevhwdbdir}
 %dir %{_udevrulesdir}
 %dir %{_unitdir}/initrd.target.wants
+%if %{without bootstrap}
 %doc %{_udevhwdbdir}/README
+%endif
 %doc %{_udevrulesdir}/README
 %ghost %attr(444, root, root) %{_sysconfdir}/udev/hwdb.bin
 %ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
@@ -59,9 +61,7 @@
 %{_bindir}/kernel-install
 %{_bindir}/systemd-cryptenroll
 %{_bindir}/systemd-cryptsetup
-%endif
 %{_bindir}/systemd-hwdb
-%if %{without bootstrap}
 %{_bindir}/systemd-repart
 %endif
 %{_bindir}/udevadm
@@ -274,8 +274,8 @@
 %{_systemd_util_dir}/systemd-sleep
 %{_systemd_util_dir}/systemd-timesyncd
 %{_systemd_util_dir}/systemd-udevd
-%{_systemd_util_dir}/systemd-vconsole-setup
 %if %{without bootstrap}
+%{_systemd_util_dir}/systemd-vconsole-setup
 %{_systemd_util_dir}/systemd-veritysetup
 %endif
 %{_systemd_util_dir}/systemd-volatile-root
@@ -296,6 +296,7 @@
 %{_sysusersdir}/systemd-timesync.conf
 %{_tmpfilesdir}/static-nodes-permissions.conf
 %{_tmpfilesdir}/systemd-pstore.conf
+%if %{without bootstrap}
 %{_udevhwdbdir}/20-OUI.hwdb
 %{_udevhwdbdir}/20-acpi-vendor.hwdb
 %{_udevhwdbdir}/20-bluetooth-vendor-product.hwdb
@@ -332,6 +333,7 @@
 %{_udevhwdbdir}/70-touchpad.hwdb
 %{_udevhwdbdir}/80-ieee1394-unit-function.hwdb
 %{_udevhwdbdir}/82-net-auto-link-local.hwdb
+%endif
 %{_udevrulesdir}/50-udev-default.rules
 %{_udevrulesdir}/60-autosuspend.rules
 %{_udevrulesdir}/60-block.rules
@@ -375,8 +377,8 @@
 %{_udevrulesdir}/82-net-auto-link-local.rules
 %{_udevrulesdir}/90-image-dissect.rules
 %{_udevrulesdir}/90-iocost.rules
-%{_udevrulesdir}/90-vconsole.rules
 %if %{without bootstrap}
+%{_udevrulesdir}/90-vconsole.rules
 %{_unitdir}/cryptsetup-pre.target
 %{_unitdir}/cryptsetup.target
 %endif
@@ -422,8 +424,8 @@
 %if %{with sd_boot}
 %{_unitdir}/sysinit.target.wants/systemd-hibernate-clear.service
 %endif
-%{_unitdir}/sysinit.target.wants/systemd-hwdb-update.service
 %if %{without bootstrap}
+%{_unitdir}/sysinit.target.wants/systemd-hwdb-update.service
 %{_unitdir}/sysinit.target.wants/systemd-modules-load.service
 %endif
 %{_unitdir}/sysinit.target.wants/systemd-random-seed.service
@@ -453,7 +455,9 @@
 %endif
 %{_unitdir}/systemd-hibernate-resume.service
 %{_unitdir}/systemd-hibernate.service
+%if %{without bootstrap}
 %{_unitdir}/systemd-hwdb-update.service
+%endif
 %{_unitdir}/systemd-hybrid-sleep.service
 %if %{without bootstrap}
 %{_unitdir}/systemd-modules-load.service
@@ -486,7 +490,9 @@
 %{_unitdir}/systemd-udevd-kernel.socket
 %{_unitdir}/systemd-udevd-varlink.socket
 %{_unitdir}/systemd-udevd.service
+%if %{without bootstrap}
 %{_unitdir}/systemd-vconsole-setup.service
+%endif
 %{_unitdir}/systemd-volatile-root.service
 %{_unitdir}/tpm2.target
 %if %{without bootstrap}

@@ -1,9 +1,59 @@
 -------------------------------------------------------------------
+Mon May 18 10:47:43 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Add a weak runtime dependency on libtss2-tcti-device0 to udev (bsc#1260357 bsc#1264224)
+
+-------------------------------------------------------------------
+Wed May 13 07:47:03 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: drop deprecated meson options 'libidn' and 'libiptc'
+
+  Remove -Dlibidn and -Dlibiptc from meson options as both have been fully
+  deprecated by upstream and will be removed in a future release.
+
+  The libidn library support was completely dropped in commit 429cbac508 and has
+  been replaced by libidn2.
+
+  OTOH, systemd-networkd and systemd-nspawn no longer support creating NAT rules
+  via iptables/libiptc APIs; only nftables is now supported (see commit
+  c3c42b30dd).
+
+-------------------------------------------------------------------
+Wed May 13 07:20:15 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit 1e45daa2fb423eb95ad00dcc389e03cfea8f86dc
+
+  1e45daa2fb vconsole-setup: skip setfont(8) when the console driver lacks font support (bsc#1212970)
+
+-------------------------------------------------------------------
+Tue May 12 13:44:42 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit 571d61da82f2654afacf52c620ceec3fbf220f6b
+
+  571d61da82 cryptsetup: avoid a segfault when a keyfile is passed along with a TPM device (bsc#1263117)
+  4e16626c0e mkosi: user and group bin needed for a test
+  e5f2b85204 TEST-24-CRYPTSETUP: Use virtio-blk-pci
+  9bac241fc1 TEST-64-UDEV-STORAGE: Add missing scsi controllers
+  8581b451ed Revert "mkosi: Mark minimal images as Incremental=relaxed"
+  5a53f0c965 mkosi-tool/opensuse: add libtss2-tcti-device0 package
+
+-------------------------------------------------------------------
+Wed May 06 13:22:03 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: drop ancient Obsoletes for pm-utils, suspend and
+  systemd-analyze that predate 2020.
+
+-------------------------------------------------------------------
 Tue Mar 17 16:18:41 UTC 2026 - Franck Bui <fbui@suse.com>
 
 - Upgrade to v260.1 (commit c0a5a2516d28601fb3afc1a77d7b42fcfe38fced)
 
   See https://github.com/openSUSE/systemd/blob/SUSE/v260/NEWS for details.
+
+  This update includes the following fix:
+
+    b6469b0191 kmod-setup: load vsock_loopback alongside vsock (bsc#1259145)
+    e5a5656b55 machined: do not allow unprivileged users to shell into the root namespace via varlink (bsc#1261978 CVE-2026-40224 GHSA-6pwp-j5vg-5j6m)
 
   - Drop support for System V service scripts.
 
