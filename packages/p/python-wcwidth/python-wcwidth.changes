@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 19 20:39:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * **New** support for kitty text sizing protocol (OSC 66) in
+    `width()` and `clip()`.
+  * **New** `clip()` parameter ``control_codes='parse'``,
+    ``'ignore'``, and ``'strict'``.
+  * **Improved** `clip()` and `width()` to support horizontal
+    cursor sequences (``cub``, ``cuf``, ``hpa``).
+    Cursor-left (``cub``) or backspace (``b``) now
+    overwrites text.  column_address (``hpa``) and carriage
+    return (``r``) are now parsed, and more values conditionally
+    raise ``ValueError`` when ``control_codes='strict'``.
+
+-------------------------------------------------------------------
 Sun Apr 12 22:17:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.0:

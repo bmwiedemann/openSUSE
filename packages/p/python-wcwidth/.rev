@@ -270,4 +270,22 @@ add explicit Requires for python-importlib_metadata for Python &lt; 3.8</comment
   * Add fast path for ASCII printables to `width()`</comment>
     <requestid>1346289</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7bf271bbb1a8183c3337ae50431da21a</srcmd5>
+    <version>0.7.0</version>
+    <time>1779380723</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.0:
+  * **New** support for kitty text sizing protocol (OSC 66) in
+    `width()` and `clip()`.
+  * **New** `clip()` parameter ``control_codes='parse'``,
+    ``'ignore'``, and ``'strict'``.
+  * **Improved** `clip()` and `width()` to support horizontal
+    cursor sequences (``cub``, ``cuf``, ``hpa``).
+    Cursor-left (``cub``) or backspace (``b``) now
+    overwrites text.  column_address (``hpa``) and carriage
+    return (``r``) are now parsed, and more values conditionally
+    raise ``ValueError`` when ``control_codes='strict'``.</comment>
+    <requestid>1354094</requestid>
+  </revision>
 </revisionlist>

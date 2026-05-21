@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-wcwidth
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Number of Terminal column cells of wide-character codes
 License:        MIT
