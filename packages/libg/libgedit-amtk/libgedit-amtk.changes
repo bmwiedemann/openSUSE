@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 14 16:26:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.10.0:
+  + Change the definition of Amtk to "The Good Morning Toolkit".
+    libgedit-amtk contains extra features for GTK 3, not only
+    limited to the "Actions, Menus and Toolbars Kit".
+  + Add AmtkTreeViewScrolledWindowSizing, an improved version
+    imported from libgedit-gtksourceview.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:10:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

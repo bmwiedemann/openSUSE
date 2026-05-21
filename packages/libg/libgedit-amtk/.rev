@@ -48,4 +48,17 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342982</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ccb10941328735b3835886ca5c2710b5</srcmd5>
+    <version>5.10.0</version>
+    <time>1779380744</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.10.0:
+  + Change the definition of Amtk to &quot;The Good Morning Toolkit&quot;.
+    libgedit-amtk contains extra features for GTK 3, not only
+    limited to the &quot;Actions, Menus and Toolbars Kit&quot;.
+  + Add AmtkTreeViewScrolledWindowSizing, an improved version
+    imported from libgedit-gtksourceview.</comment>
+    <requestid>1354189</requestid>
+  </revision>
 </revisionlist>
