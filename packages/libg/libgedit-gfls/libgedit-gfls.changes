@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 14 17:01:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.1:
+  + Fix a unit test on big-endian architectures.
+  + Updated translations.
+- Changes from version 0.4.0:
+  + New features: GflsBytesRegion, GflsBytesRegionBuilder and
+    GflsEncodingConvert.
+  + New features imported from libgedit-gtksourceview: GflsIconv.
+  + GflsInputStream: import improved version from
+    libgedit-gtksourceview.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:06:32 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

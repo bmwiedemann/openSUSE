@@ -39,4 +39,21 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342983</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ff465a1b70523d2170151636f89eb653</srcmd5>
+    <version>0.4.1</version>
+    <time>1779380746</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.1:
+  + Fix a unit test on big-endian architectures.
+  + Updated translations.
+- Changes from version 0.4.0:
+  + New features: GflsBytesRegion, GflsBytesRegionBuilder and
+    GflsEncodingConvert.
+  + New features imported from libgedit-gtksourceview: GflsIconv.
+  + GflsInputStream: import improved version from
+    libgedit-gtksourceview.
+  + Updated translations.</comment>
+    <requestid>1354190</requestid>
+  </revision>
 </revisionlist>
