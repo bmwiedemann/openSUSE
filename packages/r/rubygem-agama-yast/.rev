@@ -696,4 +696,12 @@
  - Add support for configuring pervasive encryption APQNs and key</comment>
     <requestid>1353022</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c175e6ca216298aedb06358c788e29bf</srcmd5>
+    <version>21</version>
+    <time>1779380751</time>
+    <user>anag_factory</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1353700</requestid>
+  </revision>
 </revisionlist>

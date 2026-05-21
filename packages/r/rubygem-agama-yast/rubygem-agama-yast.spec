@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-agama-yast
-Version:        20.devel384.151dec0bb
+Version:        21
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}
@@ -33,10 +33,9 @@ Release:        0
 BuildRequires:  dbus-1-common
 Requires:       dbus-1-common
 # /MANUAL
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  update-alternatives
+BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/agama-project/agama
 Source:         %{mod_full_name}.gem
 Source1:        gem2rpm.yml
