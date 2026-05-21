@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 21 13:47:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.65.0:
+  * Load Balancer HTTP Services now support TimeoutIdle
+    A timeout for HTTP connections can now be set with
+    --http-timeout-idle while creating or updating Load Balancer
+    services.
+    See the changelog for more information.
+    https://docs.hetzner.cloud/changelog#2026-04-30-load-balancers-http-idle-timeout-can-now-be-configured
+  * Features
+    - load-balancer: support --http-timeout-idle flag (#1394)
+  * Dependencies
+    - deps: update dependency jdx/mise to v2026.5.9 (#1404)
+    - deps: update golang.org/x/ (#1406)
+    - deps: update dependency jdx/mise to v2026.5.2 (#1392)
+    - deps: update dependency go to v1.26.3 (#1402)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.40.0 (#1401)
+    - deps: update dependency github:golangci/golangci-lint to
+      v2.12.2 (#1400)
+
+-------------------------------------------------------------------
 Thu Apr 30 05:15:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.64.1:
