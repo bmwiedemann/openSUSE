@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 19 21:57:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Add Python 3.14 support
+- update to 1.5.2:
+  * deps: add PyYaml module as runtime requirement
+- update to 1.5.1:
+  * Python 3.13 is now supported. Using hatch as build system.
+  * (fixes 1.5.0 which didn't have the minimum Python version of
+    3.7 specified)
+- update to 1.5.0:
+  * Python 3.13 is now supported. Using hatch as build system.
+
+-------------------------------------------------------------------
 Mon Apr 14 16:20:30 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file.

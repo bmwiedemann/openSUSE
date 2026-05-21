@@ -1,7 +1,7 @@
 #
 # spec file for package python-yamlloader
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yamlloader
-Version:        1.4.1
+Version:        1.6.0
 Release:        0
 Summary:        Ordered YAML loader and dumper for PyYAML
 License:        MIT
@@ -27,11 +27,12 @@ URL:            https://github.com/Phynix/yamlloader
 Source:         https://files.pythonhosted.org/packages/source/y/yamlloader/yamlloader-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,6 +60,8 @@ feature of regular dicts.)
 # there are no tests at all. Sorry.
 
 %files %{python_files}
+%license LICENSE
+%doc README.rst
 %{python_sitelib}/yamlloader
 %{python_sitelib}/yamlloader-%{version}*-info
 
