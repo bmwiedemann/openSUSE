@@ -23,6 +23,8 @@ Summary:        Rust integration into existing CMake project
 License:        MIT
 URL:            https://corrosion-rs.github.io/corrosion/
 Source0:        https://github.com/corrosion-rs/corrosion/archive/refs/tags/v%{version}.tar.gz#/corrosion-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Install-cxxbridge-cmd-without-locked.patch
 BuildRequires:  cargo
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 19 15:26:07 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix use with a single project-wide vendor tarball,
+  as produced by obs-service-cargo(_vendor)
+  (gh#corrosion-rs/corrosion#672):
+  * 0001-Install-cxxbridge-cmd-without-locked.patch
+
+-------------------------------------------------------------------
 Sat Dec 20 20:59:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.6.0
