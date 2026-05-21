@@ -16,10 +16,10 @@
 #
 
 
-%define sover 4
+%define sover 5
 
 Name:           libgedit-gtksourceview
-Version:        299.6.0
+Version:        299.7.0
 Release:        0
 Summary:        Source code editing widget
 License:        LGPL-2.1-or-later
@@ -32,6 +32,8 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.74
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libgedit-amtk-5) >= 5.10
+BuildRequires:  pkgconfig(libgedit-gfls-1)
 
 %description
 libgedit-gtksourceview is a library that extends GtkTextView, the standard GTK

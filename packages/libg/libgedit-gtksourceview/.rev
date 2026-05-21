@@ -68,4 +68,32 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342984</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4cba9fab50f6cb5644239a162b24ab26</srcmd5>
+    <version>299.7.0</version>
+    <time>1779380747</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 299.7.0:
+  + Completion framework:
+    - Cherry-pick a few commits from GtkSourceView 4 to no longer
+      use deprecated API and use gdk_window_move_to_rect().
+    - Move GtkSourceCompletionContainer to libgedit-amtk as
+      AmtkTreeViewScrolledWindowSizing.
+    - Some code refactorings.
+  + File loading and saving:
+    - Move some code to libgedit-gfls and depend on it:
+      . GtkSourceIconv -&gt; GflsIconv
+      . GtkSourceInputStream -&gt; GflsInputStream
+      . Use gfls_encoding_try_convert()
+  + Syntax highlightging: Improvements to the syntax highlighting
+    of: markdown and yaml.
+  + Other:
+    - A new public function in GtkSourceBuffer.
+    - Avoid some code duplication.
+  + Updated translations.
+- Bump soname define.
+- Add pkgconfig(libgedit-amtk-5) and pkgconfig(libgedit-gfls-1)
+  BuildRequires: New dependencies.</comment>
+    <requestid>1354191</requestid>
+  </revision>
 </revisionlist>
