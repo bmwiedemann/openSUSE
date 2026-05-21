@@ -72,4 +72,25 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>60a2f7f5fd554e88cedd54622915b18d</srcmd5>
+    <version>0.110.0</version>
+    <time>1779381144</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.110.0 (0.11)
+   0.11      2026-05-20 14:05:07+01:00 Europe/London
+    - Fixed metadata
+    - Moved author tests into xt
+   0.10      2026-05-19
+    - Maintenance taken over by Robert Rothenberg &lt;perl@rhizomnic.com&gt;
+    - Updated the Git Repository
+    - Updated copyright year
+    - Minimum Perl version is v5.6.0
+    - Added missing prerequisites, fixes RT#116392
+    - Security: Use system randomness source to generate the salt CVE-2026-47372 bsc#1265927
+    - Security: Use constant-time comparison of hashes CVE-2026-47373 bsc#1265912
+    - Deprecated module
+    - Updated README</comment>
+    <requestid>1354455</requestid>
+  </revision>
 </revisionlist>
