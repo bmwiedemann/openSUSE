@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 19 11:21:27 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.11.5:
+  * v0.11.5
+  * lib: fix fd leak
+  * update libdrm_amdgpu_sys
+  * tui: change the background color in dark mode
+  * json: fix average_dram_writes
+  * update metainfo
+
+-------------------------------------------------------------------
 Thu Apr 23 09:01:26 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 0.11.4:
