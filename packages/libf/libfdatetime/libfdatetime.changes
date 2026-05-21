@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 21 08:08:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260521
+  * Support for negative 32-bit UNIX/POSIX timestamps
+
+-------------------------------------------------------------------
 Mon Apr 15 06:46:12 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240415

@@ -1,7 +1,7 @@
 #
 # spec file for package libfdatetime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libfdatetime
 %define lname	libfdatetime1
-Version:        20240415
+Version:        20260521
 Release:        0
 Summary:        A library for date and time data types
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libfdatetime/releases/download/%versio
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20240413
+BuildRequires:  pkgconfig(libcerror) >= 20260513
 # Various notes: https://en.opensuse.org/libyal
 
 %description
