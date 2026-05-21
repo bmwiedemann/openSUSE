@@ -1,7 +1,7 @@
 #
 # spec file for package skiboot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,8 +63,8 @@ on such systems and update the OpenPower firmware.
 Summary:        OPAL firmware
 Group:          System/Management
 BuildArch:      noarch
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Provides:       qemu-skiboot
+Conflicts:      qemu-skiboot
 
 %description -n opal-firmware
 OPAL firmware, aka skiboot, loads the bootloader and provides runtime
@@ -94,10 +94,7 @@ install -D -m 444 -p external/opal-prd/opal-prd.service %{buildroot}%{_unitdir}/
 
 %if %build_firmware
 mkdir -p %{buildroot}%{_datadir}/qemu
-install -m 644 -p skiboot.lid %{buildroot}%{_datadir}/qemu/skiboot.lid.opal
-# create a dummy target for /etc/alternatives/skiboot.lid
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/skiboot.lid %{buildroot}%{_datadir}/qemu/skiboot.lid
+install -m 644 -p skiboot.lid %{buildroot}%{_datadir}/qemu/skiboot.lid
 %endif
 
 %pre -n opal-prd
@@ -113,13 +110,15 @@ ln -s -f %{_sysconfdir}/alternatives/skiboot.lid %{buildroot}%{_datadir}/qemu/sk
 %service_del_postun opal-prd.service
 
 %if %build_firmware
-%post -n opal-firmware
-update-alternatives --install \
-   %{_datadir}/qemu/skiboot.lid skiboot.lid %{_datadir}/qemu/skiboot.lid.opal 10
-
-%postun -n opal-firmware
-if [ ! -f %{_datadir}/qemu/skiboot.lid.opal ] ; then
-   update-alternatives --remove skiboot.lid %{_datadir}/qemu/skiboot.lid.opal
+%pre -n opal-firmware
+# Remove the old symlink from where we were using update-alternatives
+if [ "$1" -ge 1 ]; then
+    if [ -x %{_sbindir}/update-alternatives ]; then
+        %{_sbindir}/update-alternatives --remove skiboot.lid %{_datadir}/qemu/skiboot.lid.opal || :
+    fi
+    if [ -L %{_datadir}/qemu/skiboot.lid ]; then
+        rm -f %{_datadir}/qemu/skiboot.lid
+    fi
 fi
 %endif
 
@@ -149,8 +148,6 @@ fi
 %doc README.md LICENCE
 %dir %{_datadir}/qemu
 %{_datadir}/qemu/skiboot.lid
-%{_datadir}/qemu/skiboot.lid.opal
-%ghost %_sysconfdir/alternatives/skiboot.lid
 %endif
 
 %changelog

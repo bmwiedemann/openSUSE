@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 21 11:23:59 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Move away from update-alternatives as required by jsc#PED-15661
+
+-------------------------------------------------------------------
 Wed Oct  7 16:21:24 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Change the %build_firmware to build on 15 SP3
