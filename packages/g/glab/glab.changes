@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Thu May 21 05:22:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.99.0:
+  * Features
+    - 45b1a43c: feat(orbit): add glab orbit remote dsl subcommand
+      (Michael Angelo Rivera arivera@gitlab.com)
+- Update to version 1.98.1 (1.98.0 was not released):
+  * Features
+    - 4508ae6b: feat(api): detect coding agents in User-Agent
+      header (Jean-Gabriel Doyon jgdoyon@gitlab.com)
+    - 32489b18: feat: add glab work-items update (Carlos Corona
+      ccorona@gitlab.com)
+    - 646d89b3: feat(auth): add OAuth 2.0 device authorization flow
+      for glab auth login (Kai Armstrong karmstrong@gitlab.com)
+    - c52b7b2c: feat(skills): add skills list and bundle glab-stack
+      skill (Kai Armstrong karmstrong@gitlab.com)
+    - 5777fca9: feat: add glab mr note update and glab mr note
+      delete commands (Tomas Vik tvik@gitlab.com)
+    - 85e204a3: feat(ci): add --mr and --failed-jobs-only flags to
+      glab ci get (Eduardo Bonet ebonet@gitlab.com)
+    - 8073187d: feat(skills): add curated remote skill source
+      backed by gitlab.com (Kai Armstrong karmstrong@gitlab.com)
+  * Bug Fixes
+    - 1a815c81: fix(orbit): preserve @ in JSON string literals for
+      orbit remote query (Dmitry Gruzd dgruzd@gitlab.com)
+    - ac76df59: fix(orbit): stream raw response body in 'remote
+      query' (Dmitry Gruzd dgruzd@gitlab.com)
+    - 95ee612f: fix(orbit): address review nits from !3269 (merged)
+      (Dmitry Gruzd dgruzd@gitlab.com)
+    - 1f0076d7: fix: enable OSC 8 hyperlinks by default in TTY
+      terminals (Brendan Lynch blynch@gitlab.com)
+    - 283611d8: fix(orbit): adopt client-go QueryRaw for streaming
+      response body (Dmitry Gruzd dgruzd@gitlab.com)
+  * Documentation
+    - 0d634e3e: docs: replace getting-started.gif with VHS-driven
+      recording (Kai Armstrong karmstrong@gitlab.com)
+    - ac1a7e68: docs: improve glab api command docs (Brendan Lynch
+      blynch@gitlab.com)
+    - 7e95900f: docs: improve glab attestation commands docs
+      (Brendan Lynch blynch@gitlab.com)
+    - 21f6647b: docs: improve glab auth commands docs (Brendan
+      Lynch blynch@gitlab.com)
+    - d9df010f: docs: improve glab alias command docs (Brendan
+      Lynch blynch@gitlab.com)
+    - 41aa1096: docs: improve glab changelog and glab check-update
+      command docs (Brendan Lynch blynch@gitlab.com)
+    - 234c3ed1: docs: improve glab cli command docs 1 (Brendan
+      Lynch blynch@gitlab.com)
+    - 5a787012: docs: maintenance task - update redirected links
+      (Uma Chandran uchandran@gitlab.com)
+  * Dependencies
+    - fb32af9d: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.25.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - de67aa8b: chore(deps): update dependency
+      @commitlint/config-conventional to ^20.5.3 (GitLab Renovate
+      Bot gitlab-bot@gitlab.com)
+    - 91d80b0c: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.26.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 120abea0: chore(deps): update module
+      github.com/docker/docker-credential-helpers to v0.9.7 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 8a22a890: chore(deps): update dependency @commitlint/cli to
+      v21 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 0bf3140e: chore(deps): update dependency
+      @commitlint/config-conventional to v21 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 4386cdd7: chore(deps): update dependency @commitlint/lint to
+      v21 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - dca41751: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.26.1 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 2a28d5bd: chore(deps): update dependency @commitlint/read to
+      v21 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - bc0f789a: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.27.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 818a3a88: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.28.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - b7452760: chore(deps): update dependency
+      @commitlint/config-conventional to ^21.0.1 (GitLab Renovate
+      Bot gitlab-bot@gitlab.com)
+    - 24e1895e: chore(deps): update dependency @commitlint/lint to
+      ^21.0.1 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 1b913446: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.29.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - d1346954: chore(deps): update module k8s.io/client-go to
+      v0.36.1 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 6f6a1830: chore(deps): update dependency @commitlint/read to
+      ^21.0.1 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 02372655: chore(deps): update dependency @commitlint/cli to
+      ^21.0.1 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 6f92316b: chore(deps): update dependency @commitlint/format
+      to v21 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - bfc43900: refactor(skills): support multi-file skills and
+      fail-fast on bad bundles (Kai Armstrong
+      karmstrong@gitlab.com)
+    - 93a9e5b2: ci: set MTU on docker:dind for release jobs (Stan
+      Hu stanhu@gmail.com)
+  * Others
+    - b402a62f: test(binarymgr): isolate runner_test config writes
+      from the user's config (Jay McCure jmccure@gitlab.com)
+- rebase patch glab-disable_update_check.patch
+
+-------------------------------------------------------------------
 Wed May 13 04:41:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.97.0:
