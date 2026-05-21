@@ -262,4 +262,17 @@ Binary file ruby-4.0.1.tar.xz (revision 4) deleted</comment>
   - Bug #21933: Ruby::Box: named capture local variable can become</comment>
     <requestid>1352573</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>06dce89496de9830cf6d9358c7973eb1</srcmd5>
+    <version>4.0.5</version>
+    <time>1779380757</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.5 (boo#1265890 boo#1265891)
+  - CVE-2026-46727: Use-after-free in pthread-based getaddrinfo
+    timeout handler
+  - Bug #22065: make rdoc fails with invalid byte sequence in
+    US-ASCII on Ruby 4.0.4 under C locale - Ruby - Ruby Issue
+    Tracking System</comment>
+    <requestid>1354215</requestid>
+  </revision>
 </revisionlist>

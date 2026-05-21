@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 20 09:47:43 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.5 (boo#1265890 boo#1265891)
+  - CVE-2026-46727: Use-after-free in pthread-based getaddrinfo
+    timeout handler
+  - Bug #22065: make rdoc fails with invalid byte sequence in
+    US-ASCII on Ruby 4.0.4 under C locale - Ruby - Ruby Issue
+    Tracking System
+
+-------------------------------------------------------------------
 Mon May 11 23:40:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - make install also need the locale set on 15.x
