@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 14 15:30:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Copy the plugins from the gedit-plugins repository: Word
+    Completion, Smart Spaces, Draw Spaces and Bookmarks. The
+    gedit-plugins repository will be archived.
+  + Guidelines: no LLM AI tools.
+  + macOS: small build simplification.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:32:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

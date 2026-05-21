@@ -1302,4 +1302,18 @@ Pushing GNOME 45.rc packages</comment>
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342950</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>d0bbbc9a14aebbd61c0a1ce80f07fca2</srcmd5>
+    <version>50.0</version>
+    <time>1779380743</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.0:
+  + Copy the plugins from the gedit-plugins repository: Word
+    Completion, Smart Spaces, Draw Spaces and Bookmarks. The
+    gedit-plugins repository will be archived.
+  + Guidelines: no LLM AI tools.
+  + macOS: small build simplification.
+  + Updated translations.</comment>
+    <requestid>1354187</requestid>
+  </revision>
 </revisionlist>

@@ -16,10 +16,10 @@
 #
 
 
-%define api_ver 49
+%define api_ver 50
 
 Name:           gedit
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
