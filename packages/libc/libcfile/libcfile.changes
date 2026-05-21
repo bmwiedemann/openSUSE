@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 21 00:07:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260520
+  * `libcfile_file_open_with_error_code` now supports file
+    alignment on pre-Vista Windows environments
+
+-------------------------------------------------------------------
 Sun Apr 14 08:45:03 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240414
