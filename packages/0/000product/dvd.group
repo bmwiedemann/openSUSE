@@ -1964,7 +1964,7 @@
     <package name="libgedit-gfls-1-0" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-gfls-lang" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-gtksourceview" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
-    <package name="libgedit-gtksourceview-300-4" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
+    <package name="libgedit-gtksourceview-300-5" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-gtksourceview-lang" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-tepl-6-4" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-tepl-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
@@ -2745,7 +2745,7 @@
     <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libtss2-rc0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libtss2-sys1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libtss2-tcti-device0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libtss2-tcti-device0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libtss2-tcti-tabrmd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libtss2-tctildr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtumbler-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -3147,8 +3147,8 @@
     <package name="openssh-clients" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="openssh-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="openssh-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="openssl-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="openssl-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opensuse-welcome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opensuse-welcome-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opensuse-welcome-launcher" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

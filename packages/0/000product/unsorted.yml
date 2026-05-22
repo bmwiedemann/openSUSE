@@ -3063,6 +3063,8 @@ unsorted:
   - cwstudio 
   - cwstudio-gui 
   - cxref 
+  - cxx-rust-cssparser 
+  - cxx-rust-cssparser-devel 
   - cxxbridge 
   - cxxopts-devel 
   - cxxtools-devel 
@@ -11342,27 +11344,27 @@ unsorted:
   - libOsiClp1 
   - libPDAL20 
   - libPlasma6-lang 
-  - libPocoActiveRecord112 
-  - libPocoCppParser112 
-  - libPocoCrypto112 
-  - libPocoData112 
-  - libPocoDataMySQL112 
-  - libPocoDataODBC112 
-  - libPocoDataPostgreSQL112 
-  - libPocoDataSQLite112 
-  - libPocoEncodings112 
-  - libPocoFoundation112 
-  - libPocoJSON112 
-  - libPocoJWT112 
-  - libPocoMongoDB112 
-  - libPocoNet112 
-  - libPocoNetSSL112 
-  - libPocoPDF112 
-  - libPocoPrometheus112 
-  - libPocoRedis112 
-  - libPocoUtil112 
-  - libPocoXML112 
-  - libPocoZip112 
+  - libPocoActiveRecord123 
+  - libPocoCppParser123 
+  - libPocoCrypto123 
+  - libPocoData123 
+  - libPocoDataMySQL123 
+  - libPocoDataODBC123 
+  - libPocoDataPostgreSQL123 
+  - libPocoDataSQLite123 
+  - libPocoEncodings123 
+  - libPocoFoundation123 
+  - libPocoJSON123 
+  - libPocoJWT123 
+  - libPocoMongoDB123 
+  - libPocoNet123 
+  - libPocoNetSSL123 
+  - libPocoPDF123 
+  - libPocoPrometheus123 
+  - libPocoRedis123 
+  - libPocoUtil123 
+  - libPocoXML123 
+  - libPocoZip123 
   - libQCSXCAD0 
   - libQCoro5Core0 
   - libQCoro5DBus0 
@@ -12847,6 +12849,7 @@ unsorted:
   - libcxx-gtk-utils-3-devel 
   - libcxx-gtk-utils-4-2_2-0 
   - libcxx-gtk-utils-4-devel 
+  - libcxx-rust-cssparser1 
   - libcxxtools-bin10 
   - libcxxtools-http10 
   - libcxxtools-json10 
@@ -15274,8 +15277,6 @@ unsorted:
   - libosmo-mslookup0 
   - libosmo-octoi3 
   - libosmo-ranap7 
-  - libosmo-rspro-devel 
-  - libosmo-rspro1 
   - libosmo-rua0 
   - libosmo-sabp1 
   - libosmo-sigtran-devel 
@@ -21017,9 +21018,6 @@ unsorted:
   - osmo-mslookup-client 
   - osmo-pcap 
   - osmo-pcu 
-  - osmo-remsim-bankd 
-  - osmo-remsim-client 
-  - osmo-remsim-server 
   - osmo-sgsn 
   - osmo-sip-connector 
   - osmo-smlc 
@@ -24046,7 +24044,6 @@ unsorted:
   - python3-botan 
   - python3-bump2version 
   - python3-bytesize 
-  - python3-caca 
   - python3-capng 
   - python3-capstone 
   - python3-casacore 
@@ -25194,6 +25191,7 @@ unsorted:
   - python311-buttplug 
   - python311-bytecode 
   - python311-cPyparsing 
+  - python311-caca 
   - python311-cached-property 
   - python311-cachelib 
   - python311-cachetools 
@@ -28175,7 +28173,6 @@ unsorted:
   - python312-onnx 
   - python312-packaging 
   - python312-pathspec 
-  - python312-pegasus-wms.api 
   - python312-pip 
   - python312-pip-wheel 
   - python312-pipx 
@@ -29125,6 +29122,7 @@ unsorted:
   - python313-buttplug 
   - python313-bytecode 
   - python313-cPyparsing 
+  - python313-caca 
   - python313-cachelib 
   - python313-cachetools 
   - python313-cachey 
@@ -33072,6 +33070,7 @@ unsorted:
   - python314-buttplug 
   - python314-bytecode 
   - python314-cPyparsing 
+  - python314-caca 
   - python314-cached-property 
   - python314-cachelib 
   - python314-cachetools 
@@ -34648,6 +34647,7 @@ unsorted:
   - python314-peewee 
   - python314-peewee-migrate 
   - python314-pefile 
+  - python314-pegasus-wms.api 
   - python314-pegasus-wms.common 
   - python314-pegen 
   - python314-pelican 
@@ -35656,6 +35656,7 @@ unsorted:
   - python314-sse-starlette 
   - python314-sseclient 
   - python314-sshpubkeys 
+  - python314-sshtunnel 
   - python314-stack-data 
   - python314-standard-aifc 
   - python314-standard-chunk 
