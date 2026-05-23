@@ -91,4 +91,14 @@
     <comment>- Update to release 20240415</comment>
     <requestid>1167890</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>402731ea86ddbb7ab8bf498e97c29f30</srcmd5>
+    <version>20260521</version>
+    <time>1779571387</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20260521
+
+there is no dependency on fwnt here, and security:forensics/libfwnt builds fine</comment>
+    <requestid>1354480</requestid>
+  </revision>
 </revisionlist>
