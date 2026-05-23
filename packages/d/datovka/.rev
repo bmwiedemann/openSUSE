@@ -673,4 +673,41 @@
    to appropriate locations now.</comment>
     <requestid>1332172</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>49790aa00b6415fbfc15beffc5a3948e</srcmd5>
+    <version>4.29.1</version>
+    <time>1779571435</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.29.1
+  * Added a default global option into settings whether to automatically
+    download a message immediately after it has been sent. This option can be
+    overridden for individual messages.
+  * Apply timestamp expiration notification interval settings in the tracked
+    timestamps widget and also the restamping dialogue. Default value has been
+    increased to 30 days.
+  * Added options whether to automatically enable timestamp tracking for freshly
+    downloaded messages.
+  * Fixed compilation warnings about deprecated cstdbool.
+  * Disabled the survey.
+  * Mobile key login status retrieval method can be configured to use the old
+    or new version.
+  * Aborting PIN request dialogue when halt required.
+  * Able to directly (without explicit conversion) read data from message
+    databases as they are used in the version 2.6.0 of the mobile application.
+  * Can drag downloaded messages from main window's message list.
+  * Can drag downloaded messages from list of found messages from the search
+    message dialogue.
+  * Fixed data import from mobile application.
+  * Enabled Delete and Command+Backspace shortcuts to delete content in views.
+  * Enabled Ctrl+C on message lists and attachment list.
+  * Enabled Ctrl+V on attachment list in send message dialogue.
+  * Displaying more detailed information about the state of the MEP wait loop.
+  * Closing the about dialogue after a short delay when the donate button is
+    pressed.
+  * Showing survey dialogue for users with more than 6 data boxes.
+  * Whole locally stored content can be scanned for timestamp expiration and
+    sent for restamping.
+  * Using bundled QuaZIP-1.5 when compiling with Qt-6.</comment>
+    <requestid>1354641</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package datovka
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define lrelease lrelease-qt5
 %endif
 Name:           datovka
-Version:        4.28.0
+Version:        4.29.1
 Release:        0
 Summary:        Library to access Czech eGov system "Datove schranky"
 License:        GPL-3.0-or-later
