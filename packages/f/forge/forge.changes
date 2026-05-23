@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 22 19:13:43 UTC 2026 - msuchanek@suse.de
+
+- Update to version 0.5.1:
+  * Fix browse <path> URL on non-GitHub forges (#96)
+  * Add a bunch of aliases to align with gh (#91)
+
+-------------------------------------------------------------------
 Sat May 09 09:25:51 UTC 2026 - msuchanek@suse.de
 
 - Update to version 0.5.0:
