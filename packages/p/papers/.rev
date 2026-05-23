@@ -185,4 +185,13 @@
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346749</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>8941bd1358643b4c48b8a9c16864f34d</srcmd5>
+    <version>50.1</version>
+    <time>1779571379</time>
+    <user>dimstar_suse</user>
+    <comment>- Add papers-CVE-2026-46529.patch: escape link arguments before
+  spawning a new process (bsc#1265880 CVE-2026-46529).</comment>
+    <requestid>1354485</requestid>
+  </revision>
 </revisionlist>

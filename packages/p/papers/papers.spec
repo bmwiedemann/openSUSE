@@ -31,6 +31,8 @@ URL:            https://gitlab.gnome.org/GNOME/papers
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        %{name}-test-data-0.tar.xz
+# PATCH-FIX-UPSTREAM papers-CVE-2026-46529.patch bsc#1265880 mgorse@suse.com -- escape link arguments before spawning a new process.
+Patch2:         papers-CVE-2026-46529.patch
 BuildRequires:  blueprint-compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
@@ -140,7 +142,7 @@ A extension for support document on nautilus.
 %lang_package
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 tar -xf %{SOURCE2} --strip-components=1 -C test-data
 
 %build
