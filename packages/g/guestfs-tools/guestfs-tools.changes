@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 21 09:22:14 MDT 2026 - carnold@suse.com
+
+- Update to version 1.55.8 (jsc#PED-14625)
+  virt-builder: document Windows firstboot exit code behavior
+  virt-builder: document exit code 250 for Windows firstboot
+  mlcustomize: firstboot.bat must not reboot VM on error code 250
+  sysprep: Remove documentation about copying and cloning
+  sysprep: Improve synopsis section
+  sysprep: Rework documentation
+  customize, sysprep: Move firstboot docs from sysprep -> customize
+  mlcustomize: Update generated files
+  builder, customize: Combine and rework firstboot documentation
+
+-------------------------------------------------------------------
 Tue Apr 28 16:04:12 MDT 2026 - carnold@suse.com
 
 - Update to version 1.55.7 (jsc#PED-14625)
