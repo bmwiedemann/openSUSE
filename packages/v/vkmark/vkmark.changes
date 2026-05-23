@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 22 09:46:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2025.01+git.20250909:
+  * meson: Enable devenv support
+  * src/meson.build: revert to older form to find vx.xml
+  * meson: fix cross-compilation (#50, #75)
+  * meson: replace deprecated get_pkgconfig_variable
+  * github: drop ubuntu-20.04 due to retirement
+
+-------------------------------------------------------------------
 Wed Apr  9 09:56:07 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2025.01+git.20250317:
