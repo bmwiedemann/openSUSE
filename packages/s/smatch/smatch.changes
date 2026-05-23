@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 22 08:24:13 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 1.75+20260504:
+  * pre-process: silence a -Wformat-truncation warning
+  * debug: fix a macro expansion bug in the parameter casting
+  * math: resurrect handle_implied_binop()
+  * math: use comparison_no_extra()
+  * check_debug: fix the silent casting some more
+  * ranges: handle negative MODs
+  * ranges: move functions around
+  * math: re-write bitwise OR handling
+  * kernel: rename the check_kernel() function to register_kernel()
+  * kernel: rename check_kernel.c to smatch_kernel.c
+- switch to tar_scm, given we live in git
+- Removed (upstream):
+  check_free-declare-is_percent_p_print-before-use.patch
+
+-------------------------------------------------------------------
+Wed Aug 20 15:55:16 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- set the smatch_data path during build so smatch can run without
+  complaining about missing files
+
+-------------------------------------------------------------------
 Fri May 30 08:46:21 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to version 1.73+20250528:

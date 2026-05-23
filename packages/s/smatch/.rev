@@ -193,4 +193,28 @@
   * and much more...</comment>
     <requestid>1281317</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>359330e1eb6c0548d3dd1662528e4dcf</srcmd5>
+    <version>1.75+20260504</version>
+    <time>1779571432</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.75+20260504:
+  * pre-process: silence a -Wformat-truncation warning
+  * debug: fix a macro expansion bug in the parameter casting
+  * math: resurrect handle_implied_binop()
+  * math: use comparison_no_extra()
+  * check_debug: fix the silent casting some more
+  * ranges: handle negative MODs
+  * ranges: move functions around
+  * math: re-write bitwise OR handling
+  * kernel: rename the check_kernel() function to register_kernel()
+  * kernel: rename check_kernel.c to smatch_kernel.c
+- switch to tar_scm, given we live in git
+- Removed (upstream):
+  check_free-declare-is_percent_p_print-before-use.patch
+
+- set the smatch_data path during build so smatch can run without
+  complaining about missing files</comment>
+    <requestid>1354637</requestid>
+  </revision>
 </revisionlist>

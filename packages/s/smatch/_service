@@ -1,14 +1,12 @@
 <services>
-  <service mode="manual" name="obs_scm">
-    <param name="url">git://repo.or.cz/smatch.git</param>
+  <service mode="manual" name="tar_scm">
+    <param name="url">https://github.com/error27/smatch</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@+%cd</param>
   </service>
   <service mode="manual" name="set_version"/>
-
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="recompress" mode="manual">
     <param name="file">smatch-*.tar</param>
     <param name="compression">xz</param>
   </service>

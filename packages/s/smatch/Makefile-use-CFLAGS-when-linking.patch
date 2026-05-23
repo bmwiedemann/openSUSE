@@ -8,14 +8,12 @@ So that everything is built properly.
 
 Signed-off-by: Jiri Slaby <jslaby@suse.cz>
 ---
- Makefile | 2 +-
+ Makefile |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Makefile b/Makefile
-index d0b109f5..be678e7c 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -383,7 +383,7 @@ SMATCH_SCRIPTS=smatch_scripts/add_gfp_to_allocations.sh \
+@@ -410,7 +410,7 @@ SMATCH_SCRIPTS=smatch_scripts/add_gfp_to
  SMATCH_LDFLAGS := -lsqlite3  -lssl -lcrypto -lm
  
  smatch: smatch.o $(SMATCH_OBJS) $(SMATCH_CHECKS) $(LIBS)
@@ -24,6 +22,3 @@ index d0b109f5..be678e7c 100644
  
  smatch_data/db/sm_hash: sm_hash.o $(SMATCH_OBJS)
  	$(Q)$(LD) -o smatch_data/db/sm_hash sm_hash.o smatch_hash.o $(SMATCH_LDFLAGS)
--- 
-2.35.3
-
