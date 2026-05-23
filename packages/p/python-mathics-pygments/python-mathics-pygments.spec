@@ -1,7 +1,7 @@
 #
 # spec file for package python-mathics-pygments
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,8 @@
 
 
 %define modname mathics_pygments
-# Mathics-Scanner does not support python2
-%define skip_python2 1
 Name:           python-mathics-pygments
-Version:        1.0.4
+Version:        10.0.0
 Release:        0
 Summary:        Mathematica/Wolfram Language Lexer for Pygments
 License:        MIT
@@ -29,15 +27,16 @@ Source:         https://github.com/Mathics3/mathics-pygments/archive/refs/tags/%
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module Mathics-Scanner >= 1.2.0}
+BuildRequires:  %{python_module Mathics-Scanner >= 10.0.0}
 BuildRequires:  %{python_module Pygments >= 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-Mathics-Scanner >= 1.2.0
+Requires:       python-Mathics-Scanner >= 10.0.0
 Requires:       python-Pygments >= 2
+Provides:       python-Mathics3-pygments
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,7 +45,8 @@ A lexer and highlighter for Mathematica/Wolfram Language source code using the
 pygments engine.
 
 %prep
-%setup -q -n mathics-pygments-%{version}
+%autosetup -n Mathics3-pygments-%{version}
+sed -Ei "1{\@/usr/bin/env@d}" mathics_pygments/generate/build_pygments_tables.py
 
 %build
 %pyproject_wheel
@@ -62,6 +62,6 @@ pygments engine.
 %doc CHANGES.rst README.md
 %license LICENSE
 %{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}*.*-info/
+%{python_sitelib}/mathics3_pygments-%{version}*.*-info/
 
 %changelog
