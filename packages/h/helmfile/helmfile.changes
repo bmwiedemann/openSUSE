@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri May 22 09:38:12 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.5.2:
+  * Bump Helm support to 3.21.0 and 4.2.0 by @Copilot in #2588
+  * bump helm-diff to v3.15.7 by @Copilot in #2591
+  * fix: refresh Chart.lock after rewriting file:// dependencies by
+    @sstarcher in #2587
+  * feat: support HELMFILE_KUBE_CONTEXT env var for default kube
+    context by @dschmidt in #2593
+  * feat: support HELMFILE_NAMESPACE env var for default namespace
+    by @dschmidt in #2592
+  * fix: normalize dependency chart path before DirectoryExistsAt
+    check by @yxxhero in #2598
+  * Add jsonPatches regression coverage for chartify lookup
+    rendering by @Copilot in #2586
+  * feat: add defaultInherit for automatic release template
+    inheritance by @yxxhero in #2600
+  * fix: restore kubedog status progress output during tracking by
+    @yxxhero in #2602
+  * feat: show diff preview when sync --interactive is used by
+    @vomba in #2603
+  * build(deps): bump github.com/containerd/containerd from 1.7.30
+    to 1.7.32 by @dependabot[bot] in #2607
+  * feat: support HELMFILE_* env vars for more global flags by
+    @dschmidt in #2606
+
+-------------------------------------------------------------------
 Wed May 13 13:26:14 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.5.1:

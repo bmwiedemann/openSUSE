@@ -17,9 +17,9 @@
 #
 
 
-%define git_commit c82c61e061f42a80e5ab19eb9379a85d9a31975a
+%define git_commit 33eadc993e0ee77de91914afd0ab00042c498232
 Name:           helmfile
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT
@@ -27,8 +27,8 @@ Group:          Development/Languages/Other
 URL:            https://github.com/helmfile/helmfile
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Requires:       helm >= 3.13.1
-Recommends:     helm >= 3.19.4
+Requires:       helm >= 3.18.6
+Recommends:     helm >= 3.21.0
 BuildRequires:  golang-packaging
 BuildRequires:  xz
 BuildRequires:  golang(API) >= 1.26
