@@ -208,4 +208,12 @@ retry submit due to git-&gt;obs autosync delays</comment>
   bounds checks. (CVE-2026-40962, bsc#1262237)</comment>
     <requestid>1353059</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>70d6f32ed40158fbf9b61b1ee3fe5cc3</srcmd5>
+    <version>7.1.4</version>
+    <time>1779571580</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.1.4:</comment>
+    <requestid>1354792</requestid>
+  </revision>
 </revisionlist>

@@ -97,7 +97,7 @@
 %define _major_expected 8
 
 Name:           ffmpeg-7
-Version:        7.1.3
+Version:        7.1.4
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -121,7 +121,7 @@ Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 Patch19:        ffmpeg-7-CVE-2025-22921.patch
-Patch20:        ffmpeg-7-CVE-2026-40962.patch
+
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  nasm
@@ -826,7 +826,7 @@ done
 #
 #!BcntSyncTag:  ffmpeg-7
 Name:           ffmpeg-7-mini
-Version:        7.1.3
+Version:        7.1.4
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -912,7 +912,7 @@ CFLAGS="%optflags" \
 	--disable-muxers --disable-demuxers \
 	--disable-encoders --disable-decoders \
 	--disable-programs --disable-doc
-for i in H264 HEVC VC1; do
+for i in H264 HEVC VC1 VVC; do
 	grep -q "#define CONFIG_${i}_DECODER 0" config_components.h
 done
 cat config.h
