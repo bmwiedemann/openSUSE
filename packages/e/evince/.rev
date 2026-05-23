@@ -1487,4 +1487,14 @@ New stable release</comment>
   + shell: Quote strings in arguments used when calling ev_spawn</comment>
     <requestid>1354271</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>e3447341ad0c15373110ffda85a737ba</srcmd5>
+    <version>48.4</version>
+    <time>1779571544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 48.4:
+  + Just a versionbump, all changes already in place in our 48.2.
+    Upstream needed to rerelease the tarballs, hence the bump.</comment>
+    <requestid>1354744</requestid>
+  </revision>
 </revisionlist>
