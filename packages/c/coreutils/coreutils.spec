@@ -64,6 +64,7 @@ Patch501:       coreutils-test_without_valgrind.patch
 Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
 Patch900:       coreutils-tests-workaround-make-fdleak.patch
 Patch901:       coreutils-tests-misc-tty-eof-avoid-false-failure.patch
+Patch902:       coreutils-tee-fix-infloop-on-EAGAIN-and-short-write.patch
 
 BuildRequires:  automake
 BuildRequires:  gmp-devel
@@ -180,6 +181,7 @@ package coreutils-systemd:
 %patch -P 810
 %patch -P 900
 %patch -P 901 -p 1
+%patch -P 902 -p 1
 
 # ================================================
 %build

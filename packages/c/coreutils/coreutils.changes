@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 19 21:14:56 UTC 2026 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- coreutils-tee-fix-infloop-on-EAGAIN-and-short-write.patch: Add upstream
+  patch (boo#1265378)
+  * 'tee' no longer loops infinitely after writing all output if a write
+    call sets errno to EAGAIN.
+    [bug introduced in coreutils-9.11]
+  * 'tee' no longer treats short writes as errors.
+    [bug introduced in coreutils-9.11]
+
+
+-------------------------------------------------------------------
 Thu May  7 13:06:43 UTC 2026 - rw@suse.com
 
 - coreutils-tests-misc-tty-eof-avoid-false-failure.patch: Add upstream patch:
