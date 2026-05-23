@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 21 19:03:52 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.1.0:
+  * Add Schema management page to Console app
+  * Display node TLS state in console's Cluster panel
+- includes changes from 10.0.6:
+  * Limit number of redirects followed on cluster-join
+  * fix HTTP auth reporting
+
+-------------------------------------------------------------------
 Thu May 14 12:45:26 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 10.0.5: significantly improves clustering,
@@ -38,6 +48,9 @@ Thu May 14 12:45:26 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
     using the backup.
   * cli change: -raft-timeout is now -raft-heartbeat-timeout, to
     better reflect its purpose.
+- includes fix for CVE-2026-33814: golang.org/x/net/http2: infinite
+  loop in HTTP/2 transport when given bad SETTINGS_MAX_FRAME_SIZE
+  (boo#1265706) 
 
 -------------------------------------------------------------------
 Tue Mar 10 19:12:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
