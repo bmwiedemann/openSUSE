@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Thu May 21 16:43:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.71.4:
+  - [client] Revert legacy registry cleanup on Windows install by
+    @lixmal in #6232
+
+-------------------------------------------------------------------
 Wed May 20 19:22:52 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 0.71.3 
+- Update to 0.71.3:
   - [management] fix: device redirect uri wasn't registered by
     @jnfrati in #6191
   - [management] Fence peer status updates with a session token by
