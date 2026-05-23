@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 21 12:23:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.10.3
+  * envkernel: Run envkernel.sh with bash.
+  * envkernel: Strip alias prefix from aliases.
+  * pmb.config.apk_tools_min_version: update for v26.06.
+  * pmb.install._install: remove unused "cat" invocation.
+  * pmb: Use NonBugError for "don't run pmbootstrap as root".
+  * pmb.helpers.git: Also consider "master" to be an official
+    branch.
+  * pmb: Suggest --as-root when pmbootstrap is run as root.
+
+-------------------------------------------------------------------
 Sun May  3 11:04:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.10.2
