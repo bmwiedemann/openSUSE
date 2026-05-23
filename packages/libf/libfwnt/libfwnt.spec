@@ -1,7 +1,7 @@
 #
 # spec file for package libfwnt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define lname	libfwnt1
 Name:           libfwnt
-Version:        20240415
+Version:        20260522
 Release:        0
 Summary:        Library for Windows NT data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -30,16 +30,15 @@ Source:         https://github.com/libyal/libfwnt/releases/download/%version/lib
 Source2:        https://github.com/libyal/libfwnt/releases/download/%version/libfwnt-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source11:       Locale_identifier_LCID.pdf
-Patch1:         0001-Added-missing-declaration-of-function-used-externall.patch
 BuildRequires:  %python_module devel
 BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libcdata) >= 20240414
-BuildRequires:  pkgconfig(libcerror) >= 20240413
-BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libcthreads) >= 20240413
+BuildRequires:  pkgconfig(libcdata) >= 20260520
+BuildRequires:  pkgconfig(libcerror) >= 20260513
+BuildRequires:  pkgconfig(libcnotify) >= 20260520
+BuildRequires:  pkgconfig(libcthreads) >= 20260518
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
