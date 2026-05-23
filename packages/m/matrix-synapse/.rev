@@ -1708,4 +1708,14 @@ mostly-working synapse than nothing at all) and the package has been update to
     pending)</comment>
     <requestid>1351450</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>1ef7bdd53468c4adbd3cd7f918f1dc73</srcmd5>
+    <version>1.153.0</version>
+    <time>1779571446</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1354115 from darix
+
+- Update to 1.153.0</comment>
+    <requestid>1354660</requestid>
+  </revision>
 </revisionlist>

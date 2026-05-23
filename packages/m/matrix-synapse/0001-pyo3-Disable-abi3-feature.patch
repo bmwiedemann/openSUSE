@@ -60,7 +60,7 @@ Index: synapse/rust/Cargo.toml
 --- synapse.orig/rust/Cargo.toml
 +++ synapse/rust/Cargo.toml
 @@ -33,8 +33,6 @@ mime = "0.3.17"
- pyo3 = { version = "0.27.2", features = [
+ pyo3 = { version = "0.28.3", features = [
      "macros",
      "anyhow",
 -    "abi3",

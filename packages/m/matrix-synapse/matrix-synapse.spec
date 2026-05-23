@@ -25,9 +25,9 @@
 %if %{with use_poetry_for_dependencies}
 %global Twisted_version               24.7.0
 %global Jinja2_version                3.1.5
-%global Pillow_version                11.2.1
+%global Pillow_version                12.2.0
 %global PyYAML_version                6.0.3
-%global attrs_version                 25.4.0
+%global attrs_version                 26.1.0
 %global bcrypt_version                5.0.0
 %global bleach_version                6.1.0
 %global canonicaljson_version         2.0.0
@@ -71,7 +71,7 @@
 %global txredisapi_version            1.4.10
 %global Pympler_version               1.0.1
 %global pydantic_version              2.7.1
-%global python_multipart_version      0.0.22
+%global python_multipart_version      0.0.26
 # TODO: 0.30.0
 %global rpds_py_verison               0.27.1
 ## indirect dependencies which need to be guarded for matrix-synapse to work
@@ -227,7 +227,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.152.1
+Version:        1.153.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
