@@ -1,7 +1,7 @@
 #
 # spec file for package fwts
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fwts
-Version:        25.05.00
+Version:        26.03.00
 Release:        0
 Summary:        Firmware Test Suite
 License:        GPL-2.0-or-later
@@ -45,7 +45,7 @@ Requires:       bash-completion
 Recommends:     acpica
 Recommends:     dmidecode
 Recommends:     pciutils
-ExclusiveArch:  %ix86 x86_64 aarch64
+ExclusiveArch:  %ix86 x86_64 aarch64 riscv64
 
 %description
 The FirmWare Test Suite (fwts) is a tool to do automatic testing of a PC's

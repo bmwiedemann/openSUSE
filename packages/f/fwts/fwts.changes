@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Fri May 22 09:19:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 26.03.00:
+  * klog.json: Remove duplicate 'too many record IDs' pattern
+  * klog.json: Remove duplicate 'Failed to remap late EFI memory map' pattern
+  * klog.json: Remove duplicate 'SRAT: Failed to mark hotplug range' pattern
+  * klog.json: Remove duplicate 'SRAT: Failed to add memblk to node' pattern
+  * klog.json: Remove duplicate 'SRAT: Too many proximity domains' pattern
+  * klog.json: Remove duplicate 'amba_device_alloc() failed' pattern
+  * klog.json: Remove duplicate 'amba_device_add() failed' pattern
+  * klog.json: Remove duplicate 'Failed to create AML debugger thread' pattern
+  * klog.json: Remove duplicate 'ID map has NULL parent reference' pattern
+  * klog.json: Remove duplicate 'requested ITS ID index' pattern
+  * klog.json: Remove duplicate 'could not register gsi hwirq' pattern
+  * klog.json: Remove duplicate 'iort node pointer overflows, bad table' pattern
+  * klog.json: Remove duplicate 'Limiting number of LPI states to max' pattern
+  * klog.json: Remove duplicate 'SRAT: Unexpected header length' pattern
+  * klog.json: Remove duplicate 'Invalid _FIF element' pattern
+  * klog.json: Remove duplicate 'Could not allocate size' pattern
+  * klog.json: Remove duplicate 'Invalid _TSS data' patterns
+  * klog.json: Remove duplicate 'Invalid _TSD data' pattern
+  * klog.json: Remove duplicate '_OSC request failed' pattern
+  * klog.json: Remove duplicate 'PM: Some devices failed to power down' patterns
+  * klog.json: Add AMD IOMMU command line validation error messages to klog database
+  * klog.json: Add ACPI Embedded Controller ECDT firmware bug error messages to klog database
+  * klog.json: Add ACPI bus kobject registration error messages to klog database
+  * klog.json: Add ACPI SRAT CFMWS BIOS alignment violation error messages to klog database
+  * klog.json: Add ACPI GTDT platform timer firmware bug error messages to klog database
+  * klog.json: Add ACPI IORT firmware bug workaround error messages to klog database
+  * klog.json: Add ACPI processor performance frequency constraint error messages to klog database
+  * kernelscan: Add macro expansion for known kernel logging prefixes
+  * fwts_modprobe: Remove unused sys_finit_module() and sys_delete_module()
+  * build: allow disabling -Werror
+  * acpi: crsdump: Fix printing of IRQ numbers
+  * configure: Allow compilation without libbsd if strlcpy() is available in libc
+  * Make inclusion of <bsd/string.h> optional
+  * acpi: hest: Remove unused variable to avoid compiler warning
+  * lib: framework: Remove unused variable to avoid compiler warning
+  * fwts_args: Silence compiler warning about unused "master_option_index"
+  * lib: fwts_version.h - update to V26.03.00
+  * debian: update changelog
+  * github: replace softprops/action-gh-release with gh release create
+  * klog.json: remove Interpreter disabled ACPI pattern
+  * acpi: asf: fix wrong format specifiers for id and iana_id fields
+  * acpi: mchi: fix PRIx8 format specifier for uint32_t GSI field
+  * lib: fwts_acpi_tables: fix signed format specifier for subtable type
+  * hotkey: fix const-correctness in hotkey_find_keymap
+  * acpi: wmi: fix const-correctness in wmi_acpi_get_parent_name
+  * lib: fwts_devicetree: fix build error for const-correctness
+  * github: add fwts release workflow
+  * autopackager: mkpackage.sh: remove plucky
+  * klog.json: Add AMD IOMMU driver error messages to klog database
+  * klog.json: Add WMI core driver error messages to klog database
+  * klog.json: Add IdeaPad laptop input and backlight error messages to klog database
+  * klog.json: Add HP WMI platform profile and hwmon error messages to klog database
+  * klog.json: Add Dell WMI base event enable failure message to klog database
+  * klog.json: Add Dell WMI AIO input and notify handler error messages to klog database
+  * klog.json: Add Dell laptop keyboard state error message to klog database
+  * klog.json: Add x86 SMP boot APIC and CPU bringup error messages to klog database
+  * klog.json: Add x86 CPU common error messages to klog database
+  * klog.json: Add x86 MTRR allocation failure message to klog database
+  * klog.json: Add EFI 32-bit ioremap failure to klog database
+  * klog.json: Add EFI 64-bit kernel mapping errors to klog database
+  * klog.json: Add EFI 32/64-bit mismatch error to klog database
+  * klog.json: Add ACPI boot LAPIC/MADT parse errors to klog database
+  * klog.json: Add ACPI MADT wakeup CPU handover error to klog database
+  * klog.json: Add ACPI processor PDC memory allocation error to klog database
+  * klog.json: Add ACPI battery hook errors to klog database
+  * klog.json: Add ACPI ARM64 FFH invalid SMCCC conduit error to klog database
+  * klog.json: Add ACPI DPTF power unsupported event error to klog database
+  * klog.json: Add ACPI watchdog device creation error to klog database
+  * klog.json: Add ACPI PMIC XPower I2C address error to klog database
+  * fwts-test: sync up with s0idle warning change
+  * fwts-test: Update ASPT to include types 3 and 4
+  * acpi: aspt: Add support for ASPT revision 2 types 3 and 4
+  * fwts-test: sync up with srat fix memory affinity flags validation
+  * acpi: srat: Fix Memory Affinity Structure flags validation
+  * bios: s0idle: do not treat unsupported S0idle as an error
+  * New tests for Arm PSCI functions
+  * lib: fwts_version.h - update to V26.01.00
+  * debian: update changelog
+  * debian/tests: only run smccc dkms test when dkms module is run
+  * efi_runtime: remove efi_runtime dkms
+  * fwts-test: sync up for aest update to 2.0
+  * acpi: aest: update the aest tests for the specification 2.0
+  * bios: smm: skip lock checks if IGD is not present
+  * doc: update contributors, date and spelling mistake to the manual
+  * acpi: method: fix the LPI packages check and some typos
+  * acpi: rhct: fix typo in error message
+  * Update copyright year to 2026
+  * ACPICA: Update to version 20251212
+  * autobrightness: Drop test2 that checks actual_brightness
+  * acpi: apmt: fix typo in APMTNodeTypeUnknown
+  * libfwtsacpica: guard AcpiOsDeleteSemaphore against stale handles
+  * Apicedge tests fail on systems with large number of CPUs
+  * lib: fwts_version.h - update to V25.11.00
+  * debian: update changelog
+  * auto-packager: mkpackage.sh: add resolute
+  * fwts-test: sync up adding nhlt test
+  * acpi: nhlt: add ACPI 6.6 NHLT table test (mantis 2430)
+  * acpi: nhltdump: sync with ACPI 6.6 NHLT spec
+  * acpi: remove standalone s3pt test
+  * fwts-test: sync up with fpdt records adding
+  * acpi: fpdt: update the FPDT records for ACPI 6.6 (mantis 2416)
+  * fwts-test: sync with the method _VDM was added
+  * acpi: madt: align MP wakeup struct with ACPI 6.6 (mantis 2404)
+  * acpi: method: add _VDM voltage domain test (mantis 2374)
+  * acpi: method: extend _CPC test for ACPI 6.6 (mantis 2353)
+  * acpi: madt: handle GICR and ITS flags for ACPI 6.6 (mantis 2422)
+  * acpi: madt: enforce PSCI when parking protocol deprecated (mantis 2425)
+  * fwts-test: srat: add regression test for the RINTC affinity data
+  * acpi: srat: add RINTC affinity validation (mantis 2433)
+  * fwts-test: sync with the methods _PCS and _PST were added
+  * acpi: method: add tests for _PCS and _PST power source methods (mantis 2478)
+  * acpi: ras2: fix the wrong feature type check
+  * fwts: skip the wake alarm suite if the feature is not implemented
+  * lib: fwts_version.h - update to V25.09.00
+  * debian: update changelog
+  * auto-packer: mkpackage.sh: use the github tag source directly
+  * wakealarm: skip the reset check when RTC time earlier than current system time
+  * smccc_test: remove deprecated no_llseek to fix the compilation error
+  * fwts-test: add regression tests for MSCT
+  * acpi: msct: fix incorrect length check on max proximity domains
+  * smccc: move the smccc folder out of pci
+  * smccc: minor code style clean-ups, no functional changes
+  * dmicheck: minor code style clean-ups, no functional changes
+  * ACPICA: Update to version 20250807
+  * lib: fwts_version.h - update to V25.07.00
+  * debian: update changelog
+  * acpi: madt: fix the wrong length of the multiprocessor wakeup structure
+  * fwts-test: add regression tests for RHCT
+  * acpi: rhct: refine test result layout and format specifiers
+  * auto-packager: mkpackage.sh: remove oracular
+  * acpi: aspt: fix the lable of statement build error
+  * lib: Enable checks and compilation on LoongArch
+  * lib: fwts_klog: return list null when klog read returns zero length
+  * dmicheck: Validation in AARCH64 for Processor ID field in SMBIOS type04
+  * smccc: Test for implementation of ARM_SMCCC functions
+  * lib: Update current version to ACPI 6.6
+  * acpi: acpitables: Update acpitables test for ACPI 6.6
+  * acpi: rhct: Add tests for ACPI RHCT table
+  * acpi: madt: Add AIA and PLIC sub-tables test for RISC-V
+  * acpi: madt: update madt revisions to ACPI 6.6 and add RISC-V
+  * acpi: rsdp: Add xsdt_address check for RISC-V
+  * lib: Add fwts_architecture macro for RISC-V
+
+-------------------------------------------------------------------
 Mon Jun 23 08:19:39 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 25.05.00:

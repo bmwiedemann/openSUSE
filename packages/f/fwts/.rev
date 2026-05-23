@@ -1305,4 +1305,41 @@
   * efi_runtime: Fix missing pending status update in getwakeuptime</comment>
     <requestid>1287873</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>b05de2917a3b7ae7cc1be0683ceaf3db</srcmd5>
+    <version>26.03.00</version>
+    <time>1779571443</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 26.03.00:
+  * klog.json: Remove duplicate 'too many record IDs' pattern
+  * klog.json: Remove duplicate 'Failed to remap late EFI memory map' pattern
+  * klog.json: Remove duplicate 'SRAT: Failed to mark hotplug range' pattern
+  * klog.json: Remove duplicate 'SRAT: Failed to add memblk to node' pattern
+  * klog.json: Remove duplicate 'SRAT: Too many proximity domains' pattern
+  * klog.json: Remove duplicate 'amba_device_alloc() failed' pattern
+  * klog.json: Remove duplicate 'amba_device_add() failed' pattern
+  * klog.json: Remove duplicate 'Failed to create AML debugger thread' pattern
+  * klog.json: Remove duplicate 'ID map has NULL parent reference' pattern
+  * klog.json: Remove duplicate 'requested ITS ID index' pattern
+  * klog.json: Remove duplicate 'could not register gsi hwirq' pattern
+  * klog.json: Remove duplicate 'iort node pointer overflows, bad table' pattern
+  * klog.json: Remove duplicate 'Limiting number of LPI states to max' pattern
+  * klog.json: Remove duplicate 'SRAT: Unexpected header length' pattern
+  * klog.json: Remove duplicate 'Invalid _FIF element' pattern
+  * klog.json: Remove duplicate 'Could not allocate size' pattern
+  * klog.json: Remove duplicate 'Invalid _TSS data' patterns
+  * klog.json: Remove duplicate 'Invalid _TSD data' pattern
+  * klog.json: Remove duplicate '_OSC request failed' pattern
+  * klog.json: Remove duplicate 'PM: Some devices failed to power down' patterns
+  * klog.json: Add AMD IOMMU command line validation error messages to klog database
+  * klog.json: Add ACPI Embedded Controller ECDT firmware bug error messages to klog database
+  * klog.json: Add ACPI bus kobject registration error messages to klog database
+  * klog.json: Add ACPI SRAT CFMWS BIOS alignment violation error messages to klog database
+  * klog.json: Add ACPI GTDT platform timer firmware bug error messages to klog database
+  * klog.json: Add ACPI IORT firmware bug workaround error messages to klog database
+  * klog.json: Add ACPI processor performance frequency constraint error messages to klog database
+  * kernelscan: Add macro expansion for known kernel logging prefixes
+  * fwts_modprobe: Remove unused sys_finit_module() and sys_delete_module()</comment>
+    <requestid>1354656</requestid>
+  </revision>
 </revisionlist>
