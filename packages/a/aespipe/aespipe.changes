@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  6 20:17:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4j:
+  * Added configure script autodetection for 32-bit ARM -marm
+    compile flag. This option is needed with some compilers that
+    default to generating code in Thumb mode.
+
+-------------------------------------------------------------------
 Mon May  5 08:30:23 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to version 2.4i:
@@ -20,7 +28,7 @@ Fri Jan 26 03:02:12 UTC 2024 - ming li <mli@suse.com>
 - Update to version 2.4g:
   * Added configure script autodetection for -fno-strict-aliasing compile
     flag. This option is needed with some compilers that miscompile code
-    when link-time-optimization is used. 
+    when link-time-optimization is used.
 
 -------------------------------------------------------------------
 Tue Nov 15 13:56:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -86,7 +94,7 @@ Fri Mar 31 21:07:06 UTC 2017 - meissner@suse.com
 -------------------------------------------------------------------
 Fri Feb 24 08:49:36 UTC 2017 - shshyukriev@suse.com
 
-- Compile with -fPIC for 64bit to fix build errors 
+- Compile with -fPIC for 64bit to fix build errors
 
 -------------------------------------------------------------------
 Thu Jun  4 11:19:09 UTC 2015 - mpluskal@suse.com
@@ -99,19 +107,19 @@ Thu Jun  4 11:19:09 UTC 2015 - mpluskal@suse.com
 -------------------------------------------------------------------
 Tue Jul 29 11:21:56 UTC 2014 - dvaleev@suse.com
 
-- Fix PowerPC little endian build 
+- Fix PowerPC little endian build
 
 - added patches:
   * aespipe-ppc64le.patch
 -------------------------------------------------------------------
 Sun Apr  1 12:13:33 UTC 2012 - bruno@ioda-net.ch
 
-- Fix spec formatting and licence 
+- Fix spec formatting and licence
 
 -------------------------------------------------------------------
 Sat Jan 21 15:02:20 UTC 2012 - bruno@ioda-net.ch
 
-- New packaging for obs / version 2.4.c 
+- New packaging for obs / version 2.4.c
 
 -------------------------------------------------------------------
 Sun Oct 28 2007 - jnelson@jamponi.net
