@@ -540,4 +540,24 @@
 	github.com/containers/image/v5=github.com/containers/image/v5@v5.36.0 (forwarded request 1351163 from eeich)</comment>
     <requestid>1351164</requestid>
   </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>0aa685aeca4368523f82addf70b0fb48</srcmd5>
+    <version>1.4.5</version>
+    <time>1779571509</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix CVE-2026-39827, CVE-2026-39834, CVE-2026-39828, CVE-2026-39829,
+  CVE-2026-39831, CVE-2026-42508, CVE-2026-39833, CVE-2026-39830,
+  CVE-2026-39832, CVE-2026-46597, CVE-2026-46598, CVE-2026-46595,
+  CVE-2026-39835 (bsc#1266202)
+  Update golang.org/x/crypto to v0.52.0
+
+- Fix  CVE-2026-33814 GO-2026-4918 (bsc#1265844)
+  Update golang.org/x/net to version v0.53.0
+- Integrate vulnchecker into %check stage (optional).
+
+- Sync with Factory version which also fixes CVE-2024-45310
+  tracked in bsc#1257432
+- Readded SLE-15SP6.def as it was removed from Factory</comment>
+    <requestid>1354775</requestid>
+  </revision>
 </revisionlist>

@@ -17,6 +17,7 @@
 
 
 %{bcond_with suid}
+%{bcond_with vulncheck}
 
 %define apptainerpath src/github.com/apptainer/
 %define _buildshell /bin/bash
@@ -38,8 +39,9 @@ Conflicts:      singularity-runtime
 Source0:        https://github.com/apptainer/apptainer/archive/v%{version}%{?vers_suffix}/apptainer-%{version}%{?vers_suffix}.tar.gz
 Source1:        README.SUSE
 Source2:        SUSE.def
-Source5:        SLE-15SP7.def
-Source6:        SLE-16.def
+Source6:        SLE-15SP6.def
+Source7:        SLE-15SP7.def
+Source8:        SLE-16.def
 Source10:       Leap.def
 Source20:       %{name}-rpmlintrc
 Source21:       vendor.tar.gz
@@ -48,7 +50,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  git
 BuildRequires:  go >= 1.19
-%if 0%{?install_vulncheck:1}
+%if %{with vulncheck}
 BuildRequires:  govulncheck
 BuildRequires:  govulncheck-vulndb
 %endif
@@ -84,6 +86,15 @@ Requires:       apptainer = %version
 %description suid
 This package contains the suid starter for Apptainer.
 Do not install unless this is absolutely needed!
+
+%package   sle15_6
+Summary:        Apptainer Definition File Templates for SLE 15 SP6
+BuildArch:      noarch
+Requires:       apptainer = %version
+
+%description sle15_6
+The package provides a definition file template for Apptainer containers
+based on SUSE Linux Enterprise 15 SP6.
 
 %package   sle15_7
 Summary:        Apptainer Definition File Templates for SLE 15 SP7
@@ -149,10 +160,19 @@ export PATH=$GOPATH/bin:$PATH
 
 %make_install -C builddir V=
 install -d -m 0755 %{buildroot}/%{_datarootdir}/apptainer/templates
-install -m 0644 %{S:2} %{S:5} %{S:6} %{S:10} %{buildroot}/%{_datarootdir}/apptainer/templates
+install -m 0644 %{S:2} %{S:10} %{buildroot}/%{_datarootdir}/apptainer/templates
+%{!?is_opensuse:install -m 0644 %{S:6} %{S:7} %{S:8} %{buildroot}/%{_datarootdir}/apptainer/templates}
 
 %fdupes apptainer/examples
 %fdupes -s %buildroot
+
+%check
+%if %{with vulncheck}
+for i in $(find %{buildroot} -executable -and -not -type d -and -not -name "*.debug" -and -not -name "*.so*"); do
+    file $i | grep -q "^$i: ELF" || continue
+    govulncheck -mode=binary -db file:///usr/share/vulndb/ $i
+done
+%endif
 
 %files
 %doc examples
@@ -198,11 +218,16 @@ install -m 0644 %{S:2} %{S:5} %{S:6} %{S:10} %{buildroot}/%{_datarootdir}/apptai
 %{_libexecdir}/apptainer/bin/starter-suid
 %endif
 
+%if 0%{!?is_opensuse:1}
+%files sle15_6
+%{_datarootdir}/apptainer/templates/%{basename:%{S:6}}
+
 %files sle15_7
-%{_datarootdir}/apptainer/templates/%{basename:%{S:5}}
+%{_datarootdir}/apptainer/templates/%{basename:%{S:7}}
 
 %files sle16
-%{_datarootdir}/apptainer/templates/%{basename:%{S:6}}
+%{_datarootdir}/apptainer/templates/%{basename:%{S:8}}
+%endif
 
 %files leap
 %{_datarootdir}/apptainer/templates/%{basename:%{S:10}}
