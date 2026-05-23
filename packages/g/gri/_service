@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/dankelley/gri</param>
+    <param name="revision">4d93a4e</param>
+    <param name="versionformat">2.12.27+git%cd.%h</param>
+    <param name="filename">gri</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zstd</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>

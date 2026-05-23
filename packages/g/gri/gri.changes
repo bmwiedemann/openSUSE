@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May 21 20:49:22 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.12.27+git20240405.4d93a4e:
+  * New halfmoon symbols.
+  * New version of gri-mode.el:
+    - default-fill-column no longer exists in emacs-26
+    - Bug fix: "package remove allow for flavour directory already
+      gone" (#711914).
+    - Bug fix: "C-u as universal-argument" (#718452).
+    - Bug fix: "paragraph separators for commands" (#718540).
+- Changes from version 2.12.26:
+  * Bug fix: gri build-depends on cruft package (#932949)
+  * Bug fix: Encoding must now be specified in texinfo source
+    (#941557)
+  * Bug fix: FTCBFS: Let dh_auto_configure pass --host to
+    ./configure (#901179)
+- Drop patches no longer applicable:
+  * gfi-2.2.23-perl.patch: incorporated upstream.
+  * gri-texinfo-5.0.patch: incorporated upstream.
+  * reproducible.patch: incorporated upstream.
+  * gri-invalid-char-to-pointer.patch: otherwise fixed upstream.
+  * gri-perl-5.26.patch: incorporated upstream.
+  * gri-texinfo-6.7-compat.patch: incorporated upstream.
+
+-------------------------------------------------------------------
 Tue Feb 27 16:59:54 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Modify gfi-2.2.23-perl.patch to apply with `-p1` and use

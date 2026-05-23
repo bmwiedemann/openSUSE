@@ -1,7 +1,7 @@
 #
 # spec file for package gri
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,21 @@
 
 
 Name:           gri
-Version:        2.12.23
+Version:        2.12.27+git20240405.4d93a4e
 Release:        0
 Summary:        A language for scientific illustration
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            http://gri.sourceforge.net
-Source:         %{name}-%{version}.tar.bz2
-Patch0:         gfi-2.2.23-perl.patch
-Patch1:         gri-texinfo-5.0.patch
-# PATCH-FIX-UPSTREAM https://github.com/dankelley/gri/pull/10
-Patch2:         reproducible.patch
-# PATCH-FIX-UPSTREAM gri-invalid-char-to-pointer.patch badshah400@gmail.com -- Fix a char to char* conversion by replacing '\0' with NULL
-Patch3:         gri-invalid-char-to-pointer.patch
-# PATCH-FIX-UPSTREAM gri-perl-5.26.patch dimstar@opensuse.org -- Fix texinfo2HTML for usage with Perl 5.26
-Patch4:         gri-perl-5.26.patch
-# PATCH-FIX-UPSTREAM gri-texinfo-6.7-compat.patch -- Explicitly specify correct encoding for texi file, texinfo 6.+ assumes UTF-8 by default
-Patch5:         gri-texinfo-6.7-compat.patch
+Source:         %{name}-%{version}.tar.zst
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libtool
 BuildRequires:  readline-devel
 BuildRequires:  texinfo
 BuildRequires:  texlive-dvips
+BuildRequires:  zstd
 BuildRequires:  perl(Time::CTime)
 %if 0%{?suse_version} <= 1500
 Requires(post): /sbin/install-info
@@ -66,6 +58,7 @@ mathematical symbols in labels.
 %autosetup -p1
 
 %build
+autoreconf -fvi
 %configure
 # BEGIN allow PS decoder for build [bsc#1109976]
 mkdir -p ~/.config/ImageMagick
@@ -80,7 +73,7 @@ cat << EOPF > ~/.config/ImageMagick/policy.xml
     stealth NMTOKEN #IMPLIED value CDATA #IMPLIED>
 ]>
 <policymap>
-  <policy domain="coder" rights="read" pattern="{PS}" />
+  <policy domain="coder" rights="read|write" pattern="{PS}" />
 </policymap>
 EOPF
 # END allow PS decoder for build [bsc#1109976]
