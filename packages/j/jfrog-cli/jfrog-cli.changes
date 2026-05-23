@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri May 22 06:36:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.104.1 (.0 was not released):
+  * New Features
+    - [build-info-go] Enhance Yarn module to support workspace
+      projects and non-registry de… #379 (@fluxxBot)
+    - [jfrog-cli] RTECO-1017 - Enrich User-Agent with agent/CI
+      context and reuse Cursor… #3468 (@fluxxBot)
+    - [jfrog-cli] RTECO-1035 - Added Support for yarn v4 #3440
+      (@fluxxBot)
+    - [jfrog-cli-artifactory] RTECO-1035 - Added Support for yarn
+      v4 #422 (@fluxxBot)
+    - [jfrog-cli-core] RTECO-1017 - Detect agent + CI invocation
+      context, enrich metrics wit… #1555 (@fluxxBot)
+    - [jfrog-cli-core] RTECO-1035 - Remove blocking for yarn v4
+      #1543 (@fluxxBot)
+  * Bug Fixes
+    - [build-info-go] Fix for frogbot failure while setting up go
+      version #384 (@bhanurp)
+    - [build-info-go] RTECO-1265: fix(dotnet): preserve all per-TFM
+      package versions in build-info #381 (@Edenb2131)
+    - [build-info-go] RTECO-1265 - Fixed Nuget bracket based
+      dependency resolution #385 (@fluxxBot)
+    - [jfrog-cli] Fix release script: derive next version from
+      local current version #3498 (@ehl-jf)
+    - [jfrog-cli] RTECO-1263 - Fixed Content Reader race panic
+      #3502 (@fluxxBot)
+    - [jfrog-client-go] Fix race in ContentReader causing 'send on
+      closed channel' panic #1347 (@fluxxBot)
+  * Internal Changes
+    - [build-info-go] Bump Maven extractor to 2.43.9 and Gradle4
+      extractor to 4.35.9 #383 (@agrasth)
+    - [jfrog-cli-core] Bump github.com/go-git/go-git/v5 from 5.19.0
+      to 5.19.1 #1561 (@dependabot[bot])
+  * Other Changes
+    - [jfrog-cli] Remove the how command #3494 (@ehl-jf)
+    - [jfrog-cli] JGC-490 - Skip Chocolatey publish when version
+      already exists #3495 (@ehl-jf)
+    - [jfrog-client-go] CVE-2025-11579 #1289 (@saya-entro)
+
+-------------------------------------------------------------------
 Thu Apr 30 05:38:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.103.0:
