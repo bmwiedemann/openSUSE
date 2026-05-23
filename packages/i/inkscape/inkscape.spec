@@ -27,6 +27,8 @@ Source:         inkscape-%{version}.tar.zst
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
+# PATCH-FIX-UPSTREAM 98828255aa0c1212329236b3ff4ac7f41efb4a67.patch -- fix: support for poppler >= 26.05 font encoding change
+Patch0:         https://gitlab.com/inkscape/inkscape/-/commit/98828255aa0c1212329236b3ff4ac7f41efb4a67.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel

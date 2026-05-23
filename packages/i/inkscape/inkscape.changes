@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 22 06:11:31 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 98828255aa0c1212329236b3ff4ac7f41efb4a67.patch: Fix: support
+  for poppler >= 26.05 font encoding change (boo#1265939)
+
+-------------------------------------------------------------------
 Thu May 07 05:40:50 UTC 2026 - i thod <thod_@gmx.de>
 
 - Update to version INKSCAPE_1_4_4+git0.dcaf3e7d9e:
