@@ -6,14 +6,16 @@ Description=PTP: Boundary/Ordinary Clock
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 ProtectSystem=full
 ProtectHome=true
-PrivateDevices=true
 ProtectHostname=true
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
-DeviceAllow=/dev/rtc
+PrivateDevices=false
+DevicePolicy=closed
+DeviceAllow=/dev/rtc rwm
+DeviceAllow=char-ptp rwm
 # end of automatic additions 
 Type=simple
 EnvironmentFile=-/etc/sysconfig/ptp4l
