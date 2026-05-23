@@ -1,7 +1,7 @@
 #
 # spec file for package libftxf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libftxf
 %define lname	libftxf1
-Version:        20240416
+Version:        20260521
 Release:        0
 Summary:        Library for Transactional NTFS (TxF) data types
 License:        LGPL-3.0-or-later
@@ -29,10 +29,10 @@ Source2:        https://github.com/libyal/libftxf/releases/download/%version/lib
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20240413
-BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libfdatetime) >= 20240415
-BuildRequires:  pkgconfig(libfguid) >= 20240415
+BuildRequires:  pkgconfig(libcerror) >= 20260513
+BuildRequires:  pkgconfig(libcnotify) >= 20260520
+BuildRequires:  pkgconfig(libfdatetime) >= 20260521
+BuildRequires:  pkgconfig(libfguid) >= 20260521
 BuildRequires:  pkgconfig(libfusn) >= 20240416
 BuildRequires:  pkgconfig(libuna) >= 20240414
 # Various notes: https://en.opensuse.org/libyal
