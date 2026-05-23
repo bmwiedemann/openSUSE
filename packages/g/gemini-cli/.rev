@@ -609,4 +609,41 @@
     for auto vs explicit model selection</comment>
     <requestid>1353104</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>88302d12751bde023b2aa0ade5ec3d93</srcmd5>
+    <version>0.43.0</version>
+    <time>1779571618</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.43.0:
+  * feat(core): steer model to use edit tool for surgical edits,
+    fix a typo
+  * docs: clarify Auto Memory proposes memory updates and skills
+  * fix(core): reject numeric project IDs in GOOGLE_CLOUD_PROJECT
+  * fix(core): remove unsafe type assertion suppressions in error
+    utils
+  * fix(core): allow redirection in YOLO and AUTO_EDIT modes
+    without sandboxing
+  * ci(release): build and attach unsigned macOS binaries to
+    releases
+  * fix(core): Fix chat corruption bug in context manager.
+  * fix(cli): provide JSON output for AgentExecutionStopped in
+    non-interactive mode
+  * feat(evals): add shell command safety evals
+  * fix(core): handle invalid custom plans directory gracefully
+  * fix(acp): move tool explanation from thought stream to tool
+    call content
+  * fix(a2a-server): Resolve race condition in tool completion
+    waiting
+  * fix(cli): randomize sandbox container names
+  * fix(core): Fix hysteresis in async context management
+    pipelines.
+  * Tighten private Auto Memory patch allowlist
+  * fix(cli): hide read-only settings scopes
+  * fix(ci): preserve executable bit for mac binaries
+  * fix(cli): improve mcp list UX in untrusted folders
+  * fix(core): prevent silent hang during OAuth auth on headless
+    Linux
+  * Changelog for v0.42.0-preview.0</comment>
+    <requestid>1354870</requestid>
+  </revision>
 </revisionlist>

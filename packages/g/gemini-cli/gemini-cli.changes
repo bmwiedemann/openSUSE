@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Sat May 23 18:07:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.43.0:
+  * feat(core): steer model to use edit tool for surgical edits,
+    fix a typo
+  * docs: clarify Auto Memory proposes memory updates and skills
+  * fix(core): reject numeric project IDs in GOOGLE_CLOUD_PROJECT
+  * fix(core): remove unsafe type assertion suppressions in error
+    utils
+  * fix(core): allow redirection in YOLO and AUTO_EDIT modes
+    without sandboxing
+  * ci(release): build and attach unsigned macOS binaries to
+    releases
+  * fix(core): Fix chat corruption bug in context manager.
+  * fix(cli): provide JSON output for AgentExecutionStopped in
+    non-interactive mode
+  * feat(evals): add shell command safety evals
+  * fix(core): handle invalid custom plans directory gracefully
+  * fix(acp): move tool explanation from thought stream to tool
+    call content
+  * fix(a2a-server): Resolve race condition in tool completion
+    waiting
+  * fix(cli): randomize sandbox container names
+  * fix(core): Fix hysteresis in async context management
+    pipelines.
+  * Tighten private Auto Memory patch allowlist
+  * fix(cli): hide read-only settings scopes
+  * fix(ci): preserve executable bit for mac binaries
+  * fix(cli): improve mcp list UX in untrusted folders
+  * fix(core): prevent silent hang during OAuth auth on headless
+    Linux
+  * Changelog for v0.42.0-preview.0
+  * ci: fix Argument list too long in triage workflows
+  * refactor(cli): migrate core tools to native ToolDisplay
+    property and fix UI rendering
+  * don't wrap args unnecessarily
+  * fix(core): preserve system PATH in Git environment to fix
+    ENOENT
+  * fix(routing): fix resolveClassifierModel argument mismatch in
+    ApprovalModeStrategy
+  * docs: add vi mode shortcuts and clarify MCP/custom sandbox
+    setup
+  * fix(ux): fixed issue with transcribed text not showing after
+    releasing space
+  * ci: fix json parsing in scheduled triage workflow
+  * fix(cli): hide /memory add subcommand when memoryV2 is
+    enabled
+  * fix: prevent false command conflicts when launching from home
+    directory
+  * fix(core): cache model routing decision in LocalAgentExecutor
+  * Changelog for v0.42.0-preview.2
+  * skip broken test
+  * feat: export session to file and import via flag
+  * Feat: Add Machine Hostname to CLI interface
+  * docs(extensions): refactor releasing guide and add update
+    mechanisms
+  * fix(ci): fix maintainer identification in lifecycle manager
+  * fix(ui): added quotes around session id in resume tip
+  * Changelog for v0.41.0
+  * refactor(core): agent session protocol changes
+  * fix(context): implement loose boundary policy for gc
+    backstop.
+  * fix(core): throw explicit error on dropped tool responses
+  * fix: resolve "function response turn must come immediately
+    after function call" error
+  * fix(core): resolve parallel tool call streaming ID collision
+  * feat(core): add LocalSubagentProtocol behind AgentProtocol
+  * fix(cli): remove noisy theme registration logs from terminal
+  * ci: implement codebase-aware effort level triage
+  * feat(acp/core): prefix tool call IDs with tool names to
+    support tool rendering in ACP compliant IDEs.
+  * fix(mcp): treat GET 404 as 405 in
+    StreamableHTTPClientTransport
+  * feat(core): add RemoteSubagentProtocol behind AgentProtocol
+  * feat(context): Improvements to the snapshotter.
+  * fix(context): Change snapshotter model config.
+  * fix(cli): allow installing extensions from ssh repo
+  * fix(cli): prevent duplicate SessionStart systemMessage render
+  * fix(cli/acp): prevent infinite thought loop in ACP mode by
+    disablig nextSpeakerCheck
+  * fix(cli): use static tool name in confirmation prompt to
+    avoid parsing errors
+  * fix(routing): Refactor tool turn handling for the
+    conversation history in NumericalClassifierStrategy to
+    prevent 400 Bad Request
+  * fix(core): handle malformed projects.json in ProjectRegistry
+  * fix(ui): added a gutter width to the input prompt width
+    calculation
+  * fix: prevent EISDIR crash when customIgnoreFilePaths contains
+    directories
+  * revert 6b9b778d821728427eea07b1b97ba07378137d0b
+  * Fix/vscode run current file ts
+  * Allow Enter to select session while in search mode in /resume
+  * fix(core): ignore .pak and .rpa game archive formats by
+    default
+  * fix(cli): enable adk non-interactive session
+  * fix(cli): restore resume for legacy sessions
+  * fix: respect explicit model selection after Flash quota
+    exhaustion
+  * feat(context): Introduce adaptive token calculator to more
+    accurately calculate content sizes.
+  * chore: update checkout action configuration in workflows
+  * fix (telemetry): inject quota_project_id to prevent fallback
+    to default oauth client
+  * Exclude extension context from skill extraction agent
+  * Enable NumericalRouter when using dynamic model configs
+  * ci: actively triage missing priority labels and intelligently
+    clean up conflicting labels
+  * refactor(core): introduce SubagentState enum for progress
+  * fix(ci): replace brittle --no-tag with explicit staging-tmp
+    tag
+  * Incremental refactor repo agent towards skills-based
+    composition
+  * fix(ui): fixed line wrap padding for selection lists
+  * fix(core): update read_file schema for v1 compatibility
+  * fix(ci): configure git remote with token for authentication
+  * fix(patch): cherry-pick 85566a7 to
+    release/v0.43.0-preview.0-pr-27073 [CONFLICTS]
+
+-------------------------------------------------------------------
 Wed May 13 21:40:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.42.0:
