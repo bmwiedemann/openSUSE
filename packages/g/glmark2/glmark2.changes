@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 22 09:53:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20250929:
+  * Add missing EGL platform for gbm- flavors
+  * github: Add gbm flavor to the all-flavors CI build
+  * github: Add gbm flavor only build in CI
+  * github: Use ubuntu-22.04 runner for Linux builds
+  * github: Use windows-2022 runner for Windows builds
+
+-------------------------------------------------------------------
 Wed Apr 09 09:52:46 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20250221:

@@ -416,4 +416,17 @@
   * Prepare scenes for changing Canvas FBO</comment>
     <requestid>1268090</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>076fc6595a10a98c7f108942589ca906</srcmd5>
+    <version>20250929</version>
+    <time>1779571467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250929:
+  * Add missing EGL platform for gbm- flavors
+  * github: Add gbm flavor to the all-flavors CI build
+  * github: Add gbm flavor only build in CI
+  * github: Use ubuntu-22.04 runner for Linux builds
+  * github: Use windows-2022 runner for Windows builds</comment>
+    <requestid>1354672</requestid>
+  </revision>
 </revisionlist>
