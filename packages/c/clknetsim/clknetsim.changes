@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri May 22 10:26:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0+git.20260512:
+  * node: loose assertion for late select
+  * clock: improve precision of time accumulation
+  * make refclock target clock configurable
+  * client: allow SO_BINDTODEVICE before bind()
+  * client: support other system clocks in PTP_SYS_OFFSET* ioctls
+  * client: add configuration of additional clocks
+  * client: prepare support for additional clocks
+  * client: refuse tick adjustments for PTP clocks
+  * client: rework clock_adjtime() to be called by adjtimex()
+  * protocol: provide number of server clocks for verification
+  * protocol: extend clock operations with index
+  * server: add configuration of additional node clocks
+  * network: don't print non-clock stats for additional clocks
+  * network: support multiple clocks per node
+  * node: make additional clocks accessible
+  * node: replace clock with vector of clocks
+  * client: rename socket timestamping field
+  * client: replace random CLOCK_MONOTONIC* offset with option
+  * bash: shorten sleeps in waiting for client termination
+  * retry client connect faster
+  * add random offset to CLOCK_MONOTONIC* readings
+  * provide CLOCK_MONOTONIC_RAW
+  * improve precision measurement workaround
+  * switch raw frequency to uncorrected frequency
+  * don't try to use __GLIBC_PREREQ macro if not defined
+  * allow ambiguous ip_family for IP_RECVERR cmsg
+  * fix building on rhel7
+  * add support for SCM_TS_OPT_ID control message
+  * add IP/IPV6_RECVERR control message to messages in error queue
+  * fix random seeding to avoid duplicated states
+  * isolate random state of generators
+  * handle attempt to read CLOCK_MONOTONIC_RAW
+  * add clkmgr test example
+  * bash: add clkmgr_proxy and clkmgr support
+  * add futex and gettid system call
+  * add __open64_2()
+  * add support for new chronyc socket handling
+  * improve adjtimex maxerror and esterror support
+  * add __open_2() and __read_chk()
+  * add workaround for sanitizer intercepting timer_* functions
+  * fix select() with only TCP socket waiting for connection
+  * allow zero timeout in select() with no fds
+  * add option to execute specified program at update interval
+  * use gcc diagnostic pragma to supress warning in poll()
+  * avoid compiler warning in clock_settime()
+  * follow family hint in getaddrinfo()
+  * add initial IPv6 support
+  * remove incorrect setting of error queue message length
+  * fix adjtimex to return provided modes
+
+-------------------------------------------------------------------
 Wed Feb 19 13:10:58 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0+git.20250213:
