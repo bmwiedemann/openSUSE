@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 15 12:33:05 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260515.6fd49568:
+  * check_bugowner: Really fix missing directories.
+
+-------------------------------------------------------------------
+Thu May 14 07:40:09 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260514.327b57bc:
+  * scm: git: Improve git repository corruption detection.
+  * check_bugowner: Abstract review message formatting.
+  * check_bugowner: Switch to check_source_submission_v2.
+  * check_bugowner: Fix rendering of inactive users.
+
+-------------------------------------------------------------------
 Tue May 05 13:16:57 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260505.9d4790bf:
