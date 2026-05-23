@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon May  4 06:23:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 26.05.0:
+  + core:
+    * Improve reconstruction of damaged files. Issue #1693
+    * PSOutputDev: Remove "pipe as filename" feature
+    * PSOutputDev: Respect pre-existing PageSize policies.
+    * Internal code improvements
+    * Fix crashes in malformed documents
+  + glib: Improve PopplerPage thread-safety
+  + utils:
+    * pdftotext: Add -remove-hyphens option
+    * pdftotext: Do not abort on empty strings.
+  + build system: Increase minimum required dependency versions to
+    those of Ubuntu 24.04
+- Changes from version 26.04.0:
+  + core:
+    * Splash: Improve knockout groups rendering.
+    * Improve reconstruction of damaged files
+    * Performance improvement in files with peculiar Form objects.
+    * Fix memory leak if embedding png fails
+    * Internal code improvements
+  + qt5: Fix inverted continuation rect in
+    performMultipleTextSearch
+  + qt6: Fix inverted continuation rect in
+    performMultipleTextSearch
+- Changes from version 26.03.0:
+  + core:
+    * Add compression support for stamp annotation images
+    * NSS signature backend: Look for Firefox profiles also in XDG
+      config directory
+    * GPG signature backend: Fix marking of qualified keys
+    * Simplify the form of some ink annotations
+    * Speed improvements for some fixes
+    * Internal code improvements
+  + qt5:
+    * Replace deprecated Qt::SystemLocaleDate
+    * Fix wrong result bottom coordinate when searching across
+      lines
+  + qt6: Fix wrong result bottom coordinate when searching across
+    lines
+  + glib: Mark structure_element_iter_new as nullable
+  + build system: Remove USE_FLOAT cmake option
+- Bump popper_sover to 160 following upstream changes.
+- Bump dependencies required versions in spec file to match
+  versions in CMakeLists.txt
+
+-------------------------------------------------------------------
 Tue Apr 21 10:48:17 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - %suse_version value will be bumped for each service pack (e. g.
