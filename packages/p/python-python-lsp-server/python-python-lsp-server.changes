@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 22 22:26:00 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Rename unpin-autopep8.patch to unpin.patch (it unpins jedi as
+  well)
+- Delete renamed unpin.patch
+- Add compatibility_with_current_jedi.patch to make
+  python-lsp-server compatible with the current jedi 0.20.*
+  (gh#python-lsp/python-lsp-server!711).
+
+-------------------------------------------------------------------
 Mon May 11 13:11:20 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update unpin-autopep8.patch not to sed-edit patched file.

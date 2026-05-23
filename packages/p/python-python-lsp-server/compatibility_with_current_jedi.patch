@@ -1,0 +1,19 @@
+---
+ test/plugins/test_completion.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: python_lsp_server-1.14.0/test/plugins/test_completion.py
+===================================================================
+--- python_lsp_server-1.14.0.orig/test/plugins/test_completion.py	2025-12-03 19:38:36.000000000 +0100
++++ python_lsp_server-1.14.0/test/plugins/test_completion.py	2026-05-23 00:34:06.665368255 +0200
+@@ -334,8 +334,8 @@
+ 
+     com_position = {"line": 1, "character": len(doc_snippets)}
+     completions = pylsp_jedi_completions(config, doc, com_position)
+-    assert completions[0]["insertText"] == "defaultdict($0)"
+-    assert completions[0]["insertTextFormat"] == lsp.InsertTextFormat.Snippet
++    assert completions[0]["insertText"] == "defaultdict()"
++    assert not completions[0].get("insertTextFormat", None)
+ 
+ 
+ def test_snippets_completion_at_most(config, workspace) -> None:

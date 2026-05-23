@@ -460,4 +460,17 @@
 - Clean up SPEC file.</comment>
     <requestid>1352566</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>de7f56182989ecbc267f71f7f37c1115</srcmd5>
+    <version>1.14.0</version>
+    <time>1779571587</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename unpin-autopep8.patch to unpin.patch (it unpins jedi as
+  well)
+- Delete renamed unpin.patch
+- Add compatibility_with_current_jedi.patch to make
+  python-lsp-server compatible with the current jedi 0.20.*
+  (gh#python-lsp/python-lsp-server!711).</comment>
+    <requestid>1354814</requestid>
+  </revision>
 </revisionlist>

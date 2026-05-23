@@ -30,7 +30,10 @@ Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python_lsp_server-%{version}.tar.gz
-Patch1:         unpin-autopep8.patch
+Patch1:         unpin.patch
+# PATCH-FIX-UPSTREAM compatibility_with_current_jedi.patch gh#python-lsp/python-lsp-server!711 mcepl@suse.com
+# make python-lsp-server compatible with the current jedi 0.20.*
+Patch2:         compatibility_with_current_jedi.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -44,7 +47,7 @@ BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module docstring-to-markdown}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module importlib_metadata > 4.8.3 if %python-base < 3.10}
-BuildRequires:  %{python_module jedi >= 0.17.2 with %python-jedi < 0.20}
+BuildRequires:  %{python_module jedi >= 0.17.2}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
@@ -67,10 +70,10 @@ BuildRequires:  %{python_module pyflakes >= 3.4.0 with %python-pyflakes < 3.5.0}
 BuildRequires:  fdupes
 Requires:       python-black
 Requires:       python-docstring-to-markdown
+Requires:       python-jedi >= 0.17.2
 Requires:       python-pluggy >= 1.0.0
 Requires:       python-ujson >= 3.0.0
 Requires:       (python-importlib_metadata >= 4.8.3 if python-base < 3.10)
-Requires:       (python-jedi >= 0.17.2 with python-jedi < 0.20)
 Requires:       (python-python-lsp-jsonrpc >= 1.1.0 with python-python-lsp-jsonrpc < 2)
 BuildArch:      noarch
 %if %{with libalternatives}
