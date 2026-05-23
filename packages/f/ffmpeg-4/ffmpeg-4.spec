@@ -108,7 +108,7 @@
 %define _major_version 4
 %define _major_expected 5
 Name:           ffmpeg-4
-Version:        4.4.6
+Version:        4.4.7
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -136,15 +136,12 @@ Patch14:        ffmpeg-glslang-cxx17.patch
 Patch15:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
 Patch16:        0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
 Patch22:        ffmpeg-c99.patch
-Patch24:        ffmpeg-4-CVE-2024-35368.patch
 Patch25:        ffmpeg-4-CVE-2024-12361.patch
 Patch28:        ffmpeg-4-CVE-2025-25473.patch
 Patch29:        ffmpeg-4-CVE-2025-22921.patch
 Patch30:        ffmpeg-avcodec-libdav1d-don-t-repeatedly-parse-the-same-seq.patch
-Patch31:        ffmpeg-4-CVE-2024-36618.patch
 Patch32:        ffmpeg-4-CVE-2025-7700.patch
 Patch33:        glslang16.patch
-Patch34:        ffmpeg-4-CVE-2025-59728.patch
 Patch35:        ffmpeg-4-CVE-2023-6601-shim01-6b1f68cc.patch
 Patch36:        ffmpeg-4-CVE-2023-6601-shim02-954d16fa.patch
 Patch37:        ffmpeg-4-CVE-2023-6601-shim03-a0cb5722.patch

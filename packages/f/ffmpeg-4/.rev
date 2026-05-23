@@ -850,4 +850,12 @@
   bounds checks. (CVE-2026-40962, bsc#1262237)</comment>
     <requestid>1353058</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>2452e8e14322b4117ec4c8e895d3d31c</srcmd5>
+    <version>4.4.7</version>
+    <time>1779571577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.7:</comment>
+    <requestid>1354791</requestid>
+  </revision>
 </revisionlist>
