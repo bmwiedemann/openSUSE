@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 21 09:52:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.4.1:
+  + Added identifier field to the app summary.
+  + Fixed missing device support information in the app metadata.
+  + Fixed issue where paths entries suddenly disappear.
+  + Fixed too strict environment variable validation.
+  + Fixed unnecessary cleanup section in the manifest.
+  + Fixed libadwaita version requirement.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 31 12:50:59 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gobject-introspection BuildRequires: enable

@@ -17,7 +17,7 @@
 
 
 Name:           flatseal
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Manage Flatpak permissions
 License:        GPL-3.0-or-later
@@ -28,7 +28,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gobject-introspection
 BuildRequires:  pkgconfig(gjs-1.0)
 BuildRequires:  pkgconfig(webkitgtk-6.0)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 BuildREquires:  pkgconfig(appstream) >= 1.0
 BuildArch:      noarch
 

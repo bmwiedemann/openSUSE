@@ -24,4 +24,19 @@
   typelib()-dependency scanner (boo#1260408).</comment>
     <requestid>1343933</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e48ddf73ff53a09ed2db92173f2dc85d</srcmd5>
+    <version>2.4.1</version>
+    <time>1779571376</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.1:
+  + Added identifier field to the app summary.
+  + Fixed missing device support information in the app metadata.
+  + Fixed issue where paths entries suddenly disappear.
+  + Fixed too strict environment variable validation.
+  + Fixed unnecessary cleanup section in the manifest.
+  + Fixed libadwaita version requirement.
+  + Updated translations.</comment>
+    <requestid>1354484</requestid>
+  </revision>
 </revisionlist>
