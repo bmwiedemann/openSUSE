@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 23 17:13:36 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260522:
+  * tdh8: Fix loading out-of-range group code values
+  * baofeng_uv17Pro: Fix uploading over BLE for supported models
+  * Add BLE serial detection
+  * mp31: Add support for Baofeng MP31
+
+-------------------------------------------------------------------
 Fri May 15 15:38:30 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260515:
