@@ -17,13 +17,14 @@
 
 
 Name:           calls
-Version:        49.1.1
+Version:        50.0
 Release:        0
 Summary:        A phone dialer and call handler
 License:        GPL-3.0-only AND MIT
 URL:            https://gitlab.gnome.org/GNOME/calls
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  appstream-glib
+Source1:        libcall-ui-0.gitmodule.tar.xz
+BuildRequires:  AppStream
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils
@@ -36,6 +37,7 @@ BuildRequires:  vala
 BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(folks)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gmobile)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gom-1.0)
 BuildRequires:  pkgconfig(gsound)
@@ -49,6 +51,7 @@ BuildRequires:  pkgconfig(libebook-contacts-1.2)
 BuildRequires:  pkgconfig(libfeedback-0.0)
 BuildRequires:  pkgconfig(libpeas-2)
 BuildRequires:  pkgconfig(mm-glib)
+BuildRequires:  pkgconfig(mobile-broadband-provider-info)
 BuildRequires:  pkgconfig(sofia-sip-ua-glib)
 
 %description
@@ -70,6 +73,10 @@ want ofono support.
 
 %prep
 %autosetup -p1
+pushd subprojects
+tar xf %{SOURCE1}
+mv libcall-ui-0.gitmodule libcall-ui
+popd
 
 %build
 %meson \
@@ -85,13 +92,13 @@ want ofono support.
 %find_lang call-ui %{?no_lang_C}
 
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Calls.metainfo.xml
+appstreamcli validate --no-net %{buildroot}%{_datadir}/metainfo/org.gnome.Calls.metainfo.xml
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Calls.desktop
 
 ## Some tests are failing in the build environment, so we manually just run a handful for now.
-#LC_ALL=C.UTF-8 xvfb-run sh <<'SH'
-#%%meson_test manager plugins
-#SH
+LC_ALL=C.UTF-8 xvfb-run sh <<'SH'
+%meson_test manager plugins
+SH
 
 %files
 %license COPYING

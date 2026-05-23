@@ -153,4 +153,27 @@ Pushing GNOME 45.rc packages</comment>
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342939</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>919f6c6fea7aeefbe537c0843a6c3e79</srcmd5>
+    <version>50.0</version>
+    <time>1779571603</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.0:
+  + Lookup emergency numbers from mobile-broadband-provider-info
+  + Local ringback while alerting peer for SIP calls (needs new
+    dependency: gsound).
+  + Add proxy support for SIP
+  + Fix systemd unit not starting in daemon mode and restart on
+    failure
+  + Logging respects G_MESSAGES_DEBUG again
+  + Avoid crash with fortified sources in the network watch module
+  + Updated translations.
+- Replace appstream-glib with AppStream BuildRequires.
+- Enable some tests again.
+- Add pkgconfig(mobile-broadband-provider-info) and
+  pkgconfig(gmobile) BuildRequires: New dependencies.
+- Add new libcall-ui submodule to _service file and inject
+  subproject into the source directory.</comment>
+    <requestid>1354858</requestid>
+  </revision>
 </revisionlist>

@@ -3,16 +3,24 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/calls.git</param>
-    <param name="revision">v49.1.1</param>
+    <param name="revision">v50.0</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
     <!--    <param name="changesgenerate">enable</param> -->
+  </service>
+   <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://gitlab.gnome.org/World/Phosh/libcall-ui.git</param>
+    <param name="revision">3a2044f8e7c45387954ed35d22c6b6309e6751d6</param>
+    <param name="versionformat">0.gitmodule</param>
   </service>
   <service name="tar" mode="manual"/>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="manual"/>
+  <service name="set_version" mode="manual">
+    <param name="basename">calls</param>
+  </service>
 </services>
