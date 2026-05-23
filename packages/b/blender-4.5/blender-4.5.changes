@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 20 10:25:29 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.10
+  - 9cf7120b379 Fix #155371, #152150: Vulkan: Render artifacts due
+    to code path elimination
+  - f320629c6f8 Fix #154739: Crash When Editing Mesh with Geometry
+    Nodes and Armature
+
+-------------------------------------------------------------------
 Tue Apr 28 11:42:24 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add CC-BY-4.0 to the main license from demos
