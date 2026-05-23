@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 18 18:07:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.24
+  * Fix memory leaks
+- Update patch
+  * define-s390x-arch.patch
+
+-------------------------------------------------------------------
 Mon Apr  8 07:41:51 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add empty %check section.
