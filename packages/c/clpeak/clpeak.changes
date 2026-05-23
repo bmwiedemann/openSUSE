@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 21 13:10:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.9
+  * Use pseudo-random data in buffer population to defeat memory
+    compression.
+  * Apply pseudo-random data initialisation to every bandwidth test
+- Update to version 2.0.8
+  * New iOS app, refactoring of all GPU backends.
+- Update to version 2.0.7
+  * Major Refactor: Architecture Restructuring, Logger Redesign &
+    Android Improvements.
+
+-------------------------------------------------------------------
 Wed May 13 16:55:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.6:
