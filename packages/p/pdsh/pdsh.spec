@@ -66,13 +66,12 @@ Recommends:     mrsh
 BuildRequires:  genders-devel > 1.0
 %endif
 URL:            https://github.com/chaos/%{pname}
-Version:        2.35
+Version:        2.36
 Release:        0
 Summary:        Parallel remote shell program
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/Computing
 Source:         https://github.com/chaos/%{pname}/releases/download/%{pname}-%{version}/%{pname}-%{version}.tar.gz
-Patch:          Add-support-for-C23-gcc-15.patch
 
 %description
 Pdsh is a multithreaded remote shell client which executes commands on

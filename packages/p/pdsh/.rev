@@ -495,4 +495,20 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
   Add-support-for-C23-gcc-15.patch</comment>
     <requestid>1316449</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>2338f0e1ec763251c9870151b4a17f25</srcmd5>
+    <version>2.36</version>
+    <time>1779571463</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.36:
+  * `common/hostlist`: fix out of bounds array access.
+                     update to latest from lsd-tools.
+  * Fix build on C23 compiler (gcc &gt;= 15).
+    This obsoletes: Add-support-for-C23-gcc-15.patch
+  * Update actions versions and fix code coverage build.
+  * Fix some compiler warnings when compiling pdsh.
+  * Fix closeall() performance with large _SC_OPEN_MAX.
+  * `modules/genders`: fix typo.</comment>
+    <requestid>1354661</requestid>
+  </revision>
 </revisionlist>
