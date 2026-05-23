@@ -64,7 +64,7 @@ This tool lets you search your gadgets on your binaries to facilitate your ROP e
 
 %pre
 %if %{with libalternatives}
-%python_libalternatives_reset_alternative <name>
+%python_libalternatives_reset_alternative ROPgadget
 %endif
 
 %post
