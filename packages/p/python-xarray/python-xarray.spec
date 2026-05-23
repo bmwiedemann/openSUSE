@@ -25,6 +25,9 @@
 %define psuffix %{nil}
 %endif
 
+# python311-zarr required for python311-xarray-io is not available, so skip python-311 to prevent: Installcheck problems for x86_64: nothing provides python311-zarr >= 2.18 needed by python311-xarray-io-2026.02.0.noarch
+%global skip_python311 1
+
 %{?sle15_python_module_pythons}
 Name:           python-xarray%{psuffix}
 Version:        2026.02.0
@@ -108,7 +111,7 @@ Requires:       python-netCDF4 >= 1.6
 Requires:       python-pooch
 Requires:       python-scipy >= 1.13
 Requires:       python-xarray = %{version}
-Requires:       python-zarr >= 2.18
+Requires:       python-zarr >= 3
 # Not available yet
 Recommends:     python-pydap
 

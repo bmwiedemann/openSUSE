@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 23 06:44:36 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- skip builds for python311
+ * python311-zarr required for python311-xarray-io is not available, so skip python-311 to prevent: Installcheck problems for x86_64: nothing provides python311-zarr >= 2.18 needed by python311-xarray-io-2026.02.0.noarch
+
+-------------------------------------------------------------------
 Wed Mar 11 01:15:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2026.02.0:
