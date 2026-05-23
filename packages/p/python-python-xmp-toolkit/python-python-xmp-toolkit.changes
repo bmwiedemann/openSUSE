@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Jan 10 03:43:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-313.patch:
+  * Support Python 3.13 by not using unittest.makeSuite.
+
+-------------------------------------------------------------------
+Mon Nov 11 14:22:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Fix test following a bugfix from Exempi 2.4.0.
+  * Fix crash when there is no schema.
+
+-------------------------------------------------------------------
+Thu Dec 14 17:18:50 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Initial version 2.0.1
