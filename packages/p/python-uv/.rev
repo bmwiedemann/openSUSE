@@ -2561,4 +2561,37 @@
   * Don't suggest non-existent --no-frozen flag</comment>
     <requestid>1353048</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>7ecbd238242e1a11581065b408b88c57</srcmd5>
+    <version>0.11.15</version>
+    <time>1779571382</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.15
+ * Security
+  * Fix a TAR parser differential, see GHSA-3cv2-h65g-fgmm 
+  * Enforce that entry points cannot escape in the scripts directory, see GHSA-4gg8-gxpx-9rph 
+ * Enhancements
+  * Add TOML v1.1 -&gt; v1.0 backwards compatibility for source distributions 
+  * Add support for Azure request signing 
+  * Apply stricter validation to all wheel filename segments 
+  * Reject empty strings as an invalid package name 
+  * Use structured errors for signing authentication failures 
+ * Preview
+  * uv audit: Add JSON output 
+ * Configuration
+  * Respect required-environments in uv pip compile 
+ * Performance
+  * Avoid parsing JSON manifest when local Python is available 
+  * Avoid walking nested directories in linker conflict registration 
+  * Optimize async wheel ZIP writing 
+  * Fix dead &quot;already trimmed&quot; fast-path in Version::only_release_trimmed 
+ * Bug fixes
+  * Apply workspace-member [tool.uv.sources] credentials under uv sync --frozen 
+  * Skip empty directories in uv build outputs 
+  * Fix Git submodule handling when using relative paths 
+  * Fix line number reporting in netrc parsing 
+ * Documentation
+  * Move Bazel auth helper setup into integration guide</comment>
+    <requestid>1354492</requestid>
+  </revision>
 </revisionlist>
