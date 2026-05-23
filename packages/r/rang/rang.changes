@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 23 15:39:50 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.3
+  * This is a minor release to bump minimum cmake version to 3.10 and migrate
+    to conan 2(from 1 since it's deprecated now)
+
+-------------------------------------------------------------------
 Thu Dec 15 13:33:42 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 3.2

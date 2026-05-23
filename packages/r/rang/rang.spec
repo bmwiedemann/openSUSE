@@ -1,7 +1,7 @@
 #
 # spec file for package rang
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           rang
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        A C++ library for color emission in the terminal
 # The Unlicense, see LICENSE file
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 URL:            https://agauniyal.github.io/rang
 Source0:        https://github.com/agauniyal/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
