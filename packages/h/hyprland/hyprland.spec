@@ -20,7 +20,7 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.54.3
+Version:        0.55.2
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -48,14 +48,16 @@ BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hyprcursor) >= 0.1.9
-BuildRequires:  pkgconfig(hyprgraphics) >= 0.1.6
+BuildRequires:  pkgconfig(hyprgraphics) >= 0.5.1
 BuildRequires:  pkgconfig(hyprlang) >= 0.6.7
-BuildRequires:  pkgconfig(hyprutils) >= 0.11.0
+BuildRequires:  pkgconfig(hyprutils) >= 0.13.1
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.3.10
 BuildRequires:  pkgconfig(hyprwire) >= 0.3.0
+BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
 BuildRequires:  pkgconfig(libinput) >= 1.28.0
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(lua5.5)
 BuildRequires:  pkgconfig(muparser)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
@@ -66,7 +68,7 @@ BuildRequires:  pkgconfig(tomlplusplus)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vulkan) >= 1.2.182
 BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.45
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.47
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server) >= 1.22.91
 BuildRequires:  pkgconfig(xcb)
@@ -183,7 +185,9 @@ sed \
 %{_bindir}/hyprctl
 %{_bindir}/start-hyprland
 %dir %{_datadir}/%{shortname}
-%{_datadir}/%{shortname}/hyprland.conf
+%{_datadir}/%{shortname}/hyprland.lua
+%dir %{_datadir}/%{shortname}/stubs
+%{_datadir}/%{shortname}/stubs/hl.meta.lua
 %{_datadir}/%{shortname}/lockdead.png
 %{_datadir}/%{shortname}/lockdead2.png
 %dir %{_datadir}/wayland-sessions/

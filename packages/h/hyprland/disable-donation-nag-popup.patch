@@ -20,7 +20,7 @@ index d7eab9a..4fc8dc9 100644
  
  CDonationNagManager::CDonationNagManager() {
 +    return;
-     static auto PNONAG = CConfigValue<Hyprlang::INT>("ecosystem:no_donation_nag");
+     static auto PNONAG = CConfigValue<Config::INTEGER>("ecosystem:no_donation_nag");
  
      if (g_pVersionKeeperMgr->fired() || *PNONAG)
 -- 

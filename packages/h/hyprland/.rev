@@ -423,4 +423,12 @@ depends on 1159012</comment>
     <comment></comment>
     <requestid>1347758</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>c4be35845132e3e4e978366c2e60f7a0</srcmd5>
+    <version>0.55.2</version>
+    <time>1779571598</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1354845</requestid>
+  </revision>
 </revisionlist>
