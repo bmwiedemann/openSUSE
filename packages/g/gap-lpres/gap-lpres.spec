@@ -1,7 +1,7 @@
 #
 # spec file for package gap-lpres
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-lpres
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        GAP: Nilpotent Quotients of L-Presented Groups
 License:        GPL-2.0-or-later
