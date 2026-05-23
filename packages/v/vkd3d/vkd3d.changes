@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Thu May 21 21:04:09 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 2.0:
+  - libvkd3d
+    Resources with a combined depth/stencil format like
+    DXGI_FORMAT_R32G8X24_TYPELESS can be created without the
+    D3D12_RESOURCE_FLAG_ALLOW_DEPTH_STENCIL flag being set. It's
+    somewhat rare for applications to create such resources;
+    typically resources with a combined depth/stencil format are
+    either used with both a depth/stencil view and a shader
+    resource view, or exclusively with a depth/stencil view.
+    The syntax for the VKD3D_DEBUG environment variable has been
+    extended to allow more precise control over the debug output.
+    See the ‘Environment variables’ section of the README for a
+    description of the extended syntax.
+  - libvkd3d-shader
+    New features and improvements for the HLSL source type:
+        Store operations to structured thread group shared memory.
+        Interlocked operations on structured and/or arrayed
+        unordered access views and thread group shared memory.
+        A new common subexpression elimination optimisation pass.
+        Initial support for loops in shader model 2-3 target
+        profiles.
+        More efficient usage of temporary registers, primarily
+        due to improvements to the register allocator and the
+        introduction of an output write hoisting pass. This is
+        particularly relevant for shader model 1-3 target
+        profiles, where the number of temporary registers is
+        relatively limited, and we may otherwise not be able to
+        compile some shaders.
+        The tex3Dbias(), tex3Dlod(), and texCUBElod() intrinsic
+        functions.
+        The ‘SV_ClipDistance’ and ‘SV_CullDistance’ input/output
+        semantics.
+        The ‘SV_StencilRef’ pixel shader output semantic.
+        Corrected handling of InterlockedMin() and
+        InterlockedMax() operations on inputs with differing
+        signedness. When either of the inputs has an ‘uint’ type,
+        the other is converted/promoted to ‘uint’ as well.
+        The
+        VKD3D_SHADER_COMPILE_OPTION_BACKCOMPAT_MAP_SEMANTIC_NAMES
+        flag now additionally maps the shader model 3 ‘VFACE’ and
+        ‘VPOS’ semantic names to their shader model 4+
+        equivalents.
+        Constant folding of floating-point modulo expressions.
+        I.e., ‘x % y’ where ‘x’ and ‘y’ are floating-point
+        constants.
+        The scope of variables declared in ‘for’ loop
+        initialisation clauses has been expanded to extend beyond
+        the end of the loop. I.e.,
+        ‘for (int i = 0; i < 10; ++i); return i;’ is valid HLSL.
+        That's different from e.g. C99, where the scope of ‘i’
+        would be limited to the loop.
+        Floating-point literal parsing has been made independent
+        of the current locale. Previously, the HLSL parser would
+        use the current locale's decimal separator when parsing
+        floating-point literals, instead of the HLSL decimal
+        separator, which is always the ‘.’ character. Note that
+        this only affects programs that set a locale other than
+        the initial ‘C’ locale, for example by calling the
+        setlocale() function.
+    New features and improvements for the effects (FX) source
+    type:
+        Parsing of operand indices in eval() block was broken and
+        has been fixed.
+        The ‘umod’ FXLVM operation is recognised.
+    New features and improvements for the legacy Direct3D
+    byte-code source type:
+        The following instructions:
+            m4x4, m3x4, m4x3, m3x3, and m3x2
+            phase
+            texdepth
+            texreg2ar, texreg2gb, and texreg2rgb
+        The ‘_dz’, ‘_db’, ‘_dw’, and ‘_da’ source modifiers. These
+        are used with the ‘texcrd’ and ‘texld’ instructions.
+        The ‘vFace’ and ‘vPos’ pixel shader input registers.
+        Shader model 3 vertex shader point size outputs. In shader
+        model 1 and 2 point size output uses the ‘oPts’ output
+        register; shader model 3 uses a generic ‘o’ register with
+        a ‘dcl_psize’ declaration.
+        Shader model 1 and 2 vertex shader outputs are clamped to
+        the 0 to 1 range.
+    The DXIL source type supports forward-referencing pointers in
+    load, store, atomic read/modify/write, and compare/exchange
+    operations.
+    The DXIL source type supports pixel shader specified stencil
+    reference values.
+    The experimental Metal Shading Language (MSL) target supports
+    pixel shader specified stencil reference values.
+    The Direct3D shader assembly target supports 16-bit immediate
+    constants. These are typically produced by DXIL sources.
+    The Direct3D shader assembly target supports the following
+    global flags:
+        ‘64UAVs’
+        ‘ROVs’
+        ‘UAVLoadAdditionalFormats’
+        ‘UAVsAtEveryStage’
+        ‘allResourcesBound’
+        ‘enable11_1ShaderExtensions’
+        ‘int64Ops’
+        ‘nativeLowPrecision’
+        ‘stencilRef’
+        ‘viewportAndRTArrayIndex’
+        ‘waveOps’
+    New interfaces:
+        The vkd3d_shader_scan_denormal_mode_info structure extends
+        the vkd3d_shader_compile_info structure, and can be used
+        to retrieve the denormal mode used for floating-point
+        numbers.
+        The VKD3D_SHADER_SPIRV_EXTENSION_KHR_FLOAT_CONTROLS
+        enumeration value indicates support for the
+        SPV_KHR_float_controls extension in the SPIR-V target
+        environment.
+        The VKD3D_SHADER_COMPILE_OPTION_DENORMAL_MODE_F16 compile
+        option specifies the denormal mode to use for 16-bit
+        floating-point numbers.
+        The VKD3D_SHADER_COMPILE_OPTION_DENORMAL_MODE_F32 compile
+        option specifies the denormal mode to use for 32-bit
+        floating-point numbers.
+        The VKD3D_SHADER_COMPILE_OPTION_DENORMAL_MODE_F64 compile
+        option specifies the denormal mode to use for 64-bit
+        floating-point numbers.
+        The VKD3D_SHADER_COMPILE_OPTION_CONST_GLOBAL_UNIFORMS flag
+        specifies that all uniforms with global scope should be
+        considered ‘const’ in HLSL sources.
+        When targeting VKD3D_SHADER_API_2_0, compilation will fail
+        when a required floating-point denormal mode can't be
+        specified in the target shader. For the SPIR-V target,
+        this requires the SPV_KHR_float_controls extension, as
+        well as the corresponding capabilities in the target
+        environment. The earlier mentioned compile options allow
+        overriding the denormal modes specified by the source
+        shader.
+    The syntax for the VKD3D_SHADER_DEBUG environment variable has
+    been extended to allow more precise control over the debug
+    output. See the ‘Environment variables’ section of the README
+    for a description of the extended syntax.
+  - libvkd3d-utils
+    The D3DCompile(), D3DCompile2(), D3DCompile2VKD3D(), and
+    D3DPreprocess() functions support using
+    D3D_COMPILE_STANDARD_FILE_INCLUDE as include handler.
+    Unless the D3DCOMPILE_ENABLE_BACKWARDS_COMPATIBILITY flags is
+    specified, D3DCompile2VKD3D() will consider all uniforms with
+    global scope to be ‘const’ for compiler versions 37 and up.
+    This is also the case for D3DCompile() and D3DCompile2(),
+    which behave like compiler version 47.
+
+-------------------------------------------------------------------
 Sat May  9 17:24:18 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 1.19:
