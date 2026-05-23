@@ -51,6 +51,9 @@ Source2:        scribus.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
+# PATCH-FIX-UPSTREAM 14a287fc1db2a44abfe1743260554447b31b4adf.patch -- Fix failure to build with poppler 26.05.0
+Patch1:         14a287fc1db2a44abfe1743260554447b31b4adf.patch
+
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
@@ -115,6 +118,7 @@ of color separations.
 
 %package doc
 Summary:        Documentation for Scribus
+BuildArch:      noarch
 
 %description doc
 This package provides the documentation for Scribus.

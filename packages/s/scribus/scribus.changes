@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 22 06:31:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 14a287fc1db2a44abfe1743260554447b31b4adf.patch: Fix failure
+  to build with poppler 26.05.0 (boo#1265939)
+- Change scribus-doc sub-package to noarch.
+
+-------------------------------------------------------------------
 Mon Apr 20 10:19:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.6.6
