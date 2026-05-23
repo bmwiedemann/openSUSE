@@ -1,8 +1,7 @@
 #
 # spec file for package ghostscript
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +29,7 @@
 %bcond_with libalternatives
 %endif
 Name:           ghostscript%{psuffix}
-Version:        10.07.0
+Version:        10.07.1
 Release:        0
 Summary:        The Ghostscript interpreter for PostScript and PDF
 License:        AGPL-3.0-only
@@ -39,16 +38,17 @@ URL:            https://www.ghostscript.com/
 # Use "osc service manualrun" to fetch Source0:
 Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10070/ghostscript-%{version}.tar.gz
 # How to manually (i.e. without "osc service") find the Source0 URL at Ghostscript upstream
-# (example for the Ghostscript 10.05.1 release):
+# (example for the Ghostscript 10.07.1 release):
 # Go to https://www.ghostscript.com
 # -> [Download] or "Releases" https://ghostscript.com/releases/index.html
 # -> "Ghostscript" https://ghostscript.com/releases/gsdnld.htm
-# -> "Ghostscript 10.05.1 Source for all platforms / Ghostscript AGPL Release"
-# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10051/ghostscript-10.05.1.tar.gz
+# -> "Ghostscript 10.07.1 Source for all platforms / Ghostscript AGPL Release"
+# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10071/ghostscript-10.07.1.tar.gz
 # and "MD5 Checksums"
-# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10051/MD5SUMS
+# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10071/MD5SUMS
 # and on https://ghostscript.com/releases/index.html
-# -> "release notes" https://ghostscript.readthedocs.io/en/gs10.05.1/News.html
+# -> "release notes"
+# https://ghostscript.readthedocs.io/en/gs10.07.1/News.html
 Source10:       apparmor_ghostscript
 # Patch0...Patch9 is for patches from upstream:
 # Source10...Source99 is for sources from SUSE which are intended for upstream:

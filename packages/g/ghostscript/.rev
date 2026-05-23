@@ -696,4 +696,12 @@ https://build.opensuse.org/requests/1305216
     <comment>Ghostscript version upgrade to 10.07.0 fixes security issues where MITRE has not yet CVEs assigned - see 'This release addresses CVEs: TBC (Two applied for)' in https://ghostscript.readthedocs.io/en/gs10.07.0/News.html (forwarded request 1341106 from jsmeix)</comment>
     <requestid>1341108</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>51b8d4d0d53a5d59e5c40b088a8c7521</srcmd5>
+    <version>10.07.1</version>
+    <time>1779571330</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript version upgrade to 10.07.1 fixes potential security issues (forwarded request 1354700 from jsmeix)</comment>
+    <requestid>1354701</requestid>
+  </revision>
 </revisionlist>
