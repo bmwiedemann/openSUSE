@@ -1,0 +1,8 @@
+<package name="unshieldv3" project="openSUSE:Factory">
+  <title>A Program to Extract InstallShield V3 (Z) archives</title>
+  <description>A Program to Extract InstallShield V3 (Z) archives.
+
+InstallShield Z format is a compressed archive format used by
+version 3 of the InstallShield installation software.</description>
+  <url>https://github.com/wfr/unshieldv3</url>
+</package>
