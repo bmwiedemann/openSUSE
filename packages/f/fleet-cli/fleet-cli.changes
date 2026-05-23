@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 22 06:36:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.2:
+  * [v0.15] Fix namespace label equality check and nil map panic
+    (#5172)
+  * Bump github.com/go-git/go-git/v5 to v5.19.1 (#5166)
+  * webhook: use regexp.QuoteMeta for hostname and path (#5145)
+  * Introduce Policy custom resource (#5144)
+  * Require helmRepoURLRegex for Helm credential forwarding
+  * Restrict go-getter to Git and File protocols
+  * fix: inherit node selectors for GitRepo sync jobs (#5125)
+  * Retain relevant kubernetes.io labels when syncing namespaces
+  * Update dependency go to v1.25.10 (#5122)
+  * Update module github.com/go-git/go-git/v5 to v5.19.0 [SECURITY]
+    (#5104)
+  * Propagate CATTLE_WRANGLER_CHECK_GVK_ERROR_MAPPING to
+    fleet-agent (#5085) (#5092)
+  * [v0.15] Remove ineffective Renovate comments (#5057)
+
+-------------------------------------------------------------------
 Thu Apr 30 05:06:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.15.1:
