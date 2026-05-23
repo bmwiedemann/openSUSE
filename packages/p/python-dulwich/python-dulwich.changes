@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 21 19:42:31 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.2.4.
+  * Tolerate ref names with empty path components (e.g. `refs/tags//v1.0`) for now.
+
+-------------------------------------------------------------------
 Sat May  2 00:02:23 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 1.2.1.
