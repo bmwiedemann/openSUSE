@@ -71,4 +71,18 @@
     <comment></comment>
     <requestid>1335708</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b1efef2ec1828e2f53aea184ee07b21c</srcmd5>
+    <version>8.97</version>
+    <time>1779571612</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.97:
+  * fixes #206 - fix silent truncation of narrow types
+  * fixes #208 - SetColumnName and SetRowName to remove any label
+    being replaced
+  * fixes #204 - auto-quote cells containing quote char
+  * fixes #213 - handle GetColumnNames with empty column row
+  * improve tests exception output, minor code style fix</comment>
+    <requestid>1354874</requestid>
+  </revision>
 </revisionlist>
