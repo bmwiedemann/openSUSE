@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 22 12:54:10 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.70.4:
+  - Fixes
+    * fix: Fix install script for Linux ARM machines
+    * fix: Run git lfs pull in working copy directory
+    * fix: Use strings for all paths in template data
+
+-------------------------------------------------------------------
 Tue May 12 16:26:54 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.70.3:
