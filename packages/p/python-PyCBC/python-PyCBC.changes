@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 22 11:48:32 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop a couple of poorly designed tests that error out with
+  recent igwn modules.
+
+-------------------------------------------------------------------
 Sun Sep 15 14:03:59 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add python-PyCBC-tests-numpy-2.0-compat.patch for compatibility

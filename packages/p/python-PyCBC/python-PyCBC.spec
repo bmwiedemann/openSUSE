@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyCBC
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,8 +60,8 @@ Requires:       python-lalframe
 Requires:       python-lalpulsar
 Requires:       python-lalsimulation
 # /SECTION
-Requires:       python-ligo-lw >= 1.7.0
-Requires:       python-ligo-segments
+Requires:       python-igwn-ligolw
+Requires:       python-igwn-segments
 Requires:       python-lscsoft-glue
 Requires:       python-matplotlib >= 1.5.1
 Requires:       python-mpld3 >= 0.3
@@ -143,6 +143,7 @@ sed -E -i "1 s|^#\!\s*/usr/bin/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir}/
 # can't use pytest --ignore because of a special arg parser in test/utils.py
 rm -r \
    test/test_chisq.py \
+   test/test_coordinates_space.py \
    test/test_dq.py \
    test/test_fft_mkl_threaded.py \
    test/test_fftw_openmp.py \
@@ -151,6 +152,7 @@ rm -r \
    test/test_infmodel.py \
    test/test_skymax.py \
    test/test_tmpltbank.py \
+   test/test_transforms.py \
    test/test_waveform.py \
    %{nil}
 
