@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Fri May 22 10:10:16 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4.0+git20260513.fc6c03a:
+  * closep(): set fd to -EBADF
+  * Release version 0.4.0
+
+-------------------------------------------------------------------
+Wed May 13 12:50:36 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4.0+git20260513.2656b52:
+  * wall-broadcaster: fix possible buffer underflow
+  * wall-broadcaster: fix memory leaks and fd check
+
+-------------------------------------------------------------------
+Thu Apr 30 07:43:56 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3.1+git20260430.b223b14:
+  * Include fcntl.h for open()
+
+-------------------------------------------------------------------
+Wed Apr 29 12:41:06 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3.1+git20260429.e809b5f:
+  * Release version 0.3.1
+  * Harden wall-broadcaster.service
+
+-------------------------------------------------------------------
+Wed Apr 29 12:02:36 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3.0+git20260429.e378f1c:
+  * Release version 0.3.0
+  * Add manual pages
+  * README.md: document how to enable desktop apps
+  * wall-broadcaster: prepare for whitelist of users allowed to send
+  * Add desktop files for wall-bcst-{gateway,watcher}
+
+-------------------------------------------------------------------
+Tue Apr 28 16:19:47 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.2.0+git20260428.74af9d8:
+  * wall-bcst-send: utility to send messages
+  * Cleanup varlink server code
+
+-------------------------------------------------------------------
+Mon Apr 27 14:26:11 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.2.0+git20260427.e110f88:
+  * wall-broadcaster: implement varlink interface
+  * Update README
+
+-------------------------------------------------------------------
+Fri Apr 24 12:54:27 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.2.0+git20260424.ac22a5b:
+  * meson: Remove -Wbad-function-cast, glib2 fails with gcc
+  * Release version 0.2.0
+  * README: add gtk4 application
+  * CI: add gtk4-devel
+  * Add gtk4 application
+  * wall-bcst-watcher: fix getopt options
+  * wall-broadcaster: only wait 0.1 seconds for complete wall message
+
+-------------------------------------------------------------------
+Fri Apr 24 09:44:21 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1.0+git20260424.bf34b3f:
+  * wall-bcst-gateway: set timeout to 0 for urgency=2
+  * wall-broadcaster: more message cleanups, set urgency
+
+-------------------------------------------------------------------
+Fri Apr 24 08:41:19 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1.0+git20260424.11ef3a9:
+  * README: update with new utilities
+  * Add wall-bcst-gateway
+
+-------------------------------------------------------------------
+Fri Apr 24 07:53:43 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.1.0+git20260424.74aaaa8:
+  * meson: fix typo and make werror an option
+  * wall-bcst-watcher: display messages on tty
+  * wall-broadcaster: make more compatible with Freedesktop notifications
+  * Adjust protocol to Freedesktop Notification Specification
+
+-------------------------------------------------------------------
+Wed Apr 22 14:12:12 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0.0+git20260422.b9e5f4f:
+  - Initial version
