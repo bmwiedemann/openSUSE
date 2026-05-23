@@ -1,7 +1,7 @@
 #
 # spec file for package libdatovka
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname %{name}8
 Name:           libdatovka
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Library for accessing the Czech Data Boxes
 License:        GPL-3.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-tools
+BuildRequires:  pkgconfig(json-c)
 
 %description
 This is a library for accessing ISDS (Informační systém datových schránek /
