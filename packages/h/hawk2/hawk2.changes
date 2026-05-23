@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 22 09:24:56 UTC 2026 - aburlakov@suse.com
+
+- Update to version 2.7.0+git.1779441013.87a8ea7c:
+  * Fix: parsing `crm resources constraints <ID>`
+  * Fix: resource `Recent events` menu
+  * Add more timeout to mitigate ElementNotInteractableException
+  * Fixing the „Problem reading geckodriver versions: error sending request for url“ warning
+  * check_cluster_conf_ssh
+  * Fix python version module compatible (TEAM-11049)
+
+-------------------------------------------------------------------
 Mon May 18 10:57:43 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - bump net-imap 0.6.3 --> 0.6.4 (bsc#1265364,bsc#1265368)

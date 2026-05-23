@@ -1,6 +1,7 @@
 #
 # spec file for package hawk2
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -41,7 +42,7 @@ Name:           hawk2
 Summary:        HA Web Konsole
 License:        GPL-2.0-only
 Group:          %{pkg_group}
-Version:        2.7.0+git.1772201206.4725acc7
+Version:        2.7.0+git.1779441013.87a8ea7c
 Release:        0
 URL:            http://www.clusterlabs.org/wiki/Hawk
 Source:         %{name}-%{version}.tar.bz2
@@ -234,9 +235,9 @@ pushd hawk
     -e '1s|^#! */usr/bin/env ruby -wKU$|#!/usr/bin/ruby -wKU|' \
     -e '1s|^#! */usr/bin/env bash$|#!/usr/bin/bash|' {} \;
 
-  sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_suffix}$' bin/rails
-  sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_suffix}$' bin/rake
-  sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_suffix}$' bin/bundle
+  %ruby_fix_shebang_path bin/rails
+  %ruby_fix_shebang_path bin/rake
+  %ruby_fix_shebang_path bin/bundle
 
   if [ -x /usr/bin/bundle.ruby.%{rb_suffix} ]; then
       bundlerexe=bundle.ruby.%{rb_suffix}
