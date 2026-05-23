@@ -206,4 +206,12 @@
 - Update Requires from pyproject.toml (forwarded request 1315427 from glaubitz)</comment>
     <requestid>1315499</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0eb83bbae1ae8bca9da607687c4bd7ce</srcmd5>
+    <version>4.0.1</version>
+    <time>1779571475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1354668</requestid>
+  </revision>
 </revisionlist>
