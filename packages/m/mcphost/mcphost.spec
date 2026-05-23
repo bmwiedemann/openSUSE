@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%{bcond_with vulncheck}
+
 Name:           mcphost
 Version:        0.34.0
 Release:        0
@@ -24,8 +26,10 @@ URL:            https://github.com/mark3labs/mcphost
 Source0:        https://github.com/mark3labs/mcphost/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang(API) >= 1.26
+%if %{with vulncheck}
 BuildRequires:  govulncheck
 BuildRequires:  govulncheck-vulndb
+%endif
 
 %description
 A CLI host application that enables Large Language Models (LLMs) to interact
@@ -87,6 +91,12 @@ install -Dm 644 %{name}-autocomplete.fish %{buildroot}%{_datadir}/fish/completio
 %check
 # execute the binary as a basic check
 %{buildroot}/%{_bindir}/%{name} help
+%if %{with vulncheck}
+for i in $(find %{buildroot} -executable -and -not -type d -and -not -name "*.debug" -and -not -name "*.so*"); do
+    file $i | grep -q "^$i: ELF" || continue
+    govulncheck -mode=binary -db file:///usr/share/vulndb/ $i
+done
+%endif
 
 %files
 %license LICENSE
