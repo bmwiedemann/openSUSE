@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Sat May 23 16:42:30 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.5.0 
+  A huge thank you to all our new contributors - so much has
+  happened in this release! And a special shoutout to @zmerlynn for
+  a huge amount of work, including a whole new progress and
+  cancellation API. @AnshulPatil2005 has now pushed Manifold to be
+  double-precision deterministic across architectures. There's also
+  been lot of UX improvement in ManifoldCAD, largely thanks to
+  @swaparup36.
+
+  - New Features
+    - Cross-platform determinism by @AnshulPatil2005 in #1606,
+      #1623
+    - Smooth missing normals by @elalish in #1651, #1671
+    - Add ray casting via Kernel12 edge-triangle intersection by
+      @zmerlynn in #1645, #1654
+    - Add ExecutionContext for boolean progress + cancellation by
+      @zmerlynn in #1704, #1663, #1668, #1669, #1674, #1693, #1694,
+      #1699, #1713
+    - Performance Improvements
+    - Halfedge Refactoring by @pca006132 in #1709
+  - Bug Fixes
+    - consistent transformations of normals by @elalish in #1602
+    - Fix meshgl merge functions returning input pointer on no-op
+      by @zmerlynn in #1632
+    - Fix calculateNormals with minSharpAngle=0 producing ripples
+      by @zmerlynn in #1634
+    - Propagate error status through Manifold operations by
+      @zmerlynn in #1637
+    - Make Manifold and CrossSection safe for concurrent const
+      access by @zmerlynn in #1636, #1659
+    - Fix bounding boxes by @elalish in #1653
+    - Fix concurrent-use race on static affinity_partitioner in
+      AddNewEdgeVerts by @zmerlynn in #1664
+    - Fix CsgOpNode destructor corrupting shared subtrees by
+      @zmerlynn in #1673
+    - Use std::sqrt in svd.h to avoid an FP-determinism risk by
+      @zmerlynn in #1681
+    - Fix mergeRec stability when pivot comes from right half by
+      @zmerlynn in #1687
+    - Snapshot meshIDCounter_ once in CsgLeafNode::Compose by
+      @zmerlynn in #1688
+    - Fix CalculateNormals by @elalish in #1724, #1716
+    - Record normals on Manifold; auto-substitute on GetMeshGL;
+      round-trip via MeshGL by @zmerlynn in #1718
+  - Bindings
+    - feat: exposed WarpBatch in WASM by @swaparup36 in #1613
+    - Add missing C API bindings by @zmerlynn in #1633
+    - Fix leak in manifold_alloc_* (C API) by @zmerlynn in #1667
+  - ManifoldCAD
+    - Handle versioned jsDelivr URLs. by @tonious in #1618
+    - Material transparency implies doubleSided. by @tonious in
+      #1619
+    - feat: added edge visibility toggle by @swaparup36 in #1624
+    - UX improvements to ManifoldCAD by @elalish in #1628, #1630,
+      #1641, #1644, #1657
+    - editor script icons UX by @israrkhan921 in #1621
+    - feat: add axes indicator to model-viewer by @swaparup36 in
+      #1631
+    - Improve editor load and keep Monaco features stable. by
+      @israrkhan921 in #1658
+    - Add vite-bundle-analyzer for bundle size checking by
+      @israrkhan921 in #1679
+    - Improve import transformation for complex models by @tonious
+      in #1685
+    - Topological sort for 3MF export by @tonious in #1692
+    - Keep editor camera steady when rerunning scripts by @elalish
+      in #1701
+    - Import/Export bug fixes. by @tonious in #1705
+    - Retry transient fetch failures (fixes #1711) by @zmerlynn in
+      #1717
+  - Tests and CI
+    - ci: add cross-platform determinism check by @AnshulPatil2005
+      in #1594
+    - dedicated Linux Clang ASan+UBSan workflow lane by
+      @AnshulPatil2005 in #1666
+    - Add TSAN CI workflow by @zmerlynn in #1665
+    - Reorganize tests: extract ExecutionContext, parallel-utility,
+      and RayCast clusters by @zmerlynn in #1697
+  - Build
+    - Add MANIFOLD_TIMING build option + perfPhases benchmark by
+      @zmerlynn in #1670
+    - Drop early return in CMake on emscripten by @paulgessinger in
+      #1678
+    - Use target_compile_definitions instead of
+      target_compile_options for -D flags by @starseeker in #1686
+    - Add MANIFOLD_NO_IOSTREAM build-time option by @zmerlynn in
+      #1690
+    - Add CrossSection backend selector by @zmerlynn in #1710
+    - Fix MSVC strict conversion warnings by @zmerlynn in #1726
+  - Miscellaneous
+    - Updated Java bindings by @madhephaestus in #1617
+    - Add user Bridge Designer to README by @gene-ressler in #1629
+    - Fix README "bare" typos by @klausw in #1639
+    - Add AdaShape to Users in README by @Mikko-ads in #1648
+    - Add Rust binding (manifold-csg) to README by @zmerlynn in
+      #1649
+    - Add link to pyvista-manifold by @banesullivan in #1695
+
+-------------------------------------------------------------------
 Tue Mar 24 10:50:41 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.4.1

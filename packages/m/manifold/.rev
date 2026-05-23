@@ -78,4 +78,12 @@ if blender 4.5.1 is still in staging. this can be merged into the same staging.<
     <comment>- Update to 3.4.1</comment>
     <requestid>1342213</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>78b1ed66d5bba9edbaf5c32559e1c9e2</srcmd5>
+    <version>3.5.0</version>
+    <time>1779571621</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.0</comment>
+    <requestid>1354872</requestid>
+  </revision>
 </revisionlist>
