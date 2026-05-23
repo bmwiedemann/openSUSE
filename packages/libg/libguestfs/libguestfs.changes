@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 21 09:03:00 MDT 2026 - carnold@suse.com
+
+- Update to version 1.59.8 (jsc#PED-14625)
+  docs/guestfs-recipes.pod: Remove reference to deleted documentation
+  mlcustomize: firstboot.bat must not reboot VM on error code 250
+  mlcustomize: Update generated files
+  tests/events/test-console-debug.py: Enhance test output
+
+-------------------------------------------------------------------
 Tue Apr 28 14:31:12 MDT 2026 - carnold@suse.com
 
 - Update to version 1.59.7 (jsc#PED-14625)
