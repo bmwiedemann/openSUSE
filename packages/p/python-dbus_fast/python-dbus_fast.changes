@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Fri May 22 11:23:29 UTC 2026 - Ana Guerrero <ana.guerrero+factory@suse.com>
+
+- Update to version 5.0.3:
+  * 5.0.3
+  * fix(unmarshaller): cap container nesting depth to prevent stack overflow DoS (#698)
+  * 5.0.2
+  * fix(introspection): bound <node> nesting depth to prevent DoS (#697)
+  * refactor(aio): drop dead self._stream.flush() in _authenticate() (#694)
+  * test: drop blocking sendall in auth_readline peer-side setup (#692)
+  * 5.0.1
+  * fix(aio): send hello via sock_sendall to keep connect off the event loop (#691)
+  * test: add blockbuster to detect blocking calls in asyncio tests (#690)
+  * docs: add PSR insertion-flag marker to CHANGELOG (#689)
+  * docs: regenerate CHANGELOG.md with all releases through v5.0.0 (#688)
+  * ci: key venv cache on resolved python patch version (#687)
+  * 5.0.0
+  * fix!: defer socket.connect() from __init__ to connect() (#570)
+  * chore(deps-dev): bump idna from 3.10 to 3.15 in the pip group across 1 directory (#684)
+  * ci: retry poetry install to absorb transient pypi flakes (#685)
+  * chore(pre-commit.ci): pre-commit autoupdate (#682)
+  * chore(deps-dev): bump pytest-codspeed from 4.5.0 to 5.0.2 (#683)
+  * docs(contributing): fix grammar in submit-feedback line (#680)
+  * ci: cache apt and uv downloads for the s390x big-endian job (#676)
+  * ci: simplify venv cache key and consolidate poetry env (#679)
+  * ci: cache poetry venv keyed on lockfile and cython sources (#675)
+  * ci: scope release concurrency group per ref (#677)
+  * ci: cache apt packages for test and benchmark jobs (#674)
+  * chore(ci): pin action comments to full semver (#673)
+  * 4.3.0
+  * feat: introduce riscv64 to linux and musllinux builds (#620)
+  * ci: skip benchmark tests in main test job (#672)
+  * ci: report top 30 slowest tests via --durations=30 (#670)
+  * 4.2.8
+  * fix(ci): drop -- separator in release-job git switch (#668)
+  * build: adjust actions checkout ref parameter on release (#624)
+  * refactor(signature): drop unreachable child guards in _parse_next (#665)
+  * 4.2.7
+  * fix(signature): route 'o' and 'h' tokens to their dedicated validators (#663)
+  * 4.2.6
+  * perf(build): parallelize cython extension compilation (#664)
+  * ci(s390x): drop pycairo/PyGObject builds and use uv for installs (#662)
+  * 4.2.5
+  * fix(auth): cap auth-line buffer and treat EOF as error (#658)
+  * 4.2.4
+  * fix: drop per-commit commitlint, rely on PR-title check (#661)
+  * 4.2.3
+  * fix: stop sending python tracebacks to remote dbus callers (#659)
+  * 4.2.2
+  * fix(signature): cap get_signature_tree lru_cache to 4096 entries (#657)
+  * 4.2.1
+  * fix(introspection): reject entity declarations to block billion-laughs (#655)
+  * docs(errors): document DBusFastError and InternalError (#656)
+  * 4.2.0
+  * feat(errors): add InternalError so library bugs are catchable (#638)
+  * 4.1.1
+  * fix(unmarshaller): cap message size at 128 MiB per d-bus spec (#653)
+  * docs: add cython gotchas section to CLAUDE.md (#654)
+  * chore(deps-dev): bump urllib3 from 2.6.3 to 2.7.0 in the pip group across 1 directory (#629)
+  * ci: use uv to install poetry in CI workflow (#652)
+  * test(address): cover get_session_bus_address branches (#637)
+  * docs: add SECURITY.md with private vulnerability reporting policy (#651)
+  * chore(deps-dev): bump pygobject from 3.50.0 to 3.56.3 (#631)
+  * ci: widen asyncio policy DeprecationWarning filter for pygobject 3.56 (#650)
+  * ci: ignore pygobject 3.56 AbstractEventLoopPolicy DeprecationWarning (#649)
+  * ci: install libgirepository-2.0-dev for PyGObject 3.56+ (#648)
+  * test: spawn a dbus-daemon when no session bus is available (#647)
+  * test(signature): close coverage gaps in signature.py (#640)
+  * docs: add CLAUDE.md and pr-workflow skill for LLM contributors (#646)
+  * test(send_reply): close coverage gaps in SendReply (#636)
+  * ci: validate PR title against Conventional Commits (#635)
+  * 4.1.0
+  * feat(errors): add DBusFastError common base class (#634)
+  * 4.0.5
+  * fix: avoid Python 3.15 segfault from bytearray.__new__ (#633)
+  * test(validators): close coverage gaps in is_*/assert_* paths (#632)
+  * chore(pre-commit.ci): pre-commit autoupdate (#630)
+  * ci: Drop deprecated cibuildwheel options p36 p37 (#625)
+  * chore(deps-dev): bump pytest-codspeed from 4.4.0 to 4.5.0 (#627)
+  * chore(deps-ci): bump the github-actions group with 4 updates (#621)
+  * chore(pre-commit.ci): pre-commit autoupdate (#626)
+  * chore(pre-commit.ci): pre-commit autoupdate (#617)
+  * chore(deps-dev): bump pytest-codspeed from 4.3.0 to 4.4.0 (#616)
+  * chore(pre-commit.ci): pre-commit autoupdate (#615)
+  * chore(pre-commit.ci): pre-commit autoupdate (#614)
+  * chore(deps-dev): bump pytest from 9.0.2 to 9.0.3 (#613)
+  * chore(pre-commit.ci): pre-commit autoupdate (#611)
+  * 4.0.4
+  * perf: reduce function call overhead in variant unmarshalling (#605)
+  * perf: avoid Python truth test for reply_serial in _read_body (#607)
+  * 4.0.3
+  * fix(bench): run benchmarks in tight loop for CodSpeed accuracy (#609)
+  * chore(deps-dev): bump pytest from 8.4.2 to 9.0.2 (#573)
+  * ci: switch benchmark to Python 3.14 (#608)
+  * chore(deps-dev): bump requests from 2.32.4 to 2.33.0 in the pip group across 1 directory (#603)
+  * 4.0.2
+  * chore(deps): bump sphinx-rtd-theme from 3.0.2 to 3.1.0 (#588)
+  * chore(deps-dev): bump setuptools from 80.9.0 to 82.0.1 (#600)
+  * perf: reuse bytearray buffer in _next_message instead of allocating (#597)
+  * 4.0.1
+  * fix(bench): cache bound methods to avoid _PyObject_GetMethod overhead (#606)
+  * chore(pre-commit.ci): pre-commit autoupdate (#591)
+  * chore(deps-dev): bump pytest-cov from 7.0.0 to 7.1.0 (#602)
+  * chore(deps-ci): bump the github-actions group across 1 directory with 7 updates (#604)
+  * chore(deps-dev): bump pytest-codspeed from 4.2.0 to 4.3.0 (#590)
+  * docs: fix example imports of decorators in README (#585)
+
+-------------------------------------------------------------------
+Fri May 22 11:22:37 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to version 5.0.3:  
+
+-------------------------------------------------------------------
 Sun Mar  8 13:17:42 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 4.0.0:

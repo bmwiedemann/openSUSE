@@ -28,7 +28,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           %{pname}%{?psuffix}
-Version:        4.0.0
+Version:        5.0.3
 Release:        0
 Summary:        Python library for DBus
 License:        MIT
