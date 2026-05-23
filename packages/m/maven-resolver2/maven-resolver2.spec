@@ -20,7 +20,7 @@
 %define version_suffix 2
 %define _buildshell /bin/bash
 Name:           %{base_name}%{version_suffix}
-Version:        2.0.17
+Version:        2.0.18
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
@@ -197,17 +197,7 @@ This package provides %{summary}.
 
 %{mvn_file} :{*} %{base_name}/@1
 
-%{mvn_compat_version} :maven-resolver-api %{version_suffix} %{version}
-%{mvn_compat_version} :maven-resolver-connector-basic %{version_suffix} %{version}
-%{mvn_compat_version} :maven-resolver-impl %{version_suffix} %{version}
-%{mvn_compat_version} :maven-resolver-named-locks %{version_suffix} %{version}
-%{mvn_compat_version} :maven-resolver-spi %{version_suffix} %{version}
-%{mvn_compat_version} :maven-resolver-test-util %{version_suffix} %{version}
-%{mvn_compat_version} :maven-resolver-transport-apache %{version_suffix} %{version}
-%{mvn_compat_version} :maven-resolver-transport-classpath %{version_suffix} %{version}
-%{mvn_compat_version} :maven-resolver-transport-file %{version_suffix} %{version}
-%{mvn_compat_version} :maven-resolver-transport-wagon %{version_suffix} %{version}
-%{mvn_compat_version} :maven-resolver-util %{version_suffix} %{version}
+%{mvn_compat_version} :maven-resolver-{*} %{version_suffix} %{version}
 
 %{mvn_package} :%{base_name} __noinstall
 %{mvn_package} :%{base_name}-transport-jdk-parent __noinstall

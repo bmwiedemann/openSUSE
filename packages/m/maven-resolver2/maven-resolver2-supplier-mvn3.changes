@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon May 18 09:43:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.0.18
+  * New features and improvements
+    + Feat: Reuse same RemoteRepository to HTTP URI creation logic
+    + Enh: Maven 3 is with us
+    + Feat: Maven 3 experimental scope manager
+    + Feat: Pull in version filter builder
+    + Feat: Resolution scope aliases
+    + Feat: Expose scope related bits via scope manager
+  * Bug Fixes
+    + Fix: Remove javax.inject dependency
+  * Dependency updates
+    + Deps: update slf4j to 2.0.18
+    + Deps: update Redisson to 4.4.0
+    + Bump org.codehaus.plexus:plexus-classworlds from 2.10.0 to
+      2.11.0
+    + Deps: Update parent POM 48
+    + Bump com.github.siom79.japicmp:japicmp-maven-plugin from
+      0.25.6 to 0.25.7
+
+-------------------------------------------------------------------
 Sun May 10 19:54:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Build the maven-resolver-transport-apache as compat version in
