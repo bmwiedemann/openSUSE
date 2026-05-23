@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 22 14:54:18 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade s390-tools to version 2.42.1 (jsc#PED-14586, bsc#1266206i, bsc#1258947)
+  For Linux kernel version: 7.0
+- Changes of existing tools:
+  * cpumf/pai: Improve -m XXX argument verification
+  * pvattest: Add -i -o option variant for check
+  * pvattest: Show perform -i & -o option in help
+  * pvebc: Disable unit logging to /boot
+  * pvsecret: Add -i -o option variants
+- Bug Fixes:
+  * cpumf/pai: Remove unnecessary const parameter definition
+  * pv: Fix error description
+  * pvebc: Fix dependency for non EBC guests
+  * pvebc: Fix kernel module dependencies
+  * zipl: Don't modify job->data.dump and job->data.mvdump sequentially 
+- Added new (EBC) services in the .spec file
+  * sel-ebc-boot-mount.service
+  * sel-ebc-override-crypttab.service
+  * sel-ebc-paes-enforce.service
+  * sel-ebc-pvebc.service
+- Re-venor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Tue May 12 09:52:10 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated read_values.c (bsc#1263041, bsc#1263992)

@@ -25,7 +25,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.42.0
+Version:        2.42.1
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT
@@ -469,11 +469,11 @@ export BRP_PESIGN_FILES='/lib/s390-tools/stage3.bin'
 
 %pre -f s390-tools.pre
 # Consolidated service addition
-%service_add_pre appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service
+%service_add_pre appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
 
 %post
 # Consolidated service addition
-%service_add_post appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service
+%service_add_post appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
 
 # Apply tmpfiles setup for /var/log permissions
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
@@ -501,13 +501,13 @@ export BRP_PESIGN_FILES='/lib/s390-tools/stage3.bin'
 %udev_rules_update
 
 %preun
-%service_del_preun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service
+%service_del_preun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
 
 %preun -n osasnmpd
 %{stop_on_removal osasnmpd}
 
 %postun
-%service_del_postun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service
+%service_del_postun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
 
 if [ ! -x /boot/zipl ]; then
 	echo "Attention: After uninstalling this package, you will NOT be able to IPL from DASD anymore!"
