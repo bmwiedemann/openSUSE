@@ -17,7 +17,7 @@
 
 
 Name:           libaec
-Version:        1.1.5
+Version:        1.1.7
 Release:        0
 Summary:        Adaptive Entropy Coding library
 License:        BSD-2-Clause
@@ -109,7 +109,7 @@ SZIP library (http://www.hdfgroup.org/doc_resource/SZIP).
 
 %files -n libsz2
 %license LICENSE.txt
-%doc README.SZIP
+%doc doc/README.SZIP
 %{_libdir}/libsz.so.2*
 
 %files -n sz2-devel

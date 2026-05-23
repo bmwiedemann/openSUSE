@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 19 12:57:53 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 1.1.7:
+  * Fixed several security vulnerabilities discovered by libFuzzer and AI assistant 
+
+-------------------------------------------------------------------
+Tue Feb 24 11:12:46 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 1.1.6:
+  * CMake fixes
+  * Buffer overflow in decoder
+
+-------------------------------------------------------------------
 Thu Jan 29 14:14:57 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 1.1.5:
