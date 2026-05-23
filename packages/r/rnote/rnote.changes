@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu May 21 19:59:41 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.14.2:
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1736)
+  * fix: transparent stroke rendering (#1729)
+  * fix: zooming with "alt+shift+drag" (#1742)
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1702)
+  * i18n: update translations template
+  * fix: grid snapping for all pattern styles (#1722)
+  * fix: zooming with Ctrl+Scroll while Capslock is turned on (#1724)
+  * fix: pinch-to-zoom causing scroll by applying workaround for GTK issue (#1733)
+  * fix: file erroneously detected as removed after saving (#1710)
+  * feat: fix and update icons (#1707)
+  * feat: bump version to 0.14.0
+  * i18n: update translations template
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1608)
+  * feat: atomic file saving (#1678)
+  * fix: workspace directory default (#1701)
+  * feat: build CLI in devel flatpak, update to latest SDK, docs formatting (#1666)
+  * improv: improve initial focus for import/export dialogs (#1683)
+  * feat(cli): add timeout to thumbnail command (#1680)
+  * feat: create command for rnote-cli (#1663)
+  * feat: gate playing sounds behind `ui` feature (#1677)
+  * improv: default dedicated pen mode actually to eraser (#1672)
+  * fix: pin gtk4/cairo/gettext version preventing crashes on windows (#1615)
+  * fix: rnote thumbnailer execution (#1667)
+  * fix: prevent crash when sorting files with non UTF-8 names
+  * docs(metainfo): Add link to source repo (#1642)
+  * feat: Xournal++ text import (#1481)
+  * i18n: Update traditional Chinese translation referenced issue: #220
+  * i18n: Translations update from Hosted Weblate (#1511)
+  * fix: failing build because of unused import warning (#1600)
+  * fix: revert accidental change for clear-doc shortcut (#1589)
+  * feat: add text formatting shortcuts for Bold, Italic and Underline (#1497)
+  * fix: fix blocking on "open in default app" actions (#1571)
+  * docs: fixed paths to prevent errors in win build instructions (#1562)
+  * improv: confirm entry dialogs with Enter key (#1532)
+  * fix: make pen sounds work on windows (#1529)
+  * improv: add a `WindowGroup` for each `appwindow` (#1556)
+
+-------------------------------------------------------------------
 Fri Sep 26 14:10:05 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 0.13.1:

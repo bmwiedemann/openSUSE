@@ -1,4 +1,5 @@
 <package name="rnote" project="openSUSE:Factory">
   <title>rnote</title>
   <description>Sketch, take handwritten notes and annotate PDF files</description>
+  <devel project="Education" package="rnote"/>
 </package>

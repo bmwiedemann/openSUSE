@@ -17,7 +17,7 @@
 #
 
 Name:           rnote
-Version:        0.13.1
+Version:        0.14.2
 Release:        0
 Summary:        Sketch, take handwritten notes and annotate PDF files
 License:        GPL-3.0-only
