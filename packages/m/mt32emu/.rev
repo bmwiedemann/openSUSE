@@ -233,4 +233,14 @@ Need for dosbox and aplaymidi for play MT-32 sound.</comment>
     from a SysEx bank.</comment>
     <requestid>1353626</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d143832138bda0dadb536b2704a56b78</srcmd5>
+    <version>2.8.1</version>
+    <time>1779571605</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 2.8.1
+  * Fixed function Synth::readMemory that didn't retrieve data
+    correctly from the Timbre Memory bank.</comment>
+    <requestid>1354863</requestid>
+  </revision>
 </revisionlist>

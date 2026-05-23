@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 23 15:37:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Updated to 2.8.1
+  * Fixed function Synth::readMemory that didn't retrieve data
+    correctly from the Timbre Memory bank.
+
+-------------------------------------------------------------------
 Sun May 17 14:11:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Updated to 2.8.0
