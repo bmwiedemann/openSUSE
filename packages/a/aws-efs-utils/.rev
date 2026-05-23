@@ -304,4 +304,18 @@
     <comment></comment>
     <requestid>1347273</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7da2817513e4f3d8cc0dd4bab6c3b7b9</srcmd5>
+    <version>3.1.1</version>
+    <time>1779571501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.1
+  * Update proxy connection scaling logic
+  * Fix IndexError in get_system_release_version on SUSE SLES 16
+- from version 3.1.0
+  * Enable readahead caching in proxy for bypassed reads
+  * Clean up warnings in proxy
+- Pass --verbose to %cargo_build (forwarded request 1354684 from glaubitz)</comment>
+    <requestid>1354713</requestid>
+  </revision>
 </revisionlist>

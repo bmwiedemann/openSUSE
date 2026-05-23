@@ -23,7 +23,7 @@
 %endif
 %global _sitelibdir %{%{pythons}_sitelib}
 Name:           aws-efs-utils
-Version:        3.0.1
+Version:        3.1.1
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
@@ -84,7 +84,7 @@ find src/mount_efs src/watchdog -name "*.py" -exec sed -i 's/env python3/python3
 export RUSTFLAGS=" -C linker=/usr/bin/gcc-13"
 %endif
 cd src/proxy
-%cargo_build
+%{cargo_build} --verbose
 
 %check
 make test

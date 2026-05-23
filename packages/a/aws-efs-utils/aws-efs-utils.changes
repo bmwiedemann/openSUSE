@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 22 10:30:13 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.1
+  * Update proxy connection scaling logic
+  * Fix IndexError in get_system_release_version on SUSE SLES 16
+- from version 3.1.0
+  * Enable readahead caching in proxy for bypassed reads
+  * Clean up warnings in proxy
+- Pass --verbose to %cargo_build
+
+-------------------------------------------------------------------
 Tue Apr 14 11:08:29 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.0.1
