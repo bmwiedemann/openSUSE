@@ -388,4 +388,12 @@
     <comment>    - Fix: prevent buffer underflow in base60 (sexagesimal) parsing (PR #133) CVE-2026-4177 bsc#1259757</comment>
     <requestid>1354490</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>f4dbd4b0c6b1f7a629d90f0c4fbcbb34</srcmd5>
+    <version>1.450.0</version>
+    <time>1779571564</time>
+    <user>dimstar_suse</user>
+    <comment>    - Fix: prevent buffer underflow in base60 (sexagesimal) parsing (PR #133) CVE-2026-5089 bsc#1265155</comment>
+    <requestid>1354763</requestid>
+  </revision>
 </revisionlist>
