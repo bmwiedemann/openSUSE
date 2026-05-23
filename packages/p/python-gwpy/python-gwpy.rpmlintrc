@@ -1,0 +1,2 @@
+# Sometimes builds end up with inconsistent mtime between source and bytecode
+addFilter("python-bytecode-inconsistent-mtime")

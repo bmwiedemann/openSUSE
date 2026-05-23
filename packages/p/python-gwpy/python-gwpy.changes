@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 22 13:54:01 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.1:
+  * [!2000] Fix erroneous development warning on online docs
+    pages.
+  * [!2002] Fix incorrect dependency on pytest outside of testing.
+- Changes from version 4.0.0
+  * Long list of changes, see
+    https://gitlab.com/gwpy/gwpy/-/blob/v4.0.0/CHANGELOG.rst
+- Add new BuildRequires required for tests.
+- Add new explicit Requires for updated version.
+- Drop a few more tests from test suite that require python
+  modules not packaged for distro or require network access.
+- Add python-gwpy.rpmlintrc file to suppress rpmlint warnings
+  about inconsistent mtime between bytecode and source code.
+
+-------------------------------------------------------------------
 Wed Jan 15 15:32:10 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.11:
