@@ -300,4 +300,15 @@
     <comment>- update x/net to v0.53.0 to address CVE-2026-33814 (bsc#1265765)</comment>
     <requestid>1354244</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>dfd61ceaed299138134fc897b9262c35</srcmd5>
+    <version>1.4.3</version>
+    <time>1779571554</time>
+    <user>dimstar_suse</user>
+    <comment>- update x/crypto to 0.52.0 (bsc#1266167, CVE-2026-39827,
+    CVE-2026-39834,CVE-2026-39828,CVE-2026-39829,CVE-2026-39831,
+    CVE-2026-42508,CVE-2026-39833,CVE-2026-39830,CVE-2026-39832,
+    CVE-2026-46597,CVE-2026-46598,CVE-2026-46595,CVE-2026-39835)</comment>
+    <requestid>1354757</requestid>
+  </revision>
 </revisionlist>
