@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun May 10 10:46:18 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to TeXstudio 4.9.4
+  * disable AI wizard by default
+  * enable LLM to use tool functions to access the current document.
+    This allows LLM to manipulate the document directly. This can be disabled.
+  * fix losing cursor position when view width changes (soft wrap) #3418
+  * fix file detection in TOC when creating new file from include/input
+  * improve loading speed with large projects #4410
+  * add find definitions on multiple defined labels
+  * improve information when loading log is rejected because of size
+  * add support for anthropic REST API #4387
+  * fix expl3 highlighting #4397
+  * fix TOC update (local & global were both triggered, at least on linux)
+  * start syntax checker only when view is shown to reduce overall cpu load
+  * fix color for ai chat in dark mode #4425
+  * fix compiler optimization on windows build (was deactivated, 
+    performance should generally improve)
+  * show progress dialog when restoring files takes longer
+  * clean-up dialog allows arbitrary file endings #4419
+  * completion of user constructs can be disabled (options/completer).
+    This may speed up file restore for large projects
+  * response after opening large log files can now be reverted by
+    clicking the message #4416
+  * speed-up globalTOC with large number of included files
+
+- Update to TeXstudio 4.9.3
+  * preview updated to handle special document classes #4322
+  * add functionality to remove entries from the recent files list #4338
+  * equalize editor sizes with a double-click on the splitter #4341
+  * switch review command support from easyReview to the changes package #4177
+  * fix opening documentation of latex packages with 
+    miktex (Help/Packages Help…)#4359
+  * fix searching in pdf #4337
+  * fix inserting tables from libreoffice #4328
+  * fix highlighting in some nested environments #4331
+  * fix potential crash when using “Remodel Table”
+  * add the option to turn macros on or off using checkboxes
+    in the macro browser #3971
+  * show ai chat as messenger-like UI
+  * close windowed pdf viewer on txs quit #4368
+  * fix keyval val/key detection for completion #4369
+  * improve glossary completion #4370
+
+-------------------------------------------------------------------
 Fri Mar  6 17:08:21 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to 4.9.2
