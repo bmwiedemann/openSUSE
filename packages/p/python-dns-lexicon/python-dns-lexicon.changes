@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 22 09:16:07 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.25.2
+  * The `googleclouddns` provider now works on public zones only by default
+
+-------------------------------------------------------------------
 Fri May  8 11:15:45 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.25.1
