@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 21 09:38:36 MDT 2026 - carnold@suse.com
+
+- Update to virt-v2v 2.11.8 (jsc#PED-14625)
+  mlcustomize: firstboot.bat must not reboot VM on error code 250
+  mlcustomize: Update generated files
+
+-------------------------------------------------------------------
 Tue Apr 28 16:24:29 MDT 2026 - carnold@suse.com
 
 - Update to virt-v2v 2.11.7 (jsc#PED-14625)

@@ -247,4 +247,12 @@
     <comment>Update virt-v2v to version 2.11.7</comment>
     <requestid>1350083</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9fdc5aa70698afd4643b2779c0be527f</srcmd5>
+    <version>2.11.8</version>
+    <time>1779571396</time>
+    <user>dimstar_suse</user>
+    <comment>Update virt-v2v to version 2.11.8</comment>
+    <requestid>1354506</requestid>
+  </revision>
 </revisionlist>

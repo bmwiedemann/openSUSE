@@ -23,7 +23,7 @@
 #%%global source_directory 2.10-stable
 %global source_directory 2.11-development
 Name:           virt-v2v
-Version:        2.11.7
+Version:        2.11.8
 Release:        0
 Summary:        Tools to convert a virtual machine to run on KVM
 License:        GPL-2.0-or-later
