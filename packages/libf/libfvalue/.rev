@@ -104,4 +104,12 @@
   does not fail to build</comment>
     <requestid>1226522</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7762921f8ea8a35fafbcb5cb729395df</srcmd5>
+    <version>20260522</version>
+    <time>1779571457</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20260522</comment>
+    <requestid>1354651</requestid>
+  </revision>
 </revisionlist>
