@@ -36,6 +36,8 @@ Patch0:         keyctl-add-s390x-support.patch
 Patch1:         CVE-2026-33186.patch
 # PATCH-FIX-UPSTREAM - Fix crafted JWE input with a missing encrypted key can lead to a denial of service
 Patch2:         CVE-2026-34986.patch
+# PATCH-FIX-UPSTREAM - net: http2: prevent hanging Transport due to bad SETTINGS frame
+Patch3:         CVE-2026-33814.patch
 BuildRequires:  golang-packaging
 BuildRequires:  go >= 1.24
 # Building with -buildmode=pie is currently unsupported on armv7l, i586, riscv64 and s390x
@@ -59,6 +61,9 @@ pushd vendor/google.golang.org/grpc
 popd
 pushd vendor/github.com/go-jose/go-jose/v4
 %patch -P2 -p1
+popd
+pushd vendor/golang.org/x/net
+%patch -P3 -p1
 popd
 
 %build

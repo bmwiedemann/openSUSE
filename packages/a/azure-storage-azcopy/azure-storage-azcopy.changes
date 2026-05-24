@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 20 10:00:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add CVE-2026-33814.patch to fix hanging Transport in http2 code
+  due to bad SETTINGS frame (bsc#1265841, CVE-2026-33814)
+
+-------------------------------------------------------------------
 Mon Apr 27 11:04:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add CVE-2026-34986.patch to fix crafted JWE input with a missing encrypted

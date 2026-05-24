@@ -87,4 +87,13 @@
   key can lead to a denial of service (bsc#1262962, CVE-2026-34986) (forwarded request 1349556 from glaubitz)</comment>
     <requestid>1349615</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7f2f5439d964c32ca1bf6bc5c43e0258</srcmd5>
+    <version>10.32.2</version>
+    <time>1779644118</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2026-33814.patch to fix hanging Transport in http2 code
+  due to bad SETTINGS frame (bsc#1265841, CVE-2026-33814) (forwarded request 1354213 from glaubitz)</comment>
+    <requestid>1354944</requestid>
+  </revision>
 </revisionlist>
