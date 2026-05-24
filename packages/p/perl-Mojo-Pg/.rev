@@ -281,4 +281,27 @@
     - Fixed DBD:Pg bug with a workaround (https://github.com/bucardo/dbdpg/issues/105). (TFBW)</comment>
     <requestid>1309974</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c6532f4ab891d015c1a69c0c353fbf45</srcmd5>
+    <version>4.290.0</version>
+    <time>1775743723</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.290.0 (4.29)
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+  4.29  2026-03-23
+    - Added rv attribute to Mojo::Pg::Results.</comment>
+    <requestid>1345210</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>bc5e8ba594f977f8c4a246ae57cf416b</srcmd5>
+    <version>5.0.0</version>
+    <time>1779644138</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.0.0 (5.0)
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+  5.0  2026-05-11
+    - Added support for passing Mojo::SQL statements directly to query and query_p methods in Mojo::Pg::Database.
+    - Updated Perl requirement to 5.20.</comment>
+    <requestid>1354959</requestid>
+  </revision>
 </revisionlist>

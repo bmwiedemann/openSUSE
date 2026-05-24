@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-Pg
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Mojo-Pg
 Name:           perl-Mojo-Pg
-Version:        4.280.0
+Version:        5.0.0
 Release:        0
-# 4.28 -> normalize -> 4.280.0
-%define cpan_version 4.28
+# 5.0 -> normalize -> 5.0.0
+%define cpan_version 5.0
 License:        Artistic-2.0
 Summary:        Wrapper around DBD::Pg for using PostgreSql with Mojolicious
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,9 +32,11 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DBD::Pg) >= 3.7.4
+BuildRequires:  perl(Mojo::SQL) >= 0.10
 BuildRequires:  perl(Mojolicious) >= 8.500
 BuildRequires:  perl(SQL::Abstract::Pg) >= 1.0
 Requires:       perl(DBD::Pg) >= 3.7.4
+Requires:       perl(Mojo::SQL) >= 0.10
 Requires:       perl(Mojolicious) >= 8.500
 Requires:       perl(SQL::Abstract::Pg) >= 1.0
 Provides:       perl(Mojo::Pg) = %{version}
