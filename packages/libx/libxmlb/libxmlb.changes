@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed May 20 09:27:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.27:
+  + New Features: Bump the required version of GLib to 2.68
+  + Bugfixes:
+    - Do not construct an invalid silo when processing more than 30
+      attrs
+    - Fix NULL pointer dereference when searching with NULL needle
+    - Fix potential use-after-free when building the in() haystack
+    - Fix stem() type-checking the wrong stack position
+    - Handle NULL string opcodes in more functions
+    - Limit operator recursion depth in xb_machine_parse_section
+    - Limit the number of predicates and OR branches in each
+      section
+    - Prevent an infinite loop when parsing a corrupt silo
+    - Reject XML with more than 65535 unique element names
+- Changes from version 0.3.26:
+  + New Features: Parse CDATA as text
+  + Bugfixes:
+    - Add bounds check to prevent OOB read in token index lookup
+    - Do not write an invalid silo when more than 63 attrs on one
+      node
+    - No inotify for illumos and Solaris
+    - Prevent stack overflow from unbounded recursion in export
+
+-------------------------------------------------------------------
 Fri Feb 13 15:24:03 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.3.25:
