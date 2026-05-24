@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu May 21 15:56:20 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.14 
+ * Preview features
+  * [airflow] Implement airflow-task-implicit-multiple-outputs (AIR202) 
+  * [flake8-use-pathlib] Mark PTH101 fix as unsafe when first argument is a class attribute annotated as int 
+  * [pylint] Implement too-many-try-statements (W0717) 
+  * [ruff] Add incorrect-decorator-order (RUF074) 
+  * [ruff] Add fallible-context-manager (RUF075) 
+ * Bug fixes
+  * Fix lambda formatting in interpolated string expressions 
+  * Treat generic frozenset annotations as immutable 
+  * [flake8-type-checking] Avoid strict behavior when future-annotations are enabled (TC001, TC002, TC003) 
+  * [pylint] Avoid false positives in else clause (PLR1733) 
+ * Rule changes
+  * [flake8-comprehensions] Skip C417 for lambdas with positional-only parameters 
+  * [flake8-simplify] Preserve f-string source verbatim in SIM101 fix 
+ * Performance
+  * Avoid unnecessary parser lookahead for operators 
+ * Documentation
+  * Update code example setting Neovim LSP log level 
+ * Other changes
+  * Add full PEP 798 support 
+  * Add a parser recursion limit 
+  * Update various ruff_python_stdlib APIs 
+
+-------------------------------------------------------------------
 Thu May 14 18:12:30 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.15.13 
