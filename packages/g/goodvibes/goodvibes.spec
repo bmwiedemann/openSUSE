@@ -1,7 +1,7 @@
 #
 # spec file for package goodvibes
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           goodvibes
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        A lightweight radio player
 License:        GPL-3.0-only
@@ -27,7 +27,7 @@ Source:         https://gitlab.com/goodvibes/goodvibes/-/archive/v%{version}/%{n
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.7
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson >= 0.49
+BuildRequires:  meson >= 0.54
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
