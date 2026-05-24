@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun May 24 06:19:27 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.22.0 "Hajrudin"
+  * Feat: add owned game filter on GOG Deals screen by @Ishidawg in #5521
+  * Feat: tray icon acts as toggle by @Ishidawg in #5536
+  * [Fix] "Copy to clipboard" button in system info page by @CommandMC in #5529
+  * Feat: add wishlist only filter on GOG Deals screen by @Ishidawg in #5528
+  * Bump system requirements by @CommandMC in #5557
+  * Fix: stop button on game page by @Ishidawg in #5537
+  * feat: support ubisoftconnect managed titles by @imLinguin in #5510
+  * [FIX] GOG Links from Deals screen by @flavioislima in #5573
+  * [UX] Add back prime check with more information by @arielj in #5411
+  * feat: separate ps5 and <ps4 icons by @imLinguin in #5515
+  * [Chore] Check if Arm or x86 on plausible analytics by @flavioislima in #5506
+  * [Console] Add ability to install games from console mode by @veryprofessionaldodo in #5546
+  * [i18n] Updated Translations by @weblate in #5576
+  * [Feat] Support for videos on changelog modal by @flavioislima in #5574
+  * [UI] Console mode Improvements by @flavioislima in #5575
+  * [Feat] Option to hide Heroic window on heroic:// launches (#5154) by @flavioislima in #5501
+  * [Feat] Add ability to Edit game title and images from any store. by @flavioislima in #5212
+  * [i18n] Updated Translations by @weblate in #5580
+  * [Fix] Controler tweaks for console mode by @flavioislima in #5584
+  * Force electron-vite to use system esbuild binary during build.
+  * Purge transitively bundled static esbuild binaries from buildroot 
+    under node_modules to fix rpmlint 'statically-linked-binary' error.
+  * Clean up duplicate and out-of-order rm commands in %install section.
+  * Clean up get-sources.sh
+
+-------------------------------------------------------------------
 Sun Apr 26 18:09:13 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Fix aarch64 build failures caused by esbuild version mismatch

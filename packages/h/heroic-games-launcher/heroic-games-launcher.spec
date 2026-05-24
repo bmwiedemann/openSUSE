@@ -27,7 +27,7 @@
 %endif
 
 Name:           heroic-games-launcher
-Version:        2.21.0
+Version:        2.22.0
 Release:        0
 Summary:        Native Games launcher for GOG, Epic and Amazon
 License:        GPL-3.0-only
@@ -89,6 +89,9 @@ cp %{_sourcedir}/release_tags public/bin/.release_tags
 rm public/bin/%{bin_subdir}/linux/vulkan-helper
 rm -rf $HOME/.local/share/pnpm
 
+# FORCE ELECTRON-VITE TO USE THE SYSTEM'S ESBUILD
+export ESBUILD_BINARY_PATH=%{_bindir}/esbuild
+
 # Build Heroic Games Launcher
 export HOME=%{_builddir}/%{name}-%{version}
 export CI=true
@@ -139,6 +142,10 @@ install -m 644 flatpak/com.heroicgameslauncher.hgl.png %{buildroot}%{_datadir}/p
 install -m 644 flatpak/com.heroicgameslauncher.hgl.desktop %{buildroot}%{_datadir}/applications/
 install -m 644 flatpak/templates/com.heroicgameslauncher.hgl.metainfo.xml.template \
     %{buildroot}%{_datadir}/metainfo/com.heroicgameslauncher.hgl.metainfo.xml
+
+rm -rf %{buildroot}%{_libdir}/Heroic/resources/app.asar.unpacked/build/bin/%{bin_subdir_opposite}/
+rm -rf %{buildroot}%{_libdir}/Heroic/resources/app.asar.unpacked/node_modules/{register-scheme/src,@parcel,@rollup,@swc,term-size,unimported,@unrs}
+rm -rf %{buildroot}%{_libdir}/Heroic/resources/app.asar.unpacked/node_modules/@esbuild/
 
 find %{buildroot}%{_libdir}/Heroic -type f -path "*/node_modules/*" -name "*.js" \
   -exec sed -i '1s|^#!.*||' {} \;

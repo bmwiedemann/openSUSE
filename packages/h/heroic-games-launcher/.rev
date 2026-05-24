@@ -162,4 +162,12 @@ via pnpm overrides to fix embedded dependency.</comment>
     <comment></comment>
     <requestid>1349409</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>01c3bf2c5267df33513be7018138e593</srcmd5>
+    <version>2.22.0</version>
+    <time>1779644115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1354903</requestid>
+  </revision>
 </revisionlist>

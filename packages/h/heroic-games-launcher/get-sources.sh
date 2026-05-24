@@ -33,7 +33,6 @@ SWC_VERSION="1.11.24"
 UNDICI_V7_FIXED="7.18.0"
 
 jq --indent 2 \
-  --arg esbuild_ver "$ESBUILD_VERSION" \
   --arg rollup_ver "$ROLLUP_VERSION" \
   --arg swc_ver "$SWC_VERSION" \
   --arg undici_v7 "$UNDICI_V7_FIXED" \
@@ -69,20 +68,17 @@ jq --indent 2 \
 
   | .peerDependencies.electron = "^25.9.3"
 
-  # =========================
-  # ESBUILD HARD PIN
-  # =========================
-  | .dependencies["esbuild"] = $esbuild
-  | .optionalDependencies = {
-      "@esbuild/linux-x64": $esbuild,
-      "@esbuild/linux-arm64": $esbuild
-    }devDependencies["@esbuild/linux-arm64"] = $esbuild_ver
-
+  # ===================================================
+  # REMOVE DEPENDENCIES FROM EBUILD (USE THE SYSTEM ONE)
+  # ===================================================
+  | del(.dependencies["esbuild"], .devDependencies["esbuild"], .optionalDependencies["esbuild"])
   | del(
       .dependencies["@esbuild/linux-x64"],
       .dependencies["@esbuild/linux-arm64"],
       .devDependencies["@esbuild/linux-x64"],
-      .devDependencies["@esbuild/linux-arm64"]
+      .devDependencies["@esbuild/linux-arm64"],
+      .optionalDependencies["@esbuild/linux-x64"],
+      .optionalDependencies["@esbuild/linux-arm64"]
     )
 
   # =========================
@@ -106,19 +102,10 @@ jq --indent 2 \
         "rollup": "4.59.0",
         "@tootallnate/once": "3.0.1",
         "simple-git": "^3.32.3",
-        "fast-xml-parser": "5.5.6"
+        "fast-xml-parser": "5.5.6",
+        "@xmldom/xmldom": "^0.9.9"
       }
   )
-
-  # =========================
-  # === CVE-2026-34601: xmldom CDATA injection ===
-  # =========================
-  | .pnpm.overrides = (
-      (.pnpm.overrides // {})
-      + {
-          "@xmldom/xmldom": "^0.9.9"
-        }
-    )
 ' package.json > temp.json && mv temp.json package.json
 
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
