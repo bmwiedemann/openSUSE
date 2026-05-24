@@ -1,7 +1,7 @@
 #
 # spec file for package python-langtable
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,6 +44,7 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  libxml2-tools
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base
 %if %{without data}
 Requires:       %{literalpython}-langtable-data = %{version}
 %endif
