@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed May 20 15:42:52 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#178
+- fix memory leaks in pci and pppoe modules (bsc#1265908)
+- avoid NULL pointer in ADD2LOG() call
+- 25.3
+
+--------------------------------------------------------------------
 Wed Feb 4 11:44:40 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#176

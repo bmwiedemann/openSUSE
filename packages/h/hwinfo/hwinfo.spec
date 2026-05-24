@@ -1,7 +1,7 @@
 #
 # spec file for package hwinfo
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hwinfo
-Version:        25.2
+Version:        25.3
 %define lname	libhd%(echo "%version" | perl -pe 's{\\D.*}{}')
 Release:        0
 Summary:        Hardware Library
