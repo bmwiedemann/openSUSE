@@ -20,7 +20,7 @@
 %global _name    jinx
 
 Name:           emacs-%{_name}
-Version:        2.6
+Version:        2.8
 Release:        0
 Summary:        Enchanted Spell Checker for Emacs
 License:        GPL-3.0-or-later
@@ -31,13 +31,13 @@ Source0:        %{_name}-%{version}.tar.gz
 Patch1:         0001-Only-export-necessary-symbols.-Fixes-105.patch
 # PATCH-FEATURE-UPSTREAM install targets PR 102
 Patch2:         0002-Add-makefile-to-build-and-install-jinx.patch
-BuildRequires:  emacs-compat
+BuildRequires:  emacs-compat >= 31
 BuildRequires:  emacs-devel
 BuildRequires:  emacs-nox
 BuildRequires:  make
 BuildRequires:  pkgconfig(enchant-2)
 Requires:       emacs
-Requires:       emacs-compat
+Requires:       emacs-compat >= 31
 Supplements:    emacs
 
 %description

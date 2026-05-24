@@ -189,4 +189,18 @@
   * jinx--save-dir: Do not switch to .dir-locals.el (Fix gh#minad/jinx#236)</comment>
     <requestid>1330832</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a66d0b319b332ae4e9168523fb50f7ac</srcmd5>
+    <version>2.8</version>
+    <time>1779644107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8:
+  * Require Compat 31
+  * Exclude the appropriate faces/properties in git-commit-mode
+  * Add support for minor modes to jinx-include-* and jinx-exclude-* variables.
+  
+- Changes from version 2.7:
+  * Improve mouse menu.</comment>
+    <requestid>1354879</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 23 19:41:48 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Update to version 2.8:
+  * Require Compat 31
+  * Exclude the appropriate faces/properties in git-commit-mode
+  * Add support for minor modes to jinx-include-* and jinx-exclude-* variables.
+  
+- Changes from version 2.7:
+  * Improve mouse menu.
+  
+-------------------------------------------------------------------
 Tue Feb 03 20:15:06 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Rebase 0001-Only-export-necessary-symbols.-Fixes-105.patch
