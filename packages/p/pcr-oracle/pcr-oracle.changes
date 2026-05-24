@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 21 06:19:01 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.6.3
+  + Relax TPM self-test attribute checks (bsc#1265871)
+
+-------------------------------------------------------------------
 Wed May 13 06:20:47 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.6.2
