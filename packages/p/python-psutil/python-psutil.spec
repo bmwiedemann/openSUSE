@@ -50,7 +50,6 @@ BuildRequires:  /usr/bin/who
 %endif
 BuildRequires:  %{python_module psutil = %{version}}
 BuildRequires:  %{python_module pytest-subtests if %python-pytest < 9}
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  net-tools
 %endif
@@ -61,16 +60,18 @@ A graphical interface that lets you easily analyze and introspect unaltered runn
 
 %prep
 %autosetup -p1 -n psutil-%{version}
-# do not require pytest-instafail
-sed -i '/instafail/d' pyproject.toml
+# do not require pytest-instafail and python-pytest-xdist
+sed -i -e '/instafail/d' \
+       -e '/-p xdist",/d' \
+        pyproject.toml
 
 %build
-%if !%{with test}
+%if %{without test}
 %pyproject_wheel
 %endif
 
 %install
-%if !%{with test}
+%if %{without test}
 %pyproject_install
 
 %{python_expand mkdir -p %{buildroot}%{_docdir}/%{$python_prefix}-psutil
@@ -87,8 +88,13 @@ export LANG=en_US.UTF-8
 export PSUTIL_TESTING=1
 export PSUTIL_DEBUG=1
 export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-# needs to be built with extensions to run scripts
-%python_expand PYTHON=$python make build
+export GITHUB_ACTIONS=1
+export PSUTIL_ROOT_DIR="%{builddir}/psutil-%{version}"
+export PYTHONDONTWRITEBYTECODE=1
+tmp_tests=$(mktemp -d)
+cp -a %{_builddir}/psutil-%{version}/tests "$tmp_tests/"
+cd "$tmp_tests"
+export PYTEST_ADDOPTS="--ignore=tests/test_memleaks.py --ignore=tests/test_sudo.py"
 # test_who, test_users - need running session
 SKIPTEST="(test_who and Scripts) or (test_users and TestMiscAPIs)"
 # test_import_all - pulls in too many dependencies
@@ -99,11 +105,10 @@ SKIPTEST="$SKIPTEST or (test_all and TestFetchAllProcesses)"
 SKIPTEST="$SKIPTEST or (test_multi_sockets_procs and TestSystemWideConnections)"
 # test_disk_partitions --  can not determine root fs
 SKIPTEST="$SKIPTEST or test_disk_partitions"
-export GITHUB_ACTIONS=1
-%pytest_arch -n auto --ignore=tests/test_memleaks.py --ignore=tests/test_sudo.py -k "not ($SKIPTEST)"
+%python_expand pytest-%{$python_bin_suffix} -v -k "not ($SKIPTEST)" tests
 %endif
 
-%if !%{with test}
+%if %{without test}
 %files %{python_files}
 %license LICENSE
 %doc CREDITS HISTORY.rst README.rst

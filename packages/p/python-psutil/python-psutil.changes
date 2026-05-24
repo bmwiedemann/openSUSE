@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 20 19:44:40 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- %check phase should run aside from %builddir to use extension
+  from the main binary package (don't build during the %check
+  phase).
+
+-------------------------------------------------------------------
 Mon Mar  2 05:09:46 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.2.2:
