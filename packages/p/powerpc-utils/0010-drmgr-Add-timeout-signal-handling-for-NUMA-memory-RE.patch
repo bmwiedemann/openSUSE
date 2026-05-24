@@ -1,0 +1,115 @@
+From 1dee26c2a60dd9a5264331cc20143a5590289187 Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Mon, 18 May 2026 22:37:53 -0700
+Subject: [PATCH 10/11] drmgr: Add timeout signal handling for NUMA memory
+ REMOVE
+
+Upstream: merged, expected in v1.3.15
+Git-commit: 1dee26c2a60dd9a5264331cc20143a5590289187
+
+RMC expects drmgr timeout based on value passed with -w option and
+drmgr can check fequently for each LMB removal request and exits
+once reached the timeout value. But this check happens only in the
+user space and does not consider when executes in the kernel to
+remove memory. In the case of LMB removal, the kernel expects to
+run longer until all pages in LMB are isolated and can return to
+the user space for any pending signals.
+
+This patch enables SIGALRM signal based on the user defined
+value which generates signal when the timer expires. It allows
+the kernel interface returns in case [age isolation is taking
+longer and drmgr timeout.
+
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/drmgr/drslot_chrp_mem.c | 46 ++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 45 insertions(+), 1 deletion(-)
+
+diff --git a/src/drmgr/drslot_chrp_mem.c b/src/drmgr/drslot_chrp_mem.c
+index fe04ad1..5a08839 100644
+--- a/src/drmgr/drslot_chrp_mem.c
++++ b/src/drmgr/drslot_chrp_mem.c
+@@ -26,6 +26,9 @@
+ #include <dirent.h>
+ #include <inttypes.h>
+ #include <time.h>
++#include <signal.h>
++#include <unistd.h>
++#include <stdbool.h>
+ #include <sys/wait.h>
+ #include <sys/stat.h>
+ #include "dr.h"
+@@ -35,6 +38,7 @@
+ 
+ uint64_t block_sz_bytes = 0;
+ static char *state_strs[] = {"offline", "online"};
++sig_atomic_t numa_mem_timeout = 0;
+ 
+ static char *usagestr = "-c mem {-a | -r} {-q <quantity> -p {variable_weight | ent_capacity} | {-q <quantity> | -s [<drc_name> | <drc_index>]}}";
+ 
+@@ -50,6 +54,14 @@ mem_usage(char **pusage)
+ 	*pusage = usagestr;
+ }
+ 
++/*
++ * SIGALRM handler for drmgr timeout
++ */
++void mem_timeout_handler(int sig)
++{
++	numa_mem_timeout = 1;
++}
++
+ /**
+  * report_resource_count
+  * @brief Report the number of LMBs that were added or removed.
+@@ -1681,13 +1693,45 @@ static void clear_numa_lmb_links(void)
+ 		node->lmbs = NULL;
+ }
+ 
++/*
++ * Setup SIGALRM signal based on timeout value passed by the user
++ * (with -w option). In the case of LMB removal, the kernel
++ * interface can run longer until all pages in LMB are isolated
++ * and can return to the user space if any pending signals.
++ * This SIGALRM signal can exit the kernel in case LMB removal
++ * is taking longer than timeout.
++ */
++static int drmem_timer_setup(void)
++{
++	struct sigaction sigact;
++
++	if (!usr_timeout)
++		return 0;
++
++	sigact.sa_handler = mem_timeout_handler;
++	sigemptyset(&sigact.sa_mask);
++	sigact.sa_flags = 0;
++	if (sigaction(SIGALRM, &sigact, NULL))
++		return -1;
++
++	alarm(usr_timeout);
++	return 0;
++}
++
+ static int numa_based_remove(uint32_t count)
+ {
+ 	struct lmb_list_head *lmb_list;
+ 	struct ppcnuma_node *node;
+-	int nid;
++	int nid, rc = 0;
+ 	uint32_t done = 0;
+ 
++	/*
++	 * Enable alarm signal handler for usr_timeout
++	 */
++	rc = drmem_timer_setup();
++	if (rc)
++		return rc;
++
+ 	/*
+ 	 * Read the LMBs
+ 	 * Link the LMBs to their node
+-- 
+2.51.0
+

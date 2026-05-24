@@ -1,0 +1,78 @@
+From fc252eaf3f1e2b6dcf2a646459ac7399db0ab18d Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Sat, 16 May 2026 11:34:19 -0700
+Subject: [PATCH 05/11] drmgr: Add get_next_cpu() to identify the removable CPU
+
+Upstream: merged, expected in v1.3.15
+Git-commit: fc252eaf3f1e2b6dcf2a646459ac7399db0ab18d
+
+Move code which identifies the removable CPU to get_next_cpu().
+This function is used only for the current non-numa based CPU
+removal but helps to add for NUMA based CPU removal code in later
+patch.
+
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/drmgr/drslot_chrp_cpu.c | 34 ++++++++++++++++++++++++----------
+ 1 file changed, 24 insertions(+), 10 deletions(-)
+
+diff --git a/src/drmgr/drslot_chrp_cpu.c b/src/drmgr/drslot_chrp_cpu.c
+index 3ef24f4..6a21663 100644
+--- a/src/drmgr/drslot_chrp_cpu.c
++++ b/src/drmgr/drslot_chrp_cpu.c
+@@ -160,11 +160,33 @@ static struct dr_node *get_available_cpu_by_index(struct dr_info *dr_info)
+ 	return cpu;
+ }
+ 
++/*
++ * Scan all CPUs from the last one for the next available CPU.
++ * Used only for non-NUMA based CPU removal.
++ */
++static struct dr_node *get_next_cpu(struct dr_info *dr_info)
++{
++	struct dr_node *cpu = NULL;
++	struct thread *t;
++
++	/* Find the first cpu with an online thread */
++	for (cpu = dr_info->all_cpus; cpu; cpu = cpu->next) {
++		if (cpu->unusable)
++			continue;
++
++		for (t = cpu->cpu_threads; t; t = t->next) {
++			if (get_thread_state(t) == ONLINE)
++				return cpu;
++		}
++	}
++
++	return NULL;
++}
++
+ static struct dr_node *get_next_available_cpu(struct dr_info *dr_info)
+ {
+ 	struct dr_node *cpu = NULL;
+ 	struct dr_node *survivor = NULL;
+-	struct thread *t;
+ 	
+ 	if (usr_action == ADD) {
+ 		for (cpu = dr_info->all_cpus; cpu; cpu = cpu->next) {
+@@ -177,15 +199,7 @@ static struct dr_node *get_next_available_cpu(struct dr_info *dr_info)
+ 		cpu = survivor;
+ 	} else if (usr_action == REMOVE) {
+ 		/* Find the first cpu with an online thread */
+-		for (cpu = dr_info->all_cpus; cpu; cpu = cpu->next) {
+-			if (cpu->unusable)
+-				continue;
+-
+-			for (t = cpu->cpu_threads; t; t = t->next) {
+-				if (get_thread_state(t) == ONLINE)
+-					return cpu;
+-			}
+-		}
++		cpu = get_next_cpu(dr_info);
+ 	}
+ 
+ 	if (!cpu)
+-- 
+2.51.0
+

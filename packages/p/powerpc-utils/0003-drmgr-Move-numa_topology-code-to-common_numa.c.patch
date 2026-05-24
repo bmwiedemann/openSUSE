@@ -1,0 +1,160 @@
+From 27dd4cce01450d94ab58fa2e632eac34307a4a82 Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Sat, 16 May 2026 11:34:17 -0700
+Subject: [PATCH 03/11] drmgr: Move numa_topology code to common_numa.c
+
+Upstream: merged, expected in v1.3.15
+Git-commit: 27dd4cce01450d94ab58fa2e632eac34307a4a82
+
+Move build_numa_topology and sort NUMA node ratio list code to
+common_numa.c. These functions will also be used for NUMA aware
+CPU removal in later patch.
+
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/drmgr/common_numa.c     | 37 ++++++++++++++++++++++++++++++++++++-
+ src/drmgr/common_numa.h     |  6 +++++-
+ src/drmgr/drslot_chrp_mem.c | 29 ++---------------------------
+ 3 files changed, 43 insertions(+), 29 deletions(-)
+
+diff --git a/src/drmgr/common_numa.c b/src/drmgr/common_numa.c
+index 898aab6..6bc2ea8 100644
+--- a/src/drmgr/common_numa.c
++++ b/src/drmgr/common_numa.c
+@@ -27,6 +27,9 @@
+ #include "drmem.h"		/* for DYNAMIC_RECONFIG_MEM */
+ #include "common_numa.h"
+ 
++int numa_enabled = 0;
++struct ppcnuma_topology numa;
++
+ struct ppcnuma_node *ppcnuma_fetch_node(struct ppcnuma_topology *numa, int nid)
+ {
+ 	struct ppcnuma_node *node;
+@@ -118,7 +121,7 @@ static int read_numa_topology(struct ppcnuma_topology *numa)
+ 	return rc;
+ }
+ 
+-int ppcnuma_get_topology(struct ppcnuma_topology *numa)
++static int ppcnuma_get_topology(struct ppcnuma_topology *numa)
+ {
+ 	int rc;
+ 
+@@ -145,3 +148,35 @@ int ppcnuma_get_topology(struct ppcnuma_topology *numa)
+ 
+ 	return 0;
+ }
++
++void build_numa_topology(void)
++{
++	int rc;
++
++	rc = ppcnuma_get_topology(&numa);
++	if (rc)
++		return;
++
++	numa_enabled = 1;
++}
++
++void order_numa_node_ratio_list(void)
++{
++	int nid;
++	struct ppcnuma_node *node, *n, **p;
++
++	numa.ratio = NULL;
++
++	/* Create an ordered link of the nodes */
++	ppcnuma_foreach_node(&numa, nid, node) {
++		if (!node->n_lmbs || !node->n_cpus)
++			continue;
++
++		p = &numa.ratio;
++		for (n = numa.ratio;
++			n && n->ratio < node->ratio; n = n->ratio_next)
++			p = &n->ratio_next;
++		*p = node;
++		node->ratio_next = n;
++	}
++}
+diff --git a/src/drmgr/common_numa.h b/src/drmgr/common_numa.h
+index c209a3e..2b0901e 100644
+--- a/src/drmgr/common_numa.h
++++ b/src/drmgr/common_numa.h
+@@ -44,7 +44,11 @@ struct ppcnuma_topology {
+ 	struct assoc_arrays	aa;
+ };
+ 
+-int ppcnuma_get_topology(struct ppcnuma_topology *numa);
++extern int numa_enabled;
++extern struct ppcnuma_topology numa;
++void build_numa_topology(void);
++void order_numa_node_ratio_list(void);
++
+ struct ppcnuma_node *ppcnuma_fetch_node(struct ppcnuma_topology *numa,
+ 					int node_id);
+ 
+diff --git a/src/drmgr/drslot_chrp_mem.c b/src/drmgr/drslot_chrp_mem.c
+index 4a36c73..eb75ccf 100644
+--- a/src/drmgr/drslot_chrp_mem.c
++++ b/src/drmgr/drslot_chrp_mem.c
+@@ -38,9 +38,6 @@ static char *state_strs[] = {"offline", "online"};
+ 
+ static char *usagestr = "-c mem {-a | -r} {-q <quantity> -p {variable_weight | ent_capacity} | {-q <quantity> | -s [<drc_name> | <drc_index>]}}";
+ 
+-static struct ppcnuma_topology numa;
+-static int numa_enabled = 0;
+-
+ /**
+  * mem_usage
+  * @brief return usage string
+@@ -1605,7 +1602,7 @@ static int remove_cpuless_lmbs(uint32_t count)
+ static void update_node_ratio(void)
+ {
+ 	int nid;
+-	struct ppcnuma_node *node, *n, **p;
++	struct ppcnuma_node *node;
+ 	uint32_t cpu_ratio, mem_ratio;
+ 
+ 	/*
+@@ -1626,18 +1623,7 @@ static void update_node_ratio(void)
+ 		node->ratio = (cpu_ratio * 9 + mem_ratio) / 10;
+ 	}
+ 
+-	/* Create an ordered link of the nodes */
+-	ppcnuma_foreach_node(&numa, nid, node) {
+-		if (!node->n_lmbs || !node->n_cpus)
+-			continue;
+-
+-		p = &numa.ratio;
+-		for (n = numa.ratio;
+-		     n && n->ratio < node->ratio; n = n->ratio_next)
+-			p = &n->ratio_next;
+-		*p = node;
+-		node->ratio_next = n;
+-	}
++	order_numa_node_ratio_list();
+ }
+ 
+ /*
+@@ -1693,17 +1679,6 @@ static int remove_cpu_lmbs(uint32_t count)
+ 	return done;
+ }
+ 
+-static void build_numa_topology(void)
+-{
+-	int rc;
+-
+-	rc = ppcnuma_get_topology(&numa);
+-	if (rc)
+-		return;
+-
+-	numa_enabled = 1;
+-}
+-
+ static void clear_numa_lmb_links(void)
+ {
+ 	int nid;
+-- 
+2.51.0
+

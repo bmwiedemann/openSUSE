@@ -1,0 +1,92 @@
+From cbdbefdb8c82acae997cf1a30816e69b323f9979 Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Sat, 16 May 2026 11:34:18 -0700
+Subject: [PATCH 04/11] drmgr: Move read lmb-size property code to
+ common_ofdt.c
+
+Upstream: merged, expected in v1.3.15
+Git-commit: cbdbefdb8c82acae997cf1a30816e69b323f9979
+
+get_dynamic_lmb_size() is used to get lmb size from "ibm,lmb-size"
+property. This lmb size is needed to determine the number of LMBs
+and used to find NUMA node ratio for NUMA aware memory and CPU
+removal code. So move this function to common_ofdt.c
+
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/drmgr/common_ofdt.c     | 17 +++++++++++++++++
+ src/drmgr/drslot_chrp_mem.c | 11 ++---------
+ src/drmgr/ofdt.h            |  1 +
+ 3 files changed, 20 insertions(+), 9 deletions(-)
+
+diff --git a/src/drmgr/common_ofdt.c b/src/drmgr/common_ofdt.c
+index 1e5fe53..0655559 100644
+--- a/src/drmgr/common_ofdt.c
++++ b/src/drmgr/common_ofdt.c
+@@ -28,6 +28,7 @@
+ #include <errno.h>
+ #include "dr.h"
+ #include "ofdt.h"
++#include "drmem.h"
+ 
+ #define RTAS_DIRECTORY		"/proc/device-tree/rtas"
+ #define CHOSEN_DIRECTORY	"/proc/device-tree/chosen"
+@@ -932,3 +933,19 @@ int of_associativity_to_node(const char *dir, int min_common_depth)
+ 	return be32toh(prop[min_common_depth]);
+ }
+ 
++int get_dynamic_lmb_size(uint64_t *lmb_sz)
++{
++	int rc = 0;
++	uint64_t sz;
++
++	rc = get_property(DYNAMIC_RECONFIG_MEM, "ibm,lmb-size",
++				&sz, sizeof(sz));
++	if (rc) {
++		say(DEBUG, "Could not retrieve drconf LMB size\n");
++		return rc;
++	}
++
++	/* convert for LE systems */
++	*lmb_sz = be64toh(sz);
++	return 0;
++}
+diff --git a/src/drmgr/drslot_chrp_mem.c b/src/drmgr/drslot_chrp_mem.c
+index eb75ccf..2d22bff 100644
+--- a/src/drmgr/drslot_chrp_mem.c
++++ b/src/drmgr/drslot_chrp_mem.c
+@@ -506,16 +506,9 @@ get_dynamic_reconfig_lmbs(struct lmb_list_head *lmb_list)
+ 	uint64_t lmb_sz;
+ 	int rc = 0;
+ 
+-	rc = get_property(DYNAMIC_RECONFIG_MEM, "ibm,lmb-size",
+-			  &lmb_sz, sizeof(lmb_sz));
+-
+-	/* convert for LE systems */
+-	lmb_sz = be64toh(lmb_sz);
+-
+-	if (rc) {
+-		say(DEBUG, "Could not retrieve drconf LMB size\n");
++	rc = get_dynamic_lmb_size(&lmb_sz);
++	if (rc)
+ 		return rc;
+-	}
+ 
+ 	if (stat(DYNAMIC_RECONFIG_MEM_V1, &sbuf) == 0) {
+ 		rc = get_dynamic_reconfig_lmbs_v1(lmb_sz, lmb_list);
+diff --git a/src/drmgr/ofdt.h b/src/drmgr/ofdt.h
+index e9ebd03..c79ed65 100644
+--- a/src/drmgr/ofdt.h
++++ b/src/drmgr/ofdt.h
+@@ -185,6 +185,7 @@ int get_assoc_arrays(const char *dir, struct assoc_arrays *aa,
+ 		     int min_common_depth);
+ int of_associativity_to_node(const char *dir, int min_common_depth);
+ int init_node(struct dr_node *);
++int get_dynamic_lmb_size(uint64_t *lmb_sz);
+ 
+ static inline int aa_index_to_node(struct assoc_arrays *aa, uint32_t aa_index)
+ {
+-- 
+2.51.0
+

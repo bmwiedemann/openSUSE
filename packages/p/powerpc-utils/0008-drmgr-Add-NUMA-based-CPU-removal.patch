@@ -1,0 +1,203 @@
+From 908986e43b6c67288aa084fe13155964caa807a8 Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Sat, 16 May 2026 11:34:22 -0700
+Subject: [PATCH 08/11] drmgr: Add NUMA based CPU removal
+
+Upstream: merged, expected in v1.3.15
+Git-commit: 908986e43b6c67288aa084fe13155964caa807a8
+
+The current CPU removal process reads CPU list from last CPU and
+remove CPUs based on the userspace request. This process can
+result in CPU less NUMA nodes even though these nodes have more
+memory which can affect on the system performance.
+
+This patch adds NUMA aware CPU removal process to remove CPUs from
+specific NUMA nodes and maintains NUMA balance. The selection of
+node from which the CPU to be removed is based on the available
+memory per CPU in that node called node ratio. So CPU is selected
+from the node which has lower ratio.
+
+If the NUMA topology can't be read, fallback using the current
+process.
+
+The node selection process is as follows:
+- For each CPU removal request, update node ratios and sort the list.
+- Select the next removable CPU from the dr_info CPU list and it
+  should belong to the first node.
+- CPU associated to memory less nodes is considered first and then
+  the first node that has memory in the list.
+- Repeat all CPUs in dr_info list until the next removable CPU is
+  matched with node CPU bitmap.
+- The total number of CPU threads in the selected node is
+  decremented and cleared in the node CPU bitmap.
+
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/drmgr/drslot_chrp_cpu.c | 143 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 141 insertions(+), 2 deletions(-)
+
+diff --git a/src/drmgr/drslot_chrp_cpu.c b/src/drmgr/drslot_chrp_cpu.c
+index e367634..60956a0 100644
+--- a/src/drmgr/drslot_chrp_cpu.c
++++ b/src/drmgr/drslot_chrp_cpu.c
+@@ -164,6 +164,141 @@ static struct dr_node *get_available_cpu_by_index(struct dr_info *dr_info)
+ 	return cpu;
+ }
+ 
++/*
++ * Return node if CPU ID matches in node CPU bitmap.
++ */
++static struct ppcnuma_node *match_cpu_node(struct ppcnuma_node *node,
++					struct dr_node *cpu)
++{
++	int nid;
++
++	if (cpu->cpu_threads) {
++		nid = numa_node_of_cpu(cpu->cpu_threads->id);
++		if (nid == node->node_id) {
++			if (numa_bitmask_isbitset(node->cpus,
++						cpu->cpu_threads->id))
++				return node;
++		}
++	}
++
++	return NULL;
++}
++
++/*
++ * Return node if CPU belongs to any memoryless NUMA node.
++ */
++static struct ppcnuma_node *find_cpu_memless_node(struct dr_node *cpu)
++{
++	struct ppcnuma_node *node = NULL;
++	int nid;
++
++	ppcnuma_foreach_node(&numa, nid, node) {
++		if (node->n_lmbs)
++			continue;
++
++		if (match_cpu_node(node, cpu))
++			return node;
++	}
++
++	return NULL;
++}
++
++/*
++ * The node list is sorted by node ratio (less memory per CPU).
++ * So consider the first node
++ * Return node if CPU belongs to the first NUMA node which
++ * has memory.
++ */
++static struct ppcnuma_node *find_cpu_numa_node(struct dr_node *cpu)
++{
++	struct ppcnuma_node *node = NULL;
++	int found = 0;
++
++	ppcnuma_foreach_node_by_ratio(&numa, node) {
++		if (node->n_cpus && node->n_lmbs) {
++			found = 1;
++			break;
++		}
++	}
++
++	if (found && match_cpu_node(node, cpu))
++		return node;
++
++	return NULL;
++}
++
++/*
++ * Calculate node ratio based on amount of memory per CPU and sort
++ * the node ratio list.
++ */
++static void cpu_update_node_ratio(void)
++{
++	struct ppcnuma_node *node;
++	int nid;
++
++	ppcnuma_foreach_node(&numa, nid, node) {
++		if (!node->n_lmbs || !node->n_cpus)
++			continue;
++
++		/*
++		 * Node ratio = n_lmbs per CPU
++		 */
++		node->ratio = (node->n_lmbs * 100) / node->n_cpus;
++	}
++
++	order_numa_node_ratio_list();
++}
++
++/*
++ * Scan CPUs from the last one in the list and select the first CPU
++ * based on:
++ * - CPU from memory less node
++ * - If no CPUs are available in memory less nodes, CPU belongs to
++ *   the first node from node ratio list.
++ */
++static struct dr_node *numa_get_next_cpu(struct dr_info *dr_info)
++{
++	struct ppcnuma_node *node;
++	struct dr_node *cpu = NULL;
++	struct thread *t;
++	int i, found = 0;
++
++	/*
++	 * Update node ratio for each CPU removal request
++	 */
++	cpu_update_node_ratio();
++
++	/* Find the first cpu with an online thread */
++	for (cpu = dr_info->all_cpus; cpu; cpu = cpu->next) {
++		if (cpu->unusable)
++			continue;
++
++		if (numa.memless_cpu_count)
++			node = find_cpu_memless_node(cpu);
++		else
++			node = find_cpu_numa_node(cpu);
++
++		if (!node)
++			continue;
++
++		t = cpu->cpu_threads;
++		for (i = 0; i < cpu->cpu_nthreads && t; i++, t = t->next) {
++			if (get_thread_state(t) == ONLINE)
++				found = 1;
++			numa_bitmask_clearbit(node->cpus, t->id);
++		}
++		if (found) {
++			node->n_cpus -= cpu->cpu_nthreads;
++			numa.cpu_count -= cpu->cpu_nthreads;
++			if (!node->n_lmbs)
++				numa.memless_cpu_count -= cpu->cpu_nthreads;
++			return cpu;
++		}
++	}
++
++	return NULL;
++}
++
+ /*
+  * Scan all CPUs from the last one for the next available CPU.
+  * Used only for non-NUMA based CPU removal.
+@@ -202,8 +337,12 @@ static struct dr_node *get_next_available_cpu(struct dr_info *dr_info)
+ 
+ 		cpu = survivor;
+ 	} else if (usr_action == REMOVE) {
+-		/* Find the first cpu with an online thread */
+-		cpu = get_next_cpu(dr_info);
++		if (numa_enabled)
++			/* Find the first CPU from NUMA nodes */
++			cpu = numa_get_next_cpu(dr_info);
++		else
++			/* Find the first cpu with an online thread */
++			cpu = get_next_cpu(dr_info);
+ 	}
+ 
+ 	if (!cpu)
+-- 
+2.51.0
+

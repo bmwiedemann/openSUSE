@@ -25,6 +25,17 @@ Group:          System/Management
 URL:            https://github.com/ibm-power-utilities/powerpc-utils
 Source0:        https://github.com/ibm-power-utilities/powerpc-utils/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        nvsetenv
+Patch1:         0001-drmgr-Update-cpuless_lmb_count-NUMA-counter-during-L.patch
+Patch2:         0002-drmgr-Remove-only-available-LMBs-from-CPU-less-NUMA-.patch
+Patch3:         0003-drmgr-Move-numa_topology-code-to-common_numa.c.patch
+Patch4:         0004-drmgr-Move-read-lmb-size-property-code-to-common_ofd.patch
+Patch5:         0005-drmgr-Add-get_next_cpu-to-identify-the-removable-CPU.patch
+Patch6:         0006-drmgr-Allocate-CPU-bitmap-for-each-NUMA-node.patch
+Patch7:         0007-drmgr-Add-NUMA-configuration-update-for-CPU-remove.patch
+Patch8:         0008-drmgr-Add-NUMA-based-CPU-removal.patch
+Patch9:         0009-drmgr-Allow-signals-mentioned-in-new-sigset_t.patch
+Patch10:        0010-drmgr-Add-timeout-signal-handling-for-NUMA-memory-RE.patch
+Patch11:        0011-drmgr-Do-not-remove-LMBs-when-the-timer-expires.patch
 Patch41:        powerpc-utils-lsprop.patch
 Patch42:        ofpathname_powernv.patch
 Patch43:        fix_kexec_service_name_for_suse.patch

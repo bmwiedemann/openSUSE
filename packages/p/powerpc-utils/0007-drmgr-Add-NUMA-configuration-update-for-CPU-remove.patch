@@ -1,0 +1,126 @@
+From 4cf04b9e75db0da2c199fa12003433b3d0427fd0 Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Sat, 16 May 2026 11:34:21 -0700
+Subject: [PATCH 07/11] drmgr: Add NUMA configuration update for CPU remove
+
+Upstream: merged, expected in v1.3.15
+Git-commit: 4cf04b9e75db0da2c199fa12003433b3d0427fd0
+
+This patch adds NUMA node config update for CPU removal. Updates
+number of LMBs and CPUs for each node and also calculates total
+number of CPUs from memory less nodes. This node configuration is
+used to identify the node based on the node ratio from which the
+CPU is selected to remove
+
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+Reviewed-by: Dave Marquardt <davemarq@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/drmgr/common_numa.h     |  1 +
+ src/drmgr/drslot_chrp_cpu.c | 53 +++++++++++++++++++++++++++++++++++++
+ 2 files changed, 54 insertions(+)
+
+diff --git a/src/drmgr/common_numa.h b/src/drmgr/common_numa.h
+index 7aea026..edf4349 100644
+--- a/src/drmgr/common_numa.h
++++ b/src/drmgr/common_numa.h
+@@ -38,6 +38,7 @@ struct ppcnuma_topology {
+ 	unsigned int		lmb_count;
+ 	unsigned int		cpuless_node_count;
+ 	unsigned int		cpuless_lmb_count;
++	unsigned int		memless_cpu_count;
+ 	unsigned int		node_count, node_min, node_max;
+ 	struct ppcnuma_node	*nodes[MAX_NUMNODES];
+ 	struct ppcnuma_node	*ratio;
+diff --git a/src/drmgr/drslot_chrp_cpu.c b/src/drmgr/drslot_chrp_cpu.c
+index 6a21663..e367634 100644
+--- a/src/drmgr/drslot_chrp_cpu.c
++++ b/src/drmgr/drslot_chrp_cpu.c
+@@ -26,10 +26,14 @@
+ #include <sys/types.h>
+ #include <dirent.h>
+ #include <librtas.h>
++#include <numa.h>
+ #include "dr.h"
+ #include "drcpu.h"
+ #include "drpci.h"
+ #include "ofdt.h"
++#include "common_numa.h"
++
++#define	DEFAULT_LMB_SIZE	0x10000000	/* 256MB */
+ 
+ struct cpu_operation;
+ typedef int (cpu_op_func_t) (void);
+@@ -395,6 +399,43 @@ static int smt_threads_func(struct dr_info *dr_info)
+ 	return rc;
+ }
+ 
++/*
++ * Per node CPUs are defined as part of build_numa_topology().
++ * This function calculates number of LMBs per node based on
++ * node mememory / lmb-size.
++ * n_cpus and n_lmbs are used to determine node ratio.
++ */
++static int cpu_update_numa_config(void)
++{
++	struct ppcnuma_node *node;
++	unsigned long long node_size;
++	int rc, nid;
++	uint64_t lmb_sz;
++
++	rc = get_dynamic_lmb_size(&lmb_sz);
++	/*
++	 * Use the default value if lmb-size property is not available.
++	 * For CPU removal, node ratio will be calculated based on
++	 * total n_lmbs per CPU.
++	 */
++	if (rc)
++		lmb_sz = DEFAULT_LMB_SIZE;
++
++	ppcnuma_foreach_node(&numa, nid, node) {
++		node_size = numa_node_size(nid, 0);
++		/*
++		 * Node has memory
++		 * n_lmbs = Total memory / lmb-size
++		 */
++		if (node_size) {
++			node->n_lmbs = node_size / lmb_sz;
++		} else
++			numa.memless_cpu_count += node->n_cpus;
++	}
++
++	return 0;
++}
++
+ int valid_cpu_options(void)
+ {
+ 	/* default to a quantity of 1 */
+@@ -442,6 +483,15 @@ int drslot_chrp_cpu(void)
+ 		return -1;
+ 	}
+ 
++	/*
++	 * Maintain NUMA aware hotplug only for remove and with count request.
++	 */
++	if (usr_drc_count && (usr_action == REMOVE)) {
++		build_numa_topology();
++		if (numa_enabled)
++			cpu_update_numa_config();
++	}
++
+ 	/* If a user specifies a drc name, the quantity to add/remove is
+ 	 * one. Enforce that here so the loops in add/remove code behave
+ 	 * accordingly.
+@@ -473,6 +523,9 @@ int drslot_chrp_cpu(void)
+ 	if (usr_action == ADD || usr_action == REMOVE)
+ 		run_hooks(DRC_TYPE_CPU, usr_action, HOOK_POST, count);
+ 
++	if ((usr_action == REMOVE) && numa_enabled)
++		free_numa_topology();
++
+ 	free_cpu_drc_info(&dr_info);
+ 	return rc;
+ }
+-- 
+2.51.0
+

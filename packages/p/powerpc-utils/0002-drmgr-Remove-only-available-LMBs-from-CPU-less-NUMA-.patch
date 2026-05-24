@@ -1,0 +1,77 @@
+From 8e0a9410baba62f16e9b9ac1a7096dc6c704ffa1 Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Mon, 9 Feb 2026 22:18:59 -0800
+Subject: [PATCH 02/11] drmgr: Remove only available LMBs from CPU less NUMA
+ node
+
+Upstream: merged, expected in v1.3.15
+Git-commit: 8e0a9410baba62f16e9b9ac1a7096dc6c704ffa1
+
+The current logic in remove_cpuless_lmbs() may remove more LMB
+than requested.
+
+todo = (count * node->ratio) / 100;  --> can be 0
+todo = min(todo, node->n_lmbs);
+if (!todo && node->n_lmbs)
+	todo = (count - this_loop); -> todo may be > node->n_lmbs
+
+Removing more lmbs than requested caused a decrement of count
+(unsigned int) integer overflow, eventually leading to the drmgr
+removing all available memory in the system. Existing testing
+exposed the out of memory issue triggered by this counter
+overflow.
+
+This patch fixed this logic by adjusting todo per node dynamically
+based on the count value and then determine todo value based on
+number of available LMBs in the node.
+
+Signed-off-by: Ryan Whittaker <ryancwmd@linux.ibm.com>
+Reviewed-by: Mingming Cao <mmc@linux.ibm.com>
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/drmgr/drslot_chrp_mem.c | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/src/drmgr/drslot_chrp_mem.c b/src/drmgr/drslot_chrp_mem.c
+index 179fb17..4a36c73 100644
+--- a/src/drmgr/drslot_chrp_mem.c
++++ b/src/drmgr/drslot_chrp_mem.c
+@@ -1565,11 +1565,16 @@ static int remove_cpuless_lmbs(uint32_t count)
+ 				continue;
+ 
+ 			todo = (count * node->ratio) / 100;
+-			todo = min(todo, node->n_lmbs);
+-			/* Fix rounded value to 0 */
+-			if (!todo && node->n_lmbs)
++			 /*
++			  * Fix rounded value to 0 and fix if a 0 ratio has
++			  * been processed
++			  */
++			if ((!todo && node->n_lmbs) || (count - this_loop < todo))
+ 				todo = (count - this_loop);
+ 
++			/* Donot request more than available */
++			todo = min(todo, node->n_lmbs);
++
+ 			if (todo)
+ 				todo = remove_lmb_from_node(node, todo);
+ 
+@@ -1583,7 +1588,13 @@ static int remove_cpuless_lmbs(uint32_t count)
+ 		if (!this_loop)
+ 			break;
+ 
+-		count -= this_loop;
++		/*
++		 * Should not happen, but in case prevent integer overflow
++		 */
++		if (this_loop < count)
++			count -= this_loop;
++		else
++			count = 0;
+ 	}
+ 
+ 	say(DEBUG, "%d / %d LMBs removed from the CPU less nodes\n",
+-- 
+2.51.0
+

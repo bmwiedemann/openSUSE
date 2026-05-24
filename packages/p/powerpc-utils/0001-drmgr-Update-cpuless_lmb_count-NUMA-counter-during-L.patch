@@ -1,0 +1,40 @@
+From f74288cf94d73f58a338fc58d8e2907673bb36e5 Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Mon, 9 Feb 2026 22:18:58 -0800
+Subject: [PATCH 01/11] drmgr: Update cpuless_lmb_count NUMA counter during LMB
+ removal
+
+Upstream: merged, expected in v1.3.15
+Git-commit: f74288cf94d73f58a338fc58d8e2907673bb36e5
+
+After removing LMBs from a NUMA node, LMB counters should be
+decremented. In the case of CPU less node, cpuless_lmb_count
+should be decremented. But the current code reduces
+cpuless_node_count instead of cpuless_lmb_count. This patch
+reduces cpuless_lmb_count NUMA counter based on number of LMBs
+selected from that specific CPU less NUMA node.
+
+Signed-off-by: Ryan Whittaker <ryancwmd@linux.ibm.com>
+Reviewed-by: Mingming Cao <mmc@linux.ibm.com>
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/drmgr/drslot_chrp_mem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/drmgr/drslot_chrp_mem.c b/src/drmgr/drslot_chrp_mem.c
+index d37ee80..179fb17 100644
+--- a/src/drmgr/drslot_chrp_mem.c
++++ b/src/drmgr/drslot_chrp_mem.c
+@@ -1502,7 +1502,7 @@ static int remove_lmb_from_node(struct ppcnuma_node *node, uint32_t count)
+ 	if (node->n_cpus)
+ 		numa.lmb_count -= unlinked;
+ 	else
+-		numa.cpuless_node_count -= unlinked;
++		numa.cpuless_lmb_count -= unlinked;
+ 
+ 	if (!node->n_lmbs) {
+ 		node->ratio = 0; /* for sanity only */
+-- 
+2.51.0
+

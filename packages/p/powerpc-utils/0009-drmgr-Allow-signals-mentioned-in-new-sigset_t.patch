@@ -1,0 +1,36 @@
+From 3a7d0b61e7a5f364660007a45cc9dcf1c3cb5ab4 Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Mon, 18 May 2026 22:37:52 -0700
+Subject: [PATCH 09/11] drmgr: Allow signals mentioned in new sigset_t
+
+Upstream: merged, expected in v1.3.15
+Git-commit: 3a7d0b61e7a5f364660007a45cc9dcf1c3cb5ab4
+
+The current code uses sigdelset() to unblock some signals such as
+SIGBUS, SIGALRM, and etc. But sigprocmask() with SIG_BLOCK sets
+the union of this new set and the current sigset which ends up
+blocking some of them (Ex: SIGALRM). Insted of using SIG_BLOCK,
+SIG_SETMASK allows to use the complete new sigset_t.
+
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/drmgr/common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/drmgr/common.c b/src/drmgr/common.c
+index 70f4dfd..68041a9 100644
+--- a/src/drmgr/common.c
++++ b/src/drmgr/common.c
+@@ -939,7 +939,7 @@ sig_setup(void)
+ 	sigdelset(&sigset, SIGABRT);
+ 
+ 	/* Now block all remaining signals */
+-	rc = sigprocmask(SIG_BLOCK, &sigset, NULL);
++	rc = sigprocmask(SIG_SETMASK, &sigset, NULL);
+ 	if (rc)
+ 		return -1;
+ 
+-- 
+2.51.0
+

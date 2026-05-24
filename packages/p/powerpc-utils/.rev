@@ -1318,4 +1318,23 @@
     <comment></comment>
     <requestid>1349578</requestid>
   </revision>
+  <revision rev="158" vrev="2">
+    <srcmd5>99b96d4b63276a8857952e5c1f0527f3</srcmd5>
+    <version>1.3.14</version>
+    <time>1779644084</time>
+    <user>dimstar_suse</user>
+    <comment>- NUMA aware CPU hotplug (bsc#1263891 ltc#213837)
+  * 0001-drmgr-Update-cpuless_lmb_count-NUMA-counter-during-L.patch
+  * 0002-drmgr-Remove-only-available-LMBs-from-CPU-less-NUMA-.patch
+  * 0003-drmgr-Move-numa_topology-code-to-common_numa.c.patch
+  * 0004-drmgr-Move-read-lmb-size-property-code-to-common_ofd.patch
+  * 0005-drmgr-Add-get_next_cpu-to-identify-the-removable-CPU.patch
+  * 0006-drmgr-Allocate-CPU-bitmap-for-each-NUMA-node.patch
+  * 0007-drmgr-Add-NUMA-configuration-update-for-CPU-remove.patch
+  * 0008-drmgr-Add-NUMA-based-CPU-removal.patch
+  * 0009-drmgr-Allow-signals-mentioned-in-new-sigset_t.patch
+  * 0010-drmgr-Add-timeout-signal-handling-for-NUMA-memory-RE.patch (bsc#1265903 ltc#216658)
+  * 0011-drmgr-Do-not-remove-LMBs-when-the-timer-expires.patch</comment>
+    <requestid>1354721</requestid>
+  </revision>
 </revisionlist>

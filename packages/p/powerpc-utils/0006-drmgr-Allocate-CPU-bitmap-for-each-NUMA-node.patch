@@ -1,0 +1,126 @@
+From 1c4812fb35510c7e02ff27fc39badbe5eef24611 Mon Sep 17 00:00:00 2001
+From: Haren Myneni <haren@linux.ibm.com>
+Date: Sat, 16 May 2026 11:34:20 -0700
+Subject: [PATCH 06/11] drmgr: Allocate CPU bitmap for each NUMA node
+
+Upstream: merged, expected in v1.3.15
+Git-commit: 1c4812fb35510c7e02ff27fc39badbe5eef24611
+
+The current code allocates one bitmap and uses it to determine
+number of valid CPUs for each NUMA node and then frees the bitmap.
+The NUMA based CPU removal needs this bitmap per node to determine
+the valid CPU in that node. So this patch retains bitmap per node
+and frees it after DLPAR memory / CPU removal.
+
+Signed-off-by: Haren Myneni <haren@linux.ibm.com>
+Reviewed-by: Dave Marquardt <davemarq@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/drmgr/common_numa.c     | 27 +++++++++++++++++++++------
+ src/drmgr/common_numa.h     |  2 ++
+ src/drmgr/drslot_chrp_mem.c |  5 +++--
+ 3 files changed, 26 insertions(+), 8 deletions(-)
+
+diff --git a/src/drmgr/common_numa.c b/src/drmgr/common_numa.c
+index 6bc2ea8..eba6c3d 100644
+--- a/src/drmgr/common_numa.c
++++ b/src/drmgr/common_numa.c
+@@ -84,9 +84,6 @@ static int read_numa_topology(struct ppcnuma_topology *numa)
+ 
+ 	rc = 0;
+ 
+-	/* In case of allocation error, the libnuma is calling exit() */
+-	cpus = numa_allocate_cpumask();
+-
+ 	for (nid = 0; nid <= max_node; nid++) {
+ 
+ 		if (!numa_bitmask_isbitset(numa_nodes_ptr, nid))
+@@ -98,20 +95,24 @@ static int read_numa_topology(struct ppcnuma_topology *numa)
+ 			break;
+ 		}
+ 
++		/* In case of allocation error, the libnuma is calling exit() */
++		cpus = numa_allocate_cpumask();
++
+ 		rc = numa_node_to_cpus(nid, cpus);
+-		if (rc < 0)
++		if (rc < 0) {
++			numa_bitmask_free(cpus);
+ 			break;
++		}
+ 
+ 		/* Count the CPUs in that node */
+ 		for (i = 0; i < cpus->size; i++)
+ 			if (numa_bitmask_isbitset(cpus, i))
+ 				node->n_cpus++;
+ 
++		node->cpus = cpus;
+ 		numa->cpu_count += node->n_cpus;
+ 	}
+ 
+-	numa_bitmask_free(cpus);
+-
+ 	if (rc) {
+ 		ppcnuma_foreach_node(numa, nid, node)
+ 			node->n_cpus = 0;
+@@ -160,6 +161,20 @@ void build_numa_topology(void)
+ 	numa_enabled = 1;
+ }
+ 
++void free_numa_topology(void)
++{
++	struct ppcnuma_node *node;
++	int nid;
++
++	ppcnuma_foreach_node(&numa, nid, node) {
++		if (node) {
++			if (node->cpus)
++				numa_bitmask_free(node->cpus);
++			free(node);
++		}
++	}
++}
++
+ void order_numa_node_ratio_list(void)
+ {
+ 	int nid;
+diff --git a/src/drmgr/common_numa.h b/src/drmgr/common_numa.h
+index 2b0901e..7aea026 100644
+--- a/src/drmgr/common_numa.h
++++ b/src/drmgr/common_numa.h
+@@ -30,6 +30,7 @@ struct ppcnuma_node {
+ 	unsigned int	ratio;
+ 	struct dr_node	*lmbs;			/* linked by lmb_numa_next */
+ 	struct ppcnuma_node *ratio_next;
++	struct bitmask *cpus;
+ };
+ 
+ struct ppcnuma_topology {
+@@ -48,6 +49,7 @@ extern int numa_enabled;
+ extern struct ppcnuma_topology numa;
+ void build_numa_topology(void);
+ void order_numa_node_ratio_list(void);
++void free_numa_topology(void);
+ 
+ struct ppcnuma_node *ppcnuma_fetch_node(struct ppcnuma_topology *numa,
+ 					int node_id);
+diff --git a/src/drmgr/drslot_chrp_mem.c b/src/drmgr/drslot_chrp_mem.c
+index 2d22bff..fe04ad1 100644
+--- a/src/drmgr/drslot_chrp_mem.c
++++ b/src/drmgr/drslot_chrp_mem.c
+@@ -1731,9 +1731,10 @@ int do_mem_kernel_dlpar(void)
+ 	if (usr_action == REMOVE && usr_drc_count && !usr_drc_index) {
+ 		build_numa_topology();
+ 		if (numa_enabled) {
+-			if (!numa_based_remove(usr_drc_count))
++			rc = numa_based_remove(usr_drc_count);
++			free_numa_topology();
++			if (!rc)
+ 				return 0;
+-
+ 			/*
+ 			 * If the NUMA based removal failed, lets try the legacy
+ 			 * way.
+-- 
+2.51.0
+
