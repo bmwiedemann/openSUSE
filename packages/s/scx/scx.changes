@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu May 21 09:06:26 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 1.1.1:
+  * scx_cosmos: Deprecate deferred CPU wakeups and increase default time slice
+  * scx_cosmos: Aggressively migrate tasks to the primary domain
+  * scx.service: Deprecate deferred CPU wakeup for scx_cosmos
+  * scx_cosmos: PMU-based scheduling improvements
+  * scx_cosmos: Track per-CPU utilization instead of global CPU utilization
+  * scxtop: Add DSQ latency, LLC locality, runqueue depth, and fairness
+  * scxtop: Fix perf event handling for tracepoints and improve profiling
+  * scx_lavd: Restart scheduler when initially offline CPU comes online.
+  * scx_cosmos: Add --no-early-clear flag
+  * scx_bpfland: Aggressively avoid SMT contention
+  * scx_bpfland: add TIMELY v1 mode behind --timely flag
+  * scx_flash: Re-introduce SMT contention avoidance
+  * scx_lavd: Latency-Aware Task Placement 
+  * Mitosis: dynamic affinity CPU selection for pinned tasks
+  * scx_flash: Avoid penalizing per-CPU kthreads
+  * scx_chaos: match p2dq thermal autoload gating
+  * scx_p2dq: fix LLC util drift and refresh PELT on runnable
+  * mitosis: avoid cross-cell CPU-local vtime contamination
+  * scx_layered: add Overload layer kind
+  * scx_layered: add util_compensation for unattributed CPU work
+  * scx_pandemonium: new scheduler
+  * scx_lavd: Faster load balancing with budget-controlled invariant runtime
+  * scx_flash: Disable sleep-intensive tasks penalization by default
+
+-------------------------------------------------------------------
 Mon Mar  9 08:01:15 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to version 1.1.0:

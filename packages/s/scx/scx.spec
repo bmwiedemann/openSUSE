@@ -20,7 +20,7 @@
 %define libbpf_min_ver 1.4
 %define llvm_min_ver 17
 Name:           scx
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
@@ -69,21 +69,20 @@ export CARGO_HOME=$PWD/.cargo
 
 for path in ./tools/scxtop \
 	./tools/scxcash \
-	./scheds/rust/scx_p2dq \
-	./scheds/rust/scx_tickless \
-	./scheds/rust/scx_chaos \
-	./scheds/rust/scx_rusty \
-	./scheds/rust/scx_flash \
-	./scheds/rust/scx_rustland \
-	./scheds/rust/scx_mitosis \
-	./scheds/rust/scx_rlfifo \
-	./scheds/rust/scx_wd40 \
-	./scheds/rust/scx_lavd \
-	./scheds/rust/scx_cosmos \
-	./scheds/rust/scx_layered \
 	./scheds/rust/scx_beerland \
+	./scheds/rust/scx_bpfland \
 	./scheds/rust/scx_cake \
-	./scheds/rust/scx_bpfland; do
+	./scheds/rust/scx_chaos \
+	./scheds/rust/scx_cosmos \
+	./scheds/rust/scx_flash \
+	./scheds/rust/scx_lavd \
+	./scheds/rust/scx_layered \
+	./scheds/rust/scx_mitosis \
+	./scheds/rust/scx_p2dq \
+	./scheds/rust/scx_pandemonium \
+	./scheds/rust/scx_rustland \
+	./scheds/rust/scx_rusty \
+	./scheds/rust/scx_tickless; do
 pushd "${path}"
 %{cargo_install}
 popd
