@@ -674,4 +674,41 @@ newSVpvn() call. (forwarded request 122259 from k0da)</comment>
   * perl-XML-LibXML-fix-testsuite-with-libxml2-2.14.patch</comment>
     <requestid>1308465</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>902d20f77fcb1520b24e3874e7256757</srcmd5>
+    <version>2.0212</version>
+    <time>1779644079</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove perl-XML-LibXML-fix-testsuite-with-libxml2-2.14.patch
+  (fixed upstream)
+
+- updated to 2.0212
+   see /usr/share/doc/packages/perl-XML-LibXML/Changes
+  2.0212  2026-05-19
+      [BUG FIXES]
+      - Ship POD files in the CPAN tarball. The per-class .pod files
+        generated from docs/libxml.dbk were gitignored, and nothing in
+        the dist chain was producing them, so recent tarballs shipped
+        without POD. The .pod files are now tracked in git (bison-style),
+        so `make dist` includes them via MANIFEST and the documentation
+        reaches CPAN consumers again. Also eliminates the bootstrap
+        problem of needing XML::LibXML installed to build XML::LibXML's
+        docs, and silences the &quot;kit incomplete&quot; warning from
+        `perl Makefile.PL` on a fresh checkout.
+      [MAINTENANCE]
+      - Add a `pod-drift` CI job that runs `make pod_docs` and fails on
+        any diff, catching forgotten POD regenerations after edits to
+        docs/libxml.dbk.
+      - Move xmllibxmldocs.pl from example/ to scripts/. It is a
+        maintenance tool that emits source files (POD), not a usage
+        example of XML::LibXML; scripts/ already houses similar
+        build/dev tooling.
+      - Skip t/release-kwalitee.t outside a dist tarball. The
+        Test::Kwalitee `has_meta_yml` check was failing under
+        `make test` in author mode because META.yml is only generated
+        by `make dist`. The test now skips cleanly when META.yml is
+        absent and still runs the full 18-check suite under
+        `make disttest` against the unpacked tarball.</comment>
+    <requestid>1354495</requestid>
+  </revision>
 </revisionlist>

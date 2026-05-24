@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Thu May 21 13:19:22 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Remove perl-XML-LibXML-fix-testsuite-with-libxml2-2.14.patch
+  (fixed upstream)
+
+-------------------------------------------------------------------
+Thu May 21 10:06:16 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0212
+   see /usr/share/doc/packages/perl-XML-LibXML/Changes
+
+  2.0212  2026-05-19
+      [BUG FIXES]
+      - Ship POD files in the CPAN tarball. The per-class .pod files
+        generated from docs/libxml.dbk were gitignored, and nothing in
+        the dist chain was producing them, so recent tarballs shipped
+        without POD. The .pod files are now tracked in git (bison-style),
+        so `make dist` includes them via MANIFEST and the documentation
+        reaches CPAN consumers again. Also eliminates the bootstrap
+        problem of needing XML::LibXML installed to build XML::LibXML's
+        docs, and silences the "kit incomplete" warning from
+        `perl Makefile.PL` on a fresh checkout.
+      [MAINTENANCE]
+      - Add a `pod-drift` CI job that runs `make pod_docs` and fails on
+        any diff, catching forgotten POD regenerations after edits to
+        docs/libxml.dbk.
+      - Move xmllibxmldocs.pl from example/ to scripts/. It is a
+        maintenance tool that emits source files (POD), not a usage
+        example of XML::LibXML; scripts/ already houses similar
+        build/dev tooling.
+      - Skip t/release-kwalitee.t outside a dist tarball. The
+        Test::Kwalitee `has_meta_yml` check was failing under
+        `make test` in author mode because META.yml is only generated
+        by `make dist`. The test now skips cleanly when META.yml is
+        absent and still runs the full 18-check suite under
+        `make disttest` against the unpacked tarball.
+  2.0211  2026-05-19
+      [SECURITY / BUG FIXES]
+      - Prevent out-of-bounds UTF-8 read in domParseChar by replacing it
+        with libxml2's xmlValidateName. Truncated multi-byte sequences
+        could cause heap reads past the NUL terminator across five DOM
+        entry points (createElement, createAttribute, setNodeName, etc.).
+          - GH #146, PR #149 CVE-2026-8177 bsc#1264715
+      - Enforce no_network even when a global externalEntityLoader is set.
+        Previously XML_PARSE_NONET was silently ignored once a global
+        callback was installed, enabling SSRF in multi-module applications
+        that combine a third-party entity loader with no_network parsers.
+          - GH #133, PR #143
+      - Prevent integer overflow in SAX CBuffer length tracking. Total
+        character data exceeding INT_MAX (~2GB) overflowed the accumulator
+        causing xmlMalloc to under-allocate and the subsequent memcpy to
+        write past the buffer.
+          - GH #135, PR #142
+      - Proper lifecycle management for externalEntityLoader: the global
+        loader can now be cleared or replaced safely, the previous handler
+        SV is no longer leaked, the returned value is a safe copy rather
+        than the internal global SV, and per-parser ext_ent_handler state
+        is separated from the global slot.
+          - PR #138
+      - Add NULL checks after xmlMalloc returns in SAX CBuffer operations,
+        converting OOM segfaults into catchable Perl exceptions.
+          - GH #136, PR #140
+      - Add NULL check after xmlCopyNamespace in _domReconcileNs, matching
+        the existing guard in _domReconcileNsAttr.
+          - GH #137, PR #139
+      - Plug 11 memory leaks across XS/C code, including setBaseURI,
+        URI/documentURI accessors, load_catalog, PSaxCharactersFlush,
+        createAttributeNS, XPathContext::_find, _newForIO, _toStringC14N,
+        lookupNamespacePrefix, _setNamespace, and the generic XPath
+        extension function dispatcher.
+          - GH #131, PR #132
+      - Handle Apple's local libxml2 patch where xmlSAX2ResolveEntity
+        throws on a NULL URI, so t/13dtd.t no longer dies on macOS.
+          - RT #2021, PR #102
+      - Skip t/50devel.t when mem_used() reports 0 bytes, which happens
+        on Apple's libxml2 (system malloc bypasses the tracking wrappers).
+          - RT #165193, PR #94
+      [IMPROVEMENTS]
+      - Resolve Windows CI test failures and compiler warnings: use the
+        file size (-s) for the byteConsumed test instead of a hardcoded
+        488 (CRLF inflates the file to 507 bytes), use Perl UV/PTR2UV in
+        PmmRegistryName to avoid pointer truncation under Win64 LLP64,
+        and use const xmlError* for xmlCtxtGetLastError to match the
+        libxml2 2.12+ API.
+          - PR #122
+      - Silence macOS build warnings cleanly by gating the libxml2 memory
+        tracking API behind a HAVE_LIBXML_MEMORY_DEBUG feature macro. The
+        deprecated calls are no longer compiled on systems where the API
+        is gone (Apple SDK, libxml2 >= 2.14), mem_used is only exported
+        when actually defined, and t/50devel.t skips with a clear reason.
+        Also strip the bogus "-L/lib" entries Alien::Base::Wrapper injects
+        into LDFLAGS on macOS.
+          - PR #127
+      - Add a minimal hello-world HTML example (example/hello-world.pl)
+        and add createInternalSubset("html", ...) to both HTML examples
+        so they emit a proper <!DOCTYPE html> declaration.
+          - GH #66, PR #121
+      - Standardize XPath parameter naming to $xpath_expression throughout
+        the DocBook source, matching the XML::LibXML::XPathExpression
+        class name.
+          - GH #64, PR #125
+      - Update outdated and dead references in README.md: point repository
+        URLs at the canonical cpan-authors/XML-LibXML home, drop the
+        defunct ActiveState mailing list, replace the long Windows
+        nmake recipe with a Strawberry Perl note, refresh the macOS
+        section, and bring the Package History up to date.
+          - GH #129, PR #144
+      - Remove the stale "Known Issues" note about push-parser leaks.
+        The leaks it referenced were fixed by Nick Wellnhofer in 2014.
+      - Point distribution metadata at the cpan-authors GitHub repo and
+        add an explicit bugtracker entry so MetaCPAN's "Issues" link
+        goes to GitHub Issues instead of falling back to rt.cpan.org.
+      - Add NamedNodeMap.pod to MANIFEST so the generated POD ships in
+        the CPAN tarball; the L<XML::LibXML::NamedNodeMap> link in
+        Node.pod now resolves on MetaCPAN.
+          - GH #115, PR #118
+      - Update ppport.h and adopt its suggestions to reduce build issues.
+      - Fix test suite with libxml2 2.13.0 and 2.14.0.
+      - Remove tests that disable line numbers (always enabled since
+        libxml2 2.15.0).
+      - Use `our $VERSION` instead of `use vars`.
+      - Fix formatting in docs/libxml.dbk.
+          - GH #85
+      [MAINTENANCE]
+      - Modernize the CI workflow with a dynamic Perl version matrix,
+        centralized cpanfile, and updated action versions.
+          - PR #108
+      - Use cpanm instead of cpm for the Linux CI matrix so jobs on
+        Perl < 5.24 (down through 5.8) no longer fail to install
+        dependencies.
+          - GH #117, PR #119
+      - Expand CI platform coverage: FreeBSD 14.2, OpenBSD 7.6, NetBSD
+        10.1, Strawberry Perl on Windows, Fedora 43 container,
+        AddressSanitizer, Devel::Cover + Codecov coverage upload, and a
+        downstream XML::LibXSLT compatibility job.
+          - PR #120
+      - Fix BSD CI: use the correct OpenBSD package name (`libxml`, not
+        `libxml2`) and install Perl dependencies explicitly instead of
+        relying on META.json autodiscovery.
+          - PR #124
+      - Parallelize `make` compilation across CI jobs with
+        platform-appropriate CPU detection.
+          - PR #128
+      - Temporarily disable OpenBSD 7.6 CI due to unreliable runners.
+          - PR #130
+      - Re-enable OpenBSD CI on version 7.8 once the runner situation
+        stabilized.
+          - PR #144
+      - Add a CLAUDE.md describing project layout, build/test commands,
+        libxml2 version landscape, and coding conventions.
+          - PR #116
+      - Add contributing guidelines covering CI, scope, MANIFEST, and
+        version/release handling.
+          - PR #126
+      - Add AI_POLICY.md documenting how AI tools are used (and not used)
+        in this project.
+      - Add MANIFEST.SKIP so local files (.hgignore, .tidyallrc, CLAUDE.md,
+        etc.) are kept out of `make manifest` output.
+      - Drop unused dev helper (`tester.sh`) and the stale TODO file.
+      - Rename README to README.md and remove the obsolete Travis CI
+        references.
+
+-------------------------------------------------------------------
 Wed Sep 24 11:55:34 UTC 2025 - pgajdos@suse.com
 
 - fix build with libxml2 2.14
