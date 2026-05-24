@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 22 10:35:53 UTC 2026 - Nathan Cutler <ncutler@suse.com>
+
+- Add patch CVE-2026-33948.patch (CVE-2026-33948, bsc#1262043)
+- Add patch CVE-2026-32316.patch (CVE-2026-32316, bsc#1262044)
+- Add patch CVE-2026-33947.patch (CVE-2026-33947, bsc#1262069)
+- Add patch CVE-2026-39956.patch (CVE-2026-39956, bsc#1262070)
+- Add patch CVE-2026-39979.patch (CVE-2026-39979, bsc#1262071)
+- Add patch CVE-2026-40164.patch (CVE-2026-40164, bsc#1262072)
+- Add patch CVE-2026-40612.patch (CVE-2026-40612, bsc#1265060)
+- Add patch CVE-2026-41256.patch (CVE-2026-41256, bsc#1265061)
+- Add patch CVE-2026-41257.patch (CVE-2026-41257, bsc#1265062)
+- Add patch CVE-2026-43894.patch (CVE-2026-43894, bsc#1265070)
+- Add patch CVE-2026-43895.patch (CVE-2026-43895, bsc#1265071)
+- Add patch CVE-2026-43896.patch (CVE-2026-43896, bsc#1265075)
+- Add patches CVE-2026-44777_0.patch and CVE-2026-44777_1.patch
+  (CVE-2026-44777, bsc#1265076)
+
+-------------------------------------------------------------------
 Thu Oct  2 11:14:15 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable valgrind on riscv64
