@@ -17,6 +17,10 @@ Thu Apr  9 04:27:25 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
     copies, except the M-K cut-from-cursor toggle.
   * With --mouse and --indicator, one can click in the scrollbar
     area to roughly navigate within the buffer.
+  * CVE-2026-6843: format string vulnerability leads to denial of
+    service (boo#1262643)
+  * create the ~/.local directory with limited access rights
+    (CVE-2026-6842 boo#1263022, CVE-2026-40556 boo#1263437)
 
 -------------------------------------------------------------------
 Wed Feb  4 18:33:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
