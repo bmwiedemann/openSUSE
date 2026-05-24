@@ -1465,4 +1465,19 @@
   boo#1265231 boo#1265232 boo#1265233 )</comment>
     <requestid>1353077</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>471806c475fb167ae55fc5be71bade0e</srcmd5>
+    <version>1.31.1</version>
+    <time>1779644102</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1354767 from darix
+
+- Updated to 1.31.0 ( boo#1266215 CVE-2026-9256 )
+  *) Security: a heap memory buffer overflow might occur in a
+     worker process when using a configuration with overlapping
+     captures in ngx_http_rewrite_module, potentially resulting in
+     arbitrary code execution (CVE-2026-9256).
+     Thanks to Mufeed VH of Winfunc Research.</comment>
+    <requestid>1354768</requestid>
+  </revision>
 </revisionlist>
