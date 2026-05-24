@@ -1,18 +1,18 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@thaodan.de>
+From: =?UTF-8?q?Bj=C3=B6rn=20Kettunen?= <bjorn.kettunen@thaodan.de>
 Date: Wed, 27 Sep 2023 00:25:31 +0300
 Subject: [PATCH] Add install target
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-Signed-off-by: Björn Bidar <bjorn.bidar@thaodan.de>
+Signed-off-by: Björn Kettunen <bjorn.kettunen@thaodan.de>
 ---
- Makefile | 33 +++++++++++++++++++++++++++++++--
- 1 file changed, 31 insertions(+), 2 deletions(-)
+ Makefile | 34 ++++++++++++++++++++++++++++++++--
+ 1 file changed, 32 insertions(+), 2 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index d584bc3f78f00d559200c144e8a62bb84c4fd385..5a065652a1be0b1be38607ee11dcef23ed03415b 100644
+index 346d1cc091b6d3462cf31d19e4f1ae9aa8b50061..a8d6113bc2dadec39a3b9eb85bf3f7db127c9255 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -29,7 +29,7 @@
@@ -24,7 +24,7 @@ index d584bc3f78f00d559200c144e8a62bb84c4fd385..5a065652a1be0b1be38607ee11dcef23
  .SUFFIXES: .el .elc
  
  ifeq ($(CI),true)
-@@ -37,18 +37,31 @@ ifeq ($(CI),true)
+@@ -37,18 +37,32 @@ ifeq ($(CI),true)
  else
          STRICT =
  endif
@@ -36,15 +36,16 @@ index d584bc3f78f00d559200c144e8a62bb84c4fd385..5a065652a1be0b1be38607ee11dcef23
  
  EMACS = emacs
  MAKEINFO = makeinfo
--BYTEC = compat-25.elc \
+-BYTEC = compat-26.elc \
 +GZIP	= gzip
 +INSTALL_INFO = install-info
-+RUNTIME = compat-25.elc \
- 	compat-26.elc \
++RUNTIME = \
++	compat-26.elc \
  	compat-27.elc \
  	compat-28.elc \
  	compat-29.elc \
  	compat-30.elc \
+ 	compat-31.elc \
  	compat.elc \
 +	compat.elc
 +DEVELOPMENT = \
@@ -57,7 +58,7 @@ index d584bc3f78f00d559200c144e8a62bb84c4fd385..5a065652a1be0b1be38607ee11dcef23
  
  all: compile
  
-@@ -80,6 +93,22 @@ check:
+@@ -80,6 +94,22 @@ check:
  		sort | uniq > /tmp/compat-links
  	@diff /tmp/compat-defs /tmp/compat-links
  

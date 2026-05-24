@@ -7,7 +7,7 @@
 	<param name="scm">git</param>
     <param name="revision">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">Björn Bidar &#60;bjorn.bidar@thaodan.de&#62;</param>
+    <param name="changesauthor">Björn Kettunen &#60;bjorn.kettunen@thaodan.de&#62;</param>
   </service>
   <service mode="manual" name="tar" />
   <service mode="manual" name="recompress">

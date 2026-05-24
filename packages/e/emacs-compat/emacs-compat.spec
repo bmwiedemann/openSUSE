@@ -1,9 +1,7 @@
 #
 # spec file for package emacs-compat
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Björn Kettunen
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +21,7 @@
 %bcond_with check
 
 Name:           emacs-%{_name}
-Version:        30.1.0.1
+Version:        31.0.0.1
 Release:        0
 Summary:        COMPATibility Library for Emacs Lisp
 License:        GPL-3.0-or-later
