@@ -16,17 +16,15 @@
 #
 
 
-%define realversion 12.16.0b1
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-storage-queue
-Version:        12.16.0~b1
+Version:        12.16.0
 Release:        0
 Summary:        Microsoft Azure Storage Queue Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_storage_queue/azure_storage_queue-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_storage_queue/azure_storage_queue-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-storage-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -58,7 +56,7 @@ the Microsoft Azure `Python Developer Center`_ and our `API Reference`_
 Page.
 
 %prep
-%setup -q -n azure_storage_queue-%{realversion}
+%setup -q -n azure_storage_queue-%{version}
 
 %build
 %pyproject_wheel
