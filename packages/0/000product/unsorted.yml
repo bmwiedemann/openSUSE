@@ -843,8 +843,6 @@ unsorted:
   - appstream-qt6-devel 
   - apptainer 
   - apptainer-leap 
-  - apptainer-sle15_7 
-  - apptainer-sle16 
   - appx-util 
   - apr-devel 
   - apr-util-devel 
@@ -3346,7 +3344,6 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
-  - distribution-logos-openSUSE-Aeon 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -15507,7 +15504,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler157-32bit 
+  - libpoppler160-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -22265,6 +22262,7 @@ unsorted:
   - perl-Mojo-Pg 
   - perl-Mojo-RabbitMQ-Client 
   - perl-Mojo-Redis 
+  - perl-Mojo-SQL 
   - perl-Mojo-SQLite 
   - perl-Mojolicious 
   - perl-Mojolicious-Plugin-AssetPack 
@@ -23131,6 +23129,7 @@ unsorted:
   - pidgin-plugin-rocketchat 
   - pidgin-plugin-sipe 
   - pidgin-plugin-xmpp-receipts 
+  - piglit 
   - pijul 
   - pijul-bash-completion 
   - pijul-fish-completion 
@@ -26560,6 +26559,7 @@ unsorted:
   - python311-objgraph 
   - python311-obs-service-update_changelog 
   - python311-oci-sdk 
+  - python311-ocrmypdf 
   - python311-octave-kernel 
   - python311-odfpy 
   - python311-odorik 
@@ -27321,6 +27321,7 @@ unsorted:
   - python311-python-vlc 
   - python311-python-whois 
   - python311-python-xlib 
+  - python311-python-xmp-toolkit 
   - python311-python-yubico 
   - python311-python3-openid 
   - python311-python3-saml 
@@ -28061,12 +28062,6 @@ unsorted:
   - python311-xapian 
   - python311-xapian-haystack 
   - python311-xapp 
-  - python311-xarray 
-  - python311-xarray-accel 
-  - python311-xarray-complete 
-  - python311-xarray-io 
-  - python311-xarray-parallel 
-  - python311-xarray-viz 
   - python311-xattr 
   - python311-xcffib 
   - python311-xdg-base-dirs 
@@ -28166,7 +28161,6 @@ unsorted:
   - python312-doc 
   - python312-doc-devhelp 
   - python312-flit-core 
-  - python312-gwpy 
   - python312-hatch_vcs 
   - python312-hatchling 
   - python312-idle 
@@ -30519,6 +30513,7 @@ unsorted:
   - python313-objgraph 
   - python313-obs-service-update_changelog 
   - python313-oci-sdk 
+  - python313-ocrmypdf 
   - python313-octave-kernel 
   - python313-octaviaclient 
   - python313-odfpy 
@@ -31281,6 +31276,7 @@ unsorted:
   - python313-python-vlc 
   - python313-python-whois 
   - python313-python-xlib 
+  - python313-python-xmp-toolkit 
   - python313-python-yubico 
   - python313-python3-openid 
   - python313-python3-saml 
@@ -33801,6 +33797,7 @@ unsorted:
   - python314-gwcs 
   - python314-gwdatafind 
   - python314-gwosc 
+  - python314-gwpy 
   - python314-gwyfile 
   - python314-h11 
   - python314-h2 
@@ -34474,6 +34471,7 @@ unsorted:
   - python314-objgraph 
   - python314-obs-service-update_changelog 
   - python314-oci-sdk 
+  - python314-ocrmypdf 
   - python314-octave-kernel 
   - python314-odfpy 
   - python314-odorik 
@@ -35247,6 +35245,7 @@ unsorted:
   - python314-python-vlc 
   - python314-python-whois 
   - python314-python-xlib 
+  - python314-python-xmp-toolkit 
   - python314-python-yubico 
   - python314-python3-openid 
   - python314-python3-saml 
@@ -49844,6 +49843,7 @@ unsorted:
   - unpaper 
   - unshield 
   - unshield-devel 
+  - unshieldv3 
   - unzip-rcc 
   - unzip-rcc-doc 
   - unzix 
@@ -50282,6 +50282,8 @@ unsorted:
   - waffle 
   - waffle-devel 
   - wait4x 
+  - wall-broadcaster 
+  - wall-broadcaster-gtk4 
   - wallpapers-openSUSE-extra 
   - wallpapers-openSUSE-extra-leap15 
   - wallstreet 
