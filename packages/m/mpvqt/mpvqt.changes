@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 24 06:59:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.2.0
+  * cmake: install Qt metatypes files
+  * mpvcontroller: eventHandler: handle `stop` reason for
+    `MPV_EVENT_END_FILE`
+  * Refactor code
+  * Update examples
+
+-------------------------------------------------------------------
 Tue Apr 15 22:32:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.1.1

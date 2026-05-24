@@ -1,7 +1,7 @@
 #
 # spec file for package mpvqt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.15.0
 %define qt6_version 6.5.0
 
 %bcond_without released
 Name:           mpvqt
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Libmpv wrapper for QtQuick2 and QML
 License:        LGPL-2.1-or-later
@@ -39,17 +39,17 @@ BuildRequires:  pkgconfig(mpv)
 %description
 MpvQt is a libmpv wrapper for QtQuick2 and QML.
 
-%package -n libMpvQt2
+%package -n libMpvQt3
 Summary:        Libmpv wrapper for QtQuick2 and QML
 # Marked as runtime deps in the build system, but looks unneeded
 # Recommends:     (yt-dlp or youtube-dl)
 
-%description -n libMpvQt2
+%description -n libMpvQt3
 MpvQt is a libmpv wrapper for QtQuick2 and QML.
 
 %package devel
 Summary:        Development files for mpvqt
-Requires:       libMpvQt2 = %{version}
+Requires:       libMpvQt3 = %{version}
 Requires:       cmake(Qt6Quick) >= %{qt6_version}
 Requires:       pkgconfig(mpv)
 
@@ -67,9 +67,9 @@ This package provides development files needed to use mpvqt in your applications
 %install
 %kf6_install
 
-%ldconfig_scriptlets -n libMpvQt2
+%ldconfig_scriptlets -n libMpvQt3
 
-%files -n libMpvQt2
+%files -n libMpvQt3
 %license LICENSES/*
 %{_kf6_libdir}/libMpvQt.so.*
 
@@ -78,5 +78,8 @@ This package provides development files needed to use mpvqt in your applications
 %{_includedir}/MpvQt/
 %{_kf6_cmakedir}/MpvQt/
 %{_kf6_libdir}/libMpvQt.so
+%if %{pkg_vcmp kf6-extra-cmake-modules >= 6.27}
+%{_qt6_metatypesdir}/qt6mpvqt_metatypes.json
+%endif
 
 %changelog
