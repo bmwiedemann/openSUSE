@@ -388,4 +388,41 @@
     <comment></comment>
     <requestid>1303525</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d2cec11be66be02ef7e7e6581953f516</srcmd5>
+    <version>1.3.2</version>
+    <time>1779644091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.2:
+  * Bump version to 1.3.2
+  * [doc] Update CHANGES
+  * [thin_repair] Prevent out-of-bounds access from corrupted btree pointers
+  * [thin_repair] Use saturating arithmetic to avoid integer overflow
+  * [build] Update ratatui to address RUSTSEC-2026-0002
+  * [build] Bump rand to address RUSTSEC-2026-0097
+  * Bump version to 1.3.1
+  * [doc] Update CHANGES
+  * [build] Update dependencies to latest patch releases
+  * [space_map] Optimize zero-filling loops in Aggregator region lookup
+  * [tests] Fix device name in the preparation script
+  * [tests] Add tests for thin_ls mapped block counts
+  * [tests] Update documentation for test files
+  * [thin_ls] Optimize second pass by skipping unnecessary key parsing
+  * [thin_ls] Read exclusive leaves multithreaded
+  * [thin_ls] Read leaf nodes multithreaded
+  * [thin_ls] Read internal nodes multithreaded
+  * [thin_ls] Switch to Aggregator for upcoming parallelization
+  * [utils] Add mutable accessor to HashVec
+  * [space_map] Add specialized Aggregator that counts up to two
+  * [space_map] Make Region type configurable via generics
+  * [space_map] Relocate misplaced code documentation
+  * [thin_ls] Print memory usage for performance analysis
+  * [utils] Factor out memory profiling functions
+  * [space_map] Factor out repair_space_map
+  * Bump version to 1.3.0
+  * [doc] Update CHANGES
+  * [build] Update dependencies to latest patch releases
+  * [pdata] Avoid unnecessary error object construction</comment>
+    <requestid>1354657</requestid>
+  </revision>
 </revisionlist>

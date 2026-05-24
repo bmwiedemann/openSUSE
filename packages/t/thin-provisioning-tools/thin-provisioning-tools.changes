@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Fri May 22 08:41:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.3.2:
+  * Bump version to 1.3.2
+  * [doc] Update CHANGES
+  * [thin_repair] Prevent out-of-bounds access from corrupted btree pointers
+  * [thin_repair] Use saturating arithmetic to avoid integer overflow
+  * [build] Update ratatui to address RUSTSEC-2026-0002
+  * [build] Bump rand to address RUSTSEC-2026-0097
+  * Bump version to 1.3.1
+  * [doc] Update CHANGES
+  * [build] Update dependencies to latest patch releases
+  * [space_map] Optimize zero-filling loops in Aggregator region lookup
+  * [tests] Fix device name in the preparation script
+  * [tests] Add tests for thin_ls mapped block counts
+  * [tests] Update documentation for test files
+  * [thin_ls] Optimize second pass by skipping unnecessary key parsing
+  * [thin_ls] Read exclusive leaves multithreaded
+  * [thin_ls] Read leaf nodes multithreaded
+  * [thin_ls] Read internal nodes multithreaded
+  * [thin_ls] Switch to Aggregator for upcoming parallelization
+  * [utils] Add mutable accessor to HashVec
+  * [space_map] Add specialized Aggregator that counts up to two
+  * [space_map] Make Region type configurable via generics
+  * [space_map] Relocate misplaced code documentation
+  * [thin_ls] Print memory usage for performance analysis
+  * [utils] Factor out memory profiling functions
+  * [space_map] Factor out repair_space_map
+  * Bump version to 1.3.0
+  * [doc] Update CHANGES
+  * [build] Update dependencies to latest patch releases
+  * [pdata] Avoid unnecessary error object construction
+  * [btree] Factor out get_depth method
+  * [btree_walker] Remove multithreaded read_nodes and use references
+  * [thin_check] Handle data mappings outside the space map boundary
+  * [btree_walker] Handle metadata blocks outside the space map boundary
+  * [thin_check] Remove unused error logging
+  * [space_map] Add comments to space_map/aggregator_load.rs
+  * [space_map] Prevent panics from out-of-bounds access in Aggregator
+  * [thin_check] Display number of free blocks using saturating arithmetic
+  * [thin_check] Handle incomplete metadata dump
+  * [thin_check] Do not read space maps while checking the metadata snap
+  * [thin_check] Refactor space map comparison
+  * [thin_explore] Migrate from tui to ratatui
+  * [thin_check] Improve error messages by visiting the mapping tree first
+  * Bump version to 1.3.0-rc.1
+  * [io_engine] Improve partial read handling in VectoredBlockIo
+  * [io_engine] Pass down the error from IoEngine to the handler
+  * [thin_check] Fix error when no devices are present
+  * [all] Avoid manual implementation of .is_multiple_of() on unsigned types
+  * [io_engine] Handle out of bounds reads in VectoredBlockIo
+  * [space_map] Handle errors in reading bitmap blocks
+  * [thin_check] Handle errors in reading mapping tree leaves
+  * [thin_check] Replace Arc::try_unwrap() by into_inner()
+  * [thin_check] Log additional memory usage info
+  * [space_map] Implement get_nr_allocated() for Aggregator
+  * [io_engine] Implement read_blocks for SyncIoEngine
+  * [utils] Add AdjacentChunks to produce fixed-length consecutive runs
+  * [aggregator] Avoid copying block numbers and cloning iterator items
+  * [thin_check] Re-enable NEEDS_CHECK flag clearing
+  * [thin_check] Repair space map leaks
+  * [thin_check] Enable metadata space map checking in terms of Aggregator
+  * [btree_walker] Introduce layer-based btree walker
+  * [btree_walker] Expose the ValueCollector for building maps from Handlers
+  * [btree] Decouple node check and unpack functions from the io Block
+  * [space_map] Batch update the aggregator while loading the ref counts
+  * [thin_check] Read and compare space maps
+  * [utils] Add spawn_future() for concurrent execution
+  * [space_map] Support loading data/metadata space maps into Aggregators
+  * [btree] Derive Copy trait for NodeError
+  * [thin_check] Use threads to speed up read_internal_nodes()
+  * [thin_check] Rewrite read_internal_nodes() to use streaming read
+  * [thin_check] Speed up summarize_tree
+  * [thin_check] Improve performance of reading leaf nodes
+  * [utils] Introduce RangedBitsetIter to iterate a specific range of bits
+  * [space_map] Introduce Aggregator type
+  * [space_map] Split SpaceMap trait into RefCount and SpaceMap
+  * [io_engine] Implement AsyncIoEngine::read_blocks() for streaming read
+  * [io_engine] Add BufferPool
+  * [io_engine] Rewrite AsyncIoEngine to use tokio IoUring
+  * [io_engine] Introduce io_engine/ring_pool.rs
+  * [io_engine] Add documentation to io_engine/gaps.rs
+  * [io_engine] Add some documentation to io_engine/utils.rs
+  * [io_engine] Remove suggest_nr_threads() from IoEngine
+  * [thin_check] Add get_memory_usage()
+  * [pdata] A couple of trivial performance tweaks to unpacking a btree node
+  * Bump version to 1.2.2
+  * [doc] Update CHANGES
+  * [build] Update dependencies to latest patch releases
+  * [build] Update dependencies' major/minor versions without code changes
+  * [tests] Add era_invalidate --metadata-snapshot tests
+  * [era_invalidate] Fix missing flag setting for --metadata-snapshot
+
+-------------------------------------------------------------------
 Wed Sep 03 07:18:45 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
 
 - Update to version 1.2.1:
