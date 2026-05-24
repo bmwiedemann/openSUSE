@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 21 10:25:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing python3-base requirements.
+- 'python-javapackages' subpackage for the primary Python
+  interpreter should also provide 'python3-javapackages' symbol.
+
+-------------------------------------------------------------------
 Tue May 12 16:07:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 6.5.1

@@ -64,6 +64,7 @@ Provides:       jpackage-utils = %{version}
 Obsoletes:      %{name}-doc
 Obsoletes:      jpackage-utils < %{version}
 %if %{with python}
+BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -142,6 +143,7 @@ Summary:        Non-essential macros and scripts for Java packaging support
 Group:          Development/Languages/Java
 Requires:       java-devel
 Requires:       javapackages-tools = %{version}
+Requires:       python3-base
 Requires:       python3-javapackages = %{version}
 
 %description -n javapackages-local

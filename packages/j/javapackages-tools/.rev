@@ -463,4 +463,12 @@
     <comment>6.5.1</comment>
     <requestid>1352812</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>5d5e7ac2246851a1b40e95376b17b972</srcmd5>
+    <version>6.5.1</version>
+    <time>1779644104</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing python3-base requirements</comment>
+    <requestid>1354787</requestid>
+  </revision>
 </revisionlist>
