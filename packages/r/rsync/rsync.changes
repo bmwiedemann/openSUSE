@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Thu May 21 06:37:59 UTC 2026 - David Anes <david.anes@suse.com>
+
+- Fixed some warnings while building the rpm.
+
+- Added patches:
+  - rsync-python-3.6-tests.patch:
+    Small patch to support running tests on python 3.6+:
+  - rsync-openat2-glibc-missing.patch:
+    Small patch to build on kernels >= 5.6+ where openat2 
+    is not defined in glibc.
+
+- Removed patches already upstream:
+  - rsync-no-libattr.patch
+  - rsync-CVE-2025-10158.patch
+  - rsync-CVE-2026-41035.patch
+  - rsync341-gcc15-bool.patch
+
+- Removed support for the unmaintained rsync-patches archive,
+  which in turn removes support for SLP. These patches are not 
+  being shipped anymore.
+
+- Update to 3.4.3:
+
+  - SECURITY FIXES:
+
+    Six CVEs are fixed in this release. Three of the six 
+    (CVE-2026-29518, CVE-2026-43617, CVE-2026-43619) require 
+    non-default daemon configuration to reach: the first and
+    third need use chroot = no for a module, the second needs
+    daemon chroot = ... set in rsyncd.conf. 
+    
+    Two (CVE-2026-43618, CVE-2026-43620) are reachable from a
+    normal pull or a normal authenticated daemon connection. 
+    The sixth (CVE-2026-45232) is reachable only when RSYNC_PROXY 
+    is set and the proxy (or a MITM) returns a pathological 
+    response.
+
+    Complete list of changes: https://download.samba.org/pub/rsync/NEWS#3.4.3
+
+    - CVE-2026-29518, bsc#1264511: Symlink-Race TOCTOU in Daemon (use chroot = no)
+
+      TOCTOU symlink race condition allowing local privilege 
+      escalation in daemon mode without chroot. An rsync daemon
+      configured with "use chroot = no" was exposed to a 
+      time-of-check / time-of-use race on parent path components.
+
+    - CVE-2026-43617, bsc#1264515: Authorization Bypass via Hostname Resolution
+    
+      Hostname/ACL bypass on an rsync daemon configured with
+      daemon chroot = /X in rsyncd.conf when the chroot tree
+      lacks DNS resolution support. The reverse-DNS lookup of 
+      the connecting client was performed after the daemon chroot
+      had been entered; if /X did not contain the libc resolver 
+      fixtures (/etc/resolv.conf, /etc/nsswitch.conf, /etc/hosts,
+      NSS service modules) the lookup failed and the connecting 
+      hostname was set to "UNKNOWN", causing hostname-based deny 
+      rules to silently fail open. IP-based ACLs are unaffected. 
+      The per-module use chroot setting is unrelated to this 
+      issue. The fix performs the lookup before entering the
+      daemon chroot.
+
+    - CVE-2026-43618, bsc#1264512:  Integer Overflow Information Disclosure
+    
+      Integer overflow in the compressed-token decoder enabling
+      remote memory disclosure to an authenticated daemon peer.
+            
+      Workaround for older releases: refuse options = compress in rsyncd.conf.
+
+    - CVE-2026-43619, bsc#1264514: Symlink Race Condition via Path-Based Syscalls
+    
+      Symlink races on path-based system calls in "use chroot=no"
+      daemon mode (generalisation of CVE-2026-29518). Earlier
+      fixes for symlink races on the receiver's open() call 
+      missed the same race class on every other path-based system
+      call: chmod, lchown, utimes, rename, unlink, mkdir, symlink,
+      mknod, link, rmdir and lstat.
+
+      Default "use chroot = yes" is not exposed.
+
+    - CVE-2026-43620, bsc#1264513: Out-of-Bounds Array Read via recv_files()
+      
+      Out-of-bounds read in the receiver's recv_files() enabling 
+      remote denial-of-service of any client pulling from a 
+      malicious server (incomplete fix of commit 797e17f). 
+      
+      Workaround for older releases: --no-inc-recursive on the client.
+
+    - CVE-2026-45232, bsc#1265296: Off-by-one stack OOB write in HTTP CONNECT proxy 
+      response parsing
+    
+      Off-by-one out-of-bounds stack write in the rsync client's 
+      HTTP CONNECT proxy handler (establish_proxy_connection() in
+      socket.c). The fix detects the "buffer filled without finding 
+      \n" case explicitly by position and refuses the response with 
+      "proxy response line too long".
+
+    - In addition to the six CVE fixes, this release adds defence-in-depth 
+      hardening on several adjacent paths.
+
+  - BUG FIXES:
+
+    - Fixed a regression introduced by the 3.4.0 secure_relative_open().
+
+- Complete list of fixes in version 3.4.2:  
+  - https://download.samba.org/pub/rsync/NEWS#3.4.2
+  
+-------------------------------------------------------------------
 Tue May 07 16:06:15 UTC 2026 - David Anes <david.anes@suse.com>
 
 - Security update (CVE-2026-41035, bsc#1262223): rsync: count of 

@@ -1,0 +1,15 @@
+Index: rsync-3.4.3/syscall.c
+===================================================================
+--- rsync-3.4.3.orig/syscall.c
++++ rsync-3.4.3/syscall.c
+@@ -36,6 +36,10 @@
+ #ifdef __linux__
+ #include <sys/syscall.h>
+ #include <linux/openat2.h>
++#ifndef SYS_openat2
++/* Note: Most 64-bit and 32-bit architectures (x86, ARM, RISC-V, PowerPC, s390x, LoongArch) use 437. Alpha uses 547, MIPS uses 443/543. */
++#define SYS_openat2 437
++#endif
+ #endif
+ 
+ #include "ifuncs.h"

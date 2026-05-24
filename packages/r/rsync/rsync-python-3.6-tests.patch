@@ -1,0 +1,73 @@
+Index: rsync-3.4.3/runtests.py
+===================================================================
+--- rsync-3.4.3.orig/runtests.py
++++ rsync-3.4.3/runtests.py
+@@ -72,12 +72,12 @@ def find_setfacl_nodef(scratchbase):
+         ['setfacl', '-s', 'u::7,g::5,o:5', scratchbase],
+     ]:
+         try:
+-            subprocess.run(cmd, capture_output=True, timeout=5)
++            subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=5)
+             return cmd[:2] if cmd[0] == 'setacl' else cmd[:2]
+         except (FileNotFoundError, subprocess.TimeoutExpired):
+             continue
+     try:
+-        r = subprocess.run(['setfacl', '--help'], capture_output=True, text=True, timeout=5)
++        r = subprocess.run(['setfacl', '--help'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True, timeout=5)
+         if '-k,' in r.stdout or '-k,' in r.stderr:
+             return ['setfacl', '-k']
+     except (FileNotFoundError, subprocess.TimeoutExpired):
+@@ -122,11 +122,11 @@ def get_testuser():
+     for cmd in ['/usr/bin/whoami', '/usr/ucb/whoami', '/bin/whoami']:
+         if os.path.isfile(cmd):
+             try:
+-                return subprocess.check_output([cmd], text=True).strip()
++                return subprocess.check_output([cmd], universal_newlines=True).strip()
+             except subprocess.CalledProcessError:
+                 pass
+     try:
+-        return subprocess.check_output(['id', '-un'], text=True).strip()
++        return subprocess.check_output(['id', '-un'], universal_newlines=True).strip()
+     except (FileNotFoundError, subprocess.CalledProcessError):
+         return os.environ.get('LOGNAME', os.environ.get('USER', 'UNKNOWN'))
+ 
+@@ -134,11 +134,11 @@ def get_testuser():
+ def prep_scratch(scratchdir, srcdir, tooldir, setfacl_nodef):
+     """Prepare a scratch directory for a test."""
+     if os.path.isdir(scratchdir):
+-        subprocess.run(['chmod', '-R', 'u+rwX', scratchdir], capture_output=True)
+-        subprocess.run(['rm', '-rf', scratchdir], capture_output=True)
++        subprocess.run(['chmod', '-R', 'u+rwX', scratchdir], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
++        subprocess.run(['rm', '-rf', scratchdir], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+     os.makedirs(scratchdir, exist_ok=True)
+     if setfacl_nodef:
+-        subprocess.run(setfacl_nodef + [scratchdir], capture_output=True)
++        subprocess.run(setfacl_nodef + [scratchdir], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+     try:
+         os.chmod(scratchdir, os.stat(scratchdir).st_mode & ~0o2000)  # clear setgid
+     except OSError:
+@@ -323,7 +323,7 @@ def main():
+     print(f'    srcdir={srcdir}')
+     print(f'    TLS_ARGS={tls_args}')
+     print(f'    testuser={testuser}')
+-    print(f'    os={subprocess.check_output(["uname", "-a"], text=True).strip()}')
++    print(f'    os={subprocess.check_output(["uname", "-a"], universal_newlines=True).strip()}')
+     print(f'    preserve_scratch={"yes" if args.preserve_scratch else "no"}')
+     if args.valgrind:
+         print(f'    valgrind=enabled (logs in valgrind.*.log)')
+@@ -382,13 +382,13 @@ def main():
+         if tr.result == 0:
+             passed += 1
+             if not args.preserve_scratch and os.path.isdir(scratchdir):
+-                subprocess.run(['rm', '-rf', scratchdir], capture_output=True)
++                subprocess.run(['rm', '-rf', scratchdir], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+             return False
+         elif tr.result == 77:
+             skipped_list.append(tr.testbase)
+             skipped += 1
+             if not args.preserve_scratch and os.path.isdir(scratchdir):
+-                subprocess.run(['rm', '-rf', scratchdir], capture_output=True)
++                subprocess.run(['rm', '-rf', scratchdir], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+             return False
+         elif tr.result == 78:
+             failed += 1

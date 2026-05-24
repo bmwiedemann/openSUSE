@@ -28,21 +28,15 @@
 %bcond_with gcc11
 %endif
 
-%if 0%{?suse_version} < 1600
-%bcond_without slp
-%else
-%bcond_with slp
-%endif
-
 Name:           rsync
-Version:        3.4.1
+Version:        3.4.3
 Release:        0
 Summary:        Versatile tool for fast incremental file transfer
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://rsync.samba.org/
 Source:         https://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz
-Source1:        https://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.tar.gz
+Source1:        rsyncd
 Source2:        logrotate.rsync
 Source3:        rsyncd.socket
 Source4:        rsyncd.rc
@@ -51,22 +45,16 @@ Source6:        rsyncd.secrets
 Source8:        rsyncd.service
 Source9:        rsyncd@.service
 Source10:       https://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz.asc
-Source11:       https://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.tar.gz.asc
 Source12:       %{name}.keyring
-Source13:       rsyncd
-Patch0:         rsync-no-libattr.patch
-Patch2:         rsync-usr-etc.patch
-Patch3:         rsync-run-dir.patch
+
+Patch1:         rsync-usr-etc.patch
+Patch2:         rsync-run-dir.patch
 # https://github.com/RsyncProject/rsync/pull/639
-Patch5:         rsyncd-return-from-list-command-with-0.patch
-# https://github.com/RsyncProject/rsync/pull/716
-Patch6:         rsync341-gcc15-bool.patch
-# bsc#1254441, CVE-2025-10158: rsync: Out of bounds array access via negative index
-# https://github.com/RsyncProject/rsync/commit/797e17fc4a6f15e3b1756538a9f812b63942686f
-Patch7:         rsync-CVE-2025-10158.patch
-# bsc#1262223, CVE-2026-41035: rsync: count of entries mismatch can lead to a use-after-free
-# https://github.com/RsyncProject/rsync/pull/875
-Patch8:         rsync-CVE-2026-41035.patch
+Patch3:         rsyncd-return-from-list-command-with-0.patch
+Patch4:         rsync-python-3.6-tests.patch
+Patch5:         rsync-openat2-glibc-missing.patch
+
+BuildRequires:  %{pythons}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
@@ -82,9 +70,6 @@ BuildRequires:  pkgconfig(libxxhash) >= 0.8.0
 %endif
 %if %{with gcc11}
 BuildRequires:  gcc11-c++
-%endif
-%if %{with slp}
-BuildRequires:  openslp-devel
 %endif
 BuildRequires:  pkgconfig(openssl)
 Requires(post): grep
@@ -102,14 +87,10 @@ source files and the existing files in the destination. Rsync is widely used
 for backups and mirroring and as an improved copy command for everyday use.
 
 %prep
-%setup -q -b 1
+%autosetup -p1
+
+# we don't bundle vendored zlib
 rm -f zlib/*.h zlib/*.c
-
-%if %{with slp}
-patch -p1 < patches/slp.diff
-%endif
-
-%autopatch -p1
 
 %build
 autoreconf -fiv
@@ -120,6 +101,7 @@ export CXX=g++-11
 export CFLAGS="%{optflags} -fPIC -DPIC -fPIE"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,-z,relro,-z,now -fPIE -pie"
+
 %configure \
   --with-included-popt=no \
   --with-included-zlib=no \
@@ -132,9 +114,6 @@ export LDFLAGS="-Wl,-z,relro,-z,now -fPIE -pie"
 %endif
 %ifarch x86_64
   --enable-roll-simd \
-%endif
-%if %{with slp}
-  --enable-slp \
 %endif
   --enable-acl-support \
   --enable-xattr-support
@@ -152,7 +131,7 @@ rm -f %{buildroot}%{_sbindir}/rsyncd
 install -d %{buildroot}%{_sysconfdir}/init.d
 install -d %{buildroot}%{_sysconfdir}/xinetd.d
 install -d %{buildroot}%{_sbindir}
-install -m 755 %{SOURCE13} %{buildroot}%{_sbindir}/rsyncd
+install -m 755 %{SOURCE1} %{buildroot}%{_sbindir}/rsyncd
 install -m 755 support/rsyncstats %{buildroot}%{_bindir}
 %if 0%{?suse_version} > 1500
 install -d %{buildroot}%{_distconfdir}/logrotate.d
@@ -176,7 +155,7 @@ ln -sf service %{buildroot}%{_sbindir}/rcrsyncd
 chmod -x support/*
 
 %pre
-%service_add_pre rsyncd.service
+%service_add_pre rsyncd.service rsyncd.socket
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
 for i in logrotate.d/rsync rsyncd.conf rsyncd.secrets; do
@@ -193,13 +172,13 @@ done
 %endif
 
 %preun
-%service_del_preun rsyncd.service
+%service_del_preun rsyncd.service rsyncd.socket
 
 %post
-%service_add_post rsyncd.service
+%service_add_post rsyncd.service rsyncd.socket
 
 %postun
-%service_del_postun rsyncd.service
+%service_del_postun rsyncd.service rsyncd.socket
 
 %files
 %license COPYING
