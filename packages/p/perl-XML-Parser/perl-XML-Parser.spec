@@ -18,10 +18,10 @@
 
 %define cpan_name XML-Parser
 Name:           perl-XML-Parser
-Version:        2.580.0
+Version:        2.590.0
 Release:        0
-# 2.58 -> normalize -> 2.580.0
-%define cpan_version 2.58
+# 2.59 -> normalize -> 2.590.0
+%define cpan_version 2.59
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        Artistic-2.0
 Summary:        Perl module for parsing XML documents

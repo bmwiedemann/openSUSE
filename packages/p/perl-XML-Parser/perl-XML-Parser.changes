@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 21 10:06:51 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.590.0 (2.59)
+   see /usr/share/doc/packages/perl-XML-Parser/Changes
+
+  2.59 2026-05-20 (by Todd Rinaldo)
+
+    Fixes:
+      - PR #269 GH #268 Recognize blessed glob handles (e.g. IO::String)
+        in Expat::parse. The input-detection logic already handled
+        IO::Handle subclasses, unblessed GLOB refs, bare globs, and
+        bareword filehandle names but missed blessed globs that don't
+        inherit from IO::Handle (such as IO::String), silently
+        stringifying them and feeding the stringification to ParseString.
+        Add a Scalar::Util::reftype check so blessed GLOB references are
+        treated like any other glob handle
+
+    Maintenance:
+      - Add IO::String to the cpanfile so CI exercises the
+        blessed-glob-handle code path covered by PR #269
+
+-------------------------------------------------------------------
 Fri Apr 24 07:17:39 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.580.0 (2.58)
