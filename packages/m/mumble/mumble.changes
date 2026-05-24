@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 24 10:52:32 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.5.901:
+  * Client: Fixes for various crashes and hangs
+  * Server: same
+  * Fix Rare buffer overflow in Mumble overlay
+- drop mumble-1.5.857-CVE-2025-71264.patch, now included
+
+-------------------------------------------------------------------
 Tue Mar 17 15:37:34 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - CVE-2025-71264: (opus) incorrect size calculations allow for an

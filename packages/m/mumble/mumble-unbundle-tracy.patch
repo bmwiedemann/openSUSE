@@ -1,7 +1,7 @@
-Index: mumble-1.5.857/src/CMakeLists.txt
+Index: mumble-1.5.901/src/CMakeLists.txt
 ===================================================================
---- mumble-1.5.857.orig/src/CMakeLists.txt
-+++ mumble-1.5.857/src/CMakeLists.txt
+--- mumble-1.5.901.orig/src/CMakeLists.txt
++++ mumble-1.5.901/src/CMakeLists.txt
 @@ -12,8 +12,6 @@ option(qssldiffiehellmanparameters "Buil
  
  option(zeroconf "Build support for zeroconf (mDNS/DNS-SD)." ON)
@@ -35,10 +35,10 @@ Index: mumble-1.5.857/src/CMakeLists.txt
  # Add the GSL
  if(bundled-gsl)
  	add_subdirectory("${3RDPARTY_DIR}/gsl" "${CMAKE_CURRENT_BINARY_DIR}/gsl" EXCLUDE_FROM_ALL)
-Index: mumble-1.5.857/src/murmur/AudioReceiverBuffer.cpp
+Index: mumble-1.5.901/src/murmur/AudioReceiverBuffer.cpp
 ===================================================================
---- mumble-1.5.857.orig/src/murmur/AudioReceiverBuffer.cpp
-+++ mumble-1.5.857/src/murmur/AudioReceiverBuffer.cpp
+--- mumble-1.5.901.orig/src/murmur/AudioReceiverBuffer.cpp
++++ mumble-1.5.901/src/murmur/AudioReceiverBuffer.cpp
 @@ -8,8 +8,6 @@
  #include <algorithm>
  #include <cassert>
@@ -75,10 +75,10 @@ Index: mumble-1.5.857/src/murmur/AudioReceiverBuffer.cpp
  #ifndef NDEBUG
  	// Sort the list such that entries with same receiver are next to each other
  	std::sort(receiverList.begin(), receiverList.end(), [](const AudioReceiver &lhs, const AudioReceiver &rhs) {
-Index: mumble-1.5.857/src/murmur/Server.cpp
+Index: mumble-1.5.901/src/murmur/Server.cpp
 ===================================================================
---- mumble-1.5.857.orig/src/murmur/Server.cpp
-+++ mumble-1.5.857/src/murmur/Server.cpp
+--- mumble-1.5.901.orig/src/murmur/Server.cpp
++++ mumble-1.5.901/src/murmur/Server.cpp
 @@ -37,10 +37,6 @@
  
  #include <boost/bind/bind.hpp>
@@ -180,23 +180,19 @@ Index: mumble-1.5.857/src/murmur/Server.cpp
  	// Note that in this function we never have to acquire a read-lock on qrwlVoiceThread
  	// as all places that call this function will hold that lock at the point of calling
  	// this function.
-@@ -1221,15 +1197,11 @@ void Server::processMsg(ServerUser *u, M
- 		QHash< ServerUser *, VolumeAdjustment > cachedListeners;
+@@ -1220,11 +1196,9 @@ void Server::processMsg(ServerUser *u, M
  
- 		if (u->qmTargetCache.contains(static_cast< int >(audioData.targetOrContext))) {
+ 		auto whisper_it = u->qmTargetCache.find(static_cast< int >(audioData.targetOrContext));
+ 		if (whisper_it != u->qmTargetCache.end()) {
 -			ZoneScopedN(TracyConstants::AUDIO_WHISPER_CACHE_STORE);
--
- 			const WhisperTargetCache &cache = u->qmTargetCache.value(static_cast< int >(audioData.targetOrContext));
- 			channel                         = cache.channelTargets;
- 			direct                          = cache.directTargets;
- 			cachedListeners                 = cache.listeningTargets;
+ 
+ 			cache = &(*whisper_it);
  		} else {
 -			ZoneScopedN(TracyConstants::AUDIO_WHISPER_CACHE_CREATE);
--
+ 
  			const unsigned int uiSession = u->uiSession;
  			qrwlVoiceThread.unlock();
- 			qrwlVoiceThread.lockForWrite();
-@@ -1275,8 +1247,6 @@ void Server::processMsg(ServerUser *u, M
+@@ -1286,8 +1260,6 @@ void Server::processMsg(ServerUser *u, M
  		}
  	}
  
@@ -205,7 +201,7 @@ Index: mumble-1.5.857/src/murmur/Server.cpp
  	buffer.preprocessBuffer();
  
  	bool isFirstIteration = true;
-@@ -1300,8 +1270,6 @@ void Server::processMsg(ServerUser *u, M
+@@ -1311,8 +1283,6 @@ void Server::processMsg(ServerUser *u, M
  			if (isFirstIteration
  				|| !Mumble::Protocol::protocolVersionsAreCompatible(encoder.getProtocolVersion(),
  																	currentRange.begin->getReceiver().m_version)) {
@@ -214,7 +210,7 @@ Index: mumble-1.5.857/src/murmur/Server.cpp
  				encoder.setProtocolVersion(currentRange.begin->getReceiver().m_version);
  
  				// We have to re-encode the "fixed" part of the audio message
-@@ -1318,9 +1286,7 @@ void Server::processMsg(ServerUser *u, M
+@@ -1329,9 +1299,7 @@ void Server::processMsg(ServerUser *u, M
  			audioData.volumeAdjustment = currentRange.begin->getVolumeAdjustment();
  
  			// Update data
@@ -224,7 +220,7 @@ Index: mumble-1.5.857/src/murmur/Server.cpp
  
  			// Clear TCP cache
  			tcpCache.clear();
-@@ -1683,8 +1649,6 @@ void Server::connectionClosed(QAbstractS
+@@ -1694,8 +1662,6 @@ void Server::connectionClosed(QAbstractS
  }
  
  void Server::message(Mumble::Protocol::TCPMessageType type, const QByteArray &qbaMsg, ServerUser *u) {
@@ -233,7 +229,7 @@ Index: mumble-1.5.857/src/murmur/Server.cpp
  	if (!u) {
  		u = static_cast< ServerUser * >(sender());
  	}
-@@ -2354,8 +2318,6 @@ bool Server::canNest(Channel *newParent,
+@@ -2365,8 +2331,6 @@ bool Server::canNest(Channel *newParent,
  }
  
  WhisperTargetCache Server::createWhisperTargetCacheFor(ServerUser &speaker, const WhisperTarget &target) {
@@ -242,10 +238,10 @@ Index: mumble-1.5.857/src/murmur/Server.cpp
  	QMutexLocker qml(&qmCache);
  
  	WhisperTargetCache cache;
-Index: mumble-1.5.857/src/murmur/AudioReceiverBuffer.h
+Index: mumble-1.5.901/src/murmur/AudioReceiverBuffer.h
 ===================================================================
---- mumble-1.5.857.orig/src/murmur/AudioReceiverBuffer.h
-+++ mumble-1.5.857/src/murmur/AudioReceiverBuffer.h
+--- mumble-1.5.901.orig/src/murmur/AudioReceiverBuffer.h
++++ mumble-1.5.901/src/murmur/AudioReceiverBuffer.h
 @@ -14,8 +14,6 @@
  #include <unordered_map>
  #include <vector>
@@ -264,9 +260,9 @@ Index: mumble-1.5.857/src/murmur/AudioReceiverBuffer.h
  		ReceiverRange< Iterator > range;
  		range.begin = begin;
  
-Index: mumble-1.5.857/src/murmur/TracyConstants.h
+Index: mumble-1.5.901/src/murmur/TracyConstants.h
 ===================================================================
---- mumble-1.5.857.orig/src/murmur/TracyConstants.h
+--- mumble-1.5.901.orig/src/murmur/TracyConstants.h
 +++ /dev/null
 @@ -1,25 +0,0 @@
 -// Copyright 2021-2023 The Mumble Developers. All rights reserved.
@@ -294,9 +290,9 @@ Index: mumble-1.5.857/src/murmur/TracyConstants.h
 -} // namespace TracyConstants
 -
 -#endif // MUMBLE_MURMUR_TRACYCONSTANTS_H_
-Index: mumble-1.5.857/docs/dev/Profiling.md
+Index: mumble-1.5.901/docs/dev/Profiling.md
 ===================================================================
---- mumble-1.5.857.orig/docs/dev/Profiling.md
+--- mumble-1.5.901.orig/docs/dev/Profiling.md
 +++ /dev/null
 @@ -1,33 +0,0 @@
 -# Profiling
@@ -332,10 +328,10 @@ Index: mumble-1.5.857/docs/dev/Profiling.md
 -- Profiling should generally be done in `Release` mode in order to obtain reasonable data
 -- If you are having issues connecting your Tracy _server_ to the Mumble server, you should not let it fork. The default behavior in release
 -  mode is to fork, but you can change that by using the `-fg` parameter when starting the server.
-Index: mumble-1.5.857/docs/dev/build-instructions/cmake_options.md
+Index: mumble-1.5.901/docs/dev/build-instructions/cmake_options.md
 ===================================================================
---- mumble-1.5.857.orig/docs/dev/build-instructions/cmake_options.md
-+++ mumble-1.5.857/docs/dev/build-instructions/cmake_options.md
+--- mumble-1.5.901.orig/docs/dev/build-instructions/cmake_options.md
++++ mumble-1.5.901/docs/dev/build-instructions/cmake_options.md
 @@ -229,11 +229,6 @@ Build binaries in a way that allows easi
  Build tests.
  (Default: ${packaging})
@@ -348,10 +344,10 @@ Index: mumble-1.5.857/docs/dev/build-instructions/cmake_options.md
  ### translations
  
  Include languages other than English.
-Index: mumble-1.5.857/src/murmur/Messages.cpp
+Index: mumble-1.5.901/src/murmur/Messages.cpp
 ===================================================================
---- mumble-1.5.857.orig/src/murmur/Messages.cpp
-+++ mumble-1.5.857/src/murmur/Messages.cpp
+--- mumble-1.5.901.orig/src/murmur/Messages.cpp
++++ mumble-1.5.901/src/murmur/Messages.cpp
 @@ -26,8 +26,6 @@
  #include <cassert>
  #include <unordered_map>
