@@ -209,4 +209,13 @@
 - Bump Go version to 1.25.9 (forwarded request 1349972 from glaubitz)</comment>
     <requestid>1349975</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>5f85847a97e4a02dffb128154bfc13a7</srcmd5>
+    <version>1.103.0</version>
+    <time>1779644127</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2026-33814.patch to fix hanging Transport in http2 code
+  due to bad SETTINGS frame (bsc#1265843, CVE-2026-33814) (forwarded request 1354258 from glaubitz)</comment>
+    <requestid>1354949</requestid>
+  </revision>
 </revisionlist>
