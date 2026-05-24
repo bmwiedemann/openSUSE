@@ -93,4 +93,15 @@
     <comment></comment>
     <requestid>1193402</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d5afe096944cbffca3c39255706c6cee</srcmd5>
+    <version>1779450556.9feaecd</version>
+    <time>1779644099</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1779450556.9feaecd:
+  * Mention oci-archive support in README.md
+  * Support nested indexes and multiple manifests in OCI archives
+  * GitHub workflow: Run in Leap 15.6, BCI 16.0 and TW container images</comment>
+    <requestid>1354718</requestid>
+  </revision>
 </revisionlist>

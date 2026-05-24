@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 22 11:52:57 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1779450556.9feaecd:
+  * Mention oci-archive support in README.md
+  * Support nested indexes and multiple manifests in OCI archives
+  * GitHub workflow: Run in Leap 15.6, BCI 16.0 and TW container images
+
+-------------------------------------------------------------------
 Mon Aug 12 11:33:57 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1723452932.412e7f6:
