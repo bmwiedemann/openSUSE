@@ -269,4 +269,12 @@ GStreamer.</comment>
     <comment>- Added libresidfp dependency (need for mpd).</comment>
     <requestid>1351457</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6e7a635c19058e506e7afe586ce401a2</srcmd5>
+    <version>3.0.1</version>
+    <time>1779644141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1354954</requestid>
+  </revision>
 </revisionlist>
