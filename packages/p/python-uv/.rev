@@ -2594,4 +2594,28 @@
   * Move Bazel auth helper setup into integration guide</comment>
     <requestid>1354492</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>a6150739205a53c77658f4c5b0c94019</srcmd5>
+    <version>0.11.16</version>
+    <time>1779644121</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.16 
+ * Enhancements
+  * Add support for direct archive dependencies in Git 
+  * Adjust hint rendering 
+ * Preview features
+  * uv audit: specialize malformed OSV error 
+  * Reject locked malware installations 
+ * Configuration
+  * Allow disabling reading the system config with UV_NO_SYSTEM_CONFIG 
+ * Bug fixes
+  * Allow environment variables that take a list to be empty 
+  * Ensure that incompatible wheel hints do not leak secrets 
+  * Reject unsafe entry points in uv-build 
+  * Restrict delimiters in entry point parsing 
+  * uv-netrc: fix multi-word no-space comment lines causing parse errors 
+ * Documentation
+  * Document and test relative exclude-newer support for uv pip</comment>
+    <requestid>1354946</requestid>
+  </revision>
 </revisionlist>
