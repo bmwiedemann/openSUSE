@@ -50,10 +50,12 @@ BuildRequires:  makeinfo
 %else
 BuildRequires:  texinfo
 %endif
-%if %{defined pythons}
-BuildRequires:  %{pythons}
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
+BuildRequires:  python3-base
+%elif 0%{suse_version} >= 1500
+BuildRequires:  python3-base
 %else
-BuildRequires:  python
+BuildRequires:  python-base
 %endif
 BuildRequires:  xz-devel
 %ifarch x86_64 aarch64 ppc ppc64 ppc64le
