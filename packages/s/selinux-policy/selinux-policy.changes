@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri May 22 11:01:00 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20260522:
+  * Fix build by switching to corecmd_exec_bin_noattr()
+  * Split using dirsrv_ and dirsrvadmin_ interfaces into separate blocks
+  * Allow virtqemud execute kmod in the kmod domain
+  * Allow qatlib map kernel modules
+  * Allow sys_resource on execution of generic executables conditionally
+  * Label bootloader-migrate-generator with coreos_bootloader_migrate_generator_exec_t
+  * Label /run/coreos with coreos_installer_var_run_t
+  * Add systemd_create_generator_unit_file() and systemd_write_generator_unit_file()
+  * Allow virtnwfilterd_t r/w on packet_socket (bsc#1264273)
+  * Update fstools swap interfaces with dir search
+  * Allow go-fdo-server to read system information
+  * Change README to openSUSE specific README
+  * Add missing fc rule for org.gnome.DisplayManager (bsc#1264182)
+  * config: make /etc/systemd/user same as /usr/lib/systemd/user
+  * Do not audit iptables attempts to read other process state
+  * Policy for go-fdo-server
+  * Allow setroubleshoot_fixit_t to touch /.autorelabel and reboot
+  * Allow init nnp domain transition do dirsrv_t and dirsrv_snmp_t
+  * Allow NetworkManager_dispatcher_nvme_t check status of systemd services
+  * Allow iptables_t read state of some processes
+  * Label /dev/HID-SENSOR-.* with hid_sensor_device_t
+- Syncing with upstream rawhide selinux-policy up to:
+  * 190ed3591e0004c395409dd62acea41c8a684fc1
+- Update embedded container-selinux version to commit:
+  * e659fc8858d2e34781cc1640ac1658ba484cb3f5 (v2.248.0)
+
+-------------------------------------------------------------------
 Fri May 08 08:16:46 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260508:
