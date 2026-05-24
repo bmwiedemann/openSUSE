@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri May 22 10:07:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2025.07.22:
+  * Bump softprops/action-gh-release from 1 to 3 in the github-actions group (#304)
+  * update headers for OpenCL 3.1 (#303)
+  * Remove __stdcall warnings in ARM (#302)
+  * generate headers with cl_intel_kernel_allocations_info (#299)
+  * Fix warning in header generation script (#300)
+  * OpenCL ICD Loader Deinitialization Support (#278)
+  * updates copyright dates to 2026 (#298)
+  * Add macros for anonymous union support (#293)
+  * Regenerate headers with the latest XML file (#292)
+  * Revert "regenerate extension headers with support for cl_khr_unified_svm (#290)" (#291)
+  * regenerate extension headers with support for cl_khr_unified_svm (#290)
+  * Regenerate `cl_ext.h` from XML (#289)
+  * generate headers for cl_khr_external_memory_android_hardware_buffer (#287)
+  * Add unions for ICD2 tags in cl_icd_dispatch (#280)
+  * regenerate extension headers with the latest extensions (#286)
+  * add support for cl_khr_spirv_queries (#285)
+  * add support for the experimental tag in the XML file (#284)
+  * Add definitions for cl_ext_image_unsigned_10x6_12x4_14x2 (#279)
+  * Add definitions for cl_qcom_perf_hint (#277)
+  * Extension of cl_khr_icd to 2.0.0 with loader managed dispatch (#261)
+  * Rename CL_ENABLE_PROVISIONAL_EXTENSIONS to CL_ENABLE_BETA_EXTENSIONS (#276)
+  * guard provisional extensions with an opt-in define (#268)
+  * Add definitions for cl_ext_immutable_memory_objects (#274)
+  * headers for cl_ext_buffer_device_address (#273)
+  * Command-buffer supported queue properties (#265)
+
+-------------------------------------------------------------------
 Mon Nov 25 20:55:28 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2024.10.24:
