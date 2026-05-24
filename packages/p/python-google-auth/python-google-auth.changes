@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 11 08:11:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.52.0
+  * make _CLOUD_RESOURCE_MANAGER URL universe-domain-aware (#16546)
+  * implement in-place Regional Access Boundary configuration and
+    add public RAB getters (#16987)
+- from version 2.51.0
+  * Drop support for Python 3.8 and 3.9 (#16946)
+
+-------------------------------------------------------------------
 Wed May  6 09:50:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.50.0
