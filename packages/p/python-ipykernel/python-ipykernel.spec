@@ -81,7 +81,7 @@ BuildRequires:  %{python_module pytest-timeout}
 # we don't want ipyparallel and its dependencies in Ring1, see below
 #BuildRequires:  #{python_module ipyparallel}
 # /SECTION
-%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+%if "%{python_flavor}" == "%{primary_python}"
 Provides:       jupyter-ipykernel = %{version}-%{release}
 Obsoletes:      jupyter-ipykernel < %{version}-%{release}
 %endif
@@ -123,7 +123,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %{python_expand #
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
 # install single kernelspecs for each flavor, so that it is taken by default
-mkdir testjupyter-{$python_bin_suffix}
+mkdir testjupyter-%{$python_bin_suffix}
 export JUPYTER_DATA_DIR=$PWD/testjupyter-%{$python_bin_suffix}
 $python -m ipykernel install \
     --prefix=$JUPYTER_DATA_DIR \
@@ -139,8 +139,9 @@ $python -m pytest -v -k "not ($donttest)" $ignoretests
 %{python_sitelib}/ipykernel_launcher.py
 %{python_sitelib}/ipykernel-%{version}*-info
 %pycache_only %{python_sitelib}/__pycache__/ipykernel_launcher*.pyc
+# /usr/share/jupyter//kernels/
 %{_jupyter_kernel_dir}/python%{python_bin_suffix}
-%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3" || 0%{?suse_version} < 1600
+%if "%{python_flavor}" == "%{primary_python}" || 0%{?suse_version} < 1600
 %{_jupyter_kernel_dir}/python3
 %endif
 

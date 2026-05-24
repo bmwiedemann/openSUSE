@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 20 17:09:11 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Use the current style of checking whether the current Python is
+  the primary one.
+
+-------------------------------------------------------------------
 Wed Feb  4 13:57:06 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Revert multibuild and fix kernel selection in tests 
