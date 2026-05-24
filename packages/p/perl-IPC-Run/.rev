@@ -330,4 +330,41 @@
    - In test suite, work around bug in NetBSD 10.</comment>
     <requestid>1309347</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b17b790c50276950389f01a4a5139659</srcmd5>
+    <version>20260402.0.0</version>
+    <time>1779644070</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20260402.0.0 (20260402.0)
+   see /usr/share/doc/packages/perl-IPC-Run/Changelog
+  20260402.0 Thu Apr 2 2026
+   Bug fixes:
+   - GH #271, GH #164 - Detect undefined command in arrayref at harness parse
+     time instead of deferring to start() (PR #272)
+   - pipe_writer drops input when data is the string &quot;0&quot; due to redundant
+     boolean test on input buffer (PR #264)
+   - Callback filter evaluates return in list context to distinguish empty
+     return from the string &quot;0&quot;, preventing infinite loop on Win32 (PR #264)
+   - GH #240 - Skip pty output assertions on BSD/Darwin due to known pty
+     drain timing issues on short-lived children (PR #274)
+   - Implement proper Windows command-line parsing per Microsoft C/C++ rules,
+     fixing argument parsing failures with single-quoted strings containing
+     whitespace (PR #273)
+   Maintenance:
+   - Add shebang to eg/synopsis_scripting (PR #275)
+  20260401.0 Wed Apr 1 2026
+   Bug fixes:
+   - GH #240 - Require IO::Pty 1.25 which fixes stale pty slave fd after
+     close_terminal in child, replacing defensive workarounds (PR #241,
+     PR #266)
+   - GH #237 - Close Win32IO socket/pipe handles explicitly in _cleanup
+     to prevent handle leaks (PR #246)
+   - GH #242 - Handle $SIG{PIPE} set to 'DEFAULT' in _select_loop instead
+     of crashing (PR #244)
+   - Handle $SIG{CHLD} set to '' or 'DEFAULT' in _select_loop (PR #262)
+   - Fix PTYS typo in adopt() and missing TIMERS init in harness
+     constructor (PR #260)
+   - Handle PTY allocation failure gracefully in start() instead of</comment>
+    <requestid>1354452</requestid>
+  </revision>
 </revisionlist>

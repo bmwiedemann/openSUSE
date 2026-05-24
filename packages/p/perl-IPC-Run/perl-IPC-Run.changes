@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Fri Apr  3 06:23:02 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20260402.0.0 (20260402.0)
+   see /usr/share/doc/packages/perl-IPC-Run/Changelog
+
+  20260402.0 Thu Apr 2 2026
+   Bug fixes:
+   - GH #271, GH #164 - Detect undefined command in arrayref at harness parse
+     time instead of deferring to start() (PR #272)
+   - pipe_writer drops input when data is the string "0" due to redundant
+     boolean test on input buffer (PR #264)
+   - Callback filter evaluates return in list context to distinguish empty
+     return from the string "0", preventing infinite loop on Win32 (PR #264)
+   - GH #240 - Skip pty output assertions on BSD/Darwin due to known pty
+     drain timing issues on short-lived children (PR #274)
+   - Implement proper Windows command-line parsing per Microsoft C/C++ rules,
+     fixing argument parsing failures with single-quoted strings containing
+     whitespace (PR #273)
+   Maintenance:
+   - Add shebang to eg/synopsis_scripting (PR #275)
+  20260401.0 Wed Apr 1 2026
+   Bug fixes:
+   - GH #240 - Require IO::Pty 1.25 which fixes stale pty slave fd after
+     close_terminal in child, replacing defensive workarounds (PR #241,
+     PR #266)
+   - GH #237 - Close Win32IO socket/pipe handles explicitly in _cleanup
+     to prevent handle leaks (PR #246)
+   - GH #242 - Handle $SIG{PIPE} set to 'DEFAULT' in _select_loop instead
+     of crashing (PR #244)
+   - Handle $SIG{CHLD} set to '' or 'DEFAULT' in _select_loop (PR #262)
+   - Fix PTYS typo in adopt() and missing TIMERS init in harness
+     constructor (PR #260)
+   - Handle PTY allocation failure gracefully in start() instead of
+     dying with an unhelpful error (PR #267)
+   - Correct Timer.pm POD typos, _parse_time error message, and remove
+     redundant parse call (PR #251)
+   - Prevent noexec probe from leaking TAP output in search_path_cache.t
+     (PR #247)
+   Improvements:
+   - Correct broken POD links and code examples in documentation (PR #252)
+   Maintenance:
+   - Update GitHub URLs from toddr/IPC-Run to cpan-authors/IPC-Run
+     (PR #263)
+   - Replace GPL v2 full text with standard "same terms as Perl" license
+     (PR #268)
+   - Add AI policy document (PR #248)
+   - Use File::Spec->devnull in autoflush.t for portability (PR #250)
+   - Skip search_path_cache.t on noexec temp filesystems (PR #247)
+   - Remove dead code from Run.pm (PR #266)
+  20260322.0 Sun Mar 22 2026
+   Bug fixes:
+   - GH #126 - Handle EAGAIN in _write() for non-blocking pipe writes (PR #221)
+   - GH #149 - Prevent fd leak in _do_kid_and_exit when TFD == KFD (PR #218)
+   - GH #131 - Suppress spurious "Filehandle STDIN reopened" warnings in child
+     when $^W=1 with pty redirection (PR #219)
+   - GH #116 - Make binmode the default on Win32 to prevent newline mangling of
+     binary data (PR #192)
+   - GH #82 - Avoid undef warning in _cleanup when fork fails (PR #197)
+   - GH #97 - Wrap coderef in eval in _do_kid_and_exit to prevent child process
+     from escaping into parent code path on die() (PR #193)
+   - GH #122 - Propagate CODE ref exceptions back to parent via error pipe
+     (PR #224)
+   - GH #57 - Close external input handles in parent after fork to prevent
+     hangs when child exits early (PR #226)
+   - GH #134 - Preserve $cur_kid when a Timer is encountered in harness(),
+     fixing "No command before 'init'" errors (PR #187)
+   - GH #124 - Restore compat for bare undef params in harness() (PR #190)
+   - GH #141 - Passing undef as stdin/stdout/stderr no longer dies (PR #184)
+   - GH #139 - Avoid "Modification of a read-only value" when passing undef
+     stdin (PR #185)
+   - GH #162 - Reject empty/undef command name in _search_path (PR #182)
+   - GH #154 - Limit input buffer chunk size to prevent exponential memory
+     growth when streaming data to slow consumers (PR #183)
+   - GH #128 - Silently ignore undef arguments passed as timeout to
+     harness() (PR #189)
+   - GH #133 - Correct two minor documentation issues in Run.pm (PR #188)
+   - GH #137 - Skip win32_compile.t when getprotobyname('tcp') is
+     unavailable (PR #186)
+   - GH #35 - Survive SIGPIPE when child exits before consuming all stdin
+     (PR #204)
+   - GH #92 - Handle EPIPE when child exits before consuming stdin (PR #195)
+   - GH #93 - Handle tied STDERR without FILENO in _debug_fd (PR #194)
+   - GH #85 - Invalidate path cache on $PATH change, add clearcache()
+     (PR #196)
+   - GH #50 - Support scalar ref for '>pipe' and '<pipe' operators (PR #201)
+   - GH #49 - Use $type in IO::new error message instead of $_ (PR #202)
+   - GH #66 - Fix <pipe documentation example order and equivalent pipe
+     example (PR #198)
+   - GH #65 - Suppress spurious numeric warning in result() and
+     results() (PR #199)
+   - GH #29 - Suppress numeric warnings from result() when SIGCHLD is
+     IGNORE (PR #205)
+   - GH #213 - Handle scalar refs in Win32IO pipe operators (PR #214)
+   - GH #215 - Remove blanket TODO from win32_newlines.t, keep only for
+     still-failing tests (PR #216)
+   - GH #169 - Prevent handle inheritance of caller-owned fds on
+     Win32 (PR #181, PR #211)
+   - rt.cpan.org #11215 - Enable kill_kill test 1 on Win32 (PR #207)
+   - GH #237 - Suppress filehandle warning during global destruction in
+     tied_stderr.t (PR #239)
+   - GH #236 - Resolve File::Temp cleanup warning on Windows CI (PR #238)
+   - GH #230 - Suppress Socket::IPPROTO_TCP redefined warning in
+     win32_compile.t (PR #235)
+   - GH #222 - Prevent tied_stderr.t from hanging on Win32 CI (PR #225)
+   Improvements:
+   - GH #178 - Add env option to set child process environment variables
+     without modifying parent %ENV (PR #179)
+   - GH #171 - Add started() method to query harness run state (PR #180)
+   - GH #169 - Add finished() method to distinguish exit-0 from
+     not-yet-exited (PR #181)
+   - GH #44 - Add pid(), pids(), is_running(), full_path(), full_paths()
+     convenience methods (PR #203)
+   - GH #64 - Add <blocking_pipe operator for blocking writes to child
+     stdin (PR #200)
+   - PR #212 - Add close_stdin() method to prevent unbounded memory growth
+     when streaming to long-running children
+   Maintenance:
+   - GH #208 - Consolidate CI into single testsuite.yml with dynamic Perl
+     version matrix (PR #209)
+   - PR #220 - Add CLAUDE.md with project guidelines for AI-assisted
+     development
+   - Add 5-minute timeout to all CI workflow steps
+   - GH #228 - Remove TODO from Win32 autoflush test and align with Unix
+     branch (PR #234)
+   - GH #223 - Clean up resolved TODO tests in win32_newlines.t (PR #227)
+   - GH #231 - Skip t/eintr.t early on Win32 to avoid SIGUSR1
+     warning (PR #233)
+   - GH #229 - Suppress File::Temp version-string warnings in test
+     suite (PR #232)
+
+-------------------------------------------------------------------
 Thu Aug 28 10:29:09 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20250809.0.0 (20250809.0)

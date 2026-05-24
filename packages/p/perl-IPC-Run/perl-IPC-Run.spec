@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IPC-Run
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %define cpan_name IPC-Run
 Name:           perl-IPC-Run
-Version:        20250809.0.0
+Version:        20260402.0.0
 Release:        0
-# 20250809.0 -> normalize -> 20250809.0.0
-%define cpan_version 20250809.0
+# 20260402.0 -> normalize -> 20260402.0.0
+%define cpan_version 20260402.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        System() and background procs w/ piping, redirs, ptys (Unix, Win32)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/N/NJ/NJM/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(IO::Pty) >= 1.80
+BuildRequires:  perl(IO::Pty) >= 1.250
 BuildRequires:  perl(Readonly::Array)
-Requires:       perl(IO::Pty) >= 1.80
+Requires:       perl(IO::Pty) >= 1.250
 Provides:       perl(IPC::Run) = %{version}
 Provides:       perl(IPC::Run::Debug) = %{version}
 Provides:       perl(IPC::Run::IO) = %{version}
@@ -43,7 +43,7 @@ Provides:       perl(IPC::Run::Win32IO) = %{version}
 Provides:       perl(IPC::Run::Win32Process) = %{version}
 Provides:       perl(IPC::Run::Win32Pump) = %{version}
 %undefine       __perllib_provides
-Recommends:     perl(IO::Pty) >= 1.80
+Recommends:     perl(IO::Pty) >= 1.250
 Recommends:     perl(Readonly)
 %{perl_requires}
 # MANUAL BEGIN
@@ -81,7 +81,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changelog README.md
+%doc AI_POLICY.md Changelog README.md
 %license LICENSE
 
 %changelog
