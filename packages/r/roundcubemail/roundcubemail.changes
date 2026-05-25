@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon May 25 08:35:59 UTC 2026 - Aeneas Jaißle <aj@ajaissle.de>
+
+- update to 1.6.16
+  This is a security update to the LTS version 1.6 of Roundcube Webmail.
+  It provides fixes to recently reported security vulnerabilities:
+  
+  + Fix stored XSS/HTML/CSS injection in subject field of the draft restore dialog, reported by zazy
+  + Fix CSS injection bypass in HTML sanitizer via SVG <animate attributeName="style">, reported by wooseokdotkim
+  + Fix pre-auth SQL injection in virtuser_query plugin via preg_replace backslash escape bypass, reported by skull
+  + Fix SSRF bypass via specific local address URLs
+  + Fix local/private URL fetch bypass when remote resources were not allowed, reported by Orange Cyberdefense Vulnerability Disclosure Team
+  + Fix bypass of remote image blocking via CSS var(), reported by Geame
+  + Fix pre-auth arbitrary file delete via redis/memcache session poisoning bypass, reported by valent1
+  + Fix code injection vulnerability - remove support for code evaluation in LDAP autovalues option, reported by Glendaenri
+
+  This version is considered stable and we recommend to update all productive
+  installations of Roundcube 1.6.x with it. Please do backup your data before updating!
+  
+  CHANGELOG
+  + Fix potential too long value in IMAP ID command (#10136)
+  + Security: Fix stored XSS/HTML/CSS injection in subject field of the draft restore dialog
+  + Security: Fix CSS injection bypass in HTML sanitizer via SVG <animate attributeName="style">
+  + Security: Fix pre-auth SQL injection in virtuser_query plugin via preg_replace backslash escape bypass
+  + Security: Fix SSRF bypass via specific local address URLs
+  + Security: Fix bypass of remote image blocking via CSS var()
+  + Security: Fix local/private URL fetch bypass when remote resources were not allowed
+  + Security: Fix pre-auth arbitrary file delete via redis/memcache session poisoning bypass
+  + Security: Fix code injection vulnerability - remove support for code evaluation in LDAP autovalues option
+
+-------------------------------------------------------------------
 Sun Mar 29 19:44:22 UTC 2026 - Lars Vogdt <lars@linux-schulserver.de> - 1.6.15
 
 - update to 1.6.15
