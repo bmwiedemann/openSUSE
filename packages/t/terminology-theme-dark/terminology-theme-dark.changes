@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 25 10:21:17 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Pull in ImageMagick-config-7-upstream-open as we manipulate
+  images as part of the theme creation process
+
+-------------------------------------------------------------------
 Fri Feb 25 10:56:58 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Use python3-base instead of python3
