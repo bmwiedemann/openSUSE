@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 25 08:55:02 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.1
+  * Reset the terminal only at exit, the cursor is now properly
+    hidden.
+  * Link with pthreads, fixes build on BSD.
+  * Avoid using concepts, restores pre-c++20 compatibility.
+
+-------------------------------------------------------------------
 Sat May  2 14:55:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.0
