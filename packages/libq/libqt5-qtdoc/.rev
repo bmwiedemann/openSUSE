@@ -489,4 +489,12 @@
   * See individual module packages for changelogs</comment>
     <requestid>1315849</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>ebb3509c6ca9ebcb8fa3a0524645c55d</srcmd5>
+    <version>5.15.19</version>
+    <time>1779738834</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.19 - last Qt 5 ever? (forwarded request 1354905 from favogt)</comment>
+    <requestid>1354914</requestid>
+  </revision>
 </revisionlist>
