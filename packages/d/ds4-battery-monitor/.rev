@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>800a2b43f865b2ed7d19452a24dbd89c</srcmd5>
+    <version>0.1.2</version>
+    <time>1779738901</time>
+    <user>dimstar_suse</user>
+    <comment>ds4-battery-monitor is a lightweight system tray utility for monitoring the battery level of DualShock 4 controllers on Linux.
+
+The application supports multiple controllers simultaneously, automatically assigns player identifiers (P1, P2, etc.), and integrates with native Linux controller battery reporting through /sys/class/power_supply. It also supports UDP-based updates from custom ds4drv integrations.
+
+The package uses GTK3 and AyatanaAppIndicator for modern desktop integration and provides low resource usage while continuously monitoring controller battery status.
+
+This package fills a gap for PlayStation controller users on Linux desktop environments, especially for gaming-focused distributions and systems where controller battery visibility is not provided natively. </comment>
+    <requestid>1355000</requestid>
+  </revision>
+</revisionlist>

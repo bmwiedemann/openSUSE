@@ -1,0 +1,5 @@
+<package name="ds4-battery-monitor" project="openSUSE:Factory">
+  <title>DualShock 4 battery monitor tray icon</title>
+  <description>A lightweight and efficient battery monitor for DualShock 4 controllers on Linux. It displays dynamic icons in the system tray, allowing you to quickly identify battery levels and which specific controller (P1, P2, etc.) is being monitored.</description>
+  <url>https://github.com/Jonatas-Goncalves/ds4-battery-monitor</url>
+</package>
