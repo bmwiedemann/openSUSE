@@ -1,7 +1,7 @@
 #
 # spec file for package gns3-gui
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gns3-gui
-Version:        2.2.52
+Version:        2.2.58.1
 Release:        0
 Summary:        GNS3 graphical interface for the GNS3 server
 License:        GPL-3.0-or-later
@@ -31,10 +31,11 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
+Requires:       python3-QDarkStyle
 Requires:       python3-distro >= 1.6.0
 Requires:       python3-jsonschema >= 4.17.3
 Requires:       python3-psutil >= 5.9.4
-Requires:       python3-qt5
+Requires:       python3-qt6
 Requires:       python3-sentry-sdk >= 1.17.0
 Requires:       python3-truststore
 Recommends:     gns3-server
@@ -44,10 +45,11 @@ Recommends:     telnet
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  python3-distro >= 1.8.0
+BuildRequires:  python3-QDarkStyle
 BuildRequires:  python3-jsonschema >= 4.17.3
 BuildRequires:  python3-psutil >= 5.9.4
 BuildRequires:  python3-pytest
-BuildRequires:  python3-qt5
+BuildRequires:  python3-qt6
 BuildRequires:  python3-sentry-sdk >= 1.17.0
 BuildRequires:  xvfb-run
 # /SECTION
@@ -74,8 +76,6 @@ sed -i -r 's/==/>=/g' requirements.txt
 sed -i -r '/jsonschema/ s/,<.*$//' requirements.txt
 sed -i -r '/sentry-sdk/ s/,<.*$//' requirements.txt
 sed -i -r '/setuptools/d' requirements.txt
-# It's required but missing
-echo qt5 >> requirements.txt
 # Disable update alerts
 sed -i 's/"check_for_update": True,/"check_for_update": False,/' gns3/settings.py
 # Disable anonymous data collection

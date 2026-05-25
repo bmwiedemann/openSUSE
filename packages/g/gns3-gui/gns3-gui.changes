@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Apr 12 13:46:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.58.1
+  * Fix callback issues in found in v2.2.58
+- Update to version 2.2.58.0
+  * Update snapshot date & time format
+  * Fix bug when HTTP DELETE requests are silently dropped.
+  * Show if a linked base VM or not in device's properties.
+  * Add HTTP method to response timeout slot.
+  * Add default link style section in preferences.
+  * Update the default style colors based on the interface style.
+  * Support bring to front for vnc and spice consoles on Linux.
+  * Update appliance schemas.
+  * Fix bug when adding multiple nodes at the same time.
+  * Fix QWebSocket error signal.
+- Update to version 2.2.58
+  * Fix errors from controller are not reported.
+  * Deactivate 'use default IOU values' by default and update
+    RAM/NVRAM values.
+  * Fix QMenu parents.
+  * Fix UltraVNC preconfigured command.
+  * Dark style.
+  * Fix bug when dragging scene.
+  * Upgrade pytest and jsonschema dependencies.
+  * Upgrade sentry-sdk and psutil dependencies.
+  * Fix mouse manipulation bug.
+  * Add Multi VNC tab handling in Superputty.
+  * Fixing tab name in Superputty + Adding Superputty VNC support.
+- Update to version 2.2.56.1
+  * Fix line style support for links.
+  * Fix cannot add IOS in preferences.
+  * Fix cannot add IOU in preferences.
+  * Drop Python 3.8 support.
+  * Display a warning if a SVG image format isn't supported.
+  * Fix error in profile selection window after PyQt6 migration.
+- Update to version 2.2.56
+  * Fixing tab name in MobaXterm.
+  * PyQt6 migration.
+  * Add XDG Config Home support.
+- Update to version 2.2.55
+  * Fix SyntaxWarning: invalid escape sequence.
+  * Support for Python 3.14.
+  * Clicking the "console connect to all nodes" opens all consoles.
+    in name order with case-insensitively.
+- Update to version 2.2.54
+  * Replace "Docker hub" by "Docker repository" because it is
+    possible to use different repositories.
+  * Fix bring console in front when clicking on "Open all consoles"
+  * Add -F arg to wmctrl.
+- Update to version 2.2.53
+  * Update file browser filters for all files and IOU images.
+
+-------------------------------------------------------------------
 Wed Dec  4 18:38:09 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.52
