@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 25 09:26:17 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.9.2:
+  * 01: snow.c: add locks to not interfere with code in fallensnow.c
+        Thanks to Marc Capella for reporting the bug.
+  * 02: added tibetan, chinese, japanese languages
+        Thanks to 小吴 for a partial translation to chinese. It
+        inspired me to try tibetan and japanese also.
+  * 03: 小吴 delivered a complete translation to chinese.
+  * 04: adapt locale zh_cn to be handled correctly:
+        xsnow uses the 'cn' translation if LANG=zh_CN.UTF-8
+  * 05: in po/Makevars: disable output of filenames and line numbers
+        add afterpo/Makefile.am to remove POT-Creation-Date 
+        from po/*.po po/*.pot
+        
+-------------------------------------------------------------------
 Sun Apr  5 05:40:18 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.9.1:
