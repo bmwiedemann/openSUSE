@@ -1,4 +1,162 @@
 -------------------------------------------------------------------
+Fri May 22 14:54:18 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.19+kde96, rebased upstream:
+  * Replace commercial license header with LGPL license header
+  * Revert "Update to Harfbuzz 10.0.1"
+  * QByteArray(View)::lastIndexOf: Guard against needle > haystack
+  * Upgrade Harfbuzz to 11.1.0
+  * Update PCRE2 to 10.45
+  * Upgrade Harfbuzz to 11.0.0
+  * 3rdparty: update TinyCBOR to v0.6.1
+  * qmake: SBOM 5.15 qmake2cmake parsing fixes
+  * Long live qstdlibdetection.h!
+  * Fix build error in test when lttng tracing backend is enabled
+  * QAbstractSlider: fix missing "emission" of SliderOrientationChange
+  * tst_QAbstractSlider: add a check for sliderChange() "emission"
+  * QStandardItem: add note about reimplementing data/setData() wrt. flags
+  * tst_QPointer: make DerivedParent delete all children
+  * Replace qFatal() statements with qWarning() in case of failed queries
+  * Fix race condition with QTest::ignoreMessage
+  * Add maybe_unused in benchmark to guard against nodiscard in the future
+  * QDockWidgetLayout: mark the ctor explicit
+  * QMdiSubwindow: fix UB (invalid member call) in ControlContainer::removeButtonsFromMenuBar()
+  * tst_QGraphicsGridLayout: fix memleaks in setGeometry()
+  * tst_QGraphicsGridLayout: fix memleak in spanAcrossEmptyRow()
+  * SQLite: Update SQLite to v3.49.1
+  * tst_QMainWindow: fix unit'ed value in AddDockWidget
+  * tst_QGraphicsGridLayout: fix memory leaks in columnCount()
+  * tst_QGraphicsGridLayout: fix memleaks in spanningItem2x3()
+  * tst_QGraphicsGridLayout: fix memleak in removeItem()
+  * tst_QGraphicsGridLayout: fix memleak in spanningItem2x2()
+  * tst_QGraphicsGridLayout: fix memleaks in addItem()
+  * tst_QGraphicsGridLayout: remove unneeded delete in rowMaximumHeight()
+  * tst_QGraphicsGridLayout: fix memory leaks in rowCount()
+  * tst_QGraphicsGridLayout: fix memleaks in columnSpacing()
+  * tst_QGraphicsLinearLayout: remove remaining memleaks in insertItem()
+  * tst_QGraphicsLinearLayout: fix memleaks in defaultSpacing()
+  * Add a benchmark for QTimeZone::utc
+  * QPainterPath: detach and reset before streaming in
+  * xcb: set _NET_STARTUP_ID at client leader window
+  * Fix generation of the forward header for QFunctionPointer
+  * qUtf16Printable: avoid creating a copy of a QString
+  * QIcon: remove icon from cache if the cached engine fails to load
+  * CommonStyle/QSlider: don't modify outline color
+  * tst_QGraphicsWidget: fix memleak in shortcutsDeletion()
+  * tst_QGraphicsLayout: fix memleaks in alternativeLayoutItems()
+  * tst_QSplitter: fix memleak in replaceWidget()
+  * tst_QGraphicsScene: fix memleaks in selectionChanged()/removeItem()
+  * tst_QComboBox: ignore two warnings from setCompleter() in getSetCheck()
+  * QComboBox: fix UB (signed overflow) in Private::recomputeSizeHint()
+  * tst_QComboBox: fix memleak in task_QTBUG_56693_itemFontFromModel()
+  * tst_QComboBox: fix memleaks in task_QTBUG_52027_mapCompleterIndex()
+  * tst_QComboBox: fix memleak in task190205_setModelAdjustToContents()
+  * tst_QComboBox: fix memleaks in setItemDelegate()/task253944_itemDelegateIsReset()
+  * tst_QComboBox: fix memleak in getSetCheck()
+  * tst_QTextEdit: fix UB (invalid downcast) in various functions
+  * tst_QTextEdit: fix memleak in the MyPaintDevice helper
+  * QLineEdit: fix UB (invalid downcast) in Private::removeAction()
+  * SQLite: Update SQLite to v3.49.0
+  * tst_QTreeView: fix memleak in fetchUntilScreenFull()
+  * QFileSystemModel: remove an unneeded const_cast
+  * SQLite: Update SQLite to v3.48.0
+  * SQLite: Update SQLite to v3.47.2
+  * QXmlStreamReader: fix parsing of non-wellformed inputs
+  * QGUTheme: add Pantheon to the list of GTK based desktop environments
+  * tst_QWidget: fix a memleak in destroyedSignal()
+  * tst_QGraphicsWidget: remove unneeded casts in setStyle()
+  * tst_QGraphicsWidget: fix memleak in qgraphicswidget()
+  * tst_QGraphicsWidget: remove unused object from qgraphicswidget()
+  * tst_QGraphicsWidget: fix memleak in setStyle()
+  * tst_QGraphicsWidget: fix memleak in implicitMouseGrabber()
+  * tst_QGraphicsProxyWidget: fix memleak in forwardTouchEvent()
+  * tst_QGraphicsLinearLayout: remove dead code (dump())
+  * tst_QGraphicsLinearLayout: fix memleaks in count()/insertIrem()
+  * tst_QGraphicsLinearLayout: fix memleaks in itemAt()
+  * tst_QGraphicsLinearLayout: fix memleaks in itemAt_visualOrder()
+  * tst_QGraphicsLinearLayout: fix memleak in testStretch()
+  * tst_QSplitter: don't leak the QSplitter from initTestCase()
+  * tst_QGraphicsLinearLayout: fix memory leaks in removeAt()/removeItem()
+  * Text widgets: document find() behavior with QRegularExpression
+  * tst_QButtonGroup: fix memleak in task209485_removeFromGroupInEventHandler()
+  * tst_QButtonGroup: fix memleak in keyNavigationPushButtons()
+  * tst_QAbstractScrollArea: fix memleak in task214488_layoutDirection()
+  * QTapGestureRecognizer: fix UB (invalid downcast) in recognize()
+  * tst_QFrame: fix memleak in testPainting()
+  * QXcbDrag: Fix UB (unaligned load) in handleFinished()
+  * tst_QLayout: fix memleak in removeWidget()
+  * tst_QGraphicsItem: properly init QGraphicsSceneDragDropEvent
+  * tst_QGraphicsEffectSource: fix memleak in pixmapPadding()
+  * tst_QGraphicsScene: fix memleaks in taskQTBUG_7863_paintIntoCacheWithTransparentParts()
+  * tst_QGraphicsScene: fix memleak in taskQTBUG_5904_crashWithDeviceCoordinateCache()
+  * tst_QGraphicsItem: fix memleaks in sceneEventFilter()
+  * tst_QGraphicsItem: fix memory leaks in mapRectFromToParent()
+  * QAbstractItemView: fix UB (invalid downcast) in Private::shouldAutoScroll()
+  * tst_QHeaderView: fix UB (invalid downcast) in testStylePosition()
+  * tst_QCalendarWidget: fix memleak in showPrevNext()
+  * QWidgetWindow: fix UB (invalid downcast) in Private::handleDragEnterEvent()
+  * QDateTime: code tidies
+  * Fix UB in QTextStreamPrivate::putNumber()
+  * Narrow some #if-ery on QT_BUILD_INTERNAL to test more normally
+  * tst_QByteArray: check replace() doesn't replace the terminating 0
+  * QUrl: add a link in a code fragment
+  * Fix a double test to actually test double, rather than float
+  * Upgrade Harfbuzz to 10.4.0
+  * QSqlQueryModel: restore RVO in data()
+  * Don't leak memory when tst_QOpenGL::fboTextureOwnership() fails
+  * tst_QOpenGL: don't leak 1399341 byte(s) [...] in 1439 allocation(s)
+  * QLocale: fix UB (signed overflow) in formattedDataSize()
+  * QNumeric: add a private qUnsignedAbs
+  * configure: accept c++20 for -c++std
+  * Fix divide by zero when opening font on invalid image
+  * [docs] QString: fix link and formatting in the qPrintable() discussion
+  * Modernise tst_QTextStream::manipulators() and add two new data rows
+  * QCssParser: attempt to fix Coverity OVERRUN issue
+  * QTriangulator: Q_DISABLE_COPY_MOVE(QInt64Set)
+  * Update Harfbuzz to version 10.3.0
+  * tst_QLocale: actually check formattedDataSize() with qint64
+  * iOS: Pause display link when app moves out of active state
+  * Update bundled libpng to version 1.6.47
+  * qpen_p.h: include what you need
+  * QSet: check that unite() and intersect() prefer elements from *this
+  * QBenchmarkPerfEvents: help Coverity understand the code
+  * QDuplicateTracker: don't value-initialize the stack buffer
+  * tst_QTextStream::stillOpenWhenAtEnd(): use QTRY_VERIFY()
+  * util/update_public_suffix_list.sh: use commit date, not wall clock
+  * QTemporaryFile: fix incorrect info about duplicate placeholders
+  * Update Harfbuzz to version 10.2.0
+  * tst_QSet: check whether remove/removeIf detach if nothing is removed
+  * util/update_public_suffix_list.sh: check $TOOL is not older than its src
+  * QTemporaryFile: add private API for an overwriting rename()
+  * Rename example parameter to better reflect its role
+  * doc: Fix description of QSizeF::fromCGSize
+  * tst_QSaveFile: QVERIFY the commit() return value in symlink() test
+  * Update bundled libpng to version 1.6.45
+  * tst_QSaveFile: mark a QString const
+  * QSaveFile: mention that you need to setFileName() before open()
+  * Update bundled libjpeg-turbo to version 3.1.0
+  * Fix QTransform::quadToQuad() to work with QRectF
+  * qsocketnotifier.cpp: un-break -unity-build
+  * QCupsPrintEngine::setProperty(): defend against malformed PPK_CupsOptions values
+  * tst_QStringView: add missing CanConvert from char16_t/wchar_t arrays
+  * Confirm QLatin1StringView can be constructed over arrays of unknown bounds
+  * SQLite: Update SQLite to v3.47.1
+  * Upgrade to Harfbuzz 10.1.0
+  * Android: clean up Surface resources when it is destroyed
+  * Android: Guard EGLSurface with a mutex
+  * tst_QChar: add comprehensive conversion tests
+  * Bump version to 5.15.19
+  * Correct QGlobalStatic<>::exists() documentation
+  * QPersistentModelIndex: fix C++14-ism in operator<()
+  * QLockFile: Use fcntl for file locking on Android
+  * Doc: Update sql-driver to reflect current minimum versions needed
+
+-------------------------------------------------------------------
+Tue May 12 07:16:00 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make use of %{?build_ldflags}
+
+-------------------------------------------------------------------
 Mon Nov  3 14:49:34 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.18+kde109, rebased upstream:

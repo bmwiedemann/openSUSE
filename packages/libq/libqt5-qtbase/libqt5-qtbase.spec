@@ -29,15 +29,15 @@
 %bcond_without harfbuzz
 
 Name:           libqt5-qtbase
-Version:        5.15.18+kde109
+Version:        5.15.19+kde96
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
 Group:          System/Libraries
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.18
-%define so_version 5.15.18
+%define real_version 5.15.19
+%define so_version 5.15.19
 %define tar_version qtbase-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
 # to get mtime of file:
@@ -817,6 +817,7 @@ Examples for the libqt5-qtbase modules.
 %endif
 export CXXFLAGS="$CXXFLAGS %{optflags} -DOPENSSL_LOAD_CONF"
 export CFLAGS="$CFLAGS %{optflags} -DOPENSSL_LOAD_CONF"
+export LDFLAGS="$LDFLAGS %{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined"
 export MAKEFLAGS="%{?_smp_mflags}"
 %define xkbconfigroot %(pkg-config --variable=xkb_base xkeyboard-config)
 #if %qt5_snapshot
@@ -901,7 +902,8 @@ sed -i -e 's|^\(QMAKE_STRIP.*=\).*$|\1|g' mkspecs/common/linux.conf
 	-xcb-native-painting \
 	-no-feature-relocatable \
 	QMAKE_CFLAGS+="$CFLAGS" \
-	QMAKE_CXXFLAGS+="$CXXFLAGS"
+	QMAKE_CXXFLAGS+="$CXXFLAGS" \
+	QMAKE_LFLAGS+="$LDFLAGS"
 
 make %{?_smp_mflags}
 

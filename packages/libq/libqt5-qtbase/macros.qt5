@@ -18,7 +18,7 @@
   %_libqt5_qmake \\\
   QMAKE_CXXFLAGS="$CXXFLAGS %{optflags} -DOPENSSL_LOAD_CONF" \\\
   QMAKE_CFLAGS="$CFLAGS %{optflags} -DOPENSSL_LOAD_CONF" \\\
-  QMAKE_LFLAGS="$LDFLAGS -Wl,--as-needed -Wl,--no-undefined"
+  QMAKE_LFLAGS="$LDFLAGS %{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined"
 
 %make_jobs \
   %{__make} %{?_smp_mflags} VERBOSE=1
