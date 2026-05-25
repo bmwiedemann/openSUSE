@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 22 15:16:44 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.19+kde0, rebased upstream:
+  * qserialportinfo_unix.cpp: do not return an incomplete list from udev
+  * QSerialPortInfo: handle {QString,QBA}::indexOf() returning -1
+  * Doc: fix wording in QSerialPort::open()
+  * Doc: clarify QSerialPort::open() error reporting
+  * Unix: fix Mark/Space parity emulation
+  * QSerialPortInfo::isNull(): fix the usage of inline keyword
+  * Docs: improve the example of reading from port
+  * Bump version to 5.15.19
+
+-------------------------------------------------------------------
 Mon Nov  3 15:45:37 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.18+kde0, rebased upstream:
