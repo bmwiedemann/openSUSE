@@ -420,4 +420,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.18 (forwarded request 1315523 from favogt)</comment>
     <requestid>1315571</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>8fe2c6a54c850b490f5085fd0f2d9a79</srcmd5>
+    <version>5.15.19+kde2</version>
+    <time>1779738803</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.19 - last Qt 5 ever? (forwarded request 1354905 from favogt)</comment>
+    <requestid>1354939</requestid>
+  </revision>
 </revisionlist>
