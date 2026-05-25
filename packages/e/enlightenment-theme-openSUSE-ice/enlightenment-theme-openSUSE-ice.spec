@@ -1,7 +1,7 @@
 #
 # spec file for package enlightenment-theme-openSUSE-ice
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,10 @@ URL:            https://en.opensuse.org/Portal:Enlightenment
 Source:         enlightenment-theme-openSUSE-ice-%{version}.tar.xz
 # for convert
 BuildRequires:  ImageMagick
+%if 0%{?suse_version} > 1550
+# We use ImageMagick to change the color of png files and crop some
+BuildRequires:  ImageMagick-config-7-upstream-open
+%endif
 BuildRequires:  efl
 BuildRequires:  fdupes
 Provides:       enlightenment-theme
