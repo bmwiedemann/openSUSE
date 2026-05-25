@@ -28,6 +28,10 @@ URL:            https://en.opensuse.org/Portal:Enlightenment
 Source:         enlightenment-theme-%{theme_name}-%{version}.tar.xz
 # for convert
 BuildRequires:  ImageMagick
+%if 0%{?suse_version} > 1550
+# We use ImageMagick to change the color of png files and crop some
+BuildRequires:  ImageMagick-config-7-upstream-open
+%endif
 BuildRequires:  fdupes
 BuildRequires:  efl
 Provides:       enlightenment-theme
