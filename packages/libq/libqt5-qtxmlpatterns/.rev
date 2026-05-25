@@ -501,4 +501,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.18 (forwarded request 1315523 from favogt)</comment>
     <requestid>1315574</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>619f2e5ee192e42d017cea348388782b</srcmd5>
+    <version>5.15.19+kde0</version>
+    <time>1779738808</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.19 - last Qt 5 ever? (forwarded request 1354905 from favogt)</comment>
+    <requestid>1354942</requestid>
+  </revision>
 </revisionlist>
