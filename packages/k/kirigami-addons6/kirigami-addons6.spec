@@ -1,7 +1,7 @@
 #
 # spec file for package kirigami-addons6
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 
 %define rname kirigami-addons
 Name:           kirigami-addons6
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        Add-ons for the Kirigami framework
 License:        LGPL-3.0-only
@@ -82,6 +82,7 @@ stateful functionality to applications using kirigami-addons.
 
 %package -n libKirigamiAddonsComponents6
 Summary:        QtQuick components for kirigami-addons
+
 %description -n libKirigamiAddonsComponents6
 A set of "widgets" i.e visual end user components along with a
 code to support them. Components are usable by both touch and
@@ -93,9 +94,9 @@ kirigami-addons features in C++ programs.
 %package devel
 Summary:        Development files for kirigami-addons6
 Requires:       kirigami-addons6 = %{version}
+Requires:       libKirigamiAddonsComponents6 = %{version}
 Requires:       libKirigamiAddonsStatefulApp6 = %{version}
 Requires:       libKirigamiApp6 = %{version}
-Requires:       libKirigamiAddonsComponents6 = %{version}
 
 %description devel
 A set of "widgets" i.e visual end user components along with a
