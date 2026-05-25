@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May 25 08:05:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.0
+  * New Ensemble List window providing an overview of ensemble
+    parameters and derived content. Works with both SDR devices and
+    files. See the README.md.
+  * VOLK integration: SampleReader and other components now also
+    use the VOLK library for accelerated signal processing.
+  * Improved sync reliability: Time sync logic and buffer handling
+    have been refactored, along with sync state management.
+  * Optimized OFDM decoder: Performance improvements and increased
+    stability when handling unusual signals.
+  * RMS support added: Digital level handling refactored to
+    display both RMS and peak levels.
+  * Removed SDRplay v2 handler and its API integration.
+    The SDRplay v3 driver supports SDRplay v2 devices as well.
+  * Bug fixes and updates to the SDRplay v3 handler.
+  * DC and IQ correction are now independently switchable (UI
+    updated accordingly).
+  * Peak level meter timing accuracy can be calibrated (see
+    Configuration).
+  * Improved handling of database initialization and scan mode.
+  * Improved handling of invalid file/device logic.
+  * ITU table enhanced and access methods refactored.
+  * Many code quality and modernization improvements.
+  * UI layout updates and window size initialization fixes for
+    fresh startups.
+
+-------------------------------------------------------------------
 Sun Mar 22 08:37:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.7.0
