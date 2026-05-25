@@ -342,4 +342,13 @@
   * Fix unstable error message for additional properties #1159</comment>
     <requestid>1352268</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>3048e0525047d4929383e689eb9b4e5e</srcmd5>
+    <version>0.23.1</version>
+    <time>1779738896</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-openapi-schema-validator-0.9.patch:
+  * Support openapi-schema-validator 0.9.0.</comment>
+    <requestid>1354995</requestid>
+  </revision>
 </revisionlist>

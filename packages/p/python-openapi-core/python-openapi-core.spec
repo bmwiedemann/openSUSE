@@ -28,6 +28,8 @@ Summary:        Client- and server-side support for the OpenAPI Specification v3
 License:        BSD-3-Clause
 URL:            https://github.com/p1c2u/openapi-core
 Source:         https://github.com/p1c2u/openapi-core/archive/%{version}.tar.gz#/openapi-core-%{version}-gh.tar.gz
+# PATCH-FIX-OPENSUSE Support openapi-schema-validator 0.9
+Patch0:         support-openapi-schema-validator-0.9.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
@@ -45,7 +47,7 @@ BuildRequires:  %{python_module jsonschema >= 4.23.0 with %python-jsonschema < 5
 BuildRequires:  %{python_module jsonschema-path >= 0.4.5}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module multidict >= 6.0.4}
-BuildRequires:  %{python_module openapi-schema-validator >= 0.7 with %python-openapi-schema-validator < 0.9}
+BuildRequires:  %{python_module openapi-schema-validator >= 0.7 with %python-openapi-schema-validator < 0.10}
 BuildRequires:  %{python_module openapi-spec-validator >= 0.8 with %python-openapi-spec-validator < 0.9}
 BuildRequires:  %{python_module parse}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -62,7 +64,7 @@ Requires:       python-more-itertools
 Requires:       python-parse
 Requires:       (python-jsonschema >= 4.23.0 with python-jsonschema < 5)
 Requires:       (python-jsonschema-path >= 0.4.5)
-Requires:       (python-openapi-schema-validator >= 0.7 with python-openapi-schema-validator < 0.9)
+Requires:       (python-openapi-schema-validator >= 0.7 with python-openapi-schema-validator < 0.10)
 Requires:       (python-openapi-spec-validator >= 0.8 with python-openapi-spec-validator < 0.9)
 BuildArch:      noarch
 %python_subpackages
@@ -73,7 +75,7 @@ and server-side support for the OpenAPI Specification
 v3.0.0.
 
 %prep
-%setup -q -n openapi-core-%{version}
+%autosetup -p1 -n openapi-core-%{version}
 sed -i '/--cov/d' pyproject.toml
 for f in openapi_core/contrib/falcon/views.py; do
   [ -f $f -a ! -s $f ] && echo "# empty module" > $f || exit 1
@@ -90,13 +92,12 @@ done
 %if !%{with django}
 rm -v tests/unit/contrib/django/test_django.py
 %endif
-# https://github.com/python-openapi/openapi-core/issues/1009 TestImportModelCreate::test_dynamic_model fails with Python 3.14
-%pytest tests/unit -k 'not (test_dynamic_model)'
+%pytest tests/unit
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/openapi_core
-%{python_sitelib}/openapi_core-%{version}*-info
+%{python_sitelib}/openapi_core-%{version}.dist-info
 
 %changelog
