@@ -7,4 +7,14 @@
     <comment>This is pretty similar to our current openSUSE theme, but I plan to change the default soon so this gets to come back as an extra package.</comment>
     <requestid>957265</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a5ea2217b2d3bcd26f121f06e4343a9f</srcmd5>
+    <version>20220219.1.26</version>
+    <time>1779739003</time>
+    <user>dimstar_suse</user>
+    <comment>- Pull in ImageMagick-config-7-upstream-open as we manipulate
+  images as part of the theme creation process
+</comment>
+    <requestid>1355059</requestid>
+  </revision>
 </revisionlist>
