@@ -2773,4 +2773,31 @@ New stable rel</comment>
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346586</requestid>
   </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>4db0d129ff8443b7edf698b23113cbca</srcmd5>
+    <version>3.60.2</version>
+    <time>1779738734</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.60.2:
+  + Bug Fixes:
+    - Truncated file stored in the (mail) cache
+    - prefer-plain: Empty body when prefer plain with HTML and no
+      plain text
+    - Fails to import Chinese Outook PST file (charset)
+    - Marcus Bains line is displayed on the wrong day
+    - Inconsistent timezone for completed tasks
+    - Mail: Call malloc_trim after folder sync and message list
+      regen
+  + Miscellaneous:
+    - message-list: Remove redundant g_free call
+    - test-web-view-jsc: Correct JavaScript variable initialization
+    - e-message-popover: Make the label text selectable
+    - Calendar: Use icaldurationtype_as_utc_seconds() for libical
+      4.x
+    - ECategoriesSelector: chain-up finalize to parent
+    - mail: Use E_OAUTH2_SERVICE_ERROR instead of abused G_IO_ERROR
+      codes
+  + Updated translations.</comment>
+    <requestid>1354854</requestid>
+  </revision>
 </revisionlist>
