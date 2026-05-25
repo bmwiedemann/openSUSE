@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 12 19:01:25 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 26.1
+  * It contains bug fixes and improvements on many activities.
+- Changes in version 26.0
+  This new version contains 197 activities, including 2 new ones:
+  * "Drawing wheels" is an activity for drawing using a gear
+     rotating in a cogwheel.
+  * "Multiple choice questions" is an MCQ activity. Note that this
+    activity is hidden by default. It becomes visible after some
+    datasets for it have been sent from GCompris-teachers.
+- Add BuildRequires: cmake(Qt6Graphs), cmake(Qt6QuickDialogs2), 
+  cmake(Qt6QuickShapesPrivate) and cmake(Qt6Sql)
+- Drop gcompris-25.1.1-qt-6.10.patch, fixed upstream
+- Drop Leap 15 workarounds, Leap 15 is EOL
+
+-------------------------------------------------------------------
 Thu Jan  8 20:56:31 UTC 2026 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - Add gcompris-25.1.1-qt-6.10.patch from gentoo

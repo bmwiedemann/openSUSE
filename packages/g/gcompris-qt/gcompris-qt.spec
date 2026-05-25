@@ -19,7 +19,7 @@
 %define qt6_version 6.5.0
 
 Name:           gcompris-qt
-Version:        25.1
+Version:        26.1
 Release:        0
 Summary:        Multiactivity educational software for children aged 2–10 (Qt version)
 License:        AGPL-3.0-or-later AND CC-BY-4.0 AND Apache-2.0 AND MPL-2.0 AND OFL-1.1 AND GFDL-1.2-or-later AND MIT AND CC0-1.0 AND BSD-2-Clause AND BSD-3-Clause
@@ -28,8 +28,6 @@ URL:            https://gcompris.net
 Source0:        https://download.kde.org/stable/gcompris/qt/src/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/gcompris/qt/src/%{name}-%{version}.tar.xz.sig
 Source2:        https://share.kde.org/index.php/s/YjKzYs1bgDsOo5V/download#/%{name}.keyring
-#PATCH-FIX-OPENSUSE -- gcompris-25.1.1-qt-6.10.patch
-Patch1:         gcompris-25.1.1-qt-6.10.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
@@ -37,6 +35,7 @@ BuildRequires:  qml-box2d
 BuildRequires:  qt6-waylandclient-private-devel >= %{qt6_version}
 BuildRequires:  cmake(Qt6Charts) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Graphs) >= %{qt6_version}
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QmlTools) >= %{qt6_version}
@@ -45,14 +44,17 @@ BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2Basic) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2BasicStyleImpl) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickDialogs2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickShapesPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sensors) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  pkgconfig(openssl)
 Requires:       %{name}-activities = %{version}
 Recommends:     %{name}-voices = %{version}
-Provides:       gcompris = 17.10
-Obsoletes:      gcompris < 17.10
+Provides:       gcompris = 26.1
+Obsoletes:      gcompris < 26.1
 
 %description
 GCompris-Qt is an educational software suite comprising
@@ -79,27 +81,13 @@ More than 100 activities are available.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} < 1600
-export CXX=g++-13 CC=gcc-13
-%cmake \
-	-DQML_BOX2D_MODULE=system \
-	-DQML_BOX2D_LIBRARY=/usr/lib64/Box2D/libqmlbox2d.so build
-%cmake_build
-%endif
-%if 0%{?suse_version} >= 1600
 %cmake_kf6 \
 	-DQML_BOX2D_MODULE=system \
 	-DQML_BOX2D_LIBRARY=/usr/lib64/Box2D/libqmlbox2d.so build
 %kf6_build
-%endif
 
 %install
-%if 0%{?suse_version} < 1600
-%cmake_install
-%endif
-%if 0%{?suse_version} >= 1600
 %kf6_install
-%endif
 
 %files
 %license LICENSES/*
