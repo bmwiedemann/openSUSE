@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon May 25 15:43:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.2:
+  * Update `CachedResponse` for compatibility with requests 2.34
+    If a request contains a header that is in both
+    `ignored_parameters` and `Vary` (for example,
+    `Authorization` + `Vary: Authorization`), always consider it
+    a cache miss
+  * Ignore + redact some additional common authentication headers
+    + params by default
+  * Add support for multiple response variations based on `Vary`
+  * Fix overwriting headers after revalidation in `read_only`
+    mode
+  * Add tests for python 3.15 (alpha)
+  * See changes to BSON and JSON serializers below:
+  * Significantly reduce the memory usage of JSON serialization
+  * ⚠️ `serializer='json'` will no longer automatically use
+    `ultrajson` if installed; it must be specified explicitly
+  * ⚠️ Drop support for standalone `bson` codec; please install
+    `pymongo` to use BSON serialization
+  * Remove `[bson]` package extra to prevent accidentally
+    installing it in the same environment as `pymongo`
+  * When using BSON serialization with the filesystem backend,
+    add a `.bson` file extension by default
+  * Add support for `orjson` as a JSON serializer
+  * However, see https://github.com/ijl/orjson/issues/483 for
+    potential memory issues
+  * Add the following serializer objects to specify a JSON
+    library: `json_serializer`, `ujson_serializer`, and
+    `orjson_serializer`
+  * Remove `[json]` package extra due to multiple supported JSON
+    libraries
+  * Allow `decode_content` to be set to different values across
+    multiple sessions in use at the same time
+  * Add `autoclose` option to close backend connections when the
+    session is closed
+  * Add `read_only` option to read existing cached responses, but
+    not write any new responses to the cache
+  * Add `verify` parameter to `BaseCache.contains()` and
+    `delete()` to handle requests made with SSL verification
+    disabled
+  * Add support for Python 3.13 and 3.14
+  * Add compatibility with url-normalize 2.0
+  * Add compatibility with FIPS-compliant systems
+  * Note: Due to using a different hashing algorithm for cache
+    keys, caches cannot be shared between FIPS- and non-FIPS-
+    compliant systems
+  * Packaging and project config are now managed by uv
+  * This has no impact for users; installation from PyPI still
+    works the same
+  * For developers, see Contributing Guide for details
+  * Allow `content_root_key` setting to target a sub-tree in
+    `normalize_json_body`, so only listed fields under that key
+    are ignored in cache keys
+  * Fix `sqlite3.InterfaceError: bad parameter or other API
+    misuse` with concurrent SQLite usage in python 3.12+
+  * Add support for normalizing file-like request bodies
+  * Ignore and log timezone errors when attempting to reuse
+    responses cached in `requests-cache <= 1.1`
+  * Fix error handling with `stale_if_error` during revalidation
+    requests
+  * By default, do not automatically close backend connections
+    when using `install_cache()`
+  * Fix request headers sent when `expire_after` is set to
+    `DO_NOT_CACHE`
+  * Show a warning when initializing a cache with both
+    `cache_name` and a backend instance (database names, file
+    paths, etc. cannot be reliably updated after initialization)
+  * When updating response headers after revalidating a cached
+    response, don't set both `Content-Length` and `Transfer-
+    Encoding`
+  * Treat invalid HTTP dates (eg. 'Expires: 0' and 'Expires: -1')
+    as 'already expired' as per RFC 2616, section 14.21
+
+-------------------------------------------------------------------
 Fri Nov 15 11:25:16 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add missing runtime dependency

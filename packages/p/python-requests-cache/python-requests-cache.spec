@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-cache
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,43 +17,50 @@
 
 
 Name:           python-requests-cache
-Version:        1.2.1
+Version:        1.3.2
 Release:        0
 Summary:        Persistent cache for requests library
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/requests-cache/requests-cache
 Source:         https://github.com/requests-cache/requests-cache/archive/refs/tags/v%{version}.tar.gz#/requests-cache-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling >= 1.0.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
-Requires:       python-cattrs
-Requires:       python-itsdangerous
-Requires:       python-requests >= 2.0.0
-Requires:       python-url-normalize >= 1.4
-Recommends:     python-redis
-Suggests:       python-boto3
-Suggests:       python-mongodb
+Requires:       python-attrs >= 21.2
+Requires:       python-cattrs >= 22.2
+Requires:       python-platformdirs >= 2.5
+Requires:       python-requests >= 2.22
+Requires:       python-url-normalize >= 2.0
+Requires:       python-urllib3 >= 1.25.5
+Recommends:     python-itsdangerous >= 2.0
+Recommends:     python-pyyaml >= 6.0.1
+Recommends:     python-redis >= 3
+Suggests:       python-boto3 >= 1.15
+Suggests:       python-botocore >= 1.18
+Suggests:       python-mongodb >= 3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module cattrs}
+BuildRequires:  %{python_module attrs >= 21.2}
+BuildRequires:  %{python_module cattrs >= 22.2}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module httpbin}
-BuildRequires:  %{python_module itsdangerous}
-BuildRequires:  %{python_module platformdirs}
-BuildRequires:  %{python_module pymongo}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module redis}
-BuildRequires:  %{python_module requests >= 2.0.0}
-BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module responses}
-BuildRequires:  %{python_module rich}
-BuildRequires:  %{python_module tenacity}
-BuildRequires:  %{python_module time-machine}
-BuildRequires:  %{python_module timeout-decorator}
-BuildRequires:  %{python_module url-normalize >= 1.4}
+BuildRequires:  %{python_module itsdangerous >= 2.0}
+BuildRequires:  %{python_module platformdirs >= 2.5}
+BuildRequires:  %{python_module psutil >= 5.0}
+BuildRequires:  %{python_module pymongo >= 3}
+BuildRequires:  %{python_module pytest >= 8.2}
+BuildRequires:  %{python_module redis >= 3}
+BuildRequires:  %{python_module requests >= 2.22}
+BuildRequires:  %{python_module requests-mock >= 1.12}
+BuildRequires:  %{python_module responses >= 0.19}
+BuildRequires:  %{python_module rich >= 10.0}
+BuildRequires:  %{python_module tenacity >= 8.0}
+BuildRequires:  %{python_module time-machine >= 2.9}
+BuildRequires:  %{python_module url-normalize >= 2.0}
+BuildRequires:  %{python_module urllib3 >= 1.25.5}
 BuildRequires:  redis
 # /SECTION
 %python_subpackages
@@ -90,7 +97,7 @@ killall -w redis-server
 
 %files %{python_files}
 %license LICENSE
-%doc README.md HISTORY.md docs/*.rst
+%doc README.md HISTORY.md docs/*.md docs/*.rst
 %{python_sitelib}/requests_cache
 %{python_sitelib}/requests_cache-%{version}*-info
 
