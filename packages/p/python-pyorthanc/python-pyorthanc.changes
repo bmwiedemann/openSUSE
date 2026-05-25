@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 25 15:22:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.23.0:
+  * Update client on Orthanc 1.12.11 and Python Pugin 7.0
+  * Update min python version and dependencies
+  * fix(docs): quickstart parameters for ` get_query_answers()`
+
+-------------------------------------------------------------------
 Sat Apr  4 08:13:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.22.1:

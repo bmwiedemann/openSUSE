@@ -20,7 +20,7 @@
 %define modname pyorthanc
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        1.22.1
+Version:        1.23.0
 Release:        0
 Summary:        A comprehensive Python client for Orthanc
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-httpx >= 0.24.1
-Requires:       python-pydicom >= 2.3.0
+Requires:       python-pydicom >= 2.4.0
 BuildArch:      noarch
 %python_subpackages
 
