@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 23 12:00:53 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9.4:
+  * cmake: separate generated headers from translated headers
+  * Avoid uninitialized variable warnings in gcc
+  * fix: Recognize relative worktrees extension
+  * fix(sha256): thread-safety bug in builtin SHA-256
+
+-------------------------------------------------------------------
 Wed May  6 13:50:42 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.9.3:
