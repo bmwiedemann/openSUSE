@@ -462,4 +462,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.18 (forwarded request 1315523 from favogt)</comment>
     <requestid>1315549</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>725090be684c5fbf4107c80645055c61</srcmd5>
+    <version>5.15.19+kde2</version>
+    <time>1779738772</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.19 - last Qt 5 ever? (forwarded request 1354905 from favogt)</comment>
+    <requestid>1354917</requestid>
+  </revision>
 </revisionlist>
