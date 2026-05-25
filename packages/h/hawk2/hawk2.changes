@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 25 12:50:35 UTC 2026 - aburlakov@suse.com
+
+- Update to version 2.7.0+git.1779713275.363148e0:
+  * Dev: complement the rsc_constraint parser
+  * Fix: parsing ambiguity in cib_ops_path format handling
+
+-------------------------------------------------------------------
 Fri May 22 09:24:56 UTC 2026 - aburlakov@suse.com
 
 - Update to version 2.7.0+git.1779441013.87a8ea7c:
