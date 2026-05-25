@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 25 08:01:22 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.1
+  [flac]
+  * Multiple metra-entries with same key caused crash.
+  [sndh]
+  * Add missing MIME type: audio/x-sndh.
+  [hvl, ogg, timidity]
+  * Used plrDevAPI->Idle() that returns available free space,
+    instead of plrDevAPI->GetStats() to retrieve the current
+    audio-delay.
+  [timidity]
+  * Harden logic that delays events for UI.
+
+-------------------------------------------------------------------
 Thu May 21 12:16:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.0
