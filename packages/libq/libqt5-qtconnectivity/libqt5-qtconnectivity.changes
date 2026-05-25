@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 22 14:56:09 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.19+kde0, rebased upstream:
+  * qmake: SBOM 5.15 qmake2cmake parsing fixes
+  * Bump version to 5.15.19
+
+-------------------------------------------------------------------
 Mon Nov  3 14:51:46 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.18+kde1, rebased upstream:
