@@ -18,8 +18,8 @@
 
 
 %define srcversion 7.0
-%define patchversion 7.0.9
-%define git_commit 9b5964b04dd4f11d2bed17d4df7b4cfc76d15ee4
+%define patchversion 7.0.10
+%define git_commit bb95589865b5b7e8a8846b45eda7c3eccc7ce782
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-pae
-Version:        7.0.9
+Version:        7.0.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g9b5964b
+Release:        <RELEASE>.gbb95589
 %else
 Release:        0
 %endif
@@ -1479,6 +1479,17 @@ fi
 %endif
 
 %install
+
+# bsc#1265456: Truncate the uncompressed vmlinux after ALL post scripts finish.
+# make sure debuginfo extraction and brp-* scripts complete before truncating.
+%if "%image" != "vmlinux" && 0%{?suse_version} >= 1500
+%define __spec_install_post \
+    %{?__debug_package:%{__debug_install_post}} \
+    %{__arch_install_post} \
+    %{__os_install_post} \
+    [ -f %{buildroot}/boot/vmlinux-%{kernelrelease}-%{build_flavor} ] && truncate -s 0 %{buildroot}/boot/vmlinux-%{kernelrelease}-%{build_flavor} \
+%{nil}
+%endif
 
 %if 0%{?__debug_package:1}
 # get rid of /usr/lib/rpm/brp-strip-debug

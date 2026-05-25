@@ -7496,4 +7496,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>7.0.8 &amp; 7.0.9 &amp; a fix; bugs: bsc#1012628 bsc#1265308 bsc#1265333</comment>
     <requestid>1353655</requestid>
   </revision>
+  <revision rev="843" vrev="1">
+    <srcmd5>ef010e86a0e52417f7c3f4887689eb6b</srcmd5>
+    <version>7.0.10</version>
+    <time>1779738711</time>
+    <user>dimstar_suse</user>
+    <comment>7.0.10 &amp; other fixes; bugs: bsc#1012628 bsc#1265456 bsc#1265457 bsc#1265627 bsc#1265628 bsc#1265629 bsc#1265999 bsc#1266000 bsc#1266001 bsc#1266002 bsc#1266003 bsc#1266008 bsc#1266009</comment>
+    <requestid>1354839</requestid>
+  </revision>
 </revisionlist>
