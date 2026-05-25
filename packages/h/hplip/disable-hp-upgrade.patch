@@ -1,8 +1,17 @@
-Index: b/upgrade.py
-===================================================================
+From 1b1711f104b38c0b39e76098532846c20761e65b Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 3 Feb 2026 17:57:25 +0100
+Subject: [PATCH 02/33] disable hp-upgrade
+
+---
+ upgrade.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/upgrade.py b/upgrade.py
+index a3ea6b1..7f1750b 100755
 --- a/upgrade.py
 +++ b/upgrade.py
-@@ -207,6 +207,11 @@ if os.geteuid() == 0:
+@@ -208,6 +208,11 @@ if os.geteuid() == 0:
  if os.getenv("HPLIP_DEBUG"):
      log.set_level('debug')
  
@@ -14,3 +23,6 @@ Index: b/upgrade.py
  for o, a in opts:
      if o in ('-h', '--help'):
          usage()
+-- 
+2.52.0
+

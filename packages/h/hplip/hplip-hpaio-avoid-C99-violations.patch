@@ -1,5 +1,15 @@
+From 1bfe28f76b82fd0627a6ad7185997fbcd973a4b5 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 3 Feb 2026 18:01:09 +0100
+Subject: [PATCH 23/33] hplip: hpaio: avoid C99 violations
+
+---
+ scan/sane/hpaio.c   |  2 +-
+ scan/sane/orblite.c | 23 +++++++++++++----------
+ 2 files changed, 14 insertions(+), 11 deletions(-)
+
 diff --git a/scan/sane/hpaio.c b/scan/sane/hpaio.c
-index 57d1dde..3475929 100644
+index 087efb1..2e52e19 100644
 --- a/scan/sane/hpaio.c
 +++ b/scan/sane/hpaio.c
 @@ -379,7 +379,7 @@ extern SANE_Status sane_hpaio_get_devices(const SANE_Device ***deviceList, SANE_
@@ -7,12 +17,12 @@ index 57d1dde..3475929 100644
     DevDiscovery(localOnly);
     *deviceList = (const SANE_Device **)DeviceList;
 -   SANE_Device*** devList;
-+   const SANE_Device*** devList;
++   const SANE_Device*** devListi = NULL;
     orblite_get_devices(devList, localOnly);
  
     return SANE_STATUS_GOOD;
 diff --git a/scan/sane/orblite.c b/scan/sane/orblite.c
-index 2eb7aba..4eaa468 100644
+index 490ad82..177f5d4 100644
 --- a/scan/sane/orblite.c
 +++ b/scan/sane/orblite.c
 @@ -64,28 +64,28 @@ SANE_Option_Descriptor	DefaultOrbOptions[] = {
@@ -93,7 +103,7 @@ index 2eb7aba..4eaa468 100644
  	},
  #ifdef NOTDEF
  // default template
-@@ -274,6 +274,7 @@ orblite_open (SANE_String_Const devicename, SANE_Handle * handle)
+@@ -253,6 +253,7 @@ orblite_open (SANE_String_Const devicename, SANE_Handle * handle)
  	SANE_Auth_Callback authorize;
  	const SANE_Device *** device_list;
  	SANE_Bool local_only;
@@ -101,7 +111,7 @@ index 2eb7aba..4eaa468 100644
  	
  	
  	// Allocate handle, set all handle values to zero
-@@ -305,7 +306,9 @@ orblite_open (SANE_String_Const devicename, SANE_Handle * handle)
+@@ -284,7 +285,9 @@ orblite_open (SANE_String_Const devicename, SANE_Handle * handle)
  	if (stat != SANE_STATUS_GOOD)
  		return stat;
  
@@ -112,3 +122,6 @@ index 2eb7aba..4eaa468 100644
  	if (stat == SANE_STATUS_GOOD)
  		*handle = g_handle;
  
+-- 
+2.52.0
+

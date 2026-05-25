@@ -38,7 +38,7 @@
 %global make_install make DESTDIR=%{buildroot} V=1 install
 %endif
 
-%if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
+%if 0%{?suse_version} < 1699 && 0%{?is_opensuse}
 # Build without scanning support
 %bcond_with scan_utils
 %else
@@ -66,19 +66,24 @@
 %global drvdir %{_datadir}/cups/drv
 
 Name:           hplip
-Version:        3.25.6
+Version:        3.26.4
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          Hardware/Printing
 URL:            https://developers.hp.com/hp-linux-imaging-and-printing
 # Source0...Source9 is for sources from HP:
-# URL for Source0: http://prdownloads.sourceforge.net/hplip/hplip-3.15.9.tar.gz
-# URL to verify Source0: http://prdownloads.sourceforge.net/hplip/hplip-3.15.9.tar.gz.asc
-# How to verify Source0 see: http://hplipopensource.com/node/327
-# For example: /usr/bin/gpg --keyserver pgp.mit.edu --recv-keys 0xA59047B9
-#              /usr/bin/gpg --verify hplip-3.15.9.tar.gz.asc hplip-3.15.9.tar.gz
-# must result: Good signature from "HPLIP (HP Linux Imaging and Printing) <hplip@hp.com>"
+# How to verify Source0:
+# For example: /usr/bin/gpg --keyserver keyserver.ubuntu.com --recv-keys AC69536A2CF3A243
+#              /usr/bin/gpg --verify hplip-3.26.4.tar.gz.asc
+# must result in:
+# gpg: Signature made <<DATE>>
+# gpg:                using RSA key 5E4E4D24A34ECD57
+# gpg: Good signature from "HPLIP (HP Linux Imaging and Printing) <hplip@hp.com>"
+#
+# Notes:
+# - The key AC69536A2CF3A243 is also contained in the file hplip.keyring)
+# - 5E4E4D24A34ECD57 is a subkey of AC69536A2CF3A243
 Source0:        https://sourceforge.net/projects/hplip/files/hplip/%{version}/hplip-%{version}.tar.gz
 Source1:        https://sourceforge.net/projects/hplip/files/hplip/%{version}/hplip-%{version}.tar.gz.asc
 Source2:        hplip.keyring
@@ -91,17 +96,17 @@ Source104:      hp-laserjet_professional_p_1102w.ppd.gz
 #
 Source1000:     %{name}-rpmlintrc
 # Patch100... is for special Suse patches:
-# Patch101 change-udev-rules.diff changes the udev rules file 56-hpmud.rules
-Patch101:       change-udev-rules.diff
+# Patch101 change-udev-rules.patch changes the udev rules file 56-hpmud.rules
+Patch101:       hplip-change-udev-rules.patch
 # Patch106 disable_hp-upgrade.patch disables hp-upgrade/upgrade.py for security reasons,
 # see https://bugzilla.novell.com/show_bug.cgi?id=853405
 # To upgrade HPLIP an openSUSE software package manager like YaST or zypper should be used.
-Patch106:       disable_hp-upgrade.patch
+Patch106:       disable-hp-upgrade.patch
 # PATCH-FIX-SUSE: use proper udev rulesdir which is in usr not in /etc
 Patch107:       hplip-udev-rules-in-usr.patch
 # Patch108 add_missing_includes_and_define_GNU_SOURCE.patch adds missing '#include <...>'
 # and missing '#define _GNU_SOURCE' see https://bugs.launchpad.net/hplip/+bug/1456590
-Patch108:       add_missing_includes_and_define_GNU_SOURCE.patch
+Patch108:       add-missing-includes-and-define-GNU_SOURCE.patch
 Patch110:       hpijs-avoid-segfault-in-DJGenericVIP-DJGenericVIP.patch
 Patch112:       ui5-systemtray-wait-only-10s-for-system-tray.patch
 # Python3 port: cleanup patches
@@ -115,15 +120,12 @@ Patch305:       Use-lsb_release-fallback-code-if-import-distro-fails.patch
 # bsc#1180724
 Patch306:       dcheck.py-fix-crash-in-Qt4-version-check.patch
 # PATCH-FIX-SUSE: Remove references to the closed-source ImageProcessor
-Patch400:       hplip-remove-imageprocessor.diff
+Patch400:       hplip-remove-imageprocessor.patch
 # Let a function return NULL instead of nothing
-Patch401:       hplip-orblite-return-null.diff
-# Use a pgp server (pool.sks-keyservers.net) which doesn't throw proxy errors
-# or run into timeouts most of the time
-Patch402:       hplip-change-pgp-server.patch
+Patch401:       hplip-orblite-return-null.patch
 # boo#1107711
 Patch403:       Revert-changes-from-3.18.5-that-break-hp-setup-for-f.patch
-# PATCH-FIX-UPSTREAM: https://bugs.launchpad.net/hplip/+bug/1879445
+# lp#1879445
 Patch404:       hplip-3.20.6-python-includes.patch
 # PATCH-FIX-SUSE https://bugs.launchpad.net/hplip/+bug/2115626 bsc#1245358
 Patch405:       Fix-ReDoS-issue-in-HPLIP-s-SLP-parser.patch
@@ -133,20 +135,23 @@ Patch601:       hplip-pserror-c99.patch
 Patch602:       hplip-scan-hpaio-include.patch
 Patch603:       hplip-scan-orblite-c99.patch
 Patch604:       hplip-sclpml-strcasestr.patch
-Patch605:       hplip-hpaio-gcc14.patch
+Patch605:       hplip-hpaio-avoid-C99-violations.patch
 Patch606:       hplip-base-fix-error-in-ConfigBase-handling.patch
 Patch607:       hplip-utils-Fix-plugin-verification-with-sha256.patch
-# lp#2120739
-Patch608:       hp-setup-fix-python-crash-when-manually-importing-gz.patch
 # lp#2115046
-Patch610:       hplip-no-urlopener.patch
+Patch610:       URLopener-was-removed-in-Python-3.14-and-hplip-trace.patch
 Patch611:       hplip-fix-driver-probing-using-avahi.patch
 Patch612:       hplip-fix-python-crash-in-avahi.py.patch
-# PATCH-FIX-UPSTREAM https://bugs.launchpad.net/hplip/+bug/2096650
-Patch651:       hplip-3.24.4-gcc15.patch
+# lp#2095776
+Patch613:       hplip-base-Fix-Found-No-Section-error-with-python-2..patch
+# lp#2096650
+Patch614:       hplip-sane-fix-compilation-with-gcc-15.patch
+# lp#2139771
+Patch615:       hplip-fix-handling-of-ConfigParser-.readfp-vs.-read_.patch
+
 # Compatibility patches for old SUSE releases
-Patch700:       hplip-base-replace-f-string-with-string.format-for-p.patch
 Patch701:       hpcups-fix-compilation-on-SLE12.patch
+Patch703:       Fix-two-compiler-warnings-that-cause-build-failure-o.patch
 
 # cups-rpm-helper is now pulled in indirectly via cups-devel.
 # This causes the "postscriptdriver" provides to be generated.
@@ -459,7 +464,8 @@ This package is only required by developers.
 %prep
 # Be quiet when unpacking:
 %setup -q
-# Patch101 change-udev-rules.diff changes the udev rules file 56-hpmud.rules
+
+# Patch101 change-udev-rules.patch changes the udev rules file 56-hpmud.rules
 %patch -P 101 -p1 -b .change-udev-rules.orig
 # Patch106 disable_hp-upgrade.patch disables hp-upgrade/upgrade.py for security reasons,
 # see https://bugzilla.novell.com/show_bug.cgi?id=853405
@@ -479,7 +485,6 @@ This package is only required by developers.
 %patch -P 306 -p1
 %patch -P 400 -p1
 %patch -P 401 -p1
-%patch -P 402 -p1
 %patch -P 403 -p1
 %if 0%{?suse_version} >= 1500
 # This patch replaces python-config by python3-config, don't apply on SLE12
@@ -494,16 +499,21 @@ This package is only required by developers.
 %patch -P 605 -p1
 %patch -P 606 -p1
 %patch -P 607 -p1
-%patch -P 608 -p1
 %patch -P 610 -p1
 %patch -P 611 -p1
 %patch -P 612 -p1
-%patch -P 651 -p1
+%patch -P 613 -p1
+%patch -P 614 -p1
+%patch -P 615 -p1
 %if 0%{?suse_version} < 1500
 # python2 compatibility
-%patch -P 700 -p1
 %patch -P 701 -p1
 %endif
+%if 0%{?suse_version} < 1500
+# python2 compatibility
+%patch -P 701 -p1
+%endif
+%patch -P 703 -p1
 
 # replace "env" shebang and "/usr/bin/python" with real executable
 find . -name '*.py' -o -name pstotiff | \

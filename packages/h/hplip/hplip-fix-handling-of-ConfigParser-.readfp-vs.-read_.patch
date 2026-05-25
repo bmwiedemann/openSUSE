@@ -1,0 +1,93 @@
+From 29b5c15877f56c01992af5dd28a9ba6c896d5927 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 3 Feb 2026 12:10:38 +0100
+Subject: [PATCH 31/33] hplip: fix handling of ConfigParser().readfp() vs.
+ read_file()
+
+hplip 3.24.4 introduced code to handle the removal of the
+ConfigParser.readfp() method in python. But this code was incorrect.
+By trying to catch this with an exception, the handling of other possible
+exceptions (configparser.DuplicateOptionError) was broken, because
+these exceptions wouldn't be caught any more.
+
+It's better to simply check for the availability of the "readfp"
+attribute.
+
+Moreover, fix the readfp()/read_file() calls in devmgr5.py as well.
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ base/g.py      | 15 +++++++--------
+ ui4/devmgr5.py |  5 ++++-
+ ui5/devmgr5.py |  5 ++++-
+ 3 files changed, 15 insertions(+), 10 deletions(-)
+
+diff --git a/base/g.py b/base/g.py
+index e659213..b173985 100644
+--- a/base/g.py
++++ b/base/g.py
+@@ -128,14 +128,10 @@ class ConfigBase(object):
+             try:
+                 fp = open(self.filename, "r")
+                 try:
+-                    self.conf.readfp(fp)
+-                except AttributeError as e:
+-                    log.error(f"Error: {e}. Retrying with read_file")
+-                    try:
+-                        # Attempting to use read_file as a fallback
++                    if hasattr(self.conf, "readfp"):
++                        self.conf.readfp(fp)
++                    else:
+                         self.conf.read_file(fp)
+-                    except Exception as e:
+-                        log.error(f"Reading file with read_file also failed. Error: {e}")
+                 except configparser.MissingSectionHeaderError:
+                     fp.close()
+                     # Workaround for lp#2095776: skip leading whitespace in plugin.conf
+@@ -144,7 +140,10 @@ class ConfigBase(object):
+                     t0 = t0[t0.find("["): -1]
+                     fp = StringIO(t0)
+                     try:
+-                        self.conf.readfp(fp)
++                        if hasattr(self.conf, "readfp"):
++                            self.conf.readfp(fp)
++                        else:
++                            self.conf.read_file(fp)
+                     except Exception as e:
+                         print("")
+                         log.error("Found No Section in %s. Please set the http proxy for root and try again." % self.filename)
+diff --git a/ui4/devmgr5.py b/ui4/devmgr5.py
+index fc28445..d33fd06 100644
+--- a/ui4/devmgr5.py
++++ b/ui4/devmgr5.py
+@@ -1024,7 +1024,10 @@ class DevMgr5(QMainWindow,  Ui_MainWindow):
+ 
+                 hplip_conf = configparser.ConfigParser()
+                 fp = open("/etc/hp/hplip.conf", "r")
+-                hplip_conf.readfp(fp)
++                if hasattr(hplip_conf, "readfp"):
++                    hplip_conf.readfp(fp)
++                else:
++                    hplip_conf.read_file(fp)
+                 fp.close()
+ 
+                 try:
+diff --git a/ui5/devmgr5.py b/ui5/devmgr5.py
+index 8a19840..0c3f1e4 100644
+--- a/ui5/devmgr5.py
++++ b/ui5/devmgr5.py
+@@ -1075,7 +1075,10 @@ class DevMgr5(Ui_MainWindow_Derived, Ui_MainWindow, QMainWindow):
+ 
+                 hplip_conf = configparser.ConfigParser()
+                 fp = open("/etc/hp/hplip.conf", "r")
+-                hplip_conf.read_file(fp)
++                if hasattr(hplip_conf, "readfp"):
++                    hplip_conf.readfp(fp)
++                else:
++                    hplip_conf.read_file(fp)
+                 fp.close()
+ 
+                 try:
+-- 
+2.52.0
+

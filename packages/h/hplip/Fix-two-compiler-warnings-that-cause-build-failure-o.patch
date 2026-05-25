@@ -1,0 +1,59 @@
+From 5aeb785fb886de701f1e177a23a8cfbdf236ac67 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 14 Jan 2025 21:56:01 +0100
+Subject: [PATCH 33/33] Fix two compiler warnings that cause build failure on
+ SLE15 (GA)
+
+[  163s] ... running 50-check-gcc-output
+[  163s] ... testing for serious compiler warnings
+[  163s]     (using /usr/lib/build/checks-data/check_gcc_output)
+[  163s]     (using //.build.log)
+[  163s]
+[  163s] I: Program is using uninitialized variables.
+[  163s]    Note the difference between "is used" and "may be used"
+[  163s] W: hplip uninitialized-variable scan/sane/hpaio.c:383
+[  163s]
+[  163s] I: Program returns random data in a function
+[  163s] E: hplip no-return-in-nonvoid-function protocol/hp_ipp.c:1375
+[  163s]
+[  163s] I: Program returns random data in a function
+[  163s] E: hplip no-return-in-nonvoid-function protocol/hp_ipp.c:1375
+
+The check has been removed deliberately in later SPs
+(https://github.com/openSUSE/post-build-checks/pull/26)
+
+The test also ran on SLE12-SP3, but there apparently the compiler didn't emit
+the offending warnings.
+---
+ protocol/hp_ipp.c | 1 +
+ scan/sane/hpaio.c | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/protocol/hp_ipp.c b/protocol/hp_ipp.c
+index e7d4b8c..39107e4 100644
+--- a/protocol/hp_ipp.c
++++ b/protocol/hp_ipp.c
+@@ -1372,6 +1372,7 @@ int getJobStatus(int iJobID, const char *iPrinterName, const char *iDeviceUri)
+             return aRetnValue;
+         }
+     }
++    return HPIPP_ERROR;
+ }
+ 
+ HPIPP_RESULT sendFaxJob(const char *iDeviceUri, const char *iPrinterName, const char *iFileName, const char *iFaxNumber)
+diff --git a/scan/sane/hpaio.c b/scan/sane/hpaio.c
+index 2e52e19..1acc528 100644
+--- a/scan/sane/hpaio.c
++++ b/scan/sane/hpaio.c
+@@ -379,7 +379,7 @@ extern SANE_Status sane_hpaio_get_devices(const SANE_Device ***deviceList, SANE_
+    ResetDeviceList(&DeviceList);
+    DevDiscovery(localOnly);
+    *deviceList = (const SANE_Device **)DeviceList;
+-   const SANE_Device*** devListi = NULL;
++   const SANE_Device*** devList = NULL;
+    orblite_get_devices(devList, localOnly);
+ 
+    return SANE_STATUS_GOOD;
+-- 
+2.52.0
+

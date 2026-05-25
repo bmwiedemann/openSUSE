@@ -1,5 +1,14 @@
-Index: b/data/rules/56-hpmud.rules
-===================================================================
+From 8d6273e18bac296a80593649e617628dc8eefc32 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 3 Feb 2026 17:57:25 +0100
+Subject: [PATCH 01/33] hplip: change udev rules
+
+---
+ data/rules/56-hpmud.rules | 30 ++++++++++++++++++++++++++++--
+ 1 file changed, 28 insertions(+), 2 deletions(-)
+
+diff --git a/data/rules/56-hpmud.rules b/data/rules/56-hpmud.rules
+index 8311063..ec57f57 100644
 --- a/data/rules/56-hpmud.rules
 +++ b/data/rules/56-hpmud.rules
 @@ -1,8 +1,31 @@
@@ -35,7 +44,7 @@ Index: b/data/rules/56-hpmud.rules
  GOTO="hpmud_rules_end"
  
  LABEL="hpmud_usb_rules"
-@@ -13,6 +38,9 @@ ENV{ID_USB_INTERFACES}=="", IMPORT{built
+@@ -13,6 +36,9 @@ ENV{ID_USB_INTERFACES}=="", IMPORT{builtin}="usb_id"
  ATTR{idVendor}=="03f0", ENV{ID_USB_INTERFACES}=="*:0701??:*|*:ffcc00:", OWNER="root", GROUP="lp", MODE="0664", ENV{libsane_matched}="yes", ENV{hp_test}="yes", ENV{ID_HPLIP}="1"
  
  # This rule will check the smart install feature, plugin status and firmware download for the required printers.
@@ -46,3 +55,6 @@ Index: b/data/rules/56-hpmud.rules
  
  LABEL="hpmud_rules_end"
 +
+-- 
+2.52.0
+

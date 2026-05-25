@@ -1,7 +1,7 @@
-From eab655e0f8ab7c7520e0c60970d74e51b25c2061 Mon Sep 17 00:00:00 2001
+From c15938665bca226acd1af751d885e58d41d6298b Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Fri, 15 Sep 2023 18:31:38 +0200
-Subject: [PATCH 18/18] hplip: missing drivers
+Subject: [PATCH 18/33] hplip: missing drivers
 
 ---
  cups_drv.inc           |   2 +
@@ -10,10 +10,10 @@ Subject: [PATCH 18/18] hplip: missing drivers
  3 files changed, 486 insertions(+), 9 deletions(-)
 
 diff --git a/cups_drv.inc b/cups_drv.inc
-index 8a33bfe..dc38978 100644
+index 4a77af6..6612730 100644
 --- a/cups_drv.inc
 +++ b/cups_drv.inc
-@@ -414,6 +414,7 @@ cups_ppd_printers = \
+@@ -416,6 +416,7 @@ cups_ppd_printers = \
     ppd/hpcups/hp-laserjet_cm1418fnw-pcl3.ppd.gz \
     ppd/hpcups/hp-laserjet_cp1025.ppd.gz \
     ppd/hpcups/hp-laserjet_cp1025nw.ppd.gz \
@@ -21,7 +21,7 @@ index 8a33bfe..dc38978 100644
     ppd/hpcups/hp-laserjet_m1005.ppd.gz \
     ppd/hpcups/hp-laserjet_m101-m106.ppd.gz \
     ppd/hpcups/hp-laserjet_m109-m112.ppd.gz \
-@@ -531,6 +532,7 @@ cups_ppd_printers = \
+@@ -534,6 +535,7 @@ cups_ppd_printers = \
     ppd/hpcups/hp-laserjet_professional_p1607dn.ppd.gz \
     ppd/hpcups/hp-laserjet_professional_p1608dn.ppd.gz \
     ppd/hpcups/hp-laserjet_professional_p1609dn.ppd.gz \
@@ -30,7 +30,7 @@ index 8a33bfe..dc38978 100644
     ppd/hpcups/hp-laserjet_tank_1020.ppd.gz \
     ppd/hpcups/hp-laserjet_tank_150x.ppd.gz \
 diff --git a/data/models/models.dat b/data/models/models.dat
-index a567fdd..ed89569 100644
+index faea8bc..aecd54a 100644
 --- a/data/models/models.dat
 +++ b/data/models/models.dat
 @@ -2104,7 +2104,7 @@ usb-pid=411
@@ -546,10 +546,10 @@ index a567fdd..ed89569 100644
  align-type=0
  clean-type=0
 diff --git a/prnt/drv/hpcups.drv.in b/prnt/drv/hpcups.drv.in
-index 2829168..3c1377a 100644
+index 5e9730b..8865213 100644
 --- a/prnt/drv/hpcups.drv.in
 +++ b/prnt/drv/hpcups.drv.in
-@@ -23107,6 +23107,14 @@ Group "RLT/HP Real Life Technologies"
+@@ -23304,6 +23304,14 @@ Group "RLT/HP Real Life Technologies"
        Attribute "Product" "" "(HP LaserJet Professional p1102 Printer)"
        Attribute "Product" "" "(HP LaserJet Professional p1102s Printer)"
      }
@@ -564,7 +564,7 @@ index 2829168..3c1377a 100644
      {
        ModelName "HP LaserJet Professional p1106"
        Attribute "NickName" "" "HP LaserJet Professional p1106, hpcups $Version"
-@@ -23541,6 +23549,14 @@ Group "RLT/HP Real Life Technologies"
+@@ -23738,6 +23746,14 @@ Group "RLT/HP Real Life Technologies"
        PCFileName "hp-laserjet_cp1025nw.ppd"
        Attribute "Product" "" "(HP LaserJet Pro cp1025nw Color Printer Series)"
      }
@@ -580,5 +580,5 @@ index 2829168..3c1377a 100644
  } // End LJZjsColor (for proprietary plugin)
  
 -- 
-2.43.0
+2.52.0
 

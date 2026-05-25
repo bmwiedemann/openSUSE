@@ -1,7 +1,7 @@
-From d68d0748c4493ef3192e4f59756ece2bd2fbb004 Mon Sep 17 00:00:00 2001
+From 465a9cccbc48fb6f7b35d89851e0237556bd76da Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Tue, 19 Aug 2025 12:06:17 +0200
-Subject: [PATCH] hplip: fix driver probing using avahi
+Subject: [PATCH 27/33] hplip: fix driver probing using avahi
 
 - _printer._tcp doesn't work for my printer (HP Smart Tank 7300 series).
   mdns.py uses _pdl-datastream._tcp, which works.
@@ -58,5 +58,5 @@ index 82e5de9..3bf3ba8 100755
                  bus = ['net']
  
 -- 
-2.50.1
+2.52.0
 

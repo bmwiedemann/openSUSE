@@ -1,7 +1,17 @@
-diff -ur hplip-3.21.4.orig/Makefile.am hplip-3.21.4/Makefile.am
---- hplip-3.21.4.orig/Makefile.am	2021-05-06 10:39:14.000000000 +0200
-+++ hplip-3.21.4/Makefile.am	2021-06-16 09:19:42.354489830 +0200
-@@ -167,7 +167,7 @@
+From 4ce96ef1d4ec67f6032b4e8e31839456b71b0a7e Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 3 Feb 2026 17:57:27 +0100
+Subject: [PATCH 13/33] hplip: remove imageprocessor
+
+---
+ Makefile.am | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 5381a24..a03b2bf 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -167,7 +167,7 @@ if !HPLIP_CLASS_DRIVER
  dist_hplip_SCRIPTS = hpssd.py __init__.py hpdio.py
  endif #HPLIP_CLASS_DRIVER
  
@@ -10,7 +20,7 @@ diff -ur hplip-3.21.4.orig/Makefile.am hplip-3.21.4/Makefile.am
  
  dist_noinst_DATA += prnt/ipp-usb/HPLIP.conf
  dist_noinst_SCRIPTS += dat2drv.py install.py  hplip-install init-suse-firewall init-iptables-firewall class_rpm_build.sh hplipclassdriver.spec createPPD.sh Makefile_dat2drv hpijs-drv
-@@ -595,7 +595,7 @@
+@@ -598,7 +598,7 @@ hpcups_SOURCES = prnt/hpcups/HPCupsFilter.cpp prnt/hpcups/HPCupsFilter.h prnt/hp
  	prnt/hpcups/ImageProcessor.h
  
  hpcups_CXXFLAGS = $(APDK_ENDIAN_FLAG) $(DBUS_CFLAGS)
@@ -19,7 +29,7 @@ diff -ur hplip-3.21.4.orig/Makefile.am hplip-3.21.4/Makefile.am
  #else
  #hpcupsdir = $(cupsfilterdir)
  #hpcups_PROGRAMS = hpcups
-@@ -685,16 +685,6 @@
+@@ -696,16 +696,6 @@ endif #HPLIP_CLASS_DRIVER
  
  install-data-hook:
  if HPLIP_BUILD
@@ -36,3 +46,6 @@ diff -ur hplip-3.21.4.orig/Makefile.am hplip-3.21.4/Makefile.am
  	if [ -d "/usr/share/ipp-usb/quirks/" ]; then \
  		echo "ipp-usb directory exists"; \
  		cp prnt/ipp-usb/HPLIP.conf /usr/share/ipp-usb/quirks/ ; \
+-- 
+2.52.0
+

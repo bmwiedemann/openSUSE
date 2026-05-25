@@ -1,13 +1,14 @@
-scan/sane/orblite: Include <dflcn.h> for function prototypes
+From b9b39dc4520da4841ab61503ac8429d1ecf5415e Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 3 Feb 2026 17:57:28 +0100
+Subject: [PATCH 21/33] hplip: scan-orblite-c99
 
-This is required for C99 compatibility.  Also delete the unused
-bb_unload function because it calls a call to the undefined
-_DBG function/macro.
-
-Submitted upstream: <https://bugs.launchpad.net/hplip/+bug/1997875>
+---
+ scan/sane/orblite.c | 22 +---------------------
+ 1 file changed, 1 insertion(+), 21 deletions(-)
 
 diff --git a/scan/sane/orblite.c b/scan/sane/orblite.c
-index ba86640c7528fc9c..ac59dda9c2dba593 100644
+index 87c4de8..490ad82 100644
 --- a/scan/sane/orblite.c
 +++ b/scan/sane/orblite.c
 @@ -20,6 +20,7 @@
@@ -46,3 +47,6 @@ index ba86640c7528fc9c..ac59dda9c2dba593 100644
  SANE_Status 
  orblite_init (SANE_Int * version_code, SANE_Auth_Callback authorize)
  {
+-- 
+2.52.0
+

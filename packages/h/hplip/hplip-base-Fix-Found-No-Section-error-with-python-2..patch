@@ -1,0 +1,38 @@
+From 6ea289207f5805085bbe36f6e5d4cdb262717e02 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 23 Jan 2025 16:47:10 +0100
+Subject: [PATCH 30/33] hplip/base: Fix "Found No Section" error with python
+ 2.7.13
+
+See https://bugs.launchpad.net/hplip/+bug/2095776
+---
+ base/g.py | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/base/g.py b/base/g.py
+index 123c73e..e659213 100644
+--- a/base/g.py
++++ b/base/g.py
+@@ -137,8 +137,17 @@ class ConfigBase(object):
+                     except Exception as e:
+                         log.error(f"Reading file with read_file also failed. Error: {e}")
+                 except configparser.MissingSectionHeaderError:
+-                    print("")
+-                    log.error("Found No Section in %s. Please set the http proxy for root and try again." % self.filename)
++                    fp.close()
++                    # Workaround for lp#2095776: skip leading whitespace in plugin.conf
++                    from StringIO import StringIO
++                    t0 = open(self.filename, "r").read()
++                    t0 = t0[t0.find("["): -1]
++                    fp = StringIO(t0)
++                    try:
++                        self.conf.readfp(fp)
++                    except Exception as e:
++                        print("")
++                        log.error("Found No Section in %s. Please set the http proxy for root and try again." % self.filename)
+                 except (configparser.DuplicateOptionError):
+                     log.warn("Found Duplicate Entery in %s" % self.filename)
+                     self.CheckDuplicateEntries()
+-- 
+2.52.0
+

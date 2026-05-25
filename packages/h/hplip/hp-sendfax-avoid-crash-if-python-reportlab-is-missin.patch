@@ -1,7 +1,7 @@
-From 8b1bbbb9a3659475367a6f58986ac8248576663b Mon Sep 17 00:00:00 2001
+From 2361ee7133810599690dd52f483fdcd943366cd0 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Fri, 10 Jan 2020 14:44:51 +0100
-Subject: [PATCH] hp-sendfax: avoid crash if python-reportlab is missing
+Subject: [PATCH 10/33] hp-sendfax: avoid crash if python-reportlab is missing
 
 Avoids this crash:
 
@@ -35,5 +35,5 @@ index 4248907..3c3e880 100644
  
      #
 -- 
-2.24.1
+2.52.0
 

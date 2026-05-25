@@ -1,7 +1,7 @@
-From 92ddbb36e2a589fe4d1cf27c30b67a1bb12bf9dc Mon Sep 17 00:00:00 2001
+From 158a81abdd16a9fe05869de1b76baa1075f8a7bd Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Fri, 16 Nov 2018 11:00:44 +0100
-Subject: [PATCH] ui5/systemtray: wait only 10s for system tray
+Subject: [PATCH 06/33] ui5/systemtray: wait only 10s for system tray
 
 On GNOME >= 3.26, it will never show up. This may cause hangs on
 logout if users log in and log out quickly again.
@@ -10,7 +10,7 @@ logout if users log in and log out quickly again.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/ui5/systemtray.py b/ui5/systemtray.py
-index a0cdaf1..101807a 100644
+index 28078cf..96ec37c 100644
 --- a/ui5/systemtray.py
 +++ b/ui5/systemtray.py
 @@ -841,7 +841,7 @@ def run(read_pipe):
@@ -23,5 +23,5 @@ index a0cdaf1..101807a 100644
              break
          time.sleep(1.0)
 -- 
-2.21.0
+2.52.0
 

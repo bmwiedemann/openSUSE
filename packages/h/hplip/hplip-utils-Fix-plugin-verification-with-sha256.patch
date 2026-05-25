@@ -1,7 +1,7 @@
-From 8d14912a48e589bee05e0c377c29218132083145 Mon Sep 17 00:00:00 2001
+From 81e1d025b161f82bf3e24ae0710b5488ae2d689a Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Wed, 7 May 2025 15:23:17 +0200
-Subject: [PATCH] hplip/utils: Fix plugin verification with sha256
+Subject: [PATCH 25/33] hplip/utils: Fix plugin verification with sha256
 
 https://bugs.launchpad.net/hplip/+bug/2110100
 ---
@@ -24,7 +24,7 @@ index cff5924..699f70f 100755
  
      #Validate Digital Signature
 diff --git a/base/utils.py b/base/utils.py
-index d5b3a49..f9de94e 100644
+index 6f1412d..24bcc6d 100644
 --- a/base/utils.py
 +++ b/base/utils.py
 @@ -72,8 +72,18 @@ import hashlib
@@ -64,5 +64,5 @@ index a37db39..26b0033 100755
  
          #Validate Digital Signatures
 -- 
-2.49.0
+2.52.0
 

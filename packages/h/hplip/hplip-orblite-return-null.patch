@@ -1,0 +1,24 @@
+From f10bf02187e7e2069bc401a0146a9c9deeec686f Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 3 Feb 2026 17:57:27 +0100
+Subject: [PATCH 14/33] hplip: orblite: return null
+
+---
+ scan/sane/orblite.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/scan/sane/orblite.c b/scan/sane/orblite.c
+index ba86640..87c4de8 100644
+--- a/scan/sane/orblite.c
++++ b/scan/sane/orblite.c
+@@ -331,6 +331,7 @@ if (option >= optCount && option < optLast)
+ 		return &g_handle->Options[option];
+ 	}
+ 	//return g_handle->bb_orblite_get_option_descriptor(g_handle, option);
++	return NULL;
+ }
+ 
+ 
+-- 
+2.52.0
+

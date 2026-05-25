@@ -1,7 +1,7 @@
-From 10fe460cca9536dbb52c30fa8bec5c6a01e94ea0 Mon Sep 17 00:00:00 2001
+From 2092ec111169da87dde1be45f997e9cfd7311ab6 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Fri, 15 Sep 2023 18:28:47 +0200
-Subject: [PATCH 09/19] hp_ipp.h: add missing prototypes
+Subject: [PATCH 09/33] hp_ipp.h: add missing prototypes
 
 ---
  protocol/hp_ipp.h | 6 ++++++
@@ -32,5 +32,5 @@ index 032be9a..518d0ae 100644
  HPIPP_RESULT parseResponseHeader(char* header, int *content_length, int *chunked, int* header_size);
  HPIPP_RESULT prepend_http_header(raw_ipp *raw_request,const char *resource);
 -- 
-2.42.0
+2.52.0
 

@@ -1,7 +1,7 @@
-From e95a9cb2e946bec33d7f0afa04850f93ae258477 Mon Sep 17 00:00:00 2001
+From f0c9ccc3a4b1e58b977eb831a311a3c5973ce7e2 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Wed, 7 May 2025 15:53:46 +0200
-Subject: [PATCH] hpcups: fix compilation on SLE12
+Subject: [PATCH 32/33] hpcups: fix compilation on SLE12
 
 SLE12-SP5 is not using C++11 by default, thus nullptr is not
 defined. NULL is used elsewhere in the file, so we can just
@@ -24,5 +24,5 @@ index 6750684..7d397ed 100644
              }
          }   
 -- 
-2.49.0
+2.52.0
 

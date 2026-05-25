@@ -1,8 +1,17 @@
-Index: b/configure.in
-===================================================================
+From 15c0c0a70812c6793b8d5b21f33d809c2ef586b0 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 3 Feb 2026 17:57:27 +0100
+Subject: [PATCH 16/33] hplip 3.20.6 python includes
+
+---
+ configure.in | 36 +++++++++++++++++++++++-------------
+ 1 file changed, 23 insertions(+), 13 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index f1919cb..46e8ec3 100644
 --- a/configure.in
 +++ b/configure.in
-@@ -628,20 +628,31 @@ if test "$class_driver" = "no" && test "
+@@ -630,20 +630,31 @@ if test "$class_driver" = "no" && test "$hpijs_only_build" = "no" && test "$hpcu
     fi
  fi
  
@@ -46,7 +55,7 @@ Index: b/configure.in
  if test "$class_driver" = "no" && test "$hpijs_only_build" = "no" && test "$lite_build" = "no" && test "$hpcups_only_build" = "no"; then
     AC_ARG_VAR([PYTHON], [Python interpreter/compiler command])
     AC_CHECK_PROGS(PYTHON,[python python3 python2])
-@@ -655,7 +666,6 @@ if test "$class_driver" = "no" && test "
+@@ -683,7 +694,6 @@ if test "$class_driver" = "no" && test "$hpijs_only_build" = "no" && test "$lite
     AS_IF([test "x$FOUND_HEADER" != "xyes"],
            [AC_MSG_ERROR([cannot find python-devel support], 6)])
  fi
@@ -54,3 +63,6 @@ Index: b/configure.in
  
  if test "$hpijs_only_build" = "no" && test "$scan_build" = "yes" && test "$hpcups_only_build" = "no"; then
     AC_CHECK_LIB([sane], [sane_open], [LIBS="$LIBS"], [AC_MSG_ERROR([cannot find sane-backends-devel support (or --disable-scan-build)], 12)])
+-- 
+2.52.0
+

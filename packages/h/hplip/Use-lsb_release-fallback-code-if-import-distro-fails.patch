@@ -1,7 +1,7 @@
-From ba542439639453148ea804fc4e396534cd99abb9 Mon Sep 17 00:00:00 2001
+From 1f97ae55acde846513c8634966252865d4a134ca Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Mon, 2 Jan 2023 15:33:07 +0100
-Subject: [PATCH] Use lsb_release fallback code if "import distro" fails
+Subject: [PATCH 11/33] Use lsb_release fallback code if "import distro" fails
 
 With python 3.8, the standard python "platform" module doesn't
 provide the "dist()" function any more. The "distro" module is
@@ -14,10 +14,10 @@ using lsb_release.
  1 file changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/base/utils.py b/base/utils.py
-index 94d5c8c..458ddd8 100644
+index d176c0d..e8fe42c 100644
 --- a/base/utils.py
 +++ b/base/utils.py
-@@ -2519,10 +2519,14 @@ def get_distro_name(passwordObj = None):
+@@ -2551,10 +2551,14 @@ def get_distro_name(passwordObj = None):
              name = platform.dist()[0].lower()
              ver = platform.dist()[1]
          except AttributeError:
@@ -37,5 +37,5 @@ index 94d5c8c..458ddd8 100644
              found = False
              log.debug("Not able to detect distro")
 -- 
-2.39.0
+2.52.0
 

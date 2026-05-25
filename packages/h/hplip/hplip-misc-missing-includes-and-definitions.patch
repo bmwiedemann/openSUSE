@@ -1,7 +1,16 @@
-Index: hplip-3.20.9/scan/sane/http.c
-===================================================================
---- hplip-3.20.9.orig/scan/sane/http.c
-+++ hplip-3.20.9/scan/sane/http.c
+From 2833f857a2cf664071a8745d3c40b61581ce1e55 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 3 Feb 2026 17:57:26 +0100
+Subject: [PATCH 08/33] hplip: misc missing includes and definitions
+
+---
+ scan/sane/http.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/scan/sane/http.c b/scan/sane/http.c
+index 800df91..ae5edf4 100644
+--- a/scan/sane/http.c
++++ b/scan/sane/http.c
 @@ -33,6 +33,7 @@
  
  #include <stdio.h>
@@ -10,3 +19,6 @@ Index: hplip-3.20.9/scan/sane/http.c
  #include <string.h>
  #include <syslog.h>
  #include <ctype.h>
+-- 
+2.52.0
+

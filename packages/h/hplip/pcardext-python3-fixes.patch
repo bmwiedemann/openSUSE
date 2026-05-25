@@ -1,17 +1,17 @@
-From 74ed15a16e7564d0665afc68defbd6d03bdff21d Mon Sep 17 00:00:00 2001
+From 0e635e8c5d97b4ab86a16678c38cd43c8086679e Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Wed, 21 Mar 2018 23:55:12 +0100
-Subject: [PATCH] pcardext: python3 fixes
+Subject: [PATCH 07/33] pcardext: python3 fixes
 
 ---
  pcard/pcardext/pcardext.c | 36 ++++++++++++++++++++++++++++++++++--
  1 file changed, 34 insertions(+), 2 deletions(-)
 
 diff --git a/pcard/pcardext/pcardext.c b/pcard/pcardext/pcardext.c
-index c1a8273e4359..cdf260d62223 100644
+index 131e5e9..e1eb3e1 100644
 --- a/pcard/pcardext/pcardext.c
 +++ b/pcard/pcardext/pcardext.c
-@@ -36,6 +36,12 @@ typedef int Py_ssize_t;
+@@ -39,6 +39,12 @@ typedef int Py_ssize_t;
  #define PY_SSIZE_T_MIN INT_MIN
  #endif
  
@@ -24,7 +24,7 @@ index c1a8273e4359..cdf260d62223 100644
  int verbose=0;
  
  PyObject * readsectorFunc = NULL;
-@@ -78,8 +84,11 @@ int WriteSector(int sector, int nsector, void *buf, int size )
+@@ -81,8 +87,11 @@ int WriteSector(int sector, int nsector, void *buf, int size )
      
      if( writesectorFunc )
      {
@@ -37,7 +37,7 @@ index c1a8273e4359..cdf260d62223 100644
          return PyInt_AS_LONG( result );
      }
  
-@@ -230,9 +239,31 @@ static PyMethodDef pcardext_methods[] =
+@@ -233,9 +242,31 @@ static PyMethodDef pcardext_methods[] =
      { NULL, NULL }
  };  
  
@@ -70,12 +70,12 @@ index c1a8273e4359..cdf260d62223 100644
  void initpcardext( void )
  {
      PyObject * mod = Py_InitModule4( "pcardext", pcardext_methods, 
-@@ -243,4 +274,5 @@ void initpcardext( void )
+@@ -246,4 +277,5 @@ void initpcardext( void )
        return;
  }
  
 +#endif
  
 -- 
-2.16.1
+2.52.0
 

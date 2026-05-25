@@ -1,7 +1,7 @@
-From 4315485efe9318b18bf859c5bf1a810b9235ae2e Mon Sep 17 00:00:00 2001
+From 1586048802a90d90f039378ef793681d16960176 Mon Sep 17 00:00:00 2001
 From: Wolfgang Frisch <wfrisch@suse.de>
 Date: Tue, 15 Jul 2025 19:12:53 +0200
-Subject: [PATCH] Fix ReDoS issue in  HPLIP's SLP parser
+Subject: [PATCH 17/33] Fix ReDoS issue in HPLIP's SLP parser
 
 Patch for the ReDoS issue in HPLIP's SLP parser (bsc#1245358).
 https://bugs.launchpad.net/hplip/+bug/2115626
@@ -44,5 +44,5 @@ index 8e2d8f9..06a00aa 100644
  def createSocketsWithsetOption(ttl=4):
      s=None
 -- 
-2.50.0
+2.52.0
 

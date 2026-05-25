@@ -1628,4 +1628,41 @@ Fixes build in Staging_A (python 3.13) - and seems to address the real reaason w
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1332210</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>a10084a7d234dded51227d2c9dac8b61</srcmd5>
+    <version>3.26.4</version>
+    <time>1779738720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to HPLIP 3.26.4
+- Fix CVE-2026-8631 (bsc#1266023)
+- Fix CVE-2026-8632 (bsc#1266024)
+- Add support for the following new printers:
+  * HP LaserJet Pro MFP 3106sdw
+  * HP LaserJet Pro MFP 3105sdw
+  * HP Envy 6500e series
+  * HP Envy 6500 series
+  * HP OfficeJet Pro 9730 Series
+  * HP OfficeJet Pro 9730e Series
+  * HP OfficeJet Pro 9720 Series
+  * HP OfficeJet Pro 9720e Series
+  * HP OfficeJet Pro 8130e All-in-One series
+  * HP OfficeJet Pro 8130 All-in-One series
+  * HP OfficeJet 8130e All-in-One series
+  * HP OfficeJet 8130 All-in-One series
+  * HP OfficeJet Pro 8120e All-in-One series
+  * HP OfficeJet Pro 8120 All-in-One series
+  * HP OfficeJet 8120e All-in-One series
+  * HP OfficeJet 8120 All-in-One series
+  * HP DeskJet Ink Advantage ultra 5800 All-in-One Printer series
+  * HP DeskJet Ink Advantage ultra 5100 All-in-One Printer series
+  * HP DeskJet 4300e All-in-One Printer series
+  * HP DeskJet Ink Advantage 4300 All-in-One Printer series
+  * HP DeskJet 4300 All-in-One Printer series
+  * HP DeskJet 2900e All-in-One Printer series
+  * HP DeskJet Ink Advantage 2900 All-in-One Printer series
+  * HP DeskJet 2900 All-in-One Printer series
+
+- Adjust the version condition not to build scan_utils since</comment>
+    <requestid>1354788</requestid>
+  </revision>
 </revisionlist>

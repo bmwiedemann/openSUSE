@@ -1,7 +1,7 @@
-From d52301159a5add137b46e7183970ea1f1cbfe8ac Mon Sep 17 00:00:00 2001
+From 935b009caf6de3071675894f4756f99f8e3d46ff Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Fri, 15 Sep 2023 18:27:13 +0200
-Subject: [PATCH 04/19] add missing includes and define GNU_SOURCE
+Subject: [PATCH 04/33] add missing includes and define GNU_SOURCE
 
 ---
  common/utils.c      | 5 +++++
@@ -31,7 +31,7 @@ index d8ecee9..6f5cef9 100644
  extern int errno;
  
 diff --git a/io/hpmud/jd.c b/io/hpmud/jd.c
-index be3c823..c15ed9c 100644
+index 94474c8..f86f96a 100644
 --- a/io/hpmud/jd.c
 +++ b/io/hpmud/jd.c
 @@ -31,6 +31,7 @@
@@ -43,7 +43,7 @@ index be3c823..c15ed9c 100644
  #include "hpmudi.h"
  
 diff --git a/protocol/hp_ipp.c b/protocol/hp_ipp.c
-index 8b72c65..9b05f5e 100644
+index 6e60ac0..e7d4b8c 100644
 --- a/protocol/hp_ipp.c
 +++ b/protocol/hp_ipp.c
 @@ -18,6 +18,10 @@ Boston, MA 02110-1301, USA.
@@ -91,5 +91,5 @@ index 9a5975f..3250541 100644
  #include "saneopts.h"
  #include "common.h"
 -- 
-2.42.0
+2.52.0
 
