@@ -1032,4 +1032,23 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1348713</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>58c02a59cede0baf2c7b7c88938d73fc</srcmd5>
+    <version>3.12.4</version>
+    <time>1779738880</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.12.4
+  GDAL 3.12.4 is a bugfix release.
+  ## Build
+  * Fix build with  -DGDAL_ENABLE_ALGORITHMS=OFF
+  * Fix build against Poppler 26.04.00
+  * FindSQLite3: Add missing cmake includes (CheckCXXSourceCompiles)
+- fix boo#1264521
+- fix boo#1264522
+- fix boo#1264523
+- fix boo#1264525
+- fix boo#1264529
+- fix boo#1264530</comment>
+    <requestid>1354979</requestid>
+  </revision>
 </revisionlist>
