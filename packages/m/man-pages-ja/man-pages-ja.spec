@@ -17,13 +17,13 @@
 
 
 Name:           man-pages-ja
-Version:        20260115
+Version:        20260515
 Release:        0
 Summary:        LDP Manual Pages (Japanese)
 License:        BSD-3-Clause AND GPL-2.0-only AND GFDL-1.1-only AND GFDL-1.2-only AND GFDL-1.3-only
 Group:          Documentation/Man
 Summary(ja):    Linux 日本語マニュアルページ
-URL:            https://linuxjm.osdn.jp/download.html
+URL:            https://linuxjm.sourceforge.io/#download
 Source:         https://github.com/linux-jm/manual/releases/download/v%{version}/man-pages-ja-%{version}.tar.gz
 # Some manpages are only shipped if the programs exist..
 BuildRequires:  fdupes
@@ -55,10 +55,10 @@ mkdir -p %{buildroot}%{_mandir}/ja
 # prefer LDP_man-pages over netkit
 # prefer LDP_man-pages over ld.so
 # prefer LDP_man-pages over shadow
-# prefer gnumaniak over GNU_sh-utils
-# prefer gnumaniak over GNU_textutils
-# prefer gnumaniak over GNU_sh-utils
-# prefer gnumaniak over GNU_fileutils
+# prefer GNU_coreutils over GNU_sh-utils
+# prefer GNU_coreutils over GNU_textutils
+# prefer GNU_coreutils over gnumaniak
+# prefer GNU_coreutils over GNU_fileutils
 # prefer man-db over man
 # prefer util-linux over SysVinit
 # prefer util-linux over shadow
@@ -68,18 +68,20 @@ mkdir -p %{buildroot}%{_mandir}/ja
 # prefer nfs-utils over nfs-server
 # prefer netkit over wu-ftpd
 # prefer ypbind over ypbind-mt
+
+#
+# delete gnumaniak,GNU_fileutils,GNU_sh-utils,GNU_textutils (2026-04-14)
+#
 for dir in \
     shadow \
     GNU_automake \
     GNU_coreutils \
-    gnumaniak \
     GNU_bash \
     GNU_bc \
     GNU_binutils \
     GNU_cpio \
     GNU_dejagnu \
     GNU_ed \
-    GNU_fileutils \
     GNU_findutils \
     GNU_gawk \
     GNU_gcc \
@@ -95,11 +97,9 @@ for dir in \
     GNU_rcs \
     GNU_screen \
     GNU_sed \
-    GNU_sh-utils \
     GNU_sharutils \
     GNU_tar \
     GNU_texinfo \
-    GNU_textutils \
     GNU_uucp \
     LDP_man-pages \
     SysVinit \

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 17 08:29:13 UTC 2026 - oota toshiya <jm@ribbon.or.jp>
+
+- update to version 20260515:
+  * Update translation less (version 692)
+  * Improve translation getent.1
+  * Update translation sed (verion 4.9)
+  * Update translation libtool (ver 2.5.4)
+- remove old manuals (gnumaniak,GNU_fileutils,GNU_sh-utils,GNU_textutils)
+
+-------------------------------------------------------------------
 Thu Apr  9 20:13:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to version 20260115:
