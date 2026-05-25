@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 25 15:44:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.0:
+  * Clean up typing; add basedpyright to CI.
+  * Fix a possible endless loop with recursive macro expansion.
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9 version.
+
+-------------------------------------------------------------------
 Fri Jan 10 11:07:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.16.0
@@ -98,4 +107,4 @@ Sun May 27 15:06:15 UTC 2018 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Sat May 26 00:08:01 UTC 2018 - kbabioch@suse.com
 
-- Initial packaging of version 0.7 
+- Initial packaging of version 0.7

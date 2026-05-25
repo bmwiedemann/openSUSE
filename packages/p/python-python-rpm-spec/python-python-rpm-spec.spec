@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-rpm-spec
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           python-python-rpm-spec
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Python module for parsing RPM spec files
 License:        MIT
 URL:            https://github.com/bkircher/python-rpm-spec
 Source0:        https://files.pythonhosted.org/packages/source/p/python_rpm_spec/python_rpm_spec-%{version}.tar.gz
-BuildRequires:  %{python_module flit}
+BuildRequires:  %{python_module flit-core >= 2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
