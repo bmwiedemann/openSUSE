@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun May 24 17:30:49 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 99.0
+  New features and enhancements:
+ * MKVToolNix GUI: the GUI will now remember the last used
+   directory for selecting audio files for playback in "play
+   audio file" program runners separately from any other "open
+   file"-type situations.
+ * MKVToolNix GUI: executing actions → running programs: added
+   new variables: `MTX_DESTINATION_FILE_BASE_NAME` (the name
+   without the drive letter, path or the suffix; e.b.
+   `/movies/A.new.hope.mkv` → `A.new.hope`) and
+   `MTX_DESTINATION_FILE_SUFFIX` (only the letters after the
+   last `.`, e.g. `/movies/A.new.hope.mkv` → `mkv`). Added
+   examples to all the destination file variables in the popup
+   menu when adding variables in the preferences.
+ * MKVToolNix GUI: executing actions → running programs: the
+   command-line input widget will now receive focus again after
+   using the popup menu for adding a variable.
+ * MKVToolNix GUI: executing actions → running programs: the
+   variables will now also be set as environment variables when
+   running a program after a job completes.
+ * MKVToolNix GUI: executing actions → running programs: when
+   using the "Execute now" button for testing the `MTX_…`
+   variables will be set to the current multiplexer tab's values
+   for easier testing.
+ Bug fixes:
+ * mkvmerge: if using legacy font MIME types is off mkvmerge
+   will now remap legacy font MIME types present in source files
+   into the current ones.
+ * MKVToolNix GUI: update checker: fixed a potential attempt to
+   read from an invalid memory address if an error occurred when
+   parsing the XML file retrieved from the official MKVToolNix
+   server.
+
+-------------------------------------------------------------------
 Mon Apr  6 12:28:43 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 98.0
