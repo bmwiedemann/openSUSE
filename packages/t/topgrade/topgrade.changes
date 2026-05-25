@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 24 23:09:44 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.5.1:
+  * chore: release v17.5.1 (#2025)
+  * fix(install-release): remove ir alias to avoid conflict with mono-mdk (#2036)
+  * chore(pre-commit): autoupdate (#2035)
+  * chore(deps): update github/codeql-action action to v4.35.5 (#2017)
+  * chore(deps): lock file maintenance (#2032)
+  * fix(powershell): handle unavailable Update-Module (#1993)
+
+-------------------------------------------------------------------
 Sat May 16 00:34:44 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.5.0:
