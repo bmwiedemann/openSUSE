@@ -353,4 +353,19 @@
   * Ensure shared rx inputs are reused (#1117)</comment>
     <requestid>1344237</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>54f1f5e6ac9c01b72f7cbb642f12ae77</srcmd5>
+    <version>2.4.0</version>
+    <time>1779739047</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.0:
+  * Implement descriptor factory typing system by implementing
+    Parameter generics (Parameter[_T]) and add typed overloads for all
+    major Parameter subclasses and add typing for public APIs
+  * Add rx(..., lazy=) argument
+  * Add caches to speed up Parameter initialization
+  * Optimize Parameter instantiation
+  * Use re.search for param.String regex check</comment>
+    <requestid>1355080</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 25 15:37:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Implement descriptor factory typing system by implementing
+    Parameter generics (Parameter[_T]) and add typed overloads for all
+    major Parameter subclasses and add typing for public APIs
+  * Add rx(..., lazy=) argument
+  * Add caches to speed up Parameter initialization
+  * Optimize Parameter instantiation
+  * Use re.search for param.String regex check
+
+-------------------------------------------------------------------
 Wed Apr  1 23:45:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.3:
