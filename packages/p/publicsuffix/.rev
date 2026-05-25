@@ -1831,4 +1831,41 @@ Now with build cycle removed.</comment>
     <comment></comment>
     <requestid>1311683</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>2ec19333fa4b69ea811ef4ff7642206b</srcmd5>
+    <version>20260513</version>
+    <time>1779738715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260513:
+  * add t3.storage.dev, t3.storageapi.dev for tigrisdata.com (#2818)
+  * Remove nd.us subdomains (#2885)
+  * Add Hostinger to public_suffix_list.dat (#2907)
+  * Add *-zerops.zone (#2860)
+  * Update README with important notice to use unaltered template for pr
+  * Remove on.crisp.email (Crisp IM SAS) (#2896)
+  * util: gTLD data autopull updates for 2026-04-30T16:18:08 UTC (#2888)
+  * Fix grammar errors and typos (#2886)
+  * Add Shanghai Oray domains to Private Domains (#2869)
+  * Add deployagent.space and piebox.site (#2857)
+  * Add atlassian-3p.com variants for untrusted content isolation (#2852)
+  * Add fspages.org (#2866)
+  * Add *.metaaiusercontent.com to Meta Platforms section (#2856)
+  * Remove GOV.UK Platform as a Service entries (#2851)
+  * Add claude.app to PRIVATE section (Anthropic) (#2815)
+  * util: gTLD data autopull updates for 2026-04-15T16:04:01 UTC (#2855)
+  * fix: outdated pr reference and small typo (#2844)
+  * util: gTLD data autopull updates for 2026-04-10T15:53:10 UTC (#2845)
+  * Add K2 Cloud domains to the PRIVATE section (#2838)
+  * Add deployagent.com (#2830)
+  * Add Northwest Nexus domains under private section (#2724)
+  * Add vivenu shop domains to private section (#2796)
+  * Remove PageXL entry from public_suffix_list.dat (#2842)
+  * Fix typo in pull request template (#2839)
+  * Add opentunnel.xyz to Public Suffix List (#2835)
+  * Added sryze.cc to the list (#2777)
+  * Add seprox.hooc.me (#2775)
+  * add payload dev (#2824)
+  * Add pplx.app (#2821)</comment>
+    <requestid>1354634</requestid>
+  </revision>
 </revisionlist>
