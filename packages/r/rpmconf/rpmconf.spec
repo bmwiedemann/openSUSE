@@ -1,7 +1,7 @@
 #
 # spec file for package rpmconf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpmconf
-Version:        1.1.11
+Version:        1.1.12
 Release:        0
 Summary:        Tool to handle rpmnew and rpmsave files
 License:        GPL-3.0-or-later
