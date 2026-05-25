@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 22 14:56:35 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.19+kde23, rebased upstream:
+  * Increase robustness of <img> tag in Text component
+  * Fix division by zero in QQuickSvgParser
+  * Fix the build with tracing enabled
+  * Fix divide by zero when processing invalid arcs
+  * 2D Renderer: Make sure cachedMirroredPixmap is never dirty when painting
+  * V4: Do not update proto usage before engine is fully initialized
+  * Bump version to 5.15.19
+
+-------------------------------------------------------------------
 Tue Nov  4 10:28:16 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.18+kde22, rebased upstream:
