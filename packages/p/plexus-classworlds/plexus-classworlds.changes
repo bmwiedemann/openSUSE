@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 25 13:48:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.12.0
+  * Bug fixes
+    + Fix loadGlob using OR instead of AND for glob matching
+
+-------------------------------------------------------------------
 Tue May 12 08:51:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.11.0
