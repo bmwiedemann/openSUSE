@@ -514,4 +514,13 @@
     <comment></comment>
     <requestid>1349761</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e1fbc2fe2a06267466c0f9f6e68f0987</srcmd5>
+    <version>9.0.31</version>
+    <time>1779739041</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.0.31
+  * Merge metadata changes from upstream 9.0.31</comment>
+    <requestid>1355077</requestid>
+  </revision>
 </revisionlist>
