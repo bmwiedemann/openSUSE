@@ -50,4 +50,14 @@
   - no good changes (forwarded request 1319561 from msmeissn)</comment>
     <requestid>1319562</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cba7be46968e2068c0ecb44f917af211</srcmd5>
+    <version>5.1.29</version>
+    <time>1779739068</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.1.29
+  - no good changes
+- eid-mw.keyring, updated to 2025 (forwarded request 1355062 from msmeissn)</comment>
+    <requestid>1355092</requestid>
+  </revision>
 </revisionlist>
