@@ -25,6 +25,7 @@ URL:            https://syncplay.pl/
 Source:         https://github.com/Syncplay/syncplay/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #PATCH-FIX-SUSE switch-env-to-python.patch nopeinomicon@posteo.net -- Sets interpreter to python3 as opposed to env python3
 Patch0:         switch-env-to-python.patch
+Patch1:         support-tls-on-pyopenssl-26.2.0.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  make
 BuildRequires:  python-rpm-generators
