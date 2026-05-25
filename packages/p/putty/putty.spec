@@ -1,7 +1,7 @@
 #
 # spec file for package putty
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           putty
-Version:        0.83
+Version:        0.84
 Release:        0
 Summary:        SSH client with optional GTK-based terminal emulator frontend
 License:        MIT
 Group:          System/X11/Utilities
 URL:            http://www.chiark.greenend.org.uk/~sgtatham/putty/
-
 #Git-Web:	http://tartarus.org/~simon-git/gitweb/?p=putty.git
 #Git-Clone:	git://git.tartarus.org/simon/putty
 Source:         http://the.earth.li/~sgtatham/putty/latest/%name-%version.tar.gz
@@ -79,8 +78,6 @@ EOF
 %suse_update_desktop_file -n %name
 
 mkdir -p "$b/%_datadir/pixmaps/"
-install -m644 icons/xpmpterm.c "$b/%_datadir/pixmaps/pterm.xpm"
-install -m644 icons/xpmputty.c "$b/%_datadir/pixmaps/putty.xpm"
 install -m644 icons/pterm-32.png "$b/%_datadir/pixmaps/pterm.png"
 install -m644 icons/putty-32.png "$b/%_datadir/pixmaps/putty.png"
 
@@ -91,6 +88,5 @@ install -m644 icons/putty-32.png "$b/%_datadir/pixmaps/putty.png"
 %_bindir/*
 %_datadir/applications/%name.desktop
 %_datadir/pixmaps/*.png
-%_datadir/pixmaps/*.xpm
 
 %changelog

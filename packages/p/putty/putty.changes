@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 25 15:33:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.84
+  * Fixed a remotely triggerable double-free in RSA key exchange.
+  * Fixed a remotely triggerable crash (assertion failure - program
+    termination) in NIST ECDSA signature verification.
+  * Fixed marking of Telnet and Rlogin session data with a trust
+    sigil after you authenticated to a proxy (possibly allowing a
+    server to spoof a repeat proxy password prompt).
+  * New ability to run a specified command before starting the
+    connection, e.g. to perform wake-on-LAN or a port knock.
+  * Display 'pre-edit text', showing the progress of using multiple
+    keystrokes to compose a single Unicode character.
+  * Improved support for to running the GUI tools on Wayland (fixed
+    startup issues and tuned performance).
+  * Configuring a SSH certificate authority used to fail unless you
+    manually made a config directory, now fixed.
+  * Fixed a spurious "Network error: Socket is not connected" when
+    authenticating to some HTTP proxies.
+
+-------------------------------------------------------------------
 Fri Jul 18 15:48:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.83
