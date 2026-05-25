@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 25 15:27:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.1:
+  * Fix `SeekableZstdFile` write table entries on 32-bits
+    architectures when there is a huge number of entries
+  * The project has been completely refactored to use the
+    Zstandard implementation from the standard library (PEP-784)
+  * The refactor has some minor impact on public APIs, such as
+    changing the exception raised on invalid input
+  * Add `backports.zstd` dependency for Python before 3.14
+  * Changes in build dependency: remove `setuptools` and C build
+    toolchain, add `hatchling` and `hatch-vcs`
+  * Remove git submodule usage
+  * Drop support for Python 3.9 and below
+  * Use `ruff` as formatter and linter
+  * Embed type hints in Python code, and check with `mypy`
+
+-------------------------------------------------------------------
 Wed Nov 26 10:30:35 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.18.0

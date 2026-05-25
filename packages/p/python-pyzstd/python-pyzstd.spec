@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyzstd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyzstd
-Version:        0.18.0
+Version:        0.19.1
 Release:        0
 Summary:        Python bindings to Zstandard (zstd) compression library
 License:        BSD-3-Clause
 URL:            https://github.com/Rogdham/pyzstd
 Source:         https://files.pythonhosted.org/packages/source/p/pyzstd/pyzstd-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.5}
+BuildRequires:  %{python_module backports.zstd >= 1.0.0 if %python-base < 3.14}
+BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions >= 4.13.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  libzstd-devel >= 1.4.0
 BuildRequires:  python-rpm-macros
+Requires:       (python-backports.zstd >= 1.0.0 if python-base < 3.14)
 Requires:       (python-typing_extensions >= 4.13.2 if python-base < 3.13)
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -43,26 +46,21 @@ The API is similar to Python's bz2/lzma/zlib modules.
 
 %prep
 %setup -q -n pyzstd-%{version}
-# make sure we link dynamically, cannot use command line argument to pip wheel
-# gh#animalize/pyzstd#18
-sed -i "s/has_option('--dynamic-link-zstd')/True/" setup.py
-sed -i "/\#\!\/usr\/bin\/env\ python3/d" src/__main__.py
 
 %build
-export CFLAGS="%{optflags}"
 %pyproject_wheel
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest_arch discover -v tests
+%pyunittest discover -v tests
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitearch}/pyzstd
-%{python_sitearch}/pyzstd-%{version}.dist-info
+%{python_sitelib}/pyzstd
+%{python_sitelib}/pyzstd-%{version}.dist-info
 
 %changelog
