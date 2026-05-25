@@ -1,7 +1,7 @@
 #
 # spec file for package python-djangorestframework-simplejwt
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        JSON Web Token authentication for Django REST Framework
 License:        MIT
 URL:            https://github.com/davesque/django-rest-framework-simplejwt
 Source:         https://files.pythonhosted.org/packages/source/d/djangorestframework-simplejwt/djangorestframework_simplejwt-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/jazzband/djangorestframework-simplejwt/pull/963
+Patch0:         use-curve-matching-keys.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module cryptography}
@@ -36,6 +38,7 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Django
 Requires:       python-PyJWT
 Requires:       python-djangorestframework
 Recommends:     python-cryptography

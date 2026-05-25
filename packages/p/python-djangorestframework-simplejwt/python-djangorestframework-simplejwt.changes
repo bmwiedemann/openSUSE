@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 25 03:44:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-curve-matching-keys.patch:
+  * Support new PyJWT, since it now enforces EC curve/algorithm
+    compatibility. (bsc#1266046)
+- Add missing Requires on Django.
+
+-------------------------------------------------------------------
 Mon Nov  3 09:29:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.5.1 (CVE-2024-22513, bsc#1221568)

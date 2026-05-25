@@ -94,4 +94,15 @@
     <comment></comment>
     <requestid>1315319</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3b799274d86977b673d1138987268d04</srcmd5>
+    <version>5.5.1</version>
+    <time>1779738905</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch use-curve-matching-keys.patch:
+  * Support new PyJWT, since it now enforces EC curve/algorithm
+    compatibility. (bsc#1266046)
+- Add missing Requires on Django.</comment>
+    <requestid>1355001</requestid>
+  </revision>
 </revisionlist>

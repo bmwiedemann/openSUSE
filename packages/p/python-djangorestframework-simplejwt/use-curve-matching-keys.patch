@@ -1,0 +1,272 @@
+From 832d80956e56b20a7f4abdf6c1432152fad2b9af Mon Sep 17 00:00:00 2001
+From: Vjeran Grozdanic <vjeran.grozdanic@gmail.com>
+Date: Mon, 9 Feb 2026 21:26:33 +0100
+Subject: [PATCH 1/3] fix: use curve-matching EC keys for ES384/ES512 backend
+ tests
+
+---
+ tests/keys.py          | 36 ++++++++++++++++++++++++++++++++++++
+ tests/test_backends.py |  8 ++++++--
+ 2 files changed, 42 insertions(+), 2 deletions(-)
+
+diff --git a/tests/keys.py b/tests/keys.py
+index aa93d7d95..931452c2e 100644
+--- a/tests/keys.py
++++ b/tests/keys.py
+@@ -125,3 +125,39 @@
+ tmjhpC+XqK88q5NfIS1cBYYtzhHUS4vGpazNqbW8HA3ZIvJRmx4L96O6/w==
+ -----END PUBLIC KEY-----
+ """
++
++ES384_PRIVATE_KEY = """
++-----BEGIN EC PRIVATE KEY-----
++MIGkAgEBBDBeJEPZHK/TlHqgPGudxVPaecJu1viqQ47CfF2fpm5pOZRbxn44fPTv
++NAhZSgq4q9ugBwYFK4EEACKhZANiAATU7YcLn4WVTaF7OsDmhMunXEDm8kBQTqLN
++1OP3BDZb8VDPRAroXrSDFvfqvsX038fy+1esrOhESnpUL3xjeZEZ1Gclz9ps8gAa
++4ioH1wHtDgY1eXnykFfgAYZou0SHF50=
++-----END EC PRIVATE KEY-----
++"""
++
++ES384_PUBLIC_KEY = """
++-----BEGIN PUBLIC KEY-----
++MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAE1O2HC5+FlU2hezrA5oTLp1xA5vJAUE6i
++zdTj9wQ2W/FQz0QK6F60gxb36r7F9N/H8vtXrKzoREp6VC98Y3mRGdRnJc/abPIA
++GuIqB9cB7Q4GNXl58pBX4AGGaLtEhxed
++-----END PUBLIC KEY-----
++"""
++
++ES512_PRIVATE_KEY = """
++-----BEGIN EC PRIVATE KEY-----
++MIHcAgEBBEIAFFmbLI1wN6jnleaZDTQ8nrmhHxgkGd7phlZE38iMFbu1VwONhBQS
++gueyKbKt12zLxm0cS+5+RcTP6YNybqfCBvqgBwYFK4EEACOhgYkDgYYABACYqb5E
++k0j5mumqUxmBOR9aVGftNR7qJW3ZacLPatoqOKmu1yivzjRkfOJF56ZcPakpx4bQ
++uZAqfDoyl3KfOvZXhgD+44AKUZgyJ8UASBcWzZEmDVBRy8+HOaJUNXYJWUoloOdT
++dkppw79RCcDd5T4MILf1WhRnFIAEGdrAiWIJJnSQTw==
++-----END EC PRIVATE KEY-----
++"""
++
++ES512_PUBLIC_KEY = """
++-----BEGIN PUBLIC KEY-----
++MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAmKm+RJNI+ZrpqlMZgTkfWlRn7TUe
++6iVt2WnCz2raKjiprtcor840ZHziReemXD2pKceG0LmQKnw6Mpdynzr2V4YA/uOA
++ClGYMifFAEgXFs2RJg1QUcvPhzmiVDV2CVlKJaDnU3ZKacO/UQnA3eU+DCC39VoU
++ZxSABBnawIliCSZ0kE8=
++-----END PUBLIC KEY-----
++"""
+diff --git a/tests/test_backends.py b/tests/test_backends.py
+index 0d7cce944..d6526e5d4 100644
+--- a/tests/test_backends.py
++++ b/tests/test_backends.py
+@@ -21,6 +21,10 @@
+ from tests.keys import (
+     ES256_PRIVATE_KEY,
+     ES256_PUBLIC_KEY,
++    ES384_PRIVATE_KEY,
++    ES384_PUBLIC_KEY,
++    ES512_PRIVATE_KEY,
++    ES512_PUBLIC_KEY,
+     PRIVATE_KEY,
+     PRIVATE_KEY_2,
+     PUBLIC_KEY,
+@@ -61,8 +65,8 @@ def setUp(self):
+             self.hmac_token_backend,
+             self.rsa_token_backend,
+             TokenBackend("ES256", ES256_PRIVATE_KEY, ES256_PUBLIC_KEY),
+-            TokenBackend("ES384", ES256_PRIVATE_KEY, ES256_PUBLIC_KEY),
+-            TokenBackend("ES512", ES256_PRIVATE_KEY, ES256_PUBLIC_KEY),
++            TokenBackend("ES384", ES384_PRIVATE_KEY, ES384_PUBLIC_KEY),
++            TokenBackend("ES512", ES512_PRIVATE_KEY, ES512_PUBLIC_KEY),
+         )
+ 
+     def test_init(self):
+
+From 689619193c35e35c24bb2ea11fbce73996c703f7 Mon Sep 17 00:00:00 2001
+From: Vjeran Grozdanic <vjeran.grozdanic@gmail.com>
+Date: Mon, 9 Feb 2026 21:36:52 +0100
+Subject: [PATCH 2/3] use well known vectors
+
+---
+ tests/keys.py          | 39 +++++++--------------------------------
+ tests/test_backends.py | 12 ++++++------
+ 2 files changed, 13 insertions(+), 38 deletions(-)
+
+diff --git a/tests/keys.py b/tests/keys.py
+index 931452c2e..0b33a9739 100644
+--- a/tests/keys.py
++++ b/tests/keys.py
+@@ -126,38 +126,13 @@
+ -----END PUBLIC KEY-----
+ """
+ 
+-ES384_PRIVATE_KEY = """
+------BEGIN EC PRIVATE KEY-----
+-MIGkAgEBBDBeJEPZHK/TlHqgPGudxVPaecJu1viqQ47CfF2fpm5pOZRbxn44fPTv
+-NAhZSgq4q9ugBwYFK4EEACKhZANiAATU7YcLn4WVTaF7OsDmhMunXEDm8kBQTqLN
+-1OP3BDZb8VDPRAroXrSDFvfqvsX038fy+1esrOhESnpUL3xjeZEZ1Gclz9ps8gAa
+-4ioH1wHtDgY1eXnykFfgAYZou0SHF50=
+------END EC PRIVATE KEY-----
+-"""
+-
+-ES384_PUBLIC_KEY = """
+------BEGIN PUBLIC KEY-----
+-MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAE1O2HC5+FlU2hezrA5oTLp1xA5vJAUE6i
+-zdTj9wQ2W/FQz0QK6F60gxb36r7F9N/H8vtXrKzoREp6VC98Y3mRGdRnJc/abPIA
+-GuIqB9cB7Q4GNXl58pBX4AGGaLtEhxed
+------END PUBLIC KEY-----
++# Public upstream fixtures:
++# - https://raw.githubusercontent.com/jpadilla/pyjwt/master/tests/keys/jwk_ec_key_P-384.json
++# - https://raw.githubusercontent.com/jpadilla/pyjwt/master/tests/keys/jwk_ec_key_P-521.json
++ES384_JWK = """
++{"kty":"EC","kid":"bilbo.baggins.384@hobbiton.example","crv":"P-384","x":"IDC-5s6FERlbC4Nc_4JhKW8sd51AhixtMdNUtPxhRFP323QY6cwWeIA3leyZhz-J","y":"eovmN9ocANS8IJxDAGSuC1FehTq5ZFLJU7XSPg36zHpv4H2byKGEcCBiwT4sFJsy","d":"xKPj5IXjiHpQpLOgyMGo6lg_DUp738SuXkiugCFMxbGNKTyTprYPfJz42wTOXbtd"}
+ """
+ 
+-ES512_PRIVATE_KEY = """
+------BEGIN EC PRIVATE KEY-----
+-MIHcAgEBBEIAFFmbLI1wN6jnleaZDTQ8nrmhHxgkGd7phlZE38iMFbu1VwONhBQS
+-gueyKbKt12zLxm0cS+5+RcTP6YNybqfCBvqgBwYFK4EEACOhgYkDgYYABACYqb5E
+-k0j5mumqUxmBOR9aVGftNR7qJW3ZacLPatoqOKmu1yivzjRkfOJF56ZcPakpx4bQ
+-uZAqfDoyl3KfOvZXhgD+44AKUZgyJ8UASBcWzZEmDVBRy8+HOaJUNXYJWUoloOdT
+-dkppw79RCcDd5T4MILf1WhRnFIAEGdrAiWIJJnSQTw==
+------END EC PRIVATE KEY-----
+-"""
+-
+-ES512_PUBLIC_KEY = """
+------BEGIN PUBLIC KEY-----
+-MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAmKm+RJNI+ZrpqlMZgTkfWlRn7TUe
+-6iVt2WnCz2raKjiprtcor840ZHziReemXD2pKceG0LmQKnw6Mpdynzr2V4YA/uOA
+-ClGYMifFAEgXFs2RJg1QUcvPhzmiVDV2CVlKJaDnU3ZKacO/UQnA3eU+DCC39VoU
+-ZxSABBnawIliCSZ0kE8=
+------END PUBLIC KEY-----
++ES512_JWK = """
++{"kty":"EC","kid":"bilbo.baggins.521@hobbiton.example","crv":"P-521","x":"AHKZLLOsCOzz5cY97ewNUajB957y-C-U88c3v13nmGZx6sYl_oJXu9A5RkTKqjqvjyekWF-7ytDyRXYgCF5cj0Kt","y":"AdymlHvOiLxXkEhayXQnNCvDX4h9htZaCJN34kfmC6pV5OhQHiraVySsUdaQkAgDPrwQrJmbnX9cwlGfP-HqHZR1","d":"AAhRON2r9cqXX1hg-RoI6R1tX5p2rUAYdmpHZoC1XNM56KtscrX6zbKipQrCW9CGZH3T4ubpnoTKLDYJ_fF3_rJt"}
+ """
+diff --git a/tests/test_backends.py b/tests/test_backends.py
+index d6526e5d4..60755281a 100644
+--- a/tests/test_backends.py
++++ b/tests/test_backends.py
+@@ -21,10 +21,8 @@
+ from tests.keys import (
+     ES256_PRIVATE_KEY,
+     ES256_PUBLIC_KEY,
+-    ES384_PRIVATE_KEY,
+-    ES384_PUBLIC_KEY,
+-    ES512_PRIVATE_KEY,
+-    ES512_PUBLIC_KEY,
++    ES384_JWK,
++    ES512_JWK,
+     PRIVATE_KEY,
+     PRIVATE_KEY_2,
+     PUBLIC_KEY,
+@@ -61,12 +59,14 @@ def setUp(self):
+             "RS256", PRIVATE_KEY, PUBLIC_KEY, AUDIENCE, ISSUER
+         )
+         self.payload = {"foo": "bar"}
++        es384_private_key = algorithms.ECAlgorithm.from_jwk(ES384_JWK)
++        es512_private_key = algorithms.ECAlgorithm.from_jwk(ES512_JWK)
+         self.backends = (
+             self.hmac_token_backend,
+             self.rsa_token_backend,
+             TokenBackend("ES256", ES256_PRIVATE_KEY, ES256_PUBLIC_KEY),
+-            TokenBackend("ES384", ES384_PRIVATE_KEY, ES384_PUBLIC_KEY),
+-            TokenBackend("ES512", ES512_PRIVATE_KEY, ES512_PUBLIC_KEY),
++            TokenBackend("ES384", es384_private_key, es384_private_key.public_key()),
++            TokenBackend("ES512", es512_private_key, es512_private_key.public_key()),
+         )
+ 
+     def test_init(self):
+
+From d3ed61da4a308d034b058af62e02b41917d38508 Mon Sep 17 00:00:00 2001
+From: Vjeran Grozdanic <vjeran.grozdanic@gmail.com>
+Date: Mon, 9 Feb 2026 22:03:25 +0100
+Subject: [PATCH 3/3] Revert "use well known vectors"
+
+This reverts commit 689619193c35e35c24bb2ea11fbce73996c703f7.
+---
+ tests/keys.py          | 39 ++++++++++++++++++++++++++++++++-------
+ tests/test_backends.py | 12 ++++++------
+ 2 files changed, 38 insertions(+), 13 deletions(-)
+
+diff --git a/tests/keys.py b/tests/keys.py
+index 0b33a9739..931452c2e 100644
+--- a/tests/keys.py
++++ b/tests/keys.py
+@@ -126,13 +126,38 @@
+ -----END PUBLIC KEY-----
+ """
+ 
+-# Public upstream fixtures:
+-# - https://raw.githubusercontent.com/jpadilla/pyjwt/master/tests/keys/jwk_ec_key_P-384.json
+-# - https://raw.githubusercontent.com/jpadilla/pyjwt/master/tests/keys/jwk_ec_key_P-521.json
+-ES384_JWK = """
+-{"kty":"EC","kid":"bilbo.baggins.384@hobbiton.example","crv":"P-384","x":"IDC-5s6FERlbC4Nc_4JhKW8sd51AhixtMdNUtPxhRFP323QY6cwWeIA3leyZhz-J","y":"eovmN9ocANS8IJxDAGSuC1FehTq5ZFLJU7XSPg36zHpv4H2byKGEcCBiwT4sFJsy","d":"xKPj5IXjiHpQpLOgyMGo6lg_DUp738SuXkiugCFMxbGNKTyTprYPfJz42wTOXbtd"}
++ES384_PRIVATE_KEY = """
++-----BEGIN EC PRIVATE KEY-----
++MIGkAgEBBDBeJEPZHK/TlHqgPGudxVPaecJu1viqQ47CfF2fpm5pOZRbxn44fPTv
++NAhZSgq4q9ugBwYFK4EEACKhZANiAATU7YcLn4WVTaF7OsDmhMunXEDm8kBQTqLN
++1OP3BDZb8VDPRAroXrSDFvfqvsX038fy+1esrOhESnpUL3xjeZEZ1Gclz9ps8gAa
++4ioH1wHtDgY1eXnykFfgAYZou0SHF50=
++-----END EC PRIVATE KEY-----
++"""
++
++ES384_PUBLIC_KEY = """
++-----BEGIN PUBLIC KEY-----
++MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAE1O2HC5+FlU2hezrA5oTLp1xA5vJAUE6i
++zdTj9wQ2W/FQz0QK6F60gxb36r7F9N/H8vtXrKzoREp6VC98Y3mRGdRnJc/abPIA
++GuIqB9cB7Q4GNXl58pBX4AGGaLtEhxed
++-----END PUBLIC KEY-----
+ """
+ 
+-ES512_JWK = """
+-{"kty":"EC","kid":"bilbo.baggins.521@hobbiton.example","crv":"P-521","x":"AHKZLLOsCOzz5cY97ewNUajB957y-C-U88c3v13nmGZx6sYl_oJXu9A5RkTKqjqvjyekWF-7ytDyRXYgCF5cj0Kt","y":"AdymlHvOiLxXkEhayXQnNCvDX4h9htZaCJN34kfmC6pV5OhQHiraVySsUdaQkAgDPrwQrJmbnX9cwlGfP-HqHZR1","d":"AAhRON2r9cqXX1hg-RoI6R1tX5p2rUAYdmpHZoC1XNM56KtscrX6zbKipQrCW9CGZH3T4ubpnoTKLDYJ_fF3_rJt"}
++ES512_PRIVATE_KEY = """
++-----BEGIN EC PRIVATE KEY-----
++MIHcAgEBBEIAFFmbLI1wN6jnleaZDTQ8nrmhHxgkGd7phlZE38iMFbu1VwONhBQS
++gueyKbKt12zLxm0cS+5+RcTP6YNybqfCBvqgBwYFK4EEACOhgYkDgYYABACYqb5E
++k0j5mumqUxmBOR9aVGftNR7qJW3ZacLPatoqOKmu1yivzjRkfOJF56ZcPakpx4bQ
++uZAqfDoyl3KfOvZXhgD+44AKUZgyJ8UASBcWzZEmDVBRy8+HOaJUNXYJWUoloOdT
++dkppw79RCcDd5T4MILf1WhRnFIAEGdrAiWIJJnSQTw==
++-----END EC PRIVATE KEY-----
++"""
++
++ES512_PUBLIC_KEY = """
++-----BEGIN PUBLIC KEY-----
++MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAmKm+RJNI+ZrpqlMZgTkfWlRn7TUe
++6iVt2WnCz2raKjiprtcor840ZHziReemXD2pKceG0LmQKnw6Mpdynzr2V4YA/uOA
++ClGYMifFAEgXFs2RJg1QUcvPhzmiVDV2CVlKJaDnU3ZKacO/UQnA3eU+DCC39VoU
++ZxSABBnawIliCSZ0kE8=
++-----END PUBLIC KEY-----
+ """
+diff --git a/tests/test_backends.py b/tests/test_backends.py
+index 60755281a..d6526e5d4 100644
+--- a/tests/test_backends.py
++++ b/tests/test_backends.py
+@@ -21,8 +21,10 @@
+ from tests.keys import (
+     ES256_PRIVATE_KEY,
+     ES256_PUBLIC_KEY,
+-    ES384_JWK,
+-    ES512_JWK,
++    ES384_PRIVATE_KEY,
++    ES384_PUBLIC_KEY,
++    ES512_PRIVATE_KEY,
++    ES512_PUBLIC_KEY,
+     PRIVATE_KEY,
+     PRIVATE_KEY_2,
+     PUBLIC_KEY,
+@@ -59,14 +61,12 @@ def setUp(self):
+             "RS256", PRIVATE_KEY, PUBLIC_KEY, AUDIENCE, ISSUER
+         )
+         self.payload = {"foo": "bar"}
+-        es384_private_key = algorithms.ECAlgorithm.from_jwk(ES384_JWK)
+-        es512_private_key = algorithms.ECAlgorithm.from_jwk(ES512_JWK)
+         self.backends = (
+             self.hmac_token_backend,
+             self.rsa_token_backend,
+             TokenBackend("ES256", ES256_PRIVATE_KEY, ES256_PUBLIC_KEY),
+-            TokenBackend("ES384", es384_private_key, es384_private_key.public_key()),
+-            TokenBackend("ES512", es512_private_key, es512_private_key.public_key()),
++            TokenBackend("ES384", ES384_PRIVATE_KEY, ES384_PUBLIC_KEY),
++            TokenBackend("ES512", ES512_PRIVATE_KEY, ES512_PUBLIC_KEY),
+         )
+ 
+     def test_init(self):
