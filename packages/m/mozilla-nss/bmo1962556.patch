@@ -16,7 +16,7 @@ Index: nss/tests/ssl/ssl.sh
 ===================================================================
 --- nss.orig/tests/ssl/ssl.sh
 +++ nss/tests/ssl/ssl.sh
-@@ -982,8 +982,8 @@ ssl_policy_pkix_ocsp()
+@@ -997,8 +997,8 @@ ssl_policy_pkix_ocsp()
    echo " vfyserv -o wrong.host.badssl.com -d ${P_R_SERVERDIR} 2>&1 | tee ${P_R_SERVERDIR}/vfy.out"
    vfyserv -o wrong.host.badssl.com -d ${P_R_SERVERDIR} 2>&1 | tee ${P_R_SERVERDIR}/vfy.out
    # make sure we have the domain mismatch, not bad signature error

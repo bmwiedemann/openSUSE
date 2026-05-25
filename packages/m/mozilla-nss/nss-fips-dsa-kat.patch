@@ -15,7 +15,7 @@ Index: nss/lib/freebl/dsa.c
 ===================================================================
 --- nss.orig/lib/freebl/dsa.c
 +++ nss/lib/freebl/dsa.c
-@@ -536,7 +536,7 @@ DSA_SignDigest(DSAPrivateKey *key, SECIt
+@@ -537,7 +537,7 @@ DSA_SignDigest(DSAPrivateKey *key, SECIt
      return rv;
  }
  

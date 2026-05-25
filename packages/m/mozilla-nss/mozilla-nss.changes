@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 15 18:10:41 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.123.1
+  * bmo#2033783 - reject DTLS 1.3 Server Hello after HVR without
+    capping ss->vrange.max
+- update to NSS 3.123
+  * https://groups.google.com/a/mozilla.org/g/dev-tech-crypto/c/AW6VHkn6E0o
+- disabled FIPS patches temporarily (need significant rebasing)
+
+-------------------------------------------------------------------
 Tue Apr 28 15:51:56 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to NSS 3.122.2:

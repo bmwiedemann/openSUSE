@@ -483,7 +483,7 @@ Index: nss/lib/freebl/fipsfreebl.c
  /*
   * different platforms have different ways of calling and initial entry point
   * when the dll/.so is loaded. Most platforms support either a posix pragma
-@@ -1667,38 +1674,39 @@ freebl_fips_DH_PowerUpSelfTest(void)
+@@ -1668,38 +1675,39 @@ freebl_fips_DH_PowerUpSelfTest(void)
  {
      /* DH Known P (2048-bits) */
      static const PRUint8 dh_known_P[] = {
@@ -555,7 +555,7 @@ Index: nss/lib/freebl/fipsfreebl.c
      };
  
      static const PRUint8 dh_known_Y_1[] = {
-@@ -1744,10 +1752,10 @@ freebl_fips_DH_PowerUpSelfTest(void)
+@@ -1745,10 +1753,10 @@ freebl_fips_DH_PowerUpSelfTest(void)
      };
  
      static const PRUint8 dh_known_hash_result[] = {
@@ -570,7 +570,7 @@ Index: nss/lib/freebl/fipsfreebl.c
      };
  
      /* DH variables. */
-@@ -1811,17 +1819,19 @@ freebl_fips_RNG_PowerUpSelfTest(void)
+@@ -1812,17 +1820,19 @@ freebl_fips_RNG_PowerUpSelfTest(void)
      return (SECSuccess);
  }
  
@@ -591,7 +591,7 @@ Index: nss/lib/freebl/fipsfreebl.c
  
  #define DO_FREEBL 1
  #define DO_REST 2
-@@ -1933,11 +1943,13 @@ static PRBool self_tests_ran = PR_FALSE;
+@@ -1934,11 +1944,13 @@ static PRBool self_tests_ran = PR_FALSE;
  static PRBool self_tests_freebl_success = PR_FALSE;
  static PRBool self_tests_success = PR_FALSE;
  
@@ -606,7 +606,7 @@ Index: nss/lib/freebl/fipsfreebl.c
  {
      SECStatus rv;
      /* if the freebl self tests didn't run, there is something wrong with
-@@ -1950,7 +1962,7 @@ BL_POSTRan(PRBool freebl_only)
+@@ -1951,7 +1963,7 @@ BL_POSTRan(PRBool freebl_only)
          return PR_TRUE;
      }
      /* if we only care about the freebl tests, we are good */
@@ -615,7 +615,7 @@ Index: nss/lib/freebl/fipsfreebl.c
          return PR_TRUE;
      }
      /* run the rest of the self tests */
-@@ -1969,32 +1981,16 @@ BL_POSTRan(PRBool freebl_only)
+@@ -1970,32 +1982,16 @@ BL_POSTRan(PRBool freebl_only)
      return PR_TRUE;
  }
  
@@ -653,7 +653,7 @@ Index: nss/lib/freebl/fipsfreebl.c
      self_tests_freebl_ran = PR_TRUE; /* we are running the tests */
  
      if (!freebl_only) {
-@@ -2006,20 +2002,55 @@ bl_startup_tests(void)
+@@ -2007,20 +2003,55 @@ bl_startup_tests(void)
      /* always run the post tests */
      rv = freebl_fipsPowerUpSelfTest(freebl_only ? DO_FREEBL : DO_FREEBL | DO_REST);
      if (rv != SECSuccess) {
@@ -711,7 +711,7 @@ Index: nss/lib/freebl/fipsfreebl.c
  }
  
  /*
-@@ -2028,19 +2059,12 @@ bl_startup_tests(void)
+@@ -2029,19 +2060,12 @@ bl_startup_tests(void)
   * power on selftest failed.
   */
  SECStatus
@@ -733,7 +733,7 @@ Index: nss/lib/freebl/fipsfreebl.c
      if (rerun) {
          /* reset the flags */
          self_tests_freebl_ran = PR_FALSE;
-@@ -2054,10 +2078,89 @@ BL_FIPSEntryOK(PRBool freebl_only, PRBoo
+@@ -2055,10 +2079,89 @@ BL_FIPSEntryOK(PRBool freebl_only, PRBoo
          return SECSuccess;
      }
      /* standalone freebl can initialize */
@@ -1170,7 +1170,7 @@ Index: nss/lib/softoken/fipstest.c
 ===================================================================
 --- nss.orig/lib/softoken/fipstest.c
 +++ nss/lib/softoken/fipstest.c
-@@ -683,6 +683,175 @@ sftk_fips_HKDF_PowerUpSelfTest(void)
+@@ -684,6 +684,175 @@ sftk_fips_HKDF_PowerUpSelfTest(void)
      return (SECSuccess);
  }
  
@@ -1346,7 +1346,7 @@ Index: nss/lib/softoken/fipstest.c
  static PRBool sftk_self_tests_ran = PR_FALSE;
  static PRBool sftk_self_tests_success = PR_FALSE;
  
-@@ -694,7 +863,6 @@ void
+@@ -695,7 +864,6 @@ void
  sftk_startup_tests_with_rerun(PRBool rerun)
  {
      SECStatus rv;
@@ -1354,7 +1354,7 @@ Index: nss/lib/softoken/fipstest.c
  
      PORT_Assert(!sftk_self_tests_ran);
      PORT_Assert(!sftk_self_tests_success);
-@@ -706,6 +874,7 @@ sftk_startup_tests_with_rerun(PRBool rer
+@@ -707,6 +875,7 @@ sftk_startup_tests_with_rerun(PRBool rer
      if (rv != SECSuccess) {
          return;
      }
@@ -1362,7 +1362,7 @@ Index: nss/lib/softoken/fipstest.c
      /* make sure freebl is initialized, or our RSA check
       * may fail. This is normally done at freebl load time, but it's
       * possible we may have shut freebl down without unloading it. */
-@@ -723,12 +892,15 @@ sftk_startup_tests_with_rerun(PRBool rer
+@@ -724,12 +893,15 @@ sftk_startup_tests_with_rerun(PRBool rer
      if (rv != SECSuccess) {
          return;
      }
@@ -1382,7 +1382,7 @@ Index: nss/lib/softoken/fipstest.c
      rv = sftk_fips_IKE_PowerUpSelfTests();
      if (rv != SECSuccess) {
          return;
-@@ -766,17 +938,10 @@ sftk_startup_tests(void)
+@@ -767,17 +939,10 @@ sftk_startup_tests(void)
  CK_RV
  sftk_FIPSEntryOK(PRBool rerun)
  {
@@ -1401,7 +1401,7 @@ Index: nss/lib/softoken/fipstest.c
      if (rerun) {
          sftk_self_tests_ran = PR_FALSE;
          sftk_self_tests_success = PR_FALSE;
-@@ -787,6 +952,17 @@ sftk_FIPSEntryOK(PRBool rerun)
+@@ -788,6 +953,17 @@ sftk_FIPSEntryOK(PRBool rerun)
      }
      return CKR_OK;
  }

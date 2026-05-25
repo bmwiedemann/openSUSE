@@ -17,15 +17,16 @@
 #
 
 
-%global nss_softokn_fips_version 3.122
-%define NSPR_min_version 4.38
+%global nss_softokn_fips_version 3.123
+%define NSPR_min_version 4.39
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 %global crypto_policies_version 20210218
+%define fips 0
 Name:           mozilla-nss
-Version:        3.122.2
+Version:        3.123.1
 Release:        0
-%define underscore_version 3_122_2
+%define underscore_version 3_123_1
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -211,6 +212,7 @@ cd nss
 %patch -P 6 -p1
 %patch -P 7 -p1
 # FIPS patches
+%if 0%{?fips}
 %patch -P 9 -p1
 %patch -P 10 -p1
 %patch -P 11 -p1
@@ -246,6 +248,7 @@ cd nss
 %endif
 %patch -P 50 -p1
 %patch -P 51 -p1
+%endif
 
 # additional CA certificates
 #cd security/nss/lib/ckfw/builtins
