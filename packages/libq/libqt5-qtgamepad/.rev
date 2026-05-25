@@ -271,4 +271,12 @@
     <comment>Qt 5.15.18 (forwarded request 1315523 from favogt)</comment>
     <requestid>1315547</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9a56c36da02a4625de22e8e761780536</srcmd5>
+    <version>5.15.19+kde0</version>
+    <time>1779738836</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.19 - last Qt 5 ever? (forwarded request 1354905 from favogt)</comment>
+    <requestid>1354915</requestid>
+  </revision>
 </revisionlist>
