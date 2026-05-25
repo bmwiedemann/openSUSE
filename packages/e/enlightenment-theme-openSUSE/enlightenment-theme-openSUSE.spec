@@ -29,6 +29,10 @@ Source:         enlightenment-theme-openSUSE-%{version}.tar.xz
 BuildRequires:  edje
 # for convert
 BuildRequires:  ImageMagick
+%if 0%{?suse_version} > 1550
+# We use ImageMagick to change the color of png files and crop some
+BuildRequires:  ImageMagick-config-7-upstream-open
+%endif
 Requires:       elementary
 Provides:       enlightenment-theme
 Provides:       enlightenment-theme-dft

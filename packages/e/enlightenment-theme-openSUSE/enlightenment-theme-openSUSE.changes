@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 25 10:21:17 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Pull in ImageMagick-config-7-upstream-open as we manipulate
+  images as part of the theme creation process
+
+-------------------------------------------------------------------
 Mon Feb  3 16:27:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.20: remove commented ot setup line. %setup i
