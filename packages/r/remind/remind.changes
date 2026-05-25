@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon May 18 08:08:47 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.02.06 - 2026-05-15
+
+- NEW FEATURE: remind: Add $Repeat read-only system variable which is
+  set to N if a command-line repeat of '*N' is supplied.
+
+- NEW FEATURE: remind: You can use a command-line argument of the form
+  '@trigger' to set the current date.  Remind evaluates the trigger
+  and sets today() to the result.  For example, the following command
+  runs Remind in Agenda Mode on the next upcoming Friday the 13th:
+
+      remind filename.rem '@13 SATISFY [$Tw == 5]'
+
+  and the next command runs it on 2026-11-13, the first Friday the 13th
+  on or after 2026-08-01:
+
+      remind filename.rem 2026-08-01 '@13 SATISFY [$Tw == 5]'
+
+- MINOR CHANGE: remind: When you supply the date on the command-line,
+  you can leave out the year, which defaults to the current year in
+  that case.
+
+- MINOR CHANGE: remind: When dumping variables, indicate preserved
+  variables with a <preserved> tag.
+
+- MINOR CHANGE: remind: Issue warnings if we try to FUNSET or
+  PUSH-FUNCS a built-in function.
+
+- BUG FIX: include/holidays/jewish.rem: Rearrange code to improve ICS
+  export.
+
+- BUG FIX: "make install": Remove old holidays files to avoid installation
+  failure because of change in symlink setup.
+
+-------------------------------------------------------------------
 Tue Mar  3 08:12:37 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 06.02.05 - 2026-03-02
