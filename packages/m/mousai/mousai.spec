@@ -18,14 +18,17 @@
 
 
 %define _lto_cflags %{nil}
+%define _name   Mousai
 Name:           mousai
 Version:        0.7.10
 Release:        0
 Summary:        Identify songs in seconds
 License:        GPL-3.0-or-later
 URL:            https://github.com/SeaDve/Mousai
-Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-BuildRequires:  appstream-glib
+Source0:        %{_name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
+
+BuildRequires:  AppStream
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  libxml2-tools
@@ -49,7 +52,7 @@ return the title and artist of that song!
 %lang_package
 
 %prep
-%autosetup
+%autosetup -n %{_name}-%{version} -a1
 
 %build
 %meson
@@ -61,7 +64,7 @@ return the title and artist of that song!
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
-appstream-util validate-relax --nonet \
+appstreamcli validate --no-net \
       %{buildroot}%{_datadir}/metainfo/*.metainfo.xml
 
 %files

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 15 16:04:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to source service for tarball and vendored dependencies,
+  this will allow us to update the vendored dependencies when
+  needed due to security bugs etc.
+- Replace appstream-glib with AppStream, use the non-deprecated
+  application.
+
+-------------------------------------------------------------------
 Thu May 14 10:32:55 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.7.10
