@@ -2538,4 +2538,29 @@ New stable rel</comment>
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346587</requestid>
   </revision>
+  <revision rev="274" vrev="1">
+    <srcmd5>9a76a23b135625ff53fc92f647859489</srcmd5>
+    <version>3.60.2</version>
+    <time>1779738731</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.60.2:
+  + Bug Fixes:
+    - IMAPx: Sent folder reverts to default with iCloud email and
+      Quick Resync
+    - Truncated file stored in the (mail) cache
+  + Miscellaneous:
+    - e-ms-oapxbc:
+      . Simplify error handling in MS-OAPXBC OIDC extension
+      . Fix error handling of broker response
+      . Align D-Bus parameters with sso-mib
+      . Add support for broker versions &gt; 2.0.1
+    - Do not lock SExp object in data book/cal views start
+    - e-book-meta-backend: Handle data: URI-s in PHOTO/LOGO
+    - Calendar: Use icaldurationtype_as_utc_seconds() for libical
+      4.x
+    - OAuth2: Use its own error domain and add
+      camel_util_is_network_error()
+  + Updated translations.</comment>
+    <requestid>1354853</requestid>
+  </revision>
 </revisionlist>

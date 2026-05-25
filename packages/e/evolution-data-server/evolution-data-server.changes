@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri May 22 05:23:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.60.2:
+  + Bug Fixes:
+    - IMAPx: Sent folder reverts to default with iCloud email and
+      Quick Resync
+    - Truncated file stored in the (mail) cache
+  + Miscellaneous:
+    - e-ms-oapxbc:
+      . Simplify error handling in MS-OAPXBC OIDC extension
+      . Fix error handling of broker response
+      . Align D-Bus parameters with sso-mib
+      . Add support for broker versions > 2.0.1
+    - Do not lock SExp object in data book/cal views start
+    - e-book-meta-backend: Handle data: URI-s in PHOTO/LOGO
+    - Calendar: Use icaldurationtype_as_utc_seconds() for libical
+      4.x
+    - OAuth2: Use its own error domain and add
+      camel_util_is_network_error()
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 10 13:10:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.60.1:
