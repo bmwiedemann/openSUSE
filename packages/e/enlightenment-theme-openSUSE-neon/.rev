@@ -27,4 +27,13 @@
 </comment>
     <requestid>957263</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>82579f9d523e7cb6a428a48c0092c032</srcmd5>
+    <version>20220219.1.26</version>
+    <time>1779739022</time>
+    <user>dimstar_suse</user>
+    <comment>- Pull in ImageMagick-config-7-upstream-open as we manipulate
+  images as part of the theme creation process</comment>
+    <requestid>1355064</requestid>
+  </revision>
 </revisionlist>

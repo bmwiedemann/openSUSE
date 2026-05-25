@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 25 10:21:17 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Pull in ImageMagick-config-7-upstream-open as we manipulate
+  images as part of the theme creation process
+
+-------------------------------------------------------------------
 Thu Feb 24 09:40:56 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Themes are going to recommend there icon themes as well

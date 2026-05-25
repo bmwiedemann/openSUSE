@@ -1,7 +1,7 @@
 #
 # spec file for package enlightenment-theme-openSUSE-neon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,10 +30,14 @@ BuildRequires:  efl
 BuildRequires:  fdupes
 # for convert
 BuildRequires:  ImageMagick
+%if 0%{?suse_version} > 1550
+# We use ImageMagick to change the color of png files and crop some
+BuildRequires:  ImageMagick-config-7-upstream-open
+%endif
 Provides:       enlightenment-theme
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-Recommends:    openSUSE-e-X-Neon-Icons
+Recommends:     openSUSE-e-X-Neon-Icons
 
 %description
 openSUSE, theme for Enlightenment
