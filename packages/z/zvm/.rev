@@ -118,4 +118,15 @@
     - Logging consistency improvements (forwarded request 1348990 from lmulling)</comment>
     <requestid>1348991</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c2548e1195b56cd9a4a80a1ec3c9c00d</srcmd5>
+    <version>0.8.22</version>
+    <time>1779739062</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.22:
+  * fix false path escape error
+- Includes changes from 0.8.21:
+  * remove dependancy on system tar for xz and tar decompression (forwarded request 1355090 from lmulling)</comment>
+    <requestid>1355091</requestid>
+  </revision>
 </revisionlist>

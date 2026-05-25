@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 25 12:15:16 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.8.22:
+  * fix false path escape error
+- Includes changes from 0.8.21:
+  * remove dependancy on system tar for xz and tar decompression
+
+-------------------------------------------------------------------
 Thu Apr 23 17:19:02 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 0.8.20:

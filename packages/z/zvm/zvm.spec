@@ -17,7 +17,7 @@
 
 
 Name:           zvm
-Version:        0.8.20
+Version:        0.8.22
 Release:        0
 Summary:        Easily install/upgrade between different versions of Zig
 License:        MIT
@@ -25,7 +25,6 @@ URL:            https://github.com/tristanisham/zvm
 Source:         https://github.com/tristanisham/zvm/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  golang(API) >= 1.22
-Requires:       tar
 
 %description
 Zig Version Manager (zvm) is a tool for managing your Zig installs. With std
