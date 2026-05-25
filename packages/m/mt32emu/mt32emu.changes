@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 25 09:12:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2.8.2
+  * Prevented Rhythm Timbre bank from overwriting by unofficial
+    SysEx messages addressing memory range 0x090000-0x097FFF.
+
+-------------------------------------------------------------------
 Sat May 23 15:37:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Updated to 2.8.1
