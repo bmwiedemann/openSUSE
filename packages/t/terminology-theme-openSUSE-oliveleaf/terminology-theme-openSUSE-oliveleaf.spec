@@ -27,6 +27,10 @@ Group:          System/X11/Terminals
 URL:            https://en.opensuse.org/Portal:Enlightenment
 Source:         terminology-theme-%{theme_name}-%{version}.tar.xz
 BuildRequires:  ImageMagick
+%if 0%{?suse_version} > 1550
+# We use ImageMagick to change the color of png files and crop some
+BuildRequires:  ImageMagick-config-7-upstream-open
+%endif
 BuildRequires:  edje
 BuildRequires:  python3-base
 Requires:       terminology

@@ -34,4 +34,14 @@
 </comment>
     <requestid>957579</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>be329070979d4f8ca922bd63d143fb8f</srcmd5>
+    <version>20220219.1.26</version>
+    <time>1779739001</time>
+    <user>dimstar_suse</user>
+    <comment>- Pull in ImageMagick-config-7-upstream-open as we manipulate
+  images as part of the theme creation process
+</comment>
+    <requestid>1355057</requestid>
+  </revision>
 </revisionlist>
