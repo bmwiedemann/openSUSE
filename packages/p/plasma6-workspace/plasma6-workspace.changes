@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 24 10:21:27 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix expiration of notifications with Qt 6.11.1 (kde#520120):
+  * 0001-libnotificationmanager-Return-something-of-the-corre.patch
+
+-------------------------------------------------------------------
 Tue May 12 14:00:32 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:

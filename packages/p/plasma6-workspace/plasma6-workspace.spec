@@ -42,6 +42,8 @@ Source2:        plasma.keyring
 %endif
 Source3:        sddm.conf
 Source4:        waitforkded.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-libnotificationmanager-Return-something-of-the-corre.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus6.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
