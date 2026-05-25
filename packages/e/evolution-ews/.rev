@@ -1395,4 +1395,23 @@
   + Updated translations.</comment>
     <requestid>1346895</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>58e855d510db2c1cb1dd295f55845c1d</srcmd5>
+    <version>3.60.2</version>
+    <time>1779738738</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.60.2:
+  + Bug Fixes:
+    - m365:
+      . Skip Out of Office check for shared mailboxes
+      . GOA account can delay OAuth2 support addition
+    - Truncated file stored in the (mail) cache
+  + Miscellaneous:
+    - e-m365-connection: Ensure soup message body is filled on
+      retry
+    - Calendar: Use icaldurationtype_as_utc_seconds() for libical
+      4.x
+    - OAuth2: Uses its own error domain</comment>
+    <requestid>1354856</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 22 05:32:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.60.2:
+  + Bug Fixes:
+    - m365:
+      . Skip Out of Office check for shared mailboxes
+      . GOA account can delay OAuth2 support addition
+    - Truncated file stored in the (mail) cache
+  + Miscellaneous:
+    - e-m365-connection: Ensure soup message body is filled on
+      retry
+    - Calendar: Use icaldurationtype_as_utc_seconds() for libical
+      4.x
+    - OAuth2: Uses its own error domain
+
+-------------------------------------------------------------------
 Fri Apr 10 13:29:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.60.1:
