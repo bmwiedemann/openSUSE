@@ -156,4 +156,13 @@
     <comment></comment>
     <requestid>1353409</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>66ebc5bdadcab13399d25c6c050870bb</srcmd5>
+    <version>1.8.1</version>
+    <time>1779739057</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.1:
+  * Bug fixes</comment>
+    <requestid>1355088</requestid>
+  </revision>
 </revisionlist>
