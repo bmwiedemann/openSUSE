@@ -25,12 +25,12 @@ Version:        1.10.2
 Release:        0
 Summary:        GTK+ audio player
 License:        BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later
-Group:          Productivity/Multimedia/Sound/Players
 URL:            https://deadbeef.sourceforge.io/
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}.appdata.xml
 # PATCH-FIX-OPENSUSE 0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
+ExclusiveArch:  aarch64 ppc64le x86_64
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  clang
@@ -47,6 +47,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(faad2)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -72,13 +73,10 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(wavpack)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
-ExcludeArch:    %{ix86}
-%if %{with restricted}
-BuildRequires:  pkgconfig(faad2)
-Requires:       %{name}-plugins-extra = %{version}-%{release}
-%else
-Recommends:     %{name}-plugins-extra = %{version}
-%endif
+Obsoletes:      %{name}-plugins-extra < %{version}-%{release}
+Obsoletes:      %{name}-restricted-plugins < %{version}-%{release}
+Provides:       %{name}-plugins-extra = %{version}-%{release}
+Provides:       %{name}-restricted-plugins = %{version}-%{version}
 Obsoletes:      deadbeef-plugin-mpris2 <= 1.16
 Provides:       deadbeef-plugin-mpris2 = 1.16.1
 
@@ -91,24 +89,9 @@ similar to Foobar2000.
 
 %lang_package
 
-%if %{with restricted}
-%package plugins-extra
-Summary:        Extra plugins for DeaDBeeF
-License:        BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later AND Unicode AND NonFree
-Group:          Productivity/Multimedia/Sound/Players
-Requires:       %{name} = %{version}
-Recommends:     faac
-Obsoletes:      %{name}-restricted-plugins < %{version}
-Provides:       %{name}-restricted-plugins = %{version}-%{version}
-
-%description plugins-extra
-Extra plugins for DeaDBeeF audio player.
-%endif
-
 %package devel
 Summary:        Development files for %{name}
 License:        Zlib
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -126,27 +109,14 @@ sed -i "s/-msse3//" ./external/ddb_dsp_libretro/Makefile.*
 %build
 export CC=clang
 export CXX=clang++
-# clang on 15.3 doesn't know about '-Wno-unused-but-set-variable'
-%if 0%{?sle_version} == 150300
-export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-unused-command-line-argument -fpie -fPIC"
+export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-error=unused-variable -Wno-unused-command-line-argument -Wno-unused-but-set-variable -fpie -fPIC"
 export CXXFLAGS="$CFLAGS"
-%else
-export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-unused-command-line-argument -Wno-unused-but-set-variable -fpie -fPIC"
-export CXXFLAGS="$CFLAGS"
-%endif
-%ifnarch x86_64
-export CFLAGS=$(echo "$CFLAGS -Wno-error=unused-variable")
-export CXXFLAGS="$CFLAGS"
-%endif
 # libdispatch-devel puts Block.h in non standard directory
 export CFLAGS="$CFLAGS -I%{_includedir}/block"
 export LDFLAGS="$LDFLAGS -pie"
 
 %configure \
         --disable-static \
-%ifarch %{ix86}
-        --disable-soundtouch \
-%endif
         --disable-psf \
         --docdir=%{_docdir}/%{name}
 %make_build
@@ -169,6 +139,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING COPYING.GPLv2 COPYING.LGPLv2.1
 %{_bindir}/%{name}
 %dir %{_libdir}/%{name}/
+%{_libdir}/%{name}/aac.so*
 %{_libdir}/%{name}/adplug.so*
 %{_libdir}/%{name}/alsa.so*
 %{_libdir}/%{name}/artwork.so*
@@ -211,9 +182,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}/ddb_out_pw.so*
 %{_libdir}/%{name}/ddb_shn.so*
 %{_libdir}/%{name}/medialib.so*
-%ifnarch %{ix86}
 %{_libdir}/%{name}/ddb_soundtouch.so*
-%endif
 %{_libdir}/%{name}/alac.so*
 %{_libdir}/%{name}/in_sc68.so*
 %{_libdir}/%{name}/data68/
@@ -231,11 +200,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/metainfo/%{name}.appdata.xml
 
 %files lang -f %{name}.lang
-
-%if %{with restricted}
-%files plugins-extra
-%{_libdir}/%{name}/aac.so*
-%endif
 
 %files devel
 %{_includedir}/%{name}/

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 24 12:34:56 UTC 2026 - olaf@aepfle.de
+
+- Move plugins-extra to primary package
+- Add ExclusiveArch 64bit to match BuildRequires 
+
+-------------------------------------------------------------------
 Tue Apr  7 10:47:32 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Add Provides/Obsoletes for deadbeef-plugin-mpris2

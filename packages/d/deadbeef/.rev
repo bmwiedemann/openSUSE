@@ -346,4 +346,12 @@
   * Added: MPRIS plugin is now part of DeaDBeeF, replacing global hotkeys</comment>
     <requestid>1344970</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>5b6dd988b67f46252e359a6b6753f494</srcmd5>
+    <version>1.10.2</version>
+    <time>1779738948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1355023</requestid>
+  </revision>
 </revisionlist>
