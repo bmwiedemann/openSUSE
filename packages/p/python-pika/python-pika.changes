@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 17 21:15:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Enforce yapf/google formatting in CI #1558
+  * Add Hatch dev environment and scripts #1579 (lukebakken)
+  * Drop more Python 2 compatibility code #1561 (lukebakken)
+  * Add Hatch scripts to standardize developer commands #1578
+- drop support-python314.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Nov 12 03:59:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python314.patch:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pika
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %define mod_name pika
 %{?sle15_python_module_pythons}
 Name:           python-%{mod_name}
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Pika Python AMQP Client Library
 License:        BSD-3-Clause
 URL:            https://github.com/pika/pika
 Source:         https://github.com/pika/pika/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#pika/pika#1524
-Patch0:         support-python314.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
