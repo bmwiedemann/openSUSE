@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 22 15:17:05 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.19+kde3, rebased upstream:
+  * Bump version to 5.15.19
+
+-------------------------------------------------------------------
 Sat Nov 22 21:20:22 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
