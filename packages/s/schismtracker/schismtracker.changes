@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon May 25 15:37:46 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260524
+  * Fixed a bunch of performance problems causing ridiculous
+    amounts of CPU usage.
+  * Fixed MIDI input when multithreading is enabled.
+  * Fixed a memory leak in the zlib decompressor.
+  * Fixed import of boobiesqueezed XM files.
+  * Fixed buffer overrun in 24-bit video scalers.
+  * Fixed a possible race condition in the timer subsystem, which
+    could result in a thread leak.
+  * Fixed typing of / and \ on Spanish keyboards.
+  * Fixed typing tab in the message editor.
+  * Fixed incorrect writing of AIFF files.
+  * Fixed copying of pattern data including instrument numbers
+    higher than 99.
+  * Better import of .mod notes.
+  * Properly ignore Zxx effects in NNA channels.
+  * Show arrows in the corners of listboxes when there are more
+    items beyond whats displayed.
+  * Made the built-in FFT variable width (it will probably not work
+    very well still if the buffer size is not a power of 2).
+  * Switch cursor shape when leaving a page.
+  * Added "Hotdog Stand" and "Acid Gas" palettes.
+  * Big endian ASIO formats now work.
+  * Added SNES BRR sample loader.
+  * Fixed negative coordinate wraparound.
+  * Honor gl_bilinear option in very old config files.
+  * Force block screen keyboards on SDL 2 and SDL 3, they do not
+    play well with Schism.
+  * Limited FPS to screen refresh rate. If it cannot be retrieved
+    it defaults to 60 Hz.
+
+-------------------------------------------------------------------
 Tue Oct 14 23:13:07 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20251014

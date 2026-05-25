@@ -1,7 +1,7 @@
 #
 # spec file for package schismtracker
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           schismtracker
-Version:        20251014
+Version:        20260524
 Release:        0
 Summary:        Music editor that matches the look and feel of Impulse Tracker
 License:        GPL-2.0-or-later
@@ -36,7 +36,7 @@ BuildRequires:  python3-base
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(libutf8proc)
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl3)
 
 %description
 Schism Tracker is a reimplementation of Impulse Tracker, a
