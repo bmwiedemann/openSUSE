@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 15 17:56:26 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to versoin 4.39
+  * Improved error handling in PR_CreateThread on Windows
+  * Cleanup and Type-cast fixes for prtime
+  * Remove unused prstreams C++ wrapper from NSPR
+  * Memory poisoning and Arena redzone fixes
+  * Removed emacs/vim modelines and .cvsignore files
+  * Added .editorconfig
+
+-------------------------------------------------------------------
 Sun Dec  7 07:33:19 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to version 4.38.2

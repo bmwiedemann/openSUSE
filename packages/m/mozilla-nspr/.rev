@@ -814,4 +814,18 @@ require it nevertheless
   * Ensure parameter passed to isalpha() is unsigned char (bmo#375149)</comment>
     <requestid>1321911</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>cbc8a3e7db3830a12abe0cbc43a3eca2</srcmd5>
+    <version>4.39</version>
+    <time>1779738746</time>
+    <user>dimstar_suse</user>
+    <comment>- update to versoin 4.39
+  * Improved error handling in PR_CreateThread on Windows
+  * Cleanup and Type-cast fixes for prtime
+  * Remove unused prstreams C++ wrapper from NSPR
+  * Memory poisoning and Arena redzone fixes
+  * Removed emacs/vim modelines and .cvsignore files
+  * Added .editorconfig</comment>
+    <requestid>1354538</requestid>
+  </revision>
 </revisionlist>
