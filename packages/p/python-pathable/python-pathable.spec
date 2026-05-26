@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pathable
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Object-oriented paths
 License:        Apache-2.0

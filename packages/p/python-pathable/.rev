@@ -77,4 +77,14 @@
     flynt, pre-commit, black, isort, GitHub Actions components).</comment>
     <requestid>1339285</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5212ccd9664c1f80040d508aec88d063</srcmd5>
+    <version>0.6.0</version>
+    <time>1779806054</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.0:
+  * Per-accessor identity contract #121
+  * Python 3.14 support #106</comment>
+    <requestid>1355104</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 25 20:06:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * Per-accessor identity contract #121
+  * Python 3.14 support #106
+
+-------------------------------------------------------------------
 Mon Mar 16 08:45:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.0:
