@@ -89,4 +89,16 @@
   * Resolve implicit conversion warnings from clang</comment>
     <requestid>1035541</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>eaffaae4e7a622fcff0152e2afbc4cc3</srcmd5>
+    <version>1.1.6</version>
+    <time>1779806120</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.6
+  * This release adds support for -help, --help, and --version options,
+    and fixes several compiler warnings.
+  * It also adds support for building with meson as well as autoconf.
+- Switch to meson build system.</comment>
+    <requestid>1355172</requestid>
+  </revision>
 </revisionlist>
