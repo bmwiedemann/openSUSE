@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 14 11:34:51 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.0.11+53:
+  * Update to gtk4-rs 0.10
+  * Delay calling the color picker
+  * Add "new-window" command-line option
+  * Add D-Bus service file
+  * Updated translations.
+- Switch to source service for tarball. This allows us to update
+  the vendored rust dependencies.
+- Replace appstream-glib with AppStream BuildRequires.
+
+-------------------------------------------------------------------
 Wed Sep 25 01:05:14 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix compilation with --nocheck (boo#1227364)

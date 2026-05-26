@@ -2,7 +2,7 @@
 # spec file for package contrast
 #
 # Copyright (c) 2024 mantarimay
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 
 %define lname   org.gnome.design.Contrast
-%define lurl    06d276a9bf45f81a548c4dcefb27437d
+
 Name:           contrast
-Version:        0.0.11
+Version:        0.0.11+53
 Release:        0
 Summary:        Check difference between two colors
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/design/contrast
-Source:         https://gitlab.gnome.org/-/project/8128/uploads/%{lurl}/%{name}-%{version}.tar.xz
-BuildRequires:  appstream-glib
+Source:         %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
+BuildRequires:  AppStream
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  pkgconfig(gtk4) >= 4.13.0
-BuildRequires:  pkgconfig(libadwaita-1) 
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 
 %description
 Check whether the contrast between two colors meet the WCAG requirements.
@@ -39,7 +40,7 @@ Check whether the contrast between two colors meet the WCAG requirements.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -a1
 
 %build
 %meson
@@ -61,6 +62,7 @@ Check whether the contrast between two colors meet the WCAG requirements.
 %{_datadir}/applications/%{lname}.desktop
 %{_datadir}/icons/hicolor/*/*/%{lname}*svg
 %{_datadir}/metainfo/%{lname}.metainfo.xml
+%{_datadir}/dbus-1/services/%{lname}.service
 
 %files lang -f %{name}.lang
 
