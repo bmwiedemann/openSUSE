@@ -248,4 +248,12 @@ part of summer 2013 libyal refresh for opensuse 13.1
     <comment>- Update to release 20240423</comment>
     <requestid>1170936</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b5cf7af613d70a1f545c4be7e2a555ca</srcmd5>
+    <version>20260525</version>
+    <time>1779806089</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 202605025</comment>
+    <requestid>1355136</requestid>
+  </revision>
 </revisionlist>
