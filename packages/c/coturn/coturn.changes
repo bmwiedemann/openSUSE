@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 25 09:16:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.12.0
+  * Update khash to the latest version (#1919).
+  * Update readme to match latest changes (#1920).
+  * Update docs for drop-invalid-packets and
+    response-origin-only-with-rfc5780.
+  * Multiplexpeer (#1916).
+  * Fix TTL/TOS type conversion (#1915).
+  * turnutils_uclient: sender thread pool + UDP-GSO send batching +
+    recv_pps reporting (#1913).
+  * Fix memory leak introduced by recvmmsg path (#1912).
+  * turnutils_uclient: multi-threaded listener (recv) pool.
+  * examples/turnserver.conf: update description of cli option.
+  * turnutils_uclient: Linux recvmmsg receive path + larger
+    SO_RCVBUF (#1910).
+  * Add UDP-GSO send path (--udp-gso) (#1907).
+  * turnutils_peer: Linux fast path with drain loop,
+    recvmmsg/sendmmsg, U… (#1908).
+  * Relay recvmmsg (#1906).
+  * fuzzing: use hex escapes for HTTP EOH dictionary entry.
+  * Sync turnserver man page with current CLI options (#1903).
+  * Remove stale --ne option from turnserver --help (#1904).
+  * Restore CodeQL permissions, category, and manual build mode.
+
+-------------------------------------------------------------------
 Tue May  5 12:48:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.11.0
