@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu May 21 12:13:30 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.7.3
+  * chore: use s2n_add_overflow for arithmetics in s2n_server_key_exchange.c (#5809)
+  * fix: explicit size checks in s2n_connection_set_session (#5812)
+  * chore: bindings release 0.3.36 (#5814)
+  * fix: add non-negative length check in s2n_utf8_string_from_extension_data (#5816)
+  * fix: zero the blob in s2n_free_without_wipe before invoking callback (#5811)
+  * fix: add NULL check for X509_STORE_new() in s2n_x509_trust_store_add_pem (#5817)
+  * fix: validate ML-DSA key type (#5772)
+  * fix: use uint32_t for partial_client_hello_size to prevent truncation (#5808)
+  * build(deps): bump aws-actions/configure-aws-credentials from 6.0.0 to 6.1.0
+    in /.github/workflows in the all-gha-updates group (#5820)
+  * fix: pin aws crt cpp to resolve general batch failures (#5822)
+  * fix: enforce DH public key range (#5818)
+  * build(deps): bump cross-platform-actions/action from 0.32.0 to 1.0.0
+    in /.github/workflows in the all-gha-updates group (#5824)
+  * feat(metrics): add compatibility metrics (#5823)
+  * revert: "fix: pin aws crt cpp to resolve general batch failures" (#5827)
+  * fix: unchecked NULL return from X509_EXTENSION_get_data (#5825)
+  * refactor(metrics-subscriber): simplify per-resource export flow (#5786)
+  * chore: release metrics subscriber v0.0.2 (#5828)
+  * ci: disable go when build awslc (#5833)
+  * style(bindings): standardize doc links to monospaced format (#5791)
+  * fix: typos in s2n-tls codebase (#5835)
+  * ci: fix failed renegotiation tests in the Rust bindings (#5837)
+  * build(deps): update s2n-codec requirement from 0.77 to 0.78
+    in /bindings/rust/standard (#5839)
+  * fix: cleanup kem public key in failure case (#5841)
+  * ci: accept 400 from ebay.com in https_client network test (#5853)
+  * fix: enable FIPS mode with validated 3+ providers and OpenSSL 3.5+ (#5840)
+  * fix: make get_handshake_type_name procotol aware (#5843)
+  * feat(metrics-subscriber): extract cert parameters from der (#5838)
+  * feat: add pure mlkem1024 to CRT PQ policies (#5830)
+  * docs: clarify OCSP_basic_verify() behavior on delegated responder certs (#5859)
+  * test: Cert retrieval behavior in Rust bindings (#5857)
+  * chore: bump MSRV (#5862)
+
+-------------------------------------------------------------------
 Wed Apr 15 07:43:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.7.2
