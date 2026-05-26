@@ -17,8 +17,8 @@
 
 
 %define srcversion 7.0
-%define patchversion 7.0.10
-%define git_commit bb95589865b5b7e8a8846b45eda7c3eccc7ce782
+%define patchversion 7.0.9
+%define git_commit 9b5964b04dd4f11d2bed17d4df7b4cfc76d15ee4
 %define variant %{nil}
 %define gcc_package gcc
 %define gcc_compiler gcc
@@ -28,9 +28,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source
-Version:        7.0.10
+Version:        7.0.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gbb95589
+Release:        <RELEASE>.g9b5964b
 %else
 Release:        0
 %endif
