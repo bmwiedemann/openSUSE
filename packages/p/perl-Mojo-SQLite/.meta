@@ -57,5 +57,4 @@ SQLite to create at https://www.sqlite.org/tempfiles.html safely.
   my $tempfile = catfile $tempdir, 'sqlite.db';
   my $sql = Mojo::SQLite-&gt;new-&gt;from_filename($tempfile);
   </description>
-  <devel project="devel:languages:perl" package="perl-Mojo-SQLite"/>
 </package>

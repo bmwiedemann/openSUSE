@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-SQLite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,33 +18,37 @@
 
 %define cpan_name Mojo-SQLite
 Name:           perl-Mojo-SQLite
-Version:        3.009
+Version:        4.0.0
 Release:        0
+# v4.0.0 -> normalize -> 4.0.0
+%define cpan_version v4.0.0
 License:        Artistic-2.0
 Summary:        Tiny Mojolicious wrapper for SQLite
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(DBD::SQLite) >= 1.68
+BuildRequires:  perl(DBD::SQLite) >= 1.680
 BuildRequires:  perl(DBI) >= 1.627
-BuildRequires:  perl(Module::Build::Tiny) >= 0.034
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.34
 BuildRequires:  perl(Module::Metadata)
-BuildRequires:  perl(Mojolicious) >= 8.03
+BuildRequires:  perl(Mojolicious) >= 8.30
 BuildRequires:  perl(SQL::Abstract::Pg) >= 1.0
 BuildRequires:  perl(Test::More) >= 0.96
-BuildRequires:  perl(URI) >= 1.69
-BuildRequires:  perl(URI::db) >= 0.15
-BuildRequires:  perl(URI::file) >= 4.21
-Requires:       perl(DBD::SQLite) >= 1.68
+BuildRequires:  perl(URI) >= 1.690
+BuildRequires:  perl(URI::db) >= 0.150
+BuildRequires:  perl(URI::file) >= 4.210
+Requires:       perl(DBD::SQLite) >= 1.680
 Requires:       perl(DBI) >= 1.627
-Requires:       perl(Mojolicious) >= 8.03
+Requires:       perl(Mojolicious) >= 8.30
 Requires:       perl(SQL::Abstract::Pg) >= 1.0
-Requires:       perl(URI) >= 1.69
-Requires:       perl(URI::db) >= 0.15
-Requires:       perl(URI::file) >= 4.21
+Requires:       perl(URI) >= 1.690
+Requires:       perl(URI::db) >= 0.150
+Requires:       perl(URI::file) >= 4.210
 %{perl_requires}
 
 %description
@@ -55,8 +59,9 @@ to offer, generate CRUD queries from data structures, and manage your
 database schema with migrations.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL --installdirs=vendor
@@ -70,7 +75,7 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md examples prereqs.yml README
+%doc Changes CONTRIBUTING.md examples README
 %license LICENSE
 
 %changelog

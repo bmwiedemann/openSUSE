@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 26 08:45:21 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.0.0 (v4.0.0)
+   see /usr/share/doc/packages/perl-Mojo-SQLite/Changes
+
+  v4.0.0    2026-05-25 06:27:21 EDT
+    - wal_mode is now off by default, but can be enabled with the wal_mode option.
+      This will only affect newly created databases, as WAL mode is persistent once set.
+      To disable it on an existing database, issue the query: PRAGMA journal_mode=DELETE;
+    - Fix issue where a transaction that failed to begin would rollback and clear the database handle error.
+
+-------------------------------------------------------------------
 Wed Mar 23 03:07:19 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.009
