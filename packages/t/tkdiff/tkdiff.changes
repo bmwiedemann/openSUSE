@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 25 12:57:31 UTC 2026 - Friedrich Haubensak <hsk17@mail.de>
+
+- Update to 6.0
+  * for info see https://sourceforge.net/p/tkdiff/news/
+  * notes from CHANGELOG:
+    - Adapting to TclTk9.0 release where tilde is no longer an
+      AUTOMATIC logdir reference
+      * Manifested as a rework to command argument handling to
+        RETAIN tilde-syntax
+      * prompted ADDing GLOB-syntax (primarily for dialog) as
+        SHELL already handles
+      * STILL maintains TclTk8.5 as minimum required
+      Additionally, Tk9.0 package rejection had halted ANY/ALL
+        prior TkDiff
+      PLUS significant enhancements to newDiff Dialog w/MAJOR
+      added Help descriptions
+    - Dropped specialized visual configuration SPECIFICALLY
+      concerning a CDE environment
+    - Bug fix to inline highlighting logic to avoid occasional
+      missing instances. 
+    - Minor enhancement to 'Find' text-search tool to report
+      'failure to find'
+    - Very minor (internal) bug fixes, Help and comment 
+      spelling + wording
+
+-------------------------------------------------------------------
 Wed Jul 31 08:53:17 UTC 2024 - ming li <mli@suse.com>
 
 - Update to 5.7
