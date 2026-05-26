@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 22 07:34:10 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.3
+  * Fix error handling for profile provider by @DmitriyMusatkin in (#295)
+- from version 0.10.2
+  * imds: Fix NULL check by @ProjectMutilation in (#289)
+  * fix: Remove strict requirement for ECS SessionToken by @TingDaoK in (#292)
+  * builder -> v0.9.92 and clang-latest by @sbSteveK in (#293)
+
+-------------------------------------------------------------------
 Tue Mar 17 14:21:16 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.10.1
