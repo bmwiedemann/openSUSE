@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyFxA
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017-2018 The openSUSE Project.
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -23,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-PyFxA
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Firefox Accounts client library for Python
 License:        MPL-2.0
@@ -53,7 +54,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
 %python_subpackages
@@ -91,6 +92,7 @@ includedTests="\
 %pre
 %python_libalternatives_reset_alternative fxa-client
 %else
+
 %post
 %python_install_alternative fxa-client
 
@@ -99,6 +101,7 @@ includedTests="\
 %endif
 
 %files %{python_files}
+%license LICENSE.txt
 %doc CHANGES.txt README.rst
 %python_alternative %{_bindir}/fxa-client
 %{python_sitelib}/fxa
