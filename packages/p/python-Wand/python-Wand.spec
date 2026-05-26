@@ -1,7 +1,7 @@
 #
 # spec file for package python-Wand
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Wand
-Version:        0.6.13
+Version:        0.7.1
 Release:        0
 Summary:        Ctypes-based simple MagickWand API binding for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/emcconville/wand
-Source:         https://files.pythonhosted.org/packages/source/W/Wand/Wand-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/W/Wand/wand-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module pytest >= 7.2.0}
 Ctypes-based simple MagickWand API binding for Python.
 
 %prep
-%setup -q -n Wand-%{version}
+%setup -q -n wand-%{version}
 
 %build
 %pyproject_wheel

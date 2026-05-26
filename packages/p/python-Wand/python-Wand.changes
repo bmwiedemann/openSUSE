@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon May 25 21:22:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.1:
+  * Updated accepted animation formats for :attr:`Image.animation
+    <wand.image.Image.animation>` property. [:issue:`682`]
+  * Added new :const:`FILTER_TYPES <wand.image.FILTER_TYPES>`
+    operators. [:issue:`684`] 'lanczosradius' 'cubicspline'
+    'magickernelsharp2013' 'magickernelsharp2021'
+  * 'lanczosradius'
+  * 'cubicspline'
+  * 'magickernelsharp2013'
+  * 'magickernelsharp2021'
+  * Fixed :meth:`Image.length_of_bytes()
+    <wand.image.BaseImage.length_of_bytes>` method by refactoring
+    & applying :const:`c_magick_size_t
+    <wand.cdefs.wandtypes.c_magick_size_t>` type. [:issue:`686`]
+  * [DOC] Fixed typos in documentation [:pull:`685` by Shawn
+    Presser]
+  * Added :meth:`Image.affine() <wand.image.BaseImage.affine>`
+    method.
+  * Added :meth:`Image.bilateral_blur()
+    <wand.image.BaseImage.bilateral_blur>` method.
+  * Added :meth:`Image.channel_fx()
+    <wand.image.Image.channel_fx>` method.
+  * Added :meth:`Image.evaluate_images()
+    <wand.image.BaseImage.evaluate_images>` method.
+  * Added :meth:`Image.floodfill()
+    <wand.image.BaseImage.floodfill>` method.
+  * Added :meth:`Image.morph() <wand.image.Image.morph>` method.
+  * Fixed :meth:`Image.quantize()
+    <wand.image.BaseImage.quantize>` behavior by switching
+    default value of colorspace_type from :const:`None` to
+    "undefined". [:issue:`644`]
+  * Fixed :meth:`Image.liquid_rescale()
+    <wand.image.BaseImage.liquid_rescale>` behavior by switching
+    default value of delta_x from 0 to 1. [:issue:`653`]
+  * Fixed :meth:`Image.sparse_color()
+    <wand.image.BaseImage.sparse_color>`'s colors argument
+    structure to allow multiple (x, y) points with the same color
+    value.
+  * Fixed offset coordinates when used with gravity parameters.
+    [:issue:`669`] :meth:`Image.chop()
+    <wand.image.BaseImage.chop>` :meth:`Image.composite()
+    <wand.image.BaseImage.composite>`
+    :meth:`Image.composite_channel()
+    <wand.image.BaseImage.composite_channel>` :meth:`Image.crop()
+    <wand.image.BaseImage.crop>` :meth:`Image.extent()
+    <wand.image.BaseImage.extent>` :meth:`Image.region()
+    <wand.image.BaseImage.region>` :meth:`Image.splice()
+    <wand.image.BaseImage.splice>`
+  * :meth:`Image.chop() <wand.image.BaseImage.chop>`
+  * :meth:`Image.composite() <wand.image.BaseImage.composite>`
+  * :meth:`Image.composite_channel()
+    <wand.image.BaseImage.composite_channel>`
+  * :meth:`Image.crop() <wand.image.BaseImage.crop>`
+  * :meth:`Image.extent() <wand.image.BaseImage.extent>`
+  * :meth:`Image.region() <wand.image.BaseImage.region>`
+  * :meth:`Image.splice() <wand.image.BaseImage.splice>`
+  * Fixed File I/O handling. [:issue:`675`] :meth:`Image.ping()
+    <wand.image.Image.ping>` :meth:`Image.read()
+    <wand.image.Image.read>` :meth:`Image.save()
+    <wand.image.Image.save>`
+  * :meth:`Image.ping() <wand.image.Image.ping>`
+  * :meth:`Image.read() <wand.image.Image.read>`
+  * :meth:`Image.save() <wand.image.Image.save>`
+  * [DOC] Updated Python versions to reflect current regression
+    testing.
+  * [TEST] Added Python 3.12 regression test. [:issue:`648` by
+    Thijs Triemstra]
+  * [TEST] Added pyproject.toml regression test.
+
+-------------------------------------------------------------------
 Mon May 12 15:54:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

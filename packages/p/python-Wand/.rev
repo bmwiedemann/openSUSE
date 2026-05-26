@@ -89,4 +89,41 @@
     <comment></comment>
     <requestid>1277065</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a7ae8a78b1a4b30d862cdd578e69125a</srcmd5>
+    <version>0.7.1</version>
+    <time>1779806064</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.1:
+  * Updated accepted animation formats for :attr:`Image.animation
+    &lt;wand.image.Image.animation&gt;` property. [:issue:`682`]
+  * Added new :const:`FILTER_TYPES &lt;wand.image.FILTER_TYPES&gt;`
+    operators. [:issue:`684`] 'lanczosradius' 'cubicspline'
+    'magickernelsharp2013' 'magickernelsharp2021'
+  * 'lanczosradius'
+  * 'cubicspline'
+  * 'magickernelsharp2013'
+  * 'magickernelsharp2021'
+  * Fixed :meth:`Image.length_of_bytes()
+    &lt;wand.image.BaseImage.length_of_bytes&gt;` method by refactoring
+    &amp; applying :const:`c_magick_size_t
+    &lt;wand.cdefs.wandtypes.c_magick_size_t&gt;` type. [:issue:`686`]
+  * [DOC] Fixed typos in documentation [:pull:`685` by Shawn
+    Presser]
+  * Added :meth:`Image.affine() &lt;wand.image.BaseImage.affine&gt;`
+    method.
+  * Added :meth:`Image.bilateral_blur()
+    &lt;wand.image.BaseImage.bilateral_blur&gt;` method.
+  * Added :meth:`Image.channel_fx()
+    &lt;wand.image.Image.channel_fx&gt;` method.
+  * Added :meth:`Image.evaluate_images()
+    &lt;wand.image.BaseImage.evaluate_images&gt;` method.
+  * Added :meth:`Image.floodfill()
+    &lt;wand.image.BaseImage.floodfill&gt;` method.
+  * Added :meth:`Image.morph() &lt;wand.image.Image.morph&gt;` method.
+  * Fixed :meth:`Image.quantize()
+    &lt;wand.image.BaseImage.quantize&gt;` behavior by switching
+    default value of colorspace_type from :const:`None` to</comment>
+    <requestid>1355115</requestid>
+  </revision>
 </revisionlist>
