@@ -3211,7 +3211,6 @@ unsorted:
   - deadbeef 
   - deadbeef-devel 
   - deadbeef-lang 
-  - deadbeef-plugin-mpris2 
   - deal 
   - deal_II-devel 
   - deal_II-openmpi4-devel 
@@ -3522,6 +3521,7 @@ unsorted:
   - drumstick-lang 
   - drumstick-mimetypes 
   - drush 
+  - ds4-battery-monitor 
   - ds4drv 
   - dsda-doom 
   - dssi 
@@ -33441,6 +33441,7 @@ unsorted:
   - python314-djangorestframework 
   - python314-djangorestframework-camel-case 
   - python314-djangorestframework-csv 
+  - python314-djangorestframework-simplejwt 
   - python314-djangorestframework-stubs 
   - python314-dkimpy 
   - python314-dlib 
