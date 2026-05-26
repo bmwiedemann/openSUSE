@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 22 07:55:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.16.0
+  * Metrics metadata by @xiazhvera in (#422)
+  * builder -> v0.9.92 and clang-latest by @sbSteveK in (#424)
+  * Refactor IoT metrics parsing by @xiazhvera in (#423)
+  * Keep metadata param order by @xiazhvera in (#426)
+
+-------------------------------------------------------------------
+Mon Mar 23 11:06:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.15.2
+  * Manual Puback to Manual Publish Acknowledgement by @sbSteveK in (#421)
+- from version 0.15.1
+  * Manual Puback Logging Change by @sbSteveK in (#420)
+
+-------------------------------------------------------------------
 Tue Mar 17 13:24:58 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.15.0
