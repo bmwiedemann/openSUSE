@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon May 25 20:05:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * `Connection.ping()` change the default to not reconnect and
+    deprecate `reconnect` argument.
+  * Create a new connection if you want to reconnect.
+  * `connect()` arguments `db` and `passwd` now emit
+    DeprecationWarning.
+  * Use `database` and `password` instead.
+  * Reorganize TLS connection behavior.
+  * PyMySQL uses TLS by default when server supports it.
+  * Use `ssl_disabled=True` to prohibit SSL.
+  * When `ssl_verify_cert=True`, `ssl_verify_identity=True`, an
+    `ssl.SSLContext` is passed,
+  * or when any other SSL option is configured, the connection
+    **requires** SSL and raises
+  * `OperationalError` (CR_SSL_CONNECTION_ERROR) if the server
+    doesn't support it.
+  * Support MySQL 8 row/column alias syntax in `executemany`
+    INSERT regex.
+  * Expose SQLSTATE on MySQL protocol exceptions without changing
+    exception formatting.
+  * Reject non-finite `decimal.Decimal` query parameters (`NaN`,
+    `sNaN`, `±Infinity`).
+  * `Connection.set_charset(charset)` now emits
+    `DeprecationWarning`.
+  * Fix `Cursor.callproc()` didn't escape procedure name.
+  * There was a possibility of SQL injection when calling a
+    procedure with a string received from an untrusted source as
+    the procedure name.
+
+-------------------------------------------------------------------
 Mon Sep 29 21:06:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.2:

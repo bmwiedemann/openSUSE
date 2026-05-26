@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyMySQL
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyMySQL
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Pure Python MySQL Driver
 License:        MIT
