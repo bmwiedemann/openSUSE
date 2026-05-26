@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 21 11:25:13 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.12.4
+  * builder -> v0.9.92 and clang-latest by @sbSteveK in (#628)
+  * Auto - Update S3 Ruleset & Partition by @aws-crt-bot in (#632)
+  * Switch to generic xml unescaping logic by @DmitriyMusatkin in (#631)
+  * Expose max_parts_pending_read as an env variable by @azkrishpy in (#629)
+  * Fix unknown checksum handling by @DmitriyMusatkin in (#633)
+
+-------------------------------------------------------------------
 Tue Apr 28 07:46:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.12.3
