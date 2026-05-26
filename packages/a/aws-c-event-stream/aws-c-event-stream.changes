@@ -1,8 +1,23 @@
 -------------------------------------------------------------------
+Fri May 22 07:48:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.1
+  * builder -> v0.9.92 and clang-latest by @sbSteveK in (#143)
+  * Fix several decoding infinite loops by @bretambrose in (#144)
+
+-------------------------------------------------------------------
+Thu Apr  2 07:04:19 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.0
+  * Link spec by @TingDaoK in (#141)
+  * Obtain the continuation token lock early by @azkrishpy in (#142)
+- Add missing Bugzilla and CVE references in previous changelog entry
+
+-------------------------------------------------------------------
 Tue Mar 17 13:22:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.6.0
-  * Fix possible overflow by @TingDaoK in (#139)
+  * Fix possible overflow by @TingDaoK in (#139) (bsc#1261298, CVE-2026-5190)
 
 -------------------------------------------------------------------
 Mon Jan  5 09:05:21 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
