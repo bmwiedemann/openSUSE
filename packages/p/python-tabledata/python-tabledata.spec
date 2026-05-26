@@ -1,7 +1,7 @@
 #
 # spec file for package python-tabledata
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,29 @@
 
 
 Name:           python-tabledata
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Python library to represent tabular data
 License:        MIT
 URL:            https://github.com/thombashi/tabledata
 Source:         https://files.pythonhosted.org/packages/source/t/tabledata/tabledata-%{version}.tar.gz
+BuildRequires:  %{python_module DataProperty >= 1.0.2}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 64}
 BuildRequires:  %{python_module setuptools_scm >= 8}
+BuildRequires:  %{python_module typepy >= 1.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 ## SECTION test requirements
-BuildRequires:  %{python_module DataProperty >= 1.0.1}
+BuildRequires:  %{python_module DataProperty >= 1.0.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typepy >= 1.2.0}
 ## /SECTION
-Requires:       python-DataProperty >= 1.0.1
+Requires:       python-DataProperty >= 1.0.2
 Requires:       python-typepy >= 1.2.0
+
 BuildArch:      noarch
 %python_subpackages
 
