@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-vendor-filterer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Summary:        Cargo vendor filterer
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://github.com/coreos/cargo-vendor-filterer
-Version:        0.5.16
+Version:        0.5.18
 Release:        0
 Source0:        https://github.com/coreos/cargo-vendor-filterer/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst

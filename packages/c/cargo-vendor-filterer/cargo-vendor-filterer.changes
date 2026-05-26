@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 19 11:33:11 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 0.5.18:
+  * Run a cargo update
+  * Bump rust-version
+  * Use `sha2` crate for SHA-256 by default
+  * feat: support glob patterns in exclude-crate-paths
+  * tests: Use unwrap instead of match
+- Update to version 0.5.17:
+  * Always generate + override `[lib]` for filtered crates
+  * ci: Bump to ubuntu-24.04, use unshare --propagation=unchanged
+
+-------------------------------------------------------------------
 Thu May  8 13:27:30 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update dependencies to fix bsc#1242681 
@@ -48,3 +61,4 @@ Wed Feb 28 11:26:23 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 Mon Sep 11 01:14:07 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Initial spec for cargo-vendor-filterer 0.5.11
+
