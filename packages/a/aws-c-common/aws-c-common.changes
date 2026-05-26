@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May 21 11:46:46 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.13.1
+  * Cbor decoder resource limits by @TingDaoK in (#1247)
+- from version 0.13.0
+  * Ring buffer: avoid NULL dereference by @ProjectMutilation in (#1238)
+  * Read signed 32 bit integer by @azkrishpy in (#1239)
+  * Fix tests on big-endian by @sertonix in (#1218)
+  * Helper to parse negative ints from string by @DmitriyMusatkin in (#1240)
+  * Helper to split string on multiple chars by @DmitriyMusatkin in (#1241)
+  * builder -> v0.9.92 by @sbSteveK in (#1242)
+  * Couple helpers to read little endian ints from cursor
+    by @DmitriyMusatkin in (#1243)
+  * Add helpers to unescape xml strings by @DmitriyMusatkin in (#1244)
+
+-------------------------------------------------------------------
 Thu Nov 20 08:30:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.12.6
