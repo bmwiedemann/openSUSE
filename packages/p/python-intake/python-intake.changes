@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 22 09:58:59 UTC 2026 - Jakub Špaček <jakub.spacek07@email.cz>
+
+- Drop support for Python 3.11: added %global skip_python311 1 because python11-zarr is missing
+
+-------------------------------------------------------------------
+Tue Mar 24 15:19:25 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 2.0.9 (CVE-2026-33310, bsc#1260407)
+  * Implement catalog mapper
+  * Address Issue 869 - error in Geopandas reader_from_call
+  * Add primitive icechunk reader
+  * Open files if url is remote with glob
+  * Make getshell False by default everywhere
+
+-------------------------------------------------------------------
 Sat Jul 12 17:45:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.8:
