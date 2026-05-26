@@ -1,7 +1,7 @@
 #
 # spec file for package libnk2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libnk2
 %define lname	libnk2-1
-Version:        20240426
+Version:        20260526
 Release:        0
 Summary:        Library and tools to access the Outlook Nickfile (NK2) format
 License:        LGPL-3.0-or-later
@@ -32,20 +32,20 @@ BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20240414
-BuildRequires:  pkgconfig(libcerror) >= 20240413
-BuildRequires:  pkgconfig(libcfile) >= 20240414
-BuildRequires:  pkgconfig(libclocale) >= 20240414
-BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libcpath) >= 20240414
-BuildRequires:  pkgconfig(libcsplit) >= 20240414
-BuildRequires:  pkgconfig(libcthreads) >= 20240413
-BuildRequires:  pkgconfig(libfdatetime) >= 20240415
-BuildRequires:  pkgconfig(libfguid) >= 20240415
-BuildRequires:  pkgconfig(libfmapi) >= 20240415
-BuildRequires:  pkgconfig(libfvalue) >= 20240415
-BuildRequires:  pkgconfig(libfwnt) >= 20240415
-BuildRequires:  pkgconfig(libuna) >= 20240414
+BuildRequires:  pkgconfig(libcdata) >= 20260520
+BuildRequires:  pkgconfig(libcerror) >= 20260513
+BuildRequires:  pkgconfig(libcfile) >= 20260520
+BuildRequires:  pkgconfig(libclocale) >= 20260520
+BuildRequires:  pkgconfig(libcnotify) >= 20260520
+BuildRequires:  pkgconfig(libcpath) >= 20260520
+BuildRequires:  pkgconfig(libcsplit) >= 20260520
+BuildRequires:  pkgconfig(libcthreads) >= 20260518
+BuildRequires:  pkgconfig(libfdatetime) >= 20260521
+BuildRequires:  pkgconfig(libfguid) >= 20260521
+BuildRequires:  pkgconfig(libfmapi) >= 20260521
+BuildRequires:  pkgconfig(libfvalue) >= 20260522
+BuildRequires:  pkgconfig(libfwnt) >= 20260522
+BuildRequires:  pkgconfig(libuna) >= 20260522
 # Various notes: https://en.opensuse.org/libyal
 
 %description
