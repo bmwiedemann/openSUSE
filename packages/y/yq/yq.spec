@@ -16,17 +16,20 @@
 #
 
 
+%{bcond_with vulncheck}
+
 %global provider_prefix github.com/mikefarah/yq
 %global import_path     %{provider_prefix}
 
 Name:           yq
-Version:        4.52.4
+Version:        4.53.2
 Release:        0
 Summary:        A portable command-line YAML processor
 License:        MIT
 URL:            https://github.com/mikefarah/yq
 Source0:        https://github.com/mikefarah/yq/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Patch1:         Fix-testcase-for-32bit-platforms.patch
 # conflict with all python3X-yq packages since they install /usr/bin/yq
 # we need to handle Leap 15.4 specially since the python3dist() is not
 # generated there
@@ -36,6 +39,10 @@ Conflicts:      python3dist(yq)
 Conflicts:      python3-yq
 %endif
 BuildRequires:  golang(API) = 1.25
+%if %{with vulncheck}
+BuildRequires:  govulncheck
+BuildRequires:  govulncheck-vulndb
+%endif
 
 %description
 A lightweight and portable command-line YAML processor. yq uses jq like syntax
@@ -78,6 +85,13 @@ go build -trimpath -buildmode=pie -mod=vendor -o bin/%{name}
 
 %check
 go test ./...
+%if %{with vulncheck}
+for i in $(find %{buildroot} -executable -and -not -type d \
+		-and -not -name "*.debug" -and -not -name "*.so*"); do
+    file $i | grep -q "^$i: ELF" || continue
+    govulncheck -mode=binary -db file:///usr/share/vulndb/ $i
+done
+%endif
 
 %install
 install -D -m 0755 ./bin/%{name} "%{buildroot}/%{_bindir}/%{name}"

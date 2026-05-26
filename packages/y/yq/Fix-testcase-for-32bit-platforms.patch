@@ -1,0 +1,35 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sun May 24 15:00:14 2026 +0200
+Subject: Fix testcase for 32bit platforms
+Patch-mainline: Not yet
+Git-commit: c74405b1b344c5038293063e26b2fca74342dc1f
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ pkg/yqlib/operator_multiply_test.go | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+diff --git a/pkg/yqlib/operator_multiply_test.go b/pkg/yqlib/operator_multiply_test.go
+index 2c31b6f..15a7777 100644
+--- a/pkg/yqlib/operator_multiply_test.go
++++ b/pkg/yqlib/operator_multiply_test.go
+@@ -2,6 +2,7 @@ package yqlib
+ 
+ import (
+ 	"fmt"
++	"math"
+ 	"strings"
+ 	"testing"
+ )
+@@ -710,8 +711,8 @@ var multiplyOperatorScenarios = []expressionScenario{
+ 		// The size guard must not overflow: len * count can wrap to
+ 		// a negative or small value on 64-bit, bypassing the check.
+ 		skipDoc:       true,
+-		expression:    `"ab" * 4611686018427387904`,
+-		expectedError: "result of repeating string (2 bytes) by 4611686018427387904 would exceed 10485760 bytes",
++		expression:    fmt.Sprintf(`"ab" * %d`, (math.MaxInt>>1)+1),
++		expectedError: fmt.Sprintf("result of repeating string (2 bytes) by %d would exceed 10485760 bytes", (math.MaxInt>>1)+1),
+ 	},
+ }
+ 

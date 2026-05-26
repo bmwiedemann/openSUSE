@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun May 24 08:53:05 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- update to v4.53.2
+  * Add system(command; args) operator (disabled by default).
+  * TOML encoder: prefer readable table sections over inline tables.
+  * Fix TOML encoder to quote keys containing special characters.
+  * Add string slicing support.
+  * Fix findInArray misuse on MappingNodes in equality and contains.
+  * Fix panic on negative slice indices that underflow after adjustment.
+  * Fix stack overflow from circular alias in traverse.
+  * Fix panic and OOM in repeatString for large repeat counts.
+- update to v4.52.5
+  * Fix: reset TOML decoder state between files.
+  * Fix: preserve original filename when using --front-matter.
+- Integrate vulnchecker support into %check stage (optional:
+  set `%%_with_vulncheck 1`).
+- Fix CVE-2026-33814 (bsc#1266248):
+  * update golang.org/x/net to v0.53.0.
+- Add Fix-testcase-for-32bit-platforms.patch:
+  This fixes the test suite for 32-bit.
+
+-------------------------------------------------------------------
 Wed Mar 18 06:46:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.52.4:
@@ -58,6 +80,9 @@ Mon Nov 17 17:22:31 UTC 2025 - Dirk Müller <dmueller@suse.com>
   * Fixed xml namespace prefixes #1730 (thanks @baodrate)
   * Fixed out of range panic in yaml decoder #2460 (thanks
     @n471d)
+  * Fixes CVE-2025-58190 (GO-2026-4441) (bsc#1251540)
+          CVE-2025-47911 (GO-2026-4440) (bsc#1251339) by
+    updating golang.org/x/net to v0.46.0.
 - update to 4.47.2:
   * Conversion from TOML to JSON no longer omits empty tables
     #2459 (thanks @louislouislouislouis)
@@ -93,6 +118,8 @@ Mon Jul 14 08:01:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
   * Additionally push docker images to ghcr.io (Thanks @reegnz)
   * Fixing add when there is no node match #2325
   * sort_by works on maps
+  * Fixed CVE-2025-22872 (GO-2025-3595) (bsc#1241719) by
+     updating golang.org/x/net to 0.39.0.
 - update to 4.45.1:
   * Create parent directories when --split-exp is used, Thanks
     @rudo-thomas
