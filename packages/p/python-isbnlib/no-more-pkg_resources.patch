@@ -1,0 +1,38 @@
+From 1c5da78deb92d1d64615466a1963bfe5158161ab Mon Sep 17 00:00:00 2001
+From: hseg <gesh@gesh.uni.cx>
+Date: Tue, 29 Oct 2024 15:29:58 +0200
+Subject: [PATCH] registry.py: migrate deprecated pkg_resources
+
+As noted in https://setuptools.pypa.io/en/latest/pkg_resources.html,
+pkg_resources is deprecated. We were only using it for iter_entry_points anyway,
+which has been moved to importlib.metadata:entry_points
+---
+ isbnlib/registry.py | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+Index: isbnlib-3.10.14/isbnlib/registry.py
+===================================================================
+--- isbnlib-3.10.14.orig/isbnlib/registry.py
++++ isbnlib-3.10.14/isbnlib/registry.py
+@@ -3,7 +3,11 @@
+ 
+ import logging
+ 
+-from pkg_resources import iter_entry_points
++try:
++    from importlib.metadata import entry_points
++except ImportError:
++    # Fallback for Python < 3.8
++    from pkg_resources import iter_entry_points as entry_points
+ 
+ from . import NotValidDefaultFormatterError, NotValidDefaultServiceError
+ from . import _goob as goob
+@@ -85,7 +89,7 @@ def load_plugins():  # pragma: no cover
+     # get metadata plugins from entry_points
+     if options.get('LOAD_METADATA_PLUGINS', True):
+         try:
+-            for entry in iter_entry_points(group='isbnlib.metadata'):
++            for entry in entry_points(group='isbnlib.metadata'):
+                 add_service(entry.name, entry.load())
+         except Exception:
+             LOGGER.critical('Some metadata plugins were not loaded!')

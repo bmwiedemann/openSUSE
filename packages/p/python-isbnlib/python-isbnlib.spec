@@ -1,7 +1,7 @@
 #
 # spec file for package python-isbnlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Extract, clean, transform, hyphenate and metadata for ISBNs
 License:        LGPL-3.0-only
 URL:            https://github.com/xlcnd/isbnlib
 Source:         https://github.com/xlcnd/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#xlcnd/isbnlib#145
+Patch0:         no-more-pkg_resources.patch
 BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis}
@@ -32,6 +34,7 @@ BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -54,12 +57,13 @@ Extract, clean, transform, hyphenate and metadata for ISBNs
 
 %check
 export PYTEST_ADDOPTS="--ignore=isbnlib/test/test_classify.py"
-%pytest -k 'not network'
+# test_vias_multi broken on Python 3.14 due to pickling
+%pytest -k 'not (network or test_vias_multi)'
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE-LGPL-3.0.txt
 %{python_sitelib}/isbnlib
-%{python_sitelib}/isbnlib-%{version}*-info
+%{python_sitelib}/isbnlib-%{version}.dist-info
 
 %changelog

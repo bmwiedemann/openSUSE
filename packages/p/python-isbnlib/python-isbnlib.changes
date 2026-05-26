@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 26 02:08:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg_resources.patch:
+  * Use importlib.metadata where we can.
+- Explicitly BuildRequires on setuptools.
+- Skip test broken with Python 3.14. (bsc#1266046)
+
+-------------------------------------------------------------------
 Sun Dec 17 01:48:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.10.14:

@@ -21,4 +21,15 @@
 - drop mark-network-tests.patch (upstream)</comment>
     <requestid>1133679</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>48d2848f2277e1e36ed53628de6c2e6d</srcmd5>
+    <version>3.10.14</version>
+    <time>1779806078</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg_resources.patch:
+  * Use importlib.metadata where we can.
+- Explicitly BuildRequires on setuptools.
+- Skip test broken with Python 3.14. (bsc#1266046)</comment>
+    <requestid>1355123</requestid>
+  </revision>
 </revisionlist>
