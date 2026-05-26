@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 26 04:46:41 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.2.1
+  Bug fixes:
+  * Fix building with latest zlib
+  * Remove old-format lockfile when starting
+  * Prevent SSRF via HTTP redirection
+  * Delete stale lockfile when machine-id mismatch
+  * Fix handling of 'Accept-Encoding' header
+  Web UI:
+  * Avoid search downloader for magnet links
+  * Work around browser extension interfering with Add Torrent
+    Dialog
+  * Filter all children of content root
+  * Don't store API result between calls
+  RSS:
+  * Fix refresh is indefinitely called when there are no feeds
+  Search:
+  * Avoid proxy interfering with multiprocessing pool
+
+-------------------------------------------------------------------
 Sun May  3 19:02:59 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.2.0
