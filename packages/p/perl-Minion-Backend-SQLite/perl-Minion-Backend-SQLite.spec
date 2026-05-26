@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Minion-Backend-SQLite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,31 @@
 
 %define cpan_name Minion-Backend-SQLite
 Name:           perl-Minion-Backend-SQLite
-Version:        5.0.7
+Version:        6.0.0
 Release:        0
+# v6.0.0 -> normalize -> 6.0.0
+%define cpan_version v6.0.0
 License:        Artistic-2.0
 Summary:        SQLite backend for Minion job queue
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-v%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Minion) >= 10.13
-BuildRequires:  perl(Module::Build::Tiny) >= 0.034
+BuildRequires:  perl(DBD::SQLite) >= 1.680
+BuildRequires:  perl(Minion) >= 12.0
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.34
 BuildRequires:  perl(Module::Metadata)
-BuildRequires:  perl(Mojo::SQLite) >= 3.000
-BuildRequires:  perl(Mojolicious) >= 7.49
+BuildRequires:  perl(Mojo::SQLite) >= 4.0
+BuildRequires:  perl(Mojolicious) >= 7.490
 BuildRequires:  perl(Test::More) >= 0.96
-Requires:       perl(Minion) >= 10.13
-Requires:       perl(Mojo::SQLite) >= 3.000
-Requires:       perl(Mojolicious) >= 7.49
+Requires:       perl(DBD::SQLite) >= 1.680
+Requires:       perl(Minion) >= 12.0
+Requires:       perl(Mojo::SQLite) >= 4.0
+Requires:       perl(Mojolicious) >= 7.490
 %{perl_requires}
 
 %description
@@ -46,7 +52,7 @@ named 'minion'. If no connection string or ':temp:' is provided, the
 database will be created in a temporary directory.
 
 %prep
-%autosetup  -n %{cpan_name}-v%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor
@@ -60,7 +66,7 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md examples prereqs.yml README
+%doc Changes CONTRIBUTING.md examples README
 %license LICENSE
 
 %changelog

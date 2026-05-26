@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 26 08:44:48 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.0.0 (v6.0.0)
+   see /usr/share/doc/packages/perl-Minion-Backend-SQLite/Changes
+
+  v6.0.0    2026-05-26 02:50:43 EDT
+    - Add support for Minion cron-style recurring jobs with schedule, unschedule, pause_schedule, resume_schedule,
+      list_schedules, and dispatch_schedules methods.
+    - Support returning lock ID in list_locks method.
+    - Support specifying tasks to dequeue for task limits.
+    - Remove experimental status from lax dependency support and expiring jobs feature.
+
+-------------------------------------------------------------------
 Sun Aug 14 03:08:31 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.0.7
