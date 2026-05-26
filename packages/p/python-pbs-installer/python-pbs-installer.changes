@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 25 20:01:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.5.10:
+  * use zstd support in tarfile
+  * require python 3.9
+
+-------------------------------------------------------------------
 Sun Apr 12 16:16:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to version 2026.4.7:

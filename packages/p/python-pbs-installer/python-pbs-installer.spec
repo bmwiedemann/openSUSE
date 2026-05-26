@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pbs-installer
-Version:        2026.4.7
+Version:        2026.5.10
 Release:        0
 Summary:        Installer for Python Build Standalone
 License:        MIT
 URL:            https://github.com/frostming/pbs-installer
 Source:         https://files.pythonhosted.org/packages/source/p/pbs-installer/pbs_installer-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -32,7 +32,7 @@ BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Suggests:       python-httpx >= 0.27.0
-Suggests:       python-zstandard >= 0.21.0
+Suggests:       python-backports.zstd >= 1.0.0
 Suggests:       python-pbs-installer
 BuildArch:      noarch
 %python_subpackages

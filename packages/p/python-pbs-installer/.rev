@@ -84,4 +84,14 @@
   * Add PyPy 3.11.15 (v7.3.21) support.</comment>
     <requestid>1346207</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3358a540af2e94068a45b4e6f031eb12</srcmd5>
+    <version>2026.5.10</version>
+    <time>1779806052</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.5.10:
+  * use zstd support in tarfile
+  * require python 3.9</comment>
+    <requestid>1355101</requestid>
+  </revision>
 </revisionlist>
