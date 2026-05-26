@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 22 07:53:24 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.14
+  * builder -> v0.9.92 and clang-latest by @sbSteveK in (#247)
+  * Add sanity checking on der empty bit string decoding
+    by @DmitriyMusatkin in (#248)
+
+-------------------------------------------------------------------
 Thu Nov 27 11:15:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.13

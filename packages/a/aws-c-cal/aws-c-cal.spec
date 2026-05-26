@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-cal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-cal
-Version:        0.9.13
+Version:        0.9.14
 Release:        0
 Summary:        AWS C99 wrapper for cryptography primitives
 License:        Apache-2.0
@@ -29,12 +29,12 @@ Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
 Patch0:         acc_add-so-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  cmake(aws-c-common)
-BuildRequires:  cmake(aws-checksums)
-BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  cmake(s2n)
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(aws-c-common)
+BuildRequires:  cmake(aws-checksums)
+BuildRequires:  cmake(s2n)
+BuildRequires:  pkgconfig(libcrypto)
 
 %description
 AWS Crypto Abstraction Layer is a C99 wrapper for cryptography primitives.
