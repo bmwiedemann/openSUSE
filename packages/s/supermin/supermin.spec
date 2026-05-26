@@ -1,7 +1,7 @@
 #
 # spec file for package supermin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,8 @@ Source9:        supermin.keyring
 Patch30:        suse_release.patch
 Patch31:        supermin-kernel_version_compressed.patch
 Patch32:        detect-aarch64-kernel.patch
-Patch33:        add-rpm-database-location.patch
+Patch33:        detect-s390x-kernel.patch
+Patch34:        add-rpm-database-location.patch
 BuildRequires:  augeas
 BuildRequires:  autoconf
 BuildRequires:  automake

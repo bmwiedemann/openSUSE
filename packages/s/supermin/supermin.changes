@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 18 09:33:16 MDT 2026 - carnold@suse.com
+
+- Detect the correct kernel on s390x (bsc#1206361, jsc#PED-14625)
+  detect-s390x-kernel.patch
+
+-------------------------------------------------------------------
 Thu Apr 10 12:48:54 MDT 2025 - carnold@suse.com
 
 - Update Copyright year

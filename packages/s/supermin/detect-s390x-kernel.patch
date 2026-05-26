@@ -1,0 +1,30 @@
+Index: supermin-5.3.5/src/format_ext2_kernel.ml
+===================================================================
+--- supermin-5.3.5.orig/src/format_ext2_kernel.ml
++++ supermin-5.3.5/src/format_ext2_kernel.ml
+@@ -156,9 +156,9 @@ and find_kernel_from_boot debug host_cpu
+     else (
+       (* In original: ls -1dvr /boot/vmlinuz-* 2>/dev/null | grep -v xen *)
+       let files =
+-        if string_prefix "aarch64" host_cpu
++        if string_prefix "aarch64" host_cpu || string_prefix "s390x" host_cpu
+         then (
+-          files_matching_globs ["Image-*"] all_files
++          files_matching_globs ["?mage-*"] all_files
+         )
+         else (
+           files_matching_globs ["vmlinu?-*"] all_files
+@@ -269,10 +269,11 @@ and get_kernel_version debug kernel_file
+        else (
+          basename
+        ) in
+-     if string_prefix "vmlinuz-" basename || string_prefix "vmlinux-" basename || string_prefix "Image-" basename
++     if string_prefix "vmlinuz-" basename || string_prefix "vmlinux-" basename || string_prefix "Image-" basename || string_prefix "image-" basename
+      then (
+        let version =
+-         if string_prefix "Image-" basename then (
++         if string_prefix "Image-" basename || string_prefix "image-" basename
++         then (
+            String.sub basename 6 (String.length basename - 6)
+          ) else (
+            String.sub basename 8 (String.length basename - 8)
