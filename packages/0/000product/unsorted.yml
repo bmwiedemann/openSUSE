@@ -26028,7 +26028,6 @@ unsorted:
   - python311-injector 
   - python311-inline-snapshot 
   - python311-installer 
-  - python311-intake 
   - python311-intelhex 
   - python311-intervals 
   - python311-intervaltree 
@@ -32166,6 +32165,7 @@ unsorted:
   - python314-Faker 
   - python314-Fiona 
   - python314-Flask 
+  - python314-Flask-Admin 
   - python314-Flask-Assets 
   - python314-Flask-Babel 
   - python314-Flask-Bootstrap 
@@ -33950,6 +33950,7 @@ unsorted:
   - python314-ipywebrtc 
   - python314-ipywidgets 
   - python314-irc 
+  - python314-isbnlib 
   - python314-isc_dhcp_leases 
   - python314-iso3166 
   - python314-iso8601 
