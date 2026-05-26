@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 25 20:18:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.41:
+  * Add support for automatic snake/camel case (thanks to Auri)
+  * Improve generated documentation
+  * Fix deprecated Callable import
+  * Remove use of deprecated classes from typing
+  * Improved error message
+  * Fix dataclass dumping on python 3.15 due to private API
+    breaking
+  * Use simpler is_union from python 3.14 onwards
+  * Update performance tests
+  * Remove apischema mentions: abandoned, no longer works on python 3.14
+
+-------------------------------------------------------------------
 Tue Mar  3 23:27:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.40:

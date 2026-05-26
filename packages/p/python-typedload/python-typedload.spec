@@ -17,7 +17,7 @@
 
 
 Name:           python-typedload
-Version:        2.40
+Version:        2.41
 Release:        0
 Summary:        Load and dump data from json-like format into typed data structures
 License:        GPL-3.0-only

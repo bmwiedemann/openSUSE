@@ -130,4 +130,22 @@
     have Added HexRGB to the moretypes module</comment>
     <requestid>1336246</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c33f5ac377eb25d7b76b93468b2a144e</srcmd5>
+    <version>2.41</version>
+    <time>1779806060</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.41:
+  * Add support for automatic snake/camel case (thanks to Auri)
+  * Improve generated documentation
+  * Fix deprecated Callable import
+  * Remove use of deprecated classes from typing
+  * Improved error message
+  * Fix dataclass dumping on python 3.15 due to private API
+    breaking
+  * Use simpler is_union from python 3.14 onwards
+  * Update performance tests
+  * Remove apischema mentions: abandoned, no longer works on python 3.14</comment>
+    <requestid>1355110</requestid>
+  </revision>
 </revisionlist>
