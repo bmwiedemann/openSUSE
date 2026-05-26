@@ -341,4 +341,13 @@
 - Drop patch drop-assertpy-dep.patch, just use assertpy.</comment>
     <requestid>1343088</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>099a12c252d6ecf9fbe754b85e35b70b</srcmd5>
+    <version>4.2.0</version>
+    <time>1779806138</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-9277: shell-quote: improper escaping of newlines (bsc#1266254)
+  Update the vendored shell-quote to 1.8.4 node_modules</comment>
+    <requestid>1355177</requestid>
+  </revision>
 </revisionlist>
