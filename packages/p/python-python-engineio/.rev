@@ -151,4 +151,14 @@
   * Switch to Furo documentation template (commit)</comment>
     <requestid>1336209</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>24cbb9e4efe6f935a352ce959f02ee46</srcmd5>
+    <version>4.13.2</version>
+    <time>1779806057</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.13.2:
+  * Prevent unnecessary resource allocations #441 (commit)
+  * Add zizmor to CI builds #437 (commit)</comment>
+    <requestid>1355108</requestid>
+  </revision>
 </revisionlist>
