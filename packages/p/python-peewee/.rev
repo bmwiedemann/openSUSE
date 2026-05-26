@@ -531,4 +531,27 @@
     driver-specific subclasses of standard DB-API exceptions.</comment>
     <requestid>1349267</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>2e14358272a3219fe6f58630a34c2831</srcmd5>
+    <version>4.0.6</version>
+    <time>1779806049</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.6:
+  * Add new methods to the postgres `BinaryJSONField`: helpers
+    for in-place modifications (`set`, `replace`, `insert`, `append`,
+    `update`).
+  * Also add json-path helpers to the postgres `BinaryJSONField`
+    (`path_exists`, `path_match`, `path_query`, `path_query_array`,
+    `path_query_first`).
+  * Quote path elements in SQLite's JSON field.
+  * Better and faster parsing of formatted date/times. Use the
+    stdlib `fromisoformat` as a first attempt since it's faster
+    and more robust.
+  * Ensure `db.connection_context()` can be nested cleanly,
+    #3046.
+  * Fix potential deadlock in `pool.close_all` and
+    `pool.manual_close`, #3047.
+  * Restore whitespace stripping in `FixedCharField`, #3048.</comment>
+    <requestid>1355100</requestid>
+  </revision>
 </revisionlist>

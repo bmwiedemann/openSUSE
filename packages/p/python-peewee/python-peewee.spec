@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-peewee
-Version:        4.0.5
+Version:        4.0.6
 Release:        0
 Summary:        An expressive ORM that supports multiple SQL backends
 License:        MIT
