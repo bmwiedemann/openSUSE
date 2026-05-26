@@ -207,4 +207,20 @@
     <comment></comment>
     <requestid>1343395</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>17bfd46c80c8e4843deb6907faf94491</srcmd5>
+    <version>0.10.14</version>
+    <time>1775743922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345501</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9bf1048a0c21d51aa2da045254553337</srcmd5>
+    <version>0.11.0</version>
+    <time>1779806105</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1355154</requestid>
+  </revision>
 </revisionlist>

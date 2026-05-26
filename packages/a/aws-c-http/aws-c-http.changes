@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 22 07:41:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.11.0
+  * Fix rounding error in hpack resizing by @DmitriyMusatkin in (#559)
+- from version 0.10.15
+  * builder -> v0.9.92 and clang-latest by @sbSteveK in (#557)
+  * [fix] h2 double complete by @TingDaoK in (#558)
+
+-------------------------------------------------------------------
+Wed Apr  1 14:56:48 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.14
+  * Unified write data API by @azkrishpy in (#552)
+- from version 0.10.13
+  * Support on_h2_remote_end_stream by @TingDaoK in (#554)
+
+-------------------------------------------------------------------
 Mon Mar 23 11:01:59 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.10.12
