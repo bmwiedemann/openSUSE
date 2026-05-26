@@ -7511,4 +7511,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1266278</comment>
   </revision>
+  <revision rev="845" vrev="2">
+    <srcmd5>ef010e86a0e52417f7c3f4887689eb6b</srcmd5>
+    <version>7.0.10</version>
+    <time>1779807632</time>
+    <user>dimstar_suse</user>
+    <comment>Retry; we might just have been hit by a weird mozilla-nss issues</comment>
+    <requestid>1355207</requestid>
+  </revision>
 </revisionlist>
