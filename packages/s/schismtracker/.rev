@@ -405,4 +405,12 @@
     <comment>- Update to release 20260524</comment>
     <requestid>1355089</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>9bd4c23286191a02ef26bd840c7fa01d</srcmd5>
+    <version>20260524</version>
+    <time>1779806081</time>
+    <user>anag_factory</user>
+    <comment>- Add a runtime dependency on SDL3 because one was missing.</comment>
+    <requestid>1355130</requestid>
+  </revision>
 </revisionlist>

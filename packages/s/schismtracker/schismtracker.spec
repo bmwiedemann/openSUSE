@@ -37,6 +37,10 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(sdl3)
+# schismtracker uses dlopen, so no automatic dependency finding. We built only
+# with the sdl3 loader (and no sdl1/sdl2 loaders), so we should also ensure
+# that sdl3 is always present at runtime.
+Requires:       %(test -f %_libdir/libSDL3.so.0 && /usr/lib/rpm/elfdeps -P --soname-only %_libdir/libSDL3.so.0 || echo broken)
 
 %description
 Schism Tracker is a reimplementation of Impulse Tracker, a

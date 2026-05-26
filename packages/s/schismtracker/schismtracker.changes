@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 00:20:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add a runtime dependency on SDL3 because one was missing.
+
+-------------------------------------------------------------------
 Mon May 25 15:37:46 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260524
