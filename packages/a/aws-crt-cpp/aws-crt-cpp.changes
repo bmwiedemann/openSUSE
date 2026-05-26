@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 21 12:15:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.38.7
+  * builder -> v0.9.92 and clang-latest by @sbSteveK in (#847)
+  * Latest s2n by @TingDaoK in (#850)
+
+-------------------------------------------------------------------
 Mon May  4 11:52:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.38.6
