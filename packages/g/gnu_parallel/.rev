@@ -850,4 +850,12 @@
     <comment>- Refine program substitutions [boo#1263831]</comment>
     <requestid>1350913</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>a9fb59fa6ed761095870e8a269e460df</srcmd5>
+    <version>20260522</version>
+    <time>1779891199</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 20260522</comment>
+    <requestid>1355262</requestid>
+  </revision>
 </revisionlist>

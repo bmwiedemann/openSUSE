@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 27 00:59:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260522
+  * The implementation of the `--fast` option was rewritten
+    for faster spawning of jobs.
+
+-------------------------------------------------------------------
 Tue May  5 08:07:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Refine program substitutions [boo#1263831]
