@@ -71,8 +71,11 @@ fi
 efi_distributor="$bootloader_id"
 bootloader_id="${bootloader_id}-secureboot"
 
+# bsc#1254336 The sl is for SL Micro. It can be removed afrer SL Micro is EoL
 case "$bootloader_id" in
     "sle"*)
+        ca_string='SUSE Linux Enterprise Secure Boot CA1';;
+    "sl"*)
         ca_string='SUSE Linux Enterprise Secure Boot CA1';;
     "opensuse"*)
         ca_string='openSUSE Secure Boot CA1';;

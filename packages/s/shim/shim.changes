@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar 12 08:23:36 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Modified the pretrans Lua script to work around the broken DB issue
+  caused by buggy firmware when Secure Boot is disabled.
+  It is impossible for the db to be empty while Secure Boot is enabled.
+  If the db is empty, the installation behavior will be treated the
+  same as when Secure Boot is disabled. We allow the shim installation
+  process to continue and display a message reminding the user to add
+  the appropriate certificate. (bsc#1259096)
+
+-------------------------------------------------------------------
+Tue Dec 16 09:41:56 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- shim-install: Add ca_string for SL Micro to update fallback loader
+
+  The fallback loader, /boot/efi/EFI/BOOT/bootaa64.efi or bootx64.efi,
+  cannot be upgraded by shim-install on SL Micro. The issue case is
+  SL Micro 6.0. It causes that system gets regression bug because it's
+  fallback to a old shim. So this patch adds ca_string to SL Micro.
+  (bsc#1254336)
+
+-------------------------------------------------------------------
 Fri Nov 28 08:30:55 UTC 2025 - Joey Lee <jlee@suse.com>
 
 - Fixed some issues in RPM Macro and pretrans lus script with the old

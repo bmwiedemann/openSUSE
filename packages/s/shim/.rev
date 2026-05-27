@@ -1581,4 +1581,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment>Workaround the build failed with openSUSE Secure Boot Signkey in openSUSE:Factory:secure-boot shim on OBS</comment>
     <requestid>1320440</requestid>
   </revision>
+  <revision rev="136" vrev="4">
+    <srcmd5>5a669b206e2075cd43dd0368bd1f7406</srcmd5>
+    <version>16.1</version>
+    <time>1779891202</time>
+    <user>anag_factory</user>
+    <comment>Modified the pretrans Lua script to work around the broken DB issue caused by buggy firmware when Secure Boot is disabled. (bsc#1259096)</comment>
+    <requestid>1355290</requestid>
+  </revision>
 </revisionlist>
