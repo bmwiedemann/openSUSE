@@ -465,4 +465,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1355186</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>2db9f28b5a36e61c0d4ac13a76c41517</srcmd5>
+    <version>2.20.6</version>
+    <time>1779891645</time>
+    <user>anag_factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1266358</comment>
+    <requestid>1355350</requestid>
+  </revision>
 </revisionlist>

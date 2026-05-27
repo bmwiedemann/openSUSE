@@ -16,7 +16,7 @@
 #
 
 
-%define ansible_core_major_minor_version 2.21
+%define ansible_core_major_minor_version 2.20
 
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible-core
-Version:        2.21.0
+Version:        2.20.6
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
