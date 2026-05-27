@@ -20,47 +20,52 @@
 
 %define gitlink https://github.com/YACReader/yacreader
 Name:           yacreader
-Version:        9.16.3
+Version:        10.0.0
 Release:        0
 Summary:        The best way for reading your comics
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://www.yacreader.com
 Source0:        %{gitlink}/releases/download/%{version}/%{name}-%{version}-src.tar.xz
-Source1:        unarr.tar.zst
 BuildRequires:  fdupes
 BuildRequires:  glu-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpoppler-qt6-devel
 BuildRequires:  mozilla-nss
 BuildRequires:  qt6-base-devel
+BuildRequires:  qt6-base-private-devel
 BuildRequires:  qt6-declarative-devel
 BuildRequires:  qt6-linguist-devel
 BuildRequires:  qt6-multimedia-devel
+BuildRequires:  qt6-shadertools-devel
+BuildRequires:  qt6-texttospeech-devel
 BuildRequires:  qt6-qml-devel
 BuildRequires:  qt6-qt5compat-devel
 BuildRequires:  qt6-quickcontrols2-devel
 BuildRequires:  qt6-sql-devel
 BuildRequires:  qt6-svg-devel
+BuildRequires:  libarchive-devel
 BuildRequires:  zstd
+Requires:       kf6-kimageformats
 
 %description
 A cross platform comic reader and library manager.
 
 %prep
-%setup -q -a 1
-mv unarr compressed_archive/unarr/unarr-master
-# fix build unarr
-sed -i '/Ppmd7Dec.c\\/a\ \t\t$$PWD/unarr-master/lzmasdk/Ppmd7aDec.c\\' \
-   compressed_archive/unarr/unarr.pro
+%autosetup
+sed -i \
+ 's|DESTINATION ${CMAKE_INSTALL_LIBDIR}/systemd/user|DESTINATION lib/systemd/user|' \
+ YACReaderLibraryServer/CMakeLists.txt
 
 %build
-qmake6
-make %{?_smp_mflags}
+%cmake	-DBUILD_TESTS=OFF \
+        -DBUILD_SERVER_STANDALONE=OFF \
+        -DCMAKE_SKIP_RPATH=ON \
+        -DDECOMPRESSION_BACKEND=libarchive
+%make_build
 
 %install
-INSTALL_ROOT=%{buildroot} %make_install
-rm %{buildroot}/usr/share/doc/yacreader/CHANGELOG.md
+%cmake_install
 %fdupes %{buildroot}
 
 %files

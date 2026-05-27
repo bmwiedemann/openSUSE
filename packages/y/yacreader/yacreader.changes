@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed May 27 00:17:14 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 10.0.0
+  * Add continuous scroll mode.
+  * Add Lanczos image scaling interpolation.
+  * Migrate Flow rendering from OpenGL to QRhi.
+  * Add system-aware light/dark themes, theme editor and custom
+    themes.
+  * Add 12 built-in themes.
+  * Add application language settings.
+  * Improve Windows fullscreen and multi-screen support.
+  * Fix HiDPI trackpad scrolling issues.
+  * Fix metadata editor field propagation issues.
+  * Fix cropped PDF rendering on macOS.
+  * Add support for user-installed Qt image format plugins.
+- Switch build system from qmake to CMake.
+- replace bundled unarr with system libarchive
+  * add libarchive-devel BuildRequires
+- add missing Qt6 BuildRequires
+  * qt6-base-private-devel
+  * qt6-shadertools-devel
+  * qt6-texttospeech-devel
+- add kf6-kimageformats Requires
+  * provide additional Qt image format plugins
+- Disable RPATH generation.
+- Fix systemd service installation path.
+  
+-------------------------------------------------------------------
 Sat Jan 17 07:22:34 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 9.16.3
