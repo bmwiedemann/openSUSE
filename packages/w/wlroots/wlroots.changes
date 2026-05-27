@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 20 09:18:17 UTC 2026 - zeus <dunning1kruger@mailfence.com>
+
+- Update to 0.20.1:
+  * ext_image_capture_source_v1/scene: fix extents
+  * {wlr,ext}-foreign-toplevel: add new toplevels to end of list
+  * wlr_ext_workspace_v1.c: add new workspaces to end of list
+  * wlr_virtual_keyboard_v1: specify size when creating keymap
+  * render/pixman: fix bilinear filtering to match gles2 renderer
+  * keyboard: fix modifiers event when no keymap set
+  * scene/surface: schedule on frame pacing output
+  * wlr_compositor: Apply state before updating surface_damage
+  * linux_drm_syncobj_v1: fix memory leak
+  * scene: only send leave events to outputs with matching scene
+    root
+  * toplevel_capture: allocate new_request argument on the stack
+
+-------------------------------------------------------------------
 Mon Mar 30 05:03:39 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to 0.20.0:

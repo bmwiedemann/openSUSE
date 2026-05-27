@@ -18,7 +18,7 @@
 
 %global ver_suffix 0.20
 %global sover      0_20
-%global patch_ver  0
+%global patch_ver  1
 %global libname libwlroots-%{sover}
 %bcond_without  drm_backend
 %bcond_without  libinput_backend
@@ -48,7 +48,7 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libdisplay-info)
-BuildRequires:  pkgconfig(libdrm) >= 2.4.113
+BuildRequires:  pkgconfig(libdrm) >= 2.4.129
 BuildRequires:  pkgconfig(libliftoff)
 %if %{with libinput_backend}
 BuildRequires:  pkgconfig(libinput) >= 1.14.0
