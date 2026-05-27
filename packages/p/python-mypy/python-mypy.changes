@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sun May 17 20:55:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * The new `librt.vecs` module provides an efficient growable
+    array type `vec` that is optimized for mypyc use. It provides
+    fast, packed arrays with integer and floating point
+    value types, which can be **several times faster** than
+    `list`, and tens of times faster
+    than `array.array` in code compiled using mypyc. It also
+    supports nested `vec` objects and
+    non-value-type items, such as ``vec[vec[str]]``.
+  * The new `librt.random` module provides fast pseudo-random
+    number generation that is optimized for code compiled using
+    mypyc. It can be 3x to 10x faster than the stdlib
+   `random` module in compiled code.
+  * Make compilation order with multiple files consistent (Piotr
+  * Fix crash on accessing `StopAsyncIteration` (Piotr Sawicki,
+  * Fix incremental compilation with `separate` flag (Vaggelis
+  * Fix crash on partial type with `--allow-redefinition` and
+    `global` declaration (Jukka Lehtosalo, PR 21428)
+  * Fix broken awaitable generator patching (Ivan Levkivskyi, PR
+  * Fix function call error message for small number of arguments
+  * Rely on typeshed stubs for `slice` typing (Ivan Levkivskyi,
+  * Improve negative narrowing for membership checks on tuples
+  * Narrow match captures based on previous cases
+  * Fix nondeterminism in overload resolution
+  * Respect file config comments for stale modules
+  * Fix JSON output mode for syntax errors in parallel mode
+  * Fix type variable with values as a supertype
+  * Add support for configuring `--num-workers` with an
+    environment variable
+  * Respect JSON output mode for syntax errors
+  * Analyze `TypedDict` decorators
+- remove support-pathspec-1.1.0.patch (upstream)
+
+-------------------------------------------------------------------
+Thu May  7 02:34:24 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.20.2:
+  * Rework narrowing logic for equality and identity
+  * Refactor equality and identity narrowing for clarity
+  * Add support for Python 3.14 t-strings (PEP 750)
+  * Add implicit module dependency if using t-string
+  * Add work-in-progress implementation of a new Python parser
+  * Skip redundant analysis pass when using the native parser
+  * Add t-string support to native parser
+  * Removed Flags --force-uppercase-builtins and --force-union-syntax
+  * Invalidate cache when --enable-incomplete-feature changes
+  * Add back support for warn_unused_configs
+  * Recover from corrupted fixed-format cache meta file
+  * Simpler/cleaner reveal_type()
+  * Use "parameter" instead of "argument" in overload error
+  * Use "parameter" instead of "argument" in unpacking error
+  * Use "type arguments" instead of "type parameters" for bare generics
+  * Update "arguments" to "parameters"
+  * Use "parameter" instead of "argument" in default value error messages
+  * Update error message for parameter overlap in TypedDict
+  * Correct "Duplicate argument" error messages
+  * Use standard formatting for note on unexpected keyword
+  * Fix edge cases in pretty formatting
+  * Add function definition notes for missing named argument errors
+  * Make overloaded constructors consistent in error messages
+  * Improve error message for invalid Python package
+  * Emit end line/column in JSON format for span tracking
+  * Wrap callable in union syntax
+  * Use WAL with SQLite cache and fix close
+  * Adjust SQLite journal mode
+  * Correctly aggregate narrowing information on parent expressions
+  * Fix regression related to generic callables
+  * Fix regression by avoiding widening types in some contexts
+  * Fix slicing in non-strict optional mode
+  * mypyc: Fix match statement semantics for "or" pattern
+  * mypyc: Fix issue with module dunder attributes
+  * Initial support for Python 3.15.0a8
+  * Always disable sync in SQLite cache
+  * Temporarily skip few base64 tests
+  * Revert dict.__or__ typeshed change
+  * Fix narrowing for match case with variadic tuples
+  * Avoid narrowing type[T] in type calls
+  * Fix regression for catching empty tuple in except
+  * Fix reachability for frozenset and dict view narrowing
+  * Fix narrowing with chained comparison
+  * Avoid narrowing to unreachable at module level
+  * Allow dangerous identity comparisons to Any typed variables
+  * --warn-unused-config should not be a strict flag
+- Drop patch support-pathspec-1.0.0.patch, merged upstream.
+- Add patch support-pathspec-1.1.0.patch:
+  * Support changes required by pathspec 1.1.0+.
+
+-------------------------------------------------------------------
 Tue Apr 14 16:37:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Skip test failing with CPython CVE fix
@@ -6,7 +96,7 @@ Tue Apr 14 16:37:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Wed Feb 25 15:59:45 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
-- Fix the condition with suse_version macro on SLFO (jsc#PED-15844) 
+- Fix the condition with suse_version macro on SLFO (jsc#PED-15844)
 
 -------------------------------------------------------------------
 Tue Feb  3 03:45:28 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>

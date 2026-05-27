@@ -16,8 +16,9 @@
 #
 
 
-%define types_psutil_version 7.0.0.20250401
-%define types_setuptools_version 78.1.0.20250329
+%define types_psutil_version 7.0.0.20251001
+%define types_setuptools_version 80.9.0.20250822
+%define hatchling_version 1.18.0
 %bcond_without test
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
@@ -26,35 +27,37 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-mypy
-Version:        1.19.1
+Version:        2.1.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
 URL:            https://www.mypy-lang.org/
 Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{version}.tar.gz
-# Source0:        mypy-%%{version}.tar.gz
 # License Source1: Apache-2.0. Only for the test suite, not packaged here.
 Source1:        https://files.pythonhosted.org/packages/source/t/types_psutil/types_psutil-%{types_psutil_version}.tar.gz
 # License Source2: Apache-2.0. Only for the test suite, not packaged here.
 Source2:        https://files.pythonhosted.org/packages/source/t/types_setuptools/types_setuptools-%{types_setuptools_version}.tar.gz
 Source99:       python-mypy-rpmlintrc
-# PATCH-FIX-UPSTREAM Based on gh#python/mypy#20533
-Patch0:         support-pathspec-1.0.0.patch
+BuildRequires:  %{python_module ast-serialize >= 0.3.0}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module exceptiongroup}
-BuildRequires:  %{python_module librt >= 0.6}
+BuildRequires:  %{python_module librt >= 0.11}
 BuildRequires:  %{python_module mypy_extensions >= 1.0.0}
 BuildRequires:  %{python_module pathspec >= 1.0.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module tomli >= 1.1.0}
-BuildRequires:  %{python_module typing_extensions >= 4.6.0}
+BuildRequires:  %{python_module typing_extensions >= 4.14.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-librt >= 0.6
+# Now requires sqlite3, so full-fat python
+Requires:       python
+Requires:       python-ast-serialize >= 0.3.0
+Requires:       python-librt >= 0.11
 Requires:       python-mypy_extensions >= 1.0.0
 Requires:       python-pathspec >= 1.0.0
-Requires:       python-typing_extensions >= 4.6.0
+Requires:       python-typing_extensions >= 4.14.0
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 Suggests:       python-psutil >= 4.0
 BuildArch:      noarch
@@ -151,16 +154,14 @@ if [ $(getconf LONG_BIT) -ne 64 ]; then
   # gh#python/mypy#11148
   donttest+=" or testSubclassSpecialize or testMultiModuleSpecialize"
 fi
-# the fake test_module is not in the modulepath without pytest-xdist
-# or with pytest-xdist >= 2.3 -- https://github.com/python/mypy/issues/11019
-donttest+=" or teststubtest"
 # gh#python/mypy#15221
 donttest+=" or testMathOps or testFloatOps"
-# fails on Python 3.11.4, see gh#python/mypy#15446. Patch db5b5af1201fff03465b0684d16b6489a62a3d78 does not apply clean, better wait for a new upstream version
+# Requires large number of wheels to be available
 donttest+=" or PEP561Suite"
-# https://github.com/python/cpython/issues/146121 caused the tests to fail as described in https://github.com/python/mypy/issues/21120, upstream hotfix does not work here
-donttest+=" or testAllBase64Features_librt"
-%pytest -n auto -k "not (testallexcept ${donttest})"
+# compilation errors
+ignore="--ignore mypyc/test/test_run.py"
+donttest+=" or test_lib_rt_c_files_compile_individually"
+%pytest -n auto $ignore -k "not (testallexcept ${donttest})"
 %endif
 
 %pre
