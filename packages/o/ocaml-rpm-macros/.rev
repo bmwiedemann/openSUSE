@@ -238,4 +238,12 @@ trim changes file</comment>
     <comment>- Include the version of the package in the ocamlfind provide entries</comment>
     <requestid>1278176</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>afa5ecef701d1ed6046148d441d7108d</srcmd5>
+    <version>20260526</version>
+    <time>1779891191</time>
+    <user>anag_factory</user>
+    <comment>Adjust regex for stricter gawk 5.4</comment>
+    <requestid>1355189</requestid>
+  </revision>
 </revisionlist>

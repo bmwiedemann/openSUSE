@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 12:34:56 UTC 2026 - ohering@suse.de
+
+- Adjust regex for stricter gawk 5.4
+
+-------------------------------------------------------------------
 Sat May 17 14:53:11 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Include the version of the package in the ocamlfind provide entries

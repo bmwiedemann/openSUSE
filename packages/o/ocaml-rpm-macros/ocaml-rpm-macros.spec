@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-rpm-macros
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-rpm-macros
-Version:        20250517
+Version:        20260526
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only

@@ -94,7 +94,7 @@ do_work() {
         next
       }
 
-      /^[[:blank:]]*requires(|\([^-][^)]+\))[[:blank:]]*(+=|=)/ {
+      /^[[:blank:]]*requires(|\([^-][^)]+\))[[:blank:]]*(\+=|=)/ {
         if(dbg) printf "GOT: %s\n", $0 > "/dev/stderr" ;
         done=0
         requires_line = ""
@@ -131,7 +131,7 @@ do_work() {
         next
       }
 
-      /^[[:blank:]]*ppx_runtime_deps[[:blank:]]*(+=|=)/ {
+      /^[[:blank:]]*ppx_runtime_deps[[:blank:]]*(\+=|=)/ {
         if(dbg) printf "GOT: %s\n", $0 > "/dev/stderr" ;
         done=0
         ppx_runtime_deps_line = ""
