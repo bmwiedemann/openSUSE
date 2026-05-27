@@ -231,4 +231,12 @@
   shadowsocks-libev-3.3.5-pcre2.patch (forwarded request 1350902 from hillwood)</comment>
     <requestid>1350903</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>a915e399b23570ba977329c4e04a4cbf</srcmd5>
+    <version>3.3.6</version>
+    <time>1779891230</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1354960 from hillwood)</comment>
+    <requestid>1354961</requestid>
+  </revision>
 </revisionlist>

@@ -6,6 +6,10 @@ After=network.target
 [Service]
 # added automatically, for details please see
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_DAC_READ_SEARCH
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_DAC_READ_SEARCH
+PermissionsStartOnly=false
+ReadOnlyPaths=/etc/shadowsocks/ /etc/letsencrypt/ /usr/bin/ss-server /usr/bin/v2ray-plugin /usr/bin/xray-plugin
 ProtectSystem=full
 ProtectHome=true
 PrivateDevices=true
