@@ -1,7 +1,7 @@
 #
 # spec file for package maven-native
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%global namedversion 1.0-M1
 Name:           maven-native
-Version:        1.0~M1
+Version:        1.0.0
 Release:        0
 Summary:        Maven plugin to compile C and C++ source
 License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
 URL:            https://www.mojohaus.org/plugins.html
 # Source code available @ https://github.com/mojohaus/maven-native
-Source0:        https://repo1.maven.org/maven2/org/codehaus/mojo/natives/%{name}/%{namedversion}/%{name}-%{namedversion}-source-release.zip
+Source0:        https://repo1.maven.org/maven2/org/codehaus/mojo/natives/%{name}/%{version}/%{name}-%{version}-source-release.zip
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -75,7 +74,7 @@ Group:          Documentation/HTML
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -n %{name}-%{namedversion}
+%setup -q
 
 %pom_remove_plugin -r :sortpom-maven-plugin
 
@@ -94,7 +93,7 @@ This package contains javadoc for %{name}.
 
 %build
 
-%{mvn_build} -f -s -- -Dmojo.java.target=8 -Dmaven.test.failure.ignore=true -Dsource=8
+%{mvn_build} -f -s
 
 %install
 %mvn_install

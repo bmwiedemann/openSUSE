@@ -71,4 +71,12 @@
     <comment>fix build with newer mojo-parent</comment>
     <requestid>1180156</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>aee50658a100197cff130181493fc702</srcmd5>
+    <version>1.0.0</version>
+    <time>1779891295</time>
+    <user>anag_factory</user>
+    <comment>1.0.0</comment>
+    <requestid>1355223</requestid>
+  </revision>
 </revisionlist>
