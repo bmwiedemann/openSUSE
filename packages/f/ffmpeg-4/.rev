@@ -858,4 +858,12 @@
     <comment>- Update to version 4.4.7:</comment>
     <requestid>1354791</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>76dba1e368dd4a7947a777c09979b66b</srcmd5>
+    <version>4.4.7</version>
+    <time>1779891266</time>
+    <user>anag_factory</user>
+    <comment>- Add ffmpeg-4-CVE-2025-10256.patch:</comment>
+    <requestid>1355250</requestid>
+  </revision>
 </revisionlist>

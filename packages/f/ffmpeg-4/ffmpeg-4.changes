@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
+Sat May 23 17:15:08 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2025-10256.patch:
+  Backport a2546248 from upstream, Add check for the return value
+  of av_malloc_array() to avoid potential NULL pointer dereference.
+  (CVE-2025-10256, bsc#1249431)
+
+-------------------------------------------------------------------
 Fri May 22 17:28:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.4.7:
   * Codecs, filters and other various bugfixes
+  * aacenc_tns: clamp filter direction energy measurement.
+    (CVE-2025-1594, bsc#1237561)
+  * avcodec/jpeg2000dec: implement cdef remapping during pixel format matching.
+    (CVE-2025-9951, bsc#1249393)
 - Drop patches fixed upstream:
   * ffmpeg-4-CVE-2024-35368.patch
   * ffmpeg-4-CVE-2024-36618.patch
@@ -160,6 +172,7 @@ Mon Jan  6 11:53:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
   (CVE-2024-36613, bsc#1235092)
   avformat/cafdec: dont seek beyond 64bit (CVE-2024-36617, bsc#1234019).
   avformat/westwood_vqa: Fix 2g packets (CVE-2024-36616, bsc#1234018).
+  avformat/sbgdec: Check for negative duration (CVE-2024-35366, bsc#1234030).
 - Delete
   0001-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
   0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
