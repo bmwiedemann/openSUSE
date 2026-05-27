@@ -225,4 +225,12 @@
     <comment>Always put openSUSE Secure Boot CA to target array (bsc#1254679)</comment>
     <requestid>1322096</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>19f252c72034b1badc526dfda31aa927</srcmd5>
+    <version>16.1</version>
+    <time>1779891478</time>
+    <user>anag_factory</user>
+    <comment>Modified the pretrans Lua script to work around the broken DB issue caused by buggy firmware when Secure Boot is disabled. (bsc#1259096)</comment>
+    <requestid>1355291</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 12 09:40:11 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Modified the pretrans Lua script to work around the broken DB issue
+  caused by buggy firmware when Secure Boot is disabled.
+  It is impossible for the db to be empty while Secure Boot is enabled.
+  If the db is empty, the installation behavior will be treated the
+  same as when Secure Boot is disabled. We allow the shim installation
+  process to continue and display a message reminding the user to add
+  the appropriate certificate. (bsc#1259096)
+
+-------------------------------------------------------------------
 Wed Dec 10 14:23:59 UTC 2025 - Joey Lee <jlee@suse.com>
 
 - shim-leap.spec: Always put openSUSE Secure Boot CA to target array

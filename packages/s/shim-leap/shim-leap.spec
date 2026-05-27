@@ -225,6 +225,14 @@ do
     end
 end
 
+-- It is impossible for the db to be empty while Secure Boot is enabled.
+if db_content == "" or #db_content == 0 then
+    -- If the db is empty, the installation behavior will be treated the same as when Secure Boot is disabled.
+    print("WARNING: db variable is empty (no certificates found); proceeding with install.")
+    print("Please add the appropriate certificate to the db for Secure Boot support.")
+    return 0
+end
+
 -- Check all target certificates
 for i, cert_hex in ipairs(TARGET_CERT_HEXES) do
 
