@@ -17,7 +17,7 @@
 
 
 Name:           curtail
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        A simple and useful image compressor
 License:        GPL-3.0-or-later
@@ -32,8 +32,8 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
-# Note: Needs libadwaita's AboutWindow which is only available from version 1.2
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.2
+# Note: Needs libadwaita's ShortcutsDialog which is only available from version 1.8
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 Requires:       jpegoptim
 Requires:       libwebp-tools
 Requires:       oxipng
