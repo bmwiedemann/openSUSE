@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 27 08:35:26 UTC 2026 - Petr Mladek <pmladek@suse.com>
+
+- make kernel_livepatching pattern visible (bsc#1263084)
+
+-------------------------------------------------------------------
+Tue May 26 15:18:11 UTC 2026 - Petr Mladek <pmladek@suse.com>
+
+- enable kernel livepatching for aarch64 in SLE16.1 and newer
+  (jsc#PED-7906, bsc#1266306).
+
+-------------------------------------------------------------------
 Tue May 12 12:30:32 UTC 2026 - Jiri Srain <jsrain@suse.com>
 
 - use distrobox instead of toolbox on SLE (jsc#PED-13820)

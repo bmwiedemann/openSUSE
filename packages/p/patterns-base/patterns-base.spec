@@ -714,9 +714,18 @@ This pattern holds files required for booting the system
 Summary:        Kernel Livepatching
 Group:          Metapackages
 Provides:       pattern() = kernel_livepatching
+Provides:       pattern-icon() = pattern-basis
+Provides:       pattern-order() = 1115
+Provides:       pattern-visible()
 %ifarch x86_64 ppc64le s390x
 Requires:       kernel-livepatch-tools
 Requires:       (kernel-default-livepatch if kernel-default)
+%endif
+%if 0%{?suse_version} >= 1610
+%ifarch aarch64
+Requires:       kernel-livepatch-tools
+Requires:       (kernel-default-livepatch if kernel-default)
+%endif
 %endif
 %ifarch x86_64
 Requires:       (kernel-rt-livepatch if kernel-rt)
