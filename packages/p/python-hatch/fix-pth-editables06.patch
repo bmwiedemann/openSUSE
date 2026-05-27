@@ -1,0 +1,133 @@
+From 34dba22e5e3c7b7468b67f53f93b7340e54609b8 Mon Sep 17 00:00:00 2001
+From: Cary Hawkins <hawkinscary23@gmail.com>
+Date: Thu, 23 Apr 2026 00:41:48 -0400
+Subject: [PATCH] Annotate relevant_config as dict[str, Any] to prevent mypy
+ from narrowing its key type and rejecting valid "dirs" access (#2248)
+
+* Annotate relevant_config as dict[str, Any] to prevent mypy from narrowing its key type and rejecting valid "dirs" access
+
+* Update editable-exact test templates for editables 0.6 .pth file rename
+
+* Fix tests impacted by pth name changes in editables release
+---
+ src/hatch/cli/self/report.py                                  | 4 ++--
+ tests/backend/builders/test_wheel.py                          | 1 +
+ tests/helpers/templates/wheel/standard_editable_exact.py      | 2 +-
+ .../wheel/standard_editable_exact_extra_dependencies.py       | 2 +-
+ .../templates/wheel/standard_editable_exact_force_include.py  | 2 +-
+ tests/helpers/templates/wheel/standard_editable_pth.py        | 2 +-
+ .../wheel/standard_editable_pth_extra_dependencies.py         | 2 +-
+ .../templates/wheel/standard_editable_pth_force_include.py    | 2 +-
+ 8 files changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/src/hatch/cli/self/report.py b/src/hatch/cli/self/report.py
+index 49fe79b45..925ef83af 100644
+--- a/src/hatch/cli/self/report.py
++++ b/src/hatch/cli/self/report.py
+@@ -1,6 +1,6 @@
+ from __future__ import annotations
+ 
+-from typing import TYPE_CHECKING
++from typing import TYPE_CHECKING, Any
+ 
+ import click
+ 
+@@ -80,7 +80,7 @@ def report(app: Application, *, no_open: bool) -> None:
+ 
+     # Retain the config that would be most useful
+     full_config = load_toml_data(app.config_file.read_scrubbed())
+-    relevant_config = {}
++    relevant_config: dict[str, Any] = {}
+     for setting in ("mode", "shell"):
+         if setting in full_config:
+             relevant_config[setting] = full_config[setting]
+diff --git a/tests/backend/builders/test_wheel.py b/tests/backend/builders/test_wheel.py
+index eeada10d0..28b98456f 100644
+--- a/tests/backend/builders/test_wheel.py
++++ b/tests/backend/builders/test_wheel.py
+@@ -3224,6 +3224,7 @@ def test_editable_pth(self, hatch, helpers, temp_dir):
+             project_name,
+             metadata_directory=metadata_directory,
+             package_paths=[str(project_path)],
++            pth_file_name=f"_{builder.metadata.core.name.replace('-', '_')}.pth",
+         )
+         helpers.assert_files(extraction_directory, expected_files)
+ 
+diff --git a/tests/helpers/templates/wheel/standard_editable_exact.py b/tests/helpers/templates/wheel/standard_editable_exact.py
+index 491be227d..442d92230 100644
+--- a/tests/helpers/templates/wheel/standard_editable_exact.py
++++ b/tests/helpers/templates/wheel/standard_editable_exact.py
+@@ -17,7 +17,7 @@ def get_files(**kwargs):
+         if str(f.path) == "LICENSE.txt"
+     ]
+ 
+-    pth_file_name = f"_{kwargs['package_name']}.pth"
++    pth_file_name = f"_editable_impl_{kwargs['package_name']}.pth"
+     loader_file_name = f"_editable_impl_{kwargs['package_name']}.py"
+     files.extend((
+         File(Path(pth_file_name), f"import _editable_impl_{kwargs['package_name']}"),
+diff --git a/tests/helpers/templates/wheel/standard_editable_exact_extra_dependencies.py b/tests/helpers/templates/wheel/standard_editable_exact_extra_dependencies.py
+index 817a643eb..6a4158828 100644
+--- a/tests/helpers/templates/wheel/standard_editable_exact_extra_dependencies.py
++++ b/tests/helpers/templates/wheel/standard_editable_exact_extra_dependencies.py
+@@ -17,7 +17,7 @@ def get_files(**kwargs):
+         if str(f.path) == "LICENSE.txt"
+     ]
+ 
+-    pth_file_name = f"_{kwargs['package_name']}.pth"
++    pth_file_name = f"_editable_impl_{kwargs['package_name']}.pth"
+     loader_file_name = f"_editable_impl_{kwargs['package_name']}.py"
+     files.extend((
+         File(Path(pth_file_name), f"import _editable_impl_{kwargs['package_name']}"),
+diff --git a/tests/helpers/templates/wheel/standard_editable_exact_force_include.py b/tests/helpers/templates/wheel/standard_editable_exact_force_include.py
+index e9de6159c..72bf7a58f 100644
+--- a/tests/helpers/templates/wheel/standard_editable_exact_force_include.py
++++ b/tests/helpers/templates/wheel/standard_editable_exact_force_include.py
+@@ -18,7 +18,7 @@ def get_files(**kwargs):
+         elif f.path.parts[-1] == "__about__.py":
+             files.append(File(Path("zfoo.py"), f.contents))
+ 
+-    pth_file_name = f"_{kwargs['package_name']}.pth"
++    pth_file_name = f"_editable_impl_{kwargs['package_name']}.pth"
+     loader_file_name = f"_editable_impl_{kwargs['package_name']}.py"
+     files.extend((
+         File(Path(pth_file_name), f"import _editable_impl_{kwargs['package_name']}"),
+diff --git a/tests/helpers/templates/wheel/standard_editable_pth.py b/tests/helpers/templates/wheel/standard_editable_pth.py
+index 5a170cc6a..c78915cf6 100644
+--- a/tests/helpers/templates/wheel/standard_editable_pth.py
++++ b/tests/helpers/templates/wheel/standard_editable_pth.py
+@@ -17,7 +17,7 @@ def get_files(**kwargs):
+         if str(f.path) == "LICENSE.txt"
+     ]
+ 
+-    pth_file_name = f"_{kwargs['package_name']}.pth"
++    pth_file_name = kwargs.get("pth_file_name", f"_editable_impl_{kwargs['package_name']}.pth")
+     files.extend((
+         File(Path(pth_file_name), "\n".join(package_paths)),
+         File(
+diff --git a/tests/helpers/templates/wheel/standard_editable_pth_extra_dependencies.py b/tests/helpers/templates/wheel/standard_editable_pth_extra_dependencies.py
+index 834383259..cdc9f2ea9 100644
+--- a/tests/helpers/templates/wheel/standard_editable_pth_extra_dependencies.py
++++ b/tests/helpers/templates/wheel/standard_editable_pth_extra_dependencies.py
+@@ -17,7 +17,7 @@ def get_files(**kwargs):
+         if str(f.path) == "LICENSE.txt"
+     ]
+ 
+-    pth_file_name = f"_{kwargs['package_name']}.pth"
++    pth_file_name = kwargs.get("pth_file_name", f"_editable_impl_{kwargs['package_name']}.pth")
+     files.extend((
+         File(Path(pth_file_name), "\n".join(package_paths)),
+         File(
+diff --git a/tests/helpers/templates/wheel/standard_editable_pth_force_include.py b/tests/helpers/templates/wheel/standard_editable_pth_force_include.py
+index 003954027..00e0af96a 100644
+--- a/tests/helpers/templates/wheel/standard_editable_pth_force_include.py
++++ b/tests/helpers/templates/wheel/standard_editable_pth_force_include.py
+@@ -18,7 +18,7 @@ def get_files(**kwargs):
+         elif f.path.parts[-1] == "__about__.py":
+             files.append(File(Path("zfoo.py"), f.contents))
+ 
+-    pth_file_name = f"_{kwargs['package_name']}.pth"
++    pth_file_name = kwargs.get("pth_file_name", f"_editable_impl_{kwargs['package_name']}.pth")
+     files.extend((
+         File(Path(pth_file_name), "\n".join(package_paths)),
+         File(

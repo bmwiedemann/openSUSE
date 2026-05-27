@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 25 09:00:32 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.16.5
+  * Fixes hatch shell type error for keep_env.
+  * SBOM documentation for including SBOM files in sdist
+  * Fixes workspace member detection to properly handle shared path
+    prefixes.
+  * Handle a breaking change in virtualenv by only supporting the
+    latest version and adding python-discovery as a dependency.
+- Add fix-pth-editables06.patch to fix test failure
+- Drop upstream shell.patch and packaging26.patch
+
+-------------------------------------------------------------------
 Fri Jan 30 17:21:14 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add packaging26.patch to fix compatibility with packaging 26.0
