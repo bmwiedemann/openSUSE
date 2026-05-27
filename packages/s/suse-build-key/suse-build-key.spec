@@ -176,14 +176,14 @@ install -c -m 644 %{SOURCE10} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-containe
 install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container-key.pem
 
 mkdir -p $RPM_BUILD_ROOT/usr/bin/
-mkdir -p $RPM_BUILD_ROOT/var/lib/suse-build-key
+install -m 0700 -d $RPM_BUILD_ROOT/var/lib/%{name}
 install -m 755 %{SOURCE101} $RPM_BUILD_ROOT/usr/bin/import-suse-build-key
 mkdir -p $RPM_BUILD_ROOT/%_unitdir
 install -m 644 %{SOURCE102} $RPM_BUILD_ROOT/%_unitdir
 install -m 644 %{SOURCE103} $RPM_BUILD_ROOT/%_unitdir
 
 %post
-touch /var/lib/%{name}/imported
+: > /var/lib/%{name}/imported
 %service_add_post suse-build-key-import.service suse-build-key-import.timer
 test -x /usr/bin/systemctl && systemctl enable suse-build-key-import.timer && systemctl start suse-build-key-import.timer || true
 
@@ -218,7 +218,7 @@ test -x /usr/bin/systemctl && systemctl enable suse-build-key-import.timer && sy
 %{pemcontainerkeydir}/suse-container-key.pem
 %{pemcontainerkeydir}/suse-container-key-old.pem
 %attr(755,root,root) %_bindir/import-suse-build-key
-%dir /var/lib/%{name}
+%dir %attr(700,root,root) /var/lib/%{name}
 %ghost /var/lib/%{name}/imported
 %_unitdir/suse-build-key-import.service
 %_unitdir/suse-build-key-import.timer

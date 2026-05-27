@@ -428,4 +428,29 @@ This fixes build on SLE15SP7. (forwarded request 1190501 from epaolantonio)</com
   - build-pqc-16.pem</comment>
     <requestid>1341188</requestid>
   </revision>
+  <revision rev="51" vrev="22">
+    <srcmd5>d547c111d70cd60c1fc9e8589b4fadd3</srcmd5>
+    <version>12.0</version>
+    <time>1779891509</time>
+    <user>anag_factory</user>
+    <comment>- avoid using touch without requiring touch as postinstall script
+
+  - gpg-pubkey-25db7ae0-645bae34.asc: New SLE RSA 4096 bit backup signing key.
+- use dumpsigs script from openSUSE to merge code
+  using 2048 bit rsa key
+  valid until (2017-01-13)
+- export keys to single files in /usr/lib/rpm/gnupg/keys
+  B37B98A9 SUSE PTF Signing Key &lt;support@suse.com&gt;
+  (bnc#665912)
+  self-signature needs to be the first signature found in a key
+  7E2E3B05: extend expiration by 2 years until 2010-05-24
+- added new official provo autobuild key ID A1912208
+- add dumpsigs script here to have _one_ place for the script
+- use correct provo autobuild key
+- removed jds key
+- added JDS public key (15c17deb)
+  in that directory
+- initial package. Contains (forwarded request 1355307 from dirkmueller)</comment>
+    <requestid>1355313</requestid>
+  </revision>
 </revisionlist>
