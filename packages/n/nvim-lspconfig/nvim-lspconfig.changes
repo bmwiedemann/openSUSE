@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 27 08:51:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 2.9.0:
+  + fix(gdscript): remove nonexistent filetypes
+  + feat(groovyls): use groovy-language-server from $PATH
+  + fix(flow): invalid condition
+  + feat: phpantom_lsp
+  + fix(lua_ls): add lspconfig runtime to lua config
+  + fix(spade_ls): correct default binary name
+  + fix(zls): use up to date config schema for LSP settings types
+  + Fix overrides type and prefix nixd
+  + fix(kotlin_lsp): Launch with intellij-server
+  + feat(annotations): add gopls schema
+  + feat: add panache language server
+
+-------------------------------------------------------------------
 Sat Apr 11 02:26:28 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 2.8.0:

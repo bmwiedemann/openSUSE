@@ -368,4 +368,23 @@
   + feat(buf_ls): add filetype for buf config files (forwarded request 1345985 from rrahl0)</comment>
     <requestid>1345986</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fea521e889d4c28e00d2f24515b26289</srcmd5>
+    <version>2.9.0</version>
+    <time>1779891616</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.9.0:
+  + fix(gdscript): remove nonexistent filetypes
+  + feat(groovyls): use groovy-language-server from $PATH
+  + fix(flow): invalid condition
+  + feat: phpantom_lsp
+  + fix(lua_ls): add lspconfig runtime to lua config
+  + fix(spade_ls): correct default binary name
+  + fix(zls): use up to date config schema for LSP settings types
+  + Fix overrides type and prefix nixd
+  + fix(kotlin_lsp): Launch with intellij-server
+  + feat(annotations): add gopls schema
+  + feat: add panache language server (forwarded request 1355318 from rrahl0)</comment>
+    <requestid>1355319</requestid>
+  </revision>
 </revisionlist>
