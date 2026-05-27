@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 27 08:43:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.51.0:
+  + Add no-cd setting
+  + Allow [env] attribute to take expressions
+  + Allow using expressions with [working-directory]
+  + Read justfile from standard input with --justfile -
+  + Make parent_directory() of bare filename return .
+  + Make [env] override module-level exports
+  + Fail on deep recursion instead of overflowing stack
+  + Invoke chooser selections separately
+  + Don't evaluate unused assertions
+  + Respect lazy setting in submodules
+  + Fix overrides not being visible in user-defined functions
+  + Don't panic on invalid datetime format string
+
+-------------------------------------------------------------------
 Mon Apr 27 00:16:38 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.50.0:

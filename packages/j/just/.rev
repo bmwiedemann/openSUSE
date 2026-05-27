@@ -630,4 +630,24 @@
   + Include bash completion script in crate (forwarded request 1349471 from rrahl0)</comment>
     <requestid>1349472</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d72b68d7f6df9338c9ad12cde22459c0</srcmd5>
+    <version>1.51.0</version>
+    <time>1779891503</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.51.0:
+  + Add no-cd setting
+  + Allow [env] attribute to take expressions
+  + Allow using expressions with [working-directory]
+  + Read justfile from standard input with --justfile -
+  + Make parent_directory() of bare filename return .
+  + Make [env] override module-level exports
+  + Fail on deep recursion instead of overflowing stack
+  + Invoke chooser selections separately
+  + Don't evaluate unused assertions
+  + Respect lazy setting in submodules
+  + Fix overrides not being visible in user-defined functions
+  + Don't panic on invalid datetime format string (forwarded request 1355310 from rrahl0)</comment>
+    <requestid>1355311</requestid>
+  </revision>
 </revisionlist>
