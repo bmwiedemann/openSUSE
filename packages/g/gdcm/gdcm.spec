@@ -18,7 +18,7 @@
 
 
 %bcond_with tests
-%if 0%{?suse_version} >= 1650
+%if 0%{?suse_version} > 1600
 %bcond_with system_poppler
 %else
 %bcond_without system_poppler
