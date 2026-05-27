@@ -1,11 +1,7 @@
-# HG changeset patch
-# Parent  60fc1933af9d4f1769025a6f1d9a60db6b899315
-
-Index: firefox-127.0/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
-===================================================================
---- firefox-127.0.orig/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
-+++ firefox-127.0/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
-@@ -49,6 +49,8 @@ static const char* sLibs[] = {
+diff -rup a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp b/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp
+--- a/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp	2026-05-06 14:54:38.000000000 +0000
++++ b/dom/media/platforms/ffmpeg/FFmpegRuntimeLinker.cpp	2026-05-07 14:42:53.481977081 +0000
+@@ -53,6 +53,8 @@ static const char* sLibs[] = {
    "libavcodec.so.61",
    "libavcodec.so.60",
    "libavcodec.so.59",

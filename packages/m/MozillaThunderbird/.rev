@@ -6377,4 +6377,41 @@ I cannot test locally unfortunately.
   %translate_suse_desktop. (boo#1158957)</comment>
     <requestid>1352196</requestid>
   </revision>
+  <revision rev="388" vrev="1">
+    <srcmd5>4af77b0a8d03d84e46147e7e19fc10d6</srcmd5>
+    <version>140.11.1</version>
+    <time>1779891345</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Thunderbird 140.11.1 ESR
+  * There are no Thunderbird changes requiring release notes in
+    this release
+
+- Refresh thunderbird-glibc-2.43.patch and re-enable its application
+  on systems with glibc &gt;= 2.43
+
+- Use BuildRequires: libclang13 to instead of llvm21-libclang13 on
+  Leap 16.1
+  * Built llvm21 coming from SLFO does not name a llvm versioned
+    libclang13
+
+- Mozilla Thunderbird 140.11.0 ESR
+  MFSA 2026-51 (bsc#1265212)
+  * CVE-2026-8946 (bmo#2029070)
+    Incorrect boundary conditions in the Audio/Video: Web Codecs
+    component
+  * CVE-2026-8388 (bmo#2036978)
+    Incorrect boundary conditions in the JavaScript Engine: JIT
+    component
+  * CVE-2026-8947 (bmo#2038439)
+    Use-after-free in the DOM: Bindings (WebIDL) component
+  * CVE-2026-8391 (bmo#2038575)
+    Other issue in the JavaScript Engine component
+  * CVE-2026-8401 (bmo#2038679)
+    Sandbox escape in the Profile Backup component
+  * CVE-2026-8949 (bmo#1355639)
+    Integer overflow in the Widget: Win32 component
+  * CVE-2026-8950 (bmo#1965430)
+    Same-origin policy bypass in the Networking: HTTP component</comment>
+    <requestid>1355243</requestid>
+  </revision>
 </revisionlist>

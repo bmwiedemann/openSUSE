@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Tue May 26 11:38:26 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 140.11.1 ESR
+  * There are no Thunderbird changes requiring release notes in
+    this release
+
+-------------------------------------------------------------------
+Sat May 23 10:32:31 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Refresh thunderbird-glibc-2.43.patch and re-enable its application
+  on systems with glibc >= 2.43
+
+-------------------------------------------------------------------
+Tue May 19 02:43:56 UTC 2026 - Max Lin <mlin@suse.com>
+
+- Use BuildRequires: libclang13 to instead of llvm21-libclang13 on
+  Leap 16.1
+  * Built llvm21 coming from SLFO does not name a llvm versioned
+    libclang13
+
+-------------------------------------------------------------------
+Sat May 16 06:57:28 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 140.11.0 ESR
+  MFSA 2026-51 (bsc#1265212)
+  * CVE-2026-8946 (bmo#2029070)
+    Incorrect boundary conditions in the Audio/Video: Web Codecs
+    component
+  * CVE-2026-8388 (bmo#2036978)
+    Incorrect boundary conditions in the JavaScript Engine: JIT
+    component
+  * CVE-2026-8947 (bmo#2038439)
+    Use-after-free in the DOM: Bindings (WebIDL) component
+  * CVE-2026-8391 (bmo#2038575)
+    Other issue in the JavaScript Engine component
+  * CVE-2026-8401 (bmo#2038679)
+    Sandbox escape in the Profile Backup component
+  * CVE-2026-8949 (bmo#1355639)
+    Integer overflow in the Widget: Win32 component
+  * CVE-2026-8950 (bmo#1965430)
+    Same-origin policy bypass in the Networking: HTTP component
+  * CVE-2026-8953 (bmo#2029511)
+    Sandbox escape due to use-after-free in the Disability Access
+    APIs component
+  * CVE-2026-8954 (bmo#2030747)
+    Incorrect boundary conditions, integer overflow in the
+    Audio/Video component
+  * CVE-2026-8955 (bmo#2031064)
+    Privilege escalation in the DOM: Workers component
+  * CVE-2026-8956 (bmo#2032427)
+    Integer overflow in the Networking: JAR component
+  * CVE-2026-8957 (bmo#2033850)
+    Privilege escalation in the Enterprise Policies component
+  * CVE-2026-8958 (bmo#2034713)
+    Information disclosure, sandbox escape in the Security:
+    Process Sandboxing component
+  * CVE-2026-8959 (bmo#2034754)
+    Sandbox escape due to incorrect boundary conditions in the
+    Widget: Win32 component
+  * CVE-2026-8961 (bmo#1962625)
+    Spoofing issue in the Form Autofill component
+  * CVE-2026-8962 (bmo#2004804)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-8968 (bmo#2030467)
+    Denial-of-service due to invalid pointer in the Audio/Video:
+    Web Codecs component
+  * CVE-2026-8970 (bmo#2032174)
+    Privilege escalation in the Security component
+  * CVE-2026-8974 (bmo#1784128, bmo#1883230, bmo#1983677, bmo#2022390,
+    bmo#2023116, bmo#2023657, bmo#2024255, bmo#2024418, bmo#2024441,
+    bmo#2024447, bmo#2024966, bmo#2025412, bmo#2025467, bmo#2025940,
+    bmo#2025950, bmo#2025956, bmo#2026284, bmo#2027247, bmo#2027255,
+    bmo#2027288, bmo#2027306, bmo#2027322, bmo#2027332, bmo#2027333,
+    bmo#2028266, bmo#2028292, bmo#2028319, bmo#2028526, bmo#2028870,
+    bmo#2028876, bmo#2028882, bmo#2029062, bmo#2029309, bmo#2029414,
+    bmo#2029422, bmo#2029428, bmo#2029447, bmo#2029732, bmo#2029785,
+    bmo#2029793, bmo#2029813, bmo#2029899, bmo#2031028, bmo#2031457,
+    bmo#2032039, bmo#2033610, bmo#2033854, bmo#2034498, bmo#2034628,
+    bmo#2034978, bmo#2035966, bmo#2036668, bmo#2036905, bmo#2036930)
+    Memory safety bugs fixed in Thunderbird 140.11 and Thunderbird 151
+  * CVE-2026-8975 (bmo#1860195, bmo#2029325, bmo#2029429, bmo#2029910,
+    bmo#2035915, bmo#2038669, bmo#2038678)
+    Memory safety bugs fixed in Thunderbird 140.11 and Thunderbird 151
+- removed obsolete patches
+  * thunderbird-bmo2006630.patch
+  * mozilla-bmo2031958.patch
+
+-------------------------------------------------------------------
 Fri May  8 10:02:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Thunderbird 140.10.2

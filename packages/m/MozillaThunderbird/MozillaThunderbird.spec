@@ -30,8 +30,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.10.2
-%define orig_version   140.10.2
+%define mainver        %major.11.1
+%define orig_version   140.11.1
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
@@ -149,7 +149,11 @@ BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
 %if 0%{?suse_version} > 1600
 BuildRequires:  clang21-devel
+%if 0%{?suse_version} >= 1699
 BuildRequires:  llvm21-libclang13
+%else
+BuildRequires:  libclang13
+%endif
 %else
 BuildRequires:  clang-devel
 %endif
@@ -214,8 +218,6 @@ Patch18:        mozilla-silence-no-return-type.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch22:        thunderbird-silence-no-return.patch
-Patch24:        thunderbird-bmo2006630.patch
-Patch25:        mozilla-bmo2031958.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -316,7 +318,9 @@ modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{pkgname}.changes")
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
-
+for c in glslopt cubeb-sys minimal-lexical sfv wasi ; do
+  sed -i -e 's/"[^"]*\.gitmodules":"[0-9a-f]*",//g' comm/third_party/rust/${c}/.cargo-checksum.json
+done
 # When doing only_print_mozconfig, this file isn't necessarily available, so skip it
 cp %{SOURCE4} .obsenv.sh
 %else
