@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 27 01:57:35 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Temporary disable the fixes for CVE-2026-32105 as it brings
+  confusion when using freerdp as a client to connect in legacy rdp
+  protocol (bsc#1266233, bsc#1266325), see upstream discussion:
+
+  https://github.com/neutrinolabs/xrdp/issues/3808
+
+-------------------------------------------------------------------
 Wed May 20 03:22:14 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
 
 - Add xrdp-fix-old-gcc-error.patch to adapt the later xrdp

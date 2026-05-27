@@ -499,4 +499,12 @@
     <comment></comment>
     <requestid>1354139</requestid>
   </revision>
+  <revision rev="62" vrev="4">
+    <srcmd5>e6ca0b6bffd4f81b0001254d9169d269</srcmd5>
+    <version>0.9.27</version>
+    <time>1779891408</time>
+    <user>anag_factory</user>
+    <comment>Adjust spec to make it acceptable in Factory. (forwarded request 1355255 from yfjiang)</comment>
+    <requestid>1355256</requestid>
+  </revision>
 </revisionlist>
