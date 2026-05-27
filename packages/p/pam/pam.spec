@@ -70,7 +70,7 @@
 #
 Name:           pam%{name_suffix}
 #
-Version:        1.7.2
+Version:        1.7.2+git12
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
@@ -92,7 +92,6 @@ Source22:       postlogin-account.pamd
 Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
-Patch2:         pam_unix-selinux.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex

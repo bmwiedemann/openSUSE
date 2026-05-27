@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 26 12:51:06 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.7.2+git12:
+  * pam_env: fix check for buffer size (#975)
+  * pam.8: Drop self reference
+  * pam_unix: always call unix_update if SELinux is enabled
+    (obsoletes pam_unix-selinux.patch)
+  * ci: use one-line syntax for the matrix strategy
+  * ci: add logind jobs for all compilers to the build matrix
+  * ci: add clang-19 jobs to the build matrix
+  * po: update translations using Weblate (Greek)
+  * ci: replace vendordir jobs with novendordir
+  * ci/build.sh: add support for empty VENDORDIR
+  * ci: apply Zizmor recommendations to workflow
+  * ci: use matrix strategy to avoid code duplication
+  * meson: do not undefine _FILE_OFFSET_BITS for 64-bit platforms
+
+-------------------------------------------------------------------
 Tue Mar 10 11:03:35 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - pam_unix-selinux.patch: always call unix_update if SELinux is
