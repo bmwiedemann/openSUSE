@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-Mon May 25 08:35:59 UTC 2026 - Aeneas Jaißle <aj@ajaissle.de>
+Mon May 25 08:35:59 UTC 2026 - Aeneas Jaißle <aj@ajaissle.de> - 1.6.16
 
 - update to 1.6.16
   This is a security update to the LTS version 1.6 of Roundcube Webmail.
@@ -19,14 +19,14 @@ Mon May 25 08:35:59 UTC 2026 - Aeneas Jaißle <aj@ajaissle.de>
   
   CHANGELOG
   + Fix potential too long value in IMAP ID command (#10136)
-  + Security: Fix stored XSS/HTML/CSS injection in subject field of the draft restore dialog
-  + Security: Fix CSS injection bypass in HTML sanitizer via SVG <animate attributeName="style">
-  + Security: Fix pre-auth SQL injection in virtuser_query plugin via preg_replace backslash escape bypass
-  + Security: Fix SSRF bypass via specific local address URLs
-  + Security: Fix bypass of remote image blocking via CSS var()
-  + Security: Fix local/private URL fetch bypass when remote resources were not allowed
-  + Security: Fix pre-auth arbitrary file delete via redis/memcache session poisoning bypass
-  + Security: Fix code injection vulnerability - remove support for code evaluation in LDAP autovalues option
+  + Security: Fix stored XSS/HTML/CSS injection in subject field of the draft restore dialog [CVE-2026-48849] [bsc#1266337]
+  + Security: Fix CSS injection bypass in HTML sanitizer via SVG <animate attributeName="style"> [CVE-2026-48848] [bsc#1266336]
+  + Security: Fix pre-auth SQL injection in virtuser_query plugin via preg_replace backslash escape bypass [CVE-2026-48842] [bsc#1266329]
+  + Security: Fix SSRF bypass via specific local address URLs [CVE-2026-48843] [bsc#1266331]
+  + Security: Fix bypass of remote image blocking via CSS var() [CVE-2026-48846] [bsc#1266334]
+  + Security: Fix local/private URL fetch bypass when remote resources were not allowed [CVE-2026-48845] [bsc#1266333]
+  + Security: Fix pre-auth arbitrary file delete via redis/memcache session poisoning bypass [CVE-2026-48847] [bsc#1266335]
+  + Security: Fix code injection vulnerability - remove support for code evaluation in LDAP autovalues option [CVE-2026-48844] [bsc#1266332]
 
 -------------------------------------------------------------------
 Sun Mar 29 19:44:22 UTC 2026 - Lars Vogdt <lars@linux-schulserver.de> - 1.6.15

@@ -867,4 +867,12 @@ Security Update, [bsc#1228900]  [bsc#1228901]</comment>
     <comment></comment>
     <requestid>1355036</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>39c5b7453f4a140e89ff4d05720ba33f</srcmd5>
+    <version>1.6.16</version>
+    <time>1779892286</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1355387</requestid>
+  </revision>
 </revisionlist>
