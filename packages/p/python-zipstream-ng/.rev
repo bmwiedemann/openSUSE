@@ -38,4 +38,12 @@
   * Add support for Zstandard compression where available (Python 3.14+)</comment>
     <requestid>1338807</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>76469a4d17cce9425e5075cbc4e88a37</srcmd5>
+    <version>1.9.2</version>
+    <time>1779891339</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1355245</requestid>
+  </revision>
 </revisionlist>

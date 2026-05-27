@@ -17,16 +17,15 @@
 
 
 Name:           python-zipstream-ng
-Version:        1.9.0
+Version:        1.9.2
 Release:        0
 Summary:        Modern and easy to use streamable zip file generator
 License:        LGPL-3.0-only
 URL:            https://github.com/pR0Ps/zipstream-ng
 Source:         https://files.pythonhosted.org/packages/source/z/zipstream-ng/zipstream_ng-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives

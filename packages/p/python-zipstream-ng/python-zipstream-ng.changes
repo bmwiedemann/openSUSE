@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 19 21:37:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.2:
+  * Switch to hatchling build backend and src layout.
+  * Remove AsyncZipStream.
+  * Add support for Python 3.15.
+
+-------------------------------------------------------------------
 Fri Mar 13 20:34:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.0:
