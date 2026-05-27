@@ -112,4 +112,12 @@
     <comment>- Update to release 20260522</comment>
     <requestid>1354651</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f70a7cfe5d8d9b52f709370ef1bb4a1b</srcmd5>
+    <version>20260522</version>
+    <time>1779891465</time>
+    <user>anag_factory</user>
+    <comment>- Reinstate 0001-Export-libfvalue_value_get_entry.patch</comment>
+    <requestid>1355282</requestid>
+  </revision>
 </revisionlist>
