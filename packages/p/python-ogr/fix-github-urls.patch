@@ -1,0 +1,1481 @@
+Index: ogr-0.61.1/tests/integration/github/test_data/test_check_run/CheckRun.test_change_name.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_check_run/CheckRun.test_change_name.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_check_run/CheckRun.test_change_name.yaml
+@@ -283,7 +283,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/hello-world/commits/7cf6d0cbeca285ecbeb19a0067cb243783b3c768:
++      https://api.github.com:443/repos/packit/hello-world/commits/7cf6d0cbeca285ecbeb19a0067cb243783b3c768?page=1:
+       - metadata:
+           latency: 0.20469403266906738
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_check_run/CheckRun.test_change_url.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_check_run/CheckRun.test_change_url.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_check_run/CheckRun.test_change_url.yaml
+@@ -283,7 +283,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/hello-world/commits/7cf6d0cbeca285ecbeb19a0067cb243783b3c768:
++      https://api.github.com:443/repos/packit/hello-world/commits/7cf6d0cbeca285ecbeb19a0067cb243783b3c768?page=1:
+       - metadata:
+           latency: 0.253537654876709
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_check_run/CheckRun.test_get_latest_check_run.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_check_run/CheckRun.test_get_latest_check_run.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_check_run/CheckRun.test_get_latest_check_run.yaml
+@@ -283,7 +283,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/hello-world/commits/7cf6d0cbeca285ecbeb19a0067cb243783b3c768:
++      https://api.github.com:443/repos/packit/hello-world/commits/7cf6d0cbeca285ecbeb19a0067cb243783b3c768?page=1:
+       - metadata:
+           latency: 0.23604774475097656
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_check_run/CheckRun.test_get_list.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_check_run/CheckRun.test_get_list.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_check_run/CheckRun.test_get_list.yaml
+@@ -283,7 +283,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/hello-world/commits/7cf6d0cbeca285ecbeb19a0067cb243783b3c768:
++      https://api.github.com:443/repos/packit/hello-world/commits/7cf6d0cbeca285ecbeb19a0067cb243783b3c768?page=1:
+       - metadata:
+           latency: 0.25438904762268066
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_check_run/CheckRun.test_get_list_no_runs.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_check_run/CheckRun.test_get_list_no_runs.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_check_run/CheckRun.test_get_list_no_runs.yaml
+@@ -283,7 +283,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/hello-world/commits/f502aae6920d82948f2dba0b70c9260fb1e34822:
++      https://api.github.com:443/repos/packit/hello-world/commits/f502aae6920d82948f2dba0b70c9260fb1e34822?page=1:
+       - metadata:
+           latency: 0.26656675338745117
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_check_run/CheckRun.test_non_existing_check_runs_returns_none.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_check_run/CheckRun.test_non_existing_check_runs_returns_none.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_check_run/CheckRun.test_non_existing_check_runs_returns_none.yaml
+@@ -283,7 +283,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/hello-world/commits/f502aae6920d82948f2dba0b70c9260fb1e34822:
++      https://api.github.com:443/repos/packit/hello-world/commits/f502aae6920d82948f2dba0b70c9260fb1e34822?page=1:
+       - metadata:
+           latency: 0.3462085723876953
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_commit_comment.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_commit_comment.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_commit_comment.yaml
+@@ -200,7 +200,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/hello-world/commits/95069d7bedb6ae02def3fccce22169b412d08eac:
++      https://api.github.com:443/repos/packit/hello-world/commits/95069d7bedb6ae02def3fccce22169b412d08eac?page=1:
+       - metadata:
+           latency: 0.18122076988220215
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_commit_flags.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_commit_flags.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_commit_flags.yaml
+@@ -192,7 +192,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/commits/29ca3caefc781b4b41245df3e01086ffa4b4639e:
++      https://api.github.com:443/repos/packit/ogr/commits/29ca3caefc781b4b41245df3e01086ffa4b4639e?page=1:
+       - metadata:
+           latency: 0.44353818893432617
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_commits.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_commits.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_commits.yaml
+@@ -3132,7 +3132,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=10:
++      https://api.github.com:443/repositories/161636700/commits?page=10&sha=main:
+       - metadata:
+           latency: 0.3275294303894043
+           module_call_list:
+@@ -6456,7 +6456,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=11:
++      https://api.github.com:443/repositories/161636700/commits?page=11&sha=main:
+       - metadata:
+           latency: 0.35633301734924316
+           module_call_list:
+@@ -9607,7 +9607,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=12:
++      https://api.github.com:443/repositories/161636700/commits?page=12&sha=main:
+       - metadata:
+           latency: 0.3943626880645752
+           module_call_list:
+@@ -12353,7 +12353,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=13:
++      https://api.github.com:443/repositories/161636700/commits?page=13&sha=main:
+       - metadata:
+           latency: 0.4440467357635498
+           module_call_list:
+@@ -14967,7 +14967,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=14:
++      https://api.github.com:443/repositories/161636700/commits?page=14&sha=main:
+       - metadata:
+           latency: 0.3514444828033447
+           module_call_list:
+@@ -18149,7 +18149,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=15:
++      https://api.github.com:443/repositories/161636700/commits?page=15&sha=main:
+       - metadata:
+           latency: 0.4074702262878418
+           module_call_list:
+@@ -21487,7 +21487,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=16:
++      https://api.github.com:443/repositories/161636700/commits?page=16&sha=main:
+       - metadata:
+           latency: 0.3313326835632324
+           module_call_list:
+@@ -24812,7 +24812,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=17:
++      https://api.github.com:443/repositories/161636700/commits?page=17&sha=main:
+       - metadata:
+           latency: 0.3715505599975586
+           module_call_list:
+@@ -27798,7 +27798,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=18:
++      https://api.github.com:443/repositories/161636700/commits?page=18&sha=main:
+       - metadata:
+           latency: 0.38607192039489746
+           module_call_list:
+@@ -30718,7 +30718,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=19:
++      https://api.github.com:443/repositories/161636700/commits?page=19&sha=main:
+       - metadata:
+           latency: 0.33230161666870117
+           module_call_list:
+@@ -34023,7 +34023,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=2:
++      https://api.github.com:443/repositories/161636700/commits?page=2&sha=main:
+       - metadata:
+           latency: 0.33956241607666016
+           module_call_list:
+@@ -36764,7 +36764,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=20:
++      https://api.github.com:443/repositories/161636700/commits?page=20&sha=main:
+       - metadata:
+           latency: 0.37642574310302734
+           module_call_list:
+@@ -39880,7 +39880,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=21:
++      https://api.github.com:443/repositories/161636700/commits?page=21&sha=main:
+       - metadata:
+           latency: 0.36487245559692383
+           module_call_list:
+@@ -43150,7 +43150,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=22:
++      https://api.github.com:443/repositories/161636700/commits?page=22&sha=main:
+       - metadata:
+           latency: 0.3666667938232422
+           module_call_list:
+@@ -46418,7 +46418,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=23:
++      https://api.github.com:443/repositories/161636700/commits?page=23&sha=main:
+       - metadata:
+           latency: 0.3422238826751709
+           module_call_list:
+@@ -49350,7 +49350,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=24:
++      https://api.github.com:443/repositories/161636700/commits?page=24&sha=main:
+       - metadata:
+           latency: 0.3151729106903076
+           module_call_list:
+@@ -52435,7 +52435,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=25:
++      https://api.github.com:443/repositories/161636700/commits?page=25&sha=main:
+       - metadata:
+           latency: 0.48312997817993164
+           module_call_list:
+@@ -55466,7 +55466,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=26:
++      https://api.github.com:443/repositories/161636700/commits?page=26&sha=main:
+       - metadata:
+           latency: 0.34540843963623047
+           module_call_list:
+@@ -58672,7 +58672,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=27:
++      https://api.github.com:443/repositories/161636700/commits?page=27&sha=main:
+       - metadata:
+           latency: 0.31258130073547363
+           module_call_list:
+@@ -61147,7 +61147,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=28:
++      https://api.github.com:443/repositories/161636700/commits?page=28&sha=main:
+       - metadata:
+           latency: 0.3270845413208008
+           module_call_list:
+@@ -64036,7 +64036,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=29:
++      https://api.github.com:443/repositories/161636700/commits?page=29&sha=main:
+       - metadata:
+           latency: 0.36951279640197754
+           module_call_list:
+@@ -67168,7 +67168,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=3:
++      https://api.github.com:443/repositories/161636700/commits?page=3&sha=main:
+       - metadata:
+           latency: 0.2700343132019043
+           module_call_list:
+@@ -69957,7 +69957,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=30:
++      https://api.github.com:443/repositories/161636700/commits?page=30&sha=main:
+       - metadata:
+           latency: 0.3130824565887451
+           module_call_list:
+@@ -72747,7 +72747,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=31:
++      https://api.github.com:443/repositories/161636700/commits?page=31&sha=main:
+       - metadata:
+           latency: 0.3278839588165283
+           module_call_list:
+@@ -75147,7 +75147,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=32:
++      https://api.github.com:443/repositories/161636700/commits?page=32&sha=main:
+       - metadata:
+           latency: 0.3515603542327881
+           module_call_list:
+@@ -77503,7 +77503,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=33:
++      https://api.github.com:443/repositories/161636700/commits?page=33&sha=main:
+       - metadata:
+           latency: 0.27209019660949707
+           module_call_list:
+@@ -80120,7 +80120,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=34:
++      https://api.github.com:443/repositories/161636700/commits?page=34&sha=main:
+       - metadata:
+           latency: 0.29126977920532227
+           module_call_list:
+@@ -82780,7 +82780,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=35:
++      https://api.github.com:443/repositories/161636700/commits?page=35&sha=main:
+       - metadata:
+           latency: 0.338822603225708
+           module_call_list:
+@@ -85251,7 +85251,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=36:
++      https://api.github.com:443/repositories/161636700/commits?page=36&sha=main:
+       - metadata:
+           latency: 0.2964160442352295
+           module_call_list:
+@@ -87827,7 +87827,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=37:
++      https://api.github.com:443/repositories/161636700/commits?page=37&sha=main:
+       - metadata:
+           latency: 0.3387176990509033
+           module_call_list:
+@@ -90209,7 +90209,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=38:
++      https://api.github.com:443/repositories/161636700/commits?page=38&sha=main:
+       - metadata:
+           latency: 0.31602048873901367
+           module_call_list:
+@@ -92785,7 +92785,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=39:
++      https://api.github.com:443/repositories/161636700/commits?page=39&sha=main:
+       - metadata:
+           latency: 0.31511592864990234
+           module_call_list:
+@@ -95582,7 +95582,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=4:
++      https://api.github.com:443/repositories/161636700/commits?page=4&sha=main:
+       - metadata:
+           latency: 0.3135406970977783
+           module_call_list:
+@@ -98419,7 +98419,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=40:
++      https://api.github.com:443/repositories/161636700/commits?page=40&sha=main:
+       - metadata:
+           latency: 0.3483133316040039
+           module_call_list:
+@@ -101761,7 +101761,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=41:
++      https://api.github.com:443/repositories/161636700/commits?page=41&sha=main:
+       - metadata:
+           latency: 0.360339879989624
+           module_call_list:
+@@ -104960,7 +104960,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=42:
++      https://api.github.com:443/repositories/161636700/commits?page=42&sha=main:
+       - metadata:
+           latency: 0.4001295566558838
+           module_call_list:
+@@ -107681,7 +107681,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=43:
++      https://api.github.com:443/repositories/161636700/commits?page=43&sha=main:
+       - metadata:
+           latency: 0.2881896495819092
+           module_call_list:
+@@ -110391,7 +110391,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=44:
++      https://api.github.com:443/repositories/161636700/commits?page=44&sha=main:
+       - metadata:
+           latency: 0.3173224925994873
+           module_call_list:
+@@ -113362,7 +113362,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=45:
++      https://api.github.com:443/repositories/161636700/commits?page=45&sha=main:
+       - metadata:
+           latency: 0.3460991382598877
+           module_call_list:
+@@ -116435,7 +116435,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=46:
++      https://api.github.com:443/repositories/161636700/commits?page=46&sha=main:
+       - metadata:
+           latency: 0.3744773864746094
+           module_call_list:
+@@ -119595,7 +119595,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=47:
++      https://api.github.com:443/repositories/161636700/commits?page=47&sha=main:
+       - metadata:
+           latency: 0.3737475872039795
+           module_call_list:
+@@ -122677,7 +122677,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=48:
++      https://api.github.com:443/repositories/161636700/commits?page=48&sha=main:
+       - metadata:
+           latency: 0.3114316463470459
+           module_call_list:
+@@ -125005,7 +125005,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=49:
++      https://api.github.com:443/repositories/161636700/commits?page=49&sha=main:
+       - metadata:
+           latency: 0.36071085929870605
+           module_call_list:
+@@ -127467,7 +127467,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=5:
++      https://api.github.com:443/repositories/161636700/commits?page=5&sha=main:
+       - metadata:
+           latency: 0.39966344833374023
+           module_call_list:
+@@ -130366,7 +130366,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=50:
++      https://api.github.com:443/repositories/161636700/commits?page=50&sha=main:
+       - metadata:
+           latency: 0.3189198970794678
+           module_call_list:
+@@ -132980,7 +132980,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=51:
++      https://api.github.com:443/repositories/161636700/commits?page=51&sha=main:
+       - metadata:
+           latency: 0.3465266227722168
+           module_call_list:
+@@ -136136,7 +136136,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=52:
++      https://api.github.com:443/repositories/161636700/commits?page=52&sha=main:
+       - metadata:
+           latency: 0.28340601921081543
+           module_call_list:
+@@ -138428,7 +138428,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=6:
++      https://api.github.com:443/repositories/161636700/commits?page=6&sha=main:
+       - metadata:
+           latency: 0.36220860481262207
+           module_call_list:
+@@ -141558,7 +141558,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=7:
++      https://api.github.com:443/repositories/161636700/commits?page=7&sha=main:
+       - metadata:
+           latency: 0.3642570972442627
+           module_call_list:
+@@ -144180,7 +144180,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=8:
++      https://api.github.com:443/repositories/161636700/commits?page=8&sha=main:
+       - metadata:
+           latency: 0.36236000061035156
+           module_call_list:
+@@ -146886,7 +146886,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/commits?sha=main&page=9:
++      https://api.github.com:443/repositories/161636700/commits?page=9&sha=main:
+       - metadata:
+           latency: 0.38904619216918945
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_get_commit_comments.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_get_commit_comments.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_get_commit_comments.yaml
+@@ -199,7 +199,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/hello-world/commits/95069d7bedb6ae02def3fccce22169b412d08eac:
++      https://api.github.com:443/repos/packit/hello-world/commits/95069d7bedb6ae02def3fccce22169b412d08eac?page=1:
+       - metadata:
+           latency: 0.16718506813049316
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_get_commit_statuses.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_get_commit_statuses.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_get_commit_statuses.yaml
+@@ -189,7 +189,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/commits/c891a9e4ac01e6575f3fd66cf1b7db2f52f10128:
++      https://api.github.com:443/repos/packit/ogr/commits/c891a9e4ac01e6575f3fd66cf1b7db2f52f10128?page=1:
+       - metadata:
+           latency: 0.167830228805542
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_set_commit_status.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_set_commit_status.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_set_commit_status.yaml
+@@ -190,7 +190,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/commits/c891a9e4ac01e6575f3fd66cf1b7db2f52f10128:
++      https://api.github.com:443/repos/packit/ogr/commits/c891a9e4ac01e6575f3fd66cf1b7db2f52f10128?page=1:
+       - metadata:
+           latency: 0.09087896347045898
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_set_commit_status_long_description.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_set_commit_status_long_description.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_generic_commands/GenericCommands.test_set_commit_status_long_description.yaml
+@@ -190,7 +190,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/commits/c891a9e4ac01e6575f3fd66cf1b7db2f52f10128:
++      https://api.github.com:443/repos/packit/ogr/commits/c891a9e4ac01e6575f3fd66cf1b7db2f52f10128?page=1:
+       - metadata:
+           latency: 0.15789437294006348
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_issues/Issues.test_issue_list.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_issues/Issues.test_issue_list.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_issues/Issues.test_issue_list.yaml
+@@ -71271,7 +71271,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/issues?state=all&sort=updated&direction=desc:
++      https://api.github.com:443/repos/packit/ogr/issues?direction=desc&sort=updated&state=all:
+       - metadata:
+           latency: 0.8016400337219238
+           module_call_list:
+@@ -73213,7 +73213,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/issues?state=closed&sort=updated&direction=desc:
++      https://api.github.com:443/repos/packit/ogr/issues?direction=desc&sort=updated&state=closed:
+       - metadata:
+           latency: 0.5143063068389893
+           module_call_list:
+@@ -75772,7 +75772,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/issues?state=open&sort=updated&direction=desc:
++      https://api.github.com:443/repos/packit/ogr/issues?direction=desc&sort=updated&state=open:
+       - metadata:
+           latency: 0.385953426361084
+           module_call_list:
+@@ -79042,7 +79042,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=10:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=10&sort=updated&state=all:
+       - metadata:
+           latency: 0.6087079048156738
+           module_call_list:
+@@ -80914,7 +80914,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=11:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=11&sort=updated&state=all:
+       - metadata:
+           latency: 0.6162445545196533
+           module_call_list:
+@@ -82996,7 +82996,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=12:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=12&sort=updated&state=all:
+       - metadata:
+           latency: 0.5153937339782715
+           module_call_list:
+@@ -85053,7 +85053,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=13:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=13&sort=updated&state=all:
+       - metadata:
+           latency: 0.7563488483428955
+           module_call_list:
+@@ -87673,7 +87673,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=14:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=14&sort=updated&state=all:
+       - metadata:
+           latency: 0.4061722755432129
+           module_call_list:
+@@ -90245,7 +90245,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=15:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=15&sort=updated&state=all:
+       - metadata:
+           latency: 0.5293014049530029
+           module_call_list:
+@@ -92265,7 +92265,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=16:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=16&sort=updated&state=all:
+       - metadata:
+           latency: 0.3965725898742676
+           module_call_list:
+@@ -94376,7 +94376,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=17:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=17&sort=updated&state=all:
+       - metadata:
+           latency: 0.4331352710723877
+           module_call_list:
+@@ -96251,7 +96251,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=18:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=18&sort=updated&state=all:
+       - metadata:
+           latency: 0.4749131202697754
+           module_call_list:
+@@ -97958,7 +97958,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=19:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=19&sort=updated&state=all:
+       - metadata:
+           latency: 0.2875034809112549
+           module_call_list:
+@@ -99164,7 +99164,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=2:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=2&sort=updated&state=all:
+       - metadata:
+           latency: 0.484006404876709
+           module_call_list:
+@@ -101967,7 +101967,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=3:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=3&sort=updated&state=all:
+       - metadata:
+           latency: 0.38976049423217773
+           module_call_list:
+@@ -104131,7 +104131,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=4:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=4&sort=updated&state=all:
+       - metadata:
+           latency: 0.4368612766265869
+           module_call_list:
+@@ -106230,7 +106230,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=5:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=5&sort=updated&state=all:
+       - metadata:
+           latency: 0.4389767646789551
+           module_call_list:
+@@ -109196,7 +109196,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=6:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=6&sort=updated&state=all:
+       - metadata:
+           latency: 0.5062532424926758
+           module_call_list:
+@@ -111164,7 +111164,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=7:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=7&sort=updated&state=all:
+       - metadata:
+           latency: 0.5966589450836182
+           module_call_list:
+@@ -113334,7 +113334,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=8:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=8&sort=updated&state=all:
+       - metadata:
+           latency: 0.6849250793457031
+           module_call_list:
+@@ -115402,7 +115402,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=9:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=9&sort=updated&state=all:
+       - metadata:
+           latency: 0.4251210689544678
+           module_call_list:
+@@ -117387,7 +117387,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=10:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=10&sort=updated&state=closed:
+       - metadata:
+           latency: 0.4951000213623047
+           module_call_list:
+@@ -119467,7 +119467,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=11:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=11&sort=updated&state=closed:
+       - metadata:
+           latency: 0.6037445068359375
+           module_call_list:
+@@ -121538,7 +121538,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=12:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=12&sort=updated&state=closed:
+       - metadata:
+           latency: 0.6322252750396729
+           module_call_list:
+@@ -124151,7 +124151,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=13:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=13&sort=updated&state=closed:
+       - metadata:
+           latency: 0.35396623611450195
+           module_call_list:
+@@ -126717,7 +126717,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=14:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=14&sort=updated&state=closed:
+       - metadata:
+           latency: 0.37014007568359375
+           module_call_list:
+@@ -128746,7 +128746,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=15:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=15&sort=updated&state=closed:
+       - metadata:
+           latency: 0.48427534103393555
+           module_call_list:
+@@ -130861,7 +130861,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=16:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=16&sort=updated&state=closed:
+       - metadata:
+           latency: 0.41854310035705566
+           module_call_list:
+@@ -132727,7 +132727,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=17:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=17&sort=updated&state=closed:
+       - metadata:
+           latency: 0.4213831424713135
+           module_call_list:
+@@ -134443,7 +134443,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=18:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=18&sort=updated&state=closed:
+       - metadata:
+           latency: 0.5118918418884277
+           module_call_list:
+@@ -135697,7 +135697,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=2:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=2&sort=updated&state=closed:
+       - metadata:
+           latency: 0.6692438125610352
+           module_call_list:
+@@ -137757,7 +137757,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=3:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=3&sort=updated&state=closed:
+       - metadata:
+           latency: 0.5778298377990723
+           module_call_list:
+@@ -139747,7 +139747,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=4:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=4&sort=updated&state=closed:
+       - metadata:
+           latency: 0.3690457344055176
+           module_call_list:
+@@ -141833,7 +141833,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=5:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=5&sort=updated&state=closed:
+       - metadata:
+           latency: 0.3658881187438965
+           module_call_list:
+@@ -143777,7 +143777,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=6:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=6&sort=updated&state=closed:
+       - metadata:
+           latency: 0.4380836486816406
+           module_call_list:
+@@ -145904,7 +145904,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=7:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=7&sort=updated&state=closed:
+       - metadata:
+           latency: 0.4265930652618408
+           module_call_list:
+@@ -147996,7 +147996,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=8:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=8&sort=updated&state=closed:
+       - metadata:
+           latency: 0.49077558517456055
+           module_call_list:
+@@ -149973,7 +149973,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=closed&sort=updated&direction=desc&page=9:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=9&sort=updated&state=closed:
+       - metadata:
+           latency: 0.6101934909820557
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_issues/Issues.test_issue_list_assignee.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_issues/Issues.test_issue_list_assignee.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_issues/Issues.test_issue_list_assignee.yaml
+@@ -3552,7 +3552,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/issues?state=all&assignee=mfocko&sort=updated&direction=desc:
++      https://api.github.com:443/repos/packit/ogr/issues?assignee=mfocko&direction=desc&sort=updated&state=all:
+       - metadata:
+           latency: 0.2673962116241455
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_issues/Issues.test_issue_list_author.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_issues/Issues.test_issue_list_author.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_issues/Issues.test_issue_list_author.yaml
+@@ -2973,7 +2973,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/issues?state=all&sort=updated&direction=desc&creator=mfocko:
++      https://api.github.com:443/repos/packit/ogr/issues?creator=mfocko&direction=desc&sort=updated&state=all:
+       - metadata:
+           latency: 0.5030648708343506
+           module_call_list:
+@@ -4825,7 +4825,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&creator=mfocko&page=2:
++      https://api.github.com:443/repositories/161636700/issues?creator=mfocko&direction=desc&page=2&sort=updated&state=all:
+       - metadata:
+           latency: 0.613328218460083
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_issues/Issues.test_issue_list_labels.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_issues/Issues.test_issue_list_labels.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_issues/Issues.test_issue_list_labels.yaml
+@@ -8747,7 +8747,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/issues?state=all&labels=Pagure&sort=updated&direction=desc:
++      https://api.github.com:443/repos/packit/ogr/issues?direction=desc&labels=Pagure&sort=updated&state=all:
+       - metadata:
+           latency: 0.6063816547393799
+           module_call_list:
+@@ -11983,7 +11983,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&labels=Pagure&sort=updated&direction=desc&page=2:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&labels=Pagure&page=2&sort=updated&state=all:
+       - metadata:
+           latency: 0.4100010395050049
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/pagure/test_data/test_service/Service.test_get_rate_limit_remaining.yaml
+===================================================================
+--- /dev/null
++++ ogr-0.61.1/tests/integration/pagure/test_data/test_service/Service.test_get_rate_limit_remaining.yaml
+@@ -0,0 +1,4 @@
++_requre:
++  DataTypes: 1
++  key_strategy: StorageKeysInspectSimple
++  version_storage_file: 3
+Index: ogr-0.61.1/tests/integration/github/test_data/test_issues/Issues.test_list_contains_only_issues.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_issues/Issues.test_list_contains_only_issues.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_issues/Issues.test_list_contains_only_issues.yaml
+@@ -35632,7 +35632,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/issues?state=all&sort=updated&direction=desc:
++      https://api.github.com:443/repos/packit/ogr/issues?direction=desc&sort=updated&state=all:
+       - metadata:
+           latency: 0.385969877243042
+           module_call_list:
+@@ -37574,7 +37574,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=10:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=10&sort=updated&state=all:
+       - metadata:
+           latency: 0.4082207679748535
+           module_call_list:
+@@ -39446,7 +39446,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=11:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=11&sort=updated&state=all:
+       - metadata:
+           latency: 0.5108993053436279
+           module_call_list:
+@@ -41528,7 +41528,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=12:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=12&sort=updated&state=all:
+       - metadata:
+           latency: 0.6470744609832764
+           module_call_list:
+@@ -43585,7 +43585,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=13:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=13&sort=updated&state=all:
+       - metadata:
+           latency: 0.6156420707702637
+           module_call_list:
+@@ -46205,7 +46205,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=14:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=14&sort=updated&state=all:
+       - metadata:
+           latency: 0.5570054054260254
+           module_call_list:
+@@ -48777,7 +48777,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=15:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=15&sort=updated&state=all:
+       - metadata:
+           latency: 1.1057512760162354
+           module_call_list:
+@@ -50797,7 +50797,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=16:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=16&sort=updated&state=all:
+       - metadata:
+           latency: 0.46213579177856445
+           module_call_list:
+@@ -52908,7 +52908,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=17:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=17&sort=updated&state=all:
+       - metadata:
+           latency: 0.36113572120666504
+           module_call_list:
+@@ -54783,7 +54783,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=18:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=18&sort=updated&state=all:
+       - metadata:
+           latency: 0.5150823593139648
+           module_call_list:
+@@ -56490,7 +56490,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=19:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=19&sort=updated&state=all:
+       - metadata:
+           latency: 0.29249024391174316
+           module_call_list:
+@@ -57696,7 +57696,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=2:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=2&sort=updated&state=all:
+       - metadata:
+           latency: 0.4269094467163086
+           module_call_list:
+@@ -60499,7 +60499,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=3:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=3&sort=updated&state=all:
+       - metadata:
+           latency: 0.7952353954315186
+           module_call_list:
+@@ -62663,7 +62663,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=4:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=4&sort=updated&state=all:
+       - metadata:
+           latency: 0.40642881393432617
+           module_call_list:
+@@ -64762,7 +64762,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=5:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=5&sort=updated&state=all:
+       - metadata:
+           latency: 0.3710770606994629
+           module_call_list:
+@@ -67728,7 +67728,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=6:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=6&sort=updated&state=all:
+       - metadata:
+           latency: 0.3693668842315674
+           module_call_list:
+@@ -69696,7 +69696,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=7:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=7&sort=updated&state=all:
+       - metadata:
+           latency: 0.37534260749816895
+           module_call_list:
+@@ -71866,7 +71866,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=8:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=8&sort=updated&state=all:
+       - metadata:
+           latency: 0.6120283603668213
+           module_call_list:
+@@ -73934,7 +73934,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/issues?state=all&sort=updated&direction=desc&page=9:
++      https://api.github.com:443/repositories/161636700/issues?direction=desc&page=9&sort=updated&state=all:
+       - metadata:
+           latency: 0.6933231353759766
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_fork_fork.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_fork_fork.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_fork_fork.yaml
+@@ -480,7 +480,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: Not Found
+           status_code: 404
+-      https://api.github.com:443/repos/mfocko/hello-world/pulls?state=open&sort=updated&direction=desc:
++      https://api.github.com:443/repos/mfocko/hello-world/pulls?direction=desc&sort=updated&state=open:
+       - metadata:
+           latency: 0.2987067699432373
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_fork_other_fork.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_fork_other_fork.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_fork_other_fork.yaml
+@@ -476,7 +476,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: Not Found
+           status_code: 404
+-      https://api.github.com:443/repos/lachmanfrantisek/hello-world/pulls?state=open&sort=updated&direction=desc:
++      https://api.github.com:443/repos/lachmanfrantisek/hello-world/pulls?direction=desc&sort=updated&state=open:
+       - metadata:
+           latency: 0.31816601753234863
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_upstream_fork.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_upstream_fork.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_upstream_fork.yaml
+@@ -2529,7 +2529,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: Not Found
+           status_code: 404
+-      https://api.github.com:443/repos/packit/hello-world/pulls?state=open&sort=updated&direction=desc:
++      https://api.github.com:443/repos/packit/hello-world/pulls?direction=desc&sort=updated&state=open:
+       - metadata:
+           latency: 0.7484118938446045
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_upstream_forkusername.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_upstream_forkusername.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_upstream_forkusername.yaml
+@@ -305,7 +305,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: Not Found
+           status_code: 404
+-      https://api.github.com:443/repos/packit/hello-world/pulls?state=open&sort=updated&direction=desc:
++      https://api.github.com:443/repos/packit/hello-world/pulls?direction=desc&sort=updated&state=open:
+       - metadata:
+           latency: 0.7519159317016602
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_upstream_upstream.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_upstream_upstream.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_create_upstream_upstream.yaml
+@@ -305,7 +305,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: Not Found
+           status_code: 404
+-      https://api.github.com:443/repos/packit/hello-world/pulls?state=open&sort=updated&direction=desc:
++      https://api.github.com:443/repos/packit/hello-world/pulls?direction=desc&sort=updated&state=open:
+       - metadata:
+           latency: 0.8547070026397705
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_list.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_list.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_list.yaml
+@@ -367,7 +367,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/mfocko/ogr/pulls?state=open&sort=updated&direction=desc:
++      https://api.github.com:443/repos/mfocko/ogr/pulls?direction=desc&sort=updated&state=open:
+       - metadata:
+           latency: 0.1959390640258789
+           module_call_list:
+@@ -13515,7 +13515,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: No Content
+           status_code: 204
+-      https://api.github.com:443/repos/packit/ogr/pulls?state=all&sort=updated&direction=desc:
++      https://api.github.com:443/repos/packit/ogr/pulls?direction=desc&sort=updated&state=all:
+       - metadata:
+           latency: 1.098926305770874
+           module_call_list:
+@@ -23037,7 +23037,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/pulls?state=closed&sort=updated&direction=desc:
++      https://api.github.com:443/repos/packit/ogr/pulls?direction=desc&sort=updated&state=closed:
+       - metadata:
+           latency: 0.8159828186035156
+           module_call_list:
+@@ -42098,7 +42098,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/pulls?state=open&sort=updated&direction=desc:
++      https://api.github.com:443/repos/packit/ogr/pulls?direction=desc&sort=updated&state=open:
+       - metadata:
+           latency: 0.29756593704223633
+           module_call_list:
+@@ -42780,7 +42780,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=all&sort=updated&direction=desc&page=2:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=2&sort=updated&state=all:
+       - metadata:
+           latency: 0.9808816909790039
+           module_call_list:
+@@ -52217,7 +52217,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=all&sort=updated&direction=desc&page=3:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=3&sort=updated&state=all:
+       - metadata:
+           latency: 1.004349946975708
+           module_call_list:
+@@ -61814,7 +61814,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=all&sort=updated&direction=desc&page=4:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=4&sort=updated&state=all:
+       - metadata:
+           latency: 1.7232818603515625
+           module_call_list:
+@@ -71608,7 +71608,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=all&sort=updated&direction=desc&page=5:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=5&sort=updated&state=all:
+       - metadata:
+           latency: 0.9582266807556152
+           module_call_list:
+@@ -81120,7 +81120,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=all&sort=updated&direction=desc&page=6:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=6&sort=updated&state=all:
+       - metadata:
+           latency: 0.8442981243133545
+           module_call_list:
+@@ -90758,7 +90758,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=all&sort=updated&direction=desc&page=7:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=7&sort=updated&state=all:
+       - metadata:
+           latency: 0.8504505157470703
+           module_call_list:
+@@ -100312,7 +100312,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=all&sort=updated&direction=desc&page=8:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=8&sort=updated&state=all:
+       - metadata:
+           latency: 0.840808629989624
+           module_call_list:
+@@ -109725,7 +109725,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=all&sort=updated&direction=desc&page=9:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=9&sort=updated&state=all:
+       - metadata:
+           latency: 0.8100500106811523
+           module_call_list:
+@@ -118918,7 +118918,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=closed&sort=updated&direction=desc&page=2:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=2&sort=updated&state=closed:
+       - metadata:
+           latency: 1.006190538406372
+           module_call_list:
+@@ -137797,7 +137797,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=closed&sort=updated&direction=desc&page=3:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=3&sort=updated&state=closed:
+       - metadata:
+           latency: 1.0122289657592773
+           module_call_list:
+@@ -156976,7 +156976,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=closed&sort=updated&direction=desc&page=4:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=4&sort=updated&state=closed:
+       - metadata:
+           latency: 1.3877973556518555
+           module_call_list:
+@@ -176549,7 +176549,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=closed&sort=updated&direction=desc&page=5:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=5&sort=updated&state=closed:
+       - metadata:
+           latency: 0.8678073883056641
+           module_call_list:
+@@ -195604,7 +195604,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=closed&sort=updated&direction=desc&page=6:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=6&sort=updated&state=closed:
+       - metadata:
+           latency: 0.7947392463684082
+           module_call_list:
+@@ -214833,7 +214833,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=closed&sort=updated&direction=desc&page=7:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=7&sort=updated&state=closed:
+       - metadata:
+           latency: 0.8973076343536377
+           module_call_list:
+@@ -233946,7 +233946,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=closed&sort=updated&direction=desc&page=8:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=8&sort=updated&state=closed:
+       - metadata:
+           latency: 1.2303125858306885
+           module_call_list:
+@@ -252801,7 +252801,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repositories/161636700/pulls?state=closed&sort=updated&direction=desc&page=9:
++      https://api.github.com:443/repositories/161636700/pulls?direction=desc&page=9&sort=updated&state=closed:
+       - metadata:
+           latency: 0.7144043445587158
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_status.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_status.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_pull_requests/PullRequests.test_pr_status.yaml
+@@ -192,7 +192,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/commits/1d4acd6f4231c95460bc56d8eef7d5a4b315478f:
++      https://api.github.com:443/repos/packit/ogr/commits/1d4acd6f4231c95460bc56d8eef7d5a4b315478f?page=1:
+       - metadata:
+           latency: 0.29616260528564453
+           module_call_list:
+Index: ogr-0.61.1/tests/integration/github/test_data/test_issues/Issues.test_issue_list_nonexisting_author.yaml
+===================================================================
+--- ogr-0.61.1.orig/tests/integration/github/test_data/test_issues/Issues.test_issue_list_nonexisting_author.yaml
++++ ogr-0.61.1/tests/integration/github/test_data/test_issues/Issues.test_issue_list_nonexisting_author.yaml
+@@ -192,7 +192,7 @@ requests.sessions:
+           raw: !!binary ""
+           reason: OK
+           status_code: 200
+-      https://api.github.com:443/repos/packit/ogr/issues?state=all&sort=updated&direction=desc&creator=xyzidontexist:
++      https://api.github.com:443/repos/packit/ogr/issues?creator=xyzidontexist&direction=desc&sort=updated&state=all:
+       - metadata:
+           latency: 0.20115876197814941
+           module_call_list:

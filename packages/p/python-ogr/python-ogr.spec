@@ -1,7 +1,7 @@
 #
 # spec file for package python-ogr
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ogr
-Version:        0.50.4
+Version:        0.61.1
 Release:        0
 Summary:        One API for multiple git forges
 License:        MIT
 URL:            https://github.com/packit-service/ogr
-Source:         https://files.pythonhosted.org/packages/source/o/ogr/ogr-%{version}.tar.gz
+Source:         https://github.com/packit/ogr/archive/refs/tags/%{version}.tar.gz#/ogr-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#packit/ogr#986
+Patch0:         support-pyforgejo-2.0.7.patch
+# PATCH-FIX-OPENSUSE Fix misordered github URLs
+Patch1:         fix-github-urls.patch
 BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -34,6 +39,8 @@ Requires:       python-GitPython
 Requires:       python-PyGithub
 Requires:       python-PyYAML
 Requires:       python-cryptography
+Requires:       python-httpx
+Requires:       python-pyforgejo >= 2.0.0
 Requires:       python-python-gitlab
 Requires:       python-requests
 Requires:       python-urllib3
@@ -45,6 +52,7 @@ BuildRequires:  %{python_module PyGithub}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module flexmock}
+BuildRequires:  %{python_module pyforgejo >= 2.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-gitlab}
 BuildRequires:  %{python_module requre}

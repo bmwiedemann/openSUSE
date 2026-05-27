@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed May 27 06:01:41 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.61.1: (bsc#1266046)
+  * Now supports Forgejo issues, comments and comment reactions.
+  * The method get_rate_limit_remaining() now also supports
+    repository-specific checks for GitHub.
+  * A new method get_rate_limit_remaining() to check rate limit thresholds
+    has been added to the service API.
+  * Improved handling of retries after errors to avoid hitting rate limits if
+    possible.
+  * GithubPullRequest.labels property is now cached for better performance
+    and to be consistent with other services.
+  * PagureService now accepts an optional user_agent argument to set a
+    custom User-Agent header.
+  * It is now possible to pass a headers argument in
+    PagureProject.get_file_content. The default header is set to Accept:
+    text/plain.
+  * We now use httpx when making requests from our Forgejo implementation.
+  * Support for forgejo commit statuses has been added.
+  * We have added support for Forgejo releases.
+  * Support for Forgejo pull requests has been added.
+  * We have added support for Forgejo methods related to permissions.
+  * Added support for Forgejo projects.
+  * We have fixed pagination problems in ogr's
+    GitlabProject.get_commit_comments().
+  * Added base support for forgejo.
+- Add patches:
+  * support-pyforgejo-2.0.7.patch
+  * fix-github-urls.patch
+- Switch to GitHub tarball.
+
+-------------------------------------------------------------------
 Wed Feb 12 07:34:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.50.4
