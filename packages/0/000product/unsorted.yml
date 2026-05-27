@@ -3450,6 +3450,8 @@ unsorted:
   - dom4j-javadoc 
   - domination 
   - domination-data 
+  - domtrip 
+  - domtrip-javadoc 
   - dool 
   - doom64ex-plus 
   - doomsday 
@@ -20636,10 +20638,13 @@ unsorted:
   - openQA-auto-update 
   - openQA-bootstrap 
   - openQA-client 
+  - openQA-client-bash-completion 
+  - openQA-client-zsh-completion 
   - openQA-common 
   - openQA-continuous-update 
   - openQA-devel 
   - openQA-doc 
+  - openQA-llm-server 
   - openQA-local-db 
   - openQA-mcp 
   - openQA-munin 
@@ -20963,9 +20968,6 @@ unsorted:
   - orthanc-volview 
   - orthanc-webviewer 
   - orthanc-wsi 
-  - orthos-client 
-  - orthos2 
-  - orthos2-docs 
   - os-autoinst 
   - os-autoinst-devel 
   - os-autoinst-distri-opensuse-deps 
@@ -25218,7 +25220,6 @@ unsorted:
   - python311-cbor 
   - python311-cbor2 
   - python311-cchardet 
-  - python311-cdflib 
   - python311-celery 
   - python311-celery-batches 
   - python311-cepa 
@@ -27065,7 +27066,6 @@ unsorted:
   - python311-pyppmd 
   - python311-pyprel 
   - python311-pyprimes 
-  - python311-pyproj 
   - python311-pyproject-api 
   - python311-pyproject-examples 
   - python311-pyproject-hooks 
@@ -27256,6 +27256,7 @@ unsorted:
   - python311-python-dateutil 
   - python311-python-dbusmock 
   - python311-python-debian 
+  - python311-python-discovery 
   - python311-python-docs-theme 
   - python311-python-doi 
   - python311-python-dotenv 
@@ -31212,6 +31213,7 @@ unsorted:
   - python313-python-datamatrix 
   - python313-python-dbusmock 
   - python313-python-debian 
+  - python313-python-discovery 
   - python313-python-docs-theme 
   - python313-python-doi 
   - python313-python-dotenv 
@@ -33053,6 +33055,7 @@ unsorted:
   - python314-boto3 
   - python314-botocore 
   - python314-bottle 
+  - python314-bpython 
   - python314-bracex 
   - python314-branca 
   - python314-breathe 
@@ -33202,6 +33205,7 @@ unsorted:
   - python314-contextvars 
   - python314-contourpy 
   - python314-control 
+  - python314-conu 
   - python314-convertdate 
   - python314-cookiecutter 
   - python314-cookies 
@@ -34477,6 +34481,7 @@ unsorted:
   - python314-octave-kernel 
   - python314-odfpy 
   - python314-odorik 
+  - python314-ogr 
   - python314-oic 
   - python314-oiffile 
   - python314-okta 
@@ -35183,6 +35188,7 @@ unsorted:
   - python314-python-dateutil 
   - python314-python-dbusmock 
   - python314-python-debian 
+  - python314-python-discovery 
   - python314-python-docs-theme 
   - python314-python-doi 
   - python314-python-dotenv 
@@ -37990,10 +37996,17 @@ unsorted:
   - sha3sum 
   - shaderc 
   - shaderc-devel 
+  - shadowsocks-common 
+  - shadowsocks-common-selinux 
   - shadowsocks-libev 
+  - shadowsocks-libev-apparmor 
   - shadowsocks-libev-devel 
   - shadowsocks-libev-doc 
+  - shadowsocks-libev-selinux 
   - shadowsocks-rust 
+  - shadowsocks-rust-apparmor 
+  - shadowsocks-rust-selinux 
+  - shadowsocks-sysuser 
   - shadowsocks-v2ray-plugin 
   - shairport-sync 
   - shapelib 
@@ -38804,7 +38817,6 @@ unsorted:
   - system-user-nagios 
   - system-user-ntp 
   - system-user-openbao 
-  - system-user-orthos 
   - system-user-osc-collab 
   - system-user-pccs 
   - system-user-pgadmin 
