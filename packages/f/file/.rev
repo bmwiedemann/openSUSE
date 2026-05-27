@@ -1807,4 +1807,13 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
 - Call fdupes after installing. (forwarded request 1348105 from StevenK)</comment>
     <requestid>1348124</requestid>
   </revision>
+  <revision rev="146" vrev="3">
+    <srcmd5>3862026f49bedd1095a0a57cb5ecce73</srcmd5>
+    <version>5.47</version>
+    <time>1779891215</time>
+    <user>anag_factory</user>
+    <comment>- Add patch file-5.47-s390x.patch from upstream commit
+  Work around an endianess problem on s390x</comment>
+    <requestid>1355160</requestid>
+  </revision>
 </revisionlist>

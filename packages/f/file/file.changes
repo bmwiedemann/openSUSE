@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 18 11:54:40 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch file-5.47-s390x.patch from upstream commit
+  Work around an endianess problem on s390x
+
+-------------------------------------------------------------------
 Wed Apr  1 09:10:47 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch file-5.47-regression.dif (boo#1261199)

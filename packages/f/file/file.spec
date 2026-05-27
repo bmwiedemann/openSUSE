@@ -62,6 +62,7 @@ Patch27:        file-5.19-zip2.0.dif
 Patch31:        file-5.19-biorad.dif
 Patch32:        file-5.19-clicfs.dif
 Patch37:        file-secure_getenv.patch
+Patch38:        file-5.47-s390x.patch
 Patch39:        file-5.28-btrfs-image.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
@@ -130,6 +131,7 @@ sed -ri 's/	/        /' python/magic.py
 %patch -P 32 -p0 -b .clicfs
 %endif
 %patch -P 37 -p1 -b .getenv
+%patch -P 38 -p0 -b .endianess
 %if %{with debugmagic}
 %patch -P 39 -p1 -b .btrfs
 %endif
