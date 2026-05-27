@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 26 18:37:35 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- Switch to multi-stage build to reduce dependencies
+
+-------------------------------------------------------------------
 Mon Apr 27 10:22:11 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove latest tag from micro build (conflicts with base build)
