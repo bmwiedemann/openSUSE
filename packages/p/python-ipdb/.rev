@@ -135,4 +135,12 @@
     <comment>- Skip python313: not supported  gh#gotcha/ipdb#279</comment>
     <requestid>1225640</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>624ea10b1b7db6acbdc3d6930f4c762d</srcmd5>
+    <version>0.13.13</version>
+    <time>1779891524</time>
+    <user>anag_factory</user>
+    <comment>- Skip python314: Still no progess  gh#gotcha/ipdb#279</comment>
+    <requestid>1355312</requestid>
+  </revision>
 </revisionlist>
