@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 19 21:18:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Add missing type annotations (codeberg PR #43)
+  * Add data needed for Response.raise_for_status (github PR #42)
+  * Add type annotations - Fix some type errors uncovered by mypy
+  * Change URLs to migrate to codeberg.org
+
+-------------------------------------------------------------------
 Tue Aug  5 12:15:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.1.0

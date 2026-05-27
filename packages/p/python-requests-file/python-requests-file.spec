@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-requests-file
-Version:        2.1.0
+Version:        3.0.1
 Release:        0
 Summary:        File transport adapter for Requests
 License:        Apache-2.0
-URL:            https://github.com/dashea/requests-file
+URL:            https://codeberg.org/dashea/requests-file
 Source:         https://files.pythonhosted.org/packages/source/r/requests_file/requests_file-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module requests >= 1.0.0}
+BuildRequires:  %{python_module setuptools >= 61.2}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-requests
+Requires:       python-requests >= 1.0.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,8 +55,7 @@ library to allow local filesystem access via file:// URLs.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/requests_file.py
-%pycache_only %{python_sitelib}/__pycache__/requests_file.*.py*
+%{python_sitelib}/requests_file
 %{python_sitelib}/requests_file-%{version}.dist-info
 
 %changelog
