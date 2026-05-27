@@ -1,8 +1,7 @@
 #
 # spec file for package vtk
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +22,7 @@
 %bcond_with documentation
 %bcond_with testing
 %bcond_with mysql
+%bcond_with tbb
 
 %ifarch %arm aarch64
 %bcond_without gles
@@ -231,6 +231,9 @@ BuildRequires:  (pegtl-devel >= 2.0.0 with pegtl-devel < 3.0)
 %endif
 %if %{with testing}
 BuildRequires:  vtkdata = %{version}
+%endif
+%if %{with tbb}
+BuildRequires:  tbb-devel
 %endif
 
 %description
@@ -545,6 +548,7 @@ export CXXFLAGS="%{optflags}"
     -DVTK_MODULE_USE_EXTERNAL_VTK_verdict=%{?with_verdict:ON}%{!?with_verdict:OFF} \
     -DVTK_OPENGL_USE_GLES:BOOL=%{?with_gles:ON}%{!?with_gles:OFF} \
     -DVTK_PYTHON_VERSION=3 \
+    -DVTK_SMP_IMPLEMENTATION_TYPE=%{?with_tbb:TBB}%{!?with_tbb:Sequential} \
     -DVTK_USE_EXTERNAL:BOOL=ON \
     -DVTK_WRAP_JAVA:BOOL=%{?with_java:ON}%{!?with_java:OFF} \
     -DVTK_WRAP_PYTHON:BOOL=ON \

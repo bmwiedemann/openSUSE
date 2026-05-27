@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 21 18:17:50 UTC 2026 - Kavin Teenakul <andythe_great@protonmail.com>
+
+- Add tbb build conditional and use it to select VTK's TBB SMP
+  backend.
+
+-------------------------------------------------------------------
 Fri May  8 00:00:00 UTC 2026 - Vicente Adolfo Bolea Sanchez <vicente.bolea@kitware.com>
 
 - Update to version 9.6.1, see:
