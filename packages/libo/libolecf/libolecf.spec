@@ -1,7 +1,7 @@
 #
 # spec file for package libolecf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libolecf1
 Name:           libolecf
-Version:        20240427
+Version:        20260526
 Release:        0
 Summary:        Library and tools to access the OLE 2 Compound File (OLECF) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(libbfio) >= 20240414
 BuildRequires:  pkgconfig(libcdata) >= 20240414
 BuildRequires:  pkgconfig(libcerror) >= 20240413
