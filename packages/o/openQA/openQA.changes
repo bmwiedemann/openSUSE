@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Tue May 26 15:19:07 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1779808735.8c9bd805:
+  * docs: Fix link to "Conducting tests" section
+  * refactor: Use Feature::Compat::Try consistently
+  * ci: Build packages for SLE 15 SP7 instead of SP6 which reached EOL
+  * ci: Remove package builds for Leap 15.6 as it reached EOL
+  * fix: make TESTS selection work again (regression from cd76f31f3)
+  * feat: add Nginx proxy template for local LLM load balancing
+  * feat: add openQA-llm-server sub-package for local LLM support
+  * feat(pyproject): Streamline summary with spec file
+  * fix: Fix wording in summary of rpm package
+  * feat: Apply formatting of Python code also to documentation snippets
+  * feat: Change `openqa-label-all` to satisfy ruff checks
+  * test: Add target to run format Python code
+  * test: Add targets to run static Python checks
+  * feat: Add `pyproject.toml` as in other repositories
+  * feat(needle-editor): Validate that there is at least one match area
+  * docs: Reference "Asset handling" section directly
+  * fix: Fix some wrong uses of "check out"
+  * docs: Fix broken references in further places
+  * docs: Fix wrapping in section about importing production data
+  * docs: Fix broken references in several documentation files
+  * test(isos post): Assert behavior when specifying parameters twice
+  * refactor(isos post): Use `$validation` consistently
+  * fix(spec): add RPM Group tag to all subpackages
+  * style: Include core perlcritic rules as well
+  * fix: resolve 'Too many open files' by clearing AssetPack FD cache
+  * fix: work around DBD::Pg bug regarding INSERT ON CONFLICT row count
+  * refactor: Remove superfluous Test::MockModule instance
+  * refactor: Use a hash instead of string eval
+  * refactor: Use Syntax::Keyword::Try instead of eval
+  * style: Enforce perlcritic policies regarding eval
+  * fix: allow worker to start without API keys
+  * refactor: Split scheduler tests to avoid failing complexity check
+  * feat: Distinguish parallel jobs in info when cluster cannot be assigned
+  * fix: Reword misleading message about "incomplete parallel cluster"
+  * fix(docs): remove zero-length draw.io marker file
+  * fix(branding): add placeholder content to empty sponsorbox template
+  * test: fix "Too many open files" in t/api/03-auth.t
+  * fix: fix security vulnerability in Auth::check and minor typo
+  * test: fix hmac_sha1_sum calculation in auth tests
+  * docs: fix typo in Auth controller
+  * refactor: use DEFAULT_ADMIN constant for admin username
+  * feat: switch bootstrap to 'None' authentication provider
+  * fix(packaging): avoid repeating package name in Summary
+  * fix(packaging): replace obsolete packageand() with boolean Supplements
+  * fix(build): install openqa-cli.yaml without executable bit
+  * style: Enforce perlcritic policy Community::EmptyReturn
+  * ci: Remove `perl-TAP-Harness-JUnit` from devel container again
+  * ci: Use distinct container introduced by f33029623
+  * chore: Use `https://download.opensuse.org` consistently
+  * feat(worker): Pass reason to web UI when skipping job due to self-check
+  * feat(worker): Prevent skipping directly chained jobs due to self-checks
+  * fix(build): add executable bit to dbicdh migration scripts
+  * refactor: Remove @EXPORT and add %EXPORT_TAGS
+  * refactor: Move @EXPORT to @EXPORT_OK
+  * refactor: Remove unused var @EXPORT
+  * style: Add no critic
+  * style: Enforce perlcritic policy ProhibitAutomaticExportation
+  * refactor: Remove non-existing functions from export list
+  * feat: Require Perl::Critic >= 1.156.0
+  * style: Enforce perlcritic policy Subroutines::ProhibitManyArgs
+  * feat: support configurable secrets hiding in UI and API
+  * chore(deps): Dependency cron 2026-05-16
+  * chore(deps): Dependency cron 2026-05-15
+  * chore(deps): Dependency cron 2026-05-14
+  * refactor(create_admin): switch to Getopt::Long::Descriptive
+  * style: Enforce perlcritic policy BuiltinFunctions::ProhibitUniversalIsa
+  * test: Prevent unhandled output after b278ab6dfd3
+  * style: Enforce perlcritic policy regarding open()
+  * ci: Add distinct container image for CI
+  * style: Enforce perlcritic policy Subroutines::ProhibitReturnSort
+  * style: Enforce perlcritic policy ProhibitReadlineInForLoop
+  * style: Enforce perlcritic policy Community::POSIXImports
+  * style: Enforce perlcritic policy ClassHierarchies::ProhibitOneArgBless
+  * chore(deps): Dependency cron 2026-05-13
+  * fix: parse URL-derived settings for cloned jobs
+  * style: Enforce perlcritic policy TestingAndDebugging::ProhibitNoWarnings
+  * ci(dependabot): apply deps update cooldown to prevent PR fatigue
+  * refactor: Improve global variables in SeleniumTest
+  * style: Enforce perlcritic policy Variables::ProhibitPackageVars
+  * style: Enforce perlcritic policy Community::ConditionalImplicitReturn
+  * test: Add `python3-ruff` for static checks of Python scripts
+  * style: Enforce perlcritic policy CodeLayout::ProhibitHardTabs
+  * test(worker-engine): Cover all lines of `set_engine_exec`
+  * chore(ci): Avoid running into authenticity error
+  * chore(ci): Allow running caching jobs in parallel
+  * chore(ci): Log installed rpm packages after removing explicit tracking
+  * chore(ci): Simplify CI runtime using devel container image
+  * chore(Makefile): Avoid depending on the `which` utility
+  * fix(apparmor): allow /usr/bin/getopt needed for os-autoinst-scripts
+  * style: Enforce perlcritic policy ProhibitConditionalUseStatements
+  * style: Enforce perlcritic policy Subroutines::ProhibitExcessComplexity
+  * style: enforce perlcritic policy ProhibitCascadingIfElse
+  * perf(cleanup): replace N+1 per-group queries with single batch query
+  * style: Enforce perlcritic ProhibitQuotesAsQuotelikeOperatorDelimiters
+  * style: Enforce perlcritic policy RequirePackageMatchesPodName
+  * style: Enforce perlcritic policy BuiltinFunctions::ProhibitUselessTopic
+  * feat(api): filter job statistics by group globs
+  * test: stabilize test_containers_compose
+  * test: use IfNotPresent pull policy for postgres init container
+  * fix(tools): handle pandoc TeX math misinterpretation in API docs
+  * fix(docs): link to the correct cleanup section
+  * style: Enforce perlcritic policy Miscellanea::ProhibitUselessNoCritic
+  * style: Rewrite some for loops in foreach style
+  * style: Enforce erlcritic policy Modules::ProhibitExcessMainComplexity
+  * feat(cli): generate shell completions from openqa-cli.yaml
+  * fix(test overview): Bring query for "Aborted" in-line with accounting
+  * chore(deps): Dependency cron 2026-05-11
+  * ci: fix "conflicts with file" problems
+  * fix: update fast-uri to address security vulnerabilities (boo#1264376)
+  * docs: Fix wrapping in users guide after Markdown conversion
+  * feat: add scheduling skip reasons to the webUI
+
+-------------------------------------------------------------------
 Sat May 09 02:58:17 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1778257070.d9915684:
