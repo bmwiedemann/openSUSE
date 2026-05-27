@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 18 13:18:23 UTC 2026 - Hillwood Yang <hillwoodroc@gmail.com>
+
+- Comprehensive systemd service hardening (bnc#1212862 and boo#1263916)
+  * Add CAP_DAC_READ_SEARCH to AmbientCapabilities/CapabilityBoundingSet
+    to allow reading certificates from restricted dynamic paths.
+  * Ensures v2ray-plugin can access Let's Encrypt keys reliably.
+  * Restrict root powers using CapabilityBoundingSet (minimal privileges).
+  * Isolate filesystem via ProtectSystem=full and ProtectHome=true.
+  * Whitelist binary and config access with ReadOnlyPaths.
+  * Disable kernel/device modifications (ProtectKernel*, PrivateDevices).
+  * Introduce SELinux and AppArmor as optional security hardening schemes, 
+    and add shadowsocks-libev-selinux and shadowsocks-libev-apparmory
+    subpackages.
+- Integrate shadowsocks-sysuser for proper non-privileged user handling
+  (boo#1264355).
+
+-------------------------------------------------------------------
 Mon May  4 14:31:06 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Run ssserver with root privileges to allow binding to privileged ports

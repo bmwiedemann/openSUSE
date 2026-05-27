@@ -16,6 +16,8 @@
 #
 
 
+%global selinuxtype targeted
+
 Name:           shadowsocks-rust
 Version:        1.24.0
 Release:        0
@@ -29,12 +31,22 @@ Source2:        %{name}.json
 Source3:        %{name}-client.service
 Source4:        %{name}-server.service
 Source5:        %{name}-manager.service
+Source6:        %{name}.apparmor
+Source7:        %{name}.fc
+Source8:        %{name}.te
 # PATCH-FIX-UPSTREAM  https://github.com/AlephAlpha/build-time/pull/5
 Patch0:         reproducible.patch
+BuildRequires:  apparmor-abstractions
+BuildRequires:  apparmor-rpm-macros
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
+BuildRequires:  libapparmor-devel
+BuildRequires:  selinux-policy-devel
+BuildRequires:  selinux-policy-targeted
+BuildRequires:  shadowsocks-common-selinux
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(openssl)
+Requires(pre):  shadowsocks-sysuser
 Requires(pre):  shadow
 Recommends:     shadowsocks-v2ray-plugin
 # ExcludeArch:    ppc ppc64 ppc64le s390 s390x
@@ -45,6 +57,26 @@ shadowsocks-rust is a rust port of shadowsocks.
 
 shadowsocks is a lightweight secured SOCKS5 proxy for embedded devices and
 low-end boxes.
+
+%package apparmor
+Summary:        Apparmor profile for %{name}
+BuildArch:      noarch
+Requires:       %{name} = %{version}-%{release}
+Supplements:    (shadowsocks-rust and apparmor-abstractions)
+
+%description apparmor
+This package adds the Apparmor profile to %{name}
+
+%package selinux
+Summary:        Selinux support for %{name}
+BuildArch:      noarch
+Requires:       %{name} = %{version}-%{release}
+Requires:       selinux-policy-targeted
+Requires:       shadowsocks-common-selinux
+Supplements:    (shadowsocks-rust and selinux-policy-targeted)
+
+%description selinux
+This package adds SELinux enforcement to %{name}.
 
 %prep
 %autosetup -p1 -a1 -n %{name}-%{version}
@@ -57,10 +89,21 @@ directory = 'vendor'
 EOF
 
 %build
+cp %{SOURCE7} shadowsocks_rust.fc
+cp %{SOURCE8} shadowsocks_rust.te
+make -f %{_datadir}/selinux/devel/Makefile shadowsocks_rust.pp
+
 cargo auditable build -j16 --offline --release
 
 %install
 %cargo_install
+
+install -d %{buildroot}%{_sysconfdir}/apparmor.d
+install -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/apparmor.d/%{name}
+
+install -d %{buildroot}%{_datadir}/selinux/packages/targeted
+install -m 0644 shadowsocks_rust.pp %{buildroot}%{_datadir}/selinux/packages/targeted/shadowsocks_rust.pp
+
 install -d %{buildroot}%{_sysconfdir}/shadowsocks/
 install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/shadowsocks/
 
@@ -78,18 +121,11 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-manager
 %service_add_pre %{name}-client.service
 %service_add_pre %{name}-server.service
 %service_add_pre %{name}-manager.service
-getent group shadowsocks >/dev/null || %{_sbindir}/groupadd --system shadowsocks
-getent passwd shadowsocks >/dev/null || %{_sbindir}/useradd --system -c "shadowsocks User" \
-         -d %{_localstatedir}/shadowsocks -m -g shadowsocks -s %{_sbindir}/nologin \
-         shadowsocks
 
 %post
 %service_add_post %{name}-client.service
 %service_add_post %{name}-server.service
 %service_add_post %{name}-manager.service
-chown root:shadowsocks %{_sysconfdir}/shadowsocks -R
-chmod 750 %{_sysconfdir}/shadowsocks
-chmod 640 %{_sysconfdir}/shadowsocks/*
 
 %preun
 %service_del_preun %{name}-client.service
@@ -101,14 +137,45 @@ chmod 640 %{_sysconfdir}/shadowsocks/*
 %service_del_postun %{name}-server.service
 %service_del_postun %{name}-manager.service
 
+%post apparmor
+if [ -d %{_sysconfdir}/apparmor.d ] && [ -d /sys/kernel/security/apparmor ]; then
+    %apparmor_reload %{_sysconfdir}/apparmor.d/%{name}
+fi
+
+%preun apparmor
+if [ $1 -eq 0 ]; then
+    if [ -d %{_sysconfdir}/apparmor.d ] && [ -d /sys/kernel/security/apparmor ]; then
+        %apparmor_reload %{_sysconfdir}/apparmor.d/%{name}
+    fi
+fi
+
+%pre selinux
+%selinux_relabel_pre -s %{selinuxtype}
+
+%post selinux
+%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/shadowsocks_rust.pp
+%selinux_relabel_post -s %{selinuxtype}
+
+%preun selinux
+if [ $1 -eq 0 ]; then
+    %selinux_modules_uninstall -s %{selinuxtype} shadowsocks_rust
+fi
+
+%posttrans selinux
+%selinux_relabel_post -s %{selinuxtype}
+
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/ss*
 %{_sbindir}/rc%{name}-*
 %{_unitdir}/%{name}-*.service
-%dir %{_sysconfdir}/shadowsocks
-# %config(noreplace) %attr(660,%{name},root) %{_sysconfdir}/shadowsocks
-%config %{_sysconfdir}/shadowsocks/%{name}.json
+%attr(640,root,shadowsocks) %config(noreplace) %{_sysconfdir}/shadowsocks/%{name}.json
+
+%files apparmor
+%config %{_sysconfdir}/apparmor.d/%{name}
+
+%files selinux
+%{_datadir}/selinux/packages/targeted/shadowsocks_rust.pp
 
 %changelog

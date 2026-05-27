@@ -167,4 +167,24 @@
   and reading SSL certificates (boo#1263916) (forwarded request 1350728 from hillwood)</comment>
     <requestid>1350741</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>fbb1d75b457aa3543aceea0c2874d34c</srcmd5>
+    <version>1.24.0</version>
+    <time>1779891235</time>
+    <user>anag_factory</user>
+    <comment>- Comprehensive systemd service hardening (bnc#1212862 and boo#1263916)
+  * Add CAP_DAC_READ_SEARCH to AmbientCapabilities/CapabilityBoundingSet
+    to allow reading certificates from restricted dynamic paths.
+  * Ensures v2ray-plugin can access Let's Encrypt keys reliably.
+  * Restrict root powers using CapabilityBoundingSet (minimal privileges).
+  * Isolate filesystem via ProtectSystem=full and ProtectHome=true.
+  * Whitelist binary and config access with ReadOnlyPaths.
+  * Disable kernel/device modifications (ProtectKernel*, PrivateDevices).
+  * Introduce SELinux and AppArmor as optional security hardening schemes, 
+    and add shadowsocks-libev-selinux and shadowsocks-libev-apparmory
+    subpackages.
+- Integrate shadowsocks-sysuser for proper non-privileged user handling
+  (boo#1264355).</comment>
+    <requestid>1354964</requestid>
+  </revision>
 </revisionlist>

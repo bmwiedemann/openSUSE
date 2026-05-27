@@ -1,0 +1,94 @@
+policy_module(shadowsocks_rust, 1.0)
+
+require {
+    type etc_t;
+    type cert_t;
+    type node_t;
+#    type var_run_t;
+    type systemd_socket_proxyd_t;
+    type shadowsocks_config_t;
+    attribute initrc_domain;      
+    type bin_t;
+    type shell_exec_t;                                  
+    type lo_node_t;
+    type inaddr_any_node_t;
+    attribute port_type;
+
+    type random_device_t;
+    type sysfs_t;
+    type cgroup_t;
+    type sysctl_net_t;
+    class chr_file { read getattr open };
+    class unix_dgram_socket { create connect sendto };
+
+    class capability { sys_resource };
+    class file { read open getattr write create unlink entrypoint map execute ioctl lock }; 
+    class fifo_file { getattr read write ioctl };
+    class dir { search getattr write add_name remove_name read };
+    class lnk_file { read getattr };
+    class process { transition sigchld signull };                  
+    class tcp_socket { create bind node_bind name_bind listen accept connect setopt getopt getattr setattr read write ioctl };
+    class udp_socket { create bind node_bind name_bind getattr setattr read write connect setopt getopt listen accept };
+    class unix_stream_socket { connectto };
+}
+
+# ===================================================================
+# Define shadowsocks-rust SPECIFIC domains
+# ===================================================================
+type shadowsocks_rust_t;
+type shadowsocks_rust_exec_t;
+init_daemon_domain(shadowsocks_rust_t, shadowsocks_rust_exec_t)
+
+# ===================================================================
+# File and Directory Access Rules
+# ===================================================================
+allow shadowsocks_rust_t cert_t:dir { search getattr };
+allow shadowsocks_rust_t cert_t:file { read open getattr };
+allow shadowsocks_rust_t cert_t:lnk_file { read getattr };
+
+allow shadowsocks_rust_t etc_t:dir search;
+allow shadowsocks_rust_t shadowsocks_config_t:dir { read search getattr };
+allow shadowsocks_rust_t shadowsocks_config_t:file { read open getattr };
+
+# files_pid_filetrans(shadowsocks_rust_t, var_run_t, dir)
+# files_pid_filetrans(shadowsocks_rust_t, var_run_t, file)
+# allow shadowsocks_rust_t var_run_t:dir { search getattr write add_name remove_name };
+# allow shadowsocks_rust_t var_run_t:file { read open getattr write create unlink };
+
+# ===================================================================
+# System Initializations (Random, Logging, Sysfs)
+# ===================================================================
+allow shadowsocks_rust_t random_device_t:chr_file { read getattr open };
+allow shadowsocks_rust_t self:unix_dgram_socket { create connect sendto };
+allow shadowsocks_rust_t sysfs_t:file { read open getattr };
+allow shadowsocks_rust_t cgroup_t:dir search;
+allow shadowsocks_rust_t sysctl_net_t:dir search;
+
+# ===================================================================
+# Network Communication Rules (TCP & UDP)
+# ===================================================================
+allow shadowsocks_rust_t port_type:tcp_socket { name_bind connect };
+allow shadowsocks_rust_t port_type:udp_socket { name_bind };
+allow shadowsocks_rust_t { node_t lo_node_t inaddr_any_node_t }:tcp_socket { node_bind };
+allow shadowsocks_rust_t self:tcp_socket { create bind listen accept connect setopt getopt getattr setattr read write ioctl };
+allow shadowsocks_rust_t { node_t lo_node_t inaddr_any_node_t }:udp_socket { node_bind };
+allow shadowsocks_rust_t self:udp_socket { create bind getattr setattr read write connect setopt getopt listen accept };
+
+# ===================================================================
+# Core Kernel Capabilities
+# ===================================================================
+allow shadowsocks_rust_t self:capability { sys_resource };
+
+# ===================================================================
+# Plugin Execution Rules (SIP003 Plugins like v2ray-plugin)
+# ===================================================================
+allow shadowsocks_rust_t bin_t:dir { search getattr };
+allow shadowsocks_rust_t bin_t:lnk_file { read getattr };
+allow shadowsocks_rust_t bin_t:file { read open getattr execute execute_no_trans map };
+allow shadowsocks_rust_t shell_exec_t:file { read open getattr execute execute_no_trans map };
+allow shadowsocks_rust_t self:fifo_file { read write getattr ioctl };
+
+# ===================================================================
+# DNS Name Resolution
+# ===================================================================
+sysnet_dns_name_resolve(shadowsocks_rust_t)

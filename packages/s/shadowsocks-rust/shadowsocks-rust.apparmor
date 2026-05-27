@@ -1,0 +1,30 @@
+#include <tunables/global>
+
+/usr/bin/ss-server {
+  # Inherit basic permissions (e.g., loading shared libraries)
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  # Allow reading configuration files
+  /etc/shadowsocks/*.json r,
+  
+  # Allow reading certificate paths (Recursive read + path traversal/search)
+  /etc/letsencrypt/** r,
+
+  # Network operations
+  network inet stream,
+  network inet6 stream,
+  network inet dgram,
+  network inet6 dgram,
+
+  # Explicitly deny access to sensitive paths 
+  # (Blocked even if CAP_DAC_READ_SEARCH is present)
+  deny /etc/shadow r,
+  deny /etc/gshadow r,
+  deny /root/** r,
+  deny /home/** r,
+
+  # Allow execution of plugins (e.g., v2ray-plugin)
+  /usr/bin/v2ray-plugin ix,
+  /usr/bin/xray-plugin ix,
+}
