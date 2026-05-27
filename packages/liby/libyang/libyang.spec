@@ -27,6 +27,8 @@ License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/CESNET/libyang
 Source0:        https://github.com/CESNET/libyang/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# CVE-2026-41401: use-after-free in `lyd_parser_set_data_flags` when processing crafted YANG XML documents with specific metadata attributes [bsc#1266316]
+Patch0:         libyang-CVE-2026-41401.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes

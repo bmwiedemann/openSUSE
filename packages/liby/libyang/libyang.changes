@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 27 08:19:08 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-41401: use-after-free in `lyd_parser_set_data_flags` when processing crafted YANG XML documents with specific metadata attributes [bsc#1266316]
+  * libyang-CVE-2026-41401.patch
+
+-------------------------------------------------------------------
 Wed Apr 22 15:13:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - downgrade to 3.13.6 (only consumer of libyang in TW is frr which
