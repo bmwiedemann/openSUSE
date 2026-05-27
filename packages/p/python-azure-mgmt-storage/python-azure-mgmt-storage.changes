@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 26 07:04:18 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 25.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Wed Mar 25 10:26:44 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 24.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Oct 23 07:28:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

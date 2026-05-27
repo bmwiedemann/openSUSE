@@ -357,4 +357,27 @@
 - Update Requires from pyproject.toml (forwarded request 1315428 from glaubitz)</comment>
     <requestid>1315500</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1376cc3ba31fa5b53d3c46cd81dac2ee</srcmd5>
+    <version>24.0.1</version>
+    <time>1774470078</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 24.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1342437 from glaubitz)</comment>
+    <requestid>1342473</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c2b25958e37c3e7441aa14f75f7da16c</srcmd5>
+    <version>25.0.0</version>
+    <time>1779891306</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 25.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1355144 from glaubitz)</comment>
+    <requestid>1355231</requestid>
+  </revision>
 </revisionlist>
