@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 27 05:49:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.1.4
+  Added
+  * SourceCode paragraph style renders as a distinct code block in
+    all export formats and the TUI.
+  * Text inside wps:txbx shape text boxes is now extracted and
+    rendered with box-drawing borders instead of being silently
+    dropped.
+  Fixed
+  * Numbered list items sharing the same abstract numbering
+    definition now count sequentially instead of both restarting
+    at 1.
+  * Bullet-format list levels (numFmt="bullet") no longer render
+    as lettered sequences.
+  * w:br line break elements inside a run are now preserved,
+    fixing multi-line code blocks concatenated into a single line.
+
+-------------------------------------------------------------------
 Tue Oct 21 17:23:33 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.1.2
