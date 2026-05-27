@@ -234,4 +234,29 @@
   minimal stack for different python versions.</comment>
     <requestid>1331999</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a07430123b2a251901eff43b99899328</srcmd5>
+    <version>1.1.1</version>
+    <time>1779891135</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.1:
+  * Improved type checking with mypy and pyright.
+  * Fixed typing on PathSpec[TPattern] to PathSpec[TPattern_co].
+  * Added missing variant type-hint type[Pattern] to
+    PathSpec.from_lines() parameter pattern_factory.
+  * Fixed possible type error when using + and += operators on
+    PathSpec.
+
+- update to 1.1.0:
+  * `Issue #93`_: Git discards invalid range notation.
+    GitIgnoreSpecPattern now discards patterns with invalid range
+    notation like Git.
+  * Pull #106: Fix escape() not escaping backslash characters.
+  * Issue #108: Specialize pattern type for PathSpec as
+    PathSpec[TPattern] for better debugging of
+    PathSpec().patterns.
+  * Pull #110: Nicer debug print outs (and str for regex
+    pattern).</comment>
+    <requestid>1355083</requestid>
+  </revision>
 </revisionlist>

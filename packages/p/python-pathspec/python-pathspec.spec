@@ -19,14 +19,14 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-pathspec
-Version:        1.0.4
+Version:        1.1.1
 Release:        0
 Summary:        Utility library for gitignore style pattern matching of file paths
 License:        MPL-2.0
 URL:            https://github.com/cpburnz/python-path-specification
 Source:         https://files.pythonhosted.org/packages/source/p/pathspec/pathspec-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes

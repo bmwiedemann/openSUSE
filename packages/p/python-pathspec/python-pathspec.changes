@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun May 10 11:24:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Improved type checking with mypy and pyright.
+  * Fixed typing on PathSpec[TPattern] to PathSpec[TPattern_co].
+  * Added missing variant type-hint type[Pattern] to
+    PathSpec.from_lines() parameter pattern_factory.
+  * Fixed possible type error when using + and += operators on
+    PathSpec.
+
+-------------------------------------------------------------------
+Sat Apr 25 19:52:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * `Issue #93`_: Git discards invalid range notation.
+    GitIgnoreSpecPattern now discards patterns with invalid range
+    notation like Git.
+  * Pull #106: Fix escape() not escaping backslash characters.
+  * Issue #108: Specialize pattern type for PathSpec as
+    PathSpec[TPattern] for better debugging of
+    PathSpec().patterns.
+  * Pull #110: Nicer debug print outs (and str for regex
+    pattern).
+
+-------------------------------------------------------------------
 Mon Feb  9 11:10:52 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add pythons_for_pypi macro. This macro will help to build the python
