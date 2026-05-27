@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
-Version:        20.36.1
+Version:        21.3.3
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
@@ -41,6 +41,7 @@ Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virt
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
+Requires:       python-python-discovery >= 1.3.1
 Requires:       (python-distlib >= 0.3.7 with python-distlib < 1)
 Requires:       (python-filelock >= 3.20.3 with python-filelock < 4)
 Requires:       (python-platformdirs >= 3.9.1 with python-platformdirs < 5)

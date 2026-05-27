@@ -1,9 +1,29 @@
 -------------------------------------------------------------------
+Mon May 25 12:33:18 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 21.3.3
+  * The Python discovery logic has been extracted into a standalone
+    python-discovery package on PyPI and is now consumed as a dependency.
+    If you previously imported discovery internals directly (e.g.
+    from virtualenv.discovery.py_info import PythonInfo), switch to
+    from python_discovery import PythonInfo. Backward-compatibility
+    re-export shims are provided at virtualenv.discovery.py_info,
+    virtualenv.discovery.py_spec, and virtualenv.discovery.cached_py_info,
+    however these are considered unsupported and may be removed in a future
+    release
+  * Add comprehensive type annotations across the entire codebase and ship
+    a PEP 561 py.typed marker so downstream consumers and type checkers
+    recognize virtualenv as an inline-typed package
+  * Update embed wheel generator (tasks/upgrade_wheels.py) to include type
+    annotations in generated output
+  * Re-introduce xonsh shell activator (activate.xsh)
+
+-------------------------------------------------------------------
 Mon Jan 12 11:27:00 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
-- Update to 3.36.1 (fixes CVE-2026-22702, bsc#1256458)
+- Update to 20.36.1 (fixes CVE-2026-22702, bsc#1256458)
   * fix: resolve TOCTOU vulnerabilities in app_data and lock directory creation
-- Update to 3.36.0
+- Update to 20.36.0
   * fix: Prevent NameError when accessing _DISTUTILS_PATCH during file
     overwrite
   * Upgrade pip and fix 3.15 picking old wheel
