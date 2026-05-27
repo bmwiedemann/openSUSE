@@ -2,7 +2,7 @@
 # spec file for package which
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           which
-Version:        2.23
+Version:        2.25
 Release:        0
 Summary:        Displays where a particular program in your path is located
 License:        GPL-3.0-or-later
@@ -34,7 +34,7 @@ The which command shows the full pathname of a specified program, if the
 specified program is in your PATH.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure

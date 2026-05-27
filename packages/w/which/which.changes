@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 22 12:08:32 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.25:
+  * Fix an out of bounds stack read
+
+-------------------------------------------------------------------
 Sat Feb  1 19:16:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.23:
