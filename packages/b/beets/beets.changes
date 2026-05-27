@@ -1,4 +1,197 @@
 -------------------------------------------------------------------
+Tue May 26 20:29:28 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- update to 2.11.0:
+  * New features
+    * Smart Playlist Plugin: The splupdate command output is restructured. The
+      per-playlist summary now includes a track count. Per-track details are
+      shown only when -v flag is provided (beet -v splupdate). The --pretend
+      flag produces the same output but reports "N playlists would be updated"
+      instead of "N playlists updated". The --format option allows customizing
+      the track line format. The --pretend-paths option was removed (use
+      --format='$path' instead). (#6183)
+    * import command: When importing an archive (zip, tar, rar, or 7z) with
+      move: yes, the source archive is now removed after a successful import.
+      Archives are preserved if any file in the archive was not imported (e.g.
+      skipped as a duplicate, or the import was aborted), and in non-move
+      import modes.
+    * FromFilename Plugin: Support track prefix when parsing the track number
+      from the filename (e.g., track01.m4a).
+    * Tidal plugin: Introduces a new plugin for fetching metadata from Tidal.
+      It supports album and track lookups by ID, including batch operations via
+      albums_for_ids and tracks_for_ids. It also enables search by query as
+      well as identifier-based retrieval, with support for ISRC codes (tracks)
+      and barcode/EANs (albums).
+
+      This is an initial, relatively minimal implementation, but already fully
+      usable for common metadata workflows. We welcome feedback, improvement
+      ideas, and community contributions to further extend its capabilities.
+    * Add support for adding or modifying a subtitle (ID3 tag TIT3) field
+  * Bug fixes
+    * Bad Files Plugin: Respect quiet mode (the --quiet flag or import.quiet:
+      yes config) during import so the corrupt-file prompt is suppressed in
+      non-interactive imports. (#4736)
+    * Discogs Plugin: Prevent duplicate featured artists in track artist fields
+      when the same artist is credited both in artists (for example with Feat.
+      join text) and extraartists as Featuring. (#6166)
+    * import command: Fix duplicate album art files (e.g. cover.2.jpg) being
+      created when re-importing albums with the FetchArt Plugin plugin enabled.
+      Old album art is now properly removed when replacing duplicate albums
+      during import. (#1264) (#6205)
+    * import command: Metadata source plugin ID lookups now correctly call each
+      plugin's own lookup method when running in parallel. (#6583)
+    * import command: Multi-disc album detection now recognizes cassette,
+      digital media, and vinyl as disc markers (e.g. vinyl 1, 12 vinyl 2), in
+      addition to the existing disc, disk, and cd markers.
+    * import command: Tags with a zero distance penalty are no longer shown as
+      differences in the match display. Previously, custom distance_weights
+      could cause fields with no actual mismatch to appear in the ≠ line.
+    * import command: With original_date: yes, album-level year, month, and day
+      now use the original release date. (#6577)
+    * Lyrics Plugin: Fix apostrophe handling in the musixmatch backend slug.
+      (#4759)
+    * MusicBrainz Plugin: Correctly handle release dates where leading or
+      intermediate components are missing, e.g. 2008-??-02
+    * Improve DBAccessError messages to help users diagnose database permission
+      issues more easily. The error message now mentions directory missing and
+      file permissions as potential causes. (#1676)
+    * Library path migration now also handles manually edited database rows
+      where item or album-art paths were stored as SQLite TEXT values instead
+      of bytes, so upgrading to the portable-path storage format no longer
+      fails for those libraries. (#6561)
+  * Other changes
+    * Spotify Plugin: Batch spotifysync track and audio-features API requests
+      and deduplicate repeated Spotify track IDs within a run.
+- update to 2.10.0:
+  * New features
+    * Beets library is now made portable: item and album-art paths are now
+      stored relative to the library root in the database while remaining
+      absolute in the rest of beets. Path queries continue matching both
+      library-relative paths and absolute paths under the currently configured
+      music directory under the new storage model. The existing paths in the
+      database are migrated automatically the first time you run any beet
+      command after the update. (#133)
+
+      Warning!
+
+      make sure you run beet version (or any other command) at least once after
+      upgrading to trigger the migration. Only then you can safely move the
+      library to a new location.
+
+    * Inline Plugin: Add access to the album or item object as db_obj in inline
+      fields.
+    * Discogs Plugin: Import Discogs remixer, lyricist, composer, and arranger
+      credits into the multi-value remixers, lyricists, composers, and
+      arrangers fields. (#6380)
+    * Lyrics Plugin: Add keep_synced config option and --keep-synced CLI flag
+      to skip re-fetching lyrics for tracks that already have synced lyrics,
+      even when force is enabled. (#5249)
+    * MusicBrainz Plugin: Use aliases for artist credit.
+    * Metadata source plugin searches and lookups are now executed
+      concurrently, speeding up lookups when multiple plugins (e.g. MusicBrainz
+      and Spotify) are enabled.
+  * Bug fixes
+    * Chromaprint/Acoustid Plugin: Do not produce MusicBrainz-sourced
+      autotagger candidates when the MusicBrainz Plugin plugin is not enabled.
+      The chroma plugin now looks up the musicbrainz plugin through the
+      metadata-source registry instead of unconditionally instantiating its own
+      private instance, which also restores compatibility with MusicBrainz
+      Pseudo-Release Plugin for chroma-triggered lookups. (#6212) (#6441)
+    * import command Automatically remux WAV files containing MP3 streams
+      (WAVE_FORMAT_MPEGLAYER3) to proper MP3 files during import, instead of
+      silently importing them with incorrect metadata. (#6455)
+    * import command Remove clutter from imported album folders. (#5016)
+    * ListenBrainz Plugin: Retry listenbrainz requests for temporary failures.
+    * Web Plugin: Fix a stored XSS vulnerability where unescaped metadata
+      fields (artist, album, title, comments, lyrics) could execute arbitrary
+      JavaScript in the browser. Template tags now use <%- (escaped
+      interpolation) instead of <%= (raw interpolation). CVE-2026-42052
+      boo#1263988
+  * For plugin developers
+    * Consumers of beetsplug._utils.musicbrainz.MusicBrainzAPI now receive
+      normalized MusicBrainz payloads with underscore-separated field names
+      (for example artist_credit and release_group) and grouped relation lists
+      such as work_relations, release_relations, and url_relations. The API
+      responses are also now fully typed with concrete TypedDict models for
+      releases, recordings, works, and relations. Update direct access to raw
+      MusicBrainz response keys if needed.
+- update to 2.9.0:
+  * New features
+    * AutoBPM Plugin: Add force configuration and CLI option and deprecate
+      overwrite.
+    * AutoBPM Plugin: The "BPM already exists for item" log message can now be
+      hidden with the --quiet flag.
+    * Chromaprint/Acoustid Plugin: Add new command chromasearch to search the
+      local library by chromaprint fingerprint.
+    * FetchArt Plugin: Add support for WebP images.
+    * import command Use ffprobe to recognize format of any import music file
+      that has no extension. If the file cannot be recognized as a music file,
+      leave it alone. (#4881)
+    * LastGenre Plugin: Add support for a user-configurable ignorelist to
+      exclude unwanted or incorrect Last.fm (or existing) genres, either per
+      artist or globally (#6449)
+    * MusicBrainz Plugin: Store MBIDs for remixers, lyricists, composers, and
+      arrangers in the new multi-valued fields remixers_mbid, lyricists_mbid,
+      composers_mbid, and arrangers_mbid. (#5698)
+    * ReplayGain Plugin: Conflicting replay gain tags are now removed on write.
+      RG* tags are removed when setting R128* and vice versa.
+    * Smart Playlist Plugin: The list of available playlists shown when an
+      unknown playlist name is passed as an argument is now sorted
+      alphabetically and printed space-delimited and POSIX shell-quoted when
+      required. This makes it easier to copy and paste multiple playlists for
+      further use in the shell.
+    * Query: Add has_cover_art computed field to query items by embedded cover
+      art presence. Users can now search for tracks with or without embedded
+      artwork using beet list has_cover_art:true or beet list
+      has_cover_art:false.
+    * Store track remixers, lyricists, composers, and arrangers in the
+      multi-valued remixers, lyricists, composers, and arrangers fields instead
+      of the legacy single-value remixer, lyricist, composer, and arranger
+      fields. Existing libraries are migrated automatically, and MusicBrainz
+      Plugin now preserves each MusicBrainz remixer, lyricist, composer, and
+      arranger relation as a separate value.
+  * Bug fixes
+    * Deezer Plugin: Fix a regression in 2.8.0 where selecting a Deezer match
+      during import could crash with AttributeError: 'AlbumInfo' object has no
+      attribute 'raw_data' when Deezer returned numeric artist IDs. (#6503)
+    * Deezer Plugin: Fix Various Artists albums being tagged with a localized
+      string instead of the configured va_name. Detection now uses Deezer's
+      artist ID rather than the artist name string. (#4956)
+    * Discogs Plugin: Store specific Discogs styles in beets genres and broader
+      Discogs genres in the style field. When append_style_genre is enabled,
+      the broader Discogs genres are also appended to the genres list. (#6390)
+    * FetchArt Plugin: Error when a configured source does not exist or sources
+      configuration is empty. (#6336)
+    * import command Fix albumartists_sort (and related fields) incorrectly
+      prepending the full combined artist credit as the first element for
+      multi-artist releases. (#6470)
+    * ListenBrainz Plugin: Fix lbimport crashing when ListenBrainz tracks are
+      processed through Last.fm-specific play-count import logic. Play-count
+      imports now use source-specific fields so ListenBrainz Plugin, LastImport
+      Plugin, and MPDStats Plugin do not clash. (#6469)
+    * ListenBrainz Plugin: Paginate through all ListenBrainz listens instead of
+      fetching only 25, aggregate individual listen events into correct play
+      counts, use recording_mbid from the ListenBrainz mapping when available,
+      and avoid per-listen MusicBrainz API lookups that caused imports to hang
+      on large listen histories. (#6469)
+    * modify command accepts legacy singular field names such as genre,
+      composer, lyricist, remixer, and arranger in assignments, rewrites them
+      to the corresponding multi-valued fields, and warns users to switch to
+      the plural field names. list command, and query expressions, accept the
+      same legacy singular field names and warn users to switch to the plural
+      field names. (#6483)
+    * Rewrite Plugin Advanced Rewrite Plugin: Fix rewriting multi-valued fields
+      such as genres by applying rules to each matching list entry.
+      Additionally, apply rewrite rules in config order, so that multiple rules
+      can be applied to the same field. (#6515)
+    * Correctly handle semicolon-delimited genre values from externally-tagged
+      files. (#6450)
+  * For plugin developers
+    * If you maintain a metadata source plugin that populates any of arranger,
+      composer, lyricist, remixer fields, update it to populate the respective
+      multi-valued fields instead (arrangers, composers, lyricists, remixers).
+
+-------------------------------------------------------------------
 Wed Apr  8 20:53:18 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - update to 2.8.0:
