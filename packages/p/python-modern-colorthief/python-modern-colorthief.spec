@@ -16,10 +16,9 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define         pyname modern_colorthief
 Name:           python-modern-colorthief
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Colorthief reimagined
 License:        MIT
@@ -55,7 +54,6 @@ Python-modern-colorthief is a rewritten rust python-colorthief replacement
 
 %files %{python_files}
 %license LICENSE
-%pycache_only %{python_sitearch}/%{pyname}/__pycache__
 %python_alternative %{_bindir}/modern-colorthief
 %{python_sitearch}/%{pyname}
 %{python_sitearch}/%{pyname}-%{version}.dist-info

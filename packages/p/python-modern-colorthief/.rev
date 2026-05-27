@@ -91,4 +91,14 @@
   * Update dependency python to 3.14</comment>
     <requestid>1348080</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2e95703a6f2b762cc65dd4fcfafe4deb</srcmd5>
+    <version>0.2.1</version>
+    <time>1779891516</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.1:
+  + Refactor image processing functions for better handling
+- Remove Leap 15 packaging (forwarded request 1355316 from rrahl0)</comment>
+    <requestid>1355317</requestid>
+  </revision>
 </revisionlist>
