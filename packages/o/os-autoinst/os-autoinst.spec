@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        5.1778246511.7a6bac3
+Version:        5.1779461317.d4fb5bd
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -27,12 +27,12 @@ Source0:        %{name}-%{version}.tar.xz
 %{perl_requires}
 %define opencv_require pkgconfig(opencv4)
 # exclude additional sub packages that would pull in a lot of extra dependencies on SLE
-%if 0%{?suse_version} && !0%{?is_opensuse}
-%bcond_with devel_package
-%bcond_with deps_package
-%else
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1600
 %bcond_without devel_package
 %bcond_without deps_package
+%else
+%bcond_with devel_package
+%bcond_with deps_package
 %endif
 # The following line is generated from dependencies.yaml
 %define build_base_requires %opencv_require gcc-c++ perl(Pod::Html) pkg-config pkgconfig(fftw3) pkgconfig(libpng) pkgconfig(sndfile) pkgconfig(theoraenc)
@@ -73,7 +73,7 @@ Source0:        %{name}-%{version}.tar.xz
 %else
 %bcond_with python_support
 %endif
-%if 0%{?is_opensuse} && (0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150600)
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1600
 %bcond_without lua_support
 %else
 %bcond_with lua_support
@@ -268,6 +268,8 @@ rm t/28-signalblocker.t
 # https://progress.opensuse.org/issues/194359
 # https://progress.opensuse.org/issues/199940
 rm -f t/28-signalblocker.t
+# https://progress.opensuse.org/issues/200949
+rm -f t/26-video_stream.t
 %endif
 
 %build

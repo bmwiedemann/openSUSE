@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 22 14:48:46 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1779461317.d4fb5bd:
+  * refactor: Use Feature::Compat::Try consistently
+  * perf: use sourcing for efficient pretty serial marker activation
+  * fix: Fix condition for devel/deps packages
+  * fix: Fix condition for Lua support
+  * ci: Build packages for SLE 15 SP7 instead of SP6 which reached EOL
+  * ci: Remove package builds for Leap 15.6 as it reached EOL
+  * feat: use efficient OA_NO_MARKER skip flag for pretty serial markers
+
+-------------------------------------------------------------------
 Fri May 08 13:22:00 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1778246511.7a6bac3:
