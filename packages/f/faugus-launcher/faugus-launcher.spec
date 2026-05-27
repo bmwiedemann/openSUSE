@@ -19,7 +19,7 @@
 %{?single_pythons_311plus}
 
 Name:           faugus-launcher
-Version:        1.19.5
+Version:        1.20.3
 Release:        0
 Summary:        A simple and lightweight app for running Windows games using UMU-Launcher
 License:        MIT and CC-BY-4.0
@@ -81,11 +81,12 @@ A simple and lightweight app for running Windows games using UMU-Launcher/UMU-Pr
 %prep
 %autosetup -n %{name}-%{version}
 
-# Fix for shebangs on current versions
+# Fix for shebangs & executable bits on current versions
 sed -i '1{/^#!.*python/d}' faugus/launcher.py
 sed -i '1{/^#!.*python/d}' faugus/proton_manager.py
 sed -i '1{/^#!.*python/d}' faugus/runner.py
 sed -i '1{/^#!.*python/d}' faugus/shortcut.py
+chmod 0644 faugus/backup.py
 sed -i '1s|#!/usr/bin/env python3|#!%{__python3}|' faugus/proton_downloader.py
 
 %build

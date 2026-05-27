@@ -518,4 +518,36 @@
   * Some visual changes</comment>
     <requestid>1354165</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a17061beeaf5a762469d6ef45af9b75e</srcmd5>
+    <version>1.20.3</version>
+    <time>1779891262</time>
+    <user>anag_factory</user>
+    <comment>- For .spec:
+  * Remove executable bits from some python files
+- Bump to version 1.20.3
+- Upstream changes:
+  * Fixed icons again
+- For version 1.20.2:
+  * Fixed icons
+  * italian translation for backup feature
+- For version 1.20.1:
+  * Update launcher.py
+  * Resize icons to 256
+  * Update backup.py
+  * String fix
+  * Updated Portuguese translation
+  * Added translation + More string fix
+  * Revert &quot;Added translation token + more string fix&quot;
+  * Added translation token + more string fix
+  * Changed some strings
+  * Reworked backup system
+  * Added flash animation to main buttons
+  * Removed gamepad SDL workaround
+  * Reworked game icon config
+  * Updates EA App shortcuts
+  * Add files via upload
+  * Update faugus-run.po</comment>
+    <requestid>1355209</requestid>
+  </revision>
 </revisionlist>
