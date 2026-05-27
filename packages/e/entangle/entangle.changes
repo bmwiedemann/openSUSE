@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 26 14:11:32 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- fix build against current gtk3. patch extracted froom upstream
+  entangle-fix-new-gtk.patch 
+
+-------------------------------------------------------------------
 Tue Mar  1 14:48:38 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - fix-new-meson.patch: fix build with new meson
