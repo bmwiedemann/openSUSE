@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 26 13:28:48 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.33.0
+  * builder -> v0.9.92 and clang-latest by @sbSteveK in (#733)
+  * Fix free threading http connection race by @TingDaoK in (#738)
+  * Error safely if header values are invalid by @azkrishpy in (#739)
+  * Enforce the depth limit for cbor decoder by @TingDaoK in (#736)
+  * Latest submodules by @TingDaoK in (#740)
+
+-------------------------------------------------------------------
 Tue Apr 28 07:56:47 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.32.2
