@@ -1,7 +1,7 @@
 #
 # spec file for package libcreg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 
 Name:           libcreg
 %define lname	libcreg1
-Version:        20240419
+Version:        20260523
 Release:        0
 Summary:        Library to access Windows 9x/Me REGF-type Registry files
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -37,17 +37,17 @@ BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse3) >= 3.0
 BuildRequires:  pkgconfig(libbfio) >= 20240313
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240109
-BuildRequires:  pkgconfig(libcsplit) >= 20240110
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libfcache) >= 20240112
-BuildRequires:  pkgconfig(libfdata) >= 20240114
-BuildRequires:  pkgconfig(libuna) >= 20240130
+BuildRequires:  pkgconfig(libcdata) >= 20260520
+BuildRequires:  pkgconfig(libcerror) >= 20260513
+BuildRequires:  pkgconfig(libcfile) >= 20260520
+BuildRequires:  pkgconfig(libclocale) >= 20260520
+BuildRequires:  pkgconfig(libcnotify) >= 20260520
+BuildRequires:  pkgconfig(libcpath) >= 20260520
+BuildRequires:  pkgconfig(libcsplit) >= 20260520
+BuildRequires:  pkgconfig(libcthreads) >= 20260518
+BuildRequires:  pkgconfig(libfcache) >= 20250621
+BuildRequires:  pkgconfig(libfdata) >= 20250621
+BuildRequires:  pkgconfig(libuna) >= 20250622
 BuildRequires:  pkgconfig(python3)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
