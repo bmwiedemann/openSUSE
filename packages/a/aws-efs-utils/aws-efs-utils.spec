@@ -59,6 +59,7 @@ BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  libopenssl-devel
 BuildRequires:  openssl
+BuildRequires:  python-rpm-macros
 BuildRequires:  rust
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) >= 1.24
@@ -106,6 +107,11 @@ install -p -m 755 %{_builddir}/efs-utils-v%{version}/src/mount_efs/__init__.py %
 install -p -m 755 %{_builddir}/efs-utils-v%{version}/src/watchdog/__init__.py %{buildroot}%{_bindir}/amazon-efs-mount-watchdog
 install -p -m 644 %{_builddir}/efs-utils-v%{version}/man/mount.efs.8 %{buildroot}%{_mandir}/man8
 
+mkdir -p %{buildroot}%{python_sitelib}/{efs_utils_common,mount_efs,mount_s3files}
+cp -r %{_builddir}/efs-utils-v%{version}/src/efs_utils_common/*.py %{buildroot}%{python_sitelib}/efs_utils_common
+cp -r %{_builddir}/efs-utils-v%{version}/src/mount_efs/*.py %{buildroot}%{python_sitelib}/mount_efs
+cp -r %{_builddir}/efs-utils-v%{version}/src/mount_s3files/*.py %{buildroot}%{python_sitelib}/mount_s3files
+
 %if 0%{?suse_version} <= 1500
 export RUSTFLAGS=" -C linker=/usr/bin/gcc-13"
 %endif
@@ -141,5 +147,8 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %{_sbindir}/rcamazon-efs-mount-watchdog
 %{_var}/log/amazon
 %{_mandir}/man8/mount.efs.8.gz
+%{python_sitelib}/efs_utils_common
+%{python_sitelib}/mount_efs
+%{python_sitelib}/mount_s3files
 
 %changelog

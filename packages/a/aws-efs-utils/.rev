@@ -318,4 +318,13 @@
 - Pass --verbose to %cargo_build (forwarded request 1354684 from glaubitz)</comment>
     <requestid>1354713</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>72f25647922315350110681cf87b624a</srcmd5>
+    <version>3.1.1</version>
+    <time>1779891288</time>
+    <user>anag_factory</user>
+    <comment>- Add python-rpm-macros to BuildRequires
+- Install missing Python files into %{python_sitelib} (bsc#1263683) (forwarded request 1355201 from glaubitz)</comment>
+    <requestid>1355226</requestid>
+  </revision>
 </revisionlist>

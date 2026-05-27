@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 26 13:31:13 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add python-rpm-macros to BuildRequires
+- Install missing Python files into %{python_sitelib} (bsc#1263683)
+
+-------------------------------------------------------------------
 Fri May 22 10:30:13 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.1.1
