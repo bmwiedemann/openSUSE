@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri May 22 14:40:09 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.67:
+  * Made the Voice Report give “undefined” H1-minus-H2 values
+    (instead of an error message) if there are zero pulses.
+- Changes from version 6.4.66:
+  * Much faster automatic transcription on Windows and Linux.
+  * Standalone diarization.
+  * Corrected a crash in sorting an Eigen object (could affect
+    discriminant analysis).
+  * Removed a bug introduced in 6.4.52 by which running a log
+    script in the Sound window would stop any pending pause
+    window.
+- Changes from version 6.4.65:
+  * Fixed a bug that could lead to a “Text is not valid UTF-8”
+    error message in automatic transcription.
+  * More windows recognize Command-Q (Quit Praat).
+- Re-base praat-use_system_libs.patch for update.
+- Drop praat-allow-system-flags.patch: invalidated due to change
+  in build script
+
+-------------------------------------------------------------------
 Sun Apr 19 14:16:49 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.64:

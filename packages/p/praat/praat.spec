@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.4.64
+Version:        6.4.67
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -29,8 +29,6 @@ Source1:        %{name}.rpmlintrc
 Patch1:         praat-use_system_libs.patch
 # PATCH-FIX-OPENSUSE praat-no-return-in-nonvoid.patch -- make the compiler happy
 Patch2:         praat-no-return-in-nonvoid.patch
-# PATCH-FEATURE-OPENSUSE praat-allow-system-flags.patch badshah400@gmail.com -- Allow compilation and linker flags to incorporate appropriate env flags
-Patch3:         praat-allow-system-flags.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glpk-devel
 BuildRequires:  hicolor-icon-theme
@@ -61,10 +59,9 @@ provisions for communicating with other programs.
 %autosetup -p1 -n %{name}.github.io-%{version}
 
 %build
-cp makefiles/makefile.defs.linux.pulse-gcc ./makefile.defs
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
-%make_build
+%make_build PRAAT_OS=linux
 
 %install
 mkdir -p %{buildroot}/%{_bindir} \
