@@ -38,6 +38,12 @@ Fri Sep 19 18:44:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
   * avcodec/libsvtav1: unbreak build with latest svtav1
   * avformat/hls: Fix Youtube AAC
   * Various bugfixes.
+  * aacenc_tns: clamp filter direction energy measurement
+    (CVE-2025-1594, bsc#1237561)
+  * avcodec/jpeg2000dec: implement cdef remapping during pixel format matching
+    (CVE-2025-9951, bsc#1249393)
+  * libavfilter/af_firequalizer: Add check for av_malloc_array()
+    (CVE-2025-10256, bsc#1249431)
 - Drop patches fixed upstream:
   * 0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
   * ffmpeg-CVE-2025-7700.patch
@@ -248,6 +254,7 @@ Wed Aug  7 07:37:24 UTC 2024 - Cliff Zhao <qzhao@suse.com>
   * avformat/avidec: Fix integer overflow iff ULONG_MAX < INT64_MAX (CVE-2024-36618, bsc#1234020)
   * avformat/cafdec: dont seek beyond 64bit (CVE-2024-36617, bsc#1234019)
   * avformat/westwood_vqa: Fix 2g packets (CVE-2024-36616, bsc#1234018)
+  * avformat/sbgdec: Check for negative duration (CVE-2024-35366, bsc#1234030)
 - Drop ffmpeg-7-CVE-2024-32228.patch:
   The fix has been merged.
 - Drop ffmpeg-7-CVE-2024-32229.patch:

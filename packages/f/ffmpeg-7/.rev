@@ -216,4 +216,12 @@ retry submit due to git-&gt;obs autosync delays</comment>
     <comment>- Update to version 7.1.4:</comment>
     <requestid>1354792</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>fbcc65ab05e2ee9ec03a15f3cadbde29</srcmd5>
+    <version>7.1.4</version>
+    <time>1779891395</time>
+    <user>anag_factory</user>
+    <comment>add bugrefs</comment>
+    <requestid>1355249</requestid>
+  </revision>
 </revisionlist>
