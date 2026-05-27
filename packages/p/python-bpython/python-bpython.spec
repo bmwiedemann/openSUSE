@@ -16,8 +16,8 @@
 #
 
 
-%bcond_without     test
-%bcond_without libalternatives
+%bcond_without  test
+%bcond_without  libalternatives
 Name:           python-bpython
 Version:        0.26
 Release:        0
@@ -25,8 +25,8 @@ Summary:        Fancy Interface to the Python Interpreter
 License:        MIT
 URL:            https://www.bpython-interpreter.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bpython/bpython-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip-tests.patch to skip tests that are broken upstream
-Patch:          skip-tests.patch
+# PATCH-FIX-UPSTREAM fix-tests.patch gh#bpython/bpython@27fc6a0
+Patch:          fix-tests.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.10}

@@ -192,4 +192,14 @@ Drop sphinx doctrees for reproducible builds</comment>
     <comment></comment>
     <requestid>1337334</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>e6bd6dd0ef382e3b20613a06986cc95a</srcmd5>
+    <version>0.26</version>
+    <time>1779891670</time>
+    <user>anag_factory</user>
+    <comment>- Drop skip-tests.patch and replace with fix-tests.patch to fix one
+  failing test
+</comment>
+    <requestid>1355378</requestid>
+  </revision>
 </revisionlist>
