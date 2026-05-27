@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 24 20:31:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Apparmor
+  - fix typo in abstraction
+  - have all all local permissions before subprofiles
+
+-------------------------------------------------------------------
 Sat May  2 21:40:27 UTC 2026 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Allow SSH mirroring and template customization in AppArmor profile
@@ -44,6 +51,11 @@ Sat Mar 21 09:32:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
   * fix: when expanding a dynamic matrix, original 'needs' access was lost
   * fix: improve SQLite "database is locked" errors by increasing default SQLITE_TIMEOUT
   * fix: use an absolute URL for compare links in atom feed
+
+-------------------------------------------------------------------
+Sun Feb  1 00:22:55 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparmor: make logdir a variable
 
 -------------------------------------------------------------------
 Sat Jan 31 12:38:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
@@ -214,6 +226,11 @@ Sat Jan 31 12:38:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
   * fix: retain Forgejo Action's commit_status entries with distinct descriptions
   * fix: in-progress job icon doesn't rotate on repo's action list
   * chore(cleanup): move all test blank imports in a single package
+
+-------------------------------------------------------------------
+Wed Dec 24 23:57:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparmor: golang binaries now also want mountinfo.
 
 -------------------------------------------------------------------
 Sat Dec  6 21:44:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>

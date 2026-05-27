@@ -937,4 +937,18 @@ Bug fixes:
     - https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/15.0.0.md (forwarded request 1351479 from rrahl0)</comment>
     <requestid>1351480</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>feb39674628ecc4753707a22c345b0c2</srcmd5>
+    <version>15.0.1</version>
+    <time>1779891530</time>
+    <user>anag_factory</user>
+    <comment>- Apparmor
+  - fix typo in abstraction
+  - have all all local permissions before subprofiles
+
+- apparmor: make logdir a variable
+
+- apparmor: golang binaries now also want mountinfo. (forwarded request 1354981 from darix)</comment>
+    <requestid>1355315</requestid>
+  </revision>
 </revisionlist>

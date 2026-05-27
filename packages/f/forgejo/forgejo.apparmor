@@ -3,6 +3,7 @@ abi <abi/3.0>,
 include <tunables/global>
 
 @{APP_DATADIR} = /var/lib/forgejo
+@{APP_LOGDIR}  = /var/log/forgejo
 @{APP_REPOSITORY_DIRS} = @{APP_DATADIR}/data/forgejo-repositories @{APP_DATADIR}/repositories
 
 profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
@@ -19,6 +20,27 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
   /usr/bin/forgejo Cx -> forgejo-session-exec,
 
   signal (send) peer=forgejo//*,
+
+
+  owner @{APP_DATADIR}/ r,
+
+  owner @{APP_DATADIR}/data/ r,
+  owner @{APP_DATADIR}/data/** rwlk,
+
+  owner @{APP_DATADIR}/https/ r,
+  owner @{APP_DATADIR}/https/** rwlk,
+
+  owner @{APP_DATADIR}/indexers/ r,
+  owner @{APP_DATADIR}/indexers/** rwlk,
+
+  owner @{APP_DATADIR}/queues/ r,
+  owner @{APP_DATADIR}/queues/** rwlk,
+
+  owner @{APP_REPOSITORY_DIRS}/ r,
+  owner @{APP_REPOSITORY_DIRS}/** rwlk,
+
+  owner @{APP_LOGDIR}/ r,
+  owner @{APP_LOGDIR}/gitea.log* rwlk,
 
   profile forgejo-session-exec {
     include <abstractions/forgejo>
@@ -158,24 +180,4 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
     /usr/bin/cat      rm,
     /usr/bin/basename rm,
   }
-
-  owner @{APP_DATADIR}/ r,
-
-  owner @{APP_DATADIR}/data/ r,
-  owner @{APP_DATADIR}/data/** rwlk,
-
-  owner @{APP_DATADIR}/https/ r,
-  owner @{APP_DATADIR}/https/** rwlk,
-
-  owner @{APP_DATADIR}/indexers/ r,
-  owner @{APP_DATADIR}/indexers/** rwlk,
-
-  owner @{APP_DATADIR}/queues/ r,
-  owner @{APP_DATADIR}/queues/** rwlk,
-
-  owner @{APP_REPOSITORY_DIRS}/ r,
-  owner @{APP_REPOSITORY_DIRS}/** rwlk,
-
-  owner /var/log/forgejo/ r,
-  owner /var/log/forgejo/gitea.log* rwlk,
 }
