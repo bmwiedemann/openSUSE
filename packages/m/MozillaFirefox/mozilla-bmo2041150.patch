@@ -1,0 +1,41 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ajrat Makhmutov <rauty@altlinux.org>
+Date: Wed, 21 May 2026 00:00:00 +0300
+Subject: [PATCH] Implement systemProxyDirect in the libproxy backend
+
+Thunderbird 151 added the readonly attribute systemProxyDirect to the
+nsISystemProxySettings interface. The GIO, Windows and Android backends
+were updated, but nsLibProxySettings.cpp (built with --enable-libproxy)
+was not, so its vtable references an undefined
+nsUnixSystemProxySettings::GetSystemProxyDirect and libxul fails to link:
+
+  ld.lld: error: undefined hidden symbol:
+      nsUnixSystemProxySettings::GetSystemProxyDirect(bool*)
+
+libproxy is queried per-URI and has no cheap "no proxy at all" fast path,
+so the getter conservatively reports false.
+---
+ thunderbird/toolkit/system/unixproxy/nsLibProxySettings.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/toolkit/system/unixproxy/nsLibProxySettings.cpp b/toolkit/system/unixproxy/nsLibProxySettings.cpp
+index 3de1b7ce9b8..29bae455aea 100644
+--- a/toolkit/system/unixproxy/nsLibProxySettings.cpp
++++ b/toolkit/system/unixproxy/nsLibProxySettings.cpp
+@@ -111,6 +111,14 @@ nsUnixSystemProxySettings::GetSystemWPADSetting(bool* aSystemWPADSetting) {
+   return NS_OK;
+ }
+
++NS_IMETHODIMP
++nsUnixSystemProxySettings::GetSystemProxyDirect(bool* aSystemProxyDirect) {
++  // libproxy is queried per-URI, so there is no cheap "no proxy at all"
++  // fast path; always let proxy resolution perform the per-URI query.
++  *aSystemProxyDirect = false;
++  return NS_OK;
++}
++
+ NS_IMPL_COMPONENT_FACTORY(nsUnixSystemProxySettings) {
+   return do_AddRef(new nsUnixSystemProxySettings()).downcast<nsISupports>();
+ }
+--
+2.50.1

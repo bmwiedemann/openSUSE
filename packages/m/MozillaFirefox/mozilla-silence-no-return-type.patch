@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  12a274a85f8317615a937830dbe1a4675fdca2fb
+# Parent  0ba4feb95e7f4c365dcb637fef2d16969d5231a9
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -298,7 +298,7 @@ diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/num
 diff --git a/js/src/irregexp/imported/regexp-parser.cc b/js/src/irregexp/imported/regexp-parser.cc
 --- a/js/src/irregexp/imported/regexp-parser.cc
 +++ b/js/src/irregexp/imported/regexp-parser.cc
-@@ -2795,16 +2795,17 @@ bool MayContainStrings(ClassSetOperandTy
+@@ -2810,16 +2810,17 @@ bool MayContainStrings(ClassSetOperandTy
        return false;
      case ClassSetOperandType::kCharacterClassEscape:
      case ClassSetOperandType::kClassStringDisjunction:
@@ -313,7 +313,7 @@ diff --git a/js/src/irregexp/imported/regexp-parser.cc b/js/src/irregexp/importe
  }  // namespace
  
  template <class CharT>
- void RegExpParserImpl<CharT>::AddMaybeSimpleCaseFoldedRange(
+ void ParserImpl<CharT>::AddMaybeSimpleCaseFoldedRange(
      ZoneList<CharacterRange>* ranges, CharacterRange new_range) {
    DCHECK(unicode_sets());
 diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libwebrtc/api/adaptation/resource.cc
@@ -340,7 +340,7 @@ diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libw
 diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
 --- a/third_party/libwebrtc/api/rtp_parameters.cc
 +++ b/third_party/libwebrtc/api/rtp_parameters.cc
-@@ -75,16 +75,17 @@ const char* DegradationPreferenceToStrin
+@@ -74,16 +74,17 @@ const char* DegradationPreferenceToStrin
      case DegradationPreference::MAINTAIN_FRAMERATE:
        return "maintain-framerate";
      case DegradationPreference::MAINTAIN_RESOLUTION:
@@ -519,7 +519,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
 diff --git a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
 --- a/third_party/libwebrtc/call/rtp_payload_params.cc
 +++ b/third_party/libwebrtc/call/rtp_payload_params.cc
-@@ -421,17 +421,18 @@ std::optional<FrameDependencyStructure> 
+@@ -420,17 +420,18 @@ std::optional<FrameDependencyStructure> 
      case VideoCodecType::kVideoCodecH264:
        return MinimalisticStructure(
            /*num_spatial_layers=*/1,
@@ -644,7 +644,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.
 diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 --- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -113,16 +113,17 @@ GainControl::Mode Agc1ConfigModeToInterf
+@@ -112,16 +112,17 @@ GainControl::Mode Agc1ConfigModeToInterf
      case Agc1Config::kAdaptiveAnalog:
        return GainControl::kAdaptiveAnalog;
      case Agc1Config::kAdaptiveDigital:
@@ -662,7 +662,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
  
  // Maximum lengths that frame of samples being passed from the render side to
  // the capture side can have (does not apply to AEC3).
-@@ -180,17 +181,17 @@ int AudioFormatValidityToErrorCode(Audio
+@@ -179,17 +180,17 @@ int AudioFormatValidityToErrorCode(Audio
      case AudioFormatValidity::kValidAndSupported:
        return AudioProcessing::kNoError;
      case AudioFormatValidity::kValidButUnsupportedSampleRate:  // fall-through
@@ -681,7 +681,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
      const StreamConfig& input_config,
      const StreamConfig& output_config) {
    AudioFormatValidity input_validity = ValidateAudioFormat(input_config);
-@@ -2089,16 +2090,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -1995,16 +1996,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:
@@ -702,7 +702,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
 diff --git a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
 --- a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
 +++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
-@@ -77,16 +77,18 @@ BandwidthLimitedCause GetBandwidthLimite
+@@ -80,16 +80,18 @@ BandwidthLimitedCause GetBandwidthLimite
        // Probes may not be sent in this state.
        return BandwidthLimitedCause::kLossLimitedBwe;
      case LossBasedState::kIncreasing:
@@ -724,28 +724,28 @@ diff --git a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc
 diff --git a/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h b/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h
 --- a/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h
 +++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h
-@@ -70,16 +70,17 @@ class GoogCcScreamNetworkController : pu
-       case Mode::kGoogCc:
-         return false;
+@@ -58,16 +58,17 @@ class GoogCcScreamNetworkController : pu
+ 
+   bool SupportsEcnAdaptation() const override {
+     switch (mode_) {
        case Mode::kGoogCcWithEct1:
          return !ecn_ce_seen_;
-       case Mode::kScreamAlways:
        case Mode::kScreamAfterCe:
          return true;
      }
 +    return false;
    }
-   // Returns "ScreamV2" or "GoogCC" depending on currently used network
-   // controller.
-   std::string_view CurrentControllerType() const;
  
   private:
-   enum class Mode { kGoogCc, kScreamAlways, kScreamAfterCe, kGoogCcWithEct1 };
+   NetworkControlUpdate MaybeRunOnAllControllers(
+       absl::AnyInvocable<NetworkControlUpdate(NetworkControllerInterface&)>
+           update);
  
+   Environment env_;
 diff --git a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 --- a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 +++ b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
-@@ -49,16 +49,17 @@ ScreenCastPortal::CaptureSourceType Scre
+@@ -51,16 +51,17 @@ ScreenCastPortal::CaptureSourceType Scre
    switch (type) {
      case CaptureType::kScreen:
        return ScreenCastPortal::CaptureSourceType::kScreen;
@@ -757,12 +757,12 @@ diff --git a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screenc
 +  RTC_CHECK_NOTREACHED();
  }
  
- ScreenCastPortal::ScreenCastPortal(CaptureType type, PortalNotifier* notifier)
+ ScreenCastPortal::ScreenCastPortal(CaptureType type,
+                                    PortalNotifier* notifier,
+                                    bool prefer_cursor_embedded)
      : ScreenCastPortal(type,
                         notifier,
                         OnProxyRequested,
-                        OnSourcesRequestResponseSignal,
-                        this) {}
 diff --git a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
 --- a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
 +++ b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
@@ -869,7 +869,7 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
-@@ -172,16 +172,17 @@ PacketizationFormat GetPacketizationForm
+@@ -173,16 +173,17 @@ PacketizationFormat GetPacketizationForm
        return PacketizationFormat::kVP9;
      case kVideoCodecAV1:
        return PacketizationFormat::kAV1;
@@ -1106,6 +1106,35 @@ diff --git a/third_party/libwebrtc/net/dcsctp/timer/timer.cc b/third_party/libwe
               OnExpired on_expired,
               UnregisterHandler unregister_handler,
               std::unique_ptr<Timeout> timeout,
+diff --git a/third_party/libwebrtc/rtc_base/network_monitor.cc b/third_party/libwebrtc/rtc_base/network_monitor.cc
+--- a/third_party/libwebrtc/rtc_base/network_monitor.cc
++++ b/third_party/libwebrtc/rtc_base/network_monitor.cc
+@@ -16,23 +16,25 @@ namespace webrtc {
+ 
+ absl::string_view NetworkPreferenceToString(NetworkPreference preference) {
+   switch (preference) {
+     case NetworkPreference::NEUTRAL:
+       return "NEUTRAL";
+     case NetworkPreference::NOT_PREFERRED:
+       return "NOT_PREFERRED";
+   }
++  return "NEUTRAL"; //unreached
+ }
+ 
+ absl::string_view NetworkSliceToString(NetworkSlice network_slice) {
+   switch (network_slice) {
+     case NetworkSlice::NO_SLICE:
+       return "NO_SLICE";
+     case NetworkSlice::UNIFIED_COMMUNICATIONS:
+       return "UNIFIED_COMMUNICATIONS";
+   }
++  return "NO_SLICE"; //unreached
+ }
+ 
+ NetworkMonitorInterface::NetworkMonitorInterface() {}
+ NetworkMonitorInterface::~NetworkMonitorInterface() {}
+ 
+ }  // namespace webrtc
 diff --git a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc b/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc
 --- a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc
 +++ b/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc

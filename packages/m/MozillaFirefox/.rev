@@ -8221,4 +8221,41 @@
     feature from completing successfully. (bmo#2029240)</comment>
     <requestid>1351500</requestid>
   </revision>
+  <revision rev="487" vrev="1">
+    <srcmd5>eff5deac984352495f51c3134d9c3801</srcmd5>
+    <version>151.0.1</version>
+    <time>1779891141</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 151.0.1
+  * Fixed a crash experienced by users with Intel Raptor Lake CPUs.
+    (bmo#1950764)
+  * Fixed an issue on Windows where some websites using WebSerial to
+    flash device firmware could fail unexpectedly. (bmo#2040754)
+- Mozilla Firefox 151.0
+  * https://www.firefox.com/en-US/firefox/151.0/releasenotes/
+  MFSA 2026-46 (bsc#1265212)
+  * CVE-2026-8945 (bmo#2003171)
+    Sandbox escape in Firefox and Firefox Focus for Android
+  * CVE-2026-8946 (bmo#2029070)
+    Incorrect boundary conditions in the Audio/Video: Web Codecs
+    component
+  * CVE-2026-8947 (bmo#2038439)
+    Use-after-free in the DOM: Bindings (WebIDL) component
+  * CVE-2026-8948 (bmo#2038803)
+    Same-origin policy bypass in the DOM: Networking component
+  * CVE-2026-8949 (bmo#1355639)
+    Integer overflow in the Widget: Win32 component
+  * CVE-2026-8950 (bmo#1965430)
+    Same-origin policy bypass in the Networking: HTTP component
+  * CVE-2026-8951 (bmo#2018513)
+    Spoofing issue in the Toolbar component in Firefox for Android
+  * CVE-2026-8952 (bmo#2021727)
+    Privilege escalation in the Application Update component
+  * CVE-2026-8953 (bmo#2029511)
+    Sandbox escape due to use-after-free in the Disability Access
+    APIs component
+  * CVE-2026-8954 (bmo#2030747)
+    Incorrect boundary conditions, integer overflow in the</comment>
+    <requestid>1355191</requestid>
+  </revision>
 </revisionlist>

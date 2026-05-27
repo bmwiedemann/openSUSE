@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Thu May 21 21:15:56 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 151.0.1
+  * Fixed a crash experienced by users with Intel Raptor Lake CPUs.
+    (bmo#1950764)
+  * Fixed an issue on Windows where some websites using WebSerial to
+    flash device firmware could fail unexpectedly. (bmo#2040754)
+- Mozilla Firefox 151.0
+  * https://www.firefox.com/en-US/firefox/151.0/releasenotes/
+  MFSA 2026-46 (bsc#1265212)
+  * CVE-2026-8945 (bmo#2003171)
+    Sandbox escape in Firefox and Firefox Focus for Android
+  * CVE-2026-8946 (bmo#2029070)
+    Incorrect boundary conditions in the Audio/Video: Web Codecs
+    component
+  * CVE-2026-8947 (bmo#2038439)
+    Use-after-free in the DOM: Bindings (WebIDL) component
+  * CVE-2026-8948 (bmo#2038803)
+    Same-origin policy bypass in the DOM: Networking component
+  * CVE-2026-8949 (bmo#1355639)
+    Integer overflow in the Widget: Win32 component
+  * CVE-2026-8950 (bmo#1965430)
+    Same-origin policy bypass in the Networking: HTTP component
+  * CVE-2026-8951 (bmo#2018513)
+    Spoofing issue in the Toolbar component in Firefox for Android
+  * CVE-2026-8952 (bmo#2021727)
+    Privilege escalation in the Application Update component
+  * CVE-2026-8953 (bmo#2029511)
+    Sandbox escape due to use-after-free in the Disability Access
+    APIs component
+  * CVE-2026-8954 (bmo#2030747)
+    Incorrect boundary conditions, integer overflow in the
+    Audio/Video component
+  * CVE-2026-8955 (bmo#2031064)
+    Privilege escalation in the DOM: Workers component
+  * CVE-2026-8956 (bmo#2032427)
+    Integer overflow in the Networking: JAR component
+  * CVE-2026-8957 (bmo#2033850)
+    Privilege escalation in the Enterprise Policies component
+  * CVE-2026-8958 (bmo#2034713)
+    Information disclosure, sandbox escape in the Security:
+    Process Sandboxing component
+  * CVE-2026-8959 (bmo#2034754)
+    Sandbox escape due to incorrect boundary conditions in the
+    Widget: Win32 component
+  * CVE-2026-8960 (bmo#1940116)
+    Spoofing issue in WebExtensions
+  * CVE-2026-8961 (bmo#1962625)
+    Spoofing issue in the Form Autofill component
+  * CVE-2026-8962 (bmo#2004804)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-8963 (bmo#2021222)
+    Spoofing issue in the Web Speech component
+  * CVE-2026-8964 (bmo#2025170)
+    Spoofing issue in the Popup Blocker component
+  * CVE-2026-8965 (bmo#2025740)
+    Information disclosure in the DOM: Security component
+  * CVE-2026-8966 (bmo#2025849)
+    Information disclosure in the IP Protection component
+  * CVE-2026-8967 (bmo#2027173)
+    Information disclosure in the Graphics: WebGPU component
+  * CVE-2026-8968 (bmo#2030467)
+    Denial-of-service due to invalid pointer in the Audio/Video:
+    Web Codecs component
+  * CVE-2026-8969 (bmo#2031123)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-8970 (bmo#2032174)
+    Privilege escalation in the Security component
+  * CVE-2026-8971 (bmo#2032604)
+    Same-origin policy bypass in the Networking: JAR component
+  * CVE-2026-8972 (bmo#2033275)
+    Privilege escalation in the WebRTC: Audio/Video component
+  * CVE-2026-8973 (bmo#1362365, bmo#1860538, bmo#1929005, bmo#1983353,
+    bmo#1998526, bmo#2023271, bmo#2023943, bmo#2024244, bmo#2024260,
+    bmo#2024443, bmo#2024665, bmo#2024774, bmo#2024916, bmo#2025346,
+    bmo#2025357, bmo#2025406, bmo#2025434, bmo#2025488, bmo#2025496,
+    bmo#2025942, bmo#2025947, bmo#2025968, bmo#2026279, bmo#2027159,
+    bmo#2027239, bmo#2027276, bmo#2027308, bmo#2027310, bmo#2027324,
+    bmo#2027329, bmo#2027363, bmo#2027381, bmo#2027382, bmo#2027383,
+    bmo#2028274, bmo#2028884, bmo#2029060, bmo#2029065, bmo#2029068,
+    bmo#2029281, bmo#2029293, bmo#2029297, bmo#2029303, bmo#2029439,
+    bmo#2029448, bmo#2029703, bmo#2029720, bmo#2029721, bmo#2029723,
+    bmo#2029770, bmo#2029771, bmo#2029782, bmo#2029818, bmo#2029885,
+    bmo#2030100, bmo#2030379, bmo#2030385, bmo#2030979, bmo#2031119,
+    bmo#2031122, bmo#2034119, bmo#2034791, bmo#2035209, bmo#2036666,
+    bmo#2037986)
+    Memory safety bugs fixed in Firefox 151
+  * CVE-2026-8974 (bmo#1784128, bmo#1883230, bmo#1983677, bmo#2022390,
+    bmo#2023116, bmo#2023657, bmo#2024255, bmo#2024418, bmo#2024441,
+    bmo#2024447, bmo#2024966, bmo#2025412, bmo#2025467, bmo#2025940,
+    bmo#2025950, bmo#2025956, bmo#2026284, bmo#2027247, bmo#2027255,
+    bmo#2027288, bmo#2027306, bmo#2027322, bmo#2027332, bmo#2027333,
+    bmo#2028266, bmo#2028292, bmo#2028319, bmo#2028526, bmo#2028870,
+    bmo#2028876, bmo#2028882, bmo#2029062, bmo#2029309, bmo#2029414,
+    bmo#2029422, bmo#2029428, bmo#2029447, bmo#2029732, bmo#2029785,
+    bmo#2029793, bmo#2029813, bmo#2029899, bmo#2031028, bmo#2031457,
+    bmo#2032039, bmo#2033610, bmo#2033854, bmo#2034498, bmo#2034628,
+    bmo#2034978, bmo#2035966, bmo#2036668, bmo#2036905, bmo#2036930)
+    Memory safety bugs fixed in Firefox ESR 140.11 and Firefox 151
+  * CVE-2026-8975 (bmo#1860195, bmo#2029325, bmo#2029429,
+    bmo#2029910, bmo#2035915, bmo#2038669, bmo#2038678)
+    Memory safety bugs fixed in Firefox ESR 115.36, Firefox ESR
+    140.11 and Firefox 151
+- requires NSS 3.123.1
+- rebase big endian patches
+- added mozilla-bmo2041150.patch to fix build with libproxy (bmo#2041150)
+- removed obsolete mozilla-bmo531915.patch
+
+-------------------------------------------------------------------
 Thu May  7 20:51:57 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 150.0.2
