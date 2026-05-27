@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-wrapt
-Version:        2.1.2
+Version:        2.2.1
 Release:        0
 Summary:        A Python module for decorators, wrappers and monkey patching
 License:        BSD-2-Clause
@@ -29,7 +29,7 @@ BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 62.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -75,8 +75,9 @@ export CFLAGS="%{optflags}"
 
 %files %{python_files}
 %license LICENSE
-%doc README.md docs/changes.rst
+%doc README.md docs/changes.rst examples
 %{python_sitearch}/wrapt
+%{python_sitearch}/wrapt-stubs
 %{python_sitearch}/wrapt-%{version}.dist-info
 
 %changelog

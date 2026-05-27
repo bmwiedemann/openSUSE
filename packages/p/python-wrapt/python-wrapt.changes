@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 25 21:17:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.1:
+  * Reverted a regression in 2.2.0 affecting class attribute access
+    for built-in or C extension descriptors wrapped by @wrapt.decorator.
+- Update to 2.2.0:
+  * Added bind_state_to_wrapper (StateBindingWrapper) descriptor decorator.
+  * Added wrapt.lru_cache as a drop-in replacement for functools.lru_cache.
+  * Added support for deferred patching in wrap_function_wrapper.
+  * Added __self_dict__ to ObjectProxy.
+  * Extended synchronized to support async functions and async locks.
+
+-------------------------------------------------------------------
 Fri Mar 13 20:32:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.2:
