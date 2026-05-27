@@ -1,0 +1,1 @@
+/etc/shadowsocks(/.*)?    system_u:object_r:shadowsocks_config_t:s0

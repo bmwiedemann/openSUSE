@@ -1,0 +1,4 @@
+policy_module(shadowsocks_common, 1.0)
+
+type shadowsocks_config_t;
+files_config_file(shadowsocks_config_t)
