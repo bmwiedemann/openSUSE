@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 27 10:15:08 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- skip builds for python311, python311-xarray is not available 
+
+-------------------------------------------------------------------
 Wed Apr 15 07:12:36 UTC 2026 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Remove broken LicenseRef- typos

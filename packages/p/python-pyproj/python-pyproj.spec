@@ -16,6 +16,7 @@
 #
 
 
+%global skip_python311 1
 %{?sle15_python_module_pythons}
 Name:           python-pyproj
 Version:        3.7.2

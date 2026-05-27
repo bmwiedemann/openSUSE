@@ -298,4 +298,12 @@ My fault that the package failed Factory acceptance tests. I originally download
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1348714</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>674fe9a40f74e1b446f606352dfb6232</srcmd5>
+    <version>3.7.2</version>
+    <time>1779891651</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1355362</requestid>
+  </revision>
 </revisionlist>
