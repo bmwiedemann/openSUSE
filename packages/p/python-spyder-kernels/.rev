@@ -750,4 +750,13 @@
   * In this release 1 issue was closed.</comment>
     <requestid>1343504</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>d025955549d7dcaf419a21cae0079f92</srcmd5>
+    <version>3.1.4</version>
+    <time>1779896090</time>
+    <user>anag_factory</user>
+    <comment>- Don't test with xarray on python 3.11: not available 
+- Skip python314 for now: gh#spyder-ide/spyder-kernels#583</comment>
+    <requestid>1355399</requestid>
+  </revision>
 </revisionlist>

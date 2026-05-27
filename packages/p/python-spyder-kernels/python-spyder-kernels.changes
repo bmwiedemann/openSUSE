@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 27 14:24:43 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Don't test with xarray on python 3.11: not available 
+- Skip python314 for now: gh#spyder-ide/spyder-kernels#583
+
+-------------------------------------------------------------------
 Sun Mar 29 18:26:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.4:

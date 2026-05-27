@@ -18,6 +18,8 @@
 
 # flaky for obs, only test locally
 %bcond_with dasktest
+# https://github.com/spyder-ide/spyder-kernels/issues/583
+%global skip_python314 1
 Name:           python-spyder-kernels
 Version:        3.1.4
 Release:        0
@@ -55,7 +57,7 @@ BuildRequires:  %{python_module pyzmq >= 24}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module traitlets >= 5.14.3}
 BuildRequires:  %{python_module wurlitzer >= 1.0.3}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module xarray if %python-base >= 3.12}
 %if %{with dasktest}
 BuildRequires:  %{python_module dask-distributed}
 %endif
@@ -101,10 +103,11 @@ all inside the IDE.
 %check
 # no polars in openSUSE
 donttest="polars"
+python311_ignore="--ignore spyder_kernels/utils/tests/test_nsview.py"
 %if ! %{with dasktest}
 donttest+=" or test_dask_multiprocessing"
 %endif
-%pytest -k "not ($donttest)"
+%pytest -k "not ($donttest)" ${$python_ignore}
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
