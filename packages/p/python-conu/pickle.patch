@@ -1,0 +1,13 @@
+Index: conu-1.0.0/conu/utils/probes.py
+===================================================================
+--- conu-1.0.0.orig/conu/utils/probes.py
++++ conu-1.0.0/conu/utils/probes.py
+@@ -7,7 +7,7 @@
+ import time
+ import logging
+ 
+-from multiprocessing import Process, Queue
++from multiprocess import Process, Queue
+ 
+ from conu.exceptions import ConuException, CountExceeded, ProbeTimeout
+ 

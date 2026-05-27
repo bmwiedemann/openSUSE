@@ -1,7 +1,7 @@
 #
 # spec file for package python-conu
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ URL:            https://github.com/user-cont/conu
 Source:         https://files.pythonhosted.org/packages/source/c/conu/conu-%{version}.tar.gz
 # https://github.com/user-cont/conu/issues/390
 Patch0:         python-conu-no-six.patch
+# https://github.com/user-cont/conu/issues/395
+Patch1:         pickle.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -33,6 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-docker
 Requires:       python-flexmock
 Requires:       python-kubernetes >= 8
+Requires:       python-multiprocess
 Requires:       python-pytest
 Requires:       python-requests
 Recommends:     docker
@@ -42,6 +45,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module docker}
 BuildRequires:  %{python_module flexmock}
 BuildRequires:  %{python_module kubernetes >= 8}
+BuildRequires:  %{python_module multiprocess}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  acl
