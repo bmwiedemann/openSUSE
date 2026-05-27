@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 27 09:18:45 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 12.3.1:
+  * Add support for fractional timeout values. 
+  * Significantly improve framebuffer performance on some machines by
+    using the Write Combining caching mode via PAT and page tables on
+    x86-64/UEFI instead of MTRRs.
+  * Improve reliability of the MTRR framebuffer Write Combining path on
+    IA-32 (UEFI and BIOS).
+  * Fix x86(_64) Linux protocol loader miscompliance that could cause
+    boot failures on some setups showing an "invalid magic at start of
+    compressed archive" error.
+
+-------------------------------------------------------------------
 Fri May  8 20:36:46 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 12.2.0:
