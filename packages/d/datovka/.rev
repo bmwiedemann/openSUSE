@@ -710,4 +710,18 @@
   * Using bundled QuaZIP-1.5 when compiling with Qt-6.</comment>
     <requestid>1354641</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e53aa53b4b0f4b4a3952d60d914f66d2</srcmd5>
+    <version>4.29.2</version>
+    <time>1779891436</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.29.2
+  * Fixed error when sending ZIP attachments in regular messages from CLI
+    interface.
+  * Fixed an application crash when using a non-present username in CLI.
+  * Text notes can be assigned to messages. Notes are stored in the tag
+    database.
+- clean up the specfile from ancient stuff</comment>
+    <requestid>1355278</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@
 %define lrelease lrelease-qt5
 %endif
 Name:           datovka
-Version:        4.29.1
+Version:        4.29.2
 Release:        0
 Summary:        Library to access Czech eGov system "Datove schranky"
 License:        GPL-3.0-or-later
@@ -52,21 +52,12 @@ Recommends:     %{name}-lang
 # Included inside with different approach
 Obsoletes:      python-dslib
 %if 0%{qt_version} == 6
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt_version_full}
+Requires:       qt6-sql-sqlite
 BuildRequires:  qt6-tools-linguist
 %else
 BuildRequires:  libqt5-linguist
-%endif
-%if 0%{qt_version} == 6
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt_version_full}
-Requires:       qt6-sql-sqlite
-%else
 Requires:       libqt5-sql-sqlite
-%endif
-%if 0%{?suse_version} < 1330
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
 %endif
 
 %description
@@ -106,16 +97,6 @@ sed -i \
     -e 's:Office;:Office;Network;Email;:g' \
     %{buildroot}%{_datadir}/applications/datovka.desktop
 rm -rf %{buildroot}%{_datadir}/datovka/doc
-
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING
