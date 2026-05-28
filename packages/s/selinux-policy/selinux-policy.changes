@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 26 08:30:09 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260526:
+  * Dontaudit apcupsd dac_override (bsc#1261232)
+  * Allow virtqemud_t to call and transition into udev
+
+-------------------------------------------------------------------
 Fri May 22 11:01:00 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 20260522:
