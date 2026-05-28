@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 25 15:34:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.29:
+  * Handle malformed RFC 2231 continuations in
+    `parse_options_header` #270.
+
+-------------------------------------------------------------------
 Thu May 14 12:49:47 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.0.28 (CVE-2026-42561, bsc#1265250):

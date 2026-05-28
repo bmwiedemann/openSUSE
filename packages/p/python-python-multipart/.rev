@@ -158,4 +158,14 @@ Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and
   * Add multipart header limits by @Kludex in #267</comment>
     <requestid>1353179</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>67a4105395a8a23830e88a40b41cdf17</srcmd5>
+    <version>0.0.29</version>
+    <time>1780002452</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.0.29:
+  * Handle malformed RFC 2231 continuations in
+    `parse_options_header` #270.</comment>
+    <requestid>1355079</requestid>
+  </revision>
 </revisionlist>
