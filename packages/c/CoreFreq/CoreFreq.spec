@@ -25,6 +25,8 @@ URL:            https://github.com/cyring/CoreFreq
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      corefreqd.service
 Source101:      preamble
+# PATCH-FIX-UPSTREAM -- Commit 69b4a29
+Patch:          fix-leap16-compilation.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
@@ -41,7 +43,7 @@ AMD Families from 0Fh ... up to 17h (Zen , Zen+ , Zen 2), 18h (Hygon Dhyana),
 Arm A64; RISC-V RV64; PowerPC64 (LE)
 
 %prep
-%setup
+%autosetup -p1
 
 %build
 %make_build

@@ -1,0 +1,54 @@
+From 69b4a2941d3704342c2493f0993a089d8a8c5c6f Mon Sep 17 00:00:00 2001
+From: CyrIng <labs@cyring.fr>
+Date: Wed, 20 May 2026 18:44:53 +0200
+Subject: [PATCH] [Build][openSUSE] Fix WRMSRNS collision with Leap 16.0 kernel
+ headers (#594)
+
+---
+ x86_64/corefreq-cli-json.c | 2 +-
+ x86_64/corefreq-cli.c      | 4 ++--
+ x86_64/coretypes.h         | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/x86_64/corefreq-cli-json.c b/x86_64/corefreq-cli-json.c
+index fb5c4873..18f359c7 100644
+--- a/x86_64/corefreq-cli-json.c
++++ b/x86_64/corefreq-cli-json.c
+@@ -958,7 +958,7 @@ void JsonSysInfo(RO(SHM_STRUCT) *RO(Shm))
+ 					json_key(&s, "LKGS");
+ 					json_literal(&s, "%u", (unsigned) RO(Shm)->Proc.Features.ExtFeature_Leaf1_EAX.LKGS);
+ 					json_key(&s, "WRMSRNS");
+-					json_literal(&s, "%u", (unsigned) RO(Shm)->Proc.Features.ExtFeature_Leaf1_EAX.WRMSRNS);
++					json_literal(&s, "%u", (unsigned) RO(Shm)->Proc.Features.ExtFeature_Leaf1_EAX.WRMSRNS_INST);
+ 					json_key(&s, "AMX_FP16");
+ 					json_literal(&s, "%u", (unsigned) RO(Shm)->Proc.Features.ExtFeature_Leaf1_EAX.AMX_FP16);
+ 					json_key(&s, "HRESET");
+diff --git a/x86_64/corefreq-cli.c b/x86_64/corefreq-cli.c
+index 1bf567c0..5bcb82ce 100644
+--- a/x86_64/corefreq-cli.c
++++ b/x86_64/corefreq-cli.c
+@@ -2279,9 +2279,9 @@ REASON_CODE SysInfoISA( Window *win,
+ 	{
+ 		(unsigned int[]) { CRC_INTEL, 0 },
+ 		RSC(ISA_WRMSRNS).CODE(), RSC(ISA_WRMSRNS_COMM).CODE(),
+-		{ 0, RO(Shm)->Proc.Features.ExtFeature_Leaf1_EAX.WRMSRNS },
++		{ 0, RO(Shm)->Proc.Features.ExtFeature_Leaf1_EAX.WRMSRNS_INST },
+ 		(unsigned short[])
+-		{ RO(Shm)->Proc.Features.ExtFeature_Leaf1_EAX.WRMSRNS },
++		{ RO(Shm)->Proc.Features.ExtFeature_Leaf1_EAX.WRMSRNS_INST },
+ 	},
+ /* Row Mark */
+ 	{
+diff --git a/x86_64/coretypes.h b/x86_64/coretypes.h
+index c8cdb918..b8be90aa 100644
+--- a/x86_64/coretypes.h
++++ b/x86_64/coretypes.h
+@@ -1487,7 +1487,7 @@ typedef struct	/* Extended Feature Flags Enumeration Leaf 1		*/
+ 		Reserved2	: 17-13,
+ 		FRED		: 18-17, /* Flexible Return and Event Delivery*/
+ 		LKGS		: 19-18, /* Load Kernel GS segment register */
+-		WRMSRNS 	: 20-19, /* Sierra Forest, Grand Ridge	*/
++		WRMSRNS_INST	: 20-19, /* Sierra Forest, Grand Ridge	*/
+ 		NMI_SRC 	: 21-20, /* NMI-source reporting	*/
+ 		AMX_FP16	: 22-21, /* Granite Rapids		*/
+ 		HRESET		: 23-22, /* History Reset instruction	*/
