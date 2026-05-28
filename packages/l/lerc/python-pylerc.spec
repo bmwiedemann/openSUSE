@@ -29,6 +29,7 @@ Source0:        lerc-%{cversion}.tar.gz
 # PATCH-FEATURE-OPENSUSE: Use the system library instead of copying to the python sitelib
 Patch0:         pylerc-use-syslib.patch
 BuildRequires:  dos2unix
+BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
 BuildRequires:  lerc-devel
 BuildRequires:  %{python_module base >= 3.11}
@@ -37,7 +38,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module numpy >= 2.3.0}
 Requires:       python-numpy >= 2.3.0
-Requires:       %{lname}%{sover} = %{cversion}-%{release}
+Requires:       %{lname}%{sover} = %{cversion}
 BuildArch:      noarch
 %python_subpackages
 

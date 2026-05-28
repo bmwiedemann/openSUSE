@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 19 14:15:29 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing python-rpm-macros BR
+
+-------------------------------------------------------------------
+Wed Mar 25 15:04:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not pin the library to %release of the python bindings: those
+  are two independent builds (spec files) that do not share the
+  rebuild counter.
+
+-------------------------------------------------------------------
 Sat Mar 21 15:21:03 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Make the python package in a multibuild: Avoid build cycle
