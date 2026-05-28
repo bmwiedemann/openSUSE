@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 24 07:33:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (QTBUG-145344)
+  * 0001-Fix-AMD-VA-API-flickering-on-Wayland-by-allowing-mul.patch
+
+-------------------------------------------------------------------
+Thu May 14 14:56:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.1
+  https://www.qt.io/blog/qt-6.11.1-released
+  Based on Chromium version: 140.0.7339.264
+  Patched with security patches up to Chromium version: 148.0.7778.96
+
+-------------------------------------------------------------------
+Thu Mar 26 21:46:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update build dependencies
+
+-------------------------------------------------------------------
 Mon Mar 23 10:37:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0

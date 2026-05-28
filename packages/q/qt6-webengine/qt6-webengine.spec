@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.11.0
+%define real_version 6.11.1
 %define short_version 6.11
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -29,7 +29,7 @@
 %endif
 #
 # Private QML imports
-%global __requires_exclude qt6qmlimport\\((BrowserUtils|frequencymonitor|FrequencyMonitor|performancemonitor).*
+%global __requires_exclude qt6qmlimport\\((BrowserUtils|frequencymonitor|FrequencyMonitor|LifecycleUtils|performancemonitor).*
 #
 %if 0%{?suse_version} > 1500
 # The antique version in Leap 15 is too old for building chromium
@@ -48,6 +48,9 @@
 %{?sle15_python_module_pythons}
 %define pyver python311
 %endif
+%if 0%{?suse_version} >= 1699
+%bcond_without system_openh264
+%endif
 #
 # Note about required versions:
 # qtwebengine supports building against the latest LTS release. This (potentially) allows submitting
@@ -55,7 +58,7 @@
 %global lts_version 6.8.0
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.11.0
+Version:        6.11.1
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -63,6 +66,7 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
+Patch0:         0001-Fix-AMD-VA-API-flickering-on-Wayland-by-allowing-mul.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       QtWebEngine_6.8_skip_xnnpack.patch
@@ -87,25 +91,19 @@ BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel >= %{lts_version}
 BuildRequires:  qt6-gui-private-devel >= %{lts_version}
-BuildRequires:  qt6-qml-private-devel >= %{lts_version}
 BuildRequires:  qt6-quick-private-devel >= %{lts_version}
-BuildRequires:  qt6-quickwidgets-private-devel >= %{lts_version}
 BuildRequires:  qt6-widgets-private-devel >= %{lts_version}
 BuildRequires:  snappy-devel
 BuildRequires:  cmake(Qt6Core) >= %{lts_version}
 BuildRequires:  cmake(Qt6Designer) >= %{lts_version}
 BuildRequires:  cmake(Qt6Gui) >= %{lts_version}
-BuildRequires:  cmake(Qt6GuiTools) >= %{lts_version}
 # Only needed for tests, no need to have it
 # BuildRequires:  cmake(Qt6HttpServer)
 BuildRequires:  cmake(Qt6Network) >= %{lts_version}
 BuildRequires:  cmake(Qt6OpenGL) >= %{lts_version}
-BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{lts_version}
 BuildRequires:  cmake(Qt6Positioning) >= %{lts_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{lts_version}
 BuildRequires:  cmake(Qt6Qml) >= %{lts_version}
-BuildRequires:  cmake(Qt6QmlModels) >= %{lts_version}
-BuildRequires:  cmake(Qt6QmlTools) >= %{lts_version}
 BuildRequires:  cmake(Qt6Quick) >= %{lts_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{lts_version}
 BuildRequires:  cmake(Qt6QuickTest) >= %{lts_version}
@@ -115,10 +113,8 @@ BuildRequires:  cmake(Qt6WebChannel) >= %{lts_version}
 BuildRequires:  cmake(Qt6WebChannelQuick) >= %{lts_version}
 BuildRequires:  cmake(Qt6WebSockets) >= %{lts_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{lts_version}
-BuildRequires:  cmake(Qt6WidgetsTools) >= %{lts_version}
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
@@ -127,6 +123,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glproto)
 %if %{with system_harfbuzz}
 BuildRequires:  pkgconfig(harfbuzz) >= 4.3.0
+BuildRequires:  pkgconfig(harfbuzz-subset) >= 4.3.0
 %endif
 %if %{with system_icu}
 BuildRequires:  pkgconfig(icu-i18n) >= 71
@@ -138,44 +135,39 @@ BuildRequires:  pkgconfig(libavcodec) >= 60.31.102
 BuildRequires:  pkgconfig(libavformat) >= 60.16.100
 BuildRequires:  pkgconfig(libavutil) >= 58.29.100
 %endif
-BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libdrm)
-BuildRequires:  pkgconfig(libevent)
 %if %{with system_openjpeg2}
 BuildRequires:  pkgconfig(libopenjp2)
 %endif
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.10
 %if %{with system_tiff}
-BuildRequires:  pkgconfig(libtiff-4) >= 4.2.0
+BuildRequires:  pkgconfig(libtiff-4) >= 4.5.0
 %endif
-BuildRequires:  pkgconfig(libva)
+BuildRequires:  pkgconfig(libva) >= 1.14
 BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libwebpdemux)
+BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(nss) >= 3.26
+%if %{with system_openh264}
+BuildRequires:  pkgconfig(openh264) >= 2.4.1
+%endif
 BuildRequires:  pkgconfig(opus) >= 1.3.1
-BuildRequires:  pkgconfig(poppler-cpp)
-%if 0%{?suse_version} <= 1500
-BuildRequires:  pkgconfig(re2) < 11
-%else
-BuildRequires:  pkgconfig(re2)
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(re2) >= 11
 %endif
 BuildRequires:  pkgconfig(vpx) >= 1.10.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xdamage)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrandr)
-BuildRequires:  pkgconfig(xrender)
-BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xshmfence)
-BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
 # Chromium/blink don't support PowerPC and zSystems and build fails on
@@ -416,7 +408,9 @@ sed -e 's/cflags = \[\]/cflags = \[ \"-mno-outline-atomics\" \]/' -i ./src/3rdpa
 %if %{without system_openjpeg2}
   -DFEATURE_webengine_system_libopenjpeg2:BOOL=FALSE \
 %endif
-  -DFEATURE_webengine_system_libevent:BOOL=TRUE \
+%if %{with system_openh264}
+  -DFEATURE_webengine_system_openh264:BOOL=TRUE \
+%endif
   -DFEATURE_webengine_webrtc:BOOL=TRUE \
   -DFEATURE_webengine_webrtc_pipewire:BOOL=TRUE \
   -DQT_BUILD_EXAMPLES:BOOL=TRUE \
@@ -438,7 +432,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 
 # Only needed internally
-rm %{buildroot}%{_qt6_cmakedir}/Qt6/Find{Bindgen,QWELibClang,Rust}.cmake
+rm %{buildroot}%{_qt6_cmakedir}/Qt6/Find{QWEBindgen,QWELibClang,QWERust}.cmake
 
 # E: files-duplicated-waste
 %fdupes %{buildroot}%{_qt6_examplesdir}
