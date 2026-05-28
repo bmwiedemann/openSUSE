@@ -700,4 +700,14 @@ bsc#1007869) (CVE-2016-8706)</comment>
     <comment></comment>
     <requestid>1345699</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>87cc2399582f93e0af2e982c9e7fc47a</srcmd5>
+    <version>1.6.42</version>
+    <time>1779981836</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1354678 from pgajdos
+
+CVE-2026-47783, [bsc#1265873], CVE-2026-47784, [bsc#1265881]</comment>
+    <requestid>1355337</requestid>
+  </revision>
 </revisionlist>

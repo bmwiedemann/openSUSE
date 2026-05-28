@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 22 10:09:50 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 1.6.42:
+  * vendor: Instructively warn if vendor blob missing
+  * proxy: fix write length in extstore miss
+  * Fix timing side-channel in SASL password database authentication
+  * proto: fix signed overflow in bodylen for binprot
+  * proxy: fix underflow with 0 length values
+  * auth: fix data race during reload
+  * auth: fix crash when given huge token
+  * proto: fix crash in binary protocol
+  * core: fix crashes from slabs reassign
+  * proxy: check result of buffer parse in match_res
+  * proxy: fix memory underread when nulling requests
+  * update data block protocol description to no longer reference obsolete S flag
+- see https://github.com/memcached/memcached/wiki/ReleaseNotes1642 for details
+- fixes CVE-2026-47783 [bsc#1265873]
+        CVE-2026-47784 [bsc#1265881]
+
+-------------------------------------------------------------------
 Thu Apr  9 09:12:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.41:
