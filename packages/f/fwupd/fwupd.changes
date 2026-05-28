@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 26 02:16:40 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fwupd-bsc1217138-fallback-shim-path.patch to set the fallback
+  shim path for SUSE/openSUSE (bsc#1217138)
+
+-------------------------------------------------------------------
 Tue May 12 11:10:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.1.3:

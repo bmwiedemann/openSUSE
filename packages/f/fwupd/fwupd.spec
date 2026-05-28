@@ -50,6 +50,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://fwupd.org/
 Source:         %{name}-%{version}.tar.xz
+Patch1:         fwupd-bsc1217138-fallback-shim-path.patch
 
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes

@@ -1,0 +1,31 @@
+diff --git a/plugins/uefi-capsule/fu-uefi-bootmgr.c b/plugins/uefi-capsule/fu-uefi-bootmgr.c
+index 4e96a0b70..d6e2aa117 100644
+--- a/plugins/uefi-capsule/fu-uefi-bootmgr.c
++++ b/plugins/uefi-capsule/fu-uefi-bootmgr.c
+@@ -402,12 +402,20 @@ fu_uefi_bootmgr_bootnext(FuUefiCapsuleDevice *capsule_device,
+ 					return FALSE;
+ 			}
+ 		} else if (!g_file_test(shim_dst, G_FILE_TEST_EXISTS)) {
+-			g_set_error(error,
+-				    FWUPD_ERROR,
+-				    FWUPD_ERROR_NOT_FOUND,
+-				    "shim is required but was not found: %s",
+-				    shim_dst);
+-			return FALSE;
++			/* SUSE/openSUSE ship shim without an arch suffix */
++			g_autofree gchar *shim_dst_fallback =
++			    fu_uefi_capsule_device_build_efi_path(capsule_device, NULL, "shim.efi", NULL);
++			if (shim_dst_fallback == NULL ||
++			    !g_file_test(shim_dst_fallback, G_FILE_TEST_EXISTS)) {
++				g_set_error(error,
++					    FWUPD_ERROR,
++					    FWUPD_ERROR_NOT_FOUND,
++					    "shim is required but was not found: %s",
++					    shim_dst);
++				return FALSE;
++			}
++			g_free(shim_dst);
++			shim_dst = g_steal_pointer(&shim_dst_fallback);
+ 		}
+ 
+ 		/* shim chainloads fwupd */
