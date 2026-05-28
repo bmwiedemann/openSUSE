@@ -172,4 +172,98 @@
     <comment></comment>
     <requestid>964909</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>15082481e5b1022728469533830be0e3</srcmd5>
+    <version>0.7.2</version>
+    <time>1779981852</time>
+    <user>anag_factory</user>
+    <comment>- jsc#PED-14847: Remove unneeded dir /var/lib/sgml
+- Specfile cleanup
+  * Use %autosetup instead of %setup.
+  * List files in _bindir explicitly instead of globbing.
+- Trim whitespace in .changes file.
+- Create version 0.7.2
+- Ensure resulting file has proper SELinux context (#6)
+- Apply spec-cleaner
+- %post uses sed, so add `Requires(post): sed`.
+- Use pretty url
+- removed _service
+- Version 0.7.1 (bsc#1022632)
+  - Fixed handling of empty /etc/xml/catalog.d
+  - Fixed handling of hidden files in /etc/xml/catalog.d
+- Fix for bsc#1002759: change order in /etc/xml/catalog
+  Needed to make precedence of catalog-d.xml over older method
+  (suse-catalog.xml)
+- Improve specfile
+- Version 0.7:
+  - Move to GitHub
+  - Integrate:
+    -  sgml-skel-edit-cat.diff
+    -  sgml-skel-regcat.diff
+    -  sgml-skel-regcat2.diff
+    -  edit-xml-catalog.sh
+    -  install-catalog.in
+- only create suse-catalog.xml at installation time; not in the update case.
+- Add Requires(post): libxml2-tools for xmlcatalog.
+- %post: create %{_sysconfdir}/xml/suse-catalog.xml to avoid validation
+  errors if in case no other DTD is installed [bsc#936596].
+- remove '-e' option of 'echo' command in install-catalog script.
+  That option may be unsupported in some POSIX-complete shells
+- add automake as buildrequire to avoid implicit dependency
+- sgml-skel-edit-cat.diff: Edit catalog file in place; try to keep file
+  permissions.  Reported by Jörg Mayer [bnc#386791].
+- PreReq /bin/mv . Reported by Andreas Jaeger [#274128].
+- Fix debug code in edit-xml-catalog.  Reported by Andreas Hanke and
+  Dirk Mueller [# 237652].
+- Provide /etc/xml/catalog.
+- SuSEconfig.sgml-skel: Remove it.  It was required to solve on update
+  issue while introducing the /usr/share/xml hierarchy.  It is obsolete
+  now.
+- converted neededforbuild to BuildRequires
+- PreReq /bin/awk; reported by Marco Michna [# 94798].
+- Add %{_sysconfdir}/xml/suse-catalog.xml and mark it as %ghost.
+- Mark %{_sysconfdir}/sgml/catalog as %ghost and remove %pre.
+- cp used in %pre so add to PreReq:
+- edit-xml-catalog.sh: Drop dependency on getopt to avoid adding more
+  PreReqs in packages depending on sgml-skel.  Reported by Thorsten
+  Kukuk [# 44154].
+- building as non-root
+- Fix tei-xsl link.
+- Add svg-dtd links.
+- Correct resp. change some links; add tei-xsl-stylesheets.
+- Correct docbook-xsl-stylesheets related compat links.
+- Add links for mathml-dtd.
+- Also create docbook-xsl-stylesheets related compat links (FHS 2.3
+  related change).
+- Add SuSEconfig.sgml-skel: In case of an update provide compatibility
+  links.
+- autoreconf -i -f, so the --build arch switch detects ppc64.
+- Drop /usr/share/sgml from and add /etc/xml to %files.
+- Add option --group to build &lt;group&gt;...&lt;/group&gt; sections with id
+  attributes in catalog files.
+- Add option --catalog to allow editing arbitrary catalog files.
+- Add edit-xml-catalog.sh, a script for editing /etc/xml/catalog.
+- sgml-skel-regcat2.diff: Don't register catalogs twice.
+- Update to version 0.6:
+  * New script: sgml-register-catalog.
+- sgml-skel-regcat.diff: Remove subcatalog without checking unrelated
+  stuff.
+- /etc/sgml/catalog now belongs to this package; preserve backup in case
+  sgmltools-lite owns it at the same time.
+- Install install-catalog without suffix.
+- Add install-catalog.sh (from CVS:docbook-tools/sgml-common).
+- Update to version 0.5:
+  - New scripts: sgml2xmlcat.sh (re-written, replacement for
+    sgmlcat2x.sh) and parse-sgml-catalog.sh to normalized SGML Open
+    catalogs.
+- Add sgmlcat2x.sh to parse normalized traditional SGML catalog files.
+- Update to version 0.2 (now it's a proper package):
+  - Recognize ISO identifiers (additionally to '-//' and '+//' owner
+    tags).
+  - Handle language and version field.
+  - More error checking.
+- New package.
+</comment>
+    <requestid>1355376</requestid>
+  </revision>
 </revisionlist>

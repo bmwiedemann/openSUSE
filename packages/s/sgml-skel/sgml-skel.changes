@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 10 15:51:37 UTC 2026 - Yunus Acar <yunus.acar@suse.com>
+
+- jsc#PED-14847: Remove unneeded dir /var/lib/sgml
+- Specfile cleanup
+  * Use %autosetup instead of %setup.
+  * List files in _bindir explicitly instead of globbing.
+- Trim whitespace in .changes file.
+
+-------------------------------------------------------------------
 Fri Mar 25 16:07:19 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 0.7.2
 
 - Create version 0.7.2
@@ -18,7 +27,7 @@ Tue Jan 31 17:47:56 UTC 2017 - mpluskal@suse.com
 -------------------------------------------------------------------
 Tue Jan 31 16:12:56 UTC 2017 - sven-mario.seeberg-elverfeldt@suse.com
 
-- removed _service 
+- removed _service
 
 -------------------------------------------------------------------
 Tue Jan 31 15:31:16 UTC 2017 - sven-mario.seeberg-elverfeldt@suse.com
@@ -238,6 +247,3 @@ Mon Aug 27 08:27:12 CEST 2001 - ke@suse.de
 Thu Mar 22 11:40:41 CET 2001 - ke@suse.de
 
 - New package.
-
-
-

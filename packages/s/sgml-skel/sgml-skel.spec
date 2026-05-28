@@ -1,7 +1,7 @@
 #
 # spec file for package sgml-skel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,7 @@ BuildArch:      noarch
 These scripts will help prepare and maintain parts of an SGML system.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fiv
@@ -58,7 +58,6 @@ ln -sf install-catalog %{buildroot}%{_bindir}/install-catalog.sh
 ln -sf edit-xml-catalog %{buildroot}%{_bindir}/edit-xml-catalog.sh
 install -d -m755 %{buildroot}%{_datadir}/sgml
 install -d -m755 %{buildroot}%{_sysconfdir}/{sgml,xml}
-install -d -m755 %{buildroot}%{_localstatedir}/lib/sgml
 touch %{buildroot}%{_sysconfdir}/sgml/catalog
 xmlcatalog --noout --create %{buildroot}%{_sysconfdir}/xml/suse-catalog.xml
 xmlcatalog --noout --create %{buildroot}%{_sysconfdir}/xml/catalog
@@ -80,14 +79,22 @@ update-xml-catalog
 %dir %{_sysconfdir}/sgml
 %dir %{_sysconfdir}/xml
 %dir %{_sysconfdir}/xml/catalog.d
-%dir %{_localstatedir}/lib/sgml
 %license COPYING
 %doc AUTHORS ChangeLog README*
 %ghost %{_sysconfdir}/sgml/catalog
 %ghost %{_sysconfdir}/xml/suse-catalog.xml
 %ghost %{_sysconfdir}/xml/catalog-d.xml
 %config %verify(not md5 size mtime) %{_sysconfdir}/xml/catalog
-%{_bindir}/*
 %{_mandir}/man1/*
+%{_bindir}/edit-xml-catalog
+%{_bindir}/edit-xml-catalog.sh
+%{_bindir}/install-catalog
+%{_bindir}/install-catalog.sh
+%{_bindir}/install-dtd.sh
+%{_bindir}/parse-sgml-catalog.sh
+%{_bindir}/sgml-register-catalog
+%{_bindir}/sgml2xmlcat.sh
+%{_bindir}/sgmlcat2x.sh
+%{_bindir}/update-xml-catalog
 
 %changelog
