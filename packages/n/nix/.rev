@@ -240,4 +240,12 @@ support for software auditability among other things</comment>
   https://discourse.nixos.org/t/security-advisory-local-privilege-escalation-in-lix-and-nix/77407</comment>
     <requestid>1350935</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>2b0bf503ca7201952be8818e8a8350ce</srcmd5>
+    <version>2.34.7</version>
+    <time>1780002726</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1355644</requestid>
+  </revision>
 </revisionlist>

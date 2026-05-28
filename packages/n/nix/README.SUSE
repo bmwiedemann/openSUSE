@@ -1,0 +1,9 @@
+Important Security Update for Nix Users
+=======================================
+
+To improve system security, the `nix-daemon` socket is no longer globally accessible.
+
+You must now be a member of the `nix-users` group to interact with the Nix daemon.
+If you are receiving connection errors, please add your user to the group and log out/log back in:
+
+    sudo usermod -a -G nix-users <your_username>

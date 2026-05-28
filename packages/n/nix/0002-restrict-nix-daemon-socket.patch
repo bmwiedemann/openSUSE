@@ -1,0 +1,28 @@
+From: Eyad Issa <eyadlorenzo@gmail.com>
+Date: Wed, 27 May 2026 12:00:00 +0000
+Subject: [PATCH] Restrict access to nix-daemon socket and directory
+
+Restrict access to the nix-daemon UNIX domain socket and its parent
+directory to the 'nix-users' group. This reduces the local attack
+surface by making the Nix daemon API opt-in for authorized users.
+
+Fixes: bsc#1266366
+
+---
+--- a/misc/systemd/nix-daemon.socket.in
++++ b/misc/systemd/nix-daemon.socket.in
+@@ -5,6 +5,8 @@
+ 
+ [Socket]
+ ListenStream=@localstatedir@/nix/daemon-socket/socket
++SocketMode=0660
++SocketGroup=nix-users
+ 
+ [Install]
+ WantedBy=sockets.target
+--- a/misc/systemd/nix-daemon.conf.in
++++ b/misc/systemd/nix-daemon.conf.in
+@@ -1,2 +1,2 @@
+-d @localstatedir@/nix/daemon-socket 0755 root root -  -
++d @localstatedir@/nix/daemon-socket 0750 root nix-users -  -
+ d @localstatedir@/nix/builds        0755 root root 7d -

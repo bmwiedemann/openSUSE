@@ -19,11 +19,11 @@
 
 %global services nix-daemon.socket nix-daemon.service
 
-%bcond_with docs
-
 %if 0%{?suse_version} == 1500
 %global force_boost_version 1_75_0
 %endif
+
+%bcond_with docs
 
 Name:           nix
 Version:        2.34.7
@@ -34,8 +34,10 @@ URL:            https://nixos.org/
 Source:         https://github.com/NixOS/nix/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
 Source1:        nix.conf
 Source2:        sysusers.conf
+Source3:        README.SUSE
 Source9:        series
 Patch1:         0001-port-option-to-disable-functional-tests-to-meson.patch
+Patch2:         0002-restrict-nix-daemon-socket.patch
 BuildRequires:  bison
 BuildRequires:  boost-devel
 BuildRequires:  busybox-static
@@ -144,6 +146,7 @@ Fish command-line completion for the Nix package manager.
 
 %prep
 %autosetup -p1
+cp %{SOURCE3} .
 
 %build
 echo %{version} > .version
@@ -214,6 +217,11 @@ echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
 %tmpfiles_create %{_tmpfilesdir}/nix-daemon.conf
 %service_add_post %{services}
 %{ldconfig}
+%if "%{version}" == "2.34.7"
+# inform users about the restricted socket access
+mkdir -p %{_localstatedir}/adm/update-messages/
+cat %{_docdir}/nix/README.SUSE > %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-security
+%endif
 
 %postun
 %service_del_postun %{services}
@@ -222,7 +230,7 @@ echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
 %files
 %license COPYING
 %doc doc/manual/source/release-notes/rl-2.34.md
-%doc CONTRIBUTING.md README.md
+%doc CONTRIBUTING.md README.md README.SUSE
 # config files
 %config(noreplace) %{_sysconfdir}/nix/
 %config %{_sysconfdir}/profile.d/nix-daemon.fish
@@ -244,7 +252,7 @@ echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
 %ghost %dir %attr(755,root,root) /nix
 %ghost %dir %attr(755,root,root) /nix%{_localstatedir}
 %ghost %dir %attr(755,root,root) /nix%{_localstatedir}/nix
-%ghost %dir %attr(755,root,root) /nix%{_localstatedir}/nix/daemon-socket
+%ghost %dir %attr(750,root,nix-users) /nix%{_localstatedir}/nix/daemon-socket
 %ghost %dir %attr(755,root,root) /nix%{_localstatedir}/nix/builds
 # manual
 %if %{with docs}
