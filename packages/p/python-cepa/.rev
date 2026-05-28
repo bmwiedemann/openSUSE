@@ -47,4 +47,15 @@ When accepted to Factory, please, remove python-stem.</comment>
 - Stop skipping Python 3.12.</comment>
     <requestid>1228418</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>f3059d659c90113c98cc28609ebd7ce8</srcmd5>
+    <version>1.8.4</version>
+    <time>1779982445</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1355383 from DocB
+
+- build for python 3.14 disabled (test section timeout)
+    * see: https://github.com/onionshare/onionshare/issues/2077</comment>
+    <requestid>1355479</requestid>
+  </revision>
 </revisionlist>

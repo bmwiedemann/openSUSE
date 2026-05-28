@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 27 12:19:04 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- build for python 3.14 disabled (test section timeout)
+  * see: https://github.com/onionshare/onionshare/issues/2077
+
+-------------------------------------------------------------------
 Thu Dec  5 05:09:33 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch fix-assertions.patch:
