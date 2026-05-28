@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 14 14:54:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.1
+  https://www.qt.io/blog/qt-6.11.1-released
+- Drop patches, merged upstream:
+  * 0001-Do-not-persist-unicode-error-state-across-dirents.patch
+  * 0001-Ensure-custom-types-are-normalized.patch
+  * 0001-freetype-Handle-failing-glyph-rendering.patch
+
+-------------------------------------------------------------------
 Fri May  8 11:19:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix (QTBUG-145310, kde#518105):

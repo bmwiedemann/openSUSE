@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.11.0
+%define real_version 6.11.1
 %define short_version 6.11
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -33,7 +33,7 @@
 %bcond_without system_md4c
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.11.0
+Version:        6.11.1
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -42,9 +42,6 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-Do-not-persist-unicode-error-state-across-dirents.patch
-Patch1:         0001-Ensure-custom-types-are-normalized.patch
-Patch2:         0001-freetype-Handle-failing-glyph-rendering.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
@@ -872,6 +869,7 @@ EOF
     -DFEATURE_forkfd_pidfd:BOOL=FALSE \
     -DFEATURE_journald:BOOL=TRUE \
     -DFEATURE_libproxy:BOOL=TRUE \
+    -DFEATURE_mimetype_database:BOOL=TRUE \
     -DFEATURE_reduce_relocations:BOOL=FALSE \
     -DFEATURE_relocatable:BOOL=FALSE \
     -DFEATURE_system_sqlite:BOOL=TRUE \
