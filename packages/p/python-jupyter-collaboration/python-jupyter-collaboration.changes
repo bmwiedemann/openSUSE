@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu May 28 01:49:41 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.4.0 
+  ## New features added
+  * Make document provider pluggable #558 (@davidbrochart, @Copilot,
+    @SylvainCorlay, @krassowski, @martinRenou)
+  ## Enhancements made
+  * Side Panel: respect avatar_url #582 (@martinRenou, @brichet, @krassowski)
+  * Add create: bool argument to get_document() API #569 (@abbbe,
+    @Darshan808, @krassowski, @mediamead)
+  * Export editor facet to allow settings cursors from third party extensions
+    #562 (@brichet, @davidbrochart, @krassowski)
+  * Improve UX for reconnecting after server restart #548 (@Darshan808,
+    @davidbrochart, @krassowski)
+  * Use jupyter-ydoc's aget/aset #544 (@davidbrochart, @krassowski)
+  ## Bugs fixed
+  * Depend on IDocumentManager instead of fetching settings directly #574
+    (@jtpio, @krassowski)
+  * Fix content duplication when document room goes away #571 (@krassowski,
+    @Copilot, @SylvainCorlay, @davidbrochart)
+  * Fix the share button in the top area #570 (@jtpio, @brichet,
+    @davidbrochart)
+  * Skip redundant aset on out-of-band changes #556 (@jordanhboxer, @Hnasar,
+    @claude, @davidbrochart, @krassowski)
+  * Fix error handling on corrupted files #550 (@krassowski, @Copilot,
+    @davidbrochart)
+  ## Maintenance and upkeep improvements
+  * Align JupyterLab version in one more place #581 (@krassowski, @jtpio)
+  * Test using stable versions #580 (@krassowski, @brichet)
+  * Update to the newer check-jsonschema pre-commit hook #579 (@jtpio,
+    @krassowski)
+  * Update to TypeScript 5.9 #576 (@jtpio, @krassowski)
+  * Rename check release upload artifact #575 (@jtpio, @krassowski)
+  * Require Python 3.10, update classifiers #572 (@jtpio, @krassowski)
+  * Disable postinstall scripts #565 (@krassowski, @davidbrochart)
+  * Update httpx-ws >=0.9.0 #561 (@davidbrochart, @krassowski)
+  * Enable Ruff E, F, I rules and lint codebase #553 (@Darshan808,
+    @krassowski)
+  * Update snapshots after JupyterLab 4.5.6 release #551 (@krassowski,
+    @Darshan808)
+  * Disambiguate log messages #543 (@Carreau, @krassowski)
+
+-------------------------------------------------------------------
 Sun Mar 22 17:05:25 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.2.1

@@ -17,28 +17,28 @@
 
 
 Name:           python-jupyter-collaboration
-Version:        4.2.1
+Version:        4.4.0
 Release:        0
 Summary:        Jupyter Server Extension Providing Support for Y Documents
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/jupyter_collaboration
 Source:         https://github.com/jupyterlab/jupyter-collaboration/archive/refs/tags/v%{version}.tar.gz#/jupyter_collaboration-%{version}-gh.tar.gz
 Source99:       python-jupyter-collaboration.rpmlintrc
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling >= 1.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-jupyter-collaboration-ui >= 2.2.1 with python-jupyter-collaboration-ui < 3)
-Requires:       (python-jupyter-docprovider >= 2.2.1 with python-jupyter-docprovider < 3)
-Requires:       (python-jupyter-server-ydoc >= 2.2.1 with python-jupyter-server-ydoc < 3)
+Requires:       (python-jupyter-collaboration-ui >= 2.4.0 with python-jupyter-collaboration-ui < 3)
+Requires:       (python-jupyter-docprovider >= 2.4.0 with python-jupyter-docprovider < 3)
+Requires:       (python-jupyter-server-ydoc >= 2.4.0 with python-jupyter-server-ydoc < 3)
 Requires:       (python-jupyterlab >= 4.4.0 with python-jupyterlab < 5)
 Provides:       python-jupyter_collaboration = %{version}-%{release}
 Obsoletes:      python-jupyterlab-rtc < 1
 BuildArch:      noarch
-BuildRequires:  %{python_module jupyter-collaboration-ui >= 2.2.1 with %python-jupyter-collaboration-ui < 3}
-BuildRequires:  %{python_module jupyter-docprovider >= 2.2.1 with %python-jupyter-docprovider < 3}
-BuildRequires:  %{python_module jupyter-server-ydoc-test >= 2.2.1 with %python-jupyter-server-ydoc-test < 3}
+BuildRequires:  %{python_module jupyter-collaboration-ui >= 2.4.0 with %python-jupyter-collaboration-ui < 3}
+BuildRequires:  %{python_module jupyter-docprovider >= 2.4.0 with %python-jupyter-docprovider < 3}
+BuildRequires:  %{python_module jupyter-server-ydoc-test >= 2.4.0 with %python-jupyter-server-ydoc-test < 3}
 BuildRequires:  %{python_module jupyterlab > 4.4.0 with %python-jupyterlab < 5}
 BuildRequires:  %{python_module pycrdt}
 BuildRequires:  %{python_module pytest}

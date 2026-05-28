@@ -217,4 +217,41 @@
   * Bump JupyterLab packages to 4.5.0 #524 (@martinRenou)</comment>
     <requestid>1341874</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a04ce02cd05731d7ce1925b76b00bec4</srcmd5>
+    <version>4.4.0</version>
+    <time>1779982060</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.4.0 
+  ## New features added
+  * Make document provider pluggable #558 (@davidbrochart, @Copilot,
+    @SylvainCorlay, @krassowski, @martinRenou)
+  ## Enhancements made
+  * Side Panel: respect avatar_url #582 (@martinRenou, @brichet, @krassowski)
+  * Add create: bool argument to get_document() API #569 (@abbbe,
+    @Darshan808, @krassowski, @mediamead)
+  * Export editor facet to allow settings cursors from third party extensions
+    #562 (@brichet, @davidbrochart, @krassowski)
+  * Improve UX for reconnecting after server restart #548 (@Darshan808,
+    @davidbrochart, @krassowski)
+  * Use jupyter-ydoc's aget/aset #544 (@davidbrochart, @krassowski)
+  ## Bugs fixed
+  * Depend on IDocumentManager instead of fetching settings directly #574
+    (@jtpio, @krassowski)
+  * Fix content duplication when document room goes away #571 (@krassowski,
+    @Copilot, @SylvainCorlay, @davidbrochart)
+  * Fix the share button in the top area #570 (@jtpio, @brichet,
+    @davidbrochart)
+  * Skip redundant aset on out-of-band changes #556 (@jordanhboxer, @Hnasar,
+    @claude, @davidbrochart, @krassowski)
+  * Fix error handling on corrupted files #550 (@krassowski, @Copilot,
+    @davidbrochart)
+  ## Maintenance and upkeep improvements
+  * Align JupyterLab version in one more place #581 (@krassowski, @jtpio)
+  * Test using stable versions #580 (@krassowski, @brichet)
+  * Update to the newer check-jsonschema pre-commit hook #579 (@jtpio,
+    @krassowski)
+  * Update to TypeScript 5.9 #576 (@jtpio, @krassowski)</comment>
+    <requestid>1355499</requestid>
+  </revision>
 </revisionlist>
