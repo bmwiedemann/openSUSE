@@ -21,8 +21,8 @@ Version:        0.8.0
 Release:        0
 Summary:        FIDO2 WebAuthn support for django-otp
 License:        BSD-3-Clause
-URL:            None
-Source:         https://files.pythonhosted.org/packages/source/d/django-otp-webauthn/django_otp_webauthn-%{version}.tar.gz
+URL:            https://github.com/Stormbase/django-otp-webauthn
+Source:         https://files.pythonhosted.org/packages/source/d/django_otp_webauthn/django_otp_webauthn-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -55,6 +55,8 @@ to handle all cryptographic operations.
 # no unit tests to run, just some sandbox
 
 %files %{python_files}
+%license LICENSE
+%doc README.md CHANGELOG.md
 %{python_sitelib}/django_otp_webauthn
 %{python_sitelib}/django_otp_webauthn-%{version}.dist-info
 
