@@ -17,24 +17,25 @@
 
 
 Name:           python-django-coverage-plugin
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 Summary:        Django template coveragepy plugin
 License:        Apache-2.0
 URL:            https://github.com/nedbat/django_coverage_plugin
 Source:         https://github.com/nedbat/django_coverage_plugin/archive/v%{version}.tar.gz#/django_coverage_plugin-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django
+Requires:       python-Django >= 5
 Requires:       python-coverage >= 4.0
 Provides:       python-django_coverage_plugin = %{version}
 Obsoletes:      python-django_coverage_plugin < %{version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module Django >= 5}
 BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module unittest-mixins}
@@ -55,6 +56,8 @@ Django template coverage.py plugin
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# Required for Python 3.12+
+export COVERAGE_CORE=ctrace
 %pytest
 
 %files %{python_files}

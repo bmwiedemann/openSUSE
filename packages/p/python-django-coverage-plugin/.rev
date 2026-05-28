@@ -85,4 +85,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1329796</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>214819fb0e1d58e9f6211ee046fcc9dd</srcmd5>
+    <version>3.2.2</version>
+    <time>1779982076</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.2:
+  * Fix: {% endblock %} lines (and others) were falsely reported as
+    unexecuted when they appeared on their own indented line
+  * Dropped Django 3.x and 4.x.
+- Force ctrace to be the coverage core when running tests. (bsc#1266046)</comment>
+    <requestid>1355513</requestid>
+  </revision>
 </revisionlist>

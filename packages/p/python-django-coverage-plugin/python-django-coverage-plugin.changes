@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 28 05:35:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.2:
+  * Fix: {% endblock %} lines (and others) were falsely reported as
+    unexecuted when they appeared on their own indented line
+  * Dropped Django 3.x and 4.x.
+- Force ctrace to be the coverage core when running tests. (bsc#1266046)
+
+-------------------------------------------------------------------
 Thu Jan 22 09:31:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:
