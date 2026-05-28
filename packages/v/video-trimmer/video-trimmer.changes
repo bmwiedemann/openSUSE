@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 27 22:45:32 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 26.03.1:
+  * Fixed known cases of the trimmed video containing earlier
+    frames that only show up in some players (VLC, Firefox).
+- version 26.03:
+  * The default output filename now includes start and end
+    timestamps.
+  * Added command-line flags for start and end timestamps, precise
+    trimming, and removing audio.
+  * Increased the default window size to make the video 960×540.
+  * Updated to the GNOME 50 platform.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 30 19:33:39 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 25.03:
