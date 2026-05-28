@@ -16,14 +16,15 @@
 #
 
 
-%define distversion 2.2.1
+%define distversion 2.4
 Name:           python-jupyter-docprovider
-Version:        2.2.1
+Version:        2.4.0
 Release:        0
 Summary:        Jupyter extension integrating collaborative shared models
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/jupyter-collaboration
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_docprovider/jupyter_docprovider-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-jupyter-builder >= 0.5}
 BuildRequires:  %{python_module hatchling >= 1.4.0}
 BuildRequires:  %{python_module jupyterlab >= 4.0.0}
@@ -47,6 +48,7 @@ The collaborative shared models are used for both:
 Summary:        Jupyter extension providing collaboration
 Requires:       python3dist(jupyter-docprovider) = %{distversion}
 Suggests:       python3-docprovider = %{version}
+Provides:       jupyter-docprovider = %{distversion}
 
 %description -n jupyter-docprovider
 JupyterLab/Jupyter Notebook 7+ extension integrating collaborative shared models.

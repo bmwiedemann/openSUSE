@@ -50,4 +50,13 @@
   * Backport 'Fix mypy' #358 #361 (@brichet)</comment>
     <requestid>1339374</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bdea315b604272e2a07fb879bb4ac2b1</srcmd5>
+    <version>2.4.0</version>
+    <time>1779982055</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0
+  * New subpackage version for jupyter-collaboration 4.4.0</comment>
+    <requestid>1355497</requestid>
+  </revision>
 </revisionlist>
