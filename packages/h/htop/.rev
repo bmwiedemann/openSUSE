@@ -721,4 +721,17 @@
 - configure with --enable-taskstats to enable</comment>
     <requestid>1350761</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>445c4df0f355ac3825a47a94c78d62f8</srcmd5>
+    <version>3.5.1</version>
+    <time>1780002720</time>
+    <user>anag_factory</user>
+    <comment>Modernise spec file:
+- Drop deprecated %suse_update_desktop_file call and the
+  matching update-desktop-files BuildRequires (upstream ships
+  a valid desktop file already).
+- Add explicit BuildRequires on gcc and make - no longer
+  pulled in by the default OBS build root.</comment>
+    <requestid>1355641</requestid>
+  </revision>
 </revisionlist>

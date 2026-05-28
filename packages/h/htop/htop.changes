@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 28 13:33:49 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Modernise spec file:
+  * Drop deprecated %suse_update_desktop_file call and the
+    matching update-desktop-files BuildRequires (upstream ships
+    a valid desktop file already).
+  * Add explicit BuildRequires on gcc and make — no longer
+    pulled in by the default OBS build root.
+
+-------------------------------------------------------------------
 Mon May  4 16:17:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.1:

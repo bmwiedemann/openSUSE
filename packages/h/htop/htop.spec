@@ -26,9 +26,10 @@ Source0:        https://github.com/htop-dev/htop/archive/refs/tags/%{version}.ta
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
+BuildRequires:  gcc
 BuildRequires:  libsensors4-devel
+BuildRequires:  make
 BuildRequires:  pkgconfig >= 0.9.0
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(hwloc)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libnl-3.0)
@@ -58,7 +59,6 @@ better 'top' and requires ncurses.
 
 %install
 %make_install
-%suse_update_desktop_file -i %{name} System Monitor
 
 %files
 %license COPYING
