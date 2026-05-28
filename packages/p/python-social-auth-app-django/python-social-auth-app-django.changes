@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 28 07:37:35 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.9.0
+  * DjangoStrategy now lazily creates a session when initialized without
+    a request
+  * Removed legacy replaces metadata from historical squashed migrations
+  * Added async support to SocialAuthExceptionMiddleware
+  * Dropped support for Django 5.1
+
+-------------------------------------------------------------------
 Sun Apr  5 14:55:01 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.7.0

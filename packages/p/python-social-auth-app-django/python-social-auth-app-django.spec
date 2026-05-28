@@ -18,23 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-social-auth-app-django
-Version:        5.7.0
+Version:        5.9.0
 Release:        0
 Summary:        Python Social Authentication, Django integration
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python-social-auth/social-app-django
 Source:         https://files.pythonhosted.org/packages/source/s/social_auth_app_django/social_auth_app_django-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 5.1}
+BuildRequires:  %{python_module Django >= 5.2}
+BuildRequires:  %{python_module asgiref >= 3.8.1}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module social-auth-core >= 4.4.0}
+BuildRequires:  %{python_module social-auth-core >= 4.8.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 5.1
-Requires:       python-social-auth-core >= 4.4.0
+Requires:       python-Django >= 5.2
+Requires:       python-asgiref >= 3.8.1
+Requires:       python-social-auth-core >= 4.8.3
 BuildArch:      noarch
 %python_subpackages
 
