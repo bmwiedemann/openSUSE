@@ -598,4 +598,53 @@ This is the first openSUSE version to include gfio. gfio is in it's own package.
     <comment></comment>
     <requestid>1338760</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>f9e9366e6228da6731594cfa80aff26c</srcmd5>
+    <version>3.42</version>
+    <time>1779982080</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.42:
+  * New latency steady state detection
+    (steadystate=lat:&lt;usec&gt;) and explicit units in JSON
+    latency output.
+  * New end_syncfs option and DDIR_SYNCFS support added to
+    sync, libaio, io_uring, fallocate, fileoperations,
+    ftruncate, and posixaio engines.
+  * engines/io_uring: ZBD (zoned block device) support;
+    validate protection information on read; don't segfault
+    when pi_chk is not specified; add DDIR_SYNCFS support.
+  * engines/mmap: support fadvise_hint, fix offset&gt;0 logic
+    and full/limited prep logic on 32-bit.
+  * engines/rbd: LUKS encryption support.
+  * zbd: fix random-write zone selection and write zone
+    accounting; new write_zone_remainder option.
+  * Add option to specify ramp period by amount of IO.
+  * Add SPRandom cache size behaviour, new sprandom tests
+    and fixes.
+  * memory: CUDA 13 support.
+  * macOS: implement file cache invalidation and
+    posix_fadvise readahead control via msync/F_RDAHEAD.
+  * windows: fix Y2038 bug caused by 32-bit truncation.
+  * configure: new --extra-ldflags; conditional gnutls
+    requirement for libnfs &gt;= 6.0.0.
+  * backend: fix OOB access in usec_for_io() with DDIR_SYNC;
+    fix async ioengine prep/queue mismatch in experimental
+    verify; fix zero-numberio in dry-run.
+  * libfio/workqueue: fix crash and thread stall with
+    io_submit_mode=offload; fix stat_sem/rusage_sem deadlock
+    during stats collection.
+  * options: range validation for log_hist_coarseness;
+    additional POSIX errno support; fix heap-use-after-free
+    in ioengine_so_path.
+  * Many small fixes (musl build, mingw out-of-tree builds,
+    use-after-free in idle_prof_common, iolog leak on
+    thread cleanup, and others).
+- Spec cleanup:
+  * Drop obsolete Group tags.
+  * Add explicit BuildRequires: gcc, make (no longer in
+    the default buildroot).
+  * Update URL to https://github.com/axboe/fio (upstream
+    removed all references to git.kernel.dk in 3.42).</comment>
+    <requestid>1355527</requestid>
+  </revision>
 </revisionlist>

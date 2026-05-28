@@ -33,19 +33,20 @@
 %endif
 %bcond_without librdmacm
 Name:           fio
-Version:        3.41
+Version:        3.42
 Release:        0
 Summary:        Flexible I/O tester
 License:        GPL-2.0-only
-Group:          System/Benchmark
-URL:            https://git.kernel.dk/?p=fio.git;a=summary
+URL:            https://github.com/axboe/fio
 Source:         https://brick.kernel.dk/snaps/fio-%{version}.tar.bz2
 BuildRequires:  cunit-devel
+BuildRequires:  gcc
 BuildRequires:  gtk2-devel
 BuildRequires:  libaio-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libiscsi-devel
 BuildRequires:  libnbd-devel
+BuildRequires:  make
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -76,7 +77,6 @@ I/O performance information, such as completion and submission latencies
 
 %package -n gfio
 Summary:        Graphical front end for fio
-Group:          System/Benchmark
 Requires:       %{name} = %{version}
 
 %description -n gfio
@@ -106,7 +106,7 @@ sed -i "s|-O3|%{optflags}|g" Makefile
 rm %{buildroot}%{_bindir}/fio-histo-log-pctiles.py
 
 # fix rpmlint
-%python3_fix_shebang
+%{python3_fix_shebang}
 
 %check
 %make_build test
