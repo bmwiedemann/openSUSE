@@ -749,4 +749,31 @@
   - https://github.com/linux-rdma/rdma-core.git/releases/tag/v61.0</comment>
     <requestid>1325459</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>99f08b3a9c98ff16ff11095a326ce4cc</srcmd5>
+    <version>61.0</version>
+    <time>1774555637</time>
+    <user>anag_factory</user>
+    <comment>- switch to systemd_requires
+
+- Don't BuildRequire valgrind on loongarch64
+
+- skip valgrind on riscv64
+  No log of changes present (fate#321907).</comment>
+    <requestid>1342706</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>b8d344b3ec7c79bb2d9dd67b04176609</srcmd5>
+    <version>62.0</version>
+    <time>1780002507</time>
+    <user>anag_factory</user>
+    <comment>- use ldconfig_scriptlets
+- remove dependency on main package from libibverbs to avoid
+  systemd being pulled in by valkey
+
+- Update to rdma-core v62.0
+  - https://github.com/linux-rdma/rdma-core/releases/tag/v62.0
+- Fix bad link in v61.0 changelog entry</comment>
+    <requestid>1355308</requestid>
+  </revision>
 </revisionlist>

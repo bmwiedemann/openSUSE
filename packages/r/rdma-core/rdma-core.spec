@@ -30,9 +30,9 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 
-%define         git_ver .0.558104fc3
+%define         git_ver .0.31af04ec8
 Name:           rdma-core
-Version:        61.0
+Version:        62.0
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -99,7 +99,7 @@ BuildRequires:  libdrm-devel
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 %endif
-%ifnarch s390 s390x
+%ifnarch s390 s390x loongarch64
 %if 0%{?suse_version} >= 1550
 BuildRequires:  valgrind-client-headers
 %else
@@ -109,10 +109,11 @@ BuildRequires:  valgrind-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-route-3.0)
+%if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
+%{systemd_requires}
 Requires:       kmod
-Requires:       systemd
-Requires:       udev
+%endif
 Recommends:     rdma-ndd
 
 # SUSE previously shipped rdma as a stand-alone
@@ -213,7 +214,6 @@ RDMA core development libraries and headers.
 %package -n     libibverbs
 Summary:        Library & drivers for direct userspace use of InfiniBand/iWARP/RoCE hardware
 Group:          System/Libraries
-Requires:       %{name}%{?_isa} = %{version}-%{release}
 Obsoletes:      libcxgb4-rdmav2 < %{version}-%{release}
 Obsoletes:      libefa-rdmav2 < %{version}-%{release}
 Obsoletes:      libhfi1verbs-rdmav2 < %{version}-%{release}
@@ -547,38 +547,17 @@ for service in rdma rdma-ndd ibacm iwpmd srp_daemon; do ln -sf %{_sbindir}/servi
 rm -rf %{buildroot}/%{_initddir}/
 rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 
-%post -n %verbs_lname -p /sbin/ldconfig
-%postun -n %verbs_lname -p /sbin/ldconfig
-
-%post -n %efa_lname -p /sbin/ldconfig
-%postun -n %efa_lname -p /sbin/ldconfig
-
-%post -n %hns_lname -p /sbin/ldconfig
-%postun -n %hns_lname -p /sbin/ldconfig
-
-%post -n %ionic_lname -p /sbin/ldconfig
-%postun -n %ionic_lname -p /sbin/ldconfig
-
-%post -n %mana_lname -p /sbin/ldconfig
-%postun -n %mana_lname -p /sbin/ldconfig
-
-%post -n %mlx4_lname -p /sbin/ldconfig
-%postun -n %mlx4_lname -p /sbin/ldconfig
-
-%post -n %mlx5_lname -p /sbin/ldconfig
-%postun -n %mlx5_lname -p /sbin/ldconfig
-
-%post -n %umad_lname -p /sbin/ldconfig
-%postun -n %umad_lname -p /sbin/ldconfig
-
-%post -n %rdmacm_lname -p /sbin/ldconfig
-%postun -n %rdmacm_lname -p /sbin/ldconfig
-
-%post -n libibnetdisc%{ibnetdisc_major} -p /sbin/ldconfig
-%postun -n libibnetdisc%{ibnetdisc_major} -p /sbin/ldconfig
-
-%post -n libibmad%{mad_major} -p /sbin/ldconfig
-%postun -n libibmad%{mad_major} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %verbs_lname
+%ldconfig_scriptlets -n %efa_lname
+%ldconfig_scriptlets -n %hns_lname
+%ldconfig_scriptlets -n %ionic_lname
+%ldconfig_scriptlets -n %mana_lname
+%ldconfig_scriptlets -n %mlx4_lname
+%ldconfig_scriptlets -n %mlx5_lname
+%ldconfig_scriptlets -n %umad_lname
+%ldconfig_scriptlets -n %rdmacm_lname
+%ldconfig_scriptlets -n libibnetdisc%{ibnetdisc_major}
+%ldconfig_scriptlets -n libibmad%{mad_major}
 
 %pre
 # Avoid restoring outdated stuff in posttrans

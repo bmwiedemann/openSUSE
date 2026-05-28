@@ -1,8 +1,32 @@
 -------------------------------------------------------------------
+Mon May 18 07:39:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- use ldconfig_scriptlets
+- remove dependency on main package from libibverbs to avoid
+  systemd being pulled in by valkey
+
+-------------------------------------------------------------------
+Mon Apr 20 14:42:01 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to rdma-core v62.0
+  - https://github.com/linux-rdma/rdma-core/releases/tag/v62.0
+- Fix bad link in v61.0 changelog entry
+
+-------------------------------------------------------------------
+Tue Mar 24 10:00:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- switch to systemd_requires
+
+-------------------------------------------------------------------
+Tue Mar  3 07:40:12 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Don't BuildRequire valgrind on loongarch64
+
+-------------------------------------------------------------------
 Mon Jan 05 11:24:23 UTC 2026 - Nicolas Morey <nmorey@suse.com>
 
 - Update to rdma-core v61.0
-  - https://github.com/linux-rdma/rdma-core.git/releases/tag/v61.0
+  - https://github.com/linux-rdma/rdma-core/releases/tag/v61.0
 
 -------------------------------------------------------------------
 Mon Oct 27 09:00:01 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
@@ -148,7 +172,7 @@ Tue Sep 13 17:47:24 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@su
 -------------------------------------------------------------------
 Mon Aug  8 16:07:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- skip valgrind on riscv64 
+- skip valgrind on riscv64
 
 -------------------------------------------------------------------
 Tue Mar 29 07:32:26 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
@@ -774,7 +798,7 @@ Thu May  4 15:36:00 UTC 2017 - nmoreychaisemartin@suse.com
 Fri Apr 28 14:56:20 CEST 2017 - pth@suse.de
 
 - Update to git version fd1db488 as it now contains the bnxt drivr.
-  No log of changes present (fate#321907). 
+  No log of changes present (fate#321907).
 
 -------------------------------------------------------------------
 Wed Apr 26 09:36:50 UTC 2017 - fcrozat@suse.com
