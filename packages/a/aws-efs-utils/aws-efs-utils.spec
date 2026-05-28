@@ -73,7 +73,6 @@ This package provides utilities for using the EFS file systems.
 %prep
 %setup -n efs-utils-v%{version} -a1
 %patch -P 0 -p1
-find src/mount_efs src/watchdog -name "*.py" -exec sed -i 's/env python3/python3/' {} +
 %patch -P 1 -p1
 %patch -P 2
 %patch -P 3 -p1
@@ -102,15 +101,23 @@ mkdir -p %{buildroot}%{_mandir}/man8
 mkdir -p %{buildroot}%{_sysconfdir}/amazon/efs
 
 install -p -m 644 %{_builddir}/efs-utils-v%{version}/dist/efs-utils.conf %{buildroot}%{_sysconfdir}/amazon/efs
+install -p -m 644 %{_builddir}/efs-utils-v%{version}/dist/s3files-utils.conf %{buildroot}%{_sysconfdir}/amazon/efs
 install -p -m 444 %{_builddir}/efs-utils-v%{version}/dist/efs-utils.crt %{buildroot}%{_sysconfdir}/amazon/efs
 install -p -m 755 %{_builddir}/efs-utils-v%{version}/src/mount_efs/__init__.py %{buildroot}%{_sbindir}/mount.efs
+install -p -m 755 %{_builddir}/efs-utils-v%{version}/src/mount_s3files/__init__.py %{buildroot}%{_sbindir}/mount.s3files
 install -p -m 755 %{_builddir}/efs-utils-v%{version}/src/watchdog/__init__.py %{buildroot}%{_bindir}/amazon-efs-mount-watchdog
 install -p -m 644 %{_builddir}/efs-utils-v%{version}/man/mount.efs.8 %{buildroot}%{_mandir}/man8
+install -p -m 644 %{_builddir}/efs-utils-v%{version}/man/mount.s3files.8 %{buildroot}%{_mandir}/man8
+
+sed -i 's/env python3/python3/' %{buildroot}%{_sbindir}/mount.efs %{buildroot}%{_sbindir}/mount.s3files %{buildroot}%{_bindir}/amazon-efs-mount-watchdog
 
 mkdir -p %{buildroot}%{python_sitelib}/{efs_utils_common,mount_efs,mount_s3files}
 cp -r %{_builddir}/efs-utils-v%{version}/src/efs_utils_common/*.py %{buildroot}%{python_sitelib}/efs_utils_common
 cp -r %{_builddir}/efs-utils-v%{version}/src/mount_efs/*.py %{buildroot}%{python_sitelib}/mount_efs
 cp -r %{_builddir}/efs-utils-v%{version}/src/mount_s3files/*.py %{buildroot}%{python_sitelib}/mount_s3files
+rm -f %{buildroot}%{python_sitelib}/mount_{efs,s3files}/__init__.py
+
+find %{buildroot}%{python_sitelib}/{efs_utils_common,mount_efs,mount_s3files} -name "*.py" -exec sed -i '/#\!\/usr\/bin\/env python3/d' {} +
 
 %if 0%{?suse_version} <= 1500
 export RUSTFLAGS=" -C linker=/usr/bin/gcc-13"
@@ -140,13 +147,16 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %{_unitdir}/amazon-efs-mount-watchdog.service
 %{_sysconfdir}/amazon
 %config %{_sysconfdir}/amazon/efs/efs-utils.conf
+%config %{_sysconfdir}/amazon/efs/s3files-utils.conf
 %config %{_sysconfdir}/amazon/efs/efs-utils.crt
 %{_bindir}/efs-proxy
 %{_sbindir}/mount.efs
+%{_sbindir}/mount.s3files
 %{_bindir}/amazon-efs-mount-watchdog
 %{_sbindir}/rcamazon-efs-mount-watchdog
 %{_var}/log/amazon
 %{_mandir}/man8/mount.efs.8.gz
+%{_mandir}/man8/mount.s3files.8.gz
 %{python_sitelib}/efs_utils_common
 %{python_sitelib}/mount_efs
 %{python_sitelib}/mount_s3files

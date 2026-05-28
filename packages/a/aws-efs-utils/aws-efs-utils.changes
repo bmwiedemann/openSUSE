@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 27 14:16:22 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Enable support for mounting S3 buckets
+  * Install s3files-utils.conf into %{_sysconfdir}/amazon/efs
+  * Install mount_s3files/__init__.py as %{_sbindir}/mount.s3files
+  * Install mount.s3files.8 into %{_mandir}/man8
+- Remove shebang from non-executable Python files
+
+-------------------------------------------------------------------
 Tue May 26 13:31:13 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add python-rpm-macros to BuildRequires
