@@ -19,7 +19,7 @@
 
 %define tarname protobuf
 Name:           protobuf-java
-Version:        34.1
+Version:        34.2
 Release:        0
 Summary:        Java Bindings for Google Protocol Buffers
 License:        BSD-3-Clause

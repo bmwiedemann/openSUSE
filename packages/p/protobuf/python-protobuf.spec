@@ -17,7 +17,7 @@
 #
 
 
-%define baseversion 34.1
+%define baseversion 34.2
 %{?sle15_python_module_pythons}
 Name:           python-protobuf
 Version:        7.%{baseversion}
@@ -33,6 +33,7 @@ BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description

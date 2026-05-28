@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 23 19:15:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 34.2:
+  * Bazel: Remove unused dependency on aspect_bazel_lib
+  * C++: Workaround for attribute handling bug in gcc < 13
+  * upb: Avoid theoretical overflow of uintptr_t in AddAllLinkedExtensions
+  * Fixed two GCC-only issues around upb's generated extension registry
+
+-------------------------------------------------------------------
 Sat Mar 28 12:43:48 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 34.1:
