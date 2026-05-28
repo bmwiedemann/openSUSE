@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu May 28 07:56:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.100.0:
+  * Features
+    - 02f8ae0a: feat(api): expand Coding-Agent detection list (Sam
+      Wiskow swiskow@gitlab.com)
+    - 1f462ed8: feat(ci status): keep --live polling through
+      transient pipeline states (Kai Armstrong
+      karmstrong@gitlab.com)
+    - ae28d6dd: feat(issue): allow work_items URLs (Jay McCure
+      jmccure@gitlab.com)
+    - 35926816: feat(stack): add Body() method to StackRef and fix
+      subject/body parsing in MR creation (Gary Holtz
+      gholtz@gitlab.com)
+    - 4f5f192a: feat(stack): add glab stack infer command to create
+      stack layers from a commit range (Gary Holtz
+      gholtz@gitlab.com)
+    - ddf45787: feat(update): nudge is install-aware and
+      agent-aware (Sam Wiskow swiskow@gitlab.com)
+    - 0db2448f: feat: Introduce repo remote add <namespace/project>
+      command (Gabriel Mazzetto gabriel@gitlab.com)
+    - e6a25a75: feat: add detection for Gemini CLI (Isaac Dawson
+      idawson@gitlab.com)
+    - 1f49782a: feat: add global --jq flag for filtering JSON
+      output (Kai Armstrong karmstrong@gitlab.com)
+  * Bug Fixes
+    - b98561dc: fix(ci view): harden bridge/child-pipeline
+      navigation against crashes (Kai Armstrong
+      karmstrong@gitlab.com)
+    - 979568c6: fix(cmd): remove workaround (Filip Aleksic
+      faleksic@gitlab.com)
+    - 1aa323e5: fix(infer): build branch chain via cherry-pick with
+      conflict rollback (Gary Holtz gholtz@gitlab.com)
+    - 6fa36242: fix(pager): set LESS=FRX unless hyperlinks are
+      forced (Kai Armstrong karmstrong@gitlab.com)
+    - df2a507f: fix(test): align TestAcceptableZipFile path check
+      with friendlyPath output (Filip Aleksic faleksic@gitlab.com)
+    - 2deffd68: fix: update link for creating new legacy personal
+      access token (Evan Read eread@gitlab.com)
+  * Documentation
+    - 6270cd3d: docs: improve glab ci command docs 2 (Brendan Lynch
+      blynch@gitlab.com)
+    - 75ac9bce: docs: improve help text for glab cluster commands
+      (Brendan Lynch blynch@gitlab.com)
+    - 30fa9fd8: docs: update glab SKILL.md with comments section
+      and API content-type guidance (Thomas Schmidt
+      tschmidt@gitlab.com)
+  * Dependencies
+    - 6642b29e: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.31.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 08c5f240: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.32.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 9879b156: chore(deps): update versions (Filip Aleksic
+      faleksic@gitlab.com)
+  * Maintenance
+    - 38f97c78: chore(ci): improve check docs job (Filip Aleksic
+      faleksic@gitlab.com)
+    - 6c452a46: chore(code): remove dead code (Filip Aleksic
+      faleksic@gitlab.com)
+    - 4e80e10c: refactor: route command JSON output through
+      PrintJSON helper (Kai Armstrong karmstrong@gitlab.com)
+
+-------------------------------------------------------------------
 Thu May 21 05:22:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.99.0:
