@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed May 27 19:23:47 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 8.0.5:
+  * CVE-2026-45764: CRITICAL
+  * CVE-2026-45766: CRITICAL
+  * CVE-2026-45769: CRITICAL
+  * CVE-2026-45768: CRITICAL
+  * CVE-2026-46387: HIGH
+  * CVE-2026-45759: HIGH
+  * CVE-2026-45762: HIGH
+  * CVE-2026-45765: HIGH
+  * CVE-2026-45770: HIGH
+  * CVE-2026-46352: HIGH
+  * CVE-2026-45767: HIGH
+  * CVE-2026-45763: HIGH
+  * CVE-2026-45751: MODERATE
+  * CVE-2026-45752: MODERATE
+  * CVE-2026-45761: LOW
+  * All tickets available at:
+    https://redmine.openinfosecfoundation.org/versions/233
+- Implement security hardening and non-privileged execution:
+  * Implement static system user 'suricata' via sysuser-tools.
+  * Hardened systemd service
+  * Updated logrotate to use 'su suricata suricata'.
+  * Restricted permissions for /var/log/suricata and
+    /var/lib/suricata (0750).
+
+-------------------------------------------------------------------
 Fri Mar 20 00:33:27 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 8.0.4:

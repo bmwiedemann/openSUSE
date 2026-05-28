@@ -1,11 +1,12 @@
 /var/log/suricata/*.log /var/log/suricata/*.json
 {
+    su suricata suricata
     nocompress
     maxage 30
     rotate 99
     dateext
     missingok
-    create
+    create 0640 suricata suricata
     sharedscripts
     postrotate
             systemctl reload suricata.service

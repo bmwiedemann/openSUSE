@@ -1,9 +1,9 @@
 ## Path: Network/Security
 ## Description: suricata configuration
 ## Type: string(-i,-q,-l)
-## Default: ""
+## Default: "-c /etc/suricata/suricata.yaml -i eth0"
 ## ServiceRestart: suricata
 # Parameters for suricata. See the manual page for the
 # accepted parameters.
-SURICATA_OPTIONS=""
-
+# IMPORTANT: Use absolute paths as the service runs as a non-privileged user.
+SURICATA_OPTIONS="-c /etc/suricata/suricata.yaml -i eth0"

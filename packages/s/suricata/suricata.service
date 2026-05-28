@@ -5,16 +5,35 @@ After=network.target
 
 [Service]
 EnvironmentFile=-/etc/sysconfig/suricata
-ExecStart=/usr/bin/suricata -c /etc/suricata/suricata.yaml $SURICATA_OPTIONS
+User=suricata
+Group=suricata
+RuntimeDirectory=suricata
+RuntimeDirectoryMode=0750
+StateDirectory=suricata
+StateDirectoryMode=0750
+LogsDirectory=suricata
+LogsDirectoryMode=0750
+ExecStart=/usr/bin/suricata $SURICATA_OPTIONS
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW CAP_IPC_LOCK CAP_SYS_ADMIN CAP_SYS_RESOURCE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW CAP_IPC_LOCK CAP_SYS_ADMIN CAP_SYS_RESOURCE
+NoNewPrivileges=yes
 PrivateTmp=yes
 ProtectHome=yes
-ProtectSystem=yes
 ProtectSystem=full
 ProtectKernelTunables=yes
 ProtectControlGroups=yes
 ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_NETLINK AF_PACKET AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+LockPersonality=yes
+SystemCallFilter=@system-service @network-io @privileged @resources
+SystemCallErrorNumber=EPERM
 
 [Install]
 WantedBy=multi-user.target

@@ -17,7 +17,7 @@
 #
 
 
-%define soname 8_0_4
+%define soname 8_0_5
 
 # Handling libxdp support
 %if (0%{?suse_version} <= 1500) && (0%{?sle_version} <= 150500) && (0%{?is_opensuse})
@@ -48,7 +48,7 @@
 %endif
 
 Name:           suricata
-Version:        8.0.4
+Version:        8.0.5
 Release:        0
 Summary:        Open Source Next Generation Intrusion Detection and Prevention Engine
 License:        GPL-2.0-only
@@ -59,6 +59,7 @@ Source2:        https://www.openinfosecfoundation.org/downloads/OISF.pub#/%{name
 Source3:        suricata.service
 Source4:        suricata.sysconfig
 Source5:        suricata.logrotate
+Source6:        %{name}-user.conf
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  chrpath
@@ -69,6 +70,7 @@ BuildRequires:  python3-PyYAML
 BuildRequires:  python3-setuptools
 BuildRequires:  rust >= 1.63.0
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(hiredis)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libcap-ng)
@@ -89,6 +91,7 @@ Requires:       python3-PyYAML
 Requires(pre):  %fillup_prereq
 Recommends:     jq
 Recommends:     logrotate
+%sysusers_requires
 %{?systemd_requires}
 %if %{with libmagic}
     %if 0%{?suse_version} >= 1600
@@ -173,6 +176,7 @@ export HAVE_PYTHON=%{_bindir}/python3
 # --output-sync=none is needed to avoid GNU Make
 # buffering the entire cargo build output
 %make_build --output-sync=none
+%sysusers_generate_pre %{SOURCE6} %{name} %{name}-user.conf
 
 %install
 %make_install install-library install-headers
@@ -196,10 +200,10 @@ rm -rf %{buildroot}%{_libdir}/libsuricata*.a
 install -Dpm 0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
 install -Dpm 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -Dpm 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+install -Dpm 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcsuricata
-mkdir -p %{buildroot}%{_localstatedir}/log/suricata
 
 # fix RPATH in the binary
 chrpath --delete %{buildroot}%{_bindir}/suricata
@@ -212,13 +216,33 @@ find %{buildroot}%{_prefix}/lib/suricata/python -type f -name "*.py" \
 find %{buildroot}%{_prefix}/lib/suricata/python -type f -name "*.py" \
   -exec chmod a-x {} \;
 
-%pre
+%pre -f %{name}.pre
 %service_add_pre %{name}.service
 
 %post
 %service_add_post %{name}.service
 %fillup_only
-suricata-update
+# Migrate existing logs and libs to the new user if they exist
+if [ $1 -ge 1 ]; then
+    chown -R suricata:suricata %{_localstatedir}/log/suricata || :
+    chown -R suricata:suricata %{_localstatedir}/lib/suricata || :
+
+    # Notify the user about the security hardening only once
+    if [ ! -f %{_localstatedir}/lib/suricata/.migrated-to-nonroot ]; then
+        mkdir -p %{_localstatedir}/adm/update-messages
+        cat > %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release} << EOF
+Suricata has been hardened and now runs as a non-privileged 'suricata' user.
+Existing logs in %{_localstatedir}/log/suricata and data in %{_localstatedir}/lib/suricata
+have been migrated to the new user ownership.
+
+If you have custom rule files or configurations outside these directories,
+please ensure they are readable by the 'suricata' user.
+EOF
+        touch %{_localstatedir}/lib/suricata/.migrated-to-nonroot
+        chown suricata:suricata %{_localstatedir}/lib/suricata/.migrated-to-nonroot || :
+    fi
+fi
+suricata-update || :
 
 %preun
 %service_del_preun %{name}.service
@@ -241,16 +265,19 @@ suricata-update
 %dir %{_prefix}/lib/suricata/python
 %{_prefix}/lib/suricata/python/suricata/
 %{_datadir}/suricata*
-%dir %{_localstatedir}/log/suricata
+%dir %attr(0750,suricata,suricata) %{_localstatedir}/log/suricata
 %{_mandir}/man1/suricata.1%{?ext_man}
 %{_mandir}/man1/suricatasc.1%{?ext_man}
 %{_mandir}/man1/suricatactl.1%{?ext_man}
 %{_mandir}/man1/suricatactl-filestore.1%{?ext_man}
 
-%dir %{_localstatedir}/lib/suricata
+%dir %attr(0750,suricata,suricata) %{_localstatedir}/lib/suricata
 %{_unitdir}/%{name}.service
+%{_sysusersdir}/%{name}-user.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_fillupdir}/sysconfig.%{name}
+%ghost %{_localstatedir}/lib/suricata/.migrated-to-nonroot
+%ghost %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}
 
 %files -n libsuricata%{soname}
 %{_libdir}/libsuricata.so.*
