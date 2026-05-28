@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May 23 11:37:09 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.0.31:
+  * Update alternate formatting data for country calling code(s): 84
+  * Update phone metadata for region code(s):
+    AI, BO, DZ, ET, GE, GM, IN, TR, UG, VN
+  * Update short number metadata for region code(s): IT
+  * Update geocoding data for country calling code(s): 213 (en)
+  * Update carrier data for country calling code(s):
+    34 (en), 43 (en), 84 (en), 90 (en), 220 (en), 251 (en),
+    256 (en), 354 (en), 591 (en), 1264 (en)
+- includes changes from 9.0.30:
+  * Update alternate formatting data for country calling code(s): 91
+  * Update phone metadata for region code(s): CL, CZ, DE, IN, SG
+  * Update geocoding data for country calling code(s): 91 (en)
+  * Update carrier data for country calling code(s):
+    56 (en), 65 (en), 91 (en), 594 (en), 596 (en), 855 (en)
+
+-------------------------------------------------------------------
 Sun Apr 26 06:21:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.0.29:
