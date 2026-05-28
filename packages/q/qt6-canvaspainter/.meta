@@ -1,5 +1,6 @@
 <package name="qt6-canvaspainter" project="openSUSE:Factory">
   <title>Accelerated 2D painting solution for Qt Quick and QRhi-based render targets</title>
   <description>Accelerated 2D painting solution for Qt Quick and QRhi-based render targets.</description>
+  <devel project="KDE:Qt6" package="qt6-canvaspainter"/>
   <url>https://www.qt.io</url>
 </package>

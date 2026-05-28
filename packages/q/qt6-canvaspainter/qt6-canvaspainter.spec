@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.11.0
+%define real_version 6.11.1
 %define short_version 6.11
 %define short_name qtcanvaspainter
 %define tar_name qtcanvaspainter-everywhere-src
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\(GalleryExample\\)
 #
 Name:           qt6-canvaspainter%{?pkg_suffix}
-Version:        6.11.0
+Version:        6.11.1
 Release:        0
 Summary:        Accelerated 2D painting solution for Qt Quick and QRhi-based render targets
 License:        GPL-3.0-only
