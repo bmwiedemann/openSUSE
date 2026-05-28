@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May 28 02:26:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.13.4.8200
+  * Write support for r2004 (AC1018) DWG files. The encoder now
+    produces compressed, encrypted section headers and the
+    LZ77-compressed object data layout required since r2004.
+  * Split large object files (encode, decode) into 2 objects,
+    significantly reducing peak memory usage during compilation and
+    enabling parallel builds to scale better.
+  * dwgadd: handle fields (e.g. layer, ltype, style) can now be set
+    by table-record name in addition to raw handle references. A
+    string value like `line.layer = "FOO"` is resolved via
+    dwg_find_tablehandle() at parse time.
+  * Fix decompress_R2004_section buffer overflow
+    [CVE-2026-9501, CVE-2026-9502, CVE-2026-9529, CVE-2026-9530,
+    boo#1266377, boo#1266378, boo#1266380, boo#1266287]
+  * Fix dwg_next_entity NULL pointer dereference
+    [CVE-2026-9503, boo#1266379]
+  * Fix NULL pointer dereferences in DXF output for corrupted DWG
+    input [CVE-2026-9504, boo#1266321]
+  * decode: fix decompression overflow [CVE-2026-9605, boo#1266365]
+
+-------------------------------------------------------------------
 Fri Mar  1 19:29:26 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.13.3:

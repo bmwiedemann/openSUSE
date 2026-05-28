@@ -1,7 +1,7 @@
 #
 # spec file for package libredwg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %define lname	libredwg0
 Name:           libredwg
-Version:        0.13.3
+Version:        0.13.4.8200
 Release:        0
 Summary:        A library to handle DWG files
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/libredwg/
 #Git-Clone:	https://github.com/LibreDWG/libredwg/
-Source:         https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz
-Source2:        https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz.sig
-#Source:         https://github.com/LibreDWG/libredwg/releases/download/%version/libredwg-%version.tar.xz
+#Source:         https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz
+#Source2:        https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz.sig
+Source:         https://github.com/LibreDWG/libredwg/releases/download/%version/libredwg-%version.tar.xz
 Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=101103#/%name.keyring
 Source4:        %name-rpmlintrc
 BuildRequires:  pkg-config

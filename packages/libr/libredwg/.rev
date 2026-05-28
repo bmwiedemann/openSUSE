@@ -174,4 +174,20 @@
     <comment></comment>
     <requestid>1154169</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>01c4317e713c30ee8340a3f707ed93b5</srcmd5>
+    <version>0.13.4.8200</version>
+    <time>1779982068</time>
+    <user>anag_factory</user>
+    <comment>- Update to snapshot 0.13.4.8200
+  * Fix decompress_R2004_section buffer overflow
+    [CVE-2026-9501, CVE-2026-9502, CVE-2026-9529, CVE-2026-9530,
+    boo#1266377, boo#1266378, boo#1266380, boo#1266287]
+  * Fix dwg_next_entity NULL pointer dereference
+    [CVE-2026-9503, boo#1266379]
+  * Fix NULL pointer dereferences in DXF output for corrupted DWG
+    input [CVE-2026-9504, boo#1266321]
+  * decode: fix decompression overflow [CVE-2026-9605, boo#1266365]</comment>
+    <requestid>1355504</requestid>
+  </revision>
 </revisionlist>
