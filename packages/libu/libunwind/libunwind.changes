@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 25 14:27:25 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- Add fix-s390x-tests.diff (part of #1002) to fix endless loop on
+  s390x in Gtest-trace and Ltest-trace
+
+-------------------------------------------------------------------
 Mon Sep 22 11:06:05 UTC 2025 - Pedro Monreal Gonzalez <pmonreal@suse.com>
 
 - Update to 1.8.3:

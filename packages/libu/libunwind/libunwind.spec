@@ -40,6 +40,8 @@ Patch1:         dont-disable-documentation-without-latex2man.patch
 Patch2:         malloc-prototype.patch
 # PATCH-FIX-UPSTREAM https://github.com/libunwind/libunwind/commit/3705baed
 Patch3:         0001-Fix-unw_is_signal_frame-for-RISC-V.patch
+# PATCH-FIX-UPSTREAM https://github.com/libunwind/libunwind/pull/1002/changes/9e452a71ff7b3a91574bfba4340b5ee1ed7a4a80
+Patch4:         fix-s390x-tests.diff
 BuildRequires:  automake >= 1.14
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

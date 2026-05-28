@@ -468,4 +468,13 @@ Patches submitted to libunwind-devel.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1307780</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>87571da33920610366beeafd2b63f3ed</srcmd5>
+    <version>1.8.3</version>
+    <time>1779981820</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-s390x-tests.diff (part of #1002) to fix endless loop on
+  s390x in Gtest-trace and Ltest-trace (forwarded request 1355176 from cboltz)</comment>
+    <requestid>1355182</requestid>
+  </revision>
 </revisionlist>
