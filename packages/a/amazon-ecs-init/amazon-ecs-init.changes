@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu May 28 13:51:44 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.103.2
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/service/fsx from
+    1.53.1 to 1.65.10 in /agent (#4966)
+  * Enhancement - Add semgrep security scan for command injection (#4959)
+  * Enhancement - Bump golang.org/x/tools from 0.39.0 to 0.45.0 in
+    /ecs-agent (#4965), also updates x/net to 0.54.0 (bsc#1266652, CVE-2026-39821)
+  * Enhancement - Add integration test for credential refresher (#4961)
+  * Enhancement - Bump golang.org/x/tools from 0.42.0 to 0.45.0 in /agent (#4873)
+  * Enhancement - Update Go version to 1.25.10 (#4960)
+  * Enhancement - Bump go.etcd.io/bbolt from 1.3.9 to 1.4.3 in /ecs-agent (#4872)
+  * Enhancement - update credentials-fetcher retry comments/tests (#4954)
+  * Enhancement - Enhancement - Add retry mechanism to credentialsfetcher (#4948)
+  * Enhancement - Add IMDS credential refresher (#4953)
+  * Bugfix - fix flaky tests depending on timers (#4955)
+- from version 1.103.1
+  * Feature - Implement IMDS scanner for task credential retrieval,
+    in the shared library (#4945)
+  * Feature - Add config/capability for IMDS-based task credential retrieval
+    (disabled for now) (#4938)
+  * Feature - Add IMDS credential scanner interface and capability constant
+    for IMDS-based task credential retrieval (#4937)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs
+    from 1.47.3 to 1.65.0 in /agent (#4921)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/service/s3
+    from 1.63.1 to 1.97.3 in /ecs-init (#4923)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/service/s3
+    from 1.79.2 to 1.97.3 in /agent (#4924)
+  * Enhancement - Bump go.opentelemetry.io/otel/exporters/otlp/
+    otlptrace/ otlptracehttp from 1.32.0 to 1.43.0 in /agent (#4926)
+  * Enhancement - Truncate log values to make agent logs less verbose (#4940)
+- Drop CVE-2026-33814.patch, merged upstream
+
+-------------------------------------------------------------------
 Wed May 20 15:15:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add CVE-2026-33814.patch to fix hanging Transport in http2 code

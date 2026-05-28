@@ -18,7 +18,7 @@
 
 %define short_name amazon-ecs
 Name:           amazon-ecs-init
-Version:        1.103.0
+Version:        1.103.2
 Release:        0
 Summary:        Amazon EC2 Container Service Initialization
 License:        Apache-2.0
@@ -28,8 +28,6 @@ Source0:        https://github.com/aws/amazon-ecs-agent/archive/refs/tags/v%{ver
 Source1:        %{short_name}.service
 Source2:        amazon-ecs-init.tmpfiles
 Patch0:         reproducible.patch
-# PATCH-FIX-UPSTREAM - net: http2: prevent hanging Transport due to bad SETTINGS frame
-Patch1:         CVE-2026-33814.patch
 BuildRequires:  go  >= 1.25.9
 BuildRequires:  pkgconfig(systemd)
 # We cannot handle cross module dependencies properly, i.e. one module can
@@ -142,11 +140,6 @@ Amazon EC2.
 %prep
 %setup -q -n amazon-ecs-agent-%{version}
 %patch -P0 -p1
-# As ecs-init uses x/net/http2 via ecs-agent,
-# we have to patch the vulnerability there
-pushd ecs-agent/vendor/golang.org/x/net
-%patch -P1 -p1
-popd
 
 %build
 env
