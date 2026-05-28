@@ -1,4 +1,245 @@
 -------------------------------------------------------------------
+Sun May 24 06:32:33 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 1.4.1:
+  * Prepare version 1.4.1
+  * [Packaging] Mark macOS build as arm64 (part 2)
+  * [Packaging] Mark macOS build as arm64
+  * Sample Editor: prevent range, pitch, shift and reload tools to get stuck in 'deactivated' state when switching between scenes
+  * ChannelManager: always set pitch and range on Scene 0 for internal Preview Channel (fixes #788)
+  * Update FLTK to 1.4.5
+  * ActionRecorder: fix wrong logic in copyActions method (#790)
+  * ActionRecorder: fix wrong logic for clearing actions in channel (#789)
+  * Fix potential crash when loading a new project
+  * [Linux, CI] Add missing dependencies
+  * [Vcpkg] Set new baseline
+  * Update JUCE to version 8.0.12
+  * gePluginWindow: small UI tweaks
+  * gePluginParameter: use geFlex for layout
+  * Plugin: improve audio buffer copy robustness
+  * Plugin: fix wrong copy between audio buffers before processing audio
+  * Plugin: clear internal buffer on initialization
+  * Plugin: log more plug-in info on initialization
+  * Improve support for plug-ins with complex buses layout
+  * ChannelManager: DRY
+  * Revert scene status tu IDLE when transport stops (#783)
+  * Fix inability to play samples once removed from a scene (#786)
+  * Fix wrong Wave deletion when freeing a sample channel
+  * Remove obsolete 'export sample...' function
+  * Add ability to rename a channel in all scenes (#767)
+  * Fix invalid usage of Scene when creating invalid scene objects
+  * File browser: don't browse project folders (#784)
+  * Increase text contrast for inactive scene buttons
+  * Ability to undo a scene change when transport is running (2nd take) (#763)
+  * DRY
+  * Revert "Ability to undo a scene change when transport is running (#763)"
+  * Ability to undo a scene change when transport is running (#763)
+  * Bump version to 1.4.1
+  * Display inactive scenes (i.e. with no audio or actions) (#765)
+  * gePlayButton: optional text color for default state
+  * Encapsulate c::main::Scenes() object properties
+  * Remove unused private field
+  * Add ability to find actions by Scene (still unused)
+  * Avoid magic number
+  * Engine: prevent assertion on Sequencer::onSceneChanged
+  * Fix plugin browwer empty crash (#775)
+  * Remove debug std::cout
+  * Patch: fix wrong Action::scene type
+  * Update mcl-utils dependency
+  * channelFactory: avoid raw loop
+  * Fix 'save sample' feature with current scene taken into account
+  * API: remove unused code
+  * Update mcl-utils dep and remove useless casts
+  * PatchFactory: explicit conversion json -> std::size_t when constructing ID
+  * Fix G_INVALID_SCENE constant
+  * Scene: minor touches to isValid() method
+  * Add missing file
+  * Better encapsulation for Scene properties
+  * PatchFactory: brace-init ID object
+  * Replace ID alias with stronger mcl::utils::Id type
+  * Fix formatting
+  * Revert geChoice::ID type to 'int'
+  * [Refactor] Update mcl-utils and use vector.hpp -> container.hpp
+  * Replace std::size_t for scene with stronger type Scene
+  * Remove m::Channel::hasActions flag and updates all functions accordingly
+  * Don't read m::Channel::hasActions, always query dynamically
+  * Clean up unused methods and structs
+  * Fix logic for disabling 'free input rec' button, taking scenes into account
+  * Add TODO comment
+  * Persistence for scenes MIDI learnings (#762)
+  * model::MidiIn: default initialize scenes
+  * Add missing file
+  * MIDI bindings for scenes buttons
+  * MidiDispatcher: DRY - use local reference
+  * MidiDispatcher: turn Switch-case into if-else
+  * Fix includes in src/types.h
+  * [macOS] Make enumerate() work on Apple Clang
+  * geTabBindings: remove hardcoded string, use i18text label
+  * Fix clear keyboard bindings (#770)
+  * geKeyBinder: simplify setKey() method
+  * geKeyBinder: move assert in the right position
+  * geKeyBinder: DRY
+  * Add TODO comment
+  * Enable persistence for scene key bindings (#762)
+  * Add ability to bind keys to scene buttons (no persistence) (#762)
+  * Fix u::gui::keyToString() to print normal keys too
+  * geScenes: simplify code
+  * Enable scene switching via keyboard (bindings still hardcoded)
+  * Tracks: prevent local variable shadowing
+  * Update mcl-utils dependency
+  * appstream: Fix invalid markup
+  * Update changelog
+  * Minor tweak to some LangMapper labels
+  * update mcl-utils dependency
+  * Optimize imports
+  * DRY a couple of u::fs functions
+  * Use getConfigDirPath() from mcl-utils in u::fs::getConfigDirPath()
+  * Use join() from mcl-utils
+  * Use isValidFileName() from mcl-utils
+  * Use getUpDir() from mcl-utils
+  * Use stripFileUrl() from mcl-utils (alias of uriToPath())
+  * Use getExt() and stripExt() from mcl-utils
+  * Use basename() and dirname() from mcl-utils
+  * Use getRealPath() from mcl-utils
+  * Remove unused function u::fs::getCurrentPath()
+  * Use mkdir() from mcl-utils
+  * Remove unused function u::fs::isRootDir()
+  * Use fileExists(), dirExists() and isDir() from mcl-utils
+  * Update mcl-utils dependency
+  * Use string utils from mcl-utils
+  * Use vector utils from mcl-utils
+  * Utils: use std::size_t for index parameter in vector::atOr
+  * Remove silly second overload of u::vector::findIfSafe
+  * Remove silly u::vector::findIfSafe function
+  * Use sleep() from mcl-utils dep
+  * Fix non-existing include
+  * Add mcl-utils dependency and use it in place of u::utils::math
+  * Fix broken 'clear actions' submenu in MIDI channel
+  * Blink upcoming scene button
+  * UI: add playButton::blink() method
+  * Revert "UI, geMenu: allow for special FLTK chars in addItem() method"
+  * geSampleChannel: disable 'free' menu item if the channel has no Waves
+  * geMenu: assert if adding existing items
+  * geMenu: add private method to find item by ID recursively
+  * Fixup wrong channel menu IDs
+  * geMenu: ability to add proper sub-menus
+  * Remove unused include
+  * UI: improve 'Scene' button presentation
+  * UI: use gePlayButton as base class for geChannelButton
+  * UI: add new gePlayButton widget
+  * geScenes: avoid raw loop
+  * Keep track of scene status (idle or changing)
+  * Upgrade and pin libsndfile dependency to 1.2.2
+  * vcpkg.json: minor fixup
+  * Upgrade and pin rtmidi dependency to 6.0.0
+  * Remove extra ';'
+  * Upgrade and pin nlohmann-json dependency to 3.12.0
+  * Update and pin catch2 dependency to 3.11.0
+  * Upgrade and pin fmt dependency to 12.0.0
+  * [CI] Upgrade to macOS-14
+  * Channel: add ability to clear actions in this scene or all scenes
+  * Add ability to free a sample channel in the current scene or in all scenes
+  * u::vector: add new range() function
+  * Don't clear actions when free'ing a sample channel
+  * Enable 'copy to scene' operation also for Group Channels
+  * Add TODO comments
+  * [Refactor] Optimize some imports
+  * [Refactor] UI: simplify 'copy to scene' sub-menu creation for channels
+  * Fix wrong channel name when copying a sample channel to scene
+  * Change how scene is selected during Action advance
+  * [Refactor] Use switch-case in m::rendering::advanceMidiChannel()
+  * Sequencer: fix glitch on loops when changing scene
+  * [Tidy] Fix spacing
+  * SampleEditor: show scene number in title
+  * c::SampleEditor: remove unused private Data member
+  * UI: print scene number in Action Editor title
+  * Add new gdWindow::setTitle() method
+  * c::ActionEditor: add support for scenes
+  * Remove unused code from c::actionEditor
+  * Update JUCE to 8.0.10
+  * ChannelManager: delete all Waves from all scenes on deleteChannel()
+  * UI: enable 'copy to scene' command on channels
+  * geMenu: addItem() overload with support for text as std::string
+  * ChannelManager: don't overwrite an existing Wave when copying channel to scene
+  * ChannelManager: fix missing channel name on copy to scene
+  * ActionRecorder: fix wrong scene index when cloning actions
+  * F
+  * UI, geMenu: allow for special FLTK chars in addItem() method
+  * UI: beautify scene selector
+  * UI: always copy label in geTextButton
+  * UI: add optional padding to geTextButton
+  * Sequencer: fix scene selection when not running
+  * [Refactor] ChannelManager: remove unused dependency
+  * ChannelManager: fix cloneChannel() method
+  * API: add ability to copy channel to a certain scene (still unused)
+  * ActionRecorder: change return type of cloneActions() method
+  * [Refactor] ActionRecorder: remove unused code
+  * ActionRecorder: add new copyActionsToScene() method
+  * Add TODO comment
+  * Update geompp dependency
+  * [Refactor] DRY SampleChannel
+  * SampleChannel: rewrite setSample() method
+  * Update geompp dependency
+  * Fix initialization
+  * Add backward compatibility to projects created with Giada < 1.4.0
+  * Sequencer: early return in advance() when it's time to change scene
+  * Enable persistence for Patch::Action::scene member
+  * Swap model when the scene changes to update channels content
+  * Action playback with scene support
+  * Action recording with scene support
+  * Input recording with scene support
+  * Fix formatting
+  * SampleEditor: add support for invalid Wave data
+  * [Refactor] Use Sample struct in c::SampleEditor::Data
+  * Load sample in Sample Editor with scene support
+  * Implement 'shift' in Sample Editor API with scene support
+  * Implement channel clone with scene support
+  * UI: prevent glitches when switching scene and a sample is still playing
+  * Move 'pitch' to Sample struct
+  * Move 'shift' to Sample struct
+  * [Refactor] SampleChannel::loadWave() -> SampleChannel::loadSample()
+  * [Refactor] Channel::loadWave() -> Channel::loadSample()
+  * [Refactor] Add m::Channel::isActive() method
+  * Pass SceneArray<Sample> to SampleChannel during deserialization
+  * Channel: load names from Patch
+  * Use SceneArray as type for Patch::names to ease de-serialization
+  * Patch: remove unused 'range' value
+  * Print Sample info in Channel::debug()
+  * Move Sample struct declaration to src/types.h
+  * Store Channel waves in Patch
+  * Add new SceneArray alias template
+  * Multiple Channel names, one per scene
+  * [Refactor] Make Channel::name member private
+  * Show correct Wave according to current scene in Sample Editor
+  * UI: lit current scene button
+  * [Refactor] Better range+wave encapsulation with SampleChannel::Sample struct
+  * SampleChannel: add support for scenes in sample range
+  * [Refactor] Set SampleChannel::range member private
+  * Sequencer::setScene method
+  * Sequencer: make 'currentScene' atomic
+  * [Refactor] Sequencer::setScene -> forceScene
+  * [Refactor] scene -> currentScene
+  * Pass scene index to c::channel layer
+  * Let Reactor take care of scene change
+  * Enable sample rendering with scenes (raw)
+  * UI: add Scenes widget
+  * Ability to change scene via API (still unused)
+  * Initial support for scenes in ChannelManager (not used)
+  * Initial support for scenes in SampleChannel (not used)
+  * Bump version to 1.4.0
+  * Prepare release 1.3.1
+  * [Tidy] Modernize loop
+  * PluginManager: avoid copying invalide states while cloning plugins
+  * Update RtAudio to latest master + patch
+  * Patch: fix faulty Channel::range initialization
+  * Patch: add default values to all members
+  * PatchFactory: refactor modernize() function
+  * PatchFactory: split modernize() function into modernize() and sanitize()
+  * PatchFactory: don't reset pan for non-sample-channels
+  * KernelAudio: prevent assertion/crash if JACK has no sample rates available to choose from
+  * Plugin: fix parameter copy when cloning (#749)
+
+-------------------------------------------------------------------
 Wed Sep 24 13:06:53 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.3.0:
