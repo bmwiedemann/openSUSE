@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.11.0
+%define real_version 6.11.1
 %define short_version 6.11
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
@@ -33,7 +33,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.11.0
+Version:        6.11.1
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
