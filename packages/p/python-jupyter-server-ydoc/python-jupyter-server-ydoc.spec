@@ -25,14 +25,15 @@
 %bcond_with test
 %endif
 
-%define distversion 2.2.1
+%define distversion 2.4
 Name:           python-jupyter-server-ydoc%{psuffix}
-Version:        2.2.1
+Version:        2.4.0
 Release:        0
 Summary:        Jupyter server extension integrating collaborative shared models
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/jupyter-collaboration
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_server_ydoc/jupyter_server_ydoc-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling >= 1.4.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
