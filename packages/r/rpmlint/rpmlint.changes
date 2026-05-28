@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 28 07:04:01 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing python3-base BR
+
+-------------------------------------------------------------------
+Wed May 27 09:26:41 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Update to version 2.9.0+git20260526.25d1046c:
+  * zypper-plugins: added pqcverification-zypp-plugin whitelisting (bsc#1265207)
+
+-------------------------------------------------------------------
 Thu May 14 09:23:01 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.9.0+git20260514.3411f3eb:

@@ -23,7 +23,7 @@
 %define name_suffix -%{flavor}
 %endif
 Name:           rpmlint%{name_suffix}
-Version:        2.9.0+git20260514.3411f3eb
+Version:        2.9.0+git20260526.25d1046c
 Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ Source0:        rpmlint-%{version}.tar.xz
 Patch0:         disable-flake-and-cov.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
@@ -75,12 +76,10 @@ Requires:       python3-pyenchant
 Requires:       python3-python-magic
 Requires:       python3-pyxdg
 Requires:       python3-rpm
-%if 0%{?python3_version_nodots} < 311
-Requires:       python3-tomli
-%endif
 Requires:       python3-tomli-w
 Requires:       python3-zstandard
 Requires:       rpm-build
+Requires:       (python3-tomli if python-base < 3.11)
 %endif
 
 %description
