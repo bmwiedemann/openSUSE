@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu May 28 10:01:07 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.0.6:
+  Fixes
+  * FIX: unlock dialog re-prompting forever with the correct
+    password. A wrong-password attempt was poisoning the in-memory
+    key cache, so even the correct password kept being rejected until
+    the app was restarted (#448)
+  * FIX: auto-unlock via the system keyring stopped working after
+    upgrading from 4.x. On first launch, OTPClient now picks up the
+    old keyring entry, uses it to unlock, and re-saves it under the
+    new format so it keeps working (#448)
+  * FIX: Backup and Restore buttons in Settings did nothing on Ubuntu
+    24.04, Pop!_OS 24.04, Linux Mint 22.3, and other distros shipping
+    libadwaita 1.5 (#449)
+  * FIX: a revealed OTP could fall out of sync with the clipboard
+    near the end of a 30-second window, leaving you unsure which code
+    you actually pasted. Reveal now ends cleanly when the code
+    rotates, and the clipboard rolls to the new code if "Show next
+    OTP" is on (#450)
+  * FIX: "Hide OTPs by default" only took effect after restarting the
+    app. Toggling it now updates the visible list immediately (#450)
+  * FIX: re-clicking an already-selected token did nothing, so it
+    could not be copied or advance the HOTP counter a second time.
+    Re-clicks now re-trigger the copy and counter-advance action
+    (#451)
+  * FIX: window close/minimize/maximize buttons were forced to the
+    right side, ignoring the system setting. They now follow the
+    desktop's decoration layout, e.g. left-side buttons on macOS-
+    style KDE setups (#452)
+  * FIX: switching to a different database (sidebar click, Open DB,
+    or New DB) while an unlock was still in progress could corrupt
+    memory. The app now shows a toast and waits for the unlock to
+    finish
+  Improvements
+  * Saving the database after a fresh unlock is noticeably faster.
+    The password-derivation result is now cached on save just like on
+    unlock, so the first save no longer re-runs the slow key
+    derivation
+
+
+-------------------------------------------------------------------
 Thu May 21 07:55:45 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.0.5:
