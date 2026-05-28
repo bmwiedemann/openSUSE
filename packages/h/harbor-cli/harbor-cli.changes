@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May 28 08:08:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.22:
+  * fix(ci): preserve release dist during scoop update (#962)
+- Update to version 0.0.21:
+  * build(deps): bump robherley/go-test-action from 0.7.1 to 1.1.0
+    (#846)
+  * build(deps): bump github.com/go-openapi/strfmt from 0.26.1 to
+    0.26.2 (#888)
+  * build(deps): bump golang.org/x/text from 0.36.0 to 0.37.0
+    (#920)
+  * build(deps): bump github.com/sahilm/fuzzy from 0.1.1 to 0.1.2
+    (#919)
+  * build(deps): bump github.com/charmbracelet/x/ansi from 0.11.6
+    to 0.11.7 (#832)
+  * build(deps): bump golang.org/x/term from 0.42.0 to 0.43.0
+    (#921)
+  * fix: Pinning github actions to SHA (#827)
+  * feat: Add jobservice queue subcommand (#793)
+  * chore(login): improve password flag description for security
+    guidance (#855)
+
+-------------------------------------------------------------------
 Fri May 15 06:52:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.20:
