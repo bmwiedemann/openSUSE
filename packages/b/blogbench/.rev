@@ -42,4 +42,25 @@
 - Drop no longer relevant fix-rewriters-argcount.patch</comment>
     <requestid>1093971</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fac52168182435902dae43235f9c76d2</srcmd5>
+    <version>1.2</version>
+    <time>1779982001</time>
+    <user>anag_factory</user>
+    <comment>Modernise spec file:
+* Add explicit BuildRequires for gcc and make
+* Use %autosetup -p1 for idiomatic patch handling
+* Run %fdupes to hardlink identical doc files
+* Drop obsolete --with-largefile configure flag (no longer
+  recognised by autoconf)
+* Drop redundant --enable-dependency-tracking flag (only
+  affects autoconf leniency for old compilers; no effect
+  on modern gcc)
+* Drop minisign signature (blogbench-1.2.tar.bz2.minisig)
+  as it failed to validate; also drop the now-orphaned
+  blogbench.keyring
+
+Supersedes the declined SR#1355464.</comment>
+    <requestid>1355465</requestid>
+  </revision>
 </revisionlist>
