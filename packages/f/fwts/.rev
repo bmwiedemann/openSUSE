@@ -1342,4 +1342,26 @@
   * fwts_modprobe: Remove unused sys_finit_module() and sys_delete_module()</comment>
     <requestid>1354656</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>7b6d9253d30d68dc77cd983e4bea7d4c</srcmd5>
+    <version>26.05.00</version>
+    <time>1779982437</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 26.05.00:
+  * lib: fwts_version.h - update to V26.05.00
+  * debian: update changelog
+  * github: add stonking to github actions
+  * fwts-test: update disassemble-0001 reference files for ACPICA 20260408
+  * auto-packager: mkpackage.sh: add stonking
+  * ACPICA: Update to version 20260408
+- Spec cleanup:
+  * Replace Makefile.am sed hack with upstream --disable-werror
+    configure option (added in 26.03.00).
+  * Re-enable parallel build (verified building cleanly on
+    Tumbleweed/x86_64 in ~25 min vs ~92 min single-threaded).
+  * Add explicit BuildRequires: gcc, make.
+  * Use %{name} consistently in %files section.
+  * Quote %{ix86} arch macro in ExclusiveArch.</comment>
+    <requestid>1355624</requestid>
+  </revision>
 </revisionlist>

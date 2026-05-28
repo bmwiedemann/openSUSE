@@ -17,7 +17,7 @@
 
 
 Name:           fwts
-Version:        26.03.00
+Version:        26.05.00
 Release:        0
 Summary:        Firmware Test Suite
 License:        GPL-2.0-or-later
@@ -31,8 +31,10 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  gcc
 BuildRequires:  libfdt-devel
 BuildRequires:  libtool
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -45,7 +47,7 @@ Requires:       bash-completion
 Recommends:     acpica
 Recommends:     dmidecode
 Recommends:     pciutils
-ExclusiveArch:  %ix86 x86_64 aarch64 riscv64
+ExclusiveArch:  %{ix86} x86_64 aarch64 riscv64
 
 %description
 The FirmWare Test Suite (fwts) is a tool to do automatic testing of a PC's
@@ -59,12 +61,11 @@ issues.
 %autosetup -p1
 
 %build
-find . -name Makefile.am -exec sed -i "s|-Werror||g"  {} +
 autoreconf -fiv
 %configure \
-	--disable-static
-# parallel build fails on Factory
-%make_build --jobs=1
+	--disable-static \
+	--disable-werror
+%make_build
 
 %install
 %make_install
@@ -77,17 +78,17 @@ rm -f "%{buildroot}/%{_libdir}/%{name}"/*.so
 %files
 %doc README README_ACPICA.txt README_SOURCE.txt ./data/README_JSON.txt
 %doc debian/changelog
-%{_bindir}/fwts
+%{_bindir}/%{name}
 %{_bindir}/kernelscan
-%{_libdir}/fwts
+%{_libdir}/%{name}
 %{_mandir}/man1/fwts-collect.1%{?ext_man}
 %{_mandir}/man1/fwts-frontend-text.1%{?ext_man}
-%{_mandir}/man1/fwts.1%{?ext_man}
-%{_datadir}/bash-completion/completions/fwts
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_datadir}/bash-completion/completions/%{name}
 %dir %{_datadir}/%{name}
-%{_datadir}/fwts/clog.json
-%{_datadir}/fwts/klog.json
-%{_datadir}/fwts/syntaxcheck.json
-%{_datadir}/fwts/olog.json
+%{_datadir}/%{name}/clog.json
+%{_datadir}/%{name}/klog.json
+%{_datadir}/%{name}/syntaxcheck.json
+%{_datadir}/%{name}/olog.json
 
 %changelog
