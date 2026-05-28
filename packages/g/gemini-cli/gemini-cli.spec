@@ -17,7 +17,7 @@
 
 
 Name:           gemini-cli
-Version:        0.43.0
+Version:        0.44.0
 Release:        0
 Summary:        An AI agent that brings the power of Gemini directly into your terminal
 License:        Apache-2.0
@@ -58,7 +58,7 @@ install -d -m 0755 %{buildroot}%{_defaultdocdir}/gemini-cli
 cp -pr docs/* %{buildroot}%{_defaultdocdir}/gemini-cli/
 rm -rf docs
 install -d %{buildroot}%{_libexecdir}/gemini-cli
-cp -pr *.js builtin policies bundled node_modules %{buildroot}%{_libexecdir}/gemini-cli
+cp -pr *.js builtin policies bundled %{buildroot}%{_libexecdir}/gemini-cli
 install -d -m 0755 %{buildroot}%{_bindir}
 ln -s %{_libexecdir}/gemini-cli/gemini.js %{buildroot}%{_bindir}/gemini
 

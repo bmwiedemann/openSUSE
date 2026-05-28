@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Wed May 27 21:27:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.44.0:
+  * Refactor: Eliminate `no-unsafe-return` suppressions via
+    strict type validation
+  * Changelog for v0.43.0-preview.0
+  * feat(core): change agent registration to first-wins and
+    prioritize project
+  * feat(cli): merge Auto modes into a single Auto mode
+  * fix(core): preserve OAuth refresh tokens during rotation and
+    retrieval
+  * fix(cli): allow keychain auth for --list-sessions and non-
+    interactive mode
+  * fix(core): handle EISDIR on virtual drives in memory
+    discovery
+  * fix(cli): auto-approve shell redirections in AUTO_EDIT mode
+  * ci: suppress bot comments during standard triage maintenance
+  * fix(core): refresh MCP OAuth token usage after re-auth
+  * fix(ui): clamped table column widths
+  * fix(core): isolate subagent thread context
+  * chore: add execution permission to scripts/review.sh
+  * fix(core): made context files append instead of replace
+  * fix: add system PATH fallback for ripgrep resolution
+  * chore: clean up launched memory features
+  * fix(core): throttle shell text output and bound live UI
+    buffer
+  * fix(cli): don't crash when an @-mention captures a non-path
+    blob
+  * fix(core): ensure stable fallback for restricted preview
+    models
+  * feat(core): expose RAG snippets to local log file for
+    debugging
+  * fix(acp/auth): prevent conflicting credentials on enterprise
+    gateways and support optional API keys natively
+  * fix(core): respect NO_PROXY for network-based MCP servers
+  * fix(cli): resolve permission denied in sandbox on NixOS and
+    other distros
+  * fix(ui): preserve new line at the end of edit window
+  * fix(core): ensure Vertex AI sets hasAccessToPreviewModels and
+    remove aggressive 404 fallback revocation
+  * fix(core): ensure stable admin settings comparison across IPC
+    to prevent restart loop
+  * fix(deps): update vulnerable dependencies
+  * fix(core): resolve EISDIR errors during file processing
+  * docs(extensions): clarify env var sanitization policy for MCP
+    and ext…
+  * fix(ui): add ENAMETOOLONG and ENOTDIR to exceptions for file
+    parsing errors
+  * fix(cli): explicitly clear entrypoint when spawning sandbox
+    container
+  * docs: update sandbox image command
+  * fix(core): externalize https-proxy-agent to fix proxy support
+  * security: update dependencies to fix critical and high
+    vulnerabilities
+  * Fix/web fetch ctrl c abort
+  * fix(core): add aliases and thinking config for gemini-3.1
+    models
+  * fix(core): use hasAccessToPreview for auto model resolution
+    and fix disappearing models
+  * feat(core): add adk.agentSessionSubagentEnabled flag
+  * fix(core): enforce compile-time exhaustiveness in content-
+    utils
+  * feat(skills): add agent-tui and tui-tester skills
+  * fix(context): Fix snapshot recovery across sessions.
+  * fix(core): add unit tests for stableStringify
+  * fix(core): prefer pwsh.exe over Windows PowerShell 5.1
+  * feat(core): add LocalSessionInvocation
+  * refactor: decouple auto model description and configuration
+    from releaseChannel
+  * fix(core): prevent isBinary false-positive on Windows PTY
+    streams
+  * fix(cli): Prevent unmapped keys in Vim Normal mode from
+    inserting text into prompt Input.
+  * fix(a2a-server): Implement default policy loading for parity
+    with CLI
+  * feat(core): add RemoteSessionInvocation
+  * fix: allow configured MCP servers in non-interactive mode
+  * fix(core): add exception handling to migrateFromFileStorage
+  * fix(cli): bundle ink worker-entry.js
+  * feat(core): wire AgentSession invocations into agent-tool
+  * fix(core): prevent path traversal in custome command file
+    injection
+  * fix(core): respect NO_PROXY in global fetch dispatcher
+  * fix(core): correctly handle nullable array types in MCP tools
+  * fix(cli): preserve proxy-agent named exports in ESM bundle
+  * Proposal: deterministic encoding for child-process I/O
+  * feat(cli): add Sublime Text and Emacs Client editors, improve
+    error messages and documentation
+  * Changelog for v0.43.0-preview.1
+  * fix(devtools): bundle devtools package to avoid resolution
+    errors
+  * fix(cli): integrate PolicyEngine into ACP session to prevent
+    deadlocks
+  * fix: robust ripgrep path resolution and 1p hermetic execution
+    support
+  * refactor: decouple stored session deletion from
+    ChatRecordingService
+  * fix(core): improve Alpine shell compatibility
+  * fix(core): generalize MCP compliance fix for tool results
+  * fix(scripts): scrub CI env vars in dev to keep interactive
+    mode
+  * fix(core): Added date field for the GCal MCP
+  * fix(core): centralize path validation to prevent crashes from
+    malformed prompts
+  * fix(core): prevent SIGHUP kills in PTY environments
+    (WSL2/Kitty/Alacritty)
+  * fix(core): dynamic fallback routing for exhausted quota
+    models
+  * Auto detect pnpm global installation path for macOS and
+    Windows
+  * fix(windows): resolve interactive shell arrow-key navigation
+    on Windows
+  * ci: robust stale issue lifecycle and consolidated triage
+    labels
+  * fix(context): Ensure last message is processed.
+  * chore/release: bump version to
+    0.44.0-nightly.20260521.g57c42a5c4
+  * fix(ui): added volta to auto update check
+  * perf: optimize issue triage and lifecycle management
+
+-------------------------------------------------------------------
 Sat May 23 18:07:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.43.0:

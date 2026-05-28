@@ -646,4 +646,41 @@
   * Changelog for v0.42.0-preview.0</comment>
     <requestid>1354870</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f72b82264b917b1081f3ccc61693ba5d</srcmd5>
+    <version>0.44.0</version>
+    <time>1779982038</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.44.0:
+  * Refactor: Eliminate `no-unsafe-return` suppressions via
+    strict type validation
+  * Changelog for v0.43.0-preview.0
+  * feat(core): change agent registration to first-wins and
+    prioritize project
+  * feat(cli): merge Auto modes into a single Auto mode
+  * fix(core): preserve OAuth refresh tokens during rotation and
+    retrieval
+  * fix(cli): allow keychain auth for --list-sessions and non-
+    interactive mode
+  * fix(core): handle EISDIR on virtual drives in memory
+    discovery
+  * fix(cli): auto-approve shell redirections in AUTO_EDIT mode
+  * ci: suppress bot comments during standard triage maintenance
+  * fix(core): refresh MCP OAuth token usage after re-auth
+  * fix(ui): clamped table column widths
+  * fix(core): isolate subagent thread context
+  * chore: add execution permission to scripts/review.sh
+  * fix(core): made context files append instead of replace
+  * fix: add system PATH fallback for ripgrep resolution
+  * chore: clean up launched memory features
+  * fix(core): throttle shell text output and bound live UI
+    buffer
+  * fix(cli): don't crash when an @-mention captures a non-path
+    blob
+  * fix(core): ensure stable fallback for restricted preview
+    models
+  * feat(core): expose RAG snippets to local log file for
+    debugging</comment>
+    <requestid>1355482</requestid>
+  </revision>
 </revisionlist>
