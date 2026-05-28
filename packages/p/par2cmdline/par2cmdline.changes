@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu May 28 08:31:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.1.1:
+  * Cleanup/std namespace search replace oops
+  * Migrate Windows unit tests to Visual C++ projects
+  * Fix garbled error message on Windows
+  * Integer definitions consistency
+- Changes from version 1.1.0:
+  * Replace deprecated sprintf with snprintf
+  * Fix memory leak
+  * Add thread guards in diskfile
+  * Show defaults in help output and man page
+  * Create symlinks for the long form manpages as well
+  * Add rename-only mode (POC)
+  * Remove use of "using namespace std"
+  * Windows unicode issues / Windows integration testing
+  * diskfile CreateParentDirectory respects rootpath behaviour
+  * Fix symbolic links as primary file
+  * Remove obsolete autoconf macro AC_HEADER_STDC
+  * Update COPYING with the latest GPL v2 license
+- Package man page symlinks (par2create.1, par2repair.1,
+  par2verify.1) shipped by upstream since 1.1.0.
+- Switch to %autosetup, drop obsolete chmod -x of text files
+  (upstream tarball now ships them without +x).
+- Drop obsolete Group: tag; add explicit BuildRequires: make.
+
+-------------------------------------------------------------------
 Sat Sep 13 03:54:12 UTC 2025 - anenasa <anenasaa@yahoo.com>
 
 - Update to version 1.0.0:

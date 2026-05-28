@@ -1,7 +1,7 @@
 #
 # spec file for package par2cmdline
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           par2cmdline
-Version:        1.0.0
+Version:        1.1.1
 Release:        0
 Summary:        A PAR 2.0 compatible file creation, verification, and repair tool
 License:        GPL-2.0-or-later
-Group:          Productivity/Archiving/Backup
 URL:            https://github.com/Parchive/par2cmdline
 Source:         https://github.com/Parchive/par2cmdline/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
+BuildRequires:  make
 # The following 2 provides/obsoletes lines have been added becase at one point
 # the 'par' package was updated to use the 'par2cmdline' sources. Any package
 # that depends on 'par' version 0.8.0 should actually depend on 'par2cmdline'
@@ -39,9 +39,7 @@ par2cmdline is a program for creating and using PAR2 files to detect damage in
 data files and repair them if necessary. It can be used with any kind of file.
 
 %prep
-%setup -q
-# Remove executable permission from text files
-chmod -x ChangeLog configure.ac INSTALL Makefile.am NEWS stamp-h.in
+%autosetup -p1
 
 %build
 %configure
@@ -54,12 +52,15 @@ chmod -x ChangeLog configure.ac INSTALL Makefile.am NEWS stamp-h.in
 %make_build check
 
 %files
-%doc AUTHORS ChangeLog README.md
 %license COPYING
+%doc AUTHORS ChangeLog README.md
 %{_bindir}/par2
 %{_bindir}/par2create
 %{_bindir}/par2repair
 %{_bindir}/par2verify
 %{_mandir}/man1/par2.1%{?ext_man}
+%{_mandir}/man1/par2create.1%{?ext_man}
+%{_mandir}/man1/par2repair.1%{?ext_man}
+%{_mandir}/man1/par2verify.1%{?ext_man}
 
 %changelog
