@@ -645,4 +645,13 @@
     <comment>Update to TeXLive 2026</comment>
     <requestid>1344130</requestid>
   </revision>
+  <revision rev="65" vrev="68">
+    <srcmd5>136924b66ab0d33c5b8562fdb7bba4d6</srcmd5>
+    <version>unknown</version>
+    <time>1779981817</time>
+    <user>anag_factory</user>
+    <comment>- For one transaction at update or fresh installation set
+  a timestamp under /var/run/texlive to be used in fmtutil</comment>
+    <requestid>1355175</requestid>
+  </revision>
 </revisionlist>

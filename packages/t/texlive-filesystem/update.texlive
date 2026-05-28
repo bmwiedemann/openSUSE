@@ -57,7 +57,8 @@ then
 fi
 unset tmpfiles
 
-if test -n "$1" -a "$1" = force; then
+if test -n "$1" -a "$1" = force
+then
     umask 022
     mkdir -p /var/run/texlive
     for tag in run-mktexlsr run-hyphen \
@@ -84,6 +85,13 @@ fi
 
 # Empty directory means nothing todo
 test -d /var/run/texlive || exit 0
+
+# Set timestamp for fmtutil to avoid to generate
+# several times the same format
+if ! test -e /var/run/texlive/.timestamp
+then
+    date --utc --rfc-3339=ns > /var/run/texlive/.timestamp
+fi
 
 typeset -r OLDIFS="$IFS"
 typeset -i rc=0

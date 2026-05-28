@@ -43,7 +43,7 @@ Name:           texlive-filesystem
 Version:        %{texlive_version}.%{texlive_noarch}
 Release:        0
 Summary:        Basic file system of TeX Live
-License:        Apache-2.0 AND Artistic-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND LPPL-1.3c AND LPPL-1.0 AND MIT AND BSD-3-Clause AND SUSE-TeX AND SUSE-Public-Domain
+License:        Apache-2.0 AND Artistic-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND LPPL-1.3c AND LPPL-1.0 AND MIT AND BSD-3-Clause AND SUSE-TeX AND LicenseRef-SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 %if 0%{?suse_version} <= 1550

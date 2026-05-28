@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 26 07:35:50 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- For one transaction at update or fresh installation set
+  a timestamp under /var/run/texlive to be used in fmtutil 
+
+-------------------------------------------------------------------
 Mon Mar 30 13:22:00 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to TeXLive 2026 (20260301)
