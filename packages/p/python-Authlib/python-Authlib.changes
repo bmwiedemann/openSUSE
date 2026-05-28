@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 28 06:41:00 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.7.2 (bsc#1266665, CVE-2026-44681)
+  * Allow non-recommended algorithms in ClientSecretJWT and PrivateKey
+  * Validate BCP47 language tags with a regex
+  * Fix RFC7523 signing with non RSA keys
+  * redirecting to unvalidated redirect_uri on InvalidScopeError in OIDC grants
+  * authlib.jose deprecation warning poping from _joserfc_helpers
+
+-------------------------------------------------------------------
 Thu Apr 23 09:54:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.7.0

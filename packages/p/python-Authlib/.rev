@@ -359,4 +359,12 @@
 - Update BuildRequires and Requires from pyproject.toml</comment>
     <requestid>1349073</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c91292acd1df2f4b53fe714d143f5ef7</srcmd5>
+    <version>1.7.2</version>
+    <time>1779982106</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1355533</requestid>
+  </revision>
 </revisionlist>
