@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed May 27 17:18:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.7.0
+  * Fix version definitions to MAJOR.MINOR.PATCH and set
+    SOVERSION to MAJOR.MINOR
+  Changes in 1.6 release:
+  * Add unit tests for large files
+  * Allow users to set libname
+  * Allow disabling QTextCodec support and thus requirement
+    for Core5Compat when using Qt6 via new CMake flag
+    -DQUAZIP_ENABLE_QTEXTCODEC
+  * Add JlCompress methods to add file(s) or dir
+  * Add JlCompress UTF-8 support, encryption and fluent
+    interface via QuaCompressand QuaExtract classes
+  * Various Clang-tidy and clazy improvements
+  * Updated the official website via GH Pages to reflect recent
+    changes
+  * Fix unit tests when running with zlib-ng
+  * Fix some header includes
+  * Fix Libs entry for pkgconfig
+  * Fix -Wshadow and make it an error
+  * Fix reading zip64 comments
+  * Fixed builds for emscripten on qt 6.8+
+  * [cmake] Use FetchContent_MakeAvailable
+  * [build] Fix shadow and missing-decl errors
+  * Provide correct BZip2 information for in-project build
+
+-------------------------------------------------------------------
 Tue Mar 11 09:27:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.5

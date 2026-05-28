@@ -1,7 +1,7 @@
 #
 # spec file for package quazip
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,9 +34,9 @@ ExclusiveArch:  do_not_build
 %define pkg_suffix -qt5
 %endif
 %define so_ver 1
-%define lib_ver 1_5_0
+%define lib_ver 1_7
 Name:           quazip%{?pkg_suffix}
-Version:        1.5
+Version:        1.7.0
 Release:        0
 Summary:        C++ wrapper for ZIP/UNZIP
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later
