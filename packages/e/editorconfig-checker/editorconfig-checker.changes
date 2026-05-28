@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu May 28 08:10:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.7.0:
+  * Features
+    - files: expand glob patterns in passed-file args (#190) (#558)
+      (4c0f326)
+  * Bug Fixes
+    - cli: auto-enable no-color when output format is
+      github-actions (#557) (9f4014c)
+    - detect binary files before decoding to prevent false text
+      (#550) (f47b30c)
+  * Dependencies
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.21
+      to 0.5.22 (#564)
+    - chore(deps): bump golang.org/x/text from 0.36.0 to 0.37.0
+      (#562)
+    - chore(deps): bump github.com/wlynxg/chardet from 1.0.4 to
+      1.0.5 (#561)
+    - chore(deps): bump googleapis/release-please-action from 4 to
+      5 (#559)
+    - chore(deps): bump golang.org/x/text from 0.35.0 to 0.36.0
+      (#555)
+    - chore(deps): bump dependabot/fetch-metadata from 2 to 3
+      (#554)
+
+-------------------------------------------------------------------
 Fri Jan 30 06:34:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.6.1:
