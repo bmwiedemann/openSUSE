@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May 26 16:02:53 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Upgrade to release 9.20.23
+  https://downloads.isc.org/isc/bind9/9.20.23/doc/arm/html/notes.html
+  Security-Fixes:
+  * Amplification vulnerabilities via self-pointed glue records.
+    (CVE-2026-3592)
+    [bsc#1265592]
+  * server memory exhaustion during GSS-API TKEY negotiation.
+    (CVE-2026-3039)
+    [bsc#1265591]
+  * Unbounded resend loop in BIND 9 resolver
+    (CVE-2026-5950)
+    [bsc#1265596]
+  * SIG(0) validation during query flood may lead to undefined
+    behavior.
+    (CVE-2026-5947)
+    [bsc#1265595]
+  * Invalid handling of CLASS != IN.
+    (CVE-2026-5946)
+    [bsc#1265594]
+
+-------------------------------------------------------------------
 Mon Apr 13 14:50:07 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.20.22

@@ -2719,4 +2719,30 @@ New Features
   * Fix potential resource leak during resolver error handling.</comment>
     <requestid>1346466</requestid>
   </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>938adcaa803b13a4c363fe31dd7fc4fa</srcmd5>
+    <version>9.20.23</version>
+    <time>1779981838</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to release 9.20.23
+  https://downloads.isc.org/isc/bind9/9.20.23/doc/arm/html/notes.html
+  Security-Fixes:
+  * Amplification vulnerabilities via self-pointed glue records.
+    (CVE-2026-3592)
+    [bsc#1265592]
+  * server memory exhaustion during GSS-API TKEY negotiation.
+    (CVE-2026-3039)
+    [bsc#1265591]
+  * Unbounded resend loop in BIND 9 resolver
+    (CVE-2026-5950)
+    [bsc#1265596]
+  * SIG(0) validation during query flood may lead to undefined
+    behavior.
+    (CVE-2026-5947)
+    [bsc#1265595]
+  * Invalid handling of CLASS != IN.
+    (CVE-2026-5946)
+    [bsc#1265594]</comment>
+    <requestid>1355340</requestid>
+  </revision>
 </revisionlist>
