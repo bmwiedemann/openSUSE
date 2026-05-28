@@ -351,4 +351,12 @@
     <comment>Plasma 6.6.5 (forwarded request 1352821 from Vogtinator)</comment>
     <requestid>1352884</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>e1fb2863e10db7b53e3c27b7ea57ec25</srcmd5>
+    <version>6.6.5</version>
+    <time>1780002472</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1355139</requestid>
+  </revision>
 </revisionlist>

@@ -100,7 +100,8 @@ configuring Power settings.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6
+%cmake_kf6 \
+  -DQT_QML_NO_CACHEGEN:BOOL=TRUE
 
 %kf6_build
 
