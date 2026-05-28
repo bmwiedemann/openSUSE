@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 28 13:08:32 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1779973703.70686ac:
+  * ci: Use CI container in fullstack test as well
+  * feat: Log details about relevant port if cmd srv cannot be started
+  * refactor: Move function to get port details to OS utils
+  * refactor: Use Feature::Compat::Try consistently
+  * perf: use sourcing for efficient pretty serial marker activation
+  * fix: Fix condition for devel/deps packages
+  * feat: use efficient OA_NO_MARKER skip flag for pretty serial markers
+  * refactor: use __oa_prompt shell function for pretty serial markers
+  * feat: warn on manual serial terminal redirection in script_run
+
+-------------------------------------------------------------------
 Fri May 22 14:48:46 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1779461317.d4fb5bd:
