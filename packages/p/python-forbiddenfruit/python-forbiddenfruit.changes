@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 25 02:34:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Slighty loosen extension glob.
+
+-------------------------------------------------------------------
 Wed Jul  2 09:26:46 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

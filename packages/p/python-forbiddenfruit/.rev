@@ -56,4 +56,12 @@
     <comment></comment>
     <requestid>1290013</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>883090d15b3605923827a416358fece4</srcmd5>
+    <version>0.1.4</version>
+    <time>1780002442</time>
+    <user>anag_factory</user>
+    <comment>- Slighty loosen extension glob.</comment>
+    <requestid>1354996</requestid>
+  </revision>
 </revisionlist>

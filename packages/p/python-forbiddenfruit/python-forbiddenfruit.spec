@@ -1,7 +1,7 @@
 #
 # spec file for package python-forbiddenfruit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ export FFRUIT_EXTENSION=true
 %files %{python_files}
 %license COPYING COPYING.mit
 %doc README.md
-%{python_sitearch}/ffruit.cpython-*-linux-gnu.so
+%{python_sitearch}/ffruit.cpython-*-linux-gnu*.so
 %{python_sitearch}/forbiddenfruit
 %{python_sitearch}/forbiddenfruit-%{version}.dist-info
 
