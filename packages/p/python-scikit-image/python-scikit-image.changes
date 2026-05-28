@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 28 07:47:15 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Skip python311: tifffile dropped support 
+
+-------------------------------------------------------------------
 Wed Feb 18 05:08:50 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.26.0:

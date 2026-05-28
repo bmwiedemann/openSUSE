@@ -341,4 +341,12 @@
 - Unpack as normal in %prep, regardless of flavor.</comment>
     <requestid>1333657</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>18cc1678f6221bcbd3b60d217638b265</srcmd5>
+    <version>0.26.0</version>
+    <time>1779982118</time>
+    <user>anag_factory</user>
+    <comment>- Skip python311: tifffile dropped support</comment>
+    <requestid>1355545</requestid>
+  </revision>
 </revisionlist>

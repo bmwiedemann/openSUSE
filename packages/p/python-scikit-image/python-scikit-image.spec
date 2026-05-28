@@ -26,6 +26,8 @@
 %bcond_with test
 %endif
 
+# tifffile is a hard requirement and dropped Python3.11
+%global skip_python311 1
 Name:           python-scikit-image%{psuffix}
 Version:        0.26.0
 Release:        0
