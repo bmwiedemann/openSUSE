@@ -1,0 +1,14 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://codeberg.org/KalpaDesktop/kalpa-themes.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">1.0</param>
+    <param name="revision">1.0</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service mode="manual" name="tar"/>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+</services>

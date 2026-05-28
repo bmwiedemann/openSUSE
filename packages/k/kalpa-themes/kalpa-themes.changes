@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed May 27 22:58:53 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 1.0 release
+
+-------------------------------------------------------------------
+Sun May 24 23:56:46 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Version 0.1~git20260525T011036~9ab07de
+  * Replace BreezeLight/BreezeDark with custom KalpaDesktopLight and
+    KalpaDesktopDark color schemes, palette: yellow #FED43F and dark-brown
+    #543631 for light, wine #382929 and charcoal #282828 for dark, with
+    brand teal #25ac95 as the selection/accent color throughout.
+  * Add Catppuccin-mocha-classic colorscheme for both Dark themes
+  * Set panel to 'fit content' rather than 'fill height' for chef variants
+  * Update theme previews
+  * Set favourites for plasma launcher
+
+-------------------------------------------------------------------
+Fri May 22 19:59:18 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to version 0.1~git20260522T110943~fc5022c
+  * add light and dark sddm themes
+  * add updated previews for sddm and global themes
+  * add grub2 theming
+
+
+-------------------------------------------------------------------
+Wed May 13 18:47:15 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Initial Test Build
