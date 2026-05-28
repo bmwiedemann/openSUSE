@@ -19,17 +19,20 @@
 
 %define  _name  sddm_conf
 Name:           sddm-conf
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        SDDM configuration editor
 License:        MIT
 URL:            https://github.com/qtilities/sddm-conf
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz
+
 BuildRequires:  cmake >= 3.15
+BuildRequires:  desktop-file-utils
 BuildRequires:  extra-cmake-modules >= 6.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  qtilitools
+
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
@@ -54,7 +57,7 @@ C++.
 %find_lang %{name} --with-qt
 
 %check
-%ctest
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{_name}.desktop
 
 %files
 %license COPYING
