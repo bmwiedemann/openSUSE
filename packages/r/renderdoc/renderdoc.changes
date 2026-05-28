@@ -1,4 +1,570 @@
 -------------------------------------------------------------------
+Sat May 23 18:44:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.44:
+  * This version has a number of bugfixes and consistency
+    improvements in some features.
+  * Binary builds with installers, zips and tarballs are
+    available on renderdoc.org.
+  * The `view` member in `EventUsage` has been removed. Replacing
+    this usage will require changing to the event and inspecting
+    the bound and used resources and their views directly from
+    the pipeline state.
+  * The `multiSampleCount` and `multiSampleQuality` members have
+    been removed from `D3D12OM`, which were previously unused and
+    never written to and do not correspond to any valid pipeline
+    state.
+  * UI: Annotation vector automatic members are renamed to `1`,
+    `2`, `3`, `4` so that their order is preserved instead of
+    `xyzw`.
+  * Vulkan: Add support for the `VK_EXT_custom_resolve`
+    extension.
+  * Vulkan: Pixel history will be more clear that almost no
+    information is available when using secondary command
+    buffers.
+  * Vulkan: Improve reporting of resource usage in multiple-
+    nested command buffers.
+  * D3D12: Apply workaround for runtime bug with tight alignment
+    to textures as well as buffers.
+  * # Bugfixes
+  * UI: Fix an extra unused checkbox in some re-orderable lists
+    in settings windows.
+  * UI: Fix incorrect replay when command annotations are used.
+  * Linux: Fix an issue where wrong RenderDoc library may be used
+    if multiple different versions are installed on the system.
+  * Windows: Fix problems with hooking when a program uses
+    unnamed ordinal exports in a DLL.
+  * Image: Fix a crash when using the image file viewer, if
+    saving a texture while a custom visualisation shader is
+    active.
+  * All: Use 64-bit dimensions internally for sparse page table
+    tracking. Mostly untested as APIs generally do not support
+    >4GB resources.
+  * D3D: Fix rare cases where arrays of interpolators may get
+    misidentified and try to merge elements that weren't merged.
+  * D3D: Fix issues that could appear from runtime deduplicating
+    objects like D3D12 root signatures and D3D11 state objects
+    against internal versions.
+  * D3D12: If a bindless root signature is created for the first
+    time during a capture, ensure all possible resources will
+    still be included.
+  * D3D12: Fix a crash if copy queue timestamp queries are used.
+  * D3D12: Fix a deadlock that could happen when calling
+    `DiscardFrameCapture`.
+  * D3D12: Fix case where debugging xor operations could return
+    the wrong result.
+  * D3D12: Fix a crash when patching raytracing dispatches if an
+    uninitialised sampler heap is bound.
+  * D3D12: Fix a potential crash shader debugging when accessing
+    NULL created descriptors.
+  * D3D12: Fix incorrect data returned when debugging SM6.6
+    bindlessly accessed constant buffers.
+  * D3D12: Fix incorrect data returned when debugging a root
+    parameter byte address SRV.
+  * D3D12: Fix a potential crash when selecting individual
+    arguments within an ExecuteIndirect.
+  * D3D12: Fix inconsistencies in exported D3D12 html state.
+  * OpenGL: Fix incorrect derivatives generated on old GL
+    implementations without fine derivatives.
+  * OpenGL: Fix a crash when loading a capture with a shader that
+    is larger than 256kB of source.
+  * Vulkan: Fix a potential problem if internal shaders fail to
+    compile for triangle size overlay.
+  * Vulkan: Fix wireframe overlay not properly running fallback
+    if line fillmodes are not supported.
+  * Vulkan: Fix a problem where user specialisation constants
+    could be corrupted and get incorrect values when debugging
+    shaders.
+  * Vulkan: Fix a rare race with a missing `vkDeviceWaitIdle`
+    before window presentation.
+  * Vulkan: Fix a potential crash reading a sampler that could be
+    garbage in some cases.
+  * Vulkan: Fix a crash if an application submits the same
+    command buffer multiple times in a single frame.
+  * Vulkan: Fix incorrect result returned for shader debugging of
+    a degenerate `bitfieldExtract` call with `count == numbits`.
+  * Vulkan: Fix a crash reading potentially uninitialised fields
+    when getting a descriptor buffer descriptor.
+  * Vulkan: Fix EID inconsistency when vkQueueSubmit has multiple
+    top-level submissions.
+  * Vulkan: Fix incorrect generated internal shader when fetching
+    mesh output of mesh shader that outputs points.
+  * Vulkan: Fix handling of mesh shader output that outputs an
+    array of structs.
+  * Vulkan: Fix resource usage not showing up properly for
+    pipeline barriers at the end of command buffers.
+  * Vulkan: Don't add resource usage for marker actions in
+    secondary command buffers.
+  * Vulkan: Handle case on some drivers where descriptor buffer
+    memory would not properly have contents from prior to
+    captured frame.
+  * Vulkan: Fix inconsistencies in exported Vulkan html state.
+  * Vulkan: Don't compile multiview shaders if device doesn't
+    support or hasn't enabled multiview.
+- update to 1.43:
+  * # Version v1.43
+  * This release includes a new custom annotation system, as well
+    as a number of other improvements and bugfixes.
+  * **NOTE**: currently AMD's official drivers contain a reported
+    bug that may cause any shader debugging that depends on
+    multiple threads to fail to debug correctly. You may also
+    encounter problems with using `VK_EXT_descriptor_buffer` as
+    noted in the v1.40 release notes.
+  * Binary builds with installers, zips and tarballs are
+    available on renderdoc.org.
+  * > [!WARNING]
+  * > As mentioned in the v1.42 release notes the code signing
+    key used to sign the windows builds in this version has
+    changed. Windows security is unreliable and may throw errors
+    even though everything has been set up correctly with this
+    build. It is safe to run and if you are unsure you can use
+    something like virustotal.com to check the file, as well as
+    manually verifying the digital signature in the file
+    properties. Unfortunately there is nothing else that can be
+    done.
+  * # Main highlights
+  * ## Annotations system
+  * In this release RenderDoc now includes a new custom API for
+    providing rich annotations for additional context and
+    information especially for cases where a lot of context is
+    lost in the graphics API work itself.
+  * These can be thought of as significantly more advanced
+    versions of the normal marker regions and object naming that
+    graphics APIs provide. Complex structures can be built up
+    with typed data, which is then visible on a per-event or per-
+    object basis and can be visualised and filtered.
+  * _Counter-Strike 2 © Valve Corporation. Used with permission._
+  * More extensive information is available in the RenderDoc
+    documentation, when using the RenderDoc in-application API
+    two new calls are available to manage annotations both as
+    additional stateful information on commands and as permanent
+    data on graphics API objects.
+  * This is the initial release of this system, and more can and
+    will be added to its functionality as it is used.
+  * ## Information about shader debug symbols
+  * In the shader viewer a new tab can be shown which details any
+    information about shader debug symbols referenced and where
+    they were found from, as well as the paths searched along the
+    way.
+  * This can be combined with the ability to embed these symbols
+    within a capture to make it more easily portable to share
+    with others.
+  * # Python Breaking API changes
+  * None.
+  * # Features/Improvements
+  * UI: Improve sorting for array members in watch and source
+    variable displays when shader debugging, to follow natural
+    sort rules.
+  * UI: Add correct handling of `#pragma once` in shader editing.
+  * UI: Add a panel to the shader viewer showing where (and if)
+    debug info was loaded for a given shader.
+  * OpenGL: Add support for debugging shaders that use arrays of
+    resources.
+  * D3D12: Implement querying `ID3D12SharingContract` from a
+    `ID3D12CommandQueue`.
+  * D3D12: Edits to shaders can now be reliably saved with
+    capture files and will work when reloaded. Previously this
+    would fail in many cases. This fix also applies to Vulkan if
+    using inline shader creates without shader modules.
+  * D3D12: Implement correct support for predication.
+  * Vulkan: When debugging shaders with debug info that maps some
+    values to `OpUndef` display explicitly `` instead of actual
+    undefined values.
+  * Vulkan: Add support for debugging shaders that use
+    `SPV_KHR_integer_dot_product`.
+  * Vulkan: Add handling of multiview to several overlays
+    including viewport, quad overdraw, triangle size. Also
+    special-case handling of multiple viewports when the number
+    of views matches the multiview count.
+  * Vulkan: Add support for extensions:
+  * VK_QCOM_multiview_per_view_render_areas
+  * VK_EXT_image_drm_format_modifier
+  * # Bugfixes
+  * UI: Fix some cases where marker labels in resource usage
+    would be incorrect.
+  * UI: Fix viewing mesh preview for vertex in data not working
+    correctly on first launch.
+  * UI: Fix a crash when adding a watch entry for cbuffer
+    variables.
+  * UI: Fix off-by-one when displaying number of replacements in
+    'replace all' in shader editor.
+  * UI: Process shader source correctly as UTF-8.
+  * UI: Fix a race condition when opening the tools menu while a
+    remote capture (e.g. on android) is open.
+  * UI: Fix a memory leak if selecting between different events
+    quicker than mesh output can be generated.
+  * OpenGL: Fix incorrect pixel history results obtained when
+    pipelines are used with multiple different uniform values.
+  * OpenGL: Fix some broken cases with shader debugging when
+    using bool-typed uniforms or interpolation qualifiers on
+    inputs.
+  * OpenGL: Fix a memory leak when picking vertices in the mesh
+    viewer.
+  * D3D12: Fix a crash if using resolves on depth targets in the
+    render pass API.
+  * D3D12: Fix a crash when nvidia counters plugin is installed
+    if timing durations in the event browser without having used
+    the perf counter viewer.
+  * D3D12: Fix missing IID checks when creating
+    `ID3D12CommandQueue1`.
+  * D3D12: Fix a hang when processing debug info that includes an
+    enum inside a struct.
+  * D3D12: Add more supported IIDs when querying via `GetDevice`.
+  * D3D12: Detect and avoid invalid indirect dispatches when
+    fetching mesh shader output.
+  * D3D12: If a fatal error is hit due to out of memory or device
+    lost during capture, do not create broken/crashing captures.
+  * D3D12: Check for and display an error when too much is
+    generated from a mesh shader to display in mesh output.
+  * Vulkan: Fix a potential crash reading the sampler part of
+    descriptors queried via descriptor buffer for all image
+    descriptor types.
+  * Vulkan: Fix an issue with incorrect lifetime tracking of
+    `bufferDeviceAddress` buffers that could lead to misbehaviour
+    or problems recreating RT acceleration structures.
+  * Vulkan: Ensure image layouts are correctly tracked when
+    application is using CPU-based image layout transitions.
+  * Vulkan: When faking backbuffers during capture for
+    acceleration structure or descriptor buffer capture, ensure
+    deletion of swapchains during capture doesn't cause invalid
+    address re-use.
+  * Vulkan: Fix potential problems when descriptor buffers and
+    normal descriptors are mixed, and make sure that partially-
+    invalidated state between them is properly tracked.
+  * Vulkan: Fix fetching of task and mesh output when the payload
+    structure contains arrays-of-structs.
+  * Vulkan: Fix handling of multiple entry points in the same
+    module where only one declares needed builtins like
+    `LocalInvocationIndex`.
+  * Vulkan: Fix incorrect generation of shader for fetching
+    vertex output, with invalid contents of `BaseVertex` builtin.
+  * Vulkan: Fix shader debugging when loading from an MSAA
+    subpass input.
+  * Vulkan: Fix a potential race condition if a capture is loaded
+    and closed very quickly.
+  * Vulkan: Fix a potential crash analysing captures with
+    multiple queues.
+- update to 1.42:
+  * # Version v1.42
+  * This release includes limited support for shader debugging on
+    OpenGL. More details are found below, and bear in mind that
+    likely a minority of shaders and not all drivers will be
+    supported as it requires a relatively modern shader code and
+    modern drivers.
+  * **NOTE**: currently AMD's official drivers contain a reported
+    bug that may cause any shader debugging that depends on
+    multiple threads to fail to debug correctly. You may also
+    encounter problems with using `VK_EXT_descriptor_buffer` as
+    noted in the v1.40 release notes.
+  * Binary builds with installers, zips and tarballs are
+    available on renderdoc.org.
+  * **NOTE**: After this release, the code signing key used to
+    sign windows nightly and stable builds will change. As
+    Windows security is mostly fake this may trigger warnings
+    about an unrecognised publisher or you may have to disable
+    smartscreen or similar functionality to install or run new
+    builds for an unknown period of time. The new code signing
+    key is authentic from a real authority and can be checked
+    manually in the file properties, so there is nothing that can
+    be done about this unfortunately.
+  * # Main highlights
+  * ## Limited OpenGL shader debugging
+  * A limited form of shader debugging is now supported on
+    OpenGL. Only shaders that _aren't_ so outdated and legacy
+    that they are incompatible with SPIR-V compilation can be
+    debugged. There may be issues with shaders that are not fully
+    compatible with SPIR-V compilation so the most reliable
+    results will come from shaders that compile as-is to SPIR-V
+    without modification. Otherwise undefined behaviour from
+    differences in bindings may occur.
+  * The feature has high minimum requirements - both
+    `GL_ARB_compute_shader` and
+    `ARB_shader_storage_buffer_object` (or equivalent core
+    version functionality) - so it's expected that not all GL
+    drivers will be supported. Shader debugging will be disabled
+    entirely for any OpenGL capture if the minimum requirements
+    are not met. It also requires SSBO support for the stage
+    being debugged, meaning that commonly on Android vertex
+    shaders will not be debuggable.
+  * # Python Breaking API changes
+  * None.
+  * # Features/Improvements
+  * UI: The resource usage display in the resource inspector now
+    displays the marker where each usage entry sits, and allows
+    splitting the list by parent marker.
+  * UI: Add the ability to customise the keyboard and mouse
+    controls used for the flycam in the mesh viewer, as well as
+    customising the near/far plane of the display (separate from
+    any near/far plane used for unprojection of vertex data).
+  * UI: Added a feature to embed all external dependencies into a
+    capture, such as separate shader debug info to make the
+    capture more easily portable. This can be done via the Tools
+    menu which also includes the option to remove any embedded
+    files.
+  * D3D12: Add support for GPU_UPLOAD heaps.
+  * D3D12: Display compute shader referenced builtin inputs in
+    the UI when debugging a compute shader
+    (`SV_DispatchThreadID`, `SV_GroupID`, `SV_GroupIndex`,
+    `SV_GroupThreadID).`
+  * D3D12: Add compute shader debugger support for quad and
+    derivative operations (SM6.6+).
+  * D3D12: Add DXIL shader debugging support for shaders using
+    UAV Counters.
+  * Vulkan: Add support for compute shader debugging shaders
+    using `VK_KHR_compute_shader_derivatives` and quad
+    operations.
+  * # Bugfixes
+  * UI: Fix the display of bounding box calculated data for mesh
+    shaders.
+  * D3D11/D3D12: Fix incorrect DXBC shader debug of
+    `CalculateLevelOfDetailUnclamped`.
+  * D3D11: Fix a crash if running on extremely low-end drivers
+    such as WARP when reporting video functionality to the
+    application that is unsupported.
+  * D3D11: Fix an issue with the NV counters where results may
+    not be returned if gathering over a lot of events.
+  * D3D12: Fix some resource references while debugging a shader
+    having the incorrect type.
+  * D3D12: Fix a potential crash when capturing a TIGHT_ALIGNMENT
+    resource due to the D3D12 runtime returning invalid data.
+  * D3D12: Fix a rare race condition when capturing if the
+    capture ends as a queue submission is happening with mapped
+    memory on another thread.
+  * D3D12: Fix a crash when a UPLOAD heap is created mid-capture.
+  * D3D12: Fix a problem where pixel history could crash or
+    return the wrong results if logic ops are used.
+  * D3D12: Fix handling of matrix inputs to a shader stage.
+  * D3D12: Fix a potential issue where shader interfaces using
+    float3 arrays would not properly be fetched when shader
+    debugging.
+  * D3D12: Fix wireframe overlay not displaying if conservative
+    rasterization is enabled.
+  * D3D12: Fix a problem with pixel history being run on 3D
+    textures.
+  * D3D12: Fix an error when replaying an execute indirect that
+    does not need a root signature attached.
+  * D3D12: Fix a crash in WriteToSubresource reading the wrong
+    amount of data.
+  * Vulkan: Fix a potential crash after a fatal error (e.g.
+    device lost or android device disconnection) depending on the
+    current selected event.
+  * Vulkan: Add DESCRIPTOR_BUFFER usage internally to some
+    buffers which is required to map to certain memory types.
+  * Vulkan: Fix a crash binding a NULL index buffer.
+  * Vulkan: Fix an issue where `vkCmdDrawIndexedIndirectCount`
+    would fail in some circumstances if an individual draw was
+    selected.
+  * Vulkan: Fix a potential race condition if multiple threads
+    are submitting work using the same mapped memory.
+  * Vulkan: Fix a case where matrix source variables were not
+    properly displayed depending on how they mapped to SSA IDs.
+  * Vulkan: Fix a potential crash when running pixel history on a
+    renderpass with multiple subpasses and secondary command
+    buffers.
+  * Vulkan: Fix invalid API use by never replaying suspend/resume
+    and always using load/store instead.
+  * Vulkan: Fix an issue using primitive ID input when debugging
+    a pixel shader that is linked to a mesh shader.
+  * Vulkan: Fix incorrect shader debug of GLSL `textureProj` with
+    a shadow sampler (SPIR-V `OpImageSampleProjDrefExplicitLod`,
+    `OpImageSampleProjDrefImplicitLod`.
+- update to 1.41:
+  * # Version v1.41
+  * This release includes new threaded support for the shader
+    debugger on all supported APIs (D3D11, D3D12, Vulkan). More
+    details are found below, and please report any problems
+    encountered with any shader debugging whether crashing or
+    inaccurate simulation.
+  * **NOTE**: currently AMD's official drivers contain a reported
+    bug that may cause any shader debugging that depends on
+    multiple threads to fail to debug correctly. You may also
+    encounter problems with using `VK_EXT_descriptor_buffer` as
+    noted in the v1.40 release notes.
+  * As always binary builds with installers, zips and tarballs
+    are available on renderdoc.org.
+  * # Main highlights
+  * ## Shader debugger threaded support
+  * On all APIs that support shader debugging (D3D11, D3D12,
+    Vulkan) the debugger will now correctly simulate as many
+    threads as needed to accurately debug a shader. This means
+    wave/subgroup ops, workgroup interactions and groupshared
+    memory can all now be debugged and will display accurate
+    reflections of the results based on all threads running.
+  * The number of threads simulated will depend on the shader
+    itself - if only wave/subgroup ops are used then one
+    wave/subgroup will be simulated. If groupshared or other
+    whole-workgroup work is used in a compute shader then the
+    whole workgroup will be simulated up to the typical maximum
+    of 1024 threads.
+  * When debugging groupshared memory specifically the UI
+    displays one thread's view of groupshared and it will reflect
+    barrier visibility - except for atomics, writes from other
+    threads will not be displayed until the appropriate barrier
+    has been passed.
+  * Note that for DXIL and SPIR-V the shader debuggers themselves
+    are multi-threaded on the CPU to simulate across a number of
+    CPU threads, while DXBC is currently single threaded and so
+    may be slower to debug such shaders.
+  * # Python Breaking API changes
+  * None.
+  * # Features/Improvements
+  * All: In pixel history view do not offer the option to debug
+    actions which do not use shaders (clears, copies, etc).
+  * All: When fit-to-window is enabled in the texture viewer,
+    editing the zoom level will disable it instead of reverting
+    any edits.
+  * All: Shader debugger now supports simulating many threads, as
+    needed for correct simulation of the threads. See highlights
+    above.
+  * All: If a pixel debug fails and the pixel history pops up,
+    explain this with a message.
+  * Python: All structure members have explicit type annotations
+    to improve code-completion/intellisense ability in IDEs.
+  * Python: Improve generated stubs to not redeclare `__new__`
+    which confuses some IDEs about constructors for structs.
+  * D3D12: Display bindless constant buffer access in pipeline
+    state view correctly.
+  * D3D12: Show cbuffer element offset in RenderDoc DXIL
+    disassembly view.
+  * D3D12: Improve memory overhead during capture&replay for
+    applications e.g. UE5 that do a significant amount of
+    aliasing or have very-sparse sparse buffers. The reduction
+    will scale depending how much re-use there is between buffers
+    and/or how sparse buffers are bound.
+  * Vulkan: Sorting of descriptors in the pipeline state view is
+    more natural when using descriptor buffers (sorted logically
+    not physically).
+  * Vulkan: Allow replay with `KHR_*_maintenance` and
+    `EXT_external_memory_dma_buf` extensions even if not
+    supported on the replay device.
+  * Vulkan: Don't fill undefined discard pattern in external
+    image transitions which are defined not to discard.
+  * Vulkan: Improve detection of vkconfig due to changed
+    configuration file, and attempt to detect and warn vkconfig
+    being started after RenderDoc.
+  * Vulkan: Implement some extensions:
+  * `VK_EXT_fragment_density_offset`
+  * `VK_VALVE_fragment_density_map_layered`
+  * `VK_EXT_vertex_attribute_robustness`
+  * # Bugfixes
+  * All: Fix interpretation of packed 10:10:10:2 data in buffer
+    viewer consuming 16 bytes instead of 4.
+  * All: Fix a potential crash when viewing task/mesh shader data
+    in the mesh viewer.
+  * All: Add line-wrapping to improve display of pipeline/shader
+    names which are very long in the pipeline state view and
+    reduce horizontal size needed.
+  * All: Adjust pixel context highlight box to better position
+    itself for NPOT (non-power of two) texture mips.
+  * All: In the texture viewer improve behaviour for NPOT
+    textures when using arrow keys to nudge one texel left or
+    right.
+  * All: Many fixes to pixel history edge cases or consistency
+    problems.
+  * Linux: When loading a 3D DDS for image viewing, fix display
+    of mips.
+  * GL/Vulkan: Fix display of NPOT texture mips.
+  * GL: Fix double clicking on framebuffer attachments not
+    opening the corresponding texture.
+  * GLES: Fix readback of depth textures if reading directly from
+    depth is not supported.
+  * Vulkan: Fix incorrect extension implementation of
+    KHR_present_wait2 function.
+  * Vulkan: Fix misbehaviour when descriptor buffers are bound
+    multiple times per command buffer.
+  * Vulkan: Fix interaction between descriptor buffer and
+    EXT_shader_object.
+  * Vulkan: Fix a crash if descriptor buffers change between
+    graphics and compute pipeline bindings and become temporarily
+    invalid.
+  * Vulkan: Fix a crash processing a mesh shader that writes to
+    clip/cull distance (or any multi-arrayed output)
+  * Vulkan: Fix a potential crash replaying captures using
+    dynamic rendering and attachment feedback loops with unified
+    image layouts.
+  * Vulkan: Fix a problem when images or image views are
+    destroyed and recreated mid-capture when using descriptor
+    buffers.
+  * Vulkan: Fix unconditional use of acceleration structure
+    extension when descriptor buffers is enabled.
+  * Vulkan: Replay memory created mid-capture as if it had
+    cleared contents to begin with, instead of allowing replay
+    data to leak backwards from later events.
+  * Vulkan: Reflect depth bounds passes and failures correctly in
+    depth test overlay.
+  * Vulkan: Fix processing of fake OpModuleProcessed comments in
+    glslang shaders targetting SPIR-V 1.0 when using NonSemantic
+    debug info.
+  * Vulkan: Handle arrays of AS descriptors where not all of them
+    are valid.
+  * Vulkan: Fix a potential crash if an image view is deleted
+    after the image it references.
+  * Vulkan: Fix maintenance9 implementation of vertex attributes
+    which are entirely undeclared in the pipeline but used in the
+    vertex shader.
+  * Vulkan: Fix a crash when viewport count is dynamic in a
+    pipeline but scissor count isn't.
+  * Vulkan: Fix wrong input variable names being shown in vertex
+    inputs in some cases.
+  * Vulkan: Fix a crash if an undefined pointer is declared in
+    SPIR-V.
+  * Vulkan: Fix discard patterns not using the correct layers for
+    2D-view-of-3D images.
+  * Vulkan: Ensure barriers are forward-compatible to breaking
+    maintenance9 change.
+  * Vulkan: Fix a crash if SPIR-V debug info declares member
+    functions or template instantiations in structures.
+  * Vulkan: Fix failures to replay with incorrect version
+    snapshotting of descriptor buffers.
+  * Vulkan: Fix a potential incompatibility replaying a
+    descriptor buffer capture when images are declared as
+    external during capture.
+  * Vulkan: Debugging a shader that accesses bufferviews via
+    descriptor buffer would return incorrect data.
+  * Vulkan: Fix a potential crash when writing out of bounds to a
+    texture during shader debugging.
+  * D3D: Fix shader debugging when constant buffer elements have
+    a padded offsetted location that doesn't start at a float4
+    boundary.
+  * D3D11: Fix a potential crash if binding resources or constant
+    buffers with a NULL array to bind many NULLs.
+  * D3D12: Fix pixel history crashing when being run on a UAV-
+    only texture.
+  * D3D12: Fix an incorrect reference to nvapi instead of AGS in
+    error message when extensions are unsupported.
+  * D3D12: Fix a crash if an ExecuteIndirect sets constant
+    parameters to a root signature element which had not been set
+    prior on the command buffer.
+  * D3D12: Fix a crash when running pixel history if some draws
+    have no scissor regions bound.
+  * D3D12: Generate proper dxc command line from new SRCI debug
+    info with `-X Y` instead of `-X=Y`.
+  * D3D12: Work around backwards- and forwards-incompatible DXC
+    command line change to survive bad validation.
+  * D3D12: Improve handling of buffers created implicitly in new
+    states. Although not spec-defined, LAYOUT_UNDEFINED resources
+    can be implicitly transitioned to old states.
+  * D3D12: Fix a rare device lost crash encountered when
+    discarding small buffers, most commonly encountered in UE5
+    captures.
+  * D3D12: Fix a potential crash on AMD when processing marker
+    text.
+  * D3D12: Fix a crash when replaying any
+    `EmitRaytracingAccelerationStructurePostbuildInfo` call.
+  * D3D12: Fix helper lanes modifying UAVs during shader
+    debugging on DXIL.
+  * D3D12: Fix a case where access to bindless/arrayed samplers
+    would return wrong result in DXIL shader debugging.
+  * D3D12: Improve handling of half and double arguments in a
+    number of instructions.
+  * D3D12: Fix incorrect display of high level source variables
+    for output structures and matrices.
+  * D3D12: Fix a potential rare crash when debugging vertex/pixel
+    shaders.
+  * D3D12: Fix pixel history error if bound target is not
+    declared in PSO.
+
+-------------------------------------------------------------------
 Fri Sep 26 11:52:48 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.40
@@ -122,7 +688,7 @@ Fri Mar 14 12:37:45 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
   * VK_KHR_shader_subgroup_rotate
   * VK_KHR_ray_tracing_position_fetch
   * VK_KHR_ray_tracing_maintenance1
- 
+
 
 -------------------------------------------------------------------
 Mon Feb  3 13:46:11 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
@@ -190,7 +756,7 @@ Wed Aug  7 13:07:35 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
   * Added a UI for managing the ignored PDBs when resolving
     callstacks.
   * Implemented GPU feedback for detecting dynamic access to
-    arrayed samplers. 
+    arrayed samplers.
 
 -------------------------------------------------------------------
 Sun Jun 30 07:57:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
