@@ -2103,4 +2103,41 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     <comment></comment>
     <requestid>1344102</requestid>
   </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>9c8cfd6f5866ec677f1bb83e3ccefaa9</srcmd5>
+    <version>1.27.0</version>
+    <time>1779982098</time>
+    <user>anag_factory</user>
+    <comment>- 1.27.0
+  - Command-line:
+    - Change 'osc fork' to work through a local checkout that need to be reviewed and pushed by a user
+    - Change 'git-obs pr create' to use '--source' and '--target' options instead of separate options for owner, repo, and branch
+    - Change 'osc rmkpac' to require fragment with branch name in --scmsync url
+    - Add 'git-obs pr new-package-request' command
+    - Add '--allow-maintainer-edit' option to 'git-obs pr create' and enable it by default
+    - Add '--linkrev' option to 'osc co' command, now we can run 'osc co prj/pac --linkrev=base to get to the exact sources for a revision
+    - Add link revision to the 'osc info' output for a package
+    - Add 'git-obs file maintainership migrate' command
+    - Make 'osc up --expand-link' a no-op on non-linked packages
+    - Suggest running 'git push' in 'git-obs pr create' when the local checkout differs from the server
+    - Avoid making shallow clones in 'git-obs staging' commands, they cannot be pushed to different remotes
+    - Fix 'git-obs pr create' to allow creating pull requests between repos in the same fork tree
+    - Fix 'git-obs staging remove' to push changes to the correct remote matching with the PR head
+    - Fix 'git-obs pr create' when creating a PR in a repo with no parent
+    - Fix 'git-obs staging group' by fetching the whole branch instead of --depth=1
+    - Fix crash in 'git-obs pr dump' by adding '-c core.commitGraph=false' to 'git clone --dissociate'
+    - Fix crash in 'osc buildlog' when repo and arch are not specified
+    - Fix crash in 'git-obs pr dump' when timeline contains a null entry
+    - Fix crash when running 'osc meta pkg' in a project checkout
+    - Clarify error message in 'git-obs pr dump' by providing submodule name
+    - Remove a misleading error message when a package doesn't exist during 'osc rq show --diff'
+  - Library:
+    - Introduce branch_id: add Branch.parse_id(), add GitObsCommand.add_argument_owner_repo_branch()
+    - Improve gitea_api.Git to properly detect bare git repos
+    - Add gitea_api.PullRequest.merged_at property
+    - Add gitea_api.Git.ls_tree() method
+    - Add gitea_api.Git methods for working with githooks
+    - Add Manifest.get_package_paths_bare_git() that can resolve existing packages in a project in bare git repo</comment>
+    <requestid>1355531</requestid>
+  </revision>
 </revisionlist>
