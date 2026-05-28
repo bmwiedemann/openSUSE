@@ -131,4 +131,54 @@
     <comment></comment>
     <requestid>1149463</requestid>
   </revision>
+  <revision rev="20" vrev="831">
+    <srcmd5>cf2297410ecf9f055a441f043b73d565</srcmd5>
+    <version>2000.11.03</version>
+    <time>1779981848</time>
+    <user>anag_factory</user>
+    <comment>- jsc#PED-14844: Remove unnecessary systemd-tmpfile.
+- Specfile cleanup
+  * Change Source0 URL to the redirect of the previous URL.
+  * Convert ISOgrk5.gz to .zip (content unchanged)
+    in order to clean up the %prep section.
+  * Change URL to something more informative.
+  * Drop unneeded sgml-skel BuildRequires.
+- Trim whitespace in .changes file.
+- Fix jsc#PED-14844 for immutable mode
+  * No changes in tarball
+  * Use %autosetup
+  * Some code cleanup
+  * Add systemd-tmpfile
+- Use %patch -P N instead of deprecated %patchN.
+- Modernise spec file
+- change license to some spdx.org form - this a standard from w3.org,
+  so it can be distributed pretty much freely
+- make patch0 usage consistent
+- Add BuildRequires: unzip
+- Fix %postun script; reported by Andreas Hanke [# 175611].
+- modify setup line in spec file
+- converted neededforbuild to BuildRequires
+- added option # norootforbuild in specfile
+- Use %postun for catalog removal.
+- Use sgml-register-catalog to add catalog to /etc/sgml/catalog.
+- Add lost ISOgrk5 (bug #4212).
+- Mor spec file macros.
+- Added_Latin_1 has to point to ISOlat1 (not ISOLat1) and Added_Latin_2
+  to ISOlat2 (not ISOLat2).
+- General cleanup.
+- Use date string as version number.
+- Now, it's noarch.
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+- fixed call of Check at the end of %install section
+- Provide a maybe useful link /usr/share/sgml/CATALOG.iso_ent.
+- Install CATALOG as /var/lib/sgml/CATALOG.iso_ent.
+- Add CATALOG file.
+- Provide a link for ISOgrk5.
+- Make Makefile.Linux and friends obsolete.
+- Don't escape `:' in file names of the %files list.
+	* correct %install section.
+	* initial package.
+</comment>
+    <requestid>1355374</requestid>
+  </revision>
 </revisionlist>

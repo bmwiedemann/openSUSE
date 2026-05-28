@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr 10 15:21:12 UTC 2026 - Yunus Acar <yunus.acar@suse.com>
+
+- jsc#PED-14844: Remove unnecessary systemd-tmpfile.
+- Specfile cleanup
+  * Change Source0 URL to the redirect of the previous URL.
+  * Convert ISOgrk5.gz to .zip (content unchanged)
+    in order to clean up the %prep section.
+  * Change URL to something more informative.
+  * Drop unneeded sgml-skel BuildRequires.
+- Trim whitespace in .changes file.
+
+-------------------------------------------------------------------
+Tue Dec 16 14:15:38 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2000.11.03
+
+- Fix jsc#PED-14844 for immutable mode
+  * No changes in tarball
+  * Use %autosetup
+  * Some code cleanup
+  * Add systemd-tmpfile
+
+-------------------------------------------------------------------
 Thu Feb 22 13:49:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -32,7 +53,7 @@ Mon May 15 18:24:45 CEST 2006 - ke@suse.de
 -------------------------------------------------------------------
 Sun Feb 19 20:39:55 CET 2006 - ro@suse.de
 
-- modify setup line in spec file 
+- modify setup line in spec file
 
 -------------------------------------------------------------------
 Wed Jan 25 21:46:34 CET 2006 - mls@suse.de
@@ -98,17 +119,17 @@ Sun Mar 15 10:45:53 MET 1998 - ke@suse.de
 
 - Add CATALOG file.
 - Provide a link for ISOgrk5.
-	
+
 -------------------------------------------------------------------
 Sat Oct 25 14:28:17 MEST 1997 - ke@suse.de
 
 - Make Makefile.Linux and friends obsolete.
 - Don't escape `:' in file names of the %files list.
-	
+
 Wed Oct  8 15:24:40 1997 - Karl Eichwalder  <ke@suse.de>
 
 	* correct %install section.
-	
+
 Mon Jun 30 11:03:32 1997 - Karl Eichwalder  <ke@suse.de>
 
-	* initial package. 
+	* initial package.
