@@ -1,4 +1,4 @@
-From b6df4f8906911d7907d588403a63c6f10e706209 Mon Sep 17 00:00:00 2001
+From 50ee387c948a0464c902c09a737d3e3787959e84 Mon Sep 17 00:00:00 2001
 From: Christophe Marin <christophe@krop.fr>
 Date: Tue, 7 Oct 2025 15:54:32 +0200
 Subject: [PATCH] Fix installation
@@ -6,9 +6,10 @@ Subject: [PATCH] Fix installation
 Upstream decided to install files in non-standard locations.
 ---
  sources/pyside6/CMakeLists.txt                       | 2 +-
+ sources/pyside6/libpyside/CMakeLists.txt             | 2 +-
  sources/shiboken6/libshiboken/CMakeLists.txt         | 2 +-
  sources/shiboken6_generator/generator/CMakeLists.txt | 4 ++--
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ 4 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/sources/pyside6/CMakeLists.txt b/sources/pyside6/CMakeLists.txt
 index bfe3956..b3f9946 100644
@@ -23,11 +24,24 @@ index bfe3956..b3f9946 100644
              FILE PySide6Targets.cmake)
  endif()
  
+diff --git a/sources/pyside6/libpyside/CMakeLists.txt b/sources/pyside6/libpyside/CMakeLists.txt
+index ea3c304..8456dbc 100644
+--- a/sources/pyside6/libpyside/CMakeLists.txt
++++ b/sources/pyside6/libpyside/CMakeLists.txt
+@@ -210,7 +210,7 @@ if(NOT is_pyside6_superproject_build)
+                             RUNTIME DESTINATION "PySide6")
+ 
+     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/wheel/PySide6Config${SHIBOKEN_PYTHON_CONFIG_SUFFIX}.cmake"
+-            DESTINATION "${LIB_INSTALL_DIR}/wheels/cmake/PySide6")
++            DESTINATION "${LIB_INSTALL_DIR}/cmake/PySide6")
+ endif()
+ 
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/pyside6${pyside6_SUFFIX}.pc"
 diff --git a/sources/shiboken6/libshiboken/CMakeLists.txt b/sources/shiboken6/libshiboken/CMakeLists.txt
-index bc3569b..de7b06b 100644
+index c3fc499..9ae5577 100644
 --- a/sources/shiboken6/libshiboken/CMakeLists.txt
 +++ b/sources/shiboken6/libshiboken/CMakeLists.txt
-@@ -221,6 +221,6 @@ if(NOT is_pyside6_superproject_build)
+@@ -224,6 +224,6 @@ if(NOT is_pyside6_superproject_build)
  
      install(EXPORT Shiboken6WheelTargets
              NAMESPACE Shiboken6::
@@ -54,5 +68,5 @@ index 33bb413..fd2a9f3 100644
  endif()
  
 -- 
-2.53.0
+2.54.0
 

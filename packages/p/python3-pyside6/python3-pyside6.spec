@@ -17,7 +17,7 @@
 
 
 %define tar_name pyside-setup-everywhere-src
-%define tar_version 6.11.0
+%define tar_version 6.11.1
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -43,7 +43,7 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{mypython}-%{pyside_flavor}
-Version:        6.11.0
+Version:        6.11.1
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        (GPL-2.0-only AND (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-3.0-only WITH Qt-GPL-exception-1.0) OR LGPL-3.0-only
@@ -55,18 +55,6 @@ Patch0:         0001-Always-link-to-python-libraries.patch
 Patch1:         0001-Revert-Modify-headers-installation-for-CMake-builds.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-Fix-installation.patch
-# PATCH-FIX-UPSTREAM -- clang 22 support
-Patch10:        0000-shiboken6-Change-class-CodeModel-into-a-non-instantiable-Q_GADGET.patch
-Patch11:        0001-shiboken6-Enable-testing-on-clang-level.patch
-Patch12:        0002-shiboken6-clang-Add-a-define-for-the-LLVM-major-version.patch
-Patch13:        0003-shiboken6-clang-Small-preparatory-refactorings-fixes.patch
-Patch14:        0004-shiboken6-clang-Fix-type-names.patch
-Patch15:        0005-shiboken6-clang-Prepare-for-introducing-error-handling-to-type-parsing.patch
-Patch16:        0006-shiboken6-Add-infrastructure-for-error-handling-to-the-type-parsing.patch
-Patch17:        0007-shiboken6-clang-Refactor-function-proto-type-handling.patch
-Patch18:        0008-shiboken6-Add-some-type-checks.patch
-Patch19:        0009-shiboken6-Add-clang-type-struct.patch
-Patch20:        0010-shiboken6-Fix-retrieving-fully-qualified-type-names-with-clang-22.patch
 # PATCH-FIX-OPENSUSE -- add elaborated type for clang 22
 Patch21:        0011-QNativeInterface-QX11Application-display-type.patch
 # SECTION common_dependencies
