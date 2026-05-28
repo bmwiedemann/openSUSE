@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 28 07:28:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.7:
+  * New Features
+    - be67297: feat(app): debug-log nameserver strategy application
+      (@mr-karan)
+    - 622bd7f: feat(resolvers): tag lookup errors with nameserver
+      and support partial success (@mr-karan)
+  * Bug fixes
+    - af1fa7f: fix(resolvers): apply strategy to nameserver
+      overrides (#238) (@mr-karan)
+    - dd88d6e: fix(resolvers): avoid invalid root search queries
+      (#239) (@mr-karan)
+    - da5d86a: fix(resolvers): preserve completed work when context
+      expires mid-flight (@mr-karan)
+    - b400c46: fix(web): preserve partial resolver results in API
+      handler (@mr-karan)
+  * Others
+    - dea30ad: chore: bump Go to 1.26.3 for stdlib security fixes
+      (@mr-karan)
+
+-------------------------------------------------------------------
 Wed May 20 08:20:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.6:
