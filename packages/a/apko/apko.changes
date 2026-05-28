@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 28 07:28:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.14:
+  * build(deps): bump k8s.io/apimachinery from 0.36.0 to 0.36.1
+    (#2232)
+  * build(deps): bump google.golang.org/api from 0.278.0 to 0.279.0
+    (#2234)
+  * build(deps): bump go.step.sm/crypto from 0.78.0 to 0.81.0
+    (#2235)
+  * build(deps): bump chainguard.dev/sdk from 0.1.54 to 0.1.55
+    (#2236)
+  * build(deps): bump github/codeql-action from 4.35.4 to 4.35.5
+    (#2237)
+  * build(deps): bump zizmorcore/zizmor-action from 0.5.3 to 0.5.5
+    (#2238)
+  * build(deps): bump step-security/harden-runner from 2.19.1 to
+    2.19.3 (#2233)
+
+-------------------------------------------------------------------
 Mon May 18 05:15:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.13:
