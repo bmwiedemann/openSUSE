@@ -1,7 +1,7 @@
 #
 # spec file for package percona-toolkit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,31 +15,37 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define revision 6917c5d
+
+%define revision v%{version}
 
 Name:           percona-toolkit
-Version:        3.3.1
+Version:        3.7.1
 Release:        0
 Summary:        Advanced MySQL and system command-line tools
 License:        GPL-2.0-only
 Group:          Productivity/Databases/Tools
 URL:            https://www.percona.com/software/percona-toolkit/
-Source:         https://www.percona.com/downloads/%{name}/%{version}/source/tarball/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source:         https://github.com/percona/percona-toolkit/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
 Source2:        %{name}.conf
 Source9:        series
 Patch1:         go-build.patch
-Requires:       perl(DBD::mysql) >= 1.0
-Requires:       perl(DBI) >= 1.13
+BuildRequires:  perl(DBD::mysql) >= 3
+BuildRequires:  perl(DBI) >= 1.46
+BuildRequires:  perl(IO::Socket::SSL)
+BuildRequires:  perl(Term::ReadKey) >= 2.10
+BuildRequires:  perl(Time::HiRes)
+Requires:       perl(DBD::mysql) >= 3
+Requires:       perl(DBI) >= 1.46
 Requires:       perl(IO::Socket::SSL)
 Requires:       perl(Term::ReadKey) >= 2.10
 Requires:       perl(Time::HiRes)
 Provides:       maatkit = 7410.%{version}
 Obsoletes:      maatkit < 7410
 BuildRequires:  golang-packaging
+BuildRequires:  zstd
 BuildRequires:  golang(API)
 %{perl_requires}
-%{go_nostrip}
 
 %description
 Percona Toolkit is a collection of advanced command-line tools used by
@@ -64,15 +70,11 @@ This collection was formerly known as Maatkit.
 perl Makefile.PL INSTALLDIRS=vendor < /dev/null
 sed -i 's|%{_bindir}/env perl|%{_bindir}/perl|' bin/*
 sed -i 's|%{_bindir}/env bash|%{_bindir}/bash|' bin/*
-%make_build
-pushd src/go
-make linux \
-  TOP_DIR=../../ \
-  BIN_DIR=../../bingo/ \
+%make_build \
   VERSION=%{version} \
-  BUILD=$(date -u '+%FT%T%z' -d @${SOURCE_DATE_EPOCH}) \
-  COMMIT=%{revision} 
-popd
+  BUILD_DATE=$(date -u '+%FT%T%z' -d @${SOURCE_DATE_EPOCH}) \
+  COMMIT=%{revision} \
+  V=1
 
 %install
 %perl_make_install
@@ -84,7 +86,7 @@ rm -rf %{buildroot}%{_localstatedir}/adm/perl-modules/%{name}
 # a blank configuration file
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 cp %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/
-cp -a bingo/* %{buildroot}%{_bindir}/
+cp -a $(file bin/* | awk -F ':' '/x86-64/ {print $1}') %{buildroot}%{_bindir}/
 
 %files
 %license COPYING
