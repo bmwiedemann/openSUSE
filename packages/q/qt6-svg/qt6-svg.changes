@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 14 14:56:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.1
+  https://www.qt.io/blog/qt-6.11.1-released
+- Drop patch, merged upstream:
+  * 0001-Test-types-of-nodes-before-downcasting-them.patch
+
+-------------------------------------------------------------------
 Fri May  8 07:55:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix (CVE-2026-6210, boo#1264301)

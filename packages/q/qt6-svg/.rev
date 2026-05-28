@@ -363,4 +363,12 @@
   * 0001-Test-types-of-nodes-before-downcasting-them.patch</comment>
     <requestid>1351817</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1e07eaed308f23ff0798144f9981113a</srcmd5>
+    <version>6.11.1</version>
+    <time>1779981918</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.11.1 (+ backports) (forwarded request 1354945 from krop)</comment>
+    <requestid>1355442</requestid>
+  </revision>
 </revisionlist>
