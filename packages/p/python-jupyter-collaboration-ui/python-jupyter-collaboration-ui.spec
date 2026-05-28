@@ -16,14 +16,15 @@
 #
 
 
-%define distversion 2.2.1
+%define distversion 2.4
 Name:           python-jupyter-collaboration-ui
-Version:        2.2.1
+Version:        2.4.0
 Release:        0
 Summary:        Jupyter extension providing collaboration
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/jupyter-collaboration
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_collaboration_ui/jupyter_collaboration_ui-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-jupyter-builder >= 0.5}
 BuildRequires:  %{python_module hatchling >= 1.4.0}
 BuildRequires:  %{python_module jupyterlab >= 4.0.0}

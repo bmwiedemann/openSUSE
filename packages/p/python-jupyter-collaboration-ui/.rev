@@ -42,4 +42,13 @@
   * New subpackage version for jupyter-collaboration 4.2.1</comment>
     <requestid>1341875</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7ded5ee0362dec4fc4eeccd77ef7ac58</srcmd5>
+    <version>2.4.0</version>
+    <time>1779982053</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0
+  * New subpackage version for jupyter-collaboration 4.4.0</comment>
+    <requestid>1355496</requestid>
+  </revision>
 </revisionlist>
