@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 27 18:56:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.9
+ * Add FTP/SFTP.
+ * Fix insecure auth options in FTP Server.
+ * Fix timing attack surface on ftp password comparison.
+ * Fixed entropy on cert generation in Cert Serial Number.
+
+-------------------------------------------------------------------
 Wed May 13 14:14:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.8

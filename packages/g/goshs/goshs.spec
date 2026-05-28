@@ -16,7 +16,7 @@
 #
 
 Name:           goshs
-Version:        2.0.8
+Version:        2.0.9
 Release:        0
 Summary:        A simple HTTP server
 License:        MIT
