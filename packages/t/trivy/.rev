@@ -1508,4 +1508,12 @@ dropped patch file
    CVE-2026-46597,CVE-2026-46598,CVE-2026-46595,CVE-2026-39835)</comment>
     <requestid>1354755</requestid>
   </revision>
+  <revision rev="90" vrev="4">
+    <srcmd5>aa72c05d17e212c2af6ad348dfa88dd2</srcmd5>
+    <version>0.70.0</version>
+    <time>1779982034</time>
+    <user>anag_factory</user>
+    <comment>- update x/net to v0.55.0 (bsc#1266495, CVE-2026-39821)</comment>
+    <requestid>1355485</requestid>
+  </revision>
 </revisionlist>
