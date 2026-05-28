@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Tue May 26 06:32:22 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 1.22.2:
+  * build issues with OpenJPEG plugin (#1813)
+  * non-plain C in header (#1812)
+  * CVE TBD (GHSA-r7qj-cg5r-r6vf) - Wrapped icef compressed-unit
+    range check causes out-of-bounds read in uncompressed HEIF decoder
+  * CVE TBD (GHSA-5hqq-636x-r3cr) - Out-of-bounds write in inline mask
+    region API when source mask exceeds declared region
+- deleted patches
+  * libheif-fix-tests-no-HEVC.patch (upstreamed)
+- fixes [bsc#1266281]
+        [bsc#1266282]
+
+-------------------------------------------------------------------
+Mon May 25 12:26:20 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  https://github.com/strukturag/libheif/commit/5780da88104270ef316c764c2c2945e0c43af624
+  * libheif-fix-tests-no-HEVC.patch
+
+-------------------------------------------------------------------
+Wed May 20 17:59:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.22.0:
+  * This is a large release with substantial new functionality,
+    mainly focusing on generalized image formats (e.g., multi-
+    spectral images) and a reworked implementation of ISO/IEC
+    23001-17 (lossless image codec).
+  * HDR up to 64 bpp
+  * Multi-component images with arbitrary component layouts
+    (multi-spectral images, arbitrary non-visual data)
+  * Filter-array (Bayer / mosaic) images, with debayering in
+    color transformation pipeline
+  * Metadata: chroma-sample location (cloc), sample non-
+    uniformity (snuc), sensor bad-pixel map (sbpm), polarization
+    pattern (splz)
+  * heif-dec can now convert to WebP (thanks to @torusrxxx).
+  * heif-enc can now accept input from WebP, HEIF, pure raw files
+    (including floating point pixel data), and CMYK JPEG
+    (converted to RGB).
+  * TIFF input can now read many TIFF formats used in geospatial
+    imaging, like: 16-bit, signed integers, float samples, tiled
+    TIFFs, GeoTIFF overview images, CMYK JPEG, YCbCr-as-JPEG.
+    TIFFs with image tiling and multi-resolution layers are now
+    reproduced as HEIFs when converted.
+  * PNG decoder/encoder: cICP, cLLI, and mDCV chunk support
+    (#1697).
+  * heif-dec: auto-correct option to fix known input errors (e.g.
+    mismatched NCLX/VUI).
+  * Image, Track, Sequence samples, image component GIMI content
+    IDs
+  * Embedding of Turtle (.ttl) metadata files; automatic parsing
+    of GIMI content IDs from Turtle
+  * AOM encoder plugin now auto-selects IQ tune mode
+  * mini-box syntax updated to the current HEIF version 4 draft
+    (thanks @bradh for the initial implementation)
+  * unif brand (globally-unique-ID) support
+  * OMAF (omnidirectional images): indicate ISO/IEC 23000-22
+    spherical/omnidirectional image projection
+  * alpha bit-depth tracked through the color-conversion pipeline
+  * CVE-2026-32738 (GHSA-7f2h-cmpf-v9ww)  : Heap OOB Read / SEGV
+    Crash via Zero samples_per_chunk in stsc (bsc#1265874)
+  * CVE-2026-32739 (GHSA-j9g7-q9hv-gq8c) : Infinite Loop DoS in
+    stts Sample Duration Lookup (bsc#1265875)
+  * CVE-2026-32740 (GHSA-frfr-f3vg-2g6j) : Heap-Buffer-Overflow
+    Write in Grid Tile Chroma Compositing (bsc#1265876)
+  * CVE-2026-32741 (GHSA-j3w5-7whq-p37q) : heap buffer overflow
+    in decode_mask_image() (bsc#1265877)
+  * CVE-2026-32814 (GHSA-4m8r-34pg-rvwc)  : Uninitialized Heap
+    Memory Information Leak via Failed Grid Tiles (bsc#1265878)
+  * CVE-2026-32882 (GHSA-hg7q-rjr2-8x46) : Heap Buffer OOB Read
+    in overlay compositing due to wrong alpha stride (bsc#1265879)
+  * CVE-2026-41069 (GHSA-p82x-fpmv-576r) : Out-of-bounds vector
+    access leading to invalid dereference (bsc#1265979)
+  * CVE-2026-41071 (GHSA-xj92-xjff-h8w3) : Heap buffer over-read
+    in SampleAuxInfoReader via crafted HEIF sequence file with
+    mismatched saiz sample count (bsc#1265980)
+  * CVE-2026-47178 (GHSA-5x55-x5pf-9c6g) : Heap Out Of Bounds
+    Write in unci subsystem (bsc#1265981)
+  * CVE-2026-47247 (GHSA-2vh6-whr3-cmq3) : Heap Information
+    Disclosure via Grid Image Gap + Uninitialized Pixel Plane
+    Allocation (bsc#1265982)
+  * CVE-2026-47251 (GHSA-p6q9-fhf2-vj9v) : Incomplete fix for
+    (bsc#1265983)
+    CVE-2026-3949: integer overflow bypass in vvdec_push_data2
+  * CVE-2026-47254 (GHSA-wqjg-4x9g-6cvg) : Heap Buffer Overflow
+    in `Track::get_next_sample_raw_data()` -- OOB Chunk Vector
+    Access (bsc#1265987)
+  * CVE-2026-47709 (GHSA-4h72-vqgp-9376) : NULL pointer
+    dereference in heif_image_handle_get_image_tiling for
+    malformed unci image missing ispe
+    (bsc#1265988)
+  * CVE-2026-47714 (GHSA-h4wm-6wwf-qvhx) : Integer overflow in
+    inline mask size calculation causes undersized buffer
+    allocation (bsc#1265989)
+  * CVE-2026-48029 (GHSA-6x5f-qchq-cxqv) : heap OOB read in
+    ImageItem_Grid::decode_grid_tile via irot-induced tile-
+    coordinate underflow (bsc#1265990)
+  * (GHSA-95jx-g5vf-cpp8) : Integer Overflow in
+    SampleAuxInfoReader Offset Calculation (bsc#1265992)
+  * (GHSA-p4r6-6972-g26m) : Incorrect byte-count initialization
+    in BitstreamRange constructor allows container-boundary check
+    bypass (bsc#1265995)
+  * (GHSA-jh2w-m72q-q595) : Out-of-bounds read and assertion-
+    based DoS in EXIF parsing (find_exif_tag / read32) with short
+    EXIF TIFF payload (bsc#1265996)
+  * (GHSA-9h96-c44j-jpq9) : Heap buffer overflow via uint32_t
+    stride overflow in image plane allocation (bsc#1265997)
+  * ## Build / CI
+  * requires C++20
+  * oss-fuzz integration overhauled
+  * fuzzers for tile API, generic API surface, and per-codec
+    encoders
+- drop libheif-CVE-2026-3950.patch,
+    libheif-CVE-2026-3949.patch: upstream
+
+-------------------------------------------------------------------
+Mon May 18 15:55:36 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-3950: manipulation of the component stsz/stts can lead to out-of-bounds read [bsc#1259544]
+  * libheif-CVE-2026-3950.patch
+
+-------------------------------------------------------------------
 Mon Mar 16 09:03:49 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
