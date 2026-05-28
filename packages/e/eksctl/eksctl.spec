@@ -17,7 +17,7 @@
 
 
 Name:           eksctl
-Version:        0.226.0
+Version:        0.227.0
 Release:        0
 Summary:        The official CLI for Amazon EKS
 License:        Apache-2.0
