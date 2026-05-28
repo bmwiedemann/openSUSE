@@ -2,7 +2,7 @@
 # spec file for package less
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define use_usretc 1
 %endif
 Name:           less
-Version:        692
+Version:        702
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        BSD-2-Clause OR GPL-3.0-or-later
@@ -34,8 +34,9 @@ Source1:        README.SUSE
 Source2:        lessopen.sh
 Source3:        lessclose.sh
 Source4:        lesskey.src
-# Source5:        https://www.greenwoodsoftware.com/less/less-%%{version}.sig
-Source6:        https://www.greenwoodsoftware.com/less/pubkey.asc#/%{name}.keyring
+Source5:        https://www.greenwoodsoftware.com/less/less-%{version}.sig#/%{name}-%{version}.tar.gz.sig
+# https://www.greenwoodsoftware.com/less/pubkey.asc
+Source6:        %{name}.keyring
 Patch0:         less-429-shell.patch
 Patch2:         less-429-more.patch
 BuildRequires:  groff
@@ -88,8 +89,9 @@ chmod -x LICENSE COPYING NEWS README.SUSE
 %{_distconfdir}/lesskey.bin
 %{_bindir}/less
 %{_bindir}/lessclose.sh
-%{_bindir}/lessecho
 %{_bindir}/lesskey
 %{_bindir}/lessopen.sh
+%{_libexecdir}/lessecho
+%{_libexecdir}/less-osc8-open
 
 %changelog
