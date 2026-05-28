@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 24 13:07:38 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- Change owner of /etc/proftpd/auth to root:ftp to avoid the need
+  for capabilities dac_read_search and dac_override (boo#1265862)
+
+-------------------------------------------------------------------
 Wed Feb 11 12:27:37 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Removed "ProtectSystem=full" from proftpd.service. That directive

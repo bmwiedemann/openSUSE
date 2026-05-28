@@ -267,7 +267,7 @@ done
 %doc contrib/README.*
 %doc sample-configurations/*.conf
 %dir %attr(0755,root,root) %{_sysconfdir}/%{name}/
-%dir %attr(0750,ftp,ftp) %{_sysconfdir}/%{name}/auth/
+%dir %attr(0750,root,ftp) %{_sysconfdir}/%{name}/auth/
 %config(noreplace) %attr(0440,root,ftp) %{_sysconfdir}/%{name}/auth/passwd
 %dir %attr(0755,root,root) %{_sysconfdir}/%{name}/conf.d/
 %config %{_sysconfdir}/%{name}/conf.d/tls.template
