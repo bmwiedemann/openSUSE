@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 27 11:53:05 UTC 2026 - Ana Guerrero <ana.guerrero+factory@suse.com>
+
+- skip builds for python311 for the test flavor. Several of the 
+  required packages are not available for python311. 
+
+-------------------------------------------------------------------
 Tue Mar 24 19:37:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.3.6:

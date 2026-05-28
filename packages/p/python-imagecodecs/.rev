@@ -243,4 +243,15 @@
   * Improve code quality.</comment>
     <requestid>1349455</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0b7da1a8cd2ad2f8781d24550a9e763b</srcmd5>
+    <version>2026.3.6</version>
+    <time>1779982011</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1355370 from anag_factory
+
+- skip builds for python311 for the test flavor. Several of the 
+    required packages are not available for python311.</comment>
+    <requestid>1355478</requestid>
+  </revision>
 </revisionlist>

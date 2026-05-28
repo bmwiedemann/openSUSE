@@ -19,6 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
+%global skip_python311 1
 %bcond_without test
 %else
 %define psuffix %{nil}
