@@ -18,7 +18,7 @@
 
 %global base_name maven-surefire
 Name:           %{base_name}-plugins
-Version:        3.5.5
+Version:        3.5.6
 Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0

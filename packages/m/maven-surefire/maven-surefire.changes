@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu May 28 09:40:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.5.6
+  * New features and improvements
+    + Introduce reportTestTimestamp option and include timestamp for
+      test sets and test cases
+  * Bug Fixes
+    + Issue #2613 Debugging failsafe tests: Message 'Listening for
+      transport dt_socket at address' is not displayed anymore when
+      using maven.surefire.debug
+    + Ensure that the statistics filename is calculated only once.
+    + Add flakes attribute to use in testsuite report
+    + [BACKPORT 3.5.x] [SUREFIRE-2049] - Fix SHUTDOWN type lost
+      during command serialization.
+    + fix: null guard for context map
+  * Maintenance
+    + 3.5.x/bug/cherry pick embedded mode its
+    + Use surefire 3.5.5 by project itself for testing
+    + Follow Oracle javadoc guidelines
+  * Dependency updates
+    + Bump org.fusesource.jansi:jansi from 2.4.2 to 2.4.3
+    + Bump commons-io:commons-io from 2.21.0 to 2.22.0
+- Modified patches:
+  * 0001-Port-to-TestNG-7.4.0.patch
+  * 0002-Unshade-surefire.patch
+    + rediff
+  * maven-surefire-bootstrap-resources.patch
+    + regenerate from non-bootstrap build
+
+-------------------------------------------------------------------
 Fri Feb 20 13:07:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 3.5.5

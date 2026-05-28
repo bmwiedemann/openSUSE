@@ -1,4 +1,4 @@
-From 15452ca2e258bf013b3d5fd527d8871419d6b677 Mon Sep 17 00:00:00 2001
+From fa193c4c822c114e73b2c5ffa8504a9191751b26 Mon Sep 17 00:00:00 2001
 From: Mikolaj Izdebski <mizdebsk@redhat.com>
 Date: Mon, 10 Jul 2017 10:37:50 +0200
 Subject: [PATCH 1/2] Port to TestNG 7.4.0
@@ -16,7 +16,7 @@ Subject: [PATCH 1/2] Port to TestNG 7.4.0
  9 files changed, 104 insertions(+), 31 deletions(-)
 
 diff --git a/pom.xml b/pom.xml
-index 0d7109920..cc39bac47 100644
+index b8176502d..ede77c898 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -98,7 +98,7 @@
@@ -29,7 +29,7 @@ index 0d7109920..cc39bac47 100644
      <maven.site.path>surefire-archives/surefire-LATEST</maven.site.path>
      <maven.compiler.testSource>${javaVersion}</maven.compiler.testSource>
 diff --git a/surefire-providers/surefire-testng-utils/pom.xml b/surefire-providers/surefire-testng-utils/pom.xml
-index 209a92c2f..7324964bc 100644
+index 0a005bc1e..0805d0106 100644
 --- a/surefire-providers/surefire-testng-utils/pom.xml
 +++ b/surefire-providers/surefire-testng-utils/pom.xml
 @@ -47,7 +47,6 @@
@@ -240,7 +240,7 @@ index c0e7838bd..5f180624d 100644
      }
  }
 diff --git a/surefire-providers/surefire-testng/pom.xml b/surefire-providers/surefire-testng/pom.xml
-index 303c9ecf9..ae2be8983 100644
+index 687a34fe7..6245bb7f6 100644
 --- a/surefire-providers/surefire-testng/pom.xml
 +++ b/surefire-providers/surefire-testng/pom.xml
 @@ -61,7 +61,6 @@
@@ -252,7 +252,7 @@ index 303c9ecf9..ae2be8983 100644
      </dependency>
      <dependency>
 diff --git a/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/TestNGReporter.java b/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/TestNGReporter.java
-index ec887b792..3021a4049 100644
+index 1f9f9919d..f86fad552 100644
 --- a/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/TestNGReporter.java
 +++ b/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/TestNGReporter.java
 @@ -59,10 +59,6 @@ public class TestNGReporter
@@ -264,13 +264,13 @@ index ec887b792..3021a4049 100644
 -     * method call has already associated with this instance <i>before</i> the test
 -     * suite is run.
       *
-      * @param reportManager Instance to report suite status to
+      * @param reportManager instance to report suite status to
       */
 diff --git a/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/AbstractDirectConfigurator.java b/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/AbstractDirectConfigurator.java
-index b73b9bacd..6ab5a626d 100644
+index 508993ba2..fdd39fbe2 100644
 --- a/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/AbstractDirectConfigurator.java
 +++ b/surefire-providers/surefire-testng/src/main/java/org/apache/maven/surefire/testng/conf/AbstractDirectConfigurator.java
-@@ -57,7 +57,7 @@ public void configure(TestNG testng, Map<String, String> options) throws TestSet
+@@ -56,7 +56,7 @@ public void configure(TestNG testng, Map<String, String> options) throws TestSet
          testng.setUseDefaultListeners(false);
          configureInstance(testng, options);
          // TODO: we should have the Profile so that we can decide if this is needed or not
@@ -353,5 +353,5 @@ index 097a74d1e..8b34db85d 100755
      }
  
 -- 
-2.53.0
+2.54.0
 
