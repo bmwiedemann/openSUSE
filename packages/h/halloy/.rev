@@ -341,4 +341,41 @@ Added:
       tooltips</comment>
     <requestid>1348742</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>16ae5af80709d26fd3169fa50fc7d52e</srcmd5>
+    <version>2026.7</version>
+    <time>1780002780</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2026.7:
+Added:
+  * Support for IRCv3 reply client tag
+  * Support for IRCv3 draft/message-redaction
+  * Support for IRCv3 metadata display-name, avatar, pronouns,
+    homepage, color, status keys
+  * IRCv3 bot mode support, with bot icon in buffers and nicklists
+  * Support for IRCv3 WebSockets
+  * Support for displaying SVGs
+  * Notification for reacts (notifications.reaction)
+  * Theme colors for horizontal rule text and buffer backlog/date
+    separators
+  * Font size settings the sidebar (sidebar.font_size) and server
+    titles in the sidebar (sidebar.server_font_size)
+  * The focused buffer is indicated in the sidebar by a thin border
+    (can be configured with the optional theme color
+    buttons.primary.border_active, falls back to
+    buffer.border_selected if no color is configured;
+    set to &quot;#00000000&quot; to disable)
+  * Two new optional theme colors, buttons.primary.border_active
+    and buttons.secondary.border_active, that define border color
+    used to signal secondary state (set to &quot;#00000000&quot; to disable)
+  * The config buffer.server_messages.condense.max may be used to
+    limit the number of user entries shown in condensed messages
+  * Setting to close queries when closing query buffer panes
+    (buffer.close.query)
+  * Configuration options for font stretch (font.stretch)
+  * Customize the character used to indicate a nickname was
+    truncated with display.truncation_character
+  * Support for draft/chathistory-end message tag</comment>
+    <requestid>1355670</requestid>
+  </revision>
 </revisionlist>

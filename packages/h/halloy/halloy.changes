@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Thu May 28 15:16:49 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2026.7:
+Added:
+  * Support for IRCv3 reply client tag
+  * Support for IRCv3 draft/message-redaction
+  * Support for IRCv3 metadata display-name, avatar, pronouns,
+    homepage, color, status keys
+  * IRCv3 bot mode support, with bot icon in buffers and nicklists
+  * Support for IRCv3 WebSockets
+  * Support for displaying SVGs
+  * Notification for reacts (notifications.reaction)
+  * Theme colors for horizontal rule text and buffer backlog/date
+    separators
+  * Font size settings the sidebar (sidebar.font_size) and server
+    titles in the sidebar (sidebar.server_font_size)
+  * The focused buffer is indicated in the sidebar by a thin border
+    (can be configured with the optional theme color
+    buttons.primary.border_active, falls back to
+    buffer.border_selected if no color is configured;
+    set to "#00000000" to disable)
+  * Two new optional theme colors, buttons.primary.border_active
+    and buttons.secondary.border_active, that define border color
+    used to signal secondary state (set to "#00000000" to disable)
+  * The config buffer.server_messages.condense.max may be used to
+    limit the number of user entries shown in condensed messages
+  * Setting to close queries when closing query buffer panes
+    (buffer.close.query)
+  * Configuration options for font stretch (font.stretch)
+  * Customize the character used to indicate a nickname was
+    truncated with display.truncation_character
+  * Support for draft/chathistory-end message tag
+  * Setting to mark new messages as read for any open buffer when
+    the buffer is scrolled to the bottom and Halloy is focused
+    (buffer.mark_as_read.on_message)
+  * Setting to hide the text of messages that contain only a
+    single URL, when the URL's preview is visible
+    (preview.hide_url)
+  * Nick and channel completion picker
+  * Runtime graphics settings (graphic backend, vsync, and
+    antialiasing)
+Fixed:
+  * Issue where duplicate messages could appear for sent messages
+    when connecting to a soju bouncer
+  * Issue where ZNC playback would produce duplicate messages
+  * Record NICK and QUIT messages returned by draft/event-playback
+    (chathistory)
+  * Preview inclusion conditions would require both channel and
+    user/server_message be specified, when one or the other should
+    be sufficient
+  * Matching against users for some include/exclude conditions
+  * Do not hide consecutive nicknames if the user's displayed
+    access levels or bot mode changes
+  * Link matching:
+    + Channel link matching on single line only
+    + Fix link matching for both end of line delimiters and
+      punctuations
+    + Handle URLs ending with paired delimiters chars when matching
+      links
+    + Handle leading delimiters when parsing link fragments to
+      match nicks after quotes
+  * Issue where a shorter highlight word would match instead of a
+    longer one sharing the same prefix
+  * Issue where unread indicator could appear in sidebar for an
+    open pane that does not have unread messages
+  * Issue where backlog divider in highlights or logs pane would
+    not update when marking the pane as read
+  * VERSION and JOIN commands on connect are skipped if server is
+    primary soju server
+  * Emoji pickers not finding newer emoji like 🙂‍↕️
+  * Selection expansion will take precedence over input history
+    navigation (i.e. shift + ↑ will expand the selection to
+    include the top line of input, rather than navigate to the
+    previous input history entry)
+  * Window title displays buffer name after closing previously last
+    pane
+Changed:
+  * On-join topic messages dropped by default
+    (buffer.server_messages.join_topic), instead the topic banner
+    is enabled by default (buffer.channel.topic_banner)
+  * Topic messages manually requested via /topic have a distinct
+    setting from topic messages received on join
+    (buffer.server_messages.topic
+    → buffer.server_messages.request_topic
+    and buffer.server_messages.join_topic)
+  * Badging on server icons used to indicate unread/highlight state
+    (instead of the color of the server icon); unread indicators
+    positioned to be aligned with server badge
+  * Default sidebar.server_icon.size changed from 12 → 20
+  * Default sidebar.unread_indicator.highlight_icon_size changed
+    from 8 → 6
+  * Default sidebar.spacing.server changed from 6 → 2
+  * Default sidebar.padding.buffer changed from [4, 4] to [5, 4]
+  * For filehosts, localhost is now treated as a secure transport
+    when using servers.<name>.filehost.override_url
+  * buffer.mark_as_read.on_message = true is now equivalent to
+    buffer.mark_as_read.on_message = "open" (previously equivalent
+    to buffer.mark_as_read.on_message = "focused")
+  * Tooltips have had their spacing tightened
+  * Reactions are listed in the order they were first added to the
+    message
+  * Reaction tooltips:
+    + Display the reaction text in a larger font size (uses
+      font.only_emojis_size if set and the reaction is an emoji)
+    + Lists nicks with a new layout, where nicks are now colored
+      and are listed in order of when they reacted
+
+-------------------------------------------------------------------
 Wed Apr 22 07:56:42 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to version 2026.6:
