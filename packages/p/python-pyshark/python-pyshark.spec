@@ -23,27 +23,27 @@ Version:        0.6
 Release:        0
 Summary:        A Python wrapper for tshark output parsing
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/KimiNewt/pyshark
 #Git-Clone:     https://github.com/KimiNewt/pyshark.git
 Source:         https://github.com/KimiNewt/pyshark/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix_tshark.patch -- based on PR 744
 Patch0:         fix_tshark.patch
+# PATCH-FIX-UPSTREAM gh#KimiNewt/pyshark#755
+Patch1:         support-python-314.patch
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module termcolor}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  wireshark
-Requires:       %{python_module packaging}
 Requires:       python-appdirs
 Requires:       python-lxml
-Requires:       python-py
+Requires:       python-packaging
 Requires:       python-termcolor
 Requires:       wireshark
 BuildArch:      noarch
@@ -55,6 +55,7 @@ wireshark dissectors.
 
 %prep
 %autosetup -p1 -n pyshark-%{version}/src
+dos2unix ../README.md
 
 %build
 %pyproject_wheel
@@ -66,7 +67,9 @@ wireshark dissectors.
 %check
 # test "inmem_capture" needs to be fixed upstream, do not run it for now
 rm -f ../tests/capture/test_inmem_capture.py ../tests/capture/test_live_capture.py
-%pytest ../tests
+# test_iterate_empty_psml_capture broken with Python 3.14 forkserver
+# test_get_tshark_path missing config
+%pytest ../tests -k 'not (test_iterate_empty_psml_capture or test_get_tshark_path)'
 
 %files %{python_files}
 %license ../LICENSE.txt

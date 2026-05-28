@@ -68,4 +68,15 @@
     <comment></comment>
     <requestid>1330340</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2f34a531ae63d8738253d14d4d812e63</srcmd5>
+    <version>0.6</version>
+    <time>1779982064</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-314.patch:
+  * Support Python 3.14 asyncio loop changes. (bsc#1266046)
+- Fix Requires.
+- Fix line endings for the README.</comment>
+    <requestid>1355502</requestid>
+  </revision>
 </revisionlist>

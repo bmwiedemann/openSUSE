@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 28 02:12:50 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-314.patch:
+  * Support Python 3.14 asyncio loop changes. (bsc#1266046)
+- Fix Requires.
+- Fix line endings for the README.
+
+-------------------------------------------------------------------
 Wed Jan 28 13:13:03 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Add fix_tshark.patch: field is no longer available, so the tests now pass
