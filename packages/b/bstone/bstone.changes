@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 27 18:50:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.4
+  Fixed
+  * [#550] Nuked OPL3 audio decoding.
+  Added
+  * Extract AdLib audio with Nuked OPL3 too.
+
+-------------------------------------------------------------------
 Sun Jan 25 15:25:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.3.3
