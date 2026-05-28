@@ -258,4 +258,12 @@
     <comment></comment>
     <requestid>1296187</requestid>
   </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>427fb258fca9705ca9f496dc3ec7eeac</srcmd5>
+    <version>0.999</version>
+    <time>1779982390</time>
+    <user>anag_factory</user>
+    <comment>- disable autopoint execution when running autoreconf</comment>
+    <requestid>1355602</requestid>
+  </revision>
 </revisionlist>

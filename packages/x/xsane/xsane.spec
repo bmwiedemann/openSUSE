@@ -97,7 +97,7 @@ mv configure.in configure.ac
 %build
 # Set our preferred architecture-specific flags for the compiler and linker:
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-ACLOCAL="aclocal -I m4" autoreconf -f -i
+ACLOCAL="aclocal -I m4" AUTOPOINT=true autoreconf -f -i
 %configure\
 %if %{with gimp}
 	--enable-gimp
