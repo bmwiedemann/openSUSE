@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu May 28 09:48:53 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.11.0
+  * New features and improvements
+    + Add dependency:add and dependency:remove goals
+    + Added ability to provide arbitrary dependencies to properties
+      mojo
+  * Bug Fixes
+    + Fix artifact relocation support
+    + fix: fix addParentPoms=true causes repositories to be ignored.
+    + Fix false positive in analyze-exclusions with transitive
+      dependency exclusion
+    + Make AbstractAnalyzeMojo.filterArtifactsByScope() null-safe
+    + Prevent NPE in BuildClasspathMojo.appendArtifactPath() when an
+      artifact has no resolved file
+    + Log unpacking at debug level
+    + Resolve plugins declared in pluginManagement for
+      resolve-plugins and go-offline
+    + Fix analyze-exclusions crashes if there is no
+      dependencyManagement element
+  * Maintenance
+    + Enable ITs for dependency:remove and use mock dependencies
+    + More meaningful assertions
+    + Cure various typos IntelliJ complains about
+    + Remove unused jansi dependency
+    + Enable ITs for dependecy:add and use mock dependencies
+    + Cleaner exception handling
+  * Dependency updates
+    + Manage ASM version 9.10 to support JDK 27
+    + Bump eu.maveniverse.maven.domtrip:domtrip-core from 1.5.0 to
+      1.5.1
+    + Bump eu.maveniverse.maven.domtrip:domtrip-maven from 1.5.0 to
+      1.5.1
+    + Bump mavenVersion from 3.9.12 to 3.9.16
+    + Bump org.apache.maven.shared:maven-dependency-analyzer from
+      1.17.0 to 1.17.1
+    + Bump org.apache.commons:commons-lang3 from 3.17.0 to 3.18.0 in
+      /src/it/projects/remove-dependency/basic
+    + Bump org.apache.maven.plugins:maven-plugins from 47 to 48
+    + Bump org.jsoup:jsoup from 1.22.1 to 1.22.2
+    + Bump org.apache.maven.doxia:doxia-sink-api from 2.0.0 to 2.1.0
+    + Bump org.fusesource.jansi:jansi from 2.4.2 to 2.4.3
+    + Bump org.apache.maven.plugin-testing
+      :maven-plugin-testing-harness from 3.5.0 to 3.5.1
+
+-------------------------------------------------------------------
 Mon Feb  9 12:14:00 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.10.0

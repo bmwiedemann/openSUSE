@@ -17,7 +17,7 @@
 
 
 Name:           maven-dependency-plugin
-Version:        3.10.0
+Version:        3.11.0
 Release:        0
 Summary:        Plugin to manipulate, copy and unpack local and remote artifacts
 License:        Apache-2.0
@@ -27,6 +27,8 @@ Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
+BuildRequires:  mvn(eu.maveniverse.maven.domtrip:domtrip-core)
+BuildRequires:  mvn(eu.maveniverse.maven.domtrip:domtrip-maven)
 BuildRequires:  mvn(javax.inject:javax.inject)
 BuildRequires:  mvn(org.apache.commons:commons-lang3)
 BuildRequires:  mvn(org.apache.maven.doxia:doxia-sink-api)
