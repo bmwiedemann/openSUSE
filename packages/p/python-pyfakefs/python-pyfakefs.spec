@@ -26,18 +26,18 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyfakefs%{psuffix}
-Version:        6.1.6
+Version:        6.2.0
 Release:        0
 Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0
 URL:            https://github.com/jmcgeheeiv/pyfakefs
 Source:         https://github.com/jmcgeheeiv/pyfakefs/archive/v%{version}.tar.gz#/python-pyfakefs-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python
+Requires:       python >= 3.10
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module pytest >= 3}

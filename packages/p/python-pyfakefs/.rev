@@ -459,4 +459,23 @@
 </comment>
     <requestid>1341974</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5a44d0e306bde469c12aebeb8f75a78c</srcmd5>
+    <version>6.2.0</version>
+    <time>1780002456</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.2.0:
+  * fake file wrappers now derive from `io.TextIOBase` or
+    `io.BufferedIOBase`, so that `isinstance`-checks for these
+    classes succeed
+  * route some pseudo-devices to the system instead of patching
+    them; this ensures that `os.urandom` and related functions
+    work correctly with PyPy
+  * fake file `seek` method did not return the location in the
+    file
+  * make sure case sensitivity is correctly set for fake posix
+    paths in `hash()`, `Path.match` and `Path.full_match`
+  * use newest `pytest` for testing in CI</comment>
+    <requestid>1355087</requestid>
+  </revision>
 </revisionlist>
