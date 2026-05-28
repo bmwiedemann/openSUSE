@@ -441,4 +441,41 @@
     <comment></comment>
     <requestid>1342835</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5b4790503d9ec60e66e8863f1857ed88</srcmd5>
+    <version>1.24.2</version>
+    <time>1780002468</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.24.2:
+  * Switched the aarch64 and armv7l wheel builds to GitHub's
+    native ARM runners. The aarch64 wheels now build without QEMU
+    emulation, and armv7l runs on aarch64 hosts so its 32-bit ARM
+    execution is far cheaper than the previous aarch64-on-x86_64
+    path -- by :user:`bdraco`. Related issues and pull requests
+    on GitHub: :issue:`1724`.
+  * Restored per-runner native arches in the Windows wheel matrix
+    on tag releases. The previous CIBW_ARCHS_WINDOWS=AMD64 ARM64
+    setting made both windows-latest and windows-11-arm cross-
+    compile the other arch, producing two artifacts with
+    identically-named wheels whose bytes differed; the deploy
+    job's download-artifact ... merge-multiple step tore those
+    writes together, yielding a wheel that PyPI rejected with 400
+    Invalid distribution file. ZIP archive not accepted: Mis-
+    matched data size during the 1.24.0 and 1.24.1 releases -- by
+    :user:`bdraco`. Related issues and pull requests on GitHub:
+    :issue:`1725`.
+  * Allowed re-running the deploy job after a partial release
+    failure: the Make Release step now skips when the GitHub
+    Release already exists, and the PyPI publish step uses skip-
+    existing so dists that were already uploaded on a prior
+    attempt do not break the retry -- by :user:`bdraco`. Related
+    issues and pull requests on GitHub: :issue:`1721`.
+  * Delayed importing pydantic until it's needed to avoid
+    increased import time -- by :user:`Dreamsorcerer`. Related
+    issues and pull requests on GitHub: :issue:`1607`,
+    :issue:`1702`.
+  * Fixed pickling of :class:`~yarl.URL` on Python 3.15, where
+    SplitResult gained a __getstate__ that requires attributes</comment>
+    <requestid>1355112</requestid>
+  </revision>
 </revisionlist>
