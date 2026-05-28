@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 28 11:48:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 4.9.1
+  * OpenID Connect claim names for email, first name, last name,
+    and full name can now be configured.
+  * Removed legacy OAuth1 backends for Douban and Mendeley.
+  * Apple ID backend now validates the ID token issuer.
+  * Azure AD backends now validate ID token signatures, issuer,
+    audience, tenant, and policy claims. Tokens accepted by earlier
+    versions might now be rejected.
+  * OpenID Connect backends now reject UserInfo responses whose sub
+    does not match the validated ID token subject.
+  * GitHub backend now handles scoped email fetching deterministically.
+
+-------------------------------------------------------------------
 Sat Apr 25 21:43:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.7:

@@ -20,7 +20,7 @@
 %define modname social-core
 %{?sle15_python_module_pythons}
 Name:           python-social-auth-core
-Version:        4.8.7
+Version:        4.9.1
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause
