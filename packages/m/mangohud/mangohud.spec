@@ -22,7 +22,7 @@
 %define implot_ver 0.16
 %define vulkan_ver 1.4.346
 Name:           mangohud
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        A Vulkan and OpenGL overlay for monitoring
 License:        MIT

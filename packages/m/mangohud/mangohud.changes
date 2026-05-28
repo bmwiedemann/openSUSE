@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 28 04:21:47 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.4:
+  * fixed Steam Overlay coexistence due to Vulkan layer 
+    procaddr/trampolining issues.
+  * fixed dx_api always showing dx? for DX9/11, also added DX3-7
+  * fixed imgui static library being installed unexpectedly
+  * vulkan: removed redundant instance dispatch table reload
+  * vulkan: fixed loader procaddr forwarding
+  * vulkan: exported Vulkan layer negotiation entrypoint. 
+
+-------------------------------------------------------------------
 Mon May 18 03:31:50 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.8.3:
