@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Mon May 25 21:27:30 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.10.1
+  * bug fixes
+    + 318045: The retrofitter should also remove the (forRemoval)
+      from the @Deprecated annotation associated with fields
+
+-------------------------------------------------------------------
 Mon May 18 09:59:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
-- Upgrade to verision 9.10
+- Upgrade to version 9.10
   * new Opcodes.V27 constant for Java 27
   * bug fixes
     + 318041: Compilation failure with JDK 5
