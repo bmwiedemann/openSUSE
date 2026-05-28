@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 27 10:32:53 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2026.04.22 (CVE-2026-41470, boo#1265856):
+  + Added extra checking to the handling of the RTSP server's
+    "PLAY", "PAUSE", "TEARDOWN", and "SET_PARAMETER" commands, to
+    ensure that, if the session is authenticated, then a proper
+    authentication check is done before these commands are handled.
+    This protects against the use of a 'stolen' RTSP session id to
+    send these commands.  (Note, however, that if the session is
+    not authenticated (i.e., no username,password is needed), then no
+    such protection is possible.)
+- Changes from version 2026-04-01:
+  + Updated the way that the RTSP server generates successive RTSP
+    'session ids' to make it less likely that an attacker could
+    guess a session id.
+  + Updated the RTSP server implementation to make it possible for
+    a client to request both interleaved (i.e., RTP/RTCP-over-TCP)
+    and non-interleaved (i.e., RTP/RTCP-over-UDP) delivery within
+    the same session.
+
+-------------------------------------------------------------------
 Fri Mar 27 09:03:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2026.03.23:
