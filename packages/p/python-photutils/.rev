@@ -933,4 +933,41 @@
 </comment>
     <requestid>1306463</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>68046b1420fee3fb4f1584c4dd089264</srcmd5>
+    <version>3.0.0</version>
+    <time>1779982133</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.0.0
+  ## New Features
+  ### photutils.aperture
+  * The to_sky and to_pixel methods for all pixel and sky aperture
+    types now use the local WCS Jacobian to accurately compute
+    pixel scale factors and rotation angles. This correctly handles
+    WCS with distortions (e.g., SIP polynomial corrections) and
+    non-square pixels. [#2240]
+  ### photutils.background
+  * Added a to_aperture method to LocalBackground. [#2118]
+  ### photutils.centroids
+  * Added a CentroidQuadratic class to provide an object-oriented
+    interface to the centroid_quadratic function. [#2163, #2169]
+  ### photutils.detection
+  * Added a public StarFinderCatalogBase class that provides a
+    common base for the catalogs in the DAOStarFinder,
+    IRAFStarFinder, and StarFinder classes. [#2149, #2201]
+  * Added __repr__ and __str__ methods to DAOStarFinder,
+    IRAFStarFinder, and StarFinder. [#2201]
+  * Significantly improved the performance of DAOStarFinder,
+    IRAFStarFinder, and StarFinder by vectorizing cutout extraction
+    and image moment computation. [#2201]
+  * The threshold parameter in DAOStarFinder, IRAFStarFinder, and
+    StarFinder now accepts a 2D array in addition to a scalar
+    value, allowing for spatially varying detection thresholds.
+    [#2202]
+  * Added a scale_threshold parameter to DAOStarFinder. When set to
+    False, the input threshold is applied directly to the convolved
+    data without the default kernel-based scaling. [#2202]
+  * Added a min_separation keyword to find_peaks. The</comment>
+    <requestid>1355561</requestid>
+  </revision>
 </revisionlist>

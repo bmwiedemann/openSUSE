@@ -1,4 +1,433 @@
 -------------------------------------------------------------------
+Thu May 28 07:49:41 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.0
+  ## New Features
+  ### photutils.aperture
+  * The to_sky and to_pixel methods for all pixel and sky aperture
+    types now use the local WCS Jacobian to accurately compute
+    pixel scale factors and rotation angles. This correctly handles
+    WCS with distortions (e.g., SIP polynomial corrections) and
+    non-square pixels. [#2240]
+  ### photutils.background
+  * Added a to_aperture method to LocalBackground. [#2118]
+  ### photutils.centroids
+  * Added a CentroidQuadratic class to provide an object-oriented
+    interface to the centroid_quadratic function. [#2163, #2169]
+  ### photutils.detection
+  * Added a public StarFinderCatalogBase class that provides a
+    common base for the catalogs in the DAOStarFinder,
+    IRAFStarFinder, and StarFinder classes. [#2149, #2201]
+  * Added __repr__ and __str__ methods to DAOStarFinder,
+    IRAFStarFinder, and StarFinder. [#2201]
+  * Significantly improved the performance of DAOStarFinder,
+    IRAFStarFinder, and StarFinder by vectorizing cutout extraction
+    and image moment computation. [#2201]
+  * The threshold parameter in DAOStarFinder, IRAFStarFinder, and
+    StarFinder now accepts a 2D array in addition to a scalar
+    value, allowing for spatially varying detection thresholds.
+    [#2202]
+  * Added a scale_threshold parameter to DAOStarFinder. When set to
+    False, the input threshold is applied directly to the convolved
+    data without the default kernel-based scaling. [#2202]
+  * Added a min_separation keyword to find_peaks. The
+    implementation uses fast separable box filters and is
+    approximately 10-400x faster than using an explicit circular
+    footprint with scipy.ndimage.maximum_filter (depending on the
+    radius), while producing identical results. [#2246]
+  ### photutils.profiles
+  * Added a EnsquaredCurveOfGrowth class to compute a curve of
+    growth using concentric square apertures. [#2184]
+  * Added a EllipticalCurveOfGrowth class to compute a curve of
+    growth using concentric elliptical apertures with a fixed axis
+    ratio and orientation. [#2184]
+  * Added moffat_fit, moffat_profile, and moffat_fwhm properties to
+    RadialProfile for fitting a 1D Moffat model to the radial
+    profile. [#2185]
+  ### photutils.psf
+  * Added a SourceGroups class that stores the results of grouping
+    sources and provides methods to analyze and plot the groupings.
+    [#2116]
+  * Added remove_invalid and reset_ids keywords to the
+    results_to_init_params and results_to_model_params methods of
+    PSFPhotometry and IterativePSFPhotometry. [#2131]
+  * Added a decode_flags convenience method to PSFPhotometry and
+    IterativePSFPhotometry classes to decode the bitwise flags from
+    the results table. [#2132, #2136]
+  * Added a return_bit_flags keyword to the decode_psf_flags
+    function. [#2136]
+  * Added __repr__ methods to ImagePSF and GriddedPSFModel. [#2134]
+  * Added a shape property to ImagePSF. [#2158]
+  * EPSFBuilder now automatically excludes stars that repeatedly
+    fail fitting and emits warnings with specific failure reasons.
+    [#2158, #2165]
+  * Added validation and automatic shape handling for
+    fit_shape=None in fit_2dgaussian and fit_fwhm. The functions
+    now require explicit fit_shape for multiple sources and emit an
+    informative warning for single-source fitting. [#2164]
+  * The fit_fwhm and fit_2dgaussian xypos value can now be input as
+    a zip object. [#2164]
+  ### photutils.psf_matching
+  * Added a regularization keyword to make_kernel to regularize
+    division by near-zero values in the source Optical Transfer
+    Function. [#2170, #2171, #2175]
+  * Added make_wiener_kernel function that uses Wiener
+    regularization to make a PSF matching kernel. [#2171, #2172,
+    #2175]
+  * make_kernel now validates input PSFs (2D, odd dimensions,
+    centered) and the window function output. [#2170]
+  * resize_psf now validates input PSFs and pixel scales. [#2170]
+  * Added __repr__ methods to CosineBellWindow, HanningWindow,
+    SplitCosineBellWindow, TopHatWindow, and TukeyWindow classes.
+    [#2176]
+  ### photutils.segmentation
+  * The SourceCatalog fluxfrac_radius now caches results by
+    fluxfrac value. Repeated calls with the same fluxfrac return
+    the cached result without recomputation. [#2197]
+  * The radial step used when searching for a bracketing interval
+    in SourceCatalog fluxfrac_radius is now set to 10% of the
+    current max_radius, bounding the fallback loop to at most ~10
+    iterations regardless of source size. [#2197]
+  * Improved the performance (~6-9x speedup) of SourceCatalog
+    min_value, max_value, segment_flux, segment_flux_err,
+    background_sum, and background_mean. [#2199]
+  * Added SegmentationImage get_segment and get_segments methods to
+    return the Segment object(s) for a given label or list of
+    labels. [#2228, #2256]
+  * Added the ability to input RegionVisual keywords to the
+    SegmentationImage to_regions method. [#2228]
+  * Added SegmentationImage get_polygon, get_polygons, get_patch,
+    get_patches, get_region, and get_regions methods to return the
+    polygon, patch, or region for a given segment label or list of
+    labels. [#2232]
+  * Improved the performance of the SegmentationImage keep_labels
+    method and missing_labels attribute. [#2234]
+  * Improved the performance of SourceCatalog centroid_win (~3.5x
+    speedup), centroid_quad, fluxfrac_radius (~6x speedup),
+    kron_radius (~2x speedup), moments, moments_central, perimeter,
+    and Kron photometry. [#2238]
+  ### photutils.utils
+  * Significantly improved the performance (by factors of 3 or
+    more) of ShepardIDWInterpolator [#2187].
+  * Added a use_future_column_names context manager for temporarily
+    enabling future column names in a scoped, thread-safe, and
+    async-safe way without modifying the global
+    photutils.future_column_names flag. [#2258]
+  ## Bug Fixes
+  ### photutils.background
+  * Fixed Background2D raising AttributeError when passed a
+    function as bkg_estimator or bkgrms_estimator instead of a
+    class instance with a sigma_clip attribute. [#2181]
+  * Fixed silent truncation of background estimates when integer
+    input data were provided to Background2D. Integer inputs now
+    produce np.float32 output to preserve precision from
+    interpolation. [#2181]
+  ### photutils.centroids
+  * Fixed a bug in centroid_sources where the input error array
+    could be ignored if more than one source was input. [#2179]
+  ### photutils.datasets
+  * Fixed a bug in apply_poisson_noise where the returned image
+    could have a different dtype than the input. [#2173]
+  ### photutils.detection
+  * Fixed StarFinder mutating the input kernel array during
+    normalization. [#2201]
+  * Fixed an edge case of find_peaks not excluding NaN pixel
+    locations from peak detection, which could produce false peaks
+    when the NaN fill value was a local maximum. [#2247]
+  ### photutils.isophote
+  * build_ellipse_model now integrates over all angles instead of
+    stopping once it hits the edge of the output image. [#2156]
+  ### photutils.morphology
+  * Fixed issues with negative pixel values input to gini. [#2178]
+  ### photutils.profiles
+  * Fixed an issue where the mask (input and non-finite values) was
+    not applied to the raw data profile. [#2184]
+  ### photutils.psf
+  * PSFPhotometry and IterativePSFPhotometry now handle non-finite
+    (NaN or inf) local background values instead of raising an
+    error. Three new flags have been added to identify sources with
+    non-finite values: flag 512 for non-finite fitted positions,
+    flag 1024 for non-finite fitted flux, and flag 2048 for
+    non-finite local background. [#2131]
+  * Fixed a bug in EPSFBuilder where the recentering_boxsize was
+    being applied in oversampled space instead of the original star
+    pixel space. [#2168]
+  ### photutils.segmentation
+  * Fixed a bug in SourceCatalog where the (x, y) coordinates were
+    swapped in the map_coordinates call used to interpolate the
+    background at source centroids, causing background_centroid to
+    return incorrect values. [#2198]
+  * Fixed an issue in SourceCatalog where incorrect masking
+    behavior could occur when apermask_method='none'. [#2198]
+  * Fixed an issue in SourceCatalog where unrealistically large
+    kron_radius values could cause out-of-memory issues. [#2237]
+  ## API Changes
+  ####photutils
+  * Passing optional arguments positionally to all functions,
+    classes, and methods in photutils is now deprecated. In the
+    future, all optional arguments must be passed as keyword
+    arguments. [#2219]
+  ### photutils.aperture
+  * The ApertureStats covar_sigx2, covar_sigxy, and covar_sigy2
+    attributes have been renamed to covariance_xx, covariance_xy,
+    and covariance_yy, respectively. The old names are deprecated.
+    [#2241]
+  * The ApertureStats cxx, cxy, and cyy attributes have been
+    renamed to ellipse_cxx, ellipse_cxy, and ellipse_cyy,
+    respectively. The old names are deprecated. [#2241]
+  * The ApertureStats data_sumcutout and error_sumcutout attributes
+    have been renamed to data_sum_cutout and error_sum_cutout,
+    respectively. The old names are deprecated. [#2241]
+  * The ApertureStats get_id and get_ids methods have been renamed
+    to select_id and select_ids, respectively. The old names are
+    deprecated. [#2241]
+  * The ApertureStats semimajor_sigma and semiminor_sigma
+    attributes/columns have been renamed to semimajor_axis and
+    semiminor_axis, respectively. The old names are deprecated.
+    [#2241]
+  * The ApertureStats xcentroid and ycentroid attributes/columns
+    have been renamed to x_centroid and y_centroid, respectively.
+    The old names are deprecated. [#2241]
+  * The xcenter and ycenter column names in the table returned by
+    aperture_photometry have been renamed to x_center and y_center,
+    respectively. The old names are deprecated. [#2241]
+  * The CircularMaskMixin, EllipticalMaskMixin, and
+    RectangularMaskMixin classes are now deprecated. The mask
+    generation is now handled internally by the PixelAperture base
+    class. [#2242]
+  ### photutils.background
+  * Removed the deprecated edge_method keyword from Background2D.
+    [#2102]
+  * Removed the deprecated background_mesh_masked,
+    background_rms_mesh_masked, and mesh_nmasked properties from
+    Background2D. [#2102]
+  * Removed the deprecated grid_mode keyword from
+    BkgZoomInterpolator. [#2102]
+  * The interpolator keyword argument for Background2D is now
+    deprecated. When interpolator is eventually removed, the
+    scipy.ndimage.zoom cubic spline interpolator will always be
+    used to resize the low-resolution arrays. The behavior will be
+    identical to the current default. [#2108]
+  * The Background2D npixels_mesh and npixels_map properties have
+    been renamed to n_pixels_mesh and n_pixels_map, respectively.
+    The old names are deprecated. [#2241]
+  * The BkgIDWInterpolator and BkgZoomInterpolator classes are now
+    deprecated. [#2108]
+  * The Background2D bkgrms_estimator keyword argument has been
+    renamed to bkg_rms_estimator. The old name is deprecated.
+    [#2241]
+  ### photutils.centroids
+  * The xpeak, ypeak, and search_boxsize keyword arguments for
+    centroid_quadratic are now deprecated. Use centroid_sources to
+    centroid sources at specific positions. [#2160]
+  ### photutils.datasets
+  * The get_path, load_spitzer_image, load_spitzer_catalog, and
+    load_star_image functions are now deprecated and will be
+    removed in a future version. [#2135]
+  ### photutils.detection
+  * find_peaks now returns a QTable instead of a Table. [#2201]
+  * The sharplo and sharphi keyword arguments for DAOStarFinder and
+    IRAFStarFinder are now deprecated. Use the
+    sharpness_range=(lower, upper) tuple keyword instead. Set
+    sharpness_range=None to disable sharpness filtering. [#2216]
+  * The roundlo and roundhi keyword arguments for DAOStarFinder and
+    IRAFStarFinder are now deprecated. Use the
+    roundness_range=(lower, upper) tuple keyword instead. Set
+    roundness_range=None to disable roundness filtering. [#2216]
+  * The minsep_fwhm keyword argument for IRAFStarFinder is now
+    deprecated. Use min_separation instead. [#2216]
+  * The peakmax keyword argument for DAOStarFinder, IRAFStarFinder,
+    and StarFinder is now deprecated. Use peak_max instead. [#2216]
+  * The brightest keyword argument for DAOStarFinder,
+    IRAFStarFinder, and StarFinder is now deprecated. Use
+    n_brightest instead. [#2216]
+  * The npeaks keyword argument for find_peaks is now deprecated.
+    Use n_peaks instead. [#2241]
+  * The default min_separation for DAOStarFinder, IRAFStarFinder,
+    and StarFinder is now None, which computes a default separation
+    of 2.5 * fwhm (or 2.5 *
+  * (min(kernel.shape) // 2) for StarFinder) consistent across all
+    three star finders. [#2216]
+  * The xcentroid and ycentroid column/attribute names for
+    DAOStarFinder, IRAFStarFinder, and StarFinder catalog classes
+    are deprecated. Use x_centroid and y_centroid instead. The
+    cutout_xcentroid and cutout_ycentroid attributes are also
+    deprecated in favor of cutout_x_centroid and cutout_y_centroid.
+    [#2241]
+  * The IRAFStarFinder and StarFinder pa attribute/column has been
+    renamed to orientation. The old name is deprecated. [#2241]
+  * The npix column/attribute in DAOStarFinder and IRAFStarFinder
+    catalogs has been renamed to n_pixels. The old name is
+    deprecated. [#2241]
+  * The IRAFStarFinder and StarFinder orientation (was pa) values
+    are now always returned as a Quantity array in the range [0,
+    360) degrees. [#2224, #2225]
+  ### photutils.isophote
+  * The Isophote and IsophoteList grad_error and grad_r_error
+    attributes have been renamed to gradient_err and
+    gradient_rel_err, respectively. The old names are deprecated.
+    [#2241]
+  * The EllipseSample gradient_error and gradient_relative_error
+    attributes have been renamed to gradient_err and
+    gradient_rel_err, respectively. The old names are deprecated.
+    [#2241]
+  * The grad_error and grad_rerror column names in the isophote
+    output table have been renamed to gradient_err and
+    gradient_rel_err, respectively. The old names are deprecated.
+    [#2241]
+  * The nclip parameter in Ellipse.fit_image, Ellipse.fit_isophote,
+    and EllipseSample has been renamed to n_clip. The old name is
+    deprecated. [#2241]
+  * The Isophote and IsophotList niter, ndata, and nflag attributes
+    have been renamed to n_iter, n_data, and n_flag, respectively.
+    The old names are deprecated. [#2241]
+  ### photutils.profiles
+  * Cached Gaussian fits to the radial profile are now
+    automatically invalidated when the profile normalization
+    changes, so the fit is always consistent with the current
+    profile. [#2185]
+  ### photutils.psf
+  * The photutils.psf.matching subpackage has been moved to
+    photutils.psf_matching. Importing from the old location is
+    deprecated. [#2167]
+  * Removed the deprecated IntegratedGaussianPRF and PRFAdapter
+    classes. [#2103]
+  * The grid_from_epsfs helper function is now deprecated. Instead,
+    use GriddedPSFModel directly. [#2111]
+  * The EPSFFitter class is now deprecated. Use the fitter,
+    fit_shape, and fitter_maxiters parameters of EPSFBuilder
+    instead. [#2159]
+  * Removed the ModelImageMixin class. [#2133]
+  * Removed the ModelGridPlotMixin class. [#2137]
+  * Removed the norm_radius keyword from EPSFBuilder. [#2158]
+  * Removed the deprecated FittableImageModel and EPSFModel
+    classes. Use ImagePSF instead. [#2158]
+  * EPSFBuilder now returns an EPSFBuildResult dataclass containing
+    the ePSF, fitted stars, iteration count, convergence status,
+    and excluded star diagnostics. Tuple unpacking is still
+    supported for backward compatibility. [#2158]
+  * LinkedEPSFStar no longer inherits from EPSFStars. [#2158]
+  * The npixfit column in PSFPhotometry results has been renamed to
+    n_pixels_fit. The old name is deprecated. [#2241]
+  * The NPIXFIT_PARTIAL (npixfit_partial) PSF flag has been renamed
+    to N_PIXELS_FIT_PARTIAL (n_pixels_fit_partial). The old name is
+    deprecated. [#2241]
+  * The PSFPhotometry and IterativePSFPhotometry localbkg_estimator
+    keyword argument has been renamed to local_bkg_estimator. The
+    old name is deprecated. [#2241]
+  * The PSFPhotometry and IterativePSFPhotometry include_localbkg
+    keyword argument in make_model_image and make_residual_image
+    has been renamed to include_local_bkg. The old name is
+    deprecated. [#2241]
+  ### photutils.psf_matching
+  * Renamed create_matching_kernel to make_kernel. The old name is
+    deprecated. [#2171]
+  * make_kernel now raises ValueError if PSFs are not 2D, have even
+    dimensions, or do not have the same shape. [#2170]
+  * resize_psf now raises ValueError if the PSF is not 2D, has even
+    dimensions, or if pixel scales are not positive. [#2170]
+  * make_kernel now raises TypeError if the window parameter is not
+    callable. [#2170]
+  ### photutils.segmentation
+  * The SourceCatalog orientation property is now always returned
+    in the range [0, 360) degrees. [#2224]
+  * The SegmentationImage nlabels, data_ma, deblended_labels_map,
+    and deblended_labels_inverse_map attributes have been renamed
+    to n_labels, data_masked, deblended_label_to_parent, and
+    parent_to_deblended_labels, respectively. The old names are
+    deprecated. [#2241]
+  * The Segment data_ma attribute has been renamed to data_masked.
+    The old name is deprecated. [#2241]
+  * The SourceCatalog data, error, background, and segment
+    attributes have been renamed to data_cutout, error_cutout,
+    background_cutout, and segment_cutout, respectively. The old
+    names are deprecated. [#2241]
+  * The SourceCatalog data_ma, error_ma, background_ma, and
+    segment_ma attributes have been renamed to data_cutout_masked,
+    error_cutout_masked, background_cutout_masked, and
+    segment_cutout_masked, respectively. The old names are
+    deprecated. [#2241]
+  * The SourceCatalog convdata and convdata_ma attributes have been
+    renamed to conv_data_cutout and conv_data_cutout_masked,
+    respectively. The old names are deprecated. [#2241]
+  * The SourceCatalog cutout_minval_index and cutout_maxval_index
+    attributes have been renamed to cutout_min_value_index and
+    cutout_max_value_index, respectively. The old names are
+    deprecated. [#2241]
+  * The SourceCatalog minval_index, maxval_index, minval_xindex,
+    minval_yindex, maxval_xindex, and maxval_yindex attributes have
+    been renamed to min_value_index, max_value_index,
+    min_value_xindex, min_value_yindex, max_value_xindex, and
+    max_value_yindex, respectively. The old names are deprecated.
+    [#2241]
+  * The SourceCatalog covar_sigx2, covar_sigxy, and covar_sigy2
+    attributes/columns have been renamed to covariance_xx,
+    covariance_xy, and covariance_yy, respectively. The old names
+    are deprecated. [#2241]
+  * The SourceCatalog cxx, cxy, and cyy attributes/columns have
+    been renamed to ellipse_cxx, ellipse_cxy, and ellipse_cyy,
+    respectively. The old names are deprecated. [#2241]
+  * The SourceCatalog segment_fluxerr and kron_fluxerr
+    attributes/columns have been renamed to segment_flux_err and
+    kron_flux_err, respectively. The old names are deprecated.
+    [#2241]
+  * The SourceCatalog fluxfrac_radius attribute has been renamed to
+    flux_radius. The old name is deprecated. [#2241]
+  * The SourceCatalog get_label and get_labels methods have been
+    renamed to select_label and select_labels, respectively. The
+    old names are deprecated. [#2241]
+  * The SourceCatalog add_extra_property, remove_extra_property,
+    remove_extra_properties, and rename_extra_property methods have
+    been renamed to add_property, remove_property,
+    remove_properties, and rename_property, respectively. The
+    extra_properties attribute has been renamed to
+    custom_properties. The old names are deprecated. [#2241]
+  * The SourceCatalog nlabels and localbkg_width attributes have
+    been renamed to n_labels and local_bkg_width, respectively. The
+    old names are deprecated. [#2241]
+  * The SourceCatalog semimajor_sigma and semiminor_sigma
+    attributes/columns have been renamed to semimajor_axis and
+    semiminor_axis, respectively. The old names are deprecated.
+    [#2241]
+  * The SourceCatalog xcentroid, ycentroid, xcentroid_win,
+    ycentroid_win, xcentroid_quad, and ycentroid_quad
+    attributes/columns have been renamed to x_centroid, y_centroid,
+    x_centroid_win, y_centroid_win, x_centroid_quad, and
+    y_centroid_quad, respectively. The old names are deprecated.
+    [#2241]
+  * The SourceCatalog segment_img, localbkg_width, apermask_method,
+    and detection_cat keyword arguments have been renamed to
+    segmentation_image, local_bkg_width, aperture_mask_method, and
+    detection_catalog, respectively. The old names are deprecated.
+    [#2241]
+  * The SourceFinder npixels, nlevels, and nproc attributes have
+    been renamed to n_pixels, n_levels, and n_processes,
+    respectively. The old names are deprecated. [#2241]
+  * The nsigma parameter in detect_threshold has been renamed to
+    n_sigma. The old name is deprecated. [#2241]
+  * The npixels parameter in detect_sources has been renamed to
+    n_pixels. The old name is deprecated. [#2241]
+  * The segment_img, npixels, nlevels, and nproc parameters in
+    deblend_sources have been renamed to segmentation_image,
+    n_pixels, n_levels, and n_processes, respectively. The old
+    names are deprecated. [#2241]
+  * The npixels, nlevels, and nproc parameters in SourceFinder have
+    been renamed to n_pixels, n_levels, and n_processes,
+    respectively. The old names are deprecated. [#2241]
+  * The SourceCatalog to_table default columns no longer includes
+    local_background. [#2252]
+  ### photutils.utils
+  * The ImageDepth nsigma, napers, and niters parameters have been
+    renamed to n_sigma, n_apertures, and n_iters, respectively. The
+    old names are deprecated. The napers_used attribute has also
+    been renamed to n_apertures_used. [#2241]
+  * The make_random_cmap ncolors parameter has been renamed to
+    n_colors. The old name is deprecated. [#2241]
+  * The ShepardIDWInterpolator reg parameter in __call__ has been
+    renamed to regularization. The old name is deprecated. [#2241]
+- Add photutils-3.0.0-cythonbool.patch gh#astropy/photutils#2260
+
+-------------------------------------------------------------------
 Sun Sep 21 19:33:02 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:
@@ -281,7 +710,7 @@ Wed Feb 12 14:26:42 UTC 2025 - Ben Greiner <code@bnavigator.de>
   ### photutils.morphology
   * The gini function now returns zero instead of NaN if the
     (unmasked) data values sum to zero. [#1979]
-    photutils.psf
+  ### photutils.psf
   * The 'viridis' color map is now the default in the
     GriddedPSFModel plot_grid method when deltas=True. [#1954]
   * The GriddedPSFModel plot_grid color bar now matches the height
@@ -494,7 +923,7 @@ Fri Nov  8 15:08:58 UTC 2024 - Ben Greiner <code@bnavigator.de>
     moved to the new model_helpers module. The make_psf_model_image
     function has been moved to the new simulations module. It is
     recommended that all of these tools be imported from
-    photutils.psf without using the submodule name. [#1854, #1901]
+  ### photutils.psf without using the submodule name. [#1854, #1901]
   * The PSFPhotometry fit_results attribute has been renamed to
     fit_info. fit_results is now deprecated. [#1858]
   * The PRFAdapter class has been deprecated. Instead, use a
@@ -513,7 +942,7 @@ Fri Nov  8 15:08:58 UTC 2024 - Ben Greiner <code@bnavigator.de>
     PSF model does not have a bounding box attribute. [#1921]
   ### photutils.psf.matching
   * PSF matching tools must now be imported from
-    photutils.psf.matching instead of photutils.psf. [#1904]
+  ### photutils.psf.matching instead of photutils.psf. [#1904]
   ### photutils.segmentation
   * The SegmentationImage relabel_consecutive, resassign_label(s),
     keep_label(s), remove_label(s), remove_border_labels, and
@@ -602,7 +1031,7 @@ and errors. [#1789]
   * The photutils.datasets subpackage has been reorganized and the
     make module has been deprecated. Instead of importing functions
     from photutils.datasets.make, import functions from
-    photutils.datasets. [#1726]
+  ### photutils.datasets. [#1726]
   * The make_model_sources_image function has been deprecated in
     favor of the new make_model_image function. The new function
     has more options and is significantly faster. [#1759]
