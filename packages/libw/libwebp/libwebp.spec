@@ -2,6 +2,7 @@
 # spec file for package libwebp
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +17,10 @@
 #
 
 
+%if 0%{?suse_version} == 1500
+%global force_gcc_version 14
+%endif
+
 Name:           libwebp
 Version:        1.6.0
 Release:        0
@@ -28,11 +33,11 @@ Source:         https://storage.googleapis.com/downloads.webmproject.org/release
 Source2:        https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source4:        baselibs.conf
-
+Patch1:         libwebp-s390x-0e5f4ee.diff
 BuildRequires:  cmake
-BuildRequires:  giflib-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glut)
+BuildRequires:  gcc%{?force_gcc_version}
+BuildRequires:  gcc%{?force_gcc_version}-c++
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
@@ -140,6 +145,10 @@ images more efficiently.
 %autosetup -p1
 
 %build
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
 %cmake
 %cmake_build
 

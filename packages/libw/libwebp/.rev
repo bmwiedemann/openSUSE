@@ -380,4 +380,15 @@ required for http://www.unvanquished.net/wiki/index.php/Compiling_the_source#ope
     <comment>- Update to release 1.6.0</comment>
     <requestid>1297741</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>a666aaa9828179fa4c974e8fcfddc451</srcmd5>
+    <version>1.6.0</version>
+    <time>1780002516</time>
+    <user>anag_factory</user>
+    <comment>- Drop build dependency on giflib and glut, those are only used for
+  example programs anyway.
+- Add libwebp-s390x-0e5f4ee.diff to fix python-Pillow on s390x
+  (https://github.com/python-pillow/Pillow/issues/8831)</comment>
+    <requestid>1355500</requestid>
+  </revision>
 </revisionlist>

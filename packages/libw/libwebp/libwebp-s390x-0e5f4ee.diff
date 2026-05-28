@@ -1,0 +1,49 @@
+From 0e5f4ee3deaba5c4381877764005d981f652791f Mon Sep 17 00:00:00 2001
+From: Vincent Rabaud <vrabaud@google.com>
+Date: Mon, 29 Sep 2025 14:33:56 +0200
+Subject: [PATCH] Fix endianness with CMake.
+
+Original patch from C. Neidahl.
+
+Change-Id: I734d7cb33c3da5abb8d4faf074277dba53b37147
+---
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8e5bf75..89672b8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -149,6 +149,16 @@
+   add_definitions(-DWEBP_DLL)
+ endif()
+ 
++# Compatibility with autoconf configure script's way of setting this
++if(CMAKE_C_BYTE_ORDER STREQUAL "BIG_ENDIAN")
++  set(WORDS_BIGENDIAN TRUE)
++elseif(CMAKE_C_BYTE_ORDER STREQUAL "LITTLE_ENDIAN")
++  set(WORDS_BIGENDIAN FALSE)
++else()
++  set(WORDS_BIGENDIAN FALSE)
++  message(WARNING "Endianness could not be determined.")
++endif()
++
+ # pkg-config variables used by *.pc.in.
+ set(prefix ${CMAKE_INSTALL_PREFIX})
+ set(exec_prefix "\${prefix}")
+diff --git a/cmake/config.h.in b/cmake/config.h.in
+index e73484b..e9a7a5c 100644
+--- a/cmake/config.h.in
++++ b/cmake/config.h.in
+@@ -108,12 +108,4 @@
+ 
+ /* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
+    significant byte first (like Motorola and SPARC, unlike Intel). */
+-#if defined AC_APPLE_UNIVERSAL_BUILD
+-# if defined __BIG_ENDIAN__
+-#  define WORDS_BIGENDIAN 1
+-# endif
+-#else
+-# ifndef WORDS_BIGENDIAN
+-#  undef WORDS_BIGENDIAN
+-# endif
+-#endif
++#cmakedefine WORDS_BIGENDIAN 1

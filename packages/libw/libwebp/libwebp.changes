@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 28 01:44:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop build dependency on giflib and glut, those are only used for
+  example programs anyway.
+
+-------------------------------------------------------------------
+Mon May 25 09:03:32 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- Add libwebp-s390x-0e5f4ee.diff to fix python-Pillow on s390x
+  (https://github.com/python-pillow/Pillow/issues/8831)
+
+-------------------------------------------------------------------
+Wed Aug  6 13:43:09 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix build on code 15 by forcing gcc 14
+
+-------------------------------------------------------------------
 Sun Aug  3 13:23:37 UTC 2025 - anenasa <anenasaa@yahoo.com>
 
 - Update to release 1.6.0
