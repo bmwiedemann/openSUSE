@@ -1,5 +1,6 @@
 <package name="qt6-tasktree" project="openSUSE:Factory">
   <title>Generic framework for automatic management of asynchronous tasks</title>
   <description>Qt Task tree is a generic framework for automatic management of asynchronous tasks.</description>
+  <devel project="KDE:Qt6" package="qt6-tasktree"/>
   <url>https://www.qt.io</url>
 </package>

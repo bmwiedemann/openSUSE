@@ -7,4 +7,12 @@
     <comment>Qt 6.11.0 (new package)</comment>
     <requestid>1342826</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>82b7113e48f3183dc79e1baed3f4566f</srcmd5>
+    <version>6.11.1</version>
+    <time>1779981982</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.11.1 (+ backports) (forwarded request 1354945 from krop)</comment>
+    <requestid>1355443</requestid>
+  </revision>
 </revisionlist>

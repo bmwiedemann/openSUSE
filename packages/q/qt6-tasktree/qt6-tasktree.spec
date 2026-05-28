@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.11.0
+%define real_version 6.11.1
 %define short_version 6.11
 %define tar_name qttasktree-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tasktree%{?pkg_suffix}
-Version:        6.11.0
+Version:        6.11.1
 Release:        0
 Summary:        Generic framework for automatic management of asynchronous tasks
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -91,13 +91,11 @@ Development files for the Qt 6 TaskTree library.
 %files devel
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtTaskTreeTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6TaskTree/
-%{_qt6_cmakedir}/Qt6TaskTreePrivate/
 %{_qt6_descriptionsdir}/TaskTree.json
 %{_qt6_includedir}/QtTaskTree/
 %{_qt6_libdir}/libQt6TaskTree.prl
 %{_qt6_libdir}/libQt6TaskTree.so
 %{_qt6_metatypesdir}/qt6tasktree_metatypes.json
-%{_qt6_mkspecsdir}/modules/qt_lib_tasktree_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_tasktree.pri
 %{_qt6_pkgconfigdir}/Qt6TaskTree.pc
 
