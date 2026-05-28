@@ -1,7 +1,7 @@
 #
 # spec file for package openjade
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,20 @@
 #
 
 
-%define regcat %{_bindir}/sgml-register-catalog
+%define INSTALL_DIR       install -m755 -d
+%define INSTALL_DATA      install -m644
+%define sgml_dir          %{_datadir}/sgml
+%define sgml_dir_pkg      %{sgml_dir}/%{name}
+
 Name:           openjade
 Version:        1.3.2
 Release:        0
 Summary:        DSSSL Engine for SGML Documents
 License:        MIT
 Group:          Productivity/Publishing/SGML
-URL:            http://openjade.sourceforge.net/
-Source:         http://switch.dl.sourceforge.net/sourceforge/openjade/openjade-1.3.2.tar.bz2
+URL:            https://openjade.sourceforge.net/
+Source:         https://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-%{version}.tar.gz
 Source1:        jade_style-sheet.dtd
-Source2:        %{name}-README.SUSE
 Patch1:         openjade-1.3.1-autoconf.dif
 Patch2:         openjade-1.3.2-makefile.patch
 Patch3:         openjade-1.3.2-shared.patch
@@ -35,11 +38,9 @@ Patch5:         openjade-1.3.2-getopts.patch
 BuildRequires:  gcc-c++
 BuildRequires:  opensp-devel
 Requires:       opensp
-Requires(pre):  %{regcat}
-# Conflicts: jade_dsl
-Obsoletes:      jade_dsl
+Requires(post): sgml-skel
+Requires(postun): sgml-skel
 Provides:       jade
-Provides:       jade_dsl
 
 %description
 OpenJade, the follow-up to Jade by James Clark, is an implementation of
@@ -60,113 +61,92 @@ Requires:       %{name} = %{version}
 Libraries and includes to compile applications that use the OpenJade
 framework (package 'openjade').
 
-%define INSTALL install -m755 -s
-%define INSTALL_DIR install -d -m755
-%define INSTALL_DATA install -m644
-%define sgml_dir %{_datadir}/sgml
-%define sgml_dir_pkg %{sgml_dir}/%{name}
-%define sgml_var_dir %{_localstatedir}/lib/sgml
-
 %prep
-%setup -q
-# -n %%{name}-1.3.2-rc2
+%autosetup -p1
 cp %{SOURCE1} dsssl
-cp %{SOURCE2} README.SUSE
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3
-%patch -P 4
-%patch -P 5
 
 %build
-# export CXXFLAGS='-O'
-%if 0%{?suse_version} > 1320
 export CXXFLAGS="%{optflags} -fno-lifetime-dse"
-%else
-export CXXFLAGS="%{optflags}"
-%endif
-# export CXXFLAGS="-g -march=i486 -mcpu=i686"
-# export DEFAULT_SCHEME_BUILTINS=/usr/share/sgml/openjade/builtins.dsl
-%configure --disable-static --with-gnu-ld --with-pic \
-  --datadir=%{sgml_dir}/openjade \
-  --enable-splibdir=%{_libdir} \
-  --enable-http \
-  --enable-mif \
-  --enable-default-catalog="CATALOG:%{_sysconfdir}/sgml/catalog:%{sgml_dir}/CATALOG"
-# [ -r jade/openjade.orig ] && mv jade/openjade.orig jade/openjade
-make %{?_smp_mflags}
-# # now start building the debug version
-# mv jade/openjade jade/openjade.orig
-# zcat %%{P:5} | patch -s -p 1
-# make
-# mv jade/openjade jade/openjade-valid-fo
-# mv jade/openjade.orig jade/openjade
+%configure --with-pic   \
+           --enable-mif  \
+           --enable-http  \
+           --with-gnu-ld   \
+           --disable-static \
+           --enable-splibdir=%{_libdir}  \
+           --datadir=%{sgml_dir}/openjade \
+           --enable-default-catalog="CATALOG:%{_sysconfdir}/sgml/catalog:%{sgml_dir}/CATALOG"
+
+%make_build
 
 %install
-%{INSTALL_DIR} %{buildroot}%{_libdir} \
-  %{buildroot}%{sgml_dir}/%{name} \
-  %{buildroot}%{_includedir}/%{name}
-%make_install
+%{INSTALL_DIR} %{buildroot}%{_libdir}     \
+               %{buildroot}%{sgml_dir_pkg} \
+               %{buildroot}%{_includedir}/%{name}
+
+%make_install install-man
+
 ln -sf openjade %{buildroot}%{_bindir}/jade
-[ -r jade/openjade-valid-fo ] && install -s jade/openjade-valid-fo %{buildroot}%{_bindir}
-make install-man DESTDIR=%{buildroot}
-pushd %{buildroot}%{_mandir}
-# find . ! -name 'jade*' -exec rm -f {} \;
-pushd man1 && ln -sf openjade.1 jade.1 && popd
+if [ -r jade/openjade-valid-fo ]; then
+  install -s jade/openjade-valid-fo %{buildroot}%{_bindir}
+fi
+
+pushd %{buildroot}%{_mandir}/man1
+    ln -sf openjade.1 jade.1
 popd
-/sbin/ldconfig -n %{buildroot}%{_libdir}
-# %%{INSTALL_DATA} include/*.* $RPM_BUILD_ROOT%%{_includedir}/%%{name}
-%{INSTALL_DATA} generic/*.h %{buildroot}%{_includedir}/%{name}
-%{INSTALL_DATA} grove/Node.h %{buildroot}%{_includedir}/%{name}
-%{INSTALL_DATA} spgrove/GroveApp.h \
+
+%{INSTALL_DATA} generic/*.h     \
+                grove/Node.h     \
+                style/dsssl_ns.h  \
+                style/DssslApp.h   \
+                style/FOTBuilder.h  \
+                style/GroveManager.h \
+                spgrove/GroveApp.h    \
                 spgrove/GroveBuilder.h %{buildroot}%{_includedir}/%{name}
-%{INSTALL_DATA} style/FOTBuilder.h style/GroveManager.h \
-                style/DssslApp.h style/dsssl_ns.h \
-                %{buildroot}%{_includedir}/%{name}
-# pushd $RPM_BUILD_ROOT%%{_mandir}/man1
-# popd
-# pushd $RPM_BUILD_ROOT%%{_bindir}
-# popd
-# %%{INSTALL_DIR} $RPM_BUILD_ROOT/etc/profile.d
-# %%{INSTALL_DATA} jade_dsl.sh $RPM_BUILD_ROOT/etc/profile.d
-%{INSTALL_DIR} %{buildroot}%{sgml_dir_pkg}
-# comes with opensp:
-# %%{INSTALL_DATA} japan.sgmldecl $RPM_BUILD_ROOT%%{sgml_dir_pkg}/japan.dcl
-# %%{INSTALL_DATA} pubtext/xml.dcl $RPM_BUILD_ROOT%%{sgml_dir_pkg}/xml.dcl
-# sed 's|decl|dcl|' pubtext/xml.soc > $RPM_BUILD_ROOT%%{sgml_dir_pkg}/xml.soc
+
 pushd dsssl
-%{INSTALL_DATA} catalog dsssl.dtd extensions.dsl fot.dtd style-sheet.dtd \
-  builtins.dsl jade_style-sheet.dtd %{buildroot}%{sgml_dir_pkg}
-%{INSTALL_DIR} %{buildroot}%{sgml_var_dir}
-sed 's:"\([^"]*\(dtd\|dsl\)\)"$:"%{sgml_dir_pkg}/\1":' catalog \
-  > %{buildroot}%{sgml_var_dir}/CATALOG.%{name}
-ln -sf CATALOG.%{name} %{buildroot}%{sgml_var_dir}/CATALOG.jade_dsl
-cd %{buildroot}%{sgml_dir} \
-  && ln -sf ../../..%{sgml_var_dir}/CATALOG.%{name} CATALOG.%{name} \
-  && ln -sf ../../..%{sgml_var_dir}/CATALOG.%{name} CATALOG.jade_dsl
+  %{INSTALL_DATA} fot.dtd    \
+                  catalog     \
+                  dsssl.dtd    \
+                  builtins.dsl  \
+                  extensions.dsl \
+                  style-sheet.dtd \
+                  jade_style-sheet.dtd %{buildroot}%{sgml_dir_pkg}
+
+  sed 's:"\([^"]*\(dtd\|dsl\)\)"$:"%{sgml_dir_pkg}/\1":' catalog \
+    > %{buildroot}%{sgml_dir}/CATALOG.%{name}
+  ln -sf CATALOG.%{name} %{buildroot}%{sgml_dir}/CATALOG.jade_dsl
 popd
-%{INSTALL_DIR} %{buildroot}%{sgml_dir}/James_Clark/dtd
-%{INSTALL_DIR} %{buildroot}%{sgml_dir}/OpenJade/dtd
-%{INSTALL_DIR} %{buildroot}%{sgml_dir}/ISO_IEC_10179:1996/dtd
-(cd %{buildroot}%{sgml_dir}/James_Clark/dtd \
-   && ln -sf ../../$RPM_PACKAGE_NAME/jade_style-sheet.dtd DSSSL_Style_Sheet \
-   && ln -sf ../../$RPM_PACKAGE_NAME/fot.dtd DSSSL_Flow_Object_Tree)
-(cd %{buildroot}%{sgml_dir}/OpenJade/dtd \
-   && ln -sf ../../$RPM_PACKAGE_NAME/style-sheet.dtd DSSSL_Style_Sheet)
-(cd %{buildroot}%{sgml_dir}/ISO_IEC_10179:1996/dtd \
-   && ln -sf ../../$RPM_PACKAGE_NAME/dsssl.dtd DSSSL_Architecture)
+
+%{INSTALL_DIR} %{buildroot}%{sgml_dir}/OpenJade/dtd   \
+               %{buildroot}%{sgml_dir}/James_Clark/dtd \
+               %{buildroot}%{sgml_dir}/ISO_IEC_10179:1996/dtd
+
+pushd %{buildroot}%{sgml_dir}/OpenJade/dtd
+  ln -sf ../../%{name}/style-sheet.dtd DSSSL_Style_Sheet
+popd
+
+pushd %{buildroot}%{sgml_dir}/James_Clark/dtd
+  ln -sf ../../%{name}/jade_style-sheet.dtd DSSSL_Style_Sheet
+  ln -sf ../../%{name}/fot.dtd DSSSL_Flow_Object_Tree
+popd
+
+pushd %{buildroot}%{sgml_dir}/ISO_IEC_10179:1996/dtd
+  ln -sf ../../%{name}/dsssl.dtd DSSSL_Architecture
+popd
+
 # for compatibility with SL <= 8.1
 pushd %{buildroot}%{sgml_dir}
   pushd %{name}
-  ln -s ../opensp/japan.dcl .
-  ln -s ../opensp/opensp-implied.dcl sp_implied.dcl
-  ln -s ../opensp/xml.dcl .
-  ln -s ../opensp/xml.soc .
-  for d in *.dcl; do
-    ln -sf $d ${d/.dcl/.decl}
-  done
+    ln -s ../opensp/japan.dcl .
+    ln -s ../opensp/opensp-implied.dcl sp_implied.dcl
+    ln -s ../opensp/xml.dcl .
+    ln -s ../opensp/xml.soc .
+    for d in *.dcl; do
+      ln -sf $d ${d/.dcl/.decl}
+    done
   popd
 popd
+
 rm -fr html
 cp -a jadedoc html
 echo "\
@@ -176,17 +156,13 @@ grep -r include %{buildroot}%{_includedir}
 
 %post
 /sbin/ldconfig
-if [ -x %{regcat} ]; then
-  %{regcat} -a %{sgml_dir}/CATALOG.%{name} >/dev/null 2>&1
-fi
-exit 0
+sgml-register-catalog -a %{sgml_dir}/CATALOG.%{name} >/dev/null 2>&1 || :
 
 %postun
 /sbin/ldconfig
-if [ "$1" = "0" -a -x %{regcat} ]; then
-  %{regcat} -r %{sgml_dir}/CATALOG.%{name} >/dev/null 2>&1
+if [ "$1" = "0" ] && [ -x %{_bindir}/sgml-register-catalog ]; then
+  sgml-register-catalog -r %{sgml_dir}/CATALOG.%{name} >/dev/null 2>&1 || :
 fi
-exit 0
 
 %files
 %license COPYING
@@ -195,20 +171,16 @@ exit 0
 %doc dsssl develdoc testsuite
 %doc japan.sgmldecl
 %doc releasenotes.{html,pdf}
-%{sgml_dir}/openjade
-%{_bindir}/*jade*
-# %%{_mandir}/*/*jade*
-%{_mandir}/*/*
-# %%config /etc/profile.d/jade_dsl.sh
-%{sgml_dir}/CATALOG.%{name}
-%config %{sgml_var_dir}/CATALOG.%{name}
-#for compatibility <= 8.1
-%{sgml_dir}/CATALOG.jade_dsl
-%{sgml_var_dir}/CATALOG.jade_dsl
-%{sgml_dir}/ISO_IEC_10179:1996
-%{sgml_dir}/James_Clark
+%{_bindir}/jade
+%{_bindir}/openjade
+%{_libdir}/*.so.*
+%{sgml_dir}/%{name}
 %{sgml_dir}/OpenJade
-%{_libdir}/lib*.so.*
+%{sgml_dir}/James_Clark
+%{sgml_dir}/ISO_IEC_10179:1996
+%{sgml_dir}/CATALOG.%{name}
+%{sgml_dir}/CATALOG.jade_dsl
+%{_mandir}/man1/*jade.1.gz
 
 %files devel
 %{_includedir}/%{name}

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 27 10:59:07 UTC 2026 - Yunus Acar <yunus.acar@suse.com>
+
+- Revert removal of -fno-lifetime-dse (bsc#1265199).
+
+-------------------------------------------------------------------
+Mon Apr 13 12:04:30 UTC 2026 - Yunus Acar <yunus.acar@suse.com>
+
+- jsc#PED-14845: Move CATALOG files into /usr/share/sgml
+  instead of linking them there from /var/lib/sgml.
+- Modernize/cleanup specfile
+  * Update source url.
+  * Convert -p0 patches to -p1
+    in order to clean up the %prep section.
+  * Drop obsolete references to jade_dsl
+    including openjade-README.SUSE.
+- Trim whitespace in .changes file.
+
+-------------------------------------------------------------------
 Mon Feb 26 12:35:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -52,7 +70,7 @@ Tue May 10 19:32:22 UTC 2011 - cgiboudeaux@gmx.com
 -------------------------------------------------------------------
 Mon Jan 14 13:32:27 CET 2008 - crrodriguez@suse.de
 
-- fix build to build with recent versions of opensp 
+- fix build to build with recent versions of opensp
 
 -------------------------------------------------------------------
 Fri Feb  9 08:49:48 CET 2007 - aj@suse.de
@@ -84,7 +102,7 @@ Wed May 21 17:35:45 CEST 2003 - ke@suse.de
 -------------------------------------------------------------------
 Mon May 12 12:53:24 CEST 2003 - ro@suse.de
 
-- run libtoolize 
+- run libtoolize
 
 -------------------------------------------------------------------
 Mon Feb 17 14:03:27 CET 2003 - ke@suse.de
@@ -167,7 +185,7 @@ Fri Apr 19 02:08:12 CEST 2002 - ro@suse.de
 -------------------------------------------------------------------
 Tue Apr  9 01:35:31 CEST 2002 - ro@suse.de
 
-- build with latest automake/autoconf 
+- build with latest automake/autoconf
 
 -------------------------------------------------------------------
 Mon Feb 11 17:17:58 CET 2002 - schwab@suse.de
@@ -238,5 +256,3 @@ Fri Oct 29 14:10:17 CEST 1999 - ke@suse.de
 Mon Oct 25 14:37:37 CEST 1999 - ke@suse.de
 
 - Initial package: version 1.3 (bug #172 resolved).
-
-

@@ -1,7 +1,7 @@
 Index: jade/Makefile.sub
 ===================================================================
---- jade/Makefile.sub.orig	2002-11-15 23:46:50.000000000 +0100
-+++ jade/Makefile.sub	2008-01-13 22:43:28.000000000 +0100
+--- a/jade/Makefile.sub	2002-11-15 23:46:50.000000000 +0100
++++ b/jade/Makefile.sub	2008-01-13 22:43:28.000000000 +0100
 @@ -4,7 +4,7 @@ OBJS=jade.o SgmlFOTBuilder.o RtfFOTBuild
  INCLUDE=-I$(srcdir)/../grove -I$(srcdir)/../spgrove -I$(srcdir)/../style
  # XLIBS=../style/libostyle.a ../spgrove/libospgrove.a ../grove/libogrove.a \

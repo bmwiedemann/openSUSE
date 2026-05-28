@@ -1,5 +1,5 @@
---- jade/TeXFOTBuilder.cxx	2011-05-10 21:01:33.769789341 +0200
-+++ jade/TeXFOTBuilder.cxx	2011-05-10 21:05:04.142897135 +0200
+--- a/jade/TeXFOTBuilder.cxx	2011-05-10 21:01:33.769789341 +0200
++++ b/jade/TeXFOTBuilder.cxx	2011-05-10 21:05:04.142897135 +0200
 @@ -75,6 +75,8 @@
      virtual void end(TeXFOTBuilder &) const = 0;
    };
@@ -18,8 +18,8 @@
      void start(TeXFOTBuilder &fotb, const NodePtr &) const {
        fotb.startPageFootnote();
      }
---- jade/TransformFOTBuilder.cxx.orig	2011-05-10 21:18:33.554680483 +0200
-+++ jade/TransformFOTBuilder.cxx	2011-05-10 21:24:23.456887213 +0200
+--- a/jade/TransformFOTBuilder.cxx	2011-05-10 21:18:33.554680483 +0200
++++ b/jade/TransformFOTBuilder.cxx	2011-05-10 21:24:23.456887213 +0200
 @@ -41,6 +41,7 @@
    };
    class EntityRefFlowObj : public TransformExtensionFlowObj {
