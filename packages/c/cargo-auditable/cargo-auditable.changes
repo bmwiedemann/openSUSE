@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 27 04:13:51 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.7.5~0:
+  * Bump cargo-auditable version to 0.7.5
+  * update changelog
+  * simplify trailing path segment extraction in package ID parser
+  * Run CI checks on 1.88 to prevent accidental MSRV drift
+  * fix clippy warning in wasm.rs
+  * handle elided name in git package ID specs
+  * Revert test version bump
+  * Bump version to 0.7.5-test.1 for CI test
+  * Add `aarch64-unknown-linux-musl` to dist targets
+
+-------------------------------------------------------------------
 Tue Mar 10 03:15:43 UTC 2026 - william.brown@suse.com
 
 - Update to version 0.7.4~0:
