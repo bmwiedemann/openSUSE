@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 27 15:08:31 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-44673: integer overflow in `lyb_read_string()` of `src/parser_lyb.c` leads to heap buffer overflow when parsing a maliciously crafted LYB binary blob [bsc#1265330]
+  * libyang-CVE-2026-44673.patch
+
+-------------------------------------------------------------------
 Wed May 27 08:19:08 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches

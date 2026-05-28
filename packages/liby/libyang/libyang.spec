@@ -29,6 +29,8 @@ URL:            https://github.com/CESNET/libyang
 Source0:        https://github.com/CESNET/libyang/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # CVE-2026-41401: use-after-free in `lyd_parser_set_data_flags` when processing crafted YANG XML documents with specific metadata attributes [bsc#1266316]
 Patch0:         libyang-CVE-2026-41401.patch
+# CVE-2026-44673: integer overflow in `lyb_read_string()` of `src/parser_lyb.c` leads to heap buffer overflow when parsing a maliciously crafted LYB binary blob [bsc#1265330]
+Patch1:         libyang-CVE-2026-44673.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
