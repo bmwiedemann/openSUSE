@@ -1,6 +1,6 @@
 OVERRIDE YES
 -- Load iso_ent early to prevent docbook.cat from biting --
-CATALOG  "/var/lib/sgml/CATALOG.iso_ent"
+CATALOG  "/usr/share/sgml/CATALOG.iso_ent"
 
 DTDDECL "-//OASIS//DTD DocBook CALS Table Model V4.5//EN" /usr/share/sgml/docbook/dtd/4.5/docbook.dcl
 DTDDECL "-//OASIS//DTD DocBook V4.5//EN" "/usr/share/sgml/docbook/dtd/4.5/docbook.dcl"

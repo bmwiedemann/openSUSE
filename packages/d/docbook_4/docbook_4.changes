@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 27 08:04:02 UTC 2026 - Yunus Acar <yunus.acar@suse.com>
+
+- jsc#PED-14844, bsc#1265199: Look for CATALOG.iso_ent in
+  /usr/share/sgml instead of /var/lib/sgml.
+- Remove obsolete SGML_CONFIG_DIR aka /var/lib/sgml from Makefile.
+- Trim whitespace in .changes file.
+
+-------------------------------------------------------------------
 Mon Feb 26 08:03:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -16,7 +24,7 @@ Mon Nov 13 15:56:39 UTC 2017 - thomas.schraitle@suse.com
 - Fix XML catalog problems (missing or mistyped identifiers)
 - Fix version 4.1.2 link in SGML (yes!) directory
 - Add missing docbook-xml-4.1.2-catalog.xml
-- 
+-
 
 -------------------------------------------------------------------
 Tue Oct 17 09:05:19 UTC 2017 - thomas.schraitle@suse.com
@@ -39,7 +47,7 @@ Thu Feb 19 09:42:19 UTC 2015 - toms@opensuse.org
 -------------------------------------------------------------------
 Mon Jul 15 06:02:47 UTC 2013 - toms@opensuse.org
 
-- Fixed bnc#828872: 
+- Fixed bnc#828872:
   Missing system identifier http://www.docbook.org/xml/$VER/ added
 
 - Spec file:
@@ -94,14 +102,14 @@ Thu Mar 29 11:01:56 CEST 2007 - toms@suse.de
 -------------------------------------------------------------------
 Fri Feb 16 14:15:29 CET 2007 - toms@suse.de
 
-- Added RELAX NG and W3C schema for 4.5 
+- Added RELAX NG and W3C schema for 4.5
 - Completed DocBook 4.2 with RELAX NG and W3C
 
 -------------------------------------------------------------------
 Thu Feb 15 11:11:01 CET 2007 - toms@suse.de
 
 - Added DocBook v4.5 XML and SGML DTD
-- Added RELAX NG and W3C schema for 4.3 and 4.4 
+- Added RELAX NG and W3C schema for 4.3 and 4.4
 
 -------------------------------------------------------------------
 Mon Jan 15 13:14:08 CET 2007 - ke@suse.de
@@ -132,7 +140,7 @@ Mon Aug 14 13:17:37 CEST 2006 - ke@suse.de
 -------------------------------------------------------------------
 Sun Feb 19 20:39:41 CET 2006 - ro@suse.de
 
-- modify setup line in spec file 
+- modify setup line in spec file
 
 -------------------------------------------------------------------
 Wed Jan 25 21:46:11 CET 2006 - mls@suse.de
@@ -315,7 +323,7 @@ Wed Jul 24 09:46:06 CEST 2002 - ke@suse.de
 Mon Jun 24 15:09:41 CEST 2002 - ke@suse.de
 
 - Don't install XML ISO entity links; instead require xmlcharent.
-- Start to prepare for release 4.2. 
+- Start to prepare for release 4.2.
 
 -------------------------------------------------------------------
  Mon May  6 10:40:29 CEST 2002 - ke@suse.de
@@ -361,5 +369,3 @@ Tue Jun 27 20:16:04 CEST 2000 - ke@suse.de
 Tue Jun 20 11:35:41 CEST 2000 - ke@suse.de
 
 - Initial package: version 4.1.
-
-

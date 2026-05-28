@@ -1,7 +1,7 @@
 #
 # spec file for package docbook_4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        DocBook DTD Version 4.x
 License:        BSD-3-Clause AND MIT
 Group:          Productivity/Publishing/DocBook
-Url:            http://www.oasis-open.org/docbook/
+URL:            http://www.oasis-open.org/docbook/
 Source2:        docbook_4-README.SUSE
 Source3:        %{name}.xml
 Source7:        CATALOG.docbook_4

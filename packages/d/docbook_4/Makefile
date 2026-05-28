@@ -30,8 +30,7 @@ XML_CATALOG      := $(XML_CATALOG_DIR)/$(DB_CATALOG_SRC)
 SGML_CATALOGS    := $(wildcard CATALOG*)
 SGML_CATALOG_DIR := $(SGML_DIR)
 #
-SGML_CONFIG_DIR  := $(DESTDIR)/var/lib/sgml
-SGML_CATALOG_FILES := $(addprefix $(SGML_CONFIG_DIR)/,$(SGML_CATALOGS))
+SGML_CATALOG_FILES := $(addprefix $(SGML_CATALOG_DIR)/,$(SGML_CATALOGS))
 #
 DB_XML_DIR       := $(XML_DIR)/docbook
 DB_SGML_DIR      := $(SGML_DIR)/docbook
@@ -76,7 +75,7 @@ ALL_DEST_FILES   := $(DTD_DEST_FILES) $(RNG_DEST_FILES) $(XSD_DEST_FILES)
 XML_DB_PATHS     := $(DTD_DEST_DIRS) $(RNG_DEST_DIRS) $(XSD_DEST_DIRS)
 
 # All installation directories that needs to be created before
-INST_DIRECTORIES := $(XML_DB_PATHS) $(SGML_DB_PATHS) $(SGML_CONFIG_DIR) \
+INST_DIRECTORIES := $(XML_DB_PATHS) $(SGML_DB_PATHS) \
 		    $(XML_CATALOG_DIR) $(SGML_CATALOG_DIR)
 
 
@@ -92,11 +91,9 @@ install: | $(XML_IN_SGML_DIRS)
 	@echo "DESTDIR=$(DESTDIR)"
 	@echo "Finished."
 
-$(SGML_CONFIG_DIR)/CATALOG.%: CATALOG.% | $(SGML_CONFIG_DIR) $(SGML_CATALOG_DIR)
+$(SGML_CATALOG_DIR)/CATALOG.%: CATALOG.% | $(SGML_CATALOG_DIR)
 	@echo "# Installing SGML catalog $<..."
-# No longer wanted in /var hierarchy; see bsc#1093345
-#	cp $< $(dir $@)
-	cp $< $(SGML_CATALOG_DIR)
+	cp $< $(dir $@)
 
 $(XML_IN_SGML_DIRS): | $(INST_DIRECTORIES)
 	@echo "Creating link $@..."
