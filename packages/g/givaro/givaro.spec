@@ -1,7 +1,7 @@
 #
 # spec file for package givaro
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 Name:           givaro
 %define lname   libgivaro9
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        C++ library for arithmetic and algebraic computations
 License:        CECILL-B
 Group:          Productivity/Scientific/Math
 URL:            https://casys.gricad-pages.univ-grenoble-alpes.fr/givaro/
-
 #Git-Clone:	https://github.com/linbox-team/givaro
 Source:         https://github.com/linbox-team/givaro/releases/download/v%version/%name-%version.tar.gz
 Patch1:         givaro-doc-no-build-time.patch

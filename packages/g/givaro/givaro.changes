@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 13:03:58 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.2.2
+  * Fixed compile errors with clang
+
+-------------------------------------------------------------------
 Sat Feb 22 00:42:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.2.1
