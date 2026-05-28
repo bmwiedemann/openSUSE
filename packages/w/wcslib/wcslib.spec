@@ -18,12 +18,12 @@
 
 %define libver  8
 Name:           wcslib
-Version:        8.7
+Version:        8.6
 Release:        0
 Summary:        An implementation of the FITS WCS standard
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://www.atnf.csiro.au/people/mcalabre/WCS/wcslib/
+URL:            https://www.atnf.csiro.au/computing/software/wcs/wcslib
 Source0:        https://www.atnf.csiro.au/computing/software/wcs/wcslib-releases/wcslib-%{version}.tar.bz2
 BuildRequires:  cfitsio-devel
 BuildRequires:  fdupes

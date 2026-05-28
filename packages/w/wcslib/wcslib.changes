@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 28 08:35:05 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Downgrade to 8.6
+  * The Claude AI assisted version 8.7 is buggy and crashes
+    Astropy for example: gh#astropy/astropy#19728
+
+-------------------------------------------------------------------
 Wed May 13 21:09:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.7:
