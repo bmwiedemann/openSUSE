@@ -335,4 +335,12 @@
     <comment>Update to 12.3.1</comment>
     <requestid>1355323</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3ce4d41347eef75135f1a7d2ffbb72e5</srcmd5>
+    <version>12.3.2</version>
+    <time>1779982393</time>
+    <user>anag_factory</user>
+    <comment>Update to 12.3.2</comment>
+    <requestid>1355603</requestid>
+  </revision>
 </revisionlist>

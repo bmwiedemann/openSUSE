@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 28 09:08:40 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 12.3.2:
+  * Fix regression introduced when switching to the streamed file reads
+    to the preloaded ones, which caused memory exhaustion when loading
+    large files on machines with little/fragmented below-4GiB memory.
+
+-------------------------------------------------------------------
 Wed May 27 09:18:45 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 12.3.1:
