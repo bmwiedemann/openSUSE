@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 27 21:29:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update golang/x/net to v0.55.0 (bsc#1266598, CVE-2026-39821)
+
+-------------------------------------------------------------------
 Tue May 19 15:24:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update distribution dependency to v3.1.1 to address (bsc#1265428,

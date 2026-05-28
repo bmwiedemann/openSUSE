@@ -125,4 +125,12 @@
   * chore(deps): bump golang.org/x/crypto from 0.46.0 to 0.47.0</comment>
     <requestid>1354085</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>46fab7f41c738af38adb259d9e07af9f</srcmd5>
+    <version>3.21.0</version>
+    <time>1779982031</time>
+    <user>anag_factory</user>
+    <comment>- update golang/x/net to v0.55.0 (bsc#1266598, CVE-2026-39821)</comment>
+    <requestid>1355484</requestid>
+  </revision>
 </revisionlist>
