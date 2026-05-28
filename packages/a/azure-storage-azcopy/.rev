@@ -96,4 +96,12 @@
   due to bad SETTINGS frame (bsc#1265841, CVE-2026-33814) (forwarded request 1354213 from glaubitz)</comment>
     <requestid>1354944</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6366cf60c9579915bc99c0fc6e27b4c4</srcmd5>
+    <version>10.32.4</version>
+    <time>1780002751</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1355663</requestid>
+  </revision>
 </revisionlist>

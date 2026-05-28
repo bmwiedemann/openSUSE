@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 28 11:02:15 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 10.32.4
+  * Remove 32-bit Windows ARM7 build
+  * Cover other open CVEs (bsc#1266657, CVE-2026-39821)
+  * Update otel sdk
+  * Update packages and add patch version
+- from version 10.32.3
+  * Update version.go
+  * Error formatting
+  * Add test to validate changes
+  * Update Changelog
+  * Alter intentional panics to return errors
+  * Correct issues re: MSRC case #110341
+  * Update offending packages
+- Drop CVE-2026-33186.patch, merged upstream
+- Drop CVE-2026-33814.patch, merged upstream
+- Drop CVE-2026-34986.patch, merged upstream
+
+-------------------------------------------------------------------
 Wed May 20 10:00:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add CVE-2026-33814.patch to fix hanging Transport in http2 code
