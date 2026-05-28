@@ -1,10 +1,10 @@
 ---
  texmf-dist/scripts/texlive/fmtutil-sys.sh |    1 +
- texmf-dist/scripts/texlive/fmtutil.pl     |   29 +++++++++++++++++++++--------
- texmf-dist/scripts/texlive/mktexlsr.pl    |    9 +++++++--
+ texmf-dist/scripts/texlive/fmtutil.pl     |   43 ++++++++++++++++++++++++------
+ texmf-dist/scripts/texlive/mktexlsr.pl    |    9 ++++--
  texmf-dist/scripts/texlive/updmap-sys.sh  |    1 +
- texmf-dist/scripts/texlive/updmap.pl      |   18 ++++++++++--------
- 5 files changed, 40 insertions(+), 18 deletions(-)
+ texmf-dist/scripts/texlive/updmap.pl      |   18 ++++++------
+ 5 files changed, 54 insertions(+), 18 deletions(-)
 
 --- texmf-dist/scripts/texlive/fmtutil-sys.sh
 +++ texmf-dist/scripts/texlive/fmtutil-sys.sh	2018-05-11 10:51:14.298775065 +0000
@@ -15,7 +15,7 @@
 +umask 022
  exec fmtutil --sys ${1+"$@"}
 --- texmf-dist/scripts/texlive/fmtutil.pl
-+++ texmf-dist/scripts/texlive/fmtutil.pl	2026-03-31 10:39:20.826995472 +0000
++++ texmf-dist/scripts/texlive/fmtutil.pl	2026-05-26 07:30:51.527435361 +0000
 @@ -11,7 +11,7 @@
  # Original shell script 2001 Thomas Esser, public domain
  
@@ -70,7 +70,28 @@
      }
    }
    # set up destination directory
-@@ -758,6 +765,7 @@ sub rebuild_one_format {
+@@ -651,6 +658,20 @@ sub select_and_rebuild_format {
+   }
+   if ($doit) {
+     check_and_warn_on_user_format($fmt,$eng);
++    #X#
++    #X# At update: for the final end of the transaction check if
++    #X# the timestamp file /var/run/texlive/.timestamp exists and
++    #X# if the $fmtfile is newer then return here with $FMT_SUCCESS.
++    #X# Simply because the job is already done.
++    #X#
++    if (-e "/var/run/texlive/.timestamp") {
++      my $resulting_fmt = $destdir . "/" . $fmtfile;
++      if (-s $resulting_fmt) {
++        my $timestamp = (stat("/var/run/texlive/.timestamp"))[9];
++        my $lastmoded = (stat($resulting_fmt))[9];
++        return $FMT_SUCCESS if ($lastmoded > $timestamp);
++      }
++    }
+     return rebuild_one_format($fmt,$eng,$kpsefmt,$destdir,$fmtfile,$logfile);
+   } else {
+     return $FMT_NOTSELECTED;
+@@ -758,6 +779,7 @@ sub rebuild_one_format {
    # check for existence of ini file before doing anything else
    if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
      # we didn't find the ini file, skip
@@ -78,7 +99,7 @@
      print_deferred_warning("inifile $inifile for $fmt/$eng not found.\n");
      # The original script just skipped it but in TeX Live we expect that
      # all activated formats are also buildable, thus return failure.
-@@ -825,6 +833,7 @@ sub rebuild_one_format {
+@@ -825,6 +847,7 @@ sub rebuild_one_format {
          && ",$opts{'no-error-if-no-engine'}," =~ m/,$eng,/) {
        return $FMT_NOTAVAIL;
      } else {
@@ -86,7 +107,7 @@
        print_deferred_error("not building $fmt due to missing engine: $eng\n");
        # could be irrelevant if PATH didn't contain ., and won't find
        # other cases like the engine being in .., but it's just a help message,
-@@ -846,6 +855,10 @@ END_ENGINE_IN_CWD
+@@ -846,6 +869,10 @@ END_ENGINE_IN_CWD
      }
    }
  

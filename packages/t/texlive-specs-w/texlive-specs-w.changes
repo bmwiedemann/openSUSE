@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 26 07:45:10 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Modify fmtutil.pl in such a way to refresh or create a format
+  only once for one update transaction.  Simply to avoid to
+  do the job over and over.
+
+-------------------------------------------------------------------
 Tue Apr 14 10:47:55 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid trouble with openat2(resolve=RESOLVE_BENEATH}) and its

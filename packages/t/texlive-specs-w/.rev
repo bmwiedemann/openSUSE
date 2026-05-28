@@ -598,4 +598,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1348769</requestid>
   </revision>
+  <revision rev="59" vrev="62">
+    <srcmd5>3e77bf5190f2ff4eedd70a03024a02fd</srcmd5>
+    <version>unknown</version>
+    <time>1779981816</time>
+    <user>anag_factory</user>
+    <comment>- Modify fmtutil.pl in such a way to refresh or create a format
+  only once for one update transaction.  Simply to avoid to
+  do the job over and over.</comment>
+    <requestid>1355174</requestid>
+  </revision>
 </revisionlist>
