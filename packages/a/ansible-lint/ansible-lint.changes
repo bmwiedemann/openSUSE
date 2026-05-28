@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 28 07:54:25 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update python-pathspec BuildRequires/Requires version to < 1.2.0
+
+-------------------------------------------------------------------
 Thu Apr  2 04:40:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.4.0:
