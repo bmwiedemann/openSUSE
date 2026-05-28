@@ -171,4 +171,124 @@
     <comment></comment>
     <requestid>1238266</requestid>
   </revision>
+  <revision rev="25" vrev="205">
+    <srcmd5>f2b1f4a08ded4d51b776756cf756acd7</srcmd5>
+    <version>1.5.2</version>
+    <time>1779981850</time>
+    <user>anag_factory</user>
+    <comment>- jsc#PED-14846: Move CATALOG files into /usr/share/sgml
+  instead of linking them there from /var/lib/sgml.
+- Merge opensp-doc package back into opensp.spec file.
+- Convert opensp-lfs.patch to -p1
+  in order to simplify %prep section.
+- Modernize/cleanup specfile.
+- Trim whitespace in .changes file.
+- Fix escaping of commented out patch: with RPM 4.20, %patch
+  becomes a standard, expandable macro, that can span more than one
+  line. Commenting out with #%patch can thus lead to invalid
+  results.
+- Use %patch -P N instead of deprecated %patchN.
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+- fix source link
+- add libtool as buildrequire to avoid implicit dependency
+- use AC_SYS_LARGEFILE, off mismatch between dependant libraries
+- enable parallel building
+- sync opensp.spec and opensp-doc.spec
+- add missing ldconfig calls
+- remove static libraries and &quot;la&quot; files
+- remove xmlto from buildrequires this causes tons of cycles
+- split off opensp-doc package in it's own specfile
+- Update to version 1.5.2 (bug fix release); proposed by Sierk
+  Bornemann [# 273561].
+- Remove obsolete GCC patches.
+- Disable NLS.
+- Build manpages using xmlto.
+- Apply opensp-nodeids.patch from the Fedora opensp-1.5.2-4.fc7.src.rpm
+  package.
+- use RPM_OPT_FLAGS also for the C snippets.
+- Fixed devel dependencies.
+- converted neededforbuild to BuildRequires
+- fixed C++ problem in gcc4.1.
+- removed warnings by adding 2 missing returns.
+- Fixed gcc3.4 build.
+- build as user
+- Update to version 1.5.1; from NEWS:
+  * With SP_MESSAGE_FORMAT environment variable enable run time
+    selection of message format (XML, NONE, TRADITIONAL).
+  * Add support for restricted files option to generic API.
+  * Add support for http redirection.
+  * Add support for specifying the user agent at run time with the
+    SP_HTTP_USER_AGENT environment variable.
+  * Add support for specifying Accept: headers with the SP_HTTP_ACCEPT
+    environment variable.
+  * Enhancements to osx. Preserve case option, security fixes,
+- Recreate auto* files on SL &gt; 8.0 only.
+- Add 'tr' and update 'de' translation file from IRO.UMontreal.CA.
+- Remove sgml-skel from needed for build
+- Add /var/lib/sgml to filelist
+- opensp-devel should not Obsolete openjade
+- Fix syntax error in postinstall script
+- Cleanup $RPM_BUILD_ROOT.
+- Use %postun instead of %preun and don't run it while updating;
+  reported by Ruediger Oertel.
+- Don't install .cvsignore file.
+- remove wrong obsoletes for jade_dsl
+- move AttributeValue class declaration to the top of Attribute.h
+- Add osx to the %files list; reported by Togan Muftuoglu.
+- fixing script syntax
+- Comment out SGMLDECL statements in CATALOG.opensp; thus the builtin
+  SGML declaration will be used.
+- Update to version 1.5; from NEWS:
+  * Support for &quot;-restricted&quot; option to restrict parsing of web based
+    documents to local files only.
+  * New spcat cmdline interface to the catalog manager.
+  * The multibyte version of OpenSP now uses 32bit chars and supports
+    the full UTF-16 range 0x0000-0x10ffff.
+  * Support for the koi8-r (RFC 1489) encoding.
+  * DTDDECL in SGML Open Catalogs is supported.
+  * New options -n and -x to see message numbers/relevant clauses with
+    messages.
+  * New -output options: comment, omitted, tagomit and attromit; this
+    shows comments and implied elements and/or attributes.
+  * The architecture engine supports #MAPTOKEN.
+  * More of Annex K supported: SGML declarations on subdocs, DATA
+    declared value for attributes, DTD data entities and DTD notations
+    for doctypes, complete IMPLYDEF support, ENTITIES REF constraints,
+    URN parsing. Many new -w flags.
+  * More of Annex K supported: Common data attributes can now be
+    specified in external entity declarations.
+  * Added support for the PI-based architecture use declaration syntax
+    defined by Amendment 1 to ISO/IEC 10744:1997 (HyTime).  This makes
+    it possible to specify architectural support attributes when using
+    architectures with XML, and is generally simpler than the original
+    syntax.  See http://www.ornl.gov/sgml/wg8/document/1985.htm for
+    details.
+  * Adds the architecture public id to the information passed to
+    implementations of ArcDirector.  This is especially important when
+    using the PI-based architecture use declaration syntax, since there
+    may be no Notation object from which to get the information.
+  * Add a HTTP/1.0 Host header to HTTP requests. Necessary to fetch DTDs
+    specified in SYSTEM identifiers when the DTD resides on a name-based
+    &quot;Virtual Host&quot;.
+  * Enhancements to osx.
+  * Add -x command line option to osx, which allows users to say whether
+    they want sdata entities transformed into PIs or treated like normal
+    entities (the default is the latter, which is how osx always behaved
+    before this change).
+  * Minor documentation improvements.
+  * Update translations: de, fr (new), ja (new)
+  * Option to produce error messages formatted as XML
+    enable with ./configure --enable-xml-messages
+- Register /etc/sgml/opensp.cat using sgml-register-catalog.
+- Default catalogs are now: CATALOG, /etc/sgml/catalog, and
+  /usr/share/sgml/CATALOG (in this order); /etc/sgml/catalog is new.
+- Make it a package on its own (separated from openjade).
+- do not fail in pre/postinstall scripts
+- Update to version 1.5pre9:
+- Make it a package on its own (separated from openjade).
+</comment>
+    <requestid>1355375</requestid>
+  </revision>
 </revisionlist>

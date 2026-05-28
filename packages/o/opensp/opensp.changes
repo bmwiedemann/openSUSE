@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 28 09:14:47 UTC 2026 - Yunus Acar <yunus.acar@suse.com>
+
+- jsc#PED-14846: Move CATALOG files into /usr/share/sgml
+  instead of linking them there from /var/lib/sgml.
+- Merge opensp-doc package back into opensp.spec file.
+- Convert opensp-lfs.patch to -p1
+  in order to simplify %prep section.
+- Modernize/cleanup specfile.
+- Trim whitespace in .changes file.
+
+-------------------------------------------------------------------
 Tue Jan 14 13:30:48 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix escaping of commented out patch: with RPM 4.20, %patch
@@ -31,7 +42,7 @@ Sun Nov 20 06:51:03 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Sat Dec 18 16:58:45 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- use AC_SYS_LARGEFILE, off mismatch between dependant libraries  
+- use AC_SYS_LARGEFILE, off mismatch between dependant libraries
 
 -------------------------------------------------------------------
 Mon Dec 14 20:50:38 CET 2009 - jengelh@medozas.de
@@ -47,12 +58,12 @@ Fri Nov 14 16:19:40 CET 2008 - mrueckert@suse.de
 Thu Dec 20 03:19:53 CET 2007 - crrodriguez@suse.de
 
 - add missing ldconfig calls
-- remove static libraries and "la" files 
+- remove static libraries and "la" files
 
 -------------------------------------------------------------------
 Thu May 17 19:25:49 CEST 2007 - ro@suse.de
 
-- remove xmlto from buildrequires this causes tons of cycles 
+- remove xmlto from buildrequires this causes tons of cycles
 - split off opensp-doc package in it's own specfile
 
 -------------------------------------------------------------------
@@ -148,12 +159,12 @@ Wed May 21 10:32:27 CEST 2003 - ke@suse.de
 -------------------------------------------------------------------
 Mon May 19 14:27:20 CEST 2003 - ro@suse.de
 
-- remove wrong obsoletes for jade_dsl 
+- remove wrong obsoletes for jade_dsl
 
 -------------------------------------------------------------------
 Tue May  6 01:16:45 CEST 2003 - ro@suse.de
 
-- move AttributeValue class declaration to the top of Attribute.h 
+- move AttributeValue class declaration to the top of Attribute.h
 
 -------------------------------------------------------------------
 Thu Jan 30 13:37:35 CET 2003 - ke@suse.de
@@ -232,6 +243,3 @@ Tue Nov 19 12:57:31 CET 2002 - ke@suse.de
 
 - Update to version 1.5pre9:
 - Make it a package on its own (separated from openjade).
-
-
-
