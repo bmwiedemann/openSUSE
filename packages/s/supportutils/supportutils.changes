@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 13 16:19:54 UTC 2026 - jason.record@suse.com
+
++ Changes to version 3.2.14
+  - Integrates supportutils-scrub for data obfuscation, use -j (PED-7324, bsc#1259520, #302)
+  - santize env.txt (pr#301)
+  - ha.txt: Collect hacluster passwd entry (pr#299)
+  - Added systemd cat unit.service output (pr#294)
+  - Added softirqs to proc (bsc#1258069. pr#298)
+  - Check for /usr/lib/pam.d (pr#296)
+  - Ignore deprecated crash variable message (pr#297)
+  - Update supportconfig with note about bpftool (pr#285)
+  - Added /boot/grub2/grubenv (bsc#1257383, pr#292)
+  - Verify procps pkg (pr#293)
+
+-------------------------------------------------------------------
+Wed Jan 28 20:23:39 UTC 2026 - jason.record@suse.com
+ 
+ - scplugin.rc is restored in package 3.2.12.1 for continued compatibility.
+   There is no furture development for scplugin.rc. Use supportconfig.rc.
+   Package version 3.2.12.2 does not have scplugin.rc. Supportconfig
+   itself is the same for both versions. (bsc#1256709)
+
+-------------------------------------------------------------------
 Fri Dec 12 20:05:09 UTC 2025 - jason.record@suse.com
 
 - Changes to version 3.2.12

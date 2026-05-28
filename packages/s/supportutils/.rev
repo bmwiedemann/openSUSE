@@ -378,4 +378,12 @@
     <comment>bsc#1232351 bsc#1245667 bsc#1246011 bsc#1246025 bsc#1249657 bsc#1250224 bsc#1252318 bsc#1254425 PR#265 PR#261 PR#266 PR#269 PR#270 PR#271 PR#276 PR#278 PR#279 PR#282 PR#284 PR#288 (forwarded request 1323019 from jrecord)</comment>
     <requestid>1323020</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>78f80c26a2b43b3ba192adca08cdb46d</srcmd5>
+    <version>3.2.14.2</version>
+    <time>1779981991</time>
+    <user>anag_factory</user>
+    <comment>PED-7324, bsc#1259520, pr#302, pr#301, pr#299, pr#294, bsc#1258069, pr#298, pr#297, pr#296, pr#285, bsc#1257383, pr#292, pr#293 (forwarded request 1355456 from jrecord)</comment>
+    <requestid>1355457</requestid>
+  </revision>
 </revisionlist>
