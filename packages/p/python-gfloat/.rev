@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1225286</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e348e63def030f2f6c926026d8625664</srcmd5>
+    <version>0.4</version>
+    <time>1779982008</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1355342 from spajak
+
+Fixed invalid URL</comment>
+    <requestid>1355477</requestid>
+  </revision>
 </revisionlist>

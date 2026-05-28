@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 27 09:59:38 UTC 2026 - spaceja <spaceja@opensuse.org>
+
+- Fixed invalid URL
+
+-------------------------------------------------------------------
+Tue May 19 18:29:46 UTC 2026 - Jakub Špaček <jakub.spacek07@email.cz>
+
+- Fixed invalid URL and remove chanelog tag from spec file 
+
+-------------------------------------------------------------------
 Tue Nov 19 15:52:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (0.4)

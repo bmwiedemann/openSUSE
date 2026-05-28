@@ -1,7 +1,7 @@
 #
 # spec file for package python-gfloat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Version:        0.4
 Release:        0
 Summary:        Generic floating point handling in Python
 License:        MIT
-URL:            None
+URL:            https://github.com/graphcore-research/gfloat
 Source:         https://files.pythonhosted.org/packages/source/g/gfloat/gfloat-%{version}.tar.gz
 Patch1:         no-nbval.patch
 BuildRequires:  %{python_module ml-dtypes}
