@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 25 20:07:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Widened `msal` and `azure-identity` constraints to allow
+    newer minor releases. Fixes #62 — `redis-entraid` can now be
+    installed alongside `azure-kusto-data`, `microsoft-agents-
+    authentication-msal`, and other packages requiring
+    `msal>=1.34` or `azure-identity>=1.25`.
+  * Declared `requests` as an explicit runtime dependency (it was
+    already imported but not in package metadata).
+  * Widened `requests` constraint to `~=2.32` for consistency.
+  * CI: dropped `pypy-3.10` from the test matrix (`cryptography`
+    no longer supports it; `pypy-3.11` remains covered).
+
+-------------------------------------------------------------------
 Sun Mar 29 19:04:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.2:

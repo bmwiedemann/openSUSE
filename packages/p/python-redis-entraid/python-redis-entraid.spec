@@ -17,7 +17,7 @@
 
 
 Name:           python-redis-entraid
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Entra ID credentials provider implementation for Redis-py client
 License:        MIT
@@ -29,10 +29,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyJWT >= 2.12.0
-Requires:       python-azure-identity >= 1.24.0
-Requires:       python-msal >= 1.33.0
+Requires:       python-azure-identity >= 1.24
+Requires:       python-msal >= 1.33
 Requires:       python-redis >= 5.3.0
-Requires:       python-requests >= 2.32.3
+Requires:       python-requests >= 2.32
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,6 +51,7 @@ Entra ID credentials provider implementation for Redis-py client
 
 %files %{python_files}
 %license LICENSE
+%doc README.md
 %{python_sitelib}/redis_entraid
 %{python_sitelib}/redis_entraid-%{version}.dist-info
 

@@ -28,4 +28,22 @@
     entraid/compare/v1.1.0...v1.1.2</comment>
     <requestid>1343518</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>250a47a816e8e008775d549e7ae6b0cd</srcmd5>
+    <version>1.2.0</version>
+    <time>1780002462</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.0:
+  * Widened `msal` and `azure-identity` constraints to allow
+    newer minor releases. Fixes #62 — `redis-entraid` can now be
+    installed alongside `azure-kusto-data`, `microsoft-agents-
+    authentication-msal`, and other packages requiring
+    `msal&gt;=1.34` or `azure-identity&gt;=1.25`.
+  * Declared `requests` as an explicit runtime dependency (it was
+    already imported but not in package metadata).
+  * Widened `requests` constraint to `~=2.32` for consistency.
+  * CI: dropped `pypy-3.10` from the test matrix (`cryptography`
+    no longer supports it; `pypy-3.11` remains covered).</comment>
+    <requestid>1355105</requestid>
+  </revision>
 </revisionlist>
