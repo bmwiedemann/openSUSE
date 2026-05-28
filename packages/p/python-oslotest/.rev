@@ -433,4 +433,12 @@
   * ruff: Use more specific name to enable pyupgrade rule</comment>
     <requestid>1345963</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>bc8c2f5fefc552ae51a404419a79e30c</srcmd5>
+    <version>6.1.1</version>
+    <time>1779982357</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1355594</requestid>
+  </revision>
 </revisionlist>

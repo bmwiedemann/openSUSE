@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-oslotest%{psuffix}
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        OpenStack test framework
 License:        Apache-2.0

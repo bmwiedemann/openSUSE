@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 18 10:00:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.1:
+  * typing: Broaden type for create_tempfiles
+  * typing: Indicate type for TIMEOUT_SCALING_FACTOR
+  * Remove redundant monkey patching
+
+-------------------------------------------------------------------
 Fri Apr 10 19:29:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add multibuild to avoid build cycle
