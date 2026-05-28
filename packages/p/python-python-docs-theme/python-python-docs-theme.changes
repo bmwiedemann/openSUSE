@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 25 20:05:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.4:
+  * Add styling for the `soft-deprecated` class by
+    @StanFromIreland
+  * Add Tamil translation in https://github.com/python/python-
+    docs-theme/pull/304
+  * Fix the vertical alignment of `:Editor:`
+
+-------------------------------------------------------------------
 Wed Apr  1 23:42:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.3:

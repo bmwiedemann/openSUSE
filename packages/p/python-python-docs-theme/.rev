@@ -199,4 +199,17 @@
   * Add colors for new thread-safety levels</comment>
     <requestid>1344236</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d9685563376750a405e3221a72339c87</srcmd5>
+    <version>2026.4</version>
+    <time>1780002459</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.4:
+  * Add styling for the `soft-deprecated` class by
+    @StanFromIreland
+  * Add Tamil translation in https://github.com/python/python-
+    docs-theme/pull/304
+  * Fix the vertical alignment of `:Editor:`</comment>
+    <requestid>1355102</requestid>
+  </revision>
 </revisionlist>
