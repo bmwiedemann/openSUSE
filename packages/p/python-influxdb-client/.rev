@@ -15,4 +15,48 @@
     <comment></comment>
     <requestid>1252480</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d03a78e599a924345aec1734e83a4d7c</srcmd5>
+    <version>1.50.0</version>
+    <time>1779981956</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.50.0
+  * #696: Move &quot;setuptools&quot; package to build dependency.
+- Release 1.49.0
+  * #682: Check core types when creating Authentication instances.
+  * #682: New example for working with Authentication API.
+- Release 1.48.0
+  * #679: Add note to caught errors about need to check client
+    timeout.
+- Release 1.47.0
+  * #672: Adding type validation to url attribute in client object
+  * #674: Add type linting to client.flux_table.FluxTable, remove
+    duplicated from pathlib import Path at setup.py
+  * #675: Ensures WritePrecision in Point is preferred to
+    DEFAULT_PRECISION
+- Release 1.46.0
+  * #667: Missing py.typed in distribution package
+  * #664: Multiprocessing example uses new source of data
+  * #665: Shows how to leverage header fields in errors returned on
+    write.
+- Release 1.45.0
+  * #652: Refactor to timezone specific datetime helpers to avoid
+    use deprecated functions
+  * #663: Accept HTTP 201 response to write request
+- Release 1.44.0
+  * #657: Prefer datetime.fromisoformat over dateutil.parse in
+    Python 3.11+
+  * #658: Add find_buckets_iter function that allow iterate through
+    all pages of buckets.
+- Release 1.43.0
+  * #655: Replace deprecated urllib calls HTTPResponse.getheaders()
+    and HTTPResponse.getheader().
+  * #654: Enable packaging type information - py.typed
+- Release 1.42.0
+  * #648: Fix DataFrame serialization with NaN values
+- Fix a tests checking the header version string: they prepend a v
+  for newer versions but we are still at influxdb2 2.7
+</comment>
+    <requestid>1355404</requestid>
+  </revision>
 </revisionlist>

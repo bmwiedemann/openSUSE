@@ -1,7 +1,7 @@
 #
 # spec file for package python-influxdb-client
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?sle15_python_module_pythons}
+%global skip_python314 1
 Name:           python-influxdb-client
-Version:        1.41.0
+Version:        1.50.0
 Release:        0
 Summary:        InfluxDB 2.0 Python client library
 License:        MIT
@@ -33,7 +34,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-certifi >= 14.05.14
 Requires:       python-python-dateutil >= 2.5.3
 Requires:       python-reactivex >= 4.0.4
-Requires:       python-setuptools >= 21.0.0
 Requires:       python-urllib3 >= 1.26.0
 Suggests:       python-aiocsv >= 1.2.2
 Suggests:       python-aiohttp >= 3.8.1
@@ -54,7 +54,8 @@ BuildRequires:  %{python_module python-dateutil >= 2.5.3}
 BuildRequires:  %{python_module reactivex >= 4.0.4}
 BuildRequires:  %{python_module urllib3 >= 1.26.0}
 BuildRequires:  curl
-BuildRequires:  influxdb2
+# remove the test fix below if this gets updated
+BuildRequires:  influxdb2 < 2.8.0
 # /SECTION
 %python_subpackages
 
@@ -63,11 +64,13 @@ The Python client library for use with InfluxDB 2.x and Flux.
 InfluxDB 3.x users should instead use the lightweight v3 client library.
 InfluxDB 1.x users should use the v1 client library.
 
-The API of the influxdb-client-python is not the backwards-compatible with
+The API of the influxdb-client-python is not backwards-compatible with
 the old one - influxdb-python.
 
 %prep
 %autosetup -p1 -n influxdb-client-python-%{version}
+# Remove this when influxdb2 is updated to a newer version.
+sed -iE '/re.compile.*X-Influxdb-Version/ s/\^v/^2/' tests/test_*.py
 
 %build
 %pyproject_wheel
@@ -106,6 +109,8 @@ donttest="$donttest or test_query_and_debug"
 %pytest tests -k "not ($donttest)"
 
 %files %{python_files}
+%license LICENSE
+%doc README.md MIGRATION_GUIDE.rst
 %{python_sitelib}/influxdb_client
 %{python_sitelib}/influxdb_client-%{version}.dist-info
 
