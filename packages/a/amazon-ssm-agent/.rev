@@ -627,4 +627,12 @@
   operations (bsc#1264952, CVE-2026-41506) (forwarded request 1352715 from glaubitz)</comment>
     <requestid>1352892</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>4259a69d14dbc6bd051406b522f0c1c2</srcmd5>
+    <version>3.3.4515.0</version>
+    <time>1780002757</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1355664</requestid>
+  </revision>
 </revisionlist>

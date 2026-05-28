@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 28 15:02:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.4515.0
+  * Bump golang.org/x/net from v0.48.0 to v0.53.0 (bsc#1266781, CVE-2026-39821)
+  * Quit if sysprep failed and log its current state
+  * Remove attached legacy cloudwatch plugin packages
+  * Upgrade Go version to 1.25.10
+  * Use BuildSafePath wherever it is applicable
+- from version 3.3.4364.0
+  * Add OOM killer protection to systemd service files
+  * Apply more sanitation to file and registry inventory gatherers
+  * Bump go-git to v5.17.1
+  * Deprecate legacy cloudwatch plugin
+  * Preserve network error details in credential refresher SSM API failures
+  * Upgrade Go version to 1.25.9
+
+-------------------------------------------------------------------
 Tue May 12 10:44:03 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add CVE-2026-41506.patch to fix HTTP authentication credential
