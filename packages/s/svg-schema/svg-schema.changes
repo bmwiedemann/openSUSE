@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 10 15:03:53 UTC 2026 - Yunus Acar <yunus.acar@suse.com>
+
+- jsc#PED-14901: Move CATALOG files into /usr/share/sgml
+  instead of linking them there from /var/lib/sgml.
+- Simplify/cleanup specfile, in order to improve readability.
+- Trim whitespace in .changes file.
+
+-------------------------------------------------------------------
 Fri Jan 19 13:05:07 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file
@@ -124,5 +132,3 @@ Mon Feb 24 13:56:42 CET 2003 - ke@suse.de
 Fri Dec  6 13:17:27 CET 2002 - ke@suse.de
 
 - New package: SVG 1.0; cf. [# 12050].
-
-

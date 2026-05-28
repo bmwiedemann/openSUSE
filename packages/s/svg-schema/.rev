@@ -137,4 +137,57 @@ Several spec changes, but no version update:
   with version including errata.</comment>
     <requestid>1139945</requestid>
   </revision>
+  <revision rev="19" vrev="125">
+    <srcmd5>bf7611262a162f7eae0171538d698e85</srcmd5>
+    <version>20030114</version>
+    <time>1779981854</time>
+    <user>anag_factory</user>
+    <comment>- jsc#PED-14901: Move CATALOG files into /usr/share/sgml
+  instead of linking them there from /var/lib/sgml.
+- Simplify/cleanup specfile, in order to improve readability.
+- Trim whitespace in .changes file.
+- Modernise spec file
+- Update urls to valid one and update REC-SVG11-20030114 zip file
+  with version including errata.
+- Provide still svg-dtd symbol to make sure things are still resolvable
+- Use correct form of requires(pre)
+Several spec changes, but no version update:
+ - Use spec-cleaner
+ - Simplified unzip with -d option
+ - Split into svg-schema and svg-schema-doc
+ - Fix warnings
+ - Add missing &quot;popd&quot;
+ - General cleanup with structure &amp; variables
+ - Apply %fdupes macro only to %{buildroot}%{_docdir}
+- Use update-xml-catalog
+- Use fdupes to reduce duplicate waste.
+- Only remove file from catalog if it disappeared.
+- Do not use release numbers, they're not needed anymore.
+- Rename svg-dtd to svg-schema
+- Add RNG schema files as proposed by Thomas Schraitle.
+- Add BuildRequires: unzip
+- Fix fix typo in postun script; reported by Florian La Roche [#
+  249023].
+- Remove /usr/share/xml from the files list.
+- converted neededforbuild to BuildRequires
+- Provide XML catalog entries for &quot;-//W3C//ENTITIES SVG 1.1&quot; and
+  &quot;-//W3C//ELEMENTS SVG 1.1&quot;; reported by Berthold Gunreben.
+- Remove wrong references in svg-1.1.xml catalog file.
+- Add systemIds to the catalog files.
+- Stop creating compat links.
+- added option # norootforbuild in specfile
+- Adjust directories according to FHS 2.3:
+  * Move DTDs to /usr/share/xml/svg/schema/dtd.
+  * Provide compatibility links for SL =&lt; 9.0 (log this info in
+    /var/adm/SuSEconfig/run-sgmldir-links for later processing).
+- added &quot;exit 0&quot; as temporary workaround to postinstall
+- Add version 1.1.
+- Use absolute links.
+- Use edit-xml-catalog to register xml catalog fragments.
+- In %post drop brain dead file check which cause re-creation of an
+  empty xml catalog file; reported by Thomas Schraitle [# 24186].
+- New package: SVG 1.0; cf. [# 12050].
+</comment>
+    <requestid>1355377</requestid>
+  </revision>
 </revisionlist>
