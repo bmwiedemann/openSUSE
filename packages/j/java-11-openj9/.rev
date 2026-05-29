@@ -287,4 +287,12 @@
     <comment>Add a bug reference</comment>
     <requestid>1353271</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>956f3b46ac08f82523904639cdfd3b8f</srcmd5>
+    <version>11.0.31.0</version>
+    <time>1780070955</time>
+    <user>anag_factory</user>
+    <comment>Use libalternatives when possible</comment>
+    <requestid>1355806</requestid>
+  </revision>
 </revisionlist>
