@@ -4464,4 +4464,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
 - fixes following GH security advisories:</comment>
     <requestid>1353857</requestid>
   </revision>
+  <revision rev="337" vrev="1">
+    <srcmd5>e5d1d9d584e60a7f551791745e9527b5</srcmd5>
+    <version>7.1.2.24</version>
+    <time>1780070675</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1265373]</comment>
+    <requestid>1355847</requestid>
+  </revision>
 </revisionlist>

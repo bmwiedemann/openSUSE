@@ -1,7 +1,7 @@
-Index: ImageMagick-7.1.2-23/config/policy-SUSE.xml
+Index: ImageMagick-7.1.2-24/config/policy-SUSE.xml
 ===================================================================
---- ImageMagick-7.1.2-23.orig/config/policy-SUSE.xml
-+++ ImageMagick-7.1.2-23/config/policy-SUSE.xml
+--- ImageMagick-7.1.2-24.orig/config/policy-SUSE.xml
++++ ImageMagick-7.1.2-24/config/policy-SUSE.xml
 @@ -65,7 +65,7 @@
    <policy domain="resource" name="disk" value="2GiB"/>
    <!-- Set the maximum length of an image sequence.  When this limit is
@@ -25,10 +25,12 @@ Index: ImageMagick-7.1.2-23/config/policy-SUSE.xml
    <policy domain="path" rights="none" pattern="fd:*"/>
    <!-- Sensitive paths are not permitted. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
-@@ -115,4 +115,20 @@
+@@ -114,5 +114,21 @@
+        allocation requests. -->
    <policy domain="system" name="max-memory-request" value="256MiB"/>
    <!-- If the basename of path is a symbolic link, the open fails -->
-   <policy domain="system" name="symlink" rights="none" pattern="follow"/>
+-  <policy domain="system" name="symlink" rights="none" pattern="follow"/>
++  <policy domain="system" name="symlink" rights="read" pattern="follow"/>
 +  <!-- Disable insecure coders by default -->
 +  <policy domain="coder" rights="none" pattern="EPHEMERAL" />
 +  <policy domain="coder" rights="none" pattern="URL" />

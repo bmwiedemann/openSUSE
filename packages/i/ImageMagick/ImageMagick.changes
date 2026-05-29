@@ -1,8 +1,41 @@
 -------------------------------------------------------------------
+Fri May 29 09:25:04 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- in default security policy, allow reading from symbolic links
+  [bsc#1265373]
+- modified patches
+  * ImageMagick-configuration-SUSE.patch
+
+-------------------------------------------------------------------
+Thu May 28 14:05:32 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 7.1.2.24
+  * reject mtv files with zero columns or rows #8758
+  * reject tga files with zero columns or rows #8756
+  * reject cineon files with zero columns or rows #8754
+  * build(deps): bump ubuntu from 22.04 to 26.04 in /.devcontainer #8751
+  * reject farbfeld files with zero columns or rows #8750
+  * build(deps): bump caphyon/advinst-github-action from 2.0.2 to 2.0.3 #8742
+  * build(deps): bump github/codeql-action from 4.35.4 to 4.35.5 #8749
+  * Add profile_fuzzer for raw EXIF/XMP/IPTC/ICC parsing #8736
+- fixes following GH security advisories:
+  * GHSA-4v89-6mgq-6rgc
+  * GHSA-8pj9-6897-74xc
+  * GHSA-xcjm-wqff-m669
+  * GHSA-gm48-c7f2-v67p
+  * GHSA-h36c-3666-h489
+  * GHSA-5v62-8fq6-cp9m
+  * GHSA-9hqg-xf93-ghfw
+  * GHSA-2hhq-c99x-492r
+  * GHSA-6mwj-rp89-6j5j
+  * GHSA-vgh5-r42g-4j44
+
+-------------------------------------------------------------------
 Mon May 18 14:32:11 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 7.1.2.23
-  * no upstream changelog
+  * build(deps): bump github/codeql-action from 4.35.3 to 4.35.4 #8733
+  * ignore_sequence_editlist only in libheif 1.21 #8729
 - fixes following GH security advisories:
   * GHSA-36wm-hprc-mcf5
   * GHSA-3rvp-mpr5-qjm9
@@ -24,7 +57,11 @@ Mon May 18 14:32:11 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 Wed May 13 12:08:36 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 7.1.2.22
-  * no upstream changelog
+  * Fix unsound free of uninitialized pointers in GetImageFeatures error path #8724
+  * build(deps): bump github/codeql-action from 4.35.2 to 4.35.3 #8719
+  * build(deps): bump msys2/setup-msys2 from 2.31.0 to 2.31.1 #8697
+  * build(deps): bump github/codeql-action from 4.35.1 to 4.35.2 #8684
+  * build(deps): bump lxml from 6.0.2 to 6.1.0 in /.github/build/python #8683
 - fixes following GH security advisories:
   * GHSA-7wff-wpr6-vmhm
   * GHSA-85r7-8qr6-54gh
