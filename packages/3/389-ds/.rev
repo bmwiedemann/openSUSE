@@ -853,4 +853,11 @@ RelEng emergencyfix</comment>
     <comment></comment>
     <requestid>1355258</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>077adbec3d44bb73d0771c5693fc5378</srcmd5>
+    <version>3.1.4+e2562f589</version>
+    <time>1780085532</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1266974</comment>
+  </revision>
 </revisionlist>
