@@ -1,0 +1,17 @@
+---
+ tests/test_shadowed_module.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: sentry-python-2.60.0/tests/test_shadowed_module.py
+===================================================================
+--- sentry-python-2.60.0.orig/tests/test_shadowed_module.py	2026-05-13 15:19:14.000000000 +0200
++++ sentry-python-2.60.0/tests/test_shadowed_module.py	2026-05-27 11:59:07.078442898 +0200
+@@ -20,7 +20,7 @@
+     if "integration_submodule_name" in metafunc.fixturenames:
+         submodule_names = {
+             submodule_name
+-            for _, submodule_name, _ in pkgutil.walk_packages(integrations.__path__)
++            for _, submodule_name, _ in pkgutil.iter_modules(integrations.__path__)
+         }
+ 
+         metafunc.parametrize(

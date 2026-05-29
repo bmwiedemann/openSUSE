@@ -1,7 +1,7 @@
 #
 # spec file for package python-sentry-sdk
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,18 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
 Name:           python-sentry-sdk
-Version:        2.39.0
+Version:        2.60.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
 URL:            https://github.com/getsentry/sentry-python
 Source0:        https://github.com/getsentry/sentry-python/archive/%{version}/sentry-python-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/getsentry/sentry-python/pull/4879 fix(tests): Don't assume release is set
-Patch:          release.patch
-BuildRequires:  %{python_module Django >= 2.0}
+# PATCH-FIX-UPSTREAM dont-walk-iterate.patch bugno mcepl@suse.com
+# stop test_shadowed_module.py from recursively walking subpackages
+Patch0:         dont-walk-iterate.patch
+# PATCH-FIX-OPENSUSE build-pytest.patch mcepl@suse.com
+# switch off test coverage
+Patch1:         build-pytest.patch
 BuildRequires:  %{python_module Flask >= 1.0}
 BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2}
@@ -55,10 +58,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+BuildRequires:  gdal
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module Werkzeug}
-BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fastapi >= 0.79.0}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module greenlet}
@@ -67,14 +70,16 @@ BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module jsonschema >= 3.2.0}
 BuildRequires:  %{python_module pyramid}
 BuildRequires:  %{python_module pyrsistent >= 0.16.0}
-BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-cov >= 2.8.1}
+BuildRequires:  %{python_module pytest-asyncio >= 0.24.0}
 BuildRequires:  %{python_module pytest-forked >= 1.4.0}
 BuildRequires:  %{python_module pytest-localserver >= 0.5.1}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module responses}
 # /SECTION
 # SECTION test requirements - which rise up buildtime error or missing in openSUSE
+#BuildRequires:  %%{python_module Django >= 2.0}
+#BuildRequires:  %%{python_module eventlet}
 #BuildRequires:  %%{python_module pytest-watch >= 4.2.0}
 # /SECTION
 # SECTION extra requirements - which rise up buildtime error or missing in openSUSE
@@ -118,6 +123,7 @@ Suggests:       python-rq >= 0.6
 Suggests:       python-starlette >= 0.19.1
 Suggests:       python-tornado >= 6
 Suggests:       python-h2
+Suggests:       gdal
 # SECTION extra requirements - which rise up buildtime error or missing in openSUSE
 #Requires:       python-sanic >= 0.8
 #Requires:       python-apache-beam >= 2.12
@@ -153,17 +159,19 @@ https://sentry.io/for/python/
 # Fix python-bytecode-inconsistent-mtime
 pushd %{buildroot}%{python_sitelib}
 find . -name '*.pyc' -exec rm -f '{}' ';'
-python%python_bin_suffix -m compileall *.py ';'
+%python_compileall
 popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PYTEST_ADDOPTS="-W ignore::DeprecationWarning"
-export DJANGO_SETTINGS_MODULE=tests.conftest
 # do not test integration (many package are missing at SUSE):
 rm -r tests/integrations
 IGNORED_CHECKS="(test_default_release and test_utils)"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_socks_proxy or test_datetime_from_isoformat"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_span_templates_ai_dicts"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_span_templates_ai_objects"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_default_attributes"
 %pytest -rs -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}

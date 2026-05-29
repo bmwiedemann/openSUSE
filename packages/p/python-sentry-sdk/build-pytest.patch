@@ -1,0 +1,17 @@
+---
+ pyproject.toml |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: sentry-python-2.60.0/pyproject.toml
+===================================================================
+--- sentry-python-2.60.0.orig/pyproject.toml	2026-05-13 15:19:14.000000000 +0200
++++ sentry-python-2.60.0/pyproject.toml	2026-05-29 02:14:36.404382321 +0200
+@@ -21,7 +21,7 @@
+ #
+ 
+ [tool.pytest.ini_options]
+-addopts = "-vvv -rfEs -s --durations=5 --cov=./sentry_sdk --cov-branch --cov-report= --tb=short --junitxml=.junitxml"
++addopts = "-vvv -rfEs -s --durations=5 --tb=short"
+ asyncio_mode = "strict"
+ asyncio_default_fixture_loop_scope = "function"
+ markers = [

@@ -482,4 +482,27 @@ Reduce dependencies from 260MiB to 14MiB.
     <comment></comment>
     <requestid>1309117</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8aeda2dc477e89d4bf6fbc5cce880b1a</srcmd5>
+    <version>2.60.0</version>
+    <time>1780071099</time>
+    <user>anag_factory</user>
+    <comment>- Add dont-walk-iterate.patch to stop `test_shadowed_module.py`
+  from recursively walking subpackages. Currently,
+  `walk_packages()` descends into names like django.views,
+  redis.asyncio, celery.backends, etc. The test then invents
+  imports such as `sentry_sdk.integrations.django.views.static`,
+  which are not real Sentry SDK modules. We change it into
+  `iter_modules()` which only tests direct modules under
+  `sentry_sdk.integrations`, and that is what the test actually
+  needs.
+- Add build-pytest.patch - don't generate test coverage (save
+  memory).
+- Update to 2.60.0:
+  - The list is too long … see patched CHANGELOG.md packaged.
+- Remove upstreamed release.patch.
+- Use %python_compileall macro instead.
+</comment>
+    <requestid>1355845</requestid>
+  </revision>
 </revisionlist>

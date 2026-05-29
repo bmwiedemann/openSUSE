@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May 28 22:18:29 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add dont-walk-iterate.patch to stop `test_shadowed_module.py`
+  from recursively walking subpackages. Currently,
+  `walk_packages()` descends into names like django.views,
+  redis.asyncio, celery.backends, etc. The test then invents
+  imports such as `sentry_sdk.integrations.django.views.static`,
+  which are not real Sentry SDK modules. We change it into
+  `iter_modules()` which only tests direct modules under
+  `sentry_sdk.integrations`, and that is what the test actually
+  needs.
+- Add build-pytest.patch - don't generate test coverage (save
+  memory).
+
+-------------------------------------------------------------------
+Tue May 26 22:55:34 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.60.0:
+  - The list is too long … see patched CHANGELOG.md packaged.
+- Remove upstreamed release.patch.
+- Use %python_compileall macro instead.
+
+-------------------------------------------------------------------
 Fri Oct  3 08:42:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.39.0
