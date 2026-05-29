@@ -2618,4 +2618,37 @@
   * Document and test relative exclude-newer support for uv pip</comment>
     <requestid>1354946</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>6bdbc6236c9e111fa3a405a3105a7864</srcmd5>
+    <version>0.11.17</version>
+    <time>1780071026</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.17
+ * Enhancements
+  * Add a diagnostic for uv add with standard library modules 
+  * Expose uv workspace and its list subcommand in help output 
+  * Improve the &quot;403 forbidden&quot; hint to suggest ignore-error-codes when applicable 
+  * Skip direct URL lock freshness checks while offline 
+  * Add import-names and import-namespaces support to uv-build (PEP 794) 
+  * Add a --no-editable-package flag to various commands 
+  * Infer Python version requests from source trees in uv tool invocations 
+ * Preview features
+  * Add module owners to uv workspace metadata 
+  * Do not allow uv venv --clear to remove non-virtual environments 
+ * Bug fixes
+  * Improve the performance of large entries in tool.uv.conflicts 
+  * Avoid modifying the parent process' env with --env-file in uv run 
+  * Fix script environment creation for scripts with long filenames 
+  * Fix transitive Git archive dependencies in lockfiles 
+  * Preserve Git repository URLs in direct URL metadata 
+  * Support redirects in --check-url 
+  * Accept case-insensitive HTML tags in --find-links parsing 
+  * Reject duplicate script metadata blocks 
+  * Ban names like &quot;python3&quot; as script entry points
+  * Validate Git LFS artifacts for Git archives 
+  * Use a relative path when creating symlinks in cache to improve relocatability 
+ * Documentation
+  * Fix malformed positional anchors in the CLI reference</comment>
+    <requestid>1355818</requestid>
+  </revision>
 </revisionlist>
