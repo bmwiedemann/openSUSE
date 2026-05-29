@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri May 29 09:38:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2026.5.4:
+  * Features
+    - feat(webhook): add deep /ready endpoint for readiness checks
+      (c42cba35)
+  * Other Changes
+    - refactor(forgejo): split forgejo/tests.rs into submodules
+      (b4971030)
+    - refactor(gitlib): split GitRepository into extension trait
+      modules (7c300612)
+    - refactor: remove blanket allow(dead_code) and clean up unused
+      code (0e0006d5)
+    - chore(ci): remove redundant check/build steps from CI recipe
+      (1799c5b7)
+    - refactor(git): add delegation macro for OpenRepositoryLike
+      (8747fb66)
+    - MEGAMERGE (ff5c8071)
+    - chore(deps): bump kameo from 0.16 to 0.20 (kameo_actors 0.1
+      to 0.5) (82a023ea)
+    - refactor(gitlib): extract error types and test helpers from
+      god file (08de1cfc)
+    - chore(deps): bump tree_type from 0.1.1 to 0.4 (b5a918c7)
+    - refactor: make docker-release recipe idempotent and resumable
+      (fdf7a410)
+- Update to version 2026.5.3:
+  * Bug Fixes
+    - fix(gitlib): refresh ODB before commit_log to fix nightly
+      test failure (6b3018ba)
+    - fix(repo): prevent duplicate pushes to next branch (64c6fd47)
+  * Other Changes
+    - chore(deps): bump toml from 0.8 to 1.0 (4daf3072)
+    - chore(build): update to rust v5.4.0 image (b0c037a3)
+    - chore(docker): remove redundant docker schema reference
+      (5e85a2c1)
+
+-------------------------------------------------------------------
 Sun May 10 15:02:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2026.5.2:
