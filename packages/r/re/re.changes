@@ -1,7 +1,24 @@
 -------------------------------------------------------------------
+Fri May 29 07:53:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.8.1
+  Security related fixes
+  * GHSA-hvxv-v2gp-v93h
+    websock: Fix integer overflow in websock_decode() masked frame
+    check (#1584).
+  * baresip/baresip#3705
+    Fix DTLS single_conn mode lacks peer address validation,
+    allowing connection hijacking and DoS.
+  Changes
+  * fmt/pl: add pl_strip_html().
+  * sys/fs: add getpwuid fallback for fs_gethome.
+  * tls: remove unused include rsa.h
+  * ice: check source address of incoming application packets.
+
+-------------------------------------------------------------------
 Thu May 14 10:24:54 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
-- Updte to version 4.8.0
+- Update to version 4.8.0
   * test,sipreg: enable outbound testing.
   * hash: safety check for string.
   * tls: upgrade usage of legacy functions.
