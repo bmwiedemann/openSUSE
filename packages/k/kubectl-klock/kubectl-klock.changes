@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri May 29 05:56:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.1:
+  * Fixes
+    - fix: add mutex to table.Model to prevent concurrent access
+      panic (#227)
+  * Updates
+    - Bump k8s.io/cli-runtime from 0.36.0 to 0.36.1 (#234)
+    - Bump k8s.io/kubectl from 0.36.0 to 0.36.1 (#235)
+    - Bump k8s.io/client-go from 0.36.0 to 0.36.1 (#237)
+    - Bump zizmorcore/zizmor-action from 0.5.3 to 0.5.5 in the all
+      group (#238)
+    - Bump github.com/fsnotify/fsnotify from 1.10.0 to 1.10.1
+      (#231)
+    - Bump github.com/gookit/color from 1.6.0 to 1.6.1 (#232)
+    - Bump github/codeql-action from 4.35.2 to 4.35.4 in the all
+      group (#233)
+    - Update golang.org/x/net v0.51.0 -> v0.54.0 (#230)
+    - Bump goreleaser/goreleaser-action from 7.1.0 to 7.2.1 in the
+      all group (#229)
+    - Bump github.com/fsnotify/fsnotify from 1.9.0 to 1.10.0 (#228)
+    - Bump k8s.io/kubectl from 0.35.4 to 0.36.0 (#224)
+    - Bump k8s.io/apimachinery from 0.35.4 to 0.36.0 (#225)
+    - Bump goreleaser/goreleaser-action from 7.0.0 to 7.1.0 in the
+      all group (#226)
+
+-------------------------------------------------------------------
 Thu Apr 23 19:21:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.0:
