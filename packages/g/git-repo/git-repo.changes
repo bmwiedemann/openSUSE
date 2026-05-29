@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu May 21 19:43:51 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.64:
+  * sync: Add --superproject-rev flag to sync to specific revision
+  * Fix submodules not synced for repeated repo
+  * Automated: Migrate gerrit/git-repo from gsutil to gcloud storage
+  * abandon/start/info: Make them respect smart sync override
+  * command: Move smart sync override logic to Command base class
+  * docs: drop period in headers
+  * run_tests: help2man: update to latest release
+  * Fix missing `None` check in Remote.Save
+  * Add support for self referencing submodules
+  * release: update-manpages: revert color filtering
+  * linkfile: Handle directory-to-symlink transitions safely
+  * run_tests: leverage cipd when available for help2man
+  * sync: Re-raise KeyboardInterrupt in main process
+  * git_config: fix error message command output
+  * info: Parallelize repo info to improve performance
+  * sync: Exclude stateless sync pruned projects from bloat check
+  * completion: document installation and usage in README
+  * sync: Suggest "git repack -a -d" in bloat warning
+  * Add zsh completion
+  * forall: Document REPO_UPSTREAM and REPO_DEST_BRANCH envvars
+  * info: add --format and --include-summary/--include-projects options
+  * sync: Fix force_checkout propagation
+  * git_superproject: Remove redundant _branch variable
+  * tests: Add tests for repo status output
+  * color: type SetDefaultColoring and drop bool states
+  * Add timing keyword argument for hooks
+
+-------------------------------------------------------------------
 Tue Apr 21 15:56:50 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.63:
