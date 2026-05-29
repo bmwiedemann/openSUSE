@@ -1269,4 +1269,26 @@
     <comment>- update to 1.4.1 (forwarded request 1236107 from abergmann)</comment>
     <requestid>1236117</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>eb25f6d4f92b2f4d98d4a401d596a496</srcmd5>
+    <version>1.4.4</version>
+    <time>1780070939</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.4:
+  * New features
+    - List rules and variables in a profile by &quot;oscap info&quot;
+  * Maintenance, bug fix
+    - Add null check for ns_uri in cpe_dict_detect_version_priv
+    - Fix autotailor json bugs
+    - Use stable _init_completion API in bash completion
+    - Add PanFS to the list of remote filesystems
+    - Move to localtime_r
+    - Fix Non-constant format string issues
+    - Fix schema ordering when adding tailoring to ARF files
+    - Fix null ptr deref in xccdf_benchmark_parse
+    - Fix name space nulls in OVAL
+    - Fix segfault in error handling for cpe_item_parse
+    - Always check the current lists before inserting on blueprints (forwarded request 1355693 from aeneas_jaissle)</comment>
+    <requestid>1355793</requestid>
+  </revision>
 </revisionlist>

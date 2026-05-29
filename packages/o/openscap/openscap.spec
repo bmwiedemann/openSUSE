@@ -1,7 +1,7 @@
 #
 # spec file for package openscap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,14 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openscap
-Version:        1.4.1
+Version:        1.4.4
 Release:        0
 Summary:        A Set of Libraries for Integration with SCAP
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://www.open-scap.org/
 Source:         https://github.com/OpenSCAP/openscap/archive/%{version}.tar.gz#/%name-%version.tar.gz
+Source99:       https://github.com/OpenSCAP/openscap/releases/download/%{version}/openscap-%{version}.tar.gz.sha512
 Source1:        openscap-rpmlintrc
 Source2:        sysconfig.oscap-scan
 # SUSE specific profile, based on yast2-security checks.
@@ -44,7 +45,6 @@ Patch4:         0004-oscap-remediate-is-located-in-bindir.patch
 %endif
 
 BuildRequires:  asciidoc
-# Use package name cause of "have choice for perl(XML::Parser): brp-check-suse perl-XML-Parser"
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  doxygen
@@ -66,6 +66,7 @@ BuildRequires:  libxslt-devel
 BuildRequires:  libyaml-devel
 BuildRequires:  lua
 BuildRequires:  openldap2-devel
+# Use package name cause of "have choice for perl(XML::Parser): brp-check-suse perl-XML-Parser"
 BuildRequires:  perl-XML-Parser
 BuildRequires:  perl-XML-XPath
 BuildRequires:  pkgconfig

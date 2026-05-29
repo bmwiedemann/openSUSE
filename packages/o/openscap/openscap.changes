@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon May 18 20:16:48 UTC 2026 - Aeneas Jaißle <aj@ajaissle.de>
+
+- update to 1.4.4:
+  * New features
+    - List rules and variables in a profile by "oscap info"
+  * Maintenance, bug fix
+    - Add null check for ns_uri in cpe_dict_detect_version_priv
+    - Fix autotailor json bugs
+    - Use stable _init_completion API in bash completion
+    - Add PanFS to the list of remote filesystems
+    - Move to localtime_r
+    - Fix Non-constant format string issues
+    - Fix schema ordering when adding tailoring to ARF files
+    - Fix null ptr deref in xccdf_benchmark_parse
+    - Fix name space nulls in OVAL
+    - Fix segfault in error handling for cpe_item_parse
+    - Always check the current lists before inserting on blueprints
+
+- update to 1.4.3:
+  * New features
+    - Show rule details in output
+  * Maintenance, bug fix
+    - Fix inverted fields in HTML report
+    - Add new STIG URL - 1.4
+    - Bump OVAL_SUPPORTED to 5.11.3
+    - Handle virtual packages in dpkginfo probe
+    - Inherit environment for scanning and remediating in oscap-im wrapper
+    - Fix the way we check rpm library version in CMake
+    - Explicitly allow xmlsec1 to load key data from KeyValue
+    - Fix double-free in xccdf_policy_remediate.c
+    - Fix unterminated-string-initialization errors
+    - Inherit OpenSCAP environment when executing Bash remediations with --remediate option
+    - Fix verbose command line option
+
+- update to 1.4.2:
+  * Maintenance, bug fix
+    - Fix thread synchronization bugs
+    - Fix textfilecontent54_probe behaviour for negative instance numbers
+    - Fix signature obtaining in rpm_info probe
+
+-------------------------------------------------------------------
 Wed Jan  8 16:49:37 UTC 2025 - Alexander Bergmann <abergmann@suse.com>
 
 - update to 1.4.1:
