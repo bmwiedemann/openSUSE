@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Fri May 29 05:53:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.64:
+  * Bump SDK version (#4538)
+
+-------------------------------------------------------------------
+Fri May 22 04:58:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.63:
+  This release continues the work to improve kpt. The golang
+  version and the versions of many dependencies are bumped and we
+  continue our work to refactor kpt.
+  * Fix the missed docs update (#4536)
+  * Display non-KRM files in kpt pkg tree output (#4518)
+  * Add DeepCopy generation to all API types (#4527)
+  * Updated dependencies
+  * Updated go.sum following hugo mod tidy
+  * Updated Docsy
+  * Restore docsy into the documentation go.mod file
+  * Restore docsy into the documentation go.mod file
+  * Restore docsy into the documentation go.mod file
+  * Restore docsy into the documentation go.mod file
+  * Upgrade dependencies to latest
+  * Bump everything including go to the latest version
+  * Fix import on cmdcat command.go
+  * Bump documentation go and docsy version (#4511)
+  * ci: add workflow to verify documentation/go.sum integrity
+  * Add dependencies to go.sum
+  * Upgrade Go version in documentation module to 1.26.3
+  * feat: add 'cat' command for displaying package resources
+    (#4505)
+  * alias pathutil everywhere
+  * address copilot review
+  * Validate function tag literals before execution (#4503)
+  * Revert documentation and Netlify configs to original state
+  * Configure Netlify to use Go 1.26.3 and align docs module
+  * Revert documentation Go version to 1.25.10 to fix Netlify
+  * Upgrade Go version in submodules to 1.26.3
+  * Upgrade Go version to 1.26.3
+  * eliminate internal/util completely, move some other packages as
+    well
+  * move more things from internal/util
+  * move alpha/printers, builtins, util/update, merge util/merge
+    into util/update/merge3
+  * address copilot review
+  * move internal/types and internal/pkg to pkg/lib
+  * improve functionConfig related validation errors
+  * fix: remove porch references from kpt docs (#4288) (#4498)
+  * improve error handling in command and container logic
+  * Changing favicons to the new logo (#4496)
+  * update copyright years in source files
+  * fix: update copyright notice to reflect Kubernetes authorship
+  * chore: bump Go version to 1.26.2 and update dependencies
+  * security: upgrade go version to 1.25.9 to fix CVE-2026-27143
+    (#4474)
+  * Bump go.opentelemetry.io/otel from 1.38.0 to 1.41.0
+  * chore: update kyaml/kustomize API versions to current versions
+    (#4480)
+
+-------------------------------------------------------------------
+Tue Apr 21 15:46:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.62.1:
+  * Show resolved semantic versions in the renderStatus by
+    @aravindtga in #4461
+  * Update CONTRIBUTING file with PR review rules by
+    @CsatariGergely in #4452
+  * Use golangci-lint v2, migrate config and adjust Makefile by
+    @mozesl-nokia in #4477
+  * Local tag lister for semantic version constraint matching by
+    @mozesl-nokia in #4458
+  * Bump github.com/moby/spdystream from 0.5.0 to 0.5.1 by
+    @dependabot[bot] in #4489
+  * Remove internal/kptops dead code by @efiacor in #4481
+  * Adding recommendation to attribute AI agents by @CsatariGergely
+    in #4486
+  * Ignore render status during fast-forward update by @aravindtga
+    in #4488
+  * introduce DisplayName option in renderOptions by @dgyorgy-nokia
+    in #4476
+  * Expose code from internal package by @mozesl-nokia in #4490
+
+-------------------------------------------------------------------
+Thu Apr 02 16:06:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.62:
+  * Add RenderStatus to the Kptfile for per-function pipeline
+    result tracking (#4437)
+  * Bump sdk version (#4459)
+  * Fix podman version check conditional expression
+  * Fix ci failure (#4435)
+  * Made a minor amendment to the sentence structure.
+  * Apply suggestions from code review
+  * Proofreading of chapter 1.
+  * Add render status conditions to Kptfile (#4418)
+  * Replace gcr.io container image references with ghcr.io (#4428)
+  * Fix podman version check conditional expression
+  * Fix ci failure (#4435)
+  * Skip symlink resolution when directory == .
+  * Removed unused variable
+  * Add render status conditions to Kptfile (#4418)
+  * Replace gcr.io container image references with ghcr.io (#4428)
+  * Updated the test checks to be cleaner and more accurate
+  * Fix TestCmdExecute: remove explicit './' destination argument
+  * Fix test failures: check cleaned path for '.' and update test
+    expectations
+  * Fix linting error: rewrite if-else to switch statement
+  * Fix #1407: Make 'kpt pkg get' use current directory when '.' is
+    specified
+  * address copilot comments
+  * simplify ImageResolveFunc
+  * Made a minor amendment to the sentence structure.
+  * Apply suggestions from code review
+  * Proofreading of chapter 1.
+  * Fix E2E tests to use fresh package for each RunCount iteration
+  * Bump github.com/docker/cli
+  * Updated location of configmap-v1.json to a reachable
+    destination (#4424)
+  * Fix formatting and improve clarity of Kptfile annotations
+  * Make `UpstreamLock` more generic (#4413)
+  * Adding new logo (#4416)
+  * Update README.md
+  * Adding links to the Dosu space
+  * Ups this was left out fomr the merge
+  * docs: Dosu updates for PR #4405
+
+-------------------------------------------------------------------
+Wed Mar 04 06:14:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.61.1:
+  * Semantic versioning constraints for function images by
+    @mozesl-nokia in #4386
+  * docs: Fix installation link in README to use kpt.dev instead of
+    GitHu… by @SurbhiAgarwal1 in #4392
+  * Bump the kpt homebrew version by @liamfallon in #4399
+  * Add --save-on-render-failure flag to fn render by @aravindtga
+    in #4400
+  * docs: tidy up tenant-onboarding guide and link to guides index
+    by @SurbhiAgarwal1 in #4401
+  * Remove rollouts from kpt as rollouts implement similar
+    functionality to Porch by @liamfallon in #4402
+  * feat: Auto-create package directory in kpt pkg init by
+    @SurbhiAgarwal1 in #4405
+  * Move the fn render --save-on-failure options to Kptfile by
+    @aravindtga in #4411
+  * docs: updates for PR #4399 by @dosubot[bot] in #4407
+  * Remove the remaining fragments of Porch from kpt by @liamfallon
+    in #4409
+  * Fix/docs todo link by @SurbhiAgarwal1 in #4393
+
+-------------------------------------------------------------------
 Mon Feb 16 12:04:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.0~beta.61:
