@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 19 13:53:26 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260519 (git commit d962a6a309b7):
+  * ASoC: tas2783: Add Firmware files for tas2783A projects
+  * ti: Add PCM6240 firmware with multiple audio profiles support
+
+-------------------------------------------------------------------
 Wed Apr 22 10:01:37 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260421 (git commit 0a7e55438c7c):
