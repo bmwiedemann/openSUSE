@@ -132,4 +132,13 @@
     <comment>  CVE-2026-39835 (bsc#1266145)</comment>
     <requestid>1355048</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>4364031818e413b010713aae6698845a</srcmd5>
+    <version>0.34.0</version>
+    <time>1780070919</time>
+    <user>anag_factory</user>
+    <comment>- Fix CVE-2026-39821 (GO-2026-5026) (bsc#1266572)
+  Update golang.org/x/net to 0.55.0.</comment>
+    <requestid>1355757</requestid>
+  </revision>
 </revisionlist>
