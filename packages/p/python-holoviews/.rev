@@ -543,4 +543,15 @@
   * Ignore PyparsingDeprecationWarning for now.</comment>
     <requestid>1340812</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>f91bb3a1704d18f17d23019c1639b335</srcmd5>
+    <version>1.22.1</version>
+    <time>1780070953</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1355654 from mgrossu
+
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file 
+    (bsc#1263906)</comment>
+    <requestid>1355677</requestid>
+  </revision>
 </revisionlist>
