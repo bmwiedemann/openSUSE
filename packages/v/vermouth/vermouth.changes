@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 28 21:30:16 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.8.3
+- Upstream changes:
+  * Welcome screen made better
+  * Make the default view type grid. Better fallback for grid and hero.
+  * If steamgriddb is empty, use a third party service to download cover
+  * Treat below zero code as error
+  * Updated installer logic
+  * Flatpak manifests tweaks
+  * Updated flatpak notes
+  * Less nesting
+  * Cleanup
+  * Better looking icon when running
+  * Fixed installer button
+  * Fix merge
+  * Updated button design and using installer PID
+  * Option to run installer in prefix before selecting game exe
+
+-------------------------------------------------------------------
 Wed May 20 06:57:53 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.8.2

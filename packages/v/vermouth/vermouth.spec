@@ -17,7 +17,7 @@
 
 
 Name:           vermouth
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        A Wine/Proton game launcher for KDE
 License:        MIT

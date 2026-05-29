@@ -213,4 +213,27 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Steam detector on initial startup and/or empty library</comment>
     <requestid>1354166</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1b6340b3e640a1f51b178760d3c391d3</srcmd5>
+    <version>1.8.3</version>
+    <time>1780070802</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.8.3
+- Upstream changes:
+  * Welcome screen made better
+  * Make the default view type grid. Better fallback for grid and hero.
+  * If steamgriddb is empty, use a third party service to download cover
+  * Treat below zero code as error
+  * Updated installer logic
+  * Flatpak manifests tweaks
+  * Updated flatpak notes
+  * Less nesting
+  * Cleanup
+  * Better looking icon when running
+  * Fixed installer button
+  * Fix merge
+  * Updated button design and using installer PID
+  * Option to run installer in prefix before selecting game exe</comment>
+    <requestid>1355716</requestid>
+  </revision>
 </revisionlist>
