@@ -3,9 +3,15 @@
     <param name="url">https://github.com/docker/distribution.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
+    <param name="exclude">vendor</param>
     <param name="versionformat">3.1.1</param>
     <param name="revision">v3.1.1</param>
     <param name="changesgenerate">enable</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="compression">zst</param>
+    <param name="replace">golang.org/x/crypto=golang.org/x/crypto@v0.52.0</param>
+    <param name="replace">golang.org/x/net=golang.org/x/net@v0.55.0</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">distribution-*.tar</param>

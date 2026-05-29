@@ -25,10 +25,11 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/distribution/distribution
 Source0:        distribution-%{version}.tar.zst
-Source1:        registry-configuration.yml
+Source1:        vendor.tar.zst
 Source2:        registry.service
 Source3:        %{name}-registry.tmpfiles
 Source4:        README-registry.SUSE
+Source5:        registry-configuration.yml
 Source10:       system-user-registry.conf
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
@@ -65,7 +66,8 @@ Requires(pre):  /usr/sbin/nologin
 Registry server for Docker (hosting/delivering of repositories and images).
 
 %prep
-%setup -q -n distribution-%{version}
+%setup -q -n distribution-%{version} -a1
+
 cp %{SOURCE4} .
 
 %build
@@ -85,7 +87,7 @@ install -d -m755 %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/
 
 %{goinstall}
-install -D -m644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/registry/config.yml
+install -D -m644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/registry/config.yml
 install -d  %{buildroot}%{_localstatedir}/lib/docker-registry
 
 #
