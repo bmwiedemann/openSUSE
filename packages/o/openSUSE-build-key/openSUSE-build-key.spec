@@ -44,7 +44,7 @@ Obsoletes:      gpg-pubkey-eae4fd92
 Obsoletes:      gpg-pubkey-ded64f3b
 
 # openSUSE RSA 4096 key
-Source10:       gpg-pubkey-29b700a4-62b07e22.asc
+Source10:       gpg-pubkey-29b700a4-6a17fa38.asc
 
 # build@suse.de for SLE12 / SLE15
 Source2:        gpg-pubkey-39db7c82-66c5d91a.asc

@@ -503,4 +503,13 @@ However, it would be good to have these out before we do switch. (forwarded requ
     <comment>adjust suse_version condition for the Backports key (forwarded request 1349784 from mlin7442)</comment>
     <requestid>1349790</requestid>
   </revision>
+  <revision rev="57" vrev="66">
+    <srcmd5>8e0063c42ad83560ee7f4ff3b5f73eca</srcmd5>
+    <version>1.0</version>
+    <time>1780070707</time>
+    <user>anag_factory</user>
+    <comment>- extended to openSUSE 4096bit RSA key for 4 more years.
+  gpg-pubkey-29b700a4-6a17fa38.asc (forwarded request 1355580 from msmeissn)</comment>
+    <requestid>1355581</requestid>
+  </revision>
 </revisionlist>

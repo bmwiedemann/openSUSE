@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 08:31:44 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- extended to openSUSE 4096bit RSA key for 4 more years.
+  gpg-pubkey-29b700a4-6a17fa38.asc
+
+-------------------------------------------------------------------
 Tue Apr 28 12:07:13 UTC 2026 - Max Lin <mlin@suse.com>
 
 - adjust suse_version condition for the Backports key
