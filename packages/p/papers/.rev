@@ -194,4 +194,26 @@
   spawning a new process (bsc#1265880 CVE-2026-46529).</comment>
     <requestid>1354485</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>69e6670c81982359ab8d2ccb59ea0339</srcmd5>
+    <version>50.2</version>
+    <time>1780071140</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.2:
+  + Bug fixes:
+    - PDF link jumps are off target for some files
+    - Scrolling stalls image loading for image-heavy PDFs and CBZs
+      with fractional scaling enabled
+    - Pinch to zoom sometimes causes huge page jumps
+    - Text jitter on fractional scaling
+    - Pencil size icons look broken
+    - shell: escape link arguments before spawning a new process,
+      related to CVE-2026-46529 of Evince
+    - build: Include gdk.h instead of gdkkeysyms.h
+    - Fix null pointer dereference in PpsPrintOperationPrint
+    - Chain up constructed vfuncs
+  + Updated translations.
+- Drop papers-CVE-2026-46529.patch: Fixed upstream.</comment>
+    <requestid>1355863</requestid>
+  </revision>
 </revisionlist>

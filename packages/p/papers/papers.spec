@@ -23,7 +23,7 @@
 %define plugin_ver 6
 %define appid org.gnome.Papers
 Name:           papers
-Version:        50.1
+Version:        50.2
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
@@ -31,8 +31,7 @@ URL:            https://gitlab.gnome.org/GNOME/papers
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        %{name}-test-data-0.tar.xz
-# PATCH-FIX-UPSTREAM papers-CVE-2026-46529.patch bsc#1265880 mgorse@suse.com -- escape link arguments before spawning a new process.
-Patch2:         papers-CVE-2026-46529.patch
+
 BuildRequires:  blueprint-compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
