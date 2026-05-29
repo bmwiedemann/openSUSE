@@ -1,4 +1,172 @@
 -------------------------------------------------------------------
+Fri May 29 05:53:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.32.0:
+  * Update CHANGELOG
+  * log gRPC server listener address
+  * add Prometheus metrics endpoint
+  * add string helpers to notification templates
+  * chore(deps): bump github.com/PaulSonOfLars/gotgbot/v2
+  * chore(deps): bump github.com/panjf2000/ants/v2 from 2.12.0 to
+    2.12.1
+  * docs: clarify default tag filter semantics
+  * ntfy: click action support
+  * healthcheck: support UUID as secret
+  * Add new blog post about monitoring Docker updates
+  * mail: use default HELO when localName is unset
+  * mail: rely on go-mail message IDs
+  * mail: wrap notification send errors
+  * switch to github.com/wneessen/go-mail
+  * teams: retry webhooks after rate limits
+  * teams: handle webhook error responses
+  * chore(deps): bump docker/metadata-action from 6.0.0 to 6.1.0
+  * chore(deps): bump github/codeql-action from 4.35.5 to 4.36.0
+  * chore(deps): bump docker/setup-buildx-action from 4.0.0 to
+    4.1.0
+  * chore(deps): bump docker/login-action from 4.1.0 to 4.2.0
+  * matrix: retry sends after rate limits
+  * telegram: retry sends after rate limits
+  * slack: retry webhook sends after rate limits
+  * discord: retry after rate limits
+  * webhook: fail on unexpected status
+  * test: satisfy lint for handlers
+  * use Go 1.26 pointer value construction
+  * test(k8s): cover pod de-duplication
+  * test(pkg/docker): cover image helpers
+  * test(kubernetes): cover pod metadata
+  * test(swarm): cover service metadata
+  * test(docker): cover container metadata
+  * test(dockerfile): cover provider jobs
+  * test(mqtt): cover publish flow
+  * test(script): cover command execution env
+  * test(signalrest): cover send payload
+  * test(elasticsearch): cover document indexing
+  * test(teams): cover message card payload
+  * test(rocketchat): cover chat message requests
+  * test(apprise): cover notify requests
+  * test(slack): cover webhook attachment
+  * test(discord): cover webhook payload
+  * test(gotify): cover message delivery
+  * test(notif): cover notifier fanout
+  * test(grpc): cover image service operations
+  * test(registry): make registry tests hermetic
+  * vendor: update to gopkg.in/yaml.v3 v3.0.1
+  * vendor: update to github.com/bmatcuk/doublestar/v4 v4.10.0
+  * hack: switch to gomod-updates
+  * vendor: update to github.com/hashicorp/nomad/api v2.0.2
+  * fix notification HTML paragraph trimming
+  * handle database manifest entries consistently
+  * ntfy: notification icon support
+  * chore(deps): bump google.golang.org/grpc from 1.80.0 to 1.81.1
+  * chore(deps): bump github.com/rabbitmq/amqp091-go from 1.10.0 to
+    1.11.0
+  * chore(deps): bump golang.org/x/mod from 0.35.0 to 0.36.0
+  * chore(deps): bump maunium.net/go/mautrix from 0.26.4 to 0.28.0
+  * chore(deps): bump github.com/moby/buildkit from 0.29.0 to
+    0.30.0
+  * chore(deps): bump github.com/rs/zerolog from 1.35.0 to 1.35.1
+  * chore(deps): bump docker/bake-action from 7.1.0 to 7.2.0
+  * chore(deps): bump golang.org/x/sys from 0.44.0 to 0.45.0
+  * update go.podman.io/image/v5 to 5.40.0
+  * migrate github.com/docker/docker to github.com/moby/moby
+  * simplify provider job iteration
+  * modernize config defaults and remove obsolete utl helpers
+  * simplify shutdown lifecycle
+  * chore(deps): bump codecov/codecov-action from 6.0.0 to 6.0.1
+  * chore(deps): bump github/codeql-action from 4.35.1 to 4.35.5
+  * chore(deps): bump
+    crazy-max/.github/.github/workflows/zizmor.yml
+  * chore(deps): bump golang.org/x/sys from 0.43.0 to 0.44.0
+  * fix lint issues
+  * update to go 1.26
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.9 to
+    6.7.10
+  * chore(deps): bump github.com/docker/go-connections from 0.6.0
+    to 0.7.0
+  * chore(deps): bump softprops/action-gh-release from 2.6.1 to
+    3.0.0
+  * chore(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1
+  * chore(deps): bump docker/bake-action from 7.0.0 to 7.1.0
+  * telegram: set default api url in config and clarify docs
+  * docs: fix download links to use latest stable git tag
+  * docs: clarify the project description
+  * docs: enable magiclink and external links
+  * update CHANGELOG PRs links
+  * docs: fix opensource etiquette link
+  * MkDocs Materials 9.7.5
+  * chore(deps): bump github.com/moby/buildkit from 0.27.1 to
+    0.29.0
+  * chore(deps): bump golang.org/x/mod from 0.34.0 to 0.35.0
+  * chore(deps): bump google.golang.org/grpc from 1.79.3 to 1.80.0
+  * chore(deps): bump go.podman.io/image/v5 from 5.39.1 to 5.39.2
+  * chore(deps): bump github.com/go-playground/validator/v10
+  * chore(deps): bump github.com/alecthomas/kong from 1.14.0 to
+    1.15.0
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.8 to
+    6.7.9
+  * chore(deps): bump github.com/crazy-max/gonfig from 0.7.1 to
+    0.8.0
+  * chore(deps): bump golang.org/x/sys from 0.42.0 to 0.43.0
+  * chore(deps): bump maunium.net/go/mautrix from 0.26.3 to 0.26.4
+  * Revert "Merge pull request #1636 from
+    crazy-max/ref-parse-rework"
+  * Revert "Merge pull request #1637 from
+    crazy-max/docker-auth-rework"
+  * chore(deps): bump
+    crazy-max/.github/.github/workflows/zizmor.yml
+  * chore(deps): bump docker/login-action from 4.0.0 to 4.1.0
+  * Add configurable Telegram Bot API URL for proxy support
+  * chore(deps): bump github.com/rs/zerolog from 1.34.0 to 1.35.0
+  * new year
+  * chore(deps): bump codecov/codecov-action from 5.5.4 to 6.0.0
+  * fix zizmor findings
+  * zizmor workflow
+  * log startup config as structured debug field
+  * chore(deps): bump github.com/panjf2000/ants/v2 from 2.11.5 to
+    2.12.0
+  * chore(deps): bump k8s.io/client-go from 0.35.2 to 0.35.3
+  * chore(deps): bump google.golang.org/grpc from 1.78.0 to 1.79.3
+  * registry: use docker cli auth config
+  * use distribution reference for image parsing and lookups
+  * chore(deps): bump golang.org/x/mod from 0.33.0 to 0.34.0
+  * chore(deps): bump k8s.io/client-go from 0.35.1 to 0.35.2
+  * chore(deps): bump maunium.net/go/mautrix from 0.26.1 to 0.26.3
+  * chore(deps): bump github.com/PaulSonOfLars/gotgbot/v2
+  * chore(deps): bump golang.org/x/mod from 0.31.0 to 0.33.0
+  * chore(deps): bump golang.org/x/sys from 0.40.0 to 0.41.0
+  * fix webhook method configuration handling
+  * chore(deps): bump docker/setup-buildx-action from 3 to 4
+  * chore(deps): bump docker/bake-action from 6 to 7
+  * chore(deps): bump docker/metadata-action from 5 to 6
+  * chore(deps): bump docker/login-action from 3 to 4
+  * chore(deps): bump docker/setup-qemu-action from 3 to 4
+  * chore(deps): bump crazy-max/ghaction-github-status from 4 to 5
+  * chore(deps): bump crazy-max/ghaction-github-pages from 4 to 5
+  * chore(deps): bump crazy-max/ghaction-github-labeler from 5 to 6
+  * chore(deps): bump actions/download-artifact from 7 to 8
+  * chore(deps): bump actions/upload-artifact from 6 to 7
+  * chore(deps): bump filippo.io/edwards25519 from 1.1.0 to 1.1.1
+  * chore: add signal textmode option to docs
+  * feat: add ability to use styled text with signal api
+  * chore(deps): bump k8s.io/client-go from 0.34.1 to 0.35.1
+  * fix: environment variable prefixes in transposed config file
+  * chore(deps): bump github.com/panjf2000/ants/v2 from 2.11.4 to
+    2.11.5
+  * chore(deps): bump github.com/alecthomas/kong from 1.13.0 to
+    1.14.0
+  * chore(deps): bump go.podman.io/image/v5 from 5.38.0 to 5.39.1
+  * chore(deps): bump github.com/moby/buildkit from 0.26.3 to
+    0.27.1
+  * chore(deps): bump github.com/dromara/carbon/v2 from 2.6.15 to
+    2.6.16
+  * chore(deps): bump golang.org/x/sys from 0.39.0 to 0.40.0
+  * fix CHANGELOG
+  * chore(deps): bump github.com/crazy-max/gohealthchecks
+  * chore(deps): bump github.com/panjf2000/ants/v2 from 2.11.3 to
+    2.11.4
+  * chore(deps): bump github.com/go-playground/validator/v10
+
+-------------------------------------------------------------------
 Mon Jan 12 18:54:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.31.0:
