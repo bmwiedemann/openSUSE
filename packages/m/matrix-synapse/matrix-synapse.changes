@@ -53,15 +53,15 @@ Tue May 19 21:24:08 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Thu May  7 15:16:16 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.152.1 (boo#1264445)
+- Update to 1.152.1 (boo#1264445 boo#1266796 boo#1266797)
   - Prevent CPU starvation (Denial of Service) under worker lock
     contention, additionally capping the WorkerLock time out
     interval to a maximum of 60 seconds. Contributed by Famedly.
-    (#19394, ELEMENTSEC-2026-1706, GHSA-8q93-326v-3m7g, CVE
-    pending)
+    (#19394, ELEMENTSEC-2026-1706, GHSA-8q93-326v-3m7g,
+    CVE-2026-45078 )
   - Prevent pagination ending when a page is full of rejected
-    events. (ELEMENTSEC-2025-1636, GHSA-6qf2-7x63-mm6v, CVE
-    pending)
+    events. (ELEMENTSEC-2025-1636, GHSA-6qf2-7x63-mm6v,
+    CVE-2026-45076)
 
 -------------------------------------------------------------------
 Tue Apr 28 13:12:34 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
