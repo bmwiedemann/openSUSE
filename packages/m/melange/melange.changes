@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 29 06:41:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.8:
+  * fix(pipelines/strip): Don't try to strip ELFs for non-native
+    platforms (#2542)
+  * build(deps): bump the gomod group across 1 directory with 11
+    updates (#2541)
+  * fix(docker): use per-invocation unique image tag to avoid
+    concurrent race (#2532)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.18.0 to
+    5.19.1 (#2536)
+  * build(deps): bump the actions group across 1 directory with 2
+    updates (#2534)
+  * fix(maven): mirror only Maven Central, not all repositories
+    (#2524)
+
+-------------------------------------------------------------------
 Mon May 18 05:15:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.7:
