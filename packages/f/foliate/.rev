@@ -490,4 +490,13 @@
     <comment>Push from SCM</comment>
     <requestid>1343027</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>8c05b6631ad54fcde31792ccc80978e0</srcmd5>
+    <version>3.3.0</version>
+    <time>1780071136</time>
+    <user>anag_factory</user>
+    <comment>- Pass check_runtime_deps=true to meson setup, ensure we have all
+  needed runtime dependencies in place.</comment>
+    <requestid>1355876</requestid>
+  </revision>
 </revisionlist>

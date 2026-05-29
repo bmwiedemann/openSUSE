@@ -51,7 +51,7 @@ A GTK eBook viewer, built with GJS and Epub.js.
 %autosetup -p1
 
 %build
-%meson
+%meson -Dcheck_runtime_deps=true
 %meson_build
 
 %install
