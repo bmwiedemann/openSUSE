@@ -40,6 +40,8 @@ Patch8:         bsc1184751-add-space-for-NUL-byte.patch
 Patch9:         bsc1197028-correctly-handle-zero-width-or-height-images.patch
 Patch10:        %{name}-autoconf-2.69.patch
 Patch11:        %{name}-0.99.beta20-gcc14.patch
+# https://github.com/cacalabs/libcaca/pull/90
+Patch12:        Fix-32-bit-overflow-in-CVE-2026-42046-patch.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 28 08:12:03 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Improve the fix of CVE-2026-42046 for 32bit system.
+  [Fix-32-bit-overflow-in-CVE-2026-42046-patch.patch,
+  bsc#1264984, CVE-2026-42046]
+
+-------------------------------------------------------------------
 Fri May 15 22:18:02 UTC 2026 - mcepl@cepl.eu
 
 - Updated to version 0.99.beta20+git.1776622070.7c8e333:
