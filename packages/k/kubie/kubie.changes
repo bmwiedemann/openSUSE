@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 29 05:54:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.28.0:
+  * fix: handle kubectl connection error in ns selection by
+    @pasteley in #400
+  * fix: bump skim to v3.3 by @pasteley in #399
+  * fix: handle EDITOR env variable correctly by @aellwein in #393
+  * Bump the all group with 2 updates by @dependabot[bot] in #402
+  * Bump the all group with 4 updates by @dependabot[bot] in #407
+  * Bump the all group across 1 directory with 2 updates by
+    @dependabot[bot] in #413
+
+-------------------------------------------------------------------
+Wed Mar 25 08:58:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.0:
+  * feat: add more skim customization by @pasteley in #377
+  * feat: restore last used ctx and ns by @pasteley in #376
+  * Bump the all group with 7 updates by @dependabot[bot] in #395
+  * Bump signal-hook from 0.3.18 to 0.4.3 by @dependabot[bot] in
+    #397
+  * Bump which from 7.0.2 to 8.0.2 by @dependabot[bot] in #396
+
+-------------------------------------------------------------------
 Sat Dec 20 07:03:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.1:

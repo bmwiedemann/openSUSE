@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/sbstp/kubie</param>
-              <param name="changesrevision">2e0d42c21d7103e241b746c1098f5219c2e975ba</param></service></servicedata>
+              <param name="changesrevision">7864969257b4d070904656a90f28e61e52157da5</param></service><service name="tar_scm">
+                <param name="url">https://github.com/kubie-org/kubie.git</param>
+              <param name="changesrevision">b6d49d4169405b8e604bb0b682ec0af4941ed49e</param></service></servicedata>
