@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 29 04:05:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-requests.patch:
+  * Support argument changes for the new requests.
+
+-------------------------------------------------------------------
 Wed Jun 28 08:30:19 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.1:

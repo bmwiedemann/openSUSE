@@ -62,4 +62,13 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1095764</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8d14aebe71f1d4b70510b9d5a8bb9986</srcmd5>
+    <version>4.0.1</version>
+    <time>1780070829</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-new-requests.patch:
+  * Support argument changes for the new requests.</comment>
+    <requestid>1355726</requestid>
+  </revision>
 </revisionlist>

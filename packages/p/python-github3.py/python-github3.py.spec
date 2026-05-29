@@ -1,7 +1,7 @@
 #
 # spec file for package python-github3.py
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,10 @@ License:        BSD-3-Clause
 URL:            https://github.com/sigmavirus24/github3.py
 Source0:        https://files.pythonhosted.org/packages/source/g/github3.py/github3.py-%{version}.tar.gz
 Source20:       https://raw.githubusercontent.com/sigmavirus24/github3.py/%{version}/tests/id_rsa.pub
+# PATCH-FIX-OPENSUSE Fix arguments for mock calls
+Patch0:         support-new-requests.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyJWT >= 2.3.0
@@ -54,7 +55,7 @@ BuildRequires:  %{python_module uritemplate >= 3.0.0}
 Github3.py is wrapper for v3 of the GitHub API written in python.
 
 %prep
-%setup -q -n github3.py-%{version}
+%autosetup -p1 -n github3.py-%{version}
 cp %{SOURCE20} tests/
 
 %build

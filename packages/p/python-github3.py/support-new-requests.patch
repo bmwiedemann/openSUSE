@@ -1,0 +1,32 @@
+Index: github3.py-4.0.1/tests/unit/test_github_session.py
+===================================================================
+--- github3.py-4.0.1.orig/tests/unit/test_github_session.py
++++ github3.py-4.0.1/tests/unit/test_github_session.py
+@@ -41,7 +41,8 @@ class TestGitHubSession:
+         r = s.get("http://example.com")
+         assert r is response
+         request_mock.assert_called_once_with(
+-            "GET", "http://example.com", allow_redirects=True, timeout=(4, 10)
++            "GET", "http://example.com", params=None, allow_redirects=True,
++            timeout=(4, 10)
+         )
+ 
+     @unittest.mock.patch.object(requests.Session, "request")
+@@ -58,6 +59,7 @@ class TestGitHubSession:
+         request_mock.assert_called_once_with(
+             "GET",
+             "http://example.com",
++            params=None,
+             allow_redirects=True,
+             timeout=(300, 400),
+         )
+@@ -149,7 +151,8 @@ class TestGitHubSession:
+         r = s.get("http://example.com")
+         assert r is response
+         request_mock.assert_called_once_with(
+-            "GET", "http://example.com", allow_redirects=True, timeout=(4, 10)
++            "GET", "http://example.com", params=None, allow_redirects=True,
++            timeout=(4, 10)
+         )
+ 
+     @unittest.mock.patch.object(requests.Session, "request")
