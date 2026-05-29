@@ -1,0 +1,35 @@
+Index: invocations-4.0.2/invocations/packaging/release.py
+===================================================================
+--- invocations-4.0.2.orig/invocations/packaging/release.py
++++ invocations-4.0.2/invocations/packaging/release.py
+@@ -24,7 +24,7 @@ try:
+ except ImportError:
+     from lexicon import Lexicon
+ 
+-from blessings import Terminal
++from blessed import Terminal
+ from docutils.utils import Reporter
+ from enum import Enum
+ from invoke import Collection, task, Exit
+@@ -79,7 +79,7 @@ for key in ("halt_level", "report_level"
+ # State junk
+ #
+ 
+-# Blessings Terminal object for ANSI colorization.
++# Blessed Terminal object for ANSI colorization.
+ # NOTE: mildly uncomfortable with the instance living at module level, but also
+ # pretty sure it's unlikely to change meaningfully over time, between
+ # threads/etc - and it'd be otherwise a PITA to cart around/re-instantiate.
+Index: invocations-4.0.2/pyproject.toml
+===================================================================
+--- invocations-4.0.2.orig/pyproject.toml
++++ invocations-4.0.2/pyproject.toml
+@@ -16,7 +16,7 @@ dependencies = [
+     # time if missing), but that got hairy fast, and these are all
+     # pure-Python packages, so it shouldn't be a huge burden for users to
+     # obtain them.
+-    "blessings>=1.6",
++    "blessed>=1.6",
+     "build>=1.3",
+     # For envs that don't actually have pip - we use some of its tooling atm.
+     "pip~=25.2",

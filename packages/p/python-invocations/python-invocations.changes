@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 29 05:39:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch switch-to-blessed.patch:
+  * Use blessed, rather than blessings.
+- Add missing Requires on build and pip.
+
+-------------------------------------------------------------------
 Sat Apr 11 17:48:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.2:

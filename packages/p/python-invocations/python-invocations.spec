@@ -27,7 +27,9 @@ Source:         https://github.com/pyinvoke/invocations/archive/%{version}.tar.g
 Patch0:         invocations-no-bundled.patch
 # PATCH-FIX-OPENSUSE drop-icecream-dep.patch -- daniel.garcia@suse.com
 Patch1:         drop-icecream-dep.patch
-BuildRequires:  %{python_module blessings >= 1.6}
+# PATCH-FIX-OPENSUSE switch to blessed
+Patch2:         switch-to-blessed.patch
+BuildRequires:  %{python_module blessed >= 1.6}
 BuildRequires:  %{python_module build >= 1.3}
 BuildRequires:  %{python_module invoke >= 1.7.2}
 BuildRequires:  %{python_module pip >= 25.2}
@@ -42,8 +44,10 @@ BuildRequires:  %{python_module twine >= 1.15}
 BuildRequires:  %{python_module wheel >= 0.24.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-blessings >= 1.6
+Requires:       python-blessed >= 1.6
+Requires:       python-build >= 1.3
 Requires:       python-invoke >= 1.7.2
+Requires:       python-pip >= 25.2
 Requires:       python-releases >= 1.6
 Requires:       python-semantic_version >= 2.4
 Requires:       python-tabulate >= 0.7.5

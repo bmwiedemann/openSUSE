@@ -223,4 +223,14 @@
 - pytest-relaxed now supports pytest 6, so test on all python versions.</comment>
     <requestid>1346093</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d45e77d7082cf674f5064b64b285d2c8</srcmd5>
+    <version>4.0.2</version>
+    <time>1780070626</time>
+    <user>anag_factory</user>
+    <comment>- Add patch switch-to-blessed.patch:
+  * Use blessed, rather than blessings.
+- Add missing Requires on build and pip.</comment>
+    <requestid>1355731</requestid>
+  </revision>
 </revisionlist>
