@@ -79,4 +79,14 @@
   * Update v2ray-core to v5.41.0 (forwarded request 1323672 from hillwood)</comment>
     <requestid>1323673</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6123935823c43ae8ca33e1b319c09f52</srcmd5>
+    <version>5.49.0</version>
+    <time>1780071181</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 5.49.0
+  * Update v2ray-core to 5.49.0
+  * Update grpc to 1.81.1 (boo#1260328 and CVE-2026-33186) (forwarded request 1355902 from hillwood)</comment>
+    <requestid>1355903</requestid>
+  </revision>
 </revisionlist>

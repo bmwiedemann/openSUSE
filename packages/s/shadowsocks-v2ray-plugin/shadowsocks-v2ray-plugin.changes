@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 29 13:26:53 UTC 2026 - Hillwood Yang <hillwoodroc@gmail.com>
+
+- Update version to 5.49.0
+  * Update v2ray-core to 5.49.0
+  * Update grpc to 1.81.1 (boo#1260328 and CVE-2026-33186)
+
+-------------------------------------------------------------------
+Thu Feb 12 12:51:31 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.44.1
+  * Update v2ray-core to v5.44.1
+
+-------------------------------------------------------------------
 Fri Dec 19 13:01:39 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.41.0
