@@ -27,7 +27,8 @@ ProtectKernelModules=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
-# end of automatic additions 
+# end of automatic additions
+UMask=027
 
 [Install]
 WantedBy=multi-user.target

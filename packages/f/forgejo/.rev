@@ -951,4 +951,13 @@ Bug fixes:
 - apparmor: golang binaries now also want mountinfo. (forwarded request 1354981 from darix)</comment>
     <requestid>1355315</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>324c989f950888e9b1cba2518c1cc526</srcmd5>
+    <version>15.0.1</version>
+    <time>1780070890</time>
+    <user>anag_factory</user>
+    <comment>- Set UMask so that subdirectories within /var/lib/forgejo are not
+  world readable (forwarded request 1355717 from darix)</comment>
+    <requestid>1355767</requestid>
+  </revision>
 </revisionlist>

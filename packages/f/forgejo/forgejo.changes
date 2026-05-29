@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 21:59:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Set UMask so that subdirectories within /var/lib/forgejo are not
+  world readable
+
+-------------------------------------------------------------------
 Sun May 24 20:31:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Apparmor
