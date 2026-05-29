@@ -303,4 +303,12 @@
     <comment>Add a bug reference</comment>
     <requestid>1353274</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>a8fbe2800b903322f408a2fb4ed46bea</srcmd5>
+    <version>1.8.0.492</version>
+    <time>1780070986</time>
+    <user>anag_factory</user>
+    <comment>Use libalternatives when possible</comment>
+    <requestid>1355810</requestid>
+  </revision>
 </revisionlist>

@@ -21,6 +21,10 @@
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global debug 0
 %global bootcycle 1
+%global headless_binaries java keytool orbd policytool rmid rmiregistry servertool tnameserv
+%global headless_binaries_comma %(echo %{headless_binaries} | sed 's#\ #,#g')
+%global devel_binaries javac appletviewer extcheck jar jarsigner javadoc javah javap jcmd jconsole jhat jinfo jlink jmap jps jrunscript jsadebugd jstack jstat jstatd native2ascii rmic schemagen serialver wsgen wsimport xjc
+%global devel_binaries_comma %(echo %{devel_binaries} | sed 's#\ #,#g')
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
 # it will resolve properly within chrooted installations.
@@ -42,7 +46,13 @@
 %global openj9_tag      openj9-0.59.0
 # priority must be 6 digits in total
 %global priority        1801
+%global featurever      8
 %global javaver         1.8.0
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openj9
 %global archname        %{sdklnk}
@@ -215,10 +225,6 @@ Summary:        OpenJDK 8 Runtime Environment with Eclipse OpenJ9
 # Require jpackage-utils for ownership of /usr/lib/jvm/
 Group:          Development/Languages/Java
 Requires:       jpackage-utils
-# Post requires update-alternatives to install tool update-alternatives.
-Requires(post): update-alternatives
-# Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
 Provides:       java-headless = %{javaver}
@@ -241,6 +247,12 @@ Provides:       jndi-dns = %{version}
 Provides:       jndi-ldap = %{version}
 Provides:       jndi-rmi = %{version}
 Provides:       jsse = %{version}
+%if %{without libalternatives}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%else
+Requires:       alts
+%endif
 
 %description headless
 The OpenJDK 8 runtime environment without audio and video support.
@@ -252,10 +264,6 @@ Summary:        OpenJDK 8 Development Environment with Eclipse OpenJ9
 # Require base package.
 Group:          Development/Languages/Java
 Requires:       %{name} = %{version}-%{release}
-# Post requires update-alternatives to install tool update-alternatives.
-Requires(post): update-alternatives
-# Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-devel = %{javaver}
@@ -267,6 +275,12 @@ Provides:       java-sdk-%{javaver}-openj9 = %{version}
 Provides:       java-sdk-%{javaver}-openjdk = %{version}
 Provides:       java-sdk-openj9 = %{version}
 Provides:       java-sdk-openjdk = %{version}
+%if %{without libalternatives}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%else
+Requires:       alts
+%endif
 
 %description devel
 The OpenJDK 8 development tools.
@@ -293,14 +307,14 @@ The OpenJDK 8 source bundle.
 Summary:        OpenJDK 8 API Documentation
 Group:          Development/Languages/Java
 Requires:       jpackage-utils
-# Post requires update-alternatives to install javadoc alternative.
-Requires(post): update-alternatives
-# Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun): update-alternatives
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}
 BuildArch:      noarch
+%if %{without libalternatives}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 
 %description javadoc
 The OpenJDK 8 API documentation.
@@ -387,6 +401,13 @@ EXTRA_CPP_FLAGS="-Wno-error -Wno-maybe-uninitialized -std=gnu++98 -fno-delete-nu
 EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
 %endif
 
+# If the boot jdk is using libalternatives
+%define boot_jdk %(alts -t javac >/dev/null 2>&1 && dirname $(dirname $(alts -t javac)))
+%if "%{boot_jdk}" == ""
+  # Boot jdk is using update-alternatives
+  %define boot_jdk %{_sysconfdir}/alternatives/java_sdk
+%endif
+
 bash configure \
 %if 0%{?with_gcc}
     CPP=cpp-%{with_gcc} \
@@ -394,6 +415,7 @@ bash configure \
     CC=gcc-%{with_gcc} \
     NM=gcc-nm-%{with_gcc} \
 %endif
+    --with-boot-jdk=%{boot_jdk} \
     --with-extra-cflags="$EXTRA_CFLAGS" \
     --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --disable-warnings-as-errors-omr \
@@ -413,8 +435,7 @@ bash configure \
     --with-lcms=system \
 	--with-openssl=system \
     --with-stdc++lib=dynamic \
-    --with-native-debug-symbols=internal \
-    --with-boot-jdk=%{_sysconfdir}/alternatives/java_sdk
+    --with-native-debug-symbols=internal
 
 %{make} \
     JAVAC_FLAGS=-g \
@@ -634,8 +655,42 @@ find %{buildroot}%{_jvmdir}/%{sdkdir}/demo \
 %fdupes -s %{buildroot}/%{_jvmdir}/%{sdkdir}/demo
 %fdupes -s %{buildroot}%{_javadocdir}/%{sdklnk}
 
+touch %{name}.files-headless
+touch %{name}.files-devel
+
+%if %{with libalternatives}
+
+%if 0%{?priority} == 0
+%define priority %{featurever}
+%endif
+
+for i in %{headless_binaries}; do
+  install -dm 0755 %{buildroot}%{_datadir}/libalternatives/${i}
+  echo "%%dir %{_datadir}/libalternatives/${i}" >> %{name}.files-headless
+  echo "binary=%{jrebindir}/${i}" >> %{buildroot}%{_datadir}/libalternatives/${i}/%{priority}.conf
+  echo "man=${i}-%{sdklnk}.1$ext" >> %{buildroot}%{_datadir}/libalternatives/${i}/%{priority}.conf
+  echo "group=%{headless_binaries_comma}" >> %{buildroot}%{_datadir}/libalternatives/${i}/%{priority}.conf
+  echo "%{_datadir}/libalternatives/${i}/%{priority}.conf" >> %{name}.files-headless
+  echo "%%ghost %{_bindir}/${i}" >> %{name}.files-headless
+done
+
+for i in %{devel_binaries}; do
+  install -dm 0755 %{buildroot}%{_datadir}/libalternatives/${i}
+  echo "%%dir %{_datadir}/libalternatives/${i}" >> %{name}.files-devel
+  echo "binary=%{sdkbindir}/${i}" >> %{buildroot}%{_datadir}/libalternatives/${i}/%{priority}.conf
+  echo "man=${i}-%{sdklnk}.1$ext" >> %{buildroot}%{_datadir}/libalternatives/${i}/%{priority}.conf
+  echo "group=%{devel_binaries_comma}" >> %{buildroot}%{_datadir}/libalternatives/${i}/%{priority}.conf
+  echo "%{_datadir}/libalternatives/${i}/%{priority}.conf" >> %{name}.files-devel
+  echo "%%ghost %{_bindir}/${i}" >> %{name}.files-devel
+done
+
+%endif
+
 %post headless
 ext=.gz
+
+%if %{without libalternatives}
+
 update-alternatives \
   --install %{_bindir}/java java %{jrebindir}/java %{priority} \
   --slave %{_jvmdir}/jre jre %{_jvmdir}/%{jrelnk} \
@@ -678,7 +733,25 @@ update-alternatives \
   --slave %{_jvmjardir}/jre-%{javaver} \
   jre_%{javaver}_exports %{_jvmjardir}/%{jrelnk}
 
+%else
+
+if [ -x %{_sbindir}/update-alternatives ]; then
+  update-alternatives --remove-all java
+  update-alternatives --remove-all jre_openjdk
+  update-alternatives --remove-all jre_%{javaver}
+fi || true
+
+for i in %{headless_binaries}; do
+  if ! [ -e %{_bindir}/${i} ]; then
+    ln -sf %{_bindir}/alts %{_bindir}/${i}
+  fi
+done
+
+%endif
+
+%if %{without libalternatives}
 %postun headless
+
 if [ $1 -eq 0 ]
 then
   if test -f /proc/sys/fs/binfmt_misc/jarexec
@@ -689,6 +762,7 @@ then
   update-alternatives --remove jre_openjdk %{_jvmdir}/%{jrelnk}
   update-alternatives --remove jre_%{javaver} %{_jvmdir}/%{jrelnk}
 fi
+%endif
 
 %posttrans headless
 # bnc#781690#c11: don't trust user defined JAVA_HOME and use the current VM
@@ -717,6 +791,9 @@ fi
 
 %post devel
 ext=.gz
+
+%if %{without libalternatives}
+
 update-alternatives \
   --install %{_bindir}/javac javac %{sdkbindir}/javac %{priority} \
   --slave %{_jvmdir}/java java_sdk %{_jvmdir}/%{sdklnk} \
@@ -796,15 +873,37 @@ update-alternatives \
   --slave %{_jvmjardir}/java-%{javaver} \
   java_sdk_%{javaver}_exports %{jvmjarlink}
 
+%else
+
+if [ -x %{_sbindir}/update-alternatives ]; then
+  update-alternatives --remove-all javac
+  update-alternatives --remove-all java_sdk_openjdk
+  update-alternatives --remove-all java_sdk_%{javaver}
+fi || true
+
+for i in %{devel_binaries}; do
+  if ! [ -e %{_bindir}/${i} ]; then
+    ln -sf %{_bindir}/alts %{_bindir}/${i}
+  fi
+done
+
+%endif
+
+%if %{without libalternatives}
 %postun devel
+
 if [ $1 -eq 0 ]
 then
   update-alternatives --remove javac %{sdkbindir}/javac
   update-alternatives --remove java_sdk_openjdk %{_jvmdir}/%{sdklnk}
   update-alternatives --remove java_sdk_%{javaver} %{_jvmdir}/%{sdklnk}
 fi
+%endif
 
 %post javadoc
+
+%if %{without libalternatives}
+
 # in some settings, the %{_javadocdir}/%{sdklnk}/api does not exist
 # and the update-alternatives call ends up in error. So, filter this
 # cases out.
@@ -815,7 +914,17 @@ then
     %{priority}
 fi
 
+%else
+
+if [ -x %{_sbindir}/update-alternatives ]; then
+  update-alternatives --remove-all javadocdir
+fi || true
+
+%endif
+
+%if %{without libalternatives}
 %postun javadoc
+
 if [ $1 -eq 0 ]
 then
 # in some settings, the %{_javadocdir}/%{sdklnk}/api does not exist
@@ -826,6 +935,7 @@ then
     update-alternatives --remove javadocdir %{_javadocdir}/%{sdklnk}/api
   fi
 fi
+%endif
 
 %post accessibility
 # create links to java-atk-wrapper
@@ -900,7 +1010,7 @@ fi
 %{_jvmdir}/%{jredir}/lib/security/nss.fips.cfg
 %endif
 
-%files devel
+%files devel -f %{name}.files-devel
 %dir %{_jvmdir}/%{sdkdir}/bin
 %dir %{_jvmdir}/%{sdkdir}/include
 %dir %{_jvmdir}/%{sdkdir}/lib
