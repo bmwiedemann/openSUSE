@@ -18,7 +18,7 @@
 
 
 Name:           nwg-dock-hyprland
-Version:        0.4.8
+Version:        0.4.10
 Release:        0
 Summary:        Hyprland application dock
 License:        MIT
@@ -27,7 +27,7 @@ Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.
 ##Note remove Source1 before running service.
 Source1:        vendor.tar.zst
 ##PATCH-FIX-UPSTREAM 114.patch -- based on PR 114
-Patch0:         https://github.com/nwg-piotr/nwg-dock-hyprland/pull/114.patch
+##Patch0:         https://github.com/nwg-piotr/nwg-dock-hyprland/pull/114.patch
 BuildRequires:  go >= 1.22
 BuildRequires:  golang-packaging
 BuildRequires:  zstd

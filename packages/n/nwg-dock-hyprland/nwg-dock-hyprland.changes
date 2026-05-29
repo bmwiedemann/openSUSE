@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 22 02:32:53 UTC 2026 - malcolmlewis@opensuse.org
+
+- Updated to version 0.4.10:
+  * Added a unified solution to use lua and legacy Hyprland
+    dispatchers, (gh#nwg-piotr/nwg-dock-hyprland#117).
+- Changes from version 0.4.9:
+  * Fixed item focus on newer Hyprland/Lua dispatch setups
+    (Hyprland v0.55.x), (gh#nwg-piotr/nwg-dock-hyprland#116).
+- Dropped 114.patch as upstream has changed the code that this
+  patch was created for.
+
+-------------------------------------------------------------------
 Fri Mar 27 12:40:30 UTC 2026 - malcolmlewis@opensuse.org
 
 - Updated to version 0.4.8:
