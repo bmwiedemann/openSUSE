@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 15:02:17 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file 
+  (bsc#1263906) 
+
+-------------------------------------------------------------------
 Sun Dec 21 16:46:49 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Require holoviews >= 1.21: Not declared upstream but tests fail

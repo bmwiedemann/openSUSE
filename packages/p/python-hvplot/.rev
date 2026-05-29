@@ -247,4 +247,15 @@
 </comment>
     <requestid>1323993</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>7700e36b7f513ae1c8b6db68da4ea928</srcmd5>
+    <version>0.12.2</version>
+    <time>1780070947</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1355655 from mgrossu
+
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file 
+    (bsc#1263906)</comment>
+    <requestid>1355678</requestid>
+  </revision>
 </revisionlist>
