@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 28 06:42:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to releasee 8.6.3
+  * SLD parser: fix out of bounds access on SLD with only a Rule
+    with a ElseFilter but without a symbolizer
+    [CVE-2026-33721, boo#1260869] [CVE-2026-45104, boo#1266663]
+
+-------------------------------------------------------------------
 Sat Apr 25 22:58:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.6.2
