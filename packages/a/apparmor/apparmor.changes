@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu May 28 14:05:15 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- add revert-plasmashell.diff - the profile changes caused strange
+  problems (see SR 1355200). Revert for now to get the other fixes out.
+
+-------------------------------------------------------------------
+Tue May 26 12:20:09 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- add changes-since-v5.0.0.diff with all changes since the 5.0.0
+  release:
+  - small fixes in parser and utils
+  - lots of profile updates:
+    - abstractions/nameservice (part of boo#1265394)
+    - alsamixer (boo#1265452)
+    - avahi-daemon (boo#1266041)
+    - dig (boo#1265459)
+    - fusermount3 (boo#1265951)
+    - lsof
+    - php-fpm (boo#1265864)
+    - plasmashell
+    - proftpd (boo#1265862)
+    - Samba profiles (boo#1265865)
+    - transmission-daemon (boo#1265863)
+    - various dovecot profiles
+- add wg-quick.diff to fix wg-quick (boo#1265394)
+- add curl.diff to fix curl for usage with rpmdevtools (boo#1266273)
+- add who.diff to fix who (boo#1265860)
+- remove upstreamed patches (included in changes-since-v5.0.0.diff):
+  - allow-read-slash.diff
+  - lsusb.diff
+  - postfix-profiles-slash.diff
+  - syslog-ng-slashes.diff
+  - wpa_supplicant.diff
+
+-------------------------------------------------------------------
 Sat May 16 18:41:47 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
 
 - add lsusb.diff: fix lsusb profile

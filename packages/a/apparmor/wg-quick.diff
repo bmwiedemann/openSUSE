@@ -1,0 +1,188 @@
+https://gitlab.com/apparmor/apparmor/-/merge_requests/2123
+
+commit d778b15fa21e14a418c1df4cb099728078e1d1f8
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Mon May 25 13:24:57 2026 +0200
+
+    Fix wg-quick to work on openSUSE and with DNS= option
+    
+    Yes, it really (ab)uses mount etc.
+    
+    Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1265394
+
+diff --git a/profiles/apparmor.d/wg-quick b/profiles/apparmor.d/wg-quick
+index cf04a0a11..83122b092 100644
+--- a/profiles/apparmor.d/wg-quick
++++ b/profiles/apparmor.d/wg-quick
+@@ -1,6 +1,7 @@
+ # vim: ft=apparmor
+ #------------------------------------------------------------------
+ #    Copyright (C) 2024 Canonical Ltd.
++#    Copyright (C) 2026 Christian Boltz
+ #
+ #    This program is free software; you can redistribute it and/or
+ #    modify it under the terms of version 2 of the GNU General Public
+@@ -21,7 +22,7 @@ profile wg-quick /usr/bin/wg-quick flags=(attach_disconnected) {
+   network netlink raw,
+   network unix stream,
+ 
+-  # use wg aa profile 
++  # use wg aa profile
+   file mrpx /usr/bin/wg -> wg,
+ 
+   # binaries called from within wg-quick
+@@ -57,7 +58,7 @@ profile wg-quick /usr/bin/wg-quick flags=(attach_disconnected) {
+   # Sub-profile for nft tool restrictions
+   file mrCx /usr/sbin/nft,
+   profile nft /usr/sbin/nft {
+-    include <abstractions/base> 
++    include <abstractions/base>
+ 
+     capability net_admin,
+ 
+@@ -72,15 +73,18 @@ profile wg-quick /usr/bin/wg-quick flags=(attach_disconnected) {
+   }
+ 
+   # Sub-profile for IP tool restrictions
+-  file mrCx /usr/bin/ip,
+-  profile ip /usr/bin/ip {
++  file mrCx /usr/{s,}bin/ip -> ip,
++  profile ip {
+     include <abstractions/base>
+ 
+     capability net_admin,
+     capability sys_module,
+ 
++    /usr/lib*/glibc-hwcaps/x86-64-v3/libz.so.*    mr,
++    /usr/lib*/glibc-hwcaps/x86-64-v3/libzstd.so.* mr,
++
+     # Allow executable mapping and read for the binary
+-    file mr /usr/bin/ip,
++    file mr /usr/{s,}bin/ip,
+ 
+     # Network access rules
+     network netlink raw,
+@@ -89,15 +93,15 @@ profile wg-quick /usr/bin/wg-quick flags=(attach_disconnected) {
+     file r /usr/share/iproute2/rt_tables,
+     file r @{run}/netns/{,**},
+   }
+-  
++
+   # Sub-profile for sysctl tool restrictions
+   file mrCx /usr/sbin/sysctl,
+   profile sysctl /usr/sbin/sysctl {
+-    include <abstractions/base> 
+-    
++    include <abstractions/base>
++
+     # Allow executable mapping and read for the binary
+     file mr /usr/sbin/sysctl,
+- 
++
+     file w @{PROC}/sys/net/ipv4/conf/all/src_valid_mark,
+   }
+ 
+@@ -110,6 +114,103 @@ profile wg-quick /usr/bin/wg-quick flags=(attach_disconnected) {
+   # Process-specific access
+   file r @{PROC}/@{pid}/net/ip_tables_names,
+ 
++
++  # alts (actually /usr/sbin/iptables-save)
++  /usr/bin/alts Cx -> wg-quick//alts,
++  profile alts {
++    include <abstractions/base>
++
++    /usr/bin/alts r,
++
++    /usr/share/libalternatives/ r,
++    /usr/share/libalternatives/ip6tables-save/ r,
++    /usr/share/libalternatives/ip6tables-save/*.conf r,
++    /usr/share/libalternatives/iptables-save/ r,
++    /usr/share/libalternatives/iptables-save/*.conf r,
++
++    /usr/sbin/xtables-nft-multi Px -> wg-quick//xtables-nft-multi,
++  }
++
++  profile xtables-nft-multi {
++    include <abstractions/base>
++
++    capability net_admin,
++
++    @{PROC}/@{pid}/net/ip_tables_names r,
++    @{PROC}/@{pid}/net/ip6_tables_names r,
++
++    /usr/sbin/xtables-nft-multi r,
++  }
++
++
++  # DNS= option if using https://git.zx2c4.com/wireguard-tools/tree/contrib/dns-hatchet/hatchet.bash uses unshare, mount etc. to bind-mount /etc/resolv.conf
++  @{PROC}/@{pid}/cgroup r,
++  /usr/bin/unshare Cx -> unshare,
++
++  profile unshare {
++    include <abstractions/base>
++
++    capability sys_admin,
++
++    /{usr/,}bin/bash Px -> wg-quick//unshare-bash,
++    /usr/bin/unshare r,
++  }
++
++  profile unshare-bash {
++    include <abstractions/base>
++
++    /{usr/,}bin/bash r,
++    /{usr/,}bin/cat rix,
++    /{usr/,}bin/mount Px -> wg-quick//unshare-mount,
++    /{usr/,}bin/stat rix,
++
++    /{usr/,}lib/bash/ r,
++
++    /etc/ r,
++    /etc/resolv.conf r,
++
++    /dev/shm/resolv.conf w, # r needed?
++    /dev/tty rw,
++
++    @{PROC}/filesystems r,
++  }
++
++  profile unshare-mount {
++    include <abstractions/base>
++
++    capability sys_admin,
++
++    /{usr/,}bin/mount r,
++
++    / r,
++    /etc/fstab r,
++
++    @{run}/mount/utab r,
++
++    @{PROC}/@{pid}/mountinfo r,
++    @{PROC}/filesystems r,
++
++    /dev/shm/ r,
++  }
++
++
++  # umount private /dev/shm/ on VPN shutdown
++  /{usr/,}bin/umount Cx -> umount,
++  profile umount {
++    capability sys_admin,
++
++    /{usr/,}bin/umount r,
++
++    @{run}/mount/utab r,
++    @{run}/mount/utab.act wk,
++    @{run}/mount/utab.lock rwk,
++    @{run}/netconfig/resolv.conf r,
++
++    @{PROC}/@{pid}/mountinfo r,
++    @{PROC}/filesystems r,
++  }
++
++
+   # Site-specific additions and overrides. See local/README for details.
+   include if exists <local/wg-quick>
+ }

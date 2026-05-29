@@ -86,20 +86,20 @@ Patch7:         apparmor-enable-precompiled-cache.diff
 # /usr/etc/krb5.conf - boo#1246689 - not submitted upstream yet since https://github.com/krb5/krb5/pull/1437/ is still open
 Patch11:        kerberosclient-usrmerge.diff
 
-# allow "/ r," which is needed since systemd 260 (boo#1263051)
-# taken from upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2079 (merged into 4.0..master)
-Patch12:        allow-read-slash.diff
-# taken from upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2087 (merged into 5.0 and master)
-Patch13:        postfix-profiles-slash.diff
+# upstream changes in the 5.0 branch since 5.0.0 release
+Patch12:        changes-since-v5.0.0.diff
 
-# avoid double slashes (and therefore a path mismatch) in syslog-ng profile (merged upstream 2026-05-05 https://gitlab.com/apparmor/apparmor/-/merge_requests/2090 for 5.0 and master, will be in 5.0.1)
-Patch14:        syslog-ng-slashes.diff
+# fix wg-quick profile - boo#1265394 - submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2123
+Patch13:        wg-quick.diff
 
-# wpa_supplicant profile additions (boo#1265377) (submitted upstream 2026-05-16 https://gitlab.com/apparmor/apparmor/-/merge_requests/2103 for 5.0 and master)
-Patch15:        wpa_supplicant.diff
+# fix curl profile for usage with rpmdevtools - boo#1266273 - submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2125
+Patch14:        curl.diff
 
-# lsusb profile additions (submitted upstream 2026-05-16 https://gitlab.com/apparmor/apparmor/-/merge_requests/2102 for 5.0 and master)
-Patch16:        lsusb.diff
+# fix who profile - boo#1265860 - https://gitlab.com/apparmor/apparmor/-/merge_requests/2109 merged into master, not picked into 5.0 branch yet
+Patch15:        who.diff
+
+# revert plasmashell changes - causes strange errors in openQA (to be debugged)
+Patch16:        revert-plasmashell.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

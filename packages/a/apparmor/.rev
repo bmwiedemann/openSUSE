@@ -3163,4 +3163,13 @@ Detailed changelog:
     <comment>- add lsusb.diff: fix lsusb profile (forwarded request 1353556 from cboltz)</comment>
     <requestid>1353557</requestid>
   </revision>
+  <revision rev="236" vrev="4">
+    <srcmd5>cd3000712b585e648b16940186042b8f</srcmd5>
+    <version>5.0.0</version>
+    <time>1780070710</time>
+    <user>anag_factory</user>
+    <comment>- add revert-plasmashell.diff - the profile changes caused strange
+  problems (see SR 1355200). Revert for now to get the other fixes out. (forwarded request 1355647 from cboltz)</comment>
+    <requestid>1355648</requestid>
+  </revision>
 </revisionlist>
