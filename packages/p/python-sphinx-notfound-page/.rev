@@ -25,4 +25,14 @@
     variable as default for notfound_urls_prefix.</comment>
     <requestid>1265484</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>13179586be65b763edfc51fb6522b1fd</srcmd5>
+    <version>1.1.0</version>
+    <time>1780070648</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1355589 from spajak
+
+Fixed missing url and removed empty %check section</comment>
+    <requestid>1355621</requestid>
+  </revision>
 </revisionlist>
