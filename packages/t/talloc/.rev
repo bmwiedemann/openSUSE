@@ -454,4 +454,12 @@ x86-64 when building with python 3.5.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1254052</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>795fb0138fe6e449d5283a0e0942d10a</srcmd5>
+    <version>2.4.4</version>
+    <time>1780070652</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1355629</requestid>
+  </revision>
 </revisionlist>

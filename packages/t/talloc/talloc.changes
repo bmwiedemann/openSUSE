@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 27 16:13:30 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Update to 2.4.4
+  * lib: Add talloc_realloc_zero()
+  * lib: docs: talloc: fix a wrong cd command
+  * lib:talloc: Remove obsolete web page
+
+-------------------------------------------------------------------
 Mon Mar 10 14:11:40 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 2.4.3
