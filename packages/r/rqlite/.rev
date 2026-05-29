@@ -385,4 +385,12 @@
     <comment>rqlite 10.1.0 (forwarded request 1354514 from AndreasStieger)</comment>
     <requestid>1354515</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>f3cbb62601d4ca78f0d3011cbfd5dc79</srcmd5>
+    <version>10.1.0</version>
+    <time>1780070794</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-39821 boo#1266544 (forwarded request 1355708 from AndreasStieger)</comment>
+    <requestid>1355709</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 20:24:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update go-net depdendency to address IDN Punycode validation
+  bypass CVE-2026-39821 boo#1266544
+
+-------------------------------------------------------------------
 Thu May 21 19:03:52 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 10.1.0:

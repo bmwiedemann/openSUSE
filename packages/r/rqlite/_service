@@ -15,5 +15,7 @@
   </service>
   <service name="go_modules" mode="disabled">
     <param name="compression">xz</param>
+    <param name="replace">golang.org/x/net=golang.org/x/net@v0.55.0</param>
+    <param name="replace">golang.org/x/sys=golang.org/x/sys@v0.45.0</param>
   </service>
 </services>
