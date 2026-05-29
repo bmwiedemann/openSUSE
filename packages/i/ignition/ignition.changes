@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 12:39:10 UTC 2026 - Ignaz Forster <iforster@suse.com>
+
+- Add CVE-2026-33814.patch
+  * Fixes [bsc#1265751]
+
+-------------------------------------------------------------------
 Tue Mar 31 11:41:47 UTC 2026 - Ignaz Forster <iforster@suse.com>
 
 - Add CVE-2026-33186.patch

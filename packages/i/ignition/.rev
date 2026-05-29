@@ -946,4 +946,14 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
 </comment>
     <requestid>1343891</requestid>
   </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>ca91c67277c58852ec4870947fa729a0</srcmd5>
+    <version>2.26.0</version>
+    <time>1780070661</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-33814.patch
+  * Fixes [bsc#1265751]
+</comment>
+    <requestid>1355643</requestid>
+  </revision>
 </revisionlist>

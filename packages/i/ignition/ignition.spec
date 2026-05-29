@@ -44,6 +44,7 @@ Patch2:         0002-allow-multiple-mounts-of-same-device.patch
 Patch3:         0003-Move-the-GPT-header-on-resized-disks.patch
 Patch4:         0004-Order-ignition-disks.service-before-systemd-fsck-roo.patch
 Patch5:         CVE-2026-33186.patch
+Patch6:         CVE-2026-33814.patch
 BuildRequires:  dracut
 BuildRequires:  libblkid-devel
 BuildRequires:  systemd-rpm-macros
