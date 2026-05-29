@@ -2,7 +2,8 @@
 Wed May  6 13:58:07 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.0.15:
-  * CVE-2026-42268: unsig integer underflow issue in verify* operators
+  * CVE-2026-42268: unsig integer underflow issue in verify*
+    operators (boo#1266247)
   * CVE-2026-30923: buffer overflow in hex_decode.cc (boo#1264223)
   * buffer overflow in multipart body proc
   * heap buffer overflow in acmp pm
