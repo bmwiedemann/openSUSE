@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 19 13:52:32 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260519 (git commit d962a6a309b7):
+  * linux-firmware: add firmware for MT7927 WiFi device
+
+-------------------------------------------------------------------
 Tue Apr 28 15:10:08 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases from 7.1-rc1
