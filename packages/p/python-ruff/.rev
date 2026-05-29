@@ -3375,4 +3375,34 @@
   * Update various ruff_python_stdlib APIs</comment>
     <requestid>1354493</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>6c990f9ca5976ba69497e0cc6b3ba3d9</srcmd5>
+    <version>0.15.15</version>
+    <time>1780070628</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.15
+ * Preview features
+  * Fix Markdown closing fence handling 
+  * [pyflakes] Report duplicate imports in typing.TYPE_CHECKING block (F811) 
+ * Bug fixes
+  * [pyflakes] Treat function-scope bare annotations as locals per PEP 526 (F821) 
+ * Performance
+  * Avoid redundant TokenValue drops in the lexer 
+  * Reduce memory usage by dropping token-excess capacity and improve performance by approximating the initial tokens Vec size 
+  * Use ThinVec in AST to shrink Stmt 
+ * Documentation
+  * Fix line-length example for --config option 
+  * [flake8-comprehensions] Document RecursionError edge case in __len__ (C416) 
+  * [mccabe] Improve example (C901) 
+  * [pyupgrade] Clarify fix safety docs (UP007, UP045) 
+  * [refurb] Document FURB192 exception change for empty sequences 
+  * [ruff] Document false negative for user-defined types (RUF013) 
+ * Formatter
+  * Fix formatting of lambdas nested within f-strings 
+ * Server
+  * Return code action for codeAction/resolve requests that contain no or no valid URL 
+ * Other changes
+  * Expand semantic syntax errors for invalid walruses</comment>
+    <requestid>1355819</requestid>
+  </revision>
 </revisionlist>
