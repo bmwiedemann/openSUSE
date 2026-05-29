@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 28 21:27:58 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.20.4:
+- Upstream changes:
+  * Updated Portuguese translation
+  * Added remember window size option
+  * Fixed launchers installation breaking the UI
+  * Fixed banner update
+
+-------------------------------------------------------------------
 Tue May 26 15:23:11 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - For .spec:
