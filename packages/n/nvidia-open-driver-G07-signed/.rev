@@ -116,4 +116,19 @@
 - remove again disable-objtool-override.patch</comment>
     <requestid>1350698</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>915095b550adaffa10e4a648c34b50a6</srcmd5>
+    <version>595.80</version>
+    <time>1780070673</time>
+    <user>anag_factory</user>
+    <comment>- linux-7.0.patch
+  * adjust driver to changes of screen_info with Kernel 7.0,
+    which broke the driver completely (boo#1263825); see also
+    https://forums.developer.nvidia.com/t/linux-driver-595-71-05-still-tries-to-use-screen-info-struct-which-was-refactored-in-7-0-kernel/370825
+
+- update non-CUDA variant to 595.80 (boo#1266660)
+- update CUDA variant to 610.43.02
+- kernel-5.14.patch not needed; removed therefore</comment>
+    <requestid>1355751</requestid>
+  </revision>
 </revisionlist>

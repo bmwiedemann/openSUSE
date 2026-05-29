@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 28 10:53:08 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- linux-7.0.patch
+  * adjust driver to changes of screen_info with Kernel 7.0,
+    which broke the driver completely (boo#1263825); see also
+    https://forums.developer.nvidia.com/t/linux-driver-595-71-05-still-tries-to-use-screen-info-struct-which-was-refactored-in-7-0-kernel/370825
+
+-------------------------------------------------------------------
+Thu May 28 00:30:42 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 595.80 (boo#1266660)
+- update CUDA variant to 610.43.02
+- kernel-5.14.patch not needed; removed therefore
+
+-------------------------------------------------------------------
 Sun May  3 09:53:39 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - fix-objtool-warnings.patch (not applied on aarch64)
