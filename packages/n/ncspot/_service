@@ -6,7 +6,7 @@
     <param name="scm">git</param>
     <param name="version">git-master</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v1.3.2</param>
+    <param name="revision">v1.3.4</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">lorenzholzbauer@ikmail.com</param>
@@ -19,5 +19,6 @@
   </service>
   <service name="cargo_vendor" mode="manual">
     <param name="srcdir">ncspot</param>
+    <param name="update">false</param>
   </service>
 </services>
