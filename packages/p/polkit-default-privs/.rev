@@ -2498,4 +2498,14 @@ for 12.3</comment>
 </comment>
     <requestid>1353050</requestid>
   </revision>
+  <revision rev="268" vrev="1">
+    <srcmd5>41053f34c596ef7fa0649328e2c771fc</srcmd5>
+    <version>1550+20260528.62493d2</version>
+    <time>1780070666</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20260528.62493d2:
+  * profiles: add qsnapper (bsc#1261537)
+</comment>
+    <requestid>1355662</requestid>
+  </revision>
 </revisionlist>
