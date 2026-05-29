@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 29 07:15:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use libalternatives instead of update-alternatives for
+  distributions where libalternatives is available
+
+-------------------------------------------------------------------
 Fri May  8 07:44:19 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 17.0.19 with OpenJ9 0.59.0 virtual machine
