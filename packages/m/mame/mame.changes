@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 29 06:08:17 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.288
+  * Changed mame-fortify.patch
+  * Added mame-sdl_ini_path-hardcode.patch
+  * Migrated to Qt6.
+  * /usr/share/doc/packages/mame/whatsnew-0.288.txt
+
+-------------------------------------------------------------------
 Mon Mar 30 22:24:48 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.287

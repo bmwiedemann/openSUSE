@@ -16,7 +16,7 @@
 #
 
 
-%define ver     287
+%define ver     288
 Name:           mame
 Version:        0.%{ver}
 Release:        0
@@ -34,7 +34,8 @@ Patch0:         use_thin_archives.patch
 Patch1:         fix-922619.patch
 Patch2:         %{name}-fortify.patch
 Patch3:         %{name}-bgfx.patch
-Patch4:         reproducible.patch
+Patch4:         %{name}-sdl_ini_path-hardcode.patch
+Patch5:         reproducible.patch
 BuildRequires:  asio-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -42,9 +43,9 @@ BuildRequires:  mold
 BuildRequires:  pkgconfig
 BuildRequires:  portmidi-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(alsa)
@@ -68,10 +69,6 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}
 Suggests:       %{name}-tools = %{version}
 ExcludeArch:    i586 armv6hl armv7hl ppc s390
-%if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
-%endif
 
 %description
 MAME is an emulator designed to recreate the hardware of arcade game
@@ -110,17 +107,14 @@ LDFLAGS="$LDFLAGS -Wl,-v -fuse-ld=mold"
 sed -i -e "s/-Wall -Wextra -Os \$(MPARAM)/$CFLAGS/" -e "s/-s -rdynamic/$LDFLAGS -rdynamic/" 3rdparty/genie/build/gmake.linux/genie.make
 
 %make_build \
-%if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
-    CC="gcc-13" \
-    CXX="g++-13" \
-%endif
     CFLAGS="$CFLAGS" \
     CXXFLAGS="$CFLAGS" \
     LDOPTS="$LDFLAGS" \
+    PYTHON_EXECUTABLE="python3" \
     NOWERROR=1 \
     OPTIMIZE=3 \
-    PYTHON_EXECUTABLE=python3 \
     VERBOSE=1 \
+    TOOLS=1 \
     USE_SYSTEM_LIB_ASIO=1 \
     USE_SYSTEM_LIB_EXPAT=1 \
     USE_SYSTEM_LIB_FLAC=1 \
@@ -132,9 +126,7 @@ sed -i -e "s/-Wall -Wextra -Os \$(MPARAM)/$CFLAGS/" -e "s/-s -rdynamic/$LDFLAGS 
     USE_SYSTEM_LIB_RAPIDJSON=1 \
     USE_SYSTEM_LIB_SQLITE3=1 \
     USE_SYSTEM_LIB_UTF8PROC=1 \
-    USE_SYSTEM_LIB_ZLIB=1 \
-    SDL_INI_PATH="%{_sysconfdir}/%{name};" \
-    TOOLS=1
+    USE_SYSTEM_LIB_ZLIB=1
 
 %install
 install -pm0644 %{SOURCE1} whatsnew-%{version}.txt
