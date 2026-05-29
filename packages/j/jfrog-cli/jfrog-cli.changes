@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri May 29 06:26:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.105.0:
+  * New Features
+    - [build-info-go] added nix package manager support #378
+      (@reshmifrog)
+    - [jfrog-cli] add nix package manager support #3471
+      (@reshmifrog)
+    - [jfrog-cli-artifactory] RTECO-1266 - Implement ai plugins
+      publish command #454 (@udaykb2)
+    - [jfrog-cli-artifactory] add nix package manager #442
+      (@reshmifrog)
+    - [jfrog-cli-core] RTECO-1266 - Add Subcommand to command #1560
+      (@udaykb2)
+    - [jfrog-cli-security] XRAY-140488 - Implement graceful dotnet
+      restore error for all dotnet … #752 (@gauriy-tech)
+  * Bug Fixes
+    - [jfrog-cli] RTECO-1368 - Fix metrics collection for agent
+      detection and interactive context fields #3518 (@fluxxBot)
+    - [jfrog-cli-artifactory] Fix: Return error when jfrog server
+      is not configured #459 (@udaykb2)
+    - [jfrog-cli-core] RTECO-1368 - Fix metrics collection for
+      agent detection and interactive context fields #1566
+      (@fluxxBot)
+    - [jfrog-cli-security] Fix nil dereference issue regarding
+      Applicability Scan results #755 (@eranturgeman)
+    - [jfrog-cli-security] Populate project key to
+      GetConfigProfileByUrl #763 (@eranturgeman)
+    - [jfrog-cli-security] Adjust rtRepository path when in project
+      context #764 (@eranturgeman)
+  * Internal Changes
+    - [jfrog-cli-security] Update AnalyzerManager default version
+      to 1.34.1 #754 (@attiasas)
+    - [jfrog-cli-security] Update dependencies for 1.29.2 #765
+      (@eranturgeman)
+  * Other Changes
+    - [jfrog-cli] Enable JSON error output for commands with HTTP
+      requests #3493 (@ehl-jf)
+    - [jfrog-cli] Make jf uv command publicly available #3511
+      (@agrasth)
+    - [jfrog-cli-artifactory] RTECO-1266 - Rename ai plugins to
+      agent plugins #456 (@udaykb2)
+    - [jfrog-client-go] Expose full HTTP response in case of error
+      #1345 (@ehl-jf)
+
+-------------------------------------------------------------------
 Fri May 22 06:36:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.104.1 (.0 was not released):
