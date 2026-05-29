@@ -349,4 +349,15 @@
     <comment>Update version</comment>
     <requestid>1348442</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0d30832dbca36f342ed1efb5eca5891f</srcmd5>
+    <version>50.2</version>
+    <time>1780071145</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.2:
+  + Fixed the game not getting saved when the window was closed
+  + Updated libgnome-games-support
+  + Updated translations.</comment>
+    <requestid>1355865</requestid>
+  </revision>
 </revisionlist>
