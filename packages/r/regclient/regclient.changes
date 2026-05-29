@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 29 07:04:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.5:
+  * Security:
+    - Prevent https to non-https downgrades and localhost
+      redirects. (PR 1093)
+    - Forbid sending auth on redirects. (PR 1095)
+  * Features:
+    - Add regbot manifest.descriptor to the sandbox. (PR 1091)
+
+-------------------------------------------------------------------
 Tue May 12 05:02:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.4:
