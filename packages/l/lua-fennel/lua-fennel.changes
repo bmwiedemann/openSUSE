@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu May 28 15:55:16 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Keep man pages in the system man path and make the -doc package
+  conflict only with older lua-fennel builds, avoiding file ownership
+  conflicts with packages from before the documentation split.
+
+-------------------------------------------------------------------
+Wed May 27 20:32:16 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Resolve conflicts between the main package and -doc subpackage.
+
+-------------------------------------------------------------------
+Wed May 27 00:00:00 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Stop requiring the -doc subpackage from the default Lua flavor and
+  drop its lua-fennel conflict, so flavor install checks do not create
+  a self-conflicting dependency chain.
+
+-------------------------------------------------------------------
+Sat May 23 00:00:00 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Relax the -doc package conflict to older lua-fennel versions only,
+  so the default Lua flavor can satisfy its matching doc dependency.
+
+-------------------------------------------------------------------
+Thu May 14 14:54:36 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add `Conflicts:      lua-fennel <= %{version}` to -doc
+  subpackage.
+
+-------------------------------------------------------------------
+Mon May 11 20:04:29 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Use proper shebang
+
+-------------------------------------------------------------------
+Wed May  6 20:11:16 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Don’t calculate macros we already have available in macros.lua.
+- Reorder macros so that `ExclusiveArch: do-not-build` is
+  potentially set early.
+- Generate -doc package only when the default Lua package is
+  generated.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:51:45 UTC 2026 - Martin Jungblut Schreiner <martinjungblut@gmail.com>
+
+- Improve libalternatives support.
+
+-------------------------------------------------------------------
+Fri Jan 23 21:38:01 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable lua55 build.
+
+-------------------------------------------------------------------
+Sat Jan 10 09:48:18 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- It's %{lua_version}, not %{flavor}
+
+-------------------------------------------------------------------
+Wed Dec  3 18:31:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Proper multi-variant SPEC with properly set-up alternatives
+  Fixes: https://src.opensuse.org/pool/lua-fennel/issues/1
+
+-------------------------------------------------------------------
 Thu Nov  6 14:37:26 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.6.0:

@@ -236,4 +236,40 @@
       byte in the string.</comment>
     <requestid>1316850</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3feab7761b133879885c4137df53d537</srcmd5>
+    <version>1.6.0</version>
+    <time>1780070725</time>
+    <user>anag_factory</user>
+    <comment>- Keep man pages in the system man path and make the -doc package
+  conflict only with older lua-fennel builds, avoiding file ownership
+  conflicts with packages from before the documentation split.
+
+- Resolve conflicts between the main package and -doc subpackage.
+
+- Stop requiring the -doc subpackage from the default Lua flavor and
+  drop its lua-fennel conflict, so flavor install checks do not create
+  a self-conflicting dependency chain.
+
+- Relax the -doc package conflict to older lua-fennel versions only,
+  so the default Lua flavor can satisfy its matching doc dependency.
+
+- Add `Conflicts:      lua-fennel &lt;= %{version}` to -doc
+  subpackage.
+
+- Use proper shebang
+
+- Don’t calculate macros we already have available in macros.lua.
+- Reorder macros so that `ExclusiveArch: do-not-build` is
+  potentially set early.
+- Generate -doc package only when the default Lua package is
+  generated.
+
+- Improve libalternatives support.
+
+- Enable lua55 build.
+
+- It's %{lua_version}, not %{flavor}</comment>
+    <requestid>1355674</requestid>
+  </revision>
 </revisionlist>
