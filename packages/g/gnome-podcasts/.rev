@@ -79,4 +79,12 @@
 </comment>
     <requestid>1324786</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a0c6750202a97d0b132ce2299df47c19</srcmd5>
+    <version>25.3</version>
+    <time>1780071133</time>
+    <user>anag_factory</user>
+    <comment>- Update vendored dependencies.</comment>
+    <requestid>1355873</requestid>
+  </revision>
 </revisionlist>
