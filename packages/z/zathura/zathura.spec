@@ -1,7 +1,7 @@
 #
 # spec file for package zathura
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,51 @@
 #
 
 
+%define  appid  org.pwmt.zathura
+%if 0%{?suse_version} == 1600
+%bcond_without gcc15
+%endif
 Name:           zathura
-Version:        0.5.8
+Version:        2026.05.20
 Release:        0
 Summary:        A customizable document viewer
 License:        Zlib
 URL:            https://pwmt.org/projects/zathura/
-Source:         %{url}/download/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE no-parallel-xvfb.patch smolsheep@opensuse.org -- Fix tests that rely on xvfb
-Patch0:         no-parallel-xvfb.patch
-BuildRequires:  appstream-glib
+Source0:        %{url}/download/%{name}-%{version}.tar.xz
+Source1:        %{url}/download/%{name}-%{version}.tar.xz.asc
+Source2:        %{name}.keyring
+BuildRequires:  AppStream
+BuildRequires:  c_compiler
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
-BuildRequires:  file-devel
 BuildRequires:  fish
-BuildRequires:  meson
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  meson >= 1.5
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  rsvg-convert
+BuildRequires:  weston
 BuildRequires:  xvfb-run
 BuildRequires:  zsh
-BuildRequires:  pkgconfig(check)
-BuildRequires:  pkgconfig(girara-gtk3) >= 0.4.3
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(girara) >= 2026.02.03
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76
+BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.72
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.72
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
+BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(libmagic)
 BuildRequires:  pkgconfig(libseccomp)
-BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(sqlite3) >= 3.6.23
+BuildRequires:  pkgconfig(synctex) >= 2
 Recommends:     %{name}-lang
-Recommends:     zathura-pdf-poppler-plugin
-Suggests:       zathura-cb-plugin
-Suggests:       zathura-djvu-plugin
-Suggests:       zathura-ps-plugin
-%if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(synctex) >= 1.19
+Recommends:     %{name}-pdf-poppler-plugin
+Suggests:       %{name}-cb-plugin
+Suggests:       %{name}-djvu-plugin
+Suggests:       %{name}-ps-plugin
+%if %{with gcc15}
+BuildRequires:  gcc15
 %endif
 
 %description
@@ -65,6 +79,7 @@ Summary:        Zathura Bash completion
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
 
 %description bash-completion
 Optional dependency offering bash completion for zathura
@@ -74,6 +89,7 @@ Summary:        Zathura zsh completion
 Requires:       %{name} = %{version}
 Requires:       zsh
 Supplements:    (%{name} and zsh)
+BuildArch:      noarch
 
 %description zsh-completion
 Optional dependency offering zsh completion for zathura
@@ -83,6 +99,7 @@ Summary:        Zathura fish completion
 Requires:       %{name} = %{version}
 Requires:       fish
 Supplements:    (%{name} and fish)
+BuildArch:      noarch
 
 %description fish-completion
 Optional dependency offering fish completion for zathura
@@ -93,37 +110,32 @@ Optional dependency offering fish completion for zathura
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags}"
-%if 0%{?suse_version} < 1550
-%meson -Dsynctex=disabled
-%else
+export CFLAGS="%{optflags} -fPIE"
+export LDFLAGS="%{?build_ldflags} -pie"
+%{?with_gcc15:export CC=gcc-15}
 %meson
-%endif
 %meson_build
-
-%check
-%if 0%{?qemu_user_space_build}
-# qemu does not implement seccomp
-echo 'int main() { return 77; }' > tests/test_session.c
-%endif
-%meson_test
 
 %install
 %meson_install
-%find_lang %{name} %{?no_lang_C}
+
+%find_lang %{appid} %{name}.lang
+
+%check
+xvfb-run %{_bindir}/meson test -C %{_vpath_builddir} %{?_smp_mflags} --print-errorlogs
 
 %files
 %license LICENSE
 %doc README.md AUTHORS
 %{_bindir}/%{name}
 %{_bindir}/%{name}-sandbox
-%{_datadir}/dbus-1/interfaces/org.pwmt.%{name}.xml
+%{_datadir}/dbus-1/interfaces/%{appid}.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/%{name}-sandbox.1%{?ext_man}
 %{_mandir}/man5/%{name}rc.5%{?ext_man}
-%{_datadir}/applications/org.pwmt.zathura.desktop
-%{_datadir}/icons/hicolor/*/apps/org.pwmt.zathura.*
-%{_datadir}/metainfo/org.pwmt.zathura.appdata.xml
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{appid}.??g
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %files devel
 %dir %{_includedir}/%{name}
@@ -131,13 +143,13 @@ echo 'int main() { return 77; }' > tests/test_session.c
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files bash-completion
-%{_datadir}/bash-completion/completions/zathura
+%{_datadir}/bash-completion/completions/%{name}
 
 %files zsh-completion
-%{_datadir}/zsh/site-functions/_zathura
+%{_datadir}/zsh/site-functions/_%{name}
 
 %files fish-completion
-%{_datadir}/fish/vendor_completions.d/zathura.fish
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 %files lang -f %{name}.lang
 

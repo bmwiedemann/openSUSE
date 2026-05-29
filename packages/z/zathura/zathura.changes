@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Fri May 29 09:19:26 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Cleanup spec file with spec-cleaner
+- Drop unused no-parallel-xvfb.patch (orphaned in the package,
+  no longer applies and not needed)
+
+-------------------------------------------------------------------
+Wed May 27 05:09:25 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2026.05.20:
+  * Fix sandbox on X11
+  * Fix crashes on document releoad
+  * Add option to keep selection highlights
+  * Add user feedback to copy_filepath
+- Added zathura.keyring
+- Updates from version 2026.05.11:
+  * Handle unsigned integer values in set command
+- Updates from version 2026.05.10:
+  * Handle key press events for notification area
+  * Fix documentation of mouse buttons
+  * Make shortcuts available as commands
+  * Fix more cases of flickering when rendering pages
+  * Various fixes and improvements
+- Updates from version 2026.03.27:
+  * Add search result counter
+  * Fix search result cycling in documents with one page
+  * Fix some page rendering regressions
+  * Various fixes and improvements
+- Updates from version 2026.02.22:
+  * Implement single page layout and equal height/width modes
+  * Use single page layout for presentation mode
+  * Fix blurry rendering and repeated loading messages
+  * Allow to disable copying to clipboard
+  * Fix smooth scrolling using Ctrl and arrow keys
+- Updates from version 2026.02.09:
+  * Implement single page layout and equal height/widht modes
+  * Use single page layout for presentation mode
+  * Fix blurry rendering and repeated loading messages
+  * Allow to disable copying to clipboard
+  * Fix smooth scrolling using Ctrl and arrow keys
+- Updates from version 2026.02.03:
+  * Fork to background if opening with multiple files only if --fork is
+    specified
+  * Fix handling of PageUp and PageDown
+  * Fix handling of mappings with special keys
+  * Integrate Gtk+-specific parts of girara
+- Updates from version 2026.01.30:
+  * Switch to date-based version numbers
+  * Fix warnings from CSS generation
+  * Apply correect shacling when recoloring
+  * Make sure jumplist stays valid after close
+  * Disable message in incremental search
+  * Fix seccomp rules with musl
+  * Implement custom drawing for document widget
+- Updates from version 0.5.14:
+  * Switch default database to sqlite and drop plain database
+  * Notify users if no attachments and images are available to export
+  * Make index-* configurable after init
+  * Support numberic keypad mappings
+  * Provide correct number of pages
+  * Undo size-allocate callback changes
+  * Fix temporary file nams for better content-type detection
+- Updates from version 0.5.13:
+  * Validate appstream files with appstreamcli
+  * Split page-padding into page-h-padding and page-v-padding
+  * Fix memory leak and callback type error
+  * Warn if plugins do not support exporting images or attachments
+- Updates from version 0.5.12:
+  * Add shortcut to open files via file chooser dialog
+  * Refactor rendering of pages
+  * Add lightness adjustment for recolering
+  * Initial support for OpenBSD sandbox
+- Updates from version 0.5.11:
+  * Fix closing of documents
+- Updates from version 0.5.10:
+  * Fix crash when opening documents
+- Updates from version 0.5.9:
+  * Fix build on macOS
+  * Hide page label if the same as page number
+  * Cache synctex parser for faster operation
+  * Revert changes for documents with multiple page sizes
+  * Various fixes and improvements
+- Drop no-parallel-xvfb.patch
+
+-------------------------------------------------------------------
 Tue Aug  6 11:56:44 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update no-parallel-xvfb.patch to current version

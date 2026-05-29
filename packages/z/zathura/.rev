@@ -207,4 +207,13 @@
     <comment></comment>
     <requestid>1192489</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b4e1a8e47fb746f046695dec0ba68312</srcmd5>
+    <version>2026.05.20</version>
+    <time>1780071070</time>
+    <user>anag_factory</user>
+    <comment>- Cleanup spec file with spec-cleaner
+- Drop unused no-parallel-xvfb.patch (orphaned, no longer applies and not needed)</comment>
+    <requestid>1355841</requestid>
+  </revision>
 </revisionlist>
