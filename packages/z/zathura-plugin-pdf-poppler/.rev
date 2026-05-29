@@ -91,4 +91,12 @@
     <comment></comment>
     <requestid>1193339</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5db6dfa9e96a65aec8d9f0a14c0701d0</srcmd5>
+    <version>2026.05.10</version>
+    <time>1780071063</time>
+    <user>anag_factory</user>
+    <comment>- Cleanup spec file with spec-cleaner</comment>
+    <requestid>1355837</requestid>
+  </revision>
 </revisionlist>

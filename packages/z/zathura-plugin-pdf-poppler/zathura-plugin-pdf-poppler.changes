@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 29 09:02:49 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Wed May 27 05:46:25 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2026.05.10:
+  * Various bug fixes and improvements
+- Added zathura-pdf-poppler.keyring
+- Updates from version 2026.02.03:
+  * Update for changes in girara
+- Updates from version 2026.01.30:
+  * Various bug fixes and improvements
+- Updates from version 0.3.4:
+  * Various bug fixes and improvements
+
+-------------------------------------------------------------------
 Sun Aug 11 08:56:24 UTC 2024 - Jakob Lorenz <onlyjak0b@mailbox.org>
 
 - Update to 0.3.3:

@@ -1,7 +1,7 @@
 #
 # spec file for package zathura-plugin-pdf-poppler
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,36 +17,50 @@
 
 
 %define realname zathura-pdf-poppler
+%if 0%{?suse_version} == 1600
+%bcond_without gcc15
+%endif
 Name:           zathura-plugin-pdf-poppler
-Version:        0.3.3
+Version:        2026.05.10
 Release:        0
 Summary:        PDF support for zathura via poppler
 License:        Zlib
-Group:          Productivity/Office/Other
-URL:            https://pwmt.org/projects/%{realname}/
-Source:         https://pwmt.org/projects/%{realname}/download/%{realname}-%{version}.tar.xz
-BuildRequires:  meson
+URL:            https://pwmt.org/projects/%{realname}
+Source0:        %{url}/download/%{realname}-%{version}.tar.xz
+Source1:        %{url}/download/%{realname}-%{version}.tar.xz.asc
+Source2:        %{realname}.keyring
+BuildRequires:  AppStream
+BuildRequires:  c_compiler
+BuildRequires:  desktop-file-utils
+BuildRequires:  meson >= 1.5
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(girara-gtk3)
+BuildRequires:  pkgconfig(girara)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(poppler-glib) >= 21.12
-BuildRequires:  pkgconfig(zathura) >= 0.5.3
-Requires:       zathura >= 0.5.3
-Provides:       zathura-pdf-poppler-plugin
+BuildRequires:  pkgconfig(zathura) >= 2026.01.30
+Requires:       zathura >= 2026.01.30
+Provides:       %{realname}-plugin
+%if %{with gcc15}
+BuildRequires:  gcc15
+%endif
 
 %description
-The zathura-pdf-poppler plugin adds PDF support to zathura by using the poppler rendering engine.
+The zathura-pdf-poppler plugin adds PDF support to zathura by using the
+poppler rendering engine.
 
 %prep
-%setup -q -n %{realname}-%{version}
+%autosetup -p1 -n %{realname}-%{version}
 
 %build
-export CFLAGS="%{optflags}"
-%meson -Dtests=disabled
+%{?with_gcc15:export CC=gcc-15}
+%meson
 %meson_build
 
 %install
 %meson_install
+
+%check
+%meson_test
 find %{buildroot} -name '*.desktop' -delete -print
 
 %files -n %{name}
@@ -54,6 +68,6 @@ find %{buildroot} -name '*.desktop' -delete -print
 %doc AUTHORS
 %dir %{_libdir}/zathura
 %{_libdir}/zathura/libpdf-poppler.so
-%{_datadir}/metainfo/org.pwmt.zathura-pdf-poppler.metainfo.xml
+%{_datadir}/metainfo/org.pwmt.%{realname}.metainfo.xml
 
 %changelog
