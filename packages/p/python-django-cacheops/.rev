@@ -141,4 +141,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282114</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>66d4b20a2087c4702ee8c74d67772839</srcmd5>
+    <version>7.2</version>
+    <time>1780070816</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-314.patch:
+  * Support Python 3.14 pickle changes. (bsc#1266046)</comment>
+    <requestid>1355723</requestid>
+  </revision>
 </revisionlist>

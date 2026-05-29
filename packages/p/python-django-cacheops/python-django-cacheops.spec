@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-cacheops
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Django ORM cache with automatic granular event-driven invalidati
 License:        BSD-3-Clause
 URL:            http://github.com/Suor/django-cacheops
 Source:         https://files.pythonhosted.org/packages/source/d/django_cacheops/django_cacheops-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#Suor/django-cacheops#511
+Patch0:         support-python-314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -70,6 +72,6 @@ export DJANGO_SETTINGS_MODULE=tests.settings
 %doc CHANGELOG README.rst
 %license LICENSE
 %{python_sitelib}/cacheops
-%{python_sitelib}/django_cacheops-%{version}*-info
+%{python_sitelib}/django_cacheops-%{version}.dist-info
 
 %changelog
