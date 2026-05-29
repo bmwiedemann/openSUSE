@@ -1188,4 +1188,12 @@
   depend (boo#1261544)</comment>
     <requestid>1344972</requestid>
   </revision>
+  <revision rev="112" vrev="7">
+    <srcmd5>24cd2daecaaccbb07b5ca06bd6e45e1a</srcmd5>
+    <version>2.13.1</version>
+    <time>1780070641</time>
+    <user>anag_factory</user>
+    <comment>- Change patch man-db-2.7.1-zio.dif to avoid Heisenbug (boo#1262477)</comment>
+    <requestid>1355607</requestid>
+  </revision>
 </revisionlist>

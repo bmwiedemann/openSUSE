@@ -7,11 +7,11 @@ Signed-off-by: Werner Fink <werner@suse.de>
 ---
  config.h.in      |    3 +
  configure.ac     |   52 ++++++++++++++++++++++++
- src/decompress.c |  119 ++++++++++++++++++++++++++++++++++++++++++++++++++++---
- 3 files changed, 169 insertions(+), 5 deletions(-)
+ src/decompress.c |  118 +++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 3 files changed, 169 insertions(+), 4 deletions(-)
 
 --- config.h.in
-+++ config.h.in
++++ config.h.in	2026-05-28 08:23:35.150041138 +0000
 @@ -1148,6 +1148,9 @@
  /* Define to 1 if you have the `z' library (-lz). */
  #undef HAVE_LIBZ
@@ -23,7 +23,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  #undef HAVE_LIB_BCRYPT
  
 --- configure.ac
-+++ configure.ac
++++ configure.ac	2026-05-28 08:23:35.150041138 +0000
 @@ -35,6 +35,18 @@ MAN_ARG_DEVICE
  MAN_ARG_DB
  MAN_ARG_CONFIG_FILE
@@ -43,7 +43,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  MAN_ARG_AUTOMATIC_CREATE
  MAN_ARG_AUTOMATIC_UPDATE
  MAN_ARG_CATS
-@@ -374,6 +386,46 @@ AC_DEFINE_UNQUOTED([PROG_UNXZ], ["$unxz"], [Program to use as unxz.])
+@@ -374,6 +386,46 @@ AC_DEFINE_UNQUOTED([PROG_UNXZ], ["$unxz"
  AC_DEFINE_UNQUOTED([PROG_UNLZIP], ["$unlzip"], [Program to use as unlzip.])
  AC_DEFINE_UNQUOTED([PROG_UNZSTD], ["$unzstd"], [Program to use as unzstd.])
  MAN_COMPRESS_LIB([z], [gzopen])
@@ -91,8 +91,16 @@ Signed-off-by: Werner Fink <werner@suse.de>
  
  # Check for various header files and associated libraries.
 --- src/decompress.c
-+++ src/decompress.c
-@@ -39,12 +39,17 @@
++++ src/decompress.c	2026-05-28 08:26:49.822545458 +0000
+@@ -27,6 +27,7 @@
+ #include <assert.h>
+ #include <fcntl.h>
+ #include <stdbool.h>
++#include <stdint.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -40,12 +41,17 @@
  
  #include "pipeline.h"
  
@@ -110,7 +118,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  #include "manconfig.h"
  
  #include "compression.h"
-@@ -99,6 +104,7 @@ static decompress *decompress_new_inprocess (char *buf, size_t len)
+@@ -100,6 +106,7 @@ static decompress *decompress_new_inproc
  	return d;
  }
  
@@ -118,7 +126,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  static void decompress_zlib (void *data MAYBE_UNUSED)
  {
  	gzFile zlibfile;
-@@ -126,6 +132,7 @@ static void decompress_zlib (void *data MAYBE_UNUSED)
+@@ -127,6 +134,7 @@ static void decompress_zlib (void *data
  	gzclose (zlibfile);
  	return;
  }
@@ -126,7 +134,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  
  /* The largest number of uncompressed bytes we're prepared to read into
   * memory.  (We actually allow at most one fewer byte than this, for easy
-@@ -145,7 +152,11 @@ static void decompress_zlib (void *data MAYBE_UNUSED)
+@@ -146,7 +154,11 @@ static void decompress_zlib (void *data
  
  static decompress *decompress_try_zlib (const char *filename)
  {
@@ -138,7 +146,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  	/* We only ever call this from the parent process (and don't
  	 * currently use threads), and this lets us skip per-file memory
  	 * allocation.
-@@ -153,18 +164,33 @@ static decompress *decompress_try_zlib (const char *filename)
+@@ -154,18 +166,33 @@ static decompress *decompress_try_zlib (
  	static char buffer[MAX_INPROCESS];
  	int len = 0;
  
@@ -172,7 +180,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  			return NULL;
  		} else if (r == 0)
  			break;
-@@ -172,7 +198,11 @@ static decompress *decompress_try_zlib (const char *filename)
+@@ -173,7 +200,11 @@ static decompress *decompress_try_zlib (
  			len += r;
  	}
  
@@ -184,18 +192,18 @@ Signed-off-by: Werner Fink <werner@suse.de>
  	if (len >= MAX_INPROCESS)
  		return NULL;
  	/* Copy input data so that we don't have potential data corruption
-@@ -188,33 +218,108 @@ static decompress *decompress_try_zlib (const char *filename)
+@@ -189,33 +220,108 @@ static decompress *decompress_try_zlib (
  #  define OPEN_FLAGS_UNUSED MAYBE_UNUSED
  #endif /* HAVE_LIBZ */
  
 +#ifdef HAVE_ZIO
 +static void decompress_zio (void *data)
 +{
-+	char *what = data;
++	char what[2] = { 'n', '\0' };
 +	FILE *file;
 +
-+	if (!what)
-+		what = (char *) "n";
++	if (data)
++		what[0] = (char)(uintptr_t)data;
 +
 +	file = fdzopen (dup (fileno (stdin)), "r", what);
 +	if (!file)
@@ -222,7 +230,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
 +		size_t len;
 +		int d;
 +	} list[] = {
-+	        {"gz",   2, 'z' },
++	        {"gz",   2, 'g' },
 +                {"z",    1, 'z' },
 +                {"Z",    1, 'Z' },
 +	        {"bz2",  3, 'b' },
@@ -252,7 +260,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
 +	const char *ext;
  #ifdef HAVE_LIBZ
 +#  ifdef HAVE_ZIO
-+	char opt[2] = {'\0', '\0'};
++	int decomp_type = 'n';
 +#  else
  	size_t filename_len;
 +#  endif
@@ -265,7 +273,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  
  #ifdef HAVE_LIBZ
 +#  ifdef HAVE_ZIO
-+	if ((opt[0] = which_decompressor (filename)) != 'n') {
++	if ((decomp_type = which_decompressor (filename)) != 'n') {
 +#  else
  	filename_len = strlen (filename);
  	if (filename_len > 3 && STREQ (filename + filename_len - 3, ".gz")) {
@@ -275,14 +283,13 @@ Signed-off-by: Werner Fink <werner@suse.de>
  			if (d)
  				return d;
  		}
--
 +#  ifdef HAVE_ZIO
 +		char *name = NULL;
-+
+ 
 +		/* informational only; no shell quoting concerns */
 +		name = appendstr (NULL, "zio<", filename, (void *) 0);
 +		cmd = pipecmd_new_function (name, &decompress_zio, NULL,
-+		                            (void *) opt);
++		                            (void *)(uintptr_t)decomp_type);
 +#  else
  		cmd = pipecmd_new_function ("zcat", &decompress_zlib, NULL,
  		                            NULL);
@@ -295,7 +302,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  		goto got_pipeline;
  	}
  #endif /* HAVE_LIBZ */
-@@ -235,9 +340,9 @@ decompress *decompress_open (const char *filename, int flags OPEN_FLAGS_UNUSED)
+@@ -236,9 +342,9 @@ decompress *decompress_open (const char
  		}
  	}
  
@@ -307,7 +314,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  	if (ext) {
  		cmd = pipecmd_new_argstr (PROG_GUNZIP);
  		pipecmd_pre_exec (cmd, sandbox_load, sandbox_free, sandbox);
-@@ -262,7 +367,11 @@ decompress *decompress_fdopen (int fd)
+@@ -263,7 +369,11 @@ decompress *decompress_fdopen (int fd)
  #endif /* HAVE_LIBZ */
  
  #ifdef HAVE_LIBZ
@@ -319,7 +326,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  	pipecmd_pre_exec (cmd, sandbox_load, sandbox_free, sandbox);
  	p = pipeline_new_commands (cmd, nullptr);
  #else  /* HAVE_LIBZ */
-@@ -312,7 +421,7 @@ void decompress_inprocess_replace (decompress *d, char *buf, size_t len)
+@@ -313,7 +423,7 @@ void decompress_inprocess_replace (decom
  
  void decompress_start (decompress *d)
  {

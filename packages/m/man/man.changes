@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 28 08:14:12 UTC 2026 - Werner Fink <werner@suse.de>
+
+- Change patch man-db-2.7.1-zio.dif to avoid Heisenbug (boo#1262477)
+
+-------------------------------------------------------------------
 Tue Apr  7 09:55:41 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Make choice for transfiletriggerin or filetriggerin rpm version
