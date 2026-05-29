@@ -84,4 +84,41 @@
       programmatic mode</comment>
     <requestid>1352576</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e332c08bf540f6bd9fd612cbaecc1123</srcmd5>
+    <version>2.12.1</version>
+    <time>1780070811</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.12.1:
+  - Fixed
+    - VS Code extension promo link in the CLI banner now points
+      to the renamed mistralai.mistral-vibe-code extension
+  - Changed
+    - /teleport now uses the new Vibe Code Web sessions v2.11.1
+- Update to 2.11.1:
+  - Added
+    - Custom compaction prompts via the compaction_prompt_id
+      config setting, resolved from ~/.vibe/prompts/ or
+      .vibe/prompts/
+    - --max-tokens flag for programmatic mode (-p)
+    - ACP _auth/status and _auth/signOut extension methods so IDE
+      extensions can show auth state and sign the user out
+    - Auth source assessment in vibe.setup.auth to classify the
+      active credential source
+    - VS Code extension promo line in the CLI banner when
+      launched from a VS Code, Cursor, or VS Code Insiders
+      terminal
+    - OverridesLayer and ProjectConfigLayer for the layered
+      configuration system
+  - Changed
+    - Programmatic mode (-p) no longer auto-approves tool calls
+      by default
+    - Browser sign-in is enabled by default for Mistral
+      providers; the enable_experimental_browser_sign_in flag is
+      no longer required (stale entries are silently ignored)
+    - Compaction quality improved
+    - Refreshed user message styling and slash/teleport variants
+    - /teleport to Vibe Code Web now carries the working diff and</comment>
+    <requestid>1355722</requestid>
+  </revision>
 </revisionlist>

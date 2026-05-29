@@ -16,7 +16,7 @@
 #
 
 Name:           mistral-vibe
-Version:        2.9.6
+Version:        2.12.1
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
@@ -32,6 +32,8 @@ BuildRequires:  python3-editables
 BuildRequires:  python3-hatch-vcs
 BuildRequires:  python3-hatchling
 BuildRequires:  python3-pip
+# Temporary measure until sr#1354228 is in TW
+BuildRequires:  openssl
 Requires:       python3-GitPython >= 3.1.46
 Requires:       python3-PyYAML >= 6.0.0
 Requires:       python3-agent-client-protocol >= 0.9.0
@@ -65,11 +67,14 @@ Requires:       python3-syrupy
 Requires:       python3-textual >= 8.2.4
 Requires:       python3-textual-speedups >= 0.2.1
 Requires:       python3-tomli-w >= 1.2.0
+Requires:       python3-tomlkit >= 0.13.0
 Requires:       python3-tree-sitter >= 0.25.2
 Requires:       python3-tree-sitter-bash >= 0.25.1
 Requires:       python3-watchfiles >= 1.1.1
 Requires:       python3-websockets >= 13.0
 Requires:       python3-zstandard >= 0.25.0
+# Temporary measure until sr#1354228 is in TW
+Requires:       openssl
 Obsoletes:      python312-mistral-vibe < %{version}
 Provides:       python312-mistral-vibe = %{version}
 Obsoletes:      python313-mistral-vibe < %{version}
@@ -108,7 +113,6 @@ BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-asyncio >= 1.2.0
 BuildRequires:  python3-pytest-textual-snapshot >= 1.1.0
 BuildRequires:  python3-pytest-timeout >= 2.4.0
-BuildRequires:  python3-pytest-xdist >= 3.8.0
 BuildRequires:  python3-python-dotenv >= 1.0.0
 BuildRequires:  python3-requests >= 2.20.0
 BuildRequires:  python3-respx >= 0.22.0
@@ -118,6 +122,7 @@ BuildRequires:  python3-syrupy
 BuildRequires:  python3-textual >= 8.2.4
 BuildRequires:  python3-textual-speedups >= 0.2.1
 BuildRequires:  python3-tomli-w >= 1.2.0
+BuildRequires:  python3-tomlkit >= 0.13.0
 BuildRequires:  python3-tree-sitter >= 0.25.2
 BuildRequires:  python3-tree-sitter-bash >= 0.25.1
 BuildRequires:  python3-watchfiles >= 1.1.1
@@ -143,7 +148,7 @@ with your projects through a powerful set of tools.
 %fdupes %{buildroot}%{python3_sitelib}
 
 %check
-PYTEST_ADDOPTS="--ignore=tests/audio_player/test_audio_player.py"
+PYTEST_ADDOPTS="--ignore=tests/audio_player/test_audio_player.py --timeout=60"
 export PYTEST_ADDOPTS+=" --ignore=tests/audio_recorder/test_audio_recorder.py"
 export PYTEST_ADDOPTS+=" --ignore=tests/snapshots"
 %python3_pytest -m 'not network'
