@@ -1,7 +1,7 @@
 #
 # spec file for package flowgrind
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,12 @@ Version:        0.8.2
 Release:        0
 Summary:        Network performance measurement
 License:        GPL-2.0-only
-Group:          Productivity/Networking/Diagnostic
 URL:            https://flowgrind.github.io
 Source0:        https://github.com/flowgrind/flowgrind/releases/download/flowgrind-%{version}/flowgrind-%{version}.tar.bz2
 Source1:        https://github.com/flowgrind/flowgrind/releases/download/flowgrind-%{version}/flowgrind-%{version}.tar.bz2.asc
-# can't find keyring anymore
-#Source2:        %{name}.keyring
+BuildRequires:  gcc
 BuildRequires:  libpcap-devel
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  xmlrpc-c-devel
 BuildRequires:  pkgconfig(gsl)
@@ -40,7 +39,7 @@ metrics for TCP and other protocols. It features some unique characteristics
 which are of use when exploring the idiosyncrasies of wireless mesh networks.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
@@ -50,11 +49,10 @@ which are of use when exploring the idiosyncrasies of wireless mesh networks.
 %make_install
 
 %files
-%defattr(0644, root, root, 0755)
 %license COPYING
 %doc AUTHORS NEWS README.md
-%attr(0755,-,-) %{_bindir}/flowgrind*
-%attr(0755,-,-) %{_sbindir}/flowgrindd
+%{_bindir}/flowgrind*
+%{_sbindir}/flowgrindd
 %{_mandir}/man1/flowgrind*
 
 %changelog

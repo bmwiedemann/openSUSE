@@ -42,4 +42,15 @@
     <comment></comment>
     <requestid>1040609</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5cdd5d10c5fc5755ee3197433a4b5b6d</srcmd5>
+    <version>0.8.2</version>
+    <time>1780071106</time>
+    <user>anag_factory</user>
+    <comment>- Modernize spec file; no change to the produced package:
+  * Add explicit gcc and make BuildRequires
+  * Switch to %autosetup, drop obsolete Group tag and the
+    %defattr/%attr file-mode workarounds</comment>
+    <requestid>1355849</requestid>
+  </revision>
 </revisionlist>

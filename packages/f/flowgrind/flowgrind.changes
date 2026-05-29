@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 29 09:58:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernize spec file; no change to the produced package:
+  * Add explicit gcc and make BuildRequires
+  * Switch to %autosetup, drop obsolete Group tag and the
+    %defattr/%attr file-mode workarounds
+
+-------------------------------------------------------------------
 Sun Dec  4 15:20:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.2:
