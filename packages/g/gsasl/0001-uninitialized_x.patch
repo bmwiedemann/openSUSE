@@ -117,11 +117,10 @@ libtool: link: gcc -Werror -fanalyzer -fno-common -Wall -Warith-conversion -Wbad
                   |
 lto1: all warnings being treated as errors
 
-Index: gsasl-2.2.1/lib/gl/sha256.c
-===================================================================
---- gsasl-2.2.1.orig/lib/gl/sha256.c
-+++ gsasl-2.2.1/lib/gl/sha256.c
-@@ -446,6 +446,8 @@ sha256_process_block (const void *buffer
+diff -ru gsasl-2.2.3.orig/lib/gl/sha256.c gsasl-2.2.3/lib/gl/sha256.c
+--- gsasl-2.2.3.orig/lib/gl/sha256.c	2026-05-13 10:43:46.000000000 +0200
++++ gsasl-2.2.3/lib/gl/sha256.c	2026-05-28 10:03:36.596469284 +0200
+@@ -332,6 +332,8 @@
                                       D += t1;  H = t0 + t1; \
                                 } while(0)
  
@@ -129,4 +128,4 @@ Index: gsasl-2.2.1/lib/gl/sha256.c
 +
    while (words < endp)
      {
-       uint32_t tm;
+       /* FIXME: see sha1.c for a better implementation.  */

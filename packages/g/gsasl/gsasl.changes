@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Thu May 28 06:38:21 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to release 2.2.3
+  * DIGEST-MD5: Fix NULL pointer dereference in parser;
+    (CVE-2026-48829); (bsc#1266371)
+  * Support Dovecot 2.3 and 2.4 in tests/gsasl-dovecot-gssapi.sh
+  * Update gnulib files and various minor fixes
+- Drop patch gsasl-const-correctness.patch (merged)
+
+-------------------------------------------------------------------
 Thu Mar 19 09:51:30 UTC 2026 - Richard Biener <rguenther@suse.com>
 
-- Add gsasl-const-correctness.patch to fix build with glibc 2.43 
+- Add gsasl-const-correctness.patch to fix build with glibc 2.43
 - Add makeinfo BuildRequires to fix build
 
 -------------------------------------------------------------------

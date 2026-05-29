@@ -41,4 +41,19 @@
 - Add makeinfo BuildRequires to fix build (forwarded request 1341133 from rguenther)</comment>
     <requestid>1341157</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d7990555f8a3c8eb654f7f5b70e89dc2</srcmd5>
+    <version>2.2.3</version>
+    <time>1780070659</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.2.3
+  * DIGEST-MD5: Fix NULL pointer dereference in parser;
+    (CVE-2026-48829); (bsc#1266371)
+  * Support Dovecot 2.3 and 2.4 in tests/gsasl-dovecot-gssapi.sh
+  * Update gnulib files and various minor fixes
+- Drop patch gsasl-const-correctness.patch (merged)
+
+- Add gsasl-const-correctness.patch to fix build with glibc 2.43 (forwarded request 1355608 from scabrero)</comment>
+    <requestid>1355631</requestid>
+  </revision>
 </revisionlist>

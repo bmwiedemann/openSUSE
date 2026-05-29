@@ -21,7 +21,7 @@ Index: gsasl-2.2.2/tests/openid20.c
    else if (authzid && !gsasl_property_fast (server, GSASL_AUTHZID))
      fail ("did not get authzid? %s\n", authzid);
 -  else if (strcmp (authzid, gsasl_property_fast (server, GSASL_AUTHZID)) != 0)
-+  else if (authzid == nullptr || strcmp (authzid, gsasl_property_fast (server, GSASL_AUTHZID)) != 0)
++  else if (authzid == NULL || strcmp (authzid, gsasl_property_fast (server, GSASL_AUTHZID)) != 0)
      fail ("authzid comparison failed: got %s expected %s\n",
 -	  gsasl_property_fast (server, GSASL_AUTHZID), authzid);
 +	  gsasl_property_fast (server, GSASL_AUTHZID), authzid ? authzid : "");

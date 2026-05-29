@@ -1,7 +1,6 @@
 #
 # spec file for package gsasl
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +17,7 @@
 
 
 Name:           gsasl
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        Implementation of the SASL framework and a few common SASL mechanisms
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -30,7 +29,6 @@ Source2:        https://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz.sig
 Source3:        %{name}.keyring
 Patch1:         0001-uninitialized_x.patch
 Patch2:         authzid.patch
-Patch3:         gsasl-const-correctness.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel >= 0.19.8
 BuildRequires:  makeinfo
