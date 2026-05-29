@@ -657,4 +657,18 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
   + Updated translations.</comment>
     <requestid>1352546</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>4f2fed440d29faa454dc953aecd89b69</srcmd5>
+    <version>50.2</version>
+    <time>1780071134</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.2:
+  + Fixes for minor issues detected by goblint
+  + paste-special: Fix GError leak
+  + buf-malloc: Ensure payload_size is clamped to zero
+  + hex-doc: Plug GRegex leak and avoid possible strlen on null
+    pointer
+  + This release includes libgtkhex 4.12.1</comment>
+    <requestid>1355875</requestid>
+  </revision>
 </revisionlist>
