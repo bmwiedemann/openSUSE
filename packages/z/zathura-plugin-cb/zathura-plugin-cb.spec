@@ -1,7 +1,7 @@
 #
 # spec file for package zathura-plugin-cb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,35 +17,50 @@
 
 
 %define realname zathura-cb
+%if 0%{?suse_version} == 1600
+%bcond_without gcc15
+%endif
 Name:           zathura-plugin-cb
-Version:        0.1.11
+Version:        2026.05.10
 Release:        0
 Summary:        Comic book support for zathura
 License:        Zlib
-Group:          Productivity/Office/Other
-URL:            http://pwmt.org/projects/zathura/plugins/zathura-cb/
-Source:         https://pwmt.org/projects/zathura-cb/download/%{realname}-%{version}.tar.xz
-BuildRequires:  meson >= 0.61
+URL:            https://pwmt.org/projects/zathura-cb
+Source0:        %{url}/download/%{realname}-%{version}.tar.xz
+Source1:        %{url}/download/%{realname}-%{version}.tar.xz.asc
+Source2:        %{realname}.keyring
+BuildRequires:  AppStream
+BuildRequires:  c_compiler
+BuildRequires:  desktop-file-utils
+BuildRequires:  meson >= 1.5
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(girara-gtk3)
-BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(zathura) >= 0.3.8
-Requires:       zathura
-Provides:       zathura-cb-plugin
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(girara)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(libarchive) >= 3
+BuildRequires:  pkgconfig(zathura) >= 2026.01.30
+Requires:       zathura >= 2026.01.30
+Provides:       %{realname}-plugin
+%if %{with gcc15}
+BuildRequires:  gcc15
+%endif
 
 %description
 The zathura-cb plugin adds comic book support to zathura.
 
 %prep
-%setup -q -n %{realname}-%{version}
+%autosetup -p1 -n %{realname}-%{version}
 
 %build
-export CFLAGS="%{optflags}"
-%meson -Dtests=disabled
+%{?with_gcc15:export CC=gcc-15}
+%meson
 %meson_build
 
 %install
 %meson_install
+
+%check
+%meson_test
 find %{buildroot} -name '*.desktop' -delete -print
 
 %files -n %{name}
@@ -53,6 +68,6 @@ find %{buildroot} -name '*.desktop' -delete -print
 %doc AUTHORS
 %dir %{_libdir}/zathura
 %{_libdir}/zathura/libcb.so
-%{_datadir}/metainfo/org.pwmt.zathura-cb.metainfo.xml
+%{_datadir}/metainfo/org.pwmt.%{realname}.metainfo.xml
 
 %changelog
