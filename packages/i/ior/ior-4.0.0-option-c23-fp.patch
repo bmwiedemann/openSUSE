@@ -1,0 +1,11 @@
+--- a/src/option.c	2026-05-29 14:35:02.539614804 +0200
++++ b/src/option.c	2026-05-29 14:35:02.547615695 +0200
+@@ -321,7 +321,7 @@
+               switch(o->type){
+                 case('p'):{
+                   // call the function in the variable
+-                  void(*fp)() = o->variable;
++                  void(*fp)(void*) = o->variable;
+                   fp(arg);
+                   break;
+                 }

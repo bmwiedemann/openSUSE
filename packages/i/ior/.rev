@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3edcc7f31ab42c7c80c880cdb0290fda</srcmd5>
+    <version>4.0.0</version>
+    <time>1780071167</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.0.0 (new md-workbench benchmark; new/rewritten
+  S3, PMDK, CHFS, AIO, BFS backends; GPUDirect; CSV output; mdtest fixes)
+- Add ior-4.0.0-option-c23-fp.patch: fix function-pointer call rejected
+  by gcc 15 under C23 (fixed in upstream git)
+- Disable RADOS backend: broken in the 4.0.0 release (aiori-RADOS.c not
+  ported to the new AIORI API); drops librbd-devel and arch restriction
+- Drop unused libs3-devel BuildRequires (S3 was never enabled)
+- Strip bogus relative RUNPATH (check/lib64) from installed binaries</comment>
+    <requestid>1355890</requestid>
+  </revision>
+</revisionlist>
