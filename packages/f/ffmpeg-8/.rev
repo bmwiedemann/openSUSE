@@ -87,4 +87,12 @@
     <comment>- Enable glslang filters</comment>
     <requestid>1353246</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>899fca1266af8b31359e182f9be65d12</srcmd5>
+    <version>8.1.1</version>
+    <time>1780070691</time>
+    <user>anag_factory</user>
+    <comment>bugref updates</comment>
+    <requestid>1355501</requestid>
+  </revision>
 </revisionlist>
