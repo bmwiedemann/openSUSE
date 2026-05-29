@@ -8021,6 +8021,7 @@ unsorted:
   - grpc-source 
   - grsync 
   - grsync-lang 
+  - grub2-branding-kalpa 
   - grub2-branding-upstream 
   - grub2-i386-efi-debug 
   - grub2-i386-efi-extras 
@@ -9866,6 +9867,9 @@ unsorted:
   - kalk-lang 
   - kalm 
   - kalm-lang 
+  - kalpa-themes 
+  - kalpa-themes-chefs-recommendation 
+  - kalpa-themes-sddm 
   - kalzium 
   - kalzium-devel 
   - kalzium-lang 
@@ -13630,6 +13634,7 @@ unsorted:
   - libglpk40 
   - libglslang16-32bit 
   - libglusterfs0 
+  - libglut3 
   - libglut3-32bit 
   - libglvnd-32bit 
   - libglvnd-devel 
@@ -15134,8 +15139,6 @@ unsorted:
   - libomp20-devel 
   - libomp21-devel 
   - libomp22-devel 
-  - libonnx 
-  - libonnx_proto 
   - liboop-devel 
   - liboop4 
   - liboorexx4 
@@ -15542,13 +15545,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp1_3 
-  - libprotobuf-lite34_1_0-32bit 
+  - libprotobuf-lite34_2_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf34_1_0-32bit 
+  - libprotobuf34_2_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc34_1_0 
-  - libprotoc34_1_0-32bit 
+  - libprotoc34_2_0 
+  - libprotoc34_2_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -15840,8 +15843,8 @@ unsorted:
   - libquadmath0-gcc15-32bit 
   - libquadmath0-gcc7 
   - libquadmath0-gcc7-32bit 
-  - libquazip1-qt5-1_5_0 
-  - libquazip1-qt6-1_5_0 
+  - libquazip1-qt5-1_7 
+  - libquazip1-qt6-1_7 
   - libquicktime 
   - libquicktime-32bit 
   - libquicktime-devel 
@@ -16554,7 +16557,7 @@ unsorted:
   - libsuperlu7 
   - libsuperlu7-32bit 
   - libsurgescript0_6_1 
-  - libsuricata8_0_4 
+  - libsuricata8_0_5 
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
@@ -16900,7 +16903,7 @@ unsorted:
   - libusrp1 
   - libusrsctp2 
   - libut1 
-  - libutf8_range-34_1_0-32bit 
+  - libutf8_range-34_2_0-32bit 
   - libutf8proc3 
   - libuuid-devel 
   - libuuid-devel-32bit 
@@ -17795,7 +17798,6 @@ unsorted:
   - log4j-slf4j 
   - log4j-taglib 
   - log4j-web 
-  - log4net 
   - logback 
   - logback-access 
   - logback-examples 
@@ -20592,8 +20594,6 @@ unsorted:
   - ongres-stringprep-javadoc 
   - oniguruma-devel 
   - onioncat 
-  - onnx-backend-test 
-  - onnx-devel 
   - oo7 
   - oo7-cli 
   - oo7-daemon 
@@ -25188,7 +25188,6 @@ unsorted:
   - python311-bugzilla 
   - python311-bugzillatools 
   - python311-build 
-  - python311-bump-pydantic 
   - python311-buttplug 
   - python311-bytecode 
   - python311-cPyparsing 
@@ -26554,7 +26553,6 @@ unsorted:
   - python311-numpy1-devel 
   - python311-numpydoc 
   - python311-nwdiag 
-  - python311-o2sclpy 
   - python311-oauthlib 
   - python311-objgraph 
   - python311-obs-service-update_changelog 
@@ -26574,8 +26572,6 @@ unsorted:
   - python311-omemo-dr 
   - python311-omni-camera 
   - python311-onigurumacffi 
-  - python311-onnx 
-  - python311-onnxconverter-common 
   - python311-opcodes 
   - python311-openEMS 
   - python311-openTSNE 
@@ -27534,7 +27530,6 @@ unsorted:
   - python311-scikit-build-core-pyproject 
   - python311-scikit-dsp-comm 
   - python311-scikit-hep-testdata 
-  - python311-scikit-image 
   - python311-scikit-learn 
   - python311-scikit-sound 
   - python311-scikit-sparse 
@@ -28164,7 +28159,6 @@ unsorted:
   - python312-hatch_vcs 
   - python312-hatchling 
   - python312-idle 
-  - python312-onnx 
   - python312-packaging 
   - python312-pathspec 
   - python312-pip 
@@ -29112,7 +29106,6 @@ unsorted:
   - python313-bugzilla 
   - python313-bugzillatools 
   - python313-build 
-  - python313-bump-pydantic 
   - python313-buttplug 
   - python313-bytecode 
   - python313-cPyparsing 
@@ -30509,7 +30502,6 @@ unsorted:
   - python313-numpydoc 
   - python313-nvim-remote 
   - python313-nwdiag 
-  - python313-o2sclpy 
   - python313-objgraph 
   - python313-obs-service-update_changelog 
   - python313-oci-sdk 
@@ -30529,8 +30521,6 @@ unsorted:
   - python313-omemo-dr 
   - python313-omni-camera 
   - python313-onigurumacffi 
-  - python313-onnx 
-  - python313-onnxconverter-common 
   - python313-opcodes 
   - python313-openEMS 
   - python313-openTSNE 
@@ -33366,6 +33356,7 @@ unsorted:
   - python314-django-compressor 
   - python314-django-cors-headers 
   - python314-django-countries 
+  - python314-django-coverage-plugin 
   - python314-django-crispy-forms 
   - python314-django-debug-toolbar 
   - python314-django-dj-inmemorystorage 
@@ -34039,6 +34030,7 @@ unsorted:
   - python314-jupyter 
   - python314-jupyter-bokeh 
   - python314-jupyter-client 
+  - python314-jupyter-collaboration 
   - python314-jupyter-collaboration-ui 
   - python314-jupyter-core 
   - python314-jupyter-docprovider 
@@ -35032,6 +35024,7 @@ unsorted:
   - python314-pysendfile 
   - python314-pyserial 
   - python314-pyshacl 
+  - python314-pyshark 
   - python314-pyshould 
   - python314-pyshp 
   - python314-pysmb 
@@ -51130,7 +51123,6 @@ unsorted:
   - yast2-rdp 
   - yast2-rear 
   - yast2-registration 
-  - yast2-rmt 
   - yast2-samba-provision 
   - yast2-schema-collection 
   - yast2-schema-default 

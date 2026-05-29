@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20260527" schemaversion="4.1">
+<image name="OBS__openSUSE___20260528" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260527</productvar>
+      <productvar name="VERSION">20260528</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20260527,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20260528,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20260527/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20260528/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1562,7 +1562,6 @@
       <repopackage name="libglibmm-2_68-1"/>
       <repopackage name="libglslang16"/>
       <repopackage name="libGLU1"/>
-      <repopackage name="libglut3"/>
       <repopackage name="libglvnd"/>
       <repopackage name="libglycin-2-0"/>
       <repopackage name="libglycin-gtk4-2-0"/>
@@ -2113,7 +2112,7 @@
       <repopackage name="liblightdm-gobject-1-0"/>
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
-      <repopackage name="libliveMedia117"/>
+      <repopackage name="libliveMedia118"/>
       <repopackage name="libLLVM22"/>
       <repopackage name="liblmdb-0_9_35"/>
       <repopackage name="liblogging0"/>
@@ -2365,8 +2364,8 @@
       <repopackage name="libproc2-1"/>
       <repopackage name="libprojectM3"/>
       <repopackage name="libprotobuf-c1"/>
-      <repopackage name="libprotobuf-lite34_1_0"/>
-      <repopackage name="libprotobuf34_1_0"/>
+      <repopackage name="libprotobuf-lite34_2_0"/>
+      <repopackage name="libprotobuf34_2_0"/>
       <repopackage name="libproxy1"/>
       <repopackage name="libpskc0"/>
       <repopackage name="libpsl5"/>
@@ -2746,7 +2745,7 @@
       <repopackage name="libusbredirhost1"/>
       <repopackage name="libusbredirparser1"/>
       <repopackage name="libusdm0"/>
-      <repopackage name="libutf8_range-34_1_0"/>
+      <repopackage name="libutf8_range-34_2_0"/>
       <repopackage name="libuuid1"/>
       <repopackage name="libuv1"/>
       <repopackage name="libv4l"/>
