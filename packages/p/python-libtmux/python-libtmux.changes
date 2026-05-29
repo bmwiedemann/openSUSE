@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 29 05:55:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.58.0:
+  libtmux 0.58.0 fixes subprocess output decoding on non-UTF-8
+  locales. Both tmux_cmd and ControlMode now enforce UTF-8 when
+  reading tmux output, matching tmux's own encoding contract.
+  * Fixes
+    - Subprocess encoding on non-UTF-8 locales (#679)
+      tmux_cmd and ControlMode now pass encoding="utf-8" to
+      subprocess.Popen, ensuring tmux output is decoded correctly
+      regardless of the system locale. Previously, on non-UTF-8
+      locales, the FORMAT_SEPARATOR character (U+241E) was
+      corrupted during decoding, causing list accessors
+      (Server.sessions, etc.) to return empty results.
+
+-------------------------------------------------------------------
 Tue May 19 05:19:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.57.1:
