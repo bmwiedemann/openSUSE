@@ -25,7 +25,7 @@
 %bcond_without hardened_build
 %bcond_without dnstap
 %bcond_without systemd
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %bcond_without unbound_quic
 %else
 # needs openssl with quic enabled - aws-lc is sadly not a drop in as it removed some functions used by unbound
@@ -43,7 +43,7 @@
 %define piddir /run
 
 Name:           unbound
-Version:        1.25.0
+Version:        1.25.1
 Release:        0
 BuildRequires:  flex
 BuildRequires:  ldns-devel >= %{ldns_version}

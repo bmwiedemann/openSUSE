@@ -764,4 +764,33 @@ Features
   pkgconfig(libngtcp2_crypto_ossl)</comment>
     <requestid>1351438</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>87a9794dcc5a778fbb3bb019a12e76ce</srcmd5>
+    <version>1.25.1</version>
+    <time>1780070650</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.25.1:
+  * CVE-2026-33278, bsc#1265587: Possible remote code execution
+    during DNSSEC validation
+  * CVE-2026-42944, bsc#1265578: Heap overflow and crash with
+    multiple nsid, cookie, padding EDNS options
+  * CVE-2026-42959, bsc#1265586: Crash during DNSSEC validation of
+    malicious content
+  * CVE-2026-32792, bsc#1265583: Packet of death with DNSCrypt
+  * CVE-2026-40622, bsc#1265581: &quot;Ghost domain name&quot; variant
+  * CVE-2026-41292, bsc#1265580: Parsing a long list of incoming
+    EDNS options degrades performance
+  * CVE-2026-42534, bsc#1265585: Jostle logic bypass degrades
+    resolution performance
+  * CVE-2026-42923, bsc#1265589: Degradation of service with
+    unbounded NSEC3 hash calculations
+  * CVE-2026-42960, bsc#1265588: Possible cache poisoning attack
+    while following delegation
+  * CVE-2026-44390, bsc#1265584: Unbounded name compression in
+    certain cases causes degradation of service
+  * CVE-2026-44608, bsc#1265582: Use after free and crash in RPZ
+    code.
+- Disable quic support for non tumbleweed distros</comment>
+    <requestid>1355623</requestid>
+  </revision>
 </revisionlist>
