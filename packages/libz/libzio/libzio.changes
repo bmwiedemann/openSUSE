@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 28 09:31:29 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.14
+  * Fix signed octal magic character for lzma 
+
+-------------------------------------------------------------------
+Thu May 28 08:54:26 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.13
+  * Avoid signed/unsigned comparison in magic()
+
+-------------------------------------------------------------------
 Thu Feb 19 20:23:55 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 1.12

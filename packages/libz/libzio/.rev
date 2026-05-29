@@ -396,4 +396,16 @@
   Update the manual page as well.</comment>
     <requestid>1334396</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1992edf8d6128d51d3732d29dc8bf888</srcmd5>
+    <version>1.14</version>
+    <time>1780070714</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.14
+  * Fix signed octal magic character for lzma 
+
+- Update to version 1.13
+  * Avoid signed/unsigned comparison in magic()</comment>
+    <requestid>1355609</requestid>
+  </revision>
 </revisionlist>
