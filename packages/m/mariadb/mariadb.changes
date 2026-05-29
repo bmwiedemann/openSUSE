@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 21 13:45:58 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 11.8.7:
+    https://mariadb.com/docs/release-notes/community-server/11.8/11.8.7
+    https://mariadb.com/docs/release-notes/community-server/changelogs/11.8/11.8.7
+  * fixes for the following security vulnerabilities:
+    11.8.7: CVE-2026-44173
+            CVE-2026-44172
+            CVE-2026-44171
+            CVE-2026-44170
+            CVE-2026-44169
+            CVE-2026-44168
+- Update spec for removal of README-wsrep file
+- Add test pam modules in mariadb-test package
+- Add new mariadb-migrate-config-file utility in mariadb-tools package
+- Refresh 0001-MDEV-38874-Make-tests-pass-after-2030.patch
+- Drop MDEV-38811.patch
+  * Included in upstream release
+
+-------------------------------------------------------------------
 Mon May  4 13:32:59 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 11.8.6:
@@ -6,6 +26,9 @@ Mon May  4 13:32:59 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
     https://mariadb.com/docs/release-notes/community-server/changelogs/11.8/11.8.6
   * fixes for the following security vulnerabilities:
     11.8.6: CVE-2026-32710 (bsc#1260081)
+            CVE-2026-3494  (bsc#1259176)
+            CVE-2026-34303
+            CVE-2026-35549 (bsc#1261413)
 - Update skipped test list
 - Add MDEV-38811.patch
   * Fixes crash in information_schema.table_constraints when --skip-grant-tables

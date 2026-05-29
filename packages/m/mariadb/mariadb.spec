@@ -52,7 +52,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        11.8.6
+Version:        11.8.7
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -87,7 +87,6 @@ Patch12:        mariadb-fix-testsuite-openssl3.2.3.patch
 Patch13:        fix-MDEV-32585.patch
 # PATCH-FIX-UPSTREAM https://github.com/MariaDB/server/pull/4667
 Patch14:        0001-MDEV-38874-Make-tests-pass-after-2030.patch
-Patch15:        MDEV-38811.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -379,7 +378,6 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %ifnarch %{ix86} armv7l armv7hl
 %patch -P 14 -p1
 %endif
-%patch -P 15 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
@@ -573,9 +571,6 @@ rm %{buildroot}%{_mandir}/man1/mytop.1*
 rm -r %{buildroot}%{_includedir}/mysql
 # Devel man pages
 rm -rf %{buildroot}%{_mandir}/man3/*
-
-# Rename the wsrep README so it corresponds with the other README names
-cp Docs/README-wsrep Docs/README.wsrep
 
 # Generate various filelists (binaries and manpages)
 # mariadb.files
@@ -922,7 +917,6 @@ exit 0
 
 %if %{with galera}
 %files galera -f mariadb-galera.files
-%doc Docs/README.wsrep
 %config(noreplace) %attr(-, root, mysql) %{_sysconfdir}/my.cnf.d/50-galera.cnf
 %{_datadir}/%{name}/systemd/use_galera_new_cluster.conf
 %{_datadir}/%{name}/wsrep_notify
@@ -944,11 +938,13 @@ exit 0
 %dir %attr(755, mysql, mysql) %{_datadir}/%{name}-test
 %attr(-, mysql, mysql) %{_datadir}/%{name}-test/[^v]*
 %dir %attr(755, mysql, mysql) %{_datadir}/%{name}-test%{_localstatedir}
+%{_libdir}/mysql/plugin/test_pam_modules
 
 %files tools -f mariadb-tools.files
 %{_bindir}/mysqlrepair
 %{_bindir}/mysqlanalyze
 %{_bindir}/mysqloptimize
+%{_bindir}/mariadb-migrate-config-file
 
 %if 0%{with_cracklib_plugin} > 0
 %files cracklib-password-check

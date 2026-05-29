@@ -143,11 +143,11 @@ index ec14b283894..2c28406d739 100644
  /*!50003 SET sql_mode              = '' */ ;;
  /*!50003 SET @saved_time_zone      = @@time_zone */ ;;
  /*!50003 SET time_zone             = 'SYSTEM' */ ;;
--/*!50106 CREATE*/ /*!50117 DEFINER=`root`@`localhost`*/ /*!50106 EVENT `e1` ON SCHEDULE EVERY 1 YEAR STARTS '2030-01-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO select not_a_value */ ;;
-+/*!50106 CREATE*/ /*!50117 DEFINER=`root`@`localhost`*/ /*!50106 EVENT `e1` ON SCHEDULE EVERY 1 YEAR STARTS '2080-01-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO select not_a_value */ ;;
+-/*!50106 CREATE*/ /*!50117 DEFINER=`root`@`localhost`*/ /*!50106 EVENT `e1` ON SCHEDULE EVERY 1 YEAR STARTS '2030-01-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO select not_a_value 
++/*!50106 CREATE*/ /*!50117 DEFINER=`root`@`localhost`*/ /*!50106 EVENT `e1` ON SCHEDULE EVERY 1 YEAR STARTS '2080-01-01 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO select not_a_value 
+ */ ;;
  /*!50003 SET time_zone             = @saved_time_zone */ ;;
  /*!50003 SET sql_mode              = @saved_sql_mode */ ;;
- /*!50003 SET character_set_client  = @saved_cs_client */ ;;
 diff --git a/mysql-test/main/mysqldump.test b/mysql-test/main/mysqldump.test
 index 340f20a4a51..0e6bab151a6 100644
 --- a/mysql-test/main/mysqldump.test
