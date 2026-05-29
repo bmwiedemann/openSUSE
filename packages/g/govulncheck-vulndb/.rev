@@ -2026,4 +2026,25 @@
   * GO-2026-5009 CVE-2026-45695 GHSA-2q4c-3mrw-63c3 (forwarded request 1354747 from jfkw)</comment>
     <requestid>1354748</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>6d6bc274b1646d0da4604ac9416c9fcf</srcmd5>
+    <version>0.0.20260526T224918</version>
+    <time>1780070772</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20260526T224918 2026-05-26T22:49:18Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2026-4945 CVE-2026-34986 GHSA-78h2-9frx-2jm8
+  * GO-2026-4958 CVE-2026-35469 GHSA-pc3f-x583-g7j2
+  * GO-2026-4985 CVE-2026-39882 GHSA-w8rr-5gcm-pp58
+  * GO-2026-5002 CVE-2026-23998 GHSA-2rc4-7jc6-qffh
+  * GO-2026-5024 CVE-2026-39824
+  * GO-2026-5025 CVE-2026-42506
+  * GO-2026-5026 CVE-2026-39821
+  * GO-2026-5027 CVE-2026-42502
+  * GO-2026-5028 CVE-2026-25680
+  * GO-2026-5029 CVE-2026-25681
+  * GO-2026-5030 CVE-2026-27136 (forwarded request 1355712 from jfkw)</comment>
+    <requestid>1355713</requestid>
+  </revision>
 </revisionlist>
