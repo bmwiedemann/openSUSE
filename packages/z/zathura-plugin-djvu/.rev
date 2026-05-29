@@ -60,4 +60,12 @@
     <comment></comment>
     <requestid>1193342</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>13274065c85090c744690122aa224e88</srcmd5>
+    <version>2026.05.10</version>
+    <time>1780071061</time>
+    <user>anag_factory</user>
+    <comment>- Cleanup spec file with spec-cleaner</comment>
+    <requestid>1355836</requestid>
+  </revision>
 </revisionlist>

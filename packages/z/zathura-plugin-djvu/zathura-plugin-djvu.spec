@@ -1,7 +1,7 @@
 #
 # spec file for package zathura-plugin-djvu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,33 +17,51 @@
 
 
 %define realname zathura-djvu
+%if 0%{?suse_version} == 1600
+%bcond_without gcc15
+%endif
 Name:           zathura-plugin-djvu
-Version:        0.2.10
+Version:        2026.05.10
 Release:        0
 Summary:        DjVu support for zathura using the djvulibre library
 License:        Zlib
-URL:            https://pwmt.org/projects/zathura-djvu/
-Source:         https://pwmt.org/projects/zathura-djvu/download/%{realname}-%{version}.tar.xz
-BuildRequires:  meson >= 0.61
+URL:            https://pwmt.org/projects/zathura-djvu
+Source0:        %{url}/download/%{realname}-%{version}.tar.xz
+Source1:        %{url}/download/%{realname}-%{version}.tar.xz.asc
+Source2:        %{realname}.keyring
+BuildRequires:  AppStream
+BuildRequires:  c_compiler
+BuildRequires:  desktop-file-utils
+BuildRequires:  meson >= 1.5
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(ddjvuapi)
-BuildRequires:  pkgconfig(girara-gtk3)
-BuildRequires:  pkgconfig(zathura) >= 0.3.8
-Requires:       zathura
-Provides:       zathura-djvu-plugin
+BuildRequires:  pkgconfig(girara)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(zathura) >= 2026.01.30
+Requires:       zathura >= 2026.01.30
+Provides:       %{realname}-plugin
+%if %{with gcc15}
+BuildRequires:  gcc15
+%endif
 
 %description
-The zathura-djvu plugin adds DjVu support to zathura by using the djvulibre library.
+The zathura-djvu plugin adds DjVu support to zathura by using the djvulibre
+library.
 
 %prep
-%setup -q -n %{realname}-%{version}
+%autosetup -p1 -n %{realname}-%{version}
 
 %build
-%meson -Dtests=disabled
+%{?with_gcc15:export CC=gcc-15}
+%meson
 %meson_build
 
 %install
 %meson_install
+
+%check
+%meson_test
 find %{buildroot} -name '*.desktop' -delete -print
 
 %files -n %{name}
@@ -51,6 +69,6 @@ find %{buildroot} -name '*.desktop' -delete -print
 %doc AUTHORS
 %dir %{_libdir}/zathura
 %{_libdir}/zathura/libdjvu.so
-%{_datadir}/metainfo/org.pwmt.zathura-djvu.metainfo.xml
+%{_datadir}/metainfo/org.pwmt.%{realname}.metainfo.xml
 
 %changelog
