@@ -28,6 +28,10 @@
 %endif
 %global is_release 1
 %global buildoutputdir build
+%global headless_binaries java jjs keytool rmid rmiregistry
+%global headless_binaries_comma %(echo %{headless_binaries} | sed 's#\ #,#g')
+%global devel_binaries javac jar jarsigner javadoc javap jcmd jconsole jdb jdeprscan jdeps jimage jinfo jlink jmap jmod jps jpackage jrunscript jshell jstack jstat jstatd rmic serialver
+%global devel_binaries_comma %(echo %{devel_binaries} | sed 's#\ #,#g')
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
 # it will resolve properly within chrooted installations.
@@ -63,6 +67,11 @@
 %global com_sun_istack_runtime_tag 3.0.7-RELEASE
 %global jaxb_ri_repository jaxb-v2
 %global jaxb_ri_tag 2.3.1
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 # priority must be 6 digits in total
 %if 0%{?suse_version} <= 1315 && ! 0%{?java_bootstrap}
 %global priority        0
@@ -349,12 +358,8 @@ Requires:       jpackage-utils
 # java.io.FileNotFoundException: /usr/lib64/libnss3.so
 #was bnc#634793
 Requires:       mozilla-nss
-# Post requires update-alternatives to install tool update-alternatives.
-Requires(post): update-alternatives
 Requires(posttrans): file
 Requires(posttrans): java-ca-certificates
-# Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
 Obsoletes:      %{name}-accessibility
 Provides:       timezone-java
 Provides:       tzdata-java
@@ -383,6 +388,12 @@ Provides:       java-10-openjdk-headless = %{version}-%{release}
 Obsoletes:      java-10-openjdk-headless < %{version}-%{release}
 %endif
 %endif
+%if %{without libalternatives}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%else
+Requires:       alts
+%endif
 
 %description headless
 The OpenJDK %{featurever} runtime environment without audio and video support.
@@ -392,10 +403,6 @@ Summary:        OpenJDK %{featurever} Development Environment
 # Require base package.
 Group:          Development/Languages/Java
 Requires:       %{name} = %{version}-%{release}
-# Post requires update-alternatives to install tool update-alternatives.
-Requires(post): update-alternatives
-# Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
@@ -409,6 +416,12 @@ Provides:       java-sdk-openjdk = %{version}
 Provides:       java-10-openjdk-devel = %{version}-%{release}
 Obsoletes:      java-10-openjdk-devel < %{version}-%{release}
 %endif
+%endif
+%if %{without libalternatives}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%else
+Requires:       alts
 %endif
 
 %description devel
@@ -460,10 +473,6 @@ The OpenJDK %{featurever} source bundle.
 Summary:        OpenJDK %{featurever} API Documentation
 Group:          Development/Languages/Java
 Requires:       jpackage-utils
-# Post requires update-alternatives to install javadoc alternative.
-Requires(post): update-alternatives
-# Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage javadoc provides.
@@ -473,6 +482,10 @@ Provides:       java-javadoc = %{version}-%{release}
 Provides:       java-10-openjdk-javadoc = %{version}-%{release}
 Obsoletes:      java-10-openjdk-javadoc < %{version}-%{release}
 %endif
+%endif
+%if %{without libalternatives}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %endif
 
 %description javadoc
@@ -976,8 +989,42 @@ find %{buildroot}%{_jvmdir}/%{sdkdir}/demo \
 %fdupes -s %{buildroot}/%{_jvmdir}/%{sdkdir}/demo
 %fdupes -s %{buildroot}%{_javadocdir}/%{sdklnk}
 
+touch .mfiles-headless
+touch .mfiles-devel
+
+%if %{with libalternatives}
+
+%if 0%{?priority} == 0
+%define priority %{featurever}
+%endif
+
+for i in %{headless_binaries}; do
+  install -dm 0755 %{buildroot}%{_datadir}/libalternatives/${i}
+  echo "%%dir %{_datadir}/libalternatives/${i}" >> .mfiles-headless
+  echo "binary=%{jrebindir}/${i}" >> %{buildroot}%{_datadir}/libalternatives/${i}/%{priority}.conf
+  echo "man=${i}-%{sdklnk}.1$ext" >> %{buildroot}%{_datadir}/libalternatives/${i}/%{priority}.conf
+  echo "group=%{headless_binaries_comma}" >> %{buildroot}%{_datadir}/libalternatives/${i}/%{priority}.conf
+  echo "%{_datadir}/libalternatives/${i}/%{priority}.conf" >> .mfiles-headless
+  echo "%%ghost %{_bindir}/${i}" >> .mfiles-headless
+done
+
+for i in %{devel_binaries}; do
+  install -dm 0755 %{buildroot}%{_datadir}/libalternatives/${i}
+  echo "%%dir %{_datadir}/libalternatives/${i}" >> .mfiles-devel
+  echo "binary=%{sdkbindir}/${i}" >> %{buildroot}%{_datadir}/libalternatives/${i}/%{priority}.conf
+  echo "man=${i}-%{sdklnk}.1$ext" >> %{buildroot}%{_datadir}/libalternatives/${i}/%{priority}.conf
+  echo "group=%{devel_binaries_comma}" >> %{buildroot}%{_datadir}/libalternatives/${i}/%{priority}.conf
+  echo "%{_datadir}/libalternatives/${i}/%{priority}.conf" >> .mfiles-devel
+  echo "%%ghost %{_bindir}/${i}" >> .mfiles-devel
+done
+
+%endif
+
 %post headless
 ext=.gz
+
+%if %{without libalternatives}
+
 update-alternatives \
   --install %{_bindir}/java java %{jrebindir}/java %{priority} \
   --slave %{_jvmdir}/jre jre %{_jvmdir}/%{jrelnk} \
@@ -1004,7 +1051,25 @@ update-alternatives \
   --install %{_jvmdir}/jre-%{javaver} \
   jre_%{javaver} %{_jvmdir}/%{jrelnk} %{priority}
 
+%else
+
+if [ -x %{_sbindir}/update-alternatives ]; then
+  update-alternatives --remove-all java
+  update-alternatives --remove-all jre_openjdk
+  update-alternatives --remove-all jre_%{javaver}
+fi || true
+
+for i in %{headless_binaries}; do
+  if ! [ -e %{_bindir}/${i} ]; then
+    ln -sf %{_bindir}/alts %{_bindir}/${i}
+  fi
+done
+
+%endif
+
+%if %{without libalternatives}
 %postun headless
+
 if [ $1 -eq 0 ]
 then
   if test -f /proc/sys/fs/binfmt_misc/jarexec
@@ -1015,6 +1080,7 @@ then
   update-alternatives --remove jre_openjdk %{_jvmdir}/%{jrelnk}
   update-alternatives --remove jre_%{javaver} %{_jvmdir}/%{jrelnk}
 fi
+%endif
 
 %posttrans headless
 # bnc#781690#c11: don't trust user defined JAVA_HOME and use the current VM
@@ -1047,6 +1113,9 @@ fi
 
 %post devel
 ext=.gz
+
+%if %{without libalternatives}
+
 update-alternatives \
   --install %{_bindir}/javac javac %{sdkbindir}/javac %{priority} \
   --slave %{_jvmdir}/java java_sdk %{_jvmdir}/%{sdklnk} \
@@ -1127,15 +1196,37 @@ update-alternatives \
   --install %{_jvmdir}/java-%{javaver} \
   java_sdk_%{javaver} %{_jvmdir}/%{sdklnk} %{priority}
 
+%else
+
+if [ -x %{_sbindir}/update-alternatives ]; then
+  update-alternatives --remove-all javac
+  update-alternatives --remove-all java_sdk_openjdk
+  update-alternatives --remove-all java_sdk_%{javaver}
+fi || true
+
+for i in %{devel_binaries}; do
+  if ! [ -e %{_bindir}/${i} ]; then
+    ln -sf %{_bindir}/alts %{_bindir}/${i}
+  fi
+done
+
+%endif
+
+%if %{without libalternatives}
 %postun devel
+
 if [ $1 -eq 0 ]
 then
   update-alternatives --remove javac %{sdkbindir}/javac
   update-alternatives --remove java_sdk_openjdk %{_jvmdir}/%{sdklnk}
   update-alternatives --remove java_sdk_%{javaver} %{_jvmdir}/%{sdklnk}
 fi
+%endif
 
 %post javadoc
+
+%if %{without libalternatives}
+
 # in some settings, the %{_javadocdir}/%{sdklnk}/api does not exist
 # and the update-alternatives call ends up in error. So, filter this
 # cases out.
@@ -1146,7 +1237,17 @@ then
     %{priority}
 fi
 
+%else
+
+if [ -x %{_sbindir}/update-alternatives ]; then
+  update-alternatives --remove-all javadocdir
+fi || true
+
+%endif
+
+%if %{without libalternatives}
 %postun javadoc
+
 if [ $1 -eq 0 ]
 then
 # in some settings, the %{_javadocdir}/%{sdklnk}/api does not exist
@@ -1157,6 +1258,7 @@ then
     update-alternatives --remove javadocdir %{_javadocdir}/%{sdklnk}/api
   fi
 fi
+%endif
 
 %files
 %dir %{_jvmdir}/%{sdkdir}/lib
@@ -1166,7 +1268,7 @@ fi
 %dir %{_datadir}/icons/hicolor
 %{_datadir}/icons/hicolor/*x*/apps/java-%{javaver}-openjdk.png
 
-%files headless
+%files headless -f .mfiles-headless
 %dir %{_jvmdir}
 %dir %{_jvmdir}/%{sdkdir}/
 %dir %{_jvmdir}/%{sdkdir}/bin
@@ -1282,7 +1384,7 @@ fi
 %{_mandir}/man1/rmiregistry-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/unpack200-%{sdklnk}.1%{?ext_man}
 
-%files devel
+%files devel -f .mfiles-devel
 %dir %{_jvmdir}/%{sdkdir}/bin
 %dir %{_jvmdir}/%{sdkdir}/include
 %dir %{_jvmdir}/%{sdkdir}/include/linux

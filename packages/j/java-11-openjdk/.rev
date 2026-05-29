@@ -679,4 +679,12 @@
     <comment>April 2026 CPU</comment>
     <requestid>1349425</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>911006d8b923b2aef0c9a8134781f176</srcmd5>
+    <version>11.0.31.0</version>
+    <time>1780070962</time>
+    <user>anag_factory</user>
+    <comment>Use libalternatives when possible</comment>
+    <requestid>1355807</requestid>
+  </revision>
 </revisionlist>
