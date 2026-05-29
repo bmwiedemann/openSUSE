@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 29 09:24:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.68.2:
+  * Bug Fixes
+    - deploy: retry on "webhook unavailable" error (#7533)
+      (8810e23)
+
+-------------------------------------------------------------------
 Wed May 20 04:58:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.68.1:
