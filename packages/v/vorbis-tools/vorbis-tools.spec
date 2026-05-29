@@ -1,7 +1,7 @@
 #
 # spec file for package vorbis-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://www.xiph.org/
 Source0:        https://downloads.xiph.org/releases/vorbis/%{name}-%{version}.tar.gz
+Patch1:         0001-Do-not-assume-fgets-result-is-non-empty.patch
+Patch2:         0002-ogg123-Handle-EOF-error-in-remote-interface.patch
 BuildRequires:  gettext-tools
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ao) >= 1.0.0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 28 07:56:46 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Fix buffer underflow in the `ogg123` utility in function `remotethread`
+  of `remote.c` (CVE-2026-34253, bsc#1265361):
+  0001-Do-not-assume-fgets-result-is-non-empty.patch
+  0002-ogg123-Handle-EOF-error-in-remote-interface.patch
+
+-------------------------------------------------------------------
 Sat May 24 06:11:20 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.3:
