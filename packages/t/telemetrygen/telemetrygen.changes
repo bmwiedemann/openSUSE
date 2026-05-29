@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri May 29 07:14:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.153.0:
+  No telemetrygen-related changes
+  * [chore] Manually run `update-otel` to v0.153.0 (#48631)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.29.0
+    (#48528)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.101 (#48531)
+  * Update module google.golang.org/api to v0.280.0 (#48529)
+  * Bump github.com/go-git/go-git/v5 from 5.19.0 to 5.19.1 in
+    /internal/tools (#48518)
+  * Update module github.com/google/cadvisor to v0.57.0 (#48498)
+  * Update module github.com/oschwald/geoip2-golang/v2 to v2.2.0
+    (#48505)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.28.0
+    (#48506)
+  * Update dockerfile deps (#48494)
+  * Update module
+    github.com/open-telemetry/opentelemetry-collector-contrib/internal/coreinternal
+    to v0.152.0 (#48503)
+  * Update module google.golang.org/grpc to v1.81.1 (#48502)
+  * Update All github.com/aws packages (#48493)
+  * Update module
+    github.com/Azure/azure-sdk-for-go/sdk/storage/azblob to v1.7.0
+    (#48496)
+  * Update github-actions deps (#48495)
+  * Update All github.com/datadog packages (#48488)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.100 (#48489)
+  * Update module github.com/twmb/franz-go to v1.21.2 (#48490)
+  * Update module google.golang.org/grpc to v1.81.1 (#48491)
+  * Update module github.com/jaegertracing/jaeger-idl to v0.7.1
+    (#48297)
+  * [chore] Update core dependencies (#48397)
+  * Update module google.golang.org/api to v0.279.0 (#48331)
+  * Update module github.com/DataDog/agent-payload/v5 to v5.0.196
+    (#48319)
+  * Update mcr.microsoft.com/mssql/server:2025-latest Docker digest
+    to 320daf8 (#48318)
+  * Update module github.com/google/go-github/v85 to v86 (#48309)
+  * Update module github.com/vmware/govmomi to v0.54.0 (#48304)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.25.0
+    (#48305)
+  * Update module github.com/tidwall/gjson to v1.19.0 (#48303)
+  * Update module modernc.org/sqlite to v1.50.1 (#48292)
+  * Update All golang.org/x packages (#48293)
+  * Update module github.com/hetznercloud/hcloud-go/v2 to v2.40.0
+    (#48296)
+  * Update docker-compose deps to v0.152.0 (#48302)
+  * Update module github.com/SAP/go-hdb to v1.16.8 (#48289)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.95 (#48290)
+  * Update All github.com/splunk/stef packages to v0.1.2 (#48287)
+  * Update github-actions deps (#48288)
+  * Update All github.com/aws packages (#48285)
+  * Update dockerfile deps (#48284)
+  * Bump github.com/go-git/go-git/v5 from 5.18.0 to 5.19.0 in
+    /internal/tools (#48272)
+
+-------------------------------------------------------------------
 Tue May 12 05:24:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.152.0:
