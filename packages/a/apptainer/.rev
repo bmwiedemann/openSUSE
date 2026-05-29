@@ -560,4 +560,21 @@
 - Readded SLE-15SP6.def as it was removed from Factory</comment>
     <requestid>1354775</requestid>
   </revision>
+  <revision rev="43" vrev="6">
+    <srcmd5>c21e5736b4ea48f8acaa46dd27a0cb56</srcmd5>
+    <version>1.4.5</version>
+    <time>1780070928</time>
+    <user>anag_factory</user>
+    <comment>- Fix CVE-2026-39821 (GO-2026-5026) (bsc#1266656)
+  Update golang.org/x/net to 0.55.0.
+
+- Add improved handling of suid-starter:
+  * Add system group `apptainer`
+  * Make sure, only users belonging to this group are able to
+    run the application.
+  * Document this in a README and point user to it if execution
+    fails.
+  Building of the 'suid-root' starter is still optional.</comment>
+    <requestid>1355778</requestid>
+  </revision>
 </revisionlist>

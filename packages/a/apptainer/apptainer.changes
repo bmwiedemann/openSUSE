@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 29 06:54:25 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Fix CVE-2026-39821 (GO-2026-5026) (bsc#1266656)
+  Update golang.org/x/net to 0.55.0.
+
+-------------------------------------------------------------------
+Sat May 23 08:13:18 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Add improved handling of suid-starter:
+  * Add system group `apptainer`
+  * Make sure, only users belonging to this group are able to
+    run the application.
+  * Document this in a README and point user to it if execution
+    fails.
+  Building of the 'suid-root' starter is still optional.
+
+-------------------------------------------------------------------
 Fri May 22 16:04:43 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Fix CVE-2026-39827, CVE-2026-39834, CVE-2026-39828, CVE-2026-39829,

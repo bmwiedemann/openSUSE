@@ -38,7 +38,8 @@ Conflicts:      singularity-ce
 Conflicts:      singularity-runtime
 Source0:        https://github.com/apptainer/apptainer/archive/v%{version}%{?vers_suffix}/apptainer-%{version}%{?vers_suffix}.tar.gz
 Source1:        README.SUSE
-Source2:        SUSE.def
+Source2:        README.SUSE-suid
+Source5:        SUSE.def
 Source6:        SLE-15SP6.def
 Source7:        SLE-15SP7.def
 Source8:        SLE-16.def
@@ -59,6 +60,7 @@ BuildRequires:  libuuid-devel
 BuildRequires:  make
 BuildRequires:  openssl-devel
 BuildRequires:  sysuser-tools
+PreReq:         permissions
 Requires:       squashfs
 Requires:       squashfuse
 Recommends:     fuse2fs
@@ -70,7 +72,6 @@ Requires:       (apptainer-sle16 = %version if product(SUSE_SLE) = 16.0)
 # Needed for container decryption in userspace, upstream rpms include this
 # but factory should have this seperately
 Recommends:     gocryptfs
-PreReq:         permissions
 
 # there's no golang for ppc64 & %%ix86, ppc64le does not have non pie builds
 ExcludeArch:    ppc64 ppc64le %ix86 s390 s390x
@@ -80,12 +81,14 @@ Apptainer provides functionality to make portable
 containers that can be used across host environments.
 
 %package   suid
-Summary:        suid starter for Apptainer
+Summary:        SUID starter for Apptainer
+PreReq:         permissions
 Requires:       apptainer = %version
 
 %description suid
 This package contains the suid starter for Apptainer.
-Do not install unless this is absolutely needed!
+DO NOT install unless your use case is not handled by user namespaces!
+Check %_defaultdocdir/apptainer-suid/README.SUSE-suid for details.
 
 %package   sle15_6
 Summary:        Apptainer Definition File Templates for SLE 15 SP6
@@ -125,7 +128,11 @@ based on the latest openSUSE Leap release.
 
 %prep
 %autosetup -n %{name}-%{version}%{?vers_suffix} -a21
-cp %{S:1} .
+cp %{S:1} %{S:2} .
+# Patch suid starter to provide informative message for SUSE on exec fail.
+sed -i -e "/while executing/s@\(%s: %s\)@\1\\\n\
+Please read %_defaultdocdir/apptainer-suid/README.SUSE-suid \
+for details\\\n@" internal/pkg/util/starter/starter.go
 
 %build
 
@@ -160,11 +167,20 @@ export PATH=$GOPATH/bin:$PATH
 
 %make_install -C builddir V=
 install -d -m 0755 %{buildroot}/%{_datarootdir}/apptainer/templates
-install -m 0644 %{S:2} %{S:10} %{buildroot}/%{_datarootdir}/apptainer/templates
+install -m 0644 %{S:5} %{S:10} %{buildroot}/%{_datarootdir}/apptainer/templates
 %{!?is_opensuse:install -m 0644 %{S:6} %{S:7} %{S:8} %{buildroot}/%{_datarootdir}/apptainer/templates}
 
 %fdupes apptainer/examples
 %fdupes -s %buildroot
+
+%if %{with suid}
+echo "g %name -" > system-group-%{name}.conf
+%sysusers_generate_pre system-group-%{name}.conf %{name} system-group-%{name}.conf
+install -D -m 644 system-group-%{name}.conf %{buildroot}%{_sysusersdir}/system-group-%{name}.conf
+# Disallow SUID by default!
+sed -i -e "/allow setuid/s@\(.* =\).*@\1 no@" \
+    %{buildroot}%{_sysconfdir}/apptainer/apptainer.conf
+%endif
 
 %check
 %if %{with vulncheck}
@@ -173,6 +189,14 @@ for i in $(find %{buildroot} -executable -and -not -type d -and -not -name "*.de
     govulncheck -mode=binary -db file:///usr/share/vulndb/ $i
 done
 %endif
+
+%pre suid -f %{name}.pre
+
+%post suid
+%set_permissions %{_libexecdir}/apptainer/bin/starter-suid
+
+%verifyscript suid
+%verify_permissions -e %{_libexecdir}/apptainer/bin/starter-suid
 
 %files
 %doc examples
@@ -194,7 +218,7 @@ done
 %{_libexecdir}/apptainer/bin/starter
 %{_libexecdir}/apptainer/lib/offsetpreload.so
 %{_libexecdir}/apptainer/cni/*
-%{_datarootdir}/apptainer/templates/%{basename:%{S:2}}
+%{_datarootdir}/apptainer/templates/%{basename:%{S:5}}
 %dir %{_sysconfdir}/apptainer
 %config(noreplace) %{_sysconfdir}/apptainer/capability.json
 %config(noreplace) %{_sysconfdir}/apptainer/cgroups
@@ -215,7 +239,9 @@ done
 
 %if %{with suid}
 %files suid
-%{_libexecdir}/apptainer/bin/starter-suid
+%doc %{basename:%{S:2}}
+%verify(not mode) %attr(4750, root, apptainer) %{_libexecdir}/apptainer/bin/starter-suid
+%{_sysusersdir}/system-group-%{name}.conf
 %endif
 
 %if 0%{!?is_opensuse:1}

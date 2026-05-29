@@ -1,0 +1,39 @@
+# openSUSE/SUSE specific Settings for running in SUID mode
+
+openSUSE and SUSE provide the optionally `suid-starter` for apptainer
+in a separate package `apptainer-suid`. There is support for
+unprivileged user name spaces where normal, unprivileged users are
+able to create a user namespace. Most operations needed to run a
+container will run in this.
+Thus, it is not recommended to install this package unless there
+is a use case not handled by user namespaces.
+
+For futher informations check:
+[Security in Apptainer](https://apptainer.org/docs/user/main/security.html)
+[Apptainer Security Options](https://apptainer.org/docs/user/latest/security_options.html)
+
+# Differences in openSUSE and SUSE to the Upstream Default
+
+The use of the suid starter is disabled by default - even
+with the `apptainer-suid` package installed. Thus, the
+suid-starter will not be used.
+To enable it, edit `/etc/apptainer/apptainer.conf` and change
+the value of `allow suid` to `yes`.
+Beware, that this will change the behavior of apptainer in that
+it will then use SUID by default. To use user namespace instead,
+add the `--userns` option to `apptainer run/exec/shell`.
+
+Futhermore, the SUID root starter ins executable only for
+users belonging to the group 'apptainer'.
+
+Otherwise, users will get an error message like this one:
+
+```
+FATAL:   while executing /usr/lib/apptainer/bin/starter-suid: permission denied
+```
+
+To add a user to the group apptainer, execute (as root):
+
+```
+# usermod -a -G apptainer <user_login>
+```
