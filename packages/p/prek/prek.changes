@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri May 29 06:54:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.3:
+  * Bug fixes
+    - Ignore stat-only hook rewrites (#2131)
+- Update to version 0.4.2:
+  * Highlights
+    - 0.4.2 is mainly about making prek run faster in large repos.
+      prek now does less git diff work. After hooks run, prek uses
+      diff checks to detect files changed by hooks. If a hook
+      modifies files, prek marks that hook as failed. That is
+      important, but full diff snapshots can be slow in big repos,
+      especially when they happen after every hook group.
+      We skip the expensive diff path in two common cases: built-in
+      hooks that prek knows are read-only, and clean worktrees
+      where a cheap dirty check is enough unless a hook actually
+      changes files. In the right large-repo workload, skipping
+      that work can make runs up to 10x faster.
+      Workspace mode is faster too. Hooks have historically been
+      too serial.  Priority-based concurrency helped, but it
+      required users to choose good priority values. Now sibling
+      projects at the same workspace depth run in parallel
+      automatically. Their files do not overlap, so this is safe
+      and needs no extra config. For multi-project workspaces, this
+      can dramatically reduce total hook time.
+  * Enhancements
+    - Run same-depth projects concurrently (#2110)
+    - Make rustup install profile configurable (#2111)
+    - Simplify hook progress folding (#2125)
+  * Performance
+    - Optimize diff checks for clean worktrees (#2109)
+    - Skip diff checks for read-only hooks (#2108)
+
+-------------------------------------------------------------------
 Wed May 20 05:07:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.4.1:
