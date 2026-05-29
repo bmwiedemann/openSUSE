@@ -1,7 +1,7 @@
 #
 # spec file for package intel-ipsec-mb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2022, Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global major        2
 %global minor        0
-%global patch        1
+%global patch        2
 
 # GitHub properties
 %global githubver    %{major}.%{minor}.%{patch}
@@ -30,7 +30,7 @@
 Name:           intel-ipsec-mb
 Summary:        IPSec cryptography library optimized for Intel Architecture
 Release:        0
-Version:        2.0.1
+Version:        2.0.2
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/%{name}

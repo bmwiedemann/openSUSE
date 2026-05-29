@@ -110,4 +110,17 @@
     <comment>v2.0.1 update</comment>
     <requestid>1296317</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>adc635e8c7c9c8efbb3f902bcd71ff31</srcmd5>
+    <version>2.0.2</version>
+    <time>1780070779</time>
+    <user>anag_factory</user>
+    <comment>- Update to v2.0.2
+  * Fix for zero-length message handling in AES-CBC decryption.
+  * Fix for AES-CTR IV handling for zero-length messages.
+  * Allow zero-length messages and handle them correctly for HMAC-MD5, HMAC-SHA1, HMAC-SHA256, HMAC-SHA512, AES-CMAC, and AES-XCBC.
+  * Fix for DES/TDES IV handling for zero-length messages.
+  * Fix message handling for XGEM header size on AVX512 Type 2 systems.</comment>
+    <requestid>1355705</requestid>
+  </revision>
 </revisionlist>

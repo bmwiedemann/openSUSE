@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 28 14:49:59 UTC 2026 - Tomasz Kantecki <tomasz.kantecki@intel.com>
+
+- Update to v2.0.2
+  * Fix for zero-length message handling in AES-CBC decryption.
+  * Fix for AES-CTR IV handling for zero-length messages.
+  * Allow zero-length messages and handle them correctly for HMAC-MD5, HMAC-SHA1, HMAC-SHA256, HMAC-SHA512, AES-CMAC, and AES-XCBC.
+  * Fix for DES/TDES IV handling for zero-length messages.
+  * Fix message handling for XGEM header size on AVX512 Type 2 systems.
+
+-------------------------------------------------------------------
 Tue Jul 29 10:41:22 UTC 2025 - Tomasz Kantecki <tomasz.kantecki@intel.com>
 
 - Update to v2.0.1:
