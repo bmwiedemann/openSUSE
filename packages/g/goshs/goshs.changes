@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 29 12:45:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.0
+  * Address security advisory GHSA-3whc-qvhv-xqjp
+  * Address security advisory GHSA-j48m-h7xq-2xpj
+  * Bump github/codeql-action from 4.35.5 to 4.36.0
+  * Fix issue #166
+  * General bug fixing and improving security posture.
+
+-------------------------------------------------------------------
 Wed May 27 18:56:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.9
