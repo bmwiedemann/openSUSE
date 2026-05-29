@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri May 29 05:53:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.6:
+  * Bug Fixes
+    - implement signature verification for jx upgrade and update
+      k8s docs (Mallikarjunadevops)
+  * Chores
+    - deps: upgrade jenkins-x-plugins/jx-gitops to version 1.3.0
+      (root)
+  * Other Changes
+    These commits did not use Conventional Commits formatted
+    messages:
+    - Revert "fix: implement signature verification for jx upgrade
+      and update k8s docs" (Mårten Svantesson)
+
+-------------------------------------------------------------------
+Wed May 13 04:41:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.5:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.2.1
+- Update to version 3.17.4:
+  * chore(deps): upgrade jenkins-x-plugins/jx-verify to version
+    0.3.19
+
+-------------------------------------------------------------------
+Tue May 12 13:32:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.3:
+  * chore(deps): upgrade jenkins-x-plugins/jx-health to version
+    0.0.85
+- Update to version 3.17.2:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.40
+
+-------------------------------------------------------------------
 Wed May 06 05:20:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.17.1:
