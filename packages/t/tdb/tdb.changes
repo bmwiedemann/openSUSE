@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 28 20:11:15 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Update to 1.4.15
+  * Fix parse_hex during `tdbtool storehex` 
+  * Remove obsolete web page
+  * tdbtorture: Fix CID 1034816: proper calloc usage
+
+-------------------------------------------------------------------
 Thu Oct 16 11:17:53 UTC 2025 - Noel Power <nopower@suse.com>
 
 - Add config-sitearch.patch
