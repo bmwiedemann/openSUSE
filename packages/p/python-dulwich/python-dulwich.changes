@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 28 23:04:19 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.2.5.
+  Changelog: https://github.com/jelmer/dulwich/releases/tag/dulwich-1.2.5
+  Security release fixing the following issues:
+  * GHSA-gfhv-vqv2-4544.
+  * CVE-2026-42305
+  * CVE-2026-42563
+  * CVE-2026-47712
+  * receive.maxInputSize
+
+-------------------------------------------------------------------
 Thu May 21 19:42:31 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 1.2.4.
