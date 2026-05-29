@@ -1,7 +1,7 @@
 #
 # spec file for package Mesa
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -142,9 +142,9 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        26.1.0
+Version:        26.1.1
 Release:        0
-%define pkg_version 26.1.0
+%define pkg_version 26.1.1
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
