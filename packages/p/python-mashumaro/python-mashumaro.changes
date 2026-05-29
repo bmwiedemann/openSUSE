@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 29 05:56:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.22:
+  * Added support for using Annotated[..., JSONSchema(...)] in JSON
+    Schema generation (#326)
+  * Added new fields contentEncoding, contentMediaType,
+    contentSchema to JSONSchema (#326)
+
+-------------------------------------------------------------------
 Fri May  8 05:13:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.21:
