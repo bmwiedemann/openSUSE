@@ -39,4 +39,12 @@
     <comment>Add a bug reference</comment>
     <requestid>1353276</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a878b3b62e534af2a8d8300417da3b9f</srcmd5>
+    <version>25.0.3.0</version>
+    <time>1780071013</time>
+    <user>anag_factory</user>
+    <comment>Use libalternatives when possible</comment>
+    <requestid>1355814</requestid>
+  </revision>
 </revisionlist>
