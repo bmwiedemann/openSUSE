@@ -1109,4 +1109,15 @@
   - Force UTF-8 encoding for :pep:`723` metadata.</comment>
     <requestid>1349554</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>aa91d6d9ff26e698df84c3095f582b72</srcmd5>
+    <version>26.1.1</version>
+    <time>1780070644</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.1.1:
+  - Fix issue where uninstallation left behind empty directories.
+    Revert the removal of the adjacent __pycache__ directory when a
+    .py file is removed. (#13973)</comment>
+    <requestid>1355617</requestid>
+  </revision>
 </revisionlist>

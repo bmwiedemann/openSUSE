@@ -34,7 +34,7 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-pip%{psuffix}
-Version:        26.1
+Version:        26.1.1
 Release:        0
 Summary:        A Python package management system
 License:        MIT
