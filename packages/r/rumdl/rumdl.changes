@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri May 29 10:37:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.3:
+  * Fixed
+    - code-block-tools: pipe newline-terminated content to external
+      tools (497d892)
+- Update to version 0.2.2:
+  * Fixed
+    - md081: treat unset and 0 as distinct emphasis thresholds
+      (ca992bd)
+- Update to version 0.2.1:
+  * Added
+    - md081: add no-excessive-emphasis rule (7e9ac64)
+- Update to version 0.2.0:
+  * Added
+    - lsp: improve link completion ranking, ignores, and absolute
+      paths (0ac911e)
+    - flavor: add support for MyST (Markedly Structured Text)
+      (#637) (3455840)
+  * Fixed
+    - md007: close ordered-ancestor exemption leak across deeper
+      nested quotes (0fa6180)
+    - md007: flag misindented top-level unordered list items
+      (f277892)
+    - md007: apply ordered-ancestor exemption only to genuinely
+      nested sublists (#638) (4c96cf7)
+    - md013: reflow list-item prose in normalize mode without false
+      length warnings (#639) (0816967)
+    - cross-file: honor inline-disable and per-file-ignores on
+      lint-cache fast path (05c77e4)
+
+-------------------------------------------------------------------
 Thu May 21 11:02:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.96:
