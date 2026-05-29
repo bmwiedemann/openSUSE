@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 29 07:15:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use libalternatives instead of update-alternatives for
+  distributions where libalternatives is available
+
+-------------------------------------------------------------------
+Fri May 29 07:11:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use libalternatives instead of update-alternatives for
+  distributions where libalternatives is available (bsc#1264396)
+
+-------------------------------------------------------------------
 Sat Apr 25 18:24:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-17.0.19+10 (April 2026 CPU)
