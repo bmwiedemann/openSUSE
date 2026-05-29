@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri May 29 08:06:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use libalternatives instead of update-alternatives for
+  distributions where libalternatives is available
+
+-------------------------------------------------------------------
+Fri May 29 07:15:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-26.0.1+8 (April 2026 CPU)
+  * CVEs
+    + CVE-2026-22007 (bsc#1262490)
+    + CVE-2026-22008 (bsc#1262493)
+    + CVE-2026-22013 (bsc#1262494)
+    + CVE-2026-22016 (bsc#1262495)
+    + CVE-2026-22018 (bsc#1262496)
+    + CVE-2026-22021 (bsc#1262497)
+    + CVE-2026-23865 (bsc#1259118)
+    + CVE-2026-34268 (bsc#1262500)
+    + CVE-2026-34282 (bsc#1262501)
+  * Changes
+    + JDK-8348014: Enhance certificate processing
+    + JDK-8364373: Transform Affine transformations
+    + JDK-8364465: Enhance behavior of some intrinsics
+    + JDK-8367463: Improved Arena allocations
+    + JDK-8369575: Enhance crypto algorithm support
+    + JDK-8370489: Some compiler tests miss the @key randomness
+    + JDK-8370529: Enhance Path Factories Redux
+    + JDK-8370615: Improve Kerberos credentialing
+    + JDK-8370986: Enhance Zip file reading
+    + JDK-8370995: Enhance ZipFile usage
+    + JDK-8371830: Enhance certificate chain validation
+    + JDK-8371935: Enhance key generation
+    + JDK-8372589: VM crashes on init when NonNMethodCodeHeapSize is
+      set too small and UseTransparentHugePages is enabled
+    + JDK-8372592: Adjust logger usage in java2d tests
+    + JDK-8372661: Add a null-safe static factory method to
+      "jdk.test.lib.net.SimpleSSLContext"
+    + JDK-8373290: Update FreeType to 2.14.1
+    + JDK-8373476: (tz) Update Timezone Data to 2025c
+    + JDK-8373520: Bump update version for OpenJDK: jdk26u to 26.0.1
+    + JDK-8373625: CPUTimeCounters creates a total counter for
+      unsupported GCs
+    + JDK-8373632: Some sound tests failing in CI due to lack of
+      sound key
+    + JDK-8373793: TestDynamicStore.java '/manual' disables use of
+      '/timeout'
+    + JDK-8374434: Several JShell tests report JUnit discovery
+      warnings
+    + JDK-8374557: Enhance TLS connection handling
+    + JDK-8374644: Regression in GZIPInputStream performance after
+      JDK-7036144
+    + JDK-8375063: Update Libpng to 1.6.54
+    + JDK-8375094: RISC-V: Fix client builds after JDK-8368732
+    + JDK-8375530: PPC64: incorrect quick verify_method_data_pointer
+      check causes poor performance in debug build
+    + JDK-8375657: RISC-V: Need to check size in
+      SharedRuntime::is_wide_vector
+    + JDK-8375994: Change milestone to fcs for all releases
+    + JDK-8377905: gcc.md included with every build
+    + JDK-8378623: Use unique font names in FormatCharAdvanceTest
+    + JDK-8379035: (tz) Update Timezone Data to 2026a
+    + JDK-8379158: Update FreeType to 2.14.2
+
+-------------------------------------------------------------------
 Tue Mar 17 15:27:23 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of OpenJDK 26 release (tag jdk-26+35)
