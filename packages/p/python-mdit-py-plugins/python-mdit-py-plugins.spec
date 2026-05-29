@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mdit-py-plugins
-Version:        0.5.0
+Version:        0.6.1
 Release:        0
 Summary:        Collection of plugins for markdown-it-py
 License:        MIT
@@ -26,13 +26,12 @@ URL:            https://mdit-py-plugins.readthedocs.io/
 Source:         https://github.com/executablebooks/mdit-py-plugins/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module flit-core >= 3.4}
-BuildRequires:  %{python_module markdown-it-py >= 2}
+BuildRequires:  %{python_module markdown-it-py >= 4.1}
 BuildRequires:  %{python_module pip}
 # SECTION tests
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-regressions}
 BuildRequires:  fdupes
-#Source:         https://files.pythonhosted.org/packages/source/m/mdit-py-plugins/mdit-py-plugins-%%{version}.tar.gz
 BuildRequires:  python-rpm-macros
 Requires:       python-markdown-it-py >= 2
 BuildArch:      noarch

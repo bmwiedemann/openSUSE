@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 28 04:22:31 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.1:
+  * FIX: Nested field lists incorrectly nesting inside parent containers
+  * NEW: Add superscript plugin and tests
+  * Add GFM autolink and composite GFM plugins
+
+-------------------------------------------------------------------
 Mon Mar 16 03:48:37 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.5.0:

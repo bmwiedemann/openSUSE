@@ -93,4 +93,15 @@
   * NEW: Add plugin &amp; tests to render subscripts</comment>
     <requestid>1339200</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f79b1addccbaa00c6f1c3b7726b15e51</srcmd5>
+    <version>0.6.1</version>
+    <time>1780070722</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.1:
+  * FIX: Nested field lists incorrectly nesting inside parent containers
+  * NEW: Add superscript plugin and tests
+  * Add GFM autolink and composite GFM plugins</comment>
+    <requestid>1355509</requestid>
+  </revision>
 </revisionlist>
