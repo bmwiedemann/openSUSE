@@ -1,7 +1,7 @@
 #
 # spec file for package zathura-plugin-ps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,51 @@
 
 
 %define realname zathura-ps
+%if 0%{?suse_version} == 1600
+%bcond_without gcc15
+%endif
 Name:           zathura-plugin-ps
-Version:        0.2.8
+Version:        2026.02.03
 Release:        0
 Summary:        PS support for zathura via libspectre
 License:        Zlib
-Group:          Productivity/Office/Other
-URL:            https://pwmt.org/projects/%{realname}/
-Source:         https://pwmt.org/projects/%{realname}/download/%{realname}-%{version}.tar.xz
-BuildRequires:  meson >= 0.61
+URL:            https://pwmt.org/projects/%{realname}
+Source0:        %{url}/download/%{realname}-%{version}.tar.xz
+Source1:        %{url}/download/%{realname}-%{version}.tar.xz.asc
+Source2:        %{realname}.keyring
+BuildRequires:  AppStream
+BuildRequires:  c_compiler
+BuildRequires:  desktop-file-utils
+BuildRequires:  meson >= 1.5
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(girara-gtk3)
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(girara)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libspectre)
-BuildRequires:  pkgconfig(zathura) >= 0.3.8
-Requires:       zathura
-Provides:       zathura-ps-plugin
+BuildRequires:  pkgconfig(zathura) >= 2026.01.30
+Requires:       zathura >= 2026.01.30
+Provides:       %{realname}-plugin
+%if %{with gcc15}
+BuildRequires:  gcc15
+%endif
 
 %description
-The zathura-ps plugin adds PostScript support to zathura by using the libspectre library.
+The zathura-ps plugin adds PostScript support to zathura by using the
+libspectre library.
 
 %prep
-%setup -q -n %{realname}-%{version}
+%autosetup -p1 -n %{realname}-%{version}
 
 %build
-%meson -Dtests=disabled
+%{?with_gcc15:export CC=gcc-15}
+%meson
 %meson_build
 
 %install
 %meson_install
+
+%check
+%meson_test
 find %{buildroot} -name "*.desktop" -delete -print
 
 %files -n %{name}
@@ -52,6 +69,6 @@ find %{buildroot} -name "*.desktop" -delete -print
 %doc AUTHORS
 %dir %{_libdir}/zathura
 %{_libdir}/zathura/libps.so
-%{_datadir}/metainfo/org.pwmt.zathura-ps.metainfo.xml
+%{_datadir}/metainfo/org.pwmt.%{realname}.metainfo.xml
 
 %changelog
