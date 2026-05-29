@@ -1,7 +1,7 @@
 #
 # spec file for package girara
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,29 @@
 #
 
 
-%define libname libgirara-gtk3
-%define so_ver  4
+%define libname libgirara
+%define so_ver  5
+%if 0%{?suse_version} == 1600
+%bcond_without gcc15
+%endif
 Name:           girara
-Version:        0.4.4
+Version:        2026.02.04
 Release:        0
 Summary:        Graphical user interface library
 License:        Zlib
 URL:            https://pwmt.org/projects/girara
 Source0:        %{url}/download/girara-%{version}.tar.xz
-BuildRequires:  doxygen
-BuildRequires:  gettext
-BuildRequires:  libxml2-tools
-BuildRequires:  meson >= 0.56
+Source1:        %{url}/download/girara-%{version}.tar.xz.asc
+Source2:        girara.keyring
+BuildRequires:  c_compiler
+BuildRequires:  meson >= 1.5
 BuildRequires:  pkgconfig
-BuildRequires:  xvfb-run
-BuildRequires:  pkgconfig(check)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
-BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(pango) >= 1.14
+BuildRequires:  pkgconfig(gio-2.0) >= 2.72
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.72
+%if %{with gcc15}
+BuildRequires:  gcc15
+%endif
 
 %description
 girara is a library that implements a user interface that focuses on
@@ -50,10 +52,10 @@ with current information. girara was designed to replace and enhance
 the user interface that is used by zathura and jumanji and other
 features that those applications share.
 
-%package -n %{libname}-%{so_ver}
+%package -n %{libname}%{so_ver}
 Summary:        A graphical user interface library
 
-%description -n %{libname}-%{so_ver}
+%description -n %{libname}%{so_ver}
 girara is a library that implements a user interface that focuses on
 simplicity and minimalism. Currently based on GTK+,
 it provides an interface that focuses on three main
@@ -67,37 +69,53 @@ features that those applications share.
 
 %package devel
 Summary:        Header files for the girara library
-Requires:       %{libname}-%{so_ver} = %{version}-%{release}
+Requires:       %{libname}%{so_ver} = %{version}-%{release}
 
 %description devel
 Header files for the girara user interface library.
+
+%package        devel-doc
+Summary:        Documentation for girara-devel
+BuildRequires:  doxygen
+BuildRequires:  fdupes
+BuildArch:      noarch
+
+%description    devel-doc
+Doxygen generated documentations for girara-devel.
 
 %prep
 %autosetup
 
 %build
-export CFLAGS="%{optflags}"
+%{?with_gcc15:export CC=gcc-15}
 %meson
 %meson_build
 
 %install
 %meson_install
+install -dm 0755 %{buildroot}%{_docdir}/girara-devel-doxygen/
+cp -a %{_vpath_builddir}/doc/html %{buildroot}%{_docdir}/girara-devel-doxygen/
+%fdupes -s %{buildroot}%{_docdir}/girara-devel-doxygen/
 
-%find_lang %{libname}-%{so_ver}
-find %{buildroot} -name '*.*a' -delete -print
+%check
+test_list=$(meson test --list -C %{_vpath_builddir})
+%{?with_gcc15:test_list=${test_list//utils-with-home}}
+%{!?with_gcc15:test_list=${test_list//girara:utils-with-home}}
+%meson_test $test_list
 
-%post -n %{libname}-%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}%{so_ver}
 
-%postun	-n %{libname}-%{so_ver} -p /sbin/ldconfig
-
-%files -n %{libname}-%{so_ver} -f %{libname}-%{so_ver}.lang
-%license LICENSE
-%doc README.md
-%{_libdir}/libgirara-gtk3.so.*
+%files -n %{libname}%{so_ver}
+%{_libdir}/libgirara.so.%{so_ver}*
 
 %files devel
-%{_libdir}/libgirara-gtk3.so
+%license LICENSE
+%doc AUTHORS README.md
+%{_libdir}/libgirara.so
 %{_includedir}/girara
-%{_libdir}/pkgconfig/girara-gtk3.pc
+%{_libdir}/pkgconfig/girara.pc
+
+%files devel-doc
+%{_docdir}/girara-devel-doxygen
 
 %changelog

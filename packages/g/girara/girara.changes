@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri May 29 08:43:54 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Cleanup spec file with spec-cleaner
+- Drop dependency on girara-devel from the devel-doc
+  subpackage (a -doc package should not require -devel)
+
+-------------------------------------------------------------------
+Wed May 27 03:54:01 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2026.02.04:
+  * Fix installation of headers
+- Added girara.keyring
+- Updates from version 2026.02.03:
+  * SONAME bump: libgirara-gtk3-5 -> libgirara5
+  * Move Gtk+-specific parts to zathura
+- Updates from version 2026.01.30:
+  * SONAME bump: libgirara-gtk3-4 -> libgirara-gtk3-5
+  * Remove viewport and replace GtkScrolledWindow in view with GtkStack
+  * Display shortcut info if no function is passed
+  * Remove unused functions
+  * Various fixes and improvements
+- Updates from version 0.4.5:
+  * Swith to glib-based testing framework
+  * Various fixes and improvements
+
+-------------------------------------------------------------------
 Thu Jun 13 05:37:13 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Migrate from deprecated setup to autosetup
