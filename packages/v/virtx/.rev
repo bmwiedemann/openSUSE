@@ -24,4 +24,67 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/PK4PW
     <comment></comment>
     <requestid>1338520</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>be4af197281e4ded728e575093084913</srcmd5>
+    <version>0.1+g89b87f1</version>
+    <time>1780071151</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.1+g89b87f1:
+  * hypervisor/domain: change get_domain_info() to return an inventory.VmEvent
+  * inventory: embed VmEvent inside Vmdata struct
+  * vmdef: add unit tests for validation and utility functions
+  * metadata: add unit tests for XML round-trip serialization
+  * model: add unit tests for enum String/Parse methods
+  * sbinary: add unit tests for Encode and Decode
+  * Makefile: add build-tests and check targets
+  * hypervisor/systeminfo: Revert &quot;adjust total cpu MHz capacity calc by excluding threads&quot;
+  * hypervisor/systeminfo: adjust total cpu MHz capacity calc by excluding threads
+  * hypervisor/systeminfo: fix comment typo in unit of measure
+  * encoding/sbinary: remove panics on unreachable code
+  * cloudinit: Create_disk: fix incorrect format string
+  * lockman: do not leave the lockspace when virtxd is shutting down
+  * lockman: use cached sanlock host_id/lockid to join lockspace
+  * vmreg: add Save_lockid, Load_lockid to cache sanlock host_id
+  * cmd: virtx: vm_boot: add support for cloudinit parameters
+  * virtx/vm_boot: pass new VmBootOptions to hypervisor, including CloudInit
+  * hypervisor: remove cloudinit iso when a domain becomes inactive
+  * hypervisor/cloudinit: implement workaround due to libvirt bug
+  * hypervisor/cloudinit: new module that connects cloudinit to a libvirt domain
+  * pkg/cloudinit: new package to create NoCloud datasource ISOs
+  * model: add cloud-init support
+  * vmdef: Add virtio-scsi controller for use by cloud-init
+  * lockman: change Read_lvb to take a string argument instead of fd
+  * lockman: Get_resource_name: allow CDROM devices
+  * vmdef: export vmdef_disk_to_xml as Disk_to_xml
+  * storage: export storage_detect as Detect
+  * pkg/arch: new package to store the cpu architecture string
+  * gitignore: update
+  * storage, hypervisor/systeminfo: fix misuse of %w verb in logger.Log calls
+  * hypervisor: domain: fix connection leak in Get_migration_info and Abort_migration
+  * storage: export rollback closure as a Rollback function
+  * vmdef: vmdef_validate_disk: disallow virtio-blk CDROMS
+  * hypervisor: lifecycle_cb: add missing Ts when handling DOMAIN_EVENT_DEFINED
+  * hypervisor: lifecycle_cb: add special handling for libvirt.DOMAIN_EVENT_DEFINED
+  * hypervisor: systeminfo: get_domain_stats: ignore MemoryStats errors
+  * hypervisor: rename global functions to use Verb_object snakecase
+  * hypervisor: domain: invert migration type log labels
+  * virtx: vm_storage, vm_update: minor cleanup of redundant if statement
+  * README: document the virtx-check-lvb
+  * storage: refactor using storage_ops
+  * README: document storage &quot;managed&quot;, &quot;provisioned&quot; properties
+  * model: host: add lockid (sanlock host_id)
+  * storage: lun: add implementation for minimal management of luns
+  * README: update with sanlock stuff
+  * storage: use lockman functions to manage storage provisioning
+  * vmdef: vmdef_disk_to_xml: generate xml for sanlock leases
+  * lockman: new module to handle sanlock
+  * hypervisor: rename LIBVIRT_SYSTEM_INFO_SECONDS to SYSTEM_INFO_LOOP_SECONDS
+  * hypervisor: implement Wait_system_info()
+  * constants: add VMS_DIR
+  * constants: add LOCK_DIR and LOCK_SPACE in preparation for lockman
+  * start_virtxd.sh: run as qemu:disk
+  * model: change hoststate to cstate (cluster state)
+  * virtx: add a Debug log when we start listening on HTTP</comment>
+    <requestid>1355878</requestid>
+  </revision>
 </revisionlist>
