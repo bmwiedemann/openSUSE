@@ -120,4 +120,19 @@
 - Cleanup requirements, tests, files section and comments</comment>
     <requestid>1339167</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>17e3ba235c09c9fe14c6142401e4dc34</srcmd5>
+    <version>4.2.0</version>
+    <time>1780070622</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.2.0:
+  * Add make_fence_rule() factory for configurable fence markers
+  * Add --stdin option to CLI
+  * Add typing to Scanner
+  * Fix quadratic complexity in fragments_join / text_join
+  * Allow plugins to register inline terminator characters
+  * Add gfm-like2 preset with task lists, alerts, and single-tilde
+    strikethrough</comment>
+    <requestid>1355508</requestid>
+  </revision>
 </revisionlist>

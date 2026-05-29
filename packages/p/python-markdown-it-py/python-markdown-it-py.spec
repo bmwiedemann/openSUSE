@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-markdown-it-py
-Version:        4.0.0
+Version:        4.2.0
 Release:        0
 Summary:        Python port of markdown-it Markdown parsing
 License:        MIT
@@ -32,7 +32,6 @@ Source:         https://github.com/executablebooks/markdown-it-py/archive/refs/t
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module mdurl}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mdurl

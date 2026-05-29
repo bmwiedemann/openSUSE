@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 28 04:21:10 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.2.0:
+  * Add make_fence_rule() factory for configurable fence markers
+  * Add --stdin option to CLI
+  * Add typing to Scanner
+  * Fix quadratic complexity in fragments_join / text_join
+  * Allow plugins to register inline terminator characters
+  * Add gfm-like2 preset with task lists, alerts, and single-tilde
+    strikethrough
+
+-------------------------------------------------------------------
 Sun Mar 15 20:47:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.0:
