@@ -1,0 +1,46 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Wed, 1 Apr 2026 09:30:23 +0200
+Subject: doc: do not install html and md docs
+References: doc-fix
+Patch-mainline: never, SUSE-specific
+
+Do not even build html. We do not need them.
+
+And we install md docs via %doc and %license.
+---
+ doc/CMakeLists.txt | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index e727f92f5f6d..7b6d3c056cba 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -29,16 +29,8 @@ else()
+       )
+     elseif("${type}" STREQUAL html)
+       set(html_doc_files "${html_doc_files}" "${output_file}" PARENT_SCOPE)
+-      install(
+-        FILES "${CMAKE_CURRENT_BINARY_DIR}/${output_file}"
+-        DESTINATION "${CMAKE_INSTALL_DOCDIR}"
+-      )
+     elseif("${type}" STREQUAL markdown)
+       set(markdown_doc_files "${markdown_doc_files}" "${output_file}" PARENT_SCOPE)
+-      install(
+-        FILES "${CMAKE_CURRENT_BINARY_DIR}/${output_file}"
+-        DESTINATION "${CMAKE_INSTALL_DOCDIR}"
+-      )
+     endif()
+   endfunction()
+ 
+@@ -70,7 +62,7 @@ else()
+   generate_doc(manpage doc/manual.adoc ccache.1)
+   add_custom_target(doc-man-page DEPENDS ccache.1)
+ 
+-  add_custom_target(doc ALL DEPENDS doc-html doc-man-page)
++  add_custom_target(doc ALL DEPENDS doc-man-page)
+   if(PANDOC_EXE)
+     add_dependencies(doc doc-markdown)
+   endif()
+-- 
+2.53.0
+

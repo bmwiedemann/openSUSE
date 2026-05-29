@@ -882,4 +882,41 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1298941</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>0536a51f9291865cf9bfc0697db2167d</srcmd5>
+    <version>4.13.6</version>
+    <time>1780070684</time>
+    <user>anag_factory</user>
+    <comment>- use the bundled blake3 to avoid cycles
+
+- Update to 4.13.6
+  * Fixed a potential manifest/result cache key collision in MSVC depend mode when
+    compiling a source file with no included files.
+  * Improved robustness when parsing cache entry data structures.
+  * Increased default storage helper data and request timeouts to 10 seconds and 1
+    minute respectively, improving robustness on heavily loaded systems.
+  * Improved robustness when connecting to newly spawned storage helpers by
+    waiting longer for them to accept connections.
+  * Synchronized writing to the stats log file.
+  * Added logging of the PID of spawned storage helpers on Windows too.
+  * Moved the description of timeout suffixes to the correct place in the
+    documentation.
+  * Added musl static binary release for Linux riscv64.
+  * Added glibc binary release for Linux riscv64.
+  * Fixed handling of empty responses from remote storage backends: a response
+    with an empty body is now treated as a storage error rather than a cache
+    miss.
+  * Fixed PCH invalidation when the MSVC toolset is updated.
+  * Fixed `base_dir` path rewriting when using MSVC's `/Yc` option: paths are no
+    longer rewritten to relative when creating a precompiled header, since MSVC
+    then does not like relative paths for the `/Yc` and `/FI` arguments.
+  * Fixed handling of a directory-less path to the MSVC `/FI` option.
+  * Added support for `-fsanitize-ignorelist` (which replaced
+    `-fsanitize-blacklist` in Clang 13).
+  * Fixed detection of type for compiler with `.` in the name (e.g.
+    `hppa2.0-unknown-linux-gnu-gcc`).
+  * Fixed `install.sh` to correctly use `sysconfdir` and other configuration
+    variables from the Makefile.</comment>
+    <requestid>1355461</requestid>
+  </revision>
 </revisionlist>

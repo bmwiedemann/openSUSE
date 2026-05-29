@@ -1,7 +1,7 @@
 #
 # spec file for package ccache
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,41 +18,45 @@
 
 
 # Build with hiredis by default only on TW
-%if %{?suse_version} > 1600
+%if %{?suse_version} >= 1699
 %bcond_without hiredis
 %else
 %bcond_with hiredis
 %endif
 # Run tests only on TW
-%if %{?suse_version} > 1600
+%if %{?suse_version} >= 1699
 %bcond_without test
 %else
 %bcond_with test
 %endif
 Name:           ccache
-Version:        4.11.3
+Version:        4.13.6
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
 URL:            https://ccache.dev/
 Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz
-Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Patch2:         0001-doc-do-not-install-html-and-md-docs.patch
 BuildRequires:  cmake
-BuildRequires:  fmt-devel
+%if %{?suse_version} > 1600
+# There is a cycle: rust1.95/blake3/hwloc/nvidia-settings/libwebp/Mesa:drivers
+#BuildRequires:  cmake(blake3)
+%endif
+BuildRequires:  cmake(fmt)
 %if %{?suse_version} > 1500
+BuildRequires:  cmake(httplib)
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  cmake(httplib)
 # SLE15 requires gcc11 for std::filesystem
 %else
 BuildRequires:  gcc11
 BuildRequires:  gcc11-PIE
 BuildRequires:  gcc11-c++
 %endif
-BuildRequires:  libzstd-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  xxhash-devel
+BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzstd) >= 1.1.2
 BuildRequires:  rubygem(asciidoctor)
 Provides:       distcc:%{_bindir}/ccache
@@ -73,6 +77,7 @@ Objective-C++.
 %autosetup -p1
 
 %build
+%define __builder ninja
 %if %{?suse_version} < 1600
 export CC=gcc-11 CXX=g++-11
 %endif
@@ -118,8 +123,8 @@ done
 %endif
 
 %files
-%license LICENSE.* GPL-3.0.txt
-%doc doc/AUTHORS.* doc/MANUAL.* doc/NEWS.* README.*
+%license LICENSE.adoc GPL-3.0.txt
+%doc doc/authors.adoc doc/manual.adoc doc/news.adoc README.md
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
