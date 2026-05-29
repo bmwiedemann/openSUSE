@@ -2500,4 +2500,13 @@
     <comment>Update version</comment>
     <requestid>1348423</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>35e0fcbb98d98f081f6798633f9bf956</srcmd5>
+    <version>50.2</version>
+    <time>1780071148</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.2:
+  + Include project version in metadata.</comment>
+    <requestid>1355871</requestid>
+  </revision>
 </revisionlist>
