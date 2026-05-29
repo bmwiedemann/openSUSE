@@ -114,4 +114,15 @@
     <comment></comment>
     <requestid>1318591</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1355930e71d632842f9054be6fbafc8b</srcmd5>
+    <version>2026.05.10</version>
+    <time>1780071067</time>
+    <user>anag_factory</user>
+    <comment>- Cleanup spec file with spec-cleaner
+- Drop unused (already disabled) patches:
+  * 0001-Don-t-link-against-gumbo.patch
+  * 0002-Revert-Rework-detection-of-mupdf.patch</comment>
+    <requestid>1355839</requestid>
+  </revision>
 </revisionlist>

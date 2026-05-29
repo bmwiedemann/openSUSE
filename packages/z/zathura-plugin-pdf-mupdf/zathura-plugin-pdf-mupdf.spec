@@ -1,7 +1,7 @@
 #
 # spec file for package zathura-plugin-pdf-mupdf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,51 +17,54 @@
 
 
 %define realname zathura-pdf-mupdf
+%if 0%{?suse_version} == 1600
+%bcond_without gcc15
+%endif
 Name:           zathura-plugin-pdf-mupdf
-Version:        0.4.4
+Version:        2026.05.10
 Release:        0
 Summary:        Zathura PDF support through MuPDF
 License:        Zlib
-Group:          Productivity/Office/Other
-URL:            https://pwmt.org/projects/zathura-pdf-mupdf/
-Source:         https://pwmt.org/projects/%{realname}/download/%{realname}-%{version}.tar.xz
-Patch1:         0001-Don-t-link-against-gumbo.patch
-Patch2:         0002-Revert-Rework-detection-of-mupdf.patch
+URL:            https://pwmt.org/projects/zathura-pdf-mupdf
+Source0:        %{url}/download/%{realname}-%{version}.tar.xz
+Source1:        %{url}/download/%{realname}-%{version}.tar.xz.asc
+Source2:        %{realname}.keyring
+BuildRequires:  AppStream
+BuildRequires:  c_compiler
 BuildRequires:  cmake
-BuildRequires:  meson >= 0.61
-BuildRequires:  mupdf-devel-static >= 1.24
+BuildRequires:  desktop-file-utils
+BuildRequires:  meson >= 1.5
+BuildRequires:  mupdf-devel-static >= 1.26
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(girara-gtk3)
-%if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(jbig2dec)
-%else
-BuildRequires:  jbig2dec-devel
-%endif
-BuildRequires:  pkgconfig(lept)
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(libopenjp2)
-BuildRequires:  pkgconfig(tesseract)
-BuildRequires:  pkgconfig(zathura) >= 0.5.2
-Requires:       mupdf >= 1.24
-Requires:       zathura >= 0.5.2
+BuildRequires:  pkgconfig(girara)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(zathura) >= 2026.01.30
+Requires:       mupdf >= 1.26
+Requires:       zathura >= 2026.01.30
 Conflicts:      zathura-plugin-pdf-poppler
-Provides:       zathura-pdf-mupdf-plugin
+Provides:       %{realname}-plugin
+%if %{with gcc15}
+BuildRequires:  gcc15
+%endif
 
 %description
-Zathura-plugin-MupDF extends the document viewing support of Zathura to PDF, EPUB and OpenXPS with the help of MuPDF rendering engine.
+Zathura-plugin-MupDF extends the document viewing support of Zathura to
+PDF, EPUB and OpenXPS with the help of MuPDF rendering engine.
 
 %prep
 %autosetup -p1 -n %{realname}-%{version}
 
 %build
-export CFLAGS="%{optflags}"
-%meson -Dlink-external=true -Dtests=disabled
+%{?with_gcc15:export CC=gcc-15}
+%meson
 %meson_build
 
 %install
 %meson_install
+
+%check
+%meson_test
 find %{buildroot} -name '*.desktop' -delete -print
 
 %files -n %{name}
@@ -69,6 +72,6 @@ find %{buildroot} -name '*.desktop' -delete -print
 %doc AUTHORS
 %dir %{_libdir}/zathura
 %{_libdir}/zathura/libpdf-mupdf.so
-%{_datadir}/metainfo/org.pwmt.zathura-pdf-mupdf.metainfo.xml
+%{_datadir}/metainfo/org.pwmt.%{realname}.metainfo.xml
 
 %changelog
