@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 29 05:53:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.4.3:
+  * Bug fixes
+    - f435b0f fix(cli): return immediately from 'app wait' when app
+      is already in desired state (#12211) (#27503) (#27713)
+      (jheyduk)
+  * Dependency updates
+    - 0edd404 chore(deps): bump redoc/dompurify to v3.4.0 in /ui
+      for fixing CVE-2026-41240(cherry-pick 3.4) (#27913) (Alka
+      Kumari)
+
+-------------------------------------------------------------------
 Wed May 13 04:43:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.4.2:
