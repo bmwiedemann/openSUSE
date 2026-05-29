@@ -312,4 +312,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * Linux-firmware: Add Dell ISH firmware 581.7783.0 for Intel Panther Lake systems.</comment>
     <requestid>1351028</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f3ddda32ebaae969a97513416caf21f2</srcmd5>
+    <version>20260519</version>
+    <time>1780070696</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260519 (git commit d962a6a309b7):
+  * Add HP ISH firmware for Intel Panther Lake systems</comment>
+    <requestid>1355551</requestid>
+  </revision>
 </revisionlist>
