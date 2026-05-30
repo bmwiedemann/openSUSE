@@ -1139,4 +1139,15 @@ New upstream release</comment>
   + Updated translations.</comment>
     <requestid>1350821</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>6ed17723676a579f4b5e1917b323f6a7</srcmd5>
+    <version>4.22.4+11</version>
+    <time>1780174489</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.22.4+11:
+  + window: Fixup pointer focus when unmapping a popover
+  + gpu: Trigger cache GC from dmabuf downloading code
+  + Updated translations.</comment>
+    <requestid>1355869</requestid>
+  </revision>
 </revisionlist>

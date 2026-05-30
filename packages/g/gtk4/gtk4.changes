@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 28 18:31:31 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.22.4+11:
+  + window: Fixup pointer focus when unmapping a popover
+  + gpu: Trigger cache GC from dmabuf downloading code
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Apr 30 06:37:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.22.4:
