@@ -23,7 +23,9 @@ Summary:        Perf GUI for performance analysis
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/KDAB/hotspot
-Source:         hotspot-%{version}.tar.gz
+Source:         https://github.com/KDAB/hotspot/releases/download/v%{version}/hotspot-v%{version}.tar.gz
+Source1:        https://github.com/KDAB/hotspot/releases/download/v%{version}/hotspot-perfparser-v%{version}.tar.gz
+Source2:        https://github.com/KDAB/hotspot/releases/download/v%{version}/hotspot-PrefixTickLabels-v%{version}.tar.gz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  glibc-devel-static
 BuildRequires:  libdw-devel
@@ -67,7 +69,9 @@ Hotspot is a standalone GUI for performance data with an UI like KCachegrind
 around Linux perf.
 
 %prep
-%autosetup
+%setup -q -a 0 -n %{name}-v%{version}
+%setup -q -D -a 1 -n %{name}-v%{version}
+%setup -q -D -a 2 -n %{name}-v%{version}
 
 %build
 %cmake_kf6 -DQT6_BUILD=TRUE
