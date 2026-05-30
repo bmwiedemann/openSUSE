@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May 30 11:11:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build with Ninja (%define __builder ninja) via %cmake_build for
+  faster builds
+- Build with -fsigned-char: bitarray.cpp initialises char[] bit
+  masks with negative literals (-128, -65, ...), which fails to
+  compile where char is unsigned by default (aarch64, ppc64le,
+  s390x, ...)
+
+-------------------------------------------------------------------
+Sun Aug 31 15:38:32 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update the bundled pffft FFT library to the 2025-02-24 snapshot
+  (commit d7a4c02), picking up upstream build and portability
+  fixes accumulated since 2022; pffft is vendored via Source1
+  because upstream pulls it in as a git submodule that is not
+  included in the release tarball
+
+-------------------------------------------------------------------
 Wed Apr 16 18:01:13 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.55.0

@@ -1,7 +1,7 @@
 #
 # spec file for package hobbits
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,9 @@
 #
 
 
-%define pffft_hash 7c3b5a7
-
+%define pffft_hash d7a4c02
 Name:           hobbits
-Version:        0.54.1
+Version:        0.55.0
 Release:        0
 Summary:        A GUI for bit-based analysis, processing, and visualization
 License:        MIT
@@ -33,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpcap-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  unzip
@@ -48,7 +48,6 @@ A GUI for bit-based analysis, processing, and visualization.
 
 %package devel
 Summary:        Development files for hobbits
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 
 %description devel
@@ -64,8 +63,14 @@ cd external/pffft/
 unzip -j %{SOURCE1}
 
 %build
+# bitarray.cpp initialises char[] bit masks with negative literals
+# (-128, -65, ...), a narrowing error where char is unsigned (aarch64,
+# ppc, s390x, ...); build with signed char to match the code's assumption.
+export CXXFLAGS="%{optflags} -fsigned-char"
+# Generate a Ninja build (faster for this multi-plugin Qt build)
+%define __builder ninja
 %cmake -DCMAKE_SKIP_RPATH:BOOL=OFF
-%make_build
+%cmake_build
 
 %install
 %cmake_install

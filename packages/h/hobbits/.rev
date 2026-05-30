@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1271077</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7c50c6654b4a2dd02ed4dd0d3e673cde</srcmd5>
+    <version>0.55.0</version>
+    <time>1780174783</time>
+    <user>dimstar_suse</user>
+    <comment>hobbits 0.55.0. Add detail darix asked for: the bundled pffft FFT lib is bumped to the 2025-02-24 snapshot d7a4c02 (vendored via Source1 as upstream pulls it in as a git submodule not in the release tarball). Build with -fsigned-char (bitarray.cpp char[] bit masks use negative literals, a narrowing error where char is unsigned, e.g. aarch64). Build with Ninja via %cmake_build.</comment>
+    <requestid>1356033</requestid>
+  </revision>
 </revisionlist>
