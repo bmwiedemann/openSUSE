@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 30 06:43:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.18:
+  * What's Changed
+    - Add kubelogin-version.txt as a release asset to avoid GitHub
+      API rate limits by @Copilot in #749
+  * Maintenance
+    - Bump kubelogin build toolchain pins to Go 1.26.3 for
+      CVE-2026-27137 remediation by @Copilot in #753
+    - Update README with official Azure kubelogin sources by @bcho
+      in #751
+
+-------------------------------------------------------------------
 Sat Apr 11 06:59:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.17:
