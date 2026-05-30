@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri May 29 19:06:11 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 52.0:
+  + fix CVE-2026-45782
+  + Confidential VM Support: KVM SEV-SNP
+  + VFIO Device Passthrough via iommufd and vfio-cdev
+  + Multi-Connection TCP Live Migration
+  + Userfaultfd Demand-Paged Snapshot Restore
+  + Configurable PCI BDFs for Devices
+  + AIO Block Backend write_zeroes and punch_hole Support
+  + Asynchronous QCOW2 Backend with io_uring
+  + Generic vhost-user Device Support
+  + Core Scheduling for vCPU Threads
+  + Snapshot/Restore and Live Migration Improvements
+  + New Command-Line and API Options
+  + MSHV Support Improvements
+  + Fix a guest-triggerable VMM panic
+  + Saturate instead of underflowing on a malformed balloon actual
+    value reported by the guest
+  + IOMMU address translation now returns errors instead of panicking
+    on malformed guest input
+  + Several virtio device error paths now reset queues instead of
+    panicking or exiting the worker
+  + Virtio barriers are now sized from the number of queues actually
+    activated by the guest, fixing pause hangs
+  + PCI segment ACPI _UID values now match the segment ID
+  + Fix VHDX multiqueue data corruption
+  + Fix block-device resize-disk
+  + Fix vdpa RX failure after device reset by always using base 0
+  + Fix rebooting with landlock and a pty console
+  + Reject rate limiting with vhost-user
+  + Cancel vhost-user reconnection if the device has been unplugged
+  + Remove the API socket path when start_vmm fails
+  + Add missing ID validation for the virtio-rng device
+  + Fix UB in MemoryRangeTable::read_from
+  + DIO alignment is now queried directly from the underlying file
+    rather than assumed
+  + QCOW2 metadata access is now thread-safe with num_queues > 1
+  + Block devices unconditionally assume sparse support, matching
+    QEMU and avoiding a non-existent probe ioctl
+  + Multi-value CLI options now use .action(ArgAction::Append) so
+    that repeating an option appends rather than replacing
+  + AIO completions are batched in next_completed_request for the
+    block backend, reducing per-completion overhead
+  + Fix O_DIRECT writes failing with EINVAL on the synchronous
+    QCOW2 backend
+  + Fix O_DIRECT reads failing with EINVAL on the async io_uring
+    QCOW2 read path
+  + Move QCOW2 compressed-cluster decompression out of the metadata
+    lock, removing a bottleneck for compressed images
+  + Clamp the balloon's reported range to its region before
+    processing unused pages
+  + Validate the requested balloon size against total guest RAM
+  + Reject --memory-zone configurations that set both mergeable
+    and shared
+  + Disable sector 0 writes for autodetected VHD images
+
+-------------------------------------------------------------------
 Mon Feb 23 12:32:31 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 51.1:

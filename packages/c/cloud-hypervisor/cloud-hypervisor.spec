@@ -17,7 +17,7 @@
 
 
 Name:           cloud-hypervisor
-Version:        51.1
+Version:        52.0
 Release:        0
 Summary:        A Virtual Machine Monitor
 License:        Apache-2.0 AND BSD-3-Clause
@@ -70,18 +70,20 @@ install -Dm0755 ./target/release/ch-remote %{buildroot}%{_bindir}/ch-remote
 # skipped tests need kvm enabled
 %{cargo_test} -- --test unit_tests:: \
                  --skip cpu::unit_tests:: \
+                 --skip kvm::aarch64:: \
                  --skip unit_tests::test_vmm_vm_cold_add_device \
                  --skip unit_tests::test_vmm_vm_cold_add_disk \
                  --skip unit_tests::test_vmm_vm_cold_add_fs \
+                 --skip unit_tests::test_vmm_vm_cold_add_generic_vhost_user \
                  --skip unit_tests::test_vmm_vm_cold_add_net \
                  --skip unit_tests::test_vmm_vm_cold_add_pmem \
                  --skip unit_tests::test_vmm_vm_cold_add_user_device \
                  --skip unit_tests::test_vmm_vm_cold_add_vdpa \
                  --skip unit_tests::test_vmm_vm_cold_add_vsock \
                  --skip unit_tests::test_vmm_vm_create \
+                 --skip vm::unit_tests::test_create_fdt_with_devices \
                  --skip vm::unit_tests::test_vm \
-                 --skip kvm::aarch64:: \
-                 --skip vm::unit_tests::test_create_fdt_with_devices
+                 %{nil}
 %endif
 
 %files

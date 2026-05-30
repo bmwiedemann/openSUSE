@@ -170,4 +170,41 @@
   * Various documentation fixes (forwarded request 1334498 from rrahl0)</comment>
     <requestid>1334499</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fa1346f6fa6731663ed1b1d0dc186f9a</srcmd5>
+    <version>52.0</version>
+    <time>1780174604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 52.0:
+  + fix CVE-2026-45782
+  + Confidential VM Support: KVM SEV-SNP
+  + VFIO Device Passthrough via iommufd and vfio-cdev
+  + Multi-Connection TCP Live Migration
+  + Userfaultfd Demand-Paged Snapshot Restore
+  + Configurable PCI BDFs for Devices
+  + AIO Block Backend write_zeroes and punch_hole Support
+  + Asynchronous QCOW2 Backend with io_uring
+  + Generic vhost-user Device Support
+  + Core Scheduling for vCPU Threads
+  + Snapshot/Restore and Live Migration Improvements
+  + New Command-Line and API Options
+  + MSHV Support Improvements
+  + Fix a guest-triggerable VMM panic
+  + Saturate instead of underflowing on a malformed balloon actual
+    value reported by the guest
+  + IOMMU address translation now returns errors instead of panicking
+    on malformed guest input
+  + Several virtio device error paths now reset queues instead of
+    panicking or exiting the worker
+  + Virtio barriers are now sized from the number of queues actually
+    activated by the guest, fixing pause hangs
+  + PCI segment ACPI _UID values now match the segment ID
+  + Fix VHDX multiqueue data corruption
+  + Fix block-device resize-disk
+  + Fix vdpa RX failure after device reset by always using base 0
+  + Fix rebooting with landlock and a pty console
+  + Reject rate limiting with vhost-user
+  + Cancel vhost-user reconnection if the device has been unplugged (forwarded request 1355957 from rrahl0)</comment>
+    <requestid>1355958</requestid>
+  </revision>
 </revisionlist>
