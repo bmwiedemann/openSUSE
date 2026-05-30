@@ -1,7 +1,7 @@
 #
 # spec file for package kbom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kbom
-Version:        0.3.1
+Version:        0.3.4
 Release:        0
 Summary:        Kubernetes Bill of Materials
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         kbom-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
+BuildRequires:  go1.26 >= 1.26.0
 BuildRequires:  zsh
 
 %description

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 30 06:59:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.4 (no releases between .1 and this one):
+  * Do not push docker image
+  * Ignore unsupported windows/arm build target
+  * Fail on high
+  * Update deps
+  * FIx linter
+  * Bump go version, fix vulnerabilities
+  * Update homebrew tap repo name to rad-security/homebrew
+
+-------------------------------------------------------------------
 Tue Oct 29 14:23:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.3.1:
