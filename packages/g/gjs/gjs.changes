@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 12 15:59:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.88.0.g4:
+  + maint: Check for NULL before dereferencing error_out pointer
+  + Gio: Restore old arg order of
+    GjsDBusImplementation::handle-method-call
+  + GObject: Fix bug in GObject.Value with flags type
+- Split out new gjs-tests subpackage, stop passing
+  installed_tests=false to meson setup. Following this, add more
+  typelibs to global exclude.
+- Add fdupes and libxml2-tools BuildRequires, remove duplicate
+  files and add the optional xmllint dependency.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:32:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

@@ -1862,4 +1862,21 @@ New stable rel</comment>
     <comment>Push GNOME 50</comment>
     <requestid>1345378</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>af72407585dc7c5e9619e2e9adf0e4b7</srcmd5>
+    <version>1.88.0.g4</version>
+    <time>1780174513</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.88.0.g4:
+  + maint: Check for NULL before dereferencing error_out pointer
+  + Gio: Restore old arg order of
+    GjsDBusImplementation::handle-method-call
+  + GObject: Fix bug in GObject.Value with flags type
+- Split out new gjs-tests subpackage, stop passing
+  installed_tests=false to meson setup. Following this, add more
+  typelibs to global exclude.
+- Add fdupes and libxml2-tools BuildRequires, remove duplicate
+  files and add the optional xmllint dependency.</comment>
+    <requestid>1355923</requestid>
+  </revision>
 </revisionlist>

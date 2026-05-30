@@ -17,10 +17,10 @@
 
 
 %bcond_with profiling
-%global __requires_exclude typelib\\(GioWin32\\)
+%global __requires_exclude typelib\\(GioWin32|GIMarshallingTests!|GIMarshallingTests)|Gio!|Gio)|Regress!|Regress)|WarnLib!|WarnLib)\\)
 
 Name:           gjs
-Version:        1.88.0
+Version:        1.88.0.g4
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
@@ -30,6 +30,8 @@ Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  /usr/bin/dbus-run-session
 BuildRequires:  c++_compiler
+BuildRequires:  fdupes
+BuildRequires:  libxml2-tools
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
@@ -98,18 +100,26 @@ Provides:       gjs-devel = %{version}
 This module contains JavaScript bindings based on gobject-introspection and the
 Mozilla SpiderMonkey JavaScript engine.
 
+%package tests
+Summary:        Tests for the gjs package
+Requires:       %{name} = %{version}
+
+%description tests
+The gjs-tests package contains tests that can be used to verify
+the functionality of the installed gjs package.
+
 %prep
 %autosetup -p1
 
 %build
 %meson \
- 	-Dinstalled_tests=false \
 	-Dprofiler=%{?with_profiling:enabled}%{!?with_profiling:disabled} \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
+%fdupes -s %{buildroot}%{_libexecdir}/installed-tests
 
 %check
 %ifnarch s390x
@@ -137,20 +147,15 @@ sleep 10
 %{_libdir}/gjs/girepository-1.0/GjsPrivate-1.0.typelib
 
 %files -n libgjs-devel
-%{_includedir}/*
+%{_includedir}/gjs-1.0
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/%{name}-1.0/
-# FIXME -- nuke these
-%dir %{_libexecdir}/installed-tests/gjs
-%{_libexecdir}/installed-tests/gjs/GIMarshallingTests-1.0.typelib
-%{_libexecdir}/installed-tests/gjs/Regress-1.0.typelib
-%{_libexecdir}/installed-tests/gjs/RegressUnix-1.0.typelib
-%{_libexecdir}/installed-tests/gjs/Utility-1.0.typelib
-%{_libexecdir}/installed-tests/gjs/WarnLib-1.0.typelib
-%{_libexecdir}/installed-tests/gjs/libgimarshallingtests.so
-%{_libexecdir}/installed-tests/gjs/libregress.so
-%{_libexecdir}/installed-tests/gjs/libutility.so
-%{_libexecdir}/installed-tests/gjs/libwarnlib.so
+
+%files tests
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/
+%{_datadir}/glib-2.0/schemas/org.gnome.GjsTest.gschema.xml
+%{_datadir}/installed-tests/
 
 %changelog
