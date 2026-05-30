@@ -1,7 +1,7 @@
 #
 # spec file for package qpid-proton
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,10 @@ Patch2:         qpid-proton-fix_linking.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
+%if 0%{?suse_version} >= 1540
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+%endif
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -186,14 +190,22 @@ make %{?_smp_mflags} all docs
 # build from the created sdist for all enabled python flavors
 pushd python/dist
 # Note: never python_expand in the root source tree. It removes the build/ directory
+%if 0%{?suse_version} >= 1540
+%pyproject_wheel
+%else
 %python_build
+%endif
 popd
 
 %install
 %cmake_install
 
 pushd build/python/dist
+%if 0%{?suse_version} >= 1540
+%pyproject_install
+%else
 %python_install
+%endif
 %python_expand chmod +x %{buildroot}%{$python_sitearch}/*_cproton*.so
 popd
 
