@@ -1713,4 +1713,15 @@ Index: gnome-session.changes
   making the step out easy at this time.</comment>
     <requestid>1351108</requestid>
   </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>e2ed8a18151a2525db9a7cc7f7f78a47</srcmd5>
+    <version>50.1</version>
+    <time>1780174494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.1:
+  + Fix double-free bug
+  + Updated translations.
+- Drop gnome-session-fix-double-free-GError.patch: Fixed upstream.</comment>
+    <requestid>1355872</requestid>
+  </revision>
 </revisionlist>

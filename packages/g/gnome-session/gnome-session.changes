@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 28 20:56:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.1:
+  + Fix double-free bug
+  + Updated translations.
+- Drop gnome-session-fix-double-free-GError.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Tue May  5 07:49:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Eliminate usage of update-alternatives on suse_version >= 1610
