@@ -24,7 +24,7 @@
 %endif
 
 Name:           gnome-kiosk
-Version:        50.0
+Version:        50.1
 Release:        0
 Summary:        Mutter based compositor for kiosks
 License:        GPL-2.0-or-later
