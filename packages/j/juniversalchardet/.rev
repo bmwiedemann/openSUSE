@@ -15,4 +15,12 @@
     <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
     <requestid>1202884</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>924322a11623c49f8c90bd7874647448</srcmd5>
+    <version>1.0.3</version>
+    <time>1780174692</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with javas managed by libalternatives too</comment>
+    <requestid>1356009</requestid>
+  </revision>
 </revisionlist>

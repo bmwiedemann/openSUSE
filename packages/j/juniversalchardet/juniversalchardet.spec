@@ -1,7 +1,7 @@
 #
 # spec file for package juniversalchardet
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,8 +72,7 @@ javadoc -source 8 -encoding UTF-8 \
     -notimestamp \
     -d target/apidocs \
     -sourcepath src/main/java \
-    -link file://%{_javadocdir}/java \
-	org.mozilla.universalchardet
+    org.mozilla.universalchardet
 
 %install
 # jar
