@@ -17,7 +17,7 @@
 
 
 Name:           gnome-user-docs
-Version:        50.0
+Version:        50.2
 Release:        0
 Summary:        GNOME Desktop Documentation
 License:        CC-BY-3.0
