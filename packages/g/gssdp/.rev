@@ -466,4 +466,13 @@
     <comment></comment>
     <requestid>1289810</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>3be0cac04eda14ccc52edecd767270d0</srcmd5>
+    <version>1.6.5</version>
+    <time>1780174529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.5:
+  + Block corresponding TCP socket when allocating UDP socket</comment>
+    <requestid>1355930</requestid>
+  </revision>
 </revisionlist>

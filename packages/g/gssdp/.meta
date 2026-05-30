@@ -2,5 +2,4 @@
   <title>Library for resource discovery and announcement over SSDP</title>
   <description>gssdp offers a GObject-based API for handling resource discovery and
 announcement over SSDP.</description>
-  <devel project="GNOME:Factory" package="gssdp"/>
 </package>
