@@ -1569,4 +1569,20 @@
     <comment>Update version</comment>
     <requestid>1348444</requestid>
   </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>10710305d97294afc4c65e4d35ba8ef9</srcmd5>
+    <version>50.2</version>
+    <time>1780174481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.2:
+  + Web:
+    - Fix repetition of previous line when leaving blockquotes.
+    - Handle traceback triggered by Chromium crash.
+    - Fix double-presentation when flat-reviewing Chromium content.
+  + Preferences:
+    - Fix table-navigation-enabled state for app settings.
+    - Fix orphaned key grab.
+  + Updated translations.</comment>
+    <requestid>1355866</requestid>
+  </revision>
 </revisionlist>
