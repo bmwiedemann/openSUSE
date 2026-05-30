@@ -17,7 +17,7 @@
 
 
 Name:           terragrunt
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Thin wrapper for Terraform for working with multiple Terraform modules
 License:        MIT
@@ -66,7 +66,7 @@ zsh command line completion support for %{name}.
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X github.com/gruntwork-io/go-commons/version.Version=v%{version}"
+   -ldflags="-X github.com/gruntwork-io/terragrunt/internal/version.Version=v%{version}"
 
 %install
 # Install the binary.
@@ -89,6 +89,7 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 install -m 0644 ~/.zshrc %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %check
+%{buildroot}/%{_bindir}/%{name} --version
 %{buildroot}/%{_bindir}/%{name} --version | grep v%{version}
 
 %files
