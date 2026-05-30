@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 30 05:47:07 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260529:
+  * Fix RT-900 non-BT, increase to 999 channels.
+  * Fix escape character in log message for UV-5R Mini
+
+-------------------------------------------------------------------
 Sat May 23 17:13:36 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260522:
