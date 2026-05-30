@@ -518,4 +518,25 @@
 - Spec refresh</comment>
     <requestid>1288668</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>6be20e7701664e87fbac4ee14a9d154e</srcmd5>
+    <version>0.9.15</version>
+    <time>1774555659</time>
+    <user>anag_factory</user>
+    <comment>- security update
+- added patches
+  CVE-2026-32853 [bsc#1260431], crafted FramebufferUpdate message can lead to information disclosure or denial of service
+  * LibVNCServer-CVE-2026-32853.patch
+  CVE-2026-32854 [bsc#1260429], crafted HTTP requests can cause a denial of service
+  * LibVNCServer-CVE-2026-32854.patch</comment>
+    <requestid>1342447</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>77af1ed9c315a8466e900a0acbb0283b</srcmd5>
+    <version>0.9.15</version>
+    <time>1780174502</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2026-44988, [bsc#1266459]</comment>
+    <requestid>1355889</requestid>
+  </revision>
 </revisionlist>

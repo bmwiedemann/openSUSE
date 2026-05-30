@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 29 12:50:18 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-44988: missing validation of rectangle width in tight gradient decoding can lead to server-triggered out-of-bounds write [bsc#1266459]
+  * LibVNCServer-CVE-2026-44988.patch
+
+-------------------------------------------------------------------
+Wed Mar 25 11:33:10 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- security update
+- added patches
+  CVE-2026-32853 [bsc#1260431], crafted FramebufferUpdate message can lead to information disclosure or denial of service
+  * LibVNCServer-CVE-2026-32853.patch
+  CVE-2026-32854 [bsc#1260429], crafted HTTP requests can cause a denial of service
+  * LibVNCServer-CVE-2026-32854.patch
+
+-------------------------------------------------------------------
 Thu Jun 26 07:53:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.9.15

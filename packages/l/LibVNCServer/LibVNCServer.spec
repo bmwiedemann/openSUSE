@@ -1,7 +1,7 @@
 #
 # spec file for package LibVNCServer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,12 @@ Patch1:         0001-CMake-require-at-least-CMake-3.5.patch
 #PATCH-FEATURE-UPSTREAM TLS security type enablement patches gh#LibVNC/libvncserver!234
 Patch10:        0001-libvncserver-Add-API-to-add-custom-I-O-entry-points.patch
 Patch11:        0002-libvncserver-Add-channel-security-handlers.patch
+# CVE-2026-32854 [bsc#1260429], crafted HTTP requests can cause a denial of service
+Patch12:        LibVNCServer-CVE-2026-32854.patch
+# CVE-2026-32853 [bsc#1260431], crafted FramebufferUpdate message can lead to information disclosure or denial of service
+Patch13:        LibVNCServer-CVE-2026-32853.patch
+# CVE-2026-44988: missing validation of rectangle width in tight gradient decoding can lead to server-triggered out-of-bounds write [bsc#1266459]
+Patch14:        LibVNCServer-CVE-2026-44988.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libavahi-devel
