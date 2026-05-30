@@ -31,4 +31,12 @@
     <comment>Use SOURCE_DATE_EPOCH for reproducible jar mtime</comment>
     <requestid>1203520</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>46d7b27d32aaf2aa279f11ee0b9e2c05</srcmd5>
+    <version>0.14</version>
+    <time>1780174706</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with javas managed by libalternatives too</comment>
+    <requestid>1356019</requestid>
+  </revision>
 </revisionlist>

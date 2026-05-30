@@ -1,7 +1,7 @@
 #
 # spec file for package native-platform
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,7 +81,7 @@ mv src/shared/cpp/* src/main/cpp
 CFLAGS="${CFLAGS:-%{optflags}}" ; export CFLAGS ;
 CPPFLAGS="${CPPFLAGS:-%{optflags}}" ; export CPPFLAGS ;
 CXXFLAGS="${CXXFLAGS:-%{optflags}}" ; export CXXFLAGS ;
-%make_build JAVA_HOME=%{_jvmdir}/java
+%make_build
 
 %{mvn_artifact} net.rubygrapefruit:%{name}:%{version} build/%{name}.jar
 %{mvn_file} : %{name}

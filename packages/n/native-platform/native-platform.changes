@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 29 16:26:47 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use the system JAVA_HOME instead of computing the wrong one
+
+-------------------------------------------------------------------
 Wed Sep 25 08:38:32 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
