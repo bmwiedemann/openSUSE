@@ -2396,4 +2396,29 @@
   from boo#1258070.</comment>
     <requestid>1353714</requestid>
   </revision>
+  <revision rev="302" vrev="1">
+    <srcmd5>84742111827854ef0a0082d2d2a38bbe</srcmd5>
+    <version>50.1</version>
+    <time>1780174510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.1:
+  + Fixed issue where GDM failed to properly terminate conflicting
+    graphical sessions started outside of GDM (e.g. ThinLinc,
+    TigerVNC). GDM now queries logind directly to find and
+    terminate all conflicting sessions
+  + Fixed plymouth hanging indefinitely on headless systems or
+    systems without monitors, which prevented the system from
+    reaching graphical.target
+  + Fixed XDG_DATA_DIRS construction to prevent gnome-shell from
+    failing to find its files when /usr/share had higher precedence
+    than /usr/local/share
+  + Fixed bug where GDM would set XDG_SESSION_TYPE=wayland on X11
+    sessions
+  + Updated translations.
+- Drop gdm-fix-duplicate-dirs.patch: Fixed upstream.
+
+- Add gdm-fix-duplicate-dirs.patch: launch-environment: Fix
+  XDG_DATA_DIRS construction.</comment>
+    <requestid>1355922</requestid>
+  </revision>
 </revisionlist>
