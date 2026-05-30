@@ -1,7 +1,7 @@
 #
 # spec file for package xscreensaver
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           xscreensaver
-Version:        6.09
+Version:        6.15
 Release:        0
 Summary:        A screen saver and locker for the X Window System
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -48,7 +48,6 @@ Patch45:        xscreensaver-bug-reports.patch
 Patch46:        xscreensaver-unrecognized-opts.patch
 BuildRequires:  automake
 BuildRequires:  bc
-BuildRequires:  gdmflexiserver
 BuildRequires:  gtkdoc
 BuildRequires:  intltool
 BuildRequires:  libgle-devel
@@ -196,10 +195,8 @@ bash -x %configure \
   --with-pam                                         \
   --enable-pam-account                               \
   --without-shadow                                   \
-  --with-login-manager=%{_bindir}/gdmflexiserver     \
   --with-image-directory=%{_datadir}/wallpapers      \
-  --enable-locking                                   \
-  --with-login-manager
+  --enable-locking
 %make_build all
 
 %install
@@ -318,6 +315,7 @@ done
 %{_libexecdir}/xscreensaver/xscreensaver-getimage-file
 %{_libexecdir}/xscreensaver/xscreensaver-getimage-video
 %{_libexecdir}/xscreensaver/xscreensaver-text
+%{_libexecdir}/xscreensaver/xshadertoy
 %{_libexecdir}/xscreensaver/mapscroller.pl
 %dir %{_sysconfdir}/xscreensaver/
 %dir %{_datadir}/applications/screensavers/
@@ -326,5 +324,6 @@ done
 %{_mandir}/man6/xscreensaver-getimage-file.*
 %{_mandir}/man6/xscreensaver-getimage-video.*
 %{_mandir}/man6/xscreensaver-text.*
+%{_mandir}/man6/xshadertoy.*
 
 %changelog

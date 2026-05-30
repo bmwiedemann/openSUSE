@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu May 28 22:01:05 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
+
+- update to 6.15:
+  * New hacks: worldpieces, bestill, bubblecolors, darktransit,
+    downfall, driftclouds, goldenapollian, noxfire, prococean,
+    rigrekt, trainmandala, trizm and universeball.
+  * mapscroller shows the name of the nearest major city, and has
+    an updated list of available map tile servers.
+  * Higher resolution Earth imagery in glplanet, dymaxionmap,
+    sphereeversion, cubocteversion and platonicfolding.
+  * X11: xscreensaver-settings has a search field.
+  * X11: Excised the last remnants of XLFD-style font parsing.
+  * macOS, iOS: Text in right-to-left languages is rendered
+    properly.
+  * Android: Most things display text properly.
+- changes from 6.14.1:
+  * macOS: the new shader savers were crashing at startup.
+- changes from 6.14:
+  * Added the ability to run shadertoy.com programs as screen
+    savers.
+  * New shader-based savers: alienbeacon, batteredplanet,
+    elementalring, fluxcore, gimbalharmonics, hexplasma,
+    logarithmiccircles, neongravity, neontriangulator, protophore,
+    selfreflect, skyline, stardome, starnest, stripeytorus,
+    synthwavecity, topologica and truchetzoom.
+  * Better label wrapping in carousel and photopile.
+  * Fixed glslideshow preferences and title display.
+  * X11: Decrufted PAM, including /etc/pam.d/xscreensaver.
+- changes from 6.13:
+  * Added a number of historical full chess games to endgame.
+  * Rewrote glslideshow to add more image-transition effects.
+  * Hacks that display images and their filenames will display
+    their titles instead, if the image originated in an RSS feed.
+  * X11: Wayland fixes.
+- changes from 6.12:
+  * X11: DPMS works on Wayland.
+  * X11: Fading uses GL now which should be more performant.
+- changes from 6.11:
+  * X11: Now supports Wayland (blanking only, not locking).
+  * X11: More reliable and timely DPMS activation.
+  * X11: Dead keys work in password input.
+  * X11: Fixed a couple of minor Y2038 bugs.
+- changes from 6.10:
+  * New hacks: dumpsterfire, hopffibration, platonicfolding and
+    klondike.
+  * Rewrote the VT100 emulator for apple2 and phosphor.
+  * BSOD supports systemd and bitlocker.
+- Add 35 new screensavers to xscreensaver-data-extra.list.
+- Package the new xshadertoy engine binary and man page (used by
+  the shadertoy-based savers) in the data-extra subpackage.
+- Rebase xscreensaver-disable-upgrade-nagging-message.patch.
+
+-------------------------------------------------------------------
+Mon Mar  9 07:10:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop dependency on gdmflexiserver: this no longer exists with
+  GNOME 50.
+
+-------------------------------------------------------------------
 Sat Nov 22 21:27:11 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

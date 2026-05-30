@@ -2,11 +2,11 @@ From: Andreas Stieger <Andreas.Stieger@gmx.de>
 Date: Sun, 01 Oct 2023 21:32:38 +0200
 Subject: beer
 
-Index: xscreensaver-6.07/driver/dialog.c
+Index: xscreensaver-6.15/driver/dialog.c
 ===================================================================
---- xscreensaver-6.07.orig/driver/dialog.c
-+++ xscreensaver-6.07/driver/dialog.c
-@@ -1454,18 +1454,14 @@ window_draw (window_state *ws)
+--- xscreensaver-6.15.orig/driver/dialog.c
++++ xscreensaver-6.15/driver/dialog.c
+@@ -1494,20 +1494,14 @@ window_draw (window_state *ws)
       disrespect the wishes of the person who wrote all of this software for
       you -- you are a terrible person.  Kindly go fuck yourself.
    */
@@ -15,6 +15,8 @@ Index: xscreensaver-6.07/driver/dialog.c
 -      lines[i].text  = _("Update available!\nThis version is very old.\n");
 -      lines[i].font  = ws->error_font;
 -      lines[i].fg    = ws->xft_error_foreground;
+-      /* A special greeting to the Debian assholes who keep patching this out:
+-         once again, go fuck yourselves, Debian. https://jwz.org/b/yiYo */
 -      lines[i].fg2   = lines[i].fg;
 -      lines[i].bg    = ws->background;
 -      lines[i].type  = LABEL;
