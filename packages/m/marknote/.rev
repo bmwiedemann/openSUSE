@@ -73,4 +73,12 @@ Depends on sr#1164320</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1343901</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>658b599e2f201b172c13670456ad8011</srcmd5>
+    <version>1.6.0</version>
+    <time>1780174839</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.6.0</comment>
+    <requestid>1356064</requestid>
+  </revision>
 </revisionlist>
