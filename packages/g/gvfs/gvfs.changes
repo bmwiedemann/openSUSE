@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 00:43:31 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gvfs-fix-udisks2-crash.patch: Fix crash of cancelled pending
+  operation. (bsc#1261625, glgo#GNOME/gvfs!326)
+
+-------------------------------------------------------------------
 Sun Apr  5 06:36:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Split out cdda in own separate sub package (gvfs-backend-cdda).

@@ -30,6 +30,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source99:       baselibs.conf
 
+# PATCH-FIX-UPSTREAM gvfs-fix-udisks2-crash.patch bsc#1261625, glgo#GNOME/gvfs!326 alynx.zhou@suse.com -- Fix cancelled pending operation
+Patch0:         gvfs-fix-udisks2-crash.patch
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gvfs-nds.patch ksamrat@novell.com -- Provides NDS browsing for nautilus
 Patch1000:      gvfs-nds.patch
