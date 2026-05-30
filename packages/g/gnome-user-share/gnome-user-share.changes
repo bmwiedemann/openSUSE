@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 24 07:12:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.3:
+  + Removed the translatable string of realm that caused client
+    authentication errors with passwords
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:44:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

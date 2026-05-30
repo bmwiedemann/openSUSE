@@ -584,4 +584,15 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342967</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>840779f1fa2635a1e9ad4387fa707ea6</srcmd5>
+    <version>48.3</version>
+    <time>1780174521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 48.3:
+  + Removed the translatable string of realm that caused client
+    authentication errors with passwords
+  + Updated translations.</comment>
+    <requestid>1355926</requestid>
+  </revision>
 </revisionlist>
