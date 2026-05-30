@@ -1,0 +1,13 @@
+Index: ossim-2.12.0/src/hdf5/ossimHdf5Info.cpp
+===================================================================
+--- ossim-2.12.0.orig/src/hdf5/ossimHdf5Info.cpp
++++ ossim-2.12.0/src/hdf5/ossimHdf5Info.cpp
+@@ -1145,7 +1145,7 @@ void ossimHdf5Info::dumpArrayType( H5::A
+           nArrayElements*=dims[idx]; 
+          }
+ 
+-         dimString = ossimString("(") + dimOut.str() + ossimString::toString(dims[dims.size()-1])+")";  
++         dimString = ossimString("(") + dimOut.str() + ossimString::toString(ossim_uint64(dims[dims.size()-1]))+")";
+          m_kwl.addPair(prefix+".dimensions", dimString);
+ 
+          ossim_uint32 typeSize = superType.getSize();

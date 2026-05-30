@@ -1,0 +1,8 @@
+<package name="ossim" project="openSUSE:Factory">
+  <title>Open Source Software Image Map (OSSIM)</title>
+  <description>The OSSIM core utilities.
+Open Source Software Image Map (OSSIM) is an engine for
+remote sensing, image processing, geographical information systems and
+photogrammetry.</description>
+  <url>https://trac.osgeo.org/ossim/</url>
+</package>

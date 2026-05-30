@@ -1,0 +1,19 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Date: Fri, 30 May 2026 00:00:00 +0000
+Subject: [PATCH] Link the system libtiff via TIFF_LIBRARIES
+
+CMake's own FindTIFF sets TIFF_LIBRARIES (plural); the singular
+TIFF_LIBRARY was only set by the bundled FindTIFF.cmake we no longer
+use, leaving libtiff unlinked (undefined references to TIFF*).
+---
+--- a/CMakeLists.txt	2026-05-30 14:12:10.996569702 +0200
++++ b/CMakeLists.txt	2026-05-30 14:12:11.004570595 +0200
+@@ -128,7 +128,7 @@
+ find_package( TIFF )
+ if( TIFF_FOUND )
+    include_directories( ${TIFF_INCLUDE_DIR} )
+-   set( ossimDependentLibs ${ossimDependentLibs} ${TIFF_LIBRARY} )
++   set( ossimDependentLibs ${ossimDependentLibs} ${TIFF_LIBRARIES} )
+ else( TIFF_FOUND )
+    message( FATAL_ERROR "Could not find required tiff package!" )
+ endif( TIFF_FOUND )
