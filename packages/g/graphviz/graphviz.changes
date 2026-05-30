@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 26 13:17:29 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- License change from EPL (Eclipse Public License) Version 1 to Version 2
+- Drop libgraphviz6 construct. Looks like a helper dependency which, if
+  ever used (I could not find any user), should be rather broken due to the
+  stuck library version no 6 for years.
+- Update to 15.0.0
+  * The MinGW packages no longer have libgd-dependent components enabled.
+  * **Breaking**: The `diffimg` utility has been removed.
+- Integrated mainline:
+D    Fix-build-with-non-standard-python-binary.patch
+- Not needed anymore:
+D    graphviz-smyrna-link_against_glu.patch
+
+-------------------------------------------------------------------
 Tue Feb 10 18:02:31 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to 14.1.2

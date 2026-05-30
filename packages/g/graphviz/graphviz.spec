@@ -1,7 +1,6 @@
 #
 # spec file for package graphviz
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -64,17 +63,15 @@
 %bcond_with    java
 %bcond_with    ocaml
 Name:           graphviz%{psuffix}
-Version:        14.1.2
+Version:        15.0.0
 Release:        0
 Summary:        Graph Visualization Tools
-License:        EPL-1.0
+License:        EPL-2.0
 Group:          Productivity/Graphics/Visualization/Graph
 URL:            https://www.graphviz.org/
 Source0:        https://gitlab.com/graphviz/graphviz/-/archive/%version/graphviz-%{version}.tar.bz2
 Source1:        graphviz-rpmlintrc
-Patch0:         graphviz-smyrna-link_against_glu.patch
 Patch1:         graphviz-fix-pkgIndex.patch
-Patch2:         Fix-build-with-non-standard-python-binary.patch
 BuildRequires:  %{gcc_pkg}-c++
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -87,6 +84,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python%pyversion_nodot-base >= 3.9
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gts)
 BuildRequires:  pkgconfig(zlib)
@@ -316,8 +314,6 @@ name-value pairs and programmer-defined records.
 %package -n libgvc%{gvc_soversion}
 Summary:        Graphviz context library
 Group:          System/Libraries
-Provides:       libgraphviz6:%{_libdir}/libgvc.so.6
-Obsoletes:      libgraphviz6 < %{version}-%{release}
 
 %description -n libgvc%{gvc_soversion}
 libgvc provides a context for applications wishing to manipulate and render
@@ -327,8 +323,6 @@ plugin mechanism for renderers.
 %package -n libgvpr%{gvpr_soversion}
 Summary:        Library for graph filtering
 Group:          System/Libraries
-Provides:       libgraphviz6:%{_libdir}/libgvpr.so.2
-Obsoletes:      libgraphviz6 < %{version}-%{release}
 
 %description -n libgvpr%{gvpr_soversion}
 The gvpr library allows an application to perform general-purpose graph
@@ -337,8 +331,6 @@ manipulation and filtering based on an awk-like language
 %package -n libpathplan%{pathplan_soversion}
 Summary:        Library for finding smooth shortest paths
 Group:          System/Libraries
-Provides:       libgraphviz6:%{_libdir}/libpathplan.so.4
-Obsoletes:      libgraphviz6 < %{version}-%{release}
 
 %description -n libpathplan%{pathplan_soversion}
 The pathplan library contains functions for finding shortest paths in polygons
@@ -347,8 +339,6 @@ in fitting bezier curves to those paths.
 %package -n libxdot%{xdot_soversion}
 Summary:        Library for parsing and deparsing of xdot operations
 Group:          System/Libraries
-Provides:       libgraphviz6:%{_libdir}/libxdot.so.4
-Obsoletes:      libgraphviz6 < %{version}-%{release}
 
 %description -n libxdot%{xdot_soversion}
 The libxdot library provides support for parsing and deparsing graphical
@@ -471,6 +461,9 @@ for manfile in $(find %{buildroot} -name \*.man); do
         $manfile
 done
 
+# {_bindir}/dot_sandbox and possible others
+%python3_fix_shebang
+
 # There are no such binaries distributed by us
 rm -f %{buildroot}%{_mandir}/man1/mingle.1
 
@@ -531,7 +524,7 @@ rm -rf %{buildroot}%{_libdir}/graphviz/ruby
 rm -f %{buildroot}%{_libdir}/graphviz/libgvplugin_pango*
 rm -f %{buildroot}%{_libdir}/graphviz/libgvplugin_xlib*
 # This is part of the gd subpkg only
-rm -f %{buildroot}%{_mandir}/man1/{diffimg.1*,dotty.1*,lneato.1*}
+rm -f %{buildroot}%{_mandir}/man1/{dotty.1*,lneato.1*}
 rm -f %{buildroot}%{_bindir}/{dotty,lneato}
 %endif
 # Remove wrongly located docs
@@ -568,7 +561,7 @@ test -s %{_libdir}/graphviz/%{config_file} || echo "%{_libdir}/graphviz/%{config
 
 %if "%{flavor}" == "qt6"
 %files -n graphviz-gvedit
-%license epl-v10.txt
+%license LICENSE
 %{_bindir}/gvedit
 %dir %{_datadir}/%{mname}/gvedit
 %{_datadir}/%{mname}/gvedit/attrs.txt
@@ -577,14 +570,12 @@ test -s %{_libdir}/graphviz/%{config_file} || echo "%{_libdir}/graphviz/%{config
 
 %if "%{flavor}" == "addons"
 %files -n graphviz-smyrna
-%license epl-v10.txt
+%license LICENSE
 %{_bindir}/smyrna
 %{_datadir}/%{mname}/smyrna
 %{_mandir}/man1/smyrna.1%{ext_man}
 
 %files -n graphviz-gd
-%{_bindir}/diffimg
-%{_mandir}/man1/diffimg.1%{ext_man}
 %{_libdir}/graphviz/libgvplugin_gd.so*
 
 %post -n graphviz-gd
@@ -676,7 +667,7 @@ if test -x %{_bindir}/dot; then %{_bindir}/dot -c ; fi
 %if "%{flavor}" == ""
 %files
 %doc doc/FAQ.html AUTHORS README.md NEWS CHANGELOG.md
-%license epl-v10.txt
+%license LICENSE
 %{_bindir}/acyclic
 %{_bindir}/bcomps
 %{_bindir}/ccomps
