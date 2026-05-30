@@ -1,10 +1,10 @@
 <services>
-  <service mode="manual" name="tar_scm">
+  <service mode="manual" name="obs_scm">
     <param name="scm">git</param>
     <param name="url">https://github.com/keybase/client.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v6.6.0</param>
+    <param name="revision">v6.6.2</param>
     <param name="filename">client</param>
     <param name="changesgenerate">disable</param>
   </service>

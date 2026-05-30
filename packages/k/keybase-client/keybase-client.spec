@@ -18,7 +18,7 @@
 
 
 Name:           keybase-client
-Version:        6.6.0
+Version:        6.6.2
 Release:        0
 Summary:        Keybase command line client
 License:        BSD-3-Clause
@@ -33,8 +33,8 @@ Source5:        README.tool.SUSE
 Patch1:         ensure-mount-dir-exists.patch
 Patch2:         ensure-service-stop-unmounts-filesystem.patch
 Patch3:         update-filippo.io-edwards25519.patch
-Patch4:         downgrade-miekg-dns.patch
-Patch5:         update-go-image.patch
+Patch4:         update-go-crypto.patch
+Patch5:         update-go-net.patch
 BuildRequires:  fdupes
 BuildRequires:  go1.25
 BuildRequires:  golang-packaging
@@ -94,8 +94,6 @@ without using a filesystem mountpoint.
 %autosetup -p1 -n client-%{version}
 cd go
 tar -xaf %{SOURCE1}
-# Avoid a duplicate function declaration
-rm vendor/golang.org/x/text/secure/bidirule/bidirule10.0.0.go
 
 %build
 cd go

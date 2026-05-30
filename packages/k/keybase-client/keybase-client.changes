@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 29 19:51:01 UTC 2026 - Matthias Bach <marix@marix.org> - 6.6.2
+
+- Add update-go-crypto.patch to address boo#1266158.
+- Add update-go-net.patch to address boo#1266596.
+
+-------------------------------------------------------------------
+Thu May 28 19:36:42 UTC 2026 - Matthias Bach <marix@marix.org> - 6.6.2
+
+- Update to version 6.6.2
+  * Improve git default branch handling
+- Drop update-go-image.patch as the dependency was updated upstream.
+- Fix accidental inclusion of old vendor directory in the source
+  archive.
+- Drop downgrade-miekg-dns.patch as it was only a workaround for the
+  old vendor directory.
+
+-------------------------------------------------------------------
 Thu Mar 26 20:07:58 UTC 2026 - Matthias Bach <marix@marix.org> - 6.6.0
 
 - Add update-go-image.patch to address bsc#1260696.

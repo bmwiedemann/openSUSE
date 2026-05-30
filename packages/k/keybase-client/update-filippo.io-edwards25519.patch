@@ -1,16 +1,16 @@
 From: Matthias Bach <marix@marix.org>
 Date: Fri, 20 Feb 2026 20:41:25 +0100
 Subject: Update filippo.io/edwards25519 for CVE-2026-26958
-References: bsc#1258591
-Upstream: never
+References: bsc#1258591, gh#keybase/client#29257
+Upstream: submitted
 
 ---
  go/go.mod | 2 +-
- go/go.sum | 2 ++
- 2 files changed, 3 insertions(+), 1 deletion(-)
+ go/go.sum | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/go/go.mod b/go/go.mod
-index 1c0c4af9b7..a2ee1a85e3 100644
+index d63e916b..0a75bad4 100644
 --- a/go/go.mod
 +++ b/go/go.mod
 @@ -98,7 +98,7 @@ require (
@@ -23,13 +23,12 @@ index 1c0c4af9b7..a2ee1a85e3 100644
  	github.com/RoaringBitmap/roaring v0.4.22-0.20191112221735-4d53b29a8f7d // indirect
  	github.com/StackExchange/wmi v1.2.1 // indirect
 diff --git a/go/go.sum b/go/go.sum
-index 98b6b4b681..099d8a5147 100644
+index 67bfd528..65489331 100644
 --- a/go/go.sum
 +++ b/go/go.sum
-@@ -1,6 +1,8 @@
- cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
- filippo.io/edwards25519 v1.1.0 h1:FNf4tywRC1HmFuKW5xopWpigGjJKiJSV0Cqo0cJWDaA=
- filippo.io/edwards25519 v1.1.0/go.mod h1:BxyFTGdWcka3PhytdK4V28tE5sGfRvvvRV7EaN4VDT4=
+@@ -1,5 +1,5 @@
+-filippo.io/edwards25519 v1.1.0 h1:FNf4tywRC1HmFuKW5xopWpigGjJKiJSV0Cqo0cJWDaA=
+-filippo.io/edwards25519 v1.1.0/go.mod h1:BxyFTGdWcka3PhytdK4V28tE5sGfRvvvRV7EaN4VDT4=
 +filippo.io/edwards25519 v1.2.0 h1:crnVqOiS4jqYleHd9vaKZ+HKtHfllngJIiOpNpoJsjo=
 +filippo.io/edwards25519 v1.2.0/go.mod h1:xzAOLCNug/yB62zG1bQ8uziwrIqIuxhctzJT18Q77mc=
  github.com/BurntSushi/toml v0.2.1-0.20160717150709-99064174e013/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=

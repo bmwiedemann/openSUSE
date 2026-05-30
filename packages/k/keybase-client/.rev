@@ -356,4 +356,12 @@
 - Switch to go1.25 as required by update go image library.</comment>
     <requestid>1343347</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cf8e34aeaed2cfdf4463de5a7148331f</srcmd5>
+    <version>6.6.2</version>
+    <time>1780174649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1355973</requestid>
+  </revision>
 </revisionlist>
