@@ -1,0 +1,182 @@
+From 12c099e6de047b3ac1b329520b518ad2548a1290 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Fri, 22 May 2026 11:44:05 +0100
+Subject: [PATCH] Add 'show_changes' to "file.append" and
+ "file.prepend" state functions (#760)
+
+* Add 'show_changes' to file.append and file.prepend
+
+Co-authored-by: Adam Bolte <adam.bolte@sitepoint.com>
+
+* Add show_changes tests for file.append and file.prepend
+
+* Add changelog file
+
+* Fix issue in docstring for file.append and file.prepend
+
+---------
+
+Co-authored-by: Adam Bolte <adam.bolte@sitepoint.com>
+---
+ changelog/59329.added.md                      |  1 +
+ salt/states/file.py                           | 22 ++++++++++++++++++
+ .../functional/states/file/test_append.py     | 23 +++++++++++++++++++
+ .../functional/states/file/test_prepend.py    | 23 +++++++++++++++++++
+ 4 files changed, 69 insertions(+)
+ create mode 100644 changelog/59329.added.md
+
+diff --git a/changelog/59329.added.md b/changelog/59329.added.md
+new file mode 100644
+index 0000000000..09b36b2dd9
+--- /dev/null
++++ b/changelog/59329.added.md
+@@ -0,0 +1 @@
++Add 'show_changes' arg for file.append and file.prepend states to hide output
+diff --git a/salt/states/file.py b/salt/states/file.py
+index 9630ff7096..4372aac221 100644
+--- a/salt/states/file.py
++++ b/salt/states/file.py
+@@ -6317,6 +6317,7 @@ def append(
+     defaults=None,
+     context=None,
+     ignore_whitespace=True,
++    show_changes=True,
+ ):
+     """
+     Ensure that some text appears at the end of a file.
+@@ -6408,6 +6409,12 @@ def append(
+         appending content, one space or multiple tabs are the same for salt.
+         Set this option to ``False`` if you want to change this behavior.
+ 
++    show_changes
++        .. versionadded:: 3008.0
++
++        Output a unified diff of the old file and the new file.
++        Set this option to  ``False`` to disable this.
++
+     Multi-line example:
+ 
+     .. code-block:: yaml
+@@ -6544,6 +6551,8 @@ def append(
+         if slines != nlines:
+             if not __utils__["files.is_text"](name):
+                 ret["changes"]["diff"] = "Replace binary file"
++            elif not show_changes:
++                ret["changes"]["diff"] = "<show_changes=False>"
+             else:
+                 # Changes happened, add them
+                 ret["changes"]["diff"] = "\n".join(difflib.unified_diff(slines, nlines))
+@@ -6566,6 +6575,8 @@ def append(
+     if slines != nlines:
+         if not __utils__["files.is_text"](name):
+             ret["changes"]["diff"] = "Replace binary file"
++        elif not show_changes:
++            ret["changes"]["diff"] = "<show_changes=False>"
+         else:
+             # Changes happened, add them
+             ret["changes"]["diff"] = "\n".join(difflib.unified_diff(slines, nlines))
+@@ -6587,6 +6598,7 @@ def prepend(
+     defaults=None,
+     context=None,
+     header=None,
++    show_changes=True,
+ ):
+     """
+     Ensure that some text appears at the beginning of a file
+@@ -6678,6 +6690,12 @@ def prepend(
+         appending content, one space or multiple tabs are the same for salt.
+         Set this option to ``False`` if you want to change this behavior.
+ 
++    show_changes
++        .. versionadded:: 3008.0
++
++        Output a unified diff of the old file and the new file.
++        Set this option to  ``False`` to disable this.
++
+     Multi-line example:
+ 
+     .. code-block:: yaml
+@@ -6830,6 +6848,8 @@ def prepend(
+         if slines != nlines:
+             if not __utils__["files.is_text"](name):
+                 ret["changes"]["diff"] = "Replace binary file"
++            elif not show_changes:
++                ret["changes"]["diff"] = "<show_changes=False>"
+             else:
+                 # Changes happened, add them
+                 ret["changes"]["diff"] = "".join(difflib.unified_diff(slines, nlines))
+@@ -6869,6 +6889,8 @@ def prepend(
+     if slines != nlines:
+         if not __utils__["files.is_text"](name):
+             ret["changes"]["diff"] = "Replace binary file"
++        elif not show_changes:
++            ret["changes"]["diff"] = "<show_changes=False>"
+         else:
+             # Changes happened, add them
+             ret["changes"]["diff"] = "".join(difflib.unified_diff(slines, nlines))
+diff --git a/tests/pytests/functional/states/file/test_append.py b/tests/pytests/functional/states/file/test_append.py
+index 874d5d2071..9b9d26b134 100644
+--- a/tests/pytests/functional/states/file/test_append.py
++++ b/tests/pytests/functional/states/file/test_append.py
+@@ -160,3 +160,26 @@ append_in_file:
+         for state_run in ret:
+             assert state_run.result is False
+             assert state_run.comment == "check_cmd determined the state failed"
++
++
++@pytest.mark.parametrize("show_changes", (None, True, False))
++def test_append_show_changes(file, show_changes, tmp_path):
++    """
++    Test show_changes argument for file.append
++    """
++
++    name = tmp_path / "testfile-show_changes"
++    name.write_text("#salty!")
++    if show_changes is None:
++        ret = file.append(name=str(name), text="cheese")
++    else:
++        ret = file.append(name=str(name), text="cheese", show_changes=show_changes)
++
++    assert ret.result is True
++    assert name.exists()
++
++    if show_changes in [True, None]:
++        assert "diff" in ret.changes
++        assert "cheese" in ret.changes["diff"]
++    else:
++        assert ret.changes["diff"] == "<show_changes=False>"
+diff --git a/tests/pytests/functional/states/file/test_prepend.py b/tests/pytests/functional/states/file/test_prepend.py
+index 55e7548b38..219af9a8ec 100644
+--- a/tests/pytests/functional/states/file/test_prepend.py
++++ b/tests/pytests/functional/states/file/test_prepend.py
+@@ -34,3 +34,26 @@ def test_prepend_issue_27401_makedirs(file, tmp_path):
+     assert name.is_file()
+     assert name.read_text() == "cheese\n"
+     assert name.parent.is_dir()
++
++
++@pytest.mark.parametrize("show_changes", (None, True, False))
++def test_prepend_show_changes(file, show_changes, tmp_path):
++    """
++    Test show_changes argument for file.prepend
++    """
++
++    name = tmp_path / "testfile-prepend-show_changes"
++    name.write_text("#salty!")
++    if show_changes is None:
++        ret = file.prepend(name=str(name), text="cheese")
++    else:
++        ret = file.prepend(name=str(name), text="cheese", show_changes=show_changes)
++
++    assert ret.result is True
++    assert name.exists()
++
++    if show_changes in [True, None]:
++        assert "diff" in ret.changes
++        assert "cheese" in ret.changes["diff"]
++    else:
++        assert ret.changes["diff"] == "<show_changes=False>"
+-- 
+2.54.0
+

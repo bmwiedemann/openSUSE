@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 22 10:54:31 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Add 'show_changes' arg to 'file.append/file.prepend" states
+
+- Added:
+  * add-show_changes-to-file.append-and-file.prepend-sta.patch
+
+-------------------------------------------------------------------
 Thu May 14 12:45:32 UTC 2026 - Victor Zhestkov <vzhestkov@suse.com>
 
 - Use non vendored tornado with Python 3.11 (bsc#1257583, bsc#1259700)
