@@ -1,0 +1,6 @@
+<package name="python-commented-configparser" project="openSUSE:Factory">
+  <title>python-commented-configparser</title>
+  <description>A custom ConfigParser class that preserves comments and most formatting when writing loaded config out.</description>
+  <devel project="devel:languages:python" package="python-commented-configparser"/>
+  <url>https://github.com/Preocts/commented-configparser</url>
+</package>
