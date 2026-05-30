@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri May 29 20:16:55 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 4.19.4:
+  + Fixed a crash when updating a task
+  + Fixed completed tasks generating an ambiguous local timestamp in the VTODO
+  + Fixed inconsistent accent colors across the app
+- Update to version 4.19.3:
+  + Fixed CalDAV sync with Mailbox
+  + Fixed cursor jumping to the end of the text when editing task titles
+  + Fixed long text expanding the sidebar beyond its intended width in HeaderItem
+- Update to verison 4.19.2:
+  + Added automatic daily backup with support for extra backup folder locations
+  + Added support for system accent color
+  + Added CalDAV section support via VTODO List prefix
+  + Added past date selection in the date picker
+  + Added Export as .ics option in the context menu for CalDAV tasks
+  + Improved change history
+  + Fixed HTTP 200 being treated as an error on Horde and similar servers when
+    creating or updating tasks
+  + Fixed subtasks appearing as main tasks when Horde sends multiple VTODOs in
+    a single .ics file
+  + Fixed calendar events not updating when Planify is kept open past midnight
+  + Fixed labels not being removed when deselected in the multi-select toolbar
+  + Fixed label picker incorrectly assigning labels from one task to others
+    when closing without changes in multi-select mode
+  + Fixed inaccurate section task counts in Board view after drag and drop
+  + Fixed inbox section visibility and UX in Board view — now auto-hides when empty
+  + Fixed moving tasks between different sources (e.g. CalDAV → Local)
+  + Fixed double sync triggered when adding a new source
+
+-------------------------------------------------------------------
 Sun Apr 26 23:29:56 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 4.19.1:
