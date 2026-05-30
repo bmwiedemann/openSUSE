@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 30 10:27:57 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Skip testing with scikit-image and xarray for python311:
+  Python 3.11 is out of SPEC-0 and packages drop support
+
+-------------------------------------------------------------------
 Wed Apr 22 14:31:52 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.7.0

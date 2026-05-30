@@ -566,4 +566,13 @@
   ## Fixed</comment>
     <requestid>1349311</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>bc441b94354f719f1e24a9ab5b949243</srcmd5>
+    <version>6.7.0</version>
+    <time>1780174758</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip testing with scikit-image and xarray for python311:
+  Python 3.11 is out of SPEC-0 and packages drop support</comment>
+    <requestid>1356029</requestid>
+  </revision>
 </revisionlist>

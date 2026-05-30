@@ -70,10 +70,10 @@ BuildRequires:  %{python_module pyshp}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module scikit-image}
+BuildRequires:  %{python_module scikit-image if %python-base >= 3.12}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module statsmodels}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module xarray if %python-base >= 3.12}
 # /SECTION
 %python_subpackages
 
@@ -136,15 +136,14 @@ donttest="test_kaleido"
 donttest="$donttest or test_px_input and (vaex or polars)"
 # API parameter mismatches and precision errors
 donttest="$donttest or test_matplotlylib"
-# fails to plot with numpy 2 but cannot reproduce failure interactively
-donttest="$donttest or test_masked_constants_example"
 # flaky timing error
 donttest="$donttest or test_fast_track_finite_arrays"
-
+# no scikit-image for python311 anymore
+python311_donttest=" or TestTernarycontour"
 # Optional dependencies not yet in openSUSE, requires python-polars
 # --ignore doesn't work because the import is in the conftest.py
 rm -rf tests/test_optional/test_px/
-%pytest tests/test_optional -k "not ($donttest)"
+%pytest tests/test_optional -k "not ($donttest ${$python_donttest})"
 
 %files %{python_files}
 %license LICENSE.txt
