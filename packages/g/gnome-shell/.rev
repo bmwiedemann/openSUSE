@@ -2682,4 +2682,29 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   after screen unlock</comment>
     <requestid>1352551</requestid>
   </revision>
+  <revision rev="290" vrev="1">
+    <srcmd5>1bd0ca583932a83bca5b60d6346c01a9</srcmd5>
+    <version>50.2</version>
+    <time>1780174492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.2:
+  + Fix extending screenshot area selection to monitor edges
+  + Fix faulty German translations of several date/time formats
+  + Don't notify dash elements twice to screen reader
+  + Add rate control to VA-API H.264 screencast pipelines
+  + Fix showing “Install Updates” checkbox in power-off/restart
+    dialog
+  + Fix autorun notification for connected USB drives
+  + Fix spinner resetting on each key press in overview search
+  + Fix reapplying layout on `xkb-options` changes
+  + Fix wiggle feedback on non-password auth failures
+  + Open session/a11y menu on login screen on either button
+  + Only show audio input icon when actually recording
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Update vendored sub-project libgnome-volume-control.
+
+  after screen unlock</comment>
+    <requestid>1355870</requestid>
+  </revision>
 </revisionlist>

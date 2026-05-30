@@ -1,9 +1,29 @@
 -------------------------------------------------------------------
+Thu May 28 20:34:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.2:
+  + Fix extending screenshot area selection to monitor edges
+  + Fix faulty German translations of several date/time formats
+  + Don't notify dash elements twice to screen reader
+  + Add rate control to VA-API H.264 screencast pipelines
+  + Fix showing “Install Updates” checkbox in power-off/restart
+    dialog
+  + Fix autorun notification for connected USB drives
+  + Fix spinner resetting on each key press in overview search
+  + Fix reapplying layout on `xkb-options` changes
+  + Fix wiggle feedback on non-password auth failures
+  + Open session/a11y menu on login screen on either button
+  + Only show audio input icon when actually recording
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Update vendored sub-project libgnome-volume-control.
+
+-------------------------------------------------------------------
 Sun May  3 07:15:00 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-ibus-engine-race-condition-on-unlock.patch, Fix IBus input failure
-  after screen unlock 
-  
+  after screen unlock
+
 -------------------------------------------------------------------
 Sun Apr 26 15:44:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
