@@ -1,7 +1,7 @@
 #
 # spec file for package conscrypt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,8 +92,8 @@ include_directories(
 	../common/src/jni/main/include/
     ../common/src/jni/unbundled/include/
     %{_includedir}/boringssl
-	%{_jvmdir}/java/include/
-	%{_jvmdir}/java/include/linux/
+	${JAVA_HOME}/include/
+	${JAVA_HOME}/include/linux/
 	)
 target_link_libraries(conscrypt_jni boringssl_ssl boringssl_crypto \${CMAKE_DL_LIBS})
 __CMAKELISTS__

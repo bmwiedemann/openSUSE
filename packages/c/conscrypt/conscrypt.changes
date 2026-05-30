@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 29 14:29:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building with JDK that uses libalternatives instead of
+  update-alternatives
+
+-------------------------------------------------------------------
 Thu Jul 24 09:50:38 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with newer cmake
