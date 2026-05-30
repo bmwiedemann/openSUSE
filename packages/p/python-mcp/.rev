@@ -56,4 +56,18 @@ Mon Feb  2 11:47:16 UTC 2026 - Egbert Eich &lt;eich@suse.com&gt;
 </comment>
     <requestid>1346950</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fe7093b00bf5612edaf948cec3fe9750</srcmd5>
+    <version>1.27.1</version>
+    <time>1780174645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.27.1:
+  - fix: catch PydanticUserError when generating output schema
+    (pydantic 2.13 compat)
+  - fix(auth): coerce empty-string optional URL fields to None in
+    OAuthClientMetadata
+  - build: restrict httpx to &lt;1.0.0
+  - refactor: import SSEError from httpx_sse public API</comment>
+    <requestid>1355963</requestid>
+  </revision>
 </revisionlist>

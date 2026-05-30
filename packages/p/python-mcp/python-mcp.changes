@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 29 16:58:45 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.27.1:
+  - fix: catch PydanticUserError when generating output schema
+    (pydantic 2.13 compat)
+  - fix(auth): coerce empty-string optional URL fields to None in
+    OAuthClientMetadata
+  - build: restrict httpx to <1.0.0
+  - refactor: import SSEError from httpx_sse public API
+
+-------------------------------------------------------------------
 Tue Apr 14 14:52:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.27.0:
