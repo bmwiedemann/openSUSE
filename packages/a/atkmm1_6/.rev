@@ -83,4 +83,33 @@
     - Don't fail if warning_level=everything (forwarded request 1306928 from dimstar)</comment>
     <requestid>1306958</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>91f786a49f63f7b985d037bcbca4a4b4</srcmd5>
+    <version>2.28.5</version>
+    <time>1780174505</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.28.5:
+  + Documentation:
+    - Don't link to removed parts of gnome.org
+    - Replace gtkmm.org by gtkmm.gnome.org
+    - Remove obsolete FSF (Free Software Foundation) address
+    - codegen/extradefs/generate_extra_defs_atk.cc: The license is
+      GNU General Public License, version 2, as said in
+      COPYING.tools.
+    - README.win32.md: Mention Visual Studio 2026
+    - Visual Studio builds: Update build information
+  + Meson build:
+    - Require python3 &gt;= 3.7. That's what Meson requires.
+    - Require meson &gt;= 0.60.0.
+    - subprojects/atk.wrap points at at-spi2-core. GNOME/atk moved
+      to GNOME/at-spi2-core long ago.
+    - Use the Python installation that Meson uses.
+    - Meson and NMake builds: Distinguish Visual Studio 2026 builds
+      from Visual Studio 2022 builds.
+    - NMake Makefiles: Consolidate items and improve flexibility.
+    - NMake Makefiles: Make build process more robust.
+    - NMake Makefiles: Update .m4 installation
+    - Don't require the 'dot' command to build the documentation</comment>
+    <requestid>1355920</requestid>
+  </revision>
 </revisionlist>

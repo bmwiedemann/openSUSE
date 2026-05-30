@@ -19,7 +19,7 @@
 %define _name   atkmm
 Name:           atkmm1_6
 
-Version:        2.28.4
+Version:        2.28.5
 Release:        0
 Summary:        C++ Binding for the ATK library
 License:        LGPL-2.1-or-later
@@ -33,7 +33,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz
-BuildRequires:  meson >= 0.55.0
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk) >= 1.12.0
