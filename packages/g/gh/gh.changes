@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu May 28 12:48:07 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.93.0:
+  * test(attestation): align integration tests with new external HTTP client
+  * fix: use separate http client for non-github hosts
+  * docs: note immutable releases starting v2.93.0
+  * bump golang.org/x/net
+  * Link to Accessibility category for community discussions instead of ACR (#13481)
+  * Allow agents as application for secrets (#13421)
+  * SHA pin first-party GitHub Actions
+  * chore(deps): bump github/codeql-action from 4 to 4.35.5
+  * Add 3 day dependabot cooldown period
+  * chore(deps): bump github.com/google/go-containerregistry
+  * Run govulncheck daily instead of weekly
+  * Merge pull request #13486 from cli/tommy/update-x-crypto
+  * Potential fix for pull request finding
+  * Potential fix for pull request finding
+  * Stop bumping homebrew on release
+  * chore(deps): bump goreleaser/goreleaser-action from 7.2.1 to 7.2.2 (#13461)
+  * Remove discussion workflow
+  * Remove dependency on persistent token
+  * Remove third-party license debris
+  * chore(deps): bump github.com/theupdateframework/go-tuf/v2
+  * docs: drop --repo gh-cli from dnf install lines
+  * Assert digest prefix in release verify no-attestation tests
+  * chore(deps): bump google.golang.org/grpc from 1.81.0 to 1.81.1
+  * Derive digest algorithm from ref length in release verify commands
+  * docs: fix duplicated "of" in release-process-deep-dive
+  * chore(deps): bump golang.org/x/crypto from 0.50.0 to 0.51.0
+  * Simplify bump-go.sh toolchain logic
+  * Remove unnecessary null checks in jq output handling
+  * Rewrite script to use go mod edit instead of grep/sed
+  * Address code review comments
+  * Improve version comparison to handle both X.Y.0 and X.Y.Z formats
+  * Update bump-go.sh to handle missing toolchain directive
+  * Initial plan
+  * Update CODEOWNERS for skills directory ownership
+  * chore(deps): bump golang.org/x/text from 0.36.0 to 0.37.0
+  * chore(deps): bump google.golang.org/grpc from 1.80.0 to 1.81.0
+  * chore(deps): bump golang.org/x/term from 0.42.0 to 0.43.0
+  * fix(copilot): update test assertion to match updated error message
+  * fix(copilot): provide full path to copilot binary on exec error
+  * fix(copilot): hint to run copilot directly when exec fails
+  * fix(telemetry): use CREATE_NO_WINDOW to prevent tzutil console flash on Windows
+  * Fix triage-pull-requests skipping PRs that open as draft
+  * chore(deps): bump golang.org/x/sys from 0.43.0 to 0.44.0
+  * Bump Go toolchain to 1.26.3
+  * Fix skills acceptance tests
+  * Add explicit build tags to platform-specific echo test files
+  * Address review feedback on echo mode polling
+  * Poll TTY echo mode instead of sleeping in password tests
+  * Record accessibility state in telemetry
+  * Bump copilot telemetry sampling to 100%
+  * chore(deps): bump github.com/klauspost/compress from 1.18.5 to 1.18.6
+  * Remove numberFieldOnly API shortcut
+  * Grammar fixes
+  * Switch from actions/attest-build-provenance to actions/attest
+  * Enable extended PR screening for external PRs
+  * Fix flaky Password test by increasing echo mode setup timeout
+  * Add missing //go:build integration tag to verify_integration_test.go
+  * chore(deps): bump goreleaser/goreleaser-action from 7.0.0 to 7.2.1
+  * Apply patch from code review feedback.
+  * Print `gh auth refresh` for 401 returns
+  * Update installation commands for GitHub CLI
+- Drop fix-accessible-prompter-test-timeout.patch and
+  add-missing-go-build-integration-tag.patch: both fixes are now
+  part of this release (upstream PRs 13304 and 13303)
+
+-------------------------------------------------------------------
 Tue Apr 28 15:45:27 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - add-missing-go-build-integration-tag.patch
