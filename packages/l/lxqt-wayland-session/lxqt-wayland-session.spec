@@ -26,7 +26,7 @@
 %endif
 
 Name:           lxqt-wayland-session
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Files needed for the LXQt Wayland Session
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-4.0
@@ -195,7 +195,7 @@ cp -a %{S:3} default-compositor-wayfire
 install -m0644 default-compositor-wayfire %{buildroot}%{_datadir}/lxqt/wayland/default-compositor
 
 %if ! %{with hyprland_session}
-  rm -f %{buildroot}%{_datadir}/lxqt/wayland/lxqt-hyprland.conf
+  rm -f %{buildroot}%{_datadir}/lxqt/wayland/lxqt-hyprland.lua
 %endif
 
 %if ! %{with river_session}
@@ -225,7 +225,7 @@ install -m0644 default-compositor-wayfire %{buildroot}%{_datadir}/lxqt/wayland/d
 %if %{with hyprland_session}
 %files -n lxqt-hyprland-session
 %license LICENSE.BSD
-%{_datadir}/lxqt/wayland/lxqt-hyprland.conf
+%{_datadir}/lxqt/wayland/lxqt-hyprland.lua
 %endif
 
 %files -n lxqt-labwc-session

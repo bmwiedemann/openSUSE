@@ -142,4 +142,20 @@
     <comment></comment>
     <requestid>1354053</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fcc863d2b0e19a50d85d5231d3f2efb5</srcmd5>
+    <version>0.4.1</version>
+    <time>1780174552</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1:
+  * Updated wiki link in niri configs
+  * Updated for labwc 0.20.0
+  * Migrated hyprland config to lua for 0.55, and fixed error with
+    legacy config
+  * bumped version in lxqt-sway.config and removed doubled keybind
+  * added method to show lxqt-clip to lxqt-qdbus script
+  * added powerkeys actions shortcuts for suspend and sleep
+    (hibernate)</comment>
+    <requestid>1355915</requestid>
+  </revision>
 </revisionlist>

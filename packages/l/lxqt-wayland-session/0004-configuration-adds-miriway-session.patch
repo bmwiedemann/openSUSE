@@ -1,4 +1,4 @@
-From f5711cd28ab947ee3cedc68e18b793ad0a75d10a Mon Sep 17 00:00:00 2001
+From 466b7f25a67fa9f54a3533d9a2b93af8a4ca708c Mon Sep 17 00:00:00 2001
 From: Shawn W Dunn <sfalken@opensuse.org>
 Date: Wed, 24 Dec 2025 07:55:21 -0800
 Subject: [PATCH 4/7] configuration adds miriway session
@@ -15,7 +15,7 @@ inclusion upstream @ https://github.com/lxqt/lxqt-wayland-session/pull/40
  create mode 100644 configurations/miriway/miriway-shell.config
 
 diff --git a/configurations/CMakeLists.txt b/configurations/CMakeLists.txt
-index 38c43e3..e28015e 100644
+index 4166d29..c01a5f2 100644
 --- a/configurations/CMakeLists.txt
 +++ b/configurations/CMakeLists.txt
 @@ -18,7 +18,9 @@ install(FILES
@@ -136,7 +136,7 @@ index 0000000..9f4cf9e
 +ctrl-alt=BackSpace:@exit
 +
 diff --git a/startlxqtwayland.in b/startlxqtwayland.in
-index a2b15d9..abead72 100644
+index 1042cab..bdc116c 100644
 --- a/startlxqtwayland.in
 +++ b/startlxqtwayland.in
 @@ -143,6 +143,16 @@ elif [ "$COMPOSITOR" = "kwin_wayland" ]; then
@@ -157,5 +157,5 @@ index a2b15d9..abead72 100644
      if [ ! -f "$XDG_CONFIG_HOME/lxqt/wayland/lxqt-wayfire.ini" ]; then
          cp "$share_dir"/lxqt/wayland/lxqt-wayfire.ini "$XDG_CONFIG_HOME"/lxqt/wayland/
 -- 
-2.52.0
+2.54.0
 

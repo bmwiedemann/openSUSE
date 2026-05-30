@@ -1,4 +1,4 @@
-From 2e0eaea69065dd93f3733b2eeb4a95d896f6ba96 Mon Sep 17 00:00:00 2001
+From fb00cbac7a1718102483f6aec318866ae6097fe3 Mon Sep 17 00:00:00 2001
 From: Shawn W Dunn <sfalken@opensuse.org>
 Date: Wed, 24 Dec 2025 07:44:53 -0800
 Subject: [PATCH 3/7] configuration changes for default niri session
@@ -24,7 +24,7 @@ index b222b52..5f6b12f 100644
     spawn-sh-at-startup "lxqt-session && niri msg action quit -s"
  
 diff --git a/configurations/niri/input.kdl b/configurations/niri/input.kdl
-index 3f865cb..9e8eabc 100644
+index a0c95ad..8e0a097 100644
 --- a/configurations/niri/input.kdl
 +++ b/configurations/niri/input.kdl
 @@ -30,7 +30,7 @@ input {
@@ -37,5 +37,5 @@ index 3f865cb..9e8eabc 100644
          // accel-profile "flat"
          // scroll-method "two-finger"
 -- 
-2.52.0
+2.54.0
 

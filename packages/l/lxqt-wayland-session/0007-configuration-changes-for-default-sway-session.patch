@@ -1,20 +1,20 @@
-From ce124fe54daac61b18c5e6c4e669a977b368f30d Mon Sep 17 00:00:00 2001
-From: Shawn W Dunn <sfalken@opensuse.org>
-Date: Mon, 13 Oct 2025 13:10:40 -0700
+From 0dbcc30a2f2747d1b2e3f9112432336f1c47a9e4 Mon Sep 17 00:00:00 2001
+From: Shawn W Dunn <sfalken@kalpadesktop.org>
+Date: Fri, 29 May 2026 07:30:52 -0700
 Subject: [PATCH 7/7] configuration changes for default sway session
 
 - Set openSUSE desktop background in session
 - Disable "include /etc/sway/config.d/*" It causes too many configs from
   openSUSEway to be pulled in, and creates a broken session
 ---
- configurations/lxqt-sway.config | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ configurations/lxqt-sway.config | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/configurations/lxqt-sway.config b/configurations/lxqt-sway.config
-index 3a8d3a4..d655736 100644
+index 2fbd39e..fbf7a23 100644
 --- a/configurations/lxqt-sway.config
 +++ b/configurations/lxqt-sway.config
-@@ -19,6 +19,9 @@ set $term qterminal
+@@ -19,10 +19,13 @@ set $term qterminal
  # Your preferred application launcher
  set $menu lxqt-runner
  
@@ -24,12 +24,17 @@ index 3a8d3a4..d655736 100644
  ### Output configuration
  #
  # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-@@ -237,4 +240,4 @@ bindsym $mod+r mode "resize"
-     bindsym XF86MonBrightnessDown exec lxqt-config-brightness -d
-     bindsym XF86MonBrightnessUp exec lxqt-config-brightness -i
+-output * bg /usr/share/lxqt/wallpapers/waves-logo.png fill
++output * bg /usr/share/wallpapers/openSUSEdefault/contents/images/default.png fill
+ #
+ #
+ # Example configuration:
+@@ -240,4 +243,4 @@ bindsym $mod+r mode "resize"
+     bindsym XF86Sleep exec lxqt-leave --hibernate
+ 
  
 -include /etc/sway/config.d/*
 +# include /etc/sway/config.d/*
 -- 
-2.52.0
+2.54.0
 
