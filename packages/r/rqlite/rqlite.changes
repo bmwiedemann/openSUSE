@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 29 17:44:36 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.2.0:
+  * Support verifying mTLS peer Common Name
+  * Console supports restore from SQLite data
+  * Console "count rows" respects current Tables Expand/Collapse state
+  * Console supports dropping indexes
+  * Further Console app improvements
+
+-------------------------------------------------------------------
 Thu May 28 20:24:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update go-net depdendency to address IDN Punycode validation

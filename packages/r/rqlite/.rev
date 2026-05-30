@@ -393,4 +393,12 @@
     <comment>CVE-2026-39821 boo#1266544 (forwarded request 1355708 from AndreasStieger)</comment>
     <requestid>1355709</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>43549f076b7678f0967219b646a5deaf</srcmd5>
+    <version>10.2.0</version>
+    <time>1780174581</time>
+    <user>dimstar_suse</user>
+    <comment>rqlite 10.2.0 (forwarded request 1355940 from AndreasStieger)</comment>
+    <requestid>1355941</requestid>
+  </revision>
 </revisionlist>
