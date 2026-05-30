@@ -133,4 +133,12 @@
     <comment>3.1.79</comment>
     <requestid>1166619</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>9065cbffd98ae5f6f2ee915c5acdf86c</srcmd5>
+    <version>3.1.79</version>
+    <time>1780174703</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with javas managed by libalternatives too</comment>
+    <requestid>1356018</requestid>
+  </revision>
 </revisionlist>

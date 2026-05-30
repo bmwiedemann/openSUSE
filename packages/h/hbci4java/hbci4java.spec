@@ -1,7 +1,7 @@
 #
 # spec file for package hbci4java
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Productivity/Office/Finance
 URL:            https://github.com/hbci4j/hbci4java
 Source:         https://github.com/hbci4j/hbci4java/archive/refs/tags/hbci4j-core-%{version}.tar.gz
 Patch0:         signed-char.patch
+Patch1:         java-home.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel >= 8
@@ -49,6 +50,7 @@ Developer documentation of HBCI4Java.
 %prep
 %setup -q -n %{name}-hbci4j-core-%{version}
 %patch -P 0 -p1
+%patch -P 1 -p1
 
 # remove prebuilt binaries
 rm server/*-bin.zip
@@ -64,8 +66,7 @@ pushd chipcard
 %make_build
 popd
 
-%{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
+%{mvn_build} -f
 
 %install
 %mvn_install
