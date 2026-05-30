@@ -100,4 +100,13 @@
   * Bug fix in handling code of thread return values (forwarded request 1339546 from rrahl0)</comment>
     <requestid>1339547</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2a751333270fdada77398d33a102dff9</srcmd5>
+    <version>0.2.1.3</version>
+    <time>1780174612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.1.3:
+  + Validates that the image buffer has enough space for the decoded image (forwarded request 1355955 from rrahl0)</comment>
+    <requestid>1355956</requestid>
+  </revision>
 </revisionlist>
