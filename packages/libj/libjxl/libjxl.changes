@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu May 28 16:41:28 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add libjxl-CVE-2025-70103.patch: take EC into accound when
+  checking required PNM inmput length (bsc#1266460 CVE-2025-70103).
+
+-------------------------------------------------------------------
 Wed Feb 11 12:04:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 0.11.2
+- Update to release 0.11.2 (bsc#1258090 bsc#1258091 CVE-2025-12474)
   * Fix tile dimension in low memory rendering pipeline
   * Fix number of channels for gray-to-gray color transform
     [CVE-2026-1837]

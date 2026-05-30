@@ -37,6 +37,7 @@ Source1:        baselibs.conf
 #changes-too-damn-often: https://skia.googlesource.com/skcms/+archive/%skcms_commit.tar.gz
 Source2:        %skcms_commit.tar.gz
 Patch1:         system-jpeg.diff
+Patch2:         libjxl-CVE-2025-70103.patch
 BuildRequires:  asciidoc
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

@@ -217,4 +217,13 @@ Leap 15.5
     <comment>- Update to release 0.11.2</comment>
     <requestid>1334877</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>6306718a902c748d1654e04cf6ea44f2</srcmd5>
+    <version>0.11.2</version>
+    <time>1780174472</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libjxl-CVE-2025-70103.patch: take EC into accound when
+  checking required PNM inmput length (bsc#1266460 CVE-2025-70103).</comment>
+    <requestid>1355840</requestid>
+  </revision>
 </revisionlist>
