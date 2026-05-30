@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun May 24 18:48:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.9.1:
+  + Use G_PARAM_STATIC_STRINGS where it wasn't used
+  + Fix a build error in the example
+  + AdwAboutDialog/AdwAboutWindow:
+    - Speed up adding legal sections
+    - Speed up adding credit sections
+  + AdwAlertDialog:
+    - Fix a crash when chaining up in response()
+    - Fix the Since annotation on get_prefer_wide_layout()
+  + AdwButtonRow: Fix availability annotation
+  + AdwClampScrollable: Implement GtkScrollable.get_border()
+  + AdwEntryRow: Fix clicking edit icon
+  + AdwNavigationView: Fix swipe direction
+  + AdwSidebar:
+    - Set tab behavior to 'item'
+    - Fix adding multiple sections at once
+    - Fix a crash when removing multiple items at once
+  + AdwStyleManager:
+    - Use default timeout when talking to the settings portal
+    - Fix gtk-application-prefer-dark-theme warnings with newer GTK
+  + AdwTabView: Fix a deprecation
+  + Stylesheet: Fix bottom padding with .navigation-sidebar
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 20 16:13:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
