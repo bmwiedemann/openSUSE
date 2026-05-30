@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 29 19:13:17 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.9.33:
+  + Added quirks for HP LaserJet M406
+  + Changed priority order of IPP attributes for obtaining DNS-SD name
+- Update to version 0.9.32:
+  + Use ctags instead of the gotags
+  + Workaround for "Pantum BP5100DN series" initialization failure
+
+-------------------------------------------------------------------
 Sat Mar 14 21:33:54 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix unit file, as it executes /sbin/ipp-usb, not /usr/sbin/ipp-usb

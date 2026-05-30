@@ -31,4 +31,17 @@
     <comment>add a fix for the service file (forwarded request 1339017 from rrahl0)</comment>
     <requestid>1347105</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>779a2eec2a58479490b2d1ed9898d725</srcmd5>
+    <version>0.9.33</version>
+    <time>1780174600</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.33:
+  + Added quirks for HP LaserJet M406
+  + Changed priority order of IPP attributes for obtaining DNS-SD name
+- Update to version 0.9.32:
+  + Use ctags instead of the gotags
+  + Workaround for &quot;Pantum BP5100DN series&quot; initialization failure (forwarded request 1355950 from rrahl0)</comment>
+    <requestid>1355951</requestid>
+  </revision>
 </revisionlist>
