@@ -1,7 +1,7 @@
 #
 # spec file for package ebizzy
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ebizzy
 Version:        0.3
 Release:        0
-Summary:        Web server applicatin workload generator
-License:        GPL-2.0
-Group:          System/Benchmark
-Url:            http://ebizzy.sf.net
-Source:         http://sourceforge.net/projects/ebizzy/files/ebizzy/%{version}/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        Web server application workload generator
+License:        GPL-2.0-only
+URL:            https://ebizzy.sf.net
+Source:         https://sourceforge.net/projects/ebizzy/files/ebizzy/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  gcc
 
 %description
 ebizzy is designed to generate a workload resembling common web application
@@ -35,12 +34,14 @@ allocates and deallocates memory frequently.
 %setup -q
 
 %build
-gcc %{optflags} -Wshadow -pthread -o ebizzy ebizzy.c
+gcc %{optflags} -pthread -o ebizzy ebizzy.c
 
 %install
 install -m 0755 -D ebizzy %{buildroot}/%{_bindir}/ebizzy
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog README LICENSE
+%license LICENSE
+%doc ChangeLog README
 %{_bindir}/ebizzy
+
+%changelog

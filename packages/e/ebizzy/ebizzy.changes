@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 30 13:19:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix a typo in the summary (applicatin -> application)
+- Spec cleanup: modernize the License tag to SPDX GPL-2.0-only,
+  drop obsolete Group/BuildRoot/%defattr, mark LICENSE as
+  %license, add missing BuildRequires: gcc
+
+-------------------------------------------------------------------
 Sun Mar  8 11:40:13 UTC 2015 - mpluskal@suse.com
 
 - Use url for source

@@ -7,4 +7,12 @@
     <comment>Usefull benchmark</comment>
     <requestid>293690</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1cc64e887f41282a10efb45ef9856bcc</srcmd5>
+    <version>0.3</version>
+    <time>1780174803</time>
+    <user>dimstar_suse</user>
+    <comment>Spec cleanup: modernize License to SPDX GPL-2.0-only; drop obsolete Group/BuildRoot/%defattr; mark LICENSE as %license; add BuildRequires: gcc; fix a summary typo.</comment>
+    <requestid>1356044</requestid>
+  </revision>
 </revisionlist>
