@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 27 00:41:20 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add libsoup-CVE-2026-4271.patch: Protect message io while reading
+  and writing (bsc#1259767, CVE-2026-4271, glgo#GNOME/libsoup#496).
+
+-------------------------------------------------------------------
 Mon Mar 23 08:11:29 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

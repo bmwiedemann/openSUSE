@@ -39,6 +39,8 @@ Patch17:        libsoup-CVE-2026-2708.patch
 Patch18:        libsoup-CVE-2026-1539.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-0716.patch bsc#1256418 mgorse@suse.com -- websocket: Fix out-of-bounds read when reading unmasked frame
 Patch19:        libsoup-CVE-2026-0716.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-4271.patch bsc#1259767 xwang@suse.com -- protect message io while reading and writing
+Patch20:        libsoup-CVE-2026-4271.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53

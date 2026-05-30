@@ -1412,4 +1412,13 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342996</requestid>
   </revision>
+  <revision rev="169" vrev="5">
+    <srcmd5>378a7d2f49946757aa88a47a85eb3759</srcmd5>
+    <version>3.6.6</version>
+    <time>1780174484</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libsoup-CVE-2026-4271.patch: Protect message io while reading
+  and writing (bsc#1259767, CVE-2026-4271, glgo#GNOME/libsoup#496).</comment>
+    <requestid>1355867</requestid>
+  </revision>
 </revisionlist>
