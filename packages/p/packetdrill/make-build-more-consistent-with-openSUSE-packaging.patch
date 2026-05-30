@@ -1,0 +1,61 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Wed, 25 Apr 2018 13:22:44 +0200
+Subject: make build more consistent with openSUSE packaging
+Patch-mainline: Never, specific for SUSE package
+References: none
+
+Respect CFLAGS and LDFLAGS passed from the build environment instead of
+the Makefile's hardcoded flags. (Upstream now links non-statically by
+default, so the previous Makefile.Linux -static removal is no longer
+needed.)
+---
+ gtests/net/packetdrill/Makefile.common | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+--- a/gtests/net/packetdrill/Makefile.common	2026-05-30 07:39:52.906543200 +0200
++++ b/gtests/net/packetdrill/Makefile.common	2026-05-30 07:39:52.958549011 +0200
+@@ -1,14 +1,12 @@
+ all: binaries
+ 
+-CFLAGS = -g -Wall -Werror $(packetdrill-extra-cflags)
+-
+ parser.o: parser.y
+ 	bison --output=parser.c --defines=parser.h --report=state parser.y
+ 	$(CC) $(CFLAGS) -c parser.c
+ 
+ lexer.o: lexer.l parser.o
+ 	flex -olexer.c lexer.l
+-	$(CC) -O2 -g -Wall -c lexer.c
++	$(CC) $(CFLAGS) -c lexer.c
+ 
+ packetdrill-lib := \
+          checksum.o code.o config.o hash.o hash_map.o ip_address.o ip_prefix.o \
+@@ -36,7 +34,7 @@
+ packetdrill-objs := packetdrill.o $(packetdrill-lib)
+ 
+ packetdrill: $(packetdrill-objs) $(packetdrill-extra-static-libs)
+-	$(CC) -o packetdrill -g $(packetdrill-objs) $(packetdrill-extra-static-libs) $(packetdrill-ext-libs)
++	$(CC) $(LDFLAGS) -o packetdrill -g $(packetdrill-objs) $(packetdrill-extra-static-libs) $(packetdrill-ext-libs)
+ 
+ test-bins := checksum_test packet_parser_test packet_to_string_test
+ tests: $(test-bins)
+@@ -48,16 +46,16 @@
+ 
+ checksum_test-objs := $(packetdrill-lib) checksum_test.o
+ checksum_test: $(checksum_test-objs) $(packetdrill-extra-static-libs)
+-	$(CC) -o checksum_test $(checksum_test-objs) $(packetdrill-extra-static-libs) $(packetdrill-ext-libs)
++	$(CC) $(LDFLAGS) -o checksum_test $(checksum_test-objs) $(packetdrill-extra-static-libs) $(packetdrill-ext-libs)
+ 
+ packet_parser_test-objs := $(packetdrill-lib) packet_parser_test.o
+ packet_parser_test: $(packet_parser_test-objs) $(packetdrill-extra-static-libs)
+-	$(CC) -o packet_parser_test $(packet_parser_test-objs) \
++	$(CC) $(LDFLAGS) -o packet_parser_test $(packet_parser_test-objs) \
+                 $(packetdrill-extra-static-libs) $(packetdrill-ext-libs)
+ 
+ packet_to_string_test-objs := $(packetdrill-lib) packet_to_string_test.o
+ packet_to_string_test: $(packet_to_string_test-objs) $(packetdrill-extra-static-libs)
+-	$(CC) -o packet_to_string_test $(packet_to_string_test-objs) \
++	$(CC) $(LDFLAGS) -o packet_to_string_test $(packet_to_string_test-objs) \
+                 $(packetdrill-extra-static-libs) $(packetdrill-ext-libs)
+ 
+ clean:

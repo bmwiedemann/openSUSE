@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Sat May 30 05:33:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0+git.20260514:
+  * Add PSP Security Protocol support: script-parser
+    encapsulation, header parsing, psp_state and
+    psp_rx_assoc/psp_tx_assoc syscalls, real AES-GCM crypto,
+    ynl-c based libraries, and BPF-filter/iptables handling
+    plus test cases
+  * Add Accurate ECN (AccECN) TCP option support and expose
+    AccECN counters/status and ecn_mode through tcpi
+  * Sync struct _tcp_info with the v6.16 kernel uAPI header
+  * Print TCP option names and contents instead of the
+    numerical kind
+  * Assorted test-harness and README improvements
+- Rebase make-build-more-consistent-with-openSUSE-packaging.patch
+  for the restructured upstream Makefiles; the -static removal it
+  used to carry is now the upstream default, so only the
+  CFLAGS/LDFLAGS handling remains
+- Build with -fno-strict-aliasing and drop the spec's own -Werror
+  and -Wno-* flags: the checksum code type-puns the packet buffer,
+  which -O2 strict aliasing miscompiled and made checksum_test fail;
+  the distribution build flags are now used as-is (only
+  -fno-strict-aliasing is added)
+
+-------------------------------------------------------------------
+Wed May 21 08:59:57 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0+git.20250519:
+  * net-test: tcp: fix inq server test
+  * net-test: packetdrill: run_all: add --tap <DIR> option
+  * net-test: packetdrill: for wire mode have client send WIRE_LIVE_REMOTE_IP to server
+  * net-test: packetdrill: rename WIRE_IP_ADDR to WIRE_LIVE_LOCAL_IP
+  * net-test: packetdrill: add DEBUGP in set_wire_client_defaults() for debugging
+  * update installation instructions in README.md: python -> python3
+  * net-test: add TCP CUBIC congestion control tests
+
+-------------------------------------------------------------------
+Tue Dec 10 13:30:54 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0+git.20241204:
+  * net-test: mss value change for tcp setsockopt mss
+
+-------------------------------------------------------------------
+Tue Jul 30 08:34:31 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0+git.20240726:
+  * net-test: new behaviour change for simult TFO connect
+  * net-test: behaviour change for simultaneous TFO connect
+  * net-test: packetdrill: run_all: add --dry_run mode
+  * net-test: packetdrill: run_all: add --capture option
+  * net-test: packetdrill: run_all: extra -v are passed to pktdrill cmd
+  * net-test: packetdrill: run_all: support timeout with --serialized
+  * net-test: packetdrill: run_all: limit tests running in parallel
+  * net-test: packetdrill: ensure --wire_client and --wire_server cancel opposing flags
+  * Revert "net-test: packetdrill: bug fix: wire_server must ignore new --wire_server_at arg"
+  * net-test: packetdrill: bug fix: wire_server must ignore new --wire_server_at arg
+
+-------------------------------------------------------------------
+Tue Jun 13 14:28:58 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0+git.20230521:
+  * net-test: packetdrill: add README.md details about IP addresses for test traffic
+  * net-test: packetdrill: update README.md to add docs for local and remote mode
+  * net-test: packetdrill: DEBUGP() for looking up non-TCP sockets in wire tests
+  * net-test: packetdrill: fix crash with --debug in run_syscall_accept()
+  * net-test: packetdrill: add debugging for live_local_ip_string
+  * net-test: packetdrill: invoke set_default_config() before parse_script_and_set_config()
+  * net-test: packetdrill: have wire_client send live_local_ip_string to wire_server
+  * net-test: packetdrill: default wire client to using real IP of client and server machines
+  * net-test: packetdrill: make --wire_server_at or --wire_server_ip imply --wire_client
+  * net-test: packetdrill: introduce --wire_server_at as a synonym for --wire_server_ip
+- Drop no longer needed patches:
+  * net-test-packetdrill-allow-any-size-for-TCP_INFO-and.patch
+  * net-test-packetdrill-define-Linux-capability-symbols.patch
+  * net-test-packetdrill-fix-error-msg-in-loose-segment-.patch
+  * net-test-packetdrill-loose-segmentation-checks-non-s.patch 
+
+-------------------------------------------------------------------
+Thu Jul 11 17:15:33 UTC 2019 - Michal Kubeček <mkubecek@suse.cz>
+
+- suppress "address of packed member" gcc9 warning (fix Factory
+  build)
+- add useful post-2.0 upstream commits:
+  net-test-packetdrill-allow-any-size-for-TCP_INFO-and.patch
+  net-test-packetdrill-define-Linux-capability-symbols.patch
+  net-test-packetdrill-loose-segmentation-checks-non-s.patch
+  net-test-packetdrill-fix-error-msg-in-loose-segment-.patch
+- no longer need to define CAP_BLOCK_SUSPEND for SLE11 build
+
+-------------------------------------------------------------------
+Wed Apr 25 11:26:23 UTC 2018 - mkubecek@suse.cz
+
+- make-build-more-consistent-with-openSUSE-packaging.patch:
+  tweak the makefiles to be consistent with openSUSE policies
+
+-------------------------------------------------------------------
+Wed Apr 25 07:57:22 UTC 2018 - mkubecek@suse.cz
+
+- initial import of 2.0 sources
