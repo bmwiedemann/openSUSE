@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat May 30 06:43:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.5.5:
+  * chore(deps): upgrade proxy-init to v2.4.9 & cni-plugin to
+    v1.6.8 (#15332)
+  * build(deps): bump socket2 from 0.6.3 to 0.6.4 (#15331)
+  * build(deps): bump mio from 1.2.0 to 1.2.1 (#15330)
+
+-------------------------------------------------------------------
+Sat May 30 06:36:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.5.4:
+  * build(deps): bump zerocopy from 0.8.48 to 0.8.49 (#15328)
+  * build(deps): bump hyper from 1.9.0 to 1.10.0 (#15327)
+  * chore: update linkerd-await from 0.3.2 to 0.3.3 (#15329)
+  * build(deps): bump memchr from 2.8.0 to 2.8.1 (#15321)
+  * proxy: v2.354.0 (#15323)
+  * build(deps): bump docker/setup-buildx-action (#15312)
+  * build(deps): bump bumpalo from 3.20.2 to 3.20.3 (#15309)
+  * build(deps): bump autocfg from 1.5.0 to 1.5.1 (#15308)
+  * build(deps): bump log from 0.4.29 to 0.4.30 (#15313)
+  * build(deps): bump github.com/containerd/containerd from 1.7.30
+    to 1.7.32 (#15302)
+  * build(deps): bump docker/build-push-action from 7.1.0 to 7.2.0
+    (#15304)
+  * build(deps): bump serde_json from 1.0.149 to 1.0.150 in the
+    serde group (#15303)
+  * build(deps): bump either from 1.15.0 to 1.16.0 (#15300)
+  * build(deps-dev): bump webpack-dev-server from 5.2.3 to 5.2.4 in
+    /web/app (#15282)
+
+-------------------------------------------------------------------
 Thu May 21 13:47:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.5.3:
