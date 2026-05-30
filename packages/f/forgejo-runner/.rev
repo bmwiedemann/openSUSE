@@ -612,4 +612,25 @@
   + fix: interpolation of workflow_call inputs (forwarded request 1349473 from rrahl0)</comment>
     <requestid>1349474</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>9fc53ec1a1e9b6140865c393d8477e83</srcmd5>
+    <version>12.10.2</version>
+    <time>1780174640</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 12.10.2:
+  + fix: remove containers after failed start-up
+  + fix: reject invalid cron schedules while parsing workflows
+- Update to version 12.10.1:
+  + feat: merge reusable expansion caller's 'if' into expanded jobs
+  + fix: workflow-level 'env' is lost during job parsing
+  + chore: remove go-git
+- Update to version 12.10.0:
+  + feat: enable entrypoint customization of job containers
+  + feat: enable entrypoint customization for services
+  + feat: improve pulling of container images
+  + fix: trim whitespace around cache secret
+  + fix: preserve workflow-level env &amp; enable-openid-connect during workflow
+    expansion (forwarded request 1355965 from rrahl0)</comment>
+    <requestid>1355966</requestid>
+  </revision>
 </revisionlist>

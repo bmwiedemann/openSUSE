@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 29 20:08:10 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.10.2:
+  + fix: remove containers after failed start-up
+  + fix: reject invalid cron schedules while parsing workflows
+- Update to version 12.10.1:
+  + feat: merge reusable expansion caller's 'if' into expanded jobs
+  + fix: workflow-level 'env' is lost during job parsing
+  + chore: remove go-git
+- Update to version 12.10.0:
+  + feat: enable entrypoint customization of job containers
+  + feat: enable entrypoint customization for services
+  + feat: improve pulling of container images
+  + fix: trim whitespace around cache secret
+  + fix: preserve workflow-level env & enable-openid-connect during workflow
+    expansion
+
+-------------------------------------------------------------------
 Mon Apr 27 00:42:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.9.0:
