@@ -7054,6 +7054,7 @@ unsorted:
   - gio-sharp 
   - gio-sharp-devel 
   - girara-devel 
+  - girara-devel-doc 
   - git-absorb 
   - git-absorb-bash-completion 
   - git-absorb-fish-completion 
@@ -9020,6 +9021,7 @@ unsorted:
   - iops 
   - ioquake3 
   - ioquake3-devel 
+  - ior 
   - iosevka-aile-fonts 
   - iosevka-curly-fonts 
   - iosevka-curly-slab-fonts 
@@ -13600,7 +13602,7 @@ unsorted:
   - libginkgo1_10_0 
   - libgio-2_0-0-32bit 
   - libgiomm-2_4-1-32bit 
-  - libgirara-gtk3-4 
+  - libgirara5 
   - libgirepository-1_0-1-32bit 
   - libgit2-devel 
   - libgit2-experimental-devel 
@@ -17888,7 +17890,7 @@ unsorted:
   - lttoolbox-devel 
   - lua-Hamliblua 
   - lua-clingo 
-  - lua-fennel 
+  - lua-fennel-doc 
   - lua-interpreter 
   - lua-language-server 
   - lua-libguestfs 
@@ -17924,6 +17926,7 @@ unsorted:
   - lua53-dkjson 
   - lua53-doc 
   - lua53-editorconfig-core-lua 
+  - lua53-fennel 
   - lua53-fluent 
   - lua53-inspect 
   - lua53-jsregexp 
@@ -17997,6 +18000,7 @@ unsorted:
   - lua54-dkjson 
   - lua54-doc 
   - lua54-editorconfig-core-lua 
+  - lua54-fennel 
   - lua54-fluent 
   - lua54-inspect 
   - lua54-jsregexp 
@@ -18070,6 +18074,7 @@ unsorted:
   - lua55-dkjson 
   - lua55-doc 
   - lua55-editorconfig-core-lua 
+  - lua55-fennel 
   - lua55-fluent 
   - lua55-inspect 
   - lua55-jsregexp 
@@ -18141,6 +18146,7 @@ unsorted:
   - luajit-devel 
   - luajit-dkjson 
   - luajit-editorconfig-core-lua 
+  - luajit-fennel 
   - luajit-fluent 
   - luajit-inspect 
   - luajit-jsregexp 
@@ -25952,7 +25958,6 @@ unsorted:
   - python311-hkdf 
   - python311-hl7apy 
   - python311-holidays 
-  - python311-holoviews 
   - python311-hotdoc 
   - python311-hsluv 
   - python311-hstspreload 
@@ -25981,7 +25986,6 @@ unsorted:
   - python311-hupper 
   - python311-husl 
   - python311-hvac 
-  - python311-hvplot 
   - python311-hypercorn 
   - python311-hypothesis 
   - python311-hypothesis-fspaths 
@@ -33348,6 +33352,7 @@ unsorted:
   - python314-django-bootstrap3 
   - python314-django-bootstrap4 
   - python314-django-braces 
+  - python314-django-cacheops 
   - python314-django-celery-beat 
   - python314-django-ckeditor 
   - python314-django-classy-tags 
