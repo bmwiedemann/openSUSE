@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri May 29 13:51:40 UTC 2026 - Hillwood Yang <hillwoodroc@gmail.com>
+
+- Update version to 5.51.2
+  * Wireguard Add TCP Listener support for wireguard outbound
+  * Stun Nat Type Testing
+  * Better server failure detection and PreserveSourceIPPortWhenDestNATMapping
+    detection
+  * Improve API instance support
+  * feat: grpc: allow configurable keepalive and initial windows size
+  * Add RRPIT - Rapid Reliable Packet Interactive Transport
+  * Add WebRTC Tunnel Support in V2Ray(unreleased)
+  * also parse X-Forwarded-For in httpupgrade
+  * gdocsviewer: Add Google Docs Viewer based transport
+  * gdocsviewer: Refine poll logic and allow custom headers to reduce rate limiting
+  * gdocsviewer: allow adding headers in public config
+  * Fix bugs (boo#1258546 and CVE-2026-27017)
+- Update geoip.dat, dlc.dat and v2ray-extra
+- Add update-net.patch, update golang.org/x/net to 0.55.0 to fix boo#1266787 and
+  CVE-2026-39821
+- Drop update-grpc.patch, fixed by upstream
+
+-------------------------------------------------------------------
+Wed Mar 25 13:35:55 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.47.0
+  * Add sticky choice option for leastping
+  * Add support for enrollment links in tlsmirror
+  * Add Wireguard Outbound (unreleased)
+  * Add sticky choice option for leastping
+  * Generalize IP address parsing in TUN stack options
+  * Fix bugs
+- Add update-grpc.patch, fix boo#1260329 and CVE-2026-33186
+
+-------------------------------------------------------------------
 Thu Feb 12 12:39:30 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.44.1

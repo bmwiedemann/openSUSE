@@ -502,4 +502,44 @@
   * Fix bugs (forwarded request 1332694 from hillwood)</comment>
     <requestid>1332695</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5a0767e546ce616f49a81c718b79c81c</srcmd5>
+    <version>5.47.0</version>
+    <time>1774470094</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 5.47.0
+  * Add sticky choice option for leastping
+  * Add support for enrollment links in tlsmirror
+  * Add Wireguard Outbound (unreleased)
+  * Add sticky choice option for leastping
+  * Generalize IP address parsing in TUN stack options
+  * Fix bugs
+- Add update-grpc.patch, fix boo#1260329 and CVE-2026-33186 (forwarded request 1342488 from hillwood)</comment>
+    <requestid>1342489</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0742e90b3ddb9c3cce3673cbe5c6debe</srcmd5>
+    <version>5.51.2</version>
+    <time>1780174547</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.51.2
+  * Wireguard Add TCP Listener support for wireguard outbound
+  * Stun Nat Type Testing
+  * Better server failure detection and PreserveSourceIPPortWhenDestNATMapping
+    detection
+  * Improve API instance support
+  * feat: grpc: allow configurable keepalive and initial windows size
+  * Add RRPIT - Rapid Reliable Packet Interactive Transport
+  * Add WebRTC Tunnel Support in V2Ray(unreleased)
+  * also parse X-Forwarded-For in httpupgrade
+  * gdocsviewer: Add Google Docs Viewer based transport
+  * gdocsviewer: Refine poll logic and allow custom headers to reduce rate limiting
+  * gdocsviewer: allow adding headers in public config
+  * Fix bugs (boo#1258546 and CVE-2026-27017)
+- Update geoip.dat, dlc.dat and v2ray-extra
+- Add update-net.patch, update golang.org/x/net to 0.55.0 to fix boo#1266787 and
+  CVE-2026-39821
+- Drop update-grpc.patch, fixed by upstream (forwarded request 1355908 from hillwood)</comment>
+    <requestid>1355909</requestid>
+  </revision>
 </revisionlist>
