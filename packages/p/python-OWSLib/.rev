@@ -102,4 +102,12 @@ new request since download source check failed the first time</comment>
     <comment></comment>
     <requestid>1282217</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dee97182983fd24505c81371e3209d10</srcmd5>
+    <version>0.35.0</version>
+    <time>1780174735</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>1356031</requestid>
+  </revision>
 </revisionlist>

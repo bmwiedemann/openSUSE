@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Sat May 30 10:17:27 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.35.0
+  * Remove git typo by @geographika in #1009
+  * WCS: ensure identifier is a string (not a list) (#1010) by
+    @tomkralidis in #1012
+  * increase ISO contact parsing by @tomkralidis in #1014
+  * add headers to HTTP DELETE operations by @tomkralidis in #1017
+  * WMS 1.3.0: support any boolean for queryable layers (#993) by
+    @tomkralidis in #1016
+  * Skip connected systems tests if the server is unavailable by
+    @geographika in #1019
+  * pygeoapi test fix by @geographika in #1018
+  * update to Python 3.12 support by @tomkralidis in #1015
+  * Fix str2bool call by @geographika in #1020
+  * Increase timeout for demo.pycsw.org tests by @geographika in
+    #1022
+- Release 0.34.1
+  * OGC version updates by @geographika in #1003
+  * ISO: add support for gmd:illuminationElevationAngle by
+    @tomkralidis in #1004
+  * Make smaller map request by @geographika in #1005
+  * OGC API: add support for sorting by @tomkralidis in #1006
+- Release 0.34.0
+  * Exclude Python files from test folder in tarball by
+    @geographika in #986
+  * Enhance datatype determination and improve service_ok util by
+    @KaiVolland in #994
+  * Add option to pass cookies to WMTS by @ashergg in #995
+  * do not show warnings on missing style name&title by
+    @pvgenuchten in #990
+  * Update WFS usage docs by @KaiVolland in #996
+  * update wfs url in docs (wfs not available anymore) by
+    @pvgenuchten in #997
+  * Add None guard for extract_xml_list by @geographika in #1000
+  * Update links and add missing APIs by @geographika in #1001
+- Release 0.33.0  
+  * Use build library for packaging by @geographika in #969
+  * Filter out ExtendedCapabilities when reading WebMapTileService
+    by @geographika in #968
+  * OGC API: add support for collection level transactions by
+    @tomkralidis in #971
+  * CI: Fix failing tests and doc builds by @geographika in #974
+  * Docs: Add doc on using proxies by @geographika in #975
+  * Fix FutureWarnings for testing lxml elements by @geographika in
+    #979
+  * Remove unknown pytest.mark.unit by @geographika in #980
+  * Add URL check for https://demo.pycsw.org/cite by @geographika
+    in #982
+  * Default to text/xml if server doesn't return a Content-Type by
+    @geographika in #977
+  * add a null check before using attrib by @pvgenuchten in #978
+  * Test for XML in response, regardless of mimetype by
+    @geographika in #984
+- Release 0.32.1
+  * Skip failing tests by @geographika in #957
+  * FIX: numpy floats parsed incorrectly by @juhi24 in #955
+  * Add offline testing to CI by @geographika in #952
+  * Allow build_getmap_request test to run offline and for all WMS
+    versions by @geographika in #959
+  * Strip out redundant new to enable object pickling by @vjf in
+    #548
+  * Update WMTS server to new URL by @geographika in #962
+  * [iso19139:2007] add more generic char/anchor check by
+    @pvgenuchten in #954
+  * Catch and raise HTTP 403 Forbidden errors by @geographika in
+    #958
+  * OGC API: handle URLs with URIs as ids by @tomkralidis in #964
+  * Attempt to reduce coveralls errors by @geographika in #960
+  * fix OGC API coverages subset and datetime not forwarded by
+    @fmigneault in #967
+- Release 0.32.0
+  * CI: change base URL for GeoNetwork based CSW by @tomkralidis in
+    #926
+  * Add exception handlers for Polygon and Locale methods by
+    @vietnguyengit in #929
+  * remove root loggers (#923) by @tomkralidis in #930
+  * OGC API: capture response headers by @tomkralidis in #931
+  * OGC Connected Systems API by @ChainReaction31 in #928
+  * Fix parsing of options - support missing options by @pduchesne
+    in #939
+  * OAProc: add support for process execution by @tomkralidis in
+    #940
+  * drop Python 3.8/3.9, unpin old dependencies by @tomkralidis in
+    #941
+  * Fix flake8 issues by @kalxas in #943
+  * add stalebot GitHub Action by @tomkralidis in #942
+  * WFS 2.0 URL building by @geographika in #612
+  * changed all 'already exists' errors to warnings by
+    @speleophysics in #769
+  * Lint fixes by @geographika in #948
+  * Add srsname to wfs200.py getfeature GET request by @lpartington
+    in #945
+  * Remove dependency on the Pytz library by @spillner in #949
+  * adds support for gmx:anchor in gmd:identifier by @pvgenuchten
+    in #947
+  * enables gmx:anchor for otherconstraints by @pvgenuchten in #844
+  * Raise an error if GetCapabilities requests don't return XML by
+    @geographika in #861
+  * Add Windows Build Action with Tests by @geographika in #950
+
+-------------------------------------------------------------------
 Thu May 29 11:22:39 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Fix Leap 16.0 build

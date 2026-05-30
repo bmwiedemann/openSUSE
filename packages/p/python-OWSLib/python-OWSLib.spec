@@ -1,7 +1,7 @@
 #
 # spec file for package python-OWSLib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2015 Angelos Tzotsos <tzotsos@opensuse.org>
 # Copyright (c) 2021 Ioda-Net Sàrl, Bruno Friedmann, Charmoille, Switzerland.
 #
@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-OWSLib
-Version:        0.31.0
+Version:        0.35.0
 Release:        0
 Summary:        Python interface to OGC Web Services
 License:        BSD-3-Clause
@@ -28,7 +28,7 @@ Group:          Productivity/Scientific/Other
 URL:            https://owslib.readthedocs.io/
 # get the test suite form Github
 Source:         https://github.com/geopython/OWSLib/archive/refs/tags/%{version}.tar.gz#/OWSLib-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -36,18 +36,18 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-lxml
-Requires:       python-python-dateutil >= 1.5
-Requires:       python-pytz
-Requires:       python-requests >= 1.0
+Requires:       python-python-dateutil
+Requires:       python-requests
 Provides:       python-owslib = %{version}
 Obsoletes:      python-owslib < %{version}
 # SECTION test
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pytest-httpserver}
+BuildRequires:  %{python_module pytest-socket}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil >= 1.5}
-BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module requests >= 1.0}
+BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module requests}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
@@ -73,15 +73,7 @@ echo '[pytest]
 markers =
     online
 ' > pytest.ini
-donttest="     (TestOffline and test_wfs_110_remotemd_parse_all)"
-donttest+=" or (TestOffline and test_wfs_110_remotemd_parse_single)"
-donttest+=" or (TestOffline and test_wfs_200_remotemd_parse_all)"
-donttest+=" or (TestOffline and test_wfs_200_remotemd_parse_single)"
-donttest+=" or (TestOffline and test_wms_130_remotemd_parse_all)"
-donttest+=" or (TestOffline and test_wms_130_remotemd_parse_single)"
-# online but not marked
-donttest+=" or test_wmts_example_informatievlaanderen"
-%pytest -s -m "not online" -k "not ($donttest)"
+%pytest -s -m "not online"
 
 %files %python_files
 %doc AUTHORS.rst README.md SECURITY.md
