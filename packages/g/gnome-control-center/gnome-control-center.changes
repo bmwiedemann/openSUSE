@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 29 08:11:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.2:
+  + Device Security: Make labels fit in mobile width
+  + Global Shortcuts: Relas app-id validation requirements
+  + Notifications: Fix "Show Content" notification setting
+  + System: Give "Software Updates" row a "button" accessible role
+  + Wellbeing: Make lables fit into mobile width
+  + Updated translations.
+- Update vendored libgxpd sub-project.
+
+-------------------------------------------------------------------
 Sun Apr 26 16:39:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Align with what meson setup checks for: Drop /usr/bin/Xvfb,

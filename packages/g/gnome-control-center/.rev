@@ -2531,4 +2531,19 @@ New stable rel</comment>
   pkgconfig(xft) and pkgconfig(xi) BuildRequires.</comment>
     <requestid>1350305</requestid>
   </revision>
+  <revision rev="285" vrev="1">
+    <srcmd5>a326eee42d87a1bc5ce5d43cc03efc7d</srcmd5>
+    <version>50.2</version>
+    <time>1780174497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.2:
+  + Device Security: Make labels fit in mobile width
+  + Global Shortcuts: Relas app-id validation requirements
+  + Notifications: Fix &quot;Show Content&quot; notification setting
+  + System: Give &quot;Software Updates&quot; row a &quot;button&quot; accessible role
+  + Wellbeing: Make lables fit into mobile width
+  + Updated translations.
+- Update vendored libgxpd sub-project.</comment>
+    <requestid>1355874</requestid>
+  </revision>
 </revisionlist>
