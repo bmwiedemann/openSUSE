@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon May 25 17:35:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.2.2:
+  + Bugfixes: Fix app chooser breaking translation domains
+
+-------------------------------------------------------------------
+Sun May 24 17:49:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.2:
+  + Enhancements:
+    - Flush search results based on time instead of file count
+    - Allow opening multiple files with different extensions
+  + Fixed regressions: Added search entry to applicaton chooser
+  + Bugfixes:
+    - Fix app staying in the background after properties windows
+      are closed
+    - Fix possible crash with properties window
+    - Fix thumbnails not appearing in remote locations
+    - Fix fallback icons not changing size with zoom level
+    - Fix duplicate conflict dialog when moving files across
+      volumes
+    - Handle trailing '.' character for FAT volumes
+    - Fix search recursion for directories with no ID
+    - Fix off-by-one insertion of bookmarks
+    - Fix templates unique naming with a file extension
+    - Fix a thin line of checker pattern appearing in thumbnails
+    - Fix opening files with nautilus itself
+    - Avoid potential crash in list view
+  + Cleanups:
+    - Don't create trash monitor when not needed
+    - Correctly clear name-cell callbacks on disposal
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Apr 12 08:18:29 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.1:
