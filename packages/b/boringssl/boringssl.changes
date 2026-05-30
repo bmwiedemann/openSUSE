@@ -1,4 +1,381 @@
 -------------------------------------------------------------------
+Sat May 30 08:04:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop 0001-Compile-for-RISC-V.patch: it was an orphaned source
+  (shipped but unreferenced, tripping the factory-auto check that
+  caused the previous decline) and is obsolete anyway -- the
+  pinned boringssl snapshot already carries the RISC-V detection
+  in include/openssl/base.h
+- Spec cleanup: drop obsolete Group tags and use macros for paths
+
+-------------------------------------------------------------------
+Mon Mar 31 21:34:00 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.20210430 tag fips-20210429. This pinned
+  version of boringssl is expected by go1.22 and go1.23 when
+  building with GOEXPERIMENT=boringcrypto.
+  Refs boo#1236000
+  * Remove non-deterministic bits from ECDSA ACVP test.
+  * Reference the newer ChaCha20-Poly1305 RFC.
+  * Use passive entropy collection everywhere.
+  * Rename X509V*_VERSION constants.
+  * Const-correct ASN1_OBJECT_create.
+  * Clarify OBJ_get0_data and OBJ_get_length.
+  * avcp: SHA-1 for ECDSA _verification_ is still supported by NIST.
+  * A couple of Aarch64 FIPS delocate fixes.
+  * Use a placeholder for unknown errors in ERR_*_error_string.
+  * Include assembly optimizations in Bazel builds on Linux-aarch64.
+  * Remove some BoringSSL-only X509_CINF functions.
+  * Document and test X509_ATTRIBUTE creation functions.
+  * Revert handshaker fd numbers and make StartProcess more flexible.
+  * Remove support for malformed X509_ATTRIBUTEs.
+  * Make X509_ATTRIBUTE opaque.
+  * acvptool: Fix typo hard-coding the HTTP method.
+  * Document a few more x509.h functions.
+  * Make X509_PUBKEY opaque.
+  * Always encode booleans as DER.
+  * Fix issuerUID and subjectUID parsing in the key usage checker.
+  * Add experimental handshake hints API.
+  * Make our Python scripts Python-3-compatible.
+  * Export ssl_client_hello_init for fuzzers.
+  * acvp: support GMAC as an algorithm.
+  * Record a fuzzing corpus for the ClientHelloInner decoder.
+  * Use a consistent plural for 'corpus'.
+  * Add util/bot/libFuzzer to .gitignore.
+  * acvp: support KAS-ECC-SSC staticUnified mode.
+  * Check for invalid ALPN inputs in SSL_(CTX_)set_alpn_protos.
+  * Don't duplicate ServerHello construction code.
+  * Rearrange key share and early data logic.
+  * Only skip early data with HRR when offered.
+  * Add ECH server config API to ssl_ctx_api fuzzer
+  * Fix ppc64le build.
+  * Simplify the Lucky13 mitigation.
+  * Add ECH server (draft-ietf-tls-esni-09).
+  * runner: Remove unused field
+  * runner: Construct finishedHash earlier.
+  * Simplify tls_cbc.c slightly.
+  * Remove remnants of CBC SHA2 cipher suites.
+  * runner: Test different V2ClientHello challenge lengths.
+  * runner: Ensure helloBytes is always the same as hello.marshal().
+  * runner: Fix ECH confirmation calculation with PSKs in tests.
+  * runner: Fix HPKE parameter order.
+  * runner: UpdateForHelloRetryRequest cannot fail.
+  * runner: Don't use the buffer in TLS 1.3.
+  * runner: Don't maintain two copies of the same transcript hash.
+  * runner: Remove remnants of SSL 3.0.
+  * runner: Fix writeClientHash and writeRecord ordering.
+  * runner: Remove CheckTLS13DowngradeRandom.
+  * runner: Remove remnants of the separate HelloRetryRequest message.
+  * runner: Store a cipherSuite in ClientSessionState.
+  * runner: Move writeHash to the finishedHash struct.
+  * Fix the spelling of HPKE AEAD constants.
+  * Don't reset server callback expectations on new handshake.
+  * Fix MockQuicTransport::Flush error handling.
+  * Fold ripemd/internal.h into ripemd.c.
+  * Move load/store helpers to crypto/internal.h.
+  * Make words in crypto/fipsmodule/modes actually words.
+  * Handle EINTR more in handshaker.cc.
+  * Add a few missing SSL_R_BIO_NOT_SET cases.
+  * Fix some unreachable code in the QUIC handshaker driver.
+  * Rearrange SSLKeyShare::Serialize.
+  * Fix ssl/internal.h sectioning.
+  * Remove some now unnecessary test exclusions from split handshakes.
+  * Remove tls13-split-handshakes flag.
+  * Define HANDSHAKER_SUPPORTED in once place.
+  * Tidy up handshaker tester.
+  * modulewrapper: add option to print build information.
+  * FIPS counters for AES-CTR.
+  * Enforce that pre_shared_key must come with psk_key_exchange_modes.
+  * Zero out FIPS counters.
+  * Remove is_resume field on TestState.
+  * Remove OPENSSL_DANGEROUS_RELEASE_PTHREAD_KEY build flag.
+  * Add some warnings on how to use OPENSSL_memory_* functions.
+  * Use an unsized helper for truncated SHA-512 variants.
+  * Fix mismatch between header and implementation of bn_sqr_comba8.
+  * Remove GCC 4.8.99 check.
+  * Bump minimum CMake version.
+  * Automatically enable C11 atomics when available.
+  * Make generate_build_files.py python3 compatible.
+  * Remove X509_REQ_set_extension_nids and document related functions.
+  * Document a few more functions in x509.h.
+  * Do not access value.ptr with V_ASN1_BOOLEAN.
+  * Add X509_PUBKEY_get0_public_key.
+  * Test empty EVP_CIPHER inputs and fix exact memcpy overlap.
+  * Revert "Implement rsa_pkcs1_sha256_legacy."
+  * Fix unnecessarily direction-specific tests in cipher_tests.txt
+  * Refactor HPKE API to include explicit length parameters.
+  * Generalize make_errors.go to allow EVP covering multiple directories.
+  * Add a Windows no-op impl of BORINGSSL_self_test
+  * Only pass -handshaker-path in split handshakes tests.
+  * Add RNG support for FreeBSD.
+  * Move fips.c into a subdirectory.
+  * Implement rsa_pkcs1_sha256_legacy.
+  * Better document nullable X.509 getters.
+  * runner: Remove redundant -enable-all-curves shim flag.
+  * Initialize nonce in PerAEADTest.ABI.
+  * Document ASN1_TYPE and related functions.
+  * fips: add counters.
+  * Align with OpenSSL on constness of static ASN1_OBJECTs.
+  * Add -rr-record flag to runner.go.
+  * Register NAME_CONSTRAINTS with bssl::UniquePtr.
+  * Register POLICY_MAPPING with bssl::UniquePtr.
+  * Stub out some more of PKCS7.
+  * Remove TODO to reverse the output of PKCS12_parse.
+  * Make the X509_VAL structure opaque.
+  * Support creating unencrypted PKCS#12 files.
+  * Move PKCS#12 samples to embed_test_data.
+  * Remove some remnants of TLS 1.3 downgrade carveouts.
+  * Remove X509_REQ_to_X509.
+  * Fix OPENSSL_EC_* constants and add EC_GROUP_get_asn1_flag
+  * RAND_set_rand_method returns int.
+  * Check the inner and outer CRL signature algorithms match.
+  * Remove block_mask from EVP_CIPHER_CTX.
+  * Document a couple more functions in x509.h.
+  * Define X509V*_VERSION constants.
+  * Handle the default X.509 version explicitly.
+  * Compile for RISC-V.
+  * Add ECDSA nonce-testing functions.
+  * Rearrange ECDSA implementation.
+  * Split the FIPS mode PRNG lock in two.
+  * Remove legacy vs_toolchain.py environment variable.
+  * runner: Rename 'masterSecret' on session objects to plain 'secret'.
+  * Test ECDSA signing is non-deterministic.
+  * acvp: split ACVP modulewrapper for reuse by Trusty
+  * No-op CL to trigger some builds.
+  * Use CIPD Go packages.
+  * Update CMake on the bots and switch to CIPD where available.
+  * Future-proof vs_toolchain.py for VS2019.
+  * Revert "Revert "Disable check that X.509 extensions implies v3.""
+  * Update Clang and Go on the bots.
+  * Check for OBJ_nid2obj failures in X509_ATTRIBUTE_create.
+  * Don't overflow the output length in EVP_CipherUpdate calls.
+  * Remove X509_issuer_and_serial_hash.
+  * Fix Bazel build breakage.
+  * Specify VS toolchain by command-line argument.
+  * Update Android Bazel build support in BUILD.toplevel.
+  * Honor SSL_TLSEXT_ERR_ALERT_FATAL in the ALPN callback.
+  * acvp: detect header element in JSON.
+  * Align the ARM capability functions.
+  * Skip runtime NEON checks if __ARM_NEON is defined.
+  * acvp: don't include CMAC-AES in regcap dump.
+  * acvp: fix CMAC verify
+  * Include bn/internal.h for non-bcm.c builds.
+  * Add various function calls to test_fips.
+  * Add missing include to self_check.c.
+  * Revert "Disable check that X.509 extensions implies v3."
+  * Fix TLS13SessionID-TLS13 test.
+  * Use ID instead of Id in Go.
+  * acvp: move CMAC verification into the module wrapper.
+  * Benchmark BORINGSSL_self_test in FIPS mode.
+  * Support MOVLPS and MOVHPS in delocate.
+  * Add FFDH FIPS self-test.
+  * acvp: update to newer FFDH test.
+  * Add basic BLAKE2b-256 support.
+  * acvp: check that the payloadLen of cipher tests is correct.
+  * acvp: update test expectations in light of 8dcdcb39a7
+  * Support cross-compiling AArch64 FIPS to Android.
+  * acvp: drop 3DES fields from output when unused.
+  * acvp: don't advertise SHA-1 RSA signature generation.
+  * Fix comments that refer to old draft of HPKE.
+  * Define TLSEXT_TYPE_quic_transport_parameters to the old code point for now.
+  * Make BN_clear_free a wrapper around BN_free.
+  * delocate: support Aarch64
+  * Add DH_compute_key_padded.
+  * Fix client 0-RTT handling with ALPS.
+  * acvp: add XTS support.
+  * doc: fix SSL_set0_rbio
+  * Add support for the new QUIC TLS extension codepoint
+  * delocate: preprocess perlasm output on Aarch64
+  * Replace MockQUICTransport tags with record types.
+  * Run extension tests at all protocols.
+  * Make QUIC tests work with early data.
+  * Make QUIC work with -async tests.
+  * Fix ALPS state machine in QUIC servers.
+  * runner: Allow tokbind without RI/EMS in TLS 1.3.
+  * Test that ALPS can be deferred to the ALPN callback.
+  * Send ECH acceptance signal from backend server.
+  * delocate: handle Aarch64 assembly in parser.
+  * Add ASM optimizations for Windows on Arm
+  * Use gai_strerrorA on Windows.
+  * Optimize suffix building in FileTest::ReadNext().
+  * A handful more compatibility functions.
+  * Update HPKE to draft-irtf-cfrg-hpke-07.
+  * acvp: drop subprocess_test.go
+  * Add some OpenSSL-compatibility aliases
+  * delocate: eliminate expression from vpaes assembly.
+  * delocate: support alternative comment indicators
+  * Update third_party/googletest.
+  * acvp: add tests
+  * Fix chacha20_poly1305_x86_64.pl comments.
+  * Fix awkward wording in comment.
+  * Update ECH GREASE to draft-ietf-tls-esni-09
+  * Gerrit ignores <sup>; use Unicode superscript instead.
+  * acvp: better document the subprocess protocol.
+  * Add .text.unlikely.* pattern to fips_shared.lds.
+  * acvp: fix silly errors.
+  * acvp: load config later.
+  * Allow some non-minimal lengths in BER.
+  * Export tool_sources to GN.
+  * Use more efficient std::string::find overload.
+  * Revert "Add support for the new QUIC TLS extension codepoint"
+  * Move DH parameter generation out of the FIPS module.
+  * Add support for the new QUIC TLS extension codepoint
+  * Use stdlib.h instead of cstdlib in span.h.
+  * Check for trailing data in X509Test.GeneralName.
+  * Fix ChaCha20-Poly1305 x86-64 asm on Windows
+  * Include bn.h from bn/internal.h
+  * acvp: add support for finite-field Diffie–Hellman.
+  * Move DH code into the FIPS module.
+  * Remove unused Netware codepaths in x86 perlasm.
+  * Finish switching to NASM.
+  * Switch to passive entropy collection for Android FIPS.
+  * Skip ASN.1 template tests in Windows shared library builds.
+  * Add TLS_KDF to documented break tests.
+  * acvp: add support for KAS
+  * Align armv8.pl references to OPENSSL_armcap_P.
+  * Reject bad ASN.1 templates with implicitly-tagged CHOICEs.
+  * Implement GREASE for ECH (draft-ietf-tls-esni-08).
+  * acvp: add TLS KDF support
+  * acvp: tweak config
+  * acvp: fix subprocess_test.go
+  * Const-correct GENERAL_NAME_cmp.
+  * Fix EDIPartyName parsing and GENERAL_NAME_cmp.
+  * PWCT failures should clear the generated key.
+  * Get closer to Ed25519 boundary conditions.
+  * draft-ietf-tls-certificate-compression is now RFC 8879.
+  * Update FIPS.md to include latest FIPS certificate.
+  * Only accept little-endian ARM and MIPS variants in base.h.
+  * aesv8-armx.pl: avoid 32-bit lane assignment in CTR mode
+  * Improve sk_dup.
+  * Poly1305: Use |size_t|; assert |poly1305_state| is large enough.
+  * util/fipstools/acvp/acvptool: buffer signal channel to avoid losing signal
+  * Add digest.h to self_check.c
+  * Document ASN1_STRING.
+  * acvp: add SHA-512/256 support.
+  * Add FIPS self test for the TLS KDF.
+  * Rename the master_key field in SSL_SESSION to secret.
+  * Always check the TLS 1.3 downgrade signal.
+  * Fix NETSCAPE_SPKI_get_pubkey documentation.
+  * Const-correct and document more X509 functions.
+  * Add APIs for checking ASN.1 INTEGERs.
+  * Remove some unnecessary pointer casts.
+  * Document the basic ASN1_STRING functions.
+  * Document some defaults for the EVP RSA interface.
+  * Rearrange ASN1_STRING_copy slightly.
+  * Remove the legacy MSTRING M_ASN1 macros.
+  * Switch M_ASN1_TIME macros within the library.
+  * Unwind M_ASN1_* macros for primitive types.
+  * Reformat and convert comments in asn1.h.
+  * aarch64: Fix name of gnu property note section
+  * Re-reformat x509.h.
+  * Document X509V3_add1_i2d and friends.
+  * Remove ASN1_STRING_FLAG_NDEF.
+  * Unexport internal crypto/asn1 functions.
+  * Unwind some old ASN.1 ifdefs.
+  * Unwind ASN1_PRIMITIVE_FUNCS.
+  * Remove some unused types from asn1t.h.
+  * Unwind ASN1_TFLG_NDEF.
+  * Unwind ASN1_ITYPE_COMPAT.
+  * Unwind ASN1_AFLG_BROKEN.
+  * Const-correct various X509 string parameters.
+  * Document the next few functions in x509.h
+  * Remove sk_new_null call.
+  * acvp: move inner MCT loops into subprocess.
+  * Fix x509_rsa_ctx_to_pss when saltlen is md_size.
+  * Document the X509V3_get_d2i family of functions.
+  * runner: explicitly signal error from handshaker.
+  * runner: add -skip
+  * Add functions for manipulating X.509 TBS structures.
+  * Remove ASN1_STRING_length_set prototype.
+  * Update Go on the bots.
+  * Rework vs_toolchain.py and vs_env.py.
+  * Add ECDSA verify KAT to FIPS self-tests.
+  * Add AES-GCM AEADs with internal nonce generation.
+  * Define a constant for the standard GCM nonce length.
+  * Add test for X25519-containing certificate.
+  * Add SSL_early_data_reason_string.
+  * Add raw redeem API.
+  * aarch64: Remove some flavour conditionals
+  * Have fewer opaque booleans in aead_test.cc
+  * acvp: RSA signature verification tests.
+  * acvp: RSA signature generation tests.
+  * acvp: support RSA key generation tests.
+  * Support 4096-bit keys in FIPS mode.
+  * Reland "Check AlgorithmIdentifier parameters for RSA and ECDSA signatures.""
+  * acvp: add 3DES-CBC support
+  * acvp: add 3DES-ECB support
+  * Clear some reported gcc -Wshadow warnings.
+  * Const-correct X509V3_extensions_print.
+  * clang-format and convert comments in x509v3.h.
+  * aarch64: Improve conditional compilation
+  * Silence some linter checks.
+  * acvp: update subprocess_test.go
+  * Update clang.
+  * Implement draft-vvv-tls-alps-01.
+  * Simplify 0-RTT tests.
+  * Fix crash when flushing an SSL BIO.
+  * Document low-level PEM read/write functions.
+  * clang-format pem.h and convert comments.
+  * Add PSK variants of HPKE setup functions to BoGo.
+  * acvp: abstract out MCT iteration functions.
+  * Add Go implementation of HPKE draft 05 to runner.
+  * runner: Implement a more complete ClientHello consistency check.
+  * Update TrustTokenV2 to use VOPRFs and assemble RR.
+  * acvp: add AES-CCM support.
+  * acvp: highlight that the TOTP secret goes in the config file.
+  * acvp: handle more private key formats.
+  * runner: Refactor BoGo clientHelloMsg extension marshalling.
+  * Include rodata subsections in FIPS-shared build.
+  * Switch x509_test.cc to use C++ raw string literals.
+  * Fix some malloc error handling.
+  * acvp: add AES-KWP support.
+  * acvp: add AES-KW support.
+  * acvp: support saving vectors.
+  * Fix handling of quic_early_data_context.
+  * Add a warning to des.h.
+  * Move Trusty workaround to the OPENSSL_LINUX define.
+  * acvp: add AES-GCM support.
+  * Disable fork detection on Trusty.
+  * acvp: add AES-CTR support.
+  * Tell clang-format that STACK_OF and LHASH_OF are types.
+  * modulewrapper: fix unknown functions.
+  * Print SSL_get_error in bssl_shim.
+  * modulewrapper: fix sending empty spans.
+  * Allow specifying different initial and resumption expectations.
+  * Add a few more OPENSSL_NO_* constants.
+  * Test SSL_get0_alpn_selected on both client and server.
+  * runner: Rewrite sessionState parsing with byteReader.
+  * Switch ssl_parse_extensions to bool and Span.
+  * Disable check that X.509 extensions implies v3.
+  * Silence some clang warnings on macOS and iOS CQ bots.
+  * Mirror dsa.h's deprecation notice in dh.h.
+  * Const-correct X509_get0_extensions.
+- Packaging improvements:
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead.
+  * Vendor Go build-time utility dependences in go.mod, not yet
+    using OBS Service Go Modules.
+  * Add BuildRequires: golang(API) >= 1.22 to enable Go related
+    utilities used in CMake build steps related to FIPS
+    mode. Upstream minimum version per go.mod is go1.13.
+  * _service add go_modules to vendor pinned dependences in go.mod
+  * Use autosetup -a 1 to unpack source and vendored dependencies
+  * Rebase 0001-Compile-for-RISC-V.patch
+  * Rebase 0002-crypto-Fix-aead_test-build-on-aarch64.patch
+  * Rebase 0003-enable-s390x-builds.patch
+  * Rebase 0004-fix-alignment-for-ppc64le.patch
+  * Rebase 0005-fix-alignment-for-arm.patch
+  * Rebase 0006-gcc-disable-werror.patch
+  * Rebase 0007-fix-go-vendor-embed_test_data.patch
+  * Rebase 0008-fix-go-vendor-err_data_generate.patch
+  * Rebase 0009-soname-sover.patch (was soname-sover.patch)
+  * rpmlint fix version-control-internal-file error
+  * rpmlint fix script-without-shebang error
+  * rpmlint fix non-executable-script error
+  * rpmlint fix binary-or-shlib-defines-rpath error use CMAKE_SKIP_RPATH
+
+-------------------------------------------------------------------
 Sun Oct 27 20:24:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Change version of the sources to 0.%%cd to avoid problems when
@@ -774,7 +1151,7 @@ Tue Sep  3 07:15:48 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 -------------------------------------------------------------------
 Fri Aug 30 06:52:55 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
-- Disable lto to fix build failure 
+- Disable lto to fix build failure
 
 -------------------------------------------------------------------
 Thu Apr 25 14:50:41 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>

@@ -8,18 +8,15 @@ Subject: [PATCH 4/4] fix alignment for ppc64le
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/crypto/cipher_extra/aead_test.cc b/crypto/cipher_extra/aead_test.cc
-index 4c079e843321..2c7e116a4aad 100644
---- a/src/crypto/cipher_extra/aead_test.cc
-+++ b/src/crypto/cipher_extra/aead_test.cc
-@@ -29,7 +29,7 @@
- #include "../test/test_util.h"
- #include "../test/wycheproof_util.h"
+index c1e61cd..0192b45 100644
+--- a/crypto/cipher_extra/aead_test.cc
++++ b/crypto/cipher_extra/aead_test.cc
+@@ -73,7 +73,7 @@ constexpr size_t MinimumTagLength(uint32_t flags) {
+   return ((flags >> 8) & 0xf) == 0 ? 1 : ((flags >> 8) & 0xf);
+ }
  
 -#if defined(OPENSSL_AARCH64)
 +#if defined(OPENSSL_AARCH64) || defined(OPENSSL_PPC64LE)
  #define ALIGN_BYTES 16
  #elif defined(OPENSSL_S390X)
  #define ALIGN_BYTES 8
--- 
-2.24.0
-

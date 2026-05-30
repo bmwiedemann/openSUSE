@@ -1,0 +1,217 @@
+commit ffa90ddfe8ed4436f0893f28d29a7b66d6f1f6b0
+Author: Jeff Kowalczyk <jkowalczyk@suse.com>
+Date:   Fri Feb 28 14:57:46 2025 -0800
+
+    0009-soname-sover.patch
+
+diff --git a/crypto/CMakeLists.txt b/crypto/CMakeLists.txt
+index 0a5a2b7..99a1306 100644
+--- a/crypto/CMakeLists.txt
++++ b/crypto/CMakeLists.txt
+@@ -198,7 +198,7 @@ add_custom_command(
+ )
+ 
+ add_library(
+-  crypto
++  boringssl_crypto
+ 
+   asn1/a_bitstr.c
+   asn1/a_bool.c
+@@ -443,7 +443,7 @@ if(FIPS_SHARED)
+   # Rewrite libcrypto.so to inject the correct module hash value. This assumes
+   # UNIX-style library naming, but we only support FIPS mode on Linux anyway.
+   add_custom_command(
+-    TARGET crypto POST_BUILD
++    TARGET boringssl_crypto POST_BUILD
+     COMMAND ${GO_EXECUTABLE} run
+     ${CMAKE_CURRENT_SOURCE_DIR}/../util/fipstools/inject_hash/inject_hash.go
+     -o libcrypto.so -in-object libcrypto.so ${EXTRA_INJECT_HASH_ARGS}
+@@ -455,22 +455,22 @@ if(FIPS_SHARED)
+   )
+ endif()
+ 
+-add_dependencies(crypto global_target)
++add_dependencies(boringssl_crypto global_target)
+ 
+ if(FIPS_DELOCATE OR FIPS_SHARED)
+-  add_dependencies(crypto bcm_o_target)
++  add_dependencies(boringssl_crypto bcm_o_target)
+ endif()
+ 
+-SET_TARGET_PROPERTIES(crypto PROPERTIES LINKER_LANGUAGE C)
++SET_TARGET_PROPERTIES(boringssl_crypto PROPERTIES LINKER_LANGUAGE C)
+ 
+ if(NOT WIN32 AND NOT ANDROID)
+-  target_link_libraries(crypto pthread)
++  target_link_libraries(boringssl_crypto pthread)
+ endif()
+ 
+ # Every target depends on crypto, so we add libcxx as a dependency here to
+ # simplify injecting it everywhere.
+ if(USE_CUSTOM_LIBCXX)
+-  target_link_libraries(crypto libcxx)
++  target_link_libraries(boringssl_crypto libcxx)
+ endif()
+ 
+ # urandom_test is a separate binary because it needs to be able to observe the
+@@ -482,11 +482,13 @@ add_executable(
+   fipsmodule/rand/urandom_test.cc
+ )
+ 
+-target_link_libraries(urandom_test test_support_lib boringssl_gtest crypto)
++target_link_libraries(urandom_test test_support_lib boringssl_gtest boringssl_crypto)
+ 
+ add_dependencies(urandom_test global_target)
+ add_dependencies(all_tests urandom_test)
+ 
++set_target_properties(boringssl_crypto PROPERTIES SOVERSION 1)
++
+ add_executable(
+   crypto_test
+ 
+@@ -560,7 +562,7 @@ add_executable(
+ 
+ add_dependencies(crypto_test global_target)
+ 
+-target_link_libraries(crypto_test test_support_lib boringssl_gtest crypto)
++target_link_libraries(crypto_test test_support_lib boringssl_gtest boringssl_crypto)
+ if(WIN32)
+   target_link_libraries(crypto_test ws2_32)
+ endif()
+diff --git a/decrepit/CMakeLists.txt b/decrepit/CMakeLists.txt
+index ef95a6b..d1ef907 100644
+--- a/decrepit/CMakeLists.txt
++++ b/decrepit/CMakeLists.txt
+@@ -24,7 +24,7 @@ add_library(
+ 
+ add_dependencies(decrepit global_target)
+ 
+-target_link_libraries(decrepit crypto ssl)
++target_link_libraries(decrepit boringssl_crypto boringssl_ssl)
+ 
+ add_executable(
+   decrepit_test
+@@ -41,7 +41,7 @@ add_executable(
+ add_dependencies(decrepit_test global_target)
+ 
+ target_link_libraries(decrepit_test test_support_lib boringssl_gtest decrepit
+-                      crypto)
++                      boringssl_crypto)
+ if(WIN32)
+   target_link_libraries(decrepit_test ws2_32)
+ endif()
+diff --git a/fuzz/CMakeLists.txt b/fuzz/CMakeLists.txt
+index 62652cb..7aabbc4 100644
+--- a/fuzz/CMakeLists.txt
++++ b/fuzz/CMakeLists.txt
+@@ -5,7 +5,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-missing-prototypes")
+ macro(fuzzer name)
+   add_executable(${name} ${name}.cc)
+   add_dependencies(${name} global_target)
+-  target_link_libraries(${name} crypto ${ARGN})
++  target_link_libraries(${name} boringssl_crypto ${ARGN})
+   if(LIBFUZZER_FROM_DEPS)
+     set_target_properties(${name} PROPERTIES LINK_FLAGS "-fsanitize=fuzzer-no-link")
+     target_link_libraries(${name} Fuzzer)
+diff --git a/ssl/CMakeLists.txt b/ssl/CMakeLists.txt
+index 38c686b..fa086c0 100644
+--- a/ssl/CMakeLists.txt
++++ b/ssl/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ include_directories(../include)
+ 
+ add_library(
+-  ssl
++  boringssl_ssl
+ 
+   bio_ssl.cc
+   d1_both.cc
+@@ -42,9 +42,11 @@ add_library(
+   tls13_server.cc
+ )
+ 
+-add_dependencies(ssl global_target)
++add_dependencies(boringssl_ssl global_target)
+ 
+-target_link_libraries(ssl crypto)
++target_link_libraries(boringssl_ssl boringssl_crypto)
++
++set_target_properties(boringssl_ssl PROPERTIES SOVERSION 1)
+ 
+ add_executable(
+   ssl_test
+@@ -58,7 +60,7 @@ add_executable(
+ 
+ add_dependencies(ssl_test global_target)
+ 
+-target_link_libraries(ssl_test test_support_lib boringssl_gtest ssl crypto)
++target_link_libraries(ssl_test test_support_lib boringssl_gtest boringssl_ssl boringssl_crypto)
+ if(WIN32)
+   target_link_libraries(ssl_test ws2_32)
+ endif()
+diff --git a/ssl/test/CMakeLists.txt b/ssl/test/CMakeLists.txt
+index bb9bd81..c9e353d 100644
+--- a/ssl/test/CMakeLists.txt
++++ b/ssl/test/CMakeLists.txt
+@@ -15,7 +15,7 @@ add_executable(
+ 
+ add_dependencies(bssl_shim global_target)
+ 
+-target_link_libraries(bssl_shim test_support_lib ssl crypto)
++target_link_libraries(bssl_shim test_support_lib boringssl_ssl boringssl_crypto)
+ 
+ if(UNIX AND NOT APPLE AND NOT ANDROID)
+   add_executable(
+@@ -33,7 +33,7 @@ if(UNIX AND NOT APPLE AND NOT ANDROID)
+ 
+   add_dependencies(handshaker global_target)
+ 
+-  target_link_libraries(handshaker test_support_lib ssl crypto)
++  target_link_libraries(handshaker test_support_lib boringssl_ssl boringssl_crypto)
+ else()
+   # Declare a dummy target for run_tests to depend on.
+   add_custom_target(handshaker)
+diff --git a/tool/CMakeLists.txt b/tool/CMakeLists.txt
+index e9e387b..ae82517 100644
+--- a/tool/CMakeLists.txt
++++ b/tool/CMakeLists.txt
+@@ -28,12 +28,12 @@ if(WIN32)
+ endif()
+ 
+ if(APPLE OR WIN32 OR ANDROID)
+-  target_link_libraries(bssl ssl crypto)
++  target_link_libraries(bssl boringssl_ssl boringssl_crypto)
+ else()
+   find_library(FOUND_LIBRT rt)
+   if(FOUND_LIBRT)
+-    target_link_libraries(bssl ssl crypto -lrt)
++    target_link_libraries(bssl boringssl_ssl boringssl_crypto -lrt)
+   else()
+-    target_link_libraries(bssl ssl crypto)
++    target_link_libraries(bssl boringssl_ssl boringssl_crypto)
+   endif()
+ endif()
+diff --git a/util/fipstools/acvp/modulewrapper/CMakeLists.txt b/util/fipstools/acvp/modulewrapper/CMakeLists.txt
+index 267f82c..af6950b 100644
+--- a/util/fipstools/acvp/modulewrapper/CMakeLists.txt
++++ b/util/fipstools/acvp/modulewrapper/CMakeLists.txt
+@@ -10,5 +10,5 @@ if(FIPS)
+ 
+   add_dependencies(modulewrapper global_target)
+ 
+-  target_link_libraries(modulewrapper crypto)
++  target_link_libraries(modulewrapper boringssl_crypto)
+ endif()
+diff --git a/util/fipstools/cavp/CMakeLists.txt b/util/fipstools/cavp/CMakeLists.txt
+index a50c9ab..b3142e4 100644
+--- a/util/fipstools/cavp/CMakeLists.txt
++++ b/util/fipstools/cavp/CMakeLists.txt
+@@ -37,6 +37,6 @@ if(FIPS)
+ 
+   add_dependencies(test_fips global_target)
+ 
+-  target_link_libraries(cavp test_support_lib crypto)
+-  target_link_libraries(test_fips test_support_lib crypto)
++  target_link_libraries(cavp test_support_lib boringssl_crypto)
++  target_link_libraries(test_fips test_support_lib boringssl_crypto)
+ endif()

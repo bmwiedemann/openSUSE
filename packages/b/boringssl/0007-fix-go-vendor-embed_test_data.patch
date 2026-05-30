@@ -1,0 +1,20 @@
+commit 84b3970a1a7fa419f305a833effbedb3e53690b7
+Author: Jeff Kowalczyk <jkowalczyk@suse.com>
+Date:   Mon Mar 31 08:40:57 2025 -0700
+
+    0007-fix-go-vendor-embed_test_data.patch
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 76a3723..fb2c801 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -585,7 +585,8 @@ file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/embed_test_data_args.txt"
+ 
+ add_custom_command(
+   OUTPUT crypto_test_data.cc
+-  COMMAND ${GO_EXECUTABLE} run util/embed_test_data.go -file-list
++  COMMAND ${GO_EXECUTABLE} build -mod=vendor util/embed_test_data.go
++  COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/embed_test_data -file-list
+           "${CMAKE_CURRENT_BINARY_DIR}/embed_test_data_args.txt" >
+           "${CMAKE_CURRENT_BINARY_DIR}/crypto_test_data.cc"
+   DEPENDS util/embed_test_data.go ${CRYPTO_TEST_DATA}

@@ -30,13 +30,13 @@ Change-Id: Iac2c6810fa260ad214abde8db733793ac914acda
  src/crypto/cipher_extra/aead_test.cc | 20 +++++++++++++-------
  1 file changed, 13 insertions(+), 7 deletions(-)
 
-Index: boringssl-20200122/src/crypto/cipher_extra/aead_test.cc
+Index: a/crypto/cipher_extra/aead_test.cc
 ===================================================================
---- boringssl-20200122.orig/src/crypto/cipher_extra/aead_test.cc
-+++ boringssl-20200122/src/crypto/cipher_extra/aead_test.cc
-@@ -29,6 +29,12 @@
- #include "../test/test_util.h"
- #include "../test/wycheproof_util.h"
+--- a/crypto/cipher_extra/aead_test.cc
++++ b/crypto/cipher_extra/aead_test.cc
+@@ -73,6 +73,12 @@ constexpr size_t MinimumTagLength(uint32_t flags) {
+   return ((flags >> 8) & 0xf) == 0 ? 1 : ((flags >> 8) & 0xf);
+ }
  
 +#if defined(OPENSSL_AARCH64)
 +#define ALIGN_BYTES 16
@@ -44,6 +44,6 @@ Index: boringssl-20200122/src/crypto/cipher_extra/aead_test.cc
 +#define ALIGN_BYTES 64
 +#endif
 +
- 
  struct KnownAEAD {
    const char name[40];
+   const EVP_AEAD *(*func)(void);

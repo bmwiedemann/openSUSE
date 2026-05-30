@@ -1,0 +1,20 @@
+commit 05f4d459a1c3495918585d5bc3531f55b12baca7
+Author: Jeff Kowalczyk <jkowalczyk@suse.com>
+Date:   Mon Mar 31 14:25:59 2025 -0700
+
+    0008-fix-go-vendor-err_data_generate.patch
+
+diff --git a/crypto/CMakeLists.txt b/crypto/CMakeLists.txt
+index c06cbb7..0a5a2b7 100644
+--- a/crypto/CMakeLists.txt
++++ b/crypto/CMakeLists.txt
+@@ -167,7 +167,8 @@ perlasm(test/trampoline-x86_64.${ASM_EXT} test/asm/trampoline-x86_64.pl)
+ 
+ add_custom_command(
+   OUTPUT err_data.c
+-  COMMAND ${GO_EXECUTABLE} run err_data_generate.go > ${CMAKE_CURRENT_BINARY_DIR}/err_data.c
++  COMMAND ${GO_EXECUTABLE} build -mod=vendor err_data_generate.go
++  COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/err/err_data_generate > ${CMAKE_CURRENT_BINARY_DIR}/err_data.c
+   DEPENDS
+   err/err_data_generate.go
+   err/asn1.errordata
