@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 30 15:38:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7.4
+- Stop using the deprecated %suse_update_desktop_file macro;
+  install the desktop file (Source1) directly and drop the
+  update-desktop-files BuildRequires
+- Install the .desktop and icon as 0644 instead of 0755
+- Run the upstream unit tests via ctest in a %check section:
+  * Add adriconf-system-gtest.patch to build the tests against
+    the system GTest/GMock instead of downloading googletest at
+    build time (which needs network access), and to register the
+    test binary with CTest
+- Drop obsolete Group tag
+
+-------------------------------------------------------------------
 Fri Sep 26 08:21:49 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update to version 2.7.3:

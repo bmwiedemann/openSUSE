@@ -1,0 +1,44 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Date: Sat, 30 May 2026 00:00:00 +0000
+Subject: [PATCH] Build/register unit tests for the system GTest/GMock
+
+Use find_package(GTest) and the system gtest/gmock instead of
+downloading and building googletest at configure time (which needs
+network access and fails in offline build environments like OBS).
+Build the test binary as part of the normal build, enable testing
+at the top level and register the binary with CTest so it runs via
+'ctest' / the %ctest macro from the top-level build directory.
+---
+--- a/CMakeLists.txt	2026-05-30 17:59:01.189753484 +0200
++++ b/CMakeLists.txt	2026-05-30 17:59:01.229757938 +0200
+@@ -147,14 +147,8 @@
+ 
+ # GTest and GMock setup
+ if (ENABLE_UNIT_TESTS)
+-    configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
+-    execute_process(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-            WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download" )
+-    execute_process(COMMAND "${CMAKE_COMMAND}" --build .  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download" )
+-
+-    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-
+-    add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src" "${CMAKE_BINARY_DIR}/googletest-build")
++    find_package(GTest REQUIRED)
++    enable_testing()
+     add_subdirectory(tests)
+ endif()
+ 
+--- a/tests/CMakeLists.txt	2026-05-30 17:59:01.193753930 +0200
++++ b/tests/CMakeLists.txt	2026-05-30 17:59:01.229757938 +0200
+@@ -24,8 +24,9 @@
+ 
+ enable_testing()
+ 
+-add_executable(runUnitTests EXCLUDE_FROM_ALL ${SHARED_SOURCE_FILES} ${SOURCE_TESTS})
+-target_link_libraries(runUnitTests gtest_main gmock)
++add_executable(runUnitTests ${SHARED_SOURCE_FILES} ${SOURCE_TESTS})
++target_link_libraries(runUnitTests GTest::gtest_main GTest::gmock)
++add_test(NAME runUnitTests COMMAND runUnitTests)
+ 
+ target_link_libraries(runUnitTests ${GTKMM_LIBRARIES})
+ target_include_directories(runUnitTests PUBLIC ${GTKMM_INCLUDE_DIRS})
