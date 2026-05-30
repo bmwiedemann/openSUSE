@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 24 07:26:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.14.5:
+  + Fix missing chain-up in SearchCriteriaParser
+
+-------------------------------------------------------------------
 Mon Mar 23 08:16:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
