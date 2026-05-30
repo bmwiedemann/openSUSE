@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 30 06:47:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.4:
+  * Fixed
+    - md060: apply aligned-delimiter when a table auto-compacts
+      past max-width (663f4ba)
+    - md034: don't flag URL arguments of MyST colon directives
+      (d55ed20)
+    - embedded: gate markdown code block formatting behind
+      code-block-tools opt-in (bd23ad1)
+    - md046: treat MyST directive body as directive, not indented
+      code block (060bae2)
+
+-------------------------------------------------------------------
 Fri May 29 10:37:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.3:
