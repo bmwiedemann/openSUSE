@@ -814,4 +814,14 @@
   * Update pci and vendor ids</comment>
     <requestid>1349623</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>f0144892c1a44075dc4ab035a7fbd8ef</srcmd5>
+    <version>0.407</version>
+    <time>1780174500</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.407:
+  * Update pci and vendor ids
+- Add missing &quot;BuildRequires: make&quot;</comment>
+    <requestid>1355881</requestid>
+  </revision>
 </revisionlist>

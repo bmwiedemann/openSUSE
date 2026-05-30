@@ -17,13 +17,14 @@
 
 
 Name:           hwdata
-Version:        0.406
+Version:        0.407
 Release:        0
 Summary:        Hardware identification and configuration data
 License:        GPL-2.0-or-later
 URL:            https://github.com/vcrhonek/hwdata
 Source0:        https://github.com/vcrhonek/hwdata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        merge-pciids.pl
+BuildRequires:  make
 Requires(post): coreutils
 Requires(post): perl
 Conflicts:      pciutils-ids

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 29 05:32:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.407:
+  * Update pci and vendor ids
+- Add missing "BuildRequires: make"
+
+-------------------------------------------------------------------
 Mon Apr 27 13:00:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.406:
