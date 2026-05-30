@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May 29 19:47:22 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.98.4:
+  + An issue causing a deadlock when processing peer changes and disconnecting
+    from the Tailscale control server is resolved
+- Update to version 1.98.3:
+  + An issue where netfilter rules could be applied inconsistently after a
+    netfilter mode change failed has been resolved
+- Update to version 1.98.2:
+  + Ensure MagicDNS resolves tailnet hostnames after a network change
+- Update to version 1.98.1:
+  + Expired preferred peer addresses are cleared, reducing the time to elect an
+    alternative
+  + IP forwarding for subnet routers and exit nodes is reported as a health check
+  + src_valid_mark sysctl is set in addition to connmark firewall rules to
+    improve reverse path filtering and prevent dropped packets
+- Remove patch fix-CVE-2026-33747.patch, fixed upstream
+
+-------------------------------------------------------------------
 Fri Mar 27 21:29:57 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to verison 1.96.4:
