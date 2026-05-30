@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat May 30 12:03:05 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20260529:
+  + Fixes
+    - Fixed -c whip not working for live streams
+      (avoid avio_open on live streams)
+    - Added libavformat version check before using
+      hybrid_fragmented
+      (workaround for old FFmpeg bugs)
+    - Fixed gsr_pipewire_video_remove_modifier removing
+      incorrect modifiers
+    - Fixed audio/video desync when recording while
+      replaying or streaming
+  + PipeWire / Portal
+    - Added fallback to no modifier for PipeWire video capture
+    - Added fallback to no modifier for desktop portal capture
+    - Fixed PipeWire modifier handling
+  + Plugins
+    - Added is_damaged and clear_damage APIs
+    - Added screenshot plugin support
+    - Added invert Y-axis plugin example
+  + Vulkan
+    - Implemented Vulkan Video encoding
+      (H.264, HEVC, AV1)
+    - Removed Vulkan dependency from Meson
+      (only headers are required)
+  + Misc
+    - Added --list-monitors option
+    - Added -low-power option for AMD GPUs
+    - Removed deprecated overclocking option
+
+-------------------------------------------------------------------
 Mon Jan 12 20:20:16 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20260108:
