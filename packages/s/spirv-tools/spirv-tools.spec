@@ -17,7 +17,7 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-2026_2_rc2
+%define lname libSPIRV-Tools-2026_2
 
 # Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
 # See https://bugzilla.suse.com/show_bug.cgi?id=1235697
@@ -26,13 +26,13 @@
 %endif
 
 Name:           spirv-tools
-Version:        2026.2~rc2
+Version:        2026.2
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Tools
-Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v2026.2.rc2.tar.gz
+Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v%version.tar.gz
 Source9:        baselibs.conf
 Patch1:         ver.diff
 BuildRequires:  bison
@@ -70,7 +70,7 @@ validator, and is used in the standalone tools whilst also enabling
 integration into other code bases directly.
 
 %prep
-%autosetup -p1 -n SPIRV-Tools-2026.2.rc2
+%autosetup -p1 -n SPIRV-Tools-%version
 find . -type f -name CMakeLists.txt -exec \
 	perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt {} +
 
