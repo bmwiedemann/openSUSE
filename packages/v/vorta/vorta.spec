@@ -1,7 +1,7 @@
 #
 # spec file for package vorta
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,15 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           vorta
-Version:        0.10.3
+Version:        0.11.5
 Release:        0
 Summary:        Desktop Backup Client based on BorgBackup
 License:        Apache-2.0 AND GPL-3.0-only AND OFL-1.1
-Group:          Productivity/Archiving/Backup
 URL:            https://github.com/borgbase/vorta
 Source:         https://github.com/borgbase/%{name}/archive/v%{version}.tar.gz
+# vorta.desktop is the downstream desktop entry (upstream only ships
+# com.borgbase.Vorta.desktop for its flatpak)
 Source1:        vorta.desktop
-# PATCH-FIX-OPENSUSE vorta-fix-dependencies.patch malcolmlewis@opensuse.org -- Remove dependencies that are named differently.
-Patch0:         vorta-fix-dependencies.patch
 BuildRequires:  %{python_module PyQt6}
 BuildRequires:  %{python_module peewee}
 BuildRequires:  %{python_module pip}
@@ -46,7 +45,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
 Requires:       %{python_flavor}-PyQt6
 Requires:       %{python_flavor}-SecretStorage
 Requires:       %{python_flavor}-peewee
@@ -73,7 +71,7 @@ export LANG=en_US.UTF-8
 install -d %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 install -Dm644 "src/vorta/assets/icons/icon.svg" "%{buildroot}%{_datadir}/icons/hicolor/256x256/apps/vorta.svg"
 install -Dm644 -t %{buildroot}%{_datadir}/metainfo "src/vorta/assets/metadata/com.borgbase.Vorta.appdata.xml"
-%suse_update_desktop_file -i vorta
+install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/applications/vorta.desktop
 %fdupes %{buildroot}%{python_sitelib}
 
 %files

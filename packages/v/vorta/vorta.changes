@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Sat May 30 10:33:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.5:
+  * Do not overwrite prune_keep_within during profile load
+  * Resolve symlinks when matching active borg mount points
+  * Normalize CRLF line endings to LF
+- Update to version 0.11.4:
+  * Show total size and file count on the source tab
+  * Add Select All / Select None buttons to the WiFi network list
+  * Wait for network before backing up remote repositories
+  * Fix backup failure with non-ASCII (e.g. Korean) repo paths
+  * Fix timezone handling for Borg 2.x archive timestamps
+  * Fix WiFi detection when a wired connection is primary
+  * Include the exclusion list in profile export/import
+  * Various crash and typo fixes
+- Declare the bundled vorta.desktop as Source1: it was shipped but
+  not referenced, tripping the factory-auto orphaned-source check
+  that declined the previous submission
+
+-------------------------------------------------------------------
+Tue Mar 31 06:34:11 UTC 2026 - Frantisek Simorda <frantisek.simorda@suse.com>
+- Drop vorta-fix-dependencies.patch: project migrated to pyproject.toml
+
+- Update to version 0.11.3:
+  - Fix manual path entry in file dialog not working (#2352)
+  - Fix test hangs on Linux/macOS CI by mocking system dependencies (#2353)
+  - Improve break lock dialog button clarity (#2315)
+  - Fix CLI backup commands not queuing when backup is running (#2299)
+  - Fix backup button staying greyed out after job completion (#2339)
+  - Fix repository dropdown corruption bugs (#1912, #1915)
+  - Fix status display overflow and truncate long messages
+  - Fix exclusion handling for source size estimation (#2206)
+  - Prevent exception while running BorgVersionJob with unexpected lines on stderr 
+
+- Version 0.11.2:
+  
+  * Bug fixes: Resolved KWallet password retrieval issues, fixed tree model crashes and performance problems, and corrected schedule initialization timing
+  * Packaging modernization: Migrated to uv for modern Python packaging
+  * Code quality: Added missing signal cleanup handlers and removed unused parameters
+  * macOS: Reverted to using borg-dir binary for improved compatibility
+  * Testing: Fixed failing tests and improved cross-platform test coverage
+  * Bump test versions, fix failing tests
+  * Modernize packaging, use uv
+  * refactor: add missing signal cleanup handlers in view classes
+  * Revert to using borg-dir binary on macos
+  * Skip darwin tests on non-darwin platforms
+  * refactor: remove unused profile_id from schedule_changed signal
+  * KWallet password retrieval broken by incorrect get_result() return type
+  * bug: fix tree model pointer exception and performance
+  * fix: Delay updating schedule until after fields have been initialized
+
+- Version 0.11.1:
+  * fix: use absolute path for networksetup binary on macOS
+  * Fix appstream validation errors in metainfo file
+  * Use new borg release naming
+
+- Version 0.11.0:
+  * add exclude patterns for most common media files and .part files
+  * remove setuptools from install_requires
+  * Improved GUI to clarify the passphrase field
+  * Notification timeout removed for critical errors
+  * Skip reading file size if path name is too long
+  * Add missing placeholder keys
+  * Add 1pass and terminus logos
+  * logs: put borg arguments within quotation marks when they contain special strings
+  * Re-arrange tasks to get correct finished event
+  * Add a new unified file selector
+  * Fix broken transifex link
+  * feat: refresh metadata
+  * Add the change passphrase feature
+  * Adding Flatpak app caches to "All Cache Files" exclusion preset.
+  * Add exclude pattern for Java development artefacts
+  * Fix bug with incorrect renaming of archives after aborting edit
+  * Fix the blank entry in the Custom exclusion
+  * Fix GUI Freezing while running pre-backup command
+  * If there's no system tray, at least show a window.
+  * Add file dialog to exclude patterns
+  * packaging: exclude .gitkeep files
+  * Increase archive_tag.ui maximum keep_ limit
+  * Issue/2198 fix
+
+- Version 0.11.0-beta1:
+  * add exclude patterns for most common media files and .part files 
+  * remove setuptools from install_requires 
+  * Improved GUI to clarify the passphrase field 
+  * Notification timeout removed for critical errors 
+  * Skip reading file size if path name is too long 
+  * Add missing placeholder keys 
+  * Add 1pass and terminus logos 
+  * logs: put borg arguments within quotation marks when they contain special strings 
+  * Re-arrange tasks to get correct finished event 
+  * Add a new unified file selector 
+  * Fix broken transifex link 
+  * feat: refresh metadata 
+  * Add the change passphrase feature 
+  * Adding Flatpak app caches to "All Cache Files" exclusion preset. 
+  * Add exclude pattern for Java development artefacts 
+  * Fix bug with incorrect renaming of archives after aborting edit 
+  * Fix the blank entry in the Custom exclusion 
+  * Fix GUI Freezing while running pre-backup command 
+  * If there's no system tray, at least show a window. 
+  * Add file dialog to exclude patterns
+ 
+-------------------------------------------------------------------
 Mon Jun 23 05:41:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install. 
