@@ -242,4 +242,20 @@
     <comment></comment>
     <requestid>1334821</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>48f0bde87304cbad0b53c9c06d5ca25b</srcmd5>
+    <version>0~20260224.ac30d66</version>
+    <time>1772050413</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335120</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>aa867a2c5539d1ceb142a02d57771dd8</srcmd5>
+    <version>0~20260529.63e5c9b</version>
+    <time>1780174826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1356055</requestid>
+  </revision>
 </revisionlist>
