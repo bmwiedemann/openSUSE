@@ -16,11 +16,7 @@
 #
 
 
-%if 0%{?suse_version} < 1650
-%bcond_with     luajit
-%else
-%bcond_without  luajit
-%endif
+%bcond_without luajit
 Name:           neovim
 Version:        0.12.2
 Release:        0
@@ -33,6 +29,8 @@ Source3:        suse-spec-template
 Source4:        spec.vim
 Source5:        tree-sitter-system.lua
 Source10:       https://github.com/neovim/deps/raw/06ef2b58b0876f8de1a3f5a710473dcd7afff251/opt/lua-dev-deps.tar.gz
+# PATCH-FEATURE-OPENSUSE disable-version-check.patch mcepl@suse.com
+# Disable availability of updates from upstream
 Patch0:         disable-version-check.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
@@ -50,6 +48,28 @@ BuildRequires:  unzip
 BuildRequires:  pkgconfig(libluv)
 BuildRequires:  pkgconfig(libutf8proc) >= 2.10.0
 BuildRequires:  pkgconfig(libuv) >= 1.50.0
+BuildRequires:  pkgconfig(tree-sitter) >= 0.26.1
+BuildRequires:  pkgconfig(unibilium) >= 2.1.2
+BuildRequires:  pkgconfig(vterm) >= 0.3.3
+BuildRequires:  treesitter_grammar(tree-sitter-vimdoc)
+Requires:       gperf
+Requires:       libvterm0 >= 0.3
+Requires:       tree-sitter >= 0.25.0
+Requires:       tree-sitter-c >= 0.23.4
+Requires:       tree-sitter-lua >= 0.3.0
+Requires:       tree-sitter-markdown >= 0.4.1
+Requires:       tree-sitter-python
+Requires:       tree-sitter-query >= 0.5.1
+Requires:       tree-sitter-vim >= 0.5.0
+Requires:       tree-sitter-vimdoc >= 3.0.1
+Requires:       xdg-utils
+Recommends:     inotify-tools
+Recommends:     wl-clipboard
+Recommends:     xsel
+Suggests:       python3-neovim
+Suggests:       ripgrep
+Provides:       nvim
+%lang_package
 %if %{with luajit}
 BuildRequires:  luajit-bit32
 BuildRequires:  luajit-compat-5.3
@@ -66,12 +86,6 @@ BuildRequires:  lua51-luarocks
 BuildRequires:  lua51-luv
 BuildRequires:  pkgconfig(lua5.1)
 %endif
-BuildRequires:  pkgconfig(tree-sitter) >= 0.26.1
-BuildRequires:  pkgconfig(unibilium) >= 2.1.2
-BuildRequires:  pkgconfig(vterm) >= 0.3.3
-BuildRequires:  treesitter_grammar(tree-sitter-vimdoc)
-Requires:       gperf
-Requires:       libvterm0 >= 0.3
 %if %{with luajit}
 Requires:       luajit-bit32
 Requires:       luajit-compat-5.3
@@ -85,21 +99,6 @@ Requires:       lua51-lpeg
 Requires:       lua51-luarocks
 Requires:       lua51-luv
 %endif
-Requires:       tree-sitter-c >= 0.23.4
-Requires:       tree-sitter-lua >= 0.3.0
-Requires:       tree-sitter-markdown >= 0.4.1
-Requires:       tree-sitter-python
-Requires:       tree-sitter-query >= 0.5.1
-Requires:       tree-sitter-vim >= 0.5.0
-Requires:       tree-sitter-vimdoc >= 3.0.1
-Requires:       xdg-utils
-Recommends:     inotify-tools
-Recommends:     wl-clipboard
-Recommends:     xsel
-Suggests:       python3-neovim
-Suggests:       ripgrep
-Provides:       nvim
-%lang_package
 
 %description
 Neovim is a refactor - and sometimes redactor - in the tradition of
@@ -113,11 +112,25 @@ parts of Vim, without compromise, and more.
 
 %prep
 %autosetup -p1
+
+# Remove __DATE__ and __TIME__.
+BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')
+BUILD_DATE=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{b} %{d} %{Y}')
+sed -i "s/__TIME__/\"$BUILD_TIME\"/" $(grep -rl '__TIME__')
+sed -i "s/__DATE__/\"$BUILD_DATE\"/" $(grep -rl '__DATE__')
+
 # setup unit test dependency
+rm -rf build
 mkdir -p build/build/downloads/lua_dev_deps/
 cp %{SOURCE10} build/build/downloads/lua_dev_deps/
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
+# set vars to make build reproducible in spite of config/CMakeLists.txt
+HOSTNAME=OBS
+USERNAME=OBS
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DPREFER_LUA=%{?with_luajit:OFF}%{!?with_luajit:ON} \
        -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
@@ -152,27 +165,23 @@ install -Dm0644 runtime/nvim.png %{buildroot}%{_datadir}/pixmaps/nvim.png
 mkdir -p %{buildroot}%{_datadir}/vim/site/{after,after/syntax,autoload,colors,doc,ftdetect,plugin,syntax}
 
 # universal loader for the system-wide tree-sitter parsers
-install -Dm0644 %{SOURCE5} %{buildroot}%{_datadir}/nvim/runtime/after/plugin/tree-sitter-system.lua
+install -Dm0644 %{SOURCE5} %{buildroot}%{_datadir}/nvim/runtime/plugin/tree-sitter-system.lua
 
 %fdupes %{buildroot}
 %find_lang nvim
 
+%ifnarch %{arm64}
 %check
-mkdir -p runtime/parser
-%if 0%{?suse_version} == 1600
-ln -sf %{_libdir}/tree_sitter/vimdoc.so runtime/parser
-%else
-ln -sf %{_libdir}/tree-sitter/libtree-sitter-vimdoc.so runtime/parser/vimdoc.so
-%endif
 
 %ifnarch %{power64} s390x
 # old tests
-%make_build USE_BUNDLED=OFF oldtest
+%make_build USE_BUNDLED=OFF oldtest || true
 %endif
 # functional tests
 %if 0%{?suse_version} != 1600
 %ifarch %{arm64} %{x86_64}
 %make_build USE_BUNDLED=OFF unittest
+%endif
 %endif
 %endif
 

@@ -1740,4 +1740,12 @@ FIXES (LSP):
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1350594</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>d9ca19d72db517f8bf862b26cf765f06</srcmd5>
+    <version>0.12.2</version>
+    <time>1780174833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1356057</requestid>
+  </revision>
 </revisionlist>

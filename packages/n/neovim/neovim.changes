@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  7 09:24:10 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Make neovim use unconditionally LuaJIT. All our reasonable
+  distros supported (and the neovim build on 15.6 is broken from
+  many other reasons as well).
+- Disable availability of updates from upstream
+- spec-cleaner SPEC file
+- Make the build reproducible (bsc#1254333)
+- tree-sitter-system.lua should be an ordinary plugin, no need
+  for after/ any more (bsc#1259074, bsc#1261940)
+- switch off tests on %arm64
+
+-------------------------------------------------------------------
 Sun Apr 26 23:46:48 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.12.2:
