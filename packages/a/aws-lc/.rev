@@ -375,4 +375,41 @@
   + Harden OCSP response printing and fix integer overflow in (forwarded request 1346814 from rrahl0)</comment>
     <requestid>1346815</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f2aee0817745f0f4a42eb3a6b2bc22a5</srcmd5>
+    <version>5.0.0</version>
+    <time>1780174628</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.0:
+  + Test key import in EVPTest a bit more extensively
+  + Add OPENSSL_cleanse to zero stack secrets before return
+  + Fix: Apply COHABITANT_HEADERS logic to location of tool binaries
+  + Fix wherelen handling in BIO_ADDR_rawmake AF_UNIX path
+  + Harden PKCS7 and OCSP error handling
+  + Reject len &lt; -1 in ASN1_mbstring_ncopy
+  + Free existing union arm by current type in PKCS7_set_type
+  + Ensure no trailing data for PKCS8 EVP_parse_private_key
+  + Include trailing NUL in BIO_ADDR_rawaddress AF_UNIX length
+  + Reject negative pass_len in PEM_ASN1_write_bio
+  + Check parameters before comparing pqdsa public keys
+  + Free existing responderId union arm in OCSP_RESPID setters
+  + Release cipher_data on error path too for EVP_CTRL_INIT and EVP_CTRL_COPY
+  + ci: declare contents: read on zig compiler workflow
+  + Add new review workflow
+  + Log versioning and library names druing cmake build step
+  + Tighten OCSP_parse_url URL parsing
+  + Add SHRT_MAX caps to bound iteration and input lengths
+  + Fix correctness findings from penpal testing
+  + Document new versioning scheme and bump mainline to v5.0.0
+  + Decouple the FIPS version number from the AWS-LC version number
+  + Bump the github-actions group with 2 updates
+  + Bump time from 0.3.36 to 0.3.47 in /tests/ci/lambda
+  + tool-openssl/s_client: default SNI to -connect host to match OpenSSL
+  + Reject undersized buffer in pkey_dsa_sign
+  + Drop obsolete test_pkey_rsa.rb hunk from Ruby 3.4 patch
+  + Enable Windows 7 compat path on MinGW builds
+  + Add getauxval availability detection with /proc/self/auxv fallback for uclibc targets
+  + Prefer CRLs with specific IDP match (forwarded request 1355948 from rrahl0)</comment>
+    <requestid>1355949</requestid>
+  </revision>
 </revisionlist>
