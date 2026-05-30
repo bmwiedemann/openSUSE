@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Sat May 30 08:08:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.34:
+  * General
+    - fix(server): detach goroutine context in
+      NotifySmOfConnectionStatusChange @ishwar170695 (#19757)
+    - [Docker] Build docker extension UI on the build platform
+      @copilot-swe-agent[bot] (#19743)
+  * Maintenance
+    - [CI] Reconcile playground Deployment env from manifest on
+      every release @leecalcote (#19748)
+    - fix(workflow): set explicit ref on cross-repo workflow
+      dispatch @hamza-mohd (#19742)
+  * Documentation
+    - docs: fix documentation typos and terminology inconsistencies
+      @AbhishekMauryaGEEK (#19752)- update to 1.0.33:
+- update to 1.0.33:
+  * Maintenance
+    - Remove persisted files except previews @CodexRaunak (#19733)
+    - Fix docs versions @CodexRaunak (#19736)
+    - [CI] Harden release notes publishing against release/tag race
+      conditions @copilot-swe-agent[bot] (#19738)
+    - fix: reorder steps for downloading Allure artifact in
+      workflow @ianrwhitney (#19739)
+    - fix: update path for downloading Allure results in workflow
+      @ianrwhitney (#19729)
+  * Documentation
+    - Fix docs versions @CodexRaunak (#19736)
+    - Update the go.mod to use the latest layer5io/docs
+      @CodexRaunak (#19728)
+- update to 1.0.32:
+  * Meshery CLI
+    - [mesheryctl] Refactor: rename --register flag to
+      --skip-registration @YASHMAHAKAL (#19709)
+  * Maintenance
+    - provider-ui: refresh provider chooser layout and per-provider
+      info popover @hortison (#19711)
+    - Bump tmp from 0.2.5 to 0.2.6 in /ui @dependabot[bot] (#19716)
+    - fix: disable S1003 check in golangci-lint configuration
+      @lekaf974 (#19723)
+  * Documentation
+    - [mesheryctl] Refactor: rename --register flag to
+      --skip-registration @YASHMAHAKAL (#19709)
+    - Disable Publishing categories and tags page @CodexRaunak
+      (#19713)
+- update to 1.0.31:
+  * Maintenance
+    - chore: update end-to-end test command in CI workflow
+      @ianrwhitney (#19717)
+    - chore: consolidate CI workflows and enhance end-to-end
+      testing setup @ianrwhitney (#19549)
+  * Documentation
+    - [docs] Fix tab rendering in meshery-metrics.md @Sbragul26
+      (#19590)
+    - [Docs] Remove Meshery UI references outside extensions docs
+      @AnjaliMishra1st (#19710)
+- update to 1.0.30:
+  * General
+    - Update provider capabilities for new version @marblom007
+      (#19685)
+    - Roadmap: v1.2 and v1.3 clarifications @hamza-mohd (#19679)
+  * Meshery CLI
+    - [mesheryctl] Remove unused manifest URL fixtures @miacycle
+      (#19687)
+    - [Chore] Server: Update perf profile package location
+      @miacycle (#19686)
+  * Maintenance
+    - chore: remove direct references from workflows @miacycle
+      (#19693)
+    - [ci skip] Update golangci-lint configuration to enable
+      staticcheck checks @hortison (#19692)
+    - [Chore] Server: Update perf profile package location
+      @miacycle (#19686)
+    - [Docs] Cleanup tutorials @hortison (#19680)
+  * Documentation
+    - [Docs] fix: REST API references page to use Qanelas Soft font
+      @Utkarsh-0304 (#19639)
+    - [Docs] Add creating-a-meshery-design guide; replace vendor
+      refs with Design Configurator @yi-nuo426 (#19181)
+    - [Docs] More cleanup @yi-nuo426 (#19684)
+    - [Docs] cleanup v0.8 and v0.9 static list @arjunmehta-git
+      (#19681)
+    - [Docs] Cleanup tutorials @hortison (#19680)
+- update to 1.0.29:
+  * General
+    - [Server] Fix silent config corruption on YAML parse failure
+      in validate.go @Pranav-d33 (#19671)
+    - Update providers constants list @simihablo (#19677)
+    - Update Makefile.core.mk @leecalcote (#19675)
+    - fix: cluster count issue @saurabhraghuvanshii (#19662)
+  * Meshery CLI
+    - [Tests] Use Meshery as the remote provider in e2e tests
+      @leecalcote (#19631)
+  * Maintenance
+    - [Tests] Use Meshery as the remote provider in e2e tests
+      @leecalcote (#19631)
+    - chore: update e2e test workflow to use correct artifact name
+      @ianrwhitney (#19632)
+  * Documentation
+    - docs: fix spelling mistakes in MeshSync docs
+      @AbhishekMauryaGEEK (#19642)
+- update to 1.0.28:
+  * no CLI-related changes or dependency updates
+- update to 1.0.27:
+  * General
+    - [Chore]: Bump meshery/schemas to v1.2.23 @l5io (#19623)
+    - [Server] Index matchlabels and binding identification loops
+      @guan404ming (#19529)
+    - chore(system): consume meshery/schemas v1.2.23 system types
+      @leecalcote (#19600)
+    - fix: batch-load connection environments to eliminate N+1
+      queries @hortison (#19599)
+  * Meshery CLI
+    - Single-source the remote-provider list across install
+      artifacts @hortison (#19621)
+    - fix: improve error handling for performance profile server
+      failures @Omkar-Ugal (#19571)
+    - Remove example URL from ParseURLGithub @arjunmehta-git
+      (#19598)
+  * Maintenance
+    - Single-source the remote-provider list across install
+      artifacts @hortison (#19621)
+    - Bump github.com/containerd/containerd from 1.7.30 to 1.7.32
+      @dependabot[bot] (#19593)
+    - Bump github.com/containerd/containerd/v2 from 2.2.0 to 2.2.4
+      @dependabot[bot] (#19594)
+  * Documentation
+    - Fix heading formatting @rishiraj38 (#19627)
+    - Single-source the remote-provider list across install
+      artifacts @hortison (#19621)
+
+-------------------------------------------------------------------
 Fri May 22 05:11:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.26:
