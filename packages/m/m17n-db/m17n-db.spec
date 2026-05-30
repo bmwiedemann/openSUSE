@@ -1,7 +1,7 @@
 #
 # spec file for package m17n-db
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           m17n-db
-Version:        1.8.9
+Version:        1.8.10
 Release:        0
 Summary:        Database Needed by the m17n Library m17n-lib
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain AND MIT
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LicenseRef-SUSE-Public-Domain AND MIT
 Group:          System/I18n/Japanese
 URL:            https://www.m17n.org/m17n-lib/
 Source0:        http://download.savannah.gnu.org/releases/m17n/%{name}-%{version}.tar.gz
