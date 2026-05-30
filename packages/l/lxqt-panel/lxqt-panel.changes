@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 29 14:19:34 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 2.4.1:
+  * Fixed but with volume scrolling not respecting the configured
+    steps
+  * Changed volume plugin configuration steps default value from 3
+    to 5
+
+-------------------------------------------------------------------
 Tue Apr 21 14:27:06 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 2.4.0:

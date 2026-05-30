@@ -1425,4 +1425,16 @@
     switching between px and %</comment>
     <requestid>1348573</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>0ddd561ad8699cc7c8ebc9ad40ea0051</srcmd5>
+    <version>2.4.1</version>
+    <time>1780174555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1:
+  * Fixed but with volume scrolling not respecting the configured
+    steps
+  * Changed volume plugin configuration steps default value from 3
+    to 5</comment>
+    <requestid>1355916</requestid>
+  </revision>
 </revisionlist>
