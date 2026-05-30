@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 29 20:11:50 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 5.2.1:
+  + SECURITY: OpenSSF: Mention vulnerability_report_response
+  + Updated translations
+- Update to version 5.2.0:
+  + Support mobile devices
+  + Add an opt-in switch to include artist and datetime metadata to recordings
+  + Ongoing recordings are trashed instead of being deleted when canceled
+  + Present processing dialog while saving to show progress and prevent users
+    from interacting with UI
+  + Refresh the waveform only when the window is not "suspended"
+  + Use system default input device as the selected microphone
+
+-------------------------------------------------------------------
 Mon Dec 22 20:19:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 5.1.1:

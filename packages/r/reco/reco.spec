@@ -1,7 +1,7 @@
 #
 # spec file for package reco
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid com.github.ryonakano.reco
 Name:           reco
-Version:        5.1.1
+Version:        5.2.1
 Release:        0
 Summary:        Audio Recording App
 License:        GPL-3.0-or-later
@@ -65,6 +65,7 @@ An audio recording app designed for the Pantheon Desktop.
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/%{appid}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
 %{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %files lang -f %{appid}.lang

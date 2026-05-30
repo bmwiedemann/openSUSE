@@ -212,4 +212,22 @@
   * Reword and elaborate on metadata and descriptions</comment>
     <requestid>1324225</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c41488f6f8859af2f9b3a91bdd69af65</srcmd5>
+    <version>5.2.1</version>
+    <time>1780174635</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.1:
+  + SECURITY: OpenSSF: Mention vulnerability_report_response
+  + Updated translations
+- Update to version 5.2.0:
+  + Support mobile devices
+  + Add an opt-in switch to include artist and datetime metadata to recordings
+  + Ongoing recordings are trashed instead of being deleted when canceled
+  + Present processing dialog while saving to show progress and prevent users
+    from interacting with UI
+  + Refresh the waveform only when the window is not &quot;suspended&quot;
+  + Use system default input device as the selected microphone (forwarded request 1355970 from rrahl0)</comment>
+    <requestid>1355971</requestid>
+  </revision>
 </revisionlist>
