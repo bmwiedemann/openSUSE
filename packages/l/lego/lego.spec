@@ -17,14 +17,14 @@
 
 
 Name:           lego
-Version:        4.35.2
+Version:        5.2.0
 Release:        0
 Summary:        Let's Encrypt/ACME client and library written in Go
 License:        MIT
 URL:            https://github.com/go-acme/lego
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Let's Encrypt/ACME client and library written in Go.
@@ -37,7 +37,7 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="-X main.version=%{version}" \
-   -o bin/lego ./cmd/lego
+   -o bin/lego .
 
 %install
 # Install the binary.
