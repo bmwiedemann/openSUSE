@@ -24,7 +24,7 @@
 
 # we could have a minimum of 9 here. but to more easily switch to C++17 we set the minium to 16
 %global min_llvm_version 16
-%global max_llvm_version 18.9
+%global max_llvm_version 22.9
 
 # cmake expects the shaders in /usr/share/OSL
 %define osldir OSL
@@ -44,7 +44,7 @@
 %endif
 
 Name:           OpenShadingLanguage
-Version:        1.14.6.0
+Version:        1.15.4.0
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
@@ -56,7 +56,7 @@ Patch0:         fix-install-paths.patch
 BuildRequires:  OpenEXR-devel >= 2.4
 BuildRequires:  OpenImageIO >= 2.5
 BuildRequires:  bison
-BuildRequires:  cmake >= 3.15
+BuildRequires:  cmake >= 3.19
 BuildRequires:  flex
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libboost_filesystem%{?force_boost_version}-devel
@@ -78,11 +78,11 @@ BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-pybind11-devel
 BuildRequires:  pkg-config
 BuildRequires:  cmake(OpenImageIO) >= 2.5
-BuildRequires:  cmake(pugixml)
+BuildRequires:  cmake(pugixml) >= 1.8
 BuildRequires:  cmake(tsl-robin-map)
 Requires:       %{name}-common-headers = %{version}
 Recommends:     %{name}-doc = %{version}
-ExcludeArch:    %{ix86}
+ExcludeArch:    %{ix86} %{arm32}
 
 %description
 Open Shading Language (OSL) is a language for programmable shading
@@ -226,9 +226,6 @@ export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %endif
 
-%if 0%{?suse_version} == 1500
-export pybind11_DIR="$(pybind11-config --cmakedir)"
-%endif
 %cmake \
 %if %{without qt}
       -DUSE_QT:BOOL=FALSE \

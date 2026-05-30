@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 16 12:00:59 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 1.15.4.0:
+  * Many internal cleanups, fixes etc. For details, refer to
+    https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/releases
+- Remove disfunctional support for Leap 15.x
+- Bump supported LLVM version range up to <= 22.9
+
+-------------------------------------------------------------------
 Tue Mar 17 10:51:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - cmake files reference OpenImageIO-plugin-osl
