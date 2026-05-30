@@ -17,14 +17,14 @@
 
 
 Name:           govc
-Version:        0.54.0
+Version:        0.54.1
 Release:        0
 Summary:        vSphere CLI built on top of govmomi
 License:        Apache-2.0
 URL:            https://github.com/vmware/govmomi
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.24 >= 1.24.13
+BuildRequires:  golang(API) >= 1.25
 
 %description
 The CLI is designed to be a user friendly CLI alternative to the GUI and well

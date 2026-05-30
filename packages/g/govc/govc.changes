@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 30 06:53:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.1:
+  * chore(deps): bump dessant/lock-threads from 6.0.1 to 6.0.2
+    (#4023)
+  * chore(deps): bump dessant/lock-threads from 6.0.0 to 6.0.1
+    (#4019)
+  * chore(deps): bump actions/stale from 10.2.0 to 10.3.0 (#4020)
+  * chore(deps): bump goreleaser/goreleaser-action from 7.2.1 to
+    7.2.2 (#4018)
+
+-------------------------------------------------------------------
 Sun May 10 14:42:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.54.0:
