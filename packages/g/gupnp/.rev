@@ -1530,4 +1530,17 @@ Changes from version 1.3.0:
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342976</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>0cf5241458081d01aa884b34a66039b2</srcmd5>
+    <version>1.6.10</version>
+    <time>1780174532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.10:
+  + Context:
+    - Reuse allocated TCP socket from GSSDP Client for web server
+    - Do not leak GError in ACL handler
+  + Fix IPv6 host header validation
+- Temp disable tests, currently times out.</comment>
+    <requestid>1355931</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 24 07:20:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.10:
+  + Context:
+    - Reuse allocated TCP socket from GSSDP Client for web server
+    - Do not leak GError in ACL handler
+  + Fix IPv6 host header validation
+- Temp disable tests, currently times out.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:51:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

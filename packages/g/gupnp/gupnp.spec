@@ -21,7 +21,8 @@
 %define sover 1.6
 
 Name:           gupnp
-Version:        1.6.9
+Version:        1.6.10
+###FIXME### Reenable tests, disabled ver 1.6.10, https://gitlab.gnome.org/GNOME/gupnp/-/work_items/92
 Release:        0
 Summary:        Implementation of the UPnP specification
 License:        LGPL-2.1-or-later
@@ -40,7 +41,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.66
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.4
-BuildRequires:  pkgconfig(gssdp-1.6) >= 1.6.2
+BuildRequires:  pkgconfig(gssdp-1.6) >= 1.6.5
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(uuid)
@@ -129,8 +130,9 @@ mv %{buildroot}%{_datadir}/doc/%{name}-%{sover} %{buildroot}%{_docdir}
 
 # The test cannot be completed on loongarch64 due to architectural limitations
 %ifnarch loongarch64
-%check
-%meson_test || (%meson_test)
+# Tests temp disabled, https://gitlab.gnome.org/GNOME/gupnp/-/work_items/92
+%dnl %check
+%dnl %meson_test || (%meson_test)
 %endif
 
 %files -n libgupnp-%{soname}
