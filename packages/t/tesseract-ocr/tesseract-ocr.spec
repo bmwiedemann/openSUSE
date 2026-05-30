@@ -28,7 +28,6 @@ Source99:       baselibs.conf
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  chrpath
 BuildRequires:  curl-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -102,15 +101,25 @@ export CXX=g++-13
 
 autoreconf -fiv
 %configure \
-   --disable-static\
-   --with-gnu-ld
+    --disable-static
 
-%make_build -j1 all training doc
+# Upstream mixes `all` and `training` in a single make invocation
+# at its own peril (libtool race in convenience-library link rules).
+# CI builds them in separate make invocations; do the same here so
+# we can use parallel make.
+%make_build all
+%make_build training doc
 
 %install
 %make_install all training-install
 
 rm -f %{buildroot}%{_libdir}/libtesseract.la
+
+# Strip absolute -L paths injected via pkg-config (libarchive/libcurl);
+# the system linker already searches /usr/lib(64), and -L/usr/lib in
+# a lib64 build is an rpmlint error (pkgconfig-invalid-libs-dir).
+sed -i -E 's| -L(/usr)?/lib(64)? | |g; s| -L(/usr)?/lib(64)?$||' \
+    %{buildroot}%{_libdir}/pkgconfig/tesseract.pc
 
 mkdir -p %{buildroot}%{_mandir}/{man1,man5}/
 cp -a doc/*.1 %{buildroot}%{_mandir}/man1/
@@ -125,9 +134,40 @@ cp -a tessdata/pdf.ttf %{buildroot}/%{_datadir}/tessdata/
 %files
 %doc AUTHORS ChangeLog README.md
 %license LICENSE
-%{_bindir}/*
-%{_mandir}/man1/*.1%{?ext_man}
-%{_mandir}/man5/*.5%{?ext_man}
+%{_bindir}/ambiguous_words
+%{_bindir}/classifier_tester
+%{_bindir}/cntraining
+%{_bindir}/combine_lang_model
+%{_bindir}/combine_tessdata
+%{_bindir}/dawg2wordlist
+%{_bindir}/lstmeval
+%{_bindir}/lstmtraining
+%{_bindir}/merge_unicharsets
+%{_bindir}/mftraining
+%{_bindir}/set_unicharset_properties
+%{_bindir}/shapeclustering
+%{_bindir}/tesseract
+%{_bindir}/text2image
+%{_bindir}/unicharset_extractor
+%{_bindir}/wordlist2dawg
+%{_mandir}/man1/ambiguous_words.1%{?ext_man}
+%{_mandir}/man1/classifier_tester.1%{?ext_man}
+%{_mandir}/man1/cntraining.1%{?ext_man}
+%{_mandir}/man1/combine_lang_model.1%{?ext_man}
+%{_mandir}/man1/combine_tessdata.1%{?ext_man}
+%{_mandir}/man1/dawg2wordlist.1%{?ext_man}
+%{_mandir}/man1/lstmeval.1%{?ext_man}
+%{_mandir}/man1/lstmtraining.1%{?ext_man}
+%{_mandir}/man1/merge_unicharsets.1%{?ext_man}
+%{_mandir}/man1/mftraining.1%{?ext_man}
+%{_mandir}/man1/set_unicharset_properties.1%{?ext_man}
+%{_mandir}/man1/shapeclustering.1%{?ext_man}
+%{_mandir}/man1/tesseract.1%{?ext_man}
+%{_mandir}/man1/text2image.1%{?ext_man}
+%{_mandir}/man1/unicharset_extractor.1%{?ext_man}
+%{_mandir}/man1/wordlist2dawg.1%{?ext_man}
+%{_mandir}/man5/unicharambigs.5%{?ext_man}
+%{_mandir}/man5/unicharset.5%{?ext_man}
 
 %files common
 %dir %{_datadir}/tessdata

@@ -319,4 +319,20 @@
     <comment></comment>
     <requestid>1343675</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>2fedb5c8390faa8ee84e7b3bc6ba6163</srcmd5>
+    <version>5.5.2</version>
+    <time>1780174457</time>
+    <user>dimstar_suse</user>
+    <comment>Modernize spec file:
+- Drop unused BuildRequires: chrpath
+- Drop libtool's --with-gnu-ld configure flag
+- Enable parallel build by splitting make all training doc into
+  two %make_build invocations (matches upstream CI); the libtool
+  convenience-library race only triggers when those targets are
+  mixed in one make
+- Strip absolute -L/usr/lib(64) paths from tesseract.pc (fixes
+  rpmlint pkgconfig-invalid-libs-dir error)</comment>
+    <requestid>1355697</requestid>
+  </revision>
 </revisionlist>

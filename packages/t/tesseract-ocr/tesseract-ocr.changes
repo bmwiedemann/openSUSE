@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 28 13:58:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernize spec file:
+  * Drop unused BuildRequires: chrpath (no chrpath calls in
+    spec, no RPATH munging needed)
+  * Drop libtool's --with-gnu-ld configure flag (autodetected
+    on Linux, no functional effect)
+  * Enable parallel build by splitting `make all training doc`
+    into two %make_build invocations (matches upstream CI);
+    the libtool convenience-library race only triggers when
+    those targets are mixed in one make
+  * Strip absolute -L/usr/lib(64) paths from tesseract.pc
+    (fixes rpmlint pkgconfig-invalid-libs-dir error)
+
+-------------------------------------------------------------------
 Wed Feb 18 14:42:24 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Add subpackage for files common to library and binary
