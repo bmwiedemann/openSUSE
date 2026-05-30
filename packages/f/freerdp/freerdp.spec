@@ -76,7 +76,9 @@ BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(libavcodec) >= 57.48.101
 BuildRequires:  pkgconfig(libavutil)
 }
+BuildRequires:  pkgconfig(libcbor)
 BuildRequires:  pkgconfig(libcjson)
+BuildRequires:  pkgconfig(libfido2)
 BuildRequires:  pkgconfig(libjpeg)
 %{?_with_lame:BuildRequires:  pkgconfig(libmp3lame)}
 BuildRequires:  pkgconfig(libpcsclite)
@@ -337,6 +339,8 @@ export CXX=g++-12
         -DWITH_NEON=OFF \
 %endif
         -DCHANNEL_GEOMETRY=ON -DCHANNEL_GEOMETRY_CLIENT=ON \
+        -DCHANNEL_RDPEWA=ON \
+        -DCHANNEL_RDPEWA_CLIENT=ON \
         -DCHANNEL_URBDRC=ON \
         -DCHANNEL_URBDRC_CLIENT=ON
 

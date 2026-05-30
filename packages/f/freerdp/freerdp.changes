@@ -1,6 +1,7 @@
 -------------------------------------------------------------------
 Wed May 20 03:15:55 UTC 2026 - Glen Masgai <glen.masgai@gmail.com>
 
+- Enable Fido2/WebAuthN forwarding (RDPEWA) via libfido2/libcbor
 - Update to version 3.26.0:
   + CVE fixes:
     * 3 High ranking (no numbers assigned yet)
