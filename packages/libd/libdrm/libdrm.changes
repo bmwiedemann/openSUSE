@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 29 10:00:00 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 2.4.134
+  * Sync drm_fourcc.h with drm-next
+  * meson: do not mark exynos/omap/tegra as disabled features
+  * omap: stop including linux/types.h
+  * add missing include to util_math.h
+  * amdgpu/modetest: fix discards 'const' qualifier from pointer target type
+  * ci: bump debian from bookworm to trixie
+  * ci: fix indentation
+
+-------------------------------------------------------------------
 Mon Apr 27 19:35:19 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 2.4.133
@@ -1857,7 +1869,7 @@ Sun Nov 13 09:15:31 UTC 2011 - coolo@suse.com
 - add libtool as explicit buildrequire to avoid implicit dependency from prjconf
 
 -------------------------------------------------------------------
-Wed Nov  2 12:58:04 UTC 2011 - sndirsch@suse.com
+Wed Nov  2 12:58:04 UTC 2011 - sndirsch@novell.com
 
 - Update to libdrm 2.4.27
   * required for latest intel driver ...
@@ -2025,7 +2037,7 @@ Wed Feb 17 16:25:36 CET 2010 - sndirsch@suse.de
     SET_TILING (bfo #25475, bfo #25554)
 
 -------------------------------------------------------------------
-Wed Jan  6 03:44:44 CET 2010 - sndirsch@suse.de
+Wed Jan  6 03:44:44 CET 2010 - sndirsch@suse.com
 
 - update to libdrm 2.4.17, which is part of Intel 2009Q4 release
 
@@ -2250,7 +2262,7 @@ Sat Feb  4 14:45:10 CET 2006 - aj@suse.de
 - xorg-x11-devel is not needed for build.
 
 -------------------------------------------------------------------
-Wed Jan 25 21:37:25 CET 2006 - mls@suse.de
+Wed Jan  5 21:37:25 CET 2006 - mls@suse.de
 
 - converted neededforbuild to BuildRequires
 
@@ -2288,4 +2300,3 @@ Tue Oct  4 20:04:46 CEST 2005 - sndirsch@suse.de
 Sun Oct  2 18:30:17 CEST 2005 - sndirsch@suse.de
 
 - created package
-

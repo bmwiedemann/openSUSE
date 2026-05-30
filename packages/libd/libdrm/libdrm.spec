@@ -29,7 +29,7 @@
 
 Name:           libdrm
 # Please remember to adjust the version in the n_libdrm-drop-valgrind* patches
-Version:        2.4.133
+Version:        2.4.134
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT
@@ -239,6 +239,8 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 	-Dcairo-tests=disabled \
 %ifarch %{arm}
 	-Domap=enabled \
+%else
+	-Domap=disabled \
 %endif
 %ifarch %{arm} aarch64
 	-Detnaviv=enabled \
@@ -248,8 +250,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 	-Dtegra=enabled \
 %else
 	-Detnaviv=disabled \
+	-Dexynos=disabled \
 	-Dfreedreno=disabled \
 	-Dvc4=disabled \
+	-Dtegra=disabled \
 %endif
 %ifarch s390x
 	-Dintel=disabled \
