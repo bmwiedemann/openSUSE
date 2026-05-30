@@ -18,7 +18,7 @@
 
 %define         appid io.gitlab.news_flash.NewsFlash
 Name:           newsflash
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        The spiritual successor to FeedReader
 License:        GPL-3.0-only
@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.21
 BuildRequires:  pkgconfig(gtksourceview-5)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libxml-2.0)

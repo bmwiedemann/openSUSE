@@ -234,4 +234,25 @@
   * fix article scroll with 'large text' enabled (forwarded request 1339536 from rrahl0)</comment>
     <requestid>1339537</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b14a3ce66c06d11bc41604f50e1aae02</srcmd5>
+    <version>5.1.0</version>
+    <time>1780174615</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.0:
+  + Swipe between articles
+  + Support feed: URI scheme
+  + Use glycin to decode images
+  + Add switch to disable selectable text
+  + Show url overlay if text is not selectable
+  + Render LaTeX in article title
+  + Switch from MathJax to RaTeX (no js runtime needed anymore)
+  + Update tag popover visuals
+  + Cannot enter custom secret
+  + Load backend only after activation for a nicer cli experience
+  + Unwatch expressionwatches (memory usage)
+  + Trim memory every time the window gets hidden
+  + Lots of html2gtk fixes (forwarded request 1355952 from rrahl0)</comment>
+    <requestid>1355953</requestid>
+  </revision>
 </revisionlist>

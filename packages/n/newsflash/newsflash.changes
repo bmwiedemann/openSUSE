@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 29 19:22:42 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 5.1.0:
+  + Swipe between articles
+  + Support feed: URI scheme
+  + Use glycin to decode images
+  + Add switch to disable selectable text
+  + Show url overlay if text is not selectable
+  + Render LaTeX in article title
+  + Switch from MathJax to RaTeX (no js runtime needed anymore)
+  + Update tag popover visuals
+  + Cannot enter custom secret
+  + Load backend only after activation for a nicer cli experience
+  + Unwatch expressionwatches (memory usage)
+  + Trim memory every time the window gets hidden
+  + Lots of html2gtk fixes
+
+-------------------------------------------------------------------
 Mon Mar 16 17:18:32 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 5.0.0:
