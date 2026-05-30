@@ -20,7 +20,7 @@
 %define libname  lib%{name}-2_36-1
 
 Name:           atkmm
-Version:        2.36.3
+Version:        2.36.4
 Release:        0
 Summary:        C++ Binding for the ATK library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
@@ -31,8 +31,7 @@ Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  graphviz
-BuildRequires:  meson >= 0.55.0
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk) >= 2.33.3
