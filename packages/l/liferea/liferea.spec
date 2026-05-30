@@ -17,7 +17,7 @@
 
 
 Name:           liferea
-Version:        1.16.9
+Version:        1.16.10
 Release:        0
 Summary:        Linux Feed Reader
 License:        GPL-2.0-only
@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(fribidi)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.74.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.86.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0

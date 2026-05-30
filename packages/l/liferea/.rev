@@ -240,4 +240,16 @@
   + Fix some memory leaks</comment>
     <requestid>1350825</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4cacf3aa8b94c6609be377965d721820</srcmd5>
+    <version>1.16.10</version>
+    <time>1780174559</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16.10:
+  + Fix glib &gt;= 2.86 required
+  + Fix duplicate favicon fetch
+  + Fix update state persistence that caused unnecessary feed
+    updates.</comment>
+    <requestid>1355928</requestid>
+  </revision>
 </revisionlist>
