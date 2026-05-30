@@ -1,4 +1,334 @@
 -------------------------------------------------------------------
+Sat May 30 06:44:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.9:
+  * fix: populate generationTime in JSON report and invocations in
+    SARIF (#2331)
+  * fix(cautils): make SetTopWorkloads idempotent (#2330)
+  * feat(getter): resolve namespaceSelector for cluster exceptions
+    (#2322)
+  * anonymizer: hide git repository context metadata (#2327)
+  * fix(opaprocessor): isolate rego dependency control inputs
+    (#2329)
+  * fix(imagescan): repair interleaved type definitions in test
+    file (#2328)
+  * test: add fixhandler and report conversion coverage (#2248)
+  * test: add containerscan unmarshal coverage (#2246)
+  * test(imagescan): cover severity threshold (#2211)
+  * anonymize resource source metadata in hidden output (#2326)
+  * test(imagescan): cover severity filtering (#2210)
+  * fix(cache): canonicalise framework/control cache filenames
+    (#2313)
+  * Add image command RunE tests (#2182)
+  * test(opaprocessor): cover mapControlToInfo (#2208)
+  * chore(deps): bump dependencies to fix security advisories
+    (#2324)
+  * fix(opaprocessor): preserve cluster-scoped paths across
+    namespace iterations (#2311)
+  * fix: propagate context through cosign OPA built-in functions
+    (#2191)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.19.0 to
+    5.19.1 (#2318)
+  * chore(deps): bump github.com/containerd/containerd/v2 (#2319)
+  * docs: add Gitlab CI/CD Integartion Guide with gitlab-ci.yml
+    example (#2310)
+  * fix: nil pointer panic in SARIF, HTML, and JUnit printers when
+    control is missing from summary details (#2315)
+  * fix(anonymizer): anonymize annotation values for hidden scans
+    (#2316)
+  * fix: restore kubescape_resource_* metrics in prometheus output
+    (#2256)
+  * fix: close output file after each printer finishes to prevent
+    file descriptor leak (#2259)
+  * fix(printer): bucket failed controls by their own category, not
+    a hardcoded ID allowlist (#2306)
+  * fix: add --scan-timeout flag and fix context propagation in K8s
+    resource collection (#2305)
+  * Emit SecurityException events for posture exception matches
+    (#2291)
+  * Feat/vap enforcement reconcile (#2307)
+  * Prevent PR scanner checkout from failing on stale submodule
+    metadata (#2309)
+  * fix(anonymizer): extend --hide coverage for container config
+    references (#2300)
+  * ci(workflows): pin Go via go.mod instead of undefined
+    GO_VERSION input (#2302)
+  * fix: validate threshold ranges in scan image and patch commands
+    (#2274)
+  * fix: resolve TOCTOU race in TimedCache.invalidateTask() (#2295)
+  * fix: normalize mixed-case manifest extension detection (#2293)
+  * feat(diff): add kubescape diff command to compare two scan
+    reports (#2245)
+  * feat(fix): emit values.yaml guidance for Helm-rendered
+    resources (#2083)
+  * clarification for score threshold scope (#2290)
+  * fix: prevent panic from double-close of stopChan in (#2288)
+  * docs: add Jenkins CI/CD integration guide with Jenkinsfile
+    example (#2278)
+  * chore: refresh branch mergeability
+  * fix(imagescan): harden custom DB URL validation
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.18.0 to
+    5.19.0
+  * fix(bugs): clearning blockers
+  * fixing lint errors
+  * fix(fixhandler): reconcile unfixed controls against planned
+    YAML edits
+  * fix: add bounds check before accessing container index in
+    addContainerNameToAssistedRemediation
+  * fix: add bounds check before accessing container index in
+    addContainerNameToAssistedRemediation
+  * fix: deduplicate # HELP and # TYPE headers across multiple
+    metric famolies
+  * fix(prometheus): add # HELP and # TYPE metadata lines to
+    prometheus output
+  * fix: add # HELP and # TYPE headers to kubescape_score metric
+    Fixes #2237
+  * test: cover newline replacement without trailing newline
+  * test: cover yml extension detection
+  * test: add request and resource handler coverage
+  * chore: refresh branch mergeability
+  * test: add hostsensor CRD coverage
+  * test: add metrics and ksinit coverage
+  * test: add v1 printer coverage
+  * Nil guard for kubernetes client initialisation
+  * fix(tests): correct import statement placement in setup_test.go
+  * test(rootutils): remove redundant logger name tests and update
+    BoolPtrFlag error handling
+  * fix(opaprocessor): sanitize namespace split parsing
+  * test(imagescan): fix DB load validation tests damaged after
+    rebase
+  * fix(crd): add optionalOldSelf to CEL rule so it fires on CREATE
+  * test(cautils): handle os.WriteFile error in TestIsFileAndIsDir
+  * fix(crd): use oldSelf in CEL rule for expiresAt to support
+    GitOps reconcilers
+  * test(cautils): add TestIsFileAndIsDir unit test
+  * test(cautils): expand floatutils tests
+  * test(cautils): expand normalize image name tests
+  * test(cautils): add unit tests for BoolPtrFlag, isHTTPURL,
+    unique, GetInputFiles, Cleanup and helpers
+  * test(cmd): cover KS_LOGGER_NAME env
+  * test(cmd): cover initLogger name precedence
+  * test(cautils): assert operator scan request fields
+  * test(metrics): assert Init registers counters
+  * fix(coderabbit): Coderabbit findings
+  * fix(patch): use ExporterDocker + docker load for no-push path
+  * vap: resolve CEL control IDs for policy bindings
+  * test(cmd): cover KS_LOGGER_NAME env
+  * ci: fix indentation in dependabot.yaml
+  * test(imagescan): cover default matcher config
+  * test(httphandler): add unit tests for RecoverFunc panic handler
+  * ci: fix indentation in dependabot.yaml
+  * test(cautils): add unit tests for YAML separator, mergeMaps,
+    and splitYAMLDocuments
+  * ci: fix indentation in dependabot.yaml
+  * test(fixhandler): add unit tests for YAML handler helpers
+  * test(cautils): add unit tests for datastructures helpers
+  * test(cautils): add unit tests for operator scan info validation
+  * ci: fix indentation in dependabot.yaml for httphandler gomod
+    entry
+  * test(metrics): add unit tests for Init and Update functions
+  * test(imagescan): cover DB load validation
+  * ci: add gomod Dependabot entry for httphandler module
+  * fix: propagate context through httphandler storage API calls
+  * ci: pin Codium-ai/pr-agent to full commit SHA in comments.yaml
+  * ci : add github-actions ecosystem to dependabot config
+  * test(opaprocessor): cover manual review summary
+  * test(listener): cover TLS key loading
+  * test(listener): cover env config helpers
+  * fix: add error log when ProcessRulesListener fails in scan.go
+  * test(imagescan): cover default DB config
+  * refactor: replace unstructured Warning(err.Error()) with
+    helpers.Error(err) in fix.go
+  * refactor: replace unstructured Warning(err.Error()) with
+    helpers.Error(err) in customerloader.go
+  * Fix lint baseline issues
+  * fix(patch): use canonical image reference for buildkit export
+    name
+  * fix(printer): never fall back to stdout for pdf/html on
+    file-create errors
+  * test(anonymizer): reorganize and expand unit coverage
+  * test(imagescan): cover default db config
+  * unit tests for user push opt in
+  * fix(printer): wire PartialGVRPulls into report serialization
+    and CLI output
+  *   fix(resourcehandler): surface partial GVR collection failures
+      instead of silently suppressing them
+  * fix: User must opt in to push, default behaviour is now false
+  * fix(httphandler): set response.Type on successful GET /results
+  * test: keep BoolPtrFlag state on unknown
+  * refactor: replace fmt.Sprintf with structured helpers.Error in
+    getHostSensorHandler
+  * fix(coderabbit): coderabbit findings
+  * fix(printer): default pdf/html output to file instead of stdout
+  * fix: filter empty and whitespace-only --format entries
+  * test: cover patch default tags
+  * perf: parallelize K8s resource collection in pullResources
+  * test: cover requiresResourceMatch designator constraints
+  * Add BoolPtrFlag unit tests
+  * test(httphandler): assert wantType in offline fallback table
+    test
+  * Use deduplicated unfixed control count in summary
+  * Add threshold bounds unit tests
+  * Add workload identifier parsing tests
+  * Fix control scan validator error
+  * fix(anonymizer): support unstructured container metadata
+    anonymization
+  * test: expand scan validators coverage
+  * test: expand workload scan unit tests
+  * fix: route PrometheusPrinter.Score() output to pp.writer
+    instead of stdout Fixes #2176
+  * fix: honor namespace argument in list_vulnerability_manifests
+    MCP tool
+  * Fix inverted keepResults cleanup logic
+  * test(httphandler): cover Results endpoint state and
+    offline-fallback branches
+  * fix: validate --format flag value in patch command before
+    running
+  * fix: replace read-all with explicit permissions for fork PRs
+  * fix: explicit --account and --access-key flags take precedence
+    over env vars
+  * fix: use flag.Changed to detect explicit --cache-dir,
+    preventing KS_CACHE_DIR override
+  * test(resourcehandler): add edge case coverage for empty and
+    malformed namespace inputs
+  * Fix field selector state carryover across resource queries
+  * fix(resourcehandler): dedupe cluster-scoped LISTs under
+    --include-namespaces
+  * fix: trim whitespace in Formats() to normalize comma-separated
+    tokens
+  * Use deduplicated unfixed control count in summary
+  * Fix false-positive master node taint classification
+  * Avoid nil source dereference in report marshal logging
+  * docs: fix misleading Short and Long description in patch
+    command
+  * fix: anonymize labels-to-copy values when --hide flag is set
+  * fix: propagate request context through CallTool to Kubernetes
+    API calls (fixes #2145)
+  * test: add regression test for anonymizeEphemeralContainerList
+    with runtime []interface{} shape
+  * add account id validation tests
+  * fix: always propagate f.Close() error in writeScanErrorToFile
+  * add scan info policy tests
+  * fix: resolve variable shadowing in writeScanErrorToFile
+  * add attack track printer tests
+  * add rbac report tests
+  * fix: handle error from defer f.Close() in writeScanErrorToFile
+  * fix: handle error from defer f.Close() in writeScanErrorToFile
+  * fix: use JSON marshal/unmarshal in anonymizeContainerList to
+    replace broken type assertion (fixes #2132)
+  * fix: correct typo 'arguement' to 'argument' in
+    completion_test.go
+  * fix: clear Env[].ValueFrom in removeContainersData and
+    removeEphemeralContainersData (fixes #2131)
+  * fix: correct typo 'arguement' to 'argument' in completion.go
+  * refactor: replace log.Printf with logger.L().Info() in
+    mcpserver.go
+  * feat(scan): anonymize container names and images for --hide
+  * Improve validation and error handling for config set
+  * add core patch os tests
+  * fix(coderabbit): extract dedup helper, add partial-control
+    regression test, strip UTF-8 BOM
+  * fix(review): phase-aware unfixed summary and per-rule fix
+    tracking
+  * test: add coverage for Status handler and serverState lifecycle
+  * Respect CLI logger flag precedence over KS_LOGGER
+  * fix: preserve delete-all behavior for results endpoint
+  * Preserve RelatedResourcesIDs in scanned control rules
+  * fix(coderabbit): Exorcising the bugs coderabbit caught
+  * fix: report controls that  did not auto-remediate
+  * test: seed and assert ResourceAttackTracks remap in ID
+    consistency test
+  * fix: clear EnvFrom in removeContainersData to prevent secret
+    name leakage
+  * test: expand ID consistency test to cover all remapped
+    collections
+  * test: add unit tests for anonymizer package
+  * fix: add request context to score calculation warning log
+  * fix: handle error returned by scorewrapper.Calculate() in
+    processorhandler.go
+  * fix: handle json.Marshal errors in mcpserver CallTool (fixes
+    #2111)
+  * fix: harden /v1/results IDOR remediation
+  * fix(test): assert flag inheritance on control subcommand
+  * fix(scan): validate --fail-coverage-below is in range 0-100
+  * fix(scan): enforce coverage threshold in scan control
+    subcommand
+  * test(junit): table-driven test for skip message across all
+    sub-statuses
+  * fix: point krew-release-bot at goreleaser-generated manifest
+  * fix(scan): remap control summary resource IDs during
+    anonymization
+  * refactor: replace all context.TODO() with context.Background()
+  * refactor: replace context.TODO() with context.Background() in
+    downloader/main.go
+  * fix(scan): remap control summary resource identifiers during
+    anonymization
+  * test(junit): Coderabbit - cover Errors aggregation
+    independently of Failures/Tests
+  * test(junit): add multi-framework regression for
+    parent-vs-children counts(Matthias reported bug)
+  * fix(scan): anonymize orphan resource references in hidden scan
+    output
+  * refactor: replace context.TODO() with context.Background() in
+    initutils_test.go
+  * fix(junit): make --format junit output spec-compliant
+  * fix(scan): anonymize resource references across scan results
+  * feat(scan): add --fail-coverage-below flag for CI coverage gate
+  * test: use valid download target in RunE happy-path test
+  * fix: remove unreachable args check and fix arguements typo
+  * fix(list): correct missing policy type error
+  * Accept advertised base URI format in vulnerability manifest
+    parser
+  * fix: use StopError on exception/config loading failure
+  * fix: strip URI prefix before splitting in ReadResource
+  * fix(list): correct typo 'requeued' -> 'required' in error
+    message (#2092)
+  * fix: correct typo 'requeued' to 'required' in list error
+    message
+  * fix: avoid malformed skip message when subStatus is empty
+  * fix(resourcehandler): build ScanCoverage before GetResources
+    error return
+  * fix(scan): align hide flag behavior and remove debug traces
+  * feat(junit): populate skip message from StatusInfo
+  * feat(scan): anonymize resource names and namespaces in scan
+    results
+  * fix: align mockCounters.All() with real ICounters
+    implementations
+  * fix(resourcehandler): record failed GVR statuses before
+    all-failed early return
+  * test: add unit tests for findFile early-exit path
+  * docs: add missing supported format values for patch --format
+    flag
+  * fix(opaprocessor): remove synthetic resource results for
+    not-evaluated controls
+  * fix:deduplicate pretty-printer fallback and scanType
+  * feat(scan): add hide flag and anonymization pipeline scaffold
+  * test: address review comments on gotree tests
+  * test: add compliance results baseline tests across four
+    packages
+  * chore(deps): bump github.com/in-toto/in-toto-golang in
+    /httphandler
+  * chore(deps): bump github.com/in-toto/in-toto-golang
+  * typo fixed
+  * multiple pretty-printer handled
+  * chore(deps): bump k8s-interface to v0.0.209 for multi-group fix
+  * multiple format output example added
+  * printer validation added
+  * fix(policyhandler): close load spinners with StopError on
+    failure instead of always StopSuccess
+  * test: add coverage for compliance and risk score accessors in
+    ResultsHandler
+  * fix: handle walk errors and stop early in findFile
+  * fix: remove unread buildChannel to prevent goroutine leak in
+    patchWithContext
+  * fix(resourcehandler): build ScanCoverage before no-resources
+    early return
+  * feat: report scan coverage gaps and not-evaluated controls
+  * docs: fix grammatically incorrect Short description in operator
+    vulnerabilities scan command
+  * security(ci): pin GHA using SHAs not tags
+
+-------------------------------------------------------------------
 Sun May 10 15:31:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.8:
