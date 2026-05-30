@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 30 10:49:07 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Unskip python311, xarray is optional 
+
+-------------------------------------------------------------------
 Wed May 27 10:15:08 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - skip builds for python311, python311-xarray is not available 

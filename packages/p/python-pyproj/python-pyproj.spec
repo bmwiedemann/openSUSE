@@ -16,7 +16,6 @@
 #
 
 
-%global skip_python311 1
 %{?sle15_python_module_pythons}
 Name:           python-pyproj
 Version:        3.7.2
@@ -57,7 +56,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module xarray if %python >= 3.12}
 # /SECTION
 %python_subpackages
 
