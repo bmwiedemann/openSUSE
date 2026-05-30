@@ -87,4 +87,12 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/PK4PW
   * virtx: add a Debug log when we start listening on HTTP</comment>
     <requestid>1355878</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>44b0ef3f544937e59994089966c08eff</srcmd5>
+    <version>0.1+g89b87f1</version>
+    <time>1780174569</time>
+    <user>dimstar_suse</user>
+    <comment>- Sanlock support</comment>
+    <requestid>1355938</requestid>
+  </revision>
 </revisionlist>

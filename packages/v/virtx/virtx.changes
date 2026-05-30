@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 29 17:12:58 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add sanlock dependencies
+- Add sanlock.service as required, and change the Group to disk,
+  so virtxd can access /dev/ raw disks
+
+-------------------------------------------------------------------
 Fri May 29 11:18:53 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to version 0.1+g89b87f1:

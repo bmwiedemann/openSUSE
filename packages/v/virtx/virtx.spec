@@ -38,6 +38,8 @@ Requires:       libvirt-daemon-proxy
 Requires:       libvirt-daemon-config-network
 Requires:       numa-preplace
 Requires:       hashicorp-serf
+Requires:       sanlock
+Requires:       libvirt-daemon-plugin-sanlock
 %{?systemd_ordering}
 
 %description
