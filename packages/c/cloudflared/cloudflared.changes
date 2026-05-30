@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 29 14:11:34 UTC 2026 - Hillwood Yang <hillwoodroc@gmail.com>
+
+- Update version to 2026.5.2
+  * Add more information to proxy-dns removal message
+  * Update tail command to use /management/logs endpoint
+  * Add cloudflared management token command
+  * Fix bugs
+  * Update golang.org/x/net to 0.55.0 (boo#1266794, boo#1265920, CVE-2026-39821
+    CVE-2026-33814)
+- Drop update-crypto.patch, fixed by upstream
+
+-------------------------------------------------------------------
 Sun Feb  8 14:33:17 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 2026.2.0

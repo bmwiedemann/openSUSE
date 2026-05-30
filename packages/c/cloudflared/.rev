@@ -164,4 +164,19 @@
   * Fix bugs (forwarded request 1331878 from hillwood)</comment>
     <requestid>1331879</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6c073be472acfd0ce9aba0f28c45124a</srcmd5>
+    <version>2026.5.2</version>
+    <time>1780174543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2026.5.2
+  * Add more information to proxy-dns removal message
+  * Update tail command to use /management/logs endpoint
+  * Add cloudflared management token command
+  * Fix bugs
+  * Update golang.org/x/net to 0.55.0 (boo#1266794, boo#1265920, CVE-2026-39821
+    CVE-2026-33814)
+- Drop update-crypto.patch, fixed by upstream (forwarded request 1355911 from hillwood)</comment>
+    <requestid>1355912</requestid>
+  </revision>
 </revisionlist>

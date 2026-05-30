@@ -17,7 +17,7 @@
 
 
 Name:           cloudflared
-Version:        2026.2.0
+Version:        2026.5.2
 Release:        0
 Summary:        Cloudflare Tunnel client
 License:        Apache-2.0
@@ -29,12 +29,10 @@ Source1:        vendor.tar.gz
 Patch0:         001-skip-test.patch
 # PATCH-FIX-OPENSUSE 002-use-pie.patch hillwood@opensuse.org
 Patch1:         002-use-pie.patch
-# PATCH-FIX-UPSTREAM update-crypto.patch hillwood@opensuse.org - Fix CVE-2025-58181 and CVE-2025-22869
-Patch2:         update-crypto.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.26
 AutoReqProv:    Off
 %{go_provides}
 
