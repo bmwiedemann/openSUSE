@@ -1,7 +1,7 @@
 #
 # spec file for package asl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,25 @@
 #
 
 
+%define rev 306
 Name:           asl
-Version:        1.42_bld232
+Version:        1.42_bld%{rev}
 Release:        0
 Summary:        Macro Assembler AS
 License:        GPL-2.0-only OR GPL-3.0-only
 URL:            http://john.ccac.rwth-aachen.de:8000/as/
-Source:         http://john.ccac.rwth-aachen.de:8000/ftp/as/source/c_version/asl-current-142-bld173.tar.bz2
-Patch0:         asl-buildfixes.patch
+# Upstream serves source tarballs only from the non-standard port
+# http://john.ccac.rwth-aachen.de:8000/ftp/as/source/c_version/asl-current-142-bld%%{rev}.tar.bz2
+# which the OBS source validator cannot reach (factory-auto's download
+# check fails on that host:port), so the tarball is tracked in the
+# package and Source carries no URL.
+Source:         asl-current-142-bld%{rev}.tar.bz2
+Source2:        Makefile.def
 BuildRequires:  gcc-c++
-Obsoletes:      %{name}-doc
+BuildRequires:  make
+BuildRequires:  texlive-german
+BuildRequires:  texlive-latex-bin
+BuildRequires:  texlive-makeindex
 
 %description
 AS is a portable macro cross-assembler for a variety of microprocessors
@@ -35,20 +44,22 @@ workstations and PCs in the target list.
 
 %prep
 %autosetup -p1 -n asl-current
+cp %{SOURCE2} .
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags} -fno-strict-aliasing"
+%make_build CFLAGS="%{optflags}"
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %install
-%make_install INSTROOT=%{buildroot}
+%make_install INSTROOT=%{buildroot}%{_prefix} DOCDIR=share/doc/packages/asl MANDIR=share/man
+# COPYING is shipped via %%license; drop the duplicate copy from the doc dir
+rm %{buildroot}%{_defaultdocdir}/%{name}/COPYING
 
 %files
 %license COPYING
-%doc README TODO
-%dir %{_prefix}/lib/asl
+%{_defaultdocdir}/*
 %{_bindir}/alink
 %{_bindir}/asl
 %{_bindir}/p2bin
@@ -62,14 +73,5 @@ make %{?_smp_mflags} test
 %{_mandir}/man1/p2hex.1%{?ext_man}
 %{_mandir}/man1/pbind.1%{?ext_man}
 %{_mandir}/man1/plist.1%{?ext_man}
-%{_prefix}/lib/asl/alink.msg
-%{_prefix}/lib/asl/as.msg
-%{_prefix}/lib/asl/cmdarg.msg
-%{_prefix}/lib/asl/ioerrs.msg
-%{_prefix}/lib/asl/p2bin.msg
-%{_prefix}/lib/asl/p2hex.msg
-%{_prefix}/lib/asl/pbind.msg
-%{_prefix}/lib/asl/plist.msg
-%{_prefix}/lib/asl/tools.msg
 
 %changelog

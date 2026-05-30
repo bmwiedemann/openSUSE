@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri May 29 15:14:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop unneeded Provides/Obsoletes for a %{name}-doc subpackage
+  that does not exist
+- Spec cleanup:
+  * Use %make_build, add missing BuildRequires: make
+  * Drop duplicate COPYING from the doc directory
+  * Drop the unreachable upstream Source URL (the OBS source
+    validator cannot fetch the upstream :8000 host); the tarball
+    is tracked in the package and the URL is kept in a comment
+
+-------------------------------------------------------------------
+Mon May 25 09:21:30 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 142-bld306
+  See http://john.ccac.rwth-aachen.de:8000/as/changelog for the
+  changelog
+
+-------------------------------------------------------------------
+Sat May  2 19:18:37 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 142-bld305
+  See http://john.ccac.rwth-aachen.de:8000/as/changelog for the
+  changelog
+
+-------------------------------------------------------------------
+Tue Apr 21 08:47:37 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 142-bld303
+  See http://john.ccac.rwth-aachen.de:8000/as/changelog for the
+  changelog
+- Add custom Makefile.def
+  * Makefile.def
+- Drop patch:
+  * asl-buildfixes.patch
+
+-------------------------------------------------------------------
+Sat Dec 30 16:27:25 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.42_bld259
+  See http://john.ccac.rwth-aachen.de:8000/as/changelog for the
+  changelog
+
+-------------------------------------------------------------------
 Tue Nov 15 20:08:55 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.42_bld232
