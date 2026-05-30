@@ -80,12 +80,14 @@ make check V=2
 
 %install
 make install DESTDIR=%{buildroot} V=2
-# create rc symlink
-ln -s  service %{buildroot}%{_sbindir}/rcspice-vdagentd
+
+# Move autostart to _distconfdir
+mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
+mv %{buildroot}/etc/xdg/autostart/spice-vdagent.desktop %{buildroot}%{_distconfdir}/xdg/autostart/
 
 mkdir -p %{buildroot}%{_datadir}/gdm/greeter/autostart
 
-cp %{buildroot}/etc/xdg/autostart/spice-vdagent.desktop %{buildroot}%{_datadir}/gdm/greeter/autostart
+cp %{buildroot}%{_distconfdir}/xdg/autostart/spice-vdagent.desktop %{buildroot}%{_datadir}/gdm/greeter/autostart
 rm -fr %{buildroot}%{_datadir}/gdm/autostart
 
 %pre
@@ -119,8 +121,7 @@ rm -fr %{buildroot}%{_datadir}/gdm/autostart
 %{_tmpfilesdir}/spice-vdagentd.conf
 %{_bindir}/spice-vdagent
 %{_sbindir}/spice-vdagentd
-%{_sbindir}/rcspice-vdagentd
-%{_sysconfdir}/xdg/autostart/spice-vdagent.desktop
+%{_distconfdir}/xdg/autostart/spice-vdagent.desktop
 # For /usr/share/gdm/autostart/LoginWindow/spice-vdagent.desktop
 # We own the dir too, otherwise we must Require gdm
 %{_datadir}/gdm

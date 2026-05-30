@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 21 16:42:47 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- Move XDG autostart to _distconfdir and drop legacy rc symlink for immutable systems support.
+
+-------------------------------------------------------------------
 Wed Oct 15 09:56:41 MDT 2025 - carnold@suse.com
 
 - Update to version 0.23.0. Features and Issues addressed:
