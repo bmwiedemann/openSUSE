@@ -332,8 +332,8 @@ build-jar-repository -s lib \
 
 # Build a native object
 gcc -Wall %{?build_cflags} %{?optflags} -fPIC -fvisibility=hidden -shared \
-  -I native/src/main/native -I %{_jvmdir}/java/include \
-  -I %{_jvmdir}/java/include/linux %{?build_ldflags} \
+  -I native/src/main/native -I ${JAVA_HOME}/include \
+  -I ${JAVA_HOME}/include/linux %{?build_ldflags} \
   -o libjlinenative.so native/src/main/native/{jlinenative,clibrary}.c
 
 ant package javadoc
