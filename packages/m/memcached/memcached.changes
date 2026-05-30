@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 26 22:31:46 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- re-enable extstore for bigendian architectures,
+  should be fixed since 1.6.6 and fixes build now since the
+  symbol proxy_storage_mg is needed unconditionally
+
+-------------------------------------------------------------------
 Fri May 22 10:09:50 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 1.6.42:

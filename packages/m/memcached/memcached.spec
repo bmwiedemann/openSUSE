@@ -119,10 +119,7 @@ autoreconf -fi
   --enable-sasl \
   --enable-sasl-pwdb \
   --enable-seccomp \
-  --disable-coverage \
-  %ifarch s390 s390x ppc ppc64
-  --disable-extstore
-  %endif
+  --disable-coverage
 
 %make_build
 %if %{with sysusers}
