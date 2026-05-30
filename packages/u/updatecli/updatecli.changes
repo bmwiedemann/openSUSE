@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri May 29 11:29:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.117.1:
+  * Bug Fixes
+    - fix(autodiscovery/kubernetes): handle empty yaml @olblak
+      (#8943)
+    - fix(dockerdigest): include HideTag in ReportConfig to prevent
+      source cache collision @max-chaban (#8927)
+    - fix: sanitize version when checking the latest Updatecli
+      version available @olblak (#8824)
+  * Maintenance
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.30 to 1.7.32 in the go_modules group across 1 directory
+      @dependabot[bot] (#8959)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.19.0 to
+      5.19.1 in the go_modules group across 1 directory
+      @dependabot[bot] (#8936)
+    - deps(go): bump module code.gitea.io/sdk/gitea to v0.25.1
+      @updateclibot[bot] (#8932)
+    - deps(go): bump module golang.org/x/mod to v0.36.0
+      @updateclibot[bot] (#8934)
+    - chore: Improve version update message warning @olblak (#8928)
+    - deps(go): bump module github.com/moby/buildkit to v0.30.0
+      @updateclibot[bot] (#8908)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.302.0
+      @updateclibot[bot] (#8911)
+    - chore(ci): upgrade uv version @updateclibot[bot] (#8899)
+    - deps(go): bump module github.com/getsops/sops/v3 to v3.13.1
+      @updateclibot[bot] (#8892)
+    - deps(go): bump module golang.org/x/net to v0.54.0
+      @updateclibot[bot] (#8885)
+    - deps(go): bump module github.com/minamijoyo/hcledit to
+      v0.2.18 @updateclibot[bot] (#8875)
+    - deps(go): bump module helm.sh/helm/v3 to v3.21.0
+      @updateclibot[bot] (#8860)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.8.4 @updateclibot[bot] (#8851)
+    - chore: add ci pipline job in global report @olblak (#8825)
+    - deps(go): bump module gopkg.in/ini.v1 to v1.67.2
+      @updateclibot[bot] (#8808)
+    - chore(dockerfile): upgrade node version @updateclibot[bot]
+      (#8777)
+    - chore: update pnpm/action-setup version in workflows @olblak
+      (#8748)
+  * Documentation
+    - fix: convert README.adoc to markdown @olblak (#8954)
+
+-------------------------------------------------------------------
 Sat May 16 07:36:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.117.0:

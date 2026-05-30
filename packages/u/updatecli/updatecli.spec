@@ -17,7 +17,7 @@
 
 
 Name:           updatecli
-Version:        0.117.0
+Version:        0.117.1
 Release:        0
 Summary:        A Declarative Dependency Management tool
 License:        Apache-2.0
@@ -103,7 +103,7 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files
-%doc README.adoc
+%doc README.md
 %license LICENSE
 %{_bindir}/%{name}
 
