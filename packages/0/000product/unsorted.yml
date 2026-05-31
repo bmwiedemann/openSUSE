@@ -7128,6 +7128,7 @@ unsorted:
   - givaro-devel 
   - givaro-doc 
   - gjiten 
+  - gjs-tests 
   - gkeyfile-sharp 
   - gkeyfile-sharp-devel 
   - gkrellm 
@@ -9576,7 +9577,6 @@ unsorted:
   - jitterentropy-devel 
   - jitterentropy-devel-32bit 
   - jitterentropy-devel-static 
-  - jj-fzf 
   - jlatexmath 
   - jlatexmath-fop 
   - jlatexmath-javadoc 
@@ -11639,7 +11639,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2026_2_rc2-32bit 
+  - libSPIRV-Tools-2026_2-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -15261,10 +15261,10 @@ unsorted:
   - libosinfo-devel 
   - libosip2-15 
   - libosip2-devel 
-  - liboslcomp1_14 
-  - liboslexec1_14 
-  - liboslnoise1_14 
-  - liboslquery1_14 
+  - liboslcomp1_15 
+  - liboslexec1_15 
+  - liboslnoise1_15 
+  - liboslquery1_15 
   - libosmcomp5 
   - libosmgpsmap-1_0-1 
   - libosmgpsmap-devel 
@@ -15317,6 +15317,7 @@ unsorted:
   - libosmovty-devel 
   - libosmovty13 
   - libosmvendor5 
+  - libossim2 
   - libossp-uuid++16 
   - libossp-uuid16 
   - libossp-uuid_dce16 
@@ -16648,7 +16649,7 @@ unsorted:
   - libtermcap2 
   - libtermkey-devel 
   - libtermkey1 
-  - libtestshade1_14 
+  - libtestshade1_15 
   - libtestsweeper2 
   - libtevent-devel 
   - libtexlua53-5 
@@ -21033,6 +21034,9 @@ unsorted:
   - osmo-trx-usrp1 
   - osmosdr 
   - osmosdr-devel 
+  - ossim 
+  - ossim-devel 
+  - ossim-sample-data 
   - osslsigncode 
   - ossp-uuid 
   - osv-scanner 
@@ -21084,6 +21088,8 @@ unsorted:
   - pack200-javadoc 
   - package-translations 
   - packagekitqt6-devel 
+  - packetdrill 
+  - packetdrill-tests 
   - packetry 
   - packit 
   - paexec 
@@ -27066,6 +27072,7 @@ unsorted:
   - python311-pyppmd 
   - python311-pyprel 
   - python311-pyprimes 
+  - python311-pyproj 
   - python311-pyproject-api 
   - python311-pyproject-examples 
   - python311-pyproject-hooks 
