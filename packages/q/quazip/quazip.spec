@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 %define so_ver 1
 %define lib_ver 1_7
 Name:           quazip%{?pkg_suffix}
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        C++ wrapper for ZIP/UNZIP
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later
