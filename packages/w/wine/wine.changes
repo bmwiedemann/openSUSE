@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 30 10:15:03 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.10 release
+  - Bundled vkd3d upgraded to version 2.0.
+  - XPath support reimplemented without libxml2.
+  - More VBScript compatibility improvements.
+  - Various bug fixes.
+- update staging to 11.10 release
+
+-------------------------------------------------------------------
 Sat May 16 11:59:05 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.9 release

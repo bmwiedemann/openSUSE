@@ -5896,4 +5896,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.9 release</comment>
     <requestid>1353552</requestid>
   </revision>
+  <revision rev="493" vrev="1">
+    <srcmd5>345601564f6473c805ce3d12e78120e7</srcmd5>
+    <version>11.10</version>
+    <time>1780245036</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 11.10 release
+  - Bundled vkd3d upgraded to version 2.0.
+  - XPath support reimplemented without libxml2.
+  - More VBScript compatibility improvements.
+  - Various bug fixes.
+- update staging to 11.10 release</comment>
+    <requestid>1356206</requestid>
+  </revision>
 </revisionlist>
