@@ -44,4 +44,12 @@
     <comment>- Update to release 6.1.0</comment>
     <requestid>1194465</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>796fcf6c6ed42769b769ca3df97b5e02</srcmd5>
+    <version>7.0.0</version>
+    <time>1780245051</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.0.0</comment>
+    <requestid>1356213</requestid>
+  </revision>
 </revisionlist>
