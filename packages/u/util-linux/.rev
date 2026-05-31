@@ -2810,4 +2810,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment>https://progress.opensuse.org/issues/200802 and https://bugzilla.opensuse.org/show_bug.cgi?id=1264688</comment>
     <requestid>1352185</requestid>
   </revision>
+  <revision rev="310" vrev="1">
+    <srcmd5>d3a8dc28b4c02dae7c17e9939deba4d5</srcmd5>
+    <version>2.42.1</version>
+    <time>1780244896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1354994</requestid>
+  </revision>
 </revisionlist>

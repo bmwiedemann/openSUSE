@@ -1,4 +1,221 @@
 -------------------------------------------------------------------
+Sun May 24 23:41:42 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.42.1:
+  * agetty: Always call chdir after chroot
+  * bits:
+    * use getline() to avoid stdin input truncation
+    * prevent unsigned integer underflow and long-lived loop
+  * cfdisk: fix memory leak of original_layout table
+  * chrt:
+    * Fix confusing error messages when priority argument is
+      required
+    * Only show current scheduling policy when pid is given
+    * pass correct integer types to printf
+  * column: fix missing out-of-bounds check in table reordering
+  * dmesg: fix out-of-bounds read when parsing malformed kmsg file
+  * eject: tolerate ILLEGAL REQUEST on ALLOW_MEDIUM_REMOVAL
+  * fdisk: fix trailing whitespace in user reply from readline
+    completion
+  * flock: re-enable the initial shell selection logic
+  * hardlink: avoid format string error for dev_t
+  * ipcutils: use memset explicitly to fill bpf_attr with zero
+  * irqtop/lsirq: Handle EOF in get_irqinfo
+  * last: fix phantom detection for unset loginuid and X11 sessions
+  * libblkid:
+    * Fix typo in probe_zfs
+    * Fix type access in zfs_extract_guid_name
+    * Fix debug OOB read in zfs_process_value
+    * Fix parse_dev debug output
+    * Ignore secondary LUKS2 header in blkid_do_safeprobe()
+    * reiserfs add block size validation for reiser4
+    * erofs validate blkszbits before checksum calculation
+    * exfs avoid 32-bit overflow in rextsize validation
+    * solaris use 64-bit for partition offset calculations
+    * bsd use 64-bit for partition offset calculations
+    * mac use 64-bit for partition offset calculations
+    * dos use 64-bit for partition offset calculations
+    * udf avoid 32-bit overflow in offset calculations
+    * vfat avoid 32-bit overflow in offset calculations
+    * ubi fix probe return values
+    * f2fs tighten log_blocksize validation
+    * nilfs fix byte order and block size validation
+    * gpt fix wiper offset to use sector size
+    * udf cap descriptor sequence iteration count
+    * bcache add missing NULL check
+    * bsd read enough data to cover disklabel struct
+    * befs improve bounds checking in B+ tree search
+    * ntfs improve integer overflow checks
+    * introduce sysfs_devno_is_dm_hidden() for pre-open check
+  * liblastlog2: wait on busy SQLite connections
+  * libmount:
+    * return btrfs rootfs from get_btrfs_fs_root()
+    * use match_source for mountinfo comparison
+  * libuser:
+    * fix misleading error message
+  * login:
+    * Clean up PAM resources on error path
+  * login-utils/auth:
+    * Drop pam_setcred
+  * lsclocks:
+    * add missing newline character in option description
+  * lsfd:
+    * use memset explicitly to fill bpf_attr with zero
+  * mkfs.cramfs:
+    * Consider -i only once
+    * Add -p padding only once
+    * Improve file size check
+  * mkswap:
+    * Fix --file chmod(2) check when file exists
+  * more:
+    * align MORE_SHELL_LINES semantics with less(1)
+  * newgrp:
+    * Correctly handle getline error
+  * nsenter:
+    * Fix AT_HANDLE_FID on musl
+  * script:
+    * fix "--" separator when used as option argument
+    * fix command and command_norm memory leaks
+    * fix backward compatibility for options after non-option args
+  * strutils:
+    * fix printf formats
+  * su:
+    * Clean up PAM resources on all error paths
+    * fix grammar on man page
+    * revert "su pass arguments after <user> to shell" (obsoletes
+      util-linux-su-revert-su-pass-arguments.patch)
+  * tests: (lsfd/*) make UDPLite related test cases skippable
+  * write:
+    * cleanup indentation and whitespace
+    * use mem2strcpy() for utmp strings
+    * always use utmp as fallback
+  * write, mesg:
+    * add S_ISCHR() check for terminal device paths
+  * Misc:
+    * Fix build with libeconf (obsoletes util-linux-fix-build-with-libeconf.patch)
+  * Update translations.
+- Swith NTFS mounttype from the default "ntfs3" to "ntfs"
+  (boo#1264688).
+
+-------------------------------------------------------------------
+Fri May 22 09:59:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing python-rpm-macros BR
+
+-------------------------------------------------------------------
+Thu May 21 13:06:39 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Rename TS_OPT_misc_setarch_known_fail to
+  TS_OPT_setarch_setarch_known_fail to follow move of setarch test
+
+-------------------------------------------------------------------
+Wed May  6 22:52:28 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Temporarily disable following test that do not work properly
+  in pre-16.1 IBS:
+  * lsfd/option-hyperlink
+  * lsfd/option-inet
+  * lsfd/mkfds_udp
+  * lsfd/mkfds_udp6
+
+-------------------------------------------------------------------
+Tue May  5 10:04:33 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix su passing argument regression
+  (util-linux-su-revert-su-pass-arguments.patch).
+
+-------------------------------------------------------------------
+Mon Apr 27 09:33:08 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.42 (jsc#PED-16188):
+  * Security fixes:
+    * CVE-2026-27456: mount(8) TOCTOU symlink attack via loop
+      device (bsc1261606).
+    * CWE-190 - Integer overflow in libblkid parse_dos_extended()
+      (boo#1222465, obsoletes
+      util-linux-bsc-1222465.patch).
+    * login(1): now uses the original FQDN (as specified by
+      "-h <host>") to configure the PAM RHOST item (bsc#1258859,
+      CVE-2026-3184, obsoletes util-linux-CVE-2026-3184.patch).
+  * login(1), if configured with LOGIN_SHELL_FALLBACK in
+    login.defs, can fall back to another valid shell from
+    /etc/shells if the user's configured shell is inaccessible due
+    to administrative errors
+    (refreshed util-linux-login_defs-check.sh).
+  * agetty reads issue file(s) in a way compatible with libeconf
+    and systemd, hermetic-usr and drop-ins are now supported. For
+    more details see
+    https://uapi-group.org/specifications/specs/configuration_files_specification/
+    (obsoletes util-linux-agetty-configs.patch,
+    util-linux-lib-configs-fix1.patch,
+    util-linux-lib-configs-fix2.patch
+    util-linux-lib-configs-fix3.patch
+    util-linux-lib-configs-fix4.patch
+    util-linux-lib-configs-fix5.patch
+    util-linux-lib-configs-fix6.patch
+    util-linux-lib-configs.patch).
+  * agetty uses netlink to get network interface information for
+    issue file output (obsoletes
+    util-linux-agetty-netlink-fix4.patch,
+    util-linux-agetty-netlink.patch,
+    util-linux-lib-netlink-fix1.patch,
+    util-linux-lib-netlink-fix2.patch,
+    util-linux-lib-netlink-fix3.patch,
+    util-linux-lib-netlink-fix5.patch,
+    util-linux-lib-netlink.patch,
+    util-linux-man-generated.patch).
+  * The libsmartcols-based tools with JSON support can now produce
+    additional JSON formats. The output format may be changed by
+    LIBSMARTCOLS_JSON={lines,compact} environment variable.
+  * column(1) now supports colors.
+  * New command copyfilerange(1) to copy file ranges using the
+    copy_file_range() syscall.
+  * New command getino(1) to print the unique inode number
+    associated with a process file descriptor or namespace for a
+    given PID.
+  * fadvise(1) now supports --fd to address a file by file
+    descriptor rather than by path.
+  * fallocate(1) now supports --report-holes to scan the file and
+    report the distribution of holes.
+  * A significant performance regression has been fixed in
+    hardlink(1).
+  * hardlink(1) now supports FIEMAP-based sparse file optimization.
+  * kill(1), waitpid(1) and nsenter(1) now support the PID:INO
+    convention to precisely address processes.
+  * mount(8) now supports --beneath to atomically replace a
+    filesystem at a mountpoint.
+  * mount(8) now supports --exclusive to ensure that the filesystem
+    is mounted as a unique instance and that the superblock is not
+    reused by the kernel.
+  * libmount now reads filesystem information from udevd (with
+    fallback to classic libblkid-based detection). This feature can
+    be disabled by --disable-libmount-udev-support.
+  * setarch(8) now supports --pid to show the personality of a
+    specified process.
+  * The pager support for tools like "dmesg -H" has been improved
+    to work better with signals.
+  * losetup(8) now supports --remove to remove a loop device node
+    from the system.
+  * lsblk(8), lslocks(8), lsmem(1) and lsclocks(1) support
+    <NAME>_COLUMNS environment variable to specify output columns
+    as an alternative to --output.
+  * lsfd(1) now supports new UNIX.IPEER, PACKET.PROTOCOL.RAW and
+    TUN.DEVNETNS columns.
+  * setpriv(1) now supports landlock via --landlock-access and
+    --landlock-rule options.
+  * Many other new features and fixes. For complete list see
+    https://kernel.org/pub/linux/utils/util-linux/v2.42/v2.42-ReleaseNotes
+- Refreshed patch: util-linux-bash-completion-su-chsh-l.patch.
+- Dropped upstream patch: util-linux-agetty-escape-erase.patch.
+- Fix build wih libeconf
+  (util-linux-fix-build-with-libeconf.patch).
+
+-------------------------------------------------------------------
+Mon Apr 27 02:30:07 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Make uuidd compatible with immutable mode (jsc#PED-16165).
+
+-------------------------------------------------------------------
 Wed Mar  4 22:28:26 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Do not create empty directories in /etc directly, but use
