@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat May 30 17:17:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 31.0 (from 28.1; includes the 29.0 and 30.0
+  major releases). Highlights across these releases:
+  * Build system migrated from Autotools to CMake
+  * Legacy BerkeleyDB wallet support removed; only descriptor
+    (SQLite) wallets remain
+  * Built-in UPnP port-mapping support removed
+  * New unified "bitcoin" command-line wrapper
+  * Numerous P2P, mempool policy, RPC and wallet improvements
+  * See the upstream release notes for the full details
+- Port the package to the CMake build system
+- Build the GUI against Qt6 (was Qt5); rename the GUI subpackage
+  from bitcoin-qt5 to bitcoin-qt6 (Obsoletes for a clean upgrade)
+- Add fix-boost-1.91-multi_index.patch: fix the build against
+  Boost >= 1.91 (bitcoin/bitcoin#35175)
+- Drop now-unneeded BuildRequires:
+  * libdb-4_8-devel (legacy BDB wallet removed)
+  * libminiupnpc-devel (UPnP removed)
+  * pkgconfig(protobuf), pkgconfig(openssl) (BIP70 long gone)
+  * autoconf, automake, libtool (Autotools replaced by CMake)
+  * java-devel, lcov, git
+- Convert BuildRequires to pkgconfig() style and express the
+  upstream minimum versions (Boost 1.74, libevent 2.1.8,
+  SQLite 3.7.17, Qt 6.2)
+- Stop using the deprecated %suse_update_desktop_file macro;
+  ship bitcoin-qt.desktop (Source2) and install it directly,
+  and drop the update-desktop-files BuildRequires
+- Drop the incorrect update-desktop-files post/postun scriptlets
+  (the desktop database is refreshed by file triggers)
+
+-------------------------------------------------------------------
 Fri Oct  3 10:33:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Don't require libboost_system-devel with boost 1.89+

@@ -635,4 +635,12 @@
     <comment></comment>
     <requestid>1311362</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>a364e48559571fdd210d7e9da48c0a58</srcmd5>
+    <version>31.0</version>
+    <time>1780244961</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 31.0 (CMake build, Qt6 GUI, Boost 1.91 fix, dropped removed deps, pkgconfig BRs with min versions, modern desktop file). Supersedes 1356066: drop the bogus 'Provides: bitcoin-qt5' per dimstar's review (keep only Obsoletes).</comment>
+    <requestid>1356095</requestid>
+  </revision>
 </revisionlist>

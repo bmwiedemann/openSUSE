@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bitcoin
+GenericName=Bitcoin Wallet
+Comment=Bitcoin Wallet
+Exec=bitcoin-qt
+Icon=bitcoin
+Terminal=false
+Categories=Office;Finance;

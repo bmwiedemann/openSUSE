@@ -1,7 +1,7 @@
 #
 # spec file for package bitcoin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011-2014  P Rusnak <prusnak@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,43 +24,36 @@
 %define consensus 0
 %define is_base 1
 Name:           bitcoin
-Version:        28.1
+Version:        31.0
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT
 URL:            https://%{name}.org
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{base}d.service
+Source2:        %{base}-qt.desktop
 Source3:        %{base}d.conf
 Source4:        %{base}.conf
 Patch0:         harden_bitcoind.service.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+# PATCH-FIX-UPSTREAM fix-boost-1.91-multi_index.patch -- fix build with Boost >= 1.91 (bitcoin/bitcoin#35175)
+Patch1:         fix-boost-1.91-multi_index.patch
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  git
-BuildRequires:  java-devel
-BuildRequires:  lcov
-BuildRequires:  libboost_filesystem-devel >= 1.73.0
-BuildRequires:  libboost_program_options-devel >= 1.73.0
-BuildRequires:  libboost_test-devel >= 1.73.0
-BuildRequires:  libboost_thread-devel >= 1.73.0
-BuildRequires:  libdb-4_8-devel
-BuildRequires:  libminiupnpc-devel
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libtool
+BuildRequires:  libboost_headers-devel >= 1.74.0
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-linguist-devel
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  (libboost_system-devel >= 1.73.0 if libboost_filesystem-devel < 1.89)
-BuildRequires:  pkgconfig(Qt5Designer)
-BuildRequires:  pkgconfig(Qt5Help)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(libevent)
+BuildRequires:  pkgconfig(Qt6Core) >= 6.2
+BuildRequires:  pkgconfig(Qt6DBus) >= 6.2
+BuildRequires:  pkgconfig(Qt6Gui) >= 6.2
+BuildRequires:  pkgconfig(Qt6Network) >= 6.2
+BuildRequires:  pkgconfig(Qt6Test) >= 6.2
+BuildRequires:  pkgconfig(Qt6Widgets) >= 6.2
+BuildRequires:  pkgconfig(libevent) >= 2.1.8
 BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(libzmq)
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(protobuf)
-BuildRequires:  pkgconfig(python3)
-BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(sqlite3) >= 3.7.17
 
 %description
 %{name_pretty} is a peer-to-peer electronic cash system
@@ -72,12 +65,11 @@ for double-spending.
 Full transaction history is stored locally at each client. This requires
 several GB of space, slowly growing.
 
-%package qt5
-Summary:        An end-user Qt5 GUI for the %{name_pretty} crypto-currency
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+%package qt6
+Summary:        An end-user Qt6 GUI for the %{name_pretty} crypto-currency
+Obsoletes:      %{name}-qt5 < %{version}-%{release}
 
-%description qt5
+%description qt6
 %{name_pretty} is a peer-to-peer electronic cash system
 that is completely decentralized, without the need for a central server or
 trusted parties. Users hold the crypto keys to their own money and
@@ -158,36 +150,33 @@ for double-spending.
 Full transaction history is stored locally at each client. This requires
 several GB of space, slowly growing.
 
-This package provides automated tests for %{name}-qt5 and %{name}d.
+This package provides automated tests for %{name}-qt6 and %{name}d.
 
 %prep
 %autosetup -p1
 
 %build
-autoreconf -fiv
-%configure \
-  --with-asm=auto \
-  --with-cli=yes \
-  --with-daemon=yes \
-  --with-gui=qt5 \
-  --with-miniupnpc \
-  --with-qrencode \
-  --with-sqlite=yes \
-  --enable-lto \
-%if %{consensus} == 0
-  --without-libs \
-%endif
-  --disable-hardening
-%make_build
+# upstream switched from autotools to CMake in 29.0
+%define __builder ninja
+%cmake \
+  -DBUILD_GUI=ON \
+  -DBUILD_BENCH=ON \
+  -DBUILD_TESTS=ON \
+  -DWITH_ZMQ=ON \
+  -DWITH_QRENCODE=ON \
+  -DWITH_DBUS=ON \
+  -DENABLE_WALLET=ON \
+  -DENABLE_EXTERNAL_SIGNER=ON \
+  -DINSTALL_MAN=ON \
+  -DENABLE_IPC=OFF \
+  -DWITH_CCACHE=OFF
+%cmake_build
 
 %check
-%make_build LC_ALL=C.UTF-8 check
+%ctest
 
 %install
-%make_install
-
-install -Dpm 0644 doc/man/%{name}d.1 %{buildroot}%{_mandir}/man1/%{name}d.1
-install -Dpm 0644 doc/man/%{name}-qt.1 %{buildroot}%{_mandir}/man1/%{name}-qt.1
+%cmake_install
 
 install -Dpm 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
 
@@ -208,21 +197,15 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}d
 install -Dpm 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/%{name}d.service
 install -Dpm 0644 %{SOURCE3} %{buildroot}/%{_tmpfilesdir}/%{name}d.conf
 
-# install desktop file
+# install icon and desktop file
 install -Dm 0644 share/pixmaps/bitcoin256.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
-%suse_update_desktop_file -c %{name}-qt %{name_pretty} "%{name_pretty} Wallet" %{name}-qt %{name} Office Finance
+install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}-qt.desktop
 
 %if %{consensus} == 1
 # do not ship these
 rm -f %{buildroot}%{_libdir}/lib%{name}consensus.a
 rm -f %{buildroot}%{_libdir}/lib%{name}consensus.la
 %endif
-
-%post qt5
-%desktop_database_post
-
-%postun qt5
-%desktop_database_postun
 
 %if %{consensus} == 1
 %post -n lib%{name}consensus0 -p /sbin/ldconfig
@@ -248,7 +231,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}d.conf >/dev/null 2>&1 || :
 %postun -n %{name}d
 %service_del_postun %{name}d.service
 
-%files qt5
+%files qt6
 %license COPYING
 %doc doc/README.md doc/release-notes.md
 %{_bindir}/%{name}-qt
@@ -259,10 +242,12 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}d.conf >/dev/null 2>&1 || :
 %files utils
 %license COPYING
 %doc doc/README.md doc/release-notes.md
+%{_bindir}/%{name}
 %{_bindir}/%{name}-cli
 %{_bindir}/%{name}-tx
 %{_bindir}/%{name}-wallet
 %{_bindir}/%{name}-util
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/%{name}-cli.1%{?ext_man}
 %{_mandir}/man1/%{name}-tx.1%{?ext_man}
 %{_mandir}/man1/%{name}-wallet.1%{?ext_man}
@@ -297,8 +282,9 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}d.conf >/dev/null 2>&1 || :
 %files test
 %license COPYING
 %doc doc/README.md doc/release-notes.md
-%{_bindir}/test_%{name}
-%{_bindir}/test_%{name}-qt
-%{_bindir}/bench_%{name}
+# upstream installs internal (test/bench) binaries to libexec, not bindir
+%{_libexecdir}/test_%{name}
+%{_libexecdir}/test_%{name}-qt
+%{_libexecdir}/bench_%{name}
 
 %changelog
