@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>1230705</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8b846ff411f9844cd2325ba0857ee830</srcmd5>
+    <version>8.3.3</version>
+    <time>1780245002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.3.3:
+  + Introduce Itemgroup
+  + Updated translations
+  + Fix typo (forwarded request 1356092 from rrahl0)</comment>
+    <requestid>1356093</requestid>
+  </revision>
 </revisionlist>

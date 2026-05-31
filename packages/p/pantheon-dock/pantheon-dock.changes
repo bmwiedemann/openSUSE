@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sun May 31 01:13:42 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.3.3:
+  + Introduce Itemgroup
+  + Updated translations
+  + Fix typo
+
+-------------------------------------------------------------------
+Tue Feb 24 19:39:07 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.3.2:
+  * Application: rely on Granite.StyleManager
+  * pantheon-desktop-shell: Manually bind the free function
+  * CSS: add active style for icongroup
+  * Launcher: Release the second running indicator when needed
+  * GSchema: remove multitasking from defaults
+  * GSchema: remove system settings from default items
+  * BackgroundItem: add tooltip
+  * Launcher: show accels in tooltip
+  * App/Launcher: Add AppCenter actions
+  * App: don't pass appcenter object instance
+  * Styles: add drag-accept style to icon groups
+
+-------------------------------------------------------------------
+Thu Dec 25 01:57:44 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update minimum version of GTK as the last release introduced a class
+  which requires at least 4.14
+
+-------------------------------------------------------------------
+Sun Dec 21 02:05:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.3.1:
+  * Launcher: remove duplicate action constants
+  * Fix tooltip when hide dock is set to never
+  * DynamicWorkspaecItem: add tooltip
+  * Fit popovers interaction with hide mode never
+  * BaseIconGroup: make flowbox child unfocusable
+  * Make pinned action a property action
+  * Allow to dnd a window icon to the new workspace item
+  * ItemManager: sync_pinned when launcher added
+- Update to version 8.3.0:
+  * Add blur
+  * Styles: increase transparency
+  * Make long touch gesture touch only
+  * Move BottomMargin into a separate file and clean it up
+  * l10n: Correct Chinese language codes
+  * Increase actionable area of an app icon all way to the screen edge
+  * Launcher: better badge animation
+  * Update Granite label styles
+  * Blur: Don't hardcode dock border-radius
+  * Default to building workspace switcher
+  * BaseIconGroup: Use FlowBox instead of manual layouting
+  * IconGroup: change focused style
+  * Give the new ws icon the same focus style as the icon groups
+- Update to version 8.2.0:
+  * Use shadow width instead of custom size
+  * Implement background app monitoring
+  * Keep the dock visible in the MultitaskingView
+  * Replace tooltip with popover
+  * Fix shaking of window when moving icon
+  * Add shake to app icon when window cannot be opened
+  * Styles: Fix "Active on Other Workspace" indicator color
+  * MainWindow: only request multitasking view if workspace switcher enabled
+- Update to version 8.1.2:
+  * Don't store active workspace information for every window
+- Update to version 8.1.1:
+  * Updated translations
+- Update to version 8.1.0:
+  * Open context menus with long-press
+  * Cycle through windows when hovering over an app with drag-and-drop
+  * Improve memory usage
+  * Fix dock bounds when hide mode is 'Never'
+  * Introduce an AppSystem
+  * Rename LauncherManager into ItemManager
+  * Introduce WindowSystem
+  * Move reduce transparency to main window
+  * Restructure the project
+  * Cycle through windows when hovering over launcher with dnd
+  * Launcher: Fix memory leaks
+  * Introduce BaseItem
+  * Fix warnings
+  * Workspace switcher
+  * Open MultitaskingView when clicking active workspace
+  * GSchema: remove multitasking from defaults
+  * DynamicWorkspaceItem: open multitasking if clicked again
+  * WorkspaceSystem: sort windows by time they appeared on the workspace
+  * Implement workspace reordering with drag and drop
+  * Support long press on launchers
+  * Remove dependency on libgee
+  * Fix crash and visual bugs with animations disabled
+  * Make workspace switcher optional
+  * Revert "GSchema: remove multitasking from defaults"
+  * Fix dock bounds when hide mode is 'Never'
+  * Fix meson options
+  * Show multiple dots for apps with multiple windows
+
+-------------------------------------------------------------------
 Fri Dec 13 05:27:51 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.2:

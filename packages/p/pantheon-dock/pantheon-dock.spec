@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-dock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.dock
 Name:           pantheon-dock
-Version:        8.0.2
+Version:        8.3.3
 Release:        0
 Summary:        Quick app launcher and window switcher for Pantheon
 License:        GPL-3.0-or-later
@@ -29,9 +29,8 @@ BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
-BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(granite-7)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.14
 BuildRequires:  pkgconfig(libadwaita-1)
 
 %description
