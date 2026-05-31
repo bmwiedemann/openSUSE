@@ -1,0 +1,367 @@
+#!/usr/bin/perl
+#
+# Copyright (c) 2026 SUSE LLC
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2 as
+# published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program (see the file COPYING); if not, write to the
+# Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
+#
+################################################################
+
+use strict;
+
+use File::Temp ();
+
+my $keyring_directory = '/usr/lib/rpm/pqkeys';
+my $allow_non_pqc;
+
+my $exit_main_loop;
+
+#
+# IO helpers
+#
+sub slurp {
+  my ($fn) = @_;
+  my $fd;
+  open($fd, '<', $fn) || die("$fn: $!\n");
+  local $/;
+  my $data = <$fd>;
+  die("$fn: $!\n") unless defined $data;
+  close $fd;
+  return $data;
+}
+
+sub ls {
+  my $d;
+  opendir($d, $_[0]) || return ();
+  my @r = grep {$_ ne '.' && $_ ne '..'} readdir($d);
+  closedir $d;
+  return @r;
+}
+
+#
+# CMS parameter verification
+#
+my $CONS       = 0x20;
+my $CONT       = 0x80;
+
+my $INTEGER    = 0x02;
+my $OCTET_STRING = 0x04;
+my $OBJ_ID     = 0x06;
+my $SEQUENCE   = 0x10;
+my $SET        = 0x11;
+
+my $cms_tags = [ $OBJ_ID, [ $CONS | $CONT | 0, undef ] ];
+my $cms_tags_sd = [ $INTEGER, $CONS | $SET, $CONS | $SEQUENCE, [ $CONS | $CONT | 0, undef ], [ $CONS | $CONT | 1, undef ], $CONS | $SET ];
+my $cms_tags_ci = [ $OBJ_ID, [ $CONS | $CONT | 0, undef ] ];
+my $cms_tags_si = [ $INTEGER, [ $CONS | $SEQUENCE, $CONT | 0 ], $CONS | $SEQUENCE, [ $CONS | $CONT | 0, undef ], $CONS | $SEQUENCE, $OCTET_STRING , [ $CONS | $CONT | 1, undef ] ];
+my $oid_pkcs7_signed_data = pack_obj_id(1, 2, 840, 113549, 1, 7, 2);
+
+my $oid_mldsa65 = pack_obj_id(2, 16, 840, 1, 101, 3, 4, 3, 18);
+my $oid_mldsa87 = pack_obj_id(2, 16, 840, 1, 101, 3, 4, 3, 19);
+my $oid_sha512 = pack_obj_id(2, 16, 840, 1, 101, 3, 4, 2, 3);
+my $oid_sha3_512 = pack_obj_id(2, 16, 840, 1, 101, 3, 4, 2, 10);
+
+sub pack_obj_id {
+  my ($o1, $o2, @o) = @_;
+  my $data = pack('w*', $o1 * 40 + $o2, @o);
+  die("not implemented\n") if length($data) >= 128;
+  return pack("CC", $OBJ_ID, length($data)).$data;
+}
+
+sub unpack_raw {
+  my ($in, $allowed, $optional, $exact) = @_;
+  $allowed = [ $allowed ] if $allowed && !ref($allowed);
+  if (length($in) < 2) {
+    return ($in, undef, undef, '') if $optional || grep {!defined($_)} @{$allowed || []};
+    die("unexpected end of asn1 data\n");
+  }
+  my ($tag, $l) = unpack("CC", $in);
+  if ($allowed) {
+    if (!grep {defined($_) && ($tag == $_ || !$_)} @$allowed) {
+      return ($in, undef, undef, '') if $optional || grep {!defined($_)} @{$allowed || []};
+      die("unexpected tag $tag, expected @$allowed\n");
+    }
+  }
+  my $off = 2;
+  if ($l >= 128) {
+    $l -= 128;
+    $off += $l;
+    die("unsupported asn1 length $l\n") if $l < 1 || $l > 4;
+    $l = unpack("\@${l}N", pack('xxxx').substr($in, 2, 4));
+  }
+  die("unexpected end of asn1 data\n") if length($in) < $off + $l;
+  die("tailing data at end of asn1 element\n") if $exact && length($in) != $off + $l;
+  return (substr($in, $off + $l), $tag, substr($in, $off, $l), substr($in, 0, $off + $l));
+}
+
+sub gettag {
+  return (unpack_raw(@_))[1];
+}
+
+sub unpack_body {
+  my ($in, $tag, $default) = @_;
+  return (unpack_raw($in, defined($tag) ? $tag : $default, undef, 1))[2];
+}
+
+sub unpack_tagged {
+  return unpack_body($_[0], $_[1], 0);
+}
+
+sub unpack_sequence {
+  my ($in, $tag, $allowed) = @_;
+  $in = unpack_body($in, $tag, $CONS | $SEQUENCE);
+  my @ret;
+  my $tagbody;
+  if ($allowed && ref($allowed)) {
+    for my $all (@$allowed) {
+      return @ret, $in if $all && !ref($all) && $all == -1;     # -1: get rest
+      ($in, undef, undef, $tagbody) = unpack_raw($in, $all);
+      push @ret, $tagbody;
+    }
+    die("tailing data at end of asn1 sequence\n") if $in ne '';
+    return @ret;
+  }
+  while ($in ne '') {
+    ($in, undef, undef, $tagbody) = unpack_raw($in, $allowed);
+    push @ret, $tagbody;
+  }
+  return @ret;
+}
+
+sub unpack_set {
+  my ($in, $tag, $allowed) = @_;
+  $in = unpack_body($in, $tag, $CONS | $SET);
+  my @ret;
+  my $tagbody;
+  while ($in ne '') {
+    ($in, undef, undef, $tagbody) = unpack_raw($in, $allowed);
+    push @ret, $tagbody;
+  }
+  return @ret;
+}
+
+sub is_allowed_algo {
+  my ($oid) = unpack_sequence($_[0], $_[1], [ $OBJ_ID, [0, undef] ]);
+  return 1 if $allow_non_pqc;
+  return 1 if $oid eq $oid_mldsa65;
+  return 1 if $oid eq $oid_mldsa87;
+  return 0;
+}
+
+# see rfc9882 table 1
+sub is_allowed_digest {
+  my ($oid) = unpack_sequence($_[0], $_[1], [ $OBJ_ID, [0, undef] ]);
+  return 1 if $oid eq $oid_sha512;
+  return 1 if $oid eq $oid_sha3_512;
+  return 0;
+}
+
+sub verify_cms_parameters {
+  my ($cmsfile) = @_;
+  my $p7s = slurp($cmsfile);
+  my @cm = unpack_sequence($p7s, undef, $cms_tags);
+  die("cms is not of type signed data\n") unless $cm[0] eq $oid_pkcs7_signed_data;
+  my @sd = unpack_sequence(unpack_tagged($cm[1], $CONS | $CONT | 0), undef, $cms_tags_sd);
+  my @ci = unpack_sequence($sd[2], undef, $cms_tags_ci);
+  die("cms does not have a detached content\n") if $ci[1];
+  my @sis = unpack_set($sd[5]);
+  die("cms does not have a signer info\n") unless @sis;
+  for my $si (@sis) {
+    my @si = unpack_sequence($sis[0], undef, $cms_tags_si);
+    die("not a pqc signature\n") unless is_allowed_algo($si[4]);
+    die("not a strong digest\n") unless is_allowed_digest($si[2]);
+  }
+}
+
+#
+# Signature verificaton
+#
+sub generate_keyfile {
+  my $keyfile = File::Temp->new();
+  for my $fn (sort(ls($keyring_directory ))) {
+    next if $fn =~ /^\./ || $fn !~ /\.(?:pem|crt)$/;
+    next if -s "$keyring_directory/$fn" >= 1024*1024;
+    my $crt = slurp("$keyring_directory/$fn");
+    print $keyfile $crt;
+  }
+  $keyfile->flush();
+  return $keyfile;
+}
+
+sub get_openssl_version {
+  my $fh;
+  open($fh, '-|', 'openssl', 'version') || die("openssl: $!\n");
+  local $/;
+  my $out = <$fh>;
+  close $fh;
+  return $1 * 100 + $2 if $out =~ /^openssl (\d+)\.(\d+)/i;
+  die("could not determine openssl version\n");
+}
+
+sub verify_cms_with_openssl {
+  my ($keyfile, $contentfile, $cmsfile) = @_;
+  my $openssl_version = get_openssl_version();
+  my @provider;
+  @provider = ('-provider', 'default', '-provider', 'oqsprovider' ) if $openssl_version < 305;
+  my $fh;
+  my $pid = open($fh, '-|');
+  die("fork: $!\n") unless defined $pid;
+  if (!$pid) {
+    open(STDERR, '>&STDOUT');
+    open(STDOUT, '>/dev/null');
+    exec('openssl', 'cms', @provider, '-verify', '-binary', '-in', $cmsfile, '-inform', 'DER', '-content', $contentfile, '-certfile', $keyfile, '-CAfile', $keyfile, '-no-CApath');
+    die("openssl: $!\n");
+  }
+  local $/;
+  my $out = <$fh>;
+  if (!close($fh)) {
+    print STDERR $out if $out;
+    die("signature verification failed\n");
+  }
+}
+
+#
+# STOMP protocol implementation
+#
+my %unquote = ( 'r' => "\r", 'n' => "\n", 'c' => ":", '\\' => '\\' );
+my %quote = reverse(%unquote);
+
+sub readframe {
+  my ($fd) = @_;
+  my $cmd;
+  while (1) {
+    $cmd = <$fd>;
+    return unless defined $cmd;
+    chomp $cmd;
+    last if $cmd ne '';
+  }
+  my @headers;
+  while (1) {
+    my $line = <$fd>;
+    die("readframe: unexpected EOF\n") unless defined $line;
+    chomp $line;
+    last if $line eq '';
+    my @h = split(':', $line, 2);
+    die("readframe: bad header line\n") unless @h == 2;
+    push @headers, @h;
+  }
+  $cmd =~ s/\\([rnc\\])/$unquote{$1}/sge;
+  s/\\([rnc\\])/$unquote{$1}/sge for @headers;
+  my $cl = { @headers }->{'content-length'};
+  my $body = '';
+  if (defined($cl)) {
+    die("bad content length\n") unless $cl =~ /^\d+$/;
+    while (length($body) < 1 + $cl) {
+      my $r = read($fd, $body, 1 + $cl - length($body), length($body));
+      die("readframe: unexpected EOF\n") unless $r;
+    }
+  } else {
+    local $/ = "\0";
+    $body = <$fd>;
+  }
+  die("readframe: missing NUL at end of body\n") unless chop($body) eq "\0";
+  return ($cmd, \@headers, $body);
+}
+
+sub writeframe {
+  my ($fd, $cmd, $headers, $body) = @_;
+  $body = '' unless defined $body;
+  my @headers  = @{$headers || []};
+  s/([\r\n:\\])/"\\".$quote{$1}/sge for @headers;
+  $cmd =~ s/([\r\n:\\])/"\\".$quote{$1}/sge;
+  my @lines = ($cmd);
+  push @lines, "content-length:".length($body);
+  while (@headers) {
+    my ($k, $v) = splice(@headers, 0, 2);
+    $v = '' unless defined $v;
+    push @lines, "$k:$v" if defined($k) && $k ne 'content-length';
+  }
+  print $fd "$_\n" for @lines;
+  print $fd "\n$body\0";
+  $fd->flush();
+}
+
+#
+# Commands
+#
+sub verify_repo_signature {
+  my ($contentfile, $sig) = @_;
+
+  die("$sig: $!\n") unless -e $sig;
+  die("$sig: insane size\n") if -s $sig > 1024*1024;
+  die("$contentfile: $!\n") unless -e $contentfile;
+  verify_cms_parameters($sig);
+  my $keyfile = generate_keyfile();
+  verify_cms_with_openssl($keyfile, $contentfile, $sig);
+}
+
+sub cmd_unsupported {
+  my ($cmd, $headers, $body) = @_;
+  die("Unsupported command $cmd\n");
+}
+
+sub cmd_disconnect {
+  $exit_main_loop = 1;
+  return ('ACK');
+}
+
+sub cmd_pluginbegin {
+  my ($cmd, $headers, $body) = @_;
+  my %h = @$headers;
+  die("missing version header in PLUGINBEGIN\n") unless defined $h{'version'};
+  my @h = ('sig_extension' => '.p7s');
+  return ('PLUGINSETUP', \@h);
+}
+
+sub cmd_sigcheck {
+  my ($cmd, $headers, $body) = @_;
+  my %h = @$headers;
+  die("Missing sig header in SIGCHECK\n") unless defined $h{'sig'};
+  die("Missing data header in SIGCHECK\n") unless defined $h{'data'};
+  verify_repo_signature($h{'data'}, $h{'sig'});
+  return ('ACK');
+}
+
+my %commands = (
+  '_DISCONNECT' => \&cmd_disconnect,
+  'PLUGINBEGIN' => \&cmd_pluginbegin,
+  'SIGCHECK' => \&cmd_sigcheck,
+);
+
+#
+# Main
+#
+if (@ARGV && $ARGV[0] eq '--allow-non-pqc') {
+  $allow_non_pqc = 1;
+  shift @ARGV;
+}
+
+if (@ARGV && $ARGV[0] eq '--verify-repo-signature') {
+  verify_repo_signature($ARGV[1], $ARGV[2]);
+  exit(0);
+}
+
+my $ifd = \*STDIN;
+my $ofd;
+open($ofd, ">&STDOUT") || die("STDOUT dup\n");
+open(STDOUT, ">&STDERR") || die("STDERR dup\n");
+
+while (!$exit_main_loop) {
+  my ($cmd, $headers, $body) = readframe($ifd);
+  last unless defined $cmd;
+  my @response = eval {($commands{$cmd} || \&cmd_unsupported)->($cmd, $headers, $body) };
+  @response = ('ERROR', undef, $@) if $@;
+  writeframe($ofd, @response);
+}
+

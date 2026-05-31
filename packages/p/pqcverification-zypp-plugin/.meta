@@ -1,0 +1,7 @@
+<package name="pqcverification-zypp-plugin" project="openSUSE:Factory">
+  <title>A zypp signature check plugin for verifying pqc repository signatures</title>
+  <description>
+This package contains a plugin for zypp that allows the verification
+of post-quantum repository signatures.
+</description>
+</package>
