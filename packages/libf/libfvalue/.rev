@@ -120,4 +120,12 @@
     <comment>- Reinstate 0001-Export-libfvalue_value_get_entry.patch</comment>
     <requestid>1355282</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9b14017b1bd6f6f33e229c9df3406033</srcmd5>
+    <version>20260531</version>
+    <time>1780245033</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20260531</comment>
+    <requestid>1356196</requestid>
+  </revision>
 </revisionlist>

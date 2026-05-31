@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 31 10:32:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260531
+  * Add missing public declarations for
+    `libfvalue_data_handle_append_value_entry`
+- Delete 0001-Export-libfvalue_value_get_entry.patch (merged)
+
+-------------------------------------------------------------------
 Wed May 27 06:53:06 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Reinstate 0001-Export-libfvalue_value_get_entry.patch

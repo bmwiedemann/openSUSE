@@ -18,7 +18,7 @@
 
 Name:           libfvalue
 %define lname	libfvalue1
-Version:        20260522
+Version:        20260531
 Release:        0
 Summary:        Library to provide generic file value functions
 License:        LGPL-3.0-or-later
@@ -27,7 +27,6 @@ URL:            https://github.com/libyal/libfvalue
 Source:         https://github.com/libyal/libfvalue/releases/download/%version/libfvalue-experimental-%version.tar.gz
 Source2:        https://github.com/libyal/libfvalue/releases/download/%version/libfvalue-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
-Patch1:         0001-Export-libfvalue_value_get_entry.patch
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdata) >= 20260520
@@ -37,7 +36,7 @@ BuildRequires:  pkgconfig(libcthreads) >= 20260518
 BuildRequires:  pkgconfig(libfdatetime) >= 20260521
 BuildRequires:  pkgconfig(libfguid) >= 20260521
 BuildRequires:  pkgconfig(libfwnt) >= 20260522
-BuildRequires:  pkgconfig(libuna) >= 20240414
+BuildRequires:  pkgconfig(libuna) >= 20260522
 # Various notes: https://en.opensuse.org/libyal
 
 %description
