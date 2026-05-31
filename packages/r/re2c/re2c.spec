@@ -1,7 +1,7 @@
 #
 # spec file for package re2c
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           re2c
-Version:        4.4
+Version:        4.5.1
 Release:        0
 Summary:        Tool for generating C-based recognizers from regular expressions
 License:        SUSE-Public-Domain
@@ -25,6 +25,7 @@ URL:            https://re2c.org/
 Source:         https://github.com/skvadrik/re2c/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  bison
 BuildRequires:  gcc-c++
+BuildRequires:  make
 BuildRequires:  python3-base >= 3.7
 
 %description
@@ -51,6 +52,9 @@ terms of size and speed.
 
 %install
 %make_install
+# examples/ is shipped as %doc; its helper scripts must not be executable
+# (rpmlint: spurious-executable-perm)
+find examples -name '__run_all.sh' -exec chmod 0644 {} +
 
 %check
 %make_build check

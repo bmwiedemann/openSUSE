@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri May 29 16:00:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix License tag to SUSE-Public-Domain (the previous
+  LicenseRef-SUSE-Public-Domain form was invalid and caused the
+  Factory submission to be declined)
+- Spec cleanup:
+  * Add missing BuildRequires: make
+  * Drop spurious executable permission from the bundled
+    examples/*/__run_all.sh helper scripts
+
+-------------------------------------------------------------------
+Sat Mar 28 07:59:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.5.1
+  * Add missing include files to the distribution (#573).
+
+-------------------------------------------------------------------
+Tue Mar 24 10:46:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.5
+  * The internal generator for Unicode include files and tests is
+    now based directly on the official files from unicode.org
+    (previously it was based on the Haskell charset library). It
+    has been updated to the latest Unicode 17.0.0 standard.
+  * New include files have been added for Unicode properties
+    (include/unicode_properties.re) and blocks
+    (include/unicode_blocks.re).
+  * Case-insensitive string literals now use Unicode case mapping
+    for UTF8, UTF16, UTF32 and UCS2 encodings.
+
+-------------------------------------------------------------------
 Sun Dec 21 09:31:47 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.4

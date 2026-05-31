@@ -426,4 +426,20 @@
     <comment></comment>
     <requestid>1323922</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>8c42913f99236eb8c27b5446ca9656b3</srcmd5>
+    <version>4.5</version>
+    <time>1774469831</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342219</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>be48b8f222683fea2e3d57408e3c029d</srcmd5>
+    <version>4.5.1</version>
+    <time>1780244940</time>
+    <user>dimstar_suse</user>
+    <comment>re2c 4.5.1. Fix License tag to SUSE-Public-Domain (the LicenseRef-SUSE-Public-Domain form was invalid and caused the previous decline). Cleanup: add BuildRequires: make; drop spurious executable permission from the bundled examples/*/__run_all.sh scripts.</comment>
+    <requestid>1355981</requestid>
+  </revision>
 </revisionlist>
