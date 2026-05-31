@@ -1,9 +1,25 @@
 -------------------------------------------------------------------
-Sat Sep 27 02:01:27 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+Sat May 30 17:47:51 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
-- Bump version to 20250926
-- Moved transactional-update-notifier override to functional
-  location
+- Version 20260530
+  * Set breeze as default icon set
+
+-------------------------------------------------------------------
+Sun May 24 21:01:57 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Version 20260524
+  * Set button size in titlebars to tiny
+  * Change default sddm theme to Kalpa Light
+  * Set Kalpa Light/Dark themes in Quick Settings and enable
+    day/night switching
+
+-------------------------------------------------------------------
+Fri May 22 21:46:46 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Bump version to 20260522
+  * Move to CMake build
+  * Update LICENSE
+  * add defaults for a number of plasma components
 
 -------------------------------------------------------------------
 Tue Jun 24 09:37:34 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>

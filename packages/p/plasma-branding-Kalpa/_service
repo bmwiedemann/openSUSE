@@ -3,13 +3,13 @@
   <service mode="manual" name="obs_scm">
     <param name="scm">git</param>
     <param name="url">https://codeberg.org/KalpaDesktop/plasma-branding-Kalpa.git</param>
-    <param name="version">20250926</param>
-    <param name="revision">20250926</param>
+    <param name="version">20260530</param>
+    <param name="revision">20260530</param>
   </service>
   <service mode="manual" name="tar"/>
   <service mode="manual" name="extract_file">
     <param name="archive">*.tar</param>
-    <param name="files">*/opensuse/*</param>
+    <param name="files">*/packaging/*</param>
   </service>
   <service mode="manual" name="recompress">
     <param name="file">*.tar</param>

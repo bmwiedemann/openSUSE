@@ -118,4 +118,24 @@
   location</comment>
     <requestid>1307446</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fad781346b016d9da94b95be07d9f675</srcmd5>
+    <version>20260530</version>
+    <time>1780244922</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 20260530
+  * Set breeze as default icon set
+
+- Version 20260524
+  * Set button size in titlebars to tiny
+  * Change default sddm theme to Kalpa Light
+  * Set Kalpa Light/Dark themes in Quick Settings and enable
+    day/night switching
+
+- Bump version to 20260522
+  * Move to CMake build
+  * Update LICENSE
+  * add defaults for a number of plasma components</comment>
+    <requestid>1356065</requestid>
+  </revision>
 </revisionlist>
