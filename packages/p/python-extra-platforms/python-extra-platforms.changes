@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat May 30 06:49:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.0.0:
+  * Add IBM i platform detection: OS400 / is_os400(), recognized
+    via sys.platform == "os400" (reported by Python 3.9+ in IBM i's
+    AIX-compatible PASE runtime). Grouped under UNIX_LAYERS
+    alongside Cygwin.
+  * Detect the active shell on Windows by walking the parent
+    process tree via the Win32 Tool Help API
+    (CreateToolhelp32Snapshot), where neither /proc nor ps exists.
+    is_powershell(), is_cmd(), Git Bash detection through
+    is_bash(), current_shell() arbitration, and
+    current_shell_path() now rely on the actual ancestor processes
+    rather than only the PROMPT/PSModulePath environment variables.
+    Executable paths are resolved with QueryFullProcessImageNameW.
+    The ctypes bindings live in a new extra_platforms._windows
+    module, imported lazily and only on Windows.
+  * Add current_shell_path() returning the executable path of the
+    current shell (from the process tree when available, falling
+    back to SHELL). Shell.info() now exposes the running shell's
+    binary in its "path" field instead of always returning the
+    configured login shell from SHELL.
+  * Detect interpreter-hosted shells like Xonsh, which runs as a
+    Python script so the process tree shows python rather than
+    xonsh. The tree walk scans interpreter arguments for the
+    shell's launcher file, matching only an existing file named
+    exactly after the shell to avoid false positives. A new
+    interpreter field on Shell declares the host interpreter (XONSH
+    sets it to python).
+  * Recognize shells running under a user-mode CPU emulator: under
+    foreign-architecture emulation (like docker run --platform
+    linux/arm64 on an x86 host), the process tree shows
+    qemu-aarch64 /bin/bash … rather than bash; the walk strips a
+    leading qemu-<arch> (or rosetta) wrapper and reads the emulated
+    command, composing with interpreter-hosted detection.
+  * Detect the active shell on illumos, Solaris, and AIX/IBM i.
+    Their System V /proc exposes process status as binary pstatus_t
+    with no /proc/<pid>/cmdline or exe: the /proc walk previously
+    raised UnicodeDecodeError, crashing current_shell(). It now
+    reads /proc records as bytes and falls back to ps when /proc
+    yields nothing. The ps invocation uses the portable POSIX form
+    (-o pid=,ppid=,args=) with positional parsing of empty headers,
+    working across the System V ps of all three.
+  * Extend shell detection via the process tree to macOS and the
+    BSDs: the /proc-based walk was Linux-only, and the ps-based
+    fallback now covers macOS, FreeBSD, DragonFly, and other
+    systems without /proc. The walk also recognizes login shells
+    (argv[0] like -bash), survives an unreadable /proc/<pid>/exe
+    via /proc/<pid>/cmdline, and reads parent PIDs from BSD procfs
+    layout (/proc/<pid>/status).
+  * Render GitHub-style alerts (> [!NOTE], > [!WARNING], …) as
+    admonitions in the documentation by enabling MyST's alert
+    extension (requires myst-parser>=5.1).
+  * Drop the types-requests typing stub and the now-empty typing
+    dependency group, and require requests>=2.34, which ships
+    inline type hints (PEP 561).
+
+-------------------------------------------------------------------
 Thu Apr 30 10:50:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 12.0.3:
@@ -8,7 +66,7 @@ Thu Apr 30 10:50:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
     covered tests/test_root.py, leaving these three tests failing
     on sandboxed builders (Guix, BusyBox-only images) where no
     shell is detected.
-- upadte to 12.0.2:
+- update to 12.0.2:
   * Move --cov, --cov-report=term, --numprocesses=auto, and
     --dist=loadgroup from pyproject.toml [tool.pytest].addopts into
     the CI workflow. Removes pytest-cov and pytest-xdist as

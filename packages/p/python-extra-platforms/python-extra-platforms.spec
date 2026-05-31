@@ -23,7 +23,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-extra-platforms
-Version:        12.0.3
+Version:        13.0.0
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        Apache-2.0
@@ -40,7 +40,7 @@ BuildRequires:  %{python_module myst-parser}
 BuildRequires:  %{python_module pytest >= 8.3.5}
 BuildRequires:  %{python_module pytest-randomly >= 4}
 BuildRequires:  %{python_module pytest-xdist >= 3.8.0}
-BuildRequires:  %{python_module requests >= 2.32.5}
+BuildRequires:  %{python_module requests >= 2.34}
 BuildRequires:  %{python_module tabulate >= 0.9}
 BuildRequires:  %{python_module tomli >= 2.3.0 if %python-base < 3.11}
 BuildRequires:  %{python_module wcmatch >= 10.0}
