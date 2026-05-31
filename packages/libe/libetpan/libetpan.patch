@@ -1,0 +1,66 @@
+---
+ Makefile.am     |    2 +-
+ configure.ac    |    7 -------
+ src/Makefile.am |    6 ------
+ 3 files changed, 1 insertion(+), 14 deletions(-)
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -39,7 +39,7 @@ CLEANFILES = stamp-prepare libetpan-conf
+ 
+ DISTCLEANFILES = libetpan.pc
+ 
+-SUBDIRS = build-windows include src tests doc
++SUBDIRS = include src doc
+ 
+ BUILT_SOURCES += libetpan-config.h
+ 
+--- a/configure.ac
++++ b/configure.ac
+@@ -759,11 +759,9 @@ AC_SUBST(VERSION)
+ # Further checks.
+ 
+ AC_CONFIG_FILES(Makefile
+-		build-windows/Makefile
+                 include/Makefile
+                 src/Makefile
+ 		src/bsd/Makefile
+-		src/windows/Makefile
+ 		src/data-types/Makefile
+ 		src/low-level/Makefile
+ 		src/low-level/feed/Makefile
+@@ -794,9 +792,7 @@ AC_CONFIG_FILES(Makefile
+ 		src/main/Makefile
+ 		src/main/libetpan_version.h
+ 		src/engine/Makefile
+-		src/versioninfo.rc
+ 		doc/Makefile
+-		tests/Makefile
+ 		libetpan.pc)
+ 
+ # We collect all files which could potentially install public header
+@@ -813,6 +809,3 @@ done
+ AC_SUBST(cfg_files)
+ 
+ AC_OUTPUT
+-
+-cp -f ${crd}/src/main/libetpan_version.h ${crd}/build-windows
+-cd build-windows ; ./gen-public-headers.sh > build_headers.list ; cd ..
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -57,15 +57,9 @@ libetpan_deps =
+ endif
+ 
+ 
+-if HAVE_MINGW32_SYSTEM
+-  arch_sources = dummy.cpp
+-  arch_dir = windows
+-  arch_lib = windows/libarch.la
+-else
+   arch_sources =
+   arch_dir =
+   arch_lib =
+-endif
+ 
+ SUBDIRS = bsd $(arch_dir) data-types low-level driver main engine
+ 

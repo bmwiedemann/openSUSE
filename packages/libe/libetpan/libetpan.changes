@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 22 22:22:22 UTC 2026 - olaf@aepfle.de
+
+- update to 1.10 (1bac78a) via _service
+  add libetpan.patch
+  Added RFC 8438 IMAP STATUS=SIZE support
+  Added modified UTF-7 encode/decode
+  Various fixes
+- build with gnutls because the only consumer uses gnutls
+- enable --with-poll to remove filedescriptor limit
+
+-------------------------------------------------------------------
 Sat Aug 15 23:20:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.9.4 (bsc#1174579, CVE-2020-15953):

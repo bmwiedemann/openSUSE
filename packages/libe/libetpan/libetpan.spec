@@ -1,7 +1,7 @@
 #
 # spec file for package libetpan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,25 @@
 #
 
 
+%bcond_with     libetpan_fsanitize
 %define sover 20
 Name:           libetpan
-Version:        1.9.4
+Version:        1.10
 Release:        0
 Summary:        Mail Handling Library
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://www.etpan.org/libetpan.html
-Source0:        https://github.com/dinhviethoa/libetpan/archive/%{version}.tar.gz
+Source0:        %name-%version.tar.xz
+Patch0:         %name.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
-# Stupid dependency. Compiles with gcc but tries to link with g++.
-BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  openssl-devel
+BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(gpg-error)
+BuildRequires:  pkgconfig(libgcrypt)
+BuildRequires:  pkgconfig(libsasl2)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 libEtPan is a mail purpose library. It will be used for low-level mail
@@ -42,9 +44,8 @@ and message / MIME parsing.
 
 %package -n libetpan%{sover}
 Summary:        Mail handling library
-Group:          System/Libraries
-Provides:       %{name} = %{version}
-Obsoletes:      %{name} < %{version}
+Provides:       %name = %version-%release
+Obsoletes:      %name < %version-%release
 
 %description -n libetpan%{sover}
 libEtPan is a mail purpose library. It will be used for low-level mail
@@ -54,11 +55,13 @@ and message / MIME parsing.
 
 %package -n libetpan-devel
 Summary:        Development files for libetpan, a mail handling library
-Group:          Development/Libraries/C and C++
-Requires:       cyrus-sasl-devel
 Requires:       db-devel
-Requires:       libetpan%{sover} = %{version}
-Requires:       openssl-devel
+Requires:       libetpan%{sover} = %version-%release
+Requires:       pkgconfig(gnutls)
+Requires:       pkgconfig(gpg-error)
+Requires:       pkgconfig(libgcrypt)
+Requires:       pkgconfig(libsasl2)
+Requires:       pkgconfig(zlib)
 
 %description -n libetpan-devel
 libEtPan is a mail purpose library. It will be used for low-level mail
@@ -67,12 +70,29 @@ SSL/TCP/IP, already implemented), local storage (mbox/MH/maildir)
 and message / MIME parsing.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 touch README INSTALL COPYING
-autoreconf -fi
-%configure --disable-static
+env NOCONFIGURE=1 ./autogen.sh
+%if %{with libetpan_fsanitize}
+CFLAGS='%optflags -Wno-unused-function -Wno-unused-parameter -std=gnu11 -fsanitize=address,undefined'
+sed -i~ 's|^Cflags:|Cflags: -fsanitize=address,undefined|' libetpan.pc.in
+diff -u "$_"~ "$_" && exit 123
+%else
+CFLAGS='%optflags -Wno-unused-function -Wno-unused-parameter -std=gnu11'
+%endif
+%configure \
+	--without-curl \
+	--without-expat \
+	--with-gnutls \
+	--enable-ipv6 \
+	--without-openssl \
+	--with-poll \
+	--with-sasl \
+	--disable-static \
+	--with-zlib \
+	%nil
 %make_build
 
 %install

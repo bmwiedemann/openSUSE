@@ -1,0 +1,28 @@
+<services>
+  <service mode="manual" name="tar_scm">
+    <param name="exclude">.git*</param>
+    <param name="exclude">.travis.yml</param>
+    <param name="exclude">build-android</param>
+    <param name="exclude">build-mac</param>
+    <param name="exclude">build-windows</param>
+    <param name="exclude">src/dummy.cpp</param>
+    <param name="exclude">src/versioninfo.rc.in</param>
+    <param name="exclude">src/windows</param>
+    <param name="exclude">tests</param>
+    <param name="exclude">travis</param>
+    <param name="exclude">unittest</param>
+    <param name="filename">libetpan</param>
+    <param name="revision">1bac78abe207f078c918e9e86faaed13035f4b1f</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/dinhvh/libetpan</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="manual" name="recompress">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>
