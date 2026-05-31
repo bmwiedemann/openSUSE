@@ -98,7 +98,7 @@
 %endif
 
 Name:           libzypp
-Version:        17.38.10
+Version:        17.38.11
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
