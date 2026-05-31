@@ -2745,4 +2745,12 @@ New Features
     [bsc#1265594]</comment>
     <requestid>1355340</requestid>
   </revision>
+  <revision rev="233" vrev="2">
+    <srcmd5>7df46285494824b3c49a930b3eed1277</srcmd5>
+    <version>9.20.23</version>
+    <time>1780244910</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing references</comment>
+    <requestid>1355936</requestid>
+  </revision>
 </revisionlist>

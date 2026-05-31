@@ -20,6 +20,10 @@ Tue May 26 16:02:53 UTC 2026 - Reinhard Max <max@suse.com>
   * Invalid handling of CLASS != IN.
     (CVE-2026-5946)
     [bsc#1265594]
+  * Heap use-after-free vulnerability in BIND 9 DNS-over-HTTPS
+    implementation
+    (CVE-2026-3593)
+    [bsc#1265593]
 
 -------------------------------------------------------------------
 Mon Apr 13 14:50:07 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
