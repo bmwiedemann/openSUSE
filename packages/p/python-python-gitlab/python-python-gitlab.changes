@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 29 10:37:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.4.0:
+  * Features
+    - const: Add new Security Manager role (3738bb2)
+  * Testing
+    - const: Add tests for AccessLevel (2ab6d9f)
+
+-------------------------------------------------------------------
 Thu Apr 30 12:35:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.3.0:
