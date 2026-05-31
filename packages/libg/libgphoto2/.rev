@@ -1733,4 +1733,41 @@ is ready when the default compiler is switched. (forwarded request 1191710 from 
   * translations: updated romanian, chinese, polish, ukrainian</comment>
     <requestid>1312222</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>2609662e1a68ef1615c427cec57d732f</srcmd5>
+    <version>2.5.34</version>
+    <time>1780244917</time>
+    <user>dimstar_suse</user>
+    <comment>- libgphoto2 2.5.34 release
+  ptp2:
+  * new Canon EOS SDRAM capture method added
+  * new Nikon Z series property code list method added
+  * Sony generation 2 vs 3 handling enhanced
+  * Security issues fixed:
+    * CVE-2026-40333: information disclosure and denial of service via
+      unbounded reads in ptp unpack EOS events (bsc#1262445)
+    * CVE-2026-40334: information disclosure and denial of service via
+      missing null terminator ptp_unpack_Canon_FE (bsc#1262446)
+    * CVE-2026-40335: information disclosure via out-of-bounds read
+      in ptp_unpack_DPV (bsc#1262447)
+    * CVE-2026-40336: memory leak in ptp_unpack_Sony_DPD() can lead to
+      denial of service (bsc#1262448)
+    * CVE-2026-40338: information disclosure and denial of service
+      via out-of-bounds read in the PTP_DPFF_Enumeration case of
+      ptp_unpack_Sony_DPD() (bsc#1262449)
+    * CVE-2026-40339: information disclosure via out-of-bounds read in
+      ptp_unpack_Sony_DPD() (bsc#1262450)
+    * CVE-2026-40340: information disclosure and denial of service via
+      out-of-bounds read in ptp_unpack_OI() (bsc#1262452)
+    * CVE-2026-40341: denial of service via out-of-bounds read from
+      untrusted USB devices in ptp_unpack_EOS_FocusInfoEx (bsc#1262454)
+  * chdk: several bugfixes for liveview
+  * configs:
+    * nikon: flashready, infodisperrstatus added
+    * sony: exposureprogram mode3, focusdistancemeters, shutter lag timing, focus indication, shutter type, drange optimizer added, silent mode
+    * canon eos: remoterelease config values changed
+    * panasonic: bulb added
+  * leica: detect not yet listed leicas better in generic mode</comment>
+    <requestid>1356046</requestid>
+  </revision>
 </revisionlist>
