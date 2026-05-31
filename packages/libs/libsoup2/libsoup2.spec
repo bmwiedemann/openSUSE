@@ -106,6 +106,8 @@ Patch38:        libsoup-CVE-2026-1467.patch
 Patch39:        libsoup-CVE-2026-1539.patch
 # PATCH-FIx-UPSTREAM -- tld-test: update after changes in the public suffix list https://github.com/publicsuffix/list/pull/2623
 Patch40:        https://github.com/GNOME/libsoup/commit/35af2342.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-1801.patch bsc#1257649 mgorse@suse.com -- Use CRLF as line boundary when parsing chunk encoding data.
+Patch41:        libsoup2-CVE-2026-1801.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50

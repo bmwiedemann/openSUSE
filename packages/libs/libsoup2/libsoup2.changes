@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 27 14:42:50 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add libsoup2-CVE-2026-1801.patch: Use CRLF as line boundary when
+  parsing chunk encoding data (bsc#1257649 CVE-2026-1801
+  glgo#GNOME/libsoup#481).
+
+-------------------------------------------------------------------
 Sun May 24 06:58:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 35af2342.patch: tld-test: update after changes in the public
