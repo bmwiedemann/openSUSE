@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 31 13:05:53 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 2.16.1:
+  * Revert "Merge pull request #10668 from Icinga/perfdata-writers-connection-handling"
+  * Update version to v2.16.1
+  * Update changelog for v2.16.1
+  * Revert "Merge pull request #10799 from Icinga/fix-pdwc-tls-host-check"
+  * Fix openSUSE 15.6 GitHub actions
+  * docs: note OTLP metrics package limitation on Debian 11 and Ubuntu 22.04 and Amazon Linux 2
+  * Add Fedora 44 to CI workflow
+  * Add Ubuntu 26.04 to CI workflow
+
+-------------------------------------------------------------------
 Thu Apr 23 09:17:57 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 2.16.0:
