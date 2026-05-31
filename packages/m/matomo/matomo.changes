@@ -1,23 +1,31 @@
 -------------------------------------------------------------------
+Sun May 31 12:40:57 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.10.1
+
+- Update to 5.10.1
+  * Security
+    - 24468: Store and verify user on 2FA verification process.
+    - 24567: Improve Row evolution.
+
+-------------------------------------------------------------------
 Mon May  4 11:25:31 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.10.0
 
 - Update to 5.10.0
   * Core improvements
-    - #23912 New Dark mode theme setting. [by @tzi, @chippison, inspired by OpenMost]
-    - #24369 Dark Mode: fix flags border. [by @tzi]
-    - #24441 Core rebrand changes. [by @chippison, @caddoo]
-    - #24446 Fix contrast in white-label header. [by @tzi]
-    - #24259 Cards, Widgets and background tweaks. [by @chippison]
-    - #24399 Updated left menu tweaks. [by @chippison]
-    - #24408 Redesign of top control selectors. [by @tzi]
-    - #24417, #23912 Redesign New Update button. [by @tzi]
-    - #24426 Redesign of top control selectors. [by @tzi]
-    - #24400 Prevent modern content tables from overflowing their cards. [by @caddoo]
-    - #24368 Segment Management Page: keep action buttons styled on focus. [by @tzi]
-    - #24388 Actions: use configured delimiters for flat report labels. [by @sgiehl]
-    - #24300, #24030 Improve Goals submenu ordering. [by @maxtaube, @sgiehl]
-    - #24402, #24400 Word wrap some values in the manage goals page. [by @caddoo]
-    - #24373, #16963, #24340 Make Archive Table Creation Explicit in ArchiveTableCreator. [by @sgiehl]
+    - #23912 New Dark mode theme setting.
+    - #24369 Dark Mode: fix flags border.
+    - #24441 Core rebrand changes.
+    - #24446 Fix contrast in white-label header.
+    - #24259 Cards, Widgets and background tweaks.
+    - #24399 Updated left menu tweaks.
+    - #24408 Redesign of top control selectors.
+    - #24417, #23912 Redesign New Update button.
+    - #24426 Redesign of top control selectors.
+    - #24400 Prevent modern content tables from overflowing their cards.
+    - #24368 Segment Management Page: keep action buttons styled on focus.
+    - #24388 Actions: use configured delimiters for flat report labels.
+    - #24300, #24030 Improve Goals submenu ordering.
+    - #24402, #24400 Word wrap some values in the manage goals page.
+    - #24373, #16963, #24340 Make Archive Table Creation Explicit in ArchiveTableCreator.
 
 -------------------------------------------------------------------
 Wed Apr 22 12:56:26 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.9.0
