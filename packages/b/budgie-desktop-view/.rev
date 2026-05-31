@@ -128,4 +128,25 @@
 </comment>
     <requestid>1313568</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7864e3765c0de5c3a2612f0cb922eddb</srcmd5>
+    <version>10.10.0+0</version>
+    <time>1780244950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.10.0+0:
+  * feat: 10.10.0 release
+  * feat: tag 10.10-preview.2
+  * Add support for xfce4-terminal (#40)
+  * Resolve icons display after a wallpaper change - closes #38 (#39)
+  * Add 20px spacing to allow the icon label not to overlap the left/right panels - Closes #37 (#41)
+  * DesktopMenu: Adapt to new BCC deskop file name (#36)
+  * chore: bump to 10.10-preview.1
+  * Add GNOME Console to supported terminals (#35)
+  * Support mate-terminal to open files (#2)
+  * chore: update pot file
+  * feat: port to Wayland (#33)
+  * fix: compilation under newer meson and gcc
+</comment>
+    <requestid>1344590</requestid>
+  </revision>
 </revisionlist>

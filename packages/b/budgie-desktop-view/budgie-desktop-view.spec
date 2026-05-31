@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-desktop-view
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 Callum Farmer <gmbr3@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %endif
 %define org org.buddiesofbudgie
 Name:           budgie-desktop-view
-Version:        1.3+0
+Version:        10.10.0+0
 Release:        0
 Summary:        Official Budgie Desktop icons application / implementation
 License:        Apache-2.0
@@ -35,6 +35,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.64.0
+BuildRequires:  pkgconfig(gtk-layer-shell-0)
+BuildRequires:  pkgconfig(libxfce4windowing-0)
 
 %description
 Budgie Desktop View is the official Budgie desktop icons application / implementation
