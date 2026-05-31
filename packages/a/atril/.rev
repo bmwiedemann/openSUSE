@@ -311,4 +311,12 @@
     <comment></comment>
     <requestid>1344489</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2b3f10d581c20ab9001ce97f3bba4bfb</srcmd5>
+    <version>1.28.4</version>
+    <time>1780245040</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.28.4 (bsc#1265880 CVE-2026-46519) (forwarded request 1354295 from mgorse)</comment>
+    <requestid>1356200</requestid>
+  </revision>
 </revisionlist>

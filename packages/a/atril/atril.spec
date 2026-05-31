@@ -1,7 +1,7 @@
 #
 # spec file for package atril
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %define _version 1.28
 
 Name:           atril
-Version:        1.28.2
+Version:        1.28.4
 Release:        0
 Summary:        MATE Desktop document viewer
 License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            https://mate-desktop.org/
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  desktop-file-utils

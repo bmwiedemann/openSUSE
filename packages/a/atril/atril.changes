@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 20 18:51:35 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.28.4 (bsc#1265880 CVE-2026-46519):
+  * Build fixes
+  * Fix tests imported from XReader
+  * Fix tests with AT-SPI2 >= 2.53
+  * Improve search system
+  * pdf: Always use poppler_document_save to avoid data loss
+  * Use properties for can-zoom-in and -out
+  * libview: Allow zooming to the limits of the scale
+  * shell: Fix Max zoom in UI
+- Migrate to xz compression and manual service run.
+
+-------------------------------------------------------------------
 Fri Apr  3 12:19:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop python3-libxml2 BuildRequires: No longer available in
