@@ -47,4 +47,14 @@
   * Update translations (forwarded request 1330110 from rrahl0)</comment>
     <requestid>1330111</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dbcb7b5b0e2ff353fb88b296deb011be</srcmd5>
+    <version>8.2.0</version>
+    <time>1780244997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.2.0:
+  + A new design for Portals
+  + Updated translations (forwarded request 1356082 from rrahl0)</comment>
+    <requestid>1356083</requestid>
+  </revision>
 </revisionlist>

@@ -18,23 +18,26 @@
 
 %define         appid io.elementary.portals
 Name:           xdg-desktop-portal-pantheon
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Pantheon Backend Portal
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/portals
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  accountsservice-vala
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.56.1
+BuildRequires:  pkgconfig(accountsservice)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(granite-7)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk4-wayland)
 BuildRequires:  pkgconfig(gtk4-x11)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(pantheon-wayland-1)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vte-2.91-gtk4)
