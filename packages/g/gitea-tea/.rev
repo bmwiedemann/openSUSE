@@ -190,4 +190,13 @@
     <comment>update to 0.14.1 (forwarded request 1353309 from ojkastl_buildservice)</comment>
     <requestid>1353895</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>479489ca925fe74939703434be07547e</srcmd5>
+    <version>0.14.1</version>
+    <time>1780245008</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix access to sha256 repositories
+  * Use-git-command-instead-of-go-git-1005.patch (forwarded request 1355696 from michals)</comment>
+    <requestid>1356084</requestid>
+  </revision>
 </revisionlist>

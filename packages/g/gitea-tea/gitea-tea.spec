@@ -24,9 +24,11 @@ License:        MIT
 URL:            https://gitea.com/gitea/tea
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Patch1:         Use-git-command-instead-of-go-git-1005.patch
 # 16.0 fails with go.mod requires go >= 1.26.0 (running go 1.26rc3; GOTOOLCHAIN=local)
 BuildRequires:  go1.26 >= 1.26.0
 Conflicts:      tea
+Requires:       git-core
 
 %description
 Tea can be used to manage most entities on one or multiple Gitea

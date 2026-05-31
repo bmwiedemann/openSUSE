@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 18:52:33 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix access to sha256 repositories
+  * Use-git-command-instead-of-go-git-1005.patch
+
+-------------------------------------------------------------------
 Fri May 15 07:21:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.14.1:
