@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 23 06:49:08 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.6.1
+  Fixed bugs:
+  * Fix crash on X11 systems for builds with disabled flag WITH_X11
+  * Tray icon rendering as blank for Flatpak
+  Notable changes:
+  * Bump used QT and SDL2 versions in used in release builds
+  * Default build uses QT6 since now
+  * Some compilation warning fixes
+  * Update translations
+
+-------------------------------------------------------------------
 Thu May  7 14:40:39 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.6.0
