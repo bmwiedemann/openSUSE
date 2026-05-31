@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-about
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings.system
 Name:           switchboard-plug-about
-Version:        8.2.2
+Version:        8.2.3
 Release:        0
 Summary:        Switchboard plug to show system information
 License:        GPL-3.0-or-later

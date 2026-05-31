@@ -39,4 +39,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324533</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f9893a4980cf466288b04b89d09f97f6</srcmd5>
+    <version>8.2.3</version>
+    <time>1780245000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.2.3:
+  + HardwareView: Fallback to &quot;Unknown Processor&quot; instead of blank CPU name
+  + ARMPartDecoder: Update ARM CPU mapping table with util-linux 2.39.3 (forwarded request 1356088 from rrahl0)</comment>
+    <requestid>1356089</requestid>
+  </revision>
 </revisionlist>
