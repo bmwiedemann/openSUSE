@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 31 01:32:34 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.0.3:
+  + CanberraGtk4: Don't write if as else-if
+  + meson: Fix warnings
+  + Fix empty "Applications" tab
+  + AppRow: Fix default toggle position
+
+-------------------------------------------------------------------
 Sun Dec 21 05:38:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 8.0.2:

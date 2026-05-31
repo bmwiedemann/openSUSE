@@ -26,4 +26,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324550</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3d69efebd77e464d0b4479dfa534a1dc</srcmd5>
+    <version>8.0.3</version>
+    <time>1780244999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.0.3:
+  + CanberraGtk4: Don't write if as else-if
+  + meson: Fix warnings
+  + Fix empty &quot;Applications&quot; tab
+  + AppRow: Fix default toggle position (forwarded request 1356086 from rrahl0)</comment>
+    <requestid>1356087</requestid>
+  </revision>
 </revisionlist>
