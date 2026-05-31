@@ -17,7 +17,7 @@
 
 
 Name:           regreet
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Customizable greeter for greetd
 License:        0BSD AND CC0-1.0 AND GPL-3.0-or-later AND MIT

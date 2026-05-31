@@ -18,4 +18,23 @@
   + GTK cursor blinking can now be disabled via the cursor_blink option (forwarded request 1346123 from rrahl0)</comment>
     <requestid>1346124</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9181f793dfc1eac389d48fe235368770</srcmd5>
+    <version>0.4.0</version>
+    <time>1780245005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.0:
+  + Config option to skip selecting user/session, with auto-login support and
+    info message on skip. Passwordless users are excluded from auto-login
+  + Added background image/webp/gif/video support via GStreamer
+  + GTK4 pango markup is now supported in the clock widget format (the
+    widget.clock.format configuration options)
+  + The background_fit configuration option is now case-insensitive
+  + greetd info messages are now displayed as notifications, just like greetd
+    error messages
+  + Session dropdown is not empty anymore on a fresh state file
+  + Hid the border of the notification bar frame that shows up even when no
+    notification is displayed (forwarded request 1356080 from rrahl0)</comment>
+    <requestid>1356081</requestid>
+  </revision>
 </revisionlist>
