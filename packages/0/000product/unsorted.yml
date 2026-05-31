@@ -1462,7 +1462,7 @@ unsorted:
   - bison 
   - bison-32bit 
   - bison-lang 
-  - bitcoin-qt5 
+  - bitcoin-qt6 
   - bitcoin-test 
   - bitcoin-utils 
   - bitcoind 
@@ -23611,6 +23611,7 @@ unsorted:
   - ppsspp-headless 
   - ppsspp-qt 
   - pptpd 
+  - pqcverification-zypp-plugin 
   - pqiv 
   - pqiv-ffmpeg 
   - pqiv-gdkpixbuf 
