@@ -18,7 +18,7 @@
 
 Name:           libcpath
 %define lname	libcpath1
-Version:        20260520
+Version:        20260530
 Release:        0
 Summary:        Library for C path functions
 License:        LGPL-3.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20260513
 BuildRequires:  pkgconfig(libclocale) >= 20260520
 BuildRequires:  pkgconfig(libcsplit) >= 20260520
-BuildRequires:  pkgconfig(libuna) >= 20240414
+BuildRequires:  pkgconfig(libuna) >= 20260522
 # Various notes: https://en.opensuse.org/libyal
 
 %description
