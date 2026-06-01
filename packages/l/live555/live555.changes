@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 28 20:17:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.05.28:
+  * fix use-after-free memory corruption introduced in fix
+    for CVE-2026-41470
+
+-------------------------------------------------------------------
 Wed May 27 10:32:53 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2026.04.22 (CVE-2026-41470, boo#1265856):
