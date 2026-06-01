@@ -322,4 +322,41 @@ for menus;
     <comment></comment>
     <requestid>1327893</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>44def0de98cf6d4fd75d14484e59d9dd</srcmd5>
+    <version>0.14.4</version>
+    <time>1780329900</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.14.4:
+  Invocation:
+  * Reworked --help output to be more compact and readable.
+  Documentation:
+  * Added menu index to the documentation. Patch by CaptainFantastic.
+  * Improved description of the local filter in the documentation.
+  * Documented quoting and escaping on command-line. Patch by Kirill Rekhov.
+  * Documented name conflict resolution dialog. Patch by Kirill Rekhov.
+  * Rewrote documentation about command-line ranges to make it complete and more readable.
+  * Improved wording in documentation describing general behaviour of visual mode.
+  Menus and dialogs:
+  * Improved potentially confusing wording in the dialog confirming exit while background jobs are running.
+  * Don't offer &quot;append the tail&quot; conflict resolution option for al and rl
+    operations because it's inappropriate for creation of symbolic links.
+  File preview:
+  * Display an error on trying to switch from external preview to raw mode.
+  Integration:
+  * Fall back to using standard::fast-content-type from GLib if
+    standard::content-type is missing. Patch by Jan Palus (a.k.a. jpalus).
+  Other changes:
+  * Added example of handling .deb-files to sample vifmrc. Patch by Kirill Rekhov.
+  * Updated sample vifmrc files to use vi as a last resort if it exists.
+  * Updated list of categories in .desktop-file. Patch by Jared Cervantes (a.k.a. Jaredy899).
+  Fixes:
+  * Fixed :normal not being able to run commands which end with whitespace.
+  * Fixed printing newline on cancelling choosing a directory via --choose-dir option.
+  * Fixed escaping characters with codes greater than 127 producing garbage.
+  * Fixed vifm-media-osx script for modern versions of OS X.
+  * Fixed weird delays in FUSE when running an AppImage caused by a trailing colon in $LD_LIBRARY_PATH.
+  * Fixed a small memory leak on trying to display a map menu which doesn't show up because it would be empty.</comment>
+    <requestid>1356289</requestid>
+  </revision>
 </revisionlist>

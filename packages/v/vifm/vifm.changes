@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jun  1 07:14:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.4:
+  Invocation:
+  * Reworked --help output to be more compact and readable.
+  Documentation:
+  * Added menu index to the documentation. Patch by CaptainFantastic.
+  * Improved description of the local filter in the documentation.
+  * Documented quoting and escaping on command-line. Patch by Kirill Rekhov.
+  * Documented name conflict resolution dialog. Patch by Kirill Rekhov.
+  * Rewrote documentation about command-line ranges to make it complete and more readable.
+  * Improved wording in documentation describing general behaviour of visual mode.
+  Menus and dialogs:
+  * Improved potentially confusing wording in the dialog confirming exit while background jobs are running.
+  * Don't offer "append the tail" conflict resolution option for al and rl
+    operations because it's inappropriate for creation of symbolic links.
+  File preview:
+  * Display an error on trying to switch from external preview to raw mode.
+  Integration:
+  * Fall back to using standard::fast-content-type from GLib if
+    standard::content-type is missing. Patch by Jan Palus (a.k.a. jpalus).
+  Other changes:
+  * Added example of handling .deb-files to sample vifmrc. Patch by Kirill Rekhov.
+  * Updated sample vifmrc files to use vi as a last resort if it exists.
+  * Updated list of categories in .desktop-file. Patch by Jared Cervantes (a.k.a. Jaredy899).
+  Fixes:
+  * Fixed :normal not being able to run commands which end with whitespace.
+  * Fixed printing newline on cancelling choosing a directory via --choose-dir option.
+  * Fixed escaping characters with codes greater than 127 producing garbage.
+  * Fixed vifm-media-osx script for modern versions of OS X.
+  * Fixed weird delays in FUSE when running an AppImage caused by a trailing colon in $LD_LIBRARY_PATH.
+  * Fixed a small memory leak on trying to display a map menu which doesn't show up because it would be empty.
+  * Fixed vifm-pause and other helpers not being available from within AppImage.
+  * Fixed vifm.vim not cleaning up buffers properly when used as a netrw replacement.
+  * Fixed a crash if GLib didn't return a file type. Patch by Jan Palus (a.k.a. jpalus).
+  * Fixed undoing of chmod operation not restoring owner's read permission.
+  * Fixed incorrect progress indicator for dp and do keys in compare view.
+  * Fixed UID/GID occasionally not being formatted as requested (numeric vs. symbolic form) in the UI.
+  * Fixed rl normal mode key sometimes not moving cursor to the newly inserted link and simultaneously logging partial name in the undo history message, which is merely informative.
+  * Fixed :open not entering symbolic links to directories if there is no vifm executable in $PATH.
+  * Fixed :yank and :delete not handling optional count parameter correctly (a regression since v0.11-beta).
+  * Fixed completion of :highlight truncating long custom column names.
+  * Fixed a Lua column disabling search highlighting for all columns to its right.
+  * Fixed a buffer overflow in trie implementation (CVE-2026-8997).
+  * Fixed Lua modules written in C not being loaded on Unix-like systems.
+
+-------------------------------------------------------------------
 Sat Jan 10 13:12:51 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and
