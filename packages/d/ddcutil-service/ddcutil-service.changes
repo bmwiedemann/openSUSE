@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  1 03:55:45 UTC 2026 - Michael Hamilton <michael@actrix.gen.nz>
+
+- 1.0.15
+  - C code cleanup, moved the embedded introspection XML to a file included at compile time.
+  - Makefile cleanup, including installing the man pages.
+  - Prevent unnecessary calls to glib debug logging.
+
+
+-------------------------------------------------------------------
 Sat Mar  8 21:34:11 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
 
 - 1.0.14 

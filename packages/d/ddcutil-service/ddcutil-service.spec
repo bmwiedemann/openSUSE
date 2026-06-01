@@ -18,7 +18,7 @@
 
 
 Name:           ddcutil-service
-Version:        1.0.14
+Version:        1.0.15
 Release:        0
 Summary:        D-Bus service for libddcutil VESA DDC Monitor Virtual Control Panel
 License:        GPL-2.0-or-later
@@ -80,8 +80,8 @@ install -m 0644 -D -t %{buildroot}%{_prefix}/lib/modules-load.d/ i2c-dev/%{name}
 %dir %{_datadir}/dbus-1/services
 %{_bindir}/%{name}
 %{_datadir}/dbus-1/services/com.ddcutil.DdcutilService.service
-%{_mandir}/man1/%{name}.1%{?ext_man}
-%{_mandir}/man7/%{name}.7%{?ext_man}
+%{_mandir}/man1/%{name}.1*
+%{_mandir}/man7/%{name}.7*
 %{_datadir}/%{name}/examples/dbus-enable-info-logging.bash
 %{_datadir}/%{name}/examples/dbus-send-query-brightness.bash
 %{_datadir}/%{name}/examples/ddcutil-dasbus-client.py
