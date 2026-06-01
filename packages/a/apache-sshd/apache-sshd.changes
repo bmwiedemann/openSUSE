@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Jun  1 08:40:30 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.18.0
+  * Bug Fixes
+    + GH-743 Ensure the Java ServiceLoader use a singleton
+      SftpFileSystemProvider
+    + GH-879 Close SSH channel gracefully on exception in port
+      forwarding
+    + Security: Improve handling of repository paths in sshd-git.
+      Resolves CVE-2026-48827, bsc#1267018
+  * New Features
+    + GH-892 Align handling certificates without principals with
+      OpenSSH 10.3
+
+-------------------------------------------------------------------
+Mon Jun  1 08:39:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.17.1
+  * Changes
+    + GH-875 Use Apache Parent POM 36
+
+-------------------------------------------------------------------
+Mon Jun  1 08:31:59 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.17.0
+  * Bug Fixes
+    + GH-469, SSHD-897 Fix duplicate character echo with interactive
+      shells
+    + GH-721 SSH client: schedule session timeout checks on demand
+      only
+    + GH-807 Handle "verified" flag for sk-* keys
+    + GH-809 Fix server-side authentication for FIDO/U2F sk-* keys
+      with flags in authorized_keys
+    + GH-827 Don't fail on invalid known_hosts lines; log and skip
+      them
+    + GH-830 EC public keys: let Bouncy Castle generate X.509
+      encodings with the curve OID as algorithm parameter
+    + GH-855 SFTP: use a single SftpClient per SftpFileSystem
+    + GH-856 Fix using ed25519 with BC-FIPS
+    + GH-861 SFTP client: prevent sending zero-length writes in
+      SftpOutputStreamAsync
+    + SSHD-1348 Fix zero-length SFTP reads
+    + SSHD-1349 Bump PMD to 7.20.0 to avoid StackOverflowError when
+      compiling on Java 26-ea
+  * New Features
+    + GH-814 Include a fix for CVE-2020-36843 (bsc#1239551) in
+      optional dependency net.i2p.crypto:eddsa:0.3.0: perform the
+      missing range check in Apache MINA SSHD before delegating to
+      the signature verification in net.i2p.crypto:eddsa:0.3.0.
+      This means that using net.i2p.crypto:eddsa:0.3.0 in Apache
+      MINA SSHD is safe despite that CVE in the dependency.
+    + GH-865 replace %h in HostName SSH config
+
+-------------------------------------------------------------------
 Thu Sep 25 13:47:05 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 2.16.0
@@ -215,7 +269,7 @@ Thu Oct 17 07:53:50 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
           User some_user
           IdentityFile ~/.ssh/some_id
           ProxyJump jumphost2, jumphost1
-          
+
           Host jumphost1
           Hostname jumphost1@example.org
           User jumphost1_user

@@ -95,4 +95,12 @@
     <comment>2.16.0</comment>
     <requestid>1307137</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ea6f5e157841309cd9ce686421457d93</srcmd5>
+    <version>2.18.0</version>
+    <time>1780330012</time>
+    <user>anag_factory</user>
+    <comment>2.18.0 with security fixes</comment>
+    <requestid>1356318</requestid>
+  </revision>
 </revisionlist>
