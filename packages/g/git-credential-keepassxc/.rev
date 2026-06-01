@@ -16,4 +16,13 @@
   * Support non-ASCII usernames in Windows pipe path (#112)</comment>
     <requestid>1346398</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ac0ebcecf73fb209a29cee497c44a72f</srcmd5>
+    <version>0.14.3</version>
+    <time>1780329966</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.14.3:
+  * Dependency bumps</comment>
+    <requestid>1356310</requestid>
+  </revision>
 </revisionlist>
