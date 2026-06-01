@@ -1,7 +1,7 @@
 #
 # spec file for package owasp-modsecurity-crs
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2023 Alessandro de Oliveira Faria (A.K.A CABELO) <cabelo@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           owasp-modsecurity-crs
-Version:        4.24.1
+Version:        4.27.0
 Release:        0
 Summary:        OWASP ModSecurity Common Rule Set (CRS)
 License:        Apache-2.0

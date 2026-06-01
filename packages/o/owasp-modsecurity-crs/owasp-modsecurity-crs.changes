@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Jun  1 14:11:54 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 4.27.0
+  * fix(920240, 920400): don't rely on content-type header
+- version update to 4.26.0
+  * feat: Add WhatWAF to the scanner list
+  * feat: Add ghauri to scanner list
+  * feat: Expand Scanner User Agents List (v2)
+  * feat: Expanded os files list
+  * feat(933100): all HTTP headers should be checked
+  * fix(lfi-os-files): add .dockerenv, .DS_Store, META-INF/, WEB-INF/
+  * feat(934200): detect Server-Side Template Injection (SSTI) attacks
+  * fix(lfi-os-files): require path prefix for .profile
+  * fix(933150): remove is_int from PHP function names list
+  * fix(932370): remove url from Windows LOLBIN command list
+  * fix(920539): prefer a bypass on a named rule rather than n+1 bypass
+  * fix(942290): add word boundary to MongoDB operator detection
+  * fix: false positive with parameter name `.history`
+  * fix(942410): use common exceptions instead of rule
+  * fix(942200): reduce false positives on payloads with comments
+  * fix(unix): exclude `pg` command from pl-1
+  * fix(930130): comment out false positive prone entries
+  * fix(920100): drop HTTP/0.9 GET support from request line validation
+  * fix: Update restricted files to include Perl subdirectories
+- version update to 4.25.0
+  * feat(930130,930140): expand AI-based paths
+  * feat: add aws security agent in scanners-user-agents.data
+  * feat(932390): add shell fork bomb detection rule at PL2
+  * refactor: create 941250 `.ra` file
+  * refactor: create 942220 .ra file
+  * refactor: create rule 931100 and 931110 `.ra` files
+  * feat: Adding critical ai dirs that previously not exist
+  * refactor: create 933140 and 933180 `.ra` files
+  * fix(944110,944120,944130,944150,944151,944200,944210,..): don't inspect cookies twice
+  * refactor: create 943120 `.ra` file
+  * fix: false negative 932236
+  * fix(933111): prevent whitespace padding bypass in PHP double-extension upload
+  * fix(933110): prevent whitespace padding bypass in PHP upload detection
+  * fix(944140): prevent whitespace padding bypass in JSP file upload detection
+  * feat: update list of unix commands
+  * fix(932180): prevent whitespace padding bypass in restricted file upload detection
+  * fix: harden GitHub Actions workflows
+  * refactor: create 941310 `.ra` files
+  * docs: update README
+  * refactor: create 941120 `.ra` file
+  * fix(920540): allow rule exclusions for specific targets
+  * fix(931130): ensure correct target is logged
+
+-------------------------------------------------------------------
 Mon Mar  9 17:13:33 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - version update to 4.24.1
