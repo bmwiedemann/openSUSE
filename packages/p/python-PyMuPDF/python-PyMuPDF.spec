@@ -38,6 +38,9 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  clang19-devel
+%if 0%{?suse_version} >= 1699
+BuildRequires:  llvm21-libclang13
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++

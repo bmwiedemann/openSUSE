@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  1 07:30:56 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- BuildRequire llvm21-clang13 on Tumbleweed as an interim fix until
+  mupdf's C++ wrapper can build with llvm 22
+
+-------------------------------------------------------------------
 Fri Mar 20 13:37:06 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 1.27.2.2
