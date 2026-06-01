@@ -18,7 +18,7 @@
 
 %define lname	libcdatetime1
 Name:           libcdatetime
-Version:        20260520
+Version:        20260602
 Release:        0
 Summary:        Library for C date and time functions
 License:        LGPL-3.0-or-later
