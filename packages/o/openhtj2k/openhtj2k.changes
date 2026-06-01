@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  1 07:44:04 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.0:
+  * New WebTransport browser viewer for live RFC 9828 streams
+  * Substantial encoder and decoder performance gains
+  * Broad WASM and JPIP-viewer improvements
+  * See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.19.0
+
+-------------------------------------------------------------------
 Tue Apr 28 07:26:10 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.5:

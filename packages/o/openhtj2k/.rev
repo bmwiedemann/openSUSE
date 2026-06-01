@@ -229,4 +229,16 @@
   * See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.18.4</comment>
     <requestid>1349707</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f57d475eea69465d09bcb808a326d1ec</srcmd5>
+    <version>0.19.0</version>
+    <time>1780329949</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.0:
+  * New WebTransport browser viewer for live RFC 9828 streams
+  * Substantial encoder and decoder performance gains
+  * Broad WASM and JPIP-viewer improvements
+  * See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.19.0</comment>
+    <requestid>1356299</requestid>
+  </revision>
 </revisionlist>
