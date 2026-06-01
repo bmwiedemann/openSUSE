@@ -29,7 +29,7 @@
 %define elspec %{elspec_major}.%{elspec_minor}
 %define major_version 11
 %define minor_version 0
-%define micro_version 21
+%define micro_version 22
 %define java_major 1
 %define java_minor 17
 %define java_version %{java_major}.%{java_minor}
