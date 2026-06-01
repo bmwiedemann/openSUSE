@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sun May 31 12:45:29 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.113.1:
+  This patch release fixes issues introduced in 0.113.0, including 
+  YAML string quoting behavior, reliability problems across the `idx` command 
+  family, and a REPL regression in `commandline edit`.
+
+  For a full list of changes see:
+  https://www.nushell.sh/blog/2026-05-30-nushell_v0_113_1.html
+
+- Update to version 0.113.0:
+  + Fast file search with `idx` command family for in-memory indexing
+    and search (files, dirs, find, search, export, import)
+  + Stream inspection without collection via `peek`
+  + Verbose file operations (`mkdir -v`, `mv -v`, `rm -v`) now
+    return structured tables
+  + `from md` now defaults to a more concise human-friendly output
+    mode (previous AST mode behind `--verbose`)
+  + Fish-style abbreviations that expand on enter/space
+  + Breaking changes
+    * `kill` signal shorthand handling updated; use `kill -s N pid`
+    * `parse` no longer implicitly splits byte streams into lines
+    * `mkdir -v`, `mv -v`, `rm -v` return tables instead of strings
+    * `from xlsx --header-row` default changed to first non-empty row
+  + Additions
+    * Preserve TOML comments when saving files
+    * Named gradients for `ansi gradient` (rainbow, pastel, etc.)
+    * New vi normal mode commands: `o` and `O`
+    * Terminal emulator progress bars via `std-rfc/pb`
+    * `peek` command for inspecting streams without collecting
+    * 20+ new `polars selector` subcommands
+    * `idx` family: `idx init`, `idx status`, `idx dirs`, `idx files`,
+      `idx find`, `idx search`, `idx export`, `idx import`, `idx drop`
+    * Custom completions can filter by description
+    * `std-rfc/iter prod` for cartesian products
+    * `to nuon --no-commas` flag
+    * `pre_prompt`/`env_change` hooks can modify the commandline
+    * `ps -l` now has `virtual`, `working`, `paged` columns
+    * History config values locked during REPL with clear errors
+    * Other additions
+  + Deprecations
+    * `watch` optional closure argument deprecated
+    * Implicit `name` column for `grid` deprecated
+  + Removals
+    * Removed `--datasource-ls` of `metadata set`
+  + Other changes
+    * `to csv`/`to tsv` now stream to `save` without buffering
+    * `to yaml` correctly quotes string values
+    * Default MCP promote-after raised to 2m
+    * Dynamic dispatch for `%` sigil with `%($cmd)` and `%$cmd`
+    * Improved escape handling with more validated sequences
+    * `env_hook` case insensitive for `PWD`
+    * Additional changes
+  + Bug fixes
+    * Fix internal sigil recursion error
+    * `http` commands now respect `$env.NO_PROXY`
+    * `finally` no longer suppresses error messages
+    * Return value of `finally` is the value of `try`/`catch`
+    * Fix Rename event path order in `watch`
+    * Fix `try` executing code twice
+    * `try` blocks can now be interrupted with ctrl-c
+    * Annotated default values typed as `glob` are properly handled
+    * `mkdir` tries all directories even if errors occur
+    * Empty blocks' output types match their input types
+    * Fix hash-quoting for `to nuon --raw-strings`
+    * Other fixes
+  + For a full list of changes with detailed descriptions, see:
+    https://www.nushell.sh/blog/2026-05-23-nushell_v0_113_0.html
+
+-------------------------------------------------------------------
 Mon May 11 15:21:07 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64
