@@ -922,4 +922,61 @@
   * 0001-Disallow-importing-conflicting-version-of-PyQt.patch</comment>
     <requestid>1348169</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>5d43858d423106565762e1500c3354df</srcmd5>
+    <version>5.3.2</version>
+    <time>1780329790</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.3.2 / 6.0.2
+  * Fix conversion of layers names passed to GMic (kde#517975)
+  * Fix reversal of the layers when importing .kra as
+    layers (kde#514760)
+  * Fix font selection in qt6 and improve font dropdown (kde#515548)
+  * Fix text not getting selected when created on a normal
+    layer (kde#516006)
+  * Make keyframe selection change layer selection
+  * Fix text shape not handling whitespace chars properly
+  * Fix KisAnimationRenderingOptions not loading frameExportConfig
+  * Several fixes for RGBE file loading
+  * Check for export status of every animation frame and error out on
+    QFile::copy failure, Improve KisAnimationRender error handling
+  * Fix Selection Action Panel disappearing when toggling selection
+    visibility (kde#518633)
+  * Add a Selection Action Panel toggle to the selection tool
+    options docker
+  * Several fixes to testing whether the file can be created when
+    saving a document
+  * Fix number of pixels in A1 paper preset
+  * Add a context menu to the Selection Action Panel, and add
+    these to the global menu bar too
+  * fix segfault in PSD COS parser (Thanks, Arimil).
+  * Fix word selection when there's hard breaks present (kde#518338)
+  * Prevent division by 0 in tool outline
+  * Add buttons for italic and bold to font style
+  * Fix toggle italic action (kde#518890)
+  * Fix font style-selection search algorithm in text properties
+    docker (kde#518874)
+  * Several icons for python plugins and the crash logs were
+    added (thanks, Arkady Flury)
+  * Fix warp transform preview not showing until first adjustment
+  * Revert &quot;Fix Transform and Move shortcuts conflicting
+    Timeline arrow key actions&quot; (kde#515703)
+  * Create a qquickwidget based popup for handling popups with
+    qquickwidgets, to improve the look and feel of the font
+    dropdown
+  * Fix freeze on opening a hi-dpi image with a vector
+    layer (kde#519785)
+  * Text: avoid potential assert when checking the text type
+  * Text: fix a bunch of potential array index crashes by
+    using a dedicated function
+  * Don't move line origin if Alt is held at start (this
+    interferes with users binding the Alt key to the line
+    tool quick switch)
+  * Fix saving the title element on paths correctly. This broke
+    some symbol libraries (kde#520345)
+- Drop patch, merged upstream:
+  * 0001-Disallow-importing-conflicting-version-of-PyQt.patch
+</comment>
+    <requestid>1356282</requestid>
+  </revision>
 </revisionlist>

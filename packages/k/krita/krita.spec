@@ -33,9 +33,9 @@
 %global __requires_exclude qt5qmlimport\\((org\\.krita\\.*|QtQuick)
 
 Name:           krita
-Version:        5.3.1
+Version:        5.3.2
 Release:        0
-%global pkg_version 6.0.1
+%global pkg_version 6.0.2
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
 URL:            https://www.krita.org/
@@ -44,8 +44,6 @@ Source0:        https://download.kde.org/stable/krita/%{pkg_version}/krita-%{pkg
 Source1:        https://download.kde.org/stable/krita/%{pkg_version}/krita-%{pkg_version}.tar.xz.sig
 Source2:        krita.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Disallow-importing-conflicting-version-of-PyQt.patch
 BuildRequires:  %{pyver}-devel
 BuildRequires:  %{pyver}-qt5-devel
 BuildRequires:  %{pyver}-sip-devel
