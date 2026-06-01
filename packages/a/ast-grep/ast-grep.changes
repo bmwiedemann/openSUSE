@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jun 01 07:48:18 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.43.0:
+  * 0.43.0 bump version
+  * feat: add markdown support
+  * chore(deps): update dependency @types/node to v24.12.4 (#2636)
+  * chore(deps): update rust crate assert_cmd to v2.2.2 (#2632)
+  * chore(deps): update rust crate similar to v3.1.1 (#2662)
+  * fix: update esquery state
+  * fix: strip trailing comment artifact in comment suppression
+  * chore: bump tree-sitter-json version
+  * test: add test for run --kind
+  * feat: support ESQuery style selector in run command
+  * fix: use Rule instead of pattern in run
+  * refactor: improve config read_yaml_string interface
+  * fix: update test rule
+  * fix: remove unused logging
+  * fix(lsp): initialize tracing subscriber to surface tower-lsp errors (#2639)
+  * fix(deps): update rust-wasm-bindgen monorepo (#2660)
+  * chore(deps): update rust crate tree-sitter to v0.26.9 (#2656)
+  * feat: add --follow arg for sg test
+  * chore(deps): update rust crate serde_json to v1.0.150 (#2659)
+  * chore(deps): update rust crate clap_complete to v4.6.5 (#2634)
+  * chore(deps): update dependency @ast-grep/napi to v0.42.3 (#2653)
+  * chore(deps): update dependency oxlint to v1.66.0 (#2651)
+  * chore(deps): update dependency web-tree-sitter to v0.26.9 (#2654)
+  * 0.42.3 bump version
+  * fix: fix windows installation
+  * feat: support nth-last-child esquery (#2631)
+  * chore(deps): update rust crate dashmap to v6.2.1 (#2645)
+  * chore(deps): update dependency oxlint to v1.65.0 (#2635)
+  * chore(deps): update rust crate napi-derive to v3.5.6 (#2642)
+  * chore(deps): update rust crate napi-build to v2.3.2 (#2641)
+  * chore(deps): update rust crate napi to v3.9.0 (#2643)
+  * chore(deps): update dependency @ast-grep/napi to v0.42.2 (#2630)
+
+-------------------------------------------------------------------
 Mon May 11 07:34:15 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 0.42.2:
