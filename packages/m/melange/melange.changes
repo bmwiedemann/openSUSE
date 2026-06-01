@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 01 05:19:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.51.0:
+  * ci: allow production.cloudfront.docker.com in harden-runner
+    egress (#2552)
+  * feat: Add variable substitution for licenses (#2530)
+  * chore(config): also create and upload source tarballs of gitlab
+    repositories (#2511)
+  * go/build/v2: updated go/build pipeline (#2538)
+
+-------------------------------------------------------------------
 Fri May 29 06:41:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.8:
