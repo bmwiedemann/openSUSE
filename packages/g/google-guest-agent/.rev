@@ -1075,4 +1075,19 @@
     <comment></comment>
     <requestid>1353168</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>c27c33c5646d53db2e7f089e7110f60d</srcmd5>
+    <version>20260529.00</version>
+    <time>1780330167</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260529.00
+  * Dependency updates (#616) (bsc#1266603, CVE-2026-39821)
+- from version 20260522.00
+  * Fix improper umask calculation on socket creation (#614)
+- from version 20260520.01
+  * Update OWNERS (#609)
+
+  * Bump google.golang.org/grpc from 1.75.0 to 1.79.3 (#602) (bsc#1260264, CVE-2026-33186) (forwarded request 1356339 from glaubitz)</comment>
+    <requestid>1356390</requestid>
+  </revision>
 </revisionlist>
