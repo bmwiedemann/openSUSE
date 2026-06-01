@@ -236,4 +236,16 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Option to run installer in prefix before selecting game exe</comment>
     <requestid>1355716</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>42172be72160ddbd8a1322c7c3187ebd</srcmd5>
+    <version>1.8.4</version>
+    <time>1780329855</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.8.4
+- Upstream changes:
+  * Menu items and flatpak fixes (#48)
+  * Add multiarch permission to flatpak configs
+  * Updated readme, sums and commits</comment>
+    <requestid>1356261</requestid>
+  </revision>
 </revisionlist>

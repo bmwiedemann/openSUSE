@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 31 22:51:35 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.8.4
+- Upstream changes:
+  * Menu items and flatpak fixes (#48)
+  * Add multiarch permission to flatpak configs
+  * Updated readme, sums and commits
+
+-------------------------------------------------------------------
 Thu May 28 21:30:16 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.8.3
