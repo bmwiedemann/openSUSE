@@ -1,7 +1,7 @@
 #
 # spec file for package subversion
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2009-2010 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -299,7 +299,7 @@ export LDFLAGS="-pie"
 	--with-zlib=%{_prefix} \
 	--with-berkeley-db=db.h:db.h:%{_prefix}:db \
 	--with-apache-libexecdir=%{apache_libexecdir} \
-	--with-jdk=%{_libdir}/jvm/java --enable-javahl \
+	--with-jdk=${JAVA_HOME} --enable-javahl \
 	--with-junit="%{_datadir}/java/junit.jar" \
 	--with-jikes=no \
 	--with-sqlite="%{_prefix}" \
