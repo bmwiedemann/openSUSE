@@ -1814,4 +1814,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **oracledatabase:** Update the api (forwarded request 1352392 from glaubitz)</comment>
     <requestid>1352457</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>4620a451c3525651e855e54c92c0fb7b</srcmd5>
+    <version>2.197.0</version>
+    <time>1780330079</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1356351</requestid>
+  </revision>
 </revisionlist>
