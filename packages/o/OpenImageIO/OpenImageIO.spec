@@ -46,12 +46,12 @@
 %global force_boost_version 1_75_0
 %endif
 
-%global images_ts 20260313T122252
+%global images_ts 20260509T114658
 %global so_ver 3_1
 %global major_minor_ver 3.1
 
 Name:           OpenImageIO
-Version:        3.1.13.1
+Version:        3.1.14.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        Apache-2.0
