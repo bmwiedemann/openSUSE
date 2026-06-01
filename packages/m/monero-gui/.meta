@@ -1,0 +1,5 @@
+<package name="monero-gui" project="openSUSE:Factory">
+  <title>The official GUI app for the Monero cryptocurrency</title>
+  <description>The official Qt-based GUI wallet app for the privacy-focused Monero cryptocurrency</description>
+  <url>https://github.com/monero-project/monero-gui</url>
+</package>

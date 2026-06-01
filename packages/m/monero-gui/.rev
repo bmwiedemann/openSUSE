@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>31cf08854230c3b7ecf19a6a3b6e40cf</srcmd5>
+    <version>0.18.5.0</version>
+    <time>1780329582</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.18.5.0; disable LTO (monero/randomx is LTO-hostile); modernize spec (pkgconfig BuildRequires, drop dead libminiupnpc/automake, replace deprecated %suse_update_desktop_file with a shipped .desktop)</comment>
+    <requestid>1356060</requestid>
+  </revision>
+</revisionlist>

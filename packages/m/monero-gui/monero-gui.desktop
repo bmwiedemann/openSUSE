@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Monero Wallet
+GenericName=GUI wallet for the Monero cryptocurrency
+Comment=GUI wallet for the Monero cryptocurrency
+Exec=monero-wallet-gui
+Icon=monero-gui
+Terminal=false
+Categories=Finance;Network;Qt;
