@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  1 13:16:06 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 1.69
+  + fixes for cppcheck and gcc 16 warnings.
+
+-------------------------------------------------------------------
 Tue Sep  9 10:35:57 UTC 2025 - pgajdos@suse.com
 
 - version update to 1.68
@@ -7,7 +13,7 @@ Tue Sep  9 10:35:57 UTC 2025 - pgajdos@suse.com
 -------------------------------------------------------------------
 Wed Dec  4 13:18:54 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to version 1.77:
+- Update to version 1.67:
   + align license text with xterm, i.e., "MIT-X11"
   + add decompression for zstd files
   + improve configure script checks, reducing compiler warnings

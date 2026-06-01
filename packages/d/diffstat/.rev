@@ -307,4 +307,12 @@
   + correct len parameter of mbsrtowcs (Redhat #2362049).</comment>
     <requestid>1303335</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>858fa152677dca20e9cd633da639d261</srcmd5>
+    <version>1.69</version>
+    <time>1780330124</time>
+    <user>anag_factory</user>
+    <comment>version update to 1.69</comment>
+    <requestid>1356368</requestid>
+  </revision>
 </revisionlist>
