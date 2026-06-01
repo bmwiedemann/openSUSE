@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 26 13:55:39 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.17.1
+  * Image URLs in Markdown are now escaped before rendering
+    (CVE-2026-44264, bsc#1264485)
+  * Tightened Weblate’s REST API input validation to prevent translation
+    enumeration (CVE-2026-44263, bsc#1264486)
+  * Project backup imports now revalidate component repository URLs
+    before restoring from backup (CVE-2026-41654, bsc#1264487)
+  * Password changes now regenerate personal API keys by default
+    (CVE-2026-41519, bsc#1264488)
+  * many more improvements, fixes and compatibility tweaks
+
+-------------------------------------------------------------------
 Mon Apr 20 08:41:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.17
