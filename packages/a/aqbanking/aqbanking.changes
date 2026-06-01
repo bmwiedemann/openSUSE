@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 31 12:05:01 UTC 2026 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 6.9.2:
+  + newest git status with a bugfix
+  + added a flag to fix a problem with Consorsbank:
+    enable "Force National Account Specs for GetTransactionsJob"
+    and prefer CAMT
+  + cleanup code for user and account flag handling
+
+-------------------------------------------------------------------
 Mon Jan 12 20:04:44 UTC 2026 - marec <marec@detebe.org>
 
 - Update to 6.9.1:
