@@ -30,6 +30,8 @@ Source0:        https://github.com/OpenBoard-org/OpenBoard/archive/refs/tags/v%{
 Patch955:       0955-shortcut-configuration.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/1446
 Patch1446:      1446-chore-add-appdata-metainfo.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/1474
+Patch1474:      1474-support-poppler-26-04.patch
 # https://github.com/letsfindaway/OpenBoard/pull/117
 Patch9117:      9117-disable-software-update.patch
 BuildRequires:  desktop-file-utils
