@@ -18,13 +18,13 @@
 
 %define fontname    Cozette
 Name:           cozette-fonts
-Version:        1.23.1
+Version:        1.30.0
 Release:        0
 Summary:        A bitmap programming font
 License:        MIT
 Group:          System/X11/Fonts
 URL:            https://github.com/slavfox/Cozette
-Source0:        https://github.com/slavfox/Cozette/releases/download/v.%{version}/CozetteFonts-v-1-23-1.zip
+Source0:        https://github.com/slavfox/Cozette/releases/download/v.%{version}/CozetteFonts-v-1-30-0.zip
 Source1:        https://raw.githubusercontent.com/slavfox/Cozette/v.%{version}/README.md
 Source2:        https://raw.githubusercontent.com/slavfox/Cozette/v.%{version}/CHANGELOG.md
 BuildRequires:  %{suseconfig_fonts_prereq}
