@@ -19,14 +19,14 @@
 %define executable_name crossplane
 
 Name:           crossplane-cli
-Version:        2.2.1
+Version:        2.3.1
 Release:        0
 Summary:        The Cloud Native Control Plane
 License:        Apache-2.0
-URL:            https://github.com/crossplane/crossplane
+URL:            https://github.com/crossplane/cli
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.25 >= 1.25.9
+BuildRequires:  go1.26 >= 1.26.0
 Provides:       crossplane = %{version}
 
 %description
@@ -36,7 +36,9 @@ build a control plane that can orchestrate applications and infrastructure no
 matter where they run, and a highly configurable frontend that puts you in
 control of the schema of the declarative API it offers.
 
-Crossplane is a Cloud Native Computing Foundation project.
+The Crossplane CLI is a command-line tool for working with Crossplane. It
+provides tools for building platforms on top of Crossplane and working with
+Crossplane clusters.
 
 %prep
 %autosetup -p 1 -a 1
@@ -47,7 +49,7 @@ BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || dat
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X github.com/crossplane/crossplane/internal/version.version=%{version}" \
+   -ldflags="-X github.com/crossplane/cli/internal/version.version=%{version}" \
    -o bin/%{executable_name} ./cmd/crossplane
 
 %install

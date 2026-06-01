@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Jun 01 05:18:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.1:
+  The v2.3.1 release is a patch release that updates the CLI's
+  Crossplane dependencies to the latest v2.3.1 version. There are
+  no other bug fixes and no behavioral changes in this release
+  compared to v2.3.0.
+  * deps: Bump Crossplane deps to v2.3.1
+  * Add the LICENSE file
+
+-------------------------------------------------------------------
+Fri May 22 05:05:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- The crossplane CLI was moved to its own repository at
+  https://github.com/crossplane/cli.
+- Update to version 2.3.0:
+  The v2.3.0 release is the first release of the Crossplane CLI
+  from the new https://github.com/crossplane/cli repository. It
+  includes two major changes compared to the v2.2 release series: a
+  reorganization of the command tree and the introduction of new
+  developer experience commands.
+  * Notable and Breaking Changes
+    - Commands have been re-organized into a noun-first tree. #3
+    - Alpha and beta commands that previously lived in the
+      crossplane alpha and crossplane beta trees have moved into
+      the main tree, but are decorated with help text indicating
+      their maturity. Alpha commands are hidden from help by
+      default and can be enabled via crossplane config set. #3
+      Please check the table in the release notes:
+      https://github.com/crossplane/cli/releases/tag/v2.3.0
+  * Highlights
+    - Developer Experience: A new set of commands provides
+      developer-friendly tooling for building platforms on top of
+      Crossplane, centered on the concept of a control plane
+      project. The project is a development artifact combining
+      configuration (XRDs, compositions, operations) and code
+      (functions) that can be built into a set of Crossplane
+      packages for installation into a cluster. See
+      crossplane/crossplane#6840 and the related design document
+      for details, and #10 for implementation.
+    - Better Help: Help text is now formatted using markdown,
+      allowing for more extensive and readable help in the CLI as
+      well as auto-generation of the reference documentation for
+      docs.crossplane.io. See #14.
+  * What's Changed
+    - Existing CLI codebase moved from crossplane/crossplane to
+      this repository, with the command renamed from cmd/crank to
+      cmd/crossplane.
+    - Reorganize the command tree and introduce config by @adamwg
+      in #3
+    - Update go to 1.26 by @adamwg in #4
+    - Use function protobufs from function-sdk-go by @adamwg in #5
+    - fix(config): Fix flag parsing with space-separated value by
+      @tampakrap in #6
+    - feat(xrd): Add new subcommand crossplane xrd convert by
+      @tampakrap in #12
+    - Format detailed help using markdown and auto-generate
+      reference docs by @adamwg in #14
+    - Introduce an initial set of DevEx features by @adamwg in #10
+    - Update dependencies and renovate for v2.3.0 release
+      (release-2.3) by @adamwg in #20
+
+-------------------------------------------------------------------
 Tue Apr 21 05:51:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.1:
