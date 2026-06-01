@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 01 05:36:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.2.1:
+  * fix: print the suggested configuration if the file cannot be
+    created
+  * docs: improve flag description related to slices
+
+-------------------------------------------------------------------
 Sat May 30 06:50:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.2.0:
