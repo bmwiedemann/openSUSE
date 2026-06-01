@@ -3379,6 +3379,7 @@ unsorted:
   - dnf5-devel 
   - dnf5-plugin-automatic 
   - dnf5-plugin-manifest 
+  - dnf5-plugin-txnupd 
   - dnf5-plugins 
   - dnf5daemon-client 
   - dnf5daemon-server 
@@ -19198,6 +19199,10 @@ unsorted:
   - molsketch 
   - molsketch-devel 
   - molsketch-doc 
+  - monero-devel 
+  - monero-gui 
+  - monero-utils 
+  - monerod 
   - mongo-c-driver-devel 
   - mongolian-fonts 
   - monitoring-plugins 
@@ -24098,7 +24103,6 @@ unsorted:
   - python3-evemu 
   - python3-fastjet 
   - python3-fife 
-  - python3-fritzconnection 
   - python3-gdcm 
   - python3-geis 
   - python3-genders 
@@ -25780,6 +25784,7 @@ unsorted:
   - python311-freeipa 
   - python311-freetype-py 
   - python311-freezegun 
+  - python311-fritzconnection 
   - python311-frozendict 
   - python311-frozenlist 
   - python311-fs 
@@ -29702,6 +29707,7 @@ unsorted:
   - python313-freetype-py 
   - python313-freezegun 
   - python313-freezerclient 
+  - python313-fritzconnection 
   - python313-frozendict 
   - python313-frozenlist 
   - python313-fs 
@@ -33658,6 +33664,7 @@ unsorted:
   - python314-freeipa 
   - python314-freetype-py 
   - python314-freezegun 
+  - python314-fritzconnection 
   - python314-frozendict 
   - python314-frozenlist 
   - python314-fs 
