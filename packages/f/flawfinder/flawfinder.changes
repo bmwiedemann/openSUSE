@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  1 07:37:44 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.20:
+  * Strip leading ./ from SARIF artifact URIs for uriBaseId portability
+
+-------------------------------------------------------------------
 Wed Sep  1 10:20:50 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.19:

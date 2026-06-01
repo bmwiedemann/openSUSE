@@ -104,4 +104,13 @@
   * changes to github actions</comment>
     <requestid>915449</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3f7b494f4ea0a1c42fac1bf45a070fda</srcmd5>
+    <version>2.0.20</version>
+    <time>1780329917</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.0.20:
+  * Strip leading ./ from SARIF artifact URIs for uriBaseId portability</comment>
+    <requestid>1356292</requestid>
+  </revision>
 </revisionlist>
