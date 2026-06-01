@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sereal-Decoder
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,19 @@
 
 %define cpan_name Sereal-Decoder
 Name:           perl-Sereal-Decoder
-Version:        5.004
+Version:        5.6.0
 Release:        0
+# 5.006 -> normalize -> 5.6.0
+%define cpan_version 5.006
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Binary serialization module for Perl (decoder part)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Devel::CheckLib) >= 1.160
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.0
 BuildRequires:  perl(ExtUtils::ParseXS) >= 2.21
 BuildRequires:  perl(Test::Deep)
@@ -34,6 +38,10 @@ BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::LongString)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
+Provides:       perl(Sereal::Decoder) = %{version}
+Provides:       perl(Sereal::Decoder::Constants) = %{version}
+Provides:       perl(Sereal::Performance)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -58,9 +66,9 @@ our benchmarks can be seen at
 https://github.com/Sereal/Sereal/wiki/Sereal-Comparison-Graphs.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

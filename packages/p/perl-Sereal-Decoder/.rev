@@ -111,4 +111,25 @@
     <comment></comment>
     <requestid>1080877</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7b214c94886b0f16961031342459aa78</srcmd5>
+    <version>5.6.0</version>
+    <time>1780330043</time>
+    <user>anag_factory</user>
+    <comment>- updated to 5.6.0 (5.006)
+   see /usr/share/doc/packages/perl-Sereal-Decoder/Changes
+  5.006
+      * Use miniz 3.1.1
+      * Avoid deprecated ZSTD api.
+      * Tidy and regen.
+  5.005
+      * Update spec to document changes from version 5
+      * Security fixes - make sure that COPY tags cannot be used
+        to read past end of buffer.
+        CVE-2026-8796 bsc#1267015
+  5.004_001
+      * Update Zstd to 1.5.7, and other changes.
+      * Thanks to Marco Fontani, Ricardo Signes, and James Rouzier</comment>
+    <requestid>1356343</requestid>
+  </revision>
 </revisionlist>
