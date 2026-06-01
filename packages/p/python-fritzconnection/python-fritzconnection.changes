@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 10 11:59:40 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives/update-alternatives and provide flavoured binaries
+- Drop fritzconnection package, no longer needed
+
+-------------------------------------------------------------------
+Thu Apr  9 18:21:48 UTC 2026 - Andreas Schneider <asn@cryptomilk.org>
+
+- Create a fritzconnection package for the script files in /usr/bin
+- Build python31x-fritzconnection packages to be used by other python projects
+
+-------------------------------------------------------------------
 Mon Feb 16 17:39:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.1:

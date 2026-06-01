@@ -16,7 +16,11 @@
 #
 
 
-%global pythons python3
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-fritzconnection
 Version:        1.15.1
 Release:        0
@@ -34,9 +38,16 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
 Requires:       python-requests
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
+# hopefully temporary, we can make it cleaner as soon as version bumps
+Conflicts:      python3-fritzconnection
 BuildArch:      noarch
-Obsoletes:      python310-fritzconnection < 1.9.0
-Obsoletes:      python39-fritzconnection < 1.9.0
 %python_subpackages
 
 %description
@@ -55,6 +66,15 @@ export LC_ALL=C.utf-8
 %install
 export LC_ALL=C.utf-8
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/fritzcall
+%python_clone -a %{buildroot}%{_bindir}/fritzconnection
+%python_clone -a %{buildroot}%{_bindir}/fritzhomeauto
+%python_clone -a %{buildroot}%{_bindir}/fritzhosts
+%python_clone -a %{buildroot}%{_bindir}/fritzmonitor
+%python_clone -a %{buildroot}%{_bindir}/fritzphonebook
+%python_clone -a %{buildroot}%{_bindir}/fritzstatus
+%python_clone -a %{buildroot}%{_bindir}/fritzwlan
+%python_group_libalternatives fritzconnection fritzcall fritzhomeauto fritzhosts fritzmonitor fritzphonebook fritzstatus fritzwlan
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,17 +84,26 @@ rm fritzconnection/tests/test_functional.py
 # https://github.com/kbr/fritzconnection/issues/154
 %pytest -k 'not (test_terminate_thread_on_failed_reconnection or test_restart_failed_monitor)'
 
+%post
+%python_install_alternative fritzconnection fritzcall fritzhomeauto fritzhosts fritzmonitor fritzphonebook fritzstatus fritzwlan
+
+%postun
+%python_uninstall_alternative fritzconnection
+
+%pre
+%python_libalternatives_reset_alternative fritzconnection
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{_bindir}/fritzcall
-%{_bindir}/fritzconnection
-%{_bindir}/fritzhomeauto
-%{_bindir}/fritzhosts
-%{_bindir}/fritzmonitor
-%{_bindir}/fritzphonebook
-%{_bindir}/fritzstatus
-%{_bindir}/fritzwlan
+%python_alternative %{_bindir}/fritzcall
+%python_alternative %{_bindir}/fritzconnection
+%python_alternative %{_bindir}/fritzhomeauto
+%python_alternative %{_bindir}/fritzhosts
+%python_alternative %{_bindir}/fritzmonitor
+%python_alternative %{_bindir}/fritzphonebook
+%python_alternative %{_bindir}/fritzstatus
+%python_alternative %{_bindir}/fritzwlan
 %{python_sitelib}/fritzconnection
 %{python_sitelib}/fritzconnection-%{version}.dist-info
 

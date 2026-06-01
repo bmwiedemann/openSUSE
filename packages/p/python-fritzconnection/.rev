@@ -193,4 +193,16 @@
     readability in dark mode</comment>
     <requestid>1333426</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>79e033bf082a4013f3d821e6aa3ac132</srcmd5>
+    <version>1.15.1</version>
+    <time>1780330017</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives/update-alternatives and provide flavoured binaries
+- Drop fritzconnection package, no longer needed
+- Create a fritzconnection package for the script files in /usr/bin
+- Build python31x-fritzconnection packages to be used by other python projects
+</comment>
+    <requestid>1356320</requestid>
+  </revision>
 </revisionlist>
