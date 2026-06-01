@@ -18,7 +18,7 @@
 
 Name:           libcpath
 %define lname	libcpath1
-Version:        20260530
+Version:        20260531
 Release:        0
 Summary:        Library for C path functions
 License:        LGPL-3.0-or-later
