@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 01 05:16:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.15:
+  * build(deps): bump zizmorcore/zizmor-action from 0.5.5 to 0.5.6
+    (#2240)
+  * build(deps): bump goreleaser/goreleaser-action from 7.2.1 to
+    7.2.2 (#2241)
+  * build(deps): bump golang.org/x/sys from 0.44.0 to 0.45.0
+    (#2244)
+  * build(deps): bump google.golang.org/api from 0.279.0 to 0.280.0
+    (#2245)
+  * build(deps): bump golangci/golangci-lint-action from 9.2.0 to
+    9.2.1 (#2247)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.19.0 to
+    5.19.1 in the go_modules group across 1 directory (#2239)
+  * build(deps): bump step-security/harden-runner from 2.19.3 to
+    2.19.4 (#2248)
+  * chore(harden-runner): add production.cloudfront.docker.com
+    endpoint (#2250)
+
+-------------------------------------------------------------------
 Thu May 28 07:28:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.14:
