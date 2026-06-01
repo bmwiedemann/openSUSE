@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Mon Jun 01 12:37:29 UTC 2026 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- Update to version 2.1.2:
+  * build(deps): bump github.com/modelcontextprotocol/go-sdk
+  * build(deps): bump golang.org/x/net
+  * portfwd: fix gRPC tunnel connection leak
+  * Add user to systemd-journal group so journalctl --user works
+  * build(deps): bump github.com/mdlayher/netlink from 1.11.1 to 1.11.2
+  * build(deps): bump github/codeql-action from 4.35.5 to 4.36.0
+  * build(deps): bump golangci/golangci-lint-action from 9.2.0 to 9.2.1
+  * make update-template-rocky.sh compatible for GNU and BSD based grep
+  * update image templates
+  * refactor: enable usestdlibvars linter
+  * pkg/downloader: logging nit
+  * fix(darwin): pin main goroutine to OS thread 0 for VZ GUI
+  * Revert "nerdctl: update from v2.2.2 to v2.3.1"
+  * build(deps): bump zizmorcore/zizmor-action from 0.5.5 to 0.5.6
+  * Change %q in logs and errors to %#q and modify bat (part2)
+  * update golang.org/x/crypto from v0.51.0 to v0.52.0
+  * nerdctl: update from v2.2.2 to v2.3.1
+  * build(deps): bump github/codeql-action from 4.35.4 to 4.35.5
+  * build(deps): bump github.com/diskfs/go-diskfs from 1.9.2 to 1.9.3
+  * build(deps): bump zizmorcore/zizmor-action from 0.5.3 to 0.5.5
+  * build(deps): bump google.golang.org/grpc in /hack/tools
+  * fix(CI): skip cache for golangci-lint
+  * hostagent: add regression test for ga.sock forward serialization
+  * hostagent: address review feedback on ga.sock forward
+  * hostagent: stop destroying ga.sock on guest-agent reconnect
+  * build(deps): bump google.golang.org/grpc from 1.81.0 to 1.81.1
+  * preserve synced guest dir changes on TUI interruption
+  * feat:Add tab suggestions for --set flag
+  * refactor: reduce context.Background()
+  * build(deps): bump the golang-x group across 1 directory with 2 updates
+  * Missing image for debian-sid generic s390x
+  * The debian genericcloud ppc64el are now gone
+  * Fix sha512 digest being split in multiple lines
+  * Missing image and checksum for debian-13 riscv64
+  * fix:prevent docker to run as root in rootless use-case
+  * fix:track driver PID to prevent zombie processes
+  * qemu: pass -vga none for headless guests
+  * docs: add base image update and supply chain guidance
+  * Add fusermount3 custom rule
+  * go.mod: github.com/containers/gvisor-tap-vsock v0.8.9
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /hack/tools
+  * build(deps): bump github.com/diskfs/go-diskfs from 1.9.1 to 1.9.2
+  * build(deps): bump github/codeql-action from 4.35.3 to 4.35.4
+  * Unpin QEMU version in Windows tests
+  * build(deps): bump google.golang.org/grpc in /hack/tools
+  * build(deps): bump google.golang.org/grpc from 1.80.0 to 1.81.0
+  * fix(validate): correct misleading mountType validation error on Windows
+  * docs: document limactl network and disk management commands
+  * pkg/must: add Must helper
+  * Fix new lint findings from golangci-lint 2.12.1
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /hack/tools
+  * build(deps): bump golang.org/x/sys
+  * refactor: modularize lint targets with pinned go.mod tools (refs #4606)
+  * Deprecate `_LIMA_QEMU_UEFI_IN_BIOS` flag
+  * qemu: fix non-deterministic boot disk with bootindex and s390x support
+  * build(deps): bump github.com/modelcontextprotocol/go-sdk
+  * build(deps): bump github/codeql-action from 4.35.2 to 4.35.3
+  * test: fix lint issues
+  * test: improve reflectutil coverage
+  * test: add reflectutil tests for UnknownNonEmptyFields
+  * build(deps): bump github.com/containerd/continuity from 0.4.5 to 0.5.0
+  * QEMU command line: allow `kernel-irqchip` enabled with WHPX
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.21 to 0.0.22
+  * build(deps): bump github.com/apparentlymart/go-cidr from 1.1.0 to 1.1.1
+  * templates: split template:alpine to template:alpine-{3.21,3.22,3.23}
+  * Modify following PR comments
+  * hostagent: wait for the guest agent before opening the inotify stream
+  * Settle udev between sfdisk and lsblk
+  * pkg/store: treat unknown terminal width as unlimited in `limactl ls`
+  * fix: dbus and less bugs
+  * feat(templates): add Fedora 44 template
+  * docs: add limactl help yq-restrictions to explain yqlib limitations
+  * hostagent: stop leaking inotify watchers and re-spawn the gRPC stream after guest-agent reconnect
+  * genschema: switch ordered-map import to pb33f/ordered-map/v2
+  * build(deps): bump github.com/invopop/jsonschema from 0.13.0 to 0.14.0
+  * Busybox grep doesn't support the long form options
+  * Change %q in logs and errors to %#q (cmd/limactl) and modify bats
+  * openSUSE dropped the 2MB OVMF images from QEMU in version 202602
+  * hostagent: close stale GuestAgentClient on reconnect to stop ClientConn leak
+  * wsl2: stop spinning in for { <-ctx.Done() } after instance stop
+  * bats: fix second-boundary race in "shell --instance resolves instance name"
+  * shell: fix path quoting for rsync 3.0.0 through 3.2.3 --protect-args only became the default in rsync 3.2.4. Paths containing spaces were not quoted for versions 3.0.0-3.2.3, causing the remote shell to split the destination path.
+  * limactl: add --param shortcut for template parameters
+  * build(deps): bump postcss from 8.5.3 to 8.5.10 in /website
+  * templates: k8s: pin Kubernetes version to 1.36
+  * templates: add ubuntu-26.04
+  * CI: pin Windows QEMU to 10.2.0
+  * Bump k8s flannel version from 0.27.4 to 0.28.4
+  * hack/test-templates: remove WORKAROUND_UPDATE_REBOOT
+  * templates: k8s: pin Kubernetes version to 1.35
+  * krunkit: support SSHOverVsock and replace SSH-based guestagent connection with vsock
+  * templates: update
+  * docs(blogs): link Show-and-tell discussion, fold in Akihiro's and unsuman's additions
+  * docs: add blogs section with curated CNCF and nttlabs posts
+  * docs(stargz): drop Rosetta requirement note and refresh benchmark
+  * Fix race condition in 04-persistent-data-volume.sh
+  * CI: fix zizmor errors
+  * CI: add zizmor (GHA linter)
+  * build(deps): bump github.com/jandubois/nobin in /hack/tools
+  * build(deps): bump github.com/mikefarah/yq/v4 from 4.52.5 to 4.53.2
+  * cli(shell-sync): add tests for metadata change
+  * build(deps): bump github.com/mdlayher/netlink from 1.11.0 to 1.11.1
+  * build(deps): bump github/codeql-action from 4.35.1 to 4.35.2
+  * Multi node k8s test updates and related fixes.
+  * build(deps): bump github.com/mattn/go-shellwords from 1.0.12 to 1.0.13
+  * build(deps): bump actions/cache from 5.0.4 to 5.0.5
+  * build(deps): bump github.com/mdlayher/netlink from 1.10.0 to 1.11.0
+  * build(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1
+  * templates: migrate from cpuType to vmOpts.qemu.cpuType
+  * Fix LIMA_SHELLENV_ALLOW docs to match implementation
+  * build(deps): bump github.com/modelcontextprotocol/go-sdk
+  * Update `k8s.yaml` to use bootstrapToken configuration for kubeadm discovery
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.20 to 0.0.21
+  * build(deps): bump the golang-x group across 1 directory with 3 updates
+  * CI: archlinux: install updates
+  * docs: fix details summary and markdown rendering in templates
+  * feat(vz): select disk image format for macOS guests based on host version
+  * docs: add kubecon 2026 talk and pavilion slides
+  * Fix GHA syntax error in test workflow
+  * fix(limatmpl): fix DNS not propagated from base template
+  * build(deps): bump mvdan.cc/sh/v3 from 3.13.0 to 3.13.1 in /hack/tools
+  * CI: archlinux: set upgradePackages=true
+  *  fix(shell): check if mounts contain hostCurrentDir, not just len > 0
+  * test(localpathutil): add tests for Expand
+  * fix(shell): copy sshCmd.Args to a new slice before appending in executeSSHForRsync
+
+-------------------------------------------------------------------
 Sun Apr 05 08:45:26 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 2.1.1:
