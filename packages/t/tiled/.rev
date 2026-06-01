@@ -1017,4 +1017,23 @@
     <comment></comment>
     <requestid>1353332</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>942338e5dac7e9bc8e6c70345f2e3d00</srcmd5>
+    <version>1.12.2</version>
+    <time>1780329908</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.2:
+  * Added whitespace trimming for custom property names (#4486)
+  * Reduced animated tile marker opacity during terrain editing (#4449)
+  * Fixed ability to change properties after deselecting the current object (#4440)
+  * Fixed Properties view getting stuck with updates disabled (#4506)
+  * Fixed copy/paste of list properties losing item types (#4514)
+  * Fixed resolving of class members values in lists on export (#4525)
+  * Fixed locale-aware parsing of numbers in expression-capable spin boxes (#4507)
+  * Fixed Tile Animation Editor update after tileset image reload (#3923)
+  * Fixed runtime language switching in many editor widgets and models (#4411)
+  * Fixed multi-object selection bounding box for point objects (#4401)
+  * Fixed non-tile locations in wrapping Tilesets view being selectable (#3498)</comment>
+    <requestid>1356290</requestid>
+  </revision>
 </revisionlist>

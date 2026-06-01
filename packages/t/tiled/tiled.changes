@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun  1 07:20:37 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.2:
+  * Added whitespace trimming for custom property names (#4486)
+  * Reduced animated tile marker opacity during terrain editing (#4449)
+  * Fixed ability to change properties after deselecting the current object (#4440)
+  * Fixed Properties view getting stuck with updates disabled (#4506)
+  * Fixed copy/paste of list properties losing item types (#4514)
+  * Fixed resolving of class members values in lists on export (#4525)
+  * Fixed locale-aware parsing of numbers in expression-capable spin boxes (#4507)
+  * Fixed Tile Animation Editor update after tileset image reload (#3923)
+  * Fixed runtime language switching in many editor widgets and models (#4411)
+  * Fixed multi-object selection bounding box for point objects (#4401)
+  * Fixed non-tile locations in wrapping Tilesets view being selectable (#3498)
+
+-------------------------------------------------------------------
 Thu May 14 01:14:35 UTC 2026 - Sean Baggaley <me@drinkybird.net>
 
 - Enabled support for Zstandard compression
