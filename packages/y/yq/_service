@@ -2,7 +2,7 @@
   <service name="download_files" mode="manual"/>
   <service name="go_modules" mode="manual">
    <param name="replace">
-    golang.org/x/net=golang.org/x/net@v0.53.0
+    golang.org/x/net=golang.org/x/net@v0.55.0
    </param>
   </service>
 </services>
