@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>86bed2caf69cb21d6caa05bf62e53544</srcmd5>
+    <version>0.18.5.0</version>
+    <time>1780329579</time>
+    <user>anag_factory</user>
+    <comment>Update to monero 0.18.5.0 (wallet reserve/spend-proof fixes, zmq restricted-RPC checks, p2p sync race fix, multisig kex fix, ledger Nano Gen5; UPnP support removed upstream). Packaging cleanup: drop the now-dead libminiupnpc BuildRequires, convert BuildRequires to pkgconfig() style, drop obsolete Group tags.</comment>
+    <requestid>1356048</requestid>
+  </revision>
+</revisionlist>
