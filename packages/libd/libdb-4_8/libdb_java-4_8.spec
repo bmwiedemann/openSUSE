@@ -1,7 +1,7 @@
 #
 # spec file for package libdb_java-4_8
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,6 +101,8 @@ cd ../build_nptl
         --enable-cxx \
         --with-mutex="POSIX/pthreads/library" \
         --enable-java JAVACFLAGS="-source 1.8 -target 1.8" \
+        JAVAC=${JAVA_BINDIR}/javac JAR=${JAVA_BINDIR}/jar \
+        JAVA=${JRE_HOME}/bin/java \
 %ifarch %{arm}
         %{_target_cpu}-suse-linux-gnueabi
 %else

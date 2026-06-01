@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 30 05:48:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building with JDK that uses libalternatives instead of
+  update-alternatives
+
+-------------------------------------------------------------------
 Wed Aug  7 09:15:21 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1174414, CVE-2019-2708]
