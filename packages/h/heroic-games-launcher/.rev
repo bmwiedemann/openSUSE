@@ -170,4 +170,30 @@ via pnpm overrides to fix embedded dependency.</comment>
     <comment></comment>
     <requestid>1354903</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>855a05b322f6262c44d765bb2d56192c</srcmd5>
+    <version>2.22.0</version>
+    <time>1780329704</time>
+    <user>anag_factory</user>
+    <comment>- Fix Cannot find module 'locate-path' (boo#1266288)
+  - Fix runtime crashes caused by missing modules inside the ASAR archive:
+  * Force injection of ajv, ajv-formats, and builder-util-runtime 
+    into production dependencies during offline tarball generation.
+  * Fix build failure with electron-builder &gt;= 26.12 by removing 
+    deprecated 'shrinkwrapIgnoreDev' schema property.
+  - Refactor get-sources.sh:
+  * Preserve upstream dependency tree structure.
+  * Restore optional dependencies for esbuild, swc, and rollup to 
+    properly support multi-arch (aarch64) builds.
+  * Simplify pnpm overrides and lockfile generation.
+  - Clean up spec file:
+  * Move architecture-specific binary cleanup to the %install phase.
+  * Remove unused build dependencies (@esbuild, @swc, @rollup) 
+    from the final package to reduce RPM size.
+  * Optimize stripping of native .node binaries.
+  * Fix rpmlint duplicated files warnings by applying %fdupes -s 
+    across the entire Heroic installation directory.
+  * Removing release_tags that are no longer needed. </comment>
+    <requestid>1356229</requestid>
+  </revision>
 </revisionlist>

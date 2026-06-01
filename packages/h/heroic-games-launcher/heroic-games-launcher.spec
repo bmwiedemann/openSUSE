@@ -36,7 +36,6 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        pnpm-offline-store.tar.gz
 Source2:        heroic-games-launcher.rpmlintrc
 Source3:        get-sources.sh
-Source4:        release_tags
 BuildRequires:  comet
 BuildRequires:  c++_compiler
 BuildRequires:  esbuild
@@ -82,7 +81,6 @@ Game launcher and manager for GOG, Epic Games, and Amazon
 %setup -T -D -a1   # pnpm-offline-store
 
 sed -i -e "s/Exec=heroic-run /Exec=heroic /" flatpak/com.heroicgameslauncher.hgl.desktop
-cp %{_sourcedir}/release_tags public/bin/.release_tags
 
 %build
 # Remove precompiled binaries to build from source
@@ -111,7 +109,7 @@ export PATH=$PWD/node_modules/.bin:/usr/bin
 
 #pnpm config set store-dir .pnpm-store
 export PNPM_STORE_DIR=.pnpm-store
-pnpm install --store-dir .pnpm-store --frozen-lockfile --ignore-scripts --strict-peer-dependencies=false --offline
+pnpm install --offline --store-dir .pnpm-store --frozen-lockfile --ignore-scripts --strict-peer-dependencies=false
 pnpm dist:linux %{arch_flag} --dir
 
 %ifarch aarch64
@@ -119,9 +117,6 @@ mv dist/linux-arm64-unpacked dist/linux-unpacked
 %endif
 mkdir -p dist/linux-unpacked/resources/app.asar.unpacked/build
 cp build/{icon.icns,icon.png,icon-light.png,icon-dark.png,mac-icon.icns,win_icon.ico} dist/linux-unpacked/resources/app.asar.unpacked/build
-
-rm -rf dist/linux-unpacked/resources/app.asar.unpacked/build/bin/%{bin_subdir_opposite}/
-rm -rf dist/linux-unpacked/resources/app.asar.unpacked/node_modules/{register-scheme/src,@parcel,@rollup,@swc,term-size,unimported,@unrs}
 
 %install
 install -d %{buildroot}%{_libdir}/Heroic %{buildroot}%{_bindir} %{buildroot}%{_datadir}/{applications,pixmaps,metainfo}
@@ -143,16 +138,12 @@ install -m 644 flatpak/com.heroicgameslauncher.hgl.desktop %{buildroot}%{_datadi
 install -m 644 flatpak/templates/com.heroicgameslauncher.hgl.metainfo.xml.template \
     %{buildroot}%{_datadir}/metainfo/com.heroicgameslauncher.hgl.metainfo.xml
 
+rm -rf %{buildroot}%{_libdir}/Heroic/resources/app/build/bin/%{bin_subdir_opposite}/
 rm -rf %{buildroot}%{_libdir}/Heroic/resources/app.asar.unpacked/build/bin/%{bin_subdir_opposite}/
-rm -rf %{buildroot}%{_libdir}/Heroic/resources/app.asar.unpacked/node_modules/{register-scheme/src,@parcel,@rollup,@swc,term-size,unimported,@unrs}
-rm -rf %{buildroot}%{_libdir}/Heroic/resources/app.asar.unpacked/node_modules/@esbuild/
+rm -rf %{buildroot}%{_libdir}/Heroic/resources/app.asar.unpacked/node_modules
+find %{buildroot}%{_libdir}/Heroic -type f -name "*.node" -exec %{__strip} --strip-unneeded {} \; || true
 
-find %{buildroot}%{_libdir}/Heroic -type f -path "*/node_modules/*" -name "*.js" \
-  -exec sed -i '1s|^#!.*||' {} \;
-find %{buildroot}%{_libdir}/Heroic -type f -path "*/node_modules/*" -name "*.js" -exec sed -i '1s|^#!.*||' {} \;
-find %{buildroot}%{_libdir}/Heroic -type f \( -name "*.node" -o -perm /111 \) -exec %{__strip} --strip-unneeded {} \; || true
-
-%fdupes %{buildroot}%{_libdir}/Heroic
+%fdupes -s %{buildroot}%{_libdir}/Heroic
 
 %check
 test -x dist/linux-unpacked/heroic

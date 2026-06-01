@@ -28,82 +28,81 @@ cd "$REPO_DIR"
 
 # Forcing the download of required npm dependencies
 ESBUILD_VERSION="0.25.12"
-ROLLUP_VERSION="4.52.5"
 SWC_VERSION="1.11.24"
-UNDICI_V7_FIXED="7.18.0"
 
 jq --indent 2 \
-  --arg rollup_ver "$ROLLUP_VERSION" \
   --arg swc_ver "$SWC_VERSION" \
-  --arg undici_v7 "$UNDICI_V7_FIXED" \
 '
-  .
-  | .dependencies += (
-      .devDependencies
-      | with_entries(select(.key != "electron" and .key != "electron-builder"))
-    )
+.
+| del(.packageManager)
+| del(.build.shrinkwrapIgnoreDev)
 
-  | del(.packageManager)
+| .dependencies["ajv"] = "^8.17.1"
+| .dependencies["ajv-formats"] = "^2.1.1"
+| .dependencies["builder-util-runtime"] = "^9.2.4"
 
-  | .devDependencies = {
-      "electron": .devDependencies["electron"],
-      "electron-builder": "^26.8.2"
-    }
+| .dependencies = (.dependencies // {})
+| .devDependencies = (.devDependencies // {})
+| .optionalDependencies = (.optionalDependencies // {})
 
-  | .scripts.build = "electron-vite build"
-  | .scripts["dist:linux"] =
-      "pnpm run build && electron-builder --linux --dir -c.electronDist=/usr/lib64/electron/ -c.electronVersion=$(cat /usr/lib64/electron/version)"
+| .scripts.build = "electron-vite build"
 
-  | .build.executableName = "heroic"
-  | .build.files = [
-      "build/**/*",
-      "dist/**/*",
-      "node_modules/**/*",
-      "!**/*.map"
-    ]
+| .scripts["dist:linux"] = "pnpm run build && electron-builder --linux --dir -c.electronDist=/usr/lib64/electron/ -c.electronVersion=$(cat /usr/lib64/electron/version)"
 
-  | .devDependencies |= with_entries(
-      select(.key != "electron" and .key != "react-devtools")
-    )
+| .build.executableName = "heroic"
 
-  | .peerDependencies.electron = "^25.9.3"
+| .build.npmRebuild = false
+| .build.nodeGypRebuild = false
+| .build.asarUnpack = ["build/bin/**/*"]
 
-  # ===================================================
-  # REMOVE DEPENDENCIES FROM EBUILD (USE THE SYSTEM ONE)
-  # ===================================================
-  | del(.dependencies["esbuild"], .devDependencies["esbuild"], .optionalDependencies["esbuild"])
-  | del(
-      .dependencies["@esbuild/linux-x64"],
-      .dependencies["@esbuild/linux-arm64"],
-      .devDependencies["@esbuild/linux-x64"],
-      .devDependencies["@esbuild/linux-arm64"],
-      .optionalDependencies["@esbuild/linux-x64"],
-      .optionalDependencies["@esbuild/linux-arm64"]
-    )
+| .build.files = [
+    "build/**/*",
+    "dist/**/*",
+    "node_modules/**/*",
+    "!**/*.map"
+  ]
 
-  # =========================
-  # Native binaries for Rollup and SWC
-  # =========================
-  | .dependencies["@rollup/rollup-linux-arm64-gnu"] = $rollup_ver
-  | .dependencies["@swc/core-linux-arm64-gnu"] = $swc_ver
+# ==========================================================
+# Use system electron only
+# Keep upstream ecosystem intact
+# ==========================================================
+| .devDependencies.electron = "^41.1.1"
 
-  # =========================
-  # === Previous CVE fixes ===
-  # =========================
-  | .pnpm.overrides = (
+| .devDependencies["electron-builder"] = "^26.8.2"
+
+# ==========================================================
+# Multi-arch esbuild support
+# DO NOT REMOVE esbuild
+# This is what fixes aarch64
+# ==========================================================
+| .optionalDependencies["@esbuild/linux-x64"] = "0.25.12"
+| .optionalDependencies["@esbuild/linux-arm64"] = "0.25.12"
+
+# ==========================================================
+# Multi-arch rollup native binaries
+# ==========================================================
+| .optionalDependencies["@rollup/rollup-linux-x64-gnu"] = "4.52.5"
+| .optionalDependencies["@rollup/rollup-linux-arm64-gnu"] = "4.52.5"
+
+# ==========================================================
+# Multi-arch swc native binaries
+# ==========================================================
+| .optionalDependencies["@swc/core-linux-x64-gnu"] = "1.11.24"
+| .optionalDependencies["@swc/core-linux-arm64-gnu"] = "1.11.24"
+
+# ==========================================================
+# Security / compatibility overrides
+# ==========================================================
+| .pnpm.overrides = (
     (.pnpm.overrides // {})
     + {
-        "undici": $undici_v7,
-        "undici-types": "6.21.0",
-        "@remix-run/router": "^1.23.2",
-        "react-router": "^7.12.0",
-        "react-router-dom": "^7.12.0",
-        "fast-xml-parser": "5.3.6",
-        "rollup": "4.59.0",
+        "undici": "7.24.7",
+        "undici-types": "7.24.7",
         "@tootallnate/once": "3.0.1",
-        "simple-git": "^3.32.3",
-        "fast-xml-parser": "5.5.6",
-        "@xmldom/xmldom": "^0.9.9"
+        "simple-git": "3.32.3",
+        "fast-xml-parser": "5.5.7",
+        "@xmldom/xmldom": "0.8.12",
+        "find-up": "5.0.0",
       }
   )
 ' package.json > temp.json && mv temp.json package.json
@@ -120,8 +119,6 @@ echo "Downloading pnpm modules and packing all"
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 
 pnpm config set store-dir .pnpm-store
-pnpm install --lockfile-only --force --ignore-scripts
-
 pnpm install --ignore-scripts
 
 tar cJf ../pnpm-offline-store.tar.gz .pnpm-store node_modules package.json pnpm-lock.yaml
