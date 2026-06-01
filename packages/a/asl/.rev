@@ -254,4 +254,12 @@
     <comment>asl 1.42_bld306. Drop the upstream Source URL (upstream serves only from john.ccac.rwth-aachen.de:8000, a non-standard port the OBS source validator cannot reach; package stuck out of Factory since 2022 for this reason) - tarball tracked in package, URL kept in a comment. Drop unneeded asl-doc Provides/Obsoletes. Spec cleanup: %make_build, BuildRequires: make, drop duplicate COPYING from docdir.</comment>
     <requestid>1355913</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>188bbdc1a1275bcbeacabb84972690b6</srcmd5>
+    <version>1.42_bld307</version>
+    <time>1780329697</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1356224</requestid>
+  </revision>
 </revisionlist>

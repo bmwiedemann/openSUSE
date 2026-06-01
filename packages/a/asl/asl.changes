@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 31 12:15:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 142-bld307
+  * Add register symbols for 8080/8085.
+
+-------------------------------------------------------------------
 Fri May 29 15:14:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop unneeded Provides/Obsoletes for a %{name}-doc subpackage
