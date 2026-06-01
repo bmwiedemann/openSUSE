@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 30 17:28:04 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Compile with built-in printf
+
+-------------------------------------------------------------------
 Tue Jul 15 08:36:12 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Switch over to libalternatives for etags to provide a ksh

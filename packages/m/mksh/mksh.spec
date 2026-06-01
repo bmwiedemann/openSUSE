@@ -33,6 +33,8 @@ License:        ISC AND MirOS
 Group:          System/Shells
 URL:            https://mbsd.evolvis.org/mksh.htm
 Source:         https://mbsd.evolvis.org/MirOS/dist/mir/%{name}/%{name}-R%{version}.tgz
+# Built-in printf http://www.mirbsd.org/mksh-faq.htm#printf-c
+Source1:        https://mbsd.evolvis.org/MirOS/dist/mir/OTHER/printf.c.1.22#/printf.c
 # PATCH-FEATURE-OPENSUSE mksh-vendor-mkshrc.patch gber@opensuse.org -- Add support for a vendor-supplied kshrc which is read by interactive shells before $ENV or $HOME/.mkshrc are processed
 Patch0:         mksh-vendor-mkshrc.patch
 # PATCH-FEATURE-OPENSUSE There is no fgrep anymore
@@ -78,6 +80,8 @@ ed -s mksh.1 <<-'EOF'
 
 ln -s . examples
 
+cp -f %{SOURCE1} .
+
 %build
 %define _lto_cflags %{nil}
 #
@@ -89,6 +93,10 @@ HAVE_SYS_ERRLIST=0
 HAVE__SYS_SIGLIST=0
 HAVE__SYS_ERRLIST=0
 export HAVE_SYS_SIGLIST HAVE_SYS_ERRLIST HAVE__SYS_SIGLIST HAVE__SYS_ERRLIST
+
+# Compile built-in printf.c
+USE_PRINTF_BUILTIN=1
+export USE_PRINTF_BUILTIN
 
 #
 # -ftree-loop-linear

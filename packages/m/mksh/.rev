@@ -474,4 +474,12 @@ The next upstream release (R58 most likely) will add -fno-lto to CFLAGS and LDFL
   * Replace `fgrep' with `grep -F'</comment>
     <requestid>1299822</requestid>
   </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>296572edda2b458701cf85666c7cdb0f</srcmd5>
+    <version>59c</version>
+    <time>1780330072</time>
+    <user>anag_factory</user>
+    <comment>- Compile with built-in printf</comment>
+    <requestid>1356347</requestid>
+  </revision>
 </revisionlist>
