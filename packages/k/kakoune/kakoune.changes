@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  1 07:40:21 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2026.05.21:
+  * Support the \N escape sequence in regex (like in PCRE, matches [^\n]).
+  * enter-user-mode support the -count and -register switches to forward
+    those parameters to the underlying normal mode
+  * arrange-buffers -back switch to arrange provided buffers to the back of
+    the buffer list
+  * Some bug and portability fixes reported since latest release
+
+-------------------------------------------------------------------
 Mon Apr 13 07:53:24 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2026.04.12:

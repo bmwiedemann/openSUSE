@@ -342,4 +342,18 @@
   * kak -C &lt;session&gt; connects to a session or creates it if it does not exist.</comment>
     <requestid>1346373</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b46e06221988b39d38bdd9e7a1ef67e1</srcmd5>
+    <version>2026.05.21</version>
+    <time>1780329943</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2026.05.21:
+  * Support the \N escape sequence in regex (like in PCRE, matches [^\n]).
+  * enter-user-mode support the -count and -register switches to forward
+    those parameters to the underlying normal mode
+  * arrange-buffers -back switch to arrange provided buffers to the back of
+    the buffer list
+  * Some bug and portability fixes reported since latest release</comment>
+    <requestid>1356295</requestid>
+  </revision>
 </revisionlist>
