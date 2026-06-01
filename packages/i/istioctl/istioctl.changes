@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue May 19 09:20:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.30.0:
+  https://istio.io/latest/news/releases/1.30.x/announcing-1.30/
+  * Security
+    - Debug endpoint authentication tightened. XDS debug endpoints
+      (syncz, config_dump) on port 15010 now require authentication
+      when ENABLE_DEBUG_ENDPOINT_AUTH=true (default). A new
+      DEBUG_ENDPOINT_AUTH_ALLOWED_NAMESPACES setting lets operators
+      allow specific namespaces beyond the system namespace. See
+      the upgrade notes for the breaking-change details.
+    - TLS minimum version flag for pilot-discovery
+      (--tls-min-version), letting operators raise the floor for
+      control-plane TLS.
+    - Default registry for Istio images is now registry.istio.io.
+      The previous registry remains accessible, but new installs
+      default to the new location.
+  * istioctl improvements including a --tls-min-version plumbed
+    through, sorting fixes for connection output, distroless
+    istioctl image, and ztunnel-config command refinements
+  https://istio.io/latest/news/releases/1.30.x/announcing-1.30/change-notes/
+  * Improved the istioctl bug-report command’s performance.
+  * Added --skip-cluster-dump, --skip-analyze, --skip-proxy-debug,
+    --skip-netstat, and --skip-coredumps flags to the istioctl
+    bug-report command to allow skipping expensive sections of the
+    report.
+  * Fixed log fetching with support for include and exclude
+    filtering for pod selection.
+  * Added --tail flag to set the maximum number of log lines to
+    fetch per container. The default is still unlimited.
+  * Updated minimum supported Kubernetes version to 1.32.x.
+  * Added port validation to istioctl commands to prevent invalid
+    values outside the 1-65535 range. (Issue #58584)
+  * Added support for istioctl proxy-status -oyaml/json to list
+    proxy status of a single namespace. (Issue #59377)
+  * Added an istioctl analyze warning (IST0175) when
+    RequestAuthentication resources exist but
+    BLOCKED_CIDRS_IN_JWKS_URIS is not configured on istiod. (Issue
+    #59523)
+  * Added JSON and YAML output options to the istioctl proxy-status
+    subcommand. (Issue #56880)
+  * Added support for filtering istioctl ztunnel-config workload
+    and istioctl ztunnel-config connections output by workload pod
+    name.
+  * Fixed an issue where istioctl falsely reported an error on
+    EnvoyFilter with REPLACE operation on VIRTUAL_HOST. (Issue
+    #59495)
+  * Fixed a sorting bug in istioctl ztunnel-config connections
+    which caused the output sorting to be non-deterministic. (Issue
+    #59775)
+  * Fixed an issue where istioctl ztunnel-config service JSON and
+    YAML output did not include the canonical field from the
+    ztunnel config dump. (Issue #59962)
+  * Fixed an issue where istioctl ztunnel-config service JSON and
+    YAML output did not include cidrVips from the ztunnel config
+    dump. (Issue #59962)
+  * Fixed an issue where the distroless istioctl containers were
+    being built with the wrong base image.
+
+-------------------------------------------------------------------
 Tue May 19 05:05:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.29.3:
