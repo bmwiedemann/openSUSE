@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Thu May 28 14:51:21 UTC 2026 - mbussolotto <michele.bussolotto@suse.com>
+
+- Update to Tomcat 9.0.118
+  * Fixed CVEs:
+    + CVE-2026-43515: Security constraints not correctly applied (bsc#1265168)
+    + CVE-2026-43514: AJP secret compared in non-constant time (bsc#1265167)
+    + CVE-2026-43513: LockOutRealm treats user names as case-sensitive
+      (bsc#1265166)
+    + CVE-2026-43512: Digest authenticator will authenticate any unknown user
+      (bsc#1265145)
+    + CVE-2026-42498: WebSocket authentication header exposure (bsc#1265165)
+    + CVE-2026-41293: HTTP/2 request headers not validated (bsc#1265163)
+    + CVE-2026-41284: Unbounded read in WebDAV LOCK and PROPFIND handling
+      (bsc#1265162)
+  * Catalina
+    + Add: Enhance version.sh and version.bat to display APR, Tomcat Native, and
+      OpenSSL version information (both APR and FFM implementations), along with
+      version compatibility warnings and third-party library version
+      information. (csutherl)
+    + Code: Refactor generation of the remote user element in the access log to
+      remove unnecessary code. (markt)
+    + Fix: Fix a regression in the previous release that meant ?- could appear
+      in the access log rather than ? when the query string was present but
+      empty. (markt)
+    + Fix: Failed precondition should make WebDAV DELETE fail. #982 submitted by
+      Mahmoud Alarby. (remm)
+    + Fix: Align the escaping in ExtendedAccessLogValve with the other
+      AccessLogValve implementations. (markt)
+    + Fix: 70000: fix duplication of special headers in the response after
+      commit, following fix for 69967. (remm)
+    + Fix: Correct the handling of URIs mapped to a security constraint that
+      only specifies the special ** role for all authenticated users. Requests
+      without authentication were receiving 403 responses rather than 401
+      responses. (markt)
+    + Fix: Fix a race condition in StandardContext.getServletContext() that
+      could cause the jakarta.servlet.context.tempdir attribute to be lost
+      during a context reload. Make the context field volatile and use locking
+      to ensure only one ApplicationContext instance is created. (dsoumis)
+    + Fix: Update the Windows authentication (kerberos) documentation to reflect
+      that both Java and Windows are removing / have removed support for
+      RC4-HMAC. The guide now uses AES256-SHA1. (markt)
+    + Fix: Add a new initialisation parameter for WebDAV, maxRequestBodySize
+      which limits the size of a WebDAV request body for LOCK and PROPFIND. The
+      default value is 4096 bytes. (markt)
+    + Add: Add a new caseSensitive attribute to the LockOutRealm that controls
+      the manner in which user names are treated when making locking decisions.
+      The default is false, meaning user names are treated in a case insensitive
+      manner. (markt)
+    + Fix: Correct the handling of invalid users with DIGEST authentication.
+      (markt)
+    + Fix: Ensure RealmBase finds all matching extension based security
+      constraints. (markt)
+  * Coyote
+    + Fix: Avoid various edge cases if Content-Length is set via
+      setHeader(String,String) or addHeader(String,String) with an invalid value
+      by always clearing the previous value whether the new value is valid or
+      not and ignoring any invalid new value. (markt)
+    + Code: Refactor the calculation of the real index in the HPACK dynamic
+      header table implementation to reduce code duplication. (markt)
+    + Fix: Fix various minor issues with some HTTP/2 stream error messages for
+      HTTP/2. (markt)
+    + Fix: Consistently reject URIs containing NULL bytes when normalizing.
+      (markt)
+    + Fix: Fix a few minor memory leaks on error paths reading TLS keys and
+      certificates when using FFM. (markt)
+    + Fix: Refactor clean-up after HTTP/2 headers have been processed to aid GC
+      after a stream reset. (markt)
+    + Fix: Align HTTP/2 trailer fields with HTTP/1.1 and filter out any fields
+      not permitted in trailers. (markt)
+    + Fix: Free private keys after use in FFM based connector configuration.
+      (markt)
+    + Fix: Correct an unlikely edge-case parsing bug in the HTTP/2 HPACK header
+      decoding that could result in a valid header triggering an unexpected
+      connection close. (markt)
+    + Fix: Refactor HTTP/2 HPACK encoding so header field names are only
+      converted to lower case once during the encoding process. (markt)
+    + Fix: Refactor HTTP/2 header field validation so it occurs earlier. Extend
+      validation to check for disallowed characters as well as upper case
+      characters. (markt)
+    + Fix: Add TLS 1.3 groups added in OpenSSL 4.0. (remm)
+    + Fix: Add validation that the HTTP/2 :scheme pseudo-header is consistent
+      with the use (or not) of TLS. (markt)
+    + Fix: Correct the validation of pseudo headers and CONNECT requests to
+      align Tomcat's behaviour with RFC 9113, section 8.5. (markt)
+    + Fix: Fix a potential integer overflow when allocating capacity from a
+      connection level window update to individual HTTP/2 streams. Based on #996
+      by Mike Tingey Jr. (markt)
+    + Fix: Switch AJP secret comparison to a constant time algorithm. (markt)
+  * WebSocket
+    + Fix: Fix the initial connection to a WebSocket end point where the
+      connection is made via a proxy that requires DIGEST authentication.
+      (markt)
+  * Other
+    + Fix: 69993: Update the URL to the CDDL 1.0 license. (markt)
+    + Add: Add warning when OpenSSL binary is not found. (csutherl)
+    + Add: Add check for Tomcat Native library, and log warning when it's not
+      found to make it easier to see when it's not used by the suite. (csutherl)
+    + Update: Update Byte Buddy to 1.18.8. (markt)
+    + Update: Update Bouncy Castle to 1.84. (markt)
+    + Update: Improvements to French translations. (remm)
+    + Update: Improvements to Japanese translations provided by tak7iji. (markt)
+
+-------------------------------------------------------------------
 Mon Apr 13 12:58:57 UTC 2026 - Ricardo Mestre <ricardo.mestre@suse.com>
 
 - Update to Tomcat 9.0.117
