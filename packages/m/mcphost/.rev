@@ -141,4 +141,16 @@
   Update golang.org/x/net to 0.55.0.</comment>
     <requestid>1355757</requestid>
   </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>e1a65777480299500eb572aa429651d3</srcmd5>
+    <version>0.34.0</version>
+    <time>1780330087</time>
+    <user>anag_factory</user>
+    <comment>      CVE-2026-27136 (GO-2026-5030)
+      CVE-2026-25681 (GO-2026-5029)
+      CVE-2026-25680 (GO-2026-5028)
+      CVE-2026-42502 (GO-2026-5027)
+      CVE-2026-42506 (GO-2026-5025) (bsc#1267109)</comment>
+    <requestid>1356356</requestid>
+  </revision>
 </revisionlist>
