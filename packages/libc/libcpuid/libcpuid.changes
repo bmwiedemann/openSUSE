@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 31 19:10:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.8.1 (includes 0.8.0):
+  * Add detection for many new CPUs: Intel Lunar Lake, Arrow Lake
+    (incl. -HX/-U/-H), Twin Lake, Granite Rapids-SP, newer Raptor
+    Lake variants; AMD Turin Dense, Strix Halo, Krackan Point;
+    plus more ARM CPUs and ARMv9.5-A support
+  * Add technology_node field to struct cpu_id_t
+  * 0.8.0 is a backwards-incompatible release: the size of
+    cpu_raw_data_t and cpu_id_t changed
+  * Build the Python bindings without requiring wheel
+  * Several build-warning and portability fixes
+  * Massive CPU database updates
+
+-------------------------------------------------------------------
 Wed Dec 10 10:27:01 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64

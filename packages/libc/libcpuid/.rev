@@ -269,4 +269,12 @@
     <comment></comment>
     <requestid>1328674</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ce22462af84434f84554107ec5550a96</srcmd5>
+    <version>0.8.1</version>
+    <time>1780329710</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.8.1 (incl. 0.8.0): many new Intel/AMD/ARM CPUs, technology_node field, ARMv9.5-A; drop git-LFS-stub *.test.xz test data from the release tarball so %check runs</comment>
+    <requestid>1356228</requestid>
+  </revision>
 </revisionlist>

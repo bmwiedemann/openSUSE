@@ -1,7 +1,7 @@
 #
 # spec file for package libcpuid
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver  17
 Name:           libcpuid
-Version:        0.7.1
+Version:        0.8.1
 Release:        0
 Summary:        Library providing x86 CPU identification
 License:        BSD-2-Clause
@@ -27,7 +27,7 @@ Source0:        https://github.com/anrieff/libcpuid/releases/download/v%{version
 BuildRequires:  help2man
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-ExclusiveArch:  %arm64 %arm32 %ix86 %x86_64 riscv64
+ExclusiveArch:  %{arm64} %{arm32} %{ix86} %{x86_64} riscv64
 
 %description
 Libcpuid provides CPU identification for the x86 (and x86_64) architectures.
@@ -57,6 +57,11 @@ architectures.
 
 %prep
 %autosetup
+
+# The upstream release tarball ships the *.test.xz test-data files as
+# git-LFS pointer stubs (not the real compressed data), so the test
+# harness can't decompress them; drop them and run the rest.
+find tests -name '*.test.xz' -delete
 
 %build
 %configure \
