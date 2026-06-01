@@ -1,7 +1,7 @@
 #
 # spec file for package uwsgi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,6 +74,7 @@ BuildRequires:  argon2-devel
 %endif
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-objc
+BuildRequires:  python3-base
 #BuildRequires:  go
 BuildRequires:  java-devel
 #BuildRequires:  krb5-devel
@@ -347,7 +348,7 @@ This package contains support for Python 3 applications via the WSGI protocol.
 Summary:        Python %{python_version} Plugin for uWSGI
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}
-%if "%{python_provides}" == "python3"
+%if "%{python_flavor}" == "%{primary_python}"
 Provides:       uwsgi-python3 = %{version}-%{release}
 Obsoletes:      uwsgi-python3 < %{version}-%{release}
 %endif
@@ -523,12 +524,12 @@ cp %{SOURCE7} .
 
 %build
 # Find correct location for libjvm
-export UWSGICONFIG_JVM_LIBPATH=$(dirname $(find %{_jvmdir}/java/jre/lib -name "libjvm.so" | grep server))
-export UWSGICONFIG_JVM_INCPATH="%{_jvmdir}/java/include"
+export UWSGICONFIG_JVM_LIBPATH=$(dirname $(find ${JRE_HOME}/lib -name "libjvm.so" | grep server))
+export UWSGICONFIG_JVM_INCPATH="${JAVA_HOME}/include"
 export UWSGICONFIG_LUALIB="lua"
 export UWSGICONFIG_LUAPC="lua"
 export UWSGICONFIG_RUBYPATH="ruby1.9"
-export CFLAGS="%{optflags} -Wno-error=deprecated-declarations -I$(echo %{_libdir}/erlang/lib/erl_interface-*/include) -I%{_jvmdir}/java/include/linux -L$UWSGICONFIG_JVM_LIBPATH/jli"
+export CFLAGS="%{optflags} -Wno-error=deprecated-declarations -I$(echo %{_libdir}/erlang/lib/erl_interface-*/include) -I${JAVA_HOME}/include/linux -L$UWSGICONFIG_JVM_LIBPATH/jli"
 export CPUCOUNT=${RPM_BUILD_NCPUS:-1}
 %python_expand PYTHON=$python $python uwsgiconfig.py --build opensuse
 
@@ -567,7 +568,7 @@ install -D -m 0644 uwsgidecorators.py %{buildroot}%{python3_sitelib}/uwsgidecora
 %else
 %{python_expand #
 install -D -m 0644 uwsgidecorators.py %{buildroot}%{$python_sitelib}/uwsgidecorators.py
-if [ "%{$python_provides}" == "python3" ]; then
+if [ "${python_flavor}" == "%{primary_python}" ]; then
   ln -s  ${python_flavor}_plugin.so %{buildroot}%{_libdir}/uwsgi/python3_plugin.so
 fi
 }
@@ -733,17 +734,15 @@ install -m 0644 %{SOURCE9} %{buildroot}/%{_tmpfilesdir}/uwsgi.conf
 %files pypy
 %{_libdir}/uwsgi/pypy_plugin.so
 
-%if 0%{?sle_version} && 0%{?sle_version} <= 150400
-
+%if 0%{?sles_version} && 0%{?sles_version} <= 150400
 %files python3
 %{_libdir}/uwsgi/python3_plugin.so
 %{python3_sitelib}/uwsgidecorators.py*
-
 %else
 
 %files %{python_files uwsgi-python3}
 %{_libdir}/uwsgi/%{python_flavor}_plugin.so
-%if "%{python_provides}" == "python3"
+%if "%{python_flavor}" == "%{primary_python}"
 %{_libdir}/uwsgi/python3_plugin.so
 %endif
 %{python_sitelib}/uwsgidecorators.py*
