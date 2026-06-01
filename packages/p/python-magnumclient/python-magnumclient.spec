@@ -1,7 +1,7 @@
 #
 # spec file for package python-magnumclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-magnumclient
-Version:        4.9.0
+Version:        4.10.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Magnum
 License:        Apache-2.0
@@ -39,6 +39,7 @@ BuildRequires:  %{python_module oslotest}
 BuildRequires:  %{python_module osprofiler}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-subunit}
+BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module stestr}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module testtools}

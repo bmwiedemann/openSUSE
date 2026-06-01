@@ -288,4 +288,15 @@
     <comment>switch to singlespec</comment>
     <requestid>1316764</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>59aa8b5fc9308d6b02ce7f16f7d606d5</srcmd5>
+    <version>4.10.0</version>
+    <time>1780329979</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.10.0:
+  * reno: Update master for unmaintained/2024.1
+  * Update master for stable/2025.2
+</comment>
+    <requestid>1356315</requestid>
+  </revision>
 </revisionlist>
