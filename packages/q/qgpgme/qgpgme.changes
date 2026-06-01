@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 31 06:55:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.1.0:
+  * Fixed assertion when parsing DNs that end with a hex string
+  * Allow forcing the deletion of secret keys without confirmation
+  * Allow specifying an export filter when exporting keys
+
+-------------------------------------------------------------------
 Sun Aug  3 18:20:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Specify version requirement on Qt6 Core Tools

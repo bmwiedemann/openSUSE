@@ -1,7 +1,7 @@
 #
 # spec file for package qgpgme
 #
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with qt6
 %endif
 Name:           qgpgme
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Qt API bindings/wrapper for GPGME
 License:        GPL-2.0-or-later

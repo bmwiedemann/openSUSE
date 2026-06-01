@@ -20,4 +20,12 @@ v4: -devel require gpgmepp, broke plasma-pass</comment>
 - wrap Qt6 build in a conditional and disable on Leap 15.6</comment>
     <requestid>1297310</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>403d03edd51b1fa546279dc4e1de0fd8</srcmd5>
+    <version>2.1.0</version>
+    <time>1780329526</time>
+    <user>anag_factory</user>
+    <comment>qgpgme 2.1.0 (forwarded request 1356109 from AndreasStieger)</comment>
+    <requestid>1356112</requestid>
+  </revision>
 </revisionlist>
