@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 31 06:51:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.1.0:
+  * New methods to query the compliance of encryption results
+  * New function Subkey::keyGrips to get the list of keygrips for
+    a subkey using combined algorithms
+  * New function Context::generateRandomZBase32String to get a
+    cryptographically strong string of z-base-32 characters
+
+-------------------------------------------------------------------
 Fri Jun 13 19:46:25 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial version, split upstream into releases separate from gpgme

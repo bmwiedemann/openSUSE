@@ -1,7 +1,7 @@
 #
 # spec file for package gpgmepp
 #
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 7
 Name:           gpgmepp
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        C++ bindings/wrapper for GPGME
 License:        LGPL-2.0-or-later AND LGPL-2.1-or-later
