@@ -104,4 +104,12 @@
     <comment></comment>
     <requestid>1355663</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>27b4b7b5d80272a13ce0bad06c3c549e</srcmd5>
+    <version>10.32.4</version>
+    <time>1780330113</time>
+    <user>anag_factory</user>
+    <comment>- Add missing Bugzilla reference for bsc#1266311 (forwarded request 1356322 from glaubitz)</comment>
+    <requestid>1356369</requestid>
+  </revision>
 </revisionlist>

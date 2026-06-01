@@ -93,7 +93,7 @@ Fri Jan  9 12:36:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * --include-root flag now allows customers to preserve root properties
     when used in conjunction with --preserve-XXXX flags. (#3163)
   * Golang 1.24.4 -> 1.24.6 (#3154)
-  * Fixed a bug to retry on various network errors. (#3237) (#3252)
+  * Fixed a bug to retry on various network errors. (#3237) (#3252) (bsc#1266311)
   * Fixed a bug where remove would not work on paths with encoded characters. (#2977)
   * Fixed a bug where jobs resume would not produce any output for
     previously failed jobs. (#3103)
