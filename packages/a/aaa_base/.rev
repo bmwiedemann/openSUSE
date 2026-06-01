@@ -4362,4 +4362,16 @@
   * DIR_COLORS: add vt220 and .jxl</comment>
     <requestid>1332197</requestid>
   </revision>
+  <revision rev="517" vrev="1">
+    <srcmd5>f217ded278de70271c49be88396a8497</srcmd5>
+    <version>84.87+git20260529.c4391e5</version>
+    <time>1780329558</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 84.87+git20260529.c4391e5:
+  * $status -&gt; $?
+  * Simplifying the sh part too
+  * Addressing review comments and simplifying a bit
+  * Handle javas managed by libalternatives and by update-alternatives alike</comment>
+    <requestid>1355891</requestid>
+  </revision>
 </revisionlist>

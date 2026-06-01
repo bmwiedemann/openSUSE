@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 29 12:58:41 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 84.87+git20260529.c4391e5:
+  * $status -> $?
+  * Simplifying the sh part too
+  * Addressing review comments and simplifying a bit
+  * Handle javas managed by libalternatives and by update-alternatives alike
+
+-------------------------------------------------------------------
 Tue Feb 10 09:27:08 UTC 2026 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 84.87+git20260210.ecce285:
