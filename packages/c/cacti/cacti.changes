@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun  1 13:36:05 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
+
+- Update to version 1.2.30+git457.e55c2aea:
+  * docs(changelog): add security fix refs for 1.2.31 (#7170)
+  * fix: Upgrade DOMPurify again for additional hardening (#7168)
+  * security: Ensure that reports does not work as guest (#7167)
+  * Update translation files
+  * security: GHSA-m7v2-f3xw-3qh7 - User Enumeration via Error Messages (#7166)
+  * chore: Move around developers, rest in peace my friend (#7165)
+  * Import undefined variable (#7164)
+  * fix: guard api_plugin_moveup/movedown against NULL prior/next id (1.2.x backport) (#7158)
+  * fix(correctness): loop-state leaks, chunk-aware poller CRC, header-suppression and tree false-guards (1.2.x) (#7151)
+  * fix: Remove composer.lock (#7156)
+  * test: source-pattern coverage backfill for PR 7148, 7149, 7150 (#7153)
+  * fix: CVE-2024-27355 in phpseclib (#7155)
+  * chore: Update ChangeLogs (#7152)
+
+-------------------------------------------------------------------
 Thu May 14 15:10:25 UTC 2026 - obs@mtlfab.com
 
 - Update to version 1.2.30+git422.049d9187:
