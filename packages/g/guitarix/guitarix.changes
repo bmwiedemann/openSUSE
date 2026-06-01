@@ -1,3 +1,10 @@
+-------------------------------------------------------------------
+Mon Jun  1 04:50:57 UTC 2026 - munix9@googlemail.com
+
+- Move '--cxxflags' parameter to CXXFLAGS:
+  * Fixes build on Factory/TW
+
+-------------------------------------------------------------------
 Thu Oct  2 08:04:23 UTC 2025 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 0.47.0 and added guitarix_no_boost_system.patch

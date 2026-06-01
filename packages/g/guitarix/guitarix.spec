@@ -1,7 +1,7 @@
 #
 # spec file for package guitarix
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -165,6 +165,12 @@ export CXX=g++-13
 %endif
 for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 export LDFLAGS="-ldl"
+CXXFLAGS="%{optflags} "
+%ifarch %ix86
+CXXFLAGS+="-mfxsr "
+%endif
+CXXFLAGS+="-std=gnu++0x -fpermissive"
+export CXXFLAGS
 ./waf configure -v --faust \
                    --libdir=%{_libdir} \
                    --includeresampler \
@@ -174,12 +180,7 @@ export LDFLAGS="-ldl"
                    --ladspa \
                    --new-ladspa \
 %endif
-                   --prefix=%{_prefix} \
-                   --cxxflags="%{optflags} \
-%ifarch %ix86
-                   -mfxsr \
-%endif
-                   -std=gnu++0x -fpermissive"
+                   --prefix=%{_prefix}
 ./waf build -v %{?_smp_mflags}
 
 %install
