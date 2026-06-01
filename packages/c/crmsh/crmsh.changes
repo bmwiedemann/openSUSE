@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 28 08:17:49 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260528.b0973362:
+  * Chore: github-actions: update to node.js 24 actions
+  * Dev: behave: Add new test case for port conflict
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: ui_cluster: Refactor qdevice options validation
+  * Dev: ui_cluster: Add --qnetd-port option and deprecate --qdevice-port option
+  * Dev: qdevice: Configure "-p <port>" for /etc/sysconfig/corosync-qnetd on qnetd server
+
+-------------------------------------------------------------------
+Mon May 11 03:42:49 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260511.e4dd3500:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: Separately check if corosync-qdevice.service is successfully started
+  * Dev: service_manager: Use 'systemctl is-active' to make sure the service is really active
+  * Dev: bootstrap: Find and show failed services
+
+-------------------------------------------------------------------
 Fri May 08 06:44:21 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260508.3e8e1915:
