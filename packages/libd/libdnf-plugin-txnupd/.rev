@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1351437</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f283091b27a1aeb80427288ca74cc639</srcmd5>
+    <version>0.3.0</version>
+    <time>1780329534</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.3.0
+  + Add txnupd command plugin for dnf5 to support apply-live and rollback
+  + Migrate buildsys from meson to cmake
+  + Add man pages</comment>
+    <requestid>1356225</requestid>
+  </revision>
 </revisionlist>

@@ -16,19 +16,28 @@
 #
 
 
+# Minimum compatible version
+%define libdnf5_minver 5.4.0.0
+%define tukit_minver 3.6.2
+
+
 Name:           libdnf-plugin-txnupd
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Plugin for libdnf5 to implement transactional updates
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.com/VelocityLimitless/Projects/libdnf-plugin-txnupd
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:  meson
+BuildRequires:  cmake
+BuildRequires:  make
 BuildRequires:  gcc-c++ >= 13
+BuildRequires:  scdoc
 
-BuildRequires:  pkgconfig(libdnf5) >= 5.4.0.0
-BuildRequires:  pkgconfig(tukit) >= 3.6.2
+BuildRequires:  dnf5-devel >= %{libdnf5_minver}
+BuildRequires:  pkgconfig(libdnf5) >= %{libdnf5_minver}
+BuildRequires:  pkgconfig(libdnf5-cli) >= %{libdnf5_minver}
+BuildRequires:  pkgconfig(tukit) >= %{tukit_minver}
 
 # To keep OBS and rpmlint from complaining about directory ownership
 BuildRequires:  dnf-data
@@ -37,6 +46,24 @@ BuildRequires:  dnf-data
 This package contains the plugin to implement transactional updates
 as a libdnf plugin. This plugin hooks into libdnf5 for DNF and
 PackageKit to enable this functionality in normal use.
+
+
+%package -n dnf5-plugin-txnupd
+Summary:        Plugin for dnf5 to implement transactional updates
+
+# Indicate providing dnf5 command
+Provides:       dnf5-command(txnupd)
+
+# Require correct minimum version of the CLI
+%requires_ge %(rpm --qf "%%{name}" -qf "$(readlink -f %{_bindir}/dnf5)")
+
+# Require the core plugin
+Requires:       libdnf5-plugin-txnupd%{?_isa} = %{version}-%{release}
+
+%description -n dnf5-plugin-txnupd
+This package contains the plugin to implement transactional updates
+as a dnf5 plugin. This plugin hooks into dnf5 to expose actions in the CLI.
+
 
 %package -n libdnf5-plugin-txnupd
 Summary:        Plugin for libdnf5 to implement transactional updates
@@ -74,19 +101,26 @@ PackageKit to enable this functionality in normal use.
 
 
 %conf
-%meson
+%cmake
 
 
 %build
-%meson_build
+%make_build -C build
 
 
 %install
-%meson_install
+%make_install -C build
 
 # Add configuration to mark this package as protected by libdnf
 mkdir -p %{buildroot}%{_sysconfdir}/dnf/protected.d
 echo "libdnf5-plugin-txnupd" > %{buildroot}%{_sysconfdir}/dnf/protected.d/txnupd.conf
+
+
+%files -n dnf5-plugin-txnupd
+%license LICENSE
+%doc README.md
+%{_libdir}/dnf5/plugins/txnupd.so
+%{_mandir}/man8/dnf5-txnupd.8*
 
 
 %files -n libdnf5-plugin-txnupd
@@ -96,6 +130,7 @@ echo "libdnf5-plugin-txnupd" > %{buildroot}%{_sysconfdir}/dnf/protected.d/txnupd
 %{_sysconfdir}/dnf/protected.d/txnupd.conf
 %dir %{_datadir}/dnf5
 %{_datadir}/dnf5/libdnf.plugins.conf.d/txnupd.conf
+%{_mandir}/man5/dnf5-txnupd.conf.5*
 
 
 %changelog

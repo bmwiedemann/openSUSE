@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 31 18:58:21 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 0.3.0
+  + Add txnupd command plugin for dnf5 to support apply-live and rollback
+  + Migrate buildsys from meson to cmake
+  + Add man pages
+
+-------------------------------------------------------------------
 Tue May  5 10:18:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - requires_ge takes a package name as parameter, not a full
