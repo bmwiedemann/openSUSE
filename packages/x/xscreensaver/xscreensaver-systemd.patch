@@ -1,0 +1,339 @@
+diff --git a/driver/xscreensaver-systemd.c b/driver/xscreensaver-systemd.c
+index 874cf6f..79921ea 100644
+--- a/driver/xscreensaver-systemd.c
++++ b/driver/xscreensaver-systemd.c
+@@ -417,6 +417,20 @@ static char *screensaver_version;
+ #define DBUS_KDE_MATCH         "type='signal'," \
+                                "interface='" DBUS_KDE_INTERFACE "'," \
+                                "member='InhibitionsChanged'"
++
++/* As of powerdevil commit f9c81566 (Plasma 6.5), the "ListInhibitions" method
++   and "InhibitionsChanged" signal are deprecated in favor of the read-only
++   "ActiveInhibitions" property and the standard "PropertiesChanged" signal.
++   The deprecated method/signal still work, so we listen for both signals and
++   prefer the new property, falling back to the old method on older powerdevil.
++ */
++#define DBUS_KDE_PROPERTIES_INTERFACE "org.freedesktop.DBus.Properties"
++#define DBUS_KDE_PROPERTY             "ActiveInhibitions"
++#define DBUS_KDE_PROP_MATCH    "type='signal'," \
++                               "interface='" DBUS_KDE_PROPERTIES_INTERFACE "'," \
++                               "member='PropertiesChanged'," \
++                               "path='" DBUS_KDE_PATH "'," \
++                               "arg0='" DBUS_KDE_INTERFACE "'"
+ #define INTERNAL_KDE_COOKIE "_KDE_"
+ 
+ /* This is for metadata about D-Bus itself.
+@@ -947,36 +961,129 @@ xscreensaver_gnome_inhibitor_removed_cb (sd_bus_message *m, void *arg,
+ }
+ 
+ 
+-/* Called when "org.kde.Solid.PowerManagement.PolicyAgent" (powerdevil)
+-   sends out a broadcast announcement that some other process has received
+-   or relinquished an inhibitor lock.  Anyone can receive this signal: it
+-   is non-exclusive.
++/* Tags any existing KDE inhibit entry matching appname/reason as "seen", or
++   adds a new entry if there isn't one yet.  Shared by both the new-style
++   ("ActiveInhibitions" property) and old-style ("ListInhibitions" method)
++   parsers.
++
++   Since powerdevil doesn't give us the original inhibiting cookie, we have to
++   assume that the appname/reason pair is unique: that means that if someone
++   sends two identical inhibits, that counts as one.  No nesting.
++ */
++static void
++xscreensaver_kde_note_inhibition (struct handler_ctx *ctx,
++                                  const char *appname, const char *reason)
++{
++  struct inhibit_entry *entry, *entry_next;
++  Bool seen_p = False;
++
++  if (!appname) appname = "";
++  if (!reason)  reason  = "";
++
++  /* Tag any existing entries that match an entry in the new list. */
++  SLIST_FOREACH_SAFE (entry, &inhibit_head, entries, entry_next) {
++    if (!strcmp (entry->cookie, INTERNAL_KDE_COOKIE) &&
++        !strcmp (entry->appname, appname) &&
++        !strcmp (entry->reason, reason)) {
++      entry->seen_p = True;
++      seen_p = True;
++    }
++  }
++
++  /* Add a new entry if this one is not already in the list. */
++  if (! seen_p) {
++    entry = add_new_entry (ctx, INTERNAL_KDE_COOKIE, appname, 0,
++                           "KDE",  /* That interface string is so long */
++                           reason);
++    entry->seen_p = True;
++  }
++}
++
++
++/* Reads powerdevil's "ActiveInhibitions" property and tags/adds an entry for
++   each currently-active idle inhibition.  This is the non-deprecated API as of
++   powerdevil commit f9c81566.  Returns 0 on success, or a negative errno if the
++   property is unavailable (e.g. an older powerdevil), in which case the caller
++   should fall back to the deprecated "ListInhibitions" method.
+  */
+ static int
+-xscreensaver_kde_inhibitor_changed_cb (sd_bus_message *m, void *arg,
+-                                       sd_bus_error *err)
++xscreensaver_kde_read_active_inhibitions (struct handler_ctx *ctx, sd_bus *bus)
+ {
+-  /* When an inhibitor is being added, this message contains the appname
+-     and reason as an array of two strings.  When one is being removed, the
+-     message contains an empty array, followed by an array of one element,
+-     the appname.  So one can tell "inhibit" and "uninhibit" apart, but
+-     can't tell *which* inhibition was being removed, since the uninhibit
+-     message doesn't contain the reason or a cookie.  So that's pretty
+-     worthless.
+-
+-     Instead of parsing the contents of this message, any time we get
+-     "InhibitionsChanged", we send a "ListInhibitions" message and parse
+-     the result of that instead: the current list of inhibitions.
+-   */
+-  struct handler_ctx *ctx = arg;
+-  sd_bus *bus = sd_bus_message_get_bus (m);
+   sd_bus_error error = SD_BUS_ERROR_NULL;
+   sd_bus_message *reply = 0;
++  int rc;
++
++  /* The property is an array of structs of (what, who, why, mode, flags).
++     sd_bus_get_property unwraps the "v" variant for us. */
++  rc = sd_bus_get_property (bus, DBUS_KDE_INTERFACE, DBUS_KDE_PATH,
++                            DBUS_KDE_INTERFACE, DBUS_KDE_PROPERTY,
++                            &error, &reply, "a(ssssu)");
++  if (rc < 0) {
++    if (verbose_p)
++      fprintf (stderr, "%s: KDE: no \"%s\" property (%s); "
++               "falling back to ListInhibitions\n",
++               blurb(), DBUS_KDE_PROPERTY,
++               error.message ? error.message : strerror(-rc));
++    sd_bus_error_free (&error);
++    return rc;
++  }
++
++  rc = sd_bus_message_enter_container (reply, 'a', "(ssssu)");
++  if (rc < 0) {
++    fprintf (stderr, "%s: KDE: enter container failed: %s: %s\n",
++             blurb(), DBUS_KDE_PROPERTY, strerror(-rc));
++    sd_bus_message_unref (reply);
++    sd_bus_error_free (&error);
++    return rc;
++  }
++
++  while (1) {
++    const char *what = 0, *who = 0, *why = 0, *mode = 0;
++    uint32_t flags = 0;
++
++    rc = sd_bus_message_read (reply, "(ssssu)", &what, &who, &why,
++                              &mode, &flags);
++    if (rc < 0) {
++      fprintf (stderr, "%s: KDE: message read failed: %s: %s\n",
++               blurb(), DBUS_KDE_PROPERTY, strerror(-rc));
++      sd_bus_message_unref (reply);
++      sd_bus_error_free (&error);
++      return rc;
++    }
++
++    if (rc == 0) break;
++
++    /* "what" is a colon-separated list that may contain "sleep" and/or
++       "idle".  Only "idle" inhibitions are about keeping the screen
++       un-blanked and un-locked; "sleep"-only inhibitions are about
++       preventing system suspend and must not hold off the screen saver.
++     */
++    if (what && strstr (what, "idle"))
++      xscreensaver_kde_note_inhibition (ctx, who, why);
++  }
++
++  sd_bus_message_exit_container (reply);
++  sd_bus_message_unref (reply);
++  sd_bus_error_free (&error);
++  return 0;
++}
++
++
++/* Calls powerdevil's deprecated "ListInhibitions" method and tags/adds an entry
++   for each inhibition it returns.  Used as a fallback on versions of powerdevil
++   that predate the "ActiveInhibitions" property.  Returns 0 on success, or a
++   negative errno.
++ */
++static int
++xscreensaver_kde_read_list_inhibitions (struct handler_ctx *ctx, sd_bus *bus)
++{
++  sd_bus_error error = SD_BUS_ERROR_NULL;
++  sd_bus_message *reply = 0;
++  sd_bus_message *m = 0;
+   const char *dest = DBUS_KDE_INTERFACE;
+   const char *path = DBUS_KDE_PATH;
+   const char *interface = dest;
+   const char *msg = "ListInhibitions";
+-  struct inhibit_entry *entry, *entry_next;
+   int rc;
+ 
+   rc = sd_bus_message_new_method_call (bus, &m, dest, path, interface, msg);
+@@ -990,69 +1097,83 @@ xscreensaver_kde_inhibitor_changed_cb (sd_bus_message *m, void *arg,
+   sd_bus_message_set_expect_reply (m, 1);
+ 
+   rc = sd_bus_call (bus, m, -1, &error, &reply);
++  sd_bus_message_unref (m);
+   if (rc < 0) {
+-    fprintf (stderr, "%s: KDE: call failed: %s.%s: %s\n", 
++    fprintf (stderr, "%s: KDE: call failed: %s.%s: %s\n",
+              blurb(), interface, msg, strerror(-rc));
++    sd_bus_error_free (&error);
+     return rc;
+   }
+ 
+-  m = reply;
+-
+   /* It's an array of an arbitrary number of structs of 2 strings each. */
+-  rc = sd_bus_message_enter_container (m, 'a', "(ss)");
++  rc = sd_bus_message_enter_container (reply, 'a', "(ss)");
+   if (rc < 0) {
+-    fprintf (stderr, "%s: KDE: enter container failed: %s.%s: %s\n", 
++    fprintf (stderr, "%s: KDE: enter container failed: %s.%s: %s\n",
+              blurb(), interface, msg, strerror(-rc));
++    sd_bus_message_unref (reply);
++    sd_bus_error_free (&error);
+     return rc;
+   }
+ 
+-  /* Since they don't give us the original inhibiting cookie, we have to
+-     assume that the appname/reason pair is unique: that means that if
+-     someone sends two identical inhibits, that counts as one.  No nesting.
+-   */
+-  interface = "KDE";  /* That string is so long */
+-
+-  /* Clear the "seen" flags for our internal tracking. */
+-  SLIST_FOREACH_SAFE (entry, &inhibit_head, entries, entry_next) {
+-    if (!strcmp (entry->cookie, INTERNAL_KDE_COOKIE))
+-      entry->seen_p = False;
+-  }
+-
+-  /* Iterate over each entry in this message reply.
+-   */
+   while (1) {
+     const char *appname = 0, *reason = 0;
+-    Bool seen_p = False;
+ 
+-    rc = sd_bus_message_read (m, "(ss)", &appname, &reason);
++    rc = sd_bus_message_read (reply, "(ss)", &appname, &reason);
+     if (rc < 0) {
+-      fprintf (stderr, "%s: KDE: message read failed: %s.%s: %s\n", 
++      fprintf (stderr, "%s: KDE: message read failed: %s.%s: %s\n",
+                blurb(), interface, msg, strerror(-rc));
++      sd_bus_message_unref (reply);
++      sd_bus_error_free (&error);
+       return rc;
+     }
+ 
+     if (rc == 0) break;
+ 
+-    /* Tag any existing entries that match an entry in the new list.
+-     */
+-    SLIST_FOREACH_SAFE (entry, &inhibit_head, entries, entry_next) {
+-      if (!strcmp (entry->cookie, INTERNAL_KDE_COOKIE) &&
+-          !strcmp (entry->appname, appname) &&
+-          !strcmp (entry->reason, reason)) {
+-        entry->seen_p = True;
+-        seen_p = True;
+-      }
+-    }
++    xscreensaver_kde_note_inhibition (ctx, appname, reason);
++  }
+ 
+-    /* Add a new entry if this one is not already in the list.
+-     */
+-    if (! seen_p) {
+-      entry = add_new_entry (ctx, INTERNAL_KDE_COOKIE, appname, 0,
+-                             interface, reason);
+-      entry->seen_p = True;
+-    }
++  sd_bus_message_exit_container (reply);
++  sd_bus_message_unref (reply);
++  sd_bus_error_free (&error);
++  return 0;
++}
++
++
++/* Called when "org.kde.Solid.PowerManagement.PolicyAgent" (powerdevil)
++   sends out a broadcast announcement that some other process has received
++   or relinquished an inhibitor lock.  Anyone can receive this signal: it
++   is non-exclusive.
++
++   This fires on both the deprecated "InhibitionsChanged" signal and the
++   standard "PropertiesChanged" signal that supersedes it (powerdevil commit
++   f9c81566).  Rather than parsing the contents of either signal -- which
++   don't reliably tell us *which* inhibition changed -- we just re-query the
++   complete current list each time.  Both signals are idempotent here, so it
++   is harmless if a newer powerdevil emits both.
++ */
++static int
++xscreensaver_kde_inhibitor_changed_cb (sd_bus_message *m, void *arg,
++                                       sd_bus_error *err)
++{
++  struct handler_ctx *ctx = arg;
++  sd_bus *bus = sd_bus_message_get_bus (m);
++  struct inhibit_entry *entry, *entry_next;
++  int rc;
++
++  /* Clear the "seen" flags for our internal tracking. */
++  SLIST_FOREACH_SAFE (entry, &inhibit_head, entries, entry_next) {
++    if (!strcmp (entry->cookie, INTERNAL_KDE_COOKIE))
++      entry->seen_p = False;
+   }
+ 
++  /* Prefer the new "ActiveInhibitions" property; fall back to the deprecated
++     "ListInhibitions" method on older powerdevil that lacks it. */
++  rc = xscreensaver_kde_read_active_inhibitions (ctx, bus);
++  if (rc < 0)
++    rc = xscreensaver_kde_read_list_inhibitions (ctx, bus);
++  if (rc < 0)
++    return rc;
++
+   /* Remove any existing entries that were not mentioned.
+    */
+   SLIST_FOREACH_SAFE (entry, &inhibit_head, entries, entry_next) {
+@@ -1062,7 +1183,7 @@ xscreensaver_kde_inhibitor_changed_cb (sd_bus_message *m, void *arg,
+         fprintf (stderr,
+                  "%s: uninhibited by \"%s\" (via %s) with \"%s\"%s\n",
+                  blurb(), remove_dir (entry->appname),
+-                 interface,
++                 "KDE",
+                  entry->reason,
+                  (entry->ignored_p ? " (ignored)" : ""));
+       SLIST_REMOVE (&inhibit_head, entry, inhibit_entry, entries);
+@@ -1462,7 +1583,9 @@ xscreensaver_systemd_loop (void)
+   }
+ 
+   /* Register a callback for "org.kde.Solid.PowerManagement.PolicyAgent.
+-     InhibitionsChanged".  User bus.
++     InhibitionsChanged".  This signal is deprecated as of powerdevil commit
++     f9c81566 but is still emitted, so we keep listening for it to support
++     older powerdevil.  User bus.
+    */
+   rc = sd_bus_add_match (user_bus, NULL, DBUS_KDE_MATCH,
+                          xscreensaver_kde_inhibitor_changed_cb, &global_ctx);
+@@ -1472,6 +1595,19 @@ xscreensaver_systemd_loop (void)
+     goto FAIL;
+   }
+ 
++  /* Also register a callback for the standard "PropertiesChanged" signal on
++     the PolicyAgent object, which supersedes "InhibitionsChanged" as of
++     powerdevil commit f9c81566 and announces changes to the new
++     "ActiveInhibitions" property.  User bus.
++   */
++  rc = sd_bus_add_match (user_bus, NULL, DBUS_KDE_PROP_MATCH,
++                         xscreensaver_kde_inhibitor_changed_cb, &global_ctx);
++  if (rc < 0) {
++    fprintf (stderr, "%s: registering KDE properties callback failed: %s\n",
++             blurb(), strerror(-rc));
++    goto FAIL;
++  }
++
+ 
+   /* Run an event loop forever, and wait for our callbacks to run.
+    */

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 29 20:15:26 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Add xscreensaver-systemd.patch, adapt to powerdevil changes in
+  Plasma 6.5. Adapt to new "ListInhibitions" method and
+  "InhibitionsChanged" signal. Fixes xscreensaver inhibit.
+
+-------------------------------------------------------------------
 Thu May 28 22:01:05 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
 
 - update to 6.15:
