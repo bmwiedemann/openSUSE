@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 31 06:44:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.1.0:
+  * New flags "is_de_vs" and "beta_compliance" for encryption
+    results
+  * New decryption flag GPGME_DECRYPT_SESSION_HASH and new field
+    session_hash in gpgme_decrypt_result_t.  For details see the
+    gpg option --show-session-key
+  * Setting of attributes for CMS signatures is now supported via
+    gpgme_sig_notation_add
+  * New context flag "export-filter"
+  * Extend the internal gpgsm_assuan_simple_command to consume all
+    received lines.  This fixes a possible lockup introduced by a
+    fix for a previous issue
+  * Fix passphrase cancel handling
+  * Handle the case when pinentry is invoked multiple times
+- drop gpgme-Treat-empty-DISPLAY-variable-as-unset.patch, included
+
+-------------------------------------------------------------------
 Wed Oct 22 12:14:29 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Treat empty DISPLAY variable as unset. [bsc#1252425, bsc#1231055]

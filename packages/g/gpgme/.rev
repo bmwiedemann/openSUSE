@@ -958,4 +958,12 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
     <comment>treat empty DISPLAY variable as unset. [bsc#1252425, bsc#1231055]</comment>
     <requestid>1317796</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>ef1b6e9102576b080d34949b51d5a175</srcmd5>
+    <version>2.1.0</version>
+    <time>1780329515</time>
+    <user>anag_factory</user>
+    <comment>gpgme 2.1.0 (forwarded request 1356107 from AndreasStieger)</comment>
+    <requestid>1356110</requestid>
+  </revision>
 </revisionlist>
