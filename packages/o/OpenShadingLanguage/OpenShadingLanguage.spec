@@ -226,6 +226,10 @@ export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %endif
 
+%if 0%{?suse_version} == 1500
+export pybind11_DIR="$(pybind11-config --cmakedir)"
+%endif
+
 %cmake \
 %if %{without qt}
       -DUSE_QT:BOOL=FALSE \
