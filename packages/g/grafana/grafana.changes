@@ -83,6 +83,10 @@ Fri Jan 30 08:53:12 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
   * CVE-2026-21721: Fix access control by the dashboard permissions
                     API (bsc#1257337)
   * CVE-2026-21720: Fix unauthenticated DoS (bsc#1257349)
+  * CVE-2025-30153: Fix Improper Handling of Highly Compressed Data
+                    (Data Amplification) in
+                    github.com/getkin/kin-openapi/openapi3filter
+                    (bsc#1264764)
 
 - Update to version 11.6.9:
   Features and enhancements:
