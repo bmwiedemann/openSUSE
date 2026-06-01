@@ -545,4 +545,46 @@ update to version 1.10.0
     <comment>switch to singlespec</comment>
     <requestid>1316765</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>49c477d66546826c81e65daddc3436cd</srcmd5>
+    <version>6.0.0</version>
+    <time>1780329974</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.0:
+  * Handle single digit versions
+  * Metadata for Share Replica
+  * Add support for QoS type and specs (2.94)
+  * Remove unused Makefile for doc
+  * Support filtering services by ensuring field
+  * fix share server get migration progress
+  * Add mount\_point\_name option for manage shares
+  * Switch auth to keystoneauth
+  * Add requests-mock to test-requirements.txt
+  * Remove the legacy &quot;manila&quot; CLI
+  * Drop workaround for Python &lt; 3.10
+  * ruff: Use more specific name to enable pyupgrade rule
+  * Remove dead code
+  * Add missing api\_versions decorator for
+    \_update\_share\_group
+  * Add func test for share instance export locations
+  * Test for share instances
+  * Add a git-blame-ignore-revs file
+  * reno: Update master for unmaintained/2024.1
+  * Remove unnecessary call
+  * Re-enable E501 errors
+  * Fix outstanding hacking issues
+  * Fix outstanding ruff issues
+  * Add ruff
+  * pre-commit: Bump versions
+  * Migrate setup configuration to pyproject.toml
+  * Fix neutron validation in share network creation
+  * fix respect region name in client initialization
+  * Allow settings --task-state without value (to send null) or
+    None
+  * Add --wait flag to share-server-unmanage
+  * Update master for stable/2025.2
+  * Fixes an issue that prevented ensure shares to be run
+</comment>
+    <requestid>1356314</requestid>
+  </revision>
 </revisionlist>

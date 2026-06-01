@@ -1,7 +1,7 @@
 #
 # spec file for package python-manilaclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-manilaclient
-Version:        5.6.0
+Version:        6.0.0
 Release:        0
 Summary:        Client Library for OpenStack Share API
 License:        Apache-2.0
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module oslo.log >= 3.36.0}
 BuildRequires:  %{python_module oslo.serialization >= 2.20.0}
 BuildRequires:  %{python_module oslo.utils >= 3.33.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module stestr}
 BuildRequires:  %{python_module testrepository}
 BuildRequires:  %{python_module testtools}
@@ -81,8 +82,6 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
 %pyproject_install
-# bash completion
-install -p -D -m 644 tools/manila.bash_completion %{buildroot}%{_sysconfdir}/bash_completion.d/manila.bash_completion
 
 %check
 # we don't want to depend on Tempest so remove the relevant tests
@@ -96,8 +95,6 @@ rm -rf manilaclient/tests/functional
 %license LICENSE
 %{python_sitelib}/manilaclient
 %{python_sitelib}/python_manilaclient-%{version}.dist-info
-%{_bindir}/manila
-%{_sysconfdir}/bash_completion.d/manila.bash_completion
 
 %files -n python3-manilaclient-doc
 %license LICENSE
