@@ -32,6 +32,10 @@ Patch1:         openSUSE-no-root-setup.patch
 Patch3:         minicom-2.8-replace-sigrelse.patch
 # PATCH-FIX-UPSTREAM fix-undefined-reference.patch -- Fix undefined reference to external COLS and LINES
 Patch4:         minicom-2.8-fix-undefined-reference.patch
+# PATCH-FIX-UPSTREAM - https://salsa.debian.org/minicom-team/minicom/-/commit/a546af2f16c50f32bc4cc92108f53beb9391d8f9
+Patch5:         0002-dial-Fix-use-of-check_io_frontend.patch
+# PATCH-FIX-UPSTREAM - https://salsa.debian.org/minicom-team/minicom/-/commit/9b1fcf3f47169569d79dc25488ef6b8fec740531
+Patch6:         0003-window-Consider-that-wcwidth-can-return-1-on-invalid.patch
 BuildRequires:  ckermit
 BuildRequires:  gettext-devel
 BuildRequires:  ncurses-devel

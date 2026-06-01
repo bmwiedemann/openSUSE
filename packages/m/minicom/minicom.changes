@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 30 05:05:26 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- Add 0002-dial-Fix-use-of-check_io_frontend.patch
+- Add 0003-window-Consider-that-wcwidth-can-return-1-on-invalid.patch
+
+-------------------------------------------------------------------
 Fri Mar 13 21:25:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.11.1
