@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 01 05:23:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.33.0:
+  * Update CHANGELOG
+  * treat configured scheduler as healthy during startup
+  * expose a container healthcheck command
+  * add Teams workflow webhook card support
+  * support multiple Nomad namespaces
+  * add Nomad provider e2e coverage
+  * containerd: handle containerd task IDs in the provider
+  * containerd provider support
+  * fix mail notifications with strict SMTP relays
+  * Add proxy support for HTTP notifiers
+  * document global proxy configuration
+  * preserve logrus fields in zerolog output
+  * chore(deps): bump docker/setup-qemu-action from 4.0.0 to 4.1.0
+  * skip non-image artifacts during registry checks
+  * ci(e2e): test non-image artifact
+  * skip generated artifact tags during registry checks
+
+-------------------------------------------------------------------
 Fri May 29 05:53:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.32.0:

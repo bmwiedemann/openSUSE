@@ -17,7 +17,7 @@
 
 
 Name:           diun
-Version:        4.32.0
+Version:        4.33.0
 Release:        0
 Summary:        Receive notifications when an image is updated on a Docker registry
 License:        MIT
