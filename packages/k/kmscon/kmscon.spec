@@ -18,7 +18,7 @@
 
 
 Name:           kmscon
-Version:        9.3.5
+Version:        10.0.0
 Release:        0
 Summary:        Linux KMS/DRM based virtual Console Emulator
 License:        MIT
@@ -32,6 +32,7 @@ BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libtsm) >= 4.4.0
 BuildRequires:  pkgconfig(libudev) >= 172
@@ -39,6 +40,7 @@ BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.5.0
+BuildRequires:  rpm_macro(_pam_vendordir)
 # O/P added for 13.1
 Obsoletes:      %{name}-service < %{version}-%{release}
 Provides:       %{name}-service = %{version}-%{release}
@@ -59,8 +61,11 @@ console.
 %install
 %meson_install
 
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/kmscon %{buildroot}%{_pam_vendordir}/kmscon
+
 # Remove example config from /etc, we use %%doc
-rm %{buildroot}/%{_sysconfdir}/kmscon/kmscon.conf.example
+rm %{buildroot}%{_sysconfdir}/kmscon/kmscon.conf.example
 
 %pre
 %service_add_pre %{name}.service
@@ -89,5 +94,6 @@ rm %{buildroot}/%{_sysconfdir}/kmscon/kmscon.conf.example
 %{_mandir}/man5/kmscon.conf.5%{?ext_man}
 %{_unitdir}/kmscon.service
 %{_unitdir}/kmsconvt@.service
+%{_pam_vendordir}/kmscon
 
 %changelog

@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu May 21 19:38:01 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
+
+- Update to version 10.0.0:
+  - Important Notes
+    * Kmscon now uses libseat by default. If you don't want to use libseat, you
+      can build kmscon with meson setup -Dlibseat=disabled or start kmscon with
+      --no-libseat.
+    * If you use systemd-logind or elogind, make sure to have a correct PAM
+      configuration, or kmscon won't start.
+    * The --listen argument, which allowed kmscon to automatically start
+      sessions on new seats has been removed. It doesn't integrate with libseat,
+      it also means multiple session for multiple users will share the same
+      kmscon process, which can be problematic, and it's too complex to
+      maintain.
+    * The --seats argument has been dropped, libseat doesn't allow to specify
+      which seat to use.
+    * For an emergency rescue shell, use --no-libseat, or use the noop backend
+      with LIBSEAT_BACKEND=noop kmscon
+  - What's Changed
+    * Prepare v10.0.0 release
+    * README: update README.md
+    * terminal: Free selection buffer on exit
+    * bbulk: Fix indentation
+    * seat: Fix trying to set DPMS to OFF when VT is not awake
+    * video: remove display_event, and rename callback to pageflip
+    * move htable to src/shl/htable
+    * video: rename fake_blendv with blendv
+    * video: rename uterm_video to video
+    * input: rename uterm_input to input
+    * terminal: change COLORTERM default to truecolor
+    * bbulk: Fix a glitch with double width glyph
+    * monitor: replace event with callbacks
+    * input: use a bool instead of another list for new device
+    * uterm_vt: replace event with callbacks.
+    * monitor: use seat name to filter devices
+    * seat: move uterm monitor to seat
+    * input: split input initialization
+    * seat: remove SEAT_SLEEP callback
+    * uterm_vt: add uterm_vt_get_name()
+    * uterm_vt: remove struct uterm_vt_master
+    * main: simplify seat.
+    * conf: remove listen mode, and only allows one seat.
+    * kmsconvt@.service: remove --seats=seat0 argument
+    * uterm_systemd: remove seat monitoring
+    * Use "kmscon" has default TERM
+    * Add a terminfo file.
+    * uterm_vt: remove unused seat name parameter
+    * conf: Add a libseat option, to enable/disable libseat
+    * uterm_vt: enable libseat
+    * Update systemd.service to work with libseat integration
+    * vt_libseat: Add uterm_vt_libseat.c
+    * libseat: Add a libseat build option
+    * seat: Fix missing monitor video data
+    * seat: open video device using uterm_vt_open()
+    * uterm_vt: Add open/close
+    * seat: delay video init
+    * session: remove unused function kmscon_session_schedule()
+    * seat: Move video device handling to the seat.
+    * seat: log display name instead of pointer address
+    * launch-gui: add a small delay before running the command.
+    * Update .gitignore
+    * uterm_vt: remove unused get_type()
+    * uterm_vt: remove unused target parameter
+    * simplify natural scrolling wheel direction check
+    * input: Add natural scrolling option to configuration
+    * text: move bbulk and gltex to the render/ directory
+    * shl: move the static helper library to the shl/ folder
+    * video: move video handling to the video/ folder
+    * input: move input code into the input/ directory
+    * font: move all fonts handling to src/font/
+    * input: Add callback to open/close device
+    * uterm_vt: split the file into the fake and real backend
+    * hw_cursor: Add thickness to the generated cursor image
+    * issue: Correctly handle \e with color code
+    * readme: Update with freetype font rendering
+    * freetype: Handle bitmap font with variable width
+    * tests: fix memleak when running tests
+    * uterm_vt: remove unused functions
+    * input: Move absolute axis initialization to wakeup time
+    * input: move the configuration option mouse_enable to init of input
+    * seat: correctly free the dpms timer
+    * drm: clear cursor plane before dropping master
+
+-------------------------------------------------------------------
 Wed Apr 29 20:46:27 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
 
 - Update to version 9.3.5:
