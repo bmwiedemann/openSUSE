@@ -69,4 +69,12 @@
     <comment>2.4.3</comment>
     <requestid>1348126</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>533cafe23f2f9fef3c551c28ba099ae3</srcmd5>
+    <version>2.4.3</version>
+    <time>1780329562</time>
+    <user>anag_factory</user>
+    <comment>Fix build in openSUSE:Factory:Staging:O</comment>
+    <requestid>1355977</requestid>
+  </revision>
 </revisionlist>

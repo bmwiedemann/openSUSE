@@ -70,8 +70,8 @@ cp %{SOURCE2} src/main/java/module-info.java
 %pom_xpath_set "//pom:properties/pom:jdkTarget" 1.8
 
 # Link the JNI headers
-ln -s %{_jvmdir}/java/include/jni.h src/main/native
-ln -s %{_jvmdir}/java/include/linux/jni_md.h src/main/native
+ln -s ${JAVA_HOME}/include/jni.h src/main/native
+ln -s ${JAVA_HOME}/include/linux/jni_md.h src/main/native
 
 # Set the JNI path
 sed -i 's,@LIBDIR@,%{_libdir},' \

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 29 14:59:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building with JDK that uses libalternatives instead of
+  update-alternatives
+
+-------------------------------------------------------------------
 Mon Apr 20 06:13:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream release 2.4.3
