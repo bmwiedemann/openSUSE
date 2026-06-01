@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 13 07:25:38 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- update to version 1.13.2
+  * Added:
+    - Add experimental support for PCRE regex (see manual)
+    - Add fullscreen suppress mode
+    - Add dunstify shorthand for stack-tags (--stack-tag)
+  * Changed:
+    - Improve doxygen docs
+    - Make the build more generic and improve support for FreeBSD
+  * Fixed:
+    - Run script for duplicate notifications
+    - Add NULL check in wayland toplevel events
+    - Fix markup newline parsing
+    - Restore dunstify -a and update docs
+
+-------------------------------------------------------------------
 Tue Feb  3 06:30:17 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - update to version 1.13.1

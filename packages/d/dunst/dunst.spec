@@ -18,7 +18,7 @@
 
 %{!?_userunitdir:%define _userunitdir %{_prefix}/lib/systemd/user}
 Name:           dunst
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        A customizable notification daemon
 License:        BSD-3-Clause
@@ -50,7 +50,6 @@ BuildRequires:  dbus-1-daemon
 BuildRequires:  dejavu
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  glycin-loaders
-
 
 %description
 Dunst is a customizable replacement for the notification daemons
