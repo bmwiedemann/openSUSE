@@ -1,7 +1,7 @@
 #
 # spec file for package libmd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           libmd
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Message digest functions from BSD systems
 License:        BSD-2-Clause OR BSD-3-Clause OR ISC OR SUSE-Public-Domain

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun  1 13:07:33 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to version 1.2.0:
+  * build: Set TAR_OPTIONS to avoid leaking maintainer information on dist
+  * build: Request tar-ustar format for distribution
+  * doc: Move derived code attribution to a Comment field
+  * doc: Remove redundant «Copyright ©» prefix from Copyright field in COPYING
+  * build: Add Maintainer and License fields to the .pc file
+  * doc: Remove «All rights reserved» from COPYING
+  * build: Rename LIBMD_ABI to SOVERSION
+  * build: Add a coverage regex to the CI job
+  * man: Sync SHA2 changes from OpenBSD
+  * Fixes: commit 4c5931f53727b1428b47b6a1c0bfdad02c46f1ca
+  * build: Add a new vpath-tests CI test
+  * build: Refactor autogen call into before_script
+  * build: Fix out-of-tree build
+  * build: Terminate lists in variables with «# EOL»
+  * test: Add cases for SHA224 and SHA512-256
+  * test: Add a new test_eq() helper function
+  * build: Rename libmd_alias() to libmd_strong_alias()
+  * build: Do not use strong aliases on macOS
+  * build: Require automake 1.11
+  * build: Fix configure.ac indentation
+  * build: Switch to debian:latest Docker image
+  * build: Fix version script linker support detection
+  * doc: Move mailing list reference to the end
+
+-------------------------------------------------------------------
 Tue Jun 20 11:51:30 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 -  Update to version 1.1.0:
