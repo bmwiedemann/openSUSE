@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Mon Jun  1 12:38:12 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.0
+  * api: Add NET_GetAddressBytes()
+
+-------------------------------------------------------------------
+Tue May 19 11:49:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.0, based off SDL2_net
+  * New API that's simpler than SDL2_net
+  * Support for IPv6
+  * Network interaction is fully asynchronous
+- Delete sdl2-symvers.patch (SDL3 should track)
+
+-------------------------------------------------------------------
+Sat May 16 06:18:40 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add sdl2-symvers.patch
+
+-------------------------------------------------------------------
+Fri May 15 22:46:31 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- Update to release 2.4.0
+  * Added SDLNet_TCP_OpenServer() and SDLNet_TCP_OpenClient()
+
+-------------------------------------------------------------------
+Mon Jul 14 14:00:00 UTC 2025 - Andy Alt <arch_stanton5995@proton.me>
+
+- Use pkgconfig(sdl2)
+
+-------------------------------------------------------------------
+Fri Aug 19 18:02:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.0
+  * Build procedure updates only
+- Rename devel package to just %name-devel, which is what most
+  our packages do.
+- Trim baselibs.conf, stop producing SDL2_net-devel
+
+-------------------------------------------------------------------
+Thu Aug  9 14:42:12 UTC 2018 - rpm@fthiessen.de
+
+- Update to 2.0.1
+  * Use of SDL provided function rather then depending
+    on system provided functions
+
+-------------------------------------------------------------------
+Thu Jan  8 09:32:23 UTC 2015 - jengelh@inai.de
+
+- Improve package summary and description. Drop --with-pic which
+  is enabled implicitly anyway, remove redundant Requires.
+
+-------------------------------------------------------------------
+Tue Aug 13 12:04:26 UTC 2013 - jengelh@inai.de
+
+- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list, more robust make install call
+
+-------------------------------------------------------------------
+Tue Aug 13 11:27:54 UTC 2013 - prusnak@opensuse.org
+
+- created package (version 2.0.0) - based on SDL_net package
+
