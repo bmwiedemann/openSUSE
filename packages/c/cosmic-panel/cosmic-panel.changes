@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 01 13:11:07 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * fix: lock
+  * fix(layout): don't halve border_radius
+  * chore(toolchain): add clippy and rustfmt
+  * Smithay update (#602)
+  * chore: update dependencies
+  * chore: remove extra space from input region
+
+-------------------------------------------------------------------
+Sun Apr 12 15:52:05 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * fmt: use `imports_granularity = "Module"`
+  * chore(layout): reduce code duplication
+  * chore: fmt
+  * chore: clippy
+  * chore: update dependencies
+  * chore: remove patch
+  * chore: update deps
+  * chore: update deps
+  * chore: udpates after iced rebase
+
+-------------------------------------------------------------------
 Mon Mar  9 13:55:23 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:
