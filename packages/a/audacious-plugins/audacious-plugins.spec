@@ -1,7 +1,7 @@
 #
 # spec file for package audacious-plugins
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %define __provides_exclude_from ^%{_libdir}/audacious/*/.*.so$
-%define aud_ver_min 4.5
-%define aud_ver_max 4.5.99
+%define aud_ver_min 4.6
+%define aud_ver_max 4.6.99
 %bcond_with faad
 
 %if 0%{?suse_version} < 1600
@@ -27,14 +27,12 @@
 %endif
 
 Name:           audacious-plugins
-Version:        4.5.1
+Version:        4.6
 Release:        0
 Summary:        Plugins for Audacious
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT
 URL:            https://audacious-media-player.org/
 Source:         https://distfiles.audacious-media-player.org/%{name}-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE fix-linking-mpg123.patch boo#1187525
-Patch0:         fix-linking-mpg123.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libmp3lame-devel
@@ -51,6 +49,7 @@ BuildRequires:  cmake(Qt6OpenGLWidgets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa) >= 1.0.16
 BuildRequires:  pkgconfig(audacious) >= %{aud_ver_min}
+BuildRequires:  pkgconfig(faad2)
 BuildRequires:  pkgconfig(flac) >= 1.2.1
 BuildRequires:  pkgconfig(fluidsynth) >= 1.0.6
 BuildRequires:  pkgconfig(gl)
@@ -94,9 +93,6 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       libaudcore%{?_isa} <= %{aud_ver_max}
 Requires:       libaudcore%{?_isa} >= %{aud_ver_min}
 Recommends:     %{name}-extra
-%if %{with faad}
-BuildRequires:  pkgconfig(faad2)
-%endif
 
 %description
 Plugins for the Audacious audio player.
@@ -129,11 +125,7 @@ export PATH="%{_libdir}/qt6/libexec:$PATH"
 %ifarch %{arm} aarch64
   -Dgl-spectrum=false \
 %endif
-%if %{with faad}
   -Daac=true   \
-%else
-  -Daac=false  \
-%endif
   -Dmpg123=true
 %meson_build
 
@@ -145,18 +137,12 @@ export PATH="%{_libdir}/qt6/libexec:$PATH"
 %files
 %license COPYING
 %{_libdir}/audacious/
-%if %{with faad}
-%exclude %{_libdir}/audacious/Input/aac-raw.so
-%endif
 %exclude %{_libdir}/audacious/Output/filewriter.so
 %{_datadir}/audacious/
 
 %files lang -f %{name}.lang
 
 %files extra
-%if %{with faad}
-%{_libdir}/audacious/Input/aac-raw.so
-%endif
 %{_libdir}/audacious/Output/filewriter.so
 
 %changelog

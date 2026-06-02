@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Jun  1 11:21:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.6:
+  * New plugins and features:
+    - Add file browser plugin
+    - Add macOS Now Playing plugin
+    - Port Playback History plugin to GTK (#1596)
+    - Enable Xwayland only for Winamp interface (#1754, #1656)
+    - Add a configuration setting for Xwayland (#1664)
+    - Allow sorting playlist entries by bitrate (#1356)
+    - Support exporting playlists on CLI with audtool (#1659)
+    - Allow playing Musepack SV8 files (#1674)
+    - Support all AIFF extensions and MIME types (#1690)
+    - Add support for file creation/modification dates (#1701)
+    - Allow to bring back playlist deletion confirmation (#1724)
+    - Allow wrapping to last track in playlist with Previous button
+      (#1726)
+    - Support more shortcuts in GTK/Qt interface to switch playlist
+      tabs (#1730)
+    - Add support for reading lyrics tag from Opus, Ogg Vorbis and
+      FLAC files
+    - Allow to configure previous/next album global hotkeys (#1737)
+    - Read ReplayGain tags with FFmpeg plugin for more file types
+      (#1793)
+    - Load companion .m3u/.m3u8 with Game Console Music Decoder for
+      subsong metadata
+    - Handle Delete and F2 key press events in Playlist Manager
+    - Use localized music directory for Search Tool
+    - Accept dropped files on main window of Qt Winamp interface
+  * Bugs fixed since 4.5.1:
+    - Fix corner case of Qt-only build with use_qt=FALSE in config
+    - Escape brackets in file path URLs (#1649)
+    - Work around broken drop indicator in Qt interface with Qt
+      6.8+ (#1667)
+    - Fix help output for --pause command (#1678)
+    - Prevent buffer overflow in PSF metadata parser (#1713)
+    - Fix encoding issue with lyrics on Windows (#1731)
+    - Prevent undefined behavior for integer conversions (#1796)
+    - Plug memory leaks in LIRC plugin
+    - Prevent infinite loop with "Next album" and enabled shuffle
+      mode
+  * Changes since 4.6-beta1:
+    - Avoid crash when opening malformed PSF2 file (#1716)
+    - Prevent crash when migrating config settings (#1797)
+    - Fix slider knob click behavior with GTK 3 (#1813)
+    - Update translations
+  * Other changes:
+    - Remove deprecated Audacious code and APIs
+    - Remove Mac Media Keys plugin (#1653)
+    - Remove ChartLyrics support (#1728)
+    - Drop autotools support in favor of Meson
+    - Allow disabling any plugin with Meson
+    - Enable -fvisibility-inlines-hidden (#1683)
+    - Support version 3.0 of libsidplayfp (#1706)
+    - Require newer versions for dependencies like GTK, Qt, FFmpeg,
+      etc.
+    - Install AppStream metainfo file by default
+    - Various code cleanups     
+- Drop fix-linking-mpg123.patch: Only ever applied to
+  autotoolsbuild, and that does not exist anymore.
+
+-------------------------------------------------------------------
+Sun May 24 12:34:56 UTC 2026 - olaf@aepfle.de
+
+- Move aac plugin to primary package
+
+-------------------------------------------------------------------
 Mon Sep  8 20:45:50 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Update to 4.5.1
