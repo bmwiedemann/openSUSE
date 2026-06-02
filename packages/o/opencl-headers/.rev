@@ -358,4 +358,12 @@
   * Command-buffer supported queue properties (#265)</comment>
     <requestid>1354675</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bd099947a75e2357b1a9a1b523778804</srcmd5>
+    <version>2026.05.29</version>
+    <time>1780422397</time>
+    <user>anag_factory</user>
+    <comment>Update to version 2026.05.29 (OpenCL 3.1 headers)</comment>
+    <requestid>1356437</requestid>
+  </revision>
 </revisionlist>

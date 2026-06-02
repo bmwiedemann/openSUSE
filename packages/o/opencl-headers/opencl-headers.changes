@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun  1 19:20:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.05.29:
+  * Update headers for OpenCL 3.1
+  * Add OpenCL ICD Loader deinitialization support
+  * Add macros for anonymous union support
+  * Generate headers with cl_intel_kernel_allocations_info
+  * Remove __stdcall warnings on ARM
+  * Regenerate extension headers from the latest XML
+  * Update copyright dates to 2026
+
+-------------------------------------------------------------------
 Fri May 22 10:07:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2025.07.22:
