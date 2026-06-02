@@ -25,4 +25,12 @@
     <comment>- Modernise spec file</comment>
     <requestid>769694</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>aa0146c05877d64631299f28df4f6437</srcmd5>
+    <version>0.8.2</version>
+    <time>1780408917</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: add explicit gcc+make BuildRequires, build data-only libsoc-common as noarch (fixes no-binary), drop obsolete Group tags</comment>
+    <requestid>1356421</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libsoc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,15 @@ Version:        0.8.2
 Release:        0
 Summary:        C library for interfacing with common SoC peripherals
 License:        LGPL-2.1-only
-Group:          Development/Libraries/C and C++
 URL:            https://jackmitch.github.io/libsoc/
 Source0:        https://github.com/jackmitch/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
+BuildRequires:  gcc
 BuildRequires:  i2c-tools
 BuildRequires:  libtool
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(python3)
 
@@ -39,7 +40,6 @@ on Chips (SoC) through generic Linux Kernel interfaces.
 
 %package -n %{name}%{sover}
 Summary:        C library for interfacing with common SoC peripherals
-Group:          System/Libraries
 Recommends:     %{name}-common
 
 %description -n %{name}%{sover}
@@ -51,7 +51,7 @@ on its determinism and it should not be used in time critical routines.
 
 %package -n %{name}-common
 Summary:        Common files for %{name}
-Group:          Development/Languages/C and C++
+BuildArch:      noarch
 
 %description -n %{name}-common
 libsoc is a C library to interface with common peripherals found in System
@@ -64,7 +64,6 @@ This package contains common config files for %{name}.
 
 %package -n python3-%{name}
 Summary:        Python3 bindings for %{name}
-Group:          Development/Languages/Python
 Requires:       %{name}%{sover} = %{version}
 
 %description -n python3-%{name}
@@ -75,7 +74,6 @@ This package contains python3 bindings for %{name}.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Languages/C and C++
 Requires:       %{name}%{sover} = %{version}
 
 %description devel
@@ -116,6 +114,6 @@ rm -rf %{buildroot}%{_libdir}/libsoc.la
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files -n python3-%{name}
-%{python3_sitearch}/*
+%{python3_sitearch}/libsoc
 
 %changelog
