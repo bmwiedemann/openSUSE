@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Fri May 29 07:15:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
-
-- Use libalternatives instead of update-alternatives for
-  distributions where libalternatives is available
-
--------------------------------------------------------------------
 Fri May 29 07:11:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Use libalternatives instead of update-alternatives for

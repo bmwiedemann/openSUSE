@@ -375,4 +375,12 @@
     <comment>Use libalternatives when possible</comment>
     <requestid>1355809</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>88817fe2d1f66f9610a0eacdb410cdf9</srcmd5>
+    <version>17.0.19.0</version>
+    <time>1780409290</time>
+    <user>anag_factory</user>
+    <comment>Fix changelog</comment>
+    <requestid>1356611</requestid>
+  </revision>
 </revisionlist>
