@@ -1,7 +1,7 @@
 #
 # spec file for package libica
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -124,7 +124,7 @@ the libica library.
 %build
 autoreconf --force --install
 %configure CPPFLAGS="-Iinclude -fPIC -DNO_FIPS_CONFIG_LOAD" CFLAGS="%{optflags} -fPIC -DNO_FIPS_CONFIG_LOAD" \
-  --enable-fips --with-fips-config=fips_local.cnf
+  --enable-internal-tests --enable-fips --with-fips-config=fips_local.cnf
 
 %make_build clean
 %make_build FIPSHMAC=fipshmac BUILD_VERSION="FIPS-SUSE-%version-%release"

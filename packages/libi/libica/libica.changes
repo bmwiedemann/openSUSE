@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 09:58:02 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file (bsc#1265607)
+  * Included `--enable-internal-tests`
+- Updated the `libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch`
+  * Changed the `hexkey` to non-zero value
+
+-------------------------------------------------------------------
 Mon May 18 09:17:52 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch to block SHA1 mechanism for FIPS 140-3 (bsc#1260938)

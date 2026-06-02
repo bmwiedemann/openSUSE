@@ -24,7 +24,7 @@ index 0000000..60fd505
 +fi
 +
 +while [ -n "$1" ] ; do
-+    dgst="$(openssl dgst -sha256 -mac hmac -macopt hexkey:00000000 "$1")"
++    dgst="$(openssl dgst -sha256 -mac hmac -macopt hexkey:6f72626f44654a49544954656a7369727041444f4e6976697270556b76617250 "$1")"
 +    echo "$dgst" | sed -e 's/^.* //' > "$(dirname "$1")/.$(basename "$1")".hmac
 +    shift
 +done
