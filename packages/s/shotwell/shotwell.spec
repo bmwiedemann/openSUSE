@@ -17,7 +17,7 @@
 
 
 Name:           shotwell
-Version:        0.32.15
+Version:        0.32.16
 Release:        0
 Summary:        Photo Manager for GNOME
 License:        LGPL-2.1-or-later

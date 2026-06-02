@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  1 19:50:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.32.16:
+  + Fix crashes on invalid dimensions in export
+  + Support GExiv2 0.16
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar  1 20:51:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.32.15:
