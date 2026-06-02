@@ -403,4 +403,12 @@
     <comment>- Change `Requires: feh` to `Suggests: feh`</comment>
     <requestid>1201765</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>df651ce02d87c029ad8ac8b1619687e5</srcmd5>
+    <version>2.9.3</version>
+    <time>1780409300</time>
+    <user>anag_factory</user>
+    <comment>version update to 2.9.3</comment>
+    <requestid>1356613</requestid>
+  </revision>
 </revisionlist>
