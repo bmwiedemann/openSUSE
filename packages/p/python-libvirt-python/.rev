@@ -1128,4 +1128,17 @@ fix a jira reference in the changelog.
   - Add all new APIs and constants in libvirt 12.3.0</comment>
     <requestid>1350869</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>bfe63357f3722927c359803fcd5cdc26</srcmd5>
+    <version>12.4.0</version>
+    <time>1780422409</time>
+    <user>anag_factory</user>
+    <comment>Updated python bindings for libvirt 12.4.0
+
+- Update to 12.4.0
+  - Add all new APIs and constants in libvirt 12.4.0
+
+- Switch to the pyproject macros to build and install.</comment>
+    <requestid>1356454</requestid>
+  </revision>
 </revisionlist>

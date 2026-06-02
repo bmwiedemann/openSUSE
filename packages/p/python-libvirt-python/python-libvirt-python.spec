@@ -19,12 +19,11 @@
 # No longer build for python2. Support was dropped upstream in the 6.0.0 release
 %define skip_python2  1
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define srcname libvirt-python
 %{?sle15_python_module_pythons}
 Name:           python-libvirt-python
 URL:            https://libvirt.org/
-Version:        12.3.0
+Version:        12.4.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -36,8 +35,10 @@ BuildRequires:  python-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %ifpython2
 Provides:       libvirt-python = %{version}
 Obsoletes:      libvirt-python < %{version}
@@ -61,10 +62,10 @@ find examples -type f -exec chmod 0644 \{\} \;
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -73,7 +74,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %doc README COPYING examples/
 %{python_sitearch}/libvirt*
-%{python_sitearch}/libvirt_python-%{version}*info
+%{python_sitearch}/libvirt_python-%{version}.dist-info
 %pycache_only %{python_sitearch}/__pycache__/libvirt*
 
 %changelog
