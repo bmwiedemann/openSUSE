@@ -424,4 +424,12 @@
          CVE-2021-46310 [bsc#1214670]</comment>
     <requestid>1290990</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>668f3749d56fc4524dc03cc6a911d399</srcmd5>
+    <version>3.5.30</version>
+    <time>1780408883</time>
+    <user>anag_factory</user>
+    <comment>CVE-2021-46312, [bsc#1214672]</comment>
+    <requestid>1356382</requestid>
+  </revision>
 </revisionlist>

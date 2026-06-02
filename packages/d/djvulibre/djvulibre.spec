@@ -1,7 +1,7 @@
 #
 # spec file for package djvulibre
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define	libname	lib%{name}21
 Name:           djvulibre
-Version:        3.5.29
+Version:        3.5.30
 Release:        0
 Summary:        An Implementation of DjVu
 License:        GPL-2.0-or-later
@@ -29,8 +29,6 @@ URL:            http://djvu.sourceforge.net
 Source:         https://downloads.sourceforge.net/djvu/%{name}-%{version}.tar.gz
 # CVE-2021-3500 [bsc#1186253], Stack overflow in function DJVU:DjVuDocument:get_djvu_file() via crafted djvu file
 Patch4:         djvulibre-CVE-2021-3500.patch
-# CVE-2021-46312 [bsc#1214672], divide by zero in IW44EncodeCodec.cpp
-Patch6:         djvulibre-CVE-2021-46312.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme

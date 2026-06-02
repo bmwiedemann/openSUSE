@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  1 13:31:58 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 3.5.30
+  * fix CVE-2021-46312 [bsc#1214672]
+- deleted patches
+  * djvulibre-CVE-2021-46312.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Jul  7 08:04:45 UTC 2025 - pgajdos@suse.com
 
 - version update to 3.5.29 [bsc#1245773] (CVE-2025-53367)
