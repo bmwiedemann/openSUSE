@@ -1,7 +1,7 @@
 #
 # spec file for package libcec
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,19 +21,18 @@
 %define libname	%{name}%{sover}
 %bcond_with enable_rpi_build
 Name:           libcec
-Version:        7.0.0
+Version:        7.1.1
 Release:        0
 Summary:        Library to control devices with TV remote control via HDMI
 License:        GPL-2.0-or-later
 URL:            https://github.com/Pulse-Eight/libcec
 Source:         https://github.com/Pulse-Eight/libcec/archive/libcec-%{version}.tar.gz
-Patch1:         libcec-cmake_install_lib_dir.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  swig
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(p8-platform)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(udev)
@@ -56,7 +55,6 @@ ways of sending a message for each vendor.
 
 %package -n cec-client
 Summary:        Control your device with your TV remote control via HDMI
-Group:          Hardware/TV
 Requires:       %{libname} = %{version}
 
 %description -n cec-client
@@ -73,7 +71,6 @@ This package contains the client applications.
 
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
-Group:          Hardware/TV
 
 %description -n python3-%{name}
 In combination with the right hardware, libcec allows to control
@@ -89,7 +86,6 @@ This package contains the Python bindings.
 
 %package -n %{libname}
 Summary:        USB CEC adapter communication library
-Group:          System/Libraries
 
 %description -n %{libname}
 In combination with the right hardware, libcec allows to control
@@ -98,7 +94,6 @@ cabling.
 
 %package devel
 Summary:        Development files for the USB CEC adapter communication library
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -119,6 +114,9 @@ This subpackage contains the headers for libcec.
 
 %install
 %cmake_install
+
+# do not ship the static library
+rm -f %{buildroot}%{_libdir}/libcec.a
 
 %ldconfig_scriptlets -n %{libname}
 

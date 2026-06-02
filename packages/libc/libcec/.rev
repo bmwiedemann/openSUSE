@@ -158,4 +158,12 @@ Now with proper naming, thanks to Jan Engelhardt.</comment>
     <comment></comment>
     <requestid>1252658</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7b51125ffaec0d91cf2b3d9f1da1cca7</srcmd5>
+    <version>7.1.1</version>
+    <time>1780408914</time>
+    <user>anag_factory</user>
+    <comment>Update to 7.1.1 (incl 7.1.0): new vendor IDs, system audio mode support, RPi/cmake fixes; drop now-upstreamed libcec-cmake_install_lib_dir.patch; stop shipping the static library; convert ncurses-devel to pkgconfig(ncurses), drop Group tags</comment>
+    <requestid>1356416</requestid>
+  </revision>
 </revisionlist>

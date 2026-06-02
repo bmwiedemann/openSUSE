@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun  1 16:38:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 7.1.1 (includes 7.1.0):
+  * Add Teufel vendor ID
+  * Add system audio mode request & status support
+  * RPi: check that passive mode can be set during adapter
+    detection
+  * Make CMake obey INSTALL_BINDIR / INSTALL_LIBDIR
+  * Various build fixes and NULL-handling corrections
+- Drop libcec-cmake_install_lib_dir.patch: the lib-install-dir
+  fix is now included upstream
+- Do not ship the static library (libcec.a)
+- Spec cleanup: convert ncurses-devel to pkgconfig(ncurses),
+  drop obsolete Group tags
+
+-------------------------------------------------------------------
 Thu Mar 13 03:13:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.0.0:
