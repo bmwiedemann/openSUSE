@@ -1,0 +1,95 @@
+From: Fab Stz <fabstz-it@yahoo.fr>
+Date: Wed, 6 May 2026 10:40:28 +0200
+Subject: Fix build when g_free macro is defined
+
+In the build of glib-2.0 2.88.0-1, we have
+- Checking for function "free_sized" : NO [on Debian] https://buildd.debian.org/status/fetch.php?pkg=glib2.0&arch=amd64&ver=2.88.0-1&stamp=1773702037&raw=0
+- Checking for function "free_sized" : YES [on Ubuntu Resolute] https://launchpadlibrarian.net/852312891/buildlog_ubuntu-resolute-amd64.glib2.0_2.88.0-1_BUILDING.txt.gz
+
+This directly impacts glib "/usr/include/glib-2.0/glib/gmem.h" at this point. Glib apparently "overrides" it's g_free function by this macro.
+
+    #if G_GNUC_CHECK_VERSION (4, 1) && GLIB_VERSION_MAX_ALLOWED >= GLIB_VERSION_2_78 && defined(G_HAVE_FREE_SIZED)
+    
+    #define g_free(mem)                                                            \
+      (__builtin_object_size ((mem), 0) != ((size_t) - 1)) ?                       \
+        g_free_sized (mem, __builtin_object_size ((mem), 0)) : (g_free) (mem)
+    
+    #endif /* G_GNUC_CHECK_VERSION (4, 1) && && GLIB_VERSION_MAX_ALLOWED >= GLIB_VERSION_2_78 && defined(G_HAVE_FREE_SIZED) */
+      
+From what I understand, g_free is defined as a macro when Glib2 version >= 2.78 & free_sized is available. This is the case in Ubuntu but not on Debian.
+
+So on Ubuntu resolute the preprocessor will produce this incorrect syntax.
+
+    [[maybe_unused]] auto scopeGuard167 = zen::makeGuard<zen::ScopeGuardRunMode::onExit >([&]{ ::(__builtin_object_size ((contentType), 0) != ((size_t) - 1)) ? g_free_sized (contentType, __builtin_object_size ((contentType), 0)) : (g_free) (contentType); });;
+
+I think the scope resolution operator "::" doesn't make sense in that case and is the cause of the error.
+It is correct to use it though when g_free isn't defined as a macro in glib.
+
+Origin: self
+Forwarded: https://freefilesync.org/forum/viewtopic.php?p=50762#p50762
+---
+ FreeFileSync/Source/afs/ftp.cpp          | 8 ++++++++
+ FreeFileSync/Source/base/icon_loader.cpp | 4 ++++
+ zen/zstring.cpp                          | 4 ++++
+ 3 files changed, 16 insertions(+)
+
+diff --git a/FreeFileSync/Source/afs/ftp.cpp b/FreeFileSync/Source/afs/ftp.cpp
+index 5bfbc11..28c848d 100644
+--- a/FreeFileSync/Source/afs/ftp.cpp
++++ b/FreeFileSync/Source/afs/ftp.cpp
+@@ -121,7 +121,11 @@ Zstring ansiToUtfEncoding(const std::string_view& str) //throw SysError
+                                 &error);       //GError** error
+     if (!utfStr)
+         throw SysError(formatGlibError("g_convert(" + std::string(str) + ", LATIN1 -> UTF-8)", error));
++#ifdef g_free
++    ZEN_ON_SCOPE_EXIT(g_free(utfStr));
++#else
+     ZEN_ON_SCOPE_EXIT(::g_free(utfStr));
++#endif
+ 
+     return {utfStr, bytesWritten};
+ 
+@@ -150,7 +154,11 @@ std::string utfToAnsiEncoding(const Zstring& str) //throw SysError
+                                  &error);         //GError** error
+     if (!ansiStr)
+         throw SysError(formatGlibError("g_convert(" + utfTo<std::string>(strNorm) + ", UTF-8 -> LATIN1)", error));
++#ifdef g_free
++    ZEN_ON_SCOPE_EXIT(g_free(ansiStr));
++#else
+     ZEN_ON_SCOPE_EXIT(::g_free(ansiStr));
++#endif
+ 
+     return {ansiStr, bytesWritten};
+ 
+diff --git a/FreeFileSync/Source/base/icon_loader.cpp b/FreeFileSync/Source/base/icon_loader.cpp
+index e8f813d..abf09fc 100644
+--- a/FreeFileSync/Source/base/icon_loader.cpp
++++ b/FreeFileSync/Source/base/icon_loader.cpp
+@@ -164,7 +164,11 @@ FileIconHolder fff::getIconByTemplatePath(const Zstring& templatePath, int maxSi
+                                                       nullptr);             //gboolean* result_uncertain
+     if (!contentType)
+         throw SysError(formatSystemError("g_content_type_guess(" + copyStringTo<std::string>(templatePath) + ')', L"", L"Unknown content type."));
++#ifdef g_free
++    ZEN_ON_SCOPE_EXIT(g_free(contentType));
++#else
+     ZEN_ON_SCOPE_EXIT(::g_free(contentType));
++#endif
+ 
+     GIcon* const fileIcon = ::g_content_type_get_icon(contentType);
+     if (!fileIcon)
+diff --git a/zen/zstring.cpp b/zen/zstring.cpp
+index 488fd44..529f823 100644
+--- a/zen/zstring.cpp
++++ b/zen/zstring.cpp
+@@ -25,7 +25,11 @@ Zstring getUnicodeNormalForm_NonAsciiValidUtf(const Zstring& str, UnicodeNormalF
+         gchar* strNorm = ::g_utf8_normalize(str.c_str(), str.length(), form == UnicodeNormalForm::nfc ? G_NORMALIZE_NFC : G_NORMALIZE_NFD);
+         if (!strNorm)
+             throw SysError(formatSystemError("g_utf8_normalize", L"", L"Conversion failed."));
++#ifdef g_free
++        ZEN_ON_SCOPE_EXIT(g_free(strNorm));
++#else
+         ZEN_ON_SCOPE_EXIT(::g_free(strNorm));
++#endif
+ 
+         const std::string_view strNormView(strNorm, strLength(strNorm));
+ 

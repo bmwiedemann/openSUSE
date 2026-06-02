@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  1 07:45:52 UTC 2026 - munix9@googlemail.com
+
+- Add glib2-2.78-free_size-Fix-build-when-g_free-macro-is-defined.patch
+  * Based on https://freefilesync.org/forum/viewtopic.php?t=13050#p50762
+  * Fixes build on Factory/TW
+- Use gcc15 for Leap 16
+
+-------------------------------------------------------------------
 Mon Mar 30 06:52:27 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 14.9:

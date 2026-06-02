@@ -16,8 +16,8 @@
 #
 
 
-%if 0%{?suse_version} && 0%{?suse_version} < 1590
-%global force_gcc_version 12
+%if 0%{?suse_version} && 0%{?suse_version} < 1699
+%global force_gcc_version 15
 %endif
 
 Name:           FreeFileSync
@@ -37,13 +37,15 @@ Patch0:         FreeFileSync-resources.patch
 Patch1:         FreeFileSync-disable-in-app-updates.patch
 Patch2:         FreeFileSync-remove_ifdef_exceptions.patch
 Patch3:         FreeFileSync-gui.patch
+# PATCH-FIX-UPSTREAM glib2-2.78-free_size-Fix-build-when-g_free-macro-is-defined.patch -- based on https://freefilesync.org/forum/viewtopic.php?t=13050#p50762
+Patch4:         glib2-2.78-free_size-Fix-build-when-g_free-macro-is-defined.patch
 BuildRequires:  boost-devel >= 1.54
-BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 15
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libssh2-devel
 BuildRequires:  libstdc++6 >= 10.0.0
-BuildRequires:  libstdc++6 >= 12
+BuildRequires:  libstdc++6 >= 15
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-3_2-devel >= 3.2.0
