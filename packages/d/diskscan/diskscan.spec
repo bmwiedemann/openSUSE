@@ -1,7 +1,7 @@
 #
 # spec file for package diskscan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,8 +46,10 @@ the disk vendor decision making logic.
 %autosetup
 
 %build
-%cmake
-%make_jobs
+# upstream's CMakeLists require cmake < 3.5; allow it under CMake 4+
+%cmake \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+%cmake_build
 
 %install
 %cmake_install

@@ -87,4 +87,12 @@
   * Add supported devices info to README</comment>
     <requestid>1159088</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9cb72aee1ee8264f1018988fc59c2237</srcmd5>
+    <version>0.21</version>
+    <time>1780408905</time>
+    <user>anag_factory</user>
+    <comment>Modernize spec: use %cmake_build instead of deprecated %make_jobs; pass -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to keep building under CMake 4+ (upstream CMakeLists still require cmake &lt; 3.5)</comment>
+    <requestid>1356404</requestid>
+  </revision>
 </revisionlist>

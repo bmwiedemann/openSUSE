@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  1 15:27:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernize spec file:
+  * Use %cmake_build instead of the deprecated %make_jobs
+  * Pass -DCMAKE_POLICY_VERSION_MINIMUM=3.5 so the build keeps
+    working under CMake 4+ (upstream still requires cmake < 3.5)
+
+-------------------------------------------------------------------
 Mon Mar 18 16:05:07 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.21:
