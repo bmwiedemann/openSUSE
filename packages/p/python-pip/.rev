@@ -1120,4 +1120,18 @@
     .py file is removed. (#13973)</comment>
     <requestid>1355617</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>84d7ca3e6a6ffe56f3ebf5384413f542</srcmd5>
+    <version>26.1.2</version>
+    <time>1780408866</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.1.2 (bsc#1266669, CVE-2026-8643):
+  - Reject console_scripts and gui_scripts entry points whose name
+    would install a script outside the scripts directory. (#14000)
+  - Fix installation incorrectly failing when the target path contains
+    a doubled slash, such as with pip install --root //.... (#14001)
+  - Send a consistent Accept-Encoding header to avoid a spurious Cache
+    entry deserialization failed warning. (#14012)</comment>
+    <requestid>1356352</requestid>
+  </revision>
 </revisionlist>

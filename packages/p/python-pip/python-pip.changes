@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  1 12:18:51 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 26.1.2 (bsc#1266669, CVE-2026-8643):
+  - Reject console_scripts and gui_scripts entry points whose name
+    would install a script outside the scripts directory. (#14000)
+  - Fix installation incorrectly failing when the target path contains
+    a doubled slash, such as with pip install --root //.... (#14001)
+  - Send a consistent Accept-Encoding header to avoid a spurious Cache
+    entry deserialization failed warning. (#14012)
+
+-------------------------------------------------------------------
 Thu May 28 10:34:57 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 26.1.1:
