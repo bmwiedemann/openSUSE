@@ -69,4 +69,12 @@
     <comment>- Small package cleanup</comment>
     <requestid>779329</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>9fbcc565e4d697c79c499aa890e5a9ee</srcmd5>
+    <version>0.5.2</version>
+    <time>1780408896</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: add explicit gcc+make BuildRequires, build config-only irman-common as noarch (fixes no-binary), use %autosetup</comment>
+    <requestid>1356418</requestid>
+  </revision>
 </revisionlist>

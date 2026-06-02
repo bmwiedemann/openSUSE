@@ -1,7 +1,7 @@
 #
 # spec file for package libirman
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Library for irman access
 License:        GPL-2.0-or-later
 URL:            https://sourceforge.net/projects/libirman/
 Source0:        https://downloads.sf.net/libirman/libirman-%{version}.tar.gz
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  pkgconfig
 %if %{with lirc_plugin}
 BuildRequires:  pkgconfig(lirc)
@@ -49,6 +51,7 @@ License:        LGPL-2.0-or-later
 Conflicts:      %{name}%{sover} < %{version}
 Provides:       libirman-common = %{version}-%{release}
 Obsoletes:      libirman-common < %{version}-%{release}
+BuildArch:      noarch
 
 %description -n irman-common
 Common files for %{name}.
@@ -85,7 +88,7 @@ receive infrared signals via irman-compatible hardware.
 Devel files for %{name} from the lirc project.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure \

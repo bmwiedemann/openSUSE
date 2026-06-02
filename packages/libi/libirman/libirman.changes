@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  1 16:46:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec cleanup:
+  * Add the explicit gcc and make BuildRequires
+  * Build the config-only irman-common subpackage as noarch
+  * Use %autosetup
+
+-------------------------------------------------------------------
 Mon Feb 24 12:05:35 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Small package cleanup
