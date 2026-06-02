@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun 02 06:53:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.95.4:
+  * feat(apk): adds some debugging info for APKs and fixes issues parsing obfuscated APKs or APKs with resource types the 3rd party library isn't parsing (#4991)
+  * [SCAN-795] HTML decoder: ASPX and entity-encoded HTML support (#4981)
+  * Added source config flags to sharepoint proto (#4972)
+  * Update CODEOWNERS: replace 5 slugs with scanning + integrations (#4983)
+  * Pin GitHub Actions to SHA digests (#4985)
+  * Update Go security dependencies (#4986)
+  * Add feature flags for Pinecone, Cloudinary, and GitLab OAuth detectors (#4961)
+  * Fix line numbers for duplicate secrets within a chunk (#4910)
+  * Remove over speculation from Corpora CI workflow (#4974)
+  * feat: add host, db and username to ExtraData for database detectors (#4849)
+  * Enable errcheck and staticcheck for golangci-lint v2 and resolve all issues (#4924)
+  * Automate corpora testing in CI (#4927)
+  * fix(twilio): deduplicate matches to prevent O(N×M) result explosion (#4954)
+  * [INS-335] Added AWS Appsync Detector (#4803)
+  * [INS-346] SpectralOps Personal API Key Detector (#4770)
+  * Box Detector: Extract Subject ID for Analyzer Integration (#4761)
+  * Added GitLab OAuth Detector (#4729)
+  * fix(github): cache repo info under original URL on redirect (#4958)
+  * [INS-455] Unify common logic in Atlassian Data Center detectors (#4907)
+  * [INS-461] Add test to ensure new detectors are registered in defaults.go (#4915)
+
+-------------------------------------------------------------------
 Tue May 12 04:54:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.95.3:
