@@ -1,0 +1,65 @@
+Index: openssh-10.3p1/mac.c
+===================================================================
+--- openssh-10.3p1.orig/mac.c
++++ openssh-10.3p1/mac.c
+@@ -307,20 +307,24 @@ mac_valid_internal(const char *names,
+     int (*setup)(struct sshmac *, char *))
+ {
+ 	char *maclist, *cp, *p;
++	int found = 0;
+ 
+ 	if (names == NULL || strcmp(names, "") == 0)
+ 		return 0;
+ 	if ((maclist = cp = strdup(names)) == NULL)
+ 		return 0;
+-	for ((p = strsep(&cp, MAC_SEP)); p && *p != '\0';
++	for ((p = strsep(&cp, MAC_SEP)); p != NULL;
+ 	    (p = strsep(&cp, MAC_SEP))) {
++		if (*p == '\0')
++		    continue;
+ 		if (setup(NULL, p) < 0) {
+ 			free(maclist);
+ 			return 0;
+-		}
++		} else
++			found = 1;
+ 	}
+ 	free(maclist);
+-	return 1;
++	return found;
+ }
+ 
+ int
+Index: openssh-10.3p1/cipher.c
+===================================================================
+--- openssh-10.3p1.orig/cipher.c
++++ openssh-10.3p1/cipher.c
+@@ -225,21 +225,25 @@ ciphers_valid_internal(const char *names
+ {
+ 	const struct sshcipher *c;
+ 	char *cipher_list, *cp, *p;
++	int found = 0;
+ 
+ 	if (names == NULL || strcmp(names, "") == 0)
+ 		return 0;
+ 	if ((cipher_list = cp = strdup(names)) == NULL)
+ 		return 0;
+-	for ((p = strsep(&cp, CIPHER_SEP)); p && *p != '\0';
++	for ((p = strsep(&cp, CIPHER_SEP)); p != NULL;
+ 	    (p = strsep(&cp, CIPHER_SEP))) {
++               if (*p == '\0')
++                   continue;
+ 		c = by_name(p);
+ 		if (c == NULL || (c->flags & CFLAG_INTERNAL) != 0) {
+ 			free(cipher_list);
+ 			return 0;
+-		}
++		} else
++			found = 1;
+ 	}
+ 	free(cipher_list);
+-	return 1;
++	return found;
+ }
+ 
+ int

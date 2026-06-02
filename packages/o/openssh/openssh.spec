@@ -181,6 +181,8 @@ Patch106:       openssh-7.6p1-cleanup-selinux.patch
 Patch107:       openssh-send-extra-term-env.patch
 # PATCH-FIX-SUSE openssh-7.7p1-gssapi-new-unique.patch bsc#1258166 hpj@suse.com -- SSSD non-file ccache: krb5 new_unique
 Patch108:       openssh-7.7p1-gssapi-new-unique.patch
+# PATCH-FIX-SUSE fix-mac-validation-strsep-logic-bug.patch bsc#1264568 alarrosa@suse.com -- Fix strsep logic bug in mac validation
+Patch109:       fix-mac-validation-strsep-logic-bug.patch
 # 200..300 -- Patches submitted to upstream
 # 1000..2000 -- Conditional patches
 %if %{with crypto_policies}

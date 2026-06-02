@@ -1635,11 +1635,11 @@ Index: openssh-10.3p1/kexgssc.c
 +						fatal("Failed to read token: %s", ssh_err(r));
 +					/* If we're already complete - protocol error */
 +					if (maj_status == GSS_S_COMPLETE)
-+						sshpkt_disconnect(ssh, "Protocol error: received token when complete");
++						ssh_packet_disconnect(ssh, "Protocol error: received token when complete");
 +				} else {
 +					/* No token included */
 +					if (maj_status != GSS_S_COMPLETE)
-+						sshpkt_disconnect(ssh, "Protocol error: did not receive final token");
++						ssh_packet_disconnect(ssh, "Protocol error: did not receive final token");
 +				}
 +				if ((r = sshpkt_get_end(ssh)) != 0) {
 +					fatal("Expecting end of packet.");
@@ -1655,7 +1655,7 @@ Index: openssh-10.3p1/kexgssc.c
 +					fatal("sshpkt_get failed: %s", ssh_err(r));
 +				fatal("GSSAPI Error: \n%.400s", msg);
 +			default:
-+				sshpkt_disconnect(ssh, "Protocol error: didn't expect packet type %d",
++				ssh_packet_disconnect(ssh, "Protocol error: didn't expect packet type %d",
 +				    type);
 +			}
 +			token_ptr = &recv_tok;
@@ -1728,7 +1728,7 @@ Index: openssh-10.3p1/kexgssc.c
 +
 +	/* Verify that the hash matches the MIC we just got. */
 +	if (GSS_ERROR(ssh_gssapi_checkmic(ctxt, &gssbuf, &msg_tok)))
-+		sshpkt_disconnect(ssh, "Hash's MIC didn't verify");
++		ssh_packet_disconnect(ssh, "Hash's MIC didn't verify");
 +
 +	gss_release_buffer(&min_status, &msg_tok);
 +
@@ -1932,11 +1932,11 @@ Index: openssh-10.3p1/kexgssc.c
 +						fatal("sshpkt failed: %s", ssh_err(r));
 +					/* If we're already complete - protocol error */
 +					if (maj_status == GSS_S_COMPLETE)
-+						sshpkt_disconnect(ssh, "Protocol error: received token when complete");
++						ssh_packet_disconnect(ssh, "Protocol error: received token when complete");
 +				} else {
 +					/* No token included */
 +					if (maj_status != GSS_S_COMPLETE)
-+						sshpkt_disconnect(ssh, "Protocol error: did not receive final token");
++						ssh_packet_disconnect(ssh, "Protocol error: did not receive final token");
 +				}
 +				break;
 +			case SSH2_MSG_KEXGSS_ERROR:
@@ -1949,7 +1949,7 @@ Index: openssh-10.3p1/kexgssc.c
 +					fatal("sshpkt failed: %s", ssh_err(r));
 +				fatal("GSSAPI Error: \n%.400s", msg);
 +			default:
-+				sshpkt_disconnect(ssh, "Protocol error: didn't expect packet type %d",
++				ssh_packet_disconnect(ssh, "Protocol error: didn't expect packet type %d",
 +				    type);
 +			}
 +			token_ptr = &recv_tok;
@@ -2011,7 +2011,7 @@ Index: openssh-10.3p1/kexgssc.c
 +
 +	/* Verify that the hash matches the MIC we just got. */
 +	if (GSS_ERROR(ssh_gssapi_checkmic(ctxt, &gssbuf, &msg_tok)))
-+		sshpkt_disconnect(ssh, "Hash's MIC didn't verify");
++		ssh_packet_disconnect(ssh, "Hash's MIC didn't verify");
 +
 +	gss_release_buffer(&min_status, &msg_tok);
 +
@@ -2111,7 +2111,7 @@ Index: openssh-10.3p1/kexgsss.c
 +	 */
 +
 +	OM_uint32 ret_flags = 0;
-+	gss_buffer_desc gssbuf = {0, NULL}, recv_tok, msg_tok;
++	gss_buffer_desc gssbuf = {0, NULL}, recv_tok = GSS_C_EMPTY_BUFFER, msg_tok = GSS_C_EMPTY_BUFFER;
 +	gss_buffer_desc send_tok = GSS_C_EMPTY_BUFFER;
 +	Gssctxt *ctxt = NULL;
 +	struct sshbuf *shared_secret = NULL;
@@ -2215,7 +2215,7 @@ Index: openssh-10.3p1/kexgsss.c
 +				fatal("sshpkt failed: %s", ssh_err(r));
 +			break;
 +		default:
-+			sshpkt_disconnect(ssh,
++			ssh_packet_disconnect(ssh,
 +			    "Protocol error: didn't expect packet type %d",
 +			    type);
 +		}
@@ -2314,7 +2314,7 @@ Index: openssh-10.3p1/kexgsss.c
 +	 */
 +
 +	OM_uint32 ret_flags = 0;
-+	gss_buffer_desc gssbuf, recv_tok, msg_tok;
++	gss_buffer_desc gssbuf = GSS_C_EMPTY_BUFFER, recv_tok = GSS_C_EMPTY_BUFFER, msg_tok = GSS_C_EMPTY_BUFFER;
 +	gss_buffer_desc send_tok = GSS_C_EMPTY_BUFFER;
 +	Gssctxt *ctxt = NULL;
 +	struct sshbuf *shared_secret = NULL;
@@ -2371,7 +2371,7 @@ Index: openssh-10.3p1/kexgsss.c
 +		    min, nbits, max);
 +	kex->dh = mm_choose_dh(min, nbits, max);
 +	if (kex->dh == NULL) {
-+		sshpkt_disconnect(ssh, "Protocol error: no matching group found");
++		ssh_packet_disconnect(ssh, "Protocol error: no matching group found");
 +		fatal("Protocol error: no matching group found");
 +	}
 +
@@ -2411,7 +2411,7 @@ Index: openssh-10.3p1/kexgsss.c
 +				fatal("sshpkt failed: %s", ssh_err(r));
 +			break;
 +		default:
-+			sshpkt_disconnect(ssh,
++			ssh_packet_disconnect(ssh,
 +			    "Protocol error: didn't expect packet type %d",
 +			    type);
 +		}
@@ -3646,7 +3646,7 @@ Index: openssh-10.3p1/sshconnect2.c
 +{
 +	struct sshbuf *b = NULL;
 +	Authctxt *authctxt = ssh->authctxt;
-+	gss_buffer_desc gssbuf;
++	gss_buffer_desc gssbuf = GSS_C_EMPTY_BUFFER;
 +	gss_buffer_desc mic = GSS_C_EMPTY_BUFFER;
 +	OM_uint32 ms;
 +	int r;
@@ -3979,7 +3979,7 @@ Index: openssh-10.3p1/packet.c
 ===================================================================
 --- openssh-10.3p1.orig/packet.c
 +++ openssh-10.3p1/packet.c
-@@ -1577,6 +1577,29 @@ ssh_packet_read(struct ssh *ssh)
+@@ -1577,6 +1577,28 @@ ssh_packet_read(struct ssh *ssh)
  	return type;
  }
  
@@ -3997,10 +3997,9 @@ Index: openssh-10.3p1/packet.c
 +	if ((r = ssh_packet_read_seqnr(ssh, &type, NULL)) != 0)
 +		return r;
 +	if (type != expected_type) {
-+		if ((r = sshpkt_disconnect(ssh,
++		ssh_packet_disconnect(ssh,
 +		    "Protocol error: expected packet type %d, got %d",
-+		    expected_type, type)) != 0)
-+			return r;
++		    expected_type, type);
 +		return SSH_ERR_PROTOCOL_ERROR;
 +	}
 +	return 0;
