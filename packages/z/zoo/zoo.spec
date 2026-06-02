@@ -1,7 +1,7 @@
 #
 # spec file for package zoo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        2.10
 Release:        0
 Summary:        Pack Program
 License:        SUSE-Public-Domain
-Group:          Productivity/Archiving/Compression
 URL:            https://en.wikipedia.org/wiki/Zoo_(file_format)
 Source:         zoo.tar.gz
 Patch0:         zoo.patch
@@ -34,6 +33,8 @@ Patch6:         zoo-security_parse.patch
 Patch7:         zoo-%{version}-security-infinite_loop.patch
 Patch8:         zoo-fclose.patch
 Patch9:         zoo-gcc14.patch
+BuildRequires:  gcc
+BuildRequires:  make
 
 %description
 Zoo is a packer based on the Lempel-Ziv algorithm. Lots of files on

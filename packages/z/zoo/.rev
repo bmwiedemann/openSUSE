@@ -171,4 +171,12 @@
     <comment></comment>
     <requestid>1290695</requestid>
   </revision>
+  <revision rev="25" vrev="1030">
+    <srcmd5>3bb980fdfd6d64a6d83a99543b7e1737</srcmd5>
+    <version>2.10</version>
+    <time>1780409341</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: add explicit gcc+make BuildRequires, drop obsolete Group tag</comment>
+    <requestid>1356651</requestid>
+  </revision>
 </revisionlist>
