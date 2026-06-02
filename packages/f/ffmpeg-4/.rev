@@ -866,4 +866,12 @@
     <comment>- Add ffmpeg-4-CVE-2025-10256.patch:</comment>
     <requestid>1355250</requestid>
   </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>8b5bb2ab28a8c4a22ee333b5f04c8230</srcmd5>
+    <version>4.4.7</version>
+    <time>1780409320</time>
+    <user>anag_factory</user>
+    <comment>bugref update</comment>
+    <requestid>1356640</requestid>
+  </revision>
 </revisionlist>

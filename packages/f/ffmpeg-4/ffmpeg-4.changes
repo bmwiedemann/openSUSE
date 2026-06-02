@@ -15,6 +15,8 @@ Fri May 22 17:28:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     (CVE-2025-1594, bsc#1237561)
   * avcodec/jpeg2000dec: implement cdef remapping during pixel format matching.
     (CVE-2025-9951, bsc#1249393)
+  * avcodec/av1dec: check that primary_ref_frame is within range.
+    (CVE-2026-30997, bsc#1262047)
 - Drop patches fixed upstream:
   * ffmpeg-4-CVE-2024-35368.patch
   * ffmpeg-4-CVE-2024-36618.patch
