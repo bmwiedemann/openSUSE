@@ -110,4 +110,13 @@ the labwc wayland compositor</comment>
   * mouse: add more libinput settings</comment>
     <requestid>1323709</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>24c2e7ed72bada69e424cffe1ba8d822</srcmd5>
+    <version>0.1.0</version>
+    <time>1780408902</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.1.0 Release
+  * First Point Release</comment>
+    <requestid>1356402</requestid>
+  </revision>
 </revisionlist>

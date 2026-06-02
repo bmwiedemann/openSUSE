@@ -18,12 +18,12 @@
 
 
 Name:           labwc-tweaks
-Version:        0~git.20251219.9b90fc7
+Version:        0.1.0
 Release:        0
 Summary:        GUI Configuration app for labwc
 License:        BSD-3-Clause AND GPL-2.0-only
 URL:            https://github.com/labwc/labwc-tweaks
-Source:         %{name}-%{version}.tar.zst
+Source:         %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
