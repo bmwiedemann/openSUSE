@@ -20,7 +20,7 @@
 
 %define lname	libfwnt1
 Name:           libfwnt
-Version:        20260522
+Version:        20260602
 Release:        0
 Summary:        Library for Windows NT data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -36,8 +36,8 @@ BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcdata) >= 20260520
-BuildRequires:  pkgconfig(libcerror) >= 20260513
-BuildRequires:  pkgconfig(libcnotify) >= 20260520
+BuildRequires:  pkgconfig(libcerror) >= 20260527
+BuildRequires:  pkgconfig(libcnotify) >= 20260601
 BuildRequires:  pkgconfig(libcthreads) >= 20260518
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
@@ -105,6 +105,6 @@ find %buildroot -type f -name "*.la" -delete -print
 
 %files %python_files
 %license COPYING*
-%python_sitearch/pyfwnt.so
+%python_sitearch/pyfwnt*.so
 
 %changelog
