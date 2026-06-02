@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 01 16:40:23 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1780332012.6ee8da2:
+  * chore(AGENTS.md): phrase tidying as mandatory
+  * feat(mouse_drag): use the clickpoints
+  * test: allow to configure full-stack test output directory
+  * test: allow shortening long typing in full-stack tests
+  * chore: video_stream: accept ustreamer version 8
+
+-------------------------------------------------------------------
 Thu May 28 13:08:32 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1779973703.70686ac:
