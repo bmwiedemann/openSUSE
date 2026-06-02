@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 01 16:37:26 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.11.16
+- Support nekoray deep-links
+- Replace QML with QuickJS-NG
+- Add drag-and-drop support for custom sorting
+- Fix the Nekoray link sharing button
+
+-------------------------------------------------------------------
 Wed May 13 09:36:41 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.11.15

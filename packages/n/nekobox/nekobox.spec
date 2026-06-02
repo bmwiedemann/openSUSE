@@ -17,7 +17,7 @@
 %define debug_package %{nil}
 %define core nekobox_core
 Name:           nekobox
-Version:        5.11.15
+Version:        5.11.16
 Release:        0%{?autorelease}
 Summary:        Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 License:        GPL-3.0-only
@@ -52,10 +52,15 @@ BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  cmake(yaml-cpp)
+BuildRequires:  gcc-c++
+
+%bcond cpr 0%{?cpr_available}
+%bcond leveldb 1
+
+%if %{with leveldb}
 BuildRequires:  cmake(leveldb)
 BuildRequires:  cmake(Snappy)
-BuildRequires:  gcc-c++
-%bcond cpr 0%{?cpr_available}
+%endif
 
 %if %{with cpr}
 BuildRequires:  cmake(cpr)
@@ -65,6 +70,7 @@ BuildRequires:  libzstd-devel
 BuildRequires:  libunistring-devel
 BuildRequires:  (curl-devel or libcurl-devel)
 %endif
+
 Requires:       %{name}-core = %{version}
 Requires:       %{name}-qt = %{version}
 
@@ -121,7 +127,13 @@ Summary:        %{summary}
 GOFLAGS='-mod=vendor %{?gobuildflags}'
 
 (
-%cmake -GNinja "-DPROGRAMPREFIX=%{_libexecdir}/%{name}" "-DNKR_DEFAULT_VERSION=%{version}" %{?cmake_opts}
+%if %{with leveldb}
+SKIP_LEVELDB=OFF
+%else
+SKIP_LEVELDB=ON
+%endif
+
+%cmake -GNinja "-DSKIP_LEVELDB=${SKIP_LEVELDB}" "-DPROGRAMPREFIX=%{_libexecdir}/%{name}" "-DNKR_DEFAULT_VERSION=%{version}" %{?cmake_opts}
 )
 
 ninja -C "$(realpath %__builddir)" -v -j %{_smp_build_ncpus}
