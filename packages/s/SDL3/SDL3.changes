@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun  1 03:39:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.10
+  * Allow depth texture arrays in the GPU API
+  * Fixed a crash when copying to the Vulkan swapchain with the GPU
+    API
+  * Added controller sensor support for GameInput v3
+  * Fixed Ipega controllers being ignored in keyboard mode
+  * Added support for GameCube rumble when the adapter is in PC
+    mode and has the latest firmware
+  * Fixed rumble on the new Steam Controller
+  * Added support for the GameSir Super Nova in Xbox 360 mode
+  * Added support for the PDP Afterglow Wave Wireless Controller
+    for Switch
+  * Fixed several second hang when changing focus on X11 in some
+    situations
+  * Disable the X Synchronization Extension by default, can be
+    enabled with SDL_HINT_VIDEO_X11_ENABLE_XSYNC_EXT
+  * Fixed SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH on X11
+  * Fixed a rare crash on Raspberry Pi when creating a window
+
+-------------------------------------------------------------------
+Sat May  2 10:21:19 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.8
+  * Fixed a crash when showing a dialog on Unix if zenity is not
+    installed
+
+-------------------------------------------------------------------
 Fri May  1 20:11:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.6
