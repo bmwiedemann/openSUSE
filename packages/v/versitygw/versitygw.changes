@@ -1,0 +1,379 @@
+-------------------------------------------------------------------
+Tue Jun 02 04:35:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.0:
+  * fix: connection early termination resulting in internal error
+  * fix: enforce required SignedHeaders validation for SigV4
+    requests
+  * fix: replace misleading webui CORS error toast with generic
+    network error message
+  * fix: expose x-amz-storage-class in CORS response headers
+  * test: ListMultipartUpload query tests, related cleanup
+  * fix: normalize object keys during bucket policy evaluation
+  * feat: extract gateway runtime into embeddable package
+  * fix: fix empty ownership control rules panic
+  * chore: update go package dependencies
+  * fix: reject invalid PostObject keys
+  * fix: honor explicit public bucket policy deny
+  * feat: global error refactoring
+  * test: ListObjects util code reorg, return value/multipart fixes
+  * chore(deps): bump
+    github.com/Azure/azure-sdk-for-go/sdk/storage/azblob
+  * test: HeadObject query tests, more util code changes
+  * fix: decode URL hash in webui before parsing bucket/prefix
+  * fix: ignore implicit directories for  Get/HeadObject
+  * chore(deps): bump sigstore/cosign-installer from 4.1.1 to 4.1.2
+  * chore(deps): bump the dev-dependencies group with 9 updates
+  * test: util code cleanup
+  * fix: forward slash url encoded used as bucket/key separator
+  * fix: store object multipart upload metadata compressed
+  * test: DeleteObjects payload testing
+  * feat: add bucket metrics tag when request specifies a bucket
+  * fix: reject SigV2 requests
+  * feat: replace webui client-side name filter with server-side
+    prefix filter
+  * test: dockerfile, run script updates, README updates
+  * chore: fix sidecar flag in runtests to correctly pass test
+    option
+  * test: add test tags
+  * chore(deps): bump the dev-dependencies group with 19 updates
+  * fix: skip integration tests not compatible in sidecar
+  * feat: support sha512, md5, xxhash3, xxhash64, xxhash128 data
+    integrity checksums
+  * feat: add custom route and middleware options
+  * fix: remove unsigned chunk reader caching
+  * fix: apply CORS middleware to admin CreateBucket route
+  * fix: scoutfs multipart alignment check for last part
+  * test: GetObject - add query tests, go/bats improved
+    header/object reply handling
+  * feat: add new ErrNoSpaceLeftOnDevice API error for ENOSPC
+    errors
+  * chore(deps): bump the dev-dependencies group with 7 updates
+  * fix: check PutObjectTagging/LegalHold/Retention permissions on
+    PutObject,CopyObject and CreateMultipartUpload
+  * chore(deps): bump github.com/Azure/go-ntlmssp from 0.1.0 to
+    0.1.1
+  * test: initial bats test tagging system, shellcheck fix
+
+-------------------------------------------------------------------
+Thu Apr 23 05:24:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.1:
+  * test: add github actions functional tests for posix sidecar
+    option
+  * fix: add explicit sidecar metadata cleanup on object/bucket
+    deletion
+  * test: disable downloads of mc from minio site
+  * test: disable mc client tests from test matrix
+  * fix: docker entrypoint move VGW_ARGS before backend subcommand
+  * feat: history back/forward actions on explorer and modals
+  * feat: add server-side pagination for webui object explorer
+  * feat: add --socket-perm option for UNIX socket file permissions
+  * feat: in webui add bucket favorites and direct-navigation to
+    explorer
+  * chore(deps): bump the dev-dependencies group with 21 updates
+  * fix: correct 206 Partial Content response status for ranged
+    GetObject and HeadObject
+  * fix: in webui use AWS SigV4-compliant URI encoding for path and
+    query params
+  * feat: add presigned URL generation in webui
+  * fix: make CompleteMultipartUpload idempotent and add
+    part-number support to GetObject/HeadObject
+  * fix: fix azure multipart upload objects masking
+  * chore: fix spellings and unused function args
+  * test: ListObjectsV2 query updates, file updates, bash cleanup
+  * fix: use encodeS3Key in webui instead of encodeURIComponent in
+    createFolder
+  * fix: close temp file before rename in sidecar StoreAttribute
+  * fix: add gcs compatibility flag to fix s3proxy GCS SigV4
+    signature mismatch
+  * feat: add cli option to generate shell auto completion
+  * fix: add Host header to HTTP test requests for fasthttp v1.70.0
+    compatibility
+  * chore(deps): bump the dev-dependencies group with 9 updates
+  * fix: correct HeadObject restore status for offline objects in
+    scoutfs
+  * fix for multipart upload when using sidecar meta
+  * test: ListObjectsV1 updates, file code changes, multipart
+    updates
+  * fix: move versionId validation to backend
+  * chore(deps): bump the dev-dependencies group with 11 updates
+  * fix: fix webui port validation to allow unix socket paths
+
+-------------------------------------------------------------------
+Sat Apr  4 13:28:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- drop the broken completion subpackages
+
+-------------------------------------------------------------------
+Sat Apr  4 12:30:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- split out the binary into a CLI subpackage and adjust the
+  completion packages accordingly
+
+-------------------------------------------------------------------
+Sat Apr  4 07:35:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- adjust upstream's systemd unit file
+  - use /var/lib/versitygw/ as WorkingDirectory
+  - use user versitygw
+  - user group versitygw
+
+-------------------------------------------------------------------
+Fri Apr 03 05:28:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.0:
+  * fix: retry link on ENOENT caused by racing DeleteObject
+  * fix: remove POST object multipart boundary prefix trimming
+  * test: fix response code
+  * feat: implement x-amz-source-expected-bucket-owner for
+    CopyObject and UploadPartCopy
+  * fix: change ErrMissingDateHeader http status code to 403
+  * fix: add x-amz-bucket-region to ListObjects(V2) response
+    headers.
+  * feat: implement integration tests for browser-based POST object
+  * feat: add browser-based POST object upload support
+  * fix: enforce 5gb copy source object size threshold.
+  * feat: support response header overrides in HeadObject
+  * chore(deps): bump the dev-dependencies group with 17 updates
+  * chore(deps): bump sigstore/cosign-installer from 4.1.0 to 4.1.1
+  * test: ListObjects encoding-type tests
+  * fix: serialize concurrent CompleteMultipartUpload calls via
+    rename
+  * test: remove eval, go command generation overhaul
+  * fix: abort scoutfs multipart uploads on error after successful
+    moveblocks
+  * fix: cleanup file descriptor leaks with chown fails
+  * chore(deps): bump the dev-dependencies group with 5 updates
+  * test: test_common.sh updates, bucket/file creation updates,
+    hardcode fixes
+  * fix: cleanup tempfiles when error prevents calling link
+  * feat: add option to disable copy-file-range for multipart
+    uploads
+  * feat: implement quicker backend/posix walk algorithm
+  * Update stage constants for ongoing requests
+  * Do not expose directories that can't be buckets
+  * Always write complete files in sidecar meta provider
+  * test: listobjects delimiter/prefix test, skips removal, go
+    query improvement
+  * chore(deps): bump the dev-dependencies group with 22 updates
+  * chore(deps): bump docker/login-action from 3 to 4
+  * chore(deps): bump docker/setup-buildx-action from 3 to 4
+  * chore: remove the unnecessary AmazonS3.xsd from s3response.
+  * chart/README.md hostPath usage warning
+  * test: ListBuckets - bucket region, more default param tests
+  * fix: fix admin cli update user --project-id retrieval
+  * feat: add persistence.hostPath to Helm chart
+  * fix: allow list buckets to use default aws region us-east-1
+  * fix: allow Helm chart users to use their own, existing PVC
+  * chore: run go modernize tool
+  * fix: webui move explorer styling to theme.css
+  * fix: webui location of tailwind.js asset
+  * feat: option to host webui on s3 port
+  * feat: s3proxy default to credential chain with optional
+    anonymous access
+  * feat: add option to change webui path prefix
+  * feat: remove /api/gateways webserver endpoint
+  * chore(deps): bump docker/metadata-action from 5 to 6
+  * chore(deps): bump the dev-dependencies group with 25 updates
+  * chore(deps): bump actions/checkout from 4 to 6
+  * chore(deps): bump docker/build-push-action from 6 to 7
+  * chore(deps): bump sigstore/cosign-installer from 4.0.0 to 4.1.0
+  * chore(deps): bump docker/setup-qemu-action from 3 to 4
+  * feat: noop plugin for gateway load testing
+  * chore: add helm lint to pr tests
+  * fix(chart): use docker login for helm and cosign
+  * feat: add unix domain socket listener support to port option
+  * fix(chart): fix cosign-installer tag
+  * fix(chart): fix multidoc separator when 2 routes are enabled
+  * fix(chart): replace buggy chart-releaser action
+  * fix: add request headers and metadata headers limit
+  * fix: update deprecated StandardOutput/StandardError type
+  * feat(chart): enable persistence by default, discuss more in
+    README
+  * feat: add cosign signing to chart OCI artifact
+  * chore: consistent comments
+  * feat(chart): add HTTPRoute configuration
+  * fix: change the way object metadata is stored in posix
+  * feat: add Helm chart for versitygw
+  * fix: webui pass correct arguments to request() in
+    putBucketPolicy
+  * fix: bracket IPv6 addresses in auto-detected webui gateway URLs
+  * test: update functions, transfer/remove some utils files
+  * fix: azure modernize part number loop check
+  * fix: azure close download body in CopyObject to prevent
+    resource leak
+  * fix: azure ListBuckets pagination to use client-side
+    continuation tokens
+  * fix: azure PresignedAuth_UploadPart test failure
+
+-------------------------------------------------------------------
+Wed Mar 04 06:33:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.1:
+  * chore: enable windows test build and release binaries
+  * test: CORS response header tests
+  * fix: fixes webserver network type
+  * chore: add .DS_Store to .gitignore
+
+-------------------------------------------------------------------
+Tue Mar 03 06:24:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.0:
+  * chore(deps): bump actions/download-artifact from 7 to 8
+  * chore(deps): bump actions/upload-artifact from 6 to 7
+  * chore(deps): bump the dev-dependencies group with 4 updates
+  * feat: revert ignore object ACL behavior
+  * feat: add tagging support for directory objects in posix
+  * fix: add missing tests to group-tests map
+  * chore: fix typos and error return wrapping types in posix
+  * fix: store part checksums at destination path in UploadPartCopy
+  * fix: improve WalkVersions() ancestor-directory guard for prefix
+    filtering
+  * feat: configuration option to disable ACLs
+  * Fix versitygw#1864 to not return parent keys for
+    ListObjectVersions with prefix
+  * feat: optimize multipart upload checksum calculation.
+  * fix: store final checksum on CompleteMultipartUpload
+  * feat: add concurrency limiter to scoutfs
+  * feat: update go version to 1.25.0 and golang.org/x/net to
+    0.51.0
+  * feat: adds checksums for directory objects in posix
+  * test: README, some test updates
+  * chore(deps): bump github.com/gofiber/fiber/v2 from 2.52.11 to
+    2.52.12
+  * test: remove obsolete recording code
+  * fix: fixes PutBucketCors CORSRules validation
+  * chore(deps): bump the dev-dependencies group with 21 updates
+  * chore(deps): bump goreleaser/goreleaser-action from 6 to 7
+  * fix: make webui sidebar responsive on mobile
+  * feat: add option to disable s3proxy client data integrity
+    checks
+  * feat: add cli options to specify webui gateway/admin listing
+  * feat: adds `Location`, `x-amz-bucket-arn` response headers in
+    CreateBucket
+  * test: REST CORS - initial tests
+  * fix: correct private canned ACL behavior on bucket creation
+  * feat: add multi-address listener for s3/admin/webui
+  * fix: fixes object default Content-Type
+  * feat: add posix concurrency-limiter
+  * feat: adds fiber max connections and in-flight requests limiter
+  * chore: fix warning in system.yml github workflow
+  * chore: update readme for testing overview
+  * chore(deps): bump github.com/clipperhouse/uax29/v2
+  * chore: cleanup go.mod with go mod tidy
+  * fix: adds application/xml Content-Type to error responses
+  * fix: replace `debuglogger.Logf("Internal Error, %v", err)` with
+    `debuglogger.InternalError(err)`
+  * test: not-implemented type test, first template usage
+  * feat: allow anonymous access for s3proxy backend
+  * feat: replace aws-sdk-go-v2 s3 manager with transfermanager
+  * chore(deps): bump the dev-dependencies group with 7 updates
+  * feat: add favicon to all pages in webui
+  * fix: fixes DeleteObject if-match quoted comparison
+  * fix: CopyObject with URL-encoded special chars
+  * chore(deps): bump actions/download-artifact from 4 to 7
+  * chore(deps): bump actions/upload-artifact from 4 to 6
+  * chore: update README.md to highlight new web gui feature
+
+-------------------------------------------------------------------
+Tue Feb 10 05:56:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.0:
+  * Add "lexical" sort to walker.go
+  * Base import of cutdown version of io/fs/walk.go from golang as
+    walker.go
+  * Reload TLS certificates on SIGHUP
+  * Revert of 34da183 and 8e18b43 for backend/walk.go
+  * chore(deps): bump actions/checkout from 4 to 6
+  * chore(deps): bump docker/build-push-action from 5 to 6
+  * chore(deps): bump github.com/clipperhouse/uax29/v2
+  * chore(deps): bump the dev-dependencies group with 2 updates
+  * chore(deps): bump the dev-dependencies group with 6 updates
+  * chore(deps): bump the dev-dependencies group with 7 updates
+  * chore: add advanced codeql workflow for repo customizations
+  * chore: add codeql ignore for embedded 3rd party js assets
+  * chore: add dependabot updates for github actions
+  * feat: add web-based UI for S3 object management and admin
+    operations
+  * feat: adds delimiter support in ListMultipartUploads
+  * feat: makes root creds usable for admin subcommand with lower
+    precendence
+  * fix: admin server debug always enabled when --admin-port option
+    enabled
+  * fix: correct spelling for debuglogger.InternalError() (#1784)
+  * fix: fixes delete markers access for some actions
+  * fix: fixes list-limiters parsing and validation
+  * fix: fixes non-existing object deletion with versionId
+  * fix: fixes some write operations blocking in read-only mode
+  * fix: fixes the SignedStreamingPayloadTrailer_success test
+    failure
+  * fix: pin github.com/nats-io/nkeys version to v0.4.12
+  * fix: put object on windows when parent directories dont already
+    exists
+  * fix: remove duplicate cors headers from options router
+  * fix: removes object metadata loading from posix ListParts
+  * fix: return not implemented in object actions, if acl header is
+    present
+  * fix: reverts the nats-io/nkeys package version to v0.4.12
+  * fix: webui md5 missing error when enabling directory object
+    lock
+
+-------------------------------------------------------------------
+Fri Jan 30 09:49:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.1.0:
+  * 7a4dd59 chore(deps): bump github.com/valyala/fasthttp
+  * 8d16bff chore(deps): bump the dev-dependencies group with 2
+    updates
+  * 6198bf4 chore(deps): bump the dev-dependencies group with 20
+    updates
+  * 0124398 chore(deps): bump the dev-dependencies group with 6
+    updates
+  * d446102 feat: add option for default global cors allow origin
+    headers
+  * f467b89 feat: adds Location in CompleteMultipartUpload response
+  * 8073994 feat: adds integration tests for
+    STREAMING-AWS4-HMAC-SHA256-PAYLOAD requests
+  * cc54aad feat: adds integration tests for
+    STREAMING-AWS4-HMAC-SHA256-PAYLOAD-TRAILER requests
+  * 2561ef9 feat: implements admin CreateBucket endpoint/cli
+    command
+  * 5aa2a82 fix: Makes precondition headers insensitive to whether
+    the value is quoted
+  * c2c2306 fix: adds an error route for ?versions subresource with
+    key
+  * 12e1308 fix: adds versionId in put/get/delete object tagging
+    actions response.
+  * 9eaaeed fix: bunch of fixes in signed streaming requests
+  * 657b9ac fix: changes AuthorizationHeaderMalformed error status
+    to 400
+  * edac345 fix: cleanup sidecar metadata empty dirs
+  * 7a26aec fix: fix the concurrency issue in integration tests
+    bucket name generation
+  * d015842 fix: fixes CreateBucket LocationConstraint validation
+  * a75aa9b fix: fixes if-none-match precondition header logic in
+    object write operations
+  * cf99b3e fix: fixes invalid/expired
+    x-amz-object-lock-retain-until-date errors
+  * 2a7e76a fix: fixes missing bucket object lock config error
+  * c91e5dc fix: fixes the InvalidRetentionPeriod error code and
+    message
+  * 39ee175 fix: fixes the PutBucketPolicy response status
+  * 981a34e fix: fixes x-amz-if-match-size parsing
+  * b78d21c fix: optimize sidecar empty-dir checks
+  * 9f6bf18 fix: removes Expect from sigv4 ignored headers list
+  * 06a4512 fix: removes the NoSuchTagSet error in GetObjecTagging
+  * 61308d2 fix: return NoSuchKey if a precondition header is
+    present and object doesn't exist in PutObject,
+    CompleteMultipartUpload
+  * 8e0eec0 fix: return null in GetBucketLocation for us-east-1
+  * 06f4f0a fix: skips object lock check in DeleteObject without
+    versionId.
+  * 0cab42d xattr: use different namespace prefixes for FreeBSD vs
+    other platforms
+
+-------------------------------------------------------------------
+Fri Dec 19 09:26:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package versitygw: a high-performance S3 translation service
