@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bf542a2c2494098732bfb1dd49ecdec</srcmd5>
+    <version>4.3.1</version>
+    <time>1780408971</time>
+    <user>anag_factory</user>
+    <comment>Fix build with current googletest (requires C++17): build with C++17 standard, qualify itpp::any() to avoid std::any clash; apply patches unconditionally via %autopatch; drop Group tags</comment>
+    <requestid>1356451</requestid>
+  </revision>
+</revisionlist>

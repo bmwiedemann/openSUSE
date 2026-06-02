@@ -1,0 +1,38 @@
+--- a/gtests/vec_test.cpp
++++ b/gtests/vec_test.cpp
+@@ -276,13 +276,13 @@
+ 
+   a2 = a;
+   a2.zeros();
+-  ASSERT_FALSE(any(a2));
++  ASSERT_FALSE(itpp::any(a2));
+   a2 = a;
+   a2.ones();
+   ASSERT_TRUE(all(a2));
+   a2 = a;
+   a2 = c;
+-  ASSERT_FALSE(any(a2));
++  ASSERT_FALSE(itpp::any(a2));
+   a2 = a;
+   a2 = b(0, 4);
+   ref = "0 0 0 1 1";
+@@ -1135,7 +1135,7 @@
+   cvec cv2 = randn_c(10);
+   complex<double> cx = randn_c();
+   common_operators(cv1, cv2, cx);
+-  ASSERT_FALSE(any(cv1 == cx));
++  ASSERT_FALSE(itpp::any(cv1 == cx));
+   ASSERT_TRUE(all(cv1 != cx));
+ 
+ 
+@@ -1183,8 +1183,8 @@
+   bvec b2 = "0 0 0 0 0 0 0 0 0 0";
+   bvec b3 = "1 1 1 1 1 1 1 1 1 1 1 1 1";
+   bvec b4 = "1 1 1 1 1 1 1 1 1 1 1 0 1";
+-  ASSERT_TRUE(any(b1));
+-  ASSERT_FALSE(any(b2));
++  ASSERT_TRUE(itpp::any(b1));
++  ASSERT_FALSE(itpp::any(b2));
+   ASSERT_TRUE(all(b3));
+   ASSERT_FALSE(all(b4));
+ }

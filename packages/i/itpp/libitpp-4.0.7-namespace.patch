@@ -1,0 +1,11 @@
+--- itpp/base/timing.cpp
++++ itpp/base/timing.cpp
+@@ -171,7 +171,7 @@ void pause(double t)
+ {
+   if (t == -1) {
+     std::cout << "(Press enter to continue)" << std::endl;
+-    getchar();
++    ::getchar();
+   }
+   else {
+     Real_Timer T;
