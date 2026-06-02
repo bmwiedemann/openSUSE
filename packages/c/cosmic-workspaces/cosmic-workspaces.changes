@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jun 01 13:37:59 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * i18n: translation updates from weblate
+  * chore: add rust-toolchain to enforce 1.93
+  * fix(size_cross_nth): get `max_cross` after constraining main
+  * i18n: translation updates from weblate
+  * chore: update all dependencies
+  * chore: add zed editor config
+  * chore: apply rustfmt config with module import granulatiry
+  * chore: update libcosmic and MSRV
+
+-------------------------------------------------------------------
+Sat Apr 18 16:08:45 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * i18n: translation updates from weblate
+  * chore: update libcosmic after reexports were removed
+
+-------------------------------------------------------------------
+Sun Apr 12 16:24:12 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * feat: add middle mouse button support to close toplevel applications
+  * chore: update libcosmic
+  * chore: update deps
+  * chore: update deps
+  * chore: updates after iced rebase
+  * Add `log::info!`/`log::error!` for Vulkan issues
+  * backend/wayland/vulkan: Fix use of Vulkan (correctly this time)
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
 Tue Feb 24 21:03:27 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:
