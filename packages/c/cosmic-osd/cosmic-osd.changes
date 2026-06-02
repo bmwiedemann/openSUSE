@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jun 01 13:06:16 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * i18n: translation updates from weblate
+  * improv(osd_indicator): use progress markers for volume indicator
+  * fix: surface cleanup
+  * fix: ensure no input is blocked by the osd indicator
+  * fix: polkit agent not working with sockets Fixes that we purely rely on the SUID binary. The binary is not supported anymore since version 127.
+  * i18n: translation updates from weblate
+  * feat: new progress bar animations & min button width fix
+  * chore: update libcosmic after reexports were removed (#187)
+
+-------------------------------------------------------------------
+Sat Apr 18 11:24:58 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sun Apr 12 15:47:41 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * fix: focus polkit dialog text input
+  * fix: focus cancel button after surface gains focus
+  * docs (QA): Add checklist item for tab navigation (#184)
+  * chore(fmt): use `imports_granularity = "Module"`
+  * chore: update dependencies
+  * i18n(en): use `Shut down` in dialog instead of `Shutdown` (#178)
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
 Mon Mar  9 13:57:01 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:

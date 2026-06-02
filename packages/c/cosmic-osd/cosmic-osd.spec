@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-osd
-Version:        1.0.8
+Version:        1.0.14
 Release:        0
 Summary:        COSMIC OSD
 License:        GPL-3.0-only
