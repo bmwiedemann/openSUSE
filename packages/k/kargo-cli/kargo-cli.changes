@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 02 04:42:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.5:
+  * CVE Remediation
+    - Go module dependency upgrades (#6328): A sweep of go.mod
+      dependency bumps to clear additional advisories.
+
+-------------------------------------------------------------------
 Fri May 15 06:55:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.4:
