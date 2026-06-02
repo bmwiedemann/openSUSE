@@ -172,4 +172,19 @@
   * https://github.com/gleam-lang/gleam/blob/v1.11.1/CHANGELOG.md</comment>
     <requestid>1310723</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b62ec80c16c44d938602c199727d5f55</srcmd5>
+    <version>1.16.0</version>
+    <time>1780409085</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.16.0:
+  * Changelog v1.16.0: https://gleam.run/news/javascript-source-maps/
+
+- Update to 1.15.1:
+  * Changelog v1.12.0: https://gleam.run/news/no-more-dependency-management-headaches/
+  * Changelog v1.13.0: https://gleam.run/news/formalising-external-apis/
+  * Changelog v1.14.0: https://gleam.run/news/the-happy-holidays-2025-release/
+  * Changelog v1.15.0: https://gleam.run/news/upgrading-hex-security/</comment>
+    <requestid>1356521</requestid>
+  </revision>
 </revisionlist>
