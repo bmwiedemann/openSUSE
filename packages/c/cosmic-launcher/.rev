@@ -110,4 +110,12 @@
     <comment></comment>
     <requestid>1337740</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5a2a603ae991adf16dd55afef83f5623</srcmd5>
+    <version>1.0.14</version>
+    <time>1780409008</time>
+    <user>anag_factory</user>
+    <comment>Update (forwarded request 1356490 from rrahl0)</comment>
+    <requestid>1356507</requestid>
+  </revision>
 </revisionlist>

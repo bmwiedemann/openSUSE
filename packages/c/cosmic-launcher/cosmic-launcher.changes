@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jun 01 12:56:18 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * i18n: translation updates from weblate
+  * chore: update all dependencies
+  * chore: update debian changelog
+  * chore: update libcosmic
+  * chore: update MSRV to Rust 1.93
+  * chore: add rustfmt config
+  * chore: add zed editor config
+
+-------------------------------------------------------------------
+Sat Apr 18 11:18:58 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * i18n: translation updates from weblate
+  * chore: update libcosmic
+
+-------------------------------------------------------------------
+Sun Apr 12 15:34:54 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * feat: ellipsize name and description
+  * chore: update deps
+  * fix: create dummy surface for clipboard
+  * feat: rebased libcosmic onto iced 0.14
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
 Mon Mar  9 14:00:10 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:
