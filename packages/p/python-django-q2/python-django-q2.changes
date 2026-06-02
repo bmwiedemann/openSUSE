@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Tue Jun  2 04:37:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 1.10.0.
+- Add patch str-more-things.patch:
+  * Use str() on more things in qmonitor.
