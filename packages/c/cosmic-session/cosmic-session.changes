@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 01 13:18:29 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * fix(debian): seatd conflict causes Ctrl+C to kill the session
+  * chore(rustfmt): change `imports_granularity` to `"Module"`
+  * chore: update dependencies
+  * chore: clippy
+  * improv(main): use tokio signals for SIGINT and SIGTERM
+
+-------------------------------------------------------------------
+Sat Apr 18 15:50:32 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * fix: set XDG_SESSION_DESKTOP in start-cosmic
+
+-------------------------------------------------------------------
+Sun Apr 12 16:04:14 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * fix: use QT_QPA_PLATFORMTHEME=qt5ct not qt6ct
+  * fix: don't overwrite QT_QPA_PLATFORMTHEME
+  * start-cosmic: handle ANSI-C quoted strings returned by systemd
+  * Use mapfile to read environment variables
+
+-------------------------------------------------------------------
 Tue Feb 24 20:48:54 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:
