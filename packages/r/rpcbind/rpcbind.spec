@@ -1,6 +1,7 @@
 #
 # spec file for package rpcbind
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           rpcbind
-Version:        1.2.8
+Version:        1.2.9
 Release:        0
 Summary:        Transport independent RPC portmapper
 # Git-Web:      http://git.linux-nfs.org/?p=steved/rpcbind.git;a=summary

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  1 06:25:27 UTC 2026 - Petr Vorel <pvorel@suse.cz>
+
+- Update to rpcbind 1.2.9
+  https://lore.kernel.org/linux-nfs/5cad3ab4-d24a-45fa-b1e9-d57b2c47a5e4@redhat.com/
+  * A number of memory leaks fixes
+  * A couple buffer overflow fixes
+
+-------------------------------------------------------------------
 Wed Sep 24 08:18:17 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Drop rcrpcbind symlink [jsc:PED-266]
