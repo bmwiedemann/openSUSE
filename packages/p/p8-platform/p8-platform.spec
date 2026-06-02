@@ -1,7 +1,7 @@
 #
 # spec file for package p8-platform
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        2.1.0.1
 Release:        0
 Summary:        Platform support library used by libCEC and binary add-ons for Kodi
 License:        GPL-2.0-or-later
-Group:          Hardware/TV
 URL:            https://github.com/Pulse-Eight/platform
 Source:         https://github.com/Pulse-Eight/platform/archive/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.6
@@ -34,24 +33,24 @@ Platform support library used by libCEC and binary add-ons for Kodi.
 
 %package -n lib%{name}%{_SO_nr}
 Summary:        Platform support library used by libCEC and binary add-ons for Kodi
-Group:          Hardware/TV
 
 %description -n lib%{name}%{_SO_nr}
 Platform support library used by libCEC and binary add-ons for Kodi.
 
 %package devel
 Summary:        Platform support library used by libCEC development files
-Group:          Development/Languages/C and C++
 Requires:       lib%{name}%{_SO_nr} = %{version}-%{release}
 
 %description devel
 Development files for platform support library used by libCEC and Kodi.
 
 %prep
-%setup -q -n platform-%{name}-%{version}
+%autosetup -n platform-%{name}-%{version}
 
 %build
-%cmake
+# upstream requires cmake 2.8.9; allow it under CMake 4+
+%cmake \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install

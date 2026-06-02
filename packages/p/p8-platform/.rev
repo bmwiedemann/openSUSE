@@ -34,4 +34,12 @@
     <comment>- Use moder macros for building</comment>
     <requestid>755224</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>03872ea278166bf6f470ba514f3a1ba2</srcmd5>
+    <version>2.1.0.1</version>
+    <time>1780408937</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: pass -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to keep building under CMake 4+ (upstream requires cmake 2.8.9); use %autosetup; drop obsolete Group tags</comment>
+    <requestid>1356428</requestid>
+  </revision>
 </revisionlist>
