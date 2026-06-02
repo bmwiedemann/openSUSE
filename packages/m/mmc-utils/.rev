@@ -288,4 +288,12 @@
     <comment></comment>
     <requestid>1291085</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>840c6687ce7b276224b9c8db843a126d</srcmd5>
+    <version>1.0</version>
+    <time>1780408919</time>
+    <user>anag_factory</user>
+    <comment>Use standard gcc and make BuildRequires instead of c_compiler</comment>
+    <requestid>1356422</requestid>
+  </revision>
 </revisionlist>

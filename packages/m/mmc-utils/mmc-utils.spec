@@ -1,7 +1,7 @@
 #
 # spec file for package mmc-utils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ License:        GPL-2.0-only
 URL:            https://git.kernel.org/pub/scm/utils/mmc/mmc-utils.git/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        https://www.gnu.org/licenses/gpl-2.0.txt
-BuildRequires:  c_compiler
+BuildRequires:  gcc
+BuildRequires:  make
 
 %description
 Userspace tools for controlling and querying MMC/SD storage devices
