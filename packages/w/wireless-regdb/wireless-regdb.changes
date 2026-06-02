@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  1 18:10:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20260530:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: Update regulatory rules for Sri Lanka (LK)
+  * wireless-regdb: Update regulatory info for Brunei Darussalam (BN) for 2022
+  * wireless-regdb: allow 320MHz channel width for Russia
+  * wireless-regdb: Update 6 GHz rules for South Korea (KR)
+  * wireless-regdb: Update 6 GHz rules for South Africa (ZA)
+  * wireless-regdb: Fix 60 GHz power unit for Ukraine (UA)
+  * wireless-regdb: Update 5/6 GHz power rules for Russia (RU)
+  * wireless-regdb: Update 6 GHz rules for Hong Kong (HK)
+  * wireless-regdb: Add regulatory info for CEPT countries FO, GI, IM, SM and VA listed by WiFi Alliance
+
+-------------------------------------------------------------------
 Thu Mar 26 08:41:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 2026-03-18:

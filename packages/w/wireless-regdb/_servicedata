@@ -5,4 +5,4 @@
   </service>
 <service name="tar_scm">
                 <param name="url">https://git.kernel.org/pub/scm/linux/kernel/git/wens/wireless-regdb.git</param>
-              <param name="changesrevision">312b1e4ea67dfbb3e6ea5679ad687de49b58489d</param></service></servicedata>
+              <param name="changesrevision">b488e68eb1ca0a0dcdf742c7f4195c7678eafdc5</param></service></servicedata>
