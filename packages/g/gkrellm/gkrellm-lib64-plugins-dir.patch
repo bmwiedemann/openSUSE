@@ -1,22 +1,22 @@
-Index: b/src/gkrellm.h
+Index: gkrellm-2.5.1/src/gkrellm.h
 ===================================================================
---- a/src/gkrellm.h
-+++ b/src/gkrellm.h
-@@ -119,6 +119,9 @@ G_BEGIN_DECLS
- #if !defined(SYSTEM_PLUGINS_DIR)
- #define	SYSTEM_PLUGINS_DIR		"/usr/lib/gkrellm2/plugins"
+--- gkrellm-2.5.1.orig/src/gkrellm.h
++++ gkrellm-2.5.1/src/gkrellm.h
+@@ -118,6 +118,9 @@ G_BEGIN_DECLS
+ #if !defined(SYSTEM_THEMES_DIR)
+ #define SYSTEM_THEMES_DIR "/usr/share/gkrellm2/themes"
  #endif
 +#if !defined(SYSTEM64_PLUGINS_DIR)
 +#define	SYSTEM64_PLUGINS_DIR		"/usr/lib64/gkrellm2/plugins"
 +#endif
  
- #else
- 
-Index: b/src/plugins.c
+ #if !defined(LOCAL_PLUGINS_DIR)
+ #define LOCAL_PLUGINS_DIR "/usr/local/lib/gkrellm2/plugins"
+Index: gkrellm-2.5.1/src/plugins.c
 ===================================================================
---- a/src/plugins.c
-+++ b/src/plugins.c
-@@ -1267,6 +1267,10 @@ gkrellm_plugins_load(void)
+--- gkrellm-2.5.1.orig/src/plugins.c
++++ gkrellm-2.5.1/src/plugins.c
+@@ -1254,6 +1254,10 @@ gkrellm_plugins_load(void)
  #if defined(SYSTEM_PLUGINS_DIR)
  	scan_for_plugins(SYSTEM_PLUGINS_DIR);
  #endif

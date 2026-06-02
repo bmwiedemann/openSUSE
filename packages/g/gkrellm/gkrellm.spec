@@ -18,7 +18,7 @@
 
 
 Name:           gkrellm
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Manages Multiple Stacked Monitors
 License:        GPL-3.0-or-later
@@ -33,8 +33,6 @@ Source5:        gkrellm-48.png
 Source6:        gkrellmd.service
 # PATCH-FIX-OPENSUSE gkrellm-lib64-plugins-dir.patch pgajdos@suse.cz -- look also into /usr/lib64/gkrellm2/plugins
 Patch1:         %{name}-lib64-plugins-dir.patch
-# PATCH-FIX-UPSTREAM d26f500ce30592313051e5c2f96b90cfd285791b.patch hpj@urpla.net -- use libsystemd to read user count
-Patch2:         d26f500ce30592313051e5c2f96b90cfd285791b.patch
 BuildRequires:  gtk2-devel
 BuildRequires:  libsensors4-devel
 BuildRequires:  openssl-devel

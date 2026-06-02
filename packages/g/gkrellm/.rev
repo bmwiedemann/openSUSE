@@ -348,4 +348,12 @@
 - Refresh gkrellm-lib64-plugins-dir.patch (forwarded request 1325309 from frispete)</comment>
     <requestid>1325378</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>fac0feb7501e5ea17e89fd37154d2403</srcmd5>
+    <version>2.5.1</version>
+    <time>1780409298</time>
+    <user>anag_factory</user>
+    <comment>update to 2.5.1</comment>
+    <requestid>1356604</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jun  2 06:13:00 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 2.5.1:
+  * Fix GKrellM freezing on exit on Windows when remote mail check
+    (which uses a thread) ran at least once.
+  * Meson: Skip translations when the `nls` option is disabled
+  * Fix locale handling on Windows by always finding translations
+    relative to the installation prefix.
+  * Meson: Add missing handling for custom localedir
+  * Fix X11 dependency handling in Meson build rules. 
+  * Linux: Fix user count on Linux distros that have disabled utmp
+    writing but use systemd/logind. Only supported when building with Meson.
+  * Solaris: Rework disk enumeration to fix a buffer overflow with
+    longer disk names. Also fix a possible file descriptor leak.
+  * Solaris: Fix network statistics (was broken since 2.4.0, tested
+    on OpenIndiana)
+  * Solaris: Fix gkrellmd build (tested on OpenIndiana)
+  * DragonFlyBSD: Apply patch from DragonFlyBSD DeltaPorts to fix
+    build, fix counting of logged-in users and extend hardware sensor
+    support.
+  * FreeBSD: Drop unnneded setgid kmem during installation as well as in code
+  * Fix text alignment for power sensors. The text was not properly
+    right-aligned like other floating point sensor values.
+- modified patches
+  * gkrellm-lib64-plugins-dir.patch (refreshed)
+- deleted patches
+  * d26f500ce30592313051e5c2f96b90cfd285791b.patch (upstreamed)
+
+-------------------------------------------------------------------
 Sun Jan  4 17:43:56 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Apply d26f500ce30592313051e5c2f96b90cfd285791b.patch with minor
