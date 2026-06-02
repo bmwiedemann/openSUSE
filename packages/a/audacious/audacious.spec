@@ -1,7 +1,7 @@
 #
 # spec file for package audacious
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define aud_plugin_ver_min 4.5
-%define aud_plugin_ver_max 4.5.99
-%define core_soname 5
+%define aud_plugin_ver_min 4.6
+%define aud_plugin_ver_max 4.6.99
+%define core_soname 6
 %define gtk_soname 6
-%define qt_soname 3
+%define qt_soname 4
 %define tag_soname 3
 
 %if 0%{?suse_version} < 1600
@@ -29,7 +29,7 @@
 %endif
 
 Name:           audacious
-Version:        4.5.1
+Version:        4.6
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
@@ -117,28 +117,13 @@ export PATH="%{_libdir}/qt6/libexec:$PATH"
 
 %install
 %meson_install
-
-install -Dpm 0644 contrib/%{name}.appdata.xml \
-  %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
-
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}/
 
-%post -n libaudcore%{core_soname} -p /sbin/ldconfig
-
-%postun -n libaudcore%{core_soname} -p /sbin/ldconfig
-
-%post -n libaudqt%{qt_soname} -p /sbin/ldconfig
-
-%postun -n libaudqt%{qt_soname} -p /sbin/ldconfig
-
-%post -n libaudgui%{gtk_soname} -p /sbin/ldconfig
-
-%postun -n libaudgui%{gtk_soname} -p /sbin/ldconfig
-
-%post -n libaudtag%{tag_soname} -p /sbin/ldconfig
-
-%postun -n libaudtag%{tag_soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libaudcore%{core_soname}
+%ldconfig_scriptlets -n libaudqt%{qt_soname}
+%ldconfig_scriptlets  -n libaudgui%{gtk_soname}
+%ldconfig_scriptlets  -n libaudtag%{tag_soname}
 
 %files
 %license COPYING
@@ -148,8 +133,7 @@ install -Dpm 0644 contrib/%{name}.appdata.xml \
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}*
-%dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.metainfo.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %{_mandir}/man?/audtool.?%{?ext_man}
 
