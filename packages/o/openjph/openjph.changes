@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  1 08:13:30 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.27.3:
+  * Changed how the QCC marker is created.
+  * Add OSS fuzz corpus for ojph_compress_fuzz_target #271
+
+-------------------------------------------------------------------
 Sun May 10 05:47:16 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.27.2:

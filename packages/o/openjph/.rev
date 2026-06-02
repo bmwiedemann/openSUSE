@@ -247,4 +247,14 @@
   * Fix version information</comment>
     <requestid>1352236</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9e18e16af81b3d5a7020dfab04eee239</srcmd5>
+    <version>0.27.3</version>
+    <time>1780408856</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.27.3:
+  * Changed how the QCC marker is created.
+  * Add OSS fuzz corpus for ojph_compress_fuzz_target #271</comment>
+    <requestid>1356309</requestid>
+  </revision>
 </revisionlist>
