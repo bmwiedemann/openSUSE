@@ -1,7 +1,7 @@
 #
 # spec file for package libgpiod
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 # Enable python
 %bcond_without libgpiod_python
 Name:           libgpiod
-Version:        2.2.2
+Version:        2.2.4
 Release:        0
 Summary:        C library and tools for interacting with the linux GPIO character device
 License:        LGPL-2.1-or-later

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun  2 11:27:29 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 2.2.4
+  * fix buffer over-read bugs when translating uAPI structs to library types
+  * fix variable and argument types where necessary
+  * sanitize values returned by the kernel to avoid potential buffer overflows
+  * fix memory leaks in gpio-tools
+  * add missing return value checks in gpio-tools
+  * fix period parsing in gpio-tools
+  * use correct loop counter in error path in gpio-manager
+  * make tests work with newer coreutils by removing cases checking tools'
+    behavior on SIGINT which stopped working due to changes in behavior of the
+    timeout tool
+  * don't try to export the same chip object twice in gpio-manager on duplicate
+    uevents
+  * use the "add"/"remove" uevents when watching for GPIO chips in the system as
+    the "bind"/"unbind" pair is only emitted by linux for controllers which don't
+    have a firmware node attached
+  * don't allow clearing hogs on active devices in tests
+  * don't install uneeded files
+  * fix a pkgconfig check in configure
+  * fix a return type check in test harness
+
+-------------------------------------------------------------------
 Tue Sep  2 13:32:45 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.2.2
