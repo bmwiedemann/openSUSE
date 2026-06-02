@@ -50,4 +50,12 @@
 - Set mutter as the default compositor for SLE</comment>
     <requestid>1187417</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>15b4d9316de2e3fdf5e4e234a8fa12be</srcmd5>
+    <version>0.0.6</version>
+    <time>1780409413</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1356709</requestid>
+  </revision>
 </revisionlist>

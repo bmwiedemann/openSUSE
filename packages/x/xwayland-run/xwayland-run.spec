@@ -17,24 +17,21 @@
 
 
 Name:           xwayland-run
-Version:        0.0.4
+Version:        0.0.6
 Release:        0
 Summary:        Set of utilities to run headless X/Wayland clients
-
 License:        GPL-2.0-or-later
 URL:            https://gitlab.freedesktop.org/ofourdan/xwayland-run
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.gz
 
-# https://gitlab.freedesktop.org/ofourdan/xwayland-run/-/merge_requests/19
-Patch0001:      0001-wlheadless-Ignore-os.waitpid-1-0-error.patch
-
 BuildArch:      noarch
 
 BuildRequires:  meson >= 0.60.0
-BuildRequires:  git-core
 BuildRequires:  python3-devel
-Requires:       (weston or cage or kwin6 or kwin5 or mutter or gnome-kiosk)
+
+Requires:       (weston or cage or kwin6 or kwin5 or mutter or gnome-kiosk or phoc)
 Requires:       xorg-x11-server-wayland
+
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 Requires:       dbus-1
 %else
@@ -57,19 +54,16 @@ Provides:       xwfb-run = %{version}-%{release}
 xwayland-run contains a set of small utilities revolving around running
 Xwayland and various Wayland compositor headless.
 
-
 %prep
-%autosetup -S git
-
+%autosetup
 
 %build
 %meson %{?sle_version:-Dcompositor=mutter}
 %meson_build
 
-
 %install
 %meson_install
-
+%python3_fix_shebang
 
 %files
 %license COPYING
@@ -82,6 +76,5 @@ Xwayland and various Wayland compositor headless.
 %{_mandir}/man1/xwayland-run.1*
 %{_mandir}/man1/xwfb-run.1*
 %{python3_sitelib}/wlheadless/
-
 
 %changelog
