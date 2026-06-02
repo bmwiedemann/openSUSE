@@ -1,7 +1,7 @@
 #
 # spec file for package python-alsa
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-alsa
 Version:        1.2.14
 Release:        0
 Summary:        Python ALSA binding
 License:        GPL-2.0-only AND LGPL-2.1-or-later
-Group:          Development/Libraries/Python
 URL:            https://www.alsa-project.org
 Source:         %{url}/files/pub/pyalsa/pyalsa-%{version}.tar.bz2
 Source1:        %{url}/files/pub/pyalsa/pyalsa-%{version}.tar.bz2.sig
@@ -30,7 +28,9 @@ Source2:        COPYING
 Source3:        COPYING.LIB
 Source4:        %{name}.keyring
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  alsa-devel
 BuildRequires:  python-rpm-macros
 Provides:       pyalsa = %{version}
@@ -46,13 +46,14 @@ cp %{SOURCE2} %{SOURCE3} .
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %license COPYING COPYING.LIB
-%{python_sitearch}/*
+%{python_sitearch}/pyalsa
+%{python_sitearch}/pyalsa-%{version}.dist-info
 
 %changelog
