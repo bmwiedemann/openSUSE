@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  1 16:39:55 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Version 20260601
+  * Removes aarch64 specific firstboot handling.  Flathub now
+    publishes an aarch64 build of Firefox, making it un-necessary
+
+-------------------------------------------------------------------
 Sat May 30 17:47:51 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Version 20260530

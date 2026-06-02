@@ -138,4 +138,14 @@
   * add defaults for a number of plasma components</comment>
     <requestid>1356065</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6e4407d74d069e44896817b323607843</srcmd5>
+    <version>20260601</version>
+    <time>1780422389</time>
+    <user>anag_factory</user>
+    <comment>- Version 20260601
+  * Removes aarch64 specific firstboot handling.  Flathub now
+    publishes an aarch64 build of Firefox, making it un-necessary</comment>
+    <requestid>1356417</requestid>
+  </revision>
 </revisionlist>

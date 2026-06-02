@@ -18,7 +18,7 @@
 
 
 Name:           plasma-branding-Kalpa
-Version:        20260530
+Version:        20260601
 Release:        0
 Summary:        Kalpa Desktop default settings
 License:        MIT
