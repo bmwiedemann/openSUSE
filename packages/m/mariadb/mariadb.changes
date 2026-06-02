@@ -1,16 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun  1 14:45:15 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 11.8.8:
+    https://mariadb.com/docs/release-notes/community-server/11.8/11.8.8
+    https://mariadb.com/docs/release-notes/community-server/changelogs/11.8/11.8.8
+  * fixes for the following security vulnerabilities:
+    11.8.8: CVE-2026-49261
+            CVE-2026-48165 (bsc#1266814)
+            CVE-2026-48163 (bsc#1266815)
+
+-------------------------------------------------------------------
 Thu May 21 13:45:58 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 11.8.7:
     https://mariadb.com/docs/release-notes/community-server/11.8/11.8.7
     https://mariadb.com/docs/release-notes/community-server/changelogs/11.8/11.8.7
   * fixes for the following security vulnerabilities:
-    11.8.7: CVE-2026-44173
-            CVE-2026-44172
-            CVE-2026-44171
-            CVE-2026-44170
-            CVE-2026-44169
-            CVE-2026-44168
+    11.8.7: CVE-2026-44173 (bsc#1266437)
+            CVE-2026-44172 (bsc#1266438)
+            CVE-2026-44171 (bsc#1266439)
+            CVE-2026-44170 (bsc#1266440)
+            CVE-2026-44169 (bsc#1266441)
+            CVE-2026-44168 (bsc#1266442)
 - Update spec for removal of README-wsrep file
 - Add test pam modules in mariadb-test package
 - Add new mariadb-migrate-config-file utility in mariadb-tools package
@@ -27,7 +38,7 @@ Mon May  4 13:32:59 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
   * fixes for the following security vulnerabilities:
     11.8.6: CVE-2026-32710 (bsc#1260081)
             CVE-2026-3494  (bsc#1259176)
-            CVE-2026-34303
+            CVE-2026-34303 (bsc#1266435)
             CVE-2026-35549 (bsc#1261413)
 - Update skipped test list
 - Add MDEV-38811.patch
