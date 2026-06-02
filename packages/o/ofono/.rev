@@ -314,4 +314,12 @@
     <comment></comment>
     <requestid>1322203</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>a5a5080b8f50eade58fd5af701a762f4</srcmd5>
+    <version>2.19</version>
+    <time>1780408934</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: add explicit gcc+make BuildRequires; point URL at the upstream kernel.org git (01.org is defunct)</comment>
+    <requestid>1356427</requestid>
+  </revision>
 </revisionlist>

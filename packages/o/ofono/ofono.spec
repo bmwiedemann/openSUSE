@@ -1,7 +1,7 @@
 #
 # spec file for package ofono
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Sergey Kondakov <virtuousfox@gmail.com>.
 # Copyright (c) 2014 Bernd Wachter <bwachter@lart.info>.
 #
@@ -23,9 +23,11 @@ Version:        2.19
 Release:        0
 Summary:        Mobile telephony application development framework
 License:        GPL-2.0-only
-URL:            https://01.org/ofono
+URL:            https://git.kernel.org/pub/scm/network/ofono/ofono.git
 Source0:        https://www.kernel.org/pub/linux/network/ofono/%{name}-%{version}.tar.xz
 Patch0:         harden_ofono.service.patch
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(bluez) >= 4.85
