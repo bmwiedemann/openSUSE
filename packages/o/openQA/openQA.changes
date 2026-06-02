@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 01 13:56:13 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1780322162.c1836389:
+  * refactor: Use more readable regex in `process-docs`
+  * refactor: Turn `process-docs` into proper style-checked Perl script
+  * feat: Add Makefile target to tidy Shell code
+  * docs: Fix links in documentation generated via `generate-docs`
+  * fix(openqa-clone-job): Allow empty API key/secret for auth.method=None
+  * fix(spec): Supplement bash-completion subpackage against bash-completion
+  * docs: Fix broken list under "Further systemd …" and wrap consistently
+  * docs: Fix example config for `git_auto_commit`
+  * docs: Wrap lines consistently under "Terms and variables …"
+  * docs: Fix wrapping in "Triggering tests …" section and below
+  * docs: Remove Git conflict markers that were missed by b51c609679
+  * feat: watch worker auto-restart systemd drop-ins for reloads
+
+-------------------------------------------------------------------
 Tue May 26 15:19:07 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1779808735.8c9bd805:
