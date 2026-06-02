@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 01 12:31:16 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * chore: add rustfmt config
+  * chore: update dependencies
+  * chore: remove unneeded files
+
+-------------------------------------------------------------------
+Sat Apr 18 11:05:10 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sun Apr 12 15:09:17 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * chore: udpate deps
+  * chore: updates after iced rebase
+  * i18n: translation updates from weblate
+  * Increase memory limit for image decoding
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
 Tue Feb 24 20:11:51 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:

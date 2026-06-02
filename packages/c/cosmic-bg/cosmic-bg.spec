@@ -18,7 +18,7 @@
 
 %define         appid com.system76.CosmicBackground
 Name:           cosmic-bg
-Version:        1.0.8
+Version:        1.0.14
 Release:        0
 Summary:        COSMIC service for backgrounds
 License:        MPL-2.0
@@ -61,10 +61,6 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %license LICENSE.md
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/applications/%{appid}.desktop
 %{_datadir}/cosmic
-%{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
-%{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
-%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %changelog
