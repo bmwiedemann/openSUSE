@@ -477,4 +477,13 @@ Patches submitted to libunwind-devel.
   s390x in Gtest-trace and Ltest-trace (forwarded request 1355176 from cboltz)</comment>
     <requestid>1355182</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>0804d17b8c8130266157d7166bae739c</srcmd5>
+    <version>1.8.3</version>
+    <time>1780408880</time>
+    <user>anag_factory</user>
+    <comment>- Always disable C++ exception support, which is incompatible with the
+  system unwinder (forwarded request 1355682 from Andreas_Schwab)</comment>
+    <requestid>1356381</requestid>
+  </revision>
 </revisionlist>
