@@ -37,7 +37,13 @@ Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
 Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
 Patch3:         U_xwayland_Dont_run_key_behaviors_and_actions.patch
-
+Patch1266294:   bsc1266294_CVE-2026-XXXX1_0007-dix-increase-XLFDMAXFONTNAMELEN-to-match-libXfont2-s.patch
+Patch1266295:   bsc1266295_CVE-2026-XXXX2_0001-sync-fix-deletion-of-counters-and-fences.patch
+Patch1266296:   bsc1266296_CVE-2026-XXXX3_0003-xkb-reject-key-types-with-num_levels-exceeding-XkbMa.patch
+Patch1266297:   bsc1266297_CVE-2026-XXXX4_0004-xkb-clamp-nMaps-to-mapWidths-buffer-size-in-CheckKey.patch
+Patch1266299:   bsc1266299_CVE-2026-XXXX6_0002-sync-restart-trigger-list-iteration-in-SyncChangeCou.patch
+Patch1266300:   bsc1266300_CVE-2026-XXXX7_0005-glx-fix-reversed-length-check-in-ChangeDrawableAttri.patch
+Patch1266301:   bsc1266301_CVE-2026-XXXX8_0006-saver-re-fetch-screen-private-after-CheckScreenPriva.patch
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
