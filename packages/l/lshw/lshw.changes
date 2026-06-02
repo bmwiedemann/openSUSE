@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  1 16:24:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec cleanup:
+  * Stop using the deprecated %suse_update_desktop_file macro;
+    set Categories directly in lshw.desktop.in and drop the
+    update-desktop-files BuildRequires
+  * Drop the unneeded hicolor-icon-theme dependency from the GUI
+    subpackage (its icon goes to %{_datadir}/pixmaps, not a
+    hicolor theme dir)
+  * Drop the stale Requires(post)/Requires(postun) scriptlet
+    dependencies (there are no such scriptlets; file triggers
+    refresh the desktop/icon caches)
+  * Add the explicit make BuildRequires and drop obsolete Group
+
+-------------------------------------------------------------------
 Tue Feb 13 12:37:05 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version B.02.20 (jsc#9912):

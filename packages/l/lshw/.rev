@@ -354,4 +354,12 @@ factory)</comment>
     <comment>- Update to version B.02.20 (jsc#9912):</comment>
     <requestid>1226809</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>10a8c4c409097b4e998461849de23989</srcmd5>
+    <version>B.02.20</version>
+    <time>1780408894</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: stop using deprecated %suse_update_desktop_file (set Categories in lshw.desktop.in), drop unneeded hicolor-icon-theme dep and stale post/postun scriptlet deps from the GUI subpackage, add explicit make BuildRequires, drop obsolete Group</comment>
+    <requestid>1356411</requestid>
+  </revision>
 </revisionlist>

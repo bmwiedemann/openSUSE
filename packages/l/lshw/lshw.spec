@@ -1,7 +1,7 @@
 #
 # spec file for package lshw
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,10 +27,9 @@ Source:         lshw-%{version}.tar.gz
 Source1:        lshw.desktop.in
 Source2:        lshw.png
 BuildRequires:  gcc-c++
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
+BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 Recommends:     hwdata
 %lang_package
@@ -50,13 +49,7 @@ http://www.ezix.org/software/lshw.html
 
 %package gui
 Summary:        HardWare LiSter (GUI Frontend)
-Group:          Hardware/Other
 Requires:       %{name} = %{version}-%{release}
-Requires:       hicolor-icon-theme
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
 
 %description gui
 lshw (Hardware Lister) is a small tool to provide detailed informaton on the
@@ -76,7 +69,8 @@ http://www.ezix.org/software/lshw.html
 %autosetup
 
 %build
-
+# the "all" and "gui" targets race on the shared liblshw.a (gui links
+# -llshw mid-ar), so build serially
 %make_build \
   SBINDIR="%{_sbindir}" \
   RPM_OPT_FLAGS="%{optflags} -fno-strict-aliasing" \
@@ -95,7 +89,6 @@ chmod 0644 "%{buildroot}%{_datadir}/applications/%{name}.desktop"
 install -D -p -m 0644 %{SOURCE2} \
   %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
-%suse_update_desktop_file -r "%{name}" System HardwareSettings
 # All of following are shipped by other packages as well
 rm -f %{buildroot}%{_datadir}/%{name}/pci.ids
 rm -f %{buildroot}%{_datadir}/%{name}/usb.ids
