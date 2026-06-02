@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  2 07:45:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec cleanup:
+  * Add explicit gcc and make BuildRequires
+  * Convert the library -devel BuildRequires to their pkgconfig()
+    form (libacl, bzip2, libxml-2.0, zlib)
+  * Drop obsolete Group tags
+
+-------------------------------------------------------------------
 Mon Dec 16 13:10:18 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - xar-fix-prototype.patch: fixed prototypes

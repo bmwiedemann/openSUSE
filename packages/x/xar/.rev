@@ -93,4 +93,12 @@
     <comment>- xar-fix-prototype.patch: fixed prototypes (forwarded request 1231400 from msmeissn)</comment>
     <requestid>1231512</requestid>
   </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>cb18d4a4c5f112eaf401fa187c343d36</srcmd5>
+    <version>1.6.1</version>
+    <time>1780409318</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: add explicit gcc+make, convert library -devel BuildRequires to pkgconfig() form, drop obsolete Group tags</comment>
+    <requestid>1356642</requestid>
+  </revision>
 </revisionlist>

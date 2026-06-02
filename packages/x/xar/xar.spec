@@ -1,7 +1,7 @@
 #
 # spec file for package xar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,11 +31,14 @@ Patch2:         xar-fix-prototype.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
-BuildRequires:  libacl-devel
-BuildRequires:  libbz2-devel
-BuildRequires:  libxml2-devel
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  openssl-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 The XAR project aims to provide an easily extensible archive format. Important
@@ -49,7 +52,6 @@ table of content's rich meta-data.
 
 %package -n libxar%{sover}
 Summary:        Extensive Archive Format Library
-Group:          Development/Libraries/C and C++
 
 %description -n libxar%{sover}
 The XAR project aims to provide an easily extensible archive format. Important
@@ -63,7 +65,6 @@ table of content's rich meta-data.
 
 %package -n libxar-devel
 Summary:        Extensive Archive Format Library
-Group:          Development/Libraries/C and C++
 Requires:       libxar%{sover} = %{version}
 
 %description -n libxar-devel
