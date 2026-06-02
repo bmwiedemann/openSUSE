@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun  1 19:17:15 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the version 4.58.0:
+  - adapter_ficbooknet: Fixes for site changes.
+  - Add retry_failedtoload_images option
+  - PI: Don't throw notifications when doing show_message()
+  - PI: INI Snippets
+  - PI: Prefill Add Reject URLs dialog from clipboard and allow
+    ctrl-enter
+  - Add OTW story note labels config #1347
+  - Improve continue_on_chapter_error_try_limit exceeded
+    reporting
+  - Chrome browsercache_sqldb added, but cannot read cache while
+    browser is open. See #1341
+    <https://github.com/JimmXinu/FanFicFare/issues/1341>
+  - adapter_fanficauthorsnet: Domains changed from .nsns to -nsns
+  - Include genre/category in defaults.ini when include_in_X for
+    extragenres/extracategories
+
+-------------------------------------------------------------------
 Sat May 16 09:52:00 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the version 4.57.0:

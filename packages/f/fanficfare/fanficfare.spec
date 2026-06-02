@@ -19,7 +19,7 @@
 %define modname FanFicFare
 %define modnamedown fanficfare
 Name:           fanficfare
-Version:        4.57.0
+Version:        4.58.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
