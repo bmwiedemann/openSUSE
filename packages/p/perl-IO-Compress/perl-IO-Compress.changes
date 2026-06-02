@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May 17 07:45:56 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.220.0 (2.220)
+   see /usr/share/doc/packages/perl-IO-Compress/Changes
+
+    2.220 16 May 2026
+      * remove use of eval in globmapper. #73
+        CVE-2026-48962 bsc#1266382
+        Sat May 16 17:48:34 2026 +0100
+        f2db247bf90d4cc7ee2710be384946081f3b4610
+      * Update zipdetails to version 4.006.
+        Sat May 16 13:43:12 2026 +0100
+        33c89d03d6e746ed2ead4f2f6570d47864c61bc7
+      * Fix typo in fastForward #72
+        Fri May 15 23:18:39 2026 +0100
+        68db44076f4c1a86a2ffe53a958eac6cabaf72e2
+      * Fix issue with "rawdeflate` option in AnyInflate. #71
+        Fri May 15 22:56:20 2026 +0100
+        fba3efe40208bd07034b6a3cf6bf9fc3b8b4f215
+
+-------------------------------------------------------------------
 Wed Apr  8 20:11:58 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.219.0 (2.219)
