@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jun  2 05:59:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.35:
+  * General
+    - [CI] Makefile: wasm-engine target compatibility with macOS
+      @jamieplu (#19821)
+    - fix wasm build @aabidsofi19 (#19817)
+    - Add repository details for each maintainer @miacycle (#19773)
+    - Governance scaled out @miacycle (#19772)
+    - fix(make): run go mod tidy before wasm-engine build
+      @ShubhamSoni09 (#19814)
+    - [Server] Add doc.go for native Go policy engine @guan404ming
+      (#19271)
+  * Meshery CLI
+    - fix(mesheryctl): bridge v1beta3 design parse output to
+      v1beta1 for evaluation @PragalvaXFREZ (#19804)
+    - Compile Golang Policy Engine to WASM @guan404ming (#18939)
+    - [mesheryctl] add csv support on relationship generate
+      @Omkar-Ugal (#19640)
+    - add design evaluate subcommand @aabidsofi19 (#17897)
+  * Meshery UI
+    - [UI] Fix deploy icon color in design action menu
+      @Rajesh-Nagarajan-11 (#19789)
+    - Compile Golang Policy Engine to WASM @guan404ming (#18939)
+    - [CI] Update .nvmrc files from Node 18 to Node 22 to match
+      engines field @Pranav-d33 (#19511)
+    - Fix discard button error background @Rajesh-Nagarajan-11
+      (#19788)
+  * Maintenance
+    - feat: add hardened runner step to GitHub workflows for
+      enhanced security @ianrwhitney (#19818)
+    - Compile Golang Policy Engine to WASM @guan404ming (#18939)
+  * Documentation
+    - Compile Golang Policy Engine to WASM @guan404ming (#18939)
+    - docs: Fix broken Contributing to Meshery UI links @aprv10
+      (#19803)
+    - [Docs] Add high-level overview of native Go policy engine
+      @guan404ming (#19150)
+
+-------------------------------------------------------------------
 Sat May 30 08:08:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.34:
