@@ -18,7 +18,7 @@
 
 %define         appid com.system76.CosmicEdit
 Name:           cosmic-edit
-Version:        1.0.8
+Version:        1.0.14
 Release:        0
 Summary:        COSMIC Text Editor
 License:        GPL-3.0-only
@@ -54,8 +54,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appid}.desktop
-%{_datadir}/icons/hicolor/??x??/apps/%{appid}.svg
-%{_datadir}/icons/hicolor/???x???/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
 %{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %changelog
