@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Mon Jun 01 12:42:23 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * fix: cosmic-protocols
+  * chore: fixes after libcosmic update
+  * Epoch 1.0.14 version update
+  * i18n: translation updates from weblate
+  * Fix 24h time format in file dialog (#1812)
+  * feat: add text preview for thumbnails and gallery
+  * Epoch 1.0.13 version update
+  * don't overwrite military time
+  * fix(i18n): use separate 'rename' keys for menu and dialog confirm button
+  * i18n: translation updates from weblate
+  * fix: small grid file icons
+  * fix: prefer SVG file icons
+  * Epoch 1.0.12 version update
+  * perf: reduce size of DialogPage enum by 1000 bytes
+  * perf: use `Box` with `tab::Item` to reduce message size by 800 bytes
+  * chore: add rust-toolchain to enforce 1.93
+  * fix: remove match if let guards for Rust 1.93
+  * fix(mime-app): handle no-path command exec
+  * fix: %F and %U field code handling
+  * fix: improve desktop entry field code handling
+  * chore: add rustfmt config
+  * chore: clippy
+  * chore: update dependencies
+  * Use existing clear-recents-history string
+  * Add button to clear recents
+  * Use name for network location if available
+  * Fix windows compilation issues
+  * Only use uzers on unix, do not fork on mac
+  * Put libcosmic/desktop behind desktop feature
+  * Refactor trash handling to improve portability
+  * Epoch 1.0.11 version update
+  * example(dialog): switch logger to fix build
+  * fix: gate gio file copy fallback with gvfs feature
+  * chore: use compio::fs::rename for quick renames
+  * fix: do not generate thumbnail if file is being written
+  * refactor: use select macro for gio copy futures
+  * perf: avoid holding async mutex guards across await points
+  * perf: use atomics for controller progress and state
+  * perf: get image dimensions from background thread
+  * chore: update Cargo.lock
+  * fix: use gio file copy fallback to fix MTP unsupported I/O errors
+  * chore: add methods to `Controller` to pause and unpause futures
+  * chore: use tracing for structured logs
+  * feat: select file name until the extension in rename and save dialog
+
+-------------------------------------------------------------------
+Sat Apr 18 11:11:03 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * feat: repeat a key to cycle through items in type-to-select mode
+  * feat: start type-to-select search from the current focus
+  * fix: retry reading clipboard if data is empty
+  * fix: handle slight delay in availability of clipboard data
+  * i18n: translation updates from weblate
+  * Fix: remove context actions from open/save dialog
+  * chore: update to the latest libcosmic
+  * fix: reset focus when opening a new tab
+  * Add user-defined context actions
+
+-------------------------------------------------------------------
+Sun Apr 12 15:20:47 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * chore: update libcosmic
+  * Use row, column with_capacity
+  * Epoch 1.0.9 version update
+  * fix: assign replace dialog button id
+  * chore: udpate libcosmic
+  * feat: set placeholder for permission dropdowns
+  * feat: join multiple operations
+  * feat: allow setting permissions in multi preview
+  * feat: add open-with in multi preview
+  * fix: Respect show_recents conf in dialog
+  * fix: don't read files if list empty
+  * fix: update cached clipboard
+  * cleanup
+  * chore: update deps
+  * chore: update libcosmic
+  * chore: clippy
+  * refactor: use `jiff` instead of `chrono`
+  * chore: update dependencies
+  * feat: add 'Open item location' to search
+  * fix(iced): right click selection offset in dropdown menus
+  * feat: rebase libcosmic onto iced 0.14
+  * i18n: translation updates from weblate
+  * fix: change 'Compress' to 'Compress...' in context menu
+  * fix: preserve modified time when creating/extracting zip files
+  * feat: search in Recents and Trash
+  * fix example/cargo test/ CI
+  * Make new windows open at the location of the currently active tab
+  * chore: add a mimetype based dialog in the example
+  * fix: dialog uses parsed mime to match the type
+  * fix: filter for items with paths in multi-preview
+  * feat: add just commands to build and install applet only
+
+-------------------------------------------------------------------
 Tue Feb 24 20:19:33 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:

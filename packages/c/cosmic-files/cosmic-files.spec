@@ -18,7 +18,7 @@
 
 %define         appid com.system76.CosmicFiles
 Name:           cosmic-files
-Version:        1.0.8
+Version:        1.0.14
 Release:        0
 Summary:        COSMIC file manager
 License:        GPL-3.0-only
@@ -46,8 +46,8 @@ just build-release
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
 
-#%%check
-#%%{cargo_test}
+%check
+%{cargo_test}
 
 %files
 %license LICENSE
