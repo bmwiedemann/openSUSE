@@ -336,4 +336,41 @@
   * fsck.exfat: fix an uninitialized variable warning.</comment>
     <requestid>1338190</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6e8530b83901b25fcf81a949eeabac2f</srcmd5>
+    <version>1.4.1</version>
+    <time>1780408853</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.1:
+  * exfatprogs: include missing DOS attribute headers and upcase
+    helper files in release tarballs.
+
+- Update to 1.4.0:
+  Features:
+  * mkfs.exfat: add partition table creation support so
+    newly formatted devices are recognized by Windows.
+  * fsck.exfat: add &quot;--put-mbr&quot; and &quot;--clear-mbr&quot;
+    options to add or remove partition table entries for
+    Windows compatibility on existing volumes.
+  * mkfs.exfat: add the &quot;--upcase&quot; option to format with
+    a user-supplied upcase table.
+  * exfatprogs: add example upcase tables and a helper
+    script to generate upcase table binaries for testing.
+  * exfatprogs: add chdosattr and lsdosattr utilities to
+    view and modify DOS file attributes.
+  Changes:
+    * mkfs.exfat: detect foreign filesystems and partition
+    tables before formatting, requiring &quot;-F&quot; for
+    interactive overwrite of non-exFAT volumes.
+  * mkfs.exfat: always clear the first 0x10000 bytes and
+    improve zero-out I/O, verification, and progress logs
+    during formatting.
+  * mkfs.exfat: reduce memory usage when formatting very
+    large devices.
+  * exfatprogs: include the release date in version output.
+  * mkfs.exfat: print the volume UUID after formatting,
+    warn when the &quot;-s&quot; option is used, and default to
+    512-byte clusters on very small devices.</comment>
+    <requestid>1356305</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           exfatprogs
-Version:        1.3.2
+Version:        1.4.1
 Release:        0
 Summary:        Utilities for exFAT file system maintenance
 License:        GPL-2.0-or-later
@@ -26,6 +26,7 @@ Source0:        https://github.com/exfatprogs/exfatprogs/archive/refs/tags/%{ver
 Source1000:     exfatprogs.keyring
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  libblkid-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Conflicts:      exfat-utils
@@ -60,17 +61,24 @@ autoreconf -fi
 %files
 %license COPYING
 %doc README.md
+%{_mandir}/man1/chdosattr.1%{?ext_man}
+%{_mandir}/man1/lsdosattr.1%{?ext_man}
 %{_mandir}/man8/dump.exfat.8%{?ext_man}
 %{_mandir}/man8/exfatlabel.8%{?ext_man}
 %{_mandir}/man8/fsck.exfat.8%{?ext_man}
 %{_mandir}/man8/mkfs.exfat.8%{?ext_man}
 %{_mandir}/man8/tune.exfat.8%{?ext_man}
 %{_mandir}/man8/exfat2img.8%{?ext_man}
+%dir %{_datadir}/doc/exfatprogs
+%{_datadir}/doc/exfatprogs/*.txt
+%{_libexecdir}/exfat-uctbl2bin.sh
 %{_sbindir}/dump.exfat
 %{_sbindir}/exfatlabel
 %{_sbindir}/fsck.exfat
 %{_sbindir}/mkfs.exfat
 %{_sbindir}/tune.exfat
 %{_sbindir}/exfat2img
+%{_sbindir}/chdosattr
+%{_sbindir}/lsdosattr
 
 %changelog
