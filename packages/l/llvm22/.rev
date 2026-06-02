@@ -67,4 +67,14 @@
 - Remove unnecessary dependency of llvm-devel on libtool.</comment>
     <requestid>1352226</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eeb9b43f0f7f72455e91681fbab5e42f</srcmd5>
+    <version>22.1.6</version>
+    <time>1780408846</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 22.1.6.
+  * This release contains bug-fixes for the LLVM 22.1.0 release.
+    This release is API and ABI compatible with 22.1.0.</comment>
+    <requestid>1356234</requestid>
+  </revision>
 </revisionlist>
