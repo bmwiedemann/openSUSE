@@ -220,4 +220,12 @@
   * platform name (eg. xcb, wayland) to Qt version string.</comment>
     <requestid>1343547</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>467a63a687842f62019ad24adcf8e6c0</srcmd5>
+    <version>1.0.6</version>
+    <time>1780409345</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1356653</requestid>
+  </revision>
 </revisionlist>
