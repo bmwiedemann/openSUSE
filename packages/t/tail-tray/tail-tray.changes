@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 02 04:48:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.33:
+  * Bump version to 0.2.33 for new release
+  * Replace QSharedMemory which is attachable after termination
+    with QLockFile (#117)
+  * Fix DATAROOTDIR #116
+  * [CI] - Adjust QT version
+  * [CI] - Bump windows and VS to latest + latest QT LTS patch
+    release
+  * [Docs] - Fix missing dep for Ubuntu build from source
+
+-------------------------------------------------------------------
 Wed May 06 05:14:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.32:
