@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/Koranir/cosmic-dirstat.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/v0.2.0</param>
+    <param name="revision">refs/tags/v0.3.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="package-meta">yes</param>

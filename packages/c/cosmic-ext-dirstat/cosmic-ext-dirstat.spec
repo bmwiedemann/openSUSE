@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-ext-dirstat
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        KDirStat-esque disk usage analyzer using libcosmic
 License:        GPL-3.0-only

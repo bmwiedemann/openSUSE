@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 01 18:39:53 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 0.3.0:
+  * Release 0.3.0
+  * feat: Show scan progress & optimise implementation (#5)
+  * Silence dead code warning on unused widget
+
+-------------------------------------------------------------------
 Fri Mar 27 06:33:14 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 0.2.0:
