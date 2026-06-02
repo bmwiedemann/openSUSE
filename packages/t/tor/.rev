@@ -1253,4 +1253,41 @@ Update to 0.4.9.8
     received (boo#1264346, CVE-2026-44603, TROVE-2026-007)</comment>
     <requestid>1352013</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>15a650beb69d4c58262def1dd6f74a2c</srcmd5>
+    <version>0.4.9.9</version>
+    <time>1780409321</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.9.9
+  * Major bugfixes (compression, security):
+    - Fix a compression bomb bypass where an attacker could concatenate
+      many gzip or zlib sub-streams, each just under the per-stream
+      detection threshold, to avoid the compression bomb check entirely.
+      TROVE-2026-022. Fixes bug 41275; bugfix on 0.3.1.1-alpha.
+    - Fix an infinite loop when decompressing a truncated zlib/gzip
+      stream with done=1. A truncated stream never reaches Z_STREAM_END,
+      causing zlib to return Z_BUF_ERROR with no input remaining, which
+      buf_add_compress() mistook for a full output buffer and retried
+      forever. Fixed by returning TOR_COMPRESS_ERROR in that case so the
+      caller can abort cleanly. TROVE-2026-021. Fixes bug 41274; bugfix
+      on 0.2.6.1-alpha.
+  * Major bugfixes (conflux, security):
+    - Fix a NULL write after free when sending a CONFLUX_SWITCH cell
+      fails. The return value of relay_send_command_from_edge() was
+      ignored, so a send failure (which calls circuit_mark_for_close()
+      and removes the leg via cfx_del_leg()) would go undetected,
+      causing the caller to write to the now-freed current leg and
+      resulting in a crash. TROVE-2026-017. Fixes bug 41263; bugfix
+      on 0.4.8.1-alpha.
+  * Major bugfixes (security, TROVE-2026-019):
+    - Avoid out-of-bounds read/write when parsing a consensus or
+      detached signature with unexpected signature digest type. Impact
+      is minor for most Tor roles, but potentially major for directory
+      authorities. Fixes bug 41267; bugfix on 0.2.8.2-alpha.
+  * Major bugfixes (client stability, TROVE-2026-013, TROVE-2026-015):
+    - Protect against a client-side assert that can happen if a
+      malicious onion service gets the client to load its carefully
+      crafted onion descriptor. Fixes bugs 41259 and 41261; bugfix</comment>
+    <requestid>1356643</requestid>
+  </revision>
 </revisionlist>
