@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun  2 10:43:25 UTC 2026 - ecsos <ecsos@opensuse.org> 0.56.0
+
+- Update to 0.56.0
+  * New features:
+    - event_loop timers are now processed in a round-robin fashion
+      if there are multiple expired timers
+    - Added shared_value::use_count
+  * Bugfixes and minor changes:
+    - HTTP client: Fixed handling of 1yz responses
+    - fz::socket::connect now returns early on bind failure
+    - Minor fixes to socket classes
+- Changes from 0.55.5
+  * New features:
+    - Added %o support to fz::sprintf
+  * Bugfixes and minor changes:
+    - Support building with Nettle version 4
+
+-------------------------------------------------------------------
 Sun May  3 22:34:06 UTC 2026 - ecsos <ecsos@opensuse.org> - 0.55.4
 
 - Update to 0.55.4
