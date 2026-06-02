@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.80
+Version:        0.1.81
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -244,6 +244,7 @@ cmake   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DSSG_PRODUCT_FEDORA=ON \
         -DSSG_PRODUCT_FIREFOX=OFF \
         -DSSG_PRODUCT_FUSE6=OFF \
+        -DSSG_PRODUCT_HUMMINGBIRD=ON \
         -DSSG_PRODUCT_JRE=OFF \
         -DSSG_PRODUCT_MACOS1015=OFF \
         -DSSG_PRODUCT_OCP4=OFF \
@@ -325,6 +326,7 @@ make install DESTDIR=%buildroot
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-cs9*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-cs10*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-fedora*
+%doc %{_datadir}/doc/scap-security-guide/guides/ssg-hummingbird*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-ol*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-openeuler*
 %doc %{_datadir}/doc/scap-security-guide/guides/ssg-rh*
@@ -355,6 +357,7 @@ make install DESTDIR=%buildroot
 %{_datadir}/xml/scap/ssg/content/*-cs9*
 %{_datadir}/xml/scap/ssg/content/*-cs10*
 %{_datadir}/xml/scap/ssg/content/*-fedora*
+%{_datadir}/xml/scap/ssg/content/*-hummingbird*
 %{_datadir}/xml/scap/ssg/content/*-ol*
 %{_datadir}/xml/scap/ssg/content/*-openeuler*
 %{_datadir}/xml/scap/ssg/content/*-tencentos*

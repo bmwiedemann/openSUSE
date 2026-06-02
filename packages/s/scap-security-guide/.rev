@@ -595,4 +595,23 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
     - Various updates for SLE 12/15 (forwarded request 1338252 from boychev)</comment>
     <requestid>1338255</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a931d3224caaabbe662ce7fdb40a3f3e</srcmd5>
+    <version>0.1.81</version>
+    <time>1780409377</time>
+    <user>anag_factory</user>
+    <comment>- Add Hummingbird product support 
+
+- updated to 0.1.81 (jsc#ECO-3319)
+    - Create SLE16 ANSSI profiles
+    - Update SLE15 STIG version to V2R7
+    - Update SLE12 STIG version to V3R5
+    - Update SLEM5 STIG version to V1R3
+    - Add Claude Code skills for content development workflows
+    - Create Claude Skill for creating new products
+    - Various updates for SLE 12/15
+
+- updated to 0.1.80 (jsc#ECO-3319) (forwarded request 1356681 from boychev)</comment>
+    <requestid>1356686</requestid>
+  </revision>
 </revisionlist>

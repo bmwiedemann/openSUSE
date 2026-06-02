@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun  2 09:28:47 UTC 2026 - Boychev <svetlin.boychev@suse.com>
+
+- Add Hummingbird product support 
+
+-------------------------------------------------------------------
+Tue Jun  2 08:39:25 UTC 2026 - Boychev <svetlin.boychev@suse.com>
+
+- updated to 0.1.81 (jsc#ECO-3319)
+    - Create SLE16 ANSSI profiles
+    - Update SLE15 STIG version to V2R7
+    - Update SLE12 STIG version to V3R5
+    - Update SLEM5 STIG version to V1R3
+    - Add Claude Code skills for content development workflows
+    - Create Claude Skill for creating new products
+    - Various updates for SLE 12/15
+
+
+-------------------------------------------------------------------
 Wed Mar 11 09:33:49 UTC 2026 - Boychev <svetlin.boychev@suse.com>
 
 - Update the SSG package description 
@@ -11,7 +29,7 @@ Wed Mar 11 09:09:21 UTC 2026 - Boychev <svetlin.boychev@suse.com>
 -------------------------------------------------------------------
 Wed Mar 11 08:57:21 UTC 2026 - Boychev <svetlin.boychev@suse.com>
 
-- updated to 0.1.79 (jsc#ECO-3319)
+- updated to 0.1.80 (jsc#ECO-3319)
     - Create SLE16 HIPAA profile
     - Create SLE16 PCI DSS 4 profile
     - Use Sequoia in RHEL 10 instead of GPG
