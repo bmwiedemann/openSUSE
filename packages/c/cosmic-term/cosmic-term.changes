@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Mon Jun 01 13:34:28 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * fix: libcosmic updates
+  * Epoch 1.0.14 version update
+  * i18n: translation updates from weblate
+  * Revert "bound the event channel to prevent unbounded RSS growth"
+  * docs: explain backpressure rationale for PTY event channel in
+  * chore: cargo fmt
+  * bound the event channel to prevent unbounded RSS growth
+  * Epoch 1.0.13 version update
+  * i18n: translation updates from weblate
+  * fix: clippy lint
+  * fix: context menu by disabling IME when the widget has context menu
+  * fix: menu doesn't show by unfocusing when clicking outside of the terminal_box
+  * Specify the line height to the IME cursor height
+  * Handle wide character widths by using glyph width to detect wide chars
+  * Estimate preedit position without calling layout_runs()
+  * Add minimal support CJK input method to terminal box excepts IME cursor positioning which is a bit tricky
+  * Epoch 1.0.12 version update
+  * fix: change zoom reset scope to active tab
+  * Restrict /proc cwd lookup to Linux
+  * Epoch 1.0.11 version update
+  * fix: don't capture all mouse events
+  * Fix binding to the pageup/pagedown keys
+  * Adding translations to Spanish and Italian
+  * New tab opens on current directory
+
+-------------------------------------------------------------------
+Sat Apr 18 16:03:58 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * i18n: translation updates from weblate
+  * Review fix: revert format step name change
+  * Bonus: run the tests if we are compiling for clippy
+  * Update the clippy github action to install deps
+  * Cargo fmt
+  * Bonus: reduce size of Message further
+  * Add a github action checking for clippy
+  * Ingore clippy warnings about too many arguments
+  * We don't need to match for only one case
+  * Don't pass the large DialogMessage on the stack
+  * Fix all auto-fix from clippy
+  * chore: update to the latest libcosmic
+  * fix: keep the url in state for menu actions and underline
+  * fix: gate wayland features and add inline popover fallback
+  * chore: cargo fmt
+  * fix: dismiss context menu when clicking in any pane
+  * fix: use window-absolute coordinates for context menu position in split panes
+  * feat: Convert context menu from widget::popover to Wayland popup surface
+
+-------------------------------------------------------------------
+Sun Apr 12 16:19:43 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * Epoch 1.0.9 version update
+  * chore: cargo fmt
+  * chore: updates for new cosmic-text
+  * fix: fix the one pixel wide gap between panes
+  * fix(style): add the background color to that tab bar
+  * fix: prevent crash when splits are resized too small
+  * fix: only send "space" to the focused pane
+  * feat: rebase libcosmic onto iced 0.14
+  * i18n: translation updates from weblate
+  * Introduce a "cargo fmt" github action gate
+  * Fix "Copy link" lingering highlight bug
+  * i18n: Remove dot from description
+
+-------------------------------------------------------------------
 Tue Feb 24 20:59:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:
