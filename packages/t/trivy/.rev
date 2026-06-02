@@ -1516,4 +1516,41 @@ dropped patch file
     <comment>- update x/net to v0.55.0 (bsc#1266495, CVE-2026-39821)</comment>
     <requestid>1355485</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>9aaa1435ca9f139d578ab530c2ebf4f0</srcmd5>
+    <version>0.71.0</version>
+    <time>1780422439</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.71.0 (bsc#1267268, CVE-2026-44740):
+  * release: v0.71.0 [main] (#10638)
+  * ci: use only the first line of commit message in release-please workflow (#10766)
+  * feat: add WithDriver and WithProvider options to ospkg detector (#10740)
+  * chore(deps): bump github.com/google/go-containerregistry to v0.21.6 (#10741)
+  * refactor(secret): normalize configPath once in Init (#10702)
+  * feat(secret): add Maven rules to detect passwords and passphrases in settings.xml and settings-security.xml files (#10704)
+  * chore(deps): bump the common group across 1 directory with 25 updates (#10758)
+  * chore: migrate from gomodguard to gomodguard_v2 (#10739)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#10709)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/ec2 from 1.302.0 to 1.303.0 in the aws group (#10752)
+  * ci: scope GitHub App tokens to minimum required permissions (#10755)
+  * chore(deps): upgrade go-redis from v8 to v9 (#10736)
+  * fix(misconf): fix rendering of nested values in terraform plan lists (#10746)
+  * fix(misconf): skip resources with no after changes (#10352)
+  * fix(misconf): reject nil plays during playbook parsing (#10273)
+  * fix(nodejs): silently skip subdirectory package.json files with invalid names (#10609)
+  * fix(misconf): skip null cty values in AsMapValue to prevent panic (#10723)
+  * refactor(misconf): replace custom Helm archive parsing with Helm SDK loaders (#10718)
+  * chore(deps): bump github.com/containerd/containerd/v2 to v2.3.1 (#10738)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.19.0 to 5.19.1 (#10686)
+  * fix(report): don't produce trailing comma in gitlab.tpl links array (#10728)
+  * fix(cloudformation): propagate AWS::EC2::Instance MetadataOptions (#10731)
+  * chore(deps): upgrade github.com/cenkalti/backoff dependency to v5 (#10705)
+  * chore: bump golangci-lint to v2.12 (#10726)
+  * feat(spdx): add SHA-512 hash algorithm support to SPDX serializer (#10719)
+  * feat(sbom): support for CycloneDX 1.7 (#10715)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/ec2 from 1.300.0 to 1.302.0 in the aws group (#10708)
+  * chore: migrate from helm.sh/helm/v3 to helm.sh/helm/v4 (#10678)
+  * fix(image): correctly reconstruct RUN instructions built without BuildKit (#10714)</comment>
+    <requestid>1356738</requestid>
+  </revision>
 </revisionlist>
