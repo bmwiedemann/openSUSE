@@ -1,7 +1,7 @@
 #
 # spec file for package aspell-en
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 %define aspell_data_dir %(aspell dump config data-dir)
 
 Name:           aspell-en
-Version:        2020.12.07
+Version:        2026.02.25
 Release:        0
 Summary:        English Dictionaries for ASpell
-License:        MIT AND BSD-3-Clause
+License:        BSD-3-Clause AND MIT
 Group:          Productivity/Text/Spell
 
 URL:            http://wordlist.aspell.net/
@@ -55,7 +55,7 @@ fdupes %{buildroot}%{aspell_dict_dir}
 
 %files
 %license Copyright
-%doc README doc/ChangeLog doc/SCOWL-README doc/extra.txt
+%doc README doc/ChangeLog.old doc/extra.txt
 %{aspell_dict_dir}/*.rws
 %{aspell_dict_dir}/*.multi
 %{aspell_dict_dir}/*.alias

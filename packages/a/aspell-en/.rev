@@ -235,4 +235,12 @@ Use SPDX format (using same license form as Fedora for this package) (forwarded 
     <comment>- switch source url to https</comment>
     <requestid>987431</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6ca4df1f2094fc7d6ccf6ddf5917957d</srcmd5>
+    <version>2026.02.25</version>
+    <time>1780408874</time>
+    <user>anag_factory</user>
+    <comment>version update to 2026.02.25</comment>
+    <requestid>1356355</requestid>
+  </revision>
 </revisionlist>
