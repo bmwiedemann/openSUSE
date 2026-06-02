@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 02 09:15:20 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.6.12:
+  * server: allow non-admin maintenance status
+  * client/pkg/fileutil: use os.Getuid() to skip TestIsDirWriteable as root
+  * etcdutl: validate data file path and return consistent errors instead of panic when given non-existent paths
+  * bugfix: MemberUpdate implicitly and unexpectedly promotes a learner
+  * Bump Go to 1.25.10
+
+-------------------------------------------------------------------
 Sun May 03 16:22:03 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.6.11:
