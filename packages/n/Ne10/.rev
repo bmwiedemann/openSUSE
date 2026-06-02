@@ -25,4 +25,12 @@
 - Remove obsolete Groups tag (fate#326485)</comment>
     <requestid>745496</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1fa07614bdb85a85acaedc83517baeb5</srcmd5>
+    <version>1.2.1</version>
+    <time>1780408930</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: pass -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to keep building under CMake 4+ (upstream requires cmake 2.6); use %autosetup</comment>
+    <requestid>1356426</requestid>
+  </revision>
 </revisionlist>

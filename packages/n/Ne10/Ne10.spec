@@ -1,7 +1,7 @@
 #
 # spec file for package Ne10
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,10 +73,12 @@ and physics functions.
 This package contains the development files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
+# upstream requires cmake 2.6; allow it under CMake 4+
 %cmake \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
   %ifarch aarch64
   -DNE10_LINUX_TARGET_ARCH=aarch64 \
   %else
