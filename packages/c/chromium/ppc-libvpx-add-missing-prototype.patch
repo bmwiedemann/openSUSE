@@ -1,0 +1,12 @@
+--- chromium-149.0.7827.3.pat/third_party/libvpx/source/libvpx/vpx_dsp/ppc/sad_vsx.c	2026/05/13 14:58:43	1.1
++++ chromium-149.0.7827.3.pat/third_party/libvpx/source/libvpx/vpx_dsp/ppc/sad_vsx.c	2026/05/13 14:59:48
+@@ -111,6 +111,9 @@
+ SAD64(32);
+ SAD64(64);
+ 
++void vpx_comp_avg_pred_vsx(uint8_t *comp_pred, const uint8_t *pred, int width,
++                           int height, const uint8_t *ref, int ref_stride);
++
+ #define SAD16AVG(height)                                                      \
+   unsigned int vpx_sad16x##height##_avg_vsx(                                  \
+       const uint8_t *src, int src_stride, const uint8_t *ref, int ref_stride, \

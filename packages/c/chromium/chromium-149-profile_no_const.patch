@@ -1,0 +1,36 @@
+--- chromium-149.0.7827.3/chrome/browser/ui/startup/profile_launch_observer.h	2026/05/11 10:04:36	1.1
++++ chromium-149.0.7827.3/chrome/browser/ui/startup/profile_launch_observer.h	2026/05/11 10:05:28
+@@ -47,11 +47,11 @@
+   static bool activated_profile();
+ 
+   // Only for HasPendingUncleanExit().
+-  static bool HasBeenLaunchedAndBrowserOpen(const Profile* profile);
++  static bool HasBeenLaunchedAndBrowserOpen(Profile* profile);
+ 
+   // Returns true if `profile` has been launched by
+   // StartupBrowserCreator::LaunchBrowser() and has at least one open window.
+-  bool HasBeenLaunchedAndBrowserOpenInternal(const Profile* profile) const;
++  bool HasBeenLaunchedAndBrowserOpenInternal(Profile* profile) const;
+   void AddLaunchedInternal(Profile* profile);
+   void Clear();
+   bool activated_profile_internal();
+--- chromium-149.0.7827.3/chrome/browser/ui/startup/profile_launch_observer.cc	2026/05/11 10:04:01	1.1
++++ chromium-149.0.7827.3/chrome/browser/ui/startup/profile_launch_observer.cc	2026/05/11 10:04:33
+@@ -35,7 +35,7 @@
+ 
+ // static
+ bool ProfileLaunchObserver::HasBeenLaunchedAndBrowserOpen(
+-    const Profile* profile) {
++    Profile* profile) {
+   return GetInstance()->HasBeenLaunchedAndBrowserOpenInternal(profile);
+ }
+ 
+@@ -72,7 +72,7 @@
+ }
+ 
+ bool ProfileLaunchObserver::HasBeenLaunchedAndBrowserOpenInternal(
+-    const Profile* profile) const {
++    Profile* profile) const {
+   return opened_profiles_.contains(profile) &&
+          launched_profiles_.contains(profile);
+ }

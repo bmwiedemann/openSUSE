@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jun  1 16:56:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- promote Chromium 149 (149.0.7827.53) to (early) stable
+
+-------------------------------------------------------------------
+Fri May 29 18:34:21 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 149.0.7827.53
+- added patches:
+  * chromium-149-profile_no_const.patch
+    try to complete deconstifying the use of Profile*
+    started in upstream 2ac4e0f090a26f86e9ffa4bc6c22743911b9be35
+  * ppc-fedora-0003-third_party-libvpx-Add-ppc64-vsx-files.patch
+  * ppc-libvpx-add-missing-prototype.patch
+- removed patches:
+  * chromium-141-glibc-2.42-SYS_SECCOMP.patch
+  * fix_building_widevinecdm_with_chromium.patch
+  * disable-ai.patch: known rebase conflicts on 149
+- modified patches:
+  * chromium-125-compiler.patch (context)
+  * chromium-143-revert_rust_is_multiple_of.patch (drop one hunk) 
+  * chromium-146-value_or.patch (drop one hunk, add one hunk)
+  * ppc-fedora-0002-third_party-libvpx-Remove-bad-ppc64-config.patch
+    (regenerated)
+  * ppc-fedora-0002-regenerate-xnn-buildgn.patch (regenerated)
+  * chromium-146-ignore-for-ubsan.patch (redone)
+  * chromium-148-no_dep_on_intree_rustc_binary.patch
+  * ppc-fedora-0001-Implement-support-for-ppc64-on-Linux.patch
+  * ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch
+  * ppc-fedora-0001-Add-pregenerated-config-for-libaom-on-ppc64.patch
+    (regenerated, disable code to regenerate at build for now)
+- changed patch ranges, global patches up to 449,
+  ppc patches from 450-599 now
+- keeplibs:
+  added: third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/urlpattern-polyfill
+- bump BR for gn to 0.20260429 for expand_directory
+- fixes reading mode (boo#1265854)
+
+-------------------------------------------------------------------
 Wed May 27 19:12:21 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 148.0.7778.215 (boo#1266471):

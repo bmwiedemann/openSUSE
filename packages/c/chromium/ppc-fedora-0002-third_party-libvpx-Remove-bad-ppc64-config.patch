@@ -1,195 +1,6 @@
---- chromium-147.0.7727.3/third_party/libvpx/source/config/linux/ppc64/vp8_rtcd.h	2026/03/16 13:33:31	1.1
+--- chromium-149.0.7795.2/third_party/libvpx/source/config/linux/ppc64/vp9_rtcd.h	2026/04/21 13:08:14	1.1
 +++ /dev/null
-@@ -1,186 +0,0 @@
--/*
-- *  Copyright (c) 2017 The WebM project authors. All Rights Reserved.
-- *
-- *  Use of this source code is governed by a BSD-style license
-- *  that can be found in the LICENSE file in the root of the source
-- *  tree. An additional intellectual property rights grant can be found
-- *  in the file PATENTS.  All contributing project authors may
-- *  be found in the AUTHORS file in the root of the source tree.
-- */
--
--// This file is generated. Do not edit.
--#ifndef VP8_RTCD_H_
--#define VP8_RTCD_H_
--
--#ifdef RTCD_C
--#define RTCD_EXTERN
--#else
--#define RTCD_EXTERN extern
--#endif
--
--/*
-- * VP8
-- */
--
--struct blockd;
--struct macroblockd;
--struct loop_filter_info;
--
--/* Encoder forward decls */
--struct block;
--struct macroblock;
--struct variance_vtable;
--union int_mv;
--struct yv12_buffer_config;
--
--#ifdef __cplusplus
--extern "C" {
--#endif
--
--void vp8_bilinear_predict16x16_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
--#define vp8_bilinear_predict16x16 vp8_bilinear_predict16x16_c
--
--void vp8_bilinear_predict4x4_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
--#define vp8_bilinear_predict4x4 vp8_bilinear_predict4x4_c
--
--void vp8_bilinear_predict8x4_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
--#define vp8_bilinear_predict8x4 vp8_bilinear_predict8x4_c
--
--void vp8_bilinear_predict8x8_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
--#define vp8_bilinear_predict8x8 vp8_bilinear_predict8x8_c
--
--int vp8_block_error_c(short *coeff, short *dqcoeff);
--#define vp8_block_error vp8_block_error_c
--
--void vp8_copy32xn_c(const unsigned char *src_ptr, int src_stride, unsigned char *dst_ptr, int dst_stride, int height);
--#define vp8_copy32xn vp8_copy32xn_c
--
--void vp8_copy_mem16x16_c(unsigned char *src, int src_stride, unsigned char *dst, int dst_stride);
--#define vp8_copy_mem16x16 vp8_copy_mem16x16_c
--
--void vp8_copy_mem8x4_c(unsigned char *src, int src_stride, unsigned char *dst, int dst_stride);
--#define vp8_copy_mem8x4 vp8_copy_mem8x4_c
--
--void vp8_copy_mem8x8_c(unsigned char *src, int src_stride, unsigned char *dst, int dst_stride);
--#define vp8_copy_mem8x8 vp8_copy_mem8x8_c
--
--void vp8_dc_only_idct_add_c(short input_dc, unsigned char *pred_ptr, int pred_stride, unsigned char *dst_ptr, int dst_stride);
--#define vp8_dc_only_idct_add vp8_dc_only_idct_add_c
--
--int vp8_denoiser_filter_c(unsigned char *mc_running_avg_y, int mc_avg_y_stride, unsigned char *running_avg_y, int avg_y_stride, unsigned char *sig, int sig_stride, unsigned int motion_magnitude, int increase_denoising);
--#define vp8_denoiser_filter vp8_denoiser_filter_c
--
--int vp8_denoiser_filter_uv_c(unsigned char *mc_running_avg, int mc_avg_stride, unsigned char *running_avg, int avg_stride, unsigned char *sig, int sig_stride, unsigned int motion_magnitude, int increase_denoising);
--#define vp8_denoiser_filter_uv vp8_denoiser_filter_uv_c
--
--void vp8_dequant_idct_add_c(short *input, short *dq, unsigned char *dest, int stride);
--#define vp8_dequant_idct_add vp8_dequant_idct_add_c
--
--void vp8_dequant_idct_add_uv_block_c(short *q, short *dq, unsigned char *dst_u, unsigned char *dst_v, int stride, char *eobs);
--#define vp8_dequant_idct_add_uv_block vp8_dequant_idct_add_uv_block_c
--
--void vp8_dequant_idct_add_y_block_c(short *q, short *dq, unsigned char *dst, int stride, char *eobs);
--#define vp8_dequant_idct_add_y_block vp8_dequant_idct_add_y_block_c
--
--void vp8_dequantize_b_c(struct blockd*, short *DQC);
--#define vp8_dequantize_b vp8_dequantize_b_c
--
--int vp8_diamond_search_sad_c(struct macroblock *x, struct block *b, struct blockd *d, union int_mv *ref_mv, union int_mv *best_mv, int search_param, int sad_per_bit, int *num00, struct variance_vtable *fn_ptr, int *mvcost[2], union int_mv *center_mv);
--#define vp8_diamond_search_sad vp8_diamond_search_sad_c
--
--void vp8_fast_quantize_b_c(struct block *, struct blockd *);
--#define vp8_fast_quantize_b vp8_fast_quantize_b_c
--
--void vp8_filter_by_weight16x16_c(unsigned char *src, int src_stride, unsigned char *dst, int dst_stride, int src_weight);
--#define vp8_filter_by_weight16x16 vp8_filter_by_weight16x16_c
--
--void vp8_filter_by_weight4x4_c(unsigned char *src, int src_stride, unsigned char *dst, int dst_stride, int src_weight);
--#define vp8_filter_by_weight4x4 vp8_filter_by_weight4x4_c
--
--void vp8_filter_by_weight8x8_c(unsigned char *src, int src_stride, unsigned char *dst, int dst_stride, int src_weight);
--#define vp8_filter_by_weight8x8 vp8_filter_by_weight8x8_c
--
--void vp8_loop_filter_bh_c(unsigned char *y_ptr, unsigned char *u_ptr, unsigned char *v_ptr, int y_stride, int uv_stride, struct loop_filter_info *lfi);
--#define vp8_loop_filter_bh vp8_loop_filter_bh_c
--
--void vp8_loop_filter_bv_c(unsigned char *y_ptr, unsigned char *u_ptr, unsigned char *v_ptr, int y_stride, int uv_stride, struct loop_filter_info *lfi);
--#define vp8_loop_filter_bv vp8_loop_filter_bv_c
--
--void vp8_loop_filter_mbh_c(unsigned char *y_ptr, unsigned char *u_ptr, unsigned char *v_ptr, int y_stride, int uv_stride, struct loop_filter_info *lfi);
--#define vp8_loop_filter_mbh vp8_loop_filter_mbh_c
--
--void vp8_loop_filter_mbv_c(unsigned char *y_ptr, unsigned char *u_ptr, unsigned char *v_ptr, int y_stride, int uv_stride, struct loop_filter_info *lfi);
--#define vp8_loop_filter_mbv vp8_loop_filter_mbv_c
--
--void vp8_loop_filter_bhs_c(unsigned char *y_ptr, int y_stride, const unsigned char *blimit);
--#define vp8_loop_filter_simple_bh vp8_loop_filter_bhs_c
--
--void vp8_loop_filter_bvs_c(unsigned char *y_ptr, int y_stride, const unsigned char *blimit);
--#define vp8_loop_filter_simple_bv vp8_loop_filter_bvs_c
--
--void vp8_loop_filter_simple_horizontal_edge_c(unsigned char *y_ptr, int y_stride, const unsigned char *blimit);
--#define vp8_loop_filter_simple_mbh vp8_loop_filter_simple_horizontal_edge_c
--
--void vp8_loop_filter_simple_vertical_edge_c(unsigned char *y_ptr, int y_stride, const unsigned char *blimit);
--#define vp8_loop_filter_simple_mbv vp8_loop_filter_simple_vertical_edge_c
--
--int vp8_mbblock_error_c(struct macroblock *mb, int dc);
--#define vp8_mbblock_error vp8_mbblock_error_c
--
--int vp8_mbuverror_c(struct macroblock *mb);
--#define vp8_mbuverror vp8_mbuverror_c
--
--int vp8_refining_search_sad_c(struct macroblock *x, struct block *b, struct blockd *d, union int_mv *ref_mv, int error_per_bit, int search_range, struct variance_vtable *fn_ptr, int *mvcost[2], union int_mv *center_mv);
--#define vp8_refining_search_sad vp8_refining_search_sad_c
--
--void vp8_regular_quantize_b_c(struct block *, struct blockd *);
--#define vp8_regular_quantize_b vp8_regular_quantize_b_c
--
--void vp8_short_fdct4x4_c(short *input, short *output, int pitch);
--#define vp8_short_fdct4x4 vp8_short_fdct4x4_c
--
--void vp8_short_fdct8x4_c(short *input, short *output, int pitch);
--#define vp8_short_fdct8x4 vp8_short_fdct8x4_c
--
--void vp8_short_idct4x4llm_c(short *input, unsigned char *pred_ptr, int pred_stride, unsigned char *dst_ptr, int dst_stride);
--#define vp8_short_idct4x4llm vp8_short_idct4x4llm_c
--
--void vp8_short_inv_walsh4x4_c(short *input, short *mb_dqcoeff);
--#define vp8_short_inv_walsh4x4 vp8_short_inv_walsh4x4_c
--
--void vp8_short_inv_walsh4x4_1_c(short *input, short *mb_dqcoeff);
--#define vp8_short_inv_walsh4x4_1 vp8_short_inv_walsh4x4_1_c
--
--void vp8_short_walsh4x4_c(short *input, short *output, int pitch);
--#define vp8_short_walsh4x4 vp8_short_walsh4x4_c
--
--void vp8_sixtap_predict16x16_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
--#define vp8_sixtap_predict16x16 vp8_sixtap_predict16x16_c
--
--void vp8_sixtap_predict4x4_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
--#define vp8_sixtap_predict4x4 vp8_sixtap_predict4x4_c
--
--void vp8_sixtap_predict8x4_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
--#define vp8_sixtap_predict8x4 vp8_sixtap_predict8x4_c
--
--void vp8_sixtap_predict8x8_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
--#define vp8_sixtap_predict8x8 vp8_sixtap_predict8x8_c
--
--void vp8_rtcd(void);
--
--#include "vpx_config.h"
--
--#ifdef RTCD_C
--#include "vpx_ports/ppc.h"
--static void setup_rtcd_internal(void)
--{
--    int flags = ppc_simd_caps();
--    (void)flags;
--}
--#endif
--
--#ifdef __cplusplus
--}  // extern "C"
--#endif
--
--#endif  // VP8_RTCD_H_
---- chromium-147.0.7727.3/third_party/libvpx/source/config/linux/ppc64/vp9_rtcd.h	2026/03/16 13:33:33	1.1
-+++ /dev/null
-@@ -1,119 +0,0 @@
+@@ -1,113 +0,0 @@
 -/*
 - *  Copyright (c) 2017 The WebM project authors. All Rights Reserved.
 - *
@@ -259,12 +70,6 @@
 -void vp9_fht8x8_c(const int16_t *input, tran_low_t *output, int stride, int tx_type);
 -#define vp9_fht8x8 vp9_fht8x8_c
 -
--void vp9_filter_by_weight16x16_c(const uint8_t *src, int src_stride, uint8_t *dst, int dst_stride, int src_weight);
--#define vp9_filter_by_weight16x16 vp9_filter_by_weight16x16_c
--
--void vp9_filter_by_weight8x8_c(const uint8_t *src, int src_stride, uint8_t *dst, int dst_stride, int src_weight);
--#define vp9_filter_by_weight8x8 vp9_filter_by_weight8x8_c
--
 -void vp9_fwht4x4_c(const int16_t *input, tran_low_t *output, int stride);
 -#define vp9_fwht4x4 vp9_fwht4x4_c
 -
@@ -309,20 +114,7 @@
 -#endif
 -
 -#endif  // VP9_RTCD_H_
---- chromium-147.0.7727.3/third_party/libvpx/source/config/linux/ppc64/vpx_config.c	2026/03/16 13:39:55	1.1
-+++ /dev/null
-@@ -1,10 +0,0 @@
--/* Copyright (c) 2011 The WebM project authors. All Rights Reserved. */
--/*  */
--/* Use of this source code is governed by a BSD-style license */
--/* that can be found in the LICENSE file in the root of the source */
--/* tree. An additional intellectual property rights grant can be found */
--/* in the file PATENTS.  All contributing project authors may */
--/* be found in the AUTHORS file in the root of the source tree. */
--#include "vpx/vpx_codec.h"
--static const char* const cfg = "--target=ppc64le-linux-gcc --enable-external-build --enable-postproc --enable-multi-res-encoding --enable-temporal-denoising --enable-vp9-temporal-denoising --enable-vp9-postproc --size-limit=16384x16384 --enable-realtime-only --disable-install-docs --disable-libyuv --enable-unit-tests";
--const char *vpx_codec_build_config(void) {return cfg;}
---- chromium-147.0.7727.3/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm	2026/03/16 13:39:50	1.1
+--- chromium-149.0.7795.2/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm	2026/04/21 13:08:10	1.1
 +++ /dev/null
 @@ -1,109 +0,0 @@
 -@ This file was created from a .asm file
@@ -390,7 +182,7 @@
 -.equ CONFIG_DC_RECON ,  0
 -.equ CONFIG_RUNTIME_CPU_DETECT ,  0
 -.equ CONFIG_POSTPROC ,  1
--.equ CONFIG_VP9_POSTPROC ,  1
+-.equ CONFIG_VP9_POSTPROC ,  0
 -.equ CONFIG_MULTITHREAD ,  1
 -.equ CONFIG_INTERNAL_STATS ,  0
 -.equ CONFIG_VP8_ENCODER ,  1
@@ -434,7 +226,20 @@
 -.equ DECODE_WIDTH_LIMIT ,  16384
 -.equ DECODE_HEIGHT_LIMIT ,  16384
 -    .section .note.GNU-stack,"",%progbits
---- chromium-147.0.7727.3/third_party/libvpx/source/config/linux/ppc64/vpx_config.h	2026/03/16 13:39:56	1.1
+--- chromium-149.0.7795.2/third_party/libvpx/source/config/linux/ppc64/vpx_config.c	2026/04/21 13:08:21	1.1
++++ /dev/null
+@@ -1,10 +0,0 @@
+-/* Copyright (c) 2011 The WebM project authors. All Rights Reserved. */
+-/*  */
+-/* Use of this source code is governed by a BSD-style license */
+-/* that can be found in the LICENSE file in the root of the source */
+-/* tree. An additional intellectual property rights grant can be found */
+-/* in the file PATENTS.  All contributing project authors may */
+-/* be found in the AUTHORS file in the root of the source tree. */
+-#include "vpx/vpx_codec.h"
+-static const char* const cfg = "--target=ppc64le-linux-gcc --enable-external-build --enable-postproc --enable-multi-res-encoding --enable-temporal-denoising --enable-vp9-temporal-denoising --disable-vp9-postproc --size-limit=16384x16384 --enable-realtime-only --disable-install-docs --disable-libyuv --enable-unit-tests";
+-const char *vpx_codec_build_config(void) {return cfg;}
+--- chromium-149.0.7795.2/third_party/libvpx/source/config/linux/ppc64/vpx_config.h	2026/04/21 13:08:23	1.1
 +++ /dev/null
 @@ -1,118 +0,0 @@
 -/* Copyright (c) 2011 The WebM project authors. All Rights Reserved. */
@@ -511,7 +316,7 @@
 -#define CONFIG_DC_RECON 0
 -#define CONFIG_RUNTIME_CPU_DETECT 0
 -#define CONFIG_POSTPROC 1
--#define CONFIG_VP9_POSTPROC 1
+-#define CONFIG_VP9_POSTPROC 0
 -#define CONFIG_MULTITHREAD 1
 -#define CONFIG_INTERNAL_STATS 0
 -#define CONFIG_VP8_ENCODER 1
@@ -555,7 +360,7 @@
 -#define DECODE_WIDTH_LIMIT 16384
 -#define DECODE_HEIGHT_LIMIT 16384
 -#endif /* VPX_CONFIG_H */
---- chromium-147.0.7727.3/third_party/libvpx/source/config/linux/ppc64/vpx_dsp_rtcd.h	2026/03/16 13:33:39	1.1
+--- chromium-149.0.7795.2/third_party/libvpx/source/config/linux/ppc64/vpx_dsp_rtcd.h	2026/04/21 13:21:14	1.1
 +++ /dev/null
 @@ -1,858 +0,0 @@
 -/*
@@ -1416,7 +1221,7 @@
 -#endif
 -
 -#endif  // VPX_DSP_RTCD_H_
---- chromium-147.0.7727.3/third_party/libvpx/source/config/linux/ppc64/vpx_scale_rtcd.h	2026/03/16 13:33:43	1.1
+--- chromium-149.0.7795.2/third_party/libvpx/source/config/linux/ppc64/vpx_scale_rtcd.h	2026/04/21 13:21:19	1.1
 +++ /dev/null
 @@ -1,83 +0,0 @@
 -/*
@@ -1502,3 +1307,192 @@
 -#endif
 -
 -#endif  // VPX_SCALE_RTCD_H_
+--- chromium-149.0.7795.2/third_party/libvpx/source/config/linux/ppc64/vp8_rtcd.h	2026/04/21 13:30:24	1.1
++++ /dev/null
+@@ -1,186 +0,0 @@
+-/*
+- *  Copyright (c) 2017 The WebM project authors. All Rights Reserved.
+- *
+- *  Use of this source code is governed by a BSD-style license
+- *  that can be found in the LICENSE file in the root of the source
+- *  tree. An additional intellectual property rights grant can be found
+- *  in the file PATENTS.  All contributing project authors may
+- *  be found in the AUTHORS file in the root of the source tree.
+- */
+-
+-// This file is generated. Do not edit.
+-#ifndef VP8_RTCD_H_
+-#define VP8_RTCD_H_
+-
+-#ifdef RTCD_C
+-#define RTCD_EXTERN
+-#else
+-#define RTCD_EXTERN extern
+-#endif
+-
+-/*
+- * VP8
+- */
+-
+-struct blockd;
+-struct macroblockd;
+-struct loop_filter_info;
+-
+-/* Encoder forward decls */
+-struct block;
+-struct macroblock;
+-struct variance_vtable;
+-union int_mv;
+-struct yv12_buffer_config;
+-
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
+-
+-void vp8_bilinear_predict16x16_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
+-#define vp8_bilinear_predict16x16 vp8_bilinear_predict16x16_c
+-
+-void vp8_bilinear_predict4x4_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
+-#define vp8_bilinear_predict4x4 vp8_bilinear_predict4x4_c
+-
+-void vp8_bilinear_predict8x4_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
+-#define vp8_bilinear_predict8x4 vp8_bilinear_predict8x4_c
+-
+-void vp8_bilinear_predict8x8_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
+-#define vp8_bilinear_predict8x8 vp8_bilinear_predict8x8_c
+-
+-int vp8_block_error_c(short *coeff, short *dqcoeff);
+-#define vp8_block_error vp8_block_error_c
+-
+-void vp8_copy32xn_c(const unsigned char *src_ptr, int src_stride, unsigned char *dst_ptr, int dst_stride, int height);
+-#define vp8_copy32xn vp8_copy32xn_c
+-
+-void vp8_copy_mem16x16_c(unsigned char *src, int src_stride, unsigned char *dst, int dst_stride);
+-#define vp8_copy_mem16x16 vp8_copy_mem16x16_c
+-
+-void vp8_copy_mem8x4_c(unsigned char *src, int src_stride, unsigned char *dst, int dst_stride);
+-#define vp8_copy_mem8x4 vp8_copy_mem8x4_c
+-
+-void vp8_copy_mem8x8_c(unsigned char *src, int src_stride, unsigned char *dst, int dst_stride);
+-#define vp8_copy_mem8x8 vp8_copy_mem8x8_c
+-
+-void vp8_dc_only_idct_add_c(short input_dc, unsigned char *pred_ptr, int pred_stride, unsigned char *dst_ptr, int dst_stride);
+-#define vp8_dc_only_idct_add vp8_dc_only_idct_add_c
+-
+-int vp8_denoiser_filter_c(unsigned char *mc_running_avg_y, int mc_avg_y_stride, unsigned char *running_avg_y, int avg_y_stride, unsigned char *sig, int sig_stride, unsigned int motion_magnitude, int increase_denoising);
+-#define vp8_denoiser_filter vp8_denoiser_filter_c
+-
+-int vp8_denoiser_filter_uv_c(unsigned char *mc_running_avg, int mc_avg_stride, unsigned char *running_avg, int avg_stride, unsigned char *sig, int sig_stride, unsigned int motion_magnitude, int increase_denoising);
+-#define vp8_denoiser_filter_uv vp8_denoiser_filter_uv_c
+-
+-void vp8_dequant_idct_add_c(short *input, short *dq, unsigned char *dest, int stride);
+-#define vp8_dequant_idct_add vp8_dequant_idct_add_c
+-
+-void vp8_dequant_idct_add_uv_block_c(short *q, short *dq, unsigned char *dst_u, unsigned char *dst_v, int stride, char *eobs);
+-#define vp8_dequant_idct_add_uv_block vp8_dequant_idct_add_uv_block_c
+-
+-void vp8_dequant_idct_add_y_block_c(short *q, short *dq, unsigned char *dst, int stride, char *eobs);
+-#define vp8_dequant_idct_add_y_block vp8_dequant_idct_add_y_block_c
+-
+-void vp8_dequantize_b_c(struct blockd*, short *DQC);
+-#define vp8_dequantize_b vp8_dequantize_b_c
+-
+-int vp8_diamond_search_sad_c(struct macroblock *x, struct block *b, struct blockd *d, union int_mv *ref_mv, union int_mv *best_mv, int search_param, int sad_per_bit, int *num00, struct variance_vtable *fn_ptr, int *mvcost[2], union int_mv *center_mv);
+-#define vp8_diamond_search_sad vp8_diamond_search_sad_c
+-
+-void vp8_fast_quantize_b_c(struct block *, struct blockd *);
+-#define vp8_fast_quantize_b vp8_fast_quantize_b_c
+-
+-void vp8_filter_by_weight16x16_c(unsigned char *src, int src_stride, unsigned char *dst, int dst_stride, int src_weight);
+-#define vp8_filter_by_weight16x16 vp8_filter_by_weight16x16_c
+-
+-void vp8_filter_by_weight4x4_c(unsigned char *src, int src_stride, unsigned char *dst, int dst_stride, int src_weight);
+-#define vp8_filter_by_weight4x4 vp8_filter_by_weight4x4_c
+-
+-void vp8_filter_by_weight8x8_c(unsigned char *src, int src_stride, unsigned char *dst, int dst_stride, int src_weight);
+-#define vp8_filter_by_weight8x8 vp8_filter_by_weight8x8_c
+-
+-void vp8_loop_filter_bh_c(unsigned char *y_ptr, unsigned char *u_ptr, unsigned char *v_ptr, int y_stride, int uv_stride, struct loop_filter_info *lfi);
+-#define vp8_loop_filter_bh vp8_loop_filter_bh_c
+-
+-void vp8_loop_filter_bv_c(unsigned char *y_ptr, unsigned char *u_ptr, unsigned char *v_ptr, int y_stride, int uv_stride, struct loop_filter_info *lfi);
+-#define vp8_loop_filter_bv vp8_loop_filter_bv_c
+-
+-void vp8_loop_filter_mbh_c(unsigned char *y_ptr, unsigned char *u_ptr, unsigned char *v_ptr, int y_stride, int uv_stride, struct loop_filter_info *lfi);
+-#define vp8_loop_filter_mbh vp8_loop_filter_mbh_c
+-
+-void vp8_loop_filter_mbv_c(unsigned char *y_ptr, unsigned char *u_ptr, unsigned char *v_ptr, int y_stride, int uv_stride, struct loop_filter_info *lfi);
+-#define vp8_loop_filter_mbv vp8_loop_filter_mbv_c
+-
+-void vp8_loop_filter_bhs_c(unsigned char *y_ptr, int y_stride, const unsigned char *blimit);
+-#define vp8_loop_filter_simple_bh vp8_loop_filter_bhs_c
+-
+-void vp8_loop_filter_bvs_c(unsigned char *y_ptr, int y_stride, const unsigned char *blimit);
+-#define vp8_loop_filter_simple_bv vp8_loop_filter_bvs_c
+-
+-void vp8_loop_filter_simple_horizontal_edge_c(unsigned char *y_ptr, int y_stride, const unsigned char *blimit);
+-#define vp8_loop_filter_simple_mbh vp8_loop_filter_simple_horizontal_edge_c
+-
+-void vp8_loop_filter_simple_vertical_edge_c(unsigned char *y_ptr, int y_stride, const unsigned char *blimit);
+-#define vp8_loop_filter_simple_mbv vp8_loop_filter_simple_vertical_edge_c
+-
+-int vp8_mbblock_error_c(struct macroblock *mb, int dc);
+-#define vp8_mbblock_error vp8_mbblock_error_c
+-
+-int vp8_mbuverror_c(struct macroblock *mb);
+-#define vp8_mbuverror vp8_mbuverror_c
+-
+-int vp8_refining_search_sad_c(struct macroblock *x, struct block *b, struct blockd *d, union int_mv *ref_mv, int error_per_bit, int search_range, struct variance_vtable *fn_ptr, int *mvcost[2], union int_mv *center_mv);
+-#define vp8_refining_search_sad vp8_refining_search_sad_c
+-
+-void vp8_regular_quantize_b_c(struct block *, struct blockd *);
+-#define vp8_regular_quantize_b vp8_regular_quantize_b_c
+-
+-void vp8_short_fdct4x4_c(short *input, short *output, int pitch);
+-#define vp8_short_fdct4x4 vp8_short_fdct4x4_c
+-
+-void vp8_short_fdct8x4_c(short *input, short *output, int pitch);
+-#define vp8_short_fdct8x4 vp8_short_fdct8x4_c
+-
+-void vp8_short_idct4x4llm_c(short *input, unsigned char *pred_ptr, int pred_stride, unsigned char *dst_ptr, int dst_stride);
+-#define vp8_short_idct4x4llm vp8_short_idct4x4llm_c
+-
+-void vp8_short_inv_walsh4x4_c(short *input, short *mb_dqcoeff);
+-#define vp8_short_inv_walsh4x4 vp8_short_inv_walsh4x4_c
+-
+-void vp8_short_inv_walsh4x4_1_c(short *input, short *mb_dqcoeff);
+-#define vp8_short_inv_walsh4x4_1 vp8_short_inv_walsh4x4_1_c
+-
+-void vp8_short_walsh4x4_c(short *input, short *output, int pitch);
+-#define vp8_short_walsh4x4 vp8_short_walsh4x4_c
+-
+-void vp8_sixtap_predict16x16_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
+-#define vp8_sixtap_predict16x16 vp8_sixtap_predict16x16_c
+-
+-void vp8_sixtap_predict4x4_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
+-#define vp8_sixtap_predict4x4 vp8_sixtap_predict4x4_c
+-
+-void vp8_sixtap_predict8x4_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
+-#define vp8_sixtap_predict8x4 vp8_sixtap_predict8x4_c
+-
+-void vp8_sixtap_predict8x8_c(unsigned char *src_ptr, int src_pixels_per_line, int xoffset, int yoffset, unsigned char *dst_ptr, int dst_pitch);
+-#define vp8_sixtap_predict8x8 vp8_sixtap_predict8x8_c
+-
+-void vp8_rtcd(void);
+-
+-#include "vpx_config.h"
+-
+-#ifdef RTCD_C
+-#include "vpx_ports/ppc.h"
+-static void setup_rtcd_internal(void)
+-{
+-    int flags = ppc_simd_caps();
+-    (void)flags;
+-}
+-#endif
+-
+-#ifdef __cplusplus
+-}  // extern "C"
+-#endif
+-
+-#endif  // VP8_RTCD_H_

@@ -4185,8 +4185,8 @@ Index: chromium-146.0.7680.65/third_party/boringssl/src/crypto/fipsmodule/aes/in
  #endif
  
  #endif  // !NO_ASM
-@@ -513,6 +519,13 @@ extern "C" void aes_gcm_dec_kernel_eor3(
-                                    const AES_KEY *key, const u128 Htable[16]);
+@@ -524,6 +524,13 @@
+                                         const u128 Htable[16]);
  #endif
  
 +#elif defined(OPENSSL_PPC64LE)

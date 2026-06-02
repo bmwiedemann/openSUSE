@@ -1,10 +1,17 @@
-Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm
-===================================================================
+commit 3144efb3f7d1e34bc20e92b4360e98cdaa9bfb32
+Author: OBS build <build@host>
+Date:   Wed May 13 15:58:57 2026 +0000
+
+    initial
+
+diff --git a/source/config/linux/ppc64/config/aom_config.asm chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm
+new file mode 100644
+index 0000000..3053106
 --- /dev/null
-+++ chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm
++++ chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm
 @@ -0,0 +1,100 @@
 +;
-+; Copyright (c) 2025, Alliance for Open Media. All rights reserved.
++; Copyright (c) 2026, Alliance for Open Media. All rights reserved.
 +;
 +; This source code is subject to the terms of the BSD 2 Clause License and
 +; the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -24,7 +31,7 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +CONFIG_AV1_DECODER equ 0
 +CONFIG_AV1_ENCODER equ 1
 +CONFIG_AV1_HIGHBITDEPTH equ 0
-+CONFIG_AV1_TEMPORAL_DENOISING equ 1
++CONFIG_AV1_TEMPORAL_DENOISING equ 0
 +CONFIG_BIG_ENDIAN equ 0
 +CONFIG_BITRATE_ACCURACY equ 0
 +CONFIG_BITRATE_ACCURACY_BL equ 0
@@ -36,7 +43,7 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +CONFIG_CWG_C013 equ 0
 +CONFIG_CWG_E050 equ 0
 +CONFIG_DEBUG equ 0
-+CONFIG_DENOISE equ 1
++CONFIG_DENOISE equ 0
 +CONFIG_DISABLE_FULL_PIXEL_SPLIT_8X8 equ 1
 +CONFIG_ENTROPY_STATS equ 0
 +CONFIG_EXCLUDE_SIMD_MISMATCH equ 0
@@ -71,7 +78,6 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +CONFIG_SHARED equ 0
 +CONFIG_SIZE_LIMIT equ 1
 +CONFIG_SPEED_STATS equ 0
-+CONFIG_SVT_AV1 equ 1
 +CONFIG_TFLITE equ 0
 +CONFIG_THREE_PASS equ 0
 +CONFIG_TUNE_BUTTERAUGLI equ 0
@@ -90,6 +96,7 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +HAVE_NEON_DOTPROD equ 0
 +HAVE_NEON_I8MM equ 0
 +HAVE_PTHREAD_H equ 1
++HAVE_PTHREAD_SETNAME_NP equ 1
 +HAVE_RVV equ 0
 +HAVE_SSE equ 0
 +HAVE_SSE2 equ 0
@@ -103,13 +110,14 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +HAVE_VSX equ 1
 +HAVE_WXWIDGETS equ 0
 +STATIC_LINK_JXL equ 0
-Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_config.c
-===================================================================
+diff --git a/source/config/linux/ppc64/config/aom_config.c chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_config.c
+new file mode 100644
+index 0000000..429274e
 --- /dev/null
-+++ chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_config.c
++++ chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_config.c
 @@ -0,0 +1,13 @@
 +/*
-+ * Copyright (c) 2025, Alliance for Open Media. All rights reserved.
++ * Copyright (c) 2026, Alliance for Open Media. All rights reserved.
 + *
 + * This source code is subject to the terms of the BSD 2 Clause License and
 + * the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -119,15 +127,16 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 + * PATENTS file, you can obtain it at www.aomedia.org/license/patent.
 + */
 +#include "aom/aom_codec.h"
-+static const char* const cfg = "cmake ../source/libaom -G \"Unix Makefiles\" -DCMAKE_TOOLCHAIN_FILE=\"../source/libaom/build/cmake/toolchains/ppc-linux-gcc.cmake\" -DCONFIG_AV1_DECODER=0 -DCONFIG_AV1_ENCODER=1 -DCONFIG_AV1_HIGHBITDEPTH=0 -DCONFIG_AV1_TEMPORAL_DENOISING=1 -DCONFIG_QUANT_MATRIX=0 -DCONFIG_REALTIME_ONLY=1 -DCONFIG_SIZE_LIMIT=1 -DDECODE_HEIGHT_LIMIT=16384 -DDECODE_WIDTH_LIMIT=16384";
++static const char* const cfg = "cmake ../source/libaom -G \"Unix Makefiles\" -DCMAKE_TOOLCHAIN_FILE=\"../source/libaom/cmake/toolchains/ppc-linux-gcc.cmake\" -DCONFIG_AV1_DECODER=0 -DCONFIG_AV1_ENCODER=1 -DCONFIG_AV1_HIGHBITDEPTH=0 -DCONFIG_AV1_TEMPORAL_DENOISING=0 -DCONFIG_QUANT_MATRIX=0 -DCONFIG_REALTIME_ONLY=1 -DCONFIG_DENOISE=0 -DCONFIG_SIZE_LIMIT=1 -DDECODE_HEIGHT_LIMIT=16384 -DDECODE_WIDTH_LIMIT=16384";
 +const char *aom_codec_build_config(void) {return cfg;}
-Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_config.h
-===================================================================
+diff --git a/source/config/linux/ppc64/config/aom_config.h chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_config.h
+new file mode 100644
+index 0000000..c374d31
 --- /dev/null
-+++ chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_config.h
++++ chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_config.h
 @@ -0,0 +1,103 @@
 +/*
-+ * Copyright (c) 2025, Alliance for Open Media. All rights reserved.
++ * Copyright (c) 2026, Alliance for Open Media. All rights reserved.
 + *
 + * This source code is subject to the terms of the BSD 2 Clause License and
 + * the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -149,7 +158,7 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +#define CONFIG_AV1_DECODER 0
 +#define CONFIG_AV1_ENCODER 1
 +#define CONFIG_AV1_HIGHBITDEPTH 0
-+#define CONFIG_AV1_TEMPORAL_DENOISING 1
++#define CONFIG_AV1_TEMPORAL_DENOISING 0
 +#define CONFIG_BIG_ENDIAN 0
 +#define CONFIG_BITRATE_ACCURACY 0
 +#define CONFIG_BITRATE_ACCURACY_BL 0
@@ -161,7 +170,7 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +#define CONFIG_CWG_C013 0
 +#define CONFIG_CWG_E050 0
 +#define CONFIG_DEBUG 0
-+#define CONFIG_DENOISE 1
++#define CONFIG_DENOISE 0
 +#define CONFIG_DISABLE_FULL_PIXEL_SPLIT_8X8 1
 +#define CONFIG_ENTROPY_STATS 0
 +#define CONFIG_EXCLUDE_SIMD_MISMATCH 0
@@ -196,7 +205,6 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +#define CONFIG_SHARED 0
 +#define CONFIG_SIZE_LIMIT 1
 +#define CONFIG_SPEED_STATS 0
-+#define CONFIG_SVT_AV1 1
 +#define CONFIG_TFLITE 0
 +#define CONFIG_THREE_PASS 0
 +#define CONFIG_TUNE_BUTTERAUGLI 0
@@ -215,6 +223,7 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +#define HAVE_NEON_DOTPROD 0
 +#define HAVE_NEON_I8MM 0
 +#define HAVE_PTHREAD_H 1
++#define HAVE_PTHREAD_SETNAME_NP 1
 +#define HAVE_RVV 0
 +#define HAVE_SSE 0
 +#define HAVE_SSE2 0
@@ -229,13 +238,14 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +#define HAVE_WXWIDGETS 0
 +#define STATIC_LINK_JXL 0
 +#endif  // AOM_CONFIG_H_
-Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h
-===================================================================
+diff --git a/source/config/linux/ppc64/config/aom_dsp_rtcd.h chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h
+new file mode 100644
+index 0000000..e3bab69
 --- /dev/null
-+++ chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h
++++ chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h
 @@ -0,0 +1,1177 @@
 +/*
-+ * Copyright (c) 2025, Alliance for Open Media. All rights reserved.
++ * Copyright (c) 2017, Alliance for Open Media. All rights reserved.
 + *
 + * This source code is subject to the terms of the BSD 2 Clause License and
 + * the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -1411,13 +1421,14 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +#endif
 +
 +#endif  // AOM_DSP_RTCD_H_
-Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h
-===================================================================
+diff --git a/source/config/linux/ppc64/config/aom_scale_rtcd.h chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h
+new file mode 100644
+index 0000000..a3dbd73
 --- /dev/null
-+++ chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h
-@@ -0,0 +1,91 @@
++++ chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h
+@@ -0,0 +1,88 @@
 +/*
-+ * Copyright (c) 2025, Alliance for Open Media. All rights reserved.
++ * Copyright (c) 2017, Alliance for Open Media. All rights reserved.
 + *
 + * This source code is subject to the terms of the BSD 2 Clause License and
 + * the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -1463,9 +1474,6 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +void aom_yv12_copy_y_c(const struct yv12_buffer_config *src_ybc, struct yv12_buffer_config *dst_ybc, int use_crop);
 +#define aom_yv12_copy_y aom_yv12_copy_y_c
 +
-+void aom_yv12_extend_frame_borders_c(struct yv12_buffer_config *ybf, const int num_planes);
-+#define aom_yv12_extend_frame_borders aom_yv12_extend_frame_borders_c
-+
 +void aom_yv12_partial_coloc_copy_u_c(const struct yv12_buffer_config *src_bc, struct yv12_buffer_config *dst_bc, int hstart, int hend, int vstart, int vend);
 +#define aom_yv12_partial_coloc_copy_u aom_yv12_partial_coloc_copy_u_c
 +
@@ -1507,13 +1515,14 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +#endif
 +
 +#endif  // AOM_SCALE_RTCD_H_
-Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h
-===================================================================
+diff --git a/source/config/linux/ppc64/config/av1_rtcd.h chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h
+new file mode 100644
+index 0000000..e96010f
 --- /dev/null
-+++ chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h
-@@ -0,0 +1,405 @@
++++ chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h
+@@ -0,0 +1,402 @@
 +/*
-+ * Copyright (c) 2025, Alliance for Open Media. All rights reserved.
++ * Copyright (c) 2017, Alliance for Open Media. All rights reserved.
 + *
 + * This source code is subject to the terms of the BSD 2 Clause License and
 + * the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -1657,9 +1666,6 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +void av1_convolve_y_sr_intrabc_c(const uint8_t *src, int src_stride, uint8_t *dst, int dst_stride, int w, int h, const InterpFilterParams *filter_params_y, const int subpel_y_qn);
 +#define av1_convolve_y_sr_intrabc av1_convolve_y_sr_intrabc_c
 +
-+int av1_denoiser_filter_c(const uint8_t *sig, int sig_stride, const uint8_t *mc_avg, int mc_avg_stride, uint8_t *avg, int avg_stride, int increase_denoising, BLOCK_SIZE bs, int motion_magnitude);
-+#define av1_denoiser_filter av1_denoiser_filter_c
-+
 +void av1_dist_wtd_convolve_2d_c(const uint8_t *src, int src_stride, uint8_t *dst, int dst_stride, int w, int h, const InterpFilterParams *filter_params_x, const InterpFilterParams *filter_params_y, const int subpel_x_qn, const int subpel_y_qn, ConvolveParams *conv_params);
 +#define av1_dist_wtd_convolve_2d av1_dist_wtd_convolve_2d_c
 +
@@ -1741,7 +1747,7 @@ Index: chromium-144.0.7559.59/third_party/libaom/source/config/linux/ppc64/confi
 +void av1_get_horver_correlation_full_c(const int16_t *diff, int stride, int w, int h, float *hcorr, float *vcorr);
 +#define av1_get_horver_correlation_full av1_get_horver_correlation_full_c
 +
-+void av1_get_nz_map_contexts_c(const uint8_t *const levels, const int16_t *const scan, const uint16_t eob, const TX_SIZE tx_size, const TX_CLASS tx_class, int8_t *const coeff_contexts);
++void av1_get_nz_map_contexts_c(const uint8_t *const levels, const int16_t *const scan, const int eob, const TX_SIZE tx_size, const TX_CLASS tx_class, int8_t *const coeff_contexts);
 +#define av1_get_nz_map_contexts av1_get_nz_map_contexts_c
 +
 +void av1_highbd_inv_txfm_add_c(const tran_low_t *input, uint8_t *dest, int stride, const TxfmParam *txfm_param);

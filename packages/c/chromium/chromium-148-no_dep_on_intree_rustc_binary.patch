@@ -1,13 +1,3 @@
---- chromium-148.0.7766.3/build/toolchain/gcc_toolchain.gni	2026/04/07 23:25:44	1.1
-+++ chromium-148.0.7766.3/build/toolchain/gcc_toolchain.gni	2026/04/07 23:25:57
-@@ -681,7 +681,6 @@
-         "//build/action_helpers.py",
-         "//build/gn_helpers.py",
-         "//build/rust/gni_impl/rustc_wrapper.py",
--        "//third_party/rust-toolchain/bin/rustc",
-       ]
- 
-       # RSP manipulation due to https://bugs.chromium.org/p/gn/issues/detail?id=249
 --- chromium-148.0.7778.5/build/rust/cargo_crate.gni	2026/04/08 21:57:34	1.1
 +++ chromium-148.0.7778.5/build/rust/cargo_crate.gni	2026/04/08 21:57:43
 @@ -456,12 +456,6 @@
@@ -38,3 +28,14 @@
        # For the rustc sysroot we must include even the rlibs we don't pass to
        # the C++ linker.
        all_stdlibs_to_copy = stdlib_files + skip_stdlib_files
+--- chromium-149.0.7808.0/build/config/rust.gni	2026/04/30 12:44:06	1.1
++++ chromium-149.0.7808.0/build/config/rust.gni	2026/04/30 12:44:23
+@@ -435,8 +435,3 @@
+   "//build/rust/gni_impl/rustc_wrapper.py",
+ ]
+ 
+-if (host_os == "win") {
+-  rustc_wrapper_inputs += [ "//third_party/rust-toolchain/bin/rustc.exe" ]
+-} else {
+-  rustc_wrapper_inputs += [ "//third_party/rust-toolchain/bin/rustc" ]
+-}

@@ -644,16 +644,15 @@ Index: chromium-144.0.7559.59/third_party/breakpad/breakpad/src/common/linux/mem
 ===================================================================
 --- chromium-144.0.7559.59.orig/third_party/breakpad/breakpad/src/common/linux/memory_mapped_file.cc
 +++ chromium-144.0.7559.59/third_party/breakpad/breakpad/src/common/linux/memory_mapped_file.cc
-@@ -72,8 +72,7 @@ bool MemoryMappedFile::Map(const char* p
+@@ -72,7 +72,7 @@ bool MemoryMappedFile::Map(const char* p
  
  #if defined(__x86_64__) || defined(__aarch64__) || \
     (defined(__mips__) && _MIPS_SIM == _ABI64) || \
 -   (defined(__riscv) && __riscv_xlen == 64)
--
-+      (defined(__riscv) && __riscv_xlen == 64) || defined(__powerpc64__)
++   (defined(__riscv) && __riscv_xlen == 64) || defined(__powerpc64__)
+ 
    struct kernel_stat st;
-   if (sys_fstat(fd, &st) == -1 || st.st_size < 0) {
- #else
+   __builtin_memset(&st, 0, sizeof(st));
 Index: chromium-144.0.7559.59/third_party/breakpad/breakpad/src/common/linux/memory_mapped_file_unittest.cc
 ===================================================================
 --- chromium-144.0.7559.59.orig/third_party/breakpad/breakpad/src/common/linux/memory_mapped_file_unittest.cc

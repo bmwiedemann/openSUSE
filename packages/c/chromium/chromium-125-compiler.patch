@@ -225,7 +225,7 @@ Index: chromium-144.0.7524.0/build/config/compiler/BUILD.gn
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -2250,32 +2191,6 @@
+@@ -2245,32 +2245,6 @@
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -249,7 +249,7 @@ Index: chromium-144.0.7524.0/build/config/compiler/BUILD.gn
 -      # with the sysroot where support is guaranteed. Clang is also required since
 -      # the system gcc is often patched to add _FORTIFY_SOURCE=2 which would conflict
 -      # with our definition.
--      if (use_sysroot && is_clang) {
+-      if (use_sysroot && is_clang && !is_android) {
 -        fortify_level = "3"
 -      }
 -      defines += [ "_FORTIFY_SOURCE=" + fortify_level ]

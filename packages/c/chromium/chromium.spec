@@ -79,7 +79,7 @@
 # minimal esbuild version
 %define esbuild_version 0.25.1
 # minimal gn version
-%define gn_version 0.20260331
+%define gn_version 0.20260429
 # local rollup override to run without binaries
 %define rollup_version 3.29.5
 %if 0%{?suse_version} <= 1699
@@ -132,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        148.0.7778.215
+Version:        149.0.7827.53
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -160,8 +160,6 @@ Patch0:         chromium-libusb_interrupt_event_handler.patch
 Patch1:         exclude_ymp.patch
 # PATCH-FIX-OPENSUSE enables reading of the master preference
 Patch2:         chromium-master-prefs-path.patch
-# PATCH-FIX-OPENSUSE fix_building_widevinecdm_with_chromium.patch - Enable WideVine plugin
-Patch3:         fix_building_widevinecdm_with_chromium.patch
 Patch4:         chromium-buildname.patch
 Patch6:         gcc-enable-lto.patch
 # Do not use unrar code, it is non-free
@@ -203,10 +201,9 @@ Patch396:       chromium-146-value_or.patch
 Patch397:       chromium-146-has_no_clone.patch
 Patch398:       chromium-147-comment_safe_assert.patch
 Patch399:       chromium-148-no_dep_on_intree_rustc_binary.patch
-Patch400:       disable-ai.patch
+Patch400:       chromium-149-profile_no_const.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
-Patch451:       chromium-141-glibc-2.42-SYS_SECCOMP.patch
 Patch452:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
 # similar to patch 483 but in llvm-10 tree
 # so we do not use chromium-143-swiftshader-llvm-16.0.patch
@@ -218,6 +215,7 @@ Patch461:       ppc-fedora-0001-sandbox-Enable-seccomp_bpf-for-ppc64.patch
 Patch476:       ppc-fedora-0001-third_party-angle-Include-missing-header-cstddef-in-.patch
 Patch477:       ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch
 Patch478:       ppc-fedora-0001-third_party-libvpx-Properly-generate-gni-on-ppc64.patch
+Patch479:       ppc-fedora-0003-third_party-libvpx-Add-ppc64-vsx-files.patch
 Patch480:       ppc-fedora-0001-third_party-pffft-Include-altivec.h-on-ppc64-with-SI.patch
 Patch481:       ppc-fedora-0002-Add-PPC64-generated-files-for-boringssl.patch
 Patch482:       ppc-fedora-0002-third_party-lss-kernel-structs.patch
@@ -270,6 +268,7 @@ Patch519:       ppc-fedora-0009-sandbox-ignore-byte-span-error.patch
 Patch550:       ppc-chromium-136-clang-config.patch
 # from debian
 Patch551:       ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
+Patch552:       ppc-libvpx-add-missing-prototype.patch
 # conditionally applied patches
 # patch where libxml < 2.12
 Patch1010:      chromium-124-system-libxml.patch
@@ -600,19 +599,25 @@ rm -rf third_party/node/node_modules/rollup
 tar xf %{SOURCE4} && mv package third_party/node/node_modules/rollup
 %patch -p1 -P 1080
 
-%ifarch ppc64le
+# re-enabled if patch is outdated to regenerate in build environment
+%ifarch ppc64le_disabled
 pushd third_party/libaom
 git init
+git config --global user.email "build@host"
+git config --global user.name "OBS build"
 sed -i -e "s@reset_dirs linux/ia32@if false ; then\nreset_dirs linux/ia32@" \
        -e "s@reset_dirs linux/ppc64@fi\nreset_dirs linux/ppc64@" \
        -e "s@reset_dirs win/x64@if false ; then\nreset_dirs win/x64@" \
        -e "s@convert_to_windows.*arm64.*@convert_to_windows foo_arm64\nfi@" cmake_update.sh
-sed -i -e "s@CROSS powerpc64le-linux-gnu-@CROSS \"\"@" source/libaom/build/cmake/toolchains/ppc-linux-gcc.cmake
+#sed -i -e "s@CROSS powerpc64le-linux-gnu-@CROSS \"\"@" source/libaom/build/cmake/toolchains/ppc-linux-gcc.cmake
+sed -i -e "s@CROSS powerpc64le-linux-gnu-@CROSS \"\"@" source/libaom/cmake/toolchains/ppc-linux-gcc.cmake
 ./cmake_update.sh
-for i in source/config/linux/ppc64/config/* ; do
-echo $i
-cat $i
-done
+#
+echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+git add source/config/linux/ppc64/config/*
+git commit -m initial
+git -P show
+echo "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
 popd
 %endif
 
@@ -768,6 +773,7 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/parsel-js
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/rxjs
+    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/urlpattern-polyfill
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/node_modules/fast-glob
     third_party/devtools-frontend/src/third_party
