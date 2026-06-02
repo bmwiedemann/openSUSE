@@ -17,6 +17,12 @@ Fri May 29 20:08:10 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
     expansion
 
 -------------------------------------------------------------------
+Sat May  2 19:08:02 UTC 2026 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- No longer ship the deprecated "runners" file, it being present causes runners using
+  the modern registration method to fail at startup
+
+-------------------------------------------------------------------
 Mon Apr 27 00:42:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.9.0:

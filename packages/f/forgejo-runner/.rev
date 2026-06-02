@@ -633,4 +633,12 @@
     expansion (forwarded request 1355965 from rrahl0)</comment>
     <requestid>1355966</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>f0229c458d61f7697c25eaf3110d5c5c</srcmd5>
+    <version>12.10.2</version>
+    <time>1780422448</time>
+    <user>anag_factory</user>
+    <comment>No longer ship the deprecated &quot;runners&quot; file (forwarded request 1356664 from crameleon)</comment>
+    <requestid>1356748</requestid>
+  </revision>
 </revisionlist>

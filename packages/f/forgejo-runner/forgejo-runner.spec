@@ -85,8 +85,6 @@ go build \
 
 bin/%{name} generate-config > config.yaml
 
-perl -p -i -e 's|file: \.runner|file: /etc/forgejo-runner/runners|g' config.yaml
-
 %install
 # Install the binary.
 install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
@@ -108,7 +106,6 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions/
 
 install -D -m 0750 -d          %{buildroot}%{_sysconfdir}/%{name}
 install    -m 0640 config.yaml %{buildroot}%{_sysconfdir}/%{name}/config.yaml
-install    -m 0640 /dev/null   %{buildroot}%{_sysconfdir}/%{name}/runners
 install -D -m 0750 -d          %{buildroot}%{_localstatedir}/lib/%{name}
 
 %pre
