@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 08:10:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec cleanup:
+  * Add explicit gcc and make BuildRequires
+  * Use %make_build
+  * Drop obsolete Group tag and use the https project URL
+
+-------------------------------------------------------------------
 Thu Feb 29 14:57:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

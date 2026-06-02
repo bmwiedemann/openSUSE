@@ -154,4 +154,12 @@
     <comment></comment>
     <requestid>1153349</requestid>
   </revision>
+  <revision rev="22" vrev="192">
+    <srcmd5>4c5d79f36fb4651312e17064dc1b1fd9</srcmd5>
+    <version>1.1</version>
+    <time>1780409325</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: add explicit gcc+make BuildRequires, use %make_build, drop obsolete Group tag, https URL</comment>
+    <requestid>1356649</requestid>
+  </revision>
 </revisionlist>

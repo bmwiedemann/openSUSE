@@ -1,7 +1,7 @@
 #
 # spec file for package par
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,11 @@ Version:        1.1
 Release:        0
 Summary:        Parity Archive File Generator
 License:        GPL-2.0-or-later
-Group:          Productivity/Archiving/Backup
-URL:            http://parchive.sourceforge.net/
+URL:            https://parchive.sourceforge.net/
 Source:         https://sourceforge.net/projects/parchive/files/par/%{version}/par-v%{version}.tar.gz/download#/par-v%{version}.tar.gz
 Patch0:         %{name}.diff
+BuildRequires:  gcc
+BuildRequires:  make
 
 %description
 Parchive creates extra parity data over several volumes. These can be
@@ -35,7 +36,7 @@ corruption.
 %autosetup -p0 -n %{name}-cmdline
 
 %build
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
