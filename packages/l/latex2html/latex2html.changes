@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  2 06:46:49 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 2026
+  * fix CRLF format input files
+  * fix links with -rootdir otpion
+  * config.pl: svg support now works when ghostscript
+    not installed.
+  * comment out the hyperref support for the html.sty
+    command \htmlref.  manual now compiles with pdflatex.
+- modified patches
+  * latex2html-share-dir.diff (refreshed)
+
+-------------------------------------------------------------------
 Fri Jun 20 12:24:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Get fully determistic builds, even with --nocheck (boo#1227364)

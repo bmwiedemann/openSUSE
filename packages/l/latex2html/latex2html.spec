@@ -1,7 +1,7 @@
 #
 # spec file for package latex2html
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define share_dir %{_datadir}/latex2html
 %define _texmfmaindir   %{_datadir}/texmf
 Name:           latex2html
-Version:        2025
+Version:        2026
 Release:        0
 Summary:        LaTeX to HTML Converter
 License:        GPL-2.0-or-later
