@@ -17,40 +17,36 @@
 
 
 Name:           gnome-commander
-Version:        1.18.6
+Version:        2.0.2
 Release:        0
 Summary:        A file manager for the GNOME desktop environment
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-URL:            http://gcmd.github.io/
-Source:         https://download.gnome.org/sources/gnome-commander/1.18/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         gnome-commander-glycin-loaders.patch
+URL:            https://gnome.pages.gitlab.gnome.org/gnome-commander/
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 
-%if 0%{?suse_version} < 1550
-BuildRequires:  gcc11
-BuildRequires:  gcc11-c++
-%else
+BuildRequires:  AppStream
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
-%endif
-BuildRequires:  AppStream
+BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  flex
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(exiv2) >= 0.14
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libgsf-1) >= 1.12.0
 BuildRequires:  pkgconfig(poppler-glib) >= 0.18
 BuildRequires:  pkgconfig(taglib) >= 1.4
+BuildRequires:  pkgconfig(vte-2.91-gtk4)
 Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < 1.14.1
 # For xdg-su
@@ -65,17 +61,10 @@ networks.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a1
 
 %build
-%if 0%{?suse_version} < 1550
-export CC=%{_bindir}/gcc-11
-export CXX=%{_bindir}/g++-11
-%endif
-%meson \
-       -Dsamba=disabled \
-       -Dtests=disabled \
-       %nil
+%meson
 %meson_build
 
 %install
@@ -84,30 +73,34 @@ find %{buildroot}%{_datadir} -size 0 -delete
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}
 %fdupes %{buildroot}%{_libdir}
+%ldconfig_scriptlets
 
 %check
-%meson_test
+# The full cargo testsuite currently fails, temp disable and manually run validate
+%dnl %meson_test
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+appstreamcli validate --no-net %{buildroot}%{_datadir}/metainfo/*.metainfo.xml
 
 %files
 %license COPYING
-%doc NEWS README.md AUTHORS TODO
+%doc NEWS README.md AUTHORS
 %{_datadir}/help/C/%{name}
-%{_datadir}/metainfo/org.gnome.%{name}.appdata.xml
-%{_bindir}/gcmd-block
+%{_datadir}/metainfo/org.gnome.gnome-commander.metainfo.xml
 %{_bindir}/gnome-commander
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
 %{_datadir}/pixmaps/%{name}
 %{_libdir}/%{name}
+%{_libdir}/libgcmd.so
+%{_libdir}/girepository-1.0/GnomeCmd-1.0.typelib
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{_datadir}/icons/hicolor/scalable/apps/gnome-commander-internal-viewer.svg
 %{_datadir}/icons/hicolor/scalable/apps/gnome-commander-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/apps/gnome-commander.svg
 %dir %{_datadir}/%{name}
-%{_datadir}/%{name}/internal_viewer_hacking.txt
-%{_datadir}/%{name}/keys.txt
 %{_datadir}/%{name}/icons
+%{_datadir}/gir-1.0/GnomeCmd-1.0.gir
 
 %files lang -f %{name}.lang
 

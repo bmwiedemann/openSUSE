@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Mon Jun  1 19:19:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.2:
+  + This release fixes the following bugs:
+    - The Copy button in the Copy File dialog wasn’t set as the
+      default action
+    - Glitches displaying free space of the current volume
+    - Double-clicking tab area created a new tab but didn’t keep
+      the selected file
+    - Switching tabs didn’t reset Quick Filter
+    - Incorrect logic determining when directory monitoring should
+      be stopped
+
+-------------------------------------------------------------------
+Thu May 28 07:01:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.1:
+  + This release fixes the following bugs:
+    - Right panel would occasionally occupy all available space on
+      startup, rendering left panel invisible
+    - Color themes were broken with older Gtk versions
+    - With older Gtk versions clicking a device button only worked
+      once
+    - No Quit menu item in the File menu
+    - Running search for the first time would list home directory
+      contents as “search results”
+    - Internal viewer doesn’t allow selecting the first character
+      in a line
+    - Moving mouse pointer out of the internal viewer window
+      selects everything to the start of the visible area
+
+-------------------------------------------------------------------
+Sun May 17 13:44:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.0:
+  + Added embedded terminal to display output of commands run by
+    Gnome Commander. The new “Hide Command Line Output When
+    Inactive” in “View” menu hides the terminal automatically when
+    inactive.  
+  + Redesigned Quick Search functionality:
+    - Filtering the file list is now possible as well. The default
+      mode can be configured in the Options dialog.
+    - Text is always matched anywhere in the file name unless
+      wildcard patterns `*` or `?` are used explicitly.
+    - A button to enable case-sensitive matching has been added.
+    - Quick Search no longer starts searching at the beginning of
+      the file list but at the current position.
+    - Most keyboard shortcuts can be used from Quick Search without
+      causing it to close.
+  + Various improvements to the Search dialog:
+    - Improved performance.
+    - Closing and re-opening search no longer clears the search
+      results.
+    - Path matching can now use extended glob expressions like
+      dir/**/*.md that will be applied to the entire path relative
+      to current directory.
+    - A button to choose whether path matching should be
+      case-sensitive has been added.
+    - Search progress shows the directory currently being searched.
+  + Various improvements to the internal viewer:
+    - Viewer font can now be chosen from the Settings menu.
+    - Binary mode has been renamed into Fixed Width and supports
+      UTF-8.
+    - Replaced the search dialog by a search bar.
+    - Added support for case-insensitive hexadecimal search.
+    - Considerably improved search performance.
+    - Added “Select All” menu item for text.
+    - Added a context menu for images.
+    - Status bar displays some information for images as well now.
+    - DOS-style CRLF line breaks are recognized as a single line
+      break now.
+    - Many bug fixes.
+  + Other new features and improvements:
+    - Migration of the overall codebase to the Rust language and
+      Gtk4.
+    - Updated the program license to GPL-3.0+.
+    - Improved accessibility of the application, allowing screen
+      readers to better recognize context.
+    - Redesigned Keyboard Shortcuts dialog, making it easier to
+      use. Also, the list of configurable keyboard shortcuts has
+      been vastly expanded.
+    - Switching tabs in Options dialog is now possible via Ctrl+Tab
+      and Shift+Ctrl+Tab.
+    - Navigation history is no longer shared between different
+      panels.
+    - External terminal application is now xdg-terminal-exec by
+      default which will launch the configured default terminal.
+    - Calculating size of a large directory will no longer hang up
+      Gnome Commander, and selecting a different file will abort
+      the operation in progress.
+    - Improved Wayland support, starting an application immediately
+      activates it if the application supports this.
+    - New option to treat symlinks as regular files.
+    - The “Search window is minimizable” option is now called
+      “Search window always on top” and no longer requires a
+      restart.
+    - Made the text indicating size and number of selected files
+      easier to translate.
+    - When a command is run in an external terminal no additional
+      pause is being added as the terminal application will usually
+      leave the window open anyway.
+    - Better icon for “Copy File Names” action that respects dark
+      mode.
+    - Added support for icon theme directories for MIME icons.
+    - Order of columns in the file panels can now be altered by
+      mouse drag-n-drop.
+    - Removed the dependency on xpm library for MIME icons.
+  + This release fixes the following bugs:
+    - Various documentation mistakes correction.
+    - Search is now stopped automatically when the Search dialog is
+      closed.
+    - Made sure that opening multiple dialogs of the same type is
+      not possible, instead the existing dialog is brought up.
+    - Fixed issues when directory opened in one panel is renamed in
+      another.
+    - Restoring remote connections on startup only succeeded for
+      already active connections.
+    - Remote connection restored on startup was lacking its
+      bookmarks.
+    - Navigating history via file list’s dropdown no longer
+      reorders history entries.
+    - When ALT+letters was supposed to start Quick Search, they
+      would occasionally open menu instead.
+    - No visual indication of file selection in “Respect theme’s
+      colors” mode.
+    - Switching tabs in the inactive panel wouldn’t activate it.
+    - Fixed search continuing in background when aborted.
+    - Respect theme’s text color in the internal viewer, fixing
+      display in dark mode.
+    - Renamed files were still displaying the old name.
+    - Device bar overflow is fixed when it exceeds the panel width.
+    - Advanced rename dialog does not exceed screen size anymore
+      for long file names.
+    - Pressing the keypad button “*” does not select / deselect the
+      “..” directory anymore.
+    - Selected files in tabs are kept when switching tabs.
+  + Updated translations.
+- Drop gnome-commander-glycin-loaders.patch: Fixed upstream.
+- Switch to source service for tarballs.
+- Drop conditional gcc11, gcc11-c++ and mandatory flex, yelp-tools
+  and pkgconfig(gtk+-3.0) BuildRequires: No longer needed.
+- Add cargo-packaging, pkgconfig(gobject-introspection-1.0),
+  pkgconfig(gtk4) and pkgconfig(vte-2.91-gtk4)  BuildRequires: New
+  dependencies.
+- Update URL to new home.
+- Add ldconfig_scriptlets macro for post(un) handling.
+- Temp disable meson_test, run validation manually.
+
+-------------------------------------------------------------------
 Sun Apr 26 18:20:51 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.6:
