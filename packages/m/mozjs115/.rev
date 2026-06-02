@@ -136,4 +136,14 @@
     <comment>Add CVE fixes</comment>
     <requestid>1349354</requestid>
   </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>1776bd00cfcb327a863bcdc94ee16ad2</srcmd5>
+    <version>115.15.0</version>
+    <time>1780426981</time>
+    <user>anag_factory</user>
+    <comment>- Add mozjs115-CVE-2025-70103.patch: libjxl: take EC into account
+  when checking required PNM input length (bsc#1266463
+  CVE-2025-70103).</comment>
+    <requestid>1356765</requestid>
+  </revision>
 </revisionlist>

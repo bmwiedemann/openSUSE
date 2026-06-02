@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  2 09:24:36 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add mozjs115-CVE-2025-70103.patch: libjxl: take EC into account
+  when checking required PNM input length (bsc#1266463
+  CVE-2025-70103).
+
+-------------------------------------------------------------------
 Sat Apr 25 14:38:40 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add security fixes:
