@@ -494,4 +494,17 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1343005</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>db2df5b50d1c8cc6e8f2fe195a3d751d</srcmd5>
+    <version>50.0</version>
+    <time>1780408948</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.0:
+  + Improve thumbnails on HiDPI display.
+  + Port thumbnailer to GTK4.
+  + Misc. bug fixes and cleanup.
+  + Updated translations.
+- Add fdupes BuildRequires and macro, remove duplicate files.</comment>
+    <requestid>1356442</requestid>
+  </revision>
 </revisionlist>

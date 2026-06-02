@@ -18,7 +18,7 @@
 
 
 Name:           polari
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        An IRC Client for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,6 +28,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       polari-rpmlintrc
 
 BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
 BuildRequires:  gjs >= 1.57.3
 BuildRequires:  json-glib-devel
 BuildRequires:  meson >= 1.1.0
@@ -67,6 +68,7 @@ with GNOME 3.
 
 %install
 %meson_install
+%fdupes -s %{buildroot}/%{_datadir}/help/
 %find_lang %{name} %{?no_lang_C}
 
 %check
