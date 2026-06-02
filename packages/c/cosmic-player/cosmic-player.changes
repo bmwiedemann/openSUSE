@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Jun 01 13:13:53 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * Fixes for new libcosmic
+  * Epoch 1.0.14 version update
+  * i18n: translation updates from weblate
+  * Epoch 1.0.13 version update
+  * i18n: translation updates from weblate
+  * Translate desktop and metainfo with xdgen
+  * feat: add skip forward and backward playback controls
+  * Epoch 1.0.12 version update
+  * chore: update dependencies
+  * Epoch 1.0.11 version update
+
+-------------------------------------------------------------------
+Sat Apr 18 11:31:07 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * i18n: translation updates from weblate
+  * chore: update libcosmic after reexports
+
+-------------------------------------------------------------------
+Sun Apr 12 15:55:30 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * Epoch 1.0.9 version update
+  * chore: enable wayland by default
+  * fix: disable next frame and previous frame for audio
+  * fix: audio player interface issues
+  * [Feat] AB repeat and frame stepping (#241)
+  * chore: update libcosmic
+  * chore: update libcosmic
+  * chore: thumbnails and patches
+  * chore: update iced
+  * i18n: translation updates from weblate
+  * Fix ignored repeat with folder
+  * Use set_looping from iced_video instead of EOS signal
+  * Remove Playlist repeat option
+  * Rename repeat options to Disabled, Track, and Playlist
+  * Workaround double EOS with explicit seek
+  * mpris
+  * Fix incorrect match arm guard
+  * Add tooltip to repeat control
+  * Add three-state repeat button
+
+-------------------------------------------------------------------
 Tue Feb 24 20:39:19 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:
