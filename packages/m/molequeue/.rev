@@ -25,4 +25,12 @@ It is also dependency for Avogadro2.</comment>
     <comment></comment>
     <requestid>913404</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f1b32b35014ba3400696a654b951fa31</srcmd5>
+    <version>0.9.0</version>
+    <time>1780409260</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: convert zeromq-devel to pkgconfig(libzmq), use %autosetup and %{optflags}, drop obsolete Group tags</comment>
+    <requestid>1356543</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package molequeue
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,10 @@ BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
-BuildRequires:  zeromq-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(libzmq)
 Requires:       %{name}-libs0%{?_isa} = %{version}-%{release}
 
 %description
@@ -52,14 +52,12 @@ Features:
 
 %package libs0
 Summary:        Shared and private libraries of %{name}
-Group:          System/Libraries
 
 %description libs0
 Shared and private libraries of %{name}.
 
 %package  devel
 Summary:        Development files of %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-libs0%{?_isa} = %{version}-%{release}
 Requires:       libqt5-qtbase-devel
 
@@ -69,20 +67,19 @@ applications that use %{name}.
 
 %package doc
 Summary:        HTML documentation of %{name}
-Group:          Documentation/Man
 BuildArch:      noarch
 
 %description doc
 HTML documentation of %{name}.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake -Wno-dev \
-  -DCMAKE_C_FLAGS:STRING="%optflags -fPIC" \
-  -DCMAKE_CXX_FLAGS:STRING="%optflags -fPIC" \
-  -DCMAKE_LD_FLAGS:STRING="%optflags -pie" \
+  -DCMAKE_C_FLAGS:STRING="%{optflags} -fPIC" \
+  -DCMAKE_CXX_FLAGS:STRING="%{optflags} -fPIC" \
+  -DCMAKE_LD_FLAGS:STRING="%{optflags} -pie" \
   -DENABLE_TESTING:BOOL=OFF \
   -DBUILD_DOCUMENTATION:BOOL=ON \
   -DPYTHON_EXECUTABLE:FILEPATH=python3 \
