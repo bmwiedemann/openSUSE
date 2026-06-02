@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Jun 01 12:25:43 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * chore: update libcosmic
+  * fix: search the theme path provided by the app to find status-area icons
+  * i18n: translation updates from weblate
+  * chore(deps): bump nmrs to 3.1.3
+  * chore(deps): bump nmrs version to include patch
+  * chore: bump `nmrs` version
+  * feat(network): integrate nmrs for VPN, airplane mode, and secret agent Replace cosmic-settings-network-manager-subscription channel-based NetworkManager calls with direct nmrs API calls: - VPN list: nm.list_saved_connections() instead of hand-walking   NetworkManagerSettings over D-Bus. - VPN connect/disconnect: nm.connect_vpn_by_uuid / disconnect_vpn_by_uuid. - Forget Wi-Fi: nm.forget(&ssid). - Wi-Fi radio toggle: nm.set_wireless_enabled. - Airplane mode: nm.set_airplane_mode, dropping   cosmic-settings-airplane-mode-subscription. - Secret agent: nmrs::agent::SecretAgent registered per-popup,   replacing nm-secret-agent-manager. VPN secrets are replied via   responder.vpn_secrets(...); the applets own Authenticate flow still   drives Wi-Fi password handoff and releases NM with NoSecrets.
+  * fix(process): prevent zombie shell processes
+  * clippy
+  * chore: release profile
+  * chore(battery): update deps with fix
+  * i18n: translation updates from weblate
+  * chore: update all dependencies
+  * debian: update changelog
+  * chore: add zed editor config
+  * chore: update libcosmic
+  * chore: update MSRV to Rust 1.93
+  * feat: use rich_text for notifications-applet
+  * chore: cargo fmt
+  * update libcosmic after reexports are removed
+  * wip: update libcosmic
+
+-------------------------------------------------------------------
+Sat Apr 18 10:52:49 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * i18n: translation updates from weblate
+  * feat(app-list): implement workspace and configured-output filtering
+
+-------------------------------------------------------------------
+Sun Apr 12 15:00:25 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * Removed known wifi from visible wireless networks section
+  * chore: update deps
+  * feat: display battery applet when there is no battery
+  * chore: updates after iced-rebase
+  * fix(status-area): break from loop instead of unwrapping
+  * feat: add middle mouse button support to close toplevel applications
+  * i18n: translation updates from weblate
+  * fix(justfile): wrong path to localized desktop entries
+
+-------------------------------------------------------------------
 Tue Feb 24 19:54:56 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:
