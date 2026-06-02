@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun  1 04:03:35 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.13.2
+  * Added new keysyms: XKB_KEY_dead_apostrophe, XKB_KEY_SSHARP,
+    XKB_KEY_leftsingleanglequotemark,
+    XKB_KEY_rightsingleanglequotemark,
+    XKB_KEY_XF86ElectronicPrivacyScreenOn,
+    XKB_KEY_XF86ElectronicPrivacyScreenOff,
+    XKB_KEY_XF86ActionOnSelection, XKB_KEY_XF86ContextualInsert,
+    XKB_KEY_XF86ContextualQuery.
+  * Changed `ISO_Group_Shift`, which is now the canonical name of
+    the corresponding keysym. Previously it was `Mode_switch`,
+    which refers to a core X group mechanism obsoleted by XKB.
+  * Added new tool `xkbcli info` to print information about
+    libxkbcommon configuration, for debugging purposes.
+
+-------------------------------------------------------------------
 Fri Apr 17 13:06:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.13.1 [boo#1262256]

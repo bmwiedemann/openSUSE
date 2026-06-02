@@ -445,4 +445,12 @@
     <comment>- Update to release 1.13.1 [boo#1262256]</comment>
     <requestid>1347730</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>efd4fea2a02ab946ba7634e3f413aaf5</srcmd5>
+    <version>1.13.2</version>
+    <time>1780408850</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.13.2</comment>
+    <requestid>1356247</requestid>
+  </revision>
 </revisionlist>
