@@ -25,6 +25,10 @@ License:        MIT
 Group:          System/Console
 URL:            https://github.com/kmscon/kmscon
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-DOWNSTREAM (in discussion: https://github.com/kmscon/kmscon/issues/407)
+Patch1:         0001-Revert-systemd-start-login-instead-of-agetty.patch
+# PATCH-FIX-DOWNSTREAM (in discussion: https://github.com/kmscon/kmscon/issues/411)
+Patch2:         0002-Revert-Use-kmscon-has-default-TERM.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkg-config
@@ -49,6 +53,17 @@ Provides:       %{name}-service = %{version}-%{release}
 Kmscon is a simple terminal emulator based on linux kernel mode setting (KMS).
 It is an attempt to replace the in-kernel VT implementation with a userspace
 console.
+
+%package pango
+Summary:        Pango renderer for kmscon
+Requires:       %{name} = %{version}
+
+%description pango
+This package contains an optional renderer backend for kmscon using the pango
+library for advanced text layout and rendering.
+
+By default, kmscon uses the freetype renderer, so only special configurations
+need to install this package and its dependencies.
 
 %prep
 %autosetup -p1
@@ -86,7 +101,6 @@ rm %{buildroot}%{_sysconfdir}/kmscon/kmscon.conf.example
 %{_bindir}/%{name}-launch-gui
 %dir %{_libdir}/kmscon/
 %{_libdir}/kmscon/mod-freetype.so
-%{_libdir}/kmscon/mod-pango.so
 %{_libdir}/kmscon/mod-unifont.so
 %dir %{_libexecdir}/kmscon
 %{_libexecdir}/kmscon/kmscon
@@ -95,5 +109,8 @@ rm %{buildroot}%{_sysconfdir}/kmscon/kmscon.conf.example
 %{_unitdir}/kmscon.service
 %{_unitdir}/kmsconvt@.service
 %{_pam_vendordir}/kmscon
+
+%files pango
+%{_libdir}/kmscon/mod-pango.so
 
 %changelog
