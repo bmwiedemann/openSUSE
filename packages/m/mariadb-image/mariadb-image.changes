@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  1 08:44:54 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- unset passwords from environment
+
+-------------------------------------------------------------------
 Wed May 20 16:13:51 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - add MARIADB_USER_HOST env variable handling
