@@ -18,7 +18,7 @@
 
 %define         appid com.system76.CosmicNotifications
 Name:           cosmic-notifications
-Version:        1.0.8
+Version:        1.0.14
 Release:        0
 Summary:        Layer for COSMIC Notifications
 License:        GPL-3.0-only
@@ -56,8 +56,5 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %license LICENSE.md
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/applications/%{appid}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
-%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %changelog

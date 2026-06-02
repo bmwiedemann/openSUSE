@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 01 13:00:55 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * chore: remove data and i18n folders
+  * chore: clippy
+  * chore: update dependencies
+  * improv: move notification fds to config
+
+-------------------------------------------------------------------
+Sat Apr 18 11:22:06 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * i18n: translation updates from weblate
+  * chore: update libcosmic after reexports were removed
+
+-------------------------------------------------------------------
+Sun Apr 12 15:43:50 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * chore: update deps
+  * chore: update after iced rebase
+  * feat: render parsed HTML as rich text
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
 Mon Mar  9 13:58:45 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:
