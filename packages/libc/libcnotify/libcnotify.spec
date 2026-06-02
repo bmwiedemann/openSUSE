@@ -18,7 +18,7 @@
 
 Name:           libcnotify
 %define lname	libcnotify1
-Version:        20260601
+Version:        20260602
 Release:        0
 Summary:        Library for C notify functions
 License:        LGPL-3.0-or-later
