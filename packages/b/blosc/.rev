@@ -263,4 +263,12 @@ I have fixed the issues from the previous submit requests.</comment>
 - Update to 1.21.4 (forwarded request 1254877 from sfalken)</comment>
     <requestid>1254941</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>552297f96dac3092373c023d008cb7c0</srcmd5>
+    <version>1.21.6</version>
+    <time>1780409417</time>
+    <user>anag_factory</user>
+    <comment>Build with gnu17 C standard to fix the build on non-x86 arches with GCC 15+ (upstream only forces gnu99 on x86; C23 makes 'bool' a keyword, breaking shuffle.c); spec cleanup (use %autosetup, drop obsolete Group tags)</comment>
+    <requestid>1356730</requestid>
+  </revision>
 </revisionlist>

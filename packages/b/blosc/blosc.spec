@@ -1,7 +1,7 @@
 #
 # spec file for package blosc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        1.21.6
 Release:        0
 Summary:        A blocking, shuffling and lossless compression library
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
-Group:          Productivity/Archiving/Compression
 URL:            https://www.blosc.org/
 Source:         https://github.com/Blosc/c-blosc/archive/v%{version}.tar.gz#/c-blosc-%{version}.tar.gz
 BuildRequires:  cmake >= 3.5
@@ -51,7 +50,6 @@ algorithms, such as BloscLZ, LZ4, LZ4HC, Snappy and Zlib.
 
 %package -n %{libname}
 Summary:        A blocking, shuffling and lossless compression library
-Group:          System/Libraries
 
 %description -n %{libname}
 Blosc is a metacompressor (using actual algorithms like BloscLZ, LZ4,
@@ -60,7 +58,6 @@ memory bus activity.
 
 %package devel
 Summary:        Development libraries for %{libname}
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -68,9 +65,13 @@ This package provides development libraries and headers
 for %{libname}.
 
 %prep
-%setup -q -n c-blosc-%{version}
+%autosetup -n c-blosc-%{version}
 
 %build
+# Upstream only forces -std=gnu99 on x86; other arches inherit the compiler
+# default (C23 on GCC 15+), where 'bool' is a keyword and the bool typedef in
+# blosc/shuffle.c fails to compile. Force a pre-C23 standard on all arches.
+export CFLAGS="%{optflags} -std=gnu17"
 %cmake \
   -DDEACTIVATE_SNAPPY:BOOL=OFF \
   -DPREFER_EXTERNAL_SNAPPY:BOOL=ON \

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  2 12:37:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build with the gnu17 C standard to fix the build on non-x86
+  architectures with GCC 15+: upstream only forces -std=gnu99 on
+  x86, so other arches defaulted to C23 where 'bool' is a keyword
+  and the bool typedef in blosc/shuffle.c failed to compile
+- Spec cleanup:
+  * Use %autosetup
+  * Drop obsolete Group tags
+
+-------------------------------------------------------------------
 Fri Mar 21 00:02:12 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
