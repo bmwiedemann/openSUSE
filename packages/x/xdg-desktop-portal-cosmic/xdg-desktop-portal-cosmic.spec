@@ -18,7 +18,7 @@
 
 %define         appid org.freedesktop.impl.portal.desktop.cosmic
 Name:           xdg-desktop-portal-cosmic
-Version:        1.0.8
+Version:        1.0.14
 Release:        0
 Summary:        COSMIC xdg portal
 License:        GPL-3.0-only

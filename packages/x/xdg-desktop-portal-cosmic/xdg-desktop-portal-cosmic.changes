@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jun 01 13:41:59 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * made the cursor show by default if client doesn't request a cursor mode
+  * data: Use oo7-portal as secret portal
+  * i18n: translation updates from weblate
+  * chore: add Zed fmt config
+  * chore: update libcosmic
+  * chore: fmt
+  * chore: clippy
+  * chore: update dependencies
+  * fix: update accent color when light/dark mode switched
+
+-------------------------------------------------------------------
+Sat Apr 18 16:12:42 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sun Apr 12 16:28:08 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * screencast: Handle `stopped` event from server
+  * wayland: Handle error receiving from oneshot in `capture_wl_buffer`
+  * Update `wayland-client` to `0.31.14`
+  * settings: Add org.gnome.desktop.interface namespace with glob support (#280)
+  * docs (QA): Add TESTING.md
+  * chore: update libcosmic
+  * chore: update libcosmic
+  * chore: update deps
+  * wip
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * feat(screenshot): Support XDG_SCREENSHOTS_DIR and Screenshots subfolder
+
+-------------------------------------------------------------------
 Mon Mar  9 13:46:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:
