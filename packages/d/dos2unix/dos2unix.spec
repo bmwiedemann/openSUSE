@@ -18,14 +18,14 @@
 
 
 Name:           dos2unix
-Version:        7.5.5
+Version:        7.5.6
 Release:        0
 Summary:        Text converters to and from DOS/MAC to UNIX
 License:        BSD-2-Clause
 Group:          Productivity/Text/Convertors
-URL:            https://waterlan.home.xs4all.nl/dos2unix.html
-Source0:        https://waterlan.home.xs4all.nl/dos2unix/dos2unix-%{version}.tar.gz
-Source1:        https://waterlan.home.xs4all.nl/dos2unix/dos2unix-%{version}.tar.gz.asc
+URL:            https://waterlander.net/dos2unix/
+Source0:        https://waterlander.net/dos2unix/files/%{name}-%{version}.tar.gz
+Source1:        https://waterlander.net/dos2unix/files/%{name}-%{version}.tar.gz.asc
 # http://keys.gnupg.net/pks/lookup?op=get&search=0x38C1F572B12725BE
 Source2:        %{name}.keyring
 Provides:       unix2dos = %{version}
