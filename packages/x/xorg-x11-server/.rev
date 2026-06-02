@@ -4424,4 +4424,28 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * XKB Buffer overflow in CheckKeyTypes() (bsc#1260926, CVE-2026-34003)</comment>
     <requestid>1346890</requestid>
   </revision>
+  <revision rev="450" vrev="6">
+    <srcmd5>e0f8ec3b69a2842bd0bc9f96f04028fc</srcmd5>
+    <version>21.1.21</version>
+    <time>1780422416</time>
+    <user>anag_factory</user>
+    <comment>- bsc1266294_CVE-2026-XXXX1_0007-dix-increase-XLFDMAXFONTNAMELEN-to-match-libXfont2-s.patch
+  * Font Alias Stack-based Buffer Overflow (ZDI-CAN-30136, bsc#1266294)
+- bsc1266295_CVE-2026-XXXX2_0001-sync-fix-deletion-of-counters-and-fences.patch
+  * XSYNC Use-After-Free in miSyncDestroyFence() (ZDI-CAN-30159, ZDI-CAN-30163, bsc#1266295, bsc#1266298)
+- bsc1266296_CVE-2026-XXXX3_0003-xkb-reject-key-types-with-num_levels-exceeding-XkbMa.patch
+  * XKB Key Types Stack-based Buffer Overflow (ZDI-CAN-30160, bsc#1266296)
+- bsc1266297_CVE-2026-XXXX4_0004-xkb-clamp-nMaps-to-mapWidths-buffer-size-in-CheckKey.patch
+  * XKB SetMap Request Stack-based Buffer Overflow (ZDI-CAN-30161, bsc#1266297)
+- bsc1266299_CVE-2026-XXXX6_0002-sync-restart-trigger-list-iteration-in-SyncChangeCou.patch
+  * XSYNC Use-After-Free in SyncChangeCounter() (ZDI-CAN-30164, bsc#1266299)
+- bsc1266300_CVE-2026-XXXX7_0005-glx-fix-reversed-length-check-in-ChangeDrawableAttri.patch
+  * GLX ChangeDrawableAttributes Out-Of-Bounds Read/Write (ZDI-CAN-30165, bsc#1266300)
+- bsc1266301_CVE-2026-XXXX8_0006-saver-re-fetch-screen-private-after-CheckScreenPriva.patch
+  * CreateSaverWindow Use-After-Free Information Disclosure (ZDI-CAN-30168, bsc#1266301)
+- bsc1266302_CVE-2026-XXXX9_0001-dri2-Use-booleans-for-fake-front-buffer-tracking-in-.patch
+  bsc1266302_CVE-2026-XXXX9_0002-dri2-Deduplicate-attachments-in-do_get_buffer.patch
+  * DRI2 DRIGetBuffers/DRIGetBuffersWithFormat Out-Of-Bounds Write (CVE-2026-XXXX9, bsc#1266302)</comment>
+    <requestid>1356612</requestid>
+  </revision>
 </revisionlist>
