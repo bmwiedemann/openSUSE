@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun  1 17:13:44 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 2.2.2
+  - Fixed
+    - Out of range string_view access in globpath. Thanks to Adam Mizerski.
+    - Typo in README and manpage.
+    - Invalid use of PROVIDE in linker script.
+    - reject rule not working with sendto/sendmsg.
+    - Bug in accept if stdin was closed and accept would return FD 0.
+    - Broken abstract socket support if used with from-abstract.
+    - Race condition if the program uses library calls wrapped by ip2unix before
+      initialisation was done.
+- removed patch ip2unix-2.2.1-fix_out_of_range_string_view_access.patch
+  (applied upstream)
+- reenable all tests
+
+-------------------------------------------------------------------
 Tue Mar  3 07:46:57 UTC 2026 - munix9@googlemail.com
 
 - Fix build on Factory/TW: add python3-pytest-timeout

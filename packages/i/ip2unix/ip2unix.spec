@@ -17,13 +17,12 @@
 
 
 Name:           ip2unix
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Turn IP sockets into Unix domain sockets
 License:        LGPL-3.0-only
 URL:            https://github.com/nixcloud/ip2unix
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:         https://patch-diff.githubusercontent.com/raw/nixcloud/ip2unix/pull/35.patch#/ip2unix-2.2.1-fix_out_of_range_string_view_access.patch
 BuildRequires:  asciidoc
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  python3
@@ -66,11 +65,7 @@ export CXX="g++-13"
 %meson_install
 
 %check
-# exclude test 'ip2unix:integration' (timeout)
-test_list=$(%meson_test --list) 2> /dev/null
-test_list=${test_list//ip2unix:integration}
-test_list=${test_list//integration}
-%meson_test $test_list
+%meson_test
 
 %files
 %{_bindir}/%{name}
