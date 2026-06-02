@@ -519,4 +519,12 @@
 - fixes [bsc#1262254], [bsc#1262255]</comment>
     <requestid>1349506</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f8ed85f643d9832e3e35ea09555d0bda</srcmd5>
+    <version>2.10.0</version>
+    <time>1780409314</time>
+    <user>anag_factory</user>
+    <comment>version update to 2.10.0</comment>
+    <requestid>1356638</requestid>
+  </revision>
 </revisionlist>
