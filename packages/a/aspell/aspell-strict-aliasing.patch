@@ -1,19 +1,19 @@
---- a/modules/speller/default/writable.cpp
-+++ b/modules/speller/default/writable.cpp
-@@ -672,7 +672,7 @@
+Index: aspell-0.60.8.2/modules/speller/default/writable.cpp
+===================================================================
+--- aspell-0.60.8.2.orig/modules/speller/default/writable.cpp
++++ aspell-0.60.8.2/modules/speller/default/writable.cpp
+@@ -298,7 +298,7 @@ static inline void set_sl(WordEntry & re
  
- static void repl_next(WordEntry * w)
+ static void soundslike_next(WordEntry * w)
  {
 -  const Str * & i   = (const Str * &)(w->intr[0]);
 +  const Str * i   = (const Str * )(w->intr[0]);
    const Str *   end = (const Str *  )(w->intr[1]);
    set_word(*w, *i);
    ++i;
---- a/modules/speller/default/writable.cpp
-+++ b/modules/speller/default/writable.cpp
-@@ -246,7 +246,7 @@
+@@ -741,7 +741,7 @@ WritableReplDict::Enum * WritableReplDic
  
- static void soundslike_next(WordEntry * w)
+ static void repl_next(WordEntry * w)
  {
 -  const Str * & i   = (const Str * &)(w->intr[0]);
 +  const Str * i   = (const Str * )(w->intr[0]);

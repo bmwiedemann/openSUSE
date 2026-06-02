@@ -1,7 +1,7 @@
 #
 # spec file for package aspell
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aspell
-Version:        0.60.8.1
+Version:        0.60.8.2
 Release:        0
 Summary:        A Spell Checker
 License:        GFDL-1.1-or-later AND LGPL-2.1-only AND HPND AND SUSE-BSD-Mark-Modifications
@@ -31,14 +31,12 @@ Source100:      baselibs.conf
 Patch0:         aspell-strict-aliasing.patch
 # PATCH-FIX-OPENSUSE aspell-quotes.patch lmichnovic@suse.cz -- Fix command execution in script "run-with-aspell"
 Patch1:         aspell-quotes.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         aspell-gcc15.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 Requires(post): info
-Requires(preun):info
+Requires(preun): info
 Recommends:     aspell-en
 Suggests:       aspell-ispell
 Suggests:       aspell-spell
@@ -63,7 +61,7 @@ Requires:       glibc-devel
 Requires:       libaspell15 = %{version}
 Requires:       libpspell15 = %{version}
 Requires(post): info
-Requires(preun):info
+Requires(preun): info
 Provides:       pspell-devel = %{version}
 Obsoletes:      pspell-devel < %{version}
 

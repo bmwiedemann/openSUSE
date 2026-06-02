@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun  1 12:24:13 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 0.60.8.2:
+  • Improved compiler compatibility: Fixed Clang -Wstrict-prototypes
+    warnings for C interface, fixed new Clang warnings, fixed GCC 15
+    build issues, and added MSYS2 + MINGW64 compile fixes.
+  • Enhanced testing infrastructure with newer compiler versions,
+    including snapshots from both GCC and Clang, to catch future
+    problems before they make their way into distros.
+  • Fixed bug that caused aspell_speller_store_replacement to return
+    random values.
+  • Fixed typo in Texinfo filter option file.
+  • Various documentation updates and fixes.
+- modified patches
+  * aspell-strict-aliasing.patch (refreshed)
+- deleted patches
+  * aspell-gcc15.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Mar 31 14:34:45 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add aspell-gcc15.patch to fix gcc15 compile time error
