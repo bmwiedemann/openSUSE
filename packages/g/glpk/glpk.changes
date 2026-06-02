@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  1 18:27:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec cleanup:
+  * Add the explicit gcc and make BuildRequires
+  * Convert libiodbc-devel and libmariadb-devel to their
+    pkgconfig() form
+  * List the installed header explicitly instead of globbing
+    %{_includedir}
+  * Drop obsolete Group tags and redundant V=1 from %make_build
+
+-------------------------------------------------------------------
 Tue Mar 31 22:19:32 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix pkgconfig file to contain valid paths/variables, broken

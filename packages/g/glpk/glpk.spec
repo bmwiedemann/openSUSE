@@ -23,18 +23,19 @@ Version:        5.0
 Release:        0
 Summary:        GNU Linear Programming Kit
 License:        GPL-3.0-only
-Group:          Productivity/Scientific/Math
 URL:            https://www.gnu.org/software/glpk/glpk.html
 Source0:        https://ftp.gnu.org/gnu/glpk/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/glpk/%{name}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
 Patch0:         glpk-no_random_return.patch
 Patch1:         bool.patch
+BuildRequires:  gcc
 BuildRequires:  gmp-devel
-BuildRequires:  libiodbc-devel
-BuildRequires:  libmariadb-devel
 BuildRequires:  libtool
+BuildRequires:  make
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libiodbc)
+BuildRequires:  pkgconfig(libmariadb)
 
 %description
 The GLPK package is intended for solving large-scale linear
@@ -44,7 +45,6 @@ callable library.
 
 %package        devel
 Summary:        GNU Linear Programming Kit
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description    devel
@@ -55,7 +55,6 @@ callable library.
 
 %package     -n %{lname}
 Summary:        GNU Linear Programming Kit
-Group:          System/Libraries
 
 %description -n %{lname}
 The GLPK package is intended for solving large-scale linear
@@ -65,7 +64,6 @@ callable library.
 
 %package doc
 Summary:        GNU Linear Programming Kit
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description doc
@@ -86,12 +84,12 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
   --enable-mysql \
   --disable-static
 %if %{do_profiling}
-  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}" V=1
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
   %make_build check CFLAGS="%{optflags} %{cflags_profile_generate}"
   %make_build clean
-  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}" V=1
+  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  %make_build V=1
+  %make_build
 %endif
 
 %install
@@ -126,7 +124,7 @@ EOF
 %{_libdir}/libglpk.so.%{sover}*
 
 %files devel
-%{_includedir}/*
+%{_includedir}/glpk.h
 %{_libdir}/libglpk.so
 %{_libdir}/pkgconfig/%{name}.pc
 

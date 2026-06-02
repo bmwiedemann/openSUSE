@@ -255,4 +255,12 @@
     <comment></comment>
     <requestid>1344383</requestid>
   </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>f2c42959062151aec0f59617add406f2</srcmd5>
+    <version>5.0</version>
+    <time>1780408964</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: add gcc+make BRs, pkgconfig() deps, explicit header, drop obsolete Group tags and redundant V=1</comment>
+    <requestid>1356434</requestid>
+  </revision>
 </revisionlist>
