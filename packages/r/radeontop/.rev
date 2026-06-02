@@ -99,4 +99,12 @@
     <comment></comment>
     <requestid>941801</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>dcab12aff05bfb7a3c78399884c13ea4</srcmd5>
+    <version>1.4</version>
+    <time>1780408939</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: add gcc+make BRs, drop obsolete rpmlintrc, %autosetup, drop Group</comment>
+    <requestid>1356429</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package radeontop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,10 @@ Version:        1.4
 Release:        0
 Summary:        Tool to view Radeon GPU utilization
 License:        GPL-3.0-only
-Group:          System/Monitoring
 URL:            https://github.com/clbr/radeontop
 Source0:        https://github.com/clbr/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        radeontop-rpmlintrc
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libdrm) >= 2.4.63
 BuildRequires:  pkgconfig(libdrm_amdgpu) >= 2.4.79
@@ -43,7 +43,7 @@ other blocks are only useful in GL loads.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export CFLAGS="%{optflags}"

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  1 17:42:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec cleanup:
+  * Add the explicit gcc and make BuildRequires
+  * Drop the obsolete radeontop-rpmlintrc (its
+    shlib-policy-name-error filter no longer matches anything)
+  * Use %autosetup and drop obsolete Group tag
+
+-------------------------------------------------------------------
 Mon Dec 20 17:54:34 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.4
