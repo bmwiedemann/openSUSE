@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Jun 02 04:34:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.101.0:
+  * Features
+    - 98e075fb: feat(ci): add --force flag to glab ci cancel job
+      (Filip Aleksic faleksic@gitlab.com)
+    - 56083b99: feat(mr note create): add --resolvable flag (Silviu
+      Marchis silviu.marchis@sygnum.com)
+    - 3a8da34f: feat(orbit): add Windows support for orbit local
+      (Bohdan Parkhomchuk bparkhomchuk@gitlab.com)
+    - 1b8ac8a6: feat(orbit): add glab orbit setup guided onboarding
+      command (Kai Armstrong karmstrong@gitlab.com)
+    - 7c5c41f3: feat(stack): add --skip-mr-creation flag to stack
+      sync command (Gary Holtz gholtz@gitlab.com)
+    - 8a9f818d: feat: Display progress during glab mr checkout
+      (Gabriel Mazzetto gabriel@gitlab.com)
+  * Bug Fixes
+    - 1db48d89: fix(ci): align ci delete and ci list default
+      pagination (Kai Armstrong karmstrong@gitlab.com)
+  * Documentation
+    - 04deff1d: docs(config): add synopsis and improve examples for
+      config commands (Brendan Lynch blynch@gitlab.com)
+    - a4b6dc76: docs(deploy-key): add synopsis and examples to
+      deploy-key commands (Brendan Lynch blynch@gitlab.com)
+    - 700695f5: docs(gpg-key): add synopsis and examples to gpg-key
+      commands (Brendan Lynch blynch@gitlab.com)
+    - 684df227: docs(label): add synopsis and examples to label
+      commands (Brendan Lynch blynch@gitlab.com)
+    - c1a8d0e7: docs(milestone): add synopsis and examples to
+      milestone commands (Brendan Lynch blynch@gitlab.com)
+    - b1bff4ba: docs(schedule): add synopsis and examples to
+      schedule commands (Brendan Lynch blynch@gitlab.com)
+    - 9e7f7b38: docs(securefile): add synopsis and examples to
+      securefile commands (Brendan Lynch blynch@gitlab.com)
+    - 44ca2124: docs(ssh-key): add synopsis and examples to ssh-key
+      commands (Brendan Lynch blynch@gitlab.com)
+    - ac004c5d: docs: clarify --all and --per-page pagination
+      behavior (Brendan Lynch blynch@gitlab.com)
+  * Dependencies
+    - dce8a8d0: chore(deps): update module
+      github.com/modelcontextprotocol/go-sdk to v1.6.1 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - baf77b6b: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.34.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 8cd1295e: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.36.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 349287c5: chore(deps): update module golang.org/x/crypto to
+      v0.52.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 58f32068: chore: Ensure git exit error codes are wrapped as
+      Error (Gabriel Mazzetto gabriel@gitlab.com)
+    - 220d0473: chore: Extract GitRunner into
+      internal/git/git_runner (Gabriel Mazzetto gabriel@gitlab.com)
+  * Others
+    - 12b11497: test(iostreams): isolate NO_COLOR in
+      detectIsColorEnabled default case (Filip Aleksic
+      faleksic@gitlab.com)
+
+-------------------------------------------------------------------
 Thu May 28 07:56:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.100.0:
