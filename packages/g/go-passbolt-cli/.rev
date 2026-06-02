@@ -24,4 +24,67 @@
     <comment> - fix shell completions dir name</comment>
     <requestid>1190395</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>077cc6061d64136ddee1d4ca9e66e0b2</srcmd5>
+    <version>0.4.2</version>
+    <time>1780408926</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.2:
+  * PB-50036 - Go: Create pre commit hooks
+  * PB-50035 - Go: Add linting to ci
+  * Update go SDK
+  * PB-49956 - Go: add golangci lint
+  * PB-49603 - Go-cli re-enable staticcheck rules
+  * PB-47870 - Redesign go cli release workflow
+  * PB-49163 - Go-CLI: Fix session key persistence
+  * PB-49161 - Update go dependencies
+  * PB-49162 - Go-cli : Fix context cancellation leak
+  * PB-48435 - Go-cli - Fix delete error user
+  * PB-48434 - Go-cli - Fix delete error group
+  * PB-48433 - Go-cli - Fix delete error folder
+  * Bump go sdk to 95e6a762aa5f183b5193c89da0bb6761ee0d6b63
+  * Catch unknown resource type error
+  * Bump go-passbolt to v0.7.3-0.20251223164903-d05eecccd555
+  * Use correct value for folder update cobra command Use &quot;folder&quot; instead of &quot;resource&quot;.
+  * Add Worker Flag
+  * Add get folder permisson subcommand
+  * Pin go-passbolt to correct version
+  * Remove ContainResourceType true, and improve CEL filtering
+  * Add save session key util
+  * Enable parallel resource decryption using thread-safe SDK
+  * fix method names
+  * fix error messages
+  * update help for list comands
+  * refactor folder list
+  * refactor group list
+  * refactor user list; add json column filter
+  * simple refactor, split into several methods
+  * add column filter into json output
+  * fix assign error from delete resource
+  * Fix Packaging Status README.md
+  * Add HTTP proxy support via standard environment variables
+  * Update go-passbolt, fixes updating shared v5 resources
+  * cli: add --expiry (RFC3339/duration), support 'none' to clear (#89)
+  * Improve spelling, formatting and readability of the main README
+  * Correct KeePass spelling
+  * Typo (#88)
+  * Update go-passbolt (#85)
+  * Make export work with v5 (#84)
+  * Update go-passbolt
+  * v5 Fix Resource Listing (#82)
+  * Update go-passbolt for v5
+  * Display Prompts on STDERR (#70)
+  * Update go-passbolt and other deps (#71)
+  * Feature: adding support for exposing secrets to subprocesses (#68)
+  * Added flags for passing client cert and client private key as file contents instead of paths
+  * Added File suffix on tlsClient command flags
+  * Removed hardcoded paths and fixed typo
+  * Added support for http client configuration via command arguments
+  * Adds permission subcommand to get a list of permissions of a resource
+  * Update deps, fix import changes, update go-passbolt for mfa fix
+  * Update README.md Install Section
+  * rename go-passbolt-cli -&gt; passbolt in README
+</comment>
+    <requestid>1356419</requestid>
+  </revision>
 </revisionlist>
