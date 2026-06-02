@@ -4,6 +4,5 @@
 socket for incoming requests. The 'HTTP::Daemon' is a subclass of
 'IO::Socket::INET', so you can perform socket operations directly on it
 too.</description>
-  <devel project="devel:languages:perl" package="perl-HTTP-Daemon"/>
   <url>http://search.cpan.org/dist/HTTP-Daemon/</url>
 </package>

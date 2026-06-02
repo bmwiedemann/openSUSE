@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May 21 10:03:14 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.170.0 (6.17)
+   see /usr/share/doc/packages/perl-HTTP-Daemon/Changes
+
+  6.17      2026-05-19 23:11:06Z
+    - Fix CVE-2026-8450 (affects 6.15 and earlier): 2-arg open() in
+      send_file() enabled RCE / arbitrary file write / response-body
+      exfiltration when a string argument was derived from attacker-
+      influenced input. send_file() now uses 3-arg open() with an
+      explicit '<' read mode, so the path is always treated as a literal
+      filename and 2-arg open() shell-magic shapes ('| cmd', 'cmd |',
+      '> path', etc.) are no longer interpreted. send_file() now also
+      returns '0E0' (true zero) on a successful zero-byte transfer so
+      callers can distinguish empty file from open failure (undef). See
+      https://www.cve.org/CVERecord?id=CVE-2026-8450 for the advisory.
+      Reported and patched by Stig Palmquist (stigtsp). (Stig Palmquist,
+      Olaf Alders)
+      bsc#1266370
+
+-------------------------------------------------------------------
 Fri Jul 11 14:15:24 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

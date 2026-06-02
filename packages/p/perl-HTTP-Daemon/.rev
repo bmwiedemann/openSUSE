@@ -150,4 +150,27 @@
 </comment>
     <requestid>1292098</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>22b11687a2624affc16c99e10866f4f6</srcmd5>
+    <version>6.170.0</version>
+    <time>1780422402</time>
+    <user>anag_factory</user>
+    <comment>- updated to 6.170.0 (6.17)
+   see /usr/share/doc/packages/perl-HTTP-Daemon/Changes
+  6.17      2026-05-19 23:11:06Z
+    - Fix CVE-2026-8450 (affects 6.15 and earlier): 2-arg open() in
+      send_file() enabled RCE / arbitrary file write / response-body
+      exfiltration when a string argument was derived from attacker-
+      influenced input. send_file() now uses 3-arg open() with an
+      explicit '&lt;' read mode, so the path is always treated as a literal
+      filename and 2-arg open() shell-magic shapes ('| cmd', 'cmd |',
+      '&gt; path', etc.) are no longer interpreted. send_file() now also
+      returns '0E0' (true zero) on a successful zero-byte transfer so
+      callers can distinguish empty file from open failure (undef). See
+      https://www.cve.org/CVERecord?id=CVE-2026-8450 for the advisory.
+      Reported and patched by Stig Palmquist (stigtsp). (Stig Palmquist,
+      Olaf Alders)
+      bsc#1266370</comment>
+    <requestid>1356446</requestid>
+  </revision>
 </revisionlist>
