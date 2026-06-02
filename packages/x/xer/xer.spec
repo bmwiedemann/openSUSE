@@ -17,7 +17,7 @@
 
 
 Name:           xer
-Version:        0.0.5+git20250808
+Version:        0.0.6
 Release:        0
 Summary:        Byte stream conversion utility
 License:        GPL-3.0-only

@@ -1,10 +1,11 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/v-p-b/xer.git</param>
-    <param name="revision">main</param>
     <param name="scm">git</param>
+    <param name="revision">v0.0.6</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="versionformat">0.0.5+git%cd</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
