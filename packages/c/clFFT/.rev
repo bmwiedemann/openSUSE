@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>1151655</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>bf449bdf78ad6caf86e7c021a21e5d4e</srcmd5>
+    <version>2.12.2</version>
+    <time>1780408969</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: apply patches unconditionally via %autosetup, drop obsolete Group tags, use %{?ext_man}</comment>
+    <requestid>1356448</requestid>
+  </revision>
 </revisionlist>

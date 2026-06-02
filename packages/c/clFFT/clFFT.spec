@@ -1,7 +1,7 @@
 #
 # spec file for package clFFT
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,6 @@ Version:        2.12.2
 Release:        0
 Summary:        OpenCL FFT library
 License:        Apache-2.0
-Group:          Productivity/Scientific/Math
 URL:            https://github.com/clMathLibraries/clFFT
 #Git-Clone:     https://github.com/clMathLibraries/clFFT.git
 Source:         https://github.com/clMathLibraries/clFFT/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -62,7 +61,6 @@ Fast Fourier Transforms which:
 
 %package devel
 Summary:        Development files for libclfft
-Group:          Development/Libraries/C and C++
 Requires:       %{libclfft} = %{version}
 Requires:       %{libtimer} = %{version}
 Requires:       opencl-headers
@@ -74,7 +72,6 @@ make use of libclFFT.
 
 %package -n %{libclfft}
 Summary:        Library for libclfft
-Group:          System/Libraries
 
 %description -n %{libclfft}
 The clFFT library is an OpenCL implementation of discrete
@@ -93,7 +90,6 @@ This subpackage provides shared library clFFT library
 
 %package -n %{libtimer}
 Summary:        Library for libclfft
-Group:          System/Libraries
 
 %description -n %{libtimer}
 The clFFT library is an OpenCL implementation of discrete
@@ -111,14 +107,7 @@ Fast Fourier Transforms which:
 This subpackage provides shared libStatTimer library
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%ifarch aarch64 riscv64
-%patch -P 1 -p1
-%endif
-%if 0%{?suse_version} >= 1550
-%patch -P 2 -p1
-%endif
+%autosetup -p1
 
 %build
 cd src
@@ -145,7 +134,7 @@ install -Dpm0644 %{SOURCE1} \
 
 %files
 %{_bindir}/clFFT-client
-%{_mandir}/man1/clFFT-client.1%{ext_man}
+%{_mandir}/man1/clFFT-client.1%{?ext_man}
 
 %files -n %{libclfft}
 %license LICENSE

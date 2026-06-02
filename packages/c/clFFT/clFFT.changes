@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  1 20:17:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec cleanup:
+  * Apply all patches unconditionally via %autosetup instead of
+    arch/version-guarded %patch (conditional patch application is
+    discouraged); both the CMake -m64/-m32 flag removal and the
+    gcc rvalue-address fix are safe on every arch and compiler
+  * Drop obsolete Group tags
+  * Use %{?ext_man}
+
+-------------------------------------------------------------------
 Mon Feb 26 10:54:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
