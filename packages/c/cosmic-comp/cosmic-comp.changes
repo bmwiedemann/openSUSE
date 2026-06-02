@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Mon Jun 01 12:33:28 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * i18n: translation updates from weblate
+  * cursor: Add idle-hide timeout
+  * fix: ignore configure requests from fullscreen windows
+  * fix: fullscreen x11 games opening as floating/tiled windows
+  * change a11y zoom easing function from EaseInOutCubic to Linear to avoid lagging mouse wheel scroll
+  * revert self.update_zoom to update with wheel
+  * kms: Try to re-open the device on permission errors after resume
+  * kms: Fix surface drop_and_join
+  * xwm: Reflect sticky state
+  * xwm: Support sticky requests for unmapped windows
+  * shell/element: Drop minimize/mapping X11 workaround
+  * shell/element: Throttle X11 resizes as well via sync-req
+  * chore: update smithay
+  * chore: Update `smithay` with `Dispatch2`
+  * fix(magnifier): smooth mouse wheel zoom and respect natural scroll direction
+  * fix: restore snapped windows as snapped after maximize/minimize
+  * fix: restore the window to where it was before the drag
+  * (fix) Reject resize_request on surfaces which are already being resized
+  * Unconstrain the IME popup when it appeared, resized, requested to repositioned
+  * refactor: change PopupSurface args to PopupKind of position_popup_within_rect() paths
+  * refactor: unify popup positioning logic for tiled layout into position_popup_within_rect()
+  * refactor: extract positioning popups within global rect logic
+  * refactor: make get_popup_toplevel() PopupKind agnostic
+  * kms: Recreate graphics contexts on resume
+  * kms: Wipe dpms state on resume
+  * i18n: translation updates from weblate
+  * Fix `clippy` lints
+  * chore: Update smithay
+  * image-copy: Don't panic if `ImageCaptureSourceKind` udata is undefined
+  * chore: Update smithay
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * fix: Prevent system hang on double Caps Lock press
+  * fix: consider SSD/tab height when calculating last server size
+  * session: Make sure to mark the socket as CLOEXEC early
+
+-------------------------------------------------------------------
+Sat Apr 18 11:02:32 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * Add setting to toggle workspace wrapping
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sun Apr 12 15:11:37 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * fix: clean up pending_windows for surfaces that were never mapped
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * state: call image-copy cleanup on refresh
+  * wayland/image-copy-capture: Break toplevel reference cycle
+  * surface: Introduce WeakCosmicSurface
+  * layout/floating: allow size altering if window was maximized (#2038)
+  * shell: Return surface from take_fullscreen for symmetry with remove_fullscreen
+  * shell: Simplify early return with take_if
+  * shell: Preserve fullscreen state when moving window between workspaces
+  * fix: break from loop instead of unwrapping
+  * image-copy: Do not panic on `ImageCaptureSourceKind::Destroyed`
+  * i18n: translation updates from weblate
+  * ci: Make sure we lint and test all features
+  * chore: Fix remaining clippy lints
+  * i18n: translation updates from weblate
+  * Partially revert "x11: stop remapping minimized windows on restore"
+  * i18n: translation updates from weblate
+  * chore: update libcosmic
+  * refactor: use `jiff` instead of `time`
+  * chore: clippy
+  * ci: add clippy
+  * chore: remove unneeded dependencies
+  * image-copy: Store offscreen buffer for shm capture in session
+  * Update `smithay`
+  * image-copy: Always use `GlesRenderbuffer` in `render_session`
+  * Move some trait bounds to definition of `AsGlowRenderer`
+  * image-copy/render: Pass `age` to `render_output` for shm buffer too
+  * fix(headerbar): double click handling & resize only on press
+  * fix: Ellipsize tab_text and use text widget instead of custom impl
+  * fix: update test
+  * chore: refactor iced utils into shared module
+  * chore: update deps
+  * fix: iced widget event handling
+  * fix: text position in stack
+  * wip: cosmic-randr-shell empty serial number for now
+  * chore: updates after iced rebase
+  * Revert "image-copy/render: Pass `age` to `render_output` for shm buffer too"
+  * Revert "Move some trait bounds to definition of `AsGlowRenderer`"
+  * Revert "image-copy: Always use `GlesRenderbuffer` in `render_session`"
+  * image-copy: Always use `GlesRenderbuffer` in `render_session`
+  * Move some trait bounds to definition of `AsGlowRenderer`
+  * x11: fix fractional scaling when fract is 0.75
+  * image-copy/render: Pass `age` to `render_output` for shm buffer too
+  * x11: stop remapping minimized windows on restore
+  * feat(input): bind XF86LaunchA to workspace overview
+  * feat: add --no-xwayland argument for running without Xwayland
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
 Tue Feb 24 20:13:17 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:
