@@ -23,6 +23,8 @@ Summary:        Configuration utility for nl80211 based wireless drivers
 License:        ISC
 URL:            https://wireless.wiki.kernel.org/en/users/documentation/iw
 Source:         https://mirrors.edge.kernel.org/pub/software/network/iw/iw-%{version}.tar.xz
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libnl-3.0)
 

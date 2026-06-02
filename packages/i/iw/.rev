@@ -357,4 +357,12 @@ Look at the license file in the sources (forwarded request 143986 from babelworx
     <comment></comment>
     <requestid>1347961</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>7e8748f6a4c1b42d6da1ab9b514f383e</srcmd5>
+    <version>6.17</version>
+    <time>1780408891</time>
+    <user>anag_factory</user>
+    <comment>Add explicit gcc and make BuildRequires</comment>
+    <requestid>1356408</requestid>
+  </revision>
 </revisionlist>

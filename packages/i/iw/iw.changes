@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  1 15:57:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add the explicit gcc and make BuildRequires
+
+-------------------------------------------------------------------
 Sat Apr 18 12:28:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 6.17:
