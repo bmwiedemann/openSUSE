@@ -39,6 +39,7 @@ Patch0:         qpid-proton-openssl-3.0.0.patch
 # PATCH-FIX-OPENSUSE qpid-pythonbuild.patch -- disable compiling with wrong interpreter
 Patch1:         qpid-pythonbuild.patch
 Patch2:         qpid-proton-fix_linking.patch
+Patch3:         gcc16.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}

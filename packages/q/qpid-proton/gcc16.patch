@@ -1,0 +1,12 @@
+Index: qpid-proton-0.38.0/cpp/examples/flow_control.cpp
+===================================================================
+--- qpid-proton-0.38.0.orig/cpp/examples/flow_control.cpp
++++ qpid-proton-0.38.0/cpp/examples/flow_control.cpp
+@@ -63,6 +63,7 @@ class flow_sender : public proton::messa
+ 
+     void send_available_messages(proton::sender &s) {
+         for (int i = sequence; available && s.credit() > 0; i++) {
++            (void)i;
+             std::ostringstream mbody;
+             mbody << "flow_sender message " << sequence++;
+             proton::message m(mbody.str());

@@ -231,4 +231,12 @@
     <comment></comment>
     <requestid>1355799</requestid>
   </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>c932ab05f89c5b7576a641850a913865</srcmd5>
+    <version>0.38.0</version>
+    <time>1780408887</time>
+    <user>anag_factory</user>
+    <comment>Fix build with gcc16</comment>
+    <requestid>1356389</requestid>
+  </revision>
 </revisionlist>
