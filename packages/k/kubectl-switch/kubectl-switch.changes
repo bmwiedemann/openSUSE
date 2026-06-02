@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 02 04:40:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.20:
+  * Bug Fixes
+    - c757c38: fix(go): update charm.land/bubbletea/v2 ( v2.0.6 →
+      v2.0.7 ) (@mr-borboto[bot])
+  * CI/CD
+    - a88df7e: ci(github-action): update
+      actions/create-github-app-token ( v3.1.1 → v3.2.0 )
+      (@mr-borboto[bot])
+    - 07d6641: ci(github-action): update docker/login-action (
+      v4.1.0 → v4.2.0 ) (@mr-borboto[bot])
+  * Chores
+    - b4fe013: chore(mise): update aqua:goreleaser/goreleaser (
+      2.15.4 → 2.16.0 ) (@mr-borboto[bot])
+
+-------------------------------------------------------------------
 Fri May 15 06:46:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.19:
