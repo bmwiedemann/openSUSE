@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  2 12:38:40 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to 0.21.02:
+  * New stressors
+    * eth-sniff - simple ethernet packet sniffer stressor
+  * Notable Bug fixes
+    * stress-rofs: fix Cygwin SIGSEGV issue
+    * stress-str: fix index underflow on strncmp
+    * stress-ng: fix ionice-level upper limit to 7
+  * New options
+    * --hdd-sleep - specify number of seconds between read/write cycles
+    * --numacopy-affinity - set CPU affinity relative to NUMA nodes
+    * --pipe-readers - specify number of pipe reader processes for pipe stressor
+    * --pipe-writers - specify number of pipe writer processes for pipe stressor
+
+-------------------------------------------------------------------
 Fri May  1 11:00:57 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to 0.21.01:
