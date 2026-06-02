@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  2 04:17:12 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.6
+  * Unrolled the integer-part digit scan (straight-line for the
+    common 1-5 digit case).
+  * Added a 4-digit SWAR follow-up to loop_parse_if_eight_digits.
+  * Parallelized the exhaustive float32 sweeps across hardware
+    threads.
+
+-------------------------------------------------------------------
 Fri May 15 02:44:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.2.5
