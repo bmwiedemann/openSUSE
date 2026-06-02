@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun  2 10:50:31 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.3.0
+
+- Update to 1.3.0
+  * New features:
+    - SFTP: Added compatibility flag to ignore unknown bits in
+      flags field of File Attributes
+  * Bugfixes and minor changes:
+    - Added extra padding to SSH_MSG_USERAUTH requests to obfuscate
+      the combined length of username and password
+    - Fixed some issues when importing malformed private keys
+    - Improved heuristic to decide on log level if an SSH connection
+      unexpectedly closes
+    - Diffie-Hellman Group Exchange: Check that modulus of received group
+      is a safe prime and that the subgroup is of the correct order
+    - Added additional checks for trailing data in incoming packets
+- Changes from 1.2.1
+  * New features:
+    - Added compatibility flag to allow use of agent keys of unknown type
+  * Bugfixes and minor changes:
+    - Use a two-step approach to extract names from SSH_FXP_NAME packet:
+      If the name blob can be extracted, but the string fails the sanity check,
+      ignore the item with the invalid name
+    - Handle SSH_FXP_STATUS with missing description and language tag,
+      but complain loudly
+    - Support building with Nettle version 4
+
+-------------------------------------------------------------------
 Mon May  4 10:12:26 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.2.0
 
 - Update to 1.2.0
