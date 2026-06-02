@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 02 04:33:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.52.0:
+  * feat(pipelines/xcover): add include-functions (#2551)
+
+-------------------------------------------------------------------
 Mon Jun 01 05:19:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.51.0:
