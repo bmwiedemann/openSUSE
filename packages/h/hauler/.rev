@@ -319,4 +319,14 @@
     <comment>- update x/net to v0.55.0 (bsc#1266602, CVE-2026-39821)</comment>
     <requestid>1355481</requestid>
   </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>064c926c82d52d964e76cb32d14f7362</srcmd5>
+    <version>1.4.3</version>
+    <time>1780422441</time>
+    <user>anag_factory</user>
+    <comment>- update x/net to v0.55.0 (bsc#1266602, CVE-2026-39821,
+     bsc#1267150, CVE-2026-25680, CVE-2026-42502, CVE-2026-27136,
+     CVE-2026-25681, CVE-2026-42506)</comment>
+    <requestid>1356746</requestid>
+  </revision>
 </revisionlist>
