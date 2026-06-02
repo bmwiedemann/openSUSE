@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Tue Jun 02 04:35:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.53.0:
+  * Welcome to the v0.53.0 of Inspektor Gadget. These are the most
+    important changes:
+    - Add new gadget trace_link by @burak-ok in #5317
+    - ustack,ebpf,symbolizer: remove [N] prefix from stack symbols
+      and show binary+offset by @alban in #5527
+    - go.mod: update otel-ebpf-profiler to ig branch based on
+      v0.0.202610 (Python 3.13 TLS support) by @alban in #5488
+  * Breaking Changes
+    - cmd: Add --tls-insecure to ig daemon. by @eiffel-fl in #5484
+  * General Improvements
+    - Artifact Hub: Update gadgets version to v0.52.0 by
+      @github-actions[bot] in #5491
+    - gadgets/trace_capabilities: reduce current_syscall map size
+      from 1M to 10K by @matthyx in #5468
+    - Use Go 1.26.3 for CI and container builds by @Copilot in
+      #5519
+    - go.mod: update otel-ebpf-profiler to ig branch based on
+      v0.0.202610 (Python 3.13 TLS support) by @alban in #5488
+    - ustack,ebpf,symbolizer: remove [N] prefix from stack symbols
+      and show binary+offset by @alban in #5527
+    - pkg/oci: Use Lock in newLocalOciStore by @burak-ok in #5540
+    - go.mod: update opentelemetry-ebpf-profiler by @alban in #5538
+    - Add new gadget trace_link by @burak-ok in #5317
+  * Security Improvements
+    - secureopen: Add O_CLOEXEC flag to O_PATH openat2 call by
+      @alban in #5508
+  * Bug Fixes
+    - fix(bpfstats): reset method to MethodNone after
+      DisableBPFStats to av… by @tushar743-ui in #5450
+    - Account for lost samples in gadget_output_buf() by @Sefi4 in
+      #5513
+    - fix: trimmed gadget to the right by @ask-elad in #5528
+    - gadgets/top_cuda_memory: Fix implicit free on thread exit by
+      @burak-ok in #5492
+  * Documentation Improvements
+    - Add missing docs symlink for top_cuda_memory by @Copilot in
+      #5520
+  * Dependencies updates
+    - ci: bump github/codeql-action from 4.35.2 to 4.35.3 by
+      @dependabot[bot] in #5489
+    - Dockerfiles: bump debian from f9c6a2f to 67b30a6 in
+      /Dockerfiles by @dependabot[bot] in #5498
+    - ci: bump actions/dependency-review-action from 4.9.0 to 5.0.0
+      by @dependabot[bot] in #5497
+    - go: bump the golang-x group across 2 directories with 4
+      updates by @dependabot[bot] in #5499
+    - ci: bump github/codeql-action from 4.35.3 to 4.35.4 by
+      @dependabot[bot] in #5496
+    - ci: bump aquasecurity/trivy-action from 0.35.0 to 0.36.0 by
+      @dependabot[bot] in #5480
+    - go: bump github.com/in-toto/attestation from 1.1.2 to 1.2.0
+      by @dependabot[bot] in #5397
+    - ci: bump softprops/action-gh-release from 2.6.1 to 3.0.0 by
+      @dependabot[bot] in #5437
+    - ci: bump actions/setup-node from 6.3.0 to 6.4.0 by
+      @dependabot[bot] in #5457
+    - ci: bump zizmorcore/zizmor-action from 0.5.3 to 0.5.6 by
+      @dependabot[bot] in #5516
+    - ci: bump sigstore/cosign-installer from 4.1.1 to 4.1.2 by
+      @dependabot[bot] in #5518
+    - ci: bump benchmark-action/github-action-benchmark from 1.22.0
+      to 1.22.1 by @dependabot[bot] in #5517
+    - ci: bump github/codeql-action from 4.35.4 to 4.35.5 by
+      @dependabot[bot] in #5514
+    - ci: bump aws-actions/configure-aws-credentials from 6.1.0 to
+      6.1.1 by @dependabot[bot] in #5515
+    - go: bump github.com/docker/cli from 29.4.1+incompatible to
+      29.5.2+incompatible in the docker group across 1 directory by
+      @dependabot[bot] in #5526
+    - Dockerfiles: bump debian from 67b30a6 to 0104b33 in
+      /Dockerfiles by @dependabot[bot] in #5525
+    - go: bump github.com/containerd/containerd from 1.7.30 to
+      1.7.32 in /examples by @dependabot[bot] in #5530
+    - go: bump github.com/containerd/containerd from 1.7.30 to
+      1.7.32 by @dependabot[bot] in #5529
+    - go: bump the golang-x group across 2 directories with 2
+      updates by @dependabot[bot] in #5536
+    - ci: bump docker/setup-buildx-action from 4.0.0 to 4.1.0 by
+      @dependabot[bot] in #5533
+    - ci: bump github/codeql-action from 4.35.5 to 4.36.0 by
+      @dependabot[bot] in #5531
+    - ci: bump docker/build-push-action from 7.1.0 to 7.2.0 by
+      @dependabot[bot] in #5535
+    - ci: bump golangci/golangci-lint-action from 9.2.0 to 9.2.1 by
+      @dependabot[bot] in #5532
+    - ci: bump docker/login-action from 4.1.0 to 4.2.0 by
+      @dependabot[bot] in #5534
+    - go: bump the aws-sdk group across 1 directory with 3 updates
+      by @dependabot[bot] in #5543
+    - ci: bump docker/setup-qemu-action from 4.0.0 to 4.1.0 by
+      @dependabot[bot] in #5545
+    - ci: bump aws-actions/configure-aws-credentials from 6.1.1 to
+      6.1.3 by @dependabot[bot] in #5544
+
+-------------------------------------------------------------------
 Mon May 04 16:44:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.52.0:
