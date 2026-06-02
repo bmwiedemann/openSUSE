@@ -18,7 +18,7 @@
 
 %define         appid com.system76.CosmicStore
 Name:           cosmic-store
-Version:        1.0.8
+Version:        1.0.14
 Release:        0
 Summary:        COSMIC app store
 License:        GPL-3.0-only

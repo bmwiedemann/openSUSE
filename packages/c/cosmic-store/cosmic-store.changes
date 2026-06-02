@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Jun 01 13:29:16 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * Epoch 1.0.14 version update
+  * i18n: translation updates from weblate
+  * backend: Add a rudimentary `rpm-ostree` backend
+  * Epoch 1.0.13 version update
+  * i18n: translation updates from weblate
+  * Epoch 1.0.12 version update
+  * fix: force cache update when checking for updates
+  * chore: update dependencies
+  * chore: clippy
+  * refactor(packagekit): update `packagekit-zbus`
+  * Epoch 1.0.11 version update
+
+-------------------------------------------------------------------
+Sat Apr 18 16:00:01 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * i18n: translation updates from weblate
+  * chore: update libcosmic after reexports were removed
+  * perf: abortable tasks and spinner check improvements
+  * fix: show spinner while operations pending / clear waiting_{updates,installed}
+  * feat: add spinner when updating backends
+  * perf: unnecessary use of `Task` and `tokio::task::spawn_blocking` for launching applet settings
+  * perf: use `rayon::spawn` for saving explore results
+  * perf: delay `App::update_apps` 300ms to allow cached backends to load
+  * fix: remove backends from waiting_{installed,updates} separately
+  * fix: do not force refresh appstream cache on app init
+  * fix: do not force refresh appstream cache on lack of pending updates
+  * perf(flatpak): parallel reload of appstream cache
+  * feat: filter installed/updateable packages for each backend separately
+  * fix: concurrently fetch and add backends
+
+-------------------------------------------------------------------
+Sun Apr 12 16:14:21 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * Epoch 1.0.9 version update
+  * fix: spawn desktop apps on a separate thread with its own tokio runtime
+  * feat: use libcosmic to open applications w/ GPU & terminal pref
+  * feat: rebase libcosmic onto iced 0.14
+  * i18n: translation updates from weblate
+  * improv: remove `packagekit` from default features (#502)
+  * Merge pull request #503 from FreddyFunk/feat/mouse-back-button-navigation
+  * docs: Add QA testing checklist
+  * Apply cargo fmt to search.rs
+  * Extract update/message handling into update module
+  * Extract view rendering into view module
+  * Extract types, enums, and helpers into nav, explore, search modules
+
+-------------------------------------------------------------------
 Tue Feb 24 20:56:13 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:
