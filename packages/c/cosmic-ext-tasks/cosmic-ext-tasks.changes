@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 01 18:52:45 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 0.2.4:
+  * v0.2.4
+  * feat: add manual task sorting with drag-and-drop
+  * feat: add reminder support with desktop notifications
+  * Update Swedish translations
+  * chore: update screenshots
+  * v0.2.3
+  * fix: remove hardcoded font sizes
+  * fix: show list name in delete confirmation
+  * feat: add persistent sorting
+  * feat: make favorites nav item optional
+
+-------------------------------------------------------------------
 Wed Feb 25 19:38:35 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.2.0+15:
