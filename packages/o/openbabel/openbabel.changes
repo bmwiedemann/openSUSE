@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jun  1 19:49:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.2.0:
+  * Add an L-BFGS optimizer, used by default for gen3d and
+    conformer searches
+  * New macrocycle ring builder (Dale codes) for better initial
+    3D geometry of large rings
+  * Add KET (Ketcher JSON) and ChemicalJSON (.cjson) format
+    support
+  * Drop Python 2 support; Python 3.13 supported
+  * Faster, vectorized distance-geometry implementation
+  * Full CMake 4 compatibility and modernized build
+  * Backwards compatible with 3.0 and 3.1
+  * Fix many crash and memory-safety bugs found via OSS-Fuzz
+    and TALOS, including the following security issues:
+    CVE-2022-37331, CVE-2022-41793, CVE-2022-42885,
+    CVE-2022-43467, CVE-2022-43607, CVE-2022-44451,
+    CVE-2022-46280, CVE-2022-46289, CVE-2022-46290,
+    CVE-2022-46291, CVE-2022-46292, CVE-2022-46294,
+    CVE-2022-46295, CVE-2025-10994, CVE-2025-10995,
+    CVE-2025-10996, CVE-2025-10997, CVE-2025-10998,
+    CVE-2025-10999, CVE-2025-11000, CVE-2026-2704,
+    CVE-2026-2705 and CVE-2026-3408
+- Shared library soname bumped to libopenbabel8 (SOVERSION 8)
+- Drop patches now fixed upstream:
+  * openbabel-3.1.1-test-python3-escape-chars.patch
+  * openbabel-3.1.1-test-python3-imports.patch
+  * openbabel-3.1.1-version-number.patch
+  * openbabel-3.1.1-gcc-12.patch
+  * openbabel-3.1.1-std-binary-function.patch
+  * openbabel-3.1.1-std-bind1st.patch
+  * openbabel-3.1.1-std-bind2nd.patch
+  * openbabel-cmake-4.patch
+  * openbabel-cmake-4-exports.patch
+
+-------------------------------------------------------------------
 Wed Jul  9 19:30:12 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Until upstream provides fixed code, disable test_align_{4,5},

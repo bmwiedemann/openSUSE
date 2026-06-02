@@ -358,4 +358,12 @@
     <comment></comment>
     <requestid>1295624</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>86084b7af5e122a7819e5002a8dd2717</srcmd5>
+    <version>3.2.0</version>
+    <time>1780408967</time>
+    <user>anag_factory</user>
+    <comment>Update to version 3.2.0: new formats (KET, cjson), L-BFGS optimizer, Python 3.13, CMake 4 compat, soname libopenbabel8, 23 CVE fixes; drop 9 now-upstreamed patches</comment>
+    <requestid>1356445</requestid>
+  </revision>
 </revisionlist>

@@ -16,53 +16,30 @@
 #
 
 
+# Upstream version is "openbabel-major-minor-patch" instead of "major.minor.patch"
+%define upstream_version openbabel-3-2-0
+# The major ABI version of the shared library
+%define abiver 8
 # Allow disabling maestro (.mae) file support (enabled by default)
 %bcond_without maestro
-
 # Allow disabling GUI build (enabled by default)
 %bcond_without gui
-
-# Upstream version is "openbabel-major-minor-patch" instead of "major.minor.patch"
-%define upstream_version openbabel-3-1-1
-
-# The major ABI version of the shared library
-%define abiver 7
-
 Name:           openbabel
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        A chemistry toolbox
 License:        GPL-2.0-only
-Group:          Development/Libraries/C and C++
 URL:            https://openbabel.org
 Source0:        https://github.com/openbabel/openbabel/archive/%{upstream_version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM openbabel-3.1.1-test-python3-escape-chars.patch -- Fix test failure with python3 (gh#openbabel/openbabel#2217)
-Patch0:         openbabel-3.1.1-test-python3-escape-chars.patch
-# PATCH-FIX-UPSTREAM openbabel-3.1.1-test-python3-imports.patch -- Fix ImportError in python3 tests (gh#openbabel/openbabel!2378)
-Patch1:         openbabel-3.1.1-test-python3-imports.patch
-# PATCH-FIX-UPSTREAM openbabel-3.1.1-version-number.patch -- Fix version number
-Patch2:         openbabel-3.1.1-version-number.patch
-# PATCH-FIX-UPSTREAM openbabel-3.1.1-gcc-12.patch -- Fix build with GCC 12 (gh#openbabel/openbabel!2493)
-Patch3:         openbabel-3.1.1-gcc-12.patch
 # PATCH-FIX-UPSTREAM openbabel-3.1.1-wx-stl-compat.patch -- Fix build with wxWidgets using STL (gh#openbabel/openbabel!2527)
-Patch4:         openbabel-3.1.1-wx-stl-compat.patch
-# PATCH-FIX-UPSTREAM openbabel-3.1.1-std-binary-function.patch -- part of github.com/openbabel/openbabel/pull/2464
-Patch5:         openbabel-3.1.1-std-binary-function.patch
-# PATCH-FIX-UPSTREAM openbabel-3.1.1-std-bind1st.patch -- github.com/openbabel/openbabel/pull/2001
-Patch6:         openbabel-3.1.1-std-bind1st.patch
-# PATCH-FIX-UPSTREAM openbabel-3.1.1-std-bind2nd.patch -- github.com/openbabel/openbabel/pull/2569
-Patch7:         openbabel-3.1.1-std-bind2nd.patch
-# PATCH-FIX-UPSTREAM openbabel-cmake-4.patch -- github.com/openbabel/openbabel/pull/2784
-Patch8:         openbabel-cmake-4.patch
-# ensure previous cmake behaviour to fix test failures
-Patch9:         openbabel-cmake-4-exports.patch
+Patch0:         openbabel-3.1.1-wx-stl-compat.patch
 BuildRequires:  cmake >= 3.1
 BuildRequires:  gcc-c++
 BuildRequires:  inchi-devel >= 1.04
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  swig >= 2.0
 BuildRequires:  python3-setuptools
+BuildRequires:  swig >= 2.0
 BuildRequires:  pkgconfig(RapidJSON) >= 1.1.0
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(eigen3) >= 2.91.0
@@ -91,7 +68,6 @@ software.
 %if %{with gui}
 %package gui
 Summary:        Graphical User Interface for Open Babel, a chemical toolbox
-Group:          Productivity/Scientific/Chemistry
 
 %description gui
 Open Babel is a chemical toolbox understanding many formats of
@@ -104,7 +80,6 @@ This package contains a graphical interface for Open Babel.
 
 %package -n libopenbabel%{abiver}
 Summary:        Component library of Open Babel, a chemistry toolbox
-Group:          System/Libraries
 
 %description -n libopenbabel%{abiver}
 Open Babel is a chemical toolbox understanding many formats of
@@ -116,7 +91,6 @@ This package contains the shared library of Open Babel.
 
 %package -n python3-openbabel
 Summary:        Python bindings for Open Babel, a chemistry toolbox
-Group:          Productivity/Scientific/Chemistry
 
 %description -n python3-openbabel
 Open Babel is a chemical toolbox understanding many formats of
@@ -128,7 +102,6 @@ This package contains the Python bindings of Open Babel.
 
 %package devel
 Summary:        Development files for Open Babel
-Group:          Development/Libraries/C and C++
 Requires:       libopenbabel%{abiver} = %{version}
 Requires:       pkgconfig(zlib)
 Provides:       libopenbabel-devel = %{version}
