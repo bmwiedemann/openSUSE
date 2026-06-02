@@ -5054,4 +5054,14 @@ a previous changelog entry.
     https://libvirt.org/news.html#v12-3-0-2026-05-02</comment>
     <requestid>1350868</requestid>
   </revision>
+  <revision rev="440" vrev="1">
+    <srcmd5>a69a5897f3b71b850b3fca06d215a18e</srcmd5>
+    <version>12.4.0</version>
+    <time>1780422407</time>
+    <user>anag_factory</user>
+    <comment>- Update to libvirt 12.4.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-4-0-2026-06-01</comment>
+    <requestid>1356453</requestid>
+  </revision>
 </revisionlist>

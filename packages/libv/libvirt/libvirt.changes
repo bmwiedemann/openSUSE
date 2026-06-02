@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  1 16:46:54 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 12.4.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-4-0-2026-06-01
+
+-------------------------------------------------------------------
 Mon May  4 17:17:38 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 12.3.0
