@@ -1,0 +1,24 @@
+Index: benchmark-1.9.5/test/basic_test.cc
+===================================================================
+--- benchmark-1.9.5.orig/test/basic_test.cc
++++ benchmark-1.9.5/test/basic_test.cc
+@@ -147,7 +147,7 @@ BENCHMARK(BM_RangedFor);
+ template <typename T>
+ void BM_OneTemplateFunc(benchmark::State& state) {
+   auto arg = state.range(0);
+-  T sum = 0;
++  BENCHMARK_UNUSED T sum = 0;
+   for (auto _ : state) {
+     sum += static_cast<T>(arg);
+   }
+@@ -158,8 +158,8 @@ BENCHMARK(BM_OneTemplateFunc<double>)->A
+ template <typename A, typename B>
+ void BM_TwoTemplateFunc(benchmark::State& state) {
+   auto arg = state.range(0);
+-  A sum = 0;
+-  B prod = 1;
++  BENCHMARK_UNUSED A sum = 0;
++  BENCHMARK_UNUSED B prod = 1;
+   for (auto _ : state) {
+     sum += static_cast<A>(arg);
+     prod *= static_cast<B>(arg);

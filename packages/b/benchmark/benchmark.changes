@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  1 10:09:28 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Add gcc16.patch to fix the broken build with GCC 16 
+
+-------------------------------------------------------------------
 Thu Feb 26 14:23:56 UTC 2026 - ecsos@opensuse.org
 
 - Update to version 1.9.5:

@@ -25,6 +25,7 @@ Summary:        A microbenchmark support library
 License:        Apache-2.0
 URL:            https://github.com/google/benchmark
 Source:         %{name}-%{version}.tar.gz
+Patch0:         gcc16.patch
 BuildRequires:  cmake >= 3.5.1
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
@@ -49,7 +50,7 @@ Requires:       %{soname}%{sover} = %{version}
 Development files for google benchmark library
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 sed -e 's|lib_install_dir "lib/"|lib_install_dir "%{_libdir}/"|g' \
