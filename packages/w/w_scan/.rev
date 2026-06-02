@@ -32,4 +32,12 @@
     <comment></comment>
     <requestid>1247572</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>e6b69bc18a7e8ef51604327a321055c6</srcmd5>
+    <version>20170107</version>
+    <time>1780408941</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: add gcc+make BRs, drop Group</comment>
+    <requestid>1356430</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  1 18:02:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec cleanup:
+  * Add the explicit gcc and make BuildRequires
+  * Drop obsolete Group tag
+
+-------------------------------------------------------------------
 Thu Feb 20 10:33:30 UTC 2025 - pgajdos@suse.com
 
 - added patches

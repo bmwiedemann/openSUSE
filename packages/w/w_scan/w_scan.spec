@@ -1,7 +1,7 @@
 #
 # spec file for package w_scan
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,13 @@ Version:        20170107
 Release:        0
 Summary:        Tool for scanning DVB transponders
 License:        GPL-2.0-only
-Group:          Hardware/TV
 URL:            http://wirbel.htpc-forum.de/w_scan/index2.html
 Source0:        http://wirbel.htpc-forum.de/w_scan/w_scan-%{version}.tar.bz2
 # build with gcc 15
 Patch0:         w_scan-gcc15.patch
+BuildRequires:  gcc
 BuildRequires:  linux-kernel-headers
+BuildRequires:  make
 
 %description
 w_scan is a small command line utility used to perform frequency scans for
