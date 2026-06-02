@@ -7,8 +7,8 @@
     <param name="exclude">.github</param>
     <param name="exclude">scripts</param>
     <param name="exclude">snap</param>
-    <param name="revision">refs/tags/2.0.0-beta1</param>
-    <param name="version">2.0.0b1</param>
+    <param name="revision">refs/tags/2.0.0-beta2</param>
+    <param name="version">2.0.0b2</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="manual">

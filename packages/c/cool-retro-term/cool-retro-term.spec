@@ -18,7 +18,7 @@
 
 
 Name:           cool-retro-term
-Version:        2.0.0b1
+Version:        2.0.0b2
 Release:        0
 Summary:        Terminal emulator which mimics old screens
 License:        GPL-3.0-or-later

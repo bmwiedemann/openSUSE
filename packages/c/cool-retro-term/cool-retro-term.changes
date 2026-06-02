@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 01 19:03:25 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 2.0.0b2:
+  * use working directory instead of home directory by default (#929)
+  * feat: tab management shortcuts (#915)
+  * Tentative fix for resize crash (#937)
+  * Fix fullscreen menu not added on linux
+  * Add missing lineSpacing setting to composeProfileObject() (#947)
+  * Load fontName after fontSource in loadProfileString() (#948)
+  * Replace workflows with a single one which is triggered on tags
+  * Update qmltermwidget submodule
+
+-------------------------------------------------------------------
 Fri Jan 30 03:44:06 UTC 2026 - Avindra Goolcharan <aavindraa@gmail.com>
 
 - Update to version 2.0.0b1:
