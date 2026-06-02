@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jun 01 12:20:59 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * i18n: translation updates from weblate
+  * fix(context-menu): Cannot move applications to Library Home via right-click menu
+  * fix(libcosmic): fork-exec fix for desktop entry spawning
+  * chore: update libcosmic
+  * feat: reorder groups
+  * i18n: translation updates from weblate
+  * build: update changelog to 1.0.12
+  * chore: add zed editor LSP config
+  * chore: apply rustfmt config and fix clippy lints
+  * build: update MSRV to Rust 1.93
+  * fix: support xpm icons
+  * chore: update libcosmic to fix .ico, .xpm missing icons
+  * chore: update libcosmic
+  * Revert "chore: disable wgpu"
+
+-------------------------------------------------------------------
+Sat Apr 18 10:57:47 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * chore: update libcosmic
+  * fix: set fixed height for window to avoid shrinking
+  * Revert "fix: spacer to ensure scrollable area is consistent"
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sun Apr 12 15:04:52 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * fix: spacer to ensure scrollable area is consistent
+  * i18n: translation updates from weblate
+  * chore: update libcosmic
+  * chore: update deps
+  * chore: update deps
+  * chore: updates after iced rebase
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
 Tue Feb 24 20:08:57 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.8:
