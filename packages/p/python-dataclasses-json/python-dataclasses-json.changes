@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  2 16:37:49 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add support-marshmallow-4.patch (boo#1266046)
+  * Fix tests with marshmallow 4 changes.
+
+-------------------------------------------------------------------
 Thu Nov 13 04:09:54 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python314.patch:

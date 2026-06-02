@@ -47,4 +47,13 @@
   * Support Python 3.14 annotation changes.</comment>
     <requestid>1317475</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>021cb372f054884019f7cd74398782b5</srcmd5>
+    <version>0.6.7</version>
+    <time>1780422872</time>
+    <user>anag_factory</user>
+    <comment>- Add support-marshmallow-4.patch (boo#1266046)
+  * Fix tests with marshmallow 4 changes.</comment>
+    <requestid>1356785</requestid>
+  </revision>
 </revisionlist>

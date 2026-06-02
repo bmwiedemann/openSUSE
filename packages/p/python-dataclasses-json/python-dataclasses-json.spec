@@ -1,7 +1,7 @@
 #
 # spec file for package python-dataclasses-json
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source:         https://github.com/lidatong/dataclasses-json/archive/refs/tags/v
 Patch0:         support-poetry-core-2.patch
 # PATCH-FIX-UPSTREAM gh#lidatong/dataclasses-json#565/commits/20799887ff1d50dc6ca5d90bc1038ff5160b97f3
 Patch1:         support-python314.patch
+# PATCH-FIX-UPSTREAM gh#lidatong/dataclasses-json#577
+Patch2:         support-marshmallow-4.patch
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module marshmallow}
 BuildRequires:  %{python_module mypy}
