@@ -18,7 +18,7 @@
 
 %define         appid dev.edfloreshz.CosmicTweaks
 Name:           cosmic-ext-tweaks
-Version:        0.2.0+49
+Version:        0.2.2
 Release:        0
 Summary:        A tweaking tool for the COSMIC DE
 License:        GPL-3.0-only
