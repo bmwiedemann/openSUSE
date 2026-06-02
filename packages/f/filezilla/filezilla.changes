@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  2 10:37:22 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.70.5
+
+- Update to 3.70.5
+  * Fixed vulnerabilities:
+    - Official binaries are now linked against GnuTLS 3.8.13
+  * New features:
+    - SFTP: Added a page with compatibility flags to the Site Manager
+  * Bugfixes and minor changes:
+    - SFTP: Updated to fzssh 1.2.1 to ignore items with invalid names
+      directory listings instead of failing listings completely
+    - SFTP: Fixed issue where some items were reported with the
+      wrong type depending on server capabilities
+    - SFTP: If keyboard-interactive authentication fails,
+      automatically start a new authentication attempt
+
+-------------------------------------------------------------------
 Mon May  4 09:58:46 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.70.4
 
 - Update to 3.70.4
