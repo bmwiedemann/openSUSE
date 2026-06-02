@@ -90,4 +90,12 @@
     <comment></comment>
     <requestid>1030286</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1cbe82c53fe71005d25a922e64cb30c9</srcmd5>
+    <version>2.3.1</version>
+    <time>1780408909</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: use %autosetup and %make_build, add explicit gcc+make BuildRequires, drop obsolete Group tag</comment>
+    <requestid>1356406</requestid>
+  </revision>
 </revisionlist>

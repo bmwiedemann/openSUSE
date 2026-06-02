@@ -1,7 +1,7 @@
 #
 # spec file for package iucode-tool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,12 @@ Version:        2.3.1
 Release:        0
 Summary:        A program to manipulate Intel microcode update collections
 License:        GPL-2.0-only
-Group:          System/Boot
 URL:            https://gitlab.com/iucode-tool/iucode-tool
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc
+BuildRequires:  make
 ExclusiveArch:  %{ix86} x86_64
 
 %description
@@ -34,12 +35,12 @@ Intel i686 and X86-64 system processors, and prepare them for use by the
 Linux kernel.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -48,6 +49,6 @@ make %{?_smp_mflags}
 %license COPYING
 %doc README
 %{_sbindir}/iucode_tool
-%{_mandir}/man8/iucode_tool.8%{ext_man}
+%{_mandir}/man8/iucode_tool.8%{?ext_man}
 
 %changelog
