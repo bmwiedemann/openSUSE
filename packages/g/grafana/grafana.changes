@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun  2 10:30:52 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 11.6.14+security-04:
+  Security:
+  * CVE-2026-28374: Fix insecure direct object reference in
+    Annotations API (bsc#1265290)
+  * CVE-2026-28376: Fix unbounded memory allocation in Grafana Live
+    push endpoint (bsc#1265289)
+  * CVE-2026-28383: Fix unbounded memory allocation in Grafana
+    plugin resources (bsc#1265286)
+  * CVE-2026-28380: Fix broken access control in Snapshot API
+    (bsc#1265287)
+  * CVE-2026-33376: Fix Auth Proxy IPv6 whitelist bypass
+    (bsc#1265285)
+  * CVE-2026-28379: Fix viewer-triggered race condition in
+    Grafana Live (bsc#1265288)
+  * CVE-2026-33377: Fix dashboard Editor Privilege Escalation
+    (bsc#1265284)
+  * CVE-2026-33378: Fix OOM exception in Grafana Data Source Plugin
+    (bsc#1265283)
+  * CVE-2026-33381: Prevent users from generating Service Account
+    tokens after permissions removal (bsc#1265281)
+  * CVE-2026-33380: Fix vulnerability in SQL Expressions allowing
+    an authenticated attacker to read arbitrary files from the
+    Grafana server’s filesystem (bsc#1265282)
+
+-------------------------------------------------------------------
 Mon May  4 14:29:36 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2026-41602: Fix Integer Overflow or Wraparound vulnerability

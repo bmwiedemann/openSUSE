@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        11.6.14+security01
+Version:        11.6.14+security04
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        AGPL-3.0-only
