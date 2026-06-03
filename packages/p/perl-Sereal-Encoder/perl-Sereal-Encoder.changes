@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 21 10:05:38 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.6.0 (5.006)
+   see /usr/share/doc/packages/perl-Sereal-Encoder/Changes
+
+  5.006
+      * Use miniz 3.1.1
+      * Avoid deprecated ZSTD api.
+      * Tidy and regen.
+
+  5.005
+      * Update spec to document changes from version 5
+      * Security fixes in decoder.
+
+  5.004_001
+      * Update Zstd to 1.5.7, and other changes.
+      * Thanks to Marco Fontani, Ricardo Signes, and James Rouzier
+
+-------------------------------------------------------------------
 Thu Apr 20 03:10:18 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.004

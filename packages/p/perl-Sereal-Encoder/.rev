@@ -119,4 +119,23 @@
     <comment></comment>
     <requestid>1083299</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bdf67967d19711ea23f8fa17df309d26</srcmd5>
+    <version>5.6.0</version>
+    <time>1780510926</time>
+    <user>anag_factory</user>
+    <comment>- updated to 5.6.0 (5.006)
+   see /usr/share/doc/packages/perl-Sereal-Encoder/Changes
+  5.006
+      * Use miniz 3.1.1
+      * Avoid deprecated ZSTD api.
+      * Tidy and regen.
+  5.005
+      * Update spec to document changes from version 5
+      * Security fixes in decoder.
+  5.004_001
+      * Update Zstd to 1.5.7, and other changes.
+      * Thanks to Marco Fontani, Ricardo Signes, and James Rouzier</comment>
+    <requestid>1356777</requestid>
+  </revision>
 </revisionlist>

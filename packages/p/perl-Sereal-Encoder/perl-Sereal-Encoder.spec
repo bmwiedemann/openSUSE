@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sereal-Encoder
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,31 @@
 
 %define cpan_name Sereal-Encoder
 Name:           perl-Sereal-Encoder
-Version:        5.004
+Version:        5.6.0
 Release:        0
+# 5.006 -> normalize -> 5.6.0
+%define cpan_version 5.006
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Binary serialization module for Perl (encoder part)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Devel::CheckLib) >= 1.160
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.0
 BuildRequires:  perl(ExtUtils::ParseXS) >= 2.21
-BuildRequires:  perl(Sereal::Decoder) >= 5.004
+BuildRequires:  perl(Sereal::Decoder) >= 5.6
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::LongString)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
-Requires:       perl(Sereal::Decoder) >= 5.004
+Requires:       perl(Sereal::Decoder) >= 5.6
+Provides:       perl(Sereal::Encoder) = %{version}
+Provides:       perl(Sereal::Encoder::Constants) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -47,7 +54,7 @@ greatly about performance, consider reading the Sereal::Performance
 documentation after finishing this document.
 
 The Sereal protocol version emitted by this encoder implementation is
-currently protocol version 4 by default.
+currently protocol version 5 by default.
 
 The protocol specification and many other bits of documentation can be
 found in the github repository. Right now, the specification is at
@@ -60,9 +67,9 @@ information on getting the best performance out of Sereal, have a look at
 the "PERFORMANCE" section below.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
