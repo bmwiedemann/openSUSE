@@ -354,4 +354,16 @@
     <comment></comment>
     <requestid>1320845</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6a830e03ee00a6800149a576e7458250</srcmd5>
+    <version>1.10.2</version>
+    <time>1780511327</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.10.2:
+- Fix build when only part of Boost was found
+- modperl: avoid newAV_alloc_x (lower required Perl version)
+- Pass CClient to OnClientGetSASLMechanisms; translation updates
+- Drop znc-swig-4.4.patch (merged upstream), build with Ninja, znc-doc noarch</comment>
+    <requestid>1356999</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  3 14:47:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.10.2:
+  * Fix build when only part of Boost was found
+  * modperl: avoid newAV_alloc_x, which required a newer Perl
+  * Pass CClient to the OnClientGetSASLMechanisms callback
+  * Translation updates
+- Drop znc-swig-4.4.patch (SWIG 4.4 support merged upstream)
+- Build with the Ninja generator
+- Mark the znc-doc subpackage as noarch
+
+-------------------------------------------------------------------
 Tue Dec  2 10:14:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add znc-swig-4.4.patch: Fix build against swig 4.4
