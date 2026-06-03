@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Jun  2 02:44:13 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Merge in fixes from SLE-16
+- CVE-2026-42789: `public_key` application accepts non-CA certificates
+  as intermediate issuers and this enables chain forgery (bsc#1266449)
+  * fix-CVE-2026-42789.patch
+- CVE-2026-42790: Name Constraints and Subject CommonName fallback in
+  TLS hostname verification allows for certificate forgery by MITM
+  attacker (bsc#1266466)
+  * fix-CVE-2026-42790.patch
+- CVE-2026-42791: OCSP response verification in the `public_key`
+  application does not check the validity period of the OCSP responder
+  certificate and allows for OCSP response response forgery (bsc#1266448)
+  * fix-CVE-2026-42791.patch
+- CVE-2025-4748: erlang,erlang26: improper limitation of a pathname
+  may lead to path traversal (bsc#1244642)
+  * fix-CVE-2025-4748.patch
+- CVE-2026-32147: erlang: Improper Limitation of a Pathname to a
+  kRestricted Directory ('Path Traversal') in SFTP chroot 
+  (bsc#1262503)
+  * fix-CVE-2026-32147.patch
+- jinterface: Allow to build determenistic OtpErlang.jar
+  (bsc#1262288)
+  * fix-determenistic-jar.patch
+- CVE-2026-32144: missing signature verification can cause OCSP
+  authorization bypass and information disclosure (bsc#1261734)
+  * fix-CVE-2026-32144.patch
+- CVE-2026-28808: incorrect authorization can lead to 
+  unauthenticated access to protected CGI scripts (bsc#1261728)
+  * fix-CVE-2026-28808.patch
+- CVE-2026-28810: predictable DNS transaction IDs can cause DNS 
+  cache poisoning (bsc#1261726)
+  * fix-CVE-2026-28810.patch
+  * fix-randomize-inet_res.patch (Added to make backport possible)
+- CVE-2026-21620: remote arbitrary read/write via TFTP relative 
+  path traversal (bsc#1258663)
+  * fix-CVE-2026-21620.patch
+- CVE-2026-23943: denial of service due to improper handling of 
+  highly compressed data in Erlang OTP ssh (bsc#1259682)
+  * fix-CVE-2026-23943.patch
+- CVE-2026-23942: path traversal vulnerability in Erlang OTP
+  (bsc#1259681)
+  * fix-CVE-2026-23942.patch
+- CVE-2026-23941: HTTP Request Smuggling in Erlang OTP
+  (bsc#1259687)
+  * fix-CVE-2026-23941.patch
+
+
+-------------------------------------------------------------------
+Wed Apr 22 12:32:46 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints and fix spec file to require sse for i586
+
+-------------------------------------------------------------------
+Mon Dec 15 12:05:33 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- Update the ssh component to the latest in the maint-27 branch
+  * Multiple fixes for Excessive Resource Consumption
+    (bsc#1249469, bsc#1249470 bsc#1249472, CVE-2025-48038, 
+    CVE-2025-48039, CVE-2025-48040)
+  * Other Minor fixes
+  * feature-fix-update-ssh-stack.patch
+  * fix-CVE-2025-48041.patch included in other patch
+
+-------------------------------------------------------------------
 Mon Nov  3 07:02:51 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - Create an erlang27 package from a version being submitted to SLE

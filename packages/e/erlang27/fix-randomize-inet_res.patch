@@ -1,0 +1,1329 @@
+From 928863bd243f4022d26d1e2c367caa6d412e684b Mon Sep 17 00:00:00 2001
+From: Raimo Niskanen <raimo@erlang.org>
+Date: Tue, 10 Mar 2026 15:19:48 +0100
+Subject: [PATCH] Randomize `inet_res` transaction ID and source port number
+
+According to established practice, RFC 6056, use a random transaction
+ID for DNS queries, and also a random source (bind) port number.
+This is established practice to minimize the possibility for
+a succesful DNS cache poisoning attack through spoofing UDP
+answer packets.
+
+The random number generator that is used is `crypto:rand_uniform/2`,
+which is deprecated for outdated reasons.  In really old, now obsolete,
+libcrypto versions the function was not cryptographically strong,
+but that should no longer be the case.
+
+For the `crypto` random number generator to be available,
+the Crypto application has to be loaded, and if not this code
+falls back to the legacy non-random behaviour.  This should
+not be a problem since any Erlang node that is installed
+in an exposed environment should have the Crypto application loaded,
+for example to run the SSL application.  This can also be done explicitly
+with `application:load(crypto)`.
+
+If the performance penalty for randomization is too much
+for an Erlang installation on a network protected from
+DNS spoofing, there is a boolean `inet` resolver option `random`
+that can be set to `false` to restore the legacy behaviour.
+
+To randomize ports, an internal port number argument of -1,
+instead of 0, is used by the internal function `inet:bind/3`
+to do 5 attempts to bind on truly random port numbers in the range
+1024 .. 65535, then fallback to letting the OS pick an ephemeral
+port.  A modern OS should pick random epemeral ports, but the range
+is smaller and the randomness not documented.  This approach
+is a compromise that should make the port number cryptographically
+random in all practical cases with a fallback that should be
+very hard to exploit.
+
+Transaction ID:s are simply random 16 bits.  There is no attempt
+to avoid duplicates.  The probability for duplicates in both
+transaction ID and port number should be less than 1/(2^31),
+and if that should happen, the query domain, class and type,
+also have to match for the reply to be succesfully decoded.
+Since the probability is so low this is not a practically exploitable
+vulnerability, and if the bogus reply is not an attack it is a slightly
+old valid reply so no harm is done.
+
+This commit also rewrites the `inet_dns` decoding code to check
+the received reply header in steps, starting with the transaction ID,
+and bail out immediately when a reply does not match the query.
+The old code decoded the whole reply packet first before checking
+any field.  This code is much more efficient in the precense of
+bogus reply packets.
+---
+ lib/kernel/doc/src/inet_res.xml    |  41 +++-
+ lib/kernel/src/gen_udp.erl         |  10 +-
+ lib/kernel/src/inet.erl            |  36 +++-
+ lib/kernel/src/inet6_udp.erl       |   8 +-
+ lib/kernel/src/inet_db.erl         |  69 +++++--
+ lib/kernel/src/inet_dns.erl        | 152 ++++++++++-----
+ lib/kernel/src/inet_res.erl        | 304 +++++++++++++++++------------
+ lib/kernel/src/inet_udp.erl        |   9 +-
+ lib/kernel/test/inet_res_SUITE.erl |   4 +-
+ 9 files changed, 423 insertions(+), 210 deletions(-)
+
+Index: otp-OTP-27.1.3/lib/kernel/src/gen_udp.erl
+===================================================================
+--- otp-OTP-27.1.3.orig/lib/kernel/src/gen_udp.erl
++++ otp-OTP-27.1.3/lib/kernel/src/gen_udp.erl
+@@ -1,7 +1,7 @@
+ %%
+ %% %CopyrightBegin%
+ %%
+-%% Copyright Ericsson AB 1997-2024. All Rights Reserved.
++%% Copyright Ericsson AB 1997-2026. All Rights Reserved.
+ %%
+ %% Licensed under the Apache License, Version 2.0 (the "License");
+ %% you may not use this file except in compliance with the License.
+@@ -183,7 +183,7 @@ The 3-tuple form _isn't_ supported on al
+ 
+ -doc(#{equiv => open(Port, [])}).
+ -spec open(Port) -> {ok, Socket} | {error, Reason} when
+-      Port   :: inet:port_number(),
++      Port   :: inet:port_number() | -1,
+       Socket :: socket(),
+       Reason :: system_limit | inet:posix().
+ 
+@@ -297,7 +297,7 @@ can be truncated without warning.
+ The default value for the receive buffer option is `{recbuf, 8192}`.
+ """.
+ -spec open(Port, Opts) -> {ok, Socket} | {error, Reason} when
+-      Port   :: inet:port_number(),
++      Port   :: inet:port_number() | -1,
+       Opts   :: [inet:inet_backend() | open_option()],
+       Socket :: socket(),
+       Reason :: system_limit | inet:posix().
+Index: otp-OTP-27.1.3/lib/kernel/src/inet.erl
+===================================================================
+--- otp-OTP-27.1.3.orig/lib/kernel/src/inet.erl
++++ otp-OTP-27.1.3/lib/kernel/src/inet.erl
+@@ -1,7 +1,7 @@
+ %%
+ %% %CopyrightBegin%
+ %%
+-%% Copyright Ericsson AB 1997-2024. All Rights Reserved.
++%% Copyright Ericsson AB 1997-2026. All Rights Reserved.
+ %%
+ %% Licensed under the Apache License, Version 2.0 (the "License");
+ %% you may not use this file except in compliance with the License.
+@@ -3841,7 +3841,7 @@ gethostbyaddr_tm_native(Addr, Timer, Opt
+ 	      {ip6_address() | 'any' | 'loopback',
+ 	       port_number()}} |
+ 	     undefined, % Internal - no bind()
+-	   BPort :: port_number(),
++	   BPort :: port_number() | -1,
+ 	   Opts :: [socket_setopt()],
+ 	   Protocol :: socket_protocol(),
+ 	   Family :: address_family(),
+@@ -3850,13 +3850,14 @@ gethostbyaddr_tm_native(Addr, Timer, Opt
+ 	{'ok', port()} | {'error', posix()}.
+ 
+ open(Fd, BAddr, BPort, Opts, Protocol, Family, Type, Module)
+-  when is_integer(Fd), 0 =< Fd ->
++  when is_integer(Fd), 0 =< Fd, is_integer(BPort) ->
+     open_fd(Fd, BAddr, BPort, Opts, Protocol, Family, Type, Module);
+-open(Fd_or_OpenOpts, BAddr, BPort, Opts, Protocol, Family, Type, Module) ->
++open(Fd_or_OpenOpts, BAddr, BPort, Opts, Protocol, Family, Type, Module)
++  when is_integer(BPort) ->
+     open_opts(
+       Fd_or_OpenOpts,
+       if
+-          BAddr =:= undefined, BPort =/= 0 ->
++          BAddr =:= undefined, BPort > 0 ->
+               translate_ip(any, Family);
+           true ->
+               BAddr
+@@ -3896,7 +3897,7 @@ open(Fd_or_OpenOpts, BAddr, BPort, Opts,
+                    {ip6_address() | 'any' | 'loopback',
+                     port_number()}} |
+                   undefined, % Internal - translated to 'any'
+-                BPort :: port_number(),
++                BPort :: port_number() | -1,
+                 Opts :: [socket_setopt()],
+                 Protocol :: socket_protocol(),
+                 Family :: address_family(),
+@@ -3905,14 +3906,15 @@ open(Fd_or_OpenOpts, BAddr, BPort, Opts,
+                        {'ok', port()} | {'error', posix()}.
+ 
+ open_bind(Fd, BAddr, BPort, Opts, Protocol, Family, Type, Module)
+-  when is_integer(Fd), 0 =< Fd ->
++  when is_integer(Fd), 0 =< Fd, is_integer(BPort) ->
+     %% ?DBG([{fd, Fd},
+     %%       {baddr, BAddr}, {bport, BPort},
+     %%       {opts, Opts}, {proto, Protocol}, {fam, Family},
+     %%       {type, Type}, {mod, Module}]),
+     open_fd(Fd, BAddr, BPort, Opts, Protocol, Family, Type, Module);
+ open_bind(
+-  Fd_or_OpenOpts, BAddr, BPort, Opts, Protocol, Family, Type, Module) ->
++  Fd_or_OpenOpts, BAddr, BPort, Opts, Protocol, Family, Type, Module)
++  when is_integer(BPort) ->
+     %% ?DBG([{fd_or_openopts, Fd_or_OpenOpts},
+     %%       {baddr, BAddr}, {bport, BPort},
+     %%       {opts, Opts}, {proto, Protocol}, {fam, Family},
+@@ -3998,12 +4000,26 @@ open_setopts(S, BAddr, BPort, Opts, Modu
+ 
+ 
+ 
+-bind(S, Addr, Port) when is_list(Addr) ->
++bind(S, Addr, Port) when is_list(Addr), ?port(Port) ->
+     bindx(S, Addr, Port);
+-bind(S, Addr, Port) ->
++bind(S, Addr, -1) ->
++    bind_random(S, Addr, 5);
++bind(S, Addr, Port) when ?port(Port) ->
+     %% ?DBG([{s, S}, {addr, Addr}, {port, Port}]),
+     prim_inet:bind(S, Addr, Port).
+ 
++bind_random(S, Addr, Cnt) when is_integer(Cnt) ->
++    Port = inet_db:res_option(random_port),
++    %% ?DBG([{s, S}, {addr, Addr}, {port, Port}]),
++    case prim_inet:bind(S, Addr, Port) of
++        {ok, _} = OK                -> OK;
++        {error, _} = Error ->
++            if  Port =:= 0          -> Error;
++                0 < Cnt             -> bind_random(S, Addr, Cnt - 1);
++                true                -> Error
++            end
++    end.
++
+ bindx(S, [Addr], Port0) ->
+     {IP, Port} = set_bindx_port(Addr, Port0),
+     prim_inet:bind(S, IP, Port);
+Index: otp-OTP-27.1.3/lib/kernel/src/inet6_udp.erl
+===================================================================
+--- otp-OTP-27.1.3.orig/lib/kernel/src/inet6_udp.erl
++++ otp-OTP-27.1.3/lib/kernel/src/inet6_udp.erl
+@@ -1,8 +1,8 @@
+ %%
+ %% %CopyrightBegin%
+-%% 
+-%% Copyright Ericsson AB 1997-2024. All Rights Reserved.
+-%% 
++%%
++%% Copyright Ericsson AB 1997-2026. All Rights Reserved.
++%%
+ %% Licensed under the Apache License, Version 2.0 (the "License");
+ %% you may not use this file except in compliance with the License.
+ %% You may obtain a copy of the License at
+@@ -64,6 +64,8 @@ open(Port, Opts) ->
+ 	    port   = BPort,
+ 	    opts   = SockOpts}}
+           when is_map(BAddr); % sockaddr_in()
++               BPort =:= -1, ?ip6(BAddr);
++               BPort =:= -1, BAddr =:= undefined;
+                ?port(BPort), ?ip6(BAddr);
+                ?port(BPort), BAddr =:= undefined ->
+             %% ?DBG(['udp-options',
+Index: otp-OTP-27.1.3/lib/kernel/src/inet_db.erl
+===================================================================
+--- otp-OTP-27.1.3.orig/lib/kernel/src/inet_db.erl
++++ otp-OTP-27.1.3/lib/kernel/src/inet_db.erl
+@@ -1,7 +1,7 @@
+ %%
+ %% %CopyrightBegin%
+ %%
+-%% Copyright Ericsson AB 1997-2024. All Rights Reserved.
++%% Copyright Ericsson AB 1997-2026. All Rights Reserved.
+ %%
+ %% Licensed under the Apache License, Version 2.0 (the "License");
+ %% you may not use this file except in compliance with the License.
+@@ -314,7 +314,7 @@ valid_lookup() -> [dns, file, yp, nis, n
+ %% Reconstruct an inetrc structure from inet_db
+ get_rc() -> 
+     get_rc([hosts, domain, nameservers, search, alt_nameservers,
+-	    timeout, retry, servfail_retry_timeout, inet6, usevc,
++	    timeout, retry, servfail_retry_timeout, inet6, usevc, random,
+ 	    edns, udp_payload_size, dnssec_ok, resolv_conf, hosts_file,
+ 	    socks5_server,  socks5_port, socks5_methods, socks5_noproxy,
+ 	    udp, sctp, tcp, host, cache_size, cache_refresh, lookup], []).
+@@ -356,6 +356,10 @@ get_rc([K | Ks], Ls) ->
+                                          res_usevc,
+                                          false,
+                                          Ks, Ls);
++	random                 -> get_rc(random,
++                                         res_random,
++                                         true,
++                                         Ks, Ls);
+ 	edns                   -> get_rc(edns,
+                                          res_edns,
+                                          false,
+@@ -447,18 +451,12 @@ get_rc_hosts([], Ls) ->
+ get_rc_hosts([{{_Fam, IP}, Names} | Hosts], Ls) ->
+     get_rc_hosts(Hosts, [{host, IP, Names} | Ls]).
+ 
++%% Some odd features stuffed into this API
+ %%
+-%% Resolver options
+-%%
+-res_option(next_id)        ->
+-    Cnt = ets:update_counter(inet_db, res_id, 1),
+-    case Cnt band 16#ffff of
+-	0 ->
+-	    _ = ets:update_counter(inet_db, res_id, -Cnt),
+-	    0;
+-	Id ->
+-	    Id
+-    end;
++res_option(next_id) ->
++    generate_next_id();
++res_option(random_port) ->
++    generate_random_port();
+ res_option(Option) ->
+     case res_optname(Option) of
+ 	undefined ->
+@@ -488,6 +486,7 @@ res_optname(servfail_retry_timeout) -> r
+ res_optname(timeout) -> res_timeout;
+ res_optname(inet6) -> res_inet6;
+ res_optname(usevc) -> res_usevc;
++res_optname(random) -> res_random;
+ res_optname(edns) -> res_edns;
+ res_optname(udp_payload_size) -> res_udp_payload_size;
+ res_optname(dnssec_ok) -> res_dnssec_ok;
+@@ -523,6 +522,7 @@ res_check_option(servfail_retry_timeout,
+ res_check_option(timeout, T) when is_integer(T), T > 0 -> true;
+ res_check_option(inet6, Bool) when is_boolean(Bool) -> true;
+ res_check_option(usevc, Bool) when is_boolean(Bool) -> true;
++res_check_option(random, Bool) when is_boolean(Bool) -> true;
+ res_check_option(edns, V) when V =:= false; V =:= 0 -> true;
+ res_check_option(udp_payload_size, S) when is_integer(S), S >= 512 -> true;
+ res_check_option(dnssec_ok, D) when is_boolean(D) -> true;
+@@ -880,13 +880,13 @@ take_socket_type(MRef) ->
+ %% res_search     [Domain]        - list of domains for short names
+ %% res_domain     Domain          - local domain for short names
+ %% res_recurse    Bool            - recursive query 
+-%% res_usevc      Bool            - use tcp only
+ %% res_id         Integer         - NS query identifier
+ %% res_retry      Integer         - Retry count for UDP query
+ %% res_servfail_retry_timeout Integer - Timeout to next query after a failure
+ %% res_timeout    Integer         - UDP query timeout before retry
+ %% res_inet6      Bool            - address family inet6 for gethostbyname/1
+ %% res_usevc      Bool            - use Virtual Circuit (TCP)
++%% res_random     Bool            - use random res_id and port number
+ %% res_edns       false|Integer   - false or EDNS version
+ %% res_udp_payload_size Integer   - size for EDNS, both query and reply
+ %% res_dnssec_ok  Bool            - the DO bit in RFC6891 & RFC3225
+@@ -960,6 +960,7 @@ reset_db(Db) ->
+        {res_lookup, []},
+        {res_recurse, true},
+        {res_usevc, false},
++       {res_random, true},
+        {res_id, 0},
+        {res_retry, ?RES_RETRY},
+        {res_servfail_retry_timeout, ?RES_SERVFAIL_RETRY_TO},
+@@ -1649,6 +1650,7 @@ is_res_set(servfail_retry_timeout) -> tr
+ is_res_set(retry) -> true;
+ is_res_set(inet6) -> true;
+ is_res_set(usevc) -> true;
++is_res_set(random) -> true;
+ is_res_set(edns) -> true;
+ is_res_set(udp_payload_size) -> true;
+ is_res_set(dnssec_ok) -> true;
+@@ -2077,3 +2079,43 @@ handle_take_socket_type(Db, MRef) ->
+ 	[] -> % Already demonitor'ed
+ 	    error
+     end.
++
++%%----------------------------------------------------------------------
++%% Random DNS Transaction ID and origin port number
++%%----------------------------------------------------------------------
++
++generate_next_id() ->
++    case ets:lookup_element(inet_db, res_random, 2) of
++        true ->
++            case crypto_rand_range(1 bsl 16) of
++                Id when is_integer(Id), 0 =< Id, Id < 1 bsl 16  -> Id;
++                undefined ->
++                    generate_next_id_legacy()
++            end;
++        false ->
++            generate_next_id_legacy()
++    end.
++
++generate_next_id_legacy() ->
++    ets:update_counter(inet_db, res_id, {2, 1, 16#ffff, 0}).
++
++generate_random_port() ->
++    Min   = 1024,
++    Range = (1 bsl 16) - Min,
++    case crypto_rand_range(Range) of
++        V when is_integer(V), 0 =< V, V < Range                 -> Min + V;
++        undefined                                               -> 0
++    end.
++
++-compile({nowarn_deprecated_function, {crypto,rand_uniform,2}}).
++
++crypto_rand_range(Range) when is_integer(Range), 0 < Range ->
++    %% This is how crypto itself checks if it is loaded
++    case application:get_env(crypto, fips_mode) of
++        undefined                                               -> undefined;
++        {ok, Fips} when is_boolean(Fips) ->
++            try crypto:rand_uniform(0, Range) of
++                N when is_integer(N), 0 =< N, N < Range         -> N
++            catch error : low_entropy                           -> undefined
++            end
++    end.
+Index: otp-OTP-27.1.3/lib/kernel/src/inet_dns.erl
+===================================================================
+--- otp-OTP-27.1.3.orig/lib/kernel/src/inet_dns.erl
++++ otp-OTP-27.1.3/lib/kernel/src/inet_dns.erl
+@@ -1,7 +1,7 @@
+ %%
+ %% %CopyrightBegin%
+ %%
+-%% Copyright Ericsson AB 1997-2024. All Rights Reserved.
++%% Copyright Ericsson AB 1997-2026. All Rights Reserved.
+ %%
+ %% Licensed under the Apache License, Version 2.0 (the "License");
+ %% you may not use this file except in compliance with the License.
+@@ -36,7 +36,8 @@
+ %% RFC 7553: The Uniform Resource Identifier (URI) DNS Resource Record
+ %% RFC 8945: Secret Key Transaction Authentication for DNS (TSIG)
+ 
+--export([decode/1, decode/2, encode/1, encode/2]).
++-export([decode/1, decode_reply/2,
++         update_id/2, encode/1]).
+ -export([decode_algname/1, encode_algname/1]).
+ 
+ -import(lists, [reverse/1]).
+@@ -149,10 +150,8 @@ lists_member(H, [_|T]) -> lists_member(H
+            throw(?DECODE_ERROR)
+    end).
+ 
+-decode(Buffer) -> decode(Buffer, true). % Backwards compatible
+-%%
+-decode(Buffer, Mdns) when is_binary(Buffer), is_boolean(Mdns) ->
+-    try do_decode(Buffer, Mdns) of
++decode(Buffer) when is_binary(Buffer) ->
++    try do_decode(Buffer) of
+ 	DnsRec ->
+ 	    {ok,DnsRec}
+     catch
+@@ -160,83 +159,136 @@ decode(Buffer, Mdns) when is_binary(Buff
+ 	    {error,Reason}
+     end.
+ 
+-do_decode(<<Id:16,
+-	   QR:1,Opcode:4,AA:1,TC:1,RD:1,
+-	   RA:1,PR:1,_:2,Rcode:4,
+-	   QdCount:16,AnCount:16,NsCount:16,ArCount:16,
+-	   QdBuf/binary>>=Buffer, Mdns) ->
+-    {AnBuf,QdList,QdTC} = decode_query_section(QdBuf,QdCount,Buffer,Mdns),
++
++decode_reply(Buffer, #dns_rec{} = Q) when is_binary(Buffer) ->
++    try do_decode_reply(Buffer, Q) of
++        DnsReq -> {ok, DnsReq}
++    catch
++        Reason ->
++            {error, Reason}
++    end.
++
++do_decode(
++  <<Id:16,
++    QR:1,Opcode:4,AA:1,TC:1,RD:1,
++    RA:1,PR:1,_:2,Rcode:4,
++    QdCount:16,AnCount:16,NsCount:16,ArCount:16,
++    QdBuf/binary>> = Buffer) ->
++    %%
++    {AnBuf,QdList,QdTC} = decode_query_section(QdBuf,QdCount,Buffer),
++    H_TC = decode_boolean(TC),
++    QdTC andalso not H_TC
++        andalso throw(?DECODE_ERROR),
++    DnsHdr =
++        #dns_header{
++           id     = Id,
++           qr     = decode_boolean(QR),
++           opcode = decode_opcode(Opcode),
++           aa     = decode_boolean(AA),
++           tc     = H_TC,
++           rd     = decode_boolean(RD),
++           ra     = decode_boolean(RA),
++           pr     = decode_boolean(PR),
++           rcode  = Rcode},
++    do_decode(
++      Buffer, DnsHdr, QdList, AnBuf, AnCount, NsCount, ArCount).
++
++do_decode_reply(
++  <<Id:16, _/binary>> = Buffer,
++  #dns_rec{ header = Q_H, qdlist = [Q_RR] }) ->
++    Id =:= Q_H#dns_header.id orelse throw(badid),
++    do_decode_reply(Buffer, Q_H, Q_RR, Id).
++
++do_decode_reply(
++  <<_:16,
++    QR:1,Opcode:4,AA:1,TC:1,RD:1,
++    RA:1,PR:1,_:2,Rcode:4,
++    QdCount:16,AnCount:16,NsCount:16,ArCount:16,
++    QdBuf/binary>> = Buffer,
++  Q_H, Q_RR, Id) ->
++    %%
++    (H_QR = decode_boolean(QR))
++        orelse throw(unknown),
++    (H_Opcode = decode_opcode(Opcode)) =:= Q_H#dns_header.opcode
++        orelse throw(unknown),
++    (H_RD = decode_boolean(RD)) andalso not Q_H#dns_header.rd
++        andalso throw(unknown),
++    %%
++    QdCount == 1
++        orelse throw(noquery),
++    {AnBuf, [RR], QdTC} = decode_query_section(QdBuf, QdCount, Buffer),
++    RR#dns_query.class    =:= Q_RR#dns_query.class andalso
++        RR#dns_query.type =:= Q_RR#dns_query.type  andalso
++        inet_db:eq_domains(RR#dns_query.domain, Q_RR#dns_query.domain)
++        orelse throw(noquery),
++    H_TC = decode_boolean(TC),
++    QdTC andalso not H_TC
++        andalso throw(?DECODE_ERROR),
++    DnsHdr =
++        #dns_header{
++           id     = Id,
++           qr     = H_QR,
++           opcode = H_Opcode,
++           aa     = decode_boolean(AA),
++           tc     = H_TC,
++           rd     = H_RD,
++           ra     = decode_boolean(RA),
++           pr     = decode_boolean(PR),
++           rcode  = Rcode},
++    do_decode(
++      Buffer, DnsHdr, [RR], AnBuf, AnCount, NsCount, ArCount);
++do_decode_reply(<<_/binary>>, _Q_H, _Q_RR, _Id) ->
++    throw(unknown).
++
++do_decode(Buffer, DnsHdr, QdList, AnBuf, AnCount, NsCount, ArCount) ->
+     {NsBuf,AnList,AnTC} =
+-        decode_rr_section(AnBuf,AnCount,Buffer,{Opcode,Mdns}),
++        decode_rr_section(AnBuf, AnCount, Buffer),
+     {ArBuf,NsList,NsTC} =
+-        decode_rr_section(NsBuf,NsCount,Buffer,{Opcode,Mdns}),
++        decode_rr_section(NsBuf, NsCount, Buffer),
+     {Rest,ArList,ArTC} =
+-        decode_rr_section(ArBuf,ArCount,Buffer,{Opcode,Mdns}),
+-    ?MATCH_ELSE_DECODE_ERROR(
+-       Rest,
+-       <<>>,
+-       begin
+-           HdrTC = decode_boolean(TC),
+-           DnsHdr =
+-               #dns_header{id=Id,
+-                           qr=decode_boolean(QR),
+-                           opcode=decode_opcode(Opcode),
+-                           aa=decode_boolean(AA),
+-                           tc=HdrTC,
+-                           rd=decode_boolean(RD),
+-                           ra=decode_boolean(RA),
+-                           pr=decode_boolean(PR),
+-                           rcode=Rcode},
+-           ?MATCH_ELSE_DECODE_ERROR(
+-              %% Header marked as truncated, or no section
+-              %% marked as truncated.
+-              %% The converse; a section marked as truncated,
+-              %% but not the header - is a parse error.
+-              %%
+-              HdrTC or (not (QdTC or AnTC or NsTC or ArTC)),
+-              true,
+-              begin
+-                  #dns_rec{header=DnsHdr,
+-                           qdlist=QdList,
+-                           anlist=AnList,
+-                           nslist=NsList,
+-                           arlist=ArList}
+-              end)
+-       end);
+-do_decode(_, _) ->
+-    %% DNS message does not even match header
+-    throw(?DECODE_ERROR).
++        decode_rr_section(ArBuf, ArCount, Buffer),
++    Rest =:= <<>>
++        orelse throw(?DECODE_ERROR),
++    ((AnTC orelse NsTC orelse ArTC) =:= DnsHdr#dns_header.tc)
++        orelse throw(?DECODE_ERROR),
++    #dns_rec{
++       header = DnsHdr,
++       qdlist = QdList,
++       anlist = AnList,
++       nslist = NsList,
++       arlist = ArList}.
++ 
+ 
+-decode_query_section(Bin, N, Buffer, Mdns) ->
+-    decode_query_section(Bin, N, Buffer, Mdns, []).
++decode_query_section(Bin, N, Buffer) ->
++    decode_query_section(Bin, N, Buffer, []).
+ 
+-decode_query_section(<<>>=Rest, N, _Buffer, _Mdns, Qs) ->
++decode_query_section(<<>>=Rest, N, _Buffer, Qs) ->
+     {Rest,reverse(Qs),N =/= 0};
+-decode_query_section(Rest, 0, _Buffer, _Mdns, Qs) ->
++decode_query_section(Rest, 0, _Buffer, Qs) ->
+     {Rest,reverse(Qs),false};
+-decode_query_section(Bin, N, Buffer, Mdns, Qs) ->
++decode_query_section(Bin, N, Buffer, Qs) ->
+     ?MATCH_ELSE_DECODE_ERROR(
+        decode_name(Bin, Buffer),
+        {<<T:16,C:16,Rest/binary>>,Name},
+        begin
+-           {Class,UnicastResponse} = decode_class(C, Mdns),
++           {Class,UnicastResponse} = decode_class(C),
+            DnsQuery =
+                #dns_query{
+                   domain           = Name,
+                   type             = decode_type(T),
+                   class            = Class,
+                   unicast_response = UnicastResponse},
+-           decode_query_section(Rest, N-1, Buffer, Mdns, [DnsQuery|Qs])
++           decode_query_section(Rest, N-1, Buffer, [DnsQuery|Qs])
+        end).
+ 
+-decode_rr_section(Bin, N, Buffer, Opts) ->
+-    decode_rr_section(Bin, N, Buffer, Opts, []).
++decode_rr_section(Bin, N, Buffer) ->
++    decode_rr_section(Bin, N, Buffer, []).
+ %%
+-decode_rr_section(<<>>=Rest, N, _Buffer, _Opts, RRs) ->
++decode_rr_section(<<>>=Rest, N, _Buffer, RRs) ->
+     {Rest,reverse(RRs),N =/= 0};
+-decode_rr_section(Rest, 0, _Buffer, _Opts, RRs) ->
++decode_rr_section(Rest, 0, _Buffer, RRs) ->
+     {Rest,reverse(RRs),false};
+-decode_rr_section(Bin, N, Buffer, {Opcode,Mdns} = Opts, RRs) ->
++decode_rr_section(Bin, N, Buffer, RRs) ->
+     ?MATCH_ELSE_DECODE_ERROR(
+        decode_name(Bin, Buffer),
+        {<<T:16/unsigned,C:16/unsigned,TTL:4/binary,
+@@ -284,8 +336,8 @@ decode_rr_section(Bin, N, Buffer, {Opcod
+                              error         = Error,
+                              other_data    = OtherData});
+                    _ ->
+-                       {Class,CacheFlush} = decode_class(C, Mdns),
+-                       Data = decode_data(D, Class, Type, Buffer, Opcode),
++                       {Class,CacheFlush} = decode_class(C),
++                       Data = decode_data(D, Class, Type, Buffer),
+                        <<TimeToLive:32/signed>> = TTL,
+                        #dns_rr{
+                           domain = Name,
+@@ -295,34 +347,32 @@ decode_rr_section(Bin, N, Buffer, {Opcod
+                           data   = Data,
+                           func   = CacheFlush}
+                end,
+-           decode_rr_section(Rest, N-1, Buffer, Opts, [RR|RRs])
++           decode_rr_section(Rest, N-1, Buffer, [RR|RRs])
+        end).
+ 
+ %%
+ %% Encode a user query
+ %%
+ 
+-encode(Q) -> encode(Q, true). % Backwards compatible
+-%%
+-encode(
+-  #dns_rec{
+-     header = Header,
+-     qdlist = QdList, anlist = AnList, nslist = NsList, arlist = ArList },
+-  Mdns)
+-  when is_boolean(Mdns) ->
+-    B0 =
+-        encode_header(
+-          Header,
+-          length(QdList), length(AnList), length(NsList), length(ArList)),
+-    Opcode = Header#dns_header.opcode,
++%% Update the ID field
++update_id(<<_:16, EncMsg/binary>>, Id) ->
++    [<<Id:16>>, EncMsg];
++update_id([<<_:16>> | EncMsg], Id) ->
++    [<<Id:16>> | EncMsg].
++
++encode(Q) ->
++    QdCount = length(Q#dns_rec.qdlist),
++    AnCount = length(Q#dns_rec.anlist),
++    NsCount = length(Q#dns_rec.nslist),
++    ArCount = length(Q#dns_rec.arlist),
++    B0 = encode_header(Q#dns_rec.header, QdCount, AnCount, NsCount, ArCount),
+     C0 = gb_trees:empty(),
+-    {B1,C1} = encode_query_section(B0, Mdns, C0, QdList),
+-    {B2,C2} = encode_res_section(B1, {Opcode,Mdns}, C1, AnList),
+-    {B3,C3} = encode_res_section(B2, {Opcode,Mdns}, C2, NsList),
+-    {B,_} = encode_res_section(B3, {Opcode,Mdns}, C3, ArList),
++    {B1,C1} = encode_query_section(B0, C0, Q#dns_rec.qdlist),
++    {B2,C2} = encode_res_section(B1, C1, Q#dns_rec.anlist),
++    {B3,C3} = encode_res_section(B2, C2, Q#dns_rec.nslist),
++    {B,_} = encode_res_section(B3, C3, Q#dns_rec.arlist),
+     B.
+ 
+-
+ %% RFC 1035: 4.1.1. Header section format
+ %%
+ encode_header(#dns_header{id=Id}=H, QdCount, AnCount, NsCount, ArCount) ->
+@@ -341,20 +391,20 @@ encode_header(#dns_header{id=Id}=H, QdCo
+ 
+ %% RFC 1035: 4.1.2. Question section format
+ %%
+-encode_query_section(Bin, _Mdns, Comp, []) -> {Bin,Comp};
+-encode_query_section(Bin0, Mdns, Comp0, [#dns_query{domain=DName}=Q | Qs]) ->
++encode_query_section(Bin, Comp, []) -> {Bin,Comp};
++encode_query_section(Bin0, Comp0, [#dns_query{domain=DName}=Q | Qs]) ->
+     T = encode_type(Q#dns_query.type),
+     C = encode_class(
+-          Q#dns_query.class, Mdns andalso Q#dns_query.unicast_response),
++          Q#dns_query.class andalso Q#dns_query.unicast_response),
+     {Bin,Comp} = encode_name(Bin0, Comp0, byte_size(Bin0), DName),
+-    encode_query_section(<<Bin/binary,T:16,C:16>>, Mdns, Comp, Qs).
++    encode_query_section(<<Bin/binary,T:16,C:16>>, Comp, Qs).
+ 
+ %% RFC 1035:  4.1.3.               Resource record format
+ %% RFC 6891:  6.1.2, 6.1.3, 6.2.3  Opt RR format
+ %%
+-encode_res_section(Bin, _Opts, Comp, []) -> {Bin,Comp};
++encode_res_section(Bin, Comp, []) -> {Bin,Comp};
+ encode_res_section(
+-  Bin, Opts, Comp,
++  Bin, Comp,
+   [#dns_rr{
+       domain = DName,
+       type   = Type,
+@@ -363,10 +413,10 @@ encode_res_section(
+       ttl    = TTL,
+       data   = Data} | Rs]) ->
+     encode_res_section_rr(
+-      Bin, Opts, Comp, Rs, DName, Type, Class, CacheFlush,
++      Bin, Comp, Rs, DName, Type, Class, CacheFlush,
+       <<TTL:32/signed>>, Data);
+ encode_res_section(
+-  Bin, Opts, Comp,
++  Bin, Comp,
+   [#dns_rr_opt{
+       domain           = DName,
+       udp_payload_size = UdpPayloadSize,
+@@ -377,10 +427,10 @@ encode_res_section(
+       do               = DnssecOk} | Rs]) ->
+     DO = case DnssecOk of true -> 1; false -> 0 end,
+     encode_res_section_rr(
+-      Bin, Opts, Comp, Rs, DName, ?S_OPT, UdpPayloadSize, false,
++      Bin, Comp, Rs, DName, ?S_OPT, UdpPayloadSize, false,
+       <<ExtRCode,Version,DO:1,Z:15>>, Data);
+ encode_res_section(
+-  Bin, Opts, Comp,
++  Bin, Comp,
+   [#dns_rr_tsig{
+       domain           = DName,
+       algname          = AlgName,
+@@ -392,21 +442,21 @@ encode_res_section(
+       other_data       = OtherData}]) ->
+     Data = {AlgName,Now,Fudge,MAC,OriginalId,Error,OtherData},
+     encode_res_section_rr(
+-      Bin, Opts, Comp, [], DName, ?S_TSIG, ?S_ANY, false,
++      Bin, Comp, [], DName, ?S_TSIG, ?S_ANY, false,
+       <<0:32/signed>>, Data).
+ 
+ encode_res_section_rr(
+-  Bin0, {Opcode,Mdns} = Opts, Comp0, Rs,
++  Bin0, Comp0, Rs,
+   DName, Type, Class, CacheFlush, TTL, Data) ->
+     T = encode_type(Type),
+-    C = encode_class(Class, Mdns and CacheFlush),
++    C = encode_class(Class, CacheFlush),
+     {Bin,Comp1} = encode_name(Bin0, Comp0, byte_size(Bin0), DName),
+     Pos = byte_size(Bin)+2+2+byte_size(TTL)+2,
+-    {DataBin,Comp} = encode_data(Comp1, Pos, Type, Class, Data, Opcode),
++    {DataBin,Comp} = encode_data(Comp1, Pos, Type, Class, Data),
+     DataSize = byte_size(DataBin),
+     encode_res_section(
+       <<Bin/binary,T:16,C:16,TTL/binary,DataSize:16,DataBin/binary>>,
+-      Opts, Comp, Rs).
++      Comp, Rs).
+ 
+ %%
+ %% Resource types
+@@ -499,15 +549,6 @@ encode_type(Type) ->
+ %% Resource classes
+ %%
+ 
+-decode_class(C, false) ->
+-    {decode_class(C),false};
+-decode_class(C0, true) ->
+-    FlagBit = 16#8000,
+-    C = C0 band (bnot FlagBit),
+-    Class = decode_class(C),
+-    Flag = (C0 band FlagBit) =/= 0,
+-    {Class,Flag}.
+-
+ decode_class(C) ->
+     case C of
+         ?C_IN    -> in;
+@@ -564,14 +605,6 @@ encode_boolean(B) when is_integer(B) ->
+ decode_boolean(0) -> false;
+ decode_boolean(I) when is_integer(I) -> true.
+ 
+-decode_data(Data, Class, Type, Buffer, Opcode) ->
+-    if
+-        %% RFC 2136: 2.4. Allow length zero data for UPDATE
+-        Opcode == ?UPDATE, Data == <<>> ->
+-            #dns_rr{}#dns_rr.data;
+-        true ->
+-            decode_data(Data, Class, Type, Buffer)
+-    end.
+ %%
+ %% Data field -> term() content representation
+ %%
+@@ -784,13 +817,6 @@ decode_name_label(Label, Name, N) ->
+ 	    erlang:error(badarg, [Label,Name,N])
+     end.
+ 
+-encode_data(Comp, Pos, Type, Class, Data, Opcode) ->
+-    if
+-        Opcode == update, Data == #dns_rr{}#dns_rr.data ->
+-            {<<>>,Comp};
+-        true ->
+-            encode_data(Comp, Pos, Type, Class, Data)
+-    end.
+ %%
+ %% Data field -> {binary(),NewCompressionTable}
+ %%
+Index: otp-OTP-27.1.3/lib/kernel/src/inet_res.erl
+===================================================================
+--- otp-OTP-27.1.3.orig/lib/kernel/src/inet_res.erl
++++ otp-OTP-27.1.3/lib/kernel/src/inet_res.erl
+@@ -1,7 +1,7 @@
+ %%
+ %% %CopyrightBegin%
+ %%
+-%% Copyright Ericsson AB 1997-2024. All Rights Reserved.
++%% Copyright Ericsson AB 1997-2026. All Rights Reserved.
+ %%
+ %% Licensed under the Apache License, Version 2.0 (the "License");
+ %% you may not use this file except in compliance with the License.
+@@ -143,6 +143,7 @@ example_lookup(Name, Class, Type) ->
+       | {udp_payload_size, integer()}
+       | {dnssec_ok, boolean()}
+       | {usevc, boolean()}
++      | {random, boolean()}
+       | {nxdomain_reply, boolean()}.
+ 
+ -type nameserver() :: {inet:ip_address(), Port :: 1..65535}.
+@@ -505,7 +506,7 @@ do_nslookup(Name, Class, Type, Opts, Tim
+ -record(options, { % These must be sorted!
+ 	  alt_nameservers,dnssec_ok,edns,inet6,nameservers,
+           nxdomain_reply, % this is a local option, not in inet_db
+-          recurse,retry,servfail_retry_timeout,timeout,
++          random,recurse,retry,servfail_retry_timeout,timeout,
+           udp_payload_size,usevc,
+ 	  verbose}). % this is a local option, not in inet_db
+ %%
+@@ -982,65 +983,115 @@ make_query(Dname, Class, Type, Options,
+     Buffer = inet_dns:encode(Msg, false),
+     {Msg, Buffer}.
+ 
++update_query_id(#q{ edns = EdnsQ, dns = DnsQ } = Q) ->
++    Q#q{ edns = update_query_id_part(EdnsQ),
++         dns  = update_query_id_part(DnsQ) }.
++
++update_query_id_part({#dns_rec{ header = Header } = Msg, Buffer}) ->
++    Id = inet_db:res_option(next_id),
++    {Msg#dns_rec{ header = Header#dns_header{ id = Id }},
++     inet_dns:update_id(Buffer, Id)};
++update_query_id_part(undefined)                                -> undefined;
++update_query_id_part(DnsRecFun) when is_function(DnsRecFun, 0) -> DnsRecFun.
++
+ %% --------------------------------------------------------------------------
+ %% socket helpers
+ %%
+ -record(sock, {inet=undefined, inet6=undefined}).
+ 
+-udp_open(#sock{inet6=I}=S, {A,B,C,D,E,F,G,H}) when ?ip6(A,B,C,D,E,F,G,H) ->
++udp_open(undefined, _IP, Verbose) when is_boolean(Verbose) ->
++    {ok, undefined};
++udp_open(#sock{inet6=I}=S, {A,B,C,D,E,F,G,H} = IP, Verbose)
++  when ?ip6(A,B,C,D,E,F,G,H), is_boolean(Verbose) ->
+     case I of
+ 	undefined ->
+ 	    case gen_udp:open(0, [{active,false},binary,inet6]) of
+ 		{ok,J} ->
+ 		    {ok,S#sock{inet6=J}};
+ 		Error ->
++                    ?verbose(Verbose, "UDP open failed ~p ~p~n", [IP, Error]),
+ 		    Error
+ 	    end;
+ 	_ ->
+ 	    {ok,S}
+     end;
+-udp_open(#sock{inet=I}=S, {A,B,C,D}) when ?ip(A,B,C,D) ->
++udp_open(#sock{inet=I}=S, {A,B,C,D} = IP, Verbose)
++  when ?ip(A,B,C,D), is_boolean(Verbose) ->
+     case I of
+ 	undefined ->
+ 	    case gen_udp:open(0, [{active,false},binary,inet]) of
+ 		{ok,J} ->
+ 		    {ok,S#sock{inet=J}};
+ 		Error ->
++                    ?verbose(Verbose, "UDP open failed ~p ~p~n", [IP, Error]),
+ 		    Error
+ 	    end;
+ 	_ ->
+ 	    {ok,S}
+     end.
+ 
+-udp_connect(#sock{inet6=I}, {A,B,C,D,E,F,G,H}=IP, Port)
+-  when ?ip6(A,B,C,D,E,F,G,H), ?port(Port) ->
+-    gen_udp:connect(I, IP, Port);
+-udp_connect(#sock{inet=I}, {A,B,C,D}=IP, Port)
+-  when ?ip(A,B,C,D) ->
+-    gen_udp:connect(I, IP, Port).
+-
+-udp_send(#sock{inet6=I}, {A,B,C,D,E,F,G,H}=IP, Port, Buffer)
+-  when ?ip6(A,B,C,D,E,F,G,H), ?port(Port) ->
+-    gen_udp:send(I, IP, Port, Buffer);
+-udp_send(#sock{inet=I}, {A,B,C,D}=IP, Port, Buffer)
+-  when ?ip(A,B,C,D), ?port(Port) ->
+-    gen_udp:send(I, IP, Port, Buffer).
+-
+-udp_recv(#sock{inet6=I}, {A,B,C,D,E,F,G,H}=IP, Port, Timeout, Decode)
+-  when ?ip6(A,B,C,D,E,F,G,H), ?port(Port), 0 =< Timeout ->
+-    do_udp_recv(I, IP, Port, Timeout, Decode, time(Timeout), Timeout);
+-udp_recv(#sock{inet=I}, {A,B,C,D}=IP, Port, Timeout, Decode)
+-  when ?ip(A,B,C,D), ?port(Port), 0 =< Timeout ->
+-    do_udp_recv(I, IP, Port, Timeout, Decode, time(Timeout), Timeout).
+ 
+-do_udp_recv(_I, _IP, _Port, 0, _Decode, _Time, PollCnt)
+-  when PollCnt =< 0 ->
+-    timeout;
+-do_udp_recv(I, IP, Port, Timeout, Decode, Time, PollCnt) ->
+-    case gen_udp:recv(I, 0, Timeout) of
+-	{ok,Reply} ->
+-	    case Decode(Reply) of
+-		false when Timeout =:= 0 ->
++udp_connect(undefined, {A,B,C,D,E,F,G,H}=IP, Port, Verbose)
++  when ?ip6(A,B,C,D,E,F,G,H), ?port(Port), is_boolean(Verbose) ->
++    udp_connect_fam(inet6, IP, Port, Verbose);
++udp_connect(undefined, {A,B,C,D}=IP, Port, Verbose)
++  when ?ip(A,B,C,D), ?port(Port), is_boolean(Verbose) ->
++    udp_connect_fam(inet, IP, Port, Verbose);
++%%
++udp_connect(#sock{inet6=I}, {A,B,C,D,E,F,G,H}=IP, Port, Verbose)
++  when ?ip6(A,B,C,D,E,F,G,H), ?port(Port), is_boolean(Verbose) ->
++    udp_connect_socket(I, IP, Port, Verbose);
++udp_connect(#sock{inet=I}, {A,B,C,D}=IP, Port, Verbose)
++  when ?ip(A,B,C,D), ?port(Port), is_boolean(Verbose) ->
++    udp_connect_socket(I, IP, Port, Verbose).
++
++udp_connect_fam(Fam, IP, Port, Verbose) ->
++    case gen_udp:open(-1, [{active,false},binary,Fam]) of
++        {ok, Socket} = OK ->
++            case gen_udp:connect(Socket, IP, Port) of
++                ok ->
++                    ?verbose(Verbose, "UDP connected ~p:~p~n",
++                             [IP, Port]),
++                    OK;
++                {error, _} = E1 ->
++                    ?verbose(Verbose,
++                             "UDP connect error ~p:~p ~p~n", [IP, Port, E1]),
++                    _ = gen_udp:close(Socket),
++                    E1
++            end;
++        {error, _} = E2 ->
++            ?verbose(Verbose,
++                     "UDP open failed ~p:~p ~p~n", [IP, Port, E2]),
++            E2
++    end.
++
++udp_connect_socket(Socket, IP, Port, Verbose) ->
++    case gen_udp:connect(Socket, IP, Port) of
++        ok ->
++            ?verbose(Verbose, "UDP connected ~p:~p~n", [IP, Port]),
++            {ok, Socket};
++        {error, _} = Error ->
++            ?verbose(Verbose,
++                     "UDP connect error ~p:~p ~p~n", [IP, Port, Error]),
++            Error
++    end.
++
++
++udp_recv(Socket, Timeout, Decode) ->
++    PollCnt = Timeout div 50,
++    do_udp_recv(Socket, Timeout, Decode, deadline(Timeout), PollCnt).
++
++do_udp_recv(Socket, Timeout, Decode, Deadline, PollCnt)
++  when is_integer(Timeout), 0 =< Timeout,
++       is_integer(Deadline),
++       is_integer(PollCnt), 0 < PollCnt ->
++    case gen_udp:recv(Socket, 0, Timeout) of
++	{ok,UdpMsg} ->
++	    case Decode(UdpMsg) of
++		retry when 0 < Timeout ->
++		    do_udp_recv(
++                      Socket, timeout(Deadline), Decode, Deadline, PollCnt);
++		retry ->
+ 		    %% This is a compromise between the hard way i.e
+ 		    %% in the clause below if Timeout becomes 0 bailout
+ 		    %% immediately and risk that the right reply lies
+@@ -1051,17 +1102,20 @@ do_udp_recv(I, IP, Port, Timeout, Decode
+ 		    %% DNS server flooding with bad id replies causing
+ 		    %% an infinite loop here.
+                     %%
++                    %% Finalize with PollCnt number of recv timeout 0
++                    %%
+ 		    do_udp_recv(
+-                      I, IP, Port, Timeout, Decode, Time, PollCnt-50);
+-		false ->
+-		    do_udp_recv(
+-                      I, IP, Port, timeout(Time), Decode, Time, PollCnt);
++                      Socket, Timeout, Decode, Deadline, PollCnt - 1);
+ 		Result ->
+ 		    Result
+ 	    end;
+ 	Error -> Error
+-    end.
++    end;
++do_udp_recv(_Socket, Timeout, _Decode, Deadline, 0)
++  when is_integer(Timeout), 0 =< Timeout, is_integer(Deadline) ->
++    timeout.
+ 
++udp_close(undefined) -> ok;
+ udp_close(#sock{inet=I,inet6=I6}) ->
+     if I =/= undefined -> gen_udp:close(I); true -> ok end,
+     if I6 =/= undefined -> gen_udp:close(I6); true -> ok end,
+@@ -1094,7 +1148,7 @@ udp_close(#sock{inet=I,inet6=I6}) ->
+ do_query(_Q, [], _Timer) ->
+     %% We have no name server to ask, so say nxdomain
+     {error,nxdomain};
+-do_query(#q{options=#options{retry=Retry}}=Q, NSs, Timer) ->
++do_query(#q{options=#options{retry=Retry,random=Random}}=Q, NSs, Timer) ->
+     %% We have at least one name server,
+     %% so a failure will be a time-out,
+     %% unless a name server says otherwise
+@@ -1106,7 +1160,11 @@ do_query(#q{options=#options{retry=Retry
+           (_) -> false
+       end, NSs) orelse
+         erlang:error(badarg, [Q,NSs,Timer]),
+-    query_retries(Q, NSs, Timer, Retry, 0, #sock{}, Reason).
++    S = case Random of
++            true    -> undefined;
++            false   -> #sock{}
++        end,
++    query_retries(Q, NSs, Timer, Retry, 0, S, Reason).
+ 
+ %% Loop until out of retries or name servers
+ %%
+@@ -1193,7 +1251,7 @@ query_nss_dns(
+ 
+ %% Wrap with retry time
+ servfail_retry_time(RetryTimeout, NS) ->
+-    {servfail_retry, time(RetryTimeout), NS}.
++    {servfail_retry, deadline(RetryTimeout), NS}.
+ 
+ %% Unwrap and wait
+ servfail_retry_wait(NsSpec) ->
+@@ -1224,14 +1282,15 @@ query_nss_result(Q, NSs, Timer, Retry, I
+             %% The server did not like that.
+             %% Do not retry this server since
+             %% it will not answer differently on the next retry.
+-	    query_nss(Q, NSs, Timer, Retry, I, S, NewReason, RetryNSs);
++	    query_nss_retry(Q, NSs, Timer, Retry, I, S, NewReason, RetryNSs);
++ 	{error,E=NewReason}
+ 	{error,E=NewReason}
+           when E =:= formerr;
+                E =:= enetunreach;
+                E =:= econnrefused ->
+             %% Could not decode answer, or network problem.
+             %% Do not retry this server.
+-	    query_nss(Q, NSs, Timer, Retry, I, S, NewReason, RetryNSs);
++	    query_nss_retry(Q, NSs, Timer, Retry, I, S, NewReason, RetryNSs);
+ 	{error,timeout} -> % Query time-out
+             %% Try next server, may retry this server
+ 	    query_nss(Q, NSs, Timer, Retry, I, S, Reason, [NS|RetryNSs]);
+@@ -1240,13 +1299,13 @@ query_nss_result(Q, NSs, Timer, Retry, I
+             case inet:timeout(RetryTimeout, Timer) of
+                 RetryTimeout ->
+                     NsSpec = servfail_retry_time(RetryTimeout, NS),
+-                    query_nss(
++                    query_nss_retry(
+                       Q, NSs, Timer, Retry, I, S, NewReason,
+                       [NsSpec|RetryNSs]);
+                 _ ->
+                     %% No time for a new retry with this server
+                     %% - do not retry this server
+-                    query_nss(
++                    query_nss_retry(
+                       Q, NSs, Timer, Retry, I, S, NewReason, RetryNSs)
+             end;
+ 	{error,NewReason} ->
+@@ -1255,9 +1314,18 @@ query_nss_result(Q, NSs, Timer, Retry, I
+             %%     {error,{noquery,Msg}} |
+             %%     {error,OtherSocketError}
+             %% Try next server, may retry this server
+-	    query_nss(Q, NSs, Timer, Retry, I, S, NewReason, [NS|RetryNSs])
++	    query_nss_retry(
++              Q, NSs, Timer, Retry, I, S, NewReason, [NS|RetryNSs])
+     end.
+ 
++query_nss_retry(Q0, NSs, Timer, Retry, I, S, Reason, RetryNSs) ->
++    Q = case S of
++            undefined -> update_query_id(Q0);
++            #sock{}   -> Q0
++        end,
++    query_nss(Q, NSs, Timer, Retry, I, S, Reason, RetryNSs).
++
++
+ query_retries_error(#q{options=#options{nxdomain_reply=NxReply}}, S, Reason) ->
+     _ = udp_close(S),
+     case Reason of
+@@ -1277,7 +1345,7 @@ query_ns(S0, {Msg, Buffer}, IP, Port, Ti
+ 	    {S0,
+              query_tcp(TcpTimeout, Msg, Buffer, IP, Port, Verbose)};
+ 	false ->
+-	    case udp_open(S0, IP) of
++	    case udp_open(S0, IP, Verbose) of
+ 		{ok,S} ->
+ 		    UdpTimeout =
+ 			inet:timeout( (Tm * (1 bsl I)) div Retry, Timer),
+@@ -1300,43 +1368,56 @@ query_ns(S0, {Msg, Buffer}, IP, Port, Ti
+ 	    end
+     end.
+ 
+-query_udp(_S, _Msg, _Buffer, _IP, _Port, 0, _Verbose) ->
++
++query_udp(_S, _Msg0, _Buffer, IP, Port, 0, Verbose) ->
++    ?verbose(Verbose, "No try UDP server : ~p:~p (overdue)\n",
++	     [IP,Port]),
+     timeout;
+ query_udp(S, Msg, Buffer, IP, Port, Timeout, Verbose) ->
+     ?verbose(Verbose, "Try UDP server : ~p:~p (timeout=~w)\n",
+ 	     [IP,Port,Timeout]),
+-    case
+-	case udp_connect(S, IP, Port) of
+-	    ok ->
+-		udp_send(S, IP, Port, Buffer);
+-	    E1 ->
+-		E1 end of
+-	ok ->
+-	    Decode =
+-		fun ({RecIP,RecPort,Answer})
+-		      when RecIP =:= IP, RecPort =:= Port ->
+-			case decode_answer(Answer, Msg, Verbose) of
+-			    {error,badid} ->
+-				false;
+-			    Reply ->
+-				Reply
+-			end;
+-		    ({_,_,_}) ->
+-			false
+-		end,
+-	    case udp_recv(S, IP, Port, Timeout, Decode) of
+-		{ok,_}=Result ->
+-		    Result;
+-		E2 ->
+-		    ?verbose(Verbose, "UDP server error: ~p\n", [E2]),
+-		    E2
+-	    end;
+-	E3 ->
+-	    ?verbose(Verbose, "UDP send failed: ~p\n", [E3]),
+-	    {error,econnrefused}
++    case udp_connect(S, IP, Port, Verbose) of
++        {error, _} = E1 ->
++	    ?verbose(Verbose, "UDP connect failed: ~p\n", [E1]),
++            E1;
++        {ok, Socket} ->
++            DecodeFun =
++                fun ({RecIP, RecPort, Bin})
++                    when RecIP =:= IP, RecPort =:= Port ->
++                        case decode_reply(Bin, Msg, Verbose) of
++                            {error,Reason}
++                              when Reason =:= badid;
++                                   Reason =:= unknown;
++                                   Reason =:= noquery -> retry;
++                            Reply                     -> Reply
++                        end;
++                    ({_, _, _})                       -> retry
++                end,
++            try
++                case gen_udp:send(Socket, Buffer) of
++                    {error, _} = E2 ->
++                        ?verbose(Verbose, "UDP send failed: ~p ~p ~p\n",
++                                 [Socket, Buffer, E2]),
++                        E2;
++                    ok ->
++                        case udp_recv(Socket, Timeout, DecodeFun) of
++                            {ok, _} = Result -> Result;
++                            E3 ->
++                                ?verbose(Verbose,
++                                         "UDP server error: ~p\n", [E3]),
++                                E3
++                        end
++                end
++            after
++                S =:= undefined andalso
++                    gen_udp:close(Socket)
++            end
+     end.
+ 
+-query_tcp(0, _Msg, _Buffer, _IP, _Port, _Verbose) ->
++
++query_tcp(0, _Msg, _Buffer, IP, Port, Verbose) ->
++    ?verbose(Verbose, "No try TCP server : ~p:~p (overdue)\n",
++             [IP, Port]),
+     timeout;
+ query_tcp(Timeout, Msg, Buffer, IP, Port, Verbose) ->
+     ?verbose(Verbose, "Try TCP server : ~p:~p (timeout=~w)\n",
+@@ -1352,9 +1433,9 @@ query_tcp(Timeout, Msg, Buffer, IP, Port
+ 	    case gen_tcp:send(S, Buffer) of
+ 		ok ->
+ 		    case gen_tcp:recv(S, 0, Timeout) of
+-			{ok, Answer} ->
++			{ok, Bin} ->
+ 			    gen_tcp:close(S),
+-			    case decode_answer(Answer, Msg, Verbose) of
++			    case decode_reply(Bin, Msg, Verbose) of
+ 				{ok, _} = OK -> OK;
+ 				{error, badid} -> {error, servfail};
+ 				Error -> Error
+@@ -1378,8 +1459,8 @@ query_tcp(Timeout, Msg, Buffer, IP, Port
+ 	_:_ -> {error, einval}
+     end.
+ 
+-decode_answer(Answer, Q_Msg, Verbose) ->
+-    case inet_dns:decode(Answer, false) of
++decode_reply(Bin, Q_Msg, Verbose) ->
++    case inet_dns:decode_reply(Bin, Q_Msg) of
+ 	{ok, #dns_rec{header = H, arlist = ARList} = Msg} ->
+ 	    ?verbose(Verbose, "Got reply: ~p~n", [dns_msg(Msg)]),
+ 	    T = case lists:keyfind(dns_rr_tsig, 1, ARList) of
+@@ -1393,7 +1474,8 @@ decode_answer(Answer, Q_Msg, Verbose) ->
+ 		end,
+ 	    RCode = T orelse (E bsl 4) bor H#dns_header.rcode,
+ 	    case RCode of
+-		?NOERROR  -> decode_answer_noerror(Q_Msg, Msg, H);
++		?NOERROR  -> {ok,Msg};
++                    %% decode_answer_noerror(Q_Msg, Msg, H);
+ 		?FORMERR  -> {error,{qfmterror,Msg}};
+ 		?SERVFAIL -> {error,{servfail,Msg}};
+ 		?NXDOMAIN -> {error,{nxdomain,Msg}};
+@@ -1411,44 +1493,11 @@ decode_answer(Answer, Q_Msg, Verbose) ->
+ 		?BADTRUNC -> {error,{badtrunc,Msg}};
+ 		_         -> {error,{unknown,Msg}}
+ 	    end;
+-	{error, formerr} = Error ->
+-	    ?verbose(Verbose, "Got reply: decode format error~n", []),
++	{error, Reason} = Error ->
++	    ?verbose(Verbose, "Got reply: decode error ~p~n", [Reason]),
+ 	    Error
+     end.
+ 
+-decode_answer_noerror(
+-  #dns_rec{header = Q_H, qdlist = [Q_RR]},
+-  #dns_rec{qdlist = QDList} = Msg,
+-  H) ->
+-    %% Validate the reply
+-    if
+-        H#dns_header.id     =/= Q_H#dns_header.id ->
+-            {error,badid};
+-        H#dns_header.qr     =/= true;
+-        H#dns_header.opcode =/= Q_H#dns_header.opcode;
+-        H#dns_header.rd andalso not Q_H#dns_header.rd ->
+-            {error,{unknown,Msg}};
+-        true ->
+-            case QDList of
+-                [RR] ->
+-                    case
+-                        (RR#dns_query.class =:= Q_RR#dns_query.class)
+-                        andalso
+-                        (RR#dns_query.type =:= Q_RR#dns_query.type)
+-                        andalso
+-                        inet_db:eq_domains(
+-                          RR#dns_query.domain, Q_RR#dns_query.domain)
+-                    of
+-                        true ->
+-                            {ok, Msg};
+-                        false ->
+-                            {error,{noquery,Msg}}
+-                    end;
+-                _ when is_list(QDList) ->
+-                    {error,{noquery,Msg}}
+-            end
+-    end.
+-
+ %%
+ %% Transform domain name or address
+ %% 1.  "a.b.c"    =>
+@@ -1552,20 +1601,20 @@ dns_msg(Msg) ->
+ 
+ 
+ 
+--compile({inline, [time/1, timeout/1, wait/1]}).
++-compile({inline, [deadline/1, timeout/1, wait/1]}).
+ 
+-%% What Time is the Timeout? [ms]
++%% When is the Timeout? [ms]
+ %%
+-time(Timeout) ->
++deadline(Timeout) when is_integer(Timeout), 0 =< Timeout ->
+     erlang:monotonic_time(1000) + Timeout.
+ 
+-%% How long Timeout to Time? [ms] >= 0
++%% How long Timeout to Deadline? [ms] >= 0
+ %%
+-timeout(Time) ->
+-    TimeNow = erlang:monotonic_time(1000),
++timeout(Deadline) when is_integer(Deadline) ->
++    Time = erlang:monotonic_time(1000),
+     if
+-        TimeNow < Time ->
+-            Time - TimeNow;
++        Time < Deadline ->
++            Deadline - Time;
+         true ->
+             0
+     end.
+@@ -1574,7 +1623,7 @@ timeout(Time) ->
+ %%
+ wait(0) ->
+     ok;
+-wait(Timeout) ->
++wait(Timeout) when is_integer(Timeout), 0 < Timeout ->
+     receive
+     after Timeout ->
+             ok
+Index: otp-OTP-27.1.3/lib/kernel/src/inet_udp.erl
+===================================================================
+--- otp-OTP-27.1.3.orig/lib/kernel/src/inet_udp.erl
++++ otp-OTP-27.1.3/lib/kernel/src/inet_udp.erl
+@@ -1,7 +1,7 @@
+ %%
+ %% %CopyrightBegin%
+ %% 
+-%% Copyright Ericsson AB 1997-2024. All Rights Reserved.
++%% Copyright Ericsson AB 1997-2026. All Rights Reserved.
+ %% 
+ %% Licensed under the Apache License, Version 2.0 (the "License");
+ %% you may not use this file except in compliance with the License.
+@@ -62,6 +62,9 @@ open(Port, Opts) ->
+ 	    port   = BPort,
+ 	    opts   = SockOpts}}
+ 	  when is_map(BAddr); % sockaddr_in()
++               %%
++               BPort =:= -1, ?ip(BAddr);
++               BPort =:= -1, BAddr =:= undefined;
+                ?port(BPort), ?ip(BAddr);
+                ?port(BPort), BAddr =:= undefined ->
+ 	    inet:open_bind(
+Index: otp-OTP-27.1.3/lib/kernel/test/inet_res_SUITE.erl
+===================================================================
+--- otp-OTP-27.1.3.orig/lib/kernel/test/inet_res_SUITE.erl
++++ otp-OTP-27.1.3/lib/kernel/test/inet_res_SUITE.erl
+@@ -1,7 +1,7 @@
+ %%
+ %% %CopyrightBegin%
+ %%
+-%% Copyright Ericsson AB 2009-2024. All Rights Reserved.
++%% Copyright Ericsson AB 2009-2026. All Rights Reserved.
+ %%
+ %% Licensed under the Apache License, Version 2.0 (the "License");
+ %% you may not use this file except in compliance with the License.
+@@ -150,6 +150,8 @@ zone_dir(TC) ->
+     end.
+ 
+ init_per_testcase(Func, Config) ->
++    _ = application:load(crypto),  % Enable DNS request ID and port randomness
++    %% inet_db:res_option(random, false), % Disable the above
+ 
+     ?P("init_per_testcase -> entry with"
+        "~n      Func:   ~p"

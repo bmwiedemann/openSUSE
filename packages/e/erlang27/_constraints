@@ -1,10 +1,18 @@
 <constraints>
   <hardware>
-    <cpu>
-      <flag>sse2</flag>
-    </cpu>
     <memory>
       <size unit="M">6000</size>
     </memory>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>i586</arch>
+    </conditions>
+    <hardware>
+      <cpu>
+        <flag>sse2</flag>
+      </cpu>
+    </hardware>
+  </overwrite>
 </constraints> 
+

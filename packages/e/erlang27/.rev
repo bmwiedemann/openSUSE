@@ -7,4 +7,41 @@
     <comment>Try again with all the patches</comment>
     <requestid>1315482</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ede04abf7e09dff1e0a99495cc6558e1</srcmd5>
+    <version>27.1.3</version>
+    <time>1780511029</time>
+    <user>anag_factory</user>
+    <comment>- Merge in fixes from SLE-16
+- CVE-2026-42789: `public_key` application accepts non-CA certificates
+  as intermediate issuers and this enables chain forgery (bsc#1266449)
+  * fix-CVE-2026-42789.patch
+- CVE-2026-42790: Name Constraints and Subject CommonName fallback in
+  TLS hostname verification allows for certificate forgery by MITM
+  attacker (bsc#1266466)
+  * fix-CVE-2026-42790.patch
+- CVE-2026-42791: OCSP response verification in the `public_key`
+  application does not check the validity period of the OCSP responder
+  certificate and allows for OCSP response response forgery (bsc#1266448)
+  * fix-CVE-2026-42791.patch
+- CVE-2025-4748: erlang,erlang26: improper limitation of a pathname
+  may lead to path traversal (bsc#1244642)
+  * fix-CVE-2025-4748.patch
+- CVE-2026-32147: erlang: Improper Limitation of a Pathname to a
+  kRestricted Directory ('Path Traversal') in SFTP chroot 
+  (bsc#1262503)
+  * fix-CVE-2026-32147.patch
+- jinterface: Allow to build determenistic OtpErlang.jar
+  (bsc#1262288)
+  * fix-determenistic-jar.patch
+- CVE-2026-32144: missing signature verification can cause OCSP
+  authorization bypass and information disclosure (bsc#1261734)
+  * fix-CVE-2026-32144.patch
+- CVE-2026-28808: incorrect authorization can lead to 
+  unauthenticated access to protected CGI scripts (bsc#1261728)
+  * fix-CVE-2026-28808.patch
+- CVE-2026-28810: predictable DNS transaction IDs can cause DNS 
+  cache poisoning (bsc#1261726)</comment>
+    <requestid>1356831</requestid>
+  </revision>
 </revisionlist>

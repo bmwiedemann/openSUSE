@@ -52,7 +52,22 @@ Source10:       epmd-user.conf
 Patch0:         otp-R16B-rpath.patch
 # PATCH-FIX-OPENSUSE erlang-not-install-misc.patch - matwey.kornilov@gmail.com -- patch from Fedora, this removes unneeded magic
 Patch4:         erlang-not-install-misc.patch
-Patch5:         fix-CVE-2025-48041.patch
+# Take the latest ssh stack from the maint-27 branch
+Patch5:         feature-fix-update-ssh-stack.patch
+Patch6:         fix-CVE-2026-21620.patch
+Patch7:         fix-CVE-2026-23941.patch
+Patch8:         fix-CVE-2026-23942.patch
+Patch9:         fix-CVE-2026-23943.patch
+Patch10:        fix-CVE-2026-28808.patch
+Patch11:        fix-randomize-inet_res.patch
+Patch12:        fix-CVE-2026-28810.patch
+Patch13:        fix-CVE-2026-32144.patch
+Patch14:        fix-determenistic-jar.patch
+Patch15:        fix-CVE-2026-32147.patch
+Patch16:        fix-CVE-2026-42789.patch
+Patch17:        fix-CVE-2026-42790.patch
+Patch18:        fix-CVE-2026-42791.patch
+Patch19:        fix-CVE-2025-4748.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  autoconf
 BuildRequires:  dejavu-fonts
@@ -298,6 +313,21 @@ A Graphics System used to write platform independent user interfaces.
 %patch -P 0 -p1 -b .rpath
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
+%patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
+%patch -P 19 -p1
+
 cp %{SOURCE9} .
 install -m 0755 %{SOURCE1} ./bin/ex_doc
 
@@ -312,7 +342,7 @@ sed -i 's|WX_LIBS=`$WX_CONFIG_WITH_ARGS --libs`|WX_LIBS="`$WX_CONFIG_WITH_ARGS -
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%ifarch %x86_64
+%ifarch %{ix86}
 export CFLAGS="$CFLAGS -msse2"
 %endif
 export CXXFLAGS=$CFLAGS

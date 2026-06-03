@@ -1,0 +1,48 @@
+From ed91c319853c0c9eba536f54138ac3081f5bde80 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Fri, 16 Jan 2026 12:07:14 +0100
+Subject: [PATCH] jinterface: Allow to build determenistic OtpErlang.jar
+
+This is a simpler alternative to PR #5580
+
+It lets us get closer to reproducible builds for erlang.
+See https://reproducible-builds.org/ for why this is good.
+
+Note: when using options with double-dash,
+  jar does not understand merged options such as -cf anymore
+  so we have to split them up to work again.
+
+Note2: we hardcode the date, because the complexity of converting
+  seconds to a date string to work on all OSes is not worth it.
+
+Closes #5580
+---
+ .../java_src/com/ericsson/otp/erlang/Makefile     | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/lib/jinterface/java_src/com/ericsson/otp/erlang/Makefile b/lib/jinterface/java_src/com/ericsson/otp/erlang/Makefile
+index 7ce4bf5172b9..de43370a9204 100644
+--- a/lib/jinterface/java_src/com/ericsson/otp/erlang/Makefile
++++ b/lib/jinterface/java_src/com/ericsson/otp/erlang/Makefile
+@@ -79,9 +79,18 @@ CLASSPATH = $(JAVA_SRC_ROOT)
+ 
+ JAVADOCFLAGS=-d $(DOCDIR)
+ JAVAFLAGS=-d $(JAVA_DEST_ROOT) 
+-JARFLAGS=-cf
+-ifneq ($(V),0)
+-JARFLAGS=-cfv
++ifeq ($(V),0)
++	JARFLAGS=-cf
++	JARFLAGS2=-c -f
++else
++	JARFLAGS=-cvf
++	JARFLAGS2=-c -v -f
++endif
++ifdef SOURCE_DATE_EPOCH
++# We hardcode the date, because the complexity of converting
++# seconds to a date string to work on all OSes is not worth it.
++# The --date option requires openjdk-17 or later.
++	JARFLAGS := --date=1980-01-01T12:00:00Z $(JARFLAGS2)
+ endif
+ 
+ JAVA_OPTIONS = -Xlint -encoding UTF-8
