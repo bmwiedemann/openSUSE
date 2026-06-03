@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  2 18:12:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Correct the License tag to LGPL-2.1-or-later (the sources are
+  LGPL 2.1 or later, not 2.0)
+- Minor spec cleanup
+
+-------------------------------------------------------------------
 Tue Jul 29 10:24:16 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not build with Qt in TW and SLE16. zbar only supports Qt5

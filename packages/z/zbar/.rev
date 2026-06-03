@@ -242,4 +242,12 @@
     <comment></comment>
     <requestid>1296320</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>0eeeb37ae17257bc3c770665f0b27a3f</srcmd5>
+    <version>0.23.93</version>
+    <time>1780510853</time>
+    <user>anag_factory</user>
+    <comment>Fix License tag to LGPL-2.1-or-later; minor spec cleanup</comment>
+    <requestid>1356798</requestid>
+  </revision>
 </revisionlist>

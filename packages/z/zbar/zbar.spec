@@ -1,7 +1,7 @@
 #
 # spec file for package zbar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Carlos Goncalves <cgoncalves@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,19 +17,18 @@
 #
 
 
-%if 0%{suse_version} >= 1600
+%define sover   0
+%define libname lib%{name}%{sover}
+%if 0%{?suse_version} >= 1600
 %bcond_with qt
 %else
 %bcond_without qt
 %endif
-
-%define sover   0
-%define libname lib%{name}%{sover}
 Name:           zbar
 Version:        0.23.93
 Release:        0
 Summary:        Bar code reader
-License:        LGPL-2.0-or-later
+License:        LGPL-2.1-or-later
 URL:            https://github.com/mchehab/zbar
 Source0:        https://linuxtv.org/downloads/%{name}/%{name}-%{version}.tar.bz2
 Source98:       baselibs.conf
@@ -43,12 +42,6 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(ImageMagick)
-%if %{with qt}
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-%endif
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libv4l2)
@@ -58,6 +51,12 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xv)
 %lang_package
+%if %{with qt}
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
+%endif
 
 %description
 ZBar reads bar codes from various sources, such as video streams,
