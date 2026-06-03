@@ -308,6 +308,7 @@ unsorted:
   - SDL3-devel-doc 
   - SDL3_image-devel 
   - SDL3_mixer-devel 
+  - SDL3_net-devel 
   - SDL3_ttf-devel 
   - SDL_Pango-devel 
   - SDL_mixer-devel 
@@ -9147,6 +9148,8 @@ unsorted:
   - itinerary 
   - itinerary-lang 
   - itk 
+  - itpp-devel 
+  - itpp-doc 
   - itstool 
   - iucode-tool 
   - iverilog 
@@ -10351,6 +10354,7 @@ unsorted:
   - kmouth 
   - kmouth-lang 
   - kmscon 
+  - kmscon-pango 
   - kmscube 
   - kmymoney 
   - kmymoney-devel 
@@ -11618,6 +11622,7 @@ unsorted:
   - libSDL3-0-32bit 
   - libSDL3_image0 
   - libSDL3_mixer0 
+  - libSDL3_net0 
   - libSDL3_ttf0 
   - libSDL_Pango1 
   - libSDL_bgi-devel 
@@ -12145,10 +12150,10 @@ unsorted:
   - libaudaspace-c1_9 
   - libaudaspace-py1_9 
   - libaudaspace1_9 
-  - libaudcore5 
+  - libaudcore6 
   - libaudgui6 
   - libaudiofile1 
-  - libaudqt3 
+  - libaudqt4 
   - libaudtag3 
   - libaugeas0-32bit 
   - libauparse0-32bit 
@@ -13265,7 +13270,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla57 
+  - libfilezilla58 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -13459,7 +13464,7 @@ unsorted:
   - libfyaml-fy-tool 
   - libfzssh 
   - libfzssh-devel 
-  - libfzssh11_0_0 
+  - libfzssh13_0_0 
   - libga68-2 
   - libga68-2-32bit 
   - libgadu-devel 
@@ -14219,6 +14224,7 @@ unsorted:
   - libitm1-gcc15-32bit 
   - libitm1-gcc7 
   - libitm1-gcc7-32bit 
+  - libitpp8 
   - libivykis0 
   - libiw-devel 
   - libixion-devel 
@@ -15154,7 +15160,7 @@ unsorted:
   - libopenal0 
   - libopenal0-32bit 
   - libopenal1-32bit 
-  - libopenbabel7 
+  - libopenbabel8 
   - libopenblas_openmp-devel 
   - libopenblas_pthreads-devel 
   - libopenblas_pthreads-devel-32bit 
@@ -25541,6 +25547,7 @@ unsorted:
   - python311-django-polymorphic 
   - python311-django-push-notifications 
   - python311-django-q 
+  - python311-django-q2 
   - python311-django-qsessions 
   - python311-django-redis 
   - python311-django-registration 
@@ -29462,6 +29469,7 @@ unsorted:
   - python313-django-polymorphic 
   - python313-django-push-notifications 
   - python313-django-q 
+  - python313-django-q2 
   - python313-django-qsessions 
   - python313-django-redis 
   - python313-django-registration 
@@ -33283,6 +33291,7 @@ unsorted:
   - python314-dask-distributed 
   - python314-dask-image 
   - python314-dask-test 
+  - python314-dataclasses-json 
   - python314-datadiff 
   - python314-datamodel-code-generator 
   - python314-datashader 
@@ -33420,6 +33429,7 @@ unsorted:
   - python314-django-pipeline 
   - python314-django-polymorphic 
   - python314-django-push-notifications 
+  - python314-django-q2 
   - python314-django-qsessions 
   - python314-django-redis 
   - python314-django-registration 
@@ -34118,6 +34128,7 @@ unsorted:
   - python314-langchain-chroma 
   - python314-langdetect 
   - python314-langfuse 
+  - python314-langsmith 
   - python314-langtable 
   - python314-lap 
   - python314-lark 
@@ -50085,6 +50096,11 @@ unsorted:
   - verilator-examples 
   - vermouth 
   - vermouth-lang 
+  - versitygw 
+  - versitygw-cli 
+  - versitygw-cli-bash-completion 
+  - versitygw-cli-fish-completion 
+  - versitygw-cli-zsh-completion 
   - veusz 
   - veusz-common 
   - vexctl 
