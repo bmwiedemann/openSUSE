@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun  2 16:15:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.27.1:
+  * Enable TLS 1.3 by default (while still disallowing TLS 1.1
+    and below)
+  * Set a sensible default port again: an nbdtab entry without a
+    port specification is read as the default 10809 instead of 0
+  * nbd-client: find the index when the device name is given
+    without the /dev/ prefix
+  * nbd-client now depends on the nbd kernel module being loaded
+  * Refactor nbd-client argument parsing into a separate file
+  * Fix configure --disable-manpages
+  * Fix build on musl + gcc14 (incompatible-pointer-types)
+  * Several clang-warning, formatting and cleanup fixes
+- Drop nbd-forgotten-sh.tmpl.patch: upstream moved the shell
+  template to systemd/sh.tmpl and ships it in the tree
+- Build from the upstream git archive and regenerate the build
+  system with autogen.sh; add autoconf, autoconf-archive,
+  automake, flex and libtool BuildRequires
+
+-------------------------------------------------------------------
 Wed Sep  3 12:35:50 UTC 2025 - pgajdos@suse.com
 
 - version update to 3.26.1

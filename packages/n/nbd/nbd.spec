@@ -1,7 +1,7 @@
 #
 # spec file for package nbd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,23 @@
 
 
 Name:           nbd
-Version:        3.26.1
+Version:        3.27.1
 Release:        0
 Summary:        Network Block Device Server and Client Utilities
 License:        GPL-2.0-or-later
 URL:            https://nbd.sourceforge.io/
-Source0:        https://github.com/NetworkBlockDevice/nbd/releases/download/nbd-%{version}/nbd-%{version}.tar.xz
+Source0:        https://github.com/NetworkBlockDevice/nbd/archive/refs/tags/%{name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-server.service
 Source3:        config.example
 Source4:        nbd-server.sysconfig
 Source5:        nbd-client.service
-# https://github.com/NetworkBlockDevice/nbd/commit/f8d7d3dbf1ef2ef84c92fe375ebc8674a79e25c2
-Patch0:         nbd-forgotten-sh.tmpl.patch
+BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  docbook-utils-minimal
+BuildRequires:  flex
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(glib-2.0) >= 2.26.0
@@ -59,9 +62,11 @@ The package also contains the nbd-client tools, which you need to
 configure the nbd devices on the client side.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
+# tarball is the git archive without a pre-generated configure
+./autogen.sh
 %configure
 %make_build
 
