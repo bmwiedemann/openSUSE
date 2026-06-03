@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  2 18:45:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop the dead gcc13 fallback and the matching %build compiler
+  overrides (the suse_version < 1600 path only applied to the
+  now-EOL Leap 15.6)
+- Fix the %install doc-dir cleanup to target %{_docdir}/%{name}
+  instead of an empty-variable path
+
+-------------------------------------------------------------------
 Sun Apr 12 10:49:58 UTC 2026 - Libor Pechacek <lpechacek@gmx.com>
 
 - update to 9.8.1:

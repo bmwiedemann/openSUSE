@@ -29,11 +29,7 @@ URL:            https://proj.org/
 Source0:        https://github.com/OSGeo/PROJ/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/OSGeo/PROJ-data/releases/download/%{data_version}.0/%{name}-data-%{data_version}.tar.gz
 BuildRequires:  cmake >= 3.16
-%if 0%{?suse_version} < 1600
-BuildRequires:  gcc13-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  sqlite3
 BuildRequires:  pkgconfig(gtest)
@@ -122,10 +118,6 @@ License:        MIT
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} < 1600
-export CC=gcc-13
-export CXX=g++-13
-%endif
 %cmake
 %cmake_build
 
@@ -133,9 +125,8 @@ export CXX=g++-13
 %cmake_install
 tar -C %{buildroot}%{_datadir}/%{name} -xf %{SOURCE1}
 find %{buildroot} -type f -name "*.la" -delete -print
-# It would be good to find out where these extra files
-# come from:
-rm -rf %{buildroot}%{_datadir}/doc/${name}
+# Drop the doc dir cmake installs; COPYING is shipped via %license below
+rm -rf %{buildroot}%{_docdir}/%{name}
 
 %check
 # Tests dont work on i586 and noone cares

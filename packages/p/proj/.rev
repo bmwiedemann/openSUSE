@@ -504,4 +504,12 @@ This package is included in Debian.
     <comment></comment>
     <requestid>1347078</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>3277c35434673998ee8bc4393f8e1574</srcmd5>
+    <version>9.8.1</version>
+    <time>1780510976</time>
+    <user>anag_factory</user>
+    <comment>Drop dead Leap 15.6 (suse_version &lt; 1600) gcc13 build constructs; fix the %install doc-dir cleanup to target %{_docdir}/%{name}.</comment>
+    <requestid>1356800</requestid>
+  </revision>
 </revisionlist>
