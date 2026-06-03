@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  3 01:25:23 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Enforce the security_layer to tls by default in xrdp.ini because
+  of CVE-2026-32105 (bsc#1262312), see:
+
+  https://github.com/neutrinolabs/xrdp/security/advisories/GHSA-j2jm-c596-c5q3
+
+-------------------------------------------------------------------
 Wed May 27 01:57:35 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
 
 - Temporary disable the fixes for CVE-2026-32105 as it brings

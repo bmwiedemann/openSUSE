@@ -507,4 +507,12 @@
     <comment>Adjust spec to make it acceptable in Factory. (forwarded request 1355255 from yfjiang)</comment>
     <requestid>1355256</requestid>
   </revision>
+  <revision rev="63" vrev="5">
+    <srcmd5>b15ebe5917a75348e780fd37769fe099</srcmd5>
+    <version>0.9.27</version>
+    <time>1780511030</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1356834</requestid>
+  </revision>
 </revisionlist>
