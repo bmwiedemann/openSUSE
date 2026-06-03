@@ -17,24 +17,39 @@
 #
 
 
+%bcond_with hip
+
 %define sover 2
 %define sub_library_sover %(echo %{version} | tr '.' '_')
 %define main_library lib%{name}%{sover}
 %define core_library lib%{name}_core%{sub_library_sover}
 %define device_cpu_library lib%{name}_device_cpu%{sub_library_sover}
+%define device_hip_library libOpenImageDenoise_device_hip%{sub_library_sover}
+
+%define __builder ninja
 
 %define pkgname oidn
 Name:           OpenImageDenoise
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Open Image Denoise library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://openimagedenoise.github.io/
 Source:         https://github.com/%{name}/%{pkgname}/releases/download/v%{version}/%{pkgname}-%{version}.src.tar.gz
+Source99:       series
+Patch1:         add-parallel-jobs.patch
 BuildRequires:  cmake >= 3.1
+BuildRequires:  ninja
+%if %{with hip}
+BuildRequires:  clang
+BuildRequires:  hipcc
+BuildRequires:  rocm-hip-devel
+BuildRequires:  rocm-runtime
+%else
 BuildRequires:  gcc-c++
-BuildRequires:  ispc >= 1.29.1
+%endif
+BuildRequires:  ispc >= 1.30.0
 BuildRequires:  tbb-devel
 ExclusiveArch:  x86_64 aarch64
 
@@ -64,6 +79,16 @@ high-quality denoising filters for images rendered with ray tracing.
 
 This package holds the core sub shared library.
 
+%package -n %{device_hip_library}
+Summary:        Shared library for Open Image Denoise library
+Group:          System/Libraries
+
+%description -n %{device_hip_library}
+Intel Open Image Denoise is an open source library of high-performance,
+high-quality denoising filters for images rendered with ray tracing.
+
+This package holds the device hip sub shared library.
+
 %package -n %{device_cpu_library}
 Summary:        Shared library for Open Image Denoise library
 Group:          System/Libraries
@@ -88,7 +113,14 @@ you will need to install %{name}-devel.
 %autosetup -p1 -n %{pkgname}-%{version}
 
 %build
-%cmake
+%cmake \
+  %if %{with hip}
+  -DOIDN_DEVICE_HIP=ON \
+  -DOIDN_DEVICE_HIP_COMPILER=%{_bindir}/hipcc \
+  -DROCM_PATH=%{_libdir}/libhsa-runtime64.so.1 \
+  -DROCM_PATH=%{_libdir} \
+  %endif
+  %{nil}
 %cmake_build
 
 %install
@@ -114,6 +146,12 @@ rm -r %{buildroot}%{_datadir}/doc
 %files -n %{device_cpu_library}
 %license LICENSE.txt
 %{_libdir}/lib%{name}_device_cpu.so.*
+
+%if %{with hip}
+%files -n %{device_hip_library}
+%license LICENSE.txt
+%{_libdir}/libOpenImageDenoise_device_hip.so.%{version}
+%endif
 
 %files devel
 %license LICENSE.txt

@@ -1,0 +1,48 @@
+Index: oidn-2.4.1/devices/hip/CMakeLists.txt
+===================================================================
+--- oidn-2.4.1.orig/devices/hip/CMakeLists.txt
++++ oidn-2.4.1/devices/hip/CMakeLists.txt
+@@ -81,6 +81,7 @@ set_source_files_properties(
+ )
+ 
+ # Fix error with ROCm 7: constexpr function never produces a constant expression
++target_compile_options(OpenImageDenoise_device_hip PRIVATE -parallel-jobs=12)
+ target_compile_options(OpenImageDenoise_device_hip PRIVATE -Wno-invalid-constexpr)
+ # Fix warning: ignoring return value of function declared with 'nodiscard' attribute (HIP API)
+ target_compile_options(OpenImageDenoise_device_hip PRIVATE -Wno-unused-result)
+@@ -90,5 +91,5 @@ if(WIN32)
+ endif()
+ 
+ target_link_libraries(OpenImageDenoise_device_hip PRIVATE OpenImageDenoise_core hip::device)
+-oidn_strip_symbols(OpenImageDenoise_device_hip)
++# oidn_strip_symbols(OpenImageDenoise_device_hip)
+ oidn_install_module(OpenImageDenoise_device_hip)
+\ No newline at end of file
+Index: oidn-2.4.1/devices/CMakeLists.txt
+===================================================================
+--- oidn-2.4.1.orig/devices/CMakeLists.txt
++++ oidn-2.4.1/devices/CMakeLists.txt
+@@ -159,7 +159,7 @@ if(OIDN_DEVICE_HIP)
+       -DCMAKE_CXX_COMPILER:FILEPATH=${OIDN_DEVICE_HIP_COMPILER}
+       -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${CMAKE_TOOLCHAIN_FILE}
+       -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
+-      -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/hip/preinstall
++      -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}
+       -DCMAKE_INSTALL_BINDIR:PATH=${CMAKE_INSTALL_BINDIR}
+       -DCMAKE_INSTALL_LIBDIR:PATH=${CMAKE_INSTALL_LIBDIR}
+       -DOIDN_ROOT_BINARY_DIR:PATH=${OIDN_ROOT_BINARY_DIR}
+@@ -174,14 +174,6 @@ if(OIDN_DEVICE_HIP)
+     DEPENDS
+       OpenImageDenoise_core
+   )
+-
+-  # Due to limitations of CMake, the module is pre-installed at build time to a temporary location,
+-  # and then copied to the real install location at install time.
+-  install(DIRECTORY
+-    ${CMAKE_CURRENT_BINARY_DIR}/hip/preinstall/
+-    DESTINATION "."
+-    USE_SOURCE_PERMISSIONS
+-  )
+ endif()
+ 
+ if(OIDN_DEVICE_METAL)
