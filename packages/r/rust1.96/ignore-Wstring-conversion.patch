@@ -1,0 +1,16 @@
+Index: rustc-1.96.0-src/compiler/rustc_llvm/build.rs
+===================================================================
+--- rustc-1.96.0-src.orig/compiler/rustc_llvm/build.rs
++++ rustc-1.96.0-src/compiler/rustc_llvm/build.rs
+@@ -270,6 +270,11 @@ fn main() {
+             continue;
+         }
+ 
++        // hack to avoid flag on openSUSE which is incompatible with GCC
++        if flag.starts_with("-W") && flag.contains("string-conversion") {
++            continue;
++        }
++
+         cfg.flag(&*flag);
+     }
+ 
