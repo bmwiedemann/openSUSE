@@ -29,7 +29,7 @@
 %endif
 
 Name:           ispc
-Version:        1.29.1
+Version:        1.30.0
 Release:        0
 Summary:        C-based SPMD programming language compiler
 License:        BSD-3-Clause
@@ -146,6 +146,7 @@ pushd %__builddir
 %{_includedir}/intrinsics/emmintrin.isph
 %{_includedir}/intrinsics/xmmintrin.isph
 %dir %{_includedir}/stdlib/
+%{_includedir}/stdlib/amx.isph
 %{_includedir}/stdlib/short_vec.isph
 %{_libdir}/*.so
 %{_libdir}/cmake/ispc/

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 21:30:47 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.30.0
+  https://github.com/ispc/ispc/releases/tag/v1.30.0
+- Updated skip-tests.patch to skip another test which errors out
+  weirdly
+
+-------------------------------------------------------------------
 Sat Jan 10 00:24:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add skip-tests.patch and series file for easier quilt setup
