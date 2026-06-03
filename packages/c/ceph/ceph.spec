@@ -224,6 +224,8 @@ Patch14:        ceph-replace-CryptoPP-calls-with-GnuTLS.patch
 Patch15:        cephadm-reproducible.patch
 # PATCH-FIX-OPENSUSE ceph-liburing-build-fix.patch -- fix build with glibc 2.43
 Patch16:        ceph-liburing-build-fix.patch
+# PATCH-FIX-OPENSUSE ceph-gcc16-build-fix.patch -- fix build with gcc 16
+Patch17:        ceph-gcc16-build-fix.patch
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x riscv64

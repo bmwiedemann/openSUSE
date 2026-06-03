@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  2 12:53:01 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Add ceph-gcc16-build-fix.patch to fix build with gcc 16 
+
+-------------------------------------------------------------------
 Sat Apr 25 09:55:39 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Add ceph-liburing-build-fix.patch to fix build with glibc 2.43 
