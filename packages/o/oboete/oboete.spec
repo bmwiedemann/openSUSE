@@ -1,7 +1,7 @@
 #
 # spec file for package oboete
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid dev.mariinkys.Oboete
 Name:           oboete
-Version:        0.2.3+0
+Version:        0.2.4
 Release:        0
 Summary:        A simple flashcards application for the COSMIC desktop
 License:        GPL-3.0-only
@@ -28,8 +28,8 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
-BuildRequires:  rust >= 1.90
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.90
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description

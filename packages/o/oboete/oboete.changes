@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 07 18:31:54 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 0.2.4:
+  * chore: up version & update deps
+  * improv: theme detection
+  * chore: update deps (Key::Named) `Space` does not exist anymore
+  * i18n(cs): Add Czech translation
+  * fix: config issues
+  * feat: update to iced 0.14 rebase
+  * fix: settings page title
+  * improv: remove [] shortcut indicators from study screen button row
+
+-------------------------------------------------------------------
 Thu Feb 05 11:38:56 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 0.2.3+0:
