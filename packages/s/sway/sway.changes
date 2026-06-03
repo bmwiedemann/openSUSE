@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed May 27 11:44:51 UTC 2026 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- Update to 1.12
+  * Add support for capturing individual windows.
+  * Add support for HDR10 when running with the Vulkan renderer.
+  * Add support for new protocols: color-management-v1,
+    color-representation-v1, xdg-toplevel-tag-v1, ext-workspace-v1, wl_fixes
+  * Add a new --device-primaries to output color_profile to use color
+    primaries advertised in EDID
+  * Add support for keypad slide switches
+  * The default configuration file now ships key bindings for playerctl.
+  * Sway no longer refuses to start on unsupported GPUs (e.g.
+    NVIDIA proprietary drivers). Instead, it displays an informational
+    message. The message can be disabled via the --unsupported-gpu CLI flag
+    or via the SWAY_UNSUPPORTED_GPU environment variable. Sway's policy
+    hasn't changed: only the consequences when starting Sway have.
+  * Display managers are now officially supported for Sway startup.
+    Historically they were marked as unsupported (ie, issues involving
+    login managers were rejected) due to login manager bugs, but we haven't
+    seen such bugs in a while and never got around to re-evaluating our
+    official policy until this release.
+  * The srgb output color profile now applies the piece-wise sRGB transfer
+    function rather than gamma 2.2. Use gamma22 for gamma 2.2. The effective
+    default remains unchanged (gamma 2.2).
+
+-------------------------------------------------------------------
 Fri Dec  5 10:05:50 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Properly use sway-xkb-layout-generator package

@@ -1,7 +1,7 @@
 #
 # spec file for package sway
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define contribver 1.10.1
 Name:           sway
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        Window manager for Wayland compatible with i3
 License:        MIT
@@ -54,7 +54,7 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.21.0
-BuildRequires:  pkgconfig(wlroots-0.19)
+BuildRequires:  pkgconfig(wlroots-0.20)
 BuildRequires:  pkgconfig(xkbcommon)
 # WARNING: do not set this to versioned, as it breaks other branding providers
 # such as openSUSEway (bsc#1222579)
