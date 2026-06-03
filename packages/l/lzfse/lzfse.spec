@@ -1,7 +1,7 @@
 #
 # spec file for package lzfse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 Name:           lzfse
 Version:        1.0
 Release:        0
-Summary:        Reference C implementation of the LZFSE compressor
+Summary:        Reference C implementation of the Lempel-Ziv Finite State Entropy compressor
 License:        BSD-3-Clause
-Group:          Productivity/Archiving/Compression
 URL:            https://github.com/lzfse/lzfse
 Source:         https://github.com/lzfse/lzfse/archive/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  gcc
 
 %description
 LZFSE is a Lempel-Ziv style data compression algorithm using Finite State
@@ -32,9 +32,9 @@ Entropy coding. It targets similar compression rates at higher compression
 and decompression speed compared to deflate using zlib.
 
 %package devel
-Summary:        Reference C implementation of the LZFSE compressor
-Group:          Development/Libraries/C and C++
+Summary:        Reference C implementation of the Lempel-Ziv Finite State Entropy compressor
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 LZFSE is a Lempel-Ziv style data compression algorithm using Finite State
@@ -44,7 +44,7 @@ and decompression speed compared to deflate using zlib.
 This package contains devel files.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%autosetup -n %{name}-%{name}-%{version}
 
 %build
 %cmake \

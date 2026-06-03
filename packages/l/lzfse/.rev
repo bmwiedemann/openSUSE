@@ -49,4 +49,12 @@
     <comment>- Use proper macro for cmake building</comment>
     <requestid>845072</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a28646ebb78fa616975cabc0d1dd5c7b</srcmd5>
+    <version>1.0</version>
+    <time>1780510885</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: build header-only devel as noarch (fix no-binary), add gcc BR, use %autosetup, reword summary, drop Group tags</comment>
+    <requestid>1356656</requestid>
+  </revision>
 </revisionlist>
