@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 03 11:07:03 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Update to version 1550+20260603.7a43683:
+  * profiles: added new systemd actions (bsc#1266944)
+
+-------------------------------------------------------------------
+Tue Jun 02 14:05:51 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 1550+20260602.64ede59:
+  * profiles: fwupd new actions in 2.1.4 (bsc#1267014)
+
+-------------------------------------------------------------------
 Thu May 28 15:25:10 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 1550+20260528.62493d2:

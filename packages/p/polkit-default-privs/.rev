@@ -2508,4 +2508,16 @@ for 12.3</comment>
 </comment>
     <requestid>1355662</requestid>
   </revision>
+  <revision rev="269" vrev="1">
+    <srcmd5>544000e3b4a8d5617641ab91c8a77f70</srcmd5>
+    <version>1550+20260603.7a43683</version>
+    <time>1780510870</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20260603.7a43683:
+  * profiles: added new systemd actions (bsc#1266944)
+- Update to version 1550+20260602.64ede59:
+  * profiles: fwupd new actions in 2.1.4 (bsc#1267014)
+</comment>
+    <requestid>1356953</requestid>
+  </revision>
 </revisionlist>
