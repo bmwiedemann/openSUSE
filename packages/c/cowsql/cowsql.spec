@@ -2,7 +2,7 @@
 # spec file for package cowsql
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        Embeddable, replicated and fault tolerant SQL engine
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
 URL:            https://github.com/cowsql/cowsql
 Source:         https://github.com/cowsql/cowsql/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         cowsql-1.15.9-fix-Wdiscarded-qualifiers.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  3 05:50:56 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build, add cowsql-1.15.9-fix-Wdiscarded-qualifiers.patch
+  from upstream
+
+-------------------------------------------------------------------
 Thu Sep 18 14:53:18 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 1.15.9
