@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 02 15:54:51 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1780410522.ad58d974:
+  * feat(tests): enable parallel-safe fullstack and developer mode tests
+  * fix: ignore transient 'database is locked' errors in cache service
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * Revert "fix: avoid permission denied on cgroup creation for v2"
+  * feat: add run-test-env target to start all local services
+  * fix: add functional API keys for local test environment
+  * fix: use absolute paths for local test environment
+  * feat: Improve CLI retry error feedback with detailed messages
+  * fix: avoid permission denied on cgroup creation for v2
+  * ci: Auto-import keys to avoid interactive prompt for devel_openQA
+  * docs: require atomic commits in agent guidelines
+  * fix: include file paths in worker logging errors
+  * chore(AGENTS.md): add rules for ensuring valid commits
+  * fix: only report job limit in UI when globally reached
+  * docs: Clarify wording in "Spawning multiple jobs …"
+  * docs: Fix wrapping in "Medium Types" section
+  * docs: Fix wrapping and use of blank lines in "Spawning multiple jobs …"
+
+-------------------------------------------------------------------
 Mon Jun 01 13:56:13 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1780322162.c1836389:
