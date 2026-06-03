@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 07:05:32 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-lib 1.2.16:
+  fixes for PCM, control remap, topology, UCM extensions, etc
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.15.3_v1.2.16#alsa-lib
+
+-------------------------------------------------------------------
 Tue Jan 13 15:50:37 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-lib 1.2.15.3:
