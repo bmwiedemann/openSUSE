@@ -136,4 +136,14 @@
   * New command-line option: -s, --search (#160)</comment>
     <requestid>1343838</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>302143626192b6caf623e3f614ca4efb</srcmd5>
+    <version>1.13.1</version>
+    <time>1780511022</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.13.1:
+  * updated rustls-webpki to fix vulnerabilities (#172)
+  * fix: too many spaces in --info output</comment>
+    <requestid>1356816</requestid>
+  </revision>
 </revisionlist>

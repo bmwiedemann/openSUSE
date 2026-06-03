@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  2 20:57:02 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.13.1:
+  * updated rustls-webpki to fix vulnerabilities (#172)
+  * fix: too many spaces in --info output
+
+-------------------------------------------------------------------
 Tue Mar 31 07:19:10 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.13.0:
