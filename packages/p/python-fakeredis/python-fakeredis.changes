@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun  2 08:53:10 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.36.0
+  * Implement keyspace notifications @alexbthundiyil-spec
+  * feat(lua): add server global alias for Valkey @przemub
+  * feat(streams): implement XACKDEL, XDELEX, XIDMPRECORD, XNACK commands
+  * feat: add VISMEMBER command to check element existence in vector set
+  * feat: implement array commands (ARSET, ARGET, ARLEN, ARGETRANGE,
+    ARINSERT, ARDEL, etc.) for Redis 8.8
+  * fix: XREADGROUP with non-'>' ID returns consumer PEL @tomtom103
+  * fix: similarity calculation in vector set VSIM command
+  * fix: CF.RESERVE and CF.SCANDUMP should not create keys if they do not exist
+  * fix: various issues in vector set commands VSET
+  * fix(tcp_server): clean up handler threads on shutdown
+  * Improved CLIENT INFO and CLIENT GETNAME commands
+  * Better TDigest implementation
+  * Update Redis 8 image used in CI to 8.8
+  * Update to redis-py 8.0.0
+  * perf(hash): make HSET O(1) by using len(h) instead of len(h.keys())
+    @invoker-bot
+  * refactor: introduce CommandsMixinBase to centralise shared mixin attributes
+  * refactor: VectorSet improvements
+  * refactor: async Redis tests to use AsyncClientType for improved type safety
+
+-------------------------------------------------------------------
 Sun Apr 19 15:59:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.35.1:

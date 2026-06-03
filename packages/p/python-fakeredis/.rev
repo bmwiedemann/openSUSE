@@ -457,4 +457,12 @@
   * Move documentation dependencies to pyproject.toml</comment>
     <requestid>1348053</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f0fbac508a8867d132af1b66b303bc9e</srcmd5>
+    <version>2.36.0</version>
+    <time>1780510834</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1356756</requestid>
+  </revision>
 </revisionlist>
