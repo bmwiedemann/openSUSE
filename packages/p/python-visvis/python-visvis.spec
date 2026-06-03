@@ -16,6 +16,7 @@
 #
 
 
+%global skip_python311 1
 %{?sle15_python_module_pythons}
 Name:           python-visvis
 Version:        1.15.0
