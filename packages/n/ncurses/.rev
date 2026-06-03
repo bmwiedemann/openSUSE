@@ -5726,4 +5726,20 @@
     options (report/patch by Daniel Anderson).</comment>
     <requestid>1353723</requestid>
   </revision>
+  <revision rev="333" vrev="106">
+    <srcmd5>d56fa75e6b5406cc1c81b8c8aee5a08b</srcmd5>
+    <version>unknown</version>
+    <time>1780510910</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260530
+  + minor renaming, formatting to align with Juergen Pfeifer's fork.
+  + add configure script check for --enable-ext-mouse2, to support ABI 7.
+  + improve special case in tic for %{code} to allow any non-zero byte
+    as the result %'char'
+- Add ncurses patch 20260523
+  + modify _nc_wacs[] to make it per-screen (from Juergen Pfeifer's fork)
+  + eliminate a special case in tic when translating %{code} to %'char',
+    since %{92} mapping to %'\' works with tparm and infocmp.</comment>
+    <requestid>1356328</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  1 07:29:03 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260530
+  + minor renaming, formatting to align with Juergen Pfeifer's fork.
+  + add configure script check for --enable-ext-mouse2, to support ABI 7.
+  + improve special case in tic for %{code} to allow any non-zero byte
+    as the result %'char'
+- Add ncurses patch 20260523
+  + modify _nc_wacs[] to make it per-screen (from Juergen Pfeifer's fork)
+  + eliminate a special case in tic when translating %{code} to %'char',
+    since %{92} mapping to %'\' works with tparm and infocmp.
+
+-------------------------------------------------------------------
 Mon May 18 07:34:27 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260516
