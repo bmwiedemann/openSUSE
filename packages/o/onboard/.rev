@@ -156,4 +156,39 @@
     <comment></comment>
     <requestid>1309964</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4ed25a9f51a8b39812da1ef9aaf6da0e</srcmd5>
+    <version>1.4.4.2</version>
+    <time>1780511130</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.4-2:
+  * Features:
+    - Add ANSI key geometry variants to Compact layout
+    - Add ANSI key geometry variants to Full Keyboard layout
+    - Detect XKB keyboard model and remap keys for ANSI layout
+    - Disable docking when x/y coordinates are specified via
+      command line
+    - Update WordSuggestions.py to honor punctuation configuration
+      option
+    - Added new layout without emoji
+    - Increase DPI range limits for size validation
+    - KeyboardWidget:
+      . fix lost pointer enter/leave events during transparency
+        transitions
+      . fix missing hover updates and lost pointer events under X11
+      . recover lost pointer and hover events during transparency
+        transitions
+  * Fixes:
+    - Fix crash and incorrect layout handling introduced
+    - fix(setup): add missing comma before **pkgconfig kwargs
+    - Fixing FreeBSD documentation about python3.
+    - Fixing FreeBSD port.
+    - Only enable -Wlogical-op on Linux (GCC); fix clang build
+      failures
+    - Prevent division by zero in DPI calculations
+    - Safe DPI calculation
+  * Updated translations.
+- Update URL/Source to current &quot;home&quot;.</comment>
+    <requestid>1356895</requestid>
+  </revision>
 </revisionlist>

@@ -18,16 +18,17 @@
 
 %define series 1.4
 %define pythons python3
-%define srcver 1.4.3-7
+%define srcver 1.4.4-2
 Name:           onboard
-Version:        1.4.3.7
+Version:        1.4.4.2
 Release:        0
 Summary:        Simple on-screen Keyboard
 License:        GPL-3.0-only
 Group:          System/X11/Utilities
-URL:            https://github.com/dr-ni/onboard
-Source:         https://github.com/dr-ni/onboard/archive/refs/tags/%{srcver}.tar.gz#/onboard-%{srcver}.tar.gz
+URL:            https://github.com/onboard-osk/onboard
+Source:         %{url}/archive/refs/tags/v%{srcver}.tar.gz#/onboard-%{srcver}.tar.gz
 Source1:        onboard-defaults.conf
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 # Needed for typelib() - Requires.
@@ -110,7 +111,7 @@ install -dm 0755 %{buildroot}%{_datadir}/locale
 cp -a build/mo/* %{buildroot}%{_datadir}/locale/
 
 install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/%{name}/
-rm %{buildroot}%{_datadir}/doc/%{name}/{AUTHORS,CHANGELOG,COPYING*,DBUS.md,HACKING,README.md,*.example}
+rm %{buildroot}%{_datadir}/doc/%{name}/{AUTHORS,CHANGELOG,COPYING*,DBUS.md,HACKING,README.md,README.FreeBSD.md,README.WAYLAND.md,*.example}
 rm -r %{buildroot}%{_datadir}/icons/ubuntu-mono-*
 # this will be built upon installation of the package
 rm %{buildroot}/usr/share/glib-2.0/schemas/gschemas.compiled
@@ -135,7 +136,7 @@ rm -r %{buildroot}%{_datadir}/icons/hicolor/28x28
 %find_lang %{name}
 
 %files
-%doc AUTHORS CHANGELOG DBUS.md README.md HACKING *.example
+%doc AUTHORS CHANGELOG DBUS.md README.md HACKING *.example README.FreeBSD.md README.WAYLAND.md
 %license COPYING*
 %{_bindir}/%{name}
 %{_bindir}/%{name}-settings
@@ -149,6 +150,7 @@ rm -r %{buildroot}%{_datadir}/icons/hicolor/28x28
 %{_datadir}/%{name}/layoutstrings.py
 %{_datadir}/%{name}/%{name}-defaults.conf*
 %{_datadir}/%{name}/settings*.ui
+%{_datadir}/%{name}/72-onboard-uinput.rules
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}-settings.desktop
 %dir %{_datadir}/icons/HighContrast
@@ -180,5 +182,10 @@ rm -r %{buildroot}%{_datadir}/icons/hicolor/28x28
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/extensions
 %{_datadir}/gnome-shell/extensions/Onboard_Indicator@onboard.org/
+%dir %{_datadir}/onboard/gnome-extension
+%dir %{_datadir}/onboard/gnome-extension/onboard@onboard.local
+%{_datadir}/onboard/gnome-extension/onboard@onboard.local/extension.js
+%{_datadir}/onboard/gnome-extension/onboard@onboard.local/metadata.json
+%{_datadir}/onboard/gnome-extension/onboard@onboard.local/stylesheet.css
 
 %changelog

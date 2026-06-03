@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed May 27 08:44:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.4-2:
+  * Features:
+    - Add ANSI key geometry variants to Compact layout
+    - Add ANSI key geometry variants to Full Keyboard layout
+    - Detect XKB keyboard model and remap keys for ANSI layout
+    - Disable docking when x/y coordinates are specified via
+      command line
+    - Update WordSuggestions.py to honor punctuation configuration
+      option
+    - Added new layout without emoji
+    - Increase DPI range limits for size validation
+    - KeyboardWidget:
+      . fix lost pointer enter/leave events during transparency
+        transitions
+      . fix missing hover updates and lost pointer events under X11
+      . recover lost pointer and hover events during transparency
+        transitions
+  * Fixes:
+    - Fix crash and incorrect layout handling introduced
+    - fix(setup): add missing comma before **pkgconfig kwargs
+    - Fixing FreeBSD documentation about python3.
+    - Fixing FreeBSD port.
+    - Only enable -Wlogical-op on Linux (GCC); fix clang build
+      failures
+    - Prevent division by zero in DPI calculations
+    - Safe DPI calculation
+  * Updated translations.
+- Update URL/Source to current "home".
+
+-------------------------------------------------------------------
 Wed Oct  8 18:56:30 UTC 2025 - BZZZZ DZZZZ <alanas.00@mail.ru>
 
 - Delete patch: onboard-fix-crash-on-hover.patch.
