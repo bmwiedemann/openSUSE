@@ -883,4 +883,12 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment></comment>
     <requestid>1356049</requestid>
   </revision>
+  <revision rev="103" vrev="3">
+    <srcmd5>4ff3d55734b67965e8d22306618250c2</srcmd5>
+    <version>3.26.0</version>
+    <time>1780511288</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1356961</requestid>
+  </revision>
 </revisionlist>
