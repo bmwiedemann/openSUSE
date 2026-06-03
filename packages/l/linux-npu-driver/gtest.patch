@@ -1,13 +1,7 @@
 diff -uNr linux-npu-driver-1.28.0/third_party/CMakeLists.txt linux-npu-driver-1.28.0.Ok/third_party/CMakeLists.txt
 --- linux-npu-driver-1.28.0/third_party/CMakeLists.txt	2025-12-18 10:42:25.000000000 -0300
 +++ linux-npu-driver-1.28.0.Ok/third_party/CMakeLists.txt	2025-12-20 15:59:44.888471047 -0300
-@@ -8,15 +8,11 @@
- add_compile_options(-Wno-error -include cstdint)
- 
- include(cmake/npu_compiler_elf.cmake)
--include(cmake/level-zero.cmake)
- include(cmake/level-zero-npu-extensions.cmake)
- if (ENABLE_NPU_PERFETTO_BUILD)
+@@ -14,9 +14,6 @@
    include(cmake/perfetto.cmake)
  endif()
  

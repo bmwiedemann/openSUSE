@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 29 07:50:16 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build only on x86_64 as supported NPU are Intel based only
+
+-------------------------------------------------------------------
+Tue May 26 16:27:44 UTC 2026 - Jeffrey Cheung <jcheung@suse.com>
+
+- Update to version 1.30.0
+- Update gtest.patch to retain level-zero cmake targets as declarative shells 
+  to fix 1.30.0 build failure while still using system level-zero-devel.
+
+-------------------------------------------------------------------
 Sat Dec 20 17:43:23 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - The Panther Lake support is available from version v1.28.0

@@ -18,7 +18,7 @@
 
 %define _firmwaredir /lib/firmware
 Name:           linux-npu-driver
-Version:        1.28.0
+Version:        1.30.0
 Release:        0
 Summary:        Driver for Intel NPU device.
 License:        MIT
@@ -35,6 +35,7 @@ BuildRequires:  gcc-c++ gcc
 BuildRequires:  gcc12-c++ gcc12
 %endif
 BuildRequires:  xz
+ExclusiveArch:  x86_64
 
 %description
 Intel NPU device is an AI inference accelerator integrated with Intel
