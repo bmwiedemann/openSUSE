@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun  2 15:55:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.3.0:
+  * Re-enable tempest jobs
+  * Stop logging create/update requests to stdout
+  * Implement jobs retrieval for all projects
+  * Temporary disable tempest jobs
+  * Update master for stable/2026.1
+  * tox: Remove ineffective ignore_basepython_conflict and bump
+    minimum version
+
+-------------------------------------------------------------------
+Mon Mar  9 15:23:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.0:
+  * Drop support for Python 3.8 and 3.9
+  * Fix tag in README
+
+-------------------------------------------------------------------
+Mon Nov 10 13:04:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- fix filelist
+
+-------------------------------------------------------------------
 Sun Nov  9 12:58:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0:

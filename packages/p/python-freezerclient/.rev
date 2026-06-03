@@ -213,4 +213,25 @@
     <comment>switch to singlespec</comment>
     <requestid>1316756</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6e79aaf4e783173be1f9039f800e5fdf</srcmd5>
+    <version>6.3.0</version>
+    <time>1780510921</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.3.0:
+  * Re-enable tempest jobs
+  * Stop logging create/update requests to stdout
+  * Implement jobs retrieval for all projects
+  * Temporary disable tempest jobs
+  * Update master for stable/2026.1
+  * tox: Remove ineffective ignore_basepython_conflict and bump
+    minimum version
+
+- update to 6.2.0:
+  * Drop support for Python 3.8 and 3.9
+  * Fix tag in README
+
+- fix filelist</comment>
+    <requestid>1356774</requestid>
+  </revision>
 </revisionlist>

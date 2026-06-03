@@ -1,7 +1,7 @@
 #
 # spec file for package python-freezerclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-freezerclient
-Version:        6.1.0
+Version:        6.3.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Freezer
 License:        Apache-2.0
@@ -79,8 +79,8 @@ rm -r doc/build/html/.{doctrees,buildinfo}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python3_sitelib}/freezerclient
-%{python3_sitelib}/python_freezerclient-%{version}.dist-info
+%{python_sitelib}/freezerclient
+%{python_sitelib}/python_freezerclient-%{version}.dist-info
 %{_bindir}/freezer
 
 %files -n python-freezerclient-doc
