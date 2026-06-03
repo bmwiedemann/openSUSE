@@ -1,7 +1,7 @@
 #
 # spec file for package hyperfine
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,8 @@ URL:            https://github.com/sharkdp/%{name}
 Source0:        https://github.com/sharkdp/hyperfine/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.46
+BuildRequires:  rust >= 1.88
 BuildRequires:  zstd
-ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 A command-line tool which runs benchmarks of other programs passed as arguments.
