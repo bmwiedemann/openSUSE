@@ -17,7 +17,7 @@
 
 
 Name:           semaphore
-Version:        2.18.4
+Version:        2.18.8
 Release:        0
 Summary:        Modern UI for Ansible
 License:        MIT

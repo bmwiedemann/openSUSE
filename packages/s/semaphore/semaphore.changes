@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Jun 03 04:52:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.8 (no releases between .4 and this one):
+  * ci: fix branch
+  * feat(runners): allow to create unregistered runners for
+    terraform usage (#3904)
+  * docs: add runners endpoints to swagger (#3903)
+  * fix(config): unset sensitive vars from env
+  * chore(ui): move API tokens menu item
+  * fix(runners): do not include inactive global runners to
+    endpoint /project/runners
+  * docs(plans): password and token plans
+  * docs(plans): OIDC JWT token
+  * docs(plans): OIDC JWT token
+  * feat(runners): rename flag --register to --auto-register
+  * chore(deps): update dependency axios to v1.16.0 [security]
+  * feat(runners): add connection configration option.
+  * docs: add plans
+  * feat(runners): add error log message
+  * fix(ui): subscription banners
+  * fix(runners): message
+  * fix(tasks): update task summary
+  * feat(runners): print ID of the used runner in task log
+  * feat(config): update config schema
+  * feat(config): add http redirect address and skill for
+    generation of config schema
+  * feat(config): add http redirect address and skill for
+    generation of config schema
+  * docs(config): add config.schema.yaml
+  * refactor(config): rename Auth to Mfa
+  * test(config): support yaml format for config file
+  * test(config): update unit tests after refactoring sensitive
+    fields
+  * refactor(config): add struct for subscription settings
+  * refactor(config): add Subscription block
+  * feat(runners): tagged runners field
+  * fix(ha): return correct json for disabled ha
+  * fix(runners): correct url for global runners
+  * refactor(ui): premium features -> features
+  * feat(be): ha flag in features
+  * fix(info): remove incorrect fields
+  * fix(info): remove incorrect fields
+  * chore: premium_featues -> features
+  * feat(tasks): show runner name for task in task detials (#3884)
+  * feat/cluster dashboard (#3882)
+  * Merge pull request #3883 from semaphoreui/feat/unpin_store_db
+  * chore(deps): bump qs and express in /web
+  * docs(plans): store unpinned menu items in database
+  * feat(ui): unpinned menu items
+  * chore(deps-dev): bump js-cookie from 3.0.5 to 3.0.7 in /web
+  * docs(ai): add plan for suvery default values for shedules
+  * docs(ai): add plan for survey variables refactoring
+  * fix(backup): guard nil TaskParams in BackupSchedule.Restore
+  * fix(runners): correct SEMAPHORE_DATA_PATH default in
+    runner-wrapper
+
+-------------------------------------------------------------------
 Tue May 19 05:00:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.4:
