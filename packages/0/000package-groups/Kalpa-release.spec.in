@@ -204,19 +204,17 @@ echo -e "\\\a" > %{buildroot}%{_prefix}/lib/issue.d/70-network.issue
 echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS.issue
 
 VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
-# note: VERSION is an optional field and has no meaning other than informative on a rolling distro
-# We do thus not add it to the os-release file
 cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
 NAME="Kalpa Desktop"
-# VERSION="%{version}%{?betaversion: %{betaversion}}"
+VERSION="%{version}%{?betaversion: %{betaversion}}"
 ID="kalpa-desktop"
 ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos opensuse-kalpa microos"
 VERSION_ID="$VERSION_ID"
 PRETTY_NAME="Kalpa Desktop"
 ANSI_COLOR="0;32"
 CPE_NAME="cpe:/o:opensuse:kalpa:%{version}"
-BUG_REPORT_URL="https://bugzilla.opensuse.org"
-SUPPORT_URL="https://bugs.opensuse.org"
+BUG_REPORT_URL="https://kalpadesktop.org/bugreports"
+SUPPORT_URL="https://kalpadesktop.org/forums"
 HOME_URL="https://kalpadesktop.org/"
 DOCUMENTATION_URL="https://kalpadesktop.org/documentation"
 LOGO="distributor-logo-Kalpa"

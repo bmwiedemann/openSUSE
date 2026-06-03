@@ -2398,4 +2398,12 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <user>dimstar_suse</user>
     <comment>Block some 30MB of fonts</comment>
   </revision>
+  <revision rev="336" vrev="334">
+    <srcmd5>42dd6fce4620848ce3742e8aec092a49</srcmd5>
+    <version>unknown</version>
+    <time>1780510837</time>
+    <user>anag_factory</user>
+    <comment>Adjust Kalpa-release</comment>
+    <requestid>1356758</requestid>
+  </revision>
 </revisionlist>
