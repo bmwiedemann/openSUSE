@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 07:09:21 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-utils 1.2.16:
+  * fixes and enhancements in speaker-test, alsaloop, amixer and aply
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.15.3_v1.2.16#alsa-utils
+
+-------------------------------------------------------------------
 Fri Jan  9 08:41:15 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-utils 1.2.15.2:

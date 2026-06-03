@@ -26,7 +26,7 @@
 %endif
 
 Name:           alsa-utils
-Version:        1.2.15.2
+Version:        1.2.16
 Release:        0
 Summary:        Advanced Linux Sound Architecture Utilities
 License:        GPL-2.0-or-later
