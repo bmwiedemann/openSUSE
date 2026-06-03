@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  3 04:43:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.15.38:
+  * bacb328 chore: bump up Go version to 1.26.3 (#1451)
+  * eec6a88 ci: migrate to Github APP (#1445)
+  * 8bedfa0 ci: rename envs for Github App (#1448)
+  * 9e1d355 ci: update snapshot workflow (#1449)
+  * 97f2e99 ci: use a runner from white list for chart publishing
+    (#1446)
+
+-------------------------------------------------------------------
 Mon May  4 16:51:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.15.37 (no releases between .32 and this one):
