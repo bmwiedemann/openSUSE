@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.18
-%define patchversion 6.18.33
-%define git_commit 25a73ac58c340d0d90c903a2320887519c181952
+%define patchversion 6.18.34
+%define git_commit d2d787727d5cae14f2f2eb6b6576484d6883b847
 %define variant -longterm%{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-longterm
-Version:        6.18.33
+Version:        6.18.34
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g25a73ac
+Release:        <RELEASE>.gd2d7877
 %else
 Release:        0
 %endif
@@ -1133,12 +1133,6 @@ if ! [ -e %{S:0} ]; then
     exit 1
 fi
 
-SYMBOLS=
-if test -e %_sourcedir/extra-symbols; then
-	SYMBOLS=$(cat %_sourcedir/extra-symbols)
-	echo "extra symbol(s):" $SYMBOLS
-fi
-
 # Unpack all sources and patches
 %setup -q -c -T -a 0 -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 114 -a 120 -a 121
 
@@ -1198,7 +1192,7 @@ cd linux-%srcversion
 %if %{build_vanilla} && ! %vanilla_only
 	--vanilla \
 %endif
-	%_sourcedir/series.conf .. $SYMBOLS
+	%_sourcedir/series.conf ..
 
 sed -i -e 's/\$(CROSS_COMPILE)gcc/\$(CROSS_COMPILE)%gcc_compiler/g' Makefile
 grep '\$(CROSS_COMPILE)%gcc_compiler' Makefile
