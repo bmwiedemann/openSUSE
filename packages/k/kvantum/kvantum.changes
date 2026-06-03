@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  2 16:57:42 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.1.8
+  * Covered a rare case of finding the parent menu-bar of a menu,
+    especially on Wayland.
+
+-------------------------------------------------------------------
 Sat May  9 18:26:52 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 1.1.7
