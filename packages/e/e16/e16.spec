@@ -1,7 +1,7 @@
 #
 # spec file for package e16
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Group:          System/GUI/Other
 URL:            https://www.enlightenment.org
 Source:         e16-%{version}.tar.xz
 Patch0:         fix-compile-gtk.patch
+Patch1:         remove-old-gettext-macros.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
