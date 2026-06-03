@@ -2450,4 +2450,12 @@ New stable rel</comment>
   + Add pkgconfig(xcb-res) and pkgconfig(xkeyboard-config-2)</comment>
     <requestid>1350309</requestid>
   </revision>
+  <revision rev="266" vrev="1">
+    <srcmd5>1fe45ef7ec2a906441d84ebfd8431edd</srcmd5>
+    <version>50.2</version>
+    <time>1780510865</time>
+    <user>anag_factory</user>
+    <comment>rebase patches</comment>
+    <requestid>1356892</requestid>
+  </revision>
 </revisionlist>

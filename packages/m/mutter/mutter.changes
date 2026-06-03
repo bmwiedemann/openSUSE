@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun  1 19:11:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.2:
+  + Fix size increases when quickly unmaximizing window by drag
+  + Fix cursor position hint for Xwayland if scaling is used
+  + Fix fullscreening of edge tiled windows
+  + Scale the hotspot location for tablet tool cursors
+  + Fix moving maximized windows to another monitor via keyboard
+  + Fix alt-tab with sloppy/mouse focus
+  + Implement support for version 2 of text_input_v3 protocol
+  + Ignore repeated events for double click counting
+  + Fix DND data offers on touch
+  + Make DND with tablets work across surfaces
+  + Do not unfullscreen fullscreened window on unmaximize
+  + Fix broken switch-monitor mapping on stylus buttons
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Add 5096.patch: Stop mutter spamming logs.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Sun Apr 26 13:22:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Align with what meson setup checks for:
