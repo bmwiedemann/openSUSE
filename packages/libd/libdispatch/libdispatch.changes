@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  3 14:34:46 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- re-enable i586 architecture
+
+-------------------------------------------------------------------
 Wed Apr  8 09:38:42 UTC 2026 - Max Lin <mlin@suse.com>
 
 - Add silence-signedness-change-through-implicit-conversion-error.patch

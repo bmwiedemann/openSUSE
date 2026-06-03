@@ -1,7 +1,7 @@
 #
 # spec file for package libdispatch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,9 +41,9 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
 # Disable i586 build for now
-%ifarch i586
-ExclusiveArch:  do_not_build
-%endif
+#%ifarch i586
+#ExclusiveArch:  do_not_build
+#%endif
 
 %description
 Grand Central Dispatch (GCD or libdispatch) provides support for
