@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun 03 04:36:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.118.0:
+  * Features
+    - feat: add disable changelog flag and env var @omer-cengel
+      (#8969)
+  * Bug Fixes
+    - fix: skip version check for generator commands @ambikeesshh
+      (#9064)
+    - chore: don't show version diff if newer @olblak (#9000)
+  * Maintenance
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.5.5 @updateclibot[bot] (#9093)
+    - chore(ci): upgrade uv version @updateclibot[bot] (#9046)
+    - chore(dockerfile): upgrade node version @updateclibot[bot]
+      (#9009)
+    - deps(go): bump module github.com/drone/go-scm to v1.42.3
+      @updateclibot[bot] (#8990)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.8.5 @updateclibot[bot] (#8994)
+    - chore: add govulncheck GitHub Action workflow @olblak (#9007)
+    - deps(go): bump module github.com/google/go-containerregistry
+      to v0.21.6 @updateclibot[bot] (#8995)
+    - deps(go): bump module github.com/tetratelabs/wazero to
+      v1.12.0 @updateclibot[bot] (#9002)
+    - chore: updatecli docs handle different exit code @olblak
+      (#9001)
+
+-------------------------------------------------------------------
 Fri May 29 11:29:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.117.1:
