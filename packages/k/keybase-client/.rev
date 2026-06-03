@@ -364,4 +364,15 @@
     <comment></comment>
     <requestid>1355973</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4786bd38eaff1d143d357c251a7ac24e</srcmd5>
+    <version>6.6.3</version>
+    <time>1780511345</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.6.3
+  * Various bug fixes
+- Drop update-go-crypto.patch which has been adopted upstream.
+- Drop update-go-net.patch which has been adopted upstream.</comment>
+    <requestid>1357016</requestid>
+  </revision>
 </revisionlist>

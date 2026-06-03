@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  3 16:27:35 UTC 2026 - Matthias Bach <marix@marix.org>
+
+- Update to version 6.6.3
+  * Various bug fixes
+- Drop update-go-crypto.patch which has been adopted upstream.
+- Drop update-go-net.patch which has been adopted upstream.
+
+-------------------------------------------------------------------
 Fri May 29 19:51:01 UTC 2026 - Matthias Bach <marix@marix.org> - 6.6.2
 
 - Add update-go-crypto.patch to address boo#1266158.
