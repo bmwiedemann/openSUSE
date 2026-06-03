@@ -1,7 +1,7 @@
 #
 # spec file for package mtd-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           mtd-utils
-Version:        2.2.1
+Version:        2.3.1
 Release:        0
 Summary:        Tools for maintaining Memory Technology Devices
 License:        GPL-2.0-or-later
 URL:            http://www.linux-mtd.infradead.org/
-Source0:        ftp://ftp.infradead.org/pub/mtd-utils/mtd-utils-%{version}.tar.bz2
-Source1:        ftp://ftp.infradead.org/pub/mtd-utils/mtd-utils-%{version}.tar.bz2.asc
+Source0:        https://infraroot.at/pub/mtd/mtd-utils-%{version}.tar.bz2
+Source1:        https://infraroot.at/pub/mtd/mtd-utils-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libacl)
@@ -52,7 +52,7 @@ including JFFS2, M-Systems DiskOnChip devices, etc.
 
 %files
 %license COPYING
-%doc ubifs-utils/mkfs.ubifs/README
+%doc README.txt
 %{_sbindir}/doc_loadbios
 %{_sbindir}/docfdisk
 %{_sbindir}/flash_erase
@@ -64,6 +64,7 @@ including JFFS2, M-Systems DiskOnChip devices, etc.
 %{_sbindir}/flash_otp_write
 %{_sbindir}/flash_unlock
 %{_sbindir}/flashcp
+%{_sbindir}/fsck.ubifs
 %{_sbindir}/ftl_check
 %{_sbindir}/ftl_format
 %{_sbindir}/jffs2dump

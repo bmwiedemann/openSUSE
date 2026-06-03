@@ -186,4 +186,15 @@ kernel)</comment>
   * Extract rbtree implementation to common lib</comment>
     <requestid>1229816</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5be4eb5f472e7a5c890b9f4e71a073e4</srcmd5>
+    <version>2.3.1</version>
+    <time>1780511253</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.3.1:
+- ubifs-utils now based on the kernel's libubifs; new fsck.ubifs tool
+- Assorted bug fixes from 2.3.0/2.3.1
+- Move download location to infraroot.at (upstream left the infradead FTP)</comment>
+    <requestid>1356932</requestid>
+  </revision>
 </revisionlist>

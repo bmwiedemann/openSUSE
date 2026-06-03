@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  3 10:24:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.3.1:
+  * ubifs-utils is now based on the kernel's libubifs
+    implementation
+  * New fsck.ubifs tool for checking UBIFS images
+  * Assorted bug fixes from the 2.3.0 and 2.3.1 releases
+- Update download location to infraroot.at, as upstream moved
+  off the infradead FTP server
+- Package the new fsck.ubifs tool
+
+-------------------------------------------------------------------
 Tue Dec 10 13:40:40 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.2.1:
