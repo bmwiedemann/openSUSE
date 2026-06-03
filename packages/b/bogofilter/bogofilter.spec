@@ -1,7 +1,7 @@
 #
 # spec file for package bogofilter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define flavor @BUILD_FLAVOR@%{nil}
-%if "%flavor" == ""
+%if "%{flavor}" == ""
 ExclusiveArch:  do-not-build
 %else
 %define dash -
@@ -32,34 +32,36 @@ ExclusiveArch:  do-not-build
 %define with_kyotocabinet 1
 %endif
 %endif
-
 %define _name   bogofilter
 Name:           %{_name}%{?dash}%{?flavor}%{?src}
 Version:        1.2.4
 Release:        0
 Summary:        Fast Anti-Spam Filtering by Bayesian Statistical Analysis
 License:        GPL-2.0-or-later
-URL:            http://bogofilter.sourceforge.net/
-Source:         http://downloads.sourceforge.net/bogofilter/bogofilter-%{version}.tar.bz2
+URL:            https://bogofilter.sourceforge.net/
+Source:         https://downloads.sourceforge.net/bogofilter/bogofilter-%{version}.tar.bz2
 Source10:       README.SUSE
 # PATCH-FEATURE-OPENSUSE bogofilter-kyotocabinet.patch --replace tokyocabinet with kyotocabinet following
 # tokyocabinet recommendations
 Patch0:         bogofilter-kyotocabinet.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  flex
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  sharutils
+BuildRequires:  xmlto
+BuildRequires:  pkgconfig(gsl)
 %if 0%{?with_db}
 BuildRequires:  db-devel
 %endif
-BuildRequires:  flex
-BuildRequires:  gsl-devel
-BuildRequires:  sharutils
 %if 0%{?with_sqlite3}
-BuildRequires:  sqlite3-devel
+BuildRequires:  pkgconfig(sqlite3)
 %endif
-BuildRequires:  xmlto
 %if 0%{?with_kyotocabinet}
-BuildRequires:  libkyotocabinet-devel
 BuildRequires:  libxml2-tools
+BuildRequires:  pkgconfig(kyotocabinet)
 %endif
 
 %description
@@ -113,9 +115,6 @@ Requires:       %{_name}-common = %{version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       %{_name}-backend = %{version}-%{release}
-%if 0%{?suse_version} == 1310
-Conflicts:      %{_name}-db
-%endif
 
 %description -n %{_name}-sqlite3
 This package contains %{_name} build with the sqlite3 backend.
@@ -128,9 +127,6 @@ Requires(postun): update-alternatives
 Provides:       %{_name} = %{version}-%{release}
 Obsoletes:      %{_name}
 Provides:       %{_name}-backend = %{version}-%{release}
-%if 0%{?suse_version} == 1310
-Conflicts:      %{_name}-sqlite3
-%endif
 
 %description -n %{_name}-db
 This package contains %{_name} build with the libdb backend.
@@ -146,7 +142,7 @@ autoreconf -fiv
 %configure \
 	--with-database=%{flavor} \
 	--program-suffix=-%{flavor}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -259,29 +255,27 @@ if [ ! -f %{_bindir}/bogofilter-db ] ; then
 fi
 
 %files -n %{_name}-common
-%defattr(-,root,root)
 %{_bindir}/bogoupgrade
 %config(noreplace) %{_sysconfdir}/bogofilter.cf
 %{_datadir}/%{_name}
 
 %files -n %{_name}-doc
-%defattr(-,root,root)
-%doc AUTHORS COPYING GETTING.STARTED NEWS README* RELEASE.NOTES*
+%license COPYING
+%doc AUTHORS GETTING.STARTED NEWS README* RELEASE.NOTES*
 %doc TODO bogofilter.cf.example
 %doc doc/README* doc/bogofilter-SA-* doc/*.html doc/integrating*
 %doc doc/programmer/ doc/rpm.notes.BerkeleyDB
 %doc %{_defaultdocdir}/bogofilter-doc/README.SUSE
-%{_mandir}/man1/bogofilter.1%{ext_man}
-%{_mandir}/man1/bogolexer.1%{ext_man}
-%{_mandir}/man1/bogoupgrade.1%{ext_man}
-%{_mandir}/man1/bogotune.1%{ext_man}
-%{_mandir}/man1/bogoutil.1%{ext_man}
-%{_mandir}/man1/bf_compact.1%{ext_man}
-%{_mandir}/man1/bf_copy.1%{ext_man}
-%{_mandir}/man1/bf_tar.1%{ext_man}
+%{_mandir}/man1/bogofilter.1%{?ext_man}
+%{_mandir}/man1/bogolexer.1%{?ext_man}
+%{_mandir}/man1/bogoupgrade.1%{?ext_man}
+%{_mandir}/man1/bogotune.1%{?ext_man}
+%{_mandir}/man1/bogoutil.1%{?ext_man}
+%{_mandir}/man1/bf_compact.1%{?ext_man}
+%{_mandir}/man1/bf_copy.1%{?ext_man}
+%{_mandir}/man1/bf_tar.1%{?ext_man}
 
 %files -n %{_name}-db
-%defattr(-,root,root)
 %ghost %{_sysconfdir}/alternatives/bogofilter
 %ghost %{_sysconfdir}/alternatives/bogolexer
 %ghost %{_sysconfdir}/alternatives/bogotune
@@ -304,12 +298,11 @@ fi
 %{_bindir}/bf_copy
 %{_bindir}/bf_tar
 %{_bindir}/*-db
-%{_mandir}/man1/*-db.1%{ext_man}
+%{_mandir}/man1/*-db.1%{?ext_man}
 %endif
 
 %if "%{flavor}" == "kyotocabinet"
 %files -n %{_name}-kyotocabinet
-%defattr(-,root,root)
 %ghost %{_sysconfdir}/alternatives/bogofilter
 %ghost %{_sysconfdir}/alternatives/bogolexer
 %ghost %{_sysconfdir}/alternatives/bogotune
@@ -332,12 +325,11 @@ fi
 %{_bindir}/bf_copy
 %{_bindir}/bf_tar
 %{_bindir}/*-kyotocabinet
-%{_mandir}/man1/*-kyotocabinet.1%{ext_man}
+%{_mandir}/man1/*-kyotocabinet.1%{?ext_man}
 %endif
 
 %if "%{flavor}" == "sqlite3"
 %files -n %{_name}-sqlite3
-%defattr(-,root,root)
 %ghost %{_sysconfdir}/alternatives/bogofilter
 %ghost %{_sysconfdir}/alternatives/bogolexer
 %ghost %{_sysconfdir}/alternatives/bogotune
@@ -360,7 +352,7 @@ fi
 %{_bindir}/bf_copy
 %{_bindir}/bf_tar
 %{_bindir}/*-sqlite3
-%{_mandir}/man1/*-sqlite3.1%{ext_man}
+%{_mandir}/man1/*-sqlite3.1%{?ext_man}
 %endif
 
 %changelog

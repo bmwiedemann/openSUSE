@@ -380,4 +380,12 @@ Thanks Martin for the alternatives implementation!
     <comment></comment>
     <requestid>1149345</requestid>
   </revision>
+  <revision rev="36" vrev="17">
+    <srcmd5>16304571e56a3653e65d76f40e37c2c0</srcmd5>
+    <version>1.2.4</version>
+    <time>1780510845</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup: add gcc+make BuildRequires, convert -devel deps to pkgconfig(), use %make_build/%license/%{?ext_man}, drop %defattr and dead suse_version==1310 conflicts, https URLs</comment>
+    <requestid>1356775</requestid>
+  </revision>
 </revisionlist>

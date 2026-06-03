@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  2 16:00:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec cleanup:
+  * Add explicit gcc and make BuildRequires
+  * Convert gsl-devel, sqlite3-devel and libkyotocabinet-devel to
+    their pkgconfig() form
+  * Use %make_build, %license and %{?ext_man}; drop %defattr
+  * Drop dead suse_version == 1310 conflicts
+  * Use the https project and download URLs
+
+-------------------------------------------------------------------
 Thu Feb 22 10:25:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
