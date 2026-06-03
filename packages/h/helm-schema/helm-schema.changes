@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 03 11:39:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.4:
+  * Chores
+    - version++ by @dadav
+  * Documentation
+    - Update mapping table by @dadav
+  * Testing
+    - Test helm-docs mappings by @dadav
+
+-------------------------------------------------------------------
 Thu May 21 05:22:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.3:
