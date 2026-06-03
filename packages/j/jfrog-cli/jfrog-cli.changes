@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jun 03 04:34:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.106.0:
+  * New Features
+    - [build-info-go] Added poetry and yarn package support to
+      recognize 403 Forbidden output #387 (@Phavya-jfrog)
+    - [jfrog-cli-artifactory] RTECO-1272 - Implement agent plugins
+      install command #463 (@udaykb2)
+    - [jfrog-cli-artifactory] Add delete Subcommand to jf agent
+      plugins for Removing Plugin Versions from Artifactory #464
+      (@agrasth)
+    - [jfrog-cli-artifactory] feat(agent/plugins): add delete
+      commands (RTECO-1269) #466 (@agrasth)
+    - [jfrog-cli-artifactory] RTECO-1268 - Implement plugins update
+      command #468 (@udaykb2)
+    - [jfrog-cli-artifactory] RTECO-1270 - Add backward
+      compatability for skills #469 (@udaykb2)
+    - [jfrog-cli-security] XRAY-141568 - Added graceful error when
+      jf ca breaks due to cvs issue at RT server side #761
+      (@gauriy-tech)
+    - [jfrog-cli-security] Support all attributes in Central
+      Configs #670 (@attiasas)
+  * Bug Fixes
+    - [jfrog-cli-artifactory] Added logic for fat manifest file
+      #452 (@naveenku-jfrog)
+  * Other Changes
+    - [jfrog-cli-artifactory] Poetry update error output handling
+      #462 (@Phavya-jfrog)
+    - [jfrog-cli-artifactory] RTECO-1270 - move skills under agent
+      namespace #461 (@udaykb2)
+    - [jfrog-client-go] XSC - Update params in config profile #1344
+      (@attiasas)
+
+-------------------------------------------------------------------
 Fri May 29 06:26:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.105.0:
