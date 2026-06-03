@@ -112,4 +112,41 @@ Requires python-setuptools 78 to build successfully.
   * Put in place scaffolding for content stream parsing.</comment>
     <requestid>1337813</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>240f531952c41ebbb013120481cfa46a</srcmd5>
+    <version>0.35.1</version>
+    <time>1780511034</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.35.1:
+  ## Breaking changes
+  * Remove support for deprecated LTV validation functionality. Call sites
+    must be updated to use the AdES validation engine.
+  * Several low-level API changes in generic_cms to allow refactoring the
+    timestamp handling code.
+  ## Dependency changes
+  * Bump cryptography to 48.0.0.
+  * Relax upper bound for uharfbuzz to &lt;0.55.0.
+  * Bump cryptography to 47.0.0.
+  * Relax upper bound on pytest-cov to &lt;7.2.
+  * Relax upper bound on certomancer to &lt;0.15.
+  * Introduce certifi as a mandatory dependency for testing.
+  ## New features and enhancements
+  * Signing
+    + Allow signing with ML-DSA
+  * Validation
+    + Allow validating ML-DSA signatures
+    + Properly support harvesting PoE from multiple signature/content
+      timestamps in the same signature container.
+    + Add revinfo archival data to local knowledge.
+    + Restructure algorithm policy handling. Algorithm policy errors will
+      typically not bubble up outside the validation engine anymore, but will
+      instead be reflected in the validation status.
+  ## Bugs fixed
+  * Fix /AP positioning on field creation.
+  * Fix annot dict not being re-serialised on signing when split from form
+    dictionary.
+  * Improve error handling in parse_pdf_date.
+- Switch back to the PyPi tarball that only contains this package.</comment>
+    <requestid>1356850</requestid>
+  </revision>
 </revisionlist>
