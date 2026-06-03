@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  3 08:20:36 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- skip builds for python311.
+
+-------------------------------------------------------------------
 Wed Jun  4 06:09:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

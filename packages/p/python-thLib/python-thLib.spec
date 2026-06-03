@@ -1,7 +1,7 @@
 #
 # spec file for package python-thLib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %define         skip_python2 1
 %define         skip_python36 1
+%global         skip_python311 1
 Name:           python-thLib
 Version:        0.12.2
 Release:        0
