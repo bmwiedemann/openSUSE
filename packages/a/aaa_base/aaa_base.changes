@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 02 08:30:41 UTC 2026 - ro@suse.com
+
+- Update to version 84.87+git20260602.e901e17e:
+  * Fix a typo + follow symlinks in alljava
+
+-------------------------------------------------------------------
 Fri May 29 12:58:41 UTC 2026 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 84.87+git20260529.c4391e5:

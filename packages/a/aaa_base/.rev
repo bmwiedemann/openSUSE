@@ -4374,4 +4374,13 @@
   * Handle javas managed by libalternatives and by update-alternatives alike</comment>
     <requestid>1355891</requestid>
   </revision>
+  <revision rev="518" vrev="1">
+    <srcmd5>4c485dd91f0dd5b94d6c0e0a9c59f753</srcmd5>
+    <version>84.87+git20260602.e901e17e</version>
+    <time>1780510826</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 84.87+git20260602.e901e17e:
+  * Fix a typo + follow symlinks in alljava</comment>
+    <requestid>1356655</requestid>
+  </revision>
 </revisionlist>
