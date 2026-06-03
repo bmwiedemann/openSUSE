@@ -473,4 +473,12 @@
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1266358</comment>
     <requestid>1355350</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>93fe71664f7ccd633efa0e35b481f7f8</srcmd5>
+    <version>2.21.0</version>
+    <time>1780511046</time>
+    <user>anag_factory</user>
+    <comment>update to 2.21.0</comment>
+    <requestid>1356836</requestid>
+  </revision>
 </revisionlist>
