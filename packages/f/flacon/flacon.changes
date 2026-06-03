@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun  2 20:23:20 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 13.0.1:
+  * Added "Catalog number" tag
+  * The work of the program in console mode has been greatly improved
+  * The program is available as an AppImage for ARM
+  * Fixed incorrect tab order on tag fields
+  * Fixed ReplayGain setting not persisting after restart
+  * Minor fixes and improvements
+
+- Switched to QT6
+
+-------------------------------------------------------------------
 Mon Feb 17 07:02:46 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 12.0.0:

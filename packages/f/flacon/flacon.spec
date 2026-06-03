@@ -1,7 +1,7 @@
 #
 # spec file for package flacon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014-2018 Alexander Evseev <aevseev@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           flacon
-Version:        12.0.0
+Version:        13.0.1
 Release:        0
 Summary:        Audio File Encoder
 License:        LGPL-2.1-or-later
@@ -29,11 +29,11 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  zlib-devel
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(uchardet)
 Recommends:     faac
