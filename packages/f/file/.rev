@@ -1816,4 +1816,13 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
   Work around an endianess problem on s390x</comment>
     <requestid>1355160</requestid>
   </revision>
+  <revision rev="147" vrev="4">
+    <srcmd5>f1d664101a6ffb381545d52aba4c0298</srcmd5>
+    <version>5.47</version>
+    <time>1780510913</time>
+    <user>anag_factory</user>
+    <comment>- Add patch file-5.47-stanza.patch (boo#1261558 partly)
+  * Avoid many false positive on windows file test</comment>
+    <requestid>1356380</requestid>
+  </revision>
 </revisionlist>

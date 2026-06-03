@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  1 12:45:39 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch file-5.47-stanza.patch (boo#1261558 partly)
+  * Avoid many false positive on windows file test
+
+-------------------------------------------------------------------
 Mon May 18 11:54:40 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch file-5.47-s390x.patch from upstream commit
