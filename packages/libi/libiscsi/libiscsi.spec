@@ -1,7 +1,7 @@
 #
 # spec file for package libiscsi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define         sover 10
+%define         sover 11
 Name:           libiscsi
-Version:        1.20.0+git.20250327
+Version:        1.20.3
 Release:        0
 Summary:        iSCSI client library and utilities
 License:        GPL-2.0-only AND LGPL-2.1-only
 URL:            https://github.com/sahlberg/libiscsi
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -104,6 +104,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/iscsi-perf
 %{_bindir}/iscsi-pr
 %{_bindir}/iscsi-readcapacity16
+%{_bindir}/iscsi-rtpg
 %{_mandir}/man1/iscsi-inq.1%{?ext_man}
 %{_mandir}/man1/iscsi-ls.1%{?ext_man}
 %{_mandir}/man1/iscsi-swp.1%{?ext_man}

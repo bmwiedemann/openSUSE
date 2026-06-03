@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun  2 16:43:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 1.20.3:
+  * Add initial multithreading support: mutex/spinlock/thread
+    abstractions over the pthread and native win32 APIs, with
+    multithreaded async and sync examples
+  * Protect outqueue, waitpdu and other iscsi_context state with
+    a spinlock; immediately trigger the service thread to write
+    queued PDUs
+  * Fix several multithreading races between queueing a PDU and
+    updating task data
+  * New iscsi-rtpg utility (REPORT TARGET PORT GROUPS)
+  * Numerous bug fixes and code cleanups
+- Library soname bumped from 10 to 11; rename the library
+  subpackage libiscsi10 -> libiscsi11 (and baselibs.conf)
+- Switch from a git snapshot to the upstream 1.20.3 release tag
+  and use the upstream tarball directly; drop the obs_scm
+  _service / _servicedata
+
+-------------------------------------------------------------------
 Wed Apr  9 09:40:03 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.20.0+git.20250327:

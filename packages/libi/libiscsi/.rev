@@ -413,4 +413,12 @@
   * feat(logging): include LUN into log messages</comment>
     <requestid>1268088</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>61e338132e0a9f3a731b8d23536dc36b</srcmd5>
+    <version>1.20.3</version>
+    <time>1780510848</time>
+    <user>anag_factory</user>
+    <comment>Update to release 1.20.3: initial multithreading support, new iscsi-rtpg utility, bug fixes. Library soname bumped 10-&gt;11. Switched to upstream release tarball and dropped the obs_scm _service.</comment>
+    <requestid>1356782</requestid>
+  </revision>
 </revisionlist>
