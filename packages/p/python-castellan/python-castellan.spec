@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-castellan
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        Generic Key Manager interface for OpenStack
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source0:        https://files.pythonhosted.org/packages/source/c/castellan/caste
 BuildRequires:  %{python_module barbicanclient >= 5.5.0}
 BuildRequires:  %{python_module cryptography >= 2.7}
 BuildRequires:  %{python_module keystoneauth1 >= 3.4.0}
-BuildRequires:  %{python_module oslo.config >= 6.4.0}
+BuildRequires:  %{python_module oslo.config >= 9.3.0}
 BuildRequires:  %{python_module oslo.log >= 3.36.0}
 BuildRequires:  %{python_module oslotest}
 BuildRequires:  %{python_module pip}
@@ -39,11 +39,10 @@ BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
-Requires:       python-Babel
 Requires:       python-barbicanclient >= 5.5.0
 Requires:       python-cryptography >= 2.7
 Requires:       python-keystoneauth1 >= 3.4.0
-Requires:       python-oslo.config >= 6.4.0
+Requires:       python-oslo.config >= 9.3.0
 Requires:       python-oslo.context >= 2.19.2
 Requires:       python-oslo.i18n >= 3.15.3
 Requires:       python-oslo.log >= 3.36.0
@@ -86,7 +85,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc ChangeLog README.rst
 %{python_sitelib}/castellan
 %{python_sitelib}/castellan-%{version}.dist-info
 

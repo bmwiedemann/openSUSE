@@ -381,4 +381,29 @@
   * Remove reference to tag framework</comment>
     <requestid>1339016</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4fe0dbcbc9f6cc396c7f22d3ddeff286</srcmd5>
+    <version>5.7.0</version>
+    <time>1780510918</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.7.0:
+  * Deprecate __version__ attribute
+  * objects: Sync method signatures
+  * typing: Enable strict typing
+  * typing: Add hints to castellan.*
+  * typing: Add hints to castellan.key_manager
+  * typing: Add hints to castellan.common.*
+  * typing: Add hints to castellan.common.objects
+  * typing: Add hints to castellan.common.credentials
+  * Add ruff
+  * tox: Use new constraints option
+  * tests: Fix keyword passed to RequestContext
+  * tests: Minor typing-related fixes
+  * objects: Move common __init__ to base class
+  * trivial: Remove reference to removed module
+  * trivial: Synchronize function signatures
+  * tests: Remove errant trailing commas
+  * Update master for stable/2026.1</comment>
+    <requestid>1356773</requestid>
+  </revision>
 </revisionlist>

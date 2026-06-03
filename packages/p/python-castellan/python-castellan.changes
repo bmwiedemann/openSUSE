@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun  2 15:51:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.7.0:
+  * Deprecate __version__ attribute
+  * objects: Sync method signatures
+  * typing: Enable strict typing
+  * typing: Add hints to castellan.*
+  * typing: Add hints to castellan.key_manager
+  * typing: Add hints to castellan.common.*
+  * typing: Add hints to castellan.common.objects
+  * typing: Add hints to castellan.common.credentials
+  * Add ruff
+  * tox: Use new constraints option
+  * tests: Fix keyword passed to RequestContext
+  * tests: Minor typing-related fixes
+  * objects: Move common __init__ to base class
+  * trivial: Remove reference to removed module
+  * trivial: Synchronize function signatures
+  * tests: Remove errant trailing commas
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Mon Mar  9 21:51:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.0:
