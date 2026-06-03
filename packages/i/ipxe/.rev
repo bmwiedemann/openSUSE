@@ -226,4 +226,14 @@ use xorrisofs for creating iso
     <comment></comment>
     <requestid>1350005</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>9424d938c13a1c52e63732b64a180de7</srcmd5>
+    <version>1.21.1+git20250827.61b4585e2</version>
+    <time>1780511324</time>
+    <user>anag_factory</user>
+    <comment>- Restrict the build to x86_64 and aarch64, due to dependencies and
+  to the fact that these arch-es are the only ones where the ROMs
+  are useful. (forwarded request 1356982 from dfaggioli)</comment>
+    <requestid>1356995</requestid>
+  </revision>
 </revisionlist>

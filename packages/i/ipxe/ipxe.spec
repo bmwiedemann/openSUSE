@@ -65,11 +65,17 @@ BuildRequires:  xorriso
 BuildRequires:  xz-devel
 # For QEMU ROMs
 BuildRequires:  ovmf-tools
-# Does not build on bigendian
-ExcludeArch:    s390 s390x ppc ppc64
-# ix86 does not have a cross-x86_64 gcc available so it can't build
-# the x86_64 ipxe code. As a result of which, the support for ix86
-# is more limited.
+
+# iPXE provide ROMs only for x86 (Legacy BIOS/UEFI) and ARM (UEFI) targets.
+# However, it depends on ovmf-tools (for building) and:
+# - ovmf-tools is only available on x86_64, aarch64 and riscv64.
+# Furthermore, it does not build on bigendian arch-es (s390, s390x, ppc,
+# ppc64) while, for ppc64le:
+# - on Baremetal: ppc64le uses Petitboot/OPAL;
+# - for KVM/QEMU: pseries machines use SLOF (Open Firmware).
+# We can, therefore, restrict the to only x86_64 and ARM64, which is also
+# where the binaries are necessary and are actually executable.
+ExclusiveArch:  x86_64 aarch64
 
 %description
 iPXE is a network bootloader. It provides a direct

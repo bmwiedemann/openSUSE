@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:14:55 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Restrict the build to x86_64 and aarch64, due to dependencies and
+  to the fact that these arch-es are the only ones where the ROMs
+  are useful. 
+
+-------------------------------------------------------------------
 Mon Apr 27 22:39:56 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Add ipxe-qemu subpackage to provide QEMU network ROMs. This allows
