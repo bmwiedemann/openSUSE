@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  2 07:12:08 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-ucm-conf 1.2.16:
+  * fixes for SOF, soundwire, ACP, USB-audio and other various
+    devices
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.15.3_v1.2.16#alsa-ucm-conf
+
+-------------------------------------------------------------------
 Tue Jan 13 15:51:24 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-ucm-conf 1.2.15.3:
