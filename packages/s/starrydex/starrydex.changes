@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 27 00:46:28 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 0.3.5:
+  * feat: update data & deps
+  * improv: move data handling
+  * Update Swedish translations
+  * i18n(cs): Add Czech translation
+  * fix: config issues
+  * improv: toggle pokémon details by pressing pokemon sprite
+  * feat: add flavor text
+  * feat: libcosmic officially rebased to iced 0.14
+  * improv: drop gstreamer dep and spawn command instead (improves ram usage)
+
+-------------------------------------------------------------------
 Mon Feb 23 12:06:15 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.3.4:

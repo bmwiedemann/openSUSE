@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/mariinkys/starrydex.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/0.3.4</param>
+    <param name="revision">refs/tags/0.3.5</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="package-meta">yes</param>
     <param name="filename">starrydex</param>
@@ -16,7 +16,7 @@
   </service>
   <service name="cargo_vendor" mode="manual">
     <param name="src">starrydex</param>
-    <param name="update">true</param>
+    <param name="update">false</param>
   </service>
   <service name="set_version" mode="manual" />
 </services>

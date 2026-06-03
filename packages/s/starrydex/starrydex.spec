@@ -18,7 +18,7 @@
 
 %define         appid dev.mariinkys.StarryDex
 Name:           starrydex
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        Pokédex application for the COSMIC desktop
 License:        GPL-3.0-only
@@ -31,7 +31,6 @@ BuildRequires:  just
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.90
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(xkbcommon)
 
