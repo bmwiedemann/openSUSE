@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun  2 17:21:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 1.10.3:
+  * Drop Python 2 support and the dependency on python-six
+  * Use sysusers.d for adding the libstoragemgmt user/group
+  * libsg: change sprintf to snprintf
+  * Correct a capability bit mask and a string concatenation
+    bug; suppress a clang var_arg warning
+  * Misc fixes and CI/test improvements
+- Use the upstream-shipped sysusers.d file
+  (%{_sysusersdir}/libstoragemgmt.conf) and drop the downstream
+  system-user-libstoragemgmt.conf source
+- Drop python-six BuildRequires/Requires (no longer used)
+- Spec cleanup:
+  * Remove the now-dead Python 2 conditionals and the unused
+    python_sitelib/python_sitearch defines (use the python3
+    macros directly)
+  * Drop the obsolete --with-python3 configure switch (removed
+    upstream)
+  * Drop Group tags
+- Rebase move_to_run.patch onto 1.10.3; drop its obsolete
+  bundled-spec and _common.py hunks (only the C sources still
+  reference /var/run)
+
+-------------------------------------------------------------------
 Tue Jan 28 13:16:48 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.2:

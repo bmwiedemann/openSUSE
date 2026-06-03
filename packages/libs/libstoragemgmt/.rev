@@ -374,4 +374,12 @@
   * smi-s plugin fix error message</comment>
     <requestid>1240841</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>b4c37c0932d33955c1278dad52ae3d9b</srcmd5>
+    <version>1.10.3</version>
+    <time>1780510849</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.10.3: drop Python 2 support and python-six, use sysusers.d for the user/group, snprintf/bitmask/string fixes. Use the upstream-shipped sysusers.d file, remove dead python2 spec conditionals, rebase move_to_run.patch.</comment>
+    <requestid>1356786</requestid>
+  </revision>
 </revisionlist>
