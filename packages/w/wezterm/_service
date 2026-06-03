@@ -18,7 +18,7 @@
   <service mode="manual" name="set_version"/>
   <service name="cargo_vendor" mode="manual">
      <param name="src">wezterm*.tar*</param>
-     <param name="update">false</param>
+     <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="manual" />
 </services>

@@ -1033,4 +1033,12 @@ Using filterer cut 120+MB of dependencies to ~50MB
   0%{?suse_version} &gt; 1600 (forwarded request 1322265 from priand)</comment>
     <requestid>1325389</requestid>
   </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>b83aff106caa530bffabcb1dcfd2ad2c</srcmd5>
+    <version>20240203.110809.5046fc22+git421</version>
+    <time>1780511134</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1356911</requestid>
+  </revision>
 </revisionlist>
