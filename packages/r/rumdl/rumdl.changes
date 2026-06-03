@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Jun 03 04:34:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.5:
+  * Added
+    - lsp: resolve buffer-file links and extend hover previews
+      (94e088a)
+  * Fixed
+    - md034: don't flag URLs in JSX component attributes (MDX)
+      (5ed2c5d)
+    - md013: avoid byte-slice underflow on all-emphasis lines
+      (ad5647a)
+    - fix-utils: reject non-char-boundary ranges in
+      validate_fix_range too (9d07c16)
+    - md072: span quoted keys fully in unsorted-key diagnostics
+      (8aa9140)
+    - config: don't create phantom rule entries for unconvertible
+      values (4b21cb0)
+    - md004: guard empty marker in count_marker_prevalence too
+      (5584c23)
+    - config: keep pyproject [tool.rumdl] with only cache=true set
+      (774a1b3)
+    - wasm: cover AzureDevOps and MyST flavors in round-trip test
+      (58f8d0d)
+    - config: tighten pyproject rumdl-section detection (b8a5966)
+    - config: keep pyproject [tool.rumdl] with only scalar globals
+      (7da87d7)
+    - md078,md079: declare Unfixable to match fix() returning Err
+      (d1d838a)
+    - config: skip unconvertible markdownlint values instead of
+      exiting (9bfc296)
+    - md004: guard against empty list marker instead of unwrapping
+      (a73d0bf)
+    - check: emit cross-file diagnostics in a stable path order
+      (8eb5027)
+    - md063: preserve URLs with nested parens and image alt text
+      (ba68a84)
+    - md057: only treat bare .com domains as external, not relative
+      paths (a0f8a86)
+    - md046: no trailing spaces on blank lines and tighter list
+      detection (eceb1d6)
+    - md072: preserve trailing newline and sort quoted keys by
+      content (73f80cf)
+    - fix-utils: reject fix ranges that split UTF-8 codepoints
+      (1ded124)
+    - md033: avoid non-char-boundary panic on multi-byte whitespace
+      in tags (5dfbec7)
+  * Performance
+    - md037: use cached HTML-comment lookup in the warning filter
+      (e5dcf91)
+    - lint-context: cache math byte ranges for is_in_math_context
+      (33ff165)
+    - md057: index lines via raw_lines() instead of lines().nth()
+      (251e8ff)
+    - md032: compare blockquote prefixes as &str without allocating
+      (c4f37d6)
+    - lint-context: skip kramdown masking when there are no
+      extension lines (29378b2)
+    - rules: use LazyLock regexes instead of the mutex-backed cache
+      (f757bae)
+    - workspace: clear reverse deps via the file's own links
+      (f28a27d)
+    - lint-context: precompute math-block closer lookahead
+      (be6796a)
+    - lint-context: make is_in_list_block/is_in_table_block O(1)
+      (9dc96a4)
+    - reflow: scan is_horizontal_rule without allocating a Vec
+      (9664d22)
+    - reflow: hoist char collection out of is_sentence_boundary
+      (457cbad)
+
+-------------------------------------------------------------------
 Sat May 30 06:47:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.4:
