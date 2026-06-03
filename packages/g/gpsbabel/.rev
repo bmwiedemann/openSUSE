@@ -289,4 +289,12 @@
     <comment></comment>
     <requestid>1320196</requestid>
   </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>1580a7253d6562024d1eb1ce156d1f4d</srcmd5>
+    <version>1.10.0</version>
+    <time>1780510972</time>
+    <user>anag_factory</user>
+    <comment>Ship the GUI (gpsbabelfe) in the gpsbabel-gui subpackage so CLI installs no longer pull Qt6 WebEngine; spec cleanup (drop dead gcc12 fallback, desktop scriptlets, Group/BuildRoot/%defattr).</comment>
+    <requestid>1356797</requestid>
+  </revision>
 </revisionlist>

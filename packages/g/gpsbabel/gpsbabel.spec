@@ -1,7 +1,7 @@
 #
 # spec file for package gpsbabel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,23 +22,16 @@ Version:        1.10.0
 Release:        0
 Summary:        Converts GPS waypoint, route and track data from one format type to another
 License:        GPL-2.0-or-later
-Group:          Hardware/Other
-URL:            http://www.gpsbabel.org/
+URL:            https://www.gpsbabel.org/
 Source:         https://github.com/GPSBabel/gpsbabel/archive/refs/tags/%{name}_1_10_0.tar.gz
-Source1:        http://www.gpsbabel.org/htmldoc-%{version}/%{name}-%{version}.pdf
+Source1:        https://www.gpsbabel.org/htmldoc-%{version}/%{name}-%{version}.pdf
 Source2:        %{name}.png
 Source21:       style3.css
 # No automatic phone home by default (RHBZ 668865)
 Patch4:         0004-gpsbabel-1.4.3-nosolicitation.patch
-%if 0%{?suse_version} >= 1550
+BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
-%endif
-BuildRequires:  cmake
-BuildRequires:  libusb-1_0-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6LinguistTools) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6Core) >= 6.2.0
@@ -51,9 +44,9 @@ BuildRequires:  pkgconfig(Qt6WebChannel) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= 6.2.0
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(shapelib)
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 GPSBabel converts waypoints, tracks, and routes from one format to
@@ -74,10 +67,7 @@ tracks, and routes.
 
 %package gui
 Summary:        Qt GUI interface for GPSBabel
-Group:          Hardware/Other
 Requires:       %{name} = %{version}-%{release}
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
 
 %description gui
 Qt GUI interface for GPSBabel
@@ -99,10 +89,6 @@ sed -i \
 
 %build
 %cmake \
-%if 0%{?suse_version} < 1550
-  -DCMAKE_C_COMPILER=gcc-12 \
-  -DCMAKE_CXX_COMPILER=g++-12 \
-%endif
   -DGPSBABEL_WITH_LIBUSB=system \
   -DGPSBABEL_WITH_ZLIB=pkgconfig \
   -DGPSBABEL_WITH_SHAPELIB=pkgconfig
@@ -130,19 +116,12 @@ install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 
 popd
 
-%post gui
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun gui
-%icon_theme_cache_postun
-%desktop_database_postun
-
 %files
-%defattr(-,root,root)
 %doc AUTHORS README* %{name}.pdf
 %license COPYING
 %{_bindir}/gpsbabel
+
+%files gui
 %{_bindir}/gpsbabelfe
 %{_datadir}/applications/*
 %dir %{_datadir}/%{name}

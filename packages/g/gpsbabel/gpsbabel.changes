@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun  2 17:51:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Ship the GUI (gpsbabelfe), its desktop file and icon in the
+  previously empty gpsbabel-gui subpackage; CLI-only installs of
+  gpsbabel no longer pull in the Qt6 WebEngine stack
+- Spec cleanup:
+  * Drop the obsolete update-desktop-files Requires(post)/
+    Requires(postun) and the desktop/icon-cache scriptlets
+    (handled by file triggers)
+  * Drop the dead gcc12 fallback (no built target is older than
+    Leap 15.6)
+  * Drop Group tags, the obsolete BuildRoot and %defattr
+  * Convert libusb-1_0-devel to pkgconfig(libusb-1.0); use https
+
+-------------------------------------------------------------------
 Sat Nov 22 21:17:33 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
