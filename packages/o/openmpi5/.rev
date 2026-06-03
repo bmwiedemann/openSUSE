@@ -204,4 +204,14 @@ as the default openmpi implementation is still openmpi4.</comment>
     - Fortran: mpi_f08/request_get_status: removed invalid fast-path that returned flag=false for MPI_STATUS_IGNORE when operation was completed (fixes #13671)</comment>
     <requestid>1335336</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>f16344fd2fb632ac54c0ff3c5a5091de</srcmd5>
+    <version>5.0.10</version>
+    <time>1780510900</time>
+    <user>anag_factory</user>
+    <comment>- Backport upstream patches for GCC16 support
+  - gcc16-initializers.patch
+  - gcc16-inline.patch</comment>
+    <requestid>1356802</requestid>
+  </revision>
 </revisionlist>

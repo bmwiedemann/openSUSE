@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  2 15:49:47 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Backport upstream patches for GCC16 support
+  - gcc16-initializers.patch
+  - gcc16-inline.patch
+
+-------------------------------------------------------------------
 Wed Feb 25 08:30:57 UTC 2026 - Nicolas Morey <nmorey@suse.com>
 
 - Update to v5.0.10

@@ -8,10 +8,10 @@ Date:   Wed Jul 26 09:55:50 2023 +0200
     
     Signed-off-by: Nicolas Morey <nmorey@suse.com>
 
-diff --git 3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c 3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c
+diff --git a/3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c b/3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c
 index c0e991c68d85..147bffad799d 100644
---- 3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c
-+++ 3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c
+--- a/3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c
++++ b/3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c
 @@ -140,6 +140,7 @@ int MPL_get_sockaddr_direct(int type, MPL_sockaddr_t * p_addr)
          return 0;
      } else {

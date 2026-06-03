@@ -87,6 +87,8 @@ Source4:        mpivars.sh
 Source5:        mpivars.csh
 Source100:      README.md
 Patch1:         romio341-backport-fixes-from-mpich.patch
+Patch2:         gcc16-inline.patch
+Patch3:         gcc16-initializers.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Exclude 32b archs
@@ -306,7 +308,7 @@ This RPM contains the configuration files for OpenMPI runtime (Version 3).
 #############################################################################
 %prep
 echo FLAVOR %{flavor}
-%autosetup -p0 -n openmpi-%{version}
+%autosetup -p1 -n openmpi-%{version}
 
 # Live patch the VERSION file
 sed -i -e 's/^greek=.*$/greek=/' -e 's/^repo_rev=.*$/repo_rev=%{version}/' \
