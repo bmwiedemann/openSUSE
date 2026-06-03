@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  2 19:08:43 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.7.6:
+  - Added new maintainer: abhinavagarwal07 Abhinav Agarwal
+  - CVE-2026-47187: Fixed critical vulnerability - Symlink
+    Escape: Rogue SFTP Server to Local File Read/Write), credit
+    to abhinavagarwal07 (bsc#1267017)
+  - New -o contain_symlinks and -o no_contain_symlinks to control
+    symlink containment behavior
+  - CVE-2026-48711: Fixed high severity vulnerability - Improper
+    Neutralization of Argument Delimiters in a Command ('Argument
+    Injection'), credit to abhinavagarwal07 (bsc#1267016)
+  - Fixed null-deref warning in tokenize_on_space, promote
+    strict-warnings to required
+  - Added a number of tests in CI, including rename, chmod,
+    fsync, statvfs values, error paths, option coverage
+  - Fixed malformed SFTP reply handling
+
+-------------------------------------------------------------------
 Wed Dec 24 11:04:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 3.7.5:
