@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:41:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 16:
+  * Migrate to argparse
+  * Fix bind mount identification
+  * Now requires Python 3 (Python 2 support dropped in 15)
+  * Add -S/--scale-bars option to scale bars to the device size
+  * Support the COLUMNS and NO_COLOR environment variables
+  * Add statvfs_block configuration option
+  * Do not colour read-only filesystems in black & white mode
+  * Many minor tweaks
+- Switch Source to the upstream release tarball on the Debian
+  mirror (the author's site only carries up to version 15)
+- Spec cleanup:
+  * Drop obsolete Group tag and python3 shebang sed (upstream
+    now ships a python3 shebang)
+  * Mark COPYING as %license and ship the new CHANGES doc
+
+-------------------------------------------------------------------
 Sun Dec 31 08:46:30 UTC 2017 - mpluskal@suse.com
 
 - Use correct rpm group

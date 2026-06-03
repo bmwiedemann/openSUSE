@@ -1,7 +1,7 @@
 #
 # spec file for package pydf
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           pydf
-Version:        12
+Version:        16
 Release:        0
 Summary:        Fully colorized df clone written in python
 License:        SUSE-Public-Domain
-Group:          System/Monitoring
-Url:            http://kassiopeia.juls.savba.sk/~garabik/software/pydf
-Source:         http://kassiopeia.juls.savba.sk/~garabik/software/pydf/pydf_%{version}.tar.gz
+URL:            http://kassiopeia.juls.savba.sk/~garabik/software/pydf
+Source:         https://deb.debian.org/debian/pool/main/p/%{name}/%{name}_%{version}.orig.tar.gz
 BuildArch:      noarch
 
 %description
@@ -31,9 +30,7 @@ pydf displays the amount of used and available space on your file systems,
 just like df, but in colors. The output format is completely customizable.
 
 %prep
-%setup -q
-# use python3 by default
-sed -i "s|%{_bindir}/python|%{_bindir}/python3|g" pydf
+%autosetup -n %{name}-%{version}
 
 %build
 
@@ -46,9 +43,10 @@ install -Dpm 0644 pydf.1 \
   %{buildroot}%{_mandir}/man1/pydf.1
 
 %files
-%doc README COPYING
+%license COPYING
+%doc CHANGES README.md
 %config(noreplace) %{_sysconfdir}/pydfrc
 %{_bindir}/pydf
-%{_mandir}/man1/pydf.1%{ext_man}
+%{_mandir}/man1/pydf.1%{?ext_man}
 
 %changelog

@@ -23,4 +23,14 @@
     <comment>- Use correct rpm group</comment>
     <requestid>560870</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>935b2e029218ce242b7532d1160f9fd1</srcmd5>
+    <version>16</version>
+    <time>1780511306</time>
+    <user>anag_factory</user>
+    <comment>Update to 16:
+- argparse migration, bind-mount fix, Python 3 only, -S/--scale-bars, COLUMNS/NO_COLOR support, statvfs_block option
+- Source from Debian mirror (author's site only carries up to 15); modernize spec; drop harmful python3 shebang sed</comment>
+    <requestid>1356952</requestid>
+  </revision>
 </revisionlist>
