@@ -1,6 +1,7 @@
 #
 # spec file for package nfs-utils
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +23,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.8.6
+Version:        2.9.1
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
@@ -43,8 +44,6 @@ Source24:       rpc-statd-notify.options.conf
 Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-utils.tmpfiles.conf
-Patch0:         nfsrahead-quieten-misleading-error-for-non-NFS-block-devic.patch
-Patch1:         nfsrahead-zero-initialise-device_info-struct.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

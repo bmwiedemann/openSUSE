@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun  1 06:46:46 UTC 2026 - Petr Vorel <pvorel@suse.cz>
+
+- Update to 2.9.1:
+  https://lore.kernel.org/linux-nfs/955a922e-c12d-435b-a698-caf73312f01d@redhat.com/
+  https://www.kernel.org/pub/linux/utils/nfs-utils/2.9.1/2.9.1-Changelog
+  * Minor version being disabled (which is why the minor release was bumped)
+  * New features bug fixes:
+     * V4.0 is turned off on the servery by default
+     * netlink is now used for upcalls in exportfs, exportd, mountd
+     * signed filehandle support was added.
+     * nfsdctl now checks for listeners before starting.
+
+-------------------------------------------------------------------
+Tue Mar 17 09:11:12 UTC 2026 - Petr Vorel <pvorel@suse.cz>
+
+- Update to 2.8.7:
+  https://lore.kernel.org/linux-nfs/4d11b9d7-7b49-4a1e-8c26-29ecb2fefe2f@redhat.com/
+  * nfsrahead: quieten misleading error for non-NFS block devices
+  * nfsrahead: zero-initialise device_info struct
+- No functional change (all commits from this release had already been backported)
+- Removed patches from 2.8.7:
+  * nfsrahead-quieten-misleading-error-for-non-NFS-block-devic.patch
+  * nfsrahead-zero-initialise-device_info-struct.patch
+
+-------------------------------------------------------------------
 Fri Mar 13 10:34:11 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
 
 - Fix nfsrahead crash (bsc#1259595)
