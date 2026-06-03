@@ -177,6 +177,8 @@ deselectname+=" or test__use_provided_session_header_autoload"
 # No sampledata
 rm -fr tests/unit/bokeh/sampledata
 deselectname+=" or test_contour or test_sampledata__util"
+# Broken on Python 3.14
+deselectname+=" or test_without_document_lock_accepts_async_function"
 # Needed for writing fontconfig cache dir
 export HOME=$PWD
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)

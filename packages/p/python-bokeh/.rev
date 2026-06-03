@@ -548,4 +548,12 @@
   * - #14750 [component: bokehjs] Block glyph doesn't account for</comment>
     <requestid>1341470</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>b123a2fe8004eaef6126966546c25f2c</srcmd5>
+    <version>3.9.0</version>
+    <time>1780511040</time>
+    <user>anag_factory</user>
+    <comment>- Skip a broken test on Python 3.14.</comment>
+    <requestid>1356848</requestid>
+  </revision>
 </revisionlist>
