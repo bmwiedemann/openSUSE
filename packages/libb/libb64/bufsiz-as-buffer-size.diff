@@ -1,11 +1,12 @@
 Description: use BUFSIZ as buffer size
+ BUFFERSIZE is only defined when compiling base64/ with -DBUFFERSIZE; the
+ installed C++ headers default the en/decoder buffersize to it, so library
+ consumers cannot use the default constructor. Use BUFSIZ from <cstdio>.
 Author: Jakub Wilk <jwilk@debian.org>
 Bug: http://sourceforge.net/tracker/?func=detail&atid=785907&aid=3591336&group_id=152942
-Forwarded: no
-Last-Update: 2012-11-30
-
---- a/include/b64/decode.h
-+++ b/include/b64/decode.h
+Rebased-for: 2.0.0.1
+--- a/include/b64/decode.h	2026-06-03 12:06:25.564554862 +0200
++++ b/include/b64/decode.h	2026-06-03 12:06:25.572555759 +0200
 @@ -8,6 +8,7 @@
  #ifndef BASE64_DECODE_H
  #define BASE64_DECODE_H
@@ -21,10 +22,10 @@ Last-Update: 2012-11-30
 -		decoder(int buffersize_in = BUFFERSIZE)
 +		decoder(int buffersize_in = BUFSIZ)
  		: _buffersize(buffersize_in)
- 		{}
- 
---- a/include/b64/encode.h
-+++ b/include/b64/encode.h
+ 		{
+ 			base64_init_decodestate(&_state);
+--- a/include/b64/encode.h	2026-06-03 12:06:25.576556208 +0200
++++ b/include/b64/encode.h	2026-06-03 12:06:25.588557554 +0200
 @@ -8,6 +8,7 @@
  #ifndef BASE64_ENCODE_H
  #define BASE64_ENCODE_H
@@ -39,6 +40,6 @@ Last-Update: 2012-11-30
  
 -		encoder(int buffersize_in = BUFFERSIZE)
 +		encoder(int buffersize_in = BUFSIZ)
- 		: _buffersize(buffersize_in)
- 		{}
- 
+ 			: _buffersize(buffersize_in)
+ 		{
+ 			base64_init_encodestate(&_state);

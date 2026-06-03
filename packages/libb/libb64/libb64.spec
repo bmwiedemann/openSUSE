@@ -1,7 +1,7 @@
 #
 # spec file for package libb64
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,25 @@
 
 
 %define shared_lib libb64.so
-%define soversion 0
+%define soversion 1
 %define soname %{shared_lib}.%{soversion}
 %define libname %{name}-%{soversion}
 Name:           libb64
-Version:        1.2.1
+Version:        2.0.0.1
 Release:        0
 Summary:        Base64 Encoding/Decoding Routines
 License:        SUSE-Public-Domain
-Group:          Development/Libraries/C and C++
-URL:            http://libb64.sourceforge.net/
-Source:         https://downloads.sourceforge.net/project/%{name}/%{name}/%{name}/%{name}-%{version}.zip
-# PATCH-FIX-UPSTREAM do respect cflags and some other bugfixes from debian
+URL:            https://github.com/libb64/libb64
+Source:         https://github.com/libb64/libb64/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM bufsiz-as-buffer-size.diff -- default the C++ en/decoder buffersize to BUFSIZ so the headers are usable standalone
 Patch0:         bufsiz-as-buffer-size.diff
-Patch1:         initialize-coder-state.diff
-Patch2:         integer-overflows.diff
-Patch3:         no-hardcoded-lib-path.diff
-Patch4:         override-cflags.diff
-Patch5:         static-chars-per-line.diff
-# PATCH-FIX-UPSTREAM do not add Werror as it is prone to break
-Patch6:         disable-werror.diff
+# PATCH-FIX-UPSTREAM no-hardcoded-lib-path.diff -- link the base64 tool against the library
+Patch1:         no-hardcoded-lib-path.diff
+# PATCH-FIX-UPSTREAM override-cflags.diff -- respect externally supplied CFLAGS
+Patch2:         override-cflags.diff
+# PATCH-FIX-UPSTREAM disable-werror.diff -- do not add -Werror as it is prone to break
+Patch3:         disable-werror.diff
 BuildRequires:  gcc-c++
-BuildRequires:  unzip
 
 %description
 libb64 is a library of ANSI C routines for fast encoding/decoding data into and
@@ -47,7 +44,6 @@ code for standalone encoding and decoding executables.
 
 %package        -n %{libname}
 Summary:        A library for working with base64 encoding/decoding
-Group:          System/Libraries
 
 %description    -n %{libname}
 libb64 is a library of ANSI C routines for fast encoding/decoding data into and
@@ -56,7 +52,6 @@ code for standalone encoding and decoding executables.
 
 %package        devel
 Summary:        A library for working with base64 encoding/decoding
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}-%{release}
 
 %description    devel
@@ -75,7 +70,7 @@ CFLAGS="%{optflags} -fPIC" make -j1
 cc -shared -Wl,-soname,%{soname} *.o -o %{soname}
 ln -sf %{soname} %{shared_lib}
 popd
-make -j1
+%make_build -j1 all_src all_base64
 
 %install
 # We need to use different name to avoid conflict with coreutils
@@ -92,16 +87,17 @@ ln -s %{soname} %{shared_lib}
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%doc CHANGELOG README
+%doc CHANGELOG.md README.md
 %{_bindir}/libb64-base64
 
 %files -n %{libname}
-%license LICENSE
+%license LICENSE.md
 %{_libdir}/%{soname}
 
 %files devel
 %{_libdir}/%{shared_lib}
 %dir %{_includedir}/b64
+%{_includedir}/b64/ccommon.h
 %{_includedir}/b64/cdecode.h
 %{_includedir}/b64/cencode.h
 %{_includedir}/b64/decode.h

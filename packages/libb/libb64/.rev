@@ -23,4 +23,15 @@
     <comment>- Small spec file cleanup</comment>
     <requestid>730129</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>47762b7905796ee3252d65382b4d1e1e</srcmd5>
+    <version>2.0.0.1</version>
+    <time>1780511249</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.0.0.1:
+- New upstream release (API: size_t args, void* pointers, configurable line breaks, buffer-length helpers)
+- Bump soversion to 1 (manually maintained soname; ABI changed)
+- Drop 3 patches now upstream; rebase bufsiz patch</comment>
+    <requestid>1356929</requestid>
+  </revision>
 </revisionlist>

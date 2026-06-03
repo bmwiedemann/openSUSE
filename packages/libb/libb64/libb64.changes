@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jun  3 10:11:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.0.1:
+  * Introduce version macros for API/version detection
+  * Use size_t arguments to allow longer base64 strings
+  * Re-introduce configurable line-break functionality
+  * Add encoder flags field and output-buffer length helpers
+  * Change in/out pointers to void*
+  * Integer-overflow and coder-state initialization fixes are
+    now included upstream
+- Switch Source to the upstream GitHub release tarball
+- Bump soversion to 1 (manually maintained soname; ABI changed)
+- Drop patches now included upstream:
+  * initialize-coder-state.diff
+  * integer-overflows.diff
+  * static-chars-per-line.diff
+- Rebase bufsiz-as-buffer-size.diff for the new sources
+- Drop no longer needed unzip BuildRequires
+- Modernize spec file (drop Group tag, use https URL)
+
+-------------------------------------------------------------------
 Wed Sep 11 12:29:01 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Small spec file cleanup
