@@ -78,4 +78,12 @@
 - add certifi as test and suggested dependency</comment>
     <requestid>1352322</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0edb27a64e55c9b43666c470b8016d58</srcmd5>
+    <version>0.31.1</version>
+    <time>1780511032</time>
+    <user>anag_factory</user>
+    <comment>- Conflict against older pyhanko.</comment>
+    <requestid>1356849</requestid>
+  </revision>
 </revisionlist>

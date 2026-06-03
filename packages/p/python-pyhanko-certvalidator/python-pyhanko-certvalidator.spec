@@ -50,6 +50,8 @@ Requires:       python-uritools >= 3.0.1
 Suggests:       python-aiohttp >= 3.9
 Suggests:       python-certifi >= 2023.5.7
 Suggests:       python-freezegun >= 1.1.0
+# Used to be shipped by pyHanko package
+Conflicts:      python-pyHanko <= 0.34.1
 BuildArch:      noarch
 %python_subpackages
 
