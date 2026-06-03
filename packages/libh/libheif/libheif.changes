@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  2 06:19:35 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 1.23.0:
+  * add API functions to read and write metadata:
+    ambient viewing environment
+    nominal diffuse white luminance
+  * adds a output_image_nclx_profile_passthrough option to heif_decoding_options
+  * CVE TBD (GHSA-jvmp-j3cw-84mh) - unbounded heap allocation in HEIF
+    sequence parser (stsz fixed-size mode missing bound check)
+
+-------------------------------------------------------------------
 Tue May 26 06:32:22 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 1.22.2:
