@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jun  2 07:30:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2026.06.01:
+  + Updated the "RTSPServer" implementation of the "SETUP" command
+    to make it more robust if subclassed code reimplements
+    "lookupServerMediaSession()" as an asynchronous operation.
+
+-------------------------------------------------------------------
+Mon Jun  1 07:46:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.05.30:
+  * Updated the "RTSPServer" implementation some more to make it
+    more robust if subclassed code reimplements
+    "lookpServerMediaSession()" as an asynchronous operation.
+  * Added an (integer) index to identify each server's
+    'client connection', and changed the "fClientConnections" table
+    to be indexed by this id.
+  * In the "RTSPServer" implementation, removed the
+    "fOurClientConnection" member variable.
+    This had been left over from when the RTSP "SETUP" command had
+    been implemented as a single, synchronous function.
+    Now that "SETUP" is implemented using multiple functions,
+    possibly asynchronously (depending upon how
+    "lookpServerMediaSession()" is implemented), this member
+    variable was potentially dangerous if more than one "SETUP" is
+    performed concurrently on the same client connection, or on
+    separate client connections.
+
+-------------------------------------------------------------------
 Thu May 28 20:17:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.05.28:
