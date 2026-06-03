@@ -799,4 +799,16 @@
 </comment>
     <requestid>1353334</requestid>
   </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>be2509bc325edfd6f6e2486d4ae1c0e7</srcmd5>
+    <version>3.10</version>
+    <time>1780510831</time>
+    <user>anag_factory</user>
+    <comment>- Add patch for restorecon to log error on readonly fs (bsc#1232226)
+  - Patch: restorecon-Only-log-error-on-readonly-fs-bsc-1232226.patch
+  - Can be dropped with the next toolchain release:
+    https://github.com/SELinuxProject/selinux/commit/fd411d50ba1cb3e8ad5f8ce4e3c9bc7fcbe4340c
+</comment>
+    <requestid>1356682</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 10:39:50 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Add patch for restorecon to log error on readonly fs (bsc#1232226)
+  - Patch: restorecon-Only-log-error-on-readonly-fs-bsc-1232226.patch
+  - Can be dropped with the next toolchain release:
+    https://github.com/SELinuxProject/selinux/commit/fd411d50ba1cb3e8ad5f8ce4e3c9bc7fcbe4340c
+
+-------------------------------------------------------------------
 Mon May 11 15:56:36 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Change License from SUSE-Public-Domain to LicenseRef-SUSE-Public-Domain
