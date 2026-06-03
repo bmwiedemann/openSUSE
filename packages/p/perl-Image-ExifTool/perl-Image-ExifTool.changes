@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Jun  2 14:19:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.59:
+  * Security update
+  * Added NewUUID Extra tag #421
+  * Added a new Canon RF lens
+  * Added config_files/novelty.config to the distribution #422
+  * Decode tags from the Sony ILCE-7RM6
+  * Decode a new FujiFilm tag
+  * Decode a few more DJI protobuf tags
+  * Decode a new Ricoh Pentax tag
+  * Issue Error instead of Warning when writing XMP with some problems which
+    could cause loss of data
+  * Improved error message when reading wrongly encoded CSV or JSON file
+  * Enhanced -config option to allow piped input with "-config -"
+  * Enhanced -validate option to do more strict checking of EXIF-for-XMP tags
+  * Patched -sort option avoid inconsistent output ordering of same-named tags
+  * Patched Composite SubSec date/time tags to specify the EXIF group for the
+    SubSec and OffsetTime tags upon which they are based (avoids non-standard
+    XMP tags from being incorrectly used here)
+  * Fixed bug in -diff feature when finding differences for specific tags and a
+    specified tag was missing from the source file
+
+-------------------------------------------------------------------
+Tue Jun  2 14:18:58 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.58:
+  * Added a few new Nikon Z lenses
+  * Added a few new QuickTime MajorBrand values
+  * Added a new RAFCompression value
+  * Added undocumented -eh option (alias for -E/-escapeHTML)
+  * Decode timed GPS from INNOVV N2 TS videos
+  * Improved decoding of Canon ColorData for some models
+  * Changed the name of the RAFVersion tag to FirmwareVersion
+  * Removed conversion for Garmin FIT DeviceIndex values
+  * Properly parse XML CDATA and comment sections
+  * Fixed issue which could cause failed Garmin test on some systems
+
+-------------------------------------------------------------------
 Wed Apr 22 13:24:59 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.57:
