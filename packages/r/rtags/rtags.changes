@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun  3 13:49:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.44:
+  * Fix FindLibClang.cmake regex to match define values with '='
+    and digits, fixing the build against LLVM 18
+  * Blacklist additional ARM code-generation flags that do not
+    affect parsing
+  * Fix code completion over TRAMP with unsaved buffers
+  * Bump cmake_minimum_required to 3.5 for CMake 4.0 compat
+  * Fix Process::exec() hanging indefinitely (rdm could hang on
+    startup)
+  * Replace the old Python/pytest tests with a Vitest suite and
+    switch CI to GitHub Actions
+- Drop rtags-2.38-emacs-28.patch (fix merged upstream)
+- Drop the -DCMAKE_POLICY_VERSION_MINIMUM=3.5 workaround;
+  upstream now declares cmake_minimum_required >= 3.5
+
+-------------------------------------------------------------------
 Sat Mar 22 20:21:43 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4

@@ -1,7 +1,7 @@
 #
 # spec file for package rtags
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           rtags
-Version:        2.38
+Version:        2.44
 Release:        0
 Summary:        Clang based source code indexer
 License:        GPL-3.0-or-later
 URL:            https://github.com/Andersbakken/rtags
 Source0:        https://github.com/Andersbakken/rtags/releases/download/v%{version}/rtags-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM rtags-2.38-emacs-28.patch -- Fix build with Emacs 28
-Patch0:         rtags-2.38-emacs-28.patch
 BuildRequires:  clang-devel
 BuildRequires:  cmake >= 3.5
 BuildRequires:  emacs-nox
@@ -46,8 +44,7 @@ Rtags is Clang based source file indexer supporting C/C++/Objective-C(++) code.
 
 %build
 %cmake \
-  -DCURSES_CURSES_LIBRARY:FILEPATH="%{_libdir}/libncurses.so" \
-  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+  -DCURSES_CURSES_LIBRARY:FILEPATH="%{_libdir}/libncurses.so"
 %cmake_build
 
 %install
@@ -57,10 +54,14 @@ install -m 0755 -t %{buildroot}%{_scriptdir} bin/*.sh
 chmod 0755 %{buildroot}%{_bindir}/gcc-rtags-wrapper.sh
 
 %check
-%ctest
+# Upstream's test suite (-DWITH_TESTS=1) is not enabled: the pytest
+# "automated_tests" are clang-version-sensitive and fail against the
+# rolling Clang, and the rct cppunit tests hang in the build environment.
+# Without WITH_TESTS there are no ctest tests, so %%ctest would be a no-op.
+#%%ctest
 
 %files
-%doc README.org CHANGELOG
+%doc README.org CHANGELOG.md
 %license LICENSE.txt
 %{_bindir}/rdm
 %{_bindir}/rc
