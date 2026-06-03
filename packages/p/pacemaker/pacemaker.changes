@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 02 01:11:56 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.2+20260601.c75e25851c (Pacemaker-3.0.2):
+- Low: libcrmcommon, tools: Fix NULL dereference in crm_resource.c
+
+-------------------------------------------------------------------
 Mon May 18 07:17:08 UTC 2026 - Yan Gao <ygao@suse.com>
 
 - Update to version 3.0.2+20260515.277473d9:

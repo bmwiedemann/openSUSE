@@ -2638,4 +2638,13 @@ jsc#PED-14899
 - tools: Use the VERSION variable instead of invoking `crm_attribute --version` (bsc#1265183, gh#ClusterLabs/pacemaker#4114) (forwarded request 1353720 from yan_gao)</comment>
     <requestid>1353721</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>1f5a5790cb8459200894c4e4bc280ac6</srcmd5>
+    <version>3.0.2+20260601.c75e25851c</version>
+    <time>1780510887</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.2+20260601.c75e25851c (Pacemaker-3.0.2):
+- Low: libcrmcommon, tools: Fix NULL dereference in crm_resource.c (forwarded request 1356666 from yan_gao)</comment>
+    <requestid>1356667</requestid>
+  </revision>
 </revisionlist>

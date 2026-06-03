@@ -5,4 +5,4 @@
   </service>
 <service name="tar_scm">
                 <param name="url">https://github.com/ClusterLabs/pacemaker.git</param>
-              <param name="changesrevision">277473d9f5ddfdc7c737c047a7bada85f7bc04a3</param></service></servicedata>
+              <param name="changesrevision">c75e25851c05c6b0ff48caeaa15854d5868ce428</param></service></servicedata>
