@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:05:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.47:
+  * Add xxhash (xxh64) checksum support for images
+  * Upgrade to the FUSE 3 library
+  * Fix FAT12 entry parsing (12-bit entries were previously
+    read as 16-bit)
+  * Update btrfs support to v6.16 and fix a duplicate-extent
+    issue (#270)
+  * Fix a heap buffer overflow when cloning ext4 bigalloc
+    filesystems
+  * Fix an integer overflow in the BITS_TO_BYTES macro and a
+    divide-by-zero crash that could be triggered by crafted
+    images
+  * Fix a buffer overflow in the fuseimg readdir handling
+  * Generate man pages from DocBook via the offline XML catalog
+- Packaging changes for the new release:
+  * Add libtool, libxslt-tools and docbook-xsl-stylesheets
+    BuildRequires (manpages are now generated from DocBook,
+    and the build uses a libtool library)
+  * Add pkgconfig(libxxhash), pkgconfig(liburcu) and
+    pkgconfig(libzstd) BuildRequires (newly required)
+  * Drop FUSE support: upstream disabled the partclone.imgfuse
+    tool, so drop --enable-fuse, pkgconfig(fuse) and the
+    partclone.imgfuse binary
+  * Move the bash completion into a separate
+    bash-completion subpackage
+  * Drop the obsolete "||:" build workaround
+  * Rename the bash completion file to partclone-completion
+
+-------------------------------------------------------------------
 Fri Aug 22 18:32:44 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to 0.3.37:

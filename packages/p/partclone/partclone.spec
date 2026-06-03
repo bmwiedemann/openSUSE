@@ -1,7 +1,7 @@
 #
 # spec file for package partclone
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Mariusz Fik <fisiu@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           partclone
-Version:        0.3.37
+Version:        0.3.47
 Release:        0
 Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later
@@ -26,13 +26,18 @@ URL:            https://partclone.org/
 Source:         https://github.com/Thomas-Tsai/partclone/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
+BuildRequires:  libtool
+BuildRequires:  libxslt-tools
 BuildRequires:  nilfs-utils-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bash-completion)
-BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(libntfs-3g)
+BuildRequires:  pkgconfig(liburcu)
+BuildRequires:  pkgconfig(libxxhash)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(openssl)
@@ -41,6 +46,16 @@ BuildRequires:  pkgconfig(uuid)
 %description
 A set of file system clone utilities, including
 ext2/3, reiserfs, reiser4, xfs, hfs+ file systems
+
+%package bash-completion
+Summary:        Bash completion for %{name}
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command-line completion support for %{name}.
 
 %lang_package
 
@@ -52,7 +67,6 @@ export CFLAGS="%{optflags} -fcommon"
 autoreconf -fiv
 %configure \
   --enable-ncursesw \
-  --enable-fuse \
   --enable-fs-test \
   --enable-btrfs \
   --enable-extfs \
@@ -65,9 +79,7 @@ autoreconf -fiv
   --enable-nilfs2 \
   --enable-minix \
   --enable-exfat
-# During build following occurs, but it seems harmless
-# files fail-mbr.bin and fail-mbr.bin.orig differ significantly:
-%make_build LIBS="-lncursesw -lpthread -lfuse" ||:
+%make_build
 
 %install
 %make_install
@@ -77,7 +89,6 @@ autoreconf -fiv
 %files
 %license COPYING
 %doc ChangeLog README.md
-%{_datadir}/bash-completion/completions/partclone-prompt
 %{_sbindir}/partclone.apfs
 %{_sbindir}/partclone.btrfs
 %{_sbindir}/partclone.chkimg
@@ -93,7 +104,6 @@ autoreconf -fiv
 %{_sbindir}/partclone.fat12
 %{_sbindir}/partclone.fat16
 %{_sbindir}/partclone.fat32
-%{_sbindir}/partclone.imgfuse
 %{_sbindir}/partclone.hfs+
 %{_sbindir}/partclone.hfsp
 %{_sbindir}/partclone.hfsplus
@@ -136,6 +146,9 @@ autoreconf -fiv
 %{_mandir}/man8/partclone.restore.8%{?ext_man}
 %{_mandir}/man8/partclone.vfat.8%{?ext_man}
 %{_mandir}/man8/partclone.xfs.8%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/partclone-completion
 
 %files lang -f %{name}.lang
 

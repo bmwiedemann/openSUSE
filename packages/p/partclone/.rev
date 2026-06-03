@@ -250,4 +250,15 @@
     <comment></comment>
     <requestid>1301551</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c4412ae8c49aff10a940aa7abc9ce41c</srcmd5>
+    <version>0.3.47</version>
+    <time>1780511271</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.3.47:
+- xxh64 checksum support, FUSE3, FAT12 parsing fix, btrfs v6.16
+- Security/hardening fixes: ext4 bigalloc heap overflow, integer overflow / divide-by-zero on crafted images, fuseimg buffer overflow
+- Packaging: new deps (libtool, xxhash, liburcu, libzstd, docbook), drop FUSE (imgfuse removed upstream), bash-completion subpackage, drop obsolete ||: workaround</comment>
+    <requestid>1356945</requestid>
+  </revision>
 </revisionlist>
