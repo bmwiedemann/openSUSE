@@ -17,7 +17,7 @@
 
 
 Name:           Kalpa-release
-Version:        20260602
+Version:        20260603
 Release:        0
 Summary:        Kalpa Desktop 
 License:        GPL-2.0-or-later
@@ -179,9 +179,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = Kalpa
-Provides:       product(Kalpa) = 20260602-0
+Provides:       product(Kalpa) = 20260603-0
 Provides:       product-label() = Kalpa
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Akalpa%3A20260602
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Akalpa%3A20260603
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(Kalpa)
@@ -197,7 +197,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(Kalpa) = 20260602-0
+Provides:       product_flavor(Kalpa) = 20260603-0
 Summary:        Kalpa Desktop%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -229,19 +229,17 @@ echo -e "\\\a" > %{buildroot}%{_prefix}/lib/issue.d/70-network.issue
 echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS.issue
 
 VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
-# note: VERSION is an optional field and has no meaning other than informative on a rolling distro
-# We do thus not add it to the os-release file
 cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
 NAME="Kalpa Desktop"
-# VERSION="%{version}%{?betaversion: %{betaversion}}"
+VERSION="%{version}%{?betaversion: %{betaversion}}"
 ID="kalpa-desktop"
 ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos opensuse-kalpa microos"
 VERSION_ID="$VERSION_ID"
 PRETTY_NAME="Kalpa Desktop"
 ANSI_COLOR="0;32"
 CPE_NAME="cpe:/o:opensuse:kalpa:%{version}"
-BUG_REPORT_URL="https://bugzilla.opensuse.org"
-SUPPORT_URL="https://bugs.opensuse.org"
+BUG_REPORT_URL="https://kalpadesktop.org/bugreports"
+SUPPORT_URL="https://kalpadesktop.org/forums"
 HOME_URL="https://kalpadesktop.org/"
 DOCUMENTATION_URL="https://kalpadesktop.org/documentation"
 LOGO="distributor-logo-Kalpa"
@@ -263,11 +261,11 @@ cat >%{buildroot}%{_sysconfdir}/products.d/Kalpa.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>Kalpa</name>
-  <version>20260602</version>
+  <version>20260603</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:kalpa:20260602</cpeid>
+  <cpeid>cpe:/o:opensuse:kalpa:20260603</cpeid>
   <productline>Kalpa</productline>
   <register>
     <pool>
