@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  3 10:22:04 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-10197: Affected is the function glTF2Importer:ImportEmbeddedTextures in the library code/AssetLib/glTF2/glTF2Importer.cpp. manipulation results in null pointer dereference [bsc#1266996]
+  * assimp-CVE-2026-10197.patch
+  CVE-2026-10199: Affected by this issue is the function glTF2:LazyDict in the library glTF2Asset.h. Manipulation of the argument operator[] leads to null pointer dereference [bsc#1266998]
+  * assimp-CVE-2026-10199.patch
+
+-------------------------------------------------------------------
 Fri May  8 11:52:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (CVE-2025-70067, boo#1263960)
@@ -502,6 +511,7 @@ Sat Jan 31 08:20:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
   * MDL/HL1: bounds-checked buffers and safer parsing
   * MD3: Fix MD3Importer surface header bounds checks to prevent
     heap overflow
+- fixes CVE-2025-11277 [bsc#1251019]
 
 -------------------------------------------------------------------
 Mon Jun  9 11:25:08 UTC 2025 - Christophe Marin <christophe@krop.fr>

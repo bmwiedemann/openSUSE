@@ -399,4 +399,12 @@
   * CVE-2025-70067.patch</comment>
     <requestid>1352019</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>fb080e1a99ab4b1f991f05eb026b3c1b</srcmd5>
+    <version>6.0.5</version>
+    <time>1780510866</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-10197, [bsc#1266996], CVE-2026-10199, [bsc#1266998] (forwarded request 1356931 from pgajdos)</comment>
+    <requestid>1356936</requestid>
+  </revision>
 </revisionlist>

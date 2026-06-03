@@ -28,6 +28,10 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         0001-Accept-find_package-Assimp-5.x-calls.patch
 # PATCH-FIX-UPSTREAM -- CVE-2025-70067
 Patch1:         CVE-2025-70067.patch
+# CVE-2026-10199: Affected by this issue is the function glTF2:LazyDict in the library glTF2Asset.h. Manipulation of the argument operator[] leads to null pointer dereference [bsc#1266998]
+Patch2:         assimp-CVE-2026-10199.patch
+# CVE-2026-10197: Affected is the function glTF2Importer:ImportEmbeddedTextures in the library code/AssetLib/glTF2/glTF2Importer.cpp. manipulation results in null pointer dereference [bsc#1266996]
+Patch3:         assimp-CVE-2026-10197.patch
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
