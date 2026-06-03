@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 03 11:17:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.26.0:
+  * Add RandomX v2 support, including commitments and stratum
+    submit changes
+  * Add RISC-V support: JIT compiler, hardware/vector AES and
+    vectorized RandomX code paths
+  * Solo mining: add support for the Monero FCMP++ hardfork
+  * Add VAES-512 support for Zen5 and Zen4 (Hawk Point) CPU
+    detection
+  * Linux: add transparent huge pages support and improve
+    automatic huge pages on systems without NUMA
+  * Numerous ARM64/aarch64 build and JIT improvements
+  * Initial Haiku OS support and improved LibreSSL support
+  * Many smaller fixes and optimizations across the 6.23.x,
+    6.24.x and 6.25.x releases
+- Enable building on riscv64 now that upstream supports RISC-V
+
+-------------------------------------------------------------------
 Thu Nov  7 09:34:29 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.22.2:

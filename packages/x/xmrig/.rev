@@ -741,4 +741,15 @@
   * v6.22.1-dev</comment>
     <requestid>1222065</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>986152a69d9c6e2f1a4f14b83936bf65</srcmd5>
+    <version>6.26.0</version>
+    <time>1780511278</time>
+    <user>anag_factory</user>
+    <comment>Update to 6.26.0:
+- RandomX v2, RISC-V support (JIT/vector AES), Monero FCMP++ hardfork
+- VAES-512 (Zen5), Zen4 detection, Linux transparent huge pages
+- Enable riscv64; modernize deps to pkgconfig(); curate changelog</comment>
+    <requestid>1356948</requestid>
+  </revision>
 </revisionlist>

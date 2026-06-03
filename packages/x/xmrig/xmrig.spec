@@ -17,7 +17,7 @@
 
 
 Name:           xmrig
-Version:        6.22.2
+Version:        6.26.0
 Release:        0
 Summary:        XMR mining application
 License:        GPL-3.0-only
@@ -29,15 +29,16 @@ Patch1:         correct-opencl-file.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  hwloc-devel
-BuildRequires:  libopenssl-devel
-BuildRequires:  libuv-devel
 BuildRequires:  make
 BuildRequires:  ninja
+BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(hwloc)
+BuildRequires:  pkgconfig(libuv)
+BuildRequires:  pkgconfig(openssl)
 Recommends:     libOpenCL1
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64 riscv64
 %{?systemd_ordering}
 
 %description

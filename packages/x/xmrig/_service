@@ -2,6 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="url">https://github.com/xmrig/xmrig</param>
+    <param name="revision">v6.26.0</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="exclude">.*</param>
