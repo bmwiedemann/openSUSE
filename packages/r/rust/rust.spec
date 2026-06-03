@@ -1,7 +1,6 @@
 #
 # spec file for package rust
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021 William Brown <william@blackhats.net.au>
 #
@@ -18,10 +17,11 @@
 #
 
 
-%global version_suffix 1.95
-%global version_current 1.95.0
+%global version_suffix 1.96
+%global version_current 1.96.0
 
 %define obsolete_rust_versioned() \
+Obsoletes:      %{1}1.95%{?2:-%{2}} \
 Obsoletes:      %{1}1.94%{?2:-%{2}} \
 Obsoletes:      %{1}1.93%{?2:-%{2}} \
 Obsoletes:      %{1}1.92%{?2:-%{2}} \
