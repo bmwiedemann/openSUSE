@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Wed Jun  3 04:50:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.41.1:
+  NOTE this is the same code as that of v0.41.0 — just that the
+  combination of a release deployment issue and immutable releases
+  just had that one end up without any downloadable artifacts. That
+  is now corrected!
+- Update to version 0.41.0:
+  This release brings automatic Rego test generation, as well as
+  squashing a bunch of issues under the hood with sweeping
+  enhancements to the core language server code.
+  * New Feature: Automatic Test Generation
+    A first pass at automatic test generation has landed in the
+    language server (#1982), thanks to @SeanLedford! With a new
+    code action available when working in a policy file, Regal can
+    generate a test stub based on the current state of the
+    workspace. This uses the values found in input.json to populate
+    the with statements in the generated test.
+  * Language Server Improvements
+    This release includes significant internal improvements to the
+    language server.
+    Completion performance has seen a major improvement: for
+    clients like VS Code that support a default replacement range,
+    the completion payload is now roughly half the size it was
+    before, and clients generally do no longer need to send
+    continuous requests to the server for more suggestions once you
+    start typing (#1992).
+    The folding range provider has been rewritten in Rego (#1979),
+    and now additionally honours client capabilities like
+    lineFoldingOnly and rangeLimit.
+    The handling of input.json and input.yaml files has been
+    overhauled (#2002). These files are now tracked as first-class
+    workspace state: they are parsed and cached when saved, and the
+    server now requests update notifications for them from the
+    client, rather than re-parsing the file on each evaluation, or
+    debug sessions started.
+  * OPA v1.17.0
+    Regal has been updated to OPA v1.17.0 (#2014). This OPA release
+    notably introduces future.keywords.not, which improves the
+    semantics of the not keyword by wrapping composite-expression
+    negation in an implicit body. Thanks @johanfylling for making
+    sure this also works in Regal now!
+    Regal's RoAST representation (and docs) have been updated to
+    support the new ast.Not form introduced alongside this feature
+    (#1985).
+  * RoAST module.comments Representation
+    The RoAST representation of module.comments has changed
+    (#1987). Comments are now represented as plain locations rather
+    than base64-encoded text, allowing Regal to retrieve the
+    original text from the source file directly with less bytes to
+    transfer and parse. Note: this is a breaking change for custom
+    rules that reference input.comments directly. Users should
+    instead prefer to reference data.regal.ast.comments_decoded,
+    which provides comment locations in the usual form and which
+    will remain stable even through future format changes.
+  * Bug Fixes
+    - Addressed a panic in regal fix caused by fixes being applied
+      in non-deterministic order; opa-fmt could reduce line count
+      such that use-assignment-operator would then access
+      out-of-bounds row numbers (#2003) as reported by @erazemk
+    - The unassigned-return-value rule now correctly flags
+      namespaced builtins like json.match_schema(...) in addition
+      to flat builtins like lower(...) (#2005) — thanks @mvanhorn
+      for the fix and @anderseknert for the report
+    - Nicer formatting of with sequences (#1969)
+    - regal/ast: metadata labels field is now recognized as a valid
+      metadata key, aligned with OPA v1.17.0 (#1983, #1988) —
+      thanks @srenatus
+    - Regal fix now works regardless of local git state (#2011).
+      Thanks @seiyab for the report in #2006
+  * What's Changed
+    - Use common aggregate data in circular-import (#2019)
+    - build(deps): bump github/codeql-action in the dependencies
+      group (#2017)
+    - debug: Determine abs debugging path for input.json (#2018)
+    - Unify common aggregation and aggregated data (#2016)
+    - build(deps): bump the dependencies group with 3 updates
+      (#2008)
+    - build(deps): bump github.com/containerd/containerd/v2 in
+      /e2e/testbuild (#2007)
+    - Add capabilities verification to build check (#2015)
+    - Use logger in Rego router (#2012)
+    - deps: Update opa to 1.17.0 (#2014)
+    - Extract file polling into waitForFile helper (#2013)
+    - Remove git validation from fix command (#2011)
+    - lsp: Introduce workspace abstraction (#2009)
+    - Remove the settings.json change that was introduced in my
+      previous PR (#2010)
+    - fix(rules): unassigned-return-value now covers namespaced
+      builtins (#2005)
+    - [feature] First Pass at Automatic Test Generation in Regal
+      (#1982)
+    - fixer: Apply linter fixes in deterministic order (#2003)
+    - build(deps): bump the dependencies group across 1 directory
+      with 2 updates (#1998)
+    - build(deps): bump brace-expansion from 5.0.5 to 5.0.6 in
+      /build (#1997)
+    - Improved handling of input.(json|yaml) files (#2002)
+    - build(deps): bump github.com/go-git/go-git/v5 in
+      /e2e/testbuild (#2000)
+    - build(deps): bump github.com/go-git/go-git/v5 from 5.18.0 to
+      5.19.1 (#2001)
+    - Move location of LSP storage helpers (#1993)
+    - New framework for testing language server handlers (#1992)
+    - Breaking: new RoAST representation of module.comments (#1987)
+    - regal/ast: update metadata fields (#1988)
+    - roast: Add marshaling support for `ast.Not` (#1985)
+    - Introduce passthrough handler type (#1984)
+    - regal/ast: add 'id' to valid metadata keys (#1983)
+    - build(deps): bump github/codeql-action in the dependencies
+      group (#1981)
+    - Move folding range provider to Rego handlers (#1979)
+    - Cleanup (#1978)
+    - feat(pre-commit): add regal-fix hooks for auto-fixing rules
+      (#1847) (#1976)
+    - build(deps): bump the dependencies group with 2 updates
+      (#1975)
+    - Move initialize handler to Rego router (#1977)
+    - Various code quality improvements (#1970)
+    - Nicer formatting of `with` test sequences (#1969)
+    - Update ast.json else to use "#/$defs/rule" (#1967)
+    - Use OPA main until next OPA release (#1968)
+
+-------------------------------------------------------------------
 Tue Apr 21 15:44:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.0:
