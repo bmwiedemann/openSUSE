@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  2 12:49:52 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.1.1
+  * Fixes
+    fix(syncthing): properly upgrade via REST when Syncthing is running (fixes #10697) by @calmh in https://github.com/syncthing/syncthing/pull/10699
+    fix(versioner): ensure user read/write/execute on archived dirs (fixes #10532) by @calmh in https://github.com/syncthing/syncthing/pull/10696
+    fix(discover): only announce wildcard for TCP punching when listening on wildcard address (fixes #10503) by @calmh in https://github.com/syncthing/syncthing/pull/10691
+    fix(stcrashreceiver): close source loader responses on errors by @mattn in https://github.com/syncthing/syncthing/pull/10704
+    fix(protocol): handle zero-size requests (fixes #10709) by @calmh in https://github.com/syncthing/syncthing/pull/10710
+  * Other
+    build: be explicit about workflow permissions by @calmh in https://github.com/syncthing/syncthing/pull/10690
+    chore(syncthing): include runtime context in GC crashes by @calmh in https://github.com/syncthing/syncthing/pull/10702
+    build(deps): x/net for govulncheck by @calmh in https://github.com/syncthing/syncthing/pull/10703
+    chore: use path/filepath for local file system paths by @mattn in https://github.com/syncthing/syncthing/pull/10705
+
+-------------------------------------------------------------------
 Tue May 12 07:59:15 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.1.0
