@@ -38,9 +38,9 @@
 %define build_ceph 1
 %endif
 
-%define talloc_version 2.4.3
+%define talloc_version 2.4.4
 %define tevent_version 0.17.1
-%define tdb_version    1.4.14
+%define tdb_version    1.4.15
 
 # This table represents the possible combinations of build macros.
 # They are defined only if not already defined in the build service
@@ -169,7 +169,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.23.8+git.477.f78166bceed
+Version:        4.24.3+git.475.629de6765b9
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -1411,6 +1411,7 @@ exit 0
 %_includedir/samba-4.0/util/tevent_ntstatus.h
 %_includedir/samba-4.0/util/tevent_unix.h
 %_includedir/samba-4.0/util/tevent_werror.h
+%_includedir/samba-4.0/util/talloc_keep_secret.h
 %{_libdir}/libsamba-credentials.so
 %{_libdir}/pkgconfig/samba-credentials.pc
 %{_libdir}/libndr.so

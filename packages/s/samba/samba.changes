@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed May 27 13:33:58 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Update to 4.24.3
+  * CVE-2026-4480: Fix Unauthenticated Remote Code Execution;
+    (bso#16033); (bsc#1261161).
+  * CVE-2026-4408: Fix Remote Code Execution in SAMR;(bso#16034);
+    (bsc#1261163).
+  * CVE-2026-3238: Fix unauthenticated udp packet crashes AD DC
+    nbt server; (bso#16012); (bsc#1261160).
+  * CVE-2026-3012: Fix CVE-2026-3012 group policy certificate
+    enrollment using http:// without validation;(bso#16003);
+    (bsc#1261159).
+  * CVE-2026-1933: Fix missing access check on reparse point
+    operations; (bso#15992); (bsc#1261188).
+  * CVE-2026-2340: vfs_worm does not block directory modification;
+    (bso#15997); (bsc#1261158).
+  * CVE-2026-40170: thirdparty ngtcp2 needs to be updated;
+    (bso#16059).
+
+- Update to 4.24.2
+  * Samba 4.24 with cups can't get queue and shows errors about
+    fetch_share_cache_time; (bso#16038).
+  * Fix a directory file descriptor leak in vfs_glusterfs that
+    caused unbounded memory growth on the GlusterFS brick with
+    persistent SMB2 connections; (bso#16043).
+  * Windows Offline Files fails with permission error when
+    directory has the read‑only attribute set; (bso#16030).
+  * samba not triggering mount of zfs snapshot in dataset
+    .zfs/snapshots/<snapname> directory; (bso#15991).
+  * net ads join still fails with multiple DCs; (bso#15999).
+  * samba-tool shows wrong format specifiers for timestamp
+    attributes; (bso#16076).
+  * restrict anonymous = 2 breaks RODC functionality;
+    (bso#14638).
+  * smbpasswd can crash winbindd on an AD DC; (bso#15973).
+  * smbd does not cleanup on disconnect of the transport
+    connection on lease break errors; (bso#15995).
+  * CVE-2026-40170: thirdparty ngtcp2 needs to be updated;
+    (bso#16059); (bsc#1262273); (bsc#1262337).
+  * Require NTLMv2 session security on Windows makes trusts to
+    Samba unusable; (bso#16067).
+  * Winbind can change Ownership Of / To A User Who has Homedir /
+    In passwd; (bso#16073).
+  * Winbind lsa_OpenPolicy() fails on lsa connection setup with:
+    NT_STATUS_RPC_CANNOT_SUPPORT; (bso#15987).
+  * CTDB read-only record handling contains use after free and
+    resource leak bugs; (bso#16068).
+
+- Update to 4.24.1
+  * autobuild fails if /proc/version contains trailing space;
+    (bso#16057).
+  * use after free in streams_xattr_connect(); (bso#16035).
+  * rpc workers with long living clients grow server  memory
+    keytab; (bso#16042); (bsc#1257200).
+  * vfs_snapper failing to access or enumerate files in
+    subfolders; (bso#16058); (bsc#1259667).
+  * Samba is not build with FORTIFY_SOURCE; (bso#16040).
+  * Fix tests with MIT Kerberos 1.22.x; (bso#16055).
+
+- Update to 4.24.0
+  * incorrect behavior on rpcclient enumport with rpcd_spoolss;
+    (bso#16019).
+  * altSecurityIdentities X509 issuer DN order is reversed;
+    (bso#16001).
+  * vfs_aio_ratelimit: introduce burst-aware and persistent state
+    model; (bso#16000).
+  * No function _python_sysroot defined; (bso#15990).
+  * leases torture test flappy; (bso#15978).
+  * smbd: in contend_dirleases() don't bother checking when not
+    enabled; (bso#15984).
+  * 'net ads kerberos kinit' should use also default ccache name
+    from krb5.conf; (bso#15993).
+  * "use-kerberos=desired" broken; (bso#15789).
+  * source3/libads/kerberos.c sets wrong failure for negative
+    connection cache; (bso#15975);  (bso#1255755).
+  * CTDB's statd_callout fails on sm-notify; (bso#15938).
+  * CTDB statd_callout_notify notifies unnecessary clients and
+    loses their state; (bso#15939).
+  * Backport domain default AES encryption types to 4.24;
+    (bso#15998).
+  * possible memory leak on rpc_spoolss; (bso#15979);
+    (bsc#1257200).
+  * Winbind group resolution failure; (bso#15972).
+  * ctdbd socket documentation is wrong; (bso#15977).
+  * time_t related build failure on 32bit arch in 4.24.0rc1;
+    (bso#15976).
+
+-------------------------------------------------------------------
 Tue May 26 13:23:23 UTC 2026 - Noel Power <noel.power@suse.com>
 
 - Update to 4.23.8
