@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  1 08:31:50 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.12.1
+  - Client: Fix occasional spurious version updated message display (#3691).
+- Add Jamulus-fix_version.patch to fix wrong verion.
+
+-------------------------------------------------------------------
 Sat May  9 10:59:31 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.12.0

@@ -1,0 +1,9 @@
+diff -Pdpru jamulus-r3_12_0.orig/Jamulus.pro jamulus-r3_12_0/Jamulus.pro
+--- jamulus-r3_12_0.orig/Jamulus.pro	2026-05-02 20:32:02.000000000 +0200
++++ jamulus-r3_12_0/Jamulus.pro	2026-06-01 12:05:02.850531114 +0200
+@@ -1,4 +1,4 @@
+-VERSION = 3.12.0
++VERSION = 3.12.1
+ 
+ # Using lrelease and embed_translations only works for Qt 5.12 or later.
+ # See https://github.com/jamulussoftware/jamulus/pull/3288 for these changes.

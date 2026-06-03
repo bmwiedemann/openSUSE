@@ -24,7 +24,7 @@
 %define tarball_version 3_12_0
 
 Name:           Jamulus
-Version:        3.12.0
+Version:        3.12.1
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later
@@ -38,6 +38,7 @@ Source13:       %{name}-togglerec.service
 Source20:       %{name}.sysconfig
 Source21:       %{name}.firewalld
 Source90:       README.SUSE
+Patch1:         %{name}-fix_version.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
