@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun  3 13:10:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 9.7.0:
+  * Fix handling of "bad" redirections and of ZIM file chunks
+  * Make zim::writer::creator::addMetadata() exception-safe
+  * Fix a rare edge-case bug in the ZIM reader
+  * Better memory management on macOS and further redirection
+    memory-usage optimization (reader and writer)
+- Changes from 9.6.0:
+  * Optimize dirent memory usage during ZIM creation
+  * Allow opening ZIMs with more than ~268M entries on macOS
+  * Fix the ZIM metadata 'Counter' parser
+- Changes from 9.5.0/9.5.1:
+  * Eliminate a Compressor infinite-loop scenario
+  * Protect against overly long words in titles and detect
+    corruption of the first blob offset in a cluster
+- Changes from 9.4.x:
+  * Add support for the upcoming Xapian 2.0
+- Drop 936.patch (ICU 76 build fix merged upstream)
+- Run the test suite during build again, building it with
+  test_data_dir=none so the data-independent tests run without
+  needing the downloadable test data (all 31 tests pass)
+
+-------------------------------------------------------------------
 Wed May 21 13:51:15 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 9.3.0:

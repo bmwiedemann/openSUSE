@@ -22,4 +22,15 @@
   * Upload GitHub workflows (@kelson42 #940 #942 #970)</comment>
     <requestid>1279050</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fabaf7d97d49a649e93d9e624b163858</srcmd5>
+    <version>9.7.0</version>
+    <time>1780511317</time>
+    <user>anag_factory</user>
+    <comment>Update to 9.7.0:
+- Bad-redirection/ZIM-chunk fixes, exception-safe addMetadata, reader edge-case fix, memory optimizations, Xapian 2.0 support
+- Drop obsolete 936.patch (ICU 76 fix merged upstream)
+- Re-enable the test suite (test_data_dir=none; all 31 tests pass)</comment>
+    <requestid>1356984</requestid>
+  </revision>
 </revisionlist>

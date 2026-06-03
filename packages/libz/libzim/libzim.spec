@@ -1,7 +1,7 @@
 #
 # spec file for package libzim
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %define  sover  9
 Name:           libzim
-Version:        9.3.0
+Version:        9.7.0
 Release:        0
 Summary:        Reference implementation for the ZIM file format
 License:        GPL-2.0-or-later
 URL:            https://github.com/openzim/libzim
 Source0:        https://github.com/openzim/libzim/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         https://github.com/openzim/libzim/pull/936.patch
 BuildRequires:  c++_compiler
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -69,16 +68,17 @@ This package contains development files for libzim.
 %autosetup -p1
 
 %build
-%meson
+# test_data_dir=none: build the test suite without the external test data
+# (the default would try to download it, which fails in the offline build)
+%meson -Dtest_data_dir=none
 %meson_build
 
 %install
 %meson_install
 
 %check
-# test mostly fail now
-#SKIP_BIG_MEMORY_TEST=1 WAIT_TIME_FACTOR_TEST=8 %%meson_test
-#SKIP_BIG_MEMORY_TEST=1 WAIT_TIME_FACTOR_TEST=8 meson test -C %{_vpath_builddir} --num-processes 1 --print-errorlogs
+export SKIP_BIG_MEMORY_TEST=1
+%meson_test
 
 %ldconfig_scriptlets -n %{name}%{sover}
 
