@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jun  3 05:55:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.0.6:
+  Fixes and improvements:
+  * mod_cloud_notify: Use correct stanza id when clearing table entries (mem leak)
+  * mod_admin_shell: Don’t echo new password back to the client
+  * util.pubsub: Remove JIDs not permitted to be subscribed on affiliation change (fixes #1709)
+  Minor changes:
+  * mod_account_activity: Don’t traceback when called without options
+  * util.jsonschema: Always accept 0 for multipleOf properties
+  * util.paths: Fix check for adding installer path to package.cpath
+  * util.datamanager: Fix listing of host stores
+  * util.crypto: Use post-Lua 5.1 buffer API for improved memory safety
+  * util.dataforms: Don’t treat invalid jid-multi fields as missing
+  * util.crypto: Ensure signing parameter is a string
+  * util.poll: Reject unsupported file descriptors when using select() backend
+  * util.pubsub: Ensure deleted node stays in memory store deletion failed
+  * util.ringbuffer: Fix incorrect returned position from :find() for #needle~=1
+  * util.pposix: Fix incorrect syslog facility mapping
+  * util.ringbuffer: find(): Fix find logic bugs
+  * util.signal: Fix signalfd closure on non-Linux systems
+  * net.websocket: Fix traceback in client if server doesn’t respond with Connection header
+  * net.server_event: Fix incorrect flag logic for watchfd handles
+  * mod_debug_stanzas: Only clear active_filters when there are no subscribers
+  * mod_carbons: Fix ‘to’ attribute of stanzas to own account
+  * net.stun: Fix parsing of STUN packets with 0-length attributes
+  * mod_storage_memory: Fix assignment to ‘with’ when calling archive:set()
+  * net.http.parser: Include final component in path normalization check
+  * mod_register_ibr: Use set_password() instead of create_user() for resets
+  * mod_vcard: Ignore invalid photo data
+  * util.timer: Fix incorrect rescheduling of some kinds of timers
+
+-------------------------------------------------------------------
 Thu Apr 30 05:44:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.0.5:
