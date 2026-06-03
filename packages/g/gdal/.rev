@@ -1051,4 +1051,15 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
 - fix boo#1264530</comment>
     <requestid>1354979</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>2fc8c75b695ff45d9d382ace2a655c77</srcmd5>
+    <version>3.13.0</version>
+    <time>1780511336</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.13.0 (soversion 38 -&gt; 39):
+- New gdal CLI subcommands; E57/CPHD/JP2GROK drivers; COG Create(); S102/104/111 + NITF CADRG write; Zarr V3; INTERLIS 2.4
+- pkgconfig() BuildRequires conversions; curl-devel &gt;= 7.68; package new CLI man pages
+Note: SONAME bump libgdal38 -&gt; libgdal39 (rebuilds consumers)</comment>
+    <requestid>1357007</requestid>
+  </revision>
 </revisionlist>

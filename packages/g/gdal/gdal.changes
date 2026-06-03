@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun  3 15:35:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.13.0 "Iowa City":
+  * New 'gdal' command line interface subcommands: vector
+    combine, concave-hull, convex-hull, create, dissolve,
+    export-schema, update, rename-layer and sort; dataset
+    check; driver cog/gpkg validate; and a pipeline 'external'
+    step to run an external command
+  * New E57 read-only raster driver (2D images from ASTM E2807
+    E57 files)
+  * New SAR Compensated Phase History Data (CPHD) multidimensional
+    read-only driver
+  * New JP2GROK read/write JPEG-2000 driver using the Grok
+    toolkit (AGPLv3)
+  * COG driver: implement Create() for random write creation
+  * S102/S104/S111 drivers: add write support
+  * MiraMonRaster: add creation support
+  * NITF driver: add CADRG writing support
+  * Zarr: various Zarr V3 improvements (sharding), multiscales,
+    and spatial/proj extensions for EOPF products
+  * Add support for INTERLIS 2.4
+  * Restore the OGR Tiger and UK.NTF drivers (previously removed)
+  * Add compatibility with Poppler up to 26.04.00
+- Bump soversion to 39 (libgdal38 -> libgdal39)
+- Convert several -devel BuildRequires to pkgconfig() form
+- Add curl-devel >= 7.68 (minimum required by GDAL 3.13)
+- Package the new gdal CLI subcommand man pages
+
+-------------------------------------------------------------------
 Sun May 24 14:12:12 UTC 2026 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to release 3.12.4

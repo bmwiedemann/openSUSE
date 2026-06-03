@@ -17,10 +17,24 @@
 #
 
 
-%define soversion 38
+%define soversion 39
 %define sourcename gdal
 # Uppercase GDAL is the canonical name for this package in Python
 %define pypi_package_name GDAL
+%ifarch s390 s390x i586 armv7l
+%bcond_with netcdf_support
+%else
+%bcond_without netcdf_support
+%endif
+%if 0%{?suse_version} > 1500
+%define pythons python3
+%else
+%define gccver 13
+%{?sle15_python_module_pythons}
+%endif
+%define mypython %{pythons}
+%define __mypython %{expand:%%__%{mypython}}
+%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %bcond_with ecw_support
 %bcond_with ecw5_support
 %bcond_with fgdb_support
@@ -31,24 +45,8 @@
 %bcond_with qhull_support
 %bcond_with deflate_support
 %bcond_with tests_support
-%ifarch s390 s390x i586 armv7l
-%bcond_with netcdf_support
-%else
-%bcond_without netcdf_support
-%endif
-
-%if 0%{suse_version} > 1500
-%define pythons python3
-%else
-%{?sle15_python_module_pythons}
-%define gccver 13
-%endif
-%define mypython %pythons
-%define __mypython %{expand:%%__%{mypython}}
-%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
-
 Name:           gdal
-Version:        3.12.4
+Version:        3.13.0
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND LicenseRef-SUSE-Public-Domain
@@ -56,11 +54,15 @@ URL:            https://www.gdal.org/
 Source0:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
 Source1:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
 Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.zip
+BuildRequires:  %{mypython}-base
+BuildRequires:  %{mypython}-devel
+BuildRequires:  %{mypython}-numpy-devel
+BuildRequires:  %{mypython}-setuptools
 BuildRequires:  KEALib-devel
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  chrpath
-BuildRequires:  curl-devel
+BuildRequires:  curl-devel >= 7.68
 BuildRequires:  dos2unix
 BuildRequires:  doxygen >= 1.4.2
 BuildRequires:  fdupes
@@ -69,29 +71,21 @@ BuildRequires:  geos-devel >= 3.8
 BuildRequires:  giflib-devel
 BuildRequires:  hdf5-devel >= 1.10
 BuildRequires:  lapack-devel
-BuildRequires:  libcryptopp-devel
 BuildRequires:  libdeflate-devel
 BuildRequires:  libtool
-BuildRequires:  libzstd-devel
-BuildRequires:  muparser-devel
 BuildRequires:  mysql-devel
 # This one is needed for Leap :-(
 BuildRequires:  opencl-headers
-BuildRequires:  %{mypython}-base
-BuildRequires:  %{mypython}-devel
-BuildRequires:  %{mypython}-numpy-devel
-BuildRequires:  %{mypython}-setuptools
-BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shapelib >= 1.4
 BuildRequires:  swig
-BuildRequires:  unixODBC-devel
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(OpenCL)
 # c++17 standard errors for older versions
 BuildRequires:  pkgconfig(OpenEXR) >= 3
 BuildRequires:  pkgconfig(armadillo)
 BuildRequires:  pkgconfig(bash-completion)
+BuildRequires:  pkgconfig(cryptopp)
 BuildRequires:  pkgconfig(expat) >= 1.95.0
 BuildRequires:  pkgconfig(freexl)
 BuildRequires:  pkgconfig(json)
@@ -102,6 +96,7 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libopenjp2) >= 2.3.1
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libpng) >= 1.6
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libtiff-4) >= 4.1
@@ -110,10 +105,10 @@ BuildRequires:  pkgconfig(libwebpdecoder)
 BuildRequires:  pkgconfig(libwebpdemux)
 BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(libxml-2.0)
-%if %{with netcdf_support}
-BuildRequires:  pkgconfig(netcdf)
-%endif
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(muparser)
 BuildRequires:  pkgconfig(ocl-icd)
+BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(poppler) >= 0.86
 BuildRequires:  pkgconfig(proj) >= 6.3
 BuildRequires:  pkgconfig(shapelib)
@@ -121,6 +116,9 @@ BuildRequires:  pkgconfig(spatialite) >= 4.1.2
 BuildRequires:  pkgconfig(sqlite3) >= 3.31
 BuildRequires:  pkgconfig(xerces-c)
 BuildRequires:  pkgconfig(zlib) >= 1.1.4
+%if %{with netcdf_support}
+BuildRequires:  pkgconfig(netcdf)
+%endif
 %if %{with tests_support}
 BuildRequires:  cmake-full
 %else
@@ -213,7 +211,6 @@ The GDAL python modules provide support to handle multiple GIS file formats.
 
 %package bash-completion
 Summary:        Bash completion for GDAL
-Group:          System/Shells
 Requires:       %{name}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -326,7 +323,7 @@ sed -e 's|gdal_optional_format(libertiff "GeoTIFF support through libertiff libr
 
 %install
 %cmake_install
-%python3_fix_shebang
+%{python3_fix_shebang}
 %fdupes %{buildroot}%{mypython_sitearch}
 #remove duplicate license file
 rm -f %{buildroot}%{_datadir}/%{name}/LICENSE.TXT
@@ -437,6 +434,7 @@ popd
 %{_mandir}/man1/sozip.1%{?ext_man}
 %{_mandir}/man1/gdal-convert.1%{?ext_man}
 %{_mandir}/man1/gdal-dataset.1%{?ext_man}
+%{_mandir}/man1/gdal-dataset-check.1%{?ext_man}
 %{_mandir}/man1/gdal-dataset-copy.1%{?ext_man}
 %{_mandir}/man1/gdal-dataset-delete.1%{?ext_man}
 %{_mandir}/man1/gdal-dataset-identify.1%{?ext_man}
@@ -475,6 +473,7 @@ popd
 %{_mandir}/man1/gdal-raster-pixel-info.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-polygonize.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-proximity.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-read.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-reclassify.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-reproject.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-resize.1%{?ext_man}
@@ -492,6 +491,7 @@ popd
 %{_mandir}/man1/gdal-raster-unscale.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-update.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-viewshed.1%{?ext_man}
+%{_mandir}/man1/gdal-raster-write.1%{?ext_man}
 %{_mandir}/man1/gdal-raster-zonal-stats.1%{?ext_man}
 %{_mandir}/man1/gdal-raster.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-buffer.1%{?ext_man}
@@ -499,10 +499,14 @@ popd
 %{_mandir}/man1/gdal-vector-check-geometry.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-clean-coverage.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-clip.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-combine.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-concat.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-convert.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-create.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-dissolve.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-edit.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-explode-collections.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-export-schema.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-filter.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-grid.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-index.1%{?ext_man}
@@ -513,13 +517,18 @@ popd
 %{_mandir}/man1/gdal-vector-partition.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-pipeline.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-rasterize.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-read.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-rename-layer.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-segmentize.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-select.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-set-field-type.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-set-geom-type.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-simplify.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-sort.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-sql.1%{?ext_man}
 %{_mandir}/man1/gdal-vector-swap-xy.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-update.1%{?ext_man}
+%{_mandir}/man1/gdal-vector-write.1%{?ext_man}
 %{_mandir}/man1/gdal-vector.1%{?ext_man}
 %{_mandir}/man1/gdal-vsi-copy.1%{?ext_man}
 %{_mandir}/man1/gdal-vsi-delete.1%{?ext_man}
