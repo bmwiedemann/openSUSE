@@ -4,6 +4,7 @@
   <flavor>kvm-and-xen</flavor>
   <flavor>VMware</flavor>
   <flavor>MS-HyperV</flavor>
+  <flavor>KubeVirt-Cloud</flavor>
   <flavor>Cloud</flavor>
   <flavor>RaspberryPi</flavor>
   <flavor>s390x-Cloud</flavor>

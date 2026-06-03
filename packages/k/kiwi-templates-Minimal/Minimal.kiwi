@@ -15,6 +15,7 @@
         <profile name="VMware" description="Minimal Image for VMware" arch="x86_64"/>
         <profile name="MS-HyperV" description="Minimal Image for Hyper-V" arch="aarch64,x86_64"/>
         <profile name="Cloud" description="Minimal Image for Cloud" arch="aarch64,x86_64"/>
+        <profile name="KubeVirt-Cloud" description="Minimal Image for KubeVirt containerdisk" arch="x86_64"/>
         <profile name="RaspberryPi" description="Minimal Image for the Raspberry Pi" arch="aarch64"/>
         <profile name="s390x-Cloud" description="Minimal Image for Cloud" arch="s390x"/>
         <profile name="s390x-dasd" description="Minimal Image for DASD on z Systems" arch="s390x"/>
@@ -218,6 +219,33 @@
             <size unit="G">2</size>
         </type>
     </preferences>
+
+    <preferences profiles="KubeVirt-Cloud">
+        <version>1.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="oem"
+            filesystem="xfs"
+            firmware="uefi"
+            efipartsize="512"
+            bootpartition="false"
+            bootkernel="custom"
+            devicepersistency="by-uuid"
+            format="docker:qcow2"
+            editbootinstall="containerdisk.sh"
+            bundle_format="%N-KubeVirt.%A-%M.%m.%p"
+        >
+            <oemconfig>
+                <oem-resize>false</oem-resize>
+            </oemconfig>
+            <containerconfig name="opensuse/tumbleweed-kubevirt-minimal" tag="latest"/>
+            <bootloader name="grub2" timeout="1"/>
+            <size unit="G">2</size>
+        </type>
+        </preferences>
 
     <preferences profiles="MS-HyperV" arch="x86_64">
         <version>1.0.0</version>
@@ -443,6 +471,9 @@
         <!-- <package name="rsyslog"/> for SLE -->
         <package name="systemd-logger"/> <!-- for openSUSE -->
         <package name="zypper-needs-restarting"/> <!-- Some deployment script use this (bsc#1173548) -->
+        <!-- Add nftables and iptables to common Minimal image package set -->
+        <package name="nftables"/>
+        <package name="iptables"/>
         <!-- Configure zypper for no-recommends and excludedocs -->
         <package name="zypp-excludedocs"/>
         <package name="zypp-no-recommends"/>
@@ -453,7 +484,7 @@
     </packages>
 
     <!-- GRUB everywhere except for -grub-bls and -sdboot flavors -->
-    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,Cloud,RaspberryPi,s390x-dasd,s390x-Cloud,ppc64le-4096B-qcow2">
+    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,Cloud,KubeVirt-Cloud,RaspberryPi,s390x-dasd,s390x-Cloud,ppc64le-4096B-qcow2">
         <package name="grub2"/>
         <package name="grub2-arm64-efi" arch="aarch64"/>
         <!-- Not available on s390x -->
@@ -484,7 +515,7 @@
         <package name="grub2-snapper-plugin"/>  <!-- snapper - grub2 - integration, "small" -->
     </packages>
 
-    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,VMware,MS-HyperV,Cloud">
+    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,VMware,MS-HyperV,Cloud,KubeVirt-Cloud">
         <!-- Shim for secure boot everywhere except for RPi -->
         <package name="shim" arch="aarch64,x86_64"/>
     </packages>
@@ -494,7 +525,7 @@
         <package name="xen-libs" arch="aarch64,x86_64"/>
         <package name="kernel-default-base"/>
     </packages>
-    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,Cloud,s390x-Cloud,ppc64le-4096B-qcow2">
+    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,Cloud,KubeVirt-Cloud,s390x-Cloud,ppc64le-4096B-qcow2">
         <package name="qemu-guest-agent"/>
     </packages>
 
@@ -524,13 +555,13 @@
         <package name="open-vm-tools" arch="x86_64"/>
         <package name="kernel-default-base"/>
     </packages>
-    <packages type="image" profiles="Cloud,s390x-Cloud">
+    <packages type="image" profiles="Cloud,KubeVirt-Cloud,s390x-Cloud">
         <package name="cloud-init"/>
         <package name="cloud-init-config-suse"/>
         <package name="jeos-firstboot"/>
         <package name="xfsprogs"/>
     </packages>
-    <packages type="image" profiles="Cloud">
+    <packages type="image" profiles="Cloud,KubeVirt-Cloud">
         <package name="kernel-default-base"/>
     </packages>
     <packages type="image" profiles="MS-HyperV">
@@ -573,7 +604,7 @@
     <packages type="bootstrap" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,s390x-Cloud,ppc64le-4096B-qcow2">
         <package name="openSUSE-release-appliance-kvm"/>
     </packages>
-    <packages type="bootstrap" profiles="Cloud">
+    <packages type="bootstrap" profiles="Cloud,KubeVirt-Cloud">
         <package name="openSUSE-release-appliance-openstack"/>
     </packages>
     <packages type="bootstrap" profiles="MS-HyperV">

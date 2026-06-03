@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 12 14:24:39 UTC 2026 - PraveenKumar Handigol <praveenkumar.handigol@suse.com>
+
+- Add iptables or nftables to Minimal image (jsc#PED-15694) 
+
+-------------------------------------------------------------------
+Tue May 12 12:53:12 UTC 2026 - PraveenKumar Handigol <praveenkumar.handigol@suse.com>
+
+- Implement support for KubeVirt containerdisk creation via Kiwi (jsc#PED-15932):
+  * Add containerdisk.sh
+
+-------------------------------------------------------------------
 Tue May  5 09:42:49 UTC 2026 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Remove serial console Linux kernel command line parameter from RPi images.

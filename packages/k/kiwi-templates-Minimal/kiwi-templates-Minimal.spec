@@ -29,6 +29,7 @@ Source02:       Minimal.kiwi
 Source03:       editbootinstall_rpi.sh
 Source04:       editbootinstall_mbr.sh
 Source05:       disk.sh
+Source06:       containerdisk.sh
 #
 Source99:       LICENSE
 Requires:       python3-kiwi
@@ -54,7 +55,7 @@ cp "%SOURCE99" .
 %install
 dst="%buildroot%dest"
 mkdir -p $dst
-for i in %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5}; do
+for i in %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6}; do
 	install -m 644 $i "$dst"
 done
 
