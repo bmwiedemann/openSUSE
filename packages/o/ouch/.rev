@@ -177,4 +177,30 @@
   * Fix tar hardlink is not preserved after decompressing or compressing (#879)</comment>
     <requestid>1348770</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>84980d5b2a1705c440c9ea24ac3b6cb4</srcmd5>
+    <version>0.8.0</version>
+    <time>1780511013</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.0:
+  Packaging:
+  * Reproducible builds (#973).
+  New Features:
+  * Releases: add Apple Silicon macOS (aarch64-apple-darwin) to assets.
+  * Unpack into new folder by default (#962).
+  * Add --here flag to unpack into current directory (#962).
+  * List: show symlink targets (for tar and zip) (#934)
+  * Add aliases for ebooks (.epub) (#981)
+  Improvements:
+  * Improve options for solving conflicts (#964)
+  * Report mtime-set errors for .7z as warnings (#950)
+  * list: also display symlink targets (#934)
+  * Improve man pages for subcommands (#980)
+  Bug Fixes:
+  * Fix Ouch trying to overwrite current directory (#962)
+  * Fix various panics not handled gracefully (#950)
+  * Handle GNUSparse archive entries during tar decompression (#975)
+  * Fix .rar being slow (#968)</comment>
+    <requestid>1356815</requestid>
+  </revision>
 </revisionlist>

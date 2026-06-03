@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun  2 20:55:44 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  Packaging:
+  * Reproducible builds (#973).
+  New Features:
+  * Releases: add Apple Silicon macOS (aarch64-apple-darwin) to assets.
+  * Unpack into new folder by default (#962).
+  * Add --here flag to unpack into current directory (#962).
+  * List: show symlink targets (for tar and zip) (#934)
+  * Add aliases for ebooks (.epub) (#981)
+  Improvements:
+  * Improve options for solving conflicts (#964)
+  * Report mtime-set errors for .7z as warnings (#950)
+  * list: also display symlink targets (#934)
+  * Improve man pages for subcommands (#980)
+  Bug Fixes:
+  * Fix Ouch trying to overwrite current directory (#962)
+  * Fix various panics not handled gracefully (#950)
+  * Handle GNUSparse archive entries during tar decompression (#975)
+  * Fix .rar being slow (#968)
+
+-------------------------------------------------------------------
 Wed Apr 22 11:46:11 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.1:
