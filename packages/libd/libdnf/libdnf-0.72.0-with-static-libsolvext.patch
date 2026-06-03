@@ -18,11 +18,11 @@ in libsolv, since it's not easy to fix there, given upstream constraints.
  3 files changed, 43 insertions(+)
  create mode 100644 cmake/modules/FindLZMA.cmake
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 6444c374..15c86b40 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -68,6 +68,19 @@ pkg_check_modules(RPM REQUIRED rpm>=4.15.0)
+Index: libdnf-0.75.0/CMakeLists.txt
+===================================================================
+--- libdnf-0.75.0.orig/CMakeLists.txt
++++ libdnf-0.75.0/CMakeLists.txt
+@@ -76,6 +76,19 @@ endif()
  pkg_check_modules(SMARTCOLS REQUIRED smartcols)
  pkg_check_modules(SQLite3 REQUIRED sqlite3)
  
@@ -39,14 +39,13 @@ index 6444c374..15c86b40 100644
 +find_library (ZSTD_LIBRARY NAMES zstd)
 +# End static libsolvext dynamic library dependencies
 +
- # always enable linking with libdnf utils
- include_directories(${CMAKE_SOURCE_DIR} libdnf/utils/)
- 
-diff --git a/cmake/modules/FindLZMA.cmake b/cmake/modules/FindLZMA.cmake
-new file mode 100644
-index 00000000..eb112dff
+ if (WITH_ZCHUNK)
+     pkg_check_modules(ZCHUNKLIB zck>=0.9.11 REQUIRED)
+     set (CMAKE_CXX_FLAGS          "${CMAKE_CXX_FLAGS} -DWITH_ZCHUNK")
+Index: libdnf-0.75.0/cmake/modules/FindLZMA.cmake
+===================================================================
 --- /dev/null
-+++ b/cmake/modules/FindLZMA.cmake
++++ libdnf-0.75.0/cmake/modules/FindLZMA.cmake
 @@ -0,0 +1,25 @@
 +# - Find lzma
 +# Find the native LZMA headers and library
@@ -73,10 +72,10 @@ index 00000000..eb112dff
 +ELSE(LZMA_FOUND)
 +  SET( LZMA_LIBRARIES )
 +ENDIF(LZMA_FOUND)
-diff --git a/libdnf/CMakeLists.txt b/libdnf/CMakeLists.txt
-index f37d236a..854a50e9 100644
---- a/libdnf/CMakeLists.txt
-+++ b/libdnf/CMakeLists.txt
+Index: libdnf-0.75.0/libdnf/CMakeLists.txt
+===================================================================
+--- libdnf-0.75.0.orig/libdnf/CMakeLists.txt
++++ libdnf-0.75.0/libdnf/CMakeLists.txt
 @@ -81,6 +81,11 @@ target_link_libraries(libdnf
      ${JSONC_LIBRARIES}
      ${LIBMODULEMD_LIBRARIES}
@@ -89,6 +88,3 @@ index f37d236a..854a50e9 100644
  )
  
  if(ENABLE_RHSM_SUPPORT)
--- 
-2.41.0
-
