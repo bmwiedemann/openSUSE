@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  3 09:35:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernize spec file:
+  * Use https for Source URL
+  * Use %{_sysconfdir} macro instead of hardcoded /etc
+
+-------------------------------------------------------------------
 Mon Dec  8 08:36:13 UTC 2025 - ming li <mli@suse.com>
 
 - Update to version 0.45:

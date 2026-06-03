@@ -110,4 +110,14 @@ http://lists.opensuse.org/opensuse-factory/2016-02/msg00457.html</comment>
     <comment></comment>
     <requestid>1321548</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f16ef4c2fe28ab14c38f508f569450d3</srcmd5>
+    <version>0.45</version>
+    <time>1780511246</time>
+    <user>anag_factory</user>
+    <comment>Modernize spec file:
+- Use https for Source URL
+- Use %{_sysconfdir} macro instead of hardcoded /etc</comment>
+    <requestid>1356921</requestid>
+  </revision>
 </revisionlist>
