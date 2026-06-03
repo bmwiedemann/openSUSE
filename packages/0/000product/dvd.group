@@ -1666,7 +1666,7 @@
     <package name="libayatana-ido3-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libayatana-indicator3-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libb2-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libb64-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libb64-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libbabl-0_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbabl-0_1-0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libbacktrace0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2160,8 +2160,8 @@
     <package name="libionic1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libip4tc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libip6tc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libiscsi10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libiscsi10-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libiscsi11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libiscsi11-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libisl23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libisoburn1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libisofs6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2267,7 +2267,7 @@
     <package name="liblightdm-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libliveMedia118" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libliveMedia119" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="liblmdb-0_9_35" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblogging0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="liblognorm5" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
