@@ -326,4 +326,43 @@ Update to the commit d499b6e.
     update github.com/go-git/go-git/v5 to v5.17.1</comment>
     <requestid>1353788</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>22f058628e0bc646da851c5ce91b3f69</srcmd5>
+    <version>0.10.1</version>
+    <time>1780511267</time>
+    <user>anag_factory</user>
+    <comment>Resubmit to fix broken git commit references.
+
+- CVE-2026-39827: An authenticated SSH client that repeatedly
+  opened channels which were rejected by the server caused
+  unbounded memory growth, eventually crashing the server process
+  and affecting all connected users. Rejected channels are now
+  properly removed from the connection's internal state and
+  released for garbage collection. (bsc#1266174, GO-2026-5016)
+- CVE-2026-39834: When writing data larger than 4GB in a single
+  Write call on an SSH channel, an integer overflow in the
+  internal payload size calculation caused the write loop to spin
+  indefinitely, sending empty packets without making progress.
+  The size comparison now uses int64 to prevent truncation.
+  (bsc#1266174, GO-2026-5020)
+- CVE-2026-39828: When an SSH server authentication callback
+  returned PartialSuccessError with non-nil Permissions, those
+  permissions were silently discarded, potentially dropping
+  certificate restrictions such as force-command after a second
+  factor succeeded. Returning non-nil Permissions with
+  PartialSuccessError now results in a connection error.
+  (bsc#1266174, GO-2026-5014)
+- CVE-2026-39829: The RSA and DSA public key parsers did not
+  enforce size limits on key parameters. A crafted public key
+  with an excessively large modulus or DSA parameter could cause
+  several minutes of CPU consumption during signature
+  verification. This could be triggered by unauthenticated
+  clients during public key authentication. RSA moduli are now
+  limited to 8192 bits, and DSA parameters are validated per FIPS
+  186-2. (bsc#1266174, GO-2026-5018)
+- CVE-2026-39831: The Verify() method for FIDO/U2F security key
+  types (sk-ecdsa-sha2-nistp256@openssh.com,
+  sk-ssh-ed25519@openssh.com) did not check the User Presence</comment>
+    <requestid>1356943</requestid>
+  </revision>
 </revisionlist>
