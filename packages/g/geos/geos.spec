@@ -1,7 +1,7 @@
 #
 # spec file for package geos
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define uver	3_13_1
+%define uver	3_14_1
 Name:           geos
-Version:        3.13.1
+Version:        3.14.1
 Release:        0
 Summary:        Geometry Engine - Open Source
 License:        LGPL-2.1-only
@@ -79,7 +79,7 @@ use GEOS.
 # path needs to be exported otherwise unit tests will fail
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 # disable tests for i586 as they fail
-%ifnarch %ix86
+%ifnarch %{ix86}
 %ctest
 %endif
 

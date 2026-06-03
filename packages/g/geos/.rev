@@ -757,4 +757,22 @@ All changes since 3.3.7:
   - See provided NEWS.md for a complete list of changes</comment>
     <requestid>1252735</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6d86319257a524683c1bcfbd8ba29722</srcmd5>
+    <version>3.14.1</version>
+    <time>1774470035</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.14.1
+  - See provided NEWS.md for a complete list of changes
+</comment>
+    <requestid>1342419</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>40bb092e7c12c297380feaea6e021fe8</srcmd5>
+    <version>3.14.1</version>
+    <time>1780511010</time>
+    <user>anag_factory</user>
+    <comment>Minor spec cleanup (curlify %{ix86} macro)</comment>
+    <requestid>1356801</requestid>
+  </revision>
 </revisionlist>
