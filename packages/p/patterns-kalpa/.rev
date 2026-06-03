@@ -156,4 +156,14 @@
     <comment>- Revise patterns</comment>
     <requestid>1353908</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>51ae694cfa6c2536b51a23e9306e4074</srcmd5>
+    <version>6.1</version>
+    <time>1780511243</time>
+    <user>anag_factory</user>
+    <comment>- Replace openSUSE branding with Kalpa branding
+- Add sysextmgr and run0
+</comment>
+    <requestid>1357004</requestid>
+  </revision>
 </revisionlist>

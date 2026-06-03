@@ -2,7 +2,7 @@
 # spec file for package patterns-kalpa
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 Shawn W Dunn <sfalken@opensuse.org>
+# Copyright (c) 2025 Shawn W Dunn <sfalken@kalpadesktop.org>
 
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with betatest
 
 Name:           patterns-kalpa
-Version:        6.0
+Version:        6.1
 Release:        0
 Summary:        Patterns for Kalpa Desktop
 License:        MIT
@@ -98,6 +98,7 @@ Requires:       sudo
 Requires:       systemd
 Requires:       systemd-coredump
 Requires:       system-group-wheel
+Requires:       sudo-policy-wheel-auth-self
 Requires:       systemd-zram-service
 Requires:       terminfo-base
 Requires:       timezone
@@ -138,7 +139,7 @@ Requires:       grub2-arm64-efi
 Requires:       mokutil
 Requires:       shim
 %endif
-Requires:       (grub2-branding-openSUSE if branding-openSUSE)
+Requires:       grub2-branding-kalpa
 %dnl TPM-2.0 support (boo#1211835)
 Requires:       uefi_mbr
 Requires:       tpm2.0-abrmd
@@ -186,6 +187,10 @@ Requires:       distrobox
 Requires:       podman
 Requires:       qemu-guest-agent
 Requires:       spice-vdagent
+
+### sysextmgr
+Requires:       sysextmgr
+Requires:       sysextmgr-tukit-plugin
 
 ### Device support requirements
 ## Audio Support: Pipewire is the Default sound server
@@ -263,9 +268,7 @@ Requires:       konsole
 Requires:       partitionmanager
 
 ### Networking requirements
-%if 0%{is_opensuse}
 Requires:       avahi
-%endif
 Requires:       ethtool
 Requires:       fcoe-utils
 Requires:       iproute2
@@ -343,14 +346,13 @@ Requires:       xdg-desktop-portal-kde6
 ### Themeing and Branding
 # Add Aeon-check
 # Requires:       aeon-check
-Requires:       branding-openSUSE
+Requires:       branding-Kalpa
 Requires:       distribution-logos-openSUSE-Kalpa
 Requires:       (gtk4-metatheme-breeze if gtk4)
 Requires:       (gtk2-metatheme-breeze if gtk2)
 Requires:       (gtk3-metatheme-breeze if gtk3)
 Requires:       hicolor-icon-theme-branding-openSUSE
 Requires:       Kalpa-release
-Requires:       plasma-branding-Kalpa
 Requires:       systemd-icon-branding-openSUSE
 Requires:       systemd-presets-branding-Kalpa
 %dnl Disabling for now, while sorting out the new installer
