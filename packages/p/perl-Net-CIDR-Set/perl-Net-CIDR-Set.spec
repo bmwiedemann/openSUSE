@@ -18,10 +18,10 @@
 
 %define cpan_name Net-CIDR-Set
 Name:           perl-Net-CIDR-Set
-Version:        0.200.0
+Version:        0.210.0
 Release:        0
-# 0.20 -> normalize -> 0.200.0
-%define cpan_version 0.20
+# 0.21 -> normalize -> 0.210.0
+%define cpan_version 0.21
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Manipulate sets of IP addresses
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,6 +32,8 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.22
 BuildRequires:  perl(Module::Metadata) >= 1.000015
+BuildRequires:  perl(Test::Exception)
+BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(namespace::autoclean)
 Requires:       perl(namespace::autoclean)
 Provides:       perl(Net::CIDR::Set) = %{version}
@@ -72,7 +74,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md README.md SECURITY.md
+%doc Changes doap.xml README.md SECURITY.md
 %license LICENSE
 
 %changelog

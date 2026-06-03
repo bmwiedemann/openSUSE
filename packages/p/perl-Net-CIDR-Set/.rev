@@ -109,4 +109,24 @@
     - Stopped using Module::Signature for signing modules.</comment>
     <requestid>1353763</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aa4209756d7d220a874525edeb2dc65b</srcmd5>
+    <version>0.210.0</version>
+    <time>1780511265</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.210.0 (0.21)
+   see /usr/share/doc/packages/perl-Net-CIDR-Set/Changes
+  0.21      2026-06-02 17:45:44+01:00 Europe/London
+    [Security]
+    - Improved strictness of IP address (CVE-2026-49940) and netmask parsing (CVE-2026-49942).
+    - Removed potential infinite loops when attempting to parse IP addresses (CVE-2026-49941).
+    [Documentation]
+    - Removed CONTRIBUTING.md until policies about AI are updated.
+    [Tests]
+    - Changed tests to use Test::Exception.
+    [Toolchain]
+    - Added doap.xml to the distibution.
+    - Added automation-policy.json to the distribution.</comment>
+    <requestid>1356942</requestid>
+  </revision>
 </revisionlist>
