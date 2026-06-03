@@ -136,4 +136,14 @@
     <comment></comment>
     <requestid>1268446</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ff10d4b819a9e637aef469c66eea5f72</srcmd5>
+    <version>1.60.05</version>
+    <time>1780511217</time>
+    <user>anag_factory</user>
+    <comment>Modernize spec file:
+- Drop obsolete Group tags
+- Use pkgconfig(ncurses) BuildRequires</comment>
+    <requestid>1356910</requestid>
+  </revision>
 </revisionlist>

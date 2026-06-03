@@ -1,7 +1,7 @@
 #
 # spec file for package xmlrpc-c
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ Version:        1.60.05
 Release:        0
 Summary:        Library implementing XML-based Remote Procedure Calls
 License:        BSD-3-Clause AND MIT
-Group:          Development/Libraries/C and C++
 URL:            https://xmlrpc-c.sourceforge.net/
 Source:         https://downloads.sourceforge.net/xmlrpc-c/xmlrpc-c-%{version}.tgz
 Source9:        %{name}-rpmlintrc
@@ -33,11 +32,11 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  makeinfo
-BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(ncurses)
 
 %description
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -45,7 +44,6 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package devel
 Summary:        Development package for xmlrpc-c
-Group:          Development/Libraries/C and C++
 Requires:       libxmlrpc%{soname} = %{version}
 Requires:       libxmlrpc++%{soname_cpp} = %{version}
 Requires:       libxmlrpc_abyss%{soname} = %{version}
@@ -75,7 +73,6 @@ applications that want to make use of xmlrpc-c.
 
 %package -n libxmlrpc%{soname}
 Summary:        A library implementing XML-based remote procedure calls
-Group:          System/Libraries
 
 %description -n libxmlrpc%{soname}
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -83,7 +80,6 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package -n libxmlrpc++%{soname_cpp}
 Summary:        Legacy C++ interface for xmlrpc-c
-Group:          System/Libraries
 
 %description -n libxmlrpc++%{soname_cpp}
 libxmlrpc_cpp is the legacy C++ wrapper library.
@@ -95,7 +91,6 @@ elaborate replacements.
 
 %package -n libxmlrpc_abyss%{soname}
 Summary:        HTTP server component for xmlrpc-c
-Group:          System/Libraries
 
 %description -n libxmlrpc_abyss%{soname}
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -103,7 +98,6 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package -n libxmlrpc_abyss++%{soname_cpp}
 Summary:        HTTP server component for xmlrpc-c
-Group:          System/Libraries
 
 %description -n libxmlrpc_abyss++%{soname_cpp}
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -111,7 +105,6 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package -n libxmlrpc_client%{soname}
 Summary:        Library implementing XML-based Remote Procedure Calls
-Group:          System/Libraries
 
 %description -n libxmlrpc_client%{soname}
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -119,7 +112,6 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package -n libxmlrpc_client++%{soname_cpp}
 Summary:        Library implementing XML-based Remote Procedure Calls
-Group:          System/Libraries
 
 %description -n libxmlrpc_client++%{soname_cpp}
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -127,7 +119,6 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package -n libxmlrpc_cpp%{soname_cpp}
 Summary:        Library implementing XML-based Remote Procedure Calls
-Group:          System/Libraries
 
 %description -n libxmlrpc_cpp%{soname_cpp}
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -135,14 +126,12 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package -n libxmlrpc_openssl1
 Summary:        Library implementing XML-based Remote Procedure Calls
-Group:          System/Libraries
 
 %description -n libxmlrpc_openssl1
 This xmlrpc-c component library deals with OpenSSL 3.x's locking state.
 
 %package -n libxmlrpc_packetsocket%{soname_cpp}
 Summary:        xmlrpc-c packet socket emulation on stream sockets
-Group:          System/Libraries
 
 %description -n libxmlrpc_packetsocket%{soname_cpp}
 This xmlrpc-c component library contains a facility for communicating
@@ -154,7 +143,6 @@ sequential packet sockets.
 
 %package -n libxmlrpc_server%{soname}
 Summary:        Library implementing XML-based Remote Procedure Calls
-Group:          System/Libraries
 
 %description -n libxmlrpc_server%{soname}
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -162,7 +150,6 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package -n libxmlrpc_server++%{soname_cpp}
 Summary:        Library implementing XML-based Remote Procedure Calls
-Group:          System/Libraries
 
 %description -n libxmlrpc_server++%{soname_cpp}
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -170,7 +157,6 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package -n libxmlrpc_server_abyss%{soname}
 Summary:        Library implementing XML-based Remote Procedure Calls
-Group:          System/Libraries
 
 %description -n libxmlrpc_server_abyss%{soname}
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -178,7 +164,6 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package -n libxmlrpc_server_abyss++%{soname_cpp}
 Summary:        Library implementing XML-based Remote Procedure Calls
-Group:          System/Libraries
 
 %description -n libxmlrpc_server_abyss++%{soname_cpp}
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -186,7 +171,6 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package -n libxmlrpc_server_cgi%{soname}
 Summary:        Library implementing XML-based Remote Procedure Calls
-Group:          System/Libraries
 
 %description -n libxmlrpc_server_cgi%{soname}
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -194,7 +178,6 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package -n libxmlrpc_server_cgi++%{soname_cpp}
 Summary:        XMLRPC interface for CGI programs
-Group:          System/Libraries
 
 %description -n libxmlrpc_server_cgi++%{soname_cpp}
 This library contains the xmlrpc_c::server_cgi class, used to contain
@@ -204,7 +187,6 @@ the CGI environment.
 
 %package -n libxmlrpc_server_pstream++%{soname_cpp}
 Summary:        Non-HTTP RPC server with XML payloads
-Group:          System/Libraries
 
 %description -n libxmlrpc_server_pstream++%{soname_cpp}
 libxmlrpc_server_pstream++ provides a (non-HTTP) RPC server based on
@@ -212,7 +194,6 @@ a simple byte stream and XML-RPC XML.
 
 %package -n libxmlrpc_util4
 Summary:        Library implementing XML-based Remote Procedure Calls
-Group:          System/Libraries
 
 %description -n libxmlrpc_util4
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -220,7 +201,6 @@ package is used by XML-RPC clients and servers written in C and C++.
 
 %package -n libxmlrpc_util++%{soname_cpp}
 Summary:        Library implementing XML-based Remote Procedure Calls
-Group:          System/Libraries
 
 %description -n libxmlrpc_util++%{soname_cpp}
 XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
@@ -237,6 +217,10 @@ rm -rvf lib/expat
 export CFLAGS_PERSONAL="%{optflags} -std=gnu11"
 %configure \
     --enable-libxml2-backend
+# Serial build required: upstream's recursive makefiles miss a dependency
+# between the .osh shared objects and the .so link target, so a parallel
+# build races (the .so link starts before its .osh inputs finish). With
+# LTO this surfaces as a fatal "resolution sub id not in object file" ICE.
 %make_build CADD="-fPIC -DPIC" AR=ar RANLIB=ranlib --jobs 1
 
 %check
