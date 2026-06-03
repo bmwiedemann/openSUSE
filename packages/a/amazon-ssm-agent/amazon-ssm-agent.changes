@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:14:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.4624.0
+  * Bump golang.org/x/crypto from v0.51.0 to v0.52.0
+  * Bump golang.org/x/net from v0.54.0 to v0.55.0
+  * Enforce directory boundary in BuildSafePath
+  * Fix visibility issue with Bottlerocket OS in document output
+  * Update go-git from v5.17.1 to v5.19.1 (bsc#1264952, CVE-2026-41506), this
+    also updates go-billy from v5.8.0 to v5.9.0 (bsc#1267332, CVE-2026-44740)
+- Drop CVE-2026-41506.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu May 28 15:02:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.4515.0

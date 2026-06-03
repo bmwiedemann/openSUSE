@@ -635,4 +635,19 @@
     <comment></comment>
     <requestid>1355664</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8e5eb2cf22c46d72ad621a21ad7599e0</srcmd5>
+    <version>3.3.4624.0</version>
+    <time>1780511283</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.4624.0
+  * Bump golang.org/x/crypto from v0.51.0 to v0.52.0
+  * Bump golang.org/x/net from v0.54.0 to v0.55.0
+  * Enforce directory boundary in BuildSafePath
+  * Fix visibility issue with Bottlerocket OS in document output
+  * Update go-git from v5.17.1 to v5.19.1 (bsc#1264952, CVE-2026-41506), this
+    also updates go-billy from v5.8.0 to v5.9.0 (bsc#1267332, CVE-2026-44740)
+- Drop CVE-2026-41506.patch, merged upstream (forwarded request 1356946 from glaubitz)</comment>
+    <requestid>1356959</requestid>
+  </revision>
 </revisionlist>
