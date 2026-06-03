@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Cpanel-JSON-XS
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Cpanel-JSON-XS
 Name:           perl-Cpanel-JSON-XS
-Version:        4.400.0
+Version:        4.410.0
 Release:        0
-# 4.40 -> normalize -> 4.400.0
-%define cpan_version 4.40
+# 4.41 -> normalize -> 4.410.0
+%define cpan_version 4.41
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        CPanel fork of JSON::XS, fast and correct serializing
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,6 +32,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Time::Piece)
 Provides:       perl(Cpanel::JSON::XS) = %{version}
+Provides:       perl(Cpanel::JSON::XS::Type)
 %undefine       __perllib_provides
 %{perl_requires}
 

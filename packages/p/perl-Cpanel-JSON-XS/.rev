@@ -333,4 +333,20 @@
   (bsc#1249331)</comment>
     <requestid>1303255</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4d659c6cd38fd9c678ca701188c07979</srcmd5>
+    <version>4.410.0</version>
+    <time>1780511300</time>
+    <user>anag_factory</user>
+    <comment>- updated to 4.410.0 (4.41)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+  4.41 2026-05-27 (rurban)
+  	- Fix BOM-shift PV-corruption SIGABRT (CVE-2026-9516) (patch by Paul Johnson)
+          - Fix dupkeys_as_arrayref type confusion (CVE-2026-9334) (patch by Paul Johnson)
+          - Fix incr_parse single-quote string delimiter (GH #245, reported by
+            Paul Johnson)
+          - Fix a one-byte out-of-bounds heap read reachable via allow_barekey on
+            truncated input (GH #244, reported by Paul Johnson)</comment>
+    <requestid>1356949</requestid>
+  </revision>
 </revisionlist>
