@@ -1,7 +1,7 @@
 #
 # spec file for package python-textual-speedups
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,16 @@ Name:           python-textual-speedups
 Version:        0.2.1
 Release:        0
 Summary:        None
-# FIXME FAKE the license is acutally unknown (gh#willmcgugan/textual-speedups#2)
-License:        Apache-2.0
-URL:            None
-Source0:        https://files.pythonhosted.org/packages/source/t/textual-speedups/textual_speedups-%{version}.tar.gz
+License:        MIT
+URL:            https://github.com/willmcgugan/textual-speedups
+Source0:        https://files.pythonhosted.org/packages/source/t/textual_speedups/textual_speedups-%{version}.tar.gz
 Source9:        vendor.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module maturin >= 1.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  fdupes
-BuildRequires:  rust
 BuildRequires:  cargo
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  rust
 %python_subpackages
 
 %description
@@ -47,6 +46,7 @@ None
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
+%doc README.md
 %{python_sitearch}/textual_speedups
 %{python_sitearch}/textual_speedups-%{version}.dist-info
 
