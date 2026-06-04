@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1198918</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>df4426e1a063ea378af2ca55729b83ca</srcmd5>
+    <version>1.2.8</version>
+    <time>1780592096</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.2.8:
+- systemd service uses DynamicUser + AmbientCapabilities (no static user, no setcap)
+- Drop backport-050a8c2...patch and backport-b5321a88...patch (merged upstream), the sysusers file and disable-user-group patch
+- Ship nqptp(8) man page</comment>
+    <requestid>1357027</requestid>
+  </revision>
 </revisionlist>

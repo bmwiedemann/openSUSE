@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun  3 18:33:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.8:
+  * The systemd service now runs as a DynamicUser and uses
+    AmbientCapabilities=CAP_NET_BIND_SERVICE to bind ports
+    319/320, so no static user and no setcap on the binary are
+    needed anymore
+  * Improved error messages; ship a nqptp(8) man page
+  * Add FreeBSD and OpenBSD support
+- Drop backported patches (merged upstream):
+  * backport-050a8c2de9f3e1f4859abf9b36d2f18afd4c34d7.patch
+  * backport-b5321a88d21b854aaa461dc0f6c226d650309b91.patch
+- Drop disable-user-group-generation.patch and the nqptp-user.conf
+  sysusers file: upstream no longer creates a static user (it uses
+  systemd DynamicUser), so the sysusers handling is obsolete
+- The service file is now installed to the proper systemd unit
+  directory directly, so the manual relocation is dropped
+
+-------------------------------------------------------------------
 Tue Sep  3 09:06:57 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Backports from 1.2.5-dev
