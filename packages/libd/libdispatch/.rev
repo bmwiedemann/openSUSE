@@ -78,4 +78,12 @@
     <comment></comment>
     <requestid>1357020</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bee5c810bc8ce266891b87ef1ab62d46</srcmd5>
+    <version>6.1.1</version>
+    <time>1780592070</time>
+    <user>anag_factory</user>
+    <comment>Update to 6.1.1: Musl libc support, Linux build IDs, un-hardcoded CMake install dirs, Android/Windows fixes; spec cleanup</comment>
+    <requestid>1357028</requestid>
+  </revision>
 </revisionlist>

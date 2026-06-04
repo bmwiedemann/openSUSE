@@ -16,34 +16,27 @@
 #
 
 
-%define reltag 5.6.3-RELEASE
+%define reltag 6.1.1-RELEASE
 Name:           libdispatch
-Version:        5.6.3
+Version:        6.1.1
 Release:        0
 Summary:        Apple's Grand Central Dispatch library
 License:        Apache-2.0
-Group:          Development/Languages/C and C++
-URL:            https://github.com/apple/swift-corelibs-libdispatch
-Source0:        https://github.com/apple/swift-corelibs-libdispatch/archive/swift-%{reltag}.tar.gz#/corelibs-libdispatch.tar.gz
+URL:            https://github.com/swiftlang/swift-corelibs-libdispatch
+Source0:        https://github.com/swiftlang/swift-corelibs-libdispatch/archive/swift-%{reltag}.tar.gz#/corelibs-libdispatch.tar.gz
 Source1:        libdispatch-rpmlintrc
-Patch0:         prevent_unused.patch
-# set library versions
-Patch2:         soversion.patch
-# UPSTREAM-PATCH https://github.com/swiftlang/swift-corelibs-libdispatch/pull/840
-Patch3:         disable-cast-function-type-mismatch.patch
+# PATCH-FIX-OPENSUSE set library versions
+Patch0:         soversion.patch
 # PATCH-FIX-UPSTREAM https://github.com/swiftlang/swift-corelibs-libdispatch/pull/880
-Patch4:         silence-signedness-change-through-implicit-conversion-error.patch
+Patch1:         silence-signedness-change-through-implicit-conversion-error.patch
 BuildRequires:  chrpath
 BuildRequires:  clang
 BuildRequires:  cmake
-BuildRequires:  libbsd-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
-# Disable i586 build for now
-#%ifarch i586
-#ExclusiveArch:  do_not_build
-#%endif
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libbsd)
 
 %description
 Grand Central Dispatch (GCD or libdispatch) provides support for
@@ -51,7 +44,6 @@ concurrent code execution on multicore hardware.
 
 %package -n libdispatch1_3
 Summary:        Apple's Grand Central Dispatch library
-Group:          System/Libraries
 Obsoletes:      libdispatch < %{version}-%{release}
 Provides:       libdispatch = %{version}-%{release}
 
@@ -61,7 +53,6 @@ concurrent code execution on multicore hardware.
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Languages/C and C++
 Requires:       libdispatch1_3 = %{version}-%{release}
 # Wrong location for manpages in older version
 Conflicts:      libdispatch < %{version}-%{release}
@@ -96,19 +87,17 @@ export LDFLAGS="-flto -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now"
 
 %define __builder ninja
 %cmake \
-    -DCMAKE_Fortran_FLAGS="$CXXFLAGS" \
     -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
-    -DCMAKE_MODULE_LINKER_FLAGS="-flto -Wl, --as-needed" \
+    -DCMAKE_MODULE_LINKER_FLAGS="$LDFLAGS" \
     -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
     -DINSTALL_BLOCK_HEADERS_DIR:PATH=include/block .
-ninja
+%cmake_build
 
 %install
 %cmake_install
 chrpath --delete %{buildroot}%{_libdir}/libdispatch.so.1.3
 
-%post   -n libdispatch1_3 -p /sbin/ldconfig
-%postun -n libdispatch1_3 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libdispatch1_3
 
 %files -n libdispatch1_3
 %license LICENSE
