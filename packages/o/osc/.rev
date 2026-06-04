@@ -2140,4 +2140,12 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     - Add Manifest.get_package_paths_bare_git() that can resolve existing packages in a project in bare git repo</comment>
     <requestid>1355531</requestid>
   </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>8ebfb5d9fe4986922aee625b56257008</srcmd5>
+    <version>1.27.1</version>
+    <time>1780592167</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1357130</requestid>
+  </revision>
 </revisionlist>

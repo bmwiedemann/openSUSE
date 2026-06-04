@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  4 09:58:44 UTC 2026 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.27.1
+  - Command-line:
+    - Fix 'osc maintaner' not to error out before it prints maintainers in git
+  - Library:
+    - Fix a regression in Gitea 1.26 where we need to send '{}' instead of an empty body in POST requests
+
+-------------------------------------------------------------------
 Wed May 27 14:43:04 UTC 2026 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.27.0
