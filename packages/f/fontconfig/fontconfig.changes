@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Jun  2 06:27:04 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to 2.18.0
+  * test: Fix a build issue with musl libc
+  * fc-lang: Add suz.orth for Sunuwar
+  * test: add common helper class
+  * test: port basic functionality check to Python
+  * test: update to pass test cases on Win32
+  * do not mix up a slash and a backslash in file object on Win32
+  * meson: Add a missing fontconfig architecture test case
+  * Add fontconfig version in FcCache
+  * Improve a warning message
+  * Better error message when missing default config
+  * ci: install before test to avoid fontconfig error
+  * Fix regex to pick up libtool version
+  * Improve performance in FcConfigAdd
+  * Improve log header in FcConfigSubstituteWithPat
+  * meson: Update WrapDB files for v2 format migration
+  * ci: add an option for the address sanitizer
+  * Fix "UBSAN null pointer passed" to qsort
+  * ci: Enable ASAN and UBSAN
+  * Add genericfamily object in FcPattern
+  * Add xsi:nil attribute support to limited elements
+  * Get out from FcConfigAdd immediately if no valid pointer given
+  * Bump the cache version again
+  * fc-case: Update CaseFolding.txt to Unicode 17
+  * Add obvious namespace to macros for FC_SPACING
+  * Improve handling of constant name
+  * test: fix pytest error when running on the top project directory
+  * meson: Update wrapdb for expat to the latest
+  * Use FcStrCopy instead of strdup
+  * Fix -Wpointer-sign warnings
+  * Do not store duplicate object name into FcObjectSet
+  * Fix unused variable warning when iconv support disabled
+  * doc: Fix a typo in FcPatternAdd description
+  * Add fc-genconf the configuration generator tool
+  * test-conf: Correct test results to display at the proper place
+  * Fix unexpected priority change when looking up by specific family name
+  * Return error code if FcPatternFormat failed
+  * Add const converter for pattern format
+  * fc-genconf: Add scan pattern to update genericfamily with commandline option
+  * Fix dereferencing a null pointer of FcConfig in FcFontSetSort
+  * conf.d: Fix a typo in 65-khmer.conf
+  * Update doc for xsi:nil attribute support
+  * test: add more conditional for bwrap sandbox test cases
+  * meson: add tests-bwrap option
+  * Avoid locale-dependent float-to-string
+  * test-conf: add wrapper setenv for Win32
+  * Fix invalid memory access on Win32
+  * More fixes for locale-dependent float-to-string conversion
+  * Replace strtod() with FcStrtod()
+  * Explicitly declare FcPatternObjectCount as a public function
+  * Update meson dependency to 1.11.0
+- modified patches
+  * skip-network-test.patch (refreshed)
+
+-------------------------------------------------------------------
 Tue Mar 17 15:09:35 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 2.17.1.
