@@ -47,6 +47,8 @@ Patch0:         support-meson0.59.patch
 # PATCH-FIX-OPENSUSE
 # TODO: Only apply to Leap when libfyaml >= 0.9.3 will be in factory
 Patch1:         0001-Disable-failing-test-with-old-libfyaml.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Explicitly-add-fcfreetype.h-include-to-asc-font.c.patch
 BuildRequires:  cairo-devel
 BuildRequires:  docbook-xsl-stylesheets
 %if %{with gcc14}
