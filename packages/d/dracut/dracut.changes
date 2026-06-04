@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 03 09:23:20 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 110+suse.32.g36b00ba7:
+  * fix(systemd-*): add new dlopen dependencies to modules lists
+
+-------------------------------------------------------------------
 Tue May 12 13:59:10 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 110+suse.31.ga81148a:
