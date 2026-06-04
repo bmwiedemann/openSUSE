@@ -26,8 +26,16 @@
 %if %{with python}
 %bcond_with gradle
 %bcond_without ivy
+
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+
+%if 0%{?suse_version} >= 1550
+%bcond_with ancient_python
+%else
+%bcond_without ancient_python
+%endif
+
 Name:           javapackages-tools-%{flavor}
 %else
 Name:           javapackages-tools
@@ -70,7 +78,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if 0%{?suse_version} >= 1550
+%if %{without ancient_python}
+BuildRequires:  python-rpm-packaging
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 # TW: generate subpackages for every python3 flavor
 %define python_subpackage_only 1
 %python_subpackages
@@ -180,7 +191,11 @@ perl -pi -e "s#usr/lib#${new_dir}#g" configs/*.xml
 ./build
 %if %{with python}
 pushd python
+%if %{with ancient_python}
 %python_build
+%else
+%pyproject_wheel
+%endif
 popd
 %endif
 
@@ -190,7 +205,11 @@ sed -e 's/.[17]$/&.gz/' -e 's/.py$/&*/' -i files-*
 
 %if %{with python}
 pushd python
+%if %{with ancient_python}
 %python_install
+%else
+%pyproject_install
+%endif
 popd
 # kill all the common files
 files="
@@ -250,7 +269,7 @@ pushd ./test
 popd
 %endif
 
-%if !%{with python}
+%if %{without python}
 %files -f files-tools
 %license LICENSE
 
@@ -273,7 +292,8 @@ popd
 
 %files %{python_files javapackages}
 %license LICENSE
-%{python_sitelib}/javapackages*
+%{python_sitelib}/javapackages
+%{python_sitelib}/javapackages-%{version}*-info
 %endif
 
 %changelog

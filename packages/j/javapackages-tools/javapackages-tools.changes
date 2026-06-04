@@ -1,9 +1,18 @@
 -------------------------------------------------------------------
+Thu May 28 11:14:13 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Outside of the ancient distros (< SLE-15-SP5) for the
+  Python packaging use the modern style of %pyproject_* macros
+  (soo#python/_ObsPrj#491).
+
+-------------------------------------------------------------------
 Thu May 21 10:25:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing python3-base requirements.
 - 'python-javapackages' subpackage for the primary Python
   interpreter should also provide 'python3-javapackages' symbol.
+- Add `python-rpm-packaging` as BR (not sure whether it is a good
+  idea).
 
 -------------------------------------------------------------------
 Tue May 12 16:07:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>

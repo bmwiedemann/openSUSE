@@ -471,4 +471,12 @@
     <comment>Add missing python3-base requirements</comment>
     <requestid>1354787</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>36232d8d038e6d8bf022ab1003ffa3e3</srcmd5>
+    <version>6.5.1</version>
+    <time>1780592000</time>
+    <user>anag_factory</user>
+    <comment>%pyproject-* macros where it is possible</comment>
+    <requestid>1356838</requestid>
+  </revision>
 </revisionlist>
