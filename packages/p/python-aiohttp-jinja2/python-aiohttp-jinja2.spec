@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp-jinja2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@ Version:        1.6
 Release:        0
 Summary:        Jinja2 template renderer for aiohttp.web
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/aiohttp-jinja2
 Source:         https://github.com/aio-libs/aiohttp-jinja2/archive/v%{version}.tar.gz#/aiohttp-jinja2-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#aio-libs/aiohttp-jinja2#1025
+Patch0:         support-aiohttp-3.14.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -64,6 +65,6 @@ rm setup.cfg
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/aiohttp_jinja2
-%{python_sitelib}/aiohttp_jinja2-%{version}*-info
+%{python_sitelib}/aiohttp_jinja2-%{version}.dist-info
 
 %changelog

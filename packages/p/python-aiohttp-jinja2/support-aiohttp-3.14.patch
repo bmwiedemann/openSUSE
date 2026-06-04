@@ -1,0 +1,30 @@
+From 6a33cd91f54a030e75cc4b6a02ebb73397a8f17b Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 4 Jun 2026 12:33:10 +1000
+Subject: [PATCH] Support aiohttp 3.14 by using web.RequestKey
+
+aiohttp 3.14 has added web.RequestKey, much like AppKey, and will throw
+a warning if it isn't used. If warnings are treated as exceptions, like
+this project does, it will cause a test failure. Support both, since
+it's easy, and doesn't require us to pin aiohttp to an incredibly recent
+version.
+---
+ aiohttp_jinja2/__init__.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/aiohttp_jinja2/__init__.py b/aiohttp_jinja2/__init__.py
+index da6f946b..e2bdd584 100644
+--- a/aiohttp_jinja2/__init__.py
++++ b/aiohttp_jinja2/__init__.py
+@@ -41,7 +41,10 @@
+     "APP_CONTEXT_PROCESSORS_KEY"
+ )
+ APP_KEY: Final = web.AppKey[jinja2.Environment]("APP_KEY")
+-REQUEST_CONTEXT_KEY: Final = "aiohttp_jinja2_context"
++if hasattr(web, "RequestKey"):
++    REQUEST_CONTEXT_KEY: Final = web.RequestKey("aiohttp_jinja2_context", dict)
++else:
++    REQUEST_CONTEXT_KEY: Final = "aiohttp_jinja2_context"
+ 
+ _T = TypeVar("_T")
+ _AbstractView = TypeVar("_AbstractView", bound=AbstractView)

@@ -60,4 +60,13 @@
     <comment></comment>
     <requestid>1277067</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c4feb20dc0b324e50162960759ff316a</srcmd5>
+    <version>1.6</version>
+    <time>1780592113</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-aiohttp-3.14.patch:
+  * Support aiohttp 3.14 by using web.RequestKey.</comment>
+    <requestid>1357045</requestid>
+  </revision>
 </revisionlist>
