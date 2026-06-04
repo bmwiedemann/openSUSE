@@ -165,4 +165,15 @@ SPDX format (forwarded request 94655 from babelworx)</comment>
     <comment></comment>
     <requestid>1245630</requestid>
   </revision>
+  <revision rev="24" vrev="286">
+    <srcmd5>6f705f1e8978970983422b091cd35334</srcmd5>
+    <version>0.5.2</version>
+    <time>1780592009</time>
+    <user>anag_factory</user>
+    <comment>Modernize spec file:
+- Drop obsolete Group tag
+- Use %make_build macro
+- Use https for URL and Source</comment>
+    <requestid>1356896</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  3 07:27:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernize spec file:
+  * Drop obsolete Group tag
+  * Use %make_build macro
+  * Use https for URL and Source
+
+-------------------------------------------------------------------
 Thu Feb 13 11:35:18 UTC 2025 - pgajdos@suse.com
 
 - build with gcc15

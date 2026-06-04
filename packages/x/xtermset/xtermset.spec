@@ -1,7 +1,7 @@
 #
 # spec file for package xtermset
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,8 @@ Version:        0.5.2
 Release:        0
 Summary:        A program to change the settings of an xterm
 License:        GPL-2.0-or-later AND MIT
-Group:          System/X11/Terminals
-URL:            http://sourceforge.net/projects/clts/
-Source:         http://downloads.sourceforge.net/project/clts/xtermset/%{version}/%{name}-%{version}.tar.gz
+URL:            https://sourceforge.net/projects/clts/
+Source:         https://downloads.sourceforge.net/project/clts/xtermset/%{version}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-%{version}.dif
 Patch1:         %{name}-%{version}-strcat.patch
 Patch2:         %{name}-%{version}-dash.patch
@@ -44,7 +43,7 @@ you would give an xterm at startup.
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
