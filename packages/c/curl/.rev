@@ -2111,4 +2111,14 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>1350194</requestid>
   </revision>
+  <revision rev="225" vrev="2">
+    <srcmd5>4e463e90357c8693b9e0adff9ded4f6f</srcmd5>
+    <version>8.20.0</version>
+    <time>1780591947</time>
+    <user>anag_factory</user>
+    <comment>- Backport fix for issue gh#curl/curl#21547 and gh#Nheko-Reborn/nheko#2054
+  which caused applications to busy loop with 100% CPU usage
+  * Add libcurl-fix-wakeup-consumption.patch (forwarded request 1356966 from dheidler)</comment>
+    <requestid>1356980</requestid>
+  </revision>
 </revisionlist>

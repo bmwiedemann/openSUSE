@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:53:23 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Backport fix for issue gh#curl/curl#21547 and gh#Nheko-Reborn/nheko#2054
+  which caused applications to busy loop with 100% CPU usage
+  * Add libcurl-fix-wakeup-consumption.patch
+
+-------------------------------------------------------------------
 Wed Apr 29 13:45:19 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 8.20.0:
