@@ -104,4 +104,41 @@
     <comment></comment>
     <requestid>1305724</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9d84753163bf0e83a1d3bfd15ceb2936</srcmd5>
+    <version>0.12.2</version>
+    <time>1780591934</time>
+    <user>anag_factory</user>
+    <comment>- Require cmake in the main package again: the main cmake is always
+  needed. The system cmake is always enough for the distribution.
+
+- Update to 0.12.2
+  * We've fixed another issue in the new file inclusion mode on
+    Windows. We now always normalize SDist names, even if
+    minimum-version is set to 0.4 or older, due to the fact PyPI no
+    longer accepts non-normalized SDist names. Please increase your
+    minimum-version anyway, though! Finally, the debug logging for
+    file inclusion now displays the exact rule that triggered the
+    include/exclude behavior.
+  ## Fixes:
+  * Use as_posix for prefix matching for better Windows support by
+    @henryiii in #1246
+  * Always normalize SDist names, even in &lt;0.5 compat mode by
+    @henryiii in #1247
+  * Better logging on why something fails/passes file inclusion
+    check by @henryiii in #1250
+- Version 0.12.1
+  * This fixes a regression on Windows when targeting 32-bit wheels
+    on a 64-bit host. This reverts part of #1209. We have added
+    32-bit testing on Windows to our CI.
+  ## Fixes:
+  * Use CMAKE_GENERATOR(_PLATFORM) on Windows again by @henryiii in
+    #1235
+- Version 0.12.0
+  ## What's Changed
+  * This release adds a new sdist.inclusion-mode setting, with a
+    new default: ignored directories are no longer traversed unless
+    a file is specifically allowed inside of it via the base path.</comment>
+    <requestid>1356976</requestid>
+  </revision>
 </revisionlist>

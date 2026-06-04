@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-build-core
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,27 +26,31 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-scikit-build-core%{psuffix}
-Version:        0.11.6
+Version:        0.12.2
 Release:        0
 Summary:        Build backend for CMake based projects
 License:        Apache-2.0
 URL:            https://github.com/scikit-build/scikit-build-core
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit_build_core/scikit_build_core-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM scikit-build-core-issue1258_setuptools-scm.patch gh#scikit-build/scikit-build-core#1258
+Patch0:         https://github.com/scikit-build/scikit-build-core/commit/56e8c65f6911c168a4f23ae76c9c7f9ad4c088eb.patch#/scikit-build-core-issue1258_setuptools-scm.patch
 # PATCH-FEATURE-OPENSUSE scikit-build-core-offline-wheelhouse.patch provide the testing wheels without runtime download code@bnavigator.de
 Patch1:         scikit-build-core-offline-wheelhouse.patch
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module hatch-vcs}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module hatch-vcs >= 0.4}
+BuildRequires:  %{python_module hatchling >= 1.24}
 BuildRequires:  %{python_module packaging >= 23.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       cmake >= 3.15
+Requires:       cmake
 Requires:       python-packaging >= 23.2
-Requires:       python-pathspec >= 0.10.1
+Requires:       python-pathspec >= 0.12
 Recommends:     ninja
 Recommends:     python-rich
+Provides:       python-scikit-build-core-pyproject = %{version}-%{release}
 Provides:       python-scikit_build_core = %{version}-%{release}
+Obsoletes:      python-scikit-build-core-pyproject <= 0.11.6
 %if %{with test}
 BuildRequires:  %{python_module build >= 0.8}
 BuildRequires:  %{python_module cattrs >= 22.2.0}
@@ -57,12 +61,11 @@ BuildRequires:  %{python_module pytest >= 7.2}
 BuildRequires:  %{python_module pytest-subprocess >= 1.5.0}
 BuildRequires:  %{python_module pytest-xdist >= 3.1}
 BuildRequires:  %{python_module rich}
-BuildRequires:  %{python_module scikit-build-core = %{version}}
+BuildRequires:  %{python_module scikit-build-core-wheels = %{version}}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv >= 20.20}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  gcc-c++
-BuildRequires:  ninja
 # /SECTION
 %endif
 BuildArch:      noarch
@@ -83,13 +86,15 @@ Features over classic Scikit-build:
   - No slow generator search, ninja/make or MSVC used by default, respects CMAKE_GENERATOR
   - SDists are reproducible by default (UNIX, Python 3.9+)
 
-%package pyproject
-Summary:        The scikit_build_core[pyproject] extra
+%package wheels
+Summary:        The scikit_build_core[wheels] extra
 Requires:       python-scikit-build-core = %{version}
 Provides:       python-scikit_build_core-pyproject = %{version}-%{release}
+Requires:       ninja
 
-%description pyproject
-Python CMake adaptor and Python API for plugins: The extra requirement to build PEP518 wheels and sdists
+%description wheels
+Python CMake adaptor and Python API for plugins: The extra requirement to build PEP518 wheels and sdists.
+Note that on openSUSE, this requirement still uses the system cmake and does not need the python package.
 
 %prep
 %autosetup -p1 -n scikit_build_core-%{version}
@@ -122,7 +127,7 @@ donttest="test_pep517_sdist_hash or test_pep518_sdist"
 %{python_sitelib}/scikit_build_core
 %{python_sitelib}/scikit_build_core-%{version}.dist-info
 
-%files %{python_files pyproject}
+%files %{python_files wheels}
 %license LICENSE
 %doc README.md
 %endif
