@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb-connector-c
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,21 +25,18 @@
 %endif
 %bcond_with sqlite3
 Name:           mariadb-connector-c
-Version:        3.4.5
+Version:        3.4.8
 Release:        0
 Summary:        MariaDB connector in C
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/MariaDB/mariadb-connector-c
-Source:         https://downloads.mariadb.com/Connectors/c/connector-c-%{version}/%{name}-%{version}-src.tar.gz
-Source1:        https://downloads.mariadb.com/Connectors/c/connector-c-%{version}/%{name}-%{version}-src.tar.gz.asc
+Source:         https://archive.mariadb.org/connector-c-%{version}/%{name}-%{version}-src.tar.gz
+Source1:        https://archive.mariadb.org/connector-c-%{version}/%{name}-%{version}-src.tar.gz.asc
 # Imported from keyserver based on keyid @ https://mariadb.com/kb/en/mariadb-enterprise/mariadb-enterprise-installation-guide/
 Source2:        mariadb.keyring
 Source3:        baselibs.conf
 Patch1:         mariadb-connector-c-2.3.1_unresolved_symbols.patch
 Patch4:         private_library.patch
-Patch5:         mariadb-connector-c-3.4.5-gcc15.patch
-Patch6:         mariadb-connector-c-3.4.5-gcc15-part2.patch
 Patch7:         mariadb-connector-c-3.4.5-const-correctness.patch
 Patch8:         mariadb-connector-c-3.4.5-const-correctness-2.patch
 BuildRequires:  cmake
@@ -61,7 +58,6 @@ that is shipped with mariadb-server/mysql-server, but the API is the same.
 
 %package -n %{libname}%{sover}
 Summary:        MariaDB connector in C
-Group:          System/Libraries
 
 %description -n %{libname}%{sover}
 MariaDB Connector is used to connect applications developed in
@@ -76,7 +72,6 @@ Summary:        Plugins for the MariaDB C Connector
 # We need "Conflicts" because we moved some plugins here:
 # dialog.so was in mariadb-client package
 # mysql_clear_password.so was in mariadb package
-Group:          System/Libraries
 Conflicts:      mariadb <= 10.1.25
 Conflicts:      mariadb-client <= 10.1.25
 
@@ -88,7 +83,6 @@ This package holds MariaDB library plugins.
 
 %package -n %{libname}private
 Summary:        Additional internal libraries for the MariaDB C Connector
-Group:          System/Libraries
 
 %description -n %{libname}private
 MariaDB Connector is used to connect applications developed in
@@ -98,7 +92,6 @@ This package holds the runtime components with private API.
 
 %package -n %{libname}-devel
 Summary:        Development files for the MariaDB Connector C API
-Group:          Development/Libraries/C and C++
 Requires:       %{libname}%{sover} = %{version}
 Requires:       pkgconfig(openssl)
 Requires:       pkgconfig(zlib)

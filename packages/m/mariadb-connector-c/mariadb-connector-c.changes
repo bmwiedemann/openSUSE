@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun  3 15:51:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 3.4.8:
+  * Fix compilation with GCC 15
+  * CONC-762: always set is_null and length in the bind
+    structure to avoid msan errors
+  * CONC-763: add MySQL collation ID 309 (utf8mb4_0900_bin)
+  * CONC-764: fix build of ma_context.c on Android (X18 is a
+    platform-reserved register)
+  * CONC-766: disable clang -Wcast-function-type-strict for
+    makecontext
+- Drop patches now included upstream:
+  * mariadb-connector-c-3.4.5-gcc15.patch
+  * mariadb-connector-c-3.4.5-gcc15-part2.patch
+- Update mariadb.keyring with the MariaDB Signing Key
+  (signing-key@mariadb.org); upstream now signs the connector-c
+  release tarballs with it
+- Fetch sources from archive.mariadb.org
+
+-------------------------------------------------------------------
 Thu Mar 19 09:16:31 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Pick mariadb-connector-c-3.4.5-const-correctness.patch from upstream,

@@ -468,4 +468,15 @@ boo#1189184, QTBUG-95071, QTBUG-95639</comment>
     <comment></comment>
     <requestid>1342049</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>9540df5817253807c45085634585755f</srcmd5>
+    <version>3.4.8</version>
+    <time>1780591969</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.4.8:
+- Fix GCC 15 build; CONC-762/763/764/766 fixes (msan, collation 309, Android, clang)
+- Drop gcc15 patches (merged upstream)
+- Update keyring for upstream's MariaDB .org signing key; source from archive.mariadb.org</comment>
+    <requestid>1357008</requestid>
+  </revision>
 </revisionlist>
