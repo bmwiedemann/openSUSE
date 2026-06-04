@@ -6825,4 +6825,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - refreshed n_drirc-disable-rgb10-for-chromium-on-amd.patch</comment>
     <requestid>1355494</requestid>
   </revision>
+  <revision rev="579" vrev="1">
+    <srcmd5>9472ce93ec57584757324c88ad6f4a0c</srcmd5>
+    <version>26.1.2</version>
+    <time>1780591938</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.1.2 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.1.2</comment>
+    <requestid>1356977</requestid>
+  </revision>
 </revisionlist>
