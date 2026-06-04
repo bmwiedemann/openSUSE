@@ -329,4 +329,19 @@ _______________________________________________________________________________<
     <comment></comment>
     <requestid>1190782</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0b780880d45471cdb79cb5152596f162</srcmd5>
+    <version>3.850.0</version>
+    <time>1780591909</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.850.0 (3.85)
+   see /usr/share/doc/packages/perl-HTML-Parser/Changes
+  3.85      2026-05-19
+      - Replace deprecated uvuni_to_utf8() with uvchr_to_utf8() (GH#50)
+        (GitHub Copilot, reported by James E Keenan)
+  3.84      2026-05-19
+      - Fix heap-use-after-free in _decode_entities (CVE-2026-8829) (GH#56)
+        (Paul Johnson)</comment>
+    <requestid>1356950</requestid>
+  </revision>
 </revisionlist>

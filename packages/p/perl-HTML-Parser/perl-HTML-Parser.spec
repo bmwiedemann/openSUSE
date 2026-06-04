@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-Parser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name HTML-Parser
 Name:           perl-HTML-Parser
-Version:        3.830.0
+Version:        3.850.0
 Release:        0
-# 3.83 -> normalize -> 3.830.0
-%define cpan_version 3.83
+# 3.85 -> normalize -> 3.850.0
+%define cpan_version 3.85
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTML parser class
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.52
@@ -69,7 +70,7 @@ want to use 'HTML::PullParser'. This is an 'HTML::Parser' subclass that
 allows a more conventional program structure.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

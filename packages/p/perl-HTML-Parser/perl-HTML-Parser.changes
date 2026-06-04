@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 21 10:02:44 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.850.0 (3.85)
+   see /usr/share/doc/packages/perl-HTML-Parser/Changes
+
+  3.85      2026-05-19
+      - Replace deprecated uvuni_to_utf8() with uvchr_to_utf8() (GH#50)
+        (GitHub Copilot, reported by James E Keenan)
+
+  3.84      2026-05-19
+      - Fix heap-use-after-free in _decode_entities (CVE-2026-8829) (GH#56)
+        (Paul Johnson)
+
+-------------------------------------------------------------------
 Wed Jul 31 05:28:00 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.830.0 (3.83)

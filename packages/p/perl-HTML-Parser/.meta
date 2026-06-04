@@ -18,5 +18,4 @@ on-the-fly parsing as documents are received from the network possible.
 If event driven parsing does not feel right for your application, you might
 want to use HTML::PullParser. This is an HTML::Parser subclass that allows
 a more conventional program structure.</description>
-  <devel project="devel:languages:perl" package="perl-HTML-Parser"/>
 </package>
