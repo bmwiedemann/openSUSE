@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun  2 13:16:19 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to 0.41.0:
+  - Added
+    * Add --limit-max-requests-jitter to stagger worker restarts (#2707)
+    * Add socket path to scope["server"] (#2561)
+  - Changed
+    * Rename LifespanOn.error_occured to error_occurred (#2776)
+  - Fixed
+    *  Ignore permission denied errors in watchfiles reloader (#2817)
+    *  Ensure lifespan shutdown runs when should_exit is set during startup (#2812)
+    *  Reduce the log level of 'request limit exceeded' messages (#2788)
+
+-------------------------------------------------------------------
 Fri Mar 27 13:34:07 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Update to 0.40.0
