@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jun  3 09:48:16 UTC 2026 - munix9@googlemail.com
+
+- update to 1.4.2:
+  * Added since 1.4.1
+    - Add --jobs flag to avifgainmaputil to use multiple worker
+      threads when reading/writing AVIF files.
+
+  * Changed since 1.4.1
+    - Require C11 for compilation. Public headers will remain C99.
+    - Add --jobs flag to avifgainmaputil and enable auto tiling.
+    - Use AOM_TUNE_IQ for layered image inter-frame encoding.
+    - Update aom.cmd/LocalAom.cmake: v3.14.1
+    - Update LocalAvm.cmake: research-v15.0.0
+    - Update libjpeg.cmd/LocalJpeg.cmake: 3.1.4.1
+    - Update libxml2.cmd/LocalLibXml2.cmake: v2.15.3
+    - Update libyuv.cmd/LocalLibyuv.cmake: 644251f25 (1924)
+    - Update svt.cmd/svt.sh/LocalSvt.cmake: v4.1.0
+    - Update zlibpng.cmd/LocalZlibpng.cmake: libpng 1.6.58
+    - Fix memory leak of altICC if avifDecoderFindGainMapItem
+      returns early.
+    - Avoid MT loop restoration crash in libaom < 3.13.3
+    - Fix decoding layered image with multiple scaled alpha layers
+    - Fix NaN bypass of AVIF_CLAMP in gain map tone mapping (use
+      fminf/fmaxf)
+    - Fix null pointer dereference in avifImageCopy() when
+      avifImageCreateEmpty() fails to allocate the destination
+      gain map image.
+    - avifenc: reject mismatched --depth for Y4M input
+    - Use libaom AOMD_SET_FRAME_SIZE_LIMIT if available
+    - Fix bug in transfer function 11 (used for gain map
+      creation/tone mapping)
+
+-------------------------------------------------------------------
 Sun Mar 22 05:47:57 UTC 2026 - munix9@googlemail.com
 
 - update to 1.4.1:

@@ -34,7 +34,7 @@
 %endif
 
 Name:           libavif
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
@@ -174,10 +174,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 avifdec --version
 avifenc --version
 %if %{with tests}
-%ifarch ppc64le
-skip="-E avifgainmaptest"
-%endif
-%ctest --parallel 1 --timeout 60 --verbose $skip
+%ctest --parallel 1 --timeout 60 --verbose
 %endif
 
 %ldconfig_scriptlets -n %{lib_name}
@@ -195,7 +192,7 @@ skip="-E avifgainmaptest"
 
 %files -n avif-tools
 %doc CHANGELOG.md README.md SECURITY.md
-%license LICENSE
+%license LICENSE ext/libargparse/LICENSE.md
 %{_bindir}/avifdec
 %{_bindir}/avifenc
 %{_bindir}/avifgainmaputil
