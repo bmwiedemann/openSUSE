@@ -17,8 +17,8 @@
 
 
 %define srcversion 7.0
-%define patchversion 7.0.10
-%define git_commit bb95589865b5b7e8a8846b45eda7c3eccc7ce782
+%define patchversion 7.0.11
+%define git_commit d1677f1efc504a663c67d79a6742e3b18764c94a
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
@@ -28,9 +28,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-docs
-Version:        7.0.10
+Version:        7.0.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gbb95589
+Release:        <RELEASE>.gd1677f1
 %else
 Release:        0
 %endif
@@ -242,7 +242,7 @@ These are HTML documents built from the current kernel sources.
 cp -a linux-%srcversion/{COPYING,CREDITS,MAINTAINERS,README} .
 cp %_sourcedir/old_changelog.txt .
 cd linux-%srcversion
-%_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir %symbols
+%_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir
 
 %build
 # for reproducible builds (bsc#1238303)
