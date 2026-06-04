@@ -742,4 +742,12 @@ fix the offset of the read buffer (forwarded request 909201 from aplanas)</comme
   - Fixed CVE-2024-29039 (bsc#1223689)</comment>
     <requestid>1172162</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>98a62cae5c8bd1b1a5ceb67ceb7b0f26</srcmd5>
+    <version>5.7</version>
+    <time>1780591942</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1356979</requestid>
+  </revision>
 </revisionlist>

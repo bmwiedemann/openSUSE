@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 15 07:19:45 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Remove dependency to the abrmd broker service
+
+-------------------------------------------------------------------
 Fri May  3 12:49:04 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 Update to version 5.7:

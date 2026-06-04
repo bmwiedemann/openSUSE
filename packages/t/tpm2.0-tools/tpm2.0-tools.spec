@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2.0-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  tpm2-0-tss-devel
 BuildRequires:  tpm2.0-abrmd-devel
 BuildRequires:  pkgconfig(efivar)
-Recommends:     tpm2.0-abrmd
+Suggests:       tpm2.0-abrmd
 # Pandoc is used for generating the man pages, but since 3.0.4 prebuilt man
 # pages are shipped with the distribution tarball and we don't need to generate
 # them any more. Pandoc is only available on openSUSE (not 32-bit x86) and not
