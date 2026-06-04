@@ -137,4 +137,12 @@
   * Bugfix: Fix building by gcc 7</comment>
     <requestid>1324567</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>27cf6e8745726ec53948ec10f3182237</srcmd5>
+    <version>1.4.6</version>
+    <time>1780591889</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1356799</requestid>
+  </revision>
 </revisionlist>

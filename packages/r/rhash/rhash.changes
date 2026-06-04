@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 17:26:29 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- fixes SIGILL on pre-2007 x86 PCs not supporting SSE4, notably  making
+  cmake (which depends on this package) unusable on these machines.
+  By default, compile with --disable-shani on x86 to disable compilation
+  with SSE4 instructions (-msse4)
+
+-------------------------------------------------------------------
 Sun Dec 28 13:41:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.6:

@@ -1,7 +1,7 @@
 #
 # spec file for package rhash
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%bcond_with shani_x86
 
 %define major   1
 Name:           rhash
@@ -87,6 +89,11 @@ sed -i "s|-fomit-frame-pointer|%{optflags}|g" configure
   --libdir=%{_libdir} \
   --mandir=%{_mandir} \
   --enable-lib-shared \
+%ifarch %{ix86}
+%if %{without shani_x86}
+  --disable-shani \
+%endif
+%endif
   --enable-gettext
 %make_build
 
