@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  2 09:55:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add missing %verify(not mode) (boo#1263098).
+
+-------------------------------------------------------------------
 Mon Mar 23 08:05:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

@@ -469,4 +469,12 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342987</requestid>
   </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>937bfed4fa4d80ab9f607a5c1422eced</srcmd5>
+    <version>2.41.3+4</version>
+    <time>1780592029</time>
+    <user>anag_factory</user>
+    <comment>- Add missing %verify(not mode) (boo#1263098).</comment>
+    <requestid>1356901</requestid>
+  </revision>
 </revisionlist>

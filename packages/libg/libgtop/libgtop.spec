@@ -136,7 +136,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files lang -f %{name}.lang
 
 %files
-%{_libexecdir}/libgtop_server2
+%verify(not mode) %{_libexecdir}/libgtop_server2
 %{_libexecdir}/libgtop_daemon2
 
 %files -n libgtop-2_0-%{sover}
