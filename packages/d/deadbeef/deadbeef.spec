@@ -30,7 +30,7 @@ Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}.appdata.xml
 # PATCH-FIX-OPENSUSE 0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
-ExclusiveArch:  aarch64 ppc64le x86_64
+ExclusiveArch:  aarch64 ppc64le x86_64 i586
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  clang
@@ -116,6 +116,9 @@ export CFLAGS="$CFLAGS -I%{_includedir}/block"
 export LDFLAGS="$LDFLAGS -pie"
 
 %configure \
+%ifarch %{ix86}
+        --disable-soundtouch \
+%endif
         --disable-static \
         --disable-psf \
         --docdir=%{_docdir}/%{name}
@@ -182,7 +185,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}/ddb_out_pw.so*
 %{_libdir}/%{name}/ddb_shn.so*
 %{_libdir}/%{name}/medialib.so*
+%ifnarch %{ix86}
 %{_libdir}/%{name}/ddb_soundtouch.so*
+%endif
 %{_libdir}/%{name}/alac.so*
 %{_libdir}/%{name}/in_sc68.so*
 %{_libdir}/%{name}/data68/
