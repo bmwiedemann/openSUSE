@@ -207,4 +207,13 @@
     <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
     <requestid>1328761</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>3993dc3b206f7fcb744b4d3a04e3291b</srcmd5>
+    <version>8.1.1</version>
+    <time>1780592141</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-aiohttp-3.14.patch:
+  * Support changes required for aiohttp 3.14.</comment>
+    <requestid>1357056</requestid>
+  </revision>
 </revisionlist>

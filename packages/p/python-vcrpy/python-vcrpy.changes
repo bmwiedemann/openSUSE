@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 05:31:03 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-aiohttp-3.14.patch:
+  * Support changes required for aiohttp 3.14.
+
+-------------------------------------------------------------------
 Fri Jan 23 01:17:47 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on pytest-asyncio.

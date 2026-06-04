@@ -25,6 +25,8 @@ Summary:        Python module to mock and replay HTTP interactions
 License:        MIT
 URL:            https://github.com/kevin1024/vcrpy
 Source:         https://files.pythonhosted.org/packages/source/v/vcrpy/vcrpy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#kevin1024/vcrpy#996
+Patch0:         support-aiohttp-3.14.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
