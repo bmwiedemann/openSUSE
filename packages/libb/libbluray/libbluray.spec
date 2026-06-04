@@ -1,7 +1,7 @@
 #
 # spec file for package libbluray
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 
 %define         sover 3
 Name:           libbluray
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Library to access Blu-Ray disk
 License:        LGPL-2.1-or-later
@@ -32,7 +32,6 @@ Group:          Productivity/Multimedia/Other
 URL:            https://www.videolan.org/developers/libbluray.html
 Source0:        https://download.videolan.org/pub/videolan/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-Patch0:         libbluray-java25.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  meson

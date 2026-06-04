@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun  2 17:52:54 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 1.4.1
+  * Fix linking on Windows with Freetype enabled
+  * Improve compilation with MSVC
+  * Cleaning and improvements in Meson build files
+  * Fix build with Java 23 for BD-J
+  * Add SSIF files support to bd_open_file_dec()
+  * Add player setting for UO restriction level
+  * Add all UOs to BD_EVENT_UO_MASK_CHANGED
+  * Improve resilence against invalid input
+  * Fix memory leak in UHD playlists
+  * BD-J: Implement TVTimer, TVTimerSpec
+  * BD-J: Improve Java 1.4 compatibility
+  * BD-J: Fix MediaPresentedEvent event emission on start
+  * BD-J: Fix filesystem hooking in Java 25
+  * BD-J: Fix locators from org.bluray.ti.[PlayItemImpl,TitleComponentImpl]
+  * BD-J: Multiple compability and performance improvements
+- deleted patches
+  * libbluray-java25.patch (upstreamed)
+
+-------------------------------------------------------------------
 Thu Oct 23 10:15:25 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
