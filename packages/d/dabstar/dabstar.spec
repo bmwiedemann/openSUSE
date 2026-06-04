@@ -17,19 +17,20 @@
 
 
 Name:           dabstar
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        A DAB receiver with a technical focus
 License:        GPL-2.0-only
 URL:            https://github.com/tomneda/DABstar
 Source:         https://github.com/tomneda/DABstar/archive/refs/tags/V%{version}.tar.gz#/DABstar-%{version}.tar.gz
+Source1:        %{name}.desktop
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libfdk-aac-devel
 BuildRequires:  pkgconfig
-BuildRequires:  qwt6-qt6-devel
 BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Charts)
 BuildRequires:  cmake(Qt6Multimedia)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Sql)
@@ -55,7 +56,7 @@ A DAB receiver with a technical focus.
 
 %install
 install -Dpm 0755 build/dabstar %{buildroot}%{_bindir}/%{name}
-install -Dpm 0644 appimage_creator/dabstar.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -Dpm 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 install -Dpm 0644 res/logo/dabstar.png %{buildroot}/%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 
 %files

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  3 06:27:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.1.0
+  * This release does not introduce any new features compared to
+    version V5.0.0. The main change is that the dependency on the
+    Qwt library has been completely removed. As a result, you may
+    notice some minor visual differences in the user interface,
+    although the overall behavior and usability should remain the
+    same.
+- Use custom desktop file.
+
+-------------------------------------------------------------------
 Mon May 25 08:05:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.0.0
