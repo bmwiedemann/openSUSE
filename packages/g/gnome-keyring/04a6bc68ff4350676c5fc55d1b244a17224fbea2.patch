@@ -1,0 +1,44 @@
+From 04a6bc68ff4350676c5fc55d1b244a17224fbea2 Mon Sep 17 00:00:00 2001
+From: Mikhail Dmitrichenko <m.dmitrichenko222@gmail.com>
+Date: Fri, 20 Mar 2026 18:10:21 +0300
+Subject: [PATCH] fix: avoid potential FD leak in gkm_rpc_layer_startup
+
+In gkm_rpc_layer_startup after `sock` was initialized by calling
+`socket(...)`, there are possible scenarios, where execution flow leaves
+current function without closing sock FD:
+
+1) if further `bind(...)` call is unsuccessful;
+2) if further listen `call(...)` is unsuccessful.
+
+Explicitly close `sock` before leaving function after unsuccessful `bind`
+and `listen` calls.
+
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
+
+Closes #185
+---
+ pkcs11/rpc-layer/gkm-rpc-dispatch.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/pkcs11/rpc-layer/gkm-rpc-dispatch.c b/pkcs11/rpc-layer/gkm-rpc-dispatch.c
+index dbedb355..fcf42279 100644
+--- a/pkcs11/rpc-layer/gkm-rpc-dispatch.c
++++ b/pkcs11/rpc-layer/gkm-rpc-dispatch.c
+@@ -2385,12 +2385,14 @@ gkm_rpc_layer_startup (const char *prefix)
+ 	if (bind (sock, (struct sockaddr*)&addr, sizeof (addr)) < 0) {
+ 		gkm_rpc_warn ("couldn't bind to pkcs11 socket: %s: %s",
+ 		                  pkcs11_socket_path, strerror (errno));
++		close(sock);
+ 		return -1;
+ 	}
+ 
+ 	if (listen (sock, 128) < 0) {
+ 		gkm_rpc_warn ("couldn't listen on pkcs11 socket: %s: %s",
+ 		                  pkcs11_socket_path, strerror (errno));
++		close(sock);
+ 		return -1;
+ 	}
+ 
+-- 
+GitLab
+

@@ -1158,4 +1158,15 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
     <comment>Push GNOME 50</comment>
     <requestid>1345423</requestid>
   </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>48c5167208a657d5115c28e4e7d1765c</srcmd5>
+    <version>50.0</version>
+    <time>1780591930</time>
+    <user>anag_factory</user>
+    <comment>- Add 04a6bc68ff4350676c5fc55d1b244a17224fbea2.patch: Fix: avoid
+  potential FD leak in gkm_rpc_layer_startup.
+- Rebase gnome-keyring-pam-auth-prompt-password.patch with quilt.
+- Use autosetup/patch macros.</comment>
+    <requestid>1356974</requestid>
+  </revision>
 </revisionlist>

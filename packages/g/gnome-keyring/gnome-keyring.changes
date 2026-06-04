@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:59:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 04a6bc68ff4350676c5fc55d1b244a17224fbea2.patch: Fix: avoid
+  potential FD leak in gkm_rpc_layer_startup.
+- Rebase gnome-keyring-pam-auth-prompt-password.patch with quilt.
+- Use autosetup/patch macros.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:38:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

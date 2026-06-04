@@ -32,6 +32,8 @@ Patch0:         gnome-keyring-pam-auth-prompt-password.patch
 Patch1:         gnome-keyring-bsc1039461-pam-man-page.patch
 # PATCH-FIX-UPSTREAM gnome-keyring-register-login-keyring.patch glgo#GNOME/gnome-keyring!78 fcrozat@suse.com -- Ensure login keyring is properly registered
 Patch2:         gnome-keyring-register-login-keyring.patch
+# PATCH-FIX-UPSTREAM 04a6bc68ff4350676c5fc55d1b244a17224fbea2.patch -- fix: avoid potential FD leak in gkm_rpc_layer_startup
+Patch3:         https://gitlab.gnome.org/GNOME/gnome-keyring/-/commit/04a6bc68ff4350676c5fc55d1b244a17224fbea2.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gnome-keyring-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com
@@ -116,13 +118,11 @@ The PAM module can be used to unlock the keyring on login.
 %lang_package
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
+%autosetup -N
+%autopatch -p1 -M 999
+
 %if 0%{?sle_version}
-%patch -P 1000 -p1
-%patch -P 1001 -p1
+%autopatch -p1 -m 1000
 %endif
 
 %build
