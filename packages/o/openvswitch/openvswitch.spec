@@ -21,7 +21,7 @@
 %define ovs_lname libopenvswitch-3_7-0
 %define ovn_lname libovn-26_03-0
 %define ovs_version 3.7.1
-%define ovn_version 26.03.0
+%define ovn_version 26.03.1
 %define ovs_dir ovs-%{ovs_version}
 %define ovn_dir ovn-%{ovn_version}
 %define rpmstate %{_rundir}/openvswitch-rpm-state-
