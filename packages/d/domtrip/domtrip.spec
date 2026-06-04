@@ -17,7 +17,7 @@
 
 
 Name:           domtrip
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Lossless XML Editing for Java
 License:        EPL-2.0

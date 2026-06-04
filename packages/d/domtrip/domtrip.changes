@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  4 05:05:03 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 1.5.2
+  * This version makes addBlankLineBefore() and addBlankLineAfter()
+    idempotent, preventing double blank lines when inserting
+    elements into positions that already have visual separation.
+- Modified patch:
+  * domtrip-ant-build-system.patch
+    + Adapt to the version change
+
+-------------------------------------------------------------------
 Wed May 27 09:42:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging with version 1.5.1

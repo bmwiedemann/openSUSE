@@ -84,7 +84,7 @@ index 0000000..0f16c63
 +<project name="common" basedir=".">
 +
 +  <property file="build.properties"/>
-+  <property name="project.version" value="1.5.1"/>
++  <property name="project.version" value="1.5.2"/>
 +  <property name="project.groupId" value="eu.maveniverse.maven.domtrip"/>
 +
 +  <property name="project.organization.name" value="Maveniverse Team"/>
