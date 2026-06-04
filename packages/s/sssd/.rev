@@ -1318,4 +1318,13 @@ goes in line with 946250</comment>
 - Do not ignore tests results at build time; (bsc#1246196)</comment>
     <requestid>1352235</requestid>
   </revision>
+  <revision rev="151" vrev="4">
+    <srcmd5>6c7fa5f028188dc7414566081cfa3feb</srcmd5>
+    <version>2.13.0</version>
+    <time>1780591955</time>
+    <user>anag_factory</user>
+    <comment>- The logrotate fragment had a wrong systemd service name in it,
+  which was rectified.</comment>
+    <requestid>1356985</requestid>
+  </revision>
 </revisionlist>

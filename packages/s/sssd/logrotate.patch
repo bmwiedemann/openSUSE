@@ -19,7 +19,7 @@ Index: sssd-2.13.0/src/examples/logrotate.in
      postrotate
 -        /bin/kill -HUP `cat @pidpath@/sssd.pid 2>/dev/null` 2> /dev/null || true
 -        /bin/pkill -HUP sssd_kcm 2> /dev/null || true
-+        /usr/bin/systemctl try-reload-or-restart sssd sssd_kcm
++        /usr/bin/systemctl try-reload-or-restart sssd sssd-kcm
      endscript
  }
 Index: sssd-2.13.0/src/sysv/systemd/sssd-kcm.service.in
