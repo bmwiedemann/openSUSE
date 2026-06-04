@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  2 19:43:32 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update to version 25.11.2
+  * Revert regression "net: fix packet type for stacked VLAN"
+    (https://bugs.dpdk.org/show_bug.cgi?id=1941)
+- Update to version 25.11.1
+  * Full changelog https://doc.dpdk.org/guides-25.11/rel_notes/release_25_11.html#release-notes
+    - Fix memory Leaks across network drivers (mlx5, iavf, netvsc,
+      nbl, tap), vhost, and testpmd.
+    - Fix file descriptor (FD) leaks and job drops during flow
+      configuration and port setup.
+    - Fix critical heap and buffer overflows in dma-perf, OpenSSL SM2,
+      and af_packet.
+    - Fix null pointer dereferences and dangling pointers in ixgbe, nbl,
+      mlx5, and FIPS validation.
+    - Fix use-after-free race conditions during cleanup and shutdown in
+      vhost and mlx5.
+
+-------------------------------------------------------------------
 Mon Apr 20 11:59:01 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Remove temporary output file sphinx_html.out -- fixes reproducible
@@ -75,8 +94,8 @@ Thu Jun  5 14:55:25 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 Tue Apr  1 09:54:21 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Change 0001-always_inline-fix.patch by replacing the function
-  rte_trace_feature_is_enabled with a preprocessor substitution, 
-  this also work with older gcc7 where -mgeneral-regs-only isn't 
+  rte_trace_feature_is_enabled with a preprocessor substitution,
+  this also work with older gcc7 where -mgeneral-regs-only isn't
   available.
 
 -------------------------------------------------------------------
@@ -114,7 +133,7 @@ Wed Jan  1 13:12:20 UTC 2025 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 -  Fix CVE-2024-11614 [bsc#1234718] - Denial Of Service from malicious guest on hypervisors using DPDK Vhost library
 -  Added patch,
-     + dpdk-CVE-2024-11614.patch 
+     + dpdk-CVE-2024-11614.patch
 
 -------------------------------------------------------------------
 Sat Sep 14 12:34:14 UTC 2024 - Dan Partelly <d.partelly@yahoo.com>

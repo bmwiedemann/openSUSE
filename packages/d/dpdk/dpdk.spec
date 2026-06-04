@@ -43,7 +43,7 @@
 # Add option to build without tools
 %bcond_without tools
 Name:           dpdk
-Version:        25.11
+Version:        25.11.2
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -183,7 +183,7 @@ as L2 and L3 forwarding.
 %define pmddir %{_libdir}/dpdk-pmds-%{maj}.%{min}
 
 %prep
-%setup -q -n dpdk-%{version}
+%setup -q -n dpdk-stable-%{version}
 %autopatch -p1
 
 # Skip not supported examples
