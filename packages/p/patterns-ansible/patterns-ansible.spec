@@ -69,7 +69,6 @@ Provides:       pattern-visible()
 Requires:       pattern() = ansible_automation
 Requires:       ansible-lint
 Requires:       molecule
-Requires:       molecule-plugins
 Requires:       ansible-navigator
 Requires:       ansible-builder
 Requires:       ansible-runner

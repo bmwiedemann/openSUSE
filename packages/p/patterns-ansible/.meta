@@ -1,4 +1,5 @@
 <package name="patterns-ansible" project="openSUSE:Factory">
   <title>Patterns for Ansible automation</title>
   <description>Meta-package providing ansible_automation and ansible_devtools patterns</description>
+  <devel project="systemsmanagement:ansible" package="patterns-ansible"/>
 </package>
