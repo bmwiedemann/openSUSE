@@ -187,4 +187,33 @@
   * Changelog v1.15.0: https://gleam.run/news/upgrading-hex-security/</comment>
     <requestid>1356521</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c0f48df18062fe162e428b0f890e4cc4</srcmd5>
+    <version>1.17.0</version>
+    <time>1780592133</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.17.0:
+  * Fixed security vulnerabilities:
+    - Restrict custom documentation page `path` and `source` values so
+      `gleam docs build` cannot escape the docs output directory or project
+      root (bsc#1267396, CVE-2026-32685)
+    - Restrict publication tarball creation so they cannot contain files
+      from outside the project root (bsc#1267397, CVE-2026-42795)
+    - Stricter deserialisation rules for files internal the build directory
+      to reject corrupted data (bsc#1267398, CVE-2026-43965)
+  * All features and bug fixes are extensively highlighted with
+    examples in the upstream blog post at
+    https://gleam.run/news/single-file-gleam-beam-programs-with-escript/
+    and changelog at
+    https://github.com/gleam-lang/gleam/blob/v1.17.0/CHANGELOG.md some of
+    the highlights include:
+    - Various JavaScript code generation fixes and optimization
+    - Various compiler error handling improvements
+    - Ability to use the `todo` keyword in constants
+    - Improved handling of Git monorepos during package management
+    - Ability to create escripts from Gleam programs
+    - Various language server improvements like reference highlighting,
+      record hovering and code actions</comment>
+    <requestid>1357049</requestid>
+  </revision>
 </revisionlist>

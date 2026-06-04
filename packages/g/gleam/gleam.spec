@@ -17,7 +17,7 @@
 
 
 Name:           gleam
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        A friendly language for building type-safe, scalable systems!
 License:        Apache-2.0
@@ -29,6 +29,7 @@ BuildRequires:  cargo-packaging
 # https://github.com/rust-lang/rust/issues/120301
 BuildRequires:  cargo >= 1.91.0
 # For tests
+BuildRequires:  erlang
 BuildRequires:  git-core
 Requires:       erlang
 Requires:       erlang-rebar3
@@ -50,8 +51,9 @@ install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/gleam %{buildroot}%{_bindir}/gleam
 
 %check
-# Requires JavaScript engines that aren't packaged on openSUSE
-%{cargo_test} -- --skip tests::echo
+# tests::echo requires JavaScript engines that aren't packaged on openSUSE
+# tests::escript_success_with_dependency requires network access
+%{cargo_test} -- --skip tests::echo --skip tests::escript_success_with_dependency
 
 %files
 %license LICENCE
