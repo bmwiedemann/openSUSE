@@ -335,4 +335,17 @@
     <comment></comment>
     <requestid>1328223</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>43d3b3ac9a12017ac5a46d4ce9436182</srcmd5>
+    <version>76</version>
+    <time>1780592088</time>
+    <user>anag_factory</user>
+    <comment>Update to R76:
+- Build system migrated to Meson; remove autoloading of bundled core plugins
+- Packaging rework for the meson/wheel build: install to FHS locations (patch), link system zimg dynamically (patch)
+- Proper upstream SONAME libvapoursynth.so.4 (drop downstream version-patch hack); subpackages libvapoursynth4 + libvsscript0
+- Requires zimg &gt;= 3.0.5
+Note: SONAME change rebuilds consumers (ffmpeg, mpv, ...)</comment>
+    <requestid>1357025</requestid>
+  </revision>
 </revisionlist>

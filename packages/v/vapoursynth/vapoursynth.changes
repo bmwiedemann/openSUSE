@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jun  3 18:22:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to R76:
+  * Build system migrated to Meson
+  * Remove autoloading of bundled "core plugins" (none have been
+    bundled for years apart from the AviSynth compat on Windows)
+  * Improved Python library detection on Linux
+  * Numerous vspipe and vsscript fixes on Unix
+- Major packaging rework for the new Meson, wheel-oriented build:
+  * Install the libraries, vspipe, headers and pkgconfig file to
+    FHS locations instead of the Python site-packages wheel layout
+    (vapoursynth-fhs-install.patch)
+  * Link against the shared system zimg instead of bundling a
+    static copy (vapoursynth-system-zimg.patch)
+  * Drop vapoursynth-version.patch: the core library now carries
+    its proper upstream SONAME libvapoursynth.so.4 instead of the
+    downstream release-numbered libvapoursynth-73.so
+  * Rename the library subpackages to libvapoursynth4 and
+    libvsscript0 accordingly
+  * Drop the obsolete gcc12 build fallback for EOL openSUSE
+- Require zimg >= 3.0.5
+
+-------------------------------------------------------------------
 Tue Jan 20 07:38:22 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 73:

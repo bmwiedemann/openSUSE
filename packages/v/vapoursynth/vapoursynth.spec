@@ -16,22 +16,25 @@
 #
 
 
+%define sover 4
 Name:           vapoursynth
-Version:        73
+Version:        76
 Release:        0
 Summary:        A video processing framework
 License:        LGPL-2.1-only
-Group:          Productivity/Multimedia/Video/Editors and Convertors
-URL:            http://www.vapoursynth.com/
+URL:            https://www.vapoursynth.com/
 Source0:        https://github.com/vapoursynth/vapoursynth/archive/R%{version}.tar.gz#/%{name}-R%{version}.tar.gz
-# PATCH-FIX-OPENSUSE vapoursynth-version.patch -- makes sure that we have
-# some sort of version for othervise unversioned .so files
-Patch0:         vapoursynth-version.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+# PATCH-FIX-OPENSUSE vapoursynth-fhs-install.patch -- install libraries, vspipe, headers and pkgconfig to FHS locations instead of the Python wheel dir, and give libvsscript a soversion
+Patch0:         vapoursynth-fhs-install.patch
+# PATCH-FIX-OPENSUSE vapoursynth-system-zimg.patch -- link against the shared system zimg instead of bundling it statically
+Patch1:         vapoursynth-system-zimg.patch
+BuildRequires:  chrpath
+BuildRequires:  gcc-c++
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython
+BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(Magick++) >= 7.0
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libass)
@@ -40,7 +43,7 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(tesseract)
-BuildRequires:  pkgconfig(zimg) >= 2.9.2
+BuildRequires:  pkgconfig(zimg) >= 3.0.5
 Obsoletes:      plugin-eedi3
 Obsoletes:      plugin-imwri
 Obsoletes:      plugin-miscfilters
@@ -50,105 +53,80 @@ Obsoletes:      plugin-removegrain
 Obsoletes:      plugin-subtext
 Obsoletes:      plugin-vinverse
 Obsoletes:      plugin-vivtc
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc12
-BuildRequires:  gcc12-PIE
-BuildRequires:  gcc12-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 
 %description
 VapourSynth is a library for video manipulation. It has a core
 library written in C++ and a Python module to allow video scripts to
 be created.
 
-%package -n libvapoursynth-%{version}
+%package -n libvapoursynth%{sover}
 Summary:        A video processing framework
-Group:          System/Libraries
-Obsoletes:      libvapoursynth
 
-%description -n libvapoursynth-%{version}
+%description -n libvapoursynth%{sover}
 VapourSynth's core library with a C++ API.
 
-%package -n libvapoursynth-script0
+%package -n libvsscript0
 Summary:        Library for interfacing Python with VapourSynth
-Group:          System/Libraries
 Requires:       python3-%{name}
 
-%description -n libvapoursynth-script0
-VSScript (or libvapoursynth-script) is a library for interfacing Python
+%description -n libvsscript0
+VSScript (or libvsscript) is a library for interfacing Python
 with VapourSynth.
 
 %package -n python3-%{name}
 Summary:        Python interface for VapourSynth
-Group:          Development/Languages/Python
 
 %description -n python3-%{name}
-Python interface for VapourSynth/VSSCript.
+Python interface for VapourSynth/VSScript.
 
 %package devel
 Summary:        Development files for VapourSynth
-Group:          Development/Libraries/C and C++
-Requires:       libvapoursynth-%{version} = %{version}
-Requires:       libvapoursynth-script0 = %{version}
+Requires:       libvapoursynth%{sover} = %{version}
+Requires:       libvsscript0 = %{version}
 
 %description devel
-Header files and pkg-config headers for VapourSynth.
+Header files and pkg-config files for VapourSynth.
 
 %package tools
 Summary:        Extra tools for VapourSynth
-Group:          Productivity/Multimedia/Video/Editors and Convertors
 
 %description tools
 This package contains the vspipe tool for interfacing with
 VapourSynth.
 
 %prep
-%setup -q -n %{name}-R%{version}
-%patch -P 0 -p1
+%autosetup -p1 -n %{name}-R%{version}
 
 %build
-%if 0%{?suse_version} <= 1500
-export CC="gcc-12"
-export CXX="g++-12"
-%endif
-
-autoreconf -fiv
-%if 0%{?suse_version} <= 1500
-# Woraround for old autoconf
-sed -z -i "s|PACKAGE_URL='http://www.vapoursynth.com/\n'|PACKAGE_URL='http://www.vapoursynth.com/'|" configure
-%endif
-%configure \
-  --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
+# drop the useless $ORIGIN RUNPATH (libraries live in the system libdir)
+chrpath -d %{buildroot}%{_bindir}/vspipe
+chrpath -d %{buildroot}%{python3_sitearch}/vapoursynth/*.so
 
-%post   -n libvapoursynth-%{version} -p /sbin/ldconfig
-%postun -n libvapoursynth-%{version} -p /sbin/ldconfig
-%post   -n libvapoursynth-script0 -p /sbin/ldconfig
-%postun -n libvapoursynth-script0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libvapoursynth%{sover}
+%ldconfig_scriptlets -n libvsscript0
 
-%files -n libvapoursynth-%{version}
+%files -n libvapoursynth%{sover}
 %license COPYING.LESSER
 %doc ChangeLog
-%{_libdir}/libvapoursynth-%{version}.so
+%{_libdir}/libvapoursynth.so.%{sover}
 
-%files -n libvapoursynth-script0
-%{_libdir}/libvapoursynth-script.so.0*
+%files -n libvsscript0
+%{_libdir}/libvsscript.so.0
 
 %files -n python3-%{name}
-%{python3_sitearch}/*.so
+%{python3_sitearch}/vapoursynth/
 
 %files devel
 %doc doc/
 %{_includedir}/vapoursynth/
 %{_libdir}/libvapoursynth.so
-%{_libdir}/libvapoursynth-script.so
-%{_libdir}/pkgconfig/*
+%{_libdir}/libvsscript.so
+%{_libdir}/pkgconfig/vapoursynth.pc
 
 %files tools
 %{_bindir}/vspipe

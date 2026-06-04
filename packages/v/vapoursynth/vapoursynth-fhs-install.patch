@@ -1,0 +1,48 @@
+--- a/meson.build	2026-06-03 20:07:32.046271694 +0200
++++ b/meson.build	2026-06-03 20:11:03.277932243 +0200
+@@ -195,7 +195,7 @@
+     gnu_symbol_visibility: 'hidden',
+     include_directories: incdir,
+     install: true,
+-    install_dir: install_dir,
++    install_dir: get_option('libdir'),
+     link_with: libs,
+     name_prefix: '',
+     soversion: soversion,
+@@ -235,7 +235,8 @@
+     gnu_symbol_visibility: 'hidden',
+     include_directories: incdir,
+     install: true,
+-    install_dir: install_dir,
++    install_dir: get_option('libdir'),
++    soversion: '0',
+ )
+ 
+ vsscript_dep = declare_dependency(
+@@ -261,7 +262,7 @@
+     dependencies: vsscript_dep,
+     gnu_symbol_visibility: 'hidden',
+     install: true,
+-    install_dir: install_dir,
++    install_dir: get_option('bindir'),
+     install_rpath: '$ORIGIN',
+     link_args: link_args,
+ )
+@@ -299,7 +300,8 @@
+     'include',
+     exclude_directories: 'cython',
+     exclude_files: ['VapourSynth.h', 'VSHelper.h'],
+-    install_dir: install_dir,
++    strip_directory: true,
++    install_dir: get_option('includedir') / 'vapoursynth',
+ )
+ 
+ pc_data = configuration_data()
+@@ -308,6 +310,6 @@
+     configuration: pc_data,
+     input: 'vapoursynth.pc.in',
+     install: true,
+-    install_dir: install_dir / 'pkgconfig',
++    install_dir: get_option('libdir') / 'pkgconfig',
+     output: 'vapoursynth.pc',
+ )
