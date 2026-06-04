@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  3 11:28:39 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix the condition with suse_version macro on SLFO for tests (jsc#PED-15846)
+
+-------------------------------------------------------------------
 Wed Feb 25 16:05:48 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
-- Fix the condition with suse_version macro on SLFO (jsc#PED-15846) 
+- Fix the condition with suse_version macro on SLFO (jsc#PED-15846)
 
 -------------------------------------------------------------------
 Wed Sep 24 08:54:22 UTC 2025 - Markéta Machová <mmachova@suse.com>

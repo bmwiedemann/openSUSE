@@ -166,4 +166,12 @@
     <comment></comment>
     <requestid>1335265</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>b012805f2cd626e2994f340f7a58d382</srcmd5>
+    <version>2.2.1</version>
+    <time>1780591903</time>
+    <user>anag_factory</user>
+    <comment>- Fix the condition with suse_version macro on SLFO for tests (jsc#PED-15846)</comment>
+    <requestid>1356947</requestid>
+  </revision>
 </revisionlist>
