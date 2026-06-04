@@ -2745,7 +2745,6 @@
     <package name="libtss2-rc0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libtss2-sys1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libtss2-tcti-device0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libtss2-tcti-tabrmd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libtss2-tctildr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtumbler-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libturbojpeg0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4024,8 +4023,6 @@
     <package name="totem-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="totem-video-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="tpm2-0-tss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="tpm2.0-abrmd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="tpm2.0-abrmd-selinux" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="tpm2.0-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="traceroute" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="translate-shell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->

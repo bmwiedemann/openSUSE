@@ -16961,8 +16961,7 @@ unsorted:
   - libvamp-hostsdk3-32bit 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit 
-  - libvapoursynth-73 
-  - libvapoursynth-script0 
+  - libvapoursynth4 
   - libvarlink-devel 
   - libvarlink0 
   - libvarlink0-x86-64-v3 
@@ -17094,6 +17093,7 @@ unsorted:
   - libvsmbr-tools 
   - libvsmbr1 
   - libvsqlitepp3 
+  - libvsscript0 
   - libvted-3-0 
   - libvterm-devel 
   - libvterm-tools 
@@ -27557,7 +27557,7 @@ unsorted:
   - python311-schema 
   - python311-scikit-build 
   - python311-scikit-build-core 
-  - python311-scikit-build-core-pyproject 
+  - python311-scikit-build-core-wheels 
   - python311-scikit-dsp-comm 
   - python311-scikit-hep-testdata 
   - python311-scikit-learn 
@@ -31508,7 +31508,7 @@ unsorted:
   - python313-schema 
   - python313-scikit-build 
   - python313-scikit-build-core 
-  - python313-scikit-build-core-pyproject 
+  - python313-scikit-build-core-wheels 
   - python313-scikit-dsp-comm 
   - python313-scikit-hep-testdata 
   - python313-scikit-image 
@@ -35498,7 +35498,7 @@ unsorted:
   - python314-schema 
   - python314-scikit-build 
   - python314-scikit-build-core 
-  - python314-scikit-build-core-pyproject 
+  - python314-scikit-build-core-wheels 
   - python314-scikit-dsp-comm 
   - python314-scikit-hep-testdata 
   - python314-scikit-image 
