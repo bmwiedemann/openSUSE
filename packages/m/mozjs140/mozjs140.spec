@@ -83,6 +83,8 @@ Patch21:        mozjs140-CVE-2026-32776.patch
 Patch22:        mozjs140-CVE-2026-32777.patch
 # PATCH-FIX-UPSTREAM mozjs140-CVE-2026-32778.patch bsc#1259731 mgorse@suse.com -- libexpat: NULL pointer dereference in `setContext` on retry after an out-of-memory condition
 Patch23:        mozjs140-CVE-2026-32778.patch
+# PATCH-FIX-UPSTREAM mozjs140-CVE-2025-70103.patch bsc#1266463 mgorse@suse.com -- libjxl: Take EC into account when checking required PNM input length.
+Patch24:        mozjs140-CVE-2025-70103.patch
 BuildRequires:  cargo
 BuildRequires:  ccache
 BuildRequires:  clang
@@ -169,6 +171,7 @@ pushd ../..
 %patch -P 21 -p1
 %patch -P 22 -p1
 %patch -P 23 -p1
+%patch -P 24 -p1
 
 %if %{pkg_vcmp libicu-devel >= 76.1}
 sed -i 's/icu-i18n/icu-uc &/' js/moz.configure

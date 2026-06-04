@@ -107,4 +107,14 @@
   + See https://www.firefox.com/en-US/firefox/140.10.1/releasenotes/</comment>
     <requestid>1350823</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8b19052bfd9f075169efc13e6b300d1f</srcmd5>
+    <version>140.10.1</version>
+    <time>1780592034</time>
+    <user>anag_factory</user>
+    <comment>- Add mozjs140-CVE-2025-70103.patch: libjxl: take EC into account
+  when checking required PNM input length (bsc#1266463
+  CVE-2025-70103).</comment>
+    <requestid>1356902</requestid>
+  </revision>
 </revisionlist>
