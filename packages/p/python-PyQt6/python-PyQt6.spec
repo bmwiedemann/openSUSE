@@ -208,12 +208,20 @@ dos2unix examples/multimedia*/*/*.ui
 
 %build
 
+%define gcc_version %(gcc -dumpversion 2>/dev/null || echo 0)
+
+%if %{gcc_version} >= 16
+%global flags %{optflags} -std=gnu++17
+%else
+%global flags %{optflags}
+%endif
+
 # -DQT_NO_INT128 is required to build with Qt 6.6.0.
 %{pyqt_build -v \
     -s %{quote:--pep484-pyi \
                --confirm-license \
                --qt-shared \
-               --qmake-setting 'QMAKE_CXXFLAGS_RELEASE=%{optflags} -DQT_NO_INT128'\
+               --qmake-setting 'QMAKE_CXXFLAGS_RELEASE=%{flags} -DQT_NO_INT128'\
 %if %{with qt6pdf}
                --enable QtPdf \
 %endif

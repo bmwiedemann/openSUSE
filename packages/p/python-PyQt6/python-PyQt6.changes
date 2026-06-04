@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  2 15:08:25 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Force -std=gnu++17 to fix the broken build with GCC 16 
+
+-------------------------------------------------------------------
 Thu Apr 30 11:48:07 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 6.11.0 
