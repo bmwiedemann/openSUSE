@@ -17,7 +17,7 @@
 
 
 Name:           hwdata
-Version:        0.407
+Version:        0.408
 Release:        0
 Summary:        Hardware identification and configuration data
 License:        GPL-2.0-or-later
