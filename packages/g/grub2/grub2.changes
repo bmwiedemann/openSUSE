@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  1 13:01:44 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Fix build with GCC 16
+  * gcc16.patch
+  * 0001-add-support-for-UEFI-network-protocols.patch
+
+-------------------------------------------------------------------
 Sat May 16 19:32:45 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add python-base BR

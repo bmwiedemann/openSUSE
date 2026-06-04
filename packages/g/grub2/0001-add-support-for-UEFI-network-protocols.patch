@@ -37,6 +37,8 @@ V6:
   * Don't force grub_print_error if no best route found as boot process
     could be interrupted by logged error. The default interface will be
     used as fallback in this case
+v7:
+  * Fix gcc16 build error for variable set but not used.
 
 ---
  grub-core/Makefile.core.def        |   18 +
@@ -70,7 +72,7 @@ V6:
 
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2456,6 +2456,12 @@
+@@ -2461,6 +2461,12 @@
    common = net/ethernet.c;
    common = net/arp.c;
    common = net/netbuff.c;
@@ -1162,7 +1164,7 @@ V6:
 +  s = sz;
 +  for (i = 0; i < (int)hw_address_size; i++)
 +    {
-+      grub_snprintf (p, sz, "%02x:", hw_address[i]);
++      grub_snprintf (p, s, "%02x:", hw_address[i]);
 +      p +=  sizeof ("XX:") - 1;
 +      s -=  sizeof ("XX:") - 1;
 +    }
@@ -3946,7 +3948,7 @@ V6:
    grub_register_variable_hook ("net_default_server", 0, 0);
    grub_register_variable_hook ("pxe_default_server", 0, 0);
    grub_register_variable_hook ("net_default_ip", 0, 0);
-@@ -2155,4 +2226,7 @@
+@@ -2156,4 +2227,7 @@
    grub_net_fini_hw (0);
    grub_loader_unregister_preboot_hook (fini_hnd);
    grub_net_poll_cards_idle = NULL;
@@ -3956,7 +3958,7 @@ V6:
  }
 --- a/include/grub/efi/api.h
 +++ b/include/grub/efi/api.h
-@@ -663,6 +663,23 @@
+@@ -673,6 +673,23 @@
  typedef grub_uint8_t grub_efi_ip_address_t[8] __attribute__ ((aligned(4)));
  typedef grub_efi_uint64_t grub_efi_physical_address_t;
  typedef grub_efi_uint64_t grub_efi_virtual_address_t;
@@ -3980,7 +3982,7 @@ V6:
  
  /* XXX although the spec does not specify the padding, this actually
     must have the padding!  */
-@@ -912,6 +929,8 @@
+@@ -922,6 +939,8 @@
    grub_efi_uint16_t remote_port;
    grub_efi_uint16_t protocol;
    grub_efi_uint8_t static_ip_address;
@@ -3989,7 +3991,7 @@ V6:
  } GRUB_PACKED;
  typedef struct grub_efi_ipv6_device_path grub_efi_ipv6_device_path_t;
  
-@@ -970,6 +989,15 @@
+@@ -980,6 +999,15 @@
  } GRUB_PACKED;
  typedef struct grub_efi_uri_device_path grub_efi_uri_device_path_t;
  
@@ -4005,7 +4007,7 @@ V6:
  #define GRUB_EFI_VENDOR_MESSAGING_DEVICE_PATH_SUBTYPE	10
  
  /* Media Device Path.  */
-@@ -1052,6 +1080,23 @@
+@@ -1062,6 +1090,23 @@
  } GRUB_PACKED;
  typedef struct grub_efi_bios_device_path grub_efi_bios_device_path_t;
  
@@ -4029,7 +4031,7 @@ V6:
  struct grub_efi_open_protocol_information_entry
  {
    grub_efi_handle_t agent_handle;
-@@ -1554,23 +1599,28 @@
+@@ -1564,23 +1609,28 @@
  
  typedef grub_uint8_t grub_efi_pxe_packet_t[1472];
  
@@ -4072,7 +4074,7 @@ V6:
  
  #define GRUB_EFI_PXE_BASE_CODE_MAX_IPCNT 8
  typedef struct {
-@@ -1620,18 +1670,32 @@
+@@ -1630,18 +1680,32 @@
  typedef struct grub_efi_pxe
  {
    grub_uint64_t rev;
@@ -4117,7 +4119,7 @@ V6:
    struct grub_efi_pxe_mode *mode;
  } grub_efi_pxe_t;
  
-@@ -1951,6 +2015,44 @@
+@@ -1961,6 +2025,44 @@
  };
  typedef struct grub_efi_ip4_config2_protocol grub_efi_ip4_config2_protocol_t;
  
@@ -4162,7 +4164,7 @@ V6:
  enum grub_efi_ip6_config_data_type {
    GRUB_EFI_IP6_CONFIG_DATA_TYPE_INTERFACEINFO,
    GRUB_EFI_IP6_CONFIG_DATA_TYPE_ALT_INTERFACEID,
-@@ -1985,4 +2087,47 @@
+@@ -1995,4 +2097,47 @@
  };
  typedef struct grub_efi_ip6_config_protocol grub_efi_ip6_config_protocol_t;
  

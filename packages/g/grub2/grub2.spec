@@ -406,6 +406,7 @@ Patch425:       0001-util-probe-Save-strrchr-ret-val-to-const-data-ptr.patch
 Patch426:       0002-util-resolve-Save-str-r-chr-ret-val-to-const-data-pt.patch
 Patch427:       0001-Fix-problematic-utf8-conversion-in-bli-patches.patch
 Patch428:       0001-bls-fix-default-entry-and-bumpcounter-for-BLS-boot-c.patch
+Patch429:       gcc16.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
