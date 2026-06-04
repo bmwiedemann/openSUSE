@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Jun  3 20:10:28 UTC 2026 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Update to new upstream release 5.2.0:
+  * 2056 Bug in docprep.rex
+  * 2052 ooTest framework typo replace "rn" by "n" in ooTest.frm
+  * 2050 ooTest framework: unassigned variable "LFILE"' when asking for a log file
+  * 2049 Missing p = p->next; in Activity::liveGeneral
+  * 2046 VariableReference::flatten is marking instead of flattening
+  * 2044 json.cls: string consisting of numbers not handled as a string
+  * 2042 Syntax 47.2 in samples\ole\apps\MSInternetExplorer_search.rex
+  * 2041 Crash when specifying  only -O or -OG on the command line for Rexx.exe
+  * 2038 say .buffer~method("INIT") crashes the interpreter
+  * 2033 Evaluation order of boolean expressions is wrong
+  * 2030 Hang running the BSF4ooRexx850 sample fxml_99/MainApp.rex
+  * 2025 a[1] = 1,2,3 fails
+  * 2021 fix RexxStart translate-only option
+  * 2019 man files on Linux/Unix report the wrong version
+  * 2017 cmake warnings
+  * 2012 Call Insert a,b,-1 complains about a length but -1 is a pos
+  * 2008 Arg(-n) returns ""
+  * 2003 GUARD ON WHEN issue
+  * 1991 MapCollection~of() should return an empty collection
+  * 1923 "Insufficient control stack space; cannot continue execution." building rexx.img on AIX 7.2
+  * 1904 Problem with Do ... Over
+  * 1880 Stem objects not properly converting into a string value
+  * 1878 SEEK does not affect WRITE position
+  * 1872 Crash on terminating Rexx instances on different threads
+  * 1850 TRACE issues
+  * 1837 circular requires: some public classes are not visible
+  * 1786 RexxPullFromQueue() returning invalid data for a null queue entry
+  * 1763 StreamSocket issues
+  * 1762 pushing very large data hangs RexxQueue
+  * 1742 Stream RECLENGTH 1 issues
+  * 1447 Clean builds without compiler warnings
+  * 873 Upate json.cls
+  * 872 Add class methods arrayIn and arrayOut to .Stream
+  * 871 Add support for YAML
+  * 870 ooSQLite: enable R*Tree
+  * 869 Packages should be able to block GlobalOptions requests
+  * 864 Add Unicode (UTF-8) support to syntax error 13.1
+  * 863 Make CMake use IPO if available
+  * 861 Make search for Xalan with CMake platform independent
+  * 860 Add ability to propagate numeric settings to called routines and methods using  ::options
+  * 858 Add ability to override package options at runtime
+  * 857 Add ability to dynamically change options package wide ("dynamic ::OPTIONS")
+  * 855 Add NOTIFY class attribute to TraceObject class
+  * 806 Allow RexxInstance->Terminate() to be called from any thread.
+  * 803 extensions to complex.cls
+  * 581 Add item data capability to combo box
+  * 578 Accept string keywords instead of requiring numeric value in image related methods
+  * 576 Add support for the 'split button'
+  * 569 Allow direct creation of dialog control windows.
+  * 552 Add the ToolBar control to ooDialog
+  * 550 Add the ReBar dialog control to ooDialog
+  * 544 Allow the registration of user defined SQL functions and aggregates
+  * 353 Embedded Database
+  * 22 RFE4IBM: allow triggering garbage collector explicitly
+  * Various documentation fixes
+
+-------------------------------------------------------------------
 Wed May  7 09:31:29 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes

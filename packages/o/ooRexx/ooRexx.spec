@@ -1,7 +1,7 @@
 #
 # spec file for package ooRexx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,18 @@
 
 %define _rexxpath %{_datadir}/ooRexx
 Name:           ooRexx
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        Open Object REXX
 License:        CPL-1.0
 Group:          Development/Languages/Other
 URL:            https://www.rexxla.org
-Source0:        https://master.dl.sourceforge.net/project/oorexx/oorexx/5.1.0/oorexx-5.1.0-12973.tar.gz
+Source0:        https://master.dl.sourceforge.net/project/oorexx/oorexx/5.2.0/oorexx-5.2.0-13156.tar.gz
 Source1:        ooRexx-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
+BuildRequires:  update-alternatives
 Requires(post): %{_sbindir}/update-alternatives
 Requires(postun): %{_sbindir}/update-alternatives
 Obsoletes:      ooRexx <= 4.2.0
@@ -60,7 +61,7 @@ Development files for Open Object Rexx. These are intended for developing REXX e
 Library files for Open Object Rexx.
 
 %prep
-%autosetup -n oorexx-5.1.0-12973
+%autosetup -n oorexx-5.2.0-13156
 
 %build
 # Remove cmake4 error due to not setting
@@ -171,6 +172,9 @@ fi
 %{_bindir}/rxqueue-oorexx
 %{_bindir}/rxsubcom-oorexx
 %{_bindir}/*cls
+%{_bindir}/*dtd
+%{_bindir}/*xsd
+%{_bindir}/*xsl
 
 %ghost %{_bindir}/rexx
 %ghost %{_bindir}/rexxc

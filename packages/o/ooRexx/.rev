@@ -252,4 +252,12 @@ and classes work (they are not devel files).
 - removing extra changelog tag.</comment>
     <requestid>1276300</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b1130aee338735a298737ab78953e269</srcmd5>
+    <version>5.2.0</version>
+    <time>1780592105</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1357037</requestid>
+  </revision>
 </revisionlist>
