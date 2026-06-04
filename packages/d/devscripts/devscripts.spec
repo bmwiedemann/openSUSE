@@ -1,7 +1,7 @@
 #
 # spec file for package devscripts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 
 %define _xsl_stylesheet %{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl
 Name:           devscripts%{?name_suffix}
-Version:        2.22.2
+Version:        2.26.9
 Release:        0
 Summary:        Scripts to make the life of a Debian Package maintainer easier
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND Artistic-2.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-or-later AND GPL-3.0-only AND SUSE-Public-Domain AND ISC
@@ -141,7 +141,7 @@ install -Dpm 0644 scripts/checkbashisms.1 -t %{buildroot}%{_mandir}/man1/
 
 %if "%{flavor}" == ""
 while read target link; do
-    if [ -d $(dirname "%{buildroot}$link") ]; then
+    if [ -n "$link" -a -d $(dirname "%{buildroot}$link") ]; then
         ln -sf "$target" "%{buildroot}$link"
     fi
 done < debian/links

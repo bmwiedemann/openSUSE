@@ -1,6 +1,8 @@
---- a/scripts/Makefile
-+++ b/scripts/Makefile
-@@ -121,7 +120,7 @@ clean:
+Index: devscripts-v2.26.9/scripts/Makefile
+===================================================================
+--- devscripts-v2.26.9.orig/scripts/Makefile
++++ devscripts-v2.26.9/scripts/Makefile
+@@ -173,7 +173,7 @@ clean:
  test: test_pl test_sh test_py
  
  install: all

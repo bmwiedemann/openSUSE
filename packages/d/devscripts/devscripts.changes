@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  3 05:49:57 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 2.26.9:
+  * various fixes, see /usr/share/doc/packages/devscripts/changelog
+- modified patches
+  * devscripts-debcommit-hg16.patch (refreshed)
+  * devscripts-fix-build.patch (refreshed)
+  * devscripts-fix-python-install-layout.patch (refreshed)
+
+-------------------------------------------------------------------
 Thu Jun 20 11:42:46 UTC 2024 - pgajdos@suse.com
 
 -  remove dependency on /usr/bin/python3 using

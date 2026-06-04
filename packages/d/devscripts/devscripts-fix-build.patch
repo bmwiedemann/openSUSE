@@ -1,7 +1,7 @@
-Index: devscripts-v2.22.2/Makefile
+Index: devscripts-v2.26.9/Makefile
 ===================================================================
---- devscripts-v2.22.2.orig/Makefile
-+++ devscripts-v2.22.2/Makefile
+--- devscripts-v2.26.9.orig/Makefile
++++ devscripts-v2.26.9/Makefile
 @@ -4,7 +4,7 @@ include Makefile.common
  
  DESTDIR =
@@ -11,37 +11,37 @@ Index: devscripts-v2.22.2/Makefile
  
  version:
  	rm -f version
-Index: devscripts-v2.22.2/Makefile.common
+Index: devscripts-v2.26.9/Makefile.common
 ===================================================================
---- devscripts-v2.22.2.orig/Makefile.common
-+++ devscripts-v2.22.2/Makefile.common
-@@ -14,3 +14,5 @@ PERLMOD_DIR = $(shell perl -MConfig -e '
+--- devscripts-v2.26.9.orig/Makefile.common
++++ devscripts-v2.26.9/Makefile.common
+@@ -16,3 +16,5 @@ PERLMOD_DIR = $(shell perl -MConfig -e '
  DATA_DIR = $(PREFIX)/share/devscripts
  TEMPLATES_DIR = $(DATA_DIR)/templates
  SYSCONFDIR = /etc
 +
 +XSL_STYLESHEET = /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl
-Index: devscripts-v2.22.2/po4a/Makefile
+Index: devscripts-v2.26.9/po4a/Makefile
 ===================================================================
---- devscripts-v2.22.2.orig/po4a/Makefile
-+++ devscripts-v2.22.2/po4a/Makefile
-@@ -33,8 +33,7 @@ clean: ../doc/devscripts.1
- 	-podchecker $<
+--- devscripts-v2.26.9.orig/po4a/Makefile
++++ devscripts-v2.26.9/po4a/Makefile
+@@ -35,8 +35,7 @@ clean: ../doc/devscripts.7
  	pod2man --utf8 --center=" " --release="$(DESC_$(dir $@))" $< > $@
  %.1:: %.dbk translate
--	xsltproc --nonet \
+ 	mkdir -p $(LANGS)
+-	xsltproc --nonet -o $@ \
 -	  /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl $<
-+	xsltproc --nonet -o $@ $(XSL_STYLESHEET) $<
- 	# /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/other.xsl
- 	# (which is imported by the above stylesheet) insists in writing the output
- 	# to where it wants to.  we can only move the file ourselves.
-Index: devscripts-v2.22.2/scripts/Makefile
++	xsltproc --nonet -o $@ -o $@ $(XSL_STYLESHEET) $<
+ %.5:: %.pl translate
+ 	-podchecker $<
+ 	pod2man --utf8 --center=" " --release="$(DESC_$(dir $@))" $< > $@
+Index: devscripts-v2.26.9/scripts/Makefile
 ===================================================================
---- devscripts-v2.22.2.orig/scripts/Makefile
-+++ devscripts-v2.22.2/scripts/Makefile
-@@ -87,8 +87,7 @@ endif
+--- devscripts-v2.26.9.orig/scripts/Makefile
++++ devscripts-v2.26.9/scripts/Makefile
+@@ -98,8 +98,7 @@ endif
  	podchecker $<
- 	pod2man --utf8 --center=" " --release="Debian Utilities" $< > $@
+ 	pod2man --utf8 --center=" " --release="Debian Utilities" --section=5 $< > $@
  %.1: %.dbk
 -	xsltproc --nonet -o $@ \
 -	  /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl $<
@@ -49,3 +49,15 @@ Index: devscripts-v2.22.2/scripts/Makefile
  
  # Syntax checker
  test_sh: $(SH_CHECKS)
+Index: devscripts-v2.26.9/doc/Makefile
+===================================================================
+--- devscripts-v2.26.9.orig/doc/Makefile
++++ devscripts-v2.26.9/doc/Makefile
+@@ -24,6 +24,6 @@ install_man1: *.1
+ install_man5: *.5
+ 	install -d "$(DESTDIR)$(MAN5DIR)"
+ 	install -m0644 -t "$(DESTDIR)$(MAN5DIR)" $^
+-install_man7: *.7 devscripts.7
++install_man7: $(wildcard *.7) devscripts.7
+ 	install -d "$(DESTDIR)$(MAN7DIR)"
+ 	install -m0644 -t "$(DESTDIR)$(MAN7DIR)" $^

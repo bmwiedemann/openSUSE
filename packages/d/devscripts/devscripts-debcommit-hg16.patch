@@ -1,6 +1,8 @@
---- a/scripts/debcommit.pl
-+++ b/scripts/debcommit.pl
-@@ -663,7 +663,9 @@ sub commit {
+Index: devscripts-v2.26.9/scripts/debcommit.pl
+===================================================================
+--- devscripts-v2.26.9.orig/scripts/debcommit.pl
++++ devscripts-v2.26.9/scripts/debcommit.pl
+@@ -686,7 +686,9 @@ sub commit {
      } else {
          die "debcommit: unknown program $prog";
      }
