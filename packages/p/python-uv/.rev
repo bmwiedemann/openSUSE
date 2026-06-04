@@ -2651,4 +2651,31 @@
   * Fix malformed positional anchors in the CLI reference</comment>
     <requestid>1355818</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>b604a8f719cd93f2d12ec171ae4b3568</srcmd5>
+    <version>0.11.19</version>
+    <time>1780592158</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.18 
+ * Enhancements
+  * Always compute SHA256 for remote distributions 
+  * Add PyEmscripten platform (PEP 783) 
+  * Add Pyodide 2025 target triple 
+ * Preview features
+  * Make preview features for commands have names that aren't ambiguous with the command 
+  * Respect --isolated in uv check 
+  * Add uv check to run ty from uv 
+ * Bug fixes
+  * Update activation scripts with upstream fixes 
+  * Continue tool uninstall after dangling receipts 
+  * Skip Unix-specific installation steps when cross-installing Windows Python distributions 
+ * Performance
+  * Fix performance regression in unzip of local wheels 
+ * Other changes
+  * Bump MSRV to 1.94 
+
+- update to 0.11.17
+- update to 0.11.16</comment>
+    <requestid>1357127</requestid>
+  </revision>
 </revisionlist>

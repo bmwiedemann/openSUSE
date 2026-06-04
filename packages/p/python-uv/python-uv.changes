@@ -1,7 +1,28 @@
 -------------------------------------------------------------------
+Thu Jun  4 09:13:42 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.18 
+ * Enhancements
+  * Always compute SHA256 for remote distributions 
+  * Add PyEmscripten platform (PEP 783) 
+  * Add Pyodide 2025 target triple 
+ * Preview features
+  * Make preview features for commands have names that aren't ambiguous with the command 
+  * Respect --isolated in uv check 
+  * Add uv check to run ty from uv 
+ * Bug fixes
+  * Update activation scripts with upstream fixes 
+  * Continue tool uninstall after dangling receipts 
+  * Skip Unix-specific installation steps when cross-installing Windows Python distributions 
+ * Performance
+  * Fix performance regression in unzip of local wheels 
+ * Other changes
+  * Bump MSRV to 1.94 
+
+-------------------------------------------------------------------
 Fri May 29 08:15:34 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.15.17
+- update to 0.11.17
  * Enhancements
   * Add a diagnostic for uv add with standard library modules 
   * Expose uv workspace and its list subcommand in help output 
@@ -31,7 +52,7 @@ Fri May 29 08:15:34 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Sun May 24 10:46:06 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.15.16 
+- update to 0.11.16 
  * Enhancements
   * Add support for direct archive dependencies in Git 
   * Adjust hint rendering 
