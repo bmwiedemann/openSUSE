@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Jun  4 08:57:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Set the set_version service to mode="manual": factory-auto only
+  allows source services in localonly/disabled/buildtime/manual
+  mode, so the previous unscoped service caused the Factory
+  submission to be declined
+- Spec cleanup:
+  * Convert Mesa-libGL-devel, libXcursor-devel and libXrandr-devel
+    to their pkgconfig(gl)/pkgconfig(xcursor)/pkgconfig(xrandr)
+    forms
+  * Drop obsolete Group tags
+
+-------------------------------------------------------------------
+Sun May 31 07:15:27 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 1.21:
+  * build: Fix macOS juceaide deployment target
+  * JUCE/VST2: Prevent crash with null speaker arrangements
+  * JUCE: Disable LTO for juceaide to save build time
+  * JUCE: Add LV2_COPY_DIR property
+  * JUCE: Remove splash screen
+  * JUCE: Use FST headers instead of VST2
+  * git subrepo clone --force external/JUCE 7.0.12
+  * build: Adjust project for JUCE 7.0.12
+  * build: Disable ladspa plugin by default with MSVC compiler
+  * ci: Update to windows-2022
+  * build: Properly set opt level for different compilers in Release
+  * ci: Fix Linux build
+  * build: Fix macOS build
+  * ci: Update ccache-action
+  * ci: Update to actions/upload-artifact v4
+  * build: Fix Clang linking issue
+  * feat: Enable IPO/LTO for release
+  * feat: Use INT8 weights by default, yielding 4x speed with AVX
+  * docs: Fixup example of pipewire configuration
+  * fix: Use unique LADSPA plugin IDs
+  * fix: Treat last voiced block as initially absent
+  * feat: Add audio evaluation tool
+  * docs: Add macOS plugin installation instructions
+  * docs: Improve Equalizer APO setup instructions
+  * feat: Raise default VAD threshold
+  * feat: Add dry mix control
+  * build: Raise CMake minimum version
+  * build: Default JUCE source directory
+  * build: Declare top-level project version
+  * build: Enable RNNoise RTCD for release builds
+  * build: Detect UBSan before enabling it for tests
+  * external/rnnoise: Update generated weights
+  * git subrepo pull (merge) external/rnnoise
+
+-------------------------------------------------------------------
 Mon May 20 21:56:42 UTC 2024 - pallaswept@proton.me
 
 - Update to version 1.10+git0.9c4e5c2:

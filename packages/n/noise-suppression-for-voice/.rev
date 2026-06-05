@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1175439</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>10f89560401b6a3946201ce024539bf5</srcmd5>
+    <version>1.21</version>
+    <time>1780664273</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.21; set set_version service to manual mode (factory-auto decline fix); spec cleanup</comment>
+    <requestid>1357118</requestid>
+  </revision>
 </revisionlist>

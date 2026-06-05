@@ -1,16 +1,16 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/werman/noise-suppression-for-voice.git</param>
-    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
-    <param name="revision">master</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="scm">git</param>
+    <param name="revision">4b0a6f76fc</param>
+    <param name="versionformat">1.21</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service name="set_version" mode="manual"/>
 </services>

@@ -1,7 +1,7 @@
 #
 # spec file for package noise-suppression-for-voice
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,24 @@
 
 
 Name:           noise-suppression-for-voice
-Version:        1.10+git0.9c4e5c2
+Version:        1.21
 Release:        0
 Summary:        Noise suppression plugin based on Xiph's RNNoise
 License:        GPL-3.0-only
 URL:            https://github.com/werman/noise-suppression-for-voice
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  Mesa-libGL-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
 BuildRequires:  ladspa-devel
-BuildRequires:  libXcursor-devel
-BuildRequires:  libXrandr-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xrandr)
 
 %description
 The plugin is meant to suppress a wide range of noise origins
