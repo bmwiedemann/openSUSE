@@ -59,8 +59,8 @@
 %global packaging_version             24.0
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.5.0
-%global Authlib_version               1.6.11
-%global lxml_version                  6.0.2
+%global Authlib_version               1.6.12
+%global lxml_version                  6.1.0
 # TODO: 2.46.0
 %global sentry_sdk_version            2.39.0
 %global PyJWT_version                 2.6.0
@@ -95,8 +95,7 @@
 # 2.16.0+ no longer vendors urllib3, avoiding Python 3.10+ incompatibility
 %global requests_version              2.16.0
 # via treq; 1.26.5 fixes Python 3.10+ collections.abc compatibility
-# TODO 2.6.0
-%global urllib3_version               2.5.0
+%global urllib3_version               2.7.0
 # 5.2 is the current version in Debian oldstable. If we don't care to support that, then 5.4 is
 # the minimum version from Ubuntu 22.04 and RHEL 9. (as of 2025-12)
 # When bumping this version to 6.2 or above, refer to https://github.com/element-hq/synapse/pull/19274
@@ -227,7 +226,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.153.0
+Version:        1.154.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later

@@ -1726,4 +1726,14 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>add missing cve and bug ids</comment>
     <requestid>1355703</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>9ea4074ae6ce36e0f7387434206272be</srcmd5>
+    <version>1.154.0</version>
+    <time>1780664508</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1357194 from darix
+
+- Update to 1.154.0</comment>
+    <requestid>1357195</requestid>
+  </revision>
 </revisionlist>
