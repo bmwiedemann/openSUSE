@@ -17,7 +17,7 @@
 
 
 Name:           grype-db
-Version:        0.53.2
+Version:        0.53.4
 Release:        0
 Summary:        A vulnerability scanner for container images and filesystems
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.26 >= 1.26.3
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
 
 %description
 Application to create a Grype vulnerability database from upstream

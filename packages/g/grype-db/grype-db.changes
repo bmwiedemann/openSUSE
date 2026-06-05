@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Jun 04 05:38:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.53.4:
+  * Bug Fixes
+    - delete existing on-disk grype-db cache during restore [#1020
+      @westonsteimel]
+  * Additional Changes
+    - longer timeout for multicore provider data syncs [#1011
+      @willmurphyscode]
+  * Dependencies
+    - chore(deps): Bump cryptography from 46.0.5 to 46.0.7 (#1003)
+    - chore(deps): Bump github.com/containerd/containerd/v2 (#1014)
+    - chore(deps): Bump github.com/go-git/go-git/v5 from 5.18.0 to
+      5.19.0 (#1002)
+    - chore(deps): Bump github.com/gookit/color in the
+      go-minor-patch group (#1005)
+    - chore(deps): Bump github.com/klauspost/compress (#997)
+    - chore(deps): Bump gitpython from 3.1.44 to 3.1.49 (#996)
+    - chore(deps): Bump the actions-minor-patch group across 1
+      directory with 2 updates (#1006)
+    - chore(deps): Bump the actions-minor-patch group across 1
+      directory with 2 updates (#999)
+    - chore(deps): Bump the actions-minor-patch group across 1
+      directory with 3 updates (#1021)
+    - chore(deps): Bump the actions-minor-patch group across 1
+      directory with 4 updates (#1015)
+    - chore(deps): Bump the actions-minor-patch group across 1
+      directory with 4 updates (#1022)
+    - chore(deps): Bump the actions-minor-patch group across 1
+      directory with 4 updates (#991)
+    - chore(deps): Bump the actions-minor-patch group across 1
+      directory with 5 updates (#1016)
+    - chore(deps): Bump the actions-minor-patch group across 2
+      directories with 5 updates (#992)
+    - chore(deps): Bump the actions-minor-patch group with 3
+      updates (#998)
+    - chore(deps): Bump urllib3 from 2.6.3 to 2.7.0 (#1012)
+    - chore(deps): update anchore dependencies (#993)
+    - chore(deps): update tool versions (#985)
+    - chore(deps-dev): Bump mypy from 1.20.2 to 2.0.0 (#1008)
+    - chore(deps-dev): Bump types-requests (#1007)
+    - chore(deps-dev): Bump types-requests (#1018)
+    - chore(deps-dev): Bump types-requests (#1023)
+    - chore(deps-dev): Update coverage[toml] requirement (#1017)
+- Update to version 0.53.3:
+  * chore(deps): update anchore dependencies (#986)
+  * bump to grype@main (#989)
+
+-------------------------------------------------------------------
 Thu Apr 23 05:24:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.53.2:
