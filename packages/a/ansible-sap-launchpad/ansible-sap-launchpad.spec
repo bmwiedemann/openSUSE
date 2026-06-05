@@ -21,7 +21,7 @@
 Name:           ansible-sap-launchpad
 Summary:        Ansible collection community.sap_launchpad for SAP Automation
 License:        Apache-2.0
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 URL:            https://github.com/sap-linuxlab/community.sap_launchpad/
 Source0:        %{url}archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz

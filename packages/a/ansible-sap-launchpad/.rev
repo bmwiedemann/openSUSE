@@ -63,4 +63,12 @@ Source is downstream that we are contributing to: https://github.com/sap-linuxla
   - Changes:</comment>
     <requestid>1326774</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5970c4c029386835c3dd061db89c3130</srcmd5>
+    <version>1.3.2</version>
+    <time>1780664405</time>
+    <user>anag_factory</user>
+    <comment>Release 1.3.2 with compatibility fixes for ansible-core 2.20.</comment>
+    <requestid>1357145</requestid>
+  </revision>
 </revisionlist>
