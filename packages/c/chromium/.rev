@@ -6464,4 +6464,12 @@ Chromium 148.0.7778.96 (earyly stable release 2026-04-29)</comment>
 - fixes reading mode (boo#1265854)</comment>
     <requestid>1356433</requestid>
   </revision>
+  <revision rev="523" vrev="2">
+    <srcmd5>a222f960377c1807fa9819ddba151e90</srcmd5>
+    <version>149.0.7827.53</version>
+    <time>1780664641</time>
+    <user>anag_factory</user>
+    <comment>Chromium 149 (149.0.7827.53) stable (boo#1267706)  changelog update</comment>
+    <requestid>1357256</requestid>
+  </revision>
 </revisionlist>
