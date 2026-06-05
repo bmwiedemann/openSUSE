@@ -94,4 +94,12 @@
   * not fixed - repair of the example file by the `Auditor` is</comment>
     <requestid>1342001</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9aa5519bb5e033ca7934b2b5437cfa1b</srcmd5>
+    <version>1.4.3</version>
+    <time>1780664519</time>
+    <user>anag_factory</user>
+    <comment>- Remove source files, so they aren't shipped.</comment>
+    <requestid>1357230</requestid>
+  </revision>
 </revisionlist>

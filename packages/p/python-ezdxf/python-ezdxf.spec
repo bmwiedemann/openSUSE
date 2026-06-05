@@ -67,7 +67,9 @@ sed -i '1 {/env python/ d}' src/ezdxf/addons/drawing/qtviewer.py
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ezdxf
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand rm -v %{buildroot}%{$python_sitearch}/ezdxf/acc/*.[ch]
+%fdupes %{buildroot}%{$python_sitearch}
+}
 
 %post
 %python_install_alternative ezdxf
