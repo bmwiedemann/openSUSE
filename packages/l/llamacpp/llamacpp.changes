@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jun  4 14:47:32 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Split libllama-common into its own package 
+
+-------------------------------------------------------------------
+Thu Jun  4 06:55:00 UTC 2026 - Robert Munteanu <rombert@apache.org>
+
+- Update to version 9500:
+  * Added broader model support, including DeepSeek v3.2,
+    DeepSeekOCR 2, EXAONE 4.5, Gemma 4 variants, Mellum,
+    Step3.7-Flash, and Granite multilingual embeddings R2.
+  * Improved multimodal inference with expanded OCR, audio, and
+    vision handling, including Gemma 4 unified fixes,
+    DeepSeek-OCR updates, Hunyuan OCR consolidation, granite-speech,
+    and MiniCPM-V 4.6 support.
+  * Enhanced CUDA and HIP acceleration with Hopper PDL support,
+    quantized KV-cache handling, AMD MFMA routing improvements,
+    Blackwell and NVFP4-related work, and faster walsh-hadamard
+    transforms.
+  * Extended Vulkan, OpenCL, SYCL, Metal, and WebGPU backends with
+    new operators, BF16/Flash Attention improvements, reduced
+    contention, broader quantization support, and better Intel,
+    AMD, and Adreno tuning.
+  * Improved CPU and GGML internals with additional RISC-V RVV/SVE
+    optimizations, SpacemiT support, faster quantization helpers,
+    tensor access improvements, and a ggml bump to 0.13.1.
+  * Expanded server and API support with Vertex AI compatibility,
+    ETag handling, `/models?reload=1`, SSE improvements, real-time
+    reasoning interruption, better checkpoint handling, and audio
+    transcription updates.
+  * Included important stability and security fixes, notably the
+    fix for server heap-buffer-overflow CVE-2026-21869, along with
+    multiple correctness fixes across speculative decoding,
+    multimodal processing, KV-cache handling, and router mode.
+  * Updated the application and tooling stack with the new unified
+    `llama` executable, additional benchmarking and quantization
+    tools, conversion updates, `gguf-py` 0.19.0, newer BoringSSL,
+    and refreshed `cpp-httplib`.
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b8814...b9500
+
+-------------------------------------------------------------------
 Fri Apr 17 05:58:59 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 8814:

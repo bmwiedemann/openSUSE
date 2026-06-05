@@ -25,11 +25,11 @@
 %global mtmd_sover         0.0.%{version}
 %global mtmd_sover_suffix  0
 
-%global ggml_sover         0.9.11
+%global ggml_sover         0.13.1
 %global ggml_sover_suffix  0
 
 Name:           llamacpp
-Version:        8814
+Version:        9500
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
@@ -73,6 +73,17 @@ LLaMA model, it has since been extended to work with a variety of other models.
 
 This package includes the shared libraries necessary for running applications
 that depend on libllama.so.
+
+%package -n libllama-common%{llama_sover_suffix}
+Summary:        Common library for llama.cpp
+
+%description -n libllama-common%{llama_sover_suffix}
+The llama.cpp library provides a C++ interface for running inference
+with large language models (LLMs). Initially designed to support Meta's
+LLaMA model, it has since been extended to work with a variety of other models.
+
+This package includes the shared libraries necessary for running applications
+that depend on libllama-common.so.
 
 %package -n libggml%{ggml_sover_suffix}
 Summary:        A tensor library for C++
@@ -153,6 +164,7 @@ Summary:        Library to run multimodals inference models
 Library to handle multimodal inputs for llama.cpp.
 
 %ldconfig_scriptlets -n libllama%{llama_sover_suffix}
+%ldconfig_scriptlets -n libllama-common%{llama_sover_suffix}
 %ldconfig_scriptlets -n libggml%{ggml_sover_suffix}
 %ldconfig_scriptlets -n libggml-base%{ggml_sover_suffix}
 %ldconfig_scriptlets -n libmtmd%{mtmd_sover_suffix}
@@ -189,13 +201,20 @@ mkdir -p %{_libdir}
 %install
 %cmake_install
 
-# dev scripts
-rm %{buildroot}%{_bindir}/convert_hf_to_gguf.py
-
 %files
 %doc README.md
 %license LICENSE
+%{_bindir}/llama
 %{_bindir}/llama-*
+# private libraries
+%{_libdir}/libllama-batched-bench-impl.so
+%{_libdir}/libllama-bench-impl.so
+%{_libdir}/libllama-cli-impl.so
+%{_libdir}/libllama-completion-impl.so
+%{_libdir}/libllama-fit-params-impl.so
+%{_libdir}/libllama-perplexity-impl.so
+%{_libdir}/libllama-quantize-impl.so
+%{_libdir}/libllama-server-impl.so
 
 %files devel
 %license LICENSE
@@ -209,10 +228,17 @@ rm %{buildroot}%{_bindir}/convert_hf_to_gguf.py
 # libmtmd symlinks
 %{_libdir}/libmtmd.so
 %{_libdir}/libmtmd.so.0
+# libllama-common symlinks
+%{_libdir}/libllama-common.so
+%{_libdir}/libllama-common.so.0
 
 %files -n libllama%{llama_sover_suffix}
 %license LICENSE
 %{_libdir}/libllama.so.%{llama_sover}
+
+%files -n libllama-common%{llama_sover_suffix}
+%license LICENSE
+%{_libdir}/libllama-common.so.%{llama_sover}
 
 %files -n libggml%{ggml_sover_suffix}
 %license LICENSE
