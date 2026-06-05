@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jun 05 06:14:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.7:
+  * fix(goldenfiles): update meshhttproute gateway (#16848)
+  * fix(kuma-init): properly validate ip family condition (backport
+    of #16810) (#16828)
+  * perf(gateway): drop redundant exact match for root path prefix
+    (backport of #16782) (#16842)
+  * fix(meshhttproute): dedup duplicate routes on gateway virtual
+    hosts (backport of #16786) (#16833)
+  * fix(kuma-cp): use system trust when CA cert is not provided
+    (backport of #16777) (#16793)
+  * fix(e2e): make universal DP compatibility tests actually
+    exercise old DPs (backport of #16804) (#16808)
+  * ci(deps): skip deps with unpublished fix ver (backport of
+    #16770) (#16800)
+  * feat(xds): add DiscoveryResponse size histogram (backport of
+    #16783) (#16787)
+  * chore(deps): bump golang.org/x/net from 0.53.0 to 0.55.0
+    (#16737)
+  * chore(deps): bump golang.org/x/crypto from 0.50.0 to 0.52.0
+    (#16736)
+  * ci(pr-comments): add e2e golden refresh (backport of #16626)
+    (#16725)
+  * fix(kds): default usedonly when fetching stats (backport of
+    #16711) (#16715)
+  * fix(xds): add a feature flag to enable reuse ports (backport of
+    #16677) (#16707)
+  * chore(deps): align envoy go-control-plane fork (#16703)
+  * fix(gatewayapi): reconcile classes on startup (backport of
+    #16687) (#16695)
+  * feat(xds): delta xDS Helm + injection (bp 16392) (#16686)
+  * fix(gatewayapi): fix e2e flakes (backport of #16624) (#16683)
+  * ci(runners): configurable labels via RUNS_ON (#16630)
+
+-------------------------------------------------------------------
 Sat May 16 07:40:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.6:
