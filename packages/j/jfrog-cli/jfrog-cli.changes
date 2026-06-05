@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jun 04 05:32:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.107.0:
+  * New Features
+    - [jfrog-cli-artifactory] RTECO-1079 - Implement search for
+      plugins #474 (@udaykb2)
+    - [jfrog-cli-artifactory] RTECO-1079 - Add prompt to install &
+      update for version #475 (@udaykb2)
+  * Bug Fixes
+    - [jfrog-cli] RTECO-1352 - Fix jf setup docker login when using
+      --url #3517 (@Edenb2131)
+    - [jfrog-cli-artifactory] Fix - Change GOPROXY #477 (@udaykb2)
+    - [jfrog-cli-artifactory] RTECO-1352 - Fix jf setup docker
+      login when using --url #460 (@Edenb2131)
+  * Internal Changes
+    - [jfrog-cli-artifactory] RTECO-1079 - Update agents commands
+      help #478 (@udaykb2)
+  * Other Changes
+    - [jfrog-cli] Rteco 1299 jfrog artifactory ecomatrix cli e2e
+      #3523 (@naveenku-jfrog)
+    - [jfrog-cli] Make sure to use cyclonedx-go 0.10.0 #3525
+      (@attiasas)
+    - [jfrog-cli] RTECO-1299 - Retry failed jfrog-cli-workflows
+      runs via rerun-failed-jobs API #3529 (@naveenku-jfrog)
+    - [jfrog-cli-artifactory] RTECO-1079 - Remove updating plugins
+      during publish #471 (@udaykb2)
+    - [jfrog-cli-artifactory] RTECO-1079 - Consistent plugin
+      identification #473 (@udaykb2)
+    - [jfrog-cli-artifactory] RTECO-1079 - Make version & slug
+      consistent #472 (@udaykb2)
+    - [jfrog-cli-artifactory] RTECO-1079 - Change the semver error
+      response #479 (@udaykb2)
+    - [jfrog-cli-artifactory] RTECO-1079 - Use consistent env
+      naming #480 (@udaykb2)
+
+-------------------------------------------------------------------
 Wed Jun 03 04:34:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.106.0:
