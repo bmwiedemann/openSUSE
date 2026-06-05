@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jun  5 06:43:14 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.2.2:
+  * Add Wake on LAN support to 10micron driver by @fenriques in
+    #2379
+  * ci: add erfa as explicit build dependency by @ckemper67 in
+    #2378
+  * alignment: add SPK physics-based math plugin by @ckemper67 in
+    #2376
+  * alignment: guard SPK test target when erfa is not found by
+    @ckemper67 in #2380
+  * fix(libastro): parenthesize DEG_TO_RAD/RAD_TO_DEG macros by
+    @ckemper67 in #2382
+  * fix(libastro): use apparent sidereal time in
+    EquatorialToHorizontal; add accuracy tests by @ckemper67 in
+    #2383
+  * docs: add liberfa to install prerequisites in README by
+    @ckemper67 in #2385
+  * Add Wanderer ETA M54 Electronic Tilt Adjuster driver by
+    @cfuture81 in #2386
+  * Alignment: deprecate old Transform* shims, migrate all in-tree
+    callers to *JD by @ckemper67 in #2388
+  * esp32go driver: updated support by @jordisese in #2391
+  * add pkgconf to the control file by @s-pouya-sh in #2392
+  * Wanderer ETA: Add backfocus offset feature by @cfuture81 in
+    #2397
+  * Support max focus position via firmware command in Pinefeat CEF
+    focuser by @pinefeat in #2399
+  * Correct Movement of Avalon UPAS by @DomMer2587 in #2403
+  * Gemini dust-cap Pro variant suport by @f4exb in #2404
+  * Pegasus Flatmaster Neo Driver by @DomMer2587 in #2405
+
+-------------------------------------------------------------------
 Thu Apr 30 06:27:04 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.2.1.1:
