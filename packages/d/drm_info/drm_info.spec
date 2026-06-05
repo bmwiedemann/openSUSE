@@ -1,7 +1,7 @@
 #
 # spec file for package drm_info
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 Name:           drm_info
-Version:        2.7.0
+Version:        2.10.0
 Release:        0
 Summary:        Small utility to dump info about DRM devices
 License:        MIT
 URL:            https://gitlab.freedesktop.org/emersion/drm_info
 Source0:        https://gitlab.freedesktop.org/emersion/drm_info/-/archive/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc
-BuildRequires:  libdrm-devel
-BuildRequires:  libjson-c-devel >= 0.14
 BuildRequires:  meson
 BuildRequires:  ninja
-BuildRequires:  pciutils-devel
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(json-c) >= 0.14
+BuildRequires:  pkgconfig(libdisplay-info)
+BuildRequires:  pkgconfig(libdrm) >= 2.4.104
+BuildRequires:  pkgconfig(libpci)
 BuildRequires:  python3-base
 BuildRequires:  scdoc
 

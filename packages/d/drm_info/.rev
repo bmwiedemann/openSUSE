@@ -50,4 +50,41 @@ plasma, esp. when problem lays somewhere in DRM.</comment>
     <comment></comment>
     <requestid>1202602</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7b70d72220d97a46d0fd5414c1116f67</srcmd5>
+    <version>2.10.0</version>
+    <time>1780664256</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.10.0
+  * Add support for non-KMS devices
+  * Indicate failure when none of the explicit devices yield info
+  * Indicate failure when failing to read info from all devices
+  * fourcc.py: Deduplicate DRM_FORMAT entries
+  * Print color ops and pipelines
+  * Map kms colorops and props as JSON
+  * Add client cap for plane color pipeline
+  * Fix early return for zero TILE property
+  * Add support for TILE property
+  * Expose client caps again
+  * Pretty-print EDID make/model/serial via libdisplay-info
+  * Unconditionally set HAVE_LIBPCI
+  * Use faux bus info from drmDevice
+  * Fix conflicting variables with libpci and faux bus
+  * Print device bus information
+  * Add faux bus to JSON schema
+  * Encode EDIDs as base64
+  * Add JSON schema
+  * Add support for faux bus
+  * Add support for the IN_FORMATS_ASYNC property
+  * Add support for MediaTek format modifiers
+  * Add support for Apple format modifiers
+  * readme: make usage list more readable
+  * readme: make --wrap-mode=nofallback paragraph more generic
+  * build: bump minimum libdrm version to 2.4.104
+  * readme: add link to GitLab repo, use references
+  * readme: drop CI badge
+  * json: fix trailing NUL byte in PATH data field
+- clean up .spec file</comment>
+    <requestid>1357088</requestid>
+  </revision>
 </revisionlist>
