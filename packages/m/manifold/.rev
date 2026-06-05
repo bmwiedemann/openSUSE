@@ -86,4 +86,37 @@ if blender 4.5.1 is still in staging. this can be merged into the same staging.<
     <comment>- Update to 3.5.0</comment>
     <requestid>1354872</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b7b996bb3c7b73e855476989b1e5d90d</srcmd5>
+    <version>3.5.1</version>
+    <time>1780664504</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1357196 from darix
+
+- Update to 3.5.1
+  Mostly a patch release for #1735.
+  - Bug fixes
+    - fix camera radius reset by @elalish in #1733.
+    - Fix &amp;v[size] UB in normals test sentinel pointers by
+      @zmerlynn in #1736.
+    - Fix originalID races on shared CSG nodes by @zmerlynn in
+      #1741.
+  - Bindings
+    - Expose ExecutionContext factories in bindings (C/Python/WASM)
+      by @zmerlynn in #1743.
+  - Refactoring
+    - Thread ExecutionContext into MeshGL ingest via
+      ExecutionContext::FromMeshGL by @zmerlynn in #1723.
+    - Thread ExecutionContext into Smooth via
+      ExecutionContext::Smooth by @zmerlynn in #1734.
+    - Thread ExecutionContext into LevelSet via
+      ExecutionContext::LevelSet by @zmerlynn in #1739.
+    - Per-phase timing in ADVANCE_PHASE_OR_RETURN; extend
+      perfPhases by @zmerlynn in #1742.
+    - Route Boolean3::Result timing through the shared phase
+      mechanism by @zmerlynn in #1745.
+
+- Update to 3.5.0</comment>
+    <requestid>1357197</requestid>
+  </revision>
 </revisionlist>

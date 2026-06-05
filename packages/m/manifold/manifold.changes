@@ -1,7 +1,34 @@
 -------------------------------------------------------------------
+Fri Jun  5 00:11:47 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.5.1
+  Mostly a patch release for #1735.
+
+  - Bug fixes
+    - fix camera radius reset by @elalish in #1733.
+    - Fix &v[size] UB in normals test sentinel pointers by
+      @zmerlynn in #1736.
+    - Fix originalID races on shared CSG nodes by @zmerlynn in
+      #1741.
+  - Bindings
+    - Expose ExecutionContext factories in bindings (C/Python/WASM)
+      by @zmerlynn in #1743.
+  - Refactoring
+    - Thread ExecutionContext into MeshGL ingest via
+      ExecutionContext::FromMeshGL by @zmerlynn in #1723.
+    - Thread ExecutionContext into Smooth via
+      ExecutionContext::Smooth by @zmerlynn in #1734.
+    - Thread ExecutionContext into LevelSet via
+      ExecutionContext::LevelSet by @zmerlynn in #1739.
+    - Per-phase timing in ADVANCE_PHASE_OR_RETURN; extend
+      perfPhases by @zmerlynn in #1742.
+    - Route Boolean3::Result timing through the shared phase
+      mechanism by @zmerlynn in #1745.
+
+-------------------------------------------------------------------
 Sat May 23 16:42:30 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 3.5.0 
+- Update to 3.5.0
   A huge thank you to all our new contributors - so much has
   happened in this release! And a special shoutout to @zmerlynn for
   a huge amount of work, including a whole new progress and
