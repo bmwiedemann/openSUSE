@@ -906,4 +906,12 @@
     <comment>Use libalternatives when possible</comment>
     <requestid>1355811</requestid>
   </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>338dd3892dbd065f1aabdb60c89d9544</srcmd5>
+    <version>1.8.0.492</version>
+    <time>1780664343</time>
+    <user>anag_factory</user>
+    <comment>Make post scripts less noisy (bsc#1267355)</comment>
+    <requestid>1357137</requestid>
+  </revision>
 </revisionlist>
