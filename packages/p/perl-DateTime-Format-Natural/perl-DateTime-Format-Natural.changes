@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 29 08:53:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.260.0 (1.26)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.26  2026-05-28  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.25_04  2026-05-27  <schubiger@cpan.org>
+   - ::Calendar: make 'type' part of the object.
+  1.25_03  2026-05-26  <schubiger@cpan.org>
+   - Guard against non-existent calendar module when testing.
+  1.25_02  2026-05-25  <schubiger@cpan.org>
+   - Introduce ::Calendar which converts between calendar systems.
+  1.25_01  2026-05-17  <schubiger@cpan.org>
+   - New supported formats: christmas/new year's eve/day.
+   - Test and document the new formats.
+
+-------------------------------------------------------------------
 Sat Feb 14 06:01:29 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.250.0 (1.25)

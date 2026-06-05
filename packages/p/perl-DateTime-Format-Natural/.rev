@@ -186,4 +186,24 @@
      and x months from now. [github #28 - gibus]</comment>
     <requestid>1338044</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>661311fce56867967a9d911ea312fe2f</srcmd5>
+    <version>1.260.0</version>
+    <time>1780674315</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.260.0 (1.26)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+  1.26  2026-05-28  &lt;schubiger@cpan.org&gt;
+   - Merged development version to stable.
+  1.25_04  2026-05-27  &lt;schubiger@cpan.org&gt;
+   - ::Calendar: make 'type' part of the object.
+  1.25_03  2026-05-26  &lt;schubiger@cpan.org&gt;
+   - Guard against non-existent calendar module when testing.
+  1.25_02  2026-05-25  &lt;schubiger@cpan.org&gt;
+   - Introduce ::Calendar which converts between calendar systems.
+  1.25_01  2026-05-17  &lt;schubiger@cpan.org&gt;
+   - New supported formats: christmas/new year's eve/day.
+   - Test and document the new formats.</comment>
+    <requestid>1357567</requestid>
+  </revision>
 </revisionlist>

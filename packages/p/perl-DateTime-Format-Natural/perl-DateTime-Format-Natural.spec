@@ -18,10 +18,10 @@
 
 %define cpan_name DateTime-Format-Natural
 Name:           perl-DateTime-Format-Natural
-Version:        1.250.0
+Version:        1.260.0
 Release:        0
-# 1.25 -> normalize -> 1.250.0
-%define cpan_version 1.25
+# 1.26 -> normalize -> 1.260.0
+%define cpan_version 1.26
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse informal natural language date/time strings
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -49,22 +49,26 @@ Requires:       perl(List::Util) >= 1.33
 Requires:       perl(Params::Validate) >= 1.150
 Requires:       perl(boolean)
 Provides:       perl(DateTime::Format::Natural) = %{version}
-Provides:       perl(DateTime::Format::Natural::Calc) = 1.470.0
+Provides:       perl(DateTime::Format::Natural::Calc) = 1.500.0
+Provides:       perl(DateTime::Format::Natural::Calendar) = 0.20.0
+Provides:       perl(DateTime::Format::Natural::Calendar::gregorian)
+Provides:       perl(DateTime::Format::Natural::Calendar::julian)
 Provides:       perl(DateTime::Format::Natural::Compat) = 0.70.0
 Provides:       perl(DateTime::Format::Natural::Duration) = 0.80.0
 Provides:       perl(DateTime::Format::Natural::Duration::Checks) = 0.70.0
 Provides:       perl(DateTime::Format::Natural::Expand) = 0.40.0
 Provides:       perl(DateTime::Format::Natural::Extract) = 0.140.0
 Provides:       perl(DateTime::Format::Natural::Formatted) = 0.120.0
-Provides:       perl(DateTime::Format::Natural::Helpers) = 0.70.0
-Provides:       perl(DateTime::Format::Natural::Lang::Base) = 1.80.0
-Provides:       perl(DateTime::Format::Natural::Lang::EN) = 1.750.0
+Provides:       perl(DateTime::Format::Natural::Helpers) = 0.80.0
+Provides:       perl(DateTime::Format::Natural::Lang::Base) = 1.90.0
+Provides:       perl(DateTime::Format::Natural::Lang::EN) = 1.770.0
 Provides:       perl(DateTime::Format::Natural::Rewrite) = 0.100.0
 Provides:       perl(DateTime::Format::Natural::Test) = 0.130.0
 Provides:       perl(DateTime::Format::Natural::Utils) = 0.80.0
 Provides:       perl(DateTime::Format::Natural::Wrappers) = 0.30.0
 %undefine       __perllib_provides
 Recommends:     perl(Date::Calc)
+Recommends:     perl(DateTime::Calendar::Julian)
 %{perl_requires}
 
 %description
