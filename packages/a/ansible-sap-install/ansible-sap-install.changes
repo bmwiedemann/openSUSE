@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun  4 08:41:21 UTC 2026 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 1.9.2:
+  - Bugfixes:
+    - sap_ha_pacemaker_cluster - Fix issue 1203 sudo dash
+    - sap_storage_setup - Add option to mount generic NFS mounts
+    - sap_swpm - Remove ansible.posix dependency
+
+- 1.9.1:
+  - Bugfixes:
+    - sap_general_preconfigure - Ansible 2.24 compatibility
+    - sap_ha_pacemaker_cluster - Ansible 2.24 compatibility
+    - sap_hana_preconfigure - Ansible 2.24 compatibility
+    - sap_hana_preconfigure/RHEL - Correctly set tsx in all cases
+    - sap_maintain_etc_hosts, sap_hana_install, sap_install_media_detect - Ansible 2.24 compatibility
+    - sap_netweaver_preconfigure - Ansible 2.24 compatibility
+    - sap_storage_setup, sap_hostagent, anydb - Ansible 2.24 compatibility
+
+-------------------------------------------------------------------
 Mon Mar 16 09:42:39 UTC 2026 - Marcel Mamula <marcel.mamula@suse.com>
 
 - 1.9.0:
