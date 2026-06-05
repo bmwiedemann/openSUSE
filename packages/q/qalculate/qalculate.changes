@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jun  2 05:45:26 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to version 5.11
+  * Add set functions (union, intersect, setdiff, setxor, isMember, isSubset) and operators (∪, ∩, ∖, ⊖, ∈, ⊆, etc.)
+  * Add characters(), count(), digitSum(), and digitalRoot(), find(), popCount(), string(), and while() functions
+  * Support negative row and column values in element(), row(), and column() functions
+  * Support matrix[row][column] syntax
+  * Support text objects in sort() function
+  * Add third optional argument to interval() function to allow exclusion of exact endpoints
+  * Ignore "to" and "where" (and equivalent symbols) inside quotation marks
+  * Ignore dot in front of plus or minus (for consistent behavior in line with entrywise operators)
+  * Show "Division by zero" warning for all divisions by zero
+  * Make display of expressions with time units in time format more consistent
+  * Fix support for vector in argument of many functions (erf, mod, exp, etc.)
+  * Fix explicit conversion to mixed units for year variants
+  * Fix first digit missing in return value of integerDigits() in some cases
+  * Fix segfault when Calculator object is destroyed with uninitialized random state
+  * Fix infinite loop when referencing subfunction in another subfunction
+  * Fix segfault in replace() with variable specified using where expression, e.g. "replace(v, x, 1) where v = x"
+  * Fix segfault when data set function name is followed immediately by a single dot
+  * Fix v[i]=a syntax for vector element assignment
+  * Do not bind escape key (fixes bad behavior with keys that generate escape sequences, e.g function keys) (CLI)
+  * Fix use of x, y, z, without backslash, for arguments when using function command (CLI)
+  * Fix parse status and calculate-as-you-type when "where" expression defines a new symbol (Gtk, Qt)
+  * Convert degree Celsius to Fahrenheit and vice versa in Gnome search provider (Gtk)
+  * Fix compilation on macOS (Gtk)
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Wed Apr 15 00:24:42 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Regenerate configure script before build for GCC16 compatibility (boo#1261740)
