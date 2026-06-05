@@ -157,4 +157,15 @@
     is 12.</comment>
     <requestid>1333844</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f6453c3c07c814e2310b1efb721e4b60</srcmd5>
+    <version>1.9.8</version>
+    <time>1780664249</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.9.8:
+  * Fixed regression in patching with Click 8.4.0.
+  * Warn about regression in Typer &gt;=0.26.0 patching. (No fix currently.)
+- Ignore typer tests due to typer 0.26.0.</comment>
+    <requestid>1357083</requestid>
+  </revision>
 </revisionlist>
