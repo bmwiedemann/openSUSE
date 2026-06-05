@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun  4 01:55:06 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.31.3
+  * libinput-device-group now sanitizes the PHYS value which
+    prevents local privilege escalation through udev property
+    injection.
+  * `libinput record`: the --autorestart interval handling was
+    broken for intervals 5s and higher
+  * `libinput recor`: added a convenience fix for running with
+    --autorestart.
+  * Eraser buttons can now be mapped to any button (previously only
+    BTN_STYLUS, BTN_STYULUS2 and BTN_STYLUS3 were permitted).
+
+-------------------------------------------------------------------
 Thu May 14 23:58:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.31.2
