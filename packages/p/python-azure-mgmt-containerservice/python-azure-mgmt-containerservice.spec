@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-containerservice
-Version:        41.2.0
+Version:        41.3.0
 Release:        0
 Summary:        Microsoft Azure Container Service Management Client Library
 License:        MIT
