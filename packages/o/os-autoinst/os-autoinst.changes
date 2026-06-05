@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 05 07:56:11 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1780506677.7bacdcd:
+  * test: enable pretty serial markers in full-stack test
+  * test: replace Core 7.2 ISO with bash-remastered version
+  * test: add script to remaster Core ISO with bash
+  * feat!: fail by default if always_rollback is not supported
+  * fix: Clean up the last VM disks to avoid disk image creation failure
+  * fix: script_run - type command and marker together on serial console
+  * fix: fail explicitly on test module basename collisions
+
+-------------------------------------------------------------------
 Tue Jun 02 15:56:41 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1780410333.aed07e0:
