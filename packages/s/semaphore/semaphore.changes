@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 04 14:07:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.9:
+  * 0a37ea2 feat(cli): allow create token
+
+-------------------------------------------------------------------
 Wed Jun 03 04:52:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.8 (no releases between .4 and this one):
