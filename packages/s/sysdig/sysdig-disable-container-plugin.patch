@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt	2026-06-04 07:51:26.304112582 +0200
++++ b/CMakeLists.txt	2026-06-04 07:51:26.308113031 +0200
+@@ -163,7 +163,6 @@
+ include(falcosecurity-libs)
+ include(yaml-cpp)
+ include(nlohmann-json)
+-include(container_plugin)
+ 
+ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+ 	if(NOT DEFINED DRIVER_VERSION)

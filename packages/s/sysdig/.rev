@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>afd4058a44893dc4c9b9bbabe26096c3</srcmd5>
+    <version>0.41.4</version>
+    <time>1780664267</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.41.4: modern eBPF probe replaces the legacy scap kernel module; enable aarch64/ppc64le/s390x (vendored vmlinux.h arches); container plugin disabled; bash/zsh completions split into subpackages</comment>
+    <requestid>1357114</requestid>
+  </revision>
+</revisionlist>
