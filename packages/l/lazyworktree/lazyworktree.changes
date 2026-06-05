@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jun 05 06:01:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.46.1:
+  This release introduces an alternative F1 shortcut for the
+  command palette, a complete visual redesign of the website and
+  documentation using a modern blue color palette, and key bug
+  fixes for path expansion.
+  * Bug Fixes
+    - Path Expansion: Fixed path expansion logic to correctly
+      preserve literal tilde paths (such as ~other/worktrees) while
+      still expanding home directory prefixes (~/).
+    - Website and Docs Tweaks: Renamed the install header to
+      "Installation", reformatted long HTML figure captions, and
+      fixed minor typos in the README.
+  * Maintenance
+    - New Keybinding: Added F1 as an alternative shortcut to open
+      the command palette alongside the existing : and Ctrl+P
+      bindings.
+    - Visual Redesign: Migrated the landing website and
+      documentation interface from warm earthy tones to a modern
+      blue-based design system, utilizing the Space Grotesk
+      typeface for improved readability.
+    - Configuration Documentation: Enhanced the configuration
+      reference with precise types and descriptive details for
+      agent_sessions, layout_sizes, and worktree_note_type keys.
+    - CI Workflow Consolidation: Combined the nightly coverage
+      badge generation into the weekly maintenance workflow,
+      reducing redundant GitHub Actions runs.
+    - Documentation Refinement: Standardized callout phrasing
+      across all documentation pages to use "Refer to this page
+      when:" instead of "Use this page when:" for improved clarity.
+    - Script Update: Updated the internal release notes generator
+      script to target the gemini-3.5-flash model.
+  * Dependencies
+    - Updated Go dependencies, including golang.org/x/sys,
+      github.com/mattn/go-runewidth, and
+      github.com/charmbracelet/ultraviolet (#62).
+
+-------------------------------------------------------------------
 Mon May 18 12:30:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.46.0:
