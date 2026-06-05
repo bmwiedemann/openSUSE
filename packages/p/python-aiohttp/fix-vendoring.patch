@@ -1,35 +1,44 @@
-Index: aiohttp-3.13.3/Makefile
+Index: aiohttp-3.14.0/Makefile
 ===================================================================
---- aiohttp-3.13.3.orig/Makefile
-+++ aiohttp-3.13.3/Makefile
-@@ -47,10 +47,8 @@ endif
+--- aiohttp-3.14.0.orig/Makefile
++++ aiohttp-3.14.0/Makefile
+@@ -4,7 +4,7 @@ to-hash-one = $(dir $1).hash/$(addsuffix
+ to-hash = $(foreach fname,$1,$(call to-hash-one,$(fname)))
+ 
+ CYTHON_EXTRA ?=
+-PIP ?= python -m pip
++PIP ?= python3 -m pip
+ CYS := $(wildcard aiohttp/*.pyx) $(wildcard aiohttp/*.pyi)  $(wildcard aiohttp/*.pxd) $(wildcard aiohttp/_websocket/*.pyx) $(wildcard aiohttp/_websocket/*.pyi) $(wildcard aiohttp/_websocket/*.pxd)
+ PYXS := $(wildcard aiohttp/*.pyx) $(wildcard aiohttp/_websocket/*.pyx)
+ CS := $(wildcard aiohttp/*.c) $(wildcard aiohttp/_websocket/*.c)
+@@ -49,10 +49,8 @@ endif
  .SECONDARY: $(call to-hash,$(ALLS))
  
  .update-pip:
--	@python -m pip install --upgrade pip
+-	@$(PIP) install --upgrade pip
  
  .install-cython: .update-pip $(call to-hash,requirements/cython.txt)
--	@python -m pip install -r requirements/cython.in -c requirements/cython.txt
+-	@$(PIP) install -r requirements/cython.in -c requirements/cython.txt
  	@touch .install-cython
  
  aiohttp/_find_header.c: $(call to-hash,aiohttp/hdrs.py ./tools/gen.py)
-@@ -85,7 +83,6 @@ cythonize: .install-cython $(PYXS:.pyx=.
+@@ -87,7 +85,6 @@ cythonize: .install-cython $(PYXS:.pyx=.
  cythonize-nodeps: $(PYXS:.pyx=.c) aiohttp/_websocket/reader_c.c
  
  .install-deps: .install-cython $(PYXS:.pyx=.c) aiohttp/_websocket/reader_c.c $(call to-hash,$(CYS) $(REQS))
--	@python -m pip install -r requirements/dev.in -c requirements/dev.txt
+-	@$(PIP) install -r requirements/dev.in -c requirements/dev.txt
  	@touch .install-deps
  
  .PHONY: lint
-@@ -100,7 +97,6 @@ mypy:
+@@ -102,7 +99,6 @@ mypy:
  	mypy
  
  .develop: .install-deps generate-llhttp $(call to-hash,$(PYS) $(CYS) $(CS))
--	python -m pip install -e . -c requirements/runtime-deps.txt
+-	$(PIP) install -e . -c requirements/runtime-deps.txt
  	@touch .develop
  
  .PHONY: test
-@@ -110,12 +106,12 @@ test: .develop
+@@ -112,12 +108,12 @@ test: .develop
  .PHONY: vtest
  vtest: .develop
  	@pytest -s -v
@@ -44,7 +53,7 @@ Index: aiohttp-3.13.3/Makefile
  
  
  define run_tests_in_docker
-@@ -151,7 +147,7 @@ clean:
+@@ -143,7 +139,7 @@ clean:
  	@rm -rf build
  	@rm -rf cover
  	@make -C docs clean
@@ -53,24 +62,24 @@ Index: aiohttp-3.13.3/Makefile
  	@rm -f aiohttp/*.so
  	@rm -f aiohttp/*.pyd
  	@rm -f aiohttp/*.html
-@@ -182,7 +178,6 @@ doc-spelling:
+@@ -174,7 +170,6 @@ doc-spelling:
  
  .PHONY: install
  install: .update-pip
--	@python -m pip install -r requirements/dev.in -c requirements/dev.txt
+-	@$(PIP) install -r requirements/dev.in -c requirements/dev.txt
  
  .PHONY: install-dev
  install-dev: .develop
-@@ -190,4 +185,4 @@ install-dev: .develop
+@@ -182,4 +177,4 @@ install-dev: .develop
  .PHONY: sync-direct-runtime-deps
  sync-direct-runtime-deps:
  	@echo Updating 'requirements/runtime-deps.in' from 'pyproject.toml'... >&2
 -	@python requirements/sync-direct-runtime-deps.py
 +	python3 requirements/sync-direct-runtime-deps.py
-Index: aiohttp-3.13.3/tools/gen.py
+Index: aiohttp-3.14.0/tools/gen.py
 ===================================================================
---- aiohttp-3.13.3.orig/tools/gen.py
-+++ aiohttp-3.13.3/tools/gen.py
+--- aiohttp-3.14.0.orig/tools/gen.py
++++ aiohttp-3.14.0/tools/gen.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
