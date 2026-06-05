@@ -1,7 +1,7 @@
 #
 # spec file for package edk2
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +72,7 @@ Source12:       openssl.keyring
 # PATCH-FIX-UPSTREAM - https://github.com/tianocore/edk2/pull/10928 - CVE-2024-38797
 Patch1:         10928.patch
 Patch2:         edk2-const-correctness.patch
+Patch3:         edk2-gcc16.patch
 #!BuildIgnore:  gcc-PIE
 BuildRequires:  acpica
 BuildRequires:  bc
@@ -123,6 +124,7 @@ Firmware required to run the %{platform}
 %setup -q -n edk2-edk2-stable%{archive_version} -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 # Fix path of the brotli submodules
 cp -R brotli-%{brotli_version}/* BaseTools/Source/C/BrotliCompress/brotli/
