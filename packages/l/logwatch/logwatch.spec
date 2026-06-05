@@ -17,7 +17,7 @@
 
 
 Name:           logwatch
-Version:        7.13
+Version:        7.14
 Release:        0
 Summary:        Tool to analyze and report on system logs
 License:        MIT
@@ -31,8 +31,6 @@ Patch0:         logwatch-firewall.patch
 Patch2:         logwatch-timestamp_in_var.patch
 Patch3:         harden_logwatch.service.patch
 Patch4:         harden_logwatch_dmeventd.service.patch
-# PATCH-FIX-UPSTREAM 0001-Exclude-virtual-FS-nsfs.patch bsc#1255862
-Patch5:         0001-Exclude-virtual-FS-nsfs.patch
 BuildRequires:  xz
 Requires:       grep
 Requires:       mailx
@@ -69,7 +67,6 @@ cp %{SOURCE3} .
 sed -i -e 's,%{_datadir}/doc/logwatch-\*,%{_defaultdocdir}/logwatch,' logwatch.8
 %patch -P 3 -p1
 %patch -P 4 -p1
-%patch -P 5 -p1
 
 %build
 

@@ -2,6 +2,34 @@
 control logs (e.g. 'git log --oneline v1..v2'), as the Logwatch project does
 not release a change log themselves. ***
 
+==== 7.14 ====
+93cb38b (tag: 7.14) Preparation for release 7.14
+787379b Merge /u/opoplawski/logwatch/ branch archives into master
+17460ed Add missing flag for Output_Generated
+b7dde79 Merge /u/fcrawford/logwatch/ branch frank-zz-disk-space into master
+c98f920 Sort human order
+606b93e [postfix] Support for Postfix version 3.11, by Michael Grimm
+a2fef13 [dnf5] Exit gracefully if dnf not installed.
+13e5ec2 [clam-update] Clarified use of files in syslog format.
+dafde2c Merge /u/fcrawford/logwatch/ branch frank-misc into master
+ae4c66e Match some updated output
+95c52b1 Fix output of blank sendmail section when not running
+aa38af9 Update termination message
+fd1cb9c [dovecot] Added support for Submission statements, by Bob Hockney
+bb9c4d2 Suppress excess new line when no output generated
+6cbaacb Exclude virtual FS nsfs
+eb2e9c2 Remove tabs and clean up formatting
+26ff20a Handle dnf5 returning times as UTC
+c59374f Add new script to process dnf5 reports
+729132b [dovecot] Fixed typos, by Vladimir Lomov
+5e6fa3d [dovecot] Support for dovecot version 2.4, by Vladimir Lomov.
+d6bea66 [clam-update] Created specific $clam_update_detail variable, and added  debug statements showing how it is set.
+d59e5e4 [dovecot] Fixed spacing, by Vladimir Lomov
+54e800c [chronyd] Initial submission of chronyd, by Miroslav Lichvar.
+7d5a0ba [sshd] Corrected port number in debug statement.  Reported by Andrew Myers.
+eb5893b [clam-update] Corrected instructions for using RemoveHeaders, per Nicolas Croiset
+c478db8 Update documentation to reflect that --archives is the default and allow disabling with --noarchives
+
 ==== 7.13 ====
 88df91d (HEAD -> master, tag: 7.13, origin/master, origin/HEAD) [logwatch] Preparation for Release 7.13
 0ac11a5 [rsyslogd] De-duplicate lines with time calculations

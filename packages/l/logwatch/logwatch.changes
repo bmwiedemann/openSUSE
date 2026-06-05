@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jun  2 12:18:14 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to 7.14
+  * Merge /u/opoplawski/logwatch/ branch archives into master
+  * Add missing flag for Output_Generated
+  * Merge /u/fcrawford/logwatch/ branch frank-zz-disk-space into master
+  * Sort human order
+  * [postfix] Support for Postfix version 3.11, by Michael Grimm
+  * [dnf5] Exit gracefully if dnf not installed.
+  * [clam-update] Clarified use of files in syslog format.
+  * Merge /u/fcrawford/logwatch/ branch frank-misc into master
+  * Match some updated output
+  * Fix output of blank sendmail section when not running
+  * Update termination message
+  * [dovecot] Added support for Submission statements, by Bob Hockney
+  * Suppress excess new line when no output generated
+  * Exclude virtual FS nsfs
+  * Remove tabs and clean up formatting
+  * Handle dnf5 returning times as UTC
+  * Add new script to process dnf5 reports
+  * [dovecot] Fixed typos, by Vladimir Lomov
+  * [dovecot] Support for dovecot version 2.4, by Vladimir Lomov.
+  * [clam-update] Created specific $clam_update_detail variable, and added  debug statements showing how it is set.
+  * [dovecot] Fixed spacing, by Vladimir Lomov
+  * [chronyd] Initial submission of chronyd, by Miroslav Lichvar.
+  * [sshd] Corrected port number in debug statement.  Reported by Andrew Myers.
+  * [clam-update] Corrected instructions for using RemoveHeaders, per Nicolas Croiset
+  * Update documentation to reflect that --archives is the default and allow disabling with --noarchives
+- modified sources
+  * ChangeLog
+- deleted patches
+  * 0001-Exclude-virtual-FS-nsfs.patch (upstreamed)
+
+-------------------------------------------------------------------
 Thu Jan  8 08:58:51 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Exclude df from checking nsfs. This is upstream, but
