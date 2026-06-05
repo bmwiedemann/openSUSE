@@ -248,4 +248,17 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Updated readme, sums and commits</comment>
     <requestid>1356261</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>872f6015ec326b68fb1aadb59d538fc6</srcmd5>
+    <version>1.8.5</version>
+    <time>1780664500</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.8.5
+- Upstream changes:
+  * Add some text explaining the import, root dir parse
+  * Changes to text and ui
+  * Import from GOG
+  * Update SHAs</comment>
+    <requestid>1357185</requestid>
+  </revision>
 </revisionlist>
