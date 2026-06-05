@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 05 05:43:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.34.1:
+  * fix: prevent DoS panics from malformed output_fields in OTLP
+    traces and Spyderbat outputs
+
+-------------------------------------------------------------------
 Thu May 28 08:07:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.34.0:
