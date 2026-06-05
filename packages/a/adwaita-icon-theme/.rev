@@ -352,4 +352,13 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345354</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>514ebcb46ff70acdd953902bd4582017</srcmd5>
+    <version>50.0+2</version>
+    <time>1780664163</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.0+2:
+  + folder-projects: XDG Projects folder.</comment>
+    <requestid>1357101</requestid>
+  </revision>
 </revisionlist>
