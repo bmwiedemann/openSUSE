@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun  4 08:01:29 UTC 2026 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 1.4.0
+  - Minor Changes:
+    - sap_vm_provision - Rework role with best practices to align with project
+    - sap_vm_provision - Update ibmcloud PowerVS image dictionaries
+    - sap_vm_provision - Add MS Azure disclaimer about reliability of azure collection
+    - sap_vm_temp_vip - Refactor variables and improve logic for skipping hosts
+
+  - Bugfixes:
+    - sap_vm_provision - Fix deprecated network parameter for amazon.aws.ec2_instance
+    - sap_vm_provision - Fix adding /etc/hosts for all in play not just itself
+    - sap_vm_temp_vip - Fix NoneType broadcast variable
+
+-------------------------------------------------------------------
 Tue Jan 13 08:17:39 UTC 2026 - Marcel Mamula <marcel.mamula@suse.com>
 
 - 1.3.1

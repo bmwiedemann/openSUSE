@@ -22,7 +22,7 @@
 Name:           ansible-sap-infrastructure
 Summary:        Ansible collection suse.sap_infrastructure for SAP Automation
 License:        Apache-2.0
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 URL:            https://github.com/SUSE/community.sap_infrastructure/
 Source0:        %{url}archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz

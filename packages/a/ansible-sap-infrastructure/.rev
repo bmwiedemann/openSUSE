@@ -30,4 +30,12 @@ rpmlintrc file contains explanation for applied rules.
     <comment>Release 1.3.1 with new features and compatibility fixes for ansible-core 2.19.</comment>
     <requestid>1327400</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a9c75b42cdee0f888541c525ef8e5649</srcmd5>
+    <version>1.4.0</version>
+    <time>1780664403</time>
+    <user>anag_factory</user>
+    <comment>Release 1.4.0 with refactored provisioning roles, fixes and compatibility fixes for ansible-core 2.20.</comment>
+    <requestid>1357143</requestid>
+  </revision>
 </revisionlist>
