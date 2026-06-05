@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 08:41:08 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch support-aiohttp-3.14.patch to support latest
+  aiohttp gh#pnuckowski/aioresponses#288
+
+-------------------------------------------------------------------
 Fri Jun 13 05:35:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

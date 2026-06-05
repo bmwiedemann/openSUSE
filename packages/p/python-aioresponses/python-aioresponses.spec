@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioresponses
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Python module for mocking out requests made by ClientSession fro
 License:        MIT
 URL:            https://github.com/pnuckowski/aioresponses
 Source:         https://files.pythonhosted.org/packages/source/a/aioresponses/aioresponses-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM support-aiohttp-3.14.patch gh#pnuckowski/aioresponses#288
+Patch0:         support-aiohttp-3.14.patch
 BuildRequires:  %{python_module aiohttp >= 2.0.0}
 BuildRequires:  %{python_module ddt >= 1.1.0}
 BuildRequires:  %{python_module pbr}
@@ -48,7 +50,7 @@ This is a Python module for mocking out requests made by ClientSession
 from the aiohttp package.
 
 %prep
-%setup -q -n aioresponses-%{version}
+%autosetup -p1 -n aioresponses-%{version}
 
 %build
 export LC_ALL=en_US.UTF-8

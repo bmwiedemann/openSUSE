@@ -187,4 +187,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1285325</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>413d75e695acf1a7448c799d6c2cc322</srcmd5>
+    <version>0.7.8</version>
+    <time>1780664149</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patch support-aiohttp-3.14.patch to support latest
+  aiohttp gh#pnuckowski/aioresponses#288</comment>
+    <requestid>1357146</requestid>
+  </revision>
 </revisionlist>
