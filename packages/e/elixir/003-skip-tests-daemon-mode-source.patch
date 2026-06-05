@@ -1,0 +1,97 @@
+diff --git a/lib/mix/test/mix/tasks/release_test.exs b/lib/mix/test/mix/tasks/release_test.exs
+index 4148028..5a19bf5 100644
+--- a/lib/mix/test/mix/tasks/release_test.exs
++++ b/lib/mix/test/mix/tasks/release_test.exs
+@@ -716,7 +716,7 @@ test "runs eval and version commands" do
+     end)
+   end
+ 
+-  @tag :unix
++  @tag :skip
+   test "runs in daemon mode" do
+     in_fixture("release_test", fn ->
+       config = [releases: [permanent2: [include_erts: false, cookie: "abcdefghij"]]]
+diff --git a/lib/mix/test/mix/tasks/source_test.exs b/lib/mix/test/mix/tasks/source_test.exs
+index bfc66b1..97776cd 100644
+--- a/lib/mix/test/mix/tasks/source_test.exs
++++ b/lib/mix/test/mix/tasks/source_test.exs
+@@ -16,6 +16,7 @@ defp reset_editor(), do: System.put_env("ELIXIR_EDITOR", unquote(editor))
+     defp reset_editor(), do: System.delete_env("ELIXIR_EDITOR")
+   end
+ 
++  @tag :skip
+   test "source MODULE", context do
+     in_tmp(context.test, fn ->
+       Mix.Tasks.Source.run(["Enum"])
+@@ -24,7 +25,7 @@ test "source MODULE", context do
+     end)
+   end
+ 
+-  @tag :require_ast
++  @tag :skip
+   test "source MODULE.FUN", context do
+     in_tmp(context.test, fn ->
+       Mix.Tasks.Source.run(["Enum.map"])
+@@ -33,7 +34,7 @@ test "source MODULE.FUN", context do
+     end)
+   end
+ 
+-  @tag :require_ast
++  @tag :skip
+   test "source MODULE.FUN/ARITY", context do
+     in_tmp(context.test, fn ->
+       Mix.Tasks.Source.run(["Enum.map/2"])
+@@ -42,6 +43,7 @@ test "source MODULE.FUN/ARITY", context do
+     end)
+   end
+ 
++  @tag :skip
+   test "source NESTED MODULE", context do
+     in_tmp(context.test, fn ->
+       Mix.Tasks.Source.run(["IO.ANSI"])
+@@ -50,6 +52,7 @@ test "source NESTED MODULE", context do
+     end)
+   end
+ 
++  @tag :skip
+   test "source Erlang MODULE", context do
+     in_tmp(context.test, fn ->
+       Mix.Tasks.Source.run([":math"])
+@@ -58,18 +61,21 @@ test "source Erlang MODULE", context do
+     end)
+   end
+ 
++  @tag :skip
+   test "source ERROR" do
+     assert_raise Mix.Error, "Invalid expression: Foo.bar(~s[baz])", fn ->
+       Mix.Tasks.Source.run(["Foo.bar(~s[baz])"])
+     end
+   end
+ 
++  @tag :skip
+   test "source unavailable module" do
+     assert_raise Mix.Error, ~r/Could not find source/, fn ->
+       Mix.Tasks.Source.run(["DoesNotExist"])
+     end
+   end
+ 
++  @tag :skip
+   test "source --open opens __FILE__ and __LINE__", context do
+     System.put_env("ELIXIR_EDITOR", "echo __LINE__:__FILE__")
+ 
+@@ -85,6 +91,7 @@ test "source --open opens __FILE__ and __LINE__", context do
+     reset_editor()
+   end
+ 
++  @tag :skip
+   test "source --open without editor" do
+     System.delete_env("ELIXIR_EDITOR")
+     System.delete_env("EDITOR")
+@@ -96,6 +103,7 @@ test "source --open without editor" do
+     reset_editor()
+   end
+ 
++  @tag :skip
+   test "bad arguments" do
+     message = ~r/Unexpected arguments/
+ 
