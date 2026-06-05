@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 29 12:30:08 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260529.ebc6e9d1:
+  * Avoid division by zero.
+
+-------------------------------------------------------------------
+Mon May 25 10:51:47 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260525.08c7ac85:
+  * Enable pkglistgen on Leap 16.0 again for the images respin
+
+-------------------------------------------------------------------
+Sat May 23 07:02:19 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260522.0dca9cec:
+  * fix: skip changes updated check on gitea empty PRs
+
+-------------------------------------------------------------------
 Fri May 15 12:33:05 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260515.6fd49568:
