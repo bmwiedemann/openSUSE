@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 04 02:57:23 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260604.45e70fd3:
+  * Refactor: crash_test: Use log filters to control output instead of removing handlers
+  * Refactor: log: replace crmsh.log.setup_logger with logging.setupLogger
+  * Dev: log: Use filters to control handler output and simplify logger setup
+  * Dev: corosync_config_format: lower the level of debug logs from tokenizer to DEBUG2
+  * Refactor: log: Decouple logging from config module
+
+-------------------------------------------------------------------
+Mon Jun 01 03:57:54 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260601.363253ce:
+  * Fix: sbd: Compare SBD device UUID when adding SBD via sbd stage
+
+-------------------------------------------------------------------
 Thu May 28 08:17:49 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260528.b0973362:
