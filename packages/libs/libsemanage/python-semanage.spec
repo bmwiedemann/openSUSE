@@ -38,6 +38,8 @@ Source3:        baselibs.conf
 # PATCH-FIX-UPSTREAM bsc#1133102 LTO: Update map file to include new symbols and remove wildcards
 # For now we need to disable this. This breaks e.g. shadow and also other packages in security:SELinux
 # Patch0:         libsemanage-update-map-file.patch
+# PATCH-FIX-UPSTREAM bsc#1266385 Depend on LIBSO before make pywrap is executed to avoid race condition cathy.hu@suse.com
+Patch1:         1266385-libsemanage-Require-LIBSO-before-SWIGSO-and-SWIGRUBY.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  audit-devel
 BuildRequires:  bison
@@ -76,12 +78,13 @@ mkdir -p %{buildroot}/%{_lib}
 mkdir -p %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_includedir}
 %{python_expand # loop over possible pythons
-%make_install install-pywrap PYTHON="$python" \
+%make_install install-pywrap \
+     CFLAGS="%{optflags} -fno-semantic-interposition -ffat-lto-objects" \
+     PYTHON="$python" \
      LIBDIR="%{_libdir}" \
      LIBEXECDIR="%{_libexecdir}" \
      SHLIBDIR="%{_libdir}"
 }
-
 # remove files contained in other packages
 rm -rf %{buildroot}%{_sysconfdir}
 %if "%{_lib}" == "lib64"

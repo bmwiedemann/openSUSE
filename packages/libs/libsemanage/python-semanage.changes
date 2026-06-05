@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  3 08:10:50 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Depend on libso before make pywrap is executed to avoid
+  race conditions (bsc#1266385)
+  - Add patch: 1266385-libsemanage-Require-LIBSO-before-SWIGSO-and-SWIGRUBY.patch 
+- Add CFLAGS to %make_install call for consistency with %make_build
+
+-------------------------------------------------------------------
 Thu Feb  5 16:24:27 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.10

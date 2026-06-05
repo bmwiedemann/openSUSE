@@ -683,4 +683,16 @@ Could not find any LGPL-2.1 &quot;only&quot; licensed files in the pacakge (forw
 Needs to go together with selinux-policy change</comment>
     <requestid>1348497</requestid>
   </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>39c78a959cf2dac338c2b81a99371663</srcmd5>
+    <version>3.10</version>
+    <time>1780664203</time>
+    <user>anag_factory</user>
+    <comment>- Depend on libso before make pywrap is executed to avoid
+  race conditions (bsc#1266385)
+  - Add patch: 1266385-libsemanage-Require-LIBSO-before-SWIGSO-and-SWIGRUBY.patch 
+- Add CFLAGS to %make_install call for consistency with %make_build
+</comment>
+    <requestid>1356964</requestid>
+  </revision>
 </revisionlist>
