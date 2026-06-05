@@ -104,7 +104,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1780410522.ad58d974
+Version:        5.1780561853.63760953
 Release:        0
 Summary:        Framework for automated system-level testing (web-frontend, scheduler and tools)
 Group:          Development/Tools/Other
@@ -595,9 +595,10 @@ fi
 # is running at the time of the update
 %service_del_postun %{openqa_worker_services}
 # restart running openqa-worker-auto-restart@.service units without interrupting jobs
-# notes: noop if no such units are running; daemon-reload already done by service_del_postun macro;
+# notes: noop if no such units are running; manual daemon-reload ensures systemd updates its state before reload
 #        "$1 -ge 1" checks for a package upgrade
 if [ -x /usr/bin/systemctl ] && [ $1 -ge 1 ]; then
+    /usr/bin/systemctl daemon-reload || :
     /usr/bin/systemctl reload 'openqa-worker-auto-restart@*.service' || :
 fi
 

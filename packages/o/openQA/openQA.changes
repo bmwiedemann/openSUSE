@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 04 08:31:04 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1780561853.63760953:
+  * fix(rpm): eliminate systemd on-disk warnings during worker upgrade
+  * chore(deps): Dependency cron 2026-06-04
+  * ci: Run OBS scm checks only for master branch
+  * fix(systemd): activate inactive workers and reload active ones safely
+  * chore(deps): Dependency cron 2026-06-03
+  * test(full-stack): remove redundant ISO size check to be flexible
+
+-------------------------------------------------------------------
 Tue Jun 02 15:54:51 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1780410522.ad58d974:
