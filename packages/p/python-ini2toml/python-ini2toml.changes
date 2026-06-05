@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 04:49:56 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-tomlkit-0.15.0.patch:
+  * Support tomlkit 0.15.0 by not using dumps()
+
+-------------------------------------------------------------------
 Thu Aug 21 08:40:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

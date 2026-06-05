@@ -131,4 +131,13 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1300722</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>5b93d722399d62f104a0455176990f13</srcmd5>
+    <version>0.15</version>
+    <time>1780664161</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-tomlkit-0.15.0.patch:
+  * Support tomlkit 0.15.0 by not using dumps()</comment>
+    <requestid>1357048</requestid>
+  </revision>
 </revisionlist>

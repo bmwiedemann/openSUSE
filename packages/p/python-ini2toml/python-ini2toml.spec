@@ -1,7 +1,7 @@
 #
 # spec file for package python-ini2toml
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,8 @@ Summary:        Automatic conversion of .ini/cfg files to TOML equivalents
 License:        MPL-2.0
 URL:            https://github.com/abravalheri/ini2toml/
 Source:         https://files.pythonhosted.org/packages/source/i/ini2toml/ini2toml-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#abravalheri/ini2toml#132
+Patch0:         support-tomlkit-0.15.0.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -74,7 +76,6 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
 %if %{with test}
-BuildRequires:  %{python_module packaging >= 20.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module validate-pyproject >= 0.6 with %python-validate-pyproject < 2}
 %if %{with lite}
@@ -148,7 +149,7 @@ The ini2toml[experimental] extra requirements for %{python_flavor}-ini2toml
 %endif
 
 %prep
-%setup -q -n ini2toml-%{version}
+%autosetup -p1 -n ini2toml-%{version}
 sed -i 's/--cov ini2toml --cov-report term-missing//' setup.cfg
 
 %if !%{with test}
@@ -202,7 +203,7 @@ donttest=(-k "not test_auto_formatting")
 %license LICENSE.txt
 %python_alternative %{_bindir}/ini2toml
 %{python_sitelib}/ini2toml
-%{python_sitelib}/ini2toml-%{version}*-info
+%{python_sitelib}/ini2toml-%{version}.dist-info
 
 %if %{with lite}
 %files %{python_files lite}
