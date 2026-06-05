@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 05 06:11:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.53.1:
+  * Bug fixes
+    - [BACKPORT] security hardening fixes for USDT/uprobe
+      ELF/ld.so.cache parsing by @alban in #5547
+
+-------------------------------------------------------------------
 Tue Jun 02 04:35:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.53.0:
