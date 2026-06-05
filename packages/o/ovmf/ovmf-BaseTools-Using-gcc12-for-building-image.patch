@@ -20,35 +20,32 @@ Tumbleweed is gcc14.
  BaseTools/Conf/tools_def.template | 18 +++++++++---------
  1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/BaseTools/Conf/tools_def.template b/BaseTools/Conf/tools_def.template
-index c34ecfd557..6e7ae252b8 100755
---- a/BaseTools/Conf/tools_def.template
-+++ b/BaseTools/Conf/tools_def.template
-@@ -1353,15 +1353,15 @@ RELEASE_GCC5_IA32_DLINK_FLAGS    = DEF(GCC5_IA32_X64_DLINK_FLAGS) -flto -Os -Wl,
- # GCC5 X64 definitions
+Index: edk2-edk2-stable202605/BaseTools/Conf/tools_def.template
+===================================================================
+--- edk2-edk2-stable202605.orig/BaseTools/Conf/tools_def.template
++++ edk2-edk2-stable202605/BaseTools/Conf/tools_def.template
+@@ -1183,15 +1183,15 @@ RELEASE_GCC_IA32_DLINK_FLAGS    = DEF(GC
+ # GCC X64 definitions
  ##################
- *_GCC5_X64_OBJCOPY_PATH          = DEF(GCC5_X64_PREFIX)objcopy
--*_GCC5_X64_CC_PATH               = DEF(GCC5_X64_PREFIX)gcc
--*_GCC5_X64_SLINK_PATH            = DEF(GCC5_X64_PREFIX)gcc-ar
--*_GCC5_X64_DLINK_PATH            = DEF(GCC5_X64_PREFIX)gcc
--*_GCC5_X64_ASLDLINK_PATH         = DEF(GCC5_X64_PREFIX)gcc
--*_GCC5_X64_ASM_PATH              = DEF(GCC5_X64_PREFIX)gcc
--*_GCC5_X64_PP_PATH               = DEF(GCC5_X64_PREFIX)gcc
--*_GCC5_X64_VFRPP_PATH            = DEF(GCC5_X64_PREFIX)gcc
--*_GCC5_X64_ASLCC_PATH            = DEF(GCC5_X64_PREFIX)gcc
--*_GCC5_X64_ASLPP_PATH            = DEF(GCC5_X64_PREFIX)gcc
-+*_GCC5_X64_CC_PATH               = DEF(GCC5_X64_PREFIX)gcc-12
-+*_GCC5_X64_SLINK_PATH            = DEF(GCC5_X64_PREFIX)gcc-ar-12
-+*_GCC5_X64_DLINK_PATH            = DEF(GCC5_X64_PREFIX)gcc-12
-+*_GCC5_X64_ASLDLINK_PATH         = DEF(GCC5_X64_PREFIX)gcc-12
-+*_GCC5_X64_ASM_PATH              = DEF(GCC5_X64_PREFIX)gcc-12
-+*_GCC5_X64_PP_PATH               = DEF(GCC5_X64_PREFIX)gcc-12
-+*_GCC5_X64_VFRPP_PATH            = DEF(GCC5_X64_PREFIX)gcc-12
-+*_GCC5_X64_ASLCC_PATH            = DEF(GCC5_X64_PREFIX)gcc-12
-+*_GCC5_X64_ASLPP_PATH            = DEF(GCC5_X64_PREFIX)gcc-12
- *_GCC5_X64_RC_PATH               = DEF(GCC5_X64_PREFIX)objcopy
+ *_GCC_X64_OBJCOPY_PATH          = DEF(GCC_X64_PREFIX)objcopy
+-*_GCC_X64_CC_PATH               = DEF(GCC_X64_PREFIX)gcc
+-*_GCC_X64_SLINK_PATH            = DEF(GCC_X64_PREFIX)gcc-ar
+-*_GCC_X64_DLINK_PATH            = DEF(GCC_X64_PREFIX)gcc
+-*_GCC_X64_ASLDLINK_PATH         = DEF(GCC_X64_PREFIX)gcc
+-*_GCC_X64_ASM_PATH              = DEF(GCC_X64_PREFIX)gcc
+-*_GCC_X64_PP_PATH               = DEF(GCC_X64_PREFIX)gcc
+-*_GCC_X64_VFRPP_PATH            = DEF(GCC_X64_PREFIX)gcc
+-*_GCC_X64_ASLCC_PATH            = DEF(GCC_X64_PREFIX)gcc
+-*_GCC_X64_ASLPP_PATH            = DEF(GCC_X64_PREFIX)gcc
++*_GCC_X64_CC_PATH               = DEF(GCC_X64_PREFIX)gcc-12
++*_GCC_X64_SLINK_PATH            = DEF(GCC_X64_PREFIX)gcc-ar-12
++*_GCC_X64_DLINK_PATH            = DEF(GCC_X64_PREFIX)gcc-12
++*_GCC_X64_ASLDLINK_PATH         = DEF(GCC_X64_PREFIX)gcc-12
++*_GCC_X64_ASM_PATH              = DEF(GCC_X64_PREFIX)gcc-12
++*_GCC_X64_PP_PATH               = DEF(GCC_X64_PREFIX)gcc-12
++*_GCC_X64_VFRPP_PATH            = DEF(GCC_X64_PREFIX)gcc-12
++*_GCC_X64_ASLCC_PATH            = DEF(GCC_X64_PREFIX)gcc-12
++*_GCC_X64_ASLPP_PATH            = DEF(GCC_X64_PREFIX)gcc-12
+ *_GCC_X64_RC_PATH               = DEF(GCC_X64_PREFIX)objcopy
  
- *_GCC5_X64_ASLCC_FLAGS           = DEF(GCC5_ASLCC_FLAGS) -m64
--- 
-2.35.3
-
+ *_GCC_X64_ASLCC_FLAGS           = DEF(GCC_ASLCC_FLAGS) -m64

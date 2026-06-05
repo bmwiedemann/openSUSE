@@ -26,7 +26,7 @@
 %endif
 
 Name:           uefi-shell
-Version:        202602
+Version:        202605
 Release:        0
 Summary:        UEFI Shell built from EDK II project
 License:        BSD-2-Clause-Patent
@@ -57,8 +57,6 @@ Source13:       pylibfdt-cfff805481bdea27f900c32698171286542b8d3c.tar.gz
 Source100:      ovmf-rpmlintrc
 Source101:      gdb_uefi.py.in
 Patch1:         ovmf-gdb-symbols.patch
-Patch2:         ovmf-pie.patch
-Patch3:         ovmf-disable-ia32-firmware-piepic.patch
 # Bug 1236009 - Build failure on Leap 15.5/15.6 due to unsupported GCC flag -mstack-protector-guard for aarch64 cross-compiler
 Patch10:        ovmf-Revert-Add-Stack-Cookie-Support-to-MSVC-and-GCC.patch
 BuildRequires:  bc
@@ -192,7 +190,7 @@ export PYTHON3_ENABLE=TRUE
 export PYTHON_COMMAND=python3
 
 %if 0%{?suse_version} > 1320
-TOOL_CHAIN=GCC5
+TOOL_CHAIN=GCC
 %else
 echo `gcc -dumpversion`
 TOOL_CHAIN=GCC$(gcc -dumpversion|sed 's/\([0-9]\)\.\([0-9]\).*/\1\2/')
@@ -205,13 +203,13 @@ echo "gcc_version="`gcc -dumpversion`
 export CC=gcc-12
 export CXX=g++-12
 %endif
-	make -C BaseTools
+	make -C BaseTools EXTRA_LDFLAGS="-no-pie"
 %endif
 %ifarch aarch64
-	ARCH=AARCH64 make -C BaseTools
+	ARCH=AARCH64 make -C BaseTools EXTRA_LDFLAGS="-no-pie"
 %endif
 %ifarch riscv64
-	ARCH=RISCV64 make -C BaseTools
+	ARCH=RISCV64 make -C BaseTools EXTRA_LDFLAGS="-no-pie"
 %endif
 
 # Import the build functions

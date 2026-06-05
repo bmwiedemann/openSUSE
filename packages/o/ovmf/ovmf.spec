@@ -27,7 +27,7 @@
 %endif
 
 Name:           ovmf
-Version:        202602
+Version:        202605
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -59,12 +59,11 @@ Source100:      %{name}-rpmlintrc
 Source101:      gdb_uefi.py.in
 Patch1:         %{name}-gdb-symbols.patch
 Patch2:         %{name}-pie.patch
-Patch3:         %{name}-disable-ia32-firmware-piepic.patch
+# Bug 1267604 - ovmf: constructor function causes riscv VM boot failure
+Patch3:         %{name}-Revert-UefiCpuPkg-BaseRiscV64CpuTimerLib-Add-constru.patch
 # Bug 1259122 - [16.1][Build 5.19][aarch64] openQA test fails in qemu - truncation screen issue appears in qemu boot manager
 Patch5:         %{name}-MdeModulePkg-ConSplitterDxe-Set-default-ConOut-mode.patch
 Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch
-# Bug 1255113 - Build Failure for RISC-V 64 When Secure Boot is Enabled Due to SecureBootDefaultKeysInit module
-Patch7:         %{name}-OvmfPkg-RiscVVirt-Make-SecureBootDefaultKeysInit-dri.patch
 # Bug 1207095 - ASSERT [ArmCpuDxe] /home/abuild/rpmbuild/BUILD/edk2-edk2-stable202211/ArmPkg/Library/DefaultExceptionHandlerLib/AArch64/DefaultExceptionHandler.c(333): ((BOOLEAN)(0==1))
 Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
@@ -80,20 +79,9 @@ Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
 Patch13:        %{name}-UefiCpuPkg-Disable-EFI-memory-attributes-protocol.patch
 # Bug 1244218 - ovmf: non-deterministic .bin files (about unreproducible)
 Patch14:        %{name}-OvmfPkg-ArmVirtPkg-Keep-JSON-stack-cookie-files.patch
-# Bug 1258870 - ovmf: LPA2 support causing boot failure on AArch64
-Patch15:        %{name}-Revert-ArmPkg-UefiCpuPkg-Fix-boot-failure-on-FEAT_LP.patch
-Patch16:        %{name}-Revert-ArmPkg-UefiCpuPkg-fix-boot-failure-with-LPA2.patch
-Patch17:        %{name}-Revert-UefiCpuPkg-ArmMmuLib-Add-support-for-LPA2.patch
-# Workaround for failing PEI boot on RISCV64 (https://github.com/tianocore/edk2/issues/12206)
-Patch18:        %{name}-Revert-UefiCpuPkg-BaseRiscV64CpuTimerLib-Add-constru.patch
-# https://github.com/tianocore/edk2/pull/12248
-Patch19:        %{name}-OvmfPkg-RiscVVirt-PlatformPei-Do-not-set-PcdTpmBaseA.patch
 # Bug 1260358 - [SLES][16.1][Build33.1][x86_64][kvm] Fail to install uefi 15-SP7 vm
 # Bug 1259826 - latest version of ovmf package dont support -kernel -initrd options
 Patch20:        %{name}-Revert-OvmfPkg-X86QemuLoadImageLib-flip-default-for-.patch
-# Bug 1259640 - OVMF crashes when exiting from aarch64 GRUB
-Patch21:        %{name}-ArmPkg-CpuDxe-Drop-GCD-system-memory-check-from-Memo.patch
-Patch22:        %{name}-ArmPkg-CpuDxe-Refuse-to-clear-XN-from-device-memory-.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -266,7 +254,7 @@ OVMF_FLAGS=" \
 "
 
 %if 0%{?suse_version} > 1320
-TOOL_CHAIN=GCC5
+TOOL_CHAIN=GCC
 %else
 echo `gcc -dumpversion`
 TOOL_CHAIN=GCC$(gcc -dumpversion|sed 's/\([0-9]\)\.\([0-9]\).*/\1\2/')
