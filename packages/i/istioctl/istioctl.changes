@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  5 05:55:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.30.1:
+  https://istio.io/latest/news/releases/1.30.x/announcing-1.30.1/
+  * Added istioctl analyze check IST0176 that flags Gateway API
+    CRDs installed at a version below the minimum required by the
+    current Istio version. Resources backed by such CRDs are
+    silently filtered by istiod, which previously made it hard to
+    discover TLS passthrough breakage after upgrading to Istio 1.30
+    with stale Gateway API CRDs.
+
+-------------------------------------------------------------------
 Tue May 19 09:20:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.30.0:
