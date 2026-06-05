@@ -383,4 +383,12 @@
     <comment>Fix changelog</comment>
     <requestid>1356611</requestid>
   </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>5b43f4ee1a0481c67481e1542dac39be</srcmd5>
+    <version>17.0.19.0</version>
+    <time>1780664321</time>
+    <user>anag_factory</user>
+    <comment>Make post scripts less noisy (bsc#1267355)</comment>
+    <requestid>1357135</requestid>
+  </revision>
 </revisionlist>
