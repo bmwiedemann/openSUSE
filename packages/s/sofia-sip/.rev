@@ -160,4 +160,20 @@
     <comment></comment>
     <requestid>1129592</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d956f105b75d2b598a28b682213c5610</srcmd5>
+    <version>1.13.17+50</version>
+    <time>1780664266</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.13.17+50:
+  + Fixes: CVE-2022-31001, CVE-2022-31002, CVE-2022-31003
+  + Please see upstream git for full changes.
+    https://github.com/freeswitch/sofia-sip
+- Update to url/sources to same upstream Arch Linux is using, stop
+  using debian packages.
+- Use source service for tarball.
+- Following the above, add libtool BuildRequires and bootstrap the
+  build.</comment>
+    <requestid>1357103</requestid>
+  </revision>
 </revisionlist>

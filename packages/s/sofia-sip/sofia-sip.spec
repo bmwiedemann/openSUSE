@@ -16,20 +16,21 @@
 #
 
 
-%define pkg_major 1.12
+%define pkg_major 1.13
 %define with_doxygen 0
 Name:           sofia-sip
-Version:        1.12.11+20110422
+Version:        1.13.17+50
 Release:        0
 Summary:        A RFC3261 compliant SIP User-Agent library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://sofia-sip.sf.net/
-Source0:        http://deb.debian.org/debian/pool/main/s/sofia-sip/sofia-sip_%{version}.1.orig.tar.gz
-Patch0:         http://deb.debian.org/debian/pool/main/s/sofia-sip/sofia-sip_%{version}.1-2.1.diff.gz
+Source0:        %{name}-%{version}.tar.xz
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
+BuildRequires:  libtool
 BuildRequires:  openssl-devel
 %if 0%{?with_doxygen}
 BuildRequires:  doxygen
@@ -97,10 +98,11 @@ at the Nokia Research Center.
 This package holds the glib2 bindings.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}.1
+%autosetup -p1
 find . -name "*.awk" -exec sed -i 's|#! /usr/bin/env awk|#!/usr/bin/awk|g' {} \;
 
 %build
+NOCONFIGURE=1 ./bootstrap.sh
 %configure --disable-static
 %make_build
 %if 0%{?with_doxygen}
@@ -116,12 +118,10 @@ find . -name "*.awk" -exec sed -i 's|#! /usr/bin/env awk|#!/usr/bin/awk|g' {} \;
 cp -av libsofia-sip-ua/docs/html %{buildroot}%{_docdir}/%{name}/manual
 %endif
 find %{buildroot} -type f -name "*.la" -delete -print
-%fdupes %{buildroot}
+%fdupes %{buildroot}%{_prefix}
 
-%post   -n libsofia-sip-ua0      -p /sbin/ldconfig
-%postun -n libsofia-sip-ua0      -p /sbin/ldconfig
-%post   -n libsofia-sip-ua-glib3 -p /sbin/ldconfig
-%postun -n libsofia-sip-ua-glib3 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsofia-sip-ua0
+%ldconfig_scriptlets -n libsofia-sip-ua-glib3
 
 %files -n libsofia-sip-ua0
 %license COPYRIGHTS COPYING
@@ -135,12 +135,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/sip-dig
 %{_bindir}/sip-options
 %{_bindir}/stunc
-%{_mandir}/man1/addrinfo.1%{?ext_man}
-%{_mandir}/man1/localinfo.1%{?ext_man}
-%{_mandir}/man1/sip-date.1%{?ext_man}
-%{_mandir}/man1/sip-dig.1%{?ext_man}
-%{_mandir}/man1/sip-options.1%{?ext_man}
-%{_mandir}/man1/stunc.1%{?ext_man}
+# man pages went missing? Please help :-)
+%dnl %{_mandir}/man1/addrinfo.1%{?ext_man}
+%dnl %{_mandir}/man1/localinfo.1%{?ext_man}
+%dnl %{_mandir}/man1/sip-date.1%{?ext_man}
+%dnl %{_mandir}/man1/sip-dig.1%{?ext_man}
+%dnl %{_mandir}/man1/sip-options.1%{?ext_man}
+%dnl %{_mandir}/man1/stunc.1%{?ext_man}
 
 %files -n libsofia-sip-ua-glib3
 %{_libdir}/libsofia-sip-ua-glib.so.3*
@@ -155,7 +156,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/sofia-sip-ua.pc
 %{_datadir}/sofia-sip/
 %if 0%{?with_doxygen}
-%doc %{_docdir}/%{name}/manual
+%dnl %doc %{_docdir}/%{name}/manual
 %endif
 
 %changelog

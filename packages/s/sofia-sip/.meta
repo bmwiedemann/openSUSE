@@ -8,5 +8,4 @@ for Sofia-SIP is GNU/Linux. Sofia-SIP is based on a SIP stack developed
 at the Nokia Research Center.
 
 This package holds the cli tools what ship with sofia-sip.</description>
-  <devel project="GNOME:Factory" package="sofia-sip"/>
 </package>

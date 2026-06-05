@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 29 13:22:22 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.13.17+50:
+  + Fixes: CVE-2022-31001, CVE-2022-31002, CVE-2022-31003
+  + Please see upstream git for full changes.
+    https://github.com/freeswitch/sofia-sip
+- Update to url/sources to same upstream Arch Linux is using, stop
+  using debian packages.
+- Use source service for tarball.
+- Following the above, add libtool BuildRequires and bootstrap the
+  build.
+
+-------------------------------------------------------------------
 Tue Nov 28 11:50:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup instead of %setup/%patch.
