@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 04 05:49:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.4:
+  * vendor: update to kind 1.32 (#416)
+  * vendor: update to k8s 1.36 (#411)
+  * Update version numbers: 0.9.3
+
+-------------------------------------------------------------------
 Fri Apr 24 06:06:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.3:

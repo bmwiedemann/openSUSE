@@ -17,7 +17,7 @@
 
 
 Name:           ctlptl
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        CLI for declaratively setting up local Kubernetes clusters
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.26
 
 %description
 ctlptl (pronounced "cattle patrol") is a CLI for declaratively setting up local
