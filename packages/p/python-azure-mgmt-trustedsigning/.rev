@@ -7,4 +7,17 @@
     <comment>- New component package of the Python Azure SDK</comment>
     <requestid>1273412</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>88807f6007aefdaaaa83f56cf6eb2cb5</srcmd5>
+    <version>1.0.1</version>
+    <time>1780673941</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from pyproject.toml (forwarded request 1357530 from glaubitz)</comment>
+    <requestid>1357537</requestid>
+  </revision>
 </revisionlist>
