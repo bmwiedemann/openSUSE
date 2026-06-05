@@ -1,0 +1,17 @@
+---
+ pyproject.toml |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: pelican_myst_reader-1.4.0/pyproject.toml
+===================================================================
+--- pelican_myst_reader-1.4.0.orig/pyproject.toml	2026-01-24 18:55:27.849581012 +0100
++++ pelican_myst_reader-1.4.0/pyproject.toml	2026-01-24 18:55:37.665055737 +0100
+@@ -37,7 +37,7 @@
+ docutils = ">=0.19"
+ # XXX Waiting for new release of pybtex (> 0.24.0):
+ # https://bitbucket.org/pybtex-devs/pybtex/issues/169/replace-pkg_resources-with
+-sphinxcontrib-bibtex = "^2.6.3"
++# sphinxcontrib-bibtex = "^2.6.3"
+ pyyaml = "^6.0"
+ 
+ [tool.poetry.group.tests.dependencies]

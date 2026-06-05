@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa1b7a9dd22e58478e7018d4a5a44c3e</srcmd5>
+    <version>1.4.0</version>
+    <time>1773161909</time>
+    <user>anag_factory</user>
+    <comment>Enables writing Pelican blog posts with MyST Markdown.</comment>
+    <requestid>1335576</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3040b52ebdd9ed7b41ef39c53d6d9821</srcmd5>
+    <version>1.4.0</version>
+    <time>1780664271</time>
+    <user>anag_factory</user>
+    <comment>add LICENSE and README, general cleanup</comment>
+    <requestid>1357154</requestid>
+  </revision>
+</revisionlist>
