@@ -1,0 +1,22 @@
+<package name="international-doom" project="openSUSE:Factory">
+  <title>International Doom</title>
+  <description>Source port of Doom, Heretic and Hexen based on Chocolate Doom and Crispy Doom
+with significant additions from DOOM Retro.
+
+Major Features:
+
+- Support for Doom + Doom II and Heretic + Hexen re-releases
+- Optional True Color rendering
+- Up to x6 (1200p) rendering resolutions
+- Uncapped framerate
+- Additional, darker gamma-correction levels
+- Post-processing effects
+- Support for OPL2, OPL3, MIDI, Fluidsynth and GUS music playback
+- In-game keyboard and mouse bindings
+- Various visual, audible, physical and demo enhancements
+- Compatibility with vanilla-engine demos
+- Removed limitations of vanilla engine
+- Support for nodes in extended format (ZDBSP and DeePBSP)
+- Support for BEX/DEHEXTRA DeHackEd extensions</description>
+  <url>https://jnechaevsky.github.io/inter-doom</url>
+</package>
