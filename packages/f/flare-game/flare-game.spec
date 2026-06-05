@@ -1,7 +1,7 @@
 #
 # spec file for package flare-game
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           flare-game
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        Free Libre Action Roleplaying Engine — Game
 License:        CC-BY-SA-3.0+
