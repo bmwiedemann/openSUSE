@@ -500,4 +500,12 @@ Only recommend jack to allow pipewire jack to be installed.
     <comment></comment>
     <requestid>1321538</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>5c8dfaa562a2e0bf19b0102b404723c8</srcmd5>
+    <version>26.06</version>
+    <time>1780664258</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1357096</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package rosegarden
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define vers    25.12
 
 Name:           rosegarden
-Version:        25.12
+Version:        26.06
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Midi, Audio And Notation Editor
@@ -51,14 +51,15 @@ BuildRequires:  lilypond-fonts-common >= 2.20
 BuildRequires:  lirc-devel
 BuildRequires:  pkg-config
 BuildRequires:  zstd
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(lilv-0)
 #BuildRequires:  pkgconfig(libxml++-2.6)
 BuildRequires:  shared-mime-info
@@ -101,20 +102,17 @@ export CXXFLAGS="$CFLAGS"
 # -fmessage-length=0 -O2 -fno-strict-aliasing -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables
 # Now uses cmake
 #%%configure --enable-debug --localedir=%%{_datadir}/%%{name}/locale/
-%cmake \
-       -DCMAKE_INSTALL_LOCALEDIR:PATH=%{_datadir}/locale/
+%cmake -DCMAKE_INSTALL_LOCALEDIR:PATH=%{_datadir}/locale/ -DUSE_QT6=ON
 
 #make svnheader
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_datadir}/%{name}/scripts
 cp -p -r scripts/* %{buildroot}%{_datadir}/%{name}/scripts/
 cp -r data/* %{buildroot}%{_datadir}/%{name}/
 
-pushd build
-%make_install
-popd
+%cmake_install
 rm -rf %{buildroot}%{_datadir}/%{name}/desktop
 rm -rf %{buildroot}%{_datadir}/%{name}/mime
 rm -f %{buildroot}%{_datadir}/%{name}/*.cpp
@@ -153,7 +151,6 @@ install -D -m 0644 "%{SOURCE2}" "%{buildroot}%{_mandir}/man1/"
 %{_datadir}/applications/com.rosegardenmusic.%{name}.desktop
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_bindir}/%{name}
-%{_libdir}/lib%{name}private.so
 %{_mandir}/man1/*
 %{_datadir}/%{name}/*
 %{_datadir}/mime/packages/%{name}.xml
