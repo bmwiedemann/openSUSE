@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun  4 13:02:03 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to 2.8.6
+  * Correct an issue which causes tqsl to be stuck on “waiting on
+    other copies of TQSL to exit” when attempting to re-upload
+    previously uploaded QSOs.
+- update to 2.8.5
+  * Remove the certificate pinning for the lotw.arrl.org website as
+    this was causing TQSL errors when ARRL updated the website
+    certificate.
+  * Correct logs uploaded using TQSL “Sign and Upload” so those
+    files are compressed prior to upload.
+  * Correct a defect that meant that restarting log signing did not
+    delete the temporary file, leading to LoTW detecting duplicate
+    certificates and station locations.
+
+-------------------------------------------------------------------
 Fri Jan 30 21:27:01 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - update to 2.8.4

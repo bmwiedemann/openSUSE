@@ -11,9 +11,9 @@
 #
 
 
-%define sover 2_6
+%define sover 2_8_6
 Name:           tqsl
-Version:        2.8.4
+Version:        2.8.6
 Release:        0
 Summary:        TrustedQSL ham-radio applications
 # https://spdx.org/licenses/TrustedQSL.html
