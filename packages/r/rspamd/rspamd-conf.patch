@@ -1,14 +1,15 @@
-Index: rspamd-3.13.0/conf/rspamd.conf
+Index: rspamd-4.1.0/conf/rspamd.conf
 ===================================================================
---- rspamd-3.13.0.orig/conf/rspamd.conf
-+++ rspamd-3.13.0/conf/rspamd.conf
-@@ -31,7 +31,8 @@ lang_detection {
- }
- 
+--- rspamd-4.1.0.orig/conf/rspamd.conf
++++ rspamd-4.1.0/conf/rspamd.conf
+@@ -35,8 +35,9 @@ lang_detection {
  logging {
--    type = "file";
-+    type = "console";
+     # Defaults to file logging; a deployment can export RSPAMD_LOG_TYPE
+     # (e.g. console or syslog) and RSPAMD_LOG_FILE to override without a patch.
+-    type = "{= env.LOG_TYPE|default('file') =}";
++    type = "{= env.LOG_TYPE|default('console') =}";
+     filename = "{= env.LOG_FILE|default('$LOGDIR/rspamd.log') =}";
 +    systemd = true;
-     filename = "$LOGDIR/rspamd.log";
      .include "$CONFDIR/logging.inc"
      .include(try=true; priority=1,duplicate=merge) "$LOCAL_CONFDIR/local.d/logging.inc"
+     .include(try=true; priority=10) "$LOCAL_CONFDIR/override.d/logging.inc"

@@ -68,7 +68,7 @@
 %endif
 
 Name:           rspamd
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -384,7 +384,13 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/local.d/antivirus.conf.example
 
 %dir %{_sysconfdir}/rspamd/lua.local.d/
+%dir %{_sysconfdir}/rspamd/lua.local.d/maps
+%dir %{_sysconfdir}/rspamd/lua.local.d/regexps
+%dir %{_sysconfdir}/rspamd/lua.local.d/selectors
 %config(noreplace) %{_sysconfdir}/rspamd/lua.local.d/module.lua.example
+%config(noreplace) %{_sysconfdir}/rspamd/lua.local.d/maps/example.lua.example
+%config(noreplace) %{_sysconfdir}/rspamd/lua.local.d/regexps/example.lua.example
+%config(noreplace) %{_sysconfdir}/rspamd/lua.local.d/selectors/example.lua.example
 
 %dir %{_sysconfdir}/rspamd/scores.d
 %config(noreplace) %{_sysconfdir}/rspamd/scores.d/content_group.conf
@@ -583,6 +589,8 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/lua_aliases.lua
 %{_datadir}/rspamd/lualib/lua_fuzzy_html.lua
 %{_datadir}/rspamd/lualib/lua_url_filter.lua
+%{_datadir}/rspamd/lualib/lua_extras.lua
+%{_datadir}/rspamd/lualib/lua_feedback_parsers.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_content
 %{_datadir}/rspamd/lualib/lua_content/ical.lua
@@ -624,6 +632,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/lua_scanners/vadesecure.lua
 %{_datadir}/rspamd/lualib/lua_scanners/virustotal.lua
 %{_datadir}/rspamd/lualib/lua_scanners/metadefender.lua
+%{_datadir}/rspamd/lualib/lua_scanners/expurgate.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_selectors
 %{_datadir}/rspamd/lualib/lua_selectors/common.lua
@@ -668,6 +677,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/rspamadm/logstats.lua
 %{_datadir}/rspamd/lualib/rspamadm/mapstats.lua
 %{_datadir}/rspamd/lualib/rspamadm/neural_export.lua
+%{_datadir}/rspamd/lualib/rspamadm/memstat.lua
 
 %dir %{_datadir}/rspamd/lualib/plugins
 %{_datadir}/rspamd/lualib/plugins/dmarc.lua

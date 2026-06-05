@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Fri Jun  5 11:51:31 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.1.0
+  - Incompatible changes
+    - mx_check: three-layer Redis cache and finer outcome symbols
+      (MX_NONE replaces MX_NXDOMAIN/MX_MISSING)
+    - fuzzy_check: discover rspamd.com servers via SRV by default
+  - Features
+    - Upstreams: load-aware Power of Two Choices selection,
+      per-upstream latency EWMA, slow start on revive, per-target
+      SRV expansion honouring weights and error budgets, and
+      deferred DNS so transient startup failures no longer drop
+      upstreams
+    - url_redirector: chain-aware cache with intermediate hop
+      injection, coherent browser fingerprint profiles for stealth
+      resolution, glob-based redirector_hosts_map, and a per-URL
+      GET allowlist
+    - mx_check: IP-class classification, bad_mxs/bad_ips trust
+      maps, and per-source checks
+    - Protocol (/checkv3): expose custom metadata via metadata
+      headers and task:get_metadata()
+    - Composites: hot-reloadable dynamic composites map
+    - Lua API: bulk and regexp symbol lookups on task;
+      phase-specific (connect/read/write) timeouts and an on_error
+      callback for lua_tcp; lua_extras structured loader for custom
+      selectors, maps, and regexps with cross-kind dependency
+      ordering; and lua_feedback_parsers for DSN and ARF reports
+    - Scan timeouts: report pending async events and stalled
+      symbols when a scan times out
+    - Selectors: add fuzzy_digest, fuzzy_shingles, authenticated,
+      and received_count
+    - Logging & reporting: ClickHouse named extra_columns presets
+      (with an outbound preset) and richer Elastic logs (Reply-To,
+      received IPs, URL metadata, forcing module)
+    - external_services & scanners: per-service <RULE>_CHECK anchor
+      symbol for dependency ordering, plus eXpurgate engine support
+      in lua_scanners
+    - HTML/HTTP: HTML5 tag definitions (video/audio/picture/svg/…)
+      and optional insertion-ordered HTTP header emission
+    - Tooling: rspamadm control memstat for per-worker memory dumps
+      (RSS, mempool callsites, Lua heap, jemalloc), dmarc_report
+      --batch-wait, and autolearnstats --sort-by/--group
+    - Containers & misc: env-overridable baseline pidfile and
+      logging, auto-load of the shipped fasttext model when
+      present, and fixed-point (%.Nf) formatting with correct
+      rounding in fpconv
+  - Bug fixes
+    - Security hardening (parsers): fix NULL deref on S/MIME with
+      empty pkcs7-data, bound S/MIME recursion depth, harden
+      RAR/ZIP/7-zip parsers against malformed input, fix OOB reads
+      in CSS ident-escape scanning, find_eoh lookahead, bare spf2.
+      records, and empty/all-dots URL hosts, reject DNS labels that
+      overrun the packet, prevent an HTML entity-decode buffer
+      overflow, and add defensive mime_parser guards
+    - Security hardening (DoS & deps): bound URL query-scan
+      reentrancy on nested query URLs (multipattern), avoid
+      uninitialised bytes in rfc2047 decode, guard image linking
+      against a NULL decoded header, and port libucl upstream
+      security fixes (msgpack, parser bounds, schema)
+    - fuzzy_storage: harden network input paths, fix peer-pipe
+      partial-write resume and shutdown drain, plug a per-refresh
+      leak in dynamic ban inserts and a per-frame leak on
+      persistent TCP connections, and stop blocking allowed clients
+      on TCP
+    - neural: preserve the trained ANN across symbol-list drift and
+      symcache-driven profile rotation, and stabilise the profile
+      digest under disable_symbols_input while retargeting training
+      to the newest profile
+    - upstream: refill the token bucket over time so a flapping
+      upstream recovers, and avoid an infinite loop in get_random
+      when the only candidate is excluded
+    - URLs: canonicalise mailto: URIs and bare emails to a
+      slash-less form (RFC 6068), keep URLs with long userinfo
+      (userinfo-obfuscation phishing), preserve the verbatim href
+      as url->raw, and require TLD ≥ 3 chars for word_dot
+      naked-domain matches
+    - protocol (/checkv3): apply inline metadata.settings and
+      populate request headers
+    - composites: avoid over-eager second-pass deferral so
+      filter-stage composites are visible from postfilters
+    - Lua modules: fix a lua_tcp connection leak on read without
+      write, resolve the Redis master for rspamadm tools under
+      Sentinel, use Queue:new() in elastic, floor the dmarc connect
+      timestamp for PUC Lua compatibility, separate the greylisting
+      period from the Redis connection timeout, and write rspamadm
+      vault output to stdout directly
+    - Headers & encoding: emit ARC headers deterministically, map
+      DKIM permfail to dkim=permerror in Authentication-Results,
+      honour mime_utf8 in the INVALID_MSGID rule, correct lengths
+      after in-place mime-header rewrites, keep capture groups that
+      follow an empty one in regexp, and skip ICU conversion for
+      the synthetic x-binaryenc charset
+    - Misc: track all buckets in ratelimit selector rules, warn
+      when task_timeout is less than the symcache symbol timeout,
+      and use string_view::data() to fix libc++ builds
+
+-------------------------------------------------------------------
 Sun Apr  5 20:36:56 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.0.1
