@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  3 09:39:26 UTC 2026 - Oliver Kurz <okurz@suse.com>
+
+- Remove perl-SDL-fix-tests.patch
+  Fix build for openSUSE:Factory
+
+-------------------------------------------------------------------
 Mon Dec  8 15:37:18 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add skip-test.patch
@@ -289,4 +295,3 @@ Fri Oct 25 12:00:25 CEST 2002 - sndirsch@suse.de
 Fri Oct 25 00:01:14 CEST 2002 - sndirsch@suse.de
 
 - created package
-

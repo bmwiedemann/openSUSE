@@ -127,4 +127,13 @@
     <comment>- Add skip-test.patch</comment>
     <requestid>1321805</requestid>
   </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>26f7b5c2ab1358e153b3846060e10cc1</srcmd5>
+    <version>2.548</version>
+    <time>1780674316</time>
+    <user>anag_factory</user>
+    <comment>- Remove perl-SDL-fix-tests.patch
+  Fix build for openSUSE:Factory</comment>
+    <requestid>1357568</requestid>
+  </revision>
 </revisionlist>

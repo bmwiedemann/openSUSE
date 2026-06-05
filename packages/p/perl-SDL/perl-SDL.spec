@@ -1,7 +1,7 @@
 #
 # spec file for package perl-SDL
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,16 +27,15 @@ Source0:        https://cpan.metacpan.org/authors/id/F/FR/FROGGS/%{cpan_name}-%{
 Source1:        perl-SDL.rpmlintrc
 Source2:        cpanspec.yml
 Source100:      README.md
-# PATCH-FIX-UPSTREAM 299.patch -- based on PR 299
-Patch0:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/299.patch
-# PATCH-FIX-UPSTREAM 304.patch -- based on PR 304
-Patch1:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/304.patch
-# PATCH-FIX-UPSTREAM 308.patch -- based on PR 308
-Patch2:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/308.patch
-# https://github.com/PerlGameDev/SDL/pull/309
+# PATCH-FIX-UPSTREAM https://github.com/PerlGameDev/SDL/pull/299
+Patch0:         299.patch
+# PATCH-FIX-UPSTREAM https://github.com/PerlGameDev/SDL/pull/304
+Patch1:         304.patch
+# PATCH-FIX-UPSTREAM https://github.com/PerlGameDev/SDL/pull/308
+Patch2:         308.patch
+# PATCH-FIX-UPSTREAM https://github.com/PerlGameDev/SDL/pull/309
 Patch3:         perl-SDL-gcc15.patch
-Patch4:         perl-SDL-fix-tests.patch
-Patch5:         skip-test.patch
+Patch4:         skip-test.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Alien::SDL) >= 1.446
