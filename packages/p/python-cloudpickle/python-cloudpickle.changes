@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 29 04:38:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove pointless BuildRequires on py.
+
+-------------------------------------------------------------------
 Wed Feb 25 16:10:39 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Fix the condition with suse_version macro on SLFO (jsc#PED-15846)  

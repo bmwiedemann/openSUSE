@@ -34,7 +34,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools if %python-base >= 3.12}
 BuildRequires:  %{python_module tornado}
 %if 0%{?suse_version} >= 1699
