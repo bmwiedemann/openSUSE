@@ -9007,6 +9007,10 @@ unsorted:
   - inter-fonts 
   - inter-variable-fonts 
   - interceptty 
+  - international-doom 
+  - international-doom-common 
+  - international-heretic 
+  - international-hexen 
   - intlfonts 
   - intlfonts-arabic-bitmap-fonts 
   - intlfonts-asian-bitmap-fonts 
@@ -14503,6 +14507,7 @@ unsorted:
   - liblirc_driver0-32bit 
   - liblivechart-2-2 
   - liblkl0 
+  - libllama-common0 
   - libllama0 
   - liblldb15 
   - liblldb18 
@@ -16734,14 +16739,14 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent42 
+  - libtorrent43 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
   - libtpm2-totp0-devel 
   - libtpm_unseal1 
   - libtpms-devel 
-  - libtqsllib2_6 
+  - libtqsllib2_8_6 
   - libtracecmd-devel 
   - libtracecmd1 
   - libtraceevent-devel 
@@ -19201,7 +19206,6 @@ unsorted:
   - moka-icon-theme 
   - mold 
   - molecule 
-  - molecule-plugins 
   - molequeue 
   - molequeue-devel 
   - molequeue-doc 
@@ -25551,7 +25555,6 @@ unsorted:
   - python311-django-pipeline 
   - python311-django-polymorphic 
   - python311-django-push-notifications 
-  - python311-django-q 
   - python311-django-q2 
   - python311-django-qsessions 
   - python311-django-redis 
@@ -27219,6 +27222,7 @@ unsorted:
   - python311-pytest-param-files 
   - python311-pytest-percent 
   - python311-pytest-plus 
+  - python311-pytest-pook 
   - python311-pytest-pretty 
   - python311-pytest-profiling 
   - python311-pytest-pycodestyle 
@@ -29472,7 +29476,6 @@ unsorted:
   - python313-django-pipeline 
   - python313-django-polymorphic 
   - python313-django-push-notifications 
-  - python313-django-q 
   - python313-django-q2 
   - python313-django-qsessions 
   - python313-django-redis 
@@ -30569,6 +30572,7 @@ unsorted:
   - python313-openidc-client 
   - python313-openmesh 
   - python313-openpyxl 
+  - python313-openqa-async 
   - python313-openqa_client 
   - python313-openstackclient 
   - python313-openstackdocstheme 
@@ -31172,6 +31176,7 @@ unsorted:
   - python313-pytest-param-files 
   - python313-pytest-percent 
   - python313-pytest-plus 
+  - python313-pytest-pook 
   - python313-pytest-pretty 
   - python313-pytest-profiling 
   - python313-pytest-pycodestyle 
@@ -33589,6 +33594,7 @@ unsorted:
   - python314-extras 
   - python314-extratools 
   - python314-eyed3 
+  - python314-ezdxf 
   - python314-fabio 
   - python314-factory_boy 
   - python314-faiss 
@@ -34539,6 +34545,7 @@ unsorted:
   - python314-openidc-client 
   - python314-openmesh 
   - python314-openpyxl 
+  - python314-openqa-async 
   - python314-openqa_client 
   - python314-openstacksdk 
   - python314-opentelemetry-api 
@@ -35156,6 +35163,7 @@ unsorted:
   - python314-pytest-param-files 
   - python314-pytest-percent 
   - python314-pytest-plus 
+  - python314-pytest-pook 
   - python314-pytest-pretty 
   - python314-pytest-profiling 
   - python314-pytest-pycodestyle 
@@ -37265,6 +37273,7 @@ unsorted:
   - rrdtool-doc 
   - rrep 
   - rscsi 
+  - rshim 
   - rsibreak 
   - rsibreak-lang 
   - rsign2 
@@ -38793,6 +38802,9 @@ unsorted:
   - sypper 
   - sysbench 
   - sysctl-logger 
+  - sysdig 
+  - sysdig-bash-completion 
+  - sysdig-zsh-completion 
   - sysfsutils 
   - sysfsutils-devel 
   - sysinfo 
