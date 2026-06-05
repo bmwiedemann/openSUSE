@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 04 05:30:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.18:
+  * fix(dag): preserve provider priority in local repo
+  * refactor(dag): drop the unused per-origin package resolver
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.19.0 to
+    5.19.1 (#1983)
+  * build(deps): bump cloud.google.com/go/storage from 1.62.1 to
+    1.62.2 (#1984)
+  * build(deps): bump step-security/harden-runner from 2.19.3 to
+    2.19.4 (#1985)
+  * build(deps): bump github.com/containerd/containerd/v2 (#1986)
+  * build(deps): bump golangci/golangci-lint-action from 9.2.0 to
+    9.2.1 (#1987)
+  * build(deps): bump actions/checkout from 6.0.2 to 6.0.3 (#1989)
+  * build(deps): bump chainguard-dev/actions from 1.6.19 to 1.6.21
+    (#1990)
+  * build(deps): bump actions/checkout in /.github/actions (#1991)
+
+-------------------------------------------------------------------
 Fri May 29 06:41:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.17:
