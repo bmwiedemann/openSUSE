@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  4 07:21:37 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Make post scripts less noisy (bsc#1267355)
+
+-------------------------------------------------------------------
 Fri May 29 07:07:56 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Use libalternatives instead of update-alternatives for
