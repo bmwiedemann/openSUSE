@@ -555,4 +555,49 @@ Bugfixes
     <comment>version update to 2.4.19.1</comment>
     <requestid>1332219</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>d00323c93ddcf09451d4ed03057cd040</srcmd5>
+    <version>2.4.19.1</version>
+    <time>1771343690</time>
+    <user>anag_factory</user>
+    <comment>- run the testsuite (make check)</comment>
+    <requestid>1333564</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4864855ad567ddf90956169e849474fd</srcmd5>
+    <version>2.4.19.3</version>
+    <time>1780664585</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.19.3
+  Bugfixes
+  * proto: add scope=openid to the authorization request when
+    passing a Request Object by reference (request_uri) as
+    defined by spec; see #1385;
+  * config: fix intermittent core dumps on a large number of
+    (first) incoming parallel requests after startup in threaded
+    MPM environments.
+  * code: fix a memory leak in
+    oidc_metadata_jwks_retrieve_and_cache when JSON validation
+    fails.
+  * http: skip cookies that are only whitespace after the
+    leading-space strip and avoid leaving a malformed segment in
+    the forwarded Cookie header.
+  * metrics: switch _oidc_metrics_thread_exit to a volatile
+    apr_uint32_t accessed via apr_atomic_read32/set32 and avoid
+    strand the post-join cleanup.
+  * util: guard oidc_util_rand_int with a mod==0 short-circuit -
+    to avoid division by zero - and rejection-sample before
+    reducing modulo so v % mod is uniformly distributed.
+  * userinfo: skip the DPoP-nonce retry path for non-DPoP token
+    types to avoid dereference NULL inside apr_hash_get and crash
+    the worker.
+  * config: validate format specifiers (only %% and exactly two/one
+    %s) in oidc_util_html_send_in_template so a stray %s in custom
+    templates configured with OIDCPreservePostTemplates) can't
+    crash or corrupt memory.
+  Security
+  * code: fix &gt;25 cases of potential string/URL matching attacks,
+    XSS attacks, buffer overload etc. (forwarded request 1356608 from mnhauke)</comment>
+    <requestid>1357247</requestid>
+  </revision>
 </revisionlist>

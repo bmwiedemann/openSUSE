@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Jun  2 06:19:44 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.19.3
+  Bugfixes
+  * proto: add scope=openid to the authorization request when
+    passing a Request Object by reference (request_uri) as
+    defined by spec; see #1385;
+  * config: fix intermittent core dumps on a large number of
+    (first) incoming parallel requests after startup in threaded
+    MPM environments.
+  * code: fix a memory leak in
+    oidc_metadata_jwks_retrieve_and_cache when JSON validation
+    fails.
+  * http: skip cookies that are only whitespace after the
+    leading-space strip and avoid leaving a malformed segment in
+    the forwarded Cookie header.
+  * metrics: switch _oidc_metrics_thread_exit to a volatile
+    apr_uint32_t accessed via apr_atomic_read32/set32 and avoid
+    strand the post-join cleanup.
+  * util: guard oidc_util_rand_int with a mod==0 short-circuit -
+    to avoid division by zero - and rejection-sample before
+    reducing modulo so v % mod is uniformly distributed.
+  * userinfo: skip the DPoP-nonce retry path for non-DPoP token
+    types to avoid dereference NULL inside apr_hash_get and crash
+    the worker.
+  * config: validate format specifiers (only %% and exactly two/one
+    %s) in oidc_util_html_send_in_template so a stray %s in custom
+    templates configured with OIDCPreservePostTemplates) can't
+    crash or corrupt memory.
+  Security
+  * code: fix >25 cases of potential string/URL matching attacks,
+    XSS attacks, buffer overload etc.
+  * config: fix low-risk - insider admin attack based- security
+    vulnerabilities.
+  * log: do not log refresh tokens at warn/error levels.
+  Other
+  * code: cast curl timeouts in options to long to avoid compiler
+    warnings.
+  * test: re-factor the framework and add more unit tests.
+  * build: conditionally add --coverage to AM_LDFLAGS in
+    Makefile.am
+- Update to version 2.4.19.2
+  Bugfixes
+  * authz: fix claims based authorization in OAuth 2.0 RS mode
+    (AuthType oauth20 and AuthType auth-openidc);
+    regression introduced in 2.4.19
+
+-------------------------------------------------------------------
+Tue Feb 17 13:36:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- run the testsuite (make check)
+
+-------------------------------------------------------------------
 Tue Feb 10 11:37:18 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 2.4.19.1
