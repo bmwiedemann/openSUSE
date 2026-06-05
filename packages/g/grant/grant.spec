@@ -17,7 +17,7 @@
 
 
 Name:           grant
-Version:        0.6.4
+Version:        0.6.6
 Release:        0
 Summary:        Search an SBOM for licenses and the packages they belong to
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.8
+BuildRequires:  go1.26 >= 1.26.3
 BuildRequires:  zsh
 
 %description

@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Thu Jun 04 05:49:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.6 (.5 was not released):
+  * update to dockers_v2 for goreleaser (#519)
+  * chore(deps): update anchore dependencies (#513)
+  * Pass 'contents: read' to check-gate workflow (#516)
+  * chore(deps): bump the actions-minor-patch group across 1
+    directory with 6 updates (#514)
+  * chore(deps): update anchore dependencies (#505)
+  * chore(deps): bump the go-minor-patch group across 1 directory
+    with 2 updates (#512)
+  * chore(deps): bump the actions-minor-patch group across 1
+    directory with 6 updates (#511)
+  * chore(deps): bump github.com/containerd/containerd/v2 (#510)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.19.0 to
+    5.19.1 (#509)
+  * chore(deps): bump golang.org/x/term (#507)
+  * remove release notification (#508)
+  * Port to go-make (#506)
+  * chore(deps): update anchore dependencies (#503)
+  * chore(deps): update anchore dependencies (#485)
+  * chore(deps): update tool versions (#495)
+  * use released shared workflow (#502)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.18.0 to
+    5.19.0 (#501)
+  * chore(deps): bump github.com/gookit/color from 1.6.0 to 1.6.1
+    (#499)
+  * Tighten workflow permissions, update release shape, and fix
+    dependabot config (#498)
+  * chore(deps): bump github/codeql-action from 4.35.2 to 4.35.3
+    (#496)
+  * chore(deps): bump slackapi/slack-github-action from 3.0.2 to
+    3.0.3 (#497)
+  * chore(deps): update tool versions (#493)
+  * chore(deps): bump github.com/anchore/syft (#494)
+  * chore(deps): bump github.com/github/go-spdx/v2 from 2.4.0 to
+    2.6.0 (#486)
+  * chore(deps): bump modernc.org/sqlite from 1.48.2 to 1.50.0
+    (#491)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.9 to
+    6.7.10 (#489)
+  * chore(deps): bump slackapi/slack-github-action from 3.0.1 to
+    3.0.2 (#490)
+  * chore: remove common workflows (#492)
+  * chore(deps): update tool versions (#488)
+  * chore(deps): bump github/codeql-action from 4.35.1 to 4.35.2
+    (#484)
+  * chore(deps): update anchore dependencies (#480)
+  * chore(deps): update tool versions (#482)
+  * restore go minimum version to 1.25.8 (#481)
+  * chore(deps): bump zizmorcore/zizmor-action from 0.5.2 to 0.5.3
+    (#478)
+  * chore(deps): bump actions/cache in /.github/actions/bootstrap
+    (#479)
+  * chore(deps): bump modernc.org/sqlite from 1.48.1 to 1.48.2
+    (#472)
+  * chore(deps): update anchore dependencies (#469)
+  * chore(deps): update tool versions (#470)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.17.1 to
+    5.18.0 (#477)
+  * chore(deps): bump golang.org/x/term from 0.41.0 to 0.42.0
+    (#476)
+  * chore(deps): update tools to latest versions (#451)
+  * chore(deps): update tool versions (#452)
+  * chore(deps): bump github/codeql-action from 4.32.6 to 4.35.1
+    (#459)
+  * chore(deps): update Go version (#468)
+  * chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.3 to
+    4.1.4 (#457)
+  * chore(deps): bump go.opentelemetry.io/otel/sdk from 1.40.0 to
+    1.43.0 (#463)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3
+    (#462)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.8.5 to
+    1.8.6 (#467)
+  * chore(deps): bump modernc.org/sqlite from 1.47.0 to 1.48.1
+    (#465)
+  * chore(deps): bump docker/login-action from 4.0.0 to 4.1.0
+    (#466)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.8 to
+    6.7.9 (#464)
+  * chore(deps): bump
+    github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream (#461)
+  * chore: update zizmor workflow triggers (#456)
+  * chore: add security-events write permission for zizmor (#455)
+  * (chore): removing automations (#453)
+  * chore(deps): update tools to latest versions (#445)
+  * chore(deps): update anchore dependencies (#447)
+  * chore(deps): update tool versions (#444)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.17.0 to
+    5.17.1 (#450)
+  * chore(deps): bump actions/setup-go in
+    /.github/actions/bootstrap (#448)
+  * chore(deps): bump actions/setup-go from 6.3.0 to 6.4.0 (#449)
+  * chore(deps): bump actions/cache in /.github/actions/bootstrap
+    (#442)
+  * chore(deps): bump modernc.org/sqlite from 1.46.1 to 1.47.0
+    (#441)
+  * chore(deps): pin certain go dependencies (#438)
+  * fix: --dry-run status code correction (#398)
+  * chore(deps): update tools to latest versions (#434)
+  * chore(deps): bump slackapi/slack-github-action from 2.1.1 to
+    3.0.1 (#435)
+  * chore(deps): bump actions/create-github-app-token from 2.2.1 to
+    3.0.0 (#436)
+
+-------------------------------------------------------------------
 Fri Mar 20 06:39:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.4:
