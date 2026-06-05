@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  2 18:57:22 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.26.4 (released 2026-06-02) includes security fixes to the
+  crypto/x509, mime, and net/textproto packages, as well as bug
+  fixes to the compiler, the runtime, the go fix command, and the
+  crypto/fips140 package.
+  Refs boo#1255111 go1.26 release tracking
+  CVE-2026-42504 CVE-2026-42507 CVE-2026-27145
+  * go#79230 go#79217 boo#1267442 security: fix CVE-2026-42504 mime: quadratic complexity in WordDecoder.DecodeHeader
+  * go#79426 go#79346 boo#1267444 security: fix CVE-2026-42507 net/textproto: arbitrary input are included in errors without any escaping
+  * go#79701 go#79694 boo#1267450 security: fix CVE-2026-27145 crypto/x509: split candidate hostname only once
+  * go#79191 cmd/compile: Bug in rewrite rules for AMD64 causes SHL instruction overflow and miscompilation
+  * go#79226 crypto/internal/fips140/drbg: backport CL 774221 to Go 1.26
+  * go#79349 cmd/fix: x/tools/go/analysis/passes/modernize: slicescontains hoists needle expression, changing side effect count
+  * go#79686 runtime/race: change in 93a4f03 leads to a failed build on Amazon Linux 2 and arm64
+
+-------------------------------------------------------------------
 Thu May  7 16:14:14 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.26.3 (released 2026-05-07) includes security fixes to the go
