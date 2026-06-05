@@ -18,7 +18,7 @@
 
 
 Name:           pcsc-tools
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        Smart card tools
 License:        GPL-2.0-or-later
@@ -57,9 +57,13 @@ sed 's|#!/usr/bin/env perl|#!/usr/bin/perl|g' -i ATR_analysis.in gscriptor scrip
 %{_bindir}/pcsc_scan
 %{_bindir}/scriptor
 %{_datadir}/pcsc/
-%{_mandir}/man1/*
+%{_mandir}/man1/ATR_analysis.1p%{?ext_man}
+%{_mandir}/man1/gscriptor.1%{?ext_man}
+%{_mandir}/man1/pcsc_scan.1%{?ext_man}
+%{_mandir}/man1/scriptor.1%{?ext_man}
 %{_datadir}/applications/gscriptor.desktop
 %{_datadir}/locale/fr/LC_MESSAGES/pcsc-tools.mo
+%{_datadir}/locale/ka/LC_MESSAGES/pcsc-tools.mo
 %{_datadir}/locale/ru/LC_MESSAGES/pcsc-tools.mo
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun  4 15:28:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.5
+  * 102 new ATRs.
+  * pcsc_scan:
+    + fix an infinite loop.
+    + do not crash if SCardEstablishContext() fails.
+    + do not wait for an non-started thread.
+    + handle the case of an error during SCardGetStatusChange.
+  * meson: use -DATRparser="" to disable the ATR parser.
+  * gscriptor: Add Georgian translation.
+  * minor fixes and improvements.
+
+-------------------------------------------------------------------
 Fri Mar 13 21:31:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.4
