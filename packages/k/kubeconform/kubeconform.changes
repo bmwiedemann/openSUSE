@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 05 05:43:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.0:
+  * Update README (#360)
+  * Small fixes, better sanitization (#359)
+  * fix: update duration validation to use strfmt package (#348)
+  * Update deps, make sure we use vendored dependencies (#358)
+  * Openapi2jsonschema-go (#357)
+  * fix: avoid panic when a schema document decodes to null (#356)
+  * Read resources from multiple workers (#354)
+  * Fix typo (#339)
+  * fix: Github -> GitHub (#340)
+
+-------------------------------------------------------------------
 Mon May 12 10:26:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.7.0:
