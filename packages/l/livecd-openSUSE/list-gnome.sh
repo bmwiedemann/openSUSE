@@ -6,9 +6,12 @@ buildignore libreoffice-icon-theme-breeze
 buildignore libreoffice-icon-theme-sifr
 buildignore libreoffice-icon-theme-hicontrast
 buildignore colord
-buildignore apparmor-utils
 buildignore java-11-openjdk-headless
 install branding-openSUSE
+buildignore distribution-logos-branding-SLE
+
+# Decide for patterns-gnome-gnome_basic:(ibus or fcitx)
+install ibus
 
 # adobe-sourcecodepro-fonts is the monospace font for openSUSE
 install adobe-sourcecodepro-fonts
@@ -88,8 +91,12 @@ buildignore gnome-backgrounds
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
 
-# Was part of the gnome pattern
-install NetworkManager-applet
+# GNOME has that builtin
+buildignore NetworkManager-applet
+for i in openconnect openvpn pptp vpnc; do
+	# Need to do that separately for some reason
+	buildignore NetworkManager-applet-$i
+done
 
 # Moved here from list-common.sh, too big for x11
 install xf86-video-vmware i686,x86_64
@@ -98,7 +105,6 @@ install xf86-video-vmware i686,x86_64
 install alsa-firmware
 
 # Previously required by rest_cd_gnome
-installPattern apparmor
 installPattern gnome
 installPattern gnome_basis
 installPattern gnome_imaging
@@ -106,28 +112,23 @@ installPattern gnome_internet
 installPattern gnome_multimedia
 installPattern gnome_office
 installPattern gnome_utilities
-installPattern gnome_yast
+if [ "$distro" = "tumbleweed" ]; then
+	installPattern gnome_yast
+	installPattern yast2_basis
+	installPattern yast2_install_wf
+fi
 installPattern imaging
 installPattern multimedia
 installPattern office
 installPattern sw_management_gnome
-installPattern yast2_basis
-installPattern yast2_install_wf
 
 # Previously recommended by rest_cd_gnome
 install gnome-mines
 install gnome-sudoku
 install quadrapassel
 
-# Pulls in Qt WebEngine, too big
-buildignore opensuse-welcome
-
-# Pulls in a different WebKit version on Leap and doesn't offer any useful manuals anyway
+# Doesn't offer any useful manuals with excludedocs
 buildignore yelp
-# Same issue, but arguably useful and hopefully fixed soon.
-if [ "$distro" = "leap" ]; then
-	buildignore sushi
-fi
 
 # Avoid all GTK 2 stuff. GTK 3 and 4 should be enough, really.
 buildignore libgtk-2_0-0

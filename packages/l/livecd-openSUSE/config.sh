@@ -8,31 +8,18 @@
 # AUTHOR        : Marcus Schaefer <ms@suse.de>, Stephan Kulow <coolo@suse.de>, Fabian Vogt <fvogt@suse.com>
 #               :
 # LICENSE       : BSD
-#======================================
-# Functions...
-#--------------------------------------
-test -f /.kconfig && . /.kconfig
-test -f /.profile && . /.profile
 
 set -euxo pipefail
 
-pl=$(rpmqpack | grep release-livecd-)
+# Include functions & variables
+. /.kconfig
+. /.profile
 
-# Get the flavor from the installed (openSUSE|Leap)-release-livecd- RPM
-# as <censored> kiwi does not make the flavor accessible
-desktop=$(echo "$pl" | awk -F- '{ print $4 }' | tr A-Z a-z)
+desktop=$(echo "$kiwi_displayname" | grep -oE "GNOME|KDE|Rescue|XFCE" | tr A-Z a-z | sed s/rescue/x11/)
 
-# Not needed, but required by suse-module-tools (bsc#1116665)
-rpm -q binutils && rpm -e --nodeps binutils
-# Not needed, but required by dracut-kiwi-live -> cdrkit-cdrtools-compat
-rpm -q wodim && rpm -e --nodeps wodim
 # Actually a hack: xrdb requires this, but on livecds it's not used
-rpm -qa | grep "^cpp" | xargs -r rpm -e --nodeps
-rpm -qa | grep "^libisl" | xargs -r rpm -e
-
-# GTK 3 hard-requires this for some reason. The only GTK3 application is Firefox,
-# which has its own icons and we have breeze for the rest.
-[ "$desktop" = "kde" ] && rpm -e --nodeps adwaita-icon-theme
+rpm -qa "cpp*" | xargs -r rpm -e --nodeps
+rpm -qa "libisl*" | xargs -r rpm -e
 
 # Workaround until dropped from xfce4-branding-openSUSE
 if [ "$desktop" = "x11" -o "$desktop" = "xfce" ]; then
@@ -44,13 +31,17 @@ fi
 
 # Make the image smaller, work around a hard dep by plasma6-desktop -> signon-ui and kdeplasma6-addons
 if rpm -q libQt6WebEngineCore6; then
-	rpm -e --nodeps libQt6WebEngineCore6
+	rpm -e --nodeps libQt6WebEngineCore6 qt6-webengine
+fi
+# Work around a hard dep kf6-kio -> libKF6DocTools6 for help://. Avoids docbook.
+if rpm -q kf6-kdoctools; then
+	rpm -e --nodeps libKF6DocTools6
+	zypper rm -y -u kf6-kdoctools
 fi
 
 # Reuse what the macro does
 rpm --eval "%fdupes /usr/share/licenses" | sh
 
-#--------------------------------------
 # enable and disable services
 
 for i in langset NetworkManager firewalld chronyd; do
@@ -78,18 +69,12 @@ if [ "$desktop" = "x11" ] || [ "$desktop" = "xfce" ]; then
 
 	# Unnecessary modules in the initrd
 	echo 'omit_drivers+=" ceph chcr cifs csiostor cxgb4 intel_qat ocfs2 bnx2fc qedf "' >> /etc/dracut.conf.d/less-storage.conf
-
-	# Work around https://github.com/OSInside/kiwi/issues/1751
-	sed -i '/omit_dracutmodules=/d' /usr/bin/dracut
 fi
 
 if rpm -q Mesa-gallium; then
 	# Only used for OpenCL and X11 acceleration on vmwgfx (?), saves ~50MiB
 	rpm -e --nodeps Mesa-gallium
 fi
-
-# Too big and will have to be dropped anyway (unmaintained, known security issues)
-rm -rf /usr/lib*/libmfxhw*.so.* /usr/lib*/mfx/
 
 if [ "$desktop" = "x11" ]; then
 	# Generated on boot if missing
@@ -163,9 +148,11 @@ for moddir in /lib/modules/*; do
 	depmod "$(basename "$moddir")"
 done
 
-# Add repos from /etc/YaST2/control.xml
-add-yast-repos
-zypper --non-interactive rm -u live-add-yast-repos
+if [ -x /usr/sbin/add-yast-repos ]; then
+	# Add repos from /etc/YaST2/control.xml
+	add-yast-repos
+	zypper --non-interactive rm -u live-add-yast-repos
+fi
 
 # Install README.BETA where expected by YaST
 cp /usr/lib/skelcd/CD1/README.BETA / || :
@@ -195,12 +182,12 @@ pam-config -a --nullok
 >>/etc/fstab
 
 # Add Installation and upgrade icons to the desktop
-if [ "$desktop" = "kde" ]; then
+if [ "$desktop" = "kde" ] && [ -e /usr/share/applications/installation.desktop ]; then
     # bug 989897, avoid creating desktop directory on KDE so that the default items are added on first login
     cp /usr/share/applications/{installation,upgrade}.desktop /usr/share/kio_desktop/DesktopLinks/
     # Set the application as being "trusted"
     chmod a+x /usr/share/kio_desktop/DesktopLinks/{installation,upgrade}.desktop
-elif [ "$desktop" = "xfce" ]; then
+elif [ "$desktop" = "xfce" ] && [ -e /usr/share/applications/installation.desktop ]; then
     mkdir -p /home/linux/.config /home/linux/Desktop
     echo 'XDG_DESKTOP_DIR="$HOME/Desktop"' > /home/linux/.config/user-dirs.dirs
     cp /usr/share/applications/{installation,upgrade}.desktop /home/linux/Desktop/

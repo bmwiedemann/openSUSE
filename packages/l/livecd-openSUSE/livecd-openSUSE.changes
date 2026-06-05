@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jun  3 08:13:53 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- *: Drop Leap 15.x specific code and support Leap 16
+- list-gnome: Ignore NetworkManager-applet
+- list-xfce: Drop hexchat
+- list-kde: Switch remaining Plasma 5 ignores to Plasma 6
+- config.sh: Clean up some obsolete parts
+- livecd.kiwi.in: Switch from ext4 inside a squashfs with xz-compression
+  to squashfs with high zstd compression directly.
+  Rescue-CD x86_64 went from 775MiB size, 13.5s boot time to
+  811MiB but 11.3s boot time, which is 5% bigger but 16% faster.
+
+-------------------------------------------------------------------
+Wed Jun  3 08:03:44 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Drop some flavor-specific conditions, not necessary
+- list-gnome: Don't mention gdm-systemd explicitly
+- list-kde: Move bluedevil5 ignore to leap section
+- list-kde: Ignore adwaita-fonts and kirigami2
+
+-------------------------------------------------------------------
+Tue Jun  2 13:46:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Switch gnome live image from xdm to native gdm-systemd service
+- Do not pull in base-x11 and x11 patterns on to gnome live images:
+  GNOME is native wayland without X11 Session support by now.
+
+-------------------------------------------------------------------
+Tue Jun  2 12:18:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer pull in apparmor pattern onto gnome live image:
+  openSUSE has migrated to SElinux on regular installs (and no
+  other desktop live pulls in apparmor anymore).
+
+-------------------------------------------------------------------
 Fri Dec 12 22:46:50 UTC 2025 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - No longer explicitly require dbus-1-x11.

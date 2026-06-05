@@ -13,7 +13,7 @@
     <profile name="EFI" description="EFI" import="true" arch="x86_64,aarch64"/>
   </profiles>
   <preferences profiles="EFI">
-    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet systemd.show_status=yes" flags="overlay" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="uefi" volid="openSUSE_Tumbleweed_KDE_Live" mediacheck="true"/>
+    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet systemd.show_status=yes" flags="overlay" filesystem="squashfs" squashfscompression="zstd" fscreateoptions="-Xcompression-level 22" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="uefi" volid="openSUSE_Tumbleweed_KDE_Live" mediacheck="true"/>
     <version>2.8.0</version>
     <bootloader-theme>openSUSE</bootloader-theme>
     <bootsplash-theme>bgrt</bootsplash-theme>
@@ -23,7 +23,7 @@
     <rpm-excludedocs>true</rpm-excludedocs>
   </preferences>
   <preferences profiles="noEFI">
-    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet systemd.show_status=yes" flags="overlay" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="bios" volid="openSUSE_Tumbleweed_KDE_Live" mediacheck="true"/>
+    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet systemd.show_status=yes" flags="overlay" filesystem="squashfs" squashfscompression="zstd" fscreateoptions="-Xcompression-level 22" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="bios" volid="openSUSE_Tumbleweed_KDE_Live" mediacheck="true"/>
     <version>2.8.0</version>
     <bootloader-theme>openSUSE</bootloader-theme>
     <bootsplash-theme>bgrt</bootsplash-theme>
@@ -39,18 +39,9 @@
     <package name="kernel-default"/>
     <package name="patterns-base-bootloader"/>
     <package name="dracut-kiwi-live"/>
-    <!-- workaround for bnc#892087 -->
-    <package name="e2fsprogs" bootinclude="true"/>
-    <package name="pam"/>
-    <package name="pam-config"/>
-    <package name="udev"/>
-    <package name="aaa_base"/>
     <package name="tar"/>
-    <package name="patch"/>
-    <package name="zypper"/>
     <package name="memtest86+" arch="i686,x86_64"/>
     <package name="live-langset-data"/>
-    <package name="live-add-yast-repos"/>
     <!-- used by config.sh -->
     <package name="fdupes"/>
     <package name="zstd"/>
@@ -165,6 +156,7 @@
     <ignore name="sane-backends"/>
     <package name="branding-openSUSE"/>
     <package name="chrony"/>
+    <package name="live-add-yast-repos"/>
     <!-- OBS-IgnorePackage: glibc-32bit -->
     <ignore name="glibc-32bit"/>
     <!-- OBS-IgnorePackage: libvdpau_r300 -->
@@ -213,8 +205,6 @@
     <ignore name="xorg-x11-essentials"/>
     <!-- OBS-IgnorePackage: xorg-x11-server-extra -->
     <ignore name="xorg-x11-server-extra"/>
-    <package name="xdm"/>
-    <package name="sysvinit-tools"/>
     <!-- OBS-IgnorePackage: icewm -->
     <ignore name="icewm"/>
     <!-- OBS-IgnorePackage: baekmuk-ttf-fonts -->
@@ -227,6 +217,8 @@
     <ignore name="baekmuk-bitmap-fonts"/>
     <!-- OBS-IgnorePackage: intlfonts-chinese-big-bitmap-fonts -->
     <ignore name="intlfonts-chinese-big-bitmap-fonts"/>
+    <!-- OBS-IgnorePackage: xorg-x11-fonts -->
+    <ignore name="xorg-x11-fonts"/>
     <!-- OBS-IgnorePackage: xorg-x11-fonts-legacy -->
     <ignore name="xorg-x11-fonts-legacy"/>
     <!-- OBS-IgnorePackage: xorg-x11-fonts-converted -->
@@ -351,8 +343,6 @@
     <package name="kernel-firmware"/>
     <package name="patterns-base-enhanced_base"/>
     <namedCollection name="enhanced_base"/>
-    <package name="patterns-base-x11"/>
-    <namedCollection name="x11"/>
     <namedCollection name="sw_management"/>
     <package name="checkmedia"/>
     <package name="bcache-tools"/>
@@ -404,7 +394,6 @@
     <package name="ucode-amd" arch="i686,x86_64"/>
     <!-- OBS-IgnorePackage: ucode-intel -->
     <ignore name="ucode-intel"/>
-    <package name="shim" arch="i686,x86_64,aarch64"/>
 
     <!-- list-kde.sh -->
     <!-- OBS-IgnorePackage: gvfs -->
@@ -449,6 +438,10 @@
     <ignore name="khelpcenter"/>
     <!-- OBS-IgnorePackage: kaccounts-providers -->
     <ignore name="kaccounts-providers"/>
+    <!-- OBS-IgnorePackage: adwaita-fonts -->
+    <ignore name="adwaita-fonts"/>
+    <!-- OBS-IgnorePackage: kirigami2 -->
+    <ignore name="kirigami2"/>
     <package name="NetworkManager"/>
     <!-- OBS-IgnorePackage: libreoffice -->
     <ignore name="libreoffice"/>
@@ -492,10 +485,8 @@
     <package name="lklug-fonts"/>
     <package name="indic-fonts"/>
     <package name="arabic-kacst-fonts"/>
-    <!-- OBS-IgnorePackage: oxygen5-icon-theme-large -->
-    <ignore name="oxygen5-icon-theme-large"/>
-    <!-- OBS-IgnorePackage: plasma5-desktop-emojier -->
-    <ignore name="plasma5-desktop-emojier"/>
+    <!-- OBS-IgnorePackage: plasma6-desktop-emojier -->
+    <ignore name="plasma6-desktop-emojier"/>
     <!-- OBS-IgnorePackage: ispell -->
     <ignore name="ispell"/>
     <!-- OBS-IgnorePackage: patterns-kde-kde_games -->
@@ -505,12 +496,10 @@
     <!-- OBS-IgnorePackage: patterns-kde-kde_utilities -->
     <ignore name="patterns-kde-kde_utilities"/>
     <package name="kcharselect"/>
-    <!-- OBS-IgnorePackage: plasma-nm5-openconnect -->
-    <ignore name="plasma-nm5-openconnect"/>
-    <!-- OBS-IgnorePackage: plasma-nm5-openvpn -->
-    <ignore name="plasma-nm5-openvpn"/>
-    <!-- OBS-IgnorePackage: kdoctools -->
-    <ignore name="kdoctools"/>
+    <!-- OBS-IgnorePackage: plasma6-nm-openconnect -->
+    <ignore name="plasma6-nm-openconnect"/>
+    <!-- OBS-IgnorePackage: plasma6-nm-openvpn -->
+    <ignore name="plasma6-nm-openvpn"/>
     <package name="xf86-video-vmware" arch="i686,x86_64"/>
     <!-- OBS-IgnorePackage: digikam -->
     <ignore name="digikam"/>
@@ -536,26 +525,24 @@
     <ignore name="vlc-lang"/>
     <!-- OBS-IgnorePackage: kipi-plugins -->
     <ignore name="kipi-plugins"/>
-    <!-- OBS-IgnorePackage: breeze5-wallpapers -->
-    <ignore name="breeze5-wallpapers"/>
     <!-- OBS-IgnorePackage: breeze6-wallpapers -->
     <ignore name="breeze6-wallpapers"/>
+    <!-- OBS-IgnorePackage: kdoctools -->
+    <ignore name="kdoctools"/>
     <package name="partitionmanager"/>
     <!-- OBS-IgnorePackage: cyrus-sasl -->
     <ignore name="cyrus-sasl"/>
     <!-- OBS-IgnorePackage: xorg-x11-fonts -->
     <ignore name="xorg-x11-fonts"/>
     <package name="alsa-firmware"/>
-    <!-- OBS-IgnorePackage: bluedevil5 -->
-    <ignore name="bluedevil5"/>
     <!-- OBS-IgnorePackage: konsole-part-lang -->
     <ignore name="konsole-part-lang"/>
   </packages>
   <packages type="bootstrap">
     <package name="filesystem"/>
+    <package name="branding-openSUSE"/>
     <package name="openSUSE-release"/>
     <package name="openSUSE-release-livecd-kde"/>
-    <package name="branding-openSUSE"/>
   </packages>
   <repository type="rpm-md">
     <source path="obsrepositories:/"/>

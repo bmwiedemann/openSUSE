@@ -100,11 +100,8 @@ buildignore libqt5-qttranslations
 buildignore plymouth
 buildignore 7zip
 
-# On Leap it's a hard dep of dhcp-client, needed by NM.
-# On TW, NM uses the builtin DHCP client instead.
-if [ "$distro" = "tumbleweed" ]; then
-	buildignore bind-utils
-fi
+# NM uses the builtin DHCP client instead.
+buildignore bind-utils
 
 # tumbler -> libgepup uses libwebkit2gtk-4_0-37, while epiphany uses libwebkit2gtk-4_1-0.
 # We can't have both, too big.
@@ -146,7 +143,6 @@ install evince
 install evince-plugin-pdfdocument
 install file-roller
 install gparted
-install hexchat
 install leafpad
 install lightdm
 install lightdm-gtk-greeter

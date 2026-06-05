@@ -2199,4 +2199,12 @@
     <user>dimstar_suse</user>
     <comment>- No longer explicitly require dbus-1-x11.</comment>
   </revision>
+  <revision rev="277" vrev="277">
+    <srcmd5>7b2e30d5772a39b4b83b2fe697796b6c</srcmd5>
+    <version>unknown</version>
+    <time>1780673961</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1357557</requestid>
+  </revision>
 </revisionlist>

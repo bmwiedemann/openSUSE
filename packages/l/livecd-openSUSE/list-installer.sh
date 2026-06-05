@@ -1,3 +1,8 @@
+if [ "$distro" = "leap" ]; then
+	# No YaST. TODO: Try Agama?
+	return
+fi
+
 # YaST
 install patterns-yast-yast2_basis
 installPattern yast2_basis

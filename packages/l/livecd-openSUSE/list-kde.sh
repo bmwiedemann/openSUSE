@@ -12,31 +12,26 @@ buildignore akregator
 buildignore ImageMagick
 install patterns-kde-kde
 installPattern kde
-if [ "$distro" = "leap" ]; then
-  install plasma5-workspace-branding-openSUSE
-  install phonon4qt5-backend-vlc
-  buildignore vlc
-  buildignore vlc-qt
-  install plasma-nm5
-  # From x11_enhanced, but that pattern can't be installed
-  install opensuse-welcome
-  install baloo5-tools
-else
-  install phonon-vlc-qt6
-  buildignore gtk3-metatheme-breeze
-  install kf6-baloo-tools
-  buildignore libqt5-qttranslations
-  buildignore speech-dispatcher
 
-  # Until deleted or replaced by kcm_sddm6
-  buildignore kcm_sddm
-  # Until built against Qt 6
-  buildignore xwaylandvideobridge
-  # Needs WebEngine and we don't install docs on the .iso
-  buildignore khelpcenter
-  # Needs WebEngine and not useful ATM
-  buildignore kaccounts-providers
-fi
+install phonon-vlc-qt6
+buildignore gtk3-metatheme-breeze
+install kf6-baloo-tools
+buildignore libqt5-qttranslations
+buildignore speech-dispatcher
+
+# Until deleted or replaced by kcm_sddm6
+buildignore kcm_sddm
+# Until built against Qt 6
+buildignore xwaylandvideobridge
+# Needs WebEngine and we don't install docs on the .iso
+buildignore khelpcenter
+# Needs WebEngine and not useful ATM
+buildignore kaccounts-providers
+# gsettings-desktop-schemas tries to pull this in
+buildignore adwaita-fonts
+# This pulls in Qt Quick stuff even if not needed
+buildignore kirigami2
+
 install NetworkManager
 # Don't add libreoffice for now, too large
 buildignore libreoffice
@@ -52,9 +47,8 @@ buildignore libgtk-2_0-0
 # Packages for the installer
 source "$PWD/list-installer.sh"
 
-buildignore oxygen5-icon-theme-large
 # Needs ibus data files and color emoji fonts, too big.
-buildignore plasma5-desktop-emojier
+buildignore plasma6-desktop-emojier
 
 # Resolve have-choice
 buildignore ispell
@@ -66,13 +60,9 @@ buildignore patterns-kde-kde_pim
 # Not really useful here, except for kcharselect.
 buildignore patterns-kde-kde_utilities
 install kcharselect
-# Ignore
-buildignore plasma-nm5-openconnect
-buildignore plasma-nm5-openvpn 
-
-# Pulls in docbook and friends, ~50MiB.
-# Excludedocs is enabled, so documentation is broken anyway
-buildignore kdoctools
+# Unlikely to be useful on Lives
+buildignore plasma6-nm-openconnect
+buildignore plasma6-nm-openvpn
 
 # Moved here from list-common.sh, too big for x11
 install xf86-video-vmware i686,x86_64
@@ -91,8 +81,11 @@ buildignore vlc-lang
 buildignore kipi-plugins
 
 # Upstream branding, not used by default and HUGE
-buildignore breeze5-wallpapers
 buildignore breeze6-wallpapers
+
+# Qt5 variant, not really needed.
+# Drop when Plasma 6 no longer pulls in Qt 5 integration forcibly.
+buildignore kdoctools
 
 install partitionmanager
 
@@ -104,6 +97,4 @@ buildignore xorg-x11-fonts
 # From rest_cd_core
 install alsa-firmware
 
-
-buildignore bluedevil5
 buildignore konsole-part-lang

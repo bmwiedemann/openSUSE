@@ -57,6 +57,12 @@ buildignore sane-backends
 install branding-openSUSE
 install chrony
 
+if [ "$distro" = "leap" ]; then
+	install openSUSE-repos-Leap
+else
+	install live-add-yast-repos
+fi
+
 # Don't pull in any -32bit libs
 buildignore glibc-32bit
 
@@ -90,9 +96,6 @@ buildignore gvfs-backend-samba
 buildignore xorg-x11
 buildignore xorg-x11-essentials
 buildignore xorg-x11-server-extra
-# config.sh enables autologin and configures the display-manager
-install xdm
-install sysvinit-tools
 # We already have a different desktop
 buildignore icewm
 # We have enough fonts already
@@ -102,8 +105,7 @@ buildignore google-droid-fonts
 buildignore efont-unicode-bitmap-fonts
 buildignore baekmuk-bitmap-fonts
 buildignore intlfonts-chinese-big-bitmap-fonts
-# Needed by GDM on Leap 15.5 for some weird reason (bsc#1203966)
-# buildignore xorg-x11-fonts
+buildignore xorg-x11-fonts
 buildignore xorg-x11-fonts-legacy
 # Only needed if something explicitly uses the ancient fonts
 buildignore xorg-x11-fonts-converted
@@ -222,8 +224,6 @@ install kernel-default
 install kernel-firmware
 install patterns-base-enhanced_base
 installPattern enhanced_base
-install patterns-base-x11
-installPattern x11
 installPattern sw_management
 
 # checkmedia is used for the 'Check media' entry in grub
@@ -287,6 +287,3 @@ install ucode-amd i686,x86_64
 # It hurts twice, once in the early cpio in the initrd (uncompressed) and once in the FS (badly compressed, as encrypted).
 # On TW, it hasn't been pulled into the live CDs for ages so let's just ignore it explicitly.
 buildignore ucode-intel
-
-# Work around bug in Leap 15.6 patterns-base-bootloader
-install shim i686,x86_64,aarch64

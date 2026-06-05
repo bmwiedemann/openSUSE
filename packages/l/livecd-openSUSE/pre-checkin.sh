@@ -27,18 +27,19 @@ archive() {
 }
 
 for distro in leap tumbleweed; do
-	distroname="openSUSE Tumbleweed"
-	bootsplash="bgrt"
-	releaseprefix="openSUSE"
-	if [ "${distro}" = "leap" ]; then
-		distroname="openSUSE Leap %OS_VERSION_ID%"
-		# This changes every few weeks, apparently.
-		#releaseprefix="Leap"
-	fi
-
 	for flavor in gnome kde xfce x11; do
 		uppercaseflavor="$(echo "${flavor}" | tr [:lower:] [:upper:])"
-	
+
+		if [ "${distro}" = "leap" ]; then
+			distroname="openSUSE Leap %OS_VERSION_ID%"
+			BOOTSTRAP_PACKAGES="<package name=\"Leap-release\"/>"
+			# No flavor-specific release flavor packages (yet)
+		else
+			distroname="openSUSE Tumbleweed"
+			BOOTSTRAP_PACKAGES="<package name=\"openSUSE-release\"/>"
+			BOOTSTRAP_PACKAGES="$BOOTSTRAP_PACKAGES\n    <package name=\"openSUSE-release-livecd-${flavor}\"/>"
+		fi
+
 		if [ "${flavor}" = "x11" ]; then
 			name="${distroname} Rescue CD"
 		else
@@ -54,8 +55,7 @@ for distro in leap tumbleweed; do
 		     s#@NAME@#${name// /-}#g;\
 		     s#@DISPLAYNAME@#${name}#g;\
 		     s#@VOLID@#${name// /_}#g;\
-		     s#@BOOTSPLASH@#${bootsplash}#g;\
-		     s#@RELEASEPREFIX@#${releaseprefix}#g;\
+		     s#@BOOTSTRAP_PACKAGES@#${BOOTSTRAP_PACKAGES}#g;\
 		     s#@PACKAGES@#${PACKAGES}#g;" livecd.kiwi.in > livecd-${distro}-${flavor}.kiwi      
 	done
 done
