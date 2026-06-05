@@ -25,15 +25,15 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-typer
-Version:        0.25.1
+Version:        0.26.7
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
 URL:            https://github.com/tiangolo/typer
 Source:         https://files.pythonhosted.org/packages/source/t/typer/typer-%{version}.tar.gz
 Patch1:         set-proper-pythonpath-for-tutorial-script-tests.patch
+Patch2:         set-proper-pythonpath-for-file-argument-tests.patch
 BuildRequires:  %{python_module annotated-doc}
-BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
@@ -45,7 +45,6 @@ BuildRequires:  python-rpm-macros
 # Work around Python dependency not being auto-added as there are no modules provided
 Requires:       %{plainpython}(abi) = %{python_version}
 Requires:       python-annotated-doc
-Requires:       python-click
 Requires:       python-rich
 Requires:       python-shellingham
 # both packages provide /usr/bin/typer
@@ -91,6 +90,7 @@ as those that do.
 # - test_enum/test_tutorial003
 # - test_script_completion_run and test_completion_show_invalid_shell
 # - test_invalid_score stumbles over linebreaks in the output
+export COLUMNS=256  # avoid linebreaks messing with test assertions
 %pytest -k 'not ((test_enum and test_tutorial003) or test_script_completion_run or test_completion_show_invalid_shell or test_invalid_score)'
 
 %post

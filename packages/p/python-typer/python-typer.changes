@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun  3 17:03:25 UTC 2026 - Matthias Bach <marix@marix.org>
+
+- Update to 0.26.7
+  * Respect wait=False when launching URLs with xdg-open.
+  * Ensure that the default of a list argument is used correctly.
+  * Ensure that hidden commands are not shown when Rich markup is
+    disabled.
+  * Ensure that an envvar set for a typer.Option list is split on
+    whitespace.
+  * Vendor Click and streamline Typer's functionality and code base.
+    - Click is no longer a dependency but can be installed in
+      parallel.
+    - The codebase will evolve independently of Click.
+- Add set-proper-pythonpath-for-file-argument-tests.patch to fix
+  PYTHONPATH issues with the test for file arguments.
+
+-------------------------------------------------------------------
 Tue May 19 21:10:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.25.1:

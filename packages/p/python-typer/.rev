@@ -564,4 +564,24 @@
     Rich.</comment>
     <requestid>1354105</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>da00581063c2e146055cdf66ea51106e</srcmd5>
+    <version>0.26.7</version>
+    <time>1780664165</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.26.7
+  * Respect wait=False when launching URLs with xdg-open.
+  * Ensure that the default of a list argument is used correctly.
+  * Ensure that hidden commands are not shown when Rich markup is
+    disabled.
+  * Ensure that an envvar set for a typer.Option list is split on
+    whitespace.
+  * Vendor Click and streamline Typer's functionality and code base.
+    - Click is no longer a dependency but can be installed in
+      parallel.
+    - The codebase will evolve independently of Click.
+- Add set-proper-pythonpath-for-file-argument-tests.patch to fix
+  PYTHONPATH issues with the test for file arguments.</comment>
+    <requestid>1357115</requestid>
+  </revision>
 </revisionlist>

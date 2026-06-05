@@ -1,0 +1,51 @@
+From: Matthias Bach <marix@marix.org>
+Date: Wed, 3 Jun 2026 21:27:26 +0200
+Subject: [PATCH] Ensure PYTHONPATH is passed in file argument tests
+References: https://github.com/tiangolo/typer/pull/407
+Upstream: tbd
+
+---
+ tests/test_types_file.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/tests/test_types_file.py b/tests/test_types_file.py
+index 3fb7d82..298d4f1 100644
+--- a/tests/test_types_file.py
++++ b/tests/test_types_file.py
+@@ -1,3 +1,4 @@
++import os
+ import subprocess
+ import sys
+ from io import BytesIO, StringIO
+@@ -9,6 +10,7 @@ from typer._click._compat import get_best_encoding, should_strip_ansi
+ from typer._click.utils import PacifyFlushWrapper
+ from typer.testing import CliRunner
+ 
++import tests
+ from tests.utils import needs_linux, needs_windows
+ 
+ app = typer.Typer()
+@@ -136,6 +138,12 @@ def test_binary_dash() -> None:
+ 
+ 
+ def test_binary_stderr() -> None:
++    env = os.environ.copy()
++    if "PYTHONPATH" in env:
++        env["PYTHONPATH"] = ":".join(
++            [str(Path(tests.__path__[0]).parent)] + [env["PYTHONPATH"]]
++        )
++
+     result = subprocess.run(
+         [
+             sys.executable,
+@@ -146,6 +154,7 @@ def test_binary_stderr() -> None:
+             "write-binary-stderr",
+         ],
+         capture_output=True,
++        env=env,
+     )
+     assert result.returncode == 0
+     assert result.stderr == b"binary-stderr\n"
+-- 
+2.51.0
+
