@@ -2,7 +2,7 @@
 # spec file for package dqlite
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define lname libdqlite0
 Name:           dqlite
-Version:        1.18.5
+Version:        1.18.6
 Release:        0
 Summary:        Distributed SQLite
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
@@ -80,7 +80,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ldconfig_scriptlets -n %{lname}
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %files devel
 %license LICENSE

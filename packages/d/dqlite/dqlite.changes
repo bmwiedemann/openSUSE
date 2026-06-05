@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  3 05:00:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.18.6:
+  * set SOCK_CLOEXEC on socket creation to prevent FD leak to child
+    processes
+  * fix null deref when stopping or handing over before start
+
+-------------------------------------------------------------------
 Sun Mar  1 16:23:06 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.18.5:
