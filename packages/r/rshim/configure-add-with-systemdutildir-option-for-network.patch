@@ -1,0 +1,68 @@
+From 2fd7b124a5bdac2f3143364deefab363120c8396 Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Fri, 15 May 2026 18:22:33 +0200
+Subject: [PATCH] configure: add --with-systemdutildir option for config link
+ files
+
+Add a new optional configuration option --with-systemdutildir to allow
+customizing the installation directory for systemd config link files.
+The option auto-detects from pkg-config or falls back to sysconfdir,
+ensuring 10-tmfifo-net.link is installed to the correct location.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ Makefile.am  |  7 ++++---
+ configure.ac | 14 ++++++++++++++
+ 2 files changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 1d70966..b200e7b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -15,7 +15,8 @@ dist_sbin_SCRIPTS = scripts/bfb-install \
+                     third_party/PLDM-unpack/fwpkg_unpack.py
+ 
+ AM_DISTCHECK_CONFIGURE_FLAGS = \
+-  --with-systemdsystemunitdir=$$dc_install_base/$(systemdsystemunitdir)
++  --with-systemdsystemunitdir=$$dc_install_base/$(systemdsystemunitdir) \
++  --with-systemdutildir=$$dc_install_base/$(systemdutildir)
+ if HAVE_SYSTEMD
+ systemdsystemunit_DATA = rshim.service
+ else
+@@ -27,6 +28,6 @@ endif
+ 
+ install-data-hook:
+ if HAVE_SYSTEMD
+-	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/systemd/network
+-	$(INSTALL_DATA) $(srcdir)/10-tmfifo-net.link $(DESTDIR)$(sysconfdir)/systemd/network/10-tmfifo-net.link
++	$(MKDIR_P) $(DESTDIR)$(systemdutildir)/network
++	$(INSTALL_DATA) $(srcdir)/10-tmfifo-net.link $(DESTDIR)$(systemdutildir)/network/10-tmfifo-net.link
+ endif
+diff --git a/configure.ac b/configure.ac
+index 72fa487..0d6808c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -34,6 +34,20 @@ AS_IF([test "x$with_systemdsystemunitdir" != "xno"],
+       [AC_SUBST([systemdsystemunitdir], [$with_systemdsystemunitdir])])
+ AM_CONDITIONAL([HAVE_SYSTEMD], [test "x$with_systemdsystemunitdir" != "xno"])
+ 
++AC_ARG_WITH([systemdutildir],
++ [AS_HELP_STRING([--with-systemdutildir=DIR], [Directory for systemd utility files (network links)])],,
++ [with_systemdutildir=auto])
++AS_IF([test "x$with_systemdutildir" = "xyes" -o "x$with_systemdutildir" = "xauto"], [
++  def_systemdutildir=$($PKG_CONFIG --variable=systemdutildir systemd)
++  AS_IF([test "x$def_systemdutildir" = "x"],
++  [AS_IF([test "x$with_systemdutildir" = "xyes"],
++  [AC_MSG_ERROR([systemd util dir requested but pkg-config unable to query systemd package])])
++  with_systemdutildir='${sysconfdir}/systemd'],
++  [with_systemdutildir="$def_systemdutildir"])])
++AS_IF([test "x$with_systemdutildir" = "xno"],
++      [with_systemdutildir='${sysconfdir}/systemd'])
++AC_SUBST([systemdutildir], [$with_systemdutildir])
++
+ AC_CHECK_HEADERS_ONCE([syslog.h])
+ 
+ AC_ARG_ENABLE([usb],
+-- 
+2.50.1 (Apple Git-155)
+

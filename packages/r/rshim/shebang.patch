@@ -1,0 +1,51 @@
+diff --git a/scripts/bf-reg b/scripts/bf-reg
+index b306525..d0a7257 100755
+--- a/scripts/bf-reg
++++ b/scripts/bf-reg
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env perl
++#!/usr/bin/perl
+ #
+ # Copyright (c) 2024 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ #
+diff --git a/scripts/build-rpm b/scripts/build-rpm
+index a7c5cd4..cb85350 100755
+--- a/scripts/build-rpm
++++ b/scripts/build-rpm
+@@ -51,4 +51,4 @@ if [ -f "$arch_rpm" ]; then
+   rpm_file=rshim-${version}_${arch}.rpm
+   mv $arch_rpm ${topdir}/RPMS/${arch}/$rpm_file
+   echo "${arch} RPM: $rpm_file"
+-fi
+\ No newline at end of file
++fi
+diff --git a/scripts/get-changelog b/scripts/get-changelog
+index fbbc21c..de9315c 100755
+--- a/scripts/get-changelog
++++ b/scripts/get-changelog
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ #
+ # Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ #
+diff --git a/scripts/mlx-mkbfb b/scripts/mlx-mkbfb
+index 65896f6..c3876e0 100755
+--- a/scripts/mlx-mkbfb
++++ b/scripts/mlx-mkbfb
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ #
+ # Copyright 2017-2019 Mellanox Technologies. All Rights Reserved.
+diff --git a/third_party/PLDM-unpack/fwpkg_unpack.py b/third_party/PLDM-unpack/fwpkg_unpack.py
+index 96158b7..16efbd9 100755
+--- a/third_party/PLDM-unpack/fwpkg_unpack.py
++++ b/third_party/PLDM-unpack/fwpkg_unpack.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ # SPDX-FileCopyrightText: Copyright (c) 2023-2024 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ # SPDX-License-Identifier: MIT
