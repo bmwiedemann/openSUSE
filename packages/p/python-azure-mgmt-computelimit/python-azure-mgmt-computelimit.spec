@@ -17,7 +17,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-computelimit
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Computelimit Management Client Library for Python
 License:        MIT

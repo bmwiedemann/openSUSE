@@ -19,4 +19,15 @@
 - Remove temporary version override (forwarded request 1348874 from glaubitz)</comment>
     <requestid>1348911</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02acf70d0eb276eecfbfef9f8f412dab</srcmd5>
+    <version>1.1.0</version>
+    <time>1780673950</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1357534 from glaubitz)</comment>
+    <requestid>1357542</requestid>
+  </revision>
 </revisionlist>
