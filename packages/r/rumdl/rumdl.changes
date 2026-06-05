@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun 04 05:30:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.7:
+  * Fixed
+    - MD077: normalize over-indented loose list continuation
+      (6b9fcee)
+
+-------------------------------------------------------------------
+Wed Jun 03 09:08:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.6:
+  * Fixed
+    - MD062: treat a lone quote in a link destination as part of
+      the URL (b3aea98)
+    - config: stop directory config discovery at the canonical
+      project root (ef9f3f6)
+    - config: match root config by canonical path in per-directory
+      resolution (4442a9f)
+    - output: relativize the verbose 'Processing file' path on
+      Windows (35986d6)
+    - output: normalize remaining displayed paths to forward
+      slashes on Windows (dbfb3ef)
+    - output: use forward slashes in displayed paths on Windows
+      (7049c01)
+    - MD049,MD037: Preserve inline code inside emphasis during
+      auto-fix (#652) (a1b1055)
+
+-------------------------------------------------------------------
 Wed Jun 03 04:34:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.5:
