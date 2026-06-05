@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  3 18:12:09 UTC 2026 - Holden Fried <holden@opensuse.org>
+
+- Update to version 1.10.1:
+  * Fix error decoding and display proper messages
+  * Fallback to defaults if platform_profile_choices requires root permissions
+
+- Update to version 1.10.0:
+  * Compatibility with TLP 1.10
+  * Lookup platform profile list
+  * Add max-power platform profile
+
+-------------------------------------------------------------------
 Wed Jan 21 12:36:24 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Build with just poetry-core

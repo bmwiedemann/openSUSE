@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           tlpui
-Version:        1.9.0
+Version:        1.10.1
 Release:        0
 Summary:        A GTK user interface for TLP
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
