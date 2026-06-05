@@ -295,4 +295,12 @@
     <comment>Use libalternatives when possible</comment>
     <requestid>1355806</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>f5cb1e21addfd7e4ef31b37bb92a1125</srcmd5>
+    <version>11.0.31.0</version>
+    <time>1780664285</time>
+    <user>anag_factory</user>
+    <comment>Make post scripts less noisy (bsc#1267355)</comment>
+    <requestid>1357132</requestid>
+  </revision>
 </revisionlist>

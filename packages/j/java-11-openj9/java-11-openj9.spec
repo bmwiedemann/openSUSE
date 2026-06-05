@@ -635,9 +635,9 @@ update-alternatives \
 %else
 
 if [ -x %{_sbindir}/update-alternatives ]; then
-  update-alternatives --remove-all java
-  update-alternatives --remove-all jre_openjdk
-  update-alternatives --remove-all jre_%{javaver}
+  update-alternatives --display java >/dev/null 2>&1 && update-alternatives --remove-all java
+  update-alternatives --display jre_openjdk >/dev/null 2>&1 && update-alternatives --remove-all jre_openjdk
+  update-alternatives --display jre_%{javaver} >/dev/null 2>&1 && update-alternatives --remove-all jre_%{javaver}
 fi || true
 
 for i in %{headless_binaries}; do
@@ -756,9 +756,9 @@ update-alternatives \
 %else
 
 if [ -x %{_sbindir}/update-alternatives ]; then
-  update-alternatives --remove-all javac
-  update-alternatives --remove-all java_sdk_openjdk
-  update-alternatives --remove-all java_sdk_%{javaver}
+  update-alternatives --display javac >/dev/null 2>&1 && update-alternatives --remove-all javac
+  update-alternatives --display java_sdk_openjdk >/dev/null 2>&1 && update-alternatives --remove-all java_sdk_openjdk
+  update-alternatives --display java_sdk_%{javaver} >/dev/null 2>&1 && update-alternatives --remove-all java_sdk_%{javaver}
 fi || true
 
 for i in %{devel_binaries}; do
@@ -797,7 +797,7 @@ fi
 %else
 
 if [ -x %{_sbindir}/update-alternatives ]; then
-  update-alternatives --remove-all javadocdir
+  update-alternatives --display javadocdir >/dev/null 2>&1 && update-alternatives --remove-all javadocdir
 fi || true
 
 %endif
