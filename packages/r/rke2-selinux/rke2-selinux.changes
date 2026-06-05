@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 04 05:30:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.stable.1:
+  * Define versions to build selinux in centos10 to have support
+    for fresh rhel, almalinux and rocky installs
+  * Define specific policys for /run and /var/run in rhel9-10
+  * Use transactional-update env in microos and slemicro
+  * Clean dapper if that is not necessary anymore
+  * Harden via checksum validation
+  * Pin GH Actions to commit sha
+  * Fix(policy): drop restorecon -F to preserve MCS labels
+  * Remove dapper and also remove version duplicate script
+  * Add FOSSA scanning workflow
+  * Fix missing context in /run/k3s/containerd
+  * fix snashots context
+  * fix: use restorecon only in rke2 directory and not in rancher
+    directory
+  * adding slash scape to containerd log policy
+
+-------------------------------------------------------------------
 Tue Jan 13 06:48:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.22.stable.1:
