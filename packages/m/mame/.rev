@@ -377,4 +377,13 @@
     <comment></comment>
     <requestid>1355823</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>15235b828fb5b7d80142a25a83f505a3</srcmd5>
+    <version>0.288</version>
+    <time>1780664475</time>
+    <user>anag_factory</user>
+    <comment>- Replaced mame-sdl_ini_path-hardcode.patch by mame-sdl_ini_path.patch
+- Migrated from ~/.mame to ~/.config/mame via /etc/mame/mame.ini</comment>
+    <requestid>1357189</requestid>
+  </revision>
 </revisionlist>

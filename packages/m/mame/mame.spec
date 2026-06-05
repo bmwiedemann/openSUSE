@@ -34,7 +34,7 @@ Patch0:         use_thin_archives.patch
 Patch1:         fix-922619.patch
 Patch2:         %{name}-fortify.patch
 Patch3:         %{name}-bgfx.patch
-Patch4:         %{name}-sdl_ini_path-hardcode.patch
+Patch4:         %{name}-sdl_ini_path.patch
 Patch5:         reproducible.patch
 BuildRequires:  asio-devel
 BuildRequires:  fdupes
@@ -111,6 +111,7 @@ sed -i -e "s/-Wall -Wextra -Os \$(MPARAM)/$CFLAGS/" -e "s/-s -rdynamic/$LDFLAGS 
     CXXFLAGS="$CFLAGS" \
     LDOPTS="$LDFLAGS" \
     PYTHON_EXECUTABLE="python3" \
+    SDL_INI_PATH="%{_sysconfdir}/%{name}" \
     NOWERROR=1 \
     OPTIMIZE=3 \
     VERBOSE=1 \
@@ -187,7 +188,7 @@ popd
 %doc README.md whatsnew-%{version}.txt
 %license docs/LICENSE COPYING
 %dir %{_sysconfdir}/%{name}
-%config %{_sysconfdir}/%{name}/%{name}.ini
+%config(noreplace) %{_sysconfdir}/%{name}/%{name}.ini
 %{_bindir}/%{name}
 %{_mandir}/man6/%{name}.6%{?ext_man}
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg

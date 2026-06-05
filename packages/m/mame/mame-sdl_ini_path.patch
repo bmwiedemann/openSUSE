@@ -1,0 +1,24 @@
+diff -Pdpru mame-mame0288.orig/scripts/src/osd/sdl3_cfg.lua mame-mame0288/scripts/src/osd/sdl3_cfg.lua
+--- mame-mame0288.orig/scripts/src/osd/sdl3_cfg.lua	2026-05-27 22:03:56.000000000 +0300
++++ mame-mame0288/scripts/src/osd/sdl3_cfg.lua	2026-06-04 14:37:24.480125394 +0300
+@@ -31,7 +31,7 @@ end
+ 
+ if _OPTIONS["SDL_INI_PATH"]~=nil then
+ 	defines {
+-		"'INI_PATH=\"" .. _OPTIONS["SDL_INI_PATH"] .. "\"'",
++		"INI_PATH=\"" .. _OPTIONS["SDL_INI_PATH"] .. "\"",
+ 	}
+ end
+ 
+diff -Pdpru mame-mame0288.orig/scripts/src/osd/sdl_cfg.lua mame-mame0288/scripts/src/osd/sdl_cfg.lua
+--- mame-mame0288.orig/scripts/src/osd/sdl_cfg.lua	2026-05-27 22:03:56.000000000 +0300
++++ mame-mame0288/scripts/src/osd/sdl_cfg.lua	2026-06-04 14:37:27.998807012 +0300
+@@ -31,7 +31,7 @@ end
+ 
+ if _OPTIONS["SDL_INI_PATH"]~=nil then
+ 	defines {
+-		"'INI_PATH=\"" .. _OPTIONS["SDL_INI_PATH"] .. "\"'",
++		"INI_PATH=\"" .. _OPTIONS["SDL_INI_PATH"] .. "\"",
+ 	}
+ end
+ 

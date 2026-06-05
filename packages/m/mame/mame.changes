@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  4 16:35:12 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Replaced mame-sdl_ini_path-hardcode.patch by mame-sdl_ini_path.patch
+- Migrated from ~/.mame to ~/.config/mame via /etc/mame/mame.ini
+
+-------------------------------------------------------------------
 Fri May 29 06:08:17 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.288
