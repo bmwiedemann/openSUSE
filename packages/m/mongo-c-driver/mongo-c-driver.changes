@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun  4 15:22:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.1
+  libbson
+  Fixes
+  * Fix length check in bson_new_from_buffer.
+  * Fix documentation generation on Sphinx 9.0+.
+  libmongoc
+  Improvements
+  * Improve forward compatibility with OpenSSL 4.0.0 when handling
+    EAGAIN errors in old-style read callbacks where
+    BIO_FLAGS_AUTO_EOF is enabled.
+  * Improve decompressed message length constraints.
+  Fixes
+  * Fix documentation generation on Sphinx 9.0+.
+  * Propagate username to custom OIDC callback.
+
+-------------------------------------------------------------------
 Fri Apr 17 14:24:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.0
