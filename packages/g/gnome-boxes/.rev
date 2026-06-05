@@ -926,4 +926,14 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345424</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>51fa991c537d92d92b28a446a253cbf9</srcmd5>
+    <version>50.0</version>
+    <time>1780664265</time>
+    <user>anag_factory</user>
+    <comment>- Add qemu-chardev-spice, qemu-hw-usb-smartcard,
+  qemu-hw-usb-redirect and qemu-hw-usb-host Requires: Minimum
+  needed for gnome-boxes to use qemu.</comment>
+    <requestid>1357102</requestid>
+  </revision>
 </revisionlist>

@@ -64,6 +64,11 @@ Requires:       libvirt-daemon-qemu
 Requires:       mtools
 # gnome-boxes requires org.freedesktop.Tracker.FTS schema to be available (bnc#785356).
 Requires:       localsearch
+# gnome-boxes needs these as a minimum to be able to use qemu
+Requires:       qemu-chardev-spice
+Requires:       qemu-hw-usb-smartcard
+Requires:       qemu-hw-usb-redirect
+Requires:       qemu-hw-usb-host
 # Recommend libvirt-client, needed for gnome-boxes to recognize the kvm module and boxes storage pool
 Recommends:     libvirt-client
 # Eliminate sub-packages with libraries in private space (no provides, nothing was supposed to use the pkgname)

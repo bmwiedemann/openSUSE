@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 31 10:14:05 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add qemu-chardev-spice, qemu-hw-usb-smartcard,
+  qemu-hw-usb-redirect and qemu-hw-usb-host Requires: Minimum
+  needed for gnome-boxes to use qemu.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:34:42 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
