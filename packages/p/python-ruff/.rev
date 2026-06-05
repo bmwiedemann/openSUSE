@@ -3405,4 +3405,32 @@
   * Expand semantic syntax errors for invalid walruses</comment>
     <requestid>1355819</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>7a0fec304963ef4327106caaf2c7ddc9</srcmd5>
+    <version>0.15.16</version>
+    <time>1780664198</time>
+    <user>anag_factory</user>
+    <comment> update to 0.15.16 
+ * Preview features
+  * [flake8-async] Implement yield-in-context-manager-in-async-generator (ASYNC119) 
+  * [pylint] Narrow diagnostic range and exclude cases without exception handlers (PLW0717) 
+  * [ruff] Treat yield before break from a terminal loop as terminal (RUF075) 
+ * Bug fixes
+  * [eradicate] Avoid flagging ruff:ignore comments as code (ERA001) 
+  * [eradicate] Fix ERA001/RUF100 conflict when noqa is on commented-out code 
+  * [pyflakes] Avoid removing the format call when it would change behavior (F523) 
+  * [pylint] Avoid syntax errors in invalid character replacements in f-strings before Python 3.12 (PLE2510, PLE2512, PLE2513, PLE2514, PLE2515) 
+  * [pyupgrade] Avoid converting format calls with more kinds of side effects (UP032) 
+ * Rule changes
+  * [flake8-pytest-style] Avoid fixes for ambiguous argnames and argvalues combinations (PT006) 
+ * Performance
+  * Drop excess capacity from statement suites during parsing 
+ * Documentation
+  * [pydocstyle] Improve discoverability of rules enabled for each convention 
+  * [ruff] Restore example code for Python versions before 3.15 (RUF017) 
+  * Fix typo bin/active → bin/activate in tutorial 
+ * Other changes
+  * Shrink additional parser AST collections</comment>
+    <requestid>1357255</requestid>
+  </revision>
 </revisionlist>
