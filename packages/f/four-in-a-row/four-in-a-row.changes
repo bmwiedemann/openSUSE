@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun  4 16:11:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.1+62:
+  + data: Rename appdata to metainfo
+  + Validate metainfo data with appstreamcli
+  + docs: Remove reference to "default" theme
+  + Updated translations.
+- Switch to source service for tarball.
+- Add AppStream and desktop-file-utils BuildRequires and add check
+  section with meson_test macro, run tests during build.
+
+-------------------------------------------------------------------
 Thu Oct  8 03:38:00 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.1:

@@ -317,4 +317,19 @@
     <comment>Fix date format in old changelog entries (forwarded request 1277767 from dimstar)</comment>
     <requestid>1278232</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>248a290109cd3af8f845ea6d92c005d6</srcmd5>
+    <version>3.38.1+62</version>
+    <time>1780664662</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.38.1+62:
+  + data: Rename appdata to metainfo
+  + Validate metainfo data with appstreamcli
+  + docs: Remove reference to &quot;default&quot; theme
+  + Updated translations.
+- Switch to source service for tarball.
+- Add AppStream and desktop-file-utils BuildRequires and add check
+  section with meson_test macro, run tests during build.</comment>
+    <requestid>1357525</requestid>
+  </revision>
 </revisionlist>
