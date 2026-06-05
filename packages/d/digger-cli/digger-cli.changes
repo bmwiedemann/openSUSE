@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun 05 05:45:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.146:
+  * add timeout to generate service client so it does not fail to
+    do status updates by @motatoes in #2622
+  * ui github setup link fix by @motatoes in #2642
+  * Update Slack invitation links in CONTRIBUTING.md by
+    @s1ntaxe770r in #2646
+  * fix: upgrade azure/login to v2.2.0 to prevent cleanup warnings
+    by @AyhanSetirekli in #2584
+  * docs: recommend docker-compose guide by @s1ntaxe770r in #2604
+  * docs: security page by @s1ntaxe770r in #2605
+  * fix: add target url to link to workflow run by @s1ntaxe770r in
+    #2606
+  * Fix default image repos (backend ee -> ce), add podAnnotations
+    by @sidpalas in #2598
+  * conditionally enable summary by @s1ntaxe770r in #2619
+  * Feat/exclude drift by @s1ntaxe770r in #2650
+  * fix: drift_exclude_patterns excluding all projects when include
+    is unset by @motatoes in #2653
+  * docs: add Holocron migration spike by @motatoes in #2656
+  * Feat/block excludes by @s1ntaxe770r in #2659
+
+-------------------------------------------------------------------
 Wed May 06 05:34:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.145:
