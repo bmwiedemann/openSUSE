@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Jun 04 05:38:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.113.0:
+  * Added Features
+    - Include Ubuntu 26.04 "resolute" in distro codenames [#3397
+      @anchore-oss-update-bot]
+    - source RPM filtering on Hummingbird [#3410 @willmurphyscode]
+  * Bug Fixes
+    - use relatedVulnerabilities description as fallback in SARIF
+      output [#3271 @axidex]
+    - improve platform CPE determination logic [#3470
+      @westonsteimel]
+    - normalize uppercase V in semantic version comparison [#3461
+      @immanuwell]
+    - purl handling in cgr maven libs [#3420 @willmurphyscode]
+    - Treat uppercase V prefixes the same as lowercase v prefixes
+      in fuzzy version comparison [#3037 #3089 @wasup-yash]
+    - Add Runtime Warnings When TLS Verification Is Disabled or
+      HTTP Is Enabled [#3101 #3396 @Dashtid]
+    - Add support for the aarch64 architecture when parsing the
+      version of Ruby gems in lockfiles [#3442 #3475 @msnandhis]
+    - zsh completion fails [#2933 #3433 @brandtkeller]
+  * Dependencies
+    - chore(deps): bump github.com/containerd/containerd/v2 (#3457)
+    - chore(deps): bump github.com/containerd/containerd/v2 (#3483)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.18.0 to
+      5.19.0 (#3438)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.19.0 to
+      5.19.1 (#3454)
+    - chore(deps): bump github.com/invopop/jsonschema (#3408)
+    - chore(deps): bump the actions-minor-patch group across 1
+      directory with 2 updates (#3431)
+    - chore(deps): bump the actions-minor-patch group across 1
+      directory with 2 updates (#3444)
+    - chore(deps): bump the actions-minor-patch group across 1
+      directory with 4 updates (#3449)
+    - chore(deps): bump the actions-minor-patch group across 1
+      directory with 7 updates (#3471)
+    - chore(deps): bump the actions-minor-patch group across 2
+      directories with 3 updates (#3458)
+    - chore(deps): bump the actions-minor-patch group across 2
+      directories with 4 updates (#3409)
+    - chore(deps): bump the go-minor-patch group across 1 directory
+      with 2 updates (#3448)
+    - chore(deps): bump the go-minor-patch group across 2
+      directories with 4 updates (#3473)
+    - chore(deps): bump the go-minor-patch group with 3 updates
+      (#3430)
+    - chore(deps): update anchore dependencies (#3412)
+    - chore(deps): update generated codename data (#3397)
+    - chore(deps): update quality gate database (#3407)
+    - chore(deps): update tool versions (#3335)
+
+-------------------------------------------------------------------
 Fri May 01 19:58:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.112.0:
