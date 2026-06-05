@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  5 09:29:15 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on vapoursynth-script, package has been 
+  renamed and the new one is already being pulled by the devel package. 
+
+-------------------------------------------------------------------
 Tue Mar 10 07:07:23 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Force non-mini FFmpeg to allow test suite to run

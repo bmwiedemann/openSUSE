@@ -3591,4 +3591,12 @@
   * vo_gpu_next: add scRGB support</comment>
     <requestid>1337892</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>9b7e1ada6287179bf27d08b47482ba5d</srcmd5>
+    <version>0.41.0+git20260309.07c3ff3725</version>
+    <time>1780664652</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1357515</requestid>
+  </revision>
 </revisionlist>

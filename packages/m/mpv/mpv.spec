@@ -71,7 +71,6 @@ BuildRequires:  pkgconfig(rubberband) >= 3.0.0
 BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(uchardet)
 BuildRequires:  pkgconfig(vapoursynth) >= 56
-BuildRequires:  pkgconfig(vapoursynth-script) >= 56
 BuildRequires:  pkgconfig(vdpau) >= 0.2
 BuildRequires:  pkgconfig(vulkan) >= 1.3.238
 BuildRequires:  pkgconfig(wayland-client) >= 1.21.0
