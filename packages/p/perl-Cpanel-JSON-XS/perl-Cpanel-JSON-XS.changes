@@ -5,12 +5,12 @@ Thu May 28 08:53:35 UTC 2026 - Tina Müller <timueller+perl@suse.de>
    see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
 
   4.41 2026-05-27 (rurban)
-  	- Fix BOM-shift PV-corruption SIGABRT (CVE-2026-9516) (patch by Paul Johnson)
-          - Fix dupkeys_as_arrayref type confusion (CVE-2026-9334) (patch by Paul Johnson)
-          - Fix incr_parse single-quote string delimiter (GH #245, reported by
-            Paul Johnson)
-          - Fix a one-byte out-of-bounds heap read reachable via allow_barekey on
-            truncated input (GH #244, reported by Paul Johnson)
+  - Fix BOM-shift PV-corruption SIGABRT (CVE-2026-9516) (patch by Paul Johnson) bsc#1267547
+  - Fix dupkeys_as_arrayref type confusion (CVE-2026-9334) (patch by Paul Johnson) bsc#1267546
+  - Fix incr_parse single-quote string delimiter (GH #245, reported by
+    Paul Johnson)
+  - Fix a one-byte out-of-bounds heap read reachable via allow_barekey on
+    truncated input (GH #244, reported by Paul Johnson)
 
 -------------------------------------------------------------------
 Mon Sep  8 17:01:48 UTC 2025 - Tina Müller <tina.mueller@suse.com>

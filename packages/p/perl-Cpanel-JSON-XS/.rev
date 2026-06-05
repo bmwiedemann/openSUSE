@@ -349,4 +349,18 @@
             truncated input (GH #244, reported by Paul Johnson)</comment>
     <requestid>1356949</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>f1960eb4d186e7095312c389c99f0c80</srcmd5>
+    <version>4.410.0</version>
+    <time>1780674318</time>
+    <user>anag_factory</user>
+    <comment>  Add bsc references retroactively:
+  - Fix BOM-shift PV-corruption SIGABRT (CVE-2026-9516) (patch by Paul Johnson) bsc#1267547
+  - Fix dupkeys_as_arrayref type confusion (CVE-2026-9334) (patch by Paul Johnson) bsc#1267546
+  - Fix incr_parse single-quote string delimiter (GH #245, reported by
+    Paul Johnson)
+  - Fix a one-byte out-of-bounds heap read reachable via allow_barekey on
+    truncated input (GH #244, reported by Paul Johnson)</comment>
+    <requestid>1357569</requestid>
+  </revision>
 </revisionlist>
