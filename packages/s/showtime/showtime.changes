@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun  4 16:25:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0+19:
+  + Add playback speed shortcuts and fix detail caps handling
+  + meson: Remove unused variable
+  + main: Enable debug logging only for devel profile
+  + play: Ignore meta/x-gst-fourcc missing plugin messages
+  + pyproject: Add pyproject.toml with stricter checks
+  + Updated translations.
+- Add explicit AppStream BuildRequires, meson checks for it.
+
+-------------------------------------------------------------------
 Fri Mar 20 15:50:52 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

@@ -79,4 +79,19 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345381</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c8a425dadcb0b89242dae373cbf60377</srcmd5>
+    <version>50.0+19</version>
+    <time>1780664662</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.0+19:
+  + Add playback speed shortcuts and fix detail caps handling
+  + meson: Remove unused variable
+  + main: Enable debug logging only for devel profile
+  + play: Ignore meta/x-gst-fourcc missing plugin messages
+  + pyproject: Add pyproject.toml with stricter checks
+  + Updated translations.
+- Add explicit AppStream BuildRequires, meson checks for it.</comment>
+    <requestid>1357524</requestid>
+  </revision>
 </revisionlist>

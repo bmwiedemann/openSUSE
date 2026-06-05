@@ -19,13 +19,14 @@
 %define appid org.gnome.Showtime
 
 Name:           showtime
-Version:        50.0
+Version:        50.0+19
 Release:        0
 Summary:        Video player
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/showtime
 Source:         %{name}-%{version}.tar.xz
 
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  pkgconfig
