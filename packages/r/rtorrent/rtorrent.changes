@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun  5 06:54:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.13
+  * Added a new callback mechanism and use it for trackers.
+  * Added intermediate requesting flag for trackers to prevent
+    premature deletion.
+  * Added per-category allocation limits to SocketManager.
+  * rpc: close SCGI task on EPIPE to stop event_write() busy-loop.
+
+-------------------------------------------------------------------
 Wed May 20 06:27:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.12
