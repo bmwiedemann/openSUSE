@@ -1890,4 +1890,12 @@
         CVE-2026-7262 [bsc#1264771]</comment>
     <requestid>1352649</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>a11eee3421e2f0e37ece4a01d50d4480</srcmd5>
+    <version>8.5.7</version>
+    <time>1780664175</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1357243</requestid>
+  </revision>
 </revisionlist>
