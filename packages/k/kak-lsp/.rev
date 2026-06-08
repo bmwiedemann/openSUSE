@@ -721,4 +721,32 @@
 </comment>
     <requestid>1333190</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>dd87bbdd024b404b4749ff90658e6365</srcmd5>
+    <version>20.0.0</version>
+    <time>1780921158</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20.0.0:
+  * v20.0.0
+  * Update changelog
+  * Fix tinymist documentation URL
+  * Fix tinymist preview config key. `previewFeature` only works for the vscode plugin
+  * Encode brackets for file paths
+  * feat: swift/sourcekit-lsp support
+  * Paal Øye-Strømme Copyright Waiver
+  * Make sure buffer synchronization works even when finaleol is missing
+  * workspace/executeCommand: don't panic on invalid args JSON
+  * servers.kak: update markdown-oxide root markers
+  * Inline lsp-initial-goto-position
+  * Fix function_casts_as_integer warning
+  * lsp-capabilities: remove stale default mappings
+  * changelog new erlang default server
+  * fix(ci/commit-new-release.sh): interpolate version number
+  * Change default language server for erlang
+  * lsp-inlay-hint-apply-*: fix crash when no hints avail
+  * Add inlay hint textedit support
+  * start new cycle
+</comment>
+    <requestid>1357721</requestid>
+  </revision>
 </revisionlist>
