@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 08 04:46:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.16:
+  * build(deps): bump github/codeql-action from 4.35.5 to 4.36.0
+    (#2246)
+  * build(deps): bump docker/setup-qemu-action from 4.0.0 to 4.1.0
+    (#2254)
+  * build(deps): bump imjasonh/setup-crane from 0.5 to 0.6 (#2260)
+
+-------------------------------------------------------------------
 Mon Jun 01 05:16:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.15:
