@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 19 18:00:17 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.99043
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99043 Mar 18 2026 Oleg Gavrin
+      - Fix whois server for .in.net
+
+-------------------------------------------------------------------
 Tue Oct 14 11:47:07 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.99042

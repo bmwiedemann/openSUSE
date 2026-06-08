@@ -495,4 +495,15 @@
       - recursive_whois: allow case insensitive match of OrgID from Slaven Rezic</comment>
     <requestid>1312566</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e8e1ab6c018ce75cdcee96722a757476</srcmd5>
+    <version>2.99043</version>
+    <time>1780921118</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.99043
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+  2.99043 Mar 18 2026 Oleg Gavrin
+      - Fix whois server for .in.net</comment>
+    <requestid>1357703</requestid>
+  </revision>
 </revisionlist>
