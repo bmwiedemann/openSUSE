@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jun  4 08:44:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Changes since 26.04.1:
+  * Fix generate-icon-list script to include more icon sources
+  * Fix qml-check-icons image
+  * Improve previewing news links from the Explore page
+  * Hide configure application action from profile on desktop
+  * Add icon for "No Media" and "No Posts" placeholders
+  * Wrap text for notification page's placeholder text
+  * Show a black background when failing to load attachments
+  * Fix the "Include public posts in search results" setting
+  * Only show cross-account actions for functional accounts
+  * Remove embed action for now
+  * Fix notifications page momentarily showing no loading placeholder
+  * Use default DEFAULT_SEVERITY for logging
+
+-------------------------------------------------------------------
 Thu May  7 08:03:43 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1
