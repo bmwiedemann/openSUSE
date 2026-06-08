@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-DesktopEntry
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-File-DesktopEntry
-Version:        0.22
-Release:        0
 %define cpan_name File-DesktopEntry
-Summary:        Object to handle .desktop files
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/File-DesktopEntry/
-Source0:        http://www.cpan.org/authors/id/M/MI/MICHIELB/%{cpan_name}-%{version}.tar.gz
+Name:           perl-File-DesktopEntry
+Version:        0.230.0
+Release:        0
+# 0.23 -> normalize -> 0.230.0
+%define cpan_version 0.23
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Module to handle .desktop files
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/MI/MICHIELB/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(File::BaseDir) >= 0.03
+BuildRequires:  perl(File::BaseDir) >= 0.30
 BuildRequires:  perl(URI::Escape)
-Requires:       perl(File::BaseDir) >= 0.03
+Requires:       perl(File::BaseDir) >= 0.30
 Requires:       perl(URI::Escape)
+Provides:       perl(File::DesktopEntry) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -49,14 +52,14 @@ This module was written to support File::MimeInfo::Applications.
 Please remember: case is significant for the names of Desktop Entry keys.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -64,7 +67,6 @@ Please remember: case is significant for the names of Desktop Entry keys.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README.md
 
 %changelog

@@ -7,4 +7,15 @@
     <comment>Will be needed by devscripts update</comment>
     <requestid>351372</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>15ebddcd0ae1782762e393e5c96904e9</srcmd5>
+    <version>0.230.0</version>
+    <time>1780921194</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.230.0 (0.23)
+   see /usr/share/doc/packages/perl-File-DesktopEntry/Changes
+  0.23 2026-01-11
+   - Move to Codeberg</comment>
+    <requestid>1357764</requestid>
+  </revision>
 </revisionlist>
