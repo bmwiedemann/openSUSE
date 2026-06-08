@@ -18,7 +18,7 @@
 
 %define dirbase ardour9
 Name:           ardour
-Version:        9.4.0
+Version:        9.7.0
 Release:        0
 Summary:        Multichannel Digital Audio Workstation
 # Legal: Ardour is a mix of GPL-2.0-or-later, [L]GPL-3.0-or-later and a couple copyleft
@@ -186,12 +186,12 @@ rm -r %{buildroot}%{_datadir}/appdata
 %find_lang ardour9
 %find_lang gtk2_ardour9
 %find_lang gtkmm2ext3
-%find_lang libytk9
+%find_lang ytk9
 
 # remove dupes
 %fdupes -s %{buildroot}%{_datadir}
 
-%files -f ardour9.lang -f gtk2_ardour9.lang -f gtkmm2ext3.lang -f libytk9.lang
+%files -f ardour9.lang -f gtk2_ardour9.lang -f gtkmm2ext3.lang -f ytk9.lang
 %license COPYING
 %doc doc README
 %dir %{_sysconfdir}/%{dirbase}
