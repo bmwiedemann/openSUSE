@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 08:01:11 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Skip test_recipe_browser_webengine in qemu emulation
+
+-------------------------------------------------------------------
 Thu May 28 10:00:30 UTC 2026 - ecsos <ecsos@opensuse.org> - 9.9.0
 
 - Update to 9.9.0

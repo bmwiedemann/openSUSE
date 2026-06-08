@@ -454,6 +454,9 @@ TEST_EXCLUDE=(
     --exclude-test-name test_qt                     # rise up build errror because of cwebp
     --exclude-test-name test_speech_dispatcher      # rise up build error because of python-speechd
 %endif
+%if 0%{?qemu_user_space_build}
+    --exclude-test-name test_recipe_browser_webengine # sandbox not supported
+%endif
 )
 
 CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python%python_bin_suffix setup.py test "${TEST_EXCLUDE[@]}"
