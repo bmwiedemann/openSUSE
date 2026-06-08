@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun  2 09:21:10 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.900.0 (3.90)
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.90  2026-06-01  sbeck
+    -  Version 3.89 was created with a flaw and has been deleted.
+
+    -  NEW CODE(s)
+
+-------------------------------------------------------------------
+Tue Mar 24 06:16:15 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.880.0 (3.88)
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.88  2026-03-26  sbeck
+    -  Fixed release problem
+           A problem exists in this release. New release to correct it. GitHub
+           #21.
+
+-------------------------------------------------------------------
 Tue Mar  3 06:07:12 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.870.0 (3.87)

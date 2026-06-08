@@ -177,4 +177,29 @@
     -  NEW CODE(s)</comment>
     <requestid>1338070</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e14a239a13228204836abbf6452f107e</srcmd5>
+    <version>3.880.0</version>
+    <time>1775743724</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.880.0 (3.88)
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+  3.88  2026-03-26  sbeck
+    -  Fixed release problem
+           A problem exists in this release. New release to correct it. GitHub
+           #21.</comment>
+    <requestid>1345211</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ea6e81f9fb714f8041c81383cf1f574c</srcmd5>
+    <version>3.900.0</version>
+    <time>1780921201</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.900.0 (3.90)
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+  3.90  2026-06-01  sbeck
+    -  Version 3.89 was created with a flaw and has been deleted.
+    -  NEW CODE(s)</comment>
+    <requestid>1357780</requestid>
+  </revision>
 </revisionlist>
