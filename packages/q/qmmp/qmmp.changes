@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun  7 17:55:30 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.3
+  * fixed build with PipeWire versions less than 0.3.50
+  * fixed settings dialog layout.
+  * fixed default CUE encoding.
+  * fixed possible null pointer dereference.
+  * fixed tracks order when added using drag and drop.
+  * fixed uninitialized structure usage.
+  * improved sid plugin:
+    + added libsidplayfp 3.0 support.
+    + added feature to build without residfp engine.
+    + fixed memory leak.
+    + fixed displaying audio information.
+  * updated Japanese translation.
+
+-------------------------------------------------------------------
+Sun May 24 12:34:56 UTC 2026 - olaf@aepfle.de
+
+- Remove obsolete mplayer plugin
+
+-------------------------------------------------------------------
 Sat Apr  4 07:57:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.2

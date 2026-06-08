@@ -19,10 +19,8 @@
 %global __provides_exclude_from ^%{_libdir}/qmmp-[0-9\.]*/
 %define sover   2
 %define mver    2.3
-%bcond_with faad
-%bcond_with restricted
 Name:           qmmp
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later
@@ -47,6 +45,7 @@ BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(enca)
+BuildRequires:  pkgconfig(faad2)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libarchive)
@@ -81,9 +80,6 @@ Requires:       %{name}(%{sover})(Input)
 Requires:       %{name}(%{sover})(Output)
 Requires:       %{name}(%{sover})(Ui)
 ExclusiveArch:  %ix86 x86_64
-%if %{with faad}
-BuildRequires:  pkgconfig(faad2)
-%endif
 
 %description
 This program is an audio-player, written with help of Qt library.
@@ -108,25 +104,15 @@ Provides:       %{name}(%{sover})(Output)
 Provides:       %{name}(%{sover})(Ui)
 # libqmmp0-plugins & qmmp-plugin-pack-simple-ui were last used in openSUSE 13.2 (in PMBS).
 Provides:       %{name}-plugin-pack-simple-ui = %{version}
+Provides:       lib%{name}-plugin-mplayer = %{version}-%{release}
 Obsoletes:      %{name}-plugin-pack-simple-ui < %{version}
+Obsoletes:      lib%{name}-plugin-mplayer < %{version}-%{release}
 Obsoletes:      lib%{name}0-plugins < %{version}
 
 %description -n lib%{name}-plugins
 This program is an audio-player, written with help of Qt library.
 
 This package provides plugins for libqmmp.
-
-%if %{with restricted}
-%package -n lib%{name}-plugin-mplayer
-Summary:        MPlayer plugin for libqmmp
-Group:          System/Libraries
-Requires:       MPlayer
-
-%description -n lib%{name}-plugin-mplayer
-This program is an audio-player, written with help of Qt library.
-
-This package provides MPlayer plugin for libqmmp.
-%endif
 
 %package -n lib%{name}-devel
 Summary:        Development files for libqmmp
@@ -147,9 +133,6 @@ Development files for libqmmp.
   -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
   -DLIB_DIR=%{_lib}              \
   -DPLUGIN_DIR=%{_lib}/%{name}-%{mver} \
-%if %{without restricted}
-  -DUSE_MPLAYER=OFF              \
-%endif
   -DUSE_HAL=OFF                  \
   -DUSE_OSS=OFF                  \
   -DUSE_OSS4=OFF
@@ -178,16 +161,6 @@ rm -r %{buildroot}/%{_datadir}/icons/hicolor/56x56
 
 %files -n lib%{name}-plugins
 %{_libdir}/%{name}-%{mver}/
-%if %{with restricted}
-%exclude %{_libdir}/%{name}-%{mver}/Engines/libmplayer.so
-%endif
-
-%if %{with restricted}
-%files -n lib%{name}-plugin-mplayer
-%dir %{_libdir}/%{name}-%{mver}/
-%dir %{_libdir}/%{name}-%{mver}/Engines/
-%{_libdir}/%{name}-%{mver}/Engines/libmplayer.so
-%endif
 
 %files -n lib%{name}-devel
 %{_includedir}/%{name}/
