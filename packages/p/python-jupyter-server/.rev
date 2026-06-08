@@ -795,4 +795,33 @@
   * Use web.HTTPError for kernel restart failures #1616 (@YDawn,</comment>
     <requestid>1351103</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>0eff155a7763d7e0e07a9b86e64b442f</srcmd5>
+    <version>2.19.0</version>
+    <time>1780921454</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.19.0 (CVE-2026-5422, bsc#1267357):
+  # Enhancements made
+  - Return `unresolved` stanza when kernel scope is unavailable for
+    `resolvePath` (instead of failing with 404) [#1641]
+  # Bugs fixed
+  - Recreate notary store on failure to prevent save deadlock and data
+    loss [#1640]
+  # Maintenance and upkeep improvements
+  - Restore the test skip marks with updated compatibility reason [#1646]
+  - Drop Python 3.9 [#1644]
+  - Bump minimatch from 3.1.2 to 3.1.5 [#1606]
+  # Other merged PRs
+  - Update pytest requirement from \&lt;9,&gt;=7.0 to &gt;=7.0,\&lt;10 [#1647]
+  - fix: use percent-placeholder args in HTTPError to prevent Tornado
+    from doubling percent signs in gateway URLs [#1642]
+- 2.18.2:
+  # Bugs fixed
+  - Fix saving user avatar URL [#1637]
+  - Fix path resolution if `root_dir` is a filesystem root [#1636]
+  # Maintenance and upkeep improvements
+  - Add Zulip notification when a release is complete [#1634]
+  - chore: update pre-commit hooks [#1633]</comment>
+    <requestid>1357929</requestid>
+  </revision>
 </revisionlist>

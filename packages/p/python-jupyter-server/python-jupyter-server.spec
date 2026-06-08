@@ -33,7 +33,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jupyter-server%{psuffix}
-Version:        2.18.1
+Version:        2.19.0
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause

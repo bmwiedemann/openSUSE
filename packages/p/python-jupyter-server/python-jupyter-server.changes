@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jun  8 09:33:44 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.19.0 (CVE-2026-5422, bsc#1267357):
+  # Enhancements made
+  - Return `unresolved` stanza when kernel scope is unavailable for
+    `resolvePath` (instead of failing with 404) [#1641]
+  # Bugs fixed
+  - Recreate notary store on failure to prevent save deadlock and data
+    loss [#1640]
+  # Maintenance and upkeep improvements
+  - Restore the test skip marks with updated compatibility reason [#1646]
+  - Drop Python 3.9 [#1644]
+  - Bump minimatch from 3.1.2 to 3.1.5 [#1606]
+  # Other merged PRs
+  - Update pytest requirement from \<9,>=7.0 to >=7.0,\<10 [#1647]
+  - fix: use percent-placeholder args in HTTPError to prevent Tornado
+    from doubling percent signs in gateway URLs [#1642]
+
+- 2.18.2:
+  # Bugs fixed
+  - Fix saving user avatar URL [#1637]
+  - Fix path resolution if `root_dir` is a filesystem root [#1636]
+  # Maintenance and upkeep improvements
+  - Add Zulip notification when a release is complete [#1634]
+  - chore: update pre-commit hooks [#1633]
+
+-------------------------------------------------------------------
 Wed May  6 05:44:42 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - update to 2.18.1 (bsc#1264161, CVE-2025-61669):
