@@ -1,3 +1,15 @@
+------------------------------------------------------------------
+Sat Jun 06 16:14:01 UTC 2026 - cat@aulucya.gay
+
+- Update to version 2.1.0:
+  * [U] Release 2.1.0
+  * Update neofetch
+  * Fixed custom ASCII loading form files (#505)
+  * Fixed ASCII whitespace handling (#327)
+  * Fixed Intel OEM iGPU names (#230)
+  * Fixed duplicate resolution output by skipping inactive DRM connectors (#319)
+  * Fixed package coutning by removing the incorrect dnf fast path (#306)
+
 -------------------------------------------------------------------
 Sat Dec 13 18:00:00 UTC 2025 - Cat Kasin <cat@aulucya.gay>
 

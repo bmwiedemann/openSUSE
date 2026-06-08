@@ -101,4 +101,21 @@
 </comment>
     <requestid>1324226</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>56a4efd70913503bf1d9806bd61da3cb</srcmd5>
+    <version>unknown</version>
+    <time>1780921150</time>
+    <user>anag_factory</user>
+    <comment>------------------------------------------------------------------
+- Update to version 2.1.0:
+  * [U] Release 2.1.0
+  * Update neofetch
+  * Fixed custom ASCII loading form files (#505)
+  * Fixed ASCII whitespace handling (#327)
+  * Fixed Intel OEM iGPU names (#230)
+  * Fixed duplicate resolution output by skipping inactive DRM connectors (#319)
+  * Fixed package coutning by removing the incorrect dnf fast path (#306)
+</comment>
+    <requestid>1357686</requestid>
+  </revision>
 </revisionlist>
