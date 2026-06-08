@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           qmlkonsole
-Version:        26.04.1
+Version:        26.04.2
 Release:        0
 Summary:        Terminal application
 License:        GPL-2.0-or-later
