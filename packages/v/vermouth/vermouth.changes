@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 07 21:55:36 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.9.1 Kirigami-er
+- Upstream changes:
+  * Dialogs to Pages (#49)
+  * refactor: QML cleanup and refactor
+  * cleanup: Remove unneeded padding
+  * ui: Fix the status bar showing the runner and the exe path
+  * ui: Improve the pinnable sidebar, other UI improvements
+  * Update sha sums
+
+-------------------------------------------------------------------
 Thu Jun 04 16:45:54 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.8.5

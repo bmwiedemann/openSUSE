@@ -261,4 +261,19 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Update SHAs</comment>
     <requestid>1357185</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>820a3f57e8f16e566763fa3265479e42</srcmd5>
+    <version>1.9.1</version>
+    <time>1780921225</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.9.1 Kirigami-er
+- Upstream changes:
+  * Dialogs to Pages (#49)
+  * refactor: QML cleanup and refactor
+  * cleanup: Remove unneeded padding
+  * ui: Fix the status bar showing the runner and the exe path
+  * ui: Improve the pinnable sidebar, other UI improvements
+  * Update sha sum</comment>
+    <requestid>1357814</requestid>
+  </revision>
 </revisionlist>
