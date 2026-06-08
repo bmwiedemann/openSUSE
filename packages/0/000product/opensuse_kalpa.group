@@ -211,6 +211,9 @@
     <package name="kaccounts-integration" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kaccounts-providers" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kactivitymanagerd6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="kalpa-themes" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="kalpa-themes-chefs-recommendation" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="kalpa-themes-sddm" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kate" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kate-plugins" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1278,7 +1281,6 @@
     <package name="libz-ng-compat1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libzck1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libzimg2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libzio1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libzip5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libzix-0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libzmq5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1485,8 +1487,6 @@
     <package name="suse-module-tools-scriptlets" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="susepaste" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="switcheroo-control" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="sysextmgr" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="sysextmgr-tukit-plugin" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="system-config-printer-common" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="system-config-printer-dbus-service" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="system-group-audit" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1500,7 +1500,6 @@
     <package name="system-user-srvGeoClue" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="system-user-tss" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="systemd-container" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="systemd-presets-branding-Kalpa" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->

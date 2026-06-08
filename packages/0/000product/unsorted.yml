@@ -54,6 +54,7 @@ unsorted:
   - DVDStyler-lang 
   - DevIL-devel 
   - DirectX-Headers 
+  - DoomRunner 
   - FAudio-devel 
   - FAudio-devel-32bit 
   - FastCGI 
@@ -2049,7 +2050,6 @@ unsorted:
   - casync 
   - catalan-pos-dict 
   - catcodec 
-  - catgirl 
   - catimg 
   - catimg-zsh-completion 
   - cava 
@@ -9881,9 +9881,6 @@ unsorted:
   - kalk-lang 
   - kalm 
   - kalm-lang 
-  - kalpa-themes 
-  - kalpa-themes-chefs-recommendation 
-  - kalpa-themes-sddm 
   - kalzium 
   - kalzium-devel 
   - kalzium-lang 
@@ -13192,9 +13189,11 @@ unsorted:
   - libextractor-plugins-mpeg 
   - libextractor-plugins-ogg 
   - libextractor-plugins-ole2 
+  - libextractor-plugins-pdf 
   - libextractor-plugins-rpm 
   - libextractor-plugins-thumbnailgtk 
   - libextractor-plugins-tiff 
+  - libextractor-plugins-vlc 
   - libextractor3 
   - libextractor_common1 
   - libexttextcat-devel 
@@ -15509,7 +15508,7 @@ unsorted:
   - libpodofo-0_10-devel 
   - libpodofo-devel 
   - libpodofo2 
-  - libpodofo3 
+  - libpodofo4 
   - libpoke1 
   - libpolkit-agent-1-0-32bit 
   - libpolkit-gobject-1-0-32bit 
@@ -16112,8 +16111,6 @@ unsorted:
   - libressl-devel-doc 
   - librest-devel 
   - libresvg0 
-  - libretls-devel 
-  - libretls-libtls28 
   - librevenge-devel 
   - librevenge-doc 
   - librevenge-generators-0_0-0 
@@ -17503,6 +17500,7 @@ unsorted:
   - libzdb-devel 
   - libzdb17 
   - libze_intel_gpu1 
+  - libze_intel_gpu_raytracing 
   - libzeitgeist-1_0-1 
   - libzeitgeist-devel 
   - libzen-devel 
@@ -20002,8 +20000,6 @@ unsorted:
   - netty-tcnative 
   - netty-tcnative-javadoc 
   - netty-tcnative-openssl-dynamic 
-  - netty3 
-  - netty3-javadoc 
   - network-autoconfig 
   - neverball 
   - neverball-doc 
@@ -21843,6 +21839,7 @@ unsorted:
   - perl-Dancer2-Plugin-REST 
   - perl-Dancer2-Plugin-WebSocket 
   - perl-Data-Binary 
+  - perl-Data-Censor 
   - perl-Data-Clone 
   - perl-Data-Compare 
   - perl-Data-Dump 
@@ -22110,6 +22107,7 @@ unsorted:
   - perl-HTTP-Tinyish 
   - perl-HTTPS-Daemon 
   - perl-Hamlib 
+  - perl-Hash-Case 
   - perl-Hash-Merge 
   - perl-Hash-Merge-Simple 
   - perl-Hash-MoreUtils 
@@ -23596,7 +23594,6 @@ unsorted:
   - postsrsd 
   - potrace 
   - potrace-devel 
-  - pounce 
   - povray 
   - povray-doc 
   - power-profiles-daemon-doc 
@@ -27989,6 +27986,7 @@ unsorted:
   - python311-uuid6 
   - python311-uv 
   - python311-uv-build 
+  - python311-uv-dynamic-versioning 
   - python311-uvicorn 
   - python311-uvloop 
   - python311-uwsgi-python3 
@@ -31951,6 +31949,7 @@ unsorted:
   - python313-uuid6 
   - python313-uv 
   - python313-uv-build 
+  - python313-uv-dynamic-versioning 
   - python313-uvicorn 
   - python313-uvloop 
   - python313-uwsgi-python3 
@@ -35942,6 +35941,7 @@ unsorted:
   - python314-uuid6 
   - python314-uv 
   - python314-uv-build 
+  - python314-uv-dynamic-versioning 
   - python314-uvicorn 
   - python314-uvloop 
   - python314-uwsgi-python3 
@@ -38805,6 +38805,7 @@ unsorted:
   - sysdig 
   - sysdig-bash-completion 
   - sysdig-zsh-completion 
+  - sysextmgr-tukit-plugin 
   - sysfsutils 
   - sysfsutils-devel 
   - sysinfo 
@@ -50248,6 +50249,7 @@ unsorted:
   - vit 
   - vitetris 
   - viu 
+  - vkSumi 
   - vkbasalt 
   - vkbasalt-cli 
   - vkd3d-demos 
@@ -51306,10 +51308,13 @@ unsorted:
   - zig 
   - zig-libs0.14 
   - zig-libs0.15 
+  - zig-libs0.16 
   - zig-rpm-macros0.14 
   - zig-rpm-macros0.15 
+  - zig-rpm-macros0.16 
   - zig0.14 
   - zig0.15 
+  - zig0.16 
   - zile 
   - zim 
   - zim-lang 
