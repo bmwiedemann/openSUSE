@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Jun 02 11:08:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 7.1.0:
+  * Documentation
+    - Release 7.1.0 [#2820]
+    - docs(adr): Remove erroneous mention of kanidm [#2783]
+  * Bug Fixes
+    - Prevent personal space creation for service- and lightweight
+      users [#2876]
+    - chore: bump reva to 2.46.1 [#2869]
+    - fix: Send SSE events for SpaceCreated/-Disabled/-Deleted
+      [#2851]
+    - Only try to limit search to spaces if there's a space id to
+      limit to [#2834]
+    - fix(init): Only log admin password if it was generated
+      [#2839]
+    - fix: translations for activities and others [#2836]
+    - fix-2824. run tests without remote.php [#2826]
+  * Enhancement
+    - chore: bump web to v7.1.0 [#2870]
+  * Dependencies
+    - build(deps): bump
+      go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+      from 1.43.0 to 1.44.0 [#2855]
+    - build(deps-dev): bump license-checker-rseidelsohn from 4.4.2
+      to 5.0.1 in /services/idp [#2854]
+    - build(deps-dev): bump cldr from 7.9.0 to 8.0.0 in
+      /services/idp [#2853]
+    - build(deps): bump i18next from 26.1.0 to 26.3.0 in
+      /services/idp [#2849]
+    - build(deps-dev): bump sass-loader from 16.0.8 to 17.0.0 in
+      /services/idp [#2845]
+    - build(deps): bump google.golang.org/grpc from 1.80.0 to
+      1.81.1 [#2848]
+    - build(deps): bump
+      go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
+      from 0.68.0 to 0.69.0 [#2847]
+    - build(deps-dev): bump typescript from 5.9.3 to 6.0.3 in
+      /services/idp [#2846]
+    - build(deps-dev): bump postcss-loader from 4.3.0 to 8.2.1 in
+      /services/idp [#2830]
+    - build(deps): bump github.com/riandyrn/otelchi from 0.12.2 to
+      0.12.3 [#2814]
+    - build(deps-dev): bump workbox-webpack-plugin from 7.4.0 to
+      7.4.1 in /services/idp [#2781]
+
+-------------------------------------------------------------------
 Thu May 21 13:50:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 7.0.0:
