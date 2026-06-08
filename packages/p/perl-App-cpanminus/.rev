@@ -193,4 +193,16 @@
     <comment></comment>
     <requestid>1235294</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b3f4f6eee3cc4ee0cf2c68841894fddb</srcmd5>
+    <version>1.7049</version>
+    <time>1780921121</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.7049
+   see /usr/share/doc/packages/perl-App-cpanminus/Changes
+  1.7049  2026-03-16 17:36:56 PDT
+     [Improvements]
+        - Update fatpacked Module::Metadata to 1.000038 (#697)</comment>
+    <requestid>1357704</requestid>
+  </revision>
 </revisionlist>

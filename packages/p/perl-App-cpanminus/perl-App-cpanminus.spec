@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-cpanminus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name App-cpanminus
 Name:           perl-App-cpanminus
-Version:        1.7048
+Version:        1.7049
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Get, unpack, build and install modules from CPAN
@@ -26,6 +26,7 @@ URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{version}.tar.gz
 Source1:        fatunpack
 Source2:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -114,7 +115,7 @@ It's dependency free (can bootstrap itself), requires zero configuration,
 and stands alone. When running, it requires only 10MB of RAM.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
