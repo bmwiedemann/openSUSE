@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun  4 08:44:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Changes since 26.04.1:
+  * Fix crash in ThreadModel
+  * Fix crash in ThreadModel
+  * Work around problem in QConcatenateTablesProxyModel
+  * Fix crash when viewing space home page
+  * Fix creating a room as a child of a space and cleanup API
+  * Remove bogus beginRemove/ResetModel calls
+  * Avoid having a stale quick action item when message is unhovered
+  * Fix crash when SSSSHandler emits error twice
+  * DevicesModel: Don't return garbage data for timestamp roles
+  * Fix DevicesPage not updating when connection changes
+  * Persist the last save file dialog directory for Flatpaks
+  * Linkify URLs with apostrophes (kde#501960)
+  * Don't mangle URLs with two consecutive underscores (kde#503933)
+  * Add hack to stop multi-line pinned messages from appearing
+  * Don't allow previewing audio/video before sending it (kde#519112)
+  * Fix how underscores were parsed in our new rich text system
+  * Fix Quotient version checks
+
+-------------------------------------------------------------------
 Thu May  7 08:03:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1
