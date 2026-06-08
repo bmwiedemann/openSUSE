@@ -17,7 +17,7 @@
 
 
 Name:           dabstar
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        A DAB receiver with a technical focus
 License:        GPL-2.0-only

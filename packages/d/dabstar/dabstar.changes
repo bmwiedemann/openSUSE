@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun  6 07:12:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to versino 5.2.0
+  * Includes fixes following the recent removal of Qwt.
+  * The GUI has been refreshed with a more colorful look.
+  * The audio peak/RMS level meter is now much more precise.
+  * On Linux, the level meter works especially well. On Windows,
+    timer precision limitations required a compromise, but the
+    result should still be usable.
+
+-------------------------------------------------------------------
 Wed Jun  3 06:27:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.1.0
