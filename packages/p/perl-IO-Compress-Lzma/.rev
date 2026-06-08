@@ -112,4 +112,35 @@
       f32378fab46920106fc652f4a6c3690d32e150a4</comment>
     <requestid>1319071</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ea64e7048abce9dc7c46cdce70f23850</srcmd5>
+    <version>2.217.0</version>
+    <time>1780921125</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.217.0 (2.217)
+   see /usr/share/doc/packages/perl-IO-Compress-Lzma/Changes
+    2.217 1 February 2027
+      * Update release date in README
+        Sun Feb 1 11:18:34 2026 +0000
+        1c7d15d87ac731f349c158bce992e20aff1d4ef1
+      * Rework workflow to automatically detect and use all the available the versions of perl available
+        Sun Feb 1 11:17:11 2026 +0000
+        c162932bfbad3ef4ba228adc4e84b0c2efbcce15
+      * Delete XZ environment variable before running interop tests
+        Sat Jan 31 12:22:39 2026 +0000
+        66f2e8a780764db3e4543e7c0001fadf8d3d4245
+      * Update version to 2.217
+        Sat Jan 31 11:49:28 2026 +0000
+        780f36866643b1586252b3cc0e759b194c2b3968
+      * Merge pull request #6 from pmqs/dependabot/github_actions/actions/checkout-6
+        Fri Jan 30 09:28:47 2026 +0000
+        c8bcda299e3ca38cee77f81f9348ce0eb6a0cb73
+      * Bump actions/checkout from 4 to 6
+        Fri Jan 30 09:07:01 2026 +0000
+        1d68ea574a68ced879e1186808d379644fc48b23
+      * Remove target-branch specification from dependabot.yml
+        Fri Jan 30 09:06:04 2026 +0000
+        a9769b1549053ca2f804cf9ea53dfb83f00b6656</comment>
+    <requestid>1357711</requestid>
+  </revision>
 </revisionlist>
