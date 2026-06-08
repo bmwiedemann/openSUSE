@@ -223,4 +223,22 @@
         smuggling (CVE-2026-7010) bsc#1264992</comment>
     <requestid>1353775</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>596147119c42064f00f55c30332ccc4a</srcmd5>
+    <version>0.096</version>
+    <time>1780930492</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.096
+   see /usr/share/doc/packages/perl-HTTP-Tiny/Changes
+  0.096     2026-06-08 11:21:49+02:00 Europe/Brussels
+      - No changes from 0.095-TRIAL
+  0.095     2026-06-03 13:10:05+02:00 Europe/Brussels (TRIAL RELEASE)
+      [!!! SECURITY !!!]
+      - Caller-supplied C&lt;Authorization&gt;, C&lt;Cookie&gt;, and C&lt;Proxy-Authorization&gt;
+        headers are now stripped on cross-origin redirects by default. Use
+        allow_credentialed_redirects to opt out.
+      - Redirects are no longer automatically followed when going from https to http.
+        Use allow_downgrade to revert to the original behaviour.</comment>
+    <requestid>1357974</requestid>
+  </revision>
 </revisionlist>
