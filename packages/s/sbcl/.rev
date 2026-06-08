@@ -1774,4 +1774,41 @@ Thanks</comment>
   * bug fix: alien calls involving passing structs by value are less likely to (forwarded request 1351128 from glaubitz)</comment>
     <requestid>1351145</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>b03d152eef457180b8f1fdd4c68b6fd1</srcmd5>
+    <version>2.6.5</version>
+    <time>1780921442</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.6.5
+  * minor incompatible change: the condition signalled when an accessed slot
+    is missing from an object is no longer a TYPE-ERROR.
+  * minor incompatible change: the condition signalled when accessing an
+    uninitialized structure slot is no longer a TYPE-ERROR.
+  * minor incompatible change: the implementations of standardized functions
+    treating lists as sets, such as INTERSECTION and UNION, take more
+    advantage of the freedom to return the elements of the result in any
+    order.
+  * platform support:
+    ** add low-level support for floating point state manipulation on
+       PPC64/FreeBSD.  (thanks to Piotr Kubaj)
+    ** improve the software emulation of displaced instructions on ARM64.
+    ** restore building the system using the musl C library.  (lp#2153432,
+       reported by Tom Gillespie)
+    ** fix some SB-SIMD shifting instructions on AVX2.  (lp#2152791, reported
+       by Willem Broekema)
+  * enhancement: definition sources for alien callbacks are now findable by
+    name in SB-INTROSPECT.
+  * bug fix: the SYMBOL restart for finding packages now actually performs a
+    non-local exit.  (lp#2153092, reported by Zach Shaftel)
+  * bug fix: TYPEP on large disjoint numeric union types compiles faster using
+    fewer resources.  (lp#2151818, reported by James McDonald)
+  * bug fix: strings of arbitrary size with fill-pointer set to 1 are
+    character designators.  (reported by _death)
+  * bug fix: the KEEP-OLD restart established by ADD-PACKAGE-LOCAL-NICKNAME
+    keeps the old nickname instead of going ahead with the change (and the
+    restart report function no longer returns from ADD-PACKAGE-LOCAL-NICKNAME).
+  * bug fix: when EXPORT results in a conflict between symbols exported by
+    different used packages, the TAKE-NEW restart now shadowing-imports the (forwarded request 1357870 from glaubitz)</comment>
+    <requestid>1357915</requestid>
+  </revision>
 </revisionlist>
