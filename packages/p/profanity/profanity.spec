@@ -48,7 +48,7 @@
 %bcond_without omemo_qrcode
 #
 Name:           %{pname}
-Version:        0.18.1
+Version:        0.18.2
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception

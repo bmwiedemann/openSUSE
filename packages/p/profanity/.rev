@@ -829,4 +829,18 @@
 - Swith from libsignal-protocol-c to libomemo-c</comment>
     <requestid>1353447</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>31134d7a27996424d73986f3e91ce7fa</srcmd5>
+    <version>0.18.2</version>
+    <time>1780921458</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.18.2:
+  Bug Fixes:
+  * Guard terminal writes while suspended (#2167)
+  * Prevent OTR handshake from leaking presence to strangers (#2168)
+  * Silence 'no key' error for key transport messages (#2171)
+  Build System:
+  * Add configurable docdir option for documentation (#2174)</comment>
+    <requestid>1357932</requestid>
+  </revision>
 </revisionlist>
