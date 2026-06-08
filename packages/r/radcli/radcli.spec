@@ -19,7 +19,7 @@
 
 %define sover 10
 Name:           radcli
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        A RADIUS client library
 License:        BSD-2-Clause AND MIT

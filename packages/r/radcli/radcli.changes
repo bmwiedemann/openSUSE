@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  8 06:36:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.2
+  * tls: defer TCP connect and TLS handshake to first use. This
+    addresses the issue of radcli connecting to TLS server
+    during rc_read_config().
+
+-------------------------------------------------------------------
 Sat May  2 12:37:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.1
