@@ -563,4 +563,41 @@
   * Fixed banner update</comment>
     <requestid>1355715</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e563cbf0de599b7d7257d9216a10ea05</srcmd5>
+    <version>1.21.1</version>
+    <time>1780921224</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.21.1
+- Upstream changes:
+  * Updated metadata screenshots
+  * Updated screenshots
+  * Added support for DW-Proton
+  * Updated HDR option
+  * Show game icon on splash
+  * Some refactoring + high dpi logo on runner
+  * cleanup: remove redundant flowbox clearing and dead code in update_list
+  * fix: properly close file handle in save_running
+  * Added missing translation tokens
+  * Grabs better icons
+  * refactor: centralize gettext setup into language_config.py
+  * Another attempt to fix the EA App
+  * Removed EA App support
+  * Update runner.py
+  * Add files via upload
+  * Update faugus-launcher.po
+  * fix(proton-manager): skip non-directory entries in get_installed_path
+  * Removed old gameid logic
+  * Update launcher.py
+  * Update shortcut.py
+  * Update shortcut.py
+  * Update shortcut.py
+  * refactor: remove duplicate locale functions, import from language_config
+  * Update proton_manager.py
+  * Remove duplicate json import
+  * Remove unused variables
+  * Removed treeview style
+  * Fix command injection via executable filename</comment>
+    <requestid>1357813</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Jun 07 22:04:22 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.21.1
+- Upstream changes:
+  * Updated metadata screenshots
+  * Updated screenshots
+  * Added support for DW-Proton
+  * Updated HDR option
+  * Show game icon on splash
+  * Some refactoring + high dpi logo on runner
+  * cleanup: remove redundant flowbox clearing and dead code in update_list
+  * fix: properly close file handle in save_running
+  * Added missing translation tokens
+  * Grabs better icons
+  * refactor: centralize gettext setup into language_config.py
+  * Another attempt to fix the EA App
+  * Removed EA App support
+  * Update runner.py
+  * Add files via upload
+  * Update faugus-launcher.po
+  * fix(proton-manager): skip non-directory entries in get_installed_path
+  * Removed old gameid logic
+  * Update launcher.py
+  * Update shortcut.py
+  * Update shortcut.py
+  * Update shortcut.py
+  * refactor: remove duplicate locale functions, import from language_config
+  * Update proton_manager.py
+  * Remove duplicate json import
+  * Remove unused variables
+  * Removed treeview style
+  * Fix command injection via executable filenames
+  * Remove unused get_remove_prefix_state method
+  * Remove unused on_checkbox_addapp_toggled handler.
+  * Remove unused variables
+  * Remove unused variables
+  * Remove unused variables
+  * Remove unused variables
+  * Remove unused extraction method
+  * Update launcher.py
+  * Update gamepad.py
+  * Update faugus-launcher.po
+  * Forgot the argument
+  * Removed gpu name print
+
+-------------------------------------------------------------------
 Thu May 28 21:27:58 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.20.4:
