@@ -3,6 +3,7 @@ abi <abi/3.0>,
 include <tunables/global>
 
 @{APP_DATADIR} = /var/lib/forgejo
+@{APP_LOGDIR}  = /var/log/forgejo
 @{APP_REPOSITORY_DIRS} = @{APP_DATADIR}/data/forgejo-repositories @{APP_DATADIR}/repositories
 
 profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
@@ -11,9 +12,35 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
   network inet  stream,
   network inet6 stream,
 
+  # for setup through Forgejo
+  #/etc/forgejo/conf/app.ini rw,
+
+  /etc/forgejo/templates/{,*.tmpl} r,
+
   /usr/bin/forgejo Cx -> forgejo-session-exec,
 
   signal (send) peer=forgejo//*,
+
+
+  owner @{APP_DATADIR}/ r,
+
+  owner @{APP_DATADIR}/data/ r,
+  owner @{APP_DATADIR}/data/** rwlk,
+
+  owner @{APP_DATADIR}/https/ r,
+  owner @{APP_DATADIR}/https/** rwlk,
+
+  owner @{APP_DATADIR}/indexers/ r,
+  owner @{APP_DATADIR}/indexers/** rwlk,
+
+  owner @{APP_DATADIR}/queues/ r,
+  owner @{APP_DATADIR}/queues/** rwlk,
+
+  owner @{APP_REPOSITORY_DIRS}/ r,
+  owner @{APP_REPOSITORY_DIRS}/** rwlk,
+
+  owner @{APP_LOGDIR}/ r,
+  owner @{APP_LOGDIR}/gitea.log* rwlk,
 
   profile forgejo-session-exec {
     include <abstractions/forgejo>
@@ -36,6 +63,7 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
     include <abstractions/ssl_certs>
 
     signal (receive) peer=forgejo,
+    signal (send) peer=forgejo//ssh,
 
     /etc/gitconfig r,
     /usr/lib{,exec}/git/* rmix,
@@ -70,10 +98,28 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
     include <abstractions/bash>
     include <abstractions/consoles>
 
+    signal (receive) peer=forgejo//git,
+
     /usr/bin/bash rm,
 
     /usr/lib{,exec}/git/git Px -> forgejo//git,
     /usr/lib{,exec}/git/git-write-tree Px -> forgejo//git,
+
+    /usr/bin/ssh Px -> forgejo//ssh,
+  }
+
+  profile ssh {
+    include <abstractions/base>
+    include <abstractions/nameservice>
+
+    signal (receive) peer=forgejo//git,
+
+    /etc/ssh/ssh_config r,
+    /etc/ssh/ssh_known_hosts r,
+    /tmp/remote_mirror_* r,
+    /usr/bin/ssh r,
+    /usr/bin/ssh.hmac r,
+    /var/lib/forgejo/data/home/.ssh/known_hosts rw,
   }
 
   profile hooks-pre-receive {
@@ -134,24 +180,4 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
     /usr/bin/cat      rm,
     /usr/bin/basename rm,
   }
-
-  owner @{APP_DATADIR}/ r,
-
-  owner @{APP_DATADIR}/data/ r,
-  owner @{APP_DATADIR}/data/** rwlk,
-
-  owner @{APP_DATADIR}/https/ r,
-  owner @{APP_DATADIR}/https/** rwlk,
-
-  owner @{APP_DATADIR}/indexers/ r,
-  owner @{APP_DATADIR}/indexers/** rwlk,
-
-  owner @{APP_DATADIR}/queues/ r,
-  owner @{APP_DATADIR}/queues/** rwlk,
-
-  owner @{APP_REPOSITORY_DIRS}/ r,
-  owner @{APP_REPOSITORY_DIRS}/** rwlk,
-
-  owner /var/log/forgejo/ r,
-  owner /var/log/forgejo/gitea.log* rwlk,
 }

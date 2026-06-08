@@ -10,6 +10,8 @@
   /sys/kernel/mm/transparent_hugepage/hpage_pmd_size r,
   @{PROC}/sys/net/core/somaxconn r,
 
+  @{PROC}/@{pid}/{cgroup,cpuset,mountinfo} r,
+
   /etc/forgejo/ r,
   /etc/forgejo/conf/app.ini r,
   /etc/forgejo/public/ r,
@@ -25,5 +27,5 @@
   /etc/mime.types r,
 
   include if exists <forgejo.d/forgejo.d>
-  include if exists <locatl/usr.bin.forgejo>
+  include if exists <local/usr.bin.forgejo>
   include if exists <local/forgejo>

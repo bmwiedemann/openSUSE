@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jun  5 01:14:44 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 11.0.14:
+  + fix: prevent git write to wiki repo from unauthorized user via git HTTP
+  + fix: prevent LFS authorization token from being used for read/write access
+    after user's access is restricted
+  + fix: prevent scoped API access (OAuth tokens, Access tokens) from accessing
+    resources beyond their permitted scope via non-API endpoints
+  + fix: implementing missing OAuth validation checks, improve protections
+    against race conditions
+  + fix: prevent OAuth redirect URI spoofing via non-ascii case collision
+  + fix: strengthen Actions Artifact V4 signature algorithm against spoofing attacks
+- Update apparmor profile, reflecting the same changes as the non-longterm package:
+  + Set UMask so that subdirectories within /var/lib/forgejo are not
+    world readable
+  + fix typo in abstraction
+  + have all all local permissions before subprofiles
+  + Allow SSH mirroring and template customization in AppArmor profile
+
+-------------------------------------------------------------------
+Sat Mar 21 09:41:53 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 11.0.11:
+  * fix: PKCE challenges to Forgejo's OAuth identity provider were not
+    validated when using the S256 algorithm
+  * fix: Forgejo supports using an OAuth Bearer token with HTTP basic
+    authentication, rather than Bearer token authentication, but did not
+    properly apply the limited scopes of the OAuth grant
+  * fix: missing permission checks in attachment-related web endpoints allowed
+    modifying attachments that a user did not own
+  * fix: email notifications for new releases could be sent to users that no
+    longer access to the repository, or to inactive users
+  * fix: missing permission checks in user/org-owned projects would allow
+    modifications of the open/closed state to be made to projects via insecure
+    direct object references
+  * fix: missing permission checks in a web endpoint allowed cancellation of
+    the automerge of a PR
+  * fix: prevent additional path-traversals in post-login redirect parameters
+    that allowed for arbitrary redirects
+
+-------------------------------------------------------------------
 Sat Jan 31 11:06:45 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 11.0.10:
