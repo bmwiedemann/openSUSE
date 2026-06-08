@@ -6,7 +6,7 @@
     <param name="scm">git</param>
     <param name="version">master</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">2.63.1</param>
+    <param name="revision">2.64.2</param>
     <!-- <param name="changesgenerate">enable</param> -->
     <!-- <param name="changesauthor">RN</param> -->
   </service>

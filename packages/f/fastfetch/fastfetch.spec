@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        2.63.1
+Version:        2.64.2
 Release:        0
 Summary:        Neofetch-like tool written mostly in C
 License:        MIT
@@ -39,12 +39,18 @@ BuildRequires:  pkgconfig(chafa)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dconf)
 BuildRequires:  pkgconfig(ddcutil)
+%ifnarch ppc64le
+BuildRequires:  pkgconfig(efl)
+%endif
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libva)
+BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(ocl-icd)
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xcb)

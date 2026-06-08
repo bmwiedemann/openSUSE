@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Jun 06 22:48:10 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.64.2:
+  * Common (Lua): addresses AI's feedback
+  * Codec (Linux): supports `BINARY_LINK_TYPE=dynamic`
+  * Common (QJS): supports `BINARY_LINK_TYPE=dynamic`
+  * Common (Lua): supports `BINARY_LINK_TYPE=dynamic`
+  * Logo: addresses review comments of AI
+  * Doc: updates changelog [ci skip]
+  * Logo (Builtin): update OpenWrt logo
+  * Doc: updates changelog
+  * Global: resets `keysHeight` after every refresh
+
+-------------------------------------------------------------------
+Sat Jun 06 22:47:15 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.64.1:
+  * Release: v2.64.1
+  * Common (Lua): detects circular reference in `encode_json`
+  * Common (Base64): adds `static` to internal functions
+  * Packages: adds option `PACKAGES_REMOVE_DISABLED` to remove
+    disabled package managers from the build entirely
+  * Codec (macOS): removes usage of JPEG XL; replaces enums with
+    raw constants
+  * Common (Lua): optimises code; fixes incompatibility against
+    lua 5.3
+  * Doc: update changelog
+  * Shell: sets pretty name of busybox to ash
+
+-------------------------------------------------------------------
+Sat Jun 06 22:46:31 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.64.0:
+  * Doc: update changelog
+  * Shell: sets pretty name of busybox to ash
+  * Shell: be more robust on busybox version detection
+  * Release: v2.64.0
+  * Codec (Vulkan): be compatible with old Vulkan headers
+  * Bootmgr (macOS): don't hard-code the firmware name
+  * Logo (Builtin): updates NurOS logo and colors (#2366)
+  * Shell (Linux): improves performance of busybox (ash) version detection
+  * Common (Format): adds `|` for center aligning
+
+-------------------------------------------------------------------
 Sun May 31 01:10:50 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.63.1:
