@@ -1,7 +1,7 @@
 #
 # spec file for package postsrsd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           postsrsd
-Version:        2.0.11
+Version:        2.0.12
 Release:        0
 Summary:        Sender Rewriting Support for postfix
 License:        GPL-2.0-only
@@ -47,7 +47,7 @@ as forwarder.
 	-DUSE_APPARMOR=1 -DINIT_FLAVOR=systemd \
 	-DWITH_SQLITE=BOOL:ON -DBUILD_TESTING:BOOL=OFF \
 	-DPOSTSRSD_USER=postsrsd
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
