@@ -112,4 +112,12 @@
     <comment>- Add missing Bugzilla reference for bsc#1266311 (forwarded request 1356322 from glaubitz)</comment>
     <requestid>1356369</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>69709627f363c2c4b1872dd05e665d26</srcmd5>
+    <version>10.32.4</version>
+    <time>1780921034</time>
+    <user>anag_factory</user>
+    <comment>- Increase mininum Go version in BuildRequires to 1.26.3 (forwarded request 1357022 from glaubitz)</comment>
+    <requestid>1357620</requestid>
+  </revision>
 </revisionlist>

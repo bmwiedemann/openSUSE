@@ -33,7 +33,7 @@ Source1:        vendor.tar.gz
 # PATCH-FIX-UPSTREAM - Add support for s390x architecture - gh/wastore/keyctl#2
 Patch0:         keyctl-add-s390x-support.patch
 BuildRequires:  golang-packaging
-BuildRequires:  go >= 1.24
+BuildRequires:  go >= 1.26.3
 # Building with -buildmode=pie is currently unsupported on armv7l, i586, riscv64 and s390x
 ExclusiveArch:  aarch64 ppc64le x86_64
 
