@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun  4 08:44:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Changes since 26.04.1:
+  * Fix week view navigation when locale starts week on Sunday
+  * calendar: Fix IncidenceEditorPage not letting users select end/due time
+  * Adapt to KMime having moved to Frameworks
+
+-------------------------------------------------------------------
 Thu May  7 08:03:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1
