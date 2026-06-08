@@ -1,8 +1,8 @@
 #
 # spec file for package ack
 #
-# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           ack
-Version:        3.9.0
+Version:        3.10.0
 Release:        0
 Summary:        Grep-Like Text Finder
 License:        Artistic-2.0
@@ -31,9 +31,9 @@ BuildRequires:  make
 BuildRequires:  perl >= 5.10.1
 BuildRequires:  perl(File::Next) >= 1.18
 BuildRequires:  perl(File::Temp) >= 0.19
-BuildRequires:  perl(YAML::PP)
 BuildRequires:  perl(IO::Pty)
 BuildRequires:  perl(Test::Pod) >= 1.14
+BuildRequires:  perl(YAML::PP)
 Requires:       perl >= 5.10.1
 Requires:       perl-App-Ack = %{version}-%{release}
 Requires:       perl-base = %{perl_version}
