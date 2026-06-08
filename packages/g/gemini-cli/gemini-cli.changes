@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Jun  7 18:59:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.45.2:
+  * fix(patch): cherry-pick f40498d to release/v0.45.1-pr-27676
+    to patch version v0.45.1 and create version 0.45.2
+- update to 0.45.1:
+  * fix(patch): cherry-pick 665228e to release/v0.45.0-pr-27570
+    to patch version v0.45.0 and create version 0.45.1
+
+-------------------------------------------------------------------
+Wed Jun  3 18:50:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.45.0:
+  * chore(release): bump version to
+    0.45.0-nightly.20260521.g854f811be
+  * fix(cli): prevent Termux relaunch and resize remount loops
+  * Feat/a2a expose usage metadata
+  * feat(context): Complete simplification work.
+  * fix(core): force update_topic tool to execute sequentially
+  * Revert "fix(core): prevent SIGHUP kills in PTY environments"
+  * fix(cli): filter internal session context from history during
+    resumption
+  * Update default auto routing
+  * fix(core): bypass routing classifiers to prevent orphaned
+    function response errors
+  * fix(core): suppress PTY resize EBADF errors
+  * fix(core): prevent blacklist bypass in mcp list
+  * fix(cli): ignore unmapped vim normal keys
+  * fix(patch): cherry-pick bd53951 to
+    release/v0.45.0-preview.0-pr-27496 to patch version
+    v0.45.0-preview.0 and create version 0.45.0-preview.1
+- update to 0.44.1:
+  * fix(patch): cherry-pick bd53951 to release/v0.44.0-pr-27496
+    [CONFLICTS]
+
+-------------------------------------------------------------------
 Wed May 27 21:27:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.44.0:
