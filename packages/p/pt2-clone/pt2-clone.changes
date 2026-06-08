@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun  7 17:52:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.89
+  * The VU-meters (and spectrum analyzer meters) now move at 60Hz
+    instead of 50Hz. The reason for this change is that they were
+    stuttering a bit.
+  * Added protection against the audio callback locking up (tick
+    counter = 0). This shouldn't have been possible under normal
+    circumstances, though.
+
+-------------------------------------------------------------------
 Mon Apr 27 07:18:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.88
