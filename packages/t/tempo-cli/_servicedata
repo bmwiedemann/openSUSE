@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/grafana/tempo</param>
-              <param name="changesrevision">991ce39eb956e9ed771fcffe05eff42d33de27ba</param></service></servicedata>
+              <param name="changesrevision">991ce39eb956e9ed771fcffe05eff42d33de27ba</param></service><service name="tar_scm">
+                <param name="url">https://github.com/grafana/tempo.git</param>
+              <param name="changesrevision">d399842f5d699627e49cdb7034b70e29e0e29567</param></service></servicedata>
