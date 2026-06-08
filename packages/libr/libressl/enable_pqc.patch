@@ -1,0 +1,14 @@
+Add MLKEM to default curves to enable use of PQC for TLSv1.3 by default.
+This change was provided by libressl devs and is expected in a future release.
+
+--- libressl-4.3.2/tls/tls_internal.h.orig	2026-05-29 23:34:07.157991736 +0200
++++ libressl-4.3.2/tls/tls_internal.h	2026-05-29 23:34:58.169324628 +0200
+@@ -37,7 +37,7 @@
+ #define TLS_CIPHERS_LEGACY	"HIGH:MEDIUM:!aNULL"
+ #define TLS_CIPHERS_ALL		"ALL:!aNULL:!eNULL"
+ 
+-#define TLS_ECDHE_CURVES	"X25519,P-256,P-384"
++#define TLS_ECDHE_CURVES	"X25519MLKEM768,X25519,P-256,P-384"
+ 
+ union tls_addr {
+ 	struct in_addr ip4;

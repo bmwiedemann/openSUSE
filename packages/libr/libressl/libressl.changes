@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jun  6 08:03:21 UTC 2026 - Anonymous Checkouts <anoncvs@mailinator.com>
+
+- Update to release 4.3.2
+  * Support for MLKEM768_X25519 keyshare in TLS.
+  * Added ML-KEM benchmarks to openssl(1) speed.
+  * Added support for starttls protocol sieve.
+  * Add support for RSASSA-PSS with pubkey OID RSASSA-PSS to
+    libssl.
+  * Rework portable assembly handling with LIBRESSL_USE_ASSEMBLY.
+  * Add SHA assembly for elf-aarch64.
+  * Fix posix_open() implementation so it properly signals failure.
+  * Fix overwrite of user CFLAGS/LDFLAGS in hardening flag
+    detection.
+- Added fix_cert_path.patch: Use the correct path for cert bundle
+  from ca-certificates packages.
+- Added enable_pqc.patch: Enable use of PQC for TLSv1.3 with
+  default parameters.
+
+-------------------------------------------------------------------
 Fri Jan 30 21:26:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Make the build succeed on s390x.
