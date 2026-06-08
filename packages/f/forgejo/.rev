@@ -960,4 +960,21 @@ Bug fixes:
   world readable (forwarded request 1355717 from darix)</comment>
     <requestid>1355767</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>77f128d8952b9cbf17a6f87db5bd1da5</srcmd5>
+    <version>15.0.2</version>
+    <time>1780920989</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 15.0.2:
+  + fix: prevent git write to wiki repo from unauthorized user via git HTTP
+  + fix: prevent LFS authorization token from being used for read/write access
+    after user's access is restricted
+  + fix: prevent scoped API access (OAuth tokens, Access tokens) from accessing
+    resources beyond their permitted scope via non-API end
+  + fix: implementing missing OAuth validation checks, improve protections
+    against race conditions
+  + fix: prevent OAuth redirect URI spoofing via non-ascii case collision
+  + fix: strengthen Actions Artifact V4 signature algorithm against spoofing attacks (forwarded request 1357581 from rrahl0)</comment>
+    <requestid>1357582</requestid>
+  </revision>
 </revisionlist>

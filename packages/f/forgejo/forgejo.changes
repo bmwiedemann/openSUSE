@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun  5 00:57:41 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 15.0.2:
+  + fix: prevent git write to wiki repo from unauthorized user via git HTTP
+  + fix: prevent LFS authorization token from being used for read/write access
+    after user's access is restricted
+  + fix: prevent scoped API access (OAuth tokens, Access tokens) from accessing
+    resources beyond their permitted scope via non-API end
+  + fix: implementing missing OAuth validation checks, improve protections
+    against race conditions
+  + fix: prevent OAuth redirect URI spoofing via non-ascii case collision
+  + fix: strengthen Actions Artifact V4 signature algorithm against spoofing attacks
+
+-------------------------------------------------------------------
 Thu May 28 21:59:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Set UMask so that subdirectories within /var/lib/forgejo are not
