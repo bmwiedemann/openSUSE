@@ -20,7 +20,7 @@
 %bcond_with betatest
 
 Name:           patterns-kalpa
-Version:        6.1
+Version:        6.1.1
 Release:        0
 Summary:        Patterns for Kalpa Desktop
 License:        MIT
@@ -189,8 +189,9 @@ Requires:       qemu-guest-agent
 Requires:       spice-vdagent
 
 ### sysextmgr
-Requires:       sysextmgr
-Requires:       sysextmgr-tukit-plugin
+### Currently breaks transactional-update, re-evaluate later, or just do it myself
+%dnl Requires:       sysextmgr
+%dnl Requires:       sysextmgr-tukit-plugin
 
 ### Device support requirements
 ## Audio Support: Pipewire is the Default sound server
@@ -355,6 +356,9 @@ Requires:       hicolor-icon-theme-branding-openSUSE
 Requires:       Kalpa-release
 Requires:       systemd-icon-branding-openSUSE
 Requires:       systemd-presets-branding-Kalpa
+Requires:       kalpa-themes
+Requires:       kalpa-themes-chefs-recommendation
+Requires:       kalpa-themes-sddm
 %dnl Disabling for now, while sorting out the new installer
 %dnl Requires:       systemd-repart-branding-Kalpa
 %dnl Requires:       x86_64_v3-branding-Kalpa

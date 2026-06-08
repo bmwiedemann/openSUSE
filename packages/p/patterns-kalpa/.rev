@@ -166,4 +166,14 @@
 </comment>
     <requestid>1357004</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d0d24c7b48f3989a59d697cbc6e41953</srcmd5>
+    <version>6.1.1</version>
+    <time>1780921066</time>
+    <user>anag_factory</user>
+    <comment>- Drop sysextmgr and sysextmgr-tukit-plugin  they break updates
+
+- Add missed kalpa-themes</comment>
+    <requestid>1357790</requestid>
+  </revision>
 </revisionlist>
