@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:54:42 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- update to 13.32
+  * autoscripts: enable update-rc.d and deb-systemd-helper with $DPKG_ROOT
+  * autoscripts/postrm-systemd{,-user}: stop testing for deb-systemd-helper
+  * autoscripts/postinst-systemd-restart: do not do a daemon-reload when DPKG_ROOT
+    is non-empty.
+    Thanks to Helmut Grohne <helmut@subdivi.de>
+  * dh_installtmpfiles: reproducible tmpfiles order for postrm scripts
+  * filedoublearray: do not resolve symlink when converting to absolute paths
+  * dh_clean: remove obsolete `compat` check
+  * dh_installtmpfiles: Remove note that `tmpfiles.d` is for `systemd`-only
+    (Closes: 1134898)
+  * dh_installdocs: Remove mention of where doc-base files are installed.
+    Thanks to Jay Burstin <jayburstinau@gmail.com> (Closes: #1138620)
+  * Dh_Lib.pm: Fix a (consistent) typo in a var name and fix some state resetting
+  * upgrade-checklist: Avoid implying `X-DH-Compat` is the new default.
+    (Closes: #1072698)
+  * Fix doubling of word in man page
+  * Fix meaning of "ahead of time"
+  * Fix header for `dh_computeautosubstvars`
+  * dh_computeautosubstvars: process next package instead of returning in parallel
+    build
+  * Do not compute `Commands` for `udeb` (Closes: #1136120)
+  * Do not compress R data files.
+  * autoconf: export standard build tools
+  * Add function get_build_tools to Dh_Lib.
+  * Update on Portuguese translation of the man pages (Closes: #1132737)
+  * dh_installsystemd: Remove note that `tmpfiles.d` is for `systemd`-only
+  * dh_installtmpfiles: add dependency on tmpfiles implementation
+  * Document dh_qmldeps changes with v14.  (Closes: #1133692)
+
+-------------------------------------------------------------------
 Thu Mar 19 09:08:23 UTC 2026 - Jan Baier <jbaier@suse.com>
 
 - update to 13.31
