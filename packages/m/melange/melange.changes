@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 08 04:47:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.52.1:
+  * build(deps): bump actions/checkout in the actions group (#2560)
+  * chore(pipelines/xcover): add scope parameter (#2558)
+  * build(deps): bump the actions group across 1 directory with 4
+    updates (#2554)
+  * git-checkout: guard branch+expected-commit against
+    stale/diverged commits (#2555)
+
+-------------------------------------------------------------------
 Tue Jun 02 04:33:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.52.0:
