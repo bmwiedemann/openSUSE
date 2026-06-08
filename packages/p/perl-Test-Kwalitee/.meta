@@ -6,6 +6,5 @@ In the world of the CPAN, the CPANTS project (CPAN Testing Service; also a funny
 improve your quality as well.
 
 'Test::Kwalitee' and a short test file will do this for you automatically.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Kwalitee"/>
   <url>https://metacpan.org/release/Test-Kwalitee</url>
 </package>

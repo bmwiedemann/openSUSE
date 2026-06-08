@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Kwalitee
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,34 @@
 
 %define cpan_name Test-Kwalitee
 Name:           perl-Test-Kwalitee
-Version:        1.28
+Version:        1.280.0
 Release:        0
+# 1.28 -> normalize -> 1.280.0
+%define cpan_version 1.28
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Test the Kwalitee of a distribution before you release it
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Meta::Check) >= 0.011
+BuildRequires:  perl(CPAN::Meta::Check) >= 0.11
 BuildRequires:  perl(CPAN::Meta::Requirements)
-BuildRequires:  perl(Module::CPANTS::Analyse) >= 0.92
+BuildRequires:  perl(Module::CPANTS::Analyse) >= 0.920
 BuildRequires:  perl(Test::Builder) >= 0.88
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Tester) >= 0.108
-BuildRequires:  perl(Test::Warnings) >= 0.009
+BuildRequires:  perl(Test::Warnings) >= 0.9
 BuildRequires:  perl(parent)
 BuildRequires:  perl(version)
-Requires:       perl(Module::CPANTS::Analyse) >= 0.92
+Requires:       perl(Module::CPANTS::Analyse) >= 0.920
 Requires:       perl(Test::Builder) >= 0.88
 Requires:       perl(parent)
+Provides:       perl(Test::Kwalitee) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -58,7 +63,7 @@ improve your quality as well.
 'Test::Kwalitee' and a short test file will do this for you automatically.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
