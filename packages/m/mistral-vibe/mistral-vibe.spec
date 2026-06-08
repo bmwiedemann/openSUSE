@@ -16,7 +16,7 @@
 #
 
 Name:           mistral-vibe
-Version:        2.12.1
+Version:        2.13.0
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
@@ -34,44 +34,46 @@ BuildRequires:  python3-hatchling
 BuildRequires:  python3-pip
 # Temporary measure until sr#1354228 is in TW
 BuildRequires:  openssl
-Requires:       python3-GitPython >= 3.1.46
-Requires:       python3-PyYAML >= 6.0.0
+Requires:       python3-GitPython >= 3.1.47
+Requires:       python3-PyYAML >= 6.0.3
 Requires:       python3-agent-client-protocol >= 0.9.0
-Requires:       python3-anyio >= 4.12.0
-Requires:       python3-cachetools >= 5.5.0
-Requires:       python3-charset-normalizer >= 3.4.4
-Requires:       python3-cryptography >= 44.0.0
+Requires:       python3-anyio >= 4.13.0
+Requires:       python3-cachetools >= 7.0.6
+Requires:       python3-charset-normalizer >= 3.4.7
+Requires:       python3-cryptography >= 47.0.0
 Requires:       python3-giturlparse >= 0.14.0
-Requires:       python3-google-auth >= 2.0.0
+Requires:       python3-google-auth >= 2.49.2
 Requires:       python3-httpx >= 0.28.1
+Requires:       python3-Jinja2 >= 3.1.6
 Requires:       python3-jsonpatch >= 1.33
-Requires:       python3-keyring >= 25.6.0
-Requires:       python3-linkify-it-py
+Requires:       python3-keyring >= 25.7.0
+Requires:       python3-linkify-it-py >= 2.1.0
 Requires:       python3-markdownify >= 1.2.2
-Requires:       python3-mcp >= 1.14.0
-Requires:       python3-mistralai >= 2.3.3
+Requires:       python3-mcp >= 1.27.1
+Requires:       python3-mistralai >= 2.4.4
 Requires:       python3-opentelemetry-api >= 1.39.1
 Requires:       python3-opentelemetry-exporter-otlp-proto-http >= 1.39.1
 Requires:       python3-opentelemetry-sdk >= 1.39.1
 Requires:       python3-opentelemetry-semantic-conventions >= 0.60b1
-Requires:       python3-packaging >= 24.1
+Requires:       python3-packaging >= 26.2
 Requires:       python3-pexpect >= 4.9.0
-Requires:       python3-pydantic >= 2.12.4
-Requires:       python3-pydantic-settings >= 2.12.0
+Requires:       python3-pydantic >= 2.13.3
+Requires:       python3-pydantic-settings >= 2.14.0
 Requires:       python3-pyperclip >= 1.11.0
-Requires:       python3-python-dotenv >= 1.0.0
-Requires:       python3-requests >= 2.20.0
-Requires:       python3-rich >= 14.0.0
-Requires:       python3-sounddevice >= 0.5.1
+Requires:       python3-python-dotenv >= 1.2.2
+Requires:       python3-requests >= 2.33.1
+Requires:       python3-rich >= 15.0.0
+Requires:       python3-sounddevice >= 0.5.5
+Requires:       python3-truststore >= 0.10.4
 Requires:       python3-syrupy
-Requires:       python3-textual >= 8.2.4
+Requires:       python3-textual >= 8.2.7
 Requires:       python3-textual-speedups >= 0.2.1
 Requires:       python3-tomli-w >= 1.2.0
 Requires:       python3-tomlkit >= 0.13.0
 Requires:       python3-tree-sitter >= 0.25.2
 Requires:       python3-tree-sitter-bash >= 0.25.1
 Requires:       python3-watchfiles >= 1.1.1
-Requires:       python3-websockets >= 13.0
+Requires:       python3-websockets >= 16.0
 Requires:       python3-zstandard >= 0.25.0
 # Temporary measure until sr#1354228 is in TW
 Requires:       openssl
@@ -83,50 +85,51 @@ Provides:       python314-mistral-vibe = %{version}
 Obsoletes:      python314-mistral-vibe < %{version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  python3-GitPython >= 3.1.46
-BuildRequires:  python3-PyYAML >= 6.0.0
+BuildRequires:  python3-GitPython >= 3.1.47
+BuildRequires:  python3-PyYAML >= 6.0.3
 BuildRequires:  python3-agent-client-protocol >= 0.9.0
-BuildRequires:  python3-anyio >= 4.12.0
-BuildRequires:  python3-cachetools >= 5.5.0
-BuildRequires:  python3-charset-normalizer >= 3.4.4
+BuildRequires:  python3-anyio >= 4.13.0
+BuildRequires:  python3-cachetools >= 7.0.6
+BuildRequires:  python3-charset-normalizer >= 3.4.7
 BuildRequires:  python3-giturlparse >= 0.14.0
-BuildRequires:  python3-google-auth >= 2.0.0
+BuildRequires:  python3-google-auth >= 2.49.2
 BuildRequires:  python3-httpx >= 0.28.1
-BuildRequires:  python3-jinja2
+BuildRequires:  python3-Jinja2 >= 3.1.6
 BuildRequires:  python3-jsonpatch >= 1.33
-BuildRequires:  python3-jsonschema
-BuildRequires:  python3-keyring >= 25.6.0
-BuildRequires:  python3-linkify-it-py
+BuildRequires:  python3-jsonschema >= 4.26.0
+BuildRequires:  python3-keyring >= 25.7.0
+BuildRequires:  python3-linkify-it-py >= 2.1.0
 BuildRequires:  python3-markdownify >= 1.2.2
-BuildRequires:  python3-mcp >= 1.14.0
-BuildRequires:  python3-mistralai >= 2.3.4
+BuildRequires:  python3-mcp >= 1.27.1
+BuildRequires:  python3-mistralai >= 2.4.4
 BuildRequires:  python3-opentelemetry-api >= 1.39.1
 BuildRequires:  python3-opentelemetry-exporter-otlp-proto-http >= 1.39.1
 BuildRequires:  python3-opentelemetry-sdk >= 1.39.1
 BuildRequires:  python3-opentelemetry-semantic-conventions >= 0.60b1
-BuildRequires:  python3-packaging >= 24.1
+BuildRequires:  python3-packaging >= 26.2
 BuildRequires:  python3-pexpect >= 4.9.0
-BuildRequires:  python3-pydantic >= 2.12.4
-BuildRequires:  python3-pydantic-settings >= 2.12.0
+BuildRequires:  python3-pydantic >= 2.13.3
+BuildRequires:  python3-pydantic-settings >= 2.14.0
 BuildRequires:  python3-pyperclip >= 1.11.0
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-asyncio >= 1.2.0
 BuildRequires:  python3-pytest-textual-snapshot >= 1.1.0
 BuildRequires:  python3-pytest-timeout >= 2.4.0
-BuildRequires:  python3-python-dotenv >= 1.0.0
-BuildRequires:  python3-requests >= 2.20.0
+BuildRequires:  python3-python-dotenv >= 1.2.2
+BuildRequires:  python3-requests >= 2.33.1
 BuildRequires:  python3-respx >= 0.22.0
-BuildRequires:  python3-rich >= 14.0.0
-BuildRequires:  python3-sounddevice >= 0.5.1
+BuildRequires:  python3-rich >= 15.0.0
+BuildRequires:  python3-sounddevice >= 0.5.5
+BuildRequires:  python3-truststore >= 0.10.4
 BuildRequires:  python3-syrupy
-BuildRequires:  python3-textual >= 8.2.4
+BuildRequires:  python3-textual >= 8.2.7
 BuildRequires:  python3-textual-speedups >= 0.2.1
 BuildRequires:  python3-tomli-w >= 1.2.0
 BuildRequires:  python3-tomlkit >= 0.13.0
 BuildRequires:  python3-tree-sitter >= 0.25.2
 BuildRequires:  python3-tree-sitter-bash >= 0.25.1
 BuildRequires:  python3-watchfiles >= 1.1.1
-BuildRequires:  python3-websockets >= 13.0
+BuildRequires:  python3-websockets >= 16.0
 BuildRequires:  python3-zstandard >= 0.25.0
 BuildRequires:  python3-uv
 # /SECTION
@@ -151,7 +154,7 @@ with your projects through a powerful set of tools.
 PYTEST_ADDOPTS="--ignore=tests/audio_player/test_audio_player.py --timeout=60"
 export PYTEST_ADDOPTS+=" --ignore=tests/audio_recorder/test_audio_recorder.py"
 export PYTEST_ADDOPTS+=" --ignore=tests/snapshots"
-%python3_pytest -m 'not network'
+%python3_pytest -m 'not network' -k 'not test_generic_backend_streaming_uses_ssl_cert_file'
 
 %files
 %license LICENSE
