@@ -23,24 +23,24 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pnpm
-Version:        10.33.4
+Version:        11.5.2
 Release:        0
-Summary:        Fast, disk space efficient package manager
+Summary:        Package manager for node.js
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://pnpm.io/
 Source:         https://registry.npmjs.org/%{name}/-/%{name}-%{version}.tgz
 BuildRequires:  fdupes
-BuildRequires:  nodejs-devel >= 18
+BuildRequires:  nodejs >= 22.13
 BuildRequires:  nodejs-packaging
 Requires:       bash
-Requires:       nodejs(abi) >= 18
+Requires:       nodejs >= 22.13
 Recommends:     python3
 Provides:       npm(%{name}) = %{version}
 BuildArch:      noarch
 
 %description
-pnpm is a package manager for node.js
+Fast, disk space efficient package manager for node.js
 
 %package bash-completion
 Summary:        Bash completion for %{name}
@@ -83,18 +83,14 @@ Fish command line completion support for %{name}.
 fix_executable() { chmod 775 "$1"; sed -i '1 s|^\(#!.*/\)env |\1|' "$1"; }
 export -f fix_executable
 
-# Patch hashbang in pnpm
-sed -i -e 's|#!%{_bindir}/env node|#!%{_bindir}/node|' %{buildroot}%{nodejs_sitelib}/pnpm/bin/*
-
+# Patch shebangs and make scripts executable
 sed -i '1 s|^\(#!.*/\)env |\1|' %{buildroot}%{nodejs_sitelib}/pnpm/dist/node-gyp-bin/node-gyp
-
-# Non-executable scripts
-find %{buildroot}%{nodejs_sitelib}/pnpm/dist/node_modules -type f -path '*/bin/*' \
-    -exec sh -c 'fix_executable {}' \;
-fix_executable %{buildroot}%{nodejs_sitelib}/pnpm/dist/node_modules/glob/dist/esm/bin.mjs
+find %{buildroot}%{nodejs_sitelib}/pnpm/bin \
+     %{buildroot}%{nodejs_sitelib}/pnpm/dist/node_modules \
+     -type f -path '*/bin/*' \
+    -exec sh -c 'fix_executable "$1"' _ {} \;
 
 # Remove unnecessary shebangs
-sed -i '1!b;\|#!/|d' %{buildroot}%{nodejs_sitelib}/pnpm/dist/node_modules/glob/dist/esm/bin.d.mts
 find %{buildroot}%{nodejs_sitelib}/pnpm/dist/node_modules/node-gyp/gyp -type f \
     -exec sed -i '1!b;\|#!/|d' {} \;
 
@@ -129,7 +125,7 @@ find %{buildroot}%{nodejs_sitelib}/pnpm/dist -type f \
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/pnp{m,x}
+%{_bindir}/pn{,x,pm,px}
 %{nodejs_sitelib}
 
 %files bash-completion

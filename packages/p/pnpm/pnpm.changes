@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun  5 19:31:21 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 11.5.2:
+  * Find the full changelog and breaking changes at:
+    https://github.com/pnpm/pnpm/blob/v11.5.2/pnpm/CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri May 22 07:25:46 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- update to 11.2.2:
+  * Find the full changelog and breaking changes at:
+    https://github.com/pnpm/pnpm/blob/v11.2.2/pnpm/CHANGELOG.md
+  * Automated migration steps:
+    https://pnpm.io/migration
+    - cd /path/to/your/project
+    - pnpx codemod run pnpm-v10-to-v11
+  * Non-automated steps you might have to do:
+    https://pnpm.io/migration#manual-follow-ups
+  * Requires at least Node.js v22.13
+
+-------------------------------------------------------------------
 Wed May  6 19:02:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 10.33.4:

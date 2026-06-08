@@ -1005,4 +1005,25 @@ Patch Changes
       — see #11423 and nodejs/node#62893). Without this, the</comment>
     <requestid>1351492</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5419c89bc2cd481ac365dfb1bb01b60f</srcmd5>
+    <version>11.5.2</version>
+    <time>1780921023</time>
+    <user>anag_factory</user>
+    <comment>- Update to 11.5.2:
+  * Find the full changelog and breaking changes at:
+    https://github.com/pnpm/pnpm/blob/v11.5.2/pnpm/CHANGELOG.md
+
+- update to 11.2.2:
+  * Find the full changelog and breaking changes at:
+    https://github.com/pnpm/pnpm/blob/v11.2.2/pnpm/CHANGELOG.md
+  * Automated migration steps:
+    https://pnpm.io/migration
+    - cd /path/to/your/project
+    - pnpx codemod run pnpm-v10-to-v11
+  * Non-automated steps you might have to do:
+    https://pnpm.io/migration#manual-follow-ups
+  * Requires at least Node.js v22.13</comment>
+    <requestid>1357616</requestid>
+  </revision>
 </revisionlist>
