@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 30 07:52:54 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.185.2 (v0.185.2)
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+
+  ## 0.185.2 — 2026-05-29
+  ## What's Changed
+  * Fix/90 optional moose test deps by @geofffranks in https://github.com/geofffranks/test-mockmodule/pull/91
+  **Full Changelog**: https://github.com/geofffranks/test-mockmodule/compare/0.185.1...0.185.2
+  ## 0.185.1 — 2026-05-26
+  ## What's Changed
+  * fix(GH #87): gate author-perlcritic.t behind AUTHOR_TESTING by @geofffranks in https://github.com/geofffranks/test-mockmodule/pull/88
+  **Full Changelog**: https://github.com/geofffranks/test-mockmodule/compare/0.185.0...0.185.1
+
+-------------------------------------------------------------------
 Fri May  8 07:03:57 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.185.0 (v0.185.0)
