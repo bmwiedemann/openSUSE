@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jun  8 11:31:51 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.8.0
+
+- Update to 2.8.0
+  * New Features
+    - create a separate Change Reading Order dialog for those who can not use drag and drop
+    - create a Drop Zone for users who want to use drag and drop to add files to their epub
+    - rewrite ImageTab to allow for basic image adjustments: rotate right, rotate left, crop, resize
+    - allow users more control over Prettify using prettyprint.xml created in Sigil prefs.
+    - update all CI github actions to the latest versions
+    - add cability to de-nest the newly native nested CSS so that it will work with e-readers
+    - in ImageViewer move image description to the top
+    - make ImageView open images fitted to its window automatically
+    - recognize more core mediatypes for image/jxl and imaage/avif from epub 3.4 spec
+    - recognize json as a mediatype in Sigil in prep for epub 3.4 spec
+    - support json syntax highlighting in CodeView to support epub 3.4 spec
+    - add new epb3 tool menu items to safely add and remove the nav from the OPF spine
+  * Bug Fixes
+    - make sure assigned clip number is not editable in ClipEditor
+    - greatly speed up All Files report generation in epub3s with manifest properties
+    - greatly speed up Delete Used Media by caching current cover image
+    - greatly speed up adding bulk resources to the OPF to speed up Add Existing ...
+    - fix bug in Open With on MacOS not properly parsing arguments
+    - fix bug in refreshing plugin toolbars
+    - fix bug in GetInfo not using the proper times symbol
+    - fix stripping out of css selectors with non properites (empty)
+    - use resizeColumnsToContents to set DeleteUnunsedMedia and DeleteUnusedStyles column width
+    - prevent user created custom metadata elements from breaking the lxml parser badly
+    - fix bug that stripped out custom metadata from epub before a save
+    - use more standard shortcuts for for Previous and Next tab
+    - stop Sigil tools from implicitly adding back nav to spine if not present
+
+-------------------------------------------------------------------
 Thu Mar 19 22:21:26 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.7.6
 
 - Update to 2.7.6
