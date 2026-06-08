@@ -190,4 +190,15 @@
 - Update Requires from pyproject.toml (forwarded request 1344923 from glaubitz)</comment>
     <requestid>1344998</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7520c848a06699eb6b1bcc109c23d28c</srcmd5>
+    <version>6.0.0~b2</version>
+    <time>1780921048</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 6.0.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1357093 from glaubitz)</comment>
+    <requestid>1357618</requestid>
+  </revision>
 </revisionlist>
