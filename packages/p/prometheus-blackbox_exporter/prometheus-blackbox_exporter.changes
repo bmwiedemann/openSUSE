@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  2 13:15:57 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2026-39821: Bump golang.org/x/net to version 0.55.0
+  (bsc#1266556)
+- Drop 0001-Bump-x-net.patch
+- Drop support for SLE 12 (jsc#PED-15474)
+- Remove remaining RHEL conditionals
+
+-------------------------------------------------------------------
 Fri Feb  6 08:50:35 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Fix conditional for SLE 12

@@ -16,15 +16,6 @@
 #
 
 
-%if 0%{?rhel} == 8
-%global debug_package %{nil}
-%endif
-
-%if 0%{?rhel}
-# Fix ERROR: No build ID note found in
-%undefine _missing_build_ids_terminate_build
-%endif
-
 Name:           prometheus-blackbox_exporter
 Version:        0.26.0
 Release:        0
@@ -35,26 +26,14 @@ URL:            https://prometheus.io/
 Source0:        https://github.com/prometheus/blackbox_exporter/archive/refs/tags/v%{version}.tar.gz#/blackbox_exporter-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-blackbox_exporter.service
-# This patch has been applied before generating vendor tarball
-Patch1:         0001-Bump-x-net.patch
 BuildRequires:  fdupes
-%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
-BuildRequires:  gcc11-c++
-%endif
 BuildRequires:  golang-github-prometheus-promu >= 0.17.0
-%if 0%{?rhel}
-BuildRequires:  golang >= 1.19
-BuildRequires:  libcap
-%else
 BuildRequires:  libcap-progs
 BuildRequires:  golang(API) >= 1.23
-%endif
 %{?systemd_ordering}
-%if 0%{?suse_version}
 Requires(pre):  user(prometheus)
 Requires(pre):  group(prometheus)
 Requires(post): permissions
-%endif
 ExcludeArch:    s390
 
 %if ! 0%{?suse_version}
@@ -70,10 +49,6 @@ Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTT
 %build
 %ifarch i586 s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
 export BUILD_CGO_FLAG="--cgo"
-%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
-export CC=gcc-11
-export CXX=g++-11
-%endif
 %endif
 export GOFLAGS="-buildmode=pie"
 promu build -v $BUILD_CGO_FLAG
@@ -93,45 +68,16 @@ go test -x .
 %{buildroot}%{_bindir}/blackbox_exporter --version
 
 %pre
-%if 0%{?rhel}
-%define serviceuser   prometheus
-getent group %{serviceuser} >/dev/null || %{_sbindir}/groupadd -r %{serviceuser}
-getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceuser} -d %{_localstatedir}/lib/%{serviceuser} -M -s /sbin/nologin %{serviceuser}
-%else
 %service_add_pre %{name}.service
-%endif
 
 %post
-%if 0%{?rhel}
-%systemd_post %{name}.service
-%else
 %service_add_post %{name}.service
-%endif
-# Because of more relaxed ping_group_range setting in sysctl in SLE/openSUSE 15
-# everyone is allowed to create IPPROTO_ICMP sockets
-# and hence no need to set capability
-%if 0%{?suse_version} == 1315
-  %set_permissions %{_bindir}/blackbox_exporter
-%endif
-
-%if 0%{?suse_version} == 1315
-%verifyscript
-  %verify_permissions -e %{_bindir}/blackbox_exporter
-%endif
 
 %preun
-%if 0%{?rhel}
-%systemd_preun %{name}.service
-%else
 %service_del_preun %{name}.service
-%endif
 
 %postun
-%if 0%{?rhel}
-%systemd_postun %{name}.service
-%else
 %service_del_postun %{name}.service
-%endif
 
 %files
 %defattr(-,root,root)
