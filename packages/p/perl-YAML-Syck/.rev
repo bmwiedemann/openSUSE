@@ -396,4 +396,26 @@
     <comment>    - Fix: prevent buffer underflow in base60 (sexagesimal) parsing (PR #133) CVE-2026-5089 bsc#1265155</comment>
     <requestid>1354763</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a8765bc4b130cfe419a68503737e9e66</srcmd5>
+    <version>1.460.0</version>
+    <time>1780921137</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.460.0 (1.46)
+   see /usr/share/doc/packages/perl-YAML-Syck/Changes
+  1.46 May 24 2026
+    [Bug Fixes]
+    - Fix: preserve string nature of numeric-looking values in Dump; pure
+      strings (POK only, no IOK/NOK) are now quoted to maintain roundtrip
+      fidelity (GH #199, PR #200)
+    - Fix: accept trailing commas in flow sequences and mappings
+      ([a, b,] and {a: 1,}), valid per YAML 1.0/1.1/1.2 spec
+      (GH #195, PR #196)
+    [Maintenance]
+    - CI: upgrade install-with-cpm to v2 for compatibility with Perl
+      versions prior to 5.24 in perldocker containers (GH #197, PR #198)
+    - Clean up MANIFEST.SKIP: add #!include_default, remove redundant
+      entries, exclude .claude/ from distribution</comment>
+    <requestid>1357777</requestid>
+  </revision>
 </revisionlist>

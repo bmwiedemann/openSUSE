@@ -18,10 +18,10 @@
 
 %define cpan_name YAML-Syck
 Name:           perl-YAML-Syck
-Version:        1.450.0
+Version:        1.460.0
 Release:        0
-# 1.45 -> normalize -> 1.450.0
-%define cpan_version 1.45
+# 1.46 -> normalize -> 1.460.0
+%define cpan_version 1.46
 License:        MIT
 Summary:        Perl YAML loader and dumper
 URL:            https://metacpan.org/release/%{cpan_name}

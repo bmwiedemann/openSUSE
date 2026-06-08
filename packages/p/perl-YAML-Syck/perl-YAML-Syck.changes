@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon May 25 09:09:17 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.460.0 (1.46)
+   see /usr/share/doc/packages/perl-YAML-Syck/Changes
+
+  1.46 May 24 2026
+
+    [Bug Fixes]
+    - Fix: preserve string nature of numeric-looking values in Dump; pure
+      strings (POK only, no IOK/NOK) are now quoted to maintain roundtrip
+      fidelity (GH #199, PR #200)
+    - Fix: accept trailing commas in flow sequences and mappings
+      ([a, b,] and {a: 1,}), valid per YAML 1.0/1.1/1.2 spec
+      (GH #195, PR #196)
+
+    [Maintenance]
+    - CI: upgrade install-with-cpm to v2 for compatibility with Perl
+      versions prior to 5.24 in perldocker containers (GH #197, PR #198)
+    - Clean up MANIFEST.SKIP: add #!include_default, remove redundant
+      entries, exclude .claude/ from distribution
+
+-------------------------------------------------------------------
 Mon May 11 20:37:37 UTC 2026 - Tina Müller <tina.mueller@suse.com>
 
 - Remove workaround for gcc15
