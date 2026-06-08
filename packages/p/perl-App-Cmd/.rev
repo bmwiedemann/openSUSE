@@ -218,4 +218,16 @@
             Getopt::Long::Descriptive, too</comment>
     <requestid>1338046</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4b074547615b403b3c36fafbcd9c6250</srcmd5>
+    <version>0.340.0</version>
+    <time>1780921203</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.340.0 (0.340)
+   see /usr/share/doc/packages/perl-App-Cmd/Changes
+  0.340     2026-03-13 15:36:50-04:00 America/New_York
+          - more experimental code: respond to GETOPT_LONG_DESCRIPTIVE_COMPLETION
+            in App::Cmd::Simple commands</comment>
+    <requestid>1357781</requestid>
+  </revision>
 </revisionlist>

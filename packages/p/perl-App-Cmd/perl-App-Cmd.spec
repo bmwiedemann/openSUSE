@@ -18,10 +18,10 @@
 
 %define cpan_name App-Cmd
 Name:           perl-App-Cmd
-Version:        0.339.0
+Version:        0.340.0
 Release:        0
-# 0.339 -> normalize -> 0.339.0
-%define cpan_version 0.339
+# 0.340 -> normalize -> 0.340.0
+%define cpan_version 0.340
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Write command line apps with less suffering
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -36,7 +36,7 @@ BuildRequires:  perl(Class::Load) >= 0.60
 BuildRequires:  perl(Data::OptList)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Getopt::Long) >= 2.39
-BuildRequires:  perl(Getopt::Long::Descriptive) >= 0.116
+BuildRequires:  perl(Getopt::Long::Descriptive) >= 0.117
 BuildRequires:  perl(IO::TieCombine)
 BuildRequires:  perl(IPC::Cmd)
 BuildRequires:  perl(Module::Pluggable::Object)
@@ -53,7 +53,7 @@ Requires:       perl(Capture::Tiny) >= 0.130
 Requires:       perl(Class::Load) >= 0.60
 Requires:       perl(Data::OptList)
 Requires:       perl(Getopt::Long) >= 2.39
-Requires:       perl(Getopt::Long::Descriptive) >= 0.116
+Requires:       perl(Getopt::Long::Descriptive) >= 0.117
 Requires:       perl(IO::TieCombine)
 Requires:       perl(Module::Pluggable::Object)
 Requires:       perl(Pod::Usage) >= 1.61
