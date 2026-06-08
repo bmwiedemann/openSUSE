@@ -105,4 +105,13 @@
         fba3efe40208bd07034b6a3cf6bf9fc3b8b4f215</comment>
     <requestid>1356444</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5b970074949a49a99220b269ceedc8e4</srcmd5>
+    <version>2.220.0</version>
+    <time>1780921039</time>
+    <user>anag_factory</user>
+    <comment>Retroactively add CVE and bsc reference:
+        CVE-2026-48961 bsc#1266381</comment>
+    <requestid>1357621</requestid>
+  </revision>
 </revisionlist>

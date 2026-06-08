@@ -10,6 +10,7 @@ Sun May 17 07:45:56 UTC 2026 - Tina Müller <timueller+perl@suse.de>
         Sat May 16 17:48:34 2026 +0100
         f2db247bf90d4cc7ee2710be384946081f3b4610
       * Update zipdetails to version 4.006.
+        CVE-2026-48961 bsc#1266381
         Sat May 16 13:43:12 2026 +0100
         33c89d03d6e746ed2ead4f2f6570d47864c61bc7
       * Fix typo in fastForward #72
