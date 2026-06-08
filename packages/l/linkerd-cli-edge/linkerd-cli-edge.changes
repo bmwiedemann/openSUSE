@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 08 04:49:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.6.1:
+  * build(deps): bump github.com/prometheus/common from 0.68.0 to
+    0.68.1 (#15350)
+  * build(deps): bump github.com/go-openapi/spec from 0.22.4 to
+    0.22.5 (#15349)
+  * build(deps): bump launch-editor from 2.6.1 to 2.14.1 in
+    /web/app (#15347)
+  * build(deps): bump bitflags from 2.11.1 to 2.12.1 (#15352)
+  * build(deps): bump query-string from 9.3.1 to 9.4.0 in /web/app
+    (#15334)
+  * build(deps-dev): bump webpack-cli from 7.0.2 to 7.0.3 in
+    /web/app (#15333)
+  * build(deps): bump hyper from 1.10.0 to 1.10.1 (#15341)
+  * build(deps): bump zerocopy from 0.8.49 to 0.8.50 (#15342)
+  * build(deps): bump cc from 1.2.62 to 1.2.63 (#15340)
+  * build(deps): bump typenum from 1.20.0 to 1.20.1 (#15339)
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.23 to
+    0.0.24 (#15337)
+  * build(deps): bump github.com/prometheus/common from 0.67.5 to
+    0.68.0 (#15338)
+
+-------------------------------------------------------------------
 Sat May 30 06:43:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.5.5:
