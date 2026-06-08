@@ -117,4 +117,18 @@
 </comment>
     <requestid>1349606</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d2c10f58e637fb80dec8fac05b197dda</srcmd5>
+    <version>14.6</version>
+    <time>1780921404</time>
+    <user>anag_factory</user>
+    <comment>- Update to 14.6:
+  * Fix stack overflow in deep directory trees on platforms with a small
+    stack like Alpine.
+  * Log errors as &quot;fatal&quot; only if the execution is stopped early.
+  * This ensures SnapRAID Daemon correctly identifies the alert level of
+    each message (e.g., treating non-terminating issues as warnings).
+</comment>
+    <requestid>1357902</requestid>
+  </revision>
 </revisionlist>
