@@ -1,8 +1,8 @@
-diff --git a/client/cmd/login.go b/client/cmd/login.go
-index 4521a67c..fe28f34a 100644
---- a/client/cmd/login.go
-+++ b/client/cmd/login.go
-@@ -81,9 +81,16 @@ func doDaemonLogin(ctx context.Context, cmd *cobra.Command, providedSetupKey str
+Index: netbird/client/cmd/login.go
+===================================================================
+--- netbird.orig/client/cmd/login.go
++++ netbird/client/cmd/login.go
+@@ -83,9 +83,16 @@ func doDaemonLogin(ctx context.Context,
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
  		//nolint
@@ -22,11 +22,11 @@ index 4521a67c..fe28f34a 100644
  	}
  	defer conn.Close()
  
-diff --git a/client/cmd/root.go b/client/cmd/root.go
-index aa5b98df..19aa1e57 100644
---- a/client/cmd/root.go
-+++ b/client/cmd/root.go
-@@ -401,9 +401,16 @@ func getClient(cmd *cobra.Command) (*grpc.ClientConn, error) {
+Index: netbird/client/cmd/root.go
+===================================================================
+--- netbird.orig/client/cmd/root.go
++++ netbird/client/cmd/root.go
+@@ -403,9 +403,16 @@ func getClient(cmd *cobra.Command) (*grp
  	conn, err := DialClientGRPCServer(cmd.Context(), daemonAddr)
  	if err != nil {
  		//nolint
@@ -46,10 +46,10 @@ index aa5b98df..19aa1e57 100644
  	}
  
  	return conn, nil
-diff --git a/client/cmd/service_installer.go b/client/cmd/service_installer.go
-index 28770ea1..004f9176 100644
---- a/client/cmd/service_installer.go
-+++ b/client/cmd/service_installer.go
+Index: netbird/client/cmd/service_installer.go
+===================================================================
+--- netbird.orig/client/cmd/service_installer.go
++++ netbird/client/cmd/service_installer.go
 @@ -4,7 +4,7 @@ package cmd
  
  import (
@@ -59,7 +59,7 @@ index 28770ea1..004f9176 100644
  	"fmt"
  	"os"
  	"path/filepath"
-@@ -20,6 +20,14 @@ import (
+@@ -20,6 +20,18 @@ import (
  
  var ErrGetServiceStatus = fmt.Errorf("failed to get service status")
  
@@ -68,13 +68,17 @@ index 28770ea1..004f9176 100644
 +  "Please use a drop-in file for any needed modifications. \n\n" +
 +  "You can view the default service file at: \n" +
 +  "  /usr/lib/systemd/system/netbird.service \n\n" +
++	"For editing you can use:\n\n" +
++	"  'systemctl edit netbird.service'\n\n" +
++	"Afterwards run:\n\n" +
++	"  'systemctl daemon-reload && systemctl restart netbird.service'\n\n" +
 +  "More on systemd hardening: \n" +
 +  "https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort \n"
 +
  // Common service command setup
  func setupServiceCommand(cmd *cobra.Command) error {
  	SetFlagsFromEnvVars(rootCmd)
-@@ -115,37 +123,7 @@ var installCmd = &cobra.Command{
+@@ -123,37 +135,7 @@ var installCmd = &cobra.Command{
  	Use:   "install",
  	Short: "Install NetBird service",
  	RunE: func(cmd *cobra.Command, args []string) error {
@@ -113,7 +117,7 @@ index 28770ea1..004f9176 100644
  	},
  }
  
-@@ -153,35 +131,7 @@ var uninstallCmd = &cobra.Command{
+@@ -161,35 +143,7 @@ var uninstallCmd = &cobra.Command{
  	Use:   "uninstall",
  	Short: "uninstalls NetBird service from system",
  	RunE: func(cmd *cobra.Command, args []string) error {
@@ -150,7 +154,7 @@ index 28770ea1..004f9176 100644
  	},
  }
  
-@@ -191,64 +141,7 @@ var reconfigureCmd = &cobra.Command{
+@@ -199,64 +153,7 @@ var reconfigureCmd = &cobra.Command{
  	Long: `Reconfigures the NetBird service with new settings without manual uninstall/install.
  This command will temporarily stop the service, update its configuration, and restart it if it was running.`,
  	RunE: func(cmd *cobra.Command, args []string) error {
@@ -216,11 +220,11 @@ index 28770ea1..004f9176 100644
  	},
  }
  
-diff --git a/client/cmd/status.go b/client/cmd/status.go
-index c35a06eb..b5d6196b 100644
---- a/client/cmd/status.go
-+++ b/client/cmd/status.go
-@@ -143,9 +143,16 @@ func getStatus(ctx context.Context, fullPeerStatus bool, shouldRunProbes bool) (
+Index: netbird/client/cmd/status.go
+===================================================================
+--- netbird.orig/client/cmd/status.go
++++ netbird/client/cmd/status.go
+@@ -153,9 +153,16 @@ func getStatus(ctx context.Context, full
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
  		//nolint
@@ -240,11 +244,11 @@ index c35a06eb..b5d6196b 100644
  	}
  	defer conn.Close()
  
-diff --git a/client/cmd/up.go b/client/cmd/up.go
-index f5766522..fbf7cdc5 100644
---- a/client/cmd/up.go
-+++ b/client/cmd/up.go
-@@ -217,9 +217,16 @@ func runInDaemonMode(ctx context.Context, cmd *cobra.Command, pm *profilemanager
+Index: netbird/client/cmd/up.go
+===================================================================
+--- netbird.orig/client/cmd/up.go
++++ netbird/client/cmd/up.go
+@@ -222,9 +222,16 @@ func runInDaemonMode(ctx context.Context
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
  		//nolint
