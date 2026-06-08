@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 05 13:49:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.64.0:
+  * feat(object-storage): fix credentials create nil pointer
+    (#1430)
+  * chore(sqlserverflex): migrate to multiversion sdk
+  * chore(resourcemanager): migrate to multi version SDK (#1427)
+  * chore(deps): bump goreleaser/goreleaser-action from 7.2.1 to
+    7.2.2 (#1420)
+  * chore(deps): bump actions/stale from 10 to 10.2.0 (#1419)
+  * fix(iaas): print valid JSON/YAML output for list cmds (#1365)
+  * Extended installation instructions for mise. (#1408)
+  * chore(alb): migrate to new SDK structure (#1415)
+  * fix(fs): use new OsFS instead of os.DirFS during execution
+    (#1416)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.8 to
+    6.7.10 (#1411)
+  * fix(postgresflex): use correct prefix for get user error
+    message (#1409)
+
+-------------------------------------------------------------------
 Fri May 15 11:15:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.63.0:
