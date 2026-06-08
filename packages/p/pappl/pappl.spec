@@ -1,7 +1,7 @@
 #
 # spec file for package pappl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           pappl
 %define lname   libpappl1
-Version:        1.4.10
+Version:        1.4.11
 Release:        0
 Summary:        A printer application framework
 License:        Apache-2.0
