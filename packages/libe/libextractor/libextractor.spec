@@ -4,7 +4,7 @@
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2010 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2013 Marguerite Su <marguerite@opensuse.org>
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define soname	        3
 %define common_soname   1
 Name:           libextractor
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        Library to Extract Metadata from Files
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -33,7 +33,6 @@ Source2:        https://ftp.gnu.org/gnu/libextractor/libextractor-%{version}.tar
 Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libextractor&download=1#/%{name}.keyring
 Source4:        %{name}-rpmlintrc
 Recommends:     %{name}-plugins
-%lang_package
 # SECTION general dependencies
 BuildRequires:  c++_compiler
 BuildRequires:  libtool
@@ -55,16 +54,19 @@ BuildRequires:  pkgconfig(libgsf-1)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libmpeg2)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libvlc)
+BuildRequires:  pkgconfig(poppler-cpp) >= 0.73.0
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(vorbis)
 %if 0%{?suse_version} > 1600
 BuildRequires:  pkgconfig(libmagic)
-BuildRequires:  pkgconfig(tidy)
+BuildRequires:  pkgconfig(tidy) >= 5.0.0
 %else
 BuildRequires:  file-devel
-BuildRequires:  libtidy-devel
+BuildRequires:  libtidy-devel >= 5.0.0
 %endif
 # /SECTION
+%lang_package
 
 %description
 GNU Libextractor is a library for extracting meta data from various files types.
@@ -103,8 +105,10 @@ This package ships the '%{1}' plugin for libextractor. \
 %pluginpkg ogg          -B pkgconfig(vorbis)
 %pluginpkg ole2         -B pkgconfig(libgsf-1)
 %pluginpkg rpm          -B pkgconfig(rpm)
+%pluginpkg pdf          -B pkgconfig(poppler-cpp) >= 0.73.0
 %pluginpkg thumbnailgtk -B pkgconfig(gdk-pixbuf-2.0)
 %pluginpkg tiff         -B pkgconfig(libtiff-4)
+%pluginpkg vlc          -B pkgconfig(libvlc)
 %if 0%{?suse_version} > 1600
 %pluginpkg mime         -B pkgconfig(libmagic)
 %pluginpkg html         -B pkgconfig(tidy)
@@ -144,9 +148,11 @@ Requires:       %{name}-plugins-mime = %{version}
 Requires:       %{name}-plugins-mpeg = %{version}
 Requires:       %{name}-plugins-ogg = %{version}
 Requires:       %{name}-plugins-ole2 = %{version}
+Requires:       %{name}-plugins-pdf = %{version}
 Requires:       %{name}-plugins-rpm = %{version}
 Requires:       %{name}-plugins-thumbnailgtk = %{version}
 Requires:       %{name}-plugins-tiff = %{version}
+Requires:       %{name}-plugins-vlc = %{version}
 BuildArch:      noarch
 
 %description    plugins

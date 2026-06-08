@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 25 18:42:36 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.14:
+  * Revive REAL plugin
+  * Revive VLC plugin
+  * Fix issues in ELF plugin
+  * Fix issues in HTML plugin
+  * Fix issues in EXIV2 plugin
+  * Revive Applefile plugin
+  * Revive MPEG plugin
+  * Revive PDF plugin
+
+-------------------------------------------------------------------
 Mon Apr  1 07:19:30 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - split file format plugins into individual packages for user

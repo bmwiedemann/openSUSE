@@ -10,4 +10,12 @@ In this version: version fix, plugins are split out for security reasons and to 
 </comment>
     <requestid>1163910</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f15f2da980d00829b0176f63e64b27da</srcmd5>
+    <version>1.14</version>
+    <time>1780921164</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1357735</requestid>
+  </revision>
 </revisionlist>
