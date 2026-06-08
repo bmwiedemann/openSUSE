@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 08 11:40:28 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.4.4:
+  * v2.4.4 (#5003)
+  * Bump FdwVersion to 2.2.3 (FDW security release for CVE-2026-41889) (#4996)
+  * Bump go-jose/v4 + otel/sdk for CVEs; add v2.4.3 CHANGELOG (#4995)
+  * Bump github.com/jackc/pgx/v5 to v5.9.2 (CVE-2026-41889) (#4990)
+  * Add CHANGELOG.md entry for v2.4.2 (#4984)
+
+-------------------------------------------------------------------
 Thu Apr 23 14:13:15 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.4.2:

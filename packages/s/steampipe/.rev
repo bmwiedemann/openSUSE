@@ -307,4 +307,17 @@
   * Bump pipe-fittings to v2.9.1 to fix GHCR plugin install auth error (#4982) (forwarded request 1348964 from ph03nix)</comment>
     <requestid>1348972</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6bebe3acf2b9d206c58b6ac3c250703c</srcmd5>
+    <version>2.4.4</version>
+    <time>1780930045</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.4:
+  * v2.4.4 (#5003)
+  * Bump FdwVersion to 2.2.3 (FDW security release for CVE-2026-41889) (#4996)
+  * Bump go-jose/v4 + otel/sdk for CVEs; add v2.4.3 CHANGELOG (#4995)
+  * Bump github.com/jackc/pgx/v5 to v5.9.2 (CVE-2026-41889) (#4990)
+  * Add CHANGELOG.md entry for v2.4.2 (#4984) (forwarded request 1357957 from ph03nix)</comment>
+    <requestid>1357963</requestid>
+  </revision>
 </revisionlist>
