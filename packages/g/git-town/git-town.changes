@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 08 05:35:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 23.0.2:
+  * Bug Fixes
+    - Fixed breadcrumb rendering for Bitbucket-based forges
+      (#6228).
+    - Added an extra safety check to prevent Git Town from deleting
+      the main branch on the remote (#6220).
+    - Fixed handling of worktrees backed by bare repositories
+      (#6220).
+
+-------------------------------------------------------------------
 Tue May 12 04:55:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 23.0.1:
