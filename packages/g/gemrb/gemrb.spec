@@ -1,7 +1,7 @@
 #
 # spec file for package gemrb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gemrb
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        Game engine made with pre-rendered background
 License:        GPL-2.0-or-later
@@ -83,12 +83,12 @@ rm %{buildroot}%{_libdir}/libgemrb*.so
 %{_datadir}/gemrb/
 %{_datadir}/doc/gemrb/
 %{_datadir}/metainfo/org.gemrb.gemrb.metainfo.xml
-%{_datadir}/pixmaps/gemrb.png
+%{_datadir}/pixmaps/org.gemrb.gemrb.png
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
-%{_datadir}/icons/hicolor/scalable/apps/gemrb.svg
-%{_datadir}/applications/gemrb.desktop
+%{_datadir}/icons/hicolor/scalable/apps/org.gemrb.gemrb.svg
+%{_datadir}/applications/org.gemrb.gemrb.desktop
 %config %{_sysconfdir}/gemrb/
 
 %changelog

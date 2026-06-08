@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun  4 18:01:25 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.9.5
+  * New features:
+    + partial audio system rewrite for better (spatial) audio
+      and music
+    + iwd2: customizable action bar, weapon set switching, item
+      usability info
+    + detect illusions, spell info on right-click, various
+      hardcoded pst bonuses
+    + smooth keyboard scrolling, in-game zoom
+    + GUI enhancements are now configurable from within the game
+  * Improved features:
+    + pathfinder and drawing speedups
+    + video players, animations, controller input
+    + iwd2 weapon sets, pst GUI, pst level up, ee compatibility
+    + scripting, effects, projectiles
+    + bugfixes
+
+-------------------------------------------------------------------
 Tue Apr 15 17:54:21 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop BuildRequires: pkgconfig(glew) as it is not used for build.
