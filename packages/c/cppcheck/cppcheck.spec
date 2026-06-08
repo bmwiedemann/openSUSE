@@ -31,12 +31,12 @@
 %define pyexecutable python3
 %endif
 Name:           cppcheck
-Version:        2.20.0
+Version:        2.21.0
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
-URL:            https://github.com/danmar/cppcheck
-Source:         https://github.com/danmar/cppcheck/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/cppcheck-opensource/cppcheck
+Source:         https://github.com/cppcheck-opensource/cppcheck/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -46,6 +46,7 @@ BuildRequires:  %{pyver}-base >= 3.7
 BuildRequires:  xsltproc
 BuildRequires:  z3-devel
 BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Concurrent)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Help)
 BuildRequires:  pkgconfig(Qt6Linguist)
@@ -99,7 +100,7 @@ sed -i 's#/usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl#%{_
   -DCMAKE_CXX_FLAGS="%{optflags} -UNDEBUG" \
   -DFILESDIR="%{_datadir}/%{name}" \
   -DBUILD_GUI=ON \
-  -DBUILD_TESTS=ON \
+  -DBUILD_TESTING=ON \
 %if %{with rules}
   -DHAVE_RULES=ON \
 %else

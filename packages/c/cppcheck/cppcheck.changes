@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun  4 14:30:00 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to version 2.21.0
+  * funcArgNamesDifferentUnnamed warns on function declarations/
+    definitions where a parameter in either location is unnamed
+  * uninitMemberVarNoCtor warns on user-defined types where (1)
+    some but not all members requiring initialization have in-class
+    initializers or (2) there is a mixture of members which do/
+    do not require initialization.
+  * fcloseInLoopCondition warns when fclose() is used as a while
+    loop condition, which may skip the loop body or double-close
+    the file handle.
+  * import project: include path in compile_commands.json now
+    handled correctly
+
+
+-------------------------------------------------------------------
 Tue Mar  3 19:38:13 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - Drop use of chrpath to fix rpath use in binaries, no longer
