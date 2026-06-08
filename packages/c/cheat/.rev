@@ -81,4 +81,21 @@
 - Update to 4.6.0:</comment>
     <requestid>1333282</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b15868d3fa255844ee68a163a5ce50be</srcmd5>
+    <version>5.1.0</version>
+    <time>1780921387</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-41506: HTTP authentication credential leak (bsc#1264943) 
+  Bump go-git to 5.18.0
+- CVE-2026-1229: Fix incorrect value (bsc#1265539) 
+  Bump circl to 1.6.3
+- CVE-2026-39827,CVE-2026-39834,CVE-2026-39828,CVE-2026-39829,CVE-2026-39831,
+  CVE-2026-42508,CVE-2026-39833,CVE-2026-39830,CVE-2026-39832,CVE-2026-46597,
+  CVE-2026-46598,CVE-2026-46595,CVE-2026-39835: Fix multiple issues (bsc#1266184)
+  Bump crypto to 0.52.0
+- CVE-2026-44740: Improper input handling (bsc#1267330) 
+  Bump go-billy to 5.9.0</comment>
+    <requestid>1357890</requestid>
+  </revision>
 </revisionlist>
