@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jun  8 10:55:28 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.51.0:
+  * Add a simple QSL Card printing
+  * Add virtual column Mode/Submode to Logbook
+  * BandMap shows IBP frequencies
+  * Added Bandmap Guide
+  * Tune rig from IBP and SOS markers
+  * Added Bandmap Guide Setting
+  * Added user defined colors for DXCC Statuses
+  * Added StartUp ADI file Import
+  * Added Emergency, IBP and Bandmap Guide Labels
+  * Added Bandmap Guide selection
+  * Added QSL Sent Status default
+  * Added WAAC and WAIP
+  * Added Open Rule Button
+  * Added LoTW DXCC credits import
+  * Added civil, nautical, and astronomical twilight
+  * Added more built-in macOS TQSL search paths
+  * Clock - Improved timing
+  * IBP - Updated Beacon statuses, enabled ZL6B 5Z4B, disabled
+    4S7B OH2B YV5B
+  * New Contact - Elide member list label and add tooltip with
+    Member IDs
+  * bug fixes
+
+-------------------------------------------------------------------
 Sun Apr 26 14:08:37 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.50.0:
