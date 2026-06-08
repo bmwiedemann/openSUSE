@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:35:19 UTC 2026 - Cédric Bosdonnat <cbosdonnat@suse.com>
+
+- Increase memory constraint to build on aarch64
+
+-------------------------------------------------------------------
 Fri May 22 13:00:00 UTC 2026 - Cédric Bosdonnat <cbosdonnat@suse.com>
 
 - Update to version 26.5.6:
