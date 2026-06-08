@@ -650,4 +650,12 @@
 - Drop CVE-2026-41506.patch, merged upstream (forwarded request 1356946 from glaubitz)</comment>
     <requestid>1356959</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>60ee148b420613ff71299d5b33804675</srcmd5>
+    <version>3.3.4624.0</version>
+    <time>1780921028</time>
+    <user>anag_factory</user>
+    <comment>- Add missing Bugzilla reference for bsc#1266200 (forwarded request 1357148 from glaubitz)</comment>
+    <requestid>1357619</requestid>
+  </revision>
 </revisionlist>
