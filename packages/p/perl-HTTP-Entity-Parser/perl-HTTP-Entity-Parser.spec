@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Entity-Parser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,43 @@
 #
 
 
-Name:           perl-HTTP-Entity-Parser
-Version:        0.25
-Release:        0
 %define cpan_name HTTP-Entity-Parser
-Summary:        PSGI compliant HTTP Entity Parser
+Name:           perl-HTTP-Entity-Parser
+Version:        0.250.0
+Release:        0
+# 0.25 -> normalize -> 0.250.0
+%define cpan_version 0.25
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        PSGI compliant HTTP Entity Parser
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(HTTP::Message) >= 6
 BuildRequires:  perl(HTTP::MultiPartParser)
 BuildRequires:  perl(Hash::MultiValue)
-BuildRequires:  perl(JSON::MaybeXS) >= 1.003007
-BuildRequires:  perl(Module::Build::Tiny) >= 0.035
+BuildRequires:  perl(JSON::MaybeXS) >= 1.3.7
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.35
 BuildRequires:  perl(Module::Load)
 BuildRequires:  perl(Stream::Buffered)
 BuildRequires:  perl(Test::More) >= 0.98
-BuildRequires:  perl(WWW::Form::UrlEncoded) >= 0.23
+BuildRequires:  perl(WWW::Form::UrlEncoded) >= 0.230
 Requires:       perl(HTTP::MultiPartParser)
 Requires:       perl(Hash::MultiValue)
-Requires:       perl(JSON::MaybeXS) >= 1.003007
+Requires:       perl(JSON::MaybeXS) >= 1.3.7
 Requires:       perl(Module::Load)
 Requires:       perl(Stream::Buffered)
-Requires:       perl(WWW::Form::UrlEncoded) >= 0.23
+Requires:       perl(WWW::Form::UrlEncoded) >= 0.230
+Provides:       perl(HTTP::Entity::Parser) = %{version}
+Provides:       perl(HTTP::Entity::Parser::JSON)
+Provides:       perl(HTTP::Entity::Parser::MultiPart)
+Provides:       perl(HTTP::Entity::Parser::OctetStream)
+Provides:       perl(HTTP::Entity::Parser::UrlEncoded)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -55,7 +63,7 @@ parses it. This module supports application/x-www-form-urlencoded,
 multipart/form-data and application/json.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor
@@ -69,8 +77,7 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes minil.toml README.md
+%doc Changes README.md
 %license LICENSE
 
 %changelog
