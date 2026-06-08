@@ -1999,4 +1999,29 @@
   * BUG/MINOR: ssl: Use the sequence number with kTLS and TLS 1.2</comment>
     <requestid>1352527</requestid>
   </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>55ce651b69e777de1e709859bb71f935</srcmd5>
+    <version>3.4.0+git0.64a335366</version>
+    <time>1780930047</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.4.0+git0.64a335366:
+  - https://www.haproxy.com/blog/announcing-haproxy-3-4
+  - https://www.mail-archive.com/haproxy@formilux.org/msg47182.html
+- Update apparmor profile to match 3.4
+- The package can now be built with opentelemtry support (off by
+  default) at 849ecaf
+  In opentelemetry mode, 2 new subpackages get created with the
+  haproxy binary
+  
+  - haproxy-opentelemetry
+  - haproxy-normal
+  By default it will pull haproxy-normal but it can be replaced
+  with haproxy-opentelemetry
+
+- Enable more debugging tools after recommendation from upstream
+  https://github.com/haproxy/haproxy/issues/3401
+
+- Add haring as haproxy-haring</comment>
+    <requestid>1357984</requestid>
+  </revision>
 </revisionlist>

@@ -1,15 +1,25 @@
 <services>
   <service name="tar_scm" mode="manual">
-    <param name="url">http://git.haproxy.org/git/haproxy-3.3.git/</param>
+    <param name="url">https://github.com/haproxytech/haproxy-opentelemetry.git/</param>
+    <param name="scm">git</param>
+    <param name="filename">haproxy-opentelemetry</param>
+    <param name="versionformat">%h</param>
+    <param name="revision">main</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar_scm" mode="manual">
+    <param name="url">http://git.haproxy.org/git/haproxy-3.4.git/</param>
     <param name="scm">git</param>
     <param name="filename">haproxy</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="revision">v3.4.0</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <!--
-    <param name="revision">v3.3.6</param>
-    -->
     <param name="revision">master</param>
+    <param name="versionrewrite-pattern">v(.*)-(dev.*)</param>
+    <param name="versionrewrite-replacement">\1~\2</param>
+    -->
     <param name="changesgenerate">enable</param>
   </service>
 

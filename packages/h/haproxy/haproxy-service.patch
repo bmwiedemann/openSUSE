@@ -1,11 +1,13 @@
---- a/admin/systemd/haproxy.service.in	2024-01-18 15:32:19.000000000 +0100
-+++ b/admin/systemd/haproxy.service.in	2024-02-04 23:58:30.873980359 +0100
-@@ -6,7 +6,7 @@
+Index: haproxy/admin/systemd/haproxy.service.in
+===================================================================
+--- haproxy.orig/admin/systemd/haproxy.service.in
++++ haproxy/admin/systemd/haproxy.service.in
+@@ -6,7 +6,7 @@ Wants=network-online.target
  [Service]
  EnvironmentFile=-/etc/default/haproxy
  EnvironmentFile=-/etc/sysconfig/haproxy
--Environment="CONFIG=/etc/haproxy/haproxy.cfg" "PIDFILE=/run/haproxy.pid" "EXTRAOPTS=-S /run/haproxy-master.sock"
-+Environment="CONFIG=/etc/haproxy/haproxy.cfg" "PIDFILE=/run/haproxy/pid" "EXTRAOPTS=-S /run/haproxy/master.sock"
- ExecStart=@SBINDIR@/haproxy -Ws -f $CONFIG -p $PIDFILE $EXTRAOPTS
- ExecReload=@SBINDIR@/haproxy -Ws -f $CONFIG -c $EXTRAOPTS
+-Environment="CONFIG=/etc/haproxy/haproxy.cfg" "PIDFILE=/run/haproxy.pid" "CFGDIR=/etc/haproxy/conf.d" "EXTRAOPTS=-S /run/haproxy-master.sock"
++Environment="CONFIG=/etc/haproxy/haproxy.cfg" "PIDFILE=/run/haproxy.pid" "CFGDIR=/etc/haproxy/conf.d" "EXTRAOPTS=-S /run/haproxy/master.sock"
+ ExecStart=@SBINDIR@/haproxy -Ws -f $CONFIG -f $CFGDIR -p $PIDFILE $EXTRAOPTS
+ ExecReload=@SBINDIR@/haproxy -Ws -f $CONFIG -f $CFGDIR -c $EXTRAOPTS
  ExecReload=/bin/kill -USR2 $MAINPID
