@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Mon Jun  8 12:14:02 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.55.3:
+  + A small (or maybe not that small) patch release backporting some
+    fixes from main onto 0.55.2.
+  + Fixes backported:
+    - hyprctl: add config full-reload for performing a ground-up
+      reload (#14748)
+    - meta/lua: add missing notification text field and make timeout
+      required (#14665)
+    - binds/submap: fix submap enter bind == bind inside submap
+      (#14856)
+    - compositor: fix monitor re-enabling on hotplug when dpms is off
+      (#14818)
+    - compositor: fix render unfocused for subsurfaces (#14718)
+    - config/actions: fix null derefs in pin dispatcher (#14914)
+    - config: fix VRR not applying on runtime change (#14744)
+    - config: fix decoration values to refresh on runtime
+      eval/keyword change (#14590)
+    - core: fix a few fd leaks (#14870)
+    - decoration/glow: fix visibility when no decorate is set
+      (#14602)
+    - desktop/popup: fix reposition artifacts (#14820)
+    - desktop/window: fix wrong scale being applied after workspace
+      rules (#14832)
+    - internal: fix null deref in setWindowFullscreenInternal when
+      fullscreen state stale (#14725)
+    - jeremy: fix auto-generating hyprlang instead of lua config file
+      by default (#14944)
+    - renderer: fix cursor:zoom_rigid being ignored with detached
+      camera (#14995)
+    - renderer: fix screenshader with fp16 (#14918)
+    - renderer: minor shader fixes (#14584)
+    - screencopy: fix screenshare copyfb pending frames (#14837)
+    - xwayland: fix ICCCM synthetic event comparison (#14827)
+    - algo/master: guard target in remove (#14756)
+    - compositor: give preference to same-workspace windows in
+      getWindowInDirection (#14941)
+    - config/lua: improve error handle-ability with Lua require
+      (#14937)
+    - config/lua: report errors better without check* (#14695)
+    - config/monitor: refresh splash texture on monitor reload
+      (#14632)
+    - config/propRefresher: schedule frames on screen shader refresh
+      (#14874)
+    - desktop/rule: optimize mapping rule properties to strings and
+      engines (#14945)
+    - desktop/window: allow focus while held to non-OR X11 windows
+      (#14821)
+    - input: aggregate modifier states from all keyboards on focus
+      enter (#14633)
+    - internal: replace O_CLOEXEC with FD_CLOEXEC for file descriptor
+      flags (#14909)
+    - keybinds: set a fallback releasePending flag for special lua
+      binds (#14600)
+    - keybinds: store hit binds first, then execute callbacks
+      (#14743)
+    - layersurface: inform layer surfaces of scale changes (#14771)
+    - layout/dragController: reset floating offset on ended drag
+      (#14940)
+    - layout/scrolling: check if cursor overlaps with target in
+      focusOnInput (#14687)
+    - main: gain SCHED_RR and drop CAP_SYS_NICE earlier (#14897)
+    - meta/lua: Gestures can accept a lua function (#14649)
+    - monitor: move floating windows with layout changes (#14928)
+    - monitor: retry transient mode selection failures (#14927)
+    - protocols/fractional-scale: track if scale is known and send
+      scales eagerly when known (#14798)
+    - protocols: bump xdg-decoration to rev 2 (#14869)
+    - renderer/gl: release failed fence syncs (#14956)
+    - renderer/gl: skip invalidation clear on empty damage (#14921)
+    - renderer: reduce per-frame heap allocations (#14932)
+    - renderer: send frame callbacks on presented if no change
+      (#14849)
+    - texture: cache G and A swizzle channels aswell (#14605)
+
+-------------------------------------------------------------------
 Sat May 16 13:30:05 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.55.2:
