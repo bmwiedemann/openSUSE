@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           plasma-phonebook
-Version:        26.04.1
+Version:        26.04.2
 Release:        0
 Summary:        Plasma Mobile Phonebook
 License:        GPL-3.0-or-later
