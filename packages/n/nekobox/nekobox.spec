@@ -17,7 +17,7 @@
 %define debug_package %{nil}
 %define core nekobox_core
 Name:           nekobox
-Version:        5.11.16
+Version:        5.11.17
 Release:        0%{?autorelease}
 Summary:        Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 License:        GPL-3.0-only
@@ -47,7 +47,6 @@ BuildRequires:  cmake(Qt6)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Linguist)
-BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  pkgconfig(xkbcommon)
@@ -55,11 +54,16 @@ BuildRequires:  cmake(yaml-cpp)
 BuildRequires:  gcc-c++
 
 %bcond cpr 0%{?cpr_available}
+%bcond qjs 0%{?qjs_available}
 %bcond leveldb 1
 
 %if %{with leveldb}
 BuildRequires:  cmake(leveldb)
 BuildRequires:  cmake(Snappy)
+%endif
+
+%if %{with qjs}
+BuildRequires:  cmake(qjs)
 %endif
 
 %if %{with cpr}
