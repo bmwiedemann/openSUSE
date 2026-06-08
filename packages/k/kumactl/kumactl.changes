@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 08 04:54:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.8:
+  * chore(deps): update Envoy to 1.36.7 (#16870)
+  * chore(deps): security update (#16866)
+    - github.com/docker/docker to 28.5.1
+    - golang to 1.26.4 (GO-2026-5037, GO-2026-5038, GO-2026-5039)
+
+-------------------------------------------------------------------
 Fri Jun 05 06:14:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.7:
