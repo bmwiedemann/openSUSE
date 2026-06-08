@@ -92,4 +92,12 @@
     <comment>1</comment>
     <requestid>384957</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d3e403bb7591e8a346b57f6321a8f30a</srcmd5>
+    <version>0.150.0</version>
+    <time>1780921099</time>
+    <user>anag_factory</user>
+    <comment>- See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1357697</requestid>
+  </revision>
 </revisionlist>
