@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jun  6 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to version 2.1.16
+  * The "tls_cipher_suite" option is now a no-op. Modern TLS stacks no longer
+    expose cipher suite selection in a meaningful way, and the option had become
+    misleading
+  * A log size of 0 no longer means "unlimited"; it now correctly disables
+    rotation by size
+  * A new "tls_prefer_rsa" option has been added to prefer RSA cipher suites
+    during the TLS handshake, useful on systems without hardware AES
+  * The IP allow/block plugins now support CIDR ranges in addition to single
+    addresses and prefix matching
+  * Forwarding rules now support `$RESOLVCONF:<file>` to pick up upstream
+    resolvers from a resolv.conf-style file, complementing the existing `$DHCP`
+    syntax
+  * Servers that hit a transient high RTT could previously stay penalized
+    forever and never come back into rotation; their RTT estimate now decays so
+    they can recover
+  * Servers are no longer penalized for slow responses when the response is
+    actually being served from the stale cache
+  * The HTTP transport now handles `Alt-Svc: clear` properly and reuses HTTP
+    connections more aggressively
+  * The cache TTL is now an explicit, configurable parameter rather than being
+    derived implicitly
+  * The ""-resolve"" command now reports incomplete DNSSEC support instead of
+    silently treating partial signatures as a success
+  * "jsdelivr is now offered as an alternative source URL for resolver
+    lists, providing more redundancy when the primary mirrors are unreachable
+
+- boo#1260280: vendored google.golang.org/grpc v1.80.0
+- boo#1265785: vendored golang.org/x/net v0.54.0
+
+-------------------------------------------------------------------
 Tue Dec 23 12:00:00 UTC 2025 - cunix@mail.de
 
 - Update to version 2.1.15
