@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jun 08 04:48:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.9:
+  * Added
+    - md030: align ordered list text to a column with
+      ol-align-column (#658) (221cdaa) - thanks @chandlerc
+  * Fixed
+    - md022: keep the blanks-around-headings fix idempotent when a
+      heading sits between a list and a list marker
+    - md030: reject out-of-range ol-align-column values (3620545)
+    - md030: keep nested content attached when a marker widens
+      (#657) (3bcc4c4) - thanks @chandlerc
+
+-------------------------------------------------------------------
+Fri Jun 05 13:50:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.8:
+  * Added
+    - code-block-tools: add deno fmt as a built-in formatter
+      (755b086)
+    - junit: report passing files, not just failures (dc8a964)
+    - code-block-tools: generate built-in tools docs table from the
+      registry (fe9d52c)
+  * Fixed
+    - code-block-tools: drop rubocop (not usable as a generic
+      code-block linter) (fa7fa83)
+    - code-block-tools: correct and drop built-ins after verifying
+      real binaries (9106da9)
+    - code-block-tools: correct shellcheck invocation, drop
+      unworkable eslint (415fab0)
+    - MD026: make trailing-punctuation removal idempotent (3dfeb83)
+    - config: bound project config discovery at the home directory
+      (0cdf3b7)
+    - tables: use real line terminator for byte offsets in table
+      detection (751b158)
+
+-------------------------------------------------------------------
 Thu Jun 04 05:30:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.7:
