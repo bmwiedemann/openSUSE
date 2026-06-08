@@ -2,7 +2,7 @@
 # spec file for package direvent
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           direvent
-Version:        5.4
+Version:        5.5
 Release:        0
 Summary:        File system directory change monitoring tool
 License:        GPL-3.0-or-later

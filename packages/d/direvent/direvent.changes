@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun  6 14:21:21 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- direvent 5.5:
+  * All subprocesses are terminated before exit
+  * New configuration statement: shutdown-timeout
+    Sets the time to wait for all subprocesses to terminate before
+    exiting the program. The default is 1 second
+
+-------------------------------------------------------------------
 Sun Jul  7 07:28:13 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - direvent 5.4:
