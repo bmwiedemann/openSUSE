@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.86.0
+Version:        2.87.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -67,7 +67,7 @@ Requires:       %{pythons}-azure-keyvault-secrets >= 4.7.0
 Requires:       %{pythons}-azure-keyvault-securitydomain >= 1.0.0~b1
 Requires:       %{pythons}-azure-mgmt-advisor >= 9.0.0
 Requires:       %{pythons}-azure-mgmt-apimanagement >= 4.0.0
-Requires:       %{pythons}-azure-mgmt-appconfiguration >= 6.0.0~b1
+Requires:       %{pythons}-azure-mgmt-appconfiguration >= 6.0.0~b2
 Requires:       %{pythons}-azure-mgmt-appcontainers >= 2.0.0
 Requires:       %{pythons}-azure-mgmt-applicationinsights >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-authorization >= 5.0.0~b1
@@ -81,11 +81,12 @@ Requires:       %{pythons}-azure-mgmt-compute >= 34.1.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 15.1.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistrytasks >= 1.0.0~b1
-Requires:       %{pythons}-azure-mgmt-containerservice >= 41.1.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 41.2.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.9.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
 Requires:       %{pythons}-azure-mgmt-devtestlabs >= 2.2
+Requires:       %{pythons}-azure-mgmt-domainregistration >= 1.0.0~b1
 Requires:       %{pythons}-azure-mgmt-eventgrid >= 10.2.0
 Requires:       %{pythons}-azure-mgmt-eventhub >= 12.0.0~b1
 Requires:       %{pythons}-azure-mgmt-extendedlocation >= 1.0.0b2
@@ -118,7 +119,7 @@ Requires:       %{pythons}-azure-mgmt-resource-deployments >= 1.0.0~b1
 Requires:       %{pythons}-azure-mgmt-resource-deploymentscripts >= 1.0.0~b1
 Requires:       %{pythons}-azure-mgmt-resource-deploymentstacks >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-resource-templatespecs >= 1.0.0~b1
-Requires:       %{pythons}-azure-mgmt-search >= 9.0
+Requires:       %{pythons}-azure-mgmt-search >= 9.2
 Requires:       %{pythons}-azure-mgmt-security >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-servicebus >= 10.0.0~b1
 Requires:       %{pythons}-azure-mgmt-servicefabric >= 2.1.0
@@ -127,10 +128,10 @@ Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b3
 Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b2
 Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b22
 Requires:       %{pythons}-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
-Requires:       %{pythons}-azure-mgmt-storage >= 24.0.0
+Requires:       %{pythons}-azure-mgmt-storage >= 25.0.0
 Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
 Requires:       %{pythons}-azure-mgmt-trafficmanager >= 1.0.0
-Requires:       %{pythons}-azure-mgmt-web >= 9.0.0
+Requires:       %{pythons}-azure-mgmt-web >= 11.0.0
 Requires:       %{pythons}-azure-monitor-query >= 1.2.0
 Requires:       %{pythons}-azure-storage-blob >= 12.29.0~b1
 Requires:       %{pythons}-azure-storage-common >= 1.4
