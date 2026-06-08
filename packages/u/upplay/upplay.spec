@@ -17,7 +17,7 @@
 
 
 Name:           upplay
-Version:        1.9.10
+Version:        1.9.11
 Release:        0
 Summary:        UPnP and OpenHome audio Control Point
 License:        GPL-2.0-or-later

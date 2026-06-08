@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  7 21:43:23 UTC 2026 - Holden Fried <holden@opensuse.org>
+
+- Update to 1.9.11:
+  * Fix compatibility with Qt 6.11.
+  * Delete temporary file used for cover display. We used to leave
+    them in $TMPDIR.
+
+-------------------------------------------------------------------
 Tue Feb 24 11:16:14 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - updated upplay.keyring
