@@ -4,6 +4,5 @@
 
 This module try to use WWW::Form::UrlEncoded::XS by default and fail to it, use WWW::Form::UrlEncoded::PP instead
 </description>
-  <devel project="devel:languages:perl" package="perl-WWW-Form-UrlEncoded"/>
   <url>https://metacpan.org/release/WWW-Form-UrlEncoded</url>
 </package>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-WWW-Form-UrlEncoded
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,28 @@
 #
 
 
-Name:           perl-WWW-Form-UrlEncoded
-Version:        0.26
-Release:        0
 %define cpan_name WWW-Form-UrlEncoded
-Summary:        Parser and builder for application/x-www-form-urlencoded
+Name:           perl-WWW-Form-UrlEncoded
+Version:        0.260.0
+Release:        0
+# 0.26 -> normalize -> 0.260.0
+%define cpan_version 0.26
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Parser and builder for application/x-www-form-urlencoded
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 # MANUAL
 #BuildArch:     noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(JSON::PP) >= 2
-BuildRequires:  perl(Module::Build) >= 0.400500
+BuildRequires:  perl(Module::Build) >= 0.400.500
 BuildRequires:  perl(Test::More) >= 0.98
+Provides:       perl(WWW::Form::UrlEncoded) = %{version}
+Provides:       perl(WWW::Form::UrlEncoded::PP)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -45,22 +49,21 @@ This module try to use WWW::Form::UrlEncoded::XS by default and fail to it,
 use WWW::Form::UrlEncoded::PP instead
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-perl Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes minil.toml README.md
+%doc Changes README.md
 %license LICENSE
 
 %changelog
