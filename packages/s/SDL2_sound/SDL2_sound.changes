@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun  8 01:53:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.6
+  * The Ogg Vorbis decoder now caches small reads, for significant
+    speedups.
+  * Fixed seeking in MP3 files.
+  * Fixed Ogg Vorbis decoding when there are "deferred" samples at
+    the start of a file.
+  * Made playsound work on platforms that need to render something
+    every frame to function properly.
+  * Fixed modplug looping.
+  * Make modplug song fadeout at end optional.
+  * Let most other decoders consider data before the MP3 decoder,
+    to reasonably avoid false positives.
+
+-------------------------------------------------------------------
 Mon Jan 13 23:20:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.4
