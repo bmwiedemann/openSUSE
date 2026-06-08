@@ -17,7 +17,7 @@
 
 
 Name:           execdir
-Version:        0.4.1.git1770014834
+Version:        0.5.0.git1780765455
 Release:        0
 Summary:        Execute a command in a specific directory
 License:        MIT
