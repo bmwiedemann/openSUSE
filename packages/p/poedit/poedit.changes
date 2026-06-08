@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  7 08:57:49 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Poedit 3.9.1:
+  * Fix spellchecker with Enchant 2.8.7 or newer
+  * Improve spellchecker handling of Serbian on Linux
+  * Fix issues window being too large to fit on the screen
+  * Minor UI fixes
+
+-------------------------------------------------------------------
 Mon Apr  6 18:51:42 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Poedit 3.9:

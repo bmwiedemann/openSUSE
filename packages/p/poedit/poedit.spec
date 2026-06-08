@@ -20,12 +20,12 @@
 %bcond_without crowdin_integration
 %bcond_with bundled_deps
 Name:           poedit
-Version:        3.9
+Version:        3.9.1
 Release:        0
 Summary:        Gettext Catalog Editing Tool
 License:        MIT
 Group:          Development/Tools/Other
-URL:            https://poedit.net/
+URL:            https://poedit.com/
 Source:         https://github.com/vslavik/poedit/releases/download/v%{version}-oss/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -97,5 +97,6 @@ autoreconf -fiv
 %{_mandir}/man?/*
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog
