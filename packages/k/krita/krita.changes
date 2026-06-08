@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  5 17:49:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.0.2.1
+  * Fix bug with the layer docker that was very pervasive, and
+    could cause anything from unsynced layers to crashes to
+    groups not behaving as they should
+
+-------------------------------------------------------------------
 Thu May 28 06:27:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.3.2 / 6.0.2
