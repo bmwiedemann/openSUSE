@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 14 06:07:22 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.210.0 (0.21)
+   see /usr/share/doc/packages/perl-Test-Future-IO-Impl/Changes
+
+  0.21    2026-03-12
+          [CHANGES]
+           * Add a test to assert that a subsequent `->poll` enqueued during
+             the first one is not immediately invoked
+
+          [BUGFIXES]
+           * A hopefully more reliable method for attempting to provoke `EAGAIN`
+             on a pipe write
+
+-------------------------------------------------------------------
 Sat Feb 28 05:55:13 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.200.0 (0.20)

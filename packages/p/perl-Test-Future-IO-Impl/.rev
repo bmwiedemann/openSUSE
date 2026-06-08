@@ -70,4 +70,20 @@
              on Windows and other platforms</comment>
     <requestid>1338050</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>51cc6c1ffc1a20c0ba3b0ab3ec514c07</srcmd5>
+    <version>0.210.0</version>
+    <time>1780921131</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.210.0 (0.21)
+   see /usr/share/doc/packages/perl-Test-Future-IO-Impl/Changes
+  0.21    2026-03-12
+          [CHANGES]
+           * Add a test to assert that a subsequent `-&gt;poll` enqueued during
+             the first one is not immediately invoked
+          [BUGFIXES]
+           * A hopefully more reliable method for attempting to provoke `EAGAIN`
+             on a pipe write</comment>
+    <requestid>1357773</requestid>
+  </revision>
 </revisionlist>
