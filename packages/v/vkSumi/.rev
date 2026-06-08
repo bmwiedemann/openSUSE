@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49cf0d050b7ff9c71bcc93c47ae9692c</srcmd5>
+    <version>0.0.6</version>
+    <time>1780921463</time>
+    <user>anag_factory</user>
+    <comment>A Vulkan layer for runtime color grading on Linux. Brightness, contrast, saturation, hue, gamma, temperature, tint, RGB gain, 3-band lift/gain. Live .conf file with hot reload. Per-game configs. The Adrenalin / NVIDIA Freestyle equivalent the platform's been missing.
+
+Made because vkBasalt is unmaintained and the only other option is ReShade -&gt; wine -&gt; inject -&gt; pray (waste of time for some minor tweaks, ain't installing all that.).
+
+It is also one of the add-ons used in Goverlay that are missing in the distro.</comment>
+    <requestid>1357944</requestid>
+  </revision>
+</revisionlist>

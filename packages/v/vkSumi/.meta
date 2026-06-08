@@ -1,0 +1,8 @@
+<package name="vkSumi" project="openSUSE:Factory">
+  <title>Vulkan layer for color grading for Linux games</title>
+  <description>A Vulkan layer for runtime color grading on Linux. Brightness, contrast, saturation, hue, gamma, temperature, tint, RGB gain, 3-band lift/gain. Live .conf file with hot reload. Per-game configs. The Adrenalin / NVIDIA Freestyle equivalent the platform's been missing.
+
+Made because vkBasalt is unmaintained and the only other option is ReShade -&gt; wine -&gt; inject -&gt; pray (waste of time for some minor tweaks, ain't installing all that.).
+</description>
+  <url>https://github.com/reakjra/vkSumi</url>
+</package>
