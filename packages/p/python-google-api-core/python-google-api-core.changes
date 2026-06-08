@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun  8 12:08:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.31.0
+  * fix FAQ grammar in httplib2 example
+  * same block as other sections
+  * Bump github/codeql-action from 4.33.0 to 4.34.1
+  * Bump github/codeql-action from 4.32.0 to 4.33.0
+  * exclude Response.is_permanent_redirect from API docs
+  * clarify Quickstart POST example (#6960)
+  * Additional commits viewable in compare view
+  * bump protobuf from 4.25.8 to 5.29.6 (#17021)
+  * drop support for Python 3.9 (#16980)
+
+-------------------------------------------------------------------
 Mon Apr 13 11:28:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.30.3

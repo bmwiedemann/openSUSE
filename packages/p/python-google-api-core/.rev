@@ -504,4 +504,21 @@
     at import time (#16579) (forwarded request 1346415 from glaubitz)</comment>
     <requestid>1346446</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>e0ae8ab035381eef111a0eb4cc4efd1a</srcmd5>
+    <version>2.31.0</version>
+    <time>1780930868</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.31.0
+  * fix FAQ grammar in httplib2 example
+  * same block as other sections
+  * Bump github/codeql-action from 4.33.0 to 4.34.1
+  * Bump github/codeql-action from 4.32.0 to 4.33.0
+  * exclude Response.is_permanent_redirect from API docs
+  * clarify Quickstart POST example (#6960)
+  * Additional commits viewable in compare view
+  * bump protobuf from 4.25.8 to 5.29.6 (#17021)
+  * drop support for Python 3.9 (#16980) (forwarded request 1357960 from glaubitz)</comment>
+    <requestid>1357982</requestid>
+  </revision>
 </revisionlist>
