@@ -1,0 +1,5 @@
+<package name="intel-level-zero-gpu-raytracing" project="openSUSE:Factory">
+  <title>Intel(R) oneAPI Level Zero Ray Tracing Support</title>
+  <description>The oneAPI Level Zero Ray Tracing Support library is an open source project used by Intel(R) oneAPI Level Zero as the implementation of the RTAS extension ZE_extension_rtas and deprecated experimental RTAS builder extension ZE_experimental_rtas_builder.</description>
+  <url>https://github.com/intel/level-zero-raytracing-support</url>
+</package>

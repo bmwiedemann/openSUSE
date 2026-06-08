@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Thu May 21 23:29:50 UTC 2026 - malcolmlewis@opensuse.org
+
+- Update to version 1.2.4+0:
+  * Removed instance opening for high quality build as not
+    compatible with device memory usage. This fixes crashes of
+    instance RTAS build with high quality build mode.
+  * Using just initial copyright year in rc file.
+  * Added company name to windows rc file.
+- Changes from version 1.2.3+0:
+  * Linux packages use system provided TBB now.
+  * Moved packaging files to separate packaging folder.
+  * fetchtbb: Suppress stringop-overflow warnings for TBB build.
+  * Update TBB version.
+  * rtbuild: fix static tbb initialization issue.
+
+-------------------------------------------------------------------
+Mon Nov 24 01:01:31 UTC 2025 - malcolmlewis@opensuse.org
+
+- Update to version 1.2.2+0:
+  * Added headers for TBB 2021.6.0 and avoiding fetching headers of
+    that TBB version.
+    + Added ZE_RAYTRACING_TBB cmake option to configure
+      build_static, inject_header, and normal TBB mode
+    + Removed ZE_RAYTRACING_TBB_HEADER cmake option, use
+      ZE_RAYTRACING_TBB instead.
+  * Added support to use specified TBB headers during compilation
+    + When ZE_RAYTRACING_TBB_STATIC is OFF, then the headers in tbb
+      folder are used by default if present
+    + cmake variable ZE_RAYTRACING_TBB_HEADER downloads a TBB
+      version and uses downloaded headers
+    + cmake variable ZE_RAYTRACING_TBB_VERSION specifies TBB
+      version to download
+  * [CI] Setting LD_LIBRARY_PATH to run tests.
+  * [CI] Enabled CI tests for EXT version of API.
+  * [CI] Enabled CI testing through Level Zero interface.
+
+-------------------------------------------------------------------
+Thu Oct 09 11:51:39 UTC 2025 - malcolmlewis@opensuse.org
+
+- Update to version 1.2.0+0:
+  * Setting version to 1.2.0 and updating changelog.
+  * Using DPC++ compiler 2025.2.1.7.
+  * ci: add windows static analysis job.
+  * removed unused code.
+  * ci: remove deprecated input to static-analysis-coverity job.
+  * Removed unused code. Small fix in presplitting heuristic.
+  * Adding libumf location for recent DPC++ compilers.
+  * Bugfix when executing zeRTASBuilderCommandListAppendCopy
+    function on a sycl::queue that uses ze_command_list_handle_t
+    internally.
+  * Using own usm_allocator to work around DPC++ regression.
+  * using DPC++ compiler 2024-04-15
+  * Update package descriptions.
+  * ci: add source code analysis job to release workflow.
+  * Added more sections to readme file.
+  * Fix spelling mistake caught by Linitian.
+  * Fixed compile issues with AVX enabled. Cleanups to vector
+    library.
+  * [CI] Added device memory version of cornell_box.
+  * Removed problematic 48bit address assertion.
+  * [CI] Added instanced version of cornell_box.
+  * Adding EXT version of API.
+  * Removing AUTO build mode and using Level Zero API by default.
+  * Updating to Level Zero API header 1.13.1.
+  * Fixed wrong assertion that triggered when using device memory
+    for RTAS.
+  * Added ray tracing supported check to tests.
+  * Updating to Level Zero API header 1.12.15.
+  * Added BMG device IDs for internal RTAS builder testing mode.
+
+-------------------------------------------------------------------
+Wed Apr 16 03:04:46 UTC 2025 - malcolmlewis@opensuse.org
+
+- Update to version 1.0.0+39.
+
+-------------------------------------------------------------------
+Sat Aug 10 22:39:39 UTC 2024 - malcolmlewis@opensuse.org
+
+- Initial build at version 1.0.0+15.
+
