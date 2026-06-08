@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun  7 07:51:43 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.47.2:
+  * Allow dragging to move scrollbar after clicking on track when
+    `scrollbar_jump_on_click` is enabled (#10085)
+  * macOS: Fix regression in 0.47.0 that broke passing `Cmd`+`C` on to
+    terminal applications when no text is selected (#10087)
+  * `kitten @ set-background-image`: Fix ``--layout=configured` changing
+    layout to centered instead (#10089)
+  * Splits layout: add an `equalize` action and an `equalize_on_close` option
+    to redistribute split space proportionally (#3489)
+  * Fix matching var/env on tabs not working as expected (#10095)
+  * When watching for changed config files do not recursively watch all sub
+    directories of the directory containing the config file (#10102)
+  * File transfer protocol: use `O_NOFOLLOW`` when opening regular files
+  * dnd kitten: Protect against drops from malicious sources
+
+-------------------------------------------------------------------
 Thu May 28 17:34:47 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.47.1:
