@@ -1,11 +1,11 @@
-diff '--color=auto' -rubN heroic-gogdl-1.2.1.orig/gogdl/dl/workers/task_executor.py heroic-gogdl-1.2.1/gogdl/dl/workers/task_executor.py
---- heroic-gogdl-1.2.1.orig/gogdl/dl/workers/task_executor.py	2026-02-06 11:17:40.000000000 -0300
-+++ heroic-gogdl-1.2.1/gogdl/dl/workers/task_executor.py	2026-04-24 00:16:47.527280540 -0300
+diff '--color=auto' -rub heroic-gogdl-1.2.2.orig/gogdl/dl/workers/task_executor.py heroic-gogdl-1.2.2/gogdl/dl/workers/task_executor.py
+--- heroic-gogdl-1.2.2.orig/gogdl/dl/workers/task_executor.py	2026-06-04 12:29:32.000000000 -0300
++++ heroic-gogdl-1.2.2/gogdl/dl/workers/task_executor.py	2026-06-05 19:32:36.526383447 -0300
 @@ -17,7 +17,8 @@
  from enum import Enum, auto
  from multiprocessing import Process, Queue
  from gogdl.dl.objects.generic import MemorySegment, TaskFlag, TerminateWorker
--import gogdl.xdelta3
+-import gogdl_xdelta3
 +import subprocess
 +import shutil
  
@@ -15,7 +15,7 @@ diff '--color=auto' -rubN heroic-gogdl-1.2.1.orig/gogdl/dl/workers/task_executor
                      patch = os.path.join(task.destination, task.patch_file)
                      patch = dl_utils.get_case_insensitive_name(patch)
                      target = task_path
--                    gogdl.xdelta3.patch(source, patch, target, self.speed_queue)
+-                    gogdl_xdelta3.patch(source, patch, target, self.speed_queue)
 +
 +                    xdelta = shutil.which("xdelta3")
 +                    if not xdelta:
@@ -44,3 +44,20 @@ diff '--color=auto' -rubN heroic-gogdl-1.2.1.orig/gogdl/dl/workers/task_executor
  
                  except Exception as e:
                      print("Patch failed", e)
+diff '--color=auto' -rub heroic-gogdl-1.2.2.orig/pyproject.toml heroic-gogdl-1.2.2/pyproject.toml
+--- heroic-gogdl-1.2.2.orig/pyproject.toml	2026-06-04 12:29:32.000000000 -0300
++++ heroic-gogdl-1.2.2/pyproject.toml	2026-06-05 19:47:32.018917622 -0300
+@@ -44,13 +44,5 @@
+ [tool.setuptools.packages.find]
+ include = ["gogdl*"]
+ 
+-[[tool.setuptools.ext-modules]]
+-name = "gogdl_xdelta3"
+-sources = ["gogdl_xdelta3.c", "xdelta3/xdelta3/xdelta3.c"]
+-include-dirs = ["xdelta3"]
+-py-limited-api = true
+-extra-compile-args = ["-DPy_LIMITED_API=0x03090000", "-DSIZEOF_SIZE_T=8", "-DSIZEOF_UNSIGNED_INT=4", "-DSIZEOF_UNSIGNED_LONG=8", "-DSIZEOF_UNSIGNED_LONG_LONG=8", "-DXD3_USE_LARGEFILE64=1", "-DXD3_ENCODER=0", "-DSECONDARY_DJW=0", "-DSECONDARY_LZMA=0", "-DSHELL_TESTS=0"]
+-
+-
+ [tool.setuptools.dynamic]
+ version = {attr = "gogdl.version"}

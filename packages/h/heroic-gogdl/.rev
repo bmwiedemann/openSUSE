@@ -74,4 +74,20 @@ Fix URL to use upstream GitHub release tarball as Source0</comment>
   * Fixes (boo#1262128). </comment>
     <requestid>1349041</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ed4ea3e2e9c95c571ef8b354cf65e145</srcmd5>
+    <version>1.2.2</version>
+    <time>1780921075</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.2
+  * fix: prevent .netrc credentials from being injected into GOG auth by @badboybeyer in #75
+  * Add more logging to --debug level by @izacus in #79
+  * fix: prevent multiple CLI crashes and improve error handling by @Jonatas-Goncalves in #76
+  * fix: do case insensitive comparison of deprecated codes by @imLinguin in eee0bbb
+  * ci: package as zipapp on linux by @imLinguin in 2ed0d06
+  * Update use-system-xdelta3.patch to fit upstream
+  * Remove pyproject.toml modifications performed via sed
+  * Drop xdelta extension definition from pyproject.toml via patch</comment>
+    <requestid>1357623</requestid>
+  </revision>
 </revisionlist>

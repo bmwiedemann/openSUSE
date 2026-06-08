@@ -16,7 +16,7 @@
 #
 
 Name:             heroic-gogdl
-Version:          1.2.1
+Version:          1.2.2
 Release:          0
 Summary:          GOG download module for Heroic Games Launcher
 License:          GPL-3.0-only
@@ -42,11 +42,6 @@ GOG Downloading module for Heroic Games Launcher
 
 %prep
 %autosetup -p1
-
-rm -f gogdl/xdelta3.c
-
-sed -i '/\[tool.setuptools.ext-modules\]/,/\]/d' pyproject.toml
-sed -i '/xdelta3/d' pyproject.toml
 
 find . -name "*.py" -exec sed -i '1{/^#!/d}' {} +
 

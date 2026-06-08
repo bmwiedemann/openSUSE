@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun  5 22:50:15 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 1.2.2
+  * fix: prevent .netrc credentials from being injected into GOG auth by @badboybeyer in #75
+  * Add more logging to --debug level by @izacus in #79
+  * fix: prevent multiple CLI crashes and improve error handling by @Jonatas-Goncalves in #76
+  * fix: do case insensitive comparison of deprecated codes by @imLinguin in eee0bbb
+  * ci: package as zipapp on linux by @imLinguin in 2ed0d06
+  * Update use-system-xdelta3.patch to fit upstream
+  * Remove pyproject.toml modifications performed via sed
+  * Drop xdelta extension definition from pyproject.toml via patch
+
+-------------------------------------------------------------------
 Fri Apr 24 03:23:31 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update use-system-xdelta3.patch:
