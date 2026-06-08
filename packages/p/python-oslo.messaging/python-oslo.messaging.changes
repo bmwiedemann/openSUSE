@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:02:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.1.0 (bsc#1267828, CVE-2026-44393):
+  * Fix RabbitMQ TLS hostname verification (bsc#1267828,
+    CVE-2026-44393)
+  * Deprecate version module
+  * tox: Use new constraints option
+  * Remove deprecated heartbeat_in_pthread option from RabbitMQ
+    driver
+  * Update master for stable/2026.1
+  * Replace deprecated datetime.datetime.utcnow
+
+-------------------------------------------------------------------
 Sun Mar  8 20:36:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 17.3.0:

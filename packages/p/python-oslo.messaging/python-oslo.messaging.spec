@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.messaging
-Version:        17.3.0
+Version:        18.1.0
 Release:        0
 Summary:        OpenStack oslo.messaging library
 License:        Apache-2.0
@@ -28,14 +28,15 @@ BuildRequires:  %{python_module PyYAML >= 3.13}
 BuildRequires:  %{python_module WebOb >= 1.7.1}
 BuildRequires:  %{python_module amqp >= 2.5.2}
 BuildRequires:  %{python_module cachetools >= 2.0.0}
-BuildRequires:  %{python_module confluent-kafka}
+BuildRequires:  %{python_module confluent-kafka >= 1.3.0}
 BuildRequires:  %{python_module debtcollector >= 1.2.0}
-BuildRequires:  %{python_module eventlet}
-BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module eventlet >= 0.23.0}
+BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module futurist >= 1.2.0}
-BuildRequires:  %{python_module greenlet}
-BuildRequires:  %{python_module kombu >= 4.6.6}
+BuildRequires:  %{python_module greenlet >= 0.4.15}
+BuildRequires:  %{python_module kombu >= 4.6.8}
 BuildRequires:  %{python_module oslo.config >= 5.2.0}
+BuildRequires:  %{python_module oslo.context >= 5.3.0}
 BuildRequires:  %{python_module oslo.i18n}
 BuildRequires:  %{python_module oslo.log >= 3.36.0}
 BuildRequires:  %{python_module oslo.metrics >= 0.2.1}
@@ -43,12 +44,13 @@ BuildRequires:  %{python_module oslo.middleware >= 3.31.0}
 BuildRequires:  %{python_module oslo.serialization >= 2.18.0}
 BuildRequires:  %{python_module oslo.service >= 1.24.0}
 BuildRequires:  %{python_module oslo.utils >= 3.37.0}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
+BuildRequires:  %{python_module pbr >= 2.0.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module stestr >= 2.0.0}
 BuildRequires:  %{python_module stevedore >= 1.20.0}
-BuildRequires:  %{python_module testscenarios}
-BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module testscenarios >= 0.4}
+BuildRequires:  %{python_module testtools >= 2.2.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-PyYAML >= 3.13
@@ -57,9 +59,10 @@ Requires:       python-amqp >= 2.5.2
 Requires:       python-cachetools >= 2.0.0
 Requires:       python-debtcollector >= 1.2.0
 Requires:       python-futurist >= 1.2.0
-Requires:       python-greenlet
-Requires:       python-kombu >= 4.6.6
+Requires:       python-greenlet >= 0.4.15
+Requires:       python-kombu >= 4.6.8
 Requires:       python-oslo.config >= 5.2.0
+Requires:       python-oslo.context >= 5.3.0
 Requires:       python-oslo.i18n
 Requires:       python-oslo.log >= 3.36.0
 Requires:       python-oslo.metrics >= 0.2.1
