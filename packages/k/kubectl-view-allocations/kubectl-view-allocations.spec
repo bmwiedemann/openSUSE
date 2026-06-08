@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           kubectl-view-allocations
-Version:        1.1.1
+Version:        3.0.1
 Release:        0
 Summary:        kubectl plugin to list allocations
 License:        CC0-1.0
