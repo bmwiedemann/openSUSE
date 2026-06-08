@@ -1199,4 +1199,15 @@ between v11.6.0 and v11.7.0, so no corresponding release of the perl bindings.
   - Add all new APIs and constants available in libvirt 12.3.0</comment>
     <requestid>1351260</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>befbc4f0daa6de389102f257a7581e67</srcmd5>
+    <version>12.4.0</version>
+    <time>1780920985</time>
+    <user>anag_factory</user>
+    <comment>Updated perl bindings for libvirt 12.4.0
+
+- Update to 12.4.0
+  - Add all new APIs and constants available in libvirt 12.4.0</comment>
+    <requestid>1357578</requestid>
+  </revision>
 </revisionlist>
