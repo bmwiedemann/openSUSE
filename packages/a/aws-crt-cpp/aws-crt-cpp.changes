@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  4 11:21:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.39.1
+  * Bump crt by @TingDaoK in (#857)
+  * Add TlsConnectionOptions param to profile credentials provider
+    configuration by @sbiscigl in (#853)
+- from version 0.39.0
+  * Keep reference to proxy strategy options on connection
+    by @DmitriyMusatkin in (#852)
+
+-------------------------------------------------------------------
 Thu May 21 12:15:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.38.7
