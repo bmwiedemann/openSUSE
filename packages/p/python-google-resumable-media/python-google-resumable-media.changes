@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 12:16:36 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.10.0
+  * update incorrect urls in setup.py to point at monorepo vs splitrepo (#17237)
+
+-------------------------------------------------------------------
 Sun May 10 09:13:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.0:

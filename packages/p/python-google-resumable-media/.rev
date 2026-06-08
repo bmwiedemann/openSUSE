@@ -312,4 +312,13 @@
   * drop support for python 3.9</comment>
     <requestid>1352252</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bd18b7828e7003fa47e39f8815e7ea43</srcmd5>
+    <version>2.10.0</version>
+    <time>1780930493</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.10.0
+  * update incorrect urls in setup.py to point at monorepo vs splitrepo (#17237) (forwarded request 1357962 from glaubitz)</comment>
+    <requestid>1357978</requestid>
+  </revision>
 </revisionlist>
