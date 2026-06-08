@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           konquest
-Version:        26.04.1
+Version:        26.04.2
 Release:        0
 Summary:        Galactic strategy game
 License:        GPL-2.0-or-later
