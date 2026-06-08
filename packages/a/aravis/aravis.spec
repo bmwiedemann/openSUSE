@@ -39,7 +39,6 @@ BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gi-docgen) >= 2021.1
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
@@ -109,8 +108,6 @@ This package contains the development files for %{name}
 
 %install
 %meson_install
-
-%suse_update_desktop_file -r org.aravis.viewer-%{api} AudioVideo AudioVideoEditing
 
 %find_lang %{name}-%{api}
 
