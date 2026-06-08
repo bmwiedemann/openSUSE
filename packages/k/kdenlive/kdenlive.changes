@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun  4 08:43:44 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Too many changes since 26.04.1, only listing bugfixes:
+  * Use percent based value for audio quality, and adjust the range accordingly per codec (kde#520750)
+  * Enforce even numbers for render width/height (kde#520737)
+  * Fix tmp files copied to wrong location when setting project folder (kde#467740)
+  * Use QFileInfo instead of QUrl/QDir to try fixing Windows shared drives (kde#451413)
+  * Display paths in native format in render widget (kde#520428)
+
+-------------------------------------------------------------------
 Thu May  7 08:02:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1
