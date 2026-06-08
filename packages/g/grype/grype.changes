@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 08 05:34:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.114.0:
+  * Added Features
+    - Add ability to scan zarf packages [#3329 #3366 @brandtkeller]
+  * Additional Changes
+    - respect withdrawn status of Go Vuln DB OSV records [#3495
+      @willmurphyscode]
+    - Govulndb OSV transformer [#3485 @willmurphyscode]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3487)
+    - chore(deps): update quality gate database (#3478)
+    - chore(deps): update tool versions (#3488)
+
+-------------------------------------------------------------------
 Thu Jun 04 05:38:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.113.0:
