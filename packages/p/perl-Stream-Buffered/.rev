@@ -30,4 +30,12 @@
  - bump IO::File dep, since it fails with earlier versions (plack/#460)</comment>
     <requestid>249354</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d4468aa21e2c3f99ec590df6d195571a</srcmd5>
+    <version>0.30.0</version>
+    <time>1780921109</time>
+    <user>anag_factory</user>
+    <comment>- See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1357700</requestid>
+  </revision>
 </revisionlist>

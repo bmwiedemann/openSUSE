@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Stream-Buffered
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Stream-Buffered
-Version:        0.03
-Release:        0
 %define cpan_name Stream-Buffered
-Summary:        temporary buffer to save bytes
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Stream-Buffered/
-Source:         http://www.cpan.org/authors/id/D/DO/DOY/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Stream-Buffered
+Version:        0.30.0
+Release:        0
+# 0.03 -> normalize -> 0.30.0
+%define cpan_version 0.03
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Temporary buffer to save bytes
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DO/DOY/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IO::File) >= 1.14
 Requires:       perl(IO::File) >= 1.14
+Provides:       perl(Stream::Buffered) = %{version}
+Provides:       perl(Stream::Buffered::Auto)
+Provides:       perl(Stream::Buffered::File)
+Provides:       perl(Stream::Buffered::PerlIO)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -40,14 +46,14 @@ uses PerlIO and/or temporary file to save the buffer depending on the
 length of the size.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -55,7 +61,7 @@ length of the size.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes cpanfile LICENSE README
+%doc Changes README
+%license LICENSE
 
 %changelog
