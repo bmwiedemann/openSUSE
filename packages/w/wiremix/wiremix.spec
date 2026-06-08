@@ -16,15 +16,17 @@
 #
 
 Name:           wiremix
-Version:        0.10.0~0
+Version:        0.11.0~0
 Release:        0
 Summary:        Simple TUI audio mixer for PipeWire
 License:        MIT OR Apache-2.0
-Url:            https://github.com/tsowell/wiremix
+URL:            https://github.com/tsowell/wiremix
 Source0:        %{name}-%{version}.tar.zst
 Source1:        registry.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(Clang)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 
 %description
