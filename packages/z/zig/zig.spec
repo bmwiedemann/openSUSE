@@ -16,7 +16,7 @@
 #
 
 %global version_suffix 0.15
-%global version_current 0.15.1
+%global version_current 0.15.2
 %bcond_without  macro
 
 Name:           zig

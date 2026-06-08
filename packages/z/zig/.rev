@@ -112,4 +112,12 @@ These allow reducing most spec file boilerplate to a simple BuildSystem: zig (fo
 - Initial package for zig stub package. This package will point to latest zig version.</comment>
     <requestid>1328022</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>96a7e59dac18fa69640f55e384544d1c</srcmd5>
+    <version>0.15.2</version>
+    <time>1780921230</time>
+    <user>anag_factory</user>
+    <comment>bump to 0.15.2</comment>
+    <requestid>1357821</requestid>
+  </revision>
 </revisionlist>
