@@ -53,4 +53,12 @@
     <comment>- patch makefile to build with perl 5.26</comment>
     <requestid>530644</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e1586bb544088551cf694fbb6c350e38</srcmd5>
+    <version>0.80.0</version>
+    <time>1780921097</time>
+    <user>anag_factory</user>
+    <comment>- See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1357696</requestid>
+  </revision>
 </revisionlist>
