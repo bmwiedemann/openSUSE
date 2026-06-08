@@ -12,5 +12,4 @@ message and what to do with it.
 This makes it possible to call single method and send a message to a log
 file, via email, to the screen, and anywhere else, all with very little
 code needed on your part, once the dispatching object has been created.</description>
-  <devel project="devel:languages:perl" package="perl-Log-Dispatch"/>
 </package>
