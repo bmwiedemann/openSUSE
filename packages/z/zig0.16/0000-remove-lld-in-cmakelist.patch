@@ -1,0 +1,27 @@
+Index: zig-0.16.0/CMakeLists.txt
+===================================================================
+--- zig-0.16.0.orig/CMakeLists.txt
++++ zig-0.16.0/CMakeLists.txt
+@@ -135,7 +135,7 @@ endif()
+ 
+ find_package(llvm 21)
+ find_package(clang 21)
+-find_package(lld 21)
++#find_package(lld 21)
+ 
+ if(ZIG_STATIC_ZLIB)
+     if (MSVC)
+@@ -525,11 +525,11 @@ endif()
+ target_include_directories(zigcpp PUBLIC
+     ${CLANG_INCLUDE_DIRS}
+     ${LLVM_INCLUDE_DIRS}
+-    ${LLD_INCLUDE_DIRS}
++#    ${LLD_INCLUDE_DIRS}
+ )
+ target_link_libraries(zigcpp PUBLIC
+     ${CLANG_LIBRARIES}
+-    ${LLD_LIBRARIES}
++#    ${LLD_LIBRARIES}
+     ${LLVM_LIBRARIES}
+     ${CMAKE_THREAD_LIBS_INIT}
+ )

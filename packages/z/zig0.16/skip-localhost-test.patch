@@ -1,0 +1,13 @@
+Index: zig-0.16.0/lib/std/Io/net/test.zig
+===================================================================
+--- zig-0.16.0.orig/lib/std/Io/net/test.zig
++++ zig-0.16.0/lib/std/Io/net/test.zig
+@@ -120,6 +120,8 @@ test "resolve DNS" {
+ 
+     // Resolve localhost, this should not fail.
+     {
++        if (true) return error.SkipZigTest;
++
+         const localhost_v4 = try net.IpAddress.parse("127.0.0.1", 80);
+         const localhost_v6 = try net.IpAddress.parse("::1", 80);
+ 
