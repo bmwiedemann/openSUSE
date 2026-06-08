@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pypdf
-Version:        6.10.2
+Version:        6.13.0
 Release:        0
 Summary:        PDF toolkit
 License:        BSD-3-Clause
@@ -32,6 +32,7 @@ Obsoletes:      python3-PyPDF2 < %version-%release
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module fonttools}
 BuildRequires:  %{python_module pytest-socket}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}

@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:46:31 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 6.13.0
+  (CVE-2026-48155, bsc#1266823, CVE-2026-48156, bsc#1266822,
+   CVE-2026-48735, bsc#1266821)
+
+  # Security (SEC)
+  - Avoid infinite loops for outlines and text extraction (#3830)
+  # New Features (ENH)
+  - Add Japanese predefined CMaps (#3800)
+  - Font: Collect all character widths, not only those that can be
+    unicode mapped (#3798)
+  # Robustness (ROB)
+  - Recover a corrupt trailing startxref pointer (closes #3238) (#3826)
+  - Handle /Pages node without /Kids during flattening (#3825)
+  - Accept inline image EI marker at the end of a content stream (#3827)
+  # Maintenance (MAINT)
+  - Type the always-raising deprecation helpers as `NoReturn` (#3819)
+
+- 6.12.2:
+  # Security (SEC)
+  - Optimize _decode_png_prediction regarding memory and speed (#3806)
+  - Improve loop control in text extraction (#3805)
+
+- 6.12.1:
+  # Security (SEC)
+  - Limit input size and element count for XMP metadata (#3796)
+  # Robustness (ROB)
+  - Prevent cyclic parent hierarchies for inherited dictionaries (#3795)
+  - Deal with invalid first code in LZW decoder (#3794)
+
+- 6.12.0:
+  # Security (SEC)
+  - Disallow cross-reference streams with zero-only width values (#3791)
+  - Avoid excessive whitespace in layout mode text extraction (#3790)
+  # New Features (ENH)
+  - Implement SASLprep (RFC 4013) for AES-256 password normalization (#3780)
+  - CID font resource from font file to encode more characters (#3652)
+  # Performance Improvements (PI)
+  - Optimize retrieval of named destinatinos in reader (#3442)
+  # Bug Fixes (BUG)
+  - Fix TreeObject.insert_child KeyError on fresh children (#3786)
+  # Robustness (ROB)
+  - AppearanceStream: Also honor user-set font name when not
+    flattening annotations (#3781)
+  # Documentation (DOC)
+  - Block encrypting writer in incremental mode (#3789)
+
+- 6.11.0:
+  # New Features (ENH)
+  - Initialise a Font from an embedded font file (#3704)
+  # Robustness (ROB)
+  - Allow to fix AES padding length in non-strict mode (#3742)
+  # Developer Experience (DEV)
+  - Enable PyPy testing again (#3752)
+  - Align mypy Makefile target with strict mode (#3690)
+
+-------------------------------------------------------------------
 Mon Apr 20 06:56:57 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 6.10.2 (bsc#1262675, CVE-2026-41312, bsc#1262670, CVE-2026-41313, bsc#1262669, CVE-2026-41314)

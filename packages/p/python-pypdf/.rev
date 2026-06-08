@@ -224,4 +224,41 @@
     <comment>Add CVE numbers to changelog</comment>
     <requestid>1349963</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0fcb4c6eead0f7590313b245fa5744e9</srcmd5>
+    <version>6.13.0</version>
+    <time>1780921378</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.13.0
+  (CVE-2026-48155, bsc#1266823, CVE-2026-48156, bsc#1266822,
+   CVE-2026-48735, bsc#1266821)
+  # Security (SEC)
+  - Avoid infinite loops for outlines and text extraction (#3830)
+  # New Features (ENH)
+  - Add Japanese predefined CMaps (#3800)
+  - Font: Collect all character widths, not only those that can be
+    unicode mapped (#3798)
+  # Robustness (ROB)
+  - Recover a corrupt trailing startxref pointer (closes #3238) (#3826)
+  - Handle /Pages node without /Kids during flattening (#3825)
+  - Accept inline image EI marker at the end of a content stream (#3827)
+  # Maintenance (MAINT)
+  - Type the always-raising deprecation helpers as `NoReturn` (#3819)
+- 6.12.2:
+  # Security (SEC)
+  - Optimize _decode_png_prediction regarding memory and speed (#3806)
+  - Improve loop control in text extraction (#3805)
+- 6.12.1:
+  # Security (SEC)
+  - Limit input size and element count for XMP metadata (#3796)
+  # Robustness (ROB)
+  - Prevent cyclic parent hierarchies for inherited dictionaries (#3795)
+  - Deal with invalid first code in LZW decoder (#3794)
+- 6.12.0:
+  # Security (SEC)
+  - Disallow cross-reference streams with zero-only width values (#3791)
+  - Avoid excessive whitespace in layout mode text extraction (#3790)
+  # New Features (ENH)</comment>
+    <requestid>1357888</requestid>
+  </revision>
 </revisionlist>
