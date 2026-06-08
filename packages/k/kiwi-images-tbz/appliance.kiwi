@@ -43,7 +43,10 @@
     <package name="dos2unix"/>
     <package name="iputils"/>
     <package name="less"/>
+    <!--  20260531: This package was removed from Leap 16.1
+            and shouldn't be needed for non-YaST builds ...
     <package name="libyui-ncurses-pkg"/>
+    -->
     <package name="lsof"/>
     <package name="man"/>
     <package name="openssh"/>

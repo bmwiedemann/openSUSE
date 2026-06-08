@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 31 19:14:51 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing libyui-ncurses-pkg from application.kiwi
+  * Leap 16.1 doesn't provide it (as of the last week)
+
+-------------------------------------------------------------------
+Thu Jul 10 17:31:21 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Swapping in wsl-firstboot for jeos-firstboot
+
+-------------------------------------------------------------------
 Sun Nov 24 07:56:56 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Remove Beta tag from SLE15SP7
