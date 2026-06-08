@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  7 18:13:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 722
+  * Don't install gtest to build.
+  * Don't throw error on old OmniDrive firmware.
+- Update patch:
+  * redumper-use-system-googletest.patch
+
+-------------------------------------------------------------------
 Sun May  3 09:06:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 720

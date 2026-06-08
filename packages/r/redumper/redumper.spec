@@ -17,7 +17,7 @@
 
 
 Name:           redumper
-Version:        720
+Version:        722
 Release:        0
 Summary:        Low level CD dumper utility
 License:        GPL-3.0-only
