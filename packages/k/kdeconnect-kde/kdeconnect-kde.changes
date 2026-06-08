@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  4 08:43:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Changes since 26.04.1:
+  * sms: bail out when the phone advertises a conversation with no messages
+  * virtualmonitor: Fix virtual screen size on high dpi screens
+
+-------------------------------------------------------------------
 Thu May  7 08:02:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1

@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kdeconnect-kde
-Version:        26.04.1
+Version:        26.04.2
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
