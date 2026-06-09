@@ -1748,4 +1748,12 @@ FIXES (LSP):
     <comment></comment>
     <requestid>1356057</requestid>
   </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>0c8e431d94d80eebd31ccf4cbea91339</srcmd5>
+    <version>0.12.2</version>
+    <time>1781008205</time>
+    <user>anag_factory</user>
+    <comment>- Fix  %lang_package, thanks to  Edwin Török (boo#1267905)</comment>
+    <requestid>1358141</requestid>
+  </revision>
 </revisionlist>

@@ -69,7 +69,6 @@ Recommends:     xsel
 Suggests:       python3-neovim
 Suggests:       ripgrep
 Provides:       nvim
-%lang_package
 %if %{with luajit}
 BuildRequires:  luajit-bit32
 BuildRequires:  luajit-compat-5.3
@@ -109,6 +108,8 @@ strives to be a superset of Vim, notwithstanding some intentionally
 removed misfeatures; excepting those few and carefully-considered
 excisions, Neovim is Vim. It is built for users who want the good
 parts of Vim, without compromise, and more.
+
+%lang_package
 
 %prep
 %autosetup -p1
