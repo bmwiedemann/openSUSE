@@ -63,4 +63,13 @@
     <comment></comment>
     <requestid>876529</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fd7db8ffee79c8fd8083bb9e683f8112</srcmd5>
+    <version>100.0.0</version>
+    <time>1781007958</time>
+    <user>anag_factory</user>
+    <comment>- updated to 100.0.0 (100)
+   see /usr/share/doc/packages/perl-Perl-Critic-Pulp/Changes</comment>
+    <requestid>1358065</requestid>
+  </revision>
 </revisionlist>
