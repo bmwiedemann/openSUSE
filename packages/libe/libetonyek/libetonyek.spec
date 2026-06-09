@@ -1,7 +1,7 @@
 #
 # spec file for package libetonyek
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,6 +96,11 @@ This package contains tools to work with Apple Keynote presentations
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
+
+%if %{pkg_vcmp gcc >= 16}
+  export CXXFLAGS="$CXXFLAGS -std=gnu++17"
+%endif
+
 %if 0%{?with_gcc}
 export CXX=g++-%{with_gcc}
 export CC=gcc-%{with_gcc}

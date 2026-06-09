@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  2 13:21:38 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Force -std=gnu++17 when building with GCC >= 16 
+
+-------------------------------------------------------------------
 Tue Sep 23 05:50:49 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 0.1.13:

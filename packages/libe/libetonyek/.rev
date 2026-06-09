@@ -240,4 +240,13 @@
     <comment>0.1.13</comment>
     <requestid>1306643</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>35b98f337e2209e8e25d90a2c1ef6781</srcmd5>
+    <version>0.1.13</version>
+    <time>1781007659</time>
+    <user>anag_factory</user>
+    <comment>gcc &gt;= 16 fixes
+</comment>
+    <requestid>1358021</requestid>
+  </revision>
 </revisionlist>
