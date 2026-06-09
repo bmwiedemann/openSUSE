@@ -1,7 +1,7 @@
 #
 # spec file for package libdmapsharing
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define sover 3
 
 Name:           libdmapsharing
-Version:        3.9.13
+Version:        3.9.14
 Release:        0
 Summary:        Library implementing the Digital Media Access Protocol family
 License:        LGPL-2.1-or-later
