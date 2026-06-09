@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 09 05:09:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.10:
+  * Added
+    - config: warn when multiple rumdl configs shadow each other in
+      a directory (49cd393)
+  * Fixed
+    - config: apply inline --config overrides to subdirectory
+      config groups (45800e8)
+    - config: anchor multi-path config discovery at the common
+      ancestor of the target paths (5b0d3c7)
+    - config: discover global config from cwd for multi-path runs
+      (#660) (3c28327)
+    - config: show shadowed-config warning paths relative to their
+      directory (37358a1)
+
+-------------------------------------------------------------------
 Mon Jun 08 04:48:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.9:
