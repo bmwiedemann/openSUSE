@@ -159,9 +159,19 @@ as described by the Aegypten project, using the QT5 UI toolkit.
 %autosetup -p1 -n pinentry-%{version}
 
 %build
+
+%define gcc_version %(gcc -dumpversion 2>/dev/null || echo 0)
+
+%if %{gcc_version} >= 16
+# fix the build with GCC 16 by forcing -std=gnu++17
+%global flags %{optflags} -std=gnu++17
+%else
+%global flags %{optflags}
+%endif
+
 nmajor=$(sed -rn 's/^#define\s+NCURSES_VERSION_MAJOR\s+([0-9]+)/\1/p' %{_includedir}/ncurses.h)
-CFLAGS="%{optflags} $(ncursesw${nmajor}-config --cflags)"
-CXXFLAGS="%{optflags} $(ncursesw${nmajor}-config --cflags)"
+CFLAGS="%{flags} $(ncursesw${nmajor}-config --cflags)"
+CXXFLAGS="%{flags} $(ncursesw${nmajor}-config --cflags)"
 LDFLAGS="$(ncursesw${nmajor}-config --libs)"
 export CFLAGS CXXFLAGS LDFLAGS
 
