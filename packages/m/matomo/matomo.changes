@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:33:55 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.11.0
+
+- Update to 5.11.0
+  * Core improvements
+    - #24372 Standardise textarea styling across forms with compact textarea class.
+    - #24375 Replace Custom Reports child report sorting with a local Vue draggable list.
+    - #24416, #213 Campaign parameters now masked rather than removed with CNIL.
+    - #24512 Make IP Anonymization setting clearer.
+    - #24453, #24421 Allow double click on presets.
+    - #24476, #24475 Fix language selector hover background.
+    - #24488 “Send Report now” in schedule report fails when a period is a “date range”.
+    - #24490 Fix Marketplace test leakage.
+    - #24492 Improve scheduled report validation feedback.
+    - #24494 Migrate panel to Vue.
+    - #24495 Fix export – do not hide Flatten option when there is no subtables.
+    - #24501 Add Description Fields and Change Helptexts.
+    - #24503 Segment editor implement UI tweak.
+    - #24508 Fix issue with scheduled reports not sending when expected.
+    - #24513 Hide ‘Expand subtable’ option when HTML format is chosen from export.
+    - #24514, #21610 Show goal revenue metric and sparkline when Ecommerce disabled.
+    - #24518 Refactor add widget modal.
+    - #24526 Migrate modal to Vue.
+    - #24527, #22713 Refactor Ecommerce sparklines to use shared CoreVisualizations implementation.
+    - #24528 Dashboard manager dropdown redesign.
+    - #24529 Fix issue with widgetised map getting a negative height.
+    - #24531 Fix Ecommerce abandoned cart sparkline context.
+    - #24532 Make addwidget modal 3-column.
+    - #24551 Update hover text for Visitor Profile export.
+    - #24555 Redesign Addwidget Modal.
+    - #24557 Fix WidgetPreview for Goals > Overview and other widgets with child/sub widgets.
+    - #24559 Implement missing Helptext on Manage Measurables View.
+    - #24562 UI Tweaks for top nav menu items.
+    - #24571 Remove Carriage return from CSV/TSV values.
+  * Matomo Tag Manager
+    - #1108 Fix Tag Manager top controls.
+    - #1112 Change Inline Helptexts and placeholders.
+    - #1119, #24544 Move Tag Manager card higher under Websites > Tracking Code.
+
+-------------------------------------------------------------------
 Sun May 31 12:40:57 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.10.1
 
 - Update to 5.10.1
