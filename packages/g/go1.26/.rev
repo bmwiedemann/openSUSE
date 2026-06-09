@@ -218,4 +218,14 @@
   * go#79686 runtime/race: change in 93a4f03 leads to a failed build on Amazon Linux 2 and arm64 (forwarded request 1357051 from jfkw)</comment>
     <requestid>1357053</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>473836c11dd5c0b822f29a56a746873c</srcmd5>
+    <version>1.26.4</version>
+    <time>1781007263</time>
+    <user>anag_factory</user>
+    <comment>- Packaging: Enable libalternatives for SLE16.1 and Tumbleweed
+  Refs boo#1245878
+  * Drop go1.26 dependency on update-alternatives fixes bsc#1264395</comment>
+    <requestid>1357956</requestid>
+  </revision>
 </revisionlist>

@@ -60,6 +60,10 @@
 # with_libalternatives denotes whether or not libalternatives should be used
 # if it is not used, then update-alternatives is used instead
 %define with_libalternatives 0
+# Enable libalternatives for SLE16.1+ and Tumbleweed
+%if 0%{suse_version} >= 1610
+%define with_libalternatives 1
+%endif
 
 # with_update_alternatives is automatically defined, based on the
 # value of with_libalternatives
