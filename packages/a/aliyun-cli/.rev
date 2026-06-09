@@ -182,4 +182,41 @@
   * (no changes) (forwarded request 1352656 from glaubitz)</comment>
     <requestid>1352731</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c543d32421c1b882494d72ab730b496f</srcmd5>
+    <version>3.3.22</version>
+    <time>1781011612</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.22
+  * {Logging} Skip list for self-built-gateway products by @AllyW in (#1346)
+- from version 3.3.21
+  * {Configure} Match policy rules against the command users actually type
+    for ROA by @AllyW in (#1344)
+- from version 3.3.20
+  * {OpenAPI} Add call context logging by @AllyW in (#1342)
+- from version 3.3.19
+  * [Feature] Support MaxC CLI Sub Command by @dingxin-tech in (#1332)
+  * feat(appmanager): Generalized PrepareEnv credential pass-through
+    supports multiple authentication modes by @mengjunwei-mjw in (#1341)
+- from version 3.3.18
+  * Improve CMS2 command descriptions and clarify exception
+    return codes by @tingbin-ctb in (#1337)
+  * feat(iact3): add iact3 subcommand with manual upgrade
+    by @xiao201208 in (#1336)
+  * Add kmscli command by @oobujieshi in (#1340)
+- from version 3.3.17
+  * {Plugin} Support lang and profile from flag for plugin
+    execution by @AllyW in (#1330)
+  * Computenest pypi venv by @mengjunwei-mjw in (#1331)
+  * feat: add codeup-cli subcommand for migrating third-party
+    code repos by @imu2008 in (#1335)
+- from version 3.3.16
+  * Optimize error messages by @CodeSpaceiiii in (#1327)
+  * {Openapi} Return InvalidApiError for unknown API on
+    restful products by @AllyW in (#1326)
+  * feat(acrutil): Add Alibaba Cloud Container Registry(ACR)
+    Skill management CLI subcommand by @copyrightpoiiiii in (#1329)
+  * {Configure} Support BearerToken profile mode by @AllyW in (#1333) (forwarded request 1358162 from glaubitz)</comment>
+    <requestid>1358168</requestid>
+  </revision>
 </revisionlist>
