@@ -6,8 +6,9 @@ Tue Jun  2 06:19:35 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
     ambient viewing environment
     nominal diffuse white luminance
   * adds a output_image_nclx_profile_passthrough option to heif_decoding_options
-  * CVE TBD (GHSA-jvmp-j3cw-84mh) - unbounded heap allocation in HEIF
+  * CVE-2026-50142 (GHSA-jvmp-j3cw-84mh) - unbounded heap allocation in HEIF
     sequence parser (stsz fixed-size mode missing bound check)
+- fixes [bsc#1267455]
 
 -------------------------------------------------------------------
 Tue May 26 06:32:22 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -15,14 +16,14 @@ Tue May 26 06:32:22 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 - version update to 1.22.2:
   * build issues with OpenJPEG plugin (#1813)
   * non-plain C in header (#1812)
-  * CVE TBD (GHSA-r7qj-cg5r-r6vf) - Wrapped icef compressed-unit
+  * CVE-2026-49271 (GHSA-r7qj-cg5r-r6vf) - Wrapped icef compressed-unit
     range check causes out-of-bounds read in uncompressed HEIF decoder
   * CVE TBD (GHSA-5hqq-636x-r3cr) - Out-of-bounds write in inline mask
     region API when source mask exceeds declared region
 - deleted patches
   * libheif-fix-tests-no-HEVC.patch (upstreamed)
 - fixes [bsc#1266281]
-        [bsc#1266282]
+        [bsc#1266282] CVE-2026-49271
 
 -------------------------------------------------------------------
 Mon May 25 12:26:20 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
