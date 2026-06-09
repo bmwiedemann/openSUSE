@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Pod-Coverage
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Test-Pod-Coverage
-Version:        1.10
-Release:        0
 %define cpan_name Test-Pod-Coverage
-Summary:        Check for pod coverage in your distribution.
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Test-Pod-Coverage/
-Source:         http://www.cpan.org/authors/id/N/NE/NEILB/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Test-Pod-Coverage
+Version:        1.100.0
+Release:        0
+# 1.10 -> normalize -> 1.100.0
+%define cpan_version 1.10
+License:        Artistic-2.0
+Summary:        Check for pod coverage in your distribution
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Pod::Coverage)
 Requires:       perl(Pod::Coverage)
+Provides:       perl(Test::Pod::Coverage) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -38,7 +41,7 @@ Test::Pod::Coverage is used to create a test for your distribution, to
 ensure that all relevant files in your distribution are appropriately
 documented in pod.
 
-Can also be called with the Pod::Coverage manpage parms.
+Can also be called with Pod::Coverage parms.
 
     use Test::Pod::Coverage tests=>1;
     pod_coverage_ok(
@@ -47,9 +50,8 @@ Can also be called with the Pod::Coverage manpage parms.
         "Foo::Bar, with all-caps functions as privates",
     );
 
-The the Pod::Coverage manpage parms are also useful for subclasses that
-don't re-document the parent class's methods. Here's an example from the
-Mail::SRS manpage.
+The Pod::Coverage parms are also useful for subclasses that don't
+re-document the parent class's methods. Here's an example from Mail::SRS.
 
     pod_coverage_ok( "Mail::SRS" ); # No exceptions
 
@@ -60,9 +62,9 @@ Mail::SRS manpage.
     pod_coverage_ok( "Mail::SRS::Reversable", $trustme );
     pod_coverage_ok( "Mail::SRS::Shortcut", $trustme );
 
-Alternately, you could use the Pod::Coverage::CountParents manpage, which
-always allows a subclass to reimplement its parents' methods without
-redocumenting them. For example:
+Alternately, you could use Pod::Coverage::CountParents, which always allows
+a subclass to reimplement its parents' methods without redocumenting them.
+For example:
 
     my $trustparents = { coverage_class => 'Pod::Coverage::CountParents' };
     pod_coverage_ok( "IO::Handle::Frayed", $trustparents );
@@ -91,14 +93,14 @@ modules in the module distribution:
     all_pod_coverage_ok();
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -106,7 +108,6 @@ modules in the module distribution:
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

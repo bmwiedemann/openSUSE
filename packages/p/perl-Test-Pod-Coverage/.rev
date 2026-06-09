@@ -184,4 +184,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>20696e4e33639b36bcf93f6278b6ede1</srcmd5>
+    <version>1.100.0</version>
+    <time>1781007127</time>
+    <user>anag_factory</user>
+    <comment>- See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1357694</requestid>
+  </revision>
 </revisionlist>
