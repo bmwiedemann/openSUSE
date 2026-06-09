@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Mon Jun 08 12:08:16 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.16.0:
+  * chore: skip one more docker test on windows
+  * chore: auto-update generated files
+  * docs: updates
+  * docs: updates
+  * chore: update schema
+  * feat(dockers_v2): pre/post hooks (#6634)
+  * chore(deps): bump the gomod group with 2 updates (#6635)
+  * ci(deps): bump the actions group with 5 updates (#6636)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#6637)
+  * chore: auto-update generated files
+  * chore: fmt
+  * chore(deps): update go-github to v88
+  * fix: run script resolves nightly tags
+  * feat(deps): update docker in docker image
+  * chore(deps): update go-github to v87
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.19.0 to 5.19.1 (#6632)
+  * docs: better install page (#6631)
+  * docs: cleanup install
+  * docs: improve install page
+  * chore(www): update hextra
+  * fix: handle secondary rate limits on github (#6630)
+  * docs: add RWX CI guide (#6597)
+  * ci(deps): update goreleaser-action
+  * chore: auto-update generated files
+  * feat(dockers_v2): remove experimental warn
+  * feat: proper deprecate brews
+  * docs: update
+  * feat(nix): support meta.mainProgram (#6627)
+  * feat(dockers_v2): set extra.platforms in the artifact (#6628)
+  * test: fix golden file
+  * fix: change keyword color
+  * chore: gofumpt
+  * chore: remove unused struct
+  * feat(dockers_v2): baseimage and baseimagedigest template variables (#6625)
+  * chore: auto-update generated files
+  * test: disable gc auto (#6624)
+  * fix(srpm): set format and extension in extra (#6623)
+  * ci(deps): bump the actions group with 2 updates (#6619)
+  * chore(deps): bump docker/buildx-bin from 0.33.0 to 0.34.0 in the docker group across 1 directory (#6620)
+  * chore(deps): bump the gomod group with 3 updates (#6622)
+  * chore: auto-update generated files
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.18.0 to 5.19.0 (#6614)
+  * chore(deps): update docker
+  * chore: update golang.org/x/
+  * ci: check with goreleaser pro
+  * docs: update
+  * feat: go1.26.3
+  * ci(deps): bump the actions group with 4 updates (#6607)
+  * chore(deps): bump the gomod group with 4 updates (#6606)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#6608)
+  * docs: add slack to users list (#6605)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * docs: fix invalid 'neq' template function in pkg example (#6604)
+  * chore: auto-update generated files
+  * docs: update users.md
+  * fix(github): remove author lookup by email (#6601)
+  * chore: auto-update generated files
+  * chore(deps): bump github.com/distribution/distribution/v3 from 3.1.0 to 3.1.1 (#6598)
+  * ci: cleanup old nightly releases
+  * chore: update
+  * docs: parallax effect on homepage (#6596)
+  * ci: fix full changelog link for nightlies
+  * ci: simplify goreleaser config
+  * docs: missing required version
+  * ci: fix notification url
+  * ci: fix version template
+  * docs: update link
+  * feat(builders): add node sea support (#6579)
+  * ci: fix goreleaser config
+  * ci: fix discord notification
+  * chore: auto-update generated files
+  * docs: fix rendering issue inside tabs
+  * ci: fix goreleaser config
+  * fix(cask): emit generate_completions_from_executable after postflight (#6594)
+  * chore(deps): bump the gomod group with 4 updates (#6595)
+  * docs: rm old docs instructions
+  * fix(github): preserve prerelease publish fields
+  * docs: dont include nightlies in releases.json
+  * chore: auto-update generated files
+  * fix(github): preserve prerelease on publish (#6591)
+  * ci(deps): bump the actions group across 1 directory with 3 updates (#6588)
+  * chore(deps): bump the gomod group with 3 updates (#6587)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#6589)
+  * fix(xz): rm unused field
+  * docs: fix logos
+  * docs(actions): note immutable nightly resolution (#6590)
+  * ci: ign nightly tags
+  * ci(deps): update goreleaser action
+  * ci: goreleaser config
+  * ci: fix config
+  * ci: prerelease
+  * chore: auto-update generated files
+  * docs: updat
+  * feat(archive): xz format (#6520)
+  * ci: nightly unique tag name
+  * fix: wrong goreleaser URL  (#6584)
+  * fix: webhook error handling improvements
+  * fix:linkedin error handling improvements
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Thu Apr 23 14:16:44 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.15.4:

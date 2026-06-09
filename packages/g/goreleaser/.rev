@@ -1020,4 +1020,41 @@
   * docs: update (forwarded request 1348967 from ph03nix)</comment>
     <requestid>1348973</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>59e86aa8c1527454877c02b41344e3ca</srcmd5>
+    <version>2.16.0</version>
+    <time>1781007721</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.16.0:
+  * chore: skip one more docker test on windows
+  * chore: auto-update generated files
+  * docs: updates
+  * docs: updates
+  * chore: update schema
+  * feat(dockers_v2): pre/post hooks (#6634)
+  * chore(deps): bump the gomod group with 2 updates (#6635)
+  * ci(deps): bump the actions group with 5 updates (#6636)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#6637)
+  * chore: auto-update generated files
+  * chore: fmt
+  * chore(deps): update go-github to v88
+  * fix: run script resolves nightly tags
+  * feat(deps): update docker in docker image
+  * chore(deps): update go-github to v87
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.19.0 to 5.19.1 (#6632)
+  * docs: better install page (#6631)
+  * docs: cleanup install
+  * docs: improve install page
+  * chore(www): update hextra
+  * fix: handle secondary rate limits on github (#6630)
+  * docs: add RWX CI guide (#6597)
+  * ci(deps): update goreleaser-action
+  * chore: auto-update generated files
+  * feat(dockers_v2): remove experimental warn
+  * feat: proper deprecate brews
+  * docs: update
+  * feat(nix): support meta.mainProgram (#6627)
+  * feat(dockers_v2): set extra.platforms in the artifact (#6628) (forwarded request 1357965 from ph03nix)</comment>
+    <requestid>1357996</requestid>
+  </revision>
 </revisionlist>
