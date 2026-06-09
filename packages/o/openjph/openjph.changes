@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  7 20:30:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.27.4:
+  * Add documentation for ASAN build type #274
+  * Bug fix #277
+
+-------------------------------------------------------------------
 Mon Jun  1 08:13:30 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.27.3:

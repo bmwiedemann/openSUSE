@@ -257,4 +257,14 @@
   * Add OSS fuzz corpus for ojph_compress_fuzz_target #271</comment>
     <requestid>1356309</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>830653c7141f1cb8b7a21c04d84bcec8</srcmd5>
+    <version>0.27.4</version>
+    <time>1781007225</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.27.4:
+  * Add documentation for ASAN build type #274
+  * Bug fix #277</comment>
+    <requestid>1357807</requestid>
+  </revision>
 </revisionlist>
