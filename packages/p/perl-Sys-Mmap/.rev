@@ -7,4 +7,33 @@
     <comment>This package is needed by ZoneMinder, and is unchanged from devel:languages:perl. See boo#1229887 for details.</comment>
     <requestid>1198543</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bfc7d0079a58333374159c4b5f91c713</srcmd5>
+    <version>0.210.0</version>
+    <time>1781007970</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.210.0 (0.21)
+   see /usr/share/doc/packages/perl-Sys-Mmap/Changes
+  Todd Rinaldo, Mar 22 2026 v0.21
+  Bug Fixes:
+  * Fix segfault with non-zero offset in mmap. When mmap() was called with
+    a non-zero offset, Perl's sv_clear would try to Safefree() the mmap'd
+    pointer on scope exit, causing a crash. Now uses Perl's magic system to
+    store unmap metadata safely. GH #1, PR #12
+  * Fix len=0 with offset inferring wrong mapped size. When mmap() was
+    called with len=0 and a non-zero offset, the length was inferred as the
+    full file size rather than file_size - offset, causing the mapping to
+    extend past the end of the file. PR #14
+  * Resolve tied interface DESTROY munmap failures. DESTROY receives a
+    blessed reference, not the mmap'd SV itself. Without dereferencing,
+    the magic lookup failed and tried to munmap a garbage pointer. PR #16
+  Improvements:
+  * Document len=0 with offset behavior and caveats in POD. Clarify that
+    len=0 with offset infers remaining file size, document the
+    offset-beyond-EOF error, and add caveat about page alignment. PR #15
+  Maintenance:
+  * Modernize CI: consolidate separate linux.yml and macos.yml into a
+    unified testsuite.yml with updated actions and containers. PR #13</comment>
+    <requestid>1358069</requestid>
+  </revision>
 </revisionlist>

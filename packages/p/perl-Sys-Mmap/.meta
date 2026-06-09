@@ -6,6 +6,5 @@ may be a disc file that has been mapped into memory. Sys::Mmap depends on your
 operating system supporting UNIX or POSIX.1b mmap, of course.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Sys-Mmap"/>
   <url>http://search.cpan.org/dist/Sys-Mmap</url>
 </package>
