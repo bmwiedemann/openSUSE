@@ -1,7 +1,7 @@
 #
 # spec file for package privoxy
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define chroot %{_localstatedir}/lib/privoxy
 Name:           privoxy
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        The Internet Junkbuster - HTTP Proxy Server
 License:        GPL-3.0-or-later
@@ -90,6 +90,7 @@ mkdir -p %{buildroot}/%{chroot}/log
 mkdir -p %{buildroot}/%{chroot}%{_localstatedir}/log
 mkdir -p %{buildroot}/%{chroot}%{_localstatedir}/run
 mkdir -p %{buildroot}/%{chroot}/%{_lib}
+mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_mandir}/man8
 mkdir -p %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d
 cp -a templates %{buildroot}/%{chroot}%{_sysconfdir}
@@ -98,7 +99,9 @@ sed -e 's/@lib@/%{_lib}/g' %{SOURCE3} > %{buildroot}/%{_unitdir}/%{name}.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 install -m 755 privoxy %{buildroot}%{_sbindir}
 install -m 755 privoxy_nm %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d/privoxyd
-install -m 644 privoxy.8 %{buildroot}%{_mandir}/man8
+install -m 644 man/privoxy.8 %{buildroot}%{_mandir}/man8
+install -m 644 man/privoxy-log-parser.1 %{buildroot}%{_mandir}/man1
+install -m 644 man/uagen.1 %{buildroot}%{_mandir}/man1
 install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/logrotate.d/privoxy
 ln -s ../../log %{buildroot}/%{chroot}%{_localstatedir}/log/privoxy
 ln -sf %{chroot}%{_sysconfdir}/ %{buildroot}%{_sysconfdir}/privoxy
@@ -126,6 +129,8 @@ exit 0
 %{_sysconfdir}/NetworkManager/dispatcher.d/privoxyd
 %dir %{_sysconfdir}/NetworkManager
 %dir %{_sysconfdir}/NetworkManager/dispatcher.d
+%{_mandir}/man1/privoxy-log-parser.1%{?ext_man}
+%{_mandir}/man1/uagen.1%{?ext_man}
 %{_mandir}/man8/privoxy.8%{?ext_man}
 %config(noreplace) %{_sysconfdir}/logrotate.d/privoxy
 %dir /%{chroot}%{_sysconfdir}
