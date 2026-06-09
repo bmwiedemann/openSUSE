@@ -1,8 +1,7 @@
 #
 # spec file for package cups-filters
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -206,12 +205,8 @@ Conflicts:      cups < 1.6
 Provides:       cups-filters-ghostscript
 Obsoletes:      cups-filters-ghostscript < %{version}
 Obsoletes:      cups-filters-ghostscript-debuginfo
-Provides:       cups-filters-cups-browsed
-Provides:       gstoraster
-Obsoletes:      cups-filters-cups-browsed < %{version}
-Obsoletes:      cups-filters-cups-browsed-debuginfo
-Provides:       cups-browsed
 Provides:       cups-filters-foomatic-rip
+Provides:       gstoraster
 Obsoletes:      cups-filters-foomatic-rip < %{version}
 Obsoletes:      cups-filters-foomatic-rip-debuginfo
 Provides:       foomatic-rip
@@ -239,6 +234,25 @@ Conflicts:      foomatic-filters > %{foomatic_rip_version}
 #  /usr/lib/cups/backend/...
 # see https://bugzilla.novell.com/show_bug.cgi?id=868148
 Recommends:     poppler-tools
+# For now recommend cups-filters-cups-browsed to provide backward compatibility
+# under the assumption that users who use cups-browsed know about the
+# crucial conditions how printing services are meant to be used, in particular that
+# both cupsd and cups-browsed are network services that are designed for use in a trusted internal network
+# and not intended to be exposed to the public Internet or to other non-trusted networks which means:
+# - It is crucial to limit access to cupsd and cups-browsed to trusted users.
+# - It is crucial to limit access to network printer devices to trusted users.
+# - It is crucial to not accept remote printing information from untrusted hosts.
+# Cf. https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings
+# Currently we provide cups-browsed as separated cups-filters-cups-browsed sub-package
+# so users who do not need cups-browsed can uninstall that sub-package
+# to completely avoid the generic security risk of cups-browsed.
+# But currently we also like to avoid breaking systems where cups-browsed is in use
+# by a cups-filters RPM package update where cups-browsed may no longer get installed
+# if the cups-filters-cups-browsed sub-package was not recommended.
+# Depending on security requirements we may change that at any time as needed
+# to no longer automatically install cups-filters-cups-browsed as recommended RPM
+# or even up to dropping cups-browsed completely if needed.
+Recommends:     cups-filters-cups-browsed
 
 %description
 Contains backends, filters, and other software
@@ -248,22 +262,48 @@ In addition it contains additional filters
 and software developed independently of Apple,
 especially filters for the PDF-centric printing
 workflow introduced by OpenPrinting and a daemon
-to browse broadcasts of remote CUPS printers
-and makes these printers available locally.
+to auto-discover printers in the local network
+and make these printers available locally
+in the separated cups-filters-cups-browsed RPM.
 Since Ghostscript version 9.10 the CUPS filters
 gstoraster and gstopxl are removed from Ghostscript.
 Those filters are now provided by cups-filters.
 Since cups-filters version 1.0.42 foomatic-rip
 is also provided by cups-filters.
-Since CUPS >= 1.6 the CUPS Browsing functionality
-is dropped in CUPS. The OpenPrinting cups-browsed
-is a daemon running in parallel to the CUPS daemon
-to provide again basic CUPS Browsing functionality.
-This way basic CUPS Browsing works on clients
-with CUPS >= 1.6 when there are remote CUPS servers
-of CUPS version 1.5 and older in the network.
-Load-balancing (what CUPS <= 1.5 did via implicit classes)
-is not supported with cups-browsed.
+
+%package cups-browsed
+Summary:        OpenPrinting optional cups-browsed for CUPS
+Group:          Hardware/Printing
+Provides:       cups-browsed
+# Require the exact matching version-release of the cups-filters main package
+# that contains all needeed tools and libraries for cups-browsed because
+# non-matching tools or libraries may let cups-browsed fail or crash (e.g. segfault)
+# because all cups-filters software is provided in one cups-filters source tarball
+# and there are arbitrary subtle dependencies within the cups-filters software.
+# The exact matching version-release of the main package is available
+# on the same package repository where this sub-package is because
+# all is built simultaneously from one cups-filters source package
+# and all required packages are provided on the same repository:
+Requires:       cups-filters = %{version}-%{release}
+
+%description cups-browsed
+cups-browsed auto-discovers printers which are announced
+via DNS-SD and auto-creates local print queues for them.
+Normally the cups-browsed.service should not be activated
+because it is a generic security risk when a service accepts
+any (possibly malicious) incoming information from any host
+in the local network (in particular DNS-SD announcements) and
+from that information it auto-creates print queue configurations
+for CUPS where the CUPS server program cupsd runs as root.
+Both cupsd and cups-browsed are network services
+that are designed for use in a trusted internal network
+and not intended to be exposed to the public Internet
+or to other non-trusted networks which means:
+It is crucial to limit access to cupsd and cups-browsed to trusted users.
+It is crucial to limit access to network printer devices to trusted users.
+It is crucial to not accept remote printing information from untrusted hosts.
+For more information see the openSUSE support database article
+https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings
 
 %package devel
 Summary:        Development files for cups-filters
@@ -337,28 +377,34 @@ rm -f %{buildroot}%{_libdir}/lib*.la
 # Not sure what is this good for
 rm -f %{buildroot}%{_bindir}/ttfread
 
-%pre
+%post
+# Re-configure dynamic linker run-time bindings:
+/sbin/ldconfig
+exit 0
+
+%postun
+# Re-configure dynamic linker run-time bindings:
+/sbin/ldconfig
+exit 0
+
+%pre cups-browsed
 # For cups-browsed:
 %service_add_pre cups-browsed.service
 exit 0
 
-%post
+%post cups-browsed
 # For cups-browsed:
 %service_add_post cups-browsed.service
-# Re-configure dynamic linker run-time bindings:
-/sbin/ldconfig
 exit 0
 
-%preun
+%preun cups-browsed
 # For cups-browsed:
 %service_del_preun cups-browsed.service
 exit 0
 
-%postun
+%postun cups-browsed
 # For cups-browsed:
 %service_del_postun cups-browsed.service
-# Re-configure dynamic linker run-time bindings:
-/sbin/ldconfig
 exit 0
 
 %files
@@ -374,14 +420,6 @@ exit 0
 # are not overwritten by broken RPMs where mandatory files are missing.
 %license __doc/COPYING
 %doc __doc/README __doc/AUTHORS __doc/NEWS __doc/fontembed.README
-%config(noreplace) %{_sysconfdir}/cups/cups-browsed.conf
-%{_unitdir}/cups-browsed.service
-%{_sbindir}/cups-browsed
-%if 0%{?suse_version} < 1600
-%{_sbindir}/rccups-browsed
-%endif
-%{_mandir}/man5/cups-browsed.conf.5.gz
-%{_mandir}/man8/cups-browsed.8.gz
 %{_bindir}/driverless
 %{_mandir}/man1/driverless.1.gz
 %{_bindir}/driverless-fax
@@ -527,6 +565,17 @@ exit 0
 # Libraries:
 %{_libdir}/libcupsfilters.so.*
 %{_libdir}/libfontembed.so.*
+
+%files cups-browsed
+%defattr(-,root,root)
+%config(noreplace) %{_sysconfdir}/cups/cups-browsed.conf
+%{_unitdir}/cups-browsed.service
+%{_sbindir}/cups-browsed
+%if 0%{?suse_version} < 1600
+%{_sbindir}/rccups-browsed
+%endif
+%{_mandir}/man5/cups-browsed.conf.5.gz
+%{_mandir}/man8/cups-browsed.8.gz
 
 %files devel
 %defattr(-,root,root)

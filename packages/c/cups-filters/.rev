@@ -510,4 +510,12 @@
     <comment>Updated fix for CVE-2024-47175 to fix regression boo#1256868 and bsc#1256977</comment>
     <requestid>1333703</requestid>
   </revision>
+  <revision rev="63" vrev="8">
+    <srcmd5>cda206b3875c1b1129248d1e586b1180</srcmd5>
+    <version>1.28.17</version>
+    <time>1781007373</time>
+    <user>anag_factory</user>
+    <comment>Provide cups-browsed as separated cups-filters-cups-browsed sub-package (forwarded request 1357945 from jsmeix)</comment>
+    <requestid>1357946</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  2 16:04:55 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Provide cups-browsed as separated cups-filters-cups-browsed
+  sub-package so users can uninstall this sub-package
+  to completely avoid the generic security risk of cups-browsed.
+  cups-browsed auto-creates local print queues for printers which
+  are announced via DNS-SD. It is a generic security risk when a
+  service (cups-browsed.service) accepts any (possibly malicious)
+  incoming information from any host in the local network
+  (i.e. any DNS-SD announcements) and from that information
+  it auto-creates print queue configurations for CUPS
+  (where its server program cupsd runs as root).
+  For more information see the openSUSE support database article
+  https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings
+
+-------------------------------------------------------------------
 Thu Feb 12 12:16:20 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
 
 - Updated cups-filters-1.28.17-CVE-2024-47175.patch
