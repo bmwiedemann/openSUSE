@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Mon Jun  8 08:54:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.4.2.0
+  additions to improve Boulder Dash support
+  * fixed importing certain native BD levels.
+  * fixed hatching delay when playing native old Krissz BD engine
+    caves
+  additions to improve Emerald Mine support
+  * added improved random number generator for native EM game
+    engine.
+  * added raising previously missing scores for some EM engine game
+    elements.
+  * added checkbox to use EM/DC style duration in "moves" instead
+    of seconds.
+  * added pause element for EMC magic ball switch to improve
+    switching.
+  * added support for native EM sounds when using native EM game
+    engine.
+  * fixed amoeba growth speed for native EM game engine.
+  * fixed alien (robot) movement behavior for native EM game
+    engine.
+  * fixed bug with dead, but growing amoeba for native EM game
+    engine.
+  additions to improve Emerald Dash support
+  * added support for Emerald Dash style behavior for magic walls.
+  * added support for Emerald Dash style behavior for bugs and
+    tanks.
+  * added support for Emerald Dash style behavior for amoeba when
+    growing.
+  * added support for Emerald Dash style behavior for amoeba when
+    changing.
+  * added support for Emerald Dash style behavior for exploding
+    bugs.
+  * added support for Emerald Dash style behavior for magic walls.
+  * added support for Emerald Dash style behavior for voodoo player
+  * added support for Emerald Dash style behavior for player
+    explosion.
+  * added level editor checkbox for Emerald Dash EM engine
+    compatibility.
+  additions to improve Diamond Caves support
+  * changed growing EM/DC style amoeba for Diamond Caves style
+    behavior.
+  * added newly grown EM/DC style amoeba killing player if on top
+    of him.
+  * added checkbox to handle EM/DC style amoeba differently for DC
+    levels.
+  * added support for decoding old DC level files.
+  * added support for old (packed) DC level files.
+  * added support for old (single) DC level files.
+  * added checkbox to use DC style behavior when digging traps and
+    landmines.
+  * added support for reading certain non-standard DC level files.
+  * added checkbox to use classic BD/EM/DC style behavior for
+    magic walls.
+  * added setting classic BD style behavior for magic walls in
+    EM/DC levels.
+  * improved classic BD/EM/DC style behavior for magic walls.
+  * changed counting DC style shield time in “moves” instead of
+    seconds.
+  * changed shield time from seconds to “moves” for old DC level
+    files.
+  * added checkbox to use classic BD/DC style behavior for slipping
+    down.
+  * added checkbox to keep content of DC style walls in enemy
+    explosions.
+  * added checkbox to let player survive level timeout when using
+    shield.
+  * added dropping EM/DC style dynamite using snap key.
+  * added checkbox to reset shield time instead of adding when
+    collecting.
+  * added checkbox to flash the playfield when the exit is opening.
+  additions to improve Supaplex support
+  * fixed zigzag diagonal movement with gravity for SP game engine.
+  other game engine changes
+  * fixed old bug when two adjacent yamyams are exploding at the
+    same time.
+  * fixed tape desync after quick save/load caused by intermediate
+    key state.
+  graphical changes and fixes
+  * added improved player graphics.
+  * added improved graphics for some BD elements.
+  * fixed not displaying single-step mode after loading tape
+    snapshot.
+  * fixed drawing player entering and/or leaving explosion.
+  * fixed drawing animation of explosion for player leaving
+    explosion.
+  * fixed drawing explosion on field player is just leaving
+  * fixed drawing field exploding one frame after player is
+    entering.
+  * fixed potential drawing bug in level editor when using MM game
+    engine.
+  * fixed bugs when centering the playfield when using the MM game
+    engine.
+  level and artwork customization changes
+  * added level config option to use Emerald Dash engine for EM
+    level sets.
+  * added sound config option to use native EM sound engine.
+  * added configurability of menu scrollbar and scrollbar button
+    sizes.
+  * added configurability of menu scrollbar border size.
+  * added separate graphics config options for editor playfield
+    scrollbars.
+  * added graphics config options for background graphics for
+    scrollbars.
+  * added support for gadget on main screen to toggle team mode.
+  * added support for gadget on main screen to toggle sound set.
+  * added support for indicators for played and solved games to
+    main menu.
+  * added support for key navigation with custom main menu
+    positions.
+  * added graphics config options for shifted text and elements on
+    gadgets.
+  * added level config option to always skip intro screens
+  * added support for player graphics to be used when player uses
+    shield.
+  * added support for twinkling animations for gem style game
+    elements.
+  * added support for sound played one second before shield is
+    deactivated.
+  * added support for custom window/viewport sizes for info/setup
+    screens.
+  other changes
+  * added build script to create R’n’D packages for all platforms.
+  * added support for level intros (limited to R’n’D engine levels)
+  * added support for level intro template
+    "docs/intros/template.txt".
+  * added support for level story template
+    "docs/stories/template.txt".
+  * added disabling team mode for levels containing only one
+    player.
+  * added team mode flag for API action to get scores.
+  * added forcing program restart after each addition of new level
+    sets.
+  * added hiding toolbox gadgets not usable with current level
+     editor mode.
+  * fixed navigating to previous page on credits info screen.
+  * fixed bug when selecting and immediately un-selecting brush in
+    editor.
+  * fixed bug with request door opening and closing without user
+    input.
+
+-------------------------------------------------------------------
 Sat Mar 14 20:20:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.4.1.3:
