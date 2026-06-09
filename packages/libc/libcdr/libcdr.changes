@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  2 11:09:31 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 0.1.9
+  * Upgrade m4 macros.
+  * Fix crash appear with format CDR 14 and Gradients (tdf#130914, tdf#158268)
+  * Fixes parsing CDR7 files with no bbox surrounding text objects (tdf#98994)
+
+-------------------------------------------------------------------
 Tue Sep  2 13:17:44 UTC 2025 - pgajdos@suse.com
 
 - version update to 0.1.8

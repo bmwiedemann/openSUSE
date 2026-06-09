@@ -1,7 +1,7 @@
 #
 # spec file for package libcdr
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libcdr-0_1-1
 Name:           libcdr
-Version:        0.1.8
+Version:        0.1.9
 Release:        0
 Summary:        Library for parsing the Corel Draw file format structure
 License:        MPL-2.0
