@@ -43,6 +43,7 @@ Patch5:         0005-Bump-edwards25519.patch
 Patch6:         0006-Fix-CVE-2026-21725.patch
 Patch7:         0007-Bump-github.com-go-jose-go-jose.patch
 Patch8:         0008-Bump-github.com-apache-thrift.patch
+Patch9:         0009-Bump-golang.org-x-net.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang(API) >= 1.25
