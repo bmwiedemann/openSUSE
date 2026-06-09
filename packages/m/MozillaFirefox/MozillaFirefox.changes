@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Jun  7 09:17:17 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 151.0.3:
+  MFSA 2026-54 (boo#1267841)
+  * CVE-2026-10701 (bmo#2038537)
+    Incorrect boundary conditions in the Graphics: Text component
+  * CVE-2026-10702 (bmo#2040903)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * Fixed an issue where selecting or pasting text in a text field
+    inside a table cell could disrupt the page layout.
+    (bmo#2041235)
+  * Fixed an issue where the VPN toolbar button icon could appear
+    larger than intended. (bmo#2042454)
+- includes changes from 151.0.2:
+  * Fixed an issue where adding another tab to an existing Split
+    View could unexpectedly close it. (bmo#2039795)
+  * Fixed an issue where Split View would close instead of
+    switching tabs when using the "Switch to Tab" option from the
+    address bar. (bmo#2039787)
+  * Fixed an issue where Firefox stopped caching new content once
+    the disk cache was full, causing pages and resources to be
+    re-downloaded from the network on every visit. (bmo#2031577)
+  * Fixed an issue where some websites could render incorrectly or
+    fail to load when they used JavaScript to insert WebKit-
+    specific style rules. (bmo#2040693)
+  * Fixed an issue where clicking and selecting text in some input
+    fields and text areas did not work on pages that styled them
+    with certain CSS rules. (bmo#2039504)
+  * Fixed an issue where the up and down buttons on number input
+    fields could overlap and hide the value when sites sized the
+    field to fit its contents. (bmo#2039315)
+  * Fixed an issue where sorting strings that include numbers could
+    produce an incorrect order on some websites and web
+    applications. (bmo#2027078)
+  * Fixed an issue where dropdown menus would not open for
+    `<select>` elements created inside an iframe and then moved
+    into the parent page. (bmo#2041720)
+
+-------------------------------------------------------------------
 Thu May 21 21:15:56 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 151.0.1
