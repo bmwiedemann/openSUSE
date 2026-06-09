@@ -3,14 +3,34 @@
     <param name="url">https://github.com/alexellis/arkade</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">0.11.83</param>
+    <param name="revision">0.11.99</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/alexellis/gha-bump.git</param>
+    <param name="scm">git</param>
+    <param name="revision">master</param>
+    <param name="submodules">disable</param>
+    <param name="exclude">.git</param>
+    <param name="filename">gha-bump</param>
+    <param name="without-version">yes</param>
+  </service>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/alexellis/fstail.git</param>
+    <param name="scm">git</param>
+    <param name="revision">master</param>
+    <param name="submodules">disable</param>
+    <param name="exclude">.git</param>
+    <param name="filename">fstail</param>
+    <param name="without-version">yes</param>
+  </service>
   <service name="set_version" mode="manual">
   </service>
-  <service name="go_modules" mode="manual">
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
   </service>
   <!-- services below are running at buildtime -->
   <service name="tar" mode="buildtime">

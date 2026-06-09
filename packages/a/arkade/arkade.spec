@@ -17,13 +17,19 @@
 
 
 Name:           arkade
-Version:        0.11.83
+Version:        0.11.99
 Release:        0
 Summary:        Open Source Kubernetes Marketplace
 License:        Apache-2.0
 URL:            https://github.com/alexellis/arkade
 Source:         arkade-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        gha-bump.tar.gz
+Source3:        fstail.tar.gz
+#
+Source11:       Makefile
+Source12:       PACKAGING_README.md
+Source13:       vendor_go_modules.sh
 BuildRequires:  bash-completion
 BuildRequires:  zsh
 BuildRequires:  golang(API) >= 1.25
@@ -57,6 +63,8 @@ zsh command line completion support for %{name}.
 
 %prep
 %autosetup -p 1 -a 1
+tar xvf %{SOURCE2} --directory ../
+tar xvf %{SOURCE3} --directory ../
 
 %build
 # hash will be shortened by COMMIT_HASH:0:8 later
@@ -81,6 +89,11 @@ mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+
+%check
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+%{buildroot}/%{_bindir}/%{name} version | grep v%{version}
+%{buildroot}/%{_bindir}/%{name} version | grep "${COMMIT_HASH:0:8}"
 
 %files
 %doc README.md

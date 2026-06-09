@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Jun 09 08:57:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.99:
+  * Fix amp and update go.mod
+- Update to version 0.11.98:
+  * Updates on formatting for releases
+- Update to version 0.11.97:
+  * Add mediamtx
+- Update to version 0.11.96:
+  * Show progress of "arkade oci install"
+- Update to version 0.11.95:
+  * Update vendor
+- Update to version 0.11.94:
+  * Update template for polaris tool due to upstream change
+- Update to version 0.11.93:
+  * Fix for --latest=true flag for releases
+- Update to version 0.11.92:
+  * Fix gofmt
+  * Add jsongrep and more flexible docker upgrade command
+- Update to version 0.11.91:
+  * Anonymous auth for openfaasltd images
+- Update to version 0.11.90:
+  * Print out helpers/hints for setting PATH for .arkade/bin
+- Update to version 0.11.89:
+  * Sync semver v3 with gha-bump
+  * Upgrade semver to v3
+- Update to version 0.11.88:
+  * Fix for argocd's massive CRDs
+- Update to version 0.11.87:
+  * Add gen command to docker command
+  * Update for message for arkade installation
+- Update to version 0.11.86:
+  * Quick shortcut for superterm
+- Update to version 0.11.85:
+  * Add argo workflow tool
+  * Fix errors left over from codex
+  * We can do better than this
+  * Update sponsors section
+  * Updates for support messages
+  * Update sponsor messages to let people know about slicer
+- Update to version 0.11.84:
+  * Bring fstail, gha-bump in-process via vendor
+
+-------------------------------------------------------------------
+Tue Apr 28 08:57:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- move vendoring from '_service' file into script called by Make,
+  due to upstream changes in 0.11.84
+
+-------------------------------------------------------------------
 Mon Mar 02 06:47:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.83:
