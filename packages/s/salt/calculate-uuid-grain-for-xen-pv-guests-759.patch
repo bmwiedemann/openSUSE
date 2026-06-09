@@ -1,0 +1,124 @@
+From f2389dfbd6d0717e426b793f26001221a093c512 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Yeray=20Guti=C3=A9rrez=20Cedr=C3=A9s?=
+ <yeray.gutierrez@suse.com>
+Date: Fri, 29 May 2026 13:53:27 +0100
+Subject: [PATCH] Calculate UUID grain for Xen PV guests (#759)
+
+* Calculate UUID grain for Xen PV guests.
+* Fix the case when either `dmidecode` or `smbios` is available but `/sys/class/dmi/id` is missing.
+* Refine Xen PV UUID detection: The  unit test `test__hw_data_linux_empty` was failing because of existing mocks for fopen in rb mode. Switching to rb does no harm because of the use of `to_unicode` of the `/sys/hypervisor/uuid` file contents.
+
+---------
+
+Co-authored-by: vzhestkov <vzhestkov@suse.com>
+---
+ changelog/69036.added.md               |  1 +
+ salt/grains/core.py                    | 30 ++++++++++++++++++++++----
+ tests/pytests/unit/grains/test_core.py | 20 +++++++++++++++++
+ 3 files changed, 47 insertions(+), 4 deletions(-)
+ create mode 100644 changelog/69036.added.md
+
+diff --git a/changelog/69036.added.md b/changelog/69036.added.md
+new file mode 100644
+index 00000000000..aca967b55c7
+--- /dev/null
++++ b/changelog/69036.added.md
+@@ -0,0 +1 @@
++Added UUID detection for Xen paravirtualized guests
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 582b37de940..7b61db10ee7 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -3149,6 +3149,23 @@ def _hw_data(osdata):
+         return {}
+ 
+     grains = {}
++
++    # For Xen para-virtualized guests read UUID from /sys/hypervisor/uuid
++    if osdata["kernel"] == "Linux" and os.path.exists("/sys/hypervisor/uuid"):
++        try:
++            with salt.utils.files.fopen("/sys/hypervisor/uuid", "rb") as ifile:
++                hypervisor_uuid = salt.utils.stringutils.to_unicode(
++                    ifile.read().strip(), errors="replace"
++                )
++                if hypervisor_uuid:
++                    grains["uuid"] = hypervisor_uuid.lower()
++                    log.debug(
++                        "Read UUID from /sys/hypervisor/uuid for para-virtualized guest: %s",
++                        grains["uuid"],
++                    )
++        except OSError as err:
++            log.debug("Unable to read /sys/hypervisor/uuid: %s", err)
++
+     if osdata["kernel"] == "Linux" and os.path.exists("/sys/class/dmi/id"):
+         # On many Linux distributions basic firmware information is available via sysfs
+         # requires CONFIG_DMIID to be enabled in the Linux kernel configuration
+@@ -3163,6 +3180,9 @@ def _hw_data(osdata):
+             "serialnumber": "product_serial",
+         }
+         for key, fw_file in sysfs_firmware_info.items():
++            # Skip UUID if already read from /sys/hypervisor/uuid (Xen PV guests)
++            if key == "uuid" and "uuid" in grains:
++                continue
+             contents_file = os.path.join("/sys/class/dmi/id", fw_file)
+             if os.path.exists(contents_file):
+                 try:
+@@ -3193,18 +3213,20 @@ def _hw_data(osdata):
+     ):
+         # On SmartOS (possibly SunOS also) smbios only works in the global zone
+         # smbios is also not compatible with linux's smbios (smbios -s = print summarized)
++        uuid = __salt__["smbios.get"]("system-uuid")
++        if uuid is not None:
++            uuid = uuid.lower()
++        else:
++            uuid = grains.get("uuid")
+         grains = {
+             "biosversion": __salt__["smbios.get"]("bios-version"),
+             "biosvendor": __salt__["smbios.get"]("bios-vendor"),
+             "productname": __salt__["smbios.get"]("system-product-name"),
+             "manufacturer": __salt__["smbios.get"]("system-manufacturer"),
+             "biosreleasedate": __salt__["smbios.get"]("bios-release-date"),
+-            "uuid": __salt__["smbios.get"]("system-uuid"),
++            "uuid": uuid,
+         }
+         grains = {key: val for key, val in grains.items() if val is not None}
+-        uuid = __salt__["smbios.get"]("system-uuid")
+-        if uuid is not None:
+-            grains["uuid"] = uuid.lower()
+         for serial in (
+             "system-serial-number",
+             "chassis-serial-number",
+diff --git a/tests/pytests/unit/grains/test_core.py b/tests/pytests/unit/grains/test_core.py
+index 135c40bc2b7..faaf0b93c62 100644
+--- a/tests/pytests/unit/grains/test_core.py
++++ b/tests/pytests/unit/grains/test_core.py
+@@ -3146,6 +3146,26 @@ def test__hw_data_linux_unicode_error():
+         assert core._hw_data({"kernel": "Linux"}) == {}
+ 
+ 
++@pytest.mark.skip_unless_on_linux
++def test__hw_data_xen_pv_uuid():
++    hypervisor_uuid = b"12345678-1234-1234-1234-123456789ABC"
++    expected_uuid = "12345678-1234-1234-1234-123456789abc"
++
++    def _exists_side_effect(path):
++        if path == "/sys/hypervisor/uuid":
++            return True
++        return False
++
++    with patch("os.path.exists", side_effect=_exists_side_effect), patch(
++        "salt.utils.platform.is_proxy", return_value=False
++    ), patch("salt.utils.path.which_bin", return_value=None), patch(
++        "salt.utils.files.fopen",
++        mock_open(read_data=hypervisor_uuid),
++    ):
++        result = core._hw_data({"kernel": "Linux"})
++        assert result.get("uuid") == expected_uuid
++
++
+ @pytest.mark.skip_unless_on_windows
+ def test_kernelparams_return_windows():
+     """
+-- 
+2.54.0
+

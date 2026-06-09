@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 29 14:35:44 UTC 2026 - Yeray Gutiérrez Cedrés <yeray.gutierrez@suse.com>
+
+- Calculate UUID grain for Xen PV guests (bsc#1255418)
+
+- Added:
+  * calculate-uuid-grain-for-xen-pv-guests-759.patch
+
+-------------------------------------------------------------------
 Fri May 22 10:54:31 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Add 'show_changes' arg to 'file.append/file.prepend" states
