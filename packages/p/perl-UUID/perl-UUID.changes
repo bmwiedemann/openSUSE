@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri May 15 08:20:53 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.380.0 (0.38)
+   see /usr/share/doc/packages/perl-UUID/Changes
+
+  0.38 Thu May 14 10:52:38 EDT 2026
+    - Use system randomness for seeding internal PRNG. Source is
+      platform-specific and preferred in the following order, if
+      available:
+      - arc4random()
+      - BCryptGenRandom()
+      - CryptGenRandom()
+      - getentropy()
+      - getrandom()
+      - /dev/urandom
+    - Move internal context to anonymous mmap to synchronize timestamps
+      between multiple processes or threads. This also means random
+      numbers from all processes/threads now come from a common pool,
+      eliminating chance of parallel duplication.
+    - Improved internal context locking, switching away from pthreads due
+      to cross-platform inconsistencies with respect to process-shared
+      mutexes. Now OpenBSD uses futex, Win32 uses SRWLocks, and OSX uses
+      GCD. Everywhere else uses sem_wait. These solutions were promoted to
+      top-tier after realizing they would have to be done anyway as
+      fallbacks for pthreads.
+    - Add internal try/catch to ensure locks are not orphaned and avoid
+      deadlock in fork/thread scenarios.
+    - Fix off-by-one in time adjustment causing occasional duplication on
+      very fast hosts. (Over 10M UUIDs/sec, so probably never seen in
+      production.) See, for example:
+      https://www.cpantesters.org/cpan/report/f26eddf4-dc5c-11f0-baa1-832b6e8775ea
+      - Scroll to failed test t/3unique/v6.t
+      - Notice the first 3 digit groups of each UUID.
+      - For v6 UUIDs, the first 3 groups are basically system time in 100ns steps.
+      - The first 12 UUIDs are increasing 1 count each.
+      - The next 11 UUIDs are also increasing 1 count each, repeating the
+        same times as the first 12. The sequence field (the 4th digit
+        group) has increased though, so this is okay.
+      - The 24th UUID repeats the 23rd.
+      - The burst ends with the 28th UUID.
+    - Sped up t/3unique non-forking tests to tickle off-by-one bug.
+    - Make t/3unique fork/prefork tests run in parallel.
+    - Make t/8threads tests try harder to produce dupes.
+    - Add fork/prefork tests for uncovered UUID versions.
+    - Drop Test::More in favor of lighter, faster, homegrown module.
+
+-------------------------------------------------------------------
 Tue Feb 25 05:34:23 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.370.0 (0.37)

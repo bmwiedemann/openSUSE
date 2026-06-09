@@ -1,7 +1,7 @@
 #
 # spec file for package perl-UUID
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,21 @@
 
 %define cpan_name UUID
 Name:           perl-UUID
-Version:        0.370.0
+Version:        0.380.0
 Release:        0
-# 0.37 -> normalize -> 0.370.0
-%define cpan_version 0.37
+# 0.38 -> normalize -> 0.380.0
+%define cpan_version 0.38
 License:        Artistic-2.0
 Summary:        Universally Unique Identifier library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JR/JRM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta)
-BuildRequires:  perl(Devel::CheckLib) >= 1.14
+BuildRequires:  perl(Devel::CheckLib) >= 1.140
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.06
-BuildRequires:  perl(List::Util) >= 1.29
-BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(version) >= 0.77
 Provides:       perl(UUID) = %{version}
@@ -58,12 +57,12 @@ All generated UUIDs are either version 1, 3, 4, 5, 6, or version 7. And all
 are variant 1, meaning compliant with the OSF DCE standard as described in
 RFC4122.
 
-Versions 6 and 7 are not standardized. They are presented here as proposed
-in RFC4122bis, version 14, and may change in the future. RFC4122bis is
-noted to replace RFC4122, if approved.
+Versions 6 and 7 are not yet standardized. They are presented here as
+proposed in RFC4122bis, version 14, and may change in the future.
+RFC4122bis is noted to replace RFC4122, if approved.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
