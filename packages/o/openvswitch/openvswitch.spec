@@ -109,6 +109,7 @@ Obsoletes:      %{name}-dpdk-switch < 2.7.0
 Obsoletes:      %{name}-switch < 2.7.0
 BuildRequires:  libopenssl-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base
 BuildRequires:  sysuser-tools
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
