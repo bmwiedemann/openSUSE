@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun  9 02:27:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.6.1:
+  * [hdfs] Make CliRawOutputBase.write return number of bytes written
+  * Add support for `append` mode for Azure Blob Storage
+  * Bump minimum supported version to Python 3.10
+  * Fix pylance complaint
+  * [s3] Support very large buckets in iter_bucket, add client_kwars
+  * [http] Eliminate _read_iter and simplify read
+  * [http] Re-introduce read optimization when buffer is empty
+  * Simplify WHENCE_END logic
+  * [http] Avoid using response.iter_content
+  * [s3] Add lower version to boto3 requirement for tcp_keepalive
+  * [s3] Improve handling of InvalidRange and seek on empty file
+  * [s3] Optimize forward seeks within buffered data to avoid redundant GET
+  * [s3] Add range_chunk_size param to read using multiple GET requests
+  * Drop python 3.8, add python 3.14
+  * Use compression.zstd (PEP-784)
+  * Remove head_bucket call from s3.SinglepartWriter
+  * Add buffer_size transport param to ssh.py
+  * Make s3.SinglepartWriter seekable
+  * Add support for prefetching to sftp transport
+
+-------------------------------------------------------------------
 Tue Mar 18 10:31:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 7.1.0
