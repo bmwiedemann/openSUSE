@@ -397,4 +397,14 @@ Expand previous changelog entry for go1.21 boostrap with gccgo (forwarded reques
   * Refs boo#1247816 bootstrap go1.21 with gccgo</comment>
     <requestid>1309839</requestid>
   </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>2f763e780f7fe6870e302b2b5fb12aac</srcmd5>
+    <version>1.21.13</version>
+    <time>1781007267</time>
+    <user>anag_factory</user>
+    <comment>- Packaging: Enable libalternatives for SLE16.1 and Tumbleweed
+  Refs boo#1245878
+  * Drop go1.21 dependency on update-alternatives fixes bsc#1264390 (forwarded request 1358031 from jfkw)</comment>
+    <requestid>1358036</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  4 11:32:39 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging: Enable libalternatives for SLE16.1 and Tumbleweed
+  Refs boo#1245878
+  * Drop go1.21 dependency on update-alternatives fixes bsc#1264390
+
+-------------------------------------------------------------------
 Wed Oct  8 12:50:09 UTC 2025 - Michael Matz <matz@suse.com>
 
 - Prepare for removing old go versions from Factory:
