@@ -206,4 +206,19 @@
    - Test and document the new formats.</comment>
     <requestid>1357567</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d51d201f4d9402d5f2cc657e3d9ce441</srcmd5>
+    <version>1.270.0</version>
+    <time>1781007945</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.270.0 (1.27)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+  1.27  2026-06-07  &lt;schubiger@cpan.org&gt;
+   - Merged development version to stable.
+  1.26_02  2026-06-01  &lt;schubiger@cpan.org&gt;
+   - Minor tweak/removals.
+  1.26_01  2026-05-30  &lt;schubiger@cpan.org&gt;
+   - Improve use of string/block eval.</comment>
+    <requestid>1358059</requestid>
+  </revision>
 </revisionlist>

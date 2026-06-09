@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  8 09:56:33 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.270.0 (1.27)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.27  2026-06-07  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.26_02  2026-06-01  <schubiger@cpan.org>
+   - Minor tweak/removals.
+  1.26_01  2026-05-30  <schubiger@cpan.org>
+   - Improve use of string/block eval.
+
+-------------------------------------------------------------------
 Fri May 29 08:53:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.260.0 (1.26)
