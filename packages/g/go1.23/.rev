@@ -289,4 +289,14 @@
   * Refs boo#1248082 drop unused gccgo bootstrap code in go1.22+ (forwarded request 1299494 from jfkw)</comment>
     <requestid>1299496</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>3de0d4975642c75d2a741325fc7976ac</srcmd5>
+    <version>1.23.12</version>
+    <time>1781007691</time>
+    <user>anag_factory</user>
+    <comment>- Packaging: Enable libalternatives for SLE16.1 and Tumbleweed
+  Refs boo#1245878
+  * Drop go1.23 dependency on update-alternatives fixes bsc#1264392 (forwarded request 1358033 from jfkw)</comment>
+    <requestid>1358041</requestid>
+  </revision>
 </revisionlist>
