@@ -21,7 +21,7 @@
 %{?sle15_python_module_pythons}
 %define pyname gnssanalysis
 Name:           python-%{pyname}
-Version:        0.0.59
+Version:        0.0.60
 Release:        0
 Summary:        GNSS-related functionality from Geoscience Australia
 License:        BSD-3-Clause
@@ -48,6 +48,7 @@ BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       alts
 Requires:       python-boto3
 Requires:       python-click
 Requires:       python-hatanaka
@@ -64,7 +65,6 @@ Requires:       python-scipy
 Requires:       python-tqdm
 Requires:       python-typing_extensions
 Requires:       python-unlzw3
-Requires:       alts
 %python_subpackages
 
 %description

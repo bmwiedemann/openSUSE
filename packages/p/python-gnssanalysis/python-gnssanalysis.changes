@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun  9 06:09:26 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 0.0.60
+  * Introduced a framework for hashing and testing DataFrames
+    against a baseline
+  * Introduced ability to enter EarthData credentials (for CDDIS
+    downloads) via environment variables rather the .netrc file
+  * Fixed issue with downloading IGS FIN SP3 files from CDDIS -
+    changed default to 15M for sampling rate rather than 05M
+  * NPI-4453 Framework for DataFrame hashing & test baselining
+  * NPI-4495 Earthdata creds via env var
+  * Remove IGS from searching for 05M SP3 files
+
+-------------------------------------------------------------------
 Fri Apr 17 06:01:21 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Fix python requires
