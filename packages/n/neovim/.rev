@@ -1756,4 +1756,15 @@ FIXES (LSP):
     <comment>- Fix  %lang_package, thanks to  Edwin Török (boo#1267905)</comment>
     <requestid>1358141</requestid>
   </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>3c55642dcd27bad46c38da2a9b2067bd</srcmd5>
+    <version>0.12.2</version>
+    <time>1781011620</time>
+    <user>anag_factory</user>
+    <comment>- Use Lua5.1 rather than luajit, as we don't have all the modules in
+  Leap16.0 and Leap16.1
+- enable aarch64 tests again
+- disable tests on Leap16 (forwarded request 1358180 from rrahl0)</comment>
+    <requestid>1358181</requestid>
+  </revision>
 </revisionlist>

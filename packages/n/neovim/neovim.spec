@@ -16,7 +16,12 @@
 #
 
 
+%if 0%{?suse_version} <= 1650
+%bcond_with    luajit
+%else
 %bcond_without luajit
+%endif
+%define         _name nvim
 Name:           neovim
 Version:        0.12.2
 Release:        0
@@ -42,7 +47,6 @@ BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hostname
 BuildRequires:  libtool
-BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(libluv)
@@ -68,7 +72,6 @@ Recommends:     wl-clipboard
 Recommends:     xsel
 Suggests:       python3-neovim
 Suggests:       ripgrep
-Provides:       nvim
 %if %{with luajit}
 BuildRequires:  luajit-bit32
 BuildRequires:  luajit-compat-5.3
@@ -76,6 +79,11 @@ BuildRequires:  luajit-devel
 BuildRequires:  luajit-lpeg
 BuildRequires:  luajit-luarocks
 BuildRequires:  luajit-luv
+Requires:       luajit-bit32
+Requires:       luajit-compat-5.3
+Requires:       luajit-lpeg
+Requires:       luajit-luarocks
+Requires:       luajit-luv
 %else
 BuildRequires:  lua51-bit32
 BuildRequires:  lua51-compat-5.3
@@ -84,20 +92,14 @@ BuildRequires:  lua51-lpeg
 BuildRequires:  lua51-luarocks
 BuildRequires:  lua51-luv
 BuildRequires:  pkgconfig(lua5.1)
-%endif
-%if %{with luajit}
-Requires:       luajit-bit32
-Requires:       luajit-compat-5.3
-Requires:       luajit-lpeg
-Requires:       luajit-luarocks
-Requires:       luajit-luv
-%else
 Requires:       lua51-bit32
 Requires:       lua51-compat-5.3
 Requires:       lua51-lpeg
 Requires:       lua51-luarocks
 Requires:       lua51-luv
 %endif
+
+%lang_package
 
 %description
 Neovim is a refactor - and sometimes redactor - in the tradition of
@@ -108,8 +110,6 @@ strives to be a superset of Vim, notwithstanding some intentionally
 removed misfeatures; excepting those few and carefully-considered
 excisions, Neovim is Vim. It is built for users who want the good
 parts of Vim, without compromise, and more.
-
-%lang_package
 
 %prep
 %autosetup -p1
@@ -126,12 +126,6 @@ mkdir -p build/build/downloads/lua_dev_deps/
 cp %{SOURCE10} build/build/downloads/lua_dev_deps/
 
 %build
-# Remove cmake4 error due to not setting
-# min cmake version - sflees.de
-export CMAKE_POLICY_VERSION_MINIMUM=3.5
-# set vars to make build reproducible in spite of config/CMakeLists.txt
-HOSTNAME=OBS
-USERNAME=OBS
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DPREFER_LUA=%{?with_luajit:OFF}%{!?with_luajit:ON} \
        -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
@@ -151,52 +145,48 @@ USERNAME=OBS
 %cmake_install
 
 # system-wide configuration file
-install -D -m 644 -p %{SOURCE1} %{buildroot}%{_sysconfdir}/nvim/sysinit.vim
-ln -sf  %{_sysconfdir}/nvim/sysinit.vim %{buildroot}%{_datadir}/nvim/sysinit.vim
+install -D -m 644 -p %{SOURCE1} %{buildroot}%{_sysconfdir}/%{_name}/sysinit.vim
+ln -sf  %{_sysconfdir}/nvim/sysinit.vim %{buildroot}%{_datadir}/%{_name}/sysinit.vim
 
 # install SUSE specific spec template
-install -p -m 644 %{SOURCE3} %{buildroot}%{_datadir}/nvim/template.spec
-install -p -m 644 %{SOURCE4} %{buildroot}%{_datadir}/nvim/runtime/plugin/spec.vim
+install -p -m 644 %{SOURCE3} %{buildroot}%{_datadir}/%{_name}/template.spec
+install -p -m 644 %{SOURCE4} %{buildroot}%{_datadir}/%{_name}/runtime/plugin/spec.vim
 
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications \
-    runtime/nvim.desktop
-install -Dm0644 runtime/nvim.png %{buildroot}%{_datadir}/pixmaps/nvim.png
+    runtime/%{_name}.desktop
+install -Dm0644 runtime/%{_name}.png %{buildroot}%{_datadir}/pixmaps/%{_name}.png
 
 # vim/site directories for plugins shared with vim
 mkdir -p %{buildroot}%{_datadir}/vim/site/{after,after/syntax,autoload,colors,doc,ftdetect,plugin,syntax}
 
 # universal loader for the system-wide tree-sitter parsers
-install -Dm0644 %{SOURCE5} %{buildroot}%{_datadir}/nvim/runtime/plugin/tree-sitter-system.lua
+install -Dm0644 %{SOURCE5} %{buildroot}%{_datadir}/%{_name}/runtime/plugin/tree-sitter-system.lua
 
 %fdupes %{buildroot}
-%find_lang nvim
+%find_lang %{_name}
 
-%ifnarch %{arm64}
 %check
-
+mkdir -p runtime/parser
+%if 0%{?suse_version} <= 1650
+ln -sf %{_libdir}/tree_sitter/vimdoc.so runtime/parser
+%else
+ln -sf %{_libdir}/tree-sitter/libtree-sitter-vimdoc.so runtime/parser/vimdoc.so
+%endif
+%if 0%{?suse_version} > 1650
 %ifnarch %{power64} s390x
 # old tests
-%make_build USE_BUNDLED=OFF oldtest || true
+%make_build USE_BUNDLED=OFF oldtest
 %endif
 # functional tests
-%if 0%{?suse_version} != 1600
 %ifarch %{arm64} %{x86_64}
 %make_build USE_BUNDLED=OFF unittest
-%endif
 %endif
 %endif
 
 %files
 %license LICENSE.txt
 %doc CONTRIBUTING.md README.md
-%dir %{_sysconfdir}/nvim
 %config(noreplace) %{_sysconfdir}/nvim/sysinit.vim
-%{_bindir}/nvim
-%{_mandir}/man?/nvim.?%{?ext_man}
-%{_datadir}/nvim
-%{_datadir}/applications/nvim.desktop
-%{_datadir}/icons/hicolor/128x128/apps/nvim.png
-%{_datadir}/pixmaps/nvim.png
 %dir %{_datadir}/vim
 %dir %{_datadir}/vim/site
 %dir %{_datadir}/vim/site/after
@@ -207,7 +197,14 @@ install -Dm0644 %{SOURCE5} %{buildroot}%{_datadir}/nvim/runtime/plugin/tree-sitt
 %dir %{_datadir}/vim/site/ftdetect
 %dir %{_datadir}/vim/site/plugin
 %dir %{_datadir}/vim/site/syntax
+%dir %{_sysconfdir}/%{_name}
+%{_bindir}/%{_name}
+%{_datadir}/applications/%{_name}.desktop
+%{_datadir}/icons/hicolor/128x128/apps/%{_name}.png
+%{_datadir}/%{_name}
+%{_datadir}/pixmaps/%{_name}.png
+%{_mandir}/man?/%{_name}.?%{?ext_man}
 
-%files lang -f nvim.lang
+%files lang -f %{_name}.lang
 
 %changelog
