@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:30:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.1
+  * docs - add request body decode script to contributing
+  * fix(oauth): Handle refresh token expiry field
+  * fix(oauth): tolerate unexpected token fields when loading
+    saved oauth.json
+  * fix - search parse logic does not detect number of videos
+    correctly
+  * fix - parse all of artist description runs instead of just the
+    first one
+  * get_watch_playlist: fix KeyError when Comments tab is returned
+  * default search: fix itemSection parsing
+  * search: return categories as strings instead of run dicts
+
+-------------------------------------------------------------------
 Thu Apr 30 14:29:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.12.0
