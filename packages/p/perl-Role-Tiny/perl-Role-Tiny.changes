@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 18 08:55:56 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.002005
+   see /usr/share/doc/packages/perl-Role-Tiny/Changes
+
+  2.002005 - 2026-05-17
+    - split role initialization from setting pragmas to allow more flexibility
+      for subclasses
+    - ensure consistent internal handling of Class::C3 vs mro
+    - reduced Exporter dependency to 0 (any version)
+
+-------------------------------------------------------------------
 Mon Jan 25 03:10:52 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.002004
