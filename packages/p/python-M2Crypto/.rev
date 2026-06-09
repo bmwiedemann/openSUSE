@@ -966,4 +966,12 @@ Update to 0.36.0:
   - Specify in setup.cfg that we require Python &gt;= 3.6</comment>
     <requestid>1308623</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>5374a32eb35239ca7e30399279724211</srcmd5>
+    <version>0.48.0</version>
+    <time>1781007220</time>
+    <user>anag_factory</user>
+    <comment>For Staging:B</comment>
+    <requestid>1357806</requestid>
+  </revision>
 </revisionlist>

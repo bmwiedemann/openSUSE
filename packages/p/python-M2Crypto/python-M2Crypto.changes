@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sun Jun  7 19:05:51 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Upgrade to 0.48.0:
+  - doc: another move … this time to Codeberg (and communication
+    to Matrix)
+  - test(smime): parametrize test_write_pkcs7_der
+  - test(smime): fix test_signEncryptDecryptVerify
+  - fix(util): return bytes from passphrase callbacks
+  - fix(SSL.Checker): add IDN Chinese name
+  - test(ssl): add IDN certificate fixture coverage
+  - test(ssl): cover IDN hostname matching in Checker
+  - doc: update expected Name format in migration guide
+  - fix(smime): S/MIME signature verification for Outlook and
+    Thunderbird
+  - fix(provider): handle OSSL_STORE_INFO_PUBKEY compat. for
+    OpenSSL < 3.2
+  - fix: cast X509_dup in sk_X509_deep_copy to avoid type
+    mismatch
+  - fix(smime): S/MIME signature verification for Outlook and
+    Thunderbird
+  - fix(smime): remove obsolete Python pre-3.6 constructs
+  - ci: run on Codeberg with forgejo_runner
+  - doc: clarify the status of the project
+  - fix(provider): adjust the CI run on Gitea for the older
+    OpenSSL on Debian
+  - fix(evp): narrow digest and BIO pointers for mypy
+  - fix(init): acommodate modern packaging API
+  - doc: IRC channel is on Libera, Ergo was a wrong idea
+  - fix(tests): remove duplicate definition of IS_DEBIAN in
+    test_ssl
+  - fix(test_bio_ssl): fix TLS 1.3 deadlock and add socket
+    timeouts
+  - fix(test_bio_ssl): replace sys.exit() with self.fail() to
+    prevent test process crash
+  - ci: publish to PyPI with Sigstore attestations via Trusted
+    Publishing
+  - fix(authcookie): handle CookieError from Python 3.13.12+
+    (CVE-2026-0672)
+  - ci(leap): use setup.py bdist_wheel to bypass old pip PEP 517
+    wrapper
+  - fix(util): replace is_32bit with struct.calcsize and update
+    tests
+  - ci: add FreeBSD SourceHut CI build script
+  - fix(swig): avoid clang GNUC pragma block before _lib.h
+  - fix(provider): don't abuse TemporaryDirectory to be mkdtemp,
+    use that directly.
+  - fix(provider): gate provider APIs for OpenSSL 1.1.1
+  - feat(provider): add key generation and destruction methods
+  - docs(provider): add comprehensive documentation to Provider
+    module
+  - fix(provider): better exception handling
+  - doc: add a simple AGENTS.md
+  - feat(engine): add availability check, lifecycle helpers, and
+    safer cleanup
+  - doc(engine): Improve documentation and example of using
+    Engine module
+- Upgrade to 0.47.0:
+  - feat: added full SWIG bindings for the ASN1_UTCTIME
+  - refactor(SWIG): adopt Python Buffer Protocol for
+    X509_NAME_ENTRY_set_data
+  - fix: allow 64-bit time_t on 32-bit systems in test_is32bit
+  - feat(provider): add initial OpenSSL providers support
+  - feat: stop supporting 32bit packages on Windows
+  - fix: improve detection of OpenSSL on Windows
+  - ci: run doctest
+  - fix: _matchIPAddress is failing
+  - feat: Add degenerate PKCS7 (.p7c) support
+  - fix(setup): add `packaging` as a requirement
+  - feat(asn1): introduce dedicated ASN1_UTCTIME class
+  - feat(CRL): add content of m2crypto-0.21.1-x509_crl.patch
+  - refactor(x509): CRL handling and testing
+  - feat: add function to provide the equivalent of `openssl
+    ciphers`.
+  - fix(X509): refactor new_extension to prevent memory
+    corruption
+  - ci: add tests showing the use of M2Crypto for STARTTLS
+    protocol
+  - doc: convert documentation to MyST
+  - doc: various improvements of documentation
+  - revert: remove support for Engine
+  - fix(engine): make the compilation of Engine conditional on
+    OPENSSL_NO_ENGINE
+  - fix(https): make HTTPS Connection work with Proxy
+  - doc: add an example of using HTTPS with PKCS#11 Engine
+
+-------------------------------------------------------------------
 Thu Oct  2 12:27:31 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.46.2:
