@@ -295,4 +295,25 @@
     <comment></comment>
     <requestid>1279782</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>445b9ce1d99e120d05d277f479d34ca5</srcmd5>
+    <version>0.805.0</version>
+    <time>1781007962</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.805.0 (0.805)
+   see /usr/share/doc/packages/perl-IO-Async/Changes
+  0.805   2026-01-19
+          [CHANGES]
+           * Document and test that separate `-&gt;watch_io` calls for read and
+             write-readiness work correctly
+           * Implement (most of) the `Future::IO-&gt;poll` API in
+             `Future::IO::Impl::IOAsync`
+          [BUGFIXES]
+           * Ensure that `IO::Async::File` copes correctly with missing files
+             (RT136578)
+           * Test2's bail_out() is named in lowercase, not BAIL_OUT.
+           * Update the `time_between()` test helper function to be better
+             suited to `Test2`</comment>
+    <requestid>1358066</requestid>
+  </revision>
 </revisionlist>

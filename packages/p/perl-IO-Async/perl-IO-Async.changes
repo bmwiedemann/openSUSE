@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 21 05:48:46 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.805.0 (0.805)
+   see /usr/share/doc/packages/perl-IO-Async/Changes
+
+  0.805   2026-01-19
+          [CHANGES]
+           * Document and test that separate `->watch_io` calls for read and
+             write-readiness work correctly
+           * Implement (most of) the `Future::IO->poll` API in
+             `Future::IO::Impl::IOAsync`
+
+          [BUGFIXES]
+           * Ensure that `IO::Async::File` copes correctly with missing files
+             (RT136578)
+           * Test2's bail_out() is named in lowercase, not BAIL_OUT.
+           * Update the `time_between()` test helper function to be better
+             suited to `Test2`
+
+-------------------------------------------------------------------
 Wed Apr 23 05:34:12 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.804.0 (0.804)

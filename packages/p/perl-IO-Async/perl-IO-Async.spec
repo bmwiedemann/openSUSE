@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Async
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,26 @@
 
 %define cpan_name IO-Async
 Name:           perl-IO-Async
-Version:        0.804.0
+Version:        0.805.0
 Release:        0
-# 0.804 -> normalize -> 0.804.0
-%define cpan_version 0.804
+# 0.805 -> normalize -> 0.805.0
+%define cpan_version 0.805
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Asynchronous event-driven programming
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Future) >= 0.440
 BuildRequires:  perl(Future::Utils) >= 0.180
-BuildRequires:  perl(Module::Build) >= 0.4004
+BuildRequires:  perl(Module::Build) >= 0.400.400
 BuildRequires:  perl(Socket) >= 2.007
 BuildRequires:  perl(Struct::Dumb)
 BuildRequires:  perl(Test2::V0) >= 0.000149
-BuildRequires:  perl(Test::Future::IO::Impl)
+BuildRequires:  perl(Test::Future::IO::Impl) >= 0.170
 BuildRequires:  perl(Test::Metrics::Any)
 Requires:       perl(Future) >= 0.440
 Requires:       perl(Future::Utils) >= 0.180
@@ -96,7 +97,7 @@ well as IO handles, the loop also supports timers and signal handlers, and
 includes more higher-level functionality built on top of these basic parts.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor
