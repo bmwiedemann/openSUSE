@@ -66,4 +66,13 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d4937e8cdeb00b19491cbb126585fd87</srcmd5>
+    <version>6.30.0</version>
+    <time>1781007259</time>
+    <user>anag_factory</user>
+    <comment>- updated to 6.30.0 (6.03)
+   see /usr/share/doc/packages/perl-WWW-RobotRules/Changes</comment>
+    <requestid>1358063</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-WWW-RobotRules
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,71 +12,77 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-WWW-RobotRules
-Version:        6.02
-Release:        0
 %define cpan_name WWW-RobotRules
-Summary:        database of robots.txt-derived permissions
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/WWW-RobotRules/
-Source:         http://www.cpan.org/authors/id/G/GA/GAAS/%{cpan_name}-%{version}.tar.gz
+Name:           perl-WWW-RobotRules
+Version:        6.30.0
+Release:        0
+# 6.03 -> normalize -> 6.30.0
+%define cpan_version 6.03
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Database of robots.txt-derived permissions
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(URI) >= 1.10
-#BuildRequires: perl(WWW::RobotRules)
-#BuildRequires: perl(WWW::RobotRules::AnyDBM_File)
-Requires:       perl(URI) >= 1.10
+BuildRequires:  perl(Test::More) >= 0.96
+BuildRequires:  perl(URI) >= 1.100
+Requires:       perl(URI) >= 1.100
+Provides:       perl(WWW::RobotRules) = %{version}
+Provides:       perl(WWW::RobotRules::AnyDBM_File) = %{version}
+Provides:       perl(WWW::RobotRules::DB_File) = %{version}
+Provides:       perl(WWW::RobotRules::InCore) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
-This module parses _/robots.txt_ files as specified in "A Standard for
-Robot Exclusion", at <http://www.robotstxt.org/wc/norobots.html> Webmasters
-can use the _/robots.txt_ file to forbid conforming robots from accessing
-parts of their web site.
+This module parses _/robots.txt_ files as specified in at
+https://www.robotstxt.org/robotstxt.html. Webmasters can use the
+_/robots.txt_ file to forbid conforming robots from accessing parts of
+their web site.
 
-The parsed files are kept in a WWW::RobotRules object, and this object
+The parsed files are kept in a 'WWW::RobotRules' object, and this object
 provides methods to check if access to a given URL is prohibited. The same
-WWW::RobotRules object can be used for one or more parsed _/robots.txt_
+'WWW::RobotRules' object can be used for one or more parsed _/robots.txt_
 files on any number of hosts.
 
 The following methods are provided:
 
 * $rules = WWW::RobotRules->new($robot_name)
 
-  This is the constructor for WWW::RobotRules objects. The first argument
-  given to new() is the name of the robot.
+This is the constructor for WWW::RobotRules objects. The first argument
+given to new() is the name of the robot.
 
 * $rules->parse($robot_txt_url, $content, $fresh_until)
 
-  The parse() method takes as arguments the URL that was used to retrieve
-  the _/robots.txt_ file, and the contents of the file.
+The parse() method takes as arguments the URL that was used to retrieve the
+_/robots.txt_ file, and the contents of the file.
 
 * $rules->allowed($uri)
 
-  Returns TRUE if this robot is allowed to retrieve this URL.
+Returns TRUE if this robot is allowed to retrieve this URL.
 
 * $rules->agent([$name])
 
-  Get/set the agent name. NOTE: Changing the agent name will clear the
-  robots.txt rules and expire times out of the cache.
+Get/set the agent name. NOTE: Changing the agent name will clear the
+_robots.txt_ rules and expire times out of the cache.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -84,7 +90,7 @@ find . -type f -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes README
+%doc Changes
+%license LICENSE
 
 %changelog
