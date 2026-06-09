@@ -1,7 +1,7 @@
 #
 # spec file for package libmspub
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define libname libmspub-0_1-1
 Name:           libmspub
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 Summary:        Microsoft Publisher file format parser library
 License:        MPL-2.0
 Group:          Productivity/Publishing/Word
 URL:            https://wiki.documentfoundation.org/DLP/Libraries/libmspub
 Source:         http://dev-www.libreoffice.org/src/libmspub/libmspub-%{version}.tar.xz
-Patch0:         fix-missing-include.patch
-Patch1:         libmspub-0.1.4-gcc15.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

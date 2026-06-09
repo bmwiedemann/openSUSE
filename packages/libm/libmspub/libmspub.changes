@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  2 11:58:30 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Version update to 0.1.5:
+  * Fix several problems found by oss-fuzz.
+  * Fix regression in closing shape groups that caused missing shapes on
+    second and subsequent pages. (tdf#116018)
+- deleted patches
+  * fix-missing-include.patch (upstreamed)
+  * libmspub-0.1.4-gcc15.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Apr  8 12:43:33 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add libmspub-0.1.4-gcc15.patch (from gentoo) to fix gcc15
