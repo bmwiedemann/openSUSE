@@ -1,7 +1,7 @@
 #
 # spec file for package libabw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libabw-0_1-1
 Name:           libabw
-Version:        0.1.3
+Version:        0.1.4
 Release:        0
 Summary:        Library for parsing the Abiword file format structure
 License:        MPL-2.0
