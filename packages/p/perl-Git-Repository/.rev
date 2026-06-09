@@ -42,4 +42,25 @@
 </comment>
     <requestid>1074316</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6b3109ba3b4cec5844761157600fd87b</srcmd5>
+    <version>1.326.0</version>
+    <time>1781007966</time>
+    <user>anag_factory</user>
+    <comment>- Remove 22.patch, git-2.30.0.patch, git-2.40.0.patch (fixed upstream)
+
+- updated to 1.326.0 (1.326)
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+  1.326 2026-01-18 BOOK
+      [ENHANCEMENTS]
+      - Add input_record_separator option to Git::Repository::Command::new (GNUSTAVO)
+        (Fix for RT #134239, GH #21)
+      - Use a proper temporary directory in t/05-try_git.t (PPISAR)
+        (Fix for GH #24)
+      - GIT_EDITOR fatal behaviour was likely never important (GREGOA, HAKONH)
+        (Fix for RT #155717, GH #23, GH #25)
+      - Workaround change of behaviour in git 2.38.1 (CVE-2022-39253) (JANPAZ)
+        (Fix for RT #144889, GH #22, GH #25)</comment>
+    <requestid>1358068</requestid>
+  </revision>
 </revisionlist>

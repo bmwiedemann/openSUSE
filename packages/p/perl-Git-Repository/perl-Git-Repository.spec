@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Git-Repository
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,31 @@
 
 %define cpan_name Git-Repository
 Name:           perl-Git-Repository
-Version:        1.325
+Version:        1.326.0
 Release:        0
+# 1.326 -> normalize -> 1.326.0
+%define cpan_version 1.326
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl interface to Git repositories
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BO/BOOK/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BO/BOOK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-# PATCH-FIX-UPSTREAM https://github.com/book/Git-Repository/pull/23
-Patch0:         git-2.40.0.patch
-# PATCH-FIX-UPSTREAM https://github.com/book/Git-Repository/pull/22
-Patch1:         https://patch-diff.githubusercontent.com/raw/book/Git-Repository/pull/22.patch
-# PATCH-FIX-UPSTREAM https://rt.cpan.org/Public/Ticket/Attachment/1923740/1029935
-Patch2:         https://salsa.debian.org/perl-team/modules/packages/libgit-repository-perl/-/raw/c5e0eca06ca27fdaa547634b1e49f4637e7c1ca6/debian/patches/git-2.30.0.patch
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Git::Version::Compare) >= 1.001
+BuildRequires:  perl(Git::Version::Compare) >= 1.1
 BuildRequires:  perl(System::Command) >= 1.118
-BuildRequires:  perl(Test::Requires::Git) >= 1.005
+BuildRequires:  perl(Test::Requires::Git) >= 1.5
 BuildRequires:  perl(namespace::clean)
-Requires:       perl(Git::Version::Compare) >= 1.001
+Requires:       perl(Git::Version::Compare) >= 1.1
 Requires:       perl(System::Command) >= 1.118
 Requires:       perl(namespace::clean)
+Provides:       perl(Git::Repository) = %{version}
+Provides:       perl(Git::Repository::Command) = %{version}
+Provides:       perl(Git::Repository::Plugin) = %{version}
+Provides:       perl(Test::Git) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  git-core
@@ -73,9 +75,9 @@ later version.
 See Git::Repository::Tutorial for more code examples.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
