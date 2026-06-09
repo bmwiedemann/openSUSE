@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:37:06 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 0.28.5:
+  * Bump docker/login-action from 4.1.0 to 4.2.0
+  * Bump docker/setup-qemu-action from 4.0.0 to 4.1.0
+  * Bump docker/metadata-action from 6.0.0 to 6.1.0
+  * Bump github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common (#2456)
+  * Bump the etcd group with 4 updates (#2455), includes fix for CVE-2026-44283 (bsc#1265337)
+  * Bump github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common (#2448)
+  * Bump golang.org/x/sys in the other-go-modules group (#2449)
+  * Bump docker/build-push-action from 7.1.0 to 7.2.0 (#2451)
+  * Bump golangci/golangci-lint-action from 9.2.0 to 9.2.1 (#2453)
+  * Bump github/codeql-action from 4.35.3 to 4.36.0 (#2450)
+  * Update iptables-wrapper to v3 to fix zombie child process
+  * Bump docker/setup-buildx-action from 4.0.0 to 4.1.0
+  * Bump github/codeql-action from 4.35.2 to 4.35.3 (#2441)
+  * Bump aquasecurity/trivy-action from 0.35.0 to 0.36.0 (#2436)
+  * fix(vxlan): drop slices, use scalar IPs for v4/v6 (review feedback)
+  * fix(vxlan): guard ifaceAddrsV6[0] on IPv4-only setups
+  * Bump the tencent group with 2 updates (#2430)
+  * BUmp k8s deps to v0.33.11 (#2432)
+  * Bump github/codeql-action from 4.35.1 to 4.35.2 (#2431)
+  * Fail early in e2e tests and remove unnecessary step (#2429)
+  * Bump actions/upload-artifact from 7.0.0 to 7.0.1 (#2421)
+
+-------------------------------------------------------------------
 Thu Apr 16 06:42:56 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update .spec file to bump go version build requirements:
