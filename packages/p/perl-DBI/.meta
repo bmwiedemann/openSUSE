@@ -4,5 +4,4 @@
 It defines a set of methods, variables, and conventions that provide a
 consistent database interface, independent of the actual database
 being used.</description>
-  <devel project="devel:languages:perl" package="perl-DBI"/>
 </package>

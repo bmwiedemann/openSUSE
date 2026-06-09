@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun  7 00:36:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.648.0 (1.648)
+   see /usr/share/doc/packages/perl-DBI/ChangeLog
+
+  1.648 - 2026-06-04, H.Merijn Brand
+      * Correct sprintf usage for trace_msg (issue#132)
+      * Add DBIXS_VERSION & DBIXS_RELEASE to dbixs_rev.h
+      * Remove -Wbad-function-cast
+      * Fix possible stack overflow (old issue already noted by Tim) (CVE-2026-9698)
+      * Do not allow table source locations outside explicit given folders
+      * DBD::Sponge PRECISION handling (pr#12, pilcrow)
+      * Fix possible buffer overflow in preparse (CVE-2026-10879) bsc#1267849
+      * Skip mismatching .so's (Greg, PR#81)
+      * Fix cast warning in dbi_get_state (Greg, PR#182)
+
+-------------------------------------------------------------------
 Wed Jan 22 21:19:47 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.647.0 (1.647)
