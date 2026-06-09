@@ -11,6 +11,7 @@ Thu May 21 10:02:44 UTC 2026 - Tina Müller <timueller+perl@suse.de>
   3.84      2026-05-19
       - Fix heap-use-after-free in _decode_entities (CVE-2026-8829) (GH#56)
         (Paul Johnson)
+        bsc#1267606
 
 -------------------------------------------------------------------
 Wed Jul 31 05:28:00 UTC 2024 - Tina Müller <timueller+perl@suse.de>

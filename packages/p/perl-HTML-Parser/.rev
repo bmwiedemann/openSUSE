@@ -344,4 +344,13 @@ _______________________________________________________________________________<
         (Paul Johnson)</comment>
     <requestid>1356950</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>4723c1fa3c516337d37c8358fad159e6</srcmd5>
+    <version>3.850.0</version>
+    <time>1781007243</time>
+    <user>anag_factory</user>
+    <comment>Add bsc reference:
+        bsc#1267606</comment>
+    <requestid>1357947</requestid>
+  </revision>
 </revisionlist>
