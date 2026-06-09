@@ -1062,4 +1062,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
 Note: SONAME bump libgdal38 -&gt; libgdal39 (rebuilds consumers)</comment>
     <requestid>1357007</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>9fcdc3e6c274e694bfb0ff402e135605</srcmd5>
+    <version>3.13.1</version>
+    <time>1781008118</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1358123</requestid>
+  </revision>
 </revisionlist>
