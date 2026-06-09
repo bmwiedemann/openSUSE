@@ -20,7 +20,7 @@
 %define tui_app_id fi.skyjake.clagrange
 
 Name:           lagrange
-Version:        1.20.5
+Version:        1.20.6
 Release:        0
 Summary:        Desktop GUI client for browsing Geminispace
 License:        BSD-2-Clause
