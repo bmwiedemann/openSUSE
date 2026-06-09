@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  9 08:58:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.6.4
+  * README: Document how to install on Solus by @clintre in #336
+  * smbios: Update Laptop 13 Pro naming by @JohnAZoidberg in #338
+  * Haptic touchpad updates by @JohnAZoidberg in #337
+  * fw16: fix invalid GPU read lengths by @kiram9 in #339
+  * README: fix apt install package name by @alextwl in #340
+  * Fix a bunch of issues on desktop by @JohnAZoidberg in #343
+  * Prepare 064 by @JohnAZoidberg in #344 
+
+-------------------------------------------------------------------
 Fri May  8 11:08:40 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.6.3:
