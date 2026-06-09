@@ -578,4 +578,30 @@
     <comment>Automatic update from systemsmanagement:Agama:Release</comment>
     <requestid>1353701</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>8df77fc366266f7879fd7baff6bc56fd</srcmd5>
+    <version>21.0.0</version>
+    <time>1781007353</time>
+    <user>anag_factory</user>
+    <comment>- Added &quot;plymouth.ignore-serial-consoles&quot; boot option on ppc64le
+  (bsc#1249569)
+
+- Display the media check result and wait for a key press on all
+  system consoles to easily continue booting the installer system,
+  needed especially for openQA (bsc#1267263)
+
+- Added &quot;agama-screenshot&quot; helper script to take screenshots
+  of the locally running Agama installer
+  (gh#agama-project/agama#3537)
+
+- Enable back ignition and combustion, apply a workaround for
+  detecting the first boot (disable detection, consider every boot
+  as the first boot) (related to bsc#1266257)
+
+- Temporarily disabled ignition and combustion because they cannot
+  start properly in the Live ISO environment (bsc#1266257)
+
+- Add ignition and combustion to the live image package list.</comment>
+    <requestid>1357936</requestid>
+  </revision>
 </revisionlist>
