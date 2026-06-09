@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 08 13:14:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.17.1:
+  This release uses the latest version of Go (1.26.4) to build OPA,
+  fixing stdlib vulnerabilities in code that OPA's HTTP handler and
+  crypto builtins use:
+  - https://pkg.go.dev/vuln/GO-2026-5039
+  - https://pkg.go.dev/vuln/GO-2026-5037
+  It is otherwise the same code as v1.17.0.
+  * Miscellaneous
+    - build: bump go 1.26.3 -> 1.26.4 (authored by @srenatus)
+
+-------------------------------------------------------------------
 Fri May 29 06:49:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.17.0:
