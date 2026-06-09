@@ -287,4 +287,12 @@
     <comment>- Update to release 5.1.1</comment>
     <requestid>1339399</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3dd19752842c87e5c6656aabf56edb97</srcmd5>
+    <version>5.2.0</version>
+    <time>1781007766</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 5.2.0</comment>
+    <requestid>1358023</requestid>
+  </revision>
 </revisionlist>
