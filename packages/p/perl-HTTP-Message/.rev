@@ -331,4 +331,15 @@
       - Fix few minor typos (GH#202) (Yoshikazu Sawa)</comment>
     <requestid>1313053</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f9a2662469323d3c25d062c5ba113f29</srcmd5>
+    <version>7.20.0</version>
+    <time>1781007165</time>
+    <user>anag_factory</user>
+    <comment>- updated to 7.20.0 (7.02)
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+  7.02      2026-06-05 23:28:36Z
+      - now handling HTTP method '0' (GH#211) (Karen Etheridge)</comment>
+    <requestid>1357784</requestid>
+  </revision>
 </revisionlist>

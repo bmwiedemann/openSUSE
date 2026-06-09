@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Message
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name HTTP-Message
 Name:           perl-HTTP-Message
-Version:        7.10.0
+Version:        7.20.0
 Release:        0
-# 7.01 -> normalize -> 7.10.0
-%define cpan_version 7.01
+# 7.02 -> normalize -> 7.20.0
+%define cpan_version 7.02
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP style message (base class)
 URL:            https://metacpan.org/release/%{cpan_name}
