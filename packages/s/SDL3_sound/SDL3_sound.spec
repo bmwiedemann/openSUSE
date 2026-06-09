@@ -1,0 +1,93 @@
+#
+# spec file for package SDL2_sound
+#
+# Copyright (c) 2026 SUSE LLC and contributors
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+Name:           SDL3_sound
+%define lname	libSDL3_sound0
+Version:        3.2.0
+Release:        0
+Summary:        Sound Sample Library for SDL (Simple DirectMedia Layer)
+License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
+URL:            http://icculus.org/SDL_sound/
+Source:         https://github.com/icculus/SDL_sound/archive/refs/tags/v%version.tar.gz
+BuildRequires:  c_compiler
+BuildRequires:  cmake
+BuildRequires:  pkgconfig(sdl3)
+Provides:       bundled(dr_flac) = 0.13.4
+Provides:       bundled(dr_mp3) = 0.7.4
+Provides:       bundled(libmodplug)
+Provides:       bundled(stb_vorbis) = 1.22
+
+%description
+SDL_sound is a library that handles the decoding of several popular
+sound file formats, such as wav, ogg mp3 and midi. SDL_sound can just
+play a file or alternatively decode a file and hand back a single
+pointer to the waveform. SDL_sound also can handle channel conversion
+on-the-fly and behind-the-scenes.
+
+%package -n %lname
+Summary:        Sound Sample Library for SDL (Simple DirectMedia Layer)
+Group:          System/Libraries
+
+%description -n %lname
+SDL_sound is a library that handles the decoding of several popular
+sound file formats, such as wav, ogg mp3 and midi. SDL_sound can just
+play a file or alternatively decode a file and hand back a single
+pointer to the waveform. SDL_sound also can handle channel conversion
+on-the-fly and behind-the-scenes.
+
+%package devel
+Summary:        Development files for the SDL sound sample library
+Group:          Development/Libraries/C and C++
+Requires:       %lname = %version
+Requires:       pkgconfig(sdl2)
+Conflicts:      SDL_sound-devel
+Conflicts:      SDL2_sound-devel
+
+%description devel
+SDL_sound is a library that handles the decoding of several popular
+sound file formats, such as wav, ogg mp3 and midi. SDL_sound can just
+play a file or alternatively decode a file and hand back a single
+pointer to the waveform. SDL_sound also can handle channel conversion
+on-the-fly and behind-the-scenes.
+
+%prep
+%autosetup -n SDL_sound-%version -p1
+
+%build
+%cmake -DSDLSOUND_BUILD_STATIC:BOOL=OFF
+%cmake_build
+
+%install
+%cmake_install
+rm -Rfv "%buildroot/%_datadir/licenses" # done via %%license instead
+
+%ldconfig_scriptlets -n %lname
+
+%files -n %lname
+%license LICENSE.txt
+%_libdir/lib*.so.*
+
+%files devel
+%_bindir/playsound*
+%_includedir/SDL3*
+%_libdir/cmake/
+%_libdir/lib*.so
+%_libdir/pkgconfig/*.pc
+
+%changelog

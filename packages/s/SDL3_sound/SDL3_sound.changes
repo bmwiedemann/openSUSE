@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Mon Jun  8 02:07:17 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- New package based on SDL2_sound specfile
+- Update to release 3.2.0
+  * This release breaks API and ABI in small ways from SDL2_sound,
+    largely to accommodate SDL3 changes. SDL3_sound is not an API
+    redesign. Migration to the new API does not require drastic
+    changes, and there is a migration guide on
+    <https://wiki.icculus.org>.
+  * One new API was added: Sound_SetDesiredFormat(), which was made
+    possible because SDL3's SDL_AudioStream is more flexible.
+
+-------------------------------------------------------------------
+Mon Jun  8 01:53:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.6
+  * The Ogg Vorbis decoder now caches small reads, for significant
+    speedups.
+  * Fixed seeking in MP3 files.
+  * Fixed Ogg Vorbis decoding when there are "deferred" samples at
+    the start of a file.
+  * Made playsound work on platforms that need to render something
+    every frame to function properly.
+  * Fixed modplug looping.
+  * Make modplug song fadeout at end optional.
+  * Let most other decoders consider data before the MP3 decoder,
+    to reasonably avoid false positives.
+
+-------------------------------------------------------------------
+Mon Jan 13 23:20:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.4
+  * Update bundled stb_vorbis to address CVE-2023-45676,
+    CVE-2023-45677, CVE-2023-45679, CVE-2023-45680,
+    CVE-2023-45681, CVE-2023-45682.
+
+-------------------------------------------------------------------
+Fri Nov  3 08:41:06 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.2
+  * No further changes from the last snapshot 2.0.1+g60
+
+-------------------------------------------------------------------
+Sun Jun 25 05:54:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 2.0.1+g60 (53f66a30)
+  * Avoid division by zero with certain uncompressed WAV files
+  * A pkgconfig file was added
+
+-------------------------------------------------------------------
+Wed Mar 30 13:26:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Move to 2.0.1.g17 (df3fc77)
+  * Resolve build failures on Leap 15.3
+
+-------------------------------------------------------------------
+Sat Mar 26 13:11:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- New package SDL2_sound for build.opensuse.org. In comparison to
+  SDL_sound (1.x):
+  * Removed support for QuickTime, Speex and MikMod
+  * SDL_sound 2's public API has not changed at all from 1.x
+  * SDL_sound.h requires SDL2 now (can't mix SDL2_sound with SDL1)
+  * The library name changed to -lSDL2_sound
+- Drop SDL_sound-1.0.3-nompglib.patch, no longer applies
+- Drop baselibs.conf
