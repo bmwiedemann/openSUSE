@@ -310,6 +310,7 @@ unsorted:
   - SDL3_image-devel 
   - SDL3_mixer-devel 
   - SDL3_net-devel 
+  - SDL3_sound-devel 
   - SDL3_ttf-devel 
   - SDL_Pango-devel 
   - SDL_mixer-devel 
@@ -11628,6 +11629,7 @@ unsorted:
   - libSDL3_image0 
   - libSDL3_mixer0 
   - libSDL3_net0 
+  - libSDL3_sound0 
   - libSDL3_ttf0 
   - libSDL_Pango1 
   - libSDL_bgi-devel 
@@ -15240,14 +15242,14 @@ unsorted:
   - libopentimelineio18 
   - libopentracing-cpp1 
   - libopenvdb13_0 
-  - libopenvino2610 
-  - libopenvino_c2610 
-  - libopenvino_ir_frontend2610 
-  - libopenvino_onnx_frontend2610 
-  - libopenvino_paddle_frontend2610 
-  - libopenvino_pytorch_frontend2610 
-  - libopenvino_tensorflow_frontend2610 
-  - libopenvino_tensorflow_lite_frontend2610 
+  - libopenvino2620 
+  - libopenvino_c2620 
+  - libopenvino_ir_frontend2620 
+  - libopenvino_onnx_frontend2620 
+  - libopenvino_paddle_frontend2620 
+  - libopenvino_pytorch_frontend2620 
+  - libopenvino_tensorflow_frontend2620 
+  - libopenvino_tensorflow_lite_frontend2620 
   - libopenvswitch-3_7-0 
   - liboping-devel 
   - liboping0 
@@ -26434,7 +26436,6 @@ unsorted:
   - python311-mistletoe 
   - python311-mistralai 
   - python311-mistune 
-  - python311-mistune2 
   - python311-mitmproxy-wireguard 
   - python311-mizani 
   - python311-mkdocs 
@@ -30373,7 +30374,6 @@ unsorted:
   - python313-mistralai 
   - python313-mistralclient 
   - python313-mistune 
-  - python313-mistune2 
   - python313-mitmproxy 
   - python313-mitmproxy-rs 
   - python313-mitmproxy-wireguard 
@@ -34344,7 +34344,6 @@ unsorted:
   - python314-mistletoe 
   - python314-mistralai 
   - python314-mistune 
-  - python314-mistune2 
   - python314-mitmproxy 
   - python314-mitmproxy-rs 
   - python314-mitmproxy-wireguard 
@@ -35596,6 +35595,7 @@ unsorted:
   - python314-slixmpp 
   - python314-sly 
   - python314-slycot 
+  - python314-smart-open 
   - python314-smartypants 
   - python314-smbprotocol 
   - python314-smmap 

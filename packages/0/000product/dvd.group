@@ -266,6 +266,7 @@
     <package name="cups-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cups-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cups-filters" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="cups-filters-cups-browsed" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="cups-filters2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cups-pk-helper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cups-pk-helper-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
