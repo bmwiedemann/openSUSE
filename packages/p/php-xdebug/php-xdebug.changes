@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun  8 18:50:27 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to Xdebug 3.5.3
+  * Fixed bug #2404: Xdebug outputs a message to stderr when path
+    mapping is enabled, and a directory is present
+  * Fixed bug #2405: Handle minimum path in .xdebug directory discovery
+  * Fixed bug #2411: Native Path Mapping is not applied to the initial
+    fileuri in the init packet
+  * Fixed bug #2421: Crash with wrong option letter in DBGP and socket
+    commands
+  * Fixed bug #2422: No limit on DBGP read buffer
+  * Fixed bug #2423: Don't follow symlinks with file creation
+  * Fixed bug #2424: Control-socket buffer crashes
+  * Fixed bug #2426: xdebug_get_tracefile_name incorrectly throws notice
+  * Fixed bug #2427: Crash when file_link_format setting is wrong
+  * Fixed bug #2429: Crash when trace_output_name setting is wrong
+  * Fixed bug #2430: Variable fetching may crash with `::` if there is
+    no active stack
+  * Fixed bug #2431: Crash when trying to retrieve Windows-style URL
+    with not enough characters
+  * Fixed bug #2433: Refactor finding variable names in trace files with
+    assignments
+
+-------------------------------------------------------------------
 Tue Feb  3 17:44:19 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to Xdebug 3.5.1
