@@ -1,7 +1,7 @@
 #
 # spec file for package graphite2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libgraphite2-3
 Name:           graphite2
-Version:        1.3.14
+Version:        1.3.15
 Release:        0
 Summary:        Font rendering capabilities for complex non-Roman writing systems
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MPL-2.0
@@ -28,7 +28,6 @@ Source0:        https://github.com/silnrsi/graphite/archive/%{version}.tar.gz#/%
 Source1:        baselibs.conf
 Patch0:         graphite2-1.2.0-cmakepath.patch
 Patch2:         link-gcc-shared.diff
-Patch3:         graphite2-1.3.14-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
