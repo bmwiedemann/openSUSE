@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Tue Jun 09 05:09:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.1:
+  * Fixed
+    - build: drop vergen-git2 build dependency
+      vergen-git2 reads git metadata at build time, but the
+      crates.io source tarball ships no .git, so the published
+      1.1.0 fails on cargo install.  crates.io versions are
+      immutable (no overwrite) and Chocolatey's moderation queue
+      blocks a fast re-push, so a clean 1.1.1 without vergen is the
+      only fix.
+- Update to version 1.1.0:
+  * Added
+    - new website
+    - install: add Windows PowerShell installer and copy buttons on site
+      Add install.ps1 mirroring install.sh for Windows: arch
+      detection, release zip download, binary extraction, user PATH
+      update.
+      - copy install.ps1 to site public/ at build time
+        (copy-install.mjs)
+      - serve /install.ps1 with text/plain Content-Type
+        (vercel.json)
+      - add PowerShell one-liner to install page and README
+      - bump install.ps1 default version in bump_version.sh
+      - add CopyButton component next to every install command line
+    - config: move config dir to ~/.config/termscp on macOS and
+      %USERPROFILE%.termscp on Windows
+      Resolve the config directory through a single per-platform
+      config_dir() function instead of relying on dirs::config_dir
+      everywhere:
+      - macOS: ~/.config/termscp (was ~/Library/Application
+        Support/termscp)
+      - Windows: %USERPROFILE%.termscp (was roaming
+        %APPDATA%\termscp)
+      - Linux/other: /termscp (unchanged)
+      Existing users are migrated automatically on first run: when
+      the new directory is absent and the legacy location exists,
+      the whole config directory is moved to the new path. The
+      cache directory stays at the platform-native location.
+  * Changed
+    - site: type-safe i18n keys derived from en
+    - site: drop in-site manual, link to external docs.termscp.rs
+    - site: english-only, remove i18n machinery
+  * Fixed
+    - install: quote vars, fix set -e cargo check and rustup tmpfile cleanup
+      - silence SC3043 by declaring dash dialect (local is
+        supported)
+      - quote unquoted vars (SC2086/SC1090)
+      - fix set -e aborting arch install before cargo check
+      - fix install_cargo removing unset $archive instead of
+        $rustup
+      - make brew upgrade fallback a real if-then-else (SC2015)
+      - drop leftover starship BASE_URL and debug echo $1
+    - progress: rework transfer progress panel (#424)
+      Migrate the transfer progress UI to tuirealm 4, where the
+      stdlib ProgressBar widget was dropped, by rebuilding the
+      dual-bar panel on top of Gauge.
+      - Restore the unified two-bar look: the full bar (top) and
+        partial bar (bottom) draw joined borders so they read as a
+        single panel; a single file shows one fully-bordered bar.
+      - Redraw on every file boundary in the send/recv queue loops
+        so the full bar's (N/total) counter advances even for small
+        files that finish within one in-loop redraw interval.
+      - Track progress with a single TransferProgress (exact file
+        count from the pre-scan, lazy partial/full computation) and
+        consolidate the theme progress-bar fields.
+    - progress: equalize dual progress bar heights
+      The bottom (partial) bar carried a block title (the current
+      filename), which forces a 1-row top inset in ratatui's
+      Block::inner even though its top border is dropped to join
+      the seam with the full bar. That left the partial bar with
+      one inner row while the full bar kept two, so the two gauges
+      rendered at unequal heights.
+      - Move the filename from the partial bar's title into its
+        gauge label.
+      - Skip setting an empty title so no phantom top-positioned
+        title triggers the inset.
+      - Put the panel title on the top (full) bar for multi-file
+        transfers.
+      - Bump the two-bar popup height to fit the joined panel.
+      Also bump Cargo.lock and adapt the embedded terminal to the
+      new vt100 screen_mut() API.
+    - copy: prevent emptying file when copy destination is empty
+      (#421)
+      An empty copy destination resolved to the source file's own
+      path, so std::fs::copy truncated the original file to 0
+      bytes.
+      - localhost::copy now refuses to copy a file onto itself,
+        returning an error instead of truncating it (root cause).
+      - action_copy treats an empty/whitespace destination as a
+        cancel.
+    - transfer: enqueue full destination path instead of directory
+      Queued transfers stored only the destination directory as the
+      target path. Downstream upload logic treats the queued
+      destination as the full file path and passes it straight to
+      create_file, so transfers failed with a Failure error when
+      the remote target resolved to a directory.  Append each
+      entry's file name to the destination directory at enqueue
+      time in both enqueue_file and enqueue_all, matching the
+      single-file transfer path which already builds the full
+      target path.
+
+-------------------------------------------------------------------
 Mon Apr 20 17:30:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.0:
