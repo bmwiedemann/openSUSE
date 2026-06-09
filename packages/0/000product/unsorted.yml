@@ -35832,6 +35832,10 @@ unsorted:
   - python314-tooz 
   - python314-toposort 
   - python314-topy 
+  - python314-torch 
+  - python314-torch-devel 
+  - python314-torch-openmpi4 
+  - python314-torch-openmpi4-devel 
   - python314-tornado 
   - python314-tornado6 
   - python314-tortilla 
