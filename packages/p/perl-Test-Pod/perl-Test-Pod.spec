@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Pod
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Test-Pod
-Version:        1.52
-Release:        0
-#Upstream: Artistic-1.0 or GPL-1.0+
 %define cpan_name Test-Pod
-Summary:        Check for Pod Errors in Files
+Name:           perl-Test-Pod
+Version:        1.520.0
+Release:        0
+# 1.52 -> normalize -> 1.520.0
+%define cpan_version 1.52
+#Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        Artistic-2.0 OR GPL-2.0-only
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Test-Pod/
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+Summary:        Check for POD errors in files
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Pod::Simple) >= 3.05
 Requires:       perl(Pod::Simple) >= 3.05
+Provides:       perl(Test::Pod) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -40,14 +43,14 @@ Check POD files for errors or warnings in a test file, using 'Pod::Simple'
 to do the heavy lifting.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -55,7 +58,6 @@ to do the heavy lifting.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

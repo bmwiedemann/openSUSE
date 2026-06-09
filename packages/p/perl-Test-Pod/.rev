@@ -253,4 +253,12 @@
     <comment></comment>
     <requestid>599317</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4e8d8902c4ac9c7eb4cc62f6404276fd</srcmd5>
+    <version>1.520.0</version>
+    <time>1781007124</time>
+    <user>anag_factory</user>
+    <comment>- See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1357693</requestid>
+  </revision>
 </revisionlist>
