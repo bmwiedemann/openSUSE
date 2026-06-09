@@ -1,7 +1,7 @@
 #
 # spec file for package hyphen
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libhyphen0
 Name:           hyphen
-Version:        2.8.8
+Version:        2.8.9
 Release:        0
 Summary:        A text hyphenation library
-License:        GPL-2.0+ or LGPL-2.0+ or MPL-1.1+
+License:        GPL-2.0-or-later OR LGPL-2.0-or-later OR MPL-1.1+
 Group:          System/Libraries
-Url:            http://hunspell.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/hunspell/%{name}-%{version}.tar.gz
+URL:            https://github.com/hunspell/hyphen
+Source0:        https://github.com/hunspell/hyphen/releases/download/v%{version}/hyphen-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  hunspell-devel

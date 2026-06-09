@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun  2 10:18:00 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to version 2.8.9
+  - new public API: hnj_hyphen_load_data, loads a dictionary from a
+    raw memory buffer (Resolves #4, contributed by Roman "SBKarr"
+    Katuntsev). Useful for Android, embedded systems, and any caller
+    holding dict bytes in memory.
+  - Windows long-path support via _wfopen (fdo#48017, originally from
+    LibreOffice)
+  - many memory-safety fixes for malformed dictionaries and adversarial
+    word input, found via libFuzzer + ASan + LSan: crashes
+    in the rep-application loop, lhmin/rhmin loops, hyphword/norm
+    compaction; infinite-recursion guards in the compound hyphenation
+    path; leak fixes in the dict parser and in every site that writes
+    into the (*rep)/(*pos)/(*cut) arrays
+  - fuzz harness (fuzz/) shipping with the source
+
+-------------------------------------------------------------------
 Thu Jan 28 13:56:36 UTC 2016 - zaitor@opensuse.org
 
 - Add baselibs.conf as source, in order to build libhyphen0 32-bit
