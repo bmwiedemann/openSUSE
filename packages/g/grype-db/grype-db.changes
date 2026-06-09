@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 09 04:59:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.0:
+  * Added Features
+    - Pull grype to get go vuln db provider and enable it [#1027
+      @willmurphyscode]
+  * Bug Fixes
+    - pull in grype@main to fix withdrawn Go Vuln OSVs [#1029
+      @willmurphyscode]
+  * Additional Changes
+    - Bump mxschmitt/action-tmate from 3.23 to 3.24 in the
+      actions-minor-patch group across 1 directory [#1032
+      @dependabot]
+    - chore(deps): update anchore dependencies (#1028)
+    - chore(deps): Bump the actions-minor-patch group with 3
+      updates (#1030)
+    - chore(deps-dev): Update coverage[toml] requirement (#1031)
+
+-------------------------------------------------------------------
 Thu Jun 04 05:38:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.53.4:
