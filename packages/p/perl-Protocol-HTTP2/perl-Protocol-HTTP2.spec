@@ -18,10 +18,10 @@
 
 %define cpan_name Protocol-HTTP2
 Name:           perl-Protocol-HTTP2
-Version:        1.120.0
+Version:        1.130.0
 Release:        0
-# 1.12 -> normalize -> 1.120.0
-%define cpan_version 1.12
+# 1.13 -> normalize -> 1.130.0
+%define cpan_version 1.13
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP/2 protocol implementation (RFC 7540)
 URL:            https://metacpan.org/release/%{cpan_name}

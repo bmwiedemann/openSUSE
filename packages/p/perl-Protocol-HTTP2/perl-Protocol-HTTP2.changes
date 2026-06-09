@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  8 09:59:01 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.130.0 (1.13)
+   see /usr/share/doc/packages/perl-Protocol-HTTP2/Changes
+
+  1.13 2026-06-07T09:19:24Z
+      - security fix: CVE-2026-10725 - HTTP/2 Bomb, a remote denial-of-service
+        (reported by Robert Rothenberg, CPAN Security Group)
+        bsc#1267857
+
+-------------------------------------------------------------------
 Sun Feb 15 06:11:26 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.120.0 (1.12)

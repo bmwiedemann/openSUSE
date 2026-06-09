@@ -36,4 +36,17 @@
       - test: test continuation frames handling</comment>
     <requestid>1338062</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>49bef98c7a601b23fda6aa8dbf58d8fd</srcmd5>
+    <version>1.130.0</version>
+    <time>1781007251</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.130.0 (1.13)
+   see /usr/share/doc/packages/perl-Protocol-HTTP2/Changes
+  1.13 2026-06-07T09:19:24Z
+      - security fix: CVE-2026-10725 - HTTP/2 Bomb, a remote denial-of-service
+        (reported by Robert Rothenberg, CPAN Security Group)
+        bsc#1267857</comment>
+    <requestid>1357991</requestid>
+  </revision>
 </revisionlist>
