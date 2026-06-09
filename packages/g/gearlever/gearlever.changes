@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Mon Jun 08 14:34:21 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 4.5.4:
+  * version bump
+  * version bump
+  * updated pot file
+  * Revert workflow image changes, update only Flatpak manifest
+  * Update GNOME SDK to version 50
+  * Distinguish "release file not found" from "no updates available"
+  * Strip whitespace from update config form fields
+  * Change logging location to XDG_STATE_HOME
+  * update es.po
+
+-------------------------------------------------------------------
+Mon Jun 08 14:34:08 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 4.5.3:
+  * version bump
+  * prefent custom updarte config to be overwritten after update
+  * show the default update model
+  * fixed issues with forejo updater
+  * show more interactive download status
+  * fixed metainfo file
+
+-------------------------------------------------------------------
+Mon Jun 08 14:33:59 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 4.5.2:
+  * added return type
+  * fixed errors with cli
+  * updated screenshots
+  * fixed issue with backgroup update checker
+  * version bump
+
+-------------------------------------------------------------------
+Mon Jun 08 14:33:50 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 4.5.1:
+  * version bump
+  * fixed save button not activating
+  * fixed update manager allow prereleases toggle
+
+-------------------------------------------------------------------
+Mon Jun 08 14:33:26 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 4.5.0:
+  * version bump
+  * fixed issues revealed by automated tests
+  * update test suite
+  * updated tests
+  * updated test suite
+  * allow static updater to support http url as embedded url
+  * fixed an issue with invalid property
+  * fixed version number string
+  * meson: rollback version number
+  * fixed issue in static file updater
+  * updated metainfo
+  * version bump
+  * run workflow only on master branch
+  * updated settings.json
+  * updated static file manager check
+  * bug fixes
+  * removed meson old function
+  * fixed cli code
+  * gitlab: fix
+  * updated gitlab configuration
+  * updated deps
+  * delete app update config leftover on uninstall
+  * improved app uninstall
+  * removed old code
+  * version bump
+  * removed leftover file
+  * restored main file
+  * fix ftp updater
+  * updated min meson version
+  * updated row titles
+  * removed old code
+  * wip codeberg
+  * check if new config already exists
+  * wip refactoring
+  * wip
+  * removed old code
+  * wip new config
+  * wip
+  * wip
+  * wip ini configuration
+  * wip
+  * wip rewrite update system
+  * updated settings.json
+  * wip refactor gitlab
+  * fix syntax error
+  * removed old functions
+  * updated squashfs
+  * wip
+  * wiè
+  * updated libs
+  * wip
+  * wip
+  * wip remove update_url
+  * wip
+  * wip
+
+-------------------------------------------------------------------
 Sun Apr 05 15:45:42 UTC 2026 - ecsos@opensuse.org
 
 - Update to version 4.4.10:
