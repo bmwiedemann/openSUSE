@@ -826,4 +826,41 @@
     <comment>Automatic update from systemsmanagement:Agama:Release</comment>
     <requestid>1353699</requestid>
   </revision>
+  <revision rev="44" vrev="44">
+    <srcmd5>8d4b4d5d2cefaf1124dbc39ff96d40c4</srcmd5>
+    <version>0</version>
+    <time>1781007341</time>
+    <user>anag_factory</user>
+    <comment>- Fix race condition in download success alert.
+- Do not show &quot;Review and install&quot; button in installation pages
+  (gh#agama-project/agama#3588).
+
+- Improve the installation settings UI by showing and explaining the
+  current configuration before downloading it
+  (gh#agama-project/agama#3581).
+- Provide user feedback when collecting and downloading installer logs
+  from the web UI (gh#agama-project/agama#3580).
+
+- Block a page until all its tasks are completed (part of
+  bsc#1266276).
+
+- Enhanced the VLAN connection form (gh#agama-project/agama/#3571).
+
+- Add redirections for legacy routes to preserve backward
+  compatibility after route refactors (gh#agama-project/agama#3578).
+
+- Create new LVM volume groups using all the availabe space on the
+  selected disks (jsc#PED-14153).
+
+- Added support for configuring a VLAN using the UI
+  (gh#agama-project/agama#3548).
+
+- Improve discoverability of background tasks status
+  (gh#agama-project/agama#3560).
+
+- Reset the configuration only when changing the product (bsc#1258032).
+
+- Unify first-user and root authentication configuration into a</comment>
+    <requestid>1357934</requestid>
+  </revision>
 </revisionlist>
