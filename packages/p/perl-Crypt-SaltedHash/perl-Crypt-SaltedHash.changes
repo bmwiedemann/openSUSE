@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 23 07:44:13 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.120.0 (0.12)
+   see /usr/share/doc/packages/perl-Crypt-SaltedHash/Changes
+
+  0.12      2026-05-23 07:29:34+01:00 Europe/London
+      - Add reference to Crypt::Passphrase::SaltedHash
+      - Removed DOS line-endings
+
+-------------------------------------------------------------------
 Thu May 21 10:01:32 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.110.0 (0.11)

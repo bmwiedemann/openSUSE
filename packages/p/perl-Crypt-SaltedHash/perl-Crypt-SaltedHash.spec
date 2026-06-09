@@ -18,10 +18,10 @@
 
 %define cpan_name Crypt-SaltedHash
 Name:           perl-Crypt-SaltedHash
-Version:        0.110.0
+Version:        0.120.0
 Release:        0
-# 0.11 -> normalize -> 0.110.0
-%define cpan_version 0.11
+# 0.12 -> normalize -> 0.120.0
+%define cpan_version 0.12
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl interface to functions that assist in working with salted hashes
 URL:            https://metacpan.org/release/%{cpan_name}

@@ -93,4 +93,16 @@
     - Updated README</comment>
     <requestid>1354455</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cc7023f559a3041f6a33dcbc42fd4027</srcmd5>
+    <version>0.120.0</version>
+    <time>1781007954</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.120.0 (0.12)
+   see /usr/share/doc/packages/perl-Crypt-SaltedHash/Changes
+  0.12      2026-05-23 07:29:34+01:00 Europe/London
+      - Add reference to Crypt::Passphrase::SaltedHash
+      - Removed DOS line-endings</comment>
+    <requestid>1358064</requestid>
+  </revision>
 </revisionlist>
