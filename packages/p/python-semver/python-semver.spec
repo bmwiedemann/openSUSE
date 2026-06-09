@@ -1,7 +1,7 @@
 #
 # spec file for package python-semver
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # See https://github.com/k-bx/python-semver/issues/67 for why conflicts is needed
-Conflicts:      python-node-semver
+Conflicts:      python-node-semver < 0.9
 BuildArch:      noarch
 # SECTION tests
 BuildRequires:  %{python_module pytest}

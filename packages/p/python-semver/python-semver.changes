@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  2 10:02:52 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- node-semver 0.9.0 doesn’t clobber `semver` namespace any more.
+
+-------------------------------------------------------------------
 Mon Aug 25 11:39:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems
