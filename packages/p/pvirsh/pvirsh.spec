@@ -1,7 +1,7 @@
 #
 # spec file for package pvirsh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%{?!python_module:%define python_module() python3-%{**}}
+
 %define pythons python3
 
 Name:           pvirsh
@@ -26,14 +26,16 @@ License:        GPL-3.0-or-later
 Group:          System/Management
 URL:            https://github.com/aginies/pvirsh
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module libvirt-python}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module libvirt-python}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-Requires:       python3-libvirt-python
+BuildRequires:  python-rpm-macros
 Requires:       python3-PyYAML
-Requires:	python3-curses
+Requires:       python3-curses
+Requires:       python3-libvirt-python
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,10 +48,10 @@ group of Virtual Machine.
 %setup -q
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # move group yaml file to /etc/pvirsh
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
 mv %{buildroot}%{_datadir}/%{name}/*.yaml %{buildroot}%{_sysconfdir}/%{name}/
@@ -61,7 +63,7 @@ mv %{buildroot}%{_datadir}/%{name}/*.yaml %{buildroot}%{_sysconfdir}/%{name}/
 %doc ChangeLog README.md AUTHORS
 %{_bindir}/%{name}
 %{python_sitelib}/%{name}
-%{python_sitelib}/%{name}-*.egg-info
+%{python_sitelib}/%{name}-%{version}.dist-info
 %attr(0755,root,root) %{_datadir}/%{name}/
 %attr(0755,root,root) %config(noreplace) %{_sysconfdir}/%{name}
 %{_mandir}/man1/%{name}.1%{ext_man}
