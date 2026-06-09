@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun  7 10:33:41 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to 2.18.1
+  * Workaround :-prefixed filename used in Qt
+  * meson: force enabling HAVE_C99_VSNPRINTF
+  * Do not set 'sans-serif' for default genericfamily
+  * Fix another font matching issue
+  * Fix not matching with a font family name
+  * Disable invalid attribute warning by default
+  * boo#1267844
+
+-------------------------------------------------------------------
 Tue Jun  2 06:27:04 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - Update to 2.18.0

@@ -18,7 +18,7 @@
 
 Name:           fontconfig
 %define lname   libfontconfig1
-Version:        2.18.0
+Version:        2.18.1
 Release:        0
 Summary:        Library for Font Configuration
 License:        MIT
