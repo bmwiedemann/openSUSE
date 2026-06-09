@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  6 04:46:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build on Leap 16.1 where %suse_version is 1610
+
+-------------------------------------------------------------------
 Sat May 30 04:22:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Allow building with JDK that uses libalternatives instead of

@@ -90,7 +90,7 @@ BuildRequires:  libuuid-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  libyaml-devel
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 BuildRequires:  luajit-devel
 %else
 BuildRequires:  lua51-devel
