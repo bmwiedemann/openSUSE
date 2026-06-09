@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-Builder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,38 @@
 #
 
 
-Name:           perl-DateTime-Format-Builder
-Version:        0.83
-Release:        0
 %define cpan_name DateTime-Format-Builder
-Summary:        Create DateTime parser classes and objects
+Name:           perl-DateTime-Format-Builder
+Version:        0.830.0
+Release:        0
+# 0.83 -> normalize -> 0.830.0
+%define cpan_version 0.83
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
+Summary:        Create DateTime parser classes and objects
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(DateTime) >= 1.00
-BuildRequires:  perl(DateTime::Format::Strptime) >= 1.04
-BuildRequires:  perl(Params::Validate) >= 0.72
+BuildRequires:  perl(DateTime) >= 1.0
+BuildRequires:  perl(DateTime::Format::Strptime) >= 1.40
+BuildRequires:  perl(Params::Validate) >= 0.720
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(parent)
-Requires:       perl(DateTime) >= 1.00
-Requires:       perl(DateTime::Format::Strptime) >= 1.04
-Requires:       perl(Params::Validate) >= 0.72
+Requires:       perl(DateTime) >= 1.0
+Requires:       perl(DateTime::Format::Strptime) >= 1.40
+Requires:       perl(Params::Validate) >= 0.720
 Requires:       perl(parent)
+Provides:       perl(DateTime::Format::Builder) = %{version}
+Provides:       perl(DateTime::Format::Builder::Parser) = %{version}
+Provides:       perl(DateTime::Format::Builder::Parser::Dispatch) = %{version}
+Provides:       perl(DateTime::Format::Builder::Parser::Quick) = %{version}
+Provides:       perl(DateTime::Format::Builder::Parser::Regex) = %{version}
+Provides:       perl(DateTime::Format::Builder::Parser::Strptime) = %{version}
+Provides:       perl(DateTime::Format::Builder::Parser::generic) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -53,11 +62,11 @@ innards to any subclasses, or for when you need to do something slightly
 beyond what I expected.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -68,8 +77,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md examples README.md
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md examples README.md
 %license LICENSE
 
 %changelog
