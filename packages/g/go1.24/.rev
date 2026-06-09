@@ -377,4 +377,14 @@
   * go#77424 crypto/tls: CL 737700 broke session resumption on macOS (forwarded request 1332051 from jfkw)</comment>
     <requestid>1332055</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>53518a451c94f21e4a5db063b935be26</srcmd5>
+    <version>1.24.13</version>
+    <time>1781007284</time>
+    <user>anag_factory</user>
+    <comment>- Packaging: Enable libalternatives for SLE16.1 and Tumbleweed
+  Refs boo#1245878
+  * Drop go1.24 dependency on update-alternatives fixes bsc#1264393 (forwarded request 1358035 from jfkw)</comment>
+    <requestid>1358042</requestid>
+  </revision>
 </revisionlist>

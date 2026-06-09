@@ -50,12 +50,16 @@
 %define go_label %{go_api}
 
 # go_libalternatives is the name for the libalternatives configuration file
-# which denotes its priority
-%define go_libalternatives 125
+# which denotes its priority and numbered as go_api sans dot separator
+%define go_libalternatives 124
 
 # with_libalternatives denotes whether or not libalternatives should be used
 # if it is not used, then update-alternatives is used instead
 %define with_libalternatives 0
+# Enable libalternatives for SLE16.1+ and Tumbleweed
+%if 0%{suse_version} >= 1610
+%define with_libalternatives 1
+%endif
 
 # with_update_alternatives is automatically defined, based on the
 # value of with_libalternatives
