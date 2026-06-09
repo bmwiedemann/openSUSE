@@ -9,5 +9,4 @@ module is comprehensive.
 
 It expects to find either a =head(n&gt;1) or an =item block documenting a
 subroutine.</description>
-  <devel project="devel:languages:perl" package="perl-Pod-Coverage"/>
 </package>

@@ -179,4 +179,12 @@
 </comment>
     <requestid>844598</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>096b3980bb221f580cdc643a92d4c080</srcmd5>
+    <version>0.230.0</version>
+    <time>1781007134</time>
+    <user>anag_factory</user>
+    <comment>- See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1357706</requestid>
+  </revision>
 </revisionlist>

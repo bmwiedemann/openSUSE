@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-Coverage
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,32 @@
 #
 
 
-Name:           perl-Pod-Coverage
-Version:        0.23
-Release:        0
 %define cpan_name Pod-Coverage
-Summary:        Checks if the documentation of a module is comprehensive
+Name:           perl-Pod-Coverage
+Version:        0.230.0
+Release:        0
+# 0.23 -> normalize -> 0.230.0
+%define cpan_version 0.23
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Checks if the documentation of a module is comprehensive
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Devel::Symdump) >= 2.01
-BuildRequires:  perl(Pod::Find) >= 0.21
-BuildRequires:  perl(Pod::Parser) >= 1.13
-Requires:       perl(Devel::Symdump) >= 2.01
-Requires:       perl(Pod::Find) >= 0.21
-Requires:       perl(Pod::Parser) >= 1.13
+BuildRequires:  perl(Devel::Symdump) >= 2.10
+BuildRequires:  perl(Pod::Find) >= 0.210
+BuildRequires:  perl(Pod::Parser) >= 1.130
+Requires:       perl(Devel::Symdump) >= 2.10
+Requires:       perl(Pod::Find) >= 0.210
+Requires:       perl(Pod::Parser) >= 1.130
+Provides:       perl(Pod::Coverage) = %{version}
+Provides:       perl(Pod::Coverage::CountParents)
+Provides:       perl(Pod::Coverage::ExportOnly)
+Provides:       perl(Pod::Coverage::Extractor)
+Provides:       perl(Pod::Coverage::Overloader)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -66,11 +73,11 @@ In this example 'Foo::foo' is covered, but 'Foo::bar' is not, so the 'Foo'
 package is only 50% (0.5) covered
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -81,7 +88,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples
 
 %changelog
