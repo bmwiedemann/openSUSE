@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun  4 00:08:15 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.52.4 (bsc#1267506 bsc#1267507 bsc#1267508
+  bsc#1267509 bsc#1267510 bsc#1267511 bsc#1267512 bsc#1267513
+  bsc#1267514 bsc#1267515 bsc#1267516 bsc#1267517 bsc#1267518
+  bsc#1267519 bsc#1267520 bsc#1267521):
+  + Add support for half-width fonts.
+  + Improve content filter compilation by avoiding file copies.
+  + Improve handling of out of disk space conditions when the
+    NetworkProcess tried to write data in caches.
+  + Improve how the CMake build system checks whether libatomic is
+    required.
+  + Fix painting scrollbars when their width changes.
+  + Fix playback of certain YouTube videos with low frame rates.
+  + Fix webkit://gpu not working in systems where neither
+    libGL.so.1 nor libOpenGL.so.0 are available.
+  + Fix the build with librice 0.4 or newer when the GStreamer
+    WebRTC backend is enabled at build configuration time.
+  + Fix the build with USE_GSTREAMER_WEBRTC=OFF.
+  + Fix the build with USE_GBM=OFF.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2026-28847, CVE-2026-28883, CVE-2026-28901,
+    CVE-2026-28902, CVE-2026-28903, CVE-2026-28904, CVE-2026-28905,
+    CVE-2026-28907, CVE-2026-28942, CVE-2026-28946, CVE-2026-28947,
+    CVE-2026-28953, CVE-2026-28955, CVE-2026-28958, CVE-2026-43658,
+    CVe-2026-43660.
+- Drop webkit2gtk3-aarch64-build-fix.patch: fixed upstream.
+- Add webkitgtk-ppc64le-build-fix.patch: fix the build when system
+  malloc is enabled.
+
+-------------------------------------------------------------------
 Mon May 11 08:06:56 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - riscv-platformenable.patch: Fix build for riscv64
