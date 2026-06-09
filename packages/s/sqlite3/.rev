@@ -2038,4 +2038,15 @@ CVE-2020-13871 boo#1172646</comment>
     https://sqlite.org/src/timeline?from=version-3.53.0&amp;to=version-3.53.1</comment>
     <requestid>1350991</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>235e73f264ddefb5e71ba6605f97af4d</srcmd5>
+    <version>3.53.2</version>
+    <time>1781007310</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.53.2:
+  * Fixes for problems in 3.53.0 reported by users.
+  * See the check-in timeline for details:
+    https://sqlite.org/src/timeline?from=version-3.53.1&amp;to=version-3.53.2</comment>
+    <requestid>1357529</requestid>
+  </revision>
 </revisionlist>

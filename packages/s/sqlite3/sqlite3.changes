@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  5 10:03:45 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to version 3.53.2:
+  * Fixes for problems in 3.53.0 reported by users.
+  * See the check-in timeline for details:
+    https://sqlite.org/src/timeline?from=version-3.53.1&to=version-3.53.2
+
+-------------------------------------------------------------------
 Tue May  5 13:16:31 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Update to version 3.53.1:
