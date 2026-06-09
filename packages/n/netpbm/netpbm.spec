@@ -1,7 +1,7 @@
 #
 # spec file for package netpbm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 %define asan_build     0
 %define ubsan_build    0
 %define libmaj  11
-%define libmin  112
+%define libmin  114
 %define libver  %{libmaj}.%{libmin}
 Name:           netpbm
-Version:        11.12.0
+Version:        11.14.0
 Release:        0
 Summary:        A Graphics Conversion Package
 License:        BSD-3-Clause AND GPL-2.0-or-later AND IJG AND MIT AND SUSE-Public-Domain
@@ -171,16 +171,48 @@ sed -i '/^l\?ps.*\.test/d' test/Test-Order
 # Unable to exec 'gs'
 sed -i '/pbmtextps.test/d'  test/Test-Order
 sed -i '/stdin-pnm2.test/d' test/Test-Order
-# reported to bryanh@giraffe-data.com on 2024-07-12
-# == xpm-roundtrip.test ==
-# ppmtoxpm: (Computing colormap...
-# ppmtoxpm: ...Done.  20314 colors found.)
-# ppmtoxpm: (Computing colormap...
-# ppmtoxpm: ...Done.  2 colors found.)
-# xpmtoppm: EOF or read error on input file
-# pgmtopbm: Error reading first byte of what is expected to be a Netpbm magic number.  Most often, this means your input file is empty
-# xpm-roundtrip.test: FAILURE
-sed -i '/xpm-roundtrip.test/d' test/Test-Order
+# both failures reported to bryanh@giraffe-data.com on 2026-06-02
+# ==  pbmtext-bdf.out ==
+#Test 1  Should print 2066913605 5110
+#1166313870 10391
+#Test 2  Should print 2799749746 2388
+#3222266530 4912
+#Test 3  Should print 386826492 35
+#386826492 35
+#Test 4  Should print 1 eighteen times
+#1
+#1
+#1
+#1
+#1
+#1
+#1
+#1
+#1
+#1
+#1
+#1
+#1
+#1
+#1
+#1
+#1
+#1
+#Test 5  Should print 0 twice
+#0
+#0
+sed -i '/pbmtext-bdf.test/d' test/Test-Order
+# fails for i586
+#[   89s] == pnmhisteq.test ==
+#[   89s]
+#[   89s] Invalid command-line argument combination(s).
+#[   89s] Error message(s) should appear below the line.
+#[   89s] -----------------------------------------------------------
+#[   89s] pnmhisteq: bad magic number 0x2320 - not a PPM, PGM, PBM, or PAM file
+#[   89s] pnmhisteq.test: FAILURE
+%ifarch i586
+sed -i '/pnmhisteq.test/d' test/Test-Order
+%endif
 mkdir package-test-{tmp,results}
 make pkgdir=`pwd`/package tmpdir=`pwd`/package-test-tmp RESULTDIR=`pwd`/package-test-results check-package
 

@@ -1040,4 +1040,38 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
     was new some time before Netpbm 10.35 (August 2006)).</comment>
     <requestid>1308151</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>713029e98fb3d1c27acb16d01a4a4c0e</srcmd5>
+    <version>11.14.0</version>
+    <time>1781007305</time>
+    <user>anag_factory</user>
+    <comment>- disable test/pnmhisteq.test
+
+- version update to 11.14.0
+  * pcxtoppm: fix determination that palette in image is all one
+    color (so probably in error) based on random memory access.
+    Always broken (all-one-color feature was added in July 1995).
+  * pbmtext: fix crash when input text contains a character with
+    code &gt;127.  Broken in Netpbm 10.82 (March 2018).
+  * pnmhisteq: fix incorrect output with -gray: color pixels
+    changed, gray pixels left alone.  Broken in Netpbm 10.30
+    (October 2005).
+  * asciitopgm: fix crash with missing height or width argument.
+    Always broken (asciitopgm was new in the 1994 Netpbm release).
+  * asciitopgm: fix crash with zero divisor.
+    Always broken (asciitopgm was new in the 1994 Netpbm release).
+  * libnetpbm: fix crash when caller of pm_selector_mark attempts to
+    mark or test mark of out-of-bounds code point.  Abort program
+    with error message instead.  Broken since Netpbm 10.91 (June
+    2020).
+  * build: remove ancient non-prototype function declarations; C23
+    doesn't have them, so compilation fails with modern compilers.
+  * build: fix compile failure of libjasper with -DDEBUG .  Broken
+    some time in Netpbm 10.27 (March 2005) through 10.35 (August
+    2006)).
+  * pnmmargin: improve error messages.
+- modified patches
+  * netpbm-gcc-warnings.patch (refreshed)</comment>
+    <requestid>1357514</requestid>
+  </revision>
 </revisionlist>
