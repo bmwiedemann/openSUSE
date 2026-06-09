@@ -1,7 +1,7 @@
 #
 # spec file for package go1.25
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,10 @@
 # with_libalternatives denotes whether or not libalternatives should be used
 # if it is not used, then update-alternatives is used instead
 %define with_libalternatives 0
+# Enable libalternatives for SLE16.1+ and Tumbleweed
+%if 0%{suse_version} >= 1610
+%define with_libalternatives 1
+%endif
 
 # with_update_alternatives is automatically defined, based on the
 # value of with_libalternatives
@@ -155,7 +159,7 @@ Obsoletes:      go-devel < go%{version}
 Obsoletes:      go-emacs <= 1.3.3
 Obsoletes:      go-vim <= 1.3.3
 ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64 loongarch64
-Requires(post):   update-alternatives
+Requires(post): update-alternatives
 %if %{with_libalternatives}
 BuildRequires:  alts
 Requires:       alts
