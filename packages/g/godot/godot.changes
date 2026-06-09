@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun  6 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to 4.6.3
+  * Update layer selector when modifying "TileMap" in inspector
+  * Suppress GCC 16's "sfinae-incomplete" warning
+  * Debugger: Rather than looping infinitely on data read errors,
+    drop the connection
+  * Only print to stdio before setup and during/after cleanup
+  * Fix "Pack Project as Zip" not saving permissions and time
+  * Fix incorrect feature overrides when exporting for Linux
+  * Clipboard history not updating on subsequent copies in Wayland
+  * Initialize libdecor earlier for Wayland
+  * Add project setting to disable new Volumetric fog blending behavior
+  * and more: https://godotengine.github.io/godot-interactive-changelog/#4.6.3
+
+-------------------------------------------------------------------
 Thu Apr  2 12:00:00 UTC 2026 - cunix@mail.de
 
 - Update to 4.6.2

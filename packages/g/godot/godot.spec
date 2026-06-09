@@ -29,7 +29,7 @@
 %define compiler_version_leap 13
 
 Name:           godot
-Version:        4.6.2
+Version:        4.6.3
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -129,7 +129,7 @@ Provides:       bundled(enet) = 1.3.18
 
 # Has custom changes to support seeking in zip archives
 # Should not be unbundled.
-Provides:       bundled(minizip) = 1.3.1.2
+Provides:       bundled(minizip) = 1.3.2
 Provides:       bundled(FastLZ)
 Provides:       bundled(FastNoiseLite)
 Provides:       bundled(JetBrainsMono_Regular)
@@ -206,11 +206,11 @@ Provides:       bundled(embree) = 4.4.0
 %else
 # see comments for freetype2, libpng and zlib Factory BuildRequires
 #Provides:       bundled(brotli) = 1.2.0
-#Provides:       bundled(freetype2) = 2.14.1
+#Provides:       bundled(freetype2) = 2.14.3
 #Provides:       bundled(graphite) = 1.3.14
-#Provides:       bundled(libpng) = 1.6.55
+#Provides:       bundled(libpng) = 1.6.58
 #Provides:       bundled(libzstd) = 1.5.7
-#Provides:       bundled(zlib) = 1.3.1.2
+#Provides:       bundled(zlib) = 1.3.2
 %endif
 
 # Build currently fails on armv7l
