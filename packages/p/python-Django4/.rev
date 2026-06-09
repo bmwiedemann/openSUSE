@@ -60,4 +60,26 @@
     * CVE-2026-6907.patch</comment>
     <requestid>1351152</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>903ad4db843a1b65c17d82ee862e766b</srcmd5>
+    <version>4.2.30</version>
+    <time>1781008274</time>
+    <user>anag_factory</user>
+    <comment>- Add security patches:
+  * CVE-2026-6873: Signed cookie salt namespace collision (bsc#1267578)
+    * CVE-2026-6873.patch
+  * CVE-2026-7666: Potential unencrypted email transmission via STARTTLS
+    in the SMTP backend (bsc#1267579)
+    * CVE-2026-7666.patch
+  * CVE-2026-8404: Potential exposure of private data via case-sensitive
+    Cache-Control directives (bsc#1267580)
+    * CVE-2026-8404.patch
+  * CVE-2026-35193: Potential exposure of private data via missing
+    Vary: Authorization (bsc#1267576)
+    * CVE-2026-35193.patch
+  * CVE-2026-48587: Potential exposure of private data via whitespace
+    padding in Vary header (bsc#1267577)
+    * CVE-2026-48587.patch</comment>
+    <requestid>1358152</requestid>
+  </revision>
 </revisionlist>
