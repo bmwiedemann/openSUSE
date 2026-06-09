@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri May 22 08:17:33 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0213
+   see /usr/share/doc/packages/perl-XML-LibXML/Changes
+
+  2.0213  2026-05-21
+      [SECURITY / BUG FIXES]
+      - Revert PR #143 per the libxml2 author's request. PR #143 added a
+        URL-scheme filter inside LibXML_load_external_entity and removed
+        the EXTERNAL_ENTITY_LOADER_FUNC == NULL guards on the five
+        Schema/RelaxNG NONET swap sites, on the premise that
+        no_network on one parser should override a user-installed global
+        externalEntityLoader. Nick Wellnhofer clarified that this
+        contradicts upstream intent: XML_PARSE_NONET only polices
+        libxml2's default loader; a user who installs a global loader is
+        explicitly opting out of that policy, and the http/https/ftp
+        allowlist was never a real security boundary. Reverted in full;
+        PR #138's lifecycle/memory-safety fixes are kept.
+          - GH #168
+      [BUG FIXES]
+      - Fix latent SEGV in _externalEntityLoader. The XS code returned
+        &PL_sv_undef as RETVAL when no previous global loader existed.
+        Because xsubpp auto-mortalizes SV* RETVAL, each call mortalized
+        the PL_sv_undef singleton, eventually driving its refcount
+        negative and producing "Attempt to free unreferenced scalar"
+        followed by SEGV under repeated invocation. Now returns
+        newSV(0) so RETVAL is always a fresh refcount-1 SV safe to
+        mortalize. The bug shipped in 2.0212 with PR #138's lifecycle
+        fixes; this is a single-line correction to that code path.
+      [MAINTENANCE]
+      - Add t/49global_extent_with_no_network.t, 17 subtests locking in
+        the entity-loader contract restored by the GH #168 revert: a
+        user-installed global loader takes precedence over no_network
+        across plain XML parse, RelaxNG, and XML Schema, while
+        no_network without any loader still blocks via libxml2's
+        default loader.
+      - Document the entity-loader contract in CLAUDE.md
+        ("Entity loaders, no_network, and XML_PARSE_NONET") plus a
+        "Verifying audit-flagged security findings" checklist to keep
+        pattern-matched "security fixes" like PR #143 from shipping
+        again.
+
+-------------------------------------------------------------------
 Thu May 21 13:19:22 UTC 2026 - Tina Müller <tina.mueller@suse.com>
 
 - Remove perl-XML-LibXML-fix-testsuite-with-libxml2-2.14.patch

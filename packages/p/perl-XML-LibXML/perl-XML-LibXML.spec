@@ -18,7 +18,7 @@
 
 %define cpan_name XML-LibXML
 Name:           perl-XML-LibXML
-Version:        2.0212
+Version:        2.0213
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Interface to Gnome libxml2 xml parsing and DOM library
