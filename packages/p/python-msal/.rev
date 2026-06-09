@@ -548,4 +548,20 @@
     by @4gust in (#896) (forwarded request 1348176 from glaubitz)</comment>
     <requestid>1348188</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>657313f09adbb1a4502a128658e0e35e</srcmd5>
+    <version>1.37.0</version>
+    <time>1781007360</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.37.0
+  * Removed support for Python 3.8 in (#910)
+  * Add User Federated Identity Credential (user_fic) grant type
+    support in (#918)
+  * Use unsigned redirect URI for macOS broker silent flows in (#907)
+  * Escape username parameter in (#901)
+  * Forward MSAL client metadata headers through IMDS to ESTS in (#902)
+  * Update pymsalruntime minimum version to 0.20.6 in (#919)
+  * Bump cryptography dependency ceiling to &lt;50 (N+3) in (#906) (forwarded request 1357749 from glaubitz)</comment>
+    <requestid>1357939</requestid>
+  </revision>
 </revisionlist>
