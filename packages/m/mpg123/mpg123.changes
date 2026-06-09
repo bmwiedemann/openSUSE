@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun  6 10:33:16 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.33.6
+  * mpg123
+    + Prepare for const-returning strchr().
+    + Hide seq_len debugging counter in non-debug mode.
+  + Fix memory leak with --network internal due to inverted NULL
+    check in net123_close_internal() (handle never NULL in
+    practice, though).
+  * mpg123, out123: Fix strrchr() usage to be more const and
+    correct under C99 as well as C23.
+  * mpg123-strip: Also use largefile API properly using
+    mpg123config.h, but without actual effect at least on
+    Linux/x86. It is cleaner that way, though.
+  * libmpg123: Remove unused loop variable in layer2 left over
+    from runtime table elimination (32 bit mmx/sse code).
+
+-------------------------------------------------------------------
 Sat Apr 25 10:19:15 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.33.5
