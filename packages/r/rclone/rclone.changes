@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Jun 05 17:44:36 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to version 1.74.3:
+- Update to version 1.74.3: (boo#1267869)
   - Bug Fixes
     - rc
       - Fix unauthenticated command execution via --rc-serve inline
