@@ -262,4 +262,14 @@
     <comment></comment>
     <requestid>1356224</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>709395792e52158eb9cc14f372980938</srcmd5>
+    <version>1.42_bld308</version>
+    <time>1781007983</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 142-bld308
+  * Add support for S390X, IA64 and HPPA as host.
+</comment>
+    <requestid>1358084</requestid>
+  </revision>
 </revisionlist>
