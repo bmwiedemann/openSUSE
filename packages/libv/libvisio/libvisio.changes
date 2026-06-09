@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  2 12:07:12 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 0.1.11
+  * Memory safety fixes
+  * More work on better handling of theme colors (tdf#168475)
+
+-------------------------------------------------------------------
 Mon Sep 22 12:24:26 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - version update to 0.1.9

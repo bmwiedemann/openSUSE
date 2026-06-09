@@ -1,7 +1,7 @@
 #
 # spec file for package libvisio
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define with_gcc 13
 %endif
 Name:           libvisio
-Version:        0.1.9
+Version:        0.1.11
 Release:        0
 Summary:        Library for parsing the MS Visio file format structure
 License:        MPL-2.0
