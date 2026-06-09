@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun  9 05:11:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.40:
+  * General
+    - Fix printf-style logging calls flagged by go vet @leecalcote
+      (#19941)
+- update to 1.0.39:
+  * General
+    - [Server] Preserve credential ID when saving connections
+      @chaitanyamedidar (#19883)
+    - fix(designs): render imported designs misclassified as legacy
+      v1alpha2 @leecalcote (#19934)
+  * Meshery CLI
+    - [mesheryctl] (fix) corrected mesheryctl design undeploy
+      output when used without args @ishwar170695 (#19894)
+  * Maintenance
+    - Remove inputs parameter from notify-providers workflow
+      @leecalcote (#19914)
+
+-------------------------------------------------------------------
 Mon Jun  8 07:21:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.38:
