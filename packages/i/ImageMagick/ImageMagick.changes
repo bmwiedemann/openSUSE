@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun  8 09:33:01 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 7.1.2.25
+  * validate argument count for polynomial distortion #8780
+  * fix oob read of gps rationals in GetEXIFProperty #8782
+  * reject hdr files with a negative width or height #8765
+  * reject pgx files with invalid dimensions or precision #8764
+  * reject rla files with an inverted active window #8770
+  * build(deps): bump github/codeql-action from 4.35.5 to 4.36.0 #8775
+  * reject fits files with an invalid bits per pixel #8760
+  * reject sgi files with zero columns or rows #8761
+  * reject dds files with zero columns or rows #8762
+- fixes following GH security advisories:
+  * GHSA-q62c-h75r-2xhc
+  * GHSA-g22q-f7gc-5jhr
+  * GHSA-px7q-ggqj-hcf2
+  * GHSA-p9rq-q46c-g4x6
+  * GHSA-j989-f892-2335
+  * GHSA-44cp-c3ww-9rv5
+
+-------------------------------------------------------------------
 Fri May 29 09:25:04 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - in default security policy, allow reading from symbolic links
