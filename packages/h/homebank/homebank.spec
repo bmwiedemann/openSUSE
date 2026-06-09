@@ -1,7 +1,7 @@
 #
 # spec file for package homebank
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           homebank
-Version:        5.10
+Version:        5.10.1
 Release:        0
 Summary:        Application to manage personal accounts
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Finance
 URL:            https://www.gethomebank.org/
 Source:         https://www.gethomebank.org/public/sources/%{name}-%{version}.tar.gz
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  intltool
@@ -32,13 +34,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.8
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0
-%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-%endif
 
 %description
 HomeBank is an application to manage personal accounts at home. The main
@@ -50,14 +45,9 @@ charts.
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{version}.0
+%setup -q -n %{name}-%{version}
 
 %build
-%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-export CC="gcc-13"
-export CXX="g++-13"
-%endif
-
 %configure
 %make_build
 

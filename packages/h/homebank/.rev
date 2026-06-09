@@ -662,4 +662,59 @@
     <comment></comment>
     <requestid>1338623</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>42c544a3a8635e0f6c744aa0ea05b333</srcmd5>
+    <version>5.10.1</version>
+    <time>1781008193</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.10.1
+  * change: the input field helper icon + fixed some spacing
+    inconsistency
+  * change: transaction, added some missing input tooltips and
+    reworked existing
+  * change: category, payee and tag window add input now have a
+    tooltip and button
+  * change: split window, refactored the layout
+  * change: split window, add display of memo and date
+  * wish  : lp#2106800 budget report option to exclude transfers
+    from unbudgeted line 
+  * bugfix: prevent deletion of non pending transaction when
+    rejecting
+  * bugfix: transaction warning for no rate faultly showing
+    in transfer
+  * bugfix: report missing space for filter tooltip icon
+  * bugfix: budget report missing filter tooltip
+  * bugfix: manage account closed icon was hidding budget icon
+  * bugfix: lp#2154771 view transcations requires hitting
+    Escape or X twice to close dialog
+  * bugfix: lp#2154337 transfer to/from closed account with
+    different currency don't show the amount
+  * bugfix: lp#2154234 scheduled transaction recurring pattern
+    daily value limited to 100
+  * bugfix: lp#2149897 view split for closed accounts
+  * bugfix: lp#2148561 global time chart do not shows current
+    period by default
+  * bugfix: lp#2148456 the main screen Total Chart is no longer
+    showing an overall total
+  * bugfix: lp#2147497 editing a transaction resets scroll
+    position
+  * bugfix: lp#2147377 balance mixup with transaction same day
+    sort by amount
+  * bugfix: lp#2147052 quarter are wrong when fiscal year is
+    jan 1
+  * bugfix: lp#2147048 all events for the month are late but
+    today is only the 1st
+  * bugfix: lp#2144993 impossible to search for transactions
+    by value for values &gt;999,99
+  * bugfix: lp#2144698 adding new Category/Payee/Tags requires
+    hitting -Enter-
+  * bugfix: lp#2144419 QIF Account name detection fail on import
+  * bugfix: lp#2142349 can't delete account groups
+  * bugfix: lp#2139409 account maximum limit is not fully used
+    (example credit card)
+  * bugfix: lp#2133783 transfers shouldn't add to dashboard top
+    spending reports
+- Drop Leap 15 workarounds because Leap 15 is EOL (forwarded request 1358047 from Kieltux)</comment>
+    <requestid>1358130</requestid>
+  </revision>
 </revisionlist>
