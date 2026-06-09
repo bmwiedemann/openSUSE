@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  2 11:35:23 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 0.6.8
+  * Update configure.ac for obsolete function
+  * Fix build fail when srcdir != builddir
+  * Add --disable-locale-alias build option
+  * Bump the libtool revision.
+  * Do not include merge commits in NEWS
+  * const up __lt_localealias_tables
+  * configure.ac: check for dlfcn.h
+  * configure.ac: support slibtool
+  * configure.ac: fix typo
+  * build: don't overwrite LIBS
+  * update ax_pthread.m4
+  * Fix building on MinGW-w64
+
+-------------------------------------------------------------------
 Thu Feb 15 09:10:24 UTC 2024 - pgajdos@suse.com
 
 - version update to 0.6.7

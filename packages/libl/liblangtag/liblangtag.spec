@@ -1,7 +1,7 @@
 #
 # spec file for package liblangtag
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname liblangtag1
 Name:           liblangtag
-Version:        0.6.7
+Version:        0.6.8
 Release:        0
 Summary:        An interface library to access tags for identifying languages
 License:        LGPL-3.0-or-later OR MPL-2.0
 Group:          Productivity/Publishing/Word
-URL:            https://bitbucket.org/tagoh/liblangtag
-Source0:        https://bitbucket.org/tagoh/%{name}/downloads/%{name}-%{version}.tar.bz2
+URL:            https://gitlab.com/tagoh/liblangtag
+Source0:        https://gitlab.com/tagoh/liblangtag/-/releases/%{version}/downloads/liblangtag-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  libtool
