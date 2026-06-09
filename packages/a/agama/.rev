@@ -941,4 +941,41 @@
 - Allow setting the NTP configuration from the kernel command-line</comment>
     <requestid>1354238</requestid>
   </revision>
+  <revision rev="46" vrev="46">
+    <srcmd5>cd014bb0540e6bb79cadc71363a7e1ea</srcmd5>
+    <version>0</version>
+    <time>1781007335</time>
+    <user>anag_factory</user>
+    <comment>- Adapt manager to set the list of resolvables. It asks each module
+  about its requirements and configures the software service
+  (bsc#1266276).
+
+- Wait until all pending tasks are finished before starting the installation
+  (bsc#1266276).
+
+- Fix software progress in openSUSE where it incorrectly report
+  proposing software selection instead of refreshing repositories
+  (gh#agama-project/agama#3579)
+
+- Extend storage schemas to allow configuring the space policy for
+  creating new LVM physical volumes (jsc#PED-14153).
+
+- Add &quot;access&quot; key to profile to allow after installation
+  remote access via ssh or cockpit (jsc#AGM-151)
+
+- Use &quot;sshPublicKeys&quot; by default (gh#agama-project/agama#3531).
+
+- Do not display system information in output of agama status
+  command (gh#agama-project/agama#3553).
+
+- When activating a network connection which bind device has been
+  modified it will disconnect the devices which couldn't apply
+  the connection anymore (gh#agama-project/agama#3532, bsc#1265446).
+
+- Redesign the progress tracking in the command-line interface.
+- Display the progress inline, preventing rendering artifacts in bsc#1265936.
+
+- Prevent the monitor from blocking (related to bsc#1265431).</comment>
+    <requestid>1357933</requestid>
+  </revision>
 </revisionlist>
