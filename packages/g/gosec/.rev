@@ -846,4 +846,38 @@
   * chore(action): bump gosec to 2.25.0 (#1618) (forwarded request 1349718 from ph03nix)</comment>
     <requestid>1350033</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>34d48636b3be378c49bb7cfcbf8109a4</srcmd5>
+    <version>2.27.1</version>
+    <time>1781007711</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.27.1:
+  * Downgrade google lib to avoid min Go version bump (#1687)
+  * Downgrade the jsonschema dep to v0.13.0 due to incompatibility with anthropick-sdk-go (#1686)
+  * Update all dependencies (#1685)
+  * Downgrade the github.com/invopop/jsonschema v0.13.0 to solve incopatibility with anthropic-sdk (#1683)
+  * Update all dependencies (#1682)
+  * Update vulnerabilities alerts for indirect dependencies
+  * Pin dependencies (#1681)
+  * Skip pining for my repos
+  * Update renovate configuration
+  * Fix typo
+  * Update branch config in renovate config
+  * Migrate config renovate.json (#1678)
+  * Update renovate to refresh the branch creation
+  * Update the renovate branch prefix
+  * Update renovate config to pin the actions dependencies by digests (#1676)
+  * Migrate the html remport to react v19. (#1675)
+  * Manually update version to fix renovate (#1674)
+  * feat: integrate Atlas Cloud provider (#1672)
+  * Refactor error position parsing to support path with colon. (#1673)
+  * Add two options to require rule ID and justificaiton for inline annotations (#1671)
+  * Fix false positive in G118 when cancel is stored in a slice/map (#1670)
+  * chore(go): update supported Go versions to 1.25.10 and 1.26.3 (#1669)
+  * Harden the github workflows and action (#1665)
+  * Fix justification delimiter in annotation format doc (#1661)
+  * Update all dependencies (#1664)
+  * Update action to use gosec version v2.26.1 (#1660) (forwarded request 1357964 from ph03nix)</comment>
+    <requestid>1357994</requestid>
+  </revision>
 </revisionlist>
