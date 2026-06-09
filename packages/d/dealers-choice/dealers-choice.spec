@@ -17,14 +17,13 @@
 
 
 Name:           dealers-choice
-Version:        0.0.13
+Version:        0.0.14
 Release:        0
 Summary:        Online Multiplayer Stud and Draw Poker, Texas Hold'em and Omaha
 License:        MIT
 Group:          Amusements/Games/Board/Card
 URL:            https://dealer-s-choice.github.io/
 Source:         https://github.com/Dealer-s-Choice/dealers-choice/releases/download/v%{version}/%{name}-%{version}.tar.xz
-Patch0:         0001-server-skip-buffered-MSG_PING_RESPONSE-at-game-start.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -32,11 +31,11 @@ BuildRequires:  gettext
 BuildRequires:  meson >= 0.61.0
 BuildRequires:  python3
 BuildRequires:  pkgconfig(SDL2_image)
-BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(canfigger)
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsodium)
+BuildRequires:  pkgconfig(pcg-c)
 BuildRequires:  pkgconfig(sdl2)
 Requires:       hicolor-icon-theme >= 0
 
@@ -55,8 +54,7 @@ the dealer chooses the game before each hand.
 %meson \
 	-Ddocdir=%{_docdir}/%{name} \
 	--buildtype=release \
-	-Dstrip=true \
-	-Db_sanitize=none
+	-Dstrip=true
 %meson_build
 
 %install

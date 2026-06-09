@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jun  9 00:50:57 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- dealers-choice 0.0.14
+  - Drop 0001-server-skip-buffered-MSG_PING_RESPONSE-at-game-start.patch
+    (fixed upstream)
+  * Replace SDL2_net with tcpme (thin POSIX/Winsock wrapper)
+  + Game-play display overhaul: relative seating (local bottom-centre,
+    opponents clockwise), a bottom dashboard, an anchor-based layout system,
+    and SVG card suits
+  + Configurable game-play action hotkeys via a press-to-bind Hotkeys screen
+    (#102)
+  + The seat that opens each betting round is marked in its nameplate (#264)
+  + Optional timestamped diagnostic logging (--log-file): server slow-send /
+    high-ping / slow-action warnings and client frame-stall / slow-audio
+    warnings, all gated by --verbose (#307)
+  * regression fix: discard-phase timeout now reports 0 cards drawn (#265)
+  * Fix OpenBSD build (#270)
+  * server: skip stray MSG_PING_RESPONSE frames buffered from the lobby,
+    fixing a spurious disconnect on slow/emulated hardware
+  * Move deckhandler and pokeval inline (no longer meson subprojects)
+  * rank-aware wild tiebreak for THREE/FOUR_OF_A_KIND, FULL_HOUSE,
+    FIVE_OF_A_KIND
+  * wild-aware tiebreak for PAIR and TWO_PAIR
+  * fix wild kicker comparison for THREE/FOUR_OF_A_KIND at equal trip/quad
+    value
+  * wild-aware tiebreak for STRAIGHT / STRAIGHT_FLUSH
+  * substitute wild = ACE_HIGH for FLUSH tiebreak
+  * rank-aware PAIR/TWO_PAIR tiebreak in update_best_5card (Omaha / 7-card
+    picker)
+  * route update_best_wild same-rank tiebreak through the wild-aware compare
+  * bugfix: run audio init on a background thread with silent fallback, so
+    a blocked audio backend can't freeze the window
+  * Bump GAME_PROTOCOL_VERSION from 9 to 10
+
+-------------------------------------------------------------------
 Wed Apr 29 16:28:23 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
 
 - Add 0001-server-skip-buffered-MSG_PING_RESPONSE-at-game-start.patch

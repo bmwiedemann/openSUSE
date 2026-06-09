@@ -95,4 +95,12 @@
     <comment>Fixes s390x build https://src.opensuse.org/pool/dealers-choice/pulls/1#issuecomment-135113</comment>
     <requestid>1350047</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c429213006d66ec7f4636c89576eb83e</srcmd5>
+    <version>0.0.14</version>
+    <time>1781007993</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1358088</requestid>
+  </revision>
 </revisionlist>
