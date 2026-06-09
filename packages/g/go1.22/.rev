@@ -339,4 +339,14 @@ the go metapackage to version 1.22.</comment>
   * Refs boo#1248082 drop unused gccgo bootstrap code in go1.22+ (forwarded request 1299492 from jfkw)</comment>
     <requestid>1299495</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>2ff40d1ca830bedde67d9493bdec7468</srcmd5>
+    <version>1.22.12</version>
+    <time>1781007276</time>
+    <user>anag_factory</user>
+    <comment>- Packaging: Enable libalternatives for SLE16.1 and Tumbleweed
+  Refs boo#1245878
+  * Drop go1.22 dependency on update-alternatives fixes bsc#1264391 (forwarded request 1358032 from jfkw)</comment>
+    <requestid>1358040</requestid>
+  </revision>
 </revisionlist>
