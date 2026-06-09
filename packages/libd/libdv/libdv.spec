@@ -1,7 +1,7 @@
 #
 # spec file for package libdv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,7 @@ Patch6:         libdv-v4l-2.6.38.patch
 Patch7:         libdv-fix-no-add-needed.patch
 Patch8:         libdv-endian.patch
 Patch9:         libdv-visibility.patch
+Patch10:        libdv-gcc16.patch
 BuildRequires:  libtool
 BuildRequires:  libv4l-devel >= 0.8.4
 BuildRequires:  pkg-config

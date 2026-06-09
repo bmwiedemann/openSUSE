@@ -1,0 +1,13 @@
+Index: libdv-1.0.0/libdv/mmx.h
+===================================================================
+--- libdv-1.0.0.orig/libdv/mmx.h
++++ libdv-1.0.0/libdv/mmx.h
+@@ -59,7 +59,7 @@ typedef	union {
+ 
+ /*	Function to test if multimedia instructions are supported...
+ */
+-inline static int
++static int
+ mm_support(void)
+ {
+ 	/* Returns 1 if MMX instructions are supported,
