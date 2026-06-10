@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 10 19:55:00 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update contravariant to version 1.5.6.
+  1.5.6 [2026.01.10]
+  ------------------
+  * Drop support for pre-8.0 versions of GHC.
+  * Support building with MicroHs.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:20 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
