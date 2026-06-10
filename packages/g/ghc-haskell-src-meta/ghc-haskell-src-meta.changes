@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  6 14:14:09 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update haskell-src-meta to version 0.8.15 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Jan 18 23:17:24 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Add haskell-src-meta at version 0.8.15.

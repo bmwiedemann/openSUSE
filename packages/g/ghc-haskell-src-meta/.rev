@@ -7,4 +7,12 @@
     <comment>new dependency for pandoc</comment>
     <requestid>1255882</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>783be0e6f8f50a26b696cc8e367563ee</srcmd5>
+    <version>0.8.15</version>
+    <time>1781100028</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1358375</requestid>
+  </revision>
 </revisionlist>
