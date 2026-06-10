@@ -21,5 +21,6 @@
       <param name="replace">golang.org/x/crypto/ssh=golang.org/x/crypto/ssh@v0.52.0</param>
       <param name="replace">golang.org/x/crypto/ssh/agent=golang.org/x/crypto/ssh/agent@v0.52.0</param>
       <param name="replace">golang.org/x/net=golang.org/x/net@v0.55.0</param>
+      <param name="replace">github.com/go-git/go-billy=github.com/go-git/go-billy/v5@v5.9.0</param>
     </service>
 </services>

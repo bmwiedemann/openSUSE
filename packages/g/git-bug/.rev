@@ -365,4 +365,14 @@ Update to the commit d499b6e.
   sk-ssh-ed25519@openssh.com) did not check the User Presence</comment>
     <requestid>1356943</requestid>
   </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>deec12baa17de5e930cf396f9c869743</srcmd5>
+    <version>0.10.1</version>
+    <time>1781099517</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-44740: improper input handling in many components can
+  lead to DoS (bsc#1267331) revendoring of
+  github.com/go-git/go-billy/v5 to the version 5.9.0.</comment>
+    <requestid>1358254</requestid>
+  </revision>
 </revisionlist>

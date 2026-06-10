@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  9 21:05:40 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-44740: improper input handling in many components can
+  lead to DoS (bsc#1267331) revendoring of
+  github.com/go-git/go-billy/v5 to the version 5.9.0.
+
+-------------------------------------------------------------------
 Mon Jun  1 06:55:42 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - CVE-2026-39827: An authenticated SSH client that repeatedly
