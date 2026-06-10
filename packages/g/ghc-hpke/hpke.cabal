@@ -1,0 +1,63 @@
+cabal-version:      >=1.10
+name:               hpke
+version:            0.0.0
+x-revision: 1
+license:            BSD3
+license-file:       LICENSE
+maintainer:         kazu@iij.ad.jp
+author:             Kazu Yamamoto
+synopsis:           Hybrid Public Key Encryption
+description:
+    Hybrid Public Key Encryption defined in RFC9180
+
+category:           Cryptography
+build-type:         Simple
+extra-source-files: ChangeLog.md
+
+library
+    exposed-modules:  Crypto.HPKE
+                      Crypto.HPKE.Internal
+    other-modules:    Crypto.HPKE.AEAD
+                      Crypto.HPKE.Context
+                      Crypto.HPKE.ID
+                      Crypto.HPKE.KDF
+                      Crypto.HPKE.KEM
+                      Crypto.HPKE.KeyPair
+                      Crypto.HPKE.KeySchedule
+                      Crypto.HPKE.PublicKey
+                      Crypto.HPKE.Setup
+                      Crypto.HPKE.Types
+    default-language: Haskell2010
+    ghc-options:      -Wall
+    build-depends:
+        base >=4.7 && <5,
+        base16-bytestring,
+        bytestring,
+        crypton >= 1.0.2 && < 1.1,
+        memory
+
+    default-extensions: Strict StrictData
+
+test-suite spec
+    type:               exitcode-stdio-1.0
+    main-is:            Spec.hs
+    build-tool-depends: hspec-discover:hspec-discover
+    hs-source-dirs:     test
+    other-modules:      A1Spec
+                        A2Spec
+                        A3Spec
+                        A4Spec
+                        A5Spec
+                        A6Spec
+                        Test
+
+    default-language:   Haskell2010
+    default-extensions: Strict StrictData
+    ghc-options:        -Wall -threaded -rtsopts
+    build-depends:
+        base >=4.9 && <5,
+        QuickCheck,
+        bytestring,
+        base16-bytestring,
+        hpke,
+        hspec
