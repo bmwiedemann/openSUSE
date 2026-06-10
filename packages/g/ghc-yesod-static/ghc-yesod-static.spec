@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-yesod-static
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.1.0
+Version:        1.6.1.2
 Release:        0
 Summary:        Static file serving subsite for Yesod Web Framework
 License:        MIT
@@ -43,10 +43,10 @@ BuildRequires:  ghc-conduit-devel
 BuildRequires:  ghc-conduit-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-cryptonite-conduit-devel
-BuildRequires:  ghc-cryptonite-conduit-prof
-BuildRequires:  ghc-cryptonite-devel
-BuildRequires:  ghc-cryptonite-prof
+BuildRequires:  ghc-crypton-conduit-devel
+BuildRequires:  ghc-crypton-conduit-prof
+BuildRequires:  ghc-crypton-devel
+BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-css-text-devel
 BuildRequires:  ghc-css-text-prof
 BuildRequires:  ghc-data-default-devel
