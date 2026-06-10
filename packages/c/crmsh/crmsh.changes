@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 10 10:59:29 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260610.968f62d8:
+  * Dev: utils: Add class MultipathInspector to inspect multipath devices
+
+-------------------------------------------------------------------
+Mon Jun 08 09:29:07 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260608.2b1f0461:
+  * Dev: ui_sbd: Call SBDUtils.verify_sbd_device in multiple places
+  * Dev: sbd: Introduce function sbd.SBDUtils.get_sbd_device_metadata_raw
+  * Dev: sbd: Compare SBD device UUID optionally
+  * Dev: sbd: Call SBDUtils.verify_sbd_device when doing sbd health check
+  * Dev: bootstrap: Call join_sbd before changing corosync.conf
+  * Fix: sbd: Verify sbd devices on all nodes
+
+-------------------------------------------------------------------
 Thu Jun 04 02:57:23 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260604.45e70fd3:
