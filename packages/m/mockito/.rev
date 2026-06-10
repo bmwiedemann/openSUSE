@@ -71,4 +71,12 @@
     <comment>Add bundle manifest to the mockito-core artifact</comment>
     <requestid>1169588</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>fb0331b0d929010f2b914e1232c9ece3</srcmd5>
+    <version>5.11.0</version>
+    <time>1781099451</time>
+    <user>anag_factory</user>
+    <comment>Build additional submodules</comment>
+    <requestid>1358231</requestid>
+  </revision>
 </revisionlist>

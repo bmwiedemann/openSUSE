@@ -12,5 +12,8 @@
   <modules>
     <module>.</module>
     <module>subprojects/junit-jupiter</module>
+    <module>subprojects/bom</module>
+    <module>subprojects/subclass</module>
+    <module>subprojects/proxy</module>
   </modules>
 </project>

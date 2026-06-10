@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 15:58:07 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Build all submodules for which we have dependencies: bom, proxy
+  and subclass
+
+-------------------------------------------------------------------
 Mon Apr 22 05:25:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add bundle manifest to the mockito-core artifact

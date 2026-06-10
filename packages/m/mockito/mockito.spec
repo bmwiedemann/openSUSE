@@ -1,7 +1,7 @@
 #
 # spec file for package mockito
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,9 @@ Source0:        %{name}-%{version}.tar.xz
 Source2:        aggregator.pom
 Source3:        https://repo1.maven.org/maven2/org/mockito/mockito-core/%{version}/mockito-core-%{version}.pom
 Source4:        https://repo1.maven.org/maven2/org/mockito/mockito-junit-jupiter/%{version}/mockito-junit-jupiter-%{version}.pom
+Source5:        https://repo1.maven.org/maven2/org/mockito/mockito-bom/%{version}/mockito-bom-%{version}.pom
+Source6:        https://repo1.maven.org/maven2/org/mockito/mockito-subclass/%{version}/mockito-subclass-%{version}.pom
+Source7:        https://repo1.maven.org/maven2/org/mockito/mockito-proxy/%{version}/mockito-proxy-%{version}.pom
 Patch0:         use-unbundled-asm.patch
 Patch1:         keep-source-target-8.patch
 BuildRequires:  fdupes
@@ -50,10 +53,35 @@ produce clean verification errors.
 %package junit-jupiter
 Summary:        Mockito JUnit 5 support
 Group:          Development/Libraries/Java
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name} = %{version}
 
 %description junit-jupiter
 Mockito JUnit 5 support.
+
+%package bom
+Summary:        Mockito Bill of Materials (BOM)
+Group:          Development/Libraries/Java
+Requires:       %{name} = %{version}
+
+%description bom
+Mockito Bill of Materials (BOM).
+
+%package subclass
+Summary:        Mockito Subclass Mock Maker
+Group:          Development/Libraries/Java
+Requires:       %{name} = %{version}
+
+%description subclass
+Mockito preconfigured subclass mock maker.
+
+%package proxy
+Summary:        Mockito Proxy Mock Maker
+Group:          Development/Libraries/Java
+Requires:       %{name} = %{version}
+
+%description proxy
+Mockito preconfigured proxy mock mock maker
+(to support interfaces without code generation).
 
 %package javadoc
 Summary:        Javadocs for %{name}
@@ -68,6 +96,9 @@ This package contains the API documentation for %{name}.
 cp %{SOURCE2} aggregator.pom
 cp %{SOURCE3} pom.xml
 cp %{SOURCE4} subprojects/junit-jupiter/pom.xml
+cp %{SOURCE5} subprojects/bom/pom.xml
+cp %{SOURCE6} subprojects/subclass/pom.xml
+cp %{SOURCE7} subprojects/proxy/pom.xml
 
 # Compatibility alias
 %{mvn_alias} org.%{name}:%{name}-core org.%{name}:%{name}-all
@@ -158,17 +189,23 @@ echo 'mock-maker-subclass' > src/main/resources/mockito-extensions/org.mockito.p
     -Dmaven.compiler.source=8 -Dmaven.compiler.target=8 -Dsource=8 \
     -Dproject.build.sourceEncoding=UTF-8 -f aggregator.pom
 
-%{mvn_package} org.mockito:mockito-junit-jupiter junit-jupiter
+%{mvn_package} :mockito-{*} @1
 
 %install
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
-%files -f .mfiles
+%files -f .mfiles-core
 %license LICENSE
 %doc README.md doc/design-docs/custom-argument-matching.md
 
 %files junit-jupiter -f .mfiles-junit-jupiter
+
+%files bom -f .mfiles-bom
+
+%files subclass -f .mfiles-subclass
+
+%files proxy -f .mfiles-proxy
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE
