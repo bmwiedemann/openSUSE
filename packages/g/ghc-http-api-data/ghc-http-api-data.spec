@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-http-api-data
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Converting to/from HTTP API data like URL pieces, headers and query parameters
 License:        BSD-2-Clause
@@ -48,16 +48,12 @@ BuildRequires:  ghc-text-iso8601-prof
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-compat-devel
 BuildRequires:  ghc-time-compat-prof
-BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-unordered-containers-prof
 BuildRequires:  ghc-uuid-types-devel
 BuildRequires:  ghc-uuid-types-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-HUnit-devel
-BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-hspec-devel

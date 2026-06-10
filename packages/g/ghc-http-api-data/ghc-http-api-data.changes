@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  4 19:53:39 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update http-api-data to version 0.6.3.
+  0.6.3
+
+  * Add To/FromForm instances for () and Void
+
+-------------------------------------------------------------------
 Mon Mar 31 23:31:38 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update http-api-data to version 0.6.2.
