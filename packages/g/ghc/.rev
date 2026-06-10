@@ -1207,4 +1207,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
 - use new bootstrap 9.10.1 compiler</comment>
     <requestid>1321200</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>d2f859e60239ef62d5651d340253a8d7</srcmd5>
+    <version>9.12.4</version>
+    <time>1781099821</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1358318</requestid>
+  </revision>
 </revisionlist>

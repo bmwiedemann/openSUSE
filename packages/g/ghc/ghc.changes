@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Mar 31 20:12:20 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.12.4
+- drop 65370007e2d9f1976fbcfbb514917fb111117148.patch
+ * Fixed a critical code generation regression where sub-word division produced
+  incorrect results , similar to the bug fixed in 9.12.2
+ * Numerous fixes for register allocation bugs, preventing data corruption
+  when spilling and reloading registers
+ * Fixes for several compiler crashes, including issues with CSE ,
+  and the simplifier, implicit parameters , and the type-class
+  specialiser 
+ * Fixed cast worker/wrapper incorrectly firing on INLINE functions 
+ * Fixed LLVM backend miscompilation of bit manipulation operations
+ * Fixed associated type family and data family instance changes not triggering
+  recompilation 
+ * Fixed negative type literals causing the compiler to hang 
+ * Improvements to determinism of compiler output
+ * Fixes for eventlog shutdown deadlocks 
+ * and lost wakeups in the RTS 
+ * Fixed split sections support on Windows and the LLVM backend 
+ * Fixes for the bytecode compiler, PPC native code generator, and Wasm backend
+ * The runtime linker now supports COMMON symbols 
+ * Improved backtrace support: backtraces for error exceptions are now
+ * evaluated at throw time
+ * NamedDefaults now correctly requires the class to be standard or have an
+ * in-scope default declaration, and handles poly-kinded classes
+ * … and many more
+
+-------------------------------------------------------------------
+Thu Jan  8 20:35:08 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Fix subword division regression
+ + added patch 65370007e2d9f1976fbcfbb514917fb111117148.patch
+
+-------------------------------------------------------------------
+Sat Dec 27 23:31:08 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.12.3
+- drop patches: 
+  + Cabal-absolute-datadir.patch
+  + aarch64_inter_far.patch
+  + gnu23-hp2ps.patch 
+- full changelog at:
+ + https://downloads.haskell.org/~ghc/9.12.3/docs/users_guide/9.12.3-notes.html
+
+-------------------------------------------------------------------
 Wed Dec  3 18:34:07 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - remove 9_10_1-bootstrap-sources.tar.gz

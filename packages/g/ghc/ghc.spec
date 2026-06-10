@@ -14,8 +14,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define full_version 9.12.2
-%define short_version 9.12.2
+%define full_version 9.12.4
+%define short_version 9.12.4
 
 %if 0%{suse_version} == 1600
 %global llvm_major 15
@@ -52,6 +52,10 @@
 %bcond_without perf_build
 %endif
 
+%ifarch s390x
+%undefine with_ghc_prof
+%endif
+
 %if %{without hadrian}
 # locked together since disabling haddock causes no manuals built
 # and disabling haddock still created index.html
@@ -62,15 +66,15 @@
 %global ghc_llvm_archs s390x
 %global ghc_unregisterized_arches noarch loongarch64
 
-%global base_ver 4.21.0.0
-%global cabal_ver 3.14.1.0
+%global base_ver 4.21.2.0
+%global cabal_ver 3.14.2.0
 %global ghc_compact_ver 0.1.0.0
 %global hpc_ver 0.7.0.2
 %global hsc2hs_ver 0.68.10
 %global ghc_bignum_ver 1.3
 %global xhtml_ver 3000.2.2.1
-%global ghc_ver_for_lib 9.1202.0
-%global haddock_api_ver 2.30.0
+%global ghc_ver_for_lib 9.1204.0
+%global haddock_api_ver 2.32.0
 
 Name:           ghc
 Version:        %{short_version}
@@ -87,10 +91,7 @@ Source7:        runghc.man
 Patch1:         ghc-gen_contents_index-haddock-path.patch
 # https://ghc.haskell.org/trac/ghc/ticket/15689
 Patch2:         ghc-Cabal-install-PATH-warning.patch
-Patch3:         Cabal-absolute-datadir.patch
 Patch200:       ghc-hadrian-s390x-rts--qg.patch
-Patch400:       gnu23-hp2ps.patch
-Patch500:       aarch64_inter_far.patch
 
 BuildRequires:  binutils
 BuildRequires:  gcc-c++
@@ -233,9 +234,9 @@ This package provides the User Guide and Haddock manual.
 %ghc_lib_subpackage -d bytestring-0.12.2.0
 %ghc_lib_subpackage -d containers-0.7
 %ghc_lib_subpackage -d deepseq-1.5.1.0
-%ghc_lib_subpackage -d directory-1.3.9.0
-%ghc_lib_subpackage -d exceptions-0.10.9
-%ghc_lib_subpackage -d filepath-1.5.4.0
+%ghc_lib_subpackage -d directory-1.3.10.1
+%ghc_lib_subpackage -d exceptions-0.10.12
+%ghc_lib_subpackage -d filepath-1.5.5.0
 %ghc_lib_subpackage -d -x ghc-%{ghc_version_override}
 %ghc_lib_subpackage -d -x ghc-bignum-%{ghc_bignum_ver}
 %ghc_lib_subpackage -d -x ghc-boot-%{ghc_version_override}
@@ -245,29 +246,29 @@ This package provides the User Guide and Haddock manual.
 %ghc_lib_subpackage -d ghc-internal-%{ghc_ver_for_lib}
 %ghc_lib_subpackage -d -x ghc-heap-%{ghc_version_override}
 %ghc_lib_subpackage -d -x ghci-%{ghc_version_override}
-%ghc_lib_subpackage -d haskeline-0.8.2.1
+%ghc_lib_subpackage -d haskeline-0.8.4.1
 %ghc_lib_subpackage -d -x hpc-%{hpc_ver}
-%ghc_lib_subpackage -d mtl-2.3.1
+%ghc_lib_subpackage -d mtl-2.3.2
 %ghc_lib_subpackage -d parsec-3.1.18.0
 %ghc_lib_subpackage -d pretty-1.1.3.6
-%ghc_lib_subpackage -d process-1.6.25.0
+%ghc_lib_subpackage -d process-1.6.26.1
 %ghc_lib_subpackage -d stm-2.5.3.1
 %ghc_lib_subpackage -d semaphore-compat-1.0.0
 %ghc_lib_subpackage -d template-haskell-2.23.0.0
 %ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.7
-%ghc_lib_subpackage -d text-2.1.2
+%ghc_lib_subpackage -d text-2.1.4
 %ghc_lib_subpackage -d time-1.14
-%ghc_lib_subpackage -d transformers-0.6.1.2
-%ghc_lib_subpackage -d unix-2.8.6.0
+%ghc_lib_subpackage -d transformers-0.6.3.0
+%ghc_lib_subpackage -d unix-2.8.8.0
 %ghc_lib_subpackage -d xhtml-%{xhtml_ver}
 # new in 9.10 
-%ghc_lib_subpackage -d os-string-2.0.7
+%ghc_lib_subpackage -d os-string-2.0.10
 %ghc_lib_subpackage -d ghc-toolchain-0.1.0.0
 %ghc_lib_subpackage -d ghc-platform-0.1.0.0
 # new in 9.12
 %ghc_lib_subpackage -d haddock-library-1.11.0
 %ghc_lib_subpackage -d haddock-api-%{haddock_api_ver}
-%ghc_lib_subpackage -d file-io-0.1.5 
+%ghc_lib_subpackage -d file-io-0.1.6 
 
 %global version %{ghc_version_override}
 
@@ -297,16 +298,10 @@ Installing this package causes %{name}-*-prof packages corresponding to
 %setup -q
 %patch -P 1 -p1
 %patch -P 2 -p1
-cd libraries/Cabal
-%patch -P 3 -p1
-cd ../..
 
 %ifarch ppc64le s390x
 %patch -P 200 -p1
 %endif
-
-%patch -P 400 -p1
-%patch -P 500 -p1
 
 rm libffi-tarballs/libffi-*.tar.gz
 
@@ -420,7 +415,7 @@ echo "%%dir %{ghclibdir}" >> %{name}-base%{?_ghcdynlibdir:-devel}.files
 
 %ghc_gen_filelists ghc-prim 0.13.0
 %ghc_gen_filelists integer-gmp 1.1
-%ghc_gen_filelists rts 1.0.2
+%ghc_gen_filelists rts 1.0.3
 
 %ghc_merge_filelist ghc-prim base
 %ghc_merge_filelist integer-gmp base
