@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-glib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        Binding to the GLIB library for Gtk2Hs
 License:        LGPL-2.1-only
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Patch01:        https://github.com/gtk2hs/gtk2hs/commit/2e1ddf6f4a28819f42db45859a83f3dd7ed14c0e.patch#/adapt-to-rts-api-change-in-ghc-9.12.x.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Cabal-prof
 BuildRequires:  ghc-base-devel
@@ -81,7 +82,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version} -p2
 
 %build
 %ghc_lib_build
