@@ -20,6 +20,7 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+%global skip_python311 1
 %else
 %define psuffix %{nil}
 %bcond_with test

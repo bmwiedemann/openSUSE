@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 10 08:45:36 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- skip builds for python311 for the test flavor. Several of the 
+  required packages are not available for python311.  
+
+-------------------------------------------------------------------
 Tue Mar 17 03:34:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.10:
