@@ -36,7 +36,7 @@ Requires(pre):  group(prometheus)
 Requires(post): permissions
 ExcludeArch:    s390
 
-%if ! 0%{?suse_version}
+%if ! 0%{?suse_version} || 0%{?suse_version} == 1315
 ExclusiveArch:  do_not_build
 %endif
 

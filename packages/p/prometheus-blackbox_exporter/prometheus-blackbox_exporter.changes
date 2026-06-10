@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 15:47:23 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Do not build for SLE 12
+
+-------------------------------------------------------------------
 Tue Jun  2 13:15:57 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2026-39821: Bump golang.org/x/net to version 0.55.0
