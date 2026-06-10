@@ -1,7 +1,7 @@
 cabal-version:   2.2
 Name:            data-fix
 Version:         0.3.4
-x-revision:      1
+x-revision:      2
 License:         BSD-3-Clause
 License-file:    LICENSE
 Author:          Anton Kholomiov, Edward Kmett, Oleg Grenrus
@@ -29,8 +29,9 @@ Tested-With:
    || ==9.4.8
    || ==9.6.6
    || ==9.8.4
-   || ==9.10.1
-   || ==9.12.1
+   || ==9.10.2
+   || ==9.12.2
+   || ==9.14.1
 
 extra-source-files:
   CHANGELOG.md
@@ -51,6 +52,6 @@ library
       -Wredundant-constraints -Widentities -Wmissing-export-lists
 
   build-depends:
-    , base      >=4.12.0.0 && <4.22
+    , base      >=4.12.0.0 && <4.23
     , deepseq   >=1.4.4.0  && <1.6
     , hashable  >=1.4.4.0  && <1.6
