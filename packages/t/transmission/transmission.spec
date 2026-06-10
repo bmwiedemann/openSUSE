@@ -31,7 +31,7 @@
 %define webui_opt OFF
 %endif
 Name:           transmission
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        A BitTorrent client with multiple UIs
 License:        (GPL-2.0-only OR GPL-3.0-only) AND MIT
@@ -84,6 +84,7 @@ BuildRequires:  ninja
 %if %{with webui}
 BuildRequires:  npm >= 8.1.307
 %endif
+ExcludeArch: %{ix86}
 
 %description
 Transmission is a BitTorrent client. It has GTK+ and Qt GUI clients,

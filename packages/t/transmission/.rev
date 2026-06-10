@@ -1130,4 +1130,41 @@
     <comment></comment>
     <requestid>1334275</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>700d8a772de6273c98c357a3cec079d1</srcmd5>
+    <version>4.1.2</version>
+    <time>1781099464</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.1.2:
+  + Highlights: Fixed `4.1.0` bug that could cause duplicate HTTP
+    announces to be sent to trackers.
+  + All Platforms:
+    - Reject benc data that has invalid characters.
+    - Fixed a bug during the startup sequence where if one torrent
+      failed to parse, subsequent torrents would also fail.
+    - Fixed a bug that stalled some downloads at 99%.
+    - Fixed a `4.1.0` upgrade bug that could overwrite
+      `utp_enabled` and `tcp_enabled` settings.
+    - Fixed a `4.1.0` crash that could happen when a peer supplied
+      `reqq` value smaller than 32 in LTEP handshake.
+    - Fixed a `4.1.0` regression that periodically wrote upload &amp;
+      download stats to disk even when Transmission had been idle
+      since the last write, preventing the stats file's disk from
+      hibernating while idle.
+    - Fixed a `4.1.0` bug that prevented TCP peer connections on
+      some systems.
+    - Added safeguards to HTTP responses to prevent clickjacking.
+    - Fixed edge case that didn't preserve the order of a batch of
+      torrents when moving their queue position up or down.
+    - Added sanitization for UTF-8 client names provided by peers
+      during handshake.
+    - Stopped appending redundant zeros to blocklist files when
+      downloaded from a remote URL.
+    - Fixed a build failure that occurred when building with
+      link-time optimization.
+  + Qt Client:
+    - Fixed a `4.1.0` crash when parsing some RPC responses from
+      older Transmission servers.</comment>
+    <requestid>1358235</requestid>
+  </revision>
 </revisionlist>
