@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  9 21:26:48 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated tg_owt to git20250512.
+  * Fixed LLVM 20+ build error.
+- Updated td to git20260516.
+  * No changes provides.
+- Updated telegram-desktop to 6.9.1
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.9.1
+
+-------------------------------------------------------------------
 Tue May 19 12:56:11 UTC 2026 - Xu Zhao <i@xuzhao.net>
 
 - Remove tg_owt-h264-dlopen.patch.

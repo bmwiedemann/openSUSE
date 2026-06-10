@@ -21,17 +21,17 @@
 %define api_id    611335
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
 %define ada_ver   3.4.4
-%define owt_ver   git20260123
-%define td_ver    git20260508
+%define owt_ver   git20250512
+%define td_ver    git20260516
 Name:           telegram-desktop
-Version:        6.8.2
+Version:        6.9.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
 URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
 Source1:        https://github.com/ada-url/ada/archive/refs/tags/v%{ada_ver}.tar.gz#/ada-%{ada_ver}.tar.gz
-# n=tg_owt && cd /tmp && git clone --depth=1 https://github.com/desktop-app/$n && pushd $n && git checkout 5c5c71258777d0196dbb3a09cc37d2f56ead28ab && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && git submodule update --init --depth=1 && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+# n=tg_owt && cd /tmp && git clone --depth=1 https://github.com/desktop-app/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && git submodule update --init --depth=1 && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source2:        tg_owt-%{owt_ver}.tar.xz
 # n=td && cd /tmp && git clone --depth=1 https://github.com/tdlib/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source3:        td-%{td_ver}.tar.xz
@@ -48,6 +48,7 @@ BuildRequires:  ninja
 BuildRequires:  noopenh264-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  qt6-shadertools
 BuildRequires:  cmake(Microsoft.GSL)
 BuildRequires:  cmake(Qt6GuiPrivate)
 BuildRequires:  cmake(Qt6WaylandClientPrivate)
@@ -127,11 +128,8 @@ The service also provides APIs to independent developers.
 
 %prep
 %setup -q -n tdesktop-%{version}-full -b1 -b2 -b3
-
 mv ../ada-%{ada_ver} Telegram/ThirdParty/ada
-
 mv ../tg_owt-%{owt_ver} Telegram/ThirdParty/tg_owt
-
 mv ../td-%{td_ver} Telegram/ThirdParty/td
 
 %build
