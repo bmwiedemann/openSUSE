@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 14:15:41 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Force remove boost_atomic directory to fix the failing build
+  with GCC 16
+
+-------------------------------------------------------------------
 Mon May 04 06:56:23 CEST 2026 - Arvin Schnell <aschnell@suse.com>
 
 - extended baselibs.conf

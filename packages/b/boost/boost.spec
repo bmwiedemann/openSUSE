@@ -1364,7 +1364,9 @@ rm -rf %{buildroot}%{_libdir}/cmake/boost_{w,}serialization-%{version}
 rm -r %{buildroot}%{_libdir}/cmake/boost_container-%{version}
 rm -f %{buildroot}%{_libdir}/libboost_container.so*
 %if %{with mpi}
-rm -r %{buildroot}%{_libdir}/cmake/boost_atomic-%{version}
+# atomic is a header-only library with GCC 16, force remove it
+# so the build doesn't fail when the directory is missing
+rm -rf %{buildroot}%{_libdir}/cmake/boost_atomic-%{version}
 rm -f %{buildroot}%{_libdir}/libboost_atomic.so*
 rm -r %{buildroot}%{_libdir}/cmake/boost_filesystem-%{version}
 rm -f %{buildroot}%{_libdir}/libboost_filesystem.so*
