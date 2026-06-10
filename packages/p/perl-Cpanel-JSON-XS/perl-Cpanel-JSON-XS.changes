@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jun  8 09:55:43 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.420.0 (4.42)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.42 2026-06-27 (rurban)
+  	- Ensure encode with a type spec hashref does not change the hashref argument (GH #240)
+          - Fix -e docs: "written" → "read" (GH #239, reported by Ron Savage).
+          - Fix Boolean eq overload matching undef (GH #207, reported by fd-t).
+            Cpanel::JSON::XS::Boolean overloaded eq would match undef as equal
+            to false because undef stringifies to "". Added defined() guard.
+          - Fix error messages showing overloaded stringification for blessed
+            objects (GH #191, reported by karenetheridge). Error messages now
+            use ClassName=TYPE(addr) format, bypassing any "" overload.
+          - Fix type_all_string overriding allow_blessed/convert_blessed (GH #175,
+            reported by alpha6). With type_all_string + allow_blessed, blessed
+            objects are now encoded as null (not stringified as HASH address).
+          - Fix infinite recursion when encode is called from a "" overload
+            (GH #128, reported by pbrthemaster). The recursion guard temporarily
+            clears convert_blessed and allow_stringify flags on the JSON object
+            before calling the overload, preventing re-entrant encode loops.
+          - Fix $obj->new creating a broken object (GH #93, reported by cpansprout).
+            When new() is called on an existing object (e.g. $json->new->new),
+            the class name is now extracted from the object's stash rather than
+            using the stringified reference.
+          - Change allow_nonref default to true (GH #241, matching JSON::PP and
+            JSON::XS 4.0+ and the insecure RFC 7159).
+            encode and decode now accept non-reference values by default.
+            decode_json() with an explicit 0/1 second argument still works.
+            allow_nonref(0) to disable scalars-only for secure JSON.
+          - Fix minor t/12_blessed.t typo.
+          - Fix GH #112: encode large whole-number NV values without .0 on
+            32-bit Perl (values exceeding UV_MAX that Perl stores as float).
+          - Fix GH #197: prefer IOK over pNOK when encoding values where
+            IV is accurate but NV is imprecise (SvNOK not set).
+
+-------------------------------------------------------------------
 Thu May 28 08:53:35 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.410.0 (4.41)
