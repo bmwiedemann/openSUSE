@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Jun  6 10:48:22 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update unicode-collation to version 0.1.3.7.
+  ## 0.1.3.7
+
+    * Docs: recommend `sortOn (sortKey c)` over `sortBy (collate c)`.
+      `collate` recomputes the sort key of each argument on every
+      comparison, whereas `sortOn` computes each key only once.  Update
+      the headline example and guidance accordingly.
+
+    * Replace IntSet lookups with range checks in implicit weight calculation.
+      `calculateImplicitWeight` previously tested CJK/ideograph
+      membership using large IntSets defined in its where-clause.
+      Since the data is essentially contiguous ranges, replace the
+      IntSets with simple range-comparison predicates. This removes
+      is ~25% faster on CJK-heavy sorting at -O1. Also drop a
+      duplicate range, remove the now-unused Data.IntSet import,
+      and correct a misleading (harmless, due to Word16 truncation)
+      0x7FFFF mask to 0x7FFF in the fallback case.
+
+    * Test: guard implicit-weight ideograph ranges against data drift.
+      The CJK/Tangut/Nushu/Khitan ranges in Text.Collate.Collation are
+      hand-coded and decoupled from the shipped Unicode data.  Add a test
+      that enumerates every code point the data marks as an ideograph
+      (from the @implicitweights directives in allkeys.txt and the CJK
+      Ideograph First/Last markers in UnicodeData.txt) and asserts each
+      receives an ideographic implicit primary weight (< 0xFBC0) rather
+      than the generic unassigned bucket.  A future data bump that does
+      not update the ranges will now fail, naming the uncovered points.
+
+    * Benchmarks: force full sorts with `nf` instead of `whnf`.
+      `whnf` only evaluated the result list to its first cons cell, so the
+      benchmarks measured finding the minimum rather than a full sort. Using
+      `nf` forces the entire sorted list, giving a representative measurement.
+
+    * Add `bench-sortkey` benchmark comparing `collate` with `sortKey`.
+      This self-contained benchmark (no text-icu/QuickCheck deps) measures
+      `sortBy (collate c)` against `sortOn (sortKey c)` across several input
+      shapes, demonstrating the speedup from computing each sort key once.
+
+    * Add an `icu-benchmark` flag (default off) guarding the existing
+      text-icu benchmark, so the new benchmark can be built without the ICU
+      C library.
+
+    * Add a CJK-focused benchmark exercising the implicit weight path.
+
+    * Add flake.nix.
+
+    * CI: Support GHC 9.10 (David Binder), 9.12 (Austin Ziegler), and
+      9.14 (Li-yao Xia).
+
+    * Add cabal.project.
+
+-------------------------------------------------------------------
 Thu Jan 23 06:07:35 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update unicode-collation to version 0.1.3.6 revision 2.
