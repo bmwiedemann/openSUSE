@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-pandoc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.8.3
+Version:        3.10
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -206,8 +206,8 @@ Word processor formats (Docx, RTF, ODT) - Interactive notebook formats (Jupyter
 notebook ipynb) - Page layout formats (InDesign ICML) - Wiki markup formats
 (MediaWiki, DokuWiki, TikiWiki, TWiki, Vimwiki, XWiki, ZimWiki, Jira wiki,
 Creole) - Slide show formats (LaTeX Beamer, PowerPoint, Slidy, reveal.js,
-Slideous, S5, DZSlides) - Data formats (CSV and TSV tables) - PDF (via external
-programs such as pdflatex or wkhtmltopdf)
+Slideous, S5, DZSlides) - Data formats (CSV and TSV tables, Excel spreadsheets)
+- PDF (via external programs such as pdflatex or wkhtmltopdf)
 
 Pandoc can convert mathematical content in documents between TeX, MathML, Word
 equations, roff eqn, typst, and plain text. It includes a powerful system for
@@ -428,6 +428,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.vimdoc
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.xwiki
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.zimwiki
+%{_datadir}/%{pkg_name}-%{version}/data/templates/document-metadata.latex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/font-settings.latex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/fonts.latex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/hypersetup.latex
