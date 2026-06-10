@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-uuid
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.16
+Version:        1.3.16.1
 Release:        0
 Summary:        For creating, comparing, parsing and printing Universally Unique Identifiers
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -45,8 +44,6 @@ BuildRequires:  ghc-network-info-prof
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
 BuildRequires:  ghc-uuid-types-devel
@@ -97,7 +94,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
