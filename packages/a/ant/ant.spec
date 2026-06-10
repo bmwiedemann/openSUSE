@@ -97,7 +97,7 @@ BuildRequires:  xz-java
 %endif
 %if %{with junit5}
 BuildRequires:  apiguardian
-BuildRequires:  junit5
+BuildRequires:  junit5-minimal
 %endif
 %if 0%{?suse_version} > 1320
 BuildRequires:  strip-nondeterminism

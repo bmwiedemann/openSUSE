@@ -32,5 +32,4 @@ rm {}`, but it gives you the ability to be cross-platform--to work
 anywhere and everywhere. If you really need to execute a shell command,
 Ant has an &lt;exec&gt; task that allows different commands to be executed
 based on the OS used.</description>
-  <devel project="Java:packages" package="ant"/>
 </package>
