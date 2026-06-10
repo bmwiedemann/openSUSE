@@ -17,7 +17,7 @@
 
 
 Name:           gitsign
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        Keyless Git signing using Sigstore
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         gitsign-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        gitsign-credential-cache.service
 Source3:        gitsign-credential-cache.socket
-BuildRequires:  go1.25 >= 1.25.5
+BuildRequires:  go1.26 >= 1.26.4
 
 %description
 Keyless Git signing with Sigstore!

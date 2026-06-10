@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 10 10:59:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.16.1:
+  * Bump sigstore/cosign-installer from 4.1.1 to 4.1.2 in the
+    actions group (#804)
+  * Return the actual signer cert from CertVerifier.Verify (#810)
+  * Updates (#803)
+  * Reject malformed objects in attest predicate generation (#809)
+  * Bump github.com/go-openapi/strfmt in the gomod group across 1
+    directory (#811)
+
+-------------------------------------------------------------------
 Wed May 06 16:05:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.16.0:
