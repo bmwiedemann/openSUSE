@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-network-byte-order
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name network-byte-order
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 Summary:        Network byte order utilities
 License:        BSD-3-Clause

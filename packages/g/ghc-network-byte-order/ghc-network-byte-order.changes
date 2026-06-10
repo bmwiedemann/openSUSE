@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  9 01:33:21 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update network-byte-order to version 0.1.8.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Oct 12 01:29:09 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update network-byte-order to version 0.1.7.
