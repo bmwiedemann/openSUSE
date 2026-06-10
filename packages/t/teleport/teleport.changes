@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 10 05:11:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.25:
+  * Fixed minor formatting bug on tsh request show output. #67446
+  * Prevented ssh users from being able to cancel other users'
+    remote port forwards. #67443
+  * Updated Go to 1.25.11. #67422
+  * Fixed "error gathering metrics" log spam. #67352
+
+-------------------------------------------------------------------
 Tue Jun  2 11:17:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.7.24:
