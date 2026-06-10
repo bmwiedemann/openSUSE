@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  9 18:21:02 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update transformers-base to version 0.4.6.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:43 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
