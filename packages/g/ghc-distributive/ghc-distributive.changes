@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 10 16:18:39 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update distributive to version 0.6.3.
+  0.6.3 [2026.01.10]
+  ------------------
+  * Drop support for pre-8.0 versions of GHC.
+  * Drop unnecessary `base-orphans` dependency.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:37 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
