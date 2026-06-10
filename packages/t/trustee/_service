@@ -1,0 +1,74 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="exclude">.devcontainer</param>
+    <param name="exclude">.dockerignore</param>
+    <param name="exclude">.gitattributes</param>
+    <param name="exclude">.github</param>
+    <param name="exclude">.gitignore</param>
+    <param name="exclude">.lycheeignore</param>
+    <param name="exclude">AGENTS.md</param>
+    <param name="exclude">CODEOWNERS</param>
+    <param name="exclude">DEVELOPMENT.md</param>
+    <param name="exclude">Makefile</param>
+    <param name="exclude">README.md</param>
+    <param name="exclude">attestation-service/.dockerignore</param>
+    <param name="exclude">attestation-service/.gitignore</param>
+    <param name="exclude">attestation-service/Makefile</param>
+    <param name="exclude">attestation-service/docker</param>
+    <param name="exclude">attestation-service/docs/example.token.json</param>
+    <param name="exclude">attestation-service/docs/restful-as.md</param>
+    <param name="exclude">attestation-service/tests</param>
+    <param name="exclude">deps/key-value-storage/README.md</param>
+    <param name="exclude">deps/key-value-storage/src/local_fs/README.md</param>
+    <param name="exclude">deps/key-value-storage/src/local_json/README.md</param>
+    <param name="exclude">deps/key-value-storage/src/postgres/README.md</param>
+    <param name="exclude">deps/verifier/src/cca/README.md</param>
+    <param name="exclude">deps/verifier/src/nvidia/README.md</param>
+    <param name="exclude">deps/verifier/src/se/README.md</param>
+    <param name="exclude">deps/verifier/test_data</param>
+    <param name="exclude">docker-compose.yml</param>
+    <param name="exclude">hack</param>
+    <param name="exclude">kbs/.dockerignore</param>
+    <param name="exclude">kbs/.gitignore</param>
+    <param name="exclude">kbs/Makefile</param>
+    <param name="exclude">kbs/config/docker-compose</param>
+    <param name="exclude">kbs/config/kubernetes/README.md</param>
+    <param name="exclude">kbs/docker</param>
+    <param name="exclude">kbs/sample_policies/README.md</param>
+    <param name="exclude">kbs/test</param>
+    <param name="exclude">release-guide.md</param>
+    <param name="exclude">rvps/Makefile</param>
+    <param name="exclude">rvps/diagrams</param>
+    <param name="exclude">rvps/docker</param>
+    <param name="exclude">rvps/docs</param>
+    <param name="exclude">rvps/src/extractors/in_toto/README.md</param>
+    <param name="exclude">rvps/src/extractors/in_toto/shim/README.md</param>
+    <param name="exclude">rvps/src/extractors/sample/README.md</param>
+    <param name="exclude">rvps/src/extractors/swid/README.md</param>
+    <param name="exclude">rvps/src/extractors/swid/test-rim.b64</param>
+    <param name="exclude">tools/trustee-cli/Dockerfile</param>
+    <param name="exclude">tools/trustee-cli/Makefile</param>
+    <param name="filename">trustee</param>
+    <param name="match-tag">*</param>
+    <param name="revision">435ed3c78a2c86560776a53d95d371441b61bf32</param>
+    <param name="scm">git</param>
+    <param name="submodules">enable</param>
+    <param name="url">https://github.com/confidential-containers/trustee.git</param>
+    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="match-tag">v[0-9]*.[0-9]*.[0-9]*</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">trustee</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+     <param name="srcdir">trustee</param>
+     <param name="compression">xz</param>
+     <param name="update">false</param>
+  </service>
+</services>
