@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar  8 12:38:46 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update ech-config to version 0.0.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Mar 16 23:01:35 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Add ech-config at version 0.0.1.
