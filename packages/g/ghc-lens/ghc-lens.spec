@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-lens
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.3.5
+Version:        5.3.6
 Release:        0
 Summary:        Lenses, Folds and Traversals
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
@@ -87,8 +86,6 @@ BuildRequires:  ghc-th-abstraction-devel
 BuildRequires:  ghc-th-abstraction-prof
 BuildRequires:  ghc-these-devel
 BuildRequires:  ghc-these-prof
-BuildRequires:  ghc-transformers-compat-devel
-BuildRequires:  ghc-transformers-compat-prof
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unordered-containers-devel
@@ -147,10 +144,7 @@ using lenses can be found in the
 With some signatures simplified, the core of the hierarchy of lens-like
 constructions looks like:
 
-<<http://i.imgur.com/ALlbPRa.png>>
-
-<https://raw.githubusercontent.com/ekmett/lens/master/images/Hierarchy.png
-(Local Copy)>
+<<https://raw.githubusercontent.com/ekmett/lens/master/images/Hierarchy.png>>
 
 You can compose any two elements of the hierarchy above using '(.)' from the
 'Prelude', and you can use any element of the hierarchy as any type it linked
@@ -224,7 +218,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
