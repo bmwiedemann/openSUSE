@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-JWT
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,25 @@
 
 %define cpan_name Crypt-JWT
 Name:           perl-Crypt-JWT
-Version:        0.37.0
+Version:        0.38.0
 Release:        0
-# 0.037 -> normalize -> 0.37.0
-%define cpan_version 0.037
+# 0.038 -> normalize -> 0.38.0
+%define cpan_version 0.038
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        JSON Web Token
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Compress::Raw::Zlib)
-BuildRequires:  perl(CryptX) >= 0.67.0
+BuildRequires:  perl(Compress::Raw::Zlib) >= 2.057
+BuildRequires:  perl(CryptX) >= 0.67
 BuildRequires:  perl(JSON)
 BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(Compress::Raw::Zlib)
-Requires:       perl(CryptX) >= 0.67.0
+Requires:       perl(Compress::Raw::Zlib) >= 2.057
+Requires:       perl(CryptX) >= 0.67
 Requires:       perl(JSON)
 Requires:       perl(Test::More) >= 0.88
 Provides:       perl(Crypt::JWT) = %{version}
@@ -49,14 +50,15 @@ The implementation covers not only *JSON Web Signature (JWS)* -
 https://tools.ietf.org/html/rfc7515, but also *JSON Web Encryption (JWE)* -
 https://tools.ietf.org/html/rfc7516.
 
-The module implements *all (100%) algorithms* defined in
+The module implements all algorithms defined in
 https://tools.ietf.org/html/rfc7518 - *JSON Web Algorithms (JWA)*.
 
 This module supports *Compact JWS/JWE* and *Flattened JWS/JWE JSON*
-serialization, general JSON serialization is not supported yet.
+serialization. General (multi-recipient) JSON serialization is not
+supported.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -71,7 +73,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README.md
+%doc Changes README.md SECURITY.md
 %license LICENSE
 
 %changelog
