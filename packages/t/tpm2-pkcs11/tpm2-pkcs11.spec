@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-pkcs11
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,9 +38,11 @@ BuildRequires:  python-rpm-generators
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-base
 BuildRequires:  python3-cryptography
+BuildRequires:  python3-pip
 BuildRequires:  python3-pyasn1-modules
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tpm2-pytss
+BuildRequires:  python3-wheel
 BuildRequires:  tpm2.0-tools
 BuildRequires:  pkgconfig(libcrypto) >= 1.0.2g
 BuildRequires:  pkgconfig(p11-kit-1)
@@ -75,14 +77,14 @@ autoreconf -fiv
 %configure --disable-static --enable-unit
 %make_build
 cd tools
-%python_build
+%pyproject_wheel
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_sysconfdir}/tpm2_pkcs11
 cd tools
-%python_install
+%pyproject_install
 %fdupes %{buildroot}
 
 %check
@@ -101,7 +103,7 @@ cd tools
 %{_sysconfdir}/tpm2_pkcs11
 %{_bindir}/tpm2_ptool
 %{python_sitelib}/tpm2_pkcs11
-%{python_sitelib}/*.egg-info
+%{python_sitelib}/tpm2_pkcs11_tools-*.dist-info
 %{_libdir}/pkcs11/libtpm2_pkcs11.so.%{so_ver}*
 %{_libdir}/pkcs11/libtpm2_pkcs11.so
 %{_libdir}/pkgconfig/tpm2-pkcs11.pc

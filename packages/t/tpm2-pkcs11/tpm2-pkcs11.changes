@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 01:07:21 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install the tools.
+
+-------------------------------------------------------------------
 Thu Dec 12 12:37:19 UTC 2024 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Enable unit testing
