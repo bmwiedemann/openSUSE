@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-th-lift
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.6
+Version:        0.8.7
 Release:        0
 Summary:        Derive Template Haskell's Lift class for datatypes
 License:        (BSD-3-Clause OR GPL-2.0-only)

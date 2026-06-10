@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  4 01:10:10 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update th-lift to version 0.8.7.
+  ## [0.8.7] - 2026.01.03
+
+  * Support building with `template-haskell-2.24.*`.
+  * Remove unnecessary `ghc-prim` dependency.
+
+-------------------------------------------------------------------
 Thu Dec  5 12:34:34 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update th-lift to version 0.8.6.
