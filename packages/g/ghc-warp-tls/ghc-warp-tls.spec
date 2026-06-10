@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-warp-tls
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name warp-tls
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        3.4.13
+Version:        3.4.14
 Release:        0
 Summary:        HTTP over TLS support for Warp via the TLS package
 License:        MIT
@@ -35,6 +35,8 @@ BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-recv-devel
 BuildRequires:  ghc-recv-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-stm-prof
 BuildRequires:  ghc-streaming-commons-devel
 BuildRequires:  ghc-streaming-commons-prof
 BuildRequires:  ghc-tls-devel
