@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 27 01:49:37 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update stm-chans to version 3.0.0.11.
+  3.0.0.11 (2026-02-26):
+      - Updating the `Tested-With` field for ghc 9.14 (didn't actually need to
+        nudge the upper bound on 'base', because it's already lenient)
+      - Also silencing some warnings on ghc >=9.12 about deriving Typeable.
+  3.0.0.10 (2024-08-28):
+      - Updating the `Tested-With` field for ghc 9.10 (didn't actually need to
+        nudge the upper bound on 'base', because it's already lenient)
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:26 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

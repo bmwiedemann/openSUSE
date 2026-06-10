@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-stm-chans
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name stm-chans
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        3.0.0.9
+Version:        3.0.0.11
 Release:        0
 Summary:        Additional types of channels for STM
 License:        BSD-3-Clause
