@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan  7 11:26:16 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update async to version 2.2.6.
+  ## Changes in 2.2.6
+
+   - Added Control.Concurrent.Stream for processing streams with a fixed
+     number of workers. Includes a bounded version of mapConcurrently:
+     mapConcurrentlyBounded.
+   - Added Control.Concurrent.Async.Warden for a way to create Asyncs that
+     is more flexible than 'withAsync' but retains the guarantee of cancelling
+     orphaned threads, unlike 'async'.
+   - support GHC 9.12, GHC 9.14, and MicroHs
+   - cabal flag debug-auto-label: label threads automatically (#167)
+
+-------------------------------------------------------------------
+Tue Jan  6 10:11:14 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update async to version 2.2.5 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Nov  6 01:56:41 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update async to version 2.2.5 revision 3.
