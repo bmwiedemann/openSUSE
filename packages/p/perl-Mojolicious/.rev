@@ -1742,4 +1742,18 @@ Tons of changes, just the peak of the ice berg:
     - Fixed Windows compatibility issues of Mojo::File::list_tree.</comment>
     <requestid>1352905</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>0dcd8b199cfc695d6106f359cd5d3f3c</srcmd5>
+    <version>9.460.0</version>
+    <time>1781100872</time>
+    <user>anag_factory</user>
+    <comment>- updated to 9.460.0 (9.46)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+  9.46  2026-06-04
+    - Added random_bytes function to Mojo::Util. (leont)
+    - Improved randomness for CSRF token generation. (leont)
+    - Fixed tls_options handling in Mojo::IOLoop::TLS. (krauro)
+    - Fixed spec compliance issue with attribute selectors in Mojo::DOM::CSS.</comment>
+    <requestid>1358525</requestid>
+  </revision>
 </revisionlist>
