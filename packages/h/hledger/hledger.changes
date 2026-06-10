@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 28 22:45:20 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.52.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.52.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Fri Jan  9 03:59:52 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.51.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Jan  8 12:37:36 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.51.2.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-1.51.2/src/CHANGES.md
+
+-------------------------------------------------------------------
 Mon Dec  8 21:11:10 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update hledger to version 1.51.1.
