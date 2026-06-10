@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  8 15:35:06 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hslua-objectorientation to version 2.5.0.
+  ## hslua-objectorientation-2.5.0
+
+  Released 2026-01-08.
+
+  - Removed function `udDocs`. It is not very useful and appears to
+    be unused.
+
+  - Allow *hslua-typing* 0.2.\*.
+
+-------------------------------------------------------------------
 Mon Jun 23 09:59:20 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update hslua-objectorientation to version 2.4.0.
