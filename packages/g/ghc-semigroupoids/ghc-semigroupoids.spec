@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-semigroupoids
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global pkg_name semigroupoids
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Semigroupoids: Category sans id
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-orphans-devel
@@ -39,8 +39,6 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-contravariant-devel
 BuildRequires:  ghc-contravariant-prof
-BuildRequires:  ghc-distributive-devel
-BuildRequires:  ghc-distributive-prof
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-rpm-macros

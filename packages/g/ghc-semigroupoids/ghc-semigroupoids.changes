@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 11 02:52:06 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update semigroupoids to version 6.0.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Jan 10 20:49:26 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update semigroupoids to version 6.0.2.
+  6.0.2 [2026.01.10]
+  ------------------
+  * Add `Apply` and `Bind` instances for strict and lazy `ST`.
+  * Remove unused `distributive` dependency.
+
+-------------------------------------------------------------------
 Sun Mar  2 14:25:49 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update semigroupoids to version 6.0.1 revision 2.
