@@ -1,7 +1,7 @@
 cabal-version:      2.4
 name:               postgresql-libpq
 version:            0.11.0.0
-x-revision:         1
+x-revision:         2
 synopsis:           low-level binding to libpq
 description:
   This is a binding to libpq: the C application
@@ -33,8 +33,9 @@ tested-with:
    || ==9.4.8
    || ==9.6.6
    || ==9.8.4
-   || ==9.10.1
-   || ==9.12.1
+   || ==9.10.2
+   || ==9.12.2
+   || ==9.14.1
 
 extra-source-files: CHANGELOG.md
 
@@ -73,7 +74,7 @@ library
     Database.PostgreSQL.LibPQ.Ptr
 
   build-depends:
-    , base        >=4.12.0.0 && <4.22
+    , base        >=4.12.0.0 && <4.23
     , bytestring  >=0.10.8.2 && <0.13
 
   if !os(windows)
