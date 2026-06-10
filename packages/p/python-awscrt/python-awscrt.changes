@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 13:04:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.34.1
+  * Drop python 3.8 and 3.13t in manylinux2014 by @sfod in (#745)
+
+-------------------------------------------------------------------
 Tue May 26 13:28:48 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.33.0
