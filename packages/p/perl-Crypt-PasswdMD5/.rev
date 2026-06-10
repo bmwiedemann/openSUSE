@@ -23,4 +23,26 @@
     <comment></comment>
     <requestid>991553</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f0ca6442ac8954301256377f75f3c26</srcmd5>
+    <version>1.430.0</version>
+    <time>1781100892</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.430.0 (1.43)
+   see /usr/share/doc/packages/perl-Crypt-PasswdMD5/Changelog.ini
+  [V 1.43]
+  Date=2026-05-23T08:14:00
+  Deploy.Action=Upgrade
+  Deploy.Reason=Security
+  Comments= &lt;&lt;EOT
+  - Accept pull request from Paul Howarth to replace use of the cryptographically
+  weak rand() function with the much stronger Crypt::URandom::urandom().
+  With thanx. CVE-2026-6659 bsc#1264705
+  - Add Encode, Exporter, ExtUtils::MakeMaker to Makefile.PL.
+  - Add files AI_POLICY.md &amp; SECURITY.md.
+  - Delete file LICENSE.
+  - Add file LICENSE-GPL-3 with the latest version from https://fsf.org/.
+  EOT</comment>
+    <requestid>1358529</requestid>
+  </revision>
 </revisionlist>

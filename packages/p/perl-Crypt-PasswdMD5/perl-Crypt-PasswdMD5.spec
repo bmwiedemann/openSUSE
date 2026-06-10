@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-PasswdMD5
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,32 @@
 
 %define cpan_name Crypt-PasswdMD5
 Name:           perl-Crypt-PasswdMD5
-Version:        1.42
+Version:        1.430.0
 Release:        0
+# 1.43 -> normalize -> 1.430.0
+%define cpan_version 1.43
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Provide interoperable MD5-based crypt() functions
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSAVAGE/%{cpan_name}-%{version}.tgz
+Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSAVAGE/%{cpan_name}-%{cpan_version}.tgz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Crypt::URandom)
 BuildRequires:  perl(Digest::MD5) >= 2.53
+BuildRequires:  perl(Encode) >= 3.21
+BuildRequires:  perl(Exporter) >= 5.78
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.7
 BuildRequires:  perl(Test::More) >= 1.001002
+Requires:       perl(Crypt::URandom)
 Requires:       perl(Digest::MD5) >= 2.53
+Requires:       perl(Encode) >= 3.21
+Requires:       perl(Exporter) >= 5.78
+Requires:       perl(ExtUtils::MakeMaker) >= 7.7
+Provides:       perl(Crypt::PasswdMD5) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -48,7 +61,7 @@ generated, using the function random_md5_salt(). This function is not
 exported by default.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -63,7 +76,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README
-%license LICENSE
+%doc AI_POLICY.md Changes README SECURITY.md
+%license LICENSE-GPL-3
 
 %changelog
