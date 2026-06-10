@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 15 17:59:07 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update time-compat to version 1.9.9 revision 1.
+  # 1.9.9
+
+  - Support `time-1.15`
+    - add patterns for DiffTime & NominalDiffTime
+    - add more Lift instances
+    - fix MonthDay and QuarterDay clipping
+
+  # 1.9.8
+
+-------------------------------------------------------------------
 Thu Dec 26 13:31:38 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update time-compat to version 1.9.8.
