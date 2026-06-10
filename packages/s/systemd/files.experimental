@@ -29,7 +29,7 @@
 %dir %{_unitdir}/system-install.target.wants
 %endif
 # Main config files have been replaced in favor of drop-ins.
-%ghost %{_sysconfdir}/systemd/oomd.conf
+%ghost %attr(0644,root,root) %{_sysconfdir}/systemd/oomd.conf
 %if %{without bootstrap}
 %{_bindir}/oomctl
 %endif
@@ -129,6 +129,9 @@
 %{_mandir}/man8/systemd-pcrlock-make-policy.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-secureboot-authority.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-secureboot-policy.service.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-pcrlogin@.service.8.gz
+%endif
 %{_mandir}/man8/systemd-pcrmachine.service.8.gz
 %{_mandir}/man8/systemd-pcrnvdone.service.8.gz
 %endif
@@ -179,6 +182,9 @@
 %if %{with sd_boot}
 %{_prefix}/lib/nvpcr/cryptsetup.nvpcr
 %{_prefix}/lib/nvpcr/hardware.nvpcr
+%if %{with upstream}
+%{_prefix}/lib/nvpcr/login.nvpcr
+%endif
 %{_prefix}/lib/nvpcr/verity.nvpcr
 %if %{with upstream}
 %{_prefix}/lib/pcrlock.d/750-os-separator.pcrlock
@@ -351,6 +357,9 @@
 %{_unitdir}/systemd-pcrlock-secureboot-authority.service
 %{_unitdir}/systemd-pcrlock-secureboot-policy.service
 %{_unitdir}/systemd-pcrlock@.service
+%if %{with upstream}
+%{_unitdir}/systemd-pcrlogin@.service
+%endif
 %{_unitdir}/systemd-pcrmachine.service
 %{_unitdir}/systemd-pcrnvdone.service
 %if %{with upstream}

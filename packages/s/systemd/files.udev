@@ -52,10 +52,10 @@
 %ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
 %ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
 # Main config files have been replaced in favor of drop-ins.
-%ghost %{_sysconfdir}/systemd/pstore.conf
-%ghost %{_sysconfdir}/systemd/sleep.conf
-%ghost %{_sysconfdir}/systemd/timesyncd.conf
-%ghost %{_sysconfdir}/udev/iocost.conf
+%ghost %attr(0644,root,root) %{_sysconfdir}/systemd/pstore.conf
+%ghost %attr(0644,root,root) %{_sysconfdir}/systemd/sleep.conf
+%ghost %attr(0644,root,root) %{_sysconfdir}/systemd/timesyncd.conf
+%ghost %attr(0644,root,root) %{_sysconfdir}/udev/iocost.conf
 %{_bindir}/bootctl
 %if %{without bootstrap}
 %{_bindir}/kernel-install
@@ -69,9 +69,7 @@
 %{_datadir}/bash-completion/completions/bootctl
 %{_datadir}/bash-completion/completions/kernel-install
 %{_datadir}/bash-completion/completions/systemd-cryptenroll
-%if %{with upstream}
 %{_datadir}/bash-completion/completions/systemd-hwdb
-%endif
 %{_datadir}/bash-completion/completions/udevadm
 %endif
 %{_datadir}/dbus-1/system-services/org.freedesktop.timesync1.service
@@ -81,9 +79,7 @@
 %if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_bootctl
 %{_datadir}/zsh/site-functions/_kernel-install
-%if %{with upstream}
 %{_datadir}/zsh/site-functions/_systemd-hwdb
-%endif
 %{_datadir}/zsh/site-functions/_udevadm
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-fido2.so
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-pkcs11.so

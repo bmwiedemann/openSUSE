@@ -99,10 +99,10 @@
 %ghost %config(noreplace) %{_sysconfdir}/machine-info
 %ghost %dir %attr(2755, root, systemd-journal) %{_localstatedir}/log/journal
 # Main config files have been replaced in favor of drop-ins.
-%ghost %{_sysconfdir}/systemd/journald.conf
-%ghost %{_sysconfdir}/systemd/logind.conf
-%ghost %{_sysconfdir}/systemd/system.conf
-%ghost %{_sysconfdir}/systemd/user.conf
+%ghost %attr(0644,root,root) %{_sysconfdir}/systemd/journald.conf
+%ghost %attr(0644,root,root) %{_sysconfdir}/systemd/logind.conf
+%ghost %attr(0644,root,root) %{_sysconfdir}/systemd/system.conf
+%ghost %attr(0644,root,root) %{_sysconfdir}/systemd/user.conf
 %license LICENSE.GPL2
 %license LICENSE.LGPL2.1
 %{_bindir}/busctl

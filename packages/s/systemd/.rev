@@ -8050,4 +8050,22 @@ handle manual pages that consist only of a .so directive such as
     e5a5656b55 machined: do not allow unprivileged users to shell into the root namespace via varlink (bsc#1261978 CVE-2026-40224 GHSA-6pwp-j5vg-5j6m)</comment>
     <requestid>1353801</requestid>
   </revision>
+  <revision rev="469" vrev="1">
+    <srcmd5>efa24d655d51fac8d169f1eaf02cb5ad</srcmd5>
+    <version>260.2</version>
+    <time>1781099140</time>
+    <user>anag_factory</user>
+    <comment>- Temporarily add
+  1001-units-drop-Before-sockets.target-from-networkd-resol.patch until upstream
+  releases it.
+
+- Import commit a1ca0edbe97b747694600671445c19aa565f7b7e (merge of v260.2)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/1e45daa2fb423eb95ad00dcc389e03cfea8f86dc...a1ca0edbe97b747694600671445c19aa565f7b7e
+  This update includes the following fix:
+    a2c799878a logind: keep lingering users at startup-time GC (bsc#1262305)
+
+- Import commit 58a9b1726da0e2c89665897ca7e107315b2389e0 (merge of v259.5)</comment>
+    <requestid>1356344</requestid>
+  </revision>
 </revisionlist>

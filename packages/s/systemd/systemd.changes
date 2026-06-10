@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May 29 11:28:32 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Temporarily add
+  1001-units-drop-Before-sockets.target-from-networkd-resol.patch until upstream
+  releases it.
+
+-------------------------------------------------------------------
+Wed May 27 09:13:53 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit a1ca0edbe97b747694600671445c19aa565f7b7e (merge of v260.2)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/1e45daa2fb423eb95ad00dcc389e03cfea8f86dc...a1ca0edbe97b747694600671445c19aa565f7b7e
+
+  This update includes the following fix:
+
+    a2c799878a logind: keep lingering users at startup-time GC (bsc#1262305)
+
+-------------------------------------------------------------------
 Mon May 18 10:47:43 UTC 2026 - Franck Bui <fbui@suse.com>
 
 - Add a weak runtime dependency on libtss2-tcti-device0 to udev (bsc#1260357 bsc#1264224)
@@ -80,7 +99,7 @@ Sat Mar 14 13:45:18 UTC 2026 - JS <obs.coke518@passinbox.com>
 -------------------------------------------------------------------
 Fri Mar 13 17:38:09 UTC 2026 - Franck Bui <fbui@suse.com>
 
-- Import commit (merge of v259.5)
+- Import commit 58a9b1726da0e2c89665897ca7e107315b2389e0 (merge of v259.5)
 
   For a complete list of changes, visit:
   https://github.com/openSUSE/systemd/compare/e53173d15f11454a5770e7732e3eaed3105c11fc...58a9b1726da0e2c89665897ca7e107315b2389e0

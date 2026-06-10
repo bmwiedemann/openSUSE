@@ -12,7 +12,7 @@
 %dir %{_sysconfdir}/systemd/networkd.conf.d
 %dir %{_systemd_util_dir}/network
 # Main config files have been replaced in favor of drop-ins.
-%ghost %{_sysconfdir}/systemd/networkd.conf
+%ghost %attr(0644,root,root) %{_sysconfdir}/systemd/networkd.conf
 %{_bindir}/networkctl
 %{_datadir}/bash-completion/completions/networkctl
 %{_datadir}/dbus-1/interfaces/org.freedesktop.network1.DHCPServer.xml

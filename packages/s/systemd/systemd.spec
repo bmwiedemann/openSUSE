@@ -31,9 +31,9 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    260.1
+%define systemd_version    260.2
 %define systemd_release    0
-%define archive_version    +suse.7.g1e45daa2fb
+%define archive_version    +suse.8.ga1ca0edbe9
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -239,6 +239,7 @@ Source212:      files.ukify
 #
 %if %{without upstream}
 Patch:          0001-Drop-or-soften-some-upstream-warnings.patch
+Patch:          1001-units-drop-Before-sockets.target-from-networkd-resol.patch
 
 # The patches listed below are in quarantine. Normally, all changes must be
 # pushed to upstream first and then cherry-picked into the SUSE git
