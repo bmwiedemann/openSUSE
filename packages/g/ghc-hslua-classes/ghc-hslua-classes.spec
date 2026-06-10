@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-classes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Type classes for HsLua
 License:        MIT
@@ -33,8 +33,6 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-exceptions-devel
-BuildRequires:  ghc-exceptions-prof
 BuildRequires:  ghc-hslua-core-devel
 BuildRequires:  ghc-hslua-core-prof
 BuildRequires:  ghc-hslua-marshalling-devel
