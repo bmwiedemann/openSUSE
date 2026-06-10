@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan  8 15:43:42 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update lpeg to version 1.1.0.1.
+  ## lpeg-1.1.0.1
+
+  Released 2026-01-08.
+
+  -   Updated cabal files, list of tested GHC versions, copyright
+      years.
+
+-------------------------------------------------------------------
 Wed Sep 27 18:59:39 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update lpeg to version 1.1.0.
