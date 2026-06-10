@@ -20,7 +20,7 @@
 %define devname %{libname}-devel
 
 Name:           pcg-c
-Version:        0.94.1
+Version:        0.94.2
 Release:        0
 Summary:        Library implementing the PCG random number generation scheme
 License:        Apache-2.0 OR MIT
