@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 12 21:47:47 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-doclayout to version 1.2.1.1.
+  ## 1.2.1.1
+
+  Released 2026-01-12.
+
+  -   Fixed types in function documentations: Use `[[Doc]]` instead
+      of `` `Doc` ``. This convention is already used in other hslua
+      modules to markup internal links.
+
+-------------------------------------------------------------------
+Thu Jan  8 15:53:55 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-doclayout to version 1.2.1.
+  ## 1.2.1
+
+  Released 2026-01-08.
+
+  -   Require hslua-2.5.
+
+-------------------------------------------------------------------
 Mon Jun 23 10:59:06 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-doclayout to version 1.2.0.1.
