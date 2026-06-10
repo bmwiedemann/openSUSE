@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-aeson
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.2.3.0
+Version:        2.2.5.0
 Release:        0
 Summary:        Fast JSON parsing and encoding
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/4.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-OneTuple-devel
 BuildRequires:  ghc-OneTuple-prof
@@ -48,8 +47,6 @@ BuildRequires:  ghc-dlist-devel
 BuildRequires:  ghc-dlist-prof
 BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-exceptions-prof
-BuildRequires:  ghc-generically-devel
-BuildRequires:  ghc-generically-prof
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-indexed-traversable-devel
@@ -111,6 +108,8 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-generic-deriving-devel
 BuildRequires:  ghc-generic-deriving-prof
+BuildRequires:  ghc-generically-devel
+BuildRequires:  ghc-generically-prof
 BuildRequires:  ghc-quickcheck-instances-devel
 BuildRequires:  ghc-quickcheck-instances-prof
 BuildRequires:  ghc-tasty-devel
@@ -159,7 +158,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
