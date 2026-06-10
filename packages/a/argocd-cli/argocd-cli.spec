@@ -69,12 +69,12 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="\
-   -X github.com/argoproj/argo-cd/v2/common.version=%{version} \
-   -X github.com/argoproj/argo-cd/v2/common.buildDate=${BUILD_DATE} \
-   -X github.com/argoproj/argo-cd/v2/common.gitCommit=v%{version} \
-   -X github.com/argoproj/argo-cd/v2/common.gitTag=v%{version} \
-   -X github.com/argoproj/argo-cd/v2/common.gitTreeState=clean \
-   -X github.com/argoproj/argo-cd/v2/common.kubectlVersion=${KUBECTL_VERSION}" \
+   -X github.com/argoproj/argo-cd/v3/common.version=%{version} \
+   -X github.com/argoproj/argo-cd/v3/common.buildDate=${BUILD_DATE} \
+   -X github.com/argoproj/argo-cd/v3/common.gitCommit=v%{version} \
+   -X github.com/argoproj/argo-cd/v3/common.gitTag=v%{version} \
+   -X github.com/argoproj/argo-cd/v3/common.gitTreeState=clean \
+   -X github.com/argoproj/argo-cd/v3/common.kubectlVersion=${KUBECTL_VERSION}" \
    -o bin/%{executable_name} ./cmd/
 
 %install
@@ -88,6 +88,10 @@ mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %{buildroot}/%{_bindir}/%{executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{executable_name}
+
+%check
+%{buildroot}/%{_bindir}/%{executable_name} version --client
+%{buildroot}/%{_bindir}/%{executable_name} version --client | grep %{version}
 
 %files
 %doc README.md
