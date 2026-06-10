@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-adjunctions
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,23 +20,19 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        4.4.3
+Version:        4.4.4
 Release:        0
 Summary:        Adjunctions and representable functors
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-array-devel
-BuildRequires:  ghc-array-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-comonad-devel
 BuildRequires:  ghc-comonad-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-contravariant-devel
-BuildRequires:  ghc-contravariant-prof
 BuildRequires:  ghc-distributive-devel
 BuildRequires:  ghc-distributive-prof
 BuildRequires:  ghc-free-devel
@@ -48,16 +44,10 @@ BuildRequires:  ghc-profunctors-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-semigroupoids-devel
 BuildRequires:  ghc-semigroupoids-prof
-BuildRequires:  ghc-semigroups-devel
-BuildRequires:  ghc-semigroups-prof
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-tagged-prof
-BuildRequires:  ghc-transformers-compat-devel
-BuildRequires:  ghc-transformers-compat-prof
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
-BuildRequires:  ghc-void-devel
-BuildRequires:  ghc-void-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
