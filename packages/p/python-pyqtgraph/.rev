@@ -122,4 +122,13 @@
     <comment></comment>
     <requestid>1325125</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>1699b46b656e0a3d959ebad6fc6ebeef</srcmd5>
+    <version>0.14.0</version>
+    <time>1781099761</time>
+    <user>anag_factory</user>
+    <comment>- Add patch skip-single-values-svgexport.patch:
+  * Skip single values when exporting to SVG.</comment>
+    <requestid>1358302</requestid>
+  </revision>
 </revisionlist>

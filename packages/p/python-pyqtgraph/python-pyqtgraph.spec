@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyqtgraph
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,10 @@ Source:         https://github.com/pyqtgraph/pyqtgraph/archive/refs/tags/pyqtgra
 # PATCH-FIX-OPENSUSE - Borrowed from Fedora - https://src.fedoraproject.org/rpms/python-pyqtgraph/tree/
 # Upstream issue: https://github.com/pyqtgraph/pyqtgraph/issues/2644
 Patch1:         drop-unpackaged-sphinx-extensions.patch
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module numpy >= 1.17}
+# PATCH-FIX-OPENSUSE - Skip single values when exporting to SVG
+Patch2:         skip-single-values-svgexport.patch
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module numpy >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydata-sphinx-theme}
 BuildRequires:  %{python_module qt5 >= 5.12}
@@ -42,7 +44,8 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinx-autodoc-typehints
 BuildRequires:  python3-sphinx-design
 BuildRequires:  python3-sphinx-qt-documentation
-Requires:       python-numpy >= 1.17
+Requires:       python-colorama
+Requires:       python-numpy >= 1.25
 Requires:       (python-qt5 >= 5.12 or python-PyQt6 >= 6.1)
 Recommends:     python-colorcet
 Recommends:     python-cupy
