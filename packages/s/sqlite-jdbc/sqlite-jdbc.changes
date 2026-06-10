@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jun  5 07:45:43 UTC 2026 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.53.2.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.53.2 (3e1dabf)
+  * Build
+    ~ deps
+      + bump org.graalvm.buildtools:native-maven-plugin (d24c1cc)
+      + bump org.graalvm.buildtools:native-maven-plugin (751989a)
+      + bump org.graalvm.sdk:nativeimage from 25.0.2 to 25.0.3
+        (cc3e1a5)
+      + bump shanegenschaw/pull-request-comment-trigger (cc93aa7)
+    ~ deps-dev
+      + bump surefire.version from 3.5.5 to 3.5.6 (3c29706)
+      + bump org.apache.maven.plugins:maven-enforcer-plugin
+        (8a20a64)
+    ~ unscoped
+      + fail workflow if child workflow also fails (49ea263)
+      + remove PR comment trigger (03bfd9a)
+- Update to v3.53.1.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.53.1 (8263322)
+  * Changes
+    ~ rewrite amalgamation_version.sh for POSIX shell (52522d0)
+    ~ fix android usage (7ef8e0f)
+  * Build
+    ~ deps
+      + bump gummy-bears-api-24 to 0.14.0 (a28d6ce)
+      + bump gummy-bears-api-24 to 0.13.0 (248e1e9)
+    ~ deps-dev
+      + bump org.jreleaser:jreleaser-maven-plugin (396fdf3)
+      + bump com.tngtech.archunit:archunit-junit5 (458abe1)
+    ~ unscoped
+      + conditionally bootstrap SLF4J API JAR (bc7d223)
+      + make JAVA_CLASSPATH configurable (5aa7426)
+
+-------------------------------------------------------------------
 Thu Apr 23 22:37:19 UTC 2026 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.53.0.0
