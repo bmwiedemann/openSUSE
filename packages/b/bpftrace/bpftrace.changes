@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun  7 21:59:22 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to 0.26.1
+  * Fix reval and argX for session probes
+  * Fix self probe listing
+  * Fix statement probes for some compiler versions
+- Update to 0.26.0
+  * Stabilize imports of other bpftrace files (.bt) and BPF C sources
+  * Stabilize address-of operator (&)
+  * DWARF-based stack unwinding for user-space
+  * Statement probes (uprobe:binary@file:line[:column])
+  * New builtin write_user(dst, src, len) to write to user-space memory
+  * Fix subtraction and decrement ops not producing the correct type
+
+-------------------------------------------------------------------
 Thu May 14 08:41:00 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Remove redundant CMake build flags
