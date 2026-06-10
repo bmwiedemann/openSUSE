@@ -1269,4 +1269,12 @@ by zypper, as no packages with those names exist</comment>
     <comment></comment>
     <requestid>1355338</requestid>
   </revision>
+  <revision rev="147" vrev="31">
+    <srcmd5>a5eecf4ce076fdba7ccaa7da9fbeb6d7</srcmd5>
+    <version>20241218</version>
+    <time>1781099237</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1358428</requestid>
+  </revision>
 </revisionlist>

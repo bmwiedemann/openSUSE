@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 10 06:33:33 UTC 2026 - Max Lin <mlin@suse.com>
+
+- only do Requires: libyui-ncurses-pkg and libyui-qt-pkg if
+  Tumbleweed since libyui is no longer available in Leap 16.1
+
+-------------------------------------------------------------------
 Wed May 27 08:35:26 UTC 2026 - Petr Mladek <pmladek@suse.com>
 
 - make kernel_livepatching pattern visible (bsc#1263084)

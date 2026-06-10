@@ -1101,9 +1101,6 @@ Requires:       icewm
 Requires:       icewm-default
 Requires:       icewm-lite
 Requires:       icewm-theme-branding
-# bsc#1095870
-Requires:       libyui-ncurses-pkg
-Requires:       libyui-qt-pkg
 # for IceWM taskbar mailbox icon (bsc#1093913)
 Requires:       mutt
 Requires:       mutt-lang
@@ -1167,6 +1164,9 @@ Requires:       xvinfo
 Requires:       xwd
 Requires:       xwininfo
 %if 0%{?suse_version} >= 1699
+# bsc#1095870
+Requires:       libyui-ncurses-pkg
+Requires:       libyui-qt-pkg
 Requires:       yast2-control-center-qt
 Requires:       yast2-packager
 Requires:       yast2-snapper
