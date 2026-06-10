@@ -1,0 +1,61 @@
+name:                th-expand-syns
+version:             0.4.12.0
+x-revision: 1
+synopsis:            Expands type synonyms in Template Haskell ASTs
+description:         Expands type synonyms in Template Haskell ASTs.
+                     .
+                     As of version @0.4.9.0@, this library is a small shim on
+                     top of the @applySubstitution@/@resolveTypeSynonyms@
+                     functions from @th-abstraction@, so you may want to
+                     consider using @th-abstraction@ instead.
+category:            Template Haskell
+license:             BSD3
+license-file:        LICENSE
+author:              Daniel Schüssler
+maintainer:          Ryan Scott <ryan.gl.scott@gmail.com>
+cabal-version:       >= 1.10
+build-type:          Simple
+extra-source-files:  changelog.markdown
+homepage:            https://github.com/DanielSchuessler/th-expand-syns
+tested-with:
+    GHC == 8.0.2
+    GHC == 8.2.2
+    GHC == 8.4.4
+    GHC == 8.6.5
+    GHC == 8.8.4
+    GHC == 8.10.7
+    GHC == 9.0.2
+    GHC == 9.2.8
+    GHC == 9.4.8
+    GHC == 9.6.6
+    GHC == 9.8.4
+    GHC == 9.10.1
+    GHC == 9.12.1
+
+source-repository head
+ type: git
+ location: https://github.com/DanielSchuessler/th-expand-syns.git
+
+Library
+    build-depends:       base             >= 4.9   && < 5
+                       , containers
+                       , syb
+                       , th-abstraction   >= 0.4.3 && < 0.8
+                       , template-haskell >= 2.11  && < 2.25
+    ghc-options:         -Wall
+    exposed-modules:     Language.Haskell.TH.ExpandSyns
+    default-language:    Haskell2010
+
+Test-Suite test-th-expand-syns
+    type:               exitcode-stdio-1.0
+    hs-source-dirs:     testing
+    main-is:            Main.hs
+    other-modules:      Util, Types
+    build-depends:      base
+                      , template-haskell
+                      , th-abstraction
+                      , th-expand-syns
+    ghc-options:        -Wall
+    if impl(ghc >= 8.6)
+      ghc-options:      -Wno-star-is-type
+    default-language:   Haskell2010
