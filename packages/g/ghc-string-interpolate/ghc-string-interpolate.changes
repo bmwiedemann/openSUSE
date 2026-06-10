@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  3 02:15:28 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update string-interpolate to version 0.3.4.0 revision 6.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Jan 11 20:31:55 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update string-interpolate to version 0.3.4.0 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Jun 28 17:51:17 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update string-interpolate to version 0.3.4.0 revision 3.
