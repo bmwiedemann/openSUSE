@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 10 05:23:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.6:
+  Kargo v1.10.6 is a patch release gathering four bug fixes,
+  including a regression from v1.10.5 that prevented project Roles
+  from loading in the UI.
+  CLI-related changes:
+  * Clearer error when resource creation conflicts (#6428):
+    Creating a resource that conflicts with an existing one — for
+    example, recreating a Project whose namespace is still
+    terminating — previously surfaced an opaque, empty 500 error.
+    These 409 Conflict responses are now parsed and presented with
+    a meaningful message in the CLI and UI.
+
+-------------------------------------------------------------------
 Tue Jun 02 04:42:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.5:
