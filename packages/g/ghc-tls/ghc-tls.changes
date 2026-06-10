@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  8 00:49:04 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tls to version 2.1.14.
+  ## Version 2.1.14
+
+  * Supporting P384 and P521 curves.
+    [#511](https://github.com/haskell-tls/hs-tls/pull/511)
+  * Fixing some bugs of `tls-client`.
+
+-------------------------------------------------------------------
 Tue Nov 11 23:58:48 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update tls to version 2.1.13.
