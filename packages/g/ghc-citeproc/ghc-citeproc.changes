@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun  1 09:03:38 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update citeproc to version 0.13.0.1.
+  ## 0.13.0.1
+
+    * Detect terminal punctuation hidden by closing quotes (#179,
+      Andrew Dunning).
+
+    * Clarify building executable in the README (#177).
+
+  ## 0.13
+
+    * Add `citationResetPosition` field to `Citation`. [API change]
+      When this field is set, it causes the processor to forget all
+      information about past citations.  This affects processing of
+      `position`.  The intended usage is to set this for the first
+      citation of every chapter, so that "subsequent" behavior is
+      reset at chapter boundaries. See #160 for discussion.
+
+-------------------------------------------------------------------
 Sun Nov 30 15:56:42 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update citeproc to version 0.12.
