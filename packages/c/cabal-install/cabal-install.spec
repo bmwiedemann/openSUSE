@@ -1,7 +1,7 @@
 #
 # spec file for package cabal-install
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,7 @@ Summary:        The command-line interface for Cabal and Hackage
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/5.cabal#/%{name}.cabal
-Patch01:        Cabal-absolute-datadir.patch
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/6.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Cabal-prof
@@ -172,7 +171,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -p1
+%autosetup
 cp -p %{SOURCE1} %{name}.cabal
 
 %build

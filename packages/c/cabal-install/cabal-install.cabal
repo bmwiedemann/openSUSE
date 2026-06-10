@@ -2,7 +2,7 @@ Cabal-Version:      3.0
 
 Name:               cabal-install
 Version:            3.14.1.1
-x-revision: 5
+x-revision: 6
 Synopsis:           The command-line interface for Cabal and Hackage.
 Description:
     The \'cabal\' command-line program simplifies the process of managing
@@ -53,7 +53,7 @@ common warnings
       ghc-options: -Wnoncanonical-monadfail-instances
 
 common base-dep
-    build-depends: base >=4.13 && <4.22
+    build-depends: base >=4.13 && <4.23
 
 common cabal-dep
     build-depends: Cabal ^>=3.14
