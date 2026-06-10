@@ -1,0 +1,59 @@
+Name:                crypton-conduit
+version:             0.2.3
+x-revision: 1
+Synopsis:            crypton conduit
+Description:
+  Conduit bridge for crypton
+  .
+  For now only provide a conduit version for hash and hmac, but
+  with contribution, this could provide cipher conduits too,
+  and probably other things.
+License:             BSD3
+License-file:        LICENSE
+Copyright:           Vincent Hanquez <vincent@snarc.org>
+Author:              Vincent Hanquez <vincent@snarc.org>
+Maintainer:          Sibi Prabakaran <sibi@psibi.in>
+Category:            Cryptography, Conduit
+Stability:           experimental
+Build-Type:          Simple
+Homepage:            https://github.com/psibi/crypton-conduit
+Cabal-Version:       >= 1.10
+Extra-source-files:  README.md CHANGELOG.md
+
+Library
+  Exposed-modules:   Crypto.Cipher.ChaChaPoly1305.Conduit
+                     Crypto.MAC.HMAC.Conduit
+                     Crypto.Hash.Conduit
+                     Crypto.PubKey.ECIES.Conduit
+  Build-depends:     base >= 4 && < 5
+                   , bytestring
+                   , conduit
+                   , conduit-extra
+                   , crypton < 1.1
+                   , exceptions
+                   , memory
+                   , resourcet
+                   , transformers
+  ghc-options:       -Wall -fwarn-tabs
+  default-language: Haskell2010
+
+test-suite crypton-conduit-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , bytestring
+                     , conduit
+                     , conduit-combinators
+                     , crypton < 1.1
+                     , crypton-conduit
+                     , memory
+                     , tasty
+                     , tasty-hunit
+                     , tasty-quickcheck
+  ghc-options:       -Wall
+  default-language: Haskell2010
+
+source-repository head
+  type: git
+  location: https://github.com/psibi/crypton-conduit
