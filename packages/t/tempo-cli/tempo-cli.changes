@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 10 05:21:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.2:
+  * Security
+    - deps: Build Tempo with Go 1.26.3, which includes upstream
+      security and bug fixes. (#7423) (@ie-pham)
+  * Dependencies
+    - chore(deps): update grafana/tempo-ci-tools docker tag to
+      v20260527 (#7401)
+    - chore(deps): update golang docker tag to v1.26.3 (#7400)
+
+-------------------------------------------------------------------
 Mon Jun 08 05:46:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.0:
