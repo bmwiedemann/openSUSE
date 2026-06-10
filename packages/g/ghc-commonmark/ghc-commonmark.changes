@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 31 14:57:15 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update commonmark to version 0.3.
+  ## 0.3
+
+    * Applicative instances of IsBlock, IsInline etc. (Ashley Yakeley).
+      [API change]
+
+    * Require separation between title quotes and URL (Michael Howell).
+      This commit brings commonmark-hs into alignment with commonmark.js.
+
+    * Don't warn about deriving typeable.
+
+    * Add CPP to avoid warning for ghc >= 9.10.
+
+-------------------------------------------------------------------
 Sat Oct  5 05:48:20 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update commonmark to version 0.2.6.1.
