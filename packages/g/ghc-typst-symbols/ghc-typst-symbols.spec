@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-typst-symbols
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name typst-symbols
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.9.1
+Version:        0.2
 Release:        0
 Summary:        Symbol and emoji lookup for typst language
 License:        MIT

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  1 11:40:00 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update typst-symbols to version 0.2.
+  ## 0.2
+
+  * Reorganize API (breaking API change). Now we only export one
+    module, `Typst.Symbols`. This contains `typstSymbols`,
+    `typstEmojis`, and `mathSymbolShorthands`, as well as types
+    `Sym` and `MathClass`. `typstSymbols` and `typstEmojis` are no
+    longer lists of tuples. Instead, they are lists of `Sym`
+    records, which now include deprecation and math symbol class
+    information. `scrape-symbols.hs` has been changed tot generate
+    the new API. See jgm/texmath#288 for motivation.
+
+-------------------------------------------------------------------
 Sun Oct 26 19:16:09 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update typst-symbols to version 0.1.9.1.
