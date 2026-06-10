@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-kan-extensions
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name kan-extensions
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        5.2.7
+Version:        5.2.8
 Release:        0
 Summary:        Kan extensions, Kan lifts, the Yoneda lemma, and (co)density (co)monads
 License:        BSD-3-Clause
@@ -28,18 +28,16 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-adjunctions-devel
 BuildRequires:  ghc-adjunctions-prof
-BuildRequires:  ghc-array-devel
-BuildRequires:  ghc-array-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-comonad-devel
 BuildRequires:  ghc-comonad-prof
-BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-contravariant-devel
 BuildRequires:  ghc-contravariant-prof
 BuildRequires:  ghc-distributive-devel
 BuildRequires:  ghc-distributive-prof
+BuildRequires:  ghc-exceptions-devel
+BuildRequires:  ghc-exceptions-prof
 BuildRequires:  ghc-free-devel
 BuildRequires:  ghc-free-prof
 BuildRequires:  ghc-invariant-devel
@@ -51,8 +49,6 @@ BuildRequires:  ghc-profunctors-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-semigroupoids-devel
 BuildRequires:  ghc-semigroupoids-prof
-BuildRequires:  ghc-tagged-devel
-BuildRequires:  ghc-tagged-prof
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
 ExcludeArch:    %{ix86}
