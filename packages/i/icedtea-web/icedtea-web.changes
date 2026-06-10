@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 29 13:07:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building with JDK that uses libalternatives instead of
+  update-alternatives
+
+-------------------------------------------------------------------
 Thu Oct 23 15:16:02 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Avoid building with Java 25 for the while

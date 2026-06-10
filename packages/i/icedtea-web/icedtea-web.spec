@@ -1,7 +1,7 @@
 #
 # spec file for package icedtea-web
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -110,6 +110,7 @@ rm -f netx/net/sourceforge/jnlp/util/WindowsDesktopEntry.java
 autoreconf -fiv
 export bashcompdir=%{_datadir}/bash-completion/completions
 %configure \
+    --with-jdk-home=${JAVA_HOME} \
 %if %{with pack200}
     --with-pack200=%{_bindir}/pack200 \
 %endif

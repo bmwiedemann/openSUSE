@@ -342,4 +342,12 @@
     <comment>Avoid building with Java 25 for the while</comment>
     <requestid>1313294</requestid>
   </revision>
+  <revision rev="44" vrev="11">
+    <srcmd5>caf57b25b57dc5373f31fea07c6deb24</srcmd5>
+    <version>1.8.8</version>
+    <time>1781100795</time>
+    <user>anag_factory</user>
+    <comment>Allow building with JDK that uses libalternatives</comment>
+    <requestid>1358512</requestid>
+  </revision>
 </revisionlist>
