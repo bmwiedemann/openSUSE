@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-packaging
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.2
+Version:        2.4.1
 Release:        0
 Summary:        Utilities to build Lua modules
 License:        MIT

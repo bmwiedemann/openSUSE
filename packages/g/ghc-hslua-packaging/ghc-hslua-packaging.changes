@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jan 13 07:50:57 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hslua-packaging to version 2.4.1.
+  ## hslua-packaging-2.4.1
+
+  Released 2026-01-13.
+
+  - Modified Lua documentation objects: calling the userdata objects
+    now returns a table with all the info from the documentation
+    object.
+
+  ## hslua-packaging-2.4.0
+
+  Released 2026-01-08.
+
+  - Modified the *FunctionDoc* type: added the function name to the
+    type and changed field names to be more consistent.
+
+  - Added function `peekFunctionDoc` to retrieve function
+    documentation from the Lua stack.
+
+  - Added a new data type `FieldDoc` that contains all the
+    documentation for a module field. The `Field` type was modified
+    to use this type for docs.
+
+  - Fields and modules should no longer use the data type
+    constructor directly. Instead, values should be created through
+    the newly introduced functions `deffield`, `withName`,
+    `withValue`, and `withDescription` for fields, and `defmodule`,
+    `withFields`, `withFunctions`, `withOperations`, `withDescription`,
+    and `associateType` for modules.
+
+  - The module *HsLua.Typing* is re-exported from *HsLua.Packaging*.
+
+  - Modules have an additional field `moduleTypeDocs`.
+
+  - Require *hslua-objectorientation* 2.5.0.
+
+  - Allow *hslua-typing* 0.2.\*.
+
+-------------------------------------------------------------------
 Mon Jun 23 09:59:24 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update hslua-packaging to version 2.3.2.
