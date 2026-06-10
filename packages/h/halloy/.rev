@@ -378,4 +378,41 @@ Added:
   * Support for draft/chathistory-end message tag</comment>
     <requestid>1355670</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>86fe15d7475b22853b6ca6629b38ced2</srcmd5>
+    <version>2026.7.2</version>
+    <time>1781099394</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2026.7.2:
+Added:
+  * Add clear buffer shortcut to title bar
+  * Indicate in query if user is offline in its title bar
+Fixed:
+  * Issue where large window size could cause Halloy to crash in
+    certain scenarios
+  * Correctly support RPL_METADATASYNCLATER
+  * Issue where input box could lose focus after a filehost, reply,
+    or reaction modal
+  * Issue where a buffer could jitter in certain particular scroll
+    positions
+  * Minor issues where input tooltips could fail to reflect current
+    caret position, highlight the correct active argument, show
+    when first the input is first loaded, etc
+  * Show Display in Configuration docs menu
+  * Document that servers.&lt;name&gt;.username setting will fall back to
+    servers.&lt;name&gt;.nickname if not set
+  * Nick completion tooltip no longer shows when there is only a
+    single match
+Changed:
+  * buffer.reply.insert_nick no longer inserts nick when replying
+    in query buffers or to yourself
+  * Input tooltips are aligned with the input (i.e. inset when
+    text_input.nickname.enabled = true)
+  * servers.&lt;name&gt;.sasl.plain.username setting will fall back to
+    servers.&lt;name&gt;.nickname if not set
+
+- Update to version 2026.7.1:
+Fixed:</comment>
+    <requestid>1358206</requestid>
+  </revision>
 </revisionlist>

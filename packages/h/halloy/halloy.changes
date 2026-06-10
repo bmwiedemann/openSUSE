@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jun  9 14:06:43 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2026.7.2:
+Added:
+  * Add clear buffer shortcut to title bar
+  * Indicate in query if user is offline in its title bar
+Fixed:
+  * Issue where large window size could cause Halloy to crash in
+    certain scenarios
+  * Correctly support RPL_METADATASYNCLATER
+  * Issue where input box could lose focus after a filehost, reply,
+    or reaction modal
+  * Issue where a buffer could jitter in certain particular scroll
+    positions
+  * Minor issues where input tooltips could fail to reflect current
+    caret position, highlight the correct active argument, show
+    when first the input is first loaded, etc
+  * Show Display in Configuration docs menu
+  * Document that servers.<name>.username setting will fall back to
+    servers.<name>.nickname if not set
+  * Nick completion tooltip no longer shows when there is only a
+    single match
+Changed:
+  * buffer.reply.insert_nick no longer inserts nick when replying
+    in query buffers or to yourself
+  * Input tooltips are aligned with the input (i.e. inset when
+    text_input.nickname.enabled = true)
+  * servers.<name>.sasl.plain.username setting will fall back to
+    servers.<name>.nickname if not set
+
+-------------------------------------------------------------------
+Wed Jun  3 17:33:23 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2026.7.1:
+Fixed:
+  * Panic when a reply contains a multibyte character near the
+    start of message
+  * Ensure messages don't get formatted if channel has +c mode
+    (colour filter)
+  * User highlighting incorrectly matching contraction suffixes
+
+-------------------------------------------------------------------
 Thu May 28 15:16:49 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to version 2026.7:
