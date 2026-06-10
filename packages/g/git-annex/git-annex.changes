@@ -1,4 +1,163 @@
 -------------------------------------------------------------------
+Mon Jun  1 16:59:32 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20260601.
+  git-annex (10.20260601) upstream; urgency=medium
+
+    * Avoid an error message displaying a password embedded in a git remote url.
+      (Reversion introduced in 10.20260421)
+    * Fix use of annex.commitmessage
+      (Reversion introduced in 10.20250115)
+    * disableremote: Avoid (temporarily) clearing size tracking information
+      for other repos than the one being disabled.
+    * Fix bug that prevented remote.name.annex-web-options from always taking
+      effect, and sometimes caused it to be used in situations where it
+      should not be.
+    * map: Don't try to use dot -Tx11 to display the map, that no longer
+      works in commonly available builds of graphviz.
+    * push: Avoid updating a view branch or adjusted branch.
+    * pull: Avoid propagating adjusted branch changes to the original branch.
+    * get, copy: Added --wanted option, which only transfers files
+      that are preferred content.
+    * fsck, drop, whereis: Support --failed option.
+    * Display an introduction before other debug output.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 01 Jun 2026 11:53:04 -0400
+
+  git-annex (10.20260525) upstream; urgency=medium
+
+    * Fix reversion introduced in 10.20260421 that caused commands
+      like git-annex copy to stop early due to SIGPIPE.
+    * p2phttp: Avoid hanging after HEAD request.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 26 May 2026 07:49:42 -0400
+
+  git-annex (10.20260520) upstream; urgency=medium
+
+    * Behavior change: git-annex sync now defaults to syncing content,
+      for consistency with push and pull. However, to avoid surprising
+      behavior, this only affects repositories that have preferred content
+      configured.
+      (Use --no-content or configure annex.synccontent to avoid this.)
+    * Behavior change to git-annex pull and push's handling of unwanted
+      files. While previously both commands dropped unwanted files from
+      both the remote and the local repository, now pull only drops unwanted
+      files from the local repository, and push only drops unwanted files
+      from the remote.
+    * info: Report the total size of unused keys found by the last run
+      of git-annex unused.
+    * push: When pushing to a bare git repository, display git push
+      progress before the display of pushed branches.
+    * push, pull, assist: Fix behavior of --content to override the
+      annex.synccontent configuration.
+    * Send git-annex (or other configured) User-Agent when connecting to
+      annex+http remotes.
+    * Support GIT_SSL_CAINFO, GIT_SSL_CAPATH, http.sslCAPath, and http.sslCAPath
+      when connecting to https servers.
+    * Linux standalone builds now bundle CA certs. They are used only when
+      the system does not have its own CA cert store.
+    * Linux standalone build supports using Fedora's CA cert store location.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 20 May 2026 09:16:07 -0400
+
+  git-annex (10.20260421) upstream; urgency=medium
+
+    * disableremote: New command.
+    * Fix annexUrl to inherit any password that is set in the remote url.
+    * Add DELEGATE extension to the external special remote protocol.
+    * Avoid dying of an exception when when stdout gets closed by eg head(1),
+      and avoid a crash loop when stderr is closed and git-annex dies of an
+      exception.
+      Fixes reversion introduced in version 10.20230407.
+    * Improve UUID sanitization.
+    * Deal with breaking changes to test concurrency in tasty-1.5.4.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 21 Apr 2026 14:39:56 -0400
+
+  git-annex (10.20260316) upstream; urgency=medium
+
+    * Added CHECKPRESENT-URL extension to the external special remote protocol.
+    * Fix reversion in previous version that caused auto-initializing of
+      local git remotes that have annex-ignore set.
+    * Fix bug that caused git credential to be rejected when a http request
+      failed for some reason other than 401.
+    * Importing from the directory special remote will no longer add sizes
+      to keys, which overrode backends that generate unsized keys.
+    * Fix retrival from http git remotes of keys with '%' in their names.
+    * Fix behavior when initremote is used with --sameas=
+      combined with --private.
+    * web, S3, git: Fix bugs in checking if content is present on a remote
+      when configuration does not allow accessing it.
+    * httpalso: Fix bugs in handling content not being present on the remote.
+    * adb: Avoid deleting contents of a non-empty directory when
+      removing the last exported file from the directory.
+    * Improve display of http exceptions.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 16 Mar 2026 06:53:22 -0400
+
+  git-annex (10.20260213) upstream; urgency=medium
+
+    * When used with git forges that allow Push to Create, the remote's
+      annex-uuid is re-probed after the initial push.
+    * addurl, importfeed: Enable --verifiable by default.
+    * fromkey, registerurl: When passed an url, generate a VURL key.
+    * unregisterurl: Unregister both VURL and URL keys.
+    * Fix behavior of local git remotes that have annex-ignore
+      set to be the same as ssh git remotes.
+    * Added annex.security.allow-insecure-https config, which allows
+      using old http servers that use TLS 1.2 without Extended Main
+      Secret support.
+    * p2phttp: Commit git-annex branch changes promptly.
+    * p2phttp: Fix a server stall by disabling warp's slowloris attack
+      prevention.
+    * p2phttp: Added --cpus option.
+    * Avoid ever starting more capabilities than the number of cpus.
+    * fsck: Support repairing a corrupted file in a versioned S3 remote.
+    * Fix incorrect transfer direction in remote transfer log when
+      downloading from a local git remote.
+    * Fix bug that prevented 2 clones of a local git remote
+      from concurrently downloading the same file.
+    * rsync: Avoid deleting contents of a non-empty directory when
+      removing the last exported file from the directory.
+    * unregisterurl: Fix display of action to not be "registerurl".
+    * The OsPath build flag requires file-io 0.2.0, which fixes several
+      issues.
+    * Remove deprecated commands direct, indirect, proxy, and transferkeys.
+    * Deprecate undo command.
+    * Remove undo action from kde and nautilus integrations.
+    * Fix build on BSDs. Thanks, Greg Steuck
+
+   -- Joey Hess <id@joeyh.name>  Fri, 13 Feb 2026 12:53:48 -0400
+
+-------------------------------------------------------------------
+Fri Jan 16 15:15:22 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20260115.
+  git-annex (10.20260115) upstream; urgency=medium
+
+    * New git configs annex.initwanted, annex.initrequired, and
+      annex.initgroups.
+    * Fix bug that could result in a tree imported from a remote containing
+      missing git blobs.
+    * fix: Populate unlocked pointer files in situations where a git command,
+      like git reset or git stash, leaves them unpopulated.
+    * Pass www-authenticate headers in to to git credential, to support
+      eg, git-credential-oauth.
+    * import: Fix display of some import errors.
+    * external: Respond to GETGITREMOTENAME during INITREMOTE with the remote
+      name.
+    * When displaying sqlite error messages, include the path to the database.
+    * webapp: Remove support for local pairing; use wormhole pairing instead.
+    * git-annex.cabal: Removed pairing build flag, and no longer depends
+      on network-multicast or network-info.
+    * Remove support for building with old versions of persistent and
+      persistent-sqlite.
+    * Removed support for building with ghc older than 9.6.6.
+    * stack.yaml: Update to lts-24.26.
+
+   -- Joey Hess <id@joeyh.name>  Fri, 16 Jan 2026 11:09:14 -0400
+
+-------------------------------------------------------------------
 Mon Dec 15 17:41:25 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20251215.

@@ -1,14 +1,12 @@
 diff --git a/git-annex.cabal b/git-annex.cabal
-index 864efa527e..68b5552b37 100644
+index 216dc8e34b..e170cc38ef 100644
 --- a/git-annex.cabal
 +++ b/git-annex.cabal
-@@ -249,8 +249,7 @@ Executable git-annex
-    time (>= 1.9.1),
+@@ -241,7 +241,6 @@ Executable git-annex
     old-locale,
-    persistent-sqlite (>= 2.8.1),
--   persistent (>= 2.8.1),
+    persistent-sqlite (>= 2.13.3),
+    persistent (>= 2.13.3),
 -   persistent-template (>= 2.8.0),
-+   persistent (>= 2.12.0.2),
     unliftio-core,
     microlens,
     aeson (>= 2.0.0),

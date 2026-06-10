@@ -1,7 +1,7 @@
 #
 # spec file for package git-annex
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           git-annex
-Version:        10.20251215
+Version:        10.20260601
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
@@ -71,8 +71,12 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-crypto-api-devel
 BuildRequires:  ghc-crypto-api-prof
+BuildRequires:  ghc-crypton-connection-devel
+BuildRequires:  ghc-crypton-connection-prof
 BuildRequires:  ghc-crypton-devel
 BuildRequires:  ghc-crypton-prof
+BuildRequires:  ghc-crypton-x509-store-devel
+BuildRequires:  ghc-crypton-x509-store-prof
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-dbus-devel
@@ -132,10 +136,6 @@ BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-network-bsd-devel
 BuildRequires:  ghc-network-bsd-prof
 BuildRequires:  ghc-network-devel
-BuildRequires:  ghc-network-info-devel
-BuildRequires:  ghc-network-info-prof
-BuildRequires:  ghc-network-multicast-devel
-BuildRequires:  ghc-network-multicast-prof
 BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-network-uri-prof
@@ -198,6 +198,8 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
+BuildRequires:  ghc-tls-devel
+BuildRequires:  ghc-tls-prof
 BuildRequires:  ghc-torrent-devel
 BuildRequires:  ghc-torrent-prof
 BuildRequires:  ghc-transformers-devel
