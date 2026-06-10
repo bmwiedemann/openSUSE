@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 10 14:46:01 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update th-orphans to version 0.13.17.
+  ### 0.13.17 [2026.01.10]
+  * Allow building with `template-haskell-2.24.*` (GHC 9.14).
+  * Remove unused `ghc-prim` dependency in the test suite.
+
+-------------------------------------------------------------------
 Thu Dec  5 12:58:55 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Add th-orphans at version 0.13.16.
