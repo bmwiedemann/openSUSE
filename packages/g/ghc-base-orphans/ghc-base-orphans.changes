@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 10 15:53:26 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update base-orphans to version 0.9.4.
+  ## Changes in 0.9.4 [2026.01.10]
+   - Allow building with MicroHs.
+
+-------------------------------------------------------------------
 Fri Dec  6 12:20:54 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update base-orphans to version 0.9.3.
