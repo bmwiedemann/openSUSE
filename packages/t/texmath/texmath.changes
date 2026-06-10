@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Jun  1 22:15:40 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.13.1.2.
+  texmath (0.13.1.2)
+
+    * Typst writer: Avoid using deprecated symbols (#287).
+      This requires depending on typst-symbols 0.2.*.
+
+  texmath (0.13.1.1)
+
+    * Typst writer: don't add extra spaces around `|` or escaped
+      symbols (#286).
+
+  texmath (0.13.1)
+
+    * MathML writer: Keep mathvariant attribute in addition to finding
+      unicode substitutes (#280). Previously, renderers didn't support
+      mathvariant consistently, so we omitted this attribute. Tested in
+      Safari, Firefox, and Chrome.
+
+    * OMML writer: properly handle bold/italics on identifiers (#280).
+      Identifiers marked as bold need to be marked as bold-italic.
+      Special exception for uppercase Greek.
+
+    * MathML writer: fix handling of italic (#280).
+
+    * OMML reader: handle w:ins elements in math (#278).
+      Previously we skipped these, which meant that content
+      would disappear.
+
+    * TeX reader: handle space commands in `\text{..}` (#277).
+
+    * TeX reader: Allow text operators to take an unbracketed argument (#276).
+
+-------------------------------------------------------------------
 Sun Nov 30 16:40:47 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update texmath to version 0.13.0.2.
