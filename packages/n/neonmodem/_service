@@ -14,8 +14,9 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="manual">
-  <param name="replace">golang.org/x/image=golang.org/x/image@v0.38.0</param>
-  <param name="replace">golang.org/x/term=golang.org/x/term@v0.42.0</param>
+    <param name="replace">golang.org/x/image=golang.org/x/image@v0.38.0</param>
+    <param name="replace">golang.org/x/term=golang.org/x/term@v0.42.0</param>
+	<param name="replace">golang.org/x/net=golang.org/x/net@v0.55.0</param>
   </service>
 </services>
 

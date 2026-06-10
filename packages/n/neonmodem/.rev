@@ -75,4 +75,12 @@
 - Update golang.org/x/term dependency to v0.42.0 due to bsc#1260727 (forwarded request 1352776 from ph03nix)</comment>
     <requestid>1352898</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>8b8b4159e321c7461db06872abac3c0a</srcmd5>
+    <version>1.0.7+git0.346d1d3</version>
+    <time>1781105810</time>
+    <user>anag_factory</user>
+    <comment>- Update golang.org/x/net dependency to v0.55.0 due to bsc#1267193 (forwarded request 1358308 from ph03nix)</comment>
+    <requestid>1358550</requestid>
+  </revision>
 </revisionlist>

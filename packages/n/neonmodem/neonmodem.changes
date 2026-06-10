@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 07:31:39 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update golang.org/x/net dependency to v0.55.0 due to bsc#1267193
+
+-------------------------------------------------------------------
 Tue May 12 14:10:01 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update golang.org/x/image dependency to v0.38.0 due to bsc#1260727
