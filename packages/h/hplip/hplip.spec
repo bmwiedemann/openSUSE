@@ -148,6 +148,8 @@ Patch613:       hplip-base-Fix-Found-No-Section-error-with-python-2..patch
 Patch614:       hplip-sane-fix-compilation-with-gcc-15.patch
 # lp#2139771
 Patch615:       hplip-fix-handling-of-ConfigParser-.readfp-vs.-read_.patch
+# lp#2154206, fixup for patch 607
+Patch616:       pluginhandler-fix-plugin-installation-from-local-fil.patch
 
 # Compatibility patches for old SUSE releases
 Patch701:       hpcups-fix-compilation-on-SLE12.patch
@@ -505,6 +507,7 @@ This package is only required by developers.
 %patch -P 613 -p1
 %patch -P 614 -p1
 %patch -P 615 -p1
+%patch -P 616 -p1
 %if 0%{?suse_version} < 1500
 # python2 compatibility
 %patch -P 701 -p1

@@ -1665,4 +1665,12 @@ Fixes build in Staging_A (python 3.13) - and seems to address the real reaason w
 - Adjust the version condition not to build scan_utils since</comment>
     <requestid>1354788</requestid>
   </revision>
+  <revision rev="169" vrev="2">
+    <srcmd5>8c812d3242c466a7fec8089a5c2c9602</srcmd5>
+    <version>3.26.4</version>
+    <time>1781099092</time>
+    <user>anag_factory</user>
+    <comment>Add missing patch reference (forwarded request 1358043 from mwilck)</comment>
+    <requestid>1358044</requestid>
+  </revision>
 </revisionlist>

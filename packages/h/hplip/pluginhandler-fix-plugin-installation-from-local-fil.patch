@@ -1,0 +1,31 @@
+From c43d22b8371b740969f125ef39ac4263cdadaf20 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 3 Jun 2026 18:35:38 +0200
+Subject: [PATCH] pluginhandler: fix plugin installation from local file
+
+If the plugin is installed from a previously downloaded local file,
+the checksum verification fails because hplip does not read the
+checksum from plugin.conf in this case. GPG signature verification
+must suffice.
+
+Fixes: 86071cd ("hplip/utils: Fix plugin verification with sha256")
+---
+ installer/pluginhandler.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/installer/pluginhandler.py b/installer/pluginhandler.py
+index 26b0033..75ab07a 100755
+--- a/installer/pluginhandler.py
++++ b/installer/pluginhandler.py
+@@ -219,7 +219,7 @@ class PluginHandle(object):
+         #Validate Checksum
+         calc_checksum = utils.get_checksum(open(plugin_file, 'rb').read())
+         log.debug("D/L file checksum=%s" % calc_checksum)
+-        if utils.sha256_checksum(req_checksum) != calc_checksum:
++        if req_checksum and utils.sha256_checksum(req_checksum) != calc_checksum:
+             return ERROR_CHECKSUM_ERROR, queryString(ERROR_CHECKSUM_ERROR, 0, plugin_file)
+ 
+         #Validate Digital Signatures
+-- 
+2.54.0
+
