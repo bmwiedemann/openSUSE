@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  1 17:17:52 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update cabal-install-solver to version 3.14.1.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Dec 16 23:08:23 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update cabal-install-solver to version 3.14.1.0.
