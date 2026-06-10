@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  9 19:08:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 151.0.4:
+  * Fixed an issue where Firefox could fall back to software
+    rendering on some older GPUs, reducing graphics performance
+    (bmo#2043249)
+  * Fixed an issue where some text input fields could incorrectly
+    show a resize handle (bmo#2044051)
+
+-------------------------------------------------------------------
 Sun Jun  7 09:17:17 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 151.0.3:
