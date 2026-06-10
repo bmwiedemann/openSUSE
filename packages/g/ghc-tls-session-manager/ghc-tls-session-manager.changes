@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 13 05:27:06 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tls-session-manager to version 0.0.9.
+  ## 0.0.9
+
+  * Providing newSessionTicketManager' to kill the manager.
+
+-------------------------------------------------------------------
 Sun Mar 30 02:49:18 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update tls-session-manager to version 0.0.8.
