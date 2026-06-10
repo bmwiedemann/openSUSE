@@ -39,4 +39,12 @@
     <comment>version update for ghc-9.10.1</comment>
     <requestid>1231470</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a3590903fab681ff54062faefd16ddbe</srcmd5>
+    <version>0.1.2</version>
+    <time>1781100369</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1358438</requestid>
+  </revision>
 </revisionlist>

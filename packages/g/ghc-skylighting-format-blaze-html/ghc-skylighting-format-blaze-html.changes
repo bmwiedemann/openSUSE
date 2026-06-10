@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  1 15:34:15 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update skylighting-format-blaze-html to version 0.1.2.
+  ## 0.1.2
+
+    * Include container classes on inline code. In block code,
+      these are put on the pre, but in inline code there is only a
+      code element; they should not just be dropped. See jgm/pandoc#11423.
+
+-------------------------------------------------------------------
 Sat Dec  7 22:08:19 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update skylighting-format-blaze-html to version 0.1.1.3.
