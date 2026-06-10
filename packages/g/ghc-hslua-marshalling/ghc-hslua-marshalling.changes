@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  8 15:02:47 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hslua-marshalling to version 2.3.2.
+  ## hslua-marshalling-2.3.2
+
+  Released 2026-01-08.
+
+  -   Relaxed upper bound for containers.
+
+  -   Dropped support for GHC older than 9.6.
+
+-------------------------------------------------------------------
 Thu Jan 18 16:39:05 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hslua-marshalling to version 2.3.1.
