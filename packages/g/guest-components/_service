@@ -1,0 +1,52 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="exclude">.devcontainer</param>
+    <param name="exclude">.dockerignore</param>
+    <param name="exclude">.gitattributes</param>
+    <param name="exclude">.github</param>
+    <param name="exclude">.gitignore</param>
+    <param name="exclude">.pre-commit-config.yaml</param>
+    <param name="exclude">AGENTS.md</param>
+    <param name="exclude">CODEOWNERS</param>
+    <param name="exclude">DEVELOPMENT.md</param>
+    <param name="exclude">Makefile</param>
+    <param name="exclude">README.md</param>
+    <param name="exclude">attestation-agent/attestation-agent/test</param>
+    <param name="exclude">attestation-agent/attester/test</param>
+    <param name="exclude">attestation-agent/ci</param>
+    <param name="exclude">attestation-agent/docker</param>
+    <param name="exclude">attestation-agent/docs</param>
+    <param name="exclude">attestation-agent/hack</param>
+    <param name="exclude">attestation-agent/kbs_protocol/test</param>
+    <param name="exclude">confidential-data-hub/docs</param>
+    <param name="exclude">confidential-data-hub/hub/test_files</param>
+    <param name="exclude">confidential-data-hub/hub/tests</param>
+    <param name="exclude">image-rs/docs</param>
+    <param name="exclude">image-rs/scripts</param>
+    <param name="exclude">image-rs/test_data</param>
+    <param name="exclude">image-rs/tests</param>
+    <param name="exclude">ocicrypt-rs/data</param>
+    <param name="filename">guest-components</param>
+    <param name="match-tag">*</param>
+    <param name="revision">f1561038b9a58d309a3366cc8e25d8e6162424a0</param>
+    <param name="scm">git</param>
+    <param name="submodules">enable</param>
+    <param name="url">https://github.com/confidential-containers/guest-components</param>
+    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="match-tag">v[0-9]*.[0-9]*.[0-9]*</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">guest-components</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+     <param name="srcdir">guest-components</param>
+     <param name="compression">xz</param>
+     <param name="update">false</param>
+  </service>
+</services>
