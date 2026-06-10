@@ -20,7 +20,7 @@
 %bcond_without run_tests
 
 Name:           restic
-Version:        0.18.1
+Version:        0.19.0
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        BSD-2-Clause

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Jun  9 17:27:56 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.19.0 (boo#1266795 boo#1266211)
+  For all the details see:
+  https://github.com/restic/restic/releases/tag/v0.19.0
+
+  - Fix #2034: Support serving a restic mount of a Windows system
+    via Samba
+  - Fix #4447: Use mode 0700 for repository directories created
+    over SFTP
+  - Fix #4467: Exit with code 3 when some backup source paths do
+    not exist
+  - Fix #4759: Error out when environment variables hold invalid
+    values
+  - Fix #5233: Return exit code 3 when failing to remove snapshots
+  - Fix #5258: Exit with code 130 on SIGINT
+  - Fix #5280: Reject impossible find time bounds immediately
+  - Fix #5280: Make find --pack list blobs for tree packs
+  - Fix #5354: Allow rclone and sftp backends when running in
+    background
+  - Fix #5427: Correctly restore ACL inheritance state on Windows
+  - Fix #5477: Password prompt was sometimes not shown for backup
+    -v
+  - Fix #5487: Mark repository files read-only when using the SFTP
+    backend
+  - Fix #5586: Correctly handle snapshots --group-by with --latest
+  - Fix #5595: Avoid spurious chmod errors on certain file backends
+  - Fix #5683: Prevent backup --stdin-from-command from hanging
+  - Fix #5757: Respect --user and --host in key passwd
+  - Fix #21820: Correct handling of duplicate index entries
+  - Fix #21820: Correctly handle pack files missing from the index
+  - Chg #5293: Prune small packfiles more aggressively
+  - Chg #5767: Prevent excluding paths explicitly passed to backup
+  - Chg #21791: Update dependencies and require Go 1.25 or newer
+  - Enh #3326: Limit check to snapshots selected by filters
+  - Enh #3572: Support restoring ownership by name on UNIX systems
+  - Enh #3738: Optional GitHub token for self-update API requests
+  - Enh #4278: Support include filters in the rewrite command
+  - Enh #4728: Support zstd compression levels fastest and better
+  - Enh #4868: Include repository ID in the filesystem name used by
+    mount
+  - Enh #5175: Add status counters to copy in verbose text output
+  - Enh #5352: Support excluding cloud-backed files on macOS
+  - Enh #5383: Reduce progress bar refresh rates to decrease energy
+    usage
+  - Enh #5424: Enable Windows filesystem privileges before file
+    access
+  - Enh #5440: Make --host override environment variable
+    RESTIC_HOST
+  - Enh #5448: Support configuring nice and ionice in the Docker
+    image
+  - Enh #5453: Copy multiple snapshots in batches
+  - Enh #5523: Add Open Container Initiative labels to release
+    Docker image
+  - Enh #5531: Reduce Azure storage costs by optimizing uploads
+  - Enh #5562: Rewrite only changed status lines each frame
+  - Enh #5588: Show timezone context in snapshots output
+  - Enh #5610: Reduce check, copy, diff and stats memory usage
+  - Enh #5689: Show more detailed progress for stats
+  - Enh #5713: Significantly speed up index loading
+  - Enh #5718: Stricter and earlier validation of the mount point
+- refresh disable-selfupdate.patch
+
+-------------------------------------------------------------------
 Wed May 20 22:59:01 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update golang.org/x/net to 0.53.0 (boo#1265915 CVE-2026-33814)
