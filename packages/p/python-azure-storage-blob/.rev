@@ -504,4 +504,15 @@
 - Remove temporary version override (forwarded request 1353345 from glaubitz)</comment>
     <requestid>1353388</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>745bdf1f928cf5238eb921435bc96eb4</srcmd5>
+    <version>12.30.0</version>
+    <time>1781099272</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 12.30.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1358131 from glaubitz)</comment>
+    <requestid>1358170</requestid>
+  </revision>
 </revisionlist>
