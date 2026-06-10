@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 10 19:58:59 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update optics-core to version 0.4.2.
+  # optics-core-0.4.2 (2025-02-10)
+  * Rename `PathTree` data constructor to `PathNode`, to avoid pun with type
+    constructor.
+  * Add support for using `gafield` as a label in GHC >= 9.6 using `#"?field"`
+    syntax.
+  * Add `unsafePartsOf` to `Optics.Traversal`.
+  * Add `failing`-like combinators for traversals: `adisjoin`
+    (`Optics.AffineTraversal`), `iadisjoin` (`Optics.IxAffineTraversal`),
+    `idisjoin` (`Optics.IxTraversal`) and `disjoin` (`Optics.Traversal`).
+
+-------------------------------------------------------------------
 Mon May 13 18:09:08 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update optics-core to version 0.4.1.1 revision 1.
