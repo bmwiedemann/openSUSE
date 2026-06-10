@@ -5742,4 +5742,22 @@
     since %{92} mapping to %'\' works with tparm and infocmp.</comment>
     <requestid>1356328</requestid>
   </revision>
+  <revision rev="334" vrev="107">
+    <srcmd5>e4ae60869f14b53f044d943a1e504e38</srcmd5>
+    <version>unknown</version>
+    <time>1781099250</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260608
+  + amend *.map to put recent cookie-related functions in a new tinfo
+    &quot;.current&quot; section (report by Sven Joachim).
+  + add npc to kmscon, fixing flash -TD
+
+- Add ncurses patch 20260607
+  + actually add kmscon (report by Branden Robinson)
+- Add ncurses patch 20260606
+  + add kmscon (report by Jocelyn Falempe) -TD
+  + fix a minor regression in infocmp -g option.
+  + fixes for compiler warnings/cppcheck.</comment>
+    <requestid>1358144</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun  9 07:17:33 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260608
+  + amend *.map to put recent cookie-related functions in a new tinfo
+    ".current" section (report by Sven Joachim).
+  + add npc to kmscon, fixing flash -TD
+
+-------------------------------------------------------------------
+Mon Jun  8 07:16:26 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260607
+  + actually add kmscon (report by Branden Robinson)
+- Add ncurses patch 20260606
+  + add kmscon (report by Jocelyn Falempe) -TD
+  + fix a minor regression in infocmp -g option.
+  + fixes for compiler warnings/cppcheck.
+
+-------------------------------------------------------------------
 Mon Jun  1 07:29:03 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260530
