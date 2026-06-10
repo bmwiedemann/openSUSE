@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  4 21:58:31 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update integer-conversion to version 0.1.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Jan  3 12:15:46 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update integer-conversion to version 0.1.1 revision 1.
