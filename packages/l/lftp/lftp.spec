@@ -37,7 +37,8 @@ Patch5:         0005-Add-the-wrapper-code-to-the-Makefile-in-order-to-bui.patch
 # https://github.com/lavv17/lftp/issues/716
 Patch6:         0001-lftp_ssl-deinitialize-the-lftp_ssl_openssl_instance.patch
 Patch7:         lftp-gcc14.patch
-Patch100:       https://src.fedoraproject.org/rpms/lftp/raw/rawhide/f/lftp-4.9.2-cdefs.patch
+# https://src.fedoraproject.org/rpms/lftp/raw/rawhide/f/lftp-4.9.2-cdefs.patch
+Patch100:       lftp-4.9.2-cdefs.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

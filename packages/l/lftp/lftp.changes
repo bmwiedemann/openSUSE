@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun  8 15:35:23 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Revert changes to "lftp-4.9.2-cdefs.patch" from 2025-08-06. The
+  updated patch does not apply to our code and breaks the build on
+  ppc64le. We'll stick to our local copy for the time being instead
+  of following src.fedoraproject.org.
+
+-------------------------------------------------------------------
 Wed May  6 09:41:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop update-alternatives BuildRequires and Requires(post|postun):
-  u-a code was removed from lftp package back in July 2023.
+  u-a code was removed from lftp package back in July 2023. [bsc#1264399]
 
 -------------------------------------------------------------------
 Wed Aug  6 19:14:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
