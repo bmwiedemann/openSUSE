@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-old-time
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %global pkg_name old-time
 %global pkgver %{pkg_name}-%{version}
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.0.4
+Version:        1.1.1.0
 Release:        0
 Summary:        Time library
 License:        BSD-3-Clause
@@ -32,12 +33,16 @@ BuildRequires:  ghc-old-locale-devel
 BuildRequires:  ghc-old-locale-prof
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-hunit-prof
+BuildRequires:  ghc-tasty-prof
+%endif
 
 %description
-This package provides the old time library.
-
-For new projects, the newer <http://hackage.haskell.org/package/time time
-library> is recommended.
+This is a legacy package, please migrate away to
+<http://hackage.haskell.org/package/time time> or elsewhere.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -73,6 +78,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache
