@@ -318,7 +318,7 @@ build-jar-repository -s lib opentest4j/opentest4j apiguardian/apiguardian-api
 install -dm 0755 %{buildroot}%{_javadir}/%{base_name}
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{base_name}
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
-for i in junit-platform-commons junit-jupiter-api; do
+for i in junit-platform-commons junit-platform-engine junit-platform-launcher junit-jupiter-api; do
     install -pm 0644 ${i}/target/${i}*.jar %{buildroot}%{_javadir}/%{base_name}/${i}.jar
     %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}/${i}.pom
     %add_maven_depmap %{base_name}/${i}.pom %{base_name}/${i}.jar

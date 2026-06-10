@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  9 16:01:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Build also the modules junit-platform-engine and
+  junit-platform-launcher within the flavour bootstrap.
+  This does not pull in other dependencies and allows the majority
+  of consumers of junit5 build early against the junit5-minimal
+  package
+
+-------------------------------------------------------------------
 Wed May  6 21:47:44 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 5.14.4

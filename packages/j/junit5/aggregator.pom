@@ -19,8 +19,6 @@
     <module>junit-platform-commons</module>
     <module>junit-platform-console</module>
     <module>junit-platform-console-standalone</module>
-    <module>junit-platform-engine</module>
-    <module>junit-platform-launcher</module>
     <module>junit-platform-runner</module>
     <module>junit-platform-suite-api</module>
     <module>junit-platform-suite-commons</module>

@@ -103,4 +103,12 @@
     <comment>5.14.4/1.14.4</comment>
     <requestid>1352127</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>1f2db55f31f805bd2bf4537b37d90919</srcmd5>
+    <version>5.14.4</version>
+    <time>1781099443</time>
+    <user>anag_factory</user>
+    <comment>Build two aditional modules in bootstrap flavour</comment>
+    <requestid>1358228</requestid>
+  </revision>
 </revisionlist>
