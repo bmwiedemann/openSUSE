@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan  3 14:49:08 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update th-abstraction to version 0.7.2.0.
+  ## 0.7.2.0 -- 2026.01.03
+  * Support GHC 9.14.
+
+-------------------------------------------------------------------
 Sun Mar  2 13:35:52 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update th-abstraction to version 0.7.1.0 revision 1.
