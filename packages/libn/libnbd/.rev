@@ -240,4 +240,12 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1341018</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a32bfa428a55dfcc8eb27ea9458d6337</srcmd5>
+    <version>1.25.5</version>
+    <time>1781099501</time>
+    <user>anag_factory</user>
+    <comment>Update libnbd to version 1.25.5</comment>
+    <requestid>1358246</requestid>
+  </revision>
 </revisionlist>

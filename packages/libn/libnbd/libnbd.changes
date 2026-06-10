@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Jun 09 16:13:39 UTC 2026 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.25.5:
+  * Version 1.25.5.
+  * docs: Improve documentation for nbd_add_close_callback(3)
+  * Rename nbd_set_close_callback to nbd_add_close_callback
+  * python: Test nbd.set_close_callback method
+  * ocaml: Add a test of NBD.set_close_callback
+  * tests: Add a test of new nbd_set_close_callback function
+  * lib: Add new API to call a close callback on nbd_close
+  * ocaml: Extend generator to support no-argument closures
+  * docs/nbd_create.pod: Introduce link to libnbd(3) early
+  * Version 1.25.4.
+  * golang: Rename more exported functions
+  * Version 1.25.3.
+  * tests/connect-tcp.c: Add trivial test of keepalive features
+  * lib: Add a new API to allow setting TCP options on the socket
+  * fuse: Add --keepalive flag
+  * ublk: Add --keepalive flag
+  * ublk/nbdublk.pod: Simplify duplicated sections of the synopsis
+  * lib: Add new APIs to set and get keepalives on the socket
+  * ci: Rebuild CI files
+  * ci/manifest.yml: Skip Rust on some platforms
+  * ci: Allow Rust to be skipped by setting variable $RUST == "skip"
+  * ci/manifest.yml: Drop freebsd-13, add freebsd-15
+  * ci/manifest.yml: Add Alpine 3.23
+  * ci/manifest.yml: Drop Alpine 3.21
+  * golang: Rename global freeCallbackId to nbd_internal_freeCallbackId
+  * generator: Compile-time error if a reserved word is used
+  * python/utils.c: Split up the long get_sockaddr function
+  * dump/nbddump.pod: Link to nbdkit_debug_hexdump(3)
+  * Version 1.25.2.
+  * tests/socket-activation-name.c: Fix test for nbdkit >= 1.47.5
+  * lib/utils.c: Fix whitespace
+  * fuse/operations.c: Remove out of date comment
+  * python: Check for URI support before running the new tests
+  * Version 1.25.1.
+  * python: Add new tests to EXTRA_DIST
+  * python: Test h.aio_connect using an IP address
+  * python: Test h.aio_connect with old and new Unix domain socket formats
+  * python/utils.c: Implement parsing of IP addresses for nbd.aio_connect
+  * tests/aio-connect-port.c: Delete this test
+  * tests/aio-connect-port.c: Replace broken link in comment
+  * configure.ac: Remove use of "which" command
+  * info: Add nbdinfo --can open
+
+-------------------------------------------------------------------
 Wed Mar 11 17:35:05 UTC 2026 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.24.2:
