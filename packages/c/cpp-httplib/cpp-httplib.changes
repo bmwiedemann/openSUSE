@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Jun  8 17:28:54 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 0.46.1:
+  * Fix Expect: 100-continue over TLS: the client decided whether to withhold the request body based on raw socket readability, but post-handshake TLS 1.3 records (e.g. session tickets) make the socket readable without any HTTP response, causing the body to be withheld and the request to fail with Failed to read connection. The client now decides by attempting to read the status line within the 100-continue timeout, and sends the body if none arrives
+  * Fix -Wmissing-field-initializers warnings on Windows by using {} instead of {0} for OVERLAPPED and ADDRINFOEXW initialization
+- 0.46.0:  
+  * Fix proxy digest credential leak when an HTTPS origin returns 407 inside a CONNECT tunnel. The 401/407 retry is now gated on the response actually coming from a proxy hop
+  * Add Client::set_no_proxy() for per-host proxy bypass. Accepts *, hostname suffix (dot-boundary rule), IPv4/IPv6 CIDR, and bare IP literals. Proxy-Authorization is suppressed for bypassed hosts, including across redirects
+- 0.45.1:
+  * Fix iOS build break caused by TARGET_OS_MAC being true on all Apple platforms (iOS, tvOS, watchOS). The Keychain enumeration path and Security.h include guards are now narrowed to TARGET_OS_OSX, and defining CPPHTTPLIB_USE_CERTS_FROM_MACOSX_KEYCHAIN on a non-macOS Apple platform now emits an explicit #error directing users to set_ca_cert_path() with a bundled CA file. Addresses #2454 (#2455)
+  * Fix zstd detection in the installed httplibConfig.cmake so downstream projects that depend on the installed package correctly pick up zstd (#2453)
+  * Replace the deprecated SecTrustCopyAnchorCertificates (deprecated in macOS 13) with SecTrustSettingsCopyCertificates, iterating over the System, Admin, and User trust domains to retain equivalent anchor-certificate coverage (#2455)
+  * Declare Server::stop() as noexcept, reflecting that the implementation does not throw (#2451)
+  * Add a best-effort BoringSSL CI job (Ubuntu and macOS) that builds BoringSSL from source and exercises cpp-httplib's existing OpenSSL backend path. SSLClientServerTest.TlsVerifyHostname is now backend-aware (BoringSSL is SAN-only per RFC 6125 §6.4.4), and the README notes BoringSSL as a best-effort variant with the C++14 and SAN-only caveats (#2456)
+  * Add an iOS header parse check to CI to catch accidental use of macOS-only APIs or guards (e.g. TARGET_OS_MAC vs TARGET_OS_OSX) that would silently break iOS builds 
+- 045.0:
+  * Fix crash on empty / comma-only X-Forwarded-For when set_trusted_proxies() is configured. get_client_ip() previously called front() on a vector that was empty whenever the header tokenized to zero segments ("", ",", ", , ,"); it now returns an empty string so process_request() falls back to the connection-level remote address instead of crashing (5c92857)
+  * Fix keep-alive corruption on requests without a framed body (#2450). The post-response drain ran for any request that expect_content() accepted, so a method like DELETE /items/1 with no Content-Length and no Transfer-Encoding would, on a persistent connection, let read_content consume bytes belonging to the next pipelined request — making the second request appear to vanish. The drain now only runs when the request actually has a framed body (Content-Length or chunked). The non-SSL "stray-bytes → 413" payload-limit check is likewise limited to non-persistent connections, since on keep-alive any pending bytes may be the next request rather than an unframed body (91271c0)
+  * Extract detail::has_framed_body() and detail::is_connection_persistent() helpers used by the keep-alive fix above
+- 0.44.0:
+  * Stop percent-decoding HTTP request header values. parse_header() previously applied decode_path_component() to every header value (except Location / Referer) after is_field_value() validation, so wire sequences like %0D%0A passed validation and expanded into literal CR/LF inside stored values — enabling response splitting, log injection, and proxy smuggling. %3D / %2C / %3B likewise flipped Cookie and X-Forwarded-For boundaries against WAFs inspecting the wire form. RFC 9110 §5.5 specifies header values as opaque octets, so the auto-decode (and the Location / Referer workarounds for the same misbehavior) has been removed. Applications that need URI semantics on a header value should now call decode_uri_component() or decode_path_component() on the result explicitly. Fixes the long-standing Referer-with-%0A
+  * Make ThreadPool constructor exception-safe on partial thread creation. If std::thread construction throws partway through (e.g. pthread_create returns EAGAIN under thread-resource pressure), the partially-built threads_ vector would destruct joinable std::thread objects and call std::terminate(). The spawn loop now signals shutdown to the workers already created, joins them, and rethrows.
+  * scripts/release.sh gains a --minor flag to force a minor bump even when abidiff reports no ABI break, for behavioral breaking changes like the header-decoding fix above (e8e6528)
+
+- 0.43.4:
+  * Reject malformed chunk-size in chunked decoder: strtoul silently accepted a leading - and wrapped via unsigned arithmetic, so chunk-size -2 produced ULONG_MAX-1, bypassing the ULONG_MAX guard and letting a client drive the server toward unbounded allocation. Replaced with a manual hex parser that requires at  
+    least one hex digit, detects size_t overflow per digit, and accepts only chunk-ext or end-of-line after the digits (RFC 9112 §7.1) (87d62db)
+  * Fix #2441: only invoke setarch on Linux in test/Makefile so the test build works on FreeBSD and other non-Linux systems where setarch is unavailable (a9bfe59)
+  * Use vswhere to locate the Visual Studio install in the 32-bit Windows CI workflow, so it keeps working as windows-latest migrates from VS 2022 to VS 2026 
+  * Guard nullptr res in the KeepAliveTest proxy template so a transient upstream failure to httpbingo.org produces a clean test failure instead of a SEGV under ASan
+- Upstream release includes fixes for:
+  CVE-2026-45372 (bsc#1267004)
+  CVE-2026-46527 (bsc#1267006)
+
+-------------------------------------------------------------------
 Tue May  5 15:20:24 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Updte to 0.43.3:
