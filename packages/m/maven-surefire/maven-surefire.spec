@@ -41,6 +41,7 @@ BuildRequires:  javacc
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
 BuildRequires:  junit
+BuildRequires:  junit5-minimal
 BuildRequires:  maven-common-artifact-filters
 BuildRequires:  maven-doxia-core
 BuildRequires:  maven-doxia-sink-api
@@ -102,6 +103,13 @@ Group:          Development/Libraries/Java
 
 %description provider-testng
 TestNG provider for Maven Surefire.
+
+%package provider-junit5
+Summary:        JUnit 5 provider for Maven Surefire
+Group:          Development/Libraries/Java
+
+%description provider-junit5
+JUnit 5 provider for Maven Surefire.
 
 %package report-parser
 Summary:        Parses report output files from surefire
@@ -183,6 +191,9 @@ build-jar-repository -s -p lib \
     commons-io \
     jsr-305 \
     junit \
+    junit5/junit-platform-commons \
+    junit5/junit-platform-engine \
+    junit5/junit-platform-launcher \
     maven-common-artifact-filters/maven-common-artifact-filters \
     maven-doxia/doxia-core \
     maven-doxia/doxia-sink-api \
@@ -245,6 +256,7 @@ for module in \
     surefire-junit3 \
     surefire-junit4 \
     surefire-junit47 \
+    surefire-junit-platform \
     surefire-testng-utils \
     surefire-testng; do
   %{mvn_artifact} surefire-providers/${module}/pom.xml \
@@ -269,6 +281,8 @@ done
 %files report-parser -f .mfiles-report-parser
 
 %files provider-junit -f .mfiles-junit
+
+%files provider-junit5 -f .mfiles-junit5
 
 %files provider-testng -f .mfiles-testng
 

@@ -152,4 +152,12 @@ put into adi:2</comment>
     <comment>3.5.6</comment>
     <requestid>1355626</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>2360b420ed1db952bb8da7a9e141e781</srcmd5>
+    <version>3.5.6</version>
+    <time>1781099447</time>
+    <user>anag_factory</user>
+    <comment>Fold maven-surefire-provider-junit5 into the main spec file</comment>
+    <requestid>1358230</requestid>
+  </revision>
 </revisionlist>

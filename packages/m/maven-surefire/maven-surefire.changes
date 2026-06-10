@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 12:21:41 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Fold maven-surefire-provider-junit5 into the main spec file
+
+-------------------------------------------------------------------
 Thu May 28 09:40:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 3.5.6
