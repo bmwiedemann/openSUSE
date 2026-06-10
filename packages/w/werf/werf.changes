@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jun 10 10:50:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.70.0:
+  * Features
+    - cleanup: add --kube-scan-namespaces support for in-cluster
+      scan (#7517) (8941a1e)
+  * Bug Fixes
+    - build: eliminate redundant registry tag listing in post-build
+      metadata publication (#7559) (27404cb)
+- Update to version 2.69.1:
+  * Bug Fixes
+    - build, stapel: handle platform mismatch in stage base image
+      resolution and avoid panic (#7493) (cdf0e83)
+    - cleanup: failing for cross-account ECR repositories (37c636c)
+- Update to version 2.69.0:
+  * Features
+    - host-cleanup: add support for absolute storage units
+      (c5dbdd0)
+  * Bug Fixes
+    - build, stapel, import: orphan import-server containers after
+      cancellation (#7527) (5c75bea)
+    - build, stapel, import: unnecessary image rebuilds when using
+      --secondary-repo with imports (#7526) (915a403)
+    - host-puge, buildah: fix panic in "host purge" when running in
+      buildah mode (a3ae3df)
+    - build: freezing on random image (#7539) (6cf58b7)
+    - ci-env: ci-env ignores session docker config when
+      WERF_DOCKER_CONFIG is set (#7530) (5161412)
+    - host-cleanup: fix absolute volume usage unit parsing logic
+      (0e3f5d6)
+    - host-clenaup: prevent overflow while subtraction (math)
+      (544c423)
+
+-------------------------------------------------------------------
 Fri May 29 09:24:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.68.2:
