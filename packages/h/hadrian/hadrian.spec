@@ -16,7 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global ghc_ver 9.12.2
+%global ghc_ver 9.12.4
 
 Name:           hadrian
 Version:        0.1.0.0
