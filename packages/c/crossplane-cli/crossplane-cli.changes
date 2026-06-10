@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jun 10 05:15:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.2:
+  The v2.3.2 release is a patch release that fixes regressions in
+  the Crossplane CLI's render commands that were introduced in the
+  v2.3.0 release. It also includes security updates to various
+  dependencies.
+  * chore(render): address adamwg's review nits on PR #91
+  * chore(render): align engine tests with package conventions per
+    coderabbit
+  * fix(render): address code review on PR #91
+  * refactor(render): swap docker test seam to one-method-interface
+    idiom
+  * chore(render): expand comments on test seam + helper-process
+    pattern
+  * feat(render): capture stderr and handle pipeline-fatal exit
+    code in both engines
+  * Bump crossplane dependencies to v2.3.2 (release-2.3)
+  * render: Sort composed resources by `composition-resource-name`
+    annotation
+  * render: Replace condition lastTransitionTime timestamps in
+    output
+  * render: wire CompositionInputs.XRD through to the proto
+  * proto: Sync render.proto with crossplane/crossplane main
+  * fix(deps): update module github.com/go-git/go-git/v5 to v5.19.1
+    [security]
+  * docs: Enclose the CLI version number in backticks
+  * ci: Use the vale-action to run vale
+  * ci: Validate generated docs using vale
+  * Add targeted vale ignores
+  * help: Correct spelling in help text
+  * Fix vale errors in help
+  * generate-docs: Clean up maturity level notes
+  * fix(deps): update module github.com/go-git/go-billy/v5 to
+    v5.9.0 [security]
+  * chore(deps): update module golang.org/x/net to v0.55.0
+    [security]
+  * chore(deps): update module github.com/sigstore/cosign/v2 to
+    v2.6.2 [security]
+  * chore(deps): update module github.com/containerd/containerd to
+    v1.7.32 [security]
+
+-------------------------------------------------------------------
 Mon Jun 01 05:18:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.3.1:
