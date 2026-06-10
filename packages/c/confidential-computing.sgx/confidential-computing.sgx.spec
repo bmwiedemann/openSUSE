@@ -25,8 +25,8 @@
 # The version of the primary repository is used,
 # to avoid rebuilds because build-compare can not cope with
 # two different versions in sub-packages from the same src.rpm
-%define coco_sgx_version 2.28
-%define sgx_dcap_version 2.28
+%define coco_sgx_version 2.29
+%define sgx_dcap_version 2.29
 #
 %define sgx_ssl_hash 1f99dd73e4a38a0da2b47f74064b28b8da04f794
 #
@@ -83,6 +83,21 @@ binary packages provided by Intel(R) will be removed by zypper.
 %license License.txt
 %dir %_datadir/%pkg
 
+%package -n system-group-sgx_prv
+Summary:        System group sgx_prv
+Requires:       %pkg = %primary_pkg_version
+%?sysusers_requires
+%description -n system-group-sgx_prv
+System group sgx_prv for provisioning enclaves. 
+%if 0
+Any user which can create a provisioning enclave can access the
+processor-unique Provisioning Certificate Key via /dev/sgx_provision,
+which has privacy and fingerprinting implications.
+%endif
+%pre -n system-group-sgx_prv -f system-group-sgx_prv.pre
+%files -n system-group-sgx_prv
+%_sysusersdir/system-group-sgx_prv.conf
+
 %package -n system-user-aesmd
 Summary:        System user aesmd
 Requires:       %pkg = %primary_pkg_version
@@ -99,6 +114,7 @@ System user aesmd for Intel(R) Architectural Enclave Service Manager
 %package -n system-user-qgsd
 Summary:        System user qgsd
 Requires:       %pkg = %primary_pkg_version
+Requires(pre):  group(sgx)
 %?sysusers_requires
 %description -n system-user-qgsd
 System user qgsd for Intel(R) TD Quoting Generation Service
@@ -134,11 +150,15 @@ Summary:        SUSE build of Intel(R) SGX Enclave Common Loader
 Conflicts:      libsgx-enclave-common
 Conflicts:      libsgx-enclave-common-debuginfo
 Requires:       %pkg = %primary_pkg_version
+Requires:       system-group-sgx_prv = %primary_pkg_version
 %description -n libsgx_enclave_common1
 Intel(R) Software Guard Extensions Enclave Common Loader
 %ldconfig_scriptlets -n libsgx_enclave_common1
+%posttrans  -n libsgx_enclave_common1
+%udev_trigger_with_reload -y sgx_provision
 %files -n libsgx_enclave_common1
 %_libdir/libsgx_enclave_common.so.*
+%_udevrulesdir/50-suse-sgx_provision.rules
 %package -n suse-libsgx-enclave-common-devel
 Summary:        SUSE build of Intel(R) SGX Enclave Common Loader for Developers
 Conflicts:      libsgx-enclave-common-devel
@@ -157,6 +177,7 @@ Conflicts:      libsgx-headers
 %description -n suse-libsgx-headers
 Intel(R) Software Guard Extensions Basic Headers
 %files -n suse-libsgx-headers
+%_includedir/MultiPackageDefs.h
 %_includedir/sgx_attributes.h
 %_includedir/sgx_defs.h
 %_includedir/sgx_eid.h
@@ -187,6 +208,7 @@ Summary:        SUSE build of Intel(R) SGX Unified Quote Service for Developers
 Conflicts:      libsgx-quote-ex-devel
 Requires:       %pkg = %primary_pkg_version
 Requires:       libsgx_quote_ex1 = %primary_pkg_version
+Requires:       suse-libsgx-headers = %primary_pkg_version
 %description -n suse-libsgx-quote-ex-devel
 Intel(R) Software Guard Extensions Unified Quote Service for Developers
 %ldconfig_scriptlets -n libsgx_quote_ex1
@@ -287,6 +309,7 @@ Requires:       %pkg = %primary_pkg_version
 Conflicts:      sgx-aesm-service
 Conflicts:      sgx-aesm-service-debuginfo
 Requires:       %pkg = %primary_pkg_version
+Requires:       libcurl4
 Requires:       suse-libsgx-aesm-ecdsa-plugin = %primary_pkg_version
 Requires:       suse-libsgx-aesm-pce-plugin = %primary_pkg_version
 Requires:       suse-libsgx-aesm-quote-ex-plugin = %primary_pkg_version
@@ -378,6 +401,7 @@ URL:            https://github.com/intel/SGXDataCenterAttestationPrimitives
 Conflicts:      libsgx-dcap-ql
 Conflicts:      libsgx-dcap-ql-debuginfo
 Requires:       %pkg = %primary_pkg_version
+Requires:       libsgx_quote_ex1 = %primary_pkg_version
 %description -n libsgx_dcap_gl1
 Intel(R) Software Guard Extensions Data Center Attestation Primitives
 %ldconfig_scriptlets -n libsgx_dcap_gl1
@@ -390,6 +414,7 @@ URL:            https://github.com/intel/SGXDataCenterAttestationPrimitives
 Conflicts:      libsgx-dcap-ql-devel
 Requires:       %pkg = %primary_pkg_version
 Requires:       libsgx_dcap_gl1 = %sgx_dcap_version-%release
+Requires:       suse-libsgx-headers = %primary_pkg_version
 %description -n suse-libsgx-dcap-ql-devel
 Intel(R) Software Guard Extensions Data Center Attestation Primitives for Developers
 %files -n suse-libsgx-dcap-ql-devel
@@ -403,6 +428,7 @@ URL:            https://github.com/intel/SGXDataCenterAttestationPrimitives
 Conflicts:      libsgx-pce-logic
 Conflicts:      libsgx-pce-logic-debuginfo
 Requires:       %pkg = %primary_pkg_version
+Requires:       suse-libsgx-prebuilt-signed
 %description -n suse-libsgx-pce-logic
 Intel(R) Software Guard Extensions Provisioning Certification Enclave Logic
 %ldconfig_scriptlets -n suse-libsgx-pce-logic
@@ -417,8 +443,8 @@ URL:            https://github.com/intel/SGXDataCenterAttestationPrimitives
 Conflicts:      libsgx-qe3-logic
 Conflicts:      libsgx-qe3-logic-debuginfo
 Requires:       %pkg = %primary_pkg_version
-Requires:       suse-libsgx-ae-id-enclave
-Requires:       suse-libsgx-ae-qe3
+Requires:       libdcap_quoteprov1
+Requires:       suse-libsgx-prebuilt-signed
 %description -n suse-libsgx-qe3-logic
 Intel(R) Software Guard Extensions QE3 Logic
 %ldconfig_scriptlets -n suse-libsgx-qe3-logic
@@ -445,11 +471,11 @@ URL:            https://github.com/intel/SGXDataCenterAttestationPrimitives
 Conflicts:      libsgx-ra-network-devel
 Requires:       %pkg = %primary_pkg_version
 Requires:       libmpa_network1 = %sgx_dcap_version-%release
+Requires:       suse-libsgx-headers = %primary_pkg_version
 %description -n suse-libsgx-ra-network-devel
 Intel(R) Software Guard Extensions Registration Agent Network Library for Developers
 %files -n suse-libsgx-ra-network-devel
 %_includedir/MPNetwork.h
-%_includedir/MPNetworkDefs.h
 %_includedir/mp_network.h
 %_libdir/libmpa_network.so
 
@@ -507,11 +533,12 @@ URL:            https://github.com/intel/SGXDataCenterAttestationPrimitives
 Conflicts:      libsgx-ra-uefi-devel
 Requires:       %pkg = %primary_pkg_version
 Requires:       libmpa_uefi1 = %sgx_dcap_version-%release
+Requires:       suse-libsgx-headers = %primary_pkg_version
 %description -n suse-libsgx-ra-uefi-devel
 Intel(R) Software Guard Extensions Registration Agent UEFI Library for Developers
 %files -n suse-libsgx-ra-uefi-devel
+%_includedir/IUefi.h
 %_includedir/MPUefi.h
-%_includedir/MultiPackageDefs.h
 %_includedir/mp_uefi.h
 %_libdir/libmpa_uefi.so
 
@@ -522,8 +549,8 @@ URL:            https://github.com/intel/SGXDataCenterAttestationPrimitives
 Conflicts:      libsgx-tdx-logic
 Conflicts:      libsgx-tdx-logic-debuginfo
 Requires:       %pkg = %primary_pkg_version
-Requires:       suse-libsgx-ae-id-enclave
-Requires:       suse-libsgx-ae-tdqe
+Requires:       libdcap_quoteprov1 = %sgx_dcap_version-%release
+Requires:       suse-libsgx-prebuilt-signed
 %description -n libsgx_tdx_logic1
 Intel(R) Trust Domain Extensions QE logic library
 %ldconfig_scriptlets -n libsgx_tdx_logic1
@@ -538,35 +565,39 @@ Conflicts:      libsgx-tdx-logic-devel
 Requires:       %pkg = %primary_pkg_version
 Requires:       libsgx_quote_ex1 = %primary_pkg_version
 Requires:       libsgx_tdx_logic1 = %sgx_dcap_version-%release
+Requires:       suse-libsgx-headers = %primary_pkg_version
 %description -n suse-libsgx-tdx-logic-devel
 Intel(R) Trust Domain Extensions QE logic library For Developers
 %files -n suse-libsgx-tdx-logic-devel
 %_includedir/td_ql_wrapper.h
 
-%package -n libsgx_dcap_quote_verify1
+%package -n libsgx_dcap_quoteverify1
 Version:        %sgx_dcap_version
 Summary:        SUSE build of Intel(R) SGX DCAP library
 URL:            https://github.com/intel/SGXDataCenterAttestationPrimitives
 Conflicts:      libsgx-dcap-quote-verify
 Conflicts:      libsgx-dcap-quote-verify-debuginfo
 Requires:       %pkg = %primary_pkg_version
-Requires:       suse-tee_appraisal_policy
-%description -n libsgx_dcap_quote_verify1
+Requires:       libsgx_urts1 = %primary_pkg_version
+Requires:       suse-libsgx-prebuilt-signed
+%description -n libsgx_dcap_quoteverify1
 SUSE build of Intel(R) SGX DCAP library
-%ldconfig_scriptlets -n libsgx_dcap_quote_verify1
-%files -n libsgx_dcap_quote_verify1
+%ldconfig_scriptlets -n libsgx_dcap_quoteverify1
+%files -n libsgx_dcap_quoteverify1
 %_libdir/libsgx_dcap_quoteverify.so.*
-%package -n suse-libsgx-dcap-quote-verify-devel
+%package -n suse-libsgx-dcap-quoteverify-devel
 Version:        %sgx_dcap_version
 Summary:        SUSE build of Intel(R) Trust Domain Extensions QE logic library For Developers
 URL:            https://github.com/intel/SGXDataCenterAttestationPrimitives
 Conflicts:      libsgx-dcap-quote-verify-devel
 Requires:       %pkg = %primary_pkg_version
-Requires:       libsgx_dcap_quote_verify1 = %sgx_dcap_version-%release
-%description -n suse-libsgx-dcap-quote-verify-devel
+Requires:       libsgx_dcap_quoteverify1 = %sgx_dcap_version-%release
+Requires:       suse-libsgx-headers = %primary_pkg_version
+%description -n suse-libsgx-dcap-quoteverify-devel
 Intel(R) Trust Domain Extensions QE logic library For Developers
-%files -n suse-libsgx-dcap-quote-verify-devel
+%files -n suse-libsgx-dcap-quoteverify-devel
 %_includedir/sgx_dcap_qal.h
+%_includedir/sgx_dcap_qal_types.h
 %_includedir/sgx_dcap_quoteverify.h
 %_includedir/sgx_qve_header.h
 %_libdir/libsgx_dcap_quoteverify.so
@@ -602,6 +633,7 @@ URL:            https://github.com/intel/SGXDataCenterAttestationPrimitives
 Conflicts:      libsgx-dcap-default-qpl
 Conflicts:      libsgx-dcap-default-qpl-debuginfo
 Requires:       %pkg = %primary_pkg_version
+Requires:       libcurl4
 %description -n libsgx_default_qcnl_wrapper1
 Intel(R) Software Guard Extensions Default Quote Provider Library
 %ldconfig_scriptlets -n libsgx_default_qcnl_wrapper1
@@ -614,6 +646,7 @@ URL:            https://github.com/intel/SGXDataCenterAttestationPrimitives
 Conflicts:      libsgx-dcap-default-qpl-devel
 Requires:       %pkg = %primary_pkg_version
 Requires:       suse-libsgx-dcap-default-qpl = %sgx_dcap_version-%release
+Requires:       suse-libsgx-headers = %primary_pkg_version
 %description -n suse-libsgx-dcap-default-qpl-devel
 Intel(R) Software Guard Extensions Default Quote Provider Library for Developers
 %files -n suse-libsgx-dcap-default-qpl-devel
@@ -630,8 +663,7 @@ Conflicts:      sgx-pck-id-retrieval-tool-debuginfo
 Requires:       %pkg = %primary_pkg_version
 Requires:       libmpa_uefi1 = %sgx_dcap_version-%release
 Requires:       libsgx_urts1 = %primary_pkg_version
-Requires:       suse-libsgx-ae-id-enclave
-Requires:       suse-libsgx-ae-pce
+Requires:       suse-libsgx-prebuilt-signed
 %description -n suse-sgx-pck-id-retrieval-tool
 Intel(R) Software Guard Extensions:this tool is used to collect the platform information to retrieve the PCK certs from PCS(Provisioning Certification Server)
 %files -n suse-sgx-pck-id-retrieval-tool
@@ -708,7 +740,18 @@ popd
 %if "%build_flavor" == ""
 %cmake_install
 mkdir -p '%buildroot%_datadir/%pkg'
-mkdir -p '%buildroot%_tmpfilesdir' '%buildroot%_sysusersdir'
+mkdir -p '%buildroot%_tmpfilesdir' '%buildroot%_sysusersdir' '%buildroot%_udevrulesdir'
+#
+tee '%buildroot%_udevrulesdir/50-suse-sgx_provision.rules' <<_EOR_
+SUBSYSTEM=="misc",KERNEL=="sgx_provision",GROUP="sgx_prv",MODE="0660"
+_EOR_
+#
+suc='system-group-sgx_prv.conf'
+tee "${suc}" <<'_EOC_'
+g sgx_prv -
+_EOC_
+%sysusers_generate_pre "${suc}" system-group-sgx_prv
+mv -vt '%buildroot%_sysusersdir' "${suc}"
 #
 suc='system-user-aesmd.conf'
 tee "${suc}" <<'_EOC_'
@@ -725,6 +768,8 @@ mv -vt '%buildroot%_tmpfilesdir' "${suc}"
 suc='system-user-qgsd.conf'
 tee "${suc}" <<'_EOC_'
 u qgsd - "TD Quoting Generation Service" %_localstatedir/lib/qgsd %_sbindir/nologin
+m qgsd sgx
+m qgsd sgx_prv
 _EOC_
 %sysusers_generate_pre "${suc}" system-user-qgsd
 mv -vt '%buildroot%_sysusersdir' "${suc}"

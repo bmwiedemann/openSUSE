@@ -1,55 +1,68 @@
----
- CMakeLists.txt                                                                                        |  982 ++++++++++
+ CMakeLists.txt                                                                                        |  973 ++++++++++
  SampleCode/SampleEnclave/App/CMakeLists.txt                                                           |   26 
+ common/inc/sgx_qve_header.h                                                                           |    3 
+ common/inc/sgx_uae_quote_ex.h                                                                         |    4 
  common/inc/tlibc/sys/cdefs.h                                                                          |    2 
  common/src/se_event.c                                                                                 |    2 
  external/CppMicroServices/CMakeLists.txt                                                              |    5 
  external/CppMicroServices/framework/include/cppmicroservices/AnyMap.h                                 |    1 
- external/CppMicroServices/framework/include/cppmicroservices/BundleEvent.h                            |    1 
- external/CppMicroServices/framework/include/cppmicroservices/FrameworkEvent.h                         |    1 
  external/CppMicroServices/framework/src/service/ServiceListeners.cpp                                  |    4 
  external/CppMicroServices/third_party/miniz.c                                                         |    5 
- external/dcap_source/QuoteGeneration/pce_wrapper/pce_wrapper.cpp                                      |   29 
+ external/dcap_source/QuoteGeneration/pce_wrapper/pce_wrapper.cpp                                      |   28 
  external/dcap_source/QuoteGeneration/qcnl/certification_provider.cpp                                  |    2 
  external/dcap_source/QuoteGeneration/qcnl/inc/pccs_response_object.h                                  |    2 
  external/dcap_source/QuoteGeneration/qcnl/inc/qcnl_config.h                                           |    2 
  external/dcap_source/QuoteGeneration/qcnl/linux/network_wrapper.cpp                                   |    4 
  external/dcap_source/QuoteGeneration/qcnl/linux/qcnl_config_impl.cpp                                  |    2 
  external/dcap_source/QuoteGeneration/qcnl/qcnl_config.cpp                                             |    6 
- external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.cpp                                 |   30 
- external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.h                                   |    2 
+ external/dcap_source/QuoteGeneration/qpl/inc/sgx_default_quote_provider.h                             |    2 
+ external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.cpp                                 |    4 
  external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgsd.service                                   |   15 
- external/dcap_source/QuoteGeneration/quote_wrapper/qgs/server_main.cpp                                |   12 
+ external/dcap_source/QuoteGeneration/quote_wrapper/qgs/server_main.cpp                                |    6 
+ external/dcap_source/QuoteGeneration/quote_wrapper/ql/inc/sgx_dcap_ql_wrapper.h                       |    1 
  external/dcap_source/QuoteGeneration/quote_wrapper/tdx_attest/tdx_attest.c                            |    6 
+ external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/inc/td_ql_wrapper.h                      |    5 
  external/dcap_source/QuoteVerification/appraisal/qae/qae.edl                                          |    3 
  external/dcap_source/QuoteVerification/appraisal/qal/opa_builtins.cpp                                 |    5 
- external/dcap_source/QuoteVerification/appraisal/qal/qae_wrapper.cpp                                  |   37 
+ external/dcap_source/QuoteVerification/appraisal/qal/qae_wrapper.cpp                                  |   36 
+ external/dcap_source/QuoteVerification/appraisal/qal/sgx_dcap_qal.h                                   |    3 
  external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/gen_payload.cpp                   |    1 
  external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/tee_appraisal_tool.cpp            |    5 
- external/dcap_source/QuoteVerification/dcap_quoteverify/linux/qve_parser.cpp                          |   30 
+ external/dcap_source/QuoteVerification/dcap_quoteverify/inc/sgx_dcap_quoteverify.h                    |    4 
+ external/dcap_source/QuoteVerification/dcap_quoteverify/linux/qve_parser.cpp                          |   29 
  external/dcap_source/QuoteVerification/dcap_quoteverify/tee_qv_class.cpp                              |    2 
  external/dcap_source/tools/PCKRetrievalTool/App/linux/network_wrapper.cpp                             |    6 
  external/dcap_source/tools/PCKRetrievalTool/App/utility.cpp                                           |    7 
+ external/dcap_source/tools/SGXPlatformRegistration/include/MPNetwork.h                                |    3 
+ external/dcap_source/tools/SGXPlatformRegistration/include/MPUefi.h                                   |    1 
+ external/dcap_source/tools/SGXPlatformRegistration/include/c_wrapper/mp_network.h                     |    4 
+ external/dcap_source/tools/SGXPlatformRegistration/include/c_wrapper/mp_uefi.h                        |    1 
  external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/AgentConfiguration.cpp               |    4 
  external/dcap_source/tools/SGXPlatformRegistration/src/mpa_registration/mpa_registration_tool.service |    1 
  external/vtune/linux/sdk/src/ittnotify/ittnotify_config.h                                             |    2 
  psw/ae/aesm_service/config/aesmd_service/aesmd.service                                                |   20 
  psw/ae/aesm_service/source/bundles/linux_network_service_bundle/aesm_http_msg.cpp                     |    6 
  psw/ae/aesm_service/source/bundles/quote_ex_service_bundle/quote_ex_service_bundle.cpp                |    6 
- psw/ae/aesm_service/source/core/AESMLogicWrapper.cpp                                                  |    5 
+ psw/ae/aesm_service/source/core/AESMLogicWrapper.cpp                                                  |    1 
  psw/ae/aesm_service/source/core/ipc/CMakeLists.txt                                                    |   32 
  psw/ae/aesm_service/source/oal/linux/aesm_util.cpp                                                    |    3 
  psw/ae/aesm_service/source/utils/crypto_ecc.cpp                                                       |    1 
  psw/enclave_common/sgx_enclave_common.cpp                                                             |    5 
+ psw/enclave_common/sgx_enclave_common.h                                                               |    1 
+ psw/uae_service/legacy_uae_service.cpp                                                                |    1 
+ psw/uae_service/sgx_uae_service.cpp                                                                   |    1 
  psw/urts/linux/edmm_utility.cpp                                                                       |    8 
  psw/urts/urts_com.h                                                                                   |    2 
  sdk/CMakeLists.txt                                                                                    |  357 +++
  sdk/tsetjmp/_setjmp.S                                                                                 |    2 
- 46 files changed, 1502 insertions(+), 189 deletions(-)
+ 57 files changed, 1498 insertions(+), 175 deletions(-)
+ create mode 100644 CMakeLists.txt
+ create mode 100644 SampleCode/SampleEnclave/App/CMakeLists.txt
+ create mode 100644 sdk/CMakeLists.txt
 
 --- /dev/null
 +++ b/CMakeLists.txt
-@@ -0,0 +1,982 @@
+@@ -0,0 +1,973 @@
 +unset(CMAKE_SHARED_LINKER_FLAGS CACHE)
 +cmake_minimum_required(VERSION 3.20)
 +project(linux-sgx LANGUAGES ASM C CXX)
@@ -160,19 +173,19 @@
 +
 +add_subdirectory(psw/ae/aesm_service/source/core/ipc)
 +
-+install(FILES external/dcap_source/QuoteGeneration/pce_wrapper/inc/sgx_pce.h TYPE INCLUDE)
-+install(FILES external/dcap_source/QuoteGeneration/quote_wrapper/common/inc/sgx_ql_lib_common.h TYPE INCLUDE)
-+install(FILES external/dcap_source/QuoteGeneration/quote_wrapper/common/inc/sgx_ql_quote.h TYPE INCLUDE)
-+install(FILES external/dcap_source/QuoteGeneration/quote_wrapper/common/inc/sgx_quote_3.h TYPE INCLUDE)
-+install(FILES external/dcap_source/QuoteGeneration/quote_wrapper/common/inc/sgx_quote_4.h TYPE INCLUDE)
-+install(FILES external/dcap_source/QuoteGeneration/quote_wrapper/common/inc/sgx_quote_5.h TYPE INCLUDE)
-+install(FILES common/inc/sgx_edger8r.h TYPE INCLUDE)
 +install(FILES common/inc/sgx_attributes.h TYPE INCLUDE)
 +install(FILES common/inc/sgx_defs.h TYPE INCLUDE)
++install(FILES common/inc/sgx_edger8r.h TYPE INCLUDE)
 +install(FILES common/inc/sgx_eid.h TYPE INCLUDE)
 +install(FILES common/inc/sgx_error.h TYPE INCLUDE)
 +install(FILES common/inc/sgx_key.h TYPE INCLUDE)
++install(FILES common/inc/sgx_pce.h TYPE INCLUDE)
++install(FILES common/inc/sgx_ql_lib_common.h TYPE INCLUDE)
++install(FILES common/inc/sgx_ql_quote.h TYPE INCLUDE)
 +install(FILES common/inc/sgx_quote.h TYPE INCLUDE)
++install(FILES common/inc/sgx_quote_3.h TYPE INCLUDE)
++install(FILES common/inc/sgx_quote_4.h TYPE INCLUDE)
++install(FILES common/inc/sgx_quote_5.h TYPE INCLUDE)
 +install(FILES common/inc/sgx_report.h TYPE INCLUDE)
 +install(FILES common/inc/sgx_report2.h TYPE INCLUDE)
 +install(FILES common/inc/sgx_urts.h TYPE INCLUDE)
@@ -235,15 +248,15 @@
 +# edl_u_id_enclave
 +build_edl_u(EDL id_enclave DIR external/dcap_source/ae/id_enclave)
 +# edl_u_qe3
-+build_edl_u(EDL qe3 DIR external/dcap_source/ae/qe3 INC external/dcap_source/QuoteGeneration/quote_wrapper/common/inc external/dcap_source/QuoteGeneration/pce_wrapper/inc common/inc/internal)
++build_edl_u(EDL qe3 DIR external/dcap_source/ae/qe3 INC external/dcap_source/QuoteGeneration/quote_wrapper/common/inc common/inc/internal)
 +# edl_u_pce
 +build_edl_u(EDL pce DIR external/dcap_source/ae/dep/pce INC psw/ae/inc/internal common/inc/internal)
 +# edl_u_qae
-+build_edl_u(EDL qae COMMON DIR external/dcap_source/QuoteVerification/appraisal/qae INC external/dcap_source/QuoteGeneration/quote_wrapper/common/inc external/dcap_source/QuoteGeneration/pce_wrapper/inc external/dcap_source/QuoteVerification/appraisal/qal)
++build_edl_u(EDL qae COMMON DIR external/dcap_source/QuoteVerification/appraisal/qae INC external/dcap_source/QuoteGeneration/quote_wrapper/common/inc external/dcap_source/QuoteVerification/appraisal/qal)
 +# edl_u_qve
-+build_edl_u(EDL qve COMMON DIR external/dcap_source/ae/QvE/qve SEARCH sgx-ssl/Linux/package/include/nofilefunc sgx-ssl/Linux/package/include INC external/dcap_source/QuoteGeneration/quote_wrapper/common/inc external/dcap_source/QuoteGeneration/pce_wrapper/inc external/dcap_source/QuoteVerification/appraisal/qal external/dcap_source/ae/QvE/Include)
++build_edl_u(EDL qve COMMON DIR external/dcap_source/ae/QvE/qve SEARCH sgx-ssl/Linux/package/include/nofilefunc sgx-ssl/Linux/package/include INC external/dcap_source/QuoteGeneration/quote_wrapper/common/inc external/dcap_source/QuoteVerification/appraisal/qal external/dcap_source/ae/QvE/Include)
 +# edl_u_tdqe
-+build_edl_u(EDL tdqe SELF DIR external/dcap_source/ae/tdqe INC external/dcap_source/QuoteGeneration/quote_wrapper/common/inc external/dcap_source/QuoteGeneration/pce_wrapper/inc common/inc/internal)
++build_edl_u(EDL tdqe SELF DIR external/dcap_source/ae/tdqe INC external/dcap_source/QuoteGeneration/quote_wrapper/common/inc common/inc/internal)
 +
 +add_library(sgx_usgxssl OBJECT)
 +target_sources(sgx_usgxssl PRIVATE sgx-ssl/Linux/sgx/libsgx_usgxssl/usgxssl_version.cpp)
@@ -368,6 +381,7 @@
 +install(TARGETS sgx_enclave_common)
 +
 +set(sgx_quote_ex_map ${CMAKE_CURRENT_SOURCE_DIR}/psw/uae_service/linux/libsgx_quote_ex.lds)
++list(APPEND sgx_quote_ex_hdr common/inc/sgx_quote.h)
 +list(APPEND sgx_quote_ex_hdr common/inc/sgx_uae_quote_ex.h)
 +add_library(sgx_quote_ex SHARED)
 +set_target_properties(sgx_quote_ex PROPERTIES LINK_DEPENDS ${sgx_quote_ex_map})
@@ -503,7 +517,6 @@
 +add_library(sgx_qe3_logic SHARED)
 +set_target_properties(sgx_qe3_logic PROPERTIES LINK_DEPENDS ${sgx_qe3_logic_map})
 +#set_target_properties(sgx_qe3_logic PROPERTIES SOVERSION 2 VERSION 2.${VERSION_LINUX_SGX})
-+target_include_directories(sgx_qe3_logic PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(sgx_qe3_logic PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
 +target_include_directories(sgx_qe3_logic PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/quote/inc)
 +target_link_libraries(sgx_qe3_logic sgx_urts wrapper edl_u_qe3 edl_u_id_enclave -lpthread)
@@ -518,7 +531,6 @@
 +add_library(sgx_pce_logic SHARED)
 +set_target_properties(sgx_pce_logic PROPERTIES LINK_DEPENDS ${sgx_pce_logic_map})
 +set_target_properties(sgx_pce_logic PROPERTIES SOVERSION 1 VERSION 1.${VERSION_LINUX_SGX})
-+target_include_directories(sgx_pce_logic PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(sgx_pce_logic PRIVATE psw/ae/inc)
 +target_include_directories(sgx_pce_logic PRIVATE psw/ae/inc/internal)
 +target_link_libraries(sgx_pce_logic sgx_urts wrapper edl_u_pce -ldl -lpthread)
@@ -533,7 +545,6 @@
 +set_target_properties(sgx_dcap_gl PROPERTIES LINK_DEPENDS ${sgx_dcap_gl_map})
 +set_target_properties(sgx_dcap_gl PROPERTIES PUBLIC_HEADER "${sgx_dcap_gl_hdr}")
 +set_target_properties(sgx_dcap_gl PROPERTIES SOVERSION 1 VERSION 1.${VERSION_LINUX_SGX})
-+target_include_directories(sgx_dcap_gl PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(sgx_dcap_gl PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
 +target_include_directories(sgx_dcap_gl PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/ql/inc)
 +target_include_directories(sgx_dcap_gl PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/quote/inc)
@@ -722,7 +733,6 @@
 +set_target_properties(sgx_default_qcnl_wrapper PROPERTIES SOVERSION 1 VERSION 1.${VERSION_LINUX_SGX})
 +target_include_directories(sgx_default_qcnl_wrapper PRIVATE ${RapidJSON_INCLUDE_DIRS})
 +target_include_directories(sgx_default_qcnl_wrapper PRIVATE common/inc/internal)
-+target_include_directories(sgx_default_qcnl_wrapper PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(sgx_default_qcnl_wrapper PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
 +target_include_directories(sgx_default_qcnl_wrapper PUBLIC external/dcap_source/QuoteGeneration/qcnl/inc)
 +target_link_libraries(sgx_default_qcnl_wrapper PCKCertSelection wrapper OpenSSL::Crypto ${RapidJSON_LIBRARIES} -ldl -lpthread)
@@ -753,7 +763,6 @@
 +add_library(sgx_qal STATIC)
 +target_include_directories(sgx_qal PRIVATE common/inc)
 +target_include_directories(sgx_qal PRIVATE common/inc/internal)
-+target_include_directories(sgx_qal PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(sgx_qal PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
 +target_include_directories(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/common)
 +target_include_directories(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/qal)
@@ -771,16 +780,16 @@
 +target_sources(sgx_qal PRIVATE external/dcap_source/QuoteVerification/appraisal/qal/qal_json.cpp)
 +
 +set(sgx_dcap_quoteverify_map ${CMAKE_CURRENT_SOURCE_DIR}/external/dcap_source/QuoteVerification/dcap_quoteverify/linux/sgx_dcap_quoteverify.lds)
++list(APPEND sgx_dcap_quoteverify_hdr common/inc/sgx_dcap_qal_types.h)
++list(APPEND sgx_dcap_quoteverify_hdr common/inc/sgx_qve_header.h)
 +list(APPEND sgx_dcap_quoteverify_hdr external/dcap_source/QuoteVerification/appraisal/qal/sgx_dcap_qal.h)
 +list(APPEND sgx_dcap_quoteverify_hdr external/dcap_source/QuoteVerification/dcap_quoteverify/inc/sgx_dcap_quoteverify.h)
-+list(APPEND sgx_dcap_quoteverify_hdr external/dcap_source/ae/QvE/Include/sgx_qve_header.h)
 +add_library(sgx_dcap_quoteverify SHARED)
 +set_target_properties(sgx_dcap_quoteverify PROPERTIES LINK_DEPENDS ${sgx_dcap_quoteverify_map})
 +set_target_properties(sgx_dcap_quoteverify PROPERTIES PUBLIC_HEADER "${sgx_dcap_quoteverify_hdr}")
 +set_target_properties(sgx_dcap_quoteverify PROPERTIES SOVERSION 1 VERSION 1.${VERSION_SGX_DCAP})
 +target_include_directories(sgx_dcap_quoteverify PRIVATE common/inc)
 +target_include_directories(sgx_dcap_quoteverify PRIVATE common/inc/internal)
-+target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteGeneration/qpl/inc)
 +target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
 +target_include_directories(sgx_dcap_quoteverify PRIVATE external/dcap_source/QuoteVerification/QVL/Src/AttestationCommons/include)
@@ -809,13 +818,13 @@
 +install(TARGETS sgx_dcap_quoteverify)
 +
 +set(sgx_tdx_logic_map ${CMAKE_CURRENT_SOURCE_DIR}/external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/linux/td_ql_logic.lds)
++list(APPEND sgx_tdx_logic_hdr common/inc/sgx_quote_4.h)
 +list(APPEND sgx_tdx_logic_hdr external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/inc/td_ql_wrapper.h)
 +add_library(sgx_tdx_logic SHARED)
 +set_target_properties(sgx_tdx_logic PROPERTIES LINK_DEPENDS ${sgx_tdx_logic_map})
 +set_target_properties(sgx_tdx_logic PROPERTIES PUBLIC_HEADER "${sgx_tdx_logic_hdr}")
 +set_target_properties(sgx_tdx_logic PROPERTIES SOVERSION 1 VERSION 1.${VERSION_SGX_DCAP})
 +target_include_directories(sgx_tdx_logic PRIVATE common/inc)
-+target_include_directories(sgx_tdx_logic PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(sgx_tdx_logic PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
 +target_include_directories(sgx_tdx_logic PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/inc)
 +target_link_libraries(sgx_tdx_logic sgx_pce_logic sgx_urts wrapper edl_u_id_enclave edl_u_tdqe -ldl -lpthread)
@@ -829,7 +838,6 @@
 +target_sources(qgs_msg PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/qgs_msg_lib/qgs_msg_lib.cpp)
 +
 +add_executable(qgs)
-+target_include_directories(qgs PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(qgs PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
 +target_include_directories(qgs PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/inc)
 +if(${Boost_VERSION_MINOR} GREATER_EQUAL 69)
@@ -862,7 +870,7 @@
 +install(TARGETS test_tdx_attest DESTINATION ${CMAKE_INSTALL_SBINDIR})
 +
 +list(APPEND mpa_network_hdr external/dcap_source/tools/SGXPlatformRegistration/include/MPNetwork.h)
-+list(APPEND mpa_network_hdr external/dcap_source/tools/SGXPlatformRegistration/include/MPNetworkDefs.h)
++list(APPEND mpa_network_hdr external/dcap_source/tools/SGXPlatformRegistration/include/MultiPackageDefs.h)
 +list(APPEND mpa_network_hdr external/dcap_source/tools/SGXPlatformRegistration/include/c_wrapper/mp_network.h)
 +add_library(mpa_network SHARED)
 +set_target_properties(mpa_network PROPERTIES PUBLIC_HEADER "${mpa_network_hdr}")
@@ -876,6 +884,7 @@
 +target_sources(mpa_network PRIVATE external/dcap_source/tools/SGXPlatformRegistration/src/network/src/network_logger.cpp)
 +install(TARGETS mpa_network)
 +
++list(APPEND mpa_uefi_hdr external/dcap_source/tools/SGXPlatformRegistration/include/IUefi.h)
 +list(APPEND mpa_uefi_hdr external/dcap_source/tools/SGXPlatformRegistration/include/MPUefi.h)
 +list(APPEND mpa_uefi_hdr external/dcap_source/tools/SGXPlatformRegistration/include/MultiPackageDefs.h)
 +list(APPEND mpa_uefi_hdr external/dcap_source/tools/SGXPlatformRegistration/include/c_wrapper/mp_uefi.h)
@@ -933,7 +942,6 @@
 +
 +add_executable(tee_appraisal_tool)
 +target_include_directories(tee_appraisal_tool PRIVATE ${RapidJSON_INCLUDE_DIRS})
-+target_include_directories(tee_appraisal_tool PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(tee_appraisal_tool PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
 +target_include_directories(tee_appraisal_tool PRIVATE external/dcap_source/QuoteVerification/appraisal/common)
 +target_include_directories(tee_appraisal_tool PRIVATE external/dcap_source/external/jwt-cpp/include)
@@ -949,7 +957,6 @@
 +target_compile_definitions(PCKIDRetrievalTool PRIVATE STRPRODUCTVER="${VERSION_SGX_DCAP}")
 +target_include_directories(PCKIDRetrievalTool PRIVATE common/inc)
 +target_include_directories(PCKIDRetrievalTool PRIVATE common/inc/internal)
-+target_include_directories(PCKIDRetrievalTool PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(PCKIDRetrievalTool PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
 +target_include_directories(PCKIDRetrievalTool PRIVATE external/dcap_source/tools/PCKRetrievalTool/App/inc)
 +target_include_directories(PCKIDRetrievalTool PRIVATE external/dcap_source/tools/SGXPlatformRegistration/include)
@@ -995,7 +1002,6 @@
 +install(TARGETS sgx_sign)
 +
 +CreateBundle(ecdsa_quote_service_bundle DIR psw/ae/aesm_service/source/bundles/ecdsa_quote_service_bundle FILES ecdsa_quote_service_bundle.cpp)
-+target_include_directories(ecdsa_quote_service_bundle PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(ecdsa_quote_service_bundle PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
 +target_include_directories(ecdsa_quote_service_bundle PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/quote/inc)
 +target_include_directories(ecdsa_quote_service_bundle PRIVATE psw/ae/aesm_service/source/common)
@@ -1009,14 +1015,12 @@
 +target_link_libraries(linux_network_service_bundle wrapper oal utils OpenSSL::Crypto)
 +
 +CreateBundle(pce_service_bundle DIR psw/ae/aesm_service/source/bundles/pce_service_bundle FILES pce_service_bundle.cpp)
-+target_include_directories(pce_service_bundle PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(pce_service_bundle PRIVATE psw/ae/aesm_service/source/common)
 +target_include_directories(pce_service_bundle PRIVATE psw/ae/data/constants/linux)
 +target_include_directories(pce_service_bundle PRIVATE psw/ae/inc)
 +target_link_libraries(pce_service_bundle wrapper oal sgx_pce_logic)
 +
 +CreateBundle(quote_ex_service_bundle DIR psw/ae/aesm_service/source/bundles/quote_ex_service_bundle FILES quote_ex_service_bundle.cpp)
-+target_include_directories(quote_ex_service_bundle PRIVATE external/dcap_source/QuoteGeneration/pce_wrapper/inc)
 +target_include_directories(quote_ex_service_bundle PRIVATE external/dcap_source/QuoteGeneration/quote_wrapper/common/inc)
 +target_include_directories(quote_ex_service_bundle PRIVATE psw/ae/aesm_service/source/common)
 +target_include_directories(quote_ex_service_bundle PRIVATE psw/ae/data/constants/linux)
@@ -1061,6 +1065,32 @@
 +target_sources(SampleEnclave PRIVATE TrustedLibrary/Libcxx.cpp)
 +target_sources(SampleEnclave PRIVATE TrustedLibrary/Thread.cpp)
 +install(TARGETS SampleEnclave)
+--- a/common/inc/sgx_qve_header.h
++++ b/common/inc/sgx_qve_header.h
+@@ -32,8 +32,9 @@
+ #ifndef _SGX_QVE_HEADER_H_
+ #define _SGX_QVE_HEADER_H_
+ 
++#include <stdint.h>
++#include <time.h>
+ #include "sgx_key.h"
+-#include "time.h"
+ 
+ #ifndef TEE_QV_MK_ERROR
+ #define TEE_QV_MK_ERROR(x)              (0x0000A000|(x))
+--- a/common/inc/sgx_uae_quote_ex.h
++++ b/common/inc/sgx_uae_quote_ex.h
+@@ -36,7 +36,9 @@
+ 
+ #include "sgx_quote.h"
+ #include "sgx_error.h"
+-#include "sgx_urts.h"
++#include <sgx_defs.h>
++#include <sgx_report.h>
++#include <stddef.h>
+ 
+ #ifdef  __cplusplus
+ extern "C" {
 --- a/common/inc/tlibc/sys/cdefs.h
 +++ b/common/inc/tlibc/sys/cdefs.h
 @@ -57,7 +57,7 @@
@@ -1089,7 +1119,7 @@
  # Extract the current version from the VERSION file
  file(STRINGS VERSION _version LIMIT_COUNT 1)
  
--set(US_CMAKE_MINIMUM_REQUIRED_VERSION 3.2)
+-set(US_CMAKE_MINIMUM_REQUIRED_VERSION 3.5)
 +set(US_CMAKE_MINIMUM_REQUIRED_VERSION 3.20)
  
  cmake_minimum_required(VERSION ${US_CMAKE_MINIMUM_REQUIRED_VERSION})
@@ -1120,26 +1150,6 @@
 +#include <cstdint>
  #include <string>
  #include <unordered_map>
- 
---- a/external/CppMicroServices/framework/include/cppmicroservices/BundleEvent.h
-+++ b/external/CppMicroServices/framework/include/cppmicroservices/BundleEvent.h
-@@ -25,6 +25,7 @@
- 
- #include "cppmicroservices/FrameworkExport.h"
- 
-+#include <cstdint>
- #include <iostream>
- #include <memory>
- 
---- a/external/CppMicroServices/framework/include/cppmicroservices/FrameworkEvent.h
-+++ b/external/CppMicroServices/framework/include/cppmicroservices/FrameworkEvent.h
-@@ -25,6 +25,7 @@
- 
- #include "cppmicroservices/FrameworkExport.h"
- 
-+#include <cstdint>
- #include <iostream>
- #include <memory>
  
 --- a/external/CppMicroServices/framework/src/service/ServiceListeners.cpp
 +++ b/external/CppMicroServices/framework/src/service/ServiceListeners.cpp
@@ -1193,7 +1203,7 @@
    pStat->m_comp_size = MZ_READ_LE32(p + MZ_ZIP_CDH_COMPRESSED_SIZE_OFS);
 --- a/external/dcap_source/QuoteGeneration/pce_wrapper/pce_wrapper.cpp
 +++ b/external/dcap_source/QuoteGeneration/pce_wrapper/pce_wrapper.cpp
-@@ -84,16 +84,16 @@ bool get_pce_path(
+@@ -84,16 +84,17 @@ bool get_pce_path(
      Dl_info dl_info;
      if(g_pce_status.pce_path[0])
      {
@@ -1208,15 +1218,15 @@
          NULL != dl_info.dli_fname)
      {
 -        if(strnlen(dl_info.dli_fname,buf_size)>=buf_size)
--            return false;
--        (void)strncpy(p_file_path,dl_info.dli_fname,buf_size);
 +        int r = ::snprintf(p_file_path, buf_size, "%s", dl_info.dli_fname);
 +        size_t out = r;
-+        return r > 0 && out < buf_size;
++        if (!(r > 0 && out < buf_size))
+             return false;
+-        (void)strncpy(p_file_path,dl_info.dli_fname,buf_size);
      }
      else //not a dynamic executable
      {
-@@ -109,21 +109,18 @@ bool get_pce_path(
+@@ -109,21 +110,18 @@ bool get_pce_path(
      if ( p_last_slash != NULL )
      {
          p_last_slash++;   //increment beyond the last slash
@@ -1280,7 +1290,7 @@
  
 --- a/external/dcap_source/QuoteGeneration/qcnl/linux/network_wrapper.cpp
 +++ b/external/dcap_source/QuoteGeneration/qcnl/linux/network_wrapper.cpp
-@@ -68,10 +68,10 @@ sgx_qcnl_error_t prepare_curl() {
+@@ -70,10 +70,10 @@ sgx_qcnl_error_t prepare_curl() {
  
          const char *libcurl_name = LIBCURL_NAME;
          // With the dlopen (RTLD_DEEPBIND) for libcurl, it forces the libcurl to look up symbols in its dependencies.
@@ -1320,6 +1330,17 @@
  #include <mutex>
  #include <algorithm>
  
+--- a/external/dcap_source/QuoteGeneration/qpl/inc/sgx_default_quote_provider.h
++++ b/external/dcap_source/QuoteGeneration/qpl/inc/sgx_default_quote_provider.h
+@@ -39,7 +39,7 @@
+ #define _SGX_DCAP_QPL_H_
+ 
+ #include <sgx_ql_lib_common.h>
+-#include <cstddef>
++#include <stdint.h>
+ 
+ #if defined(__cplusplus)
+ extern "C" {
 --- a/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.cpp
 +++ b/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.cpp
 @@ -34,8 +34,8 @@
@@ -1333,89 +1354,6 @@
  #include <boost/cstdint.hpp>
  #include <boost/enable_shared_from_this.hpp>
  #include <boost/shared_ptr.hpp>
-@@ -86,9 +86,9 @@ class QgsConnection : public boost::enab
-     static Pointer create(boost::mutex &connection_mtx,
-                           ConnectionSet &connections,
-                           asio::thread_pool &pool,
--                          asio::io_service &io_service) {
-+                          asio::io_context &io_context) {
-         return Pointer(new QgsConnection(connection_mtx, connections, pool,
--                                         io_service));
-+                                         io_context));
-     }
- 
-     gs::socket &get_socket() {
-@@ -132,12 +132,12 @@ class QgsConnection : public boost::enab
-     QgsConnection(boost::mutex &connection_mtx,
-                   ConnectionSet &connections,
-                   asio::thread_pool &pool,
--                  asio::io_service &io_service)
-+                  asio::io_context &io_context)
-         : m_connection_mtx(connection_mtx),
-           m_connections(connections),
-           m_pool(pool),
--          m_socket(io_service),
--          m_timer(io_service) {
-+          m_socket(io_context),
-+          m_timer(io_context) {
-     }
- 
-     void handle_read(const boost::system::error_code &ec, std::size_t bytes_transferred) {
-@@ -294,8 +294,8 @@ class QgsConnection : public boost::enab
-         boost::mutex connection_mtx;
-         boost::unordered_set<boost::shared_ptr<QgsConnection>> connections;
-         boost::asio::thread_pool pool;
--        QgsServerImpl(asio::io_service &in_io_service, gs::endpoint &ep, uint8_t num_threads)
--            : pool(num_threads), acceptor(in_io_service, ep), io_service(in_io_service) {
-+        QgsServerImpl(asio::io_context &in_io_context, gs::endpoint &ep, uint8_t num_threads)
-+            : pool(num_threads), acceptor(in_io_context, ep), io_context(in_io_context) {
-             start_accept();
-         }
- 
-@@ -303,7 +303,7 @@ class QgsConnection : public boost::enab
-         {
-             QgsConnection::Pointer new_connection =
-                 QgsConnection::create(connection_mtx, connections, pool,
--                                      io_service);
-+                                      io_context);
- 
-             acceptor.async_accept(new_connection->get_socket(),
-                                   boost::bind(&QgsServerImpl::handle_accept,
-@@ -337,18 +337,18 @@ class QgsConnection : public boost::enab
-             QGS_LOG_INFO("Stopped [%d] connections, about to clear connection list\n", i);
-             pool.join();
-             QGS_LOG_INFO("Joined thread pool\n");
--            io_service.stop();
--            QGS_LOG_INFO("Stopped io_service\n");
-+            io_context.stop();
-+            QGS_LOG_INFO("Stopped io_context\n");
-             connections.clear();
-         }
- 
-     private:
-         vsock_acceptor acceptor;
--        asio::io_service& io_service;
-+        asio::io_context& io_context;
-     };
- 
--    QgsServer::QgsServer(asio::io_service &io_service, gs::endpoint &ep, uint8_t num_threads)
--        : d(new QgsServerImpl(io_service, ep, num_threads)) {
-+    QgsServer::QgsServer(asio::io_context &io_context, gs::endpoint &ep, uint8_t num_threads)
-+        : d(new QgsServerImpl(io_context, ep, num_threads)) {
-     }
- 
-     void QgsServer::shutdown() {
---- a/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.h
-+++ b/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgs_server.h
-@@ -43,7 +43,7 @@ namespace intel { namespace sgx { namesp
- 
-     class QgsServer {
-     public:
--      QgsServer(asio::io_service &io_service, gs::endpoint &ep, uint8_t num_threads);
-+      QgsServer(asio::io_context &io_context, gs::endpoint &ep, uint8_t num_threads);
-       ~QgsServer();
-       void shutdown();
- 
 --- a/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgsd.service
 +++ b/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/qgsd.service
 @@ -6,23 +6,14 @@ Wants=remount-dev-exec.service
@@ -1447,8 +1385,8 @@
  [Install]
 --- a/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/server_main.cpp
 +++ b/external/dcap_source/QuoteGeneration/quote_wrapper/qgs/server_main.cpp
-@@ -10,7 +10,7 @@
- #include <linux/vm_sockets.h>
+@@ -19,7 +19,7 @@
+ #include <grp.h>
  
  #define QGS_CONFIG_FILE "/etc/qgs.conf"
 -#define QGS_UNIX_SOCKET_FILE "/var/run/tdx-qgs/qgs.socket"
@@ -1456,7 +1394,7 @@
  #define MAX_PORT_NUMBER 0xFFFF // accepted port range 0..65535 (0xFFFF)
  
  using namespace std;
-@@ -143,14 +143,12 @@ int main(int argc, const char* argv[])
+@@ -329,14 +329,12 @@ int main(int argc, const char* argv[])
          else
              QGS_LOG_INFO("Parameters from configuration file: num_thread = %d, port = %d (%04xh)\n", (uint8_t)num_threads, port, port);
      } else {
@@ -1472,27 +1410,16 @@
              no_daemon = true;
              continue;
          } else if (strncmp(argv[i], "-p=", 3 ) == 0) {
-@@ -209,7 +207,7 @@ int main(int argc, const char* argv[])
-     try {
-         do {
-             reload = false;
--            asio::io_service io_service;
-+            asio::io_context io_context;
-             gs::endpoint ep;
-             if (!socket_based_communication) {
-                 struct sockaddr_vm vm_addr = {};
-@@ -229,9 +227,9 @@ int main(int argc, const char* argv[])
-                 }
-             }
-             QGS_LOG_INFO("About to create QgsServer\n");
--            server = new QgsServer(io_service, ep, (uint8_t)num_threads);
-+            server = new QgsServer(io_context, ep, (uint8_t)num_threads);
-             QGS_LOG_INFO("About to start main loop\n");
--            io_service.run();
-+            io_context.run();
-             QGS_LOG_INFO("Quit main loop\n");
-             QgsServer *temp_server = server;
-             server = NULL;
+--- a/external/dcap_source/QuoteGeneration/quote_wrapper/ql/inc/sgx_dcap_ql_wrapper.h
++++ b/external/dcap_source/QuoteGeneration/quote_wrapper/ql/inc/sgx_dcap_ql_wrapper.h
+@@ -41,6 +41,7 @@
+ #include "sgx_report.h"
+ #include <sgx_pce.h>
+ #include <sgx_ql_lib_common.h>
++#include <stdint.h>
+ 
+ #if defined(__cplusplus)
+ extern "C" {
 --- a/external/dcap_source/QuoteGeneration/quote_wrapper/tdx_attest/tdx_attest.c
 +++ b/external/dcap_source/QuoteGeneration/quote_wrapper/tdx_attest/tdx_attest.c
 @@ -106,7 +106,7 @@ static const size_t REQ_BUF_SIZE = 4 * 4
@@ -1521,6 +1448,21 @@
 +    if (TDX_ATTEST_ERROR_NOT_SUPPORTED != ret) {
          goto ret_point;
      }
+ 
+--- a/external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/inc/td_ql_wrapper.h
++++ b/external/dcap_source/QuoteGeneration/quote_wrapper/tdx_quote/inc/td_ql_wrapper.h
+@@ -37,8 +37,11 @@
+ #ifndef _TD_QL_WRAPPER_H_
+ #define _TD_QL_WRAPPER_H_
+ #include <stddef.h>
+-#include <stdbool.h>
++#include <sgx_key.h>
++#include <sgx_quote.h>
+ #include <sgx_quote_4.h>
++#include <sgx_report.h>
++#include <stdint.h>
+ 
+ #define TEE_ATT_MK_ERROR(x)              (0x00011000|(x))
  
 --- a/external/dcap_source/QuoteVerification/appraisal/qae/qae.edl
 +++ b/external/dcap_source/QuoteVerification/appraisal/qae/qae.edl
@@ -1573,7 +1515,7 @@
  #include "sgx_urts.h"
  #include "qae_u.h"
  #include "sgx_error.h"
-@@ -78,21 +79,21 @@ static bool get_qae_path(
+@@ -78,21 +79,22 @@ static bool get_qae_path(
      Dl_info dl_info;
      if (s_qae_info.m_qae_path[0])
      {
@@ -1588,11 +1530,11 @@
               NULL != dl_info.dli_fname)
      {
 -        if (strnlen(dl_info.dli_fname, buf_size) >= buf_size)
--            return false;
--        (void)strncpy(p_file_path, dl_info.dli_fname, buf_size);
 +        int r = ::snprintf(p_file_path, buf_size, "%s", dl_info.dli_fname);
 +        size_t out = r;
-+        return r > 0 && out < buf_size;
++        if (!(r > 0 && out < buf_size))
+             return false;
+-        (void)strncpy(p_file_path, dl_info.dli_fname, buf_size);
      }
      else // not a dynamic executable
      {
@@ -1602,7 +1544,7 @@
              return false;
          p_file_path[i] = '\0';
      }
-@@ -101,30 +102,22 @@ static bool get_qae_path(
+@@ -101,30 +103,22 @@ static bool get_qae_path(
      if (p_last_slash != NULL)
      {
          p_last_slash++;       // increment beyond the last slash
@@ -1638,7 +1580,7 @@
      }
      return true;
  }
-@@ -246,7 +239,7 @@ quote3_error_t ecall_appraise_quote_resu
+@@ -246,7 +240,7 @@ quote3_error_t ecall_appraise_quote_resu
      std::lock_guard<std::mutex> lock(s_qae_info.m_qae_mutex);
      sgx_status_t ret = qae_appraise_quote_result(s_qae_info.m_qae_eid,
                                                   &retval,
@@ -1647,13 +1589,25 @@
                                                   p_qaps,
                                                   qaps_count,
                                                   appraisal_check_date,
-@@ -337,4 +330,4 @@ quote3_error_t ecall_authenticate_policy
+@@ -337,4 +331,4 @@ quote3_error_t ecall_authenticate_policy
              retval = SGX_QL_ERROR_UNEXPECTED;
      }
      return retval;
 -}
 \ No newline at end of file
 +}
+--- a/external/dcap_source/QuoteVerification/appraisal/qal/sgx_dcap_qal.h
++++ b/external/dcap_source/QuoteVerification/appraisal/qal/sgx_dcap_qal.h
+@@ -29,7 +29,8 @@
+ #ifndef _SGX_DCAP_QAL_H_
+ #define _SGX_DCAP_QAL_H_
+ 
+-#include "sgx_report.h"
++#include <sgx_pce.h>
++#include <stdint.h>
+ #include "sgx_ql_lib_common.h"
+ #include "sgx_ql_quote.h"
+ #include <time.h>
 --- a/external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/gen_payload.cpp
 +++ b/external/dcap_source/QuoteVerification/appraisal/tee_appraisal_tool/gen_payload.cpp
 @@ -40,6 +40,7 @@
@@ -1688,9 +1642,23 @@
      BIGNUM *bn_x = NULL, *bn_y = NULL;
      BIGNUM *bn_r = NULL;
      EC_GROUP *ec_group = NULL;
+--- a/external/dcap_source/QuoteVerification/dcap_quoteverify/inc/sgx_dcap_quoteverify.h
++++ b/external/dcap_source/QuoteVerification/dcap_quoteverify/inc/sgx_dcap_quoteverify.h
+@@ -39,7 +39,11 @@
+ #define _SGX_DCAP_QV_H_
+ 
+ #include <sgx_qve_header.h>
++#include <sgx_pce.h>
++#include <sgx_ql_lib_common.h>
+ #include <sgx_ql_quote.h>
++#include <stdint.h>
++#include <time.h>
+ 
+ #if defined(__cplusplus)
+ extern "C" {
 --- a/external/dcap_source/QuoteVerification/dcap_quoteverify/linux/qve_parser.cpp
 +++ b/external/dcap_source/QuoteVerification/dcap_quoteverify/linux/qve_parser.cpp
-@@ -61,21 +61,21 @@ bool get_qve_path(
+@@ -61,21 +61,22 @@ bool get_qve_path(
      Dl_info dl_info;
      if(g_qve_path[0])
      {
@@ -1705,11 +1673,11 @@
          NULL != dl_info.dli_fname)
      {
 -        if(strnlen(dl_info.dli_fname,buf_size)>=buf_size)
--            return false;
--        (void)strncpy(p_file_path,dl_info.dli_fname,buf_size);
 +        int r = ::snprintf(p_file_path, buf_size, "%s", dl_info.dli_fname);
 +        size_t out = r;
-+        return r > 0 && out < buf_size;
++        if (!(r > 0 && out < buf_size))
+             return false;
+-        (void)strncpy(p_file_path,dl_info.dli_fname,buf_size);
      }
      else //not a dynamic executable
      {
@@ -1719,7 +1687,7 @@
              return false;
          p_file_path[i] = '\0';
      }
-@@ -84,21 +84,17 @@ bool get_qve_path(
+@@ -84,21 +85,17 @@ bool get_qve_path(
      if ( p_last_slash != NULL )
      {
          p_last_slash++;   //increment beyond the last slash
@@ -1778,7 +1746,7 @@
      if (ret) {
          if(strnlen(local_configuration_file_path ,MAX_PATH)+strnlen(LOCAL_NETWORK_SETTING,MAX_PATH)+sizeof(char) > MAX_PATH) {
              ret = false;
-@@ -352,6 +354,8 @@ network_post_error_t network_https_post(
+@@ -350,6 +352,8 @@ network_post_error_t network_https_post(
  bool is_server_url_available() {
      char local_configuration_file_path[MAX_PATH] = "";
      bool ret = get_program_path(local_configuration_file_path, MAX_PATH -1);
@@ -1816,6 +1784,51 @@
  #endif
  
      if (!get_program_path(enclave_path, ProgPathBufferSize))
+--- a/external/dcap_source/tools/SGXPlatformRegistration/include/MPNetwork.h
++++ b/external/dcap_source/tools/SGXPlatformRegistration/include/MPNetwork.h
+@@ -11,7 +11,8 @@
+ #ifndef MPNETWORK_H_
+ #define MPNETWORK_H_
+ 
+-#include "MPNetworkDefs.h"
++#include <MultiPackageDefs.h>
++#include <stdint.h>
+ #include <string>
+ using std::string;
+ 
+--- a/external/dcap_source/tools/SGXPlatformRegistration/include/MPUefi.h
++++ b/external/dcap_source/tools/SGXPlatformRegistration/include/MPUefi.h
+@@ -13,6 +13,7 @@
+ 
+ #include <memory>
+ #include <string>
++#include <stdint.h>
+ #include "IUefi.h"
+ #include "MultiPackageDefs.h"
+ 
+--- a/external/dcap_source/tools/SGXPlatformRegistration/include/c_wrapper/mp_network.h
++++ b/external/dcap_source/tools/SGXPlatformRegistration/include/c_wrapper/mp_network.h
+@@ -37,7 +37,9 @@
+ #ifndef __MP_NETWORK_H
+ #define __MP_NETWORK_H
+ 
+-#include "MPNetworkDefs.h"
++#include <MultiPackageDefs.h>
++#include <stdint.h>
++#include "MPNetwork.h"
+ 
+ /**
+  * This is the main entry point for the SGX Multi-Package Network C interface.
+--- a/external/dcap_source/tools/SGXPlatformRegistration/include/c_wrapper/mp_uefi.h
++++ b/external/dcap_source/tools/SGXPlatformRegistration/include/c_wrapper/mp_uefi.h
+@@ -39,6 +39,7 @@
+ 
+ #include "MultiPackageDefs.h"
+ #include <string> //TODO: this dependency should be removed from this file
++#include <stdint.h>
+ 
+ #ifdef _WIN32
+ #define MPUefiDllExport  __declspec(dllexport)
 --- a/external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/AgentConfiguration.cpp
 +++ b/external/dcap_source/tools/SGXPlatformRegistration/src/agent/src/AgentConfiguration.cpp
 @@ -243,8 +243,8 @@ bool AgentConfiguration::read(MPConfigur
@@ -1946,18 +1959,6 @@
  #include <unistd.h>
  
  #include <cppmicroservices/Bundle.h>
-@@ -80,9 +81,9 @@ static std::vector<std::string> get_bund
-         if (0 == dladdr(__builtin_return_address(0), &dl_info) ||
-             NULL == dl_info.dli_fname)
-         return files;
--        if (strnlen(dl_info.dli_fname, sizeof(buf)) >= sizeof(buf))
-+        if (strnlen(dl_info.dli_fname, sizeof(buf)) > sizeof(buf) - 1)
-         return files;
--        (void)strncpy(buf, dl_info.dli_fname, sizeof(buf));
-+        strncpy(buf, dl_info.dli_fname, sizeof(buf) - 1);
-         std::string aesm_path(buf);
- 
-         size_t i = aesm_path.rfind(PATH_SEPARATOR, aesm_path.length());
 --- a/psw/ae/aesm_service/source/core/ipc/CMakeLists.txt
 +++ b/psw/ae/aesm_service/source/core/ipc/CMakeLists.txt
 @@ -29,31 +29,7 @@
@@ -2049,6 +2050,36 @@
          }
          if (-1 == hdev_prov)
          {
+--- a/psw/enclave_common/sgx_enclave_common.h
++++ b/psw/enclave_common/sgx_enclave_common.h
+@@ -32,7 +32,6 @@
+ #ifndef _SGX_ENCLAVE_COMMON_H_
+ #define _SGX_ENCLAVE_COMMON_H_
+ 
+-#include <stdbool.h>
+ #include <stdint.h>
+ #include <stdlib.h>
+ 
+--- a/psw/uae_service/legacy_uae_service.cpp
++++ b/psw/uae_service/legacy_uae_service.cpp
+@@ -30,6 +30,7 @@
+  */
+ 
+ #include <dlfcn.h>
++#include <sgx_urts.h>
+ #include "sgx_uae_quote_ex.h"
+ #include "arch.h"
+ #include <cstdlib>
+--- a/psw/uae_service/sgx_uae_service.cpp
++++ b/psw/uae_service/sgx_uae_service.cpp
+@@ -32,6 +32,7 @@
+ #include <stddef.h>
+ #include <oal/uae_oal_api.h>
+ #include <aesm_error.h>
++#include <sgx_urts.h>
+ #include "sgx_uae_quote_ex.h"
+ #include "config.h"
+ 
 --- a/psw/urts/linux/edmm_utility.cpp
 +++ b/psw/urts/linux/edmm_utility.cpp
 @@ -99,11 +99,11 @@ bool get_driver_type(int *driver_type)
