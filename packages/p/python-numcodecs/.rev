@@ -136,4 +136,12 @@
 - No longer ignore zarr 3 tests, rely on upstream for CRC32C.</comment>
     <requestid>1335187</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>433ec87674cf8401d7dfc3a1c6bae3f8</srcmd5>
+    <version>0.16.5</version>
+    <time>1781099484</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1358241</requestid>
+  </revision>
 </revisionlist>

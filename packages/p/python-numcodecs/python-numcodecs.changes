@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  9 18:57:21 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Don't test zarr on python311: No longer available (SPEC 0) 
+
+-------------------------------------------------------------------
 Thu Feb 26 04:44:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.16.5:

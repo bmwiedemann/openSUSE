@@ -66,7 +66,7 @@ BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module numcodecs = %{version}}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzstd}
-BuildRequires:  %{python_module zarr >= 3}
+BuildRequires:  %{python_module zarr >= 3 if %python-base >= 3.12}
 BuildRequires:  zstd
 %endif
 # /SECTION
@@ -99,7 +99,9 @@ export DISABLE_NUMCODECS_AVX2=1
 %if %{with test}
 %check
 # pcodec not in the distribution
-%pytest_arch --pyargs numcodecs -rsfE --ignore=%{$python_sitearch}/numcodecs/pcodec.py
+# zarr3 not for python311
+python311_ignore="--ignore %{python311_sitearch}/numcodecs/zarr3.py"
+%pytest_arch --pyargs numcodecs -rsfE --ignore=%{$python_sitearch}/numcodecs/pcodec.py ${$python_ignore}
 %endif
 
 %if !%{with test}
