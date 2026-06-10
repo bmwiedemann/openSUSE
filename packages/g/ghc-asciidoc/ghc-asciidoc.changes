@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  2 21:49:32 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update asciidoc to version 0.1.0.3.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/asciidoc-0.1.0.3/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Sun Nov 30 16:56:16 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Add asciidoc at version 0.1.

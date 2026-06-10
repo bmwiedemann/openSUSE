@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-asciidoc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1
+Version:        0.1.0.3
 Release:        0
 Summary:        AsciiDoc parser
 License:        BSD-3-Clause
