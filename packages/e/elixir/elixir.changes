@@ -1,5 +1,11 @@
 -------------------------------------------------------------------
-Thu Jun  4 07:29:56 UTC 2026 - Alessio Biancalana <alessio.biancalana@suse.com>
+Wed Jun 10 08:42:34 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Upgrade to Elixir 1.20.1:
+  * Changelog available at https://hexdocs.pm/elixir/1.20.1/changelog.html
+
+-------------------------------------------------------------------
+Thu Jun  4 07:29:56 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Add 003-skip-tests-daemon-mode-source.patch:
   * Skip some testsi (daemon-mode release, source tests) that are failing in the build env
