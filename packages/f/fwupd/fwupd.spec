@@ -43,7 +43,7 @@
 %define shlib_sover  3
 
 Name:           fwupd
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -80,9 +80,6 @@ BuildRequires:  pkgconfig(appstream-glib) >= 0.5.10
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(colorhug) >= 1.2.12
-%ifnarch s390x ppc64le
-BuildRequires:  pkgconfig(flashrom)
-%endif
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.45.8
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.48.8
@@ -93,7 +90,6 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(gusb) >= 0.2.9
-BuildRequires:  pkgconfig(jcat) >= 0.1.3
 BuildRequires:  pkgconfig(libcurl) >= 7.62.0
 BuildRequires:  pkgconfig(libdrm_amdgpu)
 BuildRequires:  pkgconfig(libelf)
@@ -232,9 +228,6 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Dvalgrind=disabled \
   -Dvendor_ids_dir=/usr/share/hwdata \
   -Dman=true \
-%ifarch s390x ppc64le
-  -Dplugin_flashrom=disabled \
-%endif
 %ifnarch %{ix86} x86_64
   -Dhsi=disabled \
 %endif
@@ -349,9 +342,6 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_datadir}/icons/hicolor/*
 %{_prefix}/lib/systemd/system-shutdown/fwupd.shutdown
 %dir %{_libdir}/fwupd-*
-%ifnarch s390x ppc64le
-%{_libdir}/fwupd-*/libfu_plugin_flashrom.so
-%endif
 %{_libdir}/fwupd-*/libfu_plugin_modem_manager.so
 %{_libdir}/fwupd-*/libfwupdengine.so
 %{_libdir}/fwupd-*/libfwupdplugin.so

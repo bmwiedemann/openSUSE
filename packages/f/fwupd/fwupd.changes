@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri May 29 15:25:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.4:
+  + This release adds the following features:
+    - Add a libcrypto-based JCat implementation for Android
+    - Add support for NixOS to the quickstart script
+    - Add support for the Compal BIOS version format
+    - Allow a remote to specify that a username or password is required
+    - Allow storing a per-user password in XDG_CONFIG_HOME
+    - Detect encrypted swap devices below device-mapper
+    - Ensure that all firmware subclasses set the maximum size
+    - Remove the flashrom plugin
+    - Save the SMBIOS BiosReleaseDate string to uploaded reports
+    - Tell Star Labs coreboot users to manually update when required
+  + This release fixes the following bugs:
+    - Add a retry limit when updating failing Goodix MoC devices
+    - Add several bounds checks for when updating Dell docks
+    - Add vendor name and name for the various Framework UEFI certificates
+    - Allow recovery if the Lenovo dock internal state is invalid
+    - Avoid truncation when calculating the AMD GPU atombios size
+    - Check firmware size against Novatek flash start address
+    - Check for config offset overflow when updating Synaptics RMI devices
+    - Check for multiplication overflow in BCM57xx stage1 size calculation
+    - Check for overflow when writing to CCGX DMC devices
+    - Check stream size before calculating Legion HID ID offset
+    - Check stream size before subtracting Ilitek ITS CRC length
+    - Clear Sunplus camera download state if the previous flash failed
+    - Do not show plugin warnings when using --version
+    - Filter the install flags provided by the D-Bus client
+    - Fix a potential heap buffer overflow in FDT strlist parsing
+    - Fix a potential heap buffer overflow in Nordic HID peer validation
+    - Fix a potential OOB read in DFOTA modem response parsing
+    - Fix a potential path traversal vulnerability in firmware backup
+    - Fix a regression when searching for file magic
+    - Fix a regression when using report-export --sign
+    - Fix fwupd domain check bypass when using Qubes
+    - Ignore efivar free space requirement on Microsoft Hyper-V hosts
+    - Limit the number of hints a D-Bus client can set
+    - Limit the size of parsed USB descriptors to ~64KiB
+    - Make it easy to enable an authenticated remote
+    - Make the Novatek boot update more reliable
+    - Only read BCR from Intel SPI controllers
+    - Prevent a possible division by zero error in the progressbar code
+    - Prevent decompression bomb attacks in uSWID zlib payload parsing
+    - Prevent NVRAM-seeded ptential path traversal when loading ESP files
+    - Redact the username and password of remotes when using a non-active console
+    - Require authorization for firmware installation on emulated devices
+    - Require authorization for more D-Bus methods from non-local users
+    - Restrict Curl protocols to prevent potential SSRF attacks
+    - Restrict ModifyRemote to prevent a supply-chain redirection
+    - Show a short easy-to-read string as the Pixart touchpad name
+    - Tolerate post-quantum CA PKCS#7 failures when using Qubes
+    - Validate ACPI PHAT specific data offset before parsing
+    - Validate Corsair write size before subtracting header size
+    - Validate DFU address offset before parsing the header
+    - Validate Elan touchpad IAP address is within firmware bounds
+    - Validate Logitech TAP AP region bounds before calculating size
+    - Validate payload length is large enough for FPC sec-link
+    - Validate sector range before writing pixart-tp firmware
+    - Validate VBE area start does not exceed area size
+    - Validate write offset does not exceed TI TPS6598x stream size
+  + This release adds support for the following hardware:
+    - Egis MoC devices with PID 9201
+    - Intel Arc Pro B65 and Arc Pro B70 (#10389)
+    - Lenovo dock devices in 'provisioned' mode
+    - Pixart TP devices with PID 1343
+    - Several GigaDevice and Puya SPI chips
+- Drop no longer needed BuildRequires: pkgconfig(jcat),
+  pkgconfig(flashrom)
+
+-------------------------------------------------------------------
 Tue May 26 02:16:40 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fwupd-bsc1217138-fallback-shim-path.patch to set the fallback
