@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 29 16:35:54 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update mmorph to version 1.2.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Jan 10 03:57:06 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update mmorph to version 1.2.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Jan  9 03:36:40 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update mmorph to version 1.2.2.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Mon Oct 13 00:28:00 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update mmorph to version 1.2.1 revision 1.
