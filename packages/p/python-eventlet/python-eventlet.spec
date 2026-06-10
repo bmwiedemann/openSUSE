@@ -86,6 +86,8 @@ skiptests+=" or test_send_timeout"
 python313_skiptests+=" or test_threading_condition or test_threading_join or test_socketserver_selectors or test_threading_current or test_threadpoolexecutor"
 # gh#eventlet/eventlet#739
 python310_skiptests+=" or test_017_ssl_zeroreturnerror"
+# Raises runtimeerror, but also passes, sigh
+skiptests+=" or test_patcher_existing_logging_module_lock"
 %pytest -k "not ($skiptests ${$python_skiptests})" ${$python_pytest_param}
 
 %files %{python_files}

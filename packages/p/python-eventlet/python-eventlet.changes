@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 03:04:37 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip another test that raises a RuntimeError.
+
+-------------------------------------------------------------------
 Mon Apr  6 20:51:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.41.0:

@@ -739,4 +739,12 @@
 - update BuildRequires from pyproject.toml</comment>
     <requestid>1344793</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>595f56f405fed33f3e17788569950582</srcmd5>
+    <version>0.41.0</version>
+    <time>1781099232</time>
+    <user>anag_factory</user>
+    <comment>- Skip another test that raises a RuntimeError.</comment>
+    <requestid>1358265</requestid>
+  </revision>
 </revisionlist>
