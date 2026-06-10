@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-splitmix
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.3.1
+Version:        0.1.3.2
 Release:        0
 Summary:        Fast Splittable PRNG
 License:        BSD-3-Clause
@@ -36,30 +36,8 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-HUnit-prof
-BuildRequires:  ghc-async-devel
-BuildRequires:  ghc-async-prof
-BuildRequires:  ghc-base-compat-batteries-devel
-BuildRequires:  ghc-base-compat-batteries-prof
-BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
-BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-math-functions-devel
-BuildRequires:  ghc-math-functions-prof
-BuildRequires:  ghc-process-devel
-BuildRequires:  ghc-process-prof
-BuildRequires:  ghc-random-devel
-BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-template-haskell-prof
-BuildRequires:  ghc-test-framework-devel
-BuildRequires:  ghc-test-framework-hunit-devel
-BuildRequires:  ghc-test-framework-hunit-prof
-BuildRequires:  ghc-test-framework-prof
-BuildRequires:  ghc-tf-random-devel
-BuildRequires:  ghc-tf-random-prof
-BuildRequires:  ghc-vector-devel
-BuildRequires:  ghc-vector-prof
 %endif
 
 %description
