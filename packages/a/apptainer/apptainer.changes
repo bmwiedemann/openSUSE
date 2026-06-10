@@ -1,4 +1,166 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:52:21 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update apptainer to version v1.5.1
+  * Security fix (bsc#1267982):
+    Fix for CVE-2026-48785 / GHSA-cr2j-534f-mf3g. Incorrect path
+    matching for limit container paths directive. This is only
+    applicable to SUID installations that have paths listed in
+    limit container paths that are string prefixes of other paths
+    which are not desired to be included in the list. For example,
+    if /scratch is in the list but `/scratch2` also exists and contains
+    container images, previously the latter would match but now
+    only images under the exactly matching `/scratch` are included.
+  Other changes:
+  * Work around segmentation fault sometimes seen while `mksquashfs`
+    under proot is creating a SIF file.
+  * Update bundled PRoot to version 5.4.0-rootless.3 in order to
+    fix a problem where SIF files could be corrupted when
+    `mksquashfs` died with a signal. The proot command was not
+    passing back an error exit code.
+  * Updated bundled `squashfuse_ll` to version 0.6.2 in order to
+    fix a crash sometimes seen with apptainer in unprivileged
+    docker.
+  * Update bundled fuse2fs to version 1.47.4 instead of patching
+    the bugs in 1.47.3.
+  * Fix a crash that happened when `/etc/resolv.conf` was a
+    symlink while building from a definition file using the
+    localimage bootstrap.
+  * Support hosts that have an /etc/resolv.conf symlink pointing
+    to `../run` in addition to `/run`.
+  * Change the download-dependencies script to skip downloading
+    the PRoot source code on architectures that it is known to
+    not support (that is: ppc*, s390*, and riscv*).
+    In those situations Apptainer will skip trying to compile
+    and run proot. As a result original owners and groups of
+    files will not be preserved in SIF images built by
+    unprivileged users, as was the case for all architectures
+    prior to 1.5.0.
+  * Fix panic encountered during progress bar update while
+    pulling image.
+  * Fix fakeroot overwriting root's username in `/etc/passwd`
+    with the host user's name, a regression introduced in v1.5.0.
+  * Add nonested flag for --mount specifications to prevent
+    individual bind mounts from being passed to nested containers
+    via `APPTAINER_BIND`.
+    Example: `--mount type=bind,source=/data,destination=/mnt,nonested`.
+- Changes from version v1.5.0:
+   New Features & Functionalities
+   * Add support for a subset of the Container Device Interface
+     (CDI) standard through new `--device` and
+     `--cdi-dirs run/shell/exec` options. Honors environment
+     variable settings, bind mounts, and device files listed in
+     CDI specification files.
+   * Add support for selective mounting of Intel(R) Gaudi
+     accelerators. This feature is only for use in combination
+     with a minimal /dev directory, selected either with the
+     `--contain` flag or by configuring mount dev with the minimal
+     option; otherwise all the devices are available anyway. This
+     feature is enabled via the `--intel-hpu option` and by
+     specifying the HABANA_VISIBLE_DEVICES environment variable,
+     which should contain a comma-separated list of device IDs
+     (e.g., "1,2,3") or "all" to import all of them.
+     The default if `HABANA_VISIBLE_DEVICES` is not set is "all".
+   * Add support for downloading SIF images from an IPFS
+     peer-to-peer cluster using an HTTP gateway (similar to the
+     existing support for IPFS in the curl tool). The address of
+     the gateway can be set in the `IPFS_GATEWAY` environment
+     variable or read from ~/.ipfs/gateway or /etc/ipfs/gateway.
+   * Add `--no-env` action and instance option and corresponding
+     `APPTAINER_NOENV` environment variable that can provide a
+     comma-separated list of environment variables to skip
+     importing from the host environment into the container.
+   * Add `--data` build option which creates a SIF file with
+     a squashfs data partition instead of a code partition,
+     given an existing squashfs file as the source.
+   * If `PREPEND_LD_LIBRARY_PATH` is set in the container
+     environment (through an `--env` option, an `APPTAINERENV_`
+     prefix from the host, or in the container definition)
+     then prepend that string to `:$LD_LIBRARY_PATH`. Likewise
+     if `APPEND_LD_LIBRARY_PATH` is set in the container
+     environment then append that string to `$LD_LIBRARY_PATH:`.
+     This is only done when `LD_LIBRARY_PATH` is set, although
+     if the container is based on glibc, when `LD_LIBRARY_PATH`
+     is not set it will first be filled with the default
+     library search path as found through ldconfig.
+   * Create reproducible SIF images, if the environment variable
+     `SOURCE_DATE_EPOCH` has been set (as a Unix timestamp given
+     as seconds since the beginning of 1970, in the UTC timezone).
+     Also add `--reproducible` flag to build and pull from
+     `oras://` sources. This sets `SOURCE_DATE_EPOCH`
+     automatically from the image "created" time.
+   * Support hosts that have `/etc/resolv.conf` pointing to a
+     symlink under /run, such as those hosts that are running
+     systemd-resolved. In this case, the symlink is copied into
+     the container and the parent directory of the target of the
+     symlink is bind-mounted from the host. The result is that
+     even if the target of the symlink is replaced with a new file,
+     the container sees the update in `/etc/resolv.conf`.
+   * Add `/etc/resolv.conf` to the list of host paths that can be
+     prevented from automatic import into the container with the
+     `--no-mount` option.
+   * Preserve owner and group information on files in containers
+     downloaded from OCI registries when building SIF files, even
+     for unprivileged users. This takes advantage of the fact that
+     the library (umoci) that downloads containers preserves owner
+     and group information in an extended attribute. Adds bundled
+     tool proot which is modified from the upstream tool by the
+     rootless-containers project to make the owner and group appear
+     to be in the ordinary `stat()` information. That tool is now
+     used when invoking mksquashfs to create the filesystem
+     partition in a SIF file. It can be disabled with the hidden
+     build option `--ignore-proot`.
+   * When unsquashing an image while running under a root-mapped
+     user namespace (such as when using fakeroot without subuid
+     mapping), insert another namespace mapping back to the
+     original user so unsquashfs doesn't try (and fail) to change
+     the owner and group information on the unpacked files.
+   * Record image digest metadata (sha256 from RepoDigests), for
+     OCI registry images. Also add the image name (ref) of the
+     image from "docker", with registry and tag. This is useful
+     for traceability, when using docker.io or a tag like latest.
+     Unfortunately the feature does not work with "docker-archive"
+     or "docker-daemon".
+   * Apptainer now supports the `loong64` architecture.
+   Changed defaults / behaviours
+   * If libraries are bound in to `/.singularity.d/libs` (such as
+     with GPU options like `--nv`) and the container is based on
+     glibc and `LD_LIBRARY_PATH` is not already set, it is now set
+     to the default library search path. Since `/.singularity.d/libs`
+    is appended to `LD_LIBRARY_PATH`, this makes libraries
+    installed in the container take precedence over libraries
+    bound in from the host. This reduces the chances of mismatched
+    glibc versions. However, if there are indeed libraries on the
+    host that need to take precedence over libraries in the
+    container, that can be forced with
+    `PREPEND_LD_LIBRARY_PATH=/.singularity.d/libs`.
+  * Change the default arm variant to v7, and stop using the GOARM
+    environment variable. The variables GOOS, GOARCH and GOARM
+    are only used when building.
+  * The oras transport now supports architectures beyond amd64.
+    Images downloaded from oras without using the cache are now
+    checksummed. A progress bar is shown during the process.
+    Add support for APPTAINER_TMPDIR to the commands apptainer
+    overlay create and apptainer plugin compile.
+  Bug Fixes:
+   * Make the root default capabilities configuration option apply
+     only to the real root user as documented and not to a
+     fakeroot user.
+   * Fix long-time bug in importing environment variables from oci
+     containers (defined by `ENV` in their definition file) with
+     shell characters in them. It now escapes them with single
+     backslashes instead of double backslashes so they behave
+     like they do in podman and docker.
+   * The username in `/etc/passwd` inside a container now always
+     corresponds to the username of the user on the host even if
+     an entry with the same UID is found in the container.
+   * When apptainer reinvokes itself on behalf of the run-help
+     command, it passes through `LD_LIBRARY_PATH`. This makes it
+     work correctly when it was installed with
+     `install-unprivileged.sh` on a host operating system that's
+     different than the one the installed binaries were built on.
+
+-------------------------------------------------------------------
 Fri May 29 06:54:25 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Fix CVE-2026-39821 (GO-2026-5026) (bsc#1266656)

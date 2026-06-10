@@ -1,22 +1,7 @@
 <services>
   <service name="go_modules" mode="disabled">
    <param name="replace">
-    github.com/cloudflare/circl=github.com/cloudflare/circl@v1.6.1
-   </param>
-   <param name="replace">
-    github.com/docker/cli=github.com/docker/cli@v29.2.0+incompatible
-   </param>
-   <param name="replace">
     github.com/go-jose/go-jose/v4=github.com/go-jose/go-jose/v4@v4.1.4
-   </param>
-   <param name="replace">
-    github.com/sigstore/sigstore=github.com/sigstore/sigstore@v1.10.4
-   </param>
-   <param name="replace">
-    github.com/moby/go-archive=github.com/moby/go-archive@v0.1.0
-   </param>
-   <param name="replace">
-    github.com/containers/image/v5=github.com/containers/image/v5@v5.36.0
    </param>
    <param name="replace">
     google.golang.org/grpc=google.golang.org/grpc@v1.79.3
@@ -27,5 +12,8 @@
    <param name="replace">
     golang.org/x/crypto=golang.org/x/crypto@v0.52.0
    </param>
+   <!-- <param name="replace">
+    github.com/cilium/ebpf=github.com/cilium/ebpf@v0.21.0
+   </param> -->
   </service>
 </services>

@@ -28,7 +28,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL AND OpenSSL
 Group:          Productivity/Clustering/Computing
 Name:           apptainer
-Version:        1.4.5
+Version:        1.5.1
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://apptainer.org

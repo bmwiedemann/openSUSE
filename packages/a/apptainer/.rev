@@ -577,4 +577,41 @@
   Building of the 'suid-root' starter is still optional.</comment>
     <requestid>1355778</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8da385aa0c9bde3f538e6ce849eec865</srcmd5>
+    <version>1.5.1</version>
+    <time>1781099385</time>
+    <user>anag_factory</user>
+    <comment>- Update apptainer to version v1.5.1
+  * Security fix (bsc#1267982):
+    Fix for CVE-2026-48785 / GHSA-cr2j-534f-mf3g. Incorrect path
+    matching for limit container paths directive. This is only
+    applicable to SUID installations that have paths listed in
+    limit container paths that are string prefixes of other paths
+    which are not desired to be included in the list. For example,
+    if /scratch is in the list but `/scratch2` also exists and contains
+    container images, previously the latter would match but now
+    only images under the exactly matching `/scratch` are included.
+  Other changes:
+  * Work around segmentation fault sometimes seen while `mksquashfs`
+    under proot is creating a SIF file.
+  * Update bundled PRoot to version 5.4.0-rootless.3 in order to
+    fix a problem where SIF files could be corrupted when
+    `mksquashfs` died with a signal. The proot command was not
+    passing back an error exit code.
+  * Updated bundled `squashfuse_ll` to version 0.6.2 in order to
+    fix a crash sometimes seen with apptainer in unprivileged
+    docker.
+  * Update bundled fuse2fs to version 1.47.4 instead of patching
+    the bugs in 1.47.3.
+  * Fix a crash that happened when `/etc/resolv.conf` was a
+    symlink while building from a definition file using the
+    localimage bootstrap.
+  * Support hosts that have an /etc/resolv.conf symlink pointing
+    to `../run` in addition to `/run`.
+  * Change the download-dependencies script to skip downloading
+    the PRoot source code on architectures that it is known to
+    not support (that is: ppc*, s390*, and riscv*).</comment>
+    <requestid>1358196</requestid>
+  </revision>
 </revisionlist>
