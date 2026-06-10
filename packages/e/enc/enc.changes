@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 10 05:18:42 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- CVE-2026-1229: Fix incorrect value (bsc#1265533) 
+  Bump circl to 1.6.3
+
+-------------------------------------------------------------------
 Wed Nov 12 17:12:22 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.5:

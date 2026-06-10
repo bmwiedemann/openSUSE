@@ -15,6 +15,7 @@
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service name="go_modules" mode="disabled">
+  <service name="go_modules" mode="manual">
+    <param name="replace">github.com/cloudflare/circl=github.com/cloudflare/circl@v1.6.3</param>
   </service>
 </services>

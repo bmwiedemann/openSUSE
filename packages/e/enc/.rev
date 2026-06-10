@@ -55,4 +55,13 @@
   * Update dependencies #10</comment>
     <requestid>1317401</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>45edd78d1dac2db00e671c83df6d615f</srcmd5>
+    <version>1.1.5</version>
+    <time>1781099555</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-1229: Fix incorrect value (bsc#1265533) 
+  Bump circl to 1.6.3</comment>
+    <requestid>1358271</requestid>
+  </revision>
 </revisionlist>
