@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed Jun 10 05:14:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.11:
+  * docs: update CLI reference documentation (#1638)
+  * chore(container): update alpine docker tag to v3.24.0
+  * chore(deps): update dependency siderolabs/talos to v1.13.4
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.13.4
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module golang.org/x/mod to v0.37.0
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.15
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module github.com/gookit/validate to v1.6.0
+  * chore(github-action): update actions/checkout digest to df4cb1c
+    (#1627)
+  * chore(github-action): update actions/checkout action to v6.0.3
+  * chore(flake): update flake
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v1.3.3
+  * feat(readme): thank you @parzival-space for the sponsor!
+  * chore(schema): update talos-extensions.yaml JSON schema (#1623)
+  * chore(schema): update talconfig.yaml JSON schema (#1622)
+  * fix(test): propagate the now required k8s version to test
+  * feat(genconfig)!: `kubernetesVersion` is now a required field
+  * fix(test): there's new validation made upstream
+  * feat(genconfig): `secretboxEncryptionSecret` now have its own
+    document
+  * fix(code): changes in upstream API
+  * fix(code): upstream API changes
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.14.0-alpha.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#1621)
+  * docs: update CLI reference documentation (#1620)
+  * chore(deps): update dependency siderolabs/talos to v1.13.3
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.13.3
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v1.3.2
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.16.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#1618)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1612)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1611)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1610)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1609)
+  * fix(deps): update module github.com/google/go-containerregistry
+    to v0.21.6
+  * chore(container)!: Update
+    ghcr.io/devcontainers/features/docker-in-docker Docker tag to
+    v3
+  * feat(genconfig): also handle VIP inside VLAN
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:2.1-bookworm docker digest
+    to de99286 (#1606)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1604)
+  * fix(deps): update module github.com/getsops/sops/v3 to v3.13.1
+  * chore(container): update ghcr.io/getsops/sops docker tag to
+    v3.13.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#1601)
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v1.3.1
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.1.10
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * feat: update Scoop for talhelper version v3.1.10
+  * feat: update flake (#1596)
+
+-------------------------------------------------------------------
 Fri May 15 07:31:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.1.10:
