@@ -6,7 +6,7 @@ in this package.  To do that, you need to have `make` and `podman` installed
 locally.  For the OBS workflow you also need `obs-service-go_modules` as well as
 `obs-service-download_files`.
 
-1. Change the version in the `_service` file
+1. Change the version in the `spec` file
 2. Run `make`
 3. Create a changelog entry
 4. Commit the changes as usual

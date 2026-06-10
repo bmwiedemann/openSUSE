@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  8 05:28:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.32.2:
+  * [BUGFIX] Fix dispatcher goroutine leaks on destroyed alertgroup
+    swap. #5241
+
+-------------------------------------------------------------------
 Thu Apr 30 07:37:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.32.1:
