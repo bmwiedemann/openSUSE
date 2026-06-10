@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  9 13:45:17 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Require at least gcc 7 on aarch64 since with gcc < 5 is considered
+  broken by upstream on this architecture: "checking for broken
+  aarch64 gcc 4.x... configure: error: GCC < 5 may incorrectly
+  compile HotSpot on aarch64. See JDK-8360869."
+
+-------------------------------------------------------------------
 Thu Jun  4 07:20:26 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Make post scripts less noisy (bsc#1267355)

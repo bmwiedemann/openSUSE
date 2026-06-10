@@ -170,6 +170,11 @@
 %global tapsetroot %{_datadir}/systemtap
 %global tapsetdir %{tapsetroot}/tapset/%{_build_cpu}
 %endif
+%ifarch %{aarch64}
+%if 0%{?gcc_version} < 7 || 0%{?suse_version} < 1500
+%define with_gcc 7
+%endif
+%endif
 Name:           java-1_8_0-openjdk
 Version:        %{javaver}.%{updatever}
 Release:        0
@@ -223,7 +228,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?with_gcc}
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  giflib-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  javapackages-tools
@@ -440,7 +446,6 @@ sed -i -e "s:@NSS_SECMOD@:sql\:%{_sysconfdir}/pki/nssdb:g" nss.fips.cfg
 %build
 %define _lto_cflags %{nil}
 export LANG=C
-unset JAVA_HOME
 
 # How many cpu's do we have?
 export NUM_PROC=`%{_bindir}/getconf _NPROCESSORS_ONLN 2> /dev/null || :`
@@ -464,6 +469,13 @@ CXXFLAGS="$CXXFLAGS -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-d
 %endif
 export CFLAGS
 export CXXFLAGS
+
+%if 0%{?with_gcc}
+export CPP=cpp-%{with_gcc}
+export CXX=g++-%{with_gcc}
+export CC=gcc-%{with_gcc}
+export NM=gcc-nm-%{with_gcc}
+%endif
 
 sh autogen.sh
 %configure \

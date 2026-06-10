@@ -914,4 +914,12 @@
     <comment>Make post scripts less noisy (bsc#1267355)</comment>
     <requestid>1357137</requestid>
   </revision>
+  <revision rev="115" vrev="4">
+    <srcmd5>ebff62f32c325bba113e5f8a42b1a28f</srcmd5>
+    <version>1.8.0.492</version>
+    <time>1781099425</time>
+    <user>anag_factory</user>
+    <comment>Require at least gcc 7 for aarch64 builds</comment>
+    <requestid>1358223</requestid>
+  </revision>
 </revisionlist>
