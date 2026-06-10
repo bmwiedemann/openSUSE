@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  9 12:23:30 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.0.6
+  * CVE-2026-6873: Signed cookie salt namespace collision (bsc#1267578)
+  * CVE-2026-7666: Potential unencrypted email transmission via STARTTLS
+    in the SMTP backend (bsc#1267579)
+  * CVE-2026-8404: Potential exposure of private data via case-sensitive
+    Cache-Control directives (bsc#1267580)
+  * CVE-2026-35193: Potential exposure of private data via missing
+    Vary: Authorization (bsc#1267576)
+  * CVE-2026-48587: Potential exposure of private data via whitespace
+    padding in Vary header (bsc#1267577)
+  * Fixed a bug in Django 6.0 where an alert message on an admin changelist
+    with ModelAdmin.list_editable referred to the “Run” button by its
+    previous name
+
+-------------------------------------------------------------------
 Wed May  6 08:23:58 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.0.5

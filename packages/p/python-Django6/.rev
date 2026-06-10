@@ -89,4 +89,24 @@ python312+, keeping primary Django on 5.2</comment>
     skipped lines from third-party packages prefixed with “django”</comment>
     <requestid>1351139</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>20c7b4c7bf6d8829d4a1dbfede563ed7</srcmd5>
+    <version>6.0.6</version>
+    <time>1781099372</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0.6
+  * CVE-2026-6873: Signed cookie salt namespace collision (bsc#1267578)
+  * CVE-2026-7666: Potential unencrypted email transmission via STARTTLS
+    in the SMTP backend (bsc#1267579)
+  * CVE-2026-8404: Potential exposure of private data via case-sensitive
+    Cache-Control directives (bsc#1267580)
+  * CVE-2026-35193: Potential exposure of private data via missing
+    Vary: Authorization (bsc#1267576)
+  * CVE-2026-48587: Potential exposure of private data via whitespace
+    padding in Vary header (bsc#1267577)
+  * Fixed a bug in Django 6.0 where an alert message on an admin changelist
+    with ModelAdmin.list_editable referred to the “Run” button by its
+    previous name</comment>
+    <requestid>1358184</requestid>
+  </revision>
 </revisionlist>
