@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64 %{ix86}
 
 Name:           nbdkit
-Version:        1.46.2
+Version:        1.47.9
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -183,6 +183,7 @@ This package contains example plugins for %{name}.
 
 
 
+
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
 %package cdi-plugin
@@ -200,6 +201,7 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description curl-plugin
 This package contains cURL (HTTP/FTP) support for %{name}.
+
 
 
 
@@ -706,6 +708,7 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/filters/nbdkit-time-limit-filter.so
 %{_libdir}/%{name}/filters/nbdkit-tls-fallback-filter.so
 %{_libdir}/%{name}/filters/nbdkit-truncate-filter.so
+%{_libdir}/%{name}/filters/nbdkit-xor-filter.so
 %{_mandir}/man1/nbdkit-blocksize-filter.1*
 %{_mandir}/man1/nbdkit-blocksize-policy-filter.1*
 %{_mandir}/man1/nbdkit-cache-filter.1*
@@ -751,6 +754,7 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-time-limit-filter.1*
 %{_mandir}/man1/nbdkit-tls-fallback-filter.1*
 %{_mandir}/man1/nbdkit-truncate-filter.1*
+%{_mandir}/man1/nbdkit-xor-filter.1.gz
 
 %files bzip2-filter
 %{_libdir}/%{name}/filters/nbdkit-bzip2-filter.so

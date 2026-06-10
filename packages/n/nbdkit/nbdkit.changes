@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Tue Jun 09 16:16:31 UTC 2026 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.47.9:
+  * Version 1.47.9.
+  * New filter: xor
+  * swab: Don't link with gnutls
+  * server/password.c: Forbid password=- if stdio is not safe
+  * docs/nbdkit.pod: Fix bold B<> around parameters
+  * docs: Link to libnbd in a few more places
+  * todo: Suggestions for improving nbdkit-blkio-plugin and tests
+  * tests/test-blkio.sh: Skip the test if io_uring is not available
+  * spinning: Add a link to study of physical hard disk characteristics
+  * docs/nbdkit_read_password.pod: Rework documentation
+  * common/replacements/readpassphrase.h: Use include_next for system header
+  * Version 1.47.8.
+  * server: Change password=- again to use readpassphrase(3)
+  * server: Change password=- to read interactively from /dev/tty
+  * Version 1.47.7.
+  * cow: Enhance -D cow.verbose=1 to show file overlay offsets
+  * cache, cow: Use uint64_t instead of off_t for offsets
+  * cache: Make offset variables const
+  * cow: Make some offset variables const
+  * cow: Fix offsets when overlay is split
+  * cow: Fix block -> fd calculation
+  * cache, cow: Add prefix before more calls
+  * Version 1.47.6.
+  * tests: Add tests/test-go-nbd.d/go.sum to EXTRA_DIST
+  * cow: Support overlays larger than 16T on ext4
+  * cow: Add name of the temporary file to debug output
+  * cow: Split out function to create temporary files
+  * cow: Use a vector to store the overlay file descriptor
+  * cow: Don't leak blk->lock and blk->bm on error paths
+  * cache, cow: Prefix ftruncate error with filter name
+  * server/quit.c: Rearrange includes into normal ordering
+  * tests: Add interoperability test with go-nbd
+  * ip: Move rules processing to a separate source file
+  * ip: Remove include of cleanup.h
+  * ip: Remove full stop at end of some examples
+  * ip: Don't use 127.0.0.1 as an example IPv4 address
+  * ip: Note that loopback name is only supported on nbdkit 1.48
+  * ip: Add ability to filter on loopback addresses
+  * docs: Add more authors
+  * docs/nbdkit.pod: Improve the list of NBD servers
+  * README: Add more links to the online documentation
+  * Version 1.47.5.
+  * server: Be more aggressive about cleaning LISTEN_* from environment
+  * tests: Add test of socket activation with names
+  * tests: Rewrite socket activation test as an nbdsh script
+  * server: Parse and print LISTEN_FDNAMES
+  * server: Modify get_socket_activation so it assembles a list of fds
+  * tests: Fix missing backslash
+  * extentlist: Suggest small script for reading extents from qemu-img map
+  * common/include/human-size.h: Parse hex and octal sizes
+  * common/include/human-size.h: Allow _ before scaling factor
+  * server: Split up large server/public.c
+  * server/nbdkit.syms: Add a comment about why we export nbdkit_debug_*
+  * tests/test-sparse-random-blocksize.sh: Reduce maximum block size
+  * vram: Cast cl_ulong to uint64_t before printing
+  * Version 1.47.4.
+  * todo: Allow extentlist filter to read hex extents
+  * sparse-random: Parse runlength parameter using nbdkit_parse_size
+  * tests/test-sparse-random-blocksize.sh: Enhance the test
+  * sparse-random: Clamp preferred block size
+  * sparse-random: Make block size configurable
+  * vram: Link to blkdiscard(8)
+  * Version 1.47.3.
+  * server/sockets.c: Don't crash if TCP/IP selected without --port
+  * docs: Update man pages for new OCaml bindings
+  * Version 1.47.2.
+  * tests/functions.sh.in: Remove obsolete comment
+  * tests/test-ipv4-lo.sh, tests/test-ipv6-lo.sh: Remove pick_unused_port
+  * tests/test-ip-filter.sh: Remove use of pick_unused_port
+  * server: Partially fix --port=0
+  * server/sockets.c: Print the actual bound addresses and ports in debug output
+  * todo: Add item about nbdkit_timestamp on the main thread
+  * ocaml: Add bindings for nbdkit_name and nbdkit_timestamp
+  * docs/nbdkit_timestamp.pod: Fix copy and paste error in man page
+  * docs/nbdkit-plugin.pod: Add a link to nbdkit_timestamp(3)
+  * log: Use nbdkit_timestamp()
+  * Add new nbdkit_timestamp() function
+  * tests/test-name-plugin.c: Fix copy and paste errors
+  * plugins/rust: add CHANGELOG entry for MR #138
+  * plugins/rust: Clippy cleanup
+  * wrapper: Allow NBDKIT_VALGRIND_MASSIF=1 to run massif
+  * common/utils/utils.h: Add C++ boilerplate
+  * map: Fix documentation about changing the size of the disk
+  * server/test-public.c: Add process_name dummy variable
+  * Add new nbdkit_name() function
+  * configure.ac: Remove use of "which" command
+  * vddk: Test with VDDK 9.0.1.0
+  * qcow2dec: Don't pass flags from .extents through to .pread
+  * file: Change calculations of block size hints for block devices
+  * todo: Add note about problems with file plugin block_size
+  * file: Don't advertise minimum_io_size > 64K (the max supported by NBD)
+  * blocksize-policy: Fix assertion failure on unaligned block status
+  * python: Sort documentation for module functions in order
+  * python: Document some missing module functions
+  * python: Link to C man pages for module functions
+  * tests/test-ocaml-debug-hexdump.sh: Fix test that plugin was built
+  * Version 1.47.1.
+  * docs/nbdkit_read_password.pod: Fix typo in Python description
+  * docs/nbdkit_debug_hexdump.pod: Add a link back to nbdkit-checkwrite-filter
+  * docs/nbdkit_debug_hexdump.pod: Document when hexdiff was added to nbdkit
+  * docs/nbdkit_debug_hexdump.pod: Update information about Rust binding
+  * rust: Add a binding for nbdkit_debug_hexdiff
+  * python: Add binding for nbdkit_debug_hexdiff
+  * ocaml: Add binding for nbdkit_debug_hexdiff
+  * ocaml: Add convenience functions for NBDKit.buf
+  * checkwrite: Display differences if -D checkwrite.showdiffs=1 is used
+  * server: Add nbdkit_debug_hexdiff function
+  * server: Rewrite ugly macros in nbdkit_debug_hexdump
+  * tests: Fix some copy/paste errors in debug_hexdump tests
+  * file: Link to delay filter in the SEE ALSO section
+  * file: Sort plugin names in SEE ALSO section
+  * file: Improve flow of documentation of dir parameter
+  * ssh: Describe this plugin versus nbd+ssh URIs
+  * docs: Match all return value descriptions of nbdkit_parse_*
+  * docs: Fix thinko and clarify description of nbdkit_parse_* functions
+  * rust: Add a simple test of nbdkit_debug_hexdump
+  * rust: Add binding for nbdkit_debug_hexdump
+  * tests: ocaml errorcodes: Test additional exceptions
+  * tests: ocaml errorcodes: Add future code to check the error string
+  * tests: ocaml errorcodes: Refactor this test
+  * ocaml: Handle Failure and Invalid_argument exceptions nicely
+  * ocaml: Implement new NBDKit.Error exception
+  * ocaml: Translate Unix_error exceptions to nbdkit_set_error + nbdkit_error
+  * ocaml: Refactor exception to error handling
+  * ocaml: Refactor documentation for error handling
+  * tests/test-ocaml-errorcodes.c: Fix typo in error messages
+  * ocaml: Fix comment about parse_* functions
+  * ocaml: Implement OCaml binding for nbdkit_debug_hexdump
+  * python: Implement nbdkit.debug_hexdump
+
+-------------------------------------------------------------------
 Thu Feb 12 16:51:33 UTC 2026 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.46.2: (jsc#PED-14625)
