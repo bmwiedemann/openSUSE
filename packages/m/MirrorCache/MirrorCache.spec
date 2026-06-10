@@ -1,7 +1,7 @@
 #
 # spec file for package MirrorCache
 #
-# Copyright (c) 2021,2025 SUSE LLC
+# Copyright (c) 2021-2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,19 @@
 %define mirrorcache_services %{mirrorcache_services_restart} mirrorcache-hypnotoad.service
 %define assetpack_requires perl(CSS::Minifier::XS) >= 0.01 perl(JavaScript::Minifier::XS) >= 0.11 perl(Mojolicious::Plugin::AssetPack) >= 1.36 perl(IO::Socket::SSL)
 %define common_requires perl(Carp) perl(DBD::Pg) >= 3.7.4 perl(DBI) >= 1.632 perl(DBIx::Class) >= 0.082801 perl(DBIx::Class::DynamicDefault) perl(DateTime) perl(Encode) perl(Time::Piece) perl(Time::Seconds) perl(Time::ParseDate) perl(DateTime::Format::Pg) perl(Exporter) perl(File::Basename) perl(LWP::UserAgent) perl(Mojo::Base) perl(Mojo::ByteStream) perl(Mojo::IOLoop) perl(Mojo::JSON) perl(Mojo::Pg) perl(Mojo::URL) perl(Mojo::Util) perl(Mojolicious::Commands) perl(Mojolicious::Plugin) perl(POSIX) perl(Sort::Versions) perl(URI::Escape) perl(XML::Writer) perl(base) perl(constant) perl(diagnostics) perl(strict) perl(warnings) shadow perl(Net::DNS) perl(LWP::Protocol::https) perl(Digest::SHA) perl(Config::IniFiles)
-%define main_requires %{assetpack_requires} perl(Mojolicious::Plugin::RenderFile) perl(Mojolicious::Static) perl(Net::OpenID::Consumer) rubygem(sass)
-%define build_requires %{assetpack_requires} rubygem(sass) tidy sysuser-shadow sysuser-tools
+%if 0%{?suse_version} < 1570
+# SLE <= 15 has older Perl not providing a sufficiently recent
+# ExtUtils::ParseXS needed by ExtUtils::CppGuess
+# See https://progress.opensuse.org/issues/162500 for details
+%define sass_requires rubygem(sass)
+%else
+# The following line is generated from dependencies.yaml
+%define sass_requires perl(CSS::Sass)
+%endif
+%define main_requires %{assetpack_requires} perl(Mojolicious::Plugin::RenderFile) perl(Mojolicious::Static) perl(Net::OpenID::Consumer) %{sass_requires}
+%define build_requires %{assetpack_requires} %{sass_requires} tidy sysuser-shadow sysuser-tools
 Name:           MirrorCache
-Version:        1.104
+Version:        1.105
 Release:        0
 Summary:        WebApp to redirect and manage mirrors
 License:        GPL-2.0-or-later
@@ -63,7 +72,6 @@ mkdir -p %{buildroot}%{_sbindir}
 ln -s ../sbin/service %{buildroot}%{_sbindir}/rcmirrorcache
 ln -s ../sbin/service %{buildroot}%{_sbindir}/rcmirrorcache-hypnotoad
 ln -s ../sbin/service %{buildroot}%{_sbindir}/rcmirrorcache-backstage
-ln -s ../sbin/service %{buildroot}%{_sbindir}/rcmirrorcache-backstage-exec
 ln -s ../sbin/service %{buildroot}%{_sbindir}/rcmirrorcache-backstage-hashes
 ln -s ../sbin/service %{buildroot}%{_sbindir}/rcmirrorcache-subtree
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}.conf
@@ -143,7 +151,6 @@ MirrorCache worker to execute scheduled shell scripts
 %{_tmpfilesdir}/%{name}-Exec.conf
 %ghost %dir %attr(0750,mirrorcache,-) %{_localstatedir}/lib/mirrorcache-exec/
 %{_unitdir}/mirrorcache-backstage-exec.service
-%{_sbindir}/rcmirrorcache-backstage-exec
 
 %pre -f %{name}-Exec.pre Exec
 %service_add_pre mirrorcache-backstage-exec.service

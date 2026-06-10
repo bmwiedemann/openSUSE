@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 03 10:31:11 UTC 2026 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.105:
+  * Add ua to avoid_countries for ru and by
+  * Extend list of sanctioning countries for ru and by mirrors
+
+-------------------------------------------------------------------
 Thu Nov 06 14:24:56 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.104:
