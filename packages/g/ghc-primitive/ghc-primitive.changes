@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 27 19:24:07 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update primitive to version 0.9.1.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Mar 31 14:42:00 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update primitive to version 0.9.1.0.
