@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
             <param name="url">git://github.com/matwey/fips3.git</param>
-          <param name="changesrevision">f68ca188b55d0f339f4849f10c38c2d65f3d11c1</param></service></servicedata>
+          <param name="changesrevision">f68ca188b55d0f339f4849f10c38c2d65f3d11c1</param></service><service name="tar_scm">
+                <param name="url">https://github.com/matwey/fips3.git</param>
+              <param name="changesrevision">638c8d3e9c364f5ec4dc98637580de335b710473</param></service></servicedata>

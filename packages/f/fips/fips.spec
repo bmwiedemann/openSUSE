@@ -1,7 +1,7 @@
 #
 # spec file for package fips
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           fips
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        OpenGL-based FITS image viewer
 License:        LGPL-3.0-only
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/matwey/fips3
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  cmake >= 3.0
-BuildRequires:  gcc-c++
-BuildRequires:  libQt5Gui-devel
-BuildRequires:  libQt5Test-devel
-BuildRequires:  libQt5Widgets-devel
+BuildRequires:  cmake
+BuildRequires:  gcc-c++ >= 8
 BuildRequires:  make
-BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
+BuildRequires:  cmake(Qt6Test)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -46,12 +46,11 @@ FIPS supports all 2D image formats except of 64-bit floating point numbers
 %setup -q
 
 %build
-%cmake
+%cmake -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON -DQT_INTERNAL_SKIP_DEPLOYMENT:BOOL=ON
 %make_jobs
 
 %install
 %cmake_install
-%suse_update_desktop_file -i space.fips.Fips
 
 %check
 %ctest
