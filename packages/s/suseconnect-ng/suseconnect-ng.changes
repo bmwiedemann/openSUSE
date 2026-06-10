@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr  6 15:40:58 UTC 2026 - Fergal Mc Carthy <fmccarthy@suse.com>
+
+- Update version to 1.22:
+  - InstallReleasePackage should consider zypperFilesystemRoot
+    (jsc#SCC-630).
+  - Restore exit code 71 handling when attempting keepalive and not
+    registered (bsc#1263772)
+  - Add collector support for gathering RKE2 & K3s kubernetes provider
+    info if enabled on a system (jsc#TEL-317)
+  - Add email address validation to SUSEConnect -e/--email option. (bsc#1197231)
+  - Add collector support for detecting if system is running pacemaker
+    (jsc#SCC-693)
+  - Avoid double slash at start of request URL path component.
+    (jsc#SCC-775)
+  - Use product identifier when finding product packages during
+    migrations. (jsc#SCC=758 bsc#1265410)
+  - Add opt in/out support for collectors (jsc#TEL-312)
+  - Update config parser for suseconnect to be YAML based (jsc#SCC-730)
+
+-------------------------------------------------------------------
 Wed Apr  1 16:43:26 UTC 2026 - Fergal Mc Carthy <fmccarthy@suse.com>
 
 - Update version to 1.21.1:
