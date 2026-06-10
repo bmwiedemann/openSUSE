@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jun 10 07:39:51 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.5.3:
+  * build(deps): bump github.com/gookit/color from 1.5.4 to 1.6.1
+    by @dependabot[bot] in #2608
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.17 to 1.32.18 by @dependabot[bot] in #2610
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.101.0 to 1.102.0 by @dependabot[bot] in #2612
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.102.0 to 1.102.1 by @dependabot[bot] in #2613
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.18 to 1.32.20 by @dependabot[bot] in #2614
+  * fix: support array of maps in set/setTemplate values by
+    @yxxhero in #2615
+  * fix: remove naked return by returning expected values by
+    @ceriath in #2617
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.102.1 to 1.103.0 by @dependabot[bot] in #2619
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.20 to 1.32.21 by @dependabot[bot] in #2618
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.103.0 to 1.103.1 by @dependabot[bot] in #2620
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.21 to 1.32.22 by @dependabot[bot] in #2621
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.103.1 to 1.103.2 by @dependabot[bot] in #2622
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.22 to 1.32.23 by @dependabot[bot] in #2623
+  * Bump helm-diff to v3.15.8 across runtime defaults and execution
+    environments by @Copilot in #2624
+  * build(deps): bump golang.org/x/sync from 0.20.0 to 0.21.0 by
+    @dependabot[bot] in #2625
+
+-------------------------------------------------------------------
 Fri May 22 09:38:12 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.5.2:
