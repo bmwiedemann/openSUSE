@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 11 20:44:36 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update language-c to version 0.10.2.
+  ## 0.10.2
+
+  - Accept C23 `bool` keyword.
+
+-------------------------------------------------------------------
 Wed Nov 26 22:52:18 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update language-c to version 0.10.1.
