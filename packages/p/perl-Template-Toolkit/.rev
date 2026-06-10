@@ -346,4 +346,13 @@
     <comment></comment>
     <requestid>1183652</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b8c24ce0698f0ba26e2e44c9e7c5ff6d</srcmd5>
+    <version>3.106.0</version>
+    <time>1781105804</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.106.0 (3.106)
+   see /usr/share/doc/packages/perl-Template-Toolkit/Changes</comment>
+    <requestid>1358548</requestid>
+  </revision>
 </revisionlist>

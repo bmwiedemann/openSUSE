@@ -12,5 +12,4 @@ Apache/mod_perl server for generating highly configurable dynamic web
 content.  A number of Perl scripts are also provided which can greatly
 simplify the process of creating and managing static web content and 
 other offline document systems.</description>
-  <devel project="devel:languages:perl" package="perl-Template-Toolkit"/>
 </package>
