@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 20:40:06 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update timezone-series to version 0.1.13 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jul 28 19:16:15 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Jailbreak over-specified constraints to fix build with ghc-9.12.x.

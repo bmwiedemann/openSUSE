@@ -1,6 +1,6 @@
 Name:                timezone-series
 Version:             0.1.13
-x-revision: 1
+x-revision: 2
 Synopsis:            Enhanced timezone handling for Data.Time
 Description:         This package endows Data.Time, from the time
                      package, with several data types and functions
@@ -33,4 +33,4 @@ Library
   Default-extensions:  DeriveDataTypeable
   Build-depends:       base >= 4.4 && < 5
                      , deepseq
-                     , time (>= 1.1.4 && < 1.9) || (>= 1.9.1 && < 1.14)
+                     , time (>= 1.1.4 && < 1.9) || (>= 1.9.1 && < 1.15)
