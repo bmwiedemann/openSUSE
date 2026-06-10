@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  9 08:21:53 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update entropy to version 0.4.1.11 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Jan  1 23:24:19 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update entropy to version 0.4.1.11.
