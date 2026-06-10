@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May 13 10:46:38 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.000002
+   see /usr/share/doc/packages/perl-LWP-ConsoleLogger/Changes
+
+  1.000002  2026-05-12 17:28:01Z
+      - Replace Text::SimpleTable::AutoWidth (last released 2015) with
+        Term::Table to fix box-border misalignment when output contains
+        wide characters such as emoji or CJK glyphs (GH#49). Border style
+        changes from .-/' corners to +/-.
+      - Decode non-ASCII HTTP header values, cookie field values, and the
+        user agent's title to character strings before logging, so they
+        no longer render as mojibake (GH#38).
+      - Open the LWPCL_LOGFILE log file with a UTF-8 layer in
+        LWP::ConsoleLogger::Everywhere to stop "Wide character in print"
+        warnings (GH#38).
+      - Non-pretty header dumps now honor headers_to_redact, matching the
+        pretty-mode behavior.
+
+-------------------------------------------------------------------
 Thu Jun 22 03:06:31 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.000001

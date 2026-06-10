@@ -1,7 +1,7 @@
 #
 # spec file for package perl-LWP-ConsoleLogger
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,36 @@
 
 %define cpan_name LWP-ConsoleLogger
 Name:           perl-LWP-ConsoleLogger
-Version:        1.000001
+Version:        1.000002
 Release:        0
 License:        Artistic-2.0
 Summary:        LWP tracing and debugging
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 Patch0:         0001-replace-env.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny)
 BuildRequires:  perl(Class::Method::Modifiers)
-BuildRequires:  perl(Data::Printer) >= 0.36
+BuildRequires:  perl(Data::Printer) >= 0.360
 BuildRequires:  perl(DateTime)
 BuildRequires:  perl(HTML::FormatText::WithLinks)
 BuildRequires:  perl(HTML::Restrict)
 BuildRequires:  perl(HTTP::Body)
 BuildRequires:  perl(HTTP::CookieJar::LWP)
 BuildRequires:  perl(HTTP::CookieMonster)
+BuildRequires:  perl(HTTP::Cookies)
+BuildRequires:  perl(HTTP::Headers)
 BuildRequires:  perl(HTTP::Request)
 BuildRequires:  perl(HTTP::Response)
-BuildRequires:  perl(JSON::MaybeXS) >= 1.003005
+BuildRequires:  perl(IPC::Run3)
+BuildRequires:  perl(JSON::MaybeXS) >= 1.3.5
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(List::AllUtils)
-BuildRequires:  perl(Log::Dispatch) >= 2.56
+BuildRequires:  perl(Log::Dispatch) >= 2.560
 BuildRequires:  perl(Log::Dispatch::Array)
 BuildRequires:  perl(Module::Load::Conditional)
 BuildRequires:  perl(Module::Runtime)
@@ -58,30 +62,30 @@ BuildRequires:  perl(Ref::Util)
 BuildRequires:  perl(String::Trim)
 BuildRequires:  perl(Sub::Exporter)
 BuildRequires:  perl(Term::Size::Any)
+BuildRequires:  perl(Term::Table) >= 0.028
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::LWP::UserAgent)
-BuildRequires:  perl(Test::Most)
+BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Test::Warnings)
-BuildRequires:  perl(Text::SimpleTable::AutoWidth) >= 0.09
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(Types::Common::Numeric)
 BuildRequires:  perl(Types::Standard)
 BuildRequires:  perl(URI::QueryParam)
 BuildRequires:  perl(URI::file)
+BuildRequires:  perl(Unicode::GCString)
 BuildRequires:  perl(WWW::Mechanize)
-BuildRequires:  perl(XML::Simple)
 BuildRequires:  perl(version)
 Requires:       perl(Class::Method::Modifiers)
-Requires:       perl(Data::Printer) >= 0.36
+Requires:       perl(Data::Printer) >= 0.360
 Requires:       perl(DateTime)
 Requires:       perl(HTML::Restrict)
 Requires:       perl(HTTP::Body)
 Requires:       perl(HTTP::CookieMonster)
 Requires:       perl(HTTP::Request)
 Requires:       perl(HTTP::Response)
-Requires:       perl(JSON::MaybeXS) >= 1.003005
+Requires:       perl(JSON::MaybeXS) >= 1.3.5
 Requires:       perl(List::AllUtils)
-Requires:       perl(Log::Dispatch) >= 2.56
+Requires:       perl(Log::Dispatch) >= 2.560
 Requires:       perl(Module::Load::Conditional)
 Requires:       perl(Module::Runtime)
 Requires:       perl(Moo)
@@ -91,13 +95,14 @@ Requires:       perl(Ref::Util)
 Requires:       perl(String::Trim)
 Requires:       perl(Sub::Exporter)
 Requires:       perl(Term::Size::Any)
-Requires:       perl(Text::SimpleTable::AutoWidth) >= 0.09
+Requires:       perl(Term::Table) >= 0.028
 Requires:       perl(Try::Tiny)
 Requires:       perl(Types::Common::Numeric)
 Requires:       perl(Types::Standard)
 Requires:       perl(URI::QueryParam)
-Requires:       perl(XML::Simple)
 Recommends:     perl(HTML::FormatText::Lynx) >= 23
+Recommends:     perl(Unicode::GCString)
+Recommends:     perl(XML::Simple)
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  netcfg
@@ -121,7 +126,7 @@ possible, so that you can easily toggle output on and off and otherwise
 adjust how you deal with the output.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup -n %{cpan_name}-%{version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
