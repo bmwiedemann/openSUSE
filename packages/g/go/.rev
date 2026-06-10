@@ -1041,4 +1041,13 @@ go#29903 crypto/elliptic: CPU DoS vulnerability affecting P-521 and P-384 (forwa
     <comment>Version bump to 1.26 (forwarded request 1338986 from simonwg)</comment>
     <requestid>1340766</requestid>
   </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>8c884261cd268b8007ec8f98c9eb9463</srcmd5>
+    <version>1.26</version>
+    <time>1781102526</time>
+    <user>anag_factory</user>
+    <comment>- Update to current stable go1.26
+  Refs boo#1255111 go1.26 release tracking (forwarded request 1358261 from jfkw)</comment>
+    <requestid>1358262</requestid>
+  </revision>
 </revisionlist>
