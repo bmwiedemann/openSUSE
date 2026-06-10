@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  7 19:20:06 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509-store to version 1.6.14 revision 1.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Sun Oct 26 09:56:32 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update crypton-x509-store to version 1.6.12 revision 1.
