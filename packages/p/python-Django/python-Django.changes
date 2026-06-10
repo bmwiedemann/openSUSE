@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun  9 12:19:52 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.15
+  * CVE-2026-6873: Signed cookie salt namespace collision (bsc#1267578)
+  * CVE-2026-7666: Potential unencrypted email transmission via STARTTLS
+    in the SMTP backend (bsc#1267579)
+  * CVE-2026-8404: Potential exposure of private data via case-sensitive
+    Cache-Control directives (bsc#1267580)
+  * CVE-2026-35193: Potential exposure of private data via missing
+    Vary: Authorization (bsc#1267576)
+  * CVE-2026-48587: Potential exposure of private data via whitespace
+    padding in Vary header (bsc#1267577)
+
+-------------------------------------------------------------------
 Wed May  6 08:30:22 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.14

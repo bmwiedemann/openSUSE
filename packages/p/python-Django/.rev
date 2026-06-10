@@ -1538,4 +1538,21 @@
     handling of Vary: * in UpdateCacheMiddleware (bsc#1264152)</comment>
     <requestid>1351138</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>3ca4ee87cf836d43049328403d19c917</srcmd5>
+    <version>5.2.15</version>
+    <time>1781099156</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.2.15
+  * CVE-2026-6873: Signed cookie salt namespace collision (bsc#1267578)
+  * CVE-2026-7666: Potential unencrypted email transmission via STARTTLS
+    in the SMTP backend (bsc#1267579)
+  * CVE-2026-8404: Potential exposure of private data via case-sensitive
+    Cache-Control directives (bsc#1267580)
+  * CVE-2026-35193: Potential exposure of private data via missing
+    Vary: Authorization (bsc#1267576)
+  * CVE-2026-48587: Potential exposure of private data via whitespace
+    padding in Vary header (bsc#1267577)</comment>
+    <requestid>1358178</requestid>
+  </revision>
 </revisionlist>
