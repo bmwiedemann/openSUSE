@@ -1,7 +1,7 @@
 #
 # spec file for package logback
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,33 +17,36 @@
 
 
 Name:           logback
-Version:        1.2.13
+Version:        1.5.34
 Release:        0
 Summary:        A Java logging library
 License:        EPL-1.0 OR LGPL-2.1-or-later
 URL:            https://logback.qos.ch/
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         logback-1.2.3-getCallerClass.patch
-Patch1:         logback-CVE-2024-12801-CVE-2024-12798.patch
-Patch2:         filtering.patch
-Patch3:         logback-CVE-2025-11226.patch
-Patch4:         logback-CVE-2026-1225.patch
+Patch0:         new-janino.patch
+Patch1:         filtering.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 11
 BuildRequires:  maven-local
+BuildRequires:  mvn(jakarta.mail:jakarta.mail-api)
+BuildRequires:  mvn(jakarta.servlet:jakarta.servlet-api)
 BuildRequires:  mvn(javax.mail:mail)
 BuildRequires:  mvn(javax.servlet:javax.servlet-api)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.ant:ant-junit)
+BuildRequires:  mvn(org.apache.ant:ant-junitlauncher)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
 BuildRequires:  mvn(org.apache.tomcat:tomcat-catalina)
 BuildRequires:  mvn(org.apache.tomcat:tomcat-coyote)
 BuildRequires:  mvn(org.codehaus.janino:janino)
 BuildRequires:  mvn(org.eclipse.jetty:jetty-server)
+BuildRequires:  mvn(org.eclipse.jetty:jetty-util)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
-BuildRequires:  mvn(org.slf4j:slf4j-api)
-BuildRequires:  mvn(org.slf4j:slf4j-ext)
+BuildRequires:  mvn(org.slf4j:slf4j-api:2)
+BuildRequires:  mvn(org.slf4j:slf4j-ext:2)
 BuildArch:      noarch
 
 %description
@@ -82,17 +85,16 @@ Summary:        Logback Examples Module
 logback-examples module.
 
 %prep
-%setup -q
+%autosetup -p1
+
 chmod -x README.md LICENSE.txt
 find . -type f -exec chmod -x {} \;
 chmod +x %{name}-examples/src/main/resources/setClasspath.sh
 
-%autopatch -p1
-
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :findbugs-maven-plugin
 %pom_remove_plugin -r :maven-dependency-plugin
-%pom_remove_plugin -r :cobertura-maven-plugin
+%pom_remove_plugin -r :central-publishing-maven-plugin
 
 rm -r %{name}-*/src/test/java/*
 # remove test deps
@@ -100,29 +102,29 @@ rm -r %{name}-*/src/test/java/*
 %pom_xpath_remove -r "pom:dependency[pom:type = 'test-jar']"
 %pom_xpath_remove -r "pom:dependency[pom:scope = 'test']"
 
+%pom_disable_module %{name}-classic-blackbox
+%pom_disable_module %{name}-core-blackbox
+
 # bundle-test-jar
 %pom_xpath_remove -r "pom:plugin[pom:artifactId = 'maven-jar-plugin']/pom:executions"
 
-# com.oracle:ojdbc14:10.2.0.1 com.microsoft.sqlserver:sqljdbc4:2.0
-%pom_xpath_remove "pom:project/pom:profiles/pom:profile[pom:id = 'host-orion']" %{name}-access
-
 %pom_xpath_remove "pom:project/pom:profiles/pom:profile[pom:id = 'javadocjar']"
 
-# disable for now
-%pom_disable_module logback-site
-
 %pom_xpath_remove "pom:build/pom:extensions"
+%pom_xpath_remove "pom:profiles"
+
+%pom_xpath_set "pom:project/pom:properties/pom:slf4j.version" 2
+
+%if %{?pkg_vcmp:%pkg_vcmp java-devel < 21}%{!?pkg_vcmp:0}
+    %pom_xpath_remove "pom:executions/pom:execution[pom:id[text()='java21-compile']]" logback-core
+%endif
 
 %{mvn_package} ":%{name}-access" access
 %{mvn_package} ":%{name}-examples" examples
 
 %build
 
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    -Dsource=8 -Dproject.build.sourceEncoding=ISO-8859-1
+%{mvn_build} -fj -- javadoc:aggregate
 
 %install
 %mvn_install

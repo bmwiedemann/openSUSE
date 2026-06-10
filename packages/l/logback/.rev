@@ -95,4 +95,12 @@
     <comment>bsc#1257094, CVE-2026-1225</comment>
     <requestid>1329765</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>680e227a78cd0b3039a34659bd470f4f</srcmd5>
+    <version>1.5.34</version>
+    <time>1781099551</time>
+    <user>anag_factory</user>
+    <comment>1.5.34 with security fixes</comment>
+    <requestid>1358269</requestid>
+  </revision>
 </revisionlist>
