@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Jun 10 02:35:13 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on opentelemetry-exporter-otlp-proto-http.
+
+-------------------------------------------------------------------
+Sun May 17 19:41:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.14.2:
+  * Fix scoped context support for async functions
+- update to 7.14.1:
+  * f6c8ede fix: type warning on new_context
+- update to 7.14.0:
+  * chore: remove unsupported setup-uv input
+  * chore: commit generated references with GitHub App
+  * feat: add evaluate_flags() API for single-call flag
+    evaluation
+- update to 7.13.2:
+  * fix: remove python-dateutil runtime dependency
+  * fix: sanitize Django tracing headers
+  * fix: acknowledge oversized dropped events
+  * fix: no-op clients without api key
+  * fix: clarify feature flag auth errors
+- update to 7.13.1:
+  * feat(flags): support mixed targeting in local evaluation
+- update to 7.13.0:
+  * feat(examples): add Dedalus Labs and Cloudflare AI Gateway
+    examples
+  * feat(flags): implement get_feature_flag endpoint in SDK
+    compliance adapter
+  * docs: fix python release docs package registry
+  * feat(prompts): add capture_errors option for error tracking
+  * fix(compliance): declare capabilities in health endpoint
+  * feat: Add os_distro information to events
+  * fix(llma): graceful fallback in claude_agent_sdk wrapper
+  * feat(llma): add $ai_stop_reason extraction for all providers
+  * feat: add Gemini embed_content tracking
+  * fix: pass before_send through module-level setup
+  * chore: add sampo changeset for before_send module-level setup
+    fix
+  * chore: configurabel endpoint for flags local evaluation
+  * fix: pass capture_exceptions as keyword arg in Django
+    middleware
+- update to 7.10.0:
+  * docs: add AI provider integration examples
+  * fix: update localhost port in examples from 8000 to 8010
+  * chore: pin litellm to 1.81.13 in example
+  * feat: add minimum fastapi exception capture repro case
+    locked versions
+  * feat(ai): add Claude Agent SDK integration for LLM analytics
+  * docs: add AI provider examples for all LLM analytics
+    integrations
+  * fix: propagate missing params in module-level wrapper
+    functions
+- Remove remove-mock-and-six.patch: obsolete.
+
+-------------------------------------------------------------------
 Mon Mar 16 21:34:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.9.12:

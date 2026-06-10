@@ -104,4 +104,41 @@
   * chore(llma): apply prompt SDK review cleanups</comment>
     <requestid>1339442</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9b255c7944a6d6fd7fbd079350a0dd23</srcmd5>
+    <version>7.14.2</version>
+    <time>1781099541</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on opentelemetry-exporter-otlp-proto-http.
+
+- update to 7.14.2:
+  * Fix scoped context support for async functions
+- update to 7.14.1:
+  * f6c8ede fix: type warning on new_context
+- update to 7.14.0:
+  * chore: remove unsupported setup-uv input
+  * chore: commit generated references with GitHub App
+  * feat: add evaluate_flags() API for single-call flag
+    evaluation
+- update to 7.13.2:
+  * fix: remove python-dateutil runtime dependency
+  * fix: sanitize Django tracing headers
+  * fix: acknowledge oversized dropped events
+  * fix: no-op clients without api key
+  * fix: clarify feature flag auth errors
+- update to 7.13.1:
+  * feat(flags): support mixed targeting in local evaluation
+- update to 7.13.0:
+  * feat(examples): add Dedalus Labs and Cloudflare AI Gateway
+    examples
+  * feat(flags): implement get_feature_flag endpoint in SDK
+    compliance adapter
+  * docs: fix python release docs package registry
+  * feat(prompts): add capture_errors option for error tracking
+  * fix(compliance): declare capabilities in health endpoint
+  * feat: Add os_distro information to events
+  * fix(llma): graceful fallback in claude_agent_sdk wrapper
+  * feat(llma): add $ai_stop_reason extraction for all providers</comment>
+    <requestid>1358264</requestid>
+  </revision>
 </revisionlist>

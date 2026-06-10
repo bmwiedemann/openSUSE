@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-posthog
-Version:        7.9.12
+Version:        7.14.2
 Release:        0
 Summary:        PostHog is developer-friendly, self-hosted product analytics
 License:        MIT
 URL:            https://github.com/posthog/posthog-python
 Source:         https://files.pythonhosted.org/packages/source/p/posthog/posthog-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#PostHog/posthog-python#442
-Patch0:         remove-mock-and-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -33,28 +31,24 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module backoff >= 1.10.0}
-BuildRequires:  %{python_module distro >= 1.5}
+BuildRequires:  %{python_module distro >= 1.5.0}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-http}
+BuildRequires:  %{python_module opentelemetry-sdk >= 1.20.0}
 BuildRequires:  %{python_module parameterized >= 0.8.1}
-BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module pydantic >= 2.12.0}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil > 2.1}
+BuildRequires:  %{python_module python-dateutil >= 2.9.0}
 BuildRequires:  %{python_module requests >= 2.7}
-BuildRequires:  %{python_module typing_extensions >= 4.2}
+BuildRequires:  %{python_module typing_extensions >= 4.2.0}
+BuildRequires:  %{python_module tzdata}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-backoff >= 1.10.0
-Requires:       python-distro >= 1.5
-Requires:       python-python-dateutil > 2.2
+Requires:       python-distro >= 1.5.0
 Requires:       python-requests >= 2.7
-Requires:       python-typing_extensions >= 4.2
-Suggests:       python-black
-Suggests:       python-isort
-Suggests:       python-flake8
-Suggests:       python-flake8-print
-Suggests:       python-pre-commit
-Suggests:       python-sentry-sdk
+Requires:       python-typing_extensions >= 4.2.0
 Suggests:       python-django
 BuildArch:      noarch
 %python_subpackages
