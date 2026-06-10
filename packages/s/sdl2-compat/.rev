@@ -201,4 +201,12 @@ Binary file sdl2-compat-2.32.54.tar.gz.sig (revision 2) deleted</comment>
     <comment>- Update to release 2.32.68</comment>
     <requestid>1350439</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3ad1acecc90d407f2df78232abaff170</srcmd5>
+    <version>2.32.70</version>
+    <time>1781099082</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.32.70</comment>
+    <requestid>1358026</requestid>
+  </revision>
 </revisionlist>
