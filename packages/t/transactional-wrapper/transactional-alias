@@ -1,0 +1,64 @@
+#!/bin/bash
+
+echo "Starting the alias suport for transactinoal-wrapper"
+
+CMDLINE=""
+COMMAND=""
+SUBCOMMAND=""
+DIRECT_COMMANDS=""
+TRANSACTIONAL_COMMANDS=""
+RUN_TRANSACTIONAL="1"
+CONFIG=""
+while [[ $# -gt 0 ]] do
+  case $1 in
+    -c|--config)
+      if [ -z "$CMDLINE" ] ; then
+        echo "Loading options for command $2"
+        . "/usr/share/transactional-wrapper/configs/$2"
+        CONFIG=$2
+      fi
+      shift
+      shift
+      ;;
+    -*|--*)
+      if [ -z "$CMDLINE" ] ; then
+        echo "Unknown option $1"
+        exit 1
+      fi
+      shift
+      shift
+      ;;
+    *)
+      if [ -z "$CMDLINE" ] ; then
+        CMDLINE=$@
+        COMMAND=$1
+      elif [ -z "$SUBCOMMAND" ] ; then
+        SUBCOMMAND=$1
+      fi
+      shift
+      ;;
+  esac
+done
+
+
+alias $COMMAND=$COMMAND
+
+if [ -n "$TRANSACTIONAL_COMMANDS" ] ; then
+  TRANSACTIONAL_COMMANDS=",$TRANSACTIONAL_COMMANDS,"
+  SUBCOMMAND=",$SUBCOMMAND,"
+  echo $TRANSACTIONAL_COMMANDS | grep $SUBCOMMAND >/dev/null || RUN_TRANSACTIONAL=0
+elif [ -n "$DIRECT_COMMANDS" ] ; then
+  DIRECT_COMMANDS=",$DIRECT_COMMANDS,"
+  SUBCOMMAND=",$SUBCOMMAND,"
+  echo $DIRECT_COMMANDS | grep $SUBCOMMAND >/dev/null && RUN_TRANSACTIONAL=0
+fi
+
+if [ $RUN_TRANSACTIONAL = "1" ] ; then
+  if [ -n $CONFIG ] ; then
+    CMDLINE="/usr/sbin/transactional-wrapper -c $CONFIG $CMDLINE"
+  else
+    CMDLINE="/usr/sbin/transactional-wrapper $CMDLINE"
+  fi
+fi
+$CMDLINE
+exit $?

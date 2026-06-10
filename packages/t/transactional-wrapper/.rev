@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e373de4cd95b313524219729a4ca3c3f</srcmd5>
+    <version>0.0.1</version>
+    <time>1781099323</time>
+    <user>anag_factory</user>
+    <comment>initial submission, related to PED-13680 zypper should be able to handle transactional systems directly
+bugowner: jsrain@suse.com</comment>
+    <requestid>1358175</requestid>
+  </revision>
+</revisionlist>

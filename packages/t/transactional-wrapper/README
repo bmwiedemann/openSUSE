@@ -1,0 +1,94 @@
+Transactional Wrapper
+
+Motivation:
+
+Many system tools need to modify parts of the operating system which are read-only in the immutable mode.
+For those, there is always option to call the transactional-update tool, which either provides direct
+subcommand for the specific tool (e.g.  installation of packages) or provides generic subcommands to run
+a specific command or even start a shell.
+
+Some existing tools already handle the immutable system ... somehow. Not really transparently, but pointing
+user to the transactional-update tool instead of failing on read-only filesystem. Prime example is zypper;
+based on the respective subcommand it either executes it directly (e.g. searching packages) or tells user
+to use transactional-update. What if there was an option that zypper executed transactional-update directly?
+
+This has one drawback: after transaction finishes, the new snapshot needs to be activated, which is
+ideally done by reboot. Recently, transactional-update has a feature to apply a snapshot instantly.
+So, the expected behavior when installing a package could be: zypper installs the package in new snapshot
+and if the operation succeeds, new snapshot gets activated automatically.
+
+
+Implemetation:
+
+This project offers two implementations: One needs the respective tool to be aware of the transactional
+system and call the transactional-wrapper command when the system is read only; the other one uses an alias
+and the transactional-alias tool.
+
+
+Transactional Alias:
+
+Using alias is simpler and does not require any modification of the command. Taking zypper as an example,
+you can define alias alias zypper=transactional-alias zypper
+
+or optionally specify configuration of the tool
+
+alias zypper=transactional-alias -c zypper zypper
+
+The configuration references a configuration file, which can specify:
+
+- exit codes which means successful operation (other than zero) .... and therefore need to apply the snapshot
+
+- exit codes which don't mean error but say that the operation did not do any change to the system, and
+  therefore there is no point in activating the snapshot
+
+The transactinoal alias handles calling the transactional-wrapper with proper parameters.
+
+
+Transactional Wrapper:
+
+transactional-wrapper is expected to be run as a child process of the tool which needs writing to read-only
+part of the system. It does not require any parameters (it can receive the command-line if its parent process
+from the /proc filesystem.  This means that the respective tool does not need to replicate the commands.
+
+It can optionally provide configurarion for the respectie tool, either via file or via command-line parameters,
+to specify behavior on exit codes.
+
+The transactional wrapper - if installed - can be disabled or enabled via configuration file. Additionally,
+it can define the behavior on successful transaction:
+- call transactional-update apply
+- do nothing (requires user to activate the snapshot before using next transacitonal command
+- reboot immediately
+- soft-reboot immediately
+- reboot via kexec immediately
+
+
+Example patch to invoke the transactional wrapper (for zypper, not ready to apply, serving as PoC):
+
+diff --git a/src/commands/conditions.cc b/src/commands/conditions.cc
+index 56cd8b5e..b20bdfa2 100644
+--- a/src/commands/conditions.cc
++++ b/src/commands/conditions.cc
+@@ -11,6 +11,9 @@
+ #include <sys/vfs.h>
+ #include <sys/statvfs.h>
+ #include <linux/magic.h>
++#include <cstdlib>
++#include <iostream>
++
+ 
+ int NeedsRootCondition::check(std::string &err)
+ {
+@@ -44,6 +47,13 @@ int NeedsWritableRoot::check(std::string &err_r)
+       bool isTransactionalServer = ( fsinfo.f_type == BTRFS_SUPER_MAGIC && PathInfo( "/usr/sbin/transactional-update" ).isFile() );
+ 
+       if ( isTransactionalServer && !gopts.changedRoot ) {
++	#define TRANSACTIONAL_WRAPPER "/usr/sbin/transactional-wrapper"
++	#define TRANSACTIONAL_WRAPPER_CMD "/usr/sbin/transactional-wrapper -c zypper"
++	bool hasTransactionalWrapper = PathInfo( TRANSACTIONAL_WRAPPER ).isFile() ;
++        if ( hasTransactionalWrapper ) {
++          system( TRANSACTIONAL_WRAPPER_CMD );
++          return ZYPPER_EXIT_ERR_PRIVILEGES; // FIXME exit code of zypper itself
++        }
+         err_r = _("This is a transactional-server, please use transactional-update to update or modify the system.");
+       } else {
+         err_r = _("The target filesystem is mounted as read-only. Please make sure the target filesystem is writeable.");

@@ -1,0 +1,106 @@
+#!/bin/bash
+
+echo "Starting transactinoal-wrapper"
+ACTION="info"
+CMDLINE=""
+VERBOSE=0
+. /usr/etc/transactional-wrapper.conf
+[ -f /etc/transactional-wrapper.conf ] && . /etc/transactional-wrapper.conf
+
+while [[ $# -gt 0 ]] do
+  case $1 in
+    -c|--config)
+      . "/usr/share/transactional-wrapper/configs/$2"
+      shift
+      shift
+      ;;
+    -s|--success-exit-codes)
+      SUCCESS_EXIT_CODES="$2"
+      shift
+      shift
+      ;;
+    -n|--noop-exit-codes)
+      NOOP_EXIT_CODES="$2"
+      shift
+      shift
+      ;;
+    -v|--verbose)
+      VERBOSE=1
+      shift
+      ;;
+    -*|--*)
+      echo "Unknown option $1"
+      exit 1
+      ;;
+    *)
+      CMDLINE=$@
+      break
+  esac
+done
+
+if [ $ENABLE_TRANSACTIONAL_WRAPPER == "0" ] ; then
+  echo "Wrapping transactional operations is disabled; run transactional-update manually or enable it in /etc/transactional-wrapper.conf"
+  exit 1
+fi
+
+test -z "$CMDLINE" && CMDLINE=`cat "/proc/$PPID/cmdline" | tr '\000' ' '`
+$VERBOSE && echo "Calling transactional-wrapper for $CMDLINE"
+
+tempfile=$(mktemp)
+/sbin/transactional-update run $CMDLINE | tee $tempfile
+EXIT=`sed -n 's/.*Application returned with exit status //p' <$tempfile |sed 's/\.$//i'`
+rm $tempfile
+
+WRAPPED_EXIT=",$EXIT,"
+SUCCESS_EXIT_CODES=",0,$SUCCESS_EXIT_CODES,"
+NOOP_EXIT_CODES=",$NOOP_EXIT_CODES,"
+
+if echo $NOOP_EXIT_CODES | grep $WRAPPED_EXIT ; then
+  echo "The operation did not perform any changes, ignoring new snapshot"
+  exit $EXIT
+fi
+
+if echo $SUCCESS_EXIT_CODES | grep $WRAPPED_EXIT ; then
+  $VERBOSE && echo "Transaction succeeded with exit code $EXIT"
+else
+  echo "Execution of transaction failed with exit code $EXIT"
+  exit $EXIT
+fi
+
+if [ $ACTION = "info" ] ; then
+  echo "New snapshot has been created. Reboot as soon as possible"
+  echo "To activate it. Until new snapshot is activated, further"
+  echo "operations will be based on currently running snapshot"
+  echo "and further snapshots will not include the changes."
+  exit $EXIT
+fi
+
+if [ $ACTION = "soft-reboot" ] ; then
+  echo "Soft-rebooting to acticate the snapshot in 10 secinds"
+  echo "Interrupt the script to interrupt system restart"
+  sleep 10
+  systemctl soft-reboot
+fi
+
+if [ $ACTION = "reboot" ] ; then
+  echo "Rebooting to acticate the snapshot in 10 secinds"
+  echo "Interrupt the script to interrupt system restart"
+  sleep 10
+  systemctl reboot
+fi
+
+if [ $ACTION = "kexec" ] ; then
+  echo "Rebooting via kexec to acticate the snapshot in 10 secinds"
+  echo "Interrupt the script to interrupt system restart"
+  sleep 10
+  systemctl kexec
+fi
+
+if [ $ACTION = "apply" ] ; then
+  echo "Applying new snapshot via transactinal-update apply"
+  /sbin/transactional-update apply;
+  exit $EXIT
+fi
+
+echo "Unknown post-transactional operation, check your configuration"
+exit 1

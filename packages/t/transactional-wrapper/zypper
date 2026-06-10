@@ -1,0 +1,5 @@
+TRANSACTIONAL_COMMANDS=in,install,up,update,remove,rm,install-new-recommends,inr,patch,dist-upgrade,dup,source-install,si
+# only one of TRANSACTIONAL_ and DIRECT_COMMANDS should be specified
+#DIRECT_COMMANDS=ar,addrepo,search
+SUCCESS_EXIT_CODES=102,103
+NOOP_EXIT_CODES=104
