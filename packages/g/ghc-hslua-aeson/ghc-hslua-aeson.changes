@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  8 14:50:50 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hslua-aeson to version 2.3.2.
+  ## hslua-aeson-2.3.2
+
+  Released 2026-01-08.
+
+  -   Dropped support for aeson < 2.0.3.
+
+-------------------------------------------------------------------
 Tue Jul  9 15:31:10 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hslua-aeson to version 2.3.1.1.

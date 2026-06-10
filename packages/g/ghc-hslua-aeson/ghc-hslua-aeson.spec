@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-aeson
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.1.1
+Version:        2.3.2
 Release:        0
 Summary:        Allow aeson data types to be used with Lua
 License:        MIT
@@ -33,23 +33,13 @@ BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
-BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-hashable-devel
-BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-hslua-core-devel
 BuildRequires:  ghc-hslua-core-prof
 BuildRequires:  ghc-hslua-marshalling-devel
 BuildRequires:  ghc-hslua-marshalling-prof
-BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-scientific-prof
-BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
-BuildRequires:  ghc-unordered-containers-devel
-BuildRequires:  ghc-unordered-containers-prof
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vector-prof
 ExcludeArch:    %{ix86}
@@ -64,6 +54,8 @@ BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-tasty-quickcheck-prof
+BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
 %endif
 
 %description
