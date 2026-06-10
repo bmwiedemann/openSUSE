@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 13 07:32:27 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-version to version 1.2.0.1.
+  ## hslua-module-version-1.2.0.1
+
+  Released 2026-01-13.
+
+  - Fix the typespec in the `Call` operation of the *Version* type.
+
+  ## hslua-module-version-1.2.0
+
+  Released 2026-01-08.
+
+  - Require hslua-packaging 2.4 or later.
+
+-------------------------------------------------------------------
 Thu Jan 18 17:34:19 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-version to version 1.1.1.
