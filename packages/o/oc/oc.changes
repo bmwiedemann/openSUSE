@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Wed Jun 10 05:23:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.22.0:
+  * OCPBUGS-62799: Add required-scc annotation to node-joiner pod
+    to prevent third-party SCC interference
+  * claude: Split tester agent away from code-reviewer
+  * Fix extraction of gated manifests using --install-config
+  * NO-JIRA: Add feature gate changes to changelog JSON output
+    (#2247)
+  * NO-ISSUE: recover the context in upgrade
+  * claude: Turn pr-review skill into code-reviewer agent
+  * Address comments from review
+  * Revert "TRT-2587: Revert #2219 "CNTRLPLANE-2769: Bump k8s
+    dependencies to 1.35""
+  * MCO-1961: Allow multiple machine-os image versions
+  * Use the informing label to not block the release
+  * must-gather: Handle signals properly
+  * Revert "Merge pull request #2219 from ardaguclu/bump-1.35"
+  * Revert "Merge pull request #2222 from
+    JoelSpeed/update-release-extract-inclusion"
+  * pkg/cli/admin/release/extract: Support zero-output extraction
+  * Implement feature gate and major version extraction for
+    manifest inclusion
+  * pkg/cli/admin/release/extract: Read manifests into memory
+  * Add e2e test for oc adm upgrade accept
+  * OTA-1548: set up accepted risks
+  * adm policy add-role-to-user: Fix --dry-run=server
+  * Add .coderabbit.yaml and AGENTS.md configurations
+  * Fixing manifest ci failure
+  * RFE-7406: Include the K8s ingress resource in namespace inspect
+    collection (#2004)
+  * Update golang.org/x libraries to latest
+  * Fix lifecycle_test failure
+  * Skip new resources that do not have Describer
+  * Update manifest Include signature
+  * Bump openshift libraries
+  * Bump some of other packages to keep up to date
+  * Update metadata for Go 1.25 k8s 1.35
+  * React to the changes coming from 1.35
+  * Bump k8s 1.35.2
+  * fix: reduce the amount of resources for debug pod
+  * oc fips ci fix
+  * pkg/cli/admin/release/mirror: Deprecate in favor of oc-mirror
+  * images/tools/Dockerfile: Just install it and if it fails fall
+    back to iotop-c
+  * Allow periods in display name labels for version validation
+  * pkg/cli/admin/upgrade/recommend/alerts: Add VMCannotBeEvicted
+  * pkg/cli/admin/upgrade/recommend/alerts: Add
+    openShiftUpdatePrecheck label
+  * pkg/cli/admin/upgrade/recommend/alerts: Add
+    VirtHandlerDaemonSetRolloutFailing
+  * pkg/cli/admin/upgrade/recommend/alerts: Add KubeletHealthState
+  * Update Dockerfile to work on CentOS/RHEL 10
+  * OCPBUGS-76394: Ignore group ownership on rpm -V
+  * Fix ns inspect when resource group is specified
+  * inspect: Refactor to use sets.Set[string]
+  * image extract: Use Explicit strategy for ICSP/IDMS
+  * Makefile: Strip debugging symbols by default
+  * images/tools: Install subscription-manager
+  * fixing oc cli failures
+  * OCPBUGS-76394: Install subscription-manager in cli image
+  * Revert "CNTRLPLANE-2656: Fixing oc client cases for microshift
+    and metal ipv6 profiles"
+  * pkg/helpers: Print the right error object
+  * CNTRLPLANE-2656: Add oc CLI e2e tests with OTE framework
+    support
+  * expose: Fix labels not being added to route
+  * Revert "CNTRLPLANE-2656:Migrating oc cli tests to ote"
+  * OSDOCS#18071: Updating CLI docs templates to include a required
+    abstract/short description
+  * removing bindata.go
+  * Removed sos cases
+  * Fix unit test failure by updating ruby version to 3.3
+  * go.mod and vendor update
+  * CNTRLPLANE-2167: Integrate OpenShift Test Extension (OTE)
+    infrastructure
+  * CNTRLPLANE-2167:Integrate OpenShift Test Extension (OTE) into
+    oc
+  * OTE extensin of oc
+  * update go.mod and vendor
+  * Bump library-go to update selinux and x/crypto
+  * Updating ose-cli-artifacts-container image to be consistent
+    with ART for 4.22 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/087d1930e36b609f77d73bd8a313d85c940cff4d/images/ose-cli-artifacts.yml
+  * Updating openshift-enterprise-deployer-container image to be
+    consistent with ART for 4.22 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/087d1930e36b609f77d73bd8a313d85c940cff4d/images/openshift-enterprise-deployer.yml
+  * Updating ose-tools-container image to be consistent with ART
+    for 4.22 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/087d1930e36b609f77d73bd8a313d85c940cff4d/images/ose-tools.yml
+  * Updating openshift-enterprise-cli-container image to be
+    consistent with ART for 4.22 Reconciling with
+    https://github.com/openshift/ocp-build-data/tree/087d1930e36b609f77d73bd8a313d85c940cff4d/images/openshift-enterprise-cli.yml
+  * Bump docker/docker to 28.5.2 to drop dependency of
+    containerd/containerd
+  * oc login: Respect insecure flag from kubeconfig
+  * fix(nodeimage): add PodSecurityContext to image creation and
+    monitor pods
+
+-------------------------------------------------------------------
 Tue Feb 03 11:54:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.21.0:
