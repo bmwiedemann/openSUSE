@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 07:11:04 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- envsubst-on-templates: avoid direct interpolation of awk variable
+
+-------------------------------------------------------------------
 Mon May 18 07:56:20 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - update for new nginx version
