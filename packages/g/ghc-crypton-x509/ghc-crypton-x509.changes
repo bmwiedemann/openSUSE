@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar  7 05:14:39 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509 to version 1.7.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu May 30 02:19:42 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update crypton-x509 to version 1.7.7.
