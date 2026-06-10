@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 10 11:00:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.22.0:
+  * fix: restore Go and gRPC versions in Spanner bootstrap example
+    (#10102)
+  * chore: upgrade Go version to 1.26.4 (#10100)
+  * chore: bump the golang group across 1 directory with 13 updates
+    (#10099)
+  * chore!: updating docker to moby and drop native Windows
+    buildpacks support(#10096)
+  * chore: bump github.com/containerd/containerd from 1.7.31 to
+    1.7.32 (#10093)
+
+-------------------------------------------------------------------
 Thu May 21 05:23:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.21.0:
