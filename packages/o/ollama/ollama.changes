@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Jun  7 07:35:13 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.30.6:
+  * Gemma 4 QAT weights: the Gemma 4 family is now optimized with
+    Quantization-Aware Training (QAT) to dramatically reduce memory
+    requirements and maximize on-device performance.
+  * ollama launch omp now integrates with Oh My Pi, an AI coding
+    agent with IDE integration
+  * Disable WebUI:
+    disable-llama.cpp-ui.patch
+
+-------------------------------------------------------------------
+Fri Jun  5 06:48:49 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- update to 0.30.5:
+  * Fix gemma4:12b floating point exception crash
+  * llama.cpp version update
+  * models: add support for gemma4-12b
+
+-------------------------------------------------------------------
+Wed Jun  3 05:08:57 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- update to 0.30.2:
+  * feat(launch): show and auto-install Cline CLI
+  * log template details to aid troubleshooting
+  * cmd/launch: add Qwen code integration
+  * launch: fix opencode local model limits
+  * llm: include cached prompt tokens in llama-server counts
+  * Harden app markdown URL handling
+  * discover: allow Radeon 8060S iGPU
+  * llm: detect llama-server load stalls from output
+  * More harden app markdown URL handling
+  * llama.cpp version update
+  * launch: isolate Codex launch configuration
+  * llama: add laguna (poolside) arch via a llama.cpp patch under llama/c…
+  * docs: configure hermes desktop app
+  * llm: ignore llama-server SSE ping comments
+  * fix laguna patch build breakage
+  * llama.cpp b9478 added a default 30s SSE ping that emits colon-only
+    comment frames (":\n\n") while streamed requests are idle; Ollama
+    treated non-data SSE lines as JSON, so skip SSE comments in completion
+    and chat streams.
+
+-------------------------------------------------------------------
+Fri May 22 09:08:55 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.30.0
+  NOTE: quite some models are currently unsupported due to 
+        format changes.
+- llama.cpp source is not bundled anymore. Instead a git url
+  and tag is used. We vendor these sources via a _service.
+- _multibuild is used to parallize the builds of the backend
+  plugins of rocm, vulkan and cuda
+- mlx cuda support adding is unfinished
+
+-------------------------------------------------------------------
 Tue May 19 06:40:26 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - update to 0.24.0:

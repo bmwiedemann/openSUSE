@@ -1,0 +1,6 @@
+<multibuild>
+  <flavor>cuda</flavor>
+  <flavor>rocm</flavor>
+  <flavor>vulkan</flavor>
+  <flavor>test</flavor>
+</multibuild>

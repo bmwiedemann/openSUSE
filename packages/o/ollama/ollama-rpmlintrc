@@ -1,0 +1,3 @@
+# .so files are in subdirectory and used for dlopen
+addFilter("devel-file-in-non-devel-package")
+

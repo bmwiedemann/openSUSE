@@ -1,8 +1,35 @@
 <services>
   <service name="format_spec_file" mode="manual" />
+<!--
   <service name="download_files" mode="manual" />
-
+-->
   <service name="go_modules" mode="manual">
     <param name="compression">zstd</param>
+  </service>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/ggml-org/llama.cpp.git/</param>
+    <param name="scm">git</param>
+    <!-- defined in LLAMA_CPP_VERSION file -->
+    <param name="revision">refs/tags/b9509</param>
+    <param name="version">main</param>
+  </service>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/ml-explore/mlx.git</param>
+    <param name="scm">git</param>
+    <!-- defined in MLX_VERSION file -->
+    <param name="revision">2165dc08d7b33258260aa849d39f087d50e62962</param>
+    <param name="version">main</param>
+  </service>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/ml-explore/mlx-c.git</param>
+    <param name="scm">git</param>
+    <!-- defined in MLX_C_VERSION file -->
+    <param name="revision">fba4470b89073180056c9ea46c443051375f7399</param>
+    <param name="version">main</param>
+  </service>
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
   </service>
 </services>

@@ -1,0 +1,23 @@
+--- a/cmake/local.cmake.orig	2026-05-27 02:17:48.000000000 +0200
++++ a/cmake/local.cmake	2026-05-27 08:45:33.133036479 +0200
+@@ -310,6 +310,8 @@
+-        -DOLLAMA_LLAMA_CPP_SKIP_COMPAT_PATCH=ON
++        -DOLLAMA_LLAMA_CPP_SKIP_COMPAT_PATCH=OFF
+         -DGGML_NATIVE=OFF
+         -DGGML_OPENMP=OFF
++        -DLLAMA_BUILD_UI=OFF
++        -DLLAMA_BUILD_WEBUI=OFF
+         ${ARG_CMAKE_ARGS}
+         ${_ggml_cache_args}
+         ${_llama_cache_args}
+--- a/llama/server/CMakeLists.txt.orig	2026-05-27 02:17:48.000000000 +0200
++++ a/llama/server/CMakeLists.txt	2026-05-27 08:45:33.133036479 +0200
+@@ -173,6 +173,8 @@
+ set(LLAMA_TOOLS_INSTALL OFF CACHE BOOL "" FORCE)
+ set(LLAMA_CURL OFF CACHE BOOL "" FORCE)
+ set(LLAMA_OPENSSL OFF CACHE BOOL "" FORCE)
++set(LLAMA_BUILD_UI OFF CACHE BOOL "" FORCE)
++set(LLAMA_BUILD_WEBUI OFF CACHE BOOL "" FORCE)
+ 
+ FetchContent_Declare(
+     llama_cpp

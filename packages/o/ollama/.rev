@@ -841,4 +841,41 @@ because we don't need git-web and the other stuff here (forwarded request 125417
     <comment></comment>
     <requestid>1354396</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>0884609a58cdfde89616b055abab5473</srcmd5>
+    <version>0.30.6</version>
+    <time>1781099283</time>
+    <user>anag_factory</user>
+    <comment>- Fix build issues with 'test' flavor. (forwarded request 1358104 from eeich)
+- Update to 0.30.6:
+  * Gemma 4 QAT weights: the Gemma 4 family is now optimized with
+    Quantization-Aware Training (QAT) to dramatically reduce memory
+    requirements and maximize on-device performance.
+  * ollama launch omp now integrates with Oh My Pi, an AI coding
+    agent with IDE integration
+  * Disable WebUI:
+    disable-llama.cpp-ui.patch
+
+- update to 0.30.5:
+  * Fix gemma4:12b floating point exception crash
+  * llama.cpp version update
+  * models: add support for gemma4-12b
+
+- update to 0.30.2:
+  * feat(launch): show and auto-install Cline CLI
+  * log template details to aid troubleshooting
+  * cmd/launch: add Qwen code integration
+  * launch: fix opencode local model limits
+  * llm: include cached prompt tokens in llama-server counts
+  * Harden app markdown URL handling
+  * discover: allow Radeon 8060S iGPU
+  * llm: detect llama-server load stalls from output
+  * More harden app markdown URL handling
+  * llama.cpp version update
+  * launch: isolate Codex launch configuration
+  * llama: add laguna (poolside) arch via a llama.cpp patch under llama/c…
+  * docs: configure hermes desktop app
+  * llm: ignore llama-server SSE ping comments</comment>
+    <requestid>1358173</requestid>
+  </revision>
 </revisionlist>
