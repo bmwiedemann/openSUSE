@@ -1,8 +1,8 @@
 cabal-version: 1.24
 name:          bifunctors
 category:      Data, Functors
-version:       5.6.2
-x-revision: 2
+version:       5.6.3
+x-revision: 1
 license:       BSD3
 license-file:  LICENSE
 author:        Edward A. Kmett
@@ -23,9 +23,11 @@ tested-with:   GHC == 8.0.2
              , GHC == 9.0.2
              , GHC == 9.2.8
              , GHC == 9.4.8
-             , GHC == 9.6.4
-             , GHC == 9.8.2
-             , GHC == 9.10.1
+             , GHC == 9.6.7
+             , GHC == 9.8.4
+             , GHC == 9.10.3
+             , GHC == 9.12.2
+             , GHC == 9.14.1
 extra-source-files:
   CHANGELOG.markdown
   README.markdown
@@ -49,14 +51,13 @@ library
     assoc                    >= 1.1     && < 1.2,
     comonad                  >= 5.0.7   && < 6,
     containers               >= 0.5.7.1 && < 0.9,
-    template-haskell         >= 2.11    && < 2.24,
-    th-abstraction           >= 0.4.2.0 && < 0.8,
-    transformers             >= 0.5     && < 0.7
+    template-haskell         >= 2.11    && < 2.25,
+    th-abstraction           >= 0.4.2.0 && < 0.8
 
   if !impl(ghc >= 8.2)
     build-depends:
       bifunctor-classes-compat >= 0.1 && < 0.2,
-      transformers-compat      >= 0.6 && < 0.8
+      transformers-compat      >= 0.6 && < 0.9
 
   if flag(tagged)
     build-depends: tagged >= 0.8.6 && < 1
@@ -110,8 +111,4 @@ test-suite bifunctors-spec
     base                >= 4   && < 5,
     bifunctors,
     hspec               >= 1.8,
-    QuickCheck          >= 2   && < 3,
-    template-haskell,
-    transformers,
-    transformers-compat
-
+    QuickCheck          >= 2   && < 3

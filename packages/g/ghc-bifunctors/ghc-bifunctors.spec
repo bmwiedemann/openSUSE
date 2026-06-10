@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-bifunctors
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.6.2
+Version:        5.6.3
 Release:        0
 Summary:        Collection Haskell 98 bifunctors, bifoldables and bitraversables
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-assoc-devel
 BuildRequires:  ghc-assoc-prof
@@ -43,16 +43,12 @@ BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-template-haskell-prof
 BuildRequires:  ghc-th-abstraction-devel
 BuildRequires:  ghc-th-abstraction-prof
-BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
-BuildRequires:  ghc-transformers-compat-devel
-BuildRequires:  ghc-transformers-compat-prof
 %endif
 
 %description

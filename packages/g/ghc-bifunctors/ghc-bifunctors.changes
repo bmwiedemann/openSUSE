@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 11 02:48:25 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.6.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Jan  4 01:36:20 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.6.3.
+  5.6.3 [2026.01.03]
+  ------------------
+  * Allow building with `template-haskell-2.24.*` (GHC 9.14).
+  * Remove unused dependencies.
+
+-------------------------------------------------------------------
 Sun Mar  2 14:07:33 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update bifunctors to version 5.6.2 revision 2.
