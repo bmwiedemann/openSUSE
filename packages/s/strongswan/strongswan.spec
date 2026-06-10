@@ -39,12 +39,13 @@
 %bcond_without  systemd
 
 Name:           strongswan
-Version:        6.0.6
+Version:        6.0.7
 Release:        0
 Summary:        IPsec-based VPN solution
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.strongswan.org/
+#Git-Clone:     https://github.com/strongswan/strongswan
 Source0:        http://download.strongswan.org/strongswan-%version.tar.bz2
 Source1:        http://download.strongswan.org/strongswan-%version.tar.bz2.sig
 Source2:        %{name}.init.in
@@ -236,6 +237,8 @@ autoreconf --force --install
 	--enable-ctr \
 	--enable-ccm \
 	--enable-gcm \
+	--enable-chapoly \
+	--enable-mgf1 \
 	--enable-unity \
 	--enable-md4 \
 %if %{with afalg}
@@ -528,6 +531,7 @@ fi
 %if %{with gcrypt}
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/gcrypt.conf
 %endif
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/chapoly.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/gmp.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/ha.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/kdf.conf
@@ -588,6 +592,7 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/fips-prf.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/gcm.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/gcrypt.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/chapoly.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/gmp.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/kdf.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/kernel-netlink.conf
@@ -674,6 +679,7 @@ fi
 %if %{with gcrypt}
 %{strongswan_plugins}/libstrongswan-gcrypt.so
 %endif
+%{strongswan_plugins}/libstrongswan-chapoly.so
 %{strongswan_plugins}/libstrongswan-gmp.so
 %{strongswan_plugins}/libstrongswan-ha.so
 %{strongswan_plugins}/libstrongswan-kdf.so
@@ -769,6 +775,7 @@ fi
 %if %{with gcrypt}
 %{strongswan_templates}/config/plugins/gcrypt.conf
 %endif
+%{strongswan_templates}/config/plugins/chapoly.conf
 %{strongswan_templates}/config/plugins/gmp.conf
 %{strongswan_templates}/config/plugins/ha.conf
 %{strongswan_templates}/config/plugins/kdf.conf
