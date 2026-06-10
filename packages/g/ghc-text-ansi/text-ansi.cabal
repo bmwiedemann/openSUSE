@@ -13,7 +13,7 @@ name: text-ansi
 synopsis: Text styling for ANSI terminals.
 tested-with: GHC == 9.8.4, GHC == 9.10.1, GHC == 9.12.1
 version: 0.3.0.1
-x-revision: 2
+x-revision: 3
 
 description:
   Text styling for ANSI terminals using SGR codes, as defined by the
@@ -37,7 +37,7 @@ source-repository head
 
 library
   build-depends:
-    base ^>= 4.16 || ^>= 4.17 || ^>= 4.18 || ^>= 4.19 || ^>= 4.20 || ^>= 4.21,
+    base ^>= 4.16 || ^>= 4.17 || ^>= 4.18 || ^>= 4.19 || ^>= 4.20 || ^>= 4.21 || ^>= 4.22,
     text >= 1.0 && < 2.2,
     text-builder-linear ^>= 0.1.1,
   default-language:
