@@ -16,27 +16,34 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without  libalternatives
+
 Name:           wafw00f
-Version:        2.3.2
+Version:        2.4.2
 Release:        0
 Summary:        The Web Application Firewall Detection and Fingerprinting Toolkit
 License:        BSD-3-Clause
 URL:            https://github.com/enablesecurity/wafw00f
-Source:         https://files.pythonhosted.org/packages/source/w/wafw00f/wafw00f-%{version}.tar.gz
+#Source0:        https://files.pythonhosted.org/packages/source/w/wafw00f/wafw00f-%%{version}.tar.gz
+# use source from github to get complete tests
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-request-path.patch -- based on commit af3eca1
+Patch0:         fix-request-path.patch
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pluginbase}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module responses}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-pluginbase
+Requires:       alts
 Requires:       python-requests
-Requires:       python-requests
-Suggests:       python-prospector
-Suggests:       python-Sphinx
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,16 +51,24 @@ BuildArch:      noarch
 The Web Application Firewall Detection and Fingerprinting Toolkit.
 
 %prep
-%setup -q -n wafw00f-%{version}
+%autosetup -p1
+# fix non-executable-script
 find . -iname "*.py" -exec sed -i '1{/^#!/ d}' {} \;
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/wafw00f
+%python_expand %python3_fix_shebang_path %{buildroot}%{$python_sitelib}/wafw00f/bin/wafw00f
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
+
+%pre
+%python_libalternatives_reset_alternative wafw00f
 
 %post
 %python_install_alternative wafw00f
@@ -65,6 +80,7 @@ find . -iname "*.py" -exec sed -i '1{/^#!/ d}' {} \;
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/wafw00f
-%{python_sitelib}/*
+%{python_sitelib}/wafw00f
+%{python_sitelib}/wafw00f-%{version}.dist-info
 
 %changelog

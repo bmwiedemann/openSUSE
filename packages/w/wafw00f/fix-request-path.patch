@@ -1,0 +1,83 @@
+From 4f7b422fc2cfd8305984c21a6adbb53be091ef8d Mon Sep 17 00:00:00 2001
+From: Diogo Castilho <diogo.castilho@snyk.io>
+Date: Wed, 25 Mar 2026 14:26:26 +0000
+Subject: [PATCH] Fix request path
+
+---
+ tests/test_evillib.py  | 22 ++++++++++++++++++++++
+ wafw00f/lib/evillib.py | 25 +++++++++++++++++++++++--
+ 2 files changed, 45 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_evillib.py b/tests/test_evillib.py
+index 52b0bcdf..4d7ef4b7 100644
+--- a/tests/test_evillib.py
++++ b/tests/test_evillib.py
+@@ -146,3 +146,25 @@ def test_timeout_attribute_used(self):
+         # Verify the engine has timeout configured
+         assert engine.timeout == 5
+         assert resp is not None
++
++
++class TestPathPreservation:
++    """Tests that request paths are not normalized."""
++
++    @responses.activate
++    def test_path_traversal_not_normalized(self):
++        """Test path traversal sequences are preserved."""
++        responses.add(responses.GET, 'https://example.com/../../etc/passwd', status=200)
++        engine = waftoolsengine(target='https://example.com')
++        engine.Request(path='../../etc/passwd')
++        assert '../../etc/passwd' in responses.calls[0].request.url
++
++    @responses.activate
++    def test_path_traversal_with_params(self):
++        """Test path traversal is preserved when query params are present."""
++        responses.add(responses.GET, 'https://example.com/../../etc/passwd', status=200)
++        engine = waftoolsengine(target='https://example.com')
++        engine.Request(path='../../etc/passwd', params={'key': 'val'})
++        url = responses.calls[0].request.url
++        assert '../../etc/passwd' in url
++        assert 'key=val' in url
+diff --git a/wafw00f/lib/evillib.py b/wafw00f/lib/evillib.py
+index 37276866..780cee77 100755
+--- a/wafw00f/lib/evillib.py
++++ b/wafw00f/lib/evillib.py
+@@ -7,6 +7,7 @@
+ import time
+ import logging
+ from copy import copy
++from urllib.parse import urlparse
+ 
+ import requests
+ import urllib3
+@@ -57,8 +58,28 @@ def Request(self, headers=None, path=None, params={}, delay=0):
+             if not headers:
+                 h = self.headers
+             else: h = headers
+-            req = requests.get(self.target, proxies=self.proxies, headers=h, timeout=self.timeout,
+-                    allow_redirects=self.allowredir, params=params, verify=False, stream=True)
++
++            # Create the url manually to avoid path normalization
++            url = self.target if path is None else self.target.rstrip('/') + '/' + path.lstrip('/')
++            prepared = requests.Request('GET', url, headers=h,
++                                        params=params or {}).prepare()
++
++            parsed_url = urlparse(prepared.url)
++
++            # Ensuring trailing slash does not disappear
++            trailing_slash = parsed_url.path.endswith('/')
++            if trailing_slash and not url.endswith('/'):
++                url += '/'
++
++            # Preserve the original path (e.g. ../../etc/passwd)
++            if params:
++                prepared.url = url + '?' + parsed_url.query
++            else:
++                prepared.url = url
++
++            req = requests.Session().send(prepared, proxies=self.proxies, timeout=self.timeout,
++                    allow_redirects=self.allowredir, verify=False, stream=True)
++
+             # Read only up to MAX_RESPONSE_SIZE to avoid hanging on streaming responses
+             # (e.g., audio streams) - see issue #246
+             # Also enforce timeout during reading to handle slow streaming servers

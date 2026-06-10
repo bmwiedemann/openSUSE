@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Jun  2 13:08:39 UTC 2026 - munix9@googlemail.com
+
+- Update to version 2.4.2:
+  * Removes setup.py to fix tool installations when building locally.
+  * Updated the latest supported versions of Python (≥3.10)
+  * New WAF signature updates:
+    - Vercel WAF
+    - Reflected Networks WAF
+  * Improvements to existing signatures:
+    - Tencent WAF
+
+- Update to version 2.4.1:
+  * Fix timeout enforcement during response body reading to properly
+    handle slow streaming servers.
+  * Timeout enforcement: The --timeout parameter is now properly
+    enforced during response body reading, not just during connection
+    establishment. This fixes the issue where slow-streaming servers
+    could cause scans to take over 2 minutes instead of respecting
+    the user-specified timeout.
+  * Track elapsed time during chunk reading loop
+  * Break out of reading loop if timeout is exceeded during reading
+  * Add test documenting timeout enforcement behavior
+
+- Update to version 2.4.0:
+  * New WAF detections
+    - Anubis (Techaro)
+    - Scutum (Secure Sky Technology)
+    - 360PanYun (360 Technologies)
+    - ThreatX (A10 Networks)
+    - Link11 WAAP
+  * Improvements
+    - Fastly detection improvements (tighter regex for X-Served-By)
+    - Added pytest test framework with 45 tests
+    - Added pyproject.toml for modern Python packaging
+    - Removed pluginbase dependency (use stdlib importlib)
+  * Fixes
+    - Fixed infinite hang on streaming responses (#246)
+    - Improved -t option help text (#243)
+  * Other
+    - Updated copyright years to 2026
+    - Updated Python requirement to 3.8+
+
+- Add fix-request-path.patch based on commit af3eca1:
+  Noticed that path attacks like LFI were being ignored. Changed
+  the way requests were done to ensure that the path is not normalized
+  by creating a prepared request and overwrite the url.
+- Use source from github to get complete tests
+- Switch to wheel/pip build
+- Add %check/%pytest
+- Clean up spec file
+
+-------------------------------------------------------------------
 Fri Jan  2 09:11:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.2:
