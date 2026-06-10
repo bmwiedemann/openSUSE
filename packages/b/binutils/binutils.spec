@@ -170,6 +170,7 @@ Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
 Patch93:        cross-avr-size.patch
 Patch100:       binutils-workaround-premature-libsframe-uninst.diff
+Patch101:       pr33427-fix-loongarch64-glibc-build-with-gcc16.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Hack.  See binutils-workaround-premature-libsframe-uninst.diff
 # until libsframe2, the package, is in the distro we need to
@@ -345,6 +346,7 @@ cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 %patch -P 93 -p1
 %endif
 %patch -P 100 -p1
+%patch -P 101 -p1
 #
 # test_vanilla
 %endif

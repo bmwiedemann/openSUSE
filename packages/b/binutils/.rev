@@ -2493,4 +2493,14 @@ and testsuite accidentally disabled :-/
 - Add binutils-fix-c23.diff to fix a compile error with new glibc.</comment>
     <requestid>1347293</requestid>
   </revision>
+  <revision rev="185" vrev="4">
+    <srcmd5>e11334aad6c9710fd10e5e92e566250d</srcmd5>
+    <version>2.45</version>
+    <time>1781099256</time>
+    <user>anag_factory</user>
+    <comment>- Add pr33427-fix-loongarch64-glibc-build-with-gcc16.patch to
+  backport a fix for assertion failures when building glibc for
+  loongarch64 with GCC 16.</comment>
+    <requestid>1357958</requestid>
+  </revision>
 </revisionlist>

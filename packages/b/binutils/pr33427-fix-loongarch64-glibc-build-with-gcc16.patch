@@ -1,0 +1,86 @@
+From e3a18893e1c4a8b9e10a7a1d6bae62412a130737 Mon Sep 17 00:00:00 2001
+From: Lulu Cai <cailulu@loongson.cn>
+Date: Tue, 16 Sep 2025 14:26:19 +0800
+Subject: [PATCH] LoongArch: Use more appropriate assertions for the relocation
+ of TLS LE
+
+PR ld/33427
+
+Patches introduced in the GCC mainline:
+
+commit 8cad8f94b450be9b73d07bdeef7fa1778d3f2b96
+Author: H.J. Lu <hjl.tools@gmail.com>
+Date:   Fri Sep 5 15:40:51 2025 -0700
+
+    c: Update TLS model after processing a TLS variable
+
+    Set a tentative TLS model in grokvardecl and update TLS mode with
+    the default TLS access model after a TLS variable has been fully
+    processed if the default TLS access model is stronger,
+
+triggered a linker error when building glibc using build-many-glibcs.py.
+
+See: https://sourceware.org/pipermail/binutils/2025-September/144225.html
+
+This fix uses more appropriate assertions.
+
+(cherry picked from commit 87961e47c3666d0527b8ce60e56617e63db0a6c4)
+---
+ bfd/elfnn-loongarch.c                              |  2 +-
+ ld/testsuite/ld-loongarch-elf/ld-loongarch-elf.exp | 12 ++++++++++++
+ ld/testsuite/ld-loongarch-elf/undefweak_le.s       |  7 +++++++
+ 3 files changed, 20 insertions(+), 1 deletion(-)
+ create mode 100644 ld/testsuite/ld-loongarch-elf/undefweak_le.s
+
+diff --git a/bfd/elfnn-loongarch.c b/bfd/elfnn-loongarch.c
+index 505f1196987..c3484641f37 100644
+--- a/bfd/elfnn-loongarch.c
++++ b/bfd/elfnn-loongarch.c
+@@ -4400,7 +4400,7 @@ loongarch_elf_relocate_section (bfd *output_bfd, struct bfd_link_info *info,
+ 	case R_LARCH_TLS_LE_LO12_R:
+ 	case R_LARCH_TLS_LE64_LO20:
+ 	case R_LARCH_TLS_LE64_HI12:
+-	  BFD_ASSERT (resolved_local && elf_hash_table (info)->tls_sec);
++	  BFD_ASSERT (bfd_link_executable (info));
+ 
+ 	  relocation += rel->r_addend;
+ 	  relocation = tlsoff (info, relocation);
+diff --git a/ld/testsuite/ld-loongarch-elf/ld-loongarch-elf.exp b/ld/testsuite/ld-loongarch-elf/ld-loongarch-elf.exp
+index a33727f2efd..5bc48b28ca8 100644
+--- a/ld/testsuite/ld-loongarch-elf/ld-loongarch-elf.exp
++++ b/ld/testsuite/ld-loongarch-elf/ld-loongarch-elf.exp
+@@ -172,6 +172,18 @@ if [istarget "loongarch64-*-*"] {
+ 	  "desc-ie-norelax" \
+       ] \
+   ] \
++
++  run_ld_link_tests \
++      [list \
++	   [list \
++		"undefind weak with tls le" \
++		"" "-e0" \
++		"" \
++		{undefweak_le.s} \
++		{} \
++		"undefweak_le" \
++	   ] \
++      ]
+ }
+ 
+ if [istarget "loongarch64-*-*"] {
+diff --git a/ld/testsuite/ld-loongarch-elf/undefweak_le.s b/ld/testsuite/ld-loongarch-elf/undefweak_le.s
+new file mode 100644
+index 00000000000..6e730182448
+--- /dev/null
++++ b/ld/testsuite/ld-loongarch-elf/undefweak_le.s
+@@ -0,0 +1,7 @@
++_start:
++	lu12i.w	$t0,%le_hi20_r(undefweak_le)
++	add.d	$t0,$t0,$tp,%le_add_r(undefweak_le)
++	ld.d	$t0,$t0,%le_lo12_r(undefweak_le)
++
++	.weak	undefweak_le
++	.hidden	undefweak_le
+-- 
+2.43.7
+
