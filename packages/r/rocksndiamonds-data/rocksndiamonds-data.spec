@@ -1,7 +1,7 @@
 #
 # spec file for package rocksndiamonds-data
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define oname   rocksndiamonds
 Name:           %{oname}-data
-Version:        20260316
+Version:        20260609
 Release:        0
 Summary:        Data files for Rocks'n'Diamonds
 License:        GPL-2.0-or-later
@@ -26,7 +26,7 @@ Group:          Amusements/Games/Action/Arcade
 URL:            https://www.artsoft.org/rocksndiamonds/
 Source0:        https://www.artsoft.org/RELEASES/%{oname}/levels/ZeldaII-1.0.0.zip
 Source1:        https://www.artsoft.org/RELEASES/%{oname}/levels/Zelda-1.0.0.zip
-Source2:        https://www.artsoft.org/RELEASES/%{oname}/levels/Emerald_Mine_Club-3.2.0.7z
+Source2:        https://www.artsoft.org/RELEASES/%{oname}/levels/Emerald_Mine_Club-3.3.0.7z
 Source3:        https://www.artsoft.org/RELEASES/%{oname}/levels/Sokoban-1.0.0.zip
 # Use supplied tarbal, fixed with fdupes -l sym -r -m .
 # and packed than rockslevels, repacked as tar.bz2
