@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 10 20:32:00 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update semigroups to version 0.20.1.
+  0.20.1 [2026.01.10]
+  -------------------
+  * Drop support for pre-8.0 versions of GHC.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:11 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
