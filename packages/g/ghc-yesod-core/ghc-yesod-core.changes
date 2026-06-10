@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 12 15:50:51 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update yesod-core to version 1.6.29.1.
+  ## 1.6.29.1
+
+  * Fix compilation error for text >= 2.1.2 [#1905](https://github.com/yesodweb/yesod/pull/1905)
+
+  ## 1.6.29.0
+
+  * When showing HandlerContent, include a content snippet [#1864](https://github.com/yesodweb/yesod/pull/1864)
+
+-------------------------------------------------------------------
 Thu Oct 23 20:08:54 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update yesod-core to version 1.6.28.1.

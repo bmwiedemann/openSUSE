@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-yesod-core
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.28.1
+Version:        1.6.29.1
 Release:        0
 Summary:        Creation of type-safe, RESTful web applications
 License:        MIT
@@ -59,6 +59,8 @@ BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-deepseq-prof
+BuildRequires:  ghc-encoding-devel
+BuildRequires:  ghc-encoding-prof
 BuildRequires:  ghc-entropy-devel
 BuildRequires:  ghc-entropy-prof
 BuildRequires:  ghc-fast-logger-devel
