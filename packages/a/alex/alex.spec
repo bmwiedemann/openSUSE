@@ -1,7 +1,7 @@
 #
 # spec file for package alex
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           alex
-Version:        3.5.4.0
+Version:        3.5.4.2
 Release:        0
 Summary:        Alex is a tool for generating lexical analysers in Haskell
 License:        BSD-3-Clause

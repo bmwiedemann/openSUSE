@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 22 07:43:16 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.5.4.2.
+  ## Changes in 3.5.4.2
+
+  * Fix botched distribution tarball of 3.5.4.1.
+  * Tested with GHC 8.0 - 9.14.1.
+
+  _Andreas Abel, 2026-03-22_
+
+  ## Changes in 3.5.4.1
+
+  * New examples and fixes to the documentation (#284, #285, #286).
+  * Tested with GHC 8.0 - 9.14.1.
+
+  _Andreas Abel, 2026-03-21_
+
+-------------------------------------------------------------------
 Mon Aug  4 20:57:36 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Don't need to define $alex_datadir, fixed in Cabal instead
